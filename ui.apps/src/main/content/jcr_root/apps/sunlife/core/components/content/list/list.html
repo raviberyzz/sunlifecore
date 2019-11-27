@@ -1,0 +1,18 @@
+<sly data-sly-use.listModel="com.sunlife.core.models.ListModel"/>
+<sly data-sly-test.empty="${!listModel.title}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<div class="lists-wrapper footer-links-accordions" data-sly-test="${!empty}"> 
+		<div class="footer-link">
+			<h3 class="accordion-heading" aria-expanded="false" data-parent=".footer-links-accordions" data-target="#footer-quick-links"
+         data-toggle="collapse">">${listModel.title}</</h3>
+			<div class="collapse" id="footer-quick-links">
+				<div data-sly-test="${listModel.links && links.linkName}">
+				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
+					<li>
+					<a href ="${links.linkUrl @ extension = 'html'}" target ="${links.selection}">${links.linkName}</a>
+					 </li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+  </div>
