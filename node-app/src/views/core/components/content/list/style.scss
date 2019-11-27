@@ -1,0 +1,58 @@
+@import '../../../base/core';
+.lists-wrapper {
+    .links {
+        padding: 0 15px;
+        border-top: 1px solid $white-shade;
+    }
+    .accordion-heading {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .list-unstyled{
+        li a {
+            font-weight: 400;
+        } 
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: 768px) {
+    .lists-wrapper {
+        .links {
+            float: left;
+            margin-right: 20px;
+            .collapse {
+                display: block !important;
+            }
+        }
+        .accordion-heading {
+            pointer-events: none;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .lists-wrapper {
+        .links {
+            .collapse.show {
+                display: block !important;
+            }
+        }
+        .links .accordion-heading[aria-expanded="false"]:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .links .accordion-heading[aria-expanded="true"]:before {
+            content: "\f0d7";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .accordion-heading {
+            cursor: pointer;
+        }
+    }
+}
+
+

@@ -1,0 +1,35 @@
+@import '../../../base/core';
+.breadcrumb-wrapper{
+    background: $light-cool-blue-color;
+    height: 41px;
+  .breadcrumb-row {
+    padding: 0 0 0 14px;
+    margin: 0;
+      li{
+        font-weight:700;
+        float: left;
+        :hover{
+            text-decoration: none;
+        }
+      }
+      .active {
+        a{
+          font-weight: 400;
+          color:#424242;
+          pointer-events: none;
+        }
+      }
+  }
+  .breadcrumb-row > li + li:before {
+    content: "\f105";
+    font-weight: 400;
+    font-family: FontAwesome;
+    color: $medium-blue-color;
+    padding: 0 5px;
+  }
+}
+@media (max-width: 1024px){
+  .breadcrumb-wrapper{
+    display: none;
+  }
+}

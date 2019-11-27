@@ -1,0 +1,15 @@
+<div class="lists-wrapper footer-links-accordions">
+	<div class="links">
+		<h3 class="accordion-heading" aria-expanded="false" data-parent=".lists-wrapper" data-target="#links"
+		 data-toggle="collapse">{{ LinkText }}</h3>
+		<div class="collapse" id="links">
+			<ul class="list-unstyled">
+                {{#each list}}
+				<li>
+					<a href="{{link}}">{{text}}</a>
+				</li>
+                {{/each}}
+			</ul>
+		</div>
+	</div>
+</div>

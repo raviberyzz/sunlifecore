@@ -1,0 +1,15 @@
+
+.image-text-wrapper {
+    .left-image {
+        vertical-align: middle;
+        margin: 0 20px 10px 0;
+    }
+    .side-text {
+        display: inline-block;
+    }
+}
+@media (max-width: 768px) {
+    .footer-image-text-wrapper {
+        display: none;
+    }
+}

@@ -1,0 +1,8 @@
+<div data-sly-use.textImage="com.sunlife.core.models.TextImageModel">
+	<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+     <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+	
+<div class="image-text-wrapper footer-image-text-wrapper">
+    <a href="${textImage.link}"><img class="left-image" src="${textImage.fileReference @context='uri' }" alt="${textImage.alttext}"></a>
+    	<span class="side-text">${textImage.richtext @context ='html'}</span>
+</div>
