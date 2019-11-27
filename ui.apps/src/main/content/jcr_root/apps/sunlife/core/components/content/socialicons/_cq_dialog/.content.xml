@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Social Icons"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <icons
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Social Icons">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./icons">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <iconName
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Select an Icon"
+                                            name="./iconName">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <facebook
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Facebook"
+                                                    value="icon-facebook"/>
+                                                <twitter
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Twitter"
+                                                    value="icon-twitter"/>
+                                                <instagram
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Instagram"
+                                                    value="icon-instagram"/>
+                                                <linkedin
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Linkedin"
+                                                    value="icon-linkedin"/>
+                                                <youTube
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="YouTube"
+                                                    value="icon-youtube"/>
+                                            </items>
+                                        </iconName>
+                                        <iconUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Icon Url"
+                                            name="./iconUrl"
+                                            rootPath="/content/"
+                                            suffix=".html"/>
+                                        <selection
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="URL Selection Type"
+                                            name="./selection">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <sametab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Same Tab"
+                                                    value="_self"/>
+                                                <newtab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="New Tab"
+                                                    value="_blank"/>
+                                            </items>
+                                        </selection>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </icons>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
