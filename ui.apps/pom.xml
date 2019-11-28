@@ -114,17 +114,7 @@
                             <groupId>com.sunlife</groupId>
                             <artifactId>sunlife.core</artifactId>
                             <target>/apps/sunlife/install</target>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.sunlife</groupId>
-                            <artifactId>sunlife.migration</artifactId>
-                            <target>/apps/sunlife/install</target>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.sunlife</groupId>
-                            <artifactId>sunlife.exporter</artifactId>
-                            <target>/apps/sunlife/install</target>
-                        </embedded>
+                        </embedded>                        
                     </embeddeds>
                     <subPackages>
                         <subPackage>
