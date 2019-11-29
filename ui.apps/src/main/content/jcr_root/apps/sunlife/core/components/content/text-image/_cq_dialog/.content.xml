@@ -14,7 +14,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <text
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceSuperType="/apps/sunlife/core/components/content/richtext-basic/cq:dialog/content/items/column/items/richtext"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/column/items/richtext"
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                         fieldLabel="Text"
                         name="./richtext"
