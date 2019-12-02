@@ -53,7 +53,6 @@ public class SiteConfigServlet extends SlingSafeMethodsServlet {
 		} catch (RepositoryException e) {
 			log.error("Error :: SiteConfigServlet :: {}", e);
 		}
-		response.getWriter().write("dddddd");
 	}
 
 	

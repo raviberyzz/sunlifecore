@@ -2,6 +2,7 @@ package com.sunlife.core.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -41,20 +42,36 @@ public class SiteConfigServiceImpl implements SiteConfigService {
      
     private Session session;
     
-    private Map<String, ValueMap> siteConfigMap;
+    private Map<String, HashMap<String, String>> siteConfigMap;
     
 	@Activate
     public void activate(SiteConfig config) throws LoginException, RepositoryException {
 		log.info("Entry :: activate method of SiteConfigServiceImpl");
         this.siteConfig = config;
-        Map<String, Object> param = new HashMap<String, Object>();
+        setConfiguration();
+		log.info("Exit :: activate method of SiteConfigServiceImpl");
+    }
+	
+	@Override
+	public String getConfigValues(String name, String pagePath) {
+		log.info("SiteConfigServiceImpl :: getConfigValues");
+		while(!siteConfigMap.containsKey(pagePath)) {
+			pagePath = pagePath.substring(0, pagePath.lastIndexOf("/"));
+		}
+		
+		log.info("SiteConfigServiceImpl :: getConfigValues :: Page ");
+		return siteConfigMap.get(pagePath).get(name);
+	}
+
+	public void setConfiguration() throws LoginException, RepositoryException {
+		log.info("Entry :: setConfiguration method of SiteConfigServiceImpl");
+		Map<String, Object> param = new HashMap<String, Object>();
 		param.put(ResourceResolverFactory.SUBSERVICE, "migration");
 		
 		ResourceResolver resolver = null;         
 		resolver = resolverFactory.getServiceResourceResolver(param);
 		
 		String sitePath = siteConfig.getSitePath();
-		sitePath = "/content/sunlife/config";
 		
 		session = resolver.adaptTo(Session.class);
 		
@@ -67,32 +84,24 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 		Query query = builder.createQuery(PredicateGroup.create(map), session);
 		SearchResult result = query.getResult();
 		
-		siteConfigMap = new HashMap<String, ValueMap>();
+		siteConfigMap = new HashMap<String, HashMap<String, String>>();
 		
 		for(Hit hit : result.getHits()) {
 			log.info("\n {}", hit.getPath()+"/jcr:content/config");
 			Resource resource = resolver.getResource(hit.getPath()+"/jcr:content/config");
 			ValueMap properties = resource.adaptTo(ValueMap.class);
-			siteConfigMap.put(properties.get("siteUrl").toString(), properties);
-		}
-		log.info("Exit :: activate method of SiteConfigServiceImpl");
-    }
-	
-	@Override
-	public Object getConfigValues(String name, String pagePath) {
-		log.info("SiteConfigServiceImpl :: getConfigValues");
-		//pagePath = "/content/sunlife/external/ca/en/home.html";
-		while(!siteConfigMap.containsKey(pagePath)) {
-			pagePath = pagePath.substring(0, pagePath.lastIndexOf("/"));
+			HashMap<String, String> resultMap = new HashMap<>(); 
+			for(Entry<String, Object> e : properties.entrySet()) {
+			    String key = e.getKey();
+			    Object value = e.getValue();
+			    resultMap.put(key, value.toString());
+			}
+			siteConfigMap.put(properties.get("siteUrl", String.class), resultMap);
 		}
 		
-		log.info("SiteConfigServiceImpl :: getConfigValues :: Page ");
-		return siteConfigMap.get(pagePath).get(name);
-	}
-
-	public static void main(String[] args) {
-		String s = "sunlife/core/components/common/configuration";
-		System.out.println(s.substring(0, s.lastIndexOf("/")));
+		resolver.close();
+		session.logout();
+		log.info("Exit :: setConfiguration method of SiteConfigServiceImpl");
 	}
 	
 }
