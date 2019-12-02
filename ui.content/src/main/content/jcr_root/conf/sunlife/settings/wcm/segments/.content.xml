@@ -3,5 +3,5 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="sunlife/core/components/structure/base-page"/>
+        sling:resourceType="cq/contexthub/components/segments-listing-page"/>
 </jcr:root>
