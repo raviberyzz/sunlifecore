@@ -1,4 +1,4 @@
-package sunlife.core.models;
+package com.sunlife.core.models;
 /*import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
