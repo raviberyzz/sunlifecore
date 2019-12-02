@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <wcm jcr:primaryType="nt:unstructured">
+        <foundation jcr:primaryType="nt:unstructured">
+            <components jcr:primaryType="nt:unstructured">
+                <responsivegrid jcr:primaryType="nt:unstructured">
+                    <policy_298630624809200
+                        jcr:lastModified="{Date}2019-12-02T12:32:50.376+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="sunlife-ca-exp"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="group:Sunlife CA">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_298630624809200>
+                    <policy_298865025666800
+                        jcr:lastModified="{Date}2019-12-02T12:43:31.322+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="sunlife-ca-blank-page"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[/libs/cq/experience-fragments/editor/components/experiencefragment,group:Sunlife CA]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_298865025666800>
+                </responsivegrid>
+            </components>
+        </foundation>
+    </wcm>
+    <sunlife jcr:primaryType="nt:unstructured">
+        <core jcr:primaryType="nt:unstructured">
+            <components jcr:primaryType="nt:unstructured">
+                <structure jcr:primaryType="nt:unstructured">
+                    <base-page jcr:primaryType="nt:unstructured"/>
+                </structure>
+            </components>
+        </core>
+    </sunlife>
+</jcr:root>

@@ -4,7 +4,7 @@
     jcr:primaryType="cq:Template"
     ranking="{Long}1">
     <jcr:content
-        jcr:description="Generic template for web pages"
+        jcr:description="Sunlife template for experience fragments variations"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Sunlife Base Page"/>
+        jcr:title="Sunlife Experience Fragment"/>
 </jcr:root>
