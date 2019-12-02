@@ -6,6 +6,7 @@ import org.apache.sling.api.resource.LoginException;
 
 public interface SiteConfigService {
 
-	public Object getConfigValues(String name, String resourcePath) throws LoginException, RepositoryException;
+	public String getConfigValues(String name, String resourcePath) throws LoginException, RepositoryException;
 	
+	public void setConfiguration() throws LoginException, RepositoryException;
 }

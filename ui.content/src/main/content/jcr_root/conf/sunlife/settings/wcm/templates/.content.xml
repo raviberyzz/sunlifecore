@@ -3,4 +3,5 @@
     jcr:primaryType="cq:Page">
     <ca-sunlife-blank-page/>
     <ca-sunlife-experience-fragment/>
+    <sunlife-config/>
 </jcr:root>
