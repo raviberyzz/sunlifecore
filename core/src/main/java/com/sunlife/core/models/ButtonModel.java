@@ -1,16 +1,26 @@
 package com.sunlife.core.models;
 
+
 import javax.inject.Inject;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model; 
 
+
 @Model(
 adaptables = {Resource.class},
 defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface RichTextModel {
+public interface ButtonModel {
 	
 	@Inject
-    String getRichtext();
+    String getOpenIn();
+	
+	@Inject
+    String getButtonLabel();
+	
+	@Inject
+	 String getLinkTo();
+	
+	
 }
-
