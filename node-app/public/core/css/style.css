@@ -4496,40 +4496,18 @@ a {
     max-width: 100%;
     width: 100%; } }
 
-.parsley-errors-list.filled {
-  background: #B81F41;
-  color: #fff;
-  position: relative;
-  margin: 1px 0px 9px 0px;
-  display: table-cell; }
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
 
-.parsley-errors-list li {
-  padding: 4px 10px 4px 17px;
-  background-image: none;
-  text-align: left; }
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
 
-.parsley-errors-list li:before {
-  content: "\f12a";
-  font: normal 1em/0 FontAwesome;
-  left: 9px;
-  position: absolute;
-  top: 19.5px; }
-
-.parsley-custom-error-message {
-  margin: 5px 10px; }
-
-.parsley-errors-list:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 20px;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  border-bottom: 5px solid #a4383d;
-  border-top: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent; }
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -4685,19 +4663,40 @@ a {
     max-width: 100%;
     width: 100%; } }
 
-.button-wrapper .primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
+.parsley-errors-list.filled {
+  background: #B81F41;
+  color: #fff;
+  position: relative;
+  margin: 1px 0px 9px 0px;
+  display: table-cell; }
 
-.button-wrapper .primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
+.parsley-errors-list li {
+  padding: 4px 10px 4px 17px;
+  background-image: none;
+  text-align: left; }
 
-.button-wrapper .secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
+.parsley-errors-list li:before {
+  content: "\f12a";
+  font: normal 1em/0 FontAwesome;
+  left: 9px;
+  position: absolute;
+  top: 19.5px; }
 
+.parsley-custom-error-message {
+  margin: 5px 10px; }
+
+.parsley-errors-list:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid #a4383d;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -4755,6 +4754,7 @@ a {
     background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
     background-size: contain;
     padding: 32px 15px; } }
+
 
 .social-icon-wrapper .socials li {
   padding: 0 7px 0 5px;
@@ -5169,19 +5169,28 @@ hr {
   font-weight: normal;
   font-style: normal; }
 
-.two-column-wrapper .slf-yellow-background {
+.two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
+
+.two-column-wrapper .light-cool-blue-color {
+  background-color: #F4F7F6; }
+
+.two-column-wrapper .transparent {
+  background-color: transparent; }
+
+.two-column-wrapper .light-grey {
+  background-color: #d7d7d7; }
 
 .two-column-wrapper .padding-between {
   width: 100%;
   display: flex; }
-  .two-column-wrapper .padding-between .slf-yellow:not(:first-child) {
+  .two-column-wrapper .padding-between div:not(:first-child) {
     margin-left: 20px; }
 
-.two-column-wrapper .slf-blue-bg-background {
+.two-column-wrapper .medium-blue-background {
   background: #004C6C; }
 
-.two-column-wrapper .slf-l-gradient-background {
+.two-column-wrapper .yellow-gradient-background {
   background: linear-gradient(#FFCB05, #EAAB00); }
 
 .two-column-wrapper .vertical-separator-med-grey {
@@ -5189,7 +5198,7 @@ hr {
   background: #9a9a9a;
   height: auto; }
 
-.two-column-wrapper .normal-vertical {
+.two-column-wrapper .two-column-variation-three {
   width: 100%;
   display: flex; }
 
@@ -5477,8 +5486,31 @@ footer {
   font-weight: normal;
   font-style: normal; }
 
-.banner-wrapper .banner-variant-one {
-  background: url("/static/ca/Learn and Plan/Health/Find a health-care provider/860624330-lumino-health-1064x350 - logo.jpg"); }
+.breadcrumb-wrapper {
+  background: #F4F7F6;
+  height: 41px; }
+  .breadcrumb-wrapper .breadcrumb-row {
+    padding: 0 0 0 14px;
+    margin: 0; }
+    .breadcrumb-wrapper .breadcrumb-row li {
+      font-weight: 700;
+      float: left; }
+      .breadcrumb-wrapper .breadcrumb-row li :hover {
+        text-decoration: none; }
+    .breadcrumb-wrapper .breadcrumb-row .active a {
+      font-weight: 400;
+      color: #424242;
+      pointer-events: none; }
+  .breadcrumb-wrapper .breadcrumb-row > li + li:before {
+    content: "\f105";
+    font-weight: 400;
+    font-family: FontAwesome;
+    color: #004C6C;
+    padding: 0 5px; }
+
+@media (max-width: 1024px) {
+  .breadcrumb-wrapper {
+    display: none; } }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -5523,31 +5555,8 @@ footer {
   font-weight: normal;
   font-style: normal; }
 
-.breadcrumb-wrapper {
-  background: #F4F7F6;
-  height: 41px; }
-  .breadcrumb-wrapper .breadcrumb-row {
-    padding: 0 0 0 14px;
-    margin: 0; }
-    .breadcrumb-wrapper .breadcrumb-row li {
-      font-weight: 700;
-      float: left; }
-      .breadcrumb-wrapper .breadcrumb-row li :hover {
-        text-decoration: none; }
-    .breadcrumb-wrapper .breadcrumb-row .active a {
-      font-weight: 400;
-      color: #424242;
-      pointer-events: none; }
-  .breadcrumb-wrapper .breadcrumb-row > li + li:before {
-    content: "\f105";
-    font-weight: 400;
-    font-family: FontAwesome;
-    color: #004C6C;
-    padding: 0 5px; }
-
-@media (max-width: 1024px) {
-  .breadcrumb-wrapper {
-    display: none; } }
+.banner-wrapper .banner-variant-one {
+  background: url("/static/ca/Learn and Plan/Health/Find a health-care provider/860624330-lumino-health-1064x350 - logo.jpg"); }
 
 .image-text-wrapper .left-image {
   vertical-align: middle;

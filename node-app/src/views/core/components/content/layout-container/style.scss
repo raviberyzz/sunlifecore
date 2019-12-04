@@ -1,19 +1,28 @@
 @import '../../../base/core';
 .two-column-wrapper{
-    .slf-yellow-background{
+    .medium-yellow-background{
         background-color:$medium-yellow-background;
+    }
+    .light-cool-blue-color{
+        background-color:$light-cool-blue-color;
+    }
+    .transparent{
+        background-color:$transparent;
+    }
+    .light-grey{
+        background-color:$light-grey;
     }
     .padding-between{
         width:100%;
         display:flex;
-        .slf-yellow:not(:first-child) {
+        div:not(:first-child) {
             margin-left: 20px;
         }
     }
-    .slf-blue-bg-background{
+    .medium-blue-background{
         background:$medium-blue-color;
     }
-    .slf-l-gradient-background{
+    .yellow-gradient-background{
         background:linear-gradient($medium-yellow-background, $primary-yellow-background);
     }
     .vertical-separator-med-grey{
@@ -21,7 +30,7 @@
             background: #9a9a9a;
             height: auto;
     }
-    .normal-vertical{
+    .two-column-variation-three{
         width:100%;
         display:flex;
     }
