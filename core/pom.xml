@@ -94,6 +94,31 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
+            <!-- ====================================================================== -->
+		    <!-- Check style validation	                                                -->
+		    <!-- ====================================================================== -->
+            <plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-checkstyle-plugin</artifactId>
+			   <version>3.1.0</version>
+			   <configuration>
+			     <configLocation>checkstyle.xml</configLocation>
+			     <encoding>UTF-8</encoding>
+			     <consoleOutput>true</consoleOutput>
+			     <failsOnError>true</failsOnError>
+			     <linkXRef>false</linkXRef>
+			     <propertyExpansion>basedir=${project.basedir}</propertyExpansion>
+			   </configuration>
+			   <executions>
+			     <execution>
+			       <id>validate</id>
+			       <phase>validate</phase>
+			       <goals>
+			         <goal>check</goal>
+			       </goals>
+			     </execution>
+			   </executions>
+			 </plugin>
         </plugins>
     </build>
 
@@ -168,5 +193,11 @@
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
         </dependency>
+        <dependency>
+		    <groupId>com.adobe.acs</groupId>
+		    <artifactId>acs-aem-commons-bundle</artifactId>
+		    <version>4.3.4</version>
+		    <scope>provided</scope>
+		</dependency>
     </dependencies>
 </project>
