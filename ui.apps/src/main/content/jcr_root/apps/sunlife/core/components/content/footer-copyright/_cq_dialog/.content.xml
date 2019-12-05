@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Footer Copyright"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <copyright-title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Text"
+                        fieldLabel="Copyright Title"
+                        name="./title"
+                        rootPath="/content"/>
+                    <copyright-text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/richtext-basic/cq:dialog/content/items/column/items/richtext"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldLabel="Copyright Text"
+                        name="./richTitle"
+                        useFixedInlineToolbar="{Boolean}true"/>
+                    <slf-footer-text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Text"
+                        fieldLabel="Text"
+                        name="./slfText"
+                        rootPath="/content"/>
+                    <copyright-links
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        eaem-show-on-collapse="EAEM.showProductName"
+                        fieldLabel="Copyright Links">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./products">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <text-label
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Text"
+                                            fieldLabel="Text Label"
+                                            name="./label"
+                                            rootPath="/content"/>
+                                        <text-url
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                            fieldDescription="Link"
+                                            fieldLabel="Text URL"
+                                            name="./url"
+                                            rootPath="/content"/>
+                                        <windowSelection
+                                            granite:class="cq-dialog-dropdown-showhide"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Window Selection"
+                                            name="./windowSelection">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <sameTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="SameTab"
+                                                    value="_self"/>
+                                                <newTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    selected="{Boolean}true"
+                                                    text="New Tab"
+                                                    value="_blank"/>
+                                            </items>
+                                        </windowSelection>
+                                        <checkbox-separator
+                                            granite:class="cmp-form-option-item-active"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxSeparator"
+                                            text="Separator"
+                                            uncheckedValue="false"/>
+                                        <checkbox-hide
+                                            granite:class="cmp-form-option-item-active"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxHide"
+                                            text="Hide"
+                                            uncheckedValue="false"
+                                            value="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </copyright-links>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
