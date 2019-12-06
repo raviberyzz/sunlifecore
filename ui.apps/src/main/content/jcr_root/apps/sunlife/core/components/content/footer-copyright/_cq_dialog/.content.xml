@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Footer Copyright"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <copyrightTitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Text"
+                        fieldLabel="Copyright Title"
+                        name="./title"
+                        rootPath="/content"/>
+                    <copyrightText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/column/items/richtext"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldLabel="Copyright Text"
+                        name="./copyrightText"
+                        useFixedInlineToolbar="{Boolean}true"/>
+                    <slffooterText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Text"
+                        fieldLabel="Slf Text Label"
+                        name="./slfText"
+                        rootPath="/content"/>
+                    <copyrightLinks
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Copyright Links">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./footerItems">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <textLabel
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Text"
+                                            fieldLabel="Text Label"
+                                            name="./label"
+                                            rootPath="/content"/>
+                                        <textUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                            fieldDescription="Link"
+                                            fieldLabel="Text URL"
+                                            name="./url"
+                                            rootPath="/content"/>
+                                        <windowSelection
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Window Selection"
+                                            name="./windowSelection">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <sameTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="SameTab"
+                                                    value="_self"/>
+                                                <newTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    selected="{Boolean}true"
+                                                    text="New Tab"
+                                                    value="_blank"/>
+                                            </items>
+                                        </windowSelection>
+                                        <checkboxSeparator
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxSeparator"
+                                            text="Separator"
+                                            uncheckedValue="false"/>
+                                        <checkboxHide
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxHide"
+                                            text="Hide"
+                                            uncheckedValue="false"
+                                            value="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </copyrightLinks>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
