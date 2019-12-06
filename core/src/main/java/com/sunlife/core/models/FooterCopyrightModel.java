@@ -1,5 +1,7 @@
 package com.sunlife.core.models;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.sling.api.resource.Resource;
@@ -15,13 +17,16 @@ public interface FooterCopyrightModel {
 	String getTitle();
 	
 	@Inject
-	String getRichTitle();
+	String getCopyrightText();
 	
 	@Inject
 	String getSlfText();
 	
 	@Inject
-	String getProducts();
+	List<FooterItems> getFooterItems();
+	
+	 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+	  interface FooterItems {
 	
 	@Inject
 	String getLabel();
@@ -37,4 +42,5 @@ public interface FooterCopyrightModel {
 
 	@Inject
 	String getCheckboxHide();
+	 }
 }
