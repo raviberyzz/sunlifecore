@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.Model;
 @Model(adaptables= {Resource.class},
 		defaultInjectionStrategy=DefaultInjectionStrategy.OPTIONAL
 		)
-public interface FormHeading{
+public interface Heading{
 	
 	@Inject
 	@Named("jcr:title")
