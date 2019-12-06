@@ -1,0 +1,37 @@
+@import '../../../base/core';
+.two-column-wrapper{
+    .medium-yellow-background{
+        background-color:$medium-yellow-background;
+    }
+    .light-cool-blue-color{
+        background-color:$light-cool-blue-color;
+    }
+    .transparent{
+        background-color:$transparent;
+    }
+    .light-grey{
+        background-color:$light-grey;
+    }
+    .padding-between{
+        width:100%;
+        display:flex;
+        div:not(:first-child) {
+            margin-left: 20px;
+        }
+    }
+    .medium-blue-background{
+        background:$medium-blue-color;
+    }
+    .yellow-gradient-background{
+        background:linear-gradient($medium-yellow-background, $primary-yellow-background);
+    }
+    .vertical-separator-med-grey{
+            width: 2px;
+            background: #9a9a9a;
+            height: auto;
+    }
+    .two-column-variation-three{
+        width:100%;
+        display:flex;
+    }
+}
