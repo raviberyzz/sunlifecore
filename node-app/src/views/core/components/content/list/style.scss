@@ -9,9 +9,12 @@
         font-weight: 700;
     }
     .list-unstyled{
-        li a {
-            font-weight: 400;
-        } 
+        li {
+            margin-bottom: 10px;
+            a {
+                font-weight: 400;
+            } 
+        }
     }
     a:hover {
         text-decoration: underline;
@@ -22,13 +25,15 @@
     .lists-wrapper {
         .links {
             float: left;
-            margin-right: 20px;
             .collapse {
                 display: block !important;
             }
         }
         .accordion-heading {
             pointer-events: none;
+        }
+        .list-div {
+            margin-top: 5px;
         }
     }
 }

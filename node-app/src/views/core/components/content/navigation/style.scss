@@ -1,0 +1,55 @@
+@import '../../../base/core';
+.slf-header-mega-menu {
+    width: 100%;
+    display: flex;
+    padding: 0%;
+    border: 1px solid #CCD8DA;
+}
+
+.slf-header-mega-menu-col1 {
+    width: 20%;
+    background-color: #F4F7F6;
+    text-align: right;
+    padding: 40px 20px 0px 0px;
+    width: 180px;
+    ul {
+        margin: 15px 0px 0px 20px;
+    }
+    .mega-menu-wrapper {
+        a {
+            font-weight: 700;
+        }
+    }
+}
+
+.slf-header-mega-menu-col {
+    width: 20%;
+    background-color: #F4F7F6;
+    padding: 40px 10px 0px 10px;
+    ul {
+        margin: 20px 0px 0px 30px;
+    }
+    .mega-menu-wrapper {
+        a {
+            font-weight: 400;
+        }
+    }
+}
+
+.mega-menu-wrapper {
+    .links {}
+    .collapse {
+        display: block !important;
+    }
+    .accordion-heading {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.1;
+        display: inline;
+        margin: 0px 0px 0px 30px;
+    }
+    li {
+        line-height: 110%;
+        padding: 5px 0px;
+    }
+}

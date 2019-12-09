@@ -1,8 +1,8 @@
-{{>core-components-content-Button}}
+{{>core-components-content-button}}
 <div class="modal fade sign-in-modal-wrapper" id="mySignInModal" role="dialog">
         <div class="modal-dialog sign-in-modaldialog">
                 <!-- Modal content-->
-                <div class="modal-content modal-main">
+                <div class="modal-content modal-main horizontal-middle-align">
                         <div class="modal-header signin-modal-header">
                                 <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
                                         data-dismiss="modal" id="closeSignInModal">
@@ -17,10 +17,12 @@
                                         <div class="download-app">
                                                 <a href="https://www.sunlife.ca/ca/Support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
                                                         target="_blank">
-                                                        <img alt="Sun Life App" src="{{img-tag}}">
+                                                        <img alt="Sun Life App" src="{{img-tag}}" />
                                                 </a>
-                                                <p>{{img-text-1}}</p>
-                                                <a class="life-app">{{img-text-2}}</a>
+                                                <div class="download-text">
+                                                        <p>{{img-text-1}}</p>
+                                                        <p class="download-text-bold">{{img-text-2}}</p>
+                                                </div>
                                         </div>
                                         <form name="form_signon_modal" id="form_signon">
                                                 <div role="group" aria-labelledby="accessIDModalLabel">
@@ -39,13 +41,10 @@
                                                                         {{remember-text}}</label>
                                                         </div>
                                                 </div>
-                                                <label class="sr-only" for="accessPasswordModal">
-                                                        Password</label> <input name="PASSWORD" class="password-input"
-                                                        id="accessPasswordModal" type="password"
-                                                        placeholder="{{password}}" autocomplete="off">
-                                                <input class="btn btn-blue"
-                                                        onclick="return CheckClicks('e');" type="submit" alt="Sign in"
-                                                        value="Sign in"/>
+                                                <input name="PASSWORD" class="password-input" id="accessPasswordModal"
+                                                        type="password" placeholder="{{password}}" autocomplete="off">
+                                                <input class="btn btn-blue" onclick="return CheckClicks('e');"
+                                                        type="submit" alt="Sign in" value="Sign in" />
                                         </form>
                                         <p class="signin-links"><span class="signin-help-link">
                                                         <a href="https://www.sunlife.ca/ca/Support/Sign+in+help?vgnLocale=en_CA"

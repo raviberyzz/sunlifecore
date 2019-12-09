@@ -1,0 +1,20 @@
+@import '../../../base/core';
+.slf-desktop-header-wrapper{
+    .bottom-bar{
+        background-color: $medium-yellow-background;
+        height: 8px;
+        display: block;
+    }
+    .button-float-right{
+        float: right;
+        padding-right: 15px;
+    }
+    .region-lenguage-menu-wrapper, .search-bar-wrapper {
+        -webkit-transition: 0.5s ease-out;
+    }
+}
+@media (max-width: 1024px){
+    .slf-desktop-header-wrapper{
+        display: none;
+    }
+}

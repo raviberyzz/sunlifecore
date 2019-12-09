@@ -1,0 +1,158 @@
+@import '../../../base/core';
+.region-language-menu-wrapper {
+    width: 100%;
+    padding: 0px 16px 16px;
+    box-shadow: 0 4px 20px -10px black;
+    .cross-btn {
+        width: 100%;
+        height: 40px;
+        span {
+            float: right;
+            margin-top: 15px;
+            font-size: 0.875rem;
+        }
+    }
+    .slf-region,
+    .slf-language {
+        padding: 0px;
+    }
+    .title-region {
+        h4 {
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin-top: 0px;
+        }
+    }
+    .slf-region {
+        border-right: 2px solid $light-grey-color;
+        .content-region {
+            padding: 14px 0px 0px;
+            ul {
+                margin-bottom: 0px;
+                li {
+                    margin-bottom: 8px;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $light-orange-color;
+                    }
+                }
+            }
+            .list-unstyled,
+            .accordion-heading {
+                background-color: white;
+            }
+            .region-link .list-unstyled li {
+                padding-left: 14px;
+                margin-bottom: 8px;
+                //height: 32px;
+                &:hover {
+                    background-color: $light-orange-color;
+                }
+            }
+            > :first-child {
+                padding-left: 0px;
+                .nav-select {
+                    background-color: $light-orange-color;
+                    a {
+                        font-weight: bold;
+                        color: $dark-grey-color;
+                    }
+                }
+                .accordion-heading {
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 8px;
+                    margin-bottom: 0px;
+                    padding-bottom: 5px;
+                }
+            }
+            > :not(:first-child) {
+                .accordion-heading {
+                    font-size: 1rem;
+                    cursor: pointer;
+                    margin-top: 8px;
+                    margin-bottom: 0px;
+                    padding-bottom: 5px;
+                    color: $medium-blue-color;
+                    // &:hover{
+                    //     background-color: $light-orange-color;
+                    // }
+                }
+            }
+            .slf-region-column {
+                .region-link .accordion-heading[aria-expanded="false"]:before {
+                    content: "\f0da";
+                    font-family: FontAwesome;
+                    padding-right: 10px;
+                }
+                .region-link .accordion-heading[aria-expanded="true"]:before {
+                    content: "\f0d7";
+                    font-family: FontAwesome;
+                    padding-right: 10px;
+                }
+                a {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .title-language {
+        h4 {
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin-top: 0px;
+            padding-left: 32px;
+        }
+    }
+    .content-language {
+        padding-left: 32px;
+        ul {
+            margin-bottom: 0px;
+            li {
+                padding-left: 14px;
+                margin-bottom: 8px;
+                cursor: pointer;
+                &:hover {
+                    background-color: $light-orange-color;
+                }
+            }
+        }
+        .nav-select {
+            background-color: $light-orange-color;
+        }
+        .not-bold {
+            a {
+                font-weight: 400;
+            }
+        }
+        .region-separator {
+            .horizontal-middle-align {
+                float: left;
+                margin-left: -72px;
+                width: 37px;
+            }
+        }
+        .chinese {
+            margin-top: 90px;
+            a {
+                font-weight: 400;
+            }
+        }
+    }
+    .no-region-present {
+        height: 261px;
+        .select-preference {
+            padding-left: 146px;
+            margin-top: 125px;
+            color: $medium-blue-color;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .region-lenguage-menu-wrapper {
+        display: none;
+    }
+}

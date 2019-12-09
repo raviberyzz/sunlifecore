@@ -1,0 +1,22 @@
+<div class="input-section form-group-wrapper">
+    <select class="form-control cta-input form-option single-select" required="">
+        <option selected="selected" value="">Select a product</option>
+            {{#each list}}
+                <option value={{link}}  >{{text}}</option>
+            {{/each}}
+</select>
+</div>
+
+<div class="form-group-wrapper text-left"> {{checkbox-heading}}
+    <input type={{input-type}} name={{name}} value={{value}} checked>
+</div>
+<br> <br>
+
+
+<div class="input-section form-group-wrapper">
+ <select class="form-control cta-input form-option" multiple>
+     {{#each list}}
+                <option value={{link}}  >{{text}}</option>
+    {{/each}}
+ </select>
+</div>

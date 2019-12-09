@@ -2,12 +2,16 @@
 .breadcrumb-wrapper{
     background: $light-cool-blue-color;
     height: 41px;
+    padding-left:14px;
   .breadcrumb-row {
     padding: 0 0 0 14px;
     margin: 0;
       li{
         font-weight:700;
         float: left;
+        a{
+          font-size:0.875rem;
+        }
         :hover{
             text-decoration: none;
         }
@@ -16,6 +20,7 @@
         a{
           font-weight: 400;
           color:#424242;
+          font-size:0.875rem;
           pointer-events: none;
         }
       }

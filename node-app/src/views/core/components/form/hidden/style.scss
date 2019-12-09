@@ -1,0 +1,14 @@
+@import '../../../base/base';
+.input-section {
+    color: #424242;
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0 10px;
+    height: 40px;
+    border: 1px solid #d7d7d7;
+}
