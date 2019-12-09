@@ -7,56 +7,13 @@ $white-shade: #ffffff;
 $dark-grey-color: #424242;
 $medium-blue-color: #004C6C;
 $light-cool-blue-color:#F4F7F6;
+$light-grey-20: #F7F7F7;
+$light-orange-20:#FEEDD2;
 $transparent:transparent;
 $medium-yellow-background:#FFCB05;
 $primary-yellow-background:#EAAB00;
 $medium-grey-background:#9a9a9a;
 $cool-blue-color: #4A7283;
+$light-grey-color: #D7D7D7;
+$light-orange-color: #feedd2;
 $blue-gradient-color:#003946;
-$light-grey:#d7d7d7;
-
-@font-face {
-  font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Light.eot");
-  src: url("../fonts/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Light.woff") format("woff"), url("../fonts/SunLifeSans-Light.ttf") format("truetype"), url("../fonts/SunLifeSans-Light.svg") format("svg");
-  font-weight: 200;
-  font-style: normal;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Regular.eot");
-  src: url("../fonts/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Regular.woff") format("woff"), url("../fonts/SunLifeSans-Regular.ttf") format("truetype"), url("../fonts/SunLifeSans-Regular.svg") format("svg");
-  font-weight: 400;
-  font-style: normal;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Bold.eot");
-  src: url("../fonts/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Bold.woff") format("woff"), url("../fonts/SunLifeSans-Bold.ttf") format("truetype"), url("../fonts/SunLifeSans-Bold.svg") format("svg");
-  font-weight: 700;
-  font-style: normal;
-  font-stretch: normal;
-}
-/*
-@font-face {
-  font-family: 'giovanni-book';
-  src: url("../fonts/Giovanni-BookItalic.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-.giovanni-book-italic {
-  font-family: 'giovanni-book';
-}
-*/
-@font-face {
-  font-family: 'sunlife-custom';
-  src: url("../fonts/sunlife-custom.eot?38299477");
-  src: url("../fonts/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../fonts/sunlife-custom.woff?38299477") format("woff"), url("../fonts/sunlife-custom.ttf?38299477") format("truetype"), url("../fonts/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}

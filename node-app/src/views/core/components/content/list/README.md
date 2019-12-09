@@ -3,6 +3,7 @@
 JSON Format
 ```
 {
+    "list-wrapper-class": "lists-wrapper",
     "LinkText": "Quick Link",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",

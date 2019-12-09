@@ -1,0 +1,105 @@
+@import '../../../base/core';
+.tools-resource-wrapper {
+    border: 1px solid #CCD8DA;
+}
+
+.slf-header-mega-menu {
+    width: 100%;
+    display: flex;
+    padding: 0%;
+}
+
+.slf-header-mega-menu> :first-child {
+    width: 20%;
+    background-color: #F4F7F6;
+    text-align: right;
+    padding: 40px 32px 0px 0px;
+    width: 180px;
+    .mega-menu-wrapper {
+        a {
+            font-weight: 700;
+        }
+        ul {
+            margin: 28px 0px 0px 20px;
+        }
+    }
+    .icon-text-wrapper {
+        display: none;
+    }
+}
+
+.slf-header-mega-menu> :not(:first-child) {
+    width: 20%;
+    background-color: #F4F7F6;
+    padding: 40px 10px 0px 10px;
+    ul {
+        margin: 20px 0px 0px 30px;
+    }
+    .mega-menu-wrapper {
+        a {
+            font-weight: 400;
+        }
+        h3.accordion-heading {
+            display: none;
+        }
+    }
+    .icon-background {
+        width: 30px;
+        height: 30px;
+    }
+    .icon-inside {
+        font-size: 16px;
+    }
+    .icon-text-heading {
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.1;
+        margin: 0px;
+    }
+    .icon-text {
+        transform: translateY(0px);
+    }
+}
+
+// .slf-header-mega-menu-col {
+//     width: 20%;
+//     background-color: #F4F7F6;
+//     padding: 40px 10px 0px 10px;
+//     ul {
+//         margin: 20px 0px 0px 30px;
+//     }
+//     .mega-menu-wrapper {
+//         a {
+//             font-weight: 400;
+//         }
+//         h3.accordion-heading {
+//             display: none;
+//         }
+//     }
+//     .icon-background {
+//         width: 30px;
+//         height: 30px;
+//     }
+//     .icon-inside {
+//         font-size: 16px;
+//     }
+//     .icon-text-heading {
+//         font-size: 17px;
+//         font-weight: 500;
+//         line-height: 1.1;
+//         margin: 0px;
+//     }
+//     .text-right {
+//         transform: translateY(0px);
+//     }
+// }
+.mega-menu-wrapper {
+    .links {}
+    .collapse {
+        display: block !important;
+    }
+    li {
+        line-height: 110%;
+        padding: 5px 0px;
+    }
+}

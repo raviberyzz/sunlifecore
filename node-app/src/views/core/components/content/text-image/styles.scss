@@ -2,10 +2,11 @@
 .image-text-wrapper {
     .left-image {
         vertical-align: middle;
-        margin: 0 20px 10px 0;
+        margin: 0 32px 10px 0;
     }
     .side-text {
         display: inline-block;
+        font-size: 1.5rem;
     }
 }
 @media (max-width: 768px) {

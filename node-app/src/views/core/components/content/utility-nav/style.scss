@@ -1,0 +1,49 @@
+@import '../../../base/core';
+.utility-nav-wrapper {
+    text-align: right;
+    .utility-nav-links {
+        display: inline-block;
+        li {
+            padding: 0px 5px 0px 5px;
+            font-size: 14px;
+            display: inline-block;
+        }
+        a {
+            font-weight: 400;
+        }
+        .lang-btn {
+            padding: 0px 11px 0px 16px;
+            color: $blue-gradient-color;
+            &::after {
+                font-family: FontAwesome;
+                content: "\f107";
+            }
+        }
+        .lang-btn[aria-expanded="true"] {
+            background: $white-shade;
+            border-color: $white-shade;
+            border-style: solid;
+            border-width: 5px 1px 1px;
+            padding: 10px;
+            box-shadow: 0 4px 20px -10px black;
+            &::after {
+                font-family: FontAwesome;
+                content: "\f106";
+            }
+        }
+        .srch-btn {
+            text-decoration: none;
+            padding: 8px 0px 0px 2px;
+            &::after {
+                font-family: FontAwesome;
+                content: "\f002";
+                color: $blue-gradient-color;
+            }
+        }
+        .srch-btn[aria-expanded="true"] {
+            color: $blue-gradient-color;
+            background: $medium-yellow-background;
+            padding: 8px 7px 0px 7px;
+        }
+    }
+}

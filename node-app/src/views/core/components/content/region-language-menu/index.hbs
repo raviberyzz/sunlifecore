@@ -1,0 +1,69 @@
+<div id="sun-language" class="col-xs-12 region-language-menu-wrapper collapse" aria-expanded="true">
+    <div class="cross-btn">
+        <a class="collapsed show" id="sunLanguageCrossBtn">
+            <span class="fa fa-remove collapse-x" title="Close Region and language selection" tabindex="0"></span>
+        </a>
+    </div>
+    {{#if region}}
+        <div class="col-xs-9 slf-region">
+            <div class="title-region">
+                <h4>{{region-title}}</h4>
+            </div>
+            <div class="col-xs-12 content-region">
+                {{#each region-list}}
+                    <div class="col-xs-4 slf-region-column">
+                        <ul class="list-unstyled">
+                            {{#each parent-list}}
+                                {{#if accordion}}
+                                    <li>
+                                        <div class="region-link">
+                                            <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse">{{ LinkText }}</h3>
+                                            <div class="collapse {{collapse}}" id="{{links}}">
+                                                <ul class="list-unstyled">
+                                                    {{#each list}}
+                                                    <li class={{selected}}>
+                                                        <a href="{{link}}">{{text}}</a>
+                                                    </li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {{else}}
+                                    <li>
+                                        <a href="{{country-link}}">{{country-text}}</a>
+                                    </li>
+                                {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        <div class="col-xs-9 slf-region no-region-present">
+            <p class="select-preference">
+                Please select your language preference on the right hand side
+            </p>
+        </div>
+    {{/if}}
+    <div class="col-xs-3 slf-language">
+        <div class="title-language">
+            <h4>{{language-title}}</h4>
+        </div>
+        <div class="col-xs-12 content-language">
+            <ul class="list-unstyled">
+                {{#each language-list}}
+                    {{#if chinese}}
+                        {{> core-components-content-separator}}
+                    {{else}}
+
+                    {{/if}}
+                    <li class={{selected}}>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
