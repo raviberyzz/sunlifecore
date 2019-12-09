@@ -1,5 +1,6 @@
-<sly data-sly-use.breadcrumb="com.adobe.cq.wcm.core.components.models.Breadcrumb"> 
-	<sly data-sly-test="${properties.startLevel}">
+<sly data-sly-use.breadcrumb="com.adobe.cq.wcm.core.components.models.Breadcrumb"
+	data-sly-use.breadcrumbModel="com.sunlife.core.models.Breadcrumb"> 
+	<sly data-sly-test="${breadcrumbModel.startLevel}">
         <div class="breadcrumb-wrapper no-gutter" data-sly-test.hasItems="${breadcrumb.items.size > 0}">
                 <ul role="navigation" aria-label="Breadcrumb" class="breadcrumb-row clearfix vertical-middle-align" itemscope itemtype="http://schema.org/BreadcrumbList" data-sly-list.navItem="${breadcrumb.items}">
                     <sly data-sly-test.isActive="${navItem.active}">
@@ -15,9 +16,10 @@
                         </li>
                     </sly>
                 </ul>
+			<div data-sly-test="${breadcrumbModel.socialShareReqd}" data-sly-resource="${'socialIcons' @ resourceType='sunlife/core/components/content/social-icons' }"></div>
         </div>
-        </sly>
-    	<div data-sly-test="${!properties.startLevel}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+	</sly>
+    	<div data-sly-test="${!breadcrumbModel.startLevel}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 </sly>
 
 
