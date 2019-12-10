@@ -66,7 +66,7 @@ gulp.task('core-js',() => {
   }))
 });
 gulp.task('core-fonts',() => {
-  return gulp.src('src/views/core/**/fonts/*.*')
+  return gulp.src('src/views/core/**/resources/*.*')
   .pipe(flatten({ includeParents: -1} ))
   .pipe(gulp.dest('public/vendor'))
   .pipe(browserSync.reload({
@@ -89,7 +89,7 @@ gulp.task('watch', function () {
   gulp.watch('src/views/core/**/*.js', gulp.series('core-js')); 
   gulp.watch('src/views/core/vendor/**/*.css', gulp.series('vendor-css')); 
   gulp.watch('src/views/core/vendor/**/*.js', gulp.series('vendor-js')); 
-  gulp.watch('src/views/core/**/fonts/*.*', gulp.series('core-fonts')); 
+  gulp.watch('src/views/core/**/resources/*.*', gulp.series('core-fonts')); 
 })
 
 gulp.task('clean', () => {
@@ -104,7 +104,7 @@ gulp.task('compile-sass',() =>{
 });
 
 gulp.task('copy-files',() => {
-  return gulp.src(['src/views/**/*.js','src/views/**/*.css','src/views/**/fonts/*.*'])
+  return gulp.src(['src/views/**/*.js','src/views/**/*.css','src/views/**/resources/*.*'])
   .pipe(gulp.dest('dist'))
 });
 
