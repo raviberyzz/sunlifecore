@@ -1,4 +1,4 @@
-@import '../../../base/base';
+@import '../../../base/core';
 .form-option {
     border: medium none;
     border: 1px solid #d7d7d7;
@@ -37,7 +37,7 @@ select.form-control {
     background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png");
 }
 
-@import '../../../base/base';
+@import '../../../base/core';
 input[type=checkbox] {
     position: relative;
     visibility: hidden;
