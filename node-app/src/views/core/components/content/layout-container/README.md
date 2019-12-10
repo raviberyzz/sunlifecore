@@ -1,12 +1,11 @@
-#layout-container Component
-#Displays layout-container
+#Layout-container Component
+#Displays Layout-container
 JSON Format
 ```
 {
-    "background-color":"yellow-gradient-background",
-    "vertical-seperator":""
+    "background-class1":"slf-yellow-background",
+    "background-class2":"slf-blue-bg-background",
+    "background-class3":"slf-l-gradient-background",
+    "vertical-seperator":"vertical-separator-med-grey"
 }
 ```
-<!-- Background colors available for "background-color" variable are "medium-yellow-background","medium-blue-background","yellow-gradient-background","light-cool-blue-color","transparent","light-grey" -->
-
-<!-- For "vertical-separator" variable available value is "vertical-separator-med-grey" -->

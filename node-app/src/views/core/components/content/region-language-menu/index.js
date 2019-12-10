@@ -1,0 +1,1 @@
+console.log('region-language-menu loaded');

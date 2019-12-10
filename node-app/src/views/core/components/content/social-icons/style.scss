@@ -1,10 +1,24 @@
-
+@import '../../../base/core';
 .social-icon-wrapper {
     .socials li {
-        padding: 0 7px 0 5px;
+        padding: 0 12px 0 5px;
         display: inline-block;
         a {
             font-size: 1.875rem;
+            i {
+                &:hover {
+                    color: $cool-blue-color;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 320px) and (max-width:767px) {
+    .social-icon-wrapper {
+        .socials li {
+            a {
+                font-size: 2rem;
+            }
         }
     }
 }

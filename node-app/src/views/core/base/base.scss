@@ -1,4 +1,52 @@
 @import 'core';
+@font-face {
+    font-family: "sunlife-sans";
+    src: url("../fonts/SunLifeSans-Light.eot");
+    src: url("../fonts/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Light.woff") format("woff"), url("../fonts/SunLifeSans-Light.ttf") format("truetype"), url("../fonts/SunLifeSans-Light.svg") format("svg");
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sunlife-sans";
+    src: url("../fonts/SunLifeSans-Regular.eot");
+    src: url("../fonts/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Regular.woff") format("woff"), url("../fonts/SunLifeSans-Regular.ttf") format("truetype"), url("../fonts/SunLifeSans-Regular.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sunlife-sans";
+    src: url("../fonts/SunLifeSans-Bold.eot");
+    src: url("../fonts/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Bold.woff") format("woff"), url("../fonts/SunLifeSans-Bold.ttf") format("truetype"), url("../fonts/SunLifeSans-Bold.svg") format("svg");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../fonts/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+
+@font-face {
+    font-family: 'sunlife-custom';
+    src: url("../fonts/sunlife-custom.eot?38299477");
+    src: url("../fonts/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../fonts/sunlife-custom.woff?38299477") format("woff"), url("../fonts/sunlife-custom.ttf?38299477") format("truetype"), url("../fonts/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
 html {
     overflow-x: hidden;
     font-size: 16px;
@@ -15,7 +63,7 @@ body {
     font-weight: 400;
     font-variant-ligatures: none;
     line-height: 26px;
-    text-rendering: optimizeLegibility; 
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-variant-ligatures: none;
@@ -62,34 +110,40 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-.no-gutter{
-    padding:0;
+
+.no-gutter {
+    padding: 0;
 }
-.container{
-    padding:0px;
+
+.container {
+    padding: 0px;
     margin: 0;
 }
+
 .vertical-middle-align {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
+
 .horizontal-middle-align {
     float: left;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 }
+
 .button-wrapper {
     .button-class {
         height: 48px;
+        width: 180px;
         min-width: 136px;
         max-width: 275px;
         border-radius: 4px;
-        padding: 7px 19px;
+        padding: 6px;
         cursor: pointer;
         border: none;
-        font-weight: bold; 
+        font-weight: bold;
         &:hover {
             background-color: $cool-blue-color;
             color: $white-shade;
@@ -97,26 +151,43 @@ a {
     }
 }
 
+.white-box {
+    background-color: $light-grey-20;
+    opacity: 90%;
+}
+
+.transparent-box {
+    background-color: $transparent;
+}
+
+.banner-box-shadow {
+    box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4);
+}
+
+
 /*media query*/
 
 @media (min-width: 1281px) {
     .container {
         max-width: 1064px;
+        width: 100%;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         padding: 0;
-
+        width: 100%;
     }
 }
 
 @media (min-width: 1025px) and (max-width:1280px) {
     .container {
         max-width: 1025px;
+        width: 100%;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         padding: 0;
+        width: 100%;
     }
 }
 
@@ -126,9 +197,14 @@ a {
         width: 100%;
     }
 }
+
 @media (min-width: 320px) and (max-width:767px) {
     .container {
         max-width: 100%;
         width: 100%;
+    }
+    h1,
+    h2 {
+        font-size: 1.625rem;
     }
 }

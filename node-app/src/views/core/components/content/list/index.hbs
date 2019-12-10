@@ -1,8 +1,8 @@
-<div class="lists-wrapper footer-links-accordions">
+<div class="{{list-wrapper-class}}">
 	<div class="links">
 		<h3 class="accordion-heading" aria-expanded="false" data-parent=".lists-wrapper" data-target="#links"
-		 data-toggle="collapse">{{ LinkText }}</h3>
-		<div class="collapse" id="links">
+		 data-toggle="collapse">{{ LinkText }}{{i}}</h3>
+		<div class="collapse list-div" id="links">
 			<ul class="list-unstyled">
                 {{#each list}}
 				<li>
