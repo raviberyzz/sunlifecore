@@ -25,7 +25,7 @@
             border-style: solid;
             border-width: 5px 1px 1px;
             padding: 10px;
-            box-shadow: 0 4px 20px -10px black;
+            box-shadow: 0 4px 20px -10px $black-shade;
             &::after {
                 font-family: FontAwesome;
                 content: "\f106";

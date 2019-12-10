@@ -13,7 +13,7 @@
         background:$white-shade;
     }
     .grey{
-        background:#f8f8f8;
+        background:$light-grey-background;
     }
     .mobile-header-navbar{
         display:flex;
@@ -21,7 +21,7 @@
         padding:0px;
         height: 50px;
         border-radius: 0;
-        box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px $black-shade;
         .pull-left{
             display:block;
             padding: 0;
@@ -233,7 +233,7 @@
         height: 100%;
         left: 0px;
         top: 0px;
-        background: black;
+        background: $black-shade;
         opacity: 0.5;
         margin-left:270px;
     }

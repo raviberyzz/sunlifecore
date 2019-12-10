@@ -1,8 +1,9 @@
-#Breadcrumb Component
+#breadcrumb Component
 #Displays link in list format
 JSON Format
 ```
 {
+    "breadcrumb-auttor":"breadcrumb-auttor",
     "page-redirection-link" : [{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
         "text" : "Home",
