@@ -1,0 +1,75 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+
+<sly data-sly-use.languageRegionModel="com.sunlife.core.models.RegionLanguageMenu" />
+<sly data-sly-test.regionsEmpty="${!languageRegionModel.regionLinks}" />
+
+<div id="sun-language" class="col-xs-12 region-language-menu-wrapper collapse in" aria-expanded="true">
+    <div class="cross-btn">
+        <a class="collapsed show" id="sunLanguageCrossBtn">
+            <span class="fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
+        </a>
+    </div>
+    <sly data-sly-test="${!regionsEmpty}">
+        <div class="col-xs-9 slf-region">
+            <div class="title-region">
+                <h4>${languageRegionModel.title}</h4>
+            </div>
+
+            <div class="col-xs-12 content-region">
+                <sly data-sly-list.regionList="${languageRegionModel.regionLinks}">
+                    <div class="col-xs-4 slf-region-column">
+                        <ul class="list-unstyled" data-sly-list.region="${regionList}">
+                            <li data-sly-test="${region.subLinks}">
+                                <div class="region-link">
+                                    <h3 class="accordion-heading" aria-expanded="true" data-parent=".region-link" data-target="#${region.linkName}_child" data-toggle="collapse">${region.linkName}</h3>
+                                    <div class="collapse {{collapse}}" id="${region.linkName}_child">
+                                        <ul class="list-unstyled" data-sly-list.subLink="${region.subLinks}">
+                                            <li class=${subLink.selected}>
+                                                <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li data-sly-test="${!region.subLinks}">
+                                <a href="${region.linkUrl}">${region.linkName}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </sly>
+            </div>
+
+        </div>
+    </sly>
+    <sly data-sly-test="${regionsEmpty}">
+        <div class="col-xs-9 slf-region no-region-present">
+            <p class="select-preference">
+                ${languageRegionModel.selectLangText}
+            </p>
+        </div>
+    </sly>
+    <div class="col-xs-3 slf-language">
+        <div class="title-language">
+            <h4>${languageRegionModel.languageSectionTitle}</h4>
+        </div>
+        <div class="col-xs-12 content-language">
+            <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
+                <li class="${languageLink.selected}">
+                    <a href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
+                </li>
+                <sly data-sly-test="${languageLink.isSubLinkSeparator}"data-sly-call="${separator}"></sly>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<template data-sly-template.separator>
+    <div class="seperator-wrapper">
+        <div class="region-separator">
+            <div class="horizontal-separator-wrapper">
+                <hr class="col-xs-1 grey-horizontal-separator horizontal-middle-align">
+            </div>
+        </div>
+    </div>
+</template>
