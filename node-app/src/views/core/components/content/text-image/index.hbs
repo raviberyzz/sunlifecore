@@ -1,5 +1,8 @@
-<div class="image-text-wrapper footer-image-text-wrapper">
-	<a href="{{image-link}}">
-		<img class="left-image" src="{{image-src}}" alt="{{alt}}"></a>
-	<span class="side-text">{{text}}</span>
+<div class="image-text-wrapper {{rwd-hidden-class}}">
+	<div class="image-wrapper {{image-alignment}}" >
+		<a href="{{image-link}}">
+			<img class="side-image" id="image" src="{{image-src}}" alt="{{alt}}"></a>
+	</div>
+		<p class="side-text vertical-middle-align">{{text}}</p>
 </div>
+
