@@ -18,22 +18,24 @@
 
             <div class="col-xs-12 content-region">
                 <sly data-sly-list.regionList="${languageRegionModel.regionLinks}">
+
                     <div class="col-xs-4 slf-region-column">
-                        <ul class="list-unstyled" data-sly-list.region="${regionList}">
-                            <li data-sly-test="${region.subLinks}">
-                                <div class="region-link">
-                                    <h3 class="accordion-heading" aria-expanded="true" data-parent=".region-link" data-target="#${region.linkName}_child" data-toggle="collapse">${region.linkName}</h3>
-                                    <div class="collapse {{collapse}}" id="${region.linkName}_child">
-                                        <ul class="list-unstyled" data-sly-list.subLink="${region.subLinks}">
-                                            <li class=${subLink.selected}>
+                        <ul class="list-unstyled" data-sly-list.regionObj="${regionList}">
+                        <sly data-sly-test.firstElement = "${regionObjList.index == 1}" />
+                            <li data-sly-test="${regionObj.subLinks}">
+                            	<div class="region-link">
+                                    <h3 class="accordion-heading" aria-expanded="${firstElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child" data-toggle="collapse">${regionObj.linkName}</h3>
+                                    <div class="${firstElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child">
+                                        <ul class="list-unstyled" data-sly-list.subLink="${regionObj.subLinks}">
+                                            <li class="${firstElement && subLinkList.first ? 'nav-select' : ''}">
                                                 <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li data-sly-test="${!region.subLinks}">
-                                <a href="${region.linkUrl}">${region.linkName}</a>
+                            <li data-sly-test="${!regionObj.subLinks}">
+                                <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
                             </li>
                         </ul>
                     </div>
@@ -55,10 +57,10 @@
         </div>
         <div class="col-xs-12 content-language">
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
-                <li class="${languageLink.selected}">
+                <li data-sly-test="${!languageLink.subLinkSeparator}" class="${languageLink.selected}">
                     <a href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
                 </li>
-                <sly data-sly-test="${languageLink.isSubLinkSeparator}"data-sly-call="${separator}"></sly>
+                <sly data-sly-test="${languageLink.subLinkSeparator}" data-sly-call="${separator}"></sly>
             </ul>
         </div>
     </div>

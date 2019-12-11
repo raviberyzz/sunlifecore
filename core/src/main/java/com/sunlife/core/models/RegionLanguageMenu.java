@@ -59,6 +59,8 @@ public class RegionLanguageMenu {
 	@PostConstruct
 	public void init() {
 		List<LinkModel> tempList = null;
+		if( null == regions )
+			return;
 		this.regionLinks = new ArrayList<>();
 		for (LinkModel region : regions) {
 			if (tempList == null)
