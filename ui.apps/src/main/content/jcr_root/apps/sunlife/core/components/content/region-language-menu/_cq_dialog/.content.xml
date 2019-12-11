@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Regional Languages Menu"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tab
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <tab1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Regions"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Title"
+                                        name="./title"/>
+                                    <regions
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Regions">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./regions">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <linkName
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Link Name"
+                                                    name="linkName"/>
+                                                <linkUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Link Url"
+                                                    name="linkUrl"/>
+                                                <subLinks
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldDescription="Click 'Add Sub Link' to add a new sub link."
+                                                    fieldLabel="Sub Links">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./subLinks">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <subLinkName
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Sub Link Name"
+                                                                name="subLinkName"/>
+                                                            <subLinkUrl
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Sub Link Url"
+                                                                name="subLinkUrl"/>
+                                                            <subLinkTarget
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
+                                                                fieldLabel="Open In"
+                                                                name="subLinkTarget">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <option1
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="Self"
+                                                                        value="_self"/>
+                                                                    <option2
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="New Tab"
+                                                                        value="_target"/>
+                                                                </items>
+                                                            </subLinkTarget>
+                                                        </items>
+                                                    </field>
+                                                </subLinks>
+                                                <nextList
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldLabel="Do you want to start a new column?"
+                                                    name="nextList"
+                                                    text="Do you want to start a new column?"
+                                                    value="yes"/>
+                                            </items>
+                                        </field>
+                                    </regions>
+                                    <closeModalText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Close Modal Text"
+                                        name="./closeModalText"/>
+                                    <selectLangText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Select Language Message"
+                                        name="./selectLangText"/>
+                                </items>
+                            </column>
+                        </items>
+                    </tab1>
+                    <tab2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Languages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./languageSectionTitle"/>
+                            <language
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./languageLinks">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <subLinkName
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Link Name"
+                                            name="subLinkName"/>
+                                        <subLinkUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Link Url"
+                                            name="subLinkUrl"/>
+                                        <subLinkTarget
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Open In"
+                                            name="subLinkTarget">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <option1
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Self"
+                                                    value="_self"/>
+                                                <option2
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="New Tab"
+                                                    value="_target"/>
+                                            </items>
+                                        </subLinkTarget>
+                                        <subLinkSeparator
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                            fieldLabel="Do you want a separator instead of link?"
+                                            name="isSubLinkSeparator"
+                                            text="Do you want a separator instead of link?"
+                                            value="yes"/>
+                                    </items>
+                                </field>
+                            </language>
+                        </items>
+                    </tab2>
+                </items>
+            </tab>
+        </items>
+    </content>
+</jcr:root>
