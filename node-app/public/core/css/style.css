@@ -5829,7 +5829,6 @@ a {
       background: #FFCB05;
       padding: 8px 7px 0px 7px; }
 
-
 .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
   background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
   background-size: contain;
@@ -5860,6 +5859,7 @@ a {
   .title-bar-wrapper {
     height: 93px; } }
 
+
 .social-icon-wrapper .socials li {
   padding: 0 12px 0 5px;
   display: inline-block; }
@@ -5880,7 +5880,7 @@ a {
   .sign-in-modal-wrapper .modal-main {
     background: #FFCB05;
     padding: 24px 24px 40px 24px;
-    width: 365px; }
+    width: 366px; }
   .sign-in-modal-wrapper .modal-body {
     padding: 0; }
   .sign-in-modal-wrapper .signin-modal-header {
@@ -6543,6 +6543,7 @@ hr {
   .lists-wrapper .accordion-heading {
     cursor: pointer; } }
 
+
 .two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
 
@@ -6575,7 +6576,6 @@ hr {
 .two-column-wrapper .two-column-variation-three {
   width: 100%;
   display: flex; }
-
 
 .icon-background {
   width: 80px;
@@ -6703,6 +6703,9 @@ hr {
       .footer-copyright-wrapper-asd .bottom-part .slf-logo {
         padding-top: 16px; } }
 
+footer {
+  background-color: #F4F7F6; }
+
 .slf-desktop-header-wrapper .bottom-bar {
   background-color: #FFCB05;
   height: 8px;
@@ -6718,9 +6721,6 @@ hr {
 @media (max-width: 1024px) {
   .slf-desktop-header-wrapper {
     display: none; } }
-
-footer {
-  background-color: #F4F7F6; }
 
 
 .button-wrapper .primary-blue-button {
