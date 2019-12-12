@@ -94,6 +94,6 @@ $(document).ready(function(){
         $("#sun-search").toggle();
     });
 });
-console.log('container loaded');
 
+console.log('container loaded');
 console.log('breadcrumb loaded');

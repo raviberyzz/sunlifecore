@@ -1,8 +1,23 @@
-<div class="breadcrumb-wrapper {{breadcrumb-auttor}} no-gutter">
-			<ul role="navigation" aria-label="Breadcrumb" class="breadcrumb-row clearfix">
-				{{#each page-redirection-link}}
-				<li class="{{class-name}}"><a href="{{link}}">{{text}}</a>
-				</li>
-				{{/each}}
-			</ul>
+<div class="breadcrumb-wrapper {{breadcrumb-author}} {{breadcrumb-background-color}} no-gutter">
+	<ul role="navigation" aria-label="Breadcrumb" class="breadcrumb-row clearfix">
+		{{#each page-redirection-link}}
+		<li class="{{class-name}}"><a href="{{link}}">{{text}}</a>
+		</li>
+		{{/each}}
+	</ul>
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "{{itemListElement-type}}",
+      "item": {
+        "@id": "{{itemListElement-item-id}}",
+        "name": "{{itemListElement-item-name}}"
+      },
+      "position": {{position}}
+    }
+  ]
+}
+</script>
 </div>

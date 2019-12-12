@@ -1,17 +1,9 @@
 @import '../../../base/core';
 .sign-in-modal-wrapper {
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $background-black-ovrelay-color;
     padding: 0px;
     position: absolute;
-    // .sign-in-modaldialog {
-    //     width: 365px;
-    //     text-align: center;
-    //     vertical-align: middle;
-    //     border-top: 0px;
-    //     z-index: 2000;
-    //     overflow: auto;
-    // }
     .modal-main {
         background: $medium-yellow-background;
         padding: 24px 24px 40px 24px;
@@ -36,7 +28,7 @@
         }
     }
     .slf-icon-reg {
-        border: 2px solid white;
+        border: 2px solid $white-shade;
         border-radius: 100%;
         margin: 0 auto;
         position: relative;
@@ -49,7 +41,7 @@
         top: 18px;
     }
     .fa-inverse {
-        color: #ffffff;
+        color: $white-shade;
     }
     .form-first {
         margin-bottom: 8px;
@@ -66,7 +58,7 @@
         margin-bottom: 16px;
         padding: 0 10px;
         height: 48px;
-        border: 1px solid #d7d7d7;
+        border: 1px solid $light-grey-color;
         color: $dark-grey-color;
     }
     .login-container {
@@ -75,8 +67,8 @@
         .btn-blue {
             width: 100%;
             height:48px;
-            background: #004C6C;
-            color: white;
+            background: $medium-blue-color;
+            color: $white-shade;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 700;
@@ -116,7 +108,7 @@
             font-family: FontAwesome;
             content: "\f0a9";
             margin-right: 5px;
-            color: #424242;
+            color: $dark-grey-color;
         }
         .download-app {
             background: $light-cool-blue-color;
@@ -167,7 +159,7 @@
             height: 18px;
         }
          ::after {
-            color: #004c6c;
+            color: $medium-blue-color;
             top: 2px;
             left: 2px;
         }
@@ -184,8 +176,8 @@
         top: 2px;
         width: 18px;
         height: 18px;
-        border: 1px solid #aaa;
-        background: white;
+        border: 1px solid $border-grey-color;
+        background: $white-shade;
     }
     [type="checkbox"]:not(:checked)+label:after {
         opacity: 0;
@@ -198,7 +190,7 @@
         top: 2px;
         left: 2px;
         font-size: 14px;
-        color: #004C6C;
+        color: $medium-blue-color;
         transition: all 0.2s;
         line-height: 18px;
     }

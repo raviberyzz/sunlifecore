@@ -5813,7 +5813,7 @@ a {
       border-style: solid;
       border-width: 5px 1px 1px;
       padding: 10px;
-      box-shadow: 0 4px 20px -10px #000; }
+      box-shadow: 0 4px 20px -10px #000000; }
       .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
         font-family: FontAwesome;
         content: "\f106"; }
@@ -5872,7 +5872,7 @@ a {
 
 .sign-in-modal-wrapper {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #424242;
   padding: 0px;
   position: absolute; }
   .sign-in-modal-wrapper .modal-main {
@@ -5894,7 +5894,7 @@ a {
     .sign-in-modal-wrapper .close-modal .collapse-x {
       font-size: 1rem; }
   .sign-in-modal-wrapper .slf-icon-reg {
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-radius: 100%;
     margin: 0 auto;
     position: relative;
@@ -5919,7 +5919,7 @@ a {
     margin-bottom: 16px;
     padding: 0 10px;
     height: 48px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #D7D7D7;
     color: #424242; }
   .sign-in-modal-wrapper .login-container {
     text-align: center;
@@ -5928,7 +5928,7 @@ a {
       width: 100%;
       height: 48px;
       background: #004C6C;
-      color: white;
+      color: #ffffff;
       cursor: pointer;
       font-size: 1rem;
       font-weight: 700;
@@ -5998,7 +5998,7 @@ a {
       width: 18px;
       height: 18px; }
     .sign-in-modal-wrapper .remeberme ::after {
-      color: #004c6c;
+      color: #004C6C;
       top: 2px;
       left: 2px; }
   .sign-in-modal-wrapper [type="checkbox"] + label {
@@ -6012,8 +6012,8 @@ a {
     top: 2px;
     width: 18px;
     height: 18px;
-    border: 1px solid #aaa;
-    background: white; }
+    border: 1px solid #aaaaaa;
+    background: #ffffff; }
   .sign-in-modal-wrapper [type="checkbox"]:not(:checked) + label:after {
     opacity: 0;
     transform: scale(0); }
@@ -6106,7 +6106,7 @@ hr {
 .region-language-menu-wrapper {
   width: 100%;
   padding: 0px 16px 16px;
-  box-shadow: 0 4px 20px -10px #000; }
+  box-shadow: 0 4px 20px -10px #000000; }
   .region-language-menu-wrapper .cross-btn {
     width: 100%;
     height: 40px; }
@@ -6270,7 +6270,7 @@ hr {
     padding: 0px;
     height: 50px;
     border-radius: 0;
-    box-shadow: 0 8px 6px -6px #000; }
+    box-shadow: 0 8px 6px -6px #000000; }
     .slf-mobile-header-wrapper .mobile-header-navbar .pull-left {
       display: block;
       padding: 0;
@@ -6311,8 +6311,7 @@ hr {
     .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-text {
       font-size: 0.75rem;
       font-weight: bold;
-      text-align: center;
-      font-family: 'sunlife-sans'; }
+      text-align: center; }
   .slf-mobile-header-wrapper .hamburger-menu-wrapper {
     z-index: 1050;
     padding: 0;
@@ -6340,7 +6339,7 @@ hr {
       font-size: 20px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .hamburger-search {
       padding: 15px 16px 18px 16px;
-      background: #F4F7F8; }
+      background: #F4F7F6; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-field {
       border: none;
       background: #F4F7F8;
@@ -6355,11 +6354,11 @@ hr {
       position: absolute;
       top: 100%;
       width: 100%;
-      background: white;
+      background: #ffffff;
       z-index: 999;
       overflow: hidden; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-autocomplete-mobile ul {
-        border: 1px solid #b4b4b4;
+        border: 1px solid #B4B4B4;
         margin: -1px 0 0;
         padding: 0;
         list-style: none;
@@ -6431,7 +6430,7 @@ hr {
     height: 100%;
     left: 0px;
     top: 0px;
-    background: #000;
+    background: #000000;
     opacity: 0.5;
     margin-left: 270px; }
 
@@ -6555,6 +6554,7 @@ hr {
   width: 100%;
   display: flex; }
 
+
 .icon-background {
   width: 80px;
   height: 80px;
@@ -6603,7 +6603,6 @@ hr {
 
 .text-bottom-wrapper .icon-background-trans {
   margin: auto; }
-
 
 .footer-copyright-wrapper-asd {
   background-color: #004C6C;
@@ -6701,7 +6700,6 @@ footer {
   .slf-desktop-header-wrapper {
     display: none; } }
 
-
 .button-wrapper .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff; }
@@ -6731,6 +6729,7 @@ footer {
   .button-wrapper .signIn-button .icon-class {
     display: inherit; }
 
+
 .breadcrumb-wrapper {
   background: #F4F7F6; }
   .breadcrumb-wrapper .breadcrumb-row {
@@ -6740,24 +6739,29 @@ footer {
       font-weight: 700;
       float: left;
       line-height: 14px; }
-      .breadcrumb-wrapper .breadcrumb-row li a {
+      .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
         font-size: 0.875rem;
         line-height: 14px; }
       .breadcrumb-wrapper .breadcrumb-row li :hover {
         text-decoration: none; }
-      .breadcrumb-wrapper .breadcrumb-row li:before {
-        font-size: 0.875rem; }
     .breadcrumb-wrapper .breadcrumb-row .active a {
       font-weight: 400;
       color: #424242;
       font-size: 0.875rem;
       pointer-events: none; }
-  .breadcrumb-wrapper .breadcrumb-row > li + li:before {
-    content: "\f105";
-    font-weight: 400;
-    font-family: FontAwesome;
-    color: #004C6C;
-    padding: 0 5px; }
+    .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
+      content: "\f105";
+      font-weight: 400;
+      font-family: FontAwesome;
+      color: #004C6C;
+      padding: 0 5px; }
+
+.breadcrumb-cool-blue-color {
+  background: #4A7283; }
+  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
+    color: #ffffff; }
+  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
+    color: #ffffff; }
 
 @media (max-width: 1024px) {
   .breadcrumb-wrapper {

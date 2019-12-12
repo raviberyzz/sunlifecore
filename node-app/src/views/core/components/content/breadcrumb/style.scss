@@ -1,6 +1,6 @@
 @import '../../../base/core';
 .breadcrumb-wrapper{
-    background: $light-cool-blue-color;
+  background:$light-cool-blue-color;
   .breadcrumb-row {
     margin:0 0 0 15px;
     padding: 16px 0 16px 14px;
@@ -8,33 +8,43 @@
         font-weight:700;
         float: left;
         line-height:14px;
-        a{
+        &:before,a{
           font-size:0.875rem;
           line-height:14px;
         }
         :hover{
             text-decoration: none;
         }
-        &:before{
-          font-size:0.875rem;
-        }
       }
       .active {
         a{
           font-weight: 400;
-          color:#424242;
+          color:$dark-grey-color;
           font-size:0.875rem;
           pointer-events: none;
         }
+      }  
+      &>li:not(:first-child):before {
+        content: "\f105";
+        font-weight: 400;
+        font-family: FontAwesome;
+        color: $medium-blue-color;
+        padding: 0 5px;
       }
-  }
-  .breadcrumb-row > li + li:before {
-    content: "\f105";
-    font-weight: 400;
-    font-family: FontAwesome;
-    color: $medium-blue-color;
-    padding: 0 5px;
-  }
+  }  
+}
+.breadcrumb-cool-blue-color{
+  background:$cool-blue-color;
+  .breadcrumb-row{
+    li,.active {
+      a{
+        color:$white-shade;
+      }
+    }
+    &>li:not(:first-child):before{
+      color:$white-shade;
+    }
+  }  
 }
 @media (max-width: 1024px){
   .breadcrumb-wrapper{

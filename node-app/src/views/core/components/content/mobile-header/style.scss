@@ -71,7 +71,6 @@
             font-size: 0.75rem;
             font-weight: bold;
             text-align: center;
-            font-family:'sunlife-sans';
         }
     }
     /* Mobile Header End */
@@ -87,8 +86,8 @@
         top: 0;
         width: 270px;
         height:100%;
-        border-right: 2px solid #FFCB05;
-        background-color: #ffffff;
+        border-right: 2px solid $medium-yellow-background;
+        background-color: $white-shade;
         &.active{
             left:0;
             overflow:auto;
@@ -107,16 +106,16 @@
         }
         .hamburger-search {
             padding: 15px 16px 18px 16px;
-            background: #F4F7F8;
+            background: $light-cool-blue-color;
         }
         .search-field{
             border:none;
-            background: #F4F7F8;
+            background: $light-grey-shade-color;
             padding:0px;
             height:18px;
         }
         .search-icon-mobile {
-            color: #888888;
+            color: $dark-grey-shade;
         }
         .slf-search-mobile{
             border-bottom: 1px solid $light-grey-color;
@@ -126,11 +125,11 @@
             position: absolute;
             top: 100%;
             width: 100%;
-            background: white;
+            background: $white-shade;
             z-index: 999;
             overflow: hidden;
             ul{
-                border: 1px solid #b4b4b4;
+                border: 1px solid $light-grey-shade;
                 margin: -1px 0 0;
                 padding: 0;
                 list-style: none;
