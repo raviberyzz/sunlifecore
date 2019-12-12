@@ -1,4 +1,4 @@
-<div id="sun-language" class="col-xs-12 region-language-menu-wrapper collapse" aria-expanded="true">
+<div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
     <div class="cross-btn">
         <a class="collapsed show" id="sunLanguageCrossBtn">
             <span class="fa fa-remove collapse-x" title="Close Region and language selection" tabindex="0"></span>
@@ -58,6 +58,61 @@
                         {{> core-components-content-separator}}
                     {{else}}
 
+                    {{/if}}
+                    <li class={{selected}}>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="mobile-region-language-menu-wrapper">
+    <div class="go-back">
+        <a>Back</a>
+    </div>
+    <div class="col-xs-12 slf-tab-region ">
+        <div class="col-xs-6 slf-tab {{region-active}} {{region-present}}" data-target="#region-tab" data-toggle="tab">
+            Regions
+        </div>
+        <div class="col-xs-6 slf-tab {{language-active}} {{language-present}}" data-target="#language-tab" data-toggle="tab">
+            Language
+        </div>
+    </div>
+    <div class="col-xs-12 tab-content">
+        <div id="region-tab" class="tab-pane region-tab {{region-active}}">
+            <ul class="list-unstyled">
+                {{#each mobile-region-list}}
+                   {{#each parent-list}}
+                        {{#if accordion}}
+                            <li>
+                                <div class="region-link">
+                                    <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse">{{ LinkText }}</h3>
+                                    <div class="collapse {{collapse}}" id="{{links}}">
+                                        <ul class="list-unstyled accordion-list">
+                                            {{#each list}}
+                                            <li class={{selected}}>
+                                                <a href="{{link}}">{{text}}</a>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        {{else}}
+                            <li>
+                                <a href="{{country-link}}">{{country-text}}</a>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                {{/each}}
+            </ul>
+        </div>
+        <div id="language-tab" class="tab-pane language-tab {{language-active}}">
+            <ul class="list-unstyled">
+                {{#each language-list}}
+                    {{#if chinese}}
+                        {{> core-components-content-separator}}
                     {{/if}}
                     <li class={{selected}}>
                         <a href="{{link}}">{{text}}</a>
