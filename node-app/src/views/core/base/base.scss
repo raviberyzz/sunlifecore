@@ -1,8 +1,8 @@
 @import 'core';
 @font-face {
     font-family: "sunlife-sans";
-    src: url("../fonts/SunLifeSans-Light.eot");
-    src: url("../fonts/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Light.woff") format("woff"), url("../fonts/SunLifeSans-Light.ttf") format("truetype"), url("../fonts/SunLifeSans-Light.svg") format("svg");
+    src: url("../resources/SunLifeSans-Light.eot");
+    src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
     font-weight: 200;
     font-style: normal;
     font-stretch: normal;
@@ -10,8 +10,8 @@
 
 @font-face {
     font-family: "sunlife-sans";
-    src: url("../fonts/SunLifeSans-Regular.eot");
-    src: url("../fonts/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Regular.woff") format("woff"), url("../fonts/SunLifeSans-Regular.ttf") format("truetype"), url("../fonts/SunLifeSans-Regular.svg") format("svg");
+    src: url("../resources/SunLifeSans-Regular.eot");
+    src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -19,8 +19,8 @@
 
 @font-face {
     font-family: "sunlife-sans";
-    src: url("../fonts/SunLifeSans-Bold.eot");
-    src: url("../fonts/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Bold.woff") format("woff"), url("../fonts/SunLifeSans-Bold.ttf") format("truetype"), url("../fonts/SunLifeSans-Bold.svg") format("svg");
+    src: url("../resources/SunLifeSans-Bold.eot");
+    src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
@@ -30,7 +30,7 @@
 /*
 @font-face {
   font-family: 'giovanni-book';
-  src: url("../fonts/Giovanni-BookItalic.ttf") format("truetype");
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -42,8 +42,8 @@
 
 @font-face {
     font-family: 'sunlife-custom';
-    src: url("../fonts/sunlife-custom.eot?38299477");
-    src: url("../fonts/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../fonts/sunlife-custom.woff?38299477") format("woff"), url("../fonts/sunlife-custom.ttf?38299477") format("truetype"), url("../fonts/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+    src: url("../resources/sunlife-custom.eot?38299477");
+    src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
     font-weight: normal;
     font-style: normal;
 }
