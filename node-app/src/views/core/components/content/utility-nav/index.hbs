@@ -1,37 +1,47 @@
- {{>core-components-content-region-language-menu}}
- {{>core-components-content-search-bar}}
-<div class="utility-nav-wrapper">
-    {{#if utility-nav}}
-    <div class="utility-nav-links">
-        <ul role="navigation" aria-label="Helpful links">
-            {{#each utility-list}}
-            <li>
-                <a href="{{link}}">{{text}}</a>
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-    <div class="utility-nav-links">
-        <ul>
+{{#if utility-nav}}
+    <div class="utility-nav-wrapper">
+        <div class="utility-nav-links">
+            <ul role="navigation" aria-label="Helpful links">
+                {{#each utility-list}}
+                    <li>
+                     <a href="{{link}}">{{text}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
             {{#if lang}}
-            <li id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
-                <div class="lang-btn" id="language-btn" role="button" data-target="#sun-language" data-toggle="collapse" aria-controls="sun-language"
-                    tabindex="0" aria-expanded="false">
-                    <label class="sr-only">You are on the Sun Life Financial Canada website. Language selection is English. Expand or collapse region
-                        and language section.</label>CANADA | EN
-                </div>
-            </li>
-            {{/if}} {{#if srch}}
-            <li class="search-icon-container" role="search" aria-label="search-bar">
-                <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button" tabindex="0" aria-expanded="false">
-                    <a>
-                        Search
-                        <label for="search" class="sr-only">Expand or collapse search</label>
-                    </a>
-                </div>
-            </li>
-            {{/if}}
-        </ul>
+            <div class="utility-nav-links">
+                <ul>
+                    <li id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
+                        <div class="lang-btn" id="language-btn" role="button" data-target="#sun-language"       
+                            data-toggle="collapse" tabindex="0" aria-expanded="false">
+                            <label class="sr-only">
+                                Expand or collapse region and language section
+                                Développer ou réduire le volet Régions et langue
+                            </label>
+                            {{#if region}}
+                                CANADA | EN
+                            {{else}}
+                                ENGLISH
+                            {{/if}}
+                        </div>
+                    </li>
+            {{/if}} 
+                    {{#if srch}}
+                        <li class="search-icon-container" role="search" aria-label="search-bar">
+                            <div class="srch-btn" id="search-btn" data-target="#sun-search"        
+                             data-toggle="collapse" role="button" tabindex="0" aria-expanded="false">
+                                <a>
+                                 Search
+                                    <label class="sr-only">
+                                        Expand or collapse search
+                                        Développer ou réduire le volet recherche
+                                    </label>
+                                </a>
+                            </div>
+                        </li>
+                </ul>
+                    {{/if}}
+            </div>
     </div>
-    {{/if}}
-</div>
+{{/if}}

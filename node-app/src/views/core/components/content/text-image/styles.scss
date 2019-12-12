@@ -1,20 +1,14 @@
 
 .image-text-wrapper {
-    width: auto;
-    height: 100px;
-    float: left;
+    .left-image {
+        vertical-align: middle;
+        margin: 0 32px 10px 0;
+    }
     .side-text {
-        white-space: nowrap;
-        margin: 0 10px;
-        float: left;
+        display: inline-block;
+        font-size: 1.5rem;
     }
 }
-    .right-aligned {
-        float: right;
-    }
-    .left-aligned {
-        float: left;
-    }
 @media (max-width: 768px) {
     .footer-image-text-wrapper {
         display: none;

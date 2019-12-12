@@ -3410,24 +3410,24 @@
 
 @font-face {
   font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Light.eot");
-  src: url("../fonts/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Light.woff") format("woff"), url("../fonts/SunLifeSans-Light.ttf") format("truetype"), url("../fonts/SunLifeSans-Light.svg") format("svg");
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
   font-weight: 200;
   font-style: normal;
   font-stretch: normal; }
 
 @font-face {
   font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Regular.eot");
-  src: url("../fonts/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Regular.woff") format("woff"), url("../fonts/SunLifeSans-Regular.ttf") format("truetype"), url("../fonts/SunLifeSans-Regular.svg") format("svg");
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal; }
 
 @font-face {
   font-family: "sunlife-sans";
-  src: url("../fonts/SunLifeSans-Bold.eot");
-  src: url("../fonts/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SunLifeSans-Bold.woff") format("woff"), url("../fonts/SunLifeSans-Bold.ttf") format("truetype"), url("../fonts/SunLifeSans-Bold.svg") format("svg");
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
   font-weight: 700;
   font-style: normal;
   font-stretch: normal; }
@@ -3435,7 +3435,7 @@
 /*
 @font-face {
   font-family: 'giovanni-book';
-  src: url("../fonts/Giovanni-BookItalic.ttf") format("truetype");
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -3446,8 +3446,8 @@
 */
 @font-face {
   font-family: 'sunlife-custom';
-  src: url("../fonts/sunlife-custom.eot?38299477");
-  src: url("../fonts/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../fonts/sunlife-custom.woff?38299477") format("woff"), url("../fonts/sunlife-custom.ttf?38299477") format("truetype"), url("../fonts/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -3581,6 +3581,178 @@ a {
     font-size: 1.625rem; } }
 
 
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
 .input-wrapper {
   color: #9a9a9a;
   margin-bottom: 10px; }
@@ -3592,6 +3764,178 @@ input[type=text] {
   padding: 0 16px;
   height: 48px;
   border: 1px solid #d7d7d7; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
 
 .form-option {
   border: medium none;
@@ -3670,6 +4014,178 @@ input[type=radio] {
 input[type=radio]:checked {
   background-color: #004C6C; }
 
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
 .input-section {
   color: #424242;
   margin-bottom: 10px; }
@@ -3681,6 +4197,987 @@ input[type=text] {
   padding: 0 10px;
   height: 40px;
   border: 1px solid #d7d7d7; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #d7d7d7; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+.form-option {
+  border: medium none;
+  border: 1px solid #d7d7d7;
+  border-radius: 0px;
+  height: 40px; }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+select.form-control {
+  border: 1px solid #d7d7d7 !important;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  height: auto;
+  padding-right: 30px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png"); }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+input[type=checkbox] {
+  position: relative;
+  visibility: hidden; }
+
+input[type=checkbox]:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30px;
+  visibility: visible;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #9a9a9a;
+  background: #ffffff;
+  cursor: pointer; }
+
+input[type=checkbox]:checked:after {
+  content: '\f00c';
+  font-family: FontAwesome;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 14px;
+  color: #004C6C;
+  transition: all 0.2s;
+  line-height: 18px; }
+
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  background-clip: content-box;
+  border: 1px solid #9a9a9a;
+  background-color: #ffffff;
+  border-radius: 50%; }
+
+input[type="radio"]:checked {
+  background-color: #004C6C; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #d7d7d7; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
 
 .parsley-errors-list.filled {
   background: #B81F41;
@@ -3717,6 +5214,570 @@ input[type=text] {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
 
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
+.parsley-errors-list.filled {
+  background: #B81F41;
+  color: #fff;
+  position: relative;
+  margin: 1px 0px 9px 0px;
+  display: table-cell; }
+
+.parsley-errors-list li {
+  padding: 4px 10px 4px 17px;
+  background-image: none;
+  text-align: left; }
+
+.parsley-errors-list li:before {
+  content: "\f12a";
+  font: normal 1em/0 FontAwesome;
+  left: 9px;
+  position: absolute;
+  top: 19.5px; }
+
+.parsley-custom-error-message {
+  margin: 5px 10px; }
+
+.parsley-errors-list:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid #a4383d;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Light.eot");
+  src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Regular.eot");
+  src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.ttf") format("truetype"), url("../resources/SunLifeSans-Regular.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+
+@font-face {
+  font-family: "sunlife-sans";
+  src: url("../resources/SunLifeSans-Bold.eot");
+  src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal; }
+
+/*
+@font-face {
+  font-family: 'giovanni-book';
+  src: url("../resources/Giovanni-BookItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.giovanni-book-italic {
+  font-family: 'giovanni-book';
+}
+*/
+@font-face {
+  font-family: 'sunlife-custom';
+  src: url("../resources/sunlife-custom.eot?38299477");
+  src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  font-family: "sunlife-sans";
+  font-weight: 400;
+  font-variant-ligatures: none;
+  line-height: 26px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: none;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  color: #424242;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0; }
+
+/* Heading */
+h1,
+h2 {
+  font-size: 2.25rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.125rem; }
+
+a {
+  font-weight: 700;
+  color: #004C6C;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.no-gutter {
+  padding: 0; }
+
+.container {
+  padding: 0px;
+  margin: 0; }
+
+.vertical-middle-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.horizontal-middle-align {
+  float: left;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.button-wrapper .button-class {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold; }
+  .button-wrapper .button-class:hover {
+    background-color: #4A7283;
+    color: #ffffff; }
+
+.white-box {
+  background-color: #F7F7F7;
+  opacity: 90%; }
+
+.transparent-box {
+  background-color: transparent; }
+
+.banner-box-shadow {
+  box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4); }
+
+/*media query*/
+@media (min-width: 1281px) {
+  .container {
+    max-width: 1064px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    max-width: 1025px;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    width: 100%; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+    width: 100%; }
+  h1,
+  h2 {
+    font-size: 1.625rem; } }
+
 .button-wrapper .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff; }
@@ -3731,7 +5792,8 @@ input[type=text] {
   border: 2px solid #004C6C; }
 
 .utility-nav-wrapper {
-  text-align: right; }
+  text-align: right;
+  padding: 0px 15px 16px 0px; }
   .utility-nav-wrapper .utility-nav-links {
     display: inline-block; }
     .utility-nav-wrapper .utility-nav-links li {
@@ -3741,7 +5803,7 @@ input[type=text] {
     .utility-nav-wrapper .utility-nav-links a {
       font-weight: 400; }
     .utility-nav-wrapper .utility-nav-links .lang-btn {
-      padding: 0px 11px 0px 16px;
+      padding: 8px 11px 0px 16px;
       color: #003946; }
       .utility-nav-wrapper .utility-nav-links .lang-btn::after {
         font-family: FontAwesome;
@@ -3752,7 +5814,7 @@ input[type=text] {
       border-style: solid;
       border-width: 5px 1px 1px;
       padding: 10px;
-      box-shadow: 0 4px 20px -10px black; }
+      box-shadow: 0 4px 20px -10px #000000; }
       .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
         font-family: FontAwesome;
         content: "\f106"; }
@@ -3765,36 +5827,37 @@ input[type=text] {
         color: #003946; }
     .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
       color: #003946;
-      background: #FFCB05;
-      padding: 8px 7px 0px 7px; }
+      background: #FFCB05; }
 
-.title-bar-wrapper {
-  background-color: #FFCB05;
-  padding: 32px 15px;
+.title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
+  background-size: contain;
+  padding: 32px 0 32px 15px;
   color: #424242; }
-  .title-bar-wrapper h1 {
-    margin: 0px;
-    font-size: 28px; }
+  .title-bar-wrapper.title-yellow-color h1, .title-bar-wrapper.title-blue-color h1 {
+    margin: 0;
+    font-size: 1.75rem; }
 
-@media (min-width: 768px) {
+.title-bar-wrapper.title-blue-color {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat, #004C6C;
+  background-size: auto;
+  color: #FFCB05; }
+
+@media (max-width: 767px) {
+  .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
+    background: #FFCB05;
+    height: 88px; }
+  .title-bar-wrapper.title-blue-color {
+    height: 88px;
+    background: #004C6C; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
   .title-bar-wrapper {
-    background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-    background-size: contain;
-    padding: 32px 15px; } }
+    height: 92px; } }
 
-.title-bar-wrapper {
-  background-color: #FFCB05;
-  padding: 32px 15px;
-  color: #424242; }
-  .title-bar-wrapper h1 {
-    margin: 0px;
-    font-size: 28px; }
-
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .title-bar-wrapper {
-    background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-    background-size: contain;
-    padding: 32px 15px; } }
+    height: 93px; } }
 
 
 .social-icon-wrapper .socials li {
@@ -3812,14 +5875,14 @@ input[type=text] {
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 0px;
+  padding: 0;
   position: absolute; }
   .sign-in-modal-wrapper .modal-main {
     background: #FFCB05;
     padding: 24px 24px 40px 24px;
-    width: 365px; }
+    width: 366px; }
   .sign-in-modal-wrapper .modal-body {
-    padding: 0px; }
+    padding: 0; }
   .sign-in-modal-wrapper .signin-modal-header {
     border-bottom: none;
     padding: 10px 24px; }
@@ -3833,7 +5896,7 @@ input[type=text] {
     .sign-in-modal-wrapper .close-modal .collapse-x {
       font-size: 1rem; }
   .sign-in-modal-wrapper .slf-icon-reg {
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-radius: 100%;
     margin: 0 auto;
     position: relative;
@@ -3849,16 +5912,16 @@ input[type=text] {
     margin-bottom: 8px;
     color: #424242; }
   .sign-in-modal-wrapper .accessid {
-    width: 100%;
+    width: 317px;
     padding: 0 10px;
     height: 48px;
     border: 1px solid #D7D7D7; }
   .sign-in-modal-wrapper .password-input {
-    width: 100%;
+    width: 317px;
     margin-bottom: 16px;
     padding: 0 10px;
     height: 48px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #D7D7D7;
     color: #424242; }
   .sign-in-modal-wrapper .login-container {
     text-align: center;
@@ -3867,7 +5930,7 @@ input[type=text] {
       width: 100%;
       height: 48px;
       background: #004C6C;
-      color: white;
+      color: #ffffff;
       cursor: pointer;
       font-size: 1rem;
       font-weight: 700;
@@ -3878,20 +5941,24 @@ input[type=text] {
       display: inline-block;
       margin-bottom: 32px;
       width: 100%; }
-      .sign-in-modal-wrapper .login-container .signin-links .signin-help-link {
-        float: left; }
+      .sign-in-modal-wrapper .login-container .signin-links .signin-help-link, .sign-in-modal-wrapper .login-container .signin-links .signin-register {
+        float: left;
+        line-height: 18px; }
+        .sign-in-modal-wrapper .login-container .signin-links .signin-help-link a, .sign-in-modal-wrapper .login-container .signin-links .signin-register a {
+          font-size: 0.875rem;
+          line-height: 18px; }
       .sign-in-modal-wrapper .login-container .signin-links .signin-register {
         float: right; }
     .sign-in-modal-wrapper .login-container .signin-terms {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       display: inline-block;
       margin-bottom: 40px;
-      line-height: 13px;
+      line-height: 18px;
       width: 100%; }
       .sign-in-modal-wrapper .login-container .signin-terms a {
         font-size: 0.875rem;
         display: block;
-        margin-top: 5px; }
+        line-height: 18px; }
     .sign-in-modal-wrapper .login-container .signin-plans a {
       font-size: 1rem; }
     .sign-in-modal-wrapper .login-container .signin-sponsor:before {
@@ -3922,8 +5989,13 @@ input[type=text] {
         .sign-in-modal-wrapper .login-container .download-app .download-text .download-text-bold {
           color: #004C6C;
           font-weight: 700; }
+    .sign-in-modal-wrapper .login-container .sign-plans {
+      font-size: 0.875rem;
+      line-height: 18px; }
   .sign-in-modal-wrapper .customerSignInHeader {
     font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 24px;
     margin-top: 0px; }
   .sign-in-modal-wrapper .form-second {
     margin-bottom: 16px; }
@@ -3937,7 +6009,7 @@ input[type=text] {
       width: 18px;
       height: 18px; }
     .sign-in-modal-wrapper .remeberme ::after {
-      color: #004c6c;
+      color: #004C6C;
       top: 2px;
       left: 2px; }
   .sign-in-modal-wrapper [type="checkbox"] + label {
@@ -3949,10 +6021,10 @@ input[type=text] {
     position: absolute;
     left: 0;
     top: 2px;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #aaa;
-    background: white; }
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaaaaa;
+    background: #ffffff; }
   .sign-in-modal-wrapper [type="checkbox"]:not(:checked) + label:after {
     opacity: 0;
     transform: scale(0); }
@@ -3974,7 +6046,7 @@ input[type=text] {
 
 @media (max-width: 992px) and (min-width: 320px) {
   .sign-in-modal-wrapper .modal-dialog.sign-in-modaldialog {
-    margin: 0px;
+    margin: 0;
     left: 50%;
     transform: translateX(-50%); } }
 
@@ -4045,7 +6117,7 @@ hr {
 .region-language-menu-wrapper {
   width: 100%;
   padding: 0px 16px 16px;
-  box-shadow: 0 4px 20px -10px black; }
+  box-shadow: 0 4px 20px -10px #000000; }
   .region-language-menu-wrapper .cross-btn {
     width: 100%;
     height: 40px; }
@@ -4209,7 +6281,7 @@ hr {
     padding: 0px;
     height: 50px;
     border-radius: 0;
-    box-shadow: 0 8px 6px -6px black; }
+    box-shadow: 0 8px 6px -6px #000000; }
     .slf-mobile-header-wrapper .mobile-header-navbar .pull-left {
       display: block;
       padding: 0;
@@ -4250,8 +6322,7 @@ hr {
     .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-text {
       font-size: 0.75rem;
       font-weight: bold;
-      text-align: center;
-      font-family: 'sunlife-sans'; }
+      text-align: center; }
   .slf-mobile-header-wrapper .hamburger-menu-wrapper {
     z-index: 1050;
     padding: 0;
@@ -4276,10 +6347,11 @@ hr {
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .close-hamburger {
       float: right;
       padding: 16px;
-      font-size: 20px; }
+      font-size: 20px;
+      cursor: pointer; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .hamburger-search {
       padding: 15px 16px 18px 16px;
-      background: #F4F7F8; }
+      background: #F4F7F6; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-field {
       border: none;
       background: #F4F7F8;
@@ -4294,11 +6366,11 @@ hr {
       position: absolute;
       top: 100%;
       width: 100%;
-      background: white;
+      background: #ffffff;
       z-index: 999;
       overflow: hidden; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-autocomplete-mobile ul {
-        border: 1px solid #b4b4b4;
+        border: 1px solid #B4B4B4;
         margin: -1px 0 0;
         padding: 0;
         list-style: none;
@@ -4328,7 +6400,8 @@ hr {
       top: 0;
       width: 270px;
       height: 100%;
-      overflow: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
       padding-bottom: 24px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation a {
         color: #004C6C; }
@@ -4370,7 +6443,7 @@ hr {
     height: 100%;
     left: 0px;
     top: 0px;
-    background: black;
+    background: #000000;
     opacity: 0.5;
     margin-left: 270px; }
 
@@ -4553,6 +6626,23 @@ hr {
 .text-bottom-wrapper .icon-background-trans {
   margin: auto; }
 
+.text-right-wrapper {
+  display: block; }
+
+.text-right-wrapper > * {
+  display: inline-block; }
+
+.text-bottom-wrapper .icon-text {
+  position: relative;
+  left: 50%;
+  transform: translateX(-12%); }
+
+.text-bottom-wrapper .icon-background {
+  margin: auto; }
+
+.text-bottom-wrapper .icon-background-trans {
+  margin: auto; }
+
 .footer-copyright-wrapper-asd {
   background-color: #004C6C;
   height: 100px;
@@ -4695,17 +6785,17 @@ footer {
     display: inherit; }
 
 .breadcrumb-wrapper {
-  background: #F4F7F6;
-  height: 41px;
-  padding-left: 14px; }
+  background: #F4F7F6; }
   .breadcrumb-wrapper .breadcrumb-row {
-    padding: 0 0 0 14px;
-    margin: 0; }
+    margin: 0 0 0 15px;
+    padding: 16px 0 16px 14px; }
     .breadcrumb-wrapper .breadcrumb-row li {
       font-weight: 700;
-      float: left; }
-      .breadcrumb-wrapper .breadcrumb-row li a {
-        font-size: 0.875rem; }
+      float: left;
+      line-height: 14px; }
+      .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
+        font-size: 0.875rem;
+        line-height: 14px; }
       .breadcrumb-wrapper .breadcrumb-row li :hover {
         text-decoration: none; }
     .breadcrumb-wrapper .breadcrumb-row .active a {
@@ -4713,16 +6803,25 @@ footer {
       color: #424242;
       font-size: 0.875rem;
       pointer-events: none; }
-  .breadcrumb-wrapper .breadcrumb-row > li + li:before {
-    content: "\f105";
-    font-weight: 400;
-    font-family: FontAwesome;
-    color: #004C6C;
-    padding: 0 5px; }
+    .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
+      content: "\f105";
+      font-weight: 400;
+      font-family: FontAwesome;
+      color: #004C6C;
+      padding: 0 5px; }
+
+.breadcrumb-cool-blue-color {
+  background: #4A7283; }
+  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
+    color: #ffffff; }
+  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
+    color: #ffffff; }
 
 @media (max-width: 1024px) {
   .breadcrumb-wrapper {
-    display: none; } }
+    display: none; }
+  .breadcrumb-author {
+    display: block; } }
 
 .banner-wrapper .banner-img {
   width: 100%;
@@ -4772,20 +6871,13 @@ footer {
     max-width: 100%;
     min-width: 100%; } }
 
-.image-text-wrapper {
-  width: auto;
-  height: 100px;
-  float: left; }
-  .image-text-wrapper .side-text {
-    white-space: nowrap;
-    margin: 0 10px;
-    float: left; }
+.image-text-wrapper .left-image {
+  vertical-align: middle;
+  margin: 0 32px 10px 0; }
 
-.right-aligned {
-  float: right; }
-
-.left-aligned {
-  float: left; }
+.image-text-wrapper .side-text {
+  display: inline-block;
+  font-size: 1.5rem; }
 
 @media (max-width: 768px) {
   .footer-image-text-wrapper {
