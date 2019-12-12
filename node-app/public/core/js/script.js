@@ -27,18 +27,9 @@
 console.log('utility-nav loaded');
 
 console.log('component loaded');
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-});     
 console.log('separator loaded');
 
 console.log('region-language-menu loaded');
-console.log('separator loaded');
 console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
@@ -77,6 +68,7 @@ $(document).ready(function () {
     });
     
 });     
+console.log('separator loaded');
 console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');

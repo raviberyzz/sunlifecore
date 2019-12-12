@@ -3,7 +3,7 @@
 /*  ===========================================
 ============== * responsive tabs * =============
 =========================================== */
-
+console.log('hi');
 var fakewaffle = ( function ( $, fakewaffle ) {
 	'use strict';
 
