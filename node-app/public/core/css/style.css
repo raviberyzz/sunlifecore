@@ -5829,33 +5829,35 @@ a {
       color: #003946;
       background: #FFCB05; }
 
-.title-bar-wrapper {
-  background-color: #FFCB05;
-  padding: 32px 15px;
+.title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
+  background-size: contain;
+  padding: 32px 0 32px 15px;
   color: #424242; }
-  .title-bar-wrapper h1 {
-    margin: 0px;
-    font-size: 28px; }
+  .title-bar-wrapper.title-yellow-color h1, .title-bar-wrapper.title-blue-color h1 {
+    margin: 0;
+    font-size: 1.75rem; }
 
-@media (min-width: 768px) {
+.title-bar-wrapper.title-blue-color {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat, #004C6C;
+  background-size: auto;
+  color: #FFCB05; }
+
+@media (max-width: 767px) {
+  .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
+    background: #FFCB05;
+    height: 88px; }
+  .title-bar-wrapper.title-blue-color {
+    height: 88px;
+    background: #004C6C; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
   .title-bar-wrapper {
-    background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-    background-size: contain;
-    padding: 32px 15px; } }
+    height: 92px; } }
 
-.title-bar-wrapper {
-  background-color: #FFCB05;
-  padding: 32px 15px;
-  color: #424242; }
-  .title-bar-wrapper h1 {
-    margin: 0px;
-    font-size: 28px; }
-
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .title-bar-wrapper {
-    background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-    background-size: contain;
-    padding: 32px 15px; } }
+    height: 93px; } }
 
 
 .social-icon-wrapper .socials li {
@@ -5873,14 +5875,14 @@ a {
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 0px;
+  padding: 0;
   position: absolute; }
   .sign-in-modal-wrapper .modal-main {
     background: #FFCB05;
     padding: 24px 24px 40px 24px;
-    width: 365px; }
+    width: 366px; }
   .sign-in-modal-wrapper .modal-body {
-    padding: 0px; }
+    padding: 0; }
   .sign-in-modal-wrapper .signin-modal-header {
     border-bottom: none;
     padding: 10px 24px; }
@@ -5894,7 +5896,7 @@ a {
     .sign-in-modal-wrapper .close-modal .collapse-x {
       font-size: 1rem; }
   .sign-in-modal-wrapper .slf-icon-reg {
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-radius: 100%;
     margin: 0 auto;
     position: relative;
@@ -5910,16 +5912,16 @@ a {
     margin-bottom: 8px;
     color: #424242; }
   .sign-in-modal-wrapper .accessid {
-    width: 100%;
+    width: 317px;
     padding: 0 10px;
     height: 48px;
     border: 1px solid #D7D7D7; }
   .sign-in-modal-wrapper .password-input {
-    width: 100%;
+    width: 317px;
     margin-bottom: 16px;
     padding: 0 10px;
     height: 48px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #D7D7D7;
     color: #424242; }
   .sign-in-modal-wrapper .login-container {
     text-align: center;
@@ -5928,7 +5930,7 @@ a {
       width: 100%;
       height: 48px;
       background: #004C6C;
-      color: white;
+      color: #ffffff;
       cursor: pointer;
       font-size: 1rem;
       font-weight: 700;
@@ -5939,20 +5941,24 @@ a {
       display: inline-block;
       margin-bottom: 32px;
       width: 100%; }
-      .sign-in-modal-wrapper .login-container .signin-links .signin-help-link {
-        float: left; }
+      .sign-in-modal-wrapper .login-container .signin-links .signin-help-link, .sign-in-modal-wrapper .login-container .signin-links .signin-register {
+        float: left;
+        line-height: 18px; }
+        .sign-in-modal-wrapper .login-container .signin-links .signin-help-link a, .sign-in-modal-wrapper .login-container .signin-links .signin-register a {
+          font-size: 0.875rem;
+          line-height: 18px; }
       .sign-in-modal-wrapper .login-container .signin-links .signin-register {
         float: right; }
     .sign-in-modal-wrapper .login-container .signin-terms {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       display: inline-block;
       margin-bottom: 40px;
-      line-height: 13px;
+      line-height: 18px;
       width: 100%; }
       .sign-in-modal-wrapper .login-container .signin-terms a {
         font-size: 0.875rem;
         display: block;
-        margin-top: 5px; }
+        line-height: 18px; }
     .sign-in-modal-wrapper .login-container .signin-plans a {
       font-size: 1rem; }
     .sign-in-modal-wrapper .login-container .signin-sponsor:before {
@@ -5983,8 +5989,13 @@ a {
         .sign-in-modal-wrapper .login-container .download-app .download-text .download-text-bold {
           color: #004C6C;
           font-weight: 700; }
+    .sign-in-modal-wrapper .login-container .sign-plans {
+      font-size: 0.875rem;
+      line-height: 18px; }
   .sign-in-modal-wrapper .customerSignInHeader {
     font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 24px;
     margin-top: 0px; }
   .sign-in-modal-wrapper .form-second {
     margin-bottom: 16px; }
@@ -5998,7 +6009,7 @@ a {
       width: 18px;
       height: 18px; }
     .sign-in-modal-wrapper .remeberme ::after {
-      color: #004c6c;
+      color: #004C6C;
       top: 2px;
       left: 2px; }
   .sign-in-modal-wrapper [type="checkbox"] + label {
@@ -6010,10 +6021,10 @@ a {
     position: absolute;
     left: 0;
     top: 2px;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #aaa;
-    background: white; }
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaaaaa;
+    background: #ffffff; }
   .sign-in-modal-wrapper [type="checkbox"]:not(:checked) + label:after {
     opacity: 0;
     transform: scale(0); }
@@ -6035,7 +6046,7 @@ a {
 
 @media (max-width: 992px) and (min-width: 320px) {
   .sign-in-modal-wrapper .modal-dialog.sign-in-modaldialog {
-    margin: 0px;
+    margin: 0;
     left: 50%;
     transform: translateX(-50%); } }
 
@@ -6097,7 +6108,7 @@ hr {
 .region-language-menu-wrapper {
   width: 100%;
   padding: 0px 16px 16px;
-  box-shadow: 0 4px 20px -10px black; }
+  box-shadow: 0 4px 20px -10px #000000; }
   .region-language-menu-wrapper .cross-btn {
     width: 100%;
     height: 40px; }
@@ -6234,7 +6245,7 @@ hr {
     padding: 0px;
     height: 50px;
     border-radius: 0;
-    box-shadow: 0 8px 6px -6px black; }
+    box-shadow: 0 8px 6px -6px #000000; }
     .slf-mobile-header-wrapper .mobile-header-navbar .pull-left {
       display: block;
       padding: 0;
@@ -6275,8 +6286,7 @@ hr {
     .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-text {
       font-size: 0.75rem;
       font-weight: bold;
-      text-align: center;
-      font-family: 'sunlife-sans'; }
+      text-align: center; }
   .slf-mobile-header-wrapper .hamburger-menu-wrapper {
     z-index: 1050;
     padding: 0;
@@ -6301,10 +6311,11 @@ hr {
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .close-hamburger {
       float: right;
       padding: 16px;
-      font-size: 20px; }
+      font-size: 20px;
+      cursor: pointer; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .hamburger-search {
       padding: 15px 16px 18px 16px;
-      background: #F4F7F8; }
+      background: #F4F7F6; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-field {
       border: none;
       background: #F4F7F8;
@@ -6319,11 +6330,11 @@ hr {
       position: absolute;
       top: 100%;
       width: 100%;
-      background: white;
+      background: #ffffff;
       z-index: 999;
       overflow: hidden; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-autocomplete-mobile ul {
-        border: 1px solid #b4b4b4;
+        border: 1px solid #B4B4B4;
         margin: -1px 0 0;
         padding: 0;
         list-style: none;
@@ -6353,7 +6364,8 @@ hr {
       top: 0;
       width: 270px;
       height: 100%;
-      overflow: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
       padding-bottom: 24px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation a {
         color: #004C6C; }
@@ -6395,7 +6407,7 @@ hr {
     height: 100%;
     left: 0px;
     top: 0px;
-    background: black;
+    background: #000000;
     opacity: 0.5;
     margin-left: 270px; }
 
@@ -6403,6 +6415,12 @@ hr {
   .slf-mobile-header-wrapper {
     display: none; } }
 
+<<<<<<< HEAD
+=======
+
+.tools-resource-wrapper {
+  border: 1px solid #CCD8DA; }
+>>>>>>> 06231f1366792d658184bd66fd30865fdd36c7a6
 
 .common, .explore-product-wrapper-desk > :not(:first-child) .explore-product-icon-text .icon-background, .tools-resource-wrapper-desk > :not(:first-child) .icon-text-wrapper .icon-background {
   height: 30px;
@@ -6555,19 +6573,28 @@ hr {
   .lists-wrapper .accordion-heading {
     cursor: pointer; } }
 
-.two-column-wrapper .slf-yellow-background {
+.two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
+
+.two-column-wrapper .light-cool-blue-color {
+  background-color: #F4F7F6; }
+
+.two-column-wrapper .transparent {
+  background-color: transparent; }
+
+.two-column-wrapper .light-grey {
+  background-color: #D7D7D7; }
 
 .two-column-wrapper .padding-between {
   width: 100%;
   display: flex; }
-  .two-column-wrapper .padding-between .slf-yellow:not(:first-child) {
+  .two-column-wrapper .padding-between div:not(:first-child) {
     margin-left: 20px; }
 
-.two-column-wrapper .slf-blue-bg-background {
+.two-column-wrapper .medium-blue-background {
   background: #004C6C; }
 
-.two-column-wrapper .slf-l-gradient-background {
+.two-column-wrapper .yellow-gradient-background {
   background: linear-gradient(#FFCB05, #EAAB00); }
 
 .two-column-wrapper .vertical-separator-med-grey {
@@ -6575,7 +6602,7 @@ hr {
   background: #9a9a9a;
   height: auto; }
 
-.two-column-wrapper .normal-vertical {
+.two-column-wrapper .two-column-variation-three {
   width: 100%;
   display: flex; }
 
@@ -6743,6 +6770,21 @@ footer {
     display: none; } }
 
 
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
+
 .button-wrapper .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff; }
@@ -6773,17 +6815,17 @@ footer {
     display: inherit; }
 
 .breadcrumb-wrapper {
-  background: #F4F7F6;
-  height: 41px;
-  padding-left: 14px; }
+  background: #F4F7F6; }
   .breadcrumb-wrapper .breadcrumb-row {
-    padding: 0 0 0 14px;
-    margin: 0; }
+    margin: 0 0 0 15px;
+    padding: 16px 0 16px 14px; }
     .breadcrumb-wrapper .breadcrumb-row li {
       font-weight: 700;
-      float: left; }
-      .breadcrumb-wrapper .breadcrumb-row li a {
-        font-size: 0.875rem; }
+      float: left;
+      line-height: 14px; }
+      .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
+        font-size: 0.875rem;
+        line-height: 14px; }
       .breadcrumb-wrapper .breadcrumb-row li :hover {
         text-decoration: none; }
     .breadcrumb-wrapper .breadcrumb-row .active a {
@@ -6791,16 +6833,25 @@ footer {
       color: #424242;
       font-size: 0.875rem;
       pointer-events: none; }
-  .breadcrumb-wrapper .breadcrumb-row > li + li:before {
-    content: "\f105";
-    font-weight: 400;
-    font-family: FontAwesome;
-    color: #004C6C;
-    padding: 0 5px; }
+    .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
+      content: "\f105";
+      font-weight: 400;
+      font-family: FontAwesome;
+      color: #004C6C;
+      padding: 0 5px; }
+
+.breadcrumb-cool-blue-color {
+  background: #4A7283; }
+  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
+    color: #ffffff; }
+  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
+    color: #ffffff; }
 
 @media (max-width: 1024px) {
   .breadcrumb-wrapper {
-    display: none; } }
+    display: none; }
+  .breadcrumb-author {
+    display: block; } }
 
 .banner-wrapper .banner-img {
   width: 100%;

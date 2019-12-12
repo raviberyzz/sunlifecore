@@ -13,7 +13,7 @@
         background:$white-shade;
     }
     .grey{
-        background:#f8f8f8;
+        background:$light-grey-background;
     }
     .mobile-header-navbar{
         display:flex;
@@ -21,7 +21,7 @@
         padding:0px;
         height: 50px;
         border-radius: 0;
-        box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px $black-shade;
         .pull-left{
             display:block;
             padding: 0;
@@ -71,7 +71,6 @@
             font-size: 0.75rem;
             font-weight: bold;
             text-align: center;
-            font-family:'sunlife-sans';
         }
     }
     /* Mobile Header End */
@@ -87,8 +86,8 @@
         top: 0;
         width: 270px;
         height:100%;
-        border-right: 2px solid #FFCB05;
-        background-color: #ffffff;
+        border-right: 2px solid $medium-yellow-background;
+        background-color: $white-shade;
         &.active{
             left:0;
             overflow:auto;
@@ -104,19 +103,20 @@
             float:right;
             padding:16px;
             font-size:20px;
+            cursor:pointer;
         }
         .hamburger-search {
             padding: 15px 16px 18px 16px;
-            background: #F4F7F8;
+            background: $light-cool-blue-color;
         }
         .search-field{
             border:none;
-            background: #F4F7F8;
+            background: $light-grey-shade-color;
             padding:0px;
             height:18px;
         }
         .search-icon-mobile {
-            color: #888888;
+            color: $dark-grey-shade;
         }
         .slf-search-mobile{
             border-bottom: 1px solid $light-grey-color;
@@ -126,11 +126,11 @@
             position: absolute;
             top: 100%;
             width: 100%;
-            background: white;
+            background: $white-shade;
             z-index: 999;
             overflow: hidden;
             ul{
-                border: 1px solid #b4b4b4;
+                border: 1px solid $light-grey-shade;
                 margin: -1px 0 0;
                 padding: 0;
                 list-style: none;
@@ -171,7 +171,8 @@
             top:0;
             width:270px;
             height:100%;
-            overflow:auto;
+            overflow-x:hidden;
+            overflow-y:auto;
             padding-bottom:24px;
             a{
                 color:$medium-blue-color
@@ -233,7 +234,7 @@
         height: 100%;
         left: 0px;
         top: 0px;
-        background: black;
+        background: $black-shade;
         opacity: 0.5;
         margin-left:270px;
     }
