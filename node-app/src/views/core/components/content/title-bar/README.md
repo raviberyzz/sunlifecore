@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "title-background-color":"title-blue-color",
+    "title-background-color":"title-yellow-color",
     "title-bar-text": "Why join Sun Life?"
 }
 ```

@@ -1,8 +1,18 @@
-<div data-sly-use.textImage="com.sunlife.core.models.TextImageModel">
-	<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
-     <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
-	
-<div class="image-text-wrapper footer-image-text-wrapper">
-    <a href="${textImage.link}"><img class="left-image" src="${textImage.fileReference @context='uri' }" alt="${textImage.alttext}"></a>
-    	<span class="side-text">${textImage.richtext @context ='html'}</span>
+<div data-sly-use.textImage="com.sunlife.core.models.TextImageModel"></div>
+<sly data-sly-test.empty="${!textImage.text}"/>
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+
+<sly data-sly-test="${!empty}">
+<div class="image-text-wrapper">
+	<div class="image-wrapper ${textImage.imageAlignment}">
+		<div data-sly-test.imageLink="${textImage.imageLink}">
+			<a href="${textImage.imageLink @ extension = 'html'}" target ="${textImage.target}">
+				<img class="side-image" id="image" src="${textImage.fileReference @context='uri' }" alt="${textImage.altText}"></a>
+		</div>
+		<div data-sly-test="${!imageLink}">
+			<img class="side-image" id="image" src="${textImage.fileReference @context='uri' }" alt="${textImage.altText}"></a>
+		</div>
+	</div>		
+    	<span class="side-text vertical-middle-align">${textImage.text @context ='html'}</span>
 </div>
+</sly>

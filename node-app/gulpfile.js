@@ -56,7 +56,7 @@ gulp.task('vendor-css',() => {
   }))
 });
 gulp.task('core-js',() => {
-  return gulp.src('src/views/core/components/**/*.js')
+  return gulp.src(['src/views/core/base/**/*.js','src/views/core/components/**/*.js'])
   .pipe(sort(compareFiles))
   .pipe(concat('script.js'))
   //.pipe(uglify())
@@ -66,13 +66,23 @@ gulp.task('core-js',() => {
   }))
 });
 gulp.task('core-fonts',() => {
-  return gulp.src('src/views/core/**/fonts/*.*')
-  .pipe(flatten({ includeParents: -1} ))
-  .pipe(gulp.dest('public/vendor'))
+  return gulp.src('src/views/core/vendor/resources/*.*')
+  //.pipe(flatten({ includeParents: -1} ))
+  .pipe(gulp.dest('public/vendor/resources'))
   .pipe(browserSync.reload({
     stream: true
   }))
 });
+gulp.task('core-base-fonts',() => {
+  return gulp.src('src/views/core/base/resources/*.*')
+  //.pipe(flatten({ includeParents: -1} ))
+  .pipe(gulp.dest('public/core/resources'))
+  .pipe(browserSync.reload({
+    stream: true
+  }))
+});
+
+
 gulp.task('vendor-js',() => {
   return gulp.src(['src/views/core/vendor/**/*.js'])
   .pipe(sort(compareFiles))
@@ -89,7 +99,7 @@ gulp.task('watch', function () {
   gulp.watch('src/views/core/**/*.js', gulp.series('core-js')); 
   gulp.watch('src/views/core/vendor/**/*.css', gulp.series('vendor-css')); 
   gulp.watch('src/views/core/vendor/**/*.js', gulp.series('vendor-js')); 
-  gulp.watch('src/views/core/**/fonts/*.*', gulp.series('core-fonts')); 
+  gulp.watch('src/views/core/**/resources/*.*', gulp.series('core-fonts')); 
 })
 
 gulp.task('clean', () => {
@@ -104,7 +114,7 @@ gulp.task('compile-sass',() =>{
 });
 
 gulp.task('copy-files',() => {
-  return gulp.src(['src/views/**/*.js','src/views/**/*.css','src/views/**/fonts/*.*'])
+  return gulp.src(['src/views/**/*.js','src/views/**/*.css','src/views/**/resources/*.*'])
   .pipe(gulp.dest('dist'))
 });
 
@@ -190,5 +200,5 @@ gulp.task('copy-build-files',() => {
   .pipe(gulp.dest('../ui.apps/src/main/content/jcr_root/apps/sunlife'));
 });
 
-gulp.task('dev',gulp.parallel('core-sass','vendor-css','vendor-js','core-js','core-fonts','watch','browser-sync'));
+gulp.task('dev',gulp.parallel('core-sass','vendor-css','vendor-js','core-js','core-fonts','core-base-fonts','watch','browser-sync'));
 gulp.task('build:dev',gulp.series('copy-files','compile-sass',generateClientLibs,'copy-build-files','clean'));

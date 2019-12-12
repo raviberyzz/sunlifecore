@@ -55,6 +55,15 @@
                                                 text="Hide current page"
                                                 uncheckedValue="false"
                                                 value="true"/>
+                                            <socialShareReqd
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="${not empty cqDesign.hideCurrent ? cqDesign.hideCurrent : false}"
+                                                fieldDescription="Allow to configure social icons if checked."
+                                                name="./socialShareReqd"
+                                                text="Include Social Icons"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                         </items>
                                     </column>
                                 </items>
