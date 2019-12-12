@@ -1,17 +1,37 @@
 @import '../../../base/core';
-.title-bar-wrapper{
-    background-color:$medium-yellow-background;
-    padding:32px 15px;
-    color:$dark-grey-color;
-    h1{
-      margin:0px;
-      font-size:28px;
-    }
-}
-@media (min-width: 768px){
-  .title-bar-wrapper{
+.title-bar-wrapper.title-yellow-color{
     background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat,$medium-yellow-background;
     background-size: contain;
-    padding:32px 15px;
+    padding:32px 0 32px 15px;
+    color:$dark-grey-color;
+    h1{
+      margin:0;
+      font-size:1.75rem;
+    }
+}
+.title-bar-wrapper.title-blue-color{
+  @extend .title-bar-wrapper.title-yellow-color;
+  background:url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat,$medium-blue-color;
+  background-size: auto;
+  color: $medium-yellow-background;
+}
+@media (max-width:767px){
+  .title-bar-wrapper.title-yellow-color{
+    background:$medium-yellow-background;
+    height:88px;
+  }
+  .title-bar-wrapper-title-blue-color{
+    height:88px;
+    background:$medium-blue-color;
+  }
+}
+@media (min-width:768px) and (max-width:1024px){
+  .title-bar-wrapper{
+    height:92px;
+  }
+}
+@media (min-width: 1025px){
+  .title-bar-wrapper{
+    height:93px;
   }
 }
