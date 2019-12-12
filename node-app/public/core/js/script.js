@@ -4,15 +4,6 @@
 
 
 
-// $(document).ready(function() {
-//     $('#locate-advisors-btn').click(function() {
-//         // var form = $('#locate-advisors-form').parsley({});
-//         // form.validate();
-//         // $('#locate-advisors-form').submit();
-
-//     })
-
-// });
 
 // $(document).ready(function() {
 //     $('#locate-advisors-btn').click(function() {
@@ -24,9 +15,27 @@
 
 // });
 
+
+// $(document).ready(function() {
+//     $('#locate-advisors-btn').click(function() {
+//         // var form = $('#locate-advisors-form').parsley({});
+//         // form.validate();
+//         // $('#locate-advisors-form').submit();
+
+//     })
+
+// });
 console.log('utility-nav loaded');
 
 console.log('component loaded');
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+});     
 console.log('separator loaded');
 
 console.log('region-language-menu loaded');
@@ -68,9 +77,9 @@ $(document).ready(function () {
     });
     
 });     
-console.log('separator loaded');
-console.log('separator loaded');
 console.log('component loaded');
+console.log('separator loaded');
+console.log('separator loaded');
 console.log('image loaded');
 
 console.log('footer-copyright loaded');
