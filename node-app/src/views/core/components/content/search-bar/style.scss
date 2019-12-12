@@ -1,72 +1,70 @@
 @import '../../../base/core';
+
 .search-bar-wrapper {
     background: $medium-yellow-background;
+
     .global-search {
         text-align: center;
+
         .form-wrapper {
             max-width: 550px;
             margin: 0 auto;
         }
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 0;
+            height: 48px;
+
+        }
+
+        .search-autocomplete {
+            z-index: 1099;
+        }
     }
-    .slf-search .form-wrapper {
-        display: table;
-        border-collapse: collapse;
-        width: 100%;
-        margin: 0 auto;
-        border: 0;
+
+    .slf-search {
+        .form-wrapper {
+            display: table;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 auto;
+            border: 0;
+
+            .input-wrapper, .button-wrapper {
+                display: table-cell;
+                vertical-align: top;
+                position: relative;
+            }
+        }
     }
-    .slf-search .form-wrapper>* {
-        display: table-cell;
-        vertical-align: top;
-        position: relative;
-    }
+
     .button-wrapper {
         button[type=submit] {
             margin-left: 16px;
-            font-size: 15px;
-            min-width: 91px;
-            max-width: 91px;
         }
     }
-    input[type=text] {
-        width: 100%;
-        margin-bottom: 0;
-        height: 48px;
-    }
+
     .search-box {
         padding: 30px 0px;
     }
-    
-    .search-bar-wrapper .global-search .search-bar-wrapper .global-search .form-wrapper .search-autocomplete {
-        z-index: 1099;
-    }
-    
+
     .close-div {
-        position: relative;
+        position: absolute;
         right: 0;
         float: right;
-        top: -30px;
+        top: 0;
+
     }
-    
+
     .collapse-x {
-        margin: 15px 24px 0 0;
+        margin: 24px 15px 0 0;
         font-size: 0.875rem;
     }
-    
+
     form.slf-search .form-wrapper>.button-wrapper {
         padding-left: 5px;
         width: 1%;
         border: 0;
     }
-    
-    .search-desktop-width {
-        width: 453px;
-    }
-    
-    .fa-remove:before,
-    .fa-close:before,
-    .fa-times:before {
-        content: "\f00d";
-    }
 }
-

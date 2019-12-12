@@ -1,15 +1,3 @@
-console.log('separator loaded');
-// $(document).ready(function() {
-//     $('#locate-advisors-btn').click(function() {
-//         // var form = $('#locate-advisors-form').parsley({});
-//         // form.validate();
-//         // $('#locate-advisors-form').submit();
-
-//     })
-
-// });
-console.log('separator loaded');
-
 
 
 
@@ -26,20 +14,19 @@ console.log('separator loaded');
 
 // });
 
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
+// $(document).ready(function() {
+//     $('#locate-advisors-btn').click(function() {
+//         // var form = $('#locate-advisors-form').parsley({});
+//         // form.validate();
+//         // $('#locate-advisors-form').submit();
+
+//     })
+
+// });
+
 console.log('utility-nav loaded');
 
-console.log('separator loaded');
+
 console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -49,8 +36,10 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-console.log('region-language-menu loaded');
+console.log('separator loaded');
 
+console.log('region-language-menu loaded');
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -89,11 +78,23 @@ $(document).ready(function () {
     
 });     
 console.log('separator loaded');
+console.log('separator loaded');
 console.log('component loaded');
-console.log('breadcrumb loaded');
 console.log('image loaded');
 
 console.log('footer-copyright loaded');
 
+console.log('desktop-header loaded');
+$(document).ready(function(){
+    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
+        $("#sun-search").hide();
+        $("#sun-language").toggle();
+    });
+    $("#search-btn-container").click(function(){
+        $("#sun-language").hide();
+        $("#sun-search").toggle();
+    });
+});
 console.log('container loaded');
 
+console.log('breadcrumb loaded');
