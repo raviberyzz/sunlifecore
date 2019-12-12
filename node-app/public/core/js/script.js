@@ -39,6 +39,7 @@ console.log('separator loaded');
 
 console.log('region-language-menu loaded');
 console.log('separator loaded');
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -77,7 +78,6 @@ $(document).ready(function () {
     
 });     
 console.log('separator loaded');
-console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 
@@ -94,6 +94,6 @@ $(document).ready(function(){
         $("#sun-search").toggle();
     });
 });
-
 console.log('container loaded');
+
 console.log('breadcrumb loaded');

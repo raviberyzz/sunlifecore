@@ -6250,6 +6250,7 @@ hr {
   line-height: 110%;
   padding: 5px 0px; }
 
+
 .sign-in-wrapper .button-class {
   display: none; }
 
@@ -6437,7 +6438,6 @@ hr {
 @media (min-width: 1025px) {
   .slf-mobile-header-wrapper {
     display: none; } }
-
 
 .tools-resource-wrapper {
   border: 1px solid #CCD8DA; }
@@ -6700,6 +6700,7 @@ footer {
   .slf-desktop-header-wrapper {
     display: none; } }
 
+
 .button-wrapper .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff; }
@@ -6728,7 +6729,6 @@ footer {
   font-size: 0.875rem; }
   .button-wrapper .signIn-button .icon-class {
     display: inherit; }
-
 
 .breadcrumb-wrapper {
   background: #F4F7F6; }
