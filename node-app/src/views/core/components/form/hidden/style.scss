@@ -1,4 +1,4 @@
-@import '../../../base/base';
+@import '../../../base/core';
 .input-section {
     color: #424242;
     margin-bottom: 10px;
@@ -10,5 +10,5 @@ input[type=text] {
     font-size: 16px;
     padding: 0 10px;
     height: 40px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid $light-grey-color;
 }
