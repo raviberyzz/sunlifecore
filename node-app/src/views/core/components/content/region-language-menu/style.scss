@@ -63,8 +63,7 @@
                     font-size: 1rem;
                     font-weight: bold;
                     cursor: pointer;
-                    margin-top: 8px;
-                    margin-bottom: 0px;
+                    margin: 8px 0 0 0;
                     padding-bottom: 5px;
                 }
             }
@@ -72,8 +71,7 @@
                 .accordion-heading {
                     font-size: 1rem;
                     cursor: pointer;
-                    margin-top: 8px;
-                    margin-bottom: 0px;
+                    margin: 8px 0 0 0;
                     padding-bottom: 5px;
                     color: $medium-blue-color;
                     // &:hover{
