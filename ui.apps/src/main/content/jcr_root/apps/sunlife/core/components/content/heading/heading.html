@@ -1,0 +1,4 @@
+<sly data-sly-use.heading="com.sunlife.core.models.Heading" data-sly-test.text="${heading.title}">
+		<h2 data-sly-element="${heading.type}"><a data-sly-unwrap="${!heading.linkURL}" href="${heading.linkURL @ extension = 'html'}" target="${heading.selection}">${text}</a></h2>
+</sly>
+<div data-sly-test="${!text}" class="cq-placeholder" data-emptytext="${component.title}"></div>

@@ -34,23 +34,23 @@
                                                 <facebook
                                                     jcr:primaryType="nt:unstructured"
                                                     text="Facebook"
-                                                    value="icon-facebook"/>
+                                                    value="fa fa-facebook-square"/>
                                                 <twitter
                                                     jcr:primaryType="nt:unstructured"
                                                     text="Twitter"
-                                                    value="icon-twitter"/>
+                                                    value="fa fa-twitter-square"/>
                                                 <instagram
                                                     jcr:primaryType="nt:unstructured"
                                                     text="Instagram"
-                                                    value="icon-instagram"/>
+                                                    value="fa-instagram"/>
                                                 <linkedin
                                                     jcr:primaryType="nt:unstructured"
                                                     text="Linkedin"
-                                                    value="icon-linkedin"/>
+                                                    value="fa fa-linkedin-square"/>
                                                 <youTube
                                                     jcr:primaryType="nt:unstructured"
                                                     text="YouTube"
-                                                    value="icon-youtube"/>
+                                                    value="fa fa-youtube-square"/>
                                             </items>
                                         </iconName>
                                         <iconUrl
@@ -59,6 +59,7 @@
                                             fieldLabel="Icon Url"
                                             name="./iconUrl"
                                             rootPath="/content/"
+                                            required="{Boolean}true"
                                             suffix=".html"/>
                                         <selection
                                             jcr:primaryType="nt:unstructured"
