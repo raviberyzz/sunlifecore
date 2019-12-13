@@ -1,5 +1,5 @@
 @import '../../../base/core';
-.region-language-menu-wrapper {
+.desktop-region-language-menu-wrapper {
     width: 100%;
     padding: 0px 16px 16px;
     box-shadow: 0 4px 20px -10px $black-shade;
@@ -39,11 +39,12 @@
             }
             .list-unstyled,
             .accordion-heading {
-                background-color: white;
+                background-color: $white-shade;
             }
             .region-link .list-unstyled li {
                 padding-left: 14px;
                 margin-bottom: 8px;
+                //waiting for style guide update
                 //height: 32px;
                 &:hover {
                     background-color: $light-orange-color;
@@ -59,11 +60,10 @@
                     }
                 }
                 .accordion-heading {
-                    font-size: 1.125rem;
+                    font-size: 1rem;
                     font-weight: bold;
                     cursor: pointer;
-                    margin-top: 8px;
-                    margin-bottom: 0px;
+                    margin: 8px 0 0 0;
                     padding-bottom: 5px;
                 }
             }
@@ -71,8 +71,7 @@
                 .accordion-heading {
                     font-size: 1rem;
                     cursor: pointer;
-                    margin-top: 8px;
-                    margin-bottom: 0px;
+                    margin: 8px 0 0 0;
                     padding-bottom: 5px;
                     color: $medium-blue-color;
                     // &:hover{
@@ -99,7 +98,7 @@
     }
     .title-language {
         h4 {
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.125rem;
             margin-top: 0px;
             padding-left: 32px;
@@ -150,9 +149,130 @@
         }
     }
 }
+.mobile-region-language-menu-wrapper{
+    width:270px;
+    font-size: 1rem;
+    .go-back{
+        background-color:$medium-blue-color;
+        color: $white-shade;
+        width:100%;
+        line-height:23px;
+        padding:16px;
+        &:before {
+            font-family: FontAwesome;
+            content: "\f104\00a0";
+        }
+        a{
+            color: $white-shade;
+        }
+    }
+    .slf-tab-region{
+        padding: 0px;
+        height: 48px;
+        background-color: $medium-blue-color;
+        color: $white-shade;
+        font-size: 1rem;
+        font-weight: 400;
+        border-top: 0.5px solid $white-shade;
+        .slf-tab{
+            padding: 10px 0px 0px 0px;
+            text-align: center;
+            height: 100%;
+        }
+        .active{
+            background-color: $white-shade;
+            color: $black-shade;
+            font-weight: 700;
+        }
+        .region-present, .language-present{
+            width:100%;
+            text-align: left;
+            padding-left: 16px;
+        }
+    }
+    .tab-content{
+        padding: 0px;
+        .region-tab{
+            .list-unstyled{
+                li{
+                    margin-top: 32px;
+                    a{
+                        color: $medium-blue-color;
+                        font-weight: 400;
+                        padding-left: 16px;
+                    }
+                }
+                .nav-select {
+                    background-color: $light-orange-color;
+                    a{
+                        font-weight: 700;
+                    }
+                }
+                .accordion-heading{
+                    font-size: 1rem;
+                    color: $medium-blue-color;
+                    margin: 0px;
+                    padding-left: 16px;
+                }
+                .accordion-heading[aria-expanded="false"]:after {
+                    content: "\f105";
+                    font-family: FontAwesome;
+                    padding-left: 10px;
+                }
+                .accordion-heading[aria-expanded="true"]:before {
+                    content: "\f0d7";
+                    font-family: FontAwesome;
+                    padding-right: 10px;
+                }
+                .accordion-list{
+                    a{
+                        padding-left: 30px;
+                    }
+                }
+            }
+        } 
+        .language-tab{
+            .list-unstyled{
+                li{
+                    margin-top: 32px;
+                    a{
+                        color: $medium-blue-color;
+                        font-weight: 400;
+                        padding-left: 16px;
+                    }
+                }
+                .nav-select {
+                    background-color: $light-orange-color;
+                    a{
+                        font-weight: 700;
+                    }
+                }
+                .region-separator {
+                    .horizontal-middle-align {
+                        float: left;
+                        width: 59px;
+                        margin: 40px 0px 40px -74px;
+                    }
+                }
+                .chinese {
+                    margin-top: 90px;
+                    a {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media (max-width: 1024px) {
-    .region-lenguage-menu-wrapper {
+    .desktop-region-language-menu-wrapper {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mobile-region-language-menu-wrapper {
         display: none;
     }
 }
