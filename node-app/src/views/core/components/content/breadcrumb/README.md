@@ -18,11 +18,7 @@ JSON Format
         "text" : "Why join us",
         "class-name": "active"
     }
-    ],
-    "itemListElement-type":"ListItem",
-    "itemListElement-item-id":"https://www.sunlife.ca/ca?vgnLocale=en_CA",
-    "itemListElement-item-name":"Home",
-    "position":"1"
+    ]
 }
 ```
 <!-- Classes available for "breadcrumb-background-color" are "breadcrumb-light-cool-blue-color","breadcrumb-cool-blue-color" and links colors are changed accordingly -->
