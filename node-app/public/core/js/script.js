@@ -1,5 +1,8 @@
+console.log('footer-copyright loaded');
 
 
+
+console.log('component loaded');
 
 
 
@@ -10,8 +13,6 @@
 
 console.log('utility-nav loaded');
 
-
-console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -72,9 +73,7 @@ console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 
-console.log('footer-copyright loaded');
 
-console.log('container loaded');
 console.log('desktop-header loaded');
 $(document).ready(function(){
     $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
@@ -86,6 +85,7 @@ $(document).ready(function(){
         $("#sun-search").toggle();
     });
 });
+console.log('container loaded');
+
 
 console.log('breadcrumb loaded');
-
