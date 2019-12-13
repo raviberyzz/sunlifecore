@@ -1,7 +1,7 @@
-@import '../../../base/base';
+@import '../../../base/core';
 .parsley-errors-list.filled {
-    background: #B81F41;
-    color: #fff;
+    background: $medium-red-color;
+    color: $white-shade;
     position: relative;
     margin: 1px 0px 9px 0px;
     display: table-cell;
@@ -33,7 +33,7 @@
     bottom: 100%;
     width: 0;
     height: 0;
-    border-bottom: 5px solid #a4383d;
+    border-bottom: 5px solid $medium-red-color;
     border-top: 5px solid transparent;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;

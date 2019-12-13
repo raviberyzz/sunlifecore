@@ -133,10 +133,10 @@ JSON Format
         "text" : "Language",
         "target-tab" : "#language-tab"
     }],
-    "region-present" : "region-present",
+    "region-present" : "",
     "language-present" : "",
-    "region-active" : "active",
-    "language-active" : "",
+    "region-active" : "",
+    "language-active" : "active",
     "mobile-region-list" : [{
         "parent-list" : [{
         "country-link": "https://www.sunlife.com",

@@ -126,40 +126,20 @@ JSON Format
         "wrapper-separator":"region-separator"
     }],
     "region" : true,
+    "lang-button":"language-btn-container",
     "utility-list" : [{
         "link" : "https://www.sunlife.ca/ca/Find+an+advisor?vgnLocale=en_CA",
-        "text" : "Find an advisor",
-        "data-target" : "#"
+        "text" : "Find an advisor"
     },{
         "link" : "https://www.sunlife.ca/ca/Get+a+quote?vgnLocale=en_CA",
-        "text" : "Get a quote",
-        "data-target" : "#"
+        "text" : "Get a quote"
     },{
         "link" : "https://www.sunlife.ca/ca/Support?vgnLocale=en_CA",
-        "text" : "Support",
-        "data-target" : "#"
-    },{
-        "text" : "CANADA | EN",
-        "li-id" : "language-btn-container",
-        "li-role" : "navigation",
-        "aria-label" : "Region & Language Selection",
-        "u-class" : "lang-btn",
-        "a-id" : "language-btn",
-        "a-role" : "button",
-        "aria-expanded" : "false",
-        "data-target" : "#sun-language",
-        "link" : "#"
-    },{
-        "text" : "Search",
-        "li-id" : "search-btn-container",
-        "li-role" : "search",
-        "u-class" : "srch-btn",
-        "a-id" : "search-btn",
-        "a-role" : "button",
-        "aria-expanded" : "false",
-        "data-target" : "#sun-search",
-        "link" : "#"
+        "text" : "Support"  
     }],
+    "utility-nav" : true,
+    "lang" : true,
+    "srch" : true,
     "form-text-id":"demo-id",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
