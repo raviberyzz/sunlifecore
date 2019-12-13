@@ -1,6 +1,5 @@
 package com.sunlife.core.models;
 
-import java.util.List;
 import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -12,21 +11,21 @@ import org.apache.sling.models.annotations.Model;
 public interface TextImageModel {
 
 	@Inject
-	String getRichtext();
+	String getText();
 	
 	@Inject
 	String getFileReference();
 	
 	@Inject
-	String getAlttext();
+	String getImageAlignment();
 	
 	@Inject
-	String getTarget();
+	String getAltText();
 	
 	@Inject
-	String getImgtype();
+	String getImageLink();
 	
 	@Inject
-	String getLink();
+	String getTarget();	
   
 }
