@@ -1,11 +1,11 @@
-<div class="icon-text-wrapper">
+<div class="icon-text-wrapper clearfix">
   <div class="{{text-area-wrapper}}">
-    <div class="{{icon-bg}}">
-      <span class="{{icon-inside}} fa {{fa-icon}} fa-inverse fa-stack-1x"></span>
+    <div class="{{icon-bg}} icon-wrapper">
+      <span class="{{icon-inside}} fa {{fa-icon}}"></span>
     </div>
     {{#if text-present}}
       <div class="icon-text">
-        <p class="icon-text-heading">
+        <div class="icon-text-heading">
           {{#if link-present}}
             <a href="{{href}}">
               {{text-input}}
@@ -13,13 +13,12 @@
           {{else}}
             {{text-input}}
           {{/if}}
-        </p>
+        </div>
+        <div class="icon-text-description">
         {{#if description-present}}
-        <p>
-          {{description-input}}
-        </p>
+            {{description-input}}
         {{/if}}
+        </div>
       </div>
     {{/if}}
-  </div>
 </div>
