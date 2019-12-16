@@ -7,8 +7,9 @@
 input[type=text] {
     font-family: 'sunlife-sans';
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 0 16px;
     height: 48px;
-    border: 1px solid $light-grey-color;
+    width: 100%;
+    border: 1px solid $medium-grey-background;
 }
