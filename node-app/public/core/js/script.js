@@ -1,7 +1,8 @@
 
+console.log('image loaded');
 
 
-console.log('component loaded');
+
 
 
 
@@ -10,7 +11,6 @@ console.log('component loaded');
 
 
 console.log('utility-nav loaded');
-
 
 console.log('component loaded');
 $(document).ready(function () {
@@ -70,7 +70,7 @@ $(document).ready(function () {
     
 });     
 console.log('separator loaded');
-console.log('image loaded');
+console.log('component loaded');
 
 console.log('footer-copyright loaded');
 

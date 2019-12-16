@@ -1,4 +1,4 @@
-#Image Text Component
+#Text image Component
 #Displayes image with text
 JSON Format
 ```

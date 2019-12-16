@@ -1,4 +1,4 @@
-#breadcrumb Component
+#Breadcrumb Component
 #Display navigation links in list format
 JSON Format
 ```

@@ -141,9 +141,12 @@ a {
         max-width: 275px;
         border-radius: 4px;
         padding: 6px;
+        text-align: center;
         cursor: pointer;
         border: none;
         font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
         &:hover {
             background-color: $cool-blue-color;
             color: $white-shade;

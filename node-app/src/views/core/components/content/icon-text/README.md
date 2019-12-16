@@ -1,4 +1,4 @@
-#Icon-text component
+#Icon text component
 JSON Format
 ```
 {   

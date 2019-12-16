@@ -1,4 +1,4 @@
-#Title-Bar Component
+#Title bar Component
 #Displays title-bar
 JSON Format
 ```
