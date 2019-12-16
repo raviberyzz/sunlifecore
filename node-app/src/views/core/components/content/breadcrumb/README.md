@@ -4,7 +4,7 @@ JSON Format
 ```
 {
     "breadcrumb-author":"breadcrumb-author",
-    "breadcrumb-background-color":"breadcrumb-cool-blue-color",
+    "breadcrumb-background-color":"breadcrumb-light-cool-blue-color",
     "page-redirection-link" : [{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
         "text" : "Home",
