@@ -3,9 +3,13 @@
 JSON Format
 ```
 {
-    "title-background-color":"title-yellow-color",
-    "heading":"h1",
+    "title-background-color":"title-wrapper-blue-yellow-rings",
+    "heading":"h2",
     "title-bar-text": "Why join Sun Life?"
 }
 ```
-<!-- Classes available for "title-background-color"" are "title-yellow-color","title-blue-color" and links colors are changed accordingly -->
+<!-- classes available for "title-wrapper-class" class are "title-wrapper-yellow-grey-rings", "title-wrapper-yellow-grey", "title-wrapper-blue-yellow-rings", "title-wrapper-blue-yellow" -->
+
+<!-- If "rings" is present in wrapper class then rings will be loaded in background-image -->
+
+<!-- Tags available for "heading" are "h1" and "h2" -->
