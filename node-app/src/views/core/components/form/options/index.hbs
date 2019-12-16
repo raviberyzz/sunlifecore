@@ -2,32 +2,34 @@
 <div class="form-group-wrapper single-select">
     <select class="form-option" required=""> <i class="fa fa-angle-down"></i>
         <option selected="selected" value="">Select a product </option>
-            {{#each list}}
-                <option value={{link}}  >{{text}}</option>
-            {{/each}}
-</select>
+        {{#each list}}
+        <option value={{link}}>{{text}}</option>
+        {{/each}}
+
+    </select>
 </div>
 {{/if}}
 
 {{#if radio}}
-<div class="form-group-wrapper text-left"> <p>{{radio-heading}}</p>
-    <input type="radio" name="{{radio-name}}" id="{{radio-id}}" value="{{value}}" >
+<div class="form-group-wrapper text-left">
+    <p>{{radio-heading}}</p>
+    <input type="radio" name="{{radio-name}}" id="{{radio-id}}" value="{{value}}">
 </div>
 {{/if}}
 
 {{#if checkbox}}
-<div class="form-group-wrapper text-left">  <p>{{radio-heading}}</p>
-    <input type="checkbox" name="{{checkbox-name}}" id="{{checkbox-id}}" value="{{value}}" >
+<div class="form-group-wrapper text-left">
+    <p>{{checkbox-heading}}</p>
+    <input type="checkbox" name="{{checkbox-name}}" id="{{checkbox-id}}" value="{{value}}">
 </div>
 {{/if}}
-<br> <br>
 {{#if multi-select}}
 
 <div class="input-section form-group-wrapper">
- <select class="form-option" multiple>
-     {{#each list}}
-                <option value={{link}}  >{{text}}</option>
-    {{/each}}
- </select>
+    <select class="form-option" multiple>
+        {{#each list}}
+        <option value={{link}}>{{text}}</option>
+        {{/each}}
+    </select>
 </div>
 {{/if}}

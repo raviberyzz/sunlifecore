@@ -1,14 +1,14 @@
 @import '../../../base/core';
-.input-section {
-    color: #424242;
+.input-wrapper {
+    color: $medium-grey-background;
     margin-bottom: 10px;
 }
-
 input[type=text] {
     font-family: 'sunlife-sans';
     font-weight: 400;
-    font-size: 16px;
-    padding: 0 10px;
-    height: 40px;
-    border: 1px solid $light-grey-color;
+    font-size: 1rem;
+    padding: 0 16px;
+    height: 48px;
+    width: 100%;
+    border: 1px solid $medium-grey-background;
 }
