@@ -53,6 +53,11 @@
     top: 4px;
     float: left;
   }
+  .icon-wrapper {
+    span {
+      color: $medium-blue-color;
+    }
+  } 
   .social-links {
     float: left;
     margin: 0;
