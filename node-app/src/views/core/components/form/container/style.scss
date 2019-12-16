@@ -1,4 +1,18 @@
 @import '../../../base/core';
+
+.form-wrapper{
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid $dark-grey-color;
+    
+    p{
+        margin: 10px 0px 0px 0px;
+    }
+    .text-left{
+        margin-bottom: 10px;
+    }
+}
 .parsley-errors-list.filled {
     background: $medium-red-color;
     color: $white-shade;
@@ -38,3 +52,4 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
 }
+
