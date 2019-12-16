@@ -3730,36 +3730,6 @@ input[type=text] {
   color: #004C6C;
   border: 2px solid #004C6C; }
 
-.title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-  background-size: contain;
-  padding: 32px 0 32px 15px;
-  color: #424242; }
-  .title-bar-wrapper.title-yellow-color h1, .title-bar-wrapper.title-blue-color h1 {
-    margin: 0;
-    font-size: 1.75rem; }
-
-.title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat, #004C6C;
-  background-size: auto;
-  color: #FFCB05; }
-
-@media (max-width: 767px) {
-  .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-    background: #FFCB05;
-    height: 88px; }
-  .title-bar-wrapper.title-blue-color {
-    height: 88px;
-    background: #004C6C; } }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .title-bar-wrapper {
-    height: 92px; } }
-
-@media (min-width: 1025px) {
-  .title-bar-wrapper {
-    height: 93px; } }
-
 .utility-nav-wrapper {
   text-align: right;
   padding: 0px 15px 16px 0px; }
@@ -3822,10 +3792,13 @@ input[type=text] {
     height: 88px;
     background: #004C6C; } }
 
-@media (min-width: 320px) and (max-width: 767px) {
-  .social-icon-wrapper .socials li a {
-    font-size: 2rem; } }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .title-bar-wrapper {
+    height: 92px; } }
 
+@media (min-width: 1025px) {
+  .title-bar-wrapper {
+    height: 93px; } }
 
 
 .social-icon-wrapper .socials li {
@@ -4022,6 +3995,17 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 2px; }
+
+.grey-horizontal-separator {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator {
+  border-color: #FFCB05; }
+
 .search-bar-wrapper {
   background: #FFCB05; }
   .search-bar-wrapper .global-search {
@@ -4061,17 +4045,6 @@ input[type=text] {
     padding-left: 5px;
     width: 1%;
     border: 0; }
-
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  height: 2px; }
-
-.grey-horizontal-separator {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator {
-  border-color: #FFCB05; }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4262,6 +4235,19 @@ hr {
   .mobile-region-language-menu-wrapper {
     display: none; } }
 
+.navigation {
+  position: static; }
+
+.desktop-primary-navigation li {
+  position: static; }
+
+.desktop-primary-navigation .mega-menu-content {
+  z-index: 1000; }
+
+.navbar-new .nav-item > a:after {
+  font-family: FontAwesome;
+  content: " \f107"; }
+
 .sign-in-wrapper .button-class {
   display: none; }
 
@@ -4451,19 +4437,6 @@ hr {
 @media (min-width: 1025px) {
   .slf-mobile-header-wrapper {
     display: none; } }
-
-.navigation {
-  position: static; }
-
-.desktop-primary-navigation li {
-  position: static; }
-
-.desktop-primary-navigation .mega-menu-content {
-  z-index: 1000; }
-
-.navbar-new .nav-item > a:after {
-  font-family: FontAwesome;
-  content: " \f107"; }
 
 .common, .explore-product-wrapper-desk > :not(:first-child) .explore-product-icon-text .icon-background, .tools-resource-wrapper-desk > :not(:first-child) .icon-text-wrapper .icon-background {
   height: 30px;
@@ -4812,6 +4785,7 @@ footer {
   .slf-desktop-header-wrapper {
     display: none; } }
 
+
 .campaign-header-wrapper .logo-img {
   height: 31px; }
 
@@ -4826,6 +4800,74 @@ footer {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .button-wrapper .primary-blue-button .icon-class {
+    display: none; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .button-wrapper .primary-yellow-button .icon-class {
+    display: none; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .button-wrapper .secondary-button .icon-class {
+    display: none; }
+
+.button-wrapper .signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px !important;
+  width: 92px !important;
+  font-size: 0.875rem; }
+  .button-wrapper .signIn-button .icon-class {
+    display: inherit; }
+
+.breadcrumb-wrapper {
+  background: #F4F7F6; }
+  .breadcrumb-wrapper .breadcrumb-row {
+    margin: 0 0 0 15px;
+    padding: 16px 0 16px 14px; }
+    .breadcrumb-wrapper .breadcrumb-row li {
+      font-weight: 700;
+      float: left;
+      line-height: 14px; }
+      .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
+        font-size: 0.875rem;
+        line-height: 14px; }
+      .breadcrumb-wrapper .breadcrumb-row li :hover {
+        text-decoration: none; }
+    .breadcrumb-wrapper .breadcrumb-row .active a {
+      font-weight: 400;
+      color: #424242;
+      font-size: 0.875rem;
+      pointer-events: none; }
+    .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
+      content: "\f105";
+      font-weight: 400;
+      font-family: FontAwesome;
+      color: #004C6C;
+      padding: 0 5px; }
+
+.breadcrumb-cool-blue-color {
+  background: #4A7283; }
+  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
+    color: #ffffff; }
+  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
+    color: #ffffff; }
+
+@media (max-width: 1024px) {
+  .breadcrumb-wrapper {
+    display: none; }
+  .breadcrumb-author {
+    display: block; } }
 
 .banner-wrapper .banner-img {
   width: 100%;
