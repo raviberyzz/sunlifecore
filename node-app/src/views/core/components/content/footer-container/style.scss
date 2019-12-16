@@ -50,11 +50,9 @@ footer {
    
 }
 @media (min-width: 1025px){
-    .footer-section-1{
-        height: 128px;
-    }
+  
     .footer-section-2{
-        height: 249px;
+       
         display: flex;
         .lists-wrapper{
             width: 20%;
@@ -63,9 +61,7 @@ footer {
             }
         }
     }
-    .footer-section-3{
-        height: 97px;
-    }
+    
 }
 
 
