@@ -2,13 +2,16 @@
 JSON Format
 ```
 {   
-    "icon-bg":"icon-background",
-    "icon-inside":"icon-inside",
+    "icon-bg":"icon-background-trans",
+    "icon-inside":"icon-inside-trans",
     "fa-icon":"fa-heartbeat",
-    "heading": "Health & Wellness",
-    "text-area-wrapper" : "text-right-wrapper",
+    "text-present" : true,
+    "text-input": "Health & Wellness",
+    "text-area-wrapper" : "text-bottom-wrapper",
+    "link-present" : false,
+    "href" : "javascript:void(0)",
     "description-present" : false,
-    "description-input" : ""
+    "description-input" : "hi"
 }
 ```
 <!-- Text-area classes available: text-right-wrapper, text-bottom-wrapper -->

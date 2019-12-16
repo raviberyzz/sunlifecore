@@ -64,18 +64,4 @@
     .text-right-wrapper>* {
         display: inline-block;
     }
-
-    .text-bottom-wrapper {
-        .icon-text {
-            position: relative;
-            left: 50%;
-            transform: translateX(-12%);
-        }
-        .icon-background {
-            margin: auto;
-        }
-        .icon-background-trans {
-            margin: auto;
-        }
-    }
 }
