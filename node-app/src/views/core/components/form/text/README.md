@@ -5,11 +5,10 @@ JSON Format
     "form-text-id":"demo-id",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
-    "place-holder" : "AIAIA1",
+    "place-holder" : "Enter Details",
     "form-text-name":"demo-text",
     "text-length":"7",
     "error-message":"Wrong Input",
-    "required-message":"It Can not be empty",
     "validation-pattern": "parsley-pattern"
 }
 ```

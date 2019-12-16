@@ -4,6 +4,7 @@
 {
     "checkbox-heading":"Demo Checkbox",
     "radio-heading":"Demo Radio Button",
+    "checkbox-heading":"Demo Check Box",
     "radio-heading":"Demo Radio",
     "footerLinkText": "Quick Link",
     "input-type":"checkbox",
@@ -12,9 +13,9 @@
     "checkbox-name":"demo-name",
     "checkbox-id":"demo-id",
     "value":"demo-value",
-    "single-select":false,
-    "radio":true,
-    "checkbox":false,
+    "single-select":true,
+    "radio":false,
+    "checkbox":true,
     "multi-select":false,
     "list" : [{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",
