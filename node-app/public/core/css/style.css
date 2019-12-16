@@ -4850,21 +4850,24 @@ footer {
   background: #F4F7F6; }
   .breadcrumb-wrapper .breadcrumb-row {
     margin: 0 0 0 15px;
-    padding: 16px 0 16px 14px; }
+    padding: 16px 0 16px 14px;
+    line-height: 18px; }
     .breadcrumb-wrapper .breadcrumb-row li {
       font-weight: 700;
       float: left;
-      line-height: 14px; }
+      line-height: 18px; }
       .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
         font-size: 0.875rem;
-        line-height: 14px; }
+        line-height: 18px; }
       .breadcrumb-wrapper .breadcrumb-row li :hover {
         text-decoration: none; }
-    .breadcrumb-wrapper .breadcrumb-row .active a {
-      font-weight: 400;
-      color: #424242;
-      font-size: 0.875rem;
-      pointer-events: none; }
+    .breadcrumb-wrapper .breadcrumb-row .active {
+      line-height: 18px; }
+      .breadcrumb-wrapper .breadcrumb-row .active a {
+        font-weight: 400;
+        color: #424242;
+        font-size: 0.875rem;
+        pointer-events: none; }
     .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
       content: "\f105";
       font-weight: 400;
