@@ -3584,6 +3584,44 @@ a {
     font-size: 1.625rem; } }
 
 
+.utility-nav-wrapper {
+  text-align: right;
+  padding: 0px 15px 16px 0px; }
+  .utility-nav-wrapper .utility-nav-links {
+    display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links li {
+      padding: 0px 5px 0px 5px;
+      font-size: 14px;
+      display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links a {
+      font-weight: 400; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn {
+      padding: 8px 11px 0px 16px;
+      color: #003946; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
+        font-family: FontAwesome;
+        content: "\f107"; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
+      background: #ffffff;
+      border-color: #ffffff;
+      border-style: solid;
+      border-width: 5px 1px 1px;
+      padding: 10px;
+      box-shadow: 0 4px 20px -10px #000000; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
+        font-family: FontAwesome;
+        content: "\f106"; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn {
+      text-decoration: none;
+      padding: 8px 0px 0px 2px; }
+      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
+        font-family: FontAwesome;
+        content: "\f002";
+        color: #003946; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
+      color: #003946;
+      background: #FFCB05; }
+
 .input-wrapper {
   color: #9a9a9a;
   margin-bottom: 10px; }
@@ -3732,44 +3770,6 @@ input[type=text] {
   background-color: transparent;
   color: #004C6C;
   border: 2px solid #004C6C; }
-
-.utility-nav-wrapper {
-  text-align: right;
-  padding: 0px 15px 16px 0px; }
-  .utility-nav-wrapper .utility-nav-links {
-    display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links li {
-      padding: 0px 5px 0px 5px;
-      font-size: 14px;
-      display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links a {
-      font-weight: 400; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn {
-      padding: 8px 11px 0px 16px;
-      color: #003946; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
-        font-family: FontAwesome;
-        content: "\f107"; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
-      background: #ffffff;
-      border-color: #ffffff;
-      border-style: solid;
-      border-width: 5px 1px 1px;
-      padding: 10px;
-      box-shadow: 0 4px 20px -10px #000000; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
-        font-family: FontAwesome;
-        content: "\f106"; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn {
-      text-decoration: none;
-      padding: 8px 0px 0px 2px; }
-      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
-        font-family: FontAwesome;
-        content: "\f002";
-        color: #003946; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
-      color: #003946;
-      background: #FFCB05; }
 
 .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
   background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
@@ -4625,23 +4625,27 @@ hr {
   width: 100%;
   display: flex; }
 
-.icon-background {
-  width: 80px;
-  height: 80px;
+
+.icon-text-wrapper .icon-wrapper {
+  text-align: center; }
+
+.icon-text-wrapper .icon-background {
+  width: 60px;
+  height: 60px;
   background: linear-gradient(#FFCB05, #EAAB00);
   border: 2px solid #ffffff;
   border-radius: 100%;
   position: relative; }
 
-.icon-background-trans {
-  width: 80px;
-  height: 80px;
+.icon-text-wrapper .icon-background-trans {
+  width: 60px;
+  height: 60px;
   background: transparent;
   border: 2px solid #ffffff;
   border-radius: 100%;
   position: relative; }
 
-.icon-inside {
+.icon-text-wrapper .icon-inside {
   color: #ffffff;
   position: relative;
   font-size: 50px;
@@ -4649,7 +4653,7 @@ hr {
   top: 50%;
   transform: translateY(-50%); }
 
-.icon-inside-trans {
+.icon-text-wrapper .icon-inside-trans {
   color: #004C6C;
   position: relative;
   font-size: 50px;
@@ -4657,38 +4661,19 @@ hr {
   top: 50%;
   transform: translateY(-50%); }
 
-.text-right-wrapper {
+.icon-text-wrapper .text-right-wrapper {
   display: block; }
 
-.text-right-wrapper > * {
+.icon-text-wrapper .text-right-wrapper > * {
   display: inline-block; }
 
-.text-bottom-wrapper .icon-text {
-  position: relative;
-  left: 50%;
-  transform: translateX(-12%); }
+.icon-text-wrapper .text-bottom-wrapper .icon-text .icon-text-heading, .icon-text-wrapper .text-bottom-wrapper .icon-text .icon-text-description {
+  text-align: center; }
 
-.text-bottom-wrapper .icon-background {
+.icon-text-wrapper .text-bottom-wrapper .icon-background {
   margin: auto; }
 
-.text-bottom-wrapper .icon-background-trans {
-  margin: auto; }
-
-.text-right-wrapper {
-  display: block; }
-
-.text-right-wrapper > * {
-  display: inline-block; }
-
-.text-bottom-wrapper .icon-text {
-  position: relative;
-  left: 50%;
-  transform: translateX(-12%); }
-
-.text-bottom-wrapper .icon-background {
-  margin: auto; }
-
-.text-bottom-wrapper .icon-background-trans {
+.icon-text-wrapper .text-bottom-wrapper .icon-background-trans {
   margin: auto; }
 
 .footer-copyright-wrapper-asd {
