@@ -1,4 +1,4 @@
-
+@import '../../../base/core';
 .image-text-wrapper {
     width: auto;
     height: 100px;
@@ -15,7 +15,7 @@
     .left-aligned {
         float: left;
     }
-@media (max-width: 768px) {
+@media (max-width: $tab-screen-min) {
     .footer-image-text-wrapper {
         display: none;
     }

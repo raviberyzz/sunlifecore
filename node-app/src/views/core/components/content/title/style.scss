@@ -1,40 +1,36 @@
 @import '../../../base/core';
-.title-bar-wrapper.title-yellow-color{
-    background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat,$medium-yellow-background;
-    background-size: contain;
+.title-wrapper-yellow-grey{
+    background-color:$medium-yellow-background;
     padding:32px 0 32px 15px;
+    height:100px;
     color:$dark-grey-color;
-    h1{
+    h1,h2{
       margin:0;
       font-size:1.75rem;
-    }
-    h2,h3,h4,h5,h6{
-      margin:0;
+      line-height:36px;
     }
 }
-.title-bar-wrapper.title-blue-color{
-  @extend .title-bar-wrapper.title-yellow-color;
-  background:url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat,$medium-blue-color;
-  background-size: auto;
+.title-wrapper-yellow-grey-rings{
+  @extend .title-wrapper-yellow-grey;
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color:$medium-yellow-background;
+  background-size: contain;
+}
+.title-wrapper-blue-yellow{
+  @extend .title-wrapper-yellow-grey;
+  background-color:$medium-blue-color;
   color: $medium-yellow-background;
 }
-@media (max-width:767px){
-  .title-bar-wrapper.title-yellow-color{
-    background:$medium-yellow-background;
-    height:88px;
-  }
-  .title-bar-wrapper.title-blue-color{
-    height:88px;
-    background:$medium-blue-color;
-  }
-}
-@media (min-width:768px) and (max-width:1024px){
-  .title-bar-wrapper{
-    height:92px;
-  }
-}
-@media (min-width: 1025px){
-  .title-bar-wrapper{
-    height:93px;
-  }
+ .title-wrapper-blue-yellow-rings{
+  @extend .title-wrapper-yellow-grey;
+  background:url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color:$medium-blue-color;
+  color: $medium-yellow-background;
+ }
+@media (max-width:$mobile-screen-max){
+  .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
+  {
+    height:94px;
+    background-image:none;
+  } 
 }

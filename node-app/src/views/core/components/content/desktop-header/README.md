@@ -1,4 +1,4 @@
-#desktop-header Component
+#Desktop header Component
 #Displays desktop-header
 JSON Format
 ```

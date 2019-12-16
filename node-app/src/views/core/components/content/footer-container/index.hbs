@@ -1,2 +1,15 @@
-<footer>
+<footer class="footer-wrapper">
+    <div class="footer-section-1">
+        {{>core-components-content-text-image}}
+        {{>core-components-content-social-icons}}
+    </div>
+    <div class="footer-section-2">
+         {{#each footer-list}}
+         {{>core-components-content-link-list}}
+         {{/each}}
+    </div>
+    <div class="footer-section-3">
+        {{>core-components-content-footer-copyright}}
+    </div>
 </footer>
+<br><br>

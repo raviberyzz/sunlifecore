@@ -21,7 +21,7 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $tab-screen-min) {
     .lists-wrapper {
         .links {
             float: left;
@@ -37,7 +37,7 @@
         }
     }
 }
-@media (max-width: 767px) {
+@media (max-width: $mobile-screen-max) {
     .lists-wrapper {
         .links {
             .collapse.show {
