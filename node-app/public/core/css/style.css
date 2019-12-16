@@ -3529,9 +3529,12 @@ a {
   max-width: 275px;
   border-radius: 4px;
   padding: 6px;
+  text-align: center;
   cursor: pointer;
   border: none;
-  font-weight: bold; }
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none; }
   .button-wrapper .button-class:hover {
     background-color: #4A7283;
     color: #ffffff; }
@@ -3580,6 +3583,56 @@ a {
   h2 {
     font-size: 1.625rem; } }
 
+
+.utility-nav-wrapper {
+  text-align: right;
+  padding: 0px 15px 16px 0px; }
+  .utility-nav-wrapper .utility-nav-links {
+    display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links li {
+      padding: 0px 5px 0px 5px;
+      font-size: 14px;
+      display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links a {
+      font-weight: 400; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn {
+      padding: 8px 11px 0px 16px;
+      color: #003946; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
+        font-family: FontAwesome;
+        content: "\f107"; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
+      background: #ffffff;
+      border-color: #ffffff;
+      border-style: solid;
+      border-width: 5px 1px 1px;
+      padding: 10px;
+      box-shadow: 0 4px 20px -10px #000000; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
+        font-family: FontAwesome;
+        content: "\f106"; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn {
+      text-decoration: none;
+      padding: 8px 0px 0px 2px; }
+      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
+        font-family: FontAwesome;
+        content: "\f002";
+        color: #003946; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
+      color: #003946;
+      background: #FFCB05; }
+
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 16px;
+  height: 48px;
+  border: 1px solid #D7D7D7; }
 
 .form-option {
   border: medium none;
@@ -3658,18 +3711,6 @@ input[type=radio] {
 input[type=radio]:checked {
   background-color: #004C6C; }
 
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 16px;
-  padding: 0 16px;
-  height: 48px;
-  border: 1px solid #D7D7D7; }
-
 .input-section {
   color: #424242;
   margin-bottom: 10px; }
@@ -3729,44 +3770,6 @@ input[type=text] {
   background-color: transparent;
   color: #004C6C;
   border: 2px solid #004C6C; }
-
-.utility-nav-wrapper {
-  text-align: right;
-  padding: 0px 15px 16px 0px; }
-  .utility-nav-wrapper .utility-nav-links {
-    display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links li {
-      padding: 0px 5px 0px 5px;
-      font-size: 14px;
-      display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links a {
-      font-weight: 400; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn {
-      padding: 8px 11px 0px 16px;
-      color: #003946; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
-        font-family: FontAwesome;
-        content: "\f107"; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
-      background: #ffffff;
-      border-color: #ffffff;
-      border-style: solid;
-      border-width: 5px 1px 1px;
-      padding: 10px;
-      box-shadow: 0 4px 20px -10px #000000; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
-        font-family: FontAwesome;
-        content: "\f106"; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn {
-      text-decoration: none;
-      padding: 8px 0px 0px 2px; }
-      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
-        font-family: FontAwesome;
-        content: "\f002";
-        color: #003946; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
-      color: #003946;
-      background: #FFCB05; }
 
 .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
   background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
@@ -4804,6 +4807,9 @@ footer {
   .button-wrapper .secondary-button .icon-class {
     display: none; }
 
+.button-wrapper .button-text {
+  margin: 0; }
+
 .button-wrapper .signIn-button {
   background-color: #FFCB05;
   color: #004C6C;
@@ -4812,7 +4818,9 @@ footer {
   width: 92px !important;
   font-size: 0.875rem; }
   .button-wrapper .signIn-button .icon-class {
-    display: inherit; }
+    display: inherit;
+    float: left;
+    left: 7px; }
 
 .breadcrumb-wrapper {
   background: #F4F7F6; }

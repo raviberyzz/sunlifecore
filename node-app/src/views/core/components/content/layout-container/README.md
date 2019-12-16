@@ -1,4 +1,4 @@
-#layout-container Component
+#Layout container Component
 #Displays layout-container
 JSON Format
 ```

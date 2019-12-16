@@ -13,7 +13,7 @@
         }
     }
 }
-@media (min-width: 320px) and (max-width:767px) {
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
     .social-icon-wrapper {
         .socials li {
             a {

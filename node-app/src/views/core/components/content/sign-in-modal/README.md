@@ -1,4 +1,4 @@
-#Sign-in-modal Component
+#Sign in modal Component
 #Displays Sign-in-modal
 JSON Format
 ```

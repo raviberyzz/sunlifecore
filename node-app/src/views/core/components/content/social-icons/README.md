@@ -1,4 +1,4 @@
-#Social Media Sharing Component
+#Social media sharing Component
 #Displays Social Links
 JSON Format
 ```

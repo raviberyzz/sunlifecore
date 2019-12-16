@@ -9,7 +9,7 @@
         border-top: 8px solid $medium-yellow-background;
     }
 }
-@media (max-width:1024px) {
+@media (max-width:$tab-screen-max) {
     .campaign-header-wrapper {
         .campaign-header {
             background: $light-grey-background;
