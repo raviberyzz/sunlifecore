@@ -2,7 +2,7 @@
 JSON Format
 ```
 {
-    "place-holder": "A1A11",
-    "name": "form-text"
+    "input-hidden-name":"demo-name",
+    "input-hidden-id":"demo-id"
 }
 ```

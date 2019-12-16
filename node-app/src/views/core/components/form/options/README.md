@@ -3,11 +3,19 @@
 ```
 {
     "checkbox-heading":"Demo Checkbox",
+    "radio-heading":"Demo Radio Button",
     "radio-heading":"Demo Radio",
     "footerLinkText": "Quick Link",
     "input-type":"checkbox",
-    "name":"demo-checkbox",
+    "radio-name":"demo-name",
+    "radio-id":"demo-id",
+    "checkbox-name":"demo-name",
+    "checkbox-id":"demo-id",
     "value":"demo-value",
+    "single-select":false,
+    "radio":true,
+    "checkbox":false,
+    "multi-select":false,
     "list" : [{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",
         "text" : "Sun Life Go Simplified Term Life Insurance"
