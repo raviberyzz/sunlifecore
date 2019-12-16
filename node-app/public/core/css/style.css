@@ -3581,82 +3581,106 @@ a {
     font-size: 1.625rem; } }
 
 
-.footer-copyright-wrapper-asd {
-  background-color: #004C6C;
-  height: 100px;
-  padding: 24px 15px; }
-  .footer-copyright-wrapper-asd .top-part {
-    display: inline-block;
-    width: 100%;
-    line-height: 18px; }
-    .footer-copyright-wrapper-asd .top-part .slf-tagline {
-      color: #FFCB05;
-      font-size: 1.125rem;
-      float: left;
-      font-weight: bold; }
-    .footer-copyright-wrapper-asd .top-part .slf-legal {
-      float: right;
-      font-weight: bold; }
-      .footer-copyright-wrapper-asd .top-part .slf-legal li {
-        display: inline-block;
-        color: #ffffff;
-        padding: 0px 6px; }
-      .footer-copyright-wrapper-asd .top-part .slf-legal a {
-        color: #ffffff;
-        font-size: 0.875rem;
-        font-weight: bold; }
-      .footer-copyright-wrapper-asd .top-part .slf-legal a.border-present {
-        border-right: 2px solid;
-        padding-right: 12px; }
-  .footer-copyright-wrapper-asd .bottom-part {
-    display: inline-block;
-    width: 100%;
-    line-height: 20px; }
-    .footer-copyright-wrapper-asd .bottom-part .slf-logo {
-      color: #ffffff;
-      font-size: 1.125rem;
-      font-weight: bold;
-      float: right; }
-    .footer-copyright-wrapper-asd .bottom-part .slf-copyright, .footer-copyright-wrapper-asd .bottom-part .slf-reserved {
-      color: #ffffff;
-      font-size: 0.875rem;
-      float: left; }
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .footer-copyright-wrapper-asd {
-    height: 116px;
-    padding: 32px 15px; }
-    .footer-copyright-wrapper-asd .site-map {
-      display: none; } }
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 16px;
+  height: 48px;
+  border: 1px solid #D7D7D7; }
 
-@media (max-width: 767px) {
-  .footer-copyright-wrapper-asd {
-    height: auto;
-    padding: 32px 15px; }
-    .footer-copyright-wrapper-asd .top-part {
-      display: block; }
-      .footer-copyright-wrapper-asd .top-part .slf-tagline, .footer-copyright-wrapper-asd .top-part .slf-legal {
-        float: none;
-        text-align: center; }
-      .footer-copyright-wrapper-asd .top-part .slf-legal {
-        padding-top: 32px; }
-        .footer-copyright-wrapper-asd .top-part .slf-legal .move-down {
-          padding-right: 0px; }
-        .footer-copyright-wrapper-asd .top-part .slf-legal .move-down1 {
-          padding-left: 0px;
-          margin-left: -12px; }
-        .footer-copyright-wrapper-asd .top-part .slf-legal .site-map {
-          display: none;
-          padding: 0; }
-    .footer-copyright-wrapper-asd .bottom-part {
-      display: block; }
-      .footer-copyright-wrapper-asd .bottom-part .slf-copyright, .footer-copyright-wrapper-asd .bottom-part .slf-logo, .footer-copyright-wrapper-asd .bottom-part .slf-reserved {
-        float: none;
-        text-align: center; }
-      .footer-copyright-wrapper-asd .bottom-part .slf-copyright {
-        padding-top: 40px; }
-      .footer-copyright-wrapper-asd .bottom-part .slf-logo {
-        padding-top: 16px; } }
+.form-option {
+  border: medium none;
+  border: 1px solid #D7D7D7;
+  border-radius: 0px; }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0px 16px;
+  font-size: 16px;
+  line-height: 1.42857; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+.single-select {
+  height: 48px !important;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png"); }
+
+select.form-control {
+  border: 1px solid #D7D7D7;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  height: auto;
+  background-color: #ffffff; }
+
+input[type=checkbox] {
+  position: relative;
+  visibility: hidden; }
+
+input[type=checkbox]:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 2px;
+  visibility: visible;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #9a9a9a;
+  background: #ffffff;
+  cursor: pointer; }
+
+input[type=checkbox]:checked:after {
+  content: '\f00c';
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 16px;
+  text-align: center;
+  color: #424242;
+  transition: all 0.2s;
+  line-height: 18px; }
+
+input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  background-clip: content-box;
+  border: 1px solid #9a9a9a;
+  background-color: #ffffff;
+  border-radius: 50%; }
+
+input[type=radio]:checked {
+  background-color: #004C6C; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #D7D7D7; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -3849,120 +3873,6 @@ input[type=text] {
   padding: 0 10px;
   height: 40px;
   border: 1px solid #d7d7d7; }
-
-
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 16px;
-  padding: 0 16px;
-  height: 48px;
-  border: 1px solid #D7D7D7; }
-
-.social-icon-wrapper .socials li {
-  padding: 0 12px 0 5px;
-  display: inline-block; }
-  .social-icon-wrapper .socials li a {
-    font-size: 1.875rem; }
-    .social-icon-wrapper .socials li a i:hover {
-      color: #4A7283; }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .social-icon-wrapper .socials li a {
-    font-size: 2rem; } }
-
-.form-option {
-  border: medium none;
-  border: 1px solid #D7D7D7;
-  border-radius: 0px; }
-
-.form-control {
-  display: block;
-  width: 100%;
-  height: 48px;
-  padding: 0px 16px;
-  font-size: 16px;
-  line-height: 1.42857; }
-
-.input-section {
-  color: #424242;
-  margin-bottom: 10px; }
-
-.single-select {
-  height: 48px !important;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png"); }
-
-select.form-control {
-  border: 1px solid #D7D7D7;
-  border-radius: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 16px;
-  height: auto;
-  background-color: #ffffff; }
-
-input[type=checkbox] {
-  position: relative;
-  visibility: hidden; }
-
-input[type=checkbox]:after {
-  display: block;
-  content: '';
-  position: absolute;
-  top: 2px;
-  visibility: visible;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #9a9a9a;
-  background: #ffffff;
-  cursor: pointer; }
-
-input[type=checkbox]:checked:after {
-  content: '\f00c';
-  font-family: FontAwesome;
-  position: absolute;
-  font-size: 16px;
-  text-align: center;
-  color: #424242;
-  transition: all 0.2s;
-  line-height: 18px; }
-
-input[type=radio] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-  background-clip: content-box;
-  border: 1px solid #9a9a9a;
-  background-color: #ffffff;
-  border-radius: 50%; }
-
-input[type=radio]:checked {
-  background-color: #004C6C; }
-
-.input-section {
-  color: #424242;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 16px;
-  padding: 0 10px;
-  height: 40px;
-  border: 1px solid #D7D7D7; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -4561,25 +4471,40 @@ a {
   h2 {
     font-size: 1.625rem; } }
 
-.form-control {
+.parsley-errors-list.filled {
+  background: #B81F41;
+  color: #fff;
+  position: relative;
+  margin: 1px 0px 9px 0px;
+  display: table-cell; }
+
+.parsley-errors-list li {
+  padding: 4px 10px 4px 17px;
+  background-image: none;
+  text-align: left; }
+
+.parsley-errors-list li:before {
+  content: "\f12a";
+  font: normal 1em/0 FontAwesome;
+  left: 9px;
+  position: absolute;
+  top: 19.5px; }
+
+.parsley-custom-error-message {
+  margin: 5px 10px; }
+
+.parsley-errors-list:before {
+  content: '';
   display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857; }
-
-.input-section {
-  color: #424242;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 16px;
-  padding: 0 10px;
-  height: 40px;
-  border: 1px solid #d7d7d7; }
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid #a4383d;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -4753,40 +4678,25 @@ a {
   h2 {
     font-size: 1.625rem; } }
 
-.parsley-errors-list.filled {
-  background: #B81F41;
-  color: #fff;
-  position: relative;
-  margin: 1px 0px 9px 0px;
-  display: table-cell; }
-
-.parsley-errors-list li {
-  padding: 4px 10px 4px 17px;
-  background-image: none;
-  text-align: left; }
-
-.parsley-errors-list li:before {
-  content: "\f12a";
-  font: normal 1em/0 FontAwesome;
-  left: 9px;
-  position: absolute;
-  top: 19.5px; }
-
-.parsley-custom-error-message {
-  margin: 5px 10px; }
-
-.parsley-errors-list:before {
-  content: '';
+.form-control {
   display: block;
-  position: absolute;
-  left: 20px;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  border-bottom: 5px solid #a4383d;
-  border-top: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent; }
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #d7d7d7; }
 
 @font-face {
   font-family: "sunlife-sans";
@@ -5059,6 +4969,18 @@ a {
       color: #003946;
       background: #FFCB05; }
 
+.social-icon-wrapper .socials li {
+  padding: 0 12px 0 5px;
+  display: inline-block; }
+  .social-icon-wrapper .socials li a {
+    font-size: 1.875rem; }
+    .social-icon-wrapper .socials li a i:hover {
+      color: #4A7283; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .social-icon-wrapper .socials li a {
+    font-size: 2rem; } }
+
 .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
   background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
   background-size: contain;
@@ -5088,6 +5010,7 @@ a {
 @media (min-width: 1025px) {
   .title-bar-wrapper {
     height: 93px; } }
+
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -5865,6 +5788,72 @@ hr {
   .lists-wrapper .accordion-heading {
     cursor: pointer; } }
 
+.icon-text-wrapper .icon-background {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(#FFCB05, #EAAB00);
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  position: relative; }
+
+.icon-text-wrapper .icon-background-trans {
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  position: relative; }
+
+.icon-text-wrapper .icon-inside {
+  color: #ffffff;
+  position: relative;
+  font-size: 50px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.icon-text-wrapper .icon-inside-trans {
+  color: #004C6C;
+  position: relative;
+  font-size: 50px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.icon-text-wrapper .text-right-wrapper {
+  display: block; }
+
+.icon-text-wrapper .text-right-wrapper > * {
+  display: inline-block; }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-text {
+  position: relative;
+  left: 50%;
+  transform: translateX(-12%); }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-background {
+  margin: auto; }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-background-trans {
+  margin: auto; }
+
+.icon-text-wrapper .text-right-wrapper {
+  display: block; }
+
+.icon-text-wrapper .text-right-wrapper > * {
+  display: inline-block; }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-text {
+  position: relative;
+  left: 50%;
+  transform: translateX(-12%); }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-background {
+  margin: auto; }
+
+.icon-text-wrapper .text-bottom-wrapper .icon-background-trans {
+  margin: auto; }
+
 .two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
 
@@ -5899,71 +5888,82 @@ hr {
   display: flex; }
 
 
-.icon-background {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(#FFCB05, #EAAB00);
-  border: 2px solid #ffffff;
-  border-radius: 100%;
-  position: relative; }
+.footer-copyright-wrapper-asd {
+  background-color: #004C6C;
+  height: 100px;
+  padding: 24px 15px; }
+  .footer-copyright-wrapper-asd .top-part {
+    display: inline-block;
+    width: 100%;
+    line-height: 18px; }
+    .footer-copyright-wrapper-asd .top-part .slf-tagline {
+      color: #FFCB05;
+      font-size: 1.125rem;
+      float: left;
+      font-weight: bold; }
+    .footer-copyright-wrapper-asd .top-part .slf-legal {
+      float: right;
+      font-weight: bold; }
+      .footer-copyright-wrapper-asd .top-part .slf-legal li {
+        display: inline-block;
+        color: #ffffff;
+        padding: 0px 6px; }
+      .footer-copyright-wrapper-asd .top-part .slf-legal a {
+        color: #ffffff;
+        font-size: 0.875rem;
+        font-weight: bold; }
+      .footer-copyright-wrapper-asd .top-part .slf-legal a.border-present {
+        border-right: 2px solid;
+        padding-right: 12px; }
+  .footer-copyright-wrapper-asd .bottom-part {
+    display: inline-block;
+    width: 100%;
+    line-height: 20px; }
+    .footer-copyright-wrapper-asd .bottom-part .slf-logo {
+      color: #ffffff;
+      font-size: 1.125rem;
+      font-weight: bold;
+      float: right; }
+    .footer-copyright-wrapper-asd .bottom-part .slf-copyright, .footer-copyright-wrapper-asd .bottom-part .slf-reserved {
+      color: #ffffff;
+      font-size: 0.875rem;
+      float: left; }
 
-.icon-background-trans {
-  width: 80px;
-  height: 80px;
-  background: transparent;
-  border: 2px solid #ffffff;
-  border-radius: 100%;
-  position: relative; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-copyright-wrapper-asd {
+    height: 116px;
+    padding: 32px 15px; }
+    .footer-copyright-wrapper-asd .site-map {
+      display: none; } }
 
-.icon-inside {
-  color: #ffffff;
-  position: relative;
-  font-size: 50px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
-
-.icon-inside-trans {
-  color: #004C6C;
-  position: relative;
-  font-size: 50px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
-
-.text-right-wrapper {
-  display: block; }
-
-.text-right-wrapper > * {
-  display: inline-block; }
-
-.text-bottom-wrapper .icon-text {
-  position: relative;
-  left: 50%;
-  transform: translateX(-12%); }
-
-.text-bottom-wrapper .icon-background {
-  margin: auto; }
-
-.text-bottom-wrapper .icon-background-trans {
-  margin: auto; }
-
-.text-right-wrapper {
-  display: block; }
-
-.text-right-wrapper > * {
-  display: inline-block; }
-
-.text-bottom-wrapper .icon-text {
-  position: relative;
-  left: 50%;
-  transform: translateX(-12%); }
-
-.text-bottom-wrapper .icon-background {
-  margin: auto; }
-
-.text-bottom-wrapper .icon-background-trans {
-  margin: auto; }
+@media (max-width: 767px) {
+  .footer-copyright-wrapper-asd {
+    height: auto;
+    padding: 32px 15px; }
+    .footer-copyright-wrapper-asd .top-part {
+      display: block; }
+      .footer-copyright-wrapper-asd .top-part .slf-tagline, .footer-copyright-wrapper-asd .top-part .slf-legal {
+        float: none;
+        text-align: center; }
+      .footer-copyright-wrapper-asd .top-part .slf-legal {
+        padding-top: 32px; }
+        .footer-copyright-wrapper-asd .top-part .slf-legal .move-down {
+          padding-right: 0px; }
+        .footer-copyright-wrapper-asd .top-part .slf-legal .move-down1 {
+          padding-left: 0px;
+          margin-left: -12px; }
+        .footer-copyright-wrapper-asd .top-part .slf-legal .site-map {
+          display: none;
+          padding: 0; }
+    .footer-copyright-wrapper-asd .bottom-part {
+      display: block; }
+      .footer-copyright-wrapper-asd .bottom-part .slf-copyright, .footer-copyright-wrapper-asd .bottom-part .slf-logo, .footer-copyright-wrapper-asd .bottom-part .slf-reserved {
+        float: none;
+        text-align: center; }
+      .footer-copyright-wrapper-asd .bottom-part .slf-copyright {
+        padding-top: 40px; }
+      .footer-copyright-wrapper-asd .bottom-part .slf-logo {
+        padding-top: 16px; } }
 
 footer {
   background-color: #F4F7F6; }
