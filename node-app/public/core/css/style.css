@@ -3763,37 +3763,34 @@ input[type=text] {
       color: #003946;
       background: #FFCB05; }
 
-.title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-  background-size: contain;
+.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+  background-color: #FFCB05;
   padding: 32px 0 32px 15px;
+  height: 100px;
   color: #424242; }
-  .title-bar-wrapper.title-yellow-color h1, .title-bar-wrapper.title-blue-color h1 {
+  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2 {
     margin: 0;
-    font-size: 1.75rem; }
-  .title-bar-wrapper.title-yellow-color h2, .title-bar-wrapper.title-blue-color h2, .title-bar-wrapper.title-yellow-color h3, .title-bar-wrapper.title-blue-color h3, .title-bar-wrapper.title-yellow-color h4, .title-bar-wrapper.title-blue-color h4, .title-bar-wrapper.title-yellow-color h5, .title-bar-wrapper.title-blue-color h5, .title-bar-wrapper.title-yellow-color h6, .title-bar-wrapper.title-blue-color h6 {
-    margin: 0; }
+    font-size: 1.75rem;
+    line-height: 36px; }
 
-.title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat, #004C6C;
-  background-size: auto;
+.title-wrapper-yellow-grey-rings {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color: #FFCB05;
+  background-size: contain; }
+
+.title-wrapper-blue-yellow {
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+.title-wrapper-blue-yellow-rings {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color: #004C6C;
   color: #FFCB05; }
 
 @media (max-width: 767px) {
-  .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-    background: #FFCB05;
-    height: 88px; }
-  .title-bar-wrapper.title-blue-color {
-    height: 88px;
-    background: #004C6C; } }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .title-bar-wrapper {
-    height: 92px; } }
-
-@media (min-width: 1025px) {
-  .title-bar-wrapper {
-    height: 93px; } }
+  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+    height: 94px;
+    background-image: none; } }
 
 
 .social-icon-wrapper .socials li {
