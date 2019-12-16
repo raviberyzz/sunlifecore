@@ -3635,65 +3635,53 @@ input[type=text] {
   border: 1px solid #D7D7D7; }
 
 .form-option {
-  border: medium none;
-  border: 1px solid #D7D7D7;
-  border-radius: 0px; }
-
-.form-control {
+  border: 1px solid #9a9a9a;
+  border-radius: 0px;
   display: block;
   width: 100%;
   height: 48px;
   padding: 0px 16px;
-  font-size: 16px;
-  line-height: 1.42857; }
-
-.input-section {
-  color: #424242;
-  margin-bottom: 10px; }
-
-.single-select {
-  height: 48px !important;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png"); }
-
-select.form-control {
-  border: 1px solid #D7D7D7;
-  border-radius: 0;
+  font-size: 1rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   font-family: 'sunlife-sans';
   font-weight: 400;
-  font-size: 16px;
-  height: auto;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  color: #424242; }
+
+.single-select {
+  height: 48px; }
+  .single-select::before {
+    content: "\f107";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 16px;
+    top: 11px;
+    font-weight: 700; }
 
 input[type=checkbox] {
-  position: relative;
-  visibility: hidden; }
-
-input[type=checkbox]:after {
-  display: block;
-  content: '';
-  position: absolute;
-  top: 2px;
-  visibility: visible;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #9a9a9a;
-  background: #ffffff;
-  cursor: pointer; }
-
-input[type=checkbox]:checked:after {
-  content: '\f00c';
-  font-family: FontAwesome;
-  position: absolute;
-  font-size: 16px;
-  text-align: center;
-  color: #424242;
-  transition: all 0.2s;
-  line-height: 18px; }
+  margin: 0px 0px 0px 15px; }
+  input[type=checkbox]::after {
+    display: block;
+    content: '';
+    position: absolute;
+    visibility: visible;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #9a9a9a;
+    background: #ffffff;
+    cursor: pointer; }
+  input[type=checkbox]:checked:after {
+    content: '\f00c';
+    font-family: FontAwesome;
+    position: absolute;
+    font-size: 16px;
+    text-align: center;
+    color: #424242;
+    transition: all 0.2s;
+    line-height: 18px; }
 
 input[type=radio] {
   -webkit-appearance: none;
@@ -3707,9 +3695,8 @@ input[type=radio] {
   border: 1px solid #9a9a9a;
   background-color: #ffffff;
   border-radius: 50%; }
-
-input[type=radio]:checked {
-  background-color: #004C6C; }
+  input[type=radio]:checked {
+    background-color: #004C6C; }
 
 .input-section {
   color: #424242;
@@ -3757,6 +3744,11 @@ input[type=text] {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
+
+.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
+  height: 48px;
+  width: 180px;
+  border-radius: 4px; }
 
 .button-wrapper .primary-blue-button {
   background-color: #004C6C;
@@ -4755,6 +4747,41 @@ hr {
 
 footer {
   background-color: #F4F7F6; }
+
+.footer-section-1 {
+  display: flow-root; }
+  .footer-section-1 .image-text-wrapper .image-wrapper {
+    margin: 16px 32px 16px 15px; }
+  .footer-section-1 .image-text-wrapper .side-text {
+    margin: 0;
+    font-size: 24px; }
+  .footer-section-1 .social-icon-wrapper {
+    float: right;
+    margin-left: 15px;
+    margin-top: 30px; }
+    .footer-section-1 .social-icon-wrapper li a {
+      font-size: 2rem; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .footer-section-1 .image-text-wrapper {
+    display: none; }
+  .footer-section-1 .social-icon-wrapper {
+    float: none;
+    text-align: center; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-section-2 {
+    display: flow-root; }
+    .footer-section-2 .links {
+      padding: 32px 0px 32px 32px; } }
+
+@media (min-width: 1025px) {
+  .footer-section-2 {
+    display: flex; }
+    .footer-section-2 .lists-wrapper {
+      width: 20%; }
+      .footer-section-2 .lists-wrapper .links {
+        padding: 32px 0px 32px 32px; } }
 
 .slf-desktop-header-wrapper .bottom-bar {
   background-color: #FFCB05;

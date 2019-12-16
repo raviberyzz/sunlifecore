@@ -7,7 +7,7 @@ JSON Format
     "copyright": "© Sun Life Assurance Company of Canada.",
     "reserved": "All rights reserved.",
     "logo": "SLF",
-    "list" : [{
+    "list1" : [{
         "link" : "https://www.sunlife.ca/slf/PSLF+Canada/Legal?vgnLocale=en_CA",
         "text" : "Legal",
         "class-name" : "border-present",

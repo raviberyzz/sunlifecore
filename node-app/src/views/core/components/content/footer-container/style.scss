@@ -2,3 +2,65 @@
 footer {
     background-color: $light-cool-blue-color;
 }
+.footer-section-1{
+    display: flow-root;
+    .image-text-wrapper{  
+        .image-wrapper{
+        margin: 16px 32px 16px 15px ;
+    }
+    .side-text{
+        margin: 0;
+        font-size: 24px;
+    }
+ }
+ .social-icon-wrapper{
+    float: right;
+     margin-left:15px;
+     margin-top:30px;
+     li{
+         a{
+             font-size: 2rem;
+         }
+     }
+ }
+}  
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+    .footer-section-1 {
+       .image-text-wrapper{
+            display: none;
+       }
+       .social-icon-wrapper{
+           float: none;
+           text-align: center;
+       }
+    }
+}
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
+    .footer-section-2{
+        display: flow-root;
+        .links{
+            padding: 32px 0px 32px 32px;
+        }
+    }
+   
+}
+@media (min-width: $desktop-screen-min){
+  
+    .footer-section-2{
+       
+        display: flex;
+        .lists-wrapper{
+            width: 20%;
+            .links{
+                padding: 32px 0px 32px 32px;
+            }
+        }
+    }
+    
+}
+
+
+
+
+ 

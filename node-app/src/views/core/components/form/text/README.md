@@ -9,6 +9,7 @@ JSON Format
     "form-text-name":"demo-text",
     "text-length":"7",
     "error-message":"Wrong Input",
+    "required-message":"It Can not be empty",
     "validation-pattern": "parsley-pattern"
 }
 ```

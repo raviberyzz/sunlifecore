@@ -5,6 +5,6 @@ JSON Format
 {
     "button-type":"button",
     "button-value":"search",
-    "form-button-class":"primary-blue-button"
+    "form-button-class":"primary-yellow-button"
 }
 ```
