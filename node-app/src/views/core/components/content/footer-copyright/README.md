@@ -1,4 +1,4 @@
-#Footer-copyright Component
+#Footer copyright Component
 #Displays footer-copyright
 JSON Format
 ```

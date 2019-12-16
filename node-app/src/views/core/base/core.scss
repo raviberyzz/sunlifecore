@@ -25,3 +25,12 @@ $background-black-ovrelay-color:rgba(0,0,0,0.5);
 $dark-grey-shade:#888888;
 $light-grey-shade:#B4B4B4;
 $medium-red-color:#B81F41;
+
+// media-query variables
+$mobile-screen-min: 320px;
+$mobile-screen-max: 767px;
+$tab-screen-min: 768px;
+$tab-screen-max: 1024px;
+$desktop-screen-min: 1025px;
+$desktop-screen-max: 1280px;
+$large-desktop-screen-min: 1281px;
