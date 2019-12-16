@@ -239,7 +239,7 @@
         margin-left:270px;
     }
 }
-@media (min-width: 1025px){
+@media (min-width: $desktop-screen-min){
     .slf-mobile-header-wrapper{
             display: none;
         }

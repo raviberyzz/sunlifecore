@@ -3044,7 +3044,6 @@ function CheckClicks(lang) {
 
 console.log('utility-nav loaded');
 
-
 console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -3104,7 +3103,6 @@ $(document).ready(function () {
 });     
 console.log('separator loaded');
 console.log('component loaded');
-console.log('image loaded');
 
 console.log('footer-copyright loaded');
 

@@ -46,7 +46,7 @@
     }
   }  
 }
-@media (max-width: 1024px){
+@media (max-width: $tab-screen-max){
   .breadcrumb-wrapper{
     display: none;
   }

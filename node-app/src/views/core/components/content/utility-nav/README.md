@@ -1,4 +1,4 @@
-#Utility Nav Component
+#Utility nav Component
 #Displays secondary action and tools
 ```
 {

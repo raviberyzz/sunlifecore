@@ -3529,9 +3529,12 @@ a {
   max-width: 275px;
   border-radius: 4px;
   padding: 6px;
+  text-align: center;
   cursor: pointer;
   border: none;
-  font-weight: bold; }
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none; }
   .button-wrapper .button-class:hover {
     background-color: #4A7283;
     color: #ffffff; }
@@ -4622,7 +4625,6 @@ hr {
   width: 100%;
   display: flex; }
 
-
 .icon-background {
   width: 80px;
   height: 80px;
@@ -4820,6 +4822,9 @@ footer {
   .button-wrapper .secondary-button .icon-class {
     display: none; }
 
+.button-wrapper .button-text {
+  margin: 0; }
+
 .button-wrapper .signIn-button {
   background-color: #FFCB05;
   color: #004C6C;
@@ -4828,7 +4833,9 @@ footer {
   width: 92px !important;
   font-size: 0.875rem; }
   .button-wrapper .signIn-button .icon-class {
-    display: inherit; }
+    display: inherit;
+    float: left;
+    left: 7px; }
 
 .breadcrumb-wrapper {
   background: #F4F7F6; }
@@ -4917,13 +4924,20 @@ footer {
     max-width: 100%;
     min-width: 100%; } }
 
-.image-text-wrapper .left-image {
-  vertical-align: middle;
-  margin: 0 32px 10px 0; }
+.image-text-wrapper {
+  width: auto;
+  height: 100px;
+  float: left; }
+  .image-text-wrapper .side-text {
+    white-space: nowrap;
+    margin: 0 10px;
+    float: left; }
 
-.image-text-wrapper .side-text {
-  display: inline-block;
-  font-size: 1.5rem; }
+.right-aligned {
+  float: right; }
+
+.left-aligned {
+  float: left; }
 
 @media (max-width: 768px) {
   .footer-image-text-wrapper {

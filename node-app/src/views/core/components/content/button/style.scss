@@ -22,6 +22,9 @@
             display: none;
         }
     }
+    .button-text {
+        margin: 0;
+    }
     .signIn-button {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
@@ -31,6 +34,8 @@
         font-size: 0.875rem;
         .icon-class {
             display: inherit;
+            float: left;
+            left: 7px;
         }
     }
 }

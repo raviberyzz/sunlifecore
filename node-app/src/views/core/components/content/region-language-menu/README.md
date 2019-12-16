@@ -1,4 +1,4 @@
-#Region-language-menu Component
+#Region language menu Component
 #Displays Region-language-menu 
 JSON Format
 ```
