@@ -25,7 +25,7 @@ footer {
  }
 }  
 
-@media (min-width: 320px) and (max-width:767px) {
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
     .footer-section-1 {
        .image-text-wrapper{
             display: none;
@@ -36,11 +36,7 @@ footer {
        }
     }
 }
-@media (min-width: 768px) {
-   
-
-}
-@media (min-width: 768px) and (max-width:1024px) {
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
     .footer-section-2{
         display: flow-root;
         .links{
@@ -49,7 +45,7 @@ footer {
     }
    
 }
-@media (min-width: 1025px){
+@media (min-width: $desktop-screen-min){
   
     .footer-section-2{
        
