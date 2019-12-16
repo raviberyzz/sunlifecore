@@ -1,8 +1,19 @@
-<nav class="breadcrumb-wrapper {{breadcrumb-author}} {{breadcrumb-background-color}} no-gutter">
-	<ul role="navigation" aria-label="Breadcrumb" class="breadcrumb-row clearfix">
-		{{#each page-redirection-link}}
-		<li class="{{class-name}}"><a href="{{link}}">{{text}}</a>
-		</li>
-		{{/each}}
-	</ul>
+<nav class="breadcrumb-wrapper {{breadcrumb-author}} {{breadcrumb-background-color}} no-gutter clearfix">
+	<div class="left-area vertical-middle-align">
+		<ul role="navigation" aria-label="Breadcrumb" class="breadcrumb-row">
+			{{#each page-redirection-link}}
+			<li class="{{class-name}}"><a href="{{link}}">{{text}}</a>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="right-area vertical-middle-align">
+		<span class="side-text">{{side-text}}</span>
+		<ul class="social-links">
+			{{#each social-links}}
+			<li>{{>core-components-content-icon-text}}</li>
+			{{/each}}
+		</ul>
+		
+	</div>
 </nav>

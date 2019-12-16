@@ -5,6 +5,16 @@ JSON Format
 {
     "breadcrumb-author":"breadcrumb-author",
     "breadcrumb-background-color":"breadcrumb-light-cool-blue-color",
+    "icon-bg":"",
+    "icon-inside":"",
+    "text-present" : false,
+    "text-input": "",
+    "text-area-wrapper" : "",
+    "link-present" : false,
+    "href" : "",
+    "description-present" : false,
+    "description-input" : "",
+    "side-text": "Share this:", 
     "page-redirection-link" : [{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
         "text" : "Home",
@@ -17,6 +27,14 @@ JSON Format
         "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
         "text" : "Why join us",
         "class-name": "active"
+    }
+    ],
+    "social-links": [{
+        "fa-icon":"fa-facebook-square"
+    },{
+        "fa-icon":"fa-twitter-square"
+    },{
+        "fa-icon":"fa-linkedin-square"
     }
     ]
 }
