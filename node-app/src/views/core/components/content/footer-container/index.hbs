@@ -4,7 +4,9 @@
         {{>core-components-content-social-icons}}
     </div>
     <div class="footer-section-2">
-        
+         {{#each footer-list}}
+         {{>core-components-content-list}}
+         {{/each}}
     </div>
     <div class="footer-section-3">
         {{>core-components-content-footer-copyright}}
