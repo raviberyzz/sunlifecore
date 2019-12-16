@@ -1,9 +1,10 @@
-#Title-Bar Component
-#Displays title-bar
+#Title Component
+#Displays title
 JSON Format
 ```
 {
     "title-background-color":"title-yellow-color",
+    "heading":"h1",
     "title-bar-text": "Why join Sun Life?"
 }
 ```
