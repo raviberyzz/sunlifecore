@@ -3584,6 +3584,147 @@ a {
     font-size: 1.625rem; } }
 
 
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 16px;
+  height: 48px;
+  border: 1px solid #D7D7D7; }
+
+.form-option {
+  border: 1px solid #9a9a9a;
+  border-radius: 0px;
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0px 16px;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  background-color: #ffffff;
+  color: #424242; }
+
+.single-select {
+  height: 48px; }
+  .single-select::before {
+    content: "\f107";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 16px;
+    top: 11px;
+    font-weight: 700; }
+
+input[type=checkbox] {
+  margin: 0px 0px 0px 15px; }
+  input[type=checkbox]::after {
+    display: block;
+    content: '';
+    position: absolute;
+    visibility: visible;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #9a9a9a;
+    background: #ffffff;
+    cursor: pointer; }
+  input[type=checkbox]:checked:after {
+    content: '\f00c';
+    font-family: FontAwesome;
+    position: absolute;
+    font-size: 16px;
+    text-align: center;
+    color: #424242;
+    transition: all 0.2s;
+    line-height: 18px; }
+
+input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  background-clip: content-box;
+  border: 1px solid #9a9a9a;
+  background-color: #ffffff;
+  border-radius: 50%; }
+  input[type=radio]:checked {
+    background-color: #004C6C; }
+
+.input-section {
+  color: #424242;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #D7D7D7; }
+
+.parsley-errors-list.filled {
+  background: #B81F41;
+  color: #ffffff;
+  position: relative;
+  margin: 1px 0px 9px 0px;
+  display: table-cell; }
+
+.parsley-errors-list li {
+  padding: 4px 10px 4px 17px;
+  background-image: none;
+  text-align: left; }
+
+.parsley-errors-list li:before {
+  content: "\f12a";
+  font: normal 1em/0 FontAwesome;
+  left: 9px;
+  position: absolute;
+  top: 19.5px; }
+
+.parsley-custom-error-message {
+  margin: 5px 10px; }
+
+.parsley-errors-list:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid #B81F41;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; }
+
+.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
+  height: 48px;
+  width: 180px;
+  border-radius: 4px; }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
 .utility-nav-wrapper {
   text-align: right;
   padding: 0px 15px 16px 0px; }
@@ -3622,37 +3763,34 @@ a {
       color: #003946;
       background: #FFCB05; }
 
-.title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
-  background-size: contain;
+.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+  background-color: #FFCB05;
   padding: 32px 0 32px 15px;
+  height: 100px;
   color: #424242; }
-  .title-bar-wrapper.title-yellow-color h1, .title-bar-wrapper.title-blue-color h1 {
+  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2 {
     margin: 0;
-    font-size: 1.75rem; }
-  .title-bar-wrapper.title-yellow-color h2, .title-bar-wrapper.title-blue-color h2, .title-bar-wrapper.title-yellow-color h3, .title-bar-wrapper.title-blue-color h3, .title-bar-wrapper.title-yellow-color h4, .title-bar-wrapper.title-blue-color h4, .title-bar-wrapper.title-yellow-color h5, .title-bar-wrapper.title-blue-color h5, .title-bar-wrapper.title-yellow-color h6, .title-bar-wrapper.title-blue-color h6 {
-    margin: 0; }
+    font-size: 1.75rem;
+    line-height: 36px; }
 
-.title-bar-wrapper.title-blue-color {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat, #004C6C;
-  background-size: auto;
+.title-wrapper-yellow-grey-rings {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color: #FFCB05;
+  background-size: contain; }
+
+.title-wrapper-blue-yellow {
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+.title-wrapper-blue-yellow-rings {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color: #004C6C;
   color: #FFCB05; }
 
 @media (max-width: 767px) {
-  .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
-    background: #FFCB05;
-    height: 88px; }
-  .title-bar-wrapper.title-blue-color {
-    height: 88px;
-    background: #004C6C; } }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .title-bar-wrapper {
-    height: 92px; } }
-
-@media (min-width: 1025px) {
-  .title-bar-wrapper {
-    height: 93px; } }
+  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+    height: 94px;
+    background-image: none; } }
 
 
 .social-icon-wrapper .socials li {
@@ -4712,21 +4850,24 @@ footer {
   background: #F4F7F6; }
   .breadcrumb-wrapper .breadcrumb-row {
     margin: 0 0 0 15px;
-    padding: 16px 0 16px 14px; }
+    padding: 16px 0 16px 14px;
+    line-height: 18px; }
     .breadcrumb-wrapper .breadcrumb-row li {
       font-weight: 700;
       float: left;
-      line-height: 14px; }
+      line-height: 18px; }
       .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
         font-size: 0.875rem;
-        line-height: 14px; }
+        line-height: 18px; }
       .breadcrumb-wrapper .breadcrumb-row li :hover {
         text-decoration: none; }
-    .breadcrumb-wrapper .breadcrumb-row .active a {
-      font-weight: 400;
-      color: #424242;
-      font-size: 0.875rem;
-      pointer-events: none; }
+    .breadcrumb-wrapper .breadcrumb-row .active {
+      line-height: 18px; }
+      .breadcrumb-wrapper .breadcrumb-row .active a {
+        font-weight: 400;
+        color: #424242;
+        font-size: 0.875rem;
+        pointer-events: none; }
     .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
       content: "\f105";
       font-weight: 400;

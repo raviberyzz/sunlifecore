@@ -4,19 +4,21 @@
   .breadcrumb-row {
     margin:0 0 0 15px;
     padding: 16px 0 16px 14px;
+    line-height:18px;
       li{
         font-weight:700;
         float: left;
-        line-height:14px;
+        line-height:18px;
         &:before,a{
           font-size:0.875rem;
-          line-height:14px;
+          line-height:18px;
         }
         :hover{
             text-decoration: none;
         }
       }
       .active {
+        line-height:18px;
         a{
           font-weight: 400;
           color:$dark-grey-color;
