@@ -3584,44 +3584,6 @@ a {
     font-size: 1.625rem; } }
 
 
-.utility-nav-wrapper {
-  text-align: right;
-  padding: 0px 15px 16px 0px; }
-  .utility-nav-wrapper .utility-nav-links {
-    display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links li {
-      padding: 0px 5px 0px 5px;
-      font-size: 14px;
-      display: inline-block; }
-    .utility-nav-wrapper .utility-nav-links a {
-      font-weight: 400; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn {
-      padding: 8px 11px 0px 16px;
-      color: #003946; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
-        font-family: FontAwesome;
-        content: "\f107"; }
-    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
-      background: #ffffff;
-      border-color: #ffffff;
-      border-style: solid;
-      border-width: 5px 1px 1px;
-      padding: 10px;
-      box-shadow: 0 4px 20px -10px #000000; }
-      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
-        font-family: FontAwesome;
-        content: "\f106"; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn {
-      text-decoration: none;
-      padding: 8px 0px 0px 2px; }
-      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
-        font-family: FontAwesome;
-        content: "\f002";
-        color: #003946; }
-    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
-      color: #003946;
-      background: #FFCB05; }
-
 .input-wrapper {
   color: #9a9a9a;
   margin-bottom: 10px; }
@@ -3762,6 +3724,44 @@ input[type=text] {
   background-color: transparent;
   color: #004C6C;
   border: 2px solid #004C6C; }
+
+.utility-nav-wrapper {
+  text-align: right;
+  padding: 0px 15px 16px 0px; }
+  .utility-nav-wrapper .utility-nav-links {
+    display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links li {
+      padding: 0px 5px 0px 5px;
+      font-size: 14px;
+      display: inline-block; }
+    .utility-nav-wrapper .utility-nav-links a {
+      font-weight: 400; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn {
+      padding: 8px 11px 0px 16px;
+      color: #003946; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn::after {
+        font-family: FontAwesome;
+        content: "\f107"; }
+    .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"] {
+      background: #ffffff;
+      border-color: #ffffff;
+      border-style: solid;
+      border-width: 5px 1px 1px;
+      padding: 10px;
+      box-shadow: 0 4px 20px -10px #000000; }
+      .utility-nav-wrapper .utility-nav-links .lang-btn[aria-expanded="true"]::after {
+        font-family: FontAwesome;
+        content: "\f106"; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn {
+      text-decoration: none;
+      padding: 8px 0px 0px 2px; }
+      .utility-nav-wrapper .utility-nav-links .srch-btn::after {
+        font-family: FontAwesome;
+        content: "\f002";
+        color: #003946; }
+    .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
+      color: #003946;
+      background: #FFCB05; }
 
 .title-bar-wrapper.title-yellow-color, .title-bar-wrapper.title-blue-color {
   background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat, #FFCB05;
@@ -4749,6 +4749,7 @@ footer {
   background-color: #F4F7F6; }
 
 .footer-section-1 {
+  height: 128px;
   display: flow-root; }
   .footer-section-1 .image-text-wrapper .image-wrapper {
     margin: 16px 32px 16px 15px; }
@@ -4757,8 +4758,11 @@ footer {
     font-size: 24px; }
   .footer-section-1 .social-icon-wrapper {
     float: right;
-    margin-left: 15px;
-    margin-top: 30px; }
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+    .footer-section-1 .social-icon-wrapper .socials {
+      margin: 0; }
     .footer-section-1 .social-icon-wrapper li a {
       font-size: 2rem; }
 
@@ -4773,7 +4777,12 @@ footer {
   .footer-section-2 {
     display: flow-root; }
     .footer-section-2 .links {
-      padding: 32px 0px 32px 32px; } }
+      padding: 32px 0px 32px 32px; }
+  .footer-wrapper .image-text-wrapper {
+    width: 60%; }
+    .footer-wrapper .image-text-wrapper .side-text {
+      white-space: inherit;
+      float: none; } }
 
 @media (min-width: 1025px) {
   .footer-section-2 {
