@@ -15,7 +15,7 @@
   background-size: auto;
   color: $medium-yellow-background;
 }
-@media (max-width:767px){
+@media (max-width:$mobile-screen-max){
   .title-bar-wrapper.title-yellow-color{
     background:$medium-yellow-background;
     height:88px;
@@ -25,12 +25,12 @@
     background:$medium-blue-color;
   }
 }
-@media (min-width:768px) and (max-width:1024px){
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
   .title-bar-wrapper{
     height:92px;
   }
 }
-@media (min-width: 1025px){
+@media (min-width: $desktop-screen-min){
   .title-bar-wrapper{
     height:93px;
   }
