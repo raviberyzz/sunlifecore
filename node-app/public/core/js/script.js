@@ -1,17 +1,14 @@
-console.log('footer-copyright loaded');
 
-
-
-console.log('component loaded');
-
-
-
+console.log('breadcrumb loaded');
+console.log('container loaded');
 
 
 
 
 
 console.log('utility-nav loaded');
+
+console.log('component loaded');
 
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -21,8 +18,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-console.log('separator loaded');
 
+console.log('separator loaded');
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.slf-tab-region .slf-tab').click(function(){
@@ -31,7 +28,6 @@ $(document).ready(function(){
     $('.region-present').siblings().css("display", "none");
     $('.language-present').siblings().css("display", "none");
 });
-console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -70,9 +66,11 @@ $(document).ready(function () {
     
 });     
 console.log('separator loaded');
+console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 
+console.log('footer-copyright loaded');
 
 console.log('desktop-header loaded');
 $(document).ready(function(){
@@ -85,7 +83,4 @@ $(document).ready(function(){
         $("#sun-search").toggle();
     });
 });
-console.log('container loaded');
 
-
-console.log('breadcrumb loaded');
