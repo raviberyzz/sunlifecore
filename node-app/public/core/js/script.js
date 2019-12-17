@@ -3037,11 +3037,29 @@ function CheckClicks(lang) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+
 console.log('utility-nav loaded');
+console.log('desktop-header loaded');
+$(document).ready(function(){
+    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
+        $("#sun-search").hide();
+        $("#sun-language").toggle();
+    });
+    $("#search-btn-container").click(function(){
+        $("#sun-language").hide();
+        $("#sun-search").toggle();
+    });
+});
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
 
 console.log('component loaded');
-
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3051,6 +3069,7 @@ $(document).ready(function () {
     });
 });     
 console.log('separator loaded');
+
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.slf-tab-region .slf-tab').click(function(){
@@ -3059,7 +3078,6 @@ $(document).ready(function(){
     $('.region-present').siblings().css("display", "none");
     $('.language-present').siblings().css("display", "none");
 });
-console.log('breadcrumb loaded');
 console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
@@ -3108,25 +3126,7 @@ console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
 
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
-
 console.log('container loaded');
 
 
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
-
-
+console.log('breadcrumb loaded');
