@@ -3931,7 +3931,7 @@ input[type=text] {
         line-height: 20px;
         padding-top: 5px; }
         .sign-in-modal-wrapper .login-container .download-app .download-text p {
-          margin: 0px; }
+          margin: 0; }
         .sign-in-modal-wrapper .login-container .download-app .download-text .download-text-bold {
           color: #004C6C;
           font-weight: 700; }
@@ -3942,7 +3942,7 @@ input[type=text] {
     font-weight: 700;
     font-size: 1.125rem;
     line-height: 24px;
-    margin-top: 0px; }
+    margin-top: 0; }
   .sign-in-modal-wrapper .form-second {
     margin-bottom: 16px; }
   .sign-in-modal-wrapper .remeberid {
@@ -3950,7 +3950,7 @@ input[type=text] {
   .sign-in-modal-wrapper .remeberme {
     font-size: 1rem;
     font-weight: 400;
-    margin: 4px 0px 0px 3px; }
+    margin: 4px 0 0 3px; }
     .sign-in-modal-wrapper .remeberme ::before {
       width: 18px;
       height: 18px; }
@@ -4154,7 +4154,8 @@ hr {
 
 .mobile-region-language-menu-wrapper {
   width: 270px;
-  font-size: 1rem; }
+  font-size: 1rem;
+  padding: 0; }
   .mobile-region-language-menu-wrapper .go-back {
     background-color: #004C6C;
     color: #ffffff;
@@ -4262,15 +4263,16 @@ hr {
 .slf-mobile-header-wrapper {
   /* Mobile Header Start */
   /* Mobile Header End */
-  /* Hamburger Menu Start */ }
+  /* Hamburger Menu Start */
+  /* Hamburger Menu End Here */ }
   .slf-mobile-header-wrapper .white-shade {
     background: #ffffff; }
   .slf-mobile-header-wrapper .grey {
     background: #f8f8f8; }
   .slf-mobile-header-wrapper .mobile-header-navbar {
     display: flex;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 50px;
     border-radius: 0;
     box-shadow: 0 8px 6px -6px #000000; }
@@ -4310,7 +4312,7 @@ hr {
       color: #004C6C;
       font-size: 1.5rem;
       padding: 7px;
-      margin: 0px; }
+      margin: 0; }
     .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-text {
       font-size: 0.75rem;
       font-weight: bold;
@@ -4327,7 +4329,9 @@ hr {
     width: 270px;
     height: 100%;
     border-right: 2px solid #FFCB05;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    /* Mobile Region and Language Bar Start Here */
+    /* Mobile Region and Language Bar End Here */ }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper.active {
       left: 0;
       overflow: auto; }
@@ -4345,9 +4349,11 @@ hr {
       padding: 15px 16px 18px 16px;
       background: #F4F7F6; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-field {
+      position: absolute;
+      margin: 6px 0 0 5px;
       border: none;
       background: #F4F7F8;
-      padding: 0px;
+      padding: 0;
       height: 18px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-icon-mobile {
       color: #888888; }
@@ -4371,7 +4377,7 @@ hr {
       padding-top: 8px;
       z-index: 1050; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav {
-      margin: 24px 16px 0px 16px; }
+      margin: 24px 16px 0 16px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .navigation-menu a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav a {
         color: #004C6C;
         font-weight: 400;
@@ -4407,7 +4413,7 @@ hr {
           content: ''; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .subnav, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .subnav {
         padding-left: 28px;
-        margin-left: 0px; }
+        margin-left: 0; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .go-back, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back {
         background-color: #ffffff;
         width: 100%;
@@ -4420,21 +4426,37 @@ hr {
         .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .go-back a:after, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back a:after {
           content: ''; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .subnav, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .subnav {
-        margin-left: 0px; }
+        margin-left: 0; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation {
       z-index: 1200; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation li:first-child a {
         margin-left: -5px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .subnav {
-        margin-left: 0px; }
+        margin-left: 0; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back {
-        margin-bottom: 0px; }
+        margin-bottom: 0; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .second-level-navigation, .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .third-level-navigation {
+      padding-bottom: 0; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .second-level-navigation, .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .third-level-navigation {
+      background-color: #ffffff; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .go-back {
+      background-color: #004C6C;
+      width: 100%;
+      line-height: 23px;
+      padding: 16px;
+      margin-bottom: 0; }
+      .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .go-back a {
+        color: #ffffff; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region a:after {
+      content: ''; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .tab-content {
+      background-color: #ffffff; }
   .slf-mobile-header-wrapper .offcanvas-overlay.active {
     position: absolute;
     width: 100%;
     height: 100%;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     background: #000000;
     opacity: 0.5;
     margin-left: 270px; }
@@ -4834,6 +4856,40 @@ footer {
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
 
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .button-wrapper .primary-blue-button .icon-class {
+    display: none; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .button-wrapper .primary-yellow-button .icon-class {
+    display: none; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .button-wrapper .secondary-button .icon-class {
+    display: none; }
+
+.button-wrapper .button-text {
+  margin: 0; }
+
+.button-wrapper .signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px !important;
+  width: 92px !important;
+  font-size: 0.875rem; }
+  .button-wrapper .signIn-button .icon-class {
+    display: inherit;
+    float: left;
+    left: 7px; }
+
 .breadcrumb-wrapper {
   background: #F4F7F6;
   height: 43px;
@@ -4904,40 +4960,6 @@ footer {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.button-wrapper .primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .button-wrapper .primary-blue-button .icon-class {
-    display: none; }
-
-.button-wrapper .primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .button-wrapper .primary-yellow-button .icon-class {
-    display: none; }
-
-.button-wrapper .secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .button-wrapper .secondary-button .icon-class {
-    display: none; }
-
-.button-wrapper .button-text {
-  margin: 0; }
-
-.button-wrapper .signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px !important;
-  width: 92px !important;
-  font-size: 0.875rem; }
-  .button-wrapper .signIn-button .icon-class {
-    display: inherit;
-    float: left;
-    left: 7px; }
 
 .banner-wrapper .banner-img {
   width: 100%;
