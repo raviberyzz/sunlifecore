@@ -7,13 +7,14 @@
 			{{/each}}
 		</ul>
 	</div>
+	{{#if social-icon-present}}
 	<div class="right-area vertical-middle-align">
 		<span class="side-text">{{side-text}}</span>
 		<ul class="social-links">
 			{{#each social-links}}
-			<li>{{>core-components-content-icon-text}}</li>
+			<li onclick="{{share-link}}">{{>core-components-content-icon-text}}</li>
 			{{/each}}
-		</ul>
-		
+		</ul>		
 	</div>
+	{{/if}}
 </nav>
