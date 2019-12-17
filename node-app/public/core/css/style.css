@@ -3481,40 +3481,22 @@ ul {
   padding: 0; }
 
 /* Heading */
-h1 {
+h1, .heading-1 {
   font-size: 2.25rem; }
 
-h2 {
+h2, .heading-2 {
   font-size: 2rem; }
 
-h3 {
+h3, .heading-3 {
   font-size: 1.75rem; }
 
-h4 {
+h4, .heading-4 {
   font-size: 1.5rem; }
 
-h5 {
+h5, .heading-5 {
   font-size: 1.25rem; }
 
-h6 {
-  font-size: 1.125rem; }
-
-.heading-1 {
-  font-size: 2.25rem; }
-
-.heading-2 {
-  font-size: 2rem; }
-
-.heading-3 {
-  font-size: 1.75rem; }
-
-.heading-4 {
-  font-size: 1.5rem; }
-
-.heading-5 {
-  font-size: 1.25rem; }
-
-.heading-6 {
+h6, .heading-6 {
   font-size: 1.125rem; }
 
 a {
@@ -3603,51 +3585,6 @@ a {
   h2 {
     font-size: 1.625rem; } }
 
-
-.form-wrapper {
-  width: 50%;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #424242; }
-  .form-wrapper p {
-    margin: 10px 0px 0px 0px; }
-  .form-wrapper .text-left {
-    margin-bottom: 10px; }
-
-.parsley-errors-list.filled {
-  background: #B81F41;
-  color: #ffffff;
-  position: relative;
-  margin: 1px 0px 9px 0px;
-  display: table-cell; }
-
-.parsley-errors-list li {
-  padding: 4px 10px 4px 17px;
-  background-image: none;
-  text-align: left; }
-
-.parsley-errors-list li:before {
-  content: "\f12a";
-  font: normal 1em/0 FontAwesome;
-  left: 9px;
-  position: absolute;
-  top: 19.5px; }
-
-.parsley-custom-error-message {
-  margin: 5px 10px; }
-
-.parsley-errors-list:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 20px;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  border-bottom: 5px solid #B81F41;
-  border-top: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent; }
 
 .input-wrapper {
   color: #9a9a9a;
@@ -4889,6 +4826,22 @@ footer {
       .footer-section-2 .lists-wrapper .links {
         padding: 32px 0px 32px 32px; } }
 
+.slf-desktop-header-wrapper .bottom-bar {
+  background-color: #FFCB05;
+  height: 8px;
+  display: block; }
+
+.slf-desktop-header-wrapper .button-float-right {
+  float: right;
+  padding-right: 15px; }
+
+.slf-desktop-header-wrapper .region-lenguage-menu-wrapper, .slf-desktop-header-wrapper .search-bar-wrapper {
+  -webkit-transition: 0.5s ease-out; }
+
+@media (max-width: 1024px) {
+  .slf-desktop-header-wrapper {
+    display: none; } }
+
 
 .campaign-header-wrapper .logo-img {
   height: 31px; }
@@ -4938,54 +4891,6 @@ footer {
     display: inherit;
     float: left;
     left: 7px; }
-
-.banner-wrapper .banner-img {
-  width: 100%;
-  height: 100%; }
-
-.banner-wrapper .banner-box-wrapper {
-  position: absolute;
-  margin-right: 30px;
-  width: 47.2%; }
-  .banner-wrapper .banner-box-wrapper .banner-box {
-    padding: 20px 27px; }
-
-.banner-wrapper .hero-banner {
-  position: relative; }
-
-.banner-wrapper .right-align {
-  right: 0; }
-
-.banner-wrapper .left-align {
-  left: 0; }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .banner-wrapper .hero-banner .not-mobile-image {
-    height: 345px; }
-  .banner-wrapper .hero-banner .white-box-parent {
-    position: relative;
-    margin-right: 0;
-    width: 100%;
-    transform: inherit; }
-    .banner-wrapper .hero-banner .white-box-parent .banner-box {
-      box-shadow: none; }
-  .banner-wrapper .hero-banner .transparent-box-parent {
-    background-color: rgba(255, 255, 255, 0.7);
-    left: 0;
-    text-align: center;
-    position: absolute;
-    margin: 0;
-    width: 100%;
-    transform: inherit;
-    bottom: 0;
-    top: inherit; }
-    .banner-wrapper .hero-banner .transparent-box-parent .banner-box {
-      box-shadow: none;
-      text-align: center; }
-  .banner-wrapper .hero-banner button {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%; } }
 
 .breadcrumb-wrapper {
   background: #F4F7F6;
@@ -5060,25 +4965,81 @@ footer {
   .breadcrumb-author {
     display: block; } }
 
-.image-text-wrapper .middle-aligned-text {
+.banner-wrapper .banner-img {
+  width: 100%;
+  height: 100%; }
+
+.banner-wrapper .banner-box-wrapper {
+  position: absolute;
+  margin-right: 30px;
+  width: 47.2%; }
+  .banner-wrapper .banner-box-wrapper .banner-box {
+    padding: 20px 27px; }
+
+.banner-wrapper .hero-banner {
+  position: relative; }
+
+.banner-wrapper .right-align {
+  right: 0; }
+
+.banner-wrapper .left-align {
+  left: 0; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .banner-wrapper .hero-banner .not-mobile-image {
+    height: 345px; }
+  .banner-wrapper .hero-banner .white-box-parent {
+    position: relative;
+    margin-right: 0;
+    width: 100%;
+    transform: inherit; }
+    .banner-wrapper .hero-banner .white-box-parent .banner-box {
+      box-shadow: none; }
+  .banner-wrapper .hero-banner .transparent-box-parent {
+    background-color: rgba(255, 255, 255, 0.7);
+    left: 0;
+    text-align: center;
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    transform: inherit;
+    bottom: 0;
+    top: inherit; }
+    .banner-wrapper .hero-banner .transparent-box-parent .banner-box {
+      box-shadow: none;
+      text-align: center; }
+  .banner-wrapper .hero-banner button {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%; } }
+
+.middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position {
   display: flex;
   align-items: center; }
 
-.image-text-wrapper .left-item {
+.left-item {
   float: left;
   margin-right: 30px; }
 
-.image-text-wrapper .mobile-image {
+.mobile-image {
   display: none; }
 
-.image-text-wrapper .circular-image {
+.circular-image img {
   border-radius: 50%; }
 
-.image-text-wrapper .round-border {
+.round-border img {
   border: 4px solid #EAAB00; }
 
 @media (max-width: 767px) {
-  .image-text-wrapper .desktop-image {
+  .desktop-image {
     display: none; }
-  .image-text-wrapper .mobile-image {
-    display: inherit; } }
+  .mobile-image {
+    display: inherit; }
+  .left-item {
+    float: none;
+    margin-right: 0; }
+  .middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position {
+    display: inherit;
+    text-align: center; }
+    .middle-aligned-text .right-image-position .text-section, .middle-aligned-text .left-image-position .text-section {
+      margin: 20px 0; } }

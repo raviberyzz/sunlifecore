@@ -3036,18 +3036,6 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
-console.log('breadcrumb loaded');
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
 
 
 
@@ -3078,7 +3066,6 @@ $(document).ready(function(){
     $('.region-present').siblings().css("display", "none");
     $('.language-present').siblings().css("display", "none");
 });
-console.log('separator loaded');
 console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
@@ -3121,11 +3108,23 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });  
 });     
+console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
-console.log('icon-text loaded');
 console.log('footer-copyright loaded');
+console.log('icon-text loaded');
 
+console.log('desktop-header loaded');
+$(document).ready(function(){
+    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
+        $("#sun-search").hide();
+        $("#sun-language").toggle();
+    });
+    $("#search-btn-container").click(function(){
+        $("#sun-language").hide();
+        $("#sun-search").toggle();
+    });
+});
 console.log('container loaded');
 
 
