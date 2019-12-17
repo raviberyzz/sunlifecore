@@ -12,10 +12,8 @@ JSON Format
     "text": "TRUSTED BRAND 10 YEARS IN A ROW",
     "is-right-aligned-image": false,
     "text-alignment": "middle-aligned-text",
-    "desk-image-type": "",
-    "desk-img-border": "round-border",
-    "mob-image-type": "",
-    "mob-img-border": "",
+    "image-type": "",
+    "img-border": "",
     "iconlist" : [{
         "icon" : "fa fa-facebook-square",
         "icon-link" : "https://www.facebook.com/SLFCanada"
@@ -127,7 +125,7 @@ JSON Format
         "text" : "欢迎访问永明金融网页"
     }]
     },
-    {"LinkText": "Contuct Us",
+    {"LinkText": "Contact Us",
     "list-wrapper-class": "lists-wrapper",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",

@@ -5,14 +5,10 @@ footer {
 .footer-section-1{
     height: 128px;
     display: flow-root;
-    .image-text-wrapper{  
-        .image-wrapper{
+    .image-text-wrapper{ 
+        float: left; 
         margin: 16px 32px 16px 15px ;
-    }
-    .side-text{
-        margin: 0;
-        font-size: 24px;
-    }
+   
  }
  .social-icon-wrapper{
     float: right;
