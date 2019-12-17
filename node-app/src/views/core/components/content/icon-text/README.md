@@ -11,7 +11,8 @@ JSON Format
     "link-present" : false,
     "href" : "javascript:void(0)",
     "description-present" : false,
-    "description-input" : "This is description text"
+    "description-input" : "",
+    "share-link":""
 }
 ```
 <!-- Text-area classes available: text-right-wrapper, text-bottom-wrapper -->

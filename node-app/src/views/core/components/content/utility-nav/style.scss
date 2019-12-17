@@ -1,11 +1,11 @@
 @import '../../../base/core';
 .utility-nav-wrapper {
     text-align: right;
-    padding: 0px 15px 16px 0px;
+    padding: 0 15px 16px 0px;
     .utility-nav-links {
         display: inline-block;
        li {
-            padding: 0px 5px 0px 5px;
+            padding: 0 5px 0 5px;
             font-size: 14px;
             display: inline-block;
         }
@@ -13,7 +13,7 @@
             font-weight: 400;
         }
         .lang-btn {
-            padding: 8px 11px 0px 16px;
+            padding: 8px 11px 0 16px;
             color: $blue-gradient-color;
             &::after {
                 font-family: FontAwesome;
@@ -34,7 +34,7 @@
         }
         .srch-btn {
             text-decoration: none;
-            padding: 8px 0px 0px 2px;
+            padding: 8px 0 0 2px;
             &::after {
                 font-family: FontAwesome;
                 content: "\f002";
