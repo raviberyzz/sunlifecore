@@ -1,7 +1,31 @@
-<div class="image-text-wrapper {{rwd-hidden-class}}">
-	<div class="image-wrapper {{image-alignment}}" >
-		<a href="{{image-link}}">
-			<img class="side-image" id="image" src="{{image-src}}" alt="{{alt}}"></a>
+<div class="image-text-wrapper">
+	{{#if is-right-aligned-image}}
+	<div class="right-image-position {{text-alignment}} clearfix">
+		<div class="left-item">
+			<p>{{text}}</p>
+		</div>
+		<div class="right-item">
+			<a class="desktop-image" href="{{desk-image-link}}">
+				<img class="side-image {{desk-image-type}} {{desk-img-border}}" src="{{desk-image-src}}" alt="{{desk-alt}}">
+			</a>
+			<a class="mobile-image" href="{{mob-image-link}}">
+				<img class="side-image {{mob-image-type}} {{mob-img-border}}" src="{{mob-image-src}}" alt="{{mob-alt}}">
+			</a>
+		</div>
 	</div>
-		<span class="side-text vertical-middle-align">{{text}}</span>
+	{{else}}
+	<div class="left-image-position clearfix">
+		<div class="left-item">
+			<a class="desktop-image" href="{{desk-image-link}}">
+				<img class="side-image {{desk-image-type}} {{desk-img-border}}" src="{{desk-image-src}}" alt="{{desk-alt}}">
+			</a>
+			<a class="mobile-image" href="{{mob-image-link}}">
+				<img class="side-image {{mob-image-type}} {{mob-img-border}}" src="{{mob-image-src}}" alt="{{mob-alt}}">
+			</a>
+		</div>
+		<div class="right-item">
+			<p>{{text}}</p>
+		</div>
+	</div>
+	{{/if}}
 </div>
