@@ -3,12 +3,19 @@
 JSON Format
 ```
 {
-    "image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
-    "image-src": "http://sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
-    "alt": "Voted Reader's Digest Most Trusted Brand 10 years",
+    "desk-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
+    "mob-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
+    "desk-image-src": "https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
+    "mob-image-src": "http://sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
+    "desk-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
+    "mob-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
     "text": "TRUSTED BRAND 10 YEARS IN A ROW",
-    "rwd-hidden-class": "",
-    "image-alignment": "left-aligned",
+    "is-right-aligned-image": false,
+    "text-alignment": "middle-aligned-text",
+    "desk-image-type": "",
+    "desk-img-border": "round-border",
+    "mob-image-type": "",
+    "mob-img-border": "",
     "iconlist" : [{
         "icon" : "fa fa-facebook-square",
         "icon-link" : "https://www.facebook.com/SLFCanada"
