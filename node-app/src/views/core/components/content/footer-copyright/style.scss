@@ -1,6 +1,6 @@
 @import '../../../base/core';
 
-.footer-copyright-wrapper-asd{
+.footer-copyright-wrapper{
     background-color: $medium-blue-color;
     height: 100px;
     padding:24px 15px;
@@ -20,7 +20,7 @@
             li{
                 display: inline-block;
                 color: $white-shade;
-                padding:0px 6px;
+                padding:0 6px;
             }
             a{
                 color: $white-shade;
@@ -51,7 +51,7 @@
     }
 }
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
-    .footer-copyright-wrapper-asd{
+    .footer-copyright-wrapper{
         height: 116px;
         padding:32px 15px;
         .site-map{
@@ -60,7 +60,7 @@
     }
 }
 @media (max-width: $mobile-screen-max){
-    .footer-copyright-wrapper-asd{
+    .footer-copyright-wrapper{
         height: auto;
         padding:32px 15px;
         .top-part{
@@ -72,10 +72,10 @@
             .slf-legal{
                 padding-top: 32px;
                 .move-down{
-                    padding-right: 0px;
+                    padding-right: 0;
                 }
                 .move-down1{
-                    padding-left: 0px;
+                    padding-left: 0;
                     margin-left: -12px;
                 }
                 .site-map{

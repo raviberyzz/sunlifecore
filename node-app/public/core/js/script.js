@@ -1746,124 +1746,123 @@ function CheckClicks(lang) {
 // 	$("#browser-alert").show();
 // }
 // }
-// function getURLSocialMedia(){
-// 	var d = document;
-// 	var l = d.location;
-// 	var URLSocialMedia = l.href;
-// 	var page_lang=$('html').attr('lang');
-// 	var lang=page_lang+"-CA";
-// 	URLSocialMedia = URLSocialMedia.replace('#', '');
-// 	URLSocialMedia = URLSocialMedia.replace(/[\|]/g, '%7C');
-// 	var prefixWT = 'WT.mc_id=';
-// 	var suffixWT = ':Social:Networks:GenericSite:Sharetoolbar';
-// 	var paraAppend = prefixWT + lang + suffixWT;
-// 	if(URLSocialMedia.indexOf(suffixWT) < 0 && URLSocialMedia.indexOf(encodeURIComponent(suffixWT)) < 0){
-// 		if(URLSocialMedia.indexOf('?') > -1){
-// 			URLSocialMedia = URLSocialMedia + '&' + paraAppend;
-// 		} else {
-// 			URLSocialMedia = URLSocialMedia + '?' + paraAppend;
-// 		}
-// 	}
-// 	return URLSocialMedia;
-// }
-// function shareFB() {
-// var d = document,
-//     f = 'https://www.facebook.com/share',
-//     l = d.location,
-//     e = encodeURIComponent,
-//     p = '.php?src=bm&v=4&i=1354276539&u=' + e(getURLSocialMedia()) + '&t=' + e(d.title);
-// 1;
-// try {
-//     if (!/^(.*\.)?facebook\.[^.]*$/.test(l.host)) throw (0);
-//     share_internal_bookmarklet(p)
-// } catch (z) {
-//     a = function () {
-//         if (!window.open(f + 'r' + p, 'sharer', 'toolbar=0,status=0,resizable=1,width=626,height=436')) l.href = f + p
-//     };
-//     if (/Firefox/.test(navigator.userAgent)) setTimeout(a, 0);
-//     else {
-//         a();
-// 		if(l.href.indexOf("Tools+and+Resources")>-1){
-// 			utag.link({  ev_type: "other",   ev_action: "clk",   ev_title: "share_facebook" });
-// 		}
-//     }
-//   return true;
-// }
-// }
-// function shareTwitter() {
-// (function () {
-//     window.twttr = window.twttr || {};
-//     var D = 550,
-//         A = 450,
-//         C = screen.height,
-//         B = screen.width,
-//         H = Math.round((B / 2) - (D / 2)),
-//         G = 0,
-//         F = document,
-// 	l = F.location,
-//         E;
-//     if (C > A) {
-//         G = Math.round((C / 2) - (A / 2))
-//     }
-//     //window.twttr.shareWin = window.open('http://twitter.com/share', '', 'left=' + H + ',top=' + G + ',width=' + D + ',height=' + A + ',personalbar=0,toolbar=0,scrollbars=1,resizable=1');
-//     window.twttr.shareWin=window.open('https://twitter.com/intent/tweet?&text=' + encodeURIComponent(F.title) + '&url=' + encodeURIComponent(getURLSocialMedia()),'','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');
-// 	if(l.href.indexOf("Tools+and+Resources")>-1){
-// 		utag.link({  ev_type: "other",   ev_action: "clk",   ev_title: "share_twitter"    }); 
-// 	}
-//     //  E = F.createElement('script');
-//       //E.src = 'http://platform.twitter.com/bookmarklets/share.js?v=1';
-//       //F.getElementsByTagName('head')[0].appendChild(E)
-// }());
-// }
-// function shareLinkedIn() {
-// (function () {
-//     var d = document,
-//         l = d.location,
-//         f = 'http://www.linkedin.com/shareArticle?mini=true&ro=false&trk=bookmarklet&title=' + encodeURIComponent(d.title) + '&url=' + encodeURIComponent(getURLSocialMedia()),
-//         a = function () {
-//             if (!window.open(f, 'News', 'width=520,height=570,toolbar=0,location=0,status=0,scrollbars=yes')) {
-//                // l.href = f;
-//             }
-//         };
-//     if (/Firefox/.test(navigator.userAgent)) {
-//         setTimeout(a, 0);
-//     } else {
-//         a();
-// 		if(l.href.indexOf("Tools+and+Resources")>-1){
-// 			utag.link({  ev_type: "other",    ev_action: "clk",    ev_title: "share_linkedin" });
-// 		}
-//     }
-// })()
-// return true;
-// }
-// function shareGooglePlus() {
-// 	void(window.open('https://plus.google.com/share?ur\l='+encodeURIComponent(getURLSocialMedia()), 'Google','width=600,height=460,menubar=no,location=no,status=no'))
-// }
-// function removeParam(key, sourceURL) {
-//     var rtn = sourceURL.split("?")[0],
-//         param,
-//         params_arr = [],
-//         queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
-//     if (queryString !== "") {
-//         params_arr = queryString.split("&");
-//         for (var i = params_arr.length - 1; i >= 0; i -= 1) {
-//             param = params_arr[i].split("=")[0];
-//             if (param === key) {
-//                 params_arr.splice(i, 1);
-//             }
-//         }
-//         rtn = rtn + "?" + params_arr.join("&");
-//     }
-//     return rtn;
-// }
-// /*Start of language toggle functionality*/
-// 	function LanguageToggle() {
-// 	var langAnchor = document.getElementById("langToggle");
-//     var langCodeField = document.getElementById("langToggle_lang");
-//     if (langAnchor && langCodeField && langCodeField.value) {
-//         var newLocale = langCodeField.value;
-//         var newUrl = "";
-//         var currUrl = location.href;
+function getURLSocialMedia(){
+	var d = document;
+	var l = d.location;
+	var URLSocialMedia = l.href;
+	var page_lang=$('html').attr('lang');
+	var lang=page_lang+"-CA";
+	URLSocialMedia = URLSocialMedia.replace('#', '');
+	URLSocialMedia = URLSocialMedia.replace(/[\|]/g, '%7C');
+	var prefixWT = 'WT.mc_id=';
+	var suffixWT = ':Social:Networks:GenericSite:Sharetoolbar';
+	var paraAppend = prefixWT + lang + suffixWT;
+	if(URLSocialMedia.indexOf(suffixWT) < 0 && URLSocialMedia.indexOf(encodeURIComponent(suffixWT)) < 0){
+		if(URLSocialMedia.indexOf('?') > -1){
+			URLSocialMedia = URLSocialMedia + '&' + paraAppend;
+		} else {
+			URLSocialMedia = URLSocialMedia + '?' + paraAppend;
+		}
+	}
+	return URLSocialMedia;
+}
+function shareFB() {
+var d = document,
+    f = 'https://www.facebook.com/share',
+    l = d.location,
+    e = encodeURIComponent,
+    p = '.php?src=bm&v=4&i=1354276539&u=' + e(getURLSocialMedia()) + '&t=' + e(d.title);
+try {
+    if (!/^(.*\.)?facebook\.[^.]*$/.test(l.host)) throw (0);
+    share_internal_bookmarklet(p)
+} catch (z) {
+    a = function () {
+        if (!window.open(f + 'r' + p, 'sharer', 'toolbar=0,status=0,resizable=1,width=626,height=436')) l.href = f + p
+    };
+    if (/Firefox/.test(navigator.userAgent)) setTimeout(a, 0);
+    else {
+        a();
+		if(l.href.indexOf("Tools+and+Resources")>-1){
+			utag.link({  ev_type: "other",   ev_action: "clk",   ev_title: "share_facebook" });
+		}
+    }
+  return true;
+}
+}
+function shareTwitter() {
+(function () {
+    window.twttr = window.twttr || {};
+    var D = 550,
+        A = 450,
+        C = screen.height,
+        B = screen.width,
+        H = Math.round((B / 2) - (D / 2)),
+        G = 0,
+        F = document,
+	l = F.location,
+        E;
+    if (C > A) {
+        G = Math.round((C / 2) - (A / 2))
+    }
+    //window.twttr.shareWin = window.open('http://twitter.com/share', '', 'left=' + H + ',top=' + G + ',width=' + D + ',height=' + A + ',personalbar=0,toolbar=0,scrollbars=1,resizable=1');
+    window.twttr.shareWin=window.open('https://twitter.com/intent/tweet?&text=' + encodeURIComponent(F.title) + '&url=' + encodeURIComponent(getURLSocialMedia()),'','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');
+	if(l.href.indexOf("Tools+and+Resources")>-1){
+		utag.link({  ev_type: "other",   ev_action: "clk",   ev_title: "share_twitter"    }); 
+	}
+    //  E = F.createElement('script');
+      //E.src = 'http://platform.twitter.com/bookmarklets/share.js?v=1';
+      //F.getElementsByTagName('head')[0].appendChild(E)
+}());
+}
+function shareLinkedIn() {
+(function () {
+    var d = document,
+        l = d.location,
+        f = 'http://www.linkedin.com/shareArticle?mini=true&ro=false&trk=bookmarklet&title=' + encodeURIComponent(d.title) + '&url=' + encodeURIComponent(getURLSocialMedia()),
+        a = function () {
+            if (!window.open(f, 'News', 'width=520,height=570,toolbar=0,location=0,status=0,scrollbars=yes')) {
+               // l.href = f;
+            }
+        };
+    if (/Firefox/.test(navigator.userAgent)) {
+        setTimeout(a, 0);
+    } else {
+        a();
+		if(l.href.indexOf("Tools+and+Resources")>-1){
+			utag.link({  ev_type: "other",    ev_action: "clk",    ev_title: "share_linkedin" });
+		}
+    }
+})()
+return true;
+}
+function shareGooglePlus() {
+	void(window.open('https://plus.google.com/share?ur\l='+encodeURIComponent(getURLSocialMedia()), 'Google','width=600,height=460,menubar=no,location=no,status=no'))
+}
+function removeParam(key, sourceURL) {
+    var rtn = sourceURL.split("?")[0],
+        param,
+        params_arr = [],
+        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+    if (queryString !== "") {
+        params_arr = queryString.split("&");
+        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            param = params_arr[i].split("=")[0];
+            if (param === key) {
+                params_arr.splice(i, 1);
+            }
+        }
+        rtn = rtn + "?" + params_arr.join("&");
+    }
+    return rtn;
+}
+/*Start of language toggle functionality*/
+	// function LanguageToggle() {
+	// var langAnchor = document.getElementById("langToggle");
+    // var langCodeField = document.getElementById("langToggle_lang");
+    // if (langAnchor && langCodeField && langCodeField.value) {
+    //     var newLocale = langCodeField.value;
+    //     var newUrl = "";
+    //     var currUrl = location.href;
 //         var hashUrl;
 //         if (currUrl.indexOf("#") != -1) {
 //             hashUrl = currUrl.split('#');
@@ -3112,8 +3111,8 @@ $(document).ready(function () {
 console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
-console.log('icon-text loaded');
 console.log('footer-copyright loaded');
+console.log('icon-text loaded');
 
 console.log('desktop-header loaded');
 $(document).ready(function(){
