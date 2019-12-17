@@ -3036,6 +3036,14 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 console.log('utility-nav loaded');
 
 
@@ -3103,8 +3111,8 @@ $(document).ready(function () {
 console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
-console.log('icon-text loaded');
 console.log('footer-copyright loaded');
+console.log('icon-text loaded');
 
 console.log('desktop-header loaded');
 $(document).ready(function(){
