@@ -1,3 +1,5 @@
-<form id={{form-id}} name={{form-name}} action={{form-action}} data-parsley-validate="data-parsley-validate" onsubmit={{form-function}}>
-    
+<form class="{{form-class}}" id="{{form-id}}" name="{{form-name}}" action="{{form-action}}" method="{{form-method}}" onsubmit="{{form-function}}">
+    {{>core-components-form-text}}
+    {{>core-components-form-options}}
+    {{>core-components-form-button}}
 </form>

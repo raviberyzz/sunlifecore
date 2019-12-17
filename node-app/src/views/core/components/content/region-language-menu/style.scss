@@ -266,13 +266,13 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $tab-screen-max) {
     .desktop-region-language-menu-wrapper {
         display: none;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: $tab-screen-max) {
     .mobile-region-language-menu-wrapper {
         display: none;
     }

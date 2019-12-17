@@ -5,7 +5,7 @@ JSON Format
 {
     "button-class": "signIn-button",
     "button-text": "Button",
-    "button-type": "button",
+    "redirection-link": "javascript:void(0)",
     "button-wrapper-class":""
 }
 ```

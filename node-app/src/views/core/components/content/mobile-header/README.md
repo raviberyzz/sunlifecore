@@ -1,4 +1,4 @@
-#Mobile-Header Component
+#Mobile header Component
 #Displays Mobile-Header
 JSON Format
 ```
