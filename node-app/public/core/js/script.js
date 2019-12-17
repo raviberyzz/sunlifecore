@@ -3037,13 +3037,12 @@ function removeParam(key, sourceURL) {
 // } 
 
 
+
+
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
-
-
 
 console.log('utility-nav loaded');
 
@@ -3068,7 +3067,7 @@ $(document).ready(function(){
     $('.language-present').siblings().css("display", "none");
 });
 console.log('separator loaded');
-console.log('breadcrumb loaded');
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3110,7 +3109,6 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });  
 });     
-console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
@@ -3129,3 +3127,5 @@ $(document).ready(function(){
 });
 console.log('container loaded');
 
+
+console.log('breadcrumb loaded');
