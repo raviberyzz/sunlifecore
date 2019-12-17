@@ -13,7 +13,10 @@
     </div>
     <div class="bottom-part">
         <div class="slf-copyright">{{copyright}}</div>
-        <div class="slf-reserved">&nbsp;{{reserved}}</div>
-        <div class="slf-logo">{{logo}}</div>
+        {{#if slf-acronym-present}}
+            <div class="slf-acronym">{{acronym}}</div>
+        {{else}}
+            <div class="not-slf-acronym">{{acronym}}</div>
+        {{/if}}
     </div>
 </div>
