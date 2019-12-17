@@ -4,7 +4,7 @@ JSON Format
 ```
 {
     "breadcrumb-author":"breadcrumb-author",
-    "breadcrumb-background-color":"breadcrumb-light-cool-blue-color",
+    "breadcrumb-background-color":"breadcrumb-cool-blue-color",
     "icon-bg":"",
     "icon-inside":"",
     "text-present" : false,

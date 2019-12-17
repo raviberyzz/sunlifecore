@@ -4893,7 +4893,6 @@ footer {
     left: 7px; }
 
 .breadcrumb-wrapper {
-  background: #F4F7F6;
   height: 43px;
   padding: 0 15px; }
   .breadcrumb-wrapper .breadcrumb-row {
@@ -4947,17 +4946,18 @@ footer {
       float: left;
       font-size: 1.25rem;
       padding: 3px; }
-
-.breadcrumb-cool-blue-color {
-  background: #4A7283; }
-  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .side-text {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .icon-wrapper span {
-    color: #ffffff; }
+  .breadcrumb-wrapper.breadcrumb-light-cool-blue-color {
+    background: #F4F7F6; }
+  .breadcrumb-wrapper.breadcrumb-cool-blue-color {
+    background: #4A7283; }
+    .breadcrumb-wrapper.breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-wrapper.breadcrumb-cool-blue-color .breadcrumb-row .active a {
+      color: #ffffff; }
+    .breadcrumb-wrapper.breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
+      color: #ffffff; }
+    .breadcrumb-wrapper.breadcrumb-cool-blue-color .side-text {
+      color: #ffffff; }
+    .breadcrumb-wrapper.breadcrumb-cool-blue-color .icon-wrapper span {
+      color: #ffffff; }
 
 @media (max-width: 1024px) {
   .breadcrumb-wrapper {

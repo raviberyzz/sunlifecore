@@ -3111,8 +3111,8 @@ $(document).ready(function () {
 console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
-console.log('footer-copyright loaded');
 console.log('icon-text loaded');
+console.log('footer-copyright loaded');
 
 console.log('desktop-header loaded');
 $(document).ready(function(){
