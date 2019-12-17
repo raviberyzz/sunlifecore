@@ -4732,10 +4732,10 @@ hr {
       color: #FFCB05;
       font-size: 1.125rem;
       float: left;
-      font-weight: bold; }
+      font-weight: 700; }
     .footer-copyright-wrapper .top-part .slf-legal {
       float: right;
-      font-weight: bold; }
+      font-weight: 700; }
       .footer-copyright-wrapper .top-part .slf-legal li {
         display: inline-block;
         color: #ffffff;
@@ -4743,7 +4743,7 @@ hr {
       .footer-copyright-wrapper .top-part .slf-legal a {
         color: #ffffff;
         font-size: 0.875rem;
-        font-weight: bold; }
+        font-weight: 700; }
       .footer-copyright-wrapper .top-part .slf-legal a.border-present {
         border-right: 2px solid;
         padding-right: 12px; }
@@ -4751,12 +4751,18 @@ hr {
     display: inline-block;
     width: 100%;
     line-height: 20px; }
-    .footer-copyright-wrapper .bottom-part .slf-logo {
+    .footer-copyright-wrapper .bottom-part .slf-acronym {
       color: #ffffff;
       font-size: 1.125rem;
-      font-weight: bold;
+      font-weight: 700;
       float: right; }
-    .footer-copyright-wrapper .bottom-part .slf-copyright, .footer-copyright-wrapper .bottom-part .slf-reserved {
+    .footer-copyright-wrapper .bottom-part .not-slf-acronym {
+      color: #ffffff;
+      font-size: 0.875rem;
+      font-weight: 400;
+      float: right;
+      max-width: 50%; }
+    .footer-copyright-wrapper .bottom-part .slf-copyright {
       color: #ffffff;
       font-size: 0.875rem;
       float: left; }
@@ -4779,9 +4785,9 @@ hr {
         text-align: center; }
       .footer-copyright-wrapper .top-part .slf-legal {
         padding-top: 32px; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down {
+        .footer-copyright-wrapper .top-part .slf-legal .move-down-accessibility {
           padding-right: 0; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down1 {
+        .footer-copyright-wrapper .top-part .slf-legal .move-down-feedback {
           padding-left: 0;
           margin-left: -12px; }
         .footer-copyright-wrapper .top-part .slf-legal .site-map {
@@ -4789,12 +4795,12 @@ hr {
           padding: 0; }
     .footer-copyright-wrapper .bottom-part {
       display: block; }
-      .footer-copyright-wrapper .bottom-part .slf-copyright, .footer-copyright-wrapper .bottom-part .slf-logo, .footer-copyright-wrapper .bottom-part .slf-reserved {
+      .footer-copyright-wrapper .bottom-part .slf-copyright, .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         float: none;
         text-align: center; }
       .footer-copyright-wrapper .bottom-part .slf-copyright {
         padding-top: 40px; }
-      .footer-copyright-wrapper .bottom-part .slf-logo {
+      .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
 
 footer {
