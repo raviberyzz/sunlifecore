@@ -11,7 +11,7 @@ JSON Format
     "link-present" : false,
     "href" : "javascript:void(0)",
     "description-present" : false,
-    "description-input" : "hmgf jhgg jhg jyg jyhg jhg jyhg jhgjhgjhg jh gjh  jhg j jhgjhg jhgjhgjhg j jhg jhg jhg jhg jhg jhg j jhg jhg "
+    "description-input" : "This is description text"
 }
 ```
 <!-- Text-area classes available: text-right-wrapper, text-bottom-wrapper -->

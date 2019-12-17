@@ -1,22 +1,30 @@
 @import '../../../base/core';
 .image-text-wrapper {
-    width: auto;
-    height: 100px;
-    float: left;
-    .side-text {
-        white-space: nowrap;
-        margin: 0 10px;
+    .middle-aligned-text {
+        display: flex;
+        align-items: center;
+    }
+    .left-item {
         float: left;
+        margin-right: 30px;
+    }
+    .mobile-image {
+        display: none;
+    }
+    .circular-image {
+        border-radius: 50%;
+    }
+    .round-border {
+        border: 4px solid $primary-yellow-background;
     }
 }
-    .right-aligned {
-        float: right;
-    }
-    .left-aligned {
-        float: left;
-    }
-@media (max-width: $tab-screen-min) {
-    .footer-image-text-wrapper {
-        display: none;
+@media (max-width: $mobile-screen-max) {
+    .image-text-wrapper {
+        .desktop-image {
+            display: none;
+        }
+        .mobile-image {
+            display: inherit;
+        }
     }
 }

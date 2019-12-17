@@ -3037,6 +3037,18 @@ function CheckClicks(lang) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+console.log('breadcrumb loaded');
+console.log('desktop-header loaded');
+$(document).ready(function(){
+    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
+        $("#sun-search").hide();
+        $("#sun-language").toggle();
+    });
+    $("#search-btn-container").click(function(){
+        $("#sun-language").hide();
+        $("#sun-search").toggle();
+    });
+});
 
 
 
@@ -3115,19 +3127,6 @@ console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
 
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
 console.log('container loaded');
 
 
-
-console.log('breadcrumb loaded');
