@@ -1,6 +1,5 @@
 @import '../../../base/core';
 .breadcrumb-wrapper{
-  background:$light-cool-blue-color;
   height: 43px;
   padding: 0 15px;
   .breadcrumb-row {
@@ -67,28 +66,31 @@
       font-size: 1.25rem;
       padding: 3px;
     }
-  } 
-}
-.breadcrumb-cool-blue-color{
-  background:$cool-blue-color;
-  .breadcrumb-row{
-    li,.active {
-      a{
+  }
+  &.breadcrumb-light-cool-blue-color{
+    background:$light-cool-blue-color; 
+  }
+  &.breadcrumb-cool-blue-color{
+    background:$cool-blue-color;
+    .breadcrumb-row{
+      li,.active {
+        a{
+          color:$white-shade;
+        }
+      }
+      &>li:not(:first-child):before{
         color:$white-shade;
       }
     }
-    &>li:not(:first-child):before{
-      color:$white-shade;
-    }
-  }
-  .side-text {
-    color: $white-shade;
-  }
-  .icon-wrapper {
-    span {
+    .side-text {
       color: $white-shade;
     }
-  }  
+    .icon-wrapper {
+      span {
+        color: $white-shade;
+      }
+    }  
+  }
 }
 @media (max-width: $tab-screen-max){
   .breadcrumb-wrapper{
