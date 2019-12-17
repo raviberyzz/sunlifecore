@@ -4,9 +4,9 @@ JSON Format
 ```
 {
     "tagline": "Life’s brighter under the sun",
-    "copyright": "© Sun Life Assurance Company of Canada.",
-    "reserved": "All rights reserved.",
-    "logo": "SLF",
+    "copyright": "© Sun Life Assurance Company of Canada. All rights reserved.",
+    "slf-acronym-present" : true,
+    "acronym": "SLF",
     "list1" : [{
         "link" : "https://www.sunlife.ca/slf/PSLF+Canada/Legal?vgnLocale=en_CA",
         "text" : "Legal",
@@ -25,7 +25,7 @@ JSON Format
     },{
         "link" : "https://www.sunlife.ca/ca/About+us/Accessibility+commitment?vgnLocale=en_CA",
         "text" : "Accessibility",
-        "class-name1" : "move-down"
+        "class-name1" : "move-down-accessibility"
     },{
         "link" : "https://www.sunlife.ca/ca/Sitemap?vgnLocale=en_CA",
         "text" : "Site map",
@@ -33,7 +33,7 @@ JSON Format
     },{
         "link" : "#",
         "text" : "Feedback",
-        "class-name1" : "move-down1"
+        "class-name1" : "move-down-feedback"
     }]
 }
 ```
