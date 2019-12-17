@@ -1,7 +1,7 @@
 <div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
     <div class="cross-btn">
         <a class="collapsed show" id="sunLanguageCrossBtn">
-            <span class="fa fa-remove collapse-x" title="Close Region and language selection" tabindex="0"></span>
+            <span class="fa fa-remove collapse-x" title="Close Region and language selection page" tabindex="0"></span>
         </a>
     </div>
     {{#if region}}
@@ -17,7 +17,7 @@
                                 {{#if accordion}}
                                     <li>
                                         <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse">{{ LinkText }}</h3>
+                                            <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse" tabindex="0">{{ LinkText }}</h3>
                                             <div class="collapse {{collapse}}" id="{{links}}">
                                                 <ul class="list-unstyled">
                                                     {{#each list}}
@@ -69,13 +69,13 @@
 </div>
 <div class="col-xs-12 mobile-region-language-menu-wrapper {{mobile-language-region}}">
     <div class="go-back">
-        <a>Back</a>
+        <a tabindex="0">Back</a>
     </div>
     <div class="col-xs-12 slf-tab-region ">
-        <div class="col-xs-6 slf-tab {{region-active}} {{region-present}}" data-target="#region-tab" data-toggle="tab">
+        <div class="col-xs-6 slf-tab {{region-active}} {{region-present}}" data-target="#region-tab" data-toggle="tab" tabindex="0">
             Regions
         </div>
-        <div class="col-xs-6 slf-tab {{language-active}} {{language-present}}" data-target="#language-tab" data-toggle="tab">
+        <div class="col-xs-6 slf-tab {{language-active}} {{language-present}}" data-target="#language-tab" data-toggle="tab" tabindex="0">
             Language
         </div>
     </div>
