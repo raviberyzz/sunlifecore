@@ -3738,6 +3738,35 @@ input[type=text] {
   color: #004C6C;
   border: 2px solid #004C6C; }
 
+.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+  background-color: #FFCB05;
+  padding: 32px 0 32px 15px;
+  height: 100px;
+  color: #424242; }
+  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 36px; }
+
+.title-wrapper-yellow-grey-rings {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color: #FFCB05;
+  background-size: contain; }
+
+.title-wrapper-blue-yellow {
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+.title-wrapper-blue-yellow-rings {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+@media (max-width: 767px) {
+  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+    height: 94px;
+    background-image: none; } }
+
 .utility-nav-wrapper {
   text-align: right;
   padding: 0px 15px 16px 0px; }
@@ -3775,35 +3804,6 @@ input[type=text] {
     .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
       color: #003946;
       background: #FFCB05; }
-
-.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-  background-color: #FFCB05;
-  padding: 32px 0 32px 15px;
-  height: 100px;
-  color: #424242; }
-  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2 {
-    margin: 0;
-    font-size: 1.75rem;
-    line-height: 36px; }
-
-.title-wrapper-yellow-grey-rings {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
-  background-color: #FFCB05;
-  background-size: contain; }
-
-.title-wrapper-blue-yellow {
-  background-color: #004C6C;
-  color: #FFCB05; }
-
-.title-wrapper-blue-yellow-rings {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
-  background-color: #004C6C;
-  color: #FFCB05; }
-
-@media (max-width: 767px) {
-  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-    height: 94px;
-    background-image: none; } }
 
 
 .social-icon-wrapper .socials li {
@@ -4678,53 +4678,6 @@ hr {
 .icon-text-wrapper .text-bottom-wrapper .icon-background-trans {
   margin: auto; }
 
-footer {
-  background-color: #F4F7F6; }
-
-.footer-section-1 {
-  height: 128px;
-  display: flow-root; }
-  .footer-section-1 .image-text-wrapper .image-wrapper {
-    margin: 16px 32px 16px 15px; }
-  .footer-section-1 .image-text-wrapper .side-text {
-    margin: 0;
-    font-size: 24px; }
-  .footer-section-1 .social-icon-wrapper {
-    float: right;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
-    .footer-section-1 .social-icon-wrapper .socials {
-      margin: 0; }
-    .footer-section-1 .social-icon-wrapper li a {
-      font-size: 2rem; }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .footer-section-1 .image-text-wrapper {
-    display: none; }
-  .footer-section-1 .social-icon-wrapper {
-    float: none;
-    text-align: center; } }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .footer-section-2 {
-    display: flow-root; }
-    .footer-section-2 .links {
-      padding: 32px 0px 32px 32px; }
-  .footer-wrapper .image-text-wrapper {
-    width: 60%; }
-    .footer-wrapper .image-text-wrapper .side-text {
-      white-space: inherit;
-      float: none; } }
-
-@media (min-width: 1025px) {
-  .footer-section-2 {
-    display: flex; }
-    .footer-section-2 .lists-wrapper {
-      width: 20%; }
-      .footer-section-2 .lists-wrapper .links {
-        padding: 32px 0px 32px 32px; } }
-
 .footer-copyright-wrapper-asd {
   background-color: #004C6C;
   height: 100px;
@@ -4801,6 +4754,53 @@ footer {
         padding-top: 40px; }
       .footer-copyright-wrapper-asd .bottom-part .slf-logo {
         padding-top: 16px; } }
+
+footer {
+  background-color: #F4F7F6; }
+
+.footer-section-1 {
+  height: 128px;
+  display: flow-root; }
+  .footer-section-1 .image-text-wrapper .image-wrapper {
+    margin: 16px 32px 16px 15px; }
+  .footer-section-1 .image-text-wrapper .side-text {
+    margin: 0;
+    font-size: 24px; }
+  .footer-section-1 .social-icon-wrapper {
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+    .footer-section-1 .social-icon-wrapper .socials {
+      margin: 0; }
+    .footer-section-1 .social-icon-wrapper li a {
+      font-size: 2rem; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .footer-section-1 .image-text-wrapper {
+    display: none; }
+  .footer-section-1 .social-icon-wrapper {
+    float: none;
+    text-align: center; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-section-2 {
+    display: flow-root; }
+    .footer-section-2 .links {
+      padding: 32px 0px 32px 32px; }
+  .footer-wrapper .image-text-wrapper {
+    width: 60%; }
+    .footer-wrapper .image-text-wrapper .side-text {
+      white-space: inherit;
+      float: none; } }
+
+@media (min-width: 1025px) {
+  .footer-section-2 {
+    display: flex; }
+    .footer-section-2 .lists-wrapper {
+      width: 20%; }
+      .footer-section-2 .lists-wrapper .links {
+        padding: 32px 0px 32px 32px; } }
 
 .slf-desktop-header-wrapper .bottom-bar {
   background-color: #FFCB05;
