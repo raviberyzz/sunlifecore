@@ -1,7 +1,7 @@
 @import '../../../base/core';
 .desktop-region-language-menu-wrapper {
     width: 100%;
-    padding: 0px 16px 16px;
+    padding: 0 16px 16px;
     box-shadow: 0 4px 20px -10px $black-shade;
     .cross-btn {
         width: 100%;
@@ -14,21 +14,21 @@
     }
     .slf-region,
     .slf-language {
-        padding: 0px;
+        padding: 0;
     }
     .title-region {
         h4 {
             font-weight: bold;
             font-size: 1.125rem;
-            margin-top: 0px;
+            margin-top: 0;
         }
     }
     .slf-region {
         border-right: 2px solid $light-grey-color;
         .content-region {
-            padding: 14px 0px 0px;
+            padding: 14px 0 0;
             ul {
-                margin-bottom: 0px;
+                margin-bottom: 0;
                 li {
                     margin-bottom: 8px;
                     cursor: pointer;
@@ -51,7 +51,7 @@
                 }
             }
             > :first-child {
-                padding-left: 0px;
+                padding-left: 0;
                 .nav-select {
                     background-color: $light-orange-color;
                     a {
@@ -74,6 +74,7 @@
                     margin: 8px 0 0 0;
                     padding-bottom: 5px;
                     color: $medium-blue-color;
+                    //waiting for style guide update
                     // &:hover{
                     //     background-color: $light-orange-color;
                     // }
@@ -100,14 +101,14 @@
         h4 {
             font-weight: 700;
             font-size: 1.125rem;
-            margin-top: 0px;
+            margin-top: 0;
             padding-left: 32px;
         }
     }
     .content-language {
         padding-left: 32px;
         ul {
-            margin-bottom: 0px;
+            margin-bottom: 0;
             li {
                 padding-left: 14px;
                 margin-bottom: 8px;
@@ -152,6 +153,7 @@
 .mobile-region-language-menu-wrapper{
     width:270px;
     font-size: 1rem;
+    padding:0;
     .go-back{
         background-color:$medium-blue-color;
         color: $white-shade;
@@ -167,7 +169,7 @@
         }
     }
     .slf-tab-region{
-        padding: 0px;
+        padding: 0;
         height: 48px;
         background-color: $medium-blue-color;
         color: $white-shade;
@@ -175,7 +177,7 @@
         font-weight: 400;
         border-top: 0.5px solid $white-shade;
         .slf-tab{
-            padding: 10px 0px 0px 0px;
+            padding: 10px 0 0 0;
             text-align: center;
             height: 100%;
         }
@@ -191,7 +193,7 @@
         }
     }
     .tab-content{
-        padding: 0px;
+        padding: 0;
         .region-tab{
             .list-unstyled{
                 li{
@@ -211,7 +213,7 @@
                 .accordion-heading{
                     font-size: 1rem;
                     color: $medium-blue-color;
-                    margin: 0px;
+                    margin: 0;
                     padding-left: 16px;
                 }
                 .accordion-heading[aria-expanded="false"]:after {
@@ -251,7 +253,7 @@
                     .horizontal-middle-align {
                         float: left;
                         width: 59px;
-                        margin: 40px 0px 40px -74px;
+                        margin: 40px 0 40px -74px;
                     }
                 }
                 .chinese {

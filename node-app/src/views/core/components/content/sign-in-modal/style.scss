@@ -137,7 +137,7 @@
                 line-height:20px;
                 padding-top:5px;
                 p {
-                    margin:0px;
+                    margin:0;
                 }
                 .download-text-bold{
                     color:$medium-blue-color;
@@ -154,7 +154,7 @@
         font-weight: 700;
         font-size:1.125rem;
         line-height:24px;
-        margin-top: 0px;
+        margin-top: 0;
     }
     .form-second {
         margin-bottom: 16px;
@@ -165,7 +165,7 @@
     .remeberme {
         font-size: 1rem;
         font-weight:400;
-        margin:4px 0px 0px 3px;
+        margin:4px 0 0 3px;
          ::before {
             width: 18px;
             height: 18px;

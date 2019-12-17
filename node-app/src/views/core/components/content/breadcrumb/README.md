@@ -5,6 +5,17 @@ JSON Format
 {
     "breadcrumb-author":"breadcrumb-author",
     "breadcrumb-background-color":"breadcrumb-light-cool-blue-color",
+    "icon-bg":"",
+    "icon-inside":"",
+    "text-present" : false,
+    "text-input": "",
+    "text-area-wrapper" : "",
+    "link-present" : false,
+    "href" : "",
+    "description-present" : false,
+    "description-input" : "",
+    "side-text": "Share this:",
+    "social-icon-present":true, 
     "page-redirection-link" : [{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
         "text" : "Home",
@@ -18,8 +29,24 @@ JSON Format
         "text" : "Why join us",
         "class-name": "active"
     }
+    ],
+    "social-links": [{
+        "fa-icon":"fa-facebook-square",
+        "share-link":"shareFB()"
+    },{
+        "fa-icon":"fa-twitter-square",
+        "share-link":"shareTwitter()"
+    },{
+        "fa-icon":"fa-linkedin-square",
+        "share-link":"shareLinkedIn()"
+    }
     ]
 }
 ```
 <!-- Classes available for "breadcrumb-background-color" are "breadcrumb-light-cool-blue-color","breadcrumb-cool-blue-color" and links colors are changed accordingly -->
+
+<!-- Icons and share-links available for "social-links" are "fa-facebook-square" and "shareFB()" ,"fa-twitter-square" and "shareTwitter()" ,"fa-linkedin-square" and "shareLinkedIn()" respectively -->
+
+<!--Variations available for "social-icon-present" are true and false -->
+
 <!-- For "breadcrumb-athor" available class is "breadcrumb-autor" which is only for authoring. -->

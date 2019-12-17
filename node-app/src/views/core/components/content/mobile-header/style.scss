@@ -17,8 +17,8 @@
     }
     .mobile-header-navbar{
         display:flex;
-        margin:0px;
-        padding:0px;
+        margin:0;
+        padding:0;
         height: 50px;
         border-radius: 0;
         box-shadow: 0 8px 6px -6px $black-shade;
@@ -65,7 +65,7 @@
             color: $medium-blue-color;
             font-size: 1.5rem;
             padding: 7px;
-            margin:0px;
+            margin:0;
         }
         .mobile-signin-text {
             font-size: 0.75rem;
@@ -110,9 +110,11 @@
             background: $light-cool-blue-color;
         }
         .search-field{
+            position:absolute;
+            margin:6px 0 0 5px;
             border:none;
             background: $light-grey-shade-color;
-            padding:0px;
+            padding:0;
             height:18px;
         }
         .search-icon-mobile {
@@ -142,7 +144,7 @@
             z-index:1050;
         }
         .navigation-menu{
-            margin:24px 16px 0px 16px;
+            margin:24px 16px 0 16px;
             a{
                 color:$medium-blue-color;
                 font-weight:400;
@@ -192,7 +194,7 @@
             }
             .navigation-menu{
                 padding-left:28px;
-                margin-left:0px;
+                margin-left:0;
             }          
             .go-back{
                 background-color:$white-shade;
@@ -211,7 +213,7 @@
                 }
             }
             .subnav{
-                margin-left:0px;
+                margin-left:0;
             }
         }
         .third-level-navigation{
@@ -220,24 +222,57 @@
                 margin-left:-5px;
             }
             .subnav{
-                margin-left:0px;
+                margin-left:0;
             }
             z-index:1200;
             .go-back{
-                margin-bottom:0px;
+                margin-bottom:0;
             }
-        }    
+        }  
+        .language-region{
+            .second-level-navigation{
+                padding-bottom:0;
+            }
+        }
+        /* Mobile Region and Language Bar Start Here */
+        .language-region{
+            .second-level-navigation{
+                background-color:$white-shade;
+            }
+            .mobile-language-region{
+                .go-back{
+                    background-color: $medium-blue-color;
+                    width: 100%;
+                    line-height: 23px;
+                    padding: 16px;
+                    margin-bottom:0;
+                    a{
+                        color: $white-shade;
+                    }
+                }
+                a{
+                    &:after{
+                        content:'';
+                    }
+                }
+                .tab-content{
+                    background-color:$white-shade;
+                }
+            }
+        }  
+        /* Mobile Region and Language Bar End Here */
     }
     .offcanvas-overlay.active{
         position: absolute;
         width: 100%;
         height: 100%;
-        left: 0px;
-        top: 0px;
+        left: 0;
+        top: 0;
         background: $black-shade;
         opacity: 0.5;
         margin-left:270px;
     }
+    /* Hamburger Menu End Here */
 }
 @media (min-width: $desktop-screen-min){
     .slf-mobile-header-wrapper{

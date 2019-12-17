@@ -1,10 +1,11 @@
 @import '../../../base/core';
 .breadcrumb-wrapper{
   background:$light-cool-blue-color;
+  height: 43px;
+  padding: 0 15px;
   .breadcrumb-row {
-    margin:0 0 0 15px;
-    padding: 16px 0 16px 14px;
-    line-height:18px;
+    line-height: 18px;
+    margin: 0;
       li{
         font-weight:700;
         float: left;
@@ -33,7 +34,40 @@
         color: $medium-blue-color;
         padding: 0 5px;
       }
-  }  
+  }
+  .left-area {
+    width: auto;
+    float: left;
+    padding-left: 14px;
+  }
+  .right-area {
+    width: auto;
+    float: right;
+  } 
+  .side-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: $dark-grey-color;
+    margin-right: 3px;
+    position: relative;
+    top: 4px;
+    float: left;
+  }
+  .icon-wrapper {
+    cursor:pointer;
+    span {
+      color: $medium-blue-color;
+    }
+  } 
+  .social-links {
+    float: left;
+    margin: 0;
+    li {
+      float: left;
+      font-size: 1.25rem;
+      padding: 3px;
+    }
+  } 
 }
 .breadcrumb-cool-blue-color{
   background:$cool-blue-color;
@@ -45,6 +79,14 @@
     }
     &>li:not(:first-child):before{
       color:$white-shade;
+    }
+  }
+  .side-text {
+    color: $white-shade;
+  }
+  .icon-wrapper {
+    span {
+      color: $white-shade;
     }
   }  
 }
