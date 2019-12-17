@@ -5,7 +5,7 @@ JSON Format
     "icon-bg":"icon-background-trans",
     "icon-inside":"icon-inside-trans",
     "fa-icon":"fa-facebook-square",
-    "text-present" : false,
+    "text-present" : true,
     "text-input": "Health & Wellness",
     "text-area-wrapper" : "text-bottom-wrapper",
     "link-present" : false,

@@ -3586,79 +3586,6 @@ a {
     font-size: 1.625rem; } }
 
 
-.breadcrumb-wrapper {
-  background: #F4F7F6;
-  height: 43px;
-  padding: 0 15px; }
-  .breadcrumb-wrapper .breadcrumb-row {
-    line-height: 18px;
-    margin: 0; }
-    .breadcrumb-wrapper .breadcrumb-row li {
-      font-weight: 700;
-      float: left;
-      line-height: 18px; }
-      .breadcrumb-wrapper .breadcrumb-row li:before, .breadcrumb-wrapper .breadcrumb-row li a {
-        font-size: 0.875rem;
-        line-height: 18px; }
-      .breadcrumb-wrapper .breadcrumb-row li :hover {
-        text-decoration: none; }
-    .breadcrumb-wrapper .breadcrumb-row .active {
-      line-height: 18px; }
-      .breadcrumb-wrapper .breadcrumb-row .active a {
-        font-weight: 400;
-        color: #424242;
-        font-size: 0.875rem;
-        pointer-events: none; }
-    .breadcrumb-wrapper .breadcrumb-row > li:not(:first-child):before {
-      content: "\f105";
-      font-weight: 400;
-      font-family: FontAwesome;
-      color: #004C6C;
-      padding: 0 5px; }
-  .breadcrumb-wrapper .left-area {
-    width: auto;
-    float: left;
-    padding-left: 14px; }
-  .breadcrumb-wrapper .right-area {
-    width: auto;
-    float: right; }
-  .breadcrumb-wrapper .side-text {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #424242;
-    margin-right: 3px;
-    position: relative;
-    top: 4px;
-    float: left; }
-  .breadcrumb-wrapper .icon-wrapper {
-    cursor: pointer; }
-    .breadcrumb-wrapper .icon-wrapper span {
-      color: #004C6C; }
-  .breadcrumb-wrapper .social-links {
-    float: left;
-    margin: 0; }
-    .breadcrumb-wrapper .social-links li {
-      float: left;
-      font-size: 1.25rem;
-      padding: 3px; }
-
-.breadcrumb-cool-blue-color {
-  background: #4A7283; }
-  .breadcrumb-cool-blue-color .breadcrumb-row li a, .breadcrumb-cool-blue-color .breadcrumb-row .active a {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .breadcrumb-row > li:not(:first-child):before {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .side-text {
-    color: #ffffff; }
-  .breadcrumb-cool-blue-color .icon-wrapper span {
-    color: #ffffff; }
-
-@media (max-width: 1024px) {
-  .breadcrumb-wrapper {
-    display: none; }
-  .breadcrumb-author {
-    display: block; } }
-
 .input-wrapper {
   color: #9a9a9a;
   margin-bottom: 10px; }
@@ -3674,11 +3601,11 @@ input[type=text] {
 
 .form-option {
   border: 1px solid #9a9a9a;
-  border-radius: 0px;
+  border-radius: 0;
   display: block;
   width: 100%;
   height: 48px;
-  padding: 0px 16px;
+  padding: 0 16px;
   font-size: 1rem;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -3701,7 +3628,7 @@ input[type=text] {
     font-weight: 700; }
 
 input[type=checkbox] {
-  margin: 0px 0px 0px 0px; }
+  margin: 0; }
   input[type=checkbox]::after {
     display: block;
     content: '';
@@ -3880,6 +3807,18 @@ input[type=text] {
     height: 94px;
     background-image: none; } }
 
+
+.social-icon-wrapper .socials li {
+  padding: 0 12px 0 5px;
+  display: inline-block; }
+  .social-icon-wrapper .socials li a {
+    font-size: 1.875rem; }
+    .social-icon-wrapper .socials li a i:hover {
+      color: #4A7283; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .social-icon-wrapper .socials li a {
+    font-size: 2rem; } }
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -4063,18 +4002,6 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
-.social-icon-wrapper .socials li {
-  padding: 0 12px 0 5px;
-  display: inline-block; }
-  .social-icon-wrapper .socials li a {
-    font-size: 1.875rem; }
-    .social-icon-wrapper .socials li a i:hover {
-      color: #4A7283; }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .social-icon-wrapper .socials li a {
-    font-size: 2rem; } }
-
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -4109,10 +4036,8 @@ hr {
       display: table-cell;
       vertical-align: top;
       position: relative; }
-  .search-bar-wrapper .button-wrapper button[type=submit] {
-    margin-left: 16px; }
   .search-bar-wrapper .search-box {
-    padding: 30px 0px; }
+    padding: 30px 0; }
   .search-bar-wrapper .close-div {
     position: absolute;
     right: 0;
@@ -4122,7 +4047,7 @@ hr {
     margin: 24px 15px 0 0;
     font-size: 0.875rem; }
   .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
-    padding-left: 5px;
+    padding-left: 16px;
     width: 1%;
     border: 0; }
 
@@ -4572,7 +4497,7 @@ hr {
   padding: 0; }
 
 .explore-product-wrapper-desk > :not(:first-child) {
-  padding: 56px 24px 56px 0px;
+  padding: 56px 24px 56px 0;
   display: table-cell;
   float: none;
   vertical-align: top; }
@@ -4638,14 +4563,14 @@ hr {
     padding: 0; }
 
 .tools-resource-wrapper-desk > :last-child {
-  padding-left: 0px; }
+  padding-left: 0; }
 
 .mega-menu-wrapper .collapse {
   display: block !important; }
 
 .mega-menu-wrapper li {
   line-height: 110%;
-  padding: 5px 0px; }
+  padding: 5px 0; }
 
 @media (max-width: 991px) {
   .mega-menu-wrapper-desk {
@@ -4724,6 +4649,7 @@ hr {
   width: 100%;
   display: flex; }
 
+
 .icon-text-wrapper .icon-wrapper {
   text-align: center; }
 
@@ -4773,7 +4699,6 @@ hr {
 
 .icon-text-wrapper .text-bottom-wrapper .icon-background-trans {
   margin: auto; }
-
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
@@ -4864,11 +4789,9 @@ footer {
 .footer-section-1 {
   height: 128px;
   display: flow-root; }
-  .footer-section-1 .image-text-wrapper .image-wrapper {
+  .footer-section-1 .image-text-wrapper {
+    float: left;
     margin: 16px 32px 16px 15px; }
-  .footer-section-1 .image-text-wrapper .side-text {
-    margin: 0;
-    font-size: 24px; }
   .footer-section-1 .social-icon-wrapper {
     float: right;
     position: relative;
@@ -4890,7 +4813,7 @@ footer {
   .footer-section-2 {
     display: flow-root; }
     .footer-section-2 .links {
-      padding: 32px 0px 32px 32px; }
+      padding: 32px 0 32px 32px; }
   .footer-wrapper .image-text-wrapper {
     width: 60%; }
     .footer-wrapper .image-text-wrapper .side-text {
@@ -4903,7 +4826,7 @@ footer {
     .footer-section-2 .lists-wrapper {
       width: 20%; }
       .footer-section-2 .lists-wrapper .links {
-        padding: 32px 0px 32px 32px; } }
+        padding: 32px 0 32px 32px; } }
 
 .slf-desktop-header-wrapper .bottom-bar {
   background-color: #FFCB05;

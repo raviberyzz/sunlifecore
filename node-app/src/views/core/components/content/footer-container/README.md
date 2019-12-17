@@ -3,12 +3,17 @@
 JSON Format
 ```
 {
-    "image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
-    "image-src": "http://sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
-    "alt": "Voted Reader's Digest Most Trusted Brand 10 years",
+    "desk-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
+    "mob-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
+    "desk-image-src": "https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
+    "mob-image-src": "http://sunlife.com/static/slfglobal/globalweb/responsive/images/en/trustedbrand-notext-en.png",
+    "desk-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
+    "mob-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
     "text": "TRUSTED BRAND 10 YEARS IN A ROW",
-    "rwd-hidden-class": "",
-    "image-alignment": "left-aligned",
+    "is-right-aligned-image": false,
+    "text-alignment": "middle-aligned-text",
+    "image-type": "",
+    "img-border": "",
     "iconlist" : [{
         "icon" : "fa fa-facebook-square",
         "icon-link" : "https://www.facebook.com/SLFCanada"
@@ -120,7 +125,7 @@ JSON Format
         "text" : "欢迎访问永明金融网页"
     }]
     },
-    {"LinkText": "Contuct Us",
+    {"LinkText": "Contact Us",
     "list-wrapper-class": "lists-wrapper",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",

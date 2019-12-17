@@ -44,7 +44,7 @@
 }
 
 .explore-product-wrapper-desk>:not(:first-child) {
-    padding: 56px 24px 56px 0px;
+    padding: 56px 24px 56px 0;
     display: table-cell;
     float: none;
     vertical-align: top;
@@ -172,7 +172,7 @@
         }
     }
     &>:last-child{
-        padding-left: 0px;
+        padding-left: 0;
     }
 }
 .mega-menu-wrapper {
@@ -182,7 +182,7 @@
 
     li {
         line-height: 110%;
-        padding: 5px 0px;
+        padding: 5px 0;
 
     }
 }
