@@ -12,11 +12,11 @@
             color: $medium-yellow-background;
             font-size: 1.125rem;
             float: left;
-            font-weight: bold;
+            font-weight: 700;
         }
         .slf-legal{
             float: right;
-            font-weight: bold;
+            font-weight: 700;
             li{
                 display: inline-block;
                 color: $white-shade;
@@ -25,7 +25,7 @@
             a{
                 color: $white-shade;
                 font-size: 0.875rem;
-                font-weight: bold;
+                font-weight: 700;
             }
             a.border-present{
                 border-right: 2px solid;
@@ -37,13 +37,20 @@
         display: inline-block;
         width: 100%;
         line-height:20px;
-        .slf-logo{
+        .slf-acronym{
             color: $white-shade;
             font-size: 1.125rem;
-            font-weight: bold;
+            font-weight: 700;
             float: right;
         }
-        .slf-copyright, .slf-reserved{
+        .not-slf-acronym{
+            color: $white-shade;
+            font-size: 0.875rem;
+            font-weight: 400;
+            float: right;
+            max-width: 50%;
+        }
+        .slf-copyright{
             color: $white-shade;
             font-size: 0.875rem;
             float: left;
@@ -71,10 +78,10 @@
             }
             .slf-legal{
                 padding-top: 32px;
-                .move-down{
+                .move-down-accessibility{
                     padding-right: 0;
                 }
-                .move-down1{
+                .move-down-feedback{
                     padding-left: 0;
                     margin-left: -12px;
                 }
@@ -86,14 +93,14 @@
         }
         .bottom-part{
             display: block;
-            .slf-copyright, .slf-logo, .slf-reserved{
+            .slf-copyright, .slf-acronym, .not-slf-acronym{
                 float: none;
                 text-align: center;
             }
             .slf-copyright{
                 padding-top: 40px;
             }
-            .slf-logo{
+            .slf-acronym, .not-slf-acronym{
                 padding-top: 16px;
             }
         }
