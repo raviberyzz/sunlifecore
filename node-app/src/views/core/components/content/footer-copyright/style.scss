@@ -1,6 +1,6 @@
 @import '../../../base/core';
 
-.footer-copyright-wrapper-asd{
+.footer-copyright-wrapper{
     background-color: $medium-blue-color;
     height: 100px;
     padding:24px 15px;
@@ -51,7 +51,7 @@
     }
 }
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
-    .footer-copyright-wrapper-asd{
+    .footer-copyright-wrapper{
         height: 116px;
         padding:32px 15px;
         .site-map{
@@ -60,7 +60,7 @@
     }
 }
 @media (max-width: $mobile-screen-max){
-    .footer-copyright-wrapper-asd{
+    .footer-copyright-wrapper{
         height: auto;
         padding:32px 15px;
         .top-part{
