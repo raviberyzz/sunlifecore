@@ -3,8 +3,9 @@
 JSON Format
 ```
 {
-    "button-class": "secondary-button",
+    "button-class": "signIn-button",
     "button-text": "Button",
+    "btn-text" : "",
     "redirection-link": "javascript:void(0)"
 }
 ```

@@ -1,37 +1,33 @@
 @import '../../../base/core';
+.button-class {
+    line-height: 30px;
+}
 .primary-blue-button {
-    a {
         background-color: $medium-blue-color;
         color: $white-shade;
         .icon-class {
             display: none;
         }
-    }
 } 
 .primary-yellow-button {
-    a {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
         .icon-class {
             display: none;
         }
-    }
 } 
 .secondary-button {
-    a {
         background-color: $transparent;
         color: $medium-blue-color;
         border: 2px solid $medium-blue-color;
         .icon-class {
             display: none;
         }
-    }
 }
 .button-text {
     margin: 0;
 }
 .signIn-button {
-    a {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
         height: 40px !important;
@@ -40,8 +36,7 @@
         font-size: 0.875rem;
         .icon-class {
             display: inherit;
-            float: left;
-            left: 7px;
+            right: 3px;
+            position: relative;
         }
-    }
 }

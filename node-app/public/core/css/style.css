@@ -4860,39 +4860,42 @@ footer {
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
 
-.primary-blue-button a {
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
   background-color: #004C6C;
   color: #ffffff; }
-  .primary-blue-button a .icon-class {
+  .primary-blue-button .icon-class {
     display: none; }
 
-.primary-yellow-button a {
+.primary-yellow-button {
   background-color: #FFCB05;
   color: #004C6C; }
-  .primary-yellow-button a .icon-class {
+  .primary-yellow-button .icon-class {
     display: none; }
 
-.secondary-button a {
+.secondary-button {
   background-color: transparent;
   color: #004C6C;
   border: 2px solid #004C6C; }
-  .secondary-button a .icon-class {
+  .secondary-button .icon-class {
     display: none; }
 
 .button-text {
   margin: 0; }
 
-.signIn-button a {
+.signIn-button {
   background-color: #FFCB05;
   color: #004C6C;
   height: 40px !important;
   min-width: 92px !important;
   width: 92px !important;
   font-size: 0.875rem; }
-  .signIn-button a .icon-class {
+  .signIn-button .icon-class {
     display: inherit;
-    float: left;
-    left: 7px; }
+    right: 3px;
+    position: relative; }
 
 .breadcrumb-wrapper {
   height: 43px;
