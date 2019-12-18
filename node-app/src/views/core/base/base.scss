@@ -152,7 +152,6 @@ mb-40{
     transform: translateX(-50%);
 }
 
-.button-wrapper {
     .button-class {
         height: 48px;
         width: 180px;
@@ -169,9 +168,9 @@ mb-40{
         &:hover {
             background-color: $cool-blue-color;
             color: $white-shade;
+            text-decoration: none;
         }
     }
-}
 
 .white-box {
     background-color: $light-grey-20;
