@@ -4,7 +4,7 @@ JSON Format
 ```
 {
     "title-background-color":"title-wrapper-blue-yellow-rings",
-    "heading":"h2",
+    "heading":"h1",
     "title-bar-text": "Why join Sun Life?"
 }
 ```

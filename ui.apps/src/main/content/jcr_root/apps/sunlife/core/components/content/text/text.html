@@ -1,7 +1,0 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
-<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly> 
-<div data-sly-use.text="com.sunlife.core.models.RichTextModel">
-	<div class="text-wrapper" data-sly-test="${text.richtext}">
-	   ${text.richtext @context ='html'}
-	</div>
-</div>
