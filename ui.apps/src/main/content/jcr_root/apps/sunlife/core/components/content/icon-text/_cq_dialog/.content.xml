@@ -32,7 +32,7 @@
                                             name="./icon"/>
                                         <text
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text/rtePlugins"
+                                            sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                             sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                             fieldLabel="Text"
                                             name="./text"
