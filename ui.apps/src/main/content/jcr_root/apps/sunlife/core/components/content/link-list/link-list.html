@@ -4,7 +4,7 @@
 <div class="lists-wrapper" data-sly-test="${!empty}"> 
 	<div class="links">
 		<h3 class="accordion-heading" aria-expanded="false" data-parent=".lists-wrapper" data-target="#links" data-toggle="collapse">${listModel.title}</h3>
-			<div class="collapse" id="links">				
+			<div class="collapse list-div" id="links">				
 				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
 					<li>
 					   <a href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
