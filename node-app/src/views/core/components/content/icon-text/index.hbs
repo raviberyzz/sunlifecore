@@ -1,24 +1,16 @@
-<div class="icon-text-wrapper clearfix">
-  <div class="{{text-area-wrapper}}">
-    <div onclick="{{share-link}}" class="{{icon-bg}} icon-wrapper">
-      <span class="{{icon-inside}} fa {{fa-icon}}"></span>
+<div class="{{icon-text-wrapper}}">
+  <div onclick="{{share-link}}" class="icon-parent">
+      <span class="icon-style fa fa-pie-chart"></span>
+  </div>
+  <div class="icon-text">
+    <div class="icon-text-heading-normal">
+      {{text-input}}
     </div>
-    {{#if text-present}}
-      <div class="icon-text">
-        <div class="icon-text-heading">
-          {{#if link-present}}
-            <a href="{{href}}">
-              {{text-input}}
-            </a>
-          {{else}}
-            {{text-input}}
-          {{/if}}
-        </div>
-        <div class="icon-text-description">
-        {{#if description-present}}
-            {{description-input}}
-        {{/if}}
-        </div>
-      </div>
-    {{/if}}
+    <div class="icon-text-heading-link">
+      <a href="{{href}}">{{text-input}}</a>
+    </div>
+    <div class="icon-text-description">
+      {{description-input}}
+    </div>
+  </div>
 </div>

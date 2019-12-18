@@ -3037,13 +3037,22 @@ function removeParam(key, sourceURL) {
 // } 
 
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 33a2884574a5ffa42ea6120af63a89b09dfb839c
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 33a2884574a5ffa42ea6120af63a89b09dfb839c
 console.log('utility-nav loaded');
 
 
