@@ -23,7 +23,7 @@ public interface IconTextModel {
     String getIcon();
      
      @Inject
-     String getTextName();
+     String getText();
      
      @Inject
      String getLink();
