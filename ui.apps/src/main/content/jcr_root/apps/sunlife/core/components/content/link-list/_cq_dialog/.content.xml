@@ -43,11 +43,11 @@
                                             name="./linkUrl"
                                             rootPath="/content/"
                                             suffix=".html"/>
-                                        <selection
+                                        <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="URL Selection Type"
-                                            name="./selection">
+                                            fieldLabel="Target"
+                                            name="./target">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sametab
                                                     jcr:primaryType="nt:unstructured"
@@ -58,7 +58,7 @@
                                                     text="New Tab"
                                                     value="_blank"/>
                                             </items>
-                                        </selection>
+                                        </target>
                                     </items>
                                 </column>
                             </items>
