@@ -1,6 +1,6 @@
 {{#if single-select}}
 <div class="form-group-wrapper single-select">
-    <select class="form-option" required=""> <i class="fa fa-angle-down"></i>
+    <select class="form-option" data-parsley-required="data-parsley-required"> <i class="fa fa-angle-down"></i>
         <option selected="selected" value="">Select a product </option>
         {{#each list}}
         <option value={{link}}>{{text}}</option>
@@ -22,6 +22,7 @@
     <p>{{checkbox-heading}}</p>
     <input type="checkbox" name="{{checkbox-name}}" id="{{checkbox-id}}" value="{{value}}">
 </div>
+
 {{/if}}
 {{#if multi-select}}
 
@@ -32,4 +33,5 @@
         {{/each}}
     </select>
 </div>
+
 {{/if}}

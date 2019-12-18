@@ -15,7 +15,7 @@
     "value":"demo-value",
     "single-select":true,
     "radio":false,
-    "checkbox":true,
+    "checkbox":false,
     "multi-select":false,
     "list" : [{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",

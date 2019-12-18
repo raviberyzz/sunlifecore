@@ -7,8 +7,9 @@ JSON Format
     "form-text-label":"demo-label",
     "place-holder" : "Enter Details",
     "form-text-name":"demo-text",
-    "text-length":"7",
+    "text-length":"",
     "error-message":"Wrong Input",
-    "validation-pattern": "parsley-pattern"
+    "validation-pattern": "",
+    "input-text-type":"text"
 }
 ```
