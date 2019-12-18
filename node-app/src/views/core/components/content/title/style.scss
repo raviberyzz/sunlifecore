@@ -8,6 +8,36 @@
       margin:0;
       font-size:1.75rem;
       line-height:36px;
+    }
+    &.heading-1{
+      h1,h2,h3,h4,h5,h6{
+        font-size:2.25rem;
+      }
+    }
+    &.heading-2{
+      h1,h2,h3,h4,h5,h6{
+        font-size:2rem;
+      }
+    }
+    &.heading-3{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.75rem;
+      }
+    }
+    &.heading-4{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.5rem;
+      }
+    }
+    &.heading-5{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.25rem;
+      }
+    }
+    &.heading-6{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.125rem;
+      }
     }    
 }
 .title-wrapper-yellow-grey-rings{
@@ -27,36 +57,7 @@
   background-color:$medium-blue-color;
   color: $medium-yellow-background;
  }
- .heading-1{
-  h1,h2,h3,h4,h5,h6{
-    font-size:2.25rem;
-  }
-}
-.heading-2{
-  h1,h2,h3,h4,h5,h6{
-    font-size:2rem;
-  }
-}
-.heading-3{
-  h1,h2,h3,h4,h5,h6{
-    font-size:1.75rem;
-  }
-}
-.heading-4{
-  h1,h2,h3,h4,h5,h6{
-    font-size:1.5rem;
-  }
-}
-.heading-5{
-  h1,h2,h3,h4,h5,h6{
-    font-size:1.25rem;
-  }
-}
-.heading-6{
-  h1,h2,h3,h4,h5,h6{
-    font-size:1.125rem;
-  }
-}
+
 @media (max-width:$mobile-screen-max){
   .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
   {
