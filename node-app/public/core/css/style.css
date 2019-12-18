@@ -5048,6 +5048,15 @@ input[type=radio] {
   display: flex;
   align-items: center; }
 
+.bottom-aligned-text .right-image-position, .bottom-aligned-text .left-image-position {
+  display: inherit; }
+  .bottom-aligned-text .right-image-position .text-section, .bottom-aligned-text .left-image-position .text-section {
+    margin: 20px 0; }
+
+.bottom-aligned-text .left-item {
+  float: none;
+  margin-right: 0; }
+
 .left-item {
   float: left;
   margin-right: 30px; }
@@ -5069,8 +5078,8 @@ input[type=radio] {
   .left-item {
     float: none;
     margin-right: 0; }
-  .middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position {
+  .middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position, .bottom-aligned-text .right-image-position, .bottom-aligned-text .left-image-position {
     display: inherit;
     text-align: center; }
-    .middle-aligned-text .right-image-position .text-section, .middle-aligned-text .left-image-position .text-section {
+    .middle-aligned-text .right-image-position .text-section, .middle-aligned-text .left-image-position .text-section, .bottom-aligned-text .right-image-position .text-section, .bottom-aligned-text .left-image-position .text-section {
       margin: 20px 0; } }

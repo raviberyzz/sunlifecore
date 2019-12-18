@@ -5,6 +5,18 @@
         align-items: center;
     }
 }
+.bottom-aligned-text {
+    .right-image-position, .left-image-position  {
+        display: inherit;
+        .text-section {
+            margin: 20px 0;
+        }
+    }
+    .left-item {
+        float: none;
+        margin-right: 0;
+    }
+}
 .left-item {
     float: left;
     margin-right: 30px;
@@ -33,7 +45,7 @@
             float: none;
             margin-right: 0;
         }
-        .middle-aligned-text {
+        .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
                 display: inherit;
                 text-align: center;
