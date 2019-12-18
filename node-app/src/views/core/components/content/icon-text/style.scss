@@ -49,3 +49,23 @@
         margin-top: 24px;
     }
 }
+.mega-menu-icon-wrapper {
+    .icon-text-heading-link, .icon-text-description {
+        display: none;
+    }
+    .icon-parent {
+        text-align: left;
+        float: left;
+        margin-right: 5px;
+    }
+    .icon-style {
+        background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        padding: 6px;
+        border: 2px solid $white-shade;
+        color: $white-shade;
+        font-size: 0.875rem;
+    }
+}

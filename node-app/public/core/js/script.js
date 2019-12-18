@@ -3037,27 +3037,16 @@ function removeParam(key, sourceURL) {
 // } 
 
 
-<<<<<<< HEAD
 
 
-
-=======
->>>>>>> 33a2884574a5ffa42ea6120af63a89b09dfb839c
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 33a2884574a5ffa42ea6120af63a89b09dfb839c
 console.log('utility-nav loaded');
 
 
-
-console.log('separator loaded');
 console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -3119,6 +3108,7 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });  
 });     
+console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
@@ -3136,5 +3126,6 @@ $(document).ready(function(){
     });
 });
 console.log('container loaded');
+
 
 console.log('breadcrumb loaded');
