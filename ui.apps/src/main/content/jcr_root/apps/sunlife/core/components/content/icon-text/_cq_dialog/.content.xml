@@ -43,11 +43,11 @@
                                             fieldLabel="link"
                                             name="./link"
                                             rootPath="/content"/>
-                                        <windowSelection
+                                        <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Window Selection"
-                                            name="./windowSelection">
+                                            fieldLabel="Target"
+                                            name="./target">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sameTab
                                                     jcr:primaryType="nt:unstructured"
@@ -56,13 +56,9 @@
                                                 <newTab
                                                     jcr:primaryType="nt:unstructured"
                                                     text="New Tab"
-                                                    value="_blank"/>
-                                                <model
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Model"
-                                                    value="model"/>
+                                                    value="_blank"/>                                               
                                             </items>
-                                        </windowSelection>
+                                        </target>
                                     </items>
                                 </column>
                             </items>

@@ -29,7 +29,7 @@ public interface IconTextModel {
      String getLink();
      
      @Inject
-     String getWindowSelection();
+     String getTarget();
      
 	}
 }
