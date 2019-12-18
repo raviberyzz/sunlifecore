@@ -16,6 +16,6 @@ JSON Format
     "img-border": "round-border"
 }
 ```
-<!-- "text-alignment": middle-aligned-text (if vertically middle aligned) else keep it blank -->
+<!-- "text-alignment": middle-aligned-text (if vertically middle aligned) / bottom-aligned-text (if text is placed below the image)-->
 <!-- "image-type": "circular-image" (if circular image required. Else keep it blank) -->
 <!-- "img-border": "round-border" (if border required. Else keep it blank) -->

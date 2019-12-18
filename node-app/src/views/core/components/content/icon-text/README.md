@@ -2,18 +2,12 @@
 JSON Format
 ```
 {   
-    "icon-bg":"icon-background-trans",
-    "icon-inside":"icon-inside-trans",
-    "fa-icon":"fa-facebook-square",
-    "text-present" : true,
-    "text-input": "Health & Wellness",
-    "text-area-wrapper" : "text-bottom-wrapper",
-    "link-present" : false,
+    "icon-text-wrapper" : "mega-menu-icon-wrapper",
+    "fa-icon":"fa-pie-chart",
+    "text-input": "Find an advisor",
     "href" : "javascript:void(0)",
-    "description-present" : false,
-    "description-input" : "",
+    "description-input" : "To find an advisor near",
     "share-link":""
 }
 ```
-<!-- Text-area classes available: text-right-wrapper, text-bottom-wrapper -->
-<!-- (icon-bg,icon-inside) classes available: (icon-background-trans,icon-inside-trans), (icon-background,icon-inside) -->
+<!-- icon-text-wrapper classes available are social-link-icon-wrapper, right-nav-icon-wrapper, cta-content-icon-wrapper, mega-menu-icon-wrapper -->
