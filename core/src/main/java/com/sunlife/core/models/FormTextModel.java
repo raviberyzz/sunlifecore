@@ -12,39 +12,12 @@ import org.apache.sling.models.annotations.Model;
 public interface FormTextModel {
 
 	@Inject
-	String getType();
-	
-	@Inject
-	String getFieldLabel();
-	
-	@Inject
-	String getPlaceholder();
-	
-	@Inject
-	String getName();
-	
-	@Inject
-	String getMaxlength();
-	
-	@Inject
-	String getConstraintMessage();
-  
-	@Inject
-	String getRequired();
+	String getValidation();
 	
 	@Inject
 	String getRequiredMessage();
-  
-	@Inject
-	String getReadOnly();
 	
 	@Inject
-	String getErrorMessage();
-  
-	@Inject
-	String getPattern();
-
-	@Inject
 	String getValidationError();
-
+	
 }
