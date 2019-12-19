@@ -14,13 +14,6 @@ defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ButtonModel {
 	
 	@Inject
-    String getOpenIn();
-	
-	@Inject
-    String getButtonLabel();
-	
-	@Inject
-	 String getLinkTo();
-	
+    String getTarget();
 	
 }
