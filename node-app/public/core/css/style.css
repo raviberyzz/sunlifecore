@@ -4267,7 +4267,7 @@ hr {
   font-family: FontAwesome;
   content: " \f107"; }
 
-.sign-in-wrapper .button-class {
+.CTA-wrapper {
   display: none; }
 
 .overflow-hidden {
