@@ -4267,9 +4267,6 @@ hr {
   font-family: FontAwesome;
   content: " \f107"; }
 
-.CTA-wrapper {
-  display: none; }
-
 .overflow-hidden {
   overflow: hidden; }
 
@@ -4876,6 +4873,9 @@ footer {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
+
+.CTA-wrapper {
+  display: inherit; }
 
 .button-class {
   line-height: 30px; }
