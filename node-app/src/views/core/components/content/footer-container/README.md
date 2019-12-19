@@ -31,9 +31,9 @@ JSON Format
         "icon-link" : "http://www.youtube.com/user/SunLifeFinancialCA"
     }],
     "tagline": "Life’s brighter under the sun",
-    "copyright": "© Sun Life Assurance Company of Canada.",
-    "reserved": "All rights reserved.",
-    "logo": "SLF",
+    "copyright": "© Sun Life Assurance Company of Canada. All rights reserved.",
+   "slf-acronym-present" : true,
+    "acronym": "SLF",
     "list1" : [{
         "link" : "https://www.sunlife.ca/slf/PSLF+Canada/Legal?vgnLocale=en_CA",
         "text" : "Legal",
@@ -65,6 +65,7 @@ JSON Format
     "footer-list":[
     {"LinkText": "Quick Link",
     "list-wrapper-class": "lists-wrapper",
+     "link-id":"link1",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Sign in / Register"
@@ -81,6 +82,7 @@ JSON Format
     },
     {"LinkText": "Plan Sponsors & Adviser",
     "list-wrapper-class": "lists-wrapper",
+     "link-id":"link2",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Sign in / Register"
@@ -96,6 +98,7 @@ JSON Format
     }]
     },{"LinkText": "About Us",
     "list-wrapper-class": "lists-wrapper",
+     "link-id":"link3",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Sign in / Register"
@@ -111,6 +114,7 @@ JSON Format
     }]
     },{"LinkText": "Careers",
     "list-wrapper-class": "lists-wrapper",
+     "link-id":"link4",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Sign in / Register"
@@ -127,6 +131,7 @@ JSON Format
     },
     {"LinkText": "Contact Us",
     "list-wrapper-class": "lists-wrapper",
+     "link-id":"link6",
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Sign in / Register"
@@ -142,6 +147,29 @@ JSON Format
     }]
     }
     
+    ],
+    "social-links": [{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-facebook-square",
+        "share-link":"shareFB()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-twitter-square",
+        "share-link":"shareTwitter()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-instagram",
+        "share-link":"shareLinkedIn()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-linkedin-square",
+        "share-link":"shareLinkedIn()"
+    },
+    {
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-youtube-square",
+        "share-link":"shareLinkedIn()"
+    }
     ]
 }
 ```

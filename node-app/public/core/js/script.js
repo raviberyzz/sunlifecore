@@ -3036,13 +3036,22 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> b1388bc87e0e5206dde8d0e854520a8856f33c44
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
 
+<<<<<<< HEAD
 console.log('breadcrumb loaded');
 
+=======
+>>>>>>> b1388bc87e0e5206dde8d0e854520a8856f33c44
 console.log('utility-nav loaded');
 
 
@@ -3126,6 +3135,10 @@ $(document).ready(function(){
 console.log('container loaded');
 
 
+<<<<<<< HEAD
 
 
 
+=======
+console.log('breadcrumb loaded');
+>>>>>>> b1388bc87e0e5206dde8d0e854520a8856f33c44
