@@ -1,14 +1,21 @@
 <footer class="footer-wrapper">
-    <div class="footer-section-1">
+    <div class="col-xs-12 footer-section-1 clearfix">
         {{>core-components-content-text-image}}
-        {{>core-components-content-social-icons}}
+        <div class="social-icon-wrapper vertical-middle-align">
+             <ul class="social-links horizontal-middle-align">
+				{{#each social-links}}
+				<li>{{>core-components-content-icon-text}}</li>
+				{{/each}}
+		</ul>
+        </div>
+       
     </div>
-    <div class="footer-section-2">
+    <div class="col-xs-12 footer-section-2 clearfix">
          {{#each footer-list}}
          {{>core-components-content-link-list}}
          {{/each}}
     </div>
-    <div class="footer-section-3">
+    <div class="col-xs-12 footer-section-3">
         {{>core-components-content-footer-copyright}}
     </div>
 </footer>

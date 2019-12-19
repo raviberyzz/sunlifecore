@@ -11,7 +11,7 @@ JSON Format
     "text-length":" ",
     "error-message":" ",
     "validation-pattern": " ",
-    "button-type":"submit",
+    "button-type":"button",
     "button-value":"Search",
     "form-button-class":"primary-blue-button"
 }
