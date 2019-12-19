@@ -35,7 +35,7 @@ public interface FooterCopyrightModel {
 	String getUrl();
   
 	@Inject
-	String getWindowSelection();
+	String getTarget();
 	
 	@Inject
 	String getCheckboxSeparator();

@@ -51,12 +51,12 @@
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sameTab
                                                     jcr:primaryType="nt:unstructured"
-                                                    text="SameTab"
+                                                    text="Same Tab"
                                                     value="_self"/>
                                                 <newTab
                                                     jcr:primaryType="nt:unstructured"
                                                     text="New Tab"
-                                                    value="_blank"/>                                               
+                                                    value="_blank"/>
                                             </items>
                                         </target>
                                     </items>
