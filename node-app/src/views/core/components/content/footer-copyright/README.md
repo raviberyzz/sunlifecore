@@ -25,15 +25,15 @@ JSON Format
     },{
         "link" : "https://www.sunlife.ca/ca/About+us/Accessibility+commitment?vgnLocale=en_CA",
         "text" : "Accessibility",
-        "class-name1" : "move-down-accessibility"
+        "class-name" : ""
     },{
         "link" : "https://www.sunlife.ca/ca/Sitemap?vgnLocale=en_CA",
         "text" : "Site map",
-        "class-name" : "site-map"
+        "class-name" : ""
     },{
         "link" : "#",
         "text" : "Feedback",
-        "class-name1" : "move-down-feedback"
+        "class-name" : ""
     }]
 }
 ```
