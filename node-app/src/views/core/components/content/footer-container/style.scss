@@ -3,8 +3,7 @@ footer {
     background-color: $light-cool-blue-color;
 }
 .footer-section-1{
-  
-    display: flow-root;
+    padding: 0;
     .image-text-wrapper{ 
         float: left; 
         margin: 16px 32px 16px 15px ;
@@ -35,7 +34,7 @@ footer {
        }
     }
 }
-@media(min-width: $mobile-screen-max){
+@media(min-width: $tab-screen-min){
     .footer-section-1{
         height: 128px;
     }

@@ -1,6 +1,7 @@
 {{#if single-select}}
-<div class="form-group-wrapper single-select">
-    <select class="form-option" data-parsley-required="data-parsley-required"> <i class="fa fa-angle-down"></i>
+<div class="cmp-form-options cmp-form-options--drop-down">
+    <label class="cmp-form-options__label" for="{{select-id}}">Select Product</label>
+    <select class="cmp-form-options__field cmp-form-options__field--drop-down"  name="{{select-name}}" id="{{select-id}}">
         <option selected="selected" value="">Select a product </option>
         {{#each list}}
         <option value={{link}}>{{text}}</option>
@@ -8,6 +9,7 @@
 
     </select>
 </div>
+<br><br>
 {{/if}}
 
 {{#if radio}}

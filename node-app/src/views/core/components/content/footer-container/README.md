@@ -31,9 +31,9 @@ JSON Format
         "icon-link" : "http://www.youtube.com/user/SunLifeFinancialCA"
     }],
     "tagline": "Life’s brighter under the sun",
-    "copyright": "© Sun Life Assurance Company of Canada.",
-    "reserved": "All rights reserved.",
-    "logo": "SLF",
+    "copyright": "© Sun Life Assurance Company of Canada. All rights reserved.",
+   "slf-acronym-present" : true,
+    "acronym": "SLF",
     "list1" : [{
         "link" : "https://www.sunlife.ca/slf/PSLF+Canada/Legal?vgnLocale=en_CA",
         "text" : "Legal",
@@ -158,7 +158,16 @@ JSON Format
         "share-link":"shareTwitter()"
     },{
         "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-instagram",
+        "share-link":"shareLinkedIn()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-linkedin-square",
+        "share-link":"shareLinkedIn()"
+    },
+    {
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-youtube-square",
         "share-link":"shareLinkedIn()"
     }
     ]

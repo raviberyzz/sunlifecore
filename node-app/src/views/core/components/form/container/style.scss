@@ -12,6 +12,7 @@
     .text-left{
         margin-bottom: 10px;
     }
+  
 }
 .parsley-errors-list.filled {
     background: $medium-red-color;
@@ -27,13 +28,7 @@
     text-align: left;
 }
 
-.parsley-errors-list li:before {
-    content: "\f12a";
-    font: normal 1em/0 FontAwesome;
-    left: 9px;
-    position: absolute;
-    top: 19.5px;
-}
+
 
 .parsley-custom-error-message {
     margin: 5px 10px;
