@@ -4,7 +4,7 @@
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
 <sly  data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
    <div class="icon-parent">
-      <span class="icon-style fa ${iconsText.icon}">
+      <span class="icon-style fa ${iconsText.icon}"></span>
    </div>
    <div class="icon-text">
       <div class="icon-text-heading-normal" data-sly-test.linkUrl="${!iconsText.link}">
