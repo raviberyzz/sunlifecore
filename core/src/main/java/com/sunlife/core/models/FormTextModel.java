@@ -43,4 +43,8 @@ public interface FormTextModel {
   
 	@Inject
 	String getPattern();
+
+	@Inject
+	String getValidationError();
+
 }
