@@ -30,23 +30,24 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Icon"
                                             name="./icon"/>
-                                        <textName
+                                        <text
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                            fieldLabel="Text Name"
-                                            name="./textName"
-                                            required="{Boolean}true"/>
+                                            sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                            fieldLabel="Text"
+                                            name="./text"
+                                            useFixedInlineToolbar="{Boolean}true"/>
                                         <link
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            fieldLabel="link Name"
+                                            fieldLabel="link"
                                             name="./link"
                                             rootPath="/content"/>
-                                        <windowSelection
+                                        <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Window Selection"
-                                            name="./windowSelection">
+                                            fieldLabel="Target"
+                                            name="./target">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sameTab
                                                     jcr:primaryType="nt:unstructured"
@@ -55,9 +56,9 @@
                                                 <newTab
                                                     jcr:primaryType="nt:unstructured"
                                                     text="New Tab"
-                                                    value="_blank"/>
+                                                    value="_blank"/>                                               
                                             </items>
-                                        </windowSelection>
+                                        </target>
                                     </items>
                                 </column>
                             </items>
