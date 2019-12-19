@@ -3,8 +3,8 @@
 JSON Format
 ```
 {
-    "breadcrumb-author":"breadcrumb-author",
-    "breadcrumb-background-color":"breadcrumb-light-cool-blue-color",
+    "breadcrumb-author":"",
+    "breadcrumb-wrapper-background":"breadcrumb-wrapper-cool-blue",
     "icon-bg":"",
     "icon-inside":"",
     "text-present" : false,
@@ -31,19 +31,22 @@ JSON Format
     }
     ],
     "social-links": [{
+        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-facebook-square",
         "share-link":"shareFB()"
     },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-twitter-square",
         "share-link":"shareTwitter()"
     },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-linkedin-square",
         "share-link":"shareLinkedIn()"
     }
     ]
 }
 ```
-<!-- Classes available for "breadcrumb-background-color" are "breadcrumb-light-cool-blue-color","breadcrumb-cool-blue-color" and links colors are changed accordingly -->
+<!-- Classes available for "breadcrumb-wrapper-background" are "breadcrumb-wrapper-light-cool-blue","breadcrumb-wrapper-cool-blue" and links colors are changed accordingly -->
 
 <!-- Icons and share-links available for "social-links" are "fa-facebook-square" and "shareFB()" ,"fa-twitter-square" and "shareTwitter()" ,"fa-linkedin-square" and "shareLinkedIn()" respectively -->
 

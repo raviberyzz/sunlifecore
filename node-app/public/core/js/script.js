@@ -3036,7 +3036,12 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+<<<<<<< HEAD
 console.log('component loaded');
+=======
+console.log('breadcrumb loaded');
+
+>>>>>>> e16d8b9f46741dac2df3377cbbf8d64e8deaa20b
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3054,7 +3059,6 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
 console.log('utility-nav loaded');
 
 
@@ -3112,8 +3116,12 @@ $(document).ready(function () {
 });     
 console.log('separator loaded');
 console.log('component loaded');
-console.log('image loaded');
 console.log('icon-text loaded');
+<<<<<<< HEAD
+=======
+console.log('image loaded');
+console.log('footer-copyright loaded');
+>>>>>>> e16d8b9f46741dac2df3377cbbf8d64e8deaa20b
 
 console.log('desktop-header loaded');
 $(document).ready(function(){
@@ -3128,4 +3136,8 @@ $(document).ready(function(){
 });
 console.log('container loaded');
 
+<<<<<<< HEAD
 console.log('breadcrumb loaded');
+=======
+
+>>>>>>> e16d8b9f46741dac2df3377cbbf8d64e8deaa20b

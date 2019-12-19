@@ -25,5 +25,6 @@ public interface Breadcrumb {
 	
 	@Inject
 	public String getSocialShareText();
+	
 
 }
