@@ -147,6 +147,20 @@ JSON Format
     }]
     }
     
+    ],
+    "social-links": [{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-facebook-square",
+        "share-link":"shareFB()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-twitter-square",
+        "share-link":"shareTwitter()"
+    },{
+        "icon-text-wrapper": "social-link-icon-wrapper",
+        "fa-icon":"fa-linkedin-square",
+        "share-link":"shareLinkedIn()"
+    }
     ]
 }
 ```
