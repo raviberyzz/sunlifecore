@@ -4,5 +4,5 @@
     jcr:description="Displays a horizontal rule for separating content"
     jcr:primaryType="cq:Component"
     jcr:title="Separator"
-    sling:resourceSuperType="/core/wcm/components/separator/v1/separator"
+    sling:resourceSuperType="core/wcm/components/separator/v1/separator"
     componentGroup=".hidden"/>
