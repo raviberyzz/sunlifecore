@@ -4783,9 +4783,7 @@ hr {
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer-copyright-wrapper {
     height: 116px;
-    padding: 32px 15px; }
-    .footer-copyright-wrapper .site-map {
-      display: none; } }
+    padding: 32px 15px; } }
 
 @media (max-width: 767px) {
   .footer-copyright-wrapper {
@@ -4798,14 +4796,11 @@ hr {
         text-align: center; }
       .footer-copyright-wrapper .top-part .slf-legal {
         padding-top: 32px; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down-accessibility {
+        .footer-copyright-wrapper .top-part .slf-legal ul li:nth-child(4) {
           padding-right: 0; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down-feedback {
+        .footer-copyright-wrapper .top-part .slf-legal ul li:nth-child(6) {
           padding-left: 0;
           margin-left: -12px; }
-        .footer-copyright-wrapper .top-part .slf-legal .site-map {
-          display: none;
-          padding: 0; }
     .footer-copyright-wrapper .bottom-part {
       display: block; }
       .footer-copyright-wrapper .bottom-part .slf-copyright, .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
@@ -4815,22 +4810,6 @@ hr {
         padding-top: 40px; }
       .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
-
-.slf-desktop-header-wrapper .bottom-bar {
-  background-color: #FFCB05;
-  height: 8px;
-  display: block; }
-
-.slf-desktop-header-wrapper .button-float-right {
-  float: right;
-  padding-right: 15px; }
-
-.slf-desktop-header-wrapper .region-lenguage-menu-wrapper, .slf-desktop-header-wrapper .search-bar-wrapper {
-  -webkit-transition: 0.5s ease-out; }
-
-@media (max-width: 1024px) {
-  .slf-desktop-header-wrapper {
-    display: none; } }
 
 footer {
   background-color: #F4F7F6; }
@@ -4876,6 +4855,75 @@ footer {
       width: 20%; }
       .footer-section-2 .lists-wrapper .links {
         padding: 32px 0 32px 32px; } }
+
+.slf-desktop-header-wrapper .bottom-bar {
+  background-color: #FFCB05;
+  height: 8px;
+  display: block; }
+
+.slf-desktop-header-wrapper .button-float-right {
+  float: right;
+  padding-right: 15px; }
+
+.slf-desktop-header-wrapper .region-lenguage-menu-wrapper, .slf-desktop-header-wrapper .search-bar-wrapper {
+  -webkit-transition: 0.5s ease-out; }
+
+@media (max-width: 1024px) {
+  .slf-desktop-header-wrapper {
+    display: none; } }
+
+
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px !important;
+  width: 92px !important;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue {
   height: 43px;
@@ -4955,59 +5003,6 @@ footer {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-
-.campaign-header-wrapper .logo-img {
-  height: 31px; }
-
-.campaign-header-wrapper .campaign-header {
-  position: relative;
-  height: 100px;
-  border-top: 8px solid #FFCB05; }
-
-@media (max-width: 1024px) {
-  .campaign-header-wrapper .campaign-header {
-    background: #f8f8f8;
-    box-shadow: 0 8px 6px -6px #000000; }
-  .campaign-header-wrapper .slf-header-logo {
-    text-align: center; } }
-
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px !important;
-  width: 92px !important;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
 
 .banner-wrapper .banner-img {
   width: 100%;
