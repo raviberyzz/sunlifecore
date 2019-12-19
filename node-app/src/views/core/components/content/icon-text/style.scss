@@ -1,57 +1,71 @@
 @import '../../../base/core';
-.icon-text-wrapper{
-    .icon-wrapper {
+.icon-parent {
+    text-align: center;
+}
+.social-link-icon-wrapper{
+    .icon-text{
+        display: none;
+    }
+}
+.right-nav-icon-wrapper{
+    text-align: center;
+    .icon-style {
+        font-size: 2.25rem;
+    }
+    .icon-text{
+        margin-top: 16px;
+        .icon-text-heading-normal{
+            display: none;
+        }
+        .icon-text-description{
+            display: none;
+        }
+        .icon-text-heading-link{
+            text-align: center;
+            font-size: 1rem;
+        }
+    }
+}
+.cta-content-icon-wrapper {
+    .icon-style {
+    background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    padding: 19px;
+    border: 2px solid $white-shade;
+    color: $white-shade;
+    font-size: 2.5rem;
+    }
+    .icon-text-heading-link{
+        display: none;
+    }
+    .icon-text-heading-normal, .icon-text-description{
         text-align: center;
     }
-    .icon-background {
-        width: 60px;
-        height: 60px;
+    .icon-text-heading-normal{
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin-top: 24px;
+    }
+}
+.mega-menu-icon-wrapper {
+    .icon-text-heading-link, .icon-text-description {
+        display: none;
+    }
+    .icon-parent {
+        text-align: left;
+        float: left;
+        margin-right: 5px;
+    }
+    .icon-style {
         background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        padding: 6px;
         border: 2px solid $white-shade;
-        border-radius: 100%;
-        position: relative;
-    }
-    .icon-background-trans {
-        width: 60px;
-        height: 60px;
-        background: transparent;
-        border: 2px solid $white-shade;
-        border-radius: 100%;
-        position: relative;
-    }
-    .icon-inside {
         color: $white-shade;
-        position: relative;
-        font-size: 50px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .icon-inside-trans {
-        color: $medium-blue-color;
-        position: relative;
-        font-size: 50px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .text-right-wrapper {
-        display: block;
-    }
-    .text-right-wrapper>* {
-        display: inline-block;
-    }
-    .text-bottom-wrapper {
-        .icon-text {
-            .icon-text-heading, .icon-text-description{
-                text-align: center;
-            }
-        }
-        .icon-background {
-            margin: auto;
-        }
-        .icon-background-trans {
-            margin: auto;
-        }
+        font-size: 0.875rem;
     }
 }

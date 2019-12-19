@@ -35,7 +35,7 @@ public interface ListModel {
 
   /**
    * Links model
-   * has a name, url and window selections
+   * has a name, url and target
    */
   @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
@@ -47,7 +47,7 @@ public interface ListModel {
     String getLinkUrl();
     
     @Inject
-    String getSelection();    
+    String getTarget();    
    
   }
 }
