@@ -7,12 +7,12 @@ JSON Format
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "fa-icon":"fa-pie-chart",
-    "text-input": "Insurance",
+    "text-input": "Health & Wellness",
     "href" : "javascript:void(0)",
     "description-input" : "To find an advisor near",
     "explore-product-col":"explore-product-col",
-    "explore-product":true,
-    "tools-resource":false,
+    "explore-product":false,
+    "tools-resource":true,
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Life moments"

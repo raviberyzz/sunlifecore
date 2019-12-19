@@ -4771,9 +4771,7 @@ hr {
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer-copyright-wrapper {
     height: 116px;
-    padding: 32px 15px; }
-    .footer-copyright-wrapper .site-map {
-      display: none; } }
+    padding: 32px 15px; } }
 
 @media (max-width: 767px) {
   .footer-copyright-wrapper {
@@ -4786,14 +4784,11 @@ hr {
         text-align: center; }
       .footer-copyright-wrapper .top-part .slf-legal {
         padding-top: 32px; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down-accessibility {
+        .footer-copyright-wrapper .top-part .slf-legal ul li:nth-child(4) {
           padding-right: 0; }
-        .footer-copyright-wrapper .top-part .slf-legal .move-down-feedback {
+        .footer-copyright-wrapper .top-part .slf-legal ul li:nth-child(6) {
           padding-left: 0;
           margin-left: -12px; }
-        .footer-copyright-wrapper .top-part .slf-legal .site-map {
-          display: none;
-          padding: 0; }
     .footer-copyright-wrapper .bottom-part {
       display: block; }
       .footer-copyright-wrapper .bottom-part .slf-copyright, .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
@@ -4882,6 +4877,43 @@ footer {
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
 
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px !important;
+  width: 92px !important;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
+
 .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue {
   height: 43px;
   padding: 0 15px;
@@ -4960,43 +4992,6 @@ footer {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px !important;
-  width: 92px !important;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
 
 .banner-wrapper .banner-img {
   width: 100%;

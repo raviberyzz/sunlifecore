@@ -14,9 +14,9 @@
     "checkbox-id":"demo-id",
     "value":"demo-value",
     "single-select":true,
-    "radio":false,
-    "checkbox":false,
-    "multi-select":false,
+    "radio":true,
+    "checkbox":true,
+    "multi-select":true,
     "list" : [{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",
         "text" : "Sun Life Go Simplified Term Life Insurance"
