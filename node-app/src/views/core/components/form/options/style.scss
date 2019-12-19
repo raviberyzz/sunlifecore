@@ -1,5 +1,25 @@
 @import '../../../base/core';
-.form-option {
+.form-group-wrapper {
+margin: 20px 0;
+}
+
+.cmp-form-options--drop-down{
+    height: 48px;
+    position: relative;
+    display: inline-table;
+    width: 100%;
+    &::before{
+        content: "\f107";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 16px;
+    top: 38px;
+    font-weight: 700;
+    }
+}
+
+.cmp-form-options__field--drop-down{
     border: 1px solid $medium-grey-background;
     border-radius: 0;
     display: block;
@@ -15,22 +35,6 @@
     background-color: $white-shade;
     color: $dark-grey-color;
 }
-
-.single-select {
-    height: 48px;
-    position: relative;
-    &::before{
-        content: "\f107";
-    font-family: FontAwesome;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 16px;
-    top: 11px;
-    font-weight: 700;
-    }
-    
-}
-
 input[type=checkbox] {
     margin: 0;
     &::after{
@@ -61,7 +65,6 @@ input[type=radio] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    display: inline-block;
     width: 24px;
     height: 24px;
     padding: 3px;
