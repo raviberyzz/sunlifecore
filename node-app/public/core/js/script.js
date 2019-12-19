@@ -3036,6 +3036,15 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+console.log('separator loaded');
+console.log('region-language-menu loaded');
+$(document).ready(function(){
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+});
 
 
 
@@ -3058,15 +3067,6 @@ $(document).ready(function () {
 });     
 console.log('separator loaded');
 
-console.log('region-language-menu loaded');
-$(document).ready(function(){
-    $('.slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
-});
-console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
