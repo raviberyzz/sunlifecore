@@ -28,3 +28,5 @@ JSON Format
 <!-- text-alignment available: text-center, text-right, text-left-->
 <!-- if "img-src" is src for desktop image only and no separate image is available for mobile, mark "is-mobile-src": "not-mobile-image". else keep it blank.
  -->
+
+<!-- home page URL : /static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg -->

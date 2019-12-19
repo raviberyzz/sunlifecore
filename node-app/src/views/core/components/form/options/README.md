@@ -14,7 +14,7 @@
     "checkbox-id":"demo-id",
     "value":"demo-value",
     "single-select":true,
-    "radio":false,
+    "radio":true,
     "checkbox":true,
     "multi-select":false,
     "list" : [{

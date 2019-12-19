@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "button-class": "signIn-button",
+    "button-class": "primary-blue-button",
     "button-text": "Button",
     "btn-text" : "",
     "redirection-link": "javascript:void(0)"
