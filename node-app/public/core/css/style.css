@@ -3608,9 +3608,14 @@ input[type=text] {
   width: 100%;
   border: 1px solid #9a9a9a; }
 
+.form-group-wrapper {
+  margin: 20px 0; }
+
 .cmp-form-options--drop-down {
   height: 48px;
-  position: relative; }
+  position: relative;
+  display: inline-table;
+  width: 100%; }
   .cmp-form-options--drop-down::before {
     content: "\f107";
     font-family: FontAwesome;
@@ -4873,9 +4878,6 @@ footer {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
-
-.CTA-wrapper {
-  display: inherit; }
 
 .button-class {
   line-height: 30px; }
