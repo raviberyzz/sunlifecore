@@ -18,15 +18,15 @@
     }
     .title-region {
         h4 {
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.125rem;
-            margin-top: 0;
+            margin: 0 0 8px 0;
         }
     }
     .slf-region {
         border-right: 2px solid $light-grey-color;
         .content-region {
-            padding: 14px 0 0;
+            padding:0;
             ul {
                 margin-bottom: 0;
                 li {
@@ -42,42 +42,34 @@
                 background-color: $white-shade;
             }
             .region-link .list-unstyled li {
-                padding-left: 14px;
+                padding: 4px 0 4px 20px;
                 margin-bottom: 8px;
-                //waiting for style guide update
-                //height: 32px;
-                &:hover {
-                    background-color: $light-orange-color;
-                }
+                height: 34px;
             }
             > :first-child {
                 padding-left: 0;
                 .nav-select {
                     background-color: $light-orange-color;
                     a {
-                        font-weight: bold;
+                        font-weight: 700;
                         color: $dark-grey-color;
                     }
                 }
                 .accordion-heading {
                     font-size: 1rem;
-                    font-weight: bold;
+                    font-weight: 700;
                     cursor: pointer;
-                    margin: 8px 0 0 0;
-                    padding-bottom: 5px;
+                    margin: 0;
+                    padding-bottom: 8px;
                 }
             }
             > :not(:first-child) {
                 .accordion-heading {
                     font-size: 1rem;
                     cursor: pointer;
-                    margin: 8px 0 0 0;
-                    padding-bottom: 5px;
+                    margin: 0;
+                    padding-bottom: 8px;
                     color: $medium-blue-color;
-                    //waiting for style guide update
-                    // &:hover{
-                    //     background-color: $light-orange-color;
-                    // }
                 }
             }
             .slf-region-column {
@@ -102,11 +94,11 @@
             font-weight: 700;
             font-size: 1.125rem;
             margin-top: 0;
-            padding-left: 32px;
+            padding: 0 0 0 16px;
         }
     }
     .content-language {
-        padding-left: 32px;
+        padding-left: 16px;
         ul {
             margin-bottom: 0;
             li {
@@ -126,7 +118,7 @@
                 font-weight: 400;
             }
         }
-        .region-separator {
+        .grey-horizontal-separator {
             .horizontal-middle-align {
                 float: left;
                 margin-left: -72px;
@@ -249,7 +241,7 @@
                         font-weight: 700;
                     }
                 }
-                .region-separator {
+                .grey-horizontal-separator {
                     .horizontal-middle-align {
                         float: left;
                         width: 59px;
