@@ -11,27 +11,27 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <copyrightTitle
+                    <title
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldDescription="Text"
-                        fieldLabel="Copyright Title"
+                        fieldLabel="Title"
                         name="./title"
                         rootPath="/content"/>
                     <copyrightText
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/column/items/richtext"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                         fieldLabel="Copyright Text"
                         name="./copyrightText"
                         useFixedInlineToolbar="{Boolean}true"/>
                     <slffooterText
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Text"
-                        fieldLabel="Slf Text Label"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldLabel="SLF Text"
                         name="./slfText"
-                        rootPath="/content"/>
+                        useFixedInlineToolbar="{Boolean}true"/>
                     <copyrightLinks
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -46,25 +46,25 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
                                     <items jcr:primaryType="nt:unstructured">
-                                        <textLabel
+                                        <label
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldDescription="Text"
-                                            fieldLabel="Text Label"
+                                            fieldLabel="Label"
                                             name="./label"
                                             rootPath="/content"/>
-                                        <textUrl
+                                        <link
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                             fieldDescription="Link"
-                                            fieldLabel="Text URL"
+                                            fieldLabel="Link"
                                             name="./url"
                                             rootPath="/content"/>
-                                        <windowSelection
+                                        <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Window Selection"
-                                            name="./windowSelection">
+                                            fieldLabel="Target"
+                                            name="./target">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sameTab
                                                     jcr:primaryType="nt:unstructured"
@@ -72,17 +72,17 @@
                                                     value="_self"/>
                                                 <newTab
                                                     jcr:primaryType="nt:unstructured"
-                                                    selected="{Boolean}true"
                                                     text="New Tab"
                                                     value="_blank"/>
                                             </items>
-                                        </windowSelection>
+                                        </target>
                                         <checkboxSeparator
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                             name="./checkboxSeparator"
                                             text="Separator"
-                                            uncheckedValue="false"/>
+                                            uncheckedValue="false"
+                                            value="{Boolean}true"/>
                                         <checkboxHide
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

@@ -1,7 +1,13 @@
 @import '../../../base/core';
+.form-group-wrapper {
+margin: 20px 0;
+}
+
 .cmp-form-options--drop-down{
     height: 48px;
     position: relative;
+    display: inline-table;
+    width: 100%;
     &::before{
         content: "\f107";
     font-family: FontAwesome;

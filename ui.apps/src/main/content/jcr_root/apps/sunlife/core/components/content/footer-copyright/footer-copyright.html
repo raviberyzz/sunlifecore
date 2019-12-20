@@ -1,18 +1,17 @@
-<div class="footer-copyright-wrapper-asd" data-sly-use.footercopyright="com.sunlife.core.models.FooterCopyrightModel">
+<div class="footer-copyright-wrapper" data-sly-use.footercopyright="com.sunlife.core.models.FooterCopyrightModel">
    <div class="top-part clearfix">
-      <div data-sly-test="${footercopyright.title}" class="slf-tagline">${footercopyright.title}</div>
-      <div class="bottom-part">
-         <div data-sly-test="${footercopyright.copyrightText}" class="slf-copyright">${footercopyright.copyrightText @context='html'}</div>
-         <div data-sly-test="${footercopyright.slfText}"class="slf-logo">${footercopyright.slfText}</div>
-      </div>
-      <div class="slf-legal" data-sly-list.footerItems="${footercopyright.footerItems}">
-         <div data-sly-test="${!empty}">
-            <ul>
+      <div data-sly-test="${footercopyright.title}" class="slf-tagline">${footercopyright.title}</div>      
+      	<div class="slf-legal">         
+            <ul data-sly-list.footerItems="${footercopyright.footerItems}">
                <li data-sly-test="${!footerItems.checkboxHide}">
-                  <a href="${footerItems.url @ extension = 'html'}" target="${footerItems.windowSelection}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+                  <a href="${footerItems.url @ extension = 'html'}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
                </li>
             </ul>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
+    <div class="bottom-part">
+      <div data-sly-test="${footercopyright.copyrightText}" class="slf-copyright">${footercopyright.copyrightText @context='html'}</div>
+      <div data-sly-test="${footercopyright.slfText}"class="slf-acronym">${footercopyright.slfText @context='html'}</div>
+    </div>
 </div>
+<div data-sly-test="${!footercopyright.title}" class="cq-placeholder" data-emptytext="${component.title}"></div>

@@ -3039,11 +3039,11 @@ function removeParam(key, sourceURL) {
 
 
 
+
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
 console.log('utility-nav loaded');
 $(document).ready(function(){
     $("#language-btn-container,#sunLanguageCrossBtn").click(function(){
@@ -3116,6 +3116,21 @@ $(document).ready(function () {
         $('.language-region .second-level-navigation').removeClass('active');         
         $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
+    });
+    $(window).resize(function() { 
+        if ($(window).width() > 1024) {
+            $('.container').css({'margin-left':'0'}); 
+        }
+        else if ($(window).width() < 1025) {
+            if ($('.hamburger-menu-wrapper').hasClass('active')){
+                $('.container').css({'margin-left':'270px'}); 
+            }
+            else{
+                $('.container').css({'margin-left':'0'}); 
+            } 
+        }
+        else{
+        }
     });  
 });     
 console.log('separator loaded');

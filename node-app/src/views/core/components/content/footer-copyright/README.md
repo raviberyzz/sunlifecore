@@ -29,7 +29,7 @@ JSON Format
     },{
         "link" : "https://www.sunlife.ca/ca/Sitemap?vgnLocale=en_CA",
         "text" : "Site map",
-        "class-name" : ""
+        "class-name" : "hidden-xs"
     },{
         "link" : "#",
         "text" : "Feedback",

@@ -3599,9 +3599,23 @@ a {
     font-size: 1.625rem; } }
 
 
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
+
+.form-group-wrapper {
+  margin: 20px 0; }
+
 .cmp-form-options--drop-down {
   height: 48px;
-  position: relative; }
+  position: relative;
+  display: inline-table;
+  width: 100%; }
   .cmp-form-options--drop-down::before {
     content: "\f107";
     font-family: FontAwesome;
@@ -3685,6 +3699,24 @@ input[type=text] {
   width: 100%;
   border: 1px solid #9a9a9a; }
 
+.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
+  height: 48px;
+  width: 180px;
+  border-radius: 4px; }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
 .form-wrapper {
   width: 50%;
   margin: auto;
@@ -3722,24 +3754,6 @@ input[type=text] {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
-
-.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
-  height: 48px;
-  width: 180px;
-  border-radius: 4px; }
-
-.button-wrapper .primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.button-wrapper .primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.button-wrapper .secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
 
 .utility-nav-wrapper {
   text-align: right;
@@ -4271,9 +4285,6 @@ hr {
   font-family: FontAwesome;
   content: " \f107"; }
 
-.sign-in-wrapper .button-class {
-  display: none; }
-
 .overflow-hidden {
   overflow: hidden; }
 
@@ -4282,6 +4293,8 @@ hr {
   /* Mobile Header End */
   /* Hamburger Menu Start */
   /* Hamburger Menu End Here */ }
+  .slf-mobile-header-wrapper .button-class {
+    display: none; }
   .slf-mobile-header-wrapper .white-shade {
     background: #ffffff; }
   .slf-mobile-header-wrapper .grey {
@@ -4351,29 +4364,37 @@ hr {
     /* Mobile Region and Language Bar End Here */ }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper.active {
       left: 0;
-      overflow: auto; }
+      overflow: hidden auto; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper.inactive {
       left: -270px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .close-hamburger-menu {
       display: inline-block;
-      width: 100%; }
+      width: 100%;
+      height: 42px;
+      padding: 0 16px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .close-hamburger {
       float: right;
-      padding: 16px;
-      font-size: 20px;
-      cursor: pointer; }
+      font-size: 1rem;
+      line-height: 26px;
+      cursor: pointer;
+      padding: 8px 0; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .hamburger-search {
-      padding: 15px 16px 18px 16px;
-      background: #F4F7F6; }
+      padding: 8px 16px;
+      background: #F7F7F7;
+      height: 42px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-field {
       position: absolute;
-      margin: 6px 0 0 5px;
+      margin-left: 5px;
       border: none;
       background: #F4F7F8;
-      padding: 0;
-      height: 18px; }
+      padding: 2px 0 0 0;
+      height: 26px;
+      width: 216px;
+      outline: none;
+      line-height: 26px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-icon-mobile {
-      color: #888888; }
+      color: #888888;
+      line-height: 26px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .slf-search-mobile {
       border-bottom: 1px solid #D7D7D7; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .search-autocomplete-mobile {
@@ -4393,19 +4414,22 @@ hr {
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-list {
       padding-top: 8px;
       z-index: 1050; }
+    .slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-navigation {
+      padding-top: 16px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav {
-      margin: 24px 16px 0 16px; }
+      margin: 16px 16px 0 16px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .navigation-menu a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav a {
         color: #004C6C;
         font-weight: 400;
-        text-decoration: none; }
+        text-decoration: none;
+        line-height: 26px; }
         .slf-mobile-header-wrapper .hamburger-menu-wrapper .navigation-menu a:after, .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav a:after {
           font-family: FontAwesome;
           content: "\00a0\f105"; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .subnav a:after {
       content: ''; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region {
-      margin: 44px 16px; }
+      margin: 32px 16px; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation {
       background: #FEEDD2;
       display: none;
@@ -4419,13 +4443,15 @@ hr {
       overflow-y: auto;
       padding-bottom: 24px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation a {
-        color: #004C6C; }
+        color: #004C6C;
+        line-height: 26px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation.active, .slf-mobile-header-wrapper .hamburger-menu-wrapper .active.third-level-navigation {
         display: block; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .navigation-title a, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .navigation-title a {
         font-weight: 700;
         padding-left: 16px;
-        font-size: 1.125rem; }
+        font-size: 1rem;
+        line-height: 26px; }
         .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .navigation-title a:after, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .navigation-title a:after {
           content: ''; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .navigation-menu, .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .subnav, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .subnav {
@@ -4434,8 +4460,8 @@ hr {
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .go-back, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back {
         background-color: #ffffff;
         width: 100%;
-        line-height: 23px;
-        padding: 16px;
+        height: 42px;
+        padding: 8px 16px;
         margin-bottom: 32px; }
         .slf-mobile-header-wrapper .hamburger-menu-wrapper .second-level-navigation .go-back:before, .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back:before {
           font-family: FontAwesome;
@@ -4450,8 +4476,6 @@ hr {
         margin-left: -5px; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .subnav {
         margin-left: 0; }
-      .slf-mobile-header-wrapper .hamburger-menu-wrapper .third-level-navigation .go-back {
-        margin-bottom: 0; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .second-level-navigation, .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .third-level-navigation {
       padding-bottom: 0; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .second-level-navigation, .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .third-level-navigation {
@@ -4459,8 +4483,9 @@ hr {
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .go-back {
       background-color: #004C6C;
       width: 100%;
-      line-height: 23px;
-      padding: 16px;
+      height: 42px;
+      line-height: 26px;
+      padding: 8px 16px;
       margin-bottom: 0; }
       .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .go-back a {
         color: #ffffff; }
@@ -4805,6 +4830,9 @@ hr {
 
 footer {
   background-color: #F4F7F6; }
+
+.footer-section-1, .footer-section-2, .footer-section-3 {
+  padding: 0; }
 
 .footer-section-1 {
   padding: 0; }
