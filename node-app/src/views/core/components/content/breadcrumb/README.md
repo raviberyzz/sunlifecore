@@ -4,7 +4,7 @@ JSON Format
 ```
 {
     "breadcrumb-author":"",
-    "breadcrumb-wrapper-background":"breadcrumb-wrapper-cool-blue",
+    "breadcrumb-wrapper-background":"breadcrumb-wrapper-light-cool-blue",
     "icon-bg":"",
     "icon-inside":"",
     "text-present" : false,
@@ -16,6 +16,7 @@ JSON Format
     "description-input" : "",
     "side-text": "Share this:",
     "social-icon-present":true, 
+    "icon-text-wrapper": "social-link-icon-wrapper",
     "page-redirection-link" : [{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
         "text" : "Home",
@@ -30,20 +31,16 @@ JSON Format
         "class-name": "active"
     }
     ],
-    "social-links": [{
-        "icon-text-wrapper": "social-link-icon-wrapper",
+    "iconTextList" : [{
         "fa-icon":"fa-facebook-square",
         "share-link":"shareFB()"
     },{
-        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-twitter-square",
         "share-link":"shareTwitter()"
     },{
-        "icon-text-wrapper": "social-link-icon-wrapper",
         "fa-icon":"fa-linkedin-square",
         "share-link":"shareLinkedIn()"
-    }
-    ]
+    }]
 }
 ```
 <!-- Classes available for "breadcrumb-wrapper-background" are "breadcrumb-wrapper-light-cool-blue","breadcrumb-wrapper-cool-blue" and links colors are changed accordingly -->
