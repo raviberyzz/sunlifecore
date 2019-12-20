@@ -3043,6 +3043,7 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+
 console.log('utility-nav loaded');
 
 
@@ -3142,12 +3143,12 @@ console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
-console.log('footer-copyright loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
 });
-
+console.log('footer-copyright loaded');
 console.log('container loaded');
+
 
 
 console.log('breadcrumb loaded');
