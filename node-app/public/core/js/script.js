@@ -3043,7 +3043,6 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
 console.log('utility-nav loaded');
 
 
@@ -3067,6 +3066,15 @@ $(document).ready(function(){
 });
 
 
+console.log('region-language-menu loaded');
+$(document).ready(function(){
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+});
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3106,6 +3114,21 @@ $(document).ready(function () {
         $('.language-region .second-level-navigation').removeClass('active');         
         $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
+    });
+    $(window).resize(function() { 
+        if ($(window).width() > 1024) {
+            $('.container').css({'margin-left':'0'}); 
+        }
+        else if ($(window).width() < 1025) {
+            if ($('.hamburger-menu-wrapper').hasClass('active')){
+                $('.container').css({'margin-left':'270px'}); 
+            }
+            else{
+                $('.container').css({'margin-left':'0'}); 
+            } 
+        }
+        else{
+        }
     });  
 });     
 console.log('separator loaded');
