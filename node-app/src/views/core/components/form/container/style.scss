@@ -1,18 +1,20 @@
 @import '../../../base/core';
-
 .form-wrapper{
-    width: 50%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid $dark-grey-color;
-    
-    p{
-        margin: 10px 0px 0px 0px;
-    }
-    .text-left{
-        margin-bottom: 10px;
-    }
-  
+    text-align: center;
+  width: 50%;
+}
+.form-yellow-wrapper{
+    background-color:$medium-yellow-background;
+   
+}
+.form-alignment-left{
+    text-align: left;
+}
+.form-alignment-right{
+    text-align: right;
+}
+.form-alignment-center{
+    text-align: center;
 }
 .parsley-errors-list.filled {
     background: $medium-red-color;

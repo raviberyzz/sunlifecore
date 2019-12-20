@@ -3,61 +3,50 @@
 .desktop-primary-navigation{
     .navigation{
         position: static;
-        padding: 0 24px 0 47px;
-    }
-    .nav>li>a{
-        
+        padding: 0 24px 0 24px;
+        &:first-child{
+          padding-left: 48px;
+        }
     }
     .dropdown:hover .dropdown-menu {
-        display: flex;
+        display: block;
         padding: 0;
-        background-color: white;
-        z-index: 2000;
-        .nav>li{
-            box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
-        }
-        box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
-        a{
-            padding-bottom: 0;
-        }
       }
       .menu-content{
           position: absolute;
-          margin-top: -8px !important;
+          margin-top: -8px;
           
       }
-      .menu-content:hover{
-        position: absolute;
-        margin-top: -8px !important;
-        .nav>li{
-            box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
-        }
-        
-    }
       .nav>li>:hover{
-        background-color: white;
+        background-color: $white-shade;
         box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
         
       }
       .nav>li>a{
         background-color: transparent;
+        z-index: 9999;
       }
       .nav>li>a:hover{
         background-color: transparent;
         z-index:9999;
         padding-bottom: 0
       }
-
-
       .primary-navigation{
         margin-left: 166px;
         li{
             position: static;
         }
       }
+      .navbar-new .nav-item>a:after {
+        font-family: FontAwesome;
+        content: " \f107";
+    }
+    .box-class{
+      z-index: 9999;
+      padding-bottom: 0 !important;
+      box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
+    }
 
 }
-.navbar-new .nav-item>a:after {
-    font-family: FontAwesome;
-    content: " \f107";
-}
+
+

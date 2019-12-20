@@ -4,13 +4,17 @@ JSON Format
 {
     "navigation":[{
     "navigation-heading":"Explore Product",
+    "navigation-id":"explore1",
+    "navigation-menu-id":"explore-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
-    "fa-icon":"fa-pie-chart",
-    "text-input": "Health & Wellness",
-    "href" : "javascript:void(0)",
-    "description-input" : "To find an advisor near",
+    "iconTextList" : [{
+        "fa-icon":"fa-map-marker",
+        "text-input": "Find an advisor",
+        "href" : "javascript:void(0)",
+        "description-input" : "To find an advisor near you"
+    }],
     "explore-product-col":"explore-product-col",
     "explore-product":true,
     "tools-resource":false,
@@ -39,13 +43,17 @@ JSON Format
     ]
     },{
     "navigation-heading":"Tools & Resource",
+    "navigation-id":"tools1",
+    "navigation-menu-id":"tools-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
-    "fa-icon":"fa-pie-chart",
-    "text-input": "Health & Wellness",
-    "href" : "javascript:void(0)",
-    "description-input" : "To find an advisor near",
+    "iconTextList" : [{
+        "fa-icon":"fa-map-marker",
+        "text-input": "Find an advisor",
+        "href" : "javascript:void(0)",
+        "description-input" : "To find an advisor near you"
+    }],
     "explore-product-col":"explore-product-col",
     "explore-product":false,
     "tools-resource":true,
