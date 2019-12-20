@@ -3047,7 +3047,6 @@ alert("Demo-Onsubmit-Function");
 console.log('utility-nav loaded');
 
 
-console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3128,7 +3127,6 @@ console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
-
 console.log('container loaded');
 
 console.log('breadcrumb loaded');
