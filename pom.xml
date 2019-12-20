@@ -320,11 +320,11 @@
         </pluginManagement>
     </build>
 
-    <profiles>
+   <profiles>
         <!-- ====================================================== -->
         <!-- A D O B E P U B L I C P R O F I L E -->
         <!-- ====================================================== -->
-        <profile>
+      <!--   <profile>
             <id>adobe-public</id>
 
             <activation>
@@ -366,7 +366,7 @@
                     </snapshots>
                 </pluginRepository>
             </pluginRepositories>
-        </profile>
+        </profile> -->
 
         <!-- Development profile: install only the bundle -->
         <profile>
