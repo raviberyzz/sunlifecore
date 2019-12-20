@@ -4278,8 +4278,7 @@ hr {
   box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; }
 
 .desktop-primary-navigation .nav > li > a {
-  background-color: transparent;
-  z-index: 9999; }
+  background-color: transparent; }
 
 .desktop-primary-navigation .nav > li > a:hover {
   background-color: transparent;
@@ -4750,6 +4749,8 @@ hr {
 
 .slf-header-wrapper .desktop-header-wrapper {
   height: 100px; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
+    display: none; }
   .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
     height: 8px;
     background-color: #FFCB05; }
@@ -4796,9 +4797,20 @@ hr {
           padding: 0 40px 0 0; }
         .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .navbar-nav > li > a {
           padding: 0; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-sign-button {
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-sign-button {
           max-width: 375px;
           float: right; }
+
+@media (max-width: 1024px) {
+  .desktop-header-wrapper {
+    display: none; } }
+
+@media (min-width: 1025px) {
+  .mobile-header {
+    display: none; } }
+
+body .container:last-child {
+  display: none; }
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
