@@ -1,23 +1,17 @@
 <div class="desktop-primary-navigation">
 
-<ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation" aria-label="Main">
-  
+<ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth primary-navigation" role="navigation" aria-label="Main">
+  {{#each navigation}}
+
 	
 <li class="dropdown nav-item navigation">
     <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger" href="/ca/Explore+products?vgnLocale=en_CA">
-        <span class="nav-item-heading">Explore products</span></a>
+        <span class="nav-item-heading">{{navigation-heading}}</span></a>
         <div role="menu" class="dropdown-menu menu-content">
-
-{{>core-components-content-mega-menu}}
+ {{>core-components-content-mega-menu}}
 </div>
 </li>
+{{/each}}
 
-<li class="dropdown nav-item navigation">
-    <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger" href="/ca/Tools+and+Resources?vgnLocale=en_CA">
-    <span class="nav-item-heading">Tools &amp; Resources</span></a>
-    <div role="menu" class="dropdown-menu menu-content">
-        {{>core-components-content-mega-menu}}
-</div>
-</li>
 </ul>
 </div>
