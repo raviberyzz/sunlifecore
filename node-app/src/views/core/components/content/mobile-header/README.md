@@ -38,6 +38,8 @@ JSON Format
         "text" : "Language",
         "target-tab" : "#language-tab"
     }],
+    "region-title" : "Regions",
+    "language-title" : "Languages - Canada",
     "region-present" : "",
     "language-present" : "",
     "region-active" : "",
