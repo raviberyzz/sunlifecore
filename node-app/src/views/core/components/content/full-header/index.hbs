@@ -1,11 +1,13 @@
 <header>
   <div class="slf-header-wrapper">
     <div class="desktop-header-wrapper">
+      <div class="desktop-search-bar"></div>
       <div class="yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content">
         <div class="{{desktop-sunlife-logo}}">
-          <img class="vertical-middle-align" href="https://www.sunlife.ca" alt="sunlife logo" src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+          <img class="vertical-middle-align" href="https://www.sunlife.ca" alt="sunlife logo"
+            src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
           </img>
         </div>
         <div class="desktop-sunlife-navigation">
@@ -13,11 +15,11 @@
             {{>core-components-content-utility-nav}}
           </div>
           <div class="col-xs-12 desktop-navigation no-gutter">
-            <div class="{{desktop-mega-menu}}">
-              {{>core-components-content-navigation}}
-            </div>
             <div class="{{desktop-sign-button}}" id="signin">
               {{>core-components-content-button}}
+            </div>
+            <div class="{{desktop-mega-menu}} clearfix">
+              {{>core-components-content-navigation}}
             </div>
           </div>
         </div>
