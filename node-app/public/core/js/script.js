@@ -3056,8 +3056,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-console.log('separator loaded');
 
+console.log('separator loaded');
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.slf-tab-region .slf-tab').click(function(){
@@ -3131,5 +3131,5 @@ console.log('footer-copyright loaded');
 
 console.log('container loaded');
 
-
 console.log('breadcrumb loaded');
+
