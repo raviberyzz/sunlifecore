@@ -3,8 +3,8 @@
 JSON Format
 ```
 {
-    "button-class": "primary-blue-button",
-    "button-text": "Button",
+    "button-class": "signIn-button",
+    "button-text": "Ouvrir une session",
     "redirection-link": "javascript:void(0)",
     "fa-icon": "fa-user"
 }

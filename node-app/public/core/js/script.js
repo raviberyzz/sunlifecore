@@ -3127,19 +3127,9 @@ console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
+
 console.log('footer-copyright loaded');
 
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
 console.log('container loaded');
 
 

@@ -1,1 +1,8 @@
 @import '../../../base/core';
+.slf-header-wrapper{
+    height:100px;
+    .yellow-stripe{
+        height:8px;
+        background-color:$medium-yellow-background;
+    }
+}
