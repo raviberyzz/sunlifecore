@@ -3036,6 +3036,14 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 console.log('utility-nav loaded');
 
 
@@ -3058,6 +3066,7 @@ $(document).ready(function(){
     $('.language-present').siblings().css("display", "none");
 });
 
+console.log('separator loaded');
 console.log('separator loaded');
 console.log('separator loaded');
 $(document).ready(function () {
@@ -3124,13 +3133,5 @@ console.log('icon-text loaded');
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
-
 console.log('breadcrumb loaded');
 
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
