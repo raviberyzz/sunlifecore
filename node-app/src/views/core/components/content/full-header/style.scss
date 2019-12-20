@@ -9,12 +9,67 @@
         .desktop-header-content{
             padding:8px 15px 18px 15px;
             height:92px;
+            /*Logo starts here*/
             .desktop-sunlife-logo{
+                float:left;
                 padding:0;
+                height:100%;
                 img{
                     width:149px;
                     height:36px;
                     cursor:pointer;
+                    margin-top:8px;
+                }
+            }
+            /*Logo end here*/
+            .desktop-sunlife-navigation{
+                float:left;
+                padding:0;
+                margin-left:75px;
+                /*Utility Nav starts here*/
+                .desktop-utility-nav{
+                    float:right;
+                    padding:0;
+                    .utility-nav-wrapper{
+                        padding:0;                        
+                        .utility-nav-links{
+                            .lang-btn{
+                                padding:0 11px 0 16px;
+                            }
+                            .search-icon-container{
+                                .srch-btn{
+                                    padding:0;
+                                }
+                            }
+                        }
+                    }
+                }
+                /* Utility Nav Ends here */
+                /*Mega Menu strats here*/
+                .desktop-navigation{
+                    padding-top:8px;
+                    .desktop-mega-menu{
+                        .desktop-primary-navigation {
+                            .primary-navigation {
+                            margin-left: 0px;
+                            }
+                            .navigation{
+                                padding:0;
+                                margin-top:10px;
+                            }
+                            .navigation:first-child{
+                                padding:0 40px 0 0;
+                            }
+                            .navbar-nav>li>a {
+                               padding:0;
+                            }
+                        }
+                    }
+                    /*Mega Menu end here*/
+                    .desktop-sign-button{
+                        max-width:375px;
+                        float:right;
+                    }
                 }
             }
         }

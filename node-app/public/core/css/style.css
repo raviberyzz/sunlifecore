@@ -3546,7 +3546,7 @@ a {
   text-align: center;
   cursor: pointer;
   border: none;
-  font-weight: bold;
+  font-weight: 700;
   display: inline-block;
   text-decoration: none; }
   .button-class:hover {
@@ -4027,6 +4027,17 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  size: 10px; }
+
+.grey-horizontal-separator hr {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator hr {
+  border-color: #FFCB05; }
+
 .search-bar-wrapper {
   background: #FFCB05; }
   .search-bar-wrapper .global-search {
@@ -4064,17 +4075,6 @@ input[type=text] {
     padding-left: 16px;
     width: 1%;
     border: 0; }
-
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  size: 10px; }
-
-.grey-horizontal-separator hr {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator hr {
-  border-color: #FFCB05; }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4783,13 +4783,49 @@ hr {
     background-color: #FFCB05; }
   .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
     padding: 8px 15px 18px 15px;
-    height: 92px; }
+    height: 92px;
+    /*Logo starts here*/
+    /*Logo end here*/ }
     .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
-      padding: 0; }
+      float: left;
+      padding: 0;
+      height: 100%; }
       .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
         width: 149px;
         height: 36px;
-        cursor: pointer; }
+        cursor: pointer;
+        margin-top: 8px; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+      float: left;
+      padding: 0;
+      margin-left: 75px;
+      /*Utility Nav starts here*/
+      /* Utility Nav Ends here */
+      /*Mega Menu strats here*/
+      /*Mega Menu end here*/ }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-utility-nav {
+        float: right;
+        padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-utility-nav .utility-nav-wrapper {
+          padding: 0; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .lang-btn {
+            padding: 0 11px 0 16px; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container .srch-btn {
+            padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
+        padding-top: 8px; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .primary-navigation {
+          margin-left: 0px; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .navigation {
+          padding: 0;
+          margin-top: 10px; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .navigation:first-child {
+          padding: 0 40px 0 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .navbar-nav > li > a {
+          padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-sign-button {
+          max-width: 375px;
+          float: right; }
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
@@ -4933,42 +4969,6 @@ footer {
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
 
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px !important;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
-
 .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue {
   height: 43px;
   padding: 0 15px;
@@ -5077,8 +5077,8 @@ footer {
   background-color: #FFCB05;
   color: #004C6C;
   height: 40px !important;
-  min-width: 92px !important;
-  width: 92px !important;
+  min-width: 92px;
+  width: auto;
   font-size: 0.875rem; }
   .signIn-button .icon-class {
     display: inherit;
