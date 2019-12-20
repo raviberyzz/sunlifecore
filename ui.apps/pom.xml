@@ -48,7 +48,7 @@
     <build>
         <sourceDirectory>src/main/content/jcr_root</sourceDirectory>
         <plugins>
-            <plugin>
+ <!--           <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.8.0</version>
@@ -64,7 +64,6 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
                             <nodeVersion>v12.13.1</nodeVersion>
                             <npmVersion>6.12.1</npmVersion>
                         </configuration>
@@ -84,7 +83,6 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
-                        <!-- Optional configuration which provides for running any npm command -->
                         <configuration>
                             <arguments>install</arguments>
                         </configuration>
@@ -99,7 +97,54 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>  --> 
+            
+             <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <!-- Use the latest released version:
+                https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
+                <version>1.7.6</version>
+                <configuration>
+                       <workingDirectory>../node-app</workingDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>Install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeDownloadRoot>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/org/nodejs/node/</nodeDownloadRoot>
+                            <nodeVersion>v11.1.0</nodeVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install --registry http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
+                            <environmentVariables>
+                                    <SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass</SASS_BINARY_SITE> 
+
+                                </environmentVariables> 
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>gulp build:dev</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>build:dev</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+		
+            
             <!-- ====================================================================== -->
             <!-- V A U L T   P A C K A G E   P L U G I N S                              -->
             <!-- ====================================================================== -->
