@@ -9,7 +9,7 @@
         
     }
     .dropdown:hover .dropdown-menu {
-        display: flex;
+        display: block;
         padding: 0;
         background-color: white;
         z-index: 2000;
@@ -29,10 +29,6 @@
       .menu-content:hover{
         position: absolute;
         margin-top: -8px !important;
-        .nav>li{
-            box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
-        }
-        
     }
       .nav>li>:hover{
         background-color: white;
@@ -41,6 +37,7 @@
       }
       .nav>li>a{
         background-color: transparent;
+        z-index: 9999;
       }
       .nav>li>a:hover{
         background-color: transparent;
@@ -60,4 +57,10 @@
 .navbar-new .nav-item>a:after {
     font-family: FontAwesome;
     content: " \f107";
+}
+
+.box-class{
+  z-index: 9999;
+  padding-bottom: 0 !important;
+  box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
 }
