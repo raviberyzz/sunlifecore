@@ -6,13 +6,14 @@ JSON Format
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
-    "fa-icon":"fa-pie-chart",
-    "text-input": "Health & Wellness",
-    "href" : "javascript:void(0)",
-    "description-input" : "To find an advisor near",
-    "explore-product-col":"explore-product-col",
-    "explore-product":false,
-    "tools-resource":true,
+    "iconTextList" : [{
+        "fa-icon":"fa-map-marker",
+        "text-input": "Find an advisor",
+        "href" : "javascript:void(0)",
+        "description-input" : "To find an advisor near you"
+    }],
+    "explore-product":true,
+    "tools-resource":false,
     "list" : [{
         "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
         "text" : "Life moments"
