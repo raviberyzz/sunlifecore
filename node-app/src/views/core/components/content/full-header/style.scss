@@ -1,8 +1,22 @@
 @import '../../../base/core';
 .slf-header-wrapper{
-    height:100px;
-    .yellow-stripe{
-        height:8px;
-        background-color:$medium-yellow-background;
+    .desktop-header-wrapper{
+        height:100px;
+        .yellow-stripe{
+            height:8px;
+            background-color:$medium-yellow-background;
+        }
+        .desktop-header-content{
+            padding:8px 15px 18px 15px;
+            height:92px;
+            .desktop-sunlife-logo{
+                padding:0;
+                img{
+                    width:149px;
+                    height:36px;
+                    cursor:pointer;
+                }
+            }
+        }
     }
 }

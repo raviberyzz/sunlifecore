@@ -4020,17 +4020,6 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  height: 2px; }
-
-.grey-horizontal-separator {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator {
-  border-color: #FFCB05; }
-
 .search-bar-wrapper {
   background: #FFCB05; }
   .search-bar-wrapper .global-search {
@@ -4068,6 +4057,17 @@ hr {
     padding-left: 16px;
     width: 1%;
     border: 0; }
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 2px; }
+
+.grey-horizontal-separator {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator {
+  border-color: #FFCB05; }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4738,11 +4738,20 @@ hr {
   color: #ffffff;
   font-size: 0.875rem; }
 
-.slf-header-wrapper {
+.slf-header-wrapper .desktop-header-wrapper {
   height: 100px; }
-  .slf-header-wrapper .yellow-stripe {
+  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
     height: 8px;
     background-color: #FFCB05; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
+    padding: 8px 15px 18px 15px;
+    height: 92px; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
+      padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
+        width: 149px;
+        height: 36px;
+        cursor: pointer; }
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
@@ -4922,54 +4931,6 @@ footer {
     right: 3px;
     position: relative; }
 
-.banner-wrapper .banner-img {
-  width: 100%;
-  height: 100%; }
-
-.banner-wrapper .banner-box-wrapper {
-  position: absolute;
-  margin-right: 30px;
-  width: 47.2%; }
-  .banner-wrapper .banner-box-wrapper .banner-box {
-    padding: 20px 27px; }
-
-.banner-wrapper .hero-banner {
-  position: relative; }
-
-.banner-wrapper .right-align {
-  right: 0; }
-
-.banner-wrapper .left-align {
-  left: 0; }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .banner-wrapper .hero-banner .not-mobile-image {
-    height: 345px; }
-  .banner-wrapper .hero-banner .white-box-parent {
-    position: relative;
-    margin-right: 0;
-    width: 100%;
-    transform: inherit; }
-    .banner-wrapper .hero-banner .white-box-parent .banner-box {
-      box-shadow: none; }
-  .banner-wrapper .hero-banner .transparent-box-parent {
-    background-color: rgba(255, 255, 255, 0.7);
-    left: 0;
-    text-align: center;
-    position: absolute;
-    margin: 0;
-    width: 100%;
-    transform: inherit;
-    bottom: 0;
-    top: inherit; }
-    .banner-wrapper .hero-banner .transparent-box-parent .banner-box {
-      box-shadow: none;
-      text-align: center; }
-  .banner-wrapper .hero-banner button {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%; } }
-
 .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue {
   height: 43px;
   padding: 0 15px;
@@ -5048,6 +5009,54 @@ footer {
     display: none; }
   .breadcrumb-author {
     display: block; } }
+
+.banner-wrapper .banner-img {
+  width: 100%;
+  height: 100%; }
+
+.banner-wrapper .banner-box-wrapper {
+  position: absolute;
+  margin-right: 30px;
+  width: 47.2%; }
+  .banner-wrapper .banner-box-wrapper .banner-box {
+    padding: 20px 27px; }
+
+.banner-wrapper .hero-banner {
+  position: relative; }
+
+.banner-wrapper .right-align {
+  right: 0; }
+
+.banner-wrapper .left-align {
+  left: 0; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .banner-wrapper .hero-banner .not-mobile-image {
+    height: 345px; }
+  .banner-wrapper .hero-banner .white-box-parent {
+    position: relative;
+    margin-right: 0;
+    width: 100%;
+    transform: inherit; }
+    .banner-wrapper .hero-banner .white-box-parent .banner-box {
+      box-shadow: none; }
+  .banner-wrapper .hero-banner .transparent-box-parent {
+    background-color: rgba(255, 255, 255, 0.7);
+    left: 0;
+    text-align: center;
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    transform: inherit;
+    bottom: 0;
+    top: inherit; }
+    .banner-wrapper .hero-banner .transparent-box-parent .banner-box {
+      box-shadow: none;
+      text-align: center; }
+  .banner-wrapper .hero-banner button {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%; } }
 
 .middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position {
   display: flex;
