@@ -1,4 +1,4 @@
-<div class="{{breadcrumb-wrapper-background}}">
+<div class="{{breadcrumb-wrapper-background}} breadcrumb-section">
 	<nav class="{{breadcrumb-author}} vertical-middle-align no-gutter clearfix">
 		<div class="left-area">
 			<ol role="navigation" aria-label="Breadcrumb" class="breadcrumb-row">
@@ -11,11 +11,7 @@
 		{{#if social-icon-present}}
 		<div class="right-area">
 			<span class="side-text">{{side-text}}</span>
-			<ul class="social-links">
-				{{#each social-links}}
-				<li>{{>core-components-content-icon-text}}</li>
-				{{/each}}
-			</ul>
+			{{>core-components-content-icon-text}}
 		</div>
 		{{/if}}
 	</nav>

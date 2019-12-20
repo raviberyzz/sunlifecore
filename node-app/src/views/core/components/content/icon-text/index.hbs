@@ -1,4 +1,7 @@
 <div class="{{icon-text-wrapper}}">
+  <ul>
+  {{#each iconTextList}}
+  <li>
   <div class="icon-parent">
       <span class="icon-style fa {{fa-icon}}"></span>
   </div>
@@ -13,4 +16,7 @@
       {{description-input}}
     </div>
   </div>
+  </li>
+  {{/each}}
+  </ul>
 </div>

@@ -1,4 +1,13 @@
 @import '../../../base/core';
+.breadcrumb-section {
+  .social-link-icon-wrapper {
+    float: left;
+    li {
+      float: left;
+      padding-left: 5px;
+    }
+  }
+}
 .breadcrumb-wrapper-light-cool-blue{
   height: 43px;
   padding: 0 15px;
@@ -43,8 +52,6 @@
       width: auto;
       float: left;
       padding-left:14px;
-      top:3px;
-      position:relative;
     }
     .right-area {
       width: auto;
@@ -55,9 +62,6 @@
       font-size: 0.875rem;
       font-weight: 700;
       color: $dark-grey-color;
-      margin-right: 3px;
-      position: relative;
-      top: 4px;
       float: left;
     }
     .social-link-icon-wrapper {
