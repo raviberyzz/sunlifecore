@@ -40,8 +40,6 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 	@Reference
     private QueryBuilder builder;
      
-    private Session session;
-    
     private Map<String, HashMap<String, String>> siteConfigMap;
     
 	@Activate
@@ -65,7 +63,8 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 
 	public void setConfiguration() throws LoginException, RepositoryException {
 		log.info("Entry :: setConfiguration method of SiteConfigServiceImpl");
-		Map<String, Object> param = new HashMap<String, Object>();
+		Session session;
+		Map<String, Object> param = new HashMap<>();
 		param.put(ResourceResolverFactory.SUBSERVICE, "migration");
 		
 		ResourceResolver resolver = null;         
@@ -75,16 +74,16 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 		
 		session = resolver.adaptTo(Session.class);
 		
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("path", sitePath);
 		map.put("type", "cq:Page");
 		map.put("property", "jcr:content/config/sling:resourceType");
-		map.put("property.value", "sunlife/core/components/common/configuration");
+		map.put("property.value", "sunlife/core/components/config/configuration");
 		
 		Query query = builder.createQuery(PredicateGroup.create(map), session);
 		SearchResult result = query.getResult();
 		
-		siteConfigMap = new HashMap<String, HashMap<String, String>>();
+		siteConfigMap = new HashMap<>();
 		
 		for(Hit hit : result.getHits()) {
 			log.info("\n {}", hit.getPath()+"/jcr:content/config");
