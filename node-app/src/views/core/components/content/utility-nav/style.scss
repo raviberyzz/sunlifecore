@@ -1,19 +1,25 @@
 @import '../../../base/core';
 .utility-nav-wrapper {
     text-align: right;
-    padding: 0 15px 16px 0px;
+    padding: 0 10px 8px 0;
+    line-height: 18px;
     .utility-nav-links {
         display: inline-block;
-       li {
-            padding: 0 5px 0 5px;
-            font-size: 14px;
-            display: inline-block;
-        }
-        a {
-            font-weight: 400;
+        ul{
+            margin-bottom: 0;
+            li {
+                padding: 0 5px 0 5px;
+                display: inline-block;
+            }
+            a {
+                font-weight: 400;
+                font-size: 14px;
+    
+            }
         }
         .lang-btn {
-            padding: 8px 11px 0 16px;
+            padding: 8px 11px 8px 16px;
+            font-size: 14px;
             color: $blue-gradient-color;
             &::after {
                 font-family: FontAwesome;
@@ -25,7 +31,7 @@
             border-color: $white-shade;
             border-style: solid;
             border-width: 5px 1px 1px;
-            padding: 10px;
+            padding: 10px 10px 5px 15px;
             box-shadow: 0 4px 20px -10px $black-shade;
             &::after {
                 font-family: FontAwesome;
@@ -34,7 +40,8 @@
         }
         .srch-btn {
             text-decoration: none;
-            padding: 8px 0 0 2px;
+            padding: 8px 0 8px 2px;
+            font-size: 14px;
             &::after {
                 font-family: FontAwesome;
                 content: "\f002";
@@ -44,6 +51,8 @@
         .srch-btn[aria-expanded="true"] {
             color: $blue-gradient-color;
             background: $medium-yellow-background;
+            margin-top:0px;
+            padding: 10px 10px;
         }
     }
 }

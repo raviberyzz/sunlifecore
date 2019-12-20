@@ -3066,7 +3066,8 @@ $(document).ready(function(){
     $('.region-present').siblings().css("display", "none");
     $('.language-present').siblings().css("display", "none");
 });
-
+console.log('separator loaded');
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3123,7 +3124,6 @@ $(document).ready(function () {
         }
     });  
 });     
-console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
