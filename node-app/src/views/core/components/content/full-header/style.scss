@@ -2,6 +2,11 @@
 .slf-header-wrapper{
     .desktop-header-wrapper{
         height:100px;
+        .desktop-sign-in{
+            .button-class{
+                display:none;
+            }
+        }
         .yellow-stripe{
             height:8px;
             background-color:$medium-yellow-background;
@@ -65,14 +70,33 @@
                                padding:0;
                             }
                         }
+                        .desktop-sign-button{
+                            max-width:375px;
+                            float:right;
+                        }
                     }
                     /*Mega Menu end here*/
-                    .desktop-sign-button{
-                        max-width:375px;
-                        float:right;
-                    }
+                    
                 }
             }
         }
+    }
+}
+@media(max-width:1024px){
+.desktop-header-wrapper{
+    display:none;
+}
+}
+@media(min-width:1025px){
+.mobile-header{
+    display:none;
+}
+}
+body{
+    // .container{
+    //     display:none;
+    // }
+    .container:last-child{
+        display:none;
     }
 }
