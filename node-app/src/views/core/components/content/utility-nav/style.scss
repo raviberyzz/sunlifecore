@@ -1,18 +1,21 @@
 @import '../../../base/core';
 .utility-nav-wrapper {
     text-align: right;
-    padding: 0px 15px 16px 0px;
+    padding: 0px 10px 8px 0px;
     line-height: 18px;
     .utility-nav-links {
         display: inline-block;
-       li {
-            padding: 0 5px 0 5px;
-            display: inline-block;
-        }
-        a {
-            font-weight: 400;
-            font-size: 14px;
-
+        ul{
+            margin-bottom: 0;
+            li {
+                padding: 0 5px 0 5px;
+                display: inline-block;
+            }
+            a {
+                font-weight: 400;
+                font-size: 14px;
+    
+            }
         }
         .lang-btn {
             padding: 8px 11px 8px 16px;
