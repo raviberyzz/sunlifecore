@@ -4,8 +4,6 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:allowedTemplates="/conf/sunlife/settings/wcm/templates/.*"
-        cq:lastModified="{Date}2019-12-17T07:15:46.957-05:00"
-        cq:lastModifiedBy="admin"
         cq:template="/conf/sunlife/settings/wcm/templates/ca-sunlife-blank-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="Sunlife"

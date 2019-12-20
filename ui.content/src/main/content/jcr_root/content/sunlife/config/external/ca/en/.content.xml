@@ -2,8 +2,6 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-12-19T03:14:38.692-05:00"
-        cq:lastModifiedBy="admin"
         cq:template="/conf/sunlife/settings/wcm/templates/sunlife-config"
         jcr:description="Sunlife Canada-English Config"
         jcr:primaryType="cq:PageContent"
@@ -12,10 +10,8 @@
         navTitle="Sunlife Canada-English Config"
         pageTitle="Sunlife"
         subtitle="Sunlife Canada-English Config">
-        <config
-            jcr:lastModified="{Date}2019-12-19T03:14:38.686-05:00"
-            jcr:lastModifiedBy="admin"
-            jcr:primaryType="nt:unstructured"
+        <config 
+        	jcr:primaryType="nt:unstructured"
             sling:resourceType="sunlife/core/components/config/configuration"
             alternateLanguages="en~en_CA,fr~fr_CA"
             baseUrl="http://localhost:4502/editor.html/content/sunlife/config/external/ca/en.html"
