@@ -1,11 +1,11 @@
 @import '../../../base/core';
-.CTA-wrapper{
-    display:none;
-}
 .overflow-hidden{
     overflow:hidden;
 }
 .slf-mobile-header-wrapper{
+    .button-class{
+        display:none;
+    }
     /* Mobile Header Start */
     .white-shade{
         background:$white-shade;
@@ -88,7 +88,7 @@
         background-color: $white-shade;
         &.active{
             left:0;
-            overflow:auto;
+            overflow:hidden auto;
         }
         &.inactive{
             left: -270px;
@@ -96,27 +96,35 @@
         .close-hamburger-menu{
             display:inline-block;
             width:100%;
+            height:42px;
+            padding:0 16px;
         }
         .close-hamburger{
             float:right;
-            padding:16px;
-            font-size:20px;
+            font-size:1rem;
+            line-height:26px;
             cursor:pointer;
+            padding:8px 0;
         }
         .hamburger-search {
-            padding: 15px 16px 18px 16px;
-            background: $light-cool-blue-color;
+            padding: 8px 16px;
+            background: $light-grey-20;
+            height:42px;
         }
         .search-field{
             position:absolute;
-            margin:6px 0 0 5px;
+            margin-left:5px;
             border:none;
             background: $light-grey-shade-color;
-            padding:0;
-            height:18px;
+            padding:2px 0 0 0;
+            height:26px;
+            width:216px;
+            outline:none;
+            line-height:26px;
         }
         .search-icon-mobile {
             color: $dark-grey-shade;
+            line-height:26px;
         }
         .slf-search-mobile{
             border-bottom: 1px solid $light-grey-color;
@@ -141,12 +149,16 @@
             padding-top:8px;
             z-index:1050;
         }
+        .first-level-navigation{
+            padding-top:16px;
+        }
         .navigation-menu{
-            margin:24px 16px 0 16px;
+            margin:16px 16px 0 16px;
             a{
                 color:$medium-blue-color;
                 font-weight:400;
                 text-decoration:none;
+                line-height:26px;
                 &:after{
                     font-family: FontAwesome;
                     content: "\00a0\f105";
@@ -160,7 +172,7 @@
             }
          }
         .language-region{
-            margin:44px 16px;
+            margin:32px 16px;
         }
         .second-level-navigation{
             background:$light-orange-20;
@@ -175,7 +187,8 @@
             overflow-y:auto;
             padding-bottom:24px;
             a{
-                color:$medium-blue-color
+                color:$medium-blue-color;
+                line-height:26px;
             }
             &.active{
                 display:block;
@@ -184,7 +197,8 @@
                 a{
                     font-weight:700;
                     padding-left:16px;
-                    font-size:1.125rem;
+                    font-size:1rem;
+                    line-height:26px;
                     &:after{
                         content:'';
                     }
@@ -197,8 +211,8 @@
             .go-back{
                 background-color:$white-shade;
                 width:100%;
-                line-height:23px;
-                padding:16px;
+                height:42px;
+                padding:8px 16px;
                 margin-bottom:32px;
                 &:before {
                     font-family: FontAwesome;
@@ -223,9 +237,6 @@
                 margin-left:0;
             }
             z-index:1200;
-            .go-back{
-                margin-bottom:0;
-            }
         }  
         .language-region{
             .second-level-navigation{
@@ -241,8 +252,9 @@
                 .go-back{
                     background-color: $medium-blue-color;
                     width: 100%;
-                    line-height: 23px;
-                    padding: 16px;
+                    height:42px;
+                    line-height: 26px;
+                    padding: 8px 16px;
                     margin-bottom:0;
                     a{
                         color: $white-shade;

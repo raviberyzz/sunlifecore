@@ -40,22 +40,6 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
-                                                            <margin-top-20
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="mt-20"
-                                                                text="Margin Top 20"/>
-                                                            <margin-bottom-20
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="mb-20"
-                                                                text="Margin Bottom 20"/>
-                                                            <padding-top-40
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="mt-40"
-                                                                text="Margin Top 40"/>
-                                                            <padding-bottom-40
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="mb-40"
-                                                                text="Margin Bottom 40"/>
                                                             <button-blue
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="button-class primary-blue-button"
@@ -64,14 +48,6 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="button-class primary-yellow-button"
                                                                 text="Yellow Button"/>
-                                                            <button-secondary
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="button-class primary-yellow-button"
-                                                                text="Secondary Button"/>
-                                                            <button-signin
-                                                                jcr:primaryType="nt:unstructured"
-                                                                cssName="button-class signIn-button"
-                                                                text="SignIn Button"/>
                                                         </styles>
                                                     </styles>
                                                     <format

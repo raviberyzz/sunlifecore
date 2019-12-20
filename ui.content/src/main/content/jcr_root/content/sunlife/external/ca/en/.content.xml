@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/sunlife/settings/wcm/templates/ca-sunlife-blank-page"
+        jcr:language="en_ca"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="English Home"
+        sling:resourceType="sunlife/core/components/structure/base-page"
+        navTitle="Home">
+        <image
+            jcr:primaryType="nt:unstructured"
+            fileReference="/content/dam/sunlife/sunlife-logo.png">
+            <file.sftmp/>
+        </image>
+    </jcr:content>
+    <sunlife-demo/>
+</jcr:root>
