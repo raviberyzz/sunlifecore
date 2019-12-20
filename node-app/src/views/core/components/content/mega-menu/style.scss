@@ -1,10 +1,4 @@
 @import '../../../base/core';
-
-.common {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-}
 .slf-header-mega-menu1 {
     
     padding: 0;
@@ -55,11 +49,6 @@
             font-weight: 400;
         }
     }
-
-    .text-right-wrapper> {
-        display: block;
-    }
-
     .accordion-heading {
         font-size: 18px;
         font-weight: 700;
@@ -76,14 +65,8 @@
 
     .explore-product-icon-text {
         padding-left:10px;
-        .icon-background {
-            @extend .common;
-        }
-
-        .icon-inside {
-            font-size: 16px;
-        }
-
+    
+       
         .icon-text {
             margin-left: 35px;
         }
@@ -131,8 +114,6 @@
         padding: 56px 24px 56px 24px;
 
         ul {
-            margin-top: 5px;
-    
             a {
                 font-weight: 400;
             }
@@ -143,14 +124,10 @@
         }
     
         .icon-text-wrapper {
-            .icon-background {
-                @extend .common;
-            }
+           
         }
     
-        .icon-inside {
-            font-size: 16px;
-        }
+        
     
         .icon-text {
             margin-left: 35px;

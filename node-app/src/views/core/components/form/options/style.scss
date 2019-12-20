@@ -7,7 +7,7 @@ margin: 20px 0;
     height: 48px;
     position: relative;
     display: inline-table;
-    width: 100%;
+    width: auto;
     &::before{
         content: "\f107";
     font-family: FontAwesome;

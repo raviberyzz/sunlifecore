@@ -3055,9 +3055,16 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
 console.log('separator loaded');
+
 console.log('region-language-menu loaded');
+$(document).ready(function(){
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+});
 $(document).ready(function(){
  $("#mega-menu-content").hover(
      function(){
@@ -3067,8 +3074,6 @@ $(document).ready(function(){
     }
  );
 });
-console.log('separator loaded');
-console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3125,11 +3130,12 @@ $(document).ready(function () {
         }
     });  
 });     
+console.log('separator loaded');
 console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
-console.log('container loaded');
 
+console.log('container loaded');
 console.log('breadcrumb loaded');
 
