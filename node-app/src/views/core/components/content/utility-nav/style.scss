@@ -1,7 +1,7 @@
 @import '../../../base/core';
 .utility-nav-wrapper {
     text-align: right;
-    padding: 0 15px 16px 0px;
+    padding: 0px 15px 16px 0px;
     line-height: 18px;
     .utility-nav-links {
         display: inline-block;
@@ -48,6 +48,7 @@
         .srch-btn[aria-expanded="true"] {
             color: $blue-gradient-color;
             background: $medium-yellow-background;
+            margin-top:0px;
         }
     }
 }

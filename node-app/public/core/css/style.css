@@ -3599,15 +3599,6 @@ a {
     font-size: 1.625rem; } }
 
 
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
-
 .cmp-form-options--drop-down {
   height: 48px;
   position: relative; }
@@ -3671,6 +3662,15 @@ input[type=radio] {
   border-radius: 50%; }
   input[type=radio]:checked {
     background-color: #004C6C; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
 
 .input-wrapper {
   color: #9a9a9a;
@@ -3743,7 +3743,7 @@ input[type=text] {
 
 .utility-nav-wrapper {
   text-align: right;
-  padding: 0 15px 16px 0px;
+  padding: 0px 15px 16px 0px;
   line-height: 18px; }
   .utility-nav-wrapper .utility-nav-links {
     display: inline-block; }
@@ -3780,7 +3780,8 @@ input[type=text] {
         color: #003946; }
     .utility-nav-wrapper .utility-nav-links .srch-btn[aria-expanded="true"] {
       color: #003946;
-      background: #FFCB05; }
+      background: #FFCB05;
+      margin-top: 0px; }
 
 .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
   background-color: #FFCB05;
@@ -4018,55 +4019,6 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  height: 2px; }
-
-.grey-horizontal-separator {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator {
-  border-color: #FFCB05; }
-
-.search-bar-wrapper {
-  background: #FFCB05; }
-  .search-bar-wrapper .global-search {
-    text-align: center; }
-    .search-bar-wrapper .global-search .form-wrapper {
-      max-width: 550px;
-      margin: 0 auto; }
-    .search-bar-wrapper .global-search input[type=text] {
-      width: 100%;
-      margin-bottom: 0;
-      height: 48px; }
-    .search-bar-wrapper .global-search .search-autocomplete {
-      z-index: 1099; }
-  .search-bar-wrapper .slf-search .form-wrapper {
-    display: table;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
-    border: 0; }
-    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper, .search-bar-wrapper .slf-search .form-wrapper .button-wrapper {
-      display: table-cell;
-      vertical-align: top;
-      position: relative; }
-  .search-bar-wrapper .search-box {
-    padding: 30px 0; }
-  .search-bar-wrapper .close-div {
-    position: absolute;
-    right: 0;
-    float: right;
-    top: 0; }
-  .search-bar-wrapper .collapse-x {
-    margin: 24px 15px 0 0;
-    font-size: 0.875rem; }
-  .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
-    padding-left: 16px;
-    width: 1%;
-    border: 0; }
-
 .desktop-region-language-menu-wrapper {
   width: 100%;
   padding: 0 16px 16px;
@@ -4256,6 +4208,55 @@ hr {
 @media (min-width: 1024px) {
   .mobile-region-language-menu-wrapper {
     display: none; } }
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 2px; }
+
+.grey-horizontal-separator {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator {
+  border-color: #FFCB05; }
+
+.search-bar-wrapper {
+  background: #FFCB05; }
+  .search-bar-wrapper .global-search {
+    text-align: center; }
+    .search-bar-wrapper .global-search .form-wrapper {
+      max-width: 550px;
+      margin: 0 auto; }
+    .search-bar-wrapper .global-search input[type=text] {
+      width: 100%;
+      margin-bottom: 0;
+      height: 48px; }
+    .search-bar-wrapper .global-search .search-autocomplete {
+      z-index: 1099; }
+  .search-bar-wrapper .slf-search .form-wrapper {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    border: 0; }
+    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper, .search-bar-wrapper .slf-search .form-wrapper .button-wrapper {
+      display: table-cell;
+      vertical-align: top;
+      position: relative; }
+  .search-bar-wrapper .search-box {
+    padding: 30px 0; }
+  .search-bar-wrapper .close-div {
+    position: absolute;
+    right: 0;
+    float: right;
+    top: 0; }
+  .search-bar-wrapper .collapse-x {
+    margin: 24px 15px 0 0;
+    font-size: 0.875rem; }
+  .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
+    padding-left: 16px;
+    width: 1%;
+    border: 0; }
 
 .navigation {
   position: static; }
