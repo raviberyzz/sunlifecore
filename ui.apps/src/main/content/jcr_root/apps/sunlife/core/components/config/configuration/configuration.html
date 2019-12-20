@@ -1,21 +1,58 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+<sly data-sly-use.siteConfig="com.sunlife.core.models.SiteConfigModel" />
+
+<div class="container">
 <div class="page-header">
-  <h2>Sunlife Configuration</h2>
+   <h2>Sunlife Configuration</h2>
 </div>
 
-<div class="col-lg-6">
 <div class="panel panel-default">
-  <div class="panel-heading">Properties configured</div>
-
-  <!-- Table -->
-  <table class="table">	
-		<tr>
-			<td>Site Url:</td>
-            <td>${properties.siteUrl}</td>
-        </tr>
-        <tr>
-			<td>Base Url:</td>
-            <td>${properties.baseUrl}</td>
-        </tr>
-    </table>
+   <div class="panel-heading"><h4>Site Specific Configuration</h4></div>
+   <div class="panel-body">
+      <fieldset class="col-md-6">
+         <legend>General</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Site Url:</td>
+                     <td>${siteConfig.siteUrl}</td>
+                  </tr>
+                  <tr>
+                     <td>Domain:</td>
+                     <td>${siteConfig.domain}</td>
+                  </tr>
+                  <tr>
+                     <td>Site Suffix:</td>
+                     <td>${siteConfig.siteSuffix}</td>
+                  </tr>
+                  <tr>
+                     <td>Alternate Languages:</td>
+                     <td>${siteConfig.alternateLanguages}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+      <div class="clearfix"></div>
+      <fieldset class="col-md-6">
+         <legend>Page Defaults</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Page Description:</td>
+                     <td>${siteConfig.pageDescription}</td>
+                  </tr>
+                  <tr>
+                     <td>Page Locale:</td>
+                     <td>${siteConfig.pageLocale}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+   </div>
 </div>
 </div>
