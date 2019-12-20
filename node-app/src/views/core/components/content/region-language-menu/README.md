@@ -122,8 +122,7 @@ JSON Format
         "text" : "欢迎访问永明金融网页 ",
         "chinese" : true,
         "selected" : "chinese",
-        "separator-color" : "grey-horizontal-separator",
-        "wrapper-separator":"region-separator"
+        "separator-wrapper" : "grey-horizontal-separator"
     }],
     "region" : true,
     "mobile-tab-list" : [{

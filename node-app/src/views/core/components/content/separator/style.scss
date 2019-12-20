@@ -2,11 +2,15 @@
 hr{
     margin-top: 40px;
     margin-bottom: 40px;
-    height:2px;
+    size:10px;
 }
 .grey-horizontal-separator{
-    border-color: $medium-grey-background;
+    hr{
+        border-color: $medium-grey-background;
+    }
 }
 .yellow-horizontal-separator{
-    border-color: $medium-yellow-background;
+    hr{
+        border-color: $medium-yellow-background;
+    }
 }

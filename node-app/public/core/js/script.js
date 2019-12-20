@@ -3043,6 +3043,7 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+
 console.log('utility-nav loaded');
 
 
@@ -3055,6 +3056,7 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
+
 console.log('separator loaded');
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3065,16 +3067,6 @@ $(document).ready(function(){
     $('.language-present').siblings().css("display", "none");
 });
 
-
-console.log('region-language-menu loaded');
-$(document).ready(function(){
-    $('.slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
-});
-console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3137,18 +3129,7 @@ console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
 
-console.log('desktop-header loaded');
-$(document).ready(function(){
-    $("#language-btn-container, #sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn-container").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
 console.log('container loaded');
 
-
 console.log('breadcrumb loaded');
+
