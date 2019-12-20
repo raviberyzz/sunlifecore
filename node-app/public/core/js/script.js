@@ -3036,39 +3036,6 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
-console.log('utility-nav loaded');
-$(document).ready(function(){
-    $("#language-btn-container,#sunLanguageCrossBtn").click(function(){
-        $("#sun-search").hide();
-        $("#sun-language").toggle();
-    });
-    $("#search-btn").click(function(){
-        $("#sun-language").hide();
-        $("#sun-search").toggle();
-    });
-});
-
-
-console.log('component loaded');
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-});     
-console.log('separator loaded');
-
-console.log('region-language-menu loaded');
-$(document).ready(function(){
-    $('.slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
-});
-console.log('image loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3125,17 +3092,6 @@ $(document).ready(function () {
         }
     });  
 });     
-console.log('separator loaded');
-console.log('separator loaded');
-console.log('component loaded');
-console.log('icon-text loaded');
-console.log('footer-copyright loaded');
-
-console.log('container loaded');
-
-
-console.log('breadcrumb loaded');
-
 
 
 
@@ -3143,3 +3099,47 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+
+console.log('utility-nav loaded');
+$(document).ready(function(){
+    $("#language-btn-container,#sunLanguageCrossBtn").click(function(){
+        $("#sun-search").hide();
+        $("#sun-language").toggle();
+    });
+    $("#search-btn").click(function(){
+        $("#sun-language").hide();
+        $("#sun-search").toggle();
+    });
+});
+
+
+console.log('component loaded');
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+});     
+console.log('separator loaded');
+
+console.log('region-language-menu loaded');
+$(document).ready(function(){
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+});
+console.log('separator loaded');
+console.log('component loaded');
+console.log('separator loaded');
+console.log('image loaded');
+
+console.log('icon-text loaded');
+console.log('footer-copyright loaded');
+console.log('breadcrumb loaded');
+console.log('container loaded');
+
+
