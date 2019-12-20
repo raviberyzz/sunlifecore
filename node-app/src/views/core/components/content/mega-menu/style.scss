@@ -3,7 +3,6 @@
     
     padding: 0;
     display: inline-flex;
-
     .quick-link {
         width: 20%;
         background: $light-grey-color;
@@ -18,8 +17,8 @@
         }
 
         .accordion-heading {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 400;
             line-height: 110%;
             margin-top: 5px;
         }
@@ -29,20 +28,17 @@
         }
     }
 }
-
 .explore-product-wrapper-desk {
     .list-container {
         width: 80%;
         padding: 0;
     }
 }
-
 .explore-product-wrapper-desk>:not(:first-child) {
     padding: 56px 24px 56px 0;
     display: table-cell;
     float: none;
     vertical-align: top;
-
     ul {
 
         a {
@@ -50,46 +46,32 @@
         }
     }
     .accordion-heading {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
         margin-top: 5px
     }
-
     .links {
-        margin-top: 5px;
+        margin-top: 8px;
     }
-
     .insurance {
         border-right: 2px dotted $medium-grey-background;
     }
-
     .explore-product-icon-text {
-        padding-left:10px;
-    
-       
+        padding-left:15px;
         .icon-text {
             margin-left: 35px;
         }
-
-        .icon-text-heading {
-            font-size: 18px;
-            display: inline;
-        }
     }
-
     .explore-product-icon-text {
         display: inline-flex;
     }
-
     .explore-product-col>:not(:first-child) {
         .links {
             margin-top: 25px;
         }
     }
-
     .view-all-link {
         margin-left: 20px;
-
         .view-all-category {
             display: inline-flex;
             margin-top: 0 !important;
@@ -100,14 +82,10 @@
                 margin-left: 5px;
             }
         }
-
     }
 }
-
-
 .tools-resource-wrapper-desk {
-    .list-container {
-       
+    .list-container {  
         padding: 0;
     }
     &>:not(:first-child){
@@ -118,31 +96,14 @@
                 font-weight: 400;
             }
         }
-    
-        .text-right-wrapper> {
-            display: block;
-        }
-    
-        .icon-text-wrapper {
-           
-        }
-    
-        
-    
         .icon-text {
             margin-left: 35px;
         }
-    
-        .icon-text-heading {
-            font-size: 18px;
-            display: inline;
-        }
-    
         .accordion-heading {
             display: none;
         }
         .links{
-            padding-left:24px;
+            padding-left:32px;
         }
         .tools-col{
             padding: 0;
@@ -156,15 +117,13 @@
     .collapse {
         display: block !important;
     }
-
     li {
         line-height: 110%;
         padding: 5px 0;
 
     }
 }
-
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .mega-menu-wrapper-desk {
         display: none;
     }

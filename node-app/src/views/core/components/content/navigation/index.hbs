@@ -1,17 +1,13 @@
 <div class="desktop-primary-navigation">
-
 <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth primary-navigation" role="navigation" aria-label="Main">
   {{#each navigation}}
-
-	
 <li class="dropdown nav-item navigation">
-    <a data-toggle="dropdown" id="exp" class="dropdown-toggle subnav-trigger" href="/ca/Explore+products?vgnLocale=en_CA">
+    <a data-toggle="dropdown" id={{navigation-id}} class="dropdown-toggle subnav-trigger" href="/ca/Explore+products?vgnLocale=en_CA">
         <span class="nav-item-heading">{{navigation-heading}}</span></a>
-        <div role="menu" id="mega-menu-content" class="dropdown-menu menu-content">
+        <div role="menu" id={{navigation-menu-id}} class="dropdown-menu menu-content">
  {{>core-components-content-mega-menu}}
 </div>
 </li>
 {{/each}}
-
 </ul>
 </div>

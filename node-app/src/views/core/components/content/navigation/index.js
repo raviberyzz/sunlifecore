@@ -1,9 +1,18 @@
 $(document).ready(function(){
- $("#mega-menu-content").hover(
+ $("#explore-menu").hover(
      function(){
- $("#exp").addClass("box-class");
+ $("#explore1").addClass("box-class");
  }, function(){
-    $("#exp").removeClass("box-class");
+    $("#explore1").removeClass("box-class");
     }
  );
 });
+$(document).ready(function(){
+    $("#tools-menu").hover(
+        function(){
+    $("#tools1").addClass("box-class");
+    }, function(){
+       $("#tools1").removeClass("box-class");
+       }
+    );
+   });

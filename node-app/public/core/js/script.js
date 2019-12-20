@@ -3043,8 +3043,8 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
 console.log('utility-nav loaded');
+
 
 
 $(document).ready(function () {
@@ -3066,14 +3066,23 @@ $(document).ready(function(){
     $('.language-present').siblings().css("display", "none");
 });
 $(document).ready(function(){
- $("#mega-menu-content").hover(
+ $("#explore-menu").hover(
      function(){
- $("#exp").addClass("box-class");
+ $("#explore1").addClass("box-class");
  }, function(){
-    $("#exp").removeClass("box-class");
+    $("#explore1").removeClass("box-class");
     }
  );
 });
+$(document).ready(function(){
+    $("#tools-menu").hover(
+        function(){
+    $("#tools1").addClass("box-class");
+    }, function(){
+       $("#tools1").removeClass("box-class");
+       }
+    );
+   });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3135,7 +3144,7 @@ console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
 console.log('footer-copyright loaded');
-
 console.log('container loaded');
-console.log('breadcrumb loaded');
 
+
+console.log('breadcrumb loaded');
