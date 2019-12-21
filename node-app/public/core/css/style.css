@@ -3840,17 +3840,6 @@ input[type=text] {
     background-image: none; } }
 
 
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  size: 10px; }
-
-.grey-horizontal-separator hr {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator hr {
-  border-color: #FFCB05; }
-
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -4071,6 +4060,17 @@ hr {
     width: 1%;
     border: 0; }
 
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  size: 10px; }
+
+.grey-horizontal-separator hr {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator hr {
+  border-color: #FFCB05; }
+
 .desktop-region-language-menu-wrapper {
   width: 100%;
   padding: 0 16px 16px;
@@ -4155,14 +4155,14 @@ hr {
       background-color: #feedd2; }
     .desktop-region-language-menu-wrapper .content-language .not-bold a {
       font-weight: 400; }
-    .desktop-region-language-menu-wrapper .content-language .grey-horizontal-separator .horizontal-middle-align {
-      float: left;
-      margin-left: -72px;
-      width: 37px; }
-    .desktop-region-language-menu-wrapper .content-language .chinese {
-      margin-top: 90px; }
-      .desktop-region-language-menu-wrapper .content-language .chinese a {
-        font-weight: 400; }
+    .desktop-region-language-menu-wrapper .content-language .grey-horizontal-separator {
+      margin-bottom: 90px; }
+      .desktop-region-language-menu-wrapper .content-language .grey-horizontal-separator .horizontal-middle-align {
+        float: left;
+        margin-left: -72px;
+        width: 37px; }
+    .desktop-region-language-menu-wrapper .content-language .chinese a {
+      font-weight: 400; }
   .desktop-region-language-menu-wrapper .no-region-present {
     height: 261px; }
     .desktop-region-language-menu-wrapper .no-region-present .select-preference {
