@@ -33,6 +33,7 @@
             border-width: 5px 1px 1px;
             padding: 10px 10px 5px 15px;
             box-shadow: 0 4px 20px -10px $black-shade;
+            display: inline;
             &::after {
                 font-family: FontAwesome;
                 content: "\f106";

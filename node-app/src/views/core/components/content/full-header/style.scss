@@ -10,93 +10,70 @@
         .yellow-stripe{
             height:8px;
             background-color:$medium-yellow-background;
+            padding:0;
         }
         .desktop-header-content{
-            padding:8px 15px 18px 15px;
+            padding:0 15px 18px 15px;
             height:92px;
-            /*Logo starts here*/
-            .desktop-sunlife-logo{
-                float:left;
+            /*Utility Nav starts here*/
+            .desktop-utility-nav{
+                float:right;
                 padding:0;
-                height:100%;
-                img{
-                    width:149px;
-                    height:36px;
-                    cursor:pointer;
-                    margin-top:8px;
-                }
-            }
-            /*Logo end here*/
-            .desktop-sunlife-navigation{
-                float:left;
-                padding:0;
-                margin-left:75px;
-                /*Utility Nav starts here*/
-                .desktop-utility-nav{
-                    float:right;
-                    padding:0;
-                    .utility-nav-wrapper{
-                        padding:0;                        
-                        .utility-nav-links{
-                            .lang-btn{
-                                padding:0 11px 0 16px;
-                            }
-                            .search-icon-container{
-                                .srch-btn{
-                                    padding:0;
-                                }
-                            }
+                .utility-nav-wrapper{
+                    padding:0;                        
+                    .utility-nav-links{
+                        .search-icon-container{
+                            padding-right:0;
                         }
                     }
                 }
-                /* Utility Nav Ends here */
+            }
+            /* Utility Nav Ends here */
+            .desktop-sunlife-navigation{
+                padding:0;
+                /*Logo starts here*/
+                .desktop-sunlife-logo{
+                    float:left;
+                    padding:0;
+                    height:100%;
+                    img{
+                        width:149px;
+                        height:36px;
+                        cursor:pointer;
+                        margin-top:13px;
+                    }
+                }
+                /*Logo end here*/
                 /*Mega Menu strats here*/
                 .desktop-navigation{
-                    padding-top:8px;
                     position:static;
+                    float:left;
+                    margin:-5px 0 0 58px;
                     .desktop-mega-menu{
                         .desktop-primary-navigation {
                             .primary-navigation {
                             margin-left: 0px;
                             }
-                            .navigation{
-                                padding:0;
-                                margin-top:10px;
-                            }
-                            .navigation:first-child{
-                                padding:0 40px 0 0;
-                            }
-                            .navbar-nav>li>a {
-                               padding:0;
-                            }
-                        }
-                        .desktop-sign-button{
-                            max-width:375px;
-                            float:right;
                         }
                     }
                     /*Mega Menu end here*/
                     
+                }
+                .desktop-sign-button{
+                    max-width:375px;
+                    float:right;
                 }
             }
         }
     }
 }
 @media(max-width:1024px){
-.desktop-header-wrapper{
-    display:none;
-}
+    .desktop-header-wrapper{
+        display:none;
+    }
 }
 @media(min-width:1025px){
-.mobile-header{
+    .mobile-header{
     display:none;
-}
-}
-body{
-    // .container{
-    //     display:none;
-    // }
-    .container:last-child{
-        display:none;
     }
 }
