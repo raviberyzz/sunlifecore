@@ -3,14 +3,12 @@
 .desktop-primary-navigation{
     .navigation{
         position: static;
-        padding: 0 24px 0 24px;
-        &:first-child{
-          padding-left: 48px;
-        }
+        padding: 0;
     }
     .dropdown:hover .dropdown-menu {
         display: block;
         padding: 0;
+        margin-top: -8px;
       }
       .menu-content{
           position: absolute;
@@ -19,17 +17,23 @@
       }
       .nav>li>:hover{
         background-color: $white-shade;
-        box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
+        box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); 
         
       }
       .nav>li>a{
         background-color: transparent;
-     
+        padding:15px 24px;
       }
       .nav>li>a:hover{
         background-color: transparent;
         z-index:9999;
-        padding-bottom: 0
+        padding-bottom: 0;
+        cursor: pointer;
+      }
+      .nav>li>a:hover .dropdown-menu {
+        display: block;
+        padding: 0;
+        margin-top: -8px;
       }
       .primary-navigation{
         margin-left: 166px;
@@ -44,7 +48,7 @@
     .box-class{
       z-index: 9999;
       padding-bottom: 0 !important;
-      box-shadow: 0 35px 0px 0px white, 0 -15px 0px 0px white, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25) !important; 
+      box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); 
     }
 
 }
