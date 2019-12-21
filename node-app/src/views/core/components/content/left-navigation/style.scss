@@ -1,0 +1,44 @@
+@import '../../../base/core';
+.left-nav-wrapper{
+    width: 266px;
+    .first-level{
+        font-size: 1.125rem;
+        padding: 0 20px;
+        font-weight: 700;
+    }
+    .second-level{
+        padding-left: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .panel{
+            margin: 0;
+            border: 0;
+        }
+        .selected{
+            border-bottom: 2px solid $medium-yellow-background;
+            font-weight: 700;
+        }
+        a{
+            font-weight: 400;
+        }
+        .accordion-heading[aria-expanded="false"]:after {
+            content: "\f105";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .accordion-heading[aria-expanded="true"]:after {
+            content: "\f107";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .third-level{
+            padding-left: 30px;
+        }
+    }
+    
+}
+@media (max-width: $tab-screen-max) {
+    .left-nav-wrapper {
+        display: none;
+    }
+}
