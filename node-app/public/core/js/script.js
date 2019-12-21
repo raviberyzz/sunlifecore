@@ -3038,27 +3038,16 @@ function removeParam(key, sourceURL) {
 
 
 
-$(document).ready(function(){
- $("#explore-menu").hover(
-     function(){
- $("#explore1").addClass("box-class");
- }, function(){
-    $("#explore1").removeClass("box-class");
-    }
- );
-});
-$(document).ready(function(){
-    $("#tools-menu").hover(
-        function(){
-    $("#tools1").addClass("box-class");
-    }, function(){
-       $("#tools1").removeClass("box-class");
-       }
-    );
-   });
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 console.log('utility-nav loaded');
 
 
+console.log('separator loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3067,7 +3056,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-console.log('separator loaded');
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3089,6 +3077,24 @@ $(document).ready(function(){
         $('.mobile-header #language-tab').css({'display':'block'});
     });
 });
+$(document).ready(function(){
+ $("#explore-menu").hover(
+     function(){
+ $("#explore1").addClass("box-class");
+ }, function(){
+    $("#explore1").removeClass("box-class");
+    }
+ );
+});
+$(document).ready(function(){
+    $("#tools-menu").hover(
+        function(){
+    $("#tools1").addClass("box-class");
+    }, function(){
+       $("#tools1").removeClass("box-class");
+       }
+    );
+   });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3181,10 +3187,3 @@ console.log('container loaded');
 
 
 console.log('breadcrumb loaded');
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
