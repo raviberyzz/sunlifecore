@@ -2,7 +2,8 @@
 <sly data-sly-test.empty="${!iconText.iconsText}"/>
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
-<sly  data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
+<ul data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
+    <li>
    <div class="icon-parent">
       <span class="icon-style fa ${iconsText.icon}"></span>
    </div>
@@ -14,4 +15,5 @@
          <a href="${iconsText.link @ extension = 'html'}" target="${iconsText.target}">${iconsText.text @context ='html'}</a>
       </div>
    </div>
-</sly>
+   </li>
+</ul>

@@ -15,6 +15,6 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
      data-sly-repeat.child="${templatedContainer.structureResources}"
-     data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+     data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div', cssClassName='container'}"></sly>
 
-<sly data-sly-resource="${'footer' @ resourceType='sunlife/ca/components/content/experiencefragment', decorationTagName='div'}"></sly>
+<sly data-sly-resource="${'footer' @ resourceType='sunlife/ca/components/content/experiencefragment', decorationTagName='div', cssClassName='container'}"></sly>

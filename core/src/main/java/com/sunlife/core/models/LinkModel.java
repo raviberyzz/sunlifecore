@@ -21,6 +21,9 @@ public class LinkModel {
 	public String linkUrl;
 
 	@Inject
+	public String linkTarget;
+	
+	@Inject
 	public String nextList;
 
 	@Inject
