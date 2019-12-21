@@ -3,7 +3,8 @@ JSON Format
 ```
 {
      "form-text-id":"demo-id",
-     "form-class":"form-wrapper",
+     "form-background-wrapper":"",
+     "form-alignment-wrapper":"",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
     "input-text-type":"text",

@@ -1,0 +1,40 @@
+<header>
+  <div class="slf-header-wrapper">
+    <div class="desktop-header-wrapper">
+      <div class="desktop-region-bar">
+        {{>core-components-content-region-language-menu}}
+      </div>
+      <div class="desktop-search-bar">
+        {{>core-components-content-search-bar}}
+      </div>
+      <div class="yellow-stripe">
+      </div>
+      <div class="desktop-sign-in">
+        {{>core-components-content-sign-in-modal}}
+      </div>
+      <div class="col-xs-12 desktop-header-content">
+        <div class="{{desktop-sunlife-logo}}">
+          <img class="vertical-middle-align" href="https://www.sunlife.ca" alt="sunlife logo"
+            src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+          </img>
+        </div>
+        <div class="desktop-sunlife-navigation">
+          <div class="col-xs-12 {{desktop-utility-nav}}">
+            {{>core-components-content-utility-nav}}
+          </div>
+          <div class="col-xs-12 desktop-navigation no-gutter">           
+            <div class="{{desktop-mega-menu}} clearfix">
+              {{>core-components-content-navigation}}
+              <div class="{{desktop-sign-button}}" id="signin">
+              {{>core-components-content-button}}
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-header">
+      {{>core-components-content-mobile-header}}
+    </div>
+  </div>
+</header>

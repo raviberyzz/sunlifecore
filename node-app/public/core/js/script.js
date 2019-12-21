@@ -3047,7 +3047,6 @@ alert("Demo-Onsubmit-Function");
 console.log('utility-nav loaded');
 
 
-console.log('component loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3060,13 +3059,30 @@ console.log('separator loaded');
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
-    $('.slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
+    // $('.slf-tab-region .slf-tab').click(function(){
+    //     $(this).addClass('active').siblings().removeClass('active');
+    // });
+    // $('.region-present').siblings().css("display", "none");
+    // $('.language-present').siblings().css("display", "none");
 });
-
+$(document).ready(function(){
+ $("#explore-menu").hover(
+     function(){
+ $("#explore1").addClass("box-class");
+ }, function(){
+    $("#explore1").removeClass("box-class");
+    }
+ );
+});
+$(document).ready(function(){
+    $("#tools-menu").hover(
+        function(){
+    $("#tools1").addClass("box-class");
+    }, function(){
+       $("#tools1").removeClass("box-class");
+       }
+    );
+   });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3136,9 +3152,23 @@ console.log("left navigation loaded");
 // });
 console.log('image loaded');
 console.log('icon-text loaded');
+$(document).ready(function () {
+    $(".signIn-button").attr('maxlength','30');
+    $(".mobile-header .first").click(function(){
+        $('.mobile-header .first').addClass('active');
+        $('.mobile-header .second').removeClass('active');
+        $('.mobile-header #region-tab').css({'display':'block'});
+        $('.mobile-header #language-tab').css({'display':'none'});
+    });
+    $(".mobile-header .second").click(function(){
+        $('.mobile-header .first').removeClass('active');
+        $('.mobile-header .second').addClass('active');
+        $('.mobile-header #region-tab').css({'display':'none'});
+        $('.mobile-header #language-tab').css({'display':'block'});
+    });
+});
 console.log('footer-copyright loaded');
-
 console.log('container loaded');
 
-console.log('breadcrumb loaded');
 
+console.log('breadcrumb loaded');
