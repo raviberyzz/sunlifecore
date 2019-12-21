@@ -4650,6 +4650,39 @@ hr {
   .lists-wrapper .accordion-heading {
     cursor: pointer; } }
 
+.left-nav-wrapper {
+  width: 266px; }
+  .left-nav-wrapper .first-level {
+    font-size: 1.125rem;
+    padding: 0 20px;
+    font-weight: 700; }
+  .left-nav-wrapper .second-level {
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+    .left-nav-wrapper .second-level .panel {
+      margin: 0;
+      border: 0; }
+    .left-nav-wrapper .second-level .selected {
+      border-bottom: 2px solid #FFCB05;
+      font-weight: 700; }
+    .left-nav-wrapper .second-level a {
+      font-weight: 400; }
+    .left-nav-wrapper .second-level .accordion-heading[aria-expanded="false"]:after {
+      content: "\f105";
+      font-family: FontAwesome;
+      padding-right: 10px; }
+    .left-nav-wrapper .second-level .accordion-heading[aria-expanded="true"]:after {
+      content: "\f107";
+      font-family: FontAwesome;
+      padding-right: 10px; }
+    .left-nav-wrapper .second-level .third-level {
+      padding-left: 30px; }
+
+@media (max-width: 1024px) {
+  .left-nav-wrapper {
+    display: none; } }
+
 .two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
 

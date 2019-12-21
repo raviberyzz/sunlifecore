@@ -3038,12 +3038,24 @@ function removeParam(key, sourceURL) {
 
 
 
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
+$(document).ready(function(){
+ $("#explore-menu").hover(
+     function(){
+ $("#explore1").addClass("box-class");
+ }, function(){
+    $("#explore1").removeClass("box-class");
+    }
+ );
+});
+$(document).ready(function(){
+    $("#tools-menu").hover(
+        function(){
+    $("#tools1").addClass("box-class");
+    }, function(){
+       $("#tools1").removeClass("box-class");
+       }
+    );
+   });
 console.log('utility-nav loaded');
 
 
@@ -3065,24 +3077,6 @@ $(document).ready(function(){
     // $('.region-present').siblings().css("display", "none");
     // $('.language-present').siblings().css("display", "none");
 });
-$(document).ready(function(){
- $("#explore-menu").hover(
-     function(){
- $("#explore1").addClass("box-class");
- }, function(){
-    $("#explore1").removeClass("box-class");
-    }
- );
-});
-$(document).ready(function(){
-    $("#tools-menu").hover(
-        function(){
-    $("#tools1").addClass("box-class");
-    }, function(){
-       $("#tools1").removeClass("box-class");
-       }
-    );
-   });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3141,6 +3135,15 @@ $(document).ready(function () {
 });     
 console.log('separator loaded');
 console.log('component loaded');
+console.log("left navigation loaded");
+// $(document).ready(function(){
+//     $('.accordion-heading').click(function(){
+//         if($(this).parent().siblings().children().hasClass('.collapse.in'))
+//         {
+//             $(this).parent().siblings().children().hide();
+//         }
+//     });
+// });
 console.log('image loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
@@ -3163,3 +3166,10 @@ console.log('container loaded');
 
 
 console.log('breadcrumb loaded');
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
