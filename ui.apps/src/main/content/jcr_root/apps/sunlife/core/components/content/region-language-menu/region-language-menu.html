@@ -3,8 +3,13 @@
 
 <sly data-sly-use.languageRegionModel="com.sunlife.core.models.RegionLanguageMenu" />
 <sly data-sly-test.regionsEmpty="${!languageRegionModel.regionLinks}" />
+<sly data-sly-test.languagesEmpty="${!languageRegionModel.languageLinks}" />
 
-<div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse in" aria-expanded="true">
+<sly data-sly-test.regionsTabSelected="${languageRegionModel.selectedTabMobile == 'region-active'}" />
+<sly data-sly-test.languagesTabSelected="${languageRegionModel.selectedTabMobile == 'language-active'}" />
+
+<!-- Desktop view starts -->
+<div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
     <div class="cross-btn">
         <a class="collapsed show" id="sunLanguageCrossBtn">
             <span class="fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
@@ -18,15 +23,16 @@
 
             <div class="col-xs-12 content-region">
                 <sly data-sly-list.regionList="${languageRegionModel.regionLinks}">
-
+                    <sly data-sly-test.firstRegionElement="${regionListList.index == 0}" />
                     <div class="col-xs-4 slf-region-column">
                         <ul class="list-unstyled" data-sly-list.regionObj="${regionList}">
-                        <sly data-sly-test.firstElement = "${regionObjList.index == 1}" />
+                            <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
+
                             <li data-sly-test="${regionObj.subLinks}">
-                            	<div class="region-link">
-                                    <h3 class="accordion-heading" aria-expanded="${firstElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child" data-toggle="collapse">${regionObj.linkName}</h3>
-                                    <div class="${firstElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child">
-                                        <ul class="list-unstyled" data-sly-list.subLink="${regionObj.subLinks}">
+                                <div class="region-link">
+                                    <h3 class="accordion-heading" aria-expanded="${firstElement && firstRegionElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child" data-toggle="collapse">${regionObj.linkName}</h3>
+                                    <div class="${firstElement && firstRegionElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child">
+                                        <ul aria-expanded="${firstElement && firstRegionElement ? 'true' : 'false'}" class="list-unstyled" data-sly-list.subLink="${regionObj.subLinks}">
                                             <li class="${firstElement && subLinkList.first ? 'nav-select' : ''}">
                                                 <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
                                             </li>
@@ -41,7 +47,6 @@
                     </div>
                 </sly>
             </div>
-
         </div>
     </sly>
     <sly data-sly-test="${regionsEmpty}">
@@ -57,14 +62,64 @@
         </div>
         <div class="col-xs-12 content-language">
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
-                <li data-sly-test="${!languageLink.subLinkSeparator}" class="${languageLink.selected}">
+                <sly data-sly-test.langFirstElement="${languageLinkList.index == 0}" />
+                <li class="${langFirstElement ? 'nav-select' : 'not-bold'}">
                     <a href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
+                </li>
+
+                <sly data-sly-test="${languageLink.subLinkSeparator}" data-sly-call="${separator}"></sly>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Desktop view ends -->
+
+<!-- Mobile view starts -->
+<div class="col-xs-12 mobile-region-language-menu-wrapper">
+    <div class="go-back">
+        <a tabindex="0">${languageRegionModel.backButtonText}</a>
+    </div>
+    <div class="col-xs-12 slf-tab-region ">
+        <div class="col-xs-6 slf-tab ${regionsTabSelected?'active':''} {{region-present}}" data-target="#region-tab" data-toggle="tab" tabindex="0">
+            ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
+        </div>
+        <div class="col-xs-6 slf-tab ${languagesTabSelected?'active':''} {{language-present}}" data-target="#language-tab" data-toggle="tab" tabindex="0">
+            ${languageRegionModel.languageSectionTitleMobile ? languageRegionModel.languageSectionTitleMobile : languageRegionModel.languageSectionTitle}
+        </div>
+    </div>
+    <div class="col-xs-12 tab-content">
+        <div id="region-tab" class="tab-pane region-tab ${regionsTabSelected?'active':''}">
+            <ul class="list-unstyled" data-sly-list.regionObj="${languageRegionModel.regions}">
+                <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
+                <li data-sly-test="${regionObj.subLinks}">
+                    <div class="region-link">
+                        <h3 class="accordion-heading" aria-expanded="${firstElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child_mobile" data-toggle="collapse">${regionObj.linkName}</h3>
+                        <div class="${firstElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child_mobile">
+                            <ul class="list-unstyled accordion-list" data-sly-list.subLink="${regionObj.subLinks}">
+                                <li class="${firstElement && subLinkList.first ? 'nav-select' : 'not-bold'}">
+                                    <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li data-sly-test="${!regionObj.subLinks}">
+                    <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
+                </li>
+            </ul>
+        </div>
+        <div id="language-tab" class="tab-pane language-tab ${languagesTabSelected?'active':''}">
+            <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
+                <li class="${languageLinkList.first ? 'nav-select' : 'not-bold'}">
+                    <a href="${languageLink.subLinkUrl}">${languageLink.subLinkName}</a>
                 </li>
                 <sly data-sly-test="${languageLink.subLinkSeparator}" data-sly-call="${separator}"></sly>
             </ul>
         </div>
     </div>
 </div>
+<!-- Mobile view ends -->
 
 <template data-sly-template.separator>
     <div class="seperator-wrapper">
