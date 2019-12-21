@@ -3168,7 +3168,7 @@ $(document).ready(function () {
     });
 });
 console.log('footer-copyright loaded');
-
 console.log('container loaded');
+
 
 console.log('breadcrumb loaded');
