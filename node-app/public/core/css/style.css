@@ -3866,7 +3866,6 @@ input[type=text] {
     height: 94px;
     background-image: none; } }
 
-
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -4049,6 +4048,7 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -4099,7 +4099,8 @@ hr {
     border: 0; }
 
 .right-navigation-wrapper {
-  padding: 0; }
+  padding: 0;
+  text-align: center; }
   .right-navigation-wrapper .content-label {
     text-align: center;
     margin: 20px 0; }
@@ -4110,29 +4111,25 @@ hr {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
       width: 40%; }
-  .right-navigation-wrapper .right-nav-icon-text-wrapper .icon-inside-trans {
-    font-size: 2.250rem;
-    cursor: pointer; }
-  .right-navigation-wrapper .right-nav-link-wrapper {
-    text-align: center; }
-  .right-navigation-wrapper .right-nav-cta-wrapper {
-    background-color: #feedd2;
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-cta-wrapper .right-nav-cta-button-wrapper .CTA-wrapper .button-class {
-      max-width: 100%;
-      width: 100%;
-      margin: 15px 0 15px 0; }
-  .right-navigation-wrapper .right-nav-form-wrapper {
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-form-wrapper input {
-      padding: 10px; }
-    .right-navigation-wrapper .right-nav-form-wrapper .demo-class {
-      width: 100%; }
-    .right-navigation-wrapper .right-nav-form-wrapper input[type=submit], .right-navigation-wrapper .right-nav-form-wrapper input[type=button] {
-      width: 100%;
-      max-width: 100%; }
+  .right-navigation-wrapper .CTA-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
+  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button], .right-navigation-wrapper input[type=text] {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px; }
+  .right-navigation-wrapper .light-orange {
+    background-color: #FEEDD2; }
+  .right-navigation-wrapper .cool-blue {
+    background-color: #F4F7F6; }
+  .right-navigation-wrapper .phone-numbers {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%; }
 
-@media (min-width: 768px) and (max-width: 1025px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .yellow-horizontal-separator {
     display: none; } }
 
@@ -4634,9 +4631,6 @@ hr {
 @media (max-width: 991px) {
   .mega-menu-wrapper-desk {
     display: none; } }
-
-body > :last-child {
-  display: none; }
 
 .slf-header-mega-menu1 {
   padding: 0;

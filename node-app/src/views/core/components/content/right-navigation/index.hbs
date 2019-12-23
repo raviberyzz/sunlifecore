@@ -1,14 +1,14 @@
 <div class="col-xs-12 ">
     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9"></div>
     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 right-navigation-wrapper">
-        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 right-nav-icon-text-wrapper">
+        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
             <div class="content-label">
                 <p>{{content-label}}</p>
             </div>
              {{>core-components-content-icon-text}}
         </div>
         {{>core-components-content-separator}}
-        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 right-nav-link-text-wrapper">
+        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
             <div class="content-label">
                 <p>{{content-label}}</p>
             </div> 
@@ -19,20 +19,20 @@
             </div>
         </div>
         {{>core-components-content-separator}}
-        <div class=" cta-module-1" data-section="cta-right-rail">
-        <div class="col-xs-12 right-nav-cta-wrapper">
+        
+        <div class="col-xs-12" data-section="cta-right-rail">
             <div class="content-label">
                 <p>{{content-label}}</p>
             </div> 
             <p>Make well-informed decisions with helpful advice. Talk to your advisor or find one near you – there is no cost to talk to an advisor</p>
-            <div class="right-nav-cta-button-wrapper">
+         
                 {{>core-components-content-button}}
                 {{>core-components-content-button}}
-            </div>
+           
             <p>Make well-informed decisions with helpful advice. Talk to your advisor or find one near you – there is no cost to talk to an advisor</p>
         </div>
         {{>core-components-content-separator}}
-         <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 right-nav-form-wrapper">
+         <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 {{right-nav-background}}">
             <div class="content-label">
                 <p>{{content-label}}</p>
             </div> 
@@ -45,8 +45,13 @@
             </div>
             <p>Make well-informed decisions with helpful advice. Talk to your advisor or find one near you – there is no cost to talk to an advisor</p>
         </div>
-
-       
+        {{>core-components-content-separator}}
+        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 {{right-nav-background}}">
+            <div class="content-label">
+                <p>{{content-label}}</p>
+            </div> 
+             <p>Make well-informed decisions with helpful advice. Talk to your advisor or find one near you – there is no cost to talk to an advisor</p>
+             <p class="phone-numbers">1800-006-993</p>
         </div>
     </div>
 </div>
