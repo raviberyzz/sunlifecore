@@ -5,12 +5,19 @@
         position: static;
         padding: 0;
     }
+    .box-class{
+      background-color: $white-shade;
+      padding:15px 24px;
+      z-index: 3000;
+      position: relative;
+      box-shadow: 0px 2px 0px 0px $white-shade;
+    }
       .nav>li>a{
-        background-color: transparent;
-        padding:15px 24px;
-        z-index: 3000;
-        position: relative;
-        box-shadow: 0px 2px 0px 0px $white-shade;
+        
+        &:hover{
+          @extend .box-class;
+         
+        }
       }
  
       .primary-navigation{
@@ -23,17 +30,20 @@
         font-family: FontAwesome;
         content: " \f107";
     }
-    .nav-item.open{
-      
+    .nav-item.open{  
+      background-color: $white-shade;   
       border-bottom: none;
       z-index: 1;
-      box-shadow: 0 35px 0px 0px $white-shade, 0 -15px 0px 0px $white-shade, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25);     
+      box-shadow: 0 35px 0px 0px $white-shade, 0 0px 0px 0px $white-shade, 0px 0px 2px 0px rgba(0, 0, 0, 0.25), 0px 10px 15px 0px rgba(0, 0, 0, 0.25);     
       .menu-content{
         padding: 0;
         position: absolute;
     }
+    
     }
-   
+    .nav .open>a{
+      background-color:$white-shade;
+    }  
 }
 
 
