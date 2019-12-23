@@ -3036,8 +3036,6 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
-console.log('separator loaded');
-
 
 
 
@@ -3046,9 +3044,10 @@ function demoFunction()
 alert("Demo-Onsubmit-Function");
 }
 
+console.log('image loaded');
+
 console.log('utility-nav loaded');
 
-console.log('footer-copyright loaded');
 
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -3058,6 +3057,7 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
+console.log('separator loaded');
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3079,28 +3079,20 @@ $(document).ready(function(){
         $('.mobile-header #language-tab').css({'display':'block'});
     });
 });
+
 $(document).ready(function () {
-    $("#explore1").hover(function () { 
-        $("#explore-menu").addClass('drop-down-class');
-        $("#explore1").addClass("box-class");
-    });
-});
-$(document).ready(function(){
- $("#explore-menu").hover(
-     function(){
- $("#explore1").addClass("box-class");
- }, function(){
-    $("#explore1").removeClass("box-class");
-    }
- );
-    $("#tools-menu").hover(
-        function(){
-    $("#tools1").addClass("box-class");
-    }, function(){
-       $("#tools1").removeClass("box-class");
-       }
-    );
-    
+   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class');
+   }, function () {
+      $(this).siblings().removeClass('box-class');
+   }
+   );
 });
 console.log('separator loaded');
 $(document).ready(function () {
@@ -3162,7 +3154,18 @@ $(document).ready(function () {
         }
     });  
 });     
+// $(document).ready(function(){
+//     $( ".mega-menu2-list ul" ).find( ".dropdown-submenu" ).hover(
+//         function(){
+//            // ("#slf-header-mega-menu2").height('1000px');
+//             $('#slf-header-mega-menu2').css()
+//     }, function(){
+//        $("#explore1").removeClass("box-class");
+//        }
+//     );
+//    });
 console.log('component loaded');
+console.log('icon-text loaded');
 console.log("left navigation loaded");
 // $(document).ready(function(){
 //     $('.accordion-heading').click(function(){
@@ -3172,9 +3175,6 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
-console.log('image loaded');
-console.log('icon-text loaded');
-console.log('breadcrumb loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
@@ -3190,5 +3190,8 @@ $(document).ready(function () {
            }
         });
 });
+console.log('footer-copyright loaded');
+
 console.log('container loaded');
 
+console.log('breadcrumb loaded');
