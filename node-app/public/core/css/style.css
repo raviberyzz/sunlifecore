@@ -3704,6 +3704,19 @@ input[type=radio] {
   margin: 10px;
   vertical-align: super; }
 
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
+
 .form-wrapper {
   text-align: center;
   width: 50%; }
@@ -3747,19 +3760,6 @@ input[type=radio] {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
-
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
 
 .button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
   height: 48px;
@@ -4098,44 +4098,6 @@ hr {
     width: 1%;
     border: 0; }
 
-.right-navigation-wrapper {
-  padding: 0; }
-  .right-navigation-wrapper .content-label {
-    text-align: center;
-    margin: 20px 0; }
-    .right-navigation-wrapper .content-label p {
-      font-size: 18px;
-      font-weight: 700; }
-  .right-navigation-wrapper .yellow-horizontal-separator {
-    width: 100%; }
-    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
-      width: 40%; }
-  .right-navigation-wrapper .right-nav-icon-text-wrapper .icon-inside-trans {
-    font-size: 2.250rem;
-    cursor: pointer; }
-  .right-navigation-wrapper .right-nav-link-wrapper {
-    text-align: center; }
-  .right-navigation-wrapper .right-nav-cta-wrapper {
-    background-color: #feedd2;
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-cta-wrapper .right-nav-cta-button-wrapper .CTA-wrapper .button-class {
-      max-width: 100%;
-      width: 100%;
-      margin: 15px 0 15px 0; }
-  .right-navigation-wrapper .right-nav-form-wrapper {
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-form-wrapper input {
-      padding: 10px; }
-    .right-navigation-wrapper .right-nav-form-wrapper .demo-class {
-      width: 100%; }
-    .right-navigation-wrapper .right-nav-form-wrapper input[type=submit], .right-navigation-wrapper .right-nav-form-wrapper input[type=button] {
-      width: 100%;
-      max-width: 100%; }
-
-@media (min-width: 768px) and (max-width: 1025px) {
-  .yellow-horizontal-separator {
-    display: none; } }
-
 .desktop-region-language-menu-wrapper {
   width: 100%;
   padding: 0 16px 16px;
@@ -4325,54 +4287,43 @@ hr {
   .mobile-region-language-menu-wrapper {
     display: none; } }
 
-.desktop-primary-navigation .navigation {
-  position: static;
+.right-navigation-wrapper {
   padding: 0; }
+  .right-navigation-wrapper .content-label {
+    text-align: center;
+    margin: 20px 0; }
+    .right-navigation-wrapper .content-label p {
+      font-size: 18px;
+      font-weight: 700; }
+  .right-navigation-wrapper .yellow-horizontal-separator {
+    width: 100%; }
+    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
+      width: 40%; }
+  .right-navigation-wrapper .right-nav-icon-text-wrapper .icon-inside-trans {
+    font-size: 2.250rem;
+    cursor: pointer; }
+  .right-navigation-wrapper .right-nav-link-wrapper {
+    text-align: center; }
+  .right-navigation-wrapper .right-nav-cta-wrapper {
+    background-color: #feedd2;
+    text-align: center; }
+    .right-navigation-wrapper .right-nav-cta-wrapper .right-nav-cta-button-wrapper .CTA-wrapper .button-class {
+      max-width: 100%;
+      width: 100%;
+      margin: 15px 0 15px 0; }
+  .right-navigation-wrapper .right-nav-form-wrapper {
+    text-align: center; }
+    .right-navigation-wrapper .right-nav-form-wrapper input {
+      padding: 10px; }
+    .right-navigation-wrapper .right-nav-form-wrapper .demo-class {
+      width: 100%; }
+    .right-navigation-wrapper .right-nav-form-wrapper input[type=submit], .right-navigation-wrapper .right-nav-form-wrapper input[type=button] {
+      width: 100%;
+      max-width: 100%; }
 
-.desktop-primary-navigation .drop-down-class, .desktop-primary-navigation .dropdown:hover .dropdown-menu {
-  display: block;
-  padding: 0;
-  margin-top: -8px; }
-
-.desktop-primary-navigation .menu-content {
-  position: absolute;
-  margin-top: -8px; }
-
-.desktop-primary-navigation .nav > li > :hover {
-  background-color: #ffffff;
-  box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); }
-
-.desktop-primary-navigation .nav > li > a {
-  background-color: transparent;
-  padding: 15px 24px; }
-
-.desktop-primary-navigation .nav > li > a:hover {
-  background-color: transparent;
-  z-index: 9999;
-  padding-bottom: 0;
-  cursor: pointer; }
-
-.desktop-primary-navigation .nav > li > a:hover .dropdown-menu {
-  display: block;
-  padding: 0;
-  margin-top: -8px; }
-
-.desktop-primary-navigation .primary-navigation {
-  margin-left: 166px; }
-  .desktop-primary-navigation .primary-navigation li {
-    position: static; }
-
-.desktop-primary-navigation .navbar-new .nav-item > a:after {
-  font-family: FontAwesome;
-  content: " \f107"; }
-
-.desktop-primary-navigation .box-class {
-  z-index: 9999;
-  padding-bottom: 0 !important;
-  box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); }
-
-body > :last-child {
-  display: none; }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .yellow-horizontal-separator {
+    display: none; } }
 
 .overflow-hidden {
   overflow: hidden; }
@@ -4595,6 +4546,34 @@ body > :last-child {
 @media (min-width: 1025px) {
   .slf-mobile-header-wrapper {
     display: none; } }
+
+.desktop-primary-navigation .navigation {
+  position: static;
+  padding: 0; }
+
+.desktop-primary-navigation .nav > li > a {
+  background-color: transparent;
+  padding: 15px 24px;
+  z-index: 3000;
+  position: relative;
+  box-shadow: 0px 2px 0px 0px #ffffff; }
+
+.desktop-primary-navigation .primary-navigation {
+  margin-left: 166px; }
+  .desktop-primary-navigation .primary-navigation li {
+    position: static; }
+
+.desktop-primary-navigation .navbar-new .nav-item > a:after {
+  font-family: FontAwesome;
+  content: " \f107"; }
+
+.desktop-primary-navigation .nav-item.open {
+  border-bottom: none;
+  z-index: 1;
+  box-shadow: 0 35px 0px 0px #ffffff, 0 -15px 0px 0px #ffffff, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25); }
+  .desktop-primary-navigation .nav-item.open .menu-content {
+    padding: 0;
+    position: absolute; }
 
 .slf-header-mega-menu2 {
   border: 3px solid #FFCB05;
@@ -4917,6 +4896,59 @@ body > :last-child {
 .mega-menu-icon-wrapper ul {
   margin-top: 0px; }
 
+.slf-header-wrapper .desktop-header-wrapper {
+  height: 100px; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
+    display: none; }
+  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
+    height: 8px;
+    background-color: #FFCB05;
+    padding: 0; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
+    padding: 0 15px 18px 15px;
+    height: 92px;
+    /*Utility Nav starts here*/
+    /* Utility Nav Ends here */ }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
+      float: right;
+      padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
+        padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
+          padding-right: 0; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+      padding: 0;
+      /*Logo starts here*/
+      /*Logo end here*/
+      /*Mega Menu strats here*/ }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo {
+        float: left;
+        padding: 0;
+        height: 100%; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo img {
+          width: 149px;
+          height: 36px;
+          cursor: pointer;
+          margin-top: 13px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
+        position: static;
+        float: left;
+        margin: -5px 0 0 58px;
+        /*Mega Menu end here*/ }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .primary-navigation {
+          margin-left: 0px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
+        max-width: 375px;
+        float: right; }
+
+@media (max-width: 1024px) {
+  .desktop-header-wrapper {
+    display: none; } }
+
+@media (min-width: 1025px) {
+  .mobile-header {
+    display: none; } }
+
 .footer-copyright-wrapper {
   background-color: #004C6C;
   padding: 24px 15px; }
@@ -4994,59 +5026,6 @@ body > :last-child {
       .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
 
-.slf-header-wrapper .desktop-header-wrapper {
-  height: 100px; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
-    display: none; }
-  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
-    height: 8px;
-    background-color: #FFCB05;
-    padding: 0; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
-    padding: 0 15px 18px 15px;
-    height: 92px;
-    /*Utility Nav starts here*/
-    /* Utility Nav Ends here */ }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
-      float: right;
-      padding: 0; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
-        padding: 0; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
-          padding-right: 0; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
-      padding: 0;
-      /*Logo starts here*/
-      /*Logo end here*/
-      /*Mega Menu strats here*/ }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo {
-        float: left;
-        padding: 0;
-        height: 100%; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo img {
-          width: 149px;
-          height: 36px;
-          cursor: pointer;
-          margin-top: 13px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
-        position: static;
-        float: left;
-        margin: -5px 0 0 58px;
-        /*Mega Menu end here*/ }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .primary-navigation {
-          margin-left: 0px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
-        max-width: 375px;
-        float: right; }
-
-@media (max-width: 1024px) {
-  .desktop-header-wrapper {
-    display: none; } }
-
-@media (min-width: 1025px) {
-  .mobile-header {
-    display: none; } }
-
 
 .campaign-header-wrapper .logo-img {
   height: 31px; }
@@ -5062,43 +5041,6 @@ body > :last-child {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
-
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
 
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
@@ -5179,6 +5121,43 @@ body > :last-child {
     display: none; }
   .breadcrumb-author {
     display: block; } }
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .banner-wrapper .banner-img {
   width: 100%;
