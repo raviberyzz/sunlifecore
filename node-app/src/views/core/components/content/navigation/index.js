@@ -1,22 +1,23 @@
-$(document).ready(function () {
-    $("#explore1").hover(function () { 
-        $("#explore-menu").addClass('drop-down-class');
-        $("#explore1").addClass("box-class");
-    });
-});
+// $(document).ready(function () {
+//     $("#explore1").hover(function () { 
+//         $("#explore-menu").addClass('drop-down-class');
+//         $("#explore1").addClass("box-class");
+//     });
+// });
 $(document).ready(function(){
- $("#explore-menu").hover(
+ $("#explore1").hover(
      function(){
- $("#explore1").addClass("box-class");
+        $("#explore1").addClass("open");
+        
  }, function(){
-    $("#explore1").removeClass("box-class");
+    $("#explore1").removeClass("open");
     }
  );
-    $("#tools-menu").hover(
+    $("#tools1").hover(
         function(){
-    $("#tools1").addClass("box-class");
+            $("#tools1").addClass("open");
     }, function(){
-       $("#tools1").removeClass("box-class");
+       $("#tools1").removeClass("open");
        }
     );
     

@@ -3057,6 +3057,7 @@ $(document).ready(function () {
 });     
 console.log('separator loaded');
 
+
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.slf-tab-region .slf-tab').click(function(){
@@ -3077,25 +3078,26 @@ $(document).ready(function(){
         $('.mobile-header #language-tab').css({'display':'block'});
     });
 });
-$(document).ready(function () {
-    $("#explore1").hover(function () { 
-        $("#explore-menu").addClass('drop-down-class');
-        $("#explore1").addClass("box-class");
-    });
-});
+// $(document).ready(function () {
+//     $("#explore1").hover(function () { 
+//         $("#explore-menu").addClass('drop-down-class');
+//         $("#explore1").addClass("box-class");
+//     });
+// });
 $(document).ready(function(){
- $("#explore-menu").hover(
+ $("#explore1").hover(
      function(){
- $("#explore1").addClass("box-class");
+        $("#explore1").addClass("open");
+        
  }, function(){
-    $("#explore1").removeClass("box-class");
+    $("#explore1").removeClass("open");
     }
  );
-    $("#tools-menu").hover(
+    $("#tools1").hover(
         function(){
-    $("#tools1").addClass("box-class");
+            $("#tools1").addClass("open");
     }, function(){
-       $("#tools1").removeClass("box-class");
+       $("#tools1").removeClass("open");
        }
     );
     
@@ -3159,6 +3161,16 @@ $(document).ready(function () {
         }
     });  
 });     
+$(document).ready(function(){
+    $( ".mega-menu2-list ul" ).find( ".dropdown-submenu" ).hover(
+        function(){
+           // ("#slf-header-mega-menu2").height('1000px');
+            $('#slf-header-mega-menu2').css()
+    }, function(){
+       $("#explore1").removeClass("box-class");
+       }
+    );
+   });
 console.log('separator loaded');
 console.log('component loaded');
 console.log("left navigation loaded");
@@ -3170,8 +3182,8 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
-console.log('image loaded');
 console.log('icon-text loaded');
+console.log('image loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
@@ -3190,5 +3202,5 @@ $(document).ready(function () {
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
-
 console.log('breadcrumb loaded');
+
