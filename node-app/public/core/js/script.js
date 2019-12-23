@@ -3077,6 +3077,12 @@ $(document).ready(function(){
         $('.mobile-header #language-tab').css({'display':'block'});
     });
 });
+$(document).ready(function () {
+    $("#explore1").hover(function () { 
+        $("#explore-menu").addClass('drop-down-class');
+        $("#explore1").addClass("box-class");
+    });
+});
 $(document).ready(function(){
  $("#explore-menu").hover(
      function(){
@@ -3085,8 +3091,6 @@ $(document).ready(function(){
     $("#explore1").removeClass("box-class");
     }
  );
-});
-$(document).ready(function(){
     $("#tools-menu").hover(
         function(){
     $("#tools1").addClass("box-class");
@@ -3094,7 +3098,8 @@ $(document).ready(function(){
        $("#tools1").removeClass("box-class");
        }
     );
-   });
+    
+});
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
