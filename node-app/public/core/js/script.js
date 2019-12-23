@@ -3047,7 +3047,6 @@ alert("Demo-Onsubmit-Function");
 console.log('utility-nav loaded');
 
 
-console.log('separator loaded');
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3056,6 +3055,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
+console.log('separator loaded');
+
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3154,6 +3155,16 @@ $(document).ready(function () {
         }
     });  
 });     
+$(document).ready(function(){
+    $( ".mega-menu2-list ul" ).find( ".dropdown-submenu" ).hover(
+        function(){
+           // ("#slf-header-mega-menu2").height('1000px');
+            $('#slf-header-mega-menu2').css()
+    }, function(){
+       $("#explore1").removeClass("box-class");
+       }
+    );
+   });
 console.log('separator loaded');
 console.log('component loaded');
 console.log("left navigation loaded");
