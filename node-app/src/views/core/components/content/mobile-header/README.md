@@ -161,7 +161,8 @@ JSON Format
         "selected" : "chinese",
         "separator-color" : "grey-horizontal-separator",
         "wrapper-separator":"region-separator"
-    }]
+    }],
+    "language-region":"language-region"
 }
 ```
 <!-- navigation-menu is for more 2nd or 3rd tier navigation and subnav is only a link -->

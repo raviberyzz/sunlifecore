@@ -5,10 +5,13 @@
         position: static;
         padding: 0;
     }
-    .dropdown:hover .dropdown-menu {
-        display: block;
+    .drop-down-class{
+      display: block;
         padding: 0;
         margin-top: -8px;
+    }
+    .dropdown:hover .dropdown-menu {
+        @extend .drop-down-class;
       }
       .menu-content{
           position: absolute;
