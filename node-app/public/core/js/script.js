@@ -3092,12 +3092,6 @@ $(document).ready(function () {
       $(this).siblings().removeClass('box-class');
    }
    );
-   // $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
-   //    $(this).closest('a').addClass('box-class');
-   // }, function () {
-   //    $(this).removeClass('box-class');
-   // }
-   // );
 });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
