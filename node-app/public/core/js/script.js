@@ -3036,6 +3036,14 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 console.log('utility-nav loaded');
 
 
@@ -3184,11 +3192,3 @@ console.log('container loaded');
 
 
 console.log('breadcrumb loaded');
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
