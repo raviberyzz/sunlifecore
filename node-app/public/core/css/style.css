@@ -3608,6 +3608,19 @@ input[type=text] {
   width: auto;
   border: 1px solid #9a9a9a; }
 
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
+
 .form-group-wrapper {
   margin: 20px 0; }
 
@@ -3676,19 +3689,6 @@ input[type=radio] {
   border-radius: 50%; }
   input[type=radio]:checked {
     background-color: #004C6C; }
-
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
 
 .form-wrapper {
   text-align: center;
@@ -3839,17 +3839,6 @@ input[type=text] {
     height: 94px;
     background-image: none; } }
 
-
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  size: 10px; }
-
-.grey-horizontal-separator hr {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator hr {
-  border-color: #FFCB05; }
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -4032,6 +4021,17 @@ hr {
 @media (min-width: 1025px) {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  size: 10px; }
+
+.grey-horizontal-separator hr {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator hr {
+  border-color: #FFCB05; }
 
 .search-bar-wrapper {
   background: #FFCB05; }
@@ -4264,7 +4264,7 @@ hr {
   position: static;
   padding: 0; }
 
-.desktop-primary-navigation .dropdown:hover .dropdown-menu {
+.desktop-primary-navigation .drop-down-class, .desktop-primary-navigation .dropdown:hover .dropdown-menu {
   display: block;
   padding: 0;
   margin-top: -8px; }
