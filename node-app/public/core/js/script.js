@@ -3044,6 +3044,8 @@ function demoFunction()
 alert("Demo-Onsubmit-Function");
 }
 
+console.log('image loaded');
+
 console.log('utility-nav loaded');
 
 
@@ -3056,7 +3058,6 @@ $(document).ready(function () {
     });
 });     
 console.log('separator loaded');
-
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3092,13 +3093,8 @@ $(document).ready(function () {
       $(this).siblings().removeClass('box-class');
    }
    );
-   // $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
-   //    $(this).closest('a').addClass('box-class');
-   // }, function () {
-   //    $(this).removeClass('box-class');
-   // }
-   // );
 });
+console.log('separator loaded');
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
@@ -3168,8 +3164,8 @@ $(document).ready(function () {
 //        }
 //     );
 //    });
-console.log('separator loaded');
 console.log('component loaded');
+console.log('icon-text loaded');
 console.log("left navigation loaded");
 // $(document).ready(function(){
 //     $('.accordion-heading').click(function(){
@@ -3179,8 +3175,6 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
-console.log('image loaded');
-console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
@@ -3197,7 +3191,7 @@ $(document).ready(function () {
         });
 });
 console.log('footer-copyright loaded');
-console.log('container loaded');
 
+console.log('container loaded');
 
 console.log('breadcrumb loaded');
