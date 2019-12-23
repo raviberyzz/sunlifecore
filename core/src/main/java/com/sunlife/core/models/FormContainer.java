@@ -9,20 +9,9 @@ import org.apache.sling.models.annotations.Model;
 @Model(
 		adaptables= {Resource.class},
 		defaultInjectionStrategy=DefaultInjectionStrategy.OPTIONAL)
-public interface Container {
-
+public interface FormContainer {
 	@Inject
-	public String getMethod();
-	
-	@Inject
-	public String getAction();
-	
-	@Inject
-	public String getName();
-	@Inject
-	public String getId();
-	@Inject
-	public String getRedirect();
+	public String getFormAction();
 	@Inject
 	public String getValidation();
 	
