@@ -3152,16 +3152,16 @@ $(document).ready(function () {
         }
     });  
 });     
-// $(document).ready(function(){
-//     $( ".mega-menu2-list ul" ).find( ".dropdown-submenu" ).hover(
-//         function(){
-//            // ("#slf-header-mega-menu2").height('1000px');
-//             $('#slf-header-mega-menu2').css()
-//     }, function(){
-//        $("#explore1").removeClass("box-class");
-//        }
-//     );
-//    });
+$(document).ready(function(){
+    $( ".mega-menu2-list ul" ).find( ".dropdown-submenu" ).hover(
+        function(){
+           // ("#slf-header-mega-menu2").height('1000px');
+            $('#slf-header-mega-menu2').css()
+    }, function(){
+       //$("#explore1").removeClass("box-class");
+       }
+    );
+   });
 console.log('separator loaded');
 console.log('component loaded');
 console.log("left navigation loaded");
@@ -3191,6 +3191,7 @@ $(document).ready(function () {
         });
 });
 console.log('footer-copyright loaded');
+
 console.log('container loaded');
 
 

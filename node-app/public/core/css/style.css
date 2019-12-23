@@ -3599,43 +3599,6 @@ a {
     font-size: 1.625rem; } }
 
 
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
-
 input[type=text] {
   font-family: 'sunlife-sans';
   font-weight: 400;
@@ -3644,35 +3607,6 @@ input[type=text] {
   height: 48px;
   width: auto;
   border: 1px solid #9a9a9a; }
-
-.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
-  height: 48px;
-  width: 180px;
-  border-radius: 4px; }
-
-.button-wrapper .primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.button-wrapper .primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.button-wrapper .secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  size: 10px; }
-
-.grey-horizontal-separator hr {
-  border-color: #9a9a9a; }
-
-.yellow-horizontal-separator hr {
-  border-color: #FFCB05; }
 
 .form-group-wrapper {
   margin: 20px 0; }
@@ -3827,6 +3761,24 @@ input[type=text] {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
 
+.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
+  height: 48px;
+  width: 180px;
+  border-radius: 4px; }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
 .utility-nav-wrapper {
   text-align: right;
   padding: 0 10px 8px 0;
@@ -3913,7 +3865,6 @@ input[type=text] {
   .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
     height: 94px;
     background-image: none; } }
-
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -4097,6 +4048,18 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  size: 10px; }
+
+.grey-horizontal-separator hr {
+  border-color: #9a9a9a; }
+
+.yellow-horizontal-separator hr {
+  border-color: #FFCB05; }
+
 .search-bar-wrapper {
   background: #FFCB05; }
   .search-bar-wrapper .global-search {
@@ -4136,7 +4099,8 @@ input[type=text] {
     border: 0; }
 
 .right-navigation-wrapper {
-  padding: 0; }
+  padding: 0;
+  text-align: center; }
   .right-navigation-wrapper .content-label {
     text-align: center;
     margin: 20px 0; }
@@ -4147,29 +4111,25 @@ input[type=text] {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
       width: 40%; }
-  .right-navigation-wrapper .right-nav-icon-text-wrapper .icon-inside-trans {
-    font-size: 2.250rem;
-    cursor: pointer; }
-  .right-navigation-wrapper .right-nav-link-wrapper {
-    text-align: center; }
-  .right-navigation-wrapper .right-nav-cta-wrapper {
-    background-color: #feedd2;
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-cta-wrapper .right-nav-cta-button-wrapper .CTA-wrapper .button-class {
-      max-width: 100%;
-      width: 100%;
-      margin: 15px 0 15px 0; }
-  .right-navigation-wrapper .right-nav-form-wrapper {
-    text-align: center; }
-    .right-navigation-wrapper .right-nav-form-wrapper input {
-      padding: 10px; }
-    .right-navigation-wrapper .right-nav-form-wrapper .demo-class {
-      width: 100%; }
-    .right-navigation-wrapper .right-nav-form-wrapper input[type=submit], .right-navigation-wrapper .right-nav-form-wrapper input[type=button] {
-      width: 100%;
-      max-width: 100%; }
+  .right-navigation-wrapper .CTA-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
+  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button], .right-navigation-wrapper input[type=text] {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px; }
+  .right-navigation-wrapper .light-orange {
+    background-color: #FEEDD2; }
+  .right-navigation-wrapper .cool-blue {
+    background-color: #F4F7F6; }
+  .right-navigation-wrapper .phone-numbers {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%; }
 
-@media (min-width: 768px) and (max-width: 1025px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .yellow-horizontal-separator {
     display: none; } }
 
@@ -4673,9 +4633,6 @@ input[type=text] {
   .mega-menu-wrapper-desk {
     display: none; } }
 
-body > :last-child {
-  display: none; }
-
 .slf-header-mega-menu1 {
   padding: 0;
   display: inline-flex; }
@@ -5086,6 +5043,43 @@ body > :last-child {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
