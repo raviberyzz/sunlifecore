@@ -32,14 +32,11 @@ JSON Format
     }
     ],
     "iconTextList" : [{
-        "fa-icon":"fa-facebook-square",
-        "share-link":"shareFB()"
+        "fa-icon":"fa-facebook-square"
     },{
-        "fa-icon":"fa-twitter-square",
-        "share-link":"shareTwitter()"
+        "fa-icon":"fa-twitter-square"
     },{
-        "fa-icon":"fa-linkedin-square",
-        "share-link":"shareLinkedIn()"
+        "fa-icon":"fa-linkedin-square"
     }]
 }
 ```

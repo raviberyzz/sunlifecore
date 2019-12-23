@@ -3641,6 +3641,21 @@ input[type=text] {
   background-color: #ffffff;
   color: #424242; }
 
+.cmp-form-options__field--multi-drop-down {
+  border: 1px solid #9a9a9a;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 0 16px;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  background-color: #ffffff;
+  color: #424242; }
+
 input[type=checkbox] {
   margin: 0; }
   input[type=checkbox]::after {
@@ -3677,18 +3692,17 @@ input[type=radio] {
   input[type=radio]:checked {
     background-color: #004C6C; }
 
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
+.cmp-form-options--checkbox .cmp-form-options__field-description {
+  font-weight: 700;
+  margin: 20px 15px 20px 20px;
+  position: relative;
+  vertical-align: middle;
+  top: 2px; }
 
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
+.cmp-form-options--radio .cmp-form-options__field-description {
+  font-weight: 700;
+  margin: 10px;
+  vertical-align: super; }
 
 .form-wrapper {
   text-align: center;
@@ -3733,6 +3747,19 @@ input[type=text] {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
+
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
 
 .button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
   height: 48px;
@@ -4302,7 +4329,7 @@ hr {
   position: static;
   padding: 0; }
 
-.desktop-primary-navigation .dropdown:hover .dropdown-menu {
+.desktop-primary-navigation .drop-down-class, .desktop-primary-navigation .dropdown:hover .dropdown-menu {
   display: block;
   padding: 0;
   margin-top: -8px; }
@@ -4890,59 +4917,6 @@ body > :last-child {
 .mega-menu-icon-wrapper ul {
   margin-top: 0px; }
 
-.slf-header-wrapper .desktop-header-wrapper {
-  height: 100px; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
-    display: none; }
-  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
-    height: 8px;
-    background-color: #FFCB05;
-    padding: 0; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
-    padding: 0 15px 18px 15px;
-    height: 92px;
-    /*Utility Nav starts here*/
-    /* Utility Nav Ends here */ }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
-      float: right;
-      padding: 0; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
-        padding: 0; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
-          padding-right: 0; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
-      padding: 0;
-      /*Logo starts here*/
-      /*Logo end here*/
-      /*Mega Menu strats here*/ }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo {
-        float: left;
-        padding: 0;
-        height: 100%; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo img {
-          width: 149px;
-          height: 36px;
-          cursor: pointer;
-          margin-top: 13px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
-        position: static;
-        float: left;
-        margin: -5px 0 0 58px;
-        /*Mega Menu end here*/ }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .primary-navigation {
-          margin-left: 0px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
-        max-width: 375px;
-        float: right; }
-
-@media (max-width: 1024px) {
-  .desktop-header-wrapper {
-    display: none; } }
-
-@media (min-width: 1025px) {
-  .mobile-header {
-    display: none; } }
-
 .footer-copyright-wrapper {
   background-color: #004C6C;
   padding: 24px 15px; }
@@ -5020,6 +4994,59 @@ body > :last-child {
       .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
 
+.slf-header-wrapper .desktop-header-wrapper {
+  height: 100px; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
+    display: none; }
+  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
+    height: 8px;
+    background-color: #FFCB05;
+    padding: 0; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
+    padding: 0 15px 18px 15px;
+    height: 92px;
+    /*Utility Nav starts here*/
+    /* Utility Nav Ends here */ }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
+      float: right;
+      padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
+        padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
+          padding-right: 0; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+      padding: 0;
+      /*Logo starts here*/
+      /*Logo end here*/
+      /*Mega Menu strats here*/ }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo {
+        float: left;
+        padding: 0;
+        height: 100%; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sunlife-logo img {
+          width: 149px;
+          height: 36px;
+          cursor: pointer;
+          margin-top: 13px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
+        position: static;
+        float: left;
+        margin: -5px 0 0 58px;
+        /*Mega Menu end here*/ }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .primary-navigation {
+          margin-left: 0px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
+        max-width: 375px;
+        float: right; }
+
+@media (max-width: 1024px) {
+  .desktop-header-wrapper {
+    display: none; } }
+
+@media (min-width: 1025px) {
+  .mobile-header {
+    display: none; } }
+
 
 .campaign-header-wrapper .logo-img {
   height: 31px; }
@@ -5035,6 +5062,43 @@ body > :last-child {
     box-shadow: 0 8px 6px -6px #000000; }
   .campaign-header-wrapper .slf-header-logo {
     text-align: center; } }
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
@@ -5115,43 +5179,6 @@ body > :last-child {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
 
 .banner-wrapper .banner-img {
   width: 100%;

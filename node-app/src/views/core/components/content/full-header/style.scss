@@ -67,12 +67,12 @@
         }
     }
 }
-@media(max-width:1024px){
+@media(max-width:$tab-screen-max){
     .desktop-header-wrapper{
         display:none;
     }
 }
-@media(min-width:1025px){
+@media(min-width:$desktop-screen-min){
     .mobile-header{
     display:none;
     }
