@@ -5,7 +5,8 @@ JSON Format
 {
     "title-background-color":"title-wrapper-blue-yellow-rings",
     "heading":"h1",
-    "title-bar-text": "Why join Sun Life?"
+    "title-bar-text": "Why join Sun Life?",
+    "sr-text": "Why join Sun Life?"
 }
 ```
 <!-- classes available for "title-background-color" class are "title-wrapper-yellow-grey-rings", "title-wrapper-yellow-grey", "title-wrapper-blue-yellow-rings", "title-wrapper-blue-yellow" -->
