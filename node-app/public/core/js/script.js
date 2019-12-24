@@ -3036,16 +3036,6 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
-console.log('separator loaded');
-console.log('image loaded');
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-});     
 
 
 
@@ -3057,6 +3047,15 @@ alert("Demo-Onsubmit-Function");
 console.log('utility-nav loaded');
 
 
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+});     
+console.log('separator loaded');
 
 
 console.log('region-language-menu loaded');
@@ -3119,6 +3118,14 @@ $(document).ready(function () {
 
 });
 $(document).ready(function () {
+    var hamburger=$('.hamburger-menu').width();
+    var signbutton=$('.mobile-sign-in-box').width();
+    mobileLogoWidth();
+    function mobileLogoWidth() {       
+    var windowwidth=$(window).width();
+    var logowidth=windowwidth-signbutton-hamburger;
+    $('.slf-header-mobile-logo').width(logowidth);
+    }      
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
         $('.offcanvas-overlay').addClass('active');
@@ -3158,7 +3165,8 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });
-    $(window).resize(function() { 
+    $(window).resize(function() {
+        mobileLogoWidth();
         if ($(window).width() > 1024) {
             $('.container').css({'margin-left':'0'});
             $('body').removeClass('overflow-hidden'); 
@@ -3176,7 +3184,7 @@ $(document).ready(function () {
         else{
         }
     });  
-});     
+});   
 $(document).ready(function(){
    var menuHeight= $('.slf-header-mega-menu2').height();
    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -3199,6 +3207,7 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
+console.log('image loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
