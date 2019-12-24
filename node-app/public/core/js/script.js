@@ -3170,6 +3170,14 @@ $(document).ready(function () {
 
 });
 $(document).ready(function () {
+    var hamburger=$('.hamburger-menu').width();
+    var signbutton=$('.mobile-sign-in-box').width();
+    mobileLogoWidth();
+    function mobileLogoWidth() {       
+    var windowwidth=$(window).width();
+    var logowidth=windowwidth-signbutton-hamburger;
+    $('.slf-header-mobile-logo').width(logowidth);
+    }      
     $("#hamburgerMenu").click(function () { 
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
         $('.offcanvas-overlay').addClass('active');
@@ -3209,7 +3217,8 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });
-    $(window).resize(function() { 
+    $(window).resize(function() {
+        mobileLogoWidth();
         if ($(window).width() > 1024) {
             $('.container').css({'margin-left':'0'});
             $('body').removeClass('overflow-hidden'); 
@@ -3227,7 +3236,7 @@ $(document).ready(function () {
         else{
         }
     });  
-});     
+});   
 $(document).ready(function(){
    var menuHeight= $('.slf-header-mega-menu2').height();
    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -3240,25 +3249,15 @@ $(document).ready(function(){
     );
    });
 console.log('component loaded');
-console.log('separator loaded');
-$(document).ready(function(){
-    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
-    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
-    }
-    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
-        $(this).siblings('.cmp-navigation__group').toggle('collapse');
-        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
-        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
-        if($(this).attr('aria-expanded')=='true'){
-            $(this).attr('aria-expanded',false);
-        }
-        else{
-            $(this).attr('aria-expanded',true)
-        }
-    });
-});
+console.log("left navigation loaded");
+// $(document).ready(function(){
+//     $('.accordion-heading').click(function(){
+//         if($(this).parent().siblings().children().hasClass('.collapse.in'))
+//         {
+//             $(this).parent().siblings().children().hide();
+//         }
+//     });
+// });
 console.log('image loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
