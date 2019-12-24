@@ -1,31 +1,34 @@
-<div class="left-nav-wrapper" role="navigation" aria-label="Left">
-    <div class="first-level">
-        {{first-level}}
-    </div>
-    <ul class="second-level accordion" id="myAccordion">
-        {{#each second-level-list}}
-            <li class="panel">
-                {{#if third-level-present}}
-                    <a href="javascript:void(0)" class="accordion-heading" tabindex="0" aria-expanded="{{aria-expanded}}"  data-target="#{{links}}" data-toggle="collapse" data-parent="#myAccordion">
-                        {{second-level-link-name}}
-                    </a>
-                    <div class="collapse {{collapse}}" id="{{links}}">
-                        <ul class="third-level">
-                            {{#each third-level-list}}
-                                <li>
-                                    <a class="{{selected}}" href="{{third-level-link-url}}">
-                                        {{third-level-link-name}}
-                                    </a>
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                {{else}}
-                    <a class="{{selected}}" href="{{second-level-link-url}}">
-                        {{second-level-link-name}}
-                    </a>
-                {{/if}}
-            </li>
-        {{/each}}
+<nav class="cmp-navigation left-nav-wrapper" role="navigation" aria-label="Left">
+    <ul class="cmp-navigation__group">
+        <li class="cmp-navigation__item cmp-navigation__item--level-0 cmp-navigation__item--active">
+            <a href="javascript:void(0)" title="test" aria-current="page"
+                class="cmp-navigation__item-link">
+                {{zero-level}}
+            </a>
+            <ul class="cmp-navigation__group">
+                {{#each first-level-list}}
+                    <li class="cmp-navigation__item cmp-navigation__item--level-1 {{cmp-navigation__item--active}}">
+                        {{#if second-level-present}}
+                            <a href="javascript:void(0)" class="cmp-navigation__item-link" aria-current="page" tabindex="0" aria-expanded="false" data-toggle="collapse" data-parent=".cmp-navigation__group">
+                                {{first-level-link-name}}
+                            </a>
+                            <ul class="cmp-navigation__group">
+                                {{#each second-level-list}}
+                                    <li class="cmp-navigation__item cmp-navigation__item--level-2 {{cmp-navigation__item--active}}">
+                                        <a class="cmp-navigation__item-link {{selected}}" href="{{second-level-link-url}}" aria-current="page">
+                                            {{second-level-link-name}}
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{else}}
+                            <a class="cmp-navigation__item-link {{selected}}" href="{{first-level-link-url}}">
+                                {{first-level-link-name}}
+                            </a>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+        </li>
     </ul>
-</div>
+</nav>
