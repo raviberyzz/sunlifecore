@@ -1,12 +1,12 @@
 @import '../../../base/core';
 .slf-header-wrapper{
+    .desktop-sign-in{
+        .button-class{
+            display:none;
+        }
+    }
     .desktop-header-wrapper{
         height:100px;
-        .desktop-sign-in{
-            .button-class{
-                display:none;
-            }
-        }
         .yellow-stripe{
             height:8px;
             background-color:$medium-yellow-background;
@@ -55,7 +55,7 @@
                             margin-left: 0px;
                             .menu-content{
                                 padding:0;
-                                margin-top:-10px;
+                                margin-top:-5px;
                             }
                             }
                         }
@@ -69,6 +69,9 @@
                 }
             }
         }
+    }
+    .mobile-header .desktop-region-language-menu-wrapper{
+        display:none;
     }
 }
 @media(max-width:$tab-screen-max){
