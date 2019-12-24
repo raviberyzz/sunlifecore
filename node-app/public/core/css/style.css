@@ -4101,13 +4101,20 @@ hr {
 
 .right-navigation-wrapper {
   padding: 0;
-  text-align: center; }
-  .right-navigation-wrapper .content-label {
-    text-align: center;
-    margin: 20px 0; }
-    .right-navigation-wrapper .content-label p {
-      font-size: 18px;
-      font-weight: 700; }
+  text-align: center;
+  display: table; }
+  .right-navigation-wrapper .lists-wrapper {
+    width: 100%; }
+    .right-navigation-wrapper .lists-wrapper .links {
+      width: 100%; }
+      .right-navigation-wrapper .lists-wrapper .links a {
+        font-weight: 700; }
+      .right-navigation-wrapper .lists-wrapper .links .collapse {
+        display: block !important; }
+    .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
+      display: none; }
+  .right-navigation-wrapper .right-nav-icon-wrapper {
+    width: 100%; }
   .right-navigation-wrapper .yellow-horizontal-separator {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
@@ -4129,10 +4136,14 @@ hr {
     font-weight: 400;
     font-size: 22px;
     line-height: 120%; }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .yellow-horizontal-separator {
-    display: none; } }
+  .right-navigation-wrapper > * {
+    float: left; }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .right-navigation-wrapper .yellow-horizontal-separator {
+      display: none; }
+    .right-navigation-wrapper > * {
+      height: 450px;
+      padding: 15px; } }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
