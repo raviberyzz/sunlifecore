@@ -3040,7 +3040,6 @@ console.log('image loaded');
 
 
 
-
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
@@ -3174,6 +3173,7 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
+console.log('image loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
@@ -3190,9 +3190,10 @@ $(document).ready(function () {
            }
         });
 });
+console.log('container loaded');
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
-
+console.log('breadcrumb loaded');
 
 console.log('breadcrumb loaded');
