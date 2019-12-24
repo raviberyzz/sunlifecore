@@ -3036,16 +3036,6 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
-console.log('separator loaded');
-console.log('image loaded');
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-});     
 
 
 
@@ -3066,24 +3056,7 @@ $(document).ready(function () {
     });
 });     
 console.log('separator loaded');
-$(document).ready(function(){
- $("#explore-menu").hover(
-     function(){
- $("#explore1").addClass("box-class");
- }, function(){
-    $("#explore1").removeClass("box-class");
-    }
- );
-});
-$(document).ready(function(){
-    $("#tools-menu").hover(
-        function(){
-    $("#tools1").addClass("box-class");
-    }, function(){
-       $("#tools1").removeClass("box-class");
-       }
-    );
-   });
+
 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
@@ -3127,6 +3100,22 @@ $(document).ready(function(){
         $('.mobile-header .region-tab').css({'display':'none'});
         $('.mobile-header .language-tab').css({'display':'block'});
     });
+});
+
+$(document).ready(function () {
+   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class');
+   }, function () {
+      $(this).siblings().removeClass('box-class');
+   }
+   );
+
 });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
@@ -3249,5 +3238,5 @@ $(document).ready(function () {
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
-console.log('breadcrumb loaded');
 
+console.log('breadcrumb loaded');
