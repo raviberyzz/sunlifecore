@@ -3,7 +3,6 @@
     border: 3px solid $medium-yellow-background;
     padding: 0;
     display: inline-flex;
-
     .mega-menu2-list {
         padding: 0;
         ul {
@@ -12,7 +11,6 @@
         .accordion-heading {
            display: none;
         }
-
         li {
            
             float: left;
@@ -39,7 +37,6 @@ margin:  20px, 15px, 0px, 0px;
     display: block;
    
 }
-
 .mega-menu2-list ul li{
     width: 100%;
     padding-left: 0;
@@ -47,10 +44,8 @@ margin:  20px, 15px, 0px, 0px;
 .mega-menu2-list ul a {
     font-family: sunlife-sans;
     font-weight: 400;
-    /* color: #003946; */
     font-size: 16px;
-    line-height: 140%;
-    font-weight: normal !important;
+    line-height: 120%;
     display: block;
     box-sizing: border-box;
     padding: 15px 30px;
@@ -66,21 +61,25 @@ margin:  20px, 15px, 0px, 0px;
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    background: #f0ede8;
+    background: $light-orange-20;
     margin: 0;
 }
 .mega-menu2-list ul a:hover, .mega-menu2-list ul a:focus {
-    background: #f0ede8 !important;
+    background:  $light-orange-20;
     width: 100%;
 }
+.dropdown-submenu{
+    .subnav-trigger::after {
+        font-family: FontAwesome;
+        content: "\00a0\f105";
+    }
 }
 
-@media (max-width: 991px) {
+}
+
+@media (max-width: 1024px) {
     .mega-menu-wrapper-desk {
         display: none;
     }
 }
 
-body>:last-child{
-    display: none;
-}

@@ -1,7 +1,7 @@
 @import '../../../base/core';
-
 .right-navigation-wrapper{
     padding: 0;
+    text-align: center;
     .content-label{
         text-align: center;
         margin: 20px 0;
@@ -16,47 +16,35 @@
             width: 40%;
         }
     }
-    .right-nav-icon-text-wrapper{
-        .icon-inside-trans{
-            font-size: 2.250rem;
-            cursor: pointer;
-        }
-    }
-    .right-nav-link-wrapper{
-        text-align: center;
-    }
-    .right-nav-cta-wrapper{
-        background-color: $right-nav-cta-background;
-        text-align: center;
-        .right-nav-cta-button-wrapper{
-            .CTA-wrapper{
-                .button-class{
-                    max-width: 100% ;
-                    width: 100%;
-                    margin: 15px 0 15px 0;
-                }
+    .CTA-wrapper{
+        .button-class{
+                max-width: 100% ;
+                width: 100%;
+                margin: 15px 0 15px 0;
+            }
                 
             }
-        }
-    }
-    .right-nav-form-wrapper{
-        text-align: center;
-        input{
-           
-            padding: 10px;
-        }
-        .demo-class{
-            width: 100%;
-        }
-        input[type=submit],input[type=button]{
+    input[type=submit],input[type=button],input[type=text]{
             width: 100%;
             max-width: 100%;
-        }
+            padding: 10px;
+           
     }
-  
+    .light-orange{
+        background-color: $light-orange-20;
+    }
+    .cool-blue{
+        background-color: $light-cool-blue-color;
+    }
+    .phone-numbers{
+        font-family: 'sunlife-sans';
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 120%; 
+    }
 }
 
-@media (min-width: 768px) and (max-width:1025px)
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .yellow-horizontal-separator{
         display: none;

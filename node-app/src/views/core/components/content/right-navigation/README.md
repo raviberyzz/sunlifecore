@@ -17,10 +17,12 @@ JSON Format
     "text-length":"7",
     "error-message":"Wrong Input",
     "validation-pattern": "parsley-pattern",
+     "input-text-type":"text",
     "button-type":"button",
     "button-value":"search",
     "form-button-class":"primary-blue-button",
      "icon-text-wrapper" : "right-nav-icon-wrapper",
+    "right-nav-background":"light-orange",
     "iconTextList" : [{
         "fa-icon":"fa-newspaper-o",
         "text-input": "Find an advisor",
@@ -70,3 +72,4 @@ JSON Format
     }]
 }
 ```
+<!-- variation of background color light-orange, cool-blue -->

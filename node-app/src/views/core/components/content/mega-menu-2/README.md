@@ -6,7 +6,7 @@ JSON Format
     "mega-menu-2-list":[{
         "href":"javascript(0)",
         "text":"About us overview",
-        "submenu-class":"dropdown-submenu",
+        "submenu-class":"",
         "aria-haspopup":"true"
     },{
         "href":"javascript(0)",
@@ -20,8 +20,41 @@ JSON Format
         },{
             "href":"javascript(0)",
             "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
+        },{
+            "href":"javascript(0)",
+            "text":"About us overview"
         }]
        
+    },{
+        "href":"javascript(0)",
+        "text":"About us overview",
+        "submenu-class":"",
+        "aria-haspopup":"true"
+    },{
+        "href":"javascript(0)",
+        "text":"About us overview",
+        "submenu-class":"",
+        "aria-haspopup":"true"
+    },{
+        "href":"javascript(0)",
+        "text":"About us overview",
+        "submenu-class":"",
+        "aria-haspopup":"true"
     }],
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",

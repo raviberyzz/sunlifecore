@@ -12,4 +12,5 @@ $(document).ready(function () {
       $(this).siblings().removeClass('box-class');
    }
    );
+
 });
