@@ -23,8 +23,6 @@ JSON Format
     
     "navigation":[{
     "navigation-heading":"Explore Product",
-    "navigation-id":"explore1",
-    "navigation-menu-id":"explore-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
@@ -62,8 +60,6 @@ JSON Format
     ]
     },{
     "navigation-heading":"Tools & Resource",
-    "navigation-id":"tools1",
-    "navigation-menu-id":"tools-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
@@ -240,7 +236,7 @@ JSON Format
     }],
     "region" : true,
     "button-wrapper":"button-wrapper",
-    "data-target":"#mySignInModal",
+    "data-target":".sign-in-modal-wrapper",
     "data-toggle":"modal",
     "id":"signin",
     "client-text":"Client sign in",
@@ -263,7 +259,7 @@ JSON Format
 "sign-icon":"fa-user",
 "sign-in-box":"mobile-sign-in-box",
 "mobile-header-link":"https://www.sunlife.ca",
-"data-target":"#mySignInModal",
+"data-target":".sign-in-modal-wrapper",
 "data-toggle":"modal",
 "client-text":"Client sign in",
 "email":"Email/Access ID",
