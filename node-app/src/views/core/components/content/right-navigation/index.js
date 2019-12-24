@@ -1,11 +1,9 @@
-
 $(document).ready(function () {
-    var children1=$('.right-navigation-wrapper').children().length;
-    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
-    var children=children1-children2;
+    function rightNav(){
 
-       $( window ).resize(function() {
+        
         if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+          
             if (children==2){
                 $('.right-navigation-wrapper').children().css('width','50%');
                }
@@ -19,11 +17,14 @@ $(document).ready(function () {
             }
             if (children==5)
             {
-                $('.right-navigation-wrapper').children()[0].css('width','33.33%');
-                $('.right-navigation-wrapper').children()[2].css('width','33.33%');
-                $('.right-navigation-wrapper').children()[4].css('width','33.33%');
-                $('.right-navigation-wrapper').children()[6].css('width','50%');
-                $('.right-navigation-wrapper').children()[8].css('width','50%');
+               
+
+                $('.right-navigation-wrapper').children('div:nth-child(1)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(3)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(5)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(7)').css('width','50%');
+                $('.right-navigation-wrapper').children('div:nth-child(9)').css('width','50%');
+              
             }
             if (children==6)
             {
@@ -35,7 +36,16 @@ $(document).ready(function () {
        {
         $('.right-navigation-wrapper').children().css('width','100%');
        }
+    }
+    rightNav();
+    var children1=$('.right-navigation-wrapper').children().length;
+    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
+    var children=children1-children2;
+       $( window ).resize(function() {
+          rightNav();
+      
       
        });
  
  });
+
