@@ -5,39 +5,21 @@
         position: static;
         padding: 0;
     }
-    .drop-down-class{
-      display: block;
-        padding: 0;
-        margin-top: -8px;
+    .box-class{
+      background-color: $white-shade;
+      padding:15px 24px;
+      z-index: 3000;
+      position: relative;
+      box-shadow: 0px 2px 0px 0px $white-shade;
     }
-    .dropdown:hover .dropdown-menu {
-        @extend .drop-down-class;
-      }
-      .menu-content{
-          position: absolute;
-          margin-top: -8px;
-          
-      }
-      .nav>li>:hover{
-        background-color: $white-shade;
-        box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); 
-        
-      }
       .nav>li>a{
-        background-color: transparent;
-        padding:15px 24px;
+        
+        &:hover{
+          @extend .box-class;
+         
+        }
       }
-      .nav>li>a:hover{
-        background-color: transparent;
-        z-index:9999;
-        padding-bottom: 0;
-        cursor: pointer;
-      }
-      .nav>li>a:hover .dropdown-menu {
-        display: block;
-        padding: 0;
-        margin-top: -8px;
-      }
+ 
       .primary-navigation{
         margin-left: 166px;
         li{
@@ -48,12 +30,20 @@
         font-family: FontAwesome;
         content: " \f107";
     }
-    .box-class{
-      z-index: 9999;
-      padding-bottom: 0 !important;
-      box-shadow: 0 35px 0 0 white, 0 10px 15px 0 rgba(0, 0, 0, 0.25); 
+    .nav-item.open{  
+      background-color: $white-shade;   
+      border-bottom: none;
+      z-index: 1;
+      box-shadow: 0 35px 0px 0px $white-shade, 0 0px 0px 0px $white-shade, 0px 0px 2px 0px rgba(0, 0, 0, 0.25), 0px 10px 15px 0px rgba(0, 0, 0, 0.25);     
+      .menu-content{
+        padding: 0;
+        position: absolute;
     }
-
+    
+    }
+    .nav .open>a{
+      background-color:$white-shade;
+    }  
 }
 
 
