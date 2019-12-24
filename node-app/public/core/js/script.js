@@ -3036,6 +3036,7 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+console.log('image loaded');
 
 
 
@@ -3093,6 +3094,27 @@ $(document).ready(function () {
    }
    );
 
+});
+
+console.log('region-language-menu loaded');
+$(document).ready(function(){
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+    $(".mobile-header .first").click(function(){
+        $('.mobile-header .first').addClass('active');
+        $('.mobile-header .second').removeClass('active');
+        $('.mobile-header #region-tab').css({'display':'block'});
+        $('.mobile-header #language-tab').css({'display':'none'});
+    });
+    $(".mobile-header .second").click(function(){
+        $('.mobile-header .first').removeClass('active');
+        $('.mobile-header .second').addClass('active');
+        $('.mobile-header #region-tab').css({'display':'none'});
+        $('.mobile-header #language-tab').css({'display':'block'});
+    });
 });
 $(document).ready(function () {
     $("#hamburgerMenu").click(function () { 
@@ -3153,19 +3175,8 @@ $(document).ready(function () {
         }
     });  
 });     
-$(document).ready(function(){
-   var menuHeight= $('.slf-header-mega-menu2').height();
-   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-    $( ".dropdown-submenu, .dropdown-menu" ).hover(
-        function(){
-            $('.slf-header-mega-menu2').height(submenuHeight+5);
-    },function(){
-      $('.slf-header-mega-menu2').height(menuHeight);
-       }
-    );
-   });
-console.log('separator loaded');
 console.log('component loaded');
+console.log('separator loaded');
 console.log("left navigation loaded");
 // $(document).ready(function(){
 //     $('.accordion-heading').click(function(){
@@ -3192,8 +3203,10 @@ $(document).ready(function () {
            }
         });
 });
+console.log('container loaded');
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
+console.log('breadcrumb loaded');
 
 console.log('breadcrumb loaded');
