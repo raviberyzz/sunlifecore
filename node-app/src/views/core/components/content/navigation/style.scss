@@ -1,5 +1,13 @@
 @import '../../../base/core';
-
+.icon-display-none{
+  display: none;
+}
+.icon-dislay-visible{
+  display: block;
+}
+.span-yellow-border{
+  border-bottom: 2px solid $medium-yellow-background;
+}
 .desktop-primary-navigation{
     .navigation{
         position: static;
@@ -44,6 +52,27 @@
     .nav .open>a{
       background-color:$white-shade;
     }  
+}
+
+.desktop-primary-navigation-yellow{
+  .nav-item:hover{
+    background: $primary-yellow-background ;
+    text-decoration: none;
+    font-style: normal;
+    z-index:9999;
+    box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25);
+  }
+  .nav>li>a:hover{
+      background: $primary-yellow-background ;
+      text-decoration: none;
+      font-style: normal;
+      z-index:9999;
+      box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25);
+}
+
+}
+body>:last-child{
+  display: none;
 }
 
 

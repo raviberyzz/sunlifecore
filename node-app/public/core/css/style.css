@@ -3866,6 +3866,7 @@ input[type=text] {
     height: 94px;
     background-image: none; } }
 
+
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -4047,7 +4048,6 @@ input[type=text] {
 @media (min-width: 1025px) {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
-
 
 hr {
   margin-top: 40px;
@@ -4322,6 +4322,15 @@ hr {
   .mobile-region-language-menu-wrapper {
     display: none; } }
 
+.icon-display-none {
+  display: none; }
+
+.icon-dislay-visible {
+  display: block; }
+
+.span-yellow-border {
+  border-bottom: 2px solid #FFCB05; }
+
 .desktop-primary-navigation .navigation {
   position: static;
   padding: 0; }
@@ -4353,6 +4362,23 @@ hr {
 
 .desktop-primary-navigation .nav .open > a {
   background-color: #ffffff; }
+
+.desktop-primary-navigation-yellow .nav-item:hover {
+  background: #EAAB00;
+  text-decoration: none;
+  font-style: normal;
+  z-index: 9999;
+  box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25); }
+
+.desktop-primary-navigation-yellow .nav > li > a:hover {
+  background: #EAAB00;
+  text-decoration: none;
+  font-style: normal;
+  z-index: 9999;
+  box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25); }
+
+body > :last-child {
+  display: none; }
 
 .overflow-hidden {
   overflow: hidden; }
@@ -4606,10 +4632,8 @@ hr {
   .slf-header-mega-menu2 .mega-menu2-list ul a {
     font-family: sunlife-sans;
     font-weight: 400;
-    /* color: #003946; */
     font-size: 16px;
-    line-height: 140%;
-    font-weight: normal !important;
+    line-height: 120%;
     display: block;
     box-sizing: border-box;
     padding: 15px 30px;
@@ -4622,13 +4646,16 @@ hr {
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    background: #f0ede8;
+    background: #FEEDD2;
     margin: 0; }
   .slf-header-mega-menu2 .mega-menu2-list ul a:hover, .slf-header-mega-menu2 .mega-menu2-list ul a:focus {
-    background: #f0ede8 !important;
+    background: #FEEDD2;
     width: 100%; }
+  .slf-header-mega-menu2 .dropdown-submenu .subnav-trigger::after {
+    font-family: FontAwesome;
+    content: "\00a0\f105"; }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .mega-menu-wrapper-desk {
     display: none; } }
 
@@ -4636,7 +4663,7 @@ hr {
   padding: 0;
   display: inline-flex; }
   .slf-header-mega-menu1 .quick-link {
-    width: 200px;
+    width: 214px;
     background: #D7D7D7;
     display: table-cell;
     float: none;
