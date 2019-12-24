@@ -1,0 +1,53 @@
+@import '../../../base/core';
+.right-navigation-wrapper{
+    padding: 0;
+    text-align: center;
+    .content-label{
+        text-align: center;
+        margin: 20px 0;
+        p{
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+    .yellow-horizontal-separator{
+        width: 100%;
+        .horizontal-middle-align{
+            width: 40%;
+        }
+    }
+    .CTA-wrapper{
+        .button-class{
+                max-width: 100% ;
+                width: 100%;
+                margin: 15px 0 15px 0;
+            }
+                
+            }
+    input[type=submit],input[type=button],input[type=text]{
+            width: 100%;
+            max-width: 100%;
+            padding: 10px;
+           
+    }
+    .light-orange{
+        background-color: $light-orange-20;
+    }
+    .cool-blue{
+        background-color: $light-cool-blue-color;
+    }
+    .phone-numbers{
+        font-family: 'sunlife-sans';
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 120%; 
+    }
+}
+
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
+{
+    .yellow-horizontal-separator{
+        display: none;
+    }
+   
+}

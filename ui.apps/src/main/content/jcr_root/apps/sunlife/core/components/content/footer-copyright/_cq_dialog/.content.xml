@@ -14,7 +14,7 @@
                     <title
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Text"
+                        fieldDescription="Please specify title"
                         fieldLabel="Title"
                         name="./title"
                         rootPath="/content"/>
@@ -22,6 +22,7 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please specify Copyright text"
                         fieldLabel="Copyright Text"
                         name="./copyrightText"
                         useFixedInlineToolbar="{Boolean}true"/>
@@ -29,6 +30,7 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please specify SLF text"
                         fieldLabel="SLF Text"
                         name="./slfText"
                         useFixedInlineToolbar="{Boolean}true"/>
@@ -49,10 +51,9 @@
                                         <label
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldDescription="Text"
+                                            fieldDescription="Please specify footer labels"
                                             fieldLabel="Label"
-                                            name="./label"
-                                            rootPath="/content"/>
+                                            name="./label"                                          
                                         <link
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
@@ -63,6 +64,7 @@
                                         <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldDescription="Please specify target to open in same tab or new tab"
                                             fieldLabel="Target"
                                             name="./target">
                                             <items jcr:primaryType="nt:unstructured">

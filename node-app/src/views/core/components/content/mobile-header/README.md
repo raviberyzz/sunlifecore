@@ -12,7 +12,7 @@ JSON Format
 "sign-icon":"fa-user",
 "sign-in-box":"mobile-sign-in-box",
 "mobile-header-link":"https://www.sunlife.ca",
-"data-target":"#mySignInModal",
+"data-target":".sign-in-modal-wrapper",
 "data-toggle":"modal",
 "client-text":"Client sign in",
 "email":"Email/Access ID",
@@ -38,6 +38,8 @@ JSON Format
         "text" : "Language",
         "target-tab" : "#language-tab"
     }],
+    "region-title" : "Regions",
+    "language-title" : "Languages - Canada",
     "region-present" : "",
     "language-present" : "",
     "region-active" : "",
@@ -161,7 +163,8 @@ JSON Format
         "selected" : "chinese",
         "separator-color" : "grey-horizontal-separator",
         "wrapper-separator":"region-separator"
-    }]
+    }],
+    "language-region":"language-region"
 }
 ```
 <!-- navigation-menu is for more 2nd or 3rd tier navigation and subnav is only a link -->

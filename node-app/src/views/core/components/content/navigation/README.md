@@ -2,12 +2,14 @@
 JSON Format
 ```
 {
+    "desktop-navigation-wrapper":"desktop-primary-navigation-yellow",
     "navigation":[{
     "navigation-heading":"Explore Product",
-    "navigation-id":"explore1",
-    "navigation-menu-id":"explore-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
+    "nav-icon":"fa-facebook",
+     "nav-icon-display":"icon-display-none",
+     "span-border":"",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
@@ -43,10 +45,9 @@ JSON Format
     ]
     },{
     "navigation-heading":"Tools & Resource",
-    "navigation-id":"tools1",
-    "navigation-menu-id":"tools-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
+   "nav-icon-display":"icon-display-none",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
