@@ -1,16 +1,16 @@
 <header>
   <div class="slf-header-wrapper">
+    <div class="desktop-sign-in">
+      {{>core-components-content-sign-in-modal}}
+    </div>
     <div class="desktop-header-wrapper">
-      <div class="desktop-region-bar">
-        {{>core-components-content-region-language-menu}}
-      </div>
       <div class="desktop-search-bar">
         {{>core-components-content-search-bar}}
       </div>
-      <div class="col-xs-12 yellow-stripe">
+       <div class="desktop-region-bar">
+        {{>core-components-content-region-language-menu}}
       </div>
-      <div class="desktop-sign-in">
-        {{>core-components-content-sign-in-modal}}
+      <div class="col-xs-12 yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content">
         <div class="col-xs-12 {{desktop-utility-nav}}">

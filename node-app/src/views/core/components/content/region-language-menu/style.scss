@@ -265,7 +265,7 @@
     }
 }
 
-@media (min-width: $tab-screen-max) {
+@media (min-width: $desktop-screen-min) {
     .mobile-region-language-menu-wrapper {
         display: none;
     }

@@ -12,10 +12,7 @@ JSON Format
         "accordion" : false
         },{
             "LinkText": "Canada",
-            "accordion" : true,
-            "aria-expanded" : "true",
-            "links" : "links1",
-            "collapse" : "in",
+            "accordion" : true
             "list" : [{
                 "link" : "https://www.sunlife.ca",
                 "text" : "Sun Life Financial Canada",
@@ -43,8 +40,6 @@ JSON Format
         },{
             "LinkText": "India",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links2",
             "list" : [{
                 "link" : "https://lifeinsurance.adityabirlacapital.com",
                 "text" : "Birla Sun Life"
@@ -73,8 +68,6 @@ JSON Format
         },{
             "LinkText": "Philippines",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links3",
             "list" : [{
                 "link" : "http://www.sunlife.com.ph",
                 "text" : "Sun Life Financial Philippines"
@@ -92,8 +85,6 @@ JSON Format
         },{
             "LinkText": "United States",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links4",
             "list" : [{
                 "link" : "http://www.sunlife.com/us",
                 "text" : "Sun Life Financial United States"
@@ -144,9 +135,6 @@ JSON Format
         },{
             "LinkText": "Canada",
             "accordion" : true,
-            "aria-expanded" : "true",
-            "links" : "mob-links1",
-            "collapse" : "in",
             "list" : [{
                 "link" : "https://www.sunlife.ca",
                 "text" : "Sun Life Financial Canada",
@@ -174,8 +162,6 @@ JSON Format
         },{
             "LinkText": "India",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links2",
             "list" : [{
                 "link" : "https://lifeinsurance.adityabirlacapital.com",
                 "text" : "Birla Sun Life"
@@ -204,8 +190,6 @@ JSON Format
         },{
             "LinkText": "Philippines",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links3",
             "list" : [{
                 "link" : "http://www.sunlife.com.ph",
                 "text" : "Sun Life Financial Philippines"
@@ -223,8 +207,6 @@ JSON Format
         },{
             "LinkText": "United States",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links4",
             "list" : [{
                 "link" : "http://www.sunlife.com/us",
                 "text" : "Sun Life Financial United States"

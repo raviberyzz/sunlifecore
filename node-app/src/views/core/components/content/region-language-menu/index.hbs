@@ -1,7 +1,7 @@
-<div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
+<div class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
     <div class="cross-btn">
-        <a data-toggle="collapse" id="sunLanguageCrossBtn" href="#sun-language">
-            <span class="fa fa-remove collapse-x" title="Close Region and language selection page" tabindex="0"></span>
+        <a data-toggle="collapse" href=".desktop-region-language-menu-wrapper">
+            <span class="sunLanguageCrossBtn fa fa-remove collapse-x" title="Close Region and language selection page" tabindex="0"></span>
         </a>
     </div>
     {{#if region}}
@@ -17,8 +17,8 @@
                                 {{#if accordion}}
                                     <li>
                                         <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse" tabindex="0">{{ LinkText }}</h3>
-                                            <div class="collapse {{collapse}}" id="{{links}}">
+                                            <h3 class="accordion-heading" aria-expanded="false"  data-toggle="collapse" tabindex="0">{{ LinkText }}</h3>
+                                            <div class="accordion-list collapse">
                                                 <ul class="list-unstyled">
                                                     {{#each list}}
                                                     <li class={{selected}}>
@@ -72,23 +72,23 @@
         <a tabindex="0">Back</a>
     </div>
     <div class="col-xs-12 slf-tab-region ">
-        <div class="col-xs-6 slf-tab first {{region-active}} {{region-present}}" data-target="#region-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab first {{region-active}} {{region-present}}" data-target=".region-tab" data-toggle="tab" tabindex="0">
             Regions
         </div>
-        <div class="col-xs-6 slf-tab second {{language-active}} {{language-present}}" data-target="#language-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab second {{language-active}} {{language-present}}" data-target=".language-tab" data-toggle="tab" tabindex="0">
             Language
         </div>
     </div>
     <div class="col-xs-12 tab-content">
-        <div id="region-tab" class="tab-pane region-tab {{region-active}}">
+        <div  class="tab-pane region-tab {{region-active}}">
             <ul class="list-unstyled">
                 {{#each mobile-region-list}}
                    {{#each parent-list}}
                         {{#if accordion}}
                             <li>
                                 <div class="region-link">
-                                    <h3 class="accordion-heading" aria-expanded="{{aria-expanded}}" data-parent=".region-link" data-target="#{{links}}" data-toggle="collapse">{{ LinkText }}</h3>>
-                                    <div class="collapse {{collapse}}" id="{{links}}">
+                                    <h3 class="accordion-heading" aria-expanded="false" data-toggle="collapse">{{ LinkText }}</h3>
+                                    <div class="accordion-list collapse ">
                                         <ul class="list-unstyled accordion-list">
                                             {{#each list}}
                                             <li class={{selected}}>
@@ -108,7 +108,7 @@
                 {{/each}}
             </ul>
         </div>
-        <div id="language-tab" class="tab-pane language-tab {{language-active}}">
+        <div class="tab-pane language-tab {{language-active}}">
             <ul class="list-unstyled">
                 {{#each language-list}}
                     {{#if chinese}}
