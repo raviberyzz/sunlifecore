@@ -36,7 +36,6 @@
             }
         }
         .slf-header-mobile-logo {
-            width: calc(100% - 114px);
             margin: 0;
             text-align: center;
             padding: 0;
@@ -55,7 +54,6 @@
             }
         }
         .mobile-sign-in-box{
-            width:56px;
             background:$medium-yellow-background;
             text-align: center;
         }
@@ -64,11 +62,13 @@
             font-size: 1.5rem;
             padding: 7px;
             margin:0;
+            min-width:56px;
         }
         .mobile-signin-text {
             font-size: 0.75rem;
             font-weight: bold;
             text-align: center;
+            display:table-row;
         }
     }
     /* Mobile Header End */
