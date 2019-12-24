@@ -1,10 +1,10 @@
-<div class="desktop-primary-navigation">
+<div class={{desktop-navigation-wrapper}}>
   <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth primary-navigation" role="navigation"
     aria-label="Main">
     {{#each navigation}}
     <li class="dropdown nav-item navigation">
       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger" href="/ca/Explore+products?vgnLocale=en_CA">
-        <i class="fas fa-adjust {{nav-icon-display}}"></i><span class="nav-item-heading {{span-border}}">{{navigation-heading}}</span></a>
+        <i class="fa {{nav-icon}} {{nav-icon-display}}"></i><span class="nav-item-heading {{span-border}}">{{navigation-heading}}</span></a>
       <div role="menu" class="dropdown-menu menu-content">
         {{>core-components-content-mega-menu}}
       </div>

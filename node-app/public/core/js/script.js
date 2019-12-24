@@ -3165,6 +3165,7 @@ $(document).ready(function(){
     );
    });
 console.log('separator loaded');
+console.log('component loaded');
 console.log("left navigation loaded");
 // $(document).ready(function(){
 //     $('.accordion-heading').click(function(){
@@ -3174,7 +3175,6 @@ console.log("left navigation loaded");
 //         }
 //     });
 // });
-console.log('component loaded');
 console.log('image loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {

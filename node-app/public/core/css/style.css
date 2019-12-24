@@ -4326,6 +4326,7 @@ hr {
   display: none; }
 
 .icon-dislay-visible {
+  padding-right: 5px;
   display: block; }
 
 .span-yellow-border {
@@ -4921,6 +4922,21 @@ body > :last-child {
 .mega-menu-icon-wrapper ul {
   margin-top: 0px; }
 
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
+
 .slf-header-wrapper .desktop-header-wrapper {
   height: 100px; }
   .slf-header-wrapper .desktop-header-wrapper .desktop-sign-in .button-class {
@@ -5055,58 +5071,6 @@ body > :last-child {
         padding-top: 16px; } }
 
 
-.campaign-header-wrapper .logo-img {
-  height: 31px; }
-
-.campaign-header-wrapper .campaign-header {
-  position: relative;
-  height: 100px;
-  border-top: 8px solid #FFCB05; }
-
-@media (max-width: 1024px) {
-  .campaign-header-wrapper .campaign-header {
-    background: #f8f8f8;
-    box-shadow: 0 8px 6px -6px #000000; }
-  .campaign-header-wrapper .slf-header-logo {
-    text-align: center; } }
-
-.button-class {
-  line-height: 30px; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
-
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
   .breadcrumb-section .social-link-icon-wrapper li {
@@ -5186,6 +5150,43 @@ body > :last-child {
     display: none; }
   .breadcrumb-author {
     display: block; } }
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .banner-wrapper .banner-img {
   width: 100%;

@@ -2,10 +2,12 @@
 JSON Format
 ```
 {
+    "desktop-navigation-wrapper":"desktop-primary-navigation-yellow",
     "navigation":[{
     "navigation-heading":"Explore Product",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
+    "nav-icon":"fa-facebook",
      "nav-icon-display":"icon-display-none",
      "span-border":"",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
