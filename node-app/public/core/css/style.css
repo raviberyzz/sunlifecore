@@ -5177,7 +5177,8 @@ hr {
   .breadcrumb-wrapper-light-cool-blue .social-link-icon-wrapper, .breadcrumb-wrapper-cool-blue .social-link-icon-wrapper {
     cursor: pointer; }
     .breadcrumb-wrapper-light-cool-blue .social-link-icon-wrapper span, .breadcrumb-wrapper-cool-blue .social-link-icon-wrapper span {
-      color: #004C6C; }
+      color: #004C6C;
+      font-size: 1.25rem; }
   .breadcrumb-wrapper-light-cool-blue .social-links, .breadcrumb-wrapper-cool-blue .social-links {
     float: left;
     margin: 0; }
@@ -5195,7 +5196,8 @@ hr {
   .breadcrumb-wrapper-cool-blue .side-text {
     color: #ffffff; }
   .breadcrumb-wrapper-cool-blue .social-link-icon-wrapper span {
-    color: #ffffff; }
+    color: #ffffff;
+    font-size: 1.25rem; }
 
 @media (max-width: 1024px) {
   .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue, .breadcrumb-wrapper-cool-blue {
