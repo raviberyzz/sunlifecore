@@ -104,7 +104,6 @@ JSON Format
     }
     ],
     "desktop-sign-button":"desktop-sign-button",
-    "id":"signinbutton",
     "redirection-link": "javascript:void(0)",
     "fa-icon": "fa-user",
     "form-text-class":"demo-class",
@@ -235,7 +234,6 @@ JSON Format
 "button-wrapper-class":"sign-in-wrapper",
 "data-target":"#mySignInModal",
 "data-toggle":"modal",
-"id":"signin",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
 "sign-in-text":"Ouvrir une session",
 "sign-icon":"fa-user",
