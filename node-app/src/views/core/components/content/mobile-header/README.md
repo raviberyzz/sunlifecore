@@ -12,7 +12,7 @@ JSON Format
 "sign-icon":"fa-user",
 "sign-in-box":"mobile-sign-in-box",
 "mobile-header-link":"https://www.sunlife.ca",
-"data-target":"#mySignInModal",
+"data-target":".sign-in-modal-wrapper",
 "data-toggle":"modal",
 "client-text":"Client sign in",
 "email":"Email/Access ID",

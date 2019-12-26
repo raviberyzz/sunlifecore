@@ -3,7 +3,6 @@
 JSON Format
 ```
 {
-    "content-label":"Tools & Resource",
      "separator-wrapper" : "yellow-horizontal-separator",
     "button-class": "primary-blue-button",
     "button-text": "Button",
@@ -60,15 +59,18 @@ JSON Format
             "description-input" : ""
         }
     ],
-    "right-nav-links":[{
-        "href" : "javascript:void(0)",
-        "text" : "Life Insurance"
+   "list-wrapper-class": "lists-wrapper",
+    "LinkText": "Quick Link",
+    "link-id":"link1",
+    "list" : [{
+        "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
+        "text" : "Sign in / Register"
     },{
-        "href" : "javascript:void(0)",
-        "text" : "Mortgage Protection insurance"
+        "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
+        "text" : "Submit or track a claim"
     },{
-        "href" : "javascript:void(0)",
-        "text" : "Travel Insurance"
+        "link" : "https://www.sunlife.ca/ca/Support/Find+a+form?vgnLocale=en_CA",
+        "text" : "Find a form"
     }]
 }
 ```

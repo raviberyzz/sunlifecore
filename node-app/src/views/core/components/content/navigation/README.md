@@ -45,8 +45,6 @@ JSON Format
     ]
     },{
     "navigation-heading":"Tools & Resource",
-    "navigation-id":"tools1",
-    "navigation-menu-id":"tools-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
    "nav-icon-display":"icon-display-none",

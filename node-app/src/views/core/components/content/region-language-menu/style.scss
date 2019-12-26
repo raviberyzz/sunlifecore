@@ -119,6 +119,7 @@
             }
         }
         .grey-horizontal-separator {
+            margin-bottom: 90px;
             .horizontal-middle-align {
                 float: left;
                 margin-left: -72px;
@@ -126,7 +127,6 @@
             }
         }
         .chinese {
-            margin-top: 90px;
             a {
                 font-weight: 400;
             }
@@ -265,7 +265,7 @@
     }
 }
 
-@media (min-width: $tab-screen-max) {
+@media (min-width: $desktop-screen-min) {
     .mobile-region-language-menu-wrapper {
         display: none;
     }

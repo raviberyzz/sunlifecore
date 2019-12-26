@@ -20,13 +20,14 @@ JSON Format
     "srch" : true,
     "region" : true,
     "desktop-mega-menu":"desktop-mega-menu",
-    
+    "desktop-navigation-wrapper":"desktop-primary-navigation",
     "navigation":[{
     "navigation-heading":"Explore Product",
-    "navigation-id":"explore1",
-    "navigation-menu-id":"explore-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
+    "nav-icon":"fa-facebook",
+    "nav-icon-display":"icon-display-none",
+    "span-border":"",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
@@ -62,10 +63,11 @@ JSON Format
     ]
     },{
     "navigation-heading":"Tools & Resource",
-    "navigation-id":"tools1",
-    "navigation-menu-id":"tools-menu",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
+    "nav-icon":"fa-facebook",
+    "nav-icon-display":"icon-display-none",
+    "span-border":"",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
@@ -105,7 +107,6 @@ JSON Format
     "id":"signinbutton",
     "redirection-link": "javascript:void(0)",
     "fa-icon": "fa-user",
-    "form-text-id":"demo-id",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
     "place-holder" : "Enter Details",
@@ -127,9 +128,6 @@ JSON Format
         },{
             "LinkText": "Canada",
             "accordion" : true,
-            "aria-expanded" : "true",
-            "links" : "links1",
-            "collapse" : "in",
             "list" : [{
                 "link" : "https://www.sunlife.ca",
                 "text" : "Sun Life Financial Canada",
@@ -157,8 +155,6 @@ JSON Format
         },{
             "LinkText": "India",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links2",
             "list" : [{
                 "link" : "https://lifeinsurance.adityabirlacapital.com",
                 "text" : "Birla Sun Life"
@@ -187,8 +183,6 @@ JSON Format
         },{
             "LinkText": "Philippines",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links3",
             "list" : [{
                 "link" : "http://www.sunlife.com.ph",
                 "text" : "Sun Life Financial Philippines"
@@ -206,8 +200,6 @@ JSON Format
         },{
             "LinkText": "United States",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "links4",
             "list" : [{
                 "link" : "http://www.sunlife.com/us",
                 "text" : "Sun Life Financial United States"
@@ -238,33 +230,17 @@ JSON Format
         "selected" : "chinese",
         "separator-wrapper" : "grey-horizontal-separator"
     }],
-    "region" : true,
-    "button-wrapper":"button-wrapper",
-    "data-target":"#mySignInModal",
-    "data-toggle":"modal",
-    "id":"signin",
-    "client-text":"Client sign in",
-    "email":"Email/Access ID",
-    "remember-text":"Remember me",
-    "password":"Password",
-    "sign-help":"Sign-in help",
-    "register":"Register",
-    "agree":"By signing in, you agree to these",
-    "terms":"terms and conditions.",
-    "plan-advisor-text":"Plan sponsors and advisors",
-    "value":"sign in",
-    "img-tag":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png",
-    "img-text-1":"For the best mobile experience",
-    "img-text-2":"download the my Sun Lifeapp",
+    "language-region":"language-region",    
 "button-type": "button",
 "button-wrapper-class":"sign-in-wrapper",
+"data-target":"#mySignInModal",
+"data-toggle":"modal",
+"id":"signin",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
-"sign-in-text":"Sign in",
+"sign-in-text":"Ouvrir une session",
 "sign-icon":"fa-user",
 "sign-in-box":"mobile-sign-in-box",
 "mobile-header-link":"https://www.sunlife.ca",
-"data-target":"#mySignInModal",
-"data-toggle":"modal",
 "client-text":"Client sign in",
 "email":"Email/Access ID",
 "remember-text":"Remember me",
@@ -301,9 +277,6 @@ JSON Format
         },{
             "LinkText": "Canada",
             "accordion" : true,
-            "aria-expanded" : "true",
-            "links" : "mob-links1",
-            "collapse" : "in",
             "list" : [{
                 "link" : "https://www.sunlife.ca",
                 "text" : "Sun Life Financial Canada",
@@ -331,8 +304,6 @@ JSON Format
         },{
             "LinkText": "India",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links2",
             "list" : [{
                 "link" : "https://lifeinsurance.adityabirlacapital.com",
                 "text" : "Birla Sun Life"
@@ -361,8 +332,6 @@ JSON Format
         },{
             "LinkText": "Philippines",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links3",
             "list" : [{
                 "link" : "http://www.sunlife.com.ph",
                 "text" : "Sun Life Financial Philippines"
@@ -380,8 +349,6 @@ JSON Format
         },{
             "LinkText": "United States",
             "accordion" : true,
-            "aria-expanded" : "false",
-            "links" : "mob-links4",
             "list" : [{
                 "link" : "http://www.sunlife.com/us",
                 "text" : "Sun Life Financial United States"
