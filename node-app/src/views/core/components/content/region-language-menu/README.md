@@ -12,7 +12,7 @@ JSON Format
         "accordion" : false
         },{
             "LinkText": "Canada",
-            "accordion" : true
+            "accordion" : true,
             "list" : [{
                 "link" : "https://www.sunlife.ca",
                 "text" : "Sun Life Financial Canada",
