@@ -3058,10 +3058,28 @@ $(document).ready(function () {
 console.log('separator loaded');
 
 $(document).ready(function () {
-    function rightNav(){
+    var children1=$('.right-navigation-wrapper').children().length;
+    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
+    var children=children1-children2;
+    rightNav();
+       $( window ).resize(function() {
+          rightNav();
+      
+      
+       });
+       function rightNav(){
 
         
         if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+            var maxHeight = -1;
+
+            $('.right-navigation-wrapper').children().each(function() {
+              maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+            });
+         
+            $('.right-navigation-wrapper').children().each(function() {
+              $(this).height(maxHeight);
+            });
           
             if (children==2){
                 $('.right-navigation-wrapper').children().css('width','50%');
@@ -3077,7 +3095,7 @@ $(document).ready(function () {
             if (children==5)
             {
                
-
+    
                 $('.right-navigation-wrapper').children('div:nth-child(1)').css('width','33.33%');
                 $('.right-navigation-wrapper').children('div:nth-child(3)').css('width','33.33%');
                 $('.right-navigation-wrapper').children('div:nth-child(5)').css('width','33.33%');
@@ -3094,21 +3112,14 @@ $(document).ready(function () {
        else
        {
         $('.right-navigation-wrapper').children().css('width','100%');
+        $('.right-navigation-wrapper').children().css('height','auto');
        }
     }
-    rightNav();
-    var children1=$('.right-navigation-wrapper').children().length;
-    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
-    var children=children1-children2;
-       $( window ).resize(function() {
-          rightNav();
-      
-      
-       });
+    
+    
  
  });
-
-
+ 
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.nav-select').parent().parent().addClass('in');

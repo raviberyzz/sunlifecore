@@ -4179,7 +4179,6 @@ hr {
     .right-navigation-wrapper .yellow-horizontal-separator {
       display: none; }
     .right-navigation-wrapper > * {
-      height: 450px;
       padding: 15px; } }
 
 .desktop-region-language-menu-wrapper {
