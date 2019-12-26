@@ -23,6 +23,11 @@
                             }
                         }
                     }
+                    .cmp-navigation__item--active{
+                        border-bottom: 2px solid $medium-yellow-background;
+                        font-weight: 700;
+                        text-decoration: none;
+                    }
                     .cmp-navigation__item-link{
                         padding: 0;
                         font-size: 1rem;
@@ -40,10 +45,6 @@
                         padding-right: 10px;
                     }
                 }
-                .panel{
-                        margin: 0;
-                        border: 0;
-                    }
             }
         }
     }
