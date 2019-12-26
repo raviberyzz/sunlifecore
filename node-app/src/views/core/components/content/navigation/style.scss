@@ -10,6 +10,7 @@
   border-bottom: 2px solid $medium-yellow-background;
 }
 .desktop-primary-navigation{
+  margin-left: 166px;
     .navigation{
         position: static;
         padding: 0;
@@ -26,13 +27,6 @@
         &:hover{
           @extend .box-class;
          
-        }
-      }
- 
-      .primary-navigation{
-        margin-left: 166px;
-        li{
-            position: static;
         }
       }
       .navbar-new .nav-item>a:after {

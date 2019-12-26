@@ -365,21 +365,6 @@ JSON Format
             "accordion" : false
         }]
     }],
-    "language-list" : [{
-        "text" : "English",
-        "selected" : "nav-select"
-    },{
-        "link" : "https://www.sunlife.ca/ca?vgnLocale=fr_CA",
-        "text" : "Français",
-        "selected" : "not-bold"
-    },{
-        "link" : "https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
-        "text" : "欢迎访问永明金融网页 ",
-        "chinese" : true,
-        "selected" : "chinese",
-        "separator-color" : "grey-horizontal-separator",
-        "wrapper-separator":"region-separator"
-    }],
     "button-class": "signIn-button",
     "button-text":"Sign in"
 }
