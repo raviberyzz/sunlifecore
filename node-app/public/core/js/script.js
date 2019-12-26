@@ -3247,7 +3247,6 @@ $(document).ready(function(){
        }
     );
    });
-console.log('separator loaded');
 console.log('component loaded');
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
@@ -3268,6 +3267,7 @@ $(document).ready(function(){
     });
 });
 console.log('image loaded');
+console.log('container loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
@@ -3295,8 +3295,3 @@ $(document).ready(function () {
             $("#language-btn").attr('aria-expanded','false');
         });
 });
-console.log('footer-copyright loaded');
-console.log('container loaded');
-
-
-console.log('breadcrumb loaded');
