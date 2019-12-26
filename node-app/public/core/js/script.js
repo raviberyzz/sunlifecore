@@ -3036,7 +3036,10 @@ function removeParam(key, sourceURL) {
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1ff6fc664df3c38ea0b8711a900ee2fccd552aa5
 
 
 
@@ -3236,11 +3239,19 @@ $(document).ready(function () {
         else{
         }
     });  
+<<<<<<< HEAD
+});     
+$(document).ready(function(){
+   var menuHeight= $('.slf-header-mega-menu2').height();
+   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+    $( ".dropdown-submenu, .dropdown-menu" ).hover(
+=======
 });   
 $(document).ready(function(){
    var menuHeight= $('.slf-header-mega-menu2').height();
    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
     $( ".dropdown-submenu").hover(
+>>>>>>> 1ff6fc664df3c38ea0b8711a900ee2fccd552aa5
         function(){
             $('.slf-header-mega-menu2').height(submenuHeight+5);
     },function(){
@@ -3248,6 +3259,10 @@ $(document).ready(function(){
        }
     );
    });
+<<<<<<< HEAD
+console.log('separator loaded');
+=======
+>>>>>>> 1ff6fc664df3c38ea0b8711a900ee2fccd552aa5
 console.log('component loaded');
 console.log("left navigation loaded");
 // $(document).ready(function(){
@@ -3259,6 +3274,7 @@ console.log("left navigation loaded");
 //     });
 // });
 console.log('image loaded');
+console.log('container loaded');
 console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
@@ -3287,6 +3303,11 @@ $(document).ready(function () {
         });
 });
 console.log('footer-copyright loaded');
+<<<<<<< HEAD
+
+
+=======
 
 console.log('container loaded');
+>>>>>>> 1ff6fc664df3c38ea0b8711a900ee2fccd552aa5
 console.log('breadcrumb loaded');
