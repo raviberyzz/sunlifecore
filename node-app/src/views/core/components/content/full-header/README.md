@@ -237,7 +237,7 @@ JSON Format
 "data-toggle":"modal",
 "id":"signin",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
-"sign-in-text":"Sign in",
+"sign-in-text":"Ouvrir une session",
 "sign-icon":"fa-user",
 "sign-in-box":"mobile-sign-in-box",
 "mobile-header-link":"https://www.sunlife.ca",
