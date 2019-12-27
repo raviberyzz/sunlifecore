@@ -4208,8 +4208,7 @@ hr {
 
 .right-navigation-wrapper {
   padding: 0;
-  text-align: center;
-  display: table; }
+  text-align: center; }
   .right-navigation-wrapper .lists-wrapper {
     width: 100%; }
     .right-navigation-wrapper .lists-wrapper .links {
@@ -4245,11 +4244,13 @@ hr {
     line-height: 120%; }
   .right-navigation-wrapper > * {
     float: left; }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .right-navigation-wrapper .yellow-horizontal-separator {
-      display: none; }
-    .right-navigation-wrapper > * {
-      padding: 15px; } }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .right-navigation-wrapper .yellow-horizontal-separator {
+    display: none; }
+  .right-navigation-wrapper > * {
+    padding: 15px;
+    display: inherit; } }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4920,6 +4921,43 @@ hr {
   width: 100%;
   display: flex; }
 
+
+.button-class {
+  line-height: 30px; }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .icon-parent {
   text-align: center; }
