@@ -126,10 +126,10 @@
                         </goals>
                         <configuration>
                             <arguments>install --registry http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
-                            <!--environmentVariables>
-                                    <SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass</SASS_BINARY_SITE> 
+                            <environmentVariables>
+                                    <SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass/v4.10.0</SASS_BINARY_SITE> 
 
-                                </environmentVariables --> 
+                                </environmentVariables> 
                         </configuration>
                     </execution>
                     <execution>
