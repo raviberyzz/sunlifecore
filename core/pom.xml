@@ -98,20 +98,19 @@
 		    <!-- Check style validation	                                                -->
 		    <!-- ====================================================================== -->
            <plugin>
-                                 <groupId>org.apache.maven.plugins</groupId>
-                                 <artifactId>maven-checkstyle-plugin</artifactId>
-                                 <version>2.17</version>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-checkstyle-plugin</artifactId>
+                  <version>2.17</version>
                        <configuration>
-                                  <includeTestResources>false</includeTestResources>
-                                 <includeResources>false</includeResources>
-                                  <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                                  <configLocation>checkstyle.xml</configLocation>
-                                 <suppressionsLocation>checkstyle-suppress.xml</suppressionsLocation>
-                           <suppressionsFileExpression>checkstyle.suppression.file</suppressionsFileExpression>
-                                 <consoleOutput>false</consoleOutput>
-                                 <failsOnError>true</failsOnError>
-                                 <linkXRef>false</linkXRef>
-                         <propertyExpansion>basedir=${project.basedir}</propertyExpansion>
+                             <includeTestResources>false</includeTestResources>
+                             <includeResources>false</includeResources>
+                             <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                             <configLocation>checkstyle.xml</configLocation>
+                             <suppressionsLocation>checkstyle-suppress.xml</suppressionsLocation>
+                             <suppressionsFileExpression>checkstyle.suppression.file</suppressionsFileExpression>
+                             <consoleOutput>false</consoleOutput>
+                             <failsOnError>true</failsOnError>
+                             <linkXRef>false</linkXRef>
                        </configuration>
                        <executions>
                          <execution>
@@ -122,7 +121,9 @@
                            </goals>
                          </execution>
                        </executions>
-                    </plugin>   
+                    </plugin>
+
+		   
 		    </plugins>
     </build>
 
