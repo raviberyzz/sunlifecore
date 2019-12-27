@@ -10,6 +10,7 @@
   border-bottom: 2px solid $medium-yellow-background;
 }
 .desktop-primary-navigation{
+  margin-left: 166px;
     .navigation{
         position: static;
         padding: 0;
@@ -22,17 +23,8 @@
       box-shadow: 0px 2px 0px 0px $white-shade;
     }
       .nav>li>a{
-        
         &:hover{
           @extend .box-class;
-         
-        }
-      }
- 
-      .primary-navigation{
-        margin-left: 166px;
-        li{
-            position: static;
         }
       }
       .navbar-new .nav-item>a:after {
@@ -56,6 +48,11 @@
 }
 
 .desktop-primary-navigation-yellow{
+  margin-left: 166px;
+  .navigation{
+    position: static;
+    padding: 0;
+}
   .nav-item:hover{
     background: $primary-yellow-background ;
     text-decoration: none;
@@ -63,14 +60,31 @@
     z-index:9999;
     box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25);
   }
+  .box-class-yellow{
+    background: $primary-yellow-background ;
+    text-decoration: none;
+    font-style: normal;
+    z-index:9999;
+    box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25);
+  }
   .nav>li>a:hover{
-      background: $primary-yellow-background ;
-      text-decoration: none;
-      font-style: normal;
-      z-index:9999;
-      box-shadow: -1px 1px 25px 4px rgba(0, 0, 0, 0.25);
+      @extend .box-class-yellow;
+    }
+    .nav-item.open{  
+      background-color: $primary-yellow-background;   
+      border-bottom: none;
+      z-index: 1;
+      box-shadow: 0 35px 0px 0px $white-shade, 0 0px 0px 0px $white-shade, 0px 0px 2px 0px rgba(0, 0, 0, 0.25), 0px 10px 15px 0px rgba(0, 0, 0, 0.25);     
+      .menu-content{
+        padding: 0;
+        position: absolute;
+    }
 }
+.nav .open>a{
+  background-color:$primary-yellow-background;
+}  
 
 }
+
 
 
