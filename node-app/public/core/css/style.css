@@ -4050,6 +4050,51 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+.right-navigation-wrapper {
+  padding: 0;
+  text-align: center;
+  display: table; }
+  .right-navigation-wrapper .lists-wrapper {
+    width: 100%; }
+    .right-navigation-wrapper .lists-wrapper .links {
+      width: 100%; }
+      .right-navigation-wrapper .lists-wrapper .links a {
+        font-weight: 700; }
+      .right-navigation-wrapper .lists-wrapper .links .collapse {
+        display: block !important; }
+    .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
+      display: none; }
+  .right-navigation-wrapper .right-nav-icon-wrapper {
+    width: 100%; }
+  .right-navigation-wrapper .yellow-horizontal-separator {
+    width: 100%; }
+    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
+      width: 40%; }
+  .right-navigation-wrapper .CTA-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
+  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button], .right-navigation-wrapper input[type=text] {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px; }
+  .right-navigation-wrapper .light-orange {
+    background-color: #FEEDD2; }
+  .right-navigation-wrapper .cool-blue {
+    background-color: #F4F7F6; }
+  .right-navigation-wrapper .phone-numbers {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%; }
+  .right-navigation-wrapper > * {
+    float: left; }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .right-navigation-wrapper .yellow-horizontal-separator {
+      display: none; }
+    .right-navigation-wrapper > * {
+      padding: 15px; } }
+
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -4098,51 +4143,6 @@ hr {
     padding-left: 16px;
     width: 1%;
     border: 0; }
-
-.right-navigation-wrapper {
-  padding: 0;
-  text-align: center;
-  display: table; }
-  .right-navigation-wrapper .lists-wrapper {
-    width: 100%; }
-    .right-navigation-wrapper .lists-wrapper .links {
-      width: 100%; }
-      .right-navigation-wrapper .lists-wrapper .links a {
-        font-weight: 700; }
-      .right-navigation-wrapper .lists-wrapper .links .collapse {
-        display: block !important; }
-    .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
-      display: none; }
-  .right-navigation-wrapper .right-nav-icon-wrapper {
-    width: 100%; }
-  .right-navigation-wrapper .yellow-horizontal-separator {
-    width: 100%; }
-    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
-      width: 40%; }
-  .right-navigation-wrapper .CTA-wrapper .button-class {
-    max-width: 100%;
-    width: 100%;
-    margin: 15px 0 15px 0; }
-  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button], .right-navigation-wrapper input[type=text] {
-    width: 100%;
-    max-width: 100%;
-    padding: 10px; }
-  .right-navigation-wrapper .light-orange {
-    background-color: #FEEDD2; }
-  .right-navigation-wrapper .cool-blue {
-    background-color: #F4F7F6; }
-  .right-navigation-wrapper .phone-numbers {
-    font-family: 'sunlife-sans';
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 120%; }
-  .right-navigation-wrapper > * {
-    float: left; }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .right-navigation-wrapper .yellow-horizontal-separator {
-      display: none; }
-    .right-navigation-wrapper > * {
-      padding: 15px; } }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
