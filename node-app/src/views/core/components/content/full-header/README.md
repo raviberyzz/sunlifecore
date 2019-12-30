@@ -114,7 +114,7 @@ JSON Format
     "error-message":"Wrong Input",
     "validation-pattern": "",
     "input-text-type":"text",
-    "button-type":"button",
+    "button-type":"submit",
     "button-value":"Search",
     "form-button-class":"primary-blue-button",
     "region-title" : "Regions",

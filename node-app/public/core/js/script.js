@@ -3039,12 +3039,21 @@ function removeParam(key, sourceURL) {
 
 
 
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
+$(document).ready(function () {
+   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class');
+   }, function () {
+      $(this).siblings().removeClass('box-class');
+   }
+   );
 
-console.log('utility-nav loaded');
+});
 
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -3057,6 +3066,26 @@ $(document).ready(function () {
 
 console.log('separator loaded');
 
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
+
+
+console.log('separator loaded');
+$(document).ready(function(){
+   var menuHeight= $('.slf-header-mega-menu2').height();
+   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+    $( ".dropdown-submenu").hover(
+        function(){
+            $('.slf-header-mega-menu2').height(submenuHeight+5);
+    },function(){
+      $('.slf-header-mega-menu2').height(menuHeight);
+       }
+    );
+   });
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
     var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
@@ -3296,6 +3325,32 @@ $(document).ready(function(){
        }
     );
    });
+$(document).ready(function () {
+    $(".signIn-button").attr('maxlength','30');
+    $('#language-btn-container').click(function(){
+     if ($('#sun-search').hasClass('in')){  
+            $("#search-btn").attr('aria-expanded','false');
+            $('#sun-search').removeClass('in');
+        }
+     });
+     $('#search-btn').click(function(){
+        if ($('.desktop-region-language-menu-wrapper').hasClass('in')){  
+               $("#language-btn").attr('aria-expanded','false');
+               $('.desktop-region-language-menu-wrapper').removeClass('in');
+           }
+        });
+        $('#language-btn-container').click(function(){
+            if($('#language-btn').attr('aria-expanded') == 'true'){
+                $("#language-btn").attr('aria-expanded','false');
+            }
+            else{
+                $("#language-btn").attr('aria-expanded','true');
+            }
+        });       
+        $('.sunLanguageCrossBtn').click(function(){
+            $("#language-btn").attr('aria-expanded','false');
+        });
+});
 console.log('separator loaded');
 console.log('component loaded');
 $(document).ready(function(){
