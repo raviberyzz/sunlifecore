@@ -3037,23 +3037,15 @@ function removeParam(key, sourceURL) {
 // } 
 
 
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 console.log('utility-nav loaded');
 
-$(document).ready(function () {
-   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
-      $(this).addClass('open');
-   }, function () {
-      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
-   }
-   );
-   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
-      $(this).siblings().addClass('box-class');
-   }, function () {
-      $(this).siblings().removeClass('box-class');
-   }
-   );
-
-});
 
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -3063,27 +3055,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
-
-
-
 console.log('separator loaded');
-$(document).ready(function(){
-   var menuHeight= $('.slf-header-mega-menu2').height();
-   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-    $( ".dropdown-submenu").hover(
-        function(){
-            $('.slf-header-mega-menu2').height(submenuHeight+5);
-    },function(){
-      $('.slf-header-mega-menu2').height(menuHeight);
-       }
-    );
-   });
+
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
     var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
@@ -3165,8 +3138,6 @@ $(document).ready(function () {
  
  });
  
-console.log('separator loaded');
-
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.nav-select').parent().parent().addClass('in');
@@ -3209,6 +3180,35 @@ $(document).ready(function(){
         $('.mobile-header .region-tab').css({'display':'none'});
         $('.mobile-header .language-tab').css({'display':'block'});
     });
+});
+
+$(document).ready(function () {
+   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class');
+   }, function () {
+      $(this).siblings().removeClass('box-class');
+   }
+   );
+
+   $(".desktop-primary-navigation-yellow .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation-yellow .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation-yellow .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class-yellow');
+   }, function () {
+      $(this).siblings().removeClass('box-class-yellow');
+   }
+   );
+
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -3285,6 +3285,39 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function(){
+   var menuHeight= $('.slf-header-mega-menu2').height();
+   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+    $( ".dropdown-submenu").hover(
+        function(){
+            $('.slf-header-mega-menu2').height(submenuHeight+5);
+    },function(){
+      $('.slf-header-mega-menu2').height(menuHeight);
+       }
+    );
+   });
+console.log('separator loaded');
+console.log('component loaded');
+$(document).ready(function(){
+    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
+    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
+    }
+    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
+        $(this).siblings('.cmp-navigation__group').toggle('collapse');
+        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
+        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
+        if($(this).attr('aria-expanded')=='true'){
+            $(this).attr('aria-expanded',false);
+        }
+        else{
+            $(this).attr('aria-expanded',true)
+        }
+    });
+});
+console.log('image loaded');
+console.log('icon-text loaded');
 $(document).ready(function () {
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
@@ -3311,28 +3344,6 @@ $(document).ready(function () {
             $("#language-btn").attr('aria-expanded','false');
         });
 });
-console.log('separator loaded');
-console.log('component loaded');
-$(document).ready(function(){
-    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
-    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
-    }
-    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
-        $(this).siblings('.cmp-navigation__group').toggle('collapse');
-        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
-        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
-        if($(this).attr('aria-expanded')=='true'){
-            $(this).attr('aria-expanded',false);
-        }
-        else{
-            $(this).attr('aria-expanded',true)
-        }
-    });
-});
-console.log('image loaded');
-console.log('icon-text loaded');
 console.log('footer-copyright loaded');
 console.log('container loaded');
 
