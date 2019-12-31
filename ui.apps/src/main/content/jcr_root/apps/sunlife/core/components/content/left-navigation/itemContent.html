@@ -2,7 +2,6 @@
 	  <sly data-sly-test="${item.level==0}">
          <a class="cmp-navigation__item-link"> ${item.title}</a>
 	  </sly>
-
       <sly data-sly-test="${(item.level==1) && !(item.level==0)}" >
           <sly data-sly-test="${item.getChildren.size>0 }">
               <a  title="${item.title}" aria-current="${item.active && 'page'}" aria-expanded="false"
@@ -17,5 +16,4 @@
 		   <a href="${item.URL}" title="${item.title}" aria-current="${item.active && 'page'}" 
            class="cmp-navigation__item-link ${item.active ? ' cmp-navigation__item--active' : ''}" >${item.title}</a>
 	  </sly>
-
 </template>
