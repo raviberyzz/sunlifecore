@@ -3,13 +3,13 @@
 JSON Format
 ```
 {
-    "form-text-id":"demo-id",
-    "form-text-class":"demo-class",
-    "form-text-label":"demo-label",
-    "place-holder" : "Enter Details",
-    "form-text-name":"demo-text",
+    "form-text-id":"q-top",
+    "form-text-class":"",
+    "form-text-label":"",
+    "place-holder" : "Search",
+    "form-text-name":"q",
     "text-length":"",
-    "error-message":"Wrong Input",
+    "error-message":"",
     "validation-pattern": "",
     "input-text-type":"text",
     "button-type":"submit",
