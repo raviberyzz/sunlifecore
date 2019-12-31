@@ -12,22 +12,18 @@
             <div class="col-xs-12 content-region">
                 {{#each region-list}}
                     <div class="col-xs-4 slf-region-column">
-                        <ul class="list-unstyled">
+                        <ul class="first_level_list-unstyled">
                             {{#each parent-list}}
                                 {{#if accordion}}
                                     <li>
-                                        <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="false"  data-toggle="collapse" tabindex="0">{{ LinkText }}</h3>
-                                            <div class="accordion-list collapse">
-                                                <ul class="list-unstyled">
-                                                    {{#each list}}
-                                                    <li class={{selected}}>
-                                                        <a href="{{link}}">{{text}}</a>
-                                                    </li>
-                                                    {{/each}}
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false"  data-toggle="collapse" tabindex="0">{{ LinkText }}</a>
+                                        <ul class="list-unstyled accordion-list collapse">
+                                            {{#each list}}
+                                            <li class={{selected}}>
+                                                <a href="{{link}}">{{text}}</a>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
                                     </li>
                                 {{else}}
                                     <li>

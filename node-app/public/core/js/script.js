@@ -3735,7 +3735,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
 console.log('separator loaded');
 
 $(document).ready(function () {
@@ -3821,8 +3820,8 @@ $(document).ready(function () {
  
 console.log('region-language-menu loaded');
 $(document).ready(function(){
-    $('.nav-select').parent().parent().addClass('in');
-    $('.nav-select').parent().parent().siblings().attr('aria-expanded','true');
+    $('.content-region .nav-select').parent().addClass('in');
+    $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
     $('.content-region .accordion-heading').click(function(){
         if($(this).attr('aria-expanded') == 'false'){
             $(this).attr('aria-expanded','true');
@@ -4026,7 +4025,6 @@ $(document).ready(function () {
         });
 });
 console.log('footer-copyright loaded');
-console.log('container loaded');
 
 
 console.log('breadcrumb loaded');
