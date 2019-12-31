@@ -1,16 +1,56 @@
-<div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
-     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-sly-use.imageTemplate="image.html"
-     data-sly-use.titleTemplate="title.html"
-     data-sly-use.descriptionTemplate="description.html"
-     data-sly-use.actionsTemplate="actions.html"
-     data-sly-test.hasContent="${teaser.imageResource || teaser.title || teaser.description || teaser.actions.size > 0}"
-     class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}">
-    <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
-    <div class="cmp-teaser__content">
-        <sly data-sly-call="${titleTemplate.title @ teaser=teaser}"></sly>
-        <sly data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></sly>
-        <sly data-sly-call="${actionsTemplate.actions @ teaser=teaser}"></sly>
-    </div>
+<div data-sly-use.teaser="com.sunlife.core.models.TeaserModel"></div>
+<sly data-sly-test.empty="${!teaser.imageAlignment}"/>
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+
+<sly data-sly-test="${!empty}">
+<div class="image-text-wrapper">
+
+<div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position">
+		<div data-sly-test.description="${teaser.description}" class="left-item text-section">
+			<p>${description @context ='html'}</p>
+		</div>
+		<div class="right-item">
+		<div data-sly-test.imageLink="${teaser.linkURL}">
+			<a class="desktop-image" href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
+				<img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+			</a>
+			<div data-sly-test.mobileImage="${teaser.fileReferenceMobile}">
+				<a class="mobile-image" href=${imageLink @ extension = 'html'}" target ="${teaser.target}">
+					<img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
+				</a>
+			</div>
+		</div>
+		<sly data-sly-test="${!imageLink}">
+			<img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+				<sly data-sly-test="${mobileImage}">
+					<img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}"/>
+				</sly>
+		</sly>
+		</div>
 </div>
-<sly data-sly-call="${templates.placeholder @ isEmpty=!hasContent, classAppend='cmp-teaser'}"></sly>
+<div data-sly-test="${!imageRight}" class="left-image-position">
+		<div class="left-item">
+			<div data-sly-test="${imageLink}">
+				<a class="desktop-image" href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
+					<img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+				</a>
+					<div data-sly-test="${mobileImage}">
+						<a class="mobile-image" href=${imageLink @ extension = 'html'}" target ="${teaser.target}">
+							<img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
+						</a>
+					</div>
+			</div>
+			<div data-sly-test="${!imageLink}">
+				<img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+					<div data-sly-test="${mobileImage}">
+						<img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}"/>
+					</div>
+			</div>
+		</div>
+		<div data-sly-test="${description}" class="right-item text-section">
+			<p>${description @context ='html'}</p>
+		</div>
+</div>
+</div>
+
+</sly>
