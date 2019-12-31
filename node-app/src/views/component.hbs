@@ -7,8 +7,48 @@
   <script src="/static/vendor/js/vendor.js"></script>
   <script src="/static/core/js/script.js"></script>
   <title>{{componentName}}</title>
+  <!-- UDO starts here -->
+  <script type="text/javascript">
+    var utag_data={
+    "page_canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+    "page_canonical_url_default" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+    "page_breadcrumb" : "/Home",
+    "page_language" : "en-CA",
+    "page_category" : "Home",
+    "page_subcategory" : "",
+    "page_customer_life_cycle"  :  "Awareness",
+    "page_product_type_investments"  :  "None",
+    "page_money_interest"  :  "None",
+    "page_health_interest"  :  "None",
+    "page_purpose"  :  "Route",
+    "page_audience"  :  "Customer_Generic",
+    "page_customer_life_stage"  :  "None",
+    "page_product_type_insurance"  :  "None"
+    }
+  </script>
+  <!-- UDO ends here -->
+  <!-- Synchronous Tag Support starts here -->
+  <script src="//tags.tiqcdn.com/utag/sunlife/ca/dev/utag.sync.js" type="text/javascript"></script>
+  <!-- Synchronous Tag Support ends here -->
 </head>
 <body>
+<!-- Start Tealium -->
+
+    <script type="text/javascript">
+        (function(a, b, c, d) {
+        a = '//tags.tiqcdn.com/utag/sunlife/ca/dev/utag.js';
+        b = document;
+        c = 'script';
+        d = b.createElement(c);
+        d.src = a;
+        d.type = 'text/java' + c;
+        d.async = true;
+        a = b.getElementsByTagName(c)[0];
+        a.parentNode.insertBefore(d, a);
+        })();
+    </script>
+
+<!-- End Tealium -->
 <div class="container">
     {{{componentContent}}}
 </div>

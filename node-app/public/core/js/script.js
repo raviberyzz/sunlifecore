@@ -3726,18 +3726,6 @@ alert("Demo-Onsubmit-Function");
 }
 
 console.log('utility-nav loaded');
-
-
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-});     
-console.log('separator loaded');
-
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
     var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
@@ -3819,6 +3807,18 @@ $(document).ready(function () {
  
  });
  
+
+
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+});     
+console.log('separator loaded');
+
 console.log('region-language-menu loaded');
 $(document).ready(function(){
     $('.content-region .nav-select').parent().addClass('in');
