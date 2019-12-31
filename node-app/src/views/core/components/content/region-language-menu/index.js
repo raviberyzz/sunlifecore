@@ -1,5 +1,15 @@
 console.log('region-language-menu loaded');
 $(document).ready(function(){
+    $('.lang-btn').click(function(){
+	    if($(this).attr('aria-expanded') == "false"){
+		  utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+		//   console.log("language panel expansion event tracked sucessfully");
+
+       }
+       else {
+	    //    console.log("language panel expansion event is not tracked");
+	    }
+	});
     $('.content-region .nav-select').parent().addClass('in');
     $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
     $('.content-region .accordion-heading').click(function(){
