@@ -3727,6 +3727,7 @@ alert("Demo-Onsubmit-Function");
 
 console.log('utility-nav loaded');
 
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4025,6 +4026,7 @@ $(document).ready(function () {
         });
 });
 console.log('footer-copyright loaded');
+console.log('container loaded');
 
 
 console.log('breadcrumb loaded');
