@@ -68,6 +68,74 @@
             }
         }
     }
+    .search-autocomplete{
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background: $white-shade;
+        overflow: hidden;
+        text-decoration:none;
+        ul{
+            border: 1px solid $light-grey-shade;
+            margin: -1px 0 0 ;
+            padding: 0;
+            text-align: left;
+            list-style: none;
+            vertical-align: middle;
+            min-height: 48px;
+            display: none;
+        }
+        .search-autocomplete-list{
+            padding-left:15px;
+            font-weight:700;
+                li{
+                    .bold{
+                        color:$black-shade;
+                    }
+            }
+        }
+        .search-sayt-list {
+            border-bottom: 1px solid $light-grey-shade;
+            position: relative;
+            padding-top: 2px ;
+            background: $white-shade;
+            margin-top: -2px;
+            .seperate{
+                width:90%;
+                border-top:1px solid $black-shade;
+            }
+            :hover{
+                text-decoration: none;
+            }
+            li{
+                font-size: 1rem;
+                font-weight:400;
+                padding: 15px 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                .title{
+                    color: $blue-search-color;
+                    display:block;
+                    &:hover{
+                        text-decoration:underline;
+                    }
+                }
+                .desc{
+                    color:$dark-grey-color;
+                    font-size: 0.875rem;
+                    font-weight: normal;
+                    line-height: 1.2rem;
+                    padding-bottom: 4px;
+                    :hover{
+                        text-decoration:none;
+                    }
+                }
+                a>*{
+                    white-space: normal;
+                }
+            }
+        }
+    }
     .mobile-header .desktop-region-language-menu-wrapper{
         display:none;
     }
