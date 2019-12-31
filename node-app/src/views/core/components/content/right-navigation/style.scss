@@ -2,7 +2,6 @@
 .right-navigation-wrapper{
     padding: 0;
     text-align: center;
-    display: table;
     .lists-wrapper{
         width: 100%;
         .links{
@@ -58,17 +57,21 @@
         float: left;
        
     }
-    @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
-{
-    .yellow-horizontal-separator{
-        display: none;
-    }
-    &>*{
-        height: 450px;
-        padding: 15px;
-    }
-   
    
 }
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
+{
+    .right-navigation-wrapper{
+        .yellow-horizontal-separator{
+            display: none;
+        }
+        &>*{
+            
+            padding: 15px;
+            display: inherit;
+            
+        }
+    }
+   
 }
 

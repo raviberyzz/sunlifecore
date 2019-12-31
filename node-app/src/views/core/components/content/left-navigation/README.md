@@ -14,8 +14,7 @@ JSON Format
         "aria-expanded" : "true",
         "second-level-list" : [{
             "second-level-link-name" : "Financial results and reports overview",
-            "second-level-link-url" : "https://www.sunlife.com/Global/Investors/Financial+results+and+reports?vgnLocale=en_CA",
-            "cmp-navigation__item--active" : "cmp-navigation__item--active"
+            "second-level-link-url" : "https://www.sunlife.com/Global/Investors/Financial+results+and+reports?vgnLocale=en_CA"
         },
         {
             "second-level-link-name" : "Quarterly reports",

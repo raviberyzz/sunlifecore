@@ -4,7 +4,7 @@ JSON Format
 ```
 {
 "button-class": "primary-blue-button",
-"button-text": "Button",
+"button-text": "Sign in",
 "button-type": "button",
 "button-wrapper-class":"sign-in-wrapper",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
