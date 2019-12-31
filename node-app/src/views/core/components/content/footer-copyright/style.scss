@@ -11,6 +11,7 @@
             font-size: 1.125rem;
             float: left;
             font-weight: 700;
+            line-height: 23px;
         }
         .slf-legal{
             float: right;
@@ -24,6 +25,7 @@
                 color: $white-shade;
                 font-size: 0.875rem;
                 font-weight: 700;
+                line-height: 18px;
             }
             a.border-present{
                 border-right: 2px solid;
@@ -37,7 +39,8 @@
         line-height:20px;
         .slf-acronym{
             color: $white-shade;
-            font-size: 1.125rem;
+            font-size: 0.875rem;
+            line-height: 18px;
             font-weight: 700;
             float: right;
         }
@@ -51,6 +54,7 @@
         .slf-copyright{
             color: $white-shade;
             font-size: 0.875rem;
+            line-height: 18px;
             float: left;
         }
     }

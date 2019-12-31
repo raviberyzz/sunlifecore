@@ -26,28 +26,31 @@
     .slf-region {
         border-right: 2px solid $light-grey-color;
         .content-region {
-            padding:0;
+            padding:0 32px 0 0;
             ul {
                 margin-bottom: 0;
                 li {
                     margin-bottom: 8px;
                     cursor: pointer;
-                    &:hover {
+                    a:hover{                        
                         background-color: $light-orange-color;
                     }
                 }
             }
-            .list-unstyled,
-            .accordion-heading {
-                background-color: $white-shade;
+            .first_level_list-unstyled{
+                a{
+                    padding: 4px 0 4px 5px;
+                }
+                .accordion-list li {
+                    margin-bottom: 8px;
+                    a{
+                        padding: 4px 0 4px 20px;
+                    }
+                }
             }
-            .region-link .list-unstyled li {
-                padding: 4px 0 4px 20px;
-                margin-bottom: 8px;
-                height: 34px;
-            }
+            
             > :first-child {
-                padding-left: 0;
+                padding: 0;
                 .nav-select {
                     background-color: $light-orange-color;
                     a {
@@ -60,31 +63,43 @@
                     font-weight: 700;
                     cursor: pointer;
                     margin: 0;
-                    padding-bottom: 8px;
+                    text-decoration: none;
+                    color: $dark-grey-color;
+                    padding-left: 0;
+                    &:hover{                        
+                        background-color: $white-shade;
+                    }
                 }
             }
             > :not(:first-child) {
+                padding: 0 0 0 10px;
                 .accordion-heading {
                     font-size: 1rem;
                     cursor: pointer;
                     margin: 0;
-                    padding-bottom: 8px;
+                    text-decoration: none;
                     color: $medium-blue-color;
+                    &:hover{                        
+                        background-color: $white-shade;
+                    }
                 }
             }
             .slf-region-column {
-                .region-link .accordion-heading[aria-expanded="false"]:before {
+                width: 240px;
+                .accordion-heading[aria-expanded="false"]:before {
                     content: "\f0da";
                     font-family: FontAwesome;
                     padding-right: 10px;
                 }
-                .region-link .accordion-heading[aria-expanded="true"]:before {
+                .accordion-heading[aria-expanded="true"]:before {
                     content: "\f0d7";
                     font-family: FontAwesome;
                     padding-right: 10px;
                 }
                 a {
                     font-weight: 400;
+                    width: 100%;
+                    display: block;
                 }
             }
         }
@@ -102,33 +117,29 @@
         ul {
             margin-bottom: 0;
             li {
-                padding-left: 14px;
+                padding: 4px 0 4px 14px;
                 margin-bottom: 8px;
                 cursor: pointer;
                 &:hover {
                     background-color: $light-orange-color;
                 }
+                a{
+                    font-weight: 400;
+                }
             }
-        }
-        .nav-select {
-            background-color: $light-orange-color;
-        }
-        .not-bold {
-            a {
-                font-weight: 400;
+            .nav-select {
+                background-color: $light-orange-color;
+                a{
+                    font-weight: 700;
+                } 
             }
         }
         .grey-horizontal-separator {
-            margin-bottom: 90px;
+            margin-bottom: 70px;
             .horizontal-middle-align {
                 float: left;
-                margin-left: -72px;
                 width: 37px;
-            }
-        }
-        .chinese {
-            a {
-                font-weight: 400;
+                margin: 32px 0 32px -72px;
             }
         }
     }
@@ -150,8 +161,9 @@
         background-color:$medium-blue-color;
         color: $white-shade;
         width:100%;
-        line-height:23px;
-        padding:16px;
+        font-size: 1rem;
+        line-height:26px;
+        padding: 8px 16px;
         &:before {
             font-family: FontAwesome;
             content: "\f104\00a0";
@@ -162,20 +174,21 @@
     }
     .slf-tab-region{
         padding: 0;
-        height: 48px;
+        height: 42px;
         background-color: $medium-blue-color;
         color: $white-shade;
         font-size: 1rem;
+        line-height: 26px;
         font-weight: 400;
         border-top: 0.5px solid $white-shade;
         .slf-tab{
-            padding: 10px 0 0 0;
+            padding: 8px 0 8px 0;
             text-align: center;
             height: 100%;
         }
         .active{
             background-color: $white-shade;
-            color: $black-shade;
+            color: $dark-grey-color;
             font-weight: 700;
         }
         .region-present, .language-present{
@@ -187,9 +200,11 @@
     .tab-content{
         padding: 0;
         .region-tab{
+            padding-top: 32px;
             .list-unstyled{
                 li{
-                    margin-top: 32px;
+                    margin-bottom: 8px;
+                    padding: 4px 0 4px 0;
                     a{
                         color: $medium-blue-color;
                         font-weight: 400;
@@ -205,7 +220,7 @@
                 .accordion-heading{
                     font-size: 1rem;
                     color: $medium-blue-color;
-                    margin: 0;
+                    margin: 0 0 8px 0;
                     padding-left: 16px;
                 }
                 .accordion-heading[aria-expanded="false"]:after {
@@ -220,15 +235,17 @@
                 }
                 .accordion-list{
                     a{
-                        padding-left: 30px;
+                        padding-left: 35px;
                     }
                 }
             }
         } 
         .language-tab{
+            padding-top: 32px;
             .list-unstyled{
                 li{
-                    margin-top: 32px;
+                    padding: 4px 0 4px 0;
+                    margin-bottom: 8px;
                     a{
                         color: $medium-blue-color;
                         font-weight: 400;
@@ -242,16 +259,11 @@
                     }
                 }
                 .grey-horizontal-separator {
+                    margin-bottom: 70px;
                     .horizontal-middle-align {
                         float: left;
                         width: 59px;
-                        margin: 40px 0 40px -74px;
-                    }
-                }
-                .chinese {
-                    margin-top: 90px;
-                    a {
-                        font-weight: 400;
+                        margin: 32px 0 32px -72px;
                     }
                 }
             }

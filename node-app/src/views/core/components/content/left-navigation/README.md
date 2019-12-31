@@ -11,7 +11,6 @@ JSON Format
     {
         "first-level-link-name" : "Financial results and reports",
         "second-level-present" : true,
-        "cmp-navigation__item--active" : "cmp-navigation__item--active",
         "aria-expanded" : "true",
         "second-level-list" : [{
             "second-level-link-name" : "Financial results and reports overview",
@@ -42,7 +41,8 @@ JSON Format
     },
     {
         "first-level-link-name" : "Financial news",
-        "first-level-link-url" : "https://www.sunlife.com/Global/Investors/Financial+news?vgnLocale=en_CA"
+        "first-level-link-url" : "https://www.sunlife.com/Global/Investors/Financial+news?vgnLocale=en_CA",
+        "cmp-navigation__item--active" : "cmp-navigation__item--active"
     },
     {
         "first-level-link-name" : "Shareholder services",
