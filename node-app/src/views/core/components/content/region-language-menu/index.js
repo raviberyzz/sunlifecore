@@ -1,6 +1,6 @@
 console.log('region-language-menu loaded');
 $(document).ready(function(){
-    $('.lang-btn').click(function(){
+    $('#language-btn').click(function(){
 	    if($(this).attr('aria-expanded') == "false"){
 		  utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
 		//   console.log("language panel expansion event tracked sucessfully");
