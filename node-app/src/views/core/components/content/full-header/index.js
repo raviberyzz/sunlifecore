@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  

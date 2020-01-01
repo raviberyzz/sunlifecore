@@ -12,13 +12,13 @@
         }
 
         input[type=text] {
-            width: 100%;
             margin-bottom: 0;
             height: 48px;
-
+            width:462px;
         }
 
         .search-autocomplete {
+            position:absolute;
             z-index: 1099;
         }
     }
@@ -35,6 +35,9 @@
                 display: table-cell;
                 vertical-align: top;
                 position: relative;
+            }
+            .input-wrapper.form-group-wrapper{
+                display: inline;
             }
         }
     }

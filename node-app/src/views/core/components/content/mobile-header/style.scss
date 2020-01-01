@@ -110,40 +110,48 @@
             padding: 8px 16px;
             background: $light-grey-20;
             height:42px;
-        }
-        .search-field{
-            position:absolute;
-            margin-left:5px;
-            border:none;
-            background: $light-grey-shade-color;
-            padding:2px 0 0 0;
-            height:26px;
-            width:216px;
-            line-height:26px;
-        }
-        .search-icon-mobile {
-            color: $dark-grey-shade;
-            line-height:26px;
-        }
+        }       
         .slf-search-mobile{
             border-bottom: 1px solid $light-grey-color;
-        }
-        .search-autocomplete-mobile {
-            display:none;
-            position: absolute;
-            top: 100%;
-            width: 100%;
-            background: $white-shade;
-            z-index: 999;
-            overflow: hidden;
-            ul{
-                border: 1px solid $light-grey-shade;
-                margin: -1px 0 0;
-                padding: 0;
-                list-style: none;
+            .form-wrapper{
                 text-align: left;
+                width: 100%;
+                .input-wrapper{
+                    color:none;
+                    margin:0;
+                    .search-icon-mobile {
+                        color: $dark-grey-shade;
+                        line-height:26px;
+                    }
+                    .search-field{
+                        position:absolute;
+                        margin-left:5px;
+                        border:none;
+                        background: $light-grey-20;
+                        padding:2px 0 0 0;
+                        height:26px;
+                        width:216px;
+                        line-height:26px;
+                    }
+                }
             }
         }
+        // .search-autocomplete-mobile {
+        //     display:none;
+        //     position: absolute;
+        //     top: 100%;
+        //     width: 100%;
+        //     background: $white-shade;
+        //     z-index: 999;
+        //     overflow: hidden;
+        //     ul{
+        //         border: 1px solid $light-grey-shade;
+        //         margin: -1px 0 0;
+        //         padding: 0;
+        //         list-style: none;
+        //         text-align: left;
+        //     }
+        // }
         .first-level-list{
             padding-top:8px;
             z-index:1050;
@@ -280,6 +288,71 @@
         background: $black-shade;
         opacity: 0.5;
         margin-left:270px;
+    }
+    .search-autocomplete-mobile{
+        position:relative;
+        top: 100%;
+        width: 100%;
+        background: $white-shade;
+        overflow: hidden;
+        text-decoration:none;
+        ul{
+            border: 1px solid $light-grey-shade;
+            margin: -1px 0 0 ;
+            padding: 0;
+            text-align: left;
+            list-style: none;
+            vertical-align: middle;
+            min-height: 48px;
+            display: none;
+        }
+        .search-autocomplete-list-mobile{
+            padding:0 5px 0 10px;
+            font-weight:700;
+                li{
+                    .bold{
+                        color:$black-shade;
+                    }
+            }
+        }
+        .search-sayt-list-mobile {
+            border-bottom: 1px solid $light-grey-shade;
+            border-top:1px solid $black-shade;
+            position: relative;
+            padding-top: 2px ;
+            background: $white-shade;
+            margin-top: -2px;
+            :hover{
+                text-decoration: none;
+            }
+            li{
+                font-size: 1rem;
+                font-weight:400;
+                padding: 15px 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                .title{
+                    color: $blue-search-color;
+                    display:block;
+                    &:hover{
+                        text-decoration:underline;
+                    }
+                }
+                .desc{
+                    color:$dark-grey-color;
+                    font-size: 0.875rem;
+                    font-weight: normal;
+                    line-height: 1.2rem;
+                    padding-bottom: 4px;
+                    :hover{
+                        text-decoration:none;
+                    }
+                }
+                a>*{
+                    white-space: normal;
+                }
+            }
+        }
     }
     /* Hamburger Menu End Here */
 }

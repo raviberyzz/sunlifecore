@@ -106,15 +106,16 @@ JSON Format
     "desktop-sign-button":"desktop-sign-button",
     "redirection-link": "javascript:void(0)",
     "fa-icon": "fa-user",
-    "form-text-class":"demo-class",
-    "form-text-label":"demo-label",
-    "place-holder" : "Enter Details",
-    "form-text-name":"demo-text",
+    "form-text-class":"",
+    "form-text-label":"",
+    "place-holder" : "Search",
+    "form-text-name":"q",
     "text-length":"",
-    "error-message":"Wrong Input",
+    "form-text-id":"q-top",
+    "error-message":"",
     "validation-pattern": "",
     "input-text-type":"text",
-    "button-type":"button",
+    "form-button-type":"submit",
     "button-value":"Search",
     "form-button-class":"primary-blue-button",
     "region-title" : "Regions",
@@ -220,13 +221,11 @@ JSON Format
         "selected" : "nav-select"
     },{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=fr_CA",
-        "text" : "Français",
-        "selected" : "not-bold"
+        "text" : "Français"
     },{
         "link" : "https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
         "text" : "欢迎访问永明金融网页 ",
         "chinese" : true,
-        "selected" : "chinese",
         "separator-wrapper" : "grey-horizontal-separator"
     }],
     "language-region":"language-region",    
@@ -362,6 +361,18 @@ JSON Format
             "country-text": "Vietnam",
             "accordion" : false
         }]
+    }],
+    "language-list" : [{
+        "text" : "English",
+        "selected" : "nav-select"
+    },{
+        "link" : "https://www.sunlife.ca/ca?vgnLocale=fr_CA",
+        "text" : "Français"
+    },{
+        "link" : "https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
+        "text" : "欢迎访问永明金融网页 ",
+        "chinese" : true,
+        "separator-wrapper" : "grey-horizontal-separator"
     }],
     "button-class": "signIn-button",
     "button-text":"Sign in"

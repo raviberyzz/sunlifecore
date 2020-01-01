@@ -1,10 +1,8 @@
 @import '../../../base/core';
-.button-class {
-    line-height: 30px;
-}
 .primary-blue-button {
         background-color: $medium-blue-color;
         color: $white-shade;
+        line-height: 34px;
         .icon-class {
             display: none;
         }
@@ -12,6 +10,7 @@
 .primary-yellow-button {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
+        line-height: 34px;
         .icon-class {
             display: none;
         }
@@ -19,6 +18,7 @@
 .secondary-button {
         background-color: $transparent;
         color: $medium-blue-color;
+        line-height: 34px;
         border: 2px solid $medium-blue-color;
         .icon-class {
             display: none;

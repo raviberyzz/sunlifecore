@@ -4,7 +4,7 @@ JSON Format
 ```
 {
 "button-class": "primary-blue-button",
-"button-text": "Button",
+"button-text": "Sign in",
 "button-type": "button",
 "button-wrapper-class":"sign-in-wrapper",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
@@ -154,15 +154,12 @@ JSON Format
         "selected" : "nav-select"
     },{
         "link" : "https://www.sunlife.ca/ca?vgnLocale=fr_CA",
-        "text" : "Français",
-        "selected" : "not-bold"
+        "text" : "Français"
     },{
         "link" : "https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
         "text" : "欢迎访问永明金融网页 ",
         "chinese" : true,
-        "selected" : "chinese",
-        "separator-color" : "grey-horizontal-separator",
-        "wrapper-separator":"region-separator"
+        "separator-wrapper" : "grey-horizontal-separator"
     }],
     "language-region":"language-region"
 }
