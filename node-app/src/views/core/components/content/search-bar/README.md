@@ -12,7 +12,7 @@ JSON Format
     "error-message":"",
     "validation-pattern": "",
     "input-text-type":"text",
-    "button-type":"submit",
+    "form-button-type":"submit",
     "button-value":"Search",
     "form-button-class":"primary-blue-button"
 }
