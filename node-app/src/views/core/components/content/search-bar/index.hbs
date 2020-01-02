@@ -1,18 +1,28 @@
-<div class="search-bar-wrapper collapse" id="sun-search" aria-expanded="true">
+<div class="search-bar-wrapper collapse in" data-section="header-search" id="sun-search">
     <div class="search-box">
-        <div class="close-div">
-            <a data-toggle="collapse"  aria-expanded="true" href="#sun-search">
-                <span class="sr-only">Close search</span> <span class="fa fa-remove collapse-x"></span>
-            </a>
-        </div>
+        <div class="close-div"><a data-toggle="collapse" aria-expanded="true" href="#sun-search"> <span
+                    class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
+            </a></div>
         <div class="global-search">
-            <form name="searchform-bottom" class="slf-search" action="/ca/Search+results" method="get"><label
-                    class="sr-only">Search</label>
+            <form name="searchform-bottom" class="slf-search" action="https://www.sunlife.ca/ca/Search+results"
+                method="get"><label class="sr-only" for="q-top">Search</label>
                 <div class="form-wrapper">
-                    {{>core-components-form-text}}
+                    <div class="input-wrapper">
+                        {{>core-components-form-text}}
+                        <div class="search-autocomplete">
+                            <ul class="search-autocomplete-list">
+                                <li>&nbsp;</li>
+                            </ul>
+                            <ul class="search-sayt-list" data-section="type-ahead-html-listing">
+                                <div class="seperate horizontal-middle-align">
+                                    <li>&nbsp;</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
                     {{>core-components-form-button}}
                 </div>
-                <input name="action" type="hidden" value="input">
+                <input name="action" type="hidden" value="input" />
             </form>
         </div>
     </div>
