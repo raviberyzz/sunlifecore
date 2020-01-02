@@ -3756,6 +3756,8 @@ $(document).ready(function () {
 console.log('component loaded');
 
 
+
+
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
@@ -3799,6 +3801,11 @@ $(document).ready(function () {
 
         
         if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+
+            if (children2==1)
+            {
+                $('.right-navigation-wrapper').children().css('width','100%');
+            }
            
             if (children==2){
                 $('.right-navigation-wrapper').children().css('width','50%');
