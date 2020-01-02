@@ -4902,6 +4902,9 @@ hr {
       content: "\f107";
       font-family: FontAwesome;
       padding-right: 10px; }
+  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
+    font-weight: 700;
+    text-decoration: none; }
 
 @media (max-width: 1024px) {
   .left-nav-wrapper {
