@@ -9,7 +9,7 @@
                 {{#each first-level-list}}
                     <li class="cmp-navigation__item cmp-navigation__item--level-1 {{cmp-navigation__item--active}}">
                         {{#if second-level-present}}
-                            <a href="javascript:void(0)" class="cmp-navigation__item-link" aria-current="page" tabindex="0" aria-expanded="false" data-toggle="collapse" data-parent=".cmp-navigation__group">
+                            <a href="javascript:void(0)" class="cmp-navigation__item-link" aria-current="page" aria-expanded="false" data-toggle="collapse" data-parent=".cmp-navigation__group">
                                 {{first-level-link-name}}
                             </a>
                             <ul class="cmp-navigation__group">
@@ -22,7 +22,7 @@
                                 {{/each}}
                             </ul>
                         {{else}}
-                            <a class="cmp-navigation__item-link {{cmp-navigation__item--active}}" href="{{first-level-link-url}}">
+                            <a class="cmp-navigation__item-link " href="{{first-level-link-url}}">
                                 {{first-level-link-name}}
                             </a>
                         {{/if}}
