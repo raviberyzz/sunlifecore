@@ -2,6 +2,11 @@
 .side-image {
     width: 100%;
 }
+.right-image-position {
+    .right-item {
+        float: left;
+    }
+}
 .middle-aligned-text {
     .right-image-position, .left-image-position  {
         display: flex;

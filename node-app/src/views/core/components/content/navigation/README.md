@@ -2,14 +2,14 @@
 JSON Format
 ```
 {
-    "desktop-navigation-wrapper":"desktop-primary-navigation-yellow",
+    "desktop-navigation-wrapper":"desktop-primary-navigation",
     "navigation":[{
     "navigation-heading":"Explore Product",
     "list-wrapper-class":"mega-menu-wrapper",
     "LinkText": "Quick Link",
     "nav-icon":"fa-facebook",
      "nav-icon-display":"icon-display-none",
-     "span-border":"",
+     "span-border":"span-yellow-border",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
