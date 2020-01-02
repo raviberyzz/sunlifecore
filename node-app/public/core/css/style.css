@@ -4192,6 +4192,14 @@ input[type=text] {
 .title-wrapper-blue-yellow {
   background-color: #004C6C;
   color: #FFCB05; }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .desktop-region-language-menu-wrapper .slf-region {
+    border-right: 2px solid #D7D7D7; }
+    .desktop-region-language-menu-wrapper .slf-region .content-region {
+      padding: 0 22px 0 0; } }
+
+.icon-display-none {
+  display: none; }
 
 .title-wrapper-blue-yellow-rings {
   background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
