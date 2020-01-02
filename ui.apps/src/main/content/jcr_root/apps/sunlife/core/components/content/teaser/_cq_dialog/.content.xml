@@ -82,6 +82,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                         name="./description"
+                                                        required="{Boolean}true"
                                                         useFixedInlineToolbar="{Boolean}true"/>
                                                 </items>
                                             </descriptionGroup>
