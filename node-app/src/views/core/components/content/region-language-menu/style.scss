@@ -270,15 +270,23 @@
         }
     }
 }
-
 @media (max-width: $tab-screen-max) {
     .desktop-region-language-menu-wrapper {
         display: none;
     }
 }
-
 @media (min-width: $desktop-screen-min) {
     .mobile-region-language-menu-wrapper {
         display: none;
+    }
+}
+@media(min-width: $desktop-screen-min) and (max-width: $desktop-screen-max){
+    .desktop-region-language-menu-wrapper {
+        .slf-region {
+            border-right: 2px solid $light-grey-color;
+            .content-region {
+                padding:0 22px 0 0;
+            }
+        }
     }
 }
