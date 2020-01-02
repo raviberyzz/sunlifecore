@@ -5,10 +5,6 @@ JSON Format
 {
     "cta-wrapper": "yellow-icon-blue-background",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
-    "button-class": "signIn-button",
-    "button-text": "Button",
-    "redirection-link": "javascript:void(0)",
-    "fa-icon": "fa-user",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
@@ -19,7 +15,7 @@ JSON Format
 }
 ```
 
-<!-- icon-text-wrapper classes available are social-link-icon-wrapper, right-nav-icon-wrapper, cta-content-icon-wrapper, mega-menu-icon-wrapper -->
+<!-- icon-text-wrapper classes available are cta-content-icon-wrapper, mega-menu-icon-wrapper -->
 <!-- "cta-wrapper": "cross-cta-wrapper", "blue-icon-yellow-background", "yellow-icon-blue-background", 
 "yellow-icon-grey-background","yellow-icon-white-background"-->
 <!-- for "cross-cta-wrapper" use "icon-text-wrapper": "mega-menu-icon-wrapper" 

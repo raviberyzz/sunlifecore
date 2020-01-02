@@ -3753,9 +3753,6 @@ $(document).ready(function () {
 
 });
 
-console.log('component loaded');
-
-
 
 
 function demoFunction()
@@ -3774,6 +3771,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
+
+
 
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;

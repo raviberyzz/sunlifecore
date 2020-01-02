@@ -74,10 +74,21 @@ ul {
     }
     .yellow-icon-white-background {
         background-color: $light-grey-20;
+        border: none;
+        margin-top: 0 !important;
+        padding-top: 32px;
+        .cta-content-icon-wrapper {
+            border-top: 1px solid $light-grey-color;
+        }
+        &>:last-child{
+            border-bottom: 1px solid $light-grey-color;
+        }
     }
     .yellow-icon-white-background > *{
         width: 90%;
         margin: auto;
+        border-right: 1px solid $light-grey-color;
+        border-left: 1px solid $light-grey-color;
     }
 }
 @media (max-width:$tab-screen-max) {
