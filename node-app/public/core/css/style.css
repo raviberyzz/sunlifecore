@@ -4831,42 +4831,6 @@ hr {
   .mega-menu-wrapper-desk {
     display: none; } }
 
-.left-nav-wrapper {
-  width: 266px; }
-  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__item-link {
-    color: #424242;
-    font-size: 1.125rem;
-    padding: 0 20px; }
-  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 {
-    padding: 5px 0 5px 30px; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--level-2 {
-      padding: 5px 0 5px 30px; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
-      border-bottom: 2px solid #FFCB05;
-      font-weight: 700;
-      text-decoration: none; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item--active {
-      border-bottom: 2px solid #FFCB05;
-      font-weight: 700;
-      text-decoration: none; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link {
-      padding: 0;
-      font-size: 1rem;
-      color: #004C6C;
-      font-weight: 400; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="false"]:after {
-      content: "\f105";
-      font-family: FontAwesome;
-      padding-right: 10px; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="true"]:after {
-      content: "\f107";
-      font-family: FontAwesome;
-      padding-right: 10px; }
-
-@media (max-width: 1024px) {
-  .left-nav-wrapper {
-    display: none; } }
-
 .lists-wrapper .links {
   padding: 0 15px;
   border-top: 1px solid #ffffff; }
@@ -4906,6 +4870,42 @@ hr {
     padding-right: 10px; }
   .lists-wrapper .accordion-heading {
     cursor: pointer; } }
+
+.left-nav-wrapper {
+  width: 266px; }
+  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__item-link {
+    color: #424242;
+    font-size: 1.125rem;
+    padding: 0 20px; }
+  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 {
+    padding: 5px 0 5px 30px; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--level-2 {
+      padding: 5px 0 5px 30px; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
+      border-bottom: 2px solid #FFCB05;
+      font-weight: 700;
+      text-decoration: none; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item--active {
+      border-bottom: 2px solid #FFCB05;
+      font-weight: 700;
+      text-decoration: none; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link {
+      padding: 0;
+      font-size: 1rem;
+      color: #004C6C;
+      font-weight: 400; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="false"]:after {
+      content: "\f105";
+      font-family: FontAwesome;
+      padding-right: 10px; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="true"]:after {
+      content: "\f107";
+      font-family: FontAwesome;
+      padding-right: 10px; }
+
+@media (max-width: 1024px) {
+  .left-nav-wrapper {
+    display: none; } }
 
 .two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
@@ -5424,6 +5424,9 @@ ul {
 
 .side-image {
   width: 100%; }
+
+.right-image-position .right-item {
+  float: left; }
 
 .middle-aligned-text .right-image-position, .middle-aligned-text .left-image-position {
   display: flex;
