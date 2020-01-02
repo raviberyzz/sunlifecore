@@ -125,54 +125,6 @@
                             </columns>
                         </items>
                     </logo>
-                    <itemSettings
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Item Settings"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <linkItems
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="${not empty cqDesign.linkItems ? cqDesign.linkItems : false}"
-                                                fieldDescription="Link items to the corresponding page"
-                                                name="./linkItems"
-                                                text="Link items"
-                                                uncheckedValue="false"
-                                                value="true"/>
-                                            <showDescription
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="${not empty cqDesign.showDescription ? cqDesign.showDescription : false}"
-                                                fieldDescription="Show descriptions of the link item"
-                                                name="./showDescription"
-                                                text="Show description"
-                                                uncheckedValue="false"
-                                                value="true"/>
-                                            <showModificationDate
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                checked="${not empty cqDesign.showModificationDate ? cqDesign.showModificationDate : false}"
-                                                fieldDescription="Show modification date of the link item"
-                                                name="./showModificationDate"
-                                                text="Show date"
-                                                uncheckedValue="false"
-                                                value="true"/>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </itemSettings>
                     <utilitynav
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Utility Nav"
@@ -607,6 +559,80 @@
                             </columns>
                         </items>
                     </mobilenav>
+                    <regionalnav
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Regions"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <region
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Do you need Regions for the site"
+                                                name="./listFromRegion">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".list-option-listFromRegion-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <false
+                                                        granite:hide="${cqDesign.disableFalse}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="No"
+                                                        value="regionfalse"/>
+                                                    <true
+                                                        granite:hide="${cqDesign.disableTrue}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Yes"
+                                                        value="regiontrue"/>
+                                                </items>
+                                            </region>
+                                            <regiontrue
+                                                granite:class="hide list-option-listFromRegion-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="regiontrue"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <regiontitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Region Title"
+                                                                name="./regionTitle"/>
+                                                            <fragmentpath
+                                                                granite:id="xfPicker"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="cq/experience-fragments/editor/components/xffield"
+                                                                fieldDescription="Choose the variant to be displayed by this experience fragment"
+                                                                fieldLabel="Variation"
+                                                                filter="folderOrVariant"
+                                                                name="./fragmentPath"
+                                                                propertyFilter="cq:xfShowInEditor"
+                                                                variant="web"/>
+                                                        </items>
+                                                    </column>
+                                                </items>
+                                            </regiontrue>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </regionalnav>
                 </items>
             </tabs>
         </items>
