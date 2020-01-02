@@ -3755,6 +3755,8 @@ $(document).ready(function () {
 
 
 
+
+
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
@@ -3771,8 +3773,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
-
 
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
@@ -3800,6 +3800,11 @@ $(document).ready(function () {
 
         
         if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+
+            if (children2==1)
+            {
+                $('.right-navigation-wrapper').children().css('width','100%');
+            }
            
             if (children==2){
                 $('.right-navigation-wrapper').children().css('width','50%');
