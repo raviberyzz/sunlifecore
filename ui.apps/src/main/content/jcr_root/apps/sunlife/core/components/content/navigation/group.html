@@ -14,7 +14,7 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.group="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html">
-    <ul class="first-level-navigation" data-sly-list="${items}">
+    <sly data-sly-list="${items}">
         <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
-    </ul>
+    </sly>
 </template>
