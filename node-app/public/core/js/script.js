@@ -3755,12 +3755,10 @@ $(document).ready(function () {
 
 
 
-
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
-
 
 
 
@@ -4020,7 +4018,6 @@ $(document).ready(function(){
     );
    });
 
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4041,6 +4038,7 @@ $(document).ready(function(){
         }
     });
 });
+
 
 
 $(document).ready(function () {
@@ -4070,5 +4068,7 @@ $(document).ready(function () {
             $("#language-btn").attr('aria-expanded','false');
         });
 });
+
+
 
 
