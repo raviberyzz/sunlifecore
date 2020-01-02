@@ -25,7 +25,6 @@
                         }
                         .cmp-navigation__item--active{
                             .cmp-navigation__item-link{
-                                //border-bottom: 2px solid $medium-yellow-background;
                                 font-weight: 700;
                                 text-decoration: none;
                             }
@@ -37,11 +36,6 @@
                         color: $medium-blue-color;
                         font-weight: 400;
                     }
-                    // .cmp-navigation__item--active{
-                    //     border-bottom: 2px solid $medium-yellow-background;
-                    //     font-weight: 700;
-                    //     text-decoration: none;
-                    // }
                     .cmp-navigation__item-link[aria-expanded="false"]:after {
                         content: "\f105";
                         font-family: FontAwesome;
@@ -55,7 +49,6 @@
                 }
                 .cmp-navigation__item--active{
                     .cmp-navigation__item-link{
-                        //border-bottom: 2px solid $medium-yellow-background;
                         font-weight: 700;
                         text-decoration: none;
                     }
