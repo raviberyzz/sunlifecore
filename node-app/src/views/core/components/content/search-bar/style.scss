@@ -1,11 +1,10 @@
 @import '../../../base/core';
-
 .search-bar-wrapper {
     background: $medium-yellow-background;
-
+    height: 128px;
     .global-search {
         text-align: center;
-
+        z-index: 1099;
         .form-wrapper {
             max-width: 550px;
             margin: 0 auto;
@@ -18,6 +17,7 @@
         }
 
         .search-autocomplete {
+            position:absolute;
             z-index: 1099;
         }
     }
@@ -59,7 +59,9 @@
 
     form.slf-search .form-wrapper>.button-wrapper {
         padding-left: 16px;
-        width: 1%;
         border: 0;
+        .primary-blue-button{
+            width: 136px;
+        }
     }
 }

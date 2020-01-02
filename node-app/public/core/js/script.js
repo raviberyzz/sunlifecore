@@ -3717,6 +3717,41 @@ $(document).ready(function () {
     });
         
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
+$(document).ready(function () {
+
+// search bar analytics starts here
+// Desktop search analytics starts here
+    $('#search-btn').click(function () {
+        if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
+            utag.link({ "asset_type": "Module", "asset_title": "Search", "event_type": "On Page Impression", "event_title": "Search Module Expansion", "page_section": "Search Bar" });
+            //console.log("search exapansion tracked");
+        } 
+        else {
+            //console.log("search expansion is not tracked");
+        }
+    });
+    // Desktop search analytics ends her
+    // Mobile search analytics starts here
+    $('.search-icon-mobile').click(function () {
+        utag.link({"asset_type"	: "Module","asset_title"	: "Search","event_type"	: "On Page Impression","event_title"	: "Search Module Expansion","page_section" : "Search Bar"});
+    });
+    //Mobile search analytics starts here
+// search bar analytics ends here
+
+// Region and language menu analytics starts here
+    $('#language-btn').click(function(){
+        if($(this).attr('aria-expanded') == "false"){
+        utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+        //   console.log("language panel expansion event tracked sucessfully");
+
+    }
+    else {
+        //    console.log("language panel expansion event is not tracked");
+        }
+    });
+// Region and language menu analytics ends here
+
+});
 
 
 
@@ -3725,7 +3760,7 @@ function demoFunction()
 alert("Demo-Onsubmit-Function");
 }
 
-console.log('utility-nav loaded');
+
 
 
 $(document).ready(function () {
@@ -3736,18 +3771,8 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-console.log('separator loaded');
-$(document).ready(function () {
-    $('#search-btn').click(function () {
-        if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
-            utag.link({ "asset_type": "Module", "asset_title": "Search", "event_type": "On Page Impression", "event_title": "Search Module Expansion", "page_section": "Search Bar" });
-            //console.log("search exapansion tracked");
-        } 
-        else {
-            //console.log("search expansion is not tracked");
-        }
-    });
-});
+
+
 
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
@@ -3775,6 +3800,11 @@ $(document).ready(function () {
 
         
         if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+
+            if (children2==1)
+            {
+                $('.right-navigation-wrapper').children().css('width','100%');
+            }
            
             if (children==2){
                 $('.right-navigation-wrapper').children().css('width','50%');
@@ -3830,18 +3860,7 @@ $(document).ready(function () {
  
  });
  
-console.log('region-language-menu loaded');
 $(document).ready(function(){
-    $('#language-btn').click(function(){
-	    if($(this).attr('aria-expanded') == "false"){
-		  utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
-		//   console.log("language panel expansion event tracked sucessfully");
-
-       }
-       else {
-	    //    console.log("language panel expansion event is not tracked");
-	    }
-	});
     $('.content-region .nav-select').parent().addClass('in');
     $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
     $('.content-region .accordion-heading').click(function(){
@@ -3998,8 +4017,8 @@ $(document).ready(function(){
        }
     );
    });
-console.log('separator loaded');
-console.log('component loaded');
+
+
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4020,9 +4039,10 @@ $(document).ready(function(){
         }
     });
 });
-console.log('image loaded');
-console.log('icon-text loaded');
+
+
 $(document).ready(function () {
+    $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -4049,7 +4069,6 @@ $(document).ready(function () {
         });
 });
 
-console.log('footer-copyright loaded');
-console.log('container loaded');
 
-console.log('breadcrumb loaded');
+
+
