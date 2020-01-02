@@ -5219,6 +5219,41 @@ hr {
 ul {
   margin: 0; }
 
+.icon-text {
+  padding-bottom: 24px; }
+
+.yellow-icon-blue-background > * {
+  background-color: #004C6C;
+  color: #ffffff;
+  text-align: center; }
+
+.yellow-icon-grey-background > * {
+  background-color: #F4F7F6;
+  text-align: center; }
+
+.yellow-icon-white-background > * {
+  background-color: #ffffff;
+  text-align: center; }
+
+.yellow-icon-white-background {
+  border: 1px solid #D7D7D7; }
+
+.blue-icon-yellow-background > * {
+  background-color: #FFCB05;
+  text-align: center; }
+  .blue-icon-yellow-background > * .icon-style {
+    background: linear-gradient(#004C6C, #003946); }
+
+.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+  margin-top: 42px; }
+  .yellow-icon-blue-background .icon-style, .yellow-icon-grey-background .icon-style, .blue-icon-yellow-background .icon-style, .yellow-icon-white-background .icon-style {
+    position: relative;
+    bottom: 40px; }
+  .yellow-icon-blue-background .icon-parent, .yellow-icon-grey-background .icon-parent, .blue-icon-yellow-background .icon-parent, .yellow-icon-white-background .icon-parent {
+    height: 40px; }
+  .yellow-icon-blue-background > :last-child, .yellow-icon-grey-background > :last-child, .blue-icon-yellow-background > :last-child, .yellow-icon-white-background > :last-child {
+    padding-bottom: 40px; }
+
 .cross-cta-wrapper {
   padding: 24px 16px;
   background-color: #FEEDD2;
@@ -5234,83 +5269,6 @@ ul {
   .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
     margin-right: 16px; }
 
-.blue-icon-yellow-background .icon-text-heading-normal {
-  margin-top: 0; }
-
-.blue-icon-yellow-background .icon-style {
-  background: linear-gradient(#004C6C, #003946);
-  position: relative;
-  top: 40px; }
-
-.blue-icon-yellow-background .icon-text {
-  background-color: #FFCB05;
-  padding-top: 40px;
-  padding-bottom: 24px; }
-
-.blue-icon-yellow-background .box-continuation-wrapper {
-  background-color: #FFCB05;
-  text-align: center;
-  padding-bottom: 24px; }
-
-.yellow-icon-blue-background .icon-text-heading-normal {
-  margin-top: 0; }
-
-.yellow-icon-blue-background .icon-style {
-  position: relative;
-  top: 40px; }
-
-.yellow-icon-blue-background .icon-text {
-  background-color: #004C6C;
-  padding-top: 40px;
-  padding-bottom: 24px;
-  color: #ffffff; }
-
-.yellow-icon-blue-background .box-continuation-wrapper {
-  background-color: #004C6C;
-  text-align: center;
-  padding-bottom: 24px;
-  color: #ffffff; }
-
-.yellow-icon-grey-background .icon-text-heading-normal {
-  margin-top: 0; }
-
-.yellow-icon-grey-background .icon-style {
-  position: relative;
-  top: 40px; }
-
-.yellow-icon-grey-background .icon-text {
-  background-color: #F4F7F6;
-  padding-top: 40px;
-  padding-bottom: 24px; }
-
-.yellow-icon-grey-background .box-continuation-wrapper {
-  background-color: #F4F7F6;
-  text-align: center;
-  padding-bottom: 24px; }
-
-.yellow-icon-white-background .icon-text-heading-normal {
-  margin-top: 0; }
-
-.yellow-icon-white-background .icon-style {
-  position: relative;
-  top: 40px; }
-
-.yellow-icon-white-background .icon-text {
-  background-color: #ffffff;
-  padding-top: 40px;
-  padding-bottom: 24px;
-  border-top: 1px solid #D7D7D7;
-  border-right: 1px solid #D7D7D7;
-  border-left: 1px solid #D7D7D7; }
-
-.yellow-icon-white-background .box-continuation-wrapper {
-  background-color: #ffffff;
-  text-align: center;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #D7D7D7;
-  border-left: 1px solid #D7D7D7;
-  border-right: 1px solid #D7D7D7; }
-
 @media (max-width: 767px) {
   .cross-cta-wrapper .icon-parent {
     display: none; }
@@ -5318,20 +5276,59 @@ ul {
     text-align: center; }
   .yellow-icon-white-background {
     background-color: #F7F7F7; }
-    .yellow-icon-white-background .triple-home-cta {
-      width: 90%;
-      margin: auto; } }
+  .yellow-icon-white-background > * {
+    width: 90%;
+    margin: auto; } }
 
 @media (max-width: 1024px) {
-  .yellow-icon-grey-background .icon-style, .yellow-icon-blue-background .icon-style, .blue-icon-yellow-background .icon-style, .yellow-icon-white-background .icon-style {
-    height: 60px;
-    width: 60px;
-    position: relative;
-    top: 30px;
-    padding: 11px;
-    font-size: 2.125rem; }
-  .yellow-icon-grey-background .icon-text, .yellow-icon-blue-background .icon-text, .blue-icon-yellow-background .icon-text, .yellow-icon-white-background .icon-text {
-    padding-top: 30px; } }
+  .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+    margin-top: 32px; }
+    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-style, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-style, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-style, .yellow-icon-white-background .cta-content-icon-wrapper .icon-style {
+      height: 60px;
+      width: 60px;
+      position: relative;
+      bottom: 30px;
+      padding: 11px;
+      font-size: 2.125rem; }
+    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
+      height: 30px; } }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff;
+  line-height: 34px; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  line-height: 34px; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  line-height: 34px;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
 
 .primary-blue-button {
   background-color: #004C6C;

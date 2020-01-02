@@ -3753,6 +3753,7 @@ $(document).ready(function () {
 
 });
 
+console.log('component loaded');
 
 
 
