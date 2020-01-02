@@ -4,24 +4,24 @@
 <sly data-sly-test="${!empty}">
    <div class="image-text-wrapper">
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position">
-         <div data-sly-test.description="${teaser.description}" class="left-item text-section">
+         <div class="left-item text-section">
             ${description @context ='html'}
          </div>
          <div class="right-item">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
-               <a class="desktop-image" href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
-               <img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+               <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
                </a>
                <sly data-sly-test.mobileImage="${teaser.fileReferenceMobile}">
-                  <a class="mobile-image" href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
-                  <img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
+                  <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
+                  <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
                   </a>
                </sly>
             </sly>
             <sly data-sly-test="${!imageLink}">
-               <img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
-               <sly data-sly-test="${mobileImage}">
-                  <img class="side-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}"/>
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+               <sly data-sly-test="${teaser.fileReferenceMobile}">
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}"/>
                </sly>
             </sly>
          </div>
@@ -29,23 +29,23 @@
       <div data-sly-test="${!imageRight}" class="left-image-position">
          <div class="left-item">
             <sly data-sly-test="${teaser.linkURL}">
-               <a class="desktop-image" href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
-               <img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+               <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
                </a>
                <sly data-sly-test="${teaser.fileReferenceMobile}">
-                  <a class="mobile-image" href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
-                  <img class="side-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}">
+                  <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}">
                   </a>
                </sly>
             </sly>
             <sly data-sly-test="${!teaser.linkURL}">
-               <img class="side-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
                <sly data-sly-test="${teaser.fileReferenceMobile}">
-                  <img class="side-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}"/>
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}"/>
                </sly>
             </sly>
          </div>
-         <div data-sly-test="${teaser.description}" class="right-item text-section">
+         <div class="right-item text-section">
             ${teaser.description @context ='html'}
          </div>
       </div>
