@@ -3,7 +3,8 @@
 JSON Format
 ```
 {
-     "separator-wrapper" : "yellow-horizontal-separator",
+    "data-section-right-rail" : "body-right-rail",
+    "separator-wrapper" : "yellow-horizontal-separator",
     "button-class": "primary-blue-button",
     "button-text": "Button",
     "redirection-link": "javascript:void(0)",

@@ -73,6 +73,13 @@
             }
             > :not(:first-child) {
                 padding: 0 0 0 10px;
+                .nav-select {
+                    background-color: $light-orange-color;
+                    a {
+                        font-weight: 700;
+                        color: $dark-grey-color;
+                    }
+                }
                 .accordion-heading {
                     font-size: 1rem;
                     cursor: pointer;
