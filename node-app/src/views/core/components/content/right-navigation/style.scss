@@ -2,8 +2,8 @@
 .right-navigation-wrapper{
     padding: 0;
     text-align: center;
+    background-color: $light-cool-blue-color;
     .lists-wrapper{
-        width: 100%;
         .links{
             width: 100%;
             a{
@@ -18,8 +18,8 @@
         }
     }
  
-    .right-nav-icon-wrapper{
-        width: 100%;
+    .right-nav-cta-orange{
+       background-color: $light-orange-20;
     }
     .yellow-horizontal-separator{
         width: 100%;

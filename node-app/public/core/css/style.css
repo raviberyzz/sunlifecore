@@ -3788,6 +3788,24 @@ input[type=text] {
   color: #004C6C;
   border: 2px solid #004C6C; }
 
+.button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
+  height: 48px;
+  width: 180px;
+  border-radius: 4px; }
+
+.button-wrapper .primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.button-wrapper .primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.button-wrapper .secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
 .utility-nav-wrapper {
   text-align: right;
   padding: 0 10px 8px 0;
@@ -4176,21 +4194,64 @@ hr {
     .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .primary-blue-button {
       width: 136px; }
 
+.search-bar-wrapper {
+  background: #FFCB05;
+  height: 128px; }
+  .search-bar-wrapper .global-search {
+    text-align: center;
+    z-index: 1099; }
+    .search-bar-wrapper .global-search .form-wrapper {
+      max-width: 550px;
+      margin: 0 auto; }
+    .search-bar-wrapper .global-search input[type=text] {
+      margin-bottom: 0;
+      height: 48px;
+      width: 462px; }
+    .search-bar-wrapper .global-search .search-autocomplete {
+      position: absolute;
+      z-index: 1099; }
+  .search-bar-wrapper .slf-search .form-wrapper {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    border: 0; }
+    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper, .search-bar-wrapper .slf-search .form-wrapper .button-wrapper {
+      display: table-cell;
+      vertical-align: top;
+      position: relative; }
+    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper.form-group-wrapper {
+      display: inline; }
+  .search-bar-wrapper .search-box {
+    padding: 30px 0; }
+  .search-bar-wrapper .close-div {
+    position: absolute;
+    right: 0;
+    float: right;
+    top: 0; }
+  .search-bar-wrapper .collapse-x {
+    margin: 24px 15px 0 0;
+    font-size: 0.875rem; }
+  .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
+    padding-left: 16px;
+    border: 0; }
+    .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .primary-blue-button {
+      width: 136px; }
+
 .right-navigation-wrapper {
   padding: 0;
-  text-align: center; }
-  .right-navigation-wrapper .lists-wrapper {
+  text-align: center;
+  background-color: #F4F7F6; }
+  .right-navigation-wrapper .lists-wrapper .links {
     width: 100%; }
-    .right-navigation-wrapper .lists-wrapper .links {
-      width: 100%; }
-      .right-navigation-wrapper .lists-wrapper .links a {
-        font-weight: 700; }
-      .right-navigation-wrapper .lists-wrapper .links .collapse {
-        display: block !important; }
-    .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
-      display: none; }
-  .right-navigation-wrapper .right-nav-icon-wrapper {
-    width: 100%; }
+    .right-navigation-wrapper .lists-wrapper .links a {
+      font-weight: 700; }
+    .right-navigation-wrapper .lists-wrapper .links .collapse {
+      display: block !important; }
+  .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
+    display: none; }
+  .right-navigation-wrapper .right-nav-cta-orange {
+    background-color: #FEEDD2; }
   .right-navigation-wrapper .yellow-horizontal-separator {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
@@ -5217,6 +5278,21 @@ hr {
         padding-top: 40px; }
       .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
+
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
 
 .primary-blue-button {
   background-color: #004C6C;
