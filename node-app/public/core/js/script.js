@@ -3752,6 +3752,20 @@ $(document).ready(function () {
 // Region and language menu analytics ends here
 
 });
+
+
+
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+});     
+
+
+
 $(document).ready(function () {
     var children1=$('.right-navigation-wrapper').children().length;
     var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
@@ -4042,6 +4056,7 @@ $(document).ready(function(){
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
+    // $(".desktop-header-wrapper .desktop-region-language-menu-wrapper").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -4050,9 +4065,9 @@ $(document).ready(function () {
         }
      });
      $('#search-btn').click(function(){
-        if ($('.desktop-region-language-menu-wrapper').hasClass('in')){  
+        if ($('#sun-language').hasClass('in')){  
                $("#language-btn").attr('aria-expanded','false');
-               $('.desktop-region-language-menu-wrapper').removeClass('in');
+               $("#sun-language").removeClass('in');
            }
         });
         $('#language-btn-container').click(function(){
@@ -4068,7 +4083,7 @@ $(document).ready(function () {
         });
 });
 
-
-
-
-
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}

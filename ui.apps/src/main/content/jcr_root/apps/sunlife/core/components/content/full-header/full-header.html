@@ -1,363 +1,74 @@
-
 <header>
   <div class="slf-header-wrapper">
+    <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="desktop-sign-in">
+         <div class="modal fade sign-in-modal-wrapper" id="mySignInModal" role="dialog">
+              <div class="modal-dialog sign-in-modaldialog">
+        			${properties.text  @context ='html'}     
+              </div>
+      </div>    </div>
     <div class="desktop-header-wrapper">
-      <div class="desktop-region-bar">
-        <div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
-            <div class="cross-btn">
-                <a data-toggle="collapse" id="sunLanguageCrossBtn" href="#sun-language">
-                    <span class="fa fa-remove collapse-x" title="Close Region and language selection page" tabindex="0"></span>
-                </a>
-            </div>
-                <div class="col-xs-9 slf-region">
-                    <div class="title-region">
-                        <h4>Regions</h4>
-                    </div>
-                    <div class="col-xs-12 content-region">
-                            <div class="col-xs-4 slf-region-column">
-                                <ul class="list-unstyled">
-                                            <li>
-                                                <a href="https://www.sunlife.com">Worldwide (sunlife.com)</a>
-                                            </li>
-                                            <li>
-                                                <div class="region-link">
-                                                    <h3 class="accordion-heading" aria-expanded="true" data-parent=".region-link" data-target="#links1" data-toggle="collapse" tabindex="0">Canada</h3>
-                                                    <div class="collapse in" id="links1">
-                                                        <ul class="list-unstyled">
-                                                            <li class=nav-select>
-                                                                <a href="https://www.sunlife.ca">Sun Life Financial Canada</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="https://www.sunlifeglobalinvestments.com">Sun Life Global Investments</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="https://www.slcmanagement.com">SLC Management</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.bentallkennedy.com">Bentall Kennedy Group</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-4 slf-region-column">
-                                <ul class="list-unstyled">
-                                            <li>
-                                                <a href="http://www.sunlife-everbright.com">China</a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.sunlife.com.hk">Hong Kong, SAR</a>
-                                            </li>
-                                            <li>
-                                                <div class="region-link">
-                                                    <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#links2" data-toggle="collapse" tabindex="0">India</h3>
-                                                    <div class="collapse " id="links2">
-                                                        <ul class="list-unstyled">
-                                                            <li class=>
-                                                                <a href="https://lifeinsurance.adityabirlacapital.com">Birla Sun Life</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.sunlife.com/asiaservicecentre">Asia Service Centres</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.sunlife.co.id/indonesia?vgnLocale&#x3D;in_ID">Indonesia</a>
-                                            </li>
-                                            <li>
-                                                <a href="https://www.sunlife.com/international">International</a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.sunlife.ie">Ireland</a>
-                                            </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-4 slf-region-column">
-                                <ul class="list-unstyled">
-                                            <li>
-                                                <a href="http://www.sunlifemalaysia.com">Malaysia</a>
-                                            </li>
-                                            <li>
-                                                <div class="region-link">
-                                                    <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#links3" data-toggle="collapse" tabindex="0">Philippines</h3>
-                                                    <div class="collapse " id="links3">
-                                                        <ul class="list-unstyled">
-                                                            <li class=>
-                                                                <a href="http://www.sunlife.com.ph">Sun Life Financial Philippines</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.sunlifegrepa.com">Sun Life Grepa Financial</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.sunlife.com/asiaservicecentre">Asia Service Centres</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.sloc.co.uk">United Kingdom</a>
-                                            </li>
-                                            <li>
-                                                <div class="region-link">
-                                                    <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#links4" data-toggle="collapse" tabindex="0">United States</h3>
-                                                    <div class="collapse " id="links4">
-                                                        <ul class="list-unstyled">
-                                                            <li class=>
-                                                                <a href="http://www.sunlife.com/us">Sun Life Financial United States</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.mfs.com">MFS Investment Management</a>
-                                                            </li>
-                                                            <li class=>
-                                                                <a href="http://www.bentallkennedy.com">Bentall Kennedy Group</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="http://sunlife.com.vn/">Vietnam</a>
-                                            </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-            <div class="col-xs-3 slf-language">
-                <div class="title-language">
-                    <h4>Languages - Canada</h4>
-                </div>
-                <div class="col-xs-12 content-language">
-                    <ul class="list-unstyled">
-        
-                            <li class=nav-select>
-                                <a href="">English</a>
-                            </li>
-        
-                            <li class=not-bold>
-                                <a href="https://www.sunlife.ca/ca?vgnLocale&#x3D;fr_CA">Français</a>
-                            </li>
-                                <div class="">
-                                    <hr class="col-xs-1 horizontal-middle-align" />
-                                </div>                    <li class=chinese>
-                                <a href="https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale&#x3D;en_CA">欢迎访问永明金融网页 </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 mobile-region-language-menu-wrapper mobile-language-region">
-            <div class="go-back">
-                <a tabindex="0">Back</a>
-            </div>
-            <div class="col-xs-12 slf-tab-region ">
-                <div class="col-xs-6 slf-tab first  " data-target="#region-tab" data-toggle="tab" tabindex="0">
-                    Regions
-                </div>
-                <div class="col-xs-6 slf-tab second active " data-target="#language-tab" data-toggle="tab" tabindex="0">
-                    Language
-                </div>
-            </div>
-            <div class="col-xs-12 tab-content">
-                <div id="region-tab" class="tab-pane region-tab ">
-                    <ul class="list-unstyled">
-                                    <li>
-                                        <a href="https://www.sunlife.com">Worldwide (sunlife.com)</a>
-                                    </li>
-                                    <li>
-                                        <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="true" data-parent=".region-link" data-target="#mob-links1" data-toggle="collapse">Canada</h3>
-                                            <div class="collapse in" id="mob-links1">
-                                                <ul class="list-unstyled accordion-list">
-                                                    <li class=nav-select>
-                                                        <a href="https://www.sunlife.ca">Sun Life Financial Canada</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="https://www.sunlifeglobalinvestments.com">Sun Life Global Investments</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="https://www.slcmanagement.com">SLC Management</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.bentallkennedy.com">Bentall Kennedy Group</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sunlife-everbright.com">China</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sunlife.com.hk">Hong Kong, SAR</a>
-                                    </li>
-                                    <li>
-                                        <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#mob-links2" data-toggle="collapse">India</h3>
-                                            <div class="collapse " id="mob-links2">
-                                                <ul class="list-unstyled accordion-list">
-                                                    <li class=>
-                                                        <a href="https://lifeinsurance.adityabirlacapital.com">Birla Sun Life</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.sunlife.com/asiaservicecentre">Asia Service Centres</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sunlife.co.id/indonesia?vgnLocale&#x3D;in_ID">Indonesia</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.sunlife.com/international">International</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sunlife.ie">Ireland</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sunlifemalaysia.com">Malaysia</a>
-                                    </li>
-                                    <li>
-                                        <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#mob-links3" data-toggle="collapse">Philippines</h3>
-                                            <div class="collapse " id="mob-links3">
-                                                <ul class="list-unstyled accordion-list">
-                                                    <li class=>
-                                                        <a href="http://www.sunlife.com.ph">Sun Life Financial Philippines</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.sunlifegrepa.com">Sun Life Grepa Financial</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.sunlife.com/asiaservicecentre">Asia Service Centres</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.sloc.co.uk">United Kingdom</a>
-                                    </li>
-                                    <li>
-                                        <div class="region-link">
-                                            <h3 class="accordion-heading" aria-expanded="false" data-parent=".region-link" data-target="#mob-links4" data-toggle="collapse">United States</h3>
-                                            <div class="collapse " id="mob-links4">
-                                                <ul class="list-unstyled accordion-list">
-                                                    <li class=>
-                                                        <a href="http://www.sunlife.com/us">Sun Life Financial United States</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.mfs.com">MFS Investment Management</a>
-                                                    </li>
-                                                    <li class=>
-                                                        <a href="http://www.bentallkennedy.com">Bentall Kennedy Group</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="http://sunlife.com.vn/">Vietnam</a>
-                                    </li>
-                    </ul>
-                </div>
-                <div id="language-tab" class="tab-pane language-tab active">
-                    <ul class="list-unstyled">
-                            <li class=nav-select>
-                                <a href="">English</a>
-                            </li>
-                            <li class=not-bold>
-                                <a href="https://www.sunlife.ca/ca?vgnLocale&#x3D;fr_CA">Français</a>
-                            </li>
-                                <div class="">
-                                    <hr class="col-xs-1 horizontal-middle-align" />
-                                </div>                    <li class=chinese>
-                                <a href="https://www.sunlife.ca/ca/Welcome+to+Sun+Life+Financial?vgnLocale&#x3D;en_CA">欢迎访问永明金融网页 </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>      </div>
-      <div class="desktop-search-bar">
-        <div class="search-bar-wrapper collapse" id="sun-search" aria-expanded="true">
+      <div data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
+        <div class="search-bar-wrapper collapse" id="sun-search">
             <div class="search-box">
-                <div class="close-div">
-                    <a data-toggle="collapse"  aria-expanded="true" href="#sun-search">
-                        <span class="sr-only">Close search</span> <span class="fa fa-remove collapse-x"></span>
-                    </a>
-                </div>
+                <div class="close-div"><a data-toggle="collapse" aria-expanded="true" href="#sun-search"> <span
+                            class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
+                    </a></div>
                 <div class="global-search">
-                    <form name="searchform-bottom" class="slf-search" action="/ca/Search+results" method="get"><label
-                            class="sr-only" for="q-top">Search</label>
+                    <form name="searchform-bottom" class="slf-search" action="https://www.sunlife.ca/ca/Search+results"
+                        method="get"><label class="sr-only" for="q-top">Search</label>
                         <div class="form-wrapper">
-                            <div class="input-wrapper form-group-wrapper">
-                                <input data-parsley-required="data-parsley-required" id=demo-id class="demo-class" label="demo-label" name="demo-text" type="text" maxlength="" placeholder="${properties.searchPlaceholder}" required="required"  data-parsley-pattern-message="Wrong Input" data-parsley-pattern="/[a-z]/g"  data-parsley-id="8">
-                            </div>                    <div class="button-wrapper">
-                                <input class="button-class primary-blue-button" type=button value=${properties.searchButton}>
+                            <div class="input-wrapper">
+                                <div class="input-wrapper form-group-wrapper">
+                                    <input data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q" type="text" maxlength="" placeholder="${properties.searchPlaceholder}" required="required"  data-parsley-pattern-message="" data-parsley-pattern="/[a-z]/g"  data-parsley-id="8">
+                                </div>                        <div class="search-autocomplete">
+                                    <ul class="search-autocomplete-list">
+                                        <li>&nbsp;</li>
+                                    </ul>
+                                    <ul class="search-sayt-list" data-section="type-ahead-html-listing">
+                                        <div class="seperate horizontal-middle-align">
+                                            <li>&nbsp;</li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="button-wrapper">
+                                <input class="button-class primary-blue-button" type="button" value="${properties.searchButton}">
                             </div>                </div>
-                        <input name="action" type="hidden" value="input">
+                        <input name="action" type="hidden" value="input" />
                     </form>
                 </div>
             </div>
         </div>      </div>
-
-
-
-
-     <div class="col-xs-12 yellow-stripe">
+    
+    <sly data-sly-test = "${properties.listFromRegion == 'regiontrue'}" data-sly-resource = "${ @resourceType='sunlife/core/components/content/experiencefragment'}"/>
+    
+      <div class="col-xs-12 yellow-stripe">
       </div>
-
-      <div class="desktop-sign-in">
-            <a href="javascript:void(0)" id="signin" role="button" data-target="#mySignInModal" data-toggle="modal" class="CTA-wrapper"> 
-                <span class="button-class signIn-button" maxlength="30"><span class="icon-class fa fa-user"></span>dfsdfds</span>
-            </a>
-
-			 ${properties.text @context ='html'}
-
-      </div>
-
-
-
-
-
       <div class="col-xs-12 desktop-header-content">
         <div class="col-xs-12 desktop-utility-nav">
               <div class="utility-nav-wrapper">
-                  <div class="utility-nav-links">
-                      <ul role="navigation" aria-label="Helpful links"  data-sly-use.listModel="com.sunlife.core.models.UtilityNav">
-           			 <sly data-sly-list.links="${listModel.navlinks}">
-           				 <li>
+                  <div data-sly-test = "${properties.listFromNav == 'true'}" class="utility-nav-links">
+                      <ul data-sly-use.listModel="com.sunlife.core.models.UtilityNav" role="navigation" aria-label="Helpful links">
+                               <sly data-sly-list.links="${listModel.navlinks}">
+                              <li>
                                <a href="${links.linkUrl @ extension = 'html'}">${links.linkName}</a>
                               </li>
-            </sly>
-            
-            
-            
-            
-            
-            
-                      
-
+                              </sly>
                       </ul>
                   </div>
                       <div class="utility-nav-links">
                           <ul>
-                              <li id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
-                                  <div class="lang-btn" id="language-btn" role="button" data-target="#sun-language"       
+                              <li data-sly-test = "${properties.listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
+                                  <div class="lang-btn" id="language-btn" role="button" data-target=".desktop-region-language-menu-wrapper"       
                                       data-toggle="collapse" tabindex="0" aria-expanded="false">
                                       <label class="sr-only">
                                           Expand or collapse region and language section
                                           Développer ou réduire le volet Régions et langue
                                       </label>
-                                          CANADA | EN
+                                          ${properties.regionTitle}
                                   </div>
                               </li>
-                                  <li class="search-icon-container" role="search" aria-label="search-bar">
+                                  <li data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="search-icon-container" role="search" aria-label="search-bar">
                                       <div class="srch-btn" id="search-btn" data-target="#sun-search"        
                                        data-toggle="collapse" role="button" tabindex="0" aria-expanded="false">
                                           <a>
@@ -374,142 +85,72 @@
               </div>
         </div>
         <div class="col-xs-12 desktop-sunlife-navigation">
-        <sly data-sly-use.listModel="com.sunlife.core.models.HeaderModel"/>
-          <div class="desktop-sunlife-logo">
-          <sly data-sly-list.links="${listModel.links}">
-            <img class="vertical-middle-align" href="${links.linkUrl @ extension = 'html' }" alt="sunlife logo"
-              src="${links.logoImage}">
-            </img>
-            
+          <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="com.sunlife.core.models.HeaderModel" class="desktop-sunlife-logo">
+           <sly data-sly-list.links="${listModel.links}">
+            <a href="${links.linkUrl @ extension = 'html' }">
+              <img class="vertical-middle-align" alt="sunlife logo"
+                src="${links.logoImage}">
+              </img>
+            </a>
             </sly>
-           </div>
-          <div class="desktop-navigation no-gutter">
-            <div class="desktop-mega-menu clearfix">
-              <div class="desktop-primary-navigation">
-            
-
-			
-			
-			<ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth primary-navigation" role="navigation" aria-label="Main" data-sly-use.listModel="com.sunlife.core.models.MegaMenuModel">
-              <sly data-sly-list.head = "${listModel.meganavlinks.listChildren}">
-              <li class="dropdown nav-item navigation">
-                  <a data-toggle="dropdown" id="explore1" class="dropdown-toggle subnav-trigger" href="${head.linkUrl @ extension='html'}">
-                      <span class="nav-item-heading">${head.linkName}</span></a>
-                      <div role="menu" id="explore-menu" class="dropdown-menu menu-content">
-               <div class="mega-menu-wrapper-desk">
-
-  				<sly data-sly-resource = "${head.path @resourceType='sunlife/core/components/content/experiencefragment'}"/>
-
-
-               </div></div>
-              </li>
-             </sly>
-              </ul>
-
-              </div>            </div>
           </div>
-          <div class="desktop-sign-button" id="signin">
-                <a href="javascript:void(0)" id="signin" role="button" data-target="#mySignInModal"
-                    data-toggle="modal" class="CTA-wrapper"> 
+          <div data-sly-test = "${properties.listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
+            <div class="desktop-mega-menu clearfix">
+              <div class=desktop-primary-navigation>
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation"
+                  aria-label="Main" data-sly-use.listModel="com.sunlife.core.models.MegaMenuModel">
+                 <sly data-sly-list.head = "${listModel.meganavlinks.listChildren}">
+                  <li class="dropdown nav-item navigation">
+                    <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger" href="${head.linkUrl @ extension='html'}">
+                      <i class="fa fa-facebook icon-display-none"></i><span class="nav-item-heading ">${head.linkName}</span></a>
+                    <div role="menu" class="dropdown-menu menu-content">
+                      <div class="mega-menu-wrapper-desk">
+                   
+                   <sly data-sly-resource = "${head.path @resourceType='sunlife/core/components/content/experiencefragment'}"/>
+                      
+                      </div> 
+                  </div>
+                </li>
+              </sly>
+            </ul>
+           </div>            </div>
+          </div>
+          <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="desktop-sign-button" id="signinbutton">
+            <div>
+                <a href="javascript:void(0)" id="" role="button" data-target="#mySignInModal" data-toggle="modal"
+                    class="CTA-wrapper">
                     <span class="button-class signIn-button"><span class="icon-class fa fa-user"></span>${properties.signinTitle}</span>
                 </a>
-          </div>
+            </div>          </div>
         </div>
       </div>
     </div>
     <div class="mobile-header">
       <div class="slf-mobile-header-wrapper">
-                  <a href="javascript:void(0)" id="signin" role="button" data-target="#mySignInModal"
-                      data-toggle="modal" class="CTA-wrapper"> 
-                      <span class="button-class signIn-button"><span class="icon-class fa fa-user"></span>Sign in</span>
-                  </a>
-              <div class="modal fade sign-in-modal-wrapper" id="mySignInModal" role="dialog">
-                      <div class="modal-dialog sign-in-modaldialog">
-                              <!-- Modal content-->
-                              <div class="modal-content modal-main horizontal-middle-align">
-                                      <div class="modal-header signin-modal-header">
-                                              <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
-                                                      data-dismiss="modal" id="closeSignInModal">
-                                              </button>
-                                      </div>
-                                      <div class="modal-body">
-                                              <div class="slf-icon-reg">
-                                                      <span class="icon-reg fa fa-user fa-inverse fa-stack-1x"></span>
-                                              </div>
-                                              <div class="login-container" id="signin-widget">
-                                                      <h4 id="customerSignInHeader" class="customerSignInHeader">Client sign in</h4>
-                                                      <div class="download-app">
-                                                              <a href="https://www.sunlife.ca/ca/Support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
-                                                                      target="_blank">
-                                                                      <img alt="Sun Life App" src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png" />
-                                                              </a>
-                                                              <div class="download-text">
-                                                                      <p>For the best mobile experience</p>
-                                                                      <p class="download-text-bold">download the my Sun Lifeapp</p>
-                                                              </div>
-                                                      </div>
-                                                      <form name="form_signon_modal" id="form_signon">
-                                                              <div role="group" aria-labelledby="form_signon">
-                                                                      <div class="form-group form-first" id="userIdDiv"><input
-                                                                                      name="USER" id="accessIDModal" class="accessid"
-                                                                                      type="text" placeholder="Email/Access ID"
-                                                                                      autocomplete="off" />
-                                                                      </div>
-                                                                      <div class="form-group form-second text-left">
-                                                                              <input name="SAVEIDCHECK" class="remeberid"
-                                                                                      id="rememberIDModal" onclick="remember(this)"
-                                                                                      type="checkbox">
-                                                                              <label id="remembermelabel" class="remeberme"
-                                                                                      for="rememberIDModal">
-                                                                                      &nbsp;
-                                                                                      Remember me</label>
-                                                                      </div>
-                                                              </div>
-                                                              <input name="PASSWORD" class="password-input" id="accessPasswordModal"
-                                                                      type="password" placeholder="Password" autocomplete="off">
-                                                              <input class="btn btn-blue" onclick="return CheckClicks('e');"
-                                                                      type="submit" alt="Sign in" value="Sign in" />
-                                                      </form>
-                                                      <p class="signin-links"><span class="signin-help-link">
-                                                                      <a href="https://www.sunlife.ca/ca/Support/Sign+in+help?vgnLocale=en_CA"
-                                                                              target="_blank">Sign-in help</a> </span>
-                                                              <span class="signin-register">
-                                                                      <a href="https://www.sunnet.sunlife.com/mysunlife/signin/register/bregister.asp"
-                                                                              target="_blank">Register</a>
-                                                              </span></p>
-                                                      <div class="signin-terms">By signing in, you agree to these<a
-                                                                      href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
-                                                                      target="_blank">terms and conditions.</a>
-                                                      </div>
-                                                      <div class="sign-plans"><a
-                                                                      href="https://www.sunlife.ca/ca/Support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA"
-                                                                      class="signin-sponsor"
-                                                                      target="_blank">&nbsp;Plan sponsors and advisors</a>
-                                                      </div>
-                                              </div>
-                                      </div>
-                              </div>
-                      </div>
-              </div>        <!-- Mobile Header Start-->
+              <!-- sign-in modal start -->
+              <!-- sign-in modal end-->
               <div class="col-xs-12 mobile-header-navbar  white-shade">
                       <div class="hamburger-menu" id="hamburgerMenu">
-                              <button class="navbar-toggle pull-left" type="button">
+                              <div class="navbar-toggle pull-left" type="button">
+                                      <span class="sr-only">Navigation Menu</span>
                                       <span class="icon-bar" id="a1">&nbsp;</span>
                                       <span class="icon-bar" id="a2">&nbsp;</span>
                                       <span class="icon-bar" id="a3">&nbsp;</span>
-                              </button>
+                              </div>
                       </div>
-                      <div class="slf-header-mobile-logo">
-                              <a class="mobile-sun-pic" href="https://www.sunlife.ca">
+                      <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="com.sunlife.core.models.HeaderModel" class="slf-header-mobile-logo">
+                            <sly data-sly-list.links="${listModel.links}">
+                              <a class="mobile-sun-pic" href="${links.linkUrl @ extension = 'html' }">
                                       <picture>
-                                              <img alt="Sun Life" src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg" />
+                                              <img alt="Sun Life" src="${links.logoImage}" />
                                       </picture>
                               </a>
+                            </sly>  
                       </div>
-                      <div class="mobile-sign-in-box" data-toggle="modal" data-target="#mySignInModal"><a
-                                      data-target="#signin-widget-modal" data-toggle="modal" role="button"
+                      <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="mobile-sign-in-box" data-toggle="modal" data-target="#mySignInModal"><a
+                                      data-toggle="modal" role="button"
                                       href="javascript:void(0)"> <span class="fa fa-user mobile-signin-icon">
-                                              <div class="mobile-signin-text">Sign in</div>
+                                              <div class="mobile-signin-text">${properties.signinTitle}</div>
                                       </span></a>
                       </div>
               </div>
@@ -519,24 +160,41 @@
                       <div class="close-hamburger-menu">
                               <span class="fa fa-remove close-hamburger" id="close-hamburger"></span>
                       </div>
-                      <div class="hamburger-search">
-                              <form name="searchform-bottom" class="slf-search-mobile" action="/ca/Search+results"
-                                      method="get">
-                                      <span class="fa fa-search search-icon-mobile"></span>
-                                      <input name="q" id="q-top-mobile" type="text" class="search-field" placeholder="Search"
-                                              autocomplete="off" />
-                                      <div class="search-autocomplete-mobile">
-                                              <ul class="search-autocomplete-list-mobile" aria-hidden="true"></ul>
-                                              <ul class="search-sayt-list-mobile" data-section="type-ahead-html-listing"></ul>
+                      <div data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="hamburger-search">
+                              <form name="searchform-bottom" class="slf-search-mobile"
+                                      action="https://www.sunlife.ca/ca/Search+results" method="get">
+                                      <div class="form-wrapper">
+                                              <div class="input-wrapper">
+                                                      <span class="fa fa-search search-icon-mobile" type="submit"></span>
+                                                      <input name="q" id="q-top-mobile" type="text" class="search-field"
+                                                              placeholder="${properties.searchPlaceholder}" autocomplete="off"
+                                                              aria-label="mobile search bar" />
+                                                      <div class="search-autocomplete-mobile">
+                                                              <ul class="search-autocomplete-list-mobile"
+                                                                      style="display: none;" aria-hidden="true">
+                                                              </ul>
+                                                              <ul class="search-sayt-list-mobile" style="display: none;"
+                                                                      data-section="type-ahead-html-listing">
+                                                              </ul>
+                                                      </div>
+                                              </div>
                                       </div>
+                                      <input name="action" type="hidden" value="input">
                               </form>
                       </div>
-
-
-
-			<sly data-sly-resource = "${ @resourceType='sunlife/core/components/content/navigation'}"/>
-
-
+                      <ul class="first-level-navigation">
+                         
+                         <sly data-sly-resource = "${ @resourceType='sunlife/core/components/content/navigation'}"/>   
+                              
+                              <li data-sly-test = "${properties.listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
+                                      <a>Canada | EN</a>
+                                      <div class="second-level-navigation" role="menu">
+                       
+                                  <sly  data-sly-resource = "${ @resourceType='sunlife/core/components/content/experiencefragment'}"/>                        
+                                               
+                                    </div>
+                              </li>
+                      </ul>
               </div>
               <div class="offcanvas-overlay">
               </div>
