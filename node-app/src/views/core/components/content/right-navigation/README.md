@@ -18,7 +18,7 @@ JSON Format
     "error-message":"Wrong Input",
     "validation-pattern": "parsley-pattern",
      "input-text-type":"text",
-    "button-type":"button",
+    "form-button-type":"button",
     "button-value":"search",
     "form-button-class":"primary-blue-button",
      "icon-text-wrapper" : "right-nav-icon-wrapper",
