@@ -3719,6 +3719,7 @@ $(document).ready(function () {
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
 $(document).ready(function () {
 
+   
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -3751,7 +3752,110 @@ $(document).ready(function () {
     });
 // Region and language menu analytics ends here
 
+// Sign In Module (Desktop Sign In button) analytics starts here
+$('#signinbutton').click(function(){
+    utag.link({"asset_type"	: "Module",
+	"asset_title"	: "Sign In - Main",
+	"event_type"	: "Click",
+	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"event_title"	: "Sign In",
+	"page_section" : "Homepage main signin"
+    });
+setTimeout(signinmodal,200);
+})
+// Sign In Module (Desktop Sign In button) analytics ends here
+
+// Sign In Modal (Mobile Sign In button) analytics starts here
+$('#SignIn').click(function(){
+    utag.link({"asset_type"	: "Module",
+	"asset_title"	: "Sign In - Modal",
+	"event_type"	: "Click",
+	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"event_title"	: "Sign In",
+	"page_section" : "Modal"
+    });
+    setTimeout(signinmodal,200);
 });
+// Sign In Modal (Mobile Sign In button) analytics ends here
+
+// Sign In Modal (Sign-in-modal expansion) analytics starts here
+function signinmodal() {
+    if ($('#mySignInModal').hasClass('in')){
+        utag.link({
+            "asset_type"	: "Module",
+            "asset_title"	: "Sign In - Modal",
+            "event_type"	: "On Page Impression",
+            "event_title"	: "Expansion",
+            "page_section" : "Modal"
+        });
+        //console.log("mobile sign in module expanding is being tracked successfully");        
+    }
+    else{
+        // if modal not found then throwing error
+        utag.link({
+            "asset_type"	: "Module",
+            "asset_title"	: "Sign In - Modal",
+            "event_type"	: "On Page Impression",
+            "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+            "event_title"	: "Error-" + "Expanding not tracked",
+            "page_section" : "Modal"});
+            //console.log("mobile sign in module expanding is not being tracked");
+    }
+}
+// Sign In Modal (Sign-in-modal expansion) analytics ends here
+
+});
+
+$(document).ready(function(){
+    $('.content-region .nav-select').parent().addClass('in');
+    $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
+    $('.content-region .accordion-heading').click(function(){
+        if($(this).attr('aria-expanded') == 'false'){
+            $(this).attr('aria-expanded','true');
+            $(this).siblings().addClass('in');
+        }
+        else{
+            $(this).attr('aria-expanded','false');
+            $(this).siblings().removeClass('in');
+        }
+    });
+    $('.tab-content .accordion-heading').click(function(){
+        if($(this).attr('aria-expanded') == 'false'){
+            $(this).attr('aria-expanded','true');
+            $(this).siblings().addClass('in');
+        }
+        else{
+            $(this).attr('aria-expanded','false');
+            $(this).siblings().removeClass('in');
+        }
+    });
+
+    $('.slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+    $(".mobile-header .first").click(function(){
+        $('.mobile-header .first').addClass('active');
+        $('.mobile-header .second').removeClass('active');
+        $('.mobile-header .region-tab').css({'display':'block'});
+        $('.mobile-header .language-tab').css({'display':'none'});
+    });
+    $(".mobile-header .second").click(function(){
+        $('.mobile-header .first').removeClass('active');
+        $('.mobile-header .second').addClass('active');
+        $('.mobile-header .region-tab').css({'display':'none'});
+        $('.mobile-header .language-tab').css({'display':'block'});
+    });
+});
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 
 
 
@@ -3763,7 +3867,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
 
 
 $(document).ready(function () {
@@ -3852,48 +3955,6 @@ $(document).ready(function () {
  
  });
  
-$(document).ready(function(){
-    $('.content-region .nav-select').parent().addClass('in');
-    $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
-    $('.content-region .accordion-heading').click(function(){
-        if($(this).attr('aria-expanded') == 'false'){
-            $(this).attr('aria-expanded','true');
-            $(this).siblings().addClass('in');
-        }
-        else{
-            $(this).attr('aria-expanded','false');
-            $(this).siblings().removeClass('in');
-        }
-    });
-    $('.tab-content .accordion-heading').click(function(){
-        if($(this).attr('aria-expanded') == 'false'){
-            $(this).attr('aria-expanded','true');
-            $(this).siblings().addClass('in');
-        }
-        else{
-            $(this).attr('aria-expanded','false');
-            $(this).siblings().removeClass('in');
-        }
-    });
-
-    $('.slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
-    $(".mobile-header .first").click(function(){
-        $('.mobile-header .first').addClass('active');
-        $('.mobile-header .second').removeClass('active');
-        $('.mobile-header .region-tab').css({'display':'block'});
-        $('.mobile-header .language-tab').css({'display':'none'});
-    });
-    $(".mobile-header .second").click(function(){
-        $('.mobile-header .first').removeClass('active');
-        $('.mobile-header .second').addClass('active');
-        $('.mobile-header .region-tab').css({'display':'none'});
-        $('.mobile-header .language-tab').css({'display':'block'});
-    });
-});
 
 $(document).ready(function () {
    $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
@@ -3923,6 +3984,7 @@ $(document).ready(function () {
    );
 
 });
+
 $(document).ready(function () {
     mobileLogoWidth();
     function mobileLogoWidth() {  
@@ -4010,7 +4072,6 @@ $(document).ready(function(){
     );
    });
 
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4033,9 +4094,9 @@ $(document).ready(function(){
 });
 
 
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
-    // $(".desktop-header-wrapper .desktop-region-language-menu-wrapper").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -4060,16 +4121,35 @@ $(document).ready(function () {
         $('.sunLanguageCrossBtn').click(function(){
             $("#language-btn").attr('aria-expanded','false');
         });
+        $('.search-icon-container').keyup(function (event) {
+            if (event.keyCode == 13) {
+                if ($('#sun-search').hasClass('in')){
+                    $('#sun-search').removeClass('in');
+                    $("#search-btn").attr('aria-expanded','false');               
+                }
+                else {
+                    $('#sun-search').addClass('in');
+                    $("#search-btn").attr('aria-expanded','true');
+                    $("#language-btn").attr('aria-expanded','false');
+                    $("#sun-language").removeClass('in');
+                }
+            }          
+        });
+        $('#language-btn-container').keyup(function (event) {
+            if (event.keyCode == 13) {
+                if ($('#sun-language').hasClass('in')){
+                    $('#sun-language').removeClass('in');
+                    $("#language-btn").attr('aria-expanded','false');               
+                }
+                else {
+                    $('#sun-language').addClass('in');
+                    $("#language-btn").attr('aria-expanded','true');
+                    $("#search-btn").attr('aria-expanded','false');
+                    $("#sun-search").removeClass('in'); 
+                }
+            }          
+        });
 });
 
 
 
-
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
