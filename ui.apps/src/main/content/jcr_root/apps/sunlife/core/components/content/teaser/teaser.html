@@ -4,7 +4,7 @@
 <sly data-sly-test="${!empty}">
    <div class="image-text-wrapper">
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position">
-         <div class="left-item text-section">
+         <div class="left-item text-section hide-in-editorial">
             ${teaser.description @context ='html'}
          </div>
          <div class="right-item">
@@ -16,7 +16,7 @@
                   <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
                   <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
                   </a>
-               </sly>
+			   </sly>
             </sly>
             <sly data-sly-test="${!imageLink}">
                <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
@@ -25,7 +25,10 @@
                </sly>
             </sly>
          </div>
-      </div>
+		 <div class="left-item text-section show-only-in-editorial">
+			${teaser.description @context ='html'}
+		</div>
+		 </div>
       <div data-sly-test="${!imageRight}" class="left-image-position">
          <div class="left-item">
             <sly data-sly-test="${teaser.linkURL}">
