@@ -5,7 +5,7 @@
    <div class="image-text-wrapper">
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position">
          <div class="left-item text-section">
-            ${description @context ='html'}
+            ${teaser.description @context ='html'}
          </div>
          <div class="right-item">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
