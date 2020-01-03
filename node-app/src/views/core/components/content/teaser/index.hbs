@@ -1,7 +1,8 @@
-<div class="image-text-wrapper {{wrapper-class}} {{text-alignment}} {{image-type}} {{img-border}} {{banner-text-alignment}} {{banner-box}}">
+<div
+	class="image-text-wrapper {{wrapper-class}} {{text-alignment}} {{image-type}} {{img-border}} {{banner-text-alignment}} {{banner-box}}">
 	{{#if is-right-aligned-image}}
 	<div class="right-image-position">
-		<div class="left-item text-section">
+		<div class="left-item text-section hide-in-editorial">
 			<p>{{text}}</p>
 		</div>
 		<div class="right-item">
@@ -11,6 +12,9 @@
 			<a href="{{mob-image-link}}">
 				<img class="side-image mobile-image" src="{{mob-image-src}}" alt="{{mob-alt}}">
 			</a>
+		</div>
+		<div class="left-item text-section show-only-in-editorial">
+			<p>{{text}}</p>
 		</div>
 	</div>
 	{{else}}
