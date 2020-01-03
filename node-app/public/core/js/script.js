@@ -3755,14 +3755,6 @@ $(document).ready(function () {
 
 
 
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
-
-
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4018,6 +4010,7 @@ $(document).ready(function(){
     );
    });
 
+
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4040,9 +4033,9 @@ $(document).ready(function(){
 });
 
 
-
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
+    // $(".desktop-header-wrapper .desktop-region-language-menu-wrapper").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -4051,9 +4044,9 @@ $(document).ready(function () {
         }
      });
      $('#search-btn').click(function(){
-        if ($('.desktop-region-language-menu-wrapper').hasClass('in')){  
+        if ($('#sun-language').hasClass('in')){  
                $("#language-btn").attr('aria-expanded','false');
-               $('.desktop-region-language-menu-wrapper').removeClass('in');
+               $("#sun-language").removeClass('in');
            }
         });
         $('#language-btn-container').click(function(){
@@ -4072,3 +4065,11 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}

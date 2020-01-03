@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
+    // $(".desktop-header-wrapper .desktop-region-language-menu-wrapper").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -8,9 +9,9 @@ $(document).ready(function () {
         }
      });
      $('#search-btn').click(function(){
-        if ($('.desktop-region-language-menu-wrapper').hasClass('in')){  
+        if ($('#sun-language').hasClass('in')){  
                $("#language-btn").attr('aria-expanded','false');
-               $('.desktop-region-language-menu-wrapper').removeClass('in');
+               $("#sun-language").removeClass('in');
            }
         });
         $('#language-btn-container').click(function(){
