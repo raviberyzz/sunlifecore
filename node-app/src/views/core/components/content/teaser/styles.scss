@@ -1,4 +1,7 @@
 @import '../../../base/core';
+.show-only-in-editorial {
+    display: none;
+}
 .side-image {
     width: 100%;
 }
@@ -85,23 +88,22 @@
     }
 }
 .editorial-hero-banner {
-    .left-image-position {
+    .left-image-position, .right-image-position {
         background: $light-grey-20;
         .left-item {
             width: 50%;
-            position: relative;
-            left: 50%;
             margin-right: 0;
         }
         .right-item {
             width: 50%;
-            position: relative;
-            right: 50%;
         }
         .text-section {
             margin: 0;
             padding: 30px;
             text-align: center;
+            p {
+                margin: 0;
+            }
         }
     }
 }
@@ -134,21 +136,30 @@
             }
         }
         .editorial-hero-banner {
-            .left-image-position {
+            .left-image-position, .right-image-position {
                 background: $light-grey-20;
                 .left-item {
                     width: 100%;
-                    left: initial;
                     margin-right: 0;
+                    float: none;
                 }
                 .right-item {
                     width: 100%;
                     right: initial;
+                    float: none;
                 }
                 .text-section {
                     margin: 0;
                     padding: 30px;
                     text-align: center;
+                }
+            }
+            .right-image-position {
+                .hide-in-editorial {
+                    display: none;
+                }
+                .show-only-in-editorial {
+                    display: inherit;
                 }
             }
         }
