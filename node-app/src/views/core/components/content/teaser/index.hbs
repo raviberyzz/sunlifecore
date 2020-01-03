@@ -1,26 +1,30 @@
-<div class="image-text-wrapper {{wrapper-class}} {{text-alignment}} {{image-type}} {{img-border}} {{banner-text-alignment}} {{banner-box}}">
+<div
+	class="image-text-wrapper {{wrapper-class}} {{text-alignment}} {{image-type}} {{img-border}} {{banner-text-alignment}} {{banner-box}}">
 	{{#if is-right-aligned-image}}
 	<div class="right-image-position">
-		<div class="left-item text-section">
+		<div class="left-item text-section hide-in-editorial">
 			<p>{{text}}</p>
 		</div>
 		<div class="right-item">
-			<a class="desktop-image" href="{{desk-image-link}}">
-				<img class="side-image" src="{{desk-image-src}}" alt="{{desk-alt}}">
+			<a href="{{desk-image-link}}">
+				<img class="side-image desktop-image" src="{{desk-image-src}}" alt="{{desk-alt}}">
 			</a>
-			<a class="mobile-image" href="{{mob-image-link}}">
-				<img class="side-image" src="{{mob-image-src}}" alt="{{mob-alt}}">
+			<a href="{{mob-image-link}}">
+				<img class="side-image mobile-image" src="{{mob-image-src}}" alt="{{mob-alt}}">
 			</a>
+		</div>
+		<div class="left-item text-section show-only-in-editorial">
+			<p>{{text}}</p>
 		</div>
 	</div>
 	{{else}}
 	<div class="left-image-position">
 		<div class="left-item">
-			<a class="desktop-image" href="{{desk-image-link}}">
-				<img class="side-image" src="{{desk-image-src}}" alt="{{desk-alt}}">
+			<a href="{{desk-image-link}}">
+				<img class="side-image desktop-image" src="{{desk-image-src}}" alt="{{desk-alt}}">
 			</a>
-			<a class="mobile-image" href="{{mob-image-link}}">
-				<img class="side-image" src="{{mob-image-src}}" alt="{{mob-alt}}">
+			<a href="{{mob-image-link}}">
+				<img class="side-image mobile-image" src="{{mob-image-src}}" alt="{{mob-alt}}">
 			</a>
 		</div>
 		<div class="right-item text-section">
