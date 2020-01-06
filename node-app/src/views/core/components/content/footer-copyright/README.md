@@ -1,8 +1,5 @@
-#Footer copyright Component
-#Displays footer-copyright
-JSON Format
-```
 {
+    "data-section-footer-copyright" : "footer-bottom-layer",
     "tagline": "Life’s brighter under the sun",
     "copyright": "© Sun Life Assurance Company of Canada. All rights reserved.",
     "slf-acronym-present" : true,
@@ -36,4 +33,3 @@ JSON Format
         "class-name" : ""
     }]
 }
-```
