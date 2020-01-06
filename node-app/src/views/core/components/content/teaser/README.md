@@ -25,6 +25,6 @@ JSON Format
 <!-- "wrapper-class": "banner-section"/"editorial-hero-banner" (if banner, else keep it blank) -->
 <!-- "banner-text-alignment": "text-left-align", "text-right-align", "text-center-align" -->
 <!-- "banner-box": "white-box" (if box required. else keep blank) -->
-<!-- when "wrapper-class": "banner-section"/ "editorial-hero-banner" then mark  "is-right-aligned-image": false-->
+<!-- when "wrapper-class": "banner-section" then mark  "is-right-aligned-image": false-->
 
 <!-- /static/ca/Learn%20and%20Plan/images/nc61-getty-877023506-landing-page-534x400.jpg" -->

@@ -3,6 +3,7 @@
 JSON Format
 ```
 {
+    "data-section-breadcrumb" : "nav-breadcrumb",
     "breadcrumb-author":"",
     "breadcrumb-wrapper-background":"breadcrumb-wrapper-light-cool-blue",
     "icon-bg":"",

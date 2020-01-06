@@ -2,6 +2,7 @@
 JSON Format
 ```
 {
+    "data-section-main-nav" : "nav-main",
     "desktop-navigation-wrapper":"desktop-primary-navigation",
     "navigation":[{
     "navigation-heading":"Explore Product",

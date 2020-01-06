@@ -48,7 +48,7 @@
                 .desktop-navigation{
                     position:static;
                     float:left;
-                    margin:-5px 0 0 51px;
+                    margin:-5px 0 0 62px;
                     .desktop-mega-menu{
                         .desktop-primary-navigation {
                             margin-left: 0px;
@@ -136,14 +136,14 @@
             }
         }
     }
-    .mobile-header .desktop-region-language-menu-wrapper{
-        display:none;
-    }
 }
 @media(max-width:$tab-screen-max){
     .desktop-header-wrapper{
         display:none;
     }
+    .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper{
+        display:none;
+        }
 }
 @media(min-width:$desktop-screen-min){
     .mobile-header{
