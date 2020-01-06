@@ -5439,7 +5439,7 @@ ul {
     display: block; } }
 
 .show-only-in-editorial {
-  display: none; }
+  display: hidden; }
 
 .side-image {
   width: 100%; }
@@ -5551,6 +5551,6 @@ ul {
       padding: 30px;
       text-align: center; }
   .editorial-hero-banner .right-image-position .hide-in-editorial {
-    display: none; }
+    display: hidden; }
   .editorial-hero-banner .right-image-position .show-only-in-editorial {
     display: inherit; } }

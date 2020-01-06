@@ -3815,6 +3815,7 @@ alert("Demo-Onsubmit-Function");
 
 
 
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3823,7 +3824,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
 
 
 
@@ -4168,6 +4168,7 @@ $(document).ready(function(){
     );
    });
 
+
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4245,7 +4246,6 @@ $(document).ready(function () {
             }          
         });
 });
-
 
 
 
