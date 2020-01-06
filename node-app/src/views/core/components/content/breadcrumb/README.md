@@ -1,3 +1,7 @@
+#Breadcrumb Component
+#Display navigation links in list format
+JSON Format
+```
 {
     "data-section-breadcrumb" : "nav-breadcrumb",
     "breadcrumb-author":"",
@@ -36,3 +40,11 @@
         "fa-icon":"fa-linkedin-square"
     }]
 }
+```
+<!-- Classes available for "breadcrumb-wrapper-background" are "breadcrumb-wrapper-light-cool-blue","breadcrumb-wrapper-cool-blue" and links colors are changed accordingly -->
+
+<!-- Icons and share-links available for "social-links" are "fa-facebook-square" and "shareFB()" ,"fa-twitter-square" and "shareTwitter()" ,"fa-linkedin-square" and "shareLinkedIn()" respectively -->
+
+<!--Variations available for "social-icon-present" are true and false -->
+
+<!-- For "breadcrumb-athor" available class is "breadcrumb-autor" which is only for authoring. -->
