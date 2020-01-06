@@ -1,3 +1,7 @@
+#Footer copyright Component
+#Displays footer-copyright
+JSON Format
+```
 {
     "data-section-footer-copyright" : "footer-bottom-layer",
     "tagline": "Life’s brighter under the sun",
@@ -33,3 +37,4 @@
         "class-name" : ""
     }]
 }
+```
