@@ -3815,6 +3815,7 @@ alert("Demo-Onsubmit-Function");
 
 
 
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3823,7 +3824,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
 
 
 
@@ -4180,6 +4180,20 @@ $(document).ready(function () {
         }
     });  
 });   
+
+
+   /*AEM JS*/
+   $(document).ready(function(){
+    var menuHeight= $('.cmp-dynamic-megamenu').height();
+    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+     $( ".dropdown-submenu").hover(
+         function(){
+             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
+     },function(){
+       $('.cmp-dynamic-megamenu').height(menuHeight);
+        }
+     );
+   });
 
 
 $(document).ready(function(){

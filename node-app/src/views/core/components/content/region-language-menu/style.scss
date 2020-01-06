@@ -277,6 +277,14 @@
         }
     }
 }
+.language-region{
+    .xf-content-height{
+        margin:0;
+        .region-language-menu {
+            padding:0;
+        }
+    }
+}
 @media (max-width: $tab-screen-max) {
     .desktop-region-language-menu-wrapper {
         display: none;
