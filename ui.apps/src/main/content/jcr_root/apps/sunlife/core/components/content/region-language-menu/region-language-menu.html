@@ -9,12 +9,13 @@
 <sly data-sly-test.languagesTabSelected="${languageRegionModel.selectedTabMobile == 'language-active'}" />
 
 <!-- Desktop view starts -->
-<div id="sun-language" class="col-xs-12 desktop-region-language-menu-wrapper collapse" aria-expanded="true">
-    <div class="cross-btn">
-        <a class="collapsed show" id="sunLanguageCrossBtn">
-            <span class="fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
+<div class="col-xs-12 desktop-region-language-menu-wrapper collapse in" data-section="header-region-and-languages" aria-expanded="true">
+   	<div class="cross-btn">
+        <a data-toggle="collapse" href=".desktop-region-language-menu-wrapper">
+           <span class="sunLanguageCrossBtn fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
         </a>
     </div>
+
     <sly data-sly-test="${!regionsEmpty}">
         <div class="col-xs-9 slf-region">
             <div class="title-region">
@@ -25,20 +26,15 @@
                 <sly data-sly-list.regionList="${languageRegionModel.regionLinks}">
                     <sly data-sly-test.firstRegionElement="${regionListList.index == 0}" />
                     <div class="col-xs-4 slf-region-column">
-                        <ul class="list-unstyled" data-sly-list.regionObj="${regionList}">
+                        <ul class="first_level_list-unstyled" data-sly-list.regionObj="${regionList}">
                             <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
-
                             <li data-sly-test="${regionObj.subLinks}">
-                                <div class="region-link">
-                                    <h3 class="accordion-heading" aria-expanded="${firstElement && firstRegionElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child" data-toggle="collapse">${regionObj.linkName}</h3>
-                                    <div class="${firstElement && firstRegionElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child">
-                                        <ul aria-expanded="${firstElement && firstRegionElement ? 'true' : 'false'}" class="list-unstyled" data-sly-list.subLink="${regionObj.subLinks}">
+                                    <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false" data-toggle="collapse">${regionObj.linkName}</a>                                    
+                                        <ul class="list-unstyled accordion-list collapse" data-sly-list.subLink="${regionObj.subLinks}">
                                             <li class="${firstElement && subLinkList.first ? 'nav-select' : ''}">
                                                 <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
                             </li>
                             <li data-sly-test="${!regionObj.subLinks}">
                                 <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
@@ -67,7 +63,11 @@
                     <a href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
                 </li>
 
-                <sly data-sly-test="${languageLink.subLinkSeparator}" data-sly-call="${separator}"></sly>
+                <sly data-sly-test="${languageLink.subLinkSeparator}">
+					<div class="grey-horizontal-separator">
+                    	<sly data-sly-resource="${'separator' @ resourceType='sunlife/core/components/content/separator' }">
+                    </div>
+                </sly>
             </ul>
         </div>
     </div>
@@ -93,8 +93,8 @@
                 <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
                 <li data-sly-test="${regionObj.subLinks}">
                     <div class="region-link">
-                        <h3 class="accordion-heading" aria-expanded="${firstElement ? 'true' : 'false'}" data-parent=".region-link" data-target="#${regionObj.linkName}_child_mobile" data-toggle="collapse">${regionObj.linkName}</h3>
-                        <div class="${firstElement ? 'collapse in' : 'collapse'}" id="${regionObj.linkName}_child_mobile">
+                        <h3 class="accordion-heading" aria-expanded='false' data-toggle="collapse">${regionObj.linkName}</h3>
+                        <div class= 'accordion-list collapse' >
                             <ul class="list-unstyled accordion-list" data-sly-list.subLink="${regionObj.subLinks}">
                                 <li class="${firstElement && subLinkList.first ? 'nav-select' : 'not-bold'}">
                                     <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
@@ -114,7 +114,11 @@
                 <li class="${languageLinkList.first ? 'nav-select' : 'not-bold'}">
                     <a href="${languageLink.subLinkUrl}">${languageLink.subLinkName}</a>
                 </li>
-                <sly data-sly-test="${languageLink.subLinkSeparator}" data-sly-call="${separator}"></sly>
+                <sly data-sly-test="${languageLink.subLinkSeparator}">
+                	<div class="grey-horizontal-separator">
+                    	<sly data-sly-resource="${'separator' @ resourceType='sunlife/core/components/content/separator' }">
+                    </div>
+                 </sly>
             </ul>
         </div>
     </div>
