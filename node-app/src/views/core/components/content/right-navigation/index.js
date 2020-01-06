@@ -7,25 +7,87 @@ $(document).ready(function () {
         // var mH=maxHeight();
         // alert(mH);
     }
-    
-       $( window ).resize(function() {
-          rightNav();
-          maxHeight();
+    var child=comp.length;
+    var count1=0;
+    comp.each(function()
+    {
+        count1++;
+        if ($(this).hasClass('right-nav-cta-orange'))
+        {
+            
+         cta_index=count1;
+        }
+    });
+    var childbefore= cta_index-1;
+    //alert (childbefore);
+    if (cta_index==0)
+    {
+        right_nav_width(child);
+    }
+    else if (cta_index==1)
+    {
+       var child2=child-1;
+       right_nav_width(child2);
+       firstfull();
       
-      
-       });
-       $(window).on('load',function() {
+    }
+    else
+    { 
+       
+        right_nav_width(childbefore);
+        var childafter=child-childbefore;
+        for (var i=cta_index-1; i<child; i++)
+        {
+            $(comp[i]).removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
+        }       
+    }
+
+    function right_nav_width(child) 
+    {
        
         maxHeight();
     
     
-     });
+     };
        function rightNav(){
 
         
-        if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+    }
+    function firstfull(){
+        $('.right-nav-cta-orange').removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
+    }
+    if (( $(window).width() <1025 &&  $(window).width() >767 ))
+    {
+        maxheight(childbefore, cta_index);
+    }
+    function maxheight(child, cta_index)
+    {
+        
+        if (cta_index==0)
+        {
+            getMaxHeight(child)
+            
+        }
+        else if (cta_index>1)
+        {
+            height1=height2=0;
+            comp.each(function(index){
 
-            if (children2==1)
+                if (index+1 < cta_index)
+                {
+                    getMaxHeight(child);
+                }
+                
+            });
+        }
+    }
+    function getMaxHeight(child)
+    {
+        alert(child);
+        var maxHeight=0;
+        var height1=0;
+        var height2=0;
+        if (child < 4)
             {
                 $('.right-navigation-wrapper').children().css('width','100%');
             }
@@ -39,45 +101,59 @@ $(document).ready(function () {
                }
         if(children==4)
             {
-                $('.right-navigation-wrapper').children().css('width','50%');
-            }
-            if (children==5)
-            {
-               
-    
-                $('.right-navigation-wrapper').children('div:nth-child(1)').css('width','33.33%');
-                $('.right-navigation-wrapper').children('div:nth-child(3)').css('width','33.33%');
-                $('.right-navigation-wrapper').children('div:nth-child(5)').css('width','33.33%');
-                $('.right-navigation-wrapper').children('div:nth-child(7)').css('width','50%');
-                $('.right-navigation-wrapper').children('div:nth-child(9)').css('width','50%');
-              
-            }
-            if (children==6)
-            {
-                $('.right-navigation-wrapper').children().css('width','33.33%');
-            }
-       }
-      
-       else
-       {
-        $('.right-navigation-wrapper').children().css('width','100%');
-        $('.right-navigation-wrapper').children().css('height','auto');
-       }
-    }
-    function maxHeight(){
-        if (( $(window).width() <1025 &&  $(window).width() >767 )) {
-            var maxHeight = -1;
+                if (child==5)
+                {
+                    
+                    var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
+                    var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
+                    height1=height2=0;
+                    row1.each(function() {
+                        height1 =height1 > $(this).height() ? height1 : $(this).height();
+                    });
+                    row1.each(function() {
+                        $(this).height(height1+30);
+                    });
+                    row2.each(function() {
+                        height2 = height2 > $(this).height() ? height2 : $(this).height();
+                      alert(height2);
+                    });
+                    row2.each(function() {
+                        $(this).height(height2);
+                    });
 
-            $('.right-navigation-wrapper').children().each(function() {
-              maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-             
-            });
-            
-            //return maxHeight;
-            $('.right-navigation-wrapper').children().each(function() {
-              $(this).height(maxHeight);
-            });
-        }
+                }
+                else
+                {
+                    var row1_child=child/2;
+                    height1=height2=0;
+                    comp.each(function(index) {
+                        if (index < row1_child)
+                        {
+                           
+                            height1 = height1 > $(this).height() ? height1 : $(this).height();
+                            
+                        }
+                        else
+                        {
+                            height2 = height2 > $(this).height() ? height2 : $(this).height();
+                        }
+                        
+                    });
+                    comp.each(function(index) {
+                       
+                        if (index < row1_child)
+                        {
+                            $(this).height(height1+30);
+                        }
+                        else
+                        {
+                            $(this).height(height1);
+                        }
+                       
+                    });
+
+                }
+            }
     }
     
     

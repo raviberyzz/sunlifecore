@@ -4010,6 +4010,23 @@ $(document).ready(function(){
     );
    });
 
+   /*AEM JS*/
+   $(document).ready(function(){
+    var menuHeight=0;
+  $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
+      function(){
+          menuHeight= $('.cmp-dynamic-megamenu').height();
+           var submenuHeight=$(this).children('.dropdown-menu').height();
+          if ( submenuHeight > menuHeight)
+          {
+              $('.cmp-dynamic-megamenu').height(submenuHeight+13);
+          }
+
+  },function(){
+    $('.cmp-dynamic-megamenu').height(menuHeight);
+     }
+  );
+});
 
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
