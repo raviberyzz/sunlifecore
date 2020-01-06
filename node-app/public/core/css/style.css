@@ -3605,6 +3605,9 @@ a {
 .aem-Grid--default--12 .xf-content-height {
   margin: 0; }
 
+.aem-GridColumn {
+  padding: 0; }
+
 /* aem class ends here */
 
 
@@ -4355,6 +4358,11 @@ hr {
           float: left;
           width: 59px;
           margin: 32px 0 32px -72px; }
+
+.language-region .xf-content-height {
+  margin: 0; }
+  .language-region .xf-content-height .region-language-menu {
+    padding: 0; }
 
 @media (max-width: 1024px) {
   .desktop-region-language-menu-wrapper {
@@ -5347,6 +5355,8 @@ hr {
 
 @media (max-width: 1024px) {
   .desktop-header-wrapper {
+    display: none; }
+  .desktop-region-language-menu-wrapper {
     display: none; } }
 
 @media (min-width: 1025px) {
@@ -5520,21 +5530,6 @@ ul {
     .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
       height: 30px; } }
 
-.campaign-header-wrapper .logo-img {
-  height: 31px; }
-
-.campaign-header-wrapper .campaign-header {
-  position: relative;
-  height: 100px;
-  border-top: 8px solid #FFCB05; }
-
-@media (max-width: 1024px) {
-  .campaign-header-wrapper .campaign-header {
-    background: #f8f8f8;
-    box-shadow: 0 8px 6px -6px #000000; }
-  .campaign-header-wrapper .slf-header-logo {
-    text-align: center; } }
-
 .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff;
@@ -5571,6 +5566,21 @@ ul {
     display: inherit;
     right: 3px;
     position: relative; }
+
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
 
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
