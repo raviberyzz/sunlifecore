@@ -7,7 +7,7 @@
               </div>
       </div>    </div>
     <div class="desktop-header-wrapper">
-      <div data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
+           <div data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
         <div class="search-bar-wrapper collapse" id="sun-search">
             <div class="search-box">
                 <div class="close-div"><a data-toggle="collapse" aria-expanded="true" href="#sun-search"> <span
@@ -19,7 +19,7 @@
                         <div class="form-wrapper">
                             <div class="input-wrapper">
                                 <div class="input-wrapper form-group-wrapper">
-                                    <input data-parsley-required="data-parsley-required" id="q-top" class="" label="" name="q" type="text" maxlength="" placeholder="${properties.searchPlaceholder}" required="required"  data-parsley-pattern-message="" data-parsley-pattern="/[a-z]/g"  data-parsley-id="8">
+                                    <input data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q" type="text" maxlength="" placeholder="${properties.searchPlaceholder}" required="required"  data-parsley-pattern-message="" data-parsley-pattern="/[a-z]/g"  data-parsley-id="8">
                                 </div>                        <div class="search-autocomplete">
                                     <ul class="search-autocomplete-list">
                                         <li>&nbsp;</li>
@@ -40,11 +40,11 @@
             </div>
         </div>      
        </div>
-
-
-	<div class="desktop-region-bar collapse" id="sun-language">
-    <sly data-sly-test = "${properties.listFromRegion == 'regiontrue'}" data-sly-resource = "${ @resourceType='sunlife/core/components/content/experiencefragment'}" />
+    
+    <div class="desktop-region-bar collapse" id="sun-language">
+    <sly data-sly-test = "${properties.listFromRegion == 'regiontrue'}" data-sly-resource = "${ @resourceType='sunlife/core/components/content/experiencefragment'}"/>
     </div>
+    
       <div class="col-xs-12 yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content">
@@ -62,11 +62,11 @@
                       <div class="utility-nav-links">
                           <ul>
                               <li data-sly-test = "${properties.listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
-                                  <div class="lang-btn" id="language-btn" role="button"  
+                                 <div class="lang-btn" id="language-btn" role="button"  
                                       data-toggle="collapse" data-target="#sun-language" aria-controls="sun-language" tabindex="0" aria-expanded="false">
                                       <label class="sr-only">
                                           Expand or collapse region and language section
-                                          Développer ou réduire le volet Régions et langue
+                                          DÃ©velopper ou rÃ©duire le volet RÃ©gions et langue
                                       </label>
                                           ${properties.regionTitle}
                                   </div>
@@ -78,7 +78,7 @@
                                            ${properties.searchTitle}
                                               <label class="sr-only">
                                                   Expand or collapse search
-                                                  Développer ou réduire le volet recherche
+                                                  DÃ©velopper ou rÃ©duire le volet recherche
                                               </label>
                                           </a>
                                       </div>
@@ -150,7 +150,7 @@
                               </a>
                             </sly>  
                       </div>
-                      <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn" data-toggle="modal" data-target="#mySignInModal"><a
+                     <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn" data-toggle="modal" data-target="#mySignInModal"><a
                                       data-toggle="modal" role="button"
                                       href="javascript:void(0)"> <span class="fa fa-user mobile-signin-icon">
                                               <div class="mobile-signin-text">${properties.signinTitle}</div>
@@ -192,9 +192,9 @@
                               <li data-sly-test = "${properties.listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
                                       <a>Canada | EN</a>
                                       <div class="second-level-navigation" role="menu">
-
+                       
                                   <sly  data-sly-resource = "${ @resourceType='sunlife/core/components/content/experiencefragment'}"/>                        
-
+                                               
                                     </div>
                               </li>
                       </ul>

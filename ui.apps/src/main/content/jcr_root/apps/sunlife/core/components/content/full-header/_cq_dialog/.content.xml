@@ -66,7 +66,7 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                                 composite="{Boolean}true"
-                                                                fieldLabel="Please provide logo details">
+                                                                fieldLabel="Logo details">
                                                                 <field
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -372,10 +372,6 @@
                                                                 fieldLabel="Signin Style"
                                                                 name="./signinStyle">
                                                                 <items jcr:primaryType="nt:unstructured">
-                                                                    <redcolor
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        text="Same Tab"
-                                                                        value="Red"/>
                                                                     <nocolor
                                                                         jcr:primaryType="nt:unstructured"
                                                                         text="No color"
@@ -401,7 +397,7 @@
                     </signin>
                     <meganav
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="MegaNav"
+                        jcr:title="Megamenu"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -452,7 +448,7 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                                 composite="{Boolean}true"
-                                                                fieldLabel="Meganav links">
+                                                                fieldLabel="Megamenu links">
                                                                 <field
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
