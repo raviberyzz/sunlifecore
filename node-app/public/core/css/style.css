@@ -4142,6 +4142,9 @@ hr {
     width: 100%;
     max-width: 100%;
     padding: 10px; }
+  .right-navigation-wrapper .button-wrapper .primary-blue-button {
+    max-width: 100%;
+    width: 100%; }
   .right-navigation-wrapper .light-orange {
     background-color: #FEEDD2; }
   .right-navigation-wrapper .cool-blue {
@@ -4772,7 +4775,6 @@ hr {
 .cmp-dynamic-megamenu {
   border: 3px solid #FFCB05;
   padding: 0;
-  display: inline-flex;
   position: relative; }
 
 .cmp-dynamic-megamenu .aem-Grid--default--3 {
@@ -4957,6 +4959,18 @@ hr {
     display: none; } }
 
 /* AEM CSS */
+.nav-active > span {
+  border-bottom: 2px solid #FFCB05; }
+
+.desktop-header-wrapper .xf-content-height {
+  min-height: 0; }
+
+.cmp-megamenu-line {
+  border-right: 2px dotted #9a9a9a; }
+
+.slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+  position: static; }
+
 .mega-menu-wrapper-desk .aem-Grid--default--12 {
   padding: 0;
   display: flex; }
