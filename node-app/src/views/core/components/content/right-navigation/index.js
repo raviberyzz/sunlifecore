@@ -10,14 +10,6 @@ $(document).ready(function () {
     }
     var child=comp.length;
     var count1=0;
-    // for (var i=0; i<child; i++)
-    // {
-       
-    //     if ($(comp[i]).hasClass('right-nav-cta-orange'))
-    //     {
-    //         cta_index=i+1;
-    //     }
-    // }
     comp.each(function()
     {
         count1++;
@@ -27,24 +19,23 @@ $(document).ready(function () {
          cta_index=count1;
         }
     });
+    var childbefore= cta_index-1;
+    //alert (childbefore);
     if (cta_index==0)
     {
         right_nav_width(child);
-        //maxheight(child,0,0);
     }
     else if (cta_index==1)
     {
        var child2=child-1;
        right_nav_width(child2);
-       //maxheight(child2,0,0);
        firstfull();
       
     }
     else
     { 
-        var childbefore= cta_index-1;
+       
         right_nav_width(childbefore);
-        //maxheight(childbefore,0,0);
         var childafter=child-childbefore;
         for (var i=cta_index-1; i<child; i++)
         {
@@ -96,101 +87,36 @@ $(document).ready(function () {
     }
     if (( $(window).width() <1025 &&  $(window).width() >767 ))
     {
-        maxheight(child, cta_index);
+        maxheight(childbefore, cta_index);
     }
-    // function maxheight( child1,maxHeight1,maxHeight2)
-    // {
-
-    //     if (( $(window).width() <1025 &&  $(window).width() >767 )) {
-    //                 var maxHeight = -1;
-    //                 if (child1 < 4)
-    //                 {
-    //                     comp.each(function() {
-    //                         maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-                           
-    //                       });
-    //                       comp.each(function() {
-    //                         $(this).height(maxHeight);
-    //                       });
-    //                 }
-    //                 else
-    //                 {
-    //                     if (child1%2==0)
-    //                     {
-    //                         i=0;
-    //                         i1=0;
-    //                         j=(child1/2);
-    //                         j1=(child1/2);
-    //                         comp.each(function() {
-    //                             if (i <(child1/2)) {
-    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-    //                                 i++;
-    //                             }
-                                
-    //                         });
-    //                         comp.each(function() {
-    //                             if (i1 <(child1/2)) {
-    //                             $(comp[i1]).height(maxHeight1);
-    //                             i1++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {                               
-    //                             if (j <child1) {
-    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-    //                             j++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {
-    //                             if (j1 <child1) {
-    //                             $(comp[j1]).height(maxHeight2);
-    //                             j1++;
-    //                             }
-    //                         });
-    //                      }
-    //                     else
-    //                     {
-    //                         i=0;
-    //                         i1=0;
-    //                         j=3;
-    //                         j1=3;
-    //                         comp.each(function() {
-    //                             if (i <3) {
-    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-    //                                 i++;
-    //                             }
-                                
-    //                         });
-    //                         comp.each(function() {
-    //                             if (i1 <3) {
-    //                             $(comp[i1]).height(maxHeight1);
-    //                             i1++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {                               
-    //                             if (j <5) {
-    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-    //                             j++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {
-    //                             if (j1 <5) {
-    //                             $(comp[j1]).height(maxHeight2);
-    //                             j1++;
-    //                             }
-    //                         });
-    //                     }
-    //                 }
-    //             }
-    // }
- 
     function maxheight(child, cta_index)
     {
+        
+        if (cta_index==0)
+        {
+            getMaxHeight(child)
+            
+        }
+        else if (cta_index>1)
+        {
+            height1=height2=0;
+            comp.each(function(index){
+
+                if (index+1 < cta_index)
+                {
+                    getMaxHeight(child);
+                }
+                
+            });
+        }
+    }
+    function getMaxHeight(child)
+    {
+        alert(child);
         var maxHeight=0;
         var height1=0;
         var height2=0;
-        if (cta_index==0)
-        {
-            if (child < 4)
+        if (child < 4)
             {
                 comp.each(function() {
                     maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
@@ -206,10 +132,9 @@ $(document).ready(function () {
                     
                     var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
                     var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
+                    height1=height2=0;
                     row1.each(function() {
                         height1 =height1 > $(this).height() ? height1 : $(this).height();
-                       // alert(height1);
-                       // alert($(this).height());
                     });
                     row1.each(function() {
                         $(this).height(height1+30);
@@ -226,23 +151,25 @@ $(document).ready(function () {
                 else
                 {
                     var row1_child=child/2;
+                    height1=height2=0;
                     comp.each(function(index) {
                         if (index < row1_child)
                         {
                            
-                            var height1 = height1 > $(this).height() ? height1 : $(this).height();
-                            alert(height1);
+                            height1 = height1 > $(this).height() ? height1 : $(this).height();
+                            
                         }
                         else
                         {
-                            var height2 = height2 > $(this).height() ? height2 : $(this).height();
+                            height2 = height2 > $(this).height() ? height2 : $(this).height();
                         }
                         
                     });
-                    comp.each(function() {
+                    comp.each(function(index) {
+                       
                         if (index < row1_child)
                         {
-                            $(this).height(height1);
+                            $(this).height(height1+30);
                         }
                         else
                         {
@@ -253,9 +180,6 @@ $(document).ready(function () {
 
                 }
             }
-            
-        }
-        
     }
  });
  
