@@ -3,6 +3,7 @@
 ```
 {
     "lang-button":"language-btn-container",
+    "data-section-utility-nav" : "header-utility-nav",
     "utility-list" : [{
         "link" : "https://www.sunlife.ca/ca/Find+an+advisor?vgnLocale=en_CA",
         "text" : "Find an advisor"
