@@ -3719,7 +3719,6 @@ $(document).ready(function () {
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
 $(document).ready(function () {
 
-   
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -3752,67 +3751,7 @@ $(document).ready(function () {
     });
 // Region and language menu analytics ends here
 
-// Sign In Module (Desktop Sign In button) analytics starts here
-$('#signinbutton').click(function(){
-    utag.link({"asset_type"	: "Module",
-	"asset_title"	: "Sign In - Main",
-	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-	"event_title"	: "Sign In",
-	"page_section" : "Homepage main signin"
-    });
-setTimeout(signinmodal,200);
-})
-// Sign In Module (Desktop Sign In button) analytics ends here
-
-// Sign In Modal (Mobile Sign In button) analytics starts here
-$('#SignIn').click(function(){
-    utag.link({"asset_type"	: "Module",
-	"asset_title"	: "Sign In - Modal",
-	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-	"event_title"	: "Sign In",
-	"page_section" : "Modal"
-    });
-    setTimeout(signinmodal,200);
 });
-// Sign In Modal (Mobile Sign In button) analytics ends here
-
-// Sign In Modal (Sign-in-modal expansion) analytics starts here
-function signinmodal() {
-    if ($('#mySignInModal').hasClass('in')){
-        utag.link({
-            "asset_type"	: "Module",
-            "asset_title"	: "Sign In - Modal",
-            "event_type"	: "On Page Impression",
-            "event_title"	: "Expansion",
-            "page_section" : "Modal"
-        });
-        //console.log("mobile sign in module expanding is being tracked successfully");        
-    }
-    else{
-        // if modal not found then throwing error
-        utag.link({
-            "asset_type"	: "Module",
-            "asset_title"	: "Sign In - Modal",
-            "event_type"	: "On Page Impression",
-            "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-            "event_title"	: "Error-" + "Expanding not tracked",
-            "page_section" : "Modal"});
-            //console.log("mobile sign in module expanding is not being tracked");
-    }
-}
-// Sign In Modal (Sign-in-modal expansion) analytics ends here
-
-});
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
 
 
 
@@ -3828,264 +3767,89 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    var maxHeight1=0;
-    var maxHeight2=0;
-    var cta_index=0;
-    var j=0;
-    var comp=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
-    setTimeout(comp2,200);
-    function comp2(){
-    var comp2=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('col-sm-12')});
+    var children1=$('.right-navigation-wrapper').children().length;
+    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
+    var children=children1-children2;
+    if (( $(window).width() <1025 &&  $(window).width() >767 )){
+        rightNav();
+        // var mH=maxHeight();
+        // alert(mH);
     }
-    var child=comp.length;
-    var count1=0;
-    // for (var i=0; i<child; i++)
-    // {
-       
-    //     if ($(comp[i]).hasClass('right-nav-cta-orange'))
-    //     {
-    //         cta_index=i+1;
-    //     }
-    // }
-    comp.each(function()
-    {
-        count1++;
-        if ($(this).hasClass('right-nav-cta-orange'))
-        {
-            
-         cta_index=count1;
-        }
-    });
-    if (cta_index==0)
-    {
-        right_nav_width(child);
-        //maxheight(child,0,0);
-    }
-    else if (cta_index==1)
-    {
-       var child2=child-1;
-       right_nav_width(child2);
-       //maxheight(child2,0,0);
-       firstfull();
+    
+       $( window ).resize(function() {
+          rightNav();
+          maxHeight();
       
-    }
-    else
-    { 
-        var childbefore= cta_index-1;
-        right_nav_width(childbefore);
-        //maxheight(childbefore,0,0);
-        var childafter=child-childbefore;
-        for (var i=cta_index-1; i<child; i++)
-        {
-            $(comp[i]).removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
-        }       
-    }
-
-    function right_nav_width(child) 
-    {
+      
+       });
+       $(window).on('load',function() {
        
-        if (child==1)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12" )});
-    }
-    if (child==2)
-    {
-        
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
-    }
-    if (child==3)
-    {
-        
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
-    }
-    if (child==4)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
-    }
-    if (child==5)
-    {
-        for (var i=0; i<3; i++)
-        {
-            $(comp[i]).addClass('col-xs-12 col-sm-4 col-md-12');
+        maxHeight();
+    
+    
+     });
+       function rightNav(){
 
-        }
-        for (var i=3; i<=4; i++)
-        {
-            $(comp[i]).addClass('col-xs-12 col-sm-6 col-md-12');
-        }
-    }
-    if (child==6)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
-    }
         
-    }
-    function firstfull(){
-        $('.right-nav-cta-orange').removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
-    }
-    if (( $(window).width() <1025 &&  $(window).width() >767 ))
-    {
-        maxheight(child, cta_index);
-    }
-    // function maxheight( child1,maxHeight1,maxHeight2)
-    // {
+        if (( $(window).width() <1025 &&  $(window).width() >767 )) {
 
-    //     if (( $(window).width() <1025 &&  $(window).width() >767 )) {
-    //                 var maxHeight = -1;
-    //                 if (child1 < 4)
-    //                 {
-    //                     comp.each(function() {
-    //                         maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-                           
-    //                       });
-    //                       comp.each(function() {
-    //                         $(this).height(maxHeight);
-    //                       });
-    //                 }
-    //                 else
-    //                 {
-    //                     if (child1%2==0)
-    //                     {
-    //                         i=0;
-    //                         i1=0;
-    //                         j=(child1/2);
-    //                         j1=(child1/2);
-    //                         comp.each(function() {
-    //                             if (i <(child1/2)) {
-    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-    //                                 i++;
-    //                             }
-                                
-    //                         });
-    //                         comp.each(function() {
-    //                             if (i1 <(child1/2)) {
-    //                             $(comp[i1]).height(maxHeight1);
-    //                             i1++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {                               
-    //                             if (j <child1) {
-    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-    //                             j++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {
-    //                             if (j1 <child1) {
-    //                             $(comp[j1]).height(maxHeight2);
-    //                             j1++;
-    //                             }
-    //                         });
-    //                      }
-    //                     else
-    //                     {
-    //                         i=0;
-    //                         i1=0;
-    //                         j=3;
-    //                         j1=3;
-    //                         comp.each(function() {
-    //                             if (i <3) {
-    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-    //                                 i++;
-    //                             }
-                                
-    //                         });
-    //                         comp.each(function() {
-    //                             if (i1 <3) {
-    //                             $(comp[i1]).height(maxHeight1);
-    //                             i1++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {                               
-    //                             if (j <5) {
-    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-    //                             j++;
-    //                             }
-    //                         });
-    //                         comp.each(function() {
-    //                             if (j1 <5) {
-    //                             $(comp[j1]).height(maxHeight2);
-    //                             j1++;
-    //                             }
-    //                         });
-    //                     }
-    //                 }
-    //             }
-    // }
- 
-    function maxheight(child, cta_index)
-    {
-        var maxHeight=0;
-        var height1=0;
-        var height2=0;
-        if (cta_index==0)
-        {
-            if (child < 4)
+            if (children2==1)
             {
-                comp.each(function() {
-                    maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-                });
-                comp.each(function() {
-                    $(this).height(maxHeight);
-                });
+                $('.right-navigation-wrapper').children().css('width','100%');
             }
-            else
+           
+            if (children==2){
+                $('.right-navigation-wrapper').children().css('width','50%');
+               }
+               if(children==3)
+               {
+                $('.right-navigation-wrapper').children().css('width','33.33%');
+               }
+        if(children==4)
             {
-                if (child==5)
-                {
-                    
-                    var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
-                    var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
-                    row1.each(function() {
-                        height1 =height1 > $(this).height() ? height1 : $(this).height();
-                       // alert(height1);
-                       // alert($(this).height());
-                    });
-                    row1.each(function() {
-                        $(this).height(height1+30);
-                    });
-                    row2.each(function() {
-                        height2 = height2 > $(this).height() ? height2 : $(this).height();
-                      alert(height2);
-                    });
-                    row2.each(function() {
-                        $(this).height(height2);
-                    });
-
-                }
-                else
-                {
-                    var row1_child=child/2;
-                    comp.each(function(index) {
-                        if (index < row1_child)
-                        {
-                           
-                            var height1 = height1 > $(this).height() ? height1 : $(this).height();
-                            alert(height1);
-                        }
-                        else
-                        {
-                            var height2 = height2 > $(this).height() ? height2 : $(this).height();
-                        }
-                        
-                    });
-                    comp.each(function() {
-                        if (index < row1_child)
-                        {
-                            $(this).height(height1);
-                        }
-                        else
-                        {
-                            $(this).height(height1);
-                        }
-                       
-                    });
-
-                }
+                $('.right-navigation-wrapper').children().css('width','50%');
             }
+            if (children==5)
+            {
+               
+    
+                $('.right-navigation-wrapper').children('div:nth-child(1)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(3)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(5)').css('width','33.33%');
+                $('.right-navigation-wrapper').children('div:nth-child(7)').css('width','50%');
+                $('.right-navigation-wrapper').children('div:nth-child(9)').css('width','50%');
+              
+            }
+            if (children==6)
+            {
+                $('.right-navigation-wrapper').children().css('width','33.33%');
+            }
+       }
+      
+       else
+       {
+        $('.right-navigation-wrapper').children().css('width','100%');
+        $('.right-navigation-wrapper').children().css('height','auto');
+       }
+    }
+    function maxHeight(){
+        if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+            var maxHeight = -1;
+
+            $('.right-navigation-wrapper').children().each(function() {
+              maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+             
+            });
             
+            //return maxHeight;
+            $('.right-navigation-wrapper').children().each(function() {
+              $(this).height(maxHeight);
+            });
         }
-        
     }
+    
+    
+ 
  });
  
 $(document).ready(function(){
@@ -4159,30 +3923,6 @@ $(document).ready(function () {
    );
 
 });
-$(document).ready(function(){
-   var menuHeight= $('.slf-header-mega-menu2').height();
-   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-    $( ".dropdown-submenu").hover(
-        function(){
-            $('.slf-header-mega-menu2').height(submenuHeight+5);
-    },function(){
-      $('.slf-header-mega-menu2').height(menuHeight);
-       }
-    );
-   });
-
-   /*AEM JS*/
-   $(document).ready(function(){
-    var menuHeight= $('.cmp-dynamic-megamenu').height();
-    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-     $( ".dropdown-submenu").hover(
-         function(){
-             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
-     },function(){
-       $('.cmp-dynamic-megamenu').height(menuHeight);
-        }
-     );
-   });
 $(document).ready(function () {
     mobileLogoWidth();
     function mobileLogoWidth() {  
@@ -4258,19 +3998,16 @@ $(document).ready(function () {
         }
     });  
 });   
-
-
-   /*AEM JS*/
-   $(document).ready(function(){
-    var menuHeight= $('.cmp-dynamic-megamenu').height();
-    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-     $( ".dropdown-submenu").hover(
-         function(){
-             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
-     },function(){
-       $('.cmp-dynamic-megamenu').height(menuHeight);
-        }
-     );
+$(document).ready(function(){
+   var menuHeight= $('.slf-header-mega-menu2').height();
+   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+    $( ".dropdown-submenu").hover(
+        function(){
+            $('.slf-header-mega-menu2').height(submenuHeight+5);
+    },function(){
+      $('.slf-header-mega-menu2').height(menuHeight);
+       }
+    );
    });
 
 
@@ -4296,9 +4033,9 @@ $(document).ready(function(){
 });
 
 
-
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
+    // $(".desktop-header-wrapper .desktop-region-language-menu-wrapper").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
     $('#language-btn-container').click(function(){
      if ($('#sun-search').hasClass('in')){  
@@ -4323,35 +4060,16 @@ $(document).ready(function () {
         $('.sunLanguageCrossBtn').click(function(){
             $("#language-btn").attr('aria-expanded','false');
         });
-        $('.search-icon-container').keyup(function (event) {
-            if (event.keyCode == 13) {
-                if ($('#sun-search').hasClass('in')){
-                    $('#sun-search').removeClass('in');
-                    $("#search-btn").attr('aria-expanded','false');               
-                }
-                else {
-                    $('#sun-search').addClass('in');
-                    $("#search-btn").attr('aria-expanded','true');
-                    $("#language-btn").attr('aria-expanded','false');
-                    $("#sun-language").removeClass('in');
-                }
-            }          
-        });
-        $('#language-btn-container').keyup(function (event) {
-            if (event.keyCode == 13) {
-                if ($('#sun-language').hasClass('in')){
-                    $('#sun-language').removeClass('in');
-                    $("#language-btn").attr('aria-expanded','false');               
-                }
-                else {
-                    $('#sun-language').addClass('in');
-                    $("#language-btn").attr('aria-expanded','true');
-                    $("#search-btn").attr('aria-expanded','false');
-                    $("#sun-search").removeClass('in'); 
-                }
-            }          
-        });
 });
 
 
 
+
+
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}

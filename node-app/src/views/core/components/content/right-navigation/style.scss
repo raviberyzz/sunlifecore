@@ -2,8 +2,8 @@
 .right-navigation-wrapper{
     padding: 0;
     text-align: center;
-    background-color: $light-cool-blue-color;
     .lists-wrapper{
+        width: 100%;
         .links{
             width: 100%;
             a{
@@ -18,8 +18,8 @@
         }
     }
  
-    .right-nav-cta-orange{
-       background-color: $light-orange-20;
+    .right-nav-icon-wrapper{
+        width: 100%;
     }
     .yellow-horizontal-separator{
         width: 100%;
@@ -40,10 +40,6 @@
             max-width: 100%;
             padding: 10px;
            
-    }
-    .button-wrapper .primary-blue-button{
-        max-width: 100%;
-        width: 100%;
     }
     .light-orange{
         background-color: $light-orange-20;

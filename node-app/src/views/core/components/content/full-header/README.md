@@ -3,7 +3,6 @@ JSON Format
 ```
 {   
 "desktop-sunlife-logo":"desktop-sunlife-logo",
-"data-section-logo" : "header-logo",
 "desktop-utility-nav":"desktop-utility-nav",
     "lang-button":"language-btn-container",
     "utility-list" : [{

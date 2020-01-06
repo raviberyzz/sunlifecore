@@ -3,7 +3,6 @@
 JSON Format
 ```
 {
-"data-section-sign-in" : "header-sign-in",
 "button-wrapper":"button-wrapper",
 "button-class": "signIn-button",
 "button-text": "Sign-in",
