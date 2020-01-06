@@ -14,9 +14,10 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.wcm.core.components.models.form.Container;
 
-@Model(adaptables = SlingHttpServletRequest.class,
-adapters = Container.class,
-resourceType = "sunlife/core/components/form/container")
+/**
+ * The Interface FormContainer.
+ */
+@Model(adaptables = SlingHttpServletRequest.class,adapters = Container.class,resourceType = "sunlife/core/components/form/container")
 public class FormContainer implements Container {
 	@Self
 	@Via(type = ResourceSuperType.class)

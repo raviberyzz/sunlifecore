@@ -7,25 +7,50 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 /**
- *  Sling model for sub links in regional languages menu
- * @author MO92
+ * Sling model for sub links in regional languages menu.
  *
+ * @author MO92
  */
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class SubLinkModel {
+public interface SubLinkModel {
 
+	/**
+	 * Gets the sub link name.
+	 *
+	 * @return the sub link name
+	 */
 	@Inject
-	public String subLinkName;
+	String getSubLinkName();
 
+	/**
+	 * Gets the sub link url.
+	 *
+	 * @return the sub link url
+	 */
 	@Inject
-	public String subLinkUrl;
+	String getSubLinkUrl();
 
+	/**
+	 * Gets the sub link target.
+	 *
+	 * @return the sub link target
+	 */
 	@Inject
-	public String subLinkTarget;
+	String getSubLinkTarget();
 
+	/**
+	 * Gets the sub link separator.
+	 *
+	 * @return the sub link separator
+	 */
 	@Inject
-	public String subLinkSeparator;
-	
+	String getSubLinkSeparator();
+
+	/**
+	 * Gets the selected.
+	 *
+	 * @return the selected
+	 */
 	@Inject
-	public String selected;
+	String getSelected();
 }

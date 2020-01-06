@@ -3,7 +3,6 @@
 JSON Format
 ```
 {
-    "data-section-search" : "header-search",
     "form-text-id":"q-top",
     "form-text-class":"",
     "form-text-label":"",

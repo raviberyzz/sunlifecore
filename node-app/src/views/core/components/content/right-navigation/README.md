@@ -3,8 +3,7 @@
 JSON Format
 ```
 {
-    "data-section-right-rail" : "body-right-rail",
-    "separator-wrapper" : "yellow-horizontal-separator",
+     "separator-wrapper" : "yellow-horizontal-separator",
     "button-class": "primary-blue-button",
     "button-text": "Button",
     "redirection-link": "javascript:void(0)",
@@ -18,7 +17,7 @@ JSON Format
     "error-message":"Wrong Input",
     "validation-pattern": "parsley-pattern",
      "input-text-type":"text",
-    "form-button-type":"button",
+    "button-type":"button",
     "button-value":"search",
     "form-button-class":"primary-blue-button",
      "icon-text-wrapper" : "right-nav-icon-wrapper",

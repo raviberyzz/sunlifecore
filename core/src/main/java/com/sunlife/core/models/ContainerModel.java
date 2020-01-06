@@ -6,16 +6,26 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
-
-@Model(adaptables = {Resource.class},
-		defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+/**
+ * The Interface ContainerModel.
+ */
+@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ContainerModel {
-	
+
+	/**
+	 * Gets the analytics id.
+	 *
+	 * @return the analytics id
+	 */
 	@Inject
 	public String getAnalyticsId();
-	
+
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	@Inject
 	public String getType();
-	
-	
+
 }

@@ -1,12 +1,11 @@
 $(document).ready(function () {
-    var maxHeight1=0;
-    var maxHeight2=0;
-    var cta_index=0;
-    var j=0;
-    var comp=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
-    setTimeout(comp2,200);
-    function comp2(){
-    var comp2=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('col-sm-12')});
+    var children1=$('.right-navigation-wrapper').children().length;
+    var children2=$('.right-navigation-wrapper').children(".yellow-horizontal-separator").length;
+    var children=children1-children2;
+    if (( $(window).width() <1025 &&  $(window).width() >767 )){
+        rightNav();
+        // var mH=maxHeight();
+        // alert(mH);
     }
     var child=comp.length;
     var count1=0;
@@ -46,40 +45,12 @@ $(document).ready(function () {
     function right_nav_width(child) 
     {
        
-        if (child==1)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12" )});
-    }
-    if (child==2)
-    {
-        
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
-    }
-    if (child==3)
-    {
-        
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
-    }
-    if (child==4)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
-    }
-    if (child==5)
-    {
-        for (var i=0; i<3; i++)
-        {
-            $(comp[i]).addClass('col-xs-12 col-sm-4 col-md-12');
+        maxHeight();
+    
+    
+     };
+       function rightNav(){
 
-        }
-        for (var i=3; i<=4; i++)
-        {
-            $(comp[i]).addClass('col-xs-12 col-sm-6 col-md-12');
-        }
-    }
-    if (child==6)
-    {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
-    }
         
     }
     function firstfull(){
@@ -118,14 +89,17 @@ $(document).ready(function () {
         var height2=0;
         if (child < 4)
             {
-                comp.each(function() {
-                    maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
-                });
-                comp.each(function() {
-                    $(this).height(maxHeight);
-                });
+                $('.right-navigation-wrapper').children().css('width','100%');
             }
-            else
+           
+            if (children==2){
+                $('.right-navigation-wrapper').children().css('width','50%');
+               }
+               if(children==3)
+               {
+                $('.right-navigation-wrapper').children().css('width','33.33%');
+               }
+        if(children==4)
             {
                 if (child==5)
                 {
@@ -181,5 +155,8 @@ $(document).ready(function () {
                 }
             }
     }
+    
+    
+ 
  });
  

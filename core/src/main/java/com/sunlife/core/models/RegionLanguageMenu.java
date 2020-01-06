@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.sunlife.core.models;
 
@@ -14,74 +14,271 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 /**
- * Sling model for regional languages menu
- * 
+ * Sling model for regional languages menu.
+ *
  * @author MO92
  */
 @Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class RegionLanguageMenu {
-	// Tab1 Regions
-	@Inject
-	public String title;
-
-	@Inject
-	public String titleMobile;
-
-	@Inject
-	public List<LinkModel> regions;
-
-	// Tab2 Languages
-	@Inject
-	public String languageSectionTitle;
-
-	@Inject
-	public String languageSectionTitleMobile;
-
-	@Inject
-	public List<SubLinkModel> languageLinks;
-
-	//Tab 3 Settings
-	@Inject
-	public String closeModalText;
-
-	@Inject
-	public String selectLangText;
-
-	@Inject
-	public String backButtonText;
 	
+	/** The title. */
 	@Inject
-	public String selectedTabMobile;
-	
-	// Field to expose the processed links to front end
+	private String title;
+
+	/** The title mobile. */
+	@Inject
+	private String titleMobile;
+
+	/** The regions. */
+	@Inject
+	private List<LinkModel> regions;
+
+	/** The language section title. */
+	@Inject
+	private String languageSectionTitle;
+
+	/** The language section title mobile. */
+	@Inject
+	private String languageSectionTitleMobile;
+
+	/** The language links. */
+	@Inject
+	private List<SubLinkModel> languageLinks;
+
+	/** The close modal text. */
+	@Inject
+	private String closeModalText;
+
+	/** The select lang text. */
+	@Inject
+	private String selectLangText;
+
+	/** The back button text. */
+	@Inject
+	private String backButtonText;
+
+	/** The selected tab mobile. */
+	@Inject
+	private String selectedTabMobile;
+
+	/** The region links. */
 	private List<List<LinkModel>> regionLinks;
 
+	/**
+	 * Gets the region links.
+	 *
+	 * @return the region links
+	 */
 	public List<List<LinkModel>> getRegionLinks() {
 		return regionLinks;
 	}
 
-	public void setRegionLinks(List<List<LinkModel>> regionLinks) {
+	/**
+	 * Sets the region links.
+	 *
+	 * @param regionLinks the new region links
+	 */
+	public void setRegionLinks(final List<List<LinkModel>> regionLinks) {
 		this.regionLinks = regionLinks;
 	}
 
 	/**
-	 * To process data after injection of all injected fields
-	 * 
-	 * @param
-	 * @return void
-	 * @author MO92
+	 * Gets the title.
+	 *
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * Sets the title.
+	 *
+	 * @param title the new title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * Gets the title mobile.
+	 *
+	 * @return the title mobile
+	 */
+	public String getTitleMobile() {
+		return titleMobile;
+	}
+
+	/**
+	 * Sets the title mobile.
+	 *
+	 * @param titleMobile the new title mobile
+	 */
+	public void setTitleMobile(String titleMobile) {
+		this.titleMobile = titleMobile;
+	}
+
+	/**
+	 * Gets the regions.
+	 *
+	 * @return the regions
+	 */
+	public List<LinkModel> getRegions() {
+		return regions;
+	}
+
+	/**
+	 * Sets the regions.
+	 *
+	 * @param regions the new regions
+	 */
+	public void setRegions(List<LinkModel> regions) {
+		this.regions = regions;
+	}
+
+	/**
+	 * Gets the language section title.
+	 *
+	 * @return the language section title
+	 */
+	public String getLanguageSectionTitle() {
+		return languageSectionTitle;
+	}
+
+	/**
+	 * Sets the language section title.
+	 *
+	 * @param languageSectionTitle the new language section title
+	 */
+	public void setLanguageSectionTitle(String languageSectionTitle) {
+		this.languageSectionTitle = languageSectionTitle;
+	}
+
+	/**
+	 * Gets the language section title mobile.
+	 *
+	 * @return the language section title mobile
+	 */
+	public String getLanguageSectionTitleMobile() {
+		return languageSectionTitleMobile;
+	}
+
+	/**
+	 * Sets the language section title mobile.
+	 *
+	 * @param languageSectionTitleMobile the new language section title mobile
+	 */
+	public void setLanguageSectionTitleMobile(String languageSectionTitleMobile) {
+		this.languageSectionTitleMobile = languageSectionTitleMobile;
+	}
+
+	/**
+	 * Gets the language links.
+	 *
+	 * @return the language links
+	 */
+	public List<SubLinkModel> getLanguageLinks() {
+		return languageLinks;
+	}
+
+	/**
+	 * Sets the language links.
+	 *
+	 * @param languageLinks the new language links
+	 */
+	public void setLanguageLinks(List<SubLinkModel> languageLinks) {
+		this.languageLinks = languageLinks;
+	}
+
+	/**
+	 * Gets the close modal text.
+	 *
+	 * @return the close modal text
+	 */
+	public String getCloseModalText() {
+		return closeModalText;
+	}
+
+	/**
+	 * Sets the close modal text.
+	 *
+	 * @param closeModalText the new close modal text
+	 */
+	public void setCloseModalText(String closeModalText) {
+		this.closeModalText = closeModalText;
+	}
+
+	/**
+	 * Gets the select lang text.
+	 *
+	 * @return the select lang text
+	 */
+	public String getSelectLangText() {
+		return selectLangText;
+	}
+
+	/**
+	 * Sets the select lang text.
+	 *
+	 * @param selectLangText the new select lang text
+	 */
+	public void setSelectLangText(String selectLangText) {
+		this.selectLangText = selectLangText;
+	}
+
+	/**
+	 * Gets the back button text.
+	 *
+	 * @return the back button text
+	 */
+	public String getBackButtonText() {
+		return backButtonText;
+	}
+
+	/**
+	 * Sets the back button text.
+	 *
+	 * @param backButtonText the new back button text
+	 */
+	public void setBackButtonText(String backButtonText) {
+		this.backButtonText = backButtonText;
+	}
+
+	/**
+	 * Gets the selected tab mobile.
+	 *
+	 * @return the selected tab mobile
+	 */
+	public String getSelectedTabMobile() {
+		return selectedTabMobile;
+	}
+
+	/**
+	 * Sets the selected tab mobile.
+	 *
+	 * @param selectedTabMobile the new selected tab mobile
+	 */
+	public void setSelectedTabMobile(String selectedTabMobile) {
+		this.selectedTabMobile = selectedTabMobile;
+	}
+
+	
+	/**
+	 * Inits the.
 	 */
 	@PostConstruct
 	public void init() {
 		List<LinkModel> tempList = null;
-		if (null == regions)
+		if (null == regions) {
 			return;
+		}
 		this.regionLinks = new ArrayList<>();
-		for (LinkModel region : regions) {
-			if (tempList == null)
+		for (final LinkModel region : regions) {
+			if (tempList == null) {
 				tempList = new ArrayList<>();
+			}
 			tempList.add(region);
-			if ("yes".equals(region.nextList)) {
+			if ("yes".equals(region.getNextList())) {
 				this.regionLinks.add(tempList);
 				tempList = null;
 			}

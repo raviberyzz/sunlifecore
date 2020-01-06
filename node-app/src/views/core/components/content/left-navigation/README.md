@@ -3,7 +3,6 @@
 JSON Format
 ```
 {
-    "data-section-left-nav" : "nav-left",
     "zero-level" : "Investors",
     "first-level-list" : [{
         "first-level-link-name" : "Investors overview",
