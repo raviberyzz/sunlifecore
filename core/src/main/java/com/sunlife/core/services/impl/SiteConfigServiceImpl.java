@@ -1,4 +1,4 @@
-package com.sunlife.core.services;
+package com.sunlife.core.services.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,7 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -25,82 +26,101 @@ import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 import com.sunlife.core.osgi.config.SiteConfig;
+import com.sunlife.core.services.SiteConfigService;
 
+/**
+ * The Class SiteConfigServiceImpl.
+ */
 @Component(service = SiteConfigService.class, immediate = true)
 @Designate(ocd = SiteConfig.class)
 public class SiteConfigServiceImpl implements SiteConfigService {
 
+	/** The resolver factory. */
 	@Reference
 	private ResourceResolverFactory resolverFactory;
-	
-	private Logger log = LoggerFactory.getLogger(this.getClass());
-	
+
+	/** The log. */
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	/** The site config. */
 	private SiteConfig siteConfig;
-	
+
+	/** The builder. */
 	@Reference
-    private QueryBuilder builder;
-     
-    private Map<String, HashMap<String, String>> siteConfigMap;
-    
+	private QueryBuilder builder;
+
+	/** The site config map. */
+	private Map<String, HashMap<String, String>> siteConfigMap;
+
+	/**
+	 * Activate.
+	 *
+	 * @param config the config
+	 * @throws LoginException the login exception
+	 * @throws RepositoryException the repository exception
+	 */
 	@Activate
-    public void activate(SiteConfig config) throws LoginException, RepositoryException {
+	public void activate(final SiteConfig config) throws LoginException, RepositoryException {
 		log.info("Entry :: activate method of SiteConfigServiceImpl");
-        this.siteConfig = config;
-        setConfiguration();
+		this.siteConfig = config;
+		setConfiguration();
 		log.info("Exit :: activate method of SiteConfigServiceImpl");
-    }
-	
+	}
+
+	/* (non-Javadoc)
+	 * @see com.sunlife.core.services.SiteConfigService#getConfigValues(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public String getConfigValues(String name, String pagePath) {
+	public String getConfigValues(final String name, String pagePath) {
 		log.info("SiteConfigServiceImpl :: getConfigValues");
-		while(!siteConfigMap.containsKey(pagePath)) {
+		while (!siteConfigMap.containsKey(pagePath)) {
 			pagePath = pagePath.substring(0, pagePath.lastIndexOf("/"));
 		}
-		
+
 		log.info("SiteConfigServiceImpl :: getConfigValues :: Page ");
 		return siteConfigMap.get(pagePath).get(name);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.sunlife.core.services.SiteConfigService#setConfiguration()
+	 */
+	@Override
 	public void setConfiguration() throws LoginException, RepositoryException {
 		log.info("Entry :: setConfiguration method of SiteConfigServiceImpl");
-		Session session;
-		Map<String, Object> param = new HashMap<>();
+		final Map<String, Object> param = new HashMap<>();
 		param.put(ResourceResolverFactory.SUBSERVICE, "migration");
-		
-		ResourceResolver resolver = null;         
+
+		ResourceResolver resolver = null;
 		resolver = resolverFactory.getServiceResourceResolver(param);
-		
-		String sitePath = siteConfig.getSitePath();
-		
-		session = resolver.adaptTo(Session.class);
-		
-		Map<String, String> map = new HashMap<>();
+
+		final String sitePath = siteConfig.getSitePath();
+
+		final Map<String, String> map = new HashMap<>();
 		map.put("path", sitePath);
 		map.put("type", "cq:Page");
 		map.put("property", "jcr:content/config/sling:resourceType");
 		map.put("property.value", "sunlife/core/components/config/configuration");
-		
-		Query query = builder.createQuery(PredicateGroup.create(map), session);
-		SearchResult result = query.getResult();
-		
+
+		final Query query = builder.createQuery(PredicateGroup.create(map), resolver.adaptTo(Session.class));
+		final SearchResult result = query.getResult();
+
 		siteConfigMap = new HashMap<>();
-		
-		for(Hit hit : result.getHits()) {
-			log.info("\n {}", hit.getPath()+"/jcr:content/config");
-			Resource resource = resolver.getResource(hit.getPath()+"/jcr:content/config");
-			ValueMap properties = resource.adaptTo(ValueMap.class);
-			HashMap<String, String> resultMap = new HashMap<>(); 
-			for(Entry<String, Object> e : properties.entrySet()) {
-			    String key = e.getKey();
-			    Object value = e.getValue();
-			    resultMap.put(key, value.toString());
+
+		for (final Hit hit : result.getHits()) {
+			log.info("\n {}", hit.getPath() + "/jcr:content/config");
+			final Resource resource = resolver.getResource(hit.getPath() + "/jcr:content/config");
+			final ValueMap properties = ResourceUtil.getValueMap(resource);
+			final HashMap<String, String> resultMap = new HashMap<>();
+			for (final Entry<String, Object> e : properties.entrySet()) {
+				final String key = e.getKey();
+				final Object value = e.getValue();
+				resultMap.put(key, value.toString());
 			}
 			siteConfigMap.put(properties.get("siteUrl", String.class), resultMap);
 		}
-		
+
 		resolver.close();
-		session.logout();
 		log.info("Exit :: setConfiguration method of SiteConfigServiceImpl");
 	}
-	
+
 }

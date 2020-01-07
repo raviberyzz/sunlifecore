@@ -1,53 +1,64 @@
-/*
- *  Copyright 2015 Adobe Systems Incorporated
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 package com.sunlife.core.models;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
-@Model(
-    adaptables = {Resource.class},
-    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+/**
+ * The Interface ListModel.
+ */
+@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ListModel {
-	
-  @Inject
-  String getTitle();
 
-  @Inject
-  List<Links> getLinks(); // the name `getLinks` corresponds to the multifield name="./links"
-  
+	/**
+	 * Gets the title.
+	 *
+	 * @return the title
+	 */
+	@Inject
+	String getTitle();
 
-  /**
-   * Links model
-   * has a name, url and target
-   */
-  @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-  interface Links {
-	  
-    @Inject
-    String getLinkName();
-    
-    @Inject
-    String getLinkUrl();
-    
-    @Inject
-    String getTarget();    
-   
-  }
+	/**
+	 * Gets the links.
+	 *
+	 * @return the links
+	 */
+	@Inject
+	List<Links> getLinks(); // the name `getLinks` corresponds to the multifield name="./links"
+
+	/**
+	 * Links model has a name, url and target.
+	 */
+	@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+	interface Links {
+
+		/**
+		 * Gets the link name.
+		 *
+		 * @return the link name
+		 */
+		@Inject
+		String getLinkName();
+
+		/**
+		 * Gets the link url.
+		 *
+		 * @return the link url
+		 */
+		@Inject
+		String getLinkUrl();
+
+		/**
+		 * Gets the target.
+		 *
+		 * @return the target
+		 */
+		@Inject
+		String getTarget();
+
+	}
 }

@@ -7,4 +7,4 @@ JSON Format
 }
 ```
 
-<!-- Separator classes available: yellow-horizontal-separator, grey-horizontal-separator -->
+<!-- Separator classes available: yellow-horizontal-separator, grey-horizontal-separator,vertical-separator -->

@@ -4099,16 +4099,27 @@ input[type=text] {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
-hr {
+.grey-horizontal-separator hr {
+  border-color: #9a9a9a;
   margin-top: 40px;
   margin-bottom: 40px;
   size: 10px; }
 
-.grey-horizontal-separator hr {
-  border-color: #9a9a9a; }
-
 .yellow-horizontal-separator hr {
-  border-color: #FFCB05; }
+  border-color: #FFCB05;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  size: 10px; }
+
+.vertical-separator {
+  height: 75%;
+  border-right: 2px solid #F7F7F7;
+  width: 1px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+  .vertical-separator hr {
+    display: none; }
 
 .search-bar-wrapper {
   background: #FFCB05;
@@ -4180,6 +4191,9 @@ hr {
     width: 100%;
     max-width: 100%;
     padding: 10px; }
+  .right-navigation-wrapper .button-wrapper .primary-blue-button {
+    max-width: 100%;
+    width: 100%; }
   .right-navigation-wrapper .light-orange {
     background-color: #FEEDD2; }
   .right-navigation-wrapper .cool-blue {
@@ -4253,11 +4267,6 @@ hr {
             background-color: #ffffff; }
       .desktop-region-language-menu-wrapper .slf-region .content-region > :not(:first-child) {
         padding: 0 0 0 10px; }
-        .desktop-region-language-menu-wrapper .slf-region .content-region > :not(:first-child) .nav-select {
-          background-color: #feedd2; }
-          .desktop-region-language-menu-wrapper .slf-region .content-region > :not(:first-child) .nav-select a {
-            font-weight: 700;
-            color: #424242; }
         .desktop-region-language-menu-wrapper .slf-region .content-region > :not(:first-child) .accordion-heading {
           font-size: 1rem;
           cursor: pointer;
@@ -4810,7 +4819,6 @@ hr {
 .cmp-dynamic-megamenu {
   border: 3px solid #FFCB05;
   padding: 0;
-  display: inline-flex;
   position: relative; }
 
 .cmp-dynamic-megamenu .aem-Grid--default--3 {
@@ -4995,6 +5003,18 @@ hr {
     display: none; } }
 
 /* AEM CSS */
+.nav-active > span {
+  border-bottom: 2px solid #FFCB05; }
+
+.desktop-header-wrapper .xf-content-height {
+  min-height: 0; }
+
+.cmp-megamenu-line {
+  border-right: 2px dotted #9a9a9a; }
+
+.slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+  position: static; }
+
 .mega-menu-wrapper-desk .aem-Grid--default--12 {
   padding: 0;
   display: flex; }

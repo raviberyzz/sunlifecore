@@ -3859,13 +3859,13 @@ $(document).ready(function () {
     if (cta_index==0)
     {
         right_nav_width(child);
-        maxheight(child,0,0);
+        //maxheight(child,0,0);
     }
     else if (cta_index==1)
     {
        var child2=child-1;
        right_nav_width(child2);
-       maxheight(child2,0,0);
+       //maxheight(child2,0,0);
        firstfull();
       
     }
@@ -3873,7 +3873,7 @@ $(document).ready(function () {
     { 
         var childbefore= cta_index-1;
         right_nav_width(childbefore);
-        maxheight(childbefore,0,0);
+        //maxheight(childbefore,0,0);
         var childafter=child-childbefore;
         for (var i=cta_index-1; i<child; i++)
         {
@@ -3923,91 +3923,169 @@ $(document).ready(function () {
     function firstfull(){
         $('.right-nav-cta-orange').removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
     }
-    function maxheight( child1,maxHeight1,maxHeight2)
+    if (( $(window).width() <1025 &&  $(window).width() >767 ))
     {
+        maxheight(child, cta_index);
+    }
+    // function maxheight( child1,maxHeight1,maxHeight2)
+    // {
 
-        if (( $(window).width() <1025 &&  $(window).width() >767 )) {
-                    var maxHeight = -1;
-                    if (child1 < 4)
-                    {
-                        comp.each(function() {
-                            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+    //     if (( $(window).width() <1025 &&  $(window).width() >767 )) {
+    //                 var maxHeight = -1;
+    //                 if (child1 < 4)
+    //                 {
+    //                     comp.each(function() {
+    //                         maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
                            
-                          });
-                          comp.each(function() {
-                            $(this).height(maxHeight);
-                          });
-                    }
-                    else
-                    {
-                        if (child1%2==0)
-                        {
-                            i=0;
-                            i1=0;
-                            j=(child1/2);
-                            j1=(child1/2);
-                            comp.each(function() {
-                                if (i <(child1/2)) {
-                                    maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-                                    i++;
-                                }
+    //                       });
+    //                       comp.each(function() {
+    //                         $(this).height(maxHeight);
+    //                       });
+    //                 }
+    //                 else
+    //                 {
+    //                     if (child1%2==0)
+    //                     {
+    //                         i=0;
+    //                         i1=0;
+    //                         j=(child1/2);
+    //                         j1=(child1/2);
+    //                         comp.each(function() {
+    //                             if (i <(child1/2)) {
+    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
+    //                                 i++;
+    //                             }
                                 
-                            });
-                            comp.each(function() {
-                                if (i1 <(child1/2)) {
-                                $(comp[i1]).height(maxHeight1);
-                                i1++;
-                                }
-                            });
-                            comp.each(function() {                               
-                                if (j <child1) {
-                                maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-                                j++;
-                                }
-                            });
-                            comp.each(function() {
-                                if (j1 <child1) {
-                                $(comp[j1]).height(maxHeight2);
-                                j1++;
-                                }
-                            });
-                         }
+    //                         });
+    //                         comp.each(function() {
+    //                             if (i1 <(child1/2)) {
+    //                             $(comp[i1]).height(maxHeight1);
+    //                             i1++;
+    //                             }
+    //                         });
+    //                         comp.each(function() {                               
+    //                             if (j <child1) {
+    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
+    //                             j++;
+    //                             }
+    //                         });
+    //                         comp.each(function() {
+    //                             if (j1 <child1) {
+    //                             $(comp[j1]).height(maxHeight2);
+    //                             j1++;
+    //                             }
+    //                         });
+    //                      }
+    //                     else
+    //                     {
+    //                         i=0;
+    //                         i1=0;
+    //                         j=3;
+    //                         j1=3;
+    //                         comp.each(function() {
+    //                             if (i <3) {
+    //                                 maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
+    //                                 i++;
+    //                             }
+                                
+    //                         });
+    //                         comp.each(function() {
+    //                             if (i1 <3) {
+    //                             $(comp[i1]).height(maxHeight1);
+    //                             i1++;
+    //                             }
+    //                         });
+    //                         comp.each(function() {                               
+    //                             if (j <5) {
+    //                             maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
+    //                             j++;
+    //                             }
+    //                         });
+    //                         comp.each(function() {
+    //                             if (j1 <5) {
+    //                             $(comp[j1]).height(maxHeight2);
+    //                             j1++;
+    //                             }
+    //                         });
+    //                     }
+    //                 }
+    //             }
+    // }
+ 
+    function maxheight(child, cta_index)
+    {
+        var maxHeight=0;
+        var height1=0;
+        var height2=0;
+        if (cta_index==0)
+        {
+            if (child < 4)
+            {
+                comp.each(function() {
+                    maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+                });
+                comp.each(function() {
+                    $(this).height(maxHeight);
+                });
+            }
+            else
+            {
+                if (child==5)
+                {
+                    
+                    var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
+                    var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
+                    row1.each(function() {
+                        height1 =height1 > $(this).height() ? height1 : $(this).height();
+                       // alert(height1);
+                       // alert($(this).height());
+                    });
+                    row1.each(function() {
+                        $(this).height(height1+30);
+                    });
+                    row2.each(function() {
+                        height2 = height2 > $(this).height() ? height2 : $(this).height();
+                      alert(height2);
+                    });
+                    row2.each(function() {
+                        $(this).height(height2);
+                    });
+
+                }
+                else
+                {
+                    var row1_child=child/2;
+                    comp.each(function(index) {
+                        if (index < row1_child)
+                        {
+                           
+                            var height1 = height1 > $(this).height() ? height1 : $(this).height();
+                            alert(height1);
+                        }
                         else
                         {
-                            i=0;
-                            i1=0;
-                            j=3;
-                            j1=3;
-                            comp.each(function() {
-                                if (i <3) {
-                                    maxHeight1 = maxHeight1 > $(comp[i]).height() ? maxHeight1 : $(comp[i]).height();
-                                    i++;
-                                }
-                                
-                            });
-                            comp.each(function() {
-                                if (i1 <3) {
-                                $(comp[i1]).height(maxHeight1);
-                                i1++;
-                                }
-                            });
-                            comp.each(function() {                               
-                                if (j <5) {
-                                maxHeight2 = maxHeight2 > $(comp[j]).height() ? maxHeight2 : $(comp[j]).height();
-                                j++;
-                                }
-                            });
-                            comp.each(function() {
-                                if (j1 <5) {
-                                $(comp[j1]).height(maxHeight2);
-                                j1++;
-                                }
-                            });
+                            var height2 = height2 > $(this).height() ? height2 : $(this).height();
                         }
-                    }
+                        
+                    });
+                    comp.each(function() {
+                        if (index < row1_child)
+                        {
+                            $(this).height(height1);
+                        }
+                        else
+                        {
+                            $(this).height(height1);
+                        }
+                       
+                    });
+
                 }
+            }
+            
+        }
+        
     }
- 
  });
  
 $(document).ready(function(){
@@ -4170,17 +4248,50 @@ $(document).ready(function(){
 
    /*AEM JS*/
    $(document).ready(function(){
-    var menuHeight= $('.cmp-dynamic-megamenu').height();
-    var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-     $( ".dropdown-submenu").hover(
-         function(){
-             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
-     },function(){
-       $('.cmp-dynamic-megamenu').height(menuHeight);
-        }
-     );
-   });
+    var menuHeight=0;
+  $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
+      function(){
+          menuHeight= $('.cmp-dynamic-megamenu').height();
+           var submenuHeight=$(this).children('.dropdown-menu').height();
+          if ( submenuHeight > menuHeight)
+          {
+              $('.cmp-dynamic-megamenu').height(submenuHeight+13);
+          }
 
+  },function(){
+    $('.cmp-dynamic-megamenu').height(menuHeight);
+     }
+  );
+});
+$(document).ready(function () {
+
+    var pathName= window.location.pathname ;
+console.log('pathname is' + pathName);
+
+
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1;
+ console.log(strLink);
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+                          console.log(strLink);
+ var strLink1 = strLink.lastIndexOf('/');
+ console.log(strLink1);
+ strLink = strLink.substr(strLink1,split);
+ console.log(strLink);
+
+ strLink = pathName.indexOf(strLink);
+ console.log('strLink is' + strLink);
+
+ if(strLink > -1){
+
+     $(this).addClass("nav-active");
+
+ }
+
+})
+});
 
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');

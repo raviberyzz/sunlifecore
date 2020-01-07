@@ -100,18 +100,18 @@
            <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-checkstyle-plugin</artifactId>
-                  <version>2.17</version>
+                  <version>3.1.0</version>
                        <configuration>
-						<propertyExpansion>basedir=${project.basedir}</propertyExpansion>
-						<includeTestResources>false</includeTestResources>
-						<includeResources>false</includeResources>
-						<includeTestSourceDirectory>false</includeTestSourceDirectory>
-						<configLocation>${basedir}/checkstyle.xml</configLocation>
-						<suppressionsLocation>${basedir}/checkstyle-suppress.xml</suppressionsLocation>
-						<consoleOutput>false</consoleOutput>
-						<failsOnError>true</failsOnError>
-			 <linkXRef>false</linkXRef>
-	    	   </configuration>
+							<propertyExpansion>basedir=${project.basedir}</propertyExpansion>
+							<includeTestResources>false</includeTestResources>
+							<includeResources>false</includeResources>
+							<includeTestSourceDirectory>false</includeTestSourceDirectory>
+							<configLocation>${basedir}/checkstyle.xml</configLocation>
+							<suppressionsLocation>${basedir}/checkstyle-suppress.xml</suppressionsLocation>
+							<consoleOutput>true</consoleOutput>
+							<failsOnError>true</failsOnError>
+				 			<linkXRef>false</linkXRef>
+	    	   		   </configuration>
                        <executions>
                          <execution>
                            <id>validate</id>
@@ -122,7 +122,37 @@
                          </execution>
                        </executions>
                     </plugin>
-
+					<plugin>
+		            <groupId>org.codehaus.mojo</groupId>
+		            <artifactId>findbugs-maven-plugin</artifactId>
+		            <version>3.0.5</version>
+		            <configuration>
+		                <!--
+		                    Enables analysis which takes more memory but finds more bugs.
+		                    If you run out of memory, changes the value of the effort element
+		                    to 'Low'.
+		                -->
+		                <effort>Max</effort>
+		                <!-- Reports all bugs (other values are medium and max) -->
+		                <threshold>Low</threshold>
+		                <!-- Produces XML report -->
+		                <xmlOutput>true</xmlOutput>
+		                <!-- Configures the directory in which the XML report is created -->
+		                <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+		            </configuration>
+		            <executions>
+		                <!-- 
+		                    Ensures that FindBugs inspects source code when project is compiled. 
+		                -->
+		                <execution>
+		                    <id>analyze-compile</id>
+		                    <phase>compile</phase>
+		                    <goals>
+		                        <goal>check</goal>
+		                    </goals>
+		                </execution>
+		            </executions>
+		        </plugin>
 		   
 		    </plugins>
     </build>
@@ -167,10 +197,10 @@
             <artifactId>uber-jar</artifactId>
             <classifier>apis</classifier>
         </dependency>
-	<dependency>
-	    <groupId>com.adobe.cq</groupId>
-	    <artifactId>core.wcm.components.core</artifactId>
-	</dependency>
+        <dependency>
+		    <groupId>com.adobe.cq</groupId>
+		    <artifactId>core.wcm.components.core</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.models.api</artifactId>
