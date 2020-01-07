@@ -33,12 +33,12 @@
                                     <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false" data-toggle="collapse">${regionObj.linkName}</a>                                    
                                         <ul class="list-unstyled accordion-list collapse" data-sly-list.subLink="${regionObj.subLinks}">
                                             <li class="${firstElement && subLinkList.first ? 'nav-select' : ''}">
-                                                <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                                <a href="${subLink.subLinkUrl @ extension = 'html'}">${subLink.subLinkName}</a>
                                             </li>
                                         </ul>
                             </li>
                             <li data-sly-test="${!regionObj.subLinks}">
-                                <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
+                                <a href="${regionObj.linkUrl @ extension = 'html'}">${regionObj.linkName}</a>
                             </li>
                         </ul>
                     </div>
@@ -61,7 +61,7 @@
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
                 <sly data-sly-test.langFirstElement="${languageLinkList.index == 0}" />
                 <li class="${langFirstElement ? 'nav-select' : 'not-bold'}">
-                    <a href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
+                    <a href="${languageLink.subLinkUrl @ extension = 'html'}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
                 </li>
 
                 <sly data-sly-test="${languageLink.subLinkSeparator}">
@@ -99,7 +99,7 @@
                         <div class= 'accordion-list collapse' >
                             <ul class="list-unstyled accordion-list" data-sly-list.subLink="${regionObj.subLinks}">
                                 <li class="${firstElement && subLinkList.first ? 'nav-select' : 'not-bold'}">
-                                    <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                    <a href="${subLink.subLinkUrl @ extension = 'html'}">${subLink.subLinkName}</a>
                                 </li>
                             </ul>
                         </div>
@@ -114,7 +114,7 @@
         <div id="language-tab" class="tab-pane language-tab ${languagesTabSelected?'active':''}">
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
                 <li class="${languageLinkList.first ? 'nav-select' : 'not-bold'}">
-                    <a href="${languageLink.subLinkUrl}">${languageLink.subLinkName}</a>
+                    <a href="${languageLink.subLinkUrl @ extension = 'html'}">${languageLink.subLinkName}</a>
                 </li>
                 <sly data-sly-test="${languageLink.subLinkSeparator}">
                 	<div class="grey-horizontal-separator">
