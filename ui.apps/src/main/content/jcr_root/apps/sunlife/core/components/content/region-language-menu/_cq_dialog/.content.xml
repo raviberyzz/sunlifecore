@@ -49,9 +49,11 @@
                                                     required="{Boolean}true"/>
                                                 <linkUrl
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Link Url"
-                                                    name="linkUrl"/>
+                                                    name="linkUrl"
+													suffix=".html"
+													required="{Boolean}true"/>
                                                 <linkTarget
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
@@ -87,9 +89,11 @@
                                                                 required="{Boolean}true"/>
                                                             <subLinkUrl
                                                                 jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                 fieldLabel="Sub Link Url"
-                                                                name="subLinkUrl"/>
+                                                                name="subLinkUrl"
+																suffix=".html"
+																required="{Boolean}true"/>
                                                             <subLinkTarget
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
@@ -156,9 +160,11 @@
                                             required="{Boolean}true"/>
                                         <subLinkUrl
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldLabel="Link Url"
-                                            name="subLinkUrl"/>
+                                            name="subLinkUrl"
+											suffix=".html"
+											required="{Boolean}true"/>
                                         <subLinkTarget
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
