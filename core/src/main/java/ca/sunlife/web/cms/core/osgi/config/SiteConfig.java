@@ -6,7 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface SiteConfig.
  */
-@ObjectClassDefinition(name = "Site configuration pages", description = "Site configuration pages")
+@ObjectClassDefinition(name = "Sunlife Site configuration pages", description = "Sunlife Site configuration pages")
 public @interface SiteConfig {
 
 	/**

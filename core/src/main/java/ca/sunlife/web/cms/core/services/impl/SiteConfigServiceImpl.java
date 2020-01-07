@@ -10,7 +10,6 @@ import javax.jcr.Session;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 import org.osgi.service.component.annotations.Activate;
@@ -27,6 +26,7 @@ import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 
 import ca.sunlife.web.cms.core.osgi.config.SiteConfig;
+import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -38,7 +38,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 
 	/** The resolver factory. */
 	@Reference
-	private ResourceResolverFactory resolverFactory;
+	private CoreResourceResolver resourceResolver;
 
 	/** The log. */
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -62,10 +62,10 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 	 */
 	@Activate
 	public void activate(final SiteConfig config) throws LoginException, RepositoryException {
-		log.info("Entry :: activate method of SiteConfigServiceImpl");
+		log.debug("Entry :: activate method of SiteConfigServiceImpl");
 		this.siteConfig = config;
 		setConfiguration();
-		log.info("Exit :: activate method of SiteConfigServiceImpl");
+		log.debug("Exit :: activate method of SiteConfigServiceImpl");
 	}
 
 	/* (non-Javadoc)
@@ -73,13 +73,14 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 	 */
 	@Override
 	public String getConfigValues(final String name, String pagePath) {
-		log.info("SiteConfigServiceImpl :: getConfigValues");
-		while (!siteConfigMap.containsKey(pagePath)) {
-			pagePath = pagePath.substring(0, pagePath.lastIndexOf("/"));
+		log.debug("SiteConfigServiceImpl :: getConfigValues");
+		String key = pagePath;
+		while (!siteConfigMap.containsKey(key) && (key.lastIndexOf('/') > 1)) {
+			key = key.substring(0, key.lastIndexOf('/'));
 		}
 
-		log.info("SiteConfigServiceImpl :: getConfigValues :: Page ");
-		return siteConfigMap.get(pagePath).get(name);
+		log.debug("SiteConfigServiceImpl :: getConfigValues :: Page ");
+		return siteConfigMap.containsKey(key)?siteConfigMap.get(key).get(name):"";
 	}
 
 	/* (non-Javadoc)
@@ -87,12 +88,8 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 	 */
 	@Override
 	public void setConfiguration() throws LoginException, RepositoryException {
-		log.info("Entry :: setConfiguration method of SiteConfigServiceImpl");
-		final Map<String, Object> param = new HashMap<>();
-		param.put(ResourceResolverFactory.SUBSERVICE, "migration");
-
-		ResourceResolver resolver = null;
-		resolver = resolverFactory.getServiceResourceResolver(param);
+		log.debug("Entry :: setConfiguration method of SiteConfigServiceImpl");
+		ResourceResolver resolver = resourceResolver.getResourceResolver();
 
 		final String sitePath = siteConfig.getSitePath();
 
@@ -121,7 +118,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 		}
 
 		resolver.close();
-		log.info("Exit :: setConfiguration method of SiteConfigServiceImpl");
+		log.debug("Exit :: setConfiguration method of SiteConfigServiceImpl");
 	}
 
 }
