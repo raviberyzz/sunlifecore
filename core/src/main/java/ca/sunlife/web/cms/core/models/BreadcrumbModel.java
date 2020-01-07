@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.models;
 
-import java.util.Collection;
-
 import javax.inject.Inject;
 
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -12,7 +10,6 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import com.adobe.cq.wcm.core.components.models.Breadcrumb;
-import com.adobe.cq.wcm.core.components.models.NavigationItem;
 
 
 /**
@@ -22,6 +19,10 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 adapters = Breadcrumb.class,
 resourceType = "sunlife/core/components/content/breadcrumb")
 public class BreadcrumbModel implements Breadcrumb{
+	
+	BreadcrumbModel() {
+		super();
+	}
 
 	/** The breadcrumb. */
 	@Self @Via(type = ResourceSuperType.class)
@@ -40,14 +41,6 @@ public class BreadcrumbModel implements Breadcrumb{
 	@Optional
 	private String socialShareText;
 	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.Breadcrumb#getItems()
-	 */
-	@Override
-	public Collection<NavigationItem> getItems() {
-       return breadcrumb.getItems();
-    }
-
 	/**
 	 * Gets the breadcrumb.
 	 *
