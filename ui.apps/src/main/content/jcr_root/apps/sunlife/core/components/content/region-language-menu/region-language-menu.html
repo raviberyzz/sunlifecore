@@ -8,10 +8,11 @@
 <sly data-sly-test.regionsTabSelected="${languageRegionModel.selectedTabMobile == 'region-active'}" />
 <sly data-sly-test.languagesTabSelected="${languageRegionModel.selectedTabMobile == 'language-active'}" />
 
+
 <!-- Desktop view starts -->
 <div class="col-xs-12 desktop-region-language-menu-wrapper collapse in" data-section="header-region-and-languages" aria-expanded="true">
    	<div class="cross-btn">
-        <a data-toggle="collapse" href=".desktop-region-language-menu-wrapper">
+        <a data-toggle="collapse" href="#sun-language">
            <span class="sunLanguageCrossBtn fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
         </a>
     </div>
@@ -74,16 +75,17 @@
 </div>
 <!-- Desktop view ends -->
 
+
 <!-- Mobile view starts -->
-<div class="col-xs-12 mobile-region-language-menu-wrapper">
+<div class="col-xs-12 mobile-region-language-menu-wrapper mobile-language-region">
     <div class="go-back">
         <a tabindex="0">${languageRegionModel.backButtonText}</a>
     </div>
     <div class="col-xs-12 slf-tab-region ">
-        <div class="col-xs-6 slf-tab ${regionsTabSelected?'active':''}" data-target="#region-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target="#region-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
         </div>
-        <div class="col-xs-6 slf-tab ${languagesTabSelected?'active':''}" data-target="#language-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target="#language-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.languageSectionTitleMobile ? languageRegionModel.languageSectionTitleMobile : languageRegionModel.languageSectionTitle}
         </div>
     </div>

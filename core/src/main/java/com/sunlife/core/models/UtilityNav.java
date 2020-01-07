@@ -1,33 +1,57 @@
 package com.sunlife.core.models;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import com.sunlife.core.models.ListModel.Links;
 
-@Model(
-    adaptables = {Resource.class},
-    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+/**
+ * The Interface UtilityNav.
+ */
+@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface UtilityNav {
 
-	 @Inject
-	  List<Navlinks> getNavlinks(); // the name `getNavlinks` corresponds to the multifield name="./navlinks"
-	 
-	 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	  interface Navlinks {
-		  
-	    	    
-	    @Inject
-	    String getLinkName();
-	    
-	    @Inject
-	    String getTarget();   
-	    
-	    @Inject
-	    String getLinkUrl();
-	   
-	  }
+	/**
+	 * Gets the navlinks.
+	 *
+	 * @return the navlinks
+	 */
+	@Inject
+	List<Navlinks> getNavlinks(); // the name `getNavlinks` corresponds to the multifield name="./navlinks"
+
+	/**
+	 * The Interface Navlinks.
+	 */
+	@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+	interface Navlinks {
+
+		/**
+		 * Gets the link name.
+		 *
+		 * @return the link name
+		 */
+		@Inject
+		String getLinkName();
+
+		/**
+		 * Gets the target.
+		 *
+		 * @return the target
+		 */
+		@Inject
+		String getTarget();
+
+		/**
+		 * Gets the link url.
+		 *
+		 * @return the link url
+		 */
+		@Inject
+		String getLinkUrl();
+
+	}
 
 }

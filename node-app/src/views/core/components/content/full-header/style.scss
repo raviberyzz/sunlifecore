@@ -136,14 +136,14 @@
             }
         }
     }
-    .mobile-header .desktop-region-language-menu-wrapper{
-        display:none;
-    }
 }
 @media(max-width:$tab-screen-max){
     .desktop-header-wrapper{
         display:none;
     }
+    .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper{
+        display:none;
+        }
 }
 @media(min-width:$desktop-screen-min){
     .mobile-header{
