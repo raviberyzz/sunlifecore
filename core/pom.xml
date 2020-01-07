@@ -18,7 +18,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.sunlife</groupId>
+        <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>sunlife</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -65,7 +65,7 @@
                             *
                         </Import-Package>
                         <Sling-Model-Packages>
-                            com.sunlife.core
+                            ca.sunlife.web.cms.core
                         </Sling-Model-Packages>
                         <_dsannotations>*</_dsannotations>
                         <_metatypeannotations>*</_metatypeannotations>
