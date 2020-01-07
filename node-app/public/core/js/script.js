@@ -3804,6 +3804,45 @@ function signinmodal() {
 }
 // Sign In Modal (Sign-in-modal expansion) analytics ends here
 
+// Moblie language and region bar analytics starts here
+$('.navigation-menu.language-region').click(function(){
+	//console.log("Inside languagepanelmobile.");
+	if($('.navigation-menu.language-region .second-level-navigation').hasClass('active')){
+		utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+        //console.log("Event fired for mobile lang pannel expansion");
+    }
+});
+// Mobile language and region bar analytics ends here
+
+});
+// Sign In Modal (Mobile Sign In button) analytics ends here
+
+// Sign In Modal (Sign-in-modal expansion) analytics starts here
+function signinmodal() {
+    if ($('#mySignInModal').hasClass('in')){
+        utag.link({
+            "asset_type"	: "Module",
+            "asset_title"	: "Sign In - Modal",
+            "event_type"	: "On Page Impression",
+            "event_title"	: "Expansion",
+            "page_section" : "Modal"
+        });
+        //console.log("mobile sign in module expanding is being tracked successfully");        
+    }
+    else{
+        // if modal not found then throwing error
+        utag.link({
+            "asset_type"	: "Module",
+            "asset_title"	: "Sign In - Modal",
+            "event_type"	: "On Page Impression",
+            "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+            "event_title"	: "Error-" + "Expanding not tracked",
+            "page_section" : "Modal"});
+            //console.log("mobile sign in module expanding is not being tracked");
+    }
+}
+// Sign In Modal (Sign-in-modal expansion) analytics ends here
+
 });
 
 
@@ -3813,6 +3852,14 @@ function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
 
 
 
