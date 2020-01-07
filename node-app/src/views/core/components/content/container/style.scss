@@ -54,11 +54,14 @@ ul {
             background: linear-gradient($medium-blue-color, $blue-gradient-color);
             height: 60px;
             width: 60px;
-            padding: 12px;
+            padding: 13px;
             font-size: 2rem;
         }
         .icon-parent {
             margin-right: 16px;
+        }
+        .icon-text {
+            padding-bottom: 0;
         }
     }
 }

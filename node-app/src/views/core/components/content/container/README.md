@@ -3,10 +3,10 @@
 JSON Format
 ```
 {
-    "cta-wrapper": "yellow-icon-blue-background",
-    "icon-text-wrapper" : "cta-content-icon-wrapper",
+    "cta-wrapper": "cross-cta-wrapper",
+    "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
-        "fa-icon":"fa-map-marker",
+        "fa-icon":"fa-shield",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
         "description-input" : "To find an advisor near you"
