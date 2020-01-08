@@ -107,6 +107,7 @@ $('.button-class').click(function(){
     });
     var adv='advisor';
     if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
+        var WT={ac:''};
         WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
         utag.link({
         "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
