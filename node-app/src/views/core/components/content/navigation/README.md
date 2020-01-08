@@ -10,7 +10,7 @@ JSON Format
     "LinkText": "Quick Link",
     "nav-icon":"fa-facebook",
      "nav-icon-display":"icon-display-none",
-     "span-border":"span-yellow-border",
+     "span-border":"",
     "icon-text-wrapper" : "mega-menu-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",

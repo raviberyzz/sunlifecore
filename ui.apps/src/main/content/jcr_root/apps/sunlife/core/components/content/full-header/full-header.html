@@ -51,7 +51,7 @@
         <div class="col-xs-12 desktop-utility-nav">
               <div class="utility-nav-wrapper">
                   <div data-sly-test = "${properties.listFromNav == 'true'}" class="utility-nav-links">
-                      <ul data-sly-use.listModel="com.sunlife.core.models.UtilityNav" role="navigation" aria-label="Helpful links">
+                      <ul data-sly-use.listModel="ca.sunlife.web.cms.core.models.UtilityNav" role="navigation" aria-label="Helpful links">
                                <sly data-sly-list.links="${listModel.navlinks}">
                               <li>
                                <a href="${links.linkUrl @ extension = 'html'}">${links.linkName}</a>
@@ -88,7 +88,7 @@
               </div>
         </div>
         <div class="col-xs-12 desktop-sunlife-navigation">
-          <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="com.sunlife.core.models.HeaderModel" class="desktop-sunlife-logo">
+          <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="desktop-sunlife-logo">
            <sly data-sly-list.links="${listModel.links}">
             <a href="${links.linkUrl @ extension = 'html' }">
               <img class="vertical-middle-align" alt="sunlife logo"
@@ -101,7 +101,7 @@
             <div class="desktop-mega-menu clearfix">
               <div class=desktop-primary-navigation>
                 <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation"
-                  aria-label="Main" data-sly-use.listModel="com.sunlife.core.models.MegaMenuModel">
+                  aria-label="Main" data-sly-use.listModel="ca.sunlife.web.cms.core.models.MegaMenuModel">
                  <sly data-sly-list.head = "${listModel.meganavlinks.listChildren}">
                   <li class="dropdown nav-item navigation">
                     <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger" href="${head.linkUrl @ extension='html'}">
@@ -141,7 +141,7 @@
                                       <span class="icon-bar" id="a3">&nbsp;</span>
                               </div>
                       </div>
-                      <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="com.sunlife.core.models.HeaderModel" class="slf-header-mobile-logo">
+                      <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="slf-header-mobile-logo">
                             <sly data-sly-list.links="${listModel.links}">
                               <a class="mobile-sun-pic" href="${links.linkUrl @ extension = 'html' }">
                                       <picture>
