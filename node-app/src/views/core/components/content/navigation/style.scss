@@ -31,6 +31,15 @@
         font-family: FontAwesome;
         content: " \f107";
     }
+    .navbar-new .region>a:before{
+      font-family: FontAwesome;
+        content: " \f041";
+        color:$medium-yellow-background;
+    }
+    .navbar-new .region>a:after{
+      font-family: FontAwesome;
+        content: " ";
+    }
     .nav-item.open{  
       background-color: $white-shade;   
       border-bottom: none;
