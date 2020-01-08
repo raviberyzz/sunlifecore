@@ -21,7 +21,7 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.sunlife</groupId>
+        <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>sunlife</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -156,7 +156,7 @@
                     <group>sunlife</group>
                     <embeddeds>
                         <embedded>
-                            <groupId>com.sunlife</groupId>
+                            <groupId>ca.sunlife.web.cms</groupId>
                             <artifactId>sunlife.core</artifactId>
                             <target>/apps/sunlife/install</target>
                         </embedded>                        
@@ -197,7 +197,7 @@
     <!-- ====================================================================== -->
     <dependencies>
         <dependency>
-            <groupId>com.sunlife</groupId>
+            <groupId>ca.sunlife.web.cms</groupId>
             <artifactId>sunlife.core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>        

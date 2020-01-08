@@ -18,7 +18,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.sunlife</groupId>
+        <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>sunlife</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -312,12 +312,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.sunlife</groupId>
+            <groupId>ca.sunlife.web.cms</groupId>
             <artifactId>sunlife.it.tests</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.sunlife</groupId>
+            <groupId>ca.sunlife.web.cms</groupId>
             <artifactId>sunlife.core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
