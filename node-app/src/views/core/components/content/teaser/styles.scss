@@ -30,7 +30,7 @@
 }
 .left-item {
     float: left;
-    margin-right: 30px;
+    margin-right: 32px;
 }
 .mobile-image {
     display: none;
@@ -108,6 +108,12 @@
     }
 }
 @media (max-width: $mobile-screen-max) {
+        .circle-150-mobile {
+            img {
+                width: 150px;
+                height: 150px;
+            }
+        }
         .desktop-image {
             display: none;
         }
@@ -163,4 +169,12 @@
                 }
             }
         }
+}
+@media (min-width: $tab-screen-min) {
+    .circle-220-desktop {
+        img {
+            width: 220px;
+            height: 220px;
+        }
+    }
 }

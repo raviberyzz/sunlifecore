@@ -85,4 +85,14 @@ function signinmodal() {
 }
 // Sign In Modal (Sign-in-modal expansion) analytics ends here
 
+// Moblie language and region bar analytics starts here
+$('.navigation-menu.language-region').click(function(){
+	//console.log("Inside languagepanelmobile.");
+	if($('.navigation-menu.language-region .second-level-navigation').hasClass('active')){
+		utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+        //console.log("Event fired for mobile lang pannel expansion");
+    }
+});
+// Mobile language and region bar analytics ends here
+
 });

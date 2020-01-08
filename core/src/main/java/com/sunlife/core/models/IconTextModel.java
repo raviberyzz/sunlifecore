@@ -13,6 +13,22 @@ import org.apache.sling.models.annotations.Model;
  */
 @Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface IconTextModel {
+	
+	 /**
+	  * Gets the title.
+	  *
+	  * @return the title
+	  */
+	@Inject
+	String getTitle();
+	 
+	/**
+	 * Gets the titleLabel.
+	 *
+	 * @return the titleLabel
+	 */
+    @Inject
+	String getTitleLabel();
 
 	/**
 	 * Gets the icons text.
