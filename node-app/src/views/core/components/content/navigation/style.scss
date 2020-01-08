@@ -21,6 +21,9 @@
       z-index: 3000;
       position: relative;
       box-shadow: 0px 2px 0px 0px $white-shade;
+      .region>a:before{
+        color:$medium-blue-color;
+      }
     }
       .nav>li>a{
         &:hover{
@@ -48,8 +51,11 @@
       .menu-content{
         padding: 0;
         position: absolute;
+        width: 100%;
     }
-    
+    a:before{
+      color: black;
+    }
     }
     .nav .open>a{
       background-color:$white-shade;
@@ -87,6 +93,7 @@
       .menu-content{
         padding: 0;
         position: absolute;
+        width: 100%;
     }
 }
 .nav .open>a{

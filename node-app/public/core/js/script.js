@@ -3851,26 +3851,6 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 });
 
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 71ae0bc62da80fd594fb610164a2fea0b963ae21
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 71ae0bc62da80fd594fb610164a2fea0b963ae21
-=======
->>>>>>> 99b4119db216b2f52cabac6a1aa3bf6bafc9e6a6
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4400,18 +4380,3 @@ $(document).ready(function () {
         }
     });
 });
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
->>>>>>> 99b4119db216b2f52cabac6a1aa3bf6bafc9e6a6
