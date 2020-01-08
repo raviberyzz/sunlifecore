@@ -3853,6 +3853,14 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 
 
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4384,11 +4392,3 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
