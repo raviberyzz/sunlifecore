@@ -1,9 +1,7 @@
 $(document).ready(function () {
 
     var pathName= window.location.pathname ;
-console.log('pathname is' + pathName);
-
-
+console.log('pathname is' + pathName)
 $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
  var strLink =  $(this).attr('href');
