@@ -5,6 +5,7 @@
     <ca-sunlife-content-page/>
     <ca-sunlife-content-with-left-navigation/>
     <ca-sunlife-content-with-right-navigation/>
+    <ca-sunlife-extra-content-with-right-navigation/>
     <ca-sunlife-content-with-left-and-right-navigation/>
     <ca-sunlife-experience-fragment/>
     <sunlife-config/>
