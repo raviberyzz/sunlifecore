@@ -3719,7 +3719,6 @@ $(document).ready(function () {
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
 $(document).ready(function () {
 
-   
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -3814,10 +3813,49 @@ $('.navigation-menu.language-region').click(function(){
 });
 // Mobile language and region bar analytics ends here
 
+// Right Navigation analytics starts here
+$('.button-class').click(function(){
+    var btnTxt1=$(this).parent().text();
+    var btnTxt=$.trim(btnTxt1);
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "CTA Module",
+        "event_type"	: "Click",
+        "event_title"	: btnTxt,
+        "page_section" : "body-right-rail"
+    });
+    var adv='advisor';
+    if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
+        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
+        utag.link({
+        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
+        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_campaign":"slfca"
+        });
+    }     
+});
+/* For dropdown */
+$('.cmp-form-options--drop-down').siblings().children('.button-class').click(function(){
+    var dropdown=$('.cmp-form-options__field.cmp-form-options__field--drop-down').val();
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "Find a Financial Center",
+        "event_type"	: "Click",
+        "event_title"	: "Find - " + dropdown,
+        "page_section" : "body-right-rail"
+    });    
+});
+// Right Navigation analytics ends here
+
 });
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71ae0bc62da80fd594fb610164a2fea0b963ae21
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
@@ -3825,7 +3863,10 @@ alert("Demo-Onsubmit-Function");
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71ae0bc62da80fd594fb610164a2fea0b963ae21
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3836,13 +3877,12 @@ $(document).ready(function () {
 });     
 
 
-
 $(document).ready(function () {
     var maxHeight1=0;
     var maxHeight2=0;
     var cta_index=0;
     var j=0;
-    var comp=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
+    var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     setTimeout(comp2,200);
     function comp2(){
     var comp2=$('.right-navigation-wrapper').children().filter(function(){return !$(this).hasClass('col-sm-12')});
@@ -3935,14 +3975,6 @@ $(document).ready(function () {
         $('.right-nav-cta').removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
     }
     maxheight(child, cta_index);
-    // if (( $(window).width() <1025 &&  $(window).width() >767 ))
-    // {
-        
-    // }
-    // else
-    // {
-    //     $(this).css("height","auto");
-    // }
     $( window ).resize(function() {
         maxheight(child, cta_index);
     });
@@ -3994,8 +4026,8 @@ $(document).ready(function () {
                 if (child==5)
                 {
                    
-                    var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
-                    var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
+                    var row1=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return $(this).hasClass('col-sm-4')});
+                    var row2=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return $(this).hasClass('col-sm-6')});
                     row1.each(function(index) {
                         
                      height1 =height1 > $(this).height() ? height1 : $(this).height();
@@ -4025,8 +4057,8 @@ $(document).ready(function () {
                 else
                 {
                     var row1_child=child/2;
-                    var row1=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-4')});
-                    var row2=$('.right-navigation-wrapper').children().filter(function(){return $(this).hasClass('col-sm-6')});
+                    var row1=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return $(this).hasClass('col-sm-4')});
+                    var row2=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return $(this).hasClass('col-sm-6')});
                     height1=height2=0;
                     row1.each(function(index) {
                         if (index < row1_child)
@@ -4268,30 +4300,16 @@ $(document).ready(function(){
  );
 });
 $(document).ready(function () {
-
-    var pathName= window.location.pathname ;
-console.log('pathname is' + pathName);
-
-
+var pathName= window.location.pathname ;
 $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
-
  var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1;
- console.log(strLink);
+ var split = strLink.indexOf('.html')-1; 
  strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
-                          console.log(strLink);
  var strLink1 = strLink.lastIndexOf('/');
- console.log(strLink1);
  strLink = strLink.substr(strLink1,split);
- console.log(strLink);
-
  strLink = pathName.indexOf(strLink);
- console.log('strLink is' + strLink);
-
  if(strLink > -1){
-
      $(this).addClass("nav-active");
-
  }
 
 })
@@ -4317,7 +4335,6 @@ $(document).ready(function(){
         }
     });
 });
-
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
