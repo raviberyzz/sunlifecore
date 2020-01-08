@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Via;
 
 /**
  * Sling model for Links - regional languages menu.
@@ -53,7 +54,7 @@ public interface LinkModel {
 	 *
 	 * @return the sub links
 	 */
-	@Inject
+	@Inject @Via("resource")
 	List<SubLinkModel> getSubLinks();
 
 }

@@ -9,6 +9,7 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
+import com.adobe.cq.wcm.core.components.internal.models.v1.BreadcrumbImpl;
 import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 
 
@@ -18,15 +19,11 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 @Model(adaptables = SlingHttpServletRequest.class,
 adapters = Breadcrumb.class,
 resourceType = "sunlife/core/components/content/breadcrumb")
-public class BreadcrumbModel implements Breadcrumb{
+public class BreadcrumbModel extends BreadcrumbImpl{
 	
-	BreadcrumbModel() {
+	public BreadcrumbModel() {
 		super();
 	}
-
-	/** The breadcrumb. */
-	@Self @Via(type = ResourceSuperType.class)
-    private Breadcrumb breadcrumb;
 
 	
 	/** The social share reqd. */
@@ -41,24 +38,6 @@ public class BreadcrumbModel implements Breadcrumb{
 	@Optional
 	private String socialShareText;
 	
-	/**
-	 * Gets the breadcrumb.
-	 *
-	 * @return the breadcrumb
-	 */
-	public Breadcrumb getBreadcrumb() {
-		return breadcrumb;
-	}
-
-	/**
-	 * Sets the breadcrumb.
-	 *
-	 * @param breadcrumb the new breadcrumb
-	 */
-	public void setBreadcrumb(Breadcrumb breadcrumb) {
-		this.breadcrumb = breadcrumb;
-	}
-
 	/**
 	 * Gets the social share reqd.
 	 *

@@ -14,6 +14,6 @@ public @interface CoreResourceResolverConfig {
 	 *
 	 * @return the system user
 	 */
-	@AttributeDefinition(name = "systemUser", description = "System User name for sunlife core application")
-	String getSystemUser();
+	@AttributeDefinition(name = "subService", description = "Sub service name for sunlife core application", defaultValue = "application")
+	String getSubService();
 }

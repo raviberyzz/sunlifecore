@@ -42,7 +42,7 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
 	public void activate(final CoreResourceResolverConfig config) {
 		log.debug("Entry :: activate method of CoreResourceResolverImpl");
 		this.config = config;
-		log.info("Got systemuser {}",config.getSystemUser());
+		log.info("Got sub service {}",config.getSubService());
 		log.debug("Exit :: activate method of CoreResourceResolverImpl");
 	}
 
@@ -53,7 +53,7 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
 	public ResourceResolver getResourceResolver() throws LoginException {
 		log.debug("Entry :: getResourceResolver method of CoreResourceResolverImpl");
 		final Map<String, Object> param = new HashMap<>();
-		param.put(ResourceResolverFactory.SUBSERVICE, config.getSystemUser());
+		param.put(ResourceResolverFactory.SUBSERVICE, config.getSubService());
 		ResourceResolver resolver = null;
 		resolver = resourceResolverFactory.getServiceResourceResolver(param);
 		log.debug("Exit :: getResourceResolver method of CoreResourceResolverImpl");
