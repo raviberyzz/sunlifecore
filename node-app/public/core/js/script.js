@@ -3826,6 +3826,7 @@ $('.button-class').click(function(){
     });
     var adv='advisor';
     if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
+        var WT={ac:''};
         WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
         utag.link({
         "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
@@ -3849,14 +3850,6 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 // Right Navigation analytics ends here
 
 });
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
 
 
 
@@ -4329,6 +4322,7 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
@@ -4391,3 +4385,10 @@ $(document).ready(function () {
 
 
 
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
