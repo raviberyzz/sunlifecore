@@ -24,7 +24,7 @@
     .yellow-horizontal-separator{
         width: 100%;
         .horizontal-middle-align{
-            width: 40%;
+            width: 20%;
         }
     }
     .CTA-wrapper{
@@ -47,6 +47,9 @@
     }
     .light-orange{
         background-color: $light-orange-20;
+        border: 1px solid $white-shade;
+        border-top: 20px solid  $white-shade;
+        border-bottom: 20px solid  $white-shade;
     }
     .cool-blue{
         background-color: $light-cool-blue-color;
