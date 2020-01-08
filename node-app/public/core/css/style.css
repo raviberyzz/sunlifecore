@@ -4454,6 +4454,13 @@ input[type=text] {
   .desktop-primary-navigation .navbar-new .nav-item > a:after {
     font-family: FontAwesome;
     content: " \f107"; }
+  .desktop-primary-navigation .navbar-new .region > a:before {
+    font-family: FontAwesome;
+    content: " \f041";
+    color: #FFCB05; }
+  .desktop-primary-navigation .navbar-new .region > a:after {
+    font-family: FontAwesome;
+    content: " "; }
   .desktop-primary-navigation .nav-item.open {
     background-color: #ffffff;
     border-bottom: none;
@@ -5311,6 +5318,28 @@ input[type=text] {
 
 .mega-menu-icon-wrapper ul {
   margin-top: 0px; }
+
+.gettin-started-icon-wrapper {
+  height: 132px;
+  border: 1px solid #9A9A9A; }
+  .gettin-started-icon-wrapper ul li {
+    width: 20%;
+    border-right: 1px solid #9A9A9A;
+    margin: 20px; }
+  .gettin-started-icon-wrapper .text-parent {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    padding-bottom: 24px;
+    text-align: center; }
+  .gettin-started-icon-wrapper .icon-text-heading-normal, .gettin-started-icon-wrapper .icon-text-description {
+    display: none; }
+  .gettin-started-icon-wrapper .icon-style {
+    color: #424242;
+    font-size: 2rem;
+    text-align: center; }
+  .gettin-started-icon-wrapper .icon-text {
+    text-align: center; }
 
 .slf-header-wrapper .desktop-sign-in .button-class {
   display: none; }

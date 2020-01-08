@@ -75,3 +75,35 @@
         margin-top: 0px;
     }
 }
+
+.gettin-started-icon-wrapper
+{
+    height: 132px;
+    border: 1px solid #9A9A9A;
+    ul{
+       
+        li{
+            width: 20%;
+            border-right: 1px solid #9A9A9A;
+            margin: 20px;
+        }
+    }
+    .text-parent{
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 30px;
+        padding-bottom: 24px;
+        text-align: center;
+    }
+    .icon-text-heading-normal, .icon-text-description {
+        display: none;
+    }
+    .icon-style {
+        color: $dark-grey-color;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .icon-text{
+        text-align: center;
+    }
+}
