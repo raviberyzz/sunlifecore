@@ -3,6 +3,7 @@
     jcr:primaryType="cq:Page">
     <ca-sunlife-blank-page/>
     <ca-sunlife-content-page/>
+    <ca-sunlife-content-with-left-navigation/>
     <ca-sunlife-experience-fragment/>
     <sunlife-config/>
 </jcr:root>

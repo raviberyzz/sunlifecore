@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2020-01-08T17:59:25.916+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/sunlife/settings/wcm/templates/ca-sunlife-content-with-left-navigation"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="sunlife/core/components/structure/base-page">
+        <root
+            jcr:lastModified="{Date}2020-01-08T17:47:25.002+05:30"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid">
+            <experiencefragment
+                jcr:created="{Date}2020-01-08T17:48:34.458+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:49:02.269+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/experiencefragment"
+                fragmentPath="/content/experience-fragments/sunlife/ca_header/header/master"
+                text="Â Â Client sign in For the best mobile experience download the my Sun Lifeapp Â Â Remember me testing Register By signing in, you agree to theseterms and conditions. Â Plan sponsors and advisors Close search Search Find an advisor Get a Quote Support Search Expand or collapse search DÃ©velopper ou rÃ©duire le volet recherche Explore products Quick Links Life moments Financial planning &amp; advice Tools &amp; calculators Get a Quote InsuranceView all insurance Health Insurance Overview Personal Health Insurance Critical illness insurance Long term care insurance Disability insurance Other insurance Travel insurance Mortgage protection insurance Family insurance Workplace benefits Affinity markets Business owner insurance Life Insurance Overview Term life insurance Permanent life insurance Participating life insurance Universal life insurance InvestmentView all investments Savings plan Overview RRSP TFSA RESP Retirement income plans Overview Annuity products RRIF LIF Investment products GIC'S and Insurance GIC'S Mutual funds Seggregated funds Other investment Workplace investment Brokerage services Tools &amp; Resources Quick links Financial Planning &amp; advice Tools &amp; calculators Investment products Find an advisor Get a Quote Submit a claim Health &amp; Wellness Overview Overview Overview Overview Overview Money &amp; Finances Overview Managing your money Saving your money Insurance 101 Understanding life insurance Understanding health insurance Â Life moments Overview Starting your family Owning a home Tools &amp; Calculators Overview Bright start calculator Budget calculator Critical illness calculator Explore products dynamic Knowing is the first step In many cases, type 2 diabetes can be prevented. It starts with knowing your risks. Take the test Knowing is the first step In many cases, type 2 diabetes can be prevented. It starts with knowing your risks. Take the test Signin Navigation Menu Signin Sunlife Demo"/>
+            <breadcrumb
+                jcr:created="{Date}2020-01-08T17:50:42.406+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:50:42.406+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/breadcrumb"/>
+            <title
+                jcr:created="{Date}2020-01-08T17:51:12.338+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:51:12.338+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/title"/>
+            <left_navigation
+                jcr:created="{Date}2020-01-08T17:51:27.922+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:51:27.922+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/left-navigation">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                </cq:responsive>
+            </left_navigation>
+            <container
+                jcr:created="{Date}2020-01-08T17:53:52.303+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:53:52.303+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/container">
+                <_x0031__1578486258954
+                    jcr:primaryType="nt:unstructured"
+                    offset="3"
+                    width="9"/>
+                <_x0032__1578486301964
+                    jcr:primaryType="nt:unstructured"
+                    offset="3"
+                    width="9"/>
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="9"/>
+                </cq:responsive>
+            </container>
+            <experiencefragment_885000747
+                jcr:created="{Date}2020-01-08T17:57:52.924+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:58:45.753+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/experiencefragment"
+                fragmentPath="/content/experience-fragments/sunlife/ca_header/Footer-new/master"
+                text="Quick links Sign in / Register Sign in / Register Sign in / Register Quick links Sign in / Register Sign in / Register Sign in / Register"/>
+            <experiencefragment_998521743
+                jcr:created="{Date}2020-01-08T17:58:03.492+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2020-01-08T17:59:25.620+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/ca/components/content/experiencefragment"
+                fragmentPath="/content/experience-fragments/sunlife/ca_header/footer/master"
+                text="Lifeâ€™s brighter under the sun Legal Privacy Security Accessibility Sitemap Feedback Â© Sun Life Assurance Company of Canada. SLF"/>
+        </root>
+    </jcr:content>
+</jcr:root>
