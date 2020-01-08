@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-   
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -94,5 +93,40 @@ $('.navigation-menu.language-region').click(function(){
     }
 });
 // Mobile language and region bar analytics ends here
+
+// Right Navigation analytics starts here
+$('.button-class').click(function(){
+    var btnTxt1=$(this).parent().text();
+    var btnTxt=$.trim(btnTxt1);
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "CTA Module",
+        "event_type"	: "Click",
+        "event_title"	: btnTxt,
+        "page_section" : "body-right-rail"
+    });
+    var adv='advisor';
+    if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
+        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
+        utag.link({
+        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
+        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_campaign":"slfca"
+        });
+    }     
+});
+/* For dropdown */
+$('.cmp-form-options--drop-down').siblings().children('.button-class').click(function(){
+    var dropdown=$('.cmp-form-options__field.cmp-form-options__field--drop-down').val();
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "Find a Financial Center",
+        "event_type"	: "Click",
+        "event_title"	: "Find - " + dropdown,
+        "page_section" : "body-right-rail"
+    });    
+});
+// Right Navigation analytics ends here
 
 });
