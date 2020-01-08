@@ -32,9 +32,11 @@ $(document).ready(function () {
                 }
                 else {
                     $('#sun-search').addClass('in');
+                    $('#sun-search').css({'height':'128px'});
                     $("#search-btn").attr('aria-expanded','true');
                     $("#language-btn").attr('aria-expanded','false');
                     $("#sun-language").removeClass('in');
+                    $("#q-top").focus();
                 }
             }          
         });
