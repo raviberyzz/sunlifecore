@@ -3818,6 +3818,14 @@ $('.navigation-menu.language-region').click(function(){
 
 
 
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4375,12 +4383,4 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
 
