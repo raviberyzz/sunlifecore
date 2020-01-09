@@ -3853,6 +3853,14 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 
 
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3880,6 +3888,7 @@ $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
     var count1=0;
+    var cta_index=0;
     comp.each(function()
     {
         count1++;
@@ -4359,7 +4368,6 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
 })
 });
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4380,6 +4388,7 @@ $(document).ready(function(){
         }
     });
 });
+
 
 
 $(document).ready(function () {
@@ -4443,12 +4452,3 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
