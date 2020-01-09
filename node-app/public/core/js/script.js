@@ -3849,6 +3849,28 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 });
 // Right Navigation analytics ends here
 
+// Footer Analytics starts here
+if ($(window).width() > 1024) {
+    $('footer a').click(function(){
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "Footer: Desktop Version"
+            });        
+    })
+}
+else{
+    $('footer a').click(function(){
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "Footer: Mobile Version"
+            });
+               
+    })
+}
+// Footer analytics ends here
+
 });
 
 
@@ -3873,7 +3895,14 @@ $(document).ready(function () {
         modalWidth();
       }
     });
+    $('.icon-reg').html('');
+    var a1=$('#userIdDiv').html();
+    if(a1.indexOf("&nbsp;") != -1){
+      var updatedString = a1.replace("&nbsp;", "");
+      $('#userIdDiv').html(updatedString);
+    } 
 });     
+
 
 
 $(document).ready(function () {
