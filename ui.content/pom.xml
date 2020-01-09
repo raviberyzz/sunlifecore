@@ -22,7 +22,7 @@
     <!-- ====================================================================== -->
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
-        <artifactId>sunlife</artifactId>
+        <artifactId>web-cms-aem-core</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -30,7 +30,7 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>sunlife.ui.content</artifactId>
+    <artifactId>web-cms-aem-core.content</artifactId>
     <packaging>content-package</packaging>
     <name>sunlife - UI content</name>
     <description>UI content package for sunlife</description>
@@ -82,11 +82,11 @@
     <!-- D E P E N D E N C I E S                                                -->
     <!-- ====================================================================== -->
     <dependencies>
-        <dependency>
+        <!-- <dependency>
             <groupId>ca.sunlife.web.cms</groupId>
-            <artifactId>sunlife.core</artifactId>
+            <artifactId>web-cms-aem-core.core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>com.adobe.aem</groupId>

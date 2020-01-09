@@ -3853,20 +3853,25 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 
 
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}
-
-
-
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
       });  
     $('#signin-widget-modal').on('shown.bs.modal', function() {
           updateSignInForm('form_signon');        
+    });
+    function modalWidth(){
+      var winWidth=$(window).width();
+      $("#mySignInModal").width(winWidth);
+      $("#mySignInModal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      modalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        modalWidth();
+      }
     });
 });     
 
@@ -4370,8 +4375,8 @@ $(document).ready(function(){
         if($(this).attr('aria-expanded')=='true'){
             $(this).attr('aria-expanded',false);
         }
-        else{
-            $(this).attr('aria-expanded',true)
+        if($(this).attr('aria-expanded')=='false'){
+            $(this).attr('aria-expanded',true);
         }
     });
 });
@@ -4438,3 +4443,12 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}

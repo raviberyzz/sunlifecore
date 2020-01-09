@@ -1,6 +1,6 @@
 @import '../../../base/core';
 .show-only-in-editorial {
-    display: hidden;
+    display: none;
 }
 .side-image {
     width: 100%;
@@ -162,7 +162,7 @@
             }
             .right-image-position {
                 .hide-in-editorial {
-                    display: hidden;
+                    display: none;
                 }
                 .show-only-in-editorial {
                     display: inherit;

@@ -6,18 +6,6 @@
         margin: 0;
     }
 }
-.yellow-bullet-list {
-    ul {
-        li::before {
-            content: "\2022";
-            color: $medium-yellow-background;
-            font-weight: bold;
-            display: inline-block;
-            width: 2rem;
-            padding-left: 16px;
-        }
-    }
-}
 .grey-background-box {
     @extend .grey-border-box;
     border: none;
@@ -36,15 +24,8 @@
             padding: 0;
             border: none;
             color: $medium-blue-color;
-            font-weight: 700;
             font-size: 1rem;
             text-align: center;
-        }
-        .icon-text-heading-normal {
-            display: none;
-        }
-        .icon-text-heading-link {
-            display: inherit;
         }
     }
 }

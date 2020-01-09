@@ -13,8 +13,8 @@ $(document).ready(function(){
         if($(this).attr('aria-expanded')=='true'){
             $(this).attr('aria-expanded',false);
         }
-        else{
-            $(this).attr('aria-expanded',true)
+        if($(this).attr('aria-expanded')=='false'){
+            $(this).attr('aria-expanded',true);
         }
     });
 });
