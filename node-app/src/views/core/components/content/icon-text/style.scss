@@ -1,4 +1,9 @@
 @import '../../../base/core';
+.icon-style {
+    &:hover {
+        text-decoration: none;
+    }
+}
 .icon-parent {
     text-align: center;
 }
@@ -16,13 +21,7 @@
     }
     .icon-text{
         margin-top: 16px;
-        .icon-text-heading-normal{
-            display: none;
-        }
-        .icon-text-description{
-            display: none;
-        }
-        .icon-text-heading-link{
+        a {
             text-align: center;
             font-size: 1rem;
         }
@@ -39,22 +38,16 @@
     color: $white-shade;
     font-size: 2.5rem;
     }
-    .icon-text-heading-link{
-        display: none;
-    }
-    .icon-text-heading-normal, .icon-text-description{
-        text-align: center;
-    }
-    .icon-text-heading-normal{
-        font-weight: 700;
-        font-size: 1.125rem;
-        padding-top: 24px;
+    .icon-text {
+        h1, h2, h3, h4, h5, h6, a{
+            text-align: center;
+        }
+        h1, h2, h3, h4, h5, h6{
+            padding-top: 24px;
+        }
     }
 }
 .mega-menu-icon-wrapper {
-    .icon-text-heading-link, .icon-text-description {
-        display: none;
-    }
     .icon-parent {
         text-align: left;
         float: left;
@@ -94,9 +87,6 @@
         line-height: 30px;
         padding-bottom: 24px;
         text-align: center;
-    }
-    .icon-text-heading-normal, .icon-text-description {
-        display: none;
     }
     .icon-style {
         color: $dark-grey-color;
