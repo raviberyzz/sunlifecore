@@ -3,6 +3,7 @@
 JSON Format
 ```
 {
+    "data-section-banner" : "data-section-banner",
     "desk-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
     "mob-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
     "desk-image-src": "https://www.sunlife.com/static/ca/Learn%20and%20Plan/images/nc61-getty-877023506-landing-page-534x400.jpg",
