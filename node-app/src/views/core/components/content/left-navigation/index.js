@@ -13,7 +13,7 @@ $(document).ready(function(){
         if($(this).attr('aria-expanded')=='true'){
             $(this).attr('aria-expanded',false);
         }
-        if($(this).attr('aria-expanded')=='false'){
+        else if($(this).attr('aria-expanded')=='false'){
             $(this).attr('aria-expanded',true);
         }
     });
