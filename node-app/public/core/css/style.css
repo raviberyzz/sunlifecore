@@ -3628,6 +3628,43 @@ footer .icon-style {
 /* aem class ends here */
 
 
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff;
+  line-height: 34px; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  line-height: 34px; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  line-height: 34px;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
+
 input[type=text] {
   font-family: 'sunlife-sans';
   font-weight: 400;
@@ -3925,7 +3962,8 @@ input[type=text] {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0;
-  position: absolute; }
+  position: absolute;
+  padding-left: 0; }
   .sign-in-modal-wrapper .modal-main {
     background: #FFCB05;
     padding: 24px 24px 40px 24px;
@@ -4094,6 +4132,9 @@ input[type=text] {
 .modal-backdrop {
   position: relative; }
 
+.modal-open {
+  padding-right: 0; }
+
 @media (max-width: 992px) and (min-width: 320px) {
   .sign-in-modal-wrapper .modal-dialog.sign-in-modaldialog {
     margin: 0;
@@ -4175,7 +4216,8 @@ input[type=text] {
   text-align: center;
   background-color: #F4F7F6; }
   .right-navigation-wrapper .lists-wrapper .links {
-    width: 100%; }
+    width: 100%;
+    border: none; }
     .right-navigation-wrapper .lists-wrapper .links a {
       font-weight: 700; }
     .right-navigation-wrapper .lists-wrapper .links .collapse {
@@ -4188,6 +4230,10 @@ input[type=text] {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
       width: 20%; }
+  .right-navigation-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
   .right-navigation-wrapper .CTA-wrapper .button-class {
     max-width: 100%;
     width: 100%;
@@ -4204,8 +4250,6 @@ input[type=text] {
     border: 1px solid #ffffff;
     border-top: 20px solid #ffffff;
     border-bottom: 20px solid #ffffff; }
-  .right-navigation-wrapper .cool-blue {
-    background-color: #F4F7F6; }
   .right-navigation-wrapper .phone-numbers {
     font-family: 'sunlife-sans';
     font-weight: 400;
@@ -4215,11 +4259,11 @@ input[type=text] {
     float: left; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  .right-navigation-wrapper .cmp-container > * {
+    display: inherit;
+    border: 15px solid #ffffff; }
   .right-navigation-wrapper .yellow-horizontal-separator {
-    display: none; }
-  .right-navigation-wrapper > * {
-    padding: 15px;
-    display: inherit; } }
+    display: none; } }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4516,6 +4560,9 @@ input[type=text] {
 
 .overflow-hidden {
   overflow: hidden; }
+
+.xf-content-height {
+  margin: 0; }
 
 .slf-mobile-header-wrapper {
   /* Mobile Header Start */
@@ -5498,18 +5545,18 @@ input[type=text] {
       .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
         position: static;
         float: left;
-        margin: -5px 0 0 62px;
+        margin: -5px 0 0 50px;
         /*Mega Menu end here*/ }
         .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation {
           margin-left: 0px; }
           .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .menu-content {
             padding: 0;
-            margin-top: -5px; }
+            margin-top: -12px; }
         .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow {
           margin-left: 0px; }
           .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow .menu-content {
             padding: 0;
-            margin-top: -5px; }
+            margin-top: -12px; }
       .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
         max-width: 375px;
         float: right; }

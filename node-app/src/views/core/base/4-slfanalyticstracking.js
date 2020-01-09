@@ -4,17 +4,22 @@ $(document).ready(function () {
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
         if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
-            utag.link({ "asset_type": "Module", "asset_title": "Search", "event_type": "On Page Impression", "event_title": "Search Module Expansion", "page_section": "Search Bar" });
+            utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module expansion"});
             //console.log("search exapansion tracked");
         } 
         else {
             //console.log("search expansion is not tracked");
         }
     });
-    // Desktop search analytics ends her
+    $('.search-bar-wrapper button').click(function(){
+        var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
+        utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data-one" : desktop_search_input});
+    });
+    // Desktop search analytics ends here
     // Mobile search analytics starts here
     $('.search-icon-mobile').click(function () {
-        utag.link({"asset_type"	: "Module","asset_title"	: "Search","event_type"	: "On Page Impression","event_title"	: "Search Module Expansion","page_section" : "Search Bar"});
+        var mobile_search_input=$('.hamburger-search .input-wrapper input').val();
+        utag.link({"ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data-one" : mobile_search_input});
     });
     //Mobile search analytics starts here
 // search bar analytics ends here
@@ -95,7 +100,7 @@ $('.navigation-menu.language-region').click(function(){
 // Mobile language and region bar analytics ends here
 
 // Right Navigation analytics starts here
-$('.button-class').click(function(){
+$('.right-navigation-wrapper .button-class').click(function(){
     var btnTxt1=$(this).parent().text();
     var btnTxt=$.trim(btnTxt1);
     utag.link({
@@ -129,5 +134,27 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
     });    
 });
 // Right Navigation analytics ends here
+
+// Footer Analytics starts here
+if ($(window).width() > 1024) {
+    $('footer a').click(function(){
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "Footer: Desktop Version"
+            });        
+    })
+}
+else{
+    $('footer a').click(function(){
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "Footer: Mobile Version"
+            });
+               
+    })
+}
+// Footer analytics ends here
 
 });
