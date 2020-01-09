@@ -3868,6 +3868,19 @@ $(document).ready(function () {
     $('#signin-widget-modal').on('shown.bs.modal', function() {
           updateSignInForm('form_signon');        
     });
+    function modalWidth(){
+      var winWidth=$(window).width();
+      $("#mySignInModal").width(winWidth);
+      $("#mySignInModal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      modalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        modalWidth();
+      }
+    });
 });     
 
 
@@ -4335,7 +4348,6 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 })
 });
 
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4356,7 +4368,6 @@ $(document).ready(function(){
         }
     });
 });
-
 
 
 $(document).ready(function () {
@@ -4416,6 +4427,7 @@ $(document).ready(function () {
             }          
         });
 });
+
 
 
 
