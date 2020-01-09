@@ -151,7 +151,11 @@ a {
     left: 50%;
     transform: translateX(-50%);
 }
-
+footer {
+    .icon-style {
+        font-size: 2rem;
+    }
+}
 .border-right {
     border-right: 2px solid $light-grey-20;
 }

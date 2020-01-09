@@ -18,6 +18,10 @@
         font-size: 2.25rem;
         color: $medium-blue-color;
         margin-top: 20px;
+        &:hover {
+            text-decoration: none;
+            pointer-events: none;
+        }
     }
     .icon-text{
         margin-top: 16px;
@@ -37,6 +41,10 @@
     border: 2px solid $white-shade;
     color: $white-shade;
     font-size: 2.5rem;
+    &:hover {
+        text-decoration: none;
+        pointer-events: none;
+    }
     }
     .icon-text {
         h1, h2, h3, h4, h5, h6, a{
@@ -63,6 +71,10 @@
         color: $white-shade;
         font-size: 0.875rem;
         text-align: center;
+        &:hover {
+            text-decoration: none;
+            pointer-events: none;
+        }
     }
     ul{
         margin-top: 0px;
@@ -74,7 +86,7 @@
     height: 132px;
     border: 1px solid #9A9A9A;
     ul{
-       
+
         li{
             width: 20%;
             border-right: 1px solid #9A9A9A;
