@@ -198,7 +198,7 @@
     <dependencies>
         <dependency>
             <groupId>ca.sunlife.web.cms</groupId>
-            <artifactId>sunlife.core</artifactId>
+            <artifactId>web-cms-aem-core.core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>        
 
