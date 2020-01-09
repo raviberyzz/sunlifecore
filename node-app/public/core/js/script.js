@@ -3723,17 +3723,22 @@ $(document).ready(function () {
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
         if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
-            utag.link({ "asset_type": "Module", "asset_title": "Search", "event_type": "On Page Impression", "event_title": "Search Module Expansion", "page_section": "Search Bar" });
+            utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module expansion"});
             //console.log("search exapansion tracked");
         } 
         else {
             //console.log("search expansion is not tracked");
         }
     });
-    // Desktop search analytics ends her
+    $('.search-bar-wrapper button').click(function(){
+        var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
+        utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data-one" : desktop_search_input});
+    });
+    // Desktop search analytics ends here
     // Mobile search analytics starts here
     $('.search-icon-mobile').click(function () {
-        utag.link({"asset_type"	: "Module","asset_title"	: "Search","event_type"	: "On Page Impression","event_title"	: "Search Module Expansion","page_section" : "Search Bar"});
+        var mobile_search_input=$('.hamburger-search .input-wrapper input').val();
+        utag.link({"ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data-one" : mobile_search_input});
     });
     //Mobile search analytics starts here
 // search bar analytics ends here
@@ -3814,7 +3819,7 @@ $('.navigation-menu.language-region').click(function(){
 // Mobile language and region bar analytics ends here
 
 // Right Navigation analytics starts here
-$('.button-class').click(function(){
+$('.right-navigation-wrapper .button-class').click(function(){
     var btnTxt1=$(this).parent().text();
     var btnTxt=$.trim(btnTxt1);
     utag.link({
@@ -3850,7 +3855,21 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 // Right Navigation analytics ends here
 
 });
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
 
+})
+});
 
 
 
@@ -3869,6 +3888,7 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
+
 
 
 $(document).ready(function () {
@@ -4264,6 +4284,7 @@ $(document).ready(function () {
         }
     });  
 });   
+
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4319,23 +4340,6 @@ $(document).ready(function(){
     }
  );
 });
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
-
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4356,6 +4360,8 @@ $(document).ready(function(){
         }
     });
 });
+
+
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
@@ -4414,7 +4420,6 @@ $(document).ready(function () {
             }          
         });
 });
-
 
 
 
