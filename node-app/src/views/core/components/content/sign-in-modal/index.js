@@ -18,4 +18,10 @@ $(document).ready(function () {
         modalWidth();
       }
     });
+    $('.icon-reg').html('');
+    var a1=$('#userIdDiv').html();
+    if(a1.indexOf("&nbsp;") != -1){
+      var updatedString = a1.replace("&nbsp;", "");
+      $('#userIdDiv').html(updatedString);
+    } 
 });     
