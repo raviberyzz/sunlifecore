@@ -22,7 +22,7 @@
     <!-- ====================================================================== -->
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
-        <artifactId>sunlife</artifactId>
+        <artifactId>web-cms-aem-core</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -30,7 +30,7 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>sunlife.it.tests</artifactId>
+    <artifactId>web-cms-aem-core.it.tests</artifactId>
     <packaging>bundle</packaging>
     <name>sunlife - Integration Tests Bundles</name>
     <description>Bundles for Integration Tests for sunlife</description>

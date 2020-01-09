@@ -16,7 +16,8 @@ JSON Format
     "img-border": "round-border",
     "wrapper-class": "",
     "banner-text-alignment": "",
-    "banner-box": ""
+    "banner-box": "",
+    "data-section-banner" : "body search ad"
 }
 ```
 <!-- "text-alignment": middle-aligned-text (if vertically middle aligned) / bottom-aligned-text (if text is placed below the image)-->
