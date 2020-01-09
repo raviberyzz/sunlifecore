@@ -4,6 +4,7 @@
     background-color: $background-black-ovrelay-color;
     padding: 0;
     position: absolute;
+    padding-left:0;
     .modal-main {
         background: $medium-yellow-background;
         padding: 24px 24px 40px 24px;
@@ -211,9 +212,11 @@
         display: none;
     }
 }
-
 .modal-backdrop {
     position: relative;
+}
+.modal-open{
+    padding-right:0;
 }
 
 @media (max-width: 992px) and (min-width: $mobile-screen-min) {
