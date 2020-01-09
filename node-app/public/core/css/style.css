@@ -4176,7 +4176,8 @@ input[type=text] {
   text-align: center;
   background-color: #F4F7F6; }
   .right-navigation-wrapper .lists-wrapper .links {
-    width: 100%; }
+    width: 100%;
+    border: none; }
     .right-navigation-wrapper .lists-wrapper .links a {
       font-weight: 700; }
     .right-navigation-wrapper .lists-wrapper .links .collapse {
@@ -4189,6 +4190,10 @@ input[type=text] {
     width: 100%; }
     .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
       width: 20%; }
+  .right-navigation-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
   .right-navigation-wrapper .CTA-wrapper .button-class {
     max-width: 100%;
     width: 100%;
@@ -4205,8 +4210,6 @@ input[type=text] {
     border: 1px solid #ffffff;
     border-top: 20px solid #ffffff;
     border-bottom: 20px solid #ffffff; }
-  .right-navigation-wrapper .cool-blue {
-    background-color: #F4F7F6; }
   .right-navigation-wrapper .phone-numbers {
     font-family: 'sunlife-sans';
     font-weight: 400;
@@ -4216,11 +4219,11 @@ input[type=text] {
     float: left; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  .right-navigation-wrapper .cmp-container > * {
+    display: inherit;
+    border: 15px solid #ffffff; }
   .right-navigation-wrapper .yellow-horizontal-separator {
-    display: none; }
-  .right-navigation-wrapper > * {
-    padding: 15px;
-    display: inherit; } }
+    display: none; } }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -5377,6 +5380,7 @@ input[type=text] {
 .two-column-wrapper .two-column-variation-three {
   width: 100%;
   display: flex; }
+
 
 .icon-style:hover {
   text-decoration: none; }
