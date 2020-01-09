@@ -4357,6 +4357,8 @@ $(document).ready(function(){
     });
 });
 
+
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength','30');
@@ -4414,7 +4416,6 @@ $(document).ready(function () {
             }          
         });
 });
-
 
 
 
