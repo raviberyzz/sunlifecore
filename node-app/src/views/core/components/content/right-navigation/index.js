@@ -2,6 +2,7 @@ $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
     var count1=0;
+    var cta_index=0;
     comp.each(function()
     {
         count1++;
