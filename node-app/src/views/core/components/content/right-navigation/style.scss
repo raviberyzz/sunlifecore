@@ -6,6 +6,7 @@
     .lists-wrapper{
         .links{
             width: 100%;
+            border: none;
             a{
                 font-weight: 700;
             }
@@ -27,13 +28,17 @@
             width: 20%;
         }
     }
+    .button-class{
+        max-width: 100% ;
+        width: 100%;
+        margin: 15px 0 15px 0;
+    }
     .CTA-wrapper{
         .button-class{
                 max-width: 100% ;
                 width: 100%;
                 margin: 15px 0 15px 0;
-            }
-                
+            } 
             }
     input[type=submit],input[type=button],input[type=text]{
             width: 100%;
@@ -51,9 +56,6 @@
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
     }
-    .cool-blue{
-        background-color: $light-cool-blue-color;
-    }
     .phone-numbers{
         font-family: 'sunlife-sans';
         font-weight: 400;
@@ -69,15 +71,13 @@
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .right-navigation-wrapper{
+        .cmp-container>*{
+            display: inherit;
+            border: 15px solid $white-shade;
+        }
         .yellow-horizontal-separator{
             display: none;
         }
-        &>*{
-            
-            padding: 15px;
-            display: inherit;
-            
-        }
+    
     }
-   
 }
