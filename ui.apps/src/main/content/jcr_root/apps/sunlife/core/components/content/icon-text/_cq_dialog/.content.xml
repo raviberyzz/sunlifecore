@@ -11,11 +11,46 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Add Title"
+                        fieldLabel="Title"
+                        name="./title"/>
+                    <titleLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="Select size/label "
+                        fieldLabel="Title Label"
+                        name="./titleLabel">
+                        <items jcr:primaryType="nt:unstructured">
+                            <h2
+                                jcr:primaryType="nt:unstructured"
+                                text="H2"
+                                value="h2"/>
+                            <h3
+                                jcr:primaryType="nt:unstructured"
+                                text="H3"
+                                value="h3"/>
+                            <h4
+                                jcr:primaryType="nt:unstructured"
+                                text="H4"
+                                value="h4"/>
+                            <h5
+                                jcr:primaryType="nt:unstructured"
+                                text="H5"
+                                value="h5"/>
+                            <h6
+                                jcr:primaryType="nt:unstructured"
+                                text="H6"
+                                value="h6"/>
+                        </items>
+                    </titleLabel>
                     <IconText
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                         composite="{Boolean}true"
-						fieldDescription="Click add sign for icons and texts"
+                        fieldDescription="Click add sign for icons and texts"
                         fieldLabel="Icon and Text">
                         <field
                             jcr:primaryType="nt:unstructured"
@@ -29,29 +64,29 @@
                                         <icon
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Add Icon"
                                             fieldLabel="Icon"
-											fieldDescription="Add Icon"
                                             name="./icon"/>
                                         <text
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                             sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                            fieldDescription="Add Text"
                                             fieldLabel="Text"
-											fieldDescription="Add Text"
                                             name="./text"
                                             useFixedInlineToolbar="{Boolean}true"/>
                                         <link
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Give a suitable URL"
                                             fieldLabel="Link"
-											fieldDescription="Give a suitable URL"
                                             name="./link"
                                             rootPath="/content"/>
                                         <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldDescription="Opens in same tab or new tab"
                                             fieldLabel="Target"
-											fieldDescription="Opens in same tab or new tab"
                                             name="./target">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <sameTab

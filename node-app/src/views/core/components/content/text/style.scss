@@ -1,0 +1,37 @@
+@import '../../../base/core';
+.grey-border-box {
+    padding: 32px 16px;
+    border: 1px solid $light-grey-color;
+    p {
+        margin: 0;
+    }
+}
+.grey-background-box {
+    @extend .grey-border-box;
+    border: none;
+    background-color: $light-cool-blue-color;
+}
+.text-parent {
+    .mega-menu-icon-wrapper {
+        .icon-parent {
+        margin-right: 2px;
+        }
+        .icon-style {
+            background: none;
+            border-radius: inherit;
+            height: 0;
+            width: 20px;
+            padding: 0;
+            border: none;
+            color: $medium-blue-color;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .icon-text-heading-normal {
+            display: none;
+        }
+        .icon-text-heading-link {
+            display: inherit;
+        }
+    }
+}

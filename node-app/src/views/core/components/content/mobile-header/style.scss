@@ -74,6 +74,9 @@
     /* Mobile Header End */
     /* Hamburger Menu Start */
     .hamburger-menu-wrapper{
+        .language-region .desktop-region-language-menu-wrapper{
+            display:none;
+        }
         z-index: 1050;
         padding: 0;
         position: relative;
@@ -136,22 +139,6 @@
                 }
             }
         }
-        // .search-autocomplete-mobile {
-        //     display:none;
-        //     position: absolute;
-        //     top: 100%;
-        //     width: 100%;
-        //     background: $white-shade;
-        //     z-index: 999;
-        //     overflow: hidden;
-        //     ul{
-        //         border: 1px solid $light-grey-shade;
-        //         margin: -1px 0 0;
-        //         padding: 0;
-        //         list-style: none;
-        //         text-align: left;
-        //     }
-        // }
         .first-level-list{
             padding-top:8px;
             z-index:1050;
