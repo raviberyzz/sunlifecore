@@ -3853,11 +3853,11 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 
 
-
 function demoFunction()
 {
 alert("Demo-Onsubmit-Function");
 }
+
 
 
 
@@ -4335,7 +4335,6 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 })
 });
 
-
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4356,6 +4355,7 @@ $(document).ready(function(){
         }
     });
 });
+
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');

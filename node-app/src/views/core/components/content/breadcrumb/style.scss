@@ -11,7 +11,7 @@
 .breadcrumb-wrapper-light-cool-blue{
   height: 43px;
   padding: 0 15px;
-    background:$light-cool-blue-color; 
+    background:$light-cool-blue-color;
     ol{
       list-style-type:none;
       padding:0;
@@ -40,7 +40,7 @@
             font-size:0.875rem;
             pointer-events: none;
           }
-        }  
+        }
         &>li:not(:first-child):before {
           content: "\f105";
           font-weight: 400;
@@ -58,7 +58,7 @@
       width: auto;
       float: right;
       line-height:18px;
-    } 
+    }
     .side-text {
       font-size: 0.875rem;
       font-weight: 700;
@@ -67,11 +67,11 @@
     }
     .social-link-icon-wrapper {
       cursor:pointer;
-      span {
-        color: $medium-blue-color;
-        font-size: 1.25rem;
-      }
-    } 
+      .icon-style {
+          color: $medium-blue-color;
+          font-size: 1.25rem;
+        }
+    }
     .social-links {
       float: left;
       margin: 0;
@@ -99,12 +99,12 @@
       color: $white-shade;
     }
     .social-link-icon-wrapper {
-      span {
-        color: $white-shade;
-        font-size: 1.25rem;
+      .icon-style{
+          color: $medium-blue-color;
+          font-size: 1.25rem;
+        }
       }
-    }  
-  }
+    }
 @media (max-width: $tab-screen-max){
   .breadcrumb-wrapper-light-cool-blue,.breadcrumb-wrapper-cool-blue{
     display: none;
