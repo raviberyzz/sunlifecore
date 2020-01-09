@@ -19,11 +19,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
-        <artifactId>sunlife</artifactId>
+        <artifactId>web-cms-aem-core</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>sunlife.core</artifactId>
+    <artifactId>web-cms-aem-core.core</artifactId>
     <packaging>bundle</packaging>
     <name>sunlife - Core</name>
     <description>Core bundle for sunlife</description>
@@ -102,31 +102,31 @@
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-checkstyle-plugin</artifactId>
                   <version>3.1.0</version>
-                       <configuration>
-							<propertyExpansion>basedir=${project.basedir}</propertyExpansion>
-							<includeTestResources>false</includeTestResources>
-							<includeResources>false</includeResources>
-							<includeTestSourceDirectory>false</includeTestSourceDirectory>
-							<configLocation>${basedir}/checkstyle.xml</configLocation>
-							<suppressionsLocation>${basedir}/checkstyle-suppress.xml</suppressionsLocation>
-							<consoleOutput>true</consoleOutput>
-							<failsOnError>true</failsOnError>
-				 			<linkXRef>false</linkXRef>
-	    	   		   </configuration>
-                       <executions>
-                         <execution>
-                           <id>validate</id>
-                           <phase>validate</phase>
-                           <goals>
-                             <goal>check</goal>
-                           </goals>
-                         </execution>
-                       </executions>
-                    </plugin>
-					<plugin>
-		            <groupId>org.codehaus.mojo</groupId>
-		            <artifactId>findbugs-maven-plugin</artifactId>
-		            <version>3.0.5</version>
+                    <configuration>
+                        <propertyExpansion>basedir=${project.basedir}</propertyExpansion>
+                        <includeTestResources>false</includeTestResources>
+                        <includeResources>false</includeResources>
+                        <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                        <configLocation>${basedir}/checkstyle.xml</configLocation>
+                        <suppressionsLocation>${basedir}/checkstyle-suppress.xml</suppressionsLocation>
+                        <consoleOutput>true</consoleOutput>
+                        <failsOnError>true</failsOnError>
+                        <linkXRef>false</linkXRef>
+                    </configuration>
+                    <executions>
+                        <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+		            <groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>3.1.12</version>
 		            <configuration>
 		                <!--
 		                    Enables analysis which takes more memory but finds more bugs.
@@ -139,7 +139,7 @@
 		                <!-- Produces XML report -->
 		                <xmlOutput>true</xmlOutput>
 		                <!-- Configures the directory in which the XML report is created -->
-		                <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+		                <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>                        
 		            </configuration>
 		            <executions>
 		                <!-- 
