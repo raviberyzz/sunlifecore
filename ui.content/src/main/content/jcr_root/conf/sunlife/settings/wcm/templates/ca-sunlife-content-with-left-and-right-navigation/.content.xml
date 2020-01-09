@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
-    <jcr:content
-        
+    <jcr:content  
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="ca-sunlife-content-with-left-and-right-navigation"
-        status="draft"/>
+        status="enabled"/>
 </jcr:root>

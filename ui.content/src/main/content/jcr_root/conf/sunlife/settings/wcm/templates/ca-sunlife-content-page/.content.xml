@@ -5,5 +5,5 @@
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="ca-sunlife-content-page"
-        status="draft"/>
+        status="enabled"/>
 </jcr:root>
