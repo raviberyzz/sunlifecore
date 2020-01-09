@@ -47,9 +47,6 @@ ul {
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
-        .icon-text-heading-link, .icon-text-description {
-                display: inherit;
-        }
         .icon-style {
             background: linear-gradient($medium-blue-color, $blue-gradient-color);
             height: 60px;
