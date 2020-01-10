@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sunlife.core.models;
+package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,14 +15,14 @@ import org.apache.sling.models.annotations.Model;
  *
  */
 @Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class AlternateUrl {
+public @interface AlternateUrl {
 
 	@Inject
 	@Named("altLanguageSeo")
-	public String altLanguageSeo;
+	String getAltLanguageSeo();
 	
 	@Inject
 	@Named("altLanguageUrlSeo")
-	public String altLanguageUrlSeo;
+	String getAltLanguageUrlSeo();
 	
 }
