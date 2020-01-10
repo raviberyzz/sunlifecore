@@ -5,7 +5,7 @@ JSON Format
 {
     "data-section-breadcrumb" : "nav-breadcrumb",
     "breadcrumb-author":"",
-    "breadcrumb-wrapper-background":"breadcrumb-wrapper-light-cool-blue",
+    "breadcrumb-wrapper-background":"breadcrumb-wrapper-cool-blue",
     "icon-bg":"",
     "icon-inside":"",
     "text-present" : false,

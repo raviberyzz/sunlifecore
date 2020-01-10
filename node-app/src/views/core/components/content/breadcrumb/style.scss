@@ -87,7 +87,7 @@
     background:$cool-blue-color;
     .breadcrumb-row{
       li,.active {
-        a{
+        a,span{
           color:$white-shade;
         }
       }
