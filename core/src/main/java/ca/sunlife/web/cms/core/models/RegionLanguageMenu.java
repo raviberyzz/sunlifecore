@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 /**
  * Sling model for regional languages menu.
@@ -31,7 +31,7 @@ public class RegionLanguageMenu {
 	private String titleMobile;
 
 	/** The regions. */
-	@Inject @Via("resource")
+	@ChildResource(name="regions")
 	private List<LinkModel> regions;
 
 	/** The language section title. */
@@ -269,25 +269,19 @@ public class RegionLanguageMenu {
 	 */
 	@PostConstruct
 	public void init() {
-		List<LinkModel> tempList = null;
+		List<LinkModel> tempList = new ArrayList<>();
 		if (null == regions) {
 			return;
 		}
 		this.regionLinks = new ArrayList<>();
-		for (final LinkModel region : regions) {
-			if (tempList == null) {
-				tempList = new ArrayList<>();
-			}
+		for (LinkModel region : regions) {
 			tempList.add(region);
 			if ("yes".equals(region.getNextList())) {
 				this.regionLinks.add(tempList);
-				tempList = null;
-			}
-
-			if (regions.indexOf(region) == regions.size() - 1) {
-				this.regionLinks.add(tempList);
+				tempList = new ArrayList<>();
 			}
 		}
+		this.regionLinks.add(tempList);
 	}
 
 }
