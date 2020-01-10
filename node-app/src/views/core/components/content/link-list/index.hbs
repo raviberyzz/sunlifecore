@@ -1,14 +1,13 @@
 <div class="{{list-wrapper-class}}">
 	<div class="links">
-		<h3 class="accordion-heading" aria-expanded="false" data-parent=".lists-wrapper" data-target="#{{link-id}}"
-		 data-toggle="collapse">{{ LinkText }}{{i}}</h3>
-		<div class="collapse list-div" id={{link-id}}>
+		<h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+		<div class="collapse list-div">
 			<ul class="list-unstyled">
-                {{#each list}}
+				{{#each list}}
 				<li>
 					<a href="{{link}}">{{text}}</a>
 				</li>
-                {{/each}}
+				{{/each}}
 			</ul>
 		</div>
 	</div>

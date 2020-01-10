@@ -87,7 +87,7 @@
     background:$cool-blue-color;
     .breadcrumb-row{
       li,.active {
-        a{
+        a,span{
           color:$white-shade;
         }
       }
@@ -100,7 +100,7 @@
     }
     .social-link-icon-wrapper {
       .icon-style{
-          color: $medium-blue-color;
+          color: $white-shade;
           font-size: 1.25rem;
         }
       }
