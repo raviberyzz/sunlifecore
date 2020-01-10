@@ -4,6 +4,6 @@
     <jcr:content
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
         jcr:primaryType="cq:PageContent"
-        jcr:title="ca-sunlife-content-with-right-navigation"
+        jcr:title="CA Sunlife Content with Right Navigation"
         status="enabled"/>
 </jcr:root>
