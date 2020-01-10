@@ -3880,6 +3880,14 @@ else{
 
 
 
+function demoFunction()
+{
+
+}
+
+
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4483,10 +4491,3 @@ $(document).ready(function(){
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
-
-
-function demoFunction()
-{
-alert("Demo-Onsubmit-Function");
-}

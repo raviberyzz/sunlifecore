@@ -93,6 +93,7 @@
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .right-navigation-wrapper{
+        padding:0;
         .cmp-container>*{
             display: inherit;
             border: 15px solid $white-shade;
