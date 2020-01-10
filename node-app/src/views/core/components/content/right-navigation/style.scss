@@ -1,6 +1,6 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
-    padding: 0;
+    padding: 40px 0;
     text-align: center;
     background-color: $light-cool-blue-color;
     .lists-wrapper{
@@ -18,7 +18,7 @@
             display: none;
         }
     }
- 
+
     .right-nav-cta-orange{
        background-color: $light-orange-20;
     }
@@ -28,49 +28,72 @@
             width: 20%;
         }
     }
-    .button-class{
-        max-width: 100% ;
-        width: 100%;
-        margin: 15px 0 15px 0;
-    }
     .CTA-wrapper{
         .button-class{
                 max-width: 100% ;
                 width: 100%;
                 margin: 15px 0 15px 0;
-            } 
             }
-    input[type=submit],input[type=button],input[type=text]{
+            }
+    input[type=text]{
             width: 100%;
             max-width: 100%;
-            padding: 10px;
-           
+
+
     }
-    .button-wrapper .primary-blue-button{
-        max-width: 100%;
+    input[type=submit],input[type=button]{
         width: 100%;
+        max-width: 100%;
+
+    }
+    .button-wrapper {
+        .primary-blue-button{
+            max-width: 100%;
+        width: 100%;
+        }
+        .button-class{
+            max-width: 100% ;
+            width: 100%;
+            margin: 0 0 16px 0;
+        }
+    }
+    .input-wrapper{
+        margin:24px 0 16px 0;
     }
     .light-orange{
         background-color: $light-orange-20;
-        border: 1px solid $white-shade;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
+        padding-top:40px;
+        padding-bottom: 40px;
     }
     .phone-numbers{
         font-family: 'sunlife-sans';
         font-weight: 400;
         font-size: 22px;
-        line-height: 120%; 
+        line-height: 120%;
     }
     &>*{
         float: left;
-       
+
     }
-   
+    .right-nav-icon-wrapper
+    {
+        .h1,.h2,.h3,.h4,.h5,.h6{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .icon-text
+        {
+            padding-bottom: 0;
+        }
+    }
+
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .right-navigation-wrapper{
+        padding: 0;
         .cmp-container>*{
             display: inherit;
             border: 15px solid $white-shade;
@@ -78,6 +101,6 @@
         .yellow-horizontal-separator{
             display: none;
         }
-    
+
     }
 }

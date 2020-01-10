@@ -54,9 +54,12 @@
         position: absolute;
         width: 100%;
     }
-    a:before{
-      color: black;
+   
     }
+    .region.open{
+      a:before{
+        color: black;
+      }
     }
     .nav .open>a{
       background-color:$white-shade;

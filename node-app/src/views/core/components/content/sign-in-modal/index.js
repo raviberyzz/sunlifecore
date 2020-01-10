@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
     $('.icon-reg').html('');
     var a1=$('#userIdDiv').html();
-    if(a1.indexOf("&nbsp;") != -1){
+    if(a1 && a1.indexOf("&nbsp;") != -1){
       var updatedString = a1.replace("&nbsp;", "");
       $('#userIdDiv').html(updatedString);
     } 
