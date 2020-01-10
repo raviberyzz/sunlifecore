@@ -3888,7 +3888,6 @@ alert("Demo-Onsubmit-Function");
 
 
 
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3911,11 +3910,12 @@ $(document).ready(function () {
     });
     $('.icon-reg').html('');
     var a1=$('#userIdDiv').html();
-    if(a1.indexOf("&nbsp;") != -1){
+    if(a1 && a1.indexOf("&nbsp;") != -1){
       var updatedString = a1.replace("&nbsp;", "");
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -4485,3 +4485,9 @@ $(document).ready(function () {
 
 
 
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+
+});
