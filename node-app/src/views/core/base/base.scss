@@ -152,8 +152,14 @@ a {
     transform: translateX(-50%);
 }
 footer {
-    .icon-style {
-        font-size: 2rem;
+    .social-link-icon-wrapper {
+        li {
+            float: left;
+            padding-left: 5px;
+        }
+        .icon-style {
+            font-size: 2rem;
+        }
     }
 }
 .border-right {
