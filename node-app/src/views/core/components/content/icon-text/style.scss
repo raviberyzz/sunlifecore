@@ -83,29 +83,70 @@
 
 .gettin-started-icon-wrapper
 {
+    margin-top: 20px;
     height: 132px;
-    border: 1px solid #9A9A9A;
-    ul{
-
-        li{
-            width: 20%;
-            border-right: 1px solid #9A9A9A;
-            margin: 20px;
-        }
-    }
-    .text-parent{
-        font-size: 24px;
+    border: 1px solid $medium-grey-background;
+    text-align: center;
+    position: relative;
+    .heading-4{
         font-weight: 700;
         line-height: 30px;
-        padding-bottom: 24px;
+        padding: 0 20px;
+        top: -15px;
+        background-color: $white-shade;
+        float: left;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: 9px ;
+    }
+    ul{
+        width: 100%;
+        display: table;
         text-align: center;
+        padding-bottom: 24px;
+        &>:not(:last-child)
+        {
+            border-right: 1px solid $medium-grey-background;
+        }
+        li{
+            height: 67px;
+            display:table-cell;
+           
+        }
+        
     }
     .icon-style {
         color: $dark-grey-color;
         font-size: 2rem;
         text-align: center;
+        line-height: 41px;
     }
     .icon-texts{
         text-align: center;
+        padding: 0;
+    }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
+{
+    .gettin-started-icon-wrapper
+    {
+       height: auto;
+        ul{
+            width: 100%;
+            padding-bottom: 0;
+            &>:not(:last-child)
+            {
+                border-right: none;
+                border-bottom: 1px solid $medium-grey-background;
+            }
+            li{
+                width: 100%;
+                display: block;
+                padding: 24px;
+            }
+        }
+        
     }
 }
