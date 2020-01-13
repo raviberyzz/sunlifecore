@@ -2,7 +2,7 @@
 ul {
     margin: 0;
 }
-.icon-text {
+.icon-texts {
     padding-bottom: 24px;
 }
 .yellow-icon-blue-background > * {
@@ -57,7 +57,7 @@ ul {
         .icon-parent {
             margin-right: 16px;
         }
-        .icon-text {
+        .icon-texts {
             padding-bottom: 0;
         }
     }
@@ -85,9 +85,9 @@ ul {
         .icon-parent {
             display: none;
         }
-        .icon-text {
+        .icon-texts {
             text-align: center;
-        } 
+        }
     }
     .yellow-icon-white-background {
         background-color: $light-grey-20;

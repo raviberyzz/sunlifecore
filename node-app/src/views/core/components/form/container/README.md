@@ -2,8 +2,9 @@
 JSON Format
 ```
 {
-     "form-text-id":"demo-id",
-     "form-background-wrapper":"",
+    "form-id":"",
+    "form-text-id":"demo-id",
+    "form-background-wrapper":"form-wrapper-simple",
      "form-alignment-wrapper":"",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",

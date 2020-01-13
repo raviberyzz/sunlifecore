@@ -142,6 +142,30 @@
                                         jcr:primaryType="nt:unstructured"
                                         features="*"/>
                                 </rtePlugins>
+                                <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Background Color"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="light-orange"
+                                            cq:styleId="1578656112976"
+                                            cq:styleLabel="Orange"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                                <item1
+                                    cq:styleGroupLabel="CTA Styles"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="right-nav-cta"
+                                            cq:styleId="1578656226279"
+                                            cq:styleLabel="Full Width"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item1>
+                            </cq:styleGroups>
                             </policy_text>
                         </text>
                         <image jcr:primaryType="nt:unstructured"/>
@@ -449,6 +473,11 @@
                                                 cq:styleId="1577976198641"
                                                 cq:styleLabel="Mega Menu"
                                                 jcr:primaryType="nt:unstructured"/>
+                                            <item3
+	                                            cq:styleClasses="social-link-icon-wrapper"
+	                                            cq:styleId="1578656316621"
+	                                            cq:styleLabel="Social Links"
+	                                            jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
                                 </cq:styleGroups>
