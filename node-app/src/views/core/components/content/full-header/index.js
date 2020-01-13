@@ -52,7 +52,8 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $(".content-region").focus();
+                $("a:first-child").focus();
+                $('.content-region').children().eq(1).children().children().focus();
             }
         }
     });

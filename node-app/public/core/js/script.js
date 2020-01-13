@@ -3851,6 +3851,17 @@ $('.cmp-form-options--drop-down').siblings().children('.button-class').click(fun
 
 });
 
+
+
+function demoFunction()
+{
+alert("Demo-Onsubmit-Function");
+}
+
+
+
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3859,8 +3870,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });
 });     
-
-
 $(document).ready(function () {
     var maxHeight1=0;
     var maxHeight2=0;
@@ -4108,6 +4117,7 @@ $(document).ready(function () {
      
  });
  
+
 $(document).ready(function(){
     $('.content-region .nav-select').parent().addClass('in');
     $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
@@ -4277,9 +4287,35 @@ $(document).ready(function(){
          {
              $('.cmp-dynamic-megamenu').height(submenuHeight+13);
          }
+         else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight);
+         }
 
  },function(){
    $('.cmp-dynamic-megamenu').height(menuHeight);
+    }
+ );
+});
+
+
+$(document).ready(function(){
+   var menuHeight=0;
+ $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
+     function(){
+         menuHeight= $('.cmp-dynamic-megamenu-grey').height();
+          var submenuHeight=$(this).children('.dropdown-menu').height();
+         if ( submenuHeight > menuHeight)
+         {
+             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
+         }
+          else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight-10);
+         }
+
+ },function(){
+   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
     }
  );
 });
@@ -4375,8 +4411,13 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $(".content-region").focus();
+                $("a:first-child").focus();
+                $('.content-region').children().eq(1).children().children().focus();
             }
         }
     });
 });
+
+
+
+
