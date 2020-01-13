@@ -1,7 +1,16 @@
 @import '../../../base/core';
 .form-wrapper{
-    text-align: center;
+  text-align: center;
   width: 50%;
+ 
+}
+.form-wrapper-simple{
+    border: 1px solid $black-shade;
+    padding: 15px;
+    .cmp-form-options--drop-down
+  {
+      width: 100%;
+  }
 }
 .form-yellow-wrapper{
     background-color:$medium-yellow-background;
