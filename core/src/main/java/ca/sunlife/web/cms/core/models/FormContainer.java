@@ -1,120 +1,75 @@
 package ca.sunlife.web.cms.core.models;
 
-import java.util.Map;
-
 import javax.inject.Inject;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.via.ResourceSuperType;
 
-import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.wcm.core.components.internal.models.v1.form.ContainerImpl;
 import com.adobe.cq.wcm.core.components.models.form.Container;
 
 /**
- * The Interface FormContainer.
+ * The Class FormContainer.
  */
 @Model(adaptables = SlingHttpServletRequest.class,adapters = Container.class,resourceType = "sunlife/core/components/form/container")
-public class FormContainer implements Container {
+public class FormContainer extends ContainerImpl {
 	
-	/** The container. */
-	@Self
-	@Via(type = ResourceSuperType.class)
-    private Container container;	
+	/**
+	 * Instantiates a new form container.
+	 */
+	public FormContainer() {
+		super();
+	}
 	
 	/** The form action. */
 	@Inject
 	@Via("resource")
 	@Optional
-	public String formAction;
+	private String formAction;
 	
 	/** The validation. */
 	@Inject
 	@Via("resource")
 	@Optional
-	public String validation;
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getMethod()
+	private String validation;
+
+	/**
+	 * Gets the form action.
+	 *
+	 * @return the formAction
 	 */
-	@Override
-	public String getMethod() {
-		return container.getMethod();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getName()
+	public String getFormAction() {
+		return formAction;
+	}
+
+	/**
+	 * Sets the form action.
+	 *
+	 * @param formAction the formAction to set
 	 */
-	@Override
-	public String getName() {
-		return container.getName();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getAction()
+	public void setFormAction(String formAction) {
+		this.formAction = formAction;
+	}
+
+	/**
+	 * Gets the validation.
+	 *
+	 * @return the validation
 	 */
-	@Override
-	public String getAction() {
-        return container.getAction();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getId()
+	public String getValidation() {
+		return validation;
+	}
+
+	/**
+	 * Sets the validation.
+	 *
+	 * @param validation the validation to set
 	 */
-	@Override
-	public String getId() {
-        return container.getId();
-    }
+	public void setValidation(String validation) {
+		this.validation = validation;
+	}
 	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getEnctype()
-	 */
-	@Override
-	public String getEnctype() {
-        return container.getEnctype();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getResourceTypeForDropArea()
-	 */
-	@Override
-	public String getResourceTypeForDropArea() {
-        return container.getResourceTypeForDropArea();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getRedirect()
-	 */
-	@Override
-	public String getRedirect() {
-        return container.getRedirect();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getExportedItemsOrder()
-	 */
-	@Override
-	public String[] getExportedItemsOrder() {
-        return container.getExportedItemsOrder();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getExportedItems()
-	 */
-	@Override
-	public Map<String, ? extends ComponentExporter> getExportedItems() {
-		return container.getExportedItems();
-    }
-	
-	/* (non-Javadoc)
-	 * @see com.adobe.cq.wcm.core.components.models.form.Container#getExportedType()
-	 */
-	@Override
-	public String getExportedType() {
-        return container.getExportedType();
-    }
 
 }

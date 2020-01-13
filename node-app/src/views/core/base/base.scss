@@ -151,26 +151,55 @@ a {
     left: 50%;
     transform: translateX(-50%);
 }
-
-    .button-class {
-        height: 48px;
-        width: 180px;
-        min-width: 136px;
-        max-width: 275px;
-        border-radius: 4px;
-        padding: 6px;
-        text-align: center;
-        cursor: pointer;
-        border: none;
-        font-weight: 700;
-        display: inline-block;
-        text-decoration: none;
-        &:hover {
-            background-color: $cool-blue-color;
-            color: $white-shade;
-            text-decoration: none;
+footer {
+    .social-link-icon-wrapper {
+        float: right;
+        li {
+            float: left;
+            padding-left: 5px;
+        }
+        .icon-style {
+            font-size: 2rem;
         }
     }
+}
+.border-right {
+    border-right: 2px solid $light-grey-20;
+}
+.company-highlight-box-shadow {
+    box-shadow: 0px 0px $grey-shadow, 0px 0px $grey-shadow, 0 12px 5px -3px $grey-shadow;
+}
+.yellow-bullet-list {
+    ul {
+        li::before {
+            content: "\2022";
+            color: $medium-yellow-background;
+            font-weight: bold;
+            display: inline-block;
+            width: 2rem;
+            padding-left: 16px;
+        }
+    }
+}
+.button-class {
+    height: 48px;
+    width: 180px;
+    min-width: 136px;
+    max-width: 275px;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+    &:hover {
+        background-color: $cool-blue-color;
+        color: $white-shade;
+        text-decoration: none;
+    }
+}
 
 .white-box {
     background-color: $light-grey-20;
@@ -234,7 +263,7 @@ a {
     padding:0
 }
 .xf-content-height{
-    margin:0;
+    margin:0 !important;
 }
 .aem-GridColumn{
     padding:0

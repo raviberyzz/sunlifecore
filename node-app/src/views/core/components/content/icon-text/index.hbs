@@ -1,22 +1,15 @@
 <div class="{{icon-text-wrapper}}">
-  <ul>
-  {{#each iconTextList}}
-  <li>
-  <div class="icon-parent">
-      <span class="icon-style fa {{fa-icon}}"></span>
-  </div>
-  <div class="icon-text">
-    <div class="icon-text-heading-normal">
-      {{text-input}}
-    </div>
-    <div class="icon-text-heading-link">
-      <a href="{{href}}">{{text-input}}</a>
-    </div>
-    <div class="icon-text-description">
-      {{description-input}}
-    </div>
-  </div>
-  </li>
-  {{/each}}
+  {{!-- <span class="heading-4">Getting Started</span> --}}
+  <ul >
+    {{#each iconTextList}}
+    <li >
+      <div class="icon-parent">
+        <a class="icon-style fa {{fa-icon}}" href="{{href}}"></a>
+      </div>
+      <div class="icon-texts">
+        {{!-- <a>Get a quote </a> --}}
+      </div>
+    </li>
+    {{/each}}
   </ul>
 </div>

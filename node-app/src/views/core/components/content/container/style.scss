@@ -2,7 +2,7 @@
 ul {
     margin: 0;
 }
-.icon-text {
+.icon-texts {
     padding-bottom: 24px;
 }
 .yellow-icon-blue-background > * {
@@ -47,9 +47,6 @@ ul {
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
-        .icon-text-heading-link, .icon-text-description {
-                display: inherit;
-        }
         .icon-style {
             background: linear-gradient($medium-blue-color, $blue-gradient-color);
             height: 60px;
@@ -60,20 +57,37 @@ ul {
         .icon-parent {
             margin-right: 16px;
         }
-        .icon-text {
+        .icon-texts {
             padding-bottom: 0;
         }
     }
 }
-
+.company-highlight-blue-grey-background {
+    background: linear-gradient(to bottom, $medium-blue-color, $medium-blue-color 50%, $light-grey-20 50% );
+}
+.company-highlight-yellow-grey-background {
+    background: linear-gradient(to bottom, $medium-yellow-background, $primary-yellow-background 50%, $light-grey-20 50%);
+}
+.company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
+    padding: 40px 24px;
+    text-align: center;
+    .grey-horizontal-separator {
+        display: none;
+    }
+    .image-text-wrapper {
+        padding: 40px 0;
+        text-align: center;
+        background-color: $white-shade;
+    }
+}
 @media (max-width:$mobile-screen-max) {
     .cross-cta-wrapper {
         .icon-parent {
             display: none;
         }
-        .icon-text {
+        .icon-texts {
             text-align: center;
-        } 
+        }
     }
     .yellow-icon-white-background {
         background-color: $light-grey-20;
@@ -92,6 +106,23 @@ ul {
         margin: auto;
         border-right: 1px solid $light-grey-color;
         border-left: 1px solid $light-grey-color;
+    }
+    .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
+        .image-text-wrapper {
+            img {
+                display: none;
+            }
+        }
+        .grey-horizontal-separator {
+            display: inherit;
+            margin: 0;
+            hr {
+                margin: 0;
+            }
+        }
+        .border-right {
+            border-right: none;
+        }
     }
 }
 @media (max-width:$tab-screen-max) {

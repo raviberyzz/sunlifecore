@@ -2,6 +2,12 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Page">
     <ca-sunlife-blank-page/>
+    <ca-sunlife-content-page/>
+    <ca-sunlife-content-with-left-navigation/>
+    <ca-sunlife-content-with-right-navigation/>
+    <ca-sunlife-extra-content-with-right-navigation/>
+    <ca-sunlife-content-with-left-and-right-navigation/>
+    <ca-sunlife-content-with-right-navigation-and-extra-content/>
     <ca-sunlife-experience-fragment/>
     <sunlife-config/>
 </jcr:root>

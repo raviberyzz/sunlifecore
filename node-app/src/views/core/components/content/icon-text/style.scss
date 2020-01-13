@@ -1,9 +1,14 @@
 @import '../../../base/core';
+.icon-style {
+    &:hover {
+        text-decoration: none;
+    }
+}
 .icon-parent {
     text-align: center;
 }
 .social-link-icon-wrapper{
-    .icon-text{
+    .icon-texts{
         display: none;
     }
 }
@@ -13,16 +18,14 @@
         font-size: 2.25rem;
         color: $medium-blue-color;
         margin-top: 20px;
+        &:hover {
+            text-decoration: none;
+            pointer-events: none;
+        }
     }
-    .icon-text{
+    .icon-texts{
         margin-top: 16px;
-        .icon-text-heading-normal{
-            display: none;
-        }
-        .icon-text-description{
-            display: none;
-        }
-        .icon-text-heading-link{
+        a {
             text-align: center;
             font-size: 1rem;
         }
@@ -38,23 +41,21 @@
     border: 2px solid $white-shade;
     color: $white-shade;
     font-size: 2.5rem;
+    &:hover {
+        text-decoration: none;
+        pointer-events: none;
     }
-    .icon-text-heading-link{
-        display: none;
     }
-    .icon-text-heading-normal, .icon-text-description{
-        text-align: center;
-    }
-    .icon-text-heading-normal{
-        font-weight: 700;
-        font-size: 1.125rem;
-        padding-top: 24px;
+    .icon-texts {
+        h1, h2, h3, h4, h5, h6, a{
+            text-align: center;
+        }
+        h1, h2, h3, h4, h5, h6{
+            padding-top: 24px;
+        }
     }
 }
 .mega-menu-icon-wrapper {
-    .icon-text-heading-link, .icon-text-description {
-        display: none;
-    }
     .icon-parent {
         text-align: left;
         float: left;
@@ -70,6 +71,10 @@
         color: $white-shade;
         font-size: 0.875rem;
         text-align: center;
+        &:hover {
+            text-decoration: none;
+            pointer-events: none;
+        }
     }
     ul{
         margin-top: 0px;
@@ -78,32 +83,70 @@
 
 .gettin-started-icon-wrapper
 {
+    margin-top: 20px;
     height: 132px;
-    border: 1px solid #9A9A9A;
-    ul{
-       
-        li{
-            width: 20%;
-            border-right: 1px solid #9A9A9A;
-            margin: 20px;
-        }
-    }
-    .text-parent{
-        font-size: 24px;
+    border: 1px solid $medium-grey-background;
+    text-align: center;
+    position: relative;
+    .heading-4{
         font-weight: 700;
         line-height: 30px;
-        padding-bottom: 24px;
-        text-align: center;
+        padding: 0 20px;
+        top: -15px;
+        background-color: $white-shade;
+        float: left;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: 9px ;
     }
-    .icon-text-heading-normal, .icon-text-description {
-        display: none;
+    ul{
+        width: 100%;
+        display: table;
+        text-align: center;
+        padding-bottom: 24px;
+        &>:not(:last-child)
+        {
+            border-right: 1px solid $medium-grey-background;
+        }
+        li{
+            height: 67px;
+            display:table-cell;
+           
+        }
+        
     }
     .icon-style {
         color: $dark-grey-color;
         font-size: 2rem;
         text-align: center;
+        line-height: 41px;
     }
-    .icon-text{
+    .icon-texts{
         text-align: center;
+        padding: 0;
+    }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
+{
+    .gettin-started-icon-wrapper
+    {
+       height: auto;
+        ul{
+            width: 100%;
+            padding-bottom: 0;
+            &>:not(:last-child)
+            {
+                border-right: none;
+                border-bottom: 1px solid $medium-grey-background;
+            }
+            li{
+                width: 100%;
+                display: block;
+                padding: 24px;
+            }
+        }
+        
     }
 }

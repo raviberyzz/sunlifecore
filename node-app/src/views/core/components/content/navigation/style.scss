@@ -44,6 +44,7 @@
         content: " ";
     }
     .nav-item.open{  
+      
       background-color: $white-shade;   
       border-bottom: none;
       z-index: 1;
@@ -53,9 +54,12 @@
         position: absolute;
         width: 100%;
     }
-    a:before{
-      color: black;
+   
     }
+    .region.open{
+      a:before{
+        color: black;
+      }
     }
     .nav .open>a{
       background-color:$white-shade;

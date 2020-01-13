@@ -1,4 +1,4 @@
-#Mega Menu2
+#Mega Dynamic
 #Displays link in list format
 JSON Format
 ```
