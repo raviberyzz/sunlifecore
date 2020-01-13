@@ -151,9 +151,18 @@ a {
     left: 50%;
     transform: translateX(-50%);
 }
+.white-background {
+    background-color: $white-shade;
+}
+.padding-15 {
+    padding: 15px;
+}
 footer {
+    background-color: $medium-blue-color;
     .social-link-icon-wrapper {
-        float: right;
+        ul {
+            float: right;
+        }
         li {
             float: left;
             padding-left: 5px;
