@@ -227,9 +227,6 @@
         }
         .third-level-navigation{
             @extend .second-level-navigation;
-            li:first-child a{
-                margin-left:-5px;
-            }
             .subnav{
                 margin-left:0;
             }
