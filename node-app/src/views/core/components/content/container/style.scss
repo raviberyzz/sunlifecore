@@ -64,7 +64,6 @@ ul {
 }
 .company-highlight-blue-grey-background {
     background: linear-gradient(to bottom, $medium-blue-color, $medium-blue-color 50%, $light-grey-20 50% );
-    color: $medium-yellow-background;
 }
 .company-highlight-yellow-grey-background {
     background: linear-gradient(to bottom, $medium-yellow-background, $primary-yellow-background 50%, $light-grey-20 50%);
@@ -79,7 +78,7 @@ ul {
         padding: 40px 15px;
         text-align: center;
         background-color: $white-shade;
-        height: 100%;
+        height: 95%;
         img {
             width: 150px !important;
             height: 150px;
@@ -89,6 +88,7 @@ ul {
         .cmp-container > div {
             display: flex;
             width: 100%;
+            background-color: $white-shade;
             .teaser {
                 flex: 1;
             }
