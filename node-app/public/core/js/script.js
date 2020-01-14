@@ -3994,6 +3994,7 @@ function demoFunction()
 
 
 
+
 $(document).ready(function(){
     $('.cmp-tabs__tab').click(function(){
        var tab_number=$(this).index();
@@ -4649,19 +4650,18 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	$('.site-level-notification').prepend('<i class="fa fa-close"></i>');
+	$('.site-level-notification').prepend('<i class="fa fa-close" tabindex="0"></i>');
 	$('.site-level-notification .fa-close').click(function () {
 		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .fa-close').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
 	});
 });
 
 
-$(document).ready(function(){
-	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
-    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
-    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
-
-});
 $(document).ready(function(){
     $('.accordion .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion .cmp-accordion__panel').hasClass('in')){
@@ -4694,4 +4694,10 @@ $(document).ready(function(){
             $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     }
+});
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+
 });
