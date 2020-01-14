@@ -3545,6 +3545,9 @@ a {
 .border-bottom-dotted {
   border-bottom: 2px dotted #D7D7D7; }
 
+.yellow-colored-font {
+  color: #FFCB05; }
+
 footer {
   background-color: #004C6C; }
   footer .social-link-icon-wrapper ul {
@@ -3748,6 +3751,19 @@ input[type=radio] {
   margin: 10px;
   vertical-align: super; }
 
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
+
 .form-wrapper {
   text-align: center;
   width: 50%; }
@@ -3798,19 +3814,6 @@ input[type=radio] {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
 
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
-
 .button-common-style, .button-wrapper .primary-blue-button, .button-wrapper .primary-yellow-button, .button-wrapper .secondary-button {
   height: 48px;
   width: 180px;
@@ -3828,6 +3831,47 @@ input[type=text] {
   background-color: transparent;
   color: #004C6C;
   border: 2px solid #004C6C; }
+
+.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+  background-color: #FFCB05;
+  padding: 32px 0 32px 15px;
+  height: 100px;
+  color: #424242; }
+  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey h3, .title-wrapper-yellow-grey-rings h3, .title-wrapper-blue-yellow h3, .title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey h4, .title-wrapper-yellow-grey-rings h4, .title-wrapper-blue-yellow h4, .title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey h5, .title-wrapper-yellow-grey-rings h5, .title-wrapper-blue-yellow h5, .title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey h6, .title-wrapper-yellow-grey-rings h6, .title-wrapper-blue-yellow h6, .title-wrapper-blue-yellow-rings h6 {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 36px; }
+  .title-wrapper-yellow-grey.heading-1 h1, .heading-1.title-wrapper-yellow-grey-rings h1, .heading-1.title-wrapper-blue-yellow h1, .heading-1.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-1 h2, .heading-1.title-wrapper-yellow-grey-rings h2, .heading-1.title-wrapper-blue-yellow h2, .heading-1.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-1 h3, .heading-1.title-wrapper-yellow-grey-rings h3, .heading-1.title-wrapper-blue-yellow h3, .heading-1.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-1 h4, .heading-1.title-wrapper-yellow-grey-rings h4, .heading-1.title-wrapper-blue-yellow h4, .heading-1.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-1 h5, .heading-1.title-wrapper-yellow-grey-rings h5, .heading-1.title-wrapper-blue-yellow h5, .heading-1.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-1 h6, .heading-1.title-wrapper-yellow-grey-rings h6, .heading-1.title-wrapper-blue-yellow h6, .heading-1.title-wrapper-blue-yellow-rings h6 {
+    font-size: 2.25rem; }
+  .title-wrapper-yellow-grey.heading-2 h1, .heading-2.title-wrapper-yellow-grey-rings h1, .heading-2.title-wrapper-blue-yellow h1, .heading-2.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-2 h2, .heading-2.title-wrapper-yellow-grey-rings h2, .heading-2.title-wrapper-blue-yellow h2, .heading-2.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-2 h3, .heading-2.title-wrapper-yellow-grey-rings h3, .heading-2.title-wrapper-blue-yellow h3, .heading-2.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-2 h4, .heading-2.title-wrapper-yellow-grey-rings h4, .heading-2.title-wrapper-blue-yellow h4, .heading-2.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-2 h5, .heading-2.title-wrapper-yellow-grey-rings h5, .heading-2.title-wrapper-blue-yellow h5, .heading-2.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-2 h6, .heading-2.title-wrapper-yellow-grey-rings h6, .heading-2.title-wrapper-blue-yellow h6, .heading-2.title-wrapper-blue-yellow-rings h6 {
+    font-size: 2rem; }
+  .title-wrapper-yellow-grey.heading-3 h1, .heading-3.title-wrapper-yellow-grey-rings h1, .heading-3.title-wrapper-blue-yellow h1, .heading-3.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-3 h2, .heading-3.title-wrapper-yellow-grey-rings h2, .heading-3.title-wrapper-blue-yellow h2, .heading-3.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-3 h3, .heading-3.title-wrapper-yellow-grey-rings h3, .heading-3.title-wrapper-blue-yellow h3, .heading-3.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-3 h4, .heading-3.title-wrapper-yellow-grey-rings h4, .heading-3.title-wrapper-blue-yellow h4, .heading-3.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-3 h5, .heading-3.title-wrapper-yellow-grey-rings h5, .heading-3.title-wrapper-blue-yellow h5, .heading-3.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-3 h6, .heading-3.title-wrapper-yellow-grey-rings h6, .heading-3.title-wrapper-blue-yellow h6, .heading-3.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.75rem; }
+  .title-wrapper-yellow-grey.heading-4 h1, .heading-4.title-wrapper-yellow-grey-rings h1, .heading-4.title-wrapper-blue-yellow h1, .heading-4.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-4 h2, .heading-4.title-wrapper-yellow-grey-rings h2, .heading-4.title-wrapper-blue-yellow h2, .heading-4.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-4 h3, .heading-4.title-wrapper-yellow-grey-rings h3, .heading-4.title-wrapper-blue-yellow h3, .heading-4.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-4 h4, .heading-4.title-wrapper-yellow-grey-rings h4, .heading-4.title-wrapper-blue-yellow h4, .heading-4.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-4 h5, .heading-4.title-wrapper-yellow-grey-rings h5, .heading-4.title-wrapper-blue-yellow h5, .heading-4.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-4 h6, .heading-4.title-wrapper-yellow-grey-rings h6, .heading-4.title-wrapper-blue-yellow h6, .heading-4.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.5rem; }
+  .title-wrapper-yellow-grey.heading-5 h1, .heading-5.title-wrapper-yellow-grey-rings h1, .heading-5.title-wrapper-blue-yellow h1, .heading-5.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-5 h2, .heading-5.title-wrapper-yellow-grey-rings h2, .heading-5.title-wrapper-blue-yellow h2, .heading-5.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-5 h3, .heading-5.title-wrapper-yellow-grey-rings h3, .heading-5.title-wrapper-blue-yellow h3, .heading-5.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-5 h4, .heading-5.title-wrapper-yellow-grey-rings h4, .heading-5.title-wrapper-blue-yellow h4, .heading-5.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-5 h5, .heading-5.title-wrapper-yellow-grey-rings h5, .heading-5.title-wrapper-blue-yellow h5, .heading-5.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-5 h6, .heading-5.title-wrapper-yellow-grey-rings h6, .heading-5.title-wrapper-blue-yellow h6, .heading-5.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.25rem; }
+  .title-wrapper-yellow-grey.heading-6 h1, .heading-6.title-wrapper-yellow-grey-rings h1, .heading-6.title-wrapper-blue-yellow h1, .heading-6.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-6 h2, .heading-6.title-wrapper-yellow-grey-rings h2, .heading-6.title-wrapper-blue-yellow h2, .heading-6.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-6 h3, .heading-6.title-wrapper-yellow-grey-rings h3, .heading-6.title-wrapper-blue-yellow h3, .heading-6.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-6 h4, .heading-6.title-wrapper-yellow-grey-rings h4, .heading-6.title-wrapper-blue-yellow h4, .heading-6.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-6 h5, .heading-6.title-wrapper-yellow-grey-rings h5, .heading-6.title-wrapper-blue-yellow h5, .heading-6.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-6 h6, .heading-6.title-wrapper-yellow-grey-rings h6, .heading-6.title-wrapper-blue-yellow h6, .heading-6.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.125rem; }
+
+.title-wrapper-yellow-grey-rings {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color: #FFCB05;
+  background-size: contain; }
+
+.title-wrapper-blue-yellow {
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+.title-wrapper-blue-yellow-rings {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+@media (max-width: 767px) {
+  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+    height: 94px;
+    background-image: none; } }
 
 .utility-nav-wrapper {
   text-align: right;
@@ -3874,47 +3918,6 @@ input[type=text] {
       background: #FFCB05;
       margin-top: 0px;
       padding: 8px 10px 4px 10px; }
-
-.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-  background-color: #FFCB05;
-  padding: 32px 0 32px 15px;
-  height: 100px;
-  color: #424242; }
-  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey h3, .title-wrapper-yellow-grey-rings h3, .title-wrapper-blue-yellow h3, .title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey h4, .title-wrapper-yellow-grey-rings h4, .title-wrapper-blue-yellow h4, .title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey h5, .title-wrapper-yellow-grey-rings h5, .title-wrapper-blue-yellow h5, .title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey h6, .title-wrapper-yellow-grey-rings h6, .title-wrapper-blue-yellow h6, .title-wrapper-blue-yellow-rings h6 {
-    margin: 0;
-    font-size: 1.75rem;
-    line-height: 36px; }
-  .title-wrapper-yellow-grey.heading-1 h1, .heading-1.title-wrapper-yellow-grey-rings h1, .heading-1.title-wrapper-blue-yellow h1, .heading-1.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-1 h2, .heading-1.title-wrapper-yellow-grey-rings h2, .heading-1.title-wrapper-blue-yellow h2, .heading-1.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-1 h3, .heading-1.title-wrapper-yellow-grey-rings h3, .heading-1.title-wrapper-blue-yellow h3, .heading-1.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-1 h4, .heading-1.title-wrapper-yellow-grey-rings h4, .heading-1.title-wrapper-blue-yellow h4, .heading-1.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-1 h5, .heading-1.title-wrapper-yellow-grey-rings h5, .heading-1.title-wrapper-blue-yellow h5, .heading-1.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-1 h6, .heading-1.title-wrapper-yellow-grey-rings h6, .heading-1.title-wrapper-blue-yellow h6, .heading-1.title-wrapper-blue-yellow-rings h6 {
-    font-size: 2.25rem; }
-  .title-wrapper-yellow-grey.heading-2 h1, .heading-2.title-wrapper-yellow-grey-rings h1, .heading-2.title-wrapper-blue-yellow h1, .heading-2.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-2 h2, .heading-2.title-wrapper-yellow-grey-rings h2, .heading-2.title-wrapper-blue-yellow h2, .heading-2.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-2 h3, .heading-2.title-wrapper-yellow-grey-rings h3, .heading-2.title-wrapper-blue-yellow h3, .heading-2.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-2 h4, .heading-2.title-wrapper-yellow-grey-rings h4, .heading-2.title-wrapper-blue-yellow h4, .heading-2.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-2 h5, .heading-2.title-wrapper-yellow-grey-rings h5, .heading-2.title-wrapper-blue-yellow h5, .heading-2.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-2 h6, .heading-2.title-wrapper-yellow-grey-rings h6, .heading-2.title-wrapper-blue-yellow h6, .heading-2.title-wrapper-blue-yellow-rings h6 {
-    font-size: 2rem; }
-  .title-wrapper-yellow-grey.heading-3 h1, .heading-3.title-wrapper-yellow-grey-rings h1, .heading-3.title-wrapper-blue-yellow h1, .heading-3.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-3 h2, .heading-3.title-wrapper-yellow-grey-rings h2, .heading-3.title-wrapper-blue-yellow h2, .heading-3.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-3 h3, .heading-3.title-wrapper-yellow-grey-rings h3, .heading-3.title-wrapper-blue-yellow h3, .heading-3.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-3 h4, .heading-3.title-wrapper-yellow-grey-rings h4, .heading-3.title-wrapper-blue-yellow h4, .heading-3.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-3 h5, .heading-3.title-wrapper-yellow-grey-rings h5, .heading-3.title-wrapper-blue-yellow h5, .heading-3.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-3 h6, .heading-3.title-wrapper-yellow-grey-rings h6, .heading-3.title-wrapper-blue-yellow h6, .heading-3.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.75rem; }
-  .title-wrapper-yellow-grey.heading-4 h1, .heading-4.title-wrapper-yellow-grey-rings h1, .heading-4.title-wrapper-blue-yellow h1, .heading-4.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-4 h2, .heading-4.title-wrapper-yellow-grey-rings h2, .heading-4.title-wrapper-blue-yellow h2, .heading-4.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-4 h3, .heading-4.title-wrapper-yellow-grey-rings h3, .heading-4.title-wrapper-blue-yellow h3, .heading-4.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-4 h4, .heading-4.title-wrapper-yellow-grey-rings h4, .heading-4.title-wrapper-blue-yellow h4, .heading-4.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-4 h5, .heading-4.title-wrapper-yellow-grey-rings h5, .heading-4.title-wrapper-blue-yellow h5, .heading-4.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-4 h6, .heading-4.title-wrapper-yellow-grey-rings h6, .heading-4.title-wrapper-blue-yellow h6, .heading-4.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.5rem; }
-  .title-wrapper-yellow-grey.heading-5 h1, .heading-5.title-wrapper-yellow-grey-rings h1, .heading-5.title-wrapper-blue-yellow h1, .heading-5.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-5 h2, .heading-5.title-wrapper-yellow-grey-rings h2, .heading-5.title-wrapper-blue-yellow h2, .heading-5.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-5 h3, .heading-5.title-wrapper-yellow-grey-rings h3, .heading-5.title-wrapper-blue-yellow h3, .heading-5.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-5 h4, .heading-5.title-wrapper-yellow-grey-rings h4, .heading-5.title-wrapper-blue-yellow h4, .heading-5.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-5 h5, .heading-5.title-wrapper-yellow-grey-rings h5, .heading-5.title-wrapper-blue-yellow h5, .heading-5.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-5 h6, .heading-5.title-wrapper-yellow-grey-rings h6, .heading-5.title-wrapper-blue-yellow h6, .heading-5.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.25rem; }
-  .title-wrapper-yellow-grey.heading-6 h1, .heading-6.title-wrapper-yellow-grey-rings h1, .heading-6.title-wrapper-blue-yellow h1, .heading-6.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-6 h2, .heading-6.title-wrapper-yellow-grey-rings h2, .heading-6.title-wrapper-blue-yellow h2, .heading-6.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-6 h3, .heading-6.title-wrapper-yellow-grey-rings h3, .heading-6.title-wrapper-blue-yellow h3, .heading-6.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-6 h4, .heading-6.title-wrapper-yellow-grey-rings h4, .heading-6.title-wrapper-blue-yellow h4, .heading-6.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-6 h5, .heading-6.title-wrapper-yellow-grey-rings h5, .heading-6.title-wrapper-blue-yellow h5, .heading-6.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-6 h6, .heading-6.title-wrapper-yellow-grey-rings h6, .heading-6.title-wrapper-blue-yellow h6, .heading-6.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.125rem; }
-
-.title-wrapper-yellow-grey-rings {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
-  background-color: #FFCB05;
-  background-size: contain; }
-
-.title-wrapper-blue-yellow {
-  background-color: #004C6C;
-  color: #FFCB05; }
-
-.title-wrapper-blue-yellow-rings {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
-  background-color: #004C6C;
-  color: #FFCB05; }
-
-@media (max-width: 767px) {
-  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-    height: 94px;
-    background-image: none; } }
 
 .grey-border-box, .grey-background-box {
   padding: 32px 16px;
@@ -5786,6 +5789,217 @@ input[type=text] {
       .footer-copyright-wrapper .bottom-part .slf-acronym, .footer-copyright-wrapper .bottom-part .not-slf-acronym {
         padding-top: 16px; } }
 
+ul {
+  margin: 0; }
+
+.icon-texts {
+  padding-bottom: 24px; }
+
+.yellow-icon-blue-background > * {
+  background-color: #004C6C;
+  color: #ffffff;
+  text-align: center; }
+
+.yellow-icon-grey-background > * {
+  background-color: #F4F7F6;
+  text-align: center; }
+
+.yellow-icon-white-background > * {
+  background-color: #ffffff;
+  text-align: center; }
+
+.yellow-icon-white-background {
+  border: 1px solid #D7D7D7; }
+
+.blue-icon-yellow-background > * {
+  background-color: #FFCB05;
+  text-align: center; }
+  .blue-icon-yellow-background > * .icon-style {
+    background: linear-gradient(#004C6C, #003946); }
+
+.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+  margin-top: 42px; }
+  .yellow-icon-blue-background .icon-style, .yellow-icon-grey-background .icon-style, .blue-icon-yellow-background .icon-style, .yellow-icon-white-background .icon-style {
+    position: relative;
+    bottom: 40px; }
+  .yellow-icon-blue-background .icon-parent, .yellow-icon-grey-background .icon-parent, .blue-icon-yellow-background .icon-parent, .yellow-icon-white-background .icon-parent {
+    height: 40px; }
+  .yellow-icon-blue-background > :last-child, .yellow-icon-grey-background > :last-child, .blue-icon-yellow-background > :last-child, .yellow-icon-white-background > :last-child {
+    padding-bottom: 40px; }
+
+.cross-cta-wrapper {
+  padding: 24px 16px;
+  background-color: #FEEDD2;
+  border: 1px solid #FDDBA5; }
+  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
+    background: linear-gradient(#004C6C, #003946);
+    height: 60px;
+    width: 60px;
+    padding: 13px;
+    font-size: 2rem; }
+  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
+    margin-right: 16px; }
+  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-texts {
+    padding-bottom: 0; }
+
+.company-highlight-blue-grey-background {
+  background: linear-gradient(to bottom, #004C6C, #004C6C 50%, #F7F7F7 50%); }
+
+.company-highlight-yellow-grey-background {
+  background: linear-gradient(to bottom, #FFCB05, #EAAB00 50%, #F7F7F7 50%); }
+
+.company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
+  padding: 40px 24px;
+  text-align: center; }
+  .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
+    display: none; }
+  .company-highlight-yellow-grey-background .image-text-wrapper, .company-highlight-blue-grey-background .image-text-wrapper {
+    padding: 40px 15px;
+    text-align: center;
+    background-color: #ffffff;
+    height: 95%; }
+    .company-highlight-yellow-grey-background .image-text-wrapper img, .company-highlight-blue-grey-background .image-text-wrapper img {
+      width: 150px !important;
+      height: 150px; }
+  .company-highlight-yellow-grey-background .container-component .cmp-container > div, .company-highlight-blue-grey-background .container-component .cmp-container > div {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff; }
+    .company-highlight-yellow-grey-background .container-component .cmp-container > div .teaser, .company-highlight-blue-grey-background .container-component .cmp-container > div .teaser {
+      flex: 1; }
+
+.site-level-notification {
+  background-color: #feedd2;
+  padding: 24px 16px;
+  margin-bottom: 4px; }
+  .site-level-notification p {
+    margin: 0; }
+  .site-level-notification .fa-close {
+    float: right;
+    cursor: pointer; }
+
+@media (max-width: 767px) {
+  .cross-cta-wrapper .icon-parent {
+    display: none; }
+  .cross-cta-wrapper .icon-texts {
+    text-align: center; }
+  .yellow-icon-white-background {
+    background-color: #F7F7F7;
+    border: none;
+    margin-top: 0 !important;
+    padding-top: 32px; }
+    .yellow-icon-white-background .cta-content-icon-wrapper {
+      border-top: 1px solid #D7D7D7; }
+    .yellow-icon-white-background > :last-child {
+      border-bottom: 1px solid #D7D7D7; }
+  .yellow-icon-white-background > * {
+    width: 90%;
+    margin: auto;
+    border-right: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7; }
+  .company-highlight-yellow-grey-background .image-text-wrapper img, .company-highlight-blue-grey-background .image-text-wrapper img {
+    display: none; }
+  .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
+    display: inherit;
+    margin: 0; }
+    .company-highlight-yellow-grey-background .grey-horizontal-separator hr, .company-highlight-blue-grey-background .grey-horizontal-separator hr {
+      margin: 0; }
+  .company-highlight-yellow-grey-background .border-right, .company-highlight-blue-grey-background .border-right {
+    border-right: none; } }
+
+@media (max-width: 1024px) {
+  .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+    margin-top: 32px; }
+    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-style, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-style, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-style, .yellow-icon-white-background .cta-content-icon-wrapper .icon-style {
+      height: 60px;
+      width: 60px;
+      position: relative;
+      bottom: 30px;
+      padding: 11px;
+      font-size: 2.125rem; }
+    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
+      height: 30px; } }
+
+.primary-blue-button {
+  background-color: #004C6C;
+  color: #ffffff;
+  line-height: 34px; }
+  .primary-blue-button .icon-class {
+    display: none; }
+
+.primary-yellow-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  line-height: 34px; }
+  .primary-yellow-button .icon-class {
+    display: none; }
+
+.secondary-button {
+  background-color: transparent;
+  color: #004C6C;
+  line-height: 34px;
+  border: 2px solid #004C6C; }
+  .secondary-button .icon-class {
+    display: none; }
+
+.button-text {
+  margin: 0; }
+
+.signIn-button {
+  background-color: #FFCB05;
+  color: #004C6C;
+  height: 40px !important;
+  min-width: 92px;
+  width: auto;
+  font-size: 0.875rem; }
+  .signIn-button .icon-class {
+    display: inherit;
+    right: 3px;
+    position: relative; }
+
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
+
+.accordion .cmp-accordion__item {
+  margin-bottom: 5px;
+  background-color: #F4F7F6;
+  padding-left: 15px;
+  cursor: pointer; }
+  .accordion .cmp-accordion__item .cmp-accordion__header {
+    font-size: 1rem;
+    height: 56px;
+    margin: 0;
+    color: #424242; }
+    .accordion .cmp-accordion__item .cmp-accordion__header .accordion-arrow, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="false"]::before, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
+      font-family: FontAwesome;
+      content: "\f0da";
+      padding-right: 12px;
+      font-size: 1rem; }
+    .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button {
+      display: block;
+      padding: 0;
+      border: none;
+      background: none;
+      border-width: 0;
+      outline: none; }
+      .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
+        content: "\f0d7"; }
+  .accordion .cmp-accordion__item .cmp-accordion__panel {
+    padding: 0 32px 24px 17px;
+    font-size: 0.875rem; }
+
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
   .breadcrumb-section .social-link-icon-wrapper li {
@@ -5868,272 +6082,6 @@ input[type=text] {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-ul {
-  margin: 0; }
-
-.icon-texts {
-  padding-bottom: 24px; }
-
-.yellow-icon-blue-background > * {
-  background-color: #004C6C;
-  color: #ffffff;
-  text-align: center; }
-
-.yellow-icon-grey-background > * {
-  background-color: #F4F7F6;
-  text-align: center; }
-
-.yellow-icon-white-background > * {
-  background-color: #ffffff;
-  text-align: center; }
-
-.yellow-icon-white-background {
-  border: 1px solid #D7D7D7; }
-
-.blue-icon-yellow-background > * {
-  background-color: #FFCB05;
-  text-align: center; }
-  .blue-icon-yellow-background > * .icon-style {
-    background: linear-gradient(#004C6C, #003946); }
-
-.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-  margin-top: 42px; }
-  .yellow-icon-blue-background .icon-style, .yellow-icon-grey-background .icon-style, .blue-icon-yellow-background .icon-style, .yellow-icon-white-background .icon-style {
-    position: relative;
-    bottom: 40px; }
-  .yellow-icon-blue-background .icon-parent, .yellow-icon-grey-background .icon-parent, .blue-icon-yellow-background .icon-parent, .yellow-icon-white-background .icon-parent {
-    height: 40px; }
-  .yellow-icon-blue-background > :last-child, .yellow-icon-grey-background > :last-child, .blue-icon-yellow-background > :last-child, .yellow-icon-white-background > :last-child {
-    padding-bottom: 40px; }
-
-.cross-cta-wrapper {
-  padding: 24px 16px;
-  background-color: #FEEDD2;
-  border: 1px solid #FDDBA5; }
-  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
-    background: linear-gradient(#004C6C, #003946);
-    height: 60px;
-    width: 60px;
-    padding: 13px;
-    font-size: 2rem; }
-  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
-    margin-right: 16px; }
-  .cross-cta-wrapper .mega-menu-icon-wrapper .icon-texts {
-    padding-bottom: 0; }
-
-.company-highlight-blue-grey-background {
-  background: linear-gradient(to bottom, #004C6C, #004C6C 50%, #F7F7F7 50%);
-  color: #FFCB05; }
-
-.company-highlight-yellow-grey-background {
-  background: linear-gradient(to bottom, #FFCB05, #EAAB00 50%, #F7F7F7 50%); }
-
-.company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
-  padding: 40px 24px;
-  text-align: center; }
-  .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
-    display: none; }
-  .company-highlight-yellow-grey-background .image-text-wrapper, .company-highlight-blue-grey-background .image-text-wrapper {
-    padding: 40px 15px;
-    text-align: center;
-    background-color: #ffffff;
-    height: 100%; }
-    .company-highlight-yellow-grey-background .image-text-wrapper img, .company-highlight-blue-grey-background .image-text-wrapper img {
-      width: 150px !important;
-      height: 150px; }
-  .company-highlight-yellow-grey-background .container-component .cmp-container > div, .company-highlight-blue-grey-background .container-component .cmp-container > div {
-    display: flex;
-    width: 100%; }
-    .company-highlight-yellow-grey-background .container-component .cmp-container > div .teaser, .company-highlight-blue-grey-background .container-component .cmp-container > div .teaser {
-      flex: 1; }
-
-@media (max-width: 767px) {
-  .cross-cta-wrapper .icon-parent {
-    display: none; }
-  .cross-cta-wrapper .icon-texts {
-    text-align: center; }
-  .yellow-icon-white-background {
-    background-color: #F7F7F7;
-    border: none;
-    margin-top: 0 !important;
-    padding-top: 32px; }
-    .yellow-icon-white-background .cta-content-icon-wrapper {
-      border-top: 1px solid #D7D7D7; }
-    .yellow-icon-white-background > :last-child {
-      border-bottom: 1px solid #D7D7D7; }
-  .yellow-icon-white-background > * {
-    width: 90%;
-    margin: auto;
-    border-right: 1px solid #D7D7D7;
-    border-left: 1px solid #D7D7D7; }
-  .company-highlight-yellow-grey-background .image-text-wrapper img, .company-highlight-blue-grey-background .image-text-wrapper img {
-    display: none; }
-  .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
-    display: inherit;
-    margin: 0; }
-    .company-highlight-yellow-grey-background .grey-horizontal-separator hr, .company-highlight-blue-grey-background .grey-horizontal-separator hr {
-      margin: 0; }
-  .company-highlight-yellow-grey-background .border-right, .company-highlight-blue-grey-background .border-right {
-    border-right: none; } }
-
-@media (max-width: 1024px) {
-  .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-    margin-top: 32px; }
-    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-style, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-style, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-style, .yellow-icon-white-background .cta-content-icon-wrapper .icon-style {
-      height: 60px;
-      width: 60px;
-      position: relative;
-      bottom: 30px;
-      padding: 11px;
-      font-size: 2.125rem; }
-    .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
-      height: 30px; } }
-
-.campaign-header-wrapper .logo-img {
-  height: 31px; }
-
-.campaign-header-wrapper .campaign-header {
-  position: relative;
-  height: 100px;
-  border-top: 8px solid #FFCB05; }
-
-@media (max-width: 1024px) {
-  .campaign-header-wrapper .campaign-header {
-    background: #f8f8f8;
-    box-shadow: 0 8px 6px -6px #000000; }
-  .campaign-header-wrapper .slf-header-logo {
-    text-align: center; } }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff;
-  line-height: 34px; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  line-height: 34px; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  line-height: 34px;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
-
-.accordion .cmp-accordion__item {
-  margin-bottom: 5px;
-  background-color: #F4F7F6;
-  padding-left: 15px;
-  cursor: pointer; }
-  .accordion .cmp-accordion__item .cmp-accordion__header {
-    font-size: 1rem;
-    height: 56px;
-    margin: 0;
-    color: #424242; }
-    .accordion .cmp-accordion__item .cmp-accordion__header .accordion-arrow, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="false"]::before, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
-      font-family: FontAwesome;
-      content: "\f0da";
-      padding-right: 12px;
-      font-size: 1rem; }
-    .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button {
-      display: block;
-      padding: 0;
-      border: none;
-      background: none;
-      border-width: 0;
-      outline: none; }
-      .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
-        content: "\f0d7"; }
-  .accordion .cmp-accordion__item .cmp-accordion__panel {
-    padding: 0 32px 24px 17px;
-    font-size: 0.875rem; }
-
-.primary-blue-button {
-  background-color: #004C6C;
-  color: #ffffff;
-  line-height: 34px; }
-  .primary-blue-button .icon-class {
-    display: none; }
-
-.primary-yellow-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  line-height: 34px; }
-  .primary-yellow-button .icon-class {
-    display: none; }
-
-.secondary-button {
-  background-color: transparent;
-  color: #004C6C;
-  line-height: 34px;
-  border: 2px solid #004C6C; }
-  .secondary-button .icon-class {
-    display: none; }
-
-.button-text {
-  margin: 0; }
-
-.signIn-button {
-  background-color: #FFCB05;
-  color: #004C6C;
-  height: 40px !important;
-  min-width: 92px;
-  width: auto;
-  font-size: 0.875rem; }
-  .signIn-button .icon-class {
-    display: inherit;
-    right: 3px;
-    position: relative; }
-
-.accordion .cmp-accordion__item {
-  margin-bottom: 5px;
-  background-color: #F4F7F6;
-  padding-left: 15px;
-  cursor: pointer; }
-  .accordion .cmp-accordion__item .cmp-accordion__header {
-    font-size: 1rem;
-    height: 56px;
-    margin: 0;
-    color: #424242; }
-    .accordion .cmp-accordion__item .cmp-accordion__header .accordion-arrow, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="false"]::before, .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
-      font-family: FontAwesome;
-      content: "\f0da";
-      padding-right: 12px;
-      font-size: 1rem; }
-    .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button {
-      display: block;
-      padding: 0;
-      border: none;
-      background: none;
-      border-width: 0;
-      outline: none; }
-      .accordion .cmp-accordion__item .cmp-accordion__header .cmp-accordion__button .cmp-accordion__icon[aria-expanded="true"]::before {
-        content: "\f0d7"; }
-  .accordion .cmp-accordion__item .cmp-accordion__panel {
-    padding: 0 32px 24px 17px;
-    font-size: 0.875rem; }
 
 .show-only-in-editorial {
   display: none; }
