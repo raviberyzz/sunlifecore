@@ -64,6 +64,7 @@ ul {
 }
 .company-highlight-blue-grey-background {
     background: linear-gradient(to bottom, $medium-blue-color, $medium-blue-color 50%, $light-grey-20 50% );
+    color: $medium-yellow-background;
 }
 .company-highlight-yellow-grey-background {
     background: linear-gradient(to bottom, $medium-yellow-background, $primary-yellow-background 50%, $light-grey-20 50%);
@@ -75,9 +76,23 @@ ul {
         display: none;
     }
     .image-text-wrapper {
-        padding: 40px 0;
+        padding: 40px 15px;
         text-align: center;
         background-color: $white-shade;
+        height: 100%;
+        img {
+            width: 150px !important;
+            height: 150px;
+        }
+    }
+    .container-component {
+        .cmp-container > div {
+            display: flex;
+            width: 100%;
+            .teaser {
+                flex: 1;
+            }
+        }
     }
 }
 @media (max-width:$mobile-screen-max) {
