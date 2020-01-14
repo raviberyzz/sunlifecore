@@ -3987,6 +3987,7 @@ $('.yellow-icon-white-background .button-class').click(function(){
 
 
 
+
 function demoFunction()
 {
 
@@ -4587,7 +4588,6 @@ $(document).ready(function(){
         }
     });
 });
-
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
