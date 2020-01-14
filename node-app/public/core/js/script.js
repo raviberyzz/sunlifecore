@@ -3987,7 +3987,6 @@ $('.yellow-icon-white-background .button-class').click(function(){
 
 
 
-
 function demoFunction()
 {
 
@@ -4673,6 +4672,16 @@ $(document).ready(function(){
             $('.accordion .cmp-accordion__panel').removeClass('in');
             $('.accordion .cmp-accordion__icon').attr('aria-expanded',false);
             $(this).siblings('.accordion .cmp-accordion__panel').addClass('in');
+            $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
+        }
+    });
+    $('.expand-collapse .cmp-accordion__header').click(function(){
+        if($(this).siblings('.expand-collapse .cmp-accordion__panel').hasClass('in')){
+            $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
+            $(this).siblings('.expand-collapse .cmp-accordion__panel').removeClass('in');
+        }
+        else{     
+            $(this).siblings('.expand-collapse .cmp-accordion__panel').addClass('in');
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     });
