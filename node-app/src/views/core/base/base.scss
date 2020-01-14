@@ -157,6 +157,9 @@ a {
 .padding-15 {
     padding: 15px;
 }
+.border-bottom-dotted {
+    border-bottom: 2px dotted $light-grey-color;
+}
 footer {
     background-color: $medium-blue-color;
     .social-link-icon-wrapper {
