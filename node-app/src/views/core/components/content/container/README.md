@@ -3,9 +3,9 @@
 JSON Format
 ```
 {
-    "cta-wrapper": "",
-    "background-color": "company-highlight-yellow-grey-background",
-    "icon-text-wrapper" : "mega-menu-icon-wrapper",
+    "cta-wrapper": "blue-icon-yellow-background",
+    "background-color": "",
+    "icon-text-wrapper" : "cta-content-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-shield",
         "text-input": "Find an advisor",
