@@ -160,6 +160,9 @@ a {
 .border-bottom-dotted {
     border-bottom: 2px dotted $light-grey-color;
 }
+.yellow-colored-font {
+    color: $medium-yellow-background;
+}
 footer {
     background-color: $medium-blue-color;
     .social-link-icon-wrapper {

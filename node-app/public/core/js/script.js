@@ -3994,7 +3994,6 @@ function demoFunction()
 
 
 
-
 $(document).ready(function(){
     $('.cmp-tabs__tab').click(function(){
        var tab_number=$(this).index();
@@ -4649,7 +4648,12 @@ $(document).ready(function () {
     });
 });
 
-
+$(document).ready(function () {
+	$('.site-level-notification').prepend('<i class="fa fa-close"></i>');
+	$('.site-level-notification .fa-close').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+});
 
 
 $(document).ready(function(){
