@@ -4334,8 +4334,6 @@ $(document).ready(function () {
      
  });
  
-<<<<<<< HEAD
-=======
 
 $(document).ready(function () {
    $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
@@ -4407,7 +4405,6 @@ $(document).ready(function(){
         $('.mobile-header .language-tab').css({'display':'block'});
     });
 });
->>>>>>> 7874ba87bb02ceddfa1de18755232f2661db6587
 $(document).ready(function () {
     mobileLogoWidth();
     function mobileLogoWidth() {  
