@@ -3987,15 +3987,6 @@ $('.yellow-icon-white-background .button-class').click(function(){
 
 
 
-
-function demoFunction()
-{
-
-}
-
-
-
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4604,6 +4595,7 @@ $(document).ready(function () {
 
 
 
+
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
@@ -4633,3 +4625,11 @@ $(document).ready(function(){
         }
     }
 });
+
+
+
+
+function demoFunction()
+{
+
+}
