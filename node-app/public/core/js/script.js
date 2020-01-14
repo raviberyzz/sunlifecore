@@ -4675,6 +4675,16 @@ $(document).ready(function(){
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     });
+    $('.expand-collapse .cmp-accordion__header').click(function(){
+        if($(this).siblings('.expand-collapse .cmp-accordion__panel').hasClass('in')){
+            $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
+            $(this).siblings('.expand-collapse .cmp-accordion__panel').removeClass('in');
+        }
+        else{     
+            $(this).siblings('.expand-collapse .cmp-accordion__panel').addClass('in');
+            $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
+        }
+    });
     var accLength=$('.accordion .cmp-accordion__item').length;
     var acc=$('.accordion .cmp-accordion__item');
     if($('.accordion').hasClass('first-open')){
