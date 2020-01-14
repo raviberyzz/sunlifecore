@@ -52,8 +52,7 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $("a:first-child").focus();
-                $('.content-region').children().eq(1).children().children().focus();
+                $(".content-region .slf-region-column .first_level_list-unstyled li:first a").focus();
             }
         }
     });

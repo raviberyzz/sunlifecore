@@ -3888,7 +3888,6 @@ function demoFunction()
 
 
 
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -3916,6 +3915,8 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
+
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
@@ -4400,17 +4401,44 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
 })
 });
+// $(document).ready(function () {
+// 	$('footer .accordion-heading').click(function () {
+// 		$(this).siblings('.list-div').toggle('collapse');
+// 		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
+// 		$(this).parent().parent().parent().siblings().children().children().children('.list-div').siblings('h3').attr('aria-expanded', false);
+// 		if ($(this).attr('aria-expanded') == 'true') {
+// 			$(this).attr('aria-expanded', false);
+// 		}
+// 		else if ($(this).attr('aria-expanded') == 'false') {
+// 			$(this).attr('aria-expanded', true);
+// 		}
+// 	});
+// });
+
+/* Node app js*/
 $(document).ready(function () {
-	$('footer .accordion-heading').click(function () {
+	$('.accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
-		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
-		$(this).parent().parent().parent().siblings().children().children().children('.list-div').siblings('h3').attr('aria-expanded', false);
+		$(this).parent().parent().siblings().children().children('.list-div').css('display', 'none');
+		$(this).parent().parent().siblings().children().children('.list-div').siblings('h3').attr('aria-expanded', false);
 		if ($(this).attr('aria-expanded') == 'true') {
 			$(this).attr('aria-expanded', false);
 		}
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
 		}
+	});
+	$('.links .accordion-heading').keyup(function (event) {
+        if (event.keyCode == 13) {
+			if($(this).attr('aria-expanded')=='false'){
+			$(this).attr('aria-expanded','true');
+			$(this).siblings().css('display','block');
+			}
+			else{
+				$(this).attr('aria-expanded','false');
+				$(this).siblings().css('display','none');
+		}
+	  }
 	});
 });
 $(document).ready(function(){
@@ -4489,8 +4517,7 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $("a:first-child").focus();
-                $('.content-region').children().eq(1).children().children().focus();
+                $(".content-region .slf-region-column .first_level_list-unstyled li:first a").focus();
             }
         }
     });
