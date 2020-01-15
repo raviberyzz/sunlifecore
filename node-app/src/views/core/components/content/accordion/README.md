@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "wrapper":"accordion",
+    "wrapper":"accordion-container",
     "first-open":"first-open",
     "list":[{   
     "accordion-head" : "Sample Heading",
@@ -19,6 +19,6 @@ JSON Format
     }]
 }
 ```
-<!-- For accordion pass the class "accordion" in the "wrapper" tag and for first accordion to be open pass "first-open" in the "first-open" tag -->
+<!-- For accordion pass the class "accordion-container" in the "wrapper" tag and for first accordion to be open pass "first-open" in the "first-open" tag -->
 
 <!-- For expand collapse pass the class "expand-collapse" in the "wrapper" tag -->
