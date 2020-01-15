@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var li_arr=$('.cmp-tabs__tablist').children();
     $('.cmp-tabs__tab').click(function(){
        var tab_number=$(this).index();
        var tab_child=tab_number+1;
@@ -6,6 +7,7 @@ $(document).ready(function(){
        $(this).siblings().removeClass('cmp-tabs__tab--active');
        $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
        $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
+      $(this).siblings().attr('tabindex','-1');
     });
     $('.tab-accordian-heading').click(function(){
         $(this).siblings().toggle();
@@ -16,4 +18,5 @@ $(document).ready(function(){
 			$(this).attr('aria-expanded', true);
 		}
     });
+   
 });
