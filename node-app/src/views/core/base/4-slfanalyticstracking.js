@@ -248,18 +248,27 @@ $('.yellow-icon-white-background .button-class').click(function(){
 
 //need to add specific container id to select homepage cta
 
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
+// $('.yellow-icon-white-background .button-class').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+//     var dual_cta_button_value =$(this).text();
+//     utag.link({
+//         "asset_type"	: "Module",
+//         "asset_title"	: "Global Module CTA Box",
+//         "event_type"	: "Click",
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
+//         "page_section" : "Global Module CTA Box"
+//     });  
+// });
+
+// $('#locate-advisors-btn').click(function(){
+//     if ($(".form-wrapper").parsley({}).isValid()) {
+//         try {
+//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+//         } catch (e) {
+//         }
+//     }
+// });
 
 // CTA Triple Home Page ends here
 
