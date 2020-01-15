@@ -1,5 +1,5 @@
 @import '../../../base/core';
-.accordion{
+.accordion-container{
     .cmp-accordion__item{
         margin-bottom:5px;
         background-color:$light-cool-blue-color;
@@ -44,11 +44,22 @@
         .cmp-accordion__panel{
             padding:0 32px 24px 17px;
             font-size:0.875rem;
+            .grey-horizontal-separator hr {
+                float:none;
+                display: inline-block;
+            }
+            .link-list{
+                .lists-wrapper .links {
+                    float:none;
+                    border-top:none;
+                    padding:0;
+                }
+            }
         }
    } 
 }
 .expand-collapse{
-    @extend .accordion;
+    @extend .accordion-container;
     .cmp-accordion__item{
         margin-bottom:10px;
         .cmp-accordion__header{
