@@ -118,7 +118,7 @@ JSON Format
     "input-text-type":"text",
     "form-button-type":"submit",
     "button-value":"Search",
-    "form-button-class":"primary-blue-button",
+    "form-button-class":"primary-blue-button-form",
     "region-title" : "Regions",
     "language-title" : "Languages - Canada",
     "region-list" : [{

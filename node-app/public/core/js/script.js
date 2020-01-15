@@ -3987,13 +3987,10 @@ $('.yellow-icon-white-background .button-class').click(function(){
 
 
 
-
-
 function demoFunction()
 {
 
 }
-
 
 
 
@@ -4047,6 +4044,7 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -4593,6 +4591,7 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -4665,6 +4664,13 @@ $(document).ready(function () {
 	});
 });
 
+
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+
+});
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
@@ -4697,10 +4703,4 @@ $(document).ready(function(){
             $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     }
-});
-$(document).ready(function(){
-	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
-    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
-    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
-
 });
