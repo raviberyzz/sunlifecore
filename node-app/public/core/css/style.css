@@ -3949,7 +3949,8 @@ input[type=text] {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0px;
-    list-style: none; }
+    list-style: none;
+    margin: 0; }
   .tabs-wrapper .cmp-tabs__tablist {
     border-bottom: 16px solid #FFCB05;
     display: inline-flex;
@@ -3965,17 +3966,25 @@ input[type=text] {
       border: 2px solid #D7D7D7;
       color: #ffffff; }
     .tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab--active {
-      background-color: #FFCB05; }
+      background-color: #FFCB05;
+      color: #004C6C; }
+    .tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab:hover {
+      background: #4A7283;
+      color: #ffffff;
+      cursor: pointer; }
+  .tabs-wrapper .tabpanel-style, .tabs-wrapper .cmp-tabs__tabpanel, .tabs-wrapper .cmp-tabs__tabpanel--active {
+    padding: 30px 15px;
+    border: 2px solid #d7d7d7; }
   .tabs-wrapper .cmp-tabs__tabpanel {
     display: none; }
-    .tabs-wrapper .cmp-tabs__tabpanel .aem-Grid--default--12 {
-      display: block; }
   .tabs-wrapper .cmp-tabs__tabpanel--active {
     display: block; }
   .tabs-wrapper .tab-accordian-heading {
     font-size: 16px;
     font-weight: 700;
     color: #424242; }
+    .tabs-wrapper .tab-accordian-heading + * {
+      display: block; }
   .tabs-wrapper .tab-accordian-heading[aria-expanded="false"]:before {
     content: "\f0da";
     font-family: FontAwesome;
@@ -3990,8 +3999,8 @@ input[type=text] {
     display: none; }
   .tabs-wrapper .cmp-tabs__tabpanel {
     display: block; }
-    .tabs-wrapper .cmp-tabs__tabpanel .aem-Grid--default--12 {
-      display: none; } }
+  .tabs-wrapper .tab-accordian-heading + * {
+    display: none; } }
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -5537,21 +5546,20 @@ input[type=text] {
 
 .getting-started-icon-wrapper {
   margin-top: 20px;
-  height: 132px;
+  height: auto;
   border: 1px solid #9a9a9a;
   text-align: center;
   position: relative; }
   .getting-started-icon-wrapper .heading-4 {
     font-weight: 700;
     line-height: 30px;
-    padding: 0 20px;
+    padding: 0 25px 9px 25px;
     top: -15px;
     background-color: #ffffff;
     float: left;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
-    padding-bottom: 9px; }
+    transform: translateX(-50%); }
   .getting-started-icon-wrapper ul {
     width: 100%;
     display: inline-flex;
@@ -5574,11 +5582,13 @@ input[type=text] {
 @media (min-width: 320px) and (max-width: 767px) {
   .getting-started-icon-wrapper {
     height: auto; }
+    .getting-started-icon-wrapper .heading-4 {
+      padding-bottom: 24px; }
     .getting-started-icon-wrapper ul {
       width: 100%;
-      padding-bottom: 0;
+      padding: 0 15px;
       display: block;
-      margin-top: 15px; }
+      margin-top: 30px; }
       .getting-started-icon-wrapper ul > :not(:last-child) {
         border-right: none;
         border-bottom: 1px solid #9a9a9a; }
@@ -5920,21 +5930,6 @@ ul {
     .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
       height: 30px; } }
 
-.campaign-header-wrapper .logo-img {
-  height: 31px; }
-
-.campaign-header-wrapper .campaign-header {
-  position: relative;
-  height: 100px;
-  border-top: 8px solid #FFCB05; }
-
-@media (max-width: 1024px) {
-  .campaign-header-wrapper .campaign-header {
-    background: #f8f8f8;
-    box-shadow: 0 8px 6px -6px #000000; }
-  .campaign-header-wrapper .slf-header-logo {
-    text-align: center; } }
-
 .primary-blue-button {
   background-color: #004C6C;
   color: #ffffff;
@@ -5971,6 +5966,21 @@ ul {
     display: inherit;
     right: 3px;
     position: relative; }
+
+.campaign-header-wrapper .logo-img {
+  height: 31px; }
+
+.campaign-header-wrapper .campaign-header {
+  position: relative;
+  height: 100px;
+  border-top: 8px solid #FFCB05; }
+
+@media (max-width: 1024px) {
+  .campaign-header-wrapper .campaign-header {
+    background: #f8f8f8;
+    box-shadow: 0 8px 6px -6px #000000; }
+  .campaign-header-wrapper .slf-header-logo {
+    text-align: center; } }
 
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
