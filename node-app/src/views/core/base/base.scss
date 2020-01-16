@@ -211,23 +211,25 @@ footer {
         }
     }
 }
-.button-class {
-    height: 48px;
-    width: 180px;
-    min-width: 136px;
-    max-width: 275px;
-    border-radius: 4px;
-    padding: 6px;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    font-weight: 700;
-    display: inline-block;
-    text-decoration: none;
-    &:hover {
-        background-color: $cool-blue-color;
-        color: $white-shade;
+.primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button  {
+    .button-class {
+        height: 48px;
+        width: 180px;
+        min-width: 136px;
+        max-width: 275px;
+        border-radius: 4px;
+        padding: 6px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        font-weight: 700;
+        display: inline-block;
         text-decoration: none;
+        &:hover {
+            background-color: $cool-blue-color;
+            color: $white-shade;
+            text-decoration: none;
+        }
     }
 }
 
