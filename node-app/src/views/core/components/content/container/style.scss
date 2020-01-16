@@ -36,6 +36,7 @@ ul {
         }
         .icon-parent {
             height: 40px;
+            padding-bottom: 64px;
         }
         &>:last-child{
             padding-bottom: 40px;
@@ -56,9 +57,11 @@ ul {
         }
         .icon-parent {
             margin-right: 16px;
+            display: table;
         }
         .icon-texts {
             padding-bottom: 0;
+            display: table;
         }
     }
 }
@@ -166,6 +169,7 @@ ul {
             }
             .icon-parent {
                 height: 30px;
+                padding-bottom: 54px;
             }
         }
     }

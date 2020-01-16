@@ -84,26 +84,32 @@ ul {
 
 h1, .heading-1{
     font-size:2.25rem;
+    line-height:46px;
 }
 
 h2, .heading-2 {
     font-size: 2rem;
+    line-height:41px;
 }
 
 h3, .heading-3 {
     font-size: 1.75rem;
+    line-height:36px;
 }
 
 h4, .heading-4 {
     font-size: 1.5rem;
+    line-height:30px;
 }
 
 h5, .heading-5 {
     font-size: 1.25rem;
+    line-height:23px ;
 }
 
 h6, .heading-6 {
     font-size: 1.125rem;
+    line-height:23px;
 }
 
 a {
@@ -163,6 +169,14 @@ a {
 .yellow-colored-font {
     color: $medium-yellow-background;
 }
+.view-all-category {
+    &:after {
+        content: '\f138';
+        font-family: fontawesome;
+        color: $medium-yellow-background;
+        margin-left: 5px;
+    }
+}
 footer {
     background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
@@ -197,23 +211,25 @@ footer {
         }
     }
 }
-.button-class {
-    height: 48px;
-    width: 180px;
-    min-width: 136px;
-    max-width: 275px;
-    border-radius: 4px;
-    padding: 6px;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    font-weight: 700;
-    display: inline-block;
-    text-decoration: none;
-    &:hover {
-        background-color: $cool-blue-color;
-        color: $white-shade;
+.primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button  {
+    .button-class {
+        height: 48px;
+        width: 180px;
+        min-width: 136px;
+        max-width: 275px;
+        border-radius: 4px;
+        padding: 6px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        font-weight: 700;
+        display: inline-block;
         text-decoration: none;
+        &:hover {
+            background-color: $cool-blue-color;
+            color: $white-shade;
+            text-decoration: none;
+        }
     }
 }
 
