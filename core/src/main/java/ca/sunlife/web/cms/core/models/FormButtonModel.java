@@ -43,8 +43,6 @@ public class FormButtonModel extends ButtonImpl {
 	public void setDataTitle(String dataTitle) {
 		this.dataTitle = dataTitle;
 	}
-
-	
 }
 	
 
