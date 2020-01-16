@@ -159,24 +159,9 @@ else{
 
 // CTA Analytics starts here
 
-// CTA Cross Sell starts here
-
-// $('.cross-cta-wrapper .button-class').click(function(){
-//     var cross_cta_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: cross_cta_button_value,
-//         "page_section" : "Global Module CTA Box"
-//     });  
-// });
-
-// CTA Cross Sell ends here
-
 // CTA Dual starts here
-$('.blue-icon-yellow-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+$('.blue-icon-yellow-background .cmp-form-button').click(function(){
+    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
     var dual_cta_button_value =$(this).text();
     utag.link({
         "asset_type"	: "Module",
@@ -188,8 +173,8 @@ $('.blue-icon-yellow-background .button-class').click(function(){
     });  
 });
 
-$('.yellow-icon-blue-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+$('.yellow-icon-blue-background .cmp-form-button').click(function(){
+    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
     var dual_cta_button_value =$(this).text();
     utag.link({
         "asset_type"	: "Module",
@@ -201,8 +186,8 @@ $('.yellow-icon-blue-background .button-class').click(function(){
     });  
 });
 
-$('.yellow-icon-grey-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+$('.yellow-icon-grey-background .cmp-form-button').click(function(){
+    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
     var dual_cta_button_value =$(this).text();
     utag.link({
         "asset_type"	: "Module",
@@ -214,8 +199,8 @@ $('.yellow-icon-grey-background .button-class').click(function(){
     });  
 });
 
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+$('.yellow-icon-white-background .cmp-form-button').click(function(){
+    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
     var dual_cta_button_value =$(this).text();
     utag.link({
         "asset_type"	: "Module",
@@ -228,21 +213,6 @@ $('.yellow-icon-white-background .button-class').click(function(){
 });
 
 // CTA Dual ends here
-
-// CTA Three Column starts here
-
-// $('.yellow-icon-grey-background .button-class').click(function(){
-//     var cta_three_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: cta_three_button_value,
-//         "page_section" : "Global Module CTA Box"
-//     }); 
-// });
-
-// CTA Three Column ends here
 
 // CTA Triple Home Page starts here
 
