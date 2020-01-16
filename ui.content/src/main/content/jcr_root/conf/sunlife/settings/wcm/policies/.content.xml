@@ -563,6 +563,25 @@
                             </cq:styleGroups>
                         </policy_tabs>
                     </tabs>
+					<accordion jcr:primaryType="nt:unstructured">
+		                  <policy_accordion 
+		                  		jcr:primaryType="nt:unstructured" 
+		                  		jcr:title="Accordion" 
+		                  		sling:resourceType="wcm/core/components/policy/policy" 
+		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
+		                  		components="[/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title]" 
+		                  		headingElement="h3">
+		                     <jcr:content jcr:primaryType="nt:unstructured" />
+		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
+		                        <item0 cq:styleGroupLabel="Variants" jcr:primaryType="nt:unstructured">
+		                           <cq:styles jcr:primaryType="nt:unstructured">
+		                              <item0 cq:styleClasses="accordion-container" cq:styleId="1579174197235" cq:styleLabel="Accordion" jcr:primaryType="nt:unstructured" />
+		                              <item1 cq:styleClasses="expand-collapse" cq:styleId="1579174207435" cq:styleLabel="Expand/Collapse" jcr:primaryType="nt:unstructured" />
+		                           </cq:styles>
+		                        </item0>
+		                     </cq:styleGroups>
+		                  </policy_accordion>
+		               </accordion>                    
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">
