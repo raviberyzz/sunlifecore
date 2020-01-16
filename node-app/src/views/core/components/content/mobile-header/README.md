@@ -3,6 +3,7 @@
 JSON Format
 ```
 {
+"mobile-sunlife-logo":"mobile-sunlife-logo",
 "button-class": "primary-blue-button",
 "button-text": "Sign in",
 "button-type": "button",
