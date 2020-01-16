@@ -3554,6 +3554,12 @@ a {
 .yellow-colored-font {
   color: #FFCB05; }
 
+.view-all-category:after {
+  content: '\f138';
+  font-family: fontawesome;
+  color: #FFCB05;
+  margin-left: 5px; }
+
 footer {
   background-color: #F4F7F6; }
   footer .social-link-icon-wrapper ul {
@@ -5848,6 +5854,8 @@ ul {
   text-align: center; }
   .blue-icon-yellow-background > * .icon-style {
     background: linear-gradient(#004C6C, #003946); }
+  .blue-icon-yellow-background > * .icon-texts {
+    border-right: 2px solid #9a9a9a; }
 
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
   margin-top: 42px; }
@@ -5855,7 +5863,8 @@ ul {
     position: relative;
     bottom: 40px; }
   .yellow-icon-blue-background .icon-parent, .yellow-icon-grey-background .icon-parent, .blue-icon-yellow-background .icon-parent, .yellow-icon-white-background .icon-parent {
-    height: 40px; }
+    height: 40px;
+    padding-bottom: 64px; }
   .yellow-icon-blue-background > :last-child, .yellow-icon-grey-background > :last-child, .blue-icon-yellow-background > :last-child, .yellow-icon-white-background > :last-child {
     padding-bottom: 40px; }
 
@@ -5870,9 +5879,11 @@ ul {
     padding: 13px;
     font-size: 2rem; }
   .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
-    margin-right: 16px; }
+    margin-right: 16px;
+    display: table; }
   .cross-cta-wrapper .mega-menu-icon-wrapper .icon-texts {
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    display: table; }
 
 .company-highlight-blue-grey-background {
   background: linear-gradient(to bottom, #004C6C, #004C6C 50%, #F7F7F7 50%); }
@@ -5950,7 +5961,8 @@ ul {
       padding: 11px;
       font-size: 2.125rem; }
     .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
-      height: 30px; } }
+      height: 30px;
+      padding-bottom: 54px; } }
 
 .campaign-header-wrapper .logo-img {
   height: 31px; }
