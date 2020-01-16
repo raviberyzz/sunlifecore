@@ -541,6 +541,28 @@
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text>
+                        <tabs jcr:primaryType="nt:unstructured">
+                        <policy_tabs
+                            cq:styleDefaultClasses="tabs-wrapper"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tabs"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="tabs-wrapper"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="tabs-wrapper"
+                                            cq:styleId="1579160339111"
+                                            cq:styleLabel="Tabs Wrapper"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_tabs>
+                    </tabs>
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">
