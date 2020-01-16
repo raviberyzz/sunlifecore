@@ -3,9 +3,10 @@
 JSON Format
 ```
 {
-    "cta-wrapper": "site-level-notification",
+    "cta-wrapper": "blue-icon-yellow-background",
     "background-color": "",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
+    "border-right-present": "border-right",
     "iconTextList" : [{
         "fa-icon":"fa-shield",
         "text-input": "Find an advisor",

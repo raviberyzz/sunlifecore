@@ -163,6 +163,14 @@ a {
 .yellow-colored-font {
     color: $medium-yellow-background;
 }
+.view-all-category {
+    &:after {
+        content: '\f138';
+        font-family: fontawesome;
+        color: $medium-yellow-background;
+        margin-left: 5px;
+    }
+}
 footer {
     background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
