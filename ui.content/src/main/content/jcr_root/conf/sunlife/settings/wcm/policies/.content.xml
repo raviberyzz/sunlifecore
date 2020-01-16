@@ -505,8 +505,7 @@
                         </button>
                         <left-navigation jcr:primaryType="nt:unstructured"/>
                         <icon-text jcr:primaryType="nt:unstructured">
-                            <policy_iconText
-								cq:styleDefaultClasses="getting-started-icon-wrapper"
+                            <policy_iconText								
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Icon Text"
                                 sling:resourceType="wcm/core/components/policy/policy">
@@ -536,6 +535,11 @@
 	                                            cq:styleId="1578656316621"
 	                                            cq:styleLabel="Social Links"
 	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item4
+                                                cq:styleClasses="getting-started-icon-wrapper"
+                                                cq:styleId="1577976145575"
+                                                cq:styleLabel="Getting Started"
+                                                jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
                                 </cq:styleGroups>
@@ -547,20 +551,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Tabs"
                             sling:resourceType="wcm/core/components/policy/policy">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                            <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleGroupLabel="tabs-wrapper"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="tabs-wrapper"
-                                            cq:styleId="1579160339111"
-                                            cq:styleLabel="Tabs Wrapper"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item0>
-                            </cq:styleGroups>
+                            <jcr:content jcr:primaryType="nt:unstructured"/>                            
                         </policy_tabs>
                     </tabs>
 					<accordion jcr:primaryType="nt:unstructured">
@@ -573,10 +564,20 @@
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
-		                        <item0 cq:styleGroupLabel="Variants" jcr:primaryType="nt:unstructured">
+		                        <item0
+		                        	 cq:styleGroupLabel="Variants"
+		                        	 jcr:primaryType="nt:unstructured">
 		                           <cq:styles jcr:primaryType="nt:unstructured">
-		                              <item0 cq:styleClasses="accordion-container" cq:styleId="1579174197235" cq:styleLabel="Accordion" jcr:primaryType="nt:unstructured" />
-		                              <item1 cq:styleClasses="expand-collapse" cq:styleId="1579174207435" cq:styleLabel="Expand/Collapse" jcr:primaryType="nt:unstructured" />
+		                              <item0
+		                              	 cq:styleClasses="accordion-container"
+		                              	 cq:styleId="1579174197235"
+		                              	 cq:styleLabel="Accordion" 
+		                              	 jcr:primaryType="nt:unstructured"/>
+		                              <item1
+		                              	 cq:styleClasses="expand-collapse"
+		                              	 cq:styleId="1579174207435"
+		                              	 cq:styleLabel="Expand/Collapse"
+		                              	 jcr:primaryType="nt:unstructured"/>
 		                           </cq:styles>
 		                        </item0>
 		                     </cq:styleGroups>
