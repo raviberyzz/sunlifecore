@@ -20,7 +20,7 @@ JSON Format
      "input-text-type":"text",
     "button-type":"button",
     "button-value":"search",
-    "form-button-class":"primary-blue-button",
+    "form-button-class":"primary-blue-button-form",
      "icon-text-wrapper" : "right-nav-icon-wrapper",
     "right-nav-background":"light-orange",
     "iconTextList" : [{
