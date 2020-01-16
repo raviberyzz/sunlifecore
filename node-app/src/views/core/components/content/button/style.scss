@@ -1,21 +1,26 @@
 @import '../../../base/core';
 .primary-blue-button {
+    .button-class {
         background-color: $medium-blue-color;
         color: $white-shade;
         line-height: 34px;
         .icon-class {
             display: none;
         }
-} 
+    }
+}
 .primary-yellow-button {
+    .button-class {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
         line-height: 34px;
         .icon-class {
             display: none;
         }
-} 
+    }
+}
 .secondary-button {
+    .button-class {
         background-color: $transparent;
         color: $medium-blue-color;
         line-height: 34px;
@@ -23,11 +28,13 @@
         .icon-class {
             display: none;
         }
+    }
 }
 .button-text {
     margin: 0;
 }
 .signIn-button {
+    .button-class {
         background-color: $medium-yellow-background;
         color: $medium-blue-color;
         height: 40px !important;
@@ -39,4 +46,5 @@
             right: 3px;
             position: relative;
         }
+    }
 }
