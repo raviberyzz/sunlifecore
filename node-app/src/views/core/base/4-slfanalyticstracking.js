@@ -183,57 +183,18 @@ else{
 // CTA Analytics starts here
 
 // CTA Dual starts here
-$('.blue-icon-yellow-background .cmp-form-button').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-blue-background .cmp-form-button').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-grey-background .cmp-form-button').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-white-background .cmp-form-button').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
+// $('.blue-icon-yellow-background .cmp-form-button').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
+//     var dual_cta_button_value =$(this).text();
+//     utag.link({
+//         "asset_type"	: "Module",
+//         "asset_title"	: "Global Module CTA Box",
+//         "event_type"	: "Click",
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
+//         "page_section" : "Global Module CTA Box"
+//     });  
+// });
 
 // CTA Dual ends here
 

@@ -25,5 +25,7 @@ $(document).ready(function () {
       $(this).siblings().removeClass('box-class-yellow');
    }
    );
-
+   $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
+      location.href = this.href;
+  })
 });
