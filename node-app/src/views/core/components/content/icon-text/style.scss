@@ -111,9 +111,9 @@
         li{
             flex: 1;
             display:inline-block;
-           
+
         }
-        
+
     }
     .icon-style {
         color: $dark-grey-color;
@@ -126,7 +126,11 @@
         padding: 0;
     }
 }
-
+.text-border-right {
+    .icon-texts {
+        border-right: 2px solid $medium-grey-background;
+    }
+}
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .getting-started-icon-wrapper
@@ -152,6 +156,6 @@
                 padding: 24px;
             }
         }
-        
+
     }
 }
