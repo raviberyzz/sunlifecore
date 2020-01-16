@@ -3980,8 +3980,10 @@ input[type=text] {
       color: #ffffff; }
     .tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab--active {
       background-color: #FFCB05;
-      color: #004C6C; }
+      color: #004C6C;
+      border: none; }
     .tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab:hover {
+      border: 2px solid #D7D7D7;
       background: #4A7283;
       color: #ffffff;
       cursor: pointer; }
@@ -4001,17 +4003,21 @@ input[type=text] {
   .tabs-wrapper .tab-accordian-heading[aria-expanded="false"]:before {
     content: "\f0da";
     font-family: FontAwesome;
-    padding-right: 10px; }
+    padding-right: 10px;
+    padding-left: 15px; }
   .tabs-wrapper .tab-accordian-heading[aria-expanded="true"]:before {
     content: "\f0d7";
     font-family: FontAwesome;
-    padding-right: 10px; }
+    padding-right: 12px;
+    padding-left: 11px; }
 
 @media (min-width: 320px) and (max-width: 767px) {
   .tabs-wrapper .cmp-tabs__tablist {
     display: none; }
   .tabs-wrapper .cmp-tabs__tabpanel {
-    display: block; }
+    display: block;
+    padding: 15px 0;
+    border: none; }
   .tabs-wrapper .tab-accordian-heading + * {
     display: none; } }
 
@@ -5493,7 +5499,6 @@ input[type=text] {
   width: 100%;
   display: flex; }
 
-
 .icon-style:hover {
   text-decoration: none; }
 
@@ -5612,6 +5617,7 @@ input[type=text] {
         width: 100%;
         display: block;
         padding: 24px; } }
+
 
 .slf-header-wrapper .desktop-sign-in .button-class {
   display: none; }
