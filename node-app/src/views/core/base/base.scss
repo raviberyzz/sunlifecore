@@ -164,7 +164,7 @@ a {
     color: $medium-yellow-background;
 }
 footer {
-    background-color: $medium-blue-color;
+    background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
         ul {
             float: right;
@@ -172,6 +172,7 @@ footer {
         li {
             float: left;
             padding-left: 5px;
+            padding-right: 7px;
         }
         .icon-style {
             font-size: 2rem;

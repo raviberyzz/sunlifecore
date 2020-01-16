@@ -122,8 +122,31 @@ $('.right-navigation-wrapper .button-class').click(function(){
         });
     }     
 });
+/* For form-button */
+    $('.right-navigation-wrapper .cmp-form-button').click(function(){   
+    var btnTxt2=$(this).text();
+    var btnTxt3=$.trim(btnTxt2);
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "CTA Module",
+        "event_type"	: "Click",
+        "event_title"	: btnTxt3,
+        "page_section" : "body-right-rail"
+    });
+    var adv1='advisor';
+    if ((btnTxt3 == 'search') || (btnTxt3 == 'Search') || (btnTxt3.indexOf(adv1) != -1)){
+        var WT={ac:''};
+        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
+        utag.link({
+        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
+        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_campaign":"slfca"
+        });
+    }
+    });
 /* For dropdown */
-$('.cmp-form-options--drop-down').siblings().children('.button-class').click(function(){
+$('.cmp-form-options--drop-down').siblings().children('.cmp-form-button').click(function(){
     var dropdown=$('.cmp-form-options__field.cmp-form-options__field--drop-down').val();
     utag.link({
         "asset_type"	: "Module",
