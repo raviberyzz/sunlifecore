@@ -4733,13 +4733,13 @@ $(document).ready(function () {
 	});
 });
 
+
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
 
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){

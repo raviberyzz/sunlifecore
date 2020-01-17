@@ -34,7 +34,9 @@ ul {
 }
 
 .yellow-icon-white-background {
-    border: 1px solid $light-grey-color;
+    .icon-text {
+        border: 1px solid $light-grey-color;
+    }
 }
 .blue-icon-yellow-background > * {
     background-color: $medium-yellow-background;
@@ -130,6 +132,11 @@ ul {
     }
 }
 @media (max-width:$mobile-screen-max) {
+    .container-component {
+        .cmp-container > div {
+            display: block;
+        }
+    }
     .cross-cta-wrapper {
         .icon-parent {
             display: none;
