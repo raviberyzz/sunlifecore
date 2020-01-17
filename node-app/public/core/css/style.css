@@ -3837,6 +3837,37 @@ input[type=text] {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent; }
 
+.button-wrapper .cmp-form-button {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none; }
+  .button-wrapper .cmp-form-button:hover {
+    background-color: #4A7283;
+    color: #ffffff;
+    text-decoration: none; }
+
+.primary-blue-button-form button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.primary-yellow-button-form button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.secondary-button-form button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
+
 .utility-nav-wrapper {
   text-align: right;
   padding: 0 10px 8px 0;
@@ -3882,37 +3913,6 @@ input[type=text] {
       background: #FFCB05;
       margin-top: 0px;
       padding: 8px 10px 4px 10px; }
-
-.button-wrapper .cmp-form-button {
-  height: 48px;
-  width: 180px;
-  min-width: 136px;
-  max-width: 275px;
-  border-radius: 4px;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
-  display: inline-block;
-  text-decoration: none; }
-  .button-wrapper .cmp-form-button:hover {
-    background-color: #4A7283;
-    color: #ffffff;
-    text-decoration: none; }
-
-.primary-blue-button-form button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.primary-yellow-button-form button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.secondary-button-form button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
 
 .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
   background-color: #FFCB05;
@@ -5862,16 +5862,16 @@ ul {
   background-color: #ffffff;
   text-align: center; }
 
-.with-margin .yellow-icon-white-background > .cmp-container {
+.with-margin.yellow-icon-white-background > .cmp-container {
   margin-right: 20px; }
 
-.with-margin .yellow-icon-grey-background > .cmp-container {
+.with-margin.yellow-icon-grey-background > .cmp-container {
   margin-right: 20px; }
 
-.with-margin .yellow-icon-blue-background > .cmp-container {
+.with-margin.yellow-icon-blue-background > .cmp-container {
   margin-right: 20px; }
 
-.with-margin .blue-icon-yellow-background > .cmp-container {
+.with-margin.blue-icon-yellow-background > .cmp-container {
   margin-right: 20px; }
 
 .yellow-icon-white-background {
@@ -5893,6 +5893,8 @@ ul {
     padding-bottom: 64px; }
   .yellow-icon-blue-background > :last-child, .yellow-icon-grey-background > :last-child, .blue-icon-yellow-background > :last-child, .yellow-icon-white-background > :last-child {
     padding-bottom: 40px; }
+  .yellow-icon-blue-background .icon-text, .yellow-icon-grey-background .icon-text, .blue-icon-yellow-background .icon-text, .yellow-icon-white-background .icon-text {
+    padding: 16px; }
 
 .cross-cta-wrapper {
   padding: 24px 16px;

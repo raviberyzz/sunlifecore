@@ -3970,6 +3970,7 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 
 //Tabs analytics ends here
 });
+$(document).ready(function () {
   /* Tabs Accessibility Starts Here*/
   $('.tabs-wrapper ol li').keyup(function (event) {
 
@@ -4043,6 +4044,10 @@ $('.tabs-wrapper .phone-numbers').click(function(){
         if (e.which == 9 ) {
             e.preventDefault();
             $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
+            if(e.shiftKey){
+              $("#language-btn").focus();
+              e.preventDefault();
+            }
         }
     });
     $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
@@ -4055,6 +4060,7 @@ $('.tabs-wrapper .phone-numbers').click(function(){
     });
 
 /* Full Header accessibility ends here */
+
 /* Footer accessibility starts here */
 
 // $('.links .accordion-heading').keyup(function (event) {
@@ -4070,6 +4076,7 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 // 	  }
 // 	});
 /* Footer accessibility ends here */
+});
 
 
 
@@ -4720,7 +4727,8 @@ $(document).ready(function () {
             $('#sun-search').removeClass('in');
         }
     }
-    }); 
+    });
+     
 });
 
 $(document).ready(function () {
@@ -4742,7 +4750,6 @@ $(document).ready(function(){
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
