@@ -10,18 +10,18 @@
          <div class="right-item">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
                <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}" aria-hidden="true">
                </a>
                <sly data-sly-test.mobileImage="${teaser.fileReferenceMobile}">
                   <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
-                  <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}">
+                  <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaser.altText}" aria-hidden="true">
                   </a>
 			   </sly>
             </sly>
             <sly data-sly-test="${!imageLink}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}" aria-hidden="true"/>
                <sly data-sly-test="${teaser.fileReferenceMobile}">
-                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}"/>
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}" aria-hidden="true"/>
                </sly>
             </sly>
          </div>
@@ -33,18 +33,18 @@
          <div class="left-item">
             <sly data-sly-test="${teaser.linkURL}">
                <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}">
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}" aria-hidden="true">
                </a>
                <sly data-sly-test="${teaser.fileReferenceMobile}">
                   <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
-                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}">
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}" aria-hidden="true">
                   </a>
                </sly>
             </sly>
             <sly data-sly-test="${!teaser.linkURL}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}"/>
+               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaser.altText}" aria-hidden="true"/>
                <sly data-sly-test="${teaser.fileReferenceMobile}">
-                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}"/>
+                  <img class="side-image mobile-image" src="${teaser.fileReferenceMobile @context='uri'}" alt="${teaser.altText}" aria-hidden="true"/>
                </sly>
             </sly>
          </div>
