@@ -1,18 +1,16 @@
 @import '../../../base/core'; 
 .grey-horizontal-separator{
-    hr{
-        border-color: $medium-grey-background;
+    .horizontal-middle-align{
+        border-bottom: 2px solid $medium-grey-background;
         margin-top: 40px;
         margin-bottom: 40px;
-        size:10px;
     }
 }
 .yellow-horizontal-separator{
-    hr{
-        border-color: $medium-yellow-background;
+    .horizontal-middle-align{
+        border-bottom: 2px solid $medium-yellow-background;
         margin-top: 40px;
         margin-bottom: 40px;
-        size:10px;
     }
 }
 .vertical-separator{

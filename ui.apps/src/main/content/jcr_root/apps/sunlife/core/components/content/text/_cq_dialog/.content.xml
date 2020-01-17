@@ -48,6 +48,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="button-class primary-yellow-button"
                                                                 text="Yellow Button"/>
+                                                            <yellow-arrow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="view-all-category"
+                                                                text="Yellow Arrow"/>
                                                         </styles>
                                                     </styles>
                                                     <format
