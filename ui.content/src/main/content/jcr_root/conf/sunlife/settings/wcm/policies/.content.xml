@@ -162,7 +162,7 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
-								<item1
+                                <item1
                                     cq:styleGroupLabel="Font Color"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -185,26 +185,48 @@
                                     </cq:styles>
                                 </item2>
                                 <item3
-                                    cq:styleGroupLabel="Content block"
+                                    cq:styleGroupLabel="Background variations"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="grey-border-box yellow-bullet-list"
-                                            cq:styleId="1579260270442"
+                                            cq:styleId="1579251056971"
                                             cq:styleLabel="Grey Border"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
                                             cq:styleClasses="grey-background-box yellow-bullet-list"
-                                            cq:styleId="1579260330674"
+                                            cq:styleId="1579251078720"
                                             cq:styleLabel="Grey Background"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
                                             cq:styleClasses="yellow-bullet-list"
-                                            cq:styleId="1579260405843"
-                                            cq:styleLabel="Yellow Bullet"
+                                            cq:styleId="1579255031660"
+                                            cq:styleLabel="Yellow Bullet List"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
+                                <item4
+                                    cq:styleGroupLabel="Margin"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="with-margin"
+                                            cq:styleId="1579273421432"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item4>
+                                <item5
+                                    cq:styleGroupLabel="Text Separator"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="text-border-right"
+                                            cq:styleId="1579273457831"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item5>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
