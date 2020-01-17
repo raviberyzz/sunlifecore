@@ -65,7 +65,7 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $(".content-region .slf-region-column .first_level_list-unstyled li:first a").focus();
+                $(".sunLanguageCrossBtn").focus();
             }
         }
     });
