@@ -9,6 +9,31 @@
         }
     }
 }
+.primary-blue-button-rte{
+    background-color: $medium-blue-color;
+    color: $white-shade;
+    line-height: 34px;
+    height: 48px;
+    width: 180px;
+    min-width: 136px;
+    max-width: 275px;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+        &:hover {
+            background-color: $cool-blue-color;
+            color: $white-shade;
+            text-decoration: none;
+        }
+        .icon-class {
+            display: none;
+        }
+}
 .primary-yellow-button {
     .button-class {
         background-color: $medium-yellow-background;
@@ -17,6 +42,31 @@
         .icon-class {
             display: none;
         }
+    }
+}
+.primary-yellow-button-rte{
+    background-color: $medium-yellow-background;
+    color: $medium-blue-color;
+    line-height: 34px;
+    height: 48px;
+    width: 180px;
+    min-width: 136px;
+    max-width: 275px;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+    &:hover {
+        background-color: $cool-blue-color;
+        color: $white-shade;
+        text-decoration: none;
+    }
+    .icon-class {
+        display: none;
     }
 }
 .secondary-button {
@@ -28,6 +78,32 @@
         .icon-class {
             display: none;
         }
+    }
+}
+.secondary-button-rte
+{
+    background-color: $transparent;
+    color: $medium-blue-color;
+    line-height: 34px;
+    border: 2px solid $medium-blue-color;
+    height: 48px;
+    width: 180px;
+    min-width: 136px;
+    max-width: 275px;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+    &:hover {
+        background-color: $cool-blue-color;
+        color: $white-shade;
+        text-decoration: none;
+    }
+    .icon-class {
+        display: none;
     }
 }
 .button-text {
