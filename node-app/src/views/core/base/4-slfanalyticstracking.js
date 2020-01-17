@@ -227,4 +227,20 @@ else{
 // CTA Triple Home Page ends here
 
 // CTA Analytics ends here
+
+//Tabs analytics starts here
+$('.tabs-wrapper .phone-numbers').click(function(){
+   var phone= $(this).html();
+   var tab_name=$('.tabs-wrapper .cmp-tabs__tab--active').html();
+   utag.link({
+	"asset_type"	: "Text",
+	"asset_title"	: phone,
+	"event_type"	: "Click",
+	"event_title"	: "Dial Number",
+	"page_section" : tab_name
+});
+
+});
+
+//Tabs analytics ends here
 });
