@@ -1,3 +1,4 @@
+$(document).ready(function () {
   /* Tabs Accessibility Starts Here*/
   $('.tabs-wrapper ol li').keyup(function (event) {
 
@@ -71,6 +72,10 @@
         if (e.which == 9 ) {
             e.preventDefault();
             $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
+            if(e.shiftKey){
+              $("#language-btn").focus();
+              e.preventDefault();
+            }
         }
     });
     $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
@@ -83,6 +88,7 @@
     });
 
 /* Full Header accessibility ends here */
+
 /* Footer accessibility starts here */
 
 // $('.links .accordion-heading').keyup(function (event) {
@@ -98,3 +104,4 @@
 // 	  }
 // 	});
 /* Footer accessibility ends here */
+});
