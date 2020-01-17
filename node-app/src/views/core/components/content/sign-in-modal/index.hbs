@@ -26,10 +26,14 @@
                                         </div>
                                         <form name="form_signon_modal" id="form_signon">
                                                 <div role="group" aria-labelledby="form_signon">
-                                                        <div class="form-group form-first" id="userIdDiv"><input
-                                                                        name="USER" id="accessIDModal" class="accessid"
-                                                                        type="text" placeholder="{{email}}"
-                                                                        autocomplete="off" aria-label="Enter email/acess Id"/>
+                                                        <div class="form-group form-first" id="userIdDiv">
+                                                                <label class="sr-only" id="accessIDModalLabel"
+                                                                        for="accessIDModal">Access ID</label> <input
+                                                                        name="USER" id="accessIDModal" type="text"
+                                                                        placeholder<input name="USER" id="accessIDModal"
+                                                                        class="accessid" type="text"
+                                                                        placeholder="{{email}}" autocomplete="off"
+                                                                        aria-label="Enter email/acess Id" />
                                                         </div>
                                                         <div class="form-group form-second text-left">
                                                                 <input name="SAVEIDCHECK" class="remember"
@@ -41,8 +45,10 @@
                                                                         {{remember-text}}</label>
                                                         </div>
                                                 </div>
-                                                <input name="PASSWORD" class="password-input" id="accessPasswordModal"
-                                                        type="password" placeholder="{{password}}" autocomplete="off" aria-label="Enter Password">
+                                                <label class="sr-only" for="accessPasswordModal"> Password</label><input
+                                                        name="PASSWORD" class="password-input" id="accessPasswordModal"
+                                                        type="password" placeholder="{{password}}" autocomplete="off"
+                                                        aria-label="Enter Password">
                                                 <input class="btn btn-blue" onclick="return CheckClicks('e');"
                                                         type="submit" alt="Sign in" value="Sign in" />
                                         </form>
@@ -52,7 +58,8 @@
                                                 <span class="signin-register">
                                                         <a href="https://www.sunnet.sunlife.com/mysunlife/signin/register/bregister.asp"
                                                                 target="_blank">{{register}}</a>
-                                                </span></p>
+                                                </span>
+                                                <span class="sr-only" aria-hidden="true"> now</span></p>
                                         <div class="signin-terms">{{agree}}<a
                                                         href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
                                                         target="_blank">{{terms}}</a>
