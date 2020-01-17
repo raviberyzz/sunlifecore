@@ -53,7 +53,7 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldDescription="Please specify footer labels"
                                             fieldLabel="Label"
-                                            name="./label"/>                                         
+                                            name="./label"/>
                                         <link
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
@@ -97,6 +97,13 @@
                             </items>
                         </field>
                     </copyrightLinks>
+                    <analyticsID
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        emptyText="Please configure the analytics id."
+                        fieldDescription="Please configure the analytics id."
+                        fieldLabel="Analytics id"
+                        name="./analyticsId"/>
                 </items>
             </column>
         </items>

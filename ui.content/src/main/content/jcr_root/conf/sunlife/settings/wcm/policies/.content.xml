@@ -542,6 +542,17 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
+                                    <item1
+                                        cq:styleGroupLabel="Text Border"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="text-border-right"
+                                                cq:styleId="1577796145575"
+                                                cq:styleLabel="Yes"
+                                                jcr:primaryType="nt:unstructured"/>                                            
+                                        </cq:styles>
+                                    </item1>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text>
