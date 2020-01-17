@@ -3763,8 +3763,19 @@ $('#signinbutton').click(function(){
 	"event_type"	: "Click",
 	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
 	"event_title"	: "Sign In",
-	"page_section" : "Homepage main signin"
+	"page_section" :  "Modal"
+
     });
+    // For Home Page Only
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "Sign In - Main",
+        "event_type"	: "Click",
+        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "event_title"	: "Sign In",
+        "page_section" : "Homepage main signin"
+    });
+    
 setTimeout(signinmodal,200);
 })
 // Sign In Module (Desktop Sign In button) analytics ends here
@@ -3804,6 +3815,17 @@ function signinmodal() {
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
             //console.log("mobile sign in module expanding is not being tracked");
+
+            // For homepage only
+            utag.link({
+                "asset_type"	: "Module",
+                "asset_title"	: "Sign In - Main",
+                "event_type"	: "On Page Impression",
+                "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+                "event_title"	: "Error-" + "Expanding not tracked",
+                "page_section" : "Homepage main signin"
+            });
+            
     }
 }
 // Sign In Modal (Sign-in-modal expansion) analytics ends here
@@ -3819,8 +3841,7 @@ $('.navigation-menu.language-region').click(function(){
 // Mobile language and region bar analytics ends here
 
 // Right Navigation analytics starts here
-$('.right-navigation-wrapper .button-class').click(function(){
-    var btnTxt1=$(this).parent().text();
+function rightNavAnalytics(btnTxt1){
     var btnTxt=$.trim(btnTxt1);
     utag.link({
         "asset_type"	: "Module",
@@ -3839,30 +3860,16 @@ $('.right-navigation-wrapper .button-class').click(function(){
         "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
         "utm_campaign":"slfca"
         });
-    }     
+    }
+} 
+$('.right-navigation-wrapper .button-class').click(function(){
+    var btnTxt1=$(this).parent().text();
+    rightNavAnalytics(btnTxt1);
 });
 /* For form-button */
     $('.right-navigation-wrapper .cmp-form-button').click(function(){   
     var btnTxt2=$(this).text();
-    var btnTxt3=$.trim(btnTxt2);
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "CTA Module",
-        "event_type"	: "Click",
-        "event_title"	: btnTxt3,
-        "page_section" : "body-right-rail"
-    });
-    var adv1='advisor';
-    if ((btnTxt3 == 'search') || (btnTxt3 == 'Search') || (btnTxt3.indexOf(adv1) != -1)){
-        var WT={ac:''};
-        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
-        utag.link({
-        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
-        "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
-        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
-        "utm_campaign":"slfca"
-        });
-    }
+    rightNavAnalytics(btnTxt2);
     });
 /* For dropdown */
 $('.cmp-form-options--drop-down').siblings().children('.cmp-form-button').click(function(){
@@ -3975,6 +3982,7 @@ function demoFunction()
 
 
 $(document).ready(function(){
+    $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
     $('.cmp-tabs__tab').click(function(){
       set_active($(this));
@@ -4032,13 +4040,14 @@ $(document).ready(function(){
     var tab_number=$(tab).index();
     var tab_child=tab_number+1;
     $(tab).addClass('cmp-tabs__tab--active');
+	$(tab).attr('aria-selected','true');
+    $(tab).siblings().attr('aria-selected','false');
     $(tab).siblings().removeClass('cmp-tabs__tab--active');
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4066,6 +4075,7 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -4690,7 +4700,7 @@ $(document).ready(function () {
                 $("#language-btn").attr('aria-expanded', 'true');
                 $("#search-btn").attr('aria-expanded', 'false');
                 $("#sun-search").removeClass('in');
-                $(".content-region .slf-region-column .first_level_list-unstyled li:first a").focus();
+                $(".sunLanguageCrossBtn").focus();
             }
         }
     });
@@ -4723,13 +4733,13 @@ $(document).ready(function () {
 	});
 });
 
-
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
+
 
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
