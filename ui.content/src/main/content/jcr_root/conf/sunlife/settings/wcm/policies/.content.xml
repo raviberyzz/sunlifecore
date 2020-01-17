@@ -472,7 +472,7 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item4>
-                                <item2
+                                <item5
                                     cq:styleGroupLabel="Vertical Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -482,7 +482,7 @@
                                             cq:styleLabel="Yes"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item2>
+                                </item5>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
