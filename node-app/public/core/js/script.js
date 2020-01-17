@@ -4422,12 +4422,14 @@ $(document).ready(function () {
         $('.offcanvas-overlay').addClass('active');
         $('.container').css({'margin-left':'270px'});
         $('body').addClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'static'});
     });
     $("#close-hamburger").click(function () {
         $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
         $('.offcanvas-overlay').removeClass('active');
         $('.container').css({'margin-left':'0'});
         $('body').removeClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'fixed'});
     });
     $('.first-level-navigation .navigation-menu').children("a").click(function(){
         if(event.target.parentNode.children[1].className === "third-level-navigation") {
@@ -4472,11 +4474,13 @@ $(document).ready(function () {
         else if ($(window).width() < 1025) {
             if ($('.hamburger-menu-wrapper').hasClass('active')){
                 $('.container').css({'margin-left':'270px'});
-                $('body').addClass('overflow-hidden'); 
+                $('body').addClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'static'});
             }
             else{
                 $('.container').css({'margin-left':'0'}); 
-                $('body').removeClass('overflow-hidden'); 
+                $('body').removeClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'fixed'}); 
             } 
         }
         else{
@@ -4717,12 +4721,6 @@ $(document).ready(function () {
 
 
 $(document).ready(function(){
-	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
-    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
-    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
-
-});
-$(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
@@ -4761,4 +4759,10 @@ $(document).ready(function(){
             $(this).css({'outline':'none'});
         }
     });
+});
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+
 });
