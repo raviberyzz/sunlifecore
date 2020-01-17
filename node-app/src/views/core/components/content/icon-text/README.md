@@ -13,4 +13,4 @@ JSON Format
 }
 ```
 <!-- icon-text-wrapper classes available are social-link-icon-wrapper, right-nav-icon-wrapper, cta-content-icon-wrapper, mega-menu-icon-wrapper getting-started-icon-wrapper-->
-<!-- "border-right-present": "border-right" -->
+<!-- "border-right-present": "text-border-right" -->

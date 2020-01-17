@@ -45,6 +45,14 @@
                                 cq:policy="sunlife/ca/components/content/icon-text/policy_iconText"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                             <tabs 
+                                cq:policy="sunlife/ca/components/content/tabs/policy_tabs"
+                            	jcr:primaryType="nt:unstructured" 
+                            	sling:resourceType="wcm/core/components/policies/mapping"/>
+                             <accordion 
+                            	cq:policy="sunlife/ca/components/content/accordion/policy_accordion" 
+                            	jcr:primaryType="nt:unstructured"
+                            	sling:resourceType="wcm/core/components/policies/mapping"/>
                         </content>
                         <form jcr:primaryType="nt:unstructured">
                             <container

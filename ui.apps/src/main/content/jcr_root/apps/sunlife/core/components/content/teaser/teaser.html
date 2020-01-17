@@ -2,7 +2,7 @@
 <sly data-sly-test.empty="${!teaser.imageAlignment}"/>
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 <sly data-sly-test="${!empty}">
-   <div class="image-text-wrapper">
+   <div class="image-text-wrapper" data-section="${teaser.analyticsId }">
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position">
          <div class="left-item text-section hide-in-editorial">
             ${teaser.description @context ='html'}

@@ -3901,107 +3901,47 @@ else{
 
 // CTA Analytics starts here
 
-// CTA Cross Sell starts here
-
-// $('.cross-cta-wrapper .button-class').click(function(){
-//     var cross_cta_button_value =$(this).text();
+// CTA Dual starts here
+// $('.blue-icon-yellow-background .cmp-form-button').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
+//     var dual_cta_button_value =$(this).text();
 //     utag.link({
 //         "asset_type"	: "Module",
 //         "asset_title"	: "Global Module CTA Box",
 //         "event_type"	: "Click",
-//         "event_title"	: cross_cta_button_value,
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
 //         "page_section" : "Global Module CTA Box"
 //     });  
 // });
 
-// CTA Cross Sell ends here
-
-// CTA Dual starts here
-$('.blue-icon-yellow-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-blue-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-grey-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
 // CTA Dual ends here
-
-// CTA Three Column starts here
-
-// $('.yellow-icon-grey-background .button-class').click(function(){
-//     var cta_three_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: cta_three_button_value,
-//         "page_section" : "Global Module CTA Box"
-//     }); 
-// });
-
-// CTA Three Column ends here
 
 // CTA Triple Home Page starts here
 
 //need to add specific container id to select homepage cta
 
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
+// $('.yellow-icon-white-background .button-class').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+//     var dual_cta_button_value =$(this).text();
+//     utag.link({
+//         "asset_type"	: "Module",
+//         "asset_title"	: "Global Module CTA Box",
+//         "event_type"	: "Click",
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
+//         "page_section" : "Global Module CTA Box"
+//     });  
+// });
+
+// $('#locate-advisors-btn').click(function(){
+//     if ($(".form-wrapper").parsley({}).isValid()) {
+//         try {
+//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+//         } catch (e) {
+//         }
+//     }
+// });
 
 // CTA Triple Home Page ends here
 
@@ -4021,24 +3961,66 @@ function demoFunction()
 $(document).ready(function(){
     var li_arr=$('.cmp-tabs__tablist').children();
     $('.cmp-tabs__tab').click(function(){
-       var tab_number=$(this).index();
-       var tab_child=tab_number+1;
-       $(this).addClass('cmp-tabs__tab--active');
-       $(this).siblings().removeClass('cmp-tabs__tab--active');
-       $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
-       $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
-      $(this).siblings().attr('tabindex','-1');
+      set_active($(this));
     });
     $('.tab-accordian-heading').click(function(){
         $(this).siblings().toggle();
+        $(this).parent().siblings().children('.tab-accordian-heading').siblings().css('display','none');
+        $(this).parent().siblings().children('.tab-accordian-heading').attr('aria-expanded', false);
         if ($(this).attr('aria-expanded') == 'true') {
-			$(this).attr('aria-expanded', false);
+			  $(this).attr('aria-expanded', false);
 		}
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
 		}
     });
-   
+
+
+    /* Tabs Accessibility Starts Here*/
+    $('.tabs-wrapper ol li').keyup(function (event) {
+
+      if (event.keyCode == 39) {
+        var temp_tab = $(this);
+        var nextTab;
+       
+        if (temp_tab.is('li:last-child')) {
+          nextTab = temp_tab.parent().children().first();
+         
+         
+        } else {
+          nextTab = $(this).next();
+          
+        }
+        nextTab.focus();
+        set_active(nextTab);
+        }
+        if (event.keyCode == 37)
+        {
+          var temp_tab = $(this);
+          var prevTab;
+         
+          if (temp_tab.is('li:first-child')) {
+            prevTab = temp_tab.parent().children().last();     
+           
+          } else {
+            prevTab = $(this).prev();
+          }
+          prevTab.focus();
+          set_active(prevTab);
+        }
+  });
+  /* Tabs Accessibility Ends Here*/
+
+  function set_active(tab)
+  {
+    var tab_number=$(tab).index();
+    var tab_child=tab_number+1;
+    $(tab).addClass('cmp-tabs__tab--active');
+    $(tab).siblings().removeClass('cmp-tabs__tab--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
+    $(tab).siblings().attr('tabindex','-1');
+  }
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4387,6 +4369,12 @@ $(document).ready(function () {
       $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
    }
    );
+   $(".desktop-primary-navigation .nav-item.navigation").active(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
    $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
       $(this).siblings().addClass('box-class');
    }, function () {
@@ -4406,7 +4394,9 @@ $(document).ready(function () {
       $(this).siblings().removeClass('box-class-yellow');
    }
    );
-
+   $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
+      location.href = this.href;
+  })
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -4487,6 +4477,21 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4541,21 +4546,6 @@ $(document).ready(function(){
    $('.cmp-dynamic-megamenu-grey').height(menuHeight);
     }
  );
-});
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
 });
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
