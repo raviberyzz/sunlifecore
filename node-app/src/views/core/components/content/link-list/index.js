@@ -25,16 +25,4 @@ $(document).ready(function () {
 	// 		$(this).attr('aria-expanded', true);
 	// 	}
 	// });
-	// $('.links .accordion-heading').keyup(function (event) {
-    //     if (event.keyCode == 13) {
-	// 		if($(this).attr('aria-expanded')=='false'){
-	// 		$(this).attr('aria-expanded','true');
-	// 		$(this).siblings().css('display','block');
-	// 		}
-	// 		else{
-	// 			$(this).attr('aria-expanded','false');
-	// 			$(this).siblings().css('display','none');
-	// 	}
-	//   }
-// 	});
 // });
