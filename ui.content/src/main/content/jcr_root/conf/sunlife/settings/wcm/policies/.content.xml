@@ -184,6 +184,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
+                                <item0
+                                    cq:styleGroupLabel="Content block"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="grey-border-box yellow-bullet-list"
+                                            cq:styleId="1579260270442"
+                                            cq:styleLabel="Grey Border"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="grey-background-box yellow-bullet-list"
+                                            cq:styleId="1579260330674"
+                                            cq:styleLabel="Grey Background"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="yellow-bullet-list"
+                                            cq:styleId="1579260405843"
+                                            cq:styleLabel="Yellow Bullet"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -451,6 +472,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item4>
+                                <item2
+                                    cq:styleGroupLabel="Vertical Separator"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="text-border-right"
+                                            cq:styleId="1579257415352"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item2>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
