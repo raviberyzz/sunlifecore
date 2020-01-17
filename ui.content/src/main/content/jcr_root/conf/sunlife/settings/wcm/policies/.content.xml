@@ -184,7 +184,7 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
-                                <item0
+                                <item3
                                     cq:styleGroupLabel="Content block"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -204,7 +204,7 @@
                                             cq:styleLabel="Yellow Bullet"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item0>
+                                </item3>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
