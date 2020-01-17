@@ -18,6 +18,21 @@ ul {
     background-color: $white-shade;
     text-align: center;
 }
+.with-margin {
+    .yellow-icon-white-background > .cmp-container {
+        margin-right: 20px;
+    }
+    .yellow-icon-grey-background > .cmp-container {
+        margin-right: 20px;
+    }
+    .yellow-icon-blue-background > .cmp-container {
+        margin-right: 20px;
+    }
+    .blue-icon-yellow-background > .cmp-container {
+        margin-right: 20px;
+    }
+}
+
 .yellow-icon-white-background {
     border: 1px solid $light-grey-color;
 }
