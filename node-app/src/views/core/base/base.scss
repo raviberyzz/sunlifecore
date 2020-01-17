@@ -177,6 +177,13 @@ a {
         margin-left: 5px;
     }
 }
+.pdf-link {
+    &::before {
+        content: "\f1c1";
+        font-family: fontawesome;
+        margin-right: 5px;
+    }
+}
 footer {
     background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
@@ -246,7 +253,11 @@ footer {
     box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4);
 }
 
-
+.phone-numbers{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%;
+}
 /*media query*/
 
 @media (min-width: $large-desktop-screen-min) {
