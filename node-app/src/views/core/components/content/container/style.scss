@@ -19,16 +19,16 @@ ul {
     text-align: center;
 }
 .with-margin {
-    .yellow-icon-white-background > .cmp-container {
+    &.yellow-icon-white-background > .cmp-container {
         margin-right: 20px;
     }
-    .yellow-icon-grey-background > .cmp-container {
+    &.yellow-icon-grey-background > .cmp-container {
         margin-right: 20px;
     }
-    .yellow-icon-blue-background > .cmp-container {
+    &.yellow-icon-blue-background > .cmp-container {
         margin-right: 20px;
     }
-    .blue-icon-yellow-background > .cmp-container {
+    &.blue-icon-yellow-background > .cmp-container {
         margin-right: 20px;
     }
 }
@@ -56,6 +56,10 @@ ul {
         &>:last-child{
             padding-bottom: 40px;
         }
+        .icon-text {
+            padding: 16px;
+        }
+
 }
 
 .cross-cta-wrapper {
