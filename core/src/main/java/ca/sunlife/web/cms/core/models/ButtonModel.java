@@ -19,5 +19,19 @@ public interface ButtonModel {
 	 */
 	@Inject
 	String getTarget();
-
+	
+	/**
+	 * Gets the dataTitle.
+	 *
+	 * @return the dataTitle
+	 */
+    @Inject
+	String getDataTitle();
+    
 }
+	
+	
+	
+   
+
+
