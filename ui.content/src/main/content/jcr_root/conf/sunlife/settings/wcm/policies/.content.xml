@@ -440,6 +440,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
+                                 <item4
+                                    cq:styleGroupLabel="CTA Analytics"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="global-module-content-cta-box"
+                                            cq:styleId="1579089861242"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item4>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
