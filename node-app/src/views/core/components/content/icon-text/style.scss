@@ -84,21 +84,20 @@
 .getting-started-icon-wrapper
 {
     margin-top: 20px;
-    height: 132px;
+    height: auto;
     border: 1px solid $medium-grey-background;
     text-align: center;
     position: relative;
     .heading-4{
         font-weight: 700;
         line-height: 30px;
-        padding: 0 20px;
+        padding: 0 25px 9px 25px;
         top: -15px;
         background-color: $white-shade;
         float: left;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
-        padding-bottom: 9px ;
     }
     ul{
         width: 100%;
@@ -112,9 +111,9 @@
         li{
             flex: 1;
             display:inline-block;
-           
+
         }
-        
+
     }
     .icon-style {
         color: $dark-grey-color;
@@ -127,17 +126,24 @@
         padding: 0;
     }
 }
-
+.text-border-right {
+    .icon-texts {
+        border-right: 2px solid $medium-grey-background;
+    }
+}
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .getting-started-icon-wrapper
     {
        height: auto;
+       .heading-4{
+           padding-bottom: 24px;
+       }
         ul{
             width: 100%;
-            padding-bottom: 0;
+            padding: 0 15px;
             display: block;
-            margin-top: 15px;
+            margin-top: 30px;
             &>:not(:last-child)
             {
                 border-right: none;
@@ -150,6 +156,6 @@
                 padding: 24px;
             }
         }
-        
+
     }
 }

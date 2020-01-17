@@ -21,6 +21,7 @@ $(document).ready(function(){
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     });
+    /* For first open accordion */
     var accLength=$('.accordion-container .cmp-accordion__item').length;
     var acc=$('.accordion-container .cmp-accordion__item');
     if($('.accordion-container').hasClass('first-open')){
@@ -30,4 +31,10 @@ $(document).ready(function(){
             $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     }
+    /* For accessibility */
+    $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
+        if (e.which === 1) {
+            $(this).css({'outline':'none'});
+        }
+    });
 });

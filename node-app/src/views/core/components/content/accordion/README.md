@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "wrapper":"accordion-container",
+    "wrapper":"expand-collapse",
     "first-open":"first-open",
     "list":[{   
     "accordion-head" : "Sample Heading",

@@ -122,8 +122,31 @@ $('.right-navigation-wrapper .button-class').click(function(){
         });
     }     
 });
+/* For form-button */
+    $('.right-navigation-wrapper .cmp-form-button').click(function(){   
+    var btnTxt2=$(this).text();
+    var btnTxt3=$.trim(btnTxt2);
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "CTA Module",
+        "event_type"	: "Click",
+        "event_title"	: btnTxt3,
+        "page_section" : "body-right-rail"
+    });
+    var adv1='advisor';
+    if ((btnTxt3 == 'search') || (btnTxt3 == 'Search') || (btnTxt3.indexOf(adv1) != -1)){
+        var WT={ac:''};
+        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
+        utag.link({
+        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
+        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_campaign":"slfca"
+        });
+    }
+    });
 /* For dropdown */
-$('.cmp-form-options--drop-down').siblings().children('.button-class').click(function(){
+$('.cmp-form-options--drop-down').siblings().children('.cmp-form-button').click(function(){
     var dropdown=$('.cmp-form-options__field.cmp-form-options__field--drop-down').val();
     utag.link({
         "asset_type"	: "Module",
@@ -159,107 +182,47 @@ else{
 
 // CTA Analytics starts here
 
-// CTA Cross Sell starts here
-
-// $('.cross-cta-wrapper .button-class').click(function(){
-//     var cross_cta_button_value =$(this).text();
+// CTA Dual starts here
+// $('.blue-icon-yellow-background .cmp-form-button').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
+//     var dual_cta_button_value =$(this).text();
 //     utag.link({
 //         "asset_type"	: "Module",
 //         "asset_title"	: "Global Module CTA Box",
 //         "event_type"	: "Click",
-//         "event_title"	: cross_cta_button_value,
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
 //         "page_section" : "Global Module CTA Box"
 //     });  
 // });
 
-// CTA Cross Sell ends here
-
-// CTA Dual starts here
-$('.blue-icon-yellow-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-blue-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-grey-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
-
 // CTA Dual ends here
-
-// CTA Three Column starts here
-
-// $('.yellow-icon-grey-background .button-class').click(function(){
-//     var cta_three_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: cta_three_button_value,
-//         "page_section" : "Global Module CTA Box"
-//     }); 
-// });
-
-// CTA Three Column ends here
 
 // CTA Triple Home Page starts here
 
 //need to add specific container id to select homepage cta
 
-$('.yellow-icon-white-background .button-class').click(function(){
-    var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-    var dual_cta_button_value =$(this).text();
-    utag.link({
-        "asset_type"	: "Module",
-        "asset_title"	: "Global Module CTA Box",
-        "event_type"	: "Click",
-        "event_title"	: dual_cta_button_value,
-        "ev_data_one"   : dual_cta_form_value,
-        "page_section" : "Global Module CTA Box"
-    });  
-});
+// $('.yellow-icon-white-background .button-class').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+//     var dual_cta_button_value =$(this).text();
+//     utag.link({
+//         "asset_type"	: "Module",
+//         "asset_title"	: "Global Module CTA Box",
+//         "event_type"	: "Click",
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
+//         "page_section" : "Global Module CTA Box"
+//     });  
+// });
+
+// $('#locate-advisors-btn').click(function(){
+//     if ($(".form-wrapper").parsley({}).isValid()) {
+//         try {
+//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+//         } catch (e) {
+//         }
+//     }
+// });
 
 // CTA Triple Home Page ends here
 
