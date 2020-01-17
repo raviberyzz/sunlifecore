@@ -89,15 +89,13 @@ $(document).ready(function () {
     function firstfull(){
         $('.right-nav-cta').removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
     }
-    setTimeout(() => {
+    setTimeout( function() {
         maxheight(child, cta_index);
-    }, 200);
+    }, 200 );
     $( window ).resize(function() {
         maxheight(child, cta_index);
     });
-
-
-
+    
     //height Function//
 
     function maxheight(child)
