@@ -6,9 +6,6 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.via.ResourceSuperType;
-
 import com.adobe.cq.wcm.core.components.internal.models.v1.BreadcrumbImpl;
 import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 
@@ -19,7 +16,7 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 @Model(adaptables = SlingHttpServletRequest.class,
 adapters = Breadcrumb.class,
 resourceType = "sunlife/core/components/content/breadcrumb")
-public class BreadcrumbModel extends BreadcrumbImpl{
+public class BreadcrumbModel extends BreadcrumbImpl {
 	
 	public BreadcrumbModel() {
 		super();
@@ -37,6 +34,12 @@ public class BreadcrumbModel extends BreadcrumbImpl{
 	@Via("resource")
 	@Optional
 	private String socialShareText;
+	
+	/** The social share analytics id. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String analyticsId;
 	
 	/**
 	 * Gets the social share reqd.
@@ -73,6 +76,27 @@ public class BreadcrumbModel extends BreadcrumbImpl{
 	public void setSocialShareText(String socialShareText) {
 		this.socialShareText = socialShareText;
 	}
+	
+
+	/**
+	 * Gets the analytics id.
+	 *
+	 * @return the analytics id
+	 */
+	public String getAnalyticsId() {
+		return analyticsId;
+	}
+	
+	/**
+	 * Sets the analytics id.
+	 *
+	 * @param analyticsId the analytics text
+	 */
+	public void setAnalyticsId(String analyticsId) {
+		this.analyticsId = analyticsId;
+	}
+	
+	
 	
 	
 }

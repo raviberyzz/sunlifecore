@@ -12,12 +12,14 @@ $(document).ready(function () {
         $('.offcanvas-overlay').addClass('active');
         $('.container').css({'margin-left':'270px'});
         $('body').addClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'static'});
     });
     $("#close-hamburger").click(function () {
         $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
         $('.offcanvas-overlay').removeClass('active');
         $('.container').css({'margin-left':'0'});
         $('body').removeClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'fixed'});
     });
     $('.first-level-navigation .navigation-menu').children("a").click(function(){
         if(event.target.parentNode.children[1].className === "third-level-navigation") {
@@ -62,11 +64,13 @@ $(document).ready(function () {
         else if ($(window).width() < 1025) {
             if ($('.hamburger-menu-wrapper').hasClass('active')){
                 $('.container').css({'margin-left':'270px'});
-                $('body').addClass('overflow-hidden'); 
+                $('body').addClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'static'});
             }
             else{
                 $('.container').css({'margin-left':'0'}); 
-                $('body').removeClass('overflow-hidden'); 
+                $('body').removeClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'fixed'}); 
             } 
         }
         else{

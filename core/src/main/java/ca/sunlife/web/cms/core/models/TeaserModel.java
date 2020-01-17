@@ -67,5 +67,13 @@ public interface TeaserModel {
 	 */
 	@Inject
 	String getTarget();
+	
+	/**
+	 * Gets the analytics id.
+	 *
+	 * @return the analytics id
+	 */
+	@Inject
+	String getAnalyticsId();
 
 }
