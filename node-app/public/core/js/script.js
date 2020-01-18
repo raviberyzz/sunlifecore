@@ -4079,12 +4079,10 @@ $(document).ready(function () {
 });
 
 
-
 function demoFunction()
 {
 
 }
-
 
 
 
@@ -4119,6 +4117,8 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4741,6 +4741,11 @@ $(document).ready(function () {
 			$('.site-level-notification').css('display', 'none');
 		}
 	});
+	
+	//for footer
+	 var teaser_height=$('footer .teaser').height();
+	    $('footer .social-link-icon-wrapper').height(teaser_height); 
+
 });
 
 
@@ -4750,6 +4755,7 @@ $(document).ready(function(){
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
+
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
