@@ -52,8 +52,8 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Link Url"
                                                     name="linkUrl"
-													suffix=".html"
-													required="{Boolean}true"/>
+                                                    required="{Boolean}true"
+                                                    suffix=".html"/>
                                                 <linkTarget
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
@@ -92,8 +92,8 @@
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                 fieldLabel="Sub Link Url"
                                                                 name="subLinkUrl"
-																suffix=".html"
-																required="{Boolean}true"/>
+                                                                required="{Boolean}true"
+                                                                suffix=".html"/>
                                                             <subLinkTarget
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
@@ -163,8 +163,8 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldLabel="Link Url"
                                             name="subLinkUrl"
-											suffix=".html"
-											required="{Boolean}true"/>
+                                            required="{Boolean}true"
+                                            suffix=".html"/>
                                         <subLinkTarget
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="/libs/granite/ui/components/coral/foundation/form/select"
@@ -254,7 +254,8 @@
                                                 emptyText="Please configure the analytics id."
                                                 fieldDescription="Please configure the analytics id."
                                                 fieldLabel="Analytics id"
-                                                name="./analyticsId"/>
+                                                name="./analyticsId"
+                                                value="header-region-and-languages"/>
                                         </items>
                                     </column>
                                 </items>
