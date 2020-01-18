@@ -32,6 +32,12 @@
                                         fieldDescription="Alternate URLs"
                                         fieldLabel="Alternate URLs"
                                         name="./seoAltUrls"/>
+                                    <errorPage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                        fieldLabel="Error Pages"
+                                        fieldDescription="Error pages for this content tree"
+                                        name="./errorPages"/>
                                 </items>
                             </section>
                         </items>
