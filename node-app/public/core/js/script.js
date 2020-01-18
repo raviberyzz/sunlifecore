@@ -4079,12 +4079,10 @@ $(document).ready(function () {
 });
 
 
-
 function demoFunction()
 {
 
 }
-
 
 
 
@@ -4119,6 +4117,8 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4146,6 +4146,7 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -4413,7 +4414,6 @@ $(document).ready(function () {
      
  });
  
-
 $(document).ready(function(){
     $('.content-region .nav-select').parent().addClass('in');
     $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
@@ -4741,6 +4741,11 @@ $(document).ready(function () {
 			$('.site-level-notification').css('display', 'none');
 		}
 	});
+	
+	//for footer
+	 var teaser_height=$('footer .teaser').height();
+	    $('footer .social-link-icon-wrapper').height(teaser_height); 
+
 });
 
 
