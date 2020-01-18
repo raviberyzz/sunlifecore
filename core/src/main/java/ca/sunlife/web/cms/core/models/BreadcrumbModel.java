@@ -28,14 +28,14 @@ public class BreadcrumbModel extends BreadcrumbImpl {
 	@Via("resource")
 	@Optional
 	private String socialShareReqd;
-	
+	 
 	/** The social share text. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String socialShareText;
 	
-	/** The social share analytics id. */
+	/** The breadcrumb analytics id. */
 	@Inject
 	@Via("resource")
 	@Optional
