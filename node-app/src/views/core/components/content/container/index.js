@@ -8,4 +8,8 @@ $(document).ready(function () {
 			$('.site-level-notification').css('display', 'none');
 		}
 	});
+	
+	 var teaser_height=$('footer .teaser').height();
+	    $('footer .social-link-icon-wrapper').height(teaser_height); 
+
 });
