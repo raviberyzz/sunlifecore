@@ -40,6 +40,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
+                                                        	<text-accessibility
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="sr-only"
+                                                                text="Text Accessibility"/>
                                                             <button-blue
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="button-class primary-blue-button-rte"
@@ -63,7 +67,7 @@
                                                              <contact-us
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="phone-numbers"
-                                                                text="Contact Us"/> 
+                                                                text="Contact Us"/>                                                              
                                                         </styles>
                                                     </styles>
                                                     <format
