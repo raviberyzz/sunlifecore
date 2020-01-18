@@ -423,6 +423,11 @@
                                             cq:styleId="1577973285088"
                                             cq:styleLabel="Right Navigation"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="site-level-notification"
+                                            cq:styleId="1577973285738"
+                                            cq:styleLabel="Site Level Notification"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -505,6 +510,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item5>
+                                <item6
+                                    cq:styleGroupLabel="Padding"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="padding-15"
+                                            cq:styleId="1579257415398"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item6>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
