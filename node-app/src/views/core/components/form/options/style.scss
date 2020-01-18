@@ -3,6 +3,9 @@
 margin: 20px 0;
 
 }
+select::-ms-expand {
+    display: none;
+}
 
 .cmp-form-options--drop-down{
     position: relative;
@@ -107,4 +110,5 @@ input[type=radio] {
         margin: 10px;
         vertical-align: super;
     }
+   
 }
