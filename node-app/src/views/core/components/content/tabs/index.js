@@ -16,42 +16,6 @@ $(document).ready(function(){
 		}
     });
 
-
-    /* Tabs Accessibility Starts Here*/
-    $('.tabs-wrapper ol li').keyup(function (event) {
-
-      if (event.keyCode == 39) {
-        var temp_tab = $(this);
-        var nextTab;
-       
-        if (temp_tab.is('li:last-child')) {
-          nextTab = temp_tab.parent().children().first();
-         
-         
-        } else {
-          nextTab = $(this).next();
-          
-        }
-        nextTab.focus();
-        set_active(nextTab);
-        }
-        if (event.keyCode == 37)
-        {
-          var temp_tab = $(this);
-          var prevTab;
-         
-          if (temp_tab.is('li:first-child')) {
-            prevTab = temp_tab.parent().children().last();     
-           
-          } else {
-            prevTab = $(this).prev();
-          }
-          prevTab.focus();
-          set_active(prevTab);
-        }
-  });
-  /* Tabs Accessibility Ends Here*/
-
   function set_active(tab)
   {
     var tab_number=$(tab).index();

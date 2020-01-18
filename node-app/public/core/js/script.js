@@ -3955,6 +3955,157 @@ else{
 // CTA Analytics ends here
 });
 
+//need to add specific container id to select homepage cta
+
+// $('.yellow-icon-white-background .button-class').click(function(){
+//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
+//     var dual_cta_button_value =$(this).text();
+//     utag.link({
+//         "asset_type"	: "Module",
+//         "asset_title"	: "Global Module CTA Box",
+//         "event_type"	: "Click",
+//         "event_title"	: dual_cta_button_value,
+//         "ev_data_one"   : dual_cta_form_value,
+//         "page_section" : "Global Module CTA Box"
+//     });  
+// });
+
+// $('#locate-advisors-btn').click(function(){
+//     if ($(".form-wrapper").parsley({}).isValid()) {
+//         try {
+//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+//         } catch (e) {
+//         }
+//     }
+// });
+
+// CTA Triple Home Page ends here
+
+// CTA Analytics ends here
+
+//Tabs analytics starts here
+$('.tabs-wrapper .phone-numbers').click(function(){
+   var phone= $(this).html();
+   var tab_name=$('.tabs-wrapper .cmp-tabs__tab--active').html();
+   utag.link({
+	"asset_type"	: "Text",
+	"asset_title"	: phone,
+	"event_type"	: "Click",
+	"event_title"	: "Dial Number",
+	"page_section" : tab_name
+});
+
+});
+
+//Tabs analytics ends here
+$(document).ready(function () {
+  /* Tabs Accessibility Starts Here*/
+  $('.tabs-wrapper ol li').keyup(function (event) {
+
+    if (event.keyCode == 39) {
+      var temp_tab = $(this);
+      var nextTab;
+     
+      if (temp_tab.is('li:last-child')) {
+        nextTab = temp_tab.parent().children().first();
+       
+       
+      } else {
+        nextTab = $(this).next();
+        
+      }
+      nextTab.focus();
+      set_active(nextTab);
+      }
+      if (event.keyCode == 37)
+      {
+        var temp_tab = $(this);
+        var prevTab;
+       
+        if (temp_tab.is('li:first-child')) {
+          prevTab = temp_tab.parent().children().last();     
+         
+        } else {
+          prevTab = $(this).prev();
+        }
+        prevTab.focus();
+        set_active(prevTab);
+      }
+});
+/* Tabs Accessibility Ends Here*/
+
+/* Full Header accessibility starts here */
+     $('.search-icon-container').keyup(function (event) {
+
+        if (event.keyCode == 13) {
+            if ($('#sun-search').hasClass('in')) {
+                $('#sun-search').removeClass('in');
+                $("#search-btn").attr('aria-expanded', 'false');
+            }
+            else {
+                $('#sun-search').css("height","128px");
+                $('#sun-search').addClass('in');
+                $("#search-btn").attr('aria-expanded', 'true');
+                $("#language-btn").attr('aria-expanded', 'false');
+                $("#sun-language").removeClass('in');
+                $("#q-top").focus();
+            }
+        }
+    });
+
+    $('#language-btn-container').keyup(function (event) {
+        if (event.keyCode == 13) {
+            if ($('#sun-language').hasClass('in')) {
+                $('#sun-language').removeClass('in');
+                $("#language-btn").attr('aria-expanded', 'false');
+            }
+            else {
+                $('#sun-language').addClass('in');
+                $("#language-btn").attr('aria-expanded', 'true');
+                $("#search-btn").attr('aria-expanded', 'false');
+                $("#sun-search").removeClass('in');
+                $(".sunLanguageCrossBtn").focus();
+            }
+        }
+    });
+    $("#search-btn").keydown(function(e){
+        if (e.which == 9 ) {
+            e.preventDefault();
+            $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
+            if(e.shiftKey){
+              $("#language-btn").focus();
+              e.preventDefault();
+            }
+        }
+    });
+    $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
+        if (e.which == 9 ) {
+            if(e.shiftKey) {
+                $(".srch-btn").focus();
+                e.preventDefault();
+            }
+        }
+    });
+
+/* Full Header accessibility ends here */
+
+/* Footer accessibility starts here */
+
+// $('.links .accordion-heading').keyup(function (event) {
+//         if (event.keyCode == 13) {
+// 			if($(this).attr('aria-expanded')=='false'){
+// 			$(this).attr('aria-expanded','true');
+// 			$(this).siblings().css('display','block');
+// 			}
+// 			else{
+// 				$(this).attr('aria-expanded','false');
+// 				$(this).siblings().css('display','none');
+// 		}
+// 	  }
+// 	});
+/* Footer accessibility ends here */
+});
+
 
 
 function demoFunction()
@@ -3982,42 +4133,6 @@ $(document).ready(function(){
 			$(this).attr('aria-expanded', true);
 		}
     });
-
-
-    /* Tabs Accessibility Starts Here*/
-    $('.tabs-wrapper ol li').keyup(function (event) {
-
-      if (event.keyCode == 39) {
-        var temp_tab = $(this);
-        var nextTab;
-       
-        if (temp_tab.is('li:last-child')) {
-          nextTab = temp_tab.parent().children().first();
-         
-         
-        } else {
-          nextTab = $(this).next();
-          
-        }
-        nextTab.focus();
-        set_active(nextTab);
-        }
-        if (event.keyCode == 37)
-        {
-          var temp_tab = $(this);
-          var prevTab;
-         
-          if (temp_tab.is('li:first-child')) {
-            prevTab = temp_tab.parent().children().last();     
-           
-          } else {
-            prevTab = $(this).prev();
-          }
-          prevTab.focus();
-          set_active(prevTab);
-        }
-  });
-  /* Tabs Accessibility Ends Here*/
 
   function set_active(tab)
   {
@@ -4724,7 +4839,6 @@ $(document).ready(function(){
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){

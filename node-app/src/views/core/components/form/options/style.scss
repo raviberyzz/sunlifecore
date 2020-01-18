@@ -1,7 +1,9 @@
 @import '../../../base/core';
 .form-group-wrapper {
-margin: 20px 0;
-
+    margin: 20px 0;
+}
+select::-ms-expand {
+    display: none;
 }
 select::-ms-expand {
     display: none;
@@ -13,12 +15,12 @@ select::-ms-expand {
     width: auto;
     &::before{
         content: "\f107";
-    font-family: FontAwesome;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 16px;
-    top: 38px;
-    font-weight: 700;
+        font-family: FontAwesome;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 16px;
+        top: 38px;
+        font-weight: 700;
     }
 }
 
@@ -62,8 +64,8 @@ input[type=checkbox] {
         visibility: visible;
         width: 24px;
         height: 24px;
-        border: 1px solid $medium-grey-background; 
-        background: $white-shade; 
+        border: 1px solid $medium-grey-background;
+        background: $white-shade;
         cursor: pointer;
     }
     &:checked:after {
@@ -72,7 +74,7 @@ input[type=checkbox] {
         position: absolute;
         font-size: 1rem;
         text-align: center;
-        color: $dark-grey-color; 
+        color: $dark-grey-color;
         transition: all 0.2s;
         line-height: 18px;
     }
@@ -93,7 +95,7 @@ input[type=radio] {
     &:checked {
         background-color: $medium-blue-color;
     }
-        
+
 }
 .cmp-form-options--checkbox{
     .cmp-form-options__field-description{
