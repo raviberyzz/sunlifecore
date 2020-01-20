@@ -3989,6 +3989,18 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 //Tabs analytics ends here
 });
 $(document).ready(function () {
+  function set_active(tab)
+  {
+    var tab_number=$(tab).index();
+    var tab_child=tab_number+1;
+    $(tab).addClass('cmp-tabs__tab--active');
+	  $(tab).attr('aria-selected','true');
+    $(tab).siblings().attr('aria-selected','false');
+    $(tab).siblings().removeClass('cmp-tabs__tab--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
+    $(tab).siblings().attr('tabindex','-1');
+  }
   /* Tabs Accessibility Starts Here*/
   $('.tabs-wrapper ol li').keyup(function (event) {
 
