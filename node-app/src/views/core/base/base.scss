@@ -189,6 +189,10 @@ footer {
     .social-link-icon-wrapper {
         ul {
             float: right;
+            position: relative;
+    		top: 50%;
+    		transform: translateY(-50%);
+            
         }
         li {
             float: left;

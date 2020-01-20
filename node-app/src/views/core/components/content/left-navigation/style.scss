@@ -6,8 +6,9 @@
         .cmp-navigation__item--level-0{
             .cmp-navigation__item-link{
                 color: $dark-grey-color;
-                font-size: 1.125rem;
+                font-size: 1rem;
                 padding: 0 20px;
+                line-height: 26px;
             }
             .cmp-navigation__group{
                 .cmp-navigation__item--active{

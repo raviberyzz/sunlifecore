@@ -38,16 +38,8 @@ $(document).ready(function () {
 // Region and language menu analytics ends here
 
 // Sign In Module (Desktop Sign In button) analytics starts here
-$('#signinbutton').click(function(){
-    utag.link({"asset_type"	: "Module",
-	"asset_title"	: "Sign In - Main",
-	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-	"event_title"	: "Sign In",
-	"page_section" :  "Modal"
-
-    });
-    // For Home Page Only
+// For Home Page Only
+function SignInHomeButton(){
     utag.link({
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
@@ -56,9 +48,20 @@ $('#signinbutton').click(function(){
         "event_title"	: "Sign In",
         "page_section" : "Homepage main signin"
     });
-    
-setTimeout(signinmodal,200);
+}
+
+$('#signinbutton').click(function(){
+    utag.link({"asset_type"	: "Module",
+	"asset_title"	: "Sign In - Main",
+	"event_type"	: "Click",
+	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"event_title"	: "Sign In",
+	"page_section" :  "Modal"   
+    });  
+    SignInHomeButton();
+    setTimeout(signinmodal,200); 
 })
+
 // Sign In Module (Desktop Sign In button) analytics ends here
 
 // Sign In Modal (Mobile Sign In button) analytics starts here
@@ -70,6 +73,7 @@ $('#SignIn').click(function(){
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
+    SignInHomeButton();
     setTimeout(signinmodal,200);
 });
 // Sign In Modal (Mobile Sign In button) analytics ends here
@@ -95,19 +99,20 @@ function signinmodal() {
             "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
-            //console.log("mobile sign in module expanding is not being tracked");
-
-            // For homepage only
-            utag.link({
-                "asset_type"	: "Module",
-                "asset_title"	: "Sign In - Main",
-                "event_type"	: "On Page Impression",
-                "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-                "event_title"	: "Error-" + "Expanding not tracked",
-                "page_section" : "Homepage main signin"
-            });
-            
+            //console.log("mobile sign in module expanding is not being tracked")
+            SignInHomePageError();           
     }
+}
+// Home page only
+function SignInHomePageError(){
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "Sign In - Main",
+        "event_type"	: "On Page Impression",
+        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "event_title"	: "Error-" + "Expanding not tracked",
+        "page_section" : "Homepage main signin"
+    });
 }
 // Sign In Modal (Sign-in-modal expansion) analytics ends here
 
@@ -190,46 +195,59 @@ else{
 // CTA Analytics starts here
 
 // CTA Dual starts here
-// $('.blue-icon-yellow-background .cmp-form-button').click(function(){
-//     var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-//     var dual_cta_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: dual_cta_button_value,
-//         "ev_data_one"   : dual_cta_form_value,
-//         "page_section" : "Global Module CTA Box"
-//     });  
-// });
+
+$('.global-module-content-cta-box').find('a').each(function(){
+    var linkclicked="";
+        $(this).click(function(){
+            if($(this).has('img').length>0){
+            linkclicked=$(this).find('img').attr('alt');
+            }else{
+                    linkclicked= $(event.target).text();
+                }
+        //console.log('event tracked successfully with name-'+linkclicked);
+        utag.link({"asset_type"	: "Module","asset_title"	: "Global Module CTA Box","event_type"	: "Click","event_title"	: linkclicked,"page_section" : "Global Module CTA Box"});
+        });
+});
 
 // CTA Dual ends here
 
 // CTA Triple Home Page starts here
+$('#locate-advisors .cmp-form-button').click(function(){
+    if ($("#locate-advisors").parsley({}).isValid()) {
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+        } catch (e) {
+            console.log("the error is "+e);
+        }
+    }
+});
 
-//need to add specific container id to select homepage cta
+$('#get-a-quote .cmp-form-button').click(function(){
+    if ($("#get-a-quote").parsley({}).isValid()) {
+        // get the short name for the selected option
+        var shortName =  $('#get-a-quote .cmp-form-button').parent().siblings('.options').find('select :selected').attr('data-shortname');
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - get_a_quote_module - " + shortName});
+        } catch (e) {
+            console.log("the error is "+e);
+        }
+    }
 
-// $('.yellow-icon-white-background .button-class').click(function(){
-//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-//     var dual_cta_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: dual_cta_button_value,
-//         "ev_data_one"   : dual_cta_form_value,
-//         "page_section" : "Global Module CTA Box"
-//     });  
-// });
+});
 
-// $('#locate-advisors-btn').click(function(){
-//     if ($(".form-wrapper").parsley({}).isValid()) {
-//         try {
-//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
-//         } catch (e) {
-//         }
-//     }
-// });
+$('#cta-provider-search .cmp-form-button').click(function(){
+    if ($("#cta-provider-search").parsley({}).isValid()) {
+        //var groupLabel = $('#cta-provider-search-input :selected').parent().attr('label');
+        var textValue = $('#cta-provider-search .cmp-form-button').parent().siblings('.options').find('select :selected').val();
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "provider search - homepage preselect", ev_data_one: groupLabel + "_" + textValue});
+        } catch (e) {
+            console.log("the error is "+e);
+        }
+    }
+});
+
+
 
 // CTA Triple Home Page ends here
 
