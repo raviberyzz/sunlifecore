@@ -33,6 +33,5 @@ $(document).ready(function () {
             $('#sun-search').removeClass('in');
         }
     }
-    });
-     
+    });   
 });

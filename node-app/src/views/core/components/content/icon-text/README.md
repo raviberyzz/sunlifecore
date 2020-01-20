@@ -2,7 +2,7 @@
 JSON Format
 ```
 {
-    "icon-text-wrapper" : "cta-content-icon-wrapper",
+    "icon-text-wrapper" : "getting-started-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
