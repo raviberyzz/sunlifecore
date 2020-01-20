@@ -14,6 +14,7 @@ import javax.jcr.RepositoryException;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
@@ -28,13 +29,49 @@ import com.day.cq.wcm.api.Page;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * Sling model for SEO details.
+ * Sling model for Base Page details.
  *
  * @author MO92
  */
 @Model(adaptables = {
 		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
-public class SEOModel {
+public class BasePageModel {
+
+	/**
+	 * Gets the page category.
+	 *
+	 * @return the pageCategory
+	 */
+	public final String getPageCategory() {
+		return pageCategory;
+	}
+
+	/**
+	 * Sets the page category.
+	 *
+	 * @param pageCategory the pageCategory to set
+	 */
+	public final void setPageCategory(String pageCategory) {
+		this.pageCategory = pageCategory;
+	}
+
+	/**
+	 * Gets the page sub category.
+	 *
+	 * @return the pageSubCategory
+	 */
+	public final String getPageSubCategory() {
+		return pageSubCategory;
+	}
+
+	/**
+	 * Sets the page sub category.
+	 *
+	 * @param pageSubCategory the pageSubCategory to set
+	 */
+	public final void setPageSubCategory(String pageSubCategory) {
+		this.pageSubCategory = pageSubCategory;
+	}
 
 	/** The Constant OG_URL. */
 	static final String OG_URL = "og:url";
@@ -49,7 +86,7 @@ public class SEOModel {
 	static final String OG_DESCRIPTION = "og:description";
 
 	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(SEOModel.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BasePageModel.class);
 
 	/** The current page. */
 	@ScriptVariable
@@ -73,6 +110,14 @@ public class SEOModel {
 	@Inject
 	@Via("resource")
 	private String pageDescription;
+	
+	/** The page category. */
+	@Inject @Via("resource") @Default(values="")
+	private String pageCategory;
+	
+	/** The page sub category. */
+	@Inject @Via("resource") @Default(values="")
+	private String pageSubCategory;
 
 	/** The seo page title. */
 	@Inject
@@ -111,6 +156,40 @@ public class SEOModel {
 
 	/** The alt language links. */
 	private Map<String, String> altLanguageLinks;
+	
+	/** The analytics script. */
+	private String analyticsScriptPath;
+	
+	/**
+	 * @return the analyticsScript
+	 */
+	public final String getAnalyticsScriptPath() {
+		return analyticsScriptPath;
+	}
+
+	/**
+	 * @param analyticsScript the analyticsScript to set
+	 */
+	public final void setAnalyticsScriptPath(String analyticsScriptPath) {
+		this.analyticsScriptPath = analyticsScriptPath;
+	}
+
+	/**
+	 * @return the analyticsScriptlet
+	 */
+	public final String getAnalyticsScriptlet() {
+		return analyticsScriptlet;
+	}
+
+	/**
+	 * @param analyticsScriptlet the analyticsScriptlet to set
+	 */
+	public final void setAnalyticsScriptlet(String analyticsScriptlet) {
+		this.analyticsScriptlet = analyticsScriptlet;
+	}
+
+	/** The analytics scriptlet. */
+	private String analyticsScriptlet;
 
 	/**
 	 * Gets the meta data.
@@ -166,7 +245,8 @@ public class SEOModel {
 		final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
 		final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
 		final String ogTitle = null == seoPageTitle ? title + " | " + siteSuffix : seoPageTitle;
-
+		setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
+		setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
 		metaData = new HashMap<>();
 		metaData.put(OG_URL, ogUrl);
 		metaData.put(OG_DESCRIPTION, ogDescription);

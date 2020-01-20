@@ -1,7 +1,22 @@
-<sly data-sly-use.socialMedia="ca.sunlife.web.cms.core.models.SEOModel" />
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
 <meta property="${key}"
-      data-sly-repeat.key="${socialMedia.metaData.keySet}"
-      content="${socialMedia.metaData[key]}"/>
-<link rel="canonical" itemprop="url" href="${socialMedia.metaData['og:url']}"/>
-<link rel="alternate" data-sly-repeat.key="${socialMedia.altLanguageLinks}" 
-	hreflang="${key}" href="${socialMedia.altLanguageLinks[key]}"/>
+      data-sly-repeat.key="${baseModel.metaData.keySet}"
+      content="${baseModel.metaData[key]}"/>
+<link rel="canonical" itemprop="url" href="${baseModel.metaData['og:url']}"/>
+<link rel="alternate" data-sly-repeat.key="${baseModel.altLanguageLinks}" 
+	hreflang="${key}" href="${baseModel.altLanguageLinks[key]}"/>
+<!-- UDO starts here -->
+  <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
+    var utag_data={
+    "page_canonical_url" : "${baseModel.metaData['og:url']}",
+    "page_canonical_url_default" : "${baseModel.metaData['og:url']}",
+    "page_breadcrumb" : "/Home",
+    "page_language" : "en",
+    "page_category" : "${baseModel.pageCategory}",
+    "page_subcategory" : "${baseModel.pageSubCategory}"
+    }
+</div>
+  <!-- UDO ends here -->
+  <!-- Synchronous Tag Support starts here -->
+      <script src="${baseModel.analyticsScriptPath}" type="text/javascript"></script>
+  <!-- Synchronous Tag Support ends here -->
