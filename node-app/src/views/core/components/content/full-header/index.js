@@ -34,5 +34,13 @@ $(document).ready(function () {
         }
     }
     });
+    $('#search-btn').click(function () {
+        alert(1);
+        if ($('#sun-search').hasClass('in')) {
+            alert(2);
+            $("#search-btn").attr('aria-expanded', 'false');
+            $('#sun-search').removeClass('in');
+        }
+    });
      
 });

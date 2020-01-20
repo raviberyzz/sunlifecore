@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+/* Global Variable defining */
+var _locationBreadcrumb=utag_data.page_breadcrumb;
+
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -38,6 +41,7 @@ $(document).ready(function () {
 // Region and language menu analytics ends here
 
 // Sign In Module (Desktop Sign In button) analytics starts here
+
 // For Home Page Only
 function SignInHomeButton(){
     utag.link({
@@ -57,9 +61,11 @@ $('#signinbutton').click(function(){
 	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
 	"event_title"	: "Sign In",
 	"page_section" :  "Modal"   
-    });  
-    SignInHomeButton();
-    setTimeout(signinmodal,200); 
+    }); 
+    if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+        SignInHomeButton();
+    } 
+    setTimeout(signinmodal,200);
 })
 
 // Sign In Module (Desktop Sign In button) analytics ends here
@@ -73,7 +79,9 @@ $('#SignIn').click(function(){
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
-    SignInHomeButton();
+    if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+        SignInHomeButton();
+    }
     setTimeout(signinmodal,200);
 });
 // Sign In Modal (Mobile Sign In button) analytics ends here
@@ -100,7 +108,9 @@ function signinmodal() {
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
             //console.log("mobile sign in module expanding is not being tracked")
-            SignInHomePageError();           
+            if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+                SignInHomePageError();
+            }                  
     }
 }
 // Home page only
