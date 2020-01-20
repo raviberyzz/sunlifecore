@@ -3989,6 +3989,18 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 //Tabs analytics ends here
 });
 $(document).ready(function () {
+  function set_active(tab)
+  {
+    var tab_number=$(tab).index();
+    var tab_child=tab_number+1;
+    $(tab).addClass('cmp-tabs__tab--active');
+	  $(tab).attr('aria-selected','true');
+    $(tab).siblings().attr('aria-selected','false');
+    $(tab).siblings().removeClass('cmp-tabs__tab--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
+    $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
+    $(tab).siblings().attr('tabindex','-1');
+  }
   /* Tabs Accessibility Starts Here*/
   $('.tabs-wrapper ol li').keyup(function (event) {
 
@@ -4129,7 +4141,7 @@ $(document).ready(function(){
     var tab_number=$(tab).index();
     var tab_child=tab_number+1;
     $(tab).addClass('cmp-tabs__tab--active');
-	$(tab).attr('aria-selected','true');
+	  $(tab).attr('aria-selected','true');
     $(tab).siblings().attr('aria-selected','false');
     $(tab).siblings().removeClass('cmp-tabs__tab--active');
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
@@ -4482,12 +4494,6 @@ $(document).ready(function () {
       $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
    }
    );
-   $(".desktop-primary-navigation .nav-item.navigation").active(function () {
-      $(this).addClass('open');
-   }, function () {
-      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
-   }
-   );
    $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
       $(this).siblings().addClass('box-class');
    }, function () {
@@ -4709,6 +4715,7 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -4744,10 +4751,8 @@ $(document).ready(function () {
             $('#sun-search').removeClass('in');
         }
     }
-    });
-     
+    });   
 });
-
 
 $(document).ready(function () {
 	$('.site-level-notification').prepend('<i class="fa fa-close" tabindex="0"></i>');
