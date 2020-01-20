@@ -134,7 +134,7 @@ ul {
 @media (max-width:$mobile-screen-max) {
     .container-component {
         .cmp-container > div {
-            display: block;
+            display: block !important;
         }
     }
     .cross-cta-wrapper {
