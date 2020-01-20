@@ -2,6 +2,13 @@ $(document).ready(function () {
 
 /* Global Variable defining */
 var _locationBreadcrumb=utag_data.page_breadcrumb;
+var _pageLanguage=utag_data.page_language;
+    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+            var utmSource="slfca-hp";
+    }
+    else{
+        var utmSource="slfca";
+    }
 
 // search bar analytics starts here
 // Desktop search analytics starts here
@@ -62,7 +69,7 @@ $('#signinbutton').click(function(){
 	"event_title"	: "Sign In",
 	"page_section" :  "Modal"   
     }); 
-    if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
         SignInHomeButton();
     } 
     setTimeout(signinmodal,200);
@@ -79,7 +86,7 @@ $('#SignIn').click(function(){
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
-    if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
         SignInHomeButton();
     }
     setTimeout(signinmodal,200);
@@ -108,7 +115,7 @@ function signinmodal() {
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
             //console.log("mobile sign in module expanding is not being tracked")
-            if(utag_data.page_breadcrumb && _locationBreadcrumb=="/Home"){
+            if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
                 SignInHomePageError();
             }                  
     }
@@ -148,12 +155,10 @@ function rightNavAnalytics(btnTxt1){
     });
     var adv='advisor';
     if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
-        var WT={ac:''};
-        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
         utag.link({
-        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_source":utmSource, //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
         "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
-        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_content":_pageLanguage, //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
         "utm_campaign":"slfca"
         });
     }
