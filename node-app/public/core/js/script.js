@@ -3909,46 +3909,58 @@ else{
 // CTA Analytics starts here
 
 // CTA Dual starts here
-// $('.blue-icon-yellow-background .cmp-form-button').click(function(){
-//     var dual_cta_form_value =$(this).parent().siblings('text').children('.cmp-form-text').children('input').val();
-//     var dual_cta_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: dual_cta_button_value,
-//         "ev_data_one"   : dual_cta_form_value,
-//         "page_section" : "Global Module CTA Box"
-//     });  
-// });
+
+$('.global-module-content-cta-box').find('a').each(function(){
+    var linkclicked="";
+        $(this).click(function(){
+            if($(this).has('img').length>0){
+            linkclicked=$(this).find('img').attr('alt');
+            }else{
+                    linkclicked= $(event.target).text();
+                }
+        //console.log('event tracked successfully with name-'+linkclicked);
+        utag.link({"asset_type"	: "Module","asset_title"	: "Global Module CTA Box","event_type"	: "Click","event_title"	: linkclicked,"page_section" : "Global Module CTA Box"});
+        });
+});
 
 // CTA Dual ends here
 
 // CTA Triple Home Page starts here
 
-//need to add specific container id to select homepage cta
+$('#locate-advisors .cmp-form-button').click(function(){
+    if ($("#locate-advisors").parsley({}).isValid()) {
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
+        } catch (e) {
+        }
+    }
+});
 
-// $('.yellow-icon-white-background .button-class').click(function(){
-//     var dual_cta_form_value =$(this).parent().siblings('.input-wrapper').children('input').val();
-//     var dual_cta_button_value =$(this).text();
-//     utag.link({
-//         "asset_type"	: "Module",
-//         "asset_title"	: "Global Module CTA Box",
-//         "event_type"	: "Click",
-//         "event_title"	: dual_cta_button_value,
-//         "ev_data_one"   : dual_cta_form_value,
-//         "page_section" : "Global Module CTA Box"
-//     });  
-// });
+$('#get-a-quote .cmp-form-button').click(function(){
+    if ($("#get-a-quote").parsley({}).isValid()) {
+        // get the short name for the selected option
+        var shortName =  $('#get-a-quote .cmp-form-button').parent().siblings('.options').find('select :selected').attr('data-shortname');
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - get_a_quote_module - " + shortName});
+        } catch (e) {
+        }
+    }
 
-// $('#locate-advisors-btn').click(function(){
-//     if ($(".form-wrapper").parsley({}).isValid()) {
-//         try {
-//             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
-//         } catch (e) {
-//         }
-//     }
-// });
+});
+
+$('#cta-provider-search .cmp-form-button').click(function(){
+    if ($("#cta-provider-search").parsley({}).isValid()) {
+        //var groupLabel = $('#cta-provider-search-input :selected').parent().attr('label');
+        var textValue = $('#cta-provider-search .cmp-form-button').parent().siblings('.options').find('select :selected').val();
+        alert(textValue);
+        try {
+            utag.link({ev_type: "other", ev_action: "clk", ev_title: "provider search - homepage preselect", ev_data_one: groupLabel + "_" + textValue});
+        } catch (e) {
+        }
+    }
+});
+
+
 
 // CTA Triple Home Page ends here
 
@@ -4079,6 +4091,7 @@ $(document).ready(function () {
 });
 
 
+
 function demoFunction()
 {
 
@@ -4086,6 +4099,34 @@ function demoFunction()
 
 
 
+
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+    function modalWidth(){
+      var winWidth=$(window).width();
+      $("#mySignInModal").width(winWidth);
+      $("#mySignInModal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      modalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        modalWidth();
+      }
+    });
+    $('.icon-reg').html('');
+    var a1=$('#userIdDiv').html();
+    if(a1 && a1.indexOf("&nbsp;") != -1){
+      var updatedString = a1.replace("&nbsp;", "");
+      $('#userIdDiv').html(updatedString);
+    } 
+});     
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4117,35 +4158,6 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-
-
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-    function modalWidth(){
-      var winWidth=$(window).width();
-      $("#mySignInModal").width(winWidth);
-      $("#mySignInModal").addClass('horizontal-middle-align');
-    }
-    if ($(window).width() > 1024) {
-      modalWidth();
-    }
-    $(window).resize(function() {
-      if ($(window).width() > 1024) {
-        modalWidth();
-      }
-    });
-    $('.icon-reg').html('');
-    var a1=$('#userIdDiv').html();
-    if(a1 && a1.indexOf("&nbsp;") != -1){
-      var updatedString = a1.replace("&nbsp;", "");
-      $('#userIdDiv').html(updatedString);
-    } 
-});     
 
 
 $(document).ready(function () {
@@ -4572,6 +4584,21 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4626,21 +4653,6 @@ $(document).ready(function(){
    $('.cmp-dynamic-megamenu-grey').height(menuHeight);
     }
  );
-});
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
 });
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
@@ -4748,13 +4760,13 @@ $(document).ready(function () {
 
 });
 
-
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
+
 
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
