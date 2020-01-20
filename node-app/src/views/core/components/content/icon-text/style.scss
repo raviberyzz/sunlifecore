@@ -91,7 +91,7 @@
     .heading-4{
         font-weight: 700;
         line-height: 30px;
-        padding: 0 25px 9px 25px;
+        padding: 0 25px 24px 25px;
         top: -15px;
         background-color: $white-shade;
         float: left;
@@ -106,7 +106,7 @@
         padding-bottom: 24px;
         &>:not(:last-child)
         {
-            border-right: 1px solid $medium-grey-background;
+            border-right: 2px solid $medium-grey-background;
         }
         li{
             flex: 1;
