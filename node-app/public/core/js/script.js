@@ -4139,7 +4139,7 @@ $(document).ready(function(){
     var tab_number=$(tab).index();
     var tab_child=tab_number+1;
     $(tab).addClass('cmp-tabs__tab--active');
-	$(tab).attr('aria-selected','true');
+	  $(tab).attr('aria-selected','true');
     $(tab).siblings().attr('aria-selected','false');
     $(tab).siblings().removeClass('cmp-tabs__tab--active');
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
@@ -4487,12 +4487,6 @@ $(document).ready(function(){
 
 $(document).ready(function () {
    $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
-      $(this).addClass('open');
-   }, function () {
-      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
-   }
-   );
-   $(".desktop-primary-navigation .nav-item.navigation").active(function () {
       $(this).addClass('open');
    }, function () {
       $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
