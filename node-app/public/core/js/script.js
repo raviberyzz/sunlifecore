@@ -3757,16 +3757,8 @@ $(document).ready(function () {
 // Region and language menu analytics ends here
 
 // Sign In Module (Desktop Sign In button) analytics starts here
-$('#signinbutton').click(function(){
-    utag.link({"asset_type"	: "Module",
-	"asset_title"	: "Sign In - Main",
-	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-	"event_title"	: "Sign In",
-	"page_section" :  "Modal"
-
-    });
-    // For Home Page Only
+// For Home Page Only
+function SignInHomeButton(){
     utag.link({
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
@@ -3775,9 +3767,20 @@ $('#signinbutton').click(function(){
         "event_title"	: "Sign In",
         "page_section" : "Homepage main signin"
     });
-    
-setTimeout(signinmodal,200);
+}
+
+$('#signinbutton').click(function(){
+    utag.link({"asset_type"	: "Module",
+	"asset_title"	: "Sign In - Main",
+	"event_type"	: "Click",
+	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"event_title"	: "Sign In",
+	"page_section" :  "Modal"   
+    });  
+    SignInHomeButton();
+    setTimeout(signinmodal,200); 
 })
+
 // Sign In Module (Desktop Sign In button) analytics ends here
 
 // Sign In Modal (Mobile Sign In button) analytics starts here
@@ -3789,6 +3792,7 @@ $('#SignIn').click(function(){
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
+    SignInHomeButton();
     setTimeout(signinmodal,200);
 });
 // Sign In Modal (Mobile Sign In button) analytics ends here
@@ -3814,19 +3818,20 @@ function signinmodal() {
             "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
-            //console.log("mobile sign in module expanding is not being tracked");
-
-            // For homepage only
-            utag.link({
-                "asset_type"	: "Module",
-                "asset_title"	: "Sign In - Main",
-                "event_type"	: "On Page Impression",
-                "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
-                "event_title"	: "Error-" + "Expanding not tracked",
-                "page_section" : "Homepage main signin"
-            });
-            
+            //console.log("mobile sign in module expanding is not being tracked")
+            SignInHomePageError();           
     }
+}
+// Home page only
+function SignInHomePageError(){
+    utag.link({
+        "asset_type"	: "Module",
+        "asset_title"	: "Sign In - Main",
+        "event_type"	: "On Page Impression",
+        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "event_title"	: "Error-" + "Expanding not tracked",
+        "page_section" : "Homepage main signin"
+    });
 }
 // Sign In Modal (Sign-in-modal expansion) analytics ends here
 
@@ -3926,12 +3931,12 @@ $('.global-module-content-cta-box').find('a').each(function(){
 // CTA Dual ends here
 
 // CTA Triple Home Page starts here
-
 $('#locate-advisors .cmp-form-button').click(function(){
     if ($("#locate-advisors").parsley({}).isValid()) {
         try {
             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - find_an_advisor_module"});
         } catch (e) {
+            console.log("the error is "+e);
         }
     }
 });
@@ -3943,6 +3948,7 @@ $('#get-a-quote .cmp-form-button').click(function(){
         try {
             utag.link({ev_type: "other", ev_action: "clk", ev_title: "homepage - get_a_quote_module - " + shortName});
         } catch (e) {
+            console.log("the error is "+e);
         }
     }
 
@@ -3952,10 +3958,10 @@ $('#cta-provider-search .cmp-form-button').click(function(){
     if ($("#cta-provider-search").parsley({}).isValid()) {
         //var groupLabel = $('#cta-provider-search-input :selected').parent().attr('label');
         var textValue = $('#cta-provider-search .cmp-form-button').parent().siblings('.options').find('select :selected').val();
-        alert(textValue);
         try {
             utag.link({ev_type: "other", ev_action: "clk", ev_title: "provider search - homepage preselect", ev_data_one: groupLabel + "_" + textValue});
         } catch (e) {
+            console.log("the error is "+e);
         }
     }
 });
@@ -4100,33 +4106,6 @@ function demoFunction()
 
 
 
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-    function modalWidth(){
-      var winWidth=$(window).width();
-      $("#mySignInModal").width(winWidth);
-      $("#mySignInModal").addClass('horizontal-middle-align');
-    }
-    if ($(window).width() > 1024) {
-      modalWidth();
-    }
-    $(window).resize(function() {
-      if ($(window).width() > 1024) {
-        modalWidth();
-      }
-    });
-    $('.icon-reg').html('');
-    var a1=$('#userIdDiv').html();
-    if(a1 && a1.indexOf("&nbsp;") != -1){
-      var updatedString = a1.replace("&nbsp;", "");
-      $('#userIdDiv').html(updatedString);
-    } 
-});     
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4158,6 +4137,33 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+    function modalWidth(){
+      var winWidth=$(window).width();
+      $("#mySignInModal").width(winWidth);
+      $("#mySignInModal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      modalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        modalWidth();
+      }
+    });
+    $('.icon-reg').html('');
+    var a1=$('#userIdDiv').html();
+    if(a1 && a1.indexOf("&nbsp;") != -1){
+      var updatedString = a1.replace("&nbsp;", "");
+      $('#userIdDiv').html(updatedString);
+    } 
+});     
 
 
 $(document).ready(function () {
@@ -4584,21 +4590,6 @@ $(document).ready(function () {
         }
     });  
 });   
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4655,6 +4646,21 @@ $(document).ready(function(){
  );
 });
 $(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
+$(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
 		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
@@ -4703,7 +4709,6 @@ $(document).ready(function(){
     });
 });
 
-
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -4743,6 +4748,7 @@ $(document).ready(function () {
      
 });
 
+
 $(document).ready(function () {
 	$('.site-level-notification').prepend('<i class="fa fa-close" tabindex="0"></i>');
 	$('.site-level-notification .fa-close').click(function () {
@@ -4760,13 +4766,13 @@ $(document).ready(function () {
 
 });
 
+
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
 
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
