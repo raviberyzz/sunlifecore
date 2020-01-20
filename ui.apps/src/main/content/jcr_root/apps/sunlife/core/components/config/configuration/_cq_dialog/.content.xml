@@ -40,6 +40,16 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Alternate Languages"
                                         name="./alternateLanguages"/>
+                                    <analyticsScriptPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Analytics Synchronous Script Path"
+                                        name="./analyticsScriptPath"/>
+                                    <analyticsTealiumScript
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Analytics Tealium Script"
+                                        name="./analyticsTealiumScript"/>
                                 </items>
                             </section-general>
                             <section-page
