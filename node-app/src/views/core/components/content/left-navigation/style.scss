@@ -7,10 +7,11 @@
             .cmp-navigation__item-link{
                 color: $dark-grey-color;
                 font-size: 1rem;
-                padding: 0 20px;
+                padding-left: 8px;
                 line-height: 26px;
             }
             .cmp-navigation__group{
+                margin-top: 16px;
                 .cmp-navigation__item--active{
                     .cmp-navigation__item-link{
                         border-bottom: 2px solid $medium-yellow-background;
@@ -18,12 +19,12 @@
                         text-decoration: none;
                     }
                 }
-                
                 .cmp-navigation__item--level-1{
-                    padding: 5px 0 5px 30px;
+                    padding: 0 0 8px 16px;
                     .cmp-navigation__group{
+                        margin-top: 0;
                         .cmp-navigation__item--level-2{
-                            padding: 5px 0 5px 30px;   
+                            padding: 0 0 8px 8px;   
                         }
                         .cmp-navigation__item--active{
                             .cmp-navigation__item-link{
@@ -37,16 +38,19 @@
                         font-size: 1rem;
                         color: $medium-blue-color;
                         font-weight: 400;
+                        text-decoration: none;
                     }
                     .cmp-navigation__item-link[aria-expanded="false"]:after {
                         content: "\f105";
                         font-family: FontAwesome;
                         padding-right: 10px;
+                        padding-left: 4px;
                     }
                     .cmp-navigation__item-link[aria-expanded="true"]:after {
                         content: "\f107";
                         font-family: FontAwesome;
                         padding-right: 10px;
+                        padding-left: 4px;
                     }
                 }
                 .cmp-navigation__item--active{
