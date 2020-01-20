@@ -58,6 +58,7 @@
     .tab-accordian-heading{
         font-size: 16px;
         font-weight: 700;
+        padding: 20px;
         color: $dark-grey-color;
         background-color: $light-cool-blue-color;
         & + *{
@@ -86,8 +87,9 @@
         }
         .cmp-tabs__tabpanel {
             display: block;
-            padding: 15px 0; 
+            padding: 0; 
             border: none;
+            margin-top: 5px;
         }
         .tab-accordian-heading + *{
             display: none;
