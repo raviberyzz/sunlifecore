@@ -9,9 +9,7 @@
                 {{#each first-level-list}}
                     <li class="cmp-navigation__item cmp-navigation__item--level-1 {{cmp-navigation__item--active}}">
                         {{#if second-level-present}}
-                            <a href="javascript:void(0)" class="cmp-navigation__item-link" aria-current="page" aria-expanded="false" data-toggle="collapse" data-parent=".cmp-navigation__group">
-                                {{first-level-link-name}}
-                            </a>
+                            <a href="javascript:void(0)" class="cmp-navigation__item-link" aria-current="page" aria-expanded="false" data-toggle="collapse" data-parent=".cmp-navigation__group">{{first-level-link-name}}</a>
                             <ul class="cmp-navigation__group">
                                 {{#each second-level-list}}
                                     <li class="cmp-navigation__item cmp-navigation__item--level-2 {{cmp-navigation__item--active}}">
