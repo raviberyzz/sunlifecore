@@ -33,14 +33,5 @@ $(document).ready(function () {
             $('#sun-search').removeClass('in');
         }
     }
-    });
-    // $("li.dropdown.nav-item.navigation").keyup(function(event) {
-    //     if ( event.which == 9 ) {
-    //       //$(this).css({'outline':'#08f auto 2px'});
-    //           alert( "Handler for .keypress() called." );
-            
-    //      }
-           
-            //  });
-      
+    });   
 });

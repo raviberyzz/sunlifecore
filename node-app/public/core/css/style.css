@@ -3673,7 +3673,6 @@ footer {
 /* aem class ends here */
 
 
-<<<<<<< HEAD
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
   background-color: #F4F7F6;
@@ -3722,8 +3721,6 @@ footer {
       content: "\f056";
       color: #FFCB05; }
 
-=======
->>>>>>> 15310a2594391dd53b5f1fe986271086498912ab
 input[type=text] {
   font-family: 'sunlife-sans';
   font-weight: 400;
@@ -4655,7 +4652,6 @@ input[type=text] {
 .xf-content-height {
   margin: 0; }
 
-<<<<<<< HEAD
 .desktop-primary-navigation {
   margin-left: 166px; }
   .desktop-primary-navigation .navigation {
@@ -4732,8 +4728,6 @@ input[type=text] {
 .xf-content-height {
   margin: 0; }
 
-=======
->>>>>>> 15310a2594391dd53b5f1fe986271086498912ab
 .slf-mobile-header-wrapper {
   position: fixed;
   /* Mobile Header Start */
@@ -4996,8 +4990,6 @@ input[type=text] {
   .slf-mobile-header-wrapper {
     display: none; } }
 
-<<<<<<< HEAD
-=======
 .icon-display-none {
   display: none; }
 
@@ -5074,7 +5066,6 @@ input[type=text] {
   .desktop-primary-navigation-yellow .nav .open > a {
     background-color: #EAAB00; }
 
->>>>>>> 15310a2594391dd53b5f1fe986271086498912ab
 .slf-header-mega-menu2 {
   border: 3px solid #FFCB05;
   padding: 0;
@@ -6376,8 +6367,6 @@ ul {
   .article-wrapper .article-rating {
     margin-bottom: 30px; }
 
-<<<<<<< HEAD
-=======
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
   background-color: #F4F7F6;
@@ -6426,7 +6415,6 @@ ul {
       content: "\f056";
       color: #FFCB05; }
 
->>>>>>> 15310a2594391dd53b5f1fe986271086498912ab
 .show-only-in-editorial {
   display: none; }
 
