@@ -15,6 +15,18 @@
         .desktop-header-content{
             padding:0 15px 18px 15px;
             height:92px;
+             /*Logo starts here*/
+             .desktop-sunlife-logo{
+                  position:absolute;
+                  bottom:5px;
+                img{
+                    width:149px;
+                    height:36px;
+                    cursor:pointer;
+                    margin-top:13px;
+                }
+            }
+            /*Logo end here*/
             /*Utility Nav starts here*/
             .desktop-utility-nav{
                 float:right;
@@ -31,24 +43,12 @@
             /* Utility Nav Ends here */
             .desktop-sunlife-navigation{
                 padding:0;
-                /*Logo starts here*/
-                .desktop-sunlife-logo{
-                    float:left;
-                    padding:0;
-                    height:100%;
-                    img{
-                        width:149px;
-                        height:36px;
-                        cursor:pointer;
-                        margin-top:13px;
-                    }
-                }
-                /*Logo end here*/
+               
                 /*Mega Menu strats here*/
                 .desktop-navigation{
                     position:static;
                     float:left;
-                    margin:-5px 0 0 50px;
+                    margin:-5px 0 0 200px;
                     .desktop-mega-menu{
                         .desktop-primary-navigation {
                             margin-left: 0px;
