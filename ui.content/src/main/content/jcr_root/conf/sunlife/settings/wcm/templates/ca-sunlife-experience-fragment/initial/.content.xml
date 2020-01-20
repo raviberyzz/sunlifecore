@@ -6,9 +6,7 @@
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="sunlife/core/components/structure/vanilla-page">
-        <root
-            jcr:lastModified="{Date}2019-12-02T12:32:36.862+05:30"
-            jcr:lastModifiedBy="admin"
+        <root            
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid"/>
     </jcr:content>

@@ -34,6 +34,7 @@ $(document).ready(function () {
         }
     }
     });
+<<<<<<< HEAD
     
     // Accessibility starts here
     $('.search-icon-container').keyup(function (event) {
@@ -84,4 +85,7 @@ $(document).ready(function () {
         }
     });
     // Accessibility ends here 
+=======
+     
+>>>>>>> 7eda008e428cde323e3de0e3b68919d1222bc54a
 });

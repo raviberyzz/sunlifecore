@@ -1,14 +1,14 @@
 <header>
   <div class="slf-header-wrapper">
     <div data-sly-test = "${properties.listFromSignin == 'signintrue'}" class="desktop-sign-in">
-         <div class="modal fade sign-in-modal-wrapper" id="mySignInModal" role="dialog">
+         <div class="modal fade sign-in-modal-wrapper" data-section="${properties.signinAnalyticsId ? properties.signinAnalyticsId  : 'header-sign-in'}" id="mySignInModal" role="dialog">
               <div class="modal-dialog sign-in-modaldialog">
         			${properties.text  @context ='html'}     
               </div>
       </div>    </div>
     <div class="desktop-header-wrapper">
            <div data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="desktop-search-bar">
-        <div class="search-bar-wrapper collapse" id="sun-search">
+        <div class="search-bar-wrapper collapse" data-section="${properties.searchAnalyticsId ? properties.searchAnalyticsId : 'header-search'}" id="sun-search">
             <div class="search-box">
                 <div class="close-div"><a data-toggle="collapse" aria-expanded="true" href="#sun-search"> <span
                             class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
@@ -54,7 +54,7 @@
                       <ul data-sly-use.listModel="ca.sunlife.web.cms.core.models.UtilityNav" role="navigation" aria-label="Helpful links">
                                <sly data-sly-list.links="${listModel.navlinks}">
                               <li>
-                               <a href="${links.linkUrl @ extension = 'html'}">${links.linkName}</a>
+                               <a href="${links.linkUrl @ extension = 'html'}" tabindex="2">${links.linkName}</a>
                               </li>
                               </sly>
                       </ul>
@@ -63,7 +63,7 @@
                           <ul>
                               <li data-sly-test = "${properties.listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
                                  <div class="lang-btn" id="language-btn" role="button"  
-                                      data-toggle="collapse" data-target="#sun-language" aria-controls="sun-language" tabindex="0" aria-expanded="false">
+                                      data-toggle="collapse" data-target="#sun-language" aria-controls="sun-language" tabindex="2" aria-expanded="false">
                                       <label class="sr-only">
                                           Expand or collapse region and language section
                                           Développer ou réduire le volet Régions et langue
@@ -73,7 +73,7 @@
                               </li>
                                   <li data-sly-test = "${properties.listFromSearch == 'searchtrue'}" class="search-icon-container" role="search" aria-label="search-bar">
                                       <div class="srch-btn" id="search-btn" data-target="#sun-search"        
-                                       data-toggle="collapse" role="button" tabindex="0" aria-expanded="false">
+                                       data-toggle="collapse" role="button" tabindex="2" aria-expanded="false">
                                           <a>
                                            ${properties.searchTitle}
                                               <label class="sr-only">
@@ -88,7 +88,7 @@
               </div>
         </div>
         <div class="col-xs-12 desktop-sunlife-navigation">
-          <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="desktop-sunlife-logo">
+          <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="desktop-sunlife-logo" data-section="${properties.logoAnalyticsId ? properties.logoAnalyticsId : 'sunlife-logo'}" tabindex="1">
            <sly data-sly-list.links="${listModel.links}">
             <a href="${links.linkUrl @ extension = 'html' }">
               <img class="vertical-middle-align" alt="sunlife logo"
@@ -99,7 +99,7 @@
           </div>
           <div data-sly-test = "${properties.listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
-              <div class=desktop-primary-navigation>
+              <div class="desktop-primary-navigation" data-section="${properties.navigationAnalyticsId ? properties.navigationAnalyticsId : 'nav-main'}">
                 <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation"
                   aria-label="Main" data-sly-use.listModel="ca.sunlife.web.cms.core.models.MegaMenuModel">
                  <sly data-sly-list.head = "${listModel.meganavlinks.listChildren}">
@@ -141,7 +141,7 @@
                                       <span class="icon-bar" id="a3">&nbsp;</span>
                               </div>
                       </div>
-                      <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="slf-header-mobile-logo">
+                      <div data-sly-test = "${properties.listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="slf-header-mobile-logo"  data-section="${properties.logoAnalyticsId ? properties.logoAnalyticsId : 'sunlife-logo'}">
                             <sly data-sly-list.links="${listModel.links}">
                               <a class="mobile-sun-pic" href="${links.linkUrl @ extension = 'html' }">
                                       <picture>

@@ -1,21 +1,23 @@
 @import '../../../base/core';
 .form-group-wrapper {
-margin: 20px 0;
-
+   
+    margin: 35px 0;
 }
-
+select::-ms-expand {
+    display: none;
+}
 .cmp-form-options--drop-down{
     position: relative;
     display: inline-table;
     width: auto;
     &::before{
         content: "\f107";
-    font-family: FontAwesome;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 16px;
-    top: 38px;
-    font-weight: 700;
+        font-family: FontAwesome;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 16px;
+        top: 38px;
+        font-weight: 700;
     }
 }
 
@@ -35,6 +37,7 @@ margin: 20px 0;
     background-color: $white-shade;
     color: $dark-grey-color;
 }
+
 .cmp-form-options__field--multi-drop-down{
     border: 1px solid $medium-grey-background;
     border-radius: 0;
@@ -52,28 +55,54 @@ margin: 20px 0;
 }
 input[type=checkbox] {
     margin: 0;
-    &::after{
+    &{
         display: block;
         content: '';
         position: absolute;
         visibility: visible;
         width: 24px;
         height: 24px;
-        border: 1px solid $medium-grey-background; 
-        background: $white-shade; 
+        border: 1px solid $medium-grey-background;
+        background: $white-shade;
         cursor: pointer;
+        -webkit-appearance: none;
     }
-    &:checked:after {
+    &:checked {
         content: '\f00c';
         font-family: FontAwesome;
         position: absolute;
         font-size: 1rem;
         text-align: center;
-        color: $dark-grey-color; 
+        color: $dark-grey-color;
         transition: all 0.2s;
         line-height: 18px;
     }
 }
+
+// input[type=checkbox] {
+//     margin: 0;
+//     &::after{
+//         display: block;
+//         content: '';
+//         position: absolute;
+//         visibility: visible;
+//         width: 24px;
+//         height: 24px;
+//         border: 1px solid $medium-grey-background;
+//         background: $white-shade;
+//         cursor: pointer;
+//     }
+//     &:checked:after {
+//         content: '\f00c';
+//         font-family: FontAwesome;
+//         position: absolute;
+//         font-size: 1rem;
+//         text-align: center;
+//         color: $dark-grey-color;
+//         transition: all 0.2s;
+//         line-height: 18px;
+//     }
+// }
 
 
 input[type=radio] {
@@ -90,7 +119,7 @@ input[type=radio] {
     &:checked {
         background-color: $medium-blue-color;
     }
-        
+
 }
 .cmp-form-options--checkbox{
     .cmp-form-options__field-description{
