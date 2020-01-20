@@ -73,7 +73,7 @@ input[type=checkbox] {
         cursor: pointer;
         -webkit-appearance: none;
     }
-    &:checked {
+    &:checked:after{
         content: '\f00c';
         font-family: FontAwesome;
         position: absolute;
