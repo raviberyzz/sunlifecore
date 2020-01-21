@@ -4143,13 +4143,27 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 
 
 
-function demoFunction()
-{
-
-}
-
-
-
+$(function() {
+  let tableHeader = $("table tbody tr:first-child");
+  let theaderPosition = tableHeader.offset().top;
+  let position = 0;
+  let screenWidth = $(window).width();
+  //sticky header function on scroll 
+  $(window).on("scroll", function() {
+    if (window.pageYOffset > theaderPosition) {
+      position = window.pageYOffset - theaderPosition;
+      if (screenWidth < 1024) {
+        let mobilePos = position - 30;
+        tableHeader.attr("style", "transform: translateY(" + mobilePos + "px)");
+      } else {
+        tableHeader.attr("style", "transform: translateY(" + position + "px)");
+      }
+    } else if (position !== 0) {
+      position = 0;
+      tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+    }
+  });
+});
 
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
@@ -4182,28 +4196,6 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-$(function() {
-  let tableHeader = $("table tbody tr:first-child");
-  let theaderPosition = tableHeader.offset().top;
-  let position = 0;
-  let screenWidth = $(window).width();
-  //sticky header function on scroll 
-  $(window).on("scroll", function() {
-    if (window.pageYOffset > theaderPosition) {
-      position = window.pageYOffset - theaderPosition;
-      if (screenWidth < 1024) {
-        let mobilePos = position - 30;
-        tableHeader.attr("style", "transform: translateY(" + mobilePos + "px)");
-      } else {
-        tableHeader.attr("style", "transform: translateY(" + position + "px)");
-      }
-    } else if (position !== 0) {
-      position = 0;
-      tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-    }
-  });
-});
-
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4889,3 +4881,10 @@ $(document).ready(function(){
 	});
     
 });
+
+
+
+function demoFunction()
+{
+
+}
