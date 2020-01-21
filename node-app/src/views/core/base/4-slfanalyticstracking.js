@@ -1,14 +1,24 @@
 $(document).ready(function () {
 
-/* Global Variable defining */
+/* Global Variable defining starts here*/
+
 var _locationBreadcrumb=utag_data.page_breadcrumb;
-var _pageLanguage=utag_data.page_language;
-    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
-            var utmSource="slfca-hp";
-    }
-    else{
-        var utmSource="slfca";
-    }
+var _pageLanguage=' ';
+if(utag_data.page_language){
+    _pageLanguage=utag_data.page_language;
+}
+if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+        var utmSource="slfca-hp";
+}
+else{
+    var utmSource="slfca";
+}
+var _pageCannonicalURL=' ';
+if(utag_data.page_canonical_url_default){   
+    _pageCannonicalURL=utag_data.page_canonical_url_default;
+}
+
+/* Global Variable defining ends here*/
 
 // search bar analytics starts here
 // Desktop search analytics starts here
@@ -55,7 +65,7 @@ function SignInHomeButton(){
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
         "event_type"	: "Click",
-        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "canonical_url" : _pageCannonicalURL,
         "event_title"	: "Sign In",
         "page_section" : "Homepage main signin"
     });
@@ -65,7 +75,7 @@ $('#signinbutton').click(function(){
     utag.link({"asset_type"	: "Module",
 	"asset_title"	: "Sign In - Main",
 	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"canonical_url" : _pageCannonicalURL,
 	"event_title"	: "Sign In",
 	"page_section" :  "Modal"   
     }); 
@@ -82,7 +92,7 @@ $('#SignIn').click(function(){
     utag.link({"asset_type"	: "Module",
 	"asset_title"	: "Sign In - Modal",
 	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"canonical_url" : _pageCannonicalURL,
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
@@ -111,7 +121,7 @@ function signinmodal() {
             "asset_type"	: "Module",
             "asset_title"	: "Sign In - Modal",
             "event_type"	: "On Page Impression",
-            "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+            "canonical_url" : _pageCannonicalURL,
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
             //console.log("mobile sign in module expanding is not being tracked")
@@ -126,7 +136,7 @@ function SignInHomePageError(){
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
         "event_type"	: "On Page Impression",
-        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "canonical_url" : _pageCannonicalURL,
         "event_title"	: "Error-" + "Expanding not tracked",
         "page_section" : "Homepage main signin"
     });
