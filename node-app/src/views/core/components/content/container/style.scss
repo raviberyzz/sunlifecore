@@ -56,7 +56,7 @@ ul {
             padding-bottom: 64px;
         }
         &>:last-child{
-            padding-bottom: 40px;
+            margin-bottom: 40px;
         }
         .icon-text {
             padding: 16px;
@@ -83,6 +83,20 @@ ul {
         .icon-texts {
             padding-bottom: 0;
             display: table;
+        }
+    }
+}
+.cta-content-icon-wrapper {
+    .container-component {
+        border-right: 20px solid $white-shade;
+        &>:last-child {
+            border-right: none;
+        }
+        .form-container-component {
+            padding: 0 16px 16px 16px;
+            .primary-blue-button-form {
+                text-align: right;
+            }
         }
     }
 }
