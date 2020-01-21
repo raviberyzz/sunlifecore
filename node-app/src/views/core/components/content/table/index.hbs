@@ -1,0 +1,14 @@
+﻿<div class="slf-table table-responsive mar-top-15 mar-bottom-15 {{variant}}">
+  <table  cellpadding="1" cellspacing="0" width="100%" height="100%">
+    <caption>Financial highlights</caption>
+    <tbody>
+      <!--looping through the table header -->
+      <tr>{{#each thead}}<th scope="col">{{{this}}}</th>{{/each}}</tr>
+      {{#each tbody}}
+      <!-- looping through the table-body cells -->
+      <tr>{{#each this}}<td>{{{this}}}{{/each}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
