@@ -82,15 +82,15 @@
         <a tabindex="0">${languageRegionModel.backButtonText}</a>
     </div>
     <div class="col-xs-12 slf-tab-region ">
-        <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target="#region-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target=".region-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
         </div>
-        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target="#language-tab" data-toggle="tab" tabindex="0">
+        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target=".language-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.languageSectionTitleMobile ? languageRegionModel.languageSectionTitleMobile : languageRegionModel.languageSectionTitle}
         </div>
     </div>
     <div class="col-xs-12 tab-content">
-        <div id="region-tab" class="tab-pane region-tab ${regionsTabSelected?'active':''}">
+        <div class="tab-pane region-tab ${regionsTabSelected?'active':''}">
             <ul class="list-unstyled" data-sly-list.regionObj="${languageRegionModel.regions}">
                 <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
                 <li data-sly-test="${regionObj.subLinks}">
@@ -111,7 +111,7 @@
                 </li>
             </ul>
         </div>
-        <div id="language-tab" class="tab-pane language-tab ${languagesTabSelected?'active':''}">
+        <div class="tab-pane language-tab ${languagesTabSelected?'active':''}">
             <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
                 <li class="${languageLinkList.first ? 'nav-select' : 'not-bold'}">
                     <a href="${languageLink.subLinkUrl @ extension = 'html'}">${languageLink.subLinkName}</a>
