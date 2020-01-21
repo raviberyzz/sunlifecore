@@ -116,4 +116,12 @@ $(document).ready(function () {
 // 	  }
 // 	});
 /* Footer accessibility ends here */
+
+/* Accordion accessibility starts here */
+$('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
+  if (e.which === 1) {
+      $(this).css({'outline':'none'});
+  }
+});
+/* Accordion accessibility ends here */
 });

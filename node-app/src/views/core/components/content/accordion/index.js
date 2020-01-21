@@ -31,10 +31,18 @@ $(document).ready(function(){
             $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     }
-    /* For accessibility */
-    $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
-        if (e.which === 1) {
-            $(this).css({'outline':'none'});
-        }
-    });
+    
+    /* for Link list */
+    $('.cmp-accordion__panel .accordion-heading').click(function () {
+		$(this).siblings('.list-div').toggle('collapse');
+		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
+		$(this).parent().parent().parent().siblings().children().children().children('.list-div').siblings('h3').attr('aria-expanded', false);
+		if ($(this).attr('aria-expanded') == 'true') {
+			$(this).attr('aria-expanded', false);
+		}
+		else if ($(this).attr('aria-expanded') == 'false') {
+			$(this).attr('aria-expanded', true);
+		}
+	});
+    
 });

@@ -3719,6 +3719,26 @@ $(document).ready(function () {
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
 $(document).ready(function () {
 
+/* Global Variable defining starts here*/
+
+var _locationBreadcrumb=utag_data.page_breadcrumb;
+var _pageLanguage=' ';
+if(utag_data.page_language){
+    _pageLanguage=utag_data.page_language;
+}
+if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+        var utmSource="slfca-hp";
+}
+else{
+    var utmSource="slfca";
+}
+var _pageCannonicalURL=' ';
+if(utag_data.page_canonical_url_default){   
+    _pageCannonicalURL=utag_data.page_canonical_url_default;
+}
+
+/* Global Variable defining ends here*/
+
 // search bar analytics starts here
 // Desktop search analytics starts here
     $('#search-btn').click(function () {
@@ -3757,13 +3777,14 @@ $(document).ready(function () {
 // Region and language menu analytics ends here
 
 // Sign In Module (Desktop Sign In button) analytics starts here
+
 // For Home Page Only
 function SignInHomeButton(){
     utag.link({
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
         "event_type"	: "Click",
-        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "canonical_url" : _pageCannonicalURL,
         "event_title"	: "Sign In",
         "page_section" : "Homepage main signin"
     });
@@ -3773,12 +3794,14 @@ $('#signinbutton').click(function(){
     utag.link({"asset_type"	: "Module",
 	"asset_title"	: "Sign In - Main",
 	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"canonical_url" : _pageCannonicalURL,
 	"event_title"	: "Sign In",
 	"page_section" :  "Modal"   
-    });  
-    SignInHomeButton();
-    setTimeout(signinmodal,200); 
+    }); 
+    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+        SignInHomeButton();
+    } 
+    setTimeout(signinmodal,200);
 })
 
 // Sign In Module (Desktop Sign In button) analytics ends here
@@ -3788,11 +3811,13 @@ $('#SignIn').click(function(){
     utag.link({"asset_type"	: "Module",
 	"asset_title"	: "Sign In - Modal",
 	"event_type"	: "Click",
-	"canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+	"canonical_url" : _pageCannonicalURL,
 	"event_title"	: "Sign In",
 	"page_section" : "Modal"
     });
-    SignInHomeButton();
+    if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+        SignInHomeButton();
+    }
     setTimeout(signinmodal,200);
 });
 // Sign In Modal (Mobile Sign In button) analytics ends here
@@ -3815,11 +3840,13 @@ function signinmodal() {
             "asset_type"	: "Module",
             "asset_title"	: "Sign In - Modal",
             "event_type"	: "On Page Impression",
-            "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+            "canonical_url" : _pageCannonicalURL,
             "event_title"	: "Error-" + "Expanding not tracked",
             "page_section" : "Modal"});
             //console.log("mobile sign in module expanding is not being tracked")
-            SignInHomePageError();           
+            if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+                SignInHomePageError();
+            }                  
     }
 }
 // Home page only
@@ -3828,7 +3855,7 @@ function SignInHomePageError(){
         "asset_type"	: "Module",
         "asset_title"	: "Sign In - Main",
         "event_type"	: "On Page Impression",
-        "canonical_url" : "https://www.sunlife.ca/ca?vgnLocale=en_CA",
+        "canonical_url" : _pageCannonicalURL,
         "event_title"	: "Error-" + "Expanding not tracked",
         "page_section" : "Homepage main signin"
     });
@@ -3857,12 +3884,10 @@ function rightNavAnalytics(btnTxt1){
     });
     var adv='advisor';
     if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
-        var WT={ac:''};
-        WT.ac=["en-ca","Web:SLF_evergreen","slfca-hp","slfca",", pcbutton"];
         utag.link({
-        "utm_source":"slfca-hp", //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
+        "utm_source":utmSource, //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
         "utm_medium":"pcwidget", //[INSERT TYPE OF LINK pcwidget for widget]
-        "utm_content":"en-ca", //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
+        "utm_content":_pageLanguage, //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
         "utm_campaign":"slfca"
         });
     }
@@ -4106,8 +4131,15 @@ $(document).ready(function () {
 // 	  }
 // 	});
 /* Footer accessibility ends here */
-});
 
+/* Accordion accessibility starts here */
+$('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
+  if (e.which === 1) {
+      $(this).css({'outline':'none'});
+  }
+});
+/* Accordion accessibility ends here */
+});
 
 
 
@@ -4115,6 +4147,7 @@ function demoFunction()
 {
 
 }
+
 
 
 
@@ -4171,6 +4204,7 @@ $(function() {
   });
 });
 
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4198,7 +4232,6 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
-
 
 $(document).ready(function(){
     $('.content-region .nav-select').parent().addClass('in');
@@ -4688,6 +4721,26 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
 })
 });
+$(document).ready(function(){
+    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
+    $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
+    $('.cmp-navigation__item--level-1').children('ul').children('li').not('.cmp-navigation__item--active').children('a').css({'border':'none','font-weight' : 400});
+    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
+    }
+    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
+        $(this).siblings('.cmp-navigation__group').toggle('collapse');
+        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
+        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
+        if($(this).attr('aria-expanded')=='true'){
+            $(this).attr('aria-expanded',false);
+        }
+        else if($(this).attr('aria-expanded')=='false'){
+            $(this).attr('aria-expanded',true);
+        }
+    });
+});
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
@@ -4716,26 +4769,6 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
-$(document).ready(function(){
-    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
-    $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
-    $('.cmp-navigation__item--level-1').children('ul').children('li').not('.cmp-navigation__item--active').children('a').css({'border':'none','font-weight' : 400});
-    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
-    }
-    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
-        $(this).siblings('.cmp-navigation__group').toggle('collapse');
-        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
-        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
-        if($(this).attr('aria-expanded')=='true'){
-            $(this).attr('aria-expanded',false);
-        }
-        else if($(this).attr('aria-expanded')=='false'){
-            $(this).attr('aria-expanded',true);
-        }
-    });
-});
 
 
 $(document).ready(function () {
@@ -4743,8 +4776,7 @@ $(document).ready(function () {
     $(".signIn-button").attr('maxlength', '30');
     $('#language-btn-container').click(function () {
         if ($('#sun-search').hasClass('in')) {
-            $("#search-btn").attr('aria-expanded', 'false');
-            $('#sun-search').removeClass('in');
+           searchClose();
         }
     });
     $('#search-btn').click(function () {
@@ -4764,16 +4796,24 @@ $(document).ready(function () {
     $('.sunLanguageCrossBtn').click(function () {
         $("#language-btn").attr('aria-expanded', 'false');
     });
-    
+      
     $(document).mouseup(function(e){
     var searchBar = $("#sun-search");
-    if (e.which === 1) {
-        if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
-            $("#search-btn").attr('aria-expanded', 'false');
-            $('#sun-search').removeClass('in');
+    if($('#sun-search').hasClass('in')){
+        if (e.which === 1) {
+            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
+                searchClose();
+                setTimeout(searchClose,500);
+                event.stopImmediatePropagation();
+            }
         }
     }
-    });   
+    });
+    function searchClose(){
+        $("#search-btn").attr('aria-expanded', 'false');
+        $('#sun-search').removeClass('in');
+    }
+     
 });
 
 $(document).ready(function () {
@@ -4834,10 +4874,18 @@ $(document).ready(function(){
             $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
         }
     }
-    /* For accessibility */
-    $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
-        if (e.which === 1) {
-            $(this).css({'outline':'none'});
-        }
-    });
+    
+    /* for Link list */
+    $('.cmp-accordion__panel .accordion-heading').click(function () {
+		$(this).siblings('.list-div').toggle('collapse');
+		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
+		$(this).parent().parent().parent().siblings().children().children().children('.list-div').siblings('h3').attr('aria-expanded', false);
+		if ($(this).attr('aria-expanded') == 'true') {
+			$(this).attr('aria-expanded', false);
+		}
+		else if ($(this).attr('aria-expanded') == 'false') {
+			$(this).attr('aria-expanded', true);
+		}
+	});
+    
 });
