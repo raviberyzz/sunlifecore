@@ -4061,60 +4061,60 @@ $(document).ready(function () {
 });
 /* Tabs Accessibility Ends Here*/
 
-/* Full Header accessibility starts here */
-     $('.search-icon-container').keyup(function (event) {
+// /* Full Header accessibility starts here */ //This is onhold due to header restructuring
+//      $('.search-icon-container').keyup(function (event) {
 
-        if (event.keyCode == 13) {
-            if ($('#sun-search').hasClass('in')) {
-                $('#sun-search').removeClass('in');
-                $("#search-btn").attr('aria-expanded', 'false');
-            }
-            else {
-                $('#sun-search').css("height","128px");
-                $('#sun-search').addClass('in');
-                $("#search-btn").attr('aria-expanded', 'true');
-                $("#language-btn").attr('aria-expanded', 'false');
-                $("#sun-language").removeClass('in');
-                $("#q-top").focus();
-            }
-        }
-    });
+//         if (event.keyCode == 13) {
+//             if ($('#sun-search').hasClass('in')) {
+//                 $('#sun-search').removeClass('in');
+//                 $("#search-btn").attr('aria-expanded', 'false');
+//             }
+//             else {
+//                 $('#sun-search').css("height","128px");
+//                 $('#sun-search').addClass('in');
+//                 $("#search-btn").attr('aria-expanded', 'true');
+//                 $("#language-btn").attr('aria-expanded', 'false');
+//                 $("#sun-language").removeClass('in');
+//                 $("#q-top").focus();
+//             }
+//         }
+//     });
 
-    $('#language-btn-container').keyup(function (event) {
-        if (event.keyCode == 13) {
-            if ($('#sun-language').hasClass('in')) {
-                $('#sun-language').removeClass('in');
-                $("#language-btn").attr('aria-expanded', 'false');
-            }
-            else {
-                $('#sun-language').addClass('in');
-                $("#language-btn").attr('aria-expanded', 'true');
-                $("#search-btn").attr('aria-expanded', 'false');
-                $("#sun-search").removeClass('in');
-                $(".sunLanguageCrossBtn").focus();
-            }
-        }
-    });
-    $("#search-btn").keydown(function(e){
-        if (e.which == 9 ) {
-            e.preventDefault();
-            $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
-            if(e.shiftKey){
-              $("#language-btn").focus();
-              e.preventDefault();
-            }
-        }
-    });
-    $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
-        if (e.which == 9 ) {
-            if(e.shiftKey) {
-                $(".srch-btn").focus();
-                e.preventDefault();
-            }
-        }
-    });
+//     $('#language-btn-container').keyup(function (event) {
+//         if (event.keyCode == 13) {
+//             if ($('#sun-language').hasClass('in')) {
+//                 $('#sun-language').removeClass('in');
+//                 $("#language-btn").attr('aria-expanded', 'false');
+//             }
+//             else {
+//                 $('#sun-language').addClass('in');
+//                 $("#language-btn").attr('aria-expanded', 'true');
+//                 $("#search-btn").attr('aria-expanded', 'false');
+//                 $("#sun-search").removeClass('in');
+//                 $(".sunLanguageCrossBtn").focus();
+//             }
+//         }
+//     });
+//     $("#search-btn").keydown(function(e){
+//         if (e.which == 9 ) {
+//             e.preventDefault();
+//             $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
+//             if(e.shiftKey){
+//               $("#language-btn").focus();
+//               e.preventDefault();
+//             }
+//         }
+//     });
+//     $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
+//         if (e.which == 9 ) {
+//             if(e.shiftKey) {
+//                 $(".srch-btn").focus();
+//                 e.preventDefault();
+//             }
+//         }
+//     });
 
-/* Full Header accessibility ends here */
+// /* Full Header accessibility ends here */
 
 /* Footer accessibility starts here */
 
@@ -4140,6 +4140,33 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+$(document).ready(function () {
+    $("a.customer-sign-sm").click(function() {
+        updateSignInForm('form_signon_mobile');     
+      });  
+    $('#signin-widget-modal').on('shown.bs.modal', function() {
+          updateSignInForm('form_signon');        
+    });
+    function modalWidth(){
+      var winWidth=$(window).width();
+      $("#mySignInModal").width(winWidth);
+      $("#mySignInModal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      modalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        modalWidth();
+      }
+    });
+    $('.icon-reg').html('');
+    var a1=$('#userIdDiv').html();
+    if(a1 && a1.indexOf("&nbsp;") != -1){
+      var updatedString = a1.replace("&nbsp;", "");
+      $('#userIdDiv').html(updatedString);
+    } 
+});     
 
 
 
@@ -4204,33 +4231,6 @@ $(function() {
   });
 });
 
-$(document).ready(function () {
-    $("a.customer-sign-sm").click(function() {
-        updateSignInForm('form_signon_mobile');     
-      });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
-    });
-    function modalWidth(){
-      var winWidth=$(window).width();
-      $("#mySignInModal").width(winWidth);
-      $("#mySignInModal").addClass('horizontal-middle-align');
-    }
-    if ($(window).width() > 1024) {
-      modalWidth();
-    }
-    $(window).resize(function() {
-      if ($(window).width() > 1024) {
-        modalWidth();
-      }
-    });
-    $('.icon-reg').html('');
-    var a1=$('#userIdDiv').html();
-    if(a1 && a1.indexOf("&nbsp;") != -1){
-      var updatedString = a1.replace("&nbsp;", "");
-      $('#userIdDiv').html(updatedString);
-    } 
-});     
 
 
 $(document).ready(function () {
@@ -4815,7 +4815,6 @@ $(document).ready(function () {
     }
      
 });
-
 $(document).ready(function () {
 	$('.site-level-notification').prepend('<i class="fa fa-close" tabindex="0"></i>');
 	$('.site-level-notification .fa-close').click(function () {
@@ -4832,6 +4831,7 @@ $(document).ready(function () {
 	    $('footer .social-link-icon-wrapper').height(teaser_height); 
 
 });
+
 
 
 $(document).ready(function(){
