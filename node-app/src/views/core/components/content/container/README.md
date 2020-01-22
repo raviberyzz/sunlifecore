@@ -39,3 +39,5 @@ JSON Format
 
 <!-- "company-highlight-box-shadow" can be used if box-shadow is required-->
 <!-- when using border-right for image-text-wrapper use separator component as well -->
+
+<!-- For tool card use tool-card-wrapper -->

@@ -1,6 +1,6 @@
-<div data-sly-use.accordion="com.adobe.cq.wcm.core.components.models.Accordion"
+<div data-sly-use.accordion="ca.sunlife.web.cms.core.models.AccordionModel"
    class="cmp-accordion" data-cmp-is="accordion"
-   data-cmp-single-expansion="${accordion.singleExpansion}">
+   data-cmp-single-expansion="${accordion.singleExpansion}" data-section="${accordion.analyticsId}">
    <div data-sly-test="${accordion.items.size > 0}"
       data-sly-repeat.item="${accordion.items}"
       class="cmp-accordion__item" data-cmp-hook-accordion="item"

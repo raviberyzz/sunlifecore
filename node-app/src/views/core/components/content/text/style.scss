@@ -29,3 +29,29 @@
         }
     }
 }
+/* tool tip text starts here*/
+
+.tool-tip-box{
+    margin-left: 5px;
+    background-color: $medium-blue-color;
+    padding: 16px;
+    line-height: 26px;
+    border-radius: 10px;
+    position: relative;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    p {
+    color:$white-shade;
+    }
+    &::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left:-11px;
+    z-index: 1;
+    border: solid 6px transparent;
+    border-right-color:$medium-blue-color;
+    }
+}
+
+/* tool tip text ends here*/
