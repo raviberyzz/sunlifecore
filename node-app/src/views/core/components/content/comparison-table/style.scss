@@ -4,68 +4,49 @@
   position: relative;
  
 }
-.cmp-table-data-content {
-  border: 1px solid #fff;
-  table {
-    margin-bottom: 0;
-  }
-  table {
-    > caption {
-      font-size: 30px;
-      font-family: inherit;
-      color: inherit;
-      margin: 20px 0 10px 0;
-      font-weight: 500;
-      line-height: 1.1;
-      padding: 8px 0;
-      text-align: left;
-      box-sizing: border-box;
-      display: table-caption;
-    }
-    > tbody {
-      > tr {
-        > th {
-          background: #ffcb05;
-          color: #424242;
-          text-transform: none;
-          text-align: center;
-          border-bottom: 0;
-          width: 15%;
-          vertical-align: middle;
-          height: 64px;
-          border-top: 1px solid #d7d7d7 !important;
+.cmp-table-comparision{
+ > table {
+   > tbody{
+       > tr {
+         > th {
+           text-align: left;
+           padding:32px 8px;
+         }
+         > td:last-child {
+          border-right: 2px solid #ddd;
+         }
+         > th:first-child {
+           border-left: 1px solid #ddd;
+         }
+         > td {
+           border-left: 2px solid #fff;
+           text-align: center;
+           padding: 32px 0;
+         }
+        
+       }
+       > tr:first-child {
+         > th {
+           background-color: #FFCB05;
+           height:64px;
+         }
+       }
+       >tr:nth-child(odd){
+         background-color: #FEEDD2;
+       }
+       >tr:nth-child(even){
+         background-color: #fff;
+       }
+       .large-green{
+         color:#0b713a;
+         font-size: 1.8em;
         }
-        > th:first-child {
-          width: 25%; //table header first child width
-        }
-      }
-    }
-    > tbody {
-      > tr {
-        td {
-          padding: 32px 8px;
-          text-align: center;
-          &:nth-of-type(odd) {
-            background-color: #feedd2;
-          }
-        }
-      }
+
+       .large-red {
+         color:#b81f41;
+         font-size: 1.8em;
+       }
+
     }
   }
-  table {
-    > tbody {
-      > tr {
-        &:not(:first-of-type) {
-          border-top: 2px solid #fff;
-        }
-      }
-    }
-  }
- 
-}
-.mar-bottom-15 {
-  margin-bottom: 15px !important;
-}
-.mar-top-15 {
-  margin-top: 15px !important;
 }
