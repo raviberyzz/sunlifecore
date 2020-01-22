@@ -1,0 +1,44 @@
+@import '../../../base/core';
+.popup-modal-wrapper{
+    padding:30px 0;
+    padding:0;
+    background-color:$background-black-ovrelay-color;
+    overflow:auto;
+    position: absolute;
+    height: fit-content;
+    width: 1025px;
+    .modal-content{
+        outline-color:$medium-grey-background;
+        width:70%;
+        .modal-header{
+            background-color:$medium-blue-color;
+            padding:0;
+            .modal-title{
+                display:flex;
+                margin:24px;
+                .modal-heading{
+                    font-size:1.75rem;
+                    font-weight:400;
+                    color: $white-shade;
+                    margin:0;
+                    width:calc(100% - 11px);
+                    padding-right:20px;
+                }
+                .close{
+                    font-size:1.125rem;
+                    color: $white-shade;
+                    opacity:1;
+                    margin:0;
+                    cursor:pointer;
+                }
+            }           
+        }
+        .modal-body{
+            margin:24px;
+            padding:0;
+        }
+    }
+}
+.container:nth-last-child(){
+    display: none;
+}
