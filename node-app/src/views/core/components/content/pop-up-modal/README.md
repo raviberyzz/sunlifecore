@@ -1,0 +1,13 @@
+#Pop Up Modal Component
+#Display Pop up modal
+JSON Format
+```
+{
+    "button-class": "primary-blue-button",
+    "button-text": "pop up modal",
+    "data-target":"#popUp",
+    "data-toggle":"modal",
+    "popup-header-text":"Pop Up Modal Title",
+    "popup-body-text":"Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus"
+}
+```
