@@ -4143,6 +4143,11 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 
 
 
+function demoFunction()
+{
+
+}
+
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4174,6 +4179,9 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+
+
+
 $(function() {
   let tableHeader = $("table tbody tr:first-child");
   let theaderPosition = tableHeader.offset().top;
@@ -4532,6 +4540,9 @@ $(document).ready(function(){
         $('.mobile-header .region-tab').css({'display':'none'});
         $('.mobile-header .language-tab').css({'display':'block'});
     });
+});
+$(document).ready(function(){
+    
 });
 
 $(document).ready(function () {
