@@ -3,6 +3,7 @@
 JSON Format
 ```
 {
+    "accordion-data-section":"accordion-data",
     "wrapper":"expand-collapse",
     "first-open":"first-open",
     "list":[{   
