@@ -82,10 +82,10 @@
             text-align: left;
             padding:32px 8px;
           }
-          > td:last-child {
+          > td:last-of-type {
            border-right: 2px solid #ddd;
           }
-          > th:first-child {
+          > th:first-of-type {
             border-left: 1px solid #ddd;
           }
           > td {
