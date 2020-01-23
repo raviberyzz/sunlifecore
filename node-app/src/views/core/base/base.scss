@@ -316,3 +316,27 @@ footer {
     padding:0
 }
 /* aem class ends here */
+
+/* contact us box styles start here */
+.cmp-contact-us {
+	.aem-GridColumn--default--12 {
+		.text {
+			padding: 0px 32px;
+			.cmp-text {
+				h3 {
+					margin-top: 32px;
+				}
+				p {
+					&:first-of-type {
+						margin: 16px 0 56px 0;
+					}
+				}
+			}
+		}
+		.button {
+			margin: 24px 0 32px 0;
+		}
+	}
+}
+
+/*contact us box styles end here */
