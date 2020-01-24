@@ -1,14 +1,14 @@
 {{>core-components-content-button}}
-<div class="modal fade popup-modal-wrapper horizontal-middle-align" role="dialog">
+<div class="modal fade popup-modal-wrapper horizontal-middle-align" role="dialog"> 
 	<!-- Modal content-->
 	<div class="modal-content horizontal-middle-align">
 		<div class="modal-header">
 			<div class="modal-title">
-				<h3 class="modal-heading">{{popup-header-text}}</h3>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-heading" tabindex="0">{{popup-header-text}}</h3>
+				<button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">Close</label></button>
 			</div>
 		</div>
-		<div class="modal-body">
+		<div class="modal-body" tabindex="0">
 			{{>core-components-content-table}}
 		</div>
 	</div>
