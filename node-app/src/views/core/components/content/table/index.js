@@ -1,6 +1,6 @@
 function stickyHeader(){
   let tableHeader = $("table tbody tr:first-child");
-  let theaderPosition = tableHeader.offset().top;
+  //let theaderPosition = tableHeader.offset().top;
   let position = 0;
   let screenWidth = $(window).width();
   //sticky header function on scroll 
