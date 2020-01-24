@@ -157,6 +157,7 @@ ul {
     background-color: $medium-yellow-background;
     padding: 32px 16px;
     min-width: 158px;
+    margin: 40px 0;
     .cta-content-icon-wrapper {
         .icon-style {
             background: linear-gradient($medium-blue-color, $blue-gradient-color);
@@ -173,6 +174,11 @@ ul {
         .icon-texts {
             padding-bottom: 0;
             display: table;
+            .heading-6,h6{
+                padding-top:0;
+                margin-top: 0;
+                text-align: left;
+            }
         }
     }
     form{
@@ -280,4 +286,23 @@ ul {
             }
         }
     }
+    .subscribe-main-content-wrapper{
+    form{
+        display: block;
+        &>*{
+            display: bloack;
+        }
+        .primary-blue-button-form{
+            .cmp-form-button{
+                width: 100%;
+                min-width: 100%;
+            }
+        }
+        
+    }
+    form :first-child{
+        padding: 0;
+        margin-bottom: 10px;
+    }
+}
 }

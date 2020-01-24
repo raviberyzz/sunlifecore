@@ -17,7 +17,7 @@ JSON Format
     "required-message":"It Can not be empty",
     "button-type":"submit",
     "button-value":"Submit",
-    "form-button-class":"primary-yellow-button",
+    "form-button-class":"primary-yellow-button-form",
     "form-function":"demoFunction",
     "form-method":"get",
     "form-action":"",
