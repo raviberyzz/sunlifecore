@@ -4142,12 +4142,6 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 
 
-
-function demoFunction()
-{
-
-}
-
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4179,30 +4173,25 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-
-
-
-$(function() {
+function stickyHeader(){
   let tableHeader = $("table tbody tr:first-child");
   let theaderPosition = tableHeader.offset().top;
   let position = 0;
   let screenWidth = $(window).width();
   //sticky header function on scroll 
   $(window).on("scroll", function() {
+    console.log("scrolling");
     if (window.pageYOffset > theaderPosition) {
       position = window.pageYOffset - theaderPosition;
-      if (screenWidth < 1024) {
-        let mobilePos = position - 30;
-        tableHeader.attr("style", "transform: translateY(" + mobilePos + "px)");
-      } else {
-        tableHeader.attr("style", "transform: translateY(" + position + "px)");
-      }
+      tableHeader.attr("style", "transform: translateY(" + position + "px)");
     } else if (position !== 0) {
       position = 0;
       tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
     }
   });
-});
+}
+$(stickyHeader);
+$(window).resize(stickyHeader);
 
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4541,9 +4530,6 @@ $(document).ready(function(){
         $('.mobile-header .language-tab').css({'display':'block'});
     });
 });
-$(document).ready(function(){
-    
-});
 
 $(document).ready(function () {
    $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
@@ -4574,6 +4560,9 @@ $(document).ready(function () {
    $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
       location.href = this.href;
   })
+});
+$(document).ready(function(){
+    
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -4724,6 +4713,26 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
 })
 });
+$(document).ready(function(){
+    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
+    $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
+    $('.cmp-navigation__item--level-1').children('ul').children('li').not('.cmp-navigation__item--active').children('a').css({'border':'none','font-weight' : 400});
+    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
+        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
+    }
+    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
+        $(this).siblings('.cmp-navigation__group').toggle('collapse');
+        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
+        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
+        if($(this).attr('aria-expanded')=='true'){
+            $(this).attr('aria-expanded',false);
+        }
+        else if($(this).attr('aria-expanded')=='false'){
+            $(this).attr('aria-expanded',true);
+        }
+    });
+});
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
@@ -4752,26 +4761,6 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
-$(document).ready(function(){
-    $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
-    $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
-    $('.cmp-navigation__item--level-1').children('ul').children('li').not('.cmp-navigation__item--active').children('a').css({'border':'none','font-weight' : 400});
-    if($('.cmp-navigation__group .cmp-navigation__item--active').hasClass('cmp-navigation__item--level-1')){
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').css({'display':'block'});
-        $('.cmp-navigation__group .cmp-navigation__item--active').children('.cmp-navigation__group').siblings().attr('aria-expanded',true);
-    }
-    $('.cmp-navigation__item--level-1 .cmp-navigation__item-link').click(function(){
-        $(this).siblings('.cmp-navigation__group').toggle('collapse');
-        $(this).parent().siblings().children('.cmp-navigation__group').css('display','none');
-        $(this).parent().siblings().children('.cmp-navigation__group').siblings('a').attr('aria-expanded',false);        
-        if($(this).attr('aria-expanded')=='true'){
-            $(this).attr('aria-expanded',false);
-        }
-        else if($(this).attr('aria-expanded')=='false'){
-            $(this).attr('aria-expanded',true);
-        }
-    });
-});
 
 
 $(document).ready(function () {
@@ -4889,25 +4878,6 @@ $(document).ready(function () {
        
 	});
 });
-function stickyHeader(){
-  let tableHeader = $("table tbody tr:first-child");
-  let tableHeight = $("table").height();
-  let theaderPosition = tableHeader.offset().top;
-  let position = 0;
-  let headerHidePos = theaderPosition + tableHeight;
-  //sticky header function on scroll 
-  $(window).on("scroll", function() {
-    if (window.pageYOffset > theaderPosition) {
-        position = window.pageYOffset - theaderPosition;
-        tableHeader.attr("style", "transform: translateY(" + position + "px)");
-      if (window.pageYOffset > headerHidePos) tableHeader.attr("style", "transform: translateY(" + 0 + "px)"); 
-    } else if ( window.pageYOffset < theaderPosition ) {
-      tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-    } 
-  });
-}
-$(stickyHeader);
-$(window).resize(stickyHeader);
 
 
 $(document).ready(function(){
@@ -4967,8 +4937,9 @@ $(document).ready(function(){
 });
 
 
-
 function demoFunction()
 {
 
 }
+
+
