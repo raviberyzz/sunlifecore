@@ -58,8 +58,11 @@
             margin: 0 0 16px 0;
         }
     }
-    .input-wrapper{
+    .input-wrapper,.cmp-form-text{
         margin:24px 0 16px 0;
+    }
+    form{
+        padding: 20px 15px;
     }
     .light-orange{
         background-color: $light-orange-20;
