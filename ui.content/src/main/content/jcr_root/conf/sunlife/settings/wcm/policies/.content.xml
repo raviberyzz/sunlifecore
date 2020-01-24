@@ -521,6 +521,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item6>
+                                 <item7
+                                    cq:styleGroupLabel="Header"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-dynamic-megamenu-grey"
+                                            cq:styleId="1579257415265"
+                                            cq:styleLabel="Megamenu dynamic content"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="cmp-dynamic-megamenu-greybackground"
+                                            cq:styleId="1579089823754"
+                                            cq:styleLabel="Megamenu grey background"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="cmp-megamenu-line"
+                                            cq:styleId="1579089828456"
+                                            cq:styleLabel="Megamenu vertical seperator"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item7>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
