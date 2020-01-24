@@ -192,10 +192,7 @@ ul {
         padding: 0 16px;
     }
 }
-body > :not(:first-child)
-{
-    display: none;
-}
+
 @media (max-width:$mobile-screen-max) {
     .container-component {
         .cmp-container > div {
