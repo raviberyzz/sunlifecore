@@ -203,6 +203,25 @@ ul {
         }
     }
 }
+.tool-card-wrapper{
+    text-align: center;
+    margin: 24px 0 40px 0;
+    padding-right:15px;
+    .cmp-container{
+        background-color: $light-cool-blue-color;
+    }
+    .heading-6,h6{
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .image-text-wrapper{
+        .side-image{
+            width: auto;
+            padding: 15px 0;
+            border-radius: 50%;
+        }
+    }
+}
 @media (max-width:$tab-screen-max) {
     .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
         margin-top: 32px;
