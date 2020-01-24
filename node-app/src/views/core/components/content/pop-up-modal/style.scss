@@ -1,15 +1,14 @@
 @import '../../../base/core';
 .popup-modal-wrapper{
     padding:30px 0;
-    padding:0;
+    padding:0 !important;
     background-color:$background-black-ovrelay-color;
     overflow:auto;
     position: absolute;
     height: fit-content;
-    width: 1025px;
     .modal-content{
         outline-color:$medium-grey-background;
-        width:70%;
+        width:80%;
         .modal-header{
             background-color:$medium-blue-color;
             padding:0;
@@ -39,6 +38,10 @@
         }
     }
 }
-.container:nth-last-child(){
-    display: none;
+@media (max-width: $mobile-screen-max){
+    .popup-modal-wrapper{
+        .modal-content{
+            width:90%;
+        }
+    }
 }
