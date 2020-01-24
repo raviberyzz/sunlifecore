@@ -4,6 +4,7 @@ JSON Format
 ```
 {
     "cta-wrapper": "blue-icon-yellow-background",
+    "container-data-section" : "container-data-section",
     "background-color": "",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
     "border-right-present": "border-right",
