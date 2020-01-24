@@ -5,6 +5,7 @@ $(document).ready(function () {
     $('.tool-tip-box').css('display','none');
     $('.fa-info-circle').css('position','initial');
     $('.fa-info-circle').hover(function(){
+        $('.fa-info-circle').css('cursor','pointer');
         $('.fa-info-circle').css('position','absolute');
         $('.tool-tip-box').css('display','block');
     },function(){

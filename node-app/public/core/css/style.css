@@ -3688,32 +3688,6 @@ footer {
 /*contact us box styles end here */
 
 
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
-
 input[type=text] {
   font-family: 'sunlife-sans';
   font-weight: 400;
@@ -4065,9 +4039,6 @@ p {
   position: absolute;
   color: #004C6C; }
 
-.fa-info-circle:hover {
-  cursor: pointer; }
-
 /* tool tip text ends here*/
 
 .tabs-wrapper {
@@ -4407,6 +4378,26 @@ p {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
 
+.grey-horizontal-separator .horizontal-middle-align {
+  border-bottom: 2px solid #9a9a9a;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.yellow-horizontal-separator .horizontal-middle-align {
+  border-bottom: 2px solid #FFCB05;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.vertical-separator {
+  height: 75%;
+  border-right: 2px solid #F7F7F7;
+  width: 1px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+  .vertical-separator hr {
+    display: none; }
+
 .search-bar-wrapper {
   background: #FFCB05;
   height: 128px; }
@@ -4452,26 +4443,6 @@ p {
       width: 136px; }
     .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .cmp-form-button {
       width: 136px; }
-
-.grey-horizontal-separator .horizontal-middle-align {
-  border-bottom: 2px solid #9a9a9a;
-  margin-top: 40px;
-  margin-bottom: 40px; }
-
-.yellow-horizontal-separator .horizontal-middle-align {
-  border-bottom: 2px solid #FFCB05;
-  margin-top: 40px;
-  margin-bottom: 40px; }
-
-.vertical-separator {
-  height: 75%;
-  border-right: 2px solid #F7F7F7;
-  width: 1px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
-  .vertical-separator hr {
-    display: none; }
 
 .right-navigation-wrapper {
   padding: 0;
@@ -6261,51 +6232,6 @@ ul {
     .yellow-icon-grey-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-parent, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-parent, .yellow-icon-white-background .cta-content-icon-wrapper .icon-parent {
       height: 30px;
       padding-bottom: 54px; } }
-
-.slf-table.table-responsive {
-  display: block;
-  position: relative; }
-
-.cmp-table-data-content {
-  border: 1px solid #fff; }
-  .cmp-table-data-content table {
-    margin-bottom: 0; }
-  .cmp-table-data-content table > caption {
-    font-size: 30px;
-    font-family: inherit;
-    color: inherit;
-    margin: 20px 0 10px 0;
-    font-weight: 500;
-    line-height: 1.1;
-    padding: 8px 0;
-    text-align: left;
-    box-sizing: border-box;
-    display: table-caption; }
-  .cmp-table-data-content table > tbody > tr > th {
-    background: #ffcb05;
-    color: #424242;
-    text-transform: none;
-    text-align: center;
-    border-bottom: 0;
-    width: 15%;
-    vertical-align: middle;
-    height: 64px;
-    border-top: 1px solid #d7d7d7 !important; }
-  .cmp-table-data-content table > tbody > tr > th:first-child {
-    width: 25%; }
-  .cmp-table-data-content table > tbody > tr td {
-    padding: 32px 8px;
-    text-align: center; }
-    .cmp-table-data-content table > tbody > tr td:nth-of-type(odd) {
-      background-color: #feedd2; }
-  .cmp-table-data-content table > tbody > tr:not(:first-of-type) {
-    border-top: 2px solid #fff; }
-
-.mar-bottom-15 {
-  margin-bottom: 15px !important; }
-
-.mar-top-15 {
-  margin-top: 15px !important; }
 
 .campaign-header-wrapper .logo-img {
   height: 31px; }

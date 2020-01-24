@@ -4156,6 +4156,7 @@ $(document).ready(function () {
     $('.tool-tip-box').css('display','none');
     $('.fa-info-circle').css('position','initial');
     $('.fa-info-circle').hover(function(){
+        $('.fa-info-circle').css('cursor','pointer');
         $('.fa-info-circle').css('position','absolute');
         $('.tool-tip-box').css('display','block');
     },function(){
@@ -4167,7 +4168,6 @@ $(document).ready(function () {
     
 
     
-
 
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
@@ -4516,47 +4516,6 @@ $(document).ready(function () {
  });
  
 $(document).ready(function(){
-    popUpWidth();   
-    function popUpWidth(){
-        var popWidth=$(window).width();
-        $(".popup-modal-wrapper").width(popWidth);
-      };
-      $(window).resize(function() {
-            popUpWidth();
-      });
-});
-
-$(document).ready(function () {
-   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
-      $(this).addClass('open');
-   }, function () {
-      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
-   }
-   );
-   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
-      $(this).siblings().addClass('box-class');
-   }, function () {
-      $(this).siblings().removeClass('box-class');
-   }
-   );
-
-   $(".desktop-primary-navigation-yellow .nav-item.navigation").hover(function () {
-      $(this).addClass('open');
-   }, function () {
-      $(".desktop-primary-navigation-yellow .nav-item.navigation").removeClass("open");
-   }
-   );
-   $(".desktop-primary-navigation-yellow .nav-item .menu-content").hover(function () {
-      $(this).siblings().addClass('box-class-yellow');
-   }, function () {
-      $(this).siblings().removeClass('box-class-yellow');
-   }
-   );
-   $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
-      location.href = this.href;
-  })
-});
-$(document).ready(function(){
     $('.content-region .nav-select').parent().addClass('in');
     $('.content-region .nav-select').parent().siblings().attr('aria-expanded','true');
     $('.content-region .accordion-heading').click(function(){
@@ -4597,6 +4556,47 @@ $(document).ready(function(){
         $('.mobile-header .region-tab').css({'display':'none'});
         $('.mobile-header .language-tab').css({'display':'block'});
     });
+});
+$(document).ready(function(){
+    popUpWidth();   
+    function popUpWidth(){
+        var popWidth=$(window).width();
+        $(".popup-modal-wrapper").width(popWidth);
+      };
+      $(window).resize(function() {
+            popUpWidth();
+      });
+});
+
+$(document).ready(function () {
+   $(".desktop-primary-navigation .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class');
+   }, function () {
+      $(this).siblings().removeClass('box-class');
+   }
+   );
+
+   $(".desktop-primary-navigation-yellow .nav-item.navigation").hover(function () {
+      $(this).addClass('open');
+   }, function () {
+      $(".desktop-primary-navigation-yellow .nav-item.navigation").removeClass("open");
+   }
+   );
+   $(".desktop-primary-navigation-yellow .nav-item .menu-content").hover(function () {
+      $(this).siblings().addClass('box-class-yellow');
+   }, function () {
+      $(this).siblings().removeClass('box-class-yellow');
+   }
+   );
+   $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
+      location.href = this.href;
+  })
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -4747,7 +4747,6 @@ $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
 
 })
 });
-
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
@@ -4796,6 +4795,7 @@ $(document).ready(function(){
         }
     });
 });
+
 
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
