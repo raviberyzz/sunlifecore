@@ -4143,10 +4143,12 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 
 
 
+
 function demoFunction()
 {
 
 }
+
 
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
@@ -4179,8 +4181,6 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-
-
 
 $(function() {
   let tableHeader = $("table tbody tr:first-child");
@@ -4965,10 +4965,3 @@ $(document).ready(function(){
 	});
     
 });
-
-
-
-function demoFunction()
-{
-
-}
