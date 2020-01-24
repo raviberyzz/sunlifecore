@@ -4149,7 +4149,25 @@ function demoFunction()
 }
 
 
+$(document).ready(function () {
+   $va = "<div " + "class= " +'"fa fa-info-circle"' + "> </div>";
+    $($va).insertBefore(".tool-tip-box");
+   
+    $('.tool-tip-box').css('display','none');
+    $('.fa-info-circle').css('position','initial');
+    $('.fa-info-circle').hover(function(){
+        $('.fa-info-circle').css('cursor','pointer');
+        $('.fa-info-circle').css('position','absolute');
+        $('.tool-tip-box').css('display','block');
+    },function(){
+        $('.fa-info-circle').css('position','initial');
+        $('.tool-tip-box').css('display','none');
+    });
+});
 
+    
+
+    
 
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
@@ -4659,6 +4677,21 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4823,7 +4856,6 @@ $(document).ready(function () {
     }
      
 });
-
 $(document).ready(function () {
 	$('.site-level-notification').prepend('<i class="fa fa-close" tabindex="0"></i>');
 	$('.site-level-notification .fa-close').click(function () {
@@ -4896,13 +4928,14 @@ $(document).ready(function () {
 });
 
 
+
+
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
-
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
