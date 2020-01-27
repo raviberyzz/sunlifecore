@@ -4451,38 +4451,15 @@ p {
 .mar-top-15 {
   margin-top: 15px !important; }
 
-.cmp-table-comparision > table > tbody > tr > th {
-  text-align: left;
-  padding: 32px 8px; }
-
-.cmp-table-comparision > table > tbody > tr > td:last-of-type {
-  border-right: 2px solid #ddd; }
-
-.cmp-table-comparision > table > tbody > tr > th:first-of-type {
-  border-left: 1px solid #ddd; }
-
-.cmp-table-comparision > table > tbody > tr > td {
-  border-left: 2px solid #fff;
-  text-align: center;
-  padding: 32px 0; }
-
-.cmp-table-comparision > table > tbody > tr:first-child > th {
-  background-color: #FFCB05;
-  height: 64px; }
-
-.cmp-table-comparision > table > tbody > tr:nth-child(odd) {
-  background-color: #FEEDD2; }
-
-.cmp-table-comparision > table > tbody > tr:nth-child(even) {
-  background-color: #fff; }
-
-.cmp-table-comparision > table > tbody .large-green {
-  color: #0b713a;
-  font-size: 1.8em; }
-
-.cmp-table-comparision > table > tbody .large-red {
-  color: #b81f41;
-  font-size: 1.8em; }
+.site-level-notification {
+  background-color: #feedd2;
+  padding: 24px 16px;
+  margin-bottom: 4px; }
+  .site-level-notification p {
+    margin: 0; }
+  .site-level-notification .fa-close {
+    float: right;
+    cursor: pointer; }
 
 .sign-in-modal-wrapper {
   opacity: 1;
