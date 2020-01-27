@@ -3,14 +3,14 @@
 JSON Format
 ```
 {
-    "list-wrapper-class": "editorial-nav-wrapper",
+    "list-wrapper-class": "editorial-nav-desktop-wrapper",
     "LinkText": "Quick Link",
     "link-id":"link1",
     "list" : [{
-        "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
-        "text" : "Sign in / Register"
+        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "text" : "Mental wellness"
     },{
-        "link" : "https://www.sunlife.ca/ca/Support/Submit+or+track+a+claim?vgnLocale=en_CA",
+        "link" : "https://www.sunlife.ca/views/core/components/content/link-list.html",
         "text" : "Submit or track a claim"
     },{
         "link" : "https://www.sunlife.ca/ca/Support/Find+a+form?vgnLocale=en_CA",
@@ -21,4 +21,4 @@ JSON Format
     }]
 }
 ```
-<!-- Classes available for "list-wrapper-class" are "lists-wrapper" and "editorial-nav-wrapper"-->
+<!-- Classes available for "list-wrapper-class" are "lists-wrapper" and "editorial-nav-desktop-wrapper"-->
