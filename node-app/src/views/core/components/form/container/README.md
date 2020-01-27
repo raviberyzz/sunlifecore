@@ -4,7 +4,7 @@ JSON Format
 {
     "form-id":"",
     "form-text-id":"demo-id",
-    "form-background-wrapper":"lists-wrapper",
+    "form-background-wrapper":"editorial-nav-wrapper",
      "form-alignment-wrapper":"",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
@@ -48,4 +48,4 @@ JSON Format
 }
 ```
 
-<!-- Classes available for "form-background-wrapper" are "lists-wrapper" -->
+<!-- Classes available for "form-background-wrapper" are "editorial-nav-wrapper" -->

@@ -61,8 +61,11 @@
     border-right: 5px solid transparent;
 }
 
-.lists-wrapper{
-    background-color: $medium-yellow-background;
+.editorial-nav-wrapper{
+    // background-color: $medium-yellow-background;
+    .cmp-form-options{
+        height: 68px;
+    }
     .cmp-form-options__label{
         display: none;
     }
