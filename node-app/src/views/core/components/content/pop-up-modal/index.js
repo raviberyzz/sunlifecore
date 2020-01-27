@@ -18,5 +18,12 @@ $(document).ready(function(){
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
 		}
-	});
+  });
+  // $('.popup-modal-wrapper').each(function(){
+  //   var $modal = $(this);
+  //   var id = $(this).attr('id');
+  //   $('a[href="#'+id+'"]').click(function(){
+  //     $modal.show();
+  //   });
+  // });
 });
