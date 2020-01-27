@@ -61,12 +61,37 @@
     border-right: 5px solid transparent;
 }
 
-.editorial-nav-wrapper{
-    // background-color: $medium-yellow-background;
+.editorial-nav-mobile-wrapper{
+    width: 100%;
+    background-color: $medium-yellow-background;
     .cmp-form-options{
         height: 68px;
+        width: 79%;;
+        display: inline-block;
+        padding-right: 5px;
+        transform: translateY(-12px);
+        .cmp-form-options__label{
+            display: none;
+        }
+        .cmp-form-options__field{
+            background-color: $white-shade;
+        }
     }
-    .cmp-form-options__label{
+    .cmp-form-options--drop-down::before{
+        z-index: 1;
+    }
+    .button-wrapper{
+        display: inline-block;
+        transform: translateY(-11px);
+        .cmp-form-button{
+            width: 53.44px;
+            min-width: 0;
+        }
+    }
+}
+
+@media (min-width: $mobile-screen-max) {
+    .editorial-nav-mobile-wrapper{
         display: none;
     }
 }
