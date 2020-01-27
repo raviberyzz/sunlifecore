@@ -360,45 +360,18 @@
                         </policy_teaser>
                     </teaser>
 					<titlebar jcr:primaryType="nt:unstructured">
-                            <policy_titlebar
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Titlebar"
-                                sling:resourceType="wcm/core/components/policy/policy"
-                                allowedTypes="[h1]"
-                                linkDisabled="false"
-                                type="h1">
-                                <jcr:content jcr:primaryType="nt:unstructured"/>
-                                <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                    <item0
-                                        cq:styleGroupLabel="Styles"
-                                        jcr:primaryType="nt:unstructured">
-                                        <cq:styles jcr:primaryType="nt:unstructured">
-                                            <item0
-                                                cq:styleClasses="title-wrapper-yellow-grey"
-                                                cq:styleId="1577972317144"
-                                                cq:styleLabel="Yellow Background"
-                                                jcr:primaryType="nt:unstructured"/>
-                                            <item1
-                                                cq:styleClasses="title-wrapper-yellow-grey-rings"
-                                                cq:styleId="1577972161657"
-                                                cq:styleLabel="Yellow Background with Grey Rings"
-                                                jcr:primaryType="nt:unstructured"/>
-                                            <item2
-                                                cq:styleClasses="title-wrapper-blue-yellow"
-                                                cq:styleId="1577972414299"
-                                                cq:styleLabel="Blue Background"
-                                                jcr:primaryType="nt:unstructured"/>
-                                            <item3
-                                                cq:styleClasses="title-wrapper-blue-yellow-rings"
-                                                cq:styleId="1577972364141"
-                                                cq:styleLabel="Blue Background with Yellow Rings"
-                                                jcr:primaryType="nt:unstructured"/>
-                                        </cq:styles>
-                                    </item0>								
-                                </cq:styleGroups>
-                            </policy_titlebar>
-                        </titlebar>
-                        <title jcr:primaryType="nt:unstructured">
+                        <policy_titlebar
+                            cq:styleDefaultClasses="title-wrapper-yellow-grey-rings"                            
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Titlebar"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            allowedTypes="h1"
+                            linkDisabled="false"
+                            type="h1">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                        </policy_titlebar>
+                    </titlebar>
+                     <title jcr:primaryType="nt:unstructured">
                             <policy_title
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Title"
@@ -617,7 +590,7 @@
                     </container>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
-                                cq:styleDefaultClasses="grey-horizontal-separator"                                
+                                cq:styleDefaultClasses="yellow-horizontal-separator"                                
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Separator"
                                 sling:resourceType="wcm/core/components/policy/policy">
