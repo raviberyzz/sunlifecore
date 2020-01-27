@@ -15,40 +15,41 @@
     .modal-content{
         background: $medium-yellow-background;
         padding: 24px 24px 40px 24px;
-        width: 50%;
+        width: 800px;
         position: relative;
         float: left;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        .modal-header{
-            background-color:$medium-blue-color;
-            padding:0;
-            .modal-title{
-                display:flex;
-                margin:24px;
-                .modal-heading{
-                    font-size:1.75rem;
-                    font-weight:400;
-                    color: $white-shade;
-                    margin:0;
-                    width:calc(100% - 11px);
-                    padding-right:20px;
-                    :hover{
-                        text-decoration:none;
-                    }
-                }
                 .close-popup{
                     font-size:1.125rem;
                     opacity:1;
                     margin:0;
                     cursor:pointer;
-                }
-            }           
-        }
+                }          
         .modal-body{
             margin:24px;
             padding:0;
+            form{
+                display: table;
+                &>*{
+                    display: table-cell;
+                    
+                }
+                .primary-blue-button-form{
+                    .cmp-form-button{
+                        
+                        min-width: 100%;
+                    }
+                }
+                
+            }
+            form :not(:last-child){
+               padding-right: 8px;
+            }
+            form :not(:first-child){
+                padding-left: 8px;
+             }
         }
     }
 }
