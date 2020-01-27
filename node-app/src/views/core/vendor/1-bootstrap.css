@@ -7006,7 +7006,7 @@ button.close {
 }
 
 .modal-open {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .modal {

@@ -38,6 +38,17 @@
         .modal-body{
             margin:24px;
             padding:0;
+            .grey-horizontal-separator div {
+                float:none;
+                display: inline-block;
+            }
+            .link-list{
+                .lists-wrapper .links {
+                    float:none;
+                    border-top:none;
+                    padding:0;
+                }
+            }
         }
     }
 }
