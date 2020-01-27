@@ -1,0 +1,14 @@
+@import '../../../base/core';
+
+.site-level-notification {
+    background-color: $light-orange-color;
+    padding: 24px 16px;
+    margin-bottom: 4px;
+    p {
+        margin: 0;
+    }
+    .fa-close {
+        float: right;
+        cursor: pointer;
+    }
+}
