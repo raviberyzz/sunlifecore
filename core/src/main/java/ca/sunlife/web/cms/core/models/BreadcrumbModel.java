@@ -13,15 +13,12 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 /**
  * The Class BreadcrumbModel.
  */
-@Model(adaptables = SlingHttpServletRequest.class,
-adapters = Breadcrumb.class,
-resourceType = "sunlife/core/components/content/breadcrumb")
+@Model(adaptables = SlingHttpServletRequest.class,adapters = Breadcrumb.class,resourceType = "sunlife/core/components/content/breadcrumb")
 public class BreadcrumbModel extends BreadcrumbImpl {
 	
 	public BreadcrumbModel() {
 		super();
 	}
-
 	
 	/** The social share reqd. */
 	@Inject
@@ -33,13 +30,7 @@ public class BreadcrumbModel extends BreadcrumbImpl {
 	@Inject
 	@Via("resource")
 	@Optional
-	private String socialShareText;
-	
-	/** The breadcrumb analytics id. */
-	@Inject
-	@Via("resource")
-	@Optional
-	private String analyticsId;
+	private String socialShareText;	
 	
 	/**
 	 * Gets the social share reqd.
@@ -76,27 +67,5 @@ public class BreadcrumbModel extends BreadcrumbImpl {
 	public void setSocialShareText(String socialShareText) {
 		this.socialShareText = socialShareText;
 	}
-	
 
-	/**
-	 * Gets the analytics id.
-	 *
-	 * @return the analytics id
-	 */
-	public String getAnalyticsId() {
-		return analyticsId;
-	}
-	
-	/**
-	 * Sets the analytics id.
-	 *
-	 * @param analyticsId the analytics text
-	 */
-	public void setAnalyticsId(String analyticsId) {
-		this.analyticsId = analyticsId;
-	}
-	
-	
-	
-	
 }
