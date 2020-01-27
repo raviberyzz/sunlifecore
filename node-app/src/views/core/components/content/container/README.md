@@ -4,9 +4,10 @@ JSON Format
 ```
 {
     "cta-wrapper": "blue-icon-yellow-background",
+    "container-data-section" : "container-data-section",
     "background-color": "",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
-    "border-right-present": "border-right",
+    "border-right-present": "",
     "iconTextList" : [{
         "fa-icon":"fa-shield",
         "text-input": "Find an advisor",
@@ -27,7 +28,12 @@ JSON Format
     "wrapper-class": "",
     "banner-text-alignment": "",
     "banner-box": "",
-    "separator-wrapper" : "grey-horizontal-separator"
+    "separator-wrapper" : "grey-horizontal-separator",
+    "input-text-type":"text",
+    "form-text-id":"q-top",
+     "form-button-type":"submit",
+    "button-value":"Search",
+    "form-button-class":"primary-blue-button-form"
 }
 ```
 <!-- "background-color": "company-highlight-yellow-grey-background"/"company-highlight-blue-grey-background" -->
@@ -39,3 +45,7 @@ JSON Format
 
 <!-- "company-highlight-box-shadow" can be used if box-shadow is required-->
 <!-- when using border-right for image-text-wrapper use separator component as well -->
+
+<!-- For tool card use tool-card-wrapper -->
+
+<!-- For Subscribe use subscribe-main-content-wrapper and for its inside icon use cta-content-icon-wrapper -->
