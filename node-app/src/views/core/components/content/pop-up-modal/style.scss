@@ -5,6 +5,8 @@
     background-color:$background-black-ovrelay-color;
     overflow:auto;
     position: absolute;
+    height:auto;
+    overflow-y:auto;
     .modal-content{
         outline-color:$medium-grey-background;
         width:80%;
@@ -32,9 +34,6 @@
                     margin:0;
                     cursor:pointer;
                 }
-                button .close{
-                    color: red;
-                }
             }           
         }
         .modal-body{
@@ -53,9 +52,6 @@
             }
         }
     }
-}
-.container>:last-child{
-    display: none;
 }
 @media (max-width: $mobile-screen-max){
     .popup-modal-wrapper{
