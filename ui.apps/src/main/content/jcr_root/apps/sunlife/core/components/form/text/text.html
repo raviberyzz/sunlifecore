@@ -4,9 +4,7 @@
      data-cmp-is="formText"
      data-cmp-constraint-message="${text.constraintMessage}"
      data-cmp-required-message="${text.requiredMessage}">
-     <sly data-sly-test="${text.hideTitle}">
-	 	<label for="${text.id}" class="sr-only">${text.title}</label>
-	 </sly>
+	 <label for="${text.id}" class="sr-only" data-sly-test="${text.hideTitle}">${text.title}</label>
     <label for="${text.id}" data-sly-test="${text.title && !text.hideTitle}">${text.title}</label>
     <p data-sly-test="${!text.placeholder && text.helpMessage}" class="cmp-form-text__help-block">${text.helpMessage}</p>
     <textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
@@ -28,6 +26,7 @@
         id="${text.id}"
         placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.requiredMessage}"
+		data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
         data-parsley-pattern-message="${customText.validationError}"
         data-parsley-id="4"
