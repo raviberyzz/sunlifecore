@@ -2,9 +2,9 @@
 JSON Format
 ```
 {
-    "icon-text-wrapper" : "getting-started-icon-wrapper",
+    "icon-text-wrapper" : "social-link-icon-wrapper",
     "iconTextList" : [{
-        "fa-icon":"fa-map-marker",
+        "fa-icon":"fa-facebook-square",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
         "description-input" : "To find an advisor near you"
