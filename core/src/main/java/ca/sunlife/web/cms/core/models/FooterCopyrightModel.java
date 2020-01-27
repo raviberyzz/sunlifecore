@@ -44,15 +44,7 @@ public interface FooterCopyrightModel {
 	 * @return the footer items
 	 */
 	@Inject
-	List<FooterItems> getFooterItems();
-	
-	/**
-	 * Gets the analytics id.
-	 *
-	 * @return the analytics id
-	 */
-	@Inject
-	String getAnalyticsId();
+	List<FooterItems> getFooterItems();	
 	
 	/**
 	 * The Interface FooterItems.
