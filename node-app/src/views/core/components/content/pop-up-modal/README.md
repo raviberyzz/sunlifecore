@@ -8,7 +8,6 @@ JSON Format
     "data-target":".popup-modal-wrapper",
     "data-toggle":"modal",
     "popup-header-text":"This is modal header",
-    "popup-body-text":"Content displayed in a pop up modal is quite flexible, there is no restrictive height or width and should adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that appears beneath, highlighting the pop up modal as the main focus.Content",
     "variant": "cmp-table-data-content  adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that app",
   "thead": ["C$ millions<sup>(1)</sup><br> <sup>(unless otherwise noted)</sup>", "Q2 2019", "Q1 2019", "Q2 2018", "Full Year 2018", "Full Year 2017"],
   "tbody": [{
