@@ -590,7 +590,7 @@
                     </container>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
-                                cq:styleDefaultClasses="grey-horizontal-separator"                                
+                                cq:styleDefaultClasses="yellow-horizontal-separator"                                
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Separator"
                                 sling:resourceType="wcm/core/components/policy/policy">
