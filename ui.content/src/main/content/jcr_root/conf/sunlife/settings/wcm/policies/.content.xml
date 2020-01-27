@@ -227,6 +227,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item5>
+								<item6
+                                        cq:styleGroupLabel="Spacing"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">                                                                                     
+                                            <item0
+                                                cq:styleClasses="mb-18"
+                                                cq:styleId="1577972366641"
+                                                cq:styleLabel="Bottom Spacing 18"
+                                                jcr:primaryType="nt:unstructured"/>
+											<item1
+                                                cq:styleClasses="mb-20"
+                                                cq:styleId="1577973460041"
+                                                cq:styleLabel="Bottom Spacing 20"
+                                                jcr:primaryType="nt:unstructured"/>
+											<item2
+                                                cq:styleClasses="mb-40"
+                                                cq:styleId="1577972369699"
+                                                cq:styleLabel="Bottom Spacing 40"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item6>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -338,12 +359,12 @@
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
-                        <title jcr:primaryType="nt:unstructured">
-                            <policy_title
+					<titlebar jcr:primaryType="nt:unstructured">
+                            <policy_titlebar
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Title"
+                                jcr:title="Titlebar"
                                 sling:resourceType="wcm/core/components/policy/policy"
-                                allowedTypes="[h1,h2,h3,h4,h5,h6]"
+                                allowedTypes="[h1]"
                                 linkDisabled="false"
                                 type="h1">
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
@@ -354,26 +375,70 @@
                                         <cq:styles jcr:primaryType="nt:unstructured">
                                             <item0
                                                 cq:styleClasses="title-wrapper-yellow-grey"
-                                                cq:styleId="1577972316044"
+                                                cq:styleId="1577972317144"
                                                 cq:styleLabel="Yellow Background"
                                                 jcr:primaryType="nt:unstructured"/>
                                             <item1
                                                 cq:styleClasses="title-wrapper-yellow-grey-rings"
-                                                cq:styleId="1577972161547"
+                                                cq:styleId="1577972161657"
                                                 cq:styleLabel="Yellow Background with Grey Rings"
                                                 jcr:primaryType="nt:unstructured"/>
                                             <item2
                                                 cq:styleClasses="title-wrapper-blue-yellow"
-                                                cq:styleId="1577972419099"
+                                                cq:styleId="1577972414299"
                                                 cq:styleLabel="Blue Background"
                                                 jcr:primaryType="nt:unstructured"/>
                                             <item3
                                                 cq:styleClasses="title-wrapper-blue-yellow-rings"
-                                                cq:styleId="1577972360041"
+                                                cq:styleId="1577972364141"
                                                 cq:styleLabel="Blue Background with Yellow Rings"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
-                                    </item0>
+                                    </item0>								
+                                </cq:styleGroups>
+                            </policy_titlebar>
+                        </titlebar>
+                        <title jcr:primaryType="nt:unstructured">
+                            <policy_title
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Title"
+                                sling:resourceType="wcm/core/components/policy/policy"
+                                allowedTypes="[h2,h3,h4,h5,h6]"
+                                linkDisabled="false"
+                                type="h2">
+                                <jcr:content jcr:primaryType="nt:unstructured"/>
+                                <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleGroupLabel="Styles"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="heading-2"
+                                                cq:styleId="1577972316044"
+                                                cq:styleLabel="Heading 2"
+                                                jcr:primaryType="nt:unstructured"/>
+                                            <item1
+                                                cq:styleClasses="heading-3"
+                                                cq:styleId="1577972161547"
+                                                cq:styleLabel="Heading 3"
+                                                jcr:primaryType="nt:unstructured"/>
+                                            <item2
+                                                cq:styleClasses="heading-4"
+                                                cq:styleId="1577972419099"
+                                                cq:styleLabel="Heading 4"
+                                                jcr:primaryType="nt:unstructured"/>
+                                            <item3
+                                                cq:styleClasses="heading-5"
+                                                cq:styleId="1577972360041"
+                                                cq:styleLabel="Heading 5"
+                                                jcr:primaryType="nt:unstructured"/>
+                                             <item4
+                                                cq:styleClasses="heading-6"
+                                                cq:styleId="1577972364441"
+                                                cq:styleLabel="Heading 6"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item0>									
                                 </cq:styleGroups>
                             </policy_title>
                         </title>
@@ -458,6 +523,11 @@
                                             cq:styleClasses="cta-content-icon-wrapper yellow-icon-white-background"
                                             cq:styleId="1577978784169"
                                             cq:styleLabel="Yellow Icon White Background"
+                                            jcr:primaryType="nt:unstructured"/>
+										<item5
+                                            cq:styleClasses="tool-card-wrapper"
+                                            cq:styleId="1577978785269"
+                                            cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>

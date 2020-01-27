@@ -13,8 +13,8 @@
     background-color: $medium-blue-color;
     color: $white-shade;
     line-height: 34px;
-    height: 48px;
-    width: 180px;
+    min-height: 48px;
+    max-height: 72px;
     min-width: 136px;
     max-width: 275px;
     border-radius: 4px;
@@ -48,8 +48,8 @@
     background-color: $medium-yellow-background;
     color: $medium-blue-color;
     line-height: 34px;
-    height: 48px;
-    width: 180px;
+    min-height: 48px;
+    max-height: 72px;
     min-width: 136px;
     max-width: 275px;
     border-radius: 4px;
@@ -86,8 +86,8 @@
     color: $medium-blue-color;
     line-height: 34px;
     border: 2px solid $medium-blue-color;
-    height: 48px;
-    width: 180px;
+    min-height: 48px;
+    max-height: 72px;
     min-width: 136px;
     max-width: 275px;
     border-radius: 4px;
@@ -115,7 +115,6 @@
         color: $medium-blue-color;
         height: 40px !important;
         min-width:92px;
-        width:auto;
         font-size: 0.875rem;
         .icon-class {
             display: inherit;
