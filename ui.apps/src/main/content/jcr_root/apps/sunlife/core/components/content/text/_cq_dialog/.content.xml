@@ -84,7 +84,7 @@
                                                         features="*"/>
                                                     <misctools
                                                         jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
+                                                        features="specialchars"/>
                                                     <undo
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>

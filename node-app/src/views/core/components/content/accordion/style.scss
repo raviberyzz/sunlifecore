@@ -14,7 +14,7 @@
             .accordion-arrow{
                 font-family: FontAwesome;
                 content: "\f0da";
-                padding-right:12px;
+                padding-right:8px;
                 font-size:1rem;
             }
             .cmp-accordion__button{
@@ -37,7 +37,7 @@
                     }
                 }
                 .cmp-accordion__title{
-                    margin-left:-1px;
+                    margin-left:-5px;
                 }
             }
         }
@@ -64,6 +64,9 @@
         margin-bottom:10px;
         .cmp-accordion__header{
             color:$medium-blue-color;
+            .accordion-arrow{
+                padding-right:4px;
+            }
             .cmp-accordion__button{
                 .cmp-accordion__icon{
                     &[aria-expanded="false"] {

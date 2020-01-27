@@ -1,0 +1,49 @@
+(function($,$document){
+    "use strict"
+
+    var options = [
+        {'normal':'Container','site-notification':'Site Notification','modal-popup':'Modal Popup','simple-popup':'Simple Popup'},
+        {'50:50':'50% : 50%','33:67':'33% : 67%','67:33':'67% : 33%','67:33N':'Content & Right Navigation'},
+        {'25:50:25N':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%'},
+        {'25:25:25:25': '25% : 25% : 25% : 25%'},
+        {'20:20:20:20:20' : '20% : 20% : 20% : 20% :20%'}
+    ];
+
+    var updateTypes = function() {
+		var noc = $('[name="./noc"]').val();
+        var type = $('coral-select[name="./type"]').get(0).items;
+        $.each(type.getAll(), function(){$(this).remove()});
+        $.each(options[noc-1],function(val,key){
+            type.add({value: val,content:{textContent: key}});
+        });
+    }
+    $document.on('dialog-ready',function(){
+        var type = $('[name="./typeVal"]').val();
+        setTimeout(function(){
+			updateTypes();
+            if(type) {
+				$('[name="./type"]').val(type);
+            }
+            $('[name="./type"]').trigger('change');
+        },200);
+        $('[name="./noc"]').change(updateTypes);
+        $('[name="./type"]').change(function() {
+            var val = $(this).val();
+            $('[name="./typeVal"]').val($(this).val());
+            if(val === "modal-popup" || val === "site-notification" || val === "simple-popup") {
+                $('[name="./closeText"]').parent().show();
+            }else {
+                $('[name="./closeText"]').parent().hide();
+            }
+            if(val === "modal-popup") {
+				$('coral-select[name="./modelTitleLevel"]').parent().show();
+                $('[name="./modalID"]').parent().show();
+                $('[name="./modalTitle"]').parent().show();
+            }else {
+                $('coral-select[name="./modelTitleLevel"]').parent().hide();
+                $('[name="./modalID"]').parent().hide();
+                $('[name="./modalTitle"]').parent().hide();
+            }
+        });
+    });
+})($,$(document));

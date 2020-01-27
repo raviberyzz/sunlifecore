@@ -236,6 +236,7 @@ footer {
 }
 .yellow-bullet-list {
     ul {
+        margin-left: 2em;
         li::before {
             content: "\2022";
             color: $medium-yellow-background;
@@ -243,13 +244,14 @@ footer {
             display: inline-block;
             width: 2rem;
             padding-left: 16px;
+            margin-left: -2em;
         }
     }
 }
 .primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button  {
     .button-class {
-        height: 48px;
-        width: 180px;
+        min-height: 48px;
+        max-height: 72px;
         min-width: 136px;
         max-width: 275px;
         border-radius: 4px;
@@ -284,7 +286,7 @@ footer {
 .phone-numbers{
     font-weight: 400;
     font-size: 22px;
-    line-height: 120%;
+    line-height: 31px;
 }
 /*media query*/
 

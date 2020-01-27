@@ -25,6 +25,10 @@
                                 cq:policy="sunlife/ca/components/content/title/policy_title"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+							<titlebar
+                                cq:policy="sunlife/ca/components/content/titlebar/policy_titlebar"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                             <breadcrumb
                                 cq:policy="sunlife/ca/components/content/breadcrumb/policy_breadcrumb"
                                 jcr:primaryType="nt:unstructured"

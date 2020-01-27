@@ -5,6 +5,8 @@
     background-color:$background-black-ovrelay-color;
     overflow:auto;
     position: absolute;
+    height:auto;
+    overflow-y:auto;
     .modal-content{
         outline-color:$medium-grey-background;
         width:80%;
@@ -32,19 +34,24 @@
                     margin:0;
                     cursor:pointer;
                 }
-                button .close{
-                    color: red;
-                }
             }           
         }
         .modal-body{
             margin:24px;
             padding:0;
+            .grey-horizontal-separator div {
+                float:none;
+                display: inline-block;
+            }
+            .link-list{
+                .lists-wrapper .links {
+                    float:none;
+                    border-top:none;
+                    padding:0;
+                }
+            }
         }
     }
-}
-.container>:last-child{
-    display: none;
 }
 @media (max-width: $mobile-screen-max){
     .popup-modal-wrapper{
