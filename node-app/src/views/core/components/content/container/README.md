@@ -3,7 +3,8 @@
 JSON Format
 ```
 {
-    "cta-wrapper": "subscribe-main-content-wrapper",
+    "cta-wrapper": "blue-icon-yellow-background",
+    "container-data-section" : "container-data-section",
     "background-color": "",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
     "border-right-present": "",

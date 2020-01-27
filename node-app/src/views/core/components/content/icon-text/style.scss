@@ -6,10 +6,13 @@
 }
 .icon-parent {
     text-align: center;
+    a:hover{
+        color:$cool-blue-color;
+        }
 }
 .social-link-icon-wrapper{
     .icon-texts{
-        display: none;
+        display: none;     
     }
 }
 .right-nav-icon-wrapper{
