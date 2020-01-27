@@ -262,6 +262,9 @@ ul {
         }
         .cta-content-icon-wrapper{
             padding-bottom: 16px;
+            .icon-parent{
+                display: none;
+            }
         }
     }
 
