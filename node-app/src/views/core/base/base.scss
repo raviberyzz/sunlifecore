@@ -148,7 +148,16 @@ a {
     padding: 0px;
     margin: 0;
 }
-
+.with-margin {
+    .container-component {
+        &:not(:first-child) {
+            padding-left: 10px;
+        }
+        &:not(:last-child) {
+            padding-right: 10px;
+        }
+    }
+}
 .vertical-middle-align {
     position: relative;
     top: 50%;
