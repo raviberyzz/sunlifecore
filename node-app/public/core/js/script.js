@@ -4012,6 +4012,20 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 });
 
 //Tabs analytics ends here
+
+// Phone No General Analytics starts here //
+    $('.phone-numbers').click(function(){
+        var phoneNumber=$(this).text();
+        utag.link({
+            "asset_type"	: "Text",
+            "asset_title"	: phoneNumber,
+            "event_type"	: "Click",
+            "event_title"	: "Dial Number",
+            "page_section" : "Contact Us Section"
+        });              
+    })
+// Phone No General Analytics ends here //
+
 });
 $(document).ready(function () {
   function set_active(tab)
@@ -4596,7 +4610,14 @@ $(document).ready(function(){
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
 		}
-	});
+  });
+  // $('.popup-modal-wrapper').each(function(){
+  //   var $modal = $(this);
+  //   var id = $(this).attr('id');
+  //   $('a[href="#'+id+'"]').click(function(){
+  //     $modal.show();
+  //   });
+  // });
 });
 
 $(document).ready(function () {
@@ -4887,7 +4908,6 @@ $(document).ready(function () {
      
 });
 
-
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();
@@ -4938,6 +4958,7 @@ $(document).ready(function () {
        
 	});
 });
+
 
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
