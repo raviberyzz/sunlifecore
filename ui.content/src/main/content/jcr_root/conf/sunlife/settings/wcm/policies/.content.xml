@@ -92,7 +92,7 @@
                                     </paraformat>
                                     <misctools
                                         jcr:primaryType="nt:unstructured"
-                                        features="sourceedit,specialchars">
+                                        features="specialchars">
                                         <specialCharsConfig jcr:primaryType="nt:unstructured">
                                             <chars
                                                 jcr:primaryType="nt:unstructured"
