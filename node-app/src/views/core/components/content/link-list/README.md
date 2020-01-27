@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "list-wrapper-class": "lists-wrapper",
+    "list-wrapper-class": "editorial-nav-wrapper",
     "LinkText": "Quick Link",
     "link-id":"link1",
     "list" : [{
@@ -21,3 +21,4 @@ JSON Format
     }]
 }
 ```
+<!-- Classes available for "list-wrapper-class" are "lists-wrapper" and "editorial-nav-wrapper"-->

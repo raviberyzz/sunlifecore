@@ -32,7 +32,10 @@
     margin: 1px 0px 9px 0px;
     display: table-cell;
     height: 48px;
+    top: 6px;
+    
 }
+
 
 .parsley-errors-list li {
     padding: 4px 10px 4px 17px;
@@ -61,3 +64,12 @@
     border-right: 5px solid transparent;
 }
 
+.editorial-nav-wrapper{
+    // background-color: $medium-yellow-background;
+    .cmp-form-options{
+        height: 68px;
+    }
+    .cmp-form-options__label{
+        display: none;
+    }
+}
