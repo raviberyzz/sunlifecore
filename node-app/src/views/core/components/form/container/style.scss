@@ -61,3 +61,9 @@
     border-right: 5px solid transparent;
 }
 
+.lists-wrapper{
+    background-color: $medium-yellow-background;
+    .cmp-form-options__label{
+        display: none;
+    }
+}

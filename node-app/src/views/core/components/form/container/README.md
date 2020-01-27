@@ -4,7 +4,7 @@ JSON Format
 {
     "form-id":"",
     "form-text-id":"demo-id",
-    "form-background-wrapper":"form-wrapper-simple",
+    "form-background-wrapper":"lists-wrapper",
      "form-alignment-wrapper":"",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
@@ -33,7 +33,7 @@ JSON Format
     "value":"demo-value",
     "single-select":true,
     "radio":false,
-    "checkbox":true,
+    "checkbox":false,
     "multi-select":false,
     "list" : [{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",
@@ -47,3 +47,5 @@ JSON Format
     }]
 }
 ```
+
+<!-- Classes available for "form-background-wrapper" are "lists-wrapper" -->
