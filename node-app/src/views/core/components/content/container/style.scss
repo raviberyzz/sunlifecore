@@ -188,6 +188,17 @@ ul {
         left:50%;
         transform: translateX(-50%);
     }
+    .subscribe-main-content-wrapper{
+        .text{
+            .cmp-text{
+                margin:0;
+            }
+        }
+        .cta-content-icon-wrapper{
+            padding-bottom: 16px;
+        }
+    }
+
 }
 
 @media (max-width:$tab-screen-max) {
@@ -212,7 +223,8 @@ ul {
     form{
         display: block;
         &>*{
-            display: bloack;
+            display: block;
+            padding-bottom: 16px;
         }
         .primary-blue-button-form{
             .cmp-form-button{
@@ -224,7 +236,6 @@ ul {
     }
     form :first-child{
         padding: 0;
-        margin-bottom: 10px;
     }
 }
 }
