@@ -4018,14 +4018,15 @@ input[type=text] {
 /* tool tip text starts here*/
 .tool-tip-box {
   color: #ffffff;
-  margin-left: 18px;
+  margin-left: 1rem;
   background-color: #004C6C;
   padding: 16px;
   line-height: 26px;
   border-radius: 10px;
-  position: relative;
+  position: absolute;
   -webkit-border-radius: 10px;
-  -moz-border-radius: 10px; }
+  -moz-border-radius: 10px;
+  max-width: 400px; }
 
 p {
   margin: 0; }
@@ -4034,17 +4035,24 @@ p {
   content: "";
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   left: -11px;
   z-index: 1;
   border: solid 6px transparent;
   border-right-color: #004C6C; }
 
 .fa-info-circle {
-  margin-top: 27px;
-  position: absolute;
-  color: #004C6C; }
+  position: relative;
+  color: #004C6C;
+  position: relative; }
+  .fa-info-circle :before {
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative; }
 
 /* tool tip text ends here*/
+.panel-group {
+  display: none; }
 
 .tabs-wrapper {
   margin-bottom: 30px; }
@@ -6413,6 +6421,32 @@ ul {
     right: 3px;
     position: relative; }
 
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
+
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
   .breadcrumb-section .social-link-icon-wrapper li {
@@ -6495,32 +6529,6 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
