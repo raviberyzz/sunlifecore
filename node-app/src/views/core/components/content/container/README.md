@@ -39,7 +39,7 @@ JSON Format
 <!-- "background-color": "company-highlight-yellow-grey-background"/"company-highlight-blue-grey-background" -->
 <!-- icon-text-wrapper classes available are cta-content-icon-wrapper, mega-menu-icon-wrapper -->
 <!-- "cta-wrapper": "cross-cta-wrapper", "blue-icon-yellow-background", "yellow-icon-blue-background",
-"yellow-icon-grey-background","yellow-icon-white-background", "site-level-notification"-->
+"yellow-icon-grey-background","yellow-icon-white-background"-->
 <!-- for "cross-cta-wrapper" use "icon-text-wrapper": "mega-menu-icon-wrapper"
      for "blue-icon-yellow-background"/"yellow-icon-blue-background"/"yellow-icon-grey-background"/"yellow-icon-white-background" use "icon-text-wrapper": "cta-content-icon-wrapper" -->
 
