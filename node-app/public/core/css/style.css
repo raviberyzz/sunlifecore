@@ -6104,18 +6104,6 @@ ul {
   background-color: #ffffff;
   text-align: center; }
 
-.with-margin.yellow-icon-white-background > .cmp-container {
-  margin-right: 20px; }
-
-.with-margin.yellow-icon-grey-background > .cmp-container {
-  margin-right: 20px; }
-
-.with-margin.yellow-icon-blue-background > .cmp-container {
-  margin-right: 20px; }
-
-.with-margin.blue-icon-yellow-background > .cmp-container {
-  margin-right: 20px; }
-
 .yellow-icon-white-background .icon-text {
   border: 1px solid #D7D7D7; }
 
