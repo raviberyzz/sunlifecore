@@ -466,6 +466,11 @@
                                             cq:styleId="1577973285738"
                                             cq:styleLabel="Site Level Notification"
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="subscribe-main-content-wrapper"
+                                            cq:styleId="1580197354212"
+                                            cq:styleLabel="Subscribe"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
