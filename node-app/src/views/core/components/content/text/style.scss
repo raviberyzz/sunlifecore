@@ -31,10 +31,7 @@
     }
 }
 /* tool tip text starts here*/
-
-.tool-tip-box{
-    color: $white-shade;
-    margin-left: 18px;
+.tooltip-inner{
     background-color: $medium-blue-color;
     padding: 16px;
     line-height: 26px;
@@ -44,23 +41,14 @@
     -moz-border-radius: 10px;
     max-width: 400px;
 }
-    p {
-        margin: 0;
-    }
-
-    .tool-tip-box::before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -11px;
-    z-index: 1;
-    border: solid 6px transparent;
+.tooltip.right .tooltip-arrow{
     border-right-color: $medium-blue-color;
-    }
-    .fa-info-circle{
-    //  margin-top: 27px;
-     position: absolute;
-     top: 50%;
-     color: $medium-blue-color;
-    }
+}
+.fa-info-circle{
+color: $medium-blue-color;
+&:hover{
+    cursor: pointer;
+    text-decoration: none;    
+ }
+}
 /* tool tip text ends here*/
