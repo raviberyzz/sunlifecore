@@ -96,14 +96,7 @@
                                 </column>
                             </items>
                         </field>
-                    </copyrightLinks>
-                    <analyticsID
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        emptyText="Please configure the analytics id."
-                        fieldDescription="Please configure the analytics id."
-                        fieldLabel="Analytics id"
-                        name="./analyticsId"/>
+                    </copyrightLinks>                    
                 </items>
             </column>
         </items>

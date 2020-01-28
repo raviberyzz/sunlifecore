@@ -138,6 +138,11 @@
                 margin: 0;
                 padding: 40px 24px;
             }
+            .primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button, .primary-blue-button-rte, .primary-yellow-button-rte, .secondary-button-rte, .signIn-button-rte  {
+                .button-class {
+                    width: 100%;
+                }
+            }
         }
         .editorial-hero-banner {
             .left-image-position, .right-image-position {
