@@ -164,7 +164,6 @@ position:static;
 
 width:214px;
 background: #D7D7D7;
-display: table-cell;
 float: none;
 vertical-align: top;
 padding: 48px 32px 48px 32px;
@@ -183,8 +182,11 @@ text-align: right;
 
 .mega-menu-wrapper-desk  .aem-Grid.aem-Grid--default--10  .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6
 {
-                      padding: 0;
-                  }
+    padding: 0;
+    .icon-texts .view-all-category{
+        font-weight: 400;
+        }
+     }
 
 .mega-menu-wrapper-desk  .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--6 .aem-Grid.aem-Grid--default--6 > .aem-GridColumn.aem-GridColumn--default--6
 {

@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.models;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.sling.api.resource.Resource;
@@ -13,7 +11,7 @@ import org.apache.sling.models.annotations.Optional;
  * The Interface LayoutContainerModel.
  */
 @Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface LayoutContainerModel {
+public interface LayoutContainerModal {
 	
 	 /**
 	  * Gets the number of columns.
@@ -38,6 +36,14 @@ public interface LayoutContainerModel {
 	 */
     @Inject @Optional
 	String getCloseText();
+
+	/**
+	 * Gets the modal id.
+	 *
+	 * @return the modal id
+	 */
+    @Inject @Optional
+    String getModalId();
 
 	/**
 	 * Gets the modal title.
