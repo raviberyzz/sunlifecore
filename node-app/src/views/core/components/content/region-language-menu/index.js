@@ -77,5 +77,5 @@ $(document).ready(function(){
    });
 
   }
-   /*link farm table code starts here */
+   /*link farm table code ends here */
 });
