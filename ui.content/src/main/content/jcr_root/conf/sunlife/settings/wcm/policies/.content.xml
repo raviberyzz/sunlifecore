@@ -848,6 +848,32 @@
                                 </cq:styleGroups>
                             </policy_formButton>
                         </button>
+                        <table jcr:primaryType="nt:unstructured">
+                            <policy_table
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Table"
+                                sling:resourceType="wcm/core/components/policy/policy">
+                                <jcr:content jcr:primaryType="nt:unstructured"/>
+                                <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleGroupLabel="Styles"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="cmp-table-comparision"
+                                                cq:styleId="1577973566347"
+                                                cq:styleLabel="Comparison table"
+                                                jcr:primaryType="nt:unstructured"/>
+                                            <item1
+                                                cq:styleClasses="cmp-table-data-content"
+                                                cq:styleId="1577973589313"
+                                                cq:styleLabel="Data content table"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item0>
+                                </cq:styleGroups>
+                            </policy_table>
+                        </table>
                     </form>
                 </components>
             </ca>
