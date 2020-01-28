@@ -71,7 +71,7 @@
 															<legal-text
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="legal-text"
-                                                                text="legal text"/>																
+                                                                text="Legal Text"/>																
                                                         </styles>
                                                     </styles>
                                                     <format
