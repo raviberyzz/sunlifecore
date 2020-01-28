@@ -232,6 +232,17 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item4>
+                                    <item5
+                                    cq:styleGroupLabel="Product card"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="light-yellow-box-header"
+                                            cq:styleId="1579273835647"
+                                            cq:styleLabel="Light yellow box"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item5>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -574,6 +585,39 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
+                                 <item8
+                                    cq:styleGroupLabel="Product card"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="product-card"
+                                            cq:styleId="1579257835634"
+                                            cq:styleLabel="Container margin spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item8>
+                                  <item9
+                                    cq:styleGroupLabel="Mobile app"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mobileapp"
+                                            cq:styleId="1579257835295"
+                                            cq:styleLabel="Mobile app spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item9>
+                                <item10
+                                    cq:styleGroupLabel="Contact us"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-contact-us"
+                                            cq:styleId="1579258356987"
+                                            cq:styleLabel="Contact us spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item10>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
