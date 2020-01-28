@@ -308,3 +308,111 @@ ul {
     }
 }
 }
+
+/* styles for mobile app start */
+.mobileapp {
+	.text {
+		.cmp-text {
+			p {
+				&:last-child {
+					margin-bottom: 30px;
+				}
+			}
+		}
+	}
+	.icon-parent {
+		float: left;
+		text-align: center;
+		margin-right: 16px;
+		font-size: 2em;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		background: linear-gradient(#FFCB05, #EAAB00);
+		border-radius: 50%;
+	}
+	.icon-style {
+		color: #fff;
+	}
+	.icon-texts {
+		padding-bottom: 32px;
+		p {
+			&:first-child {
+				font-weight: 700;
+			}
+		}
+	}
+	.cmp-container {
+		.aem-GridColumn--default--8 {
+			.cmp-container {
+				margin-right: 56px;
+			}
+		}
+	}
+}
+
+/* styles for mobile app end  */
+
+/* styles for product box start */
+
+.light-yellow-box-header {
+	background: #FDDBA5;
+	color: #424242;
+	line-height: 23px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	padding: 15px;
+	height: 56px;
+}
+.product-card {
+	.aem-Grid--default--12 {
+		.aem-GridColumn--default--4 {
+			.cmp-container {
+				margin: 24px 24px 24px 0px;
+				&:last-child {
+						margin-right: 0px;
+					}
+				}
+			}
+        }
+    }
+		.aem-GridColumn--default--6 {
+			.cmp-container {
+                margin: 24px 24px 24px 0px;
+				&:last-child{
+						margin-right: 0px;
+					
+				}
+			}
+		}
+/* styles for product box end */
+
+/* styles for contact us box start*/
+.text-border-right {
+	.cmp-text {
+		border-right: 2px solid #9a9a9a;
+	}
+}
+.cmp-contact-us {
+	.aem-GridColumn--default--12 {
+		.text {
+			padding: 0px 32px;
+			.cmp-text {
+				h3 {
+					margin-top: 32px;
+				}
+				p {
+					&:first-of-type {
+						margin: 16px 0 56px 0;
+					}
+				}
+			}
+		}
+		.button {
+			margin: 24px 0 32px 0;
+		}
+	}
+}
+
+/* styles for contact us box end */
