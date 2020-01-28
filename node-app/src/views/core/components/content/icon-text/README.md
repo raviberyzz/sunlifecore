@@ -2,7 +2,7 @@
 JSON Format
 ```
 {
-    "icon-text-wrapper" : "social-link-icon-wrapper",
+    "icon-text-wrapper" : "cta-content-icon-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-facebook-square",
         "text-input": "Find an advisor",

@@ -199,6 +199,27 @@ ul {
         }
     }
 }
+.tripple-call-deeper-wrapper{
+    background-color: $light-grey-background-10;
+    margin: 24px 0 40px 0;
+    .cta-content-icon-wrapper {
+        .icon-style {
+            background: $white-shade;
+            color:$medium-blue-color;
+            height: 66px;
+            width: 66px;
+            padding: 13px;
+            font-size: 40px;
+        }
+        .icon-parent {
+            margin-right: 16px;
+            float: left;
+        }
+        .icon-texts {
+            padding-bottom: 0;
+        }
+    }
+}
 @media (max-width:$mobile-screen-max) {
     .container-component {
         .cmp-container > div {
