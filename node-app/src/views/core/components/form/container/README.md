@@ -37,19 +37,19 @@ JSON Format
     "checkbox":false,
     "multi-select":false,
     "list" : [{
-        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
         "text" : "All"
     },{
-        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
         "text" : "Fitness and family health"
     },{
-        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
         "text" : "Mental wellness"
     },{
-        "link" : "https://www.sunlife.ca/views/core/components/form/container.html",
+        "link" : "/views/core/components/form/container.html",
         "text" : "Eating well"
     },{
-        "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proADIAvailable%3Dchecked",
+        "link" : "/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proADIAvailable%3Dchecked",
         "text" : "Preventing and treating illness"
     }]
 }
