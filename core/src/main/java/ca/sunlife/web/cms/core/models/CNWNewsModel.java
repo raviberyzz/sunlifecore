@@ -33,8 +33,6 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 @Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsModel {
-	/** The log. */
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Inject
 	private Page currentPage;
@@ -45,163 +43,237 @@ public class CNWNewsModel {
 	@Inject
 	private CNWNewsService newsService;
 
-	/** news. */
+	/** The log */
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	/** news */
 	private ReleaseMain news;
 
-	/** totalNoYears. */
+	/** totalNoYears */
 	private int totalNoYears = 3;
 
-	/** activeYear. */
+	/** activeYear */
 	private int activeYear;
 
-	/** yearsToShow. */
+	/** yearsToShow */
 	private List<Integer> yearsToShow;
 
-	/** prevText. */
+	/** prevText */
 	private String prevText = "Previous";
 
-	/** nextText. */
+	/** nextText */
 	private String nextText = "Next";
 
-	/** ofStr. */
+	/** ofStr */
 	private String ofStr = "of";
 
-	/** rcordPerPageStr. */
+	/** rcordPerPageStr */
 	private String rcordPerPageStr = "10"; // Default to 10 items per page
 
-	/** prevPage. */
+	/** prevPage */
 	private int prevPage = 0;
 
-	/** curPage. */
+	/** curPage */
 	private int curPage = 1;
 
-	/** locale. */
+	/** locale */
 	private String locale;
 
-	private StringBuffer requestURL = new StringBuffer();
-	
-	/** paginationHtml. */
+	/** requestURL */
+	private StringBuilder requestURL;
+
+	/** paginationHtml */
 	private String paginationHtml;
-	
+
+	/**
+	 * @return the news
+	 */
 	public ReleaseMain getNews() {
 		return news;
 	}
 
+	/**
+	 * @param news the news to set
+	 */
 	public void setNews(ReleaseMain news) {
 		this.news = news;
 	}
 
-	public Page getCurrentPage() {
-		return currentPage;
-	}
-
-	public void setCurrentPage(Page currentPage) {
-		this.currentPage = currentPage;
-	}
-
-	public SlingHttpServletRequest getRequest() {
-		return request;
-	}
-
-	public void setRequest(SlingHttpServletRequest request) {
-		this.request = request;
-	}
-
+	/**
+	 * @return the totalNoYears
+	 */
 	public int getTotalNoYears() {
 		return totalNoYears;
 	}
 
+	/**
+	 * @param totalNoYears the totalNoYears to set
+	 */
 	public void setTotalNoYears(int totalNoYears) {
 		this.totalNoYears = totalNoYears;
 	}
 
+	/**
+	 * @return the activeYear
+	 */
 	public int getActiveYear() {
 		return activeYear;
 	}
 
+	/**
+	 * @param activeYear the activeYear to set
+	 */
 	public void setActiveYear(int activeYear) {
 		this.activeYear = activeYear;
 	}
 
-	public String getPrevText() {
-		return prevText;
-	}
-
-	public void setPrevText(String prevText) {
-		this.prevText = prevText;
-	}
-
-	public String getNextText() {
-		return nextText;
-	}
-
-	public void setNextText(String nextText) {
-		this.nextText = nextText;
-	}
-
-	public String getOfStr() {
-		return ofStr;
-	}
-
-	public void setOfStr(String ofStr) {
-		this.ofStr = ofStr;
-	}
-
+	/**
+	 * @return the yearsToShow
+	 */
 	public List<Integer> getYearsToShow() {
 		return yearsToShow;
 	}
 
+	/**
+	 * @param yearsToShow the yearsToShow to set
+	 */
 	public void setYearsToShow(List<Integer> yearsToShow) {
 		this.yearsToShow = yearsToShow;
 	}
 
+	/**
+	 * @return the prevText
+	 */
+	public String getPrevText() {
+		return prevText;
+	}
+
+	/**
+	 * @param prevText the prevText to set
+	 */
+	public void setPrevText(String prevText) {
+		this.prevText = prevText;
+	}
+
+	/**
+	 * @return the nextText
+	 */
+	public String getNextText() {
+		return nextText;
+	}
+
+	/**
+	 * @param nextText the nextText to set
+	 */
+	public void setNextText(String nextText) {
+		this.nextText = nextText;
+	}
+
+	/**
+	 * @return the ofStr
+	 */
+	public String getOfStr() {
+		return ofStr;
+	}
+
+	/**
+	 * @param ofStr the ofStr to set
+	 */
+	public void setOfStr(String ofStr) {
+		this.ofStr = ofStr;
+	}
+
+	/**
+	 * @return the rcordPerPageStr
+	 */
 	public String getRcordPerPageStr() {
 		return rcordPerPageStr;
 	}
 
+	/**
+	 * @param rcordPerPageStr the rcordPerPageStr to set
+	 */
 	public void setRcordPerPageStr(String rcordPerPageStr) {
 		this.rcordPerPageStr = rcordPerPageStr;
 	}
 
+	/**
+	 * @return the prevPage
+	 */
 	public int getPrevPage() {
 		return prevPage;
 	}
 
+	/**
+	 * @param prevPage the prevPage to set
+	 */
 	public void setPrevPage(int prevPage) {
 		this.prevPage = prevPage;
 	}
 
+	/**
+	 * @return the curPage
+	 */
 	public int getCurPage() {
 		return curPage;
 	}
 
+	/**
+	 * @param curPage the curPage to set
+	 */
 	public void setCurPage(int curPage) {
 		this.curPage = curPage;
 	}
 
+	/**
+	 * @return the locale
+	 */
 	public String getLocale() {
 		return locale;
 	}
 
+	/**
+	 * @param locale the locale to set
+	 */
 	public void setLocale(String locale) {
 		this.locale = locale;
 	}
 
+	/**
+	 * @return the requestURL
+	 */
+	public StringBuilder getRequestURL() {
+		return requestURL;
+	}
+
+	/**
+	 * @param requestURL the requestURL to set
+	 */
+	public void setRequestURL(StringBuilder requestURL) {
+		this.requestURL = requestURL;
+	}
+
+	/**
+	 * @return the paginationHtml
+	 */
 	public String getPaginationHtml() {
 		return paginationHtml;
 	}
 
+	/**
+	 * @param paginationHtml the paginationHtml to set
+	 */
 	public void setPaginationHtml(String paginationHtml) {
 		this.paginationHtml = paginationHtml;
 	}
 
 	@PostConstruct
 	public void init() {
-		logger.debug("Entry :: init ::");
+		logger.debug("Entry :: CNWNewsModel :: init ::");
 		String pageNum;
 		String datePattern = "MMMM dd, yyyy";
 		String cnwDatePattern = "EEE, dd MMM yyyy HH:mm:ss zzzzz";
-		String category = "";
+		String category = "&category=773";
 		String strYear;
 
 		try {
@@ -248,7 +320,7 @@ public class CNWNewsModel {
 				importUrl.append(offset);
 			}
 			logger.debug("importUrl: {}", importUrl);
-			news = new ObjectMapper().readValue(newsService.getCnwNews(importUrl.toString()), ReleaseMain.class);
+			news = new ObjectMapper().readValue(newsService.callGet(importUrl.toString()), ReleaseMain.class);
 
 			news.getReleases().getRelease().stream().forEach(o -> {
 				SimpleDateFormat inputFormatter = new SimpleDateFormat(cnwDatePattern);
@@ -261,50 +333,55 @@ public class CNWNewsModel {
 				}
 			});
 			logger.debug("Fetched news :: {}", news);
-			
+
 			String uri = request.getRequestURI();
 			String qs = request.getQueryString();
 			logger.debug("uri: {}", uri);
 			logger.debug("qs: {}", qs);
-			// added this fix as WEM 10.5 project
 			uri = uri.replaceAll("/sites", "");
+			requestURL = new StringBuilder();
 			requestURL.append(uri);
 			requestURL.append("?");
 			logger.debug("generated requestURL: {}", requestURL);
-			// since using existing URL, may already have page param - so clean it up, if needed
+			// since using existing URL, may already have page param - so clean it up, if
+			// needed
 			if (qs != null) {
-		    logger.debug("qs: {}", qs);
+				logger.debug("qs: {}", qs);
 				if (qs.indexOf("pageNo") != -1) {
 					qs = qs.replaceAll("&?pageNo=[^&]+", "");
 					qs = qs.replaceAll("&+$", "");
 				}
-				logger.debug("qs 1: {}", qs);	
+				logger.debug("qs 1: {}", qs);
 				if (qs.indexOf("year") != -1) {
 					qs = qs.replaceAll("&?year=[^&]+", "");
 					qs = qs.replaceAll("&+$", "");
-					qs = qs + "&year="+activeYear;
+					qs = qs + "&year=" + activeYear;
 				}
 				logger.debug("qs 2: {}", qs);
 				requestURL.append(qs);
-			  	requestURL.append("&");
+				requestURL.append("&");
 			}
 			requestURL.append("pageNo=");
 			paginationHtml = setPagination();
 		} catch (IOException e) {
-			logger.error("Error :: init method of CNWNewsModel :: {}", e);
+			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
 		}
 	}
 
 	private String setPagination() {
-		logger.debug("requestUrl: {}", requestURL);
+		logger.debug("Entry :: CNWNewsModel :: setPagination :: requestUrl: {}", requestURL);
+		final String ANCHOR_END = "</a>";
+		final String LI_END = "</li>";
+		final String SPAN_START = "<span>";
+		final String SPAN_END = "</span>";
+		final String ACTIVE_CLASS = "active";
 		String firstPageText = "";
 		int resultSize = 0;
 		logger.debug("***before pagination -  rcordPerPageStr={},  matching_count={}", rcordPerPageStr,
 				news.getReleases().getMatching_count());
+		
 		int recordPerPage = Integer.parseInt(rcordPerPageStr);
-		if (news.getReleases().getMatching_count() != null) {
-			resultSize = Integer.parseInt(news.getReleases().getMatching_count());
-		}
+		resultSize = Integer.parseInt(news.getReleases().getMatching_count());
 		int mod = resultSize % recordPerPage;
 		int totalPages = resultSize / recordPerPage;
 		if (mod > 0) {
@@ -317,13 +394,13 @@ public class CNWNewsModel {
 		int secondBreakPt = totalPages - 4; // final 4 pages
 		String previousCss = curPage == 1 ? "disabled" : "";
 		String nextCss = curPage == totalPages ? "disabled" : "";
-		String firstPageCss = curPage == 1 ? "active" : "";
+		String firstPageCss = curPage == 1 ? ACTIVE_CLASS : "";
 		String ellipsisStr = "<li class=\"ellipsis\"><a><span>…</span></a></li>";
 
 		if (totalPages <= 1) {
 			return null;
 		}
-		
+
 		StringBuilder htmlStr = new StringBuilder();
 		htmlStr.append("<nav role=\"navigation\" aria-label=\"Page\" class=\"text-center\">");
 
@@ -339,13 +416,17 @@ public class CNWNewsModel {
 			htmlStr.append("<li class=\"previous " + previousCss + "\">");
 			htmlStr.append("<a href=\"" + requestURL + prevPage + " \">");
 			htmlStr.append("<span class=\"fa fa-angle-left\" aria-hidden=\"true\"></span>");
-			htmlStr.append("<span>"+prevText+" </span></a></li>");
+			htmlStr.append(SPAN_START + prevText + " </span>"
+					+ ANCHOR_END
+					+ LI_END);
 		}
 
 		htmlStr.append("<li class=\"link-to-first " + firstPageCss + "\">");
-		htmlStr.append("<a href=\""+requestURL+"1\" aria-label=\"" + firstPageText + "\">");
+		htmlStr.append("<a href=\"" + requestURL + "1\" aria-label=\"" + firstPageText + "\">");
 		htmlStr.append("<span class=\"fa fa-angle-double-left\" aria-hidden=\"true\"></span>");
-		htmlStr.append("<span>1</span></a></li>");
+		htmlStr.append("<span>1</span>"
+				+ ANCHOR_END
+				+ LI_END);
 
 		/********************************************
 		 * First Scenario (Page numbering page 1-4)
@@ -357,22 +438,22 @@ public class CNWNewsModel {
 			}
 
 			for (int i = 2; i <= maxFirst; i++) {
-				String currCSS = curPage == i ? "active" : "";
+				String currCSS = curPage == i ? ACTIVE_CLASS : "";
 
 				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\""+requestURL + i + " \" >");
-				htmlStr.append("<span>" + i + "</span>");
-				htmlStr.append("</a>");
-				htmlStr.append("</li>");
+				htmlStr.append("<a href=\"" + requestURL + i + " \" >");
+				htmlStr.append(SPAN_START + i + SPAN_END);
+				htmlStr.append(ANCHOR_END);
+				htmlStr.append(LI_END);
 
 			} // for end
 
 			if (totalPages > firstMinTotal) {
 				htmlStr.append("<li class=\"\">");
-				htmlStr.append("<a href=\""+requestURL+ totalPages + "\" >");
-				htmlStr.append("<span>" + totalPages + "</span>");
-				htmlStr.append("</a>");
-				htmlStr.append("</li>");
+				htmlStr.append("<a href=\"" + requestURL + totalPages + "\" >");
+				htmlStr.append(SPAN_START + totalPages + SPAN_END);
+				htmlStr.append(ANCHOR_END);
+				htmlStr.append(LI_END);
 			} // if end
 		} // First scenario END
 
@@ -381,12 +462,12 @@ public class CNWNewsModel {
 		 ********************************************/
 		else if (curPage >= secondBreakPt) {
 			for (int i = secondBreakPt; i <= totalPages; i++) {
-				String currCSS = curPage == i ? "active" : "";
+				String currCSS = curPage == i ? ACTIVE_CLASS : "";
 
 				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\""+requestURL + i + "\" >");
-				htmlStr.append("<span>" + i + "</span>");
-				htmlStr.append("</a>");
+				htmlStr.append("<a href=\"" + requestURL + i + "\" >");
+				htmlStr.append(SPAN_START + i + SPAN_END);
+				htmlStr.append(ANCHOR_END);
 				htmlStr.append("</li> ");
 			} // for end
 		} // second scenario end
@@ -397,47 +478,47 @@ public class CNWNewsModel {
 		else {
 			logger.debug("{}", ellipsisStr);
 			for (int i = curPage - 2; i <= (curPage + 2); i++) {
-				String currCSS = (curPage == i) ? "active" : "";
+				String currCSS = (curPage == i) ? ACTIVE_CLASS : "";
 				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\""+requestURL + i + "\" >");
-				htmlStr.append("<span>" + i + "</span>");
-				htmlStr.append("</a>");
-				htmlStr.append("</li>");
+				htmlStr.append("<a href=\"" + requestURL + i + "\" >");
+				htmlStr.append(SPAN_START + i + SPAN_END);
+				htmlStr.append(ANCHOR_END);
+				htmlStr.append(LI_END);
 			}
 			logger.debug("{}", ellipsisStr);
 
 			htmlStr.append("<li class=\"\">");
-			htmlStr.append("<a href=\""+requestURL + totalPages + "\" >");
-			htmlStr.append("<span>" + totalPages + "</span>");
-			htmlStr.append("</a>");
-			htmlStr.append("</li>");
+			htmlStr.append("<a href=\"" + requestURL + totalPages + "\" >");
+			htmlStr.append(SPAN_START + totalPages + SPAN_END);
+			htmlStr.append(ANCHOR_END);
+			htmlStr.append(LI_END);
 		} // else end
 
 		if (curPage < totalPages) {
 			htmlStr.append("<li class=\"next " + nextCss + "\">");
-			htmlStr.append("<a href=\""+requestURL + curPage + 1 + "\">" + nextText + " </a>");
-			htmlStr.append("</li>");
+			htmlStr.append("<a href=\"" + requestURL + curPage + 1 + "\">" + nextText + " </a>");
+			htmlStr.append(LI_END);
 		}
 
 		htmlStr.append("</ul>");
-		htmlStr.append("<!-- COMPONENT: END -->");
 		htmlStr.append("<div class=\"pagination-indicator\">");
 		if (("fr").equals(locale)) {
-			htmlStr.append("Page "+ curPage +"  de " + totalPages + "");
+			htmlStr.append("Page " + curPage + "  de " + totalPages + "");
 		} else {
-			htmlStr.append("Page "+ curPage +"  of " + totalPages + "");
+			htmlStr.append("Page " + curPage + "  of " + totalPages + "");
 		}
 		htmlStr.append(" </div></nav> ");
 		return htmlStr.toString();
 	}
-	
-	// Request Parameters
+
 	/**
-	 * pageNo year - Calendar year lang vgnLang rcordPerPageStr - 10 datePattern
-	 * cnwdatePattern locale
-	 * 
-	 * prevText - Previous nextText - Next ofStr - of toalNoYears - 3
-	 * 
-	 * 
+	 * Generates the full request url
+	 * @return
 	 */
+	public String getFullURL() {
+		StringBuilder requestURLStr = new StringBuilder(request.getRequestURL().toString());
+		String queryString = "vgnLocale=" + currentPage.getLanguage();
+		logger.debug("queryString {} ", queryString);
+		return requestURLStr.append('?').append(queryString).toString();
+	}
 }

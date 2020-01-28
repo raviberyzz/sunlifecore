@@ -16,21 +16,28 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 @Component(service = CNWNewsService.class, immediate = true)
 public class CNWNewsServiceImpl implements CNWNewsService {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ca.sunlife.web.cms.core.services.CNWNewsService#callGet(java.lang.String)
+	 */
 	@Override
-	public String getCnwNews(String url) throws IOException {
+	public String callGet(String url) throws IOException {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpUriRequest httpUriRequest = new HttpGet(url);
 
 		HttpResponse response = client.execute(httpUriRequest);
 
-		if(response.getStatusLine().getStatusCode() == 200) {
-			try (BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8")) ) {
+		if (response.getStatusLine().getStatusCode() == 200) {
+			try (BufferedReader in = new BufferedReader(
+					new InputStreamReader(response.getEntity().getContent(), "UTF-8"))) {
 				String inputLine;
 				StringBuilder responseStr = new StringBuilder();
 				while ((inputLine = in.readLine()) != null) {
 					responseStr.append(inputLine);
 				}
-				return responseStr.toString();	
+				return responseStr.toString();
 			}
 		}
 		return null;

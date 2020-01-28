@@ -4,6 +4,12 @@ import java.io.IOException;
 
 public interface CNWNewsService {
 
-	public String getCnwNews(String url) throws IOException;
+	/**
+	 * Calls GET web services
+	 * @param url
+	 * @return
+	 * @throws IOException
+	 */
+	public String callGet(String url) throws IOException;
 	
 }
