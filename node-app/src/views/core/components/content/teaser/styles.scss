@@ -65,13 +65,11 @@
 }
 .text-right-align {
     .text-section {
-        margin: 30px;
         right: 0;
     }
 }
 .text-left-align {
     .text-section {
-        margin: 30px;
         left: 0;
     }
 }
@@ -139,6 +137,11 @@
                 background: $white-shade;
                 margin: 0;
                 padding: 40px 24px;
+            }
+            .primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button, .primary-blue-button-rte, .primary-yellow-button-rte, .secondary-button-rte, .signIn-button-rte  {
+                .button-class {
+                    width: 100%;
+                }
             }
         }
         .editorial-hero-banner {

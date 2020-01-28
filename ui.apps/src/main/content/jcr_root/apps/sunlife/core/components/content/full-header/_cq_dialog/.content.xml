@@ -61,15 +61,7 @@
                                                     <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <analyticsID
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Please configure the analytics id."
-                                                                fieldDescription="Please configure the analytics id."
-                                                                fieldLabel="Analytics id"
-                                                                name="./logoAnalyticsId"
-                                                                value="sunlife-logo"/>
+                                                        <items jcr:primaryType="nt:unstructured">                                                            
                                                             <links
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -287,15 +279,7 @@
                                                     <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <analyticsID
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Please configure the analytics id."
-                                                                fieldDescription="Please configure the analytics id."
-                                                                fieldLabel="Analytics id"
-                                                                name="./searchAnalyticsId"
-                                                                value="header-search"/>
+                                                        <items jcr:primaryType="nt:unstructured">                                                            
                                                             <searchtitle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -376,15 +360,7 @@
                                                     <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <analyticsID
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Please configure the analytics id."
-                                                                fieldDescription="Please configure the analytics id."
-                                                                fieldLabel="Analytics id"
-                                                                name="./signinAnalyticsId"
-                                                                value="header-sign-in"/>
+                                                        <items jcr:primaryType="nt:unstructured">                                                            
                                                             <signintitle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -467,15 +443,7 @@
                                                     <column
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <analyticsID
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                emptyText="Please configure the analytics id."
-                                                                fieldDescription="Please configure the analytics id."
-                                                                fieldLabel="Analytics id"
-                                                                name="./navigationAnalyticsId"
-                                                                value="nav-main"/>
+                                                        <items jcr:primaryType="nt:unstructured">                                                            
                                                             <meganavlinks
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

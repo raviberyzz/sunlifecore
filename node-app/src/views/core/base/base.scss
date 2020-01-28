@@ -115,6 +115,42 @@ h6, .heading-6 {
     font-size: 1.125rem;
     line-height:23px;
 }
+.heading-1{
+    h1,h2,h3,h4,h5,h6{
+        font-size:2.25rem;
+        line-height:46px;
+    }
+}
+.heading-2{
+    h1,h2,h3,h4,h5,h6{
+        font-size:2rem;
+        line-height:41px;
+    }
+}
+.heading-3{
+    h1,h2,h3,h4,h5,h6{
+        font-size:1.75rem;
+        line-height:36px;
+    }
+}
+.heading-4{
+    h1,h2,h3,h4,h5,h6{
+        font-size:1.5rem;
+        line-height:30px;
+    }
+}
+.heading-5{
+    h1,h2,h3,h4,h5,h6{
+        font-size:1.25rem;
+        line-height:23px ;
+    }
+}
+.heading-6{
+    h1,h2,h3,h4,h5,h6{
+        font-size:1.125rem;
+        line-height:23px ;
+    }
+}
 
 a {
     font-weight: 700;
@@ -236,6 +272,7 @@ footer {
 }
 .yellow-bullet-list {
     ul {
+        margin-left: 2em;
         li::before {
             content: "\2022";
             color: $medium-yellow-background;
@@ -243,13 +280,14 @@ footer {
             display: inline-block;
             width: 2rem;
             padding-left: 16px;
+            margin-left: -2em;
         }
     }
 }
 .primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button  {
     .button-class {
-        height: 48px;
-        width: 180px;
+        min-height: 48px;
+        max-height: 72px;
         min-width: 136px;
         max-width: 275px;
         border-radius: 4px;
@@ -284,7 +322,7 @@ footer {
 .phone-numbers{
     font-weight: 400;
     font-size: 22px;
-    line-height: 120%;
+    line-height: 31px;
 }
 /*media query*/
 

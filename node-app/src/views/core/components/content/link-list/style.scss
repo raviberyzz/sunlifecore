@@ -21,38 +21,44 @@
     }
 }
 
-.editorial-nav-wrapper{
-    .accordion-heading{
-        display: none;
-    }
-    .list-div{
-        display: block;
-        ul{
-            min-height: 84px;
-            background-color: $medium-yellow-background;
-            padding: 16px 0;
-            width: 100%;
-            display: inline-flex;
-            li{
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                flex: auto;
-                padding: 0 10px;
-                a{
-                    font-size: 1rem;
-                    line-height: 26px;
+.editorial-nav-desktop-wrapper{
+    .links{
+        width: 100%;
+        .accordion-heading{
+            display: none;
+        }
+        .list-div{
+            display: block;
+            ul{
+                min-height: 84px;
+                background-color: $medium-yellow-background;
+                padding: 16px 0;
+                width: 100%;
+                display: inline-flex;
+                li{
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    flex: auto;
+                    padding: 0 10px;
+                    a{
+                        font-size: 1rem;
+                        line-height: 26px;
+                    }
                 }
-            }
-            .selected{
-                background-color: $medium-blue-color;
-                a{
-                    color: $white-shade;
+                li:not(:last-child){
+                    border-right: 2px solid $medium-grey-background;
                 }
-            }
-            .border-right{
-                border-right-color: $medium-grey-background;
+                .selected{
+                    background-color: $medium-blue-color;
+                    a{
+                        color: $white-shade;
+                    }
+                }
+                .border-right{
+                    border-right-color: $medium-grey-background;
+                }
             }
         }
     }
@@ -95,7 +101,7 @@
             cursor: pointer;
         }
     }
-    .editorial-nav-wrapper{
+    .editorial-nav-desktop-wrapper{
         display: none;
     }
 }

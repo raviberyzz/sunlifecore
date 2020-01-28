@@ -4,6 +4,7 @@
     border: 1px solid $light-grey-color;
     p {
         margin: 0;
+        line-height: 24px;
     }
 }
 .grey-background-box {
@@ -34,7 +35,11 @@
     background-color: $medium-blue-color;
     padding: 16px;
     line-height: 26px;
-    font-size: 16px;
+    border-radius: 10px;
+    position: relative;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    max-width: 400px;
 }
 .tooltip.right .tooltip-arrow{
     border-right-color: $medium-blue-color;

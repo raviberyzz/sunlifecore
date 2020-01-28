@@ -4,7 +4,7 @@ JSON Format
 {
     "form-id":"",
     "form-text-id":"demo-id",
-    "form-background-wrapper":"editorial-nav-wrapper",
+    "form-background-wrapper":"editorial-nav-mobile-wrapper",
      "form-alignment-wrapper":"",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
@@ -16,8 +16,9 @@ JSON Format
     "validation-pattern": "^(?=.*[a-z])(?=.*[A-Z])",
     "required-message":"It Can not be empty",
     "button-type":"submit",
-    "button-value":"Submit",
-    "form-button-class":"primary-yellow-button-form",
+    "button-value":"",
+    "form-button-class":"primary-blue-button-form",
+    "form-button-type":"submit",
     "form-function":"demoFunction",
     "form-method":"get",
     "form-action":"",
@@ -36,16 +37,22 @@ JSON Format
     "checkbox":false,
     "multi-select":false,
     "list" : [{
-        "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DTermLife",
-        "text" : "Sun Life Go Simplified Term Life Insurance"
+        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "text" : "All"
     },{
-        "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proELAvailable%3Dchecked%26proELOption%3DSimplifiedLife",
-        "text" : "Sun Life Go Accidental Death Insurance"
+        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "text" : "Fitness and family health"
+    },{
+        "link" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
+        "text" : "Mental wellness"
+    },{
+        "link" : "https://www.sunlife.ca/views/core/components/form/container.html",
+        "text" : "Eating well"
     },{
         "link" : "https://www.sunnet.sunlife.com/signin/ProductFormsEApp/E/SunLifeGoDTC/SunLifeGo/getStarted.wca?initParam=visibleProducts%3DAll%26proADIAvailable%3Dchecked",
-        "text" : "Sun Life Go Guaranteed Life Insurance"
+        "text" : "Preventing and treating illness"
     }]
 }
 ```
 
-<!-- Classes available for "form-background-wrapper" are "editorial-nav-wrapper" -->
+<!-- Classes available for "form-background-wrapper" are "editorial-nav-mobile-wrapper" -->

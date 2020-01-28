@@ -1,0 +1,131 @@
+<sly data-sly-use.layout="ca.sunlife.web.cms.core.models.LayoutContainerModal"/>
+<sly data-sly-test.empty="${!layout.noc}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<sly data-sly-test="${layout.noc == '1'}">
+    <sly data-sly-test="${layout.type == 'normal'}">
+        <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+    </sly>
+    <sly data-sly-test="${layout.type == 'site-notification'}">
+        <div class="site-level-notification">
+            <div class="close-div">
+                <span class="sr-only">${layout.closeText}</span>
+                 <span class="fa fa-remove collapse-x" tabindex="0">&nbsp;</span>
+            </div>
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == 'modal-popup'}">
+        <div class="modal fade popup-modal-wrapper horizontal-middle-align" role="dialog" id="${layout.modalID}"> 
+            <!-- Modal content-->
+            <div class="modal-content horizontal-middle-align">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h3 class="modal-heading" tabindex="0" data-sly-element="${layout.modalTitleLevel}">${layout.modalTitle}</h3>
+                        <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
+                    </div>
+                </div>
+                <div class="modal-body" tabindex="0">
+                    <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+                </div>
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == 'simple-popup'}">
+        <div class="site-level-notification">
+            <div class="close-div">
+                <span class="sr-only">${layout.closeText}</span>
+                 <span class="fa fa-remove collapse-x" tabindex="0">&nbsp;</span>
+            </div>
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+</sly>
+<sly data-sly-test="${layout.noc == '2'}">
+    <sly data-sly-test="${layout.type == '50:50'}">
+        <div class="col-sm-6">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-6">
+            <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == '33:67'}">
+        <div class="col-sm-4">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-8">
+            <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == '67:33'}">
+        <div class="col-sm-8">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-4">
+            <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == '67:33N'}">
+        <div class="col-sm-8">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-4 right-navigation-wrapper">
+            <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+</sly>
+<sly data-sly-test="${layout.noc == '3'}">
+    <sly data-sly-test="${layout.type == '25:50:25N'}">
+        <div class="col-sm-3">
+            <sly data-sly-resource="${'container1' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-6">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-3 right-navigation-wrapper">
+            <sly data-sly-resource="${'container3' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+    <sly data-sly-test="${layout.type == '33:33:33'}">
+        <div class="col-sm-4">
+            <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-4">
+            <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+        <div class="col-sm-4">
+            <sly data-sly-resource="${'container3' @ resourceType='sunlife/core/components/content/container'}" />
+        </div>
+    </sly>
+</sly>
+<sly data-sly-test="${layout.noc == '4'}">
+    <div class="col-sm-3">
+        <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-3">
+        <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-3">
+        <sly data-sly-resource="${'container3' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-3">
+        <sly data-sly-resource="${'container4' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+</sly>
+<sly data-sly-test="${layout.noc == '5'}">
+    <div class="col-sm-2_5">
+        <sly data-sly-resource="${'container' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-2_5">
+        <sly data-sly-resource="${'container2' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-2_5">
+        <sly data-sly-resource="${'container3' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-2_5">
+        <sly data-sly-resource="${'container4' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+    <div class="col-sm-2_5">
+        <sly data-sly-resource="${'container5' @ resourceType='sunlife/core/components/content/container'}" />
+    </div>
+</sly>
