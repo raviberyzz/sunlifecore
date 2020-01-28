@@ -1,5 +1,5 @@
 function stickyHeader(){
-  // sticky header works only if table components exists
+  // sticky header works if table components exists
   if($('.slf-table').length){
   let tableHeader = $("table tbody tr:first-child");
   let theaderPosition = tableHeader.offset().top;
