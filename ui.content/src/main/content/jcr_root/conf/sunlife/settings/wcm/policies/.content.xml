@@ -668,7 +668,7 @@
                                             <item1
                                                 cq:styleClasses="cta-content-icon-wrapper"
                                                 cq:styleId="1577976171584"
-                                                cq:styleLabel="CTA Button"
+                                                cq:styleLabel="Overview Highlight"
                                                 jcr:primaryType="nt:unstructured"/>
                                             <item2
                                                 cq:styleClasses="mega-menu-icon-wrapper"
