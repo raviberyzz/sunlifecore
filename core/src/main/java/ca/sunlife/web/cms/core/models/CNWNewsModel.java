@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ca.sunlife.web.cms.core.beans.PageItem;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 
@@ -85,6 +86,15 @@ public class CNWNewsModel {
 	/** paginationHtml */
 	private String paginationHtml;
 
+	/** Pagination fields start */
+	private int totalPages;
+	private int firstBreakPt = 5; // first 4 pages
+	private int firstMinTotal = 6; // first break pt when less than this number
+	private int secondBreakPt;
+	private List<PageItem> pageItems;
+	private String firstPageText;
+	/** Pagination fields start */
+	
 	/**
 	 * @return the news
 	 */
@@ -267,6 +277,90 @@ public class CNWNewsModel {
 		this.paginationHtml = paginationHtml;
 	}
 
+	/**
+	 * @return the firstBreakPt
+	 */
+	public int getFirstBreakPt() {
+		return firstBreakPt;
+	}
+
+	/**
+	 * @param firstBreakPt the firstBreakPt to set
+	 */
+	public void setFirstBreakPt(int firstBreakPt) {
+		this.firstBreakPt = firstBreakPt;
+	}
+
+	/**
+	 * @return the firstMinTotal
+	 */
+	public int getFirstMinTotal() {
+		return firstMinTotal;
+	}
+
+	/**
+	 * @param firstMinTotal the firstMinTotal to set
+	 */
+	public void setFirstMinTotal(int firstMinTotal) {
+		this.firstMinTotal = firstMinTotal;
+	}
+
+	/**
+	 * @return the secondBreakPt
+	 */
+	public int getSecondBreakPt() {
+		return secondBreakPt;
+	}
+
+	/**
+	 * @param secondBreakPt the secondBreakPt to set
+	 */
+	public void setSecondBreakPt(int secondBreakPt) {
+		this.secondBreakPt = secondBreakPt;
+	}
+
+	/**
+	 * @return the pageItems
+	 */
+	public List<PageItem> getPageItems() {
+		return pageItems;
+	}
+
+	/**
+	 * @param pageItems the pageItems to set
+	 */
+	public void setPageItems(List<PageItem> pageItems) {
+		this.pageItems = pageItems;
+	}
+
+	/**
+	 * @return the firstPageText
+	 */
+	public String getFirstPageText() {
+		return firstPageText;
+	}
+
+	/**
+	 * @param firstPageText the firstPageText to set
+	 */
+	public void setFirstPageText(String firstPageText) {
+		this.firstPageText = firstPageText;
+	}
+
+	/**
+	 * @return the totalPages
+	 */
+	public int getTotalPages() {
+		return totalPages;
+	}
+
+	/**
+	 * @param totalPages the totalPages to set
+	 */
+	public void setTotalPages(int totalPages) {
+		this.totalPages = totalPages;
+	}
+
 	@PostConstruct
 	public void init() {
 		logger.debug("Entry :: CNWNewsModel :: init ::");
@@ -362,72 +456,33 @@ public class CNWNewsModel {
 				requestURL.append("&");
 			}
 			requestURL.append("pageNo=");
-			paginationHtml = setPagination();
+			setPagination();
 		} catch (IOException e) {
 			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
 		}
 	}
 
-	private String setPagination() {
+	private void setPagination() {
 		logger.debug("Entry :: CNWNewsModel :: setPagination :: requestUrl: {}", requestURL);
-		final String ANCHOR_END = "</a>";
-		final String LI_END = "</li>";
-		final String SPAN_START = "<span>";
-		final String SPAN_END = "</span>";
-		final String ACTIVE_CLASS = "active";
-		String firstPageText = "";
 		int resultSize = 0;
 		logger.debug("***before pagination -  rcordPerPageStr={},  matching_count={}", rcordPerPageStr,
-				news.getReleases().getMatching_count());
+				news.getReleases().getMatchingCount());
 		
 		int recordPerPage = Integer.parseInt(rcordPerPageStr);
-		resultSize = Integer.parseInt(news.getReleases().getMatching_count());
+		resultSize = Integer.parseInt(news.getReleases().getMatchingCount());
 		int mod = resultSize % recordPerPage;
-		int totalPages = resultSize / recordPerPage;
+		totalPages = resultSize / recordPerPage;
 		if (mod > 0) {
 			totalPages = totalPages + 1;
 		}
 		logger.debug("<!--mod ={}, totalPages={}", mod, totalPages);
 
-		int firstBreakPt = 5; // first 4 pages
-		int firstMinTotal = 6; // first break pt when less than this number
-		int secondBreakPt = totalPages - 4; // final 4 pages
-		String previousCss = curPage == 1 ? "disabled" : "";
-		String nextCss = curPage == totalPages ? "disabled" : "";
-		String firstPageCss = curPage == 1 ? ACTIVE_CLASS : "";
-		String ellipsisStr = "<li class=\"ellipsis\"><a><span>…</span></a></li>";
+		secondBreakPt = totalPages - 4; // final 4 pages
 
 		if (totalPages <= 1) {
-			return null;
+			return;
 		}
-
-		StringBuilder htmlStr = new StringBuilder();
-		htmlStr.append("<nav role=\"navigation\" aria-label=\"Page\" class=\"text-center\">");
-
-		if (curPage == 1) {
-			htmlStr.append("<ul class=\"pagination first-page\">");
-		} else if (curPage == totalPages) {
-			htmlStr.append("<ul class=\"pagination last-page\">");
-		} else {
-			htmlStr.append("<ul class=\"pagination\">");
-		}
-
-		if (curPage > 1) {
-			htmlStr.append("<li class=\"previous " + previousCss + "\">");
-			htmlStr.append("<a href=\"" + requestURL + prevPage + " \">");
-			htmlStr.append("<span class=\"fa fa-angle-left\" aria-hidden=\"true\"></span>");
-			htmlStr.append(SPAN_START + prevText + " </span>"
-					+ ANCHOR_END
-					+ LI_END);
-		}
-
-		htmlStr.append("<li class=\"link-to-first " + firstPageCss + "\">");
-		htmlStr.append("<a href=\"" + requestURL + "1\" aria-label=\"" + firstPageText + "\">");
-		htmlStr.append("<span class=\"fa fa-angle-double-left\" aria-hidden=\"true\"></span>");
-		htmlStr.append("<span>1</span>"
-				+ ANCHOR_END
-				+ LI_END);
-
+		pageItems = new ArrayList<>();
 		/********************************************
 		 * First Scenario (Page numbering page 1-4)
 		 ********************************************/
@@ -438,22 +493,17 @@ public class CNWNewsModel {
 			}
 
 			for (int i = 2; i <= maxFirst; i++) {
-				String currCSS = curPage == i ? ACTIVE_CLASS : "";
-
-				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\"" + requestURL + i + " \" >");
-				htmlStr.append(SPAN_START + i + SPAN_END);
-				htmlStr.append(ANCHOR_END);
-				htmlStr.append(LI_END);
-
+				PageItem pageItem = new PageItem();
+				pageItem.setHref(requestURL + String.valueOf(i));
+				pageItem.setIndex(i);
+				pageItems.add(pageItem);
 			} // for end
 
 			if (totalPages > firstMinTotal) {
-				htmlStr.append("<li class=\"\">");
-				htmlStr.append("<a href=\"" + requestURL + totalPages + "\" >");
-				htmlStr.append(SPAN_START + totalPages + SPAN_END);
-				htmlStr.append(ANCHOR_END);
-				htmlStr.append(LI_END);
+				PageItem pageItem = new PageItem();
+				pageItem.setHref(requestURL + String.valueOf(totalPages));
+				pageItem.setIndex(totalPages);
+				pageItems.add(pageItem);
 			} // if end
 		} // First scenario END
 
@@ -462,13 +512,10 @@ public class CNWNewsModel {
 		 ********************************************/
 		else if (curPage >= secondBreakPt) {
 			for (int i = secondBreakPt; i <= totalPages; i++) {
-				String currCSS = curPage == i ? ACTIVE_CLASS : "";
-
-				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\"" + requestURL + i + "\" >");
-				htmlStr.append(SPAN_START + i + SPAN_END);
-				htmlStr.append(ANCHOR_END);
-				htmlStr.append("</li> ");
+				PageItem pageItem = new PageItem();
+				pageItem.setHref(requestURL + String.valueOf(i));
+				pageItem.setIndex(i);
+				pageItems.add(pageItem);
 			} // for end
 		} // second scenario end
 
@@ -476,39 +523,18 @@ public class CNWNewsModel {
 		 * Third Scenario (Page numbering pages 5 - (n-5))
 		 ********************************************/
 		else {
-			logger.debug("{}", ellipsisStr);
 			for (int i = curPage - 2; i <= (curPage + 2); i++) {
-				String currCSS = (curPage == i) ? ACTIVE_CLASS : "";
-				htmlStr.append("<li class=\"" + currCSS + "\">");
-				htmlStr.append("<a href=\"" + requestURL + i + "\" >");
-				htmlStr.append(SPAN_START + i + SPAN_END);
-				htmlStr.append(ANCHOR_END);
-				htmlStr.append(LI_END);
+				PageItem pageItem = new PageItem();
+				pageItem.setHref(requestURL + String.valueOf(i));
+				pageItem.setIndex(i);
+				pageItems.add(pageItem);
 			}
-			logger.debug("{}", ellipsisStr);
-
-			htmlStr.append("<li class=\"\">");
-			htmlStr.append("<a href=\"" + requestURL + totalPages + "\" >");
-			htmlStr.append(SPAN_START + totalPages + SPAN_END);
-			htmlStr.append(ANCHOR_END);
-			htmlStr.append(LI_END);
+			PageItem pageItem = new PageItem();
+			pageItem.setHref(requestURL + String.valueOf(totalPages));
+			pageItem.setIndex(totalPages);
+			pageItems.add(pageItem);
 		} // else end
 
-		if (curPage < totalPages) {
-			htmlStr.append("<li class=\"next " + nextCss + "\">");
-			htmlStr.append("<a href=\"" + requestURL + curPage + 1 + "\">" + nextText + " </a>");
-			htmlStr.append(LI_END);
-		}
-
-		htmlStr.append("</ul>");
-		htmlStr.append("<div class=\"pagination-indicator\">");
-		if (("fr").equals(locale)) {
-			htmlStr.append("Page " + curPage + "  de " + totalPages + "");
-		} else {
-			htmlStr.append("Page " + curPage + "  of " + totalPages + "");
-		}
-		htmlStr.append(" </div></nav> ");
-		return htmlStr.toString();
 	}
 
 	/**

@@ -1,35 +1,59 @@
 package ca.sunlife.web.cms.core.beans;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NewsReleases {
 
-	private String matching_count;
-	private ArrayList<Release> release;
-	private String returned_count;
+	@JsonProperty("matching_count")
+	private String matchingCount;
+	
+	@JsonProperty("returned_count")
+	private String returnedCount;
 
-	public String getMatching_count() {
-		return matching_count;
+	private List<Release> release;
+
+	/**
+	 * @return the matchingCount
+	 */
+	public String getMatchingCount() {
+		return matchingCount;
 	}
 
-	public void setMatching_count(String matching_count) {
-		this.matching_count = matching_count;
+	/**
+	 * @param matchingCount the matchingCount to set
+	 */
+	public void setMatchingCount(String matchingCount) {
+		this.matchingCount = matchingCount;
 	}
 
-	public ArrayList<Release> getRelease() {
+	/**
+	 * @return the returnedCount
+	 */
+	public String getReturnedCount() {
+		return returnedCount;
+	}
+
+	/**
+	 * @param returnedCount the returnedCount to set
+	 */
+	public void setReturnedCount(String returnedCount) {
+		this.returnedCount = returnedCount;
+	}
+
+	/**
+	 * @return the release
+	 */
+	public List<Release> getRelease() {
 		return release;
 	}
 
-	public void setRelease(ArrayList<Release> release) {
+	/**
+	 * @param release the release to set
+	 */
+	public void setRelease(List<Release> release) {
 		this.release = release;
-	}
-
-	public String getReturned_count() {
-		return returned_count;
-	}
-
-	public void setReturned_count(String returned_count) {
-		this.returned_count = returned_count;
 	}
 	
 }
