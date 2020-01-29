@@ -44,6 +44,10 @@
                                 jcr:primaryType="nt:unstructured"
                                 text="H6"
                                 value="heading-6"/>
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="none"
+                                value="none"/>
                         </items>
                     </titleLevel>
                     <IconText
