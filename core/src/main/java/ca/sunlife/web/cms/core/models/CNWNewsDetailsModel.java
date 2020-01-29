@@ -22,6 +22,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 
+/**
+ * The Class CNWNewsDetailsModel.
+ */
 @Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsDetailsModel {
@@ -38,10 +41,10 @@ public class CNWNewsDetailsModel {
 	/** logger */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	/** newsDetails */
+	/** news details */
 	private NewsDetails newsDetails;
 
-	/** newsCNWIDFromReq */
+	/** news - release id */
 	private String newsCNWIDFromReq;
 
 	/** locale */
@@ -93,6 +96,9 @@ public class CNWNewsDetailsModel {
 		this.locale = locale;
 	}
 
+	/**
+	 * CNWNewsDetailsModel - init method for processing the data
+	 */
 	@PostConstruct
 	public void init() {
 		logger.debug("Entry :: CNWNewsDetailsModel :: init ");
@@ -102,21 +108,21 @@ public class CNWNewsDetailsModel {
 			newsCNWIDFromReq = request.getParameter("id");
 			locale = currentPage.getLanguage().getLanguage();
 			StringBuilder importUrl = new StringBuilder();
-			String cnwRequestGetURI = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca?service=cnw&method=get&safehtml=1&format=json&id=";
+			String cnwRequestGetURI = newsService.getCNWNewsDetailsUrl();
 
 			importUrl.append(cnwRequestGetURI);
 			importUrl.append(newsCNWIDFromReq);
-			newsDetails = new ObjectMapper().readValue(newsService.callGet(importUrl.toString()), NewsDetails.class);
+			newsDetails = new ObjectMapper().readValue(newsService.getCNWNewsDetails(importUrl.toString()), NewsDetails.class);
 
 			SimpleDateFormat inputFormatter = new SimpleDateFormat(cnwDatePattern);
 			newsDetails.getRelease().setReleaseDate(new SimpleDateFormat(datePattern, new Locale(locale))
 					.format(inputFormatter.parse(newsDetails.getRelease().getReleaseDate())));
 		} catch (IOException e) {
-			logger.error("Error :: IOException :: CNWNewsDetailsModel :: init :: {}", e);
+			logger.error("Error :: NWNewsDetailsModel :: init :: IOException :: {}", e);
 		} catch (ParseException e) {
-			logger.error("Error :: ParseException :: CNWNewsDetailsModel :: init :: {}", e);
+			logger.error("Error :: CNWNewsDetailsModel :: init :: ParseException :: {}", e);
 		} catch (Exception e) {
-			logger.error("Error :: CNWNewsDetailsModel :: Exception :: init :: {}", e);
+			logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
 		}
 	}
 

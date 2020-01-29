@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.beans;
-
+/**
+ * The Class NewsDetails.
+ */
 public class NewsDetails {
 	
 	/**

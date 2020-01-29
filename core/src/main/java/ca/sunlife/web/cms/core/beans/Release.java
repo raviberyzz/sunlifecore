@@ -1,11 +1,13 @@
 package ca.sunlife.web.cms.core.beans;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+/**
+ * The Class Release.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Release {
 	/**
-	 * id
+	 * Release id
 	 */
 	private String id;
 	/**

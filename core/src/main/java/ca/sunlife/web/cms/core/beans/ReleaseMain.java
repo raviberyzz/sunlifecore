@@ -1,9 +1,13 @@
 package ca.sunlife.web.cms.core.beans;
 
+/**
+ * @author mo92
+ * The Class ReleaseMain
+ */
 public class ReleaseMain {
 	
 	/**
-	 * releases
+	 * News releases
 	 */
 	private NewsReleases releases;
 

@@ -4,15 +4,25 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author mo92
+ * The Class NewsReleases
+ */
 public class NewsReleases {
 
+	/** Matching count */
 	@JsonProperty("matching_count")
 	private String matchingCount;
-	
+
+	/** Returned count */
 	@JsonProperty("returned_count")
 	private String returnedCount;
 
+	/** Release */
 	private List<Release> release;
+
+	/** Last modified */
+	private String latestModified;
 
 	/**
 	 * @return the matchingCount
@@ -22,7 +32,8 @@ public class NewsReleases {
 	}
 
 	/**
-	 * @param matchingCount the matchingCount to set
+	 * @param matchingCount
+	 *            the matchingCount to set
 	 */
 	public void setMatchingCount(String matchingCount) {
 		this.matchingCount = matchingCount;
@@ -36,7 +47,8 @@ public class NewsReleases {
 	}
 
 	/**
-	 * @param returnedCount the returnedCount to set
+	 * @param returnedCount
+	 *            the returnedCount to set
 	 */
 	public void setReturnedCount(String returnedCount) {
 		this.returnedCount = returnedCount;
@@ -50,10 +62,26 @@ public class NewsReleases {
 	}
 
 	/**
-	 * @param release the release to set
+	 * @param release
+	 *            the release to set
 	 */
 	public void setRelease(List<Release> release) {
 		this.release = release;
 	}
-	
+
+	/**
+	 * @return the latestModified
+	 */
+	public String getLatestModified() {
+		return latestModified;
+	}
+
+	/**
+	 * @param latestModified
+	 *            the latestModified to set
+	 */
+	public void setLatestModified(String latestModified) {
+		this.latestModified = latestModified;
+	}
+
 }

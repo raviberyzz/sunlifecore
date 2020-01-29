@@ -29,7 +29,8 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 
 /**
  * @author mo92
- *
+ * The Class CNWNewsModel - Sling model for CNW News list
+ * 
  */
 @Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -47,22 +48,22 @@ public class CNWNewsModel {
 	/** The log */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	/** news */
+	/** News */
 	private ReleaseMain news;
 
-	/** totalNoYears */
+	/** Total No. Years */
 	private int totalNoYears = 3;
 
-	/** activeYear */
+	/** Active Year */
 	private int activeYear;
 
-	/** yearsToShow */
+	/** Years To Show - Tabs */
 	private List<Integer> yearsToShow;
 
-	/** prevText */
+	/** Prev Text */
 	private String prevText = "Previous";
 
-	/** nextText */
+	/** Next Text */
 	private String nextText = "Next";
 
 	/** ofStr */
@@ -86,12 +87,26 @@ public class CNWNewsModel {
 	/** paginationHtml */
 	private String paginationHtml;
 
+	/** nextPageNo */
+	private int nextPageNo;
+	
 	/** Pagination fields start */
+	/** total pages */
 	private int totalPages;
+	
+	/** first break */
 	private int firstBreakPt = 5; // first 4 pages
+	
+	/** first min total */
 	private int firstMinTotal = 6; // first break pt when less than this number
+	
+	/** second break point */
 	private int secondBreakPt;
+	
+	/** page items - li */
 	private List<PageItem> pageItems;
+	
+	/** first page text */
 	private String firstPageText;
 	/** Pagination fields start */
 	
@@ -361,9 +376,23 @@ public class CNWNewsModel {
 		this.totalPages = totalPages;
 	}
 
+	/**
+	 * @return the nextPageNo
+	 */
+	public int getNextPageNo() {
+		return nextPageNo;
+	}
+
+	/**
+	 * @param nextPageNo the nextPageNo to set
+	 */
+	public void setNextPageNo(int nextPageNo) {
+		this.nextPageNo = nextPageNo;
+	}
+	
 	@PostConstruct
 	public void init() {
-		logger.debug("Entry :: CNWNewsModel :: init ::");
+		logger.debug("Entry :: CNWNewsModel :: init ");
 		String pageNum;
 		String datePattern = "MMMM dd, yyyy";
 		String cnwDatePattern = "EEE, dd MMM yyyy HH:mm:ss zzzzz";
@@ -392,7 +421,7 @@ public class CNWNewsModel {
 			logger.debug("Fetched locale :: {}", activeYear);
 
 			StringBuilder importUrl = new StringBuilder();
-			String cnwRequestListURI = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca?service=cnw&method=list&safehtml=1&format=json&fields=releaseDate,headline,subheadline,summary";
+			String cnwRequestListURI = newsService.getCNWNewsListUrl();
 			importUrl.append(cnwRequestListURI);
 			importUrl.append(category); // get items categorized as SLGI
 			importUrl.append("&start_date=");
@@ -414,7 +443,7 @@ public class CNWNewsModel {
 				importUrl.append(offset);
 			}
 			logger.debug("importUrl: {}", importUrl);
-			news = new ObjectMapper().readValue(newsService.callGet(importUrl.toString()), ReleaseMain.class);
+			news = new ObjectMapper().readValue(newsService.getCNWNews(importUrl.toString()), ReleaseMain.class);
 
 			news.getReleases().getRelease().stream().forEach(o -> {
 				SimpleDateFormat inputFormatter = new SimpleDateFormat(cnwDatePattern);
@@ -427,41 +456,49 @@ public class CNWNewsModel {
 				}
 			});
 			logger.debug("Fetched news :: {}", news);
-
-			String uri = request.getRequestURI();
-			String qs = request.getQueryString();
-			logger.debug("uri: {}", uri);
-			logger.debug("qs: {}", qs);
-			uri = uri.replaceAll("/sites", "");
-			requestURL = new StringBuilder();
-			requestURL.append(uri);
-			requestURL.append("?");
-			logger.debug("generated requestURL: {}", requestURL);
-			// since using existing URL, may already have page param - so clean it up, if
-			// needed
-			if (qs != null) {
-				logger.debug("qs: {}", qs);
-				if (qs.indexOf("pageNo") != -1) {
-					qs = qs.replaceAll("&?pageNo=[^&]+", "");
-					qs = qs.replaceAll("&+$", "");
-				}
-				logger.debug("qs 1: {}", qs);
-				if (qs.indexOf("year") != -1) {
-					qs = qs.replaceAll("&?year=[^&]+", "");
-					qs = qs.replaceAll("&+$", "");
-					qs = qs + "&year=" + activeYear;
-				}
-				logger.debug("qs 2: {}", qs);
-				requestURL.append(qs);
-				requestURL.append("&");
-			}
-			requestURL.append("pageNo=");
+			
+			setRequestURL();
+			
 			setPagination();
 		} catch (IOException e) {
 			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
 		}
 	}
 
+	public void setRequestURL() {
+		String uri = request.getRequestURI();
+		String qs = request.getQueryString();
+		logger.debug("uri: {}", uri);
+		logger.debug("qs: {}", qs);
+		uri = uri.replaceAll("/sites", "");
+		requestURL = new StringBuilder();
+		requestURL.append(uri);
+		requestURL.append("?");
+		logger.debug("generated requestURL: {}", requestURL);
+		// since using existing URL, may already have page param - so clean it up, if
+		// needed
+		if (qs != null) {
+			logger.debug("qs: {}", qs);
+			if (qs.indexOf("pageNo") != -1) {
+				qs = qs.replaceAll("&?pageNo=[^&]+", "");
+				qs = qs.replaceAll("&+$", "");
+			}
+			logger.debug("qs 1: {}", qs);
+			if (qs.indexOf("year") != -1) {
+				qs = qs.replaceAll("&?year=[^&]+", "");
+				qs = qs.replaceAll("&+$", "");
+				qs = qs + "&year=" + activeYear;
+			}
+			logger.debug("qs 2: {}", qs);
+			requestURL.append(qs);
+			requestURL.append("&");
+		}
+		requestURL.append("pageNo=");
+	}
+	/**
+	 * Sets data for pagination
+	 * 
+	 */
 	private void setPagination() {
 		logger.debug("Entry :: CNWNewsModel :: setPagination :: requestUrl: {}", requestURL);
 		int resultSize = 0;
@@ -483,9 +520,9 @@ public class CNWNewsModel {
 			return;
 		}
 		pageItems = new ArrayList<>();
-		/********************************************
+		/**
 		 * First Scenario (Page numbering page 1-4)
-		 ********************************************/
+		*/
 		if (curPage < firstBreakPt || totalPages <= firstMinTotal) {
 			int maxFirst = firstBreakPt;
 			if (totalPages < firstMinTotal + 1) {
@@ -507,9 +544,9 @@ public class CNWNewsModel {
 			} // if end
 		} // First scenario END
 
-		/********************************************
+		/**
 		 * second Scenario (Page numbering final 4 pages)
-		 ********************************************/
+		*/
 		else if (curPage >= secondBreakPt) {
 			for (int i = secondBreakPt; i <= totalPages; i++) {
 				PageItem pageItem = new PageItem();
@@ -519,9 +556,9 @@ public class CNWNewsModel {
 			} // for end
 		} // second scenario end
 
-		/********************************************
+		/**
 		 * Third Scenario (Page numbering pages 5 - (n-5))
-		 ********************************************/
+		 */
 		else {
 			for (int i = curPage - 2; i <= (curPage + 2); i++) {
 				PageItem pageItem = new PageItem();
@@ -534,7 +571,7 @@ public class CNWNewsModel {
 			pageItem.setIndex(totalPages);
 			pageItems.add(pageItem);
 		} // else end
-
+		nextPageNo = curPage + 1;
 	}
 
 	/**
