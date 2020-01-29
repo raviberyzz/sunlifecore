@@ -64,12 +64,16 @@
       font-weight: 700;
       color: $dark-grey-color;
       float: left;
+      margin-top:1px;
     }
     .social-link-icon-wrapper {
       cursor:pointer;
       .icon-style {
           color: $medium-blue-color;
           font-size: 1.25rem;
+        }
+        ul{
+          float:left;
         }
     }
     .social-links {
