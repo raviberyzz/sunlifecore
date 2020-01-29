@@ -17,7 +17,7 @@ public @interface CNWNewsConfig {
 	 * 
 	 * @return
 	 */
-	@AttributeDefinition(name = "newsCNWOverview", description = "CNW News List", defaultValue = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca?service=cnw&method=list&safehtml=1&category=773&format=json&limit=3")
+	@AttributeDefinition(name = "newsCNWOverview", description = "CNW News Overview - List", defaultValue = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca?service=cnw&method=list&safehtml=1&category=773&format=json&limit=3")
 	String getCNWNewsOverview();
 	/**
 	 * Web service url for CNW News list
