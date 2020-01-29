@@ -4,7 +4,7 @@
     var options = [
         {'normal':'Container','site-notification':'Site Notification','modal-popup':'Modal Popup','simple-popup':'Simple Popup'},
         {'50:50':'50% : 50%','33:67':'33% : 67%','67:33':'67% : 33%','67:33N':'Content & Right Navigation'},
-        {'25:50:25N':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%'},
+        {'25:50:25':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%'},
         {'25:25:25:25': '25% : 25% : 25% : 25%'},
         {'20:20:20:20:20' : '20% : 20% : 20% : 20% :20%'}
     ];
@@ -16,6 +16,12 @@
         $.each(options[noc-1],function(val,key){
             type.add({value: val,content:{textContent: key}});
         });
+		var $form = $('[name="./noc"]').parents('form');
+        var resourceType = $form.find('[name="./sling:resourceType"]').val().replace('layout-','');
+		$form.find('[name^="./container"]').remove();
+        for(var i=1;i<=noc;i++) {
+            $form.append('<input name="./container'+i+'/sling:resourceType" value="'+resourceType+'"/>');
+        }
     }
     $document.on('dialog-ready',function(){
         var type = $('[name="./typeVal"]').val();
