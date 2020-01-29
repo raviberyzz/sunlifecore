@@ -4,7 +4,7 @@
     var options = [
         {'normal':'Container','site-notification':'Site Notification','modal-popup':'Modal Popup','simple-popup':'Simple Popup'},
         {'50:50':'50% : 50%','33:67':'33% : 67%','67:33':'67% : 33%','67:33N':'Content & Right Navigation'},
-        {'25:50:25':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%'},
+        {'25:50:25N':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%'},
         {'25:25:25:25': '25% : 25% : 25% : 25%'},
         {'20:20:20:20:20' : '20% : 20% : 20% : 20% :20%'}
     ];
