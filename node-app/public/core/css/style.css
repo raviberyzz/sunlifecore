@@ -4514,20 +4514,15 @@ input[type=text] {
   margin-top: 40px;
   margin-bottom: 40px; }
 
-.yellow-horizontal-separator .horizontal-middle-align {
-  border-bottom: 2px solid #FFCB05;
-  margin-top: 40px;
-  margin-bottom: 40px; }
+@media (max-width: 992px) and (min-width: 320px) {
+  .sign-in-modal-wrapper .modal-dialog.sign-in-modaldialog {
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%); } }
 
-.vertical-separator {
-  height: 75%;
-  border-right: 2px solid #F7F7F7;
-  width: 1px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
-  .vertical-separator hr {
-    display: none; }
+@media (min-width: 768px) {
+  .sign-in-modal-wrapper .download-app {
+    display: none; } }
 
 .search-bar-wrapper {
   background: #FFCB05;

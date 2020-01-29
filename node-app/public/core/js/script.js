@@ -5010,6 +5010,23 @@ $(document).ready(function () {
             $(this).height(taeser_height);
        
 	});
+
+	//for editorial article
+	var editorial_teaser=$('.editorial-articles-wrapper').find('.teaser');
+    editorial_teaser.each(function (index) {
+		taeser_height= taeser_height > $(this).height() ?taeser_height : $(this).height();
+	});
+    editorial_teaser.each(function (index) {
+            $(this).height(taeser_height);
+       
+	});
+});
+
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+
 });
 
 
