@@ -26,12 +26,6 @@ public class BreadcrumbModel extends BreadcrumbImpl {
 	@Optional
 	private String socialShareReqd;
 	 
-	/** The social share text. */
-	@Inject
-	@Via("resource")
-	@Optional
-	private String socialShareText;	
-	
 	/**
 	 * Gets the social share reqd.
 	 *
@@ -48,24 +42,6 @@ public class BreadcrumbModel extends BreadcrumbImpl {
 	 */
 	public void setSocialShareReqd(String socialShareReqd) {
 		this.socialShareReqd = socialShareReqd;
-	}
-
-	/**
-	 * Gets the social share text.
-	 *
-	 * @return the social share text
-	 */
-	public String getSocialShareText() {
-		return socialShareText;
-	}
-
-	/**
-	 * Sets the social share text.
-	 *
-	 * @param socialShareText the new social share text
-	 */
-	public void setSocialShareText(String socialShareText) {
-		this.socialShareText = socialShareText;
 	}
 
 }

@@ -24,6 +24,10 @@
                         fieldLabel="Title Level"
                         name="./titleLevel">
                         <items jcr:primaryType="nt:unstructured">
+                        	<none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value="none"/>
                             <h2
                                 jcr:primaryType="nt:unstructured"
                                 text="H2"
@@ -44,6 +48,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 text="H6"
                                 value="heading-6"/>
+                            
                         </items>
                     </titleLevel>
                     <IconText
