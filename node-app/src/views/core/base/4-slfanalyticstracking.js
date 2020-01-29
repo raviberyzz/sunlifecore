@@ -262,8 +262,8 @@ $('#get-a-quote .cmp-form-button').click(function(){
 
 $('#cta-provider-search .cmp-form-button').click(function(){
     if ($("#cta-provider-search").parsley({}).isValid()) {
-        //var groupLabel = $('#cta-provider-search-input :selected').parent().attr('label');
         var textValue = $('#cta-provider-search .cmp-form-button').parent().siblings('.options').find('select :selected').val();
+        var groupLabel = $('#cta-provider-search .cmp-form-button').parent().siblings('.options').find('select :selected').parent('optgroup').attr('label');
         try {
             utag.link({ev_type: "other", ev_action: "clk", ev_title: "provider search - homepage preselect", ev_data_one: groupLabel + "_" + textValue});
         } catch (e) {
