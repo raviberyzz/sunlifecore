@@ -8,6 +8,7 @@ JSON Format
       "button-text": "pop up modal",
       "redirection-link": "#modal1",
       "data-toggle":"",
+      "popup-data-section":"pop-up-modal1",
       "popup-header-text":"1This is modal header1",
       "popup-modal-id":"modal1",
       "variant": "cmp-table-data-content  adjust accordingly based on the amount of content being displayed and there is a margin space of 24px on each side. When a pop up modal is triggered to be opened on the page, there is an opaque .5 black screen that app",
