@@ -301,3 +301,103 @@
         }
     }
 }
+
+
+/* link farm table styles start here */
+.cmp-linkfarm-table{
+    /* desktop styles start */
+       .desktop-linkfarm-table{
+          .slf-region{
+              .content-region{
+                  .first_level_list-unstyled{
+                      li {
+                        .accordion-heading {
+                            font-weight: 400;
+                            font-size: 18px;
+                            line-height: 23px; 
+                            color: #424242; 
+                            border-bottom: 2px dotted #D7D7D7;
+                            display: block;
+                            padding: 10px 0px;
+                          }
+                      }
+                        .list-unstyled{
+                            padding-left: 0;
+                            list-style: none; 
+                            li {
+                                margin-bottom: 8px;
+                                font-size: 16px;
+                                padding: 10px 0;
+                                line-height: 24px;
+                                font-family: sunlife-sans;
+                                font-weight: 400;
+                                border-bottom: 2px dotted #D7D7D7;
+
+                                a {
+                                    padding: 4px 0 4px 0px; 
+                                    font-family: sunlife-sans;
+                                    font-weight: 700;
+                                    color: #004c6c;
+                                    font-size: 16px;
+                                    text-decoration: none;
+                                }
+                            }
+                            li:last-child{
+                                
+                                border:none!important;
+                           
+                            }
+                        }
+                  }
+              }
+          }
+        } 
+    /* desktop styles end */
+
+    /*mobile styles start */
+    .slf-accordion-arrow {
+        .accordion-heading{
+           background-color:#f4f7f6;
+           color: #004c6c;
+           font-family: sunlife-sans;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 120%;
+            padding: 20px 14px;
+       }
+       .accordion-heading[aria-expanded="false"]:before {
+        content: "\f0da";
+        font-family: FontAwesome;
+        padding-right:10px;
+       }
+       .accordion-heading[aria-expanded="true"]:before{
+        content:"\f0d7";
+        font-family: FontAwesome;
+        padding-right:10px;
+       }
+       ul {
+        margin: 12px 0 12px 12px;
+        padding: 0;
+        list-style: none;
+        vertical-align: middle; 
+        li {
+            font-family: sunlife-sans;
+            font-weight: 400;
+            font-size: 16px;
+                padding: 20px;
+            line-height: 140%;
+            border-bottom: 2px dotted #D7D7D7; 
+            a {
+                font-family: sunlife-sans;
+                font-weight: normal;
+                color: #004c6c;
+                font-size: 16px;
+                text-decoration: none; 
+            }
+        }
+      
+       }
+   }
+    /*mobile styles end here*/
+}
+/* link farm table styles end here */
