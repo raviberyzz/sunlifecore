@@ -49,10 +49,13 @@ color: $medium-blue-color;
     position: relative;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    max-width: 400px;
+    max-width:800px;
     font-size:16px;
 }
 .tooltip.right .tooltip-arrow{
     border-right-color: $medium-blue-color;
+}
+.tooltip .in{
+    opacity:1;
 }
 /* tool tip text ends here*/
