@@ -4257,7 +4257,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-   $va = "<div " + "class= " +'"fa fa-info-circle"' + "> </div>";
+   var $va = "<a href='javascript:void(0)' title='' " + "class= " +'"fa fa-info-circle"' + "> </a>";
     $($va).insertBefore(".tool-tip-box");
    
     $('.tool-tip-box').css('display','none');
