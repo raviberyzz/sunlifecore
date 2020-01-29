@@ -4180,7 +4180,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-   $va = "<a href='javascript:void(0)' title='' " + "class= " +'"fa fa-info-circle"' + "> </a>";
+   var $va = "<a href='javascript:void(0)' title='' " + "class= " +'"fa fa-info-circle"' + "> </a>";
     $($va).insertBefore(".tool-tip-box");
     var tool_content=$('.tool-tip-box').html();
     $('.fa-info-circle').attr('data-toggle','tooltip');
