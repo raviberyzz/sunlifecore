@@ -17,12 +17,12 @@
                         fieldDescription="Add Title"
                         fieldLabel="Title"
                         name="./title"/>
-                    <titleLabel
+                    <titleLevel
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
                         fieldDescription="Select size/label "
-                        fieldLabel="Title Label"
-                        name="./titleLabel">
+                        fieldLabel="Title Level"
+                        name="./titleLevel">
                         <items jcr:primaryType="nt:unstructured">
                             <h2
                                 jcr:primaryType="nt:unstructured"
@@ -45,7 +45,7 @@
                                 text="H6"
                                 value="heading-6"/>
                         </items>
-                    </titleLabel>
+                    </titleLevel>
                     <IconText
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

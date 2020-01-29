@@ -152,28 +152,33 @@
                                 </rtePlugins>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleGroupLabel="Background Color"
+                                    cq:styleGroupLabel="Background Variations"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="light-orange"
                                             cq:styleId="1578656112976"
-                                            cq:styleLabel="Orange"
+                                            cq:styleLabel="Orange for Right Navigation"
                                             jcr:primaryType="nt:unstructured"/>
+										<item1
+                                            cq:styleClasses="grey-border-box yellow-bullet-list"
+                                            cq:styleId="1579251056971"
+                                            cq:styleLabel="Grey Border"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="grey-background-box yellow-bullet-list"
+                                            cq:styleId="1579251078720"
+                                            cq:styleLabel="Grey Background"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="yellow-bullet-list"
+                                            cq:styleId="1579255031660"
+                                            cq:styleLabel="White Background"
+                                            jcr:primaryType="nt:unstructured"/>
+
                                     </cq:styles>
-                                </item0>
+                                </item0>                                
                                 <item1
-                                    cq:styleGroupLabel="Font Color"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="yellow-colored-font"
-                                            cq:styleId="1579090023000"
-                                            cq:styleLabel="Yellow"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item1>
-                                <item2
                                     cq:styleGroupLabel="CTA Styles"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -183,29 +188,8 @@
                                             cq:styleLabel="Full Width"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item2>
-                                <item3
-                                    cq:styleGroupLabel="Background variations"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="grey-border-box yellow-bullet-list"
-                                            cq:styleId="1579251056971"
-                                            cq:styleLabel="Grey Border"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
-                                            cq:styleClasses="grey-background-box yellow-bullet-list"
-                                            cq:styleId="1579251078720"
-                                            cq:styleLabel="Grey Background"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item2
-                                            cq:styleClasses="yellow-bullet-list"
-                                            cq:styleId="1579255031660"
-                                            cq:styleLabel="Yellow Bullet List"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item3>
-                                <item4
+                                </item1>
+                                <item2
                                     cq:styleGroupLabel="Margin"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -215,8 +199,8 @@
                                             cq:styleLabel="Yes"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item4>
-                                <item5
+                                </item2>
+                                <item3
                                     cq:styleGroupLabel="Text Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -226,8 +210,8 @@
                                             cq:styleLabel="Yes"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item5>
-								<item6
+                                </item3>
+								<item4
                                         cq:styleGroupLabel="Spacing"
                                         jcr:primaryType="nt:unstructured">
                                         <cq:styles jcr:primaryType="nt:unstructured">                                                                                     
@@ -247,7 +231,18 @@
                                                 cq:styleLabel="Bottom Spacing 40"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
-                                    </item6>
+                                    </item4>
+                                    <item5
+                                    cq:styleGroupLabel="Product card"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="light-yellow-box-header"
+                                            cq:styleId="1579273835647"
+                                            cq:styleLabel="Light yellow box"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item5>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -423,7 +418,7 @@
                                 sling:resourceType="wcm/core/components/policy/policy"
                                 hideCurrent="false"
                                 showHidden="false"
-                                startLevel="2">
+                                startLevel="4">
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
                                     <item0
@@ -590,6 +585,39 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
+                                 <item8
+                                    cq:styleGroupLabel="Product card"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="product-card"
+                                            cq:styleId="1579257835634"
+                                            cq:styleLabel="Container margin spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item8>
+                                  <item9
+                                    cq:styleGroupLabel="Mobile app"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mobileapp"
+                                            cq:styleId="1579257835295"
+                                            cq:styleLabel="Mobile app spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item9>
+                                <item10
+                                    cq:styleGroupLabel="Contact us"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-contact-us"
+                                            cq:styleId="1579258356987"
+                                            cq:styleLabel="Contact us spacing"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item10>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
@@ -820,6 +848,32 @@
                                 </cq:styleGroups>
                             </policy_formButton>
                         </button>
+                        <table jcr:primaryType="nt:unstructured">
+                            <policy_table
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Table"
+                                sling:resourceType="wcm/core/components/policy/policy">
+                                <jcr:content jcr:primaryType="nt:unstructured"/>
+                                <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleGroupLabel="Styles"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="cmp-table-comparision"
+                                                cq:styleId="1577973566347"
+                                                cq:styleLabel="Comparison table"
+                                                jcr:primaryType="nt:unstructured"/>
+                                            <item1
+                                                cq:styleClasses="cmp-table-data-content"
+                                                cq:styleId="1577973589313"
+                                                cq:styleLabel="Data content table"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item0>
+                                </cq:styleGroups>
+                            </policy_table>
+                        </table>
                     </form>
                 </components>
             </ca>

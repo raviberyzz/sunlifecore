@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "cta-wrapper": "blue-icon-yellow-background",
+    "cta-wrapper": "tripple-call-deeper-wrapper",
     "container-data-section" : "container-data-section",
     "background-color": "",
     "icon-text-wrapper" : "cta-content-icon-wrapper",
@@ -49,3 +49,4 @@ JSON Format
 <!-- For tool card use tool-card-wrapper -->
 
 <!-- For Subscribe use subscribe-main-content-wrapper and for its inside icon use cta-content-icon-wrapper -->
+<!-- tripple-call-deeper-wrapper for TRIPPLE CALL DEEPER INFORMATION -->
