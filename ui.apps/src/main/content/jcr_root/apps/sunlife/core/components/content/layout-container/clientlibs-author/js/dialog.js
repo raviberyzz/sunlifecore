@@ -16,6 +16,12 @@
         $.each(options[noc-1],function(val,key){
             type.add({value: val,content:{textContent: key}});
         });
+		var $form = $('[name="./noc"]').parents('form');
+        var resourceType = $form.find('[name="./sling:resourceType"]').val().replace('layout-','');
+		$form.find('[name^="./container"]').remove();
+        for(var i=1;i<=noc;i++) {
+            $form.append('<input name="./container'+i+'/sling:resourceType" value="'+resourceType+'"/>');
+        }
     }
     $document.on('dialog-ready',function(){
         var type = $('[name="./typeVal"]').val();
