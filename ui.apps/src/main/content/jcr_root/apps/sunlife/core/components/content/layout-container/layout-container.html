@@ -66,16 +66,24 @@
                 <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
             </div>
         </sly>
-    </sly>
-    <sly data-sly-test="${layout.noc == '3'}">
-        <sly data-sly-test="${layout.type == '25:50:25'}">
-            <div class="col-sm-3">
-                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
-            </div>
-            <div class="col-sm-6">
+        <sly data-sly-test="${layout.type == '67:33N'}">
+            <div class="col-md-8">
                 <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-4">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+    </sly>
+    <sly data-sly-test="${layout.noc == '3'}">
+        <sly data-sly-test="${layout.type == '25:50:25N'}">
+            <div class="col-md-3">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-md-6">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-md-3">
                 <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
             </div>
         </sly>
