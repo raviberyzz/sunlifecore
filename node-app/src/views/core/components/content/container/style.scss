@@ -416,3 +416,66 @@ ul {
 }
 
 /* styles for contact us box end */
+
+/* styles for related resource start */
+.cmp-related-resource {
+	padding: 20px 24px;
+	background: #F7F7F7;
+	overflow: auto;
+	.icon-parent {
+		float: left;
+		margin: 0 15px 25px 15px;
+		background: linear-gradient(#FFCB05, #EAAB00);
+		color: #FFFFFF;
+		font-size: 2.2em;
+		border-radius: 100%;
+		border: 2px solid #fff;
+		text-align: center;
+		line-height: 58px;
+		a {
+			color: #fff;
+		}
+	}
+	.aem-Grid--12 {
+		.cmp-container {
+			margin-top: 0px;
+		}
+	}
+	.icon-texts {
+		p {
+			display: table;
+		}
+		h3 {
+			font-size: 22px;
+			line-height: 28px;
+		}
+	}
+	.cmp-text {
+		h3 {
+			font-size: 22px;
+			line-height: 28px;
+		}
+	}
+	.text {
+		.cmp-text {
+			margin-left: 15px;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.cmp-related-resource {
+		.aem-Grid--12 {
+			.cmp-container {
+				.aem-Grid--default--6 {
+					.cmp-text {
+						border-left: 2px solid #D7D7D7;
+						padding-left: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/*styles for related resource end */
