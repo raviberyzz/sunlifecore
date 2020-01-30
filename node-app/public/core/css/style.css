@@ -3748,6 +3748,19 @@ input[type=email] {
   width: auto;
   border: 1px solid #9a9a9a; }
 
+.input-wrapper {
+  color: #9a9a9a;
+  margin-bottom: 10px; }
+
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+  border: 1px solid #9a9a9a; }
+
 .form-group-wrapper {
   margin: 35px 0; }
 
@@ -3852,19 +3865,6 @@ input[type=radio] {
   margin: 10px;
   vertical-align: super; }
 
-.input-wrapper {
-  color: #9a9a9a;
-  margin-bottom: 10px; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: 100%;
-  border: 1px solid #9a9a9a; }
-
 .form-wrapper {
   text-align: center;
   width: 50%; }
@@ -3944,37 +3944,6 @@ input[type=text] {
   .editorial-nav-mobile-wrapper {
     display: none; } }
 
-.button-wrapper .cmp-form-button {
-  height: 48px;
-  width: 180px;
-  min-width: 136px;
-  max-width: 275px;
-  border-radius: 4px;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
-  display: inline-block;
-  text-decoration: none; }
-  .button-wrapper .cmp-form-button:hover {
-    background-color: #4A7283;
-    color: #ffffff;
-    text-decoration: none; }
-
-.primary-blue-button-form button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.primary-yellow-button-form button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.secondary-button-form button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-
 .utility-nav-wrapper {
   text-align: right;
   padding: 0 10px 8px 0;
@@ -4025,46 +3994,36 @@ input[type=text] {
   .lang-btn[aria-expanded="true"] {
     box-shadow: 0 4px 20px -4px #000000 !important; } }
 
-.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-  background-color: #FFCB05;
-  padding: 32px 0 32px 15px;
-  height: 100px;
-  color: #424242; }
-  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey h3, .title-wrapper-yellow-grey-rings h3, .title-wrapper-blue-yellow h3, .title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey h4, .title-wrapper-yellow-grey-rings h4, .title-wrapper-blue-yellow h4, .title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey h5, .title-wrapper-yellow-grey-rings h5, .title-wrapper-blue-yellow h5, .title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey h6, .title-wrapper-yellow-grey-rings h6, .title-wrapper-blue-yellow h6, .title-wrapper-blue-yellow-rings h6 {
-    margin: 0;
-    font-size: 1.75rem;
-    line-height: 36px; }
-  .title-wrapper-yellow-grey.heading-1 h1, .heading-1.title-wrapper-yellow-grey-rings h1, .heading-1.title-wrapper-blue-yellow h1, .heading-1.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-1 h2, .heading-1.title-wrapper-yellow-grey-rings h2, .heading-1.title-wrapper-blue-yellow h2, .heading-1.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-1 h3, .heading-1.title-wrapper-yellow-grey-rings h3, .heading-1.title-wrapper-blue-yellow h3, .heading-1.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-1 h4, .heading-1.title-wrapper-yellow-grey-rings h4, .heading-1.title-wrapper-blue-yellow h4, .heading-1.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-1 h5, .heading-1.title-wrapper-yellow-grey-rings h5, .heading-1.title-wrapper-blue-yellow h5, .heading-1.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-1 h6, .heading-1.title-wrapper-yellow-grey-rings h6, .heading-1.title-wrapper-blue-yellow h6, .heading-1.title-wrapper-blue-yellow-rings h6 {
-    font-size: 2.25rem; }
-  .title-wrapper-yellow-grey.heading-2 h1, .heading-2.title-wrapper-yellow-grey-rings h1, .heading-2.title-wrapper-blue-yellow h1, .heading-2.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-2 h2, .heading-2.title-wrapper-yellow-grey-rings h2, .heading-2.title-wrapper-blue-yellow h2, .heading-2.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-2 h3, .heading-2.title-wrapper-yellow-grey-rings h3, .heading-2.title-wrapper-blue-yellow h3, .heading-2.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-2 h4, .heading-2.title-wrapper-yellow-grey-rings h4, .heading-2.title-wrapper-blue-yellow h4, .heading-2.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-2 h5, .heading-2.title-wrapper-yellow-grey-rings h5, .heading-2.title-wrapper-blue-yellow h5, .heading-2.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-2 h6, .heading-2.title-wrapper-yellow-grey-rings h6, .heading-2.title-wrapper-blue-yellow h6, .heading-2.title-wrapper-blue-yellow-rings h6 {
-    font-size: 2rem; }
-  .title-wrapper-yellow-grey.heading-3 h1, .heading-3.title-wrapper-yellow-grey-rings h1, .heading-3.title-wrapper-blue-yellow h1, .heading-3.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-3 h2, .heading-3.title-wrapper-yellow-grey-rings h2, .heading-3.title-wrapper-blue-yellow h2, .heading-3.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-3 h3, .heading-3.title-wrapper-yellow-grey-rings h3, .heading-3.title-wrapper-blue-yellow h3, .heading-3.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-3 h4, .heading-3.title-wrapper-yellow-grey-rings h4, .heading-3.title-wrapper-blue-yellow h4, .heading-3.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-3 h5, .heading-3.title-wrapper-yellow-grey-rings h5, .heading-3.title-wrapper-blue-yellow h5, .heading-3.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-3 h6, .heading-3.title-wrapper-yellow-grey-rings h6, .heading-3.title-wrapper-blue-yellow h6, .heading-3.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.75rem; }
-  .title-wrapper-yellow-grey.heading-4 h1, .heading-4.title-wrapper-yellow-grey-rings h1, .heading-4.title-wrapper-blue-yellow h1, .heading-4.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-4 h2, .heading-4.title-wrapper-yellow-grey-rings h2, .heading-4.title-wrapper-blue-yellow h2, .heading-4.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-4 h3, .heading-4.title-wrapper-yellow-grey-rings h3, .heading-4.title-wrapper-blue-yellow h3, .heading-4.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-4 h4, .heading-4.title-wrapper-yellow-grey-rings h4, .heading-4.title-wrapper-blue-yellow h4, .heading-4.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-4 h5, .heading-4.title-wrapper-yellow-grey-rings h5, .heading-4.title-wrapper-blue-yellow h5, .heading-4.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-4 h6, .heading-4.title-wrapper-yellow-grey-rings h6, .heading-4.title-wrapper-blue-yellow h6, .heading-4.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.5rem; }
-  .title-wrapper-yellow-grey.heading-5 h1, .heading-5.title-wrapper-yellow-grey-rings h1, .heading-5.title-wrapper-blue-yellow h1, .heading-5.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-5 h2, .heading-5.title-wrapper-yellow-grey-rings h2, .heading-5.title-wrapper-blue-yellow h2, .heading-5.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-5 h3, .heading-5.title-wrapper-yellow-grey-rings h3, .heading-5.title-wrapper-blue-yellow h3, .heading-5.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-5 h4, .heading-5.title-wrapper-yellow-grey-rings h4, .heading-5.title-wrapper-blue-yellow h4, .heading-5.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-5 h5, .heading-5.title-wrapper-yellow-grey-rings h5, .heading-5.title-wrapper-blue-yellow h5, .heading-5.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-5 h6, .heading-5.title-wrapper-yellow-grey-rings h6, .heading-5.title-wrapper-blue-yellow h6, .heading-5.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.25rem; }
-  .title-wrapper-yellow-grey.heading-6 h1, .heading-6.title-wrapper-yellow-grey-rings h1, .heading-6.title-wrapper-blue-yellow h1, .heading-6.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-6 h2, .heading-6.title-wrapper-yellow-grey-rings h2, .heading-6.title-wrapper-blue-yellow h2, .heading-6.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-6 h3, .heading-6.title-wrapper-yellow-grey-rings h3, .heading-6.title-wrapper-blue-yellow h3, .heading-6.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-6 h4, .heading-6.title-wrapper-yellow-grey-rings h4, .heading-6.title-wrapper-blue-yellow h4, .heading-6.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-6 h5, .heading-6.title-wrapper-yellow-grey-rings h5, .heading-6.title-wrapper-blue-yellow h5, .heading-6.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-6 h6, .heading-6.title-wrapper-yellow-grey-rings h6, .heading-6.title-wrapper-blue-yellow h6, .heading-6.title-wrapper-blue-yellow-rings h6 {
-    font-size: 1.125rem; }
+.button-wrapper .cmp-form-button {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none; }
+  .button-wrapper .cmp-form-button:hover {
+    background-color: #4A7283;
+    color: #ffffff;
+    text-decoration: none; }
 
-.title-wrapper-yellow-grey-rings {
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
-  background-color: #FFCB05;
-  background-size: contain; }
-
-.title-wrapper-blue-yellow {
+.primary-blue-button-form button {
   background-color: #004C6C;
-  color: #FFCB05; }
+  color: #ffffff; }
 
-.title-wrapper-blue-yellow-rings {
-  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
-  background-color: #004C6C;
-  color: #FFCB05; }
+.primary-yellow-button-form button {
+  background-color: #FFCB05;
+  color: #004C6C; }
 
-@media (max-width: 767px) {
-  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
-    height: 94px;
-    background-image: none; } }
+.secondary-button-form button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
 
 .grey-border-box, .grey-background-box {
   padding: 32px 16px;
@@ -4114,6 +4073,47 @@ input[type=text] {
   border-right-color: #004C6C; }
 
 /* tool tip text ends here*/
+
+.title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+  background-color: #FFCB05;
+  padding: 32px 0 32px 15px;
+  height: 100px;
+  color: #424242; }
+  .title-wrapper-yellow-grey h1, .title-wrapper-yellow-grey-rings h1, .title-wrapper-blue-yellow h1, .title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey h2, .title-wrapper-yellow-grey-rings h2, .title-wrapper-blue-yellow h2, .title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey h3, .title-wrapper-yellow-grey-rings h3, .title-wrapper-blue-yellow h3, .title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey h4, .title-wrapper-yellow-grey-rings h4, .title-wrapper-blue-yellow h4, .title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey h5, .title-wrapper-yellow-grey-rings h5, .title-wrapper-blue-yellow h5, .title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey h6, .title-wrapper-yellow-grey-rings h6, .title-wrapper-blue-yellow h6, .title-wrapper-blue-yellow-rings h6 {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 36px; }
+  .title-wrapper-yellow-grey.heading-1 h1, .heading-1.title-wrapper-yellow-grey-rings h1, .heading-1.title-wrapper-blue-yellow h1, .heading-1.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-1 h2, .heading-1.title-wrapper-yellow-grey-rings h2, .heading-1.title-wrapper-blue-yellow h2, .heading-1.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-1 h3, .heading-1.title-wrapper-yellow-grey-rings h3, .heading-1.title-wrapper-blue-yellow h3, .heading-1.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-1 h4, .heading-1.title-wrapper-yellow-grey-rings h4, .heading-1.title-wrapper-blue-yellow h4, .heading-1.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-1 h5, .heading-1.title-wrapper-yellow-grey-rings h5, .heading-1.title-wrapper-blue-yellow h5, .heading-1.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-1 h6, .heading-1.title-wrapper-yellow-grey-rings h6, .heading-1.title-wrapper-blue-yellow h6, .heading-1.title-wrapper-blue-yellow-rings h6 {
+    font-size: 2.25rem; }
+  .title-wrapper-yellow-grey.heading-2 h1, .heading-2.title-wrapper-yellow-grey-rings h1, .heading-2.title-wrapper-blue-yellow h1, .heading-2.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-2 h2, .heading-2.title-wrapper-yellow-grey-rings h2, .heading-2.title-wrapper-blue-yellow h2, .heading-2.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-2 h3, .heading-2.title-wrapper-yellow-grey-rings h3, .heading-2.title-wrapper-blue-yellow h3, .heading-2.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-2 h4, .heading-2.title-wrapper-yellow-grey-rings h4, .heading-2.title-wrapper-blue-yellow h4, .heading-2.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-2 h5, .heading-2.title-wrapper-yellow-grey-rings h5, .heading-2.title-wrapper-blue-yellow h5, .heading-2.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-2 h6, .heading-2.title-wrapper-yellow-grey-rings h6, .heading-2.title-wrapper-blue-yellow h6, .heading-2.title-wrapper-blue-yellow-rings h6 {
+    font-size: 2rem; }
+  .title-wrapper-yellow-grey.heading-3 h1, .heading-3.title-wrapper-yellow-grey-rings h1, .heading-3.title-wrapper-blue-yellow h1, .heading-3.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-3 h2, .heading-3.title-wrapper-yellow-grey-rings h2, .heading-3.title-wrapper-blue-yellow h2, .heading-3.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-3 h3, .heading-3.title-wrapper-yellow-grey-rings h3, .heading-3.title-wrapper-blue-yellow h3, .heading-3.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-3 h4, .heading-3.title-wrapper-yellow-grey-rings h4, .heading-3.title-wrapper-blue-yellow h4, .heading-3.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-3 h5, .heading-3.title-wrapper-yellow-grey-rings h5, .heading-3.title-wrapper-blue-yellow h5, .heading-3.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-3 h6, .heading-3.title-wrapper-yellow-grey-rings h6, .heading-3.title-wrapper-blue-yellow h6, .heading-3.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.75rem; }
+  .title-wrapper-yellow-grey.heading-4 h1, .heading-4.title-wrapper-yellow-grey-rings h1, .heading-4.title-wrapper-blue-yellow h1, .heading-4.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-4 h2, .heading-4.title-wrapper-yellow-grey-rings h2, .heading-4.title-wrapper-blue-yellow h2, .heading-4.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-4 h3, .heading-4.title-wrapper-yellow-grey-rings h3, .heading-4.title-wrapper-blue-yellow h3, .heading-4.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-4 h4, .heading-4.title-wrapper-yellow-grey-rings h4, .heading-4.title-wrapper-blue-yellow h4, .heading-4.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-4 h5, .heading-4.title-wrapper-yellow-grey-rings h5, .heading-4.title-wrapper-blue-yellow h5, .heading-4.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-4 h6, .heading-4.title-wrapper-yellow-grey-rings h6, .heading-4.title-wrapper-blue-yellow h6, .heading-4.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.5rem; }
+  .title-wrapper-yellow-grey.heading-5 h1, .heading-5.title-wrapper-yellow-grey-rings h1, .heading-5.title-wrapper-blue-yellow h1, .heading-5.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-5 h2, .heading-5.title-wrapper-yellow-grey-rings h2, .heading-5.title-wrapper-blue-yellow h2, .heading-5.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-5 h3, .heading-5.title-wrapper-yellow-grey-rings h3, .heading-5.title-wrapper-blue-yellow h3, .heading-5.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-5 h4, .heading-5.title-wrapper-yellow-grey-rings h4, .heading-5.title-wrapper-blue-yellow h4, .heading-5.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-5 h5, .heading-5.title-wrapper-yellow-grey-rings h5, .heading-5.title-wrapper-blue-yellow h5, .heading-5.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-5 h6, .heading-5.title-wrapper-yellow-grey-rings h6, .heading-5.title-wrapper-blue-yellow h6, .heading-5.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.25rem; }
+  .title-wrapper-yellow-grey.heading-6 h1, .heading-6.title-wrapper-yellow-grey-rings h1, .heading-6.title-wrapper-blue-yellow h1, .heading-6.title-wrapper-blue-yellow-rings h1, .title-wrapper-yellow-grey.heading-6 h2, .heading-6.title-wrapper-yellow-grey-rings h2, .heading-6.title-wrapper-blue-yellow h2, .heading-6.title-wrapper-blue-yellow-rings h2, .title-wrapper-yellow-grey.heading-6 h3, .heading-6.title-wrapper-yellow-grey-rings h3, .heading-6.title-wrapper-blue-yellow h3, .heading-6.title-wrapper-blue-yellow-rings h3, .title-wrapper-yellow-grey.heading-6 h4, .heading-6.title-wrapper-yellow-grey-rings h4, .heading-6.title-wrapper-blue-yellow h4, .heading-6.title-wrapper-blue-yellow-rings h4, .title-wrapper-yellow-grey.heading-6 h5, .heading-6.title-wrapper-yellow-grey-rings h5, .heading-6.title-wrapper-blue-yellow h5, .heading-6.title-wrapper-blue-yellow-rings h5, .title-wrapper-yellow-grey.heading-6 h6, .heading-6.title-wrapper-yellow-grey-rings h6, .heading-6.title-wrapper-blue-yellow h6, .heading-6.title-wrapper-blue-yellow-rings h6 {
+    font-size: 1.125rem; }
+
+.title-wrapper-yellow-grey-rings {
+  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color: #FFCB05;
+  background-size: contain; }
+
+.title-wrapper-blue-yellow {
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+.title-wrapper-blue-yellow-rings {
+  background: url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background-color: #004C6C;
+  color: #FFCB05; }
+
+@media (max-width: 767px) {
+  .title-wrapper-yellow-grey, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings, .title-wrapper-yellow-grey-rings, .title-wrapper-blue-yellow, .title-wrapper-blue-yellow-rings {
+    height: 94px;
+    background-image: none; } }
 
 .tabs-wrapper {
   margin-bottom: 30px; }
@@ -4572,73 +4572,31 @@ input[type=text] {
     .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .cmp-form-button {
       width: 136px; }
 
-.right-navigation-wrapper {
-  padding: 0;
-  margin: 40px 0;
-  text-align: center;
-  background-color: #F4F7F6; }
-  .right-navigation-wrapper .lists-wrapper .links {
-    width: 100%;
-    border: none; }
-    .right-navigation-wrapper .lists-wrapper .links a {
-      font-weight: 700; }
-    .right-navigation-wrapper .lists-wrapper .links .collapse {
-      display: block !important; }
-  .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
-    display: none; }
-  .right-navigation-wrapper .right-nav-cta-orange {
-    background-color: #FEEDD2; }
-  .right-navigation-wrapper .yellow-horizontal-separator {
-    width: 100%; }
-    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
-      width: 100px; }
-  .right-navigation-wrapper .button-class {
-    max-width: 100%;
-    width: 100%;
-    margin: 15px 0 15px 0; }
-  .right-navigation-wrapper input[type=text] {
-    width: 100%;
-    max-width: 100%; }
-  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button] {
-    width: 100%;
-    max-width: 100%; }
-  .right-navigation-wrapper .button-wrapper {
-    max-width: 100%;
-    width: 100%; }
-    .right-navigation-wrapper .button-wrapper .cmp-form-button {
-      max-width: 100%;
-      width: 100%;
-      margin: 0 0 16px 0; }
-  .right-navigation-wrapper .input-wrapper, .right-navigation-wrapper .cmp-form-text {
-    margin: 24px 0 16px 0; }
-  .right-navigation-wrapper .right-navigation-wrapper .cmp-container > * {
-    padding: 20px 15px 64px 15px; }
-  .right-navigation-wrapper .light-orange {
-    background-color: #FEEDD2;
-    border-top: 20px solid #ffffff;
-    border-bottom: 20px solid #ffffff;
-    padding-top: 40px;
-    padding-bottom: 40px; }
-  .right-navigation-wrapper .phone-numbers {
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
     font-weight: 400;
-    font-size: 22px;
-    line-height: 120%; }
-  .right-navigation-wrapper > * {
-    float: left; }
-  .right-navigation-wrapper .right-nav-icon-wrapper .h1, .right-navigation-wrapper .right-nav-icon-wrapper .h2, .right-navigation-wrapper .right-nav-icon-wrapper .h3, .right-navigation-wrapper .right-nav-icon-wrapper .h4, .right-navigation-wrapper .right-nav-icon-wrapper .h5, .right-navigation-wrapper .right-nav-icon-wrapper .h6, .right-navigation-wrapper .right-nav-icon-wrapper .heading-4, .right-navigation-wrapper .right-nav-icon-wrapper .heading-5, .right-navigation-wrapper .right-nav-icon-wrapper .heading-6 {
-    font-size: 18px;
-    font-weight: 700; }
-  .right-navigation-wrapper .right-nav-icon-wrapper .icon-texts {
-    padding-bottom: 0; }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .right-navigation-wrapper {
-    padding: 0; }
-    .right-navigation-wrapper .cmp-container > * {
-      display: inherit;
-      border: 15px solid #ffffff; }
-    .right-navigation-wrapper .yellow-horizontal-separator {
-      display: none; } }
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
 
 .desktop-region-language-menu-wrapper {
   width: 100%;
@@ -4929,6 +4887,74 @@ input[type=text] {
         text-decoration: none; }
 
 /* link farm table styles end here */
+
+.right-navigation-wrapper {
+  padding: 0;
+  margin: 40px 0;
+  text-align: center;
+  background-color: #F4F7F6; }
+  .right-navigation-wrapper .lists-wrapper .links {
+    width: 100%;
+    border: none; }
+    .right-navigation-wrapper .lists-wrapper .links a {
+      font-weight: 700; }
+    .right-navigation-wrapper .lists-wrapper .links .collapse {
+      display: block !important; }
+  .right-navigation-wrapper .lists-wrapper .accordion-heading[aria-expanded="false"]:before {
+    display: none; }
+  .right-navigation-wrapper .right-nav-cta-orange {
+    background-color: #FEEDD2; }
+  .right-navigation-wrapper .yellow-horizontal-separator {
+    width: 100%; }
+    .right-navigation-wrapper .yellow-horizontal-separator .horizontal-middle-align {
+      width: 100px; }
+  .right-navigation-wrapper .button-class {
+    max-width: 100%;
+    width: 100%;
+    margin: 15px 0 15px 0; }
+  .right-navigation-wrapper input[type=text] {
+    width: 100%;
+    max-width: 100%; }
+  .right-navigation-wrapper input[type=submit], .right-navigation-wrapper input[type=button] {
+    width: 100%;
+    max-width: 100%; }
+  .right-navigation-wrapper .button-wrapper {
+    max-width: 100%;
+    width: 100%; }
+    .right-navigation-wrapper .button-wrapper .cmp-form-button {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 0 16px 0; }
+  .right-navigation-wrapper .input-wrapper, .right-navigation-wrapper .cmp-form-text {
+    margin: 24px 0 16px 0; }
+  .right-navigation-wrapper .right-navigation-wrapper .cmp-container > * {
+    padding: 20px 15px 64px 15px; }
+  .right-navigation-wrapper .light-orange {
+    background-color: #FEEDD2;
+    border-top: 20px solid #ffffff;
+    border-bottom: 20px solid #ffffff;
+    padding-top: 40px;
+    padding-bottom: 40px; }
+  .right-navigation-wrapper .phone-numbers {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%; }
+  .right-navigation-wrapper > * {
+    float: left; }
+  .right-navigation-wrapper .right-nav-icon-wrapper .h1, .right-navigation-wrapper .right-nav-icon-wrapper .h2, .right-navigation-wrapper .right-nav-icon-wrapper .h3, .right-navigation-wrapper .right-nav-icon-wrapper .h4, .right-navigation-wrapper .right-nav-icon-wrapper .h5, .right-navigation-wrapper .right-nav-icon-wrapper .h6, .right-navigation-wrapper .right-nav-icon-wrapper .heading-4, .right-navigation-wrapper .right-nav-icon-wrapper .heading-5, .right-navigation-wrapper .right-nav-icon-wrapper .heading-6 {
+    font-size: 18px;
+    font-weight: 700; }
+  .right-navigation-wrapper .right-nav-icon-wrapper .icon-texts {
+    padding-bottom: 0; }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .right-navigation-wrapper {
+    padding: 0; }
+    .right-navigation-wrapper .cmp-container > * {
+      display: inherit;
+      border: 15px solid #ffffff; }
+    .right-navigation-wrapper .yellow-horizontal-separator {
+      display: none; } }
 
 .popup-modal-wrapper {
   padding: 30px 0;
@@ -5910,6 +5936,59 @@ input[type=text] {
   .editorial-nav-desktop-wrapper {
     display: none; } }
 
+.blue-background-wrapper {
+  color: #ffffff;
+  background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat, linear-gradient(#004C6C, #002C3C);
+  height: 382px;
+  padding-top: 48px;
+  text-align: center; }
+  .blue-background-wrapper .life-heading {
+    font-size: 1.75rem;
+    font-style: italic;
+    margin-bottom: 16px; }
+  .blue-background-wrapper .life-content-text-first {
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+    line-height: 18px; }
+  .blue-background-wrapper .life-moments-wrapper .links {
+    width: 100%; }
+    .blue-background-wrapper .life-moments-wrapper .links .accordion-heading {
+      display: none; }
+    .blue-background-wrapper .life-moments-wrapper .links .list-div {
+      display: block; }
+      .blue-background-wrapper .life-moments-wrapper .links .list-div ul {
+        min-height: 84px;
+        margin-bottom: 24px;
+        display: inline-flex; }
+        .blue-background-wrapper .life-moments-wrapper .links .list-div ul li {
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          flex: auto;
+          padding: 0 10px; }
+          .blue-background-wrapper .life-moments-wrapper .links .list-div ul li a {
+            font-size: 1rem;
+            line-height: 26px;
+            font-weight: 700;
+            color: #FFDD00; }
+        .blue-background-wrapper .life-moments-wrapper .links .list-div ul li:not(:last-child) {
+          border-right: 2px solid #FFDD00; }
+        .blue-background-wrapper .life-moments-wrapper .links .list-div ul .selected {
+          background-color: #004C6C; }
+          .blue-background-wrapper .life-moments-wrapper .links .list-div ul .selected a {
+            color: #ffffff; }
+        .blue-background-wrapper .life-moments-wrapper .links .list-div ul .border-right {
+          border-right-color: #9a9a9a; }
+  .blue-background-wrapper .life-sub-heading {
+    margin-bottom: 16px;
+    line-height: 18px; }
+  .blue-background-wrapper .life-content-text-second {
+    margin-bottom: 16px;
+    line-height: 18px;
+    padding-left: 20%;
+    padding-right: 20%; }
+
 .left-nav-wrapper {
   margin-top: 40px;
   width: 266px; }
@@ -6006,6 +6085,124 @@ input[type=text] {
     padding: 0;
     margin: 0; }
 
+
+.slf-header-wrapper .desktop-sign-in .button-class {
+  display: none; }
+
+.slf-header-wrapper .desktop-header-wrapper {
+  height: 100px; }
+  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
+    height: 8px;
+    background-color: #FFCB05;
+    padding: 0; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
+    padding: 0 15px 18px 15px;
+    height: 92px;
+    /*Logo starts here*/
+    /*Logo end here*/
+    /*Utility Nav starts here*/
+    /* Utility Nav Ends here */ }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
+      position: absolute;
+      bottom: 5px;
+      height: 100%; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
+        width: 149px;
+        height: 36px;
+        cursor: pointer;
+        margin-top: 13px; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
+      float: right;
+      padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
+        padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
+          padding-right: 0; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+      padding: 0;
+      /*Mega Menu strats here*/ }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
+        position: static;
+        float: left;
+        margin: -5px 0 0 200px;
+        /*Mega Menu end here*/ }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation {
+          margin-left: 0px; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .menu-content {
+            padding: 0;
+            margin-top: -12px; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow {
+          margin-left: 0px; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow .menu-content {
+            padding: 0;
+            margin-top: -12px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
+        max-width: 375px;
+        float: right; }
+
+.slf-header-wrapper .search-autocomplete {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  text-decoration: none; }
+  .slf-header-wrapper .search-autocomplete ul {
+    border: 1px solid #B4B4B4;
+    margin: -1px 0 0;
+    padding: 0;
+    text-align: left;
+    list-style: none;
+    vertical-align: middle;
+    min-height: 48px;
+    display: none; }
+  .slf-header-wrapper .search-autocomplete .search-autocomplete-list {
+    padding-left: 15px;
+    font-weight: 700; }
+    .slf-header-wrapper .search-autocomplete .search-autocomplete-list li .bold {
+      color: #000000; }
+  .slf-header-wrapper .search-autocomplete .search-sayt-list {
+    border-bottom: 1px solid #B4B4B4;
+    position: relative;
+    padding-top: 2px;
+    background: #ffffff;
+    margin-top: -2px; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list .seperate {
+      width: 90%;
+      border-top: 1px solid #000000; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list :hover {
+      text-decoration: none; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list li {
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 15px 10px;
+      white-space: nowrap;
+      overflow: hidden; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li .title {
+        color: #4a7295;
+        display: block; }
+        .slf-header-wrapper .search-autocomplete .search-sayt-list li .title:hover {
+          text-decoration: underline; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc {
+        color: #424242;
+        font-size: 0.875rem;
+        font-weight: normal;
+        line-height: 1.2rem;
+        padding-bottom: 4px; }
+        .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc :hover {
+          text-decoration: none; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li a > * {
+        white-space: normal; }
+
+@media (max-width: 1024px) {
+  .desktop-header-wrapper {
+    display: none; }
+  .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper {
+    display: none; } }
+
+@media (min-width: 1025px) {
+  .mobile-header {
+    display: none; } }
 
 .icon-style:hover {
   text-decoration: none; }
@@ -6131,124 +6328,6 @@ input[type=text] {
         width: 100%;
         display: block;
         padding: 24px; } }
-
-.slf-header-wrapper .desktop-sign-in .button-class {
-  display: none; }
-
-.slf-header-wrapper .desktop-header-wrapper {
-  height: 100px; }
-  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
-    height: 8px;
-    background-color: #FFCB05;
-    padding: 0; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
-    padding: 0 15px 18px 15px;
-    height: 92px;
-    /*Logo starts here*/
-    /*Logo end here*/
-    /*Utility Nav starts here*/
-    /* Utility Nav Ends here */ }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
-      position: absolute;
-      bottom: 5px;
-      height: 100%; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
-        width: 149px;
-        height: 36px;
-        cursor: pointer;
-        margin-top: 13px; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
-      float: right;
-      padding: 0; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
-        padding: 0; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
-          padding-right: 0; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
-      padding: 0;
-      /*Mega Menu strats here*/ }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
-        position: static;
-        float: left;
-        margin: -5px 0 0 200px;
-        /*Mega Menu end here*/ }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation {
-          margin-left: 0px; }
-          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .menu-content {
-            padding: 0;
-            margin-top: -12px; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow {
-          margin-left: 0px; }
-          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow .menu-content {
-            padding: 0;
-            margin-top: -12px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
-        max-width: 375px;
-        float: right; }
-
-.slf-header-wrapper .search-autocomplete {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  background: #ffffff;
-  overflow: hidden;
-  text-decoration: none; }
-  .slf-header-wrapper .search-autocomplete ul {
-    border: 1px solid #B4B4B4;
-    margin: -1px 0 0;
-    padding: 0;
-    text-align: left;
-    list-style: none;
-    vertical-align: middle;
-    min-height: 48px;
-    display: none; }
-  .slf-header-wrapper .search-autocomplete .search-autocomplete-list {
-    padding-left: 15px;
-    font-weight: 700; }
-    .slf-header-wrapper .search-autocomplete .search-autocomplete-list li .bold {
-      color: #000000; }
-  .slf-header-wrapper .search-autocomplete .search-sayt-list {
-    border-bottom: 1px solid #B4B4B4;
-    position: relative;
-    padding-top: 2px;
-    background: #ffffff;
-    margin-top: -2px; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list .seperate {
-      width: 90%;
-      border-top: 1px solid #000000; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list :hover {
-      text-decoration: none; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list li {
-      font-size: 1rem;
-      font-weight: 400;
-      padding: 15px 10px;
-      white-space: nowrap;
-      overflow: hidden; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li .title {
-        color: #4a7295;
-        display: block; }
-        .slf-header-wrapper .search-autocomplete .search-sayt-list li .title:hover {
-          text-decoration: underline; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc {
-        color: #424242;
-        font-size: 0.875rem;
-        font-weight: normal;
-        line-height: 1.2rem;
-        padding-bottom: 4px; }
-        .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc :hover {
-          text-decoration: none; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li a > * {
-        white-space: normal; }
-
-@media (max-width: 1024px) {
-  .desktop-header-wrapper {
-    display: none; }
-  .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper {
-    display: none; } }
-
-@media (min-width: 1025px) {
-  .mobile-header {
-    display: none; } }
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
@@ -6833,32 +6912,6 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
