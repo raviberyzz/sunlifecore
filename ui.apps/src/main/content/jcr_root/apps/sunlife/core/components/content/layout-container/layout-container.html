@@ -74,6 +74,14 @@
                 <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
             </div>
         </sly>
+        <sly data-sly-test="${layout.type == '25:75N'}">
+            <div class="col-md-3">
+                <sly data-sly-resource="${'left-nav' @ resourceType='sunlife/core/components/content/left-navigation'}" />
+            </div>
+            <div class="col-md-9">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
     </sly>
     <sly data-sly-test="${layout.noc == '3'}">
         <sly data-sly-test="${layout.type == '25:50:25N'}">
