@@ -242,13 +242,13 @@
                                         </cq:styles>
                                     </item4>
                                     <item5
-                                    cq:styleGroupLabel="Product card"
+                                    cq:styleGroupLabel="Product Box"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="light-yellow-box-header"
                                             cq:styleId="1579273835647"
-                                            cq:styleLabel="Light yellow box"
+                                            cq:styleLabel="Light Yellow Box"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item5>
