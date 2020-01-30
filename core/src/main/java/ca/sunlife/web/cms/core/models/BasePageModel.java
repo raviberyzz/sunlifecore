@@ -49,6 +49,21 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	/** The Constant OG_DESCRIPTION. */
 	static final String OG_DESCRIPTION = "og:description";
 
+	/** The Constant OG_IMAGE. */
+	static final String OG_IMAGE = "og:image";
+	
+	/** The Constant TWITTER_URL. */
+	static final String TWITTER_URL = "twitter:url";
+
+	/** The Constant TWITTER_TITLE. */
+	static final String TWITTER_TITLE = "twitter:title";
+
+	/** The Constant TWITTER_DESCRIPTION. */
+	static final String TWITTER_DESCRIPTION = "twitter:description";
+	
+	/** The Constant TWITTER_IMAGE. */
+	static final String TWITTER_IMAGE = "twitter:image";
+	
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(BasePageModel.class);
 
@@ -310,6 +325,9 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		// SEO description - <meta name="description"> tag
 		seoDescription = null == description ? configService.getConfigValues("pageDescription", pagePath) : description;
 
+		//Social media description
+		socialMediaDescription = null == socialMediaDescription ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescription;
+		
 		// SEO canonical URL - <link rel="canonical"> tag
 		seoCanonicalUrl = null == canonicalUrl ? getURL(domain) : canonicalUrl;
 
@@ -321,8 +339,12 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 		// Configuring custom social sharing - meta-tags
 		if (super.isSocialMediaEnabled()) {
+			customMetadata.put(TWITTER_TITLE, customMetadata.get(OG_TITLE));
+			customMetadata.put(TWITTER_URL, customMetadata.get(OG_URL));
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
+			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(OG_LOCALE, locale);
+			customMetadata.put(TWITTER_IMAGE, customMetadata.get(OG_IMAGE));
 		}
 		LOGGER.debug("metadata {}", customMetadata);
 
