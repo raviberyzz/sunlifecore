@@ -11,11 +11,11 @@ $(document).ready(function(){
   $('a').click(function(){
     var anchorId=$(this).attr('href');
     var anchor=$(this);
-    if(anchorId.match("^#")){
+    if(anchorId && anchorId.match("^#")){
       $('.popup-modal-wrapper').each(function(index){
         var modalId = $(this).attr('id');
         modalId='#'+modalId;
-        if(anchorId.match(modalId)){
+        if(modalId && anchorId.match(modalId)){
           anchor.attr('data-toggle','modal');
         }
       });
