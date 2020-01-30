@@ -15,6 +15,13 @@
         display: flex;
         align-items: center;
     }
+    .left-image-position{
+        .right-item{
+            .legal-text{
+                line-height: 18px;
+            }
+        }
+    }
 }
 .bottom-aligned-text {
     .right-image-position, .left-image-position  {
