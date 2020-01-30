@@ -771,7 +771,50 @@
 		                        </item0>
 		                     </cq:styleGroups>
 		                  </policy_accordion>
-		               </accordion>                    
+		               </accordion> 
+		               <table jcr:primaryType="nt:unstructured">
+                        <policy_table
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Table"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0 jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-table-comparision"
+                                            cq:styleId="1580314402348"
+                                            cq:styleLabel="Comparison table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="cmp-table-data-content"
+                                            cq:styleId="1580315099494"
+                                            cq:styleLabel="Data content table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_table>
+                    </table>
+                    <region-language-menu jcr:primaryType="nt:unstructured">
+                        <policy_regionalLanguageMenu
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Region language Menu"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0 jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-linkfarm-table"
+                                            cq:styleId="1580315798979"
+                                            cq:styleLabel="Link farm table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                     </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_regionalLanguageMenu>
+                    </region-language-menu>                   
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">

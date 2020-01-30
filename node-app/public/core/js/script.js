@@ -4203,7 +4203,6 @@ $(document).ready(function () {
      
  
      
-
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4235,6 +4234,7 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.slf-table').length){
@@ -4669,11 +4669,11 @@ $(document).ready(function(){
   $('a').click(function(){
     var anchorId=$(this).attr('href');
     var anchor=$(this);
-    if(anchorId.match("^#")){
+    if(anchorId && anchorId.match("^#")){
       $('.popup-modal-wrapper').each(function(index){
         var modalId = $(this).attr('id');
         modalId='#'+modalId;
-        if(anchorId.match(modalId)){
+        if(modalId && anchorId.match(modalId)){
           anchor.attr('data-toggle','modal');
         }
       });
@@ -4976,50 +4976,6 @@ $(document).ready(function () {
             $(this).height(taeser_height);
        
 	});
-});
-$(document).ready(function () {
-    $(".desktop-header-wrapper #sun-search").removeClass('in');
-    $(".signIn-button").attr('maxlength', '30');
-    $('#language-btn-container').click(function () {
-        if ($('#sun-search').hasClass('in')) {
-           searchClose();
-        }
-    });
-    $('#search-btn').click(function () {
-        if ($('#sun-language').hasClass('in')) {
-            $("#language-btn").attr('aria-expanded', 'false');
-            $("#sun-language").removeClass('in');
-        }
-    });
-    $('#language-btn-container').click(function () {
-        if ($('#language-btn').attr('aria-expanded') == 'true') {
-            $("#language-btn").attr('aria-expanded', 'false');
-        }
-        else {
-            $("#language-btn").attr('aria-expanded', 'true');
-        }
-    });
-    $('.sunLanguageCrossBtn').click(function () {
-        $("#language-btn").attr('aria-expanded', 'false');
-    });
-      
-    $(document).mouseup(function(e){
-    var searchBar = $("#sun-search");
-    if($('#sun-search').hasClass('in')){
-        if (e.which === 1) {
-            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
-                searchClose();
-                setTimeout(searchClose,500);
-                event.stopImmediatePropagation();
-            }
-        }
-    }
-    });
-    function searchClose(){
-        $("#search-btn").attr('aria-expanded', 'false');
-        $('#sun-search').removeClass('in');
-    }
-     
 });
 
 
