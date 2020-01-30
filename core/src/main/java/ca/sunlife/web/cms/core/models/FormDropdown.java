@@ -126,7 +126,7 @@ public interface FormDropdown {
 		 * @return the short name
 		 */
 		@Inject
-		public boolean getShortName();
+		public String getShortName();
 		
 	}
 	
