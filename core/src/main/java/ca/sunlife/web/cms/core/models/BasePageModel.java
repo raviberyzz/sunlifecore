@@ -24,6 +24,7 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.cq.wcm.core.components.internal.models.v1.SocialMediaHelperImpl;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
@@ -33,55 +34,18 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  *
  * @author MO92
  */
-@Model(adaptables = {
-		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
-public class BasePageModel {
-
-	/**
-	 * Gets the page category.
-	 *
-	 * @return the pageCategory
-	 */
-	public final String getPageCategory() {
-		return pageCategory;
-	}
-
-	/**
-	 * Sets the page category.
-	 *
-	 * @param pageCategory the pageCategory to set
-	 */
-	public final void setPageCategory(String pageCategory) {
-		this.pageCategory = pageCategory;
-	}
-
-	/**
-	 * Gets the page sub category.
-	 *
-	 * @return the pageSubCategory
-	 */
-	public final String getPageSubCategory() {
-		return pageSubCategory;
-	}
-
-	/**
-	 * Sets the page sub category.
-	 *
-	 * @param pageSubCategory the pageSubCategory to set
-	 */
-	public final void setPageSubCategory(String pageSubCategory) {
-		this.pageSubCategory = pageSubCategory;
-	}
+@Model(adaptables = { SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
+public class BasePageModel extends SocialMediaHelperImpl {
 
 	/** The Constant OG_URL. */
 	static final String OG_URL = "og:url";
-	
+
 	/** The Constant OG_TITLE. */
 	static final String OG_TITLE = "og:title";
-	
+
 	/** The Constant OG_LOCALE. */
 	static final String OG_LOCALE = "og:locale";
-	
+
 	/** The Constant OG_DESCRIPTION. */
 	static final String OG_DESCRIPTION = "og:description";
 
@@ -110,24 +74,23 @@ public class BasePageModel {
 	@Inject
 	@Via("resource")
 	private String pageDescription;
-	
+
 	/** The page category. */
-	@Inject @Via("resource") @Default(values="")
+	@Inject
+	@Via("resource")
+	@Default(values = "")
 	private String pageCategory;
-	
+
 	/** The page sub category. */
-	@Inject @Via("resource") @Default(values="")
+	@Inject
+	@Via("resource")
+	@Default(values = "")
 	private String pageSubCategory;
 
-	/** The seo page title. */
+	/** The page title - refers to more title in page properties */
 	@Inject
 	@Via("resource")
-	private String seoPageTitle;
-
-	/** The seo alt urls. */
-	@Inject
-	@Via("resource")
-	private String seoAltUrls;
+	private String pageTitle;
 
 	/** The description. */
 	@Inject
@@ -147,19 +110,86 @@ public class BasePageModel {
 	@Via("resource")
 	private String title;
 
+	/** The social media description. */
+	@Inject
+	@Via("resource")
+	private String socialMediaDescription;
+
+	/** The seo page title. */
+	private String seoPageTitle;
+
+	/** The seo canonical url. */
+	private String seoCanonicalUrl;
+
+	/** The seo description. */
+	private String seoDescription;
+
 	/** The config service. */
 	@Inject
 	private SiteConfigService configService;
 
 	/** The meta data. */
-	private Map<String, String> metaData;
+	private Map<String, String> customMetadata;
 
 	/** The alt language links. */
 	private Map<String, String> altLanguageLinks;
-	
+
+	/**
+	 * @return the seoPageTitle
+	 */
+	public String getSeoPageTitle() {
+		return seoPageTitle;
+	}
+
+	/**
+	 * @param seoPageTitle
+	 *            the seoPageTitle to set
+	 */
+	public void setSeoPageTitle(String seoPageTitle) {
+		this.seoPageTitle = seoPageTitle;
+	}
+
 	/** The analytics script. */
 	private String analyticsScriptPath;
-	
+
+	/**
+	 * Gets the page category.
+	 *
+	 * @return the pageCategory
+	 */
+	public final String getPageCategory() {
+		return pageCategory;
+	}
+
+	/**
+	 * Sets the page category.
+	 *
+	 * @param pageCategory
+	 *            the pageCategory to set
+	 */
+	public final void setPageCategory(String pageCategory) {
+		this.pageCategory = pageCategory;
+	}
+
+	/**
+	 * Gets the page sub category.
+	 *
+	 * @return the pageSubCategory
+	 */
+	public final String getPageSubCategory() {
+		return pageSubCategory;
+	}
+
+	/**
+	 * Sets the page sub category.
+	 *
+	 * @param pageSubCategory
+	 *            the pageSubCategory to set
+	 */
+	public final void setPageSubCategory(String pageSubCategory) {
+		this.pageSubCategory = pageSubCategory;
+	}
+
 	/**
 	 * @return the analyticsScript
 	 */
@@ -168,7 +198,8 @@ public class BasePageModel {
 	}
 
 	/**
-	 * @param analyticsScript the analyticsScript to set
+	 * @param analyticsScript
+	 *            the analyticsScript to set
 	 */
 	public final void setAnalyticsScriptPath(String analyticsScriptPath) {
 		this.analyticsScriptPath = analyticsScriptPath;
@@ -182,7 +213,8 @@ public class BasePageModel {
 	}
 
 	/**
-	 * @param analyticsScriptlet the analyticsScriptlet to set
+	 * @param analyticsScriptlet
+	 *            the analyticsScriptlet to set
 	 */
 	public final void setAnalyticsScriptlet(String analyticsScriptlet) {
 		this.analyticsScriptlet = analyticsScriptlet;
@@ -192,21 +224,18 @@ public class BasePageModel {
 	private String analyticsScriptlet;
 
 	/**
-	 * Gets the meta data.
-	 *
-	 * @return the meta data
+	 * @return the customMetadata
 	 */
-	public Map<String, String> getMetaData() {
-		return metaData;
+	public Map<String, String> getCustomMetadata() {
+		return customMetadata;
 	}
 
 	/**
-	 * Sets the meta data.
-	 *
-	 * @param metadata the metadata
+	 * @param customMetadata
+	 *            the customMetadata to set
 	 */
-	public void setMetaData(final Map<String, String> metadata) {
-		this.metaData = metadata;
+	public void setCustomMetadata(Map<String, String> customMetadata) {
+		this.customMetadata = customMetadata;
 	}
 
 	/**
@@ -221,55 +250,92 @@ public class BasePageModel {
 	/**
 	 * Sets the alt language links.
 	 *
-	 * @param altLanguageLinks the alt language links
+	 * @param altLanguageLinks
+	 *            the alt language links
 	 */
 	public void setAltLanguageLinks(final Map<String, String> altLanguageLinks) {
 		this.altLanguageLinks = altLanguageLinks;
 	}
 
 	/**
+	 * @return the seoCanonicalUrl
+	 */
+	public String getSeoCanonicalUrl() {
+		return seoCanonicalUrl;
+	}
+
+	/**
+	 * @param seoCanonicalUrl
+	 *            the seoCanonicalUrl to set
+	 */
+	public void setSeoCanonicalUrl(String seoCanonicalUrl) {
+		this.seoCanonicalUrl = seoCanonicalUrl;
+	}
+
+	/**
+	 * @return the seoDescription
+	 */
+	public String getSeoDescription() {
+		return seoDescription;
+	}
+
+	/**
+	 * @param seoDescription
+	 *            the seoDescription to set
+	 */
+	public void setSeoDescription(String seoDescription) {
+		this.seoDescription = seoDescription;
+	}
+
+	/**
 	 * Inits the model.
 	 *
-	 * @throws LoginException the login exception
-	 * @throws RepositoryException the repository exception
+	 * @throws LoginException
+	 *             the login exception
+	 * @throws RepositoryException
+	 *             the repository exception
 	 */
 	@PostConstruct
-	private void initModel() throws LoginException, RepositoryException {
+	private void init() throws LoginException, RepositoryException {
 		final String pagePath = currentPage.getPath();
 		final String domain = configService.getConfigValues("domain", pagePath);
-		final String ogUrl = null == canonicalUrl ? getURL(domain) : canonicalUrl;
-		final String ogDescription = null == description ? configService.getConfigValues("pageDescription", pagePath)
-				: description;
 		final String locale = configService.getConfigValues("pageLocale", pagePath);
 		final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
 		final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
 		final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
-		final String ogTitle = null == seoPageTitle ? title + " | " + siteSuffix : seoPageTitle;
+
+		// SEO title - <title> tag
+		seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
+
+		// SEO description - <meta name="description"> tag
+		seoDescription = null == description ? configService.getConfigValues("pageDescription", pagePath) : description;
+
+		// SEO canonical URL - <link rel="canonical"> tag
+		seoCanonicalUrl = null == canonicalUrl ? getURL(domain) : canonicalUrl;
+
 		setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
 		setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
-		metaData = new HashMap<>();
-		metaData.put(OG_URL, ogUrl);
-		metaData.put(OG_DESCRIPTION, ogDescription);
-		metaData.put(OG_LOCALE, locale);
-		metaData.put(OG_TITLE, ogTitle);
-		LOGGER.debug("metadata {}", metaData);
 
-		if (null == seoAltUrls) {
-			setAtlLanguages(altLanguages, pageLocale, pagePath, domain);
-		} else {
-			final String[] altLangArray = seoAltUrls.split(",");
-			for (final String strLang : altLangArray) {
-				final String[] strLangArray = strLang.split("~");
-				altLanguageLinks.put(strLangArray[0], strLangArray[1]);
-			}
+		// Fetching social sharing component meta-data
+		customMetadata = super.getMetadata();
+
+		// Configuring custom social sharing - meta-tags
+		if (super.isSocialMediaEnabled()) {
+			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
+			customMetadata.put(OG_LOCALE, locale);
 		}
+		LOGGER.debug("metadata {}", customMetadata);
+
+		// Sets alternate URLs
+		setAtlLanguages(altLanguages, pageLocale, pagePath, domain);
 		LOGGER.debug("Map Display {}", altLanguageLinks);
 	}
 
 	/**
 	 * Gets the url.
 	 *
-	 * @param domain the domain
+	 * @param domain
+	 *            the domain
 	 * @return the url
 	 */
 	private String getURL(final String domain) {
@@ -278,15 +344,18 @@ public class BasePageModel {
 	}
 
 	/**
-	 * Sets the atl languages.
+	 * Sets the alternate languages.
 	 *
-	 * @param altLanguages the alt languages
-	 * @param pageLocale the page locale
-	 * @param pagePath the page path
-	 * @param domain the domain
+	 * @param altLanguages
+	 *            the alternate languages
+	 * @param pageLocale
+	 *            the page locale
+	 * @param pagePath
+	 *            the page path
+	 * @param domain
+	 *            the domain
 	 */
-	private void setAtlLanguages(final String altLanguages, final String pageLocale, final String pagePath,
-			final String domain) {
+	private void setAtlLanguages(final String altLanguages, final String pageLocale, final String pagePath, final String domain) {
 		LOGGER.debug("{}", altLanguages);
 		if (null == altLanguages) {
 			return;
@@ -296,16 +365,19 @@ public class BasePageModel {
 		final String[] altLanguagesArray = altLanguages.split(",");
 		for (final String lan : altLanguagesArray) {
 			LOGGER.debug("{} {} ", lan, pagePath);
-			final String[] langArray = lan.split("~");
+			final String[] langArray = lan.split("_");
 			final String newUrl = pagePath.replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
 			LOGGER.debug("New -- > {} {} ", langArray[0], newUrl);
 			if (null != resolver.getResource(newUrl)) {
-				final String value = getURL(domain).replace("/" + pageLocale.split("_")[0] + "/",
-						"/" + langArray[0] + "/");
+				final String value = getURL(domain).replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
 				LOGGER.debug("value {}", value);
-				altLanguageLinks.put(langArray[0], value);
+				altLanguageLinks.put(lan, value);
 			}
 		}
+		if (!altLanguageLinks.isEmpty()) {
+			altLanguageLinks.put(pageLocale, getURL(domain));
+		}
+
 		LOGGER.debug("Map {}", altLanguageLinks);
 	}
 }

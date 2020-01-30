@@ -1,22 +1,24 @@
 <sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
 <meta property="${key}"
-      data-sly-repeat.key="${baseModel.metaData.keySet}"
-      content="${baseModel.metaData[key]}"/>
-<link rel="canonical" itemprop="url" href="${baseModel.metaData['og:url']}"/>
+      data-sly-repeat.key="${baseModel.customMetadata.keySet}"
+      content="${baseModel.customMetadata[key]}"/>
+<link rel="canonical" itemprop="url" href="${baseModel.seoCanonicalUrl}"/>
 <link rel="alternate" data-sly-repeat.key="${baseModel.altLanguageLinks}" 
 	hreflang="${key}" href="${baseModel.altLanguageLinks[key]}"/>
+
 <!-- UDO starts here -->
-  <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
+<div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
     var utag_data={
-    "page_canonical_url" : "${baseModel.metaData['og:url']}",
-    "page_canonical_url_default" : "${baseModel.metaData['og:url']}",
+    "page_canonical_url" : "${baseModel.seoCanonicalUrl}",
+    "page_canonical_url_default" : "${baseModel.seoCanonicalUrl}",
     "page_breadcrumb" : "/Home",
-    "page_language" : "en",
+    "page_language" : "${baseModel.customMetadata['og:locale']}",
     "page_category" : "${baseModel.pageCategory}",
     "page_subcategory" : "${baseModel.pageSubCategory}"
     }
 </div>
-  <!-- UDO ends here -->
-  <!-- Synchronous Tag Support starts here -->
-      <script src="${baseModel.analyticsScriptPath}" type="text/javascript"></script>
-  <!-- Synchronous Tag Support ends here -->
+<!-- UDO ends here -->
+
+<!-- Synchronous Tag Support starts here -->
+<script src="${baseModel.analyticsScriptPath}" type="text/javascript"></script>
+<!-- Synchronous Tag Support ends here -->
