@@ -5,13 +5,13 @@
             <foundation jcr:primaryType="nt:unstructured">
                 <components jcr:primaryType="nt:unstructured">
                     <responsivegrid jcr:primaryType="nt:unstructured">
-                        <policy_sunlife_CA                            
+                        <policy_sunlife_ca_content                            
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sunlife CA"
                             sling:resourceType="wcm/core/components/policy/policy"
                             components="[group:Sunlife CA]">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_sunlife_CA>
+                        </policy_sunlife_ca_content>
                     </responsivegrid>                    
                 </components>
             </foundation>
