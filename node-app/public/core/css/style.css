@@ -4541,7 +4541,8 @@ input[type=text] {
     .search-bar-wrapper .global-search input[type=text] {
       margin-bottom: 0;
       height: 48px;
-      width: 462px; }
+      width: 462px;
+      color: #424242; }
     .search-bar-wrapper .global-search .search-autocomplete {
       position: absolute;
       z-index: 1099; }
@@ -6413,7 +6414,9 @@ ul {
   padding: 40px 24px;
   text-align: center; }
   .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
-    display: none; }
+    display: none;
+    width: 40%;
+    border-bottom: 1px solid #E5E7E9; }
   .company-highlight-yellow-grey-background .image-text-wrapper, .company-highlight-blue-grey-background .image-text-wrapper {
     padding: 40px 15px;
     text-align: center;

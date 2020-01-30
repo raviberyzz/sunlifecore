@@ -4156,7 +4156,6 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 
 
-
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
     var pathName= window.location.pathname ;

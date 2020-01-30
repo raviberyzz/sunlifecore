@@ -97,6 +97,8 @@ ul {
     text-align: center;
     .grey-horizontal-separator {
         display: none;
+        width: 40%;
+        border-bottom: 1px solid $light-grey-separator-color;
     }
     .image-text-wrapper {
         padding: 40px 15px;
