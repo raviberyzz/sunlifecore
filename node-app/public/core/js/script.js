@@ -4187,7 +4187,6 @@ $(document).ready(function () {
 });
 
 
-
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
     var pathName= window.location.pathname ;
