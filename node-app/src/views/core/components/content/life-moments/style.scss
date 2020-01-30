@@ -1,0 +1,70 @@
+@import '../../../base/core';
+.blue-background-wrapper{
+    color: $white-shade;
+    background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat,linear-gradient(#004C6C, #002C3C);
+    height: 382px;
+    padding-top: 48px;
+    text-align: center;
+    .life-heading{
+        font-size: 1.75rem;
+        font-style: italic;
+        margin-bottom: 16px;
+    }
+    .life-content-text-first{
+        font-size: 0.875rem;
+        margin-bottom: 16px;
+        line-height: 18px;
+    }
+    .life-moments-wrapper{
+        .links{
+            width: 100%;
+            .accordion-heading{
+                display: none;
+            }
+            .list-div{
+                display: block;
+                ul{
+                    min-height: 84px;
+                    margin-bottom: 24px;
+                    display: inline-flex;
+                    li{
+                        text-align: center;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        flex: auto;
+                        padding: 0 10px;
+                        a{
+                            font-size: 1rem;
+                            line-height: 26px;
+                            font-weight: 700;
+                            color: $light-yellow-color;
+                        }
+                    }
+                    li:not(:last-child){
+                        border-right: 2px solid $light-yellow-color;
+                    }
+                    .selected{
+                        background-color: $medium-blue-color;
+                        a{
+                            color: $white-shade;
+                        }
+                    }
+                    .border-right{
+                        border-right-color: $medium-grey-background;
+                    }
+                }
+            }
+        }
+    }
+    .life-sub-heading{
+        margin-bottom: 16px;
+        line-height: 18px;
+    }
+    .life-content-text-second{
+        margin-bottom: 16px;
+        line-height: 18px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}

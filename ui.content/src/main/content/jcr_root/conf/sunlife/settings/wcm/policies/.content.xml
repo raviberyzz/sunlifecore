@@ -4,14 +4,23 @@
     <wcm jcr:primaryType="nt:unstructured">
             <foundation jcr:primaryType="nt:unstructured">
                 <components jcr:primaryType="nt:unstructured">
-                    <responsivegrid jcr:primaryType="nt:unstructured">
-                        <policy_sunlife_CA                            
+                    <responsivegrid jcr:primaryType="nt:unstructured">                        
+                        <policy_sunlife_ca_home
+	                        jcr:description="Policy for Home page template"                        
+	                        jcr:primaryType="nt:unstructured"
+	                        jcr:title="Sunlife CA Home"
+	                        sling:resourceType="wcm/core/components/policy/policy"
+	                        components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/experiencefragment,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text]">
+	                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    	</policy_sunlife_ca_home>
+                    	<policy_sunlife_ca_content
+                        	jcr:description="Policy for Content page template"                           
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Sunlife CA"
+                            jcr:title="Sunlife CA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
                             components="[group:Sunlife CA]">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_sunlife_CA>
+                        </policy_sunlife_ca_content>
                     </responsivegrid>                    
                 </components>
             </foundation>
@@ -771,7 +780,50 @@
 		                        </item0>
 		                     </cq:styleGroups>
 		                  </policy_accordion>
-		               </accordion>                    
+		               </accordion> 
+		               <table jcr:primaryType="nt:unstructured">
+                        <policy_table
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Table"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0 jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-table-comparision"
+                                            cq:styleId="1580314402348"
+                                            cq:styleLabel="Comparison table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="cmp-table-data-content"
+                                            cq:styleId="1580315099494"
+                                            cq:styleLabel="Data content table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_table>
+                    </table>
+                    <region-language-menu jcr:primaryType="nt:unstructured">
+                        <policy_regionalLanguageMenu
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Region language Menu"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0 jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cmp-linkfarm-table"
+                                            cq:styleId="1580315798979"
+                                            cq:styleLabel="Link farm table"
+                                            jcr:primaryType="nt:unstructured"/>
+                                     </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_regionalLanguageMenu>
+                    </region-language-menu>                   
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">

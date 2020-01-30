@@ -1,9 +1,11 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
-    padding: 0;
+    .cmp-container{
     margin: 40px 0;
     text-align: center;
     background-color: $light-cool-blue-color;
+    width: calc(100% + 20px);
+    padding: 30px 20px 0 20px;
     .lists-wrapper{
         .links{
             width: 100%;
@@ -68,8 +70,8 @@
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
-        padding-top:40px;
-        padding-bottom: 40px;
+        width: calc(100% + 40px);
+        padding: 30px 20px;
     }
     .phone-numbers{
         font-weight: 400;
@@ -82,7 +84,7 @@
     }
     .right-nav-icon-wrapper
     {
-        .h1,.h2,.h3,.h4,.h5,.h6,.heading-4,.heading-5,.heading-6{
+        .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
         }
@@ -91,12 +93,15 @@
             padding-bottom: 0;
         }
     }
-
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .right-navigation-wrapper{
         padding: 0;
+        .cmp-container{
+            padding: 0;
+        }
         .cmp-container>*{
             display: inherit;
             border: 15px solid $white-shade;
@@ -104,6 +109,15 @@
         .yellow-horizontal-separator{
             display: none;
         }
+        .light-orange{
+            width: 100%;
+        }
 
+    }
+}
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
+{
+    .cmp-container{
+        padding: 0;
     }
 }
