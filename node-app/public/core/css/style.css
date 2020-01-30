@@ -4616,7 +4616,8 @@ input[type=text] {
     .search-bar-wrapper .global-search input[type=text] {
       margin-bottom: 0;
       height: 48px;
-      width: 462px; }
+      width: 462px;
+      color: #424242; }
     .search-bar-wrapper .global-search .search-autocomplete {
       position: absolute;
       z-index: 1099; }
@@ -6305,6 +6306,24 @@ ul {
   color: #ffffff;
   font-size: 0.875rem;
   text-align: center; }
+  .company-highlight-yellow-grey-background .grey-horizontal-separator, .company-highlight-blue-grey-background .grey-horizontal-separator {
+    display: none;
+    width: 40%;
+    border-bottom: 1px solid #E5E7E9; }
+  .company-highlight-yellow-grey-background .image-text-wrapper, .company-highlight-blue-grey-background .image-text-wrapper {
+    padding: 40px 15px;
+    text-align: center;
+    background-color: #ffffff;
+    height: 95%; }
+    .company-highlight-yellow-grey-background .image-text-wrapper img, .company-highlight-blue-grey-background .image-text-wrapper img {
+      width: 150px !important;
+      height: 150px; }
+  .company-highlight-yellow-grey-background .container-component .cmp-container > div, .company-highlight-blue-grey-background .container-component .cmp-container > div {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff; }
+    .company-highlight-yellow-grey-background .container-component .cmp-container > div .teaser, .company-highlight-blue-grey-background .container-component .cmp-container > div .teaser {
+      flex: 1; }
 
 .mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--3 .icon-texts {
   padding: 0px; }
