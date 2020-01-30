@@ -1,13 +1,11 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
     .cmp-container{
-    padding: 0;
     margin: 40px 0;
     text-align: center;
     background-color: $light-cool-blue-color;
-    &>*{
-        padding: 0 10px;
-    }
+    width: calc(100% + 20px);
+    padding: 30px 20px 0 20px;
     .lists-wrapper{
         .links{
             width: 100%;
@@ -72,8 +70,8 @@
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
-        padding-top:40px;
-        padding-bottom: 40px;
+        width: calc(100% + 40px);
+        padding: 30px 20px;
     }
     .phone-numbers{
         font-weight: 400;
@@ -101,6 +99,9 @@
 {
     .right-navigation-wrapper{
         padding: 0;
+        .cmp-container{
+            padding: 0;
+        }
         .cmp-container>*{
             display: inherit;
             border: 15px solid $white-shade;
@@ -108,6 +109,15 @@
         .yellow-horizontal-separator{
             display: none;
         }
+        .light-orange{
+            width: 100%;
+        }
 
+    }
+}
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
+{
+    .cmp-container{
+        padding: 0;
     }
 }
