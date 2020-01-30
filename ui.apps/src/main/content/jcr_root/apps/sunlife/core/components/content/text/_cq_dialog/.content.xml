@@ -76,6 +76,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="yellow-colored-font"
                                                                 text="Yellow Font"/>
+                                                             <tool-tip
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="tool-tip-box"
+                                                                text="Tool Tip"/>
                                                         </styles>
                                                     </styles>
                                                     <format
