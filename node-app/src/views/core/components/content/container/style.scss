@@ -370,13 +370,13 @@ ul {
 		.aem-GridColumn--default--4 {
 			.cmp-container {
 				margin: 24px 24px 24px 0px;
-				&:last-child {
+				    &:last-child {
 						margin-right: 0px;
-					}
-				}
+					    }
 			}
-        }
+		}
     }
+    
 		.aem-GridColumn--default--6 {
 			.cmp-container {
                 margin: 24px 24px 24px 0px;
@@ -385,7 +385,24 @@ ul {
 					
 				}
 			}
-		}
+        }
+        .grey-border-box{
+            padding: 24px;
+            .cmp-text{
+                ul {
+                    li{
+                      display:inline-flex;
+                    }
+                    li:before{
+                        margin:0;
+                       padding: 0 8px 0 0;
+                       width:1em;
+                    }
+                }
+
+            }
+        }
+}
 /* styles for product box end */
 
 /* styles for contact us box start*/
