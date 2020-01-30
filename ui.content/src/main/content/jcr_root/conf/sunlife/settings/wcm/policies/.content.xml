@@ -4,10 +4,19 @@
     <wcm jcr:primaryType="nt:unstructured">
             <foundation jcr:primaryType="nt:unstructured">
                 <components jcr:primaryType="nt:unstructured">
-                    <responsivegrid jcr:primaryType="nt:unstructured">
-                        <policy_sunlife_ca_content                            
+                    <responsivegrid jcr:primaryType="nt:unstructured">                        
+                        <policy_sunlife_ca_home
+	                        jcr:description="Policy for Home page template"                        
+	                        jcr:primaryType="nt:unstructured"
+	                        jcr:title="Sunlife CA Home"
+	                        sling:resourceType="wcm/core/components/policy/policy"
+	                        components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/experiencefragment,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text]">
+	                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    	</policy_sunlife_ca_home>
+                    	<policy_sunlife_ca_content
+                        	jcr:description="Policy for Content page template"                           
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Sunlife CA"
+                            jcr:title="Sunlife CA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
                             components="[group:Sunlife CA]">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
