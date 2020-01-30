@@ -150,7 +150,9 @@ ul {
         .icon-texts {
             padding-bottom: 0;
             display: table;
-            .heading-6,h6{
+            .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
+                font-size:1.125rem;
+                line-height:23px ;
                 padding-top:0;
                 margin-top: 0;
                 text-align: left;
@@ -187,7 +189,7 @@ ul {
     .cmp-container{
         background-color: $light-cool-blue-color;
     }
-    .heading-6,h6{
+    .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
         font-weight: 700;
         margin-bottom: 20px;
     }

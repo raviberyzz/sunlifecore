@@ -6085,7 +6085,7 @@ input[type=text] {
   text-align: center;
   position: relative;
   border-radius: 4px; }
-  .getting-started-icon-wrapper .heading-4 {
+  .getting-started-icon-wrapper .h2, .getting-started-icon-wrapper .h3, .getting-started-icon-wrapper .h4, .getting-started-icon-wrapper .h5, .getting-started-icon-wrapper .h6, .getting-started-icon-wrapper .heading-2, .getting-started-icon-wrapper .heading-3.heading-4, .getting-started-icon-wrapper .heading-5, .getting-started-icon-wrapper .heading-6 {
     font-weight: 700;
     line-height: 30px;
     padding: 0 25px 24px 25px;
@@ -6120,7 +6120,7 @@ input[type=text] {
 @media (min-width: 320px) and (max-width: 767px) {
   .getting-started-icon-wrapper {
     height: auto; }
-    .getting-started-icon-wrapper .heading-4 {
+    .getting-started-icon-wrapper .h2, .getting-started-icon-wrapper .h3, .getting-started-icon-wrapper .h4, .getting-started-icon-wrapper .h5, .getting-started-icon-wrapper .h6, .getting-started-icon-wrapper .heading-2, .getting-started-icon-wrapper .heading-3.heading-4, .getting-started-icon-wrapper .heading-5, .getting-started-icon-wrapper .heading-6 {
       padding-bottom: 24px; }
     .getting-started-icon-wrapper ul {
       width: 100%;

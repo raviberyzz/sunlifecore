@@ -1,9 +1,13 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
+    .cmp-container{
     padding: 0;
     margin: 40px 0;
     text-align: center;
     background-color: $light-cool-blue-color;
+    &>*{
+        padding: 0 10px;
+    }
     .lists-wrapper{
         .links{
             width: 100%;
@@ -82,7 +86,7 @@
     }
     .right-nav-icon-wrapper
     {
-        .h1,.h2,.h3,.h4,.h5,.h6,.heading-4,.heading-5,.heading-6{
+        .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
         }
@@ -91,7 +95,7 @@
             padding-bottom: 0;
         }
     }
-
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
