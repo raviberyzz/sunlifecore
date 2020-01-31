@@ -28,9 +28,7 @@ ul {
 }
 
 .yellow-icon-white-background {
-    .icon-text {
-        border: 1px solid $light-grey-color;
-    }
+        border: 1px solid $light-grey-color
 }
 .blue-icon-yellow-background > * {
     background-color: $medium-yellow-background;
@@ -40,12 +38,6 @@ ul {
     }
 }
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-    &:first-child{
-        margin-left: -10px;
-    }
-    &:last-child{
-        margin-right: -10px;
-    }
     margin-top: 42px;
         .icon-style {
             position: relative;
@@ -76,26 +68,23 @@ ul {
             }
         }
         form :not(:last-child){
-            padding-top: 10px;
+
             padding-right: 10px;
         }
 
 }
 .no-padding{
-    &:first-child{
-        margin-left: 0;
-    }
-    &:last-child{
-        margin-right: 0;
-    }
     .yellow-icon-white-background{
         form{
-            &:first-child{
-                padding-bottom: 10px;
-            }
             .cmp-form-button{
                 width: 100%;
+                max-width: 100%;
             }
+        }
+        form :not(:last-child){
+
+            padding-right: 0px;
+            padding-bottom: 16px;
         }
     }
 }
