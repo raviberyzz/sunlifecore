@@ -40,6 +40,26 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
+                                                        	<heading-2
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="heading-2"
+                                                                text="Heading 2"/>
+                                                            <heading-3
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="heading-3"
+                                                                text="Heading 3"/>
+                                                            <heading-4
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="heading-4"
+                                                                text="Heading 4"/>
+                                                            <heading-5
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="heading-5"
+                                                                text="Heading 5"/>
+                                                            <heading-6
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="heading-6"
+                                                                text="Heading 6"/>  
                                                             <text-accessibility
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="sr-only"
