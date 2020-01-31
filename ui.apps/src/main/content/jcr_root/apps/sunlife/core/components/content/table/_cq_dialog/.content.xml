@@ -18,11 +18,11 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <text
+                    <table
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                         editorType="table"
-                        name="./text"
+                        name="./tableData"
                         useFixedInlineToolbar="{Boolean}true">
                         <rtePlugins jcr:primaryType="nt:unstructured">
                             <styles
