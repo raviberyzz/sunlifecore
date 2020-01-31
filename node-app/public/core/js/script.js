@@ -5050,13 +5050,26 @@ $(document).ready(function () {
 	});
 
 	//for CTA_Height
-	setTimeout( function() {
-		$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
-		 var cta_height=$(this).parents('.layout-container').height();
-		 $(this).children().height(cta_height-80);
-	 });
- 
-	 }, 1000 );
+	var cta_height=0;
+	$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
+	 cta_height=$(this).parents('.layout-container').height();
+	 $(this).children().height(cta_height-80);
+ });
+
+$('.yellow-icon-white-background').each(function(){
+	  cta_height=$(this).parents('.layout-container').height();
+	 $(this).children().height(cta_height-80);
+ });
+
+	 var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
+    cta_icon_text.each(function (index) {
+		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
+	});
+	cta_icon_text.each(function (index) {
+		$(this).height(taeser_height);
+
+	});
+
 });
 
 
@@ -5066,6 +5079,7 @@ $(document).ready(function(){
     $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 
 });
+
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
