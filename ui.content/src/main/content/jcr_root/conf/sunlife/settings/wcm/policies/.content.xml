@@ -628,13 +628,32 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item10>
+								<item11
+                                    cq:styleGroupLabel="Bottom Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1579257426265"
+                                            cq:styleLabel="Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1579089824654"
+                                            cq:styleLabel="Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1579089828796"
+                                            cq:styleLabel="Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item11>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
 					<layout-container jcr:primaryType="nt:unstructured">
-                        <policy_1580457825582
-                            jcr:lastModified="{Date}2020-01-31T13:34:35.983+05:30"
-                            jcr:lastModifiedBy="admin"
+                        <policy_layoutContainer
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Layout Container"
                             sling:resourceType="wcm/core/components/policy/policy">
@@ -649,10 +668,15 @@
                                             cq:styleId="1580457847375"
                                             cq:styleLabel="No Padding"
                                             jcr:primaryType="nt:unstructured"/>
+										<item1
+                                            cq:styleClasses="editorial-articles-wrapper"
+                                            cq:styleId="1580457847367"
+                                            cq:styleLabel="Editorial Articles"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1580457825582>
+                        </policy_layoutContainer>
                     </layout-container>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
