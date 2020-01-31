@@ -5,15 +5,15 @@
     height: 382px;
     padding-top: 48px;
     text-align: center;
-    .life-heading{
-        font-size: 1.75rem;
-        font-style: italic;
-        margin-bottom: 16px;
+    h3{
+        margin: 0 0 16px 0;
     }
-    .life-content-text-first{
+    p{
         font-size: 0.875rem;
-        margin-bottom: 16px;
+        margin: 0 0 16px 0;
         line-height: 18px;
+        padding-left: 20%;
+        padding-right: 20%;
     }
     .life-moments-wrapper{
         .links{
@@ -57,14 +57,19 @@
             }
         }
     }
-    .life-sub-heading{
-        margin-bottom: 16px;
+    h4{
+        margin: 0 0 16px 0;
         line-height: 18px;
     }
-    .life-content-text-second{
-        margin-bottom: 16px;
-        line-height: 18px;
-        padding-left: 20%;
-        padding-right: 20%;
+    p:nth-child(1){
+        padding: 0;
     }
+    a{
+        color: $light-yellow-color;
+    }
+    // .life-link-text:after{
+    //     content: '\f138';
+    //     font-family: FontAwesome;
+    //     padding-left: 5px;
+    // }
 }
