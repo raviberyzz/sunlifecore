@@ -1,14 +1,14 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
+    float: left;
     .col-xs-12:first-child{
         padding: 30px 20px 0 20px;
     }
     .cmp-container{
     margin: 40px 0;
     text-align: center;
+    float: left;
     background-color: $light-cool-blue-color;
-    width: calc(100% + 20px);
-    padding: 30px 20px 0 20px;
     .lists-wrapper{
         .links{
             width: 100%;
@@ -73,8 +73,7 @@
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
-        width: calc(100% + 40px);
-        padding: 30px 20px;
+        padding: 15px;
     }
     .phone-numbers{
         font-weight: 400;
@@ -104,17 +103,20 @@
         padding: 0;
         .cmp-container{
             padding: 0;
+            .light-orange{
+                border-top:10px solid $white-shade;
+                border-bottom: 10px solid $white-shade;
+                padding: 0;
+            }
         }
         .cmp-container>*{
             display: inherit;
-            border: 15px solid $white-shade;
+            border: 10px solid $white-shade;
         }
         .yellow-horizontal-separator{
             display: none;
         }
-        .light-orange{
-            width: 100%;
-        }
+        
 
     }
 }
