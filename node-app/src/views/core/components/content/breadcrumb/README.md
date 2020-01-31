@@ -29,6 +29,22 @@ JSON Format
     },{
         "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
         "text" : "Why join us",
+        "class-name": ""
+    },{
+        "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
+        "text" : "Investment",
+        "class-name": ""
+    },{
+        "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
+        "text" : "Workplace Investment",
+        "class-name": ""
+    },{
+        "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
+        "text" : "Small business benefits and savings",
+        "class-name": ""
+    },{
+        "link" : "https:www.sunlife.ca/ca/Careers/Why+join+us?vgnLocale=en_CA",
+        "text" : "savings",
         "class-name": "active"
     }
     ],

@@ -6994,6 +6994,7 @@ ul {
 .breadcrumb-wrapper-light-cool-blue, .breadcrumb-wrapper-cool-blue {
   height: 43px;
   padding: 0 15px;
+  margin-top: 10px;
   background: #F4F7F6; }
   .breadcrumb-wrapper-light-cool-blue ol, .breadcrumb-wrapper-cool-blue ol {
     list-style-type: none;
@@ -7037,7 +7038,7 @@ ul {
     font-weight: 700;
     color: #424242;
     float: left;
-    margin-top: 1px; }
+    margin-top: -1px; }
   .breadcrumb-wrapper-light-cool-blue .social-link-icon-wrapper, .breadcrumb-wrapper-cool-blue .social-link-icon-wrapper {
     cursor: pointer; }
     .breadcrumb-wrapper-light-cool-blue .social-link-icon-wrapper .icon-style, .breadcrumb-wrapper-cool-blue .social-link-icon-wrapper .icon-style {
