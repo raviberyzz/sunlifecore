@@ -323,7 +323,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
 
 		// SEO description - <meta name="description"> tag
-		seoDescription = null == description ? configService.getConfigValues("pageDescription", pagePath) : description;
+		seoDescription = description;
 
 		//Social media description
 		socialMediaDescription = null == socialMediaDescription ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescription;
