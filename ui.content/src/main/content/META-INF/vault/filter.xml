@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/sunlife"/>
+    <filter root="/conf/sunlife">
+    	<exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-service-channel-template"/>
+        <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-redirect-template"/>
+        <exclude pattern="/conf/sunlife/settings/wcm/templates/export-paragraph-composite-layout"/>
+        <exclude pattern="/conf/sunlife/settings/wcm/templates/export-collection-layout"/>
+        <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-jsp-config-template"/>
+        <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-headless-content-blank-template"/>
+    </filter>
 </workspaceFilter>

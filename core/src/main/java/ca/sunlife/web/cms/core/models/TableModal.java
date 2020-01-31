@@ -11,12 +11,12 @@ import org.apache.sling.models.annotations.Model;
 public interface TableModal {
 	
 	/**
-	 * Gets the text.
+	 * Gets the table data.
 	 *
-	 * @return the text
+	 * @return the table data
 	 */
 	
 	@Inject
-	public String getText();
+	public String getTableData();
 
 }
