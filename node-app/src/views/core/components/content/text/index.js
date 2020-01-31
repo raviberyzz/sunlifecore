@@ -1,19 +1,20 @@
 $(document).ready(function () {
-   $va = "<div " + "class= " +'"fa fa-info-circle"' + "> </div>";
-    $($va).insertBefore(".tool-tip-box");
-   
-    $('.tool-tip-box').css('display','none');
-    $('.fa-info-circle').css('position','initial');
-    $('.fa-info-circle').hover(function(){
-        $('.fa-info-circle').css('cursor','pointer');
-        $('.fa-info-circle').css('position','absolute');
-        $('.tool-tip-box').css('display','block');
-    },function(){
-        $('.fa-info-circle').css('position','initial');
-        $('.tool-tip-box').css('display','none');
-    });
+  $(".cmp-text").each(function(){
+      var tool=$(this).find(".tool-tip-box:first");
+  var $va = "<a href='javascript:void(0)' title='' " + "class= " +'"fa fa-info-circle"' + "> </a>";
+    $($va).insertBefore(tool);
+      var tool_content= "";
+      $(this).children().children(".tool-tip-box").each(function(){
+    tool_content = tool_content +"<p>"+ $( this ).html()+"</p>";
+      });
+       $('.fa-info-circle').attr('data-toggle','tooltip');
+       $('.fa-info-circle').attr('data-placement','right');
+       $('.fa-info-circle').attr('data-html','true');
+       tool.siblings('.fa-info-circle').attr('data-original-title',tool_content);
+
+       $('[data-toggle="tooltip"]').tooltip();
+       $('.fa-info-circle').click(function(){
+         $('.fa-info-circle').css('text-decoration','none');
+       });
+  });
 });
-
-    
-
-    

@@ -164,7 +164,6 @@ position:static;
 
 width:214px;
 background: #D7D7D7;
-display: table-cell;
 float: none;
 vertical-align: top;
 padding: 48px 32px 48px 32px;
@@ -178,13 +177,16 @@ text-align: right;
           }
 .mega-menu-wrapper-desk  .aem-Grid.aem-Grid--default--10 > .aem-GridColumn.aem-GridColumn--default--10
 {
-  padding :48px 0;
+  padding :48px 24px;
 }
 
 .mega-menu-wrapper-desk  .aem-Grid.aem-Grid--default--10  .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6
 {
-                      padding: 0;
-                  }
+    padding: 0;
+    .icon-texts .view-all-category{
+        font-weight: 400;
+        }
+     }
 
 .mega-menu-wrapper-desk  .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--6 .aem-Grid.aem-Grid--default--6 > .aem-GridColumn.aem-GridColumn--default--6
 {
@@ -257,7 +259,7 @@ margin-top:10px;
       text-align: left;
       float: left;
       margin-right: 5px;
-      margin-left: 15px;
+
     padding-bottom:0
   }
   .mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 .icon-parent .icon-style {
@@ -276,7 +278,7 @@ margin-top:10px;
   margin-left:20px;
 }
 .mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 .icon-texts{
-  padding:0 0 0 35px
+  padding:0 0 0 8px
            }
 
 
@@ -314,6 +316,8 @@ margin-top:10px;
 {
 line-height:110%;
 }
+
+/*AEM css end */
 .cmp-megamenu-line{
     margin-left:25px;
     }
@@ -322,7 +326,10 @@ line-height:110%;
             .aem-Grid--default--3 {
                 .aem-GridColumn--default--3 {
                     .cmp-text {
-                        padding-left: 25px;
+                        padding-left: 10px;
+                        ul {
+                            padding-left:25px;
+                        }
                         a {
                             font-weight: 400;
                         }
@@ -331,4 +338,29 @@ line-height:110%;
             }
         }
     }
-    
+.nav{
+    .arrow {
+        .dropdown-toggle{
+            padding-left:24px;
+            padding-right:24px;
+        }
+    }
+} 
+
+.mega-menu-wrapper-desk{
+    .aem-Grid--default--12 {
+      .aem-GridColumn--default--10 {
+      .cmp-container{
+           .aem-Grid--default--10 {
+              .cmp-container{
+                 .aem-Grid--12 {
+                       .aem-GridColumn--default--6:nth-child(2) {
+                  padding-left: 24px;
+                         }
+                    }
+                }
+            }
+        }
+    }
+  }
+}

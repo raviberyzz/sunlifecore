@@ -28,7 +28,7 @@ public interface IconTextModel {
 	 * @return the titleLabel
 	 */
     @Inject
-	String getTitleLabel();
+	String getTitleLevel();
 
 	/**
 	 * Gets the icons text.

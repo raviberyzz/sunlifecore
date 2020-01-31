@@ -10,6 +10,7 @@
     .modal-content{
         outline-color:$medium-grey-background;
         width:80%;
+        margin-top:20px;
         .modal-header{
             background-color:$medium-blue-color;
             padding:0;
@@ -60,3 +61,7 @@
         }
     }
 }
+/* for second container display none */
+// .panel-group{
+//     display: none;
+// }

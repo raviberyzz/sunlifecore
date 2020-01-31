@@ -45,6 +45,7 @@
                     a{
                         font-size: 1rem;
                         line-height: 26px;
+                        font-weight: 700;
                     }
                 }
                 li:not(:last-child){
@@ -74,6 +75,7 @@
         }
         .accordion-heading {
             pointer-events: none;
+            line-height: 23px;
         }
         .list-div {
             margin-top: 5px;

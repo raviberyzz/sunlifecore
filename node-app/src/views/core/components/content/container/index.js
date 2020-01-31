@@ -45,4 +45,23 @@ $(document).ready(function () {
 		$(this).height(taeser_height);
 
 	});
+
+	//for editorial article
+	var editorial_teaser=$('.editorial-articles-wrapper').find('.teaser');
+    editorial_teaser.each(function (index) {
+		taeser_height= taeser_height > $(this).height() ?taeser_height : $(this).height();
+	});
+    editorial_teaser.each(function (index) {
+            $(this).height(taeser_height);
+       
+	});
+
+	//for CTA_Height
+	setTimeout( function() {
+		$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
+		 var cta_height=$(this).parents('.layout-container').height();
+		 $(this).children().height(cta_height-80);
+	 });
+ 
+	 }, 1000 );
 });

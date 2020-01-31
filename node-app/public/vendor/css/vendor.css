@@ -7017,7 +7017,7 @@ button.close {
 }
 
 .modal-open {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .modal {
@@ -10376,6 +10376,6 @@ button.close {
     overflow: visible;
     clip: auto;
   }
-
+  Zoom: 100%
   
   

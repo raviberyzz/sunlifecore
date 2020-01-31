@@ -1,4 +1,5 @@
 @import '../../../base/core';
+
 .show-only-in-editorial {
     display: none;
 }
@@ -14,6 +15,13 @@
     .right-image-position, .left-image-position  {
         display: flex;
         align-items: center;
+    }
+    .left-image-position{
+        .right-item{
+            .legal-text{
+                line-height: 18px;
+            }
+        }
     }
 }
 .bottom-aligned-text {

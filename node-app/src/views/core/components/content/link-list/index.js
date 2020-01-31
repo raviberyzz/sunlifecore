@@ -10,13 +10,9 @@ $(document).ready(function () {
 			$(this).attr('aria-expanded', true);
 		}
 	});
-	var pathName= window.location.pathname ;
-	console.log(pathName);
+	var pathName= window.location.pathname;
 	$('.editorial-nav-desktop-wrapper .list-div ul').find('a').each(function(){
 	var strLink =  $(this).attr('href');
-	var strLength = strLink.length;
-	var split = strLink.indexOf('.ca')+3; 
-	strLink = strLink.substr(split,(strLength-1));
 	strLink1 = pathName.indexOf(strLink);
 	if(strLink1 > -1){
 		$(this).parent().addClass("selected");

@@ -43,7 +43,7 @@ public interface LayoutContainerModal {
 	 * @return the modal id
 	 */
     @Inject @Optional
-    String getModalId();
+    String getModalID();
 
 	/**
 	 * Gets the modal title.
