@@ -35,17 +35,33 @@ ul {
     margin-top: 42px;
         .icon-style {
             position: relative;
-            bottom: 40px;
+            bottom: 56px;
         }
         .icon-parent {
             height: 40px;
-            padding-bottom: 64px;
+           // padding-bottom: 64px;
         }
         &>:last-child{
             margin-bottom: 40px;
+           
         }
         .icon-text {
             padding: 16px;
+        }
+        .cmp-container > :not(:last-child){
+            padding-bottom: 24px;
+        }
+        .cmp-container > :last-child{
+            padding-bottom: 40px;
+        }
+        form{
+            .cmp-form-button{
+                width: 100%;
+            }
+        }
+        form :not(:last-child){
+            padding-top: 10px;
+            padding-right: 10px;
         }
 
 }
@@ -97,6 +113,8 @@ ul {
     text-align: center;
     .grey-horizontal-separator {
         display: none;
+        width: 40%;
+        border-bottom: 1px solid $light-grey-separator-color;
     }
     .image-text-wrapper {
         padding: 40px 15px;
@@ -150,7 +168,7 @@ ul {
         .icon-texts {
             padding-bottom: 0;
             display: table;
-            .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
+            .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 font-size:1.125rem;
                 line-height:23px ;
                 padding-top:0;
@@ -189,7 +207,7 @@ ul {
     .cmp-container{
         background-color: $light-cool-blue-color;
     }
-    .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3.heading-4,.heading-5,.heading-6{
+    .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
         margin-bottom: 20px;
     }
@@ -352,7 +370,7 @@ ul {
             }
             .icon-parent {
                 height: 30px;
-                padding-bottom: 54px;
+                //padding-bottom: 54px;
             }
         }
     }
@@ -438,13 +456,13 @@ ul {
 		.aem-GridColumn--default--4 {
 			.cmp-container {
 				margin: 24px 24px 24px 0px;
-				&:last-child {
+				    &:last-child {
 						margin-right: 0px;
-					}
-				}
+					    }
 			}
-        }
+		}
     }
+    
 		.aem-GridColumn--default--6 {
 			.cmp-container {
                 margin: 24px 24px 24px 0px;
@@ -453,7 +471,24 @@ ul {
 					
 				}
 			}
-		}
+        }
+        .grey-border-box{
+            padding: 24px;
+            .cmp-text{
+                ul {
+                    li{
+                      display:inline-flex;
+                    }
+                    li:before{
+                        margin:0;
+                       padding: 0 8px 0 0;
+                       width:1em;
+                    }
+                }
+
+            }
+        }
+}
 /* styles for product box end */
 
 /* styles for contact us box start*/
