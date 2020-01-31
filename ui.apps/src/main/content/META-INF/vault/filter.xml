@@ -3,4 +3,5 @@
     <filter root="/apps/sunlife"/>
     <filter root="/apps/foundation/components/form"/>
     <filter root="/apps/cq"/>
+    <filter root="/apps/clientlibs/granite/richtext/core/js/commands"/>
     </workspaceFilter>
