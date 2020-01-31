@@ -32,6 +32,12 @@ ul {
     }
 }
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+    &:first-child{
+        margin-left: -10px;
+    }
+    &:last-child{
+        margin-right: -10px;
+    }
     margin-top: 42px;
         .icon-style {
             position: relative;
@@ -39,7 +45,6 @@ ul {
         }
         .icon-parent {
             height: 40px;
-           // padding-bottom: 64px;
         }
         &>:last-child{
             margin-bottom: 40px;
@@ -54,6 +59,9 @@ ul {
         .cmp-container > :last-child{
             padding-bottom: 40px;
         }
+        .form-container-component{
+            padding-top:0;
+        }
         form{
             .cmp-form-button{
                 width: 100%;
@@ -64,6 +72,24 @@ ul {
             padding-right: 10px;
         }
 
+}
+.no-padding{
+    &:first-child{
+        margin-left: 0;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+    .yellow-icon-white-background{
+        form{
+            &:first-child{
+                padding-bottom: 10px;
+            }
+            .cmp-form-button{
+                width: 100%;
+            }
+        }
+    }
 }
 
 .cross-cta-wrapper {
