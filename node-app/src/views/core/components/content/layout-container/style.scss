@@ -52,3 +52,8 @@
         padding:0 10px;
     }
 }
+.layout-container.no-padding{
+    div[class^="col-"]{
+        padding:0;
+    }
+}
