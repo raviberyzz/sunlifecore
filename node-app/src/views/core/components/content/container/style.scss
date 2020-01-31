@@ -48,7 +48,7 @@ ul {
         }
         &>:last-child{
             margin-bottom: 40px;
-           
+
         }
         .icon-text {
             padding: 16px;
@@ -267,7 +267,7 @@ ul {
         .icon-parent {
             margin-right: 16px;
             margin-bottom: 10px;
-           
+
         }
         .icon-texts {
             padding-bottom: 0;
@@ -300,13 +300,13 @@ ul {
             content: '\e804';
         }
     }
-    
+
 }
 .editorial-articles-wrapper {
     .side-image {
         height:220px;
         width:220px;
-    
+
     }
      .left-image-position{
         text-align:center;
@@ -323,6 +323,9 @@ ul {
     }
     .content-highlight {
         text-align: center;
+        p {
+            text-align: center !important;
+        }
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.25rem;
         }
@@ -395,13 +398,14 @@ ul {
     }
 
 }
-
-@media (max-width:$tab-screen-max) {
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
     .content-highlight {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.5rem;
         }
     }
+}
+@media (max-width:$tab-screen-max) {
     .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
         margin-top: 32px;
         .cta-content-icon-wrapper {
@@ -507,13 +511,13 @@ ul {
 			}
 		}
     }
-    
+
 		.aem-GridColumn--default--6 {
 			.cmp-container {
                 margin: 24px 24px 24px 0px;
 				&:last-child{
 						margin-right: 0px;
-					
+
 				}
 			}
         }
