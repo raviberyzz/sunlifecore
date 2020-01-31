@@ -42,7 +42,7 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldLabel="Link Url"
                                             name="./linkUrl"
-                                            rootPath="/content/"
+                                            rootPath="/content"
 											required="{Boolean}true"
                                             suffix=".html"/>
                                         <target
