@@ -476,6 +476,11 @@
                                             cq:styleId="1580197354212"
                                             cq:styleLabel="Subscribe"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="content-highlight"
+                                            cq:styleId="1580197354792"
+                                            cq:styleLabel="Content Highlight"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -581,17 +586,17 @@
                                         <item0
                                             cq:styleClasses="cmp-dynamic-megamenu-grey"
                                             cq:styleId="1579257415265"
-                                            cq:styleLabel="Megamenu dynamic content"
+                                            cq:styleLabel="Megamenu Dynamic Content"
                                             jcr:primaryType="nt:unstructured"/>
                                          <item1
                                             cq:styleClasses="cmp-dynamic-megamenu-greybackground"
                                             cq:styleId="1579089823754"
-                                            cq:styleLabel="Megamenu grey background"
+                                            cq:styleLabel="Megamenu Grey Background"
                                             jcr:primaryType="nt:unstructured"/>   
                                           <item2
                                             cq:styleClasses="cmp-megamenu-line"
                                             cq:styleId="1579089828456"
-                                            cq:styleLabel="Megamenu vertical seperator"
+                                            cq:styleLabel="Megamenu Vertical Seperator"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
@@ -607,7 +612,7 @@
                                     </cq:styles>
                                 </item8>
                                   <item9
-                                    cq:styleGroupLabel="Mobile app"
+                                    cq:styleGroupLabel="Mobile App"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
