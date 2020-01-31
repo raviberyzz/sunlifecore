@@ -4154,6 +4154,9 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+
+
+
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
     var pathName= window.location.pathname ;
@@ -4170,10 +4173,6 @@ $(document).ready(function () {
 		return false;
 	});
 });
-
-
-
-
 
 
 
@@ -4916,6 +4915,10 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
+<<<<<<< HEAD
+
+=======
+>>>>>>> f4337d88cf741ecaad4bfedadb97ff8abd802052
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -4991,6 +4994,7 @@ $(document).ready(function () {
         $('#language-btn').removeClass('lang-true');
     });
 });
+
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();
