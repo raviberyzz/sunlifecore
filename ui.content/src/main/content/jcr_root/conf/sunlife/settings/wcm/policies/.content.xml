@@ -482,27 +482,27 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="mega-menu-icon-wrapper cross-cta-wrapper"
+                                            cq:styleClasses="cross-cta-wrapper"
                                             cq:styleId="1577978704556"
                                             cq:styleLabel="Cross CTA"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="cta-content-icon-wrapper blue-icon-yellow-background"
+                                            cq:styleClasses="blue-icon-yellow-background"
                                             cq:styleId="1577978747677"
                                             cq:styleLabel="Blue Icon Yellow Background"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="cta-content-icon-wrapper yellow-icon-blue-background"
+                                            cq:styleClasses="yellow-icon-blue-background"
                                             cq:styleId="1577978761415"
                                             cq:styleLabel="Yellow Icon Blue Background"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item3
-                                            cq:styleClasses="cta-content-icon-wrapper yellow-icon-grey-background"
+                                            cq:styleClasses="yellow-icon-grey-background"
                                             cq:styleId="1577978771544"
                                             cq:styleLabel="Yellow Icon Grey Background"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item4
-                                            cq:styleClasses="cta-content-icon-wrapper yellow-icon-white-background"
+                                            cq:styleClasses="yellow-icon-white-background"
                                             cq:styleId="1577978784169"
                                             cq:styleLabel="Yellow Icon White Background"
                                             jcr:primaryType="nt:unstructured"/>
