@@ -60,40 +60,36 @@
                                             <item0
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Paragraph"
-                                                tag="p"/>
+                                                tag="p"/>                                            
                                             <item1
-                                                jcr:primaryType="nt:unstructured"
-                                                description="Heading 1"
-                                                tag="h1"/>
-                                            <item2
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Heading 2"
                                                 tag="h2"/>
-                                            <item3
+                                            <item2
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Heading 3"
                                                 tag="h3"/>
-                                            <item4
+                                            <item3
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Heading 4"
                                                 tag="h4"/>
-                                            <item5
+                                            <item4
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Heading 5"
                                                 tag="h5"/>
-                                            <item6
+                                            <item5
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Heading 6"
                                                 tag="h6"/>
-                                            <item7
+                                            <item6
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Quote"
                                                 tag="blockquote"/>
-                                            <item8
+                                            <item7
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Horizontal Rule (visual line break)"
                                                 tag="hr"/>
-                                            <item9
+                                            <item8
                                                 jcr:primaryType="nt:unstructured"
                                                 description="Preformatted"
                                                 tag="pre"/>
@@ -268,12 +264,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="editorial-hero-banner "
+                                            cq:styleClasses="editorial-hero-banner clearfix"
                                             cq:styleId="1577980579247"
                                             cq:styleLabel="Editorial Banner"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="banner-section"
+                                            cq:styleClasses="banner-section clearfix"
                                             cq:styleId="1577980601626"
                                             cq:styleLabel="Banner"
                                             jcr:primaryType="nt:unstructured"/>
@@ -284,7 +280,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="white-box"
+                                            cq:styleClasses="white-box clearfix"
                                             cq:styleId="1577980695880"
                                             cq:styleLabel="White Box"
                                             jcr:primaryType="nt:unstructured"/>
@@ -295,9 +291,14 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="circular-image"
+                                            cq:styleClasses="circular-image clearfix"
                                             cq:styleId="1577980739707"
                                             cq:styleLabel="Circular "
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile clearfix"
+                                            cq:styleId="1577980770707"
+                                            cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
@@ -306,7 +307,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="round-border"
+                                            cq:styleClasses="round-border clearfix"
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
                                             jcr:primaryType="nt:unstructured"/>
@@ -317,17 +318,17 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-left-align"
+                                            cq:styleClasses="text-left-align clearfix"
                                             cq:styleId="1577980805438"
                                             cq:styleLabel="Left"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="text-right-align"
+                                            cq:styleClasses="text-right-align clearfix"
                                             cq:styleId="1577980820937"
                                             cq:styleLabel="Right"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="text-center-align"
+                                            cq:styleClasses="text-center-align clearfix"
                                             cq:styleId="1577980837794"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -338,12 +339,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="middle-aligned-text"
+                                            cq:styleClasses="middle-aligned-text clearfix"
                                             cq:styleId="1577980895931"
                                             cq:styleLabel="Middle "
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="bottom-aligned-text"
+                                            cq:styleClasses="bottom-aligned-text clearfix"
                                             cq:styleId="1577980948265"
                                             cq:styleLabel="Bottom "
                                             jcr:primaryType="nt:unstructured"/>
@@ -354,7 +355,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="border-right"
+                                            cq:styleClasses="border-right clearfix"
                                             cq:styleId="1579089972016"
                                             cq:styleLabel="Yes"
                                             jcr:primaryType="nt:unstructured"/>
@@ -630,6 +631,29 @@
                             </cq:styleGroups>
                         </policy_container>
                     </container>
+					<layout-container jcr:primaryType="nt:unstructured">
+                        <policy_1580457825582
+                            jcr:lastModified="{Date}2020-01-31T13:34:35.983+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Layout Container"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="no-padding"
+                                            cq:styleId="1580457847375"
+                                            cq:styleLabel="No Padding"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_1580457825582>
+                    </layout-container>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
                                 cq:styleDefaultClasses="yellow-horizontal-separator"                                
