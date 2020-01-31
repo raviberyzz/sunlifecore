@@ -24,7 +24,8 @@ JSON Format
         "text" : "Planning your retirement"
     }],
     "life-sub-heading" : "Not sure where to begin? Start here.",
-    "life-content-text-second" : "Answer a few questions in our free-to-use Bright Start Tool to get personalized tips, tools and resources to help you reach your financial goals."
+    "life-content-text-second" : "Answer a few questions in our free-to-use Bright Start Tool to get personalized tips, tools and resources to help you reach your financial goals.",
+    "life-link-text" : "Use the Bright Start Tool"
 }
 ```
 
