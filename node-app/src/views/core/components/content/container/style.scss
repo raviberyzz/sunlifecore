@@ -5,6 +5,14 @@ ul {
 .icon-texts {
     padding-bottom: 24px;
 }
+.content-highlight {
+    background-color : $light-grey-20;
+    padding: 24px 16px;
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        font-size: 1.75rem;
+    }
+}
 .yellow-icon-blue-background > * {
     background-color: $medium-blue-color;
     color: $white-shade;
@@ -161,7 +169,7 @@ ul {
         display: table;
         &>*{
             display: table-cell;
-            
+
         }
         .primary-blue-button-form{
             .cmp-form-button{
@@ -169,7 +177,7 @@ ul {
                 min-width: 100%;
             }
         }
-        
+
     }
     form :first-child{
         padding: 0 16px;
@@ -203,6 +211,16 @@ ul {
     .container-component {
         .cmp-container > div {
             display: block !important;
+        }
+    }
+    .content-highlight {
+        text-align: center;
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1.25rem;
+        }
+        .button-class {
+            width: 100%;
+            min-width: 100%;
         }
     }
     .cross-cta-wrapper {
@@ -271,6 +289,11 @@ ul {
 }
 
 @media (max-width:$tab-screen-max) {
+    .content-highlight {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1.5rem;
+        }
+    }
     .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
         margin-top: 32px;
         .cta-content-icon-wrapper {

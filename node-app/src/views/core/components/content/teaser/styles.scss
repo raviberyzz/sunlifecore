@@ -31,6 +31,10 @@
 .left-item {
     float: left;
     margin-right: 32px;
+    display: table;
+}
+.right-item {
+    display: table;
 }
 .mobile-image {
     display: none;
@@ -46,6 +50,9 @@
     }
 }
 .banner-section {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
     .right-image-position, .left-image-position {
         position: relative;
     }
@@ -58,8 +65,10 @@
     }
     .text-section {
         padding: 20px 27px;
+        max-width: 405px;
         p {
             margin: 0;
+            padding-bottom: 10px;
         }
     }
 }
@@ -83,6 +92,8 @@
     .text-section {
         background: $light-grey-20;
         opacity: 90%;
+        margin: 0 27px;
+        max-width: 470px;
     }
 }
 .editorial-hero-banner {
@@ -99,6 +110,7 @@
             margin: 0;
             padding: 30px;
             text-align: center;
+            max-width: 322px;
             p {
                 margin: 0;
             }
@@ -138,10 +150,9 @@
                 margin: 0;
                 padding: 40px 24px;
             }
-            .primary-blue-button, .primary-yellow-button, .secondary-button, .signIn-button, .primary-blue-button-rte, .primary-yellow-button-rte, .secondary-button-rte, .signIn-button-rte  {
-                .button-class {
-                    width: 100%;
-                }
+            .button-class {
+                width: 100%;
+                min-width: 100%;
             }
         }
         .editorial-hero-banner {
