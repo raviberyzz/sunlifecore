@@ -631,6 +631,29 @@
                             </cq:styleGroups>
                         </policy_container>
                     </container>
+					<layout-container jcr:primaryType="nt:unstructured">
+                        <policy_1580457825582
+                            jcr:lastModified="{Date}2020-01-31T13:34:35.983+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Layout Container"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="no-padding"
+                                            cq:styleId="1580457847375"
+                                            cq:styleLabel="No Padding"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_1580457825582>
+                    </layout-container>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
                                 cq:styleDefaultClasses="yellow-horizontal-separator"                                
