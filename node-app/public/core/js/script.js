@@ -5080,6 +5080,7 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
+
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
