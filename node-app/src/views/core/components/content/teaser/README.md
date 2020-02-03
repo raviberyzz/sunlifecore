@@ -14,7 +14,7 @@ JSON Format
     "text-alignment": "middle-aligned-text",
     "image-type": "",
     "img-border": "",
-    "wrapper-class": "banner-section",
+    "wrapper-class": "editorial-hero-banner",
     "banner-text-alignment": "text-right-align",
     "banner-box": "",
     "data-section-banner" : "body search ad"
