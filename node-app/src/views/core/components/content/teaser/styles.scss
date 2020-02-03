@@ -11,6 +11,12 @@
         float: left;
     }
 }
+.yellow-border-bottom {
+    .right-image-position, .left-image-position  {
+        border-bottom: 7px solid $primary-yellow-background;
+    }
+
+}
 .middle-aligned-text {
     .right-image-position, .left-image-position  {
         display: flex;
@@ -214,6 +220,14 @@
         img {
             width: 220px;
             height: 220px;
+        }
+    }
+}
+// IE specific css
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .white-box {
+        .text-section {
+            position: relative;
         }
     }
 }
