@@ -18,7 +18,7 @@
             </div>
         </sly>
         <sly data-sly-test="${layout.type == 'modal-popup'}">
-            <div class="${wcmmode.edit ? '' : 'modal fade popup-modal-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}"> 
+            <div class="${wcmmode.edit ? '' : 'modal fade popup-modal-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}" data-section="${layout.analyticsId ? layout.analyticsId : 'pop-up-modal'}"> 
                 <!-- Modal content-->
                 <div class="${wcmmode.edit ? '' : 'modal-content horizontal-middle-align'}">
                     <div class="modal-header">
