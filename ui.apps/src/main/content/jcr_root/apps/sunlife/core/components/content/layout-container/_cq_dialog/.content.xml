@@ -104,6 +104,13 @@
                                         value="h6"/>
                                 </items>
                             </titleLevel>
+                            <analyticsID
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Please configure the analytics id."
+                                        fieldDescription="Please configure the analytics id."
+                                        fieldLabel="Analytics id"
+                                        name="./analyticsId"/>
                         </items>
                     </column>
                 </items>
