@@ -40,9 +40,9 @@
                     </iconsText>
                 </socialIcons>
             </breadcrumb>
-            <container
+            <layout_container
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="sunlife/ca/components/content/container"/>            
+                sling:resourceType="sunlife/ca/components/content/layout-container"/>            
             <experiencefragment_footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/ca/components/content/experiencefragment"
