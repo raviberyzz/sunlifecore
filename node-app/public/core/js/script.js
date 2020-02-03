@@ -4276,16 +4276,6 @@ function stickyHeader(){
 }
 $(stickyHeader);
 $(window).resize(stickyHeader);
-$(document).ready(function () {
-	$('.site-level-notification .close-div').click(function () {
-		$('.site-level-notification').css('display', 'none');
-	});
-	$('.site-level-notification .close-div').keyup(function (event) {
-		if (event.keyCode == 13) {
-			$('.site-level-notification').css('display', 'none');
-		}
-	});
-});
 $(document).ready(function(){
       var popHeight=$(window).height();
       $(".subscribe-popup-wrapper").height(popHeight);
@@ -4298,6 +4288,16 @@ $(document).ready(function(){
             popUpWidth();
       });
       $("#subscribe").modal({show:true});
+});
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4915,7 +4915,26 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
-
+$(document).ready(function () {
+    $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var words=text.split(" ");
+        var index=text.indexOf(words[2]);
+        text=text.substr(0,index);
+        $(this).text("");
+        var html="<span>"+text+"</span>"+"<br>"+words[2];
+        $(this).append(html);
+    })
+    $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var words=text.split(" ");
+        var index=text.indexOf(words[2]);
+        text=text.substr(0,index);
+        $(this).text("");
+        var html="<span>"+text+"</span>"+"<br>"+words[2];
+        $(this).append(html);
+    })
+})
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
