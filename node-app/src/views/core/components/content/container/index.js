@@ -20,32 +20,30 @@ $(document).ready(function () {
 	});
 
 	//for tool card
-	var link_height=0;
-    var tool_card_link=$('.tool-card-wrapper .cmp-container .aem-Grid--default--3').children().find('.cmp-text');
-    tool_card_link.each(function (index) {
-		if (index%2==0)
-        {
+	var link_height = 0;
+	var tool_card_link = $('.tool-card-wrapper .cmp-container .aem-Grid--default--3').children().find('.cmp-text');
+	tool_card_link.each(function (index) {
+		if (index % 2 == 0) {
 
-            link_height= link_height > $(this).height() ?link_height : $(this).height();
-        }
+			link_height = link_height > $(this).height() ? link_height : $(this).height();
+		}
 
 	});
-    tool_card_link.each(function (index) {
-		if (index%2==0)
-        {
-            $(this).height(link_height);
-        }
+	tool_card_link.each(function (index) {
+		if (index % 2 == 0) {
+			$(this).height(link_height);
+		}
 
 	});
 
-    var taeser_height=0;
-    var tool_card_teaser=$('.tool-card-wrapper .cmp-container .aem-Grid--default--3').find('.teaser');
-    tool_card_teaser.each(function (index) {
-		taeser_height= taeser_height > $(this).height() ?taeser_height : $(this).height();
+	var taeser_height = 0;
+	var tool_card_teaser = $('.tool-card-wrapper .cmp-container .aem-Grid--default--3').find('.teaser');
+	tool_card_teaser.each(function (index) {
+		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
 	});
-    tool_card_teaser.each(function (index) {
-            $(this).height(taeser_height);
-       
+	tool_card_teaser.each(function (index) {
+		$(this).height(taeser_height);
+
 	});
 
 	//for editorial article
@@ -59,11 +57,24 @@ $(document).ready(function () {
 	});
 
 	//for CTA_Height
-	setTimeout( function() {
-		$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
-		 var cta_height=$(this).parents('.layout-container').height();
-		 $(this).children().height(cta_height-80);
-	 });
- 
-	 }, 1000 );
+	var cta_height=0;
+	$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
+	 cta_height=$(this).parents('.layout-container').height();
+	 $(this).children().height(cta_height-80);
+ });
+
+$('.yellow-icon-white-background').each(function(){
+	  cta_height=$(this).parents('.layout-container').height();
+	 $(this).children().height(cta_height-80);
+ });
+
+	 var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
+    cta_icon_text.each(function (index) {
+		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
+	});
+	cta_icon_text.each(function (index) {
+		$(this).height(taeser_height);
+
+	});
+
 });

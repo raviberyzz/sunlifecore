@@ -375,7 +375,84 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile> 
+		
+		<profile>
+		       <id>CI</id>
 
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+      <repositories>
+        <repository>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+          <id>central</id>
+          <name>remote repositories artifactory</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/remote-repos</url>
+        </repository>
+        <repository>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+          <id>jboss-releases-repository</id>
+          <name>remote repositories artifactory</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/remote-repos</url>
+        </repository>
+        <repository>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+          <id>libs-release</id>
+          <name>slfc and third party libraries</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+          <id>ext-release</id>
+          <name>slfc and third party libraries</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/ext-release</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>plugins release artifactory</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/plugins-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+          <id>plugins-snapshot-local</id>
+          <name>slfc and third party snapshot plugins</name>
+          <url>http://artifactory.sunlifecorp.com/artifactory/plugins-snapshot-local</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
         <!-- Development profile: install only the bundle -->
         <profile>
             <id>autoInstallBundle</id>
