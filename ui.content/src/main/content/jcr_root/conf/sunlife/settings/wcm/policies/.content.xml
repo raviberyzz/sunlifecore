@@ -118,6 +118,10 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     entity="&amp;trade;"
                                                     name="trademark"/>
+                                                <item4
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;#160;"
+                                                    name="nbsp"/>    
                                             </chars>
                                         </specialCharsConfig>
                                     </misctools>
@@ -166,21 +170,15 @@
                                             cq:styleLabel="Orange for Right Navigation"
                                             jcr:primaryType="nt:unstructured"/>
 										<item1
-                                            cq:styleClasses="grey-border-box yellow-bullet-list"
+                                            cq:styleClasses="grey-border-box"
                                             cq:styleId="1579251056971"
                                             cq:styleLabel="Grey Border"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="grey-background-box yellow-bullet-list"
+                                            cq:styleClasses="grey-background-box"
                                             cq:styleId="1579251078720"
                                             cq:styleLabel="Grey Background"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item3
-                                            cq:styleClasses="yellow-bullet-list"
-                                            cq:styleId="1579255031660"
-                                            cq:styleLabel="White Background"
-                                            jcr:primaryType="nt:unstructured"/>
-
+                                            jcr:primaryType="nt:unstructured"/>                                        
                                     </cq:styles>
                                 </item0>                                
                                 <item1
@@ -251,7 +249,65 @@
                             </cq:styleGroups>
                             </policy_text>
                         </text>
-                        <image jcr:primaryType="nt:unstructured"/>
+                        <image jcr:primaryType="nt:unstructured">
+                        	<policy_image
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Image"
+	                            sling:resourceType="wcm/core/components/policy/policy"
+	                            allowUpload="true"
+	                            altValueFromDAM="true"
+	                            disableLazyLoading="true"
+	                            displayPopupTitle="true"
+	                            isDecorative="true"
+	                            jpegQuality="{Long}100"
+	                            titleValueFromDAM="true"
+	                            uuidDisabled="true">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <plugins jcr:primaryType="nt:unstructured">
+	                                <crop
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="*">
+	                                    <aspectRatios jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Wide Landscape"
+	                                            ratio="0.6180"/>
+	                                        <item1
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Landscape"
+	                                            ratio="0.8284"/>
+	                                        <item2
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Square"
+	                                            ratio="1"/>
+	                                        <item3
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Portrait"
+	                                            ratio="1.6180"/>
+	                                    </aspectRatios>
+	                                </crop>
+	                                <rotate
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="right"/>
+	                                <flip
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="-"/>
+                            </plugins>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Image Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="text-center"
+                                            cq:styleId="1580717178860"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        	</policy_image>
+                    	</image>
                         <teaser jcr:primaryType="nt:unstructured">
 						<policy_teaser                            
                             jcr:primaryType="nt:unstructured"
@@ -476,6 +532,11 @@
                                             cq:styleId="1580197354212"
                                             cq:styleLabel="Subscribe"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="content-highlight"
+                                            cq:styleId="1580197354792"
+                                            cq:styleLabel="Content Highlight"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -581,17 +642,17 @@
                                         <item0
                                             cq:styleClasses="cmp-dynamic-megamenu-grey"
                                             cq:styleId="1579257415265"
-                                            cq:styleLabel="Megamenu dynamic content"
+                                            cq:styleLabel="Megamenu Dynamic Content"
                                             jcr:primaryType="nt:unstructured"/>
                                          <item1
                                             cq:styleClasses="cmp-dynamic-megamenu-greybackground"
                                             cq:styleId="1579089823754"
-                                            cq:styleLabel="Megamenu grey background"
+                                            cq:styleLabel="Megamenu Grey Background"
                                             jcr:primaryType="nt:unstructured"/>   
                                           <item2
                                             cq:styleClasses="cmp-megamenu-line"
                                             cq:styleId="1579089828456"
-                                            cq:styleLabel="Megamenu vertical seperator"
+                                            cq:styleLabel="Megamenu Vertical Seperator"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
@@ -607,7 +668,7 @@
                                     </cq:styles>
                                 </item8>
                                   <item9
-                                    cq:styleGroupLabel="Mobile app"
+                                    cq:styleGroupLabel="Mobile App"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
@@ -629,26 +690,47 @@
                                     </cq:styles>
                                 </item10>
 								<item11
-                                    cq:styleGroupLabel="Bottom Spacing"
+                                    cq:styleGroupLabel="Top Spacing"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="mb-18"
+                                            cq:styleClasses="mt-18"
                                             cq:styleId="1579257426265"
                                             cq:styleLabel="Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
                                          <item1
-                                            cq:styleClasses="mb-20"
+                                            cq:styleClasses="mt-20"
                                             cq:styleId="1579089824654"
                                             cq:styleLabel="Spacing 20"
                                             jcr:primaryType="nt:unstructured"/>   
                                           <item2
-                                            cq:styleClasses="mb-40"
+                                            cq:styleClasses="mt-40"
                                             cq:styleId="1579089828796"
                                             cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item11>
+								<item12
+                                    cq:styleGroupLabel="Bottom Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1579257421234"
+                                            cq:styleLabel="Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1579089821234"
+                                            cq:styleLabel="Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1579081231234"
+                                            cq:styleLabel="Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item12>
                             </cq:styleGroups>
                         </policy_container>
                     </container>
@@ -675,6 +757,48 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
+								<item1
+                                    cq:styleGroupLabel="Top Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1579367426265"
+                                            cq:styleLabel="Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1579199824654"
+                                            cq:styleLabel="Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1579089938796"
+                                            cq:styleLabel="Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item1>
+								<item2
+                                    cq:styleGroupLabel="Bottom Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1579477426265"
+                                            cq:styleLabel="Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1579089494654"
+                                            cq:styleLabel="Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1579369828796"
+                                            cq:styleLabel="Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item2>
                             </cq:styleGroups>
                         </policy_layoutContainer>
                     </layout-container>
