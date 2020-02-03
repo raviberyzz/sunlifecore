@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 	//for CTA_Height
     var cta_height=0;
-		$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
+		$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background').each(function(){
 		 cta_height=$(this).parents('.layout-container').height();
 		 $(this).children().height(cta_height);
 	 });
@@ -103,6 +103,16 @@ $(document).ready(function () {
 		$(this).height(taeser_height);
 
 	});
+
+	//CTA Padding FIX.
+	if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').hasClass('no-padding'))
+    {
+    }
+    else
+    {
+        $('.yellow-icon-blue-background').parents('.layout-container').children().children().first().css('padding-left','0');
+        $('.yellow-icon-blue-background').parents('.layout-container').children().children().last().css('padding-right','0');
+    }
 
 
 });
