@@ -3,8 +3,11 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -14,7 +17,6 @@ import javax.jcr.RepositoryException;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
@@ -92,18 +94,6 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	@Via("resource")
 	private String pageDescription;
 
-	/** The page category. */
-	@Inject
-	@Via("resource")
-	@Default(values = "")
-	private String pageCategory;
-
-	/** The page sub category. */
-	@Inject
-	@Via("resource")
-	@Default(values = "")
-	private String pageSubCategory;
-
 	/** The page title - refers to more title in page properties */
 	@Inject
 	@Via("resource")
@@ -159,6 +149,21 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	@OSGiService
 	private Externalizer externalizer;
 	
+	/** The analytics scriptlet. */
+	private String analyticsScriptlet;
+	
+	/** The analytics script. */
+	private String analyticsScriptPath;
+	
+	/** Bread crumb - UDO */
+	private String breadCrumb;
+	
+	/** The page category. - UDO */
+	private String pageCategory;
+
+	/** The page sub category. - UDO */
+	private String pageSubCategory;
+	
 	/**
 	 * @return the seoPageTitle
 	 */
@@ -173,9 +178,6 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	public void setSeoPageTitle(String seoPageTitle) {
 		this.seoPageTitle = seoPageTitle;
 	}
-
-	/** The analytics script. */
-	private String analyticsScriptPath;
 
 	/**
 	 * Gets the page category.
@@ -245,9 +247,6 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		this.analyticsScriptlet = analyticsScriptlet;
 	}
 
-	/** The analytics scriptlet. */
-	private String analyticsScriptlet;
-
 	/**
 	 * @return the customMetadata
 	 */
@@ -313,6 +312,20 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	}
 
 	/**
+	 * @return the breadCrumb
+	 */
+	public String getBreadCrumb() {
+		return breadCrumb;
+	}
+
+	/**
+	 * @param breadCrumb the breadCrumb to set
+	 */
+	public void setBreadCrumb(String breadCrumb) {
+		this.breadCrumb = breadCrumb;
+	}
+
+	/**
 	 * Inits the model.
 	 *
 	 * @throws LoginException
@@ -364,6 +377,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 		// Sets alternate URLs
 		setAtlLanguages(altLanguages, pageLocale, pagePath, domain);
+		setUDOParameters();
 		LOGGER.debug("Map Display {}", altLanguageLinks);
 	}
 
@@ -416,4 +430,57 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 		LOGGER.debug("Map {}", altLanguageLinks);
 	}
+	
+	/**
+	 * Sets UDO tags
+	 * @throws LoginException
+	 * @throws RepositoryException
+	 */
+	public void setUDOParameters() throws LoginException, RepositoryException {
+		String pagePath = currentPage.getPath();
+		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
+		int currentLevel = currentPage.getDepth();
+		List<String> navList = new ArrayList<>();
+		while (startLevel < currentLevel) {
+			Page page = currentPage.getAbsoluteParent(startLevel);
+			if (page != null) {
+				boolean isActivePage = page.equals(currentPage);
+				navList.add(getBreadcrumbTitle(page));
+				if (isActivePage)
+					break;
+				startLevel++;
+			}
+		}
+
+		if (!navList.isEmpty()) {
+			if (navList.size() > 1) {
+				pageCategory = navList.get(1);
+			}
+			if (navList.size() > 2) {
+				pageSubCategory = navList.get(2);
+			}
+			breadCrumb = "/" + navList.stream().collect(Collectors.joining("/"));
+		}
+	}
+	
+	
+	/**
+	 * Forms title to be displayed in bread crumb
+	 * @param page
+	 * @return
+	 */
+	public String getBreadcrumbTitle(Page page) {
+        String titleStr = page.getNavigationTitle();
+        if (titleStr == null) {
+            titleStr = page.getPageTitle();
+        }
+        if (titleStr == null) {
+            titleStr = page.getTitle();
+        }
+        if (titleStr == null) {
+            titleStr = page.getName();
+        }
+        return titleStr;
+    }
 }
