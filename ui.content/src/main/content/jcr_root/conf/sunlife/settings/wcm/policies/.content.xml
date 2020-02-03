@@ -118,6 +118,10 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     entity="&amp;trade;"
                                                     name="trademark"/>
+                                                <item4
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;#160;"
+                                                    name="nbsp"/>    
                                             </chars>
                                         </specialCharsConfig>
                                     </misctools>
