@@ -249,7 +249,65 @@
                             </cq:styleGroups>
                             </policy_text>
                         </text>
-                        <image jcr:primaryType="nt:unstructured"/>
+                        <image jcr:primaryType="nt:unstructured">
+                        	<policy_image
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Image"
+	                            sling:resourceType="wcm/core/components/policy/policy"
+	                            allowUpload="true"
+	                            altValueFromDAM="true"
+	                            disableLazyLoading="true"
+	                            displayPopupTitle="true"
+	                            isDecorative="true"
+	                            jpegQuality="{Long}100"
+	                            titleValueFromDAM="true"
+	                            uuidDisabled="true">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <plugins jcr:primaryType="nt:unstructured">
+	                                <crop
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="*">
+	                                    <aspectRatios jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Wide Landscape"
+	                                            ratio="0.6180"/>
+	                                        <item1
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Landscape"
+	                                            ratio="0.8284"/>
+	                                        <item2
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Square"
+	                                            ratio="1"/>
+	                                        <item3
+	                                            jcr:primaryType="nt:unstructured"
+	                                            name="Portrait"
+	                                            ratio="1.6180"/>
+	                                    </aspectRatios>
+	                                </crop>
+	                                <rotate
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="right"/>
+	                                <flip
+	                                    jcr:primaryType="nt:unstructured"
+	                                    features="-"/>
+                            </plugins>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Image Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="text-center"
+                                            cq:styleId="1580717178860"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        	</policy_image>
+                    	</image>
                         <teaser jcr:primaryType="nt:unstructured">
 						<policy_teaser                            
                             jcr:primaryType="nt:unstructured"
