@@ -27,6 +27,16 @@ public class FormButtonModel extends ButtonImpl {
 	private String dataTitle;
 	
 	/**
+	 * Gets the modified title.
+	 *
+	 * @return the Title
+	 */
+	@Override
+    public String getTitle() {
+        return title;
+    }
+	
+	/**
 	 * Gets the data title.
 	 *
 	 * @return the dataTitle
