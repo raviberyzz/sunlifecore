@@ -19,12 +19,14 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.core.components.internal.models.v1.SocialMediaHelperImpl;
+import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
@@ -138,7 +140,12 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 	/** The seo description. */
 	private String seoDescription;
-
+	
+	/** The social media image. */
+	@Inject
+	@Via("resource")
+	private String socialMediaImage;
+	
 	/** The config service. */
 	@Inject
 	private SiteConfigService configService;
@@ -149,6 +156,9 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	/** The alt language links. */
 	private Map<String, String> altLanguageLinks;
 
+	@OSGiService
+	private Externalizer externalizer;
+	
 	/**
 	 * @return the seoPageTitle
 	 */
@@ -328,8 +338,11 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		//Social media description
 		socialMediaDescription = null == socialMediaDescription ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescription;
 		
+		//Social media image
+		socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
+		
 		// SEO canonical URL - <link rel="canonical"> tag
-		seoCanonicalUrl = null == canonicalUrl ? getURL(domain) : canonicalUrl;
+		seoCanonicalUrl = null == canonicalUrl ? getURL() : canonicalUrl;
 
 		setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
 		setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
@@ -344,7 +357,8 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(OG_LOCALE, locale);
-			customMetadata.put(TWITTER_IMAGE, customMetadata.get(OG_IMAGE));
+			customMetadata.put(OG_IMAGE, socialMediaImage);
+			customMetadata.put(TWITTER_IMAGE, socialMediaImage);
 		}
 		LOGGER.debug("metadata {}", customMetadata);
 
@@ -360,9 +374,9 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	 *            the domain
 	 * @return the url
 	 */
-	private String getURL(final String domain) {
+	private String getURL() {
 		LOGGER.info("request --> {} , {}", request.getRequestURI(), request.getRequestURL());
-		return domain + request.getRequestURI();
+		return externalizer.publishLink(resolver, request.getRequestURI());
 	}
 
 	/**
@@ -391,13 +405,13 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			final String newUrl = pagePath.replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
 			LOGGER.debug("New -- > {} {} ", langArray[0], newUrl);
 			if (null != resolver.getResource(newUrl)) {
-				final String value = getURL(domain).replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
+				final String value = getURL().replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
 				LOGGER.debug("value {}", value);
 				altLanguageLinks.put(lan, value);
 			}
 		}
 		if (!altLanguageLinks.isEmpty()) {
-			altLanguageLinks.put(pageLocale, getURL(domain));
+			altLanguageLinks.put(pageLocale, getURL());
 		}
 
 		LOGGER.debug("Map {}", altLanguageLinks);
