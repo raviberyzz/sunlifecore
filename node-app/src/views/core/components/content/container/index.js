@@ -82,7 +82,7 @@ $(document).ready(function () {
     var cta_height=0;
 		$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
 		 cta_height=$(this).parents('.layout-container').height();
-		 $(this).children().height(cta_height-80);
+		 $(this).children().height(cta_height);
 	 });
 	var counter = 0;
     $('.yellow-icon-white-background').each(function(){
