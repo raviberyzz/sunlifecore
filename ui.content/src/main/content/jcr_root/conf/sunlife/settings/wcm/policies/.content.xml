@@ -170,21 +170,15 @@
                                             cq:styleLabel="Orange for Right Navigation"
                                             jcr:primaryType="nt:unstructured"/>
 										<item1
-                                            cq:styleClasses="grey-border-box yellow-bullet-list"
+                                            cq:styleClasses="grey-border-box"
                                             cq:styleId="1579251056971"
                                             cq:styleLabel="Grey Border"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="grey-background-box yellow-bullet-list"
+                                            cq:styleClasses="grey-background-box"
                                             cq:styleId="1579251078720"
                                             cq:styleLabel="Grey Background"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item3
-                                            cq:styleClasses="yellow-bullet-list"
-                                            cq:styleId="1579255031660"
-                                            cq:styleLabel="White Background"
-                                            jcr:primaryType="nt:unstructured"/>
-
+                                            jcr:primaryType="nt:unstructured"/>                                        
                                     </cq:styles>
                                 </item0>                                
                                 <item1
