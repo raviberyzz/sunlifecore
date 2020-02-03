@@ -87,13 +87,19 @@
         .cmp-form-options--drop-down::before{
             z-index: 1;
         }
-        .button-wrapper{
-            margin: 0;
-            transform: translateY(10px);
-            .cmp-form-button{
-                width: 53.44px;
-                min-width: 0;
-            }
+    }
+    .button-wrapper{
+        margin: 0;
+        transform: translateY(10px);
+        .cmp-form-button{
+            width: 53.44px;
+            min-width: 0;
+        }
+    }
+    .layout-container{
+        .col-xs-10, .col-xs-2{
+            padding-left: 0;
+            padding-right: 0;
         }
     }
 }
