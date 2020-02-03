@@ -1,9 +1,9 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
     float: left;
-    .col-xs-12:first-child{
-        padding: 30px 20px 0 20px;
-    }
+    // .col-xs-12:first-child{
+    //     padding: 30px 20px 0 20px;
+    // }
     .cmp-container{
     margin: 40px 0;
     text-align: center;
@@ -61,6 +61,11 @@
             max-width: 100% ;
             width: 100%;
             margin: 0 0 16px 0;
+        }
+    }
+    .cmp-form-text{
+        input{
+            width: 100%;
         }
     }
     .input-wrapper,.cmp-form-text{

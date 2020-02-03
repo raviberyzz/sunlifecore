@@ -156,6 +156,10 @@
                                                                     jcr:primaryType="nt:unstructured"
                                                                     items="paraformat:getFormats:paraformat-pulldown"
                                                                     ref="paraformat"/>
+                                                                <styles
+																    jcr:primaryType="nt:unstructured"
+																    items="styles:getStyles:styles-pulldown"
+																    ref="styles"/>
                                                             </popovers>
                                                         </dialogFullScreen>
                                                         <tableEditOptions
