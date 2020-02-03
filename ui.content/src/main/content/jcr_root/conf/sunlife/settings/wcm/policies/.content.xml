@@ -329,6 +329,11 @@
                                             cq:styleId="1577980601626"
                                             cq:styleLabel="Banner"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="banner-section clearfix yellow-border-bottom"
+                                            cq:styleId="1577980601627"
+                                            cq:styleLabel="Banner with Yellow Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
