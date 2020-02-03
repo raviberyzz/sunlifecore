@@ -74,11 +74,6 @@ body {
     font-size: 16px;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
 
 /* Heading */
 
@@ -282,6 +277,26 @@ footer {
             width: 2rem;
             padding-left: 16px;
             margin-left: -2em;
+        }
+    }
+}
+.cmp-text{
+@extend .yellow-bullet-list;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.social-link-icon-wrapper,.right-nav-icon-wrapper,.cta-content-icon-wrapper,.mega-menu-icon-wrapper,.getting-started-icon-wrapper,.banner-section,.editorial-hero-banner,footer,.footer-copyright-wrapper,.right-navigation-wrapper,.demo-class,.form-group-wrapper{
+    .cmp-text{
+        ul{
+            list-style: none;
+            padding: 0;
+            li::before {
+                content: "";
+                padding:0;
+                margin:0;
+            }
         }
     }
 }
