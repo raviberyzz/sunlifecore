@@ -38,7 +38,6 @@ ul {
     }
 }
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-    margin-top: 42px;
         .icon-style {
             position: relative;
             bottom: 56px;
@@ -197,8 +196,9 @@ ul {
         }
         .icon-texts {
             padding-bottom: 0;
+            padding-top: 0;
             display: table;
-            .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 font-size:1.125rem;
                 line-height:23px ;
                 padding-top:0;
@@ -228,6 +228,9 @@ ul {
         .cmp-text{
             margin-left: 76px;
         }
+    }
+    .form-container-component {
+        padding: 16px 0;
     }
 }
 .tool-card-wrapper{
