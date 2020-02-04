@@ -4276,6 +4276,16 @@ function stickyHeader(){
 }
 $(stickyHeader);
 $(window).resize(stickyHeader);
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
+});
 $(document).ready(function(){
       var popHeight=$(window).height();
       $(".subscribe-popup-wrapper").height(popHeight);
@@ -4288,16 +4298,6 @@ $(document).ready(function(){
             popUpWidth();
       });
       $("#subscribe").modal({show:true});
-});
-$(document).ready(function () {
-	$('.site-level-notification .close-div').click(function () {
-		$('.site-level-notification').css('display', 'none');
-	});
-	$('.site-level-notification .close-div').keyup(function (event) {
-		if (event.keyCode == 13) {
-			$('.site-level-notification').css('display', 'none');
-		}
-	});
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4327,6 +4327,11 @@ $(document).ready(function () {
     } 
 });     
 
+$(document).ready(function () {
+    if($('.search-container .search-bottom')){
+        $('.search-container .search-bottom .close-div').remove();
+    }
+});
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -5099,7 +5104,8 @@ $(document).ready(function(){
 /* for height fixing of multiple links */
 if('.breadcrumb'){
     $('.breadcrumb .social-link-icon-wrapper').addClass('vertical-middle-align');
-    $('.breadcrumb .side-text').addClass('vertical-middle-align');
+    $('.breadcrumb .right-area .side-text').addClass('vertical-middle-align');
+    $('.breadcrumb .right-area .social-link-icon-wrapper .side-text').removeClass('vertical-middle-align');
     var liArray=$('.breadcrumb .left-area ol').children('li');
     if(($('.breadcrumb .left-area ol').children('li')) && ($('.breadcrumb .left-area ol').children('li').length>5)){
         var nextPosition=liArray[4];
