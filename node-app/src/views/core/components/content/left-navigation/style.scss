@@ -4,10 +4,10 @@
     width: 266px;
     .cmp-navigation__group{
         .cmp-navigation__item--level-0{
+            padding-left: 8px;
             .cmp-navigation__item-link{
                 color: $dark-grey-color;
                 font-size: 1rem;
-                padding-left: 8px;
                 line-height: 26px;
             }
             .cmp-navigation__group{
@@ -20,7 +20,7 @@
                     }
                 }
                 .cmp-navigation__item--level-1{
-                    padding: 0 0 8px 16px;
+                    padding: 0 0 8px 8px;
                     .cmp-navigation__group{
                         margin-top: 0;
                         .cmp-navigation__item--level-2{
