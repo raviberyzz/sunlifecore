@@ -32,3 +32,5 @@ JSON Format
 <!-- /static/ca/About%20us/Donations%20and%20sponsorships/my_caring_company_thb_u_220x220.png -->
 <!-- /static/ca/About%20us/Donations%20and%20sponsorships/Sponsorships/toronto_raptors_logo_thb_u_sponsorships_220x220.png -->
 <!-- /static/ca/About%20us/Newsroom/istock_55332366_thb_u_newsroom_220x220.jpg -->
+
+<!-- if border-bottom is required below banner, add 'yellow-border-bottom' in wrapper-class -->
