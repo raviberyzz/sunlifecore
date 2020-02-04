@@ -68,14 +68,9 @@
                                         fieldLabel="Page Locale"
                                         name="./pageLocale"/>
 				    <image
-                                        
-					jcr:primaryType="nt:unstructured" 
-
-					fieldDescription="Image"
- 
-                                        fieldLabel="Image"
- 
-					name="./socialMediaImage"/>
+ jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldDescription="Image"
+ fieldLabel="Image"
+ name="./socialMediaImage"/>
 
                                 </items>
                             </section-page>
