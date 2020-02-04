@@ -4328,6 +4328,87 @@ $(document).ready(function () {
 });     
 
 
+$(document).ready(function(){
+    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
+    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded','true');
+    $('.desktop-region-language-menu-wrapper .content-region .accordion-heading').click(function(){
+        if($(this).attr('aria-expanded') == 'false'){
+            $(this).attr('aria-expanded','true');
+            $(this).siblings().addClass('in');
+        }
+        else{
+            $(this).attr('aria-expanded','false');
+            $(this).siblings().removeClass('in');
+        }
+    });
+    // $('.tab-content .accordion-heading').click(function(){
+    //     if($(this).attr('aria-expanded') == 'false'){
+    //         $(this).attr('aria-expanded','true');
+    //         $(this).siblings().addClass('in');
+    //     }
+    //     else{
+    //         $(this).attr('aria-expanded','false');
+    //         $(this).siblings().removeClass('in');
+    //     }
+    // });
+
+    $('.desktop-region-language-menu-wrapper .slf-tab-region .slf-tab').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.region-present').siblings().css("display", "none");
+    $('.language-present').siblings().css("display", "none");
+    $(".mobile-header .first").click(function(){
+        $('.mobile-header .first').addClass('active');
+        $('.mobile-header .second').removeClass('active');
+        $('.mobile-header .region-tab').css({'display':'block'});
+        $('.mobile-header .language-tab').css({'display':'none'});
+    });
+    $(".mobile-header .second").click(function(){
+        $('.mobile-header .first').removeClass('active');
+        $('.mobile-header .second').addClass('active');
+        $('.mobile-header .region-tab').css({'display':'none'});
+        $('.mobile-header .language-tab').css({'display':'block'});
+    });
+
+    
+  /*link farm table code starts here */
+  var linkFarm = $(".cmp-linkfarm-table");
+  if(linkFarm.length){
+      /*desktop logic start*/
+      $(".cmp-linkfarm-table desktop-linkfarm-table .collapse").removeClass('.desktop-region-language-menu-wrapper');
+      $('.list-unstyled').addClass('in');
+      $('.slf-language').remove();
+      $('.cross-btn').remove();
+      $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
+      /*desktop logic end */
+        $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-region-language-menu-wrapper");
+        $('.go-back').remove();
+        $('.slf-tab-region').remove();
+        $('.tab-content .tab-pane').addClass('active');
+   $(".region-link").addClass("slf-accordion-arrow");
+   $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
+       if($(this).attr('aria-expanded') == 'false'){
+           $(this).attr('aria-expanded','true');
+           $(this).siblings().toggle('fast');
+       }
+       else{
+           $(this).attr('aria-expanded','false');
+           $(this).siblings().toggle('fast');
+       }
+       $(this).closest('li').siblings().find(".collapse").css("display", "none");
+       $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
+        $(this).siblings().find('.collapse').css("display","block");
+			if($(this).closest(".region-link").find(".collapse").length === 1){
+                var offset = $(this).offset();
+				$("html, body").animate({
+					scrollTop :offset.top
+				});
+			}
+   });
+
+  }
+   /*link farm table code ends here */
+});
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
@@ -4595,87 +4676,6 @@ $(document).ready(function () {
  });
  
 $(document).ready(function(){
-    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
-    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded','true');
-    $('.desktop-region-language-menu-wrapper .content-region .accordion-heading').click(function(){
-        if($(this).attr('aria-expanded') == 'false'){
-            $(this).attr('aria-expanded','true');
-            $(this).siblings().addClass('in');
-        }
-        else{
-            $(this).attr('aria-expanded','false');
-            $(this).siblings().removeClass('in');
-        }
-    });
-    // $('.tab-content .accordion-heading').click(function(){
-    //     if($(this).attr('aria-expanded') == 'false'){
-    //         $(this).attr('aria-expanded','true');
-    //         $(this).siblings().addClass('in');
-    //     }
-    //     else{
-    //         $(this).attr('aria-expanded','false');
-    //         $(this).siblings().removeClass('in');
-    //     }
-    // });
-
-    $('.desktop-region-language-menu-wrapper .slf-tab-region .slf-tab').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    $('.region-present').siblings().css("display", "none");
-    $('.language-present').siblings().css("display", "none");
-    $(".mobile-header .first").click(function(){
-        $('.mobile-header .first').addClass('active');
-        $('.mobile-header .second').removeClass('active');
-        $('.mobile-header .region-tab').css({'display':'block'});
-        $('.mobile-header .language-tab').css({'display':'none'});
-    });
-    $(".mobile-header .second").click(function(){
-        $('.mobile-header .first').removeClass('active');
-        $('.mobile-header .second').addClass('active');
-        $('.mobile-header .region-tab').css({'display':'none'});
-        $('.mobile-header .language-tab').css({'display':'block'});
-    });
-
-    
-  /*link farm table code starts here */
-  var linkFarm = $(".cmp-linkfarm-table");
-  if(linkFarm.length){
-      /*desktop logic start*/
-      $(".cmp-linkfarm-table desktop-linkfarm-table .collapse").removeClass('.desktop-region-language-menu-wrapper');
-      $('.list-unstyled').addClass('in');
-      $('.slf-language').remove();
-      $('.cross-btn').remove();
-      $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
-      /*desktop logic end */
-        $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-region-language-menu-wrapper");
-        $('.go-back').remove();
-        $('.slf-tab-region').remove();
-        $('.tab-content .tab-pane').addClass('active');
-   $(".region-link").addClass("slf-accordion-arrow");
-   $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
-       if($(this).attr('aria-expanded') == 'false'){
-           $(this).attr('aria-expanded','true');
-           $(this).siblings().toggle('fast');
-       }
-       else{
-           $(this).attr('aria-expanded','false');
-           $(this).siblings().toggle('fast');
-       }
-       $(this).closest('li').siblings().find(".collapse").css("display", "none");
-       $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
-        $(this).siblings().find('.collapse').css("display","block");
-			if($(this).closest(".region-link").find(".collapse").length === 1){
-                var offset = $(this).offset();
-				$("html, body").animate({
-					scrollTop :offset.top
-				});
-			}
-   });
-
-  }
-   /*link farm table code ends here */
-});
-$(document).ready(function(){
     popUpWidth();   
     function popUpWidth(){
         var popWidth=$(window).width();
@@ -4809,21 +4809,6 @@ $(document).ready(function () {
         }
     });  
 });   
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4878,6 +4863,21 @@ $(document).ready(function(){
    $('.cmp-dynamic-megamenu-grey').height(menuHeight);
     }
  );
+});
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
 });
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
@@ -5166,7 +5166,25 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
-
+$(document).ready(function(){
+    PDRTJS_settings_7600084 = {
+        "id" : "7600084",
+        "unique_id" : "8d314f8aaab44610VgnVCM1000001794d09fRCRD",
+        "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
+        "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
+        };
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
