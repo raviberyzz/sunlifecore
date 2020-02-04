@@ -60,4 +60,7 @@ public interface LayoutContainerModal {
 	 */
     @Inject @Optional
 	String getModalTitleLevel();
+    
+    @Inject @Optional
+   	String getAnalyticsId();
 }

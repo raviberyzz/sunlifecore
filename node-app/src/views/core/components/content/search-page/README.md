@@ -1,10 +1,8 @@
-#Search Bar
-#Displays Text
+#Search Result Page
+#Displays Search Result
 JSON Format
 ```
 {
-    "data-section-search" : "header-search",
-    "data-title-button" : "desktop-search-button",
     "form-text-id":"q-top",
     "form-text-class":"",
     "form-text-label":"",
@@ -17,6 +15,6 @@ JSON Format
     "form-button-type":"submit",
     "button-value":"Search",
     "form-button-class":"primary-blue-button-form",
-    "action":"https://www.sunlife.ca/ca/Search+results"
+    "action":"/views/core/components/content/search-page.html"
 }
 ```
