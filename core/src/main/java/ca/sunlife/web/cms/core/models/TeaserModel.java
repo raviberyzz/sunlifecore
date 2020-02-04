@@ -76,4 +76,11 @@ public interface TeaserModel {
 	@Inject
 	String getAnalyticsId();
 
+	/**
+	 * Gets the decorative image.
+	 *
+	 * @return the decorative image
+	 */
+	@Inject
+	String getIsDecorative();
 }

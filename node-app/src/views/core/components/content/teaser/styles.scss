@@ -1,7 +1,7 @@
 @import '../../../base/core';
 
 .show-only-in-editorial {
-    display: none;
+    display: none !important;
 }
 .side-image {
     width: 100%;
@@ -74,12 +74,10 @@
         float: none;
         margin-right: 0;
     }
-    .right-item {
-        position: absolute;
-    }
     .text-section {
         padding: 20px 27px;
         width: 405px;
+        position: absolute;
         p {
             margin: 0;
             padding-bottom: 10px;
@@ -207,10 +205,10 @@
             }
             .right-image-position {
                 .hide-in-editorial {
-                    display: none;
+                    display: none !important;
                 }
                 .show-only-in-editorial {
-                    display: inherit;
+                    display: inherit !important;
                 }
             }
         }

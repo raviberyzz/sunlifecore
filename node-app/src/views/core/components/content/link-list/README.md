@@ -13,7 +13,7 @@ JSON Format
         "link" : "/views/core/components/content/link-list.html",
         "text" : "Submit or track a claim"
     },{
-        "link" : "/ca/Support/Find+a+form?vgnLocale=en_CA",
+        "link" : "/views/core/components/content/link-list.html/abcd",
         "text" : "Find a form"
     },{
         "link" : "/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
