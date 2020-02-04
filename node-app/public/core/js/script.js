@@ -5018,6 +5018,12 @@ $(document).ready(function () {
     $('.desktop-region-language-menu-wrapper .sunLanguageCrossBtn').click(function(){
         $('#language-btn').removeClass('lang-true');
     });
+
+      // open the full header menu on focus for screen readers. 
+      $('.nav-active').on("focus", function(){
+        $('.dropdown').removeClass("open");
+        $(this).parent().addClass("open");
+    })
 });
 
 $(document).ready(function () {
@@ -5080,17 +5086,44 @@ $(document).ready(function () {
 
 	//for CTA_Height
 	var cta_height=0;
-	$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
-	 cta_height=$(this).parents('.layout-container').height();
-	 $(this).children().height(cta_height-80);
- });
+// 	$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
+// 	 cta_height=$(this).parents('.layout-container').height();
+// 	 $(this).children().height(cta_height-80);
+//  });
 
-$('.yellow-icon-white-background').each(function(){
-	  cta_height=$(this).parents('.layout-container').height();
-	 $(this).children().height(cta_height-80);
- });
+// $('.yellow-icon-white-background').each(function(){
+// 	  cta_height=$(this).parents('.layout-container').height();
+// 	 $(this).children().height(cta_height-80);
+//  });
 
-	 var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
+// 	 var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
+//     cta_icon_text.each(function (index) {
+// 		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
+// 	});
+// 	cta_icon_text.each(function (index) {
+// 		$(this).height(taeser_height);
+
+// 	});
+
+
+	//for CTA_Height
+    var cta_height=0;
+		$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background').each(function(){
+		 cta_height=$(this).parents('.layout-container').height();
+		 $(this).children().height(cta_height);
+	 });
+	var counter = 0;
+    $('.yellow-icon-white-background').each(function(){
+        if (counter === 0) {
+			cta_height=$(this).parents('.layout-container').height() ;
+        } else {
+			cta_height=$(this).parents('.layout-container').height() - 2;
+        }
+        $(this).children().height(cta_height);
+        counter ++;
+	 });
+
+    var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
     cta_icon_text.each(function (index) {
 		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
 	});
@@ -5098,6 +5131,17 @@ $('.yellow-icon-white-background').each(function(){
 		$(this).height(taeser_height);
 
 	});
+
+	//CTA Padding FIX.
+	if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').hasClass('no-padding'))
+    {
+    }
+    else
+    {
+        $('.yellow-icon-blue-background').parents('.layout-container').children().children().first().css('padding-left','0');
+        $('.yellow-icon-blue-background').parents('.layout-container').children().children().last().css('padding-right','0');
+    }
+
 
 });
 
@@ -5122,6 +5166,7 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
+
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
