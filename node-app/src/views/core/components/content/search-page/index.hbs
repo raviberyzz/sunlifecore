@@ -1,0 +1,253 @@
+<div class="search-container">
+    <script id="search-result-item" type="text/html">
+    <div class="bottom-buffer search-result-item">
+        <a href="#"><span class="fa fa-file-pdf-o">&nbsp;</span><span class="txt">&nbsp;</span></a>
+        <p>&nbsp;</p>
+        <a aria-hidden="true" class="search-result-display-url">&nbsp;</a>
+    </div>
+    </script>
+    <script id="search-result-filter-item" type="text/html">
+    <div class="check-container">
+        <a href="javascript:void(0);">
+            <span class="txt">&nbsp;</span>&nbsp;(<span class="num">&nbsp;</span>)
+            <span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>
+        </a>
+    </div>
+    </script>
+    <script id="search-result-pagination-first" type="text/html">
+    <li class="link-to-first active pagination-item">
+        <a href="javascript:void(0);" aria-label="First Page">
+            <span class="fa fa-angle-double-left" aria-hidden="true">&nbsp;</span>
+            <span class="sr-only">Page </span><span class="txt">&nbsp;</span><span class="sr-only active-text"> (active)</span>
+        </a>
+    </li>
+    </script>
+    <script id="search-result-pagination-item" type="text/html">
+    <li class="pagination-item">
+        <a href="javascript:void(0);">
+            <span class="sr-only">Page </span><span class="txt">&nbsp;</span><span class="sr-only active-text"> (active)</span>
+        </a>
+    </li>
+    </script>
+    <div class="search-bottom">
+        {{>core-components-content-search-bar}}
+    </div>
+    <div class="yellow-bg" id="search-result-none" style="display: none;">
+        <p class="bolded-error">No results found</p>
+    </div>
+    <div class="yellow-bg" id="search-result-error" style="display: none;">
+        <p class="bolded-error">There was an error while fetching search results.</p>
+    </div>
+    <div id="search-result-results" style="">
+        <div id="search-result-filters">
+            <h4 class="sr-only-xs">Filter your results:</h4>
+
+            <div class="relative">
+                <div class="visible-xs"><button class="btn btn-yellow search-filter-btn">Filter your results</button>
+                </div>
+
+                <div id="search-result-filter-toggle">
+                    <h4 class="visible-xs"><a data-refocus="#search-result-filter-toggle a:not([data-refocus]):last"
+                            href="javascript:void(0)" class="sr-only">&nbsp;</a> <i class="fa fa-list-alt"
+                            aria-hidden="true">&nbsp;</i>Filter <button class="btn-close" aria-label="Close"><i
+                                class="fa fa-times" aria-hidden="true">&nbsp;</i></button></h4>
+
+                    <div id="search-result-filter-list" class="search-result-filter-list">
+                        <div class="check-container">
+                            <a href="?q=aside&amp;filter=all&amp;action=filter&amp;vgnLocale=en_CA" class="active">
+                                <span class="txt">All</span>&nbsp;(<span class="num">54</span>)
+                                <span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span
+                                    class="sr-only active-text"> (active)</span>
+                            </a>
+                        </div>
+                        <div class="check-container">
+                            <a href="?q=aside&amp;filter=articles&amp;action=filter&amp;vgnLocale=en_CA">
+                                <span class="txt">Articles</span>&nbsp;(<span class="num">36</span>)
+                                <span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span
+                                    class="sr-only active-text"> (active)</span>
+                            </a>
+                        </div>
+                        <div class="check-container">
+                            <a href="?q=aside&amp;filter=tools&amp;action=filter&amp;vgnLocale=en_CA">
+                                <span class="txt">Tools</span>&nbsp;(<span class="num">2</span>)
+                                <span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span
+                                    class="sr-only active-text"> (active)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a data-refocus="#search-result-filter-toggle .btn-close" href="javascript:void(0)"
+                        class="sr-only visible-xs">&nbsp;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-buffer-small txt-larger">
+            <p><span id="search-result-num-results">54</span> <span id="search-result-num-plural">Results</span><span
+                    id="search-result-num-single" style="display: none;">Result</span></p>
+        </div>
+
+        <div class="top-buffer-small txt-larger" id="search-result-misspelling">
+            <p>Showing results for <span id="search-result-misspelling-term">aside</span></p>
+        </div>
+
+        <div class="clearfix" id="search-result-banner-top" data-section="body search ad" style="display: none;">&nbsp;
+        </div>
+
+        <div id="search-result-items">
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+smart+ways+to+save+for+your+childs+education?vgnLocale=en_CA"><span
+                        class="txt">5 smart ways to save for your childs education | Sun Life</span></a>
+                <p>Sarah Deveau, author of Money Smart Mom: Financially Fit Parenting, provides smart ideas for putting
+                    money aside for your child’s education.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+smart+ways+to+save+for+your+childs+education?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+smart+ways+to+save+for+your+childs+education?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Five+smart+ways+to+save+for+your+childs+education</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+save+money+when+eating+out?vgnLocale=en_CA"><span
+                        class="txt">How to save money when eating out | Sun Life</span></a>
+                <p>Is restaurant food throwing your budget out of whack? Here’s what you can do to cut the cost of your
+                    meals – aside from making them yourself.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+save+money+when+eating+out?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+save+money+when+eating+out?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../How+to+save+money+when+eating+out</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Tools+and+Calculators/Financial+check+up?vgnLocale=en_CA"><span
+                        class="txt">Financial Check-up | Sun Life</span></a>
+                <p>Take our 5-minute financial check-up to help you quickly assess how your financial habits are
+                    affecting your financial health.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Tools+and+Calculators/Financial+check+up?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Tools+and+Calculators/Financial+check+up?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Financial+check+up</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Saving+for+retirement/Pay+off+debt+or+save+for+retirement+Here+is+how+to+prepare+financially+for+the+future?vgnLocale=en_CA"><span
+                        class="txt">Pay Off Debt or Save for Retirement? Here’s How to Prepare Financially for
+                        ...</span></a>
+                <p>Balancing debt and saving can feel challenging, but it’s not impossible. Here’s how you can make it
+                    happen.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Saving+for+retirement/Pay+off+debt+or+save+for+retirement+Here+is+how+to+prepare+financially+for+the+future?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Saving+for+retirement/Pay+off+debt+or+save+for+retirement+Here+is+how+to+prepare+financially+for+the+future?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Pay+off+debt+or+save+for+retirement+Here+is+how+to+prepare+financially+for+the+future</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Understanding+health+insurance/Who+pays+for+home+health+care?vgnLocale=en_CA"><span
+                        class="txt">Who pays for home health care? | Sun Life</span></a>
+                <p>Cash-strapped governments are shifting health care delivery into the home. But if you need more than
+                    the government provides, how will you pay for it?</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Understanding+health+insurance/Who+pays+for+home+health+care?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Understanding+health+insurance/Who+pays+for+home+health+care?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Who+pays+for+home+health+care</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Fitness+and+family+health/How+to+stay+active+when+you+are+working+from+home?vgnLocale=en_CA"><span
+                        class="txt">How to stay active when you’re working from home | Sun Life</span></a>
+                <p>Experts say working from home means working more productively. But how do you make sure you get
+                    enough exercise when you don’t leave the house?</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Fitness+and+family+health/How+to+stay+active+when+you+are+working+from+home?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Fitness+and+family+health/How+to+stay+active+when+you+are+working+from+home?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../How+to+stay+active+when+you+are+working+from+home</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/6+financial+goals+to+aim+for+in+2019?vgnLocale=en_CA"><span
+                        class="txt">6 financial goals to aim for in 2019 | Sun Life</span></a>
+                <p>New Year, new goals. Whether it’s saving for the near future or planning for years from now, here’s
+                    how to start taking steps to financial success.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/6+financial+goals+to+aim+for+in+2019?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/6+financial+goals+to+aim+for+in+2019?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../6+financial+goals+to+aim+for+in+2019</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+for+Life?vgnLocale=en_CA"><span
+                        class="txt">Money for Life: Financial &amp; Retirement Planning</span></a>
+                <p>No matter where life takes you, our Money for Life approach can adapt to you.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+for+Life?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+for+Life?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Money+for+Life</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+easy+debt+management+tips?vgnLocale=en_CA"><span
+                        class="txt">Five easy debt management tips | Sun Life</span></a>
+                <p>Canada’s debt-to-income ratio is at a record high. If you’re worried about yours, here are five
+                    simple ways to manage your spending.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+easy+debt+management+tips?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/Five+easy+debt+management+tips?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../Five+easy+debt+management+tips</a>
+            </div>
+            <div class="bottom-buffer search-result-item">
+                <a
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+keep+the+fear+of+missing+out+from+messing+up+your+finances?vgnLocale=en_CA"><span
+                        class="txt">How To Keep The Fear Of Missing Out From Messing Up Your Finances | Sun
+                        Life</span></a>
+                <p>Giving in to FOMO can wreak havoc on your bank account. Here’s how to fight it with a genius budget
+                    trick – and a little help from your friends.</p>
+                <a aria-hidden="true" class="search-result-display-url"
+                    title="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+keep+the+fear+of+missing+out+from+messing+up+your+finances?vgnLocale=en_CA"
+                    href="https://www.sunlife.ca/ca/Tools+and+Resources/Money+and+Finances/Managing+your+money/How+to+keep+the+fear+of+missing+out+from+messing+up+your+finances?vgnLocale=en_CA">https://www.sunlife.ca/ca/Tools+and+Resources.../How+to+keep+the+fear+of+missing+out+from+messing+up+your+finances</a>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav role="navigation" aria-label="Page" class="text-center">
+            <ul class="pagination first-page" id="search-result-pagination">
+                <li class="previous disabled" id="search-results-pagination-previous"><a
+                        href="?q=aside&amp;filter=all&amp;page=0&amp;vgnLocale=en_CA"> <span class="fa fa-angle-left"
+                            aria-hidden="true">&nbsp;</span> <span>Previous</span> </a></li>
+
+                <li class="link-to-first active pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=1&amp;vgnLocale=en_CA" aria-label="First Page">
+                        <span class="fa fa-angle-double-left" aria-hidden="true">&nbsp;</span>
+                        <span class="sr-only">Page </span><span class="txt">1</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=2&amp;vgnLocale=en_CA">
+                        <span class="sr-only">Page </span><span class="txt">2</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=3&amp;vgnLocale=en_CA">
+                        <span class="sr-only">Page </span><span class="txt">3</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=4&amp;vgnLocale=en_CA">
+                        <span class="sr-only">Page </span><span class="txt">4</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=5&amp;vgnLocale=en_CA">
+                        <span class="sr-only">Page </span><span class="txt">5</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="pagination-item">
+                    <a href="?q=aside&amp;filter=all&amp;page=6&amp;vgnLocale=en_CA">
+                        <span class="sr-only">Page </span><span class="txt">6</span><span class="sr-only active-text">
+                            (active)</span>
+                    </a>
+                </li>
+                <li class="next" id="search-results-pagination-next"><a
+                        href="?q=aside&amp;filter=all&amp;page=2&amp;vgnLocale=en_CA">Next</a></li>
+            </ul>
+
+            <div class="pagination-indicator">Page <span id="search-result-page-num">1</span> of <span
+                    id="search-result-page-total">6</span></div>
+        </nav>
+
+        <!-- Pagination end -->
+    </div>
