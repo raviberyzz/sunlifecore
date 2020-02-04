@@ -760,6 +760,11 @@
                                             cq:styleId="1580457847367"
                                             cq:styleLabel="Editorial Articles"
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="tripple-call-deeper-wrapper"
+                                            cq:styleId="1580457845667"
+                                            cq:styleLabel="Triple Call"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1
