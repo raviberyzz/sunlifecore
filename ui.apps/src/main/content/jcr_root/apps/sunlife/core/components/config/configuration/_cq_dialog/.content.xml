@@ -69,12 +69,12 @@
                                         name="./pageLocale"/>
 				    <image
                                         
-					jcr:primaryType="nt:unstructured"
-                                        					sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        					fieldDescription="Image"
+					jcr:primaryType="nt:unstructured" 
+
+					fieldDescription="Image"
  
                                         fieldLabel="Image"
-                                        
+ 
 					name="./socialMediaImage"/>
 
                                 </items>
