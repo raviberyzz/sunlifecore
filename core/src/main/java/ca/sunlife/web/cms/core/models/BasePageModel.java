@@ -370,8 +370,10 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(OG_LOCALE, locale);
-			customMetadata.put(OG_IMAGE, externalizer.publishLink(resolver, socialMediaImage));
-			customMetadata.put(TWITTER_IMAGE, externalizer.publishLink(resolver, socialMediaImage));
+			if(socialMediaImage != null) {
+				customMetadata.put(OG_IMAGE, domain+socialMediaImage);
+				customMetadata.put(TWITTER_IMAGE, domain+socialMediaImage);
+			}
 		}
 		LOGGER.debug("metadata {}", customMetadata);
 
