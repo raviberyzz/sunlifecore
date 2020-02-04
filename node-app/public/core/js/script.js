@@ -4809,6 +4809,21 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -4865,21 +4880,6 @@ $(document).ready(function(){
  );
 });
 $(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
-$(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
 		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
@@ -4925,7 +4925,7 @@ $(document).ready(function () {
             text=text.substr(0,index);
             $(this).text("");
             words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br>"+words[2];
+            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
@@ -4935,7 +4935,7 @@ $(document).ready(function () {
             var index=text.indexOf(words[2]);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br>"+words[2];
+            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');

@@ -8,7 +8,7 @@ $(document).ready(function () {
             text=text.substr(0,index);
             $(this).text("");
             words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br>"+words[2];
+            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
@@ -18,7 +18,7 @@ $(document).ready(function () {
             var index=text.indexOf(words[2]);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br>"+words[2];
+            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');

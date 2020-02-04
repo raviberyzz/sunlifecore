@@ -36,7 +36,7 @@
                     a{
                         font-size: 1rem;
                         line-height: 26px;
-                        font-weight: 700;
+                        font-weight: 400;
                         color: $light-yellow-color;
                     }
                 }
@@ -111,7 +111,7 @@
                     a{
                         font-size: 1rem;
                         line-height: 26px;
-                        font-weight: 700;
+                        font-weight: 400;
                     }
                 }
                 li:not(:last-child){
@@ -171,6 +171,7 @@
                         text-align: left;
                         a{
                             width: 100%;
+                            font-weight: 700;
                         }
                         a:after{
                             font-family: FontAwesome;
@@ -214,6 +215,7 @@
                         text-align: left;
                         a{
                             width: 100%;
+                            font-weight: 700;
                         }
                         a:after{
                             font-family: FontAwesome;
