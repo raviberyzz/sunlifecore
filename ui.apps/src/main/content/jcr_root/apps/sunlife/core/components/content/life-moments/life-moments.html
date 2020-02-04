@@ -1,13 +1,17 @@
 <sly data-sly-use.lifeText="ca.sunlife.web.cms.core.models.LifeMomentsModel"></sly>
-<sly data-sly-test.empty="${!lifeText.text}"/>
+<sly data-sly-test.empty="${!lifeText.heading}"/>
 <div class="blue-background-wrapper">
 <p>${lifeText.heading @context ='html'}</p>
+<div class="life-moments-wrapper"> 
+<div class="links">
 <div class="collapse list-div">				
    <ul class="list-unstyled" data-sly-list.links="${lifeText.links}">
 	 <li>
        <a href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
 	 </li>
    </ul>				
+</div>
+</div>
 </div>
 <p>${lifeText.description @context ='html'}</p>
 <img src="/content/dam/sunlife/bright-start-bike-dark-bg.png" aria-hidden="true">
