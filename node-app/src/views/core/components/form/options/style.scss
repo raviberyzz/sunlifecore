@@ -14,17 +14,7 @@ select::-ms-expand {
     position: relative;
     display: inline-table;
     width: auto;
-    &::before{
-        content: "\f107";
-        font-family: FontAwesome;
-        font-size: 1.5rem;
-        position: relative;
-       float: right;
-        top: 38px;
-        left: -16px;
-        font-weight: 700;
-        z-index: -9;
-    }
+    
 }
 
 .cmp-form-options__field--drop-down{
@@ -42,6 +32,11 @@ select::-ms-expand {
     font-weight: 400;
     background-color: $transparent;
     color: $dark-grey-color;
+    padding-right: 30px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-image: url('https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png');
 }
 
 .cmp-form-options__field--multi-drop-down{
