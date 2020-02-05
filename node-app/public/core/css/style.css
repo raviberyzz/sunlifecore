@@ -6949,6 +6949,9 @@ ul {
 .no-padding .yellow-icon-white-background .cmp-container > :last-child {
   padding-bottom: 24px; }
 
+.no-padding .text-border-right .icon-text {
+  padding-right: 0; }
+
 .cross-cta-wrapper {
   padding: 24px 16px;
   background-color: #FEEDD2;
