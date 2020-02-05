@@ -118,7 +118,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 		}
 
 		resolver.close();
-		log.debug("Exit :: setConfiguration method of SiteConfigServiceImpl");
+		log.debug("Exit :: setConfiguration method of SiteConfigServiceImpl :: siteConfigMap: {}", siteConfigMap);
 	}
 
 }
