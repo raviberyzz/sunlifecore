@@ -4308,7 +4308,33 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-      $("#subscribe").modal({show:true});
+      //$("#subscribe").modal({show:true});
+      $(window).scroll(function() {
+		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
+			$("#subscribe").modal({show:true});
+			if (getCookie('subscribecookie') == "") {
+				//var url = new URL(window.location.href);
+				//var wtmcid = url.searchParams.get("WT.mc_id");
+				var wtmcid = getQuerystring("WT.mc_id");
+				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
+					//setCookie('subscribecookie', 'displayed', 180);
+					createCookie('subscribecookie', 'displayed', 180, false)
+				} else {
+					alert("hii");
+					if($("#subscribe").length==1){
+						$("#subscribe").modal({show:true});
+						//setCookie('subscribecookie', 'displayed', 0);
+						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
+						if (navigator.userAgent.indexOf("MSIE") > 0) {
+							createCookie('subscribecookie', 'displayed', 1, false)
+						} else {
+							createCookie('subscribecookie', 'displayed', -1, true)
+						}
+ 					}
+				}
+			}
+		}
+	});
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4341,6 +4367,9 @@ $(document).ready(function () {
 $(document).ready(function () {
     if($('.search-container .search-bottom')){
         $('.search-container .search-bottom .close-div').remove();
+    }
+    if('.search-bottom .search-bar-wrapper'){
+        $('.search-bottom .search-bar-wrapper').attr('id','');
     }
 });
 
@@ -4936,22 +4965,23 @@ $(document).ready(function () {
     if(pageWidth>=768){
         $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
         $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');
