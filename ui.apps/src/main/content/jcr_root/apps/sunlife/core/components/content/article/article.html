@@ -1,0 +1,41 @@
+<sly data-sly-use.articleCustom="ca.sunlife.web.cms.core.models.ArticleModel"></sly>
+<article class="article-wrapper">
+    <div class="article-intro">
+        <div class="article-date">
+            ${articleCustom.date}
+        </div>
+        <div class="article-title heading-2">
+           ${articleCustom.title @context ='html'}
+        </div>
+        <div class="article-author-name">
+           ${articleCustom.author}
+        </div>
+    </div>
+	<sly data-sly-test.Image="${articleCustom.fileReference}">
+    <figure class="article-image">
+        <img src="${Image @context='uri'}" alt="{{article-image-alt}}">
+    </figure>
+	</sly>
+    <div class="article-body">
+		${articleCustom.headline}
+       ${articleCustom.description @context ='html'}
+    </div>
+</article>
+</sly>
+
+<div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "Article","author",
+"item": {"@type": "Person","name":${articleCustom.author}},
+"datePublished":${articleCustom.date},
+"headline":${articleCustom.title},
+"image":[${articleCustom.fileReference}],
+"publisher":{"@type":"Organization","name":"Sun Life Assurance Company of Canada",
+"logo":{"@type":"ImageObject","height":"60","width":"309","url":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-logo-mobile-en-amp.png"}
+},
+"dateModified":${articleCustom.jcrLastModified},
+"description":${articleCustom.headline},
+"mainEntryOfPage":${currentPage.path}}
+</div>
+
