@@ -370,8 +370,10 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
 			customMetadata.put(OG_LOCALE, locale);
-			customMetadata.put(OG_IMAGE, socialMediaImage);
-			customMetadata.put(TWITTER_IMAGE, socialMediaImage);
+			if(socialMediaImage != null) {
+				customMetadata.put(OG_IMAGE, domain+socialMediaImage);
+				customMetadata.put(TWITTER_IMAGE, domain+socialMediaImage);
+			}
 		}
 		LOGGER.debug("metadata {}", customMetadata);
 
@@ -439,6 +441,9 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	public void setUDOParameters() throws LoginException, RepositoryException {
 		String pagePath = currentPage.getPath();
 		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+		if( null == siteUrl ) {
+			return;
+		}
 		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
 		int currentLevel = currentPage.getDepth();
 		List<String> navList = new ArrayList<>();
