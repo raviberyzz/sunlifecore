@@ -768,32 +768,38 @@
                                     </cq:styles>
                                 </item0>
 								<item1
-                                    cq:styleGroupLabel="Top Spacing"
+                                    cq:styleGroupLabel="Padding"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
 										<item0
                                             cq:styleClasses="no-padding"
                                             cq:styleId="1580457847375"
                                             cq:styleLabel="No Padding"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
+                                            jcr:primaryType="nt:unstructured"/>                                   
+                                    </cq:styles>
+                                </item1>
+								<item2
+                                    cq:styleGroupLabel="Top Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">									
+                                        <item0
                                             cq:styleClasses="mt-18"
                                             cq:styleId="1579367426265"
                                             cq:styleLabel="Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
-                                        <item2
+                                        <item1
                                             cq:styleClasses="mt-20"
                                             cq:styleId="1579199824654"
                                             cq:styleLabel="Spacing 20"
                                             jcr:primaryType="nt:unstructured"/>   
-                                         <item3
+                                         <item2
                                             cq:styleClasses="mt-40"
                                             cq:styleId="1579089938796"
                                             cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
-                                </item1>
-								<item2
+                                </item2>
+								<item3
                                     cq:styleGroupLabel="Bottom Spacing"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
@@ -813,7 +819,7 @@
                                             cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
-                                </item2>
+                                </item3>
                             </cq:styleGroups>
                         </policy_layoutContainer>
                     </layout-container>

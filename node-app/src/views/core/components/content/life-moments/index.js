@@ -3,22 +3,23 @@ $(document).ready(function () {
     if(pageWidth>=768){
         $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
         $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');

@@ -4363,64 +4363,6 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
-$(document).ready(function () {
-    $(".desktop-header-wrapper #sun-search").removeClass('in');
-    $(".signIn-button").attr('maxlength', '30');
-    function langTrue(){
-        $('#language-btn').addClass('lang-true');
-    }
-    $('#language-btn-container').click(function () {
-        if ($('#sun-search').hasClass('in')) {
-           searchClose();
-        }
-    });
-    $('#search-btn').click(function () {
-        if ($('#sun-language').hasClass('in')) {
-            $("#language-btn").attr('aria-expanded', 'false');
-            $("#sun-language").removeClass('in');
-            $('#language-btn').removeClass('lang-true');
-        }
-    });
-    $('#language-btn-container').click(function () {
-        if ($('#language-btn').attr('aria-expanded') == 'true') {
-            $("#language-btn").attr('aria-expanded', 'false');
-            $('#language-btn').removeClass('lang-true');
-        }
-        else {
-            $("#language-btn").attr('aria-expanded', 'true');
-            setTimeout(langTrue,400);
-        }
-    });
-    $('.sunLanguageCrossBtn').click(function () {
-        $("#language-btn").attr('aria-expanded', 'false');
-    });
-      
-    $(document).mouseup(function(e){
-    var searchBar = $("#sun-search");
-    if($('#sun-search').hasClass('in')){
-        if (e.which === 1) {
-            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
-                searchClose();
-                setTimeout(searchClose,500);
-                event.stopImmediatePropagation();
-            }
-        }
-    }
-    });
-    function searchClose(){
-        $("#search-btn").attr('aria-expanded', 'false');
-        $('#sun-search').removeClass('in');
-    }
-    $('.desktop-region-language-menu-wrapper .sunLanguageCrossBtn').click(function(){
-        $('#language-btn').removeClass('lang-true');
-    });
-
-      // open the full header menu on focus for screen readers. 
-      $('.nav-active').on("focus", function(){
-        $('.dropdown').removeClass("open");
-        $(this).parent().addClass("open");
-    })
-});
 
 $(document).ready(function () {
     if($('.search-container .search-bottom')){
@@ -5023,22 +4965,23 @@ $(document).ready(function () {
     if(pageWidth>=768){
         $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
         $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');
