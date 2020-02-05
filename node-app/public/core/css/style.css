@@ -6046,7 +6046,8 @@ input[type=text] {
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat, linear-gradient(#004C6C, #002C3C);
   height: 382px;
   padding-top: 48px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .blue-background-wrapper h3 {
     margin: 0 0 16px 0; }
   .blue-background-wrapper p {
@@ -6071,7 +6072,7 @@ input[type=text] {
           justify-content: center;
           display: flex;
           flex: auto;
-          padding: 0 10px; }
+          padding: 0 24px; }
           .blue-background-wrapper .links .list-div ul li a {
             font-size: 1rem;
             line-height: 26px;
@@ -6085,22 +6086,25 @@ input[type=text] {
             color: #ffffff; }
         .blue-background-wrapper .links .list-div ul .border-right {
           border-right-color: #9a9a9a; }
-  .blue-background-wrapper h4 {
-    margin: 0 0 16px 0;
-    line-height: 18px; }
-  .blue-background-wrapper a {
-    color: #FFDD00; }
-  .blue-background-wrapper img {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
+  .blue-background-wrapper .bright-start {
+    padding-left: 60px; }
+    .blue-background-wrapper .bright-start h4 {
+      margin: 0 0 16px 0;
+      line-height: 18px; }
+    .blue-background-wrapper .bright-start a {
+      color: #FFDD00; }
+    .blue-background-wrapper .bright-start img {
+      position: absolute;
+      bottom: 0;
+      left: 0; }
 
 .yellow-background-wrapper {
   color: #424242;
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat, linear-gradient(#eaab00, #ffdd36);
   height: 652px;
   padding-top: 48px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .yellow-background-wrapper h3 {
     margin: 0 0 16px 0; }
   .yellow-background-wrapper p {
@@ -6125,7 +6129,7 @@ input[type=text] {
           justify-content: center;
           display: flex;
           flex: auto;
-          padding: 0 10px; }
+          padding: 0 24px; }
           .yellow-background-wrapper .links .list-div ul li a {
             font-size: 1rem;
             line-height: 26px;
@@ -6138,13 +6142,15 @@ input[type=text] {
             color: #ffffff; }
         .yellow-background-wrapper .links .list-div ul .border-right {
           border-right-color: #9a9a9a; }
-  .yellow-background-wrapper h4 {
-    margin: 0 0 16px 0;
-    line-height: 18px; }
-  .yellow-background-wrapper img {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
+  .yellow-background-wrapper .bright-start {
+    padding-left: 60px; }
+    .yellow-background-wrapper .bright-start h4 {
+      margin: 0 0 16px 0;
+      line-height: 18px; }
+    .yellow-background-wrapper .bright-start img {
+      position: absolute;
+      bottom: 0;
+      left: 0; }
 
 @media (max-width: 767px) {
   .blue-background-wrapper {
@@ -6154,6 +6160,10 @@ input[type=text] {
     padding: 48px 16px; }
     .blue-background-wrapper h3 {
       margin: 0 0 24px 0; }
+    .blue-background-wrapper .bright-start {
+      padding: 0; }
+      .blue-background-wrapper .bright-start h4 {
+        line-height: 26px; }
     .blue-background-wrapper p {
       padding: 0; }
     .blue-background-wrapper .links .list-div ul {
@@ -6164,7 +6174,9 @@ input[type=text] {
         border: none;
         padding-bottom: 24px; }
       .blue-background-wrapper .links .list-div ul li {
-        text-align: left; }
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0; }
         .blue-background-wrapper .links .list-div ul li a {
           width: 100%;
           font-weight: 700; }
@@ -6182,8 +6194,10 @@ input[type=text] {
     padding: 48px 16px; }
     .yellow-background-wrapper h3 {
       margin: 0 0 24px 0; }
-    .yellow-background-wrapper h4 {
-      line-height: 30px; }
+    .yellow-background-wrapper .bright-start {
+      padding: 0; }
+      .yellow-background-wrapper .bright-start h4 {
+        line-height: 26px; }
     .yellow-background-wrapper p {
       padding: 0; }
     .yellow-background-wrapper .links .list-div ul {
@@ -6194,7 +6208,9 @@ input[type=text] {
         border: none;
         padding-bottom: 24px; }
       .yellow-background-wrapper .links .list-div ul li {
-        text-align: left; }
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0; }
         .yellow-background-wrapper .links .list-div ul li a {
           width: 100%;
           font-weight: 700; }
