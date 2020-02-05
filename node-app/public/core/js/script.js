@@ -4308,7 +4308,43 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-      $("#subscribe").modal({show:true});
+      //$("#subscribe").modal({show:true});
+      $(window).scroll(function() {
+		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
+			$("#subscribe").modal({show:true});
+			if (getCookie('subscribecookie') == "") {
+				//var url = new URL(window.location.href);
+				//var wtmcid = url.searchParams.get("WT.mc_id");
+				var wtmcid = getQuerystring("WT.mc_id");
+				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
+					//setCookie('subscribecookie', 'displayed', 180);
+					createCookie('subscribecookie', 'displayed', 180, false)
+				} else {
+					alert("hii");
+					if($("#subscribe").length==1){
+						$("#subscribe").modal({show:true});
+						//setCookie('subscribecookie', 'displayed', 0);
+						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
+						if (navigator.userAgent.indexOf("MSIE") > 0) {
+							createCookie('subscribecookie', 'displayed', 1, false)
+						} else {
+							createCookie('subscribecookie', 'displayed', -1, true)
+						}
+ 					}
+				}
+			}
+		}
+	});
+});
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -4341,6 +4377,9 @@ $(document).ready(function () {
 $(document).ready(function () {
     if($('.search-container .search-bottom')){
         $('.search-container .search-bottom .close-div').remove();
+    }
+    if('.search-bottom .search-bar-wrapper'){
+        $('.search-bottom .search-bar-wrapper').attr('id','');
     }
 });
 
