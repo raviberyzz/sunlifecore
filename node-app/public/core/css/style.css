@@ -3603,7 +3603,7 @@ a {
 .legal-text {
   font-size: 0.875rem;
   line-height: 18px;
-  color: #424242; }
+  color: #003946; }
 
 footer {
   background-color: #F4F7F6; }
@@ -3771,16 +3771,6 @@ select::-ms-expand {
   position: relative;
   display: inline-table;
   width: auto; }
-  .cmp-form-options--drop-down::before {
-    content: "\f107";
-    font-family: FontAwesome;
-    font-size: 1.5rem;
-    position: relative;
-    float: right;
-    top: 38px;
-    left: -16px;
-    font-weight: 700;
-    z-index: -9; }
 
 .cmp-form-options__field--drop-down {
   border: 1px solid #9a9a9a;
@@ -3796,7 +3786,12 @@ select::-ms-expand {
   font-family: 'sunlife-sans';
   font-weight: 400;
   background-color: transparent;
-  color: #424242; }
+  color: #424242;
+  padding-right: 30px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-image: url("https://sunlife.ca/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png"); }
 
 .cmp-form-options__field--multi-drop-down {
   border: 1px solid #9a9a9a;
@@ -4293,16 +4288,6 @@ input[type=text] {
   color: #b81f41;
   font-size: 1.8em; }
 
-.site-level-notification {
-  background-color: #feedd2;
-  padding: 24px 16px;
-  margin-bottom: 4px; }
-  .site-level-notification p {
-    margin: 0; }
-  .site-level-notification .fa-remove {
-    float: right;
-    cursor: pointer; }
-
 .abc {
   font-size: 48px;
   line-height: 100px; }
@@ -4346,6 +4331,16 @@ input[type=text] {
 @media (max-width: 767px) {
   .subscribe-popup-wrapper .modal-content {
     width: 90%; } }
+
+.site-level-notification {
+  background-color: #feedd2;
+  padding: 24px 16px;
+  margin-bottom: 4px; }
+  .site-level-notification p {
+    margin: 0; }
+  .site-level-notification .fa-remove {
+    float: right;
+    cursor: pointer; }
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -4555,53 +4550,6 @@ input[type=text] {
   transform: translateY(-50%); }
   .vertical-separator hr {
     display: none; }
-
-.search-bar-wrapper {
-  background: #FFCB05;
-  height: 128px; }
-  .search-bar-wrapper .global-search {
-    text-align: center;
-    z-index: 1; }
-    .search-bar-wrapper .global-search .form-wrapper {
-      max-width: 550px;
-      margin: 0 auto; }
-    .search-bar-wrapper .global-search input[type=text] {
-      margin-bottom: 0;
-      height: 48px;
-      width: 462px;
-      color: #424242; }
-    .search-bar-wrapper .global-search .search-autocomplete {
-      position: absolute;
-      z-index: 1099; }
-  .search-bar-wrapper .slf-search .form-wrapper {
-    display: table;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0 auto;
-    border: 0; }
-    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper, .search-bar-wrapper .slf-search .form-wrapper .button-wrapper {
-      display: table-cell;
-      vertical-align: top;
-      position: relative; }
-    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper.form-group-wrapper {
-      display: inline; }
-  .search-bar-wrapper .search-box {
-    padding: 30px 0; }
-  .search-bar-wrapper .close-div {
-    position: absolute;
-    right: 0;
-    float: right;
-    top: 0; }
-  .search-bar-wrapper .collapse-x {
-    margin: 24px 15px 0 0;
-    font-size: 0.875rem; }
-  .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
-    padding-left: 16px;
-    border: 0; }
-    .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .primary-blue-button {
-      width: 136px; }
-    .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .cmp-form-button {
-      width: 136px; }
 
 .search-autocomplete {
   position: absolute;
@@ -4907,6 +4855,53 @@ input[type=text] {
 
 .panel-group {
   display: none; }
+
+.search-bar-wrapper {
+  background: #FFCB05;
+  height: 128px; }
+  .search-bar-wrapper .global-search {
+    text-align: center;
+    z-index: 1; }
+    .search-bar-wrapper .global-search .form-wrapper {
+      max-width: 550px;
+      margin: 0 auto; }
+    .search-bar-wrapper .global-search input[type=text] {
+      margin-bottom: 0;
+      height: 48px;
+      width: 462px;
+      color: #424242; }
+    .search-bar-wrapper .global-search .search-autocomplete {
+      position: absolute;
+      z-index: 1099; }
+  .search-bar-wrapper .slf-search .form-wrapper {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    border: 0; }
+    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper, .search-bar-wrapper .slf-search .form-wrapper .button-wrapper {
+      display: table-cell;
+      vertical-align: top;
+      position: relative; }
+    .search-bar-wrapper .slf-search .form-wrapper .input-wrapper.form-group-wrapper {
+      display: inline; }
+  .search-bar-wrapper .search-box {
+    padding: 30px 0; }
+  .search-bar-wrapper .close-div {
+    position: absolute;
+    right: 0;
+    float: right;
+    top: 0; }
+  .search-bar-wrapper .collapse-x {
+    margin: 24px 15px 0 0;
+    font-size: 0.875rem; }
+  .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper {
+    padding-left: 16px;
+    border: 0; }
+    .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .primary-blue-button {
+      width: 136px; }
+    .search-bar-wrapper form.slf-search .form-wrapper > .button-wrapper .cmp-form-button {
+      width: 136px; }
 
 .right-navigation-wrapper {
   float: left; }
