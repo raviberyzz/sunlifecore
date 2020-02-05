@@ -6904,6 +6904,9 @@ ul {
   .blue-icon-yellow-background > * .icon-style {
     background: linear-gradient(#004C6C, #003946); }
 
+.yellow-icon-blue-background form, .yellow-icon-grey-background form, .blue-icon-yellow-background form, .yellow-icon-white-background form {
+  width: 100%; }
+
 .yellow-icon-blue-background .icon-style, .yellow-icon-grey-background .icon-style, .blue-icon-yellow-background .icon-style, .yellow-icon-white-background .icon-style {
   position: relative;
   bottom: 56px; }
@@ -6932,6 +6935,9 @@ ul {
 .no-padding .yellow-icon-white-background form .cmp-form-button {
   width: 100%;
   max-width: 100%; }
+
+.no-padding .yellow-icon-white-background form .cmp-form-options--drop-down {
+  width: 100%; }
 
 .no-padding .yellow-icon-white-background form :not(:last-child) {
   padding-right: 0px;
@@ -7086,8 +7092,8 @@ ul {
     speak: none;
     display: inline-block;
     text-decoration: inherit;
-    width: 1.25em;
-    font-size: 1.2em;
+    width: 66px;
+    font-size: 40px;
     margin-right: .2em;
     text-align: center;
     font-variant: normal;
