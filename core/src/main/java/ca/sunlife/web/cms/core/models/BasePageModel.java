@@ -439,9 +439,11 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	 * @throws RepositoryException
 	 */
 	public void setUDOParameters() throws LoginException, RepositoryException {
+		LOGGER.debug("Entry :: setUDOParameters :: ");
 		String pagePath = currentPage.getPath();
 		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
-		if( null == siteUrl ) {
+		LOGGER.debug("setUDOParameters :: siteUrl: {}", siteUrl);
+		if( null == siteUrl || siteUrl.length() <= 0) {
 			return;
 		}
 		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
@@ -467,6 +469,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			}
 			breadCrumb = "/" + navList.stream().collect(Collectors.joining("/"));
 		}
+		LOGGER.debug("Exit :: setUDOParameters :: pageCategory: {}, pageSubCategory: {}, breadCrumb: {}", pageCategory, pageSubCategory, breadCrumb);
 	}
 	
 	
@@ -488,4 +491,5 @@ public class BasePageModel extends SocialMediaHelperImpl {
         }
         return titleStr;
     }
+	
 }
