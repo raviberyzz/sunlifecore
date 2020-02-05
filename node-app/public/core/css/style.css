@@ -4288,6 +4288,16 @@ input[type=text] {
   color: #b81f41;
   font-size: 1.8em; }
 
+.site-level-notification {
+  background-color: #feedd2;
+  padding: 24px 16px;
+  margin-bottom: 4px; }
+  .site-level-notification p {
+    margin: 0; }
+  .site-level-notification .fa-remove {
+    float: right;
+    cursor: pointer; }
+
 .abc {
   font-size: 48px;
   line-height: 100px; }
@@ -4331,16 +4341,6 @@ input[type=text] {
 @media (max-width: 767px) {
   .subscribe-popup-wrapper .modal-content {
     width: 90%; } }
-
-.site-level-notification {
-  background-color: #feedd2;
-  padding: 24px 16px;
-  margin-bottom: 4px; }
-  .site-level-notification p {
-    margin: 0; }
-  .site-level-notification .fa-remove {
-    float: right;
-    cursor: pointer; }
 
 .sign-in-modal-wrapper {
   opacity: 1;
@@ -6258,7 +6258,8 @@ input[type=text] {
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat, linear-gradient(#004C6C, #002C3C);
   height: 382px;
   padding-top: 48px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .blue-background-wrapper h3 {
     margin: 0 0 16px 0; }
   .blue-background-wrapper p {
@@ -6283,7 +6284,7 @@ input[type=text] {
           justify-content: center;
           display: flex;
           flex: auto;
-          padding: 0 10px; }
+          padding: 0 24px; }
           .blue-background-wrapper .links .list-div ul li a {
             font-size: 1rem;
             line-height: 26px;
@@ -6297,22 +6298,25 @@ input[type=text] {
             color: #ffffff; }
         .blue-background-wrapper .links .list-div ul .border-right {
           border-right-color: #9a9a9a; }
-  .blue-background-wrapper h4 {
-    margin: 0 0 16px 0;
-    line-height: 18px; }
-  .blue-background-wrapper a {
-    color: #FFDD00; }
-  .blue-background-wrapper img {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
+  .blue-background-wrapper .bright-start {
+    padding-left: 60px; }
+    .blue-background-wrapper .bright-start h4 {
+      margin: 0 0 16px 0;
+      line-height: 18px; }
+    .blue-background-wrapper .bright-start a {
+      color: #FFDD00; }
+    .blue-background-wrapper .bright-start img {
+      position: absolute;
+      bottom: 0;
+      left: 0; }
 
 .yellow-background-wrapper {
   color: #424242;
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat, linear-gradient(#eaab00, #ffdd36);
   height: 652px;
   padding-top: 48px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .yellow-background-wrapper h3 {
     margin: 0 0 16px 0; }
   .yellow-background-wrapper p {
@@ -6337,7 +6341,7 @@ input[type=text] {
           justify-content: center;
           display: flex;
           flex: auto;
-          padding: 0 10px; }
+          padding: 0 24px; }
           .yellow-background-wrapper .links .list-div ul li a {
             font-size: 1rem;
             line-height: 26px;
@@ -6350,13 +6354,15 @@ input[type=text] {
             color: #ffffff; }
         .yellow-background-wrapper .links .list-div ul .border-right {
           border-right-color: #9a9a9a; }
-  .yellow-background-wrapper h4 {
-    margin: 0 0 16px 0;
-    line-height: 18px; }
-  .yellow-background-wrapper img {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
+  .yellow-background-wrapper .bright-start {
+    padding-left: 60px; }
+    .yellow-background-wrapper .bright-start h4 {
+      margin: 0 0 16px 0;
+      line-height: 18px; }
+    .yellow-background-wrapper .bright-start img {
+      position: absolute;
+      bottom: 0;
+      left: 0; }
 
 @media (max-width: 767px) {
   .blue-background-wrapper {
@@ -6366,6 +6372,10 @@ input[type=text] {
     padding: 48px 16px; }
     .blue-background-wrapper h3 {
       margin: 0 0 24px 0; }
+    .blue-background-wrapper .bright-start {
+      padding: 0; }
+      .blue-background-wrapper .bright-start h4 {
+        line-height: 26px; }
     .blue-background-wrapper p {
       padding: 0; }
     .blue-background-wrapper .links .list-div ul {
@@ -6376,7 +6386,9 @@ input[type=text] {
         border: none;
         padding-bottom: 24px; }
       .blue-background-wrapper .links .list-div ul li {
-        text-align: left; }
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0; }
         .blue-background-wrapper .links .list-div ul li a {
           width: 100%;
           font-weight: 700; }
@@ -6394,8 +6406,10 @@ input[type=text] {
     padding: 48px 16px; }
     .yellow-background-wrapper h3 {
       margin: 0 0 24px 0; }
-    .yellow-background-wrapper h4 {
-      line-height: 30px; }
+    .yellow-background-wrapper .bright-start {
+      padding: 0; }
+      .yellow-background-wrapper .bright-start h4 {
+        line-height: 26px; }
     .yellow-background-wrapper p {
       padding: 0; }
     .yellow-background-wrapper .links .list-div ul {
@@ -6406,7 +6420,9 @@ input[type=text] {
         border: none;
         padding-bottom: 24px; }
       .yellow-background-wrapper .links .list-div ul li {
-        text-align: left; }
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0; }
         .yellow-background-wrapper .links .list-div ul li a {
           width: 100%;
           font-weight: 700; }
@@ -7422,6 +7438,32 @@ ul {
     right: 3px;
     position: relative; }
 
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
+
 .breadcrumb-section .social-link-icon-wrapper {
   float: left; }
   .breadcrumb-section .social-link-icon-wrapper li {
@@ -7508,32 +7550,6 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;

@@ -4287,6 +4287,16 @@ function stickyHeader(){
 }
 $(stickyHeader);
 $(window).resize(stickyHeader);
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
+});
 $(document).ready(function(){
       var popHeight=$(window).height();
       $(".subscribe-popup-wrapper").height(popHeight);
@@ -4323,16 +4333,6 @@ $(document).ready(function(){
  					}
 				}
 			}
-		}
-	});
-});
-$(document).ready(function () {
-	$('.site-level-notification .close-div').click(function () {
-		$('.site-level-notification').css('display', 'none');
-	});
-	$('.site-level-notification .close-div').keyup(function (event) {
-		if (event.keyCode == 13) {
-			$('.site-level-notification').css('display', 'none');
 		}
 	});
 });
@@ -4965,22 +4965,23 @@ $(document).ready(function () {
     if(pageWidth>=768){
         $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            words[2]=words[2].toUpperCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
         $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
             var text=$(this).text();
-            var words=text.split(" ");
-            var index=text.indexOf(words[2]);
+            var lastWord=text.split(" ").pop();
+            var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            var html="<span>"+text+"</span>"+"<br><strong>"+words[2]+"</strong>";
+            lastWord=lastWord.toUpperCase();
+            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');
