@@ -4155,20 +4155,52 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 /* Accordion accessibility ends here */
 });
 
+
+
 $(document).ready(function () {
-  $(".cmp-text").each(function(){
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
+		var pathName= window.location.pathname ;
+		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
+		var strLink =  $(this).attr('value');
+		strLink1 = strLink.localeCompare(pathName);
+		if(!strLink1){
+			$(this).attr("selected","selected");
+		}
+	})
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
+		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
+		window.location.href=link_selected;
+		return false;
+	});
+});
+
+
+
+$(document).ready(function () {
+  $(".cmp-text,th,td").each(function(){
       var tool=$(this).find(".tool-tip-box:first");
   var $va = "<a href='javascript:void(0)' title='' " + "class= " +'"fa fa-info-circle"' + "> </a>";
     $($va).insertBefore(tool);
       var tool_content= "";
-      $(this).children().children(".tool-tip-box").each(function(){
-    tool_content = tool_content +"<p>"+ $( this ).html()+"</p>";
+      if($(this).attr('class')==='cmp-text'){
+       $(this).children().children(".tool-tip-box").each(function(){
+    tool_content = tool_content +"<p>"+ $(this).html()+"</p>";
+       });
+      }
+      else{
+      $(this).children(".tool-tip-box").each(function(){
+    tool_content = tool_content +"<p>"+ $(this).html()+"</p>";
       });
+      }
        $('.fa-info-circle').attr('data-toggle','tooltip');
        $('.fa-info-circle').attr('data-placement','right');
        $('.fa-info-circle').attr('data-html','true');
-       tool.siblings('.fa-info-circle').attr('data-original-title',tool_content);
-
+      if($(this).attr('class')==='cmp-text'){
+       $(this).find('a').attr('data-original-title',tool_content);
+      }
+      else{
+      $(this).children('a').attr('data-original-title',tool_content);
+      }
        $('[data-toggle="tooltip"]').tooltip();
        $('.fa-info-circle').click(function(){
          $('.fa-info-circle').css('text-decoration','none');
@@ -5151,7 +5183,25 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
-
+$(document).ready(function(){
+    PDRTJS_settings_7600084 = {
+        "id" : "7600084",
+        "unique_id" : "8d314f8aaab44610VgnVCM1000001794d09fRCRD",
+        "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
+        "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
+        };
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
@@ -5200,23 +5250,3 @@ $(document).ready(function(){
 	});
     
 });
-
-
-
-$(document).ready(function () {
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
-		var pathName= window.location.pathname ;
-		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
-		var strLink =  $(this).attr('value');
-		strLink1 = strLink.localeCompare(pathName);
-		if(!strLink1){
-			$(this).attr("selected","selected");
-		}
-	})
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
-		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
-		window.location.href=link_selected;
-		return false;
-	});
-});
-
