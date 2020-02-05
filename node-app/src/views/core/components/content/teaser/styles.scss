@@ -11,6 +11,13 @@
         float: left;
     }
 }
+.banner-section {
+    .left-image-position {
+        .left-item {
+            float: right;
+        }
+    }
+}
 .yellow-border-bottom {
     .right-image-position, .left-image-position  {
         border-bottom: 7px solid $primary-yellow-background;
@@ -32,7 +39,8 @@
 }
 .bottom-aligned-text {
     .right-image-position, .left-image-position  {
-        display: inherit;
+        display: flex;
+        align-items: flex-end;
         .text-section {
             margin: 0;
         }
@@ -222,9 +230,19 @@
 }
 // IE specific css
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .white-box {
-        .text-section {
-            position: relative;
+    .bottom-aligned-text {
+        .right-image-position, .left-image-position  {
+            .text-section {
+                bottom: 0;
+            }
+        }
+    }
+    .middle-aligned-text {
+        .right-image-position, .left-image-position  {
+            .text-section {
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 }
