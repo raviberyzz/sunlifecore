@@ -379,7 +379,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 		// Sets alternate URLs
 		setAtlLanguages(altLanguages, pageLocale, pagePath, domain);
-		//setUDOParameters();
+		setUDOParameters();
 		LOGGER.debug("Map Display {}", altLanguageLinks);
 	}
 
