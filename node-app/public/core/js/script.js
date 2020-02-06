@@ -1697,19 +1697,19 @@ function CheckClicks(lang) {
 // 	updateSignInForm('form_signon');
 // })
 
-// function createCookie(name,value,days, isSession) {
-//   if (days) {
-//     var date = new Date();
-//     date.setTime(date.getTime()+(days*24*60*60*1000));
-//     var expires = "; expires="+date.toGMTString();
-//   }
-//   else expires = "";
-//   if(isSession){
-// 		document.cookie = name+"="+value+"; path=/;";
-//   } else {
-// 		document.cookie = name+"="+value+expires+"; path=/;";
-//   }
-// }
+function createCookie(name,value,days, isSession) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else expires = "";
+  if(isSession){
+		document.cookie = name+"="+value+"; path=/;";
+  } else {
+		document.cookie = name+"="+value+expires+"; path=/;";
+  }
+}
 // function readCookie(name) {
 //   var nameEQ = name + "=";
 //   var ca = document.cookie.split(';');
@@ -1919,19 +1919,19 @@ function removeParam(key, sourceURL) {
 //     }
 // }
 // /*End of language toggle functionality*/
-// function getQuerystring(key) {
-//     var query = window.location.search.substring(1);
-//     var value = 'null';
-//     var vars = query.split("&");
-//     for (var i = 0; i < vars.length; i++) {
-//         var pair = vars[i].split("=");
-//         if (pair[0] == key) {
-//         	value = pair[1];
-//             return pair[1];
-//         }
-//     }
-//     return value;
-// }
+function getQuerystring(key) {
+    var query = window.location.search.substring(1);
+    var value = 'null';
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == key) {
+        	value = pair[1];
+            return pair[1];
+        }
+    }
+    return value;
+}
 // /*Added for vew desktop */
 // /** page load event **/
 // jQuery(document).ready(function($){
@@ -2971,49 +2971,53 @@ function removeParam(key, sourceURL) {
 // 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 // }
 
-// function getCookie(cname) {
-// 	var name = cname + "=";
-// 	var decodedCookie = decodeURIComponent(document.cookie);
-// 	var ca = decodedCookie.split(';');
-// 	for(var i = 0; i <ca.length; i++) {
-// 			var c = ca[i];
-// 			while (c.charAt(0) == ' ') {
-// 					c = c.substring(1);
-// 			}
-// 			if (c.indexOf(name) == 0) {
-// 					return c.substring(name.length, c.length);
-// 			}
-// 	}
-// 	return "";
-// }
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+			}
+	}
+	return "";
+}
 
 // if (window.location.href.indexOf("/ca/Tools+and+Resources/Money+and+Finances") > -1  //https://www.sunlife.ca/ca/Learn+and+Plan/Money
 // 					|| window.location.href.indexOf("/ca/Tools+and+Resources/Health+and+Wellness") > -1) {
-// 	$(window).scroll(function() {
-// 		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
-// 			if (getCookie('subscribecookie') == "") {
-// 				//var url = new URL(window.location.href);
-// 				//var wtmcid = url.searchParams.get("WT.mc_id");
-// 				var wtmcid = getQuerystring("WT.mc_id");
-// 				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
-// 					//setCookie('subscribecookie', 'displayed', 180);
-// 					createCookie('subscribecookie', 'displayed', 180, false)
-// 				} else {
-// 					if($("#subscribe").length==1){
-// 						$("#subscribe").modal({show:true});
-// 						//setCookie('subscribecookie', 'displayed', 0);
-// 						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
-// 						if (navigator.userAgent.indexOf("MSIE") > 0) {
-// 							createCookie('subscribecookie', 'displayed', 1, false)
-// 						} else {
-// 							createCookie('subscribecookie', 'displayed', -1, true)
-// 						}
-//  					}
-// 				}
-// 			}
-// 		}
-// 	});
-// }
+     
+    $(document).ready(function(){
+$(window).scroll(function() {
+        //$("#subscribe").modal({show:true});
+		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
+			if (getCookie('subscribecookie') == "") {
+				//var url = new URL(window.location.href);
+				//var wtmcid = url.searchParams.get("WT.mc_id");
+				var wtmcid = getQuerystring("WT.mc_id");
+				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
+					//setCookie('subscribecookie', 'displayed', 180);
+					createCookie('subscribecookie', 'displayed', 180, false)
+				} else {
+					if($("#subscribe").length==1){
+						$("#subscribe").modal({show:true});
+						//setCookie('subscribecookie', 'displayed', 0);
+						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
+						if (navigator.userAgent.indexOf("MSIE") > 0) {
+							createCookie('subscribecookie', 'displayed', 1, false)
+						} else {
+							createCookie('subscribecookie', 'displayed', -1, true)
+						}
+ 					}
+				}
+			}
+		}
+	});
+
+    });
 
 // $(document).ready(function(){
 // 	$("#news-overlay-subscribe").on("click", function() {
@@ -4308,33 +4312,8 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-      //$("#subscribe").modal({show:true});
-      $(window).scroll(function() {
-		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
-			$("#subscribe").modal({show:true});
-			if (getCookie('subscribecookie') == "") {
-				//var url = new URL(window.location.href);
-				//var wtmcid = url.searchParams.get("WT.mc_id");
-				var wtmcid = getQuerystring("WT.mc_id");
-				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
-					//setCookie('subscribecookie', 'displayed', 180);
-					createCookie('subscribecookie', 'displayed', 180, false)
-				} else {
-					alert("hii");
-					if($("#subscribe").length==1){
-						$("#subscribe").modal({show:true});
-						//setCookie('subscribecookie', 'displayed', 0);
-						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
-						if (navigator.userAgent.indexOf("MSIE") > 0) {
-							createCookie('subscribecookie', 'displayed', 1, false)
-						} else {
-							createCookie('subscribecookie', 'displayed', -1, true)
-						}
- 					}
-				}
-			}
-		}
-	});
+    //   $("#subscribe").modal({show:true});
+     
 });
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
@@ -5013,6 +4992,64 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function () {
+    $(".desktop-header-wrapper #sun-search").removeClass('in');
+    $(".signIn-button").attr('maxlength', '30');
+    function langTrue(){
+        $('#language-btn').addClass('lang-true');
+    }
+    $('#language-btn-container').click(function () {
+        if ($('#sun-search').hasClass('in')) {
+           searchClose();
+        }
+    });
+    $('#search-btn').click(function () {
+        if ($('#sun-language').hasClass('in')) {
+            $("#language-btn").attr('aria-expanded', 'false');
+            $("#sun-language").removeClass('in');
+            $('#language-btn').removeClass('lang-true');
+        }
+    });
+    $('#language-btn-container').click(function () {
+        if ($('#language-btn').attr('aria-expanded') == 'true') {
+            $("#language-btn").attr('aria-expanded', 'false');
+            $('#language-btn').removeClass('lang-true');
+        }
+        else {
+            $("#language-btn").attr('aria-expanded', 'true');
+            setTimeout(langTrue,400);
+        }
+    });
+    $('.sunLanguageCrossBtn').click(function () {
+        $("#language-btn").attr('aria-expanded', 'false');
+    });
+      
+    $(document).mouseup(function(e){
+    var searchBar = $("#sun-search");
+    if($('#sun-search').hasClass('in')){
+        if (e.which === 1) {
+            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
+                searchClose();
+                setTimeout(searchClose,500);
+                event.stopImmediatePropagation();
+            }
+        }
+    }
+    });
+    function searchClose(){
+        $("#search-btn").attr('aria-expanded', 'false');
+        $('#sun-search').removeClass('in');
+    }
+    $('.desktop-region-language-menu-wrapper .sunLanguageCrossBtn').click(function(){
+        $('#language-btn').removeClass('lang-true');
+    });
+
+      // open the full header menu on focus for screen readers. 
+      $('.nav-active').on("focus", function(){
+        $('.dropdown').removeClass("open");
+        $(this).parent().addClass("open");
+    })
+});
 
 $(document).ready(function () {
 	//for footer
