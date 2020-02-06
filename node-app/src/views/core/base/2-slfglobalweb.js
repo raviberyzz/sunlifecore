@@ -1179,19 +1179,19 @@
 // 	updateSignInForm('form_signon');
 // })
 
-// function createCookie(name,value,days, isSession) {
-//   if (days) {
-//     var date = new Date();
-//     date.setTime(date.getTime()+(days*24*60*60*1000));
-//     var expires = "; expires="+date.toGMTString();
-//   }
-//   else expires = "";
-//   if(isSession){
-// 		document.cookie = name+"="+value+"; path=/;";
-//   } else {
-// 		document.cookie = name+"="+value+expires+"; path=/;";
-//   }
-// }
+function createCookie(name,value,days, isSession) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else expires = "";
+  if(isSession){
+		document.cookie = name+"="+value+"; path=/;";
+  } else {
+		document.cookie = name+"="+value+expires+"; path=/;";
+  }
+}
 // function readCookie(name) {
 //   var nameEQ = name + "=";
 //   var ca = document.cookie.split(';');
@@ -1401,19 +1401,19 @@ function removeParam(key, sourceURL) {
 //     }
 // }
 // /*End of language toggle functionality*/
-// function getQuerystring(key) {
-//     var query = window.location.search.substring(1);
-//     var value = 'null';
-//     var vars = query.split("&");
-//     for (var i = 0; i < vars.length; i++) {
-//         var pair = vars[i].split("=");
-//         if (pair[0] == key) {
-//         	value = pair[1];
-//             return pair[1];
-//         }
-//     }
-//     return value;
-// }
+function getQuerystring(key) {
+    var query = window.location.search.substring(1);
+    var value = 'null';
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == key) {
+        	value = pair[1];
+            return pair[1];
+        }
+    }
+    return value;
+}
 // /*Added for vew desktop */
 // /** page load event **/
 // jQuery(document).ready(function($){
@@ -2453,49 +2453,53 @@ function removeParam(key, sourceURL) {
 // 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 // }
 
-// function getCookie(cname) {
-// 	var name = cname + "=";
-// 	var decodedCookie = decodeURIComponent(document.cookie);
-// 	var ca = decodedCookie.split(';');
-// 	for(var i = 0; i <ca.length; i++) {
-// 			var c = ca[i];
-// 			while (c.charAt(0) == ' ') {
-// 					c = c.substring(1);
-// 			}
-// 			if (c.indexOf(name) == 0) {
-// 					return c.substring(name.length, c.length);
-// 			}
-// 	}
-// 	return "";
-// }
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+			}
+	}
+	return "";
+}
 
 // if (window.location.href.indexOf("/ca/Tools+and+Resources/Money+and+Finances") > -1  //https://www.sunlife.ca/ca/Learn+and+Plan/Money
 // 					|| window.location.href.indexOf("/ca/Tools+and+Resources/Health+and+Wellness") > -1) {
-// 	$(window).scroll(function() {
-// 		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
-// 			if (getCookie('subscribecookie') == "") {
-// 				//var url = new URL(window.location.href);
-// 				//var wtmcid = url.searchParams.get("WT.mc_id");
-// 				var wtmcid = getQuerystring("WT.mc_id");
-// 				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
-// 					//setCookie('subscribecookie', 'displayed', 180);
-// 					createCookie('subscribecookie', 'displayed', 180, false)
-// 				} else {
-// 					if($("#subscribe").length==1){
-// 						$("#subscribe").modal({show:true});
-// 						//setCookie('subscribecookie', 'displayed', 0);
-// 						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
-// 						if (navigator.userAgent.indexOf("MSIE") > 0) {
-// 							createCookie('subscribecookie', 'displayed', 1, false)
-// 						} else {
-// 							createCookie('subscribecookie', 'displayed', -1, true)
-// 						}
-//  					}
-// 				}
-// 			}
-// 		}
-// 	});
-// }
+     
+    $(document).ready(function(){
+$(window).scroll(function() {
+        //$("#subscribe").modal({show:true});
+		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
+			if (getCookie('subscribecookie') == "") {
+				//var url = new URL(window.location.href);
+				//var wtmcid = url.searchParams.get("WT.mc_id");
+				var wtmcid = getQuerystring("WT.mc_id");
+				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
+					//setCookie('subscribecookie', 'displayed', 180);
+					createCookie('subscribecookie', 'displayed', 180, false)
+				} else {
+					if($("#subscribe").length==1){
+						$("#subscribe").modal({show:true});
+						//setCookie('subscribecookie', 'displayed', 0);
+						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
+						if (navigator.userAgent.indexOf("MSIE") > 0) {
+							createCookie('subscribecookie', 'displayed', 1, false)
+						} else {
+							createCookie('subscribecookie', 'displayed', -1, true)
+						}
+ 					}
+				}
+			}
+		}
+	});
+
+    });
 
 // $(document).ready(function(){
 // 	$("#news-overlay-subscribe").on("click", function() {
