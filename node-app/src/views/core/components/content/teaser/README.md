@@ -5,13 +5,13 @@ JSON Format
 {
     "desk-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
     "mob-image-link": "https://www.sunlife.ca/ca/About+us/Achievements?vgnLocale=en_CA#trustedbrand",
-    "desk-image-src": "https://www.sunlife.com/static/ca/Learn%20and%20Plan/images/nc61-getty-877023506-landing-page-534x400.jpg",
+    "desk-image-src": "https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg",
     "mob-image-src": "https://www.sunlife.com/static/ca/About%20us/Newsroom/istock_55332366_thb_u_newsroom_220x220.jpg",
     "desk-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
     "mob-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
     "text": "TRUSTED BRAND 10 YEARS IN A ROW",
     "is-right-aligned-image": false,
-    "text-alignment": "middle-aligned-text",
+    "text-alignment": "bottom-aligned-text",
     "image-type": "",
     "img-border": "",
     "wrapper-class": "banner-section",
@@ -32,5 +32,6 @@ JSON Format
 <!-- /static/ca/About%20us/Donations%20and%20sponsorships/my_caring_company_thb_u_220x220.png -->
 <!-- /static/ca/About%20us/Donations%20and%20sponsorships/Sponsorships/toronto_raptors_logo_thb_u_sponsorships_220x220.png -->
 <!-- /static/ca/About%20us/Newsroom/istock_55332366_thb_u_newsroom_220x220.jpg -->
+<!-- /static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg -->
 
 <!-- if border-bottom is required below banner, add 'yellow-border-bottom' in wrapper-class -->
