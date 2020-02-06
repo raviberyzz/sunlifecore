@@ -100,10 +100,10 @@ $(document).ready(function () {
     
         //var strings = document.documentElement.lang.indexOf("fr") >= 0 ? stringsFr : stringsEn;
     
-        var resultTemplate = $($.parseHTML($("#search-result-item").text())).filter(".search-result-item");
-        var filterItemTemplate = $($.parseHTML($("#search-result-filter-item").text())).filter(".check-container");
-        var paginationFirst = $($.parseHTML($("#search-result-pagination-first").text())).filter("li");
-        var paginationItem = $($.parseHTML($("#search-result-pagination-item").text())).filter("li");
+        var resultTemplate = $($("#search-result-item").html()).filter(".search-result-item");
+        var filterItemTemplate =$($("#search-result-filter-item").html()).filter(".check-container");
+        var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
+        var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
     
         function apiCall(query) {
             var deferred = jQuery.Deferred();

@@ -18,7 +18,8 @@
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 emptyText="Please configure the dropdown title."
-                                                name="./jcr:title"/>
+                                                name="./jcr:title"
+                                                required="{Boolean}false"/>
                                             <name
                                                 jcr:primaryType="nt:unstructured"
                                                 emptyText="Please configure the dropdown name."
