@@ -1,7 +1,7 @@
 @import '../../../base/core';
 
 .show-only-in-editorial {
-    display: none;
+    display: none !important;
 }
 .side-image {
     width: 100%;
@@ -10,6 +10,19 @@
     .right-item {
         float: left;
     }
+}
+.banner-section {
+    .left-image-position {
+        .left-item {
+            float: right;
+        }
+    }
+}
+.yellow-border-bottom {
+    .right-image-position, .left-image-position  {
+        border-bottom: 7px solid $primary-yellow-background;
+    }
+
 }
 .middle-aligned-text {
     .right-image-position, .left-image-position  {
@@ -27,7 +40,8 @@
 
 .bottom-aligned-text {
     .right-image-position, .left-image-position  {
-        display: inherit;
+        display: flex;
+        align-items: flex-end;
         .text-section {
             margin: 0;
         }
@@ -69,12 +83,10 @@
         float: none;
         margin-right: 0;
     }
-    .right-item {
-        position: absolute;
-    }
     .text-section {
         padding: 20px 27px;
         width: 405px;
+        position: absolute;
         p {
             margin: 0;
             padding-bottom: 10px;
@@ -119,7 +131,6 @@
             margin: 0;
             padding: 30px;
             text-align: center;
-            width: 322px;
             p {
                 margin: 0;
             }
@@ -202,10 +213,10 @@
             }
             .right-image-position {
                 .hide-in-editorial {
-                    display: none;
+                    display: none !important;
                 }
                 .show-only-in-editorial {
-                    display: inherit;
+                    display: inherit !important;
                 }
             }
         }
@@ -215,6 +226,24 @@
         img {
             width: 220px;
             height: 220px;
+        }
+    }
+}
+// IE specific css
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .bottom-aligned-text {
+        .right-image-position, .left-image-position  {
+            .text-section {
+                bottom: 0;
+            }
+        }
+    }
+    .middle-aligned-text {
+        .right-image-position, .left-image-position  {
+            .text-section {
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 }

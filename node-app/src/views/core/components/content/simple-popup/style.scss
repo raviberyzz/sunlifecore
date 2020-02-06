@@ -52,6 +52,14 @@
              }
         }
     }
+    .blue-icon-yellow-background{
+        .icon-parent{
+            height:auto;
+        }
+        .icon-style{
+            bottom:0;
+        }
+    }
 }
 @media (max-width: $mobile-screen-max){
     .subscribe-popup-wrapper{

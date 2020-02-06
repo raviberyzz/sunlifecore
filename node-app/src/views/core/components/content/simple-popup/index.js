@@ -9,5 +9,6 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-      $("#subscribe").modal({show:true});
+    //   $("#subscribe").modal({show:true});
+     
 });

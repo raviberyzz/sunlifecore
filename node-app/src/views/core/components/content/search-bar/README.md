@@ -16,6 +16,7 @@ JSON Format
     "input-text-type":"text",
     "form-button-type":"submit",
     "button-value":"Search",
-    "form-button-class":"primary-blue-button-form"
+    "form-button-class":"primary-blue-button-form",
+    "action":"https://www.sunlife.ca/ca/Search+results"
 }
 ```

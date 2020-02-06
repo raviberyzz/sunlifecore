@@ -45,10 +45,21 @@
 				$('coral-select[name="./modelTitleLevel"]').parent().show();
                 $('[name="./modalID"]').parent().show();
                 $('[name="./modalTitle"]').parent().show();
-            }else {
+                $('[name="./analyticsId"]').parent().show();
+                
+            }
+            else if(val === "simple-popup") {
+                $('[name="./modalID"]').parent().show();
+                $('[name="./analyticsId"]').parent().show();
+                $('coral-select[name="./modelTitleLevel"]').parent().hide();
+                $('[name="./modalTitle"]').parent().hide();
+                
+            }
+            else {
                 $('coral-select[name="./modelTitleLevel"]').parent().hide();
                 $('[name="./modalID"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
+                $('[name="./analyticsId"]').parent().hide();
             }
         });
     });

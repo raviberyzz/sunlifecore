@@ -3,5 +3,6 @@
 JSON Format
 ```
 {
+	"data-section-site-level": "site-level-notification"
 }
 ```

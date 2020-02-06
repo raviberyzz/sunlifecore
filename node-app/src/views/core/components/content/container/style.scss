@@ -38,17 +38,15 @@ ul {
     }
 }
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-    margin-top: 42px;
-        .icon-style {
+    form{
+        width: 100%;
+    }    
+    .icon-style {
             position: relative;
             bottom: 56px;
         }
         .icon-parent {
             height: 40px;
-        }
-        &>:last-child{
-            margin-bottom: 40px;
-
         }
         .icon-text {
             padding: 16px;
@@ -80,6 +78,9 @@ ul {
                 width: 100%;
                 max-width: 100%;
             }
+            .cmp-form-options--drop-down{
+                width: 100%;
+            }
         }
         form :not(:last-child){
 
@@ -92,6 +93,11 @@ ul {
         }
         .cmp-container > :last-child{
             padding-bottom: 24px;
+        }
+    }
+    .text-border-right {
+        .icon-text{
+            padding-right:0;
         }
     }
 }
@@ -197,8 +203,9 @@ ul {
         }
         .icon-texts {
             padding-bottom: 0;
+            padding-top: 0;
             display: table;
-            .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 font-size:1.125rem;
                 line-height:23px ;
                 padding-top:0;
@@ -228,6 +235,9 @@ ul {
         .cmp-text{
             margin-left: 76px;
         }
+    }
+    .form-container-component {
+        padding: 16px 0;
     }
 }
 .tool-card-wrapper{
@@ -285,8 +295,8 @@ ul {
             speak: none;
             display: inline-block;
             text-decoration: inherit;
-            width: 1.25em;
-            font-size: 1.2em;
+            width: 66px;
+            font-size: 40px;
             margin-right: .2em;
             text-align: center;
             font-variant: normal;

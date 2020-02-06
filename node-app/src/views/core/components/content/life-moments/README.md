@@ -4,22 +4,22 @@ JSON Format
 ```
 {
     "life-moment-wrapper": "blue-background-wrapper",
-    "list-wrapper-class": "life-moments-wrapper",
+    "list-wrapper-class": "",
     "list" : [{
         "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
-        "text" : "Starting a FAMILY"
+        "text" : "Starting a family"
     },{
         "link" : "/views/core/components/content/link-list.html",
-        "text" : "Owning a HOME"
+        "text" : "Owning a home"
     },{
         "link" : "/ca/Support/Find+a+form?vgnLocale=en_CA",
-        "text" : "Mananging your CAREER"
+        "text" : "Mananging your career"
     },{
         "link" : "/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
-        "text" : "Managing your HEALTH"
+        "text" : "Managing your health"
     },{
         "link" : "/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
-        "text" : "Planning your RETIREMENT"
+        "text" : "Planning your retirement"
     }]
 }
 ```
