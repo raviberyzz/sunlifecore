@@ -37,29 +37,27 @@
             var val = $(this).val();
             $('[name="./typeVal"]').val($(this).val());
             if(val === "modal-popup" || val === "site-notification" || val === "simple-popup") {
+                $('[name="./analyticsId"]').parent().show();
                 $('[name="./closeText"]').parent().show();
             }else {
+                $('[name="./analyticsId"]').parent().hide();
                 $('[name="./closeText"]').parent().hide();
             }
             if(val === "modal-popup") {
 				$('coral-select[name="./modelTitleLevel"]').parent().show();
                 $('[name="./modalID"]').parent().show();
                 $('[name="./modalTitle"]').parent().show();
-                $('[name="./analyticsId"]').parent().show();
-                
-            }
-            else if(val === "simple-popup") {
+
+
+            }else if(val === "simple-popup") {
                 $('[name="./modalID"]').parent().show();
-                $('[name="./analyticsId"]').parent().show();
                 $('coral-select[name="./modelTitleLevel"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
-                
-            }
-            else {
+
+            }else {
                 $('coral-select[name="./modelTitleLevel"]').parent().hide();
                 $('[name="./modalID"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
-                $('[name="./analyticsId"]').parent().hide();
             }
         });
     });

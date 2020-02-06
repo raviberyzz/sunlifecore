@@ -61,6 +61,11 @@ public interface LayoutContainerModal {
     @Inject @Optional
 	String getModalTitleLevel();
     
+    /**
+     * Gets the analytics id.
+     *
+     * @return the analytics id
+     */
     @Inject @Optional
    	String getAnalyticsId();
 }
