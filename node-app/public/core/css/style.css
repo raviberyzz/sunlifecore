@@ -3560,6 +3560,9 @@ a {
   padding: 0px;
   margin: 0; }
 
+.slf-gradient-yellow-new {
+  background: linear-gradient(#FFCB05, #EAAB00); }
+
 .with-margin .container-component:not(:first-child) {
   padding-left: 10px; }
 
@@ -3740,6 +3743,24 @@ ul {
 /*contact us box styles end here */
 
 
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: auto;
+  border: 1px solid #9a9a9a; }
+
+input[type=email] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: auto;
+  border: 1px solid #9a9a9a; }
+
 .form-group-wrapper {
   margin: 35px 0; }
 
@@ -3838,24 +3859,6 @@ input[type=radio] {
   font-weight: 700;
   margin: 10px;
   vertical-align: super; }
-
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: auto;
-  border: 1px solid #9a9a9a; }
-
-input[type=email] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: auto;
-  border: 1px solid #9a9a9a; }
 
 .input-wrapper {
   color: #9a9a9a;
@@ -4084,12 +4087,17 @@ input[type=text] {
     height: 94px;
     background-image: none; } }
 
-.grey-border-box, .grey-background-box {
+.grey-border-box, .yellow-gradient-box, .grey-background-box {
   padding: 32px 16px;
   border: 1px solid #D7D7D7; }
-  .grey-border-box p, .grey-background-box p {
+  .grey-border-box p, .yellow-gradient-box p, .grey-background-box p {
     margin: 0;
     line-height: 24px; }
+
+.yellow-gradient-box {
+  border: none;
+  text-align: center;
+  background: linear-gradient(#FFCB05, #EAAB00); }
 
 .grey-background-box {
   border: none;
@@ -4298,6 +4306,54 @@ input[type=text] {
     float: right;
     cursor: pointer; }
 
+.abc {
+  font-size: 48px;
+  line-height: 100px; }
+
+.subscribe-popup-wrapper {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  position: absolute;
+  padding-left: 0; }
+  .subscribe-popup-wrapper .modal-open {
+    overflow: hidden; }
+  .subscribe-popup-wrapper .modal-content {
+    background: #FFCB05;
+    padding: 24px 24px 40px 24px;
+    width: 800px;
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .subscribe-popup-wrapper .modal-content .close-popup {
+      font-size: 1.125rem;
+      opacity: 1;
+      margin: 0;
+      cursor: pointer; }
+    .subscribe-popup-wrapper .modal-content .modal-body {
+      margin: 24px;
+      padding: 0; }
+      .subscribe-popup-wrapper .modal-content .modal-body form {
+        display: table; }
+        .subscribe-popup-wrapper .modal-content .modal-body form > * {
+          display: table-cell; }
+        .subscribe-popup-wrapper .modal-content .modal-body form .primary-blue-button-form .cmp-form-button {
+          min-width: 100%; }
+      .subscribe-popup-wrapper .modal-content .modal-body form :not(:last-child) {
+        padding-right: 8px; }
+      .subscribe-popup-wrapper .modal-content .modal-body form :not(:first-child) {
+        padding-left: 8px; }
+  .subscribe-popup-wrapper .blue-icon-yellow-background .icon-parent {
+    height: auto; }
+  .subscribe-popup-wrapper .blue-icon-yellow-background .icon-style {
+    bottom: 0; }
+
+@media (max-width: 767px) {
+  .subscribe-popup-wrapper .modal-content {
+    width: 90%; } }
+
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
@@ -4486,54 +4542,6 @@ input[type=text] {
 @media (min-width: 768px) {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
-
-.abc {
-  font-size: 48px;
-  line-height: 100px; }
-
-.subscribe-popup-wrapper {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0;
-  position: absolute;
-  padding-left: 0; }
-  .subscribe-popup-wrapper .modal-open {
-    overflow: hidden; }
-  .subscribe-popup-wrapper .modal-content {
-    background: #FFCB05;
-    padding: 24px 24px 40px 24px;
-    width: 800px;
-    position: relative;
-    float: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-    .subscribe-popup-wrapper .modal-content .close-popup {
-      font-size: 1.125rem;
-      opacity: 1;
-      margin: 0;
-      cursor: pointer; }
-    .subscribe-popup-wrapper .modal-content .modal-body {
-      margin: 24px;
-      padding: 0; }
-      .subscribe-popup-wrapper .modal-content .modal-body form {
-        display: table; }
-        .subscribe-popup-wrapper .modal-content .modal-body form > * {
-          display: table-cell; }
-        .subscribe-popup-wrapper .modal-content .modal-body form .primary-blue-button-form .cmp-form-button {
-          min-width: 100%; }
-      .subscribe-popup-wrapper .modal-content .modal-body form :not(:last-child) {
-        padding-right: 8px; }
-      .subscribe-popup-wrapper .modal-content .modal-body form :not(:first-child) {
-        padding-left: 8px; }
-  .subscribe-popup-wrapper .blue-icon-yellow-background .icon-parent {
-    height: auto; }
-  .subscribe-popup-wrapper .blue-icon-yellow-background .icon-style {
-    bottom: 0; }
-
-@media (max-width: 767px) {
-  .subscribe-popup-wrapper .modal-content {
-    width: 90%; } }
 
 .grey-horizontal-separator .horizontal-middle-align {
   border-bottom: 2px solid #9a9a9a;
@@ -6432,6 +6440,21 @@ input[type=text] {
       .search-autocomplete .search-sayt-list li a > * {
         white-space: normal; }
 
+.search-container li {
+  list-style: none; }
+
+.search-container .search-filter-items .check-container {
+  display: none; }
+
+.search-container .search-page-item {
+  display: none; }
+
+.search-container .search-result-page-first {
+  display: none; }
+
+.search-container .search-item {
+  display: none; }
+
 .search-container .search-bottom {
   height: 50px;
   display: block; }
@@ -6535,6 +6558,7 @@ input[type=text] {
   display: block; }
 
 .search-container .search-result-items .bottom-buffer {
+  display: block;
   margin-bottom: 30px; }
   .search-container .search-result-items .bottom-buffer a {
     display: block;
