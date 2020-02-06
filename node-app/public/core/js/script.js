@@ -3142,10 +3142,10 @@ $(document).ready(function () {
     
         //var strings = document.documentElement.lang.indexOf("fr") >= 0 ? stringsFr : stringsEn;
     
-        var resultTemplate = $($.parseHTML($("#search-result-item").text())).filter(".search-result-item");
-        var filterItemTemplate = $($.parseHTML($("#search-result-filter-item").text())).filter(".check-container");
-        var paginationFirst = $($.parseHTML($("#search-result-pagination-first").text())).filter("li");
-        var paginationItem = $($.parseHTML($("#search-result-pagination-item").text())).filter("li");
+        var resultTemplate = $($("#search-result-item").html()).filter(".search-result-item");
+        var filterItemTemplate =$($("#search-result-filter-item").html()).filter(".check-container");
+        var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
+        var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
     
         function apiCall(query) {
             var deferred = jQuery.Deferred();
@@ -4030,6 +4030,19 @@ $('.tabs-wrapper .phone-numbers').click(function(){
     })
 // Phone No General Analytics ends here //
 
+// Search Page Analytics starts here //
+searchPageAnalytics();
+function searchPageAnalytics(){
+    // utag.link({ 
+    //     ev_type: "other", 
+    //     ev_action: "clk", 
+    //     ev_title: "[see table below]", 
+    //     ev_data_one: "search_count=[insert count of results]:search_filter=[insert filter name]", 
+    //     page_search_term: "[insert search term]" 
+    // });
+}
+// Search Page Analytics ends here //
+
 });
 $(document).ready(function () {
   function set_active(tab)
@@ -4158,6 +4171,27 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+
+
+
+$(document).ready(function () {
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
+		var pathName= window.location.pathname ;
+		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
+		var strLink =  $(this).attr('value');
+		strLink1 = strLink.localeCompare(pathName);
+		if(!strLink1){
+			$(this).attr("selected","selected");
+		}
+	})
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
+		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
+		window.location.href=link_selected;
+		return false;
+	});
+});
+
+
 
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
@@ -4321,8 +4355,6 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
-
-
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
@@ -4589,6 +4621,8 @@ $(document).ready(function () {
      
  });
  
+
+
 $(document).ready(function(){
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded','true');
@@ -5030,7 +5064,6 @@ $(document).ready(function () {
     })
 });
 
-
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();
@@ -5239,22 +5272,3 @@ $(document).ready(function(){
 	});
     
 });
-
-
-$(document).ready(function () {
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
-		var pathName= window.location.pathname ;
-		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
-		var strLink =  $(this).attr('value');
-		strLink1 = strLink.localeCompare(pathName);
-		if(!strLink1){
-			$(this).attr("selected","selected");
-		}
-	})
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
-		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
-		window.location.href=link_selected;
-		return false;
-	});
-});
-
