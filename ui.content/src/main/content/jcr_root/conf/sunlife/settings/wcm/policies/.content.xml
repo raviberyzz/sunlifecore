@@ -1043,7 +1043,61 @@
                                 </item0>
                             </cq:styleGroups>
                         </policy_regionalLanguageMenu>
-                    </region-language-menu>                   
+                    </region-language-menu>
+                    <life-moments jcr:primaryType="nt:unstructured">
+                        <policy_lifemoments
+                            cq:styleDefaultClasses="blue-background-wrapper"
+                            jcr:description="Policy for Life Moments"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Life Moments"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Life Moments Variation"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="yellow-background-wrapper"
+                                            cq:styleId="1580981238396"
+                                            cq:styleLabel="Home Page"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="blue-background-wrapper"
+                                            cq:styleId="1580981343777"
+                                            cq:styleLabel="Tools abd Resource Page"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_lifemoments>
+                        <policy_lifemomentshome
+                            cq:styleDefaultClasses="blue-background-wrapper"
+                            jcr:description="Policy for Life Moments Home Page"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Life Moments Home Page"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Life Moments Variation"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="yellow-background-wrapper"
+                                            cq:styleId="1580981622061"
+                                            cq:styleLabel="Home Page"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="blue-background-wrapper"
+                                            cq:styleId="1580981650644"
+                                            cq:styleLabel="Tools And Resources Page"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_lifemomentshome>
+                    </life-moments>                   
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">
