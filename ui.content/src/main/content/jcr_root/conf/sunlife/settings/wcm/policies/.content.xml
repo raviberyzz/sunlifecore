@@ -178,7 +178,12 @@
                                             cq:styleClasses="grey-background-box"
                                             cq:styleId="1579251078720"
                                             cq:styleLabel="Grey Background"
-                                            jcr:primaryType="nt:unstructured"/>                                        
+                                            jcr:primaryType="nt:unstructured"/>   
+										<item3
+                                            cq:styleClasses="yellow-gradient-box"
+                                            cq:styleId="1579001078720"
+                                            cq:styleLabel="Yellow Background"
+                                            jcr:primaryType="nt:unstructured"/>      	
                                     </cq:styles>
                                 </item0>                                
                                 <item1

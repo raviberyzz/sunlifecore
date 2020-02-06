@@ -307,4 +307,17 @@ $('.tabs-wrapper .phone-numbers').click(function(){
     })
 // Phone No General Analytics ends here //
 
+// Search Page Analytics starts here //
+searchPageAnalytics();
+function searchPageAnalytics(){
+    // utag.link({ 
+    //     ev_type: "other", 
+    //     ev_action: "clk", 
+    //     ev_title: "[see table below]", 
+    //     ev_data_one: "search_count=[insert count of results]:search_filter=[insert filter name]", 
+    //     page_search_term: "[insert search term]" 
+    // });
+}
+// Search Page Analytics ends here //
+
 });

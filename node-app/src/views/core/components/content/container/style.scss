@@ -429,7 +429,6 @@ ul {
 }
 @media (max-width:$tab-screen-max) {
     .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
-        margin-top: 32px;
         .cta-content-icon-wrapper {
             .icon-style {
                 height: 60px;
@@ -441,7 +440,7 @@ ul {
             }
             .icon-parent {
                 height: 30px;
-                //padding-bottom: 54px;
+               
             }
         }
     }
