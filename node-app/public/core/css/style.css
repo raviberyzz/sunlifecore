@@ -4210,16 +4210,6 @@ input[type=text] {
   .tabs-wrapper .tab-accordian-heading + * {
     display: none; } }
 
-.site-level-notification {
-  background-color: #feedd2;
-  padding: 24px 16px;
-  margin-bottom: 4px; }
-  .site-level-notification p {
-    margin: 0; }
-  .site-level-notification .fa-remove {
-    float: right;
-    cursor: pointer; }
-
 .slf-table.table-responsive {
   display: block;
   position: relative; }
@@ -4297,6 +4287,16 @@ input[type=text] {
 .cmp-table-comparision table tbody .large-red {
   color: #b81f41;
   font-size: 1.8em; }
+
+.site-level-notification {
+  background-color: #feedd2;
+  padding: 24px 16px;
+  margin-bottom: 4px; }
+  .site-level-notification p {
+    margin: 0; }
+  .site-level-notification .fa-remove {
+    float: right;
+    cursor: pointer; }
 
 .abc {
   font-size: 48px;
@@ -6257,6 +6257,54 @@ input[type=text] {
   .editorial-nav-desktop-wrapper {
     display: none; } }
 
+.left-nav-wrapper {
+  margin-top: 40px;
+  width: 266px; }
+  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 {
+    padding-left: 8px; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__item-link {
+      color: #424242;
+      font-size: 1rem;
+      line-height: 26px; }
+    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group {
+      margin-top: 16px; }
+      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
+        border-bottom: 2px solid #FFCB05;
+        font-weight: 700;
+        text-decoration: none; }
+      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 {
+        padding: 0 0 8px 8px; }
+        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group {
+          margin-top: 0; }
+          .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--level-2 {
+            padding: 8px 0 0 8px; }
+          .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
+            font-weight: 700;
+            text-decoration: none; }
+        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link {
+          padding: 0;
+          font-size: 1rem;
+          color: #004C6C;
+          font-weight: 400;
+          text-decoration: none; }
+        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="false"]:after {
+          content: "\f105";
+          font-family: FontAwesome;
+          padding-right: 10px;
+          padding-left: 4px; }
+        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="true"]:after {
+          content: "\f107";
+          font-family: FontAwesome;
+          padding-right: 10px;
+          padding-left: 4px; }
+      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
+        font-weight: 700;
+        text-decoration: none; }
+
+@media (max-width: 1024px) {
+  .left-nav-wrapper {
+    display: none; } }
+
 .blue-background-wrapper {
   color: #ffffff;
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat, linear-gradient(#004C6C, #002C3C);
@@ -6317,8 +6365,8 @@ input[type=text] {
 .yellow-background-wrapper {
   color: #424242;
   background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat, linear-gradient(#eaab00, #ffdd36);
-  height: 652px;
   padding-top: 48px;
+  background-size: 120% 100%;
   text-align: center;
   position: relative; }
   .yellow-background-wrapper h3 {
@@ -6438,54 +6486,6 @@ input[type=text] {
     .yellow-background-wrapper img {
       display: none; } }
 
-.left-nav-wrapper {
-  margin-top: 40px;
-  width: 266px; }
-  .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 {
-    padding-left: 8px; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__item-link {
-      color: #424242;
-      font-size: 1rem;
-      line-height: 26px; }
-    .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group {
-      margin-top: 16px; }
-      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
-        border-bottom: 2px solid #FFCB05;
-        font-weight: 700;
-        text-decoration: none; }
-      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 {
-        padding: 0 0 8px 8px; }
-        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group {
-          margin-top: 0; }
-          .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--level-2 {
-            padding: 8px 0 0 8px; }
-          .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
-            font-weight: 700;
-            text-decoration: none; }
-        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link {
-          padding: 0;
-          font-size: 1rem;
-          color: #004C6C;
-          font-weight: 400;
-          text-decoration: none; }
-        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="false"]:after {
-          content: "\f105";
-          font-family: FontAwesome;
-          padding-right: 10px;
-          padding-left: 4px; }
-        .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--level-1 .cmp-navigation__item-link[aria-expanded="true"]:after {
-          content: "\f107";
-          font-family: FontAwesome;
-          padding-right: 10px;
-          padding-left: 4px; }
-      .left-nav-wrapper .cmp-navigation__group .cmp-navigation__item--level-0 .cmp-navigation__group .cmp-navigation__item--active .cmp-navigation__item-link {
-        font-weight: 700;
-        text-decoration: none; }
-
-@media (max-width: 1024px) {
-  .left-nav-wrapper {
-    display: none; } }
-
 .two-column-wrapper .medium-yellow-background {
   background-color: #FFCB05; }
 
@@ -6535,124 +6535,6 @@ input[type=text] {
 .layout-container.no-padding div[class^="col-"] {
   padding: 0; }
 
-
-.slf-header-wrapper .desktop-sign-in .button-class {
-  display: none; }
-
-.slf-header-wrapper .desktop-header-wrapper {
-  height: 100px; }
-  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
-    height: 8px;
-    background-color: #FFCB05;
-    padding: 0; }
-  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
-    padding: 0 15px 18px 15px;
-    height: 92px;
-    /*Logo starts here*/
-    /*Logo end here*/
-    /*Utility Nav starts here*/
-    /* Utility Nav Ends here */ }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
-      position: absolute;
-      bottom: 5px;
-      height: 100%; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
-        width: 149px;
-        height: 36px;
-        cursor: pointer;
-        margin-top: 13px; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
-      float: right;
-      padding: 0; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
-        padding: 0; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
-          padding-right: 0; }
-    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
-      padding: 0;
-      /*Mega Menu strats here*/ }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
-        position: static;
-        float: left;
-        margin: -5px 0 0 200px;
-        /*Mega Menu end here*/ }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation {
-          margin-left: 0px; }
-          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .menu-content {
-            padding: 0;
-            margin-top: -12px; }
-        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow {
-          margin-left: 0px; }
-          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow .menu-content {
-            padding: 0;
-            margin-top: -12px; }
-      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
-        max-width: 375px;
-        float: right; }
-
-.slf-header-wrapper .search-autocomplete {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  background: #ffffff;
-  overflow: hidden;
-  text-decoration: none; }
-  .slf-header-wrapper .search-autocomplete ul {
-    border: 1px solid #B4B4B4;
-    margin: -1px 0 0;
-    padding: 0;
-    text-align: left;
-    list-style: none;
-    vertical-align: middle;
-    min-height: 48px;
-    display: none; }
-  .slf-header-wrapper .search-autocomplete .search-autocomplete-list {
-    padding-left: 15px;
-    font-weight: 700; }
-    .slf-header-wrapper .search-autocomplete .search-autocomplete-list li .bold {
-      color: #000000; }
-  .slf-header-wrapper .search-autocomplete .search-sayt-list {
-    border-bottom: 1px solid #B4B4B4;
-    position: relative;
-    padding-top: 2px;
-    background: #ffffff;
-    margin-top: -2px; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list .seperate {
-      width: 90%;
-      border-top: 1px solid #000000; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list :hover {
-      text-decoration: none; }
-    .slf-header-wrapper .search-autocomplete .search-sayt-list li {
-      font-size: 1rem;
-      font-weight: 400;
-      padding: 15px 10px;
-      white-space: nowrap;
-      overflow: hidden; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li .title {
-        color: #4a7295;
-        display: block; }
-        .slf-header-wrapper .search-autocomplete .search-sayt-list li .title:hover {
-          text-decoration: underline; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc {
-        color: #424242;
-        font-size: 0.875rem;
-        font-weight: normal;
-        line-height: 1.2rem;
-        padding-bottom: 4px; }
-        .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc :hover {
-          text-decoration: none; }
-      .slf-header-wrapper .search-autocomplete .search-sayt-list li a > * {
-        white-space: normal; }
-
-@media (max-width: 1024px) {
-  .desktop-header-wrapper {
-    display: none; }
-  .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper {
-    display: none; } }
-
-@media (min-width: 1025px) {
-  .mobile-header {
-    display: none; } }
 
 .icon-style:hover {
   text-decoration: none; }
@@ -6800,6 +6682,124 @@ input[type=text] {
         width: 100%;
         display: block;
         padding: 24px; } }
+
+.slf-header-wrapper .desktop-sign-in .button-class {
+  display: none; }
+
+.slf-header-wrapper .desktop-header-wrapper {
+  height: 100px; }
+  .slf-header-wrapper .desktop-header-wrapper .yellow-stripe {
+    height: 8px;
+    background-color: #FFCB05;
+    padding: 0; }
+  .slf-header-wrapper .desktop-header-wrapper .desktop-header-content {
+    padding: 0 15px 18px 15px;
+    height: 92px;
+    /*Logo starts here*/
+    /*Logo end here*/
+    /*Utility Nav starts here*/
+    /* Utility Nav Ends here */ }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo {
+      position: absolute;
+      bottom: 5px;
+      height: 100%; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-logo img {
+        width: 149px;
+        height: 36px;
+        cursor: pointer;
+        margin-top: 13px; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav {
+      float: right;
+      padding: 0; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper {
+        padding: 0; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-utility-nav .utility-nav-wrapper .utility-nav-links .search-icon-container {
+          padding-right: 0; }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation {
+      padding: 0;
+      /*Mega Menu strats here*/ }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation {
+        position: static;
+        float: left;
+        margin: -5px 0 0 200px;
+        /*Mega Menu end here*/ }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation {
+          margin-left: 0px; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation .menu-content {
+            padding: 0;
+            margin-top: -12px; }
+        .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow {
+          margin-left: 0px; }
+          .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-navigation .desktop-mega-menu .desktop-primary-navigation-yellow .menu-content {
+            padding: 0;
+            margin-top: -12px; }
+      .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-sunlife-navigation .desktop-sign-button {
+        max-width: 375px;
+        float: right; }
+
+.slf-header-wrapper .search-autocomplete {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  text-decoration: none; }
+  .slf-header-wrapper .search-autocomplete ul {
+    border: 1px solid #B4B4B4;
+    margin: -1px 0 0;
+    padding: 0;
+    text-align: left;
+    list-style: none;
+    vertical-align: middle;
+    min-height: 48px;
+    display: none; }
+  .slf-header-wrapper .search-autocomplete .search-autocomplete-list {
+    padding-left: 15px;
+    font-weight: 700; }
+    .slf-header-wrapper .search-autocomplete .search-autocomplete-list li .bold {
+      color: #000000; }
+  .slf-header-wrapper .search-autocomplete .search-sayt-list {
+    border-bottom: 1px solid #B4B4B4;
+    position: relative;
+    padding-top: 2px;
+    background: #ffffff;
+    margin-top: -2px; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list .seperate {
+      width: 90%;
+      border-top: 1px solid #000000; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list :hover {
+      text-decoration: none; }
+    .slf-header-wrapper .search-autocomplete .search-sayt-list li {
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 15px 10px;
+      white-space: nowrap;
+      overflow: hidden; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li .title {
+        color: #4a7295;
+        display: block; }
+        .slf-header-wrapper .search-autocomplete .search-sayt-list li .title:hover {
+          text-decoration: underline; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc {
+        color: #424242;
+        font-size: 0.875rem;
+        font-weight: normal;
+        line-height: 1.2rem;
+        padding-bottom: 4px; }
+        .slf-header-wrapper .search-autocomplete .search-sayt-list li .desc :hover {
+          text-decoration: none; }
+      .slf-header-wrapper .search-autocomplete .search-sayt-list li a > * {
+        white-space: normal; }
+
+@media (max-width: 1024px) {
+  .desktop-header-wrapper {
+    display: none; }
+  .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper {
+    display: none; } }
+
+@media (min-width: 1025px) {
+  .mobile-header {
+    display: none; } }
 
 .footer-copyright-wrapper {
   background-color: #004C6C;
