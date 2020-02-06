@@ -4158,6 +4158,22 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
+
 
 
 
@@ -4177,7 +4193,6 @@ $(document).ready(function () {
 		return false;
 	});
 });
-
 
 
 $(document).ready(function () {
@@ -4312,7 +4327,12 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-    //   $("#subscribe").modal({show:true});
+      $(".cmp-form-button").keydown(function (e) {
+        if (e.which == 9) {
+          e.preventDefault();
+          $(".close-popup").focus();
+        }
+      });
      
 });
 $(document).ready(function () {
@@ -4615,6 +4635,9 @@ $(document).ready(function () {
             });
         }
     }
+
+    //For legal text Height
+    $('.right-navigation-wrapper form .legal-text').parent().css({'text-size':'14px','line-height':'18px'});
      
  });
  
@@ -4889,21 +4912,6 @@ $(document).ready(function(){
  );
 });
 $(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
-$(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
 		$(this).parent().parent().parent().siblings().children().children().children('.list-div').css('display', 'none');
@@ -4992,6 +5000,7 @@ $(document).ready(function(){
 });
 
 
+
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -5050,7 +5059,6 @@ $(document).ready(function () {
         $(this).parent().addClass("open");
     })
 });
-
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();

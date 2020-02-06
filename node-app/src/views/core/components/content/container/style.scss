@@ -161,6 +161,12 @@ ul {
             width: 150px !important;
             height: 150px;
         }
+        .left-image-position, .right-image-position {
+            display: inherit;
+            .left-item, .right-item {
+                display: inherit;
+            }
+        }
     }
     .container-component {
         .cmp-container > div {
@@ -256,6 +262,12 @@ ul {
             width: auto;
             padding: 15px 0;
             border-radius: 50%;
+        }
+        .left-image-position, .right-image-position {
+            display: inherit;
+            .left-item, .right-item {
+                display: inherit;
+            }
         }
     }
 }
