@@ -15,7 +15,7 @@ JSON Format
     "form-button-type":"submit",
     "button-value":"Search",
     "form-button-class":"primary-blue-button-form",
-    "action":"/content/sunlife/external/ca/en/search-result.html"
+    "action":"/views/core/components/content/html-component.html"
 }
 ```
-<!-- Available locations for search-page in action tag which is located in serach form are for UI-Local is "/views/core/components/content/search-result.html", for AEM-Local is "/content/sunlife/external/ca/en/search-result.html" -->
+<!-- Available locations for search-page in action tag which is located in serach form are for UI-Local is "/views/core/components/content/html-component.html", for AEM-Local is "/content/sunlife/external/ca/en/search-result.html" -->

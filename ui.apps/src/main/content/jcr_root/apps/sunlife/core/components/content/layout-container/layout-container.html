@@ -8,8 +8,8 @@
 				<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
 			</div>
         </sly>
-        <sly data-sly-test="${layout.type == 'site-notification'}">
-            <div class="site-level-notification">
+        <sly data-sly-test="${layout.type == 'site-notification'}" >
+            <div class="site-level-notification" data-section="${layout.analyticsId}">
                 <div class="close-div">
                     <span class="sr-only">${layout.closeText}</span>
                     <span class="fa fa-remove collapse-x" tabindex="0">&nbsp;</span>

@@ -7,6 +7,12 @@
         line-height: 24px;
     }
 }
+.yellow-gradient-box {
+    @extend .grey-border-box;
+    border: none;
+    text-align: center;
+    background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+}
 .grey-background-box {
     @extend .grey-border-box;
     border: none;
@@ -39,7 +45,7 @@ color: $medium-blue-color;
 }
 .fa-info-circle:hover{
     cursor: pointer;
-    text-decoration: none;    
+    text-decoration: none;
   }
 .tooltip-inner{
     background-color: $medium-blue-color;
