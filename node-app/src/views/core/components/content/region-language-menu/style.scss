@@ -305,9 +305,21 @@
 
 /* link farm table styles start here */
 .cmp-linkfarm-table{
+   
     /* desktop styles start */
        .desktop-linkfarm-table{
+        margin-bottom: 40px;
+        border: 1px #CCD8DA solid;
+        margin: 15px 0 0 0;
           .slf-region{
+              .title-region{
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 23px;
+                background-color: #D7D7D7;
+                padding: 15px 30px;
+                margin: 0 -15px;
+              }
               .content-region{
                   .first_level_list-unstyled{
                       li {
