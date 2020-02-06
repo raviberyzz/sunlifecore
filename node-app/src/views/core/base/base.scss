@@ -187,6 +187,9 @@ a {
     padding: 0px;
     margin: 0;
 }
+.slf-gradient-yellow-new {
+    background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+}
 .with-margin {
     .container-component {
         &:not(:first-child) {
