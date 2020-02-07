@@ -37,6 +37,7 @@
         }
     }
 }
+
 .bottom-aligned-text {
     .right-image-position, .left-image-position  {
         display: flex;
@@ -57,6 +58,11 @@
 }
 .right-item {
     display: table;
+}
+.view-all-category:after{
+    text-decoration:none;
+    display:inline-block;
+   
 }
 .mobile-image {
     display: none;
