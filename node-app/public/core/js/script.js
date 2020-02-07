@@ -3740,6 +3740,10 @@ var _pageCannonicalURL=' ';
 if(utag_data.page_canonical_url_default){   
     _pageCannonicalURL=utag_data.page_canonical_url_default;
 }
+var _searchPageInputTerm='';
+var _searchFilterItem='';
+var _searchFilterItemResult='';
+var _windowLoaction=$(location).attr('pathname');
 
 /* Global Variable defining ends here*/
 
@@ -4031,15 +4035,72 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 // Phone No General Analytics ends here //
 
 // Search Page Analytics starts here //
-searchPageAnalytics();
-function searchPageAnalytics(){
-    // utag.link({ 
-    //     ev_type: "other", 
-    //     ev_action: "clk", 
-    //     ev_title: "[see table below]", 
-    //     ev_data_one: "search_count=[insert count of results]:search_filter=[insert filter name]", 
-    //     page_search_term: "[insert search term]" 
-    // });
+if ((_windowLoaction.indexOf("search-result") >= 0) || (_windowLoaction.indexOf("search+result") >=0) || (_windowLoaction.indexOf("search-results") >= 0) || (_windowLoaction.indexOf("search+results") >= 0) || (_windowLoaction.indexOf("html-component") >= 0)){
+    if('.search-container'){
+        function searchPageVariable(){
+            _searchPageInputTerm=$('.search-container .form-group-wrapper input').val();
+            _searchFilterItem=$('.search-container .check-container').find('.active').find('.txt').text();
+            _searchFilterItemResult=$('.search-container .check-container').find('.active').find('.num').text();
+        }
+        /* suggestion search_typeahead_text click analytics starts here */
+        $('.search-container .search-autocomplete').click(function(){
+            localStorage.setItem("searchComplete","true");
+        });
+        if (localStorage.getItem("searchComplete") === 'true') {
+            function searAutoComplete(){
+                searchPageVariable();  
+                alert(_searchFilterItemResult+"+"+_searchFilterItem+"+"+_searchPageInputTerm);               
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_typeahead_text", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                });
+                localStorage.setItem("searchComplete","false");
+            }
+            setTimeout(searAutoComplete,1000);    
+        }       
+        /* suggestion search_typeahead_text click analytics starts here */
+        /* Filter search_filter trigger analytics starts here */
+        $('#search-result-filters #search-result-filter-list').click(function(){
+            localStorage.setItem("searchFilter","true");
+        });
+        if (localStorage.getItem("searchFilter") === 'true') {
+            function searchPageFilter(){
+                searchPageVariable();
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_filter", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                }); 
+                localStorage.setItem("searchFilter","false");
+            }
+            setTimeout(searchPageFilter,1000);
+        }
+        /* Filter search_filter trigger analytics ends here */
+        /* search_client input Search button trigger analytics starts here */
+        $('.search-container .slf-search .button-wrapper button').click(function(){
+            localStorage.setItem("searButtonClick","true");      
+        });
+        if (localStorage.getItem("searButtonClick") === 'true') {
+            function abc(){
+                searchPageVariable();
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_client input", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                });
+                localStorage.setItem("searButtonClick","false");
+            }
+            setTimeout(abc,800);     
+        }    
+        /* search_client input Search button trigger analytics starts here */
+    }
 }
 // Search Page Analytics ends here //
 
@@ -4171,6 +4232,25 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+$(document).ready(function(){
+    PDRTJS_settings_7600084 = {
+        "id" : "7600084",
+        "unique_id" : "adca73a6ceb78610VgnVCM1000001794d09fRCRD",
+        "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
+        "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
+        };
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
 
 
 
@@ -4314,24 +4394,25 @@ $(document).ready(function () {
 		}
 	});
 });
-$(document).ready(function(){
-      var popHeight=$(window).height();
-      $(".subscribe-popup-wrapper").height(popHeight);
-    popUpWidth();   
-    function popUpWidth(){
-        var popWidth=$(window).width();
-        $(".subscribe-popup-wrapper").width(popWidth);
-      };
-      $(window).resize(function() {
-            popUpWidth();
-      });
-      $(".cmp-form-button").keydown(function (e) {
-        if (e.which == 9) {
-          e.preventDefault();
-          $(".close-popup").focus();
-        }
-      });
-     
+$(document).ready(function () {
+  var popHeight = $(window).height();
+  $(".subscribe-popup-wrapper").height(popHeight);
+  popUpWidth();
+  function popUpWidth() {
+    var popWidth = $(window).width();
+    $(".subscribe-popup-wrapper").width(popWidth);
+  };
+  $(window).resize(function () {
+    popUpWidth();
+  });
+  $(".cmp-form-button").keydown(function (e) {
+    if (e.which == 9) {
+      e.preventDefault();
+      $(".close-popup").focus();
+    }
+  });
+  //   $("#subscribe").modal({show:true});
+
 });
 
 $(document).ready(function () {
@@ -4677,39 +4758,41 @@ $(document).ready(function(){
     
   /*link farm table code starts here */
   var linkFarm = $(".cmp-linkfarm-table");
-  if(linkFarm.length){
-      /*desktop logic start*/
-      $(".cmp-linkfarm-table desktop-linkfarm-table .collapse").removeClass('.desktop-region-language-menu-wrapper');
-      $('.list-unstyled').addClass('in');
-      $('.slf-language').remove();
-      $('.cross-btn').remove();
-      $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
-      /*desktop logic end */
-        $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-region-language-menu-wrapper");
-        $('.go-back').remove();
-        $('.slf-tab-region').remove();
-        $('.tab-content .tab-pane').addClass('active');
-   $(".region-link").addClass("slf-accordion-arrow");
-   $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
-       if($(this).attr('aria-expanded') == 'false'){
-           $(this).attr('aria-expanded','true');
-           $(this).siblings().toggle('fast');
-       }
-       else{
-           $(this).attr('aria-expanded','false');
-           $(this).siblings().toggle('fast');
-       }
-       $(this).closest('li').siblings().find(".collapse").css("display", "none");
-       $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
-        $(this).siblings().find('.collapse').css("display","block");
-			if($(this).closest(".region-link").find(".collapse").length === 1){
-                var offset = $(this).offset();
-				$("html, body").animate({
-					scrollTop :offset.top
-				});
-			}
-   });
-
+        if(linkFarm.length){
+            /*desktop logic start*/
+            $(".cmp-linkfarm-table .desktop-linkfarm-table .collapse").removeClass('desktop-region-language-menu-wrapper');
+            $('.list-unstyled').addClass('in');
+            $('.slf-language').remove();
+            $('.cross-btn').remove();
+            $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
+            /*desktop logic end */
+                $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-language-region");
+                $('.go-back').remove();
+                $('.slf-tab-region').remove();
+                $('.tab-content .tab-pane').addClass('active');
+                $(".region-link").addClass("slf-accordion-arrow");
+                $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
+            if($(this).attr('aria-expanded') == 'false'){
+                $(this).attr('aria-expanded','true');
+                $(this).siblings().toggle('fast');
+            }
+            else{
+                $(this).attr('aria-expanded','false');
+                $(this).siblings().toggle('fast');
+            }
+            $(this).closest('li').siblings().find(".collapse").css("display", "none");
+            $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
+                $(this).siblings().find('.collapse').css("display","block");
+                    if($(this).closest(".region-link").find(".collapse").length === 1){
+                        var offset = $(this).offset();
+                        $("html, body").animate({
+                            scrollTop :offset.top
+                        });
+                    }
+        });
+        if(window.innerWidth < 767){
+            $('.desktop-linkfarm-table').attr("style","display:none");
+        }
   }
    /*link farm table code ends here */
 });
@@ -4736,6 +4819,12 @@ $(document).ready(function(){
       });
     }
   });
+});
+$(document).ready(function(){
+  
+});
+$(function(){
+ 
 });
 
 $(document).ready(function () {
@@ -5047,7 +5136,7 @@ $(document).ready(function () {
         }
         else {
             $("#language-btn").attr('aria-expanded', 'true');
-            setTimeout(langTrue,400);
+            setTimeout(langTrue,230);
         }
     });
     $('.sunLanguageCrossBtn').click(function () {
@@ -5209,25 +5298,6 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
-$(document).ready(function(){
-    PDRTJS_settings_7600084 = {
-        "id" : "7600084",
-        "unique_id" : "adca73a6ceb78610VgnVCM1000001794d09fRCRD",
-        "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
-        "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
-        };
-        //Polldaddy library
-        (function(d,c,j){
-            if(!document.getElementById(j)){
-                var pd=d.createElement(c),s;
-                pd.id=j;
-                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
-                s=document.getElementsByTagName(c)[0];
-                s.parentNode.insertBefore(pd,s);
-            }
-        }
-        (document,'script','pd-rating-js'));
-})
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
