@@ -80,8 +80,8 @@
 .yellow-background-wrapper{
     color: $dark-grey-color;
     background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat,linear-gradient(#eaab00, #ffdd36);
-    height: 652px;
     padding-top: 48px;
+    background-size: 120% 100%;
     text-align: center;
     position: relative;
     h3{

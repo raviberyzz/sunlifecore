@@ -261,6 +261,9 @@ $(document).ready(function () {
             });
         }
     }
+
+    //For legal text Height
+    $('.right-navigation-wrapper form .legal-text').parent().css({'text-size':'14px','line-height':'18px'});
      
  });
  
