@@ -5,6 +5,39 @@ ul {
 .icon-texts {
     padding-bottom: 24px;
 }
+// content block with icon start
+
+.content-block-icon {
+    background-color: $light-grey-20;
+    padding-bottom: 24px;
+    .cross-cta-wrapper {
+        background-color: transparent;
+        border: none;
+        &:first-child {
+            padding: 32px 24px 40px 16px;
+        }
+        &:last-child {
+            padding: 32px 16px 40px 24px;
+        }
+        .icon-text {
+            ul {
+                li {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .mega-menu-icon-wrapper .icon-style {
+            height: 40px;
+            width: 40px;
+            padding: 5px;
+            font-size: 1.5rem;
+            border: 1px solid #ffffff;
+        }
+    }
+
+}
+
+// content block with icon end
 .content-highlight {
     background-color : $light-grey-20;
     padding: 24px 16px;
@@ -40,7 +73,7 @@ ul {
 .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
     form{
         width: 100%;
-    }    
+    }
     .icon-style {
             position: relative;
             bottom: 56px;
@@ -89,7 +122,7 @@ ul {
         }
         &>:last-child{
             margin-bottom: 0px;
-           
+
         }
         .cmp-container > :last-child{
             padding-bottom: 24px;
@@ -325,17 +358,18 @@ ul {
 
 }
 .editorial-articles-wrapper {
-    .side-image {
-        height:220px;
-        width:220px;
-
-    }
-     .left-image-position{
-        text-align:center;
+    .image-text-wrapper{
+        .left-image-position, .right-image-position {
+            display: inherit;
+            text-align:center;
+            .left-item, .right-item {
+                display: inherit;
             }
-     .text-section{
+        }
+    }
+    .text-section{
         padding: 0 10px;
-                    }
+    }
 }
 @media (max-width:$mobile-screen-max) {
     .container-component {
@@ -434,7 +468,7 @@ ul {
                 height: 60px;
                 width: 60px;
                 position: relative;
-                bottom: 30px;
+                bottom: 46px;
                 padding: 11px;
                 font-size: 2.125rem;
             }
