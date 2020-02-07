@@ -1,9 +1,6 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
     float: left;
-    // .col-xs-12:first-child{
-    //     padding: 30px 20px 0 20px;
-    // }
     .cmp-container{
     margin: 40px 0;
     text-align: center;
@@ -19,6 +16,9 @@
             .collapse {
                 display: block !important;
             }
+        }
+        .accordion-heading{
+            margin-top: 10px;
         }
         .accordion-heading[aria-expanded="false"]:before {
             display: none;
@@ -54,18 +54,19 @@
     }
     .button-wrapper {
         
-            max-width: 100%;
+        max-width: 100%;
         width: 100%;
         
         .cmp-form-button{
             max-width: 100% ;
             width: 100%;
-            margin: 0 0 16px 0;
+            margin: 0 0 8px 0;
         }
     }
     .cmp-form-text{
         input{
             width: 100%;
+            
         }
     }
     .input-wrapper,.cmp-form-text{
@@ -100,6 +101,9 @@
             padding-bottom: 0;
         }
     }
+    }
+    .legal-text{
+        color: $dark-grey-color;
     }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)

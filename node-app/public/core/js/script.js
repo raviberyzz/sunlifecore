@@ -3142,10 +3142,10 @@ $(document).ready(function () {
     
         //var strings = document.documentElement.lang.indexOf("fr") >= 0 ? stringsFr : stringsEn;
     
-        var resultTemplate = $($.parseHTML($("#search-result-item").text())).filter(".search-result-item");
-        var filterItemTemplate = $($.parseHTML($("#search-result-filter-item").text())).filter(".check-container");
-        var paginationFirst = $($.parseHTML($("#search-result-pagination-first").text())).filter("li");
-        var paginationItem = $($.parseHTML($("#search-result-pagination-item").text())).filter("li");
+        var resultTemplate = $($("#search-result-item").html()).filter(".search-result-item");
+        var filterItemTemplate =$($("#search-result-filter-item").html()).filter(".check-container");
+        var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
+        var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
     
         function apiCall(query) {
             var deferred = jQuery.Deferred();
@@ -4030,6 +4030,19 @@ $('.tabs-wrapper .phone-numbers').click(function(){
     })
 // Phone No General Analytics ends here //
 
+// Search Page Analytics starts here //
+searchPageAnalytics();
+function searchPageAnalytics(){
+    // utag.link({ 
+    //     ev_type: "other", 
+    //     ev_action: "clk", 
+    //     ev_title: "[see table below]", 
+    //     ev_data_one: "search_count=[insert count of results]:search_filter=[insert filter name]", 
+    //     page_search_term: "[insert search term]" 
+    // });
+}
+// Search Page Analytics ends here //
+
 });
 $(document).ready(function () {
   function set_active(tab)
@@ -4158,6 +4171,27 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+
+
+
+$(document).ready(function () {
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
+		var pathName= window.location.pathname ;
+		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
+		var strLink =  $(this).attr('value');
+		strLink1 = strLink.localeCompare(pathName);
+		if(!strLink1){
+			$(this).attr("selected","selected");
+		}
+	})
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
+		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
+		window.location.href=link_selected;
+		return false;
+	});
+});
+
+
 
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
@@ -4291,9 +4325,15 @@ $(document).ready(function(){
       $(window).resize(function() {
             popUpWidth();
       });
-    //   $("#subscribe").modal({show:true});
+      $(".cmp-form-button").keydown(function (e) {
+        if (e.which == 9) {
+          e.preventDefault();
+          $(".close-popup").focus();
+        }
+      });
      
 });
+
 $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
@@ -4586,6 +4626,9 @@ $(document).ready(function () {
             });
         }
     }
+
+    //For legal text Height
+    $('.right-navigation-wrapper form .legal-text').parent().css({'text-size':'14px','line-height':'18px'});
      
  });
  
@@ -4934,6 +4977,14 @@ $(document).ready(function () {
             var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
+        $('.yellow-background-wrapper').siblings('.layout-container').css('position','absolute');
+        $('.yellow-background-wrapper').siblings('.layout-container').css('width','94%');
+        $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
+        $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-28px');
+        $('.yellow-background-wrapper').css('z-index','-1');
+        var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
+        $('.yellow-background-wrapper').css('padding-top',layoutHeight);
+        $('.yellow-background-wrapper').css('padding-bottom',"27px");
         $('.yellow-background-wrapper p:last').css('margin-bottom','16px');
     }
     else{
@@ -5030,7 +5081,6 @@ $(document).ready(function () {
     })
 });
 
-
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();
@@ -5091,43 +5141,30 @@ $(document).ready(function () {
 
 	//for CTA_Height
 	var cta_height=0;
-// 	$('.yellow-icon-blue-background, .blue-icon-yellow-background').each(function(){
-// 	 cta_height=$(this).parents('.layout-container').height();
-// 	 $(this).children().height(cta_height-80);
-//  });
-
-// $('.yellow-icon-white-background').each(function(){
-// 	  cta_height=$(this).parents('.layout-container').height();
-// 	 $(this).children().height(cta_height-80);
-//  });
-
-// 	 var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
-//     cta_icon_text.each(function (index) {
-// 		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
-// 	});
-// 	cta_icon_text.each(function (index) {
-// 		$(this).height(taeser_height);
-
-// 	});
-
-
-	//for CTA_Height
-    var cta_height=0;
+	if ((   $(window).width() >767 ))
+	{
 		$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background').each(function(){
-		 cta_height=$(this).parents('.layout-container').height();
-		 $(this).children().height(cta_height);
-	 });
-	var counter = 0;
-    $('.yellow-icon-white-background').each(function(){
-        if (counter === 0) {
-			cta_height=$(this).parents('.layout-container').height() ;
-        } else {
-			cta_height=$(this).parents('.layout-container').height() - 2;
-        }
-        $(this).children().height(cta_height);
-        counter ++;
-	 });
-
+			cta_height=$(this).parents('.layout-container').height();
+			$(this).children().height(cta_height);
+		});
+	   var counter = 0;
+	   $('.yellow-icon-white-background').each(function(){
+		   if (counter === 0) {
+			   cta_height=$(this).parents('.layout-container').height() ;
+		   } else {
+			   cta_height=$(this).parents('.layout-container').height() - 2;
+		   }
+		   $(this).children().height(cta_height);
+		   counter ++;
+		});
+   
+	}
+	else{
+		$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').each(function(){
+			$(this).children().css('height','auto');
+		});
+	}
+		
     var cta_icon_text=$('.no-padding .yellow-icon-white-background').children().find('.icon-text');
     cta_icon_text.each(function (index) {
 		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
@@ -5175,7 +5212,7 @@ if('.breadcrumb'){
 $(document).ready(function(){
     PDRTJS_settings_7600084 = {
         "id" : "7600084",
-        "unique_id" : "8d314f8aaab44610VgnVCM1000001794d09fRCRD",
+        "unique_id" : "adca73a6ceb78610VgnVCM1000001794d09fRCRD",
         "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
         "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
         };
@@ -5239,22 +5276,3 @@ $(document).ready(function(){
 	});
     
 });
-
-
-$(document).ready(function () {
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
-		var pathName= window.location.pathname ;
-		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
-		var strLink =  $(this).attr('value');
-		strLink1 = strLink.localeCompare(pathName);
-		if(!strLink1){
-			$(this).attr("selected","selected");
-		}
-	})
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
-		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
-		window.location.href=link_selected;
-		return false;
-	});
-});
-

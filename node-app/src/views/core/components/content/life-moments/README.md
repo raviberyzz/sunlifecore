@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "life-moment-wrapper": "blue-background-wrapper",
+    "life-moment-wrapper": "yellow-background-wrapper",
     "list-wrapper-class": "",
     "list" : [{
         "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
@@ -20,7 +20,19 @@ JSON Format
     },{
         "link" : "/ca/Welcome+to+Sun+Life+Financial?vgnLocale=en_CA",
         "text" : "Planning your retirement"
-    }]
+    }],
+    "form-text-id":"q-top",
+    "form-text-class":"",
+    "form-text-label":"",
+    "place-holder" : "Search",
+    "form-text-name":"q",
+    "text-length":"",
+    "error-message":"",
+    "validation-pattern": "",
+    "input-text-type":"text",
+    "form-button-type":"submit",
+    "button-value":"Search",
+    "form-button-class":"primary-blue-button-form"
 }
 ```
 

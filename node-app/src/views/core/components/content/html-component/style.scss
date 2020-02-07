@@ -68,6 +68,23 @@
     }
 }
 .search-container{
+    li{
+        list-style:none;
+    }
+    .search-filter-items{
+        .check-container{
+            display:none;
+        }
+    }
+    .search-page-item{
+        display:none;
+    }
+    .search-result-page-first{
+        display:none;
+    }
+    .search-item{
+        display: none;
+    }   
     .search-bottom{  
         height:50px;  
         display:block;    
@@ -202,6 +219,7 @@
     }
     .search-result-items{
         .bottom-buffer{
+            display: block;
             margin-bottom: 30px;
             a{
                 display: block;
@@ -396,8 +414,4 @@
     .search-result-toggle{
         display: block;
     }
-}
-
-.panel-group{
-    display:none;
 }
