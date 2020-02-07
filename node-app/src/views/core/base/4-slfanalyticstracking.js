@@ -17,6 +17,10 @@ var _pageCannonicalURL=' ';
 if(utag_data.page_canonical_url_default){   
     _pageCannonicalURL=utag_data.page_canonical_url_default;
 }
+var _searchPageInputTerm='';
+var _searchFilterItem='';
+var _searchFilterItemResult='';
+var _windowLoaction=$(location).attr('pathname');
 
 /* Global Variable defining ends here*/
 
@@ -308,15 +312,72 @@ $('.tabs-wrapper .phone-numbers').click(function(){
 // Phone No General Analytics ends here //
 
 // Search Page Analytics starts here //
-searchPageAnalytics();
-function searchPageAnalytics(){
-    // utag.link({ 
-    //     ev_type: "other", 
-    //     ev_action: "clk", 
-    //     ev_title: "[see table below]", 
-    //     ev_data_one: "search_count=[insert count of results]:search_filter=[insert filter name]", 
-    //     page_search_term: "[insert search term]" 
-    // });
+if ((_windowLoaction.indexOf("search-result") >= 0) || (_windowLoaction.indexOf("search+result") >=0) || (_windowLoaction.indexOf("search-results") >= 0) || (_windowLoaction.indexOf("search+results") >= 0) || (_windowLoaction.indexOf("html-component") >= 0)){
+    if('.search-container'){
+        function searchPageVariable(){
+            _searchPageInputTerm=$('.search-container .form-group-wrapper input').val();
+            _searchFilterItem=$('.search-container .check-container').find('.active').find('.txt').text();
+            _searchFilterItemResult=$('.search-container .check-container').find('.active').find('.num').text();
+        }
+        /* suggestion search_typeahead_text click analytics starts here */
+        $('.search-container .search-autocomplete').click(function(){
+            localStorage.setItem("searchComplete","true");
+        });
+        if (localStorage.getItem("searchComplete") === 'true') {
+            function searAutoComplete(){
+                searchPageVariable();  
+                alert(_searchFilterItemResult+"+"+_searchFilterItem+"+"+_searchPageInputTerm);               
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_typeahead_text", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                });
+                localStorage.setItem("searchComplete","false");
+            }
+            setTimeout(searAutoComplete,1000);    
+        }       
+        /* suggestion search_typeahead_text click analytics starts here */
+        /* Filter search_filter trigger analytics starts here */
+        $('#search-result-filters #search-result-filter-list').click(function(){
+            localStorage.setItem("searchFilter","true");
+        });
+        if (localStorage.getItem("searchFilter") === 'true') {
+            function searchPageFilter(){
+                searchPageVariable();
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_filter", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                }); 
+                localStorage.setItem("searchFilter","false");
+            }
+            setTimeout(searchPageFilter,1000);
+        }
+        /* Filter search_filter trigger analytics ends here */
+        /* search_client input Search button trigger analytics starts here */
+        $('.search-container .slf-search .button-wrapper button').click(function(){
+            localStorage.setItem("searButtonClick","true");      
+        });
+        if (localStorage.getItem("searButtonClick") === 'true') {
+            function abc(){
+                searchPageVariable();
+                utag.link({ 
+                    ev_type: "other", 
+                    ev_action: "clk", 
+                    ev_title: "onsite search_client input", 
+                    ev_data_one: "search_count="+_searchFilterItemResult+":search_filter="+_searchFilterItem, 
+                    page_search_term: _searchPageInputTerm
+                });
+                localStorage.setItem("searButtonClick","false");
+            }
+            setTimeout(abc,800);     
+        }    
+        /* search_client input Search button trigger analytics starts here */
+    }
 }
 // Search Page Analytics ends here //
 

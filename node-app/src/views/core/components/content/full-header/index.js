@@ -23,7 +23,7 @@ $(document).ready(function () {
         }
         else {
             $("#language-btn").attr('aria-expanded', 'true');
-            setTimeout(langTrue,400);
+            setTimeout(langTrue,230);
         }
     });
     $('.sunLanguageCrossBtn').click(function () {
