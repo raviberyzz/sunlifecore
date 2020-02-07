@@ -4233,6 +4233,8 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 /* Accordion accessibility ends here */
 });
 
+
+
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
 		var pathName= window.location.pathname ;
@@ -4249,9 +4251,6 @@ $(document).ready(function () {
 		return false;
 	});
 });
-
-
-
 
 
 
@@ -4286,6 +4285,7 @@ $(document).ready(function () {
        });
   });
 });
+
 $(document).ready(function(){
     $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
@@ -4317,7 +4317,6 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.slf-table').length){
@@ -4376,24 +4375,25 @@ $(document).ready(function () {
 		}
 	});
 });
-$(document).ready(function(){
-      var popHeight=$(window).height();
-      $(".subscribe-popup-wrapper").height(popHeight);
-    popUpWidth();   
-    function popUpWidth(){
-        var popWidth=$(window).width();
-        $(".subscribe-popup-wrapper").width(popWidth);
-      };
-      $(window).resize(function() {
-            popUpWidth();
-      });
-      $(".cmp-form-button").keydown(function (e) {
-        if (e.which == 9) {
-          e.preventDefault();
-          $(".close-popup").focus();
-        }
-      });
-     
+$(document).ready(function () {
+  var popHeight = $(window).height();
+  $(".subscribe-popup-wrapper").height(popHeight);
+  popUpWidth();
+  function popUpWidth() {
+    var popWidth = $(window).width();
+    $(".subscribe-popup-wrapper").width(popWidth);
+  };
+  $(window).resize(function () {
+    popUpWidth();
+  });
+  $(".cmp-form-button").keydown(function (e) {
+    if (e.which == 9) {
+      e.preventDefault();
+      $(".close-popup").focus();
+    }
+  });
+  //   $("#subscribe").modal({show:true});
+
 });
 
 $(document).ready(function () {
@@ -4423,6 +4423,7 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
+
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
