@@ -12,6 +12,24 @@
     }
 }
 .banner-section {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 2.25rem;
+        line-height: 46px;
+    }
+    p {
+        font-size: 1.125rem;
+        line-height: 23px;
+    }
+}
+.editorial-hero-banner {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+.banner-section {
     .left-image-position {
         .left-item {
             float: right;
@@ -137,6 +155,12 @@
     }
 }
 @media (max-width: $mobile-screen-max) {
+    .banner-section {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1.75rem;
+            line-height: 36px;
+        }
+    }
     .white-box {
         .text-section {
             width: 100%;
@@ -225,6 +249,14 @@
         img {
             width: 220px;
             height: 220px;
+        }
+    }
+}
+@media (max-width: $tab-screen-max) {
+    .banner-section {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 2rem;
+            line-height: 41px;
         }
     }
 }
