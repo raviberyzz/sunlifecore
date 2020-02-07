@@ -80,6 +80,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="view-all-category"
                                                                 text="Yellow Arrow"/>
+															<blue-arrow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="blue-arrow"
+                                                                text="Blue Arrow"/>
                                                             <pdf-link
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="pdf-link"
