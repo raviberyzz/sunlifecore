@@ -100,39 +100,6 @@ public class SiteConfigServiceImplTest {
 		assertNotNull(out);
 	}
 	
-	/*@Test
-	void getConfigValues2() {
-		String name = "NAME";
-		String path = "/Number2";
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(name, "ABC");
-		siteConfigMap.put("NOTKEY", map);		
-		String out = serviceImpl.getConfigValues(name, path);
-		assertNotNull(out);
-	}
-	
-	@Test
-	void getConfigValues3() {
-		String name = "NAME";
-		String path = "/New/Number3";
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(name, "ABC");
-		siteConfigMap.put(path, map);		
-		String out = serviceImpl.getConfigValues(name, path);
-		assertNotNull(out);
-	}
-	
-	@Test
-	void getConfigValues4() {
-		String name = "NAME";
-		String path = "/Number4";
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(name, "ABC");
-		siteConfigMap.put(path, map);		
-		String out = serviceImpl.getConfigValues(name, path);
-		assertNotNull(out);
-	}
-*/
 	@Test
 	void setConfiguration() {
 
