@@ -58,7 +58,7 @@
 }
 // IE specific scss
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .lang-btn[aria-expanded="true"] {
+    .lang-true{
         box-shadow: 0 4px 20px -4px $black-shade !important;
     }
 }
