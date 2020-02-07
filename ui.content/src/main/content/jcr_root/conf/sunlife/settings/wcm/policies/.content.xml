@@ -439,7 +439,7 @@
                             allowedTypes="h1"
                             linkDisabled="false"
                             type="h1">
-                            <jcr:content/>
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
 							<cq:styleGroups jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleGroupLabel="Spacing"
