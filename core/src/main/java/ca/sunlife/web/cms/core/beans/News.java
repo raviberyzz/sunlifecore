@@ -5,7 +5,7 @@ package ca.sunlife.web.cms.core.beans;
 
 /**
  * @author mo92
- *
+ *	the class News
  */
 public class News {
 
