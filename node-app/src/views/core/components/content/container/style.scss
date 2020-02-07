@@ -77,6 +77,7 @@ ul {
             .cmp-form-button{
                 width: 100%;
                 max-width: 100%;
+                min-width: 100%;
             }
             .cmp-form-options--drop-down{
                 width: 100%;
@@ -248,8 +249,8 @@ ul {
 }
 .tool-card-wrapper{
     text-align: center;
-    margin: 24px 0 40px 0;
-    padding-right:15px;
+    //margin: 24px 0 40px 0;
+    padding: 10px;
     .cmp-container{
         background-color: $light-cool-blue-color;
     }
@@ -375,6 +376,15 @@ ul {
         }
         &>:last-child{
             border-bottom: 1px solid $light-grey-color;
+        }
+        form{
+            .text, .dropdown{
+                width: 75%;
+                margin-right: 10px;
+            }
+            .button-wrapper{
+                width:20% !important;
+            }
         }
     }
     .yellow-icon-white-background > *{
