@@ -3600,14 +3600,6 @@ a {
   display: inline-block;
   text-decoration: none; }
 
-.blue-arrow:after {
-  content: '\f138';
-  font-family: fontawesome;
-  color: #004C6C;
-  margin-left: 5px;
-  display: inline-block;
-  text-decoration: none; }
-
 .pdf-link::before {
   content: "\f1c1";
   font-family: fontawesome;
@@ -3752,6 +3744,32 @@ ul {
 
 /*contact us box styles end here */
 
+
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
 
 input[type=text] {
   font-family: 'sunlife-sans';
@@ -6177,6 +6195,8 @@ input[type=text] {
       position: absolute;
       bottom: 0;
       left: 0; }
+  .yellow-background-wrapper .view-all-category:after {
+    color: #004C6C; }
 
 @media (max-width: 767px) {
   .blue-background-wrapper {
@@ -7698,32 +7718,6 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
