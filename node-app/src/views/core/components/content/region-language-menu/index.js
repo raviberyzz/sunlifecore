@@ -43,39 +43,41 @@ $(document).ready(function(){
     
   /*link farm table code starts here */
   var linkFarm = $(".cmp-linkfarm-table");
-  if(linkFarm.length){
-      /*desktop logic start*/
-      $(".cmp-linkfarm-table desktop-linkfarm-table .collapse").removeClass('.desktop-region-language-menu-wrapper');
-      $('.list-unstyled').addClass('in');
-      $('.slf-language').remove();
-      $('.cross-btn').remove();
-      $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
-      /*desktop logic end */
-        $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-region-language-menu-wrapper");
-        $('.go-back').remove();
-        $('.slf-tab-region').remove();
-        $('.tab-content .tab-pane').addClass('active');
-   $(".region-link").addClass("slf-accordion-arrow");
-   $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
-       if($(this).attr('aria-expanded') == 'false'){
-           $(this).attr('aria-expanded','true');
-           $(this).siblings().toggle('fast');
-       }
-       else{
-           $(this).attr('aria-expanded','false');
-           $(this).siblings().toggle('fast');
-       }
-       $(this).closest('li').siblings().find(".collapse").css("display", "none");
-       $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
-        $(this).siblings().find('.collapse').css("display","block");
-			if($(this).closest(".region-link").find(".collapse").length === 1){
-                var offset = $(this).offset();
-				$("html, body").animate({
-					scrollTop :offset.top
-				});
-			}
-   });
-
+        if(linkFarm.length){
+            /*desktop logic start*/
+            $(".cmp-linkfarm-table .desktop-linkfarm-table .collapse").removeClass('desktop-region-language-menu-wrapper');
+            $('.list-unstyled').addClass('in');
+            $('.slf-language').remove();
+            $('.cross-btn').remove();
+            $('.cmp-linkfarm-table .slf-region').removeClass('col-xs-9').addClass('col-xs-12');
+            /*desktop logic end */
+                $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-language-region");
+                $('.go-back').remove();
+                $('.slf-tab-region').remove();
+                $('.tab-content .tab-pane').addClass('active');
+                $(".region-link").addClass("slf-accordion-arrow");
+                $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function(){
+            if($(this).attr('aria-expanded') == 'false'){
+                $(this).attr('aria-expanded','true');
+                $(this).siblings().toggle('fast');
+            }
+            else{
+                $(this).attr('aria-expanded','false');
+                $(this).siblings().toggle('fast');
+            }
+            $(this).closest('li').siblings().find(".collapse").css("display", "none");
+            $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded","false");
+                $(this).siblings().find('.collapse').css("display","block");
+                    if($(this).closest(".region-link").find(".collapse").length === 1){
+                        var offset = $(this).offset();
+                        $("html, body").animate({
+                            scrollTop :offset.top
+                        });
+                    }
+        });
+        if(window.innerWidth < 767){
+            $('.desktop-linkfarm-table').attr("style","display:none");
+        }
   }
    /*link farm table code ends here */
 });
