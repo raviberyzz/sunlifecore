@@ -12,14 +12,12 @@
             </a>
          </li>
       </ol>
-      <div data-sly-repeat.item="${newsModel.yearsToShow}"
+      <div data-sly-repeat.yearsTab="${newsModel.yearsToShow}"
          role="tabpanel"
          tabindex="0"
-         class="${yearsToShow == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}"
+         class="${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}"
          data-cmp-hook-tabs="tabpanel">
-         <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">${item}</div>
-
-         <sly data-sly-resource="${item @ decorationTagName='div'}" />
+         <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">${yearsTab}</div>
       </div>
 
       <div role="tabpanel" tabindex="0" class="cmp-tabs__tabpanel--active" data-cmp-hook-tabs="tabpanel">
