@@ -42,8 +42,6 @@
             .link-to-first.active {
                 display: none;
             }
-        
-
         }
         .first-page {
                 .next {
@@ -63,14 +61,18 @@
                 .fa-angle-left{
                     display:none;
                 }
-                span:nth-child(2){
-                    display:inline-block;
+                a {
+                    span:nth-child(2){
+                        display:inline-block;
+                    }
                 }
+                
             }
         }
         .pagination-indicator{
             display:block;
         }
+
     }
 }
 
