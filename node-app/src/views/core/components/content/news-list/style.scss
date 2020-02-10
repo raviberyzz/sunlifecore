@@ -7,4 +7,9 @@
     position: relative;
     margin-top:-2px;
 }
-
+@media(max-width:$mobile-screen-max){
+    .news-article{
+        border-left:none;
+        border-right:none;
+    }
+}

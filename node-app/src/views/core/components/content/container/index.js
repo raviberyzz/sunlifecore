@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 	//for tool card
 	var link_height = 0;
-	var tool_card_link = $('.tool-card-wrapper .cmp-container .aem-Grid--default--3').children().find('.cmp-text');
+	var tool_card_link = $('.tool-card-wrapper .cmp-container').children().find('.cmp-text');
 	tool_card_link.each(function (index) {
 		if (index % 2 == 0) {
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
 	});
 
 	var taeser_height = 0;
-	var tool_card_teaser = $('.tool-card-wrapper .cmp-container .aem-Grid--default--3').find('.teaser');
+	var tool_card_teaser = $('.tool-card-wrapper .cmp-container').find('.teaser');
 	tool_card_teaser.each(function (index) {
 		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
 	});
@@ -101,5 +101,11 @@ $(document).ready(function () {
         $('.yellow-icon-blue-background').parents('.layout-container').children().children().last().css('padding-right','0');
     }
 
+	 //Home CTA Button
+
+	 if ((   $(window).width() < 768 ))
+	 {
+		$('.no-padding .yellow-icon-white-background form .cmp-form-button').html('<span class="fa fa-chevron-right"></span>');
+	 }
 
 });

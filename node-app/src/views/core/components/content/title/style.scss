@@ -4,6 +4,7 @@
     padding:32px 0 32px 15px;
     height:100px;
     color:$dark-grey-color;
+    margin-bottom:40px;
     h1,h2,h3,h4,h5,h6{
       margin:0;
       font-size:1.75rem;
@@ -63,6 +64,9 @@
   background:url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
   background-color:$medium-blue-color;
   color: $medium-yellow-background;
+ }
+ .no-title-bottom-spacing{
+   margin-bottom:0;
  }
 
 @media (max-width:$mobile-screen-max){
