@@ -388,11 +388,6 @@
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
                                             jcr:primaryType="nt:unstructured"/>
-                                        <item1
-                                            cq:styleClasses="yellow-border-bottom"
-                                            cq:styleId="1577980771094"
-                                            cq:styleLabel="Yellow bottom border"
-                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
                                 <item4
