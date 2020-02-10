@@ -5,7 +5,7 @@ JSON Format
 {
     "pages": [
     "<a><span class='fa fa-angle-left' aria-hidden='true'></span><span>Previous</span></a>",
-    "<a><span class='fa fa-angle-double-left' aria-hidden='true'></span><span>1</span></a>",
+    "<a aria-label='First Page'><span class='fa fa-angle-double-left' aria-hidden='true'></span><span>1</span></a>",
     "<a><span>…</span></a>",
     "<a><span>2</span></a>",
     "<a><span>3</span></a>",
