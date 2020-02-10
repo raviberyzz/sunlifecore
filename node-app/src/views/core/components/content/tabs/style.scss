@@ -100,16 +100,18 @@
 //styles for news article
 
 .news{
-    .tablist{
+    .cmp-tabs__tablist{
         .cmp-tabs__tab{
             a {
-              color:#fff;  
-              width:100%;
+            color:$white-shade;  
+            width:100%;
+            padding:25px;
+            text-decoration: none;
             }
         }
         .cmp-tabs__tab--active{
             a{
-                color: #004c6c!important;
+                color: $medium-blue-color!important;
             }
         }
     }

@@ -1,6 +1,11 @@
 package ca.sunlife.web.cms.core.services;
 
 import java.io.IOException;
+import java.text.ParseException;
+
+import ca.sunlife.web.cms.core.beans.News;
+import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.beans.ReleaseMain;
 
 /**
  * The Interface CNWNewsService
@@ -8,41 +13,33 @@ import java.io.IOException;
 public interface CNWNewsService {
 
 	/**
-	 * Gets the CNW news list url
+	 * Gets top 3 CNW news
 	 * 
-	 * @return
+	 * @param locale
+	 * @return ReleaseMain
 	 */
-	public String getCNWNewsListUrl();
+	public ReleaseMain getCNWNewsOverview(String locale) throws IOException;
 
 	/**
-	 * Gets the CNW news details url
+	 * Gets CNW News Release List
 	 * 
-	 * @return
-	 */
-	public String getCNWNewsDetailsUrl();
-
-	/**
-	 * Gets the CNW news list url for top 3 news
-	 * 
-	 * @return
-	 */
-	public String getCNWNewsOverview() throws IOException;
-
-	/**
-	 * Calls web services(GET) - CNW News
-	 * 
-	 * @param url
-	 * @return
+	 * @param locale
+	 * @param requestURL
+	 * @param pageNum
+	 * @param strYear
+	 * @return News
 	 * @throws IOException
 	 */
-	public String getCNWNews(String url) throws IOException;
+	public News getCNWNews(String locale, String requestURL, String pageNum, String strYear) throws IOException;
 
 	/**
-	 * Calls web service for getting the CNW news details
+	 * Gets CNW news details using release id
 	 * 
-	 * @param url
-	 * @return
+	 * @param id
+	 * @param locale
+	 * @return NewsDetails
 	 * @throws IOException
+	 * @throws ParseException
 	 */
-	public String getCNWNewsDetails(String url) throws IOException;
+	public NewsDetails getCNWNewsDetails(String id, String locale) throws IOException, ParseException;
 }
