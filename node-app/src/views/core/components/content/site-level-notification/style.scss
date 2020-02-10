@@ -16,3 +16,7 @@
         border: none;
     }
 }
+@media (max-width: 767px) {
+    .site-level-notification .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
+       display: none; }
+     }
