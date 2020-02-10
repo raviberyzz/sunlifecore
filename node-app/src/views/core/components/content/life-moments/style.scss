@@ -145,6 +145,11 @@
             left: 0;
         }
     }
+    .view-all-category {
+        &:after {
+            color: $medium-blue-color;
+        }
+    }
     // .life-link-text:after{
     //     content: '\f138';
     //     font-family: FontAwesome;

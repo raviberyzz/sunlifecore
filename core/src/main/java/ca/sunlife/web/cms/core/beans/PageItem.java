@@ -4,7 +4,8 @@
 package ca.sunlife.web.cms.core.beans;
 
 /**
- * @author mo92 The Class PageItem
+ * @author mo92 
+ * The Class PageItem
  */
 public class PageItem {
 
@@ -16,7 +17,11 @@ public class PageItem {
 	 * li index
 	 */
 	private int index;
-
+	/**
+	 * ellipsis - ... for pagination
+	 */
+	private boolean ellipsis;
+	
 	/**
 	 * @return the href
 	 */
@@ -45,6 +50,20 @@ public class PageItem {
 	 */
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	/**
+	 * @return the ellipsis
+	 */
+	public boolean isEllipsis() {
+		return ellipsis;
+	}
+
+	/**
+	 * @param ellipsis the ellipsis to set
+	 */
+	public void setEllipsis(boolean ellipsis) {
+		this.ellipsis = ellipsis;
 	}
 
 }

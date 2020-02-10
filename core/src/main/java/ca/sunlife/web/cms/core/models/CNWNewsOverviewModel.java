@@ -4,10 +4,6 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -16,11 +12,11 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Via;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
@@ -48,6 +44,9 @@ public class CNWNewsOverviewModel {
 	/** Release News Object */
 	private ReleaseMain releaseMain;
 
+	@Inject
+	@Via("resource")
+	private String newsArticleUrl;
 	/**
 	 * @return the locale
 	 */
@@ -78,25 +77,25 @@ public class CNWNewsOverviewModel {
 		this.releaseMain = releaseMain;
 	}
 
+	/**
+	 * @return the newsArticleUrl
+	 */
+	public String getNewsArticleUrl() {
+		return newsArticleUrl;
+	}
+
+	/**
+	 * @param newsArticleUrl the newsArticleUrl to set
+	 */
+	public void setNewsArticleUrl(String newsArticleUrl) {
+		this.newsArticleUrl = newsArticleUrl;
+	}
+
 	@PostConstruct
 	public void init() throws IOException {
 		logger.debug("Entry :: CNWNewsDetailsModel :: init ");
-		String datePattern = "MMMM dd, yyyy";
-		String cnwDatePattern = "EEE, dd MMM yyyy HH:mm:ss zzzzz";
-			locale = currentPage.getLanguage().getLanguage();
-			releaseMain = new ObjectMapper().readValue(newsService.getCNWNewsOverview(), ReleaseMain.class);
-			logger.debug("locale: {}, {}", locale, releaseMain);
-			releaseMain.getReleases().getRelease().stream().forEach(o -> {
-				SimpleDateFormat inputFormatter = new SimpleDateFormat(cnwDatePattern);
-				Date date;
-				try {
-					date = inputFormatter.parse(o.getReleaseDate());
-					o.setReleaseDate(new SimpleDateFormat(datePattern, new Locale(locale)).format(date));
-				} catch (ParseException e) {
-					logger.error("Error :: parsing the release date {}", e);
-				}
-			});
-		
+		locale = currentPage.getLanguage().getLanguage();
+		releaseMain = newsService.getCNWNewsOverview(locale);
 		logger.debug("Fetched news :: {}", releaseMain);
 	}
 }
