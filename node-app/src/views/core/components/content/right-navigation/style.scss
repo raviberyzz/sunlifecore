@@ -79,7 +79,9 @@
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
-        padding: 15px;
+        & > *{
+            padding: 15px 0;
+        }
     }
     .phone-numbers{
         font-weight: 400;
@@ -115,7 +117,6 @@
             .light-orange{
                 border-top:10px solid $white-shade;
                 border-bottom: 10px solid $white-shade;
-                padding: 0;
             }
         }
         .cmp-container>*{

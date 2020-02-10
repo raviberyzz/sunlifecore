@@ -415,6 +415,19 @@ ul {
             text-align: center;
         }
     }
+    .no-padding{
+        .yellow-icon-white-background{
+            form{
+                .text, .dropdown{
+                    width: 75% !important;
+                    margin-right: 10px;
+                }
+                .button-wrapper{
+                    width:20% !important;
+                }
+            }
+        }
+    }
     .yellow-icon-white-background {
         background-color: $light-grey-20;
         border: none;
@@ -426,15 +439,7 @@ ul {
         &>:last-child{
             border-bottom: 1px solid $light-grey-color;
         }
-        form{
-            .text, .dropdown{
-                width: 75%;
-                margin-right: 10px;
-            }
-            .button-wrapper{
-                width:20% !important;
-            }
-        }
+       
     }
     .yellow-icon-white-background > *{
         width: 90%;
