@@ -53,18 +53,7 @@
                 </sly>
 			</sly>
          </sly>
-          {
-		"@context": "http://schema.org",
-		"@type": "Article","author",
-		"item": {"@type": "Person","name":${author}},
-		"datePublished":<sly data-sly-list.elementList="${fragment.elements}" data-sly-unwrap><sly data-sly-test="${elementList.name == 'articlePublishedDate'}" data-sly-unwrap><sly data-sly-test="${elementList.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/content/article/calendar.html" data-sly-call="${tpl.element @ date = elementList.value}" data-sly-unwrap></sly></sly></sly>,
-		"headline":${headline},
-		"image":[${articleImage}],
-		"publisher":{"@type":"Organization","name":"Sun Life Assurance Company of Canada",
-		"logo":{"@type":"ImageObject","height":"60","width":"309","url":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-logo-mobile-en-amp.png"}
-		},
-		"description":${miniDescription},
-		"mainEntryOfPage":${seoModel.seoCanonicalUrl}}      
+          {"@context":"http://schema.org","@type":"Article","author":{"@type":"Person","name":"${author}"},"datePublished":"<sly data-sly-list.elementList="${fragment.elements}" data-sly-unwrap><sly data-sly-test="${elementList.name == 'articlePublishedDate'}" data-sly-unwrap><sly data-sly-test="${elementList.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/content/article/calendar.html" data-sly-call="${tpl.element @ date = elementList.value}" data-sly-unwrap></sly></sly></sly>","headline":"${headline}","image":["${articleImage}"],"publisher":{"@type":"Organization","name":"Sun Life Assurance Company of Canada","logo":{"@type":"ImageObject","height":"60","width":"309","url":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-logo-mobile-en-amp.png"}},"dateModified":"${fragment.jcrLastModified}","description":"${miniDescription}","mainEntityOfPage":"${seoModel.seoCanonicalUrl}"}					
 	</div>
 
 
