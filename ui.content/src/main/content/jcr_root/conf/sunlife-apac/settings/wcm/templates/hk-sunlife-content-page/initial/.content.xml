@@ -28,12 +28,8 @@
                         <item0
                             jcr:primaryType="nt:unstructured"
                             icon="fa-facebook-square"
-                            target="_self"/>
+                            target="_self"/>                        
                         <item1
-                            jcr:primaryType="nt:unstructured"
-                            icon="fa-twitter-square"
-                            target="_self"/>
-                        <item2
                             jcr:primaryType="nt:unstructured"
                             icon="fa-linkedin-square"
                             target="_self"/>
