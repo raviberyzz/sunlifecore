@@ -617,6 +617,9 @@ ul {
 			}
         }
         .grey-border-box{
+            p{
+                padding-left: 17px;
+            }
             padding: 24px;
             .cmp-text{
                 ul {
@@ -684,7 +687,20 @@ ul {
 	// 	}
 	// }
 }
-
+@media (min-width: 768px) {
+    .cmp-contact-us {
+        .layout-container{
+            .container-component{
+                .primary-blue-button{
+                    div{
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
 /* styles for contact us box end */
 
 /* styles for related resource start */
