@@ -24,3 +24,14 @@
     top: 50%;
     transform: translateY(-50%);
 }
+.left-aligned-seperator{
+    .horizontal-middle-align{
+        left: 0;
+        transform: none;
+    }
+}
+.full-width-seperator{
+    .horizontal-middle-align{
+       width: 80%;
+    }
+}
