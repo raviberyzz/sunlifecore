@@ -1,11 +1,11 @@
 <sly data-sly-use.fragment="ca.sunlife.web.cms.core.models.ArticleModel"
-     data-sly-test="${properties.fragmentPath}" data-sly-use.cfTemplates="templates.html">
+     data-sly-test.notEmpty="${properties.fragmentPath}" data-sly-use.cfTemplates="templates.html" >
     <sly data-sly-call="${cfTemplates.contentFragment @ fragment=fragment, fragmentPath=properties.fragmentPath, wcmmode=wcmmode}"></sly>
 <sly data-sly-use.seoModel="ca.sunlife.web.cms.core.models.BasePageModel" />
-
-<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     data-sly-call="${template.placeholder @ isEmpty=!properties.fragmentPath, classAppend='cq-dd-contentfragment'}"></sly>
-	 <div class="article-rating">
-        <div class="mar-bottom-30" id="pd_rating_holder_${fragment.articleID}"></div>
-    </div>
-	</sly>
+    <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+         data-sly-call="${template.placeholder @ isEmpty=!properties.fragmentPath, classAppend='cq-dd-contentfragment'}"></sly>
+         <div class="article-rating">
+            <div class="mar-bottom-30" id="pd_rating_holder_${fragment.articleID}"></div>
+        </div>
+</sly>
+<div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
