@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
 import javax.inject.Named;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.ContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
@@ -20,7 +21,7 @@ import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 /**
  * The Class FormContainer.
  */
-@Model(adaptables = SlingHttpServletRequest.class,adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article")
+@Model(adaptables = SlingHttpServletRequest.class,adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticleModel extends ContentFragmentImpl {
 	
 	/**
