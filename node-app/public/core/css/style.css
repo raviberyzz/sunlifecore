@@ -5038,6 +5038,8 @@ input[type=text] {
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
   position: absolute;
+  top: 0;
+  position: fixed;
   height: auto;
   overflow-y: auto; }
   .popup-modal-wrapper .modal-content {
@@ -5067,6 +5069,7 @@ input[type=text] {
           cursor: pointer; }
     .popup-modal-wrapper .modal-content .modal-body {
       margin: 24px;
+      margin-top: 10px;
       padding: 0; }
       .popup-modal-wrapper .modal-content .modal-body .grey-horizontal-separator div {
         float: none;
@@ -5124,8 +5127,10 @@ input[type=text] {
       display: inline-block; }
       .pagination-component .last-page .previous .fa-angle-left {
         display: none; }
-      .pagination-component .last-page .previous span:nth-child(2) {
-        display: inline-block; } }
+      .pagination-component .last-page .previous a span:nth-child(2) {
+        display: inline-block; }
+    .pagination-component .pagination-indicator {
+      display: block; } }
 
 @media (min-width: 768px) {
   .pagination-component {
@@ -5147,8 +5152,14 @@ input[type=text] {
       .pagination-component .pagination .active a {
         background-color: #FFCB05;
         color: #004C6C; }
+      .pagination-component .pagination .fa-angle-left {
+        display: none; }
+      .pagination-component .pagination .fa-angle-double-left {
+        display: none; }
+      .pagination-component .pagination .ellipsis {
+        pointer-events: none; }
     .pagination-component .pagination-indicator {
-      display: block !important; } }
+      display: none; } }
 
 .news-article {
   border: 2px solid #E1E1E1;

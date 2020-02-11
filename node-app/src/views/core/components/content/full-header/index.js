@@ -13,13 +13,16 @@ $(document).ready(function () {
         if ($('#sun-language').hasClass('in')) {
             $("#language-btn").attr('aria-expanded', 'false');
             $("#sun-language").removeClass('in');
-            $('#language-btn').removeClass('lang-true');
+            setTimeout(langOff,150);
         }
     });
+    function langOff(){
+        $('#language-btn').removeClass('lang-true');
+    }
     $('#language-btn-container').click(function () {
         if ($('#language-btn').attr('aria-expanded') == 'true') {
             $("#language-btn").attr('aria-expanded', 'false');
-            $('#language-btn').removeClass('lang-true');
+            setTimeout(langOff,150);
         }
         else {
             $("#language-btn").attr('aria-expanded', 'true');

@@ -4791,14 +4791,20 @@ $(document).ready(function(){
    /*link farm table code ends here */
 });
 $(document).ready(function(){
-    popUpWidth();   
+    popUpWidth();
+    popUpHeight(); 
     function popUpWidth(){
         var popWidth=$(window).width();
         $(".popup-modal-wrapper").width(popWidth);
       };
-      $(window).resize(function() {
-            popUpWidth();
-      });
+    function popUpHeight(){
+      var popHeight=$(document).height();
+      $(".popup-modal-wrapper").height(popHeight);
+    }
+    $(window).resize(function() {
+          popUpWidth();
+          popUpHeight();
+    });
       
   $('a').click(function(){
     var anchorId=$(this).attr('href');
@@ -5120,13 +5126,16 @@ $(document).ready(function () {
         if ($('#sun-language').hasClass('in')) {
             $("#language-btn").attr('aria-expanded', 'false');
             $("#sun-language").removeClass('in');
-            $('#language-btn').removeClass('lang-true');
+            setTimeout(langOff,150);
         }
     });
+    function langOff(){
+        $('#language-btn').removeClass('lang-true');
+    }
     $('#language-btn-container').click(function () {
         if ($('#language-btn').attr('aria-expanded') == 'true') {
             $("#language-btn").attr('aria-expanded', 'false');
-            $('#language-btn').removeClass('lang-true');
+            setTimeout(langOff,150);
         }
         else {
             $("#language-btn").attr('aria-expanded', 'true');
@@ -5276,6 +5285,8 @@ $(document).ready(function () {
 	 }
 
 });
+
+
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
@@ -5298,6 +5309,19 @@ if('.breadcrumb'){
 }
 });
 
+$(document).ready(function(){
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
 $(document).ready(function(){
         //Polldaddy library
         (function(d,c,j){
