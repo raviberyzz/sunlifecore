@@ -35,7 +35,6 @@
     }
     .sun-icon {
         font-family: "sunlife-custom";
-        padding: 13px 13px 13px 11px;
         font-style: normal;
         font-weight: normal;
         speak: none;
@@ -52,8 +51,11 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    .icon-lifeinsurance:before {
-        content: '\e804';
+    .icon-lifeinsurance{
+        margin-top: 15px;
+        &:before {
+            content: '\e804';
+        }
     }
 }
 .cta-content-icon-wrapper {
