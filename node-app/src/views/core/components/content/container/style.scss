@@ -415,6 +415,19 @@ ul {
             text-align: center;
         }
     }
+    .no-padding{
+        .yellow-icon-white-background{
+            form{
+                .text, .dropdown{
+                    width: 75% !important;
+                    margin-right: 10px;
+                }
+                .button-wrapper{
+                    width:20% !important;
+                }
+            }
+        }
+    }
     .yellow-icon-white-background {
         background-color: $light-grey-20;
         border: none;
@@ -426,15 +439,7 @@ ul {
         &>:last-child{
             border-bottom: 1px solid $light-grey-color;
         }
-        form{
-            .text, .dropdown{
-                width: 75%;
-                margin-right: 10px;
-            }
-            .button-wrapper{
-                width:20% !important;
-            }
-        }
+       
     }
     .yellow-icon-white-background > *{
         width: 90%;
@@ -584,9 +589,11 @@ ul {
 	line-height: 23px;
 	font-size: 18px;
 	font-weight: bold;
-	text-align: center;
 	padding: 15px;
-	height: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .product-card {
 	.aem-Grid--default--12 {
@@ -610,6 +617,9 @@ ul {
 			}
         }
         .grey-border-box{
+            p{
+                padding-left: 17px;
+            }
             padding: 24px;
             .cmp-text{
                 ul {
@@ -626,6 +636,13 @@ ul {
             }
         }
 }
+//mobile css to overwrite display block css for mobile devices
+@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
+    .light-yellow-box-header {
+            display: flex !important;
+    }
+}
+
 /* styles for product box end */
 
 /* styles for contact us box start*/
@@ -670,7 +687,20 @@ ul {
 	// 	}
 	// }
 }
-
+@media (min-width: 768px) {
+    .cmp-contact-us {
+        .layout-container{
+            .container-component{
+                .primary-blue-button{
+                    div{
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
 /* styles for contact us box end */
 
 /* styles for related resource start */

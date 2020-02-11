@@ -35,9 +35,15 @@
                     flex: auto;
                     padding: 0 24px;
                     a{
-                        font-size: 1rem;
+                        font-size: 0.875rem;
                         line-height: 26px;
                         font-weight: 400;
+                        color: $light-yellow-color;
+                    }
+                    strong{
+                        font-size: 1.25rem;
+                        line-height: 26px;
+                        font-weight: 700;
                         color: $light-yellow-color;
                     }
                 }
@@ -113,10 +119,15 @@
                     flex: auto;
                     padding: 0 24px;
                     a{
-                        font-size: 1rem;
+                        font-size: 0.875rem;
                         line-height: 26px;
                         font-weight: 400;
                     }
+                    strong{
+                        font-size: 1.25rem;
+                        line-height: 26px;
+                        font-weight: 700;
+                     }
                 }
                 li:not(:last-child){
                     border-right: 2px solid $light-yellow-color;

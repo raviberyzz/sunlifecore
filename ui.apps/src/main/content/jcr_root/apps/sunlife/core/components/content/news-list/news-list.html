@@ -1,0 +1,86 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+
+<div data-sly-resource="${'news-releases-title' @ resourceType='sunlife/core/components/content/text'}"></div>
+<sly data-sly-use.newsModel="ca.sunlife.web.cms.core.models.CNWNewsModel" />
+<div class="tabs tabs-wrapper news">
+   <div class="cmp-tabs" data-cmp-is="tabs">
+      <ol role="tablist" class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}">
+         <li class="${yearsToShow == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" tabindex="-1" aria-selected="true" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
+            <a href="${newsModel.relativeURL}.${yearsToShow}.html">
+            	<span class="slf-tab-title">${yearsToShow}</span>
+            </a>
+         </li>
+      </ol>
+      <div data-sly-repeat.yearsTab="${newsModel.yearsToShow}"
+         role="tabpanel"
+         tabindex="0"
+         class="${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}"
+         data-cmp-hook-tabs="tabpanel">
+         <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">${yearsTab}</div>
+      </div>
+
+      <div role="tabpanel" tabindex="0" class="cmp-tabs__tabpanel--active" data-cmp-hook-tabs="tabpanel">
+         <sly data-sly-list.news="${newsModel.news.releaseMain.releases.release}">
+            <div role="tabpanel" aria-hidden="false" aria-labelledby="${newsModel.activeYear}-tab" aria-expanded="true" id="${newsModel.activeYear}" class="tab-pane active">
+               <div class="option-box no-margin news-option-table">
+                  <div class="news-article">
+                     <p>${news.releaseDate}</p>
+                     <p><a href="${newsModel.newsArticleUrl}.${news.id}.html">${news.headline @ context='html'}</a></p>
+                     <p>${news.summary @ context='html'}</p>
+                  </div>
+               </div>
+            </div>
+         </sly>
+         <sly data-sly-test.paginationObj="${newsModel.news.pagination}" />
+         <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />
+         <div class="pagination-component" data-sly-test="${isPaginationrequired}">
+            <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
+            <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
+            <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'active' : ''}" />
+            <nav role="navigation" aria-label="Page" class="text-center">
+               <sly data-sly-test="${paginationObj.curPage == 1}">
+                  <ul class="pagination pagination-list first-page">
+               </sly>
+               <sly data-sly-test="${paginationObj.curPage == paginationObj.totalPages}">
+                  <ul class="pagination pagination-list last-page">
+               </sly>
+               <sly data-sly-test="${paginationObj.curPage != 1 && paginationObj.curPage != paginationObj.totalPages}">
+                  <ul class="pagination pagination-list">
+               </sly>
+               <sly data-sly-test="${paginationObj.curPage > 1}">
+                   <li class="previous ${previousCss}">
+                       <a href="${newsModel.requestURL}.${paginationObj.prevPage}.html">
+                      	<span class="fa fa-angle-left" aria-hidden="true"></span>
+                        <span>${newsModel.previousText}</span>
+                       </a>
+                   </li>
+               </sly>
+               <li class="link-to-first ${firstPageCss}">
+                   <a href="${newsModel.requestURL}.1.html" aria-label="${paginationObj.firstPageText}">
+                   	<span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                   	<span>1</span>
+                   </a>
+               </li>
+               <sly data-sly-list.pageItems="${paginationObj.pageItems}">
+                   <li data-sly-test = "${!paginationObj.ellipsis}" class="${paginationObj.curPage == pageItems.index ? 'active' : ''}">
+                       <a href="${pageItems.href}.html">
+                       	<span>${pageItems.index}</span>
+                       </a>
+                   </li>
+               	   <li data-sly-test = "${paginationObj.ellipsis}" class="ellipsis"><a><span>…</span></a></li>
+               </sly>
+               <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
+                   <li class="next ${nextCss}">
+                   	<a href="${newsModel.requestURL}.${paginationObj.nextPageNo}.html">${newsModel.nextText}</a>
+                   </li>
+               </sly>
+               </ul>
+               <div class="pagination-indicator">
+                  ${newsModel.pageText} ${paginationObj.curPage} ${newsModel.ofText} ${paginationObj.totalPages}
+               </div>
+            </nav>
+         </div>
+      </div>
+   </div>
+</div>

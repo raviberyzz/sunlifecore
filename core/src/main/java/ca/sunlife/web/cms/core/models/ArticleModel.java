@@ -1,155 +1,114 @@
+
 package ca.sunlife.web.cms.core.models;
+
+import javax.inject.Inject;
 
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
+import javax.inject.Named;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 
+import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.ContentFragmentImpl;
+import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 
 /**
- * The Interface ArticleModel.
+ * The Class FormContainer.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class ArticleModel {
+@Model(adaptables = SlingHttpServletRequest.class,adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ArticleModel extends ContentFragmentImpl {
+	
+	/**
+	 * Instantiates a new article model.
+	 */
+	public ArticleModel() {
+		super();
+	}
+	
+	/** The article unique ID. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String articleUniqueID;
+	
 
+	/** The article ID. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String articleID;
+	
+	/** The jcr last modified. */
+	@Inject
+	@Named("jcr:lastModified")
+	@Via("resource")
+	private String jcrLastModified;
 	
 	/**
-	 * Gets the category.
+	 * Gets the article unique ID.
 	 *
-	 * @return the category
+	 * @return the article unique ID
 	 */
-	@Inject
-	private String category;
-	
+	public String getArticleUniqueID() {
+		return articleUniqueID;
+	}
+
+
 	/**
-	 * Gets the title.
+	 * Sets the article unique ID.
 	 *
-	 * @return the title
+	 * @param articleUniqueID the new article unique ID
 	 */
-	@Inject
-	private String title;
-	
+	public void setArticleUniqueID(String articleUniqueID) {
+		this.articleUniqueID = articleUniqueID;
+	}
+
+
 	/**
-	 * Gets the date.
+	 * Gets the article ID.
 	 *
-	 * @return the date
+	 * @return the article ID
 	 */
-	@Inject
-	private String date;
-	
+	public String getArticleID() {
+		return articleID;
+	}
+
+
 	/**
-	 * Gets the author.
+	 * Sets the article ID.
 	 *
-	 * @return the author
+	 * @param articleID the new article ID
 	 */
-	@Inject
-	private String author;
-	
-	/**
-	 * Gets the headline.
-	 *
-	 * @return the headline
-	 */
-	@Inject
-	private String headline;
-	
-	/**
-	 * Gets the file reference.
-	 *
-	 * @return the file reference
-	 */
-	@Inject
-	private String fileReference;
-	
-	/**
-	 * Gets the description.
-	 *
-	 * @return the description
-	 */
-	@Inject
-	private String description;
+	public void setArticleID(String articleID) {
+		this.articleID = articleID;
+	}
 	
 	/**
 	 * Gets the jcr last modified.
 	 *
 	 * @return the jcr last modified
 	 */
-	@Inject
-	@Named("jcr:lastModified")
-	private String jcrLastModified;
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDate() {
-		return 	getFormatedDate(date);
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getHeadline() {
-		return headline;
-	}
-
-	public void setHeadline(String headline) {
-		this.headline = headline;
-	}
-
-	public String getFileReference() {
-		return fileReference;
-	}
-
-	public void setFileReference(String fileReference) {
-		this.fileReference = fileReference;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getJcrLastModified() {
 		return getFormatedDate(jcrLastModified);
 	}
 
+
+	/**
+	 * Sets the jcr last modified.
+	 *
+	 * @param jcrLastModified the new jcr last modified
+	 */
 	public void setJcrLastModified(String jcrLastModified) {
 		this.jcrLastModified = jcrLastModified;
 	}
-	
+
+
 	/**
 	 * Gets the formated date.
 	 *
@@ -168,5 +127,5 @@ public class ArticleModel {
 		}
 		return dateParam;
 	}
-	
+
 }

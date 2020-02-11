@@ -20,6 +20,9 @@
         font-size: 1.125rem;
         line-height: 23px;
     }
+    .side-image {
+        height: fit-content;
+    }
 }
 .editorial-hero-banner {
     h1, h2, h3, h4, h5, h6 {
@@ -80,7 +83,7 @@
 .view-all-category:after{
     text-decoration:none;
     display:inline-block;
-   
+
 }
 .mobile-image {
     display: none;
@@ -108,7 +111,7 @@
     }
     .text-section {
         padding: 20px 27px;
-        width: 405px;
+        width: 50%;
         position: absolute;
         p {
             margin: 0;
@@ -165,6 +168,9 @@
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.75rem;
             line-height: 36px;
+        }
+        .side-image {
+            height: auto;
         }
     }
     .white-box {
@@ -263,6 +269,9 @@
         h1, h2, h3, h4, h5, h6 {
             font-size: 2rem;
             line-height: 41px;
+        }
+        .text-section {
+            padding: 10px;
         }
     }
 }

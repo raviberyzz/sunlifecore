@@ -1,12 +1,18 @@
 $(document).ready(function(){
-    popUpWidth();   
+    popUpWidth();
+    popUpHeight(); 
     function popUpWidth(){
         var popWidth=$(window).width();
         $(".popup-modal-wrapper").width(popWidth);
       };
-      $(window).resize(function() {
-            popUpWidth();
-      });
+    function popUpHeight(){
+      var popHeight=$(document).height();
+      $(".popup-modal-wrapper").height(popHeight);
+    }
+    $(window).resize(function() {
+          popUpWidth();
+          popUpHeight();
+    });
       
   $('a').click(function(){
     var anchorId=$(this).attr('href');
