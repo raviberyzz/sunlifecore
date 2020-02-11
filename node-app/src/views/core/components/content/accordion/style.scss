@@ -3,7 +3,7 @@
     .cmp-accordion__item{
         margin-bottom:5px;
         background-color:$light-cool-blue-color;
-        padding-left:15px;
+        padding-left:16px;
         cursor:pointer;
         .cmp-accordion__header{
             font-size:1rem;
@@ -14,15 +14,16 @@
             .accordion-arrow{
                 font-family: FontAwesome;
                 content: "\f0da";
-                padding-right:8px;
                 font-size:1rem;
             }
             .cmp-accordion__button{
-                display:block;
+                display:flex;
                 padding:0;
                 border:none;
                 background:none;
                 border-width:0;
+                text-align:left;
+                line-height:18px;
                 .cmp-accordion__icon{
                     &[aria-expanded="false"] {
                         &::before {
@@ -37,7 +38,7 @@
                     }
                 }
                 .cmp-accordion__title{
-                    margin-left:-5px;
+                    padding-left:7px;
                 }
             }
         }
@@ -64,9 +65,6 @@
         margin-bottom:10px;
         .cmp-accordion__header{
             color:$medium-blue-color;
-            .accordion-arrow{
-                padding-right:4px;
-            }
             .cmp-accordion__button{
                 .cmp-accordion__icon{
                     &[aria-expanded="false"] {
@@ -81,6 +79,9 @@
                             color:$medium-yellow-background;
                         }
                     }
+                }
+                .cmp-accordion__title{
+                    padding-left:2px;
                 }
             }
         }
