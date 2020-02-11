@@ -589,9 +589,11 @@ ul {
 	line-height: 23px;
 	font-size: 18px;
 	font-weight: bold;
-	text-align: center;
 	padding: 15px;
-	height: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .product-card {
 	.aem-Grid--default--12 {
