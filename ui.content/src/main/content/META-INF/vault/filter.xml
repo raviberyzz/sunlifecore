@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
+	<filter root="/conf/sunlife-apac"/>
     <filter root="/conf/sunlife">
     	<exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-service-channel-template"/>
         <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-redirect-template"/>
