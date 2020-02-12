@@ -9,7 +9,27 @@
             cq:policy="wcm/foundation/components/responsivegrid/policy_sunlife_hk_content"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/core/components/policies/mapping">
-            <sunlife jcr:primaryType="nt:unstructured">                
+            <sunlife jcr:primaryType="nt:unstructured">
+            	<apac jcr:primaryType="nt:unstructured">
+                    <hk jcr:primaryType="nt:unstructured">
+                        <components jcr:primaryType="nt:unstructured">
+                            <content jcr:primaryType="nt:unstructured"> 
+                                <container
+                                    cq:policy="sunlife/apac/hk/components/content/container/policy_container"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <icon-text
+                                    cq:policy="sunlife/apac/hk/components/content/icon-text/policy_iconText"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
+								<teaser
+                                    cq:policy="sunlife/apac/hk/components/content/teaser/policy_teaser"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>                               
+                            </content>                            
+                        </components>
+                    </hk>
+                </apac>                               
             </sunlife>
         </root>
     </jcr:content>

@@ -92,13 +92,32 @@ $(document).ready(function () {
 	});
 
 	//CTA Padding FIX.
-	if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').hasClass('no-padding'))
+
+	cta_padding_fix();
+
+	$( window ).resize(function() {
+       cta_padding_fix();
+    });
+
+	function cta_padding_fix()
     {
-    }
-    else
-    {
-        $('.yellow-icon-blue-background').parents('.layout-container').children().children().first().css('padding-left','0');
-        $('.yellow-icon-blue-background').parents('.layout-container').children().children().last().css('padding-right','0');
+        if ((   $(window).width() > 767 ))
+        {
+            if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').hasClass('no-padding'))
+            {
+            }
+            else
+            {
+                $('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().css('padding',' 0px 10px 0px 10px');
+                $('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().first().css('padding-left','0');
+                 $('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().last().css('padding-right','0');
+            }
+        }
+        else{
+            $('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().css('padding','0');
+			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().last().children().css('margin-bottom','0');
+		}
+
     }
 
 	 //Home CTA Button

@@ -47,6 +47,7 @@ public class ArticleModel extends ContentFragmentImpl {
 	/** The jcr last modified. */
 	@Inject
 	@Named("jcr:lastModified")
+	@Via("resource")
 	private String jcrLastModified;
 	
 	/**
