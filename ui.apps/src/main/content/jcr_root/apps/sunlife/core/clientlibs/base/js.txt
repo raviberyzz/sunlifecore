@@ -3,3 +3,4 @@
 2-slfglobalweb.js
 3-slfsearch.js
 4-slfanalyticstracking.js
+5-slfaccessibility.js
