@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -29,7 +30,7 @@ public class RegionLanguageMenuTest {
 	@Test
 	public void testInitNullValues() {
 		regionLanguageMenu.init();
-		assertEquals(regionLanguageMenu.getRegionLinks(), null);
+		assertNull(regionLanguageMenu.getRegionLinks());
 	}
 
 	@Test
@@ -40,13 +41,13 @@ public class RegionLanguageMenuTest {
 
 		// return 'yes' for gentNextList() of 1st item
 		// and 'no'(anything other than 'yes') for gentNextList() of 2nd item
-		// for 100% coverage cover if statement
+		// for 100% coverage cover of if statement
 		when(regions.get(0).getNextList()).thenReturn("yes");
 		when(regions.get(1).getNextList()).thenReturn("no");
-		
+
 		regionLanguageMenu.setRegions(regions);
 		regionLanguageMenu.init();
-	
+
 		// 1st item of regions and a new List is added to RegionLinks
 		assertEquals(2, regionLanguageMenu.getRegionLinks().size());
 	}

@@ -9,6 +9,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 @ExtendWith(AemContextExtension.class)
 public class GettersSettersTest {
 	private AccordionModel accordionModel;
+	private ArticleModel articleModel;
 	private BasePageModel basePageModel;
 	private BreadcrumbModel breadcrumbModel;
 	private CNWNewsDetailsModel cnwNewsDetailsModel;
@@ -16,11 +17,13 @@ public class GettersSettersTest {
 	private CNWNewsOverviewModel cnwNewsOverviewModel;
 	private FormButtonModel formButtonModel;
 	private FormContainer formContainer;
+	private LeftNavigationModal leftNavigationModal;
 	private RegionLanguageMenu regionLanguageMenu;
 
 	@BeforeEach
 	void setup() {
 		accordionModel = new AccordionModel();
+		articleModel = new ArticleModel();
 		basePageModel = new BasePageModel();
 		breadcrumbModel = new BreadcrumbModel();
 		cnwNewsDetailsModel = new CNWNewsDetailsModel();
@@ -28,12 +31,19 @@ public class GettersSettersTest {
 		cnwNewsOverviewModel = new CNWNewsOverviewModel();
 		formButtonModel = new FormButtonModel();
 		formContainer = new FormContainer();
+		leftNavigationModal = new LeftNavigationModal();
 		regionLanguageMenu = new RegionLanguageMenu();
 	}
 
 	@Test
 	void testAccordionModel() {
 		Utils.executeTestBean(accordionModel);
+	}
+
+	@Test
+	void testArticleModel() {
+		String[] excludedProperties= {"date","jcrLastModified"};
+		Utils.executeTestBean(articleModel, excludedProperties);
 	}
 
 	@Test
@@ -69,6 +79,11 @@ public class GettersSettersTest {
 	@Test
 	void testFormContainer() {
 		Utils.executeTestBean(formContainer);
+	}
+
+	@Test
+	void testLeftNavigationModal() {
+		Utils.executeTestBean(leftNavigationModal);
 	}
 
 	@Test

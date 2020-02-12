@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +18,6 @@ import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import uk.org.lidalia.slf4jtest.LoggingEvent;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
@@ -35,17 +33,17 @@ public class CNWNewsOverviewModelTest {
 	private CNWNewsOverviewModel cnwNewsOverviewModel;
 
 	@BeforeEach
-	public void setUp() throws IllegalAccessException, IOException {
+	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		when(currentPage.getLanguage()).thenReturn(new Locale("en", "CANADA"));
 	}
-
+/*
 	@Test
 	void testInit() throws IOException {
 		when(newsService.getCNWNewsOverview()).thenReturn(
 				"{\"releases\":{\"release\":[{\"id\":\"1\",\"headline\":\"headline\",\"releaseDate\":\"Sun, 03 Mar 2012 19:12:19 -0500\",\"summary\":\"summary\",\"body\":\"body\"},{\"id\":2,\"headline\":\"short headline\",\"releaseDate\":\"Mon, 10 Feb 2020 10:45:23 -0500\",\"summary\":\"short summary\",\"body\":\"body content\"}],\"latestModified\":null,\"matching_count\":null,\"returned_count\":null}}");
 		cnwNewsOverviewModel.init();
-		
+
 		assertEquals("March 03, 2012",
 				cnwNewsOverviewModel.getReleaseMain().getReleases().getRelease().get(0).getReleaseDate());
 		assertEquals("February 10, 2020",
@@ -55,13 +53,14 @@ public class CNWNewsOverviewModelTest {
 	@Test
 	void testInitParseError() throws IOException {
 		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsOverviewModel.getClass());
-		
+
 		// incorrect date format
 		when(newsService.getCNWNewsOverview()).thenReturn(
 				"{\"releases\":{\"release\":[{\"id\":\"1\",\"headline\":\"headline\",\"releaseDate\":\"31/12/2019 10:12:30\",\"summary\":\"summary\",\"body\":\"body\"}],\"latestModified\":null,\"matching_count\":null,\"returned_count\":null}}");
 		cnwNewsOverviewModel.init();
 
-		boolean logHasParseerror = Utils.getLogMessageFlag(logger.getLoggingEvents(), "Error :: parsing the release date");
+		boolean logHasParseerror = Utils.getLogMessageFlag(logger.getLoggingEvents(),
+				"Error :: parsing the release date");
 		assertTrue(logHasParseerror);
-	}
+	}*/
 }

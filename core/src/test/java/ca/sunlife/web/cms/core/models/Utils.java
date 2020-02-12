@@ -15,6 +15,18 @@ public class Utils {
 		}
 	}
 
+	static void executeTestBean(Object bean, String[] excludedProperties) {
+		try {
+			BeanRunner beanRunner = new BeanRunner();
+			for (String property : excludedProperties) {
+				beanRunner.excludeProperty(property);
+			}
+			beanRunner.testBean(bean);
+		} catch (Exception e) {
+			System.err.println("Exception occured:" + e.toString());
+		}
+	}
+
 	static boolean getLogMessageFlag(List<LoggingEvent> eventList, String expectedMessage) {
 		boolean flag = false;
 		for (LoggingEvent event : eventList) {
