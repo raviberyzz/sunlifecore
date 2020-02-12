@@ -4446,6 +4446,7 @@ $(document).ready(function () {
     } 
 });     
 
+
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     var child=comp.length;
@@ -4715,7 +4716,6 @@ $(document).ready(function () {
      
  });
  
-
 $(document).ready(function(){
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded','true');
@@ -4799,9 +4799,6 @@ $(document).ready(function(){
   }
    /*link farm table code ends here */
 });
-$(function(){
- 
-});
 $(document).ready(function(){
     popUpWidth();
     popUpHeight(); 
@@ -4834,6 +4831,9 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
   
+});
+$(function(){
+ 
 });
 
 $(document).ready(function () {
