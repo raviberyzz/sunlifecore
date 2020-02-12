@@ -440,6 +440,7 @@ ul {
         padding-top: 32px;
         .cta-content-icon-wrapper {
             border-top: 1px solid $light-grey-color;
+            background: $white-shade;
         }
         &>:last-child{
             border-bottom: 1px solid $light-grey-color;
