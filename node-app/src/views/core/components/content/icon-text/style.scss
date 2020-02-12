@@ -12,7 +12,7 @@
 }
 .social-link-icon-wrapper{
     .icon-texts{
-        display: none;     
+        display: none;
     }
 }
 .right-nav-icon-wrapper{
@@ -160,10 +160,17 @@
 .text-border-right {
     .icon-texts {
         border-right: 2px solid $medium-grey-background;
+        padding-right: 16px;
     }
 }
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
+    .text-border-right {
+        .icon-texts {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
     .getting-started-icon-wrapper
     {
        height: auto;
