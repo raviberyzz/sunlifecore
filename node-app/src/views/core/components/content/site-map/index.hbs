@@ -1,0 +1,18 @@
+<div class="site-map">
+{{#each site-map}}
+<div>
+  <h2><a>{{title}}</a></h2>
+  <ul>
+    {{#each content}}
+    <li><h3><a>{{this.title}}</a></h3>
+    <ul>
+      {{#each data}}
+      <li>{{{this}}}</li>
+      {{/each}}
+    </ul>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+{{/each}}
+</div>
