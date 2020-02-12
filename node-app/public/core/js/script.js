@@ -4254,6 +4254,7 @@ $(document).ready(function () {
 
 
 
+
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
       var tool=$(this).find(".tool-tip-box:first");
@@ -4335,16 +4336,24 @@ function stickyHeader(){
   if($('.slf-table').length){
     let tableHeader = $("table tbody tr:first-child");
     let theaderPosition = tableHeader.offset().top;
+    let tableBottom = $('table').outerHeight(); 
+    let tableHeight = theaderPosition + tableBottom;
     let position = 0;
     //sticky header function on scroll 
       $(window).on("scroll", function() {
         if (window.pageYOffset > theaderPosition) {
           position = window.pageYOffset - theaderPosition;
           tableHeader.attr("style", "transform: translateY(" + position + "px)");
+          //removing the transform property once the page scrolls past the table
+          if(window.pageYOffset > tableHeight){
+            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+          }
         } else if (position !== 0) {
           position = 0;
           tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
         }
+        
+
       });
       // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
 
@@ -4436,7 +4445,6 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
-
 
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
@@ -4707,6 +4715,7 @@ $(document).ready(function () {
      
  });
  
+
 $(document).ready(function(){
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded','true');
@@ -4790,6 +4799,9 @@ $(document).ready(function(){
   }
    /*link farm table code ends here */
 });
+$(function(){
+ 
+});
 $(document).ready(function(){
     popUpWidth();
     popUpHeight(); 
@@ -4822,9 +4834,6 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
   
-});
-$(function(){
- 
 });
 
 $(document).ready(function () {
@@ -5172,6 +5181,7 @@ $(document).ready(function () {
         $(this).parent().addClass("open");
     })
 });
+
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();
@@ -5302,7 +5312,6 @@ $(document).ready(function () {
 	 }
 
 });
-
 
 
 $(document).ready(function(){
