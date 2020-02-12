@@ -115,7 +115,8 @@ $(document).ready(function () {
         }
         else{
             $('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().css('padding','0');
-        }
+			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().last().children().css('margin-bottom','0');
+		}
 
     }
 
