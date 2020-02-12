@@ -36,6 +36,9 @@
                     </iconsText>
                 </socialIcons>
             </breadcrumb>
+            <titlebar
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/apac/hk/components/content/titlebar"/>
             <layout_container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/apac/hk/components/content/layout-container"/>            
