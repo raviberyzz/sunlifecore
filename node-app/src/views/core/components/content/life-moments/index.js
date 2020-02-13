@@ -18,7 +18,7 @@ $(document).ready(function () {
             var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            lastWord=lastWord.toUpperCase();
+            lastWord=lastWord.toLowerCase();
             var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
