@@ -624,6 +624,10 @@
                                                                                     fieldLabel="Link Style"
                                                                                     name="./linkStyle">
                                                                                     <items jcr:primaryType="nt:unstructured">
+																						<none
+																								jcr:primaryType="nt:unstructured"
+																								text="None"
+																								value="no-icon"/>
                                                                                         <arrow
                                                                                             jcr:primaryType="nt:unstructured"
                                                                                             text="arrow"
