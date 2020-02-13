@@ -614,7 +614,6 @@ ul {
 	padding: 15px;
     height: 56px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .product-card {
@@ -759,7 +758,7 @@ ul {
 		}
 		h3 {
 			font-size: 22px;
-			line-height: 28px;
+            line-height: 28px;
 		}
 	}
 	.cmp-text {
@@ -772,7 +771,8 @@ ul {
 		.cmp-text {
 			margin-left: 15px;
 		}
-	}
+    }
+
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
