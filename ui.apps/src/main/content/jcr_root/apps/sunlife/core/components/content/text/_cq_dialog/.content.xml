@@ -98,6 +98,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="tool-tip-box"
                                                                 text="Tool Tip"/>
+															<dotted-bottom-border
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="border-bottom-dotted"
+                                                                text="Dotted bottom border"/>																
                                                         </styles>
                                                     </styles>
                                                     <format
