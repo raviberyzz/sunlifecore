@@ -382,6 +382,10 @@ ul {
 }
 
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+    footer {
+        margin-top: 40px;
+        background-color: $light-cool-blue-color;
+    }
     .container {
         max-width: 100%;
         width: 100%;
