@@ -5069,7 +5069,7 @@ $(document).ready(function () {
             var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            lastWord=lastWord.toUpperCase();
+            lastWord=lastWord.toLowerCase();
             var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
@@ -5110,14 +5110,6 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function () {
-    if($('.search-container .search-bottom')){
-        $('.search-container .search-bottom .close-div').remove();
-    }
-    if('.search-bottom .search-bar-wrapper'){
-        $('.search-bottom .search-bar-wrapper').attr('id','');
-    }
-});
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -5180,6 +5172,14 @@ $(document).ready(function () {
     })
 });
 
+$(document).ready(function () {
+    if($('.search-container .search-bottom')){
+        $('.search-container .search-bottom .close-div').remove();
+    }
+    if('.search-bottom .search-bar-wrapper'){
+        $('.search-bottom .search-bar-wrapper').attr('id','');
+    }
+});
 $(document).ready(function () {
 	//for footer
 	var teaser_height = $('footer .teaser').height();

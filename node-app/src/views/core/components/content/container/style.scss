@@ -408,12 +408,14 @@ ul {
         }
     }
     .cross-cta-wrapper {
-        .icon-parent {
+        .mega-menu-icon-wrapper{
+            .icon-parent  {
             display: none;
-        }
-        .icon-texts {
+            }
+           .icon-texts {
             text-align: center;
         }
+      }
     }
     .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
         margin-bottom: 62px;
@@ -438,6 +440,7 @@ ul {
         padding-top: 32px;
         .cta-content-icon-wrapper {
             border-top: 1px solid $light-grey-color;
+            background: $white-shade;
         }
         &>:last-child{
             border-bottom: 1px solid $light-grey-color;
