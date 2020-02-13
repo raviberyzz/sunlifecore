@@ -76,6 +76,11 @@
             left: 0;
         }
     }
+    .view-all-category {
+        &:after{
+            font-weight:400;
+        }
+    }
     // .life-link-text:after{
     //     content: '\f138';
     //     font-family: FontAwesome;
