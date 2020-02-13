@@ -6,7 +6,7 @@
         {'50:50':'50% : 50%','33:67':'33% : 67%','67:33':'67% : 33%','80:20':'80% : 20%','75:25N':'Content & Right Navigation','25:75N':'Left Navigation & Content'},
         {'25:50:25N':'Left Navigation, Content & Right Navigation','33:33:33':'33% : 33% : 33%','feature-card':'Feature-Toolcard'},
         {'25:25:25:25': '25% : 25% : 25% : 25%','feature-card':'Feature-Toolcard'},
-        {'20:20:20:20:20' : '20% : 20% : 20% : 20% :20%','feature-card':'Feature-Toolcard'}
+        {'20:20:20:20:20' : '20% : 20% : 20% : 20% :20%','feature-card':'Feature-Toolcard','footer':'Footer'}
     ];
 
     var updateTypes = function() {
