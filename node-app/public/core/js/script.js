@@ -4254,6 +4254,7 @@ $(document).ready(function () {
 
 
 
+
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
       var tool=$(this).find(".tool-tip-box:first");
@@ -4335,16 +4336,24 @@ function stickyHeader(){
   if($('.slf-table').length){
     let tableHeader = $("table tbody tr:first-child");
     let theaderPosition = tableHeader.offset().top;
+    let tableBottom = $('table').outerHeight(); 
+    let tableHeight = theaderPosition + tableBottom;
     let position = 0;
     //sticky header function on scroll 
       $(window).on("scroll", function() {
         if (window.pageYOffset > theaderPosition) {
           position = window.pageYOffset - theaderPosition;
           tableHeader.attr("style", "transform: translateY(" + position + "px)");
+          //removing the transform property once the page scrolls past the table
+          if(window.pageYOffset > tableHeight){
+            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+          }
         } else if (position !== 0) {
           position = 0;
           tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
         }
+        
+
       });
       // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
 
@@ -5062,7 +5071,7 @@ $(document).ready(function () {
             var index=text.indexOf(lastWord);
             text=text.substr(0,index);
             $(this).text("");
-            lastWord=lastWord.toUpperCase();
+            lastWord=lastWord.toLowerCase();
             var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
             $(this).append(html);
         });
@@ -5103,14 +5112,6 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function () {
-    if($('.search-container .search-bottom')){
-        $('.search-container .search-bottom .close-div').remove();
-    }
-    if('.search-bottom .search-bar-wrapper'){
-        $('.search-bottom .search-bar-wrapper').attr('id','');
-    }
-});
 $(document).ready(function () {
     $(".desktop-header-wrapper #sun-search").removeClass('in');
     $(".signIn-button").attr('maxlength', '30');
@@ -5171,6 +5172,15 @@ $(document).ready(function () {
         $('.dropdown').removeClass("open");
         $(this).parent().addClass("open");
     })
+});
+
+$(document).ready(function () {
+    if($('.search-container .search-bottom')){
+        $('.search-container .search-bottom .close-div').remove();
+    }
+    if('.search-bottom .search-bar-wrapper'){
+        $('.search-bottom .search-bar-wrapper').attr('id','');
+    }
 });
 $(document).ready(function () {
 	//for footer
@@ -5302,7 +5312,6 @@ $(document).ready(function () {
 	 }
 
 });
-
 
 
 $(document).ready(function(){

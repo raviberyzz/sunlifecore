@@ -4,5 +4,9 @@
     <hk-sunlife-blank-page/>
     <hk-sunlife-home-page/>
     <hk-sunlife-content-page/>    
-    <hk-sunlife-experience-fragment/>    
+    <hk-sunlife-experience-fragment/>
+	<id-sunlife-blank-page/>
+    <id-sunlife-home-page/>
+    <id-sunlife-content-page/>    
+    <id-sunlife-experience-fragment/>  
 </jcr:root>
