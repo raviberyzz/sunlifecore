@@ -45,7 +45,7 @@ $(document).ready(function(){
   var linkFarm = $(".cmp-linkfarm-table");
         if(linkFarm.length){
             /*desktop logic start*/
-            $(".cmp-linkfarm-table .desktop-linkfarm-table .collapse").removeClass('desktop-region-language-menu-wrapper');
+            $(".desktop-linkfarm-table").removeClass('desktop-region-language-menu-wrapper');
             $('.list-unstyled').addClass('in');
             $('.slf-language').remove();
             $('.cross-btn').remove();
