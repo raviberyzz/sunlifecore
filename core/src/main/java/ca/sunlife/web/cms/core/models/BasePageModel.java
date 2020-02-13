@@ -4,6 +4,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,15 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.settings.SlingSettingsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.cq.wcm.core.components.internal.models.v1.SocialMediaHelperImpl;
-import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -39,7 +43,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * @author MO92
  */
 @Model(adaptables = { SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
-public class BasePageModel extends SocialMediaHelperImpl {
+public class BasePageModel {
 
 	/** The Constant OG_URL. */
 	static final String OG_URL = "og:url";
@@ -55,7 +59,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 	/** The Constant OG_IMAGE. */
 	static final String OG_IMAGE = "og:image";
-	
+
 	/** The Constant TWITTER_URL. */
 	static final String TWITTER_URL = "twitter:url";
 
@@ -64,12 +68,12 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 	/** The Constant TWITTER_DESCRIPTION. */
 	static final String TWITTER_DESCRIPTION = "twitter:description";
-	
+
 	/** The Constant TWITTER_IMAGE. */
 	static final String TWITTER_IMAGE = "twitter:image";
-	
+
 	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(BasePageModel.class);
+	private static final Logger logger = LoggerFactory.getLogger(BasePageModel.class);
 
 	/** The current page. */
 	@ScriptVariable
@@ -83,6 +87,9 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	@Inject
 	@Source("sling-object")
 	private ResourceResolver resolver;
+
+	@OSGiService
+	private SlingSettingsService settingsService;
 
 	/** The canonical url. */
 	@Inject
@@ -130,12 +137,12 @@ public class BasePageModel extends SocialMediaHelperImpl {
 
 	/** The seo description. */
 	private String seoDescription;
-	
+
 	/** The social media image. */
 	@Inject
 	@Via("resource")
 	private String socialMediaImage;
-	
+
 	/** The config service. */
 	@Inject
 	private SiteConfigService configService;
@@ -146,24 +153,33 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	/** The alt language links. */
 	private Map<String, String> altLanguageLinks;
 
-	@OSGiService
-	private Externalizer externalizer;
-	
 	/** The analytics scriptlet. */
 	private String analyticsScriptlet;
-	
+
 	/** The analytics script. */
 	private String analyticsScriptPath;
-	
+
 	/** Bread crumb - UDO */
 	private String breadCrumb;
-	
+
 	/** The page category. - UDO */
 	private String pageCategory;
 
 	/** The page sub category. - UDO */
 	private String pageSubCategory;
-	
+
+	/** Tags - UDO */
+	@Inject
+	@Named("cq:tags")
+	@Via("resource")
+	private String[] tags;
+
+	/** Tags - Other UDO tags */
+	private JsonObject otherUDOTagsMap;
+
+	/** UDO Tags - string */
+	private String udoTags;
+
 	/**
 	 * @return the seoPageTitle
 	 */
@@ -319,10 +335,41 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	}
 
 	/**
-	 * @param breadCrumb the breadCrumb to set
+	 * @param breadCrumb
+	 *            the breadCrumb to set
 	 */
 	public void setBreadCrumb(String breadCrumb) {
 		this.breadCrumb = breadCrumb;
+	}
+
+	/**
+	 * @return the otherUDOTagsMap
+	 */
+	public JsonObject getOtherUDOTagsMap() {
+		return otherUDOTagsMap;
+	}
+
+	/**
+	 * @param otherUDOTagsMap
+	 *            the otherUDOTagsMap to set
+	 */
+	public void setOtherUDOTagsMap(JsonObject otherUDOTagsMap) {
+		this.otherUDOTagsMap = otherUDOTagsMap;
+	}
+
+	/**
+	 * @return the udoTags
+	 */
+	public String getUdoTags() {
+		return udoTags;
+	}
+
+	/**
+	 * @param udoTags
+	 *            the udoTags to set
+	 */
+	public void setUdoTags(String udoTags) {
+		this.udoTags = udoTags;
 	}
 
 	/**
@@ -341,6 +388,7 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
 		final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
 		final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
+		final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
 
 		// SEO title - <title> tag
 		seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
@@ -348,51 +396,50 @@ public class BasePageModel extends SocialMediaHelperImpl {
 		// SEO description - <meta name="description"> tag
 		seoDescription = description;
 
-		//Social media description
+		// Social media description
 		socialMediaDescription = null == socialMediaDescription ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescription;
-		
-		//Social media image
+
+		// Social media image
 		socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
-		
+
 		// SEO canonical URL - <link rel="canonical"> tag
-		seoCanonicalUrl = null == canonicalUrl ? getURL() : canonicalUrl;
+		seoCanonicalUrl = null == canonicalUrl ? pagePath : canonicalUrl;
 
 		setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
 		setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
 
 		// Fetching social sharing component meta-data
-		customMetadata = super.getMetadata();
+		customMetadata = new HashMap<>();
 
 		// Configuring custom social sharing - meta-tags
-		if (super.isSocialMediaEnabled()) {
-			customMetadata.put(TWITTER_TITLE, customMetadata.get(OG_TITLE));
-			customMetadata.put(TWITTER_URL, customMetadata.get(OG_URL));
-			customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
-			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
-			customMetadata.put(OG_LOCALE, locale);
-			if(socialMediaImage != null) {
-				customMetadata.put(OG_IMAGE, domain+socialMediaImage);
-				customMetadata.put(TWITTER_IMAGE, domain+socialMediaImage);
-			}
+		customMetadata.put(OG_TITLE, title);
+		customMetadata.put(TWITTER_TITLE, title);
+		customMetadata.put(OG_URL, pagePath);
+		customMetadata.put(TWITTER_URL, pagePath);
+		customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
+		customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
+		customMetadata.put(OG_LOCALE, locale);
+		if (socialMediaImage != null) {
+			customMetadata.put(OG_IMAGE, domain + socialMediaImage);
+			customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
 		}
-		LOGGER.debug("metadata {}", customMetadata);
-
+		customMetadata.remove("keywords");
+		logger.debug("metadata :: {}", customMetadata);
 		// Sets alternate URLs
-		setAtlLanguages(altLanguages, pageLocale, pagePath, domain);
+		setAtlLanguages(altLanguages, pageLocale, pagePath);
+		// Sets UDO parameters
+		otherUDOTagsMap = new JsonObject();
+		otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
+		otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
+		otherUDOTagsMap.addProperty("page_language", locale); // Page language
 		setUDOParameters();
-		LOGGER.debug("Map Display {}", altLanguageLinks);
-	}
-
-	/**
-	 * Gets the url.
-	 *
-	 * @param domain
-	 *            the domain
-	 * @return the url
-	 */
-	private String getURL() {
-		LOGGER.info("request --> {} , {}", request.getRequestURI(), request.getRequestURL());
-		return externalizer.publishLink(resolver, request.getRequestURI());
+		// Sets UDO other parameters
+		if (null != udoTagsPath && udoTagsPath.length() > 0) {
+			setOtherUDOTags(udoTagsPath);
+		}
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		udoTags = gson.toJson(otherUDOTagsMap);
+		logger.debug("Map Display {}", udoTags);
 	}
 
 	/**
@@ -407,43 +454,42 @@ public class BasePageModel extends SocialMediaHelperImpl {
 	 * @param domain
 	 *            the domain
 	 */
-	private void setAtlLanguages(final String altLanguages, final String pageLocale, final String pagePath, final String domain) {
-		LOGGER.debug("{}", altLanguages);
+	private void setAtlLanguages(final String altLanguages, final String pageLocale, final String pagePath) {
+		logger.debug("{}", altLanguages);
 		if (null == altLanguages) {
 			return;
 		}
 		altLanguageLinks = new HashMap<>();
-
 		final String[] altLanguagesArray = altLanguages.split(",");
 		for (final String lan : altLanguagesArray) {
-			LOGGER.debug("{} {} ", lan, pagePath);
+			logger.debug("{} {} ", lan, pagePath);
 			final String[] langArray = lan.split("_");
 			final String newUrl = pagePath.replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
-			LOGGER.debug("New -- > {} {} ", langArray[0], newUrl);
+			logger.debug("New -- > {} {} ", langArray[0], newUrl);
 			if (null != resolver.getResource(newUrl)) {
-				final String value = getURL().replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
-				LOGGER.debug("value {}", value);
-				altLanguageLinks.put(lan, value);
+				logger.debug("value {}", newUrl);
+				altLanguageLinks.put(lan, newUrl);
 			}
 		}
 		if (!altLanguageLinks.isEmpty()) {
-			altLanguageLinks.put(pageLocale, getURL());
+			altLanguageLinks.put(pageLocale, pagePath);
 		}
 
-		LOGGER.debug("Map {}", altLanguageLinks);
+		logger.debug("Map {}", altLanguageLinks);
 	}
-	
+
 	/**
 	 * Sets UDO tags
+	 * 
 	 * @throws LoginException
 	 * @throws RepositoryException
 	 */
 	public void setUDOParameters() throws LoginException, RepositoryException {
-		LOGGER.debug("Entry :: setUDOParameters :: ");
+		logger.debug("Entry :: setUDOParameters :: ");
 		String pagePath = currentPage.getPath();
 		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
-		LOGGER.debug("setUDOParameters :: siteUrl: {}", siteUrl);
-		if( null == siteUrl || siteUrl.length() <= 0) {
+		logger.debug("setUDOParameters :: siteUrl: {}", siteUrl);
+		if (null == siteUrl || siteUrl.length() <= 0) {
 			return;
 		}
 		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
@@ -456,8 +502,8 @@ public class BasePageModel extends SocialMediaHelperImpl {
 				navList.add(getBreadcrumbTitle(page));
 				if (isActivePage)
 					break;
-				startLevel++;
 			}
+			startLevel++;
 		}
 
 		if (!navList.isEmpty()) {
@@ -469,27 +515,66 @@ public class BasePageModel extends SocialMediaHelperImpl {
 			}
 			breadCrumb = "/" + navList.stream().collect(Collectors.joining("/"));
 		}
-		LOGGER.debug("Exit :: setUDOParameters :: pageCategory: {}, pageSubCategory: {}, breadCrumb: {}", pageCategory, pageSubCategory, breadCrumb);
+		otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
+		otherUDOTagsMap.addProperty("page_category", pageCategory == null ? "" : pageCategory); // Page category
+		otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page sub category
+		logger.debug("Exit :: setUDOParameters :: otherUDOTagsMap: {}", otherUDOTagsMap);
 	}
-	
-	
+
 	/**
 	 * Forms title to be displayed in bread crumb
+	 * 
 	 * @param page
 	 * @return
 	 */
 	public String getBreadcrumbTitle(Page page) {
-        String titleStr = page.getNavigationTitle();
-        if (titleStr == null) {
-            titleStr = page.getPageTitle();
-        }
-        if (titleStr == null) {
-            titleStr = page.getTitle();
-        }
-        if (titleStr == null) {
-            titleStr = page.getName();
-        }
-        return titleStr;
-    }
-	
+		String titleStr = page.getNavigationTitle();
+		if (titleStr == null) {
+			titleStr = page.getPageTitle();
+		}
+		if (titleStr == null) {
+			titleStr = page.getTitle();
+		}
+		if (titleStr == null) {
+			titleStr = page.getName();
+		}
+		return titleStr;
+	}
+
+	/**
+	 * Sets UDO tags
+	 */
+	public void setOtherUDOTags(String udoTagStart) {
+		logger.debug("Entry :: setOtherUDOTags method of :: udoTagStart :: {}", udoTagStart);
+		String tagAbsolutePath = udoTagStart.replace("/content/cq:tags/", "");
+		String tagRootPath = tagAbsolutePath.substring(tagAbsolutePath.indexOf("/"));
+		if (null != tags && tags.length > 0) {
+			logger.debug("tags :: {}", Arrays.asList(tags));
+			for (int i = 0; i < tags.length; i++) {
+				String[] array = tags[i].split(":");
+				if (array[1].startsWith(tagRootPath.replaceFirst("/", ""))) {
+					String path = array[1].replace(tagRootPath.substring(1) + "/", "");
+					String key = path.split("/")[0];
+					String value = path.split("/")[1];
+					if (otherUDOTagsMap.has(key)) {
+						if (otherUDOTagsMap.get(key).isJsonArray()) {
+							JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
+							jsonArray.add(value);
+							otherUDOTagsMap.add(key, jsonArray);
+						} else {
+							String oldValue = otherUDOTagsMap.get(key).getAsString();
+							JsonArray jsonArray = new JsonArray();
+							jsonArray.add(oldValue);
+							jsonArray.add(value);
+							otherUDOTagsMap.add(key, jsonArray);
+						}
+					} else {
+						otherUDOTagsMap.addProperty(key, value);
+					}
+				}
+			}
+		}
+		logger.debug("Exit :: setOtherUDOTags method of :: otherUDOTagsMap :: {}", otherUDOTagsMap);
+	}
+
 }
