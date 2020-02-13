@@ -607,7 +607,6 @@ ul {
 	padding: 15px;
     height: 56px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .product-card {
@@ -765,7 +764,17 @@ ul {
 		.cmp-text {
 			margin-left: 15px;
 		}
-	}
+    }
+    .cmp-text {
+        ul{
+            margin-left: 0em !important;
+            li::before{
+                width: 1rem !important;
+                padding-left: 0px !important;
+                margin-left: 0em !important;
+                }
+            }
+        }
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
