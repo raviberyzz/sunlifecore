@@ -93,35 +93,9 @@ public class BasePageModelTest {
 		initMethod.invoke(spy);
 
 		// System.out.println(logger.getLoggingEvents());
-		boolean logHasValidOgTitle = Utils.getLogArgumentFlag(logger.getLoggingEvents(),
+		boolean logHasValidOgTitle = TestUtils.getLogArgumentFlag(logger.getLoggingEvents(),
 				TWITTER_TITLE + SEO_PAGE_TITLE); // assertTrue(logHasValidOgTitle);
 	}
-
-	/*
-	 * @Test public void testInitMethodValidFields() throws NoSuchMethodException,
-	 * SecurityException, IllegalAccessException, IllegalArgumentException,
-	 * InvocationTargetException { TestLogger logger =
-	 * TestLoggerFactory.getTestLogger(basePageModel.getClass());
-	 * 
-	 * // FieldUtils.writeField(socialMediaHelperImpl, "socialMediaEnabled", //
-	 * true,true); FieldUtils.writeField(basePageModel, "canonicalUrl",
-	 * "canonicalUrl", true); FieldUtils.writeField(basePageModel, "description",
-	 * "description", true); FieldUtils.writeField(basePageModel, "currentPage",
-	 * currentPage, true); FieldUtils.writeField(basePageModel, "configService",
-	 * configService, true); // FieldUtils.writeField(basePageModel,
-	 * "socialMediaEnabled", true,true);
-	 * 
-	 * basePageModel.setSeoPageTitle(SEO_PAGE_TITLE);
-	 * 
-	 * when(basePageModel.isSocialMediaEnabled()).thenReturn(true); Method
-	 * initMethod = basePageModel.getClass().getDeclaredMethod("init");
-	 * initMethod.setAccessible(true); initMethod.invoke(basePageModel);
-	 * 
-	 * 
-	 * System.out.println(logger.getLoggingEvents()); boolean logHasValidOgTitle =
-	 * Utils.getLogArgumentFlag(logger.getLoggingEvents(), TWITTER_TITLE +
-	 * SEO_PAGE_TITLE); assertTrue(logHasValidOgTitle); }
-	 */
 
 	@Test
 	public void testSetAtlLanguages() throws IllegalAccessException, NoSuchMethodException, SecurityException,
@@ -143,7 +117,7 @@ public class BasePageModelTest {
 		setAltMethod.setAccessible(true);
 		setAltMethod.invoke(basePageModel, "en_fr,en_hindi", "page_Locale", "pagePath", DUMMY_DOMAIN);
 
-		boolean logHasDummyDomain = Utils.getLogArgumentFlag(logger.getLoggingEvents(), DUMMY_URL);
+		boolean logHasDummyDomain = TestUtils.getLogArgumentFlag(logger.getLoggingEvents(), DUMMY_URL);
 		assertTrue(logHasDummyDomain);
 	}
 
@@ -171,7 +145,7 @@ public class BasePageModelTest {
 		when(currentPage.getName()).thenReturn("name");
 		basePageModel.setUDOParameters();
 
-		boolean logHasCategories = Utils.getLogArgumentFlag(logger.getLoggingEvents(),
+		boolean logHasCategories = TestUtils.getLogArgumentFlag(logger.getLoggingEvents(),
 				"/" + PAGE_CATEGORY + "/" + PAGE_SUBCATEGORY);
 		assertTrue(logHasCategories);
 	}

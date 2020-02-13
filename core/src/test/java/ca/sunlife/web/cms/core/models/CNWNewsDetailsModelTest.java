@@ -1,32 +1,35 @@
 package ca.sunlife.web.cms.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+import java.text.ParseException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.day.cq.wcm.api.Page;
 
+import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import uk.org.lidalia.slf4jtest.LoggingEvent;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
 @ExtendWith(AemContextExtension.class)
 public class CNWNewsDetailsModelTest {
+	private final String DUMMY = "dummy";
+	private final String[] DUMMY_STRING_ARRAY = { DUMMY, "string", "array" };
+
 	@Mock
 	private Page currentPage;
 	@Mock
@@ -40,43 +43,22 @@ public class CNWNewsDetailsModelTest {
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		when(currentPage.getLanguage()).thenReturn(new Locale("en", "CANADA"));
-	}
-/*
-	@Test
-	public void testInit() throws IOException {
-		when(newsService.getCNWNewsDetails(ArgumentMatchers.anyString())).thenReturn(
-				"{\"release\":{\"id\":\"1\",\"headline\":\"headlines\",\"releaseDate\":\"Wed, 05 Feb 2020 10:18:21 Eastern Standard Time\",\"summary\":\"short summary\",\"body\":\"body content\"}}");
-		cnwNewsDetailsModel.init();
-		assertEquals("February 05, 2020", cnwNewsDetailsModel.getNewsDetails().getRelease().getReleaseDate());
+		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
 	}
 
 	@Test
-	public void testInitIOException() throws IOException {
-		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsDetailsModel.getClass());
+	public void testInit() throws IOException, ParseException {
+		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(DUMMY_STRING_ARRAY));
 
-		when(newsService.getCNWNewsDetails(ArgumentMatchers.anyString())).thenThrow(IOException.class);
 		cnwNewsDetailsModel.init();
+		assertEquals(DUMMY, cnwNewsDetailsModel.getReleaseId());
+		assertNull(cnwNewsDetailsModel.getNewsDetails());
 
-		boolean logHasIOException = Utils.getLogMessageFlag(logger.getLoggingEvents(),
-				"Error :: NWNewsDetailsModel :: init :: IOException :: {}");
-		assertTrue(logHasIOException);
+		when(newsService.getCNWNewsDetails(DUMMY, TestUtils.CANADA_LOCALE.getLanguage())).thenReturn(new NewsDetails());
+		cnwNewsDetailsModel.init();
+		assertNotNull(cnwNewsDetailsModel.getNewsDetails());
 	}
 
-	@Test
-	public void testInitParseException() throws IOException {
-		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsDetailsModel.getClass());
-
-		// incorrect Date format
-		when(newsService.getCNWNewsDetails(ArgumentMatchers.anyString())).thenReturn(
-				"{\"release\":{\"id\":\"1\",\"headline\":\"headlines\",\"releaseDate\":\"03/12/2018 08:32:43 AM\",\"summary\":\"short summary\",\"body\":\"body content\"}}");
-		cnwNewsDetailsModel.init();
-
-		boolean logHasParseError = Utils.getLogMessageFlag(logger.getLoggingEvents(),
-				"Error :: CNWNewsDetailsModel :: init :: ParseException :: {}");
-		assertTrue(logHasParseError);
-	}
-*/
 	@Test
 	public void testInitException() {
 		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsDetailsModel.getClass());
@@ -84,7 +66,7 @@ public class CNWNewsDetailsModelTest {
 		// not initializing fields to get Null Pointer Exception
 		cnwNewsDetailsModel.init();
 
-		boolean logHasException = Utils.getLogMessageFlag(logger.getLoggingEvents(),
+		boolean logHasException = TestUtils.getLogMessageFlag(logger.getLoggingEvents(),
 				"Error :: CNWNewsDetailsModel :: init :: Exception :: {}");
 		assertTrue(logHasException);
 	}

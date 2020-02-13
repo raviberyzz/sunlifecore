@@ -37,57 +37,57 @@ public class GettersSettersTest {
 
 	@Test
 	void testAccordionModel() {
-		Utils.executeTestBean(accordionModel);
+		TestUtils.executeTestBean(accordionModel);
 	}
 
 	@Test
 	void testArticleModel() {
 		String[] excludedProperties= {"date","jcrLastModified"};
-		Utils.executeTestBean(articleModel, excludedProperties);
+		TestUtils.executeTestBean(articleModel, excludedProperties);
 	}
 
 	@Test
 	void testBasePageModel() {
-		Utils.executeTestBean(basePageModel);
+		TestUtils.executeTestBean(basePageModel);
 	}
 
 	@Test
 	void testBreadcrumbModel() {
-		Utils.executeTestBean(breadcrumbModel);
+		TestUtils.executeTestBean(breadcrumbModel);
 	}
 
 	@Test
 	void testCNWNewsDetailsModel() {
-		Utils.executeTestBean(cnwNewsDetailsModel);
+		TestUtils.executeTestBean(cnwNewsDetailsModel);
 	}
 
 	@Test
 	void testCNWNewsModel() {
-		Utils.executeTestBean(cnwNewsModel);
+		TestUtils.executeTestBean(cnwNewsModel);
 	}
 
 	@Test
 	void testCNWNewsOverviewModel() {
-		Utils.executeTestBean(cnwNewsOverviewModel);
+		TestUtils.executeTestBean(cnwNewsOverviewModel);
 	}
 
 	@Test
 	void testFormButtonModel() {
-		Utils.executeTestBean(formButtonModel);
+		TestUtils.executeTestBean(formButtonModel);
 	}
 
 	@Test
 	void testFormContainer() {
-		Utils.executeTestBean(formContainer);
+		TestUtils.executeTestBean(formContainer);
 	}
 
 	@Test
 	void testLeftNavigationModal() {
-		Utils.executeTestBean(leftNavigationModal);
+		TestUtils.executeTestBean(leftNavigationModal);
 	}
 
 	@Test
 	void testRegionLanguageMenu() {
-		Utils.executeTestBean(regionLanguageMenu);
+		TestUtils.executeTestBean(regionLanguageMenu);
 	}
 }
