@@ -901,21 +901,34 @@
                                 sling:resourceType="wcm/core/components/policy/policy">
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                    <item0 jcr:primaryType="nt:unstructured">
-                                        <cq:styles jcr:primaryType="nt:unstructured">
-                                            <item0
-                                                cq:styleClasses="grey-horizontal-separator"
-                                                cq:styleId="1577973868259"
-                                                cq:styleLabel="Grey"
-                                                jcr:primaryType="nt:unstructured"/>
-                                            <item1
-                                                cq:styleClasses="yellow-horizontal-separator"
-                                                cq:styleId="1577973901376"
-                                                cq:styleLabel="Yellow"
-                                                jcr:primaryType="nt:unstructured"/>
-                                        </cq:styles>
-                                    </item0>
-                                </cq:styleGroups>
+                                    <item0
+										cq:styleGroupLabel="Separator Color"
+										jcr:primaryType="nt:unstructured">
+										<cq:styles jcr:primaryType="nt:unstructured">
+											<item0
+												cq:styleClasses="grey-horizontal-separator"
+												cq:styleId="1577973868259"
+												cq:styleLabel="Grey"
+												jcr:primaryType="nt:unstructured"/>
+											<item1
+												cq:styleClasses="yellow-horizontal-separator"
+												cq:styleId="1577973901376"
+												cq:styleLabel="Yellow"
+												jcr:primaryType="nt:unstructured"/>
+										</cq:styles>
+									</item0>
+									<item1
+										cq:styleGroupLabel="Separator Alignment"
+										jcr:primaryType="nt:unstructured">
+										<cq:styles jcr:primaryType="nt:unstructured">
+											<item0
+												cq:styleClasses="left-aligned-seperator"
+												cq:styleId="1581575000809"
+												cq:styleLabel="Left"
+												jcr:primaryType="nt:unstructured"/>
+										</cq:styles>
+									</item1>
+								</cq:styleGroups>                                
                             </policy_separator>
                         </separator>
                         <button jcr:primaryType="nt:unstructured">
