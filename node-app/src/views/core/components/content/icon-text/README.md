@@ -2,7 +2,7 @@
 JSON Format
 ```
 {
-    "icon-text-wrapper" : "cta-content-icon-wrapper",
+    "icon-text-wrapper" : "social-icon-rte-wrapper",
     "iconTextList" : [{
         "fa-icon":"fa-facebook-square",
         "text-input": "Find an advisor",
@@ -12,5 +12,5 @@ JSON Format
     "border-right-present": ""
 }
 ```
-<!-- icon-text-wrapper classes available are social-link-icon-wrapper, right-nav-icon-wrapper, cta-content-icon-wrapper, mega-menu-icon-wrapper getting-started-icon-wrapper-->
+<!-- icon-text-wrapper classes available are social-link-icon-wrapper, right-nav-icon-wrapper, cta-content-icon-wrapper, mega-menu-icon-wrapper getting-started-icon-wrapper,social-icon-rte-wrapper -->
 <!-- "border-right-present": "text-border-right" -->

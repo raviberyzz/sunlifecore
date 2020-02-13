@@ -163,6 +163,18 @@
         padding-right: 16px;
     }
 }
+.social-icon-rte-wrapper{
+        .icon-parent {
+            text-align: left;
+            float: left;
+            margin-right: 5px;
+            padding: 0px 0px 20px 0px;
+        }
+        .icon-texts {
+            text-align: left;
+            padding: 0px 0px 20px 20px;
+        }
+}
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .text-border-right {
