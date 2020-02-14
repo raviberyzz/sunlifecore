@@ -43,6 +43,10 @@
       font-family: FontAwesome;
         content: " ";
     }
+    .navbar-new .no-icon>a:after{
+      font-family: FontAwesome;
+        content: " ";
+    }
     .nav-item.open{  
       
       background-color: $white-shade;   
