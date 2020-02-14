@@ -1,10 +1,4 @@
 $(document).ready(function(){
-    // PDRTJS_settings_7600084 = {
-    //     "id" : "7600084",
-    //     "unique_id" : "adca73a6ceb78610VgnVCM1000001794d09fRCRD",
-    //     "title" : "Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips",
-    //     "permalink" : "https://www.sunlife.ca/ca/Tools+and+Resources/Health+and+Wellness/Eating+well/Get+a+head+start+on+a+healthier+diet+with+these+7+tips?vgnLocale=en_CA"
-    //     };
         //Polldaddy library
         (function(d,c,j){
             if(!document.getElementById(j)){

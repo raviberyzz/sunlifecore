@@ -7,16 +7,9 @@
 	hreflang="${key}" href="${baseModel.altLanguageLinks[key]}"/>
 
 <!-- UDO starts here -->
-<div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
-    var utag_data={
-    "page_canonical_url" : "${baseModel.seoCanonicalUrl}",
-    "page_canonical_url_default" : "${baseModel.seoCanonicalUrl}",
-    "page_breadcrumb" : "${baseModel.breadCrumb}",
-    "page_language" : "${baseModel.customMetadata['og:locale']}",
-    "page_category" : "${baseModel.pageCategory}",
-    "page_subcategory" : "${baseModel.pageSubCategory}"
-    }
-</div>
+<script type="text/javascript">
+	var utag_data = ${baseModel.udoTags @context='unsafe'}
+</script>
 <!-- UDO ends here -->
 
 <!-- Synchronous Tag Support starts here -->

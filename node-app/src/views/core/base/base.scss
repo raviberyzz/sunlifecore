@@ -230,8 +230,11 @@ a {
         font-family: fontawesome;
         color: $medium-yellow-background;
         margin-left: 5px;
+        display:inline-block;
+        text-decoration: none;
     }
 }
+
 .pdf-link {
     &::before {
         content: "\f1c1";
@@ -245,6 +248,7 @@ a {
     color:$blue-legal-text-color;
 }
 footer {
+    margin-top: 40px;
     background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
         ul {
@@ -378,6 +382,18 @@ ul {
 }
 
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+    footer {
+        .social-link-icon-wrapper {
+            height: auto !important;
+            ul {
+                float: left;
+                top: inherit;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 32px 0;
+            }
+        }
+    }
     .container {
         max-width: 100%;
         width: 100%;

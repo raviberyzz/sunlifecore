@@ -96,3 +96,27 @@
         }
     }
 }
+
+//styles for news article
+
+.news{
+    .cmp-tabs__tablist{
+        .cmp-tabs__tab{
+            a {
+            color:$white-shade;  
+            width:100%;
+            padding:25px;
+            text-decoration: none;
+            }
+        }
+        .cmp-tabs__tab--active{
+            a{
+                color: $medium-blue-color!important;
+            }
+        }
+    }
+    .cmp-tabs__tabpanel--active{
+        padding:0;
+        border:none;
+    }
+}

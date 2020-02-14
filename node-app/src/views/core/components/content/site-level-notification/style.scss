@@ -11,4 +11,13 @@
         float: right;
         cursor: pointer;
     }
+    .cross-cta-wrapper {
+        padding: 0;
+        border: none;
+    }
+}
+@media (max-width: $mobile-screen-max) {
+    .site-level-notification .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
+       display: none; 
+      }
 }

@@ -1,9 +1,6 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
     float: left;
-    // .col-xs-12:first-child{
-    //     padding: 30px 20px 0 20px;
-    // }
     .cmp-container{
     margin: 40px 0;
     text-align: center;
@@ -19,6 +16,10 @@
             .collapse {
                 display: block !important;
             }
+        }
+        .accordion-heading{
+            margin-top:24px;
+            line-height: 36px;
         }
         .accordion-heading[aria-expanded="false"]:before {
             display: none;
@@ -54,22 +55,30 @@
     }
     .button-wrapper {
         
-            max-width: 100%;
+        max-width: 100%;
         width: 100%;
         
         .cmp-form-button{
             max-width: 100% ;
             width: 100%;
-            margin: 0 0 16px 0;
+            margin: 0 0 8px 0;
         }
     }
     .cmp-form-text{
         input{
             width: 100%;
+            max-width: 100%;
         }
     }
     .input-wrapper,.cmp-form-text{
-        margin:24px 0 16px 0;
+        margin:16px 0 16px 0;
+    }
+    form{
+        h2,h3,h4,h5,h6{
+            font-size: 18px;
+            margin-top: 24px;
+            line-height: 36px;
+        }
     }
     .right-navigation-wrapper .cmp-container > * {
         padding: 20px 15px 64px 15px;
@@ -78,7 +87,9 @@
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
         border-bottom: 20px solid  $white-shade;
-        padding: 15px;
+        & > *{
+            padding: 15px 0;
+        }
     }
     .phone-numbers{
         font-weight: 400;
@@ -94,12 +105,17 @@
         .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
+            margin-top: 24px;
+            line-height: 36px;
         }
         .icon-texts
         {
             padding-bottom: 0;
         }
     }
+    }
+    .legal-text{
+        color: $dark-grey-color;
     }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
@@ -111,7 +127,6 @@
             .light-orange{
                 border-top:10px solid $white-shade;
                 border-bottom: 10px solid $white-shade;
-                padding: 0;
             }
         }
         .cmp-container>*{
