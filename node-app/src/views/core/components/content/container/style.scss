@@ -726,12 +726,12 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
-	padding: 40px 24px;
+	padding: 20px 0px 40px 0px;
 	background: #F7F7F7;
 	overflow: auto;
 	.icon-parent {
 		float: left;
-		margin: 0 15px 25px 15px;
+		margin: 0 15px 25px 14px;
 		background: linear-gradient(#FFCB05, #EAAB00);
 		color: $white-shade;
 		font-size: 2.2em;
@@ -753,6 +753,7 @@ ul {
 		}
 	}
 	.icon-texts {
+        padding-bottom: 16px;
 		p {
 			display: table;
 		}
@@ -762,6 +763,9 @@ ul {
 		}
 	}
 	.cmp-text {
+        ul{
+            margin-left: 1em !important;
+        }
 		h3 {
 			font-size: 22px;
 			line-height: 28px;
@@ -769,7 +773,7 @@ ul {
 	}
 	.text {
 		.cmp-text {
-			margin-left: 15px;
+			margin-left: 6px;
 		}
     }
 
