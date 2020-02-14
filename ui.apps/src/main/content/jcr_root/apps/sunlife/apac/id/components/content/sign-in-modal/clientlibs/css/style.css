@@ -1,0 +1,262 @@
+.sign-in-modal-wrapper {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0;
+    position: fixed;
+    padding-left: 0; }
+    .sign-in-modal-wrapper .sign-in-modaldialog{
+      width:360px;
+    }
+    .sign-in-modal-wrapper .modal-main {
+      background: #FFCB05;
+      padding: 24px 24px 40px 24px; }
+    .sign-in-modal-wrapper .modal-body {
+      padding: 0; }
+    .sign-in-modal-wrapper .signin-modal-header {
+      border-bottom: none;
+      padding: 10px 24px; }
+    .sign-in-modal-wrapper .close-modal {
+      background: none;
+      border: none;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: #004C6C; }
+      .sign-in-modal-wrapper .close-modal .collapse-x {
+        font-size: 1rem; }
+    .sign-in-modal-wrapper .slf-icon-reg {
+      border: 2px solid #ffffff;
+      border-radius: 100%;
+      margin: 0 auto;
+      position: relative;
+      font-size: 2rem;
+      height: 60px;
+      width: 60px;
+      background: linear-gradient(#004C6C, #003946); }
+    .sign-in-modal-wrapper .icon-reg {
+      top: 18px; }
+    .sign-in-modal-wrapper .fa-inverse {
+      color: #ffffff; }
+    .sign-in-modal-wrapper .form-first {
+      margin-bottom: 8px;
+      color: #424242; }
+    .sign-in-modal-wrapper .accessid {
+      width: 317px;
+      padding: 0 10px;
+      height: 48px;
+      border: 1px solid #D7D7D7; }
+    .sign-in-modal-wrapper .password-input {
+      width: 317px;
+      margin-bottom: 16px;
+      padding: 0 10px;
+      height: 48px;
+      border: 1px solid #D7D7D7;
+      color: #424242; }
+    .sign-in-modal-wrapper .login-container {
+      text-align: center;
+      margin-top: 16px; }
+      .sign-in-modal-wrapper .login-container .btn-blue {
+        width: 100%;
+        height: 48px;
+        background: #004C6C;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 4px; }
+      .sign-in-modal-wrapper .login-container .signin-links {
+        font-size: 0.8125rem;
+        padding-top: 16px;
+        display: inline-block;
+        margin-bottom: 32px;
+        width: 100%; }
+        .sign-in-modal-wrapper .login-container .signin-links .signin-help-link, .sign-in-modal-wrapper .login-container .signin-links .signin-register {
+          float: left;
+          line-height: 18px; }
+          .sign-in-modal-wrapper .login-container .signin-links .signin-help-link a, .sign-in-modal-wrapper .login-container .signin-links .signin-register a {
+            font-size: 0.875rem;
+            line-height: 18px; }
+        .sign-in-modal-wrapper .login-container .signin-links .signin-register {
+          float: right; }
+      .sign-in-modal-wrapper .login-container .signin-terms {
+        margin-top: -11px;
+        font-size: 0.875rem;
+        display: inline-block;
+        margin-bottom: 40px;
+        line-height: 18px;
+        width: 100%; }
+        .sign-in-modal-wrapper .login-container .signin-terms a {
+          font-size: 0.875rem;
+          display: block;
+          line-height: 18px; }
+      .sign-in-modal-wrapper .login-container .signin-plans a {
+        font-size: 1rem; }
+      .sign-in-modal-wrapper .login-container .signin-sponsor:before {
+        font-family: FontAwesome;
+        content: "\f0a9";
+        margin-right: 5px;
+        color: #424242; }
+      .sign-in-modal-wrapper .login-container .download-app {
+        background: #F4F7F6;
+        height: 66px;
+        width: 364px;
+        margin-left: -25px;
+        padding: 8px 24px;
+        margin-bottom: 16px;
+        text-align: center; }
+        .sign-in-modal-wrapper .login-container .download-app a {
+          font-weight: 400;
+          float: left; }
+          .sign-in-modal-wrapper .login-container .download-app a img {
+            border-radius: 6px;
+            width: 50px;
+            height: 50px; }
+        .sign-in-modal-wrapper .login-container .download-app .download-text {
+          line-height: 20px;
+          padding-top: 5px; }
+          .sign-in-modal-wrapper .login-container .download-app .download-text p {
+            margin: 0; }
+          .sign-in-modal-wrapper .login-container .download-app .download-text .download-text-bold {
+            color: #004C6C;
+            font-weight: 700; }
+      .sign-in-modal-wrapper .login-container .sign-plans {
+        margin-top: -1px;
+        font-size: 0.875rem;
+        line-height: 18px; }
+    .sign-in-modal-wrapper .customerSignInHeader {
+      font-weight: 500;
+      font-size: 1.125rem;
+      line-height: 24px;
+      margin-top: 0; }
+    .sign-in-modal-wrapper .form-second {
+      margin-bottom: 16px; }
+    .sign-in-modal-wrapper .remember {
+      position: absolute;
+      display: none; }
+    .sign-in-modal-wrapper .remeberme {
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 4px 0 0 3px; }
+      .sign-in-modal-wrapper .remeberme ::before {
+        width: 18px;
+        height: 18px; }
+      .sign-in-modal-wrapper .remeberme ::after {
+        color: #004C6C;
+        top: 2px;
+        left: 2px; }
+    .sign-in-modal-wrapper [type="checkbox"] + label {
+      position: relative;
+      padding-left: 15px;
+      cursor: pointer; }
+    .sign-in-modal-wrapper [type="checkbox"] + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #aaaaaa;
+      background: #ffffff; }
+    .sign-in-modal-wrapper [type="checkbox"]:not(:checked) + label:after {
+      opacity: 0;
+      transform: scale(0); }
+    .sign-in-modal-wrapper [type="checkbox"] + label:after {
+      content: '\f00c';
+      font-family: FontAwesome;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      font-size: 14px;
+      color: #004C6C;
+      transition: all 0.2s;
+      line-height: 18px; }
+    .sign-in-modal-wrapper input[type=checkbox]:after {
+      display: none; }
+  
+  .modal-backdrop {
+    position: relative; }
+  
+  .modal-open {
+    padding-right: 0; }
+
+    .sign-in-modal-wrapper .form-first .module-body {
+      font-size:1rem;
+      line-height:22px;
+    text-align: center; }
+    .sign-in-modal-wrapper .form-group{
+      margin-bottom:3px;
+    }
+    .sign-in-modal-wrapper .form-group .module-body {
+      font-size:1rem;
+      line-height:22px;
+    text-align: center;
+    margin:0; }
+    .sign-in-modal-wrapper .form-second .moreon{
+      display: block;
+      margin-top: 20px; }
+      .sign-in-modal-wrapper .form-second .moreon:after{
+        content: '\f138';
+        color: #003946;
+        padding-left:5px;
+       }
+      .sign-in-modal-wrapper .form-second .moreon a{
+        font-weight:700;
+        color: #004C6C;
+        font-size:1rem;
+        text-decoration: none;
+      }
+      .sign-in-modal-wrapper .select-dropdown{
+        margin-bottom:20px;
+      }
+      .sign-in-modal-wrapper .select-dropdown select.form-control{
+        font-weight: 400;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0;
+        -webkit-appearance: none;
+        height: auto;
+        padding-right: 30px;
+        background-color: white;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-image: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png);
+        width:283px;
+        height:34px;
+        padding-left:10px;
+      }
+      .sign-in-modal-wrapper .select-dropdown select.form-control option{
+        width:inherit;
+      }
+      .sign-in-modal-wrapper .login-container .form-group {
+        margin-bottom: 10px;
+      }
+      .sign-in-modal-wrapper .login-container .form-group .btn-blue{
+        font-size: 1rem;
+        font-weight: 700;
+        white-space: nowrap;
+        padding: 7px 19px;
+        margin: 20px 0 0 0;
+        width:100px;
+        height:40px;
+        border:none;
+      }
+      .sign-in-modal-wrapper .login-container .form-group .btn[disabled] {
+        opacity: 1;
+        background: #424242;
+        border: 2px solid #424242;
+        color:#ffffff;
+    }
+.sign-in-modal-wrapper .download-app{
+            display:none;}
+  
+  @media (max-width: 992px) and (min-width: 320px) {
+    .sign-in-modal-wrapper .modal-dialog.sign-in-modaldialog {
+      margin: 0;
+      left: 50%;
+      transform: translateX(-50%); } }
+
+  @media(max-width:1024px){
+    .sign-in-modal-wrapper .download-app{
+      display:block;
+    }
+  }

@@ -34,25 +34,6 @@
                                         name="./errorPages"/>
                                 </items>
                             </section>
-                            <analytics
-                                jcr:primaryType="nt:unstructured"
-                                jcr:title="Analytics"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <pageCategory
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Page Category"
-                                        fieldLabel="Page Category"
-                                        name="./pageCategory"/>
-                                    <pageSubCategory
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Page Sub Category"
-                                        fieldLabel="Page Sub Category"
-                                        name="./pageSubCategory"/>
-                                </items>
-                            </analytics>
                             <socialMediaSection
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Additional Social Tags"
@@ -64,12 +45,12 @@
                                         fieldDescription="Description"
                                         fieldLabel="Description"
                                         name="./socialMediaDescripton"/>
-				    <image 
-					jcr:primaryType="nt:unstructured" 
-					sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" 
-					fieldDescription="Image" 
-					fieldLabel="Image" 
-					name="./socialMediaImage"/>
+									<image 
+										jcr:primaryType="nt:unstructured" 
+										sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" 
+										fieldDescription="Image" 
+										fieldLabel="Image" 
+										name="./socialMediaImage"/>
                                 </items>
                             </socialMediaSection>
                         </items>

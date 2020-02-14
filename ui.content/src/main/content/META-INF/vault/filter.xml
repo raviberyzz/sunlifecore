@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-	<filter root="/conf/sunlife-apac"/>
+	<filter root="/conf/sunlife-apac"/>	
     <filter root="/conf/sunlife">
     	<exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-service-channel-template"/>
         <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-redirect-template"/>
@@ -8,5 +8,16 @@
         <exclude pattern="/conf/sunlife/settings/wcm/templates/export-collection-layout"/>
         <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-jsp-config-template"/>
         <exclude pattern="/conf/sunlife/settings/wcm/templates/sunlife-export-headless-content-blank-template"/>
+		
+		<!-- Excluding the Content Fragment Model Created by Bucket 5 Team -->
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/announcement"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/export-services-property-file"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/file-wrapper-model"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/grs"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/paragraph-composite-textarea"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/paragraph-model"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/question"/>
+		<exclude pattern="/conf/sunlife/settings/dam/cfm/models/site-parameter"/>		
     </filter>
+	
 </workspaceFilter>

@@ -309,7 +309,7 @@
     /* desktop styles start */
        .desktop-linkfarm-table{
         margin-bottom: 40px;
-        border: 1px #CCD8DA solid;
+        border: 1px $light-grey-color solid;
         margin: 15px 0 0 0;
           .slf-region{
               .title-region{
@@ -318,49 +318,61 @@
                 line-height: 23px;
                 background-color: #D7D7D7;
                 padding: 15px 30px;
-                margin: 0 -15px;
+                margin: -1px;
+                border: 1px solid $light-grey-color;
               }
               .content-region{
-                  .first_level_list-unstyled{
-                      li {
-                        .accordion-heading {
-                            font-weight: 400;
-                            font-size: 18px;
-                            line-height: 23px; 
-                            color: #424242; 
-                            border-bottom: 2px dotted #D7D7D7;
-                            display: block;
-                            padding: 10px 0px;
-                          }
-                      }
-                        .list-unstyled{
-                            padding-left: 0;
-                            list-style: none; 
-                            li {
-                                margin-bottom: 8px;
-                                font-size: 16px;
-                                padding: 10px 0;
-                                line-height: 24px;
-                                font-family: sunlife-sans;
-                                font-weight: 400;
-                                border-bottom: 2px dotted #D7D7D7;
-
-                                a {
-                                    padding: 4px 0 4px 0px; 
-                                    font-family: sunlife-sans;
-                                    font-weight: 700;
-                                    color: #004c6c;
-                                    font-size: 16px;
-                                    text-decoration: none;
-                                }
-                            }
-                            li:last-child{
-                                
-                                border:none!important;
-                           
+                  padding:24px;
+                  display: flex;
+                  .slf-region-column{
+                          padding-right:24px;
+                    .first_level_list-unstyled{
+                        li {
+                          .accordion-heading {
+                              font-weight: 400;
+                              font-size: 20px;
+                              line-height: 23px; 
+                              color: #424242; 
+                              border-bottom: 2px dotted $light-grey-color;
+                              display: block;
+                              padding: 10px 0px;
                             }
                         }
+                          .list-unstyled{
+                              padding-left: 0;
+                              list-style: none; 
+                              li {
+                                  margin-bottom: 8px;
+                                  font-size: 16px;
+                                  padding: 10px 0;
+                                  line-height: 24px;
+                                  font-family: sunlife-sans;
+                                  font-weight: 400;
+                                  border-bottom: 2px dotted $light-grey-color;
+  
+                                  a {
+                                      padding: 4px 0 4px 0px; 
+                                      font-family: sunlife-sans;
+                                      font-weight: 700;
+                                      color: $medium-blue-color;
+                                      font-size: 16px;
+                                      line-height: 26px;
+                                      text-decoration: none;
+                                  }
+                                  a:hover{
+                                      text-decoration: underline;
+                                  }
+                              }
+                              li:last-child{  
+                                  border:none!important;
+                              }
+                          }
+                    }
+                    .slf-region-column:last-child{
+                        padding-right:0px;
+                    }
                   }
+                 
               }
           }
         } 
@@ -369,8 +381,8 @@
     /*mobile styles start */
     .slf-accordion-arrow {
         .accordion-heading{
-           background-color:#f4f7f6;
-           color: #004c6c;
+           background-color:$light-cool-blue-color;
+           color: $medium-blue-color;
            font-family: sunlife-sans;
             font-weight: 700;
             font-size: 16px;
@@ -398,11 +410,11 @@
             font-size: 16px;
                 padding: 20px;
             line-height: 140%;
-            border-bottom: 2px dotted #D7D7D7; 
+            border-bottom: 2px dotted $light-grey-color; 
             a {
                 font-family: sunlife-sans;
                 font-weight: normal;
-                color: #004c6c;
+                color: $medium-blue-color;
                 font-size: 16px;
                 text-decoration: none; 
             }
