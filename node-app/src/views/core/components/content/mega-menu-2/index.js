@@ -15,7 +15,7 @@ $(document).ready(function(){
    var menuHeight=0;
  $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
      function(){
-         menuHeight= $('.cmp-dynamic-megamenu').height();
+        menuHeight= $(this).parent().parent().parent().parent().height();
           var submenuHeight=$(this).children('.dropdown-menu').height();
          if ( submenuHeight > menuHeight)
          {
