@@ -4,8 +4,11 @@
       <div data-sly-test="${footercopyright.title}" class="slf-tagline">${footercopyright.title}</div>      
       	<div class="slf-legal">         
             <ul data-sly-list.footerItems="${footercopyright.footerItems}">
-               <li data-sly-test="${!footerItems.checkboxHide}">
+               <li class="hidden-xs hidden-sm" data-sly-test.hideCheckBox="${footerItems.checkboxHide}">
                   <a href="${footerItems.url @ extension = 'html'}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+               </li>
+               <li data-sly-test="${!hideCheckBox}">
+                <a href="${footerItems.url @ extension = 'html'}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
                </li>
             </ul>
         </div>

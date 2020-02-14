@@ -546,11 +546,16 @@ ul {
 
 /* styles for mobile app start */
 .mobileapp {
+    font-size: 18px !important;
 	.text {
 		.cmp-text {
+            h2{
+                line-height: 46px;
+                font-size: 36px !important;
+            }
 			p {
 				&:last-child {
-					margin-bottom: 30px;
+					margin-bottom: 40px;
 				}
 			}
 		}
@@ -568,15 +573,25 @@ ul {
 	}
 	.icon-style {
 		color: #fff;
-	}
-	.icon-texts {
-		padding-bottom: 32px;
+    }
+    
+	.icon-texts {  
+        padding-bottom: 32px;
 		p {
 			&:first-child {
 				font-weight: 700;
 			}
 		}
-	}
+    }
+    .icon-text {
+		ul{
+            li:last-child{
+                .icon-texts{
+                    padding-bottom: 40px !important;
+                }
+            }
+        }
+    }
 	.cmp-container {
 		.aem-GridColumn--default--8 {
 			.cmp-container {
@@ -599,7 +614,6 @@ ul {
 	padding: 15px;
     height: 56px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .product-card {
@@ -744,7 +758,7 @@ ul {
 		}
 		h3 {
 			font-size: 22px;
-			line-height: 28px;
+            line-height: 28px;
 		}
 	}
 	.cmp-text {
@@ -757,7 +771,8 @@ ul {
 		.cmp-text {
 			margin-left: 15px;
 		}
-	}
+    }
+
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
