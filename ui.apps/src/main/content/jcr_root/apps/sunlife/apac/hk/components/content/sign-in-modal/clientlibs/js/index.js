@@ -10,16 +10,10 @@ $(document).ready(function () {
       $("#mySignInModal").width(winWidth);
       $("#mySignInModal").addClass('horizontal-middle-align');
     }
-    function modalHeight(){
-      var modalHeight=$(document).height();
-      $("#mySignInModal").height(modalHeight);
-    }
     if ($(window).width() > 1024) {
       modalWidth();
     }
-     modalHeight();
     $(window).resize(function() {
-	 modalHeight();
       if ($(window).width() > 1024) {
         modalWidth();
       }
