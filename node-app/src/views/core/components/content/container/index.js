@@ -1,11 +1,18 @@
 $(document).ready(function () {
 	//for footer
+	if ($(window).width() < 768) {
+		$('footer .social-link-icon-wrapper').css({ "padding": "0" });
+	} else {
+		var teaser_height = $('footer .teaser').height();
+		$('footer .social-link-icon-wrapper').css({ "padding": "16px 15px 16px 0" });
+		$('footer .social-link-icon-wrapper').height(teaser_height);
+	}
 	$(window).resize(function () {
 		if ($(window).width() < 768) {
 			$('footer .social-link-icon-wrapper').css({ "padding": "0" });
 		} else {
 			var teaser_height = $('footer .teaser').height();
-			$('footer .social-link-icon-wrapper').css({ "padding": "16px 0 15px 16px" });
+			$('footer .social-link-icon-wrapper').css({ "padding": "16px 15px 16px 0" });
 			$('footer .social-link-icon-wrapper').height(teaser_height);
 		}
 	});
