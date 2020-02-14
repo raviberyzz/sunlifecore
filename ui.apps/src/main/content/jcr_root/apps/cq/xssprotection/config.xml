@@ -734,9 +734,14 @@ http://www.w3.org/TR/html401/struct/global.html
 		</tag>
 		
 		<tag name="option" action="validate">
-		
+
 			<attribute name="disabled"/>
-			
+            <attribute name="hidden">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>
+			</attribute>
+
 			<attribute name="value">
 				<regexp-list>
 					<regexp name="anything"/>
