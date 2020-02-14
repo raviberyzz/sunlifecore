@@ -581,7 +581,11 @@ ul {
 			&:first-child {
 				font-weight: 700;
 			}
-		}
+        }
+        p:last-child{
+            line-height:23px;
+            display:table;
+        }
     }
     .icon-text {
 		ul{
@@ -600,7 +604,27 @@ ul {
 		}
 	}
 }
-
+// styles for mobile version 
+@media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+    .mobileapp{
+        .text{
+            .cmp-text{
+                p:last-child{
+                    a{
+                        display:block;
+                        text-align: center;
+                        .view-all-category:after{
+                            display:inline;
+                        }
+                    }
+                }
+            }
+        }
+        .image{
+            display:none;
+        }
+    }
+}
 /* styles for mobile app end  */
 
 /* styles for product box start */
