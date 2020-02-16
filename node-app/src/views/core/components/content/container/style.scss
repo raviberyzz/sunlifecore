@@ -180,15 +180,20 @@ ul {
     background: linear-gradient(to bottom, $medium-yellow-background, $primary-yellow-background 50%, $light-grey-20 50%);
 }
 .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
-    padding: 40px 24px;
+    padding: 24px 24px 40px 24px;
     text-align: center;
+    .cmp-text{
+        p{
+            padding-bottom:2px;
+        }
+    }
     .grey-horizontal-separator {
         display: none;
         width: 40%;
         border-bottom: 1px solid $light-grey-separator-color;
     }
     .image-text-wrapper {
-        padding: 40px 15px;
+        padding: 40px 15px 32px 15px;
         text-align: center;
         background-color: $white-shade;
         height: 95%;
@@ -201,6 +206,9 @@ ul {
             .left-item, .right-item {
                 display: inherit;
             }
+        }
+        .left-item{
+            padding-bottom: 32px;
         }
     }
     .container-component {
@@ -397,8 +405,10 @@ ul {
     }
     .content-highlight {
         text-align: center;
+        padding: 40px 16px 16px 16px;
         p {
             text-align: center !important;
+            padding-bottom: 14px;
         }
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.25rem;
@@ -455,7 +465,14 @@ ul {
         border-left: 1px solid $light-grey-color;
     }
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
+        padding-top: 24px;
+        .cmp-text{
+            p{
+              padding-bottom:2px;
+            }
+        }
         .image-text-wrapper {
+          padding: 32px 15px 22px 15px;
             img {
                 display: none;
             }
@@ -498,6 +515,20 @@ ul {
             font-size: 1.5rem;
         }
     }
+    .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
+        padding-top: 24px;
+        .cmp-text{
+            p{
+              padding-bottom:2px;
+            }
+        }
+    .image-text-wrapper{
+        padding: 40px 15px 22px 15px;
+    }
+    .left-item{
+        padding-bottom: 32px;
+    }
+  }
 }
 @media (max-width:$tab-screen-max) {
     .content-block-icon .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
