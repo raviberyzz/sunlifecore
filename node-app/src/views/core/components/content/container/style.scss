@@ -577,11 +577,16 @@ ul {
 
 /* styles for mobile app start */
 .mobileapp {
+    font-size: 18px !important;
 	.text {
 		.cmp-text {
+            h2{
+                line-height: 46px;
+                font-size: 36px !important;
+            }
 			p {
 				&:last-child {
-					margin-bottom: 30px;
+					margin-bottom: 40px;
 				}
 			}
 		}
@@ -599,15 +604,29 @@ ul {
 	}
 	.icon-style {
 		color: #fff;
-	}
-	.icon-texts {
-		padding-bottom: 32px;
+    }
+    
+	.icon-texts {  
+        padding-bottom: 32px;
 		p {
 			&:first-child {
 				font-weight: 700;
 			}
-		}
-	}
+        }
+        p:last-child{
+            line-height:23px;
+            display:table;
+        }
+    }
+    .icon-text {
+		ul{
+            li:last-child{
+                .icon-texts{
+                    padding-bottom: 40px !important;
+                }
+            }
+        }
+    }
 	.cmp-container {
 		.aem-GridColumn--default--8 {
 			.cmp-container {
@@ -616,7 +635,27 @@ ul {
 		}
 	}
 }
-
+// styles for mobile version 
+@media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+    .mobileapp{
+        .text{
+            .cmp-text{
+                p:last-child{
+                    a{
+                        display:block;
+                        text-align: center;
+                        .view-all-category:after{
+                            display:inline;
+                        }
+                    }
+                }
+            }
+        }
+        .image{
+            display:none;
+        }
+    }
+}
 /* styles for mobile app end  */
 
 /* styles for product box start */
@@ -630,7 +669,6 @@ ul {
 	padding: 15px;
     height: 56px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .product-card {
@@ -743,12 +781,12 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
-	padding: 40px 24px;
+	padding: 20px 0px 40px 0px;
 	background: #F7F7F7;
 	overflow: auto;
 	.icon-parent {
 		float: left;
-		margin: 0 15px 25px 15px;
+		margin: 0 15px 25px 14px;
 		background: linear-gradient(#FFCB05, #EAAB00);
 		color: $white-shade;
 		font-size: 2.2em;
@@ -770,15 +808,19 @@ ul {
 		}
 	}
 	.icon-texts {
+        padding-bottom: 16px;
 		p {
 			display: table;
 		}
 		h3 {
 			font-size: 22px;
-			line-height: 28px;
+            line-height: 28px;
 		}
 	}
 	.cmp-text {
+        ul{
+            margin-left: 1em !important;
+        }
 		h3 {
 			font-size: 22px;
 			line-height: 28px;
@@ -786,9 +828,10 @@ ul {
 	}
 	.text {
 		.cmp-text {
-			margin-left: 15px;
+			margin-left: 6px;
 		}
-	}
+    }
+
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {

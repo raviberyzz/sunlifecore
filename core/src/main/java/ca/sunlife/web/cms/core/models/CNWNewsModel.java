@@ -262,15 +262,15 @@ public class CNWNewsModel {
 			}
 			logger.debug("Fetched params  pageNum: {}, strYear: {}", pageNum, strYear);
 
-			if (null != strYear && !"".equals(strYear)) {
+			if (null != strYear && !"".equals(strYear) && !"html".equals(strYear)) {
 				activeYear = Integer.parseInt(strYear);
 			}
 			logger.debug("activeYear :: {}", activeYear);
 
 			String uri = request.getRequestURI();
 			logger.debug("uri: {}", uri);
-			relativeURL = uri.substring(0, uri.indexOf('.'));
-			requestURL = uri.substring(0, uri.lastIndexOf('.'));
+			relativeURL = uri.contains(".") ? uri.substring(0, uri.indexOf('.')) : uri;
+			requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
 			logger.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
 			if (null != pageNum) { // Code to remove page number from url
 				requestURL = requestURL.replaceAll("." + pageNum + "$", "");

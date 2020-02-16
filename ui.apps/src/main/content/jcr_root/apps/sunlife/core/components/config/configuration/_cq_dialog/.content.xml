@@ -73,6 +73,12 @@
 										fieldDescription="Image" 
 										fieldLabel="Image" 
 										name="./socialMediaImage"/>
+									<udoTagsPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="UDO Tags Path"
+                                        fieldLabel="UDO Tags Path"
+                                        name="./udoTagsPath"/>	
                                 </items>
                             </section-page>
                         </items>
