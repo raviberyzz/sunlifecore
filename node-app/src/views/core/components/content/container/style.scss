@@ -115,6 +115,16 @@ ul {
 }
 .no-padding{
     .yellow-icon-white-background{
+        .cta-content-icon-wrapper{
+            .icon-parent {
+                height: 14px;
+            }
+        }
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
+        }
         form{
             .cmp-form-button{
                 width: 100%;
@@ -128,7 +138,7 @@ ul {
         form :not(:last-child){
 
             padding-right: 0px;
-            padding-bottom: 16px;
+            padding-bottom: 8px;
         }
         &>:last-child{
             margin-bottom: 0px;
@@ -136,6 +146,13 @@ ul {
         }
         .cmp-container > :last-child{
             padding-bottom: 40px;
+        }
+    }
+    .blue-icon-yellow-background{
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
         }
     }
     .text-border-right {
