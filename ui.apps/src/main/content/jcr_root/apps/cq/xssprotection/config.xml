@@ -163,7 +163,13 @@ http://www.w3.org/TR/html401/struct/global.html
                 <regexp name="anything"/>
             </regexp-list>
         </attribute>
-
+		
+		<attribute name="placeholder" description="Allows 'placeholder' attribute to be added to elements">
+            <regexp-list>
+                <regexp name="anything"/>
+            </regexp-list>
+        </attribute>
+		
         <attribute name="target">
             <regexp-list>
                 <regexp value="[a-zA-Z0-9-_\$]+"/>
@@ -534,6 +540,7 @@ http://www.w3.org/TR/html401/struct/global.html
 		<attribute name="class"/>
 		<!-- Not valid in base, br, frame, frameset, hr, iframe, param, and script elements.  -->
 		<attribute name="lang"/>
+		<attribute name="placeholder"/>
 	</global-tag-attributes>
 
 	<!-- Declare "dynamic" tag attributes here. The directive "allowDynamicAttributes" must be set to true -->
@@ -2989,4 +2996,3 @@ http://www.w3.org/TR/html401/struct/global.html
     </allowed-empty-tags>
 
 </anti-samy-rules>
-

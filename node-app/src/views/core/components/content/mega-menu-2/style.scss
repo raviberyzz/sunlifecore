@@ -151,7 +151,6 @@
   content: "\00a0\f105"; }
 
 /*Grey Variation CSS*/
-
 .cmp-dynamic-megamenu-grey {
   padding: 0;
   position: relative; }
@@ -208,6 +207,10 @@
 .cmp-dynamic-megamenu-grey .dropdown-submenu:hover {
   background: #f0ede8; }
 
+.cmp-dynamic-megamenu-grey .mega-menu2-list li:hover {
+  background:#f0ede8; }
+
+
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu {
   left: 224px;
   top: 0;
@@ -230,8 +233,12 @@
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a:hover {
   background: #f0ede8; }
-
+.cmp-dynamic-megamenu-grey .mega-menu2-list li a
+{
+    padding:0 !important;
+}
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a {
+
   background: #f0ede8; }
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list ul a:hover, .cmp-dynamic-megamenu .mega-menu2-list ul a:focus {
@@ -242,12 +249,11 @@
   font-family: FontAwesome;
   content: "\00a0\f105"; }
 
-.cmp-dynamic-megamenu-grey .cmp-dynamic-megamenu-greybackground{
+.cmp-dynamic-megamenu-grey .cmp-dynamic-megamenu-greybackground {
+  margin: 15px;
+  background: #D7D7D7;
+  padding-top: 15px; }
 
-margin: 15px;
-    background: #D7D7D7;
-    padding-top: 15px;
-        }
 
 
 @media (max-width: 1024px) {

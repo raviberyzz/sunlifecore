@@ -69,7 +69,7 @@
        <div data-sly-test = "${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="desktop-sunlife-logo" data-section="header-logo" tabindex="1">
            <sly data-sly-list.links="${listModel.links}">
             <a href="${links.linkUrl @ extension = 'html' }">
-              <img class="vertical-middle-align" alt="sunlife logo"
+              <img class="vertical-middle-align" alt="${links.altText}"
                 src="${links.logoImage}">
               </img>
             </a>
@@ -158,13 +158,13 @@
                               </div>
                       </div>
                       <div data-sly-test = "${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel" class="slf-header-mobile-logo"  data-section="header-logo">
-                            <sly data-sly-list.links="${links}">
-                              <a class="mobile-sun-pic" href="${links.linkUrl @ extension = 'html' }">
-                                      <picture>
-                                              <img alt="Sun Life" src="${links.logoImage}" />
-                                      </picture>
-                              </a>
-                            </sly>  
+                            <sly data-sly-list.links="${listModel.links}">
+           						 <a href="${links.linkUrl @ extension = 'html' }">
+              							<img class="vertical-middle-align" alt="sunlife logo"
+                						src="${links.logoImage}">
+              							</img>
+          							  </a>
+           					</sly>  
                       </div>
                      <div data-sly-test = "${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn" data-toggle="modal" data-target="#mySignInModal"><a
                                       data-toggle="modal" role="button"

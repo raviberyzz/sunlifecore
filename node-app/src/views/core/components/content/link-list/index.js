@@ -13,7 +13,7 @@ $(document).ready(function () {
 	var pathName= window.location.pathname;
 	$('.editorial-nav-desktop-wrapper .list-div ul').find('a').each(function(){
 		var strLink =  $(this).attr('href');
-		strLink1 = strLink.localeCompare(pathName);
+		var strLink1 = strLink.localeCompare(pathName);
 		if(!strLink1){
 			$(this).parent().addClass("selected");
 		}

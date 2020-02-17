@@ -5,20 +5,9 @@
     "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress checks="MagicNumber"
+    <suppress checks="[a-zA-Z0-9]*"
               files="..*Test.*" />
-    <suppress checks="JavadocMethod"
-              files="..*Test.*" />
-    <suppress checks="MethodName"
-              files="..*Test.*" />
-    <suppress checks="ParameterNumber"
-              files="..*Test.*" />
-    <suppress checks="StringLiteralUsed"
-              files="..*Test.*" />
-    <suppress checks="MultipleStringConcatenation"
-              files="..*Test.*" />
-    <suppress checks="MethodLength"
-              files="..*Test.*" />  
+   
     <suppress checks="SwitchWithoutFinalBreak"
               files="..StorageManager.*" />
     <suppress checks="[a-zA-Z0-9]*"
@@ -26,7 +15,7 @@
     <suppress checks="[a-zA-Z0-9]*"
               files="..*Session.*" />
     <suppress checks="[a-zA-Z0-9]*"
-              files="..*CMP.*" />
+              files="..*CMP.*" ></suppress>
     <suppress checks="LogIfContainsCode"
               files="..PIXMLServlet*.*" />
     <suppress checks="SuiteMethodExists"
