@@ -80,9 +80,16 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
+    .cta-content-icon-wrapper{
         .icon-parent {
-            height: 40px;
+            height: 14px;
         }
+    }
+    .overview-highlights-wrapper{
+        .icon-parent {
+            height: 24px;
+        }
+    }
         .icon-text {
             padding: 16px;
         }
@@ -401,6 +408,12 @@ ul {
                 text-align: center;
             }
         }
+        .col-sm-6:first-child .cross-cta-wrapper{
+            padding: 32px 24px 40px 16px;
+        }
+        .col-sm-6:last-child .cross-cta-wrapper{
+            padding: 32px 16px 40px 24px;
+        }
     }
     .container-component {
         .cmp-container > div {
@@ -433,7 +446,7 @@ ul {
       }
     }
     .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 62px;
+        margin-bottom: 64px;
     }
     .no-padding{
         .yellow-icon-white-background{
