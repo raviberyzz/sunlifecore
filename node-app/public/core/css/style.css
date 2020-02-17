@@ -6635,6 +6635,106 @@ input[type=text] {
 .cta-content-icon-wrapper .blue-icon-yellow-background .icon-parent {
   height: 24px; }
 
+.two-column-wrapper .medium-yellow-background {
+  background-color: #FFCB05; }
+
+.two-column-wrapper .light-cool-blue-color {
+  background-color: #F4F7F6; }
+
+.two-column-wrapper .transparent {
+  background-color: transparent; }
+
+.two-column-wrapper .light-grey {
+  background-color: #D7D7D7; }
+
+.two-column-wrapper .padding-between {
+  width: 100%;
+  display: flex; }
+  .two-column-wrapper .padding-between div:not(:first-child) {
+    margin-left: 20px; }
+
+.two-column-wrapper .medium-blue-background {
+  background: #004C6C; }
+
+.two-column-wrapper .yellow-gradient-background {
+  background: linear-gradient(#FFCB05, #EAAB00); }
+
+.two-column-wrapper .vertical-separator-med-grey {
+  width: 2px;
+  background: #9a9a9a;
+  height: auto; }
+
+.two-column-wrapper .two-column-variation-three {
+  width: 100%;
+  display: flex; }
+
+/* For Layout Containetr */
+.row {
+  margin: 0;
+  padding: 0; }
+  .row .col-xs-1, .row .col-xs-2, .row .col-xs-3, .row .col-xs-4, .row .col-xs-5, .row .col-xs-6, .row .col-xs-7, .row .col-xs-8, .row .col-xs-9, .row .col-xs-10, .row .col-xs-11, .row .col-xs-12 {
+    padding: 0 10px; }
+  .row .col-sm-1, .row .col-sm-2, .row .col-sm-3, .row .col-sm-4, .row .col-sm-5, .row .col-sm-6, .row .col-sm-7, .row .col-sm-8, .row .col-sm-9, .row .col-sm-10, .row .col-sm-11, .row .col-sm-12 {
+    padding: 0 10px; }
+  .row .col-md-1, .row .col-md-2, .row .col-md-3, .row .col-md-4, .row .col-md-5, .row .col-md-6, .row .col-md-7, .row .col-md-8, .row .col-md-9, .row .col-md-10, .row .col-md-11, .row .col-md-12 {
+    padding: 0 10px; }
+  .row .col-lg-1, .row .col-lg-2, .row .col-lg-3, .row .col-lg-4, .row .col-lg-5, .row .col-lg-6, .row .col-lg-7, .row .col-lg-8, .row .col-lg-9, .row .col-lg-10, .row .col-lg-11, .row .col-lg-12 {
+    padding: 0 10px; }
+
+.layout-container.no-padding div[class^="col-"] {
+  padding: 0; }
+
+
+.icon-style:hover {
+  text-decoration: none; }
+
+.icon-parent {
+  text-align: center; }
+  .icon-parent a:hover {
+    color: #4A7283; }
+
+.social-link-icon-wrapper .icon-texts {
+  display: none; }
+
+.right-nav-icon-wrapper {
+  text-align: center; }
+  .right-nav-icon-wrapper .icon-style {
+    font-size: 2.25rem;
+    color: #004C6C;
+    margin-top: 20px; }
+    .right-nav-icon-wrapper .icon-style:hover {
+      text-decoration: none;
+      pointer-events: none; }
+  .right-nav-icon-wrapper .icon-texts {
+    margin-top: 16px; }
+    .right-nav-icon-wrapper .icon-texts a {
+      text-align: center;
+      font-size: 1rem; }
+  .right-nav-icon-wrapper .sun-icon {
+    font-family: "sunlife-custom";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1.25em;
+    font-size: 3.850rem;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  .right-nav-icon-wrapper .icon-lifeinsurance {
+    margin-top: 15px; }
+    .right-nav-icon-wrapper .icon-lifeinsurance:before {
+      content: '\e804'; }
+
+.cta-content-icon-wrapper .blue-icon-yellow-background .icon-parent {
+  height: 24px; }
+
 .cta-content-icon-wrapper .icon-style {
   background: linear-gradient(#FFCB05, #EAAB00);
   border-radius: 50%;
