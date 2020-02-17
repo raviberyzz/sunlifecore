@@ -160,21 +160,18 @@
                 margin-right: 35px;
                 border-radius: 0px;
                 span{
-                    color:$blue-search-color;
+                    color:$medium-blue-color;
                 }
             }
             li{
                 display: inline-block;
                 a{
                     margin-left:0;
-                    padding: 4px 13px;
+                    padding: 5px 11.2px;
                     border-width: 0;
                     .fa{
                         display:none;
                     }
-                }
-                .ellipsis {
-                    pointer-events: none;
                 }
             }
             li.disabled > a {
@@ -187,15 +184,29 @@
             li.active{
                 a{
                     background-color: $medium-yellow-background;
+                    border-radius:4px;
                 }
             }
             li.next{
                 margin-left: 35px;
                 a{
                     border-radius: 0px;
+                    color:$medium-blue-color;
+                    padding-left:13px;
+                    padding-right:0;
                 }
                 span{
                     color:$blue-search-color;
+                }
+            }
+        }
+        .ellipsis {
+            pointer-events: none;
+            width:32px;
+            a{
+                padding: 5px 8.16px !important;
+                span{
+                    color:#004C6C;
                 }
             }
         }
@@ -210,8 +221,10 @@
         margin-top:15px;
     }
     .pagination-item{
+        width:32px;
+        height:32px;
         .txt{
-            color:$blue-search-color;
+            color:$medium-blue-color;
         }
     }
     .search-result-toggle.active{
@@ -314,18 +327,22 @@
         }
     }
     .search-container{
-        .pagination.first-page {
-            width: 80%;
-            display: block;
-            font-size:0;
-            &>li{
-                display:none;
+        .search-results{
+            .pagination.first-page {
+                width: 80%;
+                font-size:0;
+                &>li{
+                    display:none;
+                }
+                li.next{
+                    width:100%;
+                }
             }
         }
     }
     .search-container .search-results .pagination li.next {
         display: inline-block;
-        width: 50%;
+        width: 60%;
         padding: 0;
         margin-left:0;
         a{
@@ -335,12 +352,13 @@
             color: $medium-blue-color;
             text-align: center;
             margin: 0;
+            
         }
     }
     .search-container .search-results .pagination li.previous {
         margin-right: 0;
-        width: 25%;
-        padding-right: 7px;
+        width: 20%;
+        padding-right: 8px;
         display: inline-block;
         font-size:1rem;
         float:left;
@@ -362,8 +380,8 @@
         display:none;
     }
     .search-container .search-results .pagination li.link-to-first {
-        width: 25%;
-        padding: 0 7px;
+        width: 20%;
+        padding: 0 8px 0 0;
         display: inline-block;
         float:left;
         a{
@@ -394,7 +412,35 @@
             font-size: 1rem;
         }
         .pagination{
-            width:100%;
+            width:80%;
+        }
+    }
+}
+.search-container .search-results .pagination .previous a{
+    padding-left:0;
+    padding-right:13px;
+}
+.search-container{
+    .search-results{
+        .pagination.last-page{
+            .next.disabled{
+                display:none;
+            }
+            .previous{
+                width:80%;
+                a{
+                    .fa{
+                        display:none;
+                    }
+                    span{
+                        display:block;
+                        width:100%;
+                    }
+                }
+            }
+            .link-to-first{
+                width:20%
+            }
         }
     }
 }
@@ -413,5 +459,8 @@
     }
     .search-result-toggle{
         display: block;
+    }
+    .search-container .search-results .pagination.last-page .previous{
+        width:auto;
     }
 }
