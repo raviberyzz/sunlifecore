@@ -80,9 +80,16 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
+    .cta-content-icon-wrapper{
         .icon-parent {
-            height: 40px;
+            height: 14px;
         }
+    }
+    .overview-highlights-wrapper{
+        .icon-parent {
+            height: 24px;
+        }
+    }
         .icon-text {
             padding: 16px;
         }
@@ -432,7 +439,7 @@ ul {
       }
     }
     .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 62px;
+        margin-bottom: 64px;
     }
     .no-padding{
         .yellow-icon-white-background{
