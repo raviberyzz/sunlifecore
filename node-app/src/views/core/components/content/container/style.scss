@@ -302,14 +302,13 @@ ul {
 }
 .tool-card-wrapper{
     text-align: center;
-    //margin: 24px 0 40px 0;
-    padding: 10px;
     .cmp-container{
         background-color: $light-cool-blue-color;
+        padding: 24px 16px 40px 16px;
     }
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
-        margin-bottom: 20px;
+        margin: 0;
     }
     .image-text-wrapper{
         .side-image{
@@ -623,8 +622,8 @@ ul {
 	.icon-style {
 		color: #fff;
     }
-    
-	.icon-texts {  
+
+	.icon-texts {
         padding-bottom: 32px;
 		p {
 			&:first-child {
@@ -733,7 +732,50 @@ ul {
 //mobile css to overwrite display block css for mobile devices
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .light-yellow-box-header {
-            display: flex !important;
+        display: flex !important;
+    }
+    .teaser {
+        .image-text-wrapper {
+            .right-image-position {
+                .text-section {
+                    text-align: center;
+                }
+                .right-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .left-image-position {
+                .text-section {
+                    text-align: center;
+                }
+                .left-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            .right-image-position {
+                .right-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                }
+            }
+            .left-image-position {
+                .left-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                }
+            }
+        }
     }
 }
 
