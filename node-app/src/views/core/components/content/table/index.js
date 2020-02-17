@@ -29,7 +29,7 @@ function stickyHeader(){
       let crossLength= crossIcon.length;
       let checkIcon = document.getElementsByClassName('fa-check');
       let checkLength = checkIcon.length;
-       for(i=0;i<crossLength || i<checkLength; i++){
+       for(let i=0;i<crossLength || i<checkLength; i++){
          //looping through the icon class
          if(i<crossLength){
         let val = crossIcon[i].innerText;
