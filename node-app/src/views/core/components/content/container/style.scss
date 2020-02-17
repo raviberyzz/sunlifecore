@@ -561,6 +561,17 @@ ul {
             font-size: 1.5rem;
         }
     }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
+        }
+    }
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         padding-top: 24px;
         .cmp-text{
@@ -765,10 +776,8 @@ ul {
     }
     .teaser {
         .image-text-wrapper {
+            padding: 0 16px;
             .right-image-position {
-                .text-section {
-                    text-align: center;
-                }
                 .right-item {
                     position: relative;
                     left: 50%;
@@ -776,25 +785,27 @@ ul {
                 }
             }
             .left-image-position {
-                .text-section {
-                    text-align: center;
-                }
                 .left-item {
                     position: relative;
                     left: 50%;
                     transform: translateX(-50%);
                 }
+            }
+            .text-section {
+                margin-top: 32px;
             }
         }
     }
 
     .banner-section, .editorial-hero-banner {
         .image-text-wrapper {
+            padding: 0;
             .right-image-position {
                 .right-item {
                     position: inherit;
                     left: inherit;
                     transform: inherit;
+                    width: 100%;
                 }
             }
             .left-image-position {
@@ -802,7 +813,11 @@ ul {
                     position: inherit;
                     left: inherit;
                     transform: inherit;
+                    width: 100%;
                 }
+            }
+            .text-section {
+                margin-top: 32px;
             }
         }
     }
