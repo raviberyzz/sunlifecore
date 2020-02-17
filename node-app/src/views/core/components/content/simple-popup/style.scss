@@ -14,7 +14,7 @@
     }
     .modal-content{
         background: $medium-yellow-background;
-        padding: 24px 24px 40px 24px;
+        padding: 40px;
         width: 800px;
         position: relative;
         float: left;
@@ -49,8 +49,15 @@
     }
     .blue-icon-yellow-background{
         padding-bottom: 0;
+        .cmp-container > :last-child{
+            padding-bottom: 0px;
+        }
+        form :not(:last-child){
+            padding:0;
+        }
         .cta-content-icon-wrapper{
-            padding-top:0px;
+            padding:0px;
+            margin-top: -18px;
             .icon-style{
 
                 bottom: 0;
@@ -63,6 +70,22 @@
             }
         }
         
+    }
+    .cmp-text{
+        padding: 0 20px;
+        text-align: left;
+    }
+}
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
+{
+    .subscribe-popup-wrapper{
+        .modal-content{
+            padding:40px 16px;
+        }
+        .cmp-text{
+            padding: 0;
+            text-align: left;
+        }
     }
 }
 @media (max-width: $mobile-screen-max){
