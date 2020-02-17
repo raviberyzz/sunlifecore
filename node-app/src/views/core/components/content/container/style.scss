@@ -9,16 +9,10 @@ ul {
 
 .content-block-icon {
     background-color: $light-grey-20;
-    padding: 24px 0;
+    padding: 0;
     .cross-cta-wrapper {
         background-color: transparent;
         border: none;
-        &:first-child {
-            padding: 32px 24px 40px 16px;
-        }
-        &:last-child {
-            padding: 32px 16px 40px 24px;
-        }
         .icon-text {
             ul {
                 li {
@@ -33,6 +27,15 @@ ul {
             font-size: 1.5rem;
             border: 1px solid $white-shade;
         }
+    }
+    .col-sm-6:first-child .cross-cta-wrapper{
+        padding: 22px 14px 40px 6px;
+    }
+    .col-sm-6:last-child .cross-cta-wrapper{
+        padding: 22px 16px 40px 14px; 
+    }
+    .text{
+        padding-top:10px;
     }
 
 }
@@ -385,6 +388,7 @@ ul {
 @media (max-width:$mobile-screen-max) {
     .content-block-icon {
         .cross-cta-wrapper {
+            padding-top:10px;
             .icon-text {
                 ul li {
                     text-align: center;
