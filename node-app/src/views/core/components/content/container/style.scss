@@ -398,6 +398,7 @@ ul {
                 float: none;
                 margin-right: 0;
                 margin-bottom: 16px;
+                text-align: center;
             }
         }
     }
@@ -645,7 +646,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version 
+// styles for mobile version
 @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
     .mobileapp{
         .text{
