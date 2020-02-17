@@ -131,7 +131,7 @@ ul {
 
         }
         .cmp-container > :last-child{
-            padding-bottom: 24px;
+            padding-bottom: 40px;
         }
     }
     .text-border-right {
@@ -190,6 +190,9 @@ ul {
         p{
             padding-bottom:2px;
         }
+    }
+    .container-component .cmp-container .grey-horizontal-separator{
+        display: none !important;
     }
     .grey-horizontal-separator {
         display: none;
@@ -477,17 +480,24 @@ ul {
             }
         }
         .image-text-wrapper {
-          padding: 32px 15px 22px 15px;
+          padding: 32px 15px 32px 15px;
+          .left-item{
+              padding-bottom: 0;
+          }
             img {
                 display: none;
             }
         }
-        .grey-horizontal-separator {
-            display: inherit;
-            margin: 0;
-            hr {
+        .container-component .cmp-container .grey-horizontal-separator{
+            display: flex !important;
+            .horizontal-middle-align{
+                width: 40%;
                 margin: 0;
             }
+        }
+        .grey-horizontal-separator {
+            margin: 0;
+            border-bottom: none;
         }
         .border-right {
             border-right: none;
