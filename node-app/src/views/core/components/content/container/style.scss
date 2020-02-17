@@ -61,7 +61,8 @@ ul {
 }
 
 .yellow-icon-white-background {
-        border: 1px solid $light-grey-color
+        border: 1px solid $light-grey-color;
+        background: $white-shade;
 }
 .blue-icon-yellow-background > * {
     background-color: $medium-yellow-background;

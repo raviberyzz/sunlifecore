@@ -48,16 +48,7 @@
                 }
                 li:not(:last-child){
                     border-right: 2px solid $light-yellow-color;
-                }
-                .selected{
-                    background-color: $medium-blue-color;
-                    a{
-                        color: $white-shade;
-                    }
-                }
-                .border-right{
-                    border-right-color: $medium-grey-background;
-                }
+                } 
             }
         }
     }
@@ -81,11 +72,6 @@
             font-weight:400;
         }
     }
-    // .life-link-text:after{
-    //     content: '\f138';
-    //     font-family: FontAwesome;
-    //     padding-left: 5px;
-    //}
 }
 .yellow-background-wrapper{
     color: $dark-grey-color;
@@ -121,7 +107,7 @@
                     justify-content: center;
                     display: flex;
                     flex: auto;
-                    padding: 0 18px;
+                    padding-left: 24px;
                     a{
                         font-size: 0.875rem;
                         line-height: 20px;
@@ -132,17 +118,13 @@
                         font-weight: 700;
                      }
                 }
-                li:not(:last-child){
+                li:not(:last-child):after{
+                    content:"";
+                    display: block;
                     border-right: 2px solid $light-yellow-color;
-                }
-                .selected{
-                    background-color: $medium-blue-color;
-                    a{
-                        color: $white-shade;
-                    }
-                }
-                .border-right{
-                    border-right-color: $medium-grey-background;
+                    margin: 10px auto;
+                    height: 35px;
+                    padding-right: 24px;
                 }
             }
         }
@@ -262,6 +244,9 @@
                             font-weight: 100;
                             float: right;
                         }
+                    }
+                    li:not(:last-child):after{
+                        display: none;
                     }
                 }
             }
