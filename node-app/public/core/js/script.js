@@ -4232,6 +4232,19 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
+});
+
+
+
 
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
@@ -4330,9 +4343,6 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-$(function(){
-   
-})
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.slf-table').length){
@@ -4389,16 +4399,6 @@ function stickyHeader(){
 }
 $(stickyHeader);
 $(window).resize(stickyHeader);
-$(document).ready(function () {
-	$('.site-level-notification .close-div').click(function () {
-		$('.site-level-notification').css('display', 'none');
-	});
-	$('.site-level-notification .close-div').keyup(function (event) {
-		if (event.keyCode == 13) {
-			$('.site-level-notification').css('display', 'none');
-		}
-	});
-});
 $(document).ready(function () {
   var popHeight = $(window).height();
   $(".subscribe-popup-wrapper").height(popHeight);
@@ -5184,6 +5184,12 @@ $(document).ready(function () {
     })
 });
 
+$(function(){
+    //dynamically injecting script tag
+    let scriptElem = document.createElement('script');
+    scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
+    document.getElementsByTagName('head')[0].appendChild(scriptElem);
+})
 $(document).ready(function () {
 	//for footer
 	if ($(window).width() < 768) {
