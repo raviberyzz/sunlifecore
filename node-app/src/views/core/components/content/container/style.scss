@@ -440,6 +440,9 @@ ul {
     .content-highlight {
         text-align: center;
         padding: 40px 16px 16px 16px;
+        .left-item{
+            display: none;
+        }
         p {
             text-align: center !important;
             padding-bottom: 14px;
@@ -463,10 +466,12 @@ ul {
       }
     }
     .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 64px;
+        margin-bottom: 62px;
     }
     .no-padding{
         .yellow-icon-white-background{
+            margin-bottom: 0;
+            padding-bottom: 16px;
             form{
                 .text, .dropdown{
                     width: 75% !important;
