@@ -177,6 +177,11 @@
 }
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
+    .right-navigation-wrapper{
+        .cmp-container{
+            margin: 40px -10px;
+        }
+    }
     .cmp-container{
         padding: 0;
     }
