@@ -424,6 +424,12 @@ ul {
                 margin-bottom: 16px;
             }
         }
+        .col-sm-6:first-child .cross-cta-wrapper{
+            padding: 32px 24px 40px 16px;
+        }
+        .col-sm-6:last-child .cross-cta-wrapper{
+            padding: 32px 16px 40px 24px;
+        }
     }
     .container-component {
         .cmp-container > div {

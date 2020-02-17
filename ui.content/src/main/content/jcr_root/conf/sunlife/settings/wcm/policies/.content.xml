@@ -837,24 +837,19 @@
                                             cq:styleLabel="Top Spacing 30"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="mb-18"
+                                            cq:styleClasses="mt-18"
                                             cq:styleId="1577972366641"
-                                            cq:styleLabel="Bottom Spacing 18"
+                                            cq:styleLabel="Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="mb-20"
+                                            cq:styleClasses="mt-20"
                                             cq:styleId="1577973460041"
-                                            cq:styleLabel="Bottom Spacing 20"
+                                            cq:styleLabel="Spacing 20"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item3
-                                            cq:styleClasses="mb-30"
-                                            cq:styleId="1581893804005"
-                                            cq:styleLabel="Bottom Spacing 30"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item4
-                                            cq:styleClasses="mb-40"
+                                            cq:styleClasses="mt-40"
                                             cq:styleId="1577972369699"
-                                            cq:styleLabel="Bottom Spacing 40"
+                                            cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item2>
@@ -994,7 +989,7 @@
                                                 cq:styleLabel="Right Navigation"
                                                 jcr:primaryType="nt:unstructured"/>
                                             <item1
-                                                cq:styleClasses="cta-content-icon-wrapper"
+                                                cq:styleClasses="overview-highlights-wrapper"
                                                 cq:styleId="1577976171584"
                                                 cq:styleLabel="Overview Highlight"
                                                 jcr:primaryType="nt:unstructured"/>
@@ -1012,6 +1007,16 @@
                                                 cq:styleClasses="getting-started-icon-wrapper"
                                                 cq:styleId="1577976145575"
                                                 cq:styleLabel="Getting Started"
+                                                jcr:primaryType="nt:unstructured"/>
+                                             <item5
+                                                cq:styleClasses="social-icon-rte-wrapper"
+                                                cq:styleId="1577976145576"
+                                                cq:styleLabel="Small Icon wih Text"
+                                                jcr:primaryType="nt:unstructured"/>
+                                             <item6
+                                                cq:styleClasses="cta-content-icon-wrapper"
+                                                cq:styleId="1577976171585"
+                                                cq:styleLabel="CTA Wrapper"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
@@ -1192,6 +1197,22 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
+                                <item3
+                                    cq:styleGroupLabel="Subscribe"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="subscribe-popup-form-wrapper"
+                                            cq:styleId="1581948059751"
+                                            cq:styleLabel="Subscribe Pop-Up"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="subscribe-main-form-wrapper"
+                                            cq:styleId="1581948098758"
+                                            cq:styleLabel="Subscribe Main"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item3>
                                 </cq:styleGroups>
                             </policy_formContainer>
                         </container>
