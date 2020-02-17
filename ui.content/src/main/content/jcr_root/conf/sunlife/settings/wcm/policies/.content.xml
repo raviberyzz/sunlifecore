@@ -832,23 +832,18 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">									
                                         <item0
-                                            cq:styleClasses="mt-30"
-                                            cq:styleId="1581893835967"
-                                            cq:styleLabel="Top Spacing 30"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
                                             cq:styleClasses="mt-18"
-                                            cq:styleId="1577972366641"
+                                            cq:styleId="1579367426265"
                                             cq:styleLabel="Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
-                                        <item2
+                                        <item1
                                             cq:styleClasses="mt-20"
-                                            cq:styleId="1577973460041"
+                                            cq:styleId="1579199824654"
                                             cq:styleLabel="Spacing 20"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item3
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
                                             cq:styleClasses="mt-40"
-                                            cq:styleId="1577972369699"
+                                            cq:styleId="1579089938796"
                                             cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
