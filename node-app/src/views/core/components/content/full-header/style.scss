@@ -3,6 +3,7 @@
     .desktop-sign-in{
         .button-class{
             display:none;
+            font-size:14px;
         }
     }
     .desktop-header-wrapper{
@@ -24,7 +25,7 @@
                     width:149px;
                     height:36px;
                     cursor:pointer;
-                    margin-top:13px;
+                    margin-top:22px;
                 }
             }
             /*Logo end here*/
@@ -33,10 +34,15 @@
                 float:right;
                 padding:0;
                 .utility-nav-wrapper{
-                    padding:0;                        
+                    padding:8px 0px;                        
                     .utility-nav-links{
                         .search-icon-container{
                             padding-right:0;
+                        }
+                        ul{
+                            a{
+                                line-height: 18px;
+                            }
                         }
                     }
                 }
@@ -56,6 +62,13 @@
                             .menu-content{
                                 padding:0;
                                 margin-top:-12px;
+                            }
+                            .nav-item{
+                                .dropdown-toggle{
+                                    .nav-item-heading{
+                                        line-height: 24px;
+                                    }
+                                }
                             }
                         }
                         .desktop-primary-navigation-yellow {
@@ -156,5 +169,14 @@
 @media(min-width:$desktop-screen-min){
     .mobile-header{
     display:none;
+    }
+}
+@media(max-width: $mobile-screen-max){
+    .desktop-header-content{
+        .desktop-sunlife-logo{
+            img{
+                margin-top:0px;
+            }
+        }
     }
 }
