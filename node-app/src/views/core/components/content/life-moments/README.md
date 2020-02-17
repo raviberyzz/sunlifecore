@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "life-moment-wrapper": "yellow-background-wrapper",
+    "life-moment-wrapper": "blue-background-wrapper",
     "list-wrapper-class": "",
     "list" : [{
         "link" : "/ca/Tools+and+Resources/Health+and+Wellness/Mental+wellness?vgnLocale=en_CA",
