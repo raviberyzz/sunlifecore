@@ -26,9 +26,10 @@
                     opacity:1;
                     margin:0;
                     cursor:pointer;
+                    position: relative;
+                    top: -16px;
                 }          
         .modal-body{
-            margin:24px;
             padding:0;
             form{
                 display: table;
@@ -44,21 +45,24 @@
                 }
                 
             }
-            form :not(:last-child){
-               padding-right: 8px;
-            }
-            form :not(:first-child){
-                padding-left: 8px;
-             }
         }
     }
     .blue-icon-yellow-background{
-        .icon-parent{
-            height:auto;
+        padding-bottom: 0;
+        .cta-content-icon-wrapper{
+            padding-top:0px;
+            .icon-style{
+
+                bottom: 0;
+            }
+            .icon-parent{
+                height:auto;
+            }
+            .icon-style{
+                bottom:0;
+            }
         }
-        .icon-style{
-            bottom:0;
-        }
+        
     }
 }
 @media (max-width: $mobile-screen-max){
