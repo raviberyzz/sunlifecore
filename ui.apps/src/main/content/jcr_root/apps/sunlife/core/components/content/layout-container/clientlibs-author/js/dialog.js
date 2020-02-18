@@ -29,10 +29,29 @@
 			updateTypes();
             if(type) {
 				$('[name="./type"]').val(type);
+
             }
             $('[name="./type"]').trigger('change');
         },200);
         $('[name="./noc"]').change(updateTypes);
+        $('[name="./noc"]').change(function(){
+            var noc = $('[name="./noc"]').val();
+            if(noc== 1){
+                $('[name="./flexRequired"]').hide();
+            }
+            else{
+			$('[name="./flexRequired"]').show();
+            }
+        });
+        $(document).ready(function(){
+		 var noc = $('[name="./noc"]').val();
+            if(noc== 1){
+                $('[name="./flexRequired"]').hide();
+            }
+            else{
+			$('[name="./flexRequired"]').show();
+            }
+        });
         $('[name="./type"]').change(function() {
             var val = $(this).val();
             $('[name="./typeVal"]').val($(this).val());
@@ -59,6 +78,8 @@
                 $('[name="./modalID"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
             }
+
+
         });
     });
 })($,$(document));
