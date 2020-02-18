@@ -4232,62 +4232,6 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
-function stickyHeader(){
-  // sticky header works if table components exists
-  if($('.slf-table').length){
-    let tableHeader = $("table tbody tr:first-child");
-    let theaderPosition = tableHeader.offset().top;
-    let tableBottom = $('table').outerHeight(); 
-    let tableHeight = theaderPosition + tableBottom;
-    let position = 0;
-    //sticky header function on scroll 
-      $(window).on("scroll", function() {
-        if (window.pageYOffset > theaderPosition) {
-          position = window.pageYOffset - theaderPosition;
-          tableHeader.attr("style", "transform: translateY(" + position + "px)");
-          //removing the transform property once the page scrolls past the table
-          if(window.pageYOffset > tableHeight){
-            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-          }
-        } else if (position !== 0) {
-          position = 0;
-          tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-        }
-        
-
-      });
-      // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
-
-      let crossIcon = document.getElementsByClassName('fa-times');
-      // getting the icon tags
-      let crossLength= crossIcon.length;
-      let checkIcon = document.getElementsByClassName('fa-check');
-      let checkLength = checkIcon.length;
-       for(let i=0;i<crossLength || i<checkLength; i++){
-         //looping through the icon class
-         if(i<crossLength){
-        let val = crossIcon[i].innerText;
-        let spanElem = document.createElement("span");
-        //creating span elements and changing the inner value of icon tags
-        crossIcon[i].innerText = "";
-        spanElem.setAttribute("class","sr-only");
-        spanElem.innerText=val;
-        // appending span tag into icon span tag for screen reader. 
-        crossIcon[i].appendChild(spanElem);
-      }
-      if(i<checkLength){
-        let check = checkIcon[i].innerText;
-        let spanElement = document.createElement("span");
-        checkIcon[i].innerText = "";
-        spanElement.setAttribute("class","sr-only");
-        spanElement.innerText=check;
-        checkIcon[i].appendChild(spanElement);
-       }
-       } 
- }
-}
-$(stickyHeader);
-$(window).resize(stickyHeader);
 
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
@@ -4365,6 +4309,62 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+function stickyHeader(){
+  // sticky header works if table components exists
+  if($('.slf-table').length){
+    let tableHeader = $("table tbody tr:first-child");
+    let theaderPosition = tableHeader.offset().top;
+    let tableBottom = $('table').outerHeight(); 
+    let tableHeight = theaderPosition + tableBottom;
+    let position = 0;
+    //sticky header function on scroll 
+      $(window).on("scroll", function() {
+        if (window.pageYOffset > theaderPosition) {
+          position = window.pageYOffset - theaderPosition;
+          tableHeader.attr("style", "transform: translateY(" + position + "px)");
+          //removing the transform property once the page scrolls past the table
+          if(window.pageYOffset > tableHeight){
+            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+          }
+        } else if (position !== 0) {
+          position = 0;
+          tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+        }
+        
+
+      });
+      // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
+
+      let crossIcon = document.getElementsByClassName('fa-times');
+      // getting the icon tags
+      let crossLength= crossIcon.length;
+      let checkIcon = document.getElementsByClassName('fa-check');
+      let checkLength = checkIcon.length;
+       for(let i=0;i<crossLength || i<checkLength; i++){
+         //looping through the icon class
+         if(i<crossLength){
+        let val = crossIcon[i].innerText;
+        let spanElem = document.createElement("span");
+        //creating span elements and changing the inner value of icon tags
+        crossIcon[i].innerText = "";
+        spanElem.setAttribute("class","sr-only");
+        spanElem.innerText=val;
+        // appending span tag into icon span tag for screen reader. 
+        crossIcon[i].appendChild(spanElem);
+      }
+      if(i<checkLength){
+        let check = checkIcon[i].innerText;
+        let spanElement = document.createElement("span");
+        checkIcon[i].innerText = "";
+        spanElement.setAttribute("class","sr-only");
+        spanElement.innerText=check;
+        checkIcon[i].appendChild(spanElement);
+       }
+       } 
+ }
+}
+$(stickyHeader);
+$(window).resize(stickyHeader);
 $(function(){
    
 })
@@ -4810,11 +4810,11 @@ $(document).ready(function(){
     }
   });
 });
-$(document).ready(function(){
-  
-});
 $(function(){
  
+});
+$(document).ready(function(){
+  
 });
 
 $(document).ready(function () {
@@ -4846,6 +4846,61 @@ $(document).ready(function () {
    $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
       location.href = this.href;
   })
+});
+$(document).ready(function(){
+  var menuHeight= $('.slf-header-mega-menu2').height();
+  var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+   $( ".dropdown-submenu").hover(
+       function(){
+           $('.slf-header-mega-menu2').height(submenuHeight+5);
+   },function(){
+     $('.slf-header-mega-menu2').height(menuHeight);
+      }
+   );
+  });
+
+  /*AEM JS*/
+  $(document).ready(function(){
+   var menuHeight=0;
+ $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
+     function(){
+        menuHeight= $(this).parent().parent().parent().parent().height();
+          var submenuHeight=$(this).children('.dropdown-menu').height();
+         if ( submenuHeight > menuHeight)
+         {
+             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
+         }
+         else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight);
+         }
+
+ },function(){
+   $('.cmp-dynamic-megamenu').height(menuHeight);
+    }
+ );
+});
+
+
+$(document).ready(function(){
+   var menuHeight=0;
+ $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
+     function(){
+         menuHeight= $('.cmp-dynamic-megamenu-grey').height();
+          var submenuHeight=$(this).children('.dropdown-menu').height();
+         if ( submenuHeight > menuHeight)
+         {
+             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
+         }
+          else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight-10);
+         }
+
+ },function(){
+   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
+    }
+ );
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -4926,61 +4981,6 @@ $(document).ready(function () {
         }
     });  
 });   
-$(document).ready(function(){
-  var menuHeight= $('.slf-header-mega-menu2').height();
-  var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-   $( ".dropdown-submenu").hover(
-       function(){
-           $('.slf-header-mega-menu2').height(submenuHeight+5);
-   },function(){
-     $('.slf-header-mega-menu2').height(menuHeight);
-      }
-   );
-  });
-
-  /*AEM JS*/
-  $(document).ready(function(){
-   var menuHeight=0;
- $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
-     function(){
-        menuHeight= $(this).parent().parent().parent().parent().height();
-          var submenuHeight=$(this).children('.dropdown-menu').height();
-         if ( submenuHeight > menuHeight)
-         {
-             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
-         }
-         else
-         {
-             $(this).children('.dropdown-menu').height(menuHeight);
-         }
-
- },function(){
-   $('.cmp-dynamic-megamenu').height(menuHeight);
-    }
- );
-});
-
-
-$(document).ready(function(){
-   var menuHeight=0;
- $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
-     function(){
-         menuHeight= $('.cmp-dynamic-megamenu-grey').height();
-          var submenuHeight=$(this).children('.dropdown-menu').height();
-         if ( submenuHeight > menuHeight)
-         {
-             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
-         }
-          else
-         {
-             $(this).children('.dropdown-menu').height(menuHeight-10);
-         }
-
- },function(){
-   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
-    }
- );
-});
 $(document).ready(function () {
 var pathName= window.location.pathname ;
 $('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
@@ -5071,6 +5071,7 @@ $(document).ready(function () {
         $('.yellow-background-wrapper p:last').css('margin-bottom','32px');
     }
 })
+
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -5162,13 +5163,13 @@ $(document).ready(function () {
         $(this).parent().addClass("open");
     })
 });
-
 $(function(){
     //dynamically injecting script tag
     let scriptElem = document.createElement('script');
     scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
     document.getElementsByTagName('head')[0].appendChild(scriptElem);
 })
+
 $(document).ready(function () {
 	//for footer
 	if ($(window).width() < 768) {
@@ -5434,4 +5435,3 @@ $(document).ready(function () {
 		 }
 	 }
 });
-
