@@ -13,12 +13,6 @@ ul {
     .cross-cta-wrapper {
         background-color: transparent;
         border: none;
-        &:first-child {
-            padding: 32px 24px 40px 16px;
-        }
-        &:last-child {
-            padding: 32px 16px 40px 24px;
-        }
         .icon-text {
             ul {
                 li {
@@ -32,6 +26,12 @@ ul {
             padding: 5px;
             font-size: 1.5rem;
             border: 1px solid $white-shade;
+        }
+        .col-sm-6:first-child .cross-cta-wrapper{
+            padding: 8px 24px 40px 16px;;
+        }
+        .col-sm-6:last-child .cross-cta-wrapper{
+            padding: 8px 24px 40px 16px;;
         }
     }
 
@@ -115,6 +115,16 @@ ul {
 }
 .no-padding{
     .yellow-icon-white-background{
+        .cta-content-icon-wrapper{
+            .icon-parent {
+                height: 14px;
+            }
+        }
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
+        }
         form{
             .cmp-form-button{
                 width: 100%;
@@ -128,7 +138,7 @@ ul {
         form :not(:last-child){
 
             padding-right: 0px;
-            padding-bottom: 16px;
+            padding-bottom: 8px;
         }
         &>:last-child{
             margin-bottom: 0px;
@@ -136,6 +146,13 @@ ul {
         }
         .cmp-container > :last-child{
             padding-bottom: 40px;
+        }
+    }
+    .blue-icon-yellow-background{
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
         }
     }
     .text-border-right {
@@ -405,13 +422,14 @@ ul {
                 float: none;
                 margin-right: 0;
                 margin-bottom: 16px;
+                text-align: center;
             }
         }
         .col-sm-6:first-child .cross-cta-wrapper{
-            padding: 32px 24px 40px 16px;
+            padding: 0 16px;
         }
         .col-sm-6:last-child .cross-cta-wrapper{
-            padding: 32px 16px 40px 24px;
+            padding: 0 16px;
         }
     }
     .container-component {
@@ -422,6 +440,9 @@ ul {
     .content-highlight {
         text-align: center;
         padding: 40px 16px 16px 16px;
+        .left-item{
+            display: none;
+        }
         p {
             text-align: center !important;
             padding-bottom: 14px;
@@ -445,10 +466,12 @@ ul {
       }
     }
     .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 64px;
+        margin-bottom: 62px;
     }
     .no-padding{
         .yellow-icon-white-background{
+            margin-bottom: 0;
+            padding-bottom: 16px;
             form{
                 .text, .dropdown{
                     width: 75% !important;
@@ -536,6 +559,17 @@ ul {
     .content-highlight {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.5rem;
+        }
+    }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
         }
     }
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
@@ -658,7 +692,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version 
+// styles for mobile version
 @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
     .mobileapp{
         .text{
@@ -742,10 +776,8 @@ ul {
     }
     .teaser {
         .image-text-wrapper {
+            padding: 0 16px;
             .right-image-position {
-                .text-section {
-                    text-align: center;
-                }
                 .right-item {
                     position: relative;
                     left: 50%;
@@ -753,25 +785,27 @@ ul {
                 }
             }
             .left-image-position {
-                .text-section {
-                    text-align: center;
-                }
                 .left-item {
                     position: relative;
                     left: 50%;
                     transform: translateX(-50%);
                 }
+            }
+            .text-section {
+                margin-top: 32px;
             }
         }
     }
 
     .banner-section, .editorial-hero-banner {
         .image-text-wrapper {
+            padding: 0;
             .right-image-position {
                 .right-item {
                     position: inherit;
                     left: inherit;
                     transform: inherit;
+                    width: 100%;
                 }
             }
             .left-image-position {
@@ -779,7 +813,11 @@ ul {
                     position: inherit;
                     left: inherit;
                     transform: inherit;
+                    width: 100%;
                 }
+            }
+            .text-section {
+                margin-top: 32px;
             }
         }
     }
