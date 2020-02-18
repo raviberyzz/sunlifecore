@@ -492,13 +492,17 @@ ul {
     }
     .content-highlight {
         text-align: center;
-        padding: 40px 16px 16px 16px;
+        padding: 40px 16px 40px 16px;
         .left-item{
             display: none;
         }
         p {
             text-align: center !important;
             padding-bottom: 14px;
+        }
+        p:last-child{
+            padding-bottom:0px;
+            margin-bottom:0px;
         }
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.25rem;
@@ -660,6 +664,10 @@ ul {
         padding: 11px;
         font-size: 2rem;
         border: 2px solid $white-shade;
+    }
+    .content-highlight p:last-child {
+        padding-bottom:0px;
+        margin-bottom: 0px;
     }
     .yellow-icon-grey-background,.cta-three-column-wrapper, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
         .cta-content-icon-wrapper {
@@ -910,6 +918,15 @@ ul {
             }
         }
     }
+    .content-highlight{
+        .teaser{
+            .image-text-wrapper{
+                padding: 0px;
+                 .text-section {
+                    margin-top: 0px; }
+                } 
+            }
+        }
 }
 
 /* styles for product box end */

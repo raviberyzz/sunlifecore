@@ -209,7 +209,8 @@
         .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
                 display: inherit;
-                text-align: center;
+                /*text-align: center;*/
+                text-align:left;
                 .text-section {
                     margin: 0;
                 }
