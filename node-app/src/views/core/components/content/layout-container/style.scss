@@ -63,7 +63,6 @@
     display: flex;
     flex-wrap: wrap;
     div[class^="col-"]{
-        background:red;
         -ms-flex-direction: column;
         flex-direction: column;
         -webkit-box-flex: 1;
