@@ -93,6 +93,10 @@ ul {
     }
 }
 .yellow-icon-blue-background,.cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+    h2, h3, h4, h5, h6 {
+        font-size: 1.25rem;
+        line-height:23px ;
+    }
     form{
         width: 100%;
     }
@@ -191,7 +195,7 @@ ul {
     border: 1px solid $grey-search-border-color;
     .cta-content-icon-wrapper{
         .icon-style{
-            border: 6px solid $white-shade;
+            padding: 15px;
         }
     }
     .button-class{

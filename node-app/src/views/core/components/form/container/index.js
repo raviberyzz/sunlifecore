@@ -52,4 +52,24 @@ $(document).ready(function () {
 		   $('.cta-form-wrapper form  .cmp-form-button').addClass('fa fa-chevron-right');
 	   }
    }
+   //Home CTA Form
+   home_cta_form();
+   $(window).resize(function () {
+	   home_cta_form();
+   });
+
+  function home_cta_form()
+  {
+	  if ($(window).width() > 767)
+	  {
+		  $('.home-cta-form-wrapper, form  .cmp-form-button').removeClass('fa fa-chevron-right');
+		  $('.home-cta-form-wrapper form .cmp-form-button').html($('.cta-form-wrapper form .cmp-form-button').val());
+	  }
+	  else
+	  {
+		  $('.home-cta-form-wrapper form .cmp-form-button').html('');
+		  $('.home-cta-form-wrapper form  .cmp-form-button').addClass('fa fa-chevron-right');
+	  }
+  }
+
 });
