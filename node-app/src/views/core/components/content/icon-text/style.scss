@@ -210,10 +210,9 @@
         }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
-{
-    .blue-icon-yellow-background{ 
-        .overview-highlights-wrapper{
-            .icon-parent{.icon-style {
+{ .overview-highlights-wrapper{
+     .icon-parent{
+        .icon-style {
               height: 60px;
               width: 60px;
               padding: 13px;
@@ -225,7 +224,7 @@
             } 
          }
       }
-}
+
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .text-border-right {
@@ -234,7 +233,7 @@
             padding-right: 0;
         }
     }
-    .getting-started-icon-wrapper
+  .getting-started-icon-wrapper
     {
        height: auto;
        .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
@@ -259,5 +258,18 @@
         }
 
     }
+    .overview-highlights-wrapper{
+        .icon-parent{
+           .icon-style {
+                 height: 60px;
+                 width: 60px;
+                 padding: 13px;
+                 font-size: 34px;
+                 position: relative;
+                 bottom: 49px;
+                 pointer-events: none;
+                 }
+               } 
+            }
 }
 

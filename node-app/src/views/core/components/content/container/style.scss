@@ -160,7 +160,7 @@ ul {
     .blue-icon-yellow-background{
         .overview-highlights-wrapper{
             .icon-parent {
-                height: 24px;
+                height: 21px;
             }
         }
     }
@@ -504,6 +504,12 @@ ul {
                 }
             }
         }
+        .blue-icon-yellow-background {
+           .overview-highlights-wrapper{ 
+              .icon-parent {
+                height: 8px; }
+              }
+            }
     }
     .yellow-icon-white-background {
         background-color: $light-grey-20;
@@ -608,6 +614,13 @@ ul {
         padding-bottom: 32px;
     }
   }
+  .blue-icon-yellow-background{
+    .overview-highlights-wrapper{
+        .icon-parent {
+            height: 8px;
+        }
+    }
+}
 }
 @media (max-width:$tab-screen-max) {
     .content-block-icon .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
