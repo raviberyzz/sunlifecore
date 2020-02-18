@@ -3916,37 +3916,6 @@ input[type=text] {
   width: 100%;
   border: 1px solid #9a9a9a; }
 
-.button-wrapper .cmp-form-button {
-  height: 48px;
-  width: 180px;
-  min-width: 136px;
-  max-width: 275px;
-  border-radius: 4px;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
-  display: inline-block;
-  text-decoration: none; }
-  .button-wrapper .cmp-form-button:hover {
-    background-color: #4A7283;
-    color: #ffffff;
-    text-decoration: none; }
-
-.primary-blue-button-form button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.primary-yellow-button-form button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.secondary-button-form button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
-
 .form-wrapper {
   text-align: center;
   width: 50%; }
@@ -4081,6 +4050,37 @@ input[type=text] {
       float: none !important; }
     .cta-form-wrapper form .cmp-form-options--drop-down {
       width: 100%; } }
+
+.button-wrapper .cmp-form-button {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none; }
+  .button-wrapper .cmp-form-button:hover {
+    background-color: #4A7283;
+    color: #ffffff;
+    text-decoration: none; }
+
+.primary-blue-button-form button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.primary-yellow-button-form button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.secondary-button-form button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
 
 .utility-nav-wrapper {
   text-align: right;
@@ -6631,7 +6631,42 @@ input[type=text] {
 .row.flex-height {
   display: flex;
   flex-wrap: wrap; }
+  .row.flex-height .flex-conatiner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
   .row.flex-height div[class^="col-"] {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+  .row.flex-height div[class^="col-"] .container-component {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+  .row.flex-height div[class^="col-"] .container-component .cmp-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-flex: 1;
@@ -7801,12 +7836,15 @@ ul {
     display: block !important; }
   .content-highlight {
     text-align: center;
-    padding: 40px 16px 16px 16px; }
+    padding: 40px 16px 40px 16px; }
     .content-highlight .left-item {
       display: none; }
     .content-highlight p {
       text-align: center !important;
       padding-bottom: 14px; }
+    .content-highlight p:last-child {
+      padding-bottom: 0px;
+      margin-bottom: 0px; }
     .content-highlight h1, .content-highlight h2, .content-highlight h3, .content-highlight h4, .content-highlight h5, .content-highlight h6 {
       font-size: 1.25rem; }
     .content-highlight .button-class {
@@ -7900,6 +7938,9 @@ ul {
     padding: 11px;
     font-size: 2rem;
     border: 2px solid #ffffff; }
+  .content-highlight p:last-child {
+    padding-bottom: 0px;
+    margin-bottom: 0px; }
   .yellow-icon-grey-background .cta-content-icon-wrapper .icon-style, .cta-three-column-wrapper .cta-content-icon-wrapper .icon-style, .yellow-icon-blue-background .cta-content-icon-wrapper .icon-style, .blue-icon-yellow-background .cta-content-icon-wrapper .icon-style, .yellow-icon-white-background .cta-content-icon-wrapper .icon-style {
     height: 60px;
     width: 60px;
@@ -8033,7 +8074,9 @@ ul {
       transform: inherit;
       width: 100%; }
     .banner-section .image-text-wrapper .text-section, .editorial-hero-banner .image-text-wrapper .text-section {
-      margin-top: 32px; } }
+      margin-top: 32px; }
+  .content-highlight .teaser .image-text-wrapper .text-section {
+    margin-top: 0px; } }
 
 /* styles for product box end */
 /* styles for contact us box start*/
@@ -8225,32 +8268,6 @@ ul {
     right: 3px;
     position: relative; }
 
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
-
 .breadcrumb-section {
   height: 50px; }
   .breadcrumb-section .social-link-icon-wrapper {
@@ -8339,6 +8356,32 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
+
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
