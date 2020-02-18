@@ -57,3 +57,24 @@
         padding:0;
     }
 }
+/* flex column starts here */
+.row.flex-height{
+    display: flex;
+    flex-wrap: wrap;
+    div[class^="col-"]{
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+    }
+}
+@media(max-width:767px){
+    .row.flex-height{
+        display:block;
+    }
+}
+/* flex column ends here */
