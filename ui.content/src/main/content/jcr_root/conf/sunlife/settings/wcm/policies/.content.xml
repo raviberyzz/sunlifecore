@@ -607,6 +607,11 @@
                                             cq:styleId="1577978785269"
                                             cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="cta-three-column-wrapper"
+                                            cq:styleId="1577978785270"
+                                            cq:styleLabel="CTA Three Column"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>
                                 <item2
@@ -1208,6 +1213,22 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
+								<item4
+                                    cq:styleGroupLabel="CTA Form Styles"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cta-form-wrapper"
+                                            cq:styleId="1581948369751"
+                                            cq:styleLabel="CTA Form"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="home-cta-form-wrapper"
+                                            cq:styleId="1581948988758"
+                                            cq:styleLabel="CTA Homepage Form"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item4>
                                 </cq:styleGroups>
                             </policy_formContainer>
                         </container>
