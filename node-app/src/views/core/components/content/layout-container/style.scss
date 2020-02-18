@@ -58,8 +58,7 @@
     }
 }
 /* flex column starts here */
-.row{
-    .flex-height{
+.row.flex-height{
     display: flex;
     flex-wrap: wrap;
     div[class^="col-"]{
@@ -71,7 +70,11 @@
         display: -ms-flexbox;
         display: flex;
         position: relative;
-        }
+    }
+}
+@media(max-width:767px){
+    .row.flex-height{
+        display:block;
     }
 }
 /* flex column ends here */
