@@ -147,7 +147,7 @@ ul {
     .yellow-icon-white-background{
         .cta-content-icon-wrapper{
             .icon-parent {
-                height: 14px;
+                height: 24px;
             }
         }
         .overview-highlights-wrapper{
@@ -690,6 +690,15 @@ ul {
               }
             } 
          }
+    }
+    .no-padding{
+        .yellow-icon-white-background{
+            .cta-content-icon-wrapper{
+                .icon-parent {
+                    height: 15px;
+                }
+            }
+        }
     }
     .subscribe-main-content-wrapper{
     form{
