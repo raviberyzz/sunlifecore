@@ -54,6 +54,9 @@ ul {
         margin-top: 0;
         font-size: 1.75rem;
     }
+    p:last-child{
+        margin-bottom:0px;
+    }
 }
 .yellow-icon-blue-background > * {
     background-color: $medium-blue-color;
