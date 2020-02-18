@@ -9,7 +9,7 @@ ul {
 
 .content-block-icon {
     background-color: $light-grey-20;
-    padding: 0;
+    padding: 8px 0 2px 0;
     .cross-cta-wrapper {
         background-color: transparent;
         border: none;
@@ -29,13 +29,19 @@ ul {
         }
     }
     .col-sm-6:first-child .cross-cta-wrapper{
-        padding: 22px 14px 40px 6px;
+        padding: 24px 24px 0px 16px;
     }
     .col-sm-6:last-child .cross-cta-wrapper{
-        padding: 22px 16px 40px 14px; 
+        padding: 24px 16px 0px 24px;
     }
-    .text{
-        padding-top:10px;
+    .title {
+        .cmp-title__text{
+            text-align:center;
+            font-size:1.75rem;
+            margin:0;
+            padding-top:16px;
+            line-height:26px;
+        }
     }
 
 }
@@ -83,9 +89,16 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
+    .cta-content-icon-wrapper{
         .icon-parent {
-            height: 40px;
+            height: 14px;
         }
+    }
+    .overview-highlights-wrapper{
+        .icon-parent {
+            height: 24px;
+        }
+    }
         .icon-text {
             padding: 16px;
         }
@@ -111,6 +124,16 @@ ul {
 }
 .no-padding{
     .yellow-icon-white-background{
+        .cta-content-icon-wrapper{
+            .icon-parent {
+                height: 14px;
+            }
+        }
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
+        }
         form{
             .cmp-form-button{
                 width: 100%;
@@ -124,7 +147,7 @@ ul {
         form :not(:last-child){
 
             padding-right: 0px;
-            padding-bottom: 16px;
+            padding-bottom: 8px;
         }
         &>:last-child{
             margin-bottom: 0px;
@@ -132,6 +155,13 @@ ul {
         }
         .cmp-container > :last-child{
             padding-bottom: 40px;
+        }
+    }
+    .blue-icon-yellow-background{
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
         }
     }
     .text-border-right {
@@ -301,14 +331,13 @@ ul {
 }
 .tool-card-wrapper{
     text-align: center;
-    //margin: 24px 0 40px 0;
-    padding: 10px;
     .cmp-container{
         background-color: $light-cool-blue-color;
+        padding: 24px 16px 40px 16px;
     }
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
-        margin-bottom: 20px;
+        margin: 0;
     }
     .image-text-wrapper{
         .side-image{
@@ -393,12 +422,13 @@ ul {
 }
 @media (max-width:$mobile-screen-max) {
     .content-block-icon {
+        padding-bottom:4px;
         .cross-cta-wrapper {
-            padding-top:10px;
             .icon-text {
                 ul li {
                     text-align: center;
-                    margin-bottom: 16px;
+                    padding-bottom: 16px;
+                    margin-bottom:0;
                 }
             }
             .mega-menu-icon-wrapper .icon-parent {
@@ -406,7 +436,22 @@ ul {
                 float: none;
                 margin-right: 0;
                 margin-bottom: 16px;
+                text-align: center;
             }
+        }
+        .title {
+            .cmp-title__text{
+                padding-bottom:24px;
+            }
+        }
+        .icon-texts p{
+            margin-bottom:0;
+        }
+        .col-sm-6:first-child .cross-cta-wrapper{
+            padding: 0 16px;
+        }
+        .col-sm-6:last-child .cross-cta-wrapper{
+            padding: 0 16px;
         }
     }
     .container-component {
@@ -417,6 +462,9 @@ ul {
     .content-highlight {
         text-align: center;
         padding: 40px 16px 16px 16px;
+        .left-item{
+            display: none;
+        }
         p {
             text-align: center !important;
             padding-bottom: 14px;
@@ -444,6 +492,8 @@ ul {
     }
     .no-padding{
         .yellow-icon-white-background{
+            margin-bottom: 0;
+            padding-bottom: 16px;
             form{
                 .text, .dropdown{
                     width: 75% !important;
@@ -531,6 +581,17 @@ ul {
     .content-highlight {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.5rem;
+        }
+    }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
         }
     }
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
@@ -623,8 +684,8 @@ ul {
 	.icon-style {
 		color: #fff;
     }
-    
-	.icon-texts {  
+
+	.icon-texts {
         padding-bottom: 32px;
 		p {
 			&:first-child {
@@ -653,7 +714,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version 
+// styles for mobile version
 @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
     .mobileapp{
         .text{
@@ -733,7 +794,54 @@ ul {
 //mobile css to overwrite display block css for mobile devices
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .light-yellow-box-header {
-            display: flex !important;
+        display: flex !important;
+    }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+            .right-image-position {
+                .right-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .left-image-position {
+                .left-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .text-section {
+                margin-top: 32px;
+            }
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
+            .right-image-position {
+                .right-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                    width: 100%;
+                }
+            }
+            .left-image-position {
+                .left-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                    width: 100%;
+                }
+            }
+            .text-section {
+                margin-top: 32px;
+            }
+        }
     }
 }
 

@@ -59,9 +59,6 @@
     }
 }
 .cta-content-icon-wrapper {
-    .blue-icon-yellow-background .icon-parent{
-        height: 24px;
-    }
     .icon-style {
     background: linear-gradient($medium-yellow-background, $primary-yellow-background);
     border-radius: 50%;
@@ -224,7 +221,7 @@
        }
         ul{
             width: 100%;
-            padding: 0 15px;
+            padding: 0;
             display: block;
             margin-top: 15px;
             &>:not(:last-child)
