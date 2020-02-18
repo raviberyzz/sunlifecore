@@ -142,7 +142,7 @@ ul {
 }
 
 .cross-cta-wrapper {
-    padding: 24px 16px;
+    padding: 24px 16px 14px 16px;
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
@@ -158,6 +158,9 @@ ul {
             display: table;
         }
         .icon-texts {
+            h2,h3,h4,h5,h6{
+                margin-top:0px;
+            }
             padding-bottom: 0;
             display: table;
         }
