@@ -109,6 +109,12 @@
     min-width:100%;
     max-width:100%;
     }
+.cta-form-wrapper form .button-wrapper .cmp-form-button{
+        width:100%;
+        min-width:100%;
+        max-width:100%;
+    }
+
 @media (max-width: $mobile-screen-max) {
 .subscribe-popup-form-wrapper{
     padding:0 ;
@@ -132,6 +138,43 @@
         form > *
         {
             padding-right:16px !important;
+        }
+    }
+}
+@media (max-width: $tab-screen-max){
+    .cta-form-wrapper{
+    	padding-right:16px;
+        padding-left:16px;
+        form{
+            .text,.dropdown{
+                width:83.33% !important;
+            }
+            .button-wrapper{
+                width:16.66%  !important;
+            }
+        }
+    }
+	
+}
+@media (min-width: $desktop-screen-min)
+{
+	.cta-form-wrapper{
+    	padding-right:40px;
+        padding-left:40px;
+        form{
+            .text,.dropdown{
+                width:41.8% !important;
+                margin: 0 auto !important;
+                display: inline-block !important;
+            }
+            .button-wrapper{
+                width:33.33%  !important;
+    	        margin: 0 auto !important;
+                display: inline-block !important;
+            }
+            .aem-GridColumn--default--12{
+                float:none !important;
+            }
         }
     }
 }

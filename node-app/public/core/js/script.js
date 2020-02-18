@@ -4233,6 +4233,27 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 /* Accordion accessibility ends here */
 });
 
+$(document).ready(function(){
+	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+/* for height fixing of multiple links */
+if('.breadcrumb'){
+    $('.breadcrumb .social-link-icon-wrapper').addClass('vertical-middle-align');
+    $('.breadcrumb .right-area .side-text').addClass('vertical-middle-align');
+    $('.breadcrumb .right-area .social-link-icon-wrapper .side-text').removeClass('vertical-middle-align');
+    var liArray=$('.breadcrumb .left-area ol').children('li');
+    if(($('.breadcrumb .left-area ol').children('li')) && ($('.breadcrumb .left-area ol').children('li').length>5)){
+        var nextPosition=liArray[4];
+        $(nextPosition).after("<br>");
+    }   
+    function leftHeightFun(){
+        var leftHeight=$('.breadcrumb .left-area').height();
+        $('.breadcrumb .right-area').height(leftHeight);
+    }
+    setTimeout(leftHeightFun,150);  
+}
+});
 
 
 $(document).ready(function () {
@@ -4269,6 +4290,26 @@ $(document).ready(function () {
 			 $('.subscribe-popup-form-wrapper form .text').last().css('width','100%');
 		 }
 	 }
+
+	 //CTA Form
+	cta_form();
+	$(window).resize(function () {
+		cta_form();
+	});
+
+   function cta_form()
+   {
+	   if ($(window).width() > 1024)
+	   {
+		   $('.cta-form-wrapper form  .cmp-form-button').removeClass('fa fa-chevron-right');
+		   $('.cta-form-wrapper form .cmp-form-button').html($('.cta-form-wrapper form .cmp-form-button').val());
+	   }
+	   else
+	   {
+		   $('.cta-form-wrapper form .cmp-form-button').html('');
+		   $('.cta-form-wrapper form  .cmp-form-button').addClass('fa fa-chevron-right');
+	   }
+   }
 });
 
 
@@ -5354,27 +5395,6 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function(){
-	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
-    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
-    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
-/* for height fixing of multiple links */
-if('.breadcrumb'){
-    $('.breadcrumb .social-link-icon-wrapper').addClass('vertical-middle-align');
-    $('.breadcrumb .right-area .side-text').addClass('vertical-middle-align');
-    $('.breadcrumb .right-area .social-link-icon-wrapper .side-text').removeClass('vertical-middle-align');
-    var liArray=$('.breadcrumb .left-area ol').children('li');
-    if(($('.breadcrumb .left-area ol').children('li')) && ($('.breadcrumb .left-area ol').children('li').length>5)){
-        var nextPosition=liArray[4];
-        $(nextPosition).after("<br>");
-    }   
-    function leftHeightFun(){
-        var leftHeight=$('.breadcrumb .left-area').height();
-        $('.breadcrumb .right-area').height(leftHeight);
-    }
-    setTimeout(leftHeightFun,150);  
-}
-});
 $(document).ready(function(){
         //Polldaddy library
         (function(d,c,j){

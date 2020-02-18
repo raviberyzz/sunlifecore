@@ -7,6 +7,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 
+
 /**
  * The Interface LayoutContainerModel.
  */
@@ -68,4 +69,12 @@ public interface LayoutContainerModal {
      */
     @Inject @Optional
    	String getAnalyticsId();
+    
+    /**
+     * Gets the flex required.
+     *
+     * @return the flex required
+     */
+    @Inject @Optional
+    String getFlexRequired();
 }

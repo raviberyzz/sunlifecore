@@ -111,6 +111,12 @@
                                         fieldDescription="Please configure the analytics id."
                                         fieldLabel="Analytics id"
                                         name="./analyticsId"/>
+                             <flexRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./flexRequired"
+                                text="Is flex container?"
+                                value="flex-height"/>
                         </items>
                     </column>
                 </items>
