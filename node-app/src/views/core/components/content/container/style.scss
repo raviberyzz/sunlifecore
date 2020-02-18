@@ -407,6 +407,9 @@ ul {
     .content-highlight {
         text-align: center;
         padding: 40px 16px 16px 16px;
+        .left-item{
+            display:none;
+        }
         p {
             text-align: center !important;
             padding-bottom: 14px;
@@ -554,6 +557,20 @@ ul {
 
             }
         }
+        .overview-highlights-wrapper{
+            .icon-parent{
+                height: 12px;
+            .icon-style {
+              height: 60px;
+              width: 60px;
+              padding: 13px;
+              font-size: 34px;
+              position: relative;
+              bottom: 49px;
+              pointer-events: none;
+              }
+            } 
+         }
     }
     .subscribe-main-content-wrapper{
     form{
@@ -744,6 +761,12 @@ ul {
             }
         }
     }
+    .blue-icon-yellow-background {
+      .overview-highlights-wrapper{
+        .icon-parent{
+        height:8px;   }
+    }
+} 
 	// .aem-GridColumn--default--12 {
 	// 	.text {
 	// 		padding: 0px 32px;

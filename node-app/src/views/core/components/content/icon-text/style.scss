@@ -116,6 +116,10 @@
         p{
             padding-bottom:22px;
         }
+        p:last-child{
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
     }
 }
 .mega-menu-icon-wrapper {
@@ -208,6 +212,23 @@
             padding: 0px 0px 20px 20px;
         }
 }
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
+{
+    .blue-icon-yellow-background{ 
+        .overview-highlights-wrapper{
+            .icon-parent{.icon-style {
+              height: 60px;
+              width: 60px;
+              padding: 13px;
+              font-size: 34px;
+              position: relative;
+              bottom: 49px;
+              pointer-events: none;
+              }
+            } 
+         }
+      }
+}
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .text-border-right {
@@ -242,3 +263,4 @@
 
     }
 }
+
