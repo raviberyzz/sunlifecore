@@ -59,9 +59,6 @@
     }
 }
 .cta-content-icon-wrapper {
-    .blue-icon-yellow-background .icon-parent{
-        height: 24px;
-    }
     .icon-style {
     background: linear-gradient($medium-yellow-background, $primary-yellow-background);
     border-radius: 50%;
@@ -159,7 +156,7 @@
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
         line-height: 30px;
-        padding: 0 25px 24px 25px;
+        padding: 0 25px 9px 25px; //clarification.
         top: -15px;
         background-color: $white-shade;
         float: left;
@@ -241,13 +238,13 @@
     {
        height: auto;
        .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
-           padding-bottom: 24px;
+           padding-bottom: 0px;
        }
         ul{
             width: 100%;
-            padding: 0 15px;
+            padding: 0;
             display: block;
-            margin-top: 30px;
+            margin-top: 15px;
             &>:not(:last-child)
             {
                 border-right: none;
@@ -257,7 +254,7 @@
                 flex: none;
                 width: 100%;
                 display: block;
-                padding: 24px;
+                padding: 24px 24px 14px 24px;
             }
         }
 

@@ -9,16 +9,10 @@ ul {
 
 .content-block-icon {
     background-color: $light-grey-20;
-    padding: 24px 0;
+    padding: 8px 0 2px 0;
     .cross-cta-wrapper {
         background-color: transparent;
         border: none;
-        &:first-child {
-            padding: 32px 24px 40px 16px;
-        }
-        &:last-child {
-            padding: 32px 16px 40px 24px;
-        }
         .icon-text {
             ul {
                 li {
@@ -32,6 +26,21 @@ ul {
             padding: 5px;
             font-size: 1.5rem;
             border: 1px solid $white-shade;
+        }
+    }
+    .col-sm-6:first-child .cross-cta-wrapper{
+        padding: 24px 24px 0px 16px;
+    }
+    .col-sm-6:last-child .cross-cta-wrapper{
+        padding: 24px 16px 0px 24px;
+    }
+    .title {
+        .cmp-title__text{
+            text-align:center;
+            font-size:1.75rem;
+            margin:0;
+            padding-top:16px;
+            line-height:26px;
         }
     }
 
@@ -80,9 +89,16 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
+    .cta-content-icon-wrapper{
         .icon-parent {
-            height: 40px;
+            height: 14px;
         }
+    }
+    .overview-highlights-wrapper{
+        .icon-parent {
+            height: 24px;
+        }
+    }
         .icon-text {
             padding: 16px;
         }
@@ -108,6 +124,16 @@ ul {
 }
 .no-padding{
     .yellow-icon-white-background{
+        .cta-content-icon-wrapper{
+            .icon-parent {
+                height: 14px;
+            }
+        }
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
+        }
         form{
             .cmp-form-button{
                 width: 100%;
@@ -121,14 +147,21 @@ ul {
         form :not(:last-child){
 
             padding-right: 0px;
-            padding-bottom: 16px;
+            padding-bottom: 8px;
         }
         &>:last-child{
             margin-bottom: 0px;
 
         }
         .cmp-container > :last-child{
-            padding-bottom: 24px;
+            padding-bottom: 40px;
+        }
+    }
+    .blue-icon-yellow-background{
+        .overview-highlights-wrapper{
+            .icon-parent {
+                height: 24px;
+            }
         }
     }
     .text-border-right {
@@ -139,7 +172,7 @@ ul {
 }
 
 .cross-cta-wrapper {
-    padding: 24px 16px;
+    padding: 24px 16px 14px 16px;
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
@@ -155,6 +188,9 @@ ul {
             display: table;
         }
         .icon-texts {
+            h2,h3,h4,h5,h6{
+                margin-top:0px;
+            }
             padding-bottom: 0;
             display: table;
         }
@@ -187,6 +223,9 @@ ul {
         p{
             padding-bottom:2px;
         }
+    }
+    .container-component .cmp-container .grey-horizontal-separator{
+        display: none !important;
     }
     .grey-horizontal-separator {
         display: none;
@@ -292,14 +331,13 @@ ul {
 }
 .tool-card-wrapper{
     text-align: center;
-    //margin: 24px 0 40px 0;
-    padding: 10px;
     .cmp-container{
         background-color: $light-cool-blue-color;
+        padding: 24px 16px 40px 16px;
     }
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
-        margin-bottom: 20px;
+        margin: 0;
     }
     .image-text-wrapper{
         .side-image{
@@ -384,11 +422,13 @@ ul {
 }
 @media (max-width:$mobile-screen-max) {
     .content-block-icon {
+        padding-bottom:4px;
         .cross-cta-wrapper {
             .icon-text {
                 ul li {
                     text-align: center;
-                    margin-bottom: 16px;
+                    padding-bottom: 16px;
+                    margin-bottom:0;
                 }
             }
             .mega-menu-icon-wrapper .icon-parent {
@@ -396,7 +436,22 @@ ul {
                 float: none;
                 margin-right: 0;
                 margin-bottom: 16px;
+                text-align: center;
             }
+        }
+        .title {
+            .cmp-title__text{
+                padding-bottom:24px;
+            }
+        }
+        .icon-texts p{
+            margin-bottom:0;
+        }
+        .col-sm-6:first-child .cross-cta-wrapper{
+            padding: 0 16px;
+        }
+        .col-sm-6:last-child .cross-cta-wrapper{
+            padding: 0 16px;
         }
     }
     .container-component {
@@ -408,7 +463,7 @@ ul {
         text-align: center;
         padding: 40px 16px 16px 16px;
         .left-item{
-            display:none;
+            display: none;
         }
         p {
             text-align: center !important;
@@ -437,6 +492,8 @@ ul {
     }
     .no-padding{
         .yellow-icon-white-background{
+            margin-bottom: 0;
+            padding-bottom: 16px;
             form{
                 .text, .dropdown{
                     width: 75% !important;
@@ -476,17 +533,24 @@ ul {
             }
         }
         .image-text-wrapper {
-          padding: 32px 15px 22px 15px;
+          padding: 32px 15px 32px 15px;
+          .left-item{
+              padding-bottom: 0;
+          }
             img {
                 display: none;
             }
         }
-        .grey-horizontal-separator {
-            display: inherit;
-            margin: 0;
-            hr {
+        .container-component .cmp-container .grey-horizontal-separator{
+            display: flex !important;
+            .horizontal-middle-align{
+                width: 40%;
                 margin: 0;
             }
+        }
+        .grey-horizontal-separator {
+            margin: 0;
+            border-bottom: none;
         }
         .border-right {
             border-right: none;
@@ -517,6 +581,17 @@ ul {
     .content-highlight {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.5rem;
+        }
+    }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
         }
     }
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
@@ -623,8 +698,8 @@ ul {
 	.icon-style {
 		color: #fff;
     }
-    
-	.icon-texts {  
+
+	.icon-texts {
         padding-bottom: 32px;
 		p {
 			&:first-child {
@@ -653,7 +728,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version 
+// styles for mobile version
 @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
     .mobileapp{
         .text{
@@ -733,7 +808,54 @@ ul {
 //mobile css to overwrite display block css for mobile devices
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .light-yellow-box-header {
-            display: flex !important;
+        display: flex !important;
+    }
+    .teaser {
+        .image-text-wrapper {
+            padding: 0 16px;
+            .right-image-position {
+                .right-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .left-image-position {
+                .left-item {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .text-section {
+                margin-top: 32px;
+            }
+        }
+    }
+
+    .banner-section, .editorial-hero-banner {
+        .image-text-wrapper {
+            padding: 0;
+            .right-image-position {
+                .right-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                    width: 100%;
+                }
+            }
+            .left-image-position {
+                .left-item {
+                    position: inherit;
+                    left: inherit;
+                    transform: inherit;
+                    width: 100%;
+                }
+            }
+            .text-section {
+                margin-top: 32px;
+            }
+        }
     }
 }
 

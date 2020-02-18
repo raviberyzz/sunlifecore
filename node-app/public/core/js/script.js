@@ -4232,37 +4232,62 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 /* Accordion accessibility ends here */
 });
-$(document).ready(function () {
-	$('.site-level-notification .close-div').click(function () {
-		$('.site-level-notification').css('display', 'none');
-	});
-	$('.site-level-notification .close-div').keyup(function (event) {
-		if (event.keyCode == 13) {
-			$('.site-level-notification').css('display', 'none');
-		}
-	});
-});
+function stickyHeader(){
+  // sticky header works if table components exists
+  if($('.slf-table').length){
+    let tableHeader = $("table tbody tr:first-child");
+    let theaderPosition = tableHeader.offset().top;
+    let tableBottom = $('table').outerHeight(); 
+    let tableHeight = theaderPosition + tableBottom;
+    let position = 0;
+    //sticky header function on scroll 
+      $(window).on("scroll", function() {
+        if (window.pageYOffset > theaderPosition) {
+          position = window.pageYOffset - theaderPosition;
+          tableHeader.attr("style", "transform: translateY(" + position + "px)");
+          //removing the transform property once the page scrolls past the table
+          if(window.pageYOffset > tableHeight){
+            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+          }
+        } else if (position !== 0) {
+          position = 0;
+          tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+        }
+        
 
+      });
+      // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
 
-
-
-$(document).ready(function () {
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
-		var pathName= window.location.pathname ;
-		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
-		var strLink =  $(this).attr('value');
-		var strLink1 = strLink.localeCompare(pathName);
-		if(!strLink1){
-			$(this).attr("selected","selected");
-		}
-	})
-	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
-		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
-		window.location.href=link_selected;
-		return false;
-	});
-});
-
+      let crossIcon = document.getElementsByClassName('fa-times');
+      // getting the icon tags
+      let crossLength= crossIcon.length;
+      let checkIcon = document.getElementsByClassName('fa-check');
+      let checkLength = checkIcon.length;
+       for(let i=0;i<crossLength || i<checkLength; i++){
+         //looping through the icon class
+         if(i<crossLength){
+        let val = crossIcon[i].innerText;
+        let spanElem = document.createElement("span");
+        //creating span elements and changing the inner value of icon tags
+        crossIcon[i].innerText = "";
+        spanElem.setAttribute("class","sr-only");
+        spanElem.innerText=val;
+        // appending span tag into icon span tag for screen reader. 
+        crossIcon[i].appendChild(spanElem);
+      }
+      if(i<checkLength){
+        let check = checkIcon[i].innerText;
+        let spanElement = document.createElement("span");
+        checkIcon[i].innerText = "";
+        spanElement.setAttribute("class","sr-only");
+        spanElement.innerText=check;
+        checkIcon[i].appendChild(spanElement);
+       }
+       } 
+ }
+}
+$(stickyHeader);
+$(window).resize(stickyHeader);
 
 $(document).ready(function () {
   $(".cmp-text,th,td").each(function(){
@@ -4340,65 +4365,19 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
-function stickyHeader(){
-  // sticky header works if table components exists
-  if($('.slf-table').length){
-    let tableHeader = $("table tbody tr:first-child");
-    let theaderPosition = tableHeader.offset().top;
-    let tableBottom = $('table').outerHeight(); 
-    let tableHeight = theaderPosition + tableBottom;
-    let position = 0;
-    //sticky header function on scroll 
-      $(window).on("scroll", function() {
-        if (window.pageYOffset > theaderPosition) {
-          position = window.pageYOffset - theaderPosition;
-          tableHeader.attr("style", "transform: translateY(" + position + "px)");
-          //removing the transform property once the page scrolls past the table
-          if(window.pageYOffset > tableHeight){
-            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-          }
-        } else if (position !== 0) {
-          position = 0;
-          tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-        }
-        
-
-      });
-      // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
-
-      let crossIcon = document.getElementsByClassName('fa-times');
-      // getting the icon tags
-      let crossLength= crossIcon.length;
-      let checkIcon = document.getElementsByClassName('fa-check');
-      let checkLength = checkIcon.length;
-       for(let i=0;i<crossLength || i<checkLength; i++){
-         //looping through the icon class
-         if(i<crossLength){
-        let val = crossIcon[i].innerText;
-        let spanElem = document.createElement("span");
-        //creating span elements and changing the inner value of icon tags
-        crossIcon[i].innerText = "";
-        spanElem.setAttribute("class","sr-only");
-        spanElem.innerText=val;
-        // appending span tag into icon span tag for screen reader. 
-        crossIcon[i].appendChild(spanElem);
-      }
-      if(i<checkLength){
-        let check = checkIcon[i].innerText;
-        let spanElement = document.createElement("span");
-        checkIcon[i].innerText = "";
-        spanElement.setAttribute("class","sr-only");
-        spanElement.innerText=check;
-        checkIcon[i].appendChild(spanElement);
-       }
-       } 
- }
-}
-$(stickyHeader);
-$(window).resize(stickyHeader);
 $(function(){
    
 })
+$(document).ready(function () {
+	$('.site-level-notification .close-div').click(function () {
+		$('.site-level-notification').css('display', 'none');
+	});
+	$('.site-level-notification .close-div').keyup(function (event) {
+		if (event.keyCode == 13) {
+			$('.site-level-notification').css('display', 'none');
+		}
+	});
+});
 $(document).ready(function () {
   var popHeight = $(window).height();
   $(".subscribe-popup-wrapper").height(popHeight);
@@ -5248,6 +5227,15 @@ $(document).ready(function () {
 
 	});
 
+	var taeser_height = 0;
+	var tool_card_teaser = $('.tool-card-wrapper .cmp-container').find('.teaser');
+	tool_card_teaser.each(function (index) {
+		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
+	});
+	tool_card_teaser.each(function (index) {
+		$(this).height(taeser_height);
+
+	});
 	//for editorial article
 	var editorial_teaser = $('.editorial-articles-wrapper').find('.teaser');
 	editorial_teaser.each(function (index) {
@@ -5302,17 +5290,17 @@ $(document).ready(function () {
 
 	function cta_padding_fix() {
 		if (($(window).width() > 767)) {
-			if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').hasClass('no-padding')) {
+			if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .tool-card-wrapper').parents('.layout-container').hasClass('no-padding')) {
 			}
 			else {
-				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().css('padding', ' 0px 10px 0px 10px');
-				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().first().css('padding-left', '0');
-				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().last().css('padding-right', '0');
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .tool-card-wrapper').parents('.layout-container').children().children().css('padding', ' 0px 10px 0px 10px');
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .tool-card-wrapper').parents('.layout-container').children().children().first().css('padding-left', '0');
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .tool-card-wrapper').parents('.layout-container').children().children().last().css('padding-right', '0');
 			}
 		}
 		else {
-			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().css('padding', '0');
-			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background').parents('.layout-container').children().children().last().children().css('margin-bottom', '0');
+			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .tool-card-wrapper').parents('.layout-container').children().children().css('padding', '0');
+			$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background. tool-card-wrapper').parents('.layout-container').children().children().last().children().css('margin-bottom', '0');
 		}
 
 	}
@@ -5326,19 +5314,6 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function(){
-        //Polldaddy library
-        (function(d,c,j){
-            if(!document.getElementById(j)){
-                var pd=d.createElement(c),s;
-                pd.id=j;
-                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
-                s=document.getElementsByTagName(c)[0];
-                s.parentNode.insertBefore(pd,s);
-            }
-        }
-        (document,'script','pd-rating-js'));
-})
 $(document).ready(function(){
 	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
@@ -5360,6 +5335,19 @@ if('.breadcrumb'){
     setTimeout(leftHeightFun,150);  
 }
 });
+$(document).ready(function(){
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
@@ -5408,3 +5396,42 @@ $(document).ready(function(){
 	});
     
 });
+
+
+
+$(document).ready(function () {
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
+		var pathName= window.location.pathname ;
+		$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field').find('option').each(function(){
+		var strLink =  $(this).attr('value');
+		var strLink1 = strLink.localeCompare(pathName);
+		if(!strLink1){
+			$(this).attr("selected","selected");
+		}
+	})
+	$('.editorial-nav-mobile-wrapper .cmp-form-button').click(function(){
+		var link_selected=$('.editorial-nav-mobile-wrapper .cmp-form-options .cmp-form-options__field--drop-down').val();
+		window.location.href=link_selected;
+		return false;
+	});
+
+	 //Sunscribe Pop Up
+	 subscribe_popup_form();
+	 $(window).resize(function () {
+		 subscribe_popup_form();
+	 });
+ 
+	 function subscribe_popup_form(){
+		 if ($(window).width() > 767)
+		 {
+			 $('.subscribe-popup-form-wrapper form .text').first().css('width','25%');
+			 $('.subscribe-popup-form-wrapper form .text').last().css('width','50%');
+		 }
+		 else
+		 {
+			 $('.subscribe-popup-form-wrapper form .text').first().css('width','100%');
+			 $('.subscribe-popup-form-wrapper form .text').last().css('width','100%');
+		 }
+	 }
+});
+
