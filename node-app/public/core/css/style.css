@@ -3786,24 +3786,6 @@ ul {
 /*contact us box styles end here */
 
 
-input[type=text] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: auto;
-  border: 1px solid #9a9a9a; }
-
-input[type=email] {
-  font-family: 'sunlife-sans';
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0 16px;
-  height: 48px;
-  width: auto;
-  border: 1px solid #9a9a9a; }
-
 .form-group-wrapper {
   margin: 35px 0; }
 
@@ -3916,36 +3898,23 @@ input[type=text] {
   width: 100%;
   border: 1px solid #9a9a9a; }
 
-.button-wrapper .cmp-form-button {
+input[type=text] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
   height: 48px;
-  width: 180px;
-  min-width: 136px;
-  max-width: 275px;
-  border-radius: 4px;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
-  display: inline-block;
-  text-decoration: none; }
-  .button-wrapper .cmp-form-button:hover {
-    background-color: #4A7283;
-    color: #ffffff;
-    text-decoration: none; }
+  width: auto;
+  border: 1px solid #9a9a9a; }
 
-.primary-blue-button-form button {
-  background-color: #004C6C;
-  color: #ffffff; }
-
-.primary-yellow-button-form button {
-  background-color: #FFCB05;
-  color: #004C6C; }
-
-.secondary-button-form button {
-  background-color: transparent;
-  color: #004C6C;
-  border: 2px solid #004C6C; }
+input[type=email] {
+  font-family: 'sunlife-sans';
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 16px;
+  height: 48px;
+  width: auto;
+  border: 1px solid #9a9a9a; }
 
 .form-wrapper {
   text-align: center;
@@ -4079,6 +4048,37 @@ input[type=text] {
       display: inline-block !important; }
     .cta-form-wrapper form .aem-GridColumn--default--12 {
       float: none !important; } }
+
+.button-wrapper .cmp-form-button {
+  height: 48px;
+  width: 180px;
+  min-width: 136px;
+  max-width: 275px;
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none; }
+  .button-wrapper .cmp-form-button:hover {
+    background-color: #4A7283;
+    color: #ffffff;
+    text-decoration: none; }
+
+.primary-blue-button-form button {
+  background-color: #004C6C;
+  color: #ffffff; }
+
+.primary-yellow-button-form button {
+  background-color: #FFCB05;
+  color: #004C6C; }
+
+.secondary-button-form button {
+  background-color: transparent;
+  color: #004C6C;
+  border: 2px solid #004C6C; }
 
 .utility-nav-wrapper {
   text-align: right;
@@ -6645,6 +6645,7 @@ input[type=text] {
 
 /* flex column ends here */
 
+
 .icon-style:hover {
   text-decoration: none; }
 
@@ -6850,7 +6851,6 @@ input[type=text] {
     position: relative;
     bottom: 49px;
     pointer-events: none; } }
-
 
 .search-autocomplete {
   position: absolute;
@@ -7512,6 +7512,10 @@ ul {
   text-align: center; }
   .blue-icon-yellow-background > * .icon-style {
     background: linear-gradient(#004C6C, #003946); }
+
+.yellow-icon-blue-background h2, .yellow-icon-blue-background h3, .yellow-icon-blue-background h4, .yellow-icon-blue-background h5, .yellow-icon-blue-background h6, .cta-three-column-wrapper h2, .cta-three-column-wrapper h3, .cta-three-column-wrapper h4, .cta-three-column-wrapper h5, .cta-three-column-wrapper h6, .yellow-icon-grey-background h2, .yellow-icon-grey-background h3, .yellow-icon-grey-background h4, .yellow-icon-grey-background h5, .yellow-icon-grey-background h6, .blue-icon-yellow-background h2, .blue-icon-yellow-background h3, .blue-icon-yellow-background h4, .blue-icon-yellow-background h5, .blue-icon-yellow-background h6, .yellow-icon-white-background h2, .yellow-icon-white-background h3, .yellow-icon-white-background h4, .yellow-icon-white-background h5, .yellow-icon-white-background h6 {
+  font-size: 1.25rem;
+  line-height: 23px; }
 
 .yellow-icon-blue-background form, .cta-three-column-wrapper form, .yellow-icon-grey-background form, .blue-icon-yellow-background form, .yellow-icon-white-background form {
   width: 100%; }
