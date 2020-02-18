@@ -4078,7 +4078,9 @@ input[type=text] {
       margin: 0 auto !important;
       display: inline-block !important; }
     .cta-form-wrapper form .aem-GridColumn--default--12 {
-      float: none !important; } }
+      float: none !important; }
+    .cta-form-wrapper form .cmp-form-options--drop-down {
+      width: 100%; } }
 
 .utility-nav-wrapper {
   text-align: right;
@@ -6645,6 +6647,7 @@ input[type=text] {
 
 /* flex column ends here */
 
+
 .icon-style:hover {
   text-decoration: none; }
 
@@ -6826,7 +6829,9 @@ input[type=text] {
     border-right: none;
     padding-right: 0; }
   .getting-started-icon-wrapper {
-    height: auto; }
+    height: auto;
+    margin-right: 10px;
+    margin-left: 10px; }
     .getting-started-icon-wrapper .h2, .getting-started-icon-wrapper .h3, .getting-started-icon-wrapper .h4, .getting-started-icon-wrapper .h5, .getting-started-icon-wrapper .h6, .getting-started-icon-wrapper .heading-2, .getting-started-icon-wrapper .heading-3, .getting-started-icon-wrapper .heading-4, .getting-started-icon-wrapper .heading-5, .getting-started-icon-wrapper .heading-6 {
       padding-bottom: 0px; }
     .getting-started-icon-wrapper ul {
@@ -6850,7 +6855,6 @@ input[type=text] {
     position: relative;
     bottom: 49px;
     pointer-events: none; } }
-
 
 .search-autocomplete {
   position: absolute;
@@ -7512,6 +7516,10 @@ ul {
   text-align: center; }
   .blue-icon-yellow-background > * .icon-style {
     background: linear-gradient(#004C6C, #003946); }
+
+.yellow-icon-blue-background h2, .yellow-icon-blue-background h3, .yellow-icon-blue-background h4, .yellow-icon-blue-background h5, .yellow-icon-blue-background h6, .cta-three-column-wrapper h2, .cta-three-column-wrapper h3, .cta-three-column-wrapper h4, .cta-three-column-wrapper h5, .cta-three-column-wrapper h6, .yellow-icon-grey-background h2, .yellow-icon-grey-background h3, .yellow-icon-grey-background h4, .yellow-icon-grey-background h5, .yellow-icon-grey-background h6, .blue-icon-yellow-background h2, .blue-icon-yellow-background h3, .blue-icon-yellow-background h4, .blue-icon-yellow-background h5, .blue-icon-yellow-background h6, .yellow-icon-white-background h2, .yellow-icon-white-background h3, .yellow-icon-white-background h4, .yellow-icon-white-background h5, .yellow-icon-white-background h6 {
+  font-size: 1.25rem;
+  line-height: 23px; }
 
 .yellow-icon-blue-background form, .cta-three-column-wrapper form, .yellow-icon-grey-background form, .blue-icon-yellow-background form, .yellow-icon-white-background form {
   width: 100%; }
@@ -8217,6 +8225,32 @@ ul {
     right: 3px;
     position: relative; }
 
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
+
 .breadcrumb-section {
   height: 50px; }
   .breadcrumb-section .social-link-icon-wrapper {
@@ -8305,32 +8339,6 @@ ul {
     display: none; }
   .breadcrumb-author {
     display: block; } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
