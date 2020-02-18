@@ -21,11 +21,11 @@ import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.sunlife.web.cms.core.beans.News;
+import ca.sunlife.web.cms.core.beans.ReleaseMain;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 
 /**
- * @author mo92 
- * The Class CNWNewsModel - Sling model for CNW News list
+ * @author mo92 The Class CNWNewsModel - Sling model for CNW News list
  * 
  */
 @Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -33,7 +33,7 @@ public class CNWNewsModel {
 
 	/** The log */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Inject
 	private Page currentPage;
 
@@ -43,10 +43,44 @@ public class CNWNewsModel {
 	@Inject
 	private CNWNewsService newsService;
 
+	/** News display type */
+	@Inject
+	@Via("resource")
+	private String newsType;
+
+	// overview starts
+
+	/** Number of news to be displayed */
+	@Inject
+	@Via("resource")
+	private String numberOfNews;
+
+	// overview ends
+
+	/** Latest year */
+	@Inject
+	@Via("resource")
+	private String latestYear;
+
+	/** No. of tabs */
+	@Inject
+	@Via("resource")
+	private String numberOfTabs;
+
+	/** News categories */
+	@Inject
+	@Via("resource")
+	private List<NewsCategory> newsCategories;
+
 	/** News article url */
 	@Inject
 	@Via("resource")
 	private String newsArticleUrl;
+
+	/** Page size */
+	@Inject
+	@Via("resource")
+	private String pageSize;
 
 	/** Previous button text */
 	@Inject
@@ -68,6 +102,8 @@ public class CNWNewsModel {
 	@Via("resource")
 	private String ofText;
 
+	private String locale;
+
 	/** News */
 	private News news;
 
@@ -83,6 +119,42 @@ public class CNWNewsModel {
 	/** relative URL - without any selectors */
 	private String relativeURL;
 
+	// overview starts
+	/** Release News Object */
+	private ReleaseMain releaseMain;
+
+	// overview ends
+
+	/**
+	 * @return the latestYear
+	 */
+	public String getLatestYear() {
+		return latestYear;
+	}
+
+	/**
+	 * @param latestYear
+	 *            the latestYear to set
+	 */
+	public void setLatestYear(String latestYear) {
+		this.latestYear = latestYear;
+	}
+
+	/**
+	 * @return the numberOfTabs
+	 */
+	public String getNumberOfTabs() {
+		return numberOfTabs;
+	}
+
+	/**
+	 * @param numberOfTabs
+	 *            the numberOfTabs to set
+	 */
+	public void setNumberOfTabs(String numberOfTabs) {
+		this.numberOfTabs = numberOfTabs;
+	}
+
 	/**
 	 * @return the newsArticleUrl
 	 */
@@ -91,10 +163,26 @@ public class CNWNewsModel {
 	}
 
 	/**
-	 * @param newsArticleUrl the newsArticleUrl to set
+	 * @param newsArticleUrl
+	 *            the newsArticleUrl to set
 	 */
 	public void setNewsArticleUrl(String newsArticleUrl) {
 		this.newsArticleUrl = newsArticleUrl;
+	}
+
+	/**
+	 * @return the pageSize
+	 */
+	public String getPageSize() {
+		return pageSize;
+	}
+
+	/**
+	 * @param pageSize
+	 *            the pageSize to set
+	 */
+	public void setPageSize(String pageSize) {
+		this.pageSize = pageSize;
 	}
 
 	/**
@@ -158,21 +246,6 @@ public class CNWNewsModel {
 	}
 
 	/**
-	 * @return the news
-	 */
-	public News getNews() {
-		return news;
-	}
-
-	/**
-	 * @param news
-	 *            the news to set
-	 */
-	public void setNews(News news) {
-		this.news = news;
-	}
-
-	/**
 	 * @return the activeYear
 	 */
 	public int getActiveYear() {
@@ -185,6 +258,21 @@ public class CNWNewsModel {
 	 */
 	public void setActiveYear(int activeYear) {
 		this.activeYear = activeYear;
+	}
+
+	/**
+	 * @return the news
+	 */
+	public News getNews() {
+		return news;
+	}
+
+	/**
+	 * @param news
+	 *            the news to set
+	 */
+	public void setNews(News news) {
+		this.news = news;
 	}
 
 	/**
@@ -232,18 +320,113 @@ public class CNWNewsModel {
 		this.relativeURL = relativeURL;
 	}
 
+	/**
+	 * @return the newsCategories
+	 */
+	public List<NewsCategory> getNewsCategories() {
+		return newsCategories;
+	}
+
+	/**
+	 * @param newsCategories
+	 *            the newsCategories to set
+	 */
+	public void setNewsCategories(List<NewsCategory> newsCategories) {
+		this.newsCategories = newsCategories;
+	}
+
+	/**
+	 * @return the newsType
+	 */
+	public String getNewsType() {
+		return newsType;
+	}
+
+	/**
+	 * @param newsType
+	 *            the newsType to set
+	 */
+	public void setNewsType(String newsType) {
+		this.newsType = newsType;
+	}
+
+	/**
+	 * @return the numberOfNews
+	 */
+	public String getNumberOfNews() {
+		return numberOfNews;
+	}
+
+	/**
+	 * @param numberOfNews
+	 *            the numberOfNews to set
+	 */
+	public void setNumberOfNews(String numberOfNews) {
+		this.numberOfNews = numberOfNews;
+	}
+
+	/**
+	 * @return the releaseMain
+	 */
+	public ReleaseMain getReleaseMain() {
+		return releaseMain;
+	}
+
+	/**
+	 * @param releaseMain
+	 *            the releaseMain to set
+	 */
+	public void setReleaseMain(ReleaseMain releaseMain) {
+		this.releaseMain = releaseMain;
+	}
+
 	@PostConstruct
 	public void init() throws IOException {
-		logger.debug("Entry :: CNWNewsModel :: init ");
-		String locale = null;
+		logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
+
+		locale = currentPage.getLanguage().getLanguage();
+		logger.debug("Fetched locale: {}, newsType: {}", locale, newsType);
+
+		if( null == newsType )
+			return;
+		
+		if (newsType.equals("1")) {
+			processOverviewData();
+		} else {
+			processReleasesData();
+		}
+	}
+
+	public void processOverviewData() throws IOException {
+		logger.debug("Entry :: CNWNewsDetailsModel :: processOverviewData :: numberOfNews: {}, newsCategories: {}, locale: {}", numberOfNews, newsCategories, locale);
+		try {
+			if (null == numberOfNews || null == newsCategories) {
+				return;
+			}
+			releaseMain = newsService.getCNWNewsOverview(locale, numberOfNews, newsCategories);
+		} catch (IOException e) {
+			logger.error("Error :: CNWNewsDetailsModel :: processOverviewData :: {}", e);
+			throw e;
+		}
+		logger.debug("Fetched news :: {}", releaseMain);
+	}
+
+	public void processReleasesData() throws IOException {
+		logger.debug("Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}", latestYear, numberOfTabs, locale, newsCategories, pageSize);
 		int year;
-		int totalNoYears = 3;
+		int totalNoYears;
 		String strYear = null;
 		String pageNum = null;
 		try {
+			if (null == latestYear) {
+				year = Calendar.getInstance().get(Calendar.YEAR);
+			} else {
+				year = Integer.parseInt(latestYear);
+			}
 
-			year = Calendar.getInstance().get(Calendar.YEAR);
 			int downYear = year;
+			totalNoYears = Integer.parseInt(numberOfTabs);
+			logger.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
 			yearsToShow = new ArrayList<>();
 			for (int i = 0; i < totalNoYears; i++) {
 				yearsToShow.add(downYear--);
@@ -251,8 +434,7 @@ public class CNWNewsModel {
 			logger.debug("yearsToShow :: {}", yearsToShow);
 
 			activeYear = year;
-			locale = currentPage.getLanguage().getLanguage();
-			logger.debug("Fetched locale :: {}", locale);
+
 			String[] selectors = request.getRequestPathInfo().getSelectors();
 			if (selectors.length > 0) {
 				strYear = selectors[0]; // Year - Selector
@@ -276,7 +458,7 @@ public class CNWNewsModel {
 				requestURL = requestURL.replaceAll("." + pageNum + "$", "");
 			}
 			logger.debug("requestURL - after clean up: {}", requestURL);
-			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear));
+			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
 			if (logger.isDebugEnabled()) {
 				logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
 			}
@@ -285,5 +467,4 @@ public class CNWNewsModel {
 			throw e;
 		}
 	}
-
 }
