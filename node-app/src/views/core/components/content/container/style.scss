@@ -64,6 +64,10 @@ ul {
     background-color: $light-cool-blue-color;
     text-align: center;
 }
+.cta-three-column-wrapper > * {
+    background-color: $light-cool-blue-color;
+    text-align: center;
+}
 .yellow-icon-white-background > * {
     background-color: $white-shade;
     text-align: center;
@@ -73,6 +77,11 @@ ul {
         border: 1px solid $light-grey-color;
         background: $white-shade;
 }
+.yellow-icon-grey-background{
+    .button-class{
+        margin-top: 14px;
+    }
+} 
 .blue-icon-yellow-background > * {
     background-color: $medium-yellow-background;
     text-align: center;
@@ -80,7 +89,7 @@ ul {
         background: linear-gradient($medium-blue-color, $blue-gradient-color);
     }
 }
-.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+.yellow-icon-blue-background,.cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background {
     form{
         width: 100%;
     }
@@ -91,7 +100,10 @@ ul {
         }
     .cta-content-icon-wrapper{
         .icon-parent {
-            height: 14px;
+            height: 24px;
+        }
+        .icon-texts > :last-child{
+            margin:0;
         }
     }
     .overview-highlights-wrapper{
@@ -99,28 +111,30 @@ ul {
             height: 24px;
         }
     }
-        .icon-text {
-            padding: 16px;
+    .icon-text {
+        padding: 16px;
+    }
+    .cmp-container > :not(:last-child){
+        padding-bottom: 24px;
+    }
+    .cmp-container > :last-child{
+        padding-bottom: 40px;
+    }
+    .form-container-component{
+        padding-top:0;
+    }
+    form{
+        .cmp-form-button{
+            width: 100%;
         }
-        .cmp-container > :not(:last-child){
-            padding-bottom: 24px;
-        }
-        .cmp-container > :last-child{
-            padding-bottom: 40px;
-        }
-        .form-container-component{
-            padding-top:0;
-        }
-        form{
-            .cmp-form-button{
-                width: 100%;
-            }
-        }
-        form :not(:last-child){
+    }
+    form :not(:last-child){
 
-            padding-right: 10px;
-        }
-
+        padding-right: 10px;
+    }
+    .cmp-text > :last-child{
+        margin: 0;
+    }
 }
 .no-padding{
     .yellow-icon-white-background{
@@ -170,7 +184,17 @@ ul {
         }
     }
 }
-
+.cta-three-column-wrapper{
+    border: 1px solid $grey-search-border-color;
+    .cta-content-icon-wrapper{
+        .icon-style{
+            border: 6px solid $white-shade;
+        }
+    }
+    .button-class{
+        margin-top: 14px;
+    }
+}
 .cross-cta-wrapper {
     padding: 24px 16px 14px 16px;
     background-color: $light-orange-20;
@@ -487,7 +511,7 @@ ul {
         }
       }
     }
-    .yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+    .yellow-icon-blue-background,.cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
         margin-bottom: 62px;
     }
     .no-padding{
@@ -617,7 +641,7 @@ ul {
         font-size: 2rem;
         border: 2px solid $white-shade;
     }
-    .yellow-icon-grey-background, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
+    .yellow-icon-grey-background,.cta-three-column-wrapper, .yellow-icon-blue-background, .blue-icon-yellow-background, .yellow-icon-white-background {
         .cta-content-icon-wrapper {
             .icon-style {
                 height: 60px;
@@ -628,7 +652,7 @@ ul {
                 font-size: 2.125rem;
             }
             .icon-parent {
-                height: 30px;
+                height: 15px;
 
             }
         }
