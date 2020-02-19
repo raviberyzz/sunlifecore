@@ -62,7 +62,7 @@ $(document).ready(function () {
   {
 	  if ($(window).width() > 767)
 	  {
-		  $('.home-cta-form-wrapper, form  .cmp-form-button').removeClass('fa fa-chevron-right');
+		  $('.home-cta-form-wrapper form  .cmp-form-button').removeClass('fa fa-chevron-right');
 		  $('.home-cta-form-wrapper form .cmp-form-button').html($('.cta-form-wrapper form .cmp-form-button').val());
 	  }
 	  else
