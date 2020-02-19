@@ -4,7 +4,35 @@
 
     <p>Tips, tools and good advice for what matters for you</p>
 
-    {{>core-components-content-link-list}}
+    <div class="life-moments-wrapper-desktop">
+        <div class="links">
+            <h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+            <div class="collapse list-div">
+                <ul class="list-unstyled">
+                    {{#each list}}
+                    <li>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="life-moments-wrapper-mobile">
+        <div class="links">
+            <h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+            <div class="collapse list-div">
+                <ul class="list-unstyled">
+                    {{#each list}}
+                    <li>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div class="bright-start">
 
