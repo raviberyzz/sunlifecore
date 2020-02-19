@@ -2521,3 +2521,17 @@ $(window).scroll(function() {
 //     if (!results[2]) return '';
 //     return decodeURIComponent(results[2].replace(/\+/g, " "));
 // } 
+/* Tags formatting starts here */
+$(document).ready(function(){
+    $('body').find("b").replaceWith(function() {
+    return $('<strong>', {
+        html: this.innerHTML
+        });
+    });
+    $('body').find("i").replaceWith(function() {
+    return $('<em>', {
+        html: this.innerHTML
+        });
+    });
+});
+/* Tags formatting ends here */
