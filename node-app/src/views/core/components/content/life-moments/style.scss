@@ -4,6 +4,7 @@
     background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat,linear-gradient(#004C6C, #002C3C);
     height: 382px;
     padding-top: 48px;
+    background-size: 120% 120%;
     text-align: center;
     position: relative;
     h3{
@@ -69,6 +70,9 @@
             bottom: 0;
             left: 0;
         }
+    }
+    p:last-of-type{
+        margin-top: 16px;
     }
     .view-all-category {
         &:after{
@@ -147,6 +151,9 @@
             left: 0;
         }
     }
+    p:last-of-type{
+        margin-top: 16px;
+    }
     .view-all-category {
         &:after {
             color: $medium-blue-color;
@@ -206,6 +213,9 @@
         .life-moments-wrapper-mobile{
             display: block;
         }
+        p:last-of-type{
+            margin-top: 32px;
+        }
         img{
             display: none;
         }
@@ -263,6 +273,9 @@
         }
         .life-moments-wrapper-mobile{
             display: block;
+        }
+        p:last-of-type{
+            margin-top: 32px;
         }
         img{
             display: none;
