@@ -873,6 +873,16 @@ ul {
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .light-yellow-box-header {
         display: flex !important;
+    } 
+    .content-highlight{
+        .teaser {
+            .image-text-wrapper {
+                .right-item{
+                padding: 0px;
+                text-align: center;
+                }
+            }
+        }
     }
     .teaser {
         .image-text-wrapper {
