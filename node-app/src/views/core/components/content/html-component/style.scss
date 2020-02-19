@@ -481,4 +481,9 @@
     .search-container .search-results .pagination.last-page .previous{
         width:auto;
     }
+    .search-container {
+        .pagination{
+            width:70%;
+        }
+    }
 }
