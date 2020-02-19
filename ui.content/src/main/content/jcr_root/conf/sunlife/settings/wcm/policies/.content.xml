@@ -183,7 +183,12 @@
                                             cq:styleClasses="yellow-gradient-box"
                                             cq:styleId="1579001078720"
                                             cq:styleLabel="Yellow Background"
-                                            jcr:primaryType="nt:unstructured"/>      	
+                                            jcr:primaryType="nt:unstructured"/>      
+										<item4
+                                            cq:styleClasses="light-orange-background-wrapper"
+                                            cq:styleId="1579001078721"
+                                            cq:styleLabel="Orange Background"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>                                
                                 <item1
@@ -653,14 +658,19 @@
                                     </cq:styles>
                                 </item4>
                                 <item5
-                                    cq:styleGroupLabel="Vertical Separator"
+                                    cq:styleGroupLabel="Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="text-border-right"
                                             cq:styleId="1579257415352"
-                                            cq:styleLabel="Yes"
+                                            cq:styleLabel="Text Separator"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="container-border-right"
+                                            cq:styleId="1579257415353"
+                                            cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
                                 <item6
