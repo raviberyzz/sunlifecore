@@ -445,19 +445,24 @@
     }
 }
 .html-component{
-    .search-conatiner{
-        .cmp-text{
-            ul{
+    .cmp-text{
+        ul{
+            content: "";
+            padding: 0;
+            margin: 0;
+            li::before{
                 content: "";
                 padding: 0;
                 margin: 0;
-                li::before{
-                    content: "";
-                    padding: 0;
-                    margin: 0;
-                    display:inline;
-                    width:0;
-                }
+                display:inline;
+                width:0;
+            }
+        }
+    }
+    .search-autocomplete {
+        .search-autocomplete-list {
+            li{
+                padding-left:10px;
             }
         }
     }
@@ -480,5 +485,10 @@
     }
     .search-container .search-results .pagination.last-page .previous{
         width:auto;
+    }
+    .search-container {
+        .pagination{
+            width:70%;
+        }
     }
 }
