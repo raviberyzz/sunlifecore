@@ -134,10 +134,25 @@ $(document).ready(function () {
 
 	}
 
-	//Home CTA Button
+	
+    //subscribe_legal_text
 
-	if (($(window).width() < 768)) {
-		$('.no-padding .yellow-icon-white-background form .cmp-form-button').html('<span class="fa fa-chevron-right"></span>');
-	}
+	subscribe_legal_text();
+	$(window).resize(function () {
+		subscribe_legal_text();
+	});
+
+	function subscribe_legal_text()
+    {
+        if (($(window).width() < 1025))
+        {
+            $('.subscribe-main-content-wrapper .legal-text').parents('.text').css('width','100%');
+        }
+        else
+        {
+			$('.subscribe-main-content-wrapper .legal-text').parents('.text').css('width','66.66%');
+        }
+
+    }
 
 });
