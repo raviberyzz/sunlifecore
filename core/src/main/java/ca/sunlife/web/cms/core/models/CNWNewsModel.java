@@ -457,6 +457,9 @@ public class CNWNewsModel {
 			if (null != pageNum) { // Code to remove page number from url
 				requestURL = requestURL.replaceAll("." + pageNum + "$", "");
 			}
+			if (selectors.length == 0) {
+				requestURL = requestURL + "." + activeYear;
+			}
 			logger.debug("requestURL - after clean up: {}", requestURL);
 			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
 			if (logger.isDebugEnabled()) {
