@@ -1,27 +1,27 @@
 $(document).ready(function () {
+    $('.blue-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var lastWord=text.split(" ").pop();
+        var index=text.indexOf(lastWord);
+        text=text.substr(0,index);
+        $(this).text("");
+        lastWord=lastWord.toUpperCase();
+        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
+        $(this).append(html);
+    });
+    $('.yellow-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var lastWord=text.split(" ").pop();
+        var index=text.indexOf(lastWord);
+        text=text.substr(0,index);
+        $(this).text("");
+        lastWord=lastWord.toLowerCase();
+        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
+        $(this).append(html);
+    });
     var pageWidth=$(window).width();
     if(pageWidth>=768){
-        $('.blue-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
-            var text=$(this).text();
-            var lastWord=text.split(" ").pop();
-            var index=text.indexOf(lastWord);
-            text=text.substr(0,index);
-            $(this).text("");
-            lastWord=lastWord.toUpperCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
-            $(this).append(html);
-        });
         $('.blue-background-wrapper p:last').css('margin-bottom','16px');
-        $('.yellow-background-wrapper').find('.list-unstyled').children('li').children('a').each(function(){
-            var text=$(this).text();
-            var lastWord=text.split(" ").pop();
-            var index=text.indexOf(lastWord);
-            text=text.substr(0,index);
-            $(this).text("");
-            lastWord=lastWord.toLowerCase();
-            var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
-            $(this).append(html);
-        });
         $('.yellow-background-wrapper').siblings('.layout-container').css('position','absolute');
         $('.yellow-background-wrapper').siblings('.layout-container').css('width','94%');
         $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
