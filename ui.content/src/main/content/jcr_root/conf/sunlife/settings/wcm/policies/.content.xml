@@ -653,14 +653,19 @@
                                     </cq:styles>
                                 </item4>
                                 <item5
-                                    cq:styleGroupLabel="Vertical Separator"
+                                    cq:styleGroupLabel="Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="text-border-right"
                                             cq:styleId="1579257415352"
-                                            cq:styleLabel="Yes"
+                                            cq:styleLabel="Text Separator"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="container-border-right"
+                                            cq:styleId="1579257415353"
+                                            cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
                                 <item6
