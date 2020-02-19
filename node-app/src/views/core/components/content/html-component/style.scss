@@ -444,6 +444,24 @@
         }
     }
 }
+.html-component{
+    .search-conatiner{
+        .cmp-text{
+            ul{
+                content: "";
+                padding: 0;
+                margin: 0;
+                li::before{
+                    content: "";
+                    padding: 0;
+                    margin: 0;
+                    display:inline;
+                    width:0;
+                }
+            }
+        }
+    }
+}
 
 @media (min-width: $tab-screen-min) {
     .search-results{
