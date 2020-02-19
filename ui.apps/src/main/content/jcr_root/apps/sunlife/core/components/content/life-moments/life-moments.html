@@ -2,7 +2,18 @@
 <sly data-sly-test.empty="${!lifeText.heading}"/>
 <div class="">
 ${lifeText.heading @context ='html'}
-<div class="life-moments-wrapper"> 
+<div class="life-moments-wrapper-desktop"> 
+<div class="links">
+<div class="collapse list-div">				
+   <ul class="list-unstyled" data-sly-list.links="${lifeText.links}">
+	 <li>
+       <a href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+	 </li>
+   </ul>				
+</div>
+</div>
+</div>
+<div class="life-moments-wrapper-mobile"> 
 <div class="links">
 <div class="collapse list-div">				
    <ul class="list-unstyled" data-sly-list.links="${lifeText.links}">
