@@ -133,11 +133,4 @@ $(document).ready(function () {
 		}
 
 	}
-
-	//Home CTA Button
-
-	if (($(window).width() < 768)) {
-		$('.no-padding .yellow-icon-white-background form .cmp-form-button').html('<span class="fa fa-chevron-right"></span>');
-	}
-
 });
