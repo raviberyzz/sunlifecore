@@ -115,6 +115,15 @@
         max-width:100%;
     }
 
+
+    .subscribe-main-form-wrapper form .button-wrapper .cmp-form-button {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%; }
+       .subscribe-main-form-wrapper{
+          padding:0px !important;
+              }
+
 @media (max-width: $mobile-screen-max) {
 .subscribe-popup-form-wrapper{
     padding:0 ;
@@ -180,4 +189,13 @@
             }
         }
     }
+
+    .subscribe-main-form-wrapper .text{
+        width:58.31%!important;
+        padding-right:16px;
+            }
+    
+    .subscribe-main-form-wrapper .button{
+        width:41.65% !important;
+            }    
 }

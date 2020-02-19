@@ -59,7 +59,7 @@ $(document).ready(function () {
    $(window).resize(function () {
 	   home_cta_form();
    });
-
+   
   function home_cta_form()
   {
 	  if ($(window).width() > 767)
