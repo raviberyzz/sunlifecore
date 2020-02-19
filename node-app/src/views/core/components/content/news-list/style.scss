@@ -3,13 +3,80 @@
 
 .news-article{
     border: 2px solid #E1E1E1;
-    padding: 20px 20px 20px 15px;
+    padding: 20px 20px 20px 20px;
     position: relative;
     margin-top:-2px;
+
+    > div:nth-last-child(1){
+        margin-bottom: 30px;
+    }
+    .primary-yellow-button-rte{
+        background: #FFCB05 !important;
+        color: #004C6C !important;
+        border: 2px solid #FFCB05;
+        padding: 11px 19px !important;
+        margin: 0 !important;
+        border-radius: 4px !important;
+        line-height: initial;
+    }
 }
 @media(max-width:$mobile-screen-max){
     .news-article{
-        border-left:none;
-        border-right:none;
+        margin-left: -10px;
+        margin-right: -10px;
+        .primary-yellow-button-rte{
+            background: #FFCB05 !important;
+            color: #004C6C !important;
+            border: 2px solid #FFCB05;
+            padding: 11px 19px !important;
+            margin: 0 !important;
+            border-radius: 4px !important;
+            line-height: initial;
+        }
+    }
+}
+
+@media (max-width: 767px) and (min-width: 320px){
+        .news-lists{
+            margin-bottom: 30px;
+            h2{
+                font-size: 32px;
+            }   
+        }
+    }
+
+
+@media(max-width:$mobile-screen-max){
+    .tabs-wrapper.news {
+        margin: -10px;
+        .tab-accordian-heading + *{
+            display: contents;
+        }
+        .news-option-table{
+            a{
+                color: #004C6C;
+                font-weight: 700;
+                
+            }
+            
+        }
+        .tab-accordian-heading{
+            background: #E6E6E6 !important;
+            color: #424242 !important;
+            padding: 15px 20px;
+            cursor: pointer !important;
+            a {
+                color: #424242;
+                font-weight: 400;
+                font-size: 20px;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+            .news-article {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
     }
 }

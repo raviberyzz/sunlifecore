@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.mockito.MockitoAnnotations;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.News;
+import ca.sunlife.web.cms.core.beans.ReleaseMain;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import uk.org.lidalia.slf4jtest.TestLogger;
@@ -50,6 +52,18 @@ public class CNWNewsModelTest {
 		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
 		when(request.getRequestPathInfo())
 				.thenReturn(TestUtils.getDummyRequestPathInfo(new String[] { DUMMY_ACTIVE_YEAR, DUMMY_PAGE_NUMBER }));
+		cnwNewsModel.setLatestYear("2020");
+		cnwNewsModel.setNumberOfTabs("3");
+		cnwNewsModel.setPageSize("10");
+		
+		List<NewsCategory> categories = new ArrayList<NewsCategory>();
+		categories.add(new NewsCategory() {
+			@Override
+			public String getCategory() {
+				return "773";
+			}
+		});
+		cnwNewsModel.setNewsCategories(categories);
 	}
 
 	@Test
@@ -58,7 +72,8 @@ public class CNWNewsModelTest {
 
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
 		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), expectedRequestURL, DUMMY_PAGE_NUMBER,
-				DUMMY_ACTIVE_YEAR)).thenReturn(new News());
+				DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
+		cnwNewsModel.setNewsType("2");
 		cnwNewsModel.init();
 
 		// check for yearsToShow
@@ -83,6 +98,7 @@ public class CNWNewsModelTest {
 	@Test
 	public void testInitNegativeCases() throws IOException {
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_OTHER_PAGE);
+		cnwNewsModel.setNewsType("2");
 		cnwNewsModel.init();
 
 		// requestURL should have the page number
@@ -99,7 +115,8 @@ public class CNWNewsModelTest {
 		try {
 			when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
 			when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page", DUMMY_PAGE_NUMBER,
-					DUMMY_ACTIVE_YEAR)).thenThrow(IOException.class);
+					DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenThrow(IOException.class);
+			cnwNewsModel.setNewsType("2");
 			cnwNewsModel.init();
 		} catch (Exception exception) {
 			assertTrue(exception instanceof IOException);
@@ -110,4 +127,26 @@ public class CNWNewsModelTest {
 		assertTrue(logHasExceptionMessage);
 	}
 
+	@Test
+	void testOverviewData() throws IOException {
+		// releaseMain should be null initially
+		cnwNewsModel.init();
+		cnwNewsModel.setNumberOfNews("3");
+		//cnwNewsModel.setNewsType(null);
+		assertNull(cnwNewsModel.getReleaseMain());
+		// releaseMain should NOT be null in below case
+		List<NewsCategory> categories = new ArrayList<NewsCategory>();
+		categories.add(new NewsCategory() {
+			@Override
+			public String getCategory() {
+				return "773";
+			}
+		});
+		cnwNewsModel.setNewsCategories(categories);
+		cnwNewsModel.setNumberOfNews("3");
+		cnwNewsModel.setNewsType("1");
+		when(newsService.getCNWNewsOverview(TestUtils.CANADA_LOCALE.getLanguage(), "3", categories)).thenReturn(new ReleaseMain());
+		cnwNewsModel.init();
+		assertNotNull(cnwNewsModel.getReleaseMain());
+	}
 }

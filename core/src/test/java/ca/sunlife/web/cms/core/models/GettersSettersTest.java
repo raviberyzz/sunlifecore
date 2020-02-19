@@ -14,7 +14,6 @@ public class GettersSettersTest {
 	private BreadcrumbModel breadcrumbModel;
 	private CNWNewsDetailsModel cnwNewsDetailsModel;
 	private CNWNewsModel cnwNewsModel;
-	private CNWNewsOverviewModel cnwNewsOverviewModel;
 	private FormButtonModel formButtonModel;
 	private FormContainer formContainer;
 	private LeftNavigationModal leftNavigationModal;
@@ -28,7 +27,6 @@ public class GettersSettersTest {
 		breadcrumbModel = new BreadcrumbModel();
 		cnwNewsDetailsModel = new CNWNewsDetailsModel();
 		cnwNewsModel = new CNWNewsModel();
-		cnwNewsOverviewModel = new CNWNewsOverviewModel();
 		formButtonModel = new FormButtonModel();
 		formContainer = new FormContainer();
 		leftNavigationModal = new LeftNavigationModal();
@@ -64,11 +62,6 @@ public class GettersSettersTest {
 	@Test
 	void testCNWNewsModel() {
 		TestUtils.executeTestBean(cnwNewsModel);
-	}
-
-	@Test
-	void testCNWNewsOverviewModel() {
-		TestUtils.executeTestBean(cnwNewsOverviewModel);
 	}
 
 	@Test

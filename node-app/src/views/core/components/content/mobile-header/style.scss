@@ -74,6 +74,7 @@
             font-weight: bold;
             text-align: center;
             white-space: nowrap;
+            font-family: sunlife-sans;
         }
     }
     /* Mobile Header End */
@@ -271,12 +272,13 @@
     .offcanvas-overlay.active{
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: 1000px;
         left: 0;
         top: 0;
         background: $black-shade;
         opacity: 0.5;
         margin-left:270px;
+        z-index:100;
     }
     .search-autocomplete-mobile{
         position:relative;
