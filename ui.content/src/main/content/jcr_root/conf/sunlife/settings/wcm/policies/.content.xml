@@ -368,12 +368,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="circular-image clearfix"
+                                            cq:styleClasses="circular-image middle-aligned-text clearfix"
                                             cq:styleId="1577980739707"
                                             cq:styleLabel="Circular "
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile clearfix"
+                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile round-border middle-aligned-text clearfix"
                                             cq:styleId="1577980770707"
                                             cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
@@ -653,14 +653,19 @@
                                     </cq:styles>
                                 </item4>
                                 <item5
-                                    cq:styleGroupLabel="Vertical Separator"
+                                    cq:styleGroupLabel="Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="text-border-right"
                                             cq:styleId="1579257415352"
-                                            cq:styleLabel="Yes"
+                                            cq:styleLabel="Text Separator"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="container-border-right"
+                                            cq:styleId="1579257415353"
+                                            cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
                                 <item6
