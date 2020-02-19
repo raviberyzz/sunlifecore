@@ -32,6 +32,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+												fieldLabel="Text for the headline"
                                                 name="./heading"
                                                 useFixedInlineToolbar="{Boolean}true"/>
                                             <links
@@ -87,6 +88,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+												fieldLabel="Text for the description"
                                                 name="./description"
                                                 useFixedInlineToolbar="{Boolean}true"/>
                                         </items>
