@@ -5,6 +5,11 @@
     padding: 0;
     position: absolute;
     padding-left:0;
+    height:1000px;
+    .sign-in-modaldialog{
+        position:relative;
+        top:15%;
+    }
     .modal-main {
         background: $medium-yellow-background;
         padding: 24px 24px 40px 24px;

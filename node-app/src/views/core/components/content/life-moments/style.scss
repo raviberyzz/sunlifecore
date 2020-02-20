@@ -4,6 +4,7 @@
     background: url(https://www.sunlife.com/static/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat,linear-gradient(#004C6C, #002C3C);
     height: 382px;
     padding-top: 48px;
+    background-size: 120% 120%;
     text-align: center;
     position: relative;
     h3{
@@ -52,6 +53,9 @@
             }
         }
     }
+    .life-moments-wrapper-mobile{
+        display: none;
+    }
     .bright-start{
         padding-left: 60px;
         h4{
@@ -65,6 +69,9 @@
             position: absolute;
             bottom: 0;
             left: 0;
+        }
+        p:last-of-type{
+            margin-top: 16px;
         }
     }
     .view-all-category {
@@ -129,6 +136,9 @@
             }
         }
     }
+    .life-moments-wrapper-mobile{
+        display: none;
+    }
     .bright-start{
         padding-left: 60px;
         h4{
@@ -140,6 +150,9 @@
             bottom: 0;
             left: 0;
         }
+        p:last-of-type{
+            margin-top: 16px;
+        }
     }
     .view-all-category {
         &:after {
@@ -147,11 +160,6 @@
             font-weight:400;
         }
     }
-    // .life-link-text:after{
-    //     content: '\f138';
-    //     font-family: FontAwesome;
-    //     padding-left: 5px;
-    // }
 }
 @media (max-width: $mobile-screen-max) {
     .blue-background-wrapper{
@@ -166,6 +174,9 @@
             padding: 0;
             h4{
                 line-height: 26px;
+            }
+            p:last-of-type{
+                margin-top: 32px;
             }
         }
         p{
@@ -199,6 +210,12 @@
                 }
             }
         }
+        .life-moments-wrapper-desktop{
+            display: none;
+        }
+        .life-moments-wrapper-mobile{
+            display: block;
+        }
         img{
             display: none;
         }
@@ -215,6 +232,9 @@
             padding: 0;
             h4{
                 line-height: 26px;
+            }
+            p:last-of-type{
+                margin-top: 32px;
             }
         }
         p{
@@ -250,6 +270,12 @@
                     }
                 }
             }
+        }
+        .life-moments-wrapper-desktop{
+            display: none;
+        }
+        .life-moments-wrapper-mobile{
+            display: block;
         }
         img{
             display: none;

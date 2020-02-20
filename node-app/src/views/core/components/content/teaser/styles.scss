@@ -28,6 +28,11 @@
     h1, h2, h3, h4, h5, h6 {
         font-size: 1.5rem;
     }
+    .right-image-position{
+      .text-section a {
+        font-size: 1.5rem;
+        }
+       }
     p {
         font-size: 1rem;
     }
@@ -163,14 +168,17 @@
         }
     }
 }
-@media (max-width: $mobile-screen-max) {
+@media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .banner-section {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.75rem;
             line-height: 36px;
+            padding-bottom: 14px;
         }
-        .side-image {
-            height: auto;
+        .image-text-wrapper {
+            .text-section {
+                padding: 40px 24px 24px 30px;
+            }
         }
     }
     .life-moment-second-level-banner .image-text-wrapper .text-section {
@@ -185,6 +193,20 @@
             margin-bottom: 0;
         }
     }
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+    .banner-section {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 2rem;
+            line-height: 41px;
+        }
+    }
+}
+@media (max-width: $mobile-screen-max) {
+    .side-image {
+            height: auto;
+        }
+
     .white-box {
         .text-section {
             width: 100%;
@@ -221,7 +243,8 @@
         .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
                 display: inherit;
-                text-align: center;
+                /*text-align: center;*/
+                text-align:left;
                 .text-section {
                     margin: 0;
                 }
@@ -277,16 +300,16 @@
     }
 }
 @media (max-width: $tab-screen-max) {
-    .banner-section {
-        h1, h2, h3, h4, h5, h6 {
-            font-size: 2rem;
-            line-height: 41px;
-        }
+    // .banner-section {
+    //     h1, h2, h3, h4, h5, h6 {
+    //         font-size: 2rem;
+    //         line-height: 41px;
+    //     }
         .text-section {
             padding: 10px;
         }
     }
-}
+
 // IE specific css
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .bottom-aligned-text {

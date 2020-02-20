@@ -113,6 +113,10 @@
         p{
             padding-bottom:22px;
         }
+        p:last-child{
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
     }
 }
 .mega-menu-icon-wrapper {
@@ -152,7 +156,7 @@
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
         line-height: 30px;
-        padding: 0 25px 24px 25px;
+        padding: 0 25px 9px 25px; //clarification.
         top: -15px;
         background-color: $white-shade;
         float: left;
@@ -205,6 +209,22 @@
             padding: 0px 0px 20px 20px;
         }
 }
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
+{ .overview-highlights-wrapper{
+     .icon-parent{
+        .icon-style {
+              height: 60px;
+              width: 60px;
+              padding: 13px;
+              font-size: 34px;
+              position: relative;
+              bottom: 49px;
+              pointer-events: none;
+              }
+            } 
+         }
+      }
+
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
     .text-border-right {
@@ -213,17 +233,19 @@
             padding-right: 0;
         }
     }
-    .getting-started-icon-wrapper
+  .getting-started-icon-wrapper
     {
        height: auto;
+       margin-right:10px;
+       margin-left:10px;
        .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
-           padding-bottom: 24px;
+           padding-bottom: 0px;
        }
         ul{
             width: 100%;
             padding: 0;
             display: block;
-            margin-top: 30px;
+            margin-top: 15px;
             &>:not(:last-child)
             {
                 border-right: none;
@@ -233,9 +255,23 @@
                 flex: none;
                 width: 100%;
                 display: block;
-                padding: 24px;
+                padding: 24px 24px 14px 24px;
             }
         }
 
     }
+    .overview-highlights-wrapper{
+        .icon-parent{
+           .icon-style {
+                 height: 60px;
+                 width: 60px;
+                 padding: 13px;
+                 font-size: 34px;
+                 position: relative;
+                 bottom: 49px;
+                 pointer-events: none;
+                 }
+               } 
+            }
 }
+

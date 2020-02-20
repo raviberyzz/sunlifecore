@@ -18,5 +18,11 @@ public @interface CNWNewsConfig {
 	 */
 	@AttributeDefinition(name = "cnwServiceUrl", description = "CNW Service URL", defaultValue = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca")
 	String getCnwServiceUrl();
+	
+	/**
+	 * @return
+	 */
+	@AttributeDefinition(name = "dateFormatLocaleMapping", description = "Date format locale mapping", defaultValue = {"en~MMMM dd, yyyy", "fr~dd MMMM yyyy"})
+	String[] getDateFormatLocaleMapping();
 
 }

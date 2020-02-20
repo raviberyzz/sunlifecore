@@ -185,6 +185,7 @@
                 a{
                     background-color: $medium-yellow-background;
                     border-radius:4px;
+                    z-index:1;
                 }
             }
             li.next{
@@ -444,6 +445,29 @@
         }
     }
 }
+.html-component{
+    .cmp-text{
+        ul{
+            content: "";
+            padding: 0;
+            margin: 0;
+            li::before{
+                content: "";
+                padding: 0;
+                margin: 0;
+                display:inline;
+                width:0;
+            }
+        }
+    }
+    .search-autocomplete {
+        .search-autocomplete-list {
+            li{
+                padding-left:10px;
+            }
+        }
+    }
+}
 
 @media (min-width: $tab-screen-min) {
     .search-results{
@@ -462,5 +486,17 @@
     }
     .search-container .search-results .pagination.last-page .previous{
         width:auto;
+    }
+    .search-container {
+        .pagination{
+            width:70%;
+        }
+        .search-results{
+            .pagination.last-page{
+                .link-to-first{
+                    width:auto;
+                }
+            }
+        }
     }
 }

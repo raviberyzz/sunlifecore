@@ -367,18 +367,25 @@ line-height:110%;
 
 
 .mega-menu-wrapper-desk{
-    .text{
-        .cmp-text{
-            ul{
-                padding-left:0px;
-                li:before{
-                    content:'';
+    /*AEM styles */
+    .aem-GridColumn--default--10{
+        .aem-Grid--default--6{
+            .aem-Grid--default--3{
+                .text{
+                    .cmp-text{
+                        padding-left:0px;
+                        ul{
+                            padding-left:0px!important;
+                            li:before{
+                                content:'';
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-    
-  /*AEM styles */
+  
   .cmp-container{
     .aem-Grid--default--10{
         .aem-Grid--12{

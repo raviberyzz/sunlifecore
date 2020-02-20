@@ -183,7 +183,12 @@
                                             cq:styleClasses="yellow-gradient-box"
                                             cq:styleId="1579001078720"
                                             cq:styleLabel="Yellow Background"
-                                            jcr:primaryType="nt:unstructured"/>      	
+                                            jcr:primaryType="nt:unstructured"/>      
+										<item4
+                                            cq:styleClasses="light-orange-background-wrapper"
+                                            cq:styleId="1579001078721"
+                                            cq:styleLabel="Orange Background"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>                                
                                 <item1
@@ -368,12 +373,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="circular-image clearfix"
+                                            cq:styleClasses="circular-image middle-aligned-text clearfix"
                                             cq:styleId="1577980739707"
                                             cq:styleLabel="Circular "
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile clearfix"
+                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile round-border middle-aligned-text clearfix"
                                             cq:styleId="1577980770707"
                                             cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
@@ -607,6 +612,11 @@
                                             cq:styleId="1577978785269"
                                             cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="cta-three-column-wrapper"
+                                            cq:styleId="1577978785270"
+                                            cq:styleLabel="CTA Three Column"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>
                                 <item2
@@ -648,14 +658,19 @@
                                     </cq:styles>
                                 </item4>
                                 <item5
-                                    cq:styleGroupLabel="Vertical Separator"
+                                    cq:styleGroupLabel="Separator"
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
                                             cq:styleClasses="text-border-right"
                                             cq:styleId="1579257415352"
-                                            cq:styleLabel="Yes"
+                                            cq:styleLabel="Text Separator"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="container-border-right"
+                                            cq:styleId="1579257415353"
+                                            cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
                                 <item6
@@ -832,23 +847,18 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">									
                                         <item0
-                                            cq:styleClasses="mt-30"
-                                            cq:styleId="1581893835967"
-                                            cq:styleLabel="Top Spacing 30"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
                                             cq:styleClasses="mt-18"
-                                            cq:styleId="1577972366641"
+                                            cq:styleId="1579367426265"
                                             cq:styleLabel="Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
-                                        <item2
+                                        <item1
                                             cq:styleClasses="mt-20"
-                                            cq:styleId="1577973460041"
+                                            cq:styleId="1579199824654"
                                             cq:styleLabel="Spacing 20"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item3
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
                                             cq:styleClasses="mt-40"
-                                            cq:styleId="1577972369699"
+                                            cq:styleId="1579089938796"
                                             cq:styleLabel="Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
@@ -1213,6 +1223,22 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
+								<item4
+                                    cq:styleGroupLabel="CTA Form Styles"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="cta-form-wrapper"
+                                            cq:styleId="1581948369751"
+                                            cq:styleLabel="CTA Form"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="home-cta-form-wrapper"
+                                            cq:styleId="1581948988758"
+                                            cq:styleLabel="CTA Homepage Form"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item4>
                                 </cq:styleGroups>
                             </policy_formContainer>
                         </container>
