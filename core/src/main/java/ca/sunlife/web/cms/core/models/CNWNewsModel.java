@@ -101,6 +101,11 @@ public class CNWNewsModel {
 	@Inject
 	@Via("resource")
 	private String ofText;
+	
+	/** Message when no news are there */
+	@Inject
+	@Via("resource")
+	private String noNewsMessage;
 
 	private String locale;
 
@@ -378,6 +383,20 @@ public class CNWNewsModel {
 	 */
 	public void setReleaseMain(ReleaseMain releaseMain) {
 		this.releaseMain = releaseMain;
+	}
+
+	/**
+	 * @return the noNewsMessage
+	 */
+	public String getNoNewsMessage() {
+		return noNewsMessage;
+	}
+
+	/**
+	 * @param noNewsMessage the noNewsMessage to set
+	 */
+	public void setNoNewsMessage(String noNewsMessage) {
+		this.noNewsMessage = noNewsMessage;
 	}
 
 	@PostConstruct
