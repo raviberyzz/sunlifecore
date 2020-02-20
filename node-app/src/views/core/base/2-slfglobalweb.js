@@ -2528,10 +2528,17 @@ $(document).ready(function(){
         html: this.innerHTML
         });
     });
-    $('body').find("i").replaceWith(function() {
-    return $('<em>', {
-        html: this.innerHTML
-        });
+    var iTag=$('body').find("i").filter(function(){return $(this)});
+    iTag.each(function(){
+        if($(this).attr("class")){
+        }
+        else{
+            $(this).replaceWith(function() {
+                return $('<em>', {
+                    html: this.innerHTML
+                    });
+                });
+        }
     });
 });
 /* Tags formatting ends here */
