@@ -330,7 +330,6 @@ ul {
                 line-height:23px ;
                 padding-top:0;
                 margin-top: 0;
-                text-align: left;
             }
         }
     }
@@ -347,9 +346,6 @@ ul {
             }
         }
 
-    }
-    form :first-child{
-        padding: 0 16px;
     }
     .text{
         .cmp-text{
@@ -616,6 +612,9 @@ ul {
             padding-bottom: 16px;
             .icon-parent{
                 display: none;
+            }
+            .icon-texts{
+                text-align: center;
             }
         }
     }
@@ -1076,3 +1075,11 @@ ul {
 
 /*styles for related resource end */
 
+@media (min-width: $desktop-screen-min)
+{
+    .icon-texts {
+        h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+            text-align: left;
+        }
+    }
+}
