@@ -27,9 +27,9 @@ $(document).ready(function () {
         var pageWidth=$(window).width();
         if(pageWidth>=768){
             $('.yellow-background-wrapper').siblings('.layout-container').css('position','absolute');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('width','94%');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('width','95%');
             $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-28px');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-18px');
             $('.yellow-background-wrapper').css('z-index','-1');
             var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
             $('.yellow-background-wrapper').css('padding-top',layoutHeight);
