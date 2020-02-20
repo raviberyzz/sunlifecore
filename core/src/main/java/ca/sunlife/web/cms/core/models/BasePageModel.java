@@ -128,7 +128,7 @@ public class BasePageModel {
 	/** The social media description. */
 	@Inject
 	@Via("resource")
-	private String socialMediaDescription;
+	private String socialMediaDescripton;
 
 	/** The seo page title. */
 	private String seoPageTitle;
@@ -383,69 +383,72 @@ public class BasePageModel {
 	 */
 	@PostConstruct
 	private void init() throws LoginException, RepositoryException {
-		final String pagePath = currentPage.getPath();
-		final String domain = configService.getConfigValues("domain", pagePath);
-		final String locale = configService.getConfigValues("pageLocale", pagePath);
-		final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
-		final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-		final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
-		final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
-		String pageLocaleDefault = currentPage.getLanguage().getLanguage();
-		// SEO title - <title> tag
-		seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
-
-		// SEO description - <meta name="description"> tag
-		seoDescription = description;
-
-		// Social media description
-		socialMediaDescription = null == socialMediaDescription ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescription;
-
-		// Social media image
-		socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
-
-		// SEO canonical URL - <link rel="canonical"> tag
-		seoCanonicalUrl = null == canonicalUrl ? pagePath : canonicalUrl;
-
-		setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
-		setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
-
-		// Fetching social sharing component meta-data
-		customMetadata = new HashMap<>();
-
-		// Configuring custom social sharing - meta-tags
-		customMetadata.put(OG_TITLE, title);
-		customMetadata.put(TWITTER_TITLE, title);
-		customMetadata.put(OG_URL, pagePath);
-		customMetadata.put(TWITTER_URL, pagePath);
-		customMetadata.put(OG_DESCRIPTION, socialMediaDescription);
-		customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescription);
-		customMetadata.put(OG_LOCALE, locale);
-		if (socialMediaImage != null) {
-			customMetadata.put(OG_IMAGE, domain + socialMediaImage);
-			customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
+		try {
+			final String pagePath = currentPage.getPath();
+			final String domain = configService.getConfigValues("domain", pagePath);
+			final String locale = configService.getConfigValues("pageLocale", pagePath);
+			final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
+			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+			final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
+			final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
+			String pageLocaleDefault = currentPage.getLanguage().getLanguage();
+			// SEO title - <title> tag
+			seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
+	
+			// SEO description - <meta name="description"> tag
+			seoDescription = description;
+			// Social media description
+			socialMediaDescripton = null == socialMediaDescripton ? configService.getConfigValues("pageDescription", pagePath) : socialMediaDescripton;
+	
+			// Social media image
+			socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
+	
+			// SEO canonical URL - <link rel="canonical"> tag
+			seoCanonicalUrl = null == canonicalUrl ? pagePath : canonicalUrl;
+	
+			setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
+			setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
+	
+			// Fetching social sharing component meta-data
+			customMetadata = new HashMap<>();
+	
+			// Configuring custom social sharing - meta-tags
+			customMetadata.put(OG_TITLE, title);
+			customMetadata.put(TWITTER_TITLE, title);
+			customMetadata.put(OG_URL, pagePath);
+			customMetadata.put(TWITTER_URL, pagePath);
+			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
+			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
+			customMetadata.put(OG_LOCALE, locale);
+			if (socialMediaImage != null) {
+				customMetadata.put(OG_IMAGE, domain + socialMediaImage);
+				customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
+			}
+			customMetadata.remove("keywords");
+			logger.debug("metadata :: {}", customMetadata);
+			// Sets alternate URLs
+			setAtlLanguages(altLanguages, pageLocale, pagePath);
+			// Sets UDO parameters
+			otherUDOTagsMap = new JsonObject();
+			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
+			final String defaultReportingLanguage = configService.getConfigValues("defaultReportingLanguage", pagePath);
+			if( null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl ) {
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/")); // canonical url - default
+			} else {
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
+			}
+			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
+			setUDOParameters();
+			// Sets UDO other parameters
+			if (null != udoTagsPath && udoTagsPath.length() > 0) {
+				setOtherUDOTags(udoTagsPath);
+			}
+			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+			udoTags = gson.toJson(otherUDOTagsMap);
+			logger.debug("Map Display {}", udoTags);
+		} catch (Exception e) {
+			logger.error("Error :: init method of BasePageModel :: {}", e);
 		}
-		customMetadata.remove("keywords");
-		logger.debug("metadata :: {}", customMetadata);
-		// Sets alternate URLs
-		setAtlLanguages(altLanguages, pageLocale, pagePath);
-		// Sets UDO parameters
-		otherUDOTagsMap = new JsonObject();
-		otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
-		final String defaultReportingLanguage = configService.getConfigValues("defaultReportingLanguage", pagePath);
-		if( null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl ) {
-			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/")); // canonical url - default
-		} else {
-			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
-		}
-		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
-		setUDOParameters();
-		// Sets UDO other parameters
-		if (null != udoTagsPath && udoTagsPath.length() > 0) {
-			setOtherUDOTags(udoTagsPath);
-		}
-		Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-		udoTags = gson.toJson(otherUDOTagsMap);
-		logger.debug("Map Display {}", udoTags);
 	}
 
 	/**
@@ -565,8 +568,9 @@ public class BasePageModel {
 
 	/**
 	 * Sets UDO tags
+	 * @throws Exception 
 	 */
-	public void setOtherUDOTags(String udoTagStart) {
+	public void setOtherUDOTags(String udoTagStart) throws Exception {
 		logger.debug("Entry :: setOtherUDOTags method of :: udoTagStart :: {}", udoTagStart);
 		String tagAbsolutePath = udoTagStart.replace("/content/cq:tags/", "");
 		String tagRootPath = tagAbsolutePath.substring(tagAbsolutePath.indexOf("/"));
@@ -576,27 +580,41 @@ public class BasePageModel {
 				String[] array = tags[i].split(":");
 				if (array[1].startsWith(tagRootPath.replaceFirst("/", ""))) {
 					String path = array[1].replace(tagRootPath.substring(1) + "/", "");
-					String key = path.split("/")[0];
-					String value = path.split("/")[1];
-					if (otherUDOTagsMap.has(key)) {
-						if (otherUDOTagsMap.get(key).isJsonArray()) {
-							JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
-							jsonArray.add(value);
-							otherUDOTagsMap.add(key, jsonArray);
-						} else {
-							String oldValue = otherUDOTagsMap.get(key).getAsString();
-							JsonArray jsonArray = new JsonArray();
-							jsonArray.add(oldValue);
-							jsonArray.add(value);
-							otherUDOTagsMap.add(key, jsonArray);
-						}
-					} else {
-						otherUDOTagsMap.addProperty(key, value);
-					}
+					processUDOPath(path);
 				}
 			}
 		}
 		logger.debug("Exit :: setOtherUDOTags method of :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 
+	public void processUDOPath(String path) throws Exception {
+		logger.debug("Entry :: processUDOPath :: path :: {}", path);
+		try {
+			if( null == path || !path.contains("/")) {
+				logger.debug("No child tag exists for path: {}", path);
+				return;
+			}
+			String key = path.split("/")[0];
+			String value = path.split("/")[1];
+			if (otherUDOTagsMap.has(key)) {
+				if (otherUDOTagsMap.get(key).isJsonArray()) {
+					JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
+					jsonArray.add(value);
+					otherUDOTagsMap.add(key, jsonArray);
+				} else {
+					String oldValue = otherUDOTagsMap.get(key).getAsString();
+					JsonArray jsonArray = new JsonArray();
+					jsonArray.add(oldValue);
+					jsonArray.add(value);
+					otherUDOTagsMap.add(key, jsonArray);
+				}
+			} else {
+				otherUDOTagsMap.addProperty(key, value);
+			}
+		} catch (Exception e) {
+			logger.error("Error :: processUDOPath :: ");
+			throw e;
+		}
+		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
+	}
 }
