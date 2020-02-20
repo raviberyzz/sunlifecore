@@ -10,5 +10,18 @@ $(document).ready(function () {
         function emClassAdd(){
             $("#search-result-filter-toggle").find("button").find("em").attr("class","fa fa-times");
         }
+        // setTimeout(twoDigit,1000);
+        // function twoDigit(){
+        //     var paginationItem=$('#search-result-pagination').children().filter(function(){return $(this).hasClass('pagination-item')});
+        //     paginationItem.each(function(){
+        //         var digit=$(this).children("a").find('.txt').text();
+        //         var digitCheck =digit/10;
+        //         var intDigitCheck=parseInt(digitCheck);
+        //         if(intDigitCheck % 1 == 0){
+        //             $(this).children("a").css({'padding':'5px 6.4px'});
+        //         }
+        //     });
+        // }
     }
+    
 });

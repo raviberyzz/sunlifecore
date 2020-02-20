@@ -185,6 +185,7 @@
                 a{
                     background-color: $medium-yellow-background;
                     border-radius:4px;
+                    z-index:1;
                 }
             }
             li.next{
@@ -489,6 +490,13 @@
     .search-container {
         .pagination{
             width:70%;
+        }
+        .search-results{
+            .pagination.last-page{
+                .link-to-first{
+                    width:auto;
+                }
+            }
         }
     }
 }
