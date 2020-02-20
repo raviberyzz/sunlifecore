@@ -1178,6 +1178,11 @@
                                                 cq:styleId="1577972975300"
                                                 cq:styleLabel="Yellow"
                                                 jcr:primaryType="nt:unstructured"/>
+                                            <item1
+                                                cq:styleClasses="light-orange"
+                                                cq:styleId="1577972975301"
+                                                cq:styleLabel="Orange"
+                                                jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
                                     <item1
