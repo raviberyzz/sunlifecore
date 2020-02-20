@@ -576,27 +576,40 @@ public class BasePageModel {
 				String[] array = tags[i].split(":");
 				if (array[1].startsWith(tagRootPath.replaceFirst("/", ""))) {
 					String path = array[1].replace(tagRootPath.substring(1) + "/", "");
-					String key = path.split("/")[0];
-					String value = path.split("/")[1];
-					if (otherUDOTagsMap.has(key)) {
-						if (otherUDOTagsMap.get(key).isJsonArray()) {
-							JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
-							jsonArray.add(value);
-							otherUDOTagsMap.add(key, jsonArray);
-						} else {
-							String oldValue = otherUDOTagsMap.get(key).getAsString();
-							JsonArray jsonArray = new JsonArray();
-							jsonArray.add(oldValue);
-							jsonArray.add(value);
-							otherUDOTagsMap.add(key, jsonArray);
-						}
-					} else {
-						otherUDOTagsMap.addProperty(key, value);
-					}
+					processUDOPath(path);
 				}
 			}
 		}
 		logger.debug("Exit :: setOtherUDOTags method of :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 
+	public void processUDOPath(String path) {
+		logger.debug("Entry :: processUDOPath :: path :: {}", path);
+		try {
+			if( null == path || !path.contains("/")) {
+				logger.debug("No child tag exists for path: {}", path);
+				return;
+			}
+			String key = path.split("/")[0];
+			String value = path.split("/")[1];
+			if (otherUDOTagsMap.has(key)) {
+				if (otherUDOTagsMap.get(key).isJsonArray()) {
+					JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
+					jsonArray.add(value);
+					otherUDOTagsMap.add(key, jsonArray);
+				} else {
+					String oldValue = otherUDOTagsMap.get(key).getAsString();
+					JsonArray jsonArray = new JsonArray();
+					jsonArray.add(oldValue);
+					jsonArray.add(value);
+					otherUDOTagsMap.add(key, jsonArray);
+				}
+			} else {
+				otherUDOTagsMap.addProperty(key, value);
+			}
+		} catch (Exception e) {
+			logger.error("Error :: processUDOPath :: ");
+		}
+		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
+	}
 }
