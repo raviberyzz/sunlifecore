@@ -30,11 +30,11 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <overview
                                                 jcr:primaryType="nt:unstructured"
-                                                text="Overview"
+                                                text="News Overview Module"
                                                 value="1"/>
                                             <releases
                                                 jcr:primaryType="nt:unstructured"
-                                                text="Releases"
+                                                text="News Listing"
                                                 value="2"/>
                                         </items>
                                         <granite:data
