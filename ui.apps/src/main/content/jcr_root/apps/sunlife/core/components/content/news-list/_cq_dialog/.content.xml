@@ -106,8 +106,8 @@
                                             <noNewsMessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="No News Message"
-                                                fieldLabel="No News Message"
+                                                fieldDescription="Message to be displayed when no news are present"
+                                                fieldLabel="Message to be displayed when no news are present"
                                                 name="./noNewsMessage"/>
                                         </items>
                                         <granite:data
