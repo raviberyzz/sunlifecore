@@ -922,32 +922,31 @@
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
                                     <item0
-										cq:styleGroupLabel="Separator Color"
+										cq:styleGroupLabel="Variations"
 										jcr:primaryType="nt:unstructured">
-										<cq:styles jcr:primaryType="nt:unstructured">
+										<cq:styles jcr:primaryType="nt:unstructured">											
 											<item0
-												cq:styleClasses="grey-horizontal-separator"
-												cq:styleId="1577973868259"
-												cq:styleLabel="Grey"
-												jcr:primaryType="nt:unstructured"/>
-											<item1
 												cq:styleClasses="yellow-horizontal-separator"
 												cq:styleId="1577973901376"
-												cq:styleLabel="Yellow"
+												cq:styleLabel="Yellow - Center"
+												jcr:primaryType="nt:unstructured"/>
+										    <item1
+												cq:styleClasses="yellow-horizontal-separator left-aligned-seperator"
+												cq:styleId="1577973901976"
+												cq:styleLabel="Yellow - Left"
+												jcr:primaryType="nt:unstructured"/>
+											<item2
+												cq:styleClasses="grey-horizontal-separator"
+												cq:styleId="1577973868259"
+												cq:styleLabel="Grey - Center"
+												jcr:primaryType="nt:unstructured"/>
+											<item3
+												cq:styleClasses="grey-horizontal-separator left-aligned-seperator"
+												cq:styleId="1577973868299"
+												cq:styleLabel="Grey - Left"
 												jcr:primaryType="nt:unstructured"/>
 										</cq:styles>
-									</item0>
-									<item1
-										cq:styleGroupLabel="Separator Alignment"
-										jcr:primaryType="nt:unstructured">
-										<cq:styles jcr:primaryType="nt:unstructured">
-											<item0
-												cq:styleClasses="left-aligned-seperator"
-												cq:styleId="1581575000809"
-												cq:styleLabel="Left"
-												jcr:primaryType="nt:unstructured"/>
-										</cq:styles>
-									</item1>
+									</item0>									
 								</cq:styleGroups>                                
                             </policy_separator>
                         </separator>
