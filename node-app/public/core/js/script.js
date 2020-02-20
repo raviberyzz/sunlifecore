@@ -4476,6 +4476,27 @@ $(document).ready(function () {
 	});
 });
 $(document).ready(function () {
+  var popHeight = $(window).height();
+  $(".subscribe-popup-wrapper").height(popHeight);
+  popUpWidth();
+  function popUpWidth() {
+    var popWidth = $(window).width();
+    $(".subscribe-popup-wrapper").width(popWidth);
+  };
+  $(window).resize(function () {
+    popUpWidth();
+  });
+  $(".cmp-form-button").keydown(function (e) {
+    if (e.which == 9) {
+      e.preventDefault();
+      $(".close-popup").focus();
+    }
+  });
+  //   $("#subscribe").modal({show:true});
+
+});
+
+$(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
       });  
@@ -4502,27 +4523,6 @@ $(document).ready(function () {
       $('#userIdDiv').html(updatedString);
     } 
 });     
-$(document).ready(function () {
-  var popHeight = $(window).height();
-  $(".subscribe-popup-wrapper").height(popHeight);
-  popUpWidth();
-  function popUpWidth() {
-    var popWidth = $(window).width();
-    $(".subscribe-popup-wrapper").width(popWidth);
-  };
-  $(window).resize(function () {
-    popUpWidth();
-  });
-  $(".cmp-form-button").keydown(function (e) {
-    if (e.which == 9) {
-      e.preventDefault();
-      $(".close-popup").focus();
-    }
-  });
-  //   $("#subscribe").modal({show:true});
-
-});
-
 
 
 $(document).ready(function () {
@@ -4887,54 +4887,6 @@ $(document).ready(function(){
   }
    /*link farm table code ends here */
 });
-$(document).ready(function () {
-    life_moments_fix();
-    $(window).resize(function () {
-		life_moments_fix();
-    });
-    $('.blue-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
-        var text=$(this).text();
-        var lastWord=text.split(" ").pop();
-        var index=text.indexOf(lastWord);
-        text=text.substr(0,index);
-        $(this).text("");
-        lastWord=lastWord.toUpperCase();
-        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
-        $(this).append(html);
-    });
-    $('.yellow-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
-        var text=$(this).text();
-        var lastWord=text.split(" ").pop();
-        var index=text.indexOf(lastWord);
-        text=text.substr(0,index);
-        $(this).text("");
-        lastWord=lastWord.toLowerCase();
-        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
-        $(this).append(html);
-    });
-    function life_moments_fix(){
-        var pageWidth=$(window).width();
-        if(pageWidth>=768){
-            $('.yellow-background-wrapper').siblings('.layout-container').css('position','absolute');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('width','94%');
-            $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-28px');
-            $('.yellow-background-wrapper').css('z-index','-1');
-            var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
-            $('.yellow-background-wrapper').css('padding-top',layoutHeight);
-            $('.yellow-background-wrapper').css('padding-bottom',"27px");
-        }
-        else{
-            $('.yellow-background-wrapper').siblings('.layout-container').css('position','');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('width','100%');
-			$('.yellow-background-wrapper').siblings('.layout-container').removeClass('horizontal-middle-align');
-            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','0px');
-			$('.yellow-background-wrapper').css('z-index','0');
-            $('.yellow-background-wrapper').css('padding-top','48px');
-            $('.yellow-background-wrapper').css('padding-bottom',"48px");
-        }
-    }
-})
 $(document).ready(function(){
     popUpWidth();
     popUpHeight(); 
@@ -5002,6 +4954,85 @@ $(document).ready(function () {
       location.href = this.href;
   })
 });
+$(document).ready(function () {
+    mobileLogoWidth();
+    function mobileLogoWidth() {  
+    var hamburger=$('.hamburger-menu').width();
+    var signbutton=$('.mobile-sign-in-box').width();     
+    var windowwidth=$(window).width();
+    var logowidth=windowwidth-signbutton-hamburger;
+    $('.slf-header-mobile-logo').width(logowidth);
+    }      
+    $("#hamburgerMenu").click(function () { 
+        $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
+        $('.offcanvas-overlay').addClass('active');
+        $('.container').css({'margin-left':'270px'});
+        $('body').addClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'static'});
+        var windowHeight=$(window).height();
+        $('.hamburger-menu-wrapper').height(windowHeight);
+    });
+    $("#close-hamburger").click(function () {
+        $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
+        $('.offcanvas-overlay').removeClass('active');
+        $('.container').css({'margin-left':'270px'});
+        $('body').removeClass('overflow-hidden');
+        $('.slf-mobile-header-wrapper').css({'position':'fixed'});
+    });
+    $('.first-level-navigation .navigation-menu').children("a").click(function(){
+        if(event.target.parentNode.children[1].className === "third-level-navigation") {
+            sessionStorage.scrollPositionSecond = $(this).parent().closest('div').scrollTop();
+        } else {
+            sessionStorage.scrollPositionFirst = $(this).parent().closest('div').scrollTop();
+        }
+    });
+    $('.second-level-navigation .go-back').click(function(){
+        $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionFirst);
+    });
+    $('.third-level-navigation .go-back').click(function(){
+        $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionSecond);
+    });
+    $('.navigation-menu').children("a").click(function(){
+        $(this).parent().closest('div').scrollTop(0);
+        $(this).siblings("div").addClass('active');         
+        $(this).parent().closest('div').css({'overflow-y':'hidden'});
+    });
+    $('.go-back').click(function(){ 
+        $(this).closest("div").removeClass('active');          
+        $(this).closest('div').parent().closest('div').css({'overflow-y':'auto'});
+    });
+    $('.language-region .second-level-navigation .go-back').click(function(){  
+        $('.language-region .second-level-navigation').removeClass('active');         
+        $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
+        $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
+    });
+    $(window).resize(function() {
+        function mobileLogoWidth() {  
+            var hamburger=$('.hamburger-menu').width();
+            var signbutton=$('.mobile-sign-in-box').width();     
+            var windowwidth=$(window).width();
+            var logowidth=windowwidth-signbutton-hamburger;
+            $('.slf-header-mobile-logo').width(logowidth);
+            }
+        mobileLogoWidth();
+        if ($(window).width() > 1024) {
+            $('.container').css({'margin-left':'0'});
+            $('body').removeClass('overflow-hidden'); 
+        }
+        else if ($(window).width() < 1025) {
+            if ($('.hamburger-menu-wrapper').hasClass('active')){
+                $('.container').css({'margin-left':'270px'});
+                $('body').addClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'static'});
+            }
+            else{
+                $('.container').css({'margin-left':'0'}); 
+                $('body').removeClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({'position':'fixed'}); 
+            } 
+        }
+    });  
+});   
 $(document).ready(function(){
   var menuHeight= $('.slf-header-mega-menu2').height();
   var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
@@ -5058,84 +5089,68 @@ $(document).ready(function(){
  );
 });
 $(document).ready(function () {
-    mobileLogoWidth();
-    function mobileLogoWidth() {  
-    var hamburger=$('.hamburger-menu').width();
-    var signbutton=$('.mobile-sign-in-box').width();     
-    var windowwidth=$(window).width();
-    var logowidth=windowwidth-signbutton-hamburger;
-    $('.slf-header-mobile-logo').width(logowidth);
-    }      
-    $("#hamburgerMenu").click(function () { 
-        $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');             
-        $('.offcanvas-overlay').addClass('active');
-        $('.container-component').css({'margin-left':'270px'});
-        $('body').addClass('overflow-hidden');
-        $('.slf-mobile-header-wrapper').css({'position':'static'});
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
+$(document).ready(function () {
+    life_moments_fix();
+    $(window).resize(function () {
+		life_moments_fix();
     });
-    $("#close-hamburger").click(function () {
-        $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
-        $('.offcanvas-overlay').removeClass('active');
-        $('.container-component').css({'margin-left':'0'});
-        $('body').removeClass('overflow-hidden');
-        $('.slf-mobile-header-wrapper').css({'position':'fixed'});
+    $('.blue-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var lastWord=text.split(" ").pop();
+        var index=text.indexOf(lastWord);
+        text=text.substr(0,index);
+        $(this).text("");
+        lastWord=lastWord.toUpperCase();
+        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
+        $(this).append(html);
     });
-    $('.first-level-navigation .navigation-menu').children("a").click(function(){
-        if(event.target.parentNode.children[1].className === "third-level-navigation") {
-            sessionStorage.scrollPositionSecond = $(this).parent().closest('div').scrollTop();
-        } else {
-            sessionStorage.scrollPositionFirst = $(this).parent().closest('div').scrollTop();
-        }
+    $('.yellow-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
+        var text=$(this).text();
+        var lastWord=text.split(" ").pop();
+        var index=text.indexOf(lastWord);
+        text=text.substr(0,index);
+        $(this).text("");
+        lastWord=lastWord.toLowerCase();
+        var html="<span>"+text+"</span>"+"<br><strong>"+lastWord+"</strong>";
+        $(this).append(html);
     });
-    $('.second-level-navigation .go-back').click(function(){
-        $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionFirst);
-    });
-    $('.third-level-navigation .go-back').click(function(){
-        $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionSecond);
-    });
-    $('.navigation-menu').children("a").click(function(){
-        $(this).parent().closest('div').scrollTop(0);
-        $(this).siblings("div").addClass('active');         
-        $(this).parent().closest('div').css({'overflow-y':'hidden'});
-    });
-    $('.go-back').click(function(){ 
-        $(this).closest("div").removeClass('active');          
-        $(this).closest('div').parent().closest('div').css({'overflow-y':'auto'});
-    });
-    $('.language-region .second-level-navigation .go-back').click(function(){  
-        $('.language-region .second-level-navigation').removeClass('active');         
-        $('.hamburger-menu-wrapper').css({'overflow-y':'auto'});
-        $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
-    });
-    $(window).resize(function() {
-        function mobileLogoWidth() {  
-            var hamburger=$('.hamburger-menu').width();
-            var signbutton=$('.mobile-sign-in-box').width();     
-            var windowwidth=$(window).width();
-            var logowidth=windowwidth-signbutton-hamburger;
-            $('.slf-header-mobile-logo').width(logowidth);
-            }
-        mobileLogoWidth();
-        if ($(window).width() > 1024) {
-            $('.container').css({'margin-left':'0'});
-            $('body').removeClass('overflow-hidden'); 
-        }
-        else if ($(window).width() < 1025) {
-            if ($('.hamburger-menu-wrapper').hasClass('active')){
-                $('.container').css({'margin-left':'270px'});
-                $('body').addClass('overflow-hidden');
-                $('.slf-mobile-header-wrapper').css({'position':'static'});
-            }
-            else{
-                $('.container').css({'margin-left':'0'}); 
-                $('body').removeClass('overflow-hidden');
-                $('.slf-mobile-header-wrapper').css({'position':'fixed'}); 
-            } 
+    function life_moments_fix(){
+        var pageWidth=$(window).width();
+        if(pageWidth>=768){
+            $('.yellow-background-wrapper').siblings('.layout-container').css('position','absolute');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('width','94%');
+            $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-28px');
+            $('.yellow-background-wrapper').css('z-index','-1');
+            var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
+            $('.yellow-background-wrapper').css('padding-top',layoutHeight);
+            $('.yellow-background-wrapper').css('padding-bottom',"27px");
         }
         else{
+            $('.yellow-background-wrapper').siblings('.layout-container').css('position','');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('width','100%');
+			$('.yellow-background-wrapper').siblings('.layout-container').removeClass('horizontal-middle-align');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','0px');
+			$('.yellow-background-wrapper').css('z-index','0');
+            $('.yellow-background-wrapper').css('padding-top','48px');
+            $('.yellow-background-wrapper').css('padding-bottom',"48px");
         }
-    });  
-});   
+    }
+})
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
@@ -5172,21 +5187,6 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
 $(document).ready(function(){
     $('.cmp-navigation__item--level-1 .cmp-navigation__group').css('display','none');
     $('.cmp-navigation__item--level-1').has('ul').children('a').css({'border':'none','font-weight' : 400});
@@ -5210,6 +5210,67 @@ $(document).ready(function(){
 
 
 $(document).ready(function () {
+    $(".desktop-header-wrapper #sun-search").removeClass('in');
+    $(".signIn-button").attr('maxlength', '30');
+    function langTrue(){
+        $('#language-btn').addClass('lang-true');
+    }
+    $('#language-btn-container').click(function () {
+        if ($('#sun-search').hasClass('in')) {
+           searchClose();
+        }
+    });
+    $('#search-btn').click(function () {
+        if ($('#sun-language').hasClass('in')) {
+            $("#language-btn").attr('aria-expanded', 'false');
+            $("#sun-language").removeClass('in');
+            setTimeout(langOff,150);
+        }
+    });
+    function langOff(){
+        $('#language-btn').removeClass('lang-true');
+    }
+    $('#language-btn-container').click(function () {
+        if ($('#language-btn').attr('aria-expanded') == 'true') {
+            $("#language-btn").attr('aria-expanded', 'false');
+            setTimeout(langOff,150);
+        }
+        else {
+            $("#language-btn").attr('aria-expanded', 'true');
+            setTimeout(langTrue,230);
+        }
+    });
+    $('.sunLanguageCrossBtn').click(function () {
+        $("#language-btn").attr('aria-expanded', 'false');
+    });
+      
+    $(document).mouseup(function(e){
+    var searchBar = $("#sun-search");
+    if($('#sun-search').hasClass('in')){
+        if (e.which === 1) {
+            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
+                searchClose();
+                setTimeout(searchClose,500);
+                event.stopImmediatePropagation();
+            }
+        }
+    }
+    });
+    function searchClose(){
+        $("#search-btn").attr('aria-expanded', 'false');
+        $('#sun-search').removeClass('in');
+    }
+    $('.desktop-region-language-menu-wrapper .sunLanguageCrossBtn').click(function(){
+        $('#language-btn').removeClass('lang-true');
+    });
+
+      // open the full header menu on focus for screen readers. 
+      $('.nav-active').on("focus", function(){
+        $('.dropdown').removeClass("open");
+        $(this).parent().addClass("open");
+    })
+});
+$(document).ready(function () {
     if($('.search-container .search-bottom')){
         $('.search-container .search-bottom .close-div').remove();
     }
@@ -5221,8 +5282,329 @@ $(document).ready(function () {
         function emClassAdd(){
             $("#search-result-filter-toggle").find("button").find("em").attr("class","fa fa-times");
         }
+        // setTimeout(twoDigit,1000);
+        // function twoDigit(){
+        //     var paginationItem=$('#search-result-pagination').children().filter(function(){return $(this).hasClass('pagination-item')});
+        //     paginationItem.each(function(){
+        //         var digit=$(this).children("a").find('.txt').text();
+        //         var digitCheck =digit/10;
+        //         var intDigitCheck=parseInt(digitCheck);
+        //         if(intDigitCheck % 1 == 0){
+        //             $(this).children("a").css({'padding':'5px 6.4px'});
+        //         }
+        //     });
+        // }
     }
+    
 });
+// $(function(){
+//     //dynamically injecting script tag
+//     let scriptElem = document.createElement('script');
+//     scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
+//     document.getElementsByTagName('head')[0].appendChild(scriptElem);
+
+
+
+
+
+//     /*Vidyard progress-events.js file
+// Original code: play.vidyard.com/v1/progress-events.js
+// Last custom edit (5/6/17): Implemented new check 
+// if (s[t] != null && typeof s[t].interval != undefined){
+//     s[t].interval = [0, 0], u = !1
+// }
+// */
+// ! function(t) {
+//     function e(t) {
+//         var e, r = null,
+//             n = [];
+//         for (e = 0; e < t.length; ++e) !r || r[1] < t[e][0] ? (r && n.push(r), r = [t[e][0], t[e][1]]) : t[e][1] > r[1] && (r[1] = t[e][1]);
+//         return r && n.push(r), n
+//     }
+
+//     function r(t, r, n) {
+//         function a() {
+//             var e = t.getCurrentChapter();
+//             return s[e] = {
+//                 interval: [0, 0],
+//                 intervals: i.create(),
+//                 thresholds: n.slice()
+//             }, s[e]
+//         }
+
+//         function o(r, n) {
+//             var o, l, c, h = 0,
+//                 p = t.getCurrentChapter();
+//             if ("undefined" == typeof s[p] && a(), !(u || "object" != typeof t.metadata || r <= s[p].interval[1])) {
+//                 if (s[p].interval[1] = r, l = s[p].intervals.insertOne(s[p].interval), o = e(s[p].intervals), o.length + 1 < s[p].intervals.length)
+//                     for (s[p].intervals = i.create(), c = 0; c < o.length; ++c) h += o[c][1] - o[c][0], s[p].intervals.insertOne(o[c]);
+//                 else {
+//                     for (c = 0; c < o.length; ++c) h += o[c][1] - o[c][0];
+//                     s[p].intervals.remove(l)
+//                 }
+//                 return h = "number" == typeof t.metadata.chapters_attributes[p].video_attributes.length_in_milliseconds ? h / t.metadata.chapters_attributes[p].video_attributes.length_in_milliseconds * 1e5 : h / t.metadata.chapters_attributes[p].video_attributes.length_in_seconds * 100, Math.round(h) >= s[p].thresholds[0] ? n({
+//                     player: t,
+//                     chapter: p,
+//                     event: s[p].thresholds.shift()
+//                 }) : void 0
+//             }
+//         }
+//         var s = [],
+//             u = !1,
+//             l = t.getCurrentChapter();
+//         t.on("timeupdate", function(e) {
+//             var n = t.getCurrentChapter();
+//             return l !== n ? void(l = n) : void o(e, r)
+//         }), t.on("beforeSeek", function(e) {
+//             var r = t.getCurrentChapter();
+//             u === !1 && (s[r].interval[1] = e.start), u = !0
+//         }), t.on("play", function(e) {
+//             var r = e,
+//                 n = t.getCurrentChapter();
+//             "undefined" == typeof s[n] && a(), s[n].intervals.insertOne(s[n].interval.slice(0)), s[n].interval[0] = r, s[n].interval[1] = r, u = !1
+//         }), t.on("chapterComplete", function(t) {
+//             if (s[t] != null && typeof s[t].interval != undefined){
+// 	            s[t].interval = [0, 0], u = !1
+// 	        }
+//         })
+//     }
+
+//     function n(e, n) {
+//         function i(t) {
+//             t.sort(function(t, e) {
+//                 return e > t ? -1 : t > e ? 1 : 0
+//             });
+//             for (var e = 0; e < t.length;) t[e] === t[e + 1] ? t.splice(e + 1, 1) : e += 1;
+//             return t
+//         }
+//         var a, o = !0,
+//             n = n || [1, 25, 50, 75, 90];
+//         try {
+//             a = new t.players
+//         } catch (s) {
+//             throw new Error("The Vidyard Player API must be loaded before this script can execute")
+//         }
+//         n = i(n);
+//         for (var u in a) a.hasOwnProperty(u) && u.length > 0 && (r(a[u], e, n), o = !1);
+//         o && console.warn("No Vidyard Players found. (include this script below player embed codes)")
+//     }
+//     var i = function() {
+//         this._compare = function(t, e) {
+//             return t[0] < e[0] ? -1 : t[0] > e[0] ? 1 : t[1] < e[1] ? -1 : t[1] > e[1] ? 1 : 0
+//         }
+//     };
+//     i.create = function() {
+//         return new i
+//     }, i.prototype = new Array, i.prototype.constructor = Array.prototype.constructor, i.prototype.insertOne = function(t) {
+//         var e = this.bsearch(t);
+//         return this.splice(e + 1, 0, t), e + 1
+//     }, i.prototype.remove = function(t) {
+//         return this.splice(t, 1), this
+//     }, i.prototype.bsearch = function(t) {
+//         if (!this.length) return -1;
+//         for (var e, r, n, i = 0, a = this.length; a - i > 1;) {
+//             if (e = Math.floor((i + a) / 2), r = this[e], n = this._compare(t, r), 0 === n) return e;
+//             n > 0 ? i = e : a = e
+//         }
+//         return 0 === i && this._compare(this[0], t) > 0 ? -1 : i
+//     }, window.VidyardProgressEvents = n
+// }(window.Vidyard);
+
+// /*
+// Function to call listeners on window load event
+// */
+// function VideoAnalyticsLoadEvent(func) {
+//     // assign any pre-defined functions on 'window.onload' to a variable
+//     var oldOnLoad = window.onload;
+//     // if there is not any function hooked to it
+//     if (typeof window.onload != 'function') {
+//         if(window.addEventListener){
+// 		    window.addEventListener('load',func,false); //W3C
+// 		}
+// 		else{
+// 		    window.attachEvent('onload',func); //IE
+// 		}
+//     } else { // someone already hooked a function
+//         window.onload = function () {
+//             // call the function hooked already
+//             oldOnLoad();
+//             // call your awesome function
+//             func();
+//         }
+//     }
+// }
+
+// VideoAnalyticsLoadEvent(function(){
+// 	var listeners = [];
+// 	/*Make analytics API calls during defined progress event milestones and resets it after player complete*/
+// 	function resetListeners() {
+// 	  // Reset any previous listeners to empty functions:
+// 	  for (var i = 0; i < listeners.length; i ++) {
+// 	    listeners[i] = function() {};
+// 	  }
+// 	  var index = listeners.length;
+// 	  listeners.push(function (result) {
+// 	    //console.log(`${result.player.metadata.chapters_attributes[result.chapter].video_attributes.name}: ${result.event}%.`);
+//         var chapterName = result.player.metadata.chapters_attributes[result.chapter].video_attributes.name;
+// 		if (result.event != 100) {
+// 			if (typeof utag === "object" && typeof s === "object")  {
+// 				utag.link({
+// 					"dcs_dcsuri":"/vidyard/" + chapterName,
+// 					"wt_ti":"Vidyard/" + chapterName,
+// 					"wt_dl":"5",
+// 					"dcsext_event_title": "chapter play " + result.event + "%",
+// 					"ev_type":"vid",
+// 					"ev_action":"play_" + result.event + "%",
+// 					"ev_title":"vidyard|" + chapterName,
+// 					"ev_data_one":""
+// 			});
+// 			} else{
+// 				dcsMultiTrack('DCS.dcsuri','/vidyard/' + chapterName,'WT.ti','Vidyard/' + chapterName,'WT.dl','5','DCSext.event_title', 'chapter play ' + result.event + '%');
+// 			}
+// 		} else {
+// 			if (typeof utag === "object" && typeof s === "object")  {
+// 				utag.link({
+// 					"dcs_dcsuri":"/vidyard/" + chapterName,
+// 					"wt_ti":"Vidyard/" + chapterName,
+// 					"wt_dl":"5",
+// 					"dcsext_event_title": "chapter complete",
+// 					"ev_type":"vid",
+// 					"ev_action":"play_" + result.event + "%",
+// 					"ev_title":"vidyard|" + chapterName,
+// 					"ev_data_one":""
+// 			});
+// 			} else{
+// 				dcsMultiTrack('DCS.dcsuri','/vidyard/' + chapterName,'WT.ti','Vidyard/' + chapterName,'WT.dl','5','DCSext.event_title', 'chapter complete');
+// 			}
+// 		}
+
+
+// 	  });
+// 	  VidyardProgressEvents(function(result) { 
+// 	  	listeners[index](result); 
+// 	  }, [25,50,75,100]);
+// 	}
+// 	//call to initialize
+// 	resetListeners();
+// 	var vidVidyard;
+//   	try {
+// 		vidVidyard = new Vidyard.players();
+//   	} catch (e) {
+// 		throw new Error("Warning 1: The Vidyard API must be loaded before this script can execute");
+//   	}
+//   	/*Make analytics API calls during video defined events*/
+//   	for (var i in vidVidyard) {
+// 		if (vidVidyard.hasOwnProperty(i)) {
+// 	        var playlistFlag = true;
+// 	        if (typeof utag === "object" && typeof s === "object")  {
+// 				vidVidyard[i].on("play", function(){
+// 					//console.log('play');
+// 					var n = this.getCurrentChapter();
+// 					if (playlistFlag){
+// 					  	utag.link({
+// 							"dcs_dcsuri":"/vidyard/" + this.metadata.name,
+// 							"wt_ti":"Vidyard/" + this.metadata.name,
+// 							"wt_dl":"5",
+// 							"dcsext_event_title": "player play",
+// 							"ev_type":"vid",
+// 							"ev_action":"playlist_play",
+// 							"ev_title":"vidyard|" + this.metadata.name,
+// 							"ev_data_one":""
+// 						});
+// 						playlistFlag = false;
+// 					}
+// 		  			utag.link({
+// 						"dcs_dcsuri":"/vidyard/" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"wt_ti":"Vidyard/" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"wt_dl":"5",
+// 						"dcsext_event_title": "chapter play",
+// 						"ev_type":"vid",
+// 						"ev_action":"play",
+// 						"ev_title":"vidyard|" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"ev_data_one":""
+// 					});
+// 				});
+// 				vidVidyard[i].on("playerComplete", function() {
+// 				  	//console.log("Video completed");
+// 	  				utag.link({
+// 						"dcs_dcsuri":"/vidyard/" + this.metadata.name,
+// 						"wt_ti":"Vidyard/" + this.metadata.name,
+// 						"wt_dl":"5",
+// 						"dcsext_event_title": "player complete",
+// 						"ev_type":"vid",
+// 						"ev_action":"playlist_done",
+// 						"ev_title":"vidyard|" + this.metadata.name,
+// 						"ev_data_one":""
+// 					});
+// 			  		playlistFlag = true;
+// 					resetListeners();
+// 				});
+// 				vidVidyard[i].on("ready", function(){
+// 					//console.log('ready');
+// 		        	utag.link({
+// 					"dcs_dcsuri":"/vidyard/" + this.metadata.name,
+// 					"wt_ti":"Vidyard/" + this.metadata.name,
+// 					"wt_dl":"6",
+// 					"dcsext_event_title": "player ready",
+// 					"ev_type":"vid",
+// 					"ev_action":"playlist_rdy",
+// 					"ev_title":"vidyard|" + this.metadata.name,
+// 					"ev_data_one":""
+// 					});
+// 				});
+// 				vidVidyard[i].on("pause", function(){
+// 					//console.log('pause');
+// 					var n = this.getCurrentChapter();
+// 		        	/*player pause is not part of event framework 2 but is recorded prior to AA launch*/
+// 		  			utag.link({
+// 						"dcs_dcsuri":"/vidyard/" +  this.metadata.name,
+// 						"wt_ti":"Vidyard/" +  this.metadata.name,
+// 						"wt_dl":"5",
+// 						"dcsext_event_title": "player pause",
+// 						});
+// 				  	utag.link({
+// 						"dcs_dcsuri":"/vidyard/" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"wt_ti":"Vidyard/" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"wt_dl":"5",
+// 						"dcsext_event_title": "chapter pause",
+// 						"ev_type":"vid",
+// 						"ev_action":"pause",
+// 						"ev_title":"vidyard|" + this.metadata.chapters_attributes[n].video_attributes.name,
+// 						"ev_data_one":""
+// 						});
+// 				});
+// 			} else {
+// 				vidVidyard[i].on("play", function(){
+// 					//console.log('play');
+// 					var n = this.getCurrentChapter();
+// 					if (playlistFlag){
+// 					  	dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.name,'WT.ti','Vidyard/' + this.metadata.name ,'WT.dl','5','DCSext.event_title','player play');
+// 						playlistFlag = false;
+// 					}
+// 		  			dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.chapters_attributes[n].video_attributes.name,'WT.ti','Vidyard/' + this.metadata.chapters_attributes[n].video_attributes.name,'WT.dl','5','DCSext.event_title','chapter play');
+// 				});
+// 				vidVidyard[i].on("playerComplete", function() {
+// 				  	//console.log("Video completed");
+// 	  				dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.name,'WT.ti','Vidyard/' + this.metadata.name,'WT.dl','5','DCSext.event_title','player complete');
+// 			  		playlistFlag = true;
+// 					resetListeners();
+// 				});
+// 				vidVidyard[i].on("ready", function(){
+// 					//console.log('ready');
+// 		        	dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.name,'WT.ti','Vidyard/' + this.metadata.name ,'WT.dl','6','DCSext.event_title','player ready');
+// 				});
+// 				vidVidyard[i].on("pause", function(){
+// 					//console.log('pause');
+// 					var n = this.getCurrentChapter();
+// 					dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.name,'WT.ti','Vidyard/' + this.metadata.name ,'WT.dl','5','DCSext.event_title','player pause');
+// 		  			dcsMultiTrack('DCS.dcsuri','/vidyard/' + this.metadata.chapters_attributes[n].video_attributes.name,'WT.ti','Vidyard/' + this.metadata.chapters_attributes[n].video_attributes.name,'WT.dl','5','DCSext.event_title','chapter pause');	
+// 				});
+// 			}
+// 		}
+//   	}
+// });
+// })
+
 $(document).ready(function () {
 	//for footer
 	if ($(window).width() < 768) {
@@ -5381,74 +5763,6 @@ $(document).ready(function () {
     }
 
 });
-$(document).ready(function () {
-    $(".desktop-header-wrapper #sun-search").removeClass('in');
-    $(".signIn-button").attr('maxlength', '30');
-    function langTrue(){
-        $('#language-btn').addClass('lang-true');
-    }
-    $('#language-btn-container').click(function () {
-        if ($('#sun-search').hasClass('in')) {
-           searchClose();
-        }
-    });
-    $('#search-btn').click(function () {
-        if ($('#sun-language').hasClass('in')) {
-            $("#language-btn").attr('aria-expanded', 'false');
-            $("#sun-language").removeClass('in');
-            setTimeout(langOff,150);
-        }
-    });
-    function langOff(){
-        $('#language-btn').removeClass('lang-true');
-    }
-    $('#language-btn-container').click(function () {
-        if ($('#language-btn').attr('aria-expanded') == 'true') {
-            $("#language-btn").attr('aria-expanded', 'false');
-            setTimeout(langOff,150);
-        }
-        else {
-            $("#language-btn").attr('aria-expanded', 'true');
-            setTimeout(langTrue,230);
-        }
-    });
-    $('.sunLanguageCrossBtn').click(function () {
-        $("#language-btn").attr('aria-expanded', 'false');
-    });
-      
-    $(document).mouseup(function(e){
-    var searchBar = $("#sun-search");
-    if($('#sun-search').hasClass('in')){
-        if (e.which === 1) {
-            if (!searchBar.is(e.target) && searchBar.has(e.target).length === 0){
-                searchClose();
-                setTimeout(searchClose,500);
-                event.stopImmediatePropagation();
-            }
-        }
-    }
-    });
-    function searchClose(){
-        $("#search-btn").attr('aria-expanded', 'false');
-        $('#sun-search').removeClass('in');
-    }
-    $('.desktop-region-language-menu-wrapper .sunLanguageCrossBtn').click(function(){
-        $('#language-btn').removeClass('lang-true');
-    });
-
-      // open the full header menu on focus for screen readers. 
-      $('.nav-active').on("focus", function(){
-        $('.dropdown').removeClass("open");
-        $(this).parent().addClass("open");
-    })
-});
-
-$(function(){
-    //dynamically injecting script tag
-    let scriptElem = document.createElement('script');
-    scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
-    document.getElementsByTagName('head')[0].appendChild(scriptElem);
-})
 
 
 $(document).ready(function(){
