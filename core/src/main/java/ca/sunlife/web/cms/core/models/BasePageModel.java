@@ -17,6 +17,7 @@ import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -389,7 +390,7 @@ public class BasePageModel {
 		final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
 		final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
 		final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
-
+		String pageLocaleDefault = currentPage.getLanguage().getLanguage();
 		// SEO title - <title> tag
 		seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
 
@@ -430,14 +431,19 @@ public class BasePageModel {
 		// Sets UDO parameters
 		otherUDOTagsMap = new JsonObject();
 		otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
-		otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
-		otherUDOTagsMap.addProperty("page_language", locale); // Page language
+		final String defaultReportingLanguage = configService.getConfigValues("defaultReportingLanguage", pagePath);
+		if( null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl ) {
+			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/")); // canonical url - default
+		} else {
+			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
+		}
+		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
 		setUDOParameters();
 		// Sets UDO other parameters
 		if (null != udoTagsPath && udoTagsPath.length() > 0) {
 			setOtherUDOTags(udoTagsPath);
 		}
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 		udoTags = gson.toJson(otherUDOTagsMap);
 		logger.debug("Map Display {}", udoTags);
 	}
@@ -486,19 +492,34 @@ public class BasePageModel {
 	 */
 	public void setUDOParameters() throws LoginException, RepositoryException {
 		logger.debug("Entry :: setUDOParameters :: ");
+		Page pageResource = null;
 		String pagePath = currentPage.getPath();
 		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
-		logger.debug("setUDOParameters :: siteUrl: {}", siteUrl);
+		final String defaultReportingLanguage = configService.getConfigValues("defaultReportingLanguage", pagePath);
+		logger.debug("setUDOParameters :: siteUrl: {}, defaultReportingLanguage: {}", siteUrl, defaultReportingLanguage);
 		if (null == siteUrl || siteUrl.length() <= 0) {
 			return;
 		}
+		if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0) {
+			String pageLocaleDefault = currentPage.getLanguage().getLanguage();
+			pagePath = pagePath.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/");
+		}
+		
+		logger.debug("pagePath is: {}", pagePath);
+		Resource resource = resolver.getResource(pagePath);    
+        if( null != resource ) {
+        	pageResource = resource.adaptTo(Page.class);
+        } else {
+        	pageResource = currentPage;
+        }
+		
 		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
-		int currentLevel = currentPage.getDepth();
+		int currentLevel = null != pageResource ? pageResource.getDepth() : 0;
 		List<String> navList = new ArrayList<>();
 		while (startLevel < currentLevel) {
-			Page page = currentPage.getAbsoluteParent(startLevel);
+			Page page = null != pageResource ? pageResource.getAbsoluteParent(startLevel) : null;
 			if (page != null) {
-				boolean isActivePage = page.equals(currentPage);
+				boolean isActivePage = page.equals(pageResource);
 				navList.add(getBreadcrumbTitle(page));
 				if (isActivePage)
 					break;
@@ -515,6 +536,7 @@ public class BasePageModel {
 			}
 			breadCrumb = "/" + navList.stream().collect(Collectors.joining("/"));
 		}
+		logger.debug("breadCrumb: {}, pageCategory: {}, pageSubCategory: {}", breadCrumb, pageCategory, pageSubCategory);
 		otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
 		otherUDOTagsMap.addProperty("page_category", pageCategory == null ? "" : pageCategory); // Page category
 		otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page sub category
