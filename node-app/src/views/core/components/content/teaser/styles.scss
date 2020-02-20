@@ -173,6 +173,18 @@
             height: auto;
         }
     }
+    .life-moment-second-level-banner .image-text-wrapper .text-section {
+        padding: 0;
+        margin: 0 !important;
+        position: absolute;
+        background: transparent;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h2, h3, h4, h5, h6 {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+    }
     .white-box {
         .text-section {
             width: 100%;
