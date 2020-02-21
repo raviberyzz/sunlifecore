@@ -861,7 +861,7 @@ ul {
 			}
 		}
     }
-
+    
 		.aem-GridColumn--default--6 {
 			.cmp-container {
                 margin: 24px 24px 24px 0px;
@@ -871,13 +871,13 @@ ul {
 				}
 			}
         }
+        
         .grey-border-box{
-            p{
-                padding-left: 17px;
-            }
             padding: 24px;
             .cmp-text{
+                line-height: 24px;
                 ul {
+                    margin-left:0;
                     li{
                       display:inline-flex;
                     }
@@ -886,6 +886,11 @@ ul {
                        padding: 0 8px 0 0;
                        width:1em;
                     }
+                    p:last-child {
+                        border-top: 2px dotted #d7d7d7;
+                        margin-top: 10px;
+                        padding-top: 10px;
+                    }
                 }
 
             }
@@ -893,6 +898,9 @@ ul {
 }
 //mobile css to overwrite display block css for mobile devices
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
+    .grey-border-box{
+        margin-bottom: 24px;
+    }
     .light-yellow-box-header {
         display: flex !important;
     } 
