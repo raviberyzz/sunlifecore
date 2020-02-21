@@ -1,4 +1,4 @@
-ul.mega-menu2-list > li:nth-child(1){
+ul.mega-menu2-list > li:first-child{
 display: none;
 }
 .slf-header-mega-menu2 {
