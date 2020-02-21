@@ -623,6 +623,7 @@ ul {
         }
         .cta-content-icon-wrapper{
             padding-bottom: 16px;
+            padding-right:0px;
             .icon-parent{
                 display: none;
             }
@@ -1103,3 +1104,98 @@ ul {
         }
     }
 }
+
+
+/* Tool Card Main Wrapper Starts Here*/
+
+.tool-card-main-wrapper{
+    width: calc(100% + 16px) !important;
+    margin-left:-8px;
+    .container-component{
+        background-color: #F4F7F6;
+        margin-bottom:16px;
+    }
+    div[class^="col-"] {
+        padding: 0 8px;
+    }
+    .container-component{
+        text-align: center;
+        .cmp-container{
+            padding: 24px 16px 40px 16px; 
+
+            h2,h3,h4,h5,h6{
+                font-size:18px;
+                font-weight:700;
+            }
+        }
+        .image-text-wrapper .side-image {
+            width: auto;
+            padding: 15px 0;
+            border-radius: 50%;
+        }
+        .left-image-position, .right-image-position{
+            float:none;
+            display: inherit;
+        }
+        .left-image-position{
+            .left-item, .right-item{
+                float:none;
+                display: inherit;
+            }
+        }
+        .text:last-child  .cmp-text p
+        {
+            position:absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            display:block;
+            margin-top:20px;
+        }
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)
+{
+
+.tool-card-main-wrapper{
+    width: 100% !important;
+    margin-left:0;
+    div[class^="col-"] {
+        padding: 0 15px;        
+    }
+    .row > div:nth-child(odd) {
+        padding-right: 0;
+    }
+    .row > div:nth-child(5) {
+        padding: 0 15px;
+    }
+}
+
+}
+
+@media (max-width: 767px) {
+.tool-card-main-wrapper{
+    width: 100% !important;
+    margin-left:0;
+    
+    div[class^="col-"] {
+        padding: 0 15px;
+    }
+
+    .container-component .image-text-wrapper .left-image-position .left-item .side-image{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .container-component .image-text-wrapper .text-section{
+        margin-top:0;
+    }
+
+}
+}
+/* Tool Card Main Wrapper Ends Here*/
+
+
+
