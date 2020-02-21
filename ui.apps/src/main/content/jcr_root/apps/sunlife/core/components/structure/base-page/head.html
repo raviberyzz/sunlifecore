@@ -4,7 +4,7 @@
           data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel">   
     <meta charset="UTF-8">
     <title>${baseModel.seoPageTitle @context = 'html'}</title>
-    <meta data-sly-test.description="${baseModel.seoDescription @context = 'html'}" name="description" content="${description}"/>
+    <meta data-sly-test.description="${baseModel.seoDescription @context = 'html'}" name="description" content="${description @context = 'unsafe'}"/>
     <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <sly data-sly-include="head.socialmedia.html"></sly>
