@@ -15,7 +15,24 @@ $(document).ready(function () {
       });
       }
        $('.fa-info-circle').attr('data-toggle','tooltip');
-       $('.fa-info-circle').attr('data-placement','right');
+	var windowsize = $( window ).width();
+      if(windowsize>767){
+       	$('.fa-info-circle').attr('data-placement','right');
+      } else {
+		$('.fa-info-circle').attr('data-placement','bottom');
+      }
+
+	  var windowsize = $( window ).width();
+      if(windowsize>767){
+		  $('.fa-info-circle').removeAttr('data-placement');
+       	  $('.fa-info-circle').attr('data-placement','right');
+          
+      } else {
+          $('.fa-info-circle').removeAttr('data-placement');
+          $('.fa-info-circle').attr('data-placement','bottom');
+          
+      }
+
        $('.fa-info-circle').attr('data-html','true');
       if($(this).attr('class')==='cmp-text'){
        $(this).find('a').attr('data-original-title',tool_content);
