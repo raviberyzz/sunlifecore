@@ -19,7 +19,7 @@ $(document).ready(function () {
     $("#close-hamburger").click(function () {
         $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
         $('.offcanvas-overlay').removeClass('active');
-        $('.container').css({'margin-left':'270px'});
+        $('.container').css({'margin-left':'0px'});
         $('body').removeClass('overflow-hidden');
         $('.slf-mobile-header-wrapper').css({'position':'fixed'});
     });
