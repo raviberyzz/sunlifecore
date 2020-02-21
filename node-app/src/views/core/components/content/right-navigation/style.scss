@@ -1,14 +1,6 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
-    .yellow-horizontal-separator{
-        .horizontal-middle-align{
-            margin-top: 25px;
-            margin-bottom: 5px;
-        }
-    }
-    .text.col-xs-12.col-md-12.col-sm-12:last-child{  //add padding in last text component
-        padding: 30px 0px;
-    }
+    
     float: left;
     .cmp-container{
     margin: 40px 0;
@@ -19,7 +11,6 @@
         .links{
             width: 100%;
             border: none;
-            padding-bottom: 30px;
             a{
                 font-weight: 700;
             }
@@ -49,7 +40,7 @@
         .button-class{
                 max-width: 100% ;
                 width: 100%;
-                margin: 6px 0 6px 0;
+                margin: 15px 0 15px 0;
             }
             
     input[type=text]{
@@ -81,7 +72,7 @@
         }
     }
     .input-wrapper,.cmp-form-text{
-        margin:6px 0 16px 0;
+        margin:16px 0 16px 0;
     }
     form{
         h2,h3,h4,h5,h6{
@@ -95,10 +86,10 @@
     }
     .light-orange{
         background-color: $light-orange-20;
-        border-top: 24px solid  $white-shade;
-        border-bottom: 24px solid  $white-shade;
+        border-top: 20px solid  $white-shade;
+        border-bottom: 20px solid  $white-shade;
         & > *{
-            padding: 14px 0px 22px;
+            padding: 15px 0;
         }
     }
     .phone-numbers{
@@ -112,13 +103,7 @@
     }
     .right-nav-icon-wrapper
     {
-        ul{
-            li:first-child{
-                a{
-                    margin-top: 7px;
-                }
-            }
-        }
+        
         .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
@@ -127,16 +112,8 @@
         }
         .icon-texts
         {
-            margin-top: 0px;
+            
             padding-bottom: 0;
-        }
-        .icon-lifeinsurance{
-            margin-top: 0px !important;
-        }
-        .icon-style {
-            font-size: 2.25rem;
-            color: #004C6C;
-            margin-top: 30px;
         }
 
     }
@@ -159,21 +136,18 @@
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .right-navigation-wrapper{
-        .text.col-xs-12.col-md-12.col-sm-12:last-child{  //add padding in last text component different for tablet view
-            padding: 14px 0 30px;
-            border-bottom: 40px solid #ffffff;
-        }
+        
         padding: 0;
         .cmp-container{
             padding: 0;
             .light-orange{
-                border-top:12px solid $white-shade;
-                border-bottom: 12px solid $white-shade;
+                border-top:10px solid $white-shade;
+                border-bottom: 10px solid $white-shade;
             }
         }
         .cmp-container>*{
             display: inherit;
-            border: 12px solid $white-shade;
+            border: 10px solid $white-shade;
         }
         .yellow-horizontal-separator{
             display: none;
@@ -184,11 +158,6 @@
 }
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
 {
-    .right-navigation-wrapper{
-        .cmp-container{
-            margin: 40px -10px;
-        }
-    }
     .cmp-container{
         padding: 0;
     }
