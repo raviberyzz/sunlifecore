@@ -2,7 +2,6 @@ package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -16,6 +15,7 @@ import com.day.cq.wcm.api.Page;
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ExperienceFragmentModel {
 	
+		
 	/** The Fragment Path. */
 	@Inject
 	@Via("resource")
@@ -43,13 +43,20 @@ public class ExperienceFragmentModel {
 	}
 
 	@PostConstruct
-	public void init() {	
-		String pageLocale = currentPage.getLanguage().getLanguage();  
-
+	public void init()  {		
+		
+		String pageLocale = currentPage.getLanguage().getLanguage(); 
 		String currentLocale = currentPage.getLanguage().toString(); 
 		
 		if( null == fragmentPath )
+		{
 			return;
+		}
+		else if(currentPage.getPath().contains("/content/experience-fragments")) {
+			modifiedFragmentPath = fragmentPath;
+		}
+		else
+		{
 		String country = currentLocale.split("_")[1];
 		country = StringUtils.lowerCase(country);
 	
@@ -58,6 +65,7 @@ public class ExperienceFragmentModel {
 			modifiedFragmentPath=fragmentPath.replace("/"+localeToBReplaced+"/", "/"+pageLocale+"/");
 		}else {
 			modifiedFragmentPath=fragmentPath;
-		}	
+		}
+		}
 	  }
 	}
