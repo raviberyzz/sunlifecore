@@ -101,6 +101,11 @@ public class CNWNewsModel {
 	@Inject
 	@Via("resource")
 	private String ofText;
+	
+	/** Message when no news are there */
+	@Inject
+	@Via("resource")
+	private String noNewsMessage;
 
 	private String locale;
 
@@ -380,6 +385,20 @@ public class CNWNewsModel {
 		this.releaseMain = releaseMain;
 	}
 
+	/**
+	 * @return the noNewsMessage
+	 */
+	public String getNoNewsMessage() {
+		return noNewsMessage;
+	}
+
+	/**
+	 * @param noNewsMessage the noNewsMessage to set
+	 */
+	public void setNoNewsMessage(String noNewsMessage) {
+		this.noNewsMessage = noNewsMessage;
+	}
+
 	@PostConstruct
 	public void init() throws IOException {
 		logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
@@ -456,6 +475,9 @@ public class CNWNewsModel {
 			logger.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
 			if (null != pageNum) { // Code to remove page number from url
 				requestURL = requestURL.replaceAll("." + pageNum + "$", "");
+			}
+			if (selectors.length == 0) {
+				requestURL = requestURL + "." + activeYear;
 			}
 			logger.debug("requestURL - after clean up: {}", requestURL);
 			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);

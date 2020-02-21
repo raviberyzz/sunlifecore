@@ -57,6 +57,9 @@ color: $medium-blue-color;
     -moz-border-radius: 10px;
     max-width:800px;
     font-size:16px;
+    p:last-child{
+        margin-bottom: 0;
+    }
 }
 .tooltip.right .tooltip-arrow{
     border-right-color: $medium-blue-color;

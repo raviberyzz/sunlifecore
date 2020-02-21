@@ -142,6 +142,10 @@ ul {
     .cmp-text > :last-child{
         margin: 0;
     }
+    .text{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
 .no-padding{
     .yellow-icon-white-background{
@@ -192,7 +196,7 @@ ul {
     }
 }
 .cta-three-column-wrapper{
-    border: 1px solid $grey-search-border-color;
+    border: 1px solid $light-grey-color;
     .cta-content-icon-wrapper{
         .icon-style{
             padding: 15px;
