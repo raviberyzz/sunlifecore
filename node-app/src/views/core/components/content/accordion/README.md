@@ -4,7 +4,7 @@ JSON Format
 ```
 {
     "accordion-data-section":"accordion-data",
-    "wrapper":"expand-collapse",
+    "wrapper":"accordion-container",
     "first-open":"first-open",
     "list":[{   
     "accordion-head" : "Accordions can only expand one item at a time, when the use tries to open another accordion, the existing accordion that is already expanded will close whereas the Expand/collapse module can have multiple items",

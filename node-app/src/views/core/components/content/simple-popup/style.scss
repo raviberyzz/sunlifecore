@@ -7,7 +7,7 @@
     opacity: 1;
     background-color: $background-black-ovrelay-color;
     padding: 0;
-    position: absolute;
+    position: fixed;
     padding-left:0;
     .modal-open {
         overflow: hidden;

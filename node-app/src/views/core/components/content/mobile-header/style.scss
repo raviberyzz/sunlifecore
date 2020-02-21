@@ -7,7 +7,7 @@
 }
 .slf-mobile-header-wrapper{
     position:fixed;
-    z-index: 1;
+    z-index: 2;
     .button-class{
         display:none;
     }
@@ -92,7 +92,6 @@
         position: absolute;
         top: 0;
         width: 270px;
-        height:1000px;
         border-right: 2px solid $medium-yellow-background;
         background-color: $white-shade;
         &.active{

@@ -113,6 +113,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 		logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNews ");
 		int curPage = 1;
 		int prevPage = 0;
+		News newsObj = null;
 		try {
 			StringBuilder importUrl = new StringBuilder();
 			String cnwRequestListURI = this.cnwNewsConfig.getCnwServiceUrl();
@@ -148,19 +149,21 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 			}
 			logger.debug("importUrl: {}", importUrl);
 			ReleaseMain news = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
-			news.getReleases().getRelease().stream().forEach(o -> {
-				try {
-					Date date = this.inputDateFormatter.parse(o.getReleaseDate());
-					o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
-				} catch (ParseException e) {
-					logger.error("Error :: parsing the release date {}", e);
-				}
-			});
+			if( null != news && null != news.getReleases() && null != news.getReleases().getRelease() ) {
+				news.getReleases().getRelease().stream().forEach(o -> {
+					try {
+						Date date = this.inputDateFormatter.parse(o.getReleaseDate());
+						o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
+					} catch (ParseException e) {
+						logger.error("Error :: parsing the release date {}", e);
+					}
+				});
+				newsObj = new News();
+				newsObj.setReleaseMain(news);
+				newsObj.setPagination(setPagination(curPage, prevPage, requestURL, news));
+			}
+			
 			logger.debug("Fetched news :: {}", news);
-
-			News newsObj = new News();
-			newsObj.setReleaseMain(news);
-			newsObj.setPagination(setPagination(curPage, prevPage, requestURL, news));
 			logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNews :: {}", newsObj);
 			return newsObj;
 		} catch (IOException e) {

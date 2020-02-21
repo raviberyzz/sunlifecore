@@ -46,6 +46,9 @@
             line-height: 18px;
             font-weight: 700;
             float: right;
+            p{
+                margin:0;
+            }
         }
         .not-slf-acronym{
             color: $white-shade;
@@ -60,7 +63,7 @@
             line-height: 18px;
             float: left;
             p{
-                margin:0px!important;
+                margin:0;
             }
         }
     }
