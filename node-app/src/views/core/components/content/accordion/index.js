@@ -43,6 +43,5 @@ $(document).ready(function(){
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
 		}
-	});
-    
+    });
 });
