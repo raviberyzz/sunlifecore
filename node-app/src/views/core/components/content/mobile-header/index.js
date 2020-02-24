@@ -64,6 +64,8 @@ $(document).ready(function () {
             $('body').removeClass('overflow-hidden'); 
         }
         else if ($(window).width() < 1025) {
+            var windowHeightResize=$(window).height();
+            $('.hamburger-menu-wrapper').height(windowHeightResize);
             if ($('.hamburger-menu-wrapper').hasClass('active')){
                 $('.container').css({'margin-left':'270px'});
                 $('body').addClass('overflow-hidden');
