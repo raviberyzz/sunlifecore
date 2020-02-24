@@ -150,6 +150,7 @@
               </descriptors>
               <appendAssemblyId>false</appendAssemblyId>
 			  <finalName>${pom.artifactId}-${pom.version}-Sources</finalName>
+              <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
             </configuration>
           </execution>
         </executions>
