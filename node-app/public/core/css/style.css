@@ -5606,7 +5606,7 @@ input[type=text] {
     -webkit-transition: all .25s ease-out;
     -o-transition: all .25s ease-out;
     transition: all .25s ease-out;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 270px;
     border-right: 2px solid #FFCB05;
@@ -5654,7 +5654,8 @@ input[type=text] {
             padding: 2px 0 0 0;
             height: 26px;
             width: 216px;
-            line-height: 26px; }
+            line-height: 26px;
+            outline: none; }
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-list {
       padding-top: 8px;
       z-index: 1050; }
@@ -5736,7 +5737,7 @@ input[type=text] {
     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .tab-content {
       background-color: #ffffff; }
   .slf-mobile-header-wrapper .offcanvas-overlay.active {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 1000px;
     left: 0;
@@ -8135,11 +8136,11 @@ ul {
 
 /* styles for mobile app end  */
 /* styles for product box start */
-.light-yellow-box-header {
+.product-card .light-yellow-box-header {
   background: #FDDBA5;
   color: #424242;
   line-height: 23px;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   padding: 15px;
   height: 56px;
@@ -8158,16 +8159,25 @@ ul {
 
 .product-card .grey-border-box {
   padding: 24px; }
-  .product-card .grey-border-box p {
-    padding-left: 17px; }
-  .product-card .grey-border-box .cmp-text ul li {
-    display: inline-flex; }
-  .product-card .grey-border-box .cmp-text ul li:before {
-    margin: 0;
-    padding: 0 8px 0 0;
-    width: 1em; }
+  .product-card .grey-border-box .cmp-text {
+    line-height: 24px; }
+    .product-card .grey-border-box .cmp-text p:nth-child(3) {
+      border-top: 2px dotted #d7d7d7;
+      margin-top: 10px;
+      padding-top: 10px; }
+    .product-card .grey-border-box .cmp-text ul {
+      margin-bottom: 10px;
+      margin-left: 0; }
+      .product-card .grey-border-box .cmp-text ul li {
+        display: inline-flex; }
+      .product-card .grey-border-box .cmp-text ul li:before {
+        margin: 0;
+        padding: 0 8px 0 0;
+        width: 1em; }
 
 @media (max-width: 767px) and (min-width: 320px) {
+  .grey-border-box {
+    margin-bottom: 24px; }
   .light-yellow-box-header {
     display: flex !important; }
   .content-highlight .teaser .image-text-wrapper .right-item {
@@ -8546,6 +8556,32 @@ ul {
   .breadcrumb-author {
     display: block; } }
 
+.article-wrapper {
+  width: 75%; }
+  .article-wrapper .article-intro .article-date {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    text-transform: uppercase; }
+  .article-wrapper .article-intro .article-title {
+    margin-bottom: 10px; }
+  .article-wrapper .article-intro .article-author-name {
+    font-size: 1rem;
+    line-height: 24px; }
+  .article-wrapper .article-teaser {
+    margin-bottom: 10px; }
+  .article-wrapper .article-image {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0; }
+    .article-wrapper .article-image img {
+      width: 100%;
+      margin: 12px 0 30px 0; }
+  .article-wrapper .article-body {
+    margin-bottom: 30px; }
+  .article-wrapper .article-rating {
+    margin-bottom: 30px; }
+
 .accordion-container .cmp-accordion__item, .expand-collapse .cmp-accordion__item {
   margin-bottom: 5px;
   background-color: #F4F7F6;
@@ -8611,32 +8647,6 @@ ul {
     padding-top: 5px; }
   .expand-collapse .cmp-accordion__header .cmp-accordion__button {
     transform: translateY(0%); } }
-
-.article-wrapper {
-  width: 75%; }
-  .article-wrapper .article-intro .article-date {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 18px;
-    text-transform: uppercase; }
-  .article-wrapper .article-intro .article-title {
-    margin-bottom: 10px; }
-  .article-wrapper .article-intro .article-author-name {
-    font-size: 1rem;
-    line-height: 24px; }
-  .article-wrapper .article-teaser {
-    margin-bottom: 10px; }
-  .article-wrapper .article-image {
-    font-size: 1.125rem;
-    line-height: 140%;
-    margin: 0; }
-    .article-wrapper .article-image img {
-      width: 100%;
-      margin: 12px 0 30px 0; }
-  .article-wrapper .article-body {
-    margin-bottom: 30px; }
-  .article-wrapper .article-rating {
-    margin-bottom: 30px; }
 
 .show-only-in-editorial {
   display: none !important; }
