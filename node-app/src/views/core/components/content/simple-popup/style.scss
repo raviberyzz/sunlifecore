@@ -58,6 +58,11 @@
         .cta-content-icon-wrapper{
             padding:0px;
             margin-top: -18px;
+            h1,h2,h3,h4,h5,h6,.heading-1,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+                font-size:24px;
+                line-height:30px;
+                margin-bottom: 16px;
+            }
             .icon-style{
 
                 bottom: 0;
@@ -80,12 +85,25 @@
 {
     .subscribe-popup-wrapper{
         .modal-content{
+            width:624px;
             padding:40px 16px;
         }
         .cmp-text{
             padding: 0;
             text-align: left;
         }
+        .blue-icon-yellow-background {
+            .cmp-container > :not(:last-child)
+            {
+                padding-bottom:0px ;
+            }
+            .cta-content-icon-wrapper .icon-texts {
+                padding-bottom:16px;
+            }
+            .subscribe-popup-form-wrapper{
+                padding-bottom:16px !important;
+            }
+        } 
     }
 }
 @media (max-width: $mobile-screen-max){
