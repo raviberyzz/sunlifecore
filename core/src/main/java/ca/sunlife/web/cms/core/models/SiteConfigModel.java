@@ -65,5 +65,29 @@ public interface SiteConfigModel {
 	 */
 	@Inject
 	String getPageLocale();
+	
+	/**
+	 * Gets the social media image path.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getSocialMediaImage();
+	
+	/**
+	 * Gets the default reporting language.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getDefaultReportingLanguage();
+	
+	/**
+	 * Gets the UDO tag path.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getUdoTagsPath();
 
 }

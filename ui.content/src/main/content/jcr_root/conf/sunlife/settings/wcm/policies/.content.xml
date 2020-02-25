@@ -833,6 +833,11 @@
                                             cq:styleClasses="content-block-icon"
                                             cq:styleId="1566032987442"
                                             cq:styleLabel="Grey Content Block Icon"
+                                            jcr:primaryType="nt:unstructured"/>
+                                          <item7
+                                            cq:styleClasses="tool-card-main-wrapper"
+                                            cq:styleId="1566032987445"
+                                            cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>

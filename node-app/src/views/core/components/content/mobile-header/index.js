@@ -19,7 +19,7 @@ $(document).ready(function () {
     $("#close-hamburger").click(function () {
         $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');      
         $('.offcanvas-overlay').removeClass('active');
-        $('.container').css({'margin-left':'270px'});
+        $('.container').css({'margin-left':'0px'});
         $('body').removeClass('overflow-hidden');
         $('.slf-mobile-header-wrapper').css({'position':'fixed'});
     });
@@ -64,6 +64,8 @@ $(document).ready(function () {
             $('body').removeClass('overflow-hidden'); 
         }
         else if ($(window).width() < 1025) {
+            var windowHeightResize=$(window).height();
+            $('.hamburger-menu-wrapper').height(windowHeightResize);
             if ($('.hamburger-menu-wrapper').hasClass('active')){
                 $('.container').css({'margin-left':'270px'});
                 $('body').addClass('overflow-hidden');
