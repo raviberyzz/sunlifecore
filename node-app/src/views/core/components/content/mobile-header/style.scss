@@ -89,7 +89,7 @@
         -webkit-transition: all .25s ease-out;
         -o-transition: all .25s ease-out;
         transition: all .25s ease-out;
-        position: absolute;
+        position: fixed;
         top: 0;
         width: 270px;
         border-right: 2px solid $medium-yellow-background;
@@ -140,6 +140,7 @@
                         height:26px;
                         width:216px;
                         line-height:26px;
+                        outline:none;
                     }
                 }
             }
@@ -269,7 +270,7 @@
         /* Mobile Region and Language Bar End Here */
     }
     .offcanvas-overlay.active{
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 1000px;
         left: 0;
