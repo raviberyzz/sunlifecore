@@ -98,7 +98,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 
 		String response = this.restService.callGetWebService(importUrl.toString());
 		if( null != response && response.length() > 0 )
-			releaseMain = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
+			releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
 		logger.debug("locale: {}, {}", locale, releaseMain);
 		if( null != releaseMain && null != releaseMain.getReleases() && null != releaseMain.getReleases().getRelease() ) {
 		releaseMain.getReleases().getRelease().stream().forEach(o -> {
