@@ -14,8 +14,7 @@ $(document).ready(function(){
     $(window).scroll(function(event) {
         highlighted();     
       });
-      setTimeout(highlighted,800);
-      
+      setTimeout(highlighted,800);     
 });
 (function($) {  
     $.fn.visible = function(partial) {     
