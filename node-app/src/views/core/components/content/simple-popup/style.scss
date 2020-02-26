@@ -111,5 +111,24 @@
         .modal-content{
             width:90%;
         }
+        .blue-icon-yellow-background{
+            .cta-content-icon-wrapper{
+                h1,h2,h3,h4,h5,h6,.heading-1,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+                    font-size:24px;
+                    line-height:30px;
+                   &:last-child{
+                       margin-bottom: 24px;
+                   }
+                }
+                .icon-parent{
+                    display :none;
+                }
+                .icon-texts{
+                    padding-top:0px;
+                    padding-bottom: 32px;
+                }
+            }
+           
+        }
     }
 }
