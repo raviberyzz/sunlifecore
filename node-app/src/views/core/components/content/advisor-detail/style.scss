@@ -1,0 +1,87 @@
+@import '../../../base/core';
+
+.row-advisor.p-std-advisor{
+    .row-advisor-0{
+        h1{
+        font-family: 'sunlife-sans';
+        font-size: 16px !important;
+        line-height: 120%;
+        text-transform: none;
+        }
+    }
+    .row-advisor-1{
+        .col-sm-6.col-advisor-grid-block{
+            padding-top: 30px;
+        }
+    }
+    .row-advisor-details{
+        .content-label{    
+            margin: 0 10px 10px
+            }
+        .row-advisor-email {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .col-advisor-grid-block{    
+            .row{
+                margin: 0 -15px 0;      
+            }
+        }
+    }
+    .fa-facebook:before{
+        content: "\f08c";
+        font-family: FontAwesome;
+        font-weight: normal;
+    }
+    .fa-linkedin:before {
+        content: "\f082";
+        font-family: FontAwesome;
+        font-weight: normal;
+    }
+     .row-advisor-socials{
+        li {
+            a {
+                font-size: 2.5em;
+                color: #003946;
+            }
+            a:hover:before{
+                color: #eaab00;
+            }
+        }
+    }
+}
+
+@media (max-width:$mobile-screen-max) and (min-width: $mobile-screen-min){
+    .row-advisor.p-std-advisor{
+        text-align: center;
+        p{
+            margin-bottom: 10px;
+        }
+        .row-advisor-0{
+            h1{
+            text-align: left;
+            }
+        }
+        .row-advisor-1{
+            text-align: center;
+        }
+        
+    }
+}
+
+@media (max-width:$tab-screen-min) and (min-width: $tab-screen-min){
+    .row-advisor.p-std-advisor{
+        .row-advisor-0{
+            text-align: left;
+        }
+        .row-advisor-1{
+            text-align: center;
+            .col-sm-6.col-advisor-grid-block{
+                text-align: left;
+            }
+        }
+        
+        
+    }
+}
