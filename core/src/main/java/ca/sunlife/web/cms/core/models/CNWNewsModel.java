@@ -400,7 +400,7 @@ public class CNWNewsModel {
 	}
 
 	@PostConstruct
-	public void init() throws IOException {
+	public void init() {
 		logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
 
 		locale = currentPage.getLanguage().getLanguage();
@@ -408,11 +408,14 @@ public class CNWNewsModel {
 
 		if( null == newsType )
 			return;
-		
-		if (newsType.equals("1")) {
-			processOverviewData();
-		} else {
-			processReleasesData();
+		try {
+			if (newsType.equals("1")) {
+				processOverviewData();
+			} else {
+				processReleasesData();
+			}
+		} catch (IOException e) {
+			logger.error("Error :: CNWNewsModel :: init :: error trace: {}", e);
 		}
 	}
 
