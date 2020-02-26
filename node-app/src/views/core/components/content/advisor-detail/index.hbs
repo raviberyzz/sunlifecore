@@ -1,0 +1,115 @@
+<div class="row row-advisor p-std-advisor pad-bottom-30">
+	{{#if agent}}
+	<div class="col-xs-12 col-sm-3 text-top row-advisor-pic">
+		<p><img alt="" src={{advisor-pic-src}}></p>
+	</div>
+	<div class="col-xs-12 col-sm-9 row-advisor-details row-advisor-0">
+		<h1 class="content-label">{{advisor-group}}</h1>
+		<!-- Advisor Description - Tablet and Desktop -->
+		<div class="row">
+			<div class="col-md-12 hidden-xs row-advisor-desc-sm">
+				<p class="row-advisor-desc-bio">{{{advisor-description}}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3"><strong>Address:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{address}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3"><strong>Languages:</strong></div>
+			<div class="col-xs-12 col-sm-9"> {{language}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3"><strong>Phone:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{phone}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3"><strong>Email:</strong></div>
+			<div class="col-xs-12 col-sm-5 row-advisor-email"><a href="mailto:'{{email}}'" {{email}}">{{email}}</a>
+			</div>
+		</div>
+		<!-- Advisor Description - Mobile -->
+		<div class="col-xs-12 visible-xs row-advisor-desc-xs">
+			<p class="row-advisor-desc-bio">
+			<span class="row-advisor-desc-bio-full">{{advisor-description}}
+			</span><a href="#" data-toggle="row-advisor-desc-bio-full" class="row-advisor-desc-bio-toggle"></a></p>
+		</div>
+	</div>
+{{/if}}
+
+{{#if corp}}
+	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 row-advisor-details row-advisor-1">
+		<h4 class="content-label">{{advisor-group}}</h4>
+		<!-- Advisor Description - Mobile -->
+
+		<div class="col-xs-12 visible-xs row-advisor-desc-xs">
+			<p class="row-advisor-desc-bio">
+			<span class="row-advisor-desc-bio-full">{{advisor-description}}
+			</span><a href="#" data-toggle="row-advisor-desc-bio-full" class="row-advisor-desc-bio-toggle"></a></p>
+		</div>
+		<!-- Advisor Description - Tablet and Desktop -->
+
+		<div class="row">
+			<div class="col-md-12 hidden-xs row-advisor-desc-sm">
+				<p class="row-advisor-desc-bio">{{{advisor-description}}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2"><strong>Address:</strong></div>
+			<div class="col-xs-12 col-sm-10">{{address}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2"><strong>Phone:</strong></div>
+			<div class="col-xs-12 col-sm-10">{{phone}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2"><strong>Email:</strong></div>
+			<div class="col-xs-12 col-sm-10 row-advisor-email"><a href="mailto:'{{email}}'" {{email}}">{{email}}</a>
+			</div>
+		</div>
+		{{#each CorpTeamMembers}}
+		<div class="col-sm-6 col-advisor-grid-block">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 text-top row-advisor-pic">
+					<p><img src={{PhotoUrl}}></p>
+				</div>
+				<div class="col-xs-12 col-sm-7 row-advisor-grid-block row-advisor-details">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>{{FormattedName}}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6"><strong>Languages:</strong></div>
+						<div class="col-xs-12 col-sm-6"> {{Languages}}</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6"><strong>Phone:</strong></div>
+						<div class="col-xs-12 col-sm-6">{{ContactInfo.Phone}}</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6"><strong>Email:</strong></div>
+						<div class="col-xs-12 col-sm-6 row-advisor-email"><a href="mailto:'{{ContactInfo.Email}}'"
+								{{ContactInfo.Email}}>{{ContactInfo.Email}}</a></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12"><a href="{{ContactInfo.Url}}">Visit my web page</a></div>
+					</div>
+					<div class="row mar-top-20">
+						<div class="col-xs-12 col-sm-12">
+							<ul class="row-advisor-socials list-inline">
+								{{#each SocialMediaLinks}}
+								<li><a class="{{LinkClass}}" target="_blank" href="{{LinkUrl}}"><span
+											class="sr-only">{{LinkText}}</span></a></li>
+								{{/each}}
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+{{/if}}
+</div>
