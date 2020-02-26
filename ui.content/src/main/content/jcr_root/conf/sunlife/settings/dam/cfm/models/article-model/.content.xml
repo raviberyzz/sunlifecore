@@ -19,7 +19,7 @@
             <cq:dialog
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
-                <content
+                <content                    
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
@@ -47,12 +47,12 @@
                         </articlePublishedDate>
                         <articleHeadline
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Article Headline"
-                            default-mime-type="text/html"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldDescription="Please provide the Article Headline"
-                            listOrder="2"
-                            metaType="text-multi"
+                            fieldLabel="Article Headline"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
                             name="articleHeadline"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
@@ -71,12 +71,12 @@
                             valueType="string"/>
                         <articleMiniDescription
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Article Mini Description"
-                            default-mime-type="text/html"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldDescription="Please provide the Article Mini Description"
-                            listOrder="2"
-                            metaType="text-multi"
+                            fieldLabel="Article Mini Description"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
                             name="articleMiniDescription"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
