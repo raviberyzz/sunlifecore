@@ -409,7 +409,7 @@ public class BasePageModel {
 			logger.debug("isCNWNewsDetailPage: {}", isCNWNewsDetailPage);
 			if( null != isCNWNewsDetailPage && "true".equals(isCNWNewsDetailPage) ) {
 				logger.debug("Inside isCNWNewsDetailPage block");
-				processDataForCNWNews();
+				processDataForCNWNews(pageLocale);
 			}
 			//Condition for CNW News details page ends
 			
@@ -638,14 +638,14 @@ public class BasePageModel {
 		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 	
-	public void processDataForCNWNews() {
+	public void processDataForCNWNews(String pageLocale) {
 		logger.debug("Entry :: processDataForCNWNews :: ");
 		String releaseId = null;
 		try {
 			if( request.getRequestPathInfo().getSelectors().length > 0 ) {
 				releaseId = request.getRequestPathInfo().getSelectors()[0];
 				logger.debug("Selector fetched :: releaseId :: {}", releaseId);
-				NewsDetails newsDetails = cnwNewsService.getCNWNewsDetails(releaseId, currentPage.getLanguage().getLanguage());
+				NewsDetails newsDetails = cnwNewsService.getCNWNewsDetails(releaseId, pageLocale.split("_")[0]);
 				title =  newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
