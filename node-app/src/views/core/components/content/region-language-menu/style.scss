@@ -319,12 +319,17 @@
                 font-size: 18px;
                 line-height: 23px;
                 background-color: $light-cool-blue-color;
-                padding: 15px 30px;
+                padding: 15px 24px;
                 margin: -1px;
                 border: 1px solid $light-grey-color;
+                h4{
+                    font-size: 1rem;
+                    line-height: 26px;
+                    font-weight: 700;
+                }
               }
               .content-region{
-                  padding:24px;
+                  padding: 24px 14px;
                   display: flex;
                   .slf-region-column{
                           padding-right:24px;
