@@ -67,6 +67,11 @@
     border-right: 5px solid transparent;
 }
 
+.parsley-error {
+    background-color: $medium-red-10!important;
+    border: 1px solid $medium-red-color !important;
+}
+
 .editorial-nav-mobile-wrapper{
     width: 100%;
     background-color: $medium-yellow-background;
