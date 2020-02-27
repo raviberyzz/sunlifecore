@@ -62,6 +62,13 @@ ul {
     background-color: $medium-blue-color;
     color: $white-shade;
     text-align: center;
+    a {
+        color: $white-shade;
+        text-decoration: none;
+    }
+    .fa{
+        color: $white-shade;
+    }
 }
 .yellow-icon-grey-background > * {
     background-color: $light-cool-blue-color;
