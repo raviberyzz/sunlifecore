@@ -72,6 +72,7 @@
                         &::before {
                             content: "\f055";
                             color:$medium-yellow-background;
+                            padding-right:3px;
                         }
                     }
                     &[aria-expanded="true"] {
