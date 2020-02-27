@@ -201,9 +201,10 @@ ul {
         .icon-style{
             padding: 15px;
         }
-    }
-    .button-class{
-        margin-top: 14px;
+        .button-class{
+            margin-top: 14px;
+            padding: 6px 16px;
+        }
     }
 }
 .cross-cta-wrapper {
@@ -228,6 +229,9 @@ ul {
             }
             padding-bottom: 0;
             display: table;
+            .button-class{
+                padding: 6px 16px;
+            }
         }
     }
 }
@@ -1127,7 +1131,7 @@ ul {
     width: calc(100% + 16px) !important;
     margin-left:-8px;
     .container-component{
-        background-color: #F4F7F6;
+        background-color: $light-cool-blue-color;
         margin-bottom:16px;
     }
     div[class^="col-"] {
@@ -1171,7 +1175,7 @@ ul {
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px)
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max)
 {
 
 .tool-card-main-wrapper{
@@ -1190,7 +1194,7 @@ ul {
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: $mobile-screen-max) {
 .tool-card-main-wrapper{
     width: 100% !important;
     margin-left:0;
