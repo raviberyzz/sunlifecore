@@ -4523,33 +4523,6 @@ input[type=text] {
   .site-level-notification .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
     display: none; } }
 
-.grey-horizontal-separator .horizontal-middle-align {
-  border-bottom: 2px solid #9a9a9a;
-  margin-top: 40px;
-  margin-bottom: 40px; }
-
-.yellow-horizontal-separator .horizontal-middle-align {
-  border-bottom: 2px solid #FFCB05;
-  margin-top: 40px;
-  margin-bottom: 40px; }
-
-.vertical-separator {
-  height: 75%;
-  border-right: 2px solid #F7F7F7;
-  width: 1px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
-  .vertical-separator hr {
-    display: none; }
-
-.left-aligned-seperator .horizontal-middle-align {
-  left: 0;
-  transform: none; }
-
-.full-width-seperator .horizontal-middle-align {
-  width: 80%; }
-
 .abc {
   font-size: 48px;
   line-height: 100px; }
@@ -4637,16 +4610,18 @@ input[type=text] {
     padding-top: 0px;
     padding-bottom: 32px; } }
 
+.panel-group {
+  display: none; }
+
 .sign-in-modal-wrapper {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0;
-  position: absolute;
-  padding-left: 0;
-  height: 1000px; }
+  position: fixed;
+  padding-left: 0; }
   .sign-in-modal-wrapper .sign-in-modaldialog {
     position: relative;
-    top: 15%; }
+    margin-top: 30px; }
   .sign-in-modal-wrapper .modal-main {
     background: #FFCB05;
     padding: 24px 24px 40px 24px;
@@ -4829,6 +4804,33 @@ input[type=text] {
 @media (min-width: 768px) {
   .sign-in-modal-wrapper .download-app {
     display: none; } }
+
+.grey-horizontal-separator .horizontal-middle-align {
+  border-bottom: 2px solid #9a9a9a;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.yellow-horizontal-separator .horizontal-middle-align {
+  border-bottom: 2px solid #FFCB05;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.vertical-separator {
+  height: 75%;
+  border-right: 2px solid #F7F7F7;
+  width: 1px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+  .vertical-separator hr {
+    display: none; }
+
+.left-aligned-seperator .horizontal-middle-align {
+  left: 0;
+  transform: none; }
+
+.full-width-seperator .horizontal-middle-align {
+  width: 80%; }
 
 .search-bar-wrapper {
   background: #FFCB05;
