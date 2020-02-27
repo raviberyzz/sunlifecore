@@ -1,14 +1,16 @@
 @import '../../../base/core';
+.panel-group{
+    display: none;
+}
 .sign-in-modal-wrapper {
     opacity: 1;
     background-color: $background-black-ovrelay-color;
     padding: 0;
-    position: absolute;
+    position: fixed;
     padding-left:0;
-    height:1000px;
     .sign-in-modaldialog{
         position:relative;
-        top:15%;
+        margin-top: 30px;
     }
     .modal-main {
         background: $medium-yellow-background;
