@@ -860,6 +860,11 @@
                                             cq:styleId="1566032987445"
                                             cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>	
+                                          <item8
+                                            cq:styleClasses="product-card"
+                                            cq:styleId="1582902650532"
+                                            cq:styleLabel="Product box"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1
