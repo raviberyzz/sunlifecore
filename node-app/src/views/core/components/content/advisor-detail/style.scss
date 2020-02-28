@@ -56,14 +56,17 @@
             line-height: 140%;
         }
     }
-    
+    .row-advisor-contact-social
+        {
+            text-align: end;
+        }
     .row-advisor-disclaimer {
         font-size: 0.75em;
         line-height: 1.5em;
         padding-bottom: 30px;
     }
     .row-advisor-0{
-        padding-bottom: 30px;
+        padding: 0 0 10px;
         h1{
         font-family: 'sunlife-sans';
         font-size: 16px !important;
@@ -73,7 +76,7 @@
     }
     .row-advisor-1{
         padding-bottom: 30px;
-        .col-sm-6.col-advisor-grid-block{
+        .col-sm-6.advisor-grid-block{
             padding-top: 30px;
         }
         h4{
@@ -128,6 +131,19 @@
 
 @media (max-width:$mobile-screen-max) and (min-width: $mobile-screen-min){
     .row-advisor.p-std-advisor{
+        .row-advisor-0{
+            .row-advisor-email {
+                padding-bottom: 20px;
+            }
+        }
+        
+        .row-advisor-contact-social {
+            padding-top: 20px;
+            text-align: center;
+        }
+        .row-advisor-desc-xs {
+            margin-top: 20px;
+        }
         text-align: center;
         p{
             margin-bottom: 10px;
@@ -141,10 +157,20 @@
             text-align: center;
         }
     }
+    .row-advisor-desc-xs.col-xs-12 {
+        padding: 0 5px;
+    }
 }
 
 @media (max-width:$tab-screen-min) and (min-width: $tab-screen-min){
     .row-advisor.p-std-advisor{
+        .row-advisor-disclaimer {
+            text-align: center;
+        }
+        .row-advisor-contact-social
+        {
+            text-align: center;
+        }
         .row-advisor-0{
             text-align: left;
         }
