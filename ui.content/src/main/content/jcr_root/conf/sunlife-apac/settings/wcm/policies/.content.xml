@@ -10,7 +10,7 @@
 	                        jcr:primaryType="nt:unstructured"
 	                        jcr:title="Sunlife HK Home"
 	                        sling:resourceType="wcm/core/components/policy/policy"
-	                        components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/form/button,/apps/sunlife/apac/hk/components/form/container,/apps/sunlife/apac/hk/components/form/dropdown,/apps/sunlife/apac/hk/components/form/hidden,/apps/sunlife/apac/hk/components/form/options,/apps/sunlife/apac/hk/components/form/text,/apps/sunlife/apac/hk/components/content/icon-text,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/layout-container,/apps/sunlife/apac/hk/components/content/left-navigation,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/life-moments,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/teaser,/apps/sunlife/apac/hk/components/content/text]">
+	                        components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/form/button,/apps/sunlife/apac/hk/components/form/container,/apps/sunlife/apac/hk/components/form/dropdown,/apps/sunlife/apac/hk/components/form/hidden,/apps/sunlife/apac/hk/components/form/options,/apps/sunlife/apac/hk/components/form/text,/apps/sunlife/apac/hk/components/content/icon-text,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/layout-container,/apps/sunlife/apac/hk/components/content/left-navigation,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/life-moments,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/teaser,/apps/sunlife/apac/hk/components/content/text,,/apps/sunlife/apac/hk/components/content/carousel]">
 	                        <jcr:content jcr:primaryType="nt:unstructured"/>
                     	</policy_sunlife_hk_home>
                     	<policy_sunlife_hk_content
@@ -26,7 +26,7 @@
 	                        jcr:primaryType="nt:unstructured"
 	                        jcr:title="Sunlife ID Home"
 	                        sling:resourceType="wcm/core/components/policy/policy"
-	                        components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/form/button,/apps/sunlife/apac/id/components/form/container,/apps/sunlife/apac/id/components/form/dropdown,/apps/sunlife/apac/id/components/form/hidden,/apps/sunlife/apac/id/components/form/options,/apps/sunlife/apac/id/components/form/text,/apps/sunlife/apac/id/components/content/icon-text,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/layout-container,/apps/sunlife/apac/id/components/content/left-navigation,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/life-moments,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/teaser,/apps/sunlife/apac/id/components/content/text]">
+	                        components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/form/button,/apps/sunlife/apac/id/components/form/container,/apps/sunlife/apac/id/components/form/dropdown,/apps/sunlife/apac/id/components/form/hidden,/apps/sunlife/apac/id/components/form/options,/apps/sunlife/apac/id/components/form/text,/apps/sunlife/apac/id/components/content/icon-text,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/layout-container,/apps/sunlife/apac/id/components/content/left-navigation,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/life-moments,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/teaser,/apps/sunlife/apac/id/components/content/text,/apps/sunlife/apac/id/components/content/carousel]">
 	                        <jcr:content jcr:primaryType="nt:unstructured"/>
                     	</policy_sunlife_id_home>
 						<policy_sunlife_id_content
@@ -1003,7 +1003,16 @@
                                     </item1>
                                 </cq:styleGroups>
                             </policy_iconText>
-                        </icon-text>                        
+                        </icon-text> 
+                        <carousel jcr:primaryType="nt:unstructured">
+							<policy_carousel
+								cq:styleDefaultClasses="carousel-wrapper"
+								jcr:primaryType="nt:unstructured"
+								jcr:title="Carousel"
+								sling:resourceType="wcm/core/components/policy/policy">
+								<jcr:content jcr:primaryType="nt:unstructured"/>                            
+							</policy_carousel>
+						</carousel>                       
                     </content>
                 </components>
             </hk>
@@ -1940,7 +1949,16 @@
                                     </item1>
                                 </cq:styleGroups>
                             </policy_iconText>
-                        </icon-text>                        
+                        </icon-text> 
+                        <carousel jcr:primaryType="nt:unstructured">
+							<policy_carousel
+								cq:styleDefaultClasses="carousel-wrapper"
+								jcr:primaryType="nt:unstructured"
+								jcr:title="Carousel"
+								sling:resourceType="wcm/core/components/policy/policy">
+								<jcr:content jcr:primaryType="nt:unstructured"/>                            
+							</policy_carousel>
+						</carousel>                       
                     </content>
                 </components>
             </id>
