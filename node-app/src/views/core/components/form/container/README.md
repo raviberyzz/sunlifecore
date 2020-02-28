@@ -4,8 +4,8 @@ JSON Format
 {
     "form-id":"",
     "form-text-id":"demo-id",
-    "form-background-wrapper":"editorial-nav-mobile-wrapper",
-     "form-alignment-wrapper":"",
+    "form-background-wrapper":"",
+     "form-alignment-wrapper":"form-wrapper-simple",
     "form-text-class":"demo-class",
     "form-text-label":"demo-label",
     "input-text-type":"text",

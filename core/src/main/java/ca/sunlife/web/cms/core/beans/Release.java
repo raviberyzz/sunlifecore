@@ -26,6 +26,10 @@ public class Release {
 	 * body
 	 */
 	private String body;
+	/** 
+	 * headlineUrl
+	 */
+	private String headlineUrl;
 	/**
 	 * @return the id
 	 */
@@ -85,6 +89,18 @@ public class Release {
 	 */
 	public void setBody(String body) {
 		this.body = body;
+	}
+	/**
+	 * @return the headlineUrl
+	 */
+	public String getHeadlineUrl() {
+		return headlineUrl;
+	}
+	/**
+	 * @param headlineUrl the headlineUrl to set
+	 */
+	public void setHeadlineUrl(String headlineUrl) {
+		this.headlineUrl = headlineUrl;
 	}
 	
 }

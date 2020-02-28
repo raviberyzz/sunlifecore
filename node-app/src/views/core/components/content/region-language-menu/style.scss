@@ -311,18 +311,25 @@
         margin-bottom: 40px;
         border: 1px $light-grey-color solid;
         margin: 15px 0 0 0;
+        padding:0px!important;
           .slf-region{
+              padding:0px!important;
               .title-region{
                 font-weight: 400;
                 font-size: 18px;
                 line-height: 23px;
-                background-color: #D7D7D7;
-                padding: 15px 30px;
+                background-color: $light-cool-blue-color;
+                padding: 15px 24px;
                 margin: -1px;
                 border: 1px solid $light-grey-color;
+                h4{
+                    font-size: 1rem;
+                    line-height: 26px;
+                    font-weight: 700;
+                }
               }
               .content-region{
-                  padding:24px;
+                  padding: 24px 14px;
                   display: flex;
                   .slf-region-column{
                           padding-right:24px;
@@ -379,49 +386,53 @@
     /* desktop styles end */
 
     /*mobile styles start */
-    .slf-accordion-arrow {
-        .accordion-heading{
-           background-color:$light-cool-blue-color;
-           color: $medium-blue-color;
-           font-family: sunlife-sans;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 120%;
-            padding: 20px 14px;
-       }
-       .accordion-heading[aria-expanded="false"]:before {
-        content: "\f0da";
-        font-family: FontAwesome;
-        padding-right:10px;
-       }
-       .accordion-heading[aria-expanded="true"]:before{
-        content:"\f0d7";
-        font-family: FontAwesome;
-        padding-right:10px;
-       }
-       ul {
-        margin: 12px 0 12px 12px;
-        padding: 0;
-        list-style: none;
-        vertical-align: middle; 
-        li {
-            font-family: sunlife-sans;
-            font-weight: 400;
-            font-size: 16px;
-                padding: 20px;
-            line-height: 140%;
-            border-bottom: 2px dotted $light-grey-color; 
-            a {
-                font-family: sunlife-sans;
-                font-weight: normal;
-                color: $medium-blue-color;
+    .mobile-region-language-menu-wrapper{
+        width:100%!important;
+        .slf-accordion-arrow {
+            .accordion-heading{
+               background-color:$light-cool-blue-color;
+               color: $medium-blue-color;
+               font-family: sunlife-sans;
+                font-weight: 700;
                 font-size: 16px;
-                text-decoration: none; 
+                line-height: 120%;
+                padding: 20px 14px;
+           }
+           .accordion-heading[aria-expanded="false"]:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            padding-right:10px;
+           }
+           .accordion-heading[aria-expanded="true"]:before{
+            content:"\f0d7";
+            font-family: FontAwesome;
+            padding-right:10px;
+           }
+           ul {
+            margin: 12px 0 12px 12px;
+            padding: 0;
+            list-style: none;
+            vertical-align: middle; 
+            li {
+                font-family: sunlife-sans;
+                font-weight: 400;
+                font-size: 16px;
+                    padding: 20px;
+                line-height: 140%;
+                border-bottom: 2px dotted $light-grey-color; 
+                a {
+                    font-family: sunlife-sans;
+                    font-weight: normal;
+                    color: $medium-blue-color;
+                    font-size: 16px;
+                    text-decoration: none; 
+                }
             }
-        }
-      
+          
+           }
        }
-   }
+    }
+  
     /*mobile styles end here*/
 }
 /* link farm table styles end here */

@@ -96,16 +96,21 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 		importUrl.append("&limit=");
 		importUrl.append(numberOfNews);
 
-		releaseMain = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
+		String response = this.restService.callGetWebService(importUrl.toString());
+		if( null != response && response.length() > 0 )
+			releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
 		logger.debug("locale: {}, {}", locale, releaseMain);
+		if( null != releaseMain && null != releaseMain.getReleases() && null != releaseMain.getReleases().getRelease() ) {
 		releaseMain.getReleases().getRelease().stream().forEach(o -> {
 			try {
 				Date date = this.inputDateFormatter.parse(o.getReleaseDate());
 				o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
+				o.setHeadlineUrl(o.getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT));
 			} catch (ParseException e) {
 				logger.error("Error :: parsing the release date {}", e);
 			}
 		});
+		}
 		return releaseMain;
 	}
 
@@ -113,6 +118,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 		logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNews ");
 		int curPage = 1;
 		int prevPage = 0;
+		News newsObj = null;
 		try {
 			StringBuilder importUrl = new StringBuilder();
 			String cnwRequestListURI = this.cnwNewsConfig.getCnwServiceUrl();
@@ -148,19 +154,22 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 			}
 			logger.debug("importUrl: {}", importUrl);
 			ReleaseMain news = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
-			news.getReleases().getRelease().stream().forEach(o -> {
-				try {
-					Date date = this.inputDateFormatter.parse(o.getReleaseDate());
-					o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
-				} catch (ParseException e) {
-					logger.error("Error :: parsing the release date {}", e);
-				}
-			});
+			if( null != news && null != news.getReleases() && null != news.getReleases().getRelease() ) {
+				news.getReleases().getRelease().stream().forEach(o -> {
+					try {
+						Date date = this.inputDateFormatter.parse(o.getReleaseDate());
+						o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
+						o.setHeadlineUrl(o.getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT));
+					} catch (ParseException e) {
+						logger.error("Error :: parsing the release date {}", e);
+					}
+				});
+				newsObj = new News();
+				newsObj.setReleaseMain(news);
+				newsObj.setPagination(setPagination(curPage, prevPage, requestURL, news));
+			}
+			
 			logger.debug("Fetched news :: {}", news);
-
-			News newsObj = new News();
-			newsObj.setReleaseMain(news);
-			newsObj.setPagination(setPagination(curPage, prevPage, requestURL, news));
 			logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNews :: {}", newsObj);
 			return newsObj;
 		} catch (IOException e) {
@@ -250,6 +259,9 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 		importUrl.append(this.cnwNewsConfig.getCnwServiceUrl());
 		importUrl.append(CNW_SERVICE_PARAM);
 		importUrl.append("&method=get");
+		if (null != locale && !"en".equals(locale)) {
+			importUrl.append("_" + locale);
+		}
 		importUrl.append(HTML_SAFE);
 		importUrl.append(FORMAT_JSON);
 		importUrl.append("&id=" + id);
