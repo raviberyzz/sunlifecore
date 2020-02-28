@@ -878,17 +878,6 @@ ul {
            .container-component{
                .cmp-container{
                    border: 2px solid $light-grey-color;
-                        .light-yellow-box-header {
-                            background: #FDDBA5;
-                            color: #424242;
-                            line-height: 23px;
-                            font-size: 1.125rem;
-                            font-weight: bold;
-                            padding: 15px;
-                            height: 56px;
-                            display: flex;
-                            justify-content: center;
-                        }
                    .text{
                        .cmp-text{
                            p{
@@ -915,6 +904,17 @@ ul {
                                margin-top: 0;
                            }
                        }
+                   }
+                   .text:first-child{
+                    background: #FDDBA5;
+                    color: #424242;
+                    line-height: 23px;
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                    padding: 15px;
+                    height: 56px;
+                    display: flex;
+                    justify-content: center;
                    }
                }
            }
