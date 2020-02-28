@@ -3,6 +3,8 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,6 +38,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -143,11 +147,19 @@ public class BasePageModel {
 	@Inject
 	@Via("resource")
 	private String socialMediaImage;
+	
+	/** Is cnw news details page . */
+	@Inject
+	@Via("resource")
+	private String isCNWNewsDetailPage;
 
 	/** The config service. */
 	@Inject
 	private SiteConfigService configService;
 
+	@Inject
+	private CNWNewsService cnwNewsService;
+	
 	/** The meta data. */
 	private Map<String, String> customMetadata;
 
@@ -392,6 +404,15 @@ public class BasePageModel {
 			final String altLanguages = configService.getConfigValues("alternateLanguages", pagePath);
 			final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
 			String pageLocaleDefault = currentPage.getLanguage().getLanguage();
+			
+			//Condition for CNW News details page starts
+			logger.debug("isCNWNewsDetailPage: {}", isCNWNewsDetailPage);
+			if( null != isCNWNewsDetailPage && "true".equals(isCNWNewsDetailPage) ) {
+				logger.debug("Inside isCNWNewsDetailPage block");
+				processDataForCNWNews(pageLocale);
+			}
+			//Condition for CNW News details page ends
+			
 			// SEO title - <title> tag
 			seoPageTitle = null == pageTitle ? title + " | " + siteSuffix : pageTitle;
 	
@@ -424,7 +445,6 @@ public class BasePageModel {
 				customMetadata.put(OG_IMAGE, domain + socialMediaImage);
 				customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
 			}
-			customMetadata.remove("keywords");
 			logger.debug("metadata :: {}", customMetadata);
 			// Sets alternate URLs
 			setAtlLanguages(altLanguages, pageLocale, pagePath);
@@ -616,5 +636,24 @@ public class BasePageModel {
 			throw e;
 		}
 		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
+	}
+	
+	public void processDataForCNWNews(String pageLocale) {
+		logger.debug("Entry :: processDataForCNWNews :: ");
+		String releaseId = null;
+		try {
+			if( request.getRequestPathInfo().getSelectors().length > 0 ) {
+				releaseId = request.getRequestPathInfo().getSelectors()[0];
+				logger.debug("Selector fetched :: releaseId :: {}", releaseId);
+				NewsDetails newsDetails = cnwNewsService.getCNWNewsDetails(releaseId, pageLocale.split("_")[0]);
+				title =  newsDetails.getRelease().getHeadline();
+				description = "";
+				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
+				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}", title, description, socialMediaDescripton);
+			}
+		} catch (IOException | ParseException e) {
+			logger.error("Error :: processDataForCNWNews :: {}", e);
+		}
+		logger.debug("Exit :: processDataForCNWNews :: ");
 	}
 }
