@@ -275,6 +275,10 @@ footer {
     }
     .teaser {
         padding: 16px 0 15px 16px;
+        h1, h2, h3, h4, h5, h6, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
+            font-size: 1.5rem;
+            line-height: 30px;
+        }
     }
     .bottom-footer-section, .top-footer-section {
         border-top: 1px solid $white-shade;
