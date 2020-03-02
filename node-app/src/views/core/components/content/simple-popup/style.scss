@@ -65,14 +65,13 @@
                 margin-bottom: 16px;
             }
             .icon-style{
-
                 bottom: 0;
+                height:60px;
+                width:60px;
+                padding: 10px;
             }
             .icon-parent{
                 height:auto;
-            }
-            .icon-style{
-                bottom:0;
             }
         }
 
@@ -114,6 +113,7 @@
         }
         .blue-icon-yellow-background{
             .cta-content-icon-wrapper{
+                padding-bottom: 32px !important;
                 h1,h2,h3,h4,h5,h6,.heading-1,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                     font-size:24px;
                     line-height:30px;
@@ -126,10 +126,16 @@
                 }
                 .icon-texts{
                     padding-top:0px;
-                    padding-bottom: 32px;
+
                 }
+            }
+            .text{
+                padding:0px !important;
             }
 
         }
+        .cmp-text {
+            padding: 0 ;
+            text-align: left; }
     }
 }

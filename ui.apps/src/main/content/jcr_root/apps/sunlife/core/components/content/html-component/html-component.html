@@ -2,6 +2,6 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-test.text="${htmlComponentModel.text}"
      class="cmp-text">
-    <p>${text @ context = 'html'}</p>
+    <p>${text @ context = 'unsafe'}</p>
 </div>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text, classAppend='cmp-text'}"></sly>

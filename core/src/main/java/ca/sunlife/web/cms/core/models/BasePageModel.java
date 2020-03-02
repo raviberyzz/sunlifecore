@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -409,7 +410,7 @@ public class BasePageModel {
 			logger.debug("isCNWNewsDetailPage: {}", isCNWNewsDetailPage);
 			if( null != isCNWNewsDetailPage && "true".equals(isCNWNewsDetailPage) ) {
 				logger.debug("Inside isCNWNewsDetailPage block");
-				processDataForCNWNews(pageLocale);
+				processDataForCNWNews(pageLocale, pagePath);
 			}
 			//Condition for CNW News details page ends
 			
@@ -436,8 +437,8 @@ public class BasePageModel {
 			// Configuring custom social sharing - meta-tags
 			customMetadata.put(OG_TITLE, title);
 			customMetadata.put(TWITTER_TITLE, title);
-			customMetadata.put(OG_URL, pagePath);
-			customMetadata.put(TWITTER_URL, pagePath);
+			customMetadata.put(OG_URL, seoCanonicalUrl);
+			customMetadata.put(TWITTER_URL, seoCanonicalUrl);
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(OG_LOCALE, locale);
@@ -638,7 +639,7 @@ public class BasePageModel {
 		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 	
-	public void processDataForCNWNews(String pageLocale) {
+	public void processDataForCNWNews(String pageLocale, String pagePath) {
 		logger.debug("Entry :: processDataForCNWNews :: ");
 		String releaseId = null;
 		try {
@@ -649,9 +650,10 @@ public class BasePageModel {
 				title =  newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
-				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}", title, description, socialMediaDescripton);
+				canonicalUrl = pagePath + "/" + newsDetails.getRelease().getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT) + "/" + releaseId + "/";
+				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
-		} catch (IOException | ParseException e) {
+		} catch (IOException | ParseException | NullPointerException e) {
 			logger.error("Error :: processDataForCNWNews :: {}", e);
 		}
 		logger.debug("Exit :: processDataForCNWNews :: ");
