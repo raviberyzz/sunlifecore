@@ -22,7 +22,7 @@ import ca.sunlife.web.cms.core.services.RestService;
 
 /**
  * @author mo92
- *
+ * The class AdvisorDetailServiceImpl
  */
 @Component( service = AdvisorDetailService.class , immediate = true )
 @Designate( ocd = AdvisorWebServiceConfig.class )
@@ -35,13 +35,19 @@ public class AdvisorDetailServiceImpl implements AdvisorDetailService {
 	@Reference
 	private RestService restService;
 	
+	/** Advisor WebService Config injected */
 	private AdvisorWebServiceConfig advisorWebServiceConfig;
 	
+	/**
+	 * Activate method
+	 * @param webServiceConfig
+	 */
 	@Activate
 	public void activate(AdvisorWebServiceConfig webServiceConfig) {
 		this.advisorWebServiceConfig = webServiceConfig;
 		logger.debug("advisorWebServiceConfig :: Advisor page data url: {}", webServiceConfig.getAdvisorPageDataUrl());
 	}
+	
 	/* (non-Javadoc)
 	 * @see ca.sunlife.web.cms.core.services.AdvisorDetailService#getAdvisorDetails(java.lang.String, java.lang.String, java.lang.String)
 	 */

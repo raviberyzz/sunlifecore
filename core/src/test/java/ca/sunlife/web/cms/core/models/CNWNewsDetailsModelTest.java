@@ -27,6 +27,10 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
+/**
+ * @author mo92
+ * The class CNWNewsDetailsModelTest
+ */
 @ExtendWith(AemContextExtension.class)
 public class CNWNewsDetailsModelTest {
 	private final String DUMMY = "dummy";

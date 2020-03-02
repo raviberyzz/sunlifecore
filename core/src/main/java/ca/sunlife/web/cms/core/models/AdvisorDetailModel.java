@@ -384,6 +384,9 @@ public class AdvisorDetailModel {
 		this.advisorMapData = advisorMapData;
 	}
 
+	/**
+	 * Advisor Detail Model - init method to process data after model loads
+	 */
 	@PostConstruct
 	public void init() {
 		logger.debug("Entry :: init method of AdvisorDetailModel :: advisorType: {}", advisorType);
@@ -417,6 +420,9 @@ public class AdvisorDetailModel {
 		logger.debug("Exit :: init method of AdvisorDetailModel :: advisorData :: {}", advisorData);
 	}
 
+	/**
+	 * Sets data for advisor map
+	 */
 	private void setMapData() {
 		logger.debug("Entry :: setMapData :: advisorData :: {}", advisorData);
 		JSONObject jsonObject = null;
@@ -475,6 +481,12 @@ public class AdvisorDetailModel {
 		logger.debug("Exit :: setMapData :: advisorMapData :: {}", advisorMapData);
 	}
 
+	/**
+	 * Prepares full address
+	 * @param addressJson
+	 * @return
+	 * @throws JSONException
+	 */
 	private String buildAddress(JSONObject addressJson) throws JSONException {
 		logger.debug("Entry :: buildAddress :: ");
 		StringBuilder address = new StringBuilder();

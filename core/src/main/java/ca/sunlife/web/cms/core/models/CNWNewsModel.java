@@ -401,6 +401,9 @@ public class CNWNewsModel {
 		this.noNewsMessage = noNewsMessage;
 	}
 
+	/**
+	 * Post construct method - init once the model gets instantiated
+	 */
 	@PostConstruct
 	public void init() {
 		logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
@@ -421,6 +424,12 @@ public class CNWNewsModel {
 		}
 	}
 
+	/**
+	 * Gets news overview data 
+	 * @throws IOException
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 */
 	public void processOverviewData() throws IOException, ApplicationException, SystemException {
 		logger.debug("Entry :: CNWNewsDetailsModel :: processOverviewData :: numberOfNews: {}, newsCategories: {}, locale: {}", numberOfNews, newsCategories, locale);
 		try {
@@ -435,6 +444,12 @@ public class CNWNewsModel {
 		logger.debug("Fetched news :: {}", releaseMain);
 	}
 
+	/**
+	 * Gets new listing data
+	 * @throws IOException
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 */
 	public void processReleasesData() throws IOException, ApplicationException, SystemException {
 		logger.debug("Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}", latestYear, numberOfTabs, locale, newsCategories, pageSize);
 		int year;
