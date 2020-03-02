@@ -2,7 +2,10 @@
 var iconMarkerCorporate = '/static/ca/Find%20an%20advisor/images/icon_google-maps_office-building.png';
 var iconMarkerStandard = '/content/dam/sunlife/icon_google-maps_expert.png';
 var exists = false;
-var advisorInfo = (null != advisorInfoMap && undefined != advisorInfoMap) ? advisorInfoMap.map : null;
+var advisorInfo;
+if(typeof(advisorInfoMap) != 'undefined') {
+    advisorInfo = advisorInfoMap.map
+}
 if(typeof(advisorInfo) !== 'undefined'){
 	exists = true;
 }
