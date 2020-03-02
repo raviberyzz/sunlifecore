@@ -18,6 +18,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.ContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class FormContainer.
  */
@@ -37,7 +38,18 @@ public class ArticleModel extends ContentFragmentImpl {
 	@Optional
 	private String articleUniqueID;
 	
-
+	/** The checkbox comment. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String checkboxComment;
+	
+	/** The checkbox hide date. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String checkboxHideDate;
+	
 	/** The article ID. */
 	@Inject
 	@Via("resource")
@@ -50,6 +62,47 @@ public class ArticleModel extends ContentFragmentImpl {
 	@Via("resource")
 	private String jcrLastModified;
 	
+	
+	/**
+	 * Gets the checkbox comment.
+	 *
+	 * @return the checkbox comment
+	 */
+	public String getCheckboxComment() {
+		return checkboxComment;
+	}
+
+
+	/**
+	 * Sets the checkbox comment.
+	 *
+	 * @param checkboxComment the new checkbox comment
+	 */
+	public void setCheckboxComment(String checkboxComment) {
+		this.checkboxComment = checkboxComment;
+	}
+
+
+	/**
+	 * Gets the checkbox hide date.
+	 *
+	 * @return the checkbox hide date
+	 */
+	public String getCheckboxHideDate() {
+		return checkboxHideDate;
+	}
+
+
+	/**
+	 * Sets the checkbox hide date.
+	 *
+	 * @param checkboxHideDate the new checkbox hide date
+	 */
+	public void setCheckboxHideDate(String checkboxHideDate) {
+		this.checkboxHideDate = checkboxHideDate;
+	}
+
+
 	/**
 	 * Gets the article unique ID.
 	 *
