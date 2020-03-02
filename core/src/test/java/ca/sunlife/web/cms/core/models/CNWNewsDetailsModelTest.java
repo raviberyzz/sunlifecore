@@ -20,6 +20,8 @@ import org.mockito.MockitoAnnotations;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import uk.org.lidalia.slf4jtest.TestLogger;
@@ -47,7 +49,7 @@ public class CNWNewsDetailsModelTest {
 	}
 
 	@Test
-	public void testInit() throws IOException, ParseException {
+	public void testInit() throws IOException, ParseException, ApplicationException, SystemException {
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(DUMMY_STRING_ARRAY));
 
 		cnwNewsDetailsModel.init();

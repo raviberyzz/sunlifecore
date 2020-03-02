@@ -10,7 +10,7 @@ import net.sf.beanrunner.BeanRunner;
 import uk.org.lidalia.slf4jtest.LoggingEvent;
 
 public class TestUtils {
-	static final Locale CANADA_LOCALE = new Locale("en", "CANADA");
+	static final Locale CANADA_LOCALE = new Locale("en", "CA");
 	
 	static void executeTestBean(Object bean) {
 		try {

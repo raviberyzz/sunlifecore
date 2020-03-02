@@ -18,6 +18,7 @@ public class GettersSettersTest {
 	private FormContainer formContainer;
 	private LeftNavigationModal leftNavigationModal;
 	private RegionLanguageMenu regionLanguageMenu;
+	private AdvisorDetailModel advisorDetailModel;
 
 	@BeforeEach
 	void setup() {
@@ -31,6 +32,7 @@ public class GettersSettersTest {
 		formContainer = new FormContainer();
 		leftNavigationModal = new LeftNavigationModal();
 		regionLanguageMenu = new RegionLanguageMenu();
+		advisorDetailModel = new AdvisorDetailModel();
 	}
 
 	@Test
@@ -82,5 +84,10 @@ public class GettersSettersTest {
 	@Test
 	void testRegionLanguageMenu() {
 		TestUtils.executeTestBean(regionLanguageMenu);
+	}
+	
+	@Test
+	void testAdvisorDetailsModel() {
+		TestUtils.executeTestBean(advisorDetailModel);
 	}
 }

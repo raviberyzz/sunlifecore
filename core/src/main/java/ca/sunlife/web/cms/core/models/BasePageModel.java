@@ -40,6 +40,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -653,7 +655,7 @@ public class BasePageModel {
 				canonicalUrl = pagePath + "/" + newsDetails.getRelease().getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT) + "/" + releaseId + "/";
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
-		} catch (IOException | ParseException | NullPointerException e) {
+		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException e) {
 			logger.error("Error :: processDataForCNWNews :: {}", e);
 		}
 		logger.debug("Exit :: processDataForCNWNews :: ");
