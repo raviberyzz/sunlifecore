@@ -151,7 +151,7 @@
     }
 }
 //this max width is being hardcoded because ipad pro view is different from ipad view.
-@media (max-width:$tab-screen-min) and (max-width: 1023px){
+@media (min-width:$tab-screen-min) and (max-width: 1023px){
     .row-advisor.p-std-advisor{
         .corp-case2{
             padding: 0 15px;
