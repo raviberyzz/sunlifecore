@@ -122,22 +122,22 @@
 }
 @media (max-width:$mobile-screen-max) and (min-width: $mobile-screen-min){
     .row-advisor.p-std-advisor{
+        text-align: center;
         .corp-case2{
             padding: 0 15px;
             margin-left: 0;
         }
-        .row-advisor-contact-social {
-            padding-top: 20px;
-            text-align: center;
-        }
         .row-advisor-desc-xs {
             padding-top: 20px;
         }
-        text-align: center;
         p{
             margin-bottom: 10px;
         }
         .row-advisor-0{
+            .row-advisor-contact-social {
+                padding-top: 5px;
+                text-align: center;
+            }
             h1{
             text-align: left;
             }
