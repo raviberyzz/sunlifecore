@@ -4,7 +4,7 @@ var iconMarkerStandard = '/content/dam/sunlife/icon_google-maps_expert.png';
 var exists = false;
 var advisorInfo;
 if(typeof(advisorInfoMap) != 'undefined') {
-    advisorInfo = advisorInfoMap.map
+    advisorInfo = advisorInfoMap.map;
 }
 if(typeof(advisorInfo) !== 'undefined'){
 	exists = true;
