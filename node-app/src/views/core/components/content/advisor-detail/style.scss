@@ -34,6 +34,9 @@
     }
 }
 .corp-target{
+    .content-label {
+        margin: 0 10px 10px 0;
+    }
     .col-advisor-grid-block{    
         .row{
             margin: 0 -15px 0;      
@@ -41,6 +44,9 @@
     }
 }
 .advisor-target{
+    .content-label {
+        margin: 0 10px 10px;
+    }
     .row-advisor-0{
         padding: 0 0 10px;
         h1{
@@ -55,8 +61,8 @@
     line-height: 24px !important;
     padding-bottom: 30px;
     .corp-case2{
-        padding: 0 15px 0 0;
-        margin-left: -15px;
+        padding: 0 15px;
+        margin-left: -45px;
     }
     //style for
     h1, h2, .featured-content-list .editorial, .featured-content-list-multiple-link .editorial, .featured-content-list.multiple-link-variation .editorial, .featured-content-list-tool .editorial, .featured-content-list.tool-variation .editorial, h3, h4, .accordion-heading, .footer .global-footer-row2 .slf-accordion-arrow .accordion-heading, .slf-tab-container .panel-default > .panel-heading {
@@ -91,14 +97,10 @@
     .row-advisor-disclaimer {
         font-size: 0.75em;
         line-height: 1.5em;
-        padding-bottom: 30px;
     }
     .col-sm-6.col-advisor-grid-block{
         padding-top: 30px;
     }
-    .content-label{    
-        margin: 0 10px 10px
-        }
     .row-advisor-email {
         white-space: nowrap;
         overflow: hidden;
@@ -154,8 +156,10 @@
 @media (min-width:$tab-screen-min) and (max-width: 1023px){
     .row-advisor.p-std-advisor{
         .corp-case2{
-            padding: 0 15px;
-            margin-left: 0;
+            padding: 0 15px !important;
+            margin-left: -15px;
+            text-align: left;
+            
         }
         .row-advisor-disclaimer {
             text-align: center;
