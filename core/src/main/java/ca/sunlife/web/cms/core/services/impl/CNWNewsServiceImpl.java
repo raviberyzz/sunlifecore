@@ -105,6 +105,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 			try {
 				Date date = this.inputDateFormatter.parse(o.getReleaseDate());
 				o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
+				o.setHeadlineUrl(o.getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT));
 			} catch (ParseException e) {
 				logger.error("Error :: parsing the release date {}", e);
 			}
@@ -158,6 +159,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 					try {
 						Date date = this.inputDateFormatter.parse(o.getReleaseDate());
 						o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
+						o.setHeadlineUrl(o.getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT));
 					} catch (ParseException e) {
 						logger.error("Error :: parsing the release date {}", e);
 					}
@@ -257,6 +259,9 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 		importUrl.append(this.cnwNewsConfig.getCnwServiceUrl());
 		importUrl.append(CNW_SERVICE_PARAM);
 		importUrl.append("&method=get");
+		if (null != locale && !"en".equals(locale)) {
+			importUrl.append("_" + locale);
+		}
 		importUrl.append(HTML_SAFE);
 		importUrl.append(FORMAT_JSON);
 		importUrl.append("&id=" + id);

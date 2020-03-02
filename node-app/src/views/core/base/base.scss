@@ -313,7 +313,7 @@ footer {
             color: $medium-yellow-background;
             font-weight: bold;
             display: inline-block;
-            width: 2rem;
+            width: 1.7rem;
             padding-left: 16px;
             margin-left: -2em;
         }
@@ -321,6 +321,12 @@ footer {
 }
 .cmp-text{
 @extend .yellow-bullet-list;
+}
+.text-section {
+    @extend .yellow-bullet-list;
+}
+.icon-texts {
+    @extend .yellow-bullet-list;
 }
 ul {
     list-style: none;

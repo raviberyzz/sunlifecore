@@ -326,6 +326,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
+                                <item1
+                                    cq:styleGroupLabel="Image Display"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile round-border"
+                                            cq:styleId="1582843820686"
+                                            cq:styleLabel="Circular 220px"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="full-width-image"
+                                            cq:styleId="1582843873996"
+                                            cq:styleLabel="Fit To Section"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                          <item2
+                                            cq:styleClasses="overflow-hidden"
+                                            cq:styleId="1582843987781"
+                                            cq:styleLabel="Crop Overflow Image"
+                                            jcr:primaryType="nt:unstructured"/>     
+                                    </cq:styles>
+                                </item1>
                             </cq:styleGroups>
                         	</policy_image>
                     	</image>
@@ -839,6 +860,11 @@
                                             cq:styleId="1566032987445"
                                             cq:styleLabel="Feature Tool Card"
                                             jcr:primaryType="nt:unstructured"/>	
+                                          <item8
+                                            cq:styleClasses="product-card"
+                                            cq:styleId="1582902650532"
+                                            cq:styleLabel="Product box"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1
@@ -920,7 +946,7 @@
                     </link-list>
                         <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
-                                cq:styleDefaultClasses="yellow-horizontal-separator"                                
+                                cq:styleDefaultClasses="row yellow-horizontal-separator"                                
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Separator"
                                 sling:resourceType="wcm/core/components/policy/policy">
@@ -931,22 +957,22 @@
 										jcr:primaryType="nt:unstructured">
 										<cq:styles jcr:primaryType="nt:unstructured">											
 											<item0
-												cq:styleClasses="yellow-horizontal-separator"
+												cq:styleClasses="row yellow-horizontal-separator"
 												cq:styleId="1577973901376"
 												cq:styleLabel="Yellow - Center"
 												jcr:primaryType="nt:unstructured"/>
 										    <item1
-												cq:styleClasses="yellow-horizontal-separator left-aligned-seperator"
+												cq:styleClasses="row yellow-horizontal-separator left-aligned-seperator"
 												cq:styleId="1577973901976"
 												cq:styleLabel="Yellow - Left"
 												jcr:primaryType="nt:unstructured"/>
 											<item2
-												cq:styleClasses="grey-horizontal-separator"
+												cq:styleClasses="row grey-horizontal-separator"
 												cq:styleId="1577973868259"
 												cq:styleLabel="Grey - Center"
 												jcr:primaryType="nt:unstructured"/>
 											<item3
-												cq:styleClasses="grey-horizontal-separator left-aligned-seperator"
+												cq:styleClasses="row grey-horizontal-separator left-aligned-seperator"
 												cq:styleId="1577973868299"
 												cq:styleLabel="Grey - Left"
 												jcr:primaryType="nt:unstructured"/>

@@ -1,6 +1,5 @@
 @import '../../../base/core';
 .left-nav-wrapper{
-    width: 266px;
     .cmp-navigation__group{
         .cmp-navigation__item--level-0{
             padding-left: 8px;
@@ -23,7 +22,7 @@
                     .cmp-navigation__group{
                         margin-top: 0;
                         .cmp-navigation__item--level-2{
-                            padding: 8px 0 0 8px;   
+                            padding: 8px 0 0 8px;
                         }
                         .cmp-navigation__item--active{
                             .cmp-navigation__item-link{
