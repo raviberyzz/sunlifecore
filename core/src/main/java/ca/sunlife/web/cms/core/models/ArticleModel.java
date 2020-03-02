@@ -18,7 +18,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.ContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FormContainer.
  */
