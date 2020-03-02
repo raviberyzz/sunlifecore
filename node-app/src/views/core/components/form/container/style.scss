@@ -177,12 +177,16 @@
         padding-left:40px;
         form{
             .text,.dropdown{
-                width:41.8% !important;
+                min-width: 41.8% !important;
+                width: auto !important;
+                max-width: 50% !important;
                 margin: 0 auto !important;
                 display: inline-block !important;
             }
             .button-wrapper{
-                width:33.33%  !important;
+                min-width: 33.33%  !important;
+                width: auto  !important;
+                max-width: 50%  !important;
     	        margin: 0 auto !important;
                 display: inline-block !important;
             }
