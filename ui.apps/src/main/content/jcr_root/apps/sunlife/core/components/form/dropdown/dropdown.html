@@ -4,11 +4,11 @@
             <label class="cmp-form-options__label" for="${options.id}" data-sly-test="${options.title}">${options.title}</label>
                 <select class="cmp-form-options__field cmp-form-options__field--${options.type}" name="${options.name}" id="${options.id}" 
                 	data-sly-list.itemGroup="${options.itemsGroup}" data-sly-attribute.multiple="${options.type == 'multi-drop-down'}">
-					<optgroup label="${itemGroup.groupText}">
+					<optgroup label="${itemGroup.groupText}" data-sly-unwrap="${!itemGroup.groupText}">
 						<sly data-sly-list.items="${itemGroup.items}">
                      		<option value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</option>
                      	</sly>
-                    </optgroup>
+                    </optgroup> 
                 </select>
         </sly>
         <p class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage}</p>
