@@ -68,13 +68,10 @@
                 bottom: 0;
                 height:60px;
                 width:60px;
-                padding: 13px;
+                padding: 10px;
             }
             .icon-parent{
                 height:auto;
-            }
-            .icon-style{
-                bottom:0;
             }
         }
         
@@ -133,7 +130,8 @@
                 }
             }
             .text{
-                padding:0px !important;
+                padding-left: 0px;
+                padding-right: 0px;
             }
            
         }
