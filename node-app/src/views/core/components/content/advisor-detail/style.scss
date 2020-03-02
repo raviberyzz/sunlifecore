@@ -150,8 +150,8 @@
         padding: 0 5px;
     }
 }
-
-@media (max-width:$tab-screen-min) and (min-width: $tab-screen-min){
+//this max width is being hardcoded because ipad pro view is different from ipad view.
+@media (min-width:$tab-screen-min) and (max-width: 1023px){
     .row-advisor.p-std-advisor{
         .corp-case2{
             padding: 0 15px;
@@ -163,8 +163,7 @@
         .row-advisor-contact-social{
             text-align: center;
         }
-        text-align: center;
-        }
+    }
     .advisor-target{
         .row-advisor-0{
             text-align: left;
