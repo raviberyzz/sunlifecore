@@ -1,7 +1,4 @@
 @import '../../../base/core';
-.panel-group{
-    display: none;
-}
 .sign-in-modal-wrapper {
     opacity: 1;
     background-color: $background-black-ovrelay-color;
@@ -169,57 +166,22 @@
     .form-second {
         margin-bottom: 16px;
     }
-    .remember {
-        position: absolute;
-        display:none;
-    }
     .remeberme {
         font-size: 1rem;
         font-weight:400;
-        margin:4px 0 0 3px;
-         ::before {
-            width: 18px;
-            height: 18px;
-        }
-         ::after {
-            color: $medium-blue-color;
-            top: 2px;
-            left: 2px;
-        }
+        margin:4px 0 0 30px;
     }
-    [type="checkbox"]+label {
-        position: relative;
-        padding-left: 15px;
-        cursor: pointer;
-    }
-    [type="checkbox"]+label:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 2px;
-        width: 20px;
-        height: 20px;
-        border: 1px solid $border-grey-color;
-        background: $white-shade;
-    }
-    [type="checkbox"]:not(:checked)+label:after {
-        opacity: 0;
-        transform: scale(0);
-    }
-    [type="checkbox"]+label:after {
-        content: '\f00c';
-        font-family: FontAwesome;
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        font-size: 14px;
-        color: $medium-blue-color;
+    input[type=checkbox]{
+        height:20px;
+        width:20px;
+        margin:2px 0 0 -30px;
         transition: all 0.2s;
-        line-height: 18px;
+        padding-left:1px;
     }
-    input[type=checkbox]:after {
-        display: none;
-    }
+    input[type=checkbox]:checked {
+        height: 20px;
+        width: 20px;
+      }
 }
 .modal-backdrop {
     position: relative;
@@ -227,7 +189,6 @@
 .modal-open{
     padding-right:0;
 }
-
 @media (max-width: 992px) and (min-width: $mobile-screen-min) {
     .sign-in-modal-wrapper {
         .modal-dialog.sign-in-modaldialog {

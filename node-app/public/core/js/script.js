@@ -4430,6 +4430,9 @@ $(document).ready(function(){
     $(tab).siblings().attr('tabindex','-1');
   }
 });
+$(function(){
+   
+})
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.slf-table').length){
@@ -4486,9 +4489,6 @@ function stickyHeader(){
 }
 $(stickyHeader);
 $(window).resize(stickyHeader);
-$(function(){
-   
-})
 $(document).ready(function () {
 	$('.site-level-notification .close-div').click(function () {
 		$('.site-level-notification').css('display', 'none');
@@ -4546,6 +4546,12 @@ $(document).ready(function () {
       var updatedString = a1.replace("&nbsp;", "");
       $('#userIdDiv').html(updatedString);
     } 
+    $("#form_signon .btn.btn-blue").click(function(){
+      return CheckClicks('e');
+    });
+    $("#rememberIDModal").click(function(){
+      remember(this);
+    });
 });     
 
 
