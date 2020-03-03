@@ -120,6 +120,13 @@
                                                     name="nextList"
                                                     text="Do you want to start a new column?"
                                                     value="yes"/>
+												<expandList
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldLabel="Do you want to expand this list?"
+                                                    name="expandList"
+                                                    text="Do you want to expand this list?"
+                                                    value="yes"/>
                                             </items>
                                         </field>
                                     </regions>
