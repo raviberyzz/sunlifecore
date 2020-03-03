@@ -469,6 +469,7 @@ public class BasePageModel {
 			}
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 			udoTags = gson.toJson(otherUDOTagsMap);
+			seoCanonicalUrl = seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT;
 			logger.debug("Map Display {}", udoTags);
 		} catch (Exception e) {
 			logger.error("Error :: init method of BasePageModel :: {}", e);
@@ -501,7 +502,7 @@ public class BasePageModel {
 			logger.debug("New -- > {} {} ", langArray[0], newUrl);
 			if (null != resolver.getResource(newUrl)) {
 				logger.debug("value {}", newUrl);
-				altLanguageLinks.put(lan, newUrl+BasePageModelConstants.SLASH_CONSTANT);
+				altLanguageLinks.put(lan.replace("_", "-"), newUrl+BasePageModelConstants.SLASH_CONSTANT);
 			}
 		}
 		if (!altLanguageLinks.isEmpty()) {
