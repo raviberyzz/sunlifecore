@@ -1,29 +1,31 @@
 function stickyHeader(){
   // sticky header works if table components exists
-  if($('.slf-table').length){
-    let tableHeader = $("table tbody tr:first-child");
-    let theaderPosition = tableHeader.offset().top;
-    let tableBottom = $('table').outerHeight(); 
-    let tableHeight = theaderPosition + tableBottom;
-    let position = 0;
-    //sticky header function on scroll 
-      $(window).on("scroll", function() {
-        if (window.pageYOffset > theaderPosition) {
-          position = window.pageYOffset - theaderPosition;
-          tableHeader.attr("style", "transform: translateY(" + position + "px)");
-          //removing the transform property once the page scrolls past the table
-          if(window.pageYOffset > tableHeight){
+  if($('.table-responsive').length){
+    /* sticky header is implemented for data table only and user can choose to implement sticky header or not by adding
+     the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
+      in pop up modal. */
+    if($('.table-stickyheader').length){
+      let tableHeader = $(".cmp-table-data-content table tbody tr:first-child");
+      let theaderPosition = tableHeader.offset().top;
+      let tableBottom = $('.cmp-table-data-content table tbody tr:last-child').offset().top; 
+      let tableHeight = theaderPosition + tableBottom -64;
+      let position = 0;
+      //sticky header function on scroll 
+        $(window).on("scroll", function() {
+          if (window.pageYOffset > theaderPosition) {
+            position = window.pageYOffset - theaderPosition;
+            tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            //removing the transform property once the page scrolls past the table
+            if(window.pageYOffset > tableHeight){
+              tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+            }
+          } else if (position !== 0) {
+            position = 0;
             tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
           }
-        } else if (position !== 0) {
-          position = 0;
-          tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
-        }
-        
-
-      });
+        });
+    }
       // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
-
       let crossIcon = document.getElementsByClassName('fa-times');
       // getting the icon tags
       let crossLength= crossIcon.length;
