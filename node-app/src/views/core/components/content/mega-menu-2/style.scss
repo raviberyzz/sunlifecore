@@ -1,5 +1,6 @@
+@import '../../../base/core';
 .slf-header-mega-menu2 {
-  border: 3px solid #FFCB05;
+  border: 3px solid $medium-yellow-background;
   padding: 0;
   display: inline-flex; }
   .slf-header-mega-menu2 .mega-menu2-list {
@@ -43,10 +44,10 @@
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    background: #FEEDD2;
+    background: $light-orange-20;
     margin: 0; }
   .slf-header-mega-menu2 .mega-menu2-list ul a:hover, .slf-header-mega-menu2 .mega-menu2-list ul a:focus {
-    background: #FEEDD2;
+    background: $light-orange-20;
     width: 100%; }
   .slf-header-mega-menu2 .dropdown-submenu .subnav-trigger::after {
     font-family: FontAwesome;
@@ -60,7 +61,7 @@
 
 /* AEM Style */
 .cmp-dynamic-megamenu {
-  border: 3px solid #FFCB05;
+  border: 3px solid $medium-yellow-background;
   padding: 0;
   position: relative; }
 
@@ -114,7 +115,7 @@
   white-space: normal; }
 
 .cmp-dynamic-megamenu .dropdown-submenu:hover {
-  background: #FEEDD2; }
+  background: $light-orange-20; }
 
 .cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu {
   left: 224px;
@@ -123,7 +124,7 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  background: #FEEDD2;
+  background: $light-orange-20;
   margin: 0; }
 
 .cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu ul a {
@@ -133,17 +134,17 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  background: #FEEDD2;
+  background: $light-orange-20;
   margin: 0; }
 
 .cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu a:hover {
-  background: #FEEDD2; }
+  background: $light-orange-20; }
 
 .cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu a {
-  background: #FEEDD2; }
+  background: $light-orange-20; }
 
 .cmp-dynamic-megamenu .mega-menu2-list ul a:hover, .cmp-dynamic-megamenu .mega-menu2-list ul a:focus {
-  background: #FEEDD2;
+  background: $light-orange-20;
   width: 100%; }
 
 .cmp-dynamic-megamenu .dropdown-submenu .subnav-trigger::after {
@@ -205,10 +206,10 @@
   white-space: normal; }
 
 .cmp-dynamic-megamenu-grey .dropdown-submenu:hover {
-  background: #f0ede8; }
+  background: $light-orange-20; }
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list li:hover {
-  background:#f0ede8; }
+  background:$light-orange-20; }
 
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu {
@@ -218,7 +219,7 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  background: #f0ede8;
+  background: $light-orange-20;
   margin: 0; }
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu ul a {
@@ -228,21 +229,21 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  background: #f0ede8;
+  background: $light-orange-20 ;
   margin: 0; }
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a:hover {
-  background: #f0ede8; }
+  background: $light-orange-20 ; }
 .cmp-dynamic-megamenu-grey .mega-menu2-list li a
 {
     padding:0 !important;
 }
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a {
 
-  background: #f0ede8; }
+  background: $light-orange-20 ; }
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list ul a:hover, .cmp-dynamic-megamenu .mega-menu2-list ul a:focus {
-  background: #f0ede8;
+  background: $light-orange-20 ;
   width: 100%; }
 
 .cmp-dynamic-megamenu-grey .dropdown-submenu .subnav-trigger::after {
@@ -251,7 +252,7 @@
 
 .cmp-dynamic-megamenu-grey .cmp-dynamic-megamenu-greybackground {
   margin: 15px;
-  background: #D7D7D7;
+  background: $light-grey-color;
   padding-top: 15px; }
 
 

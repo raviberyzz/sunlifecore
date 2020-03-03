@@ -22,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.sunlife.web.cms.core.beans.News;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 
 /**
@@ -399,6 +401,9 @@ public class CNWNewsModel {
 		this.noNewsMessage = noNewsMessage;
 	}
 
+	/**
+	 * Post construct method - init once the model gets instantiated
+	 */
 	@PostConstruct
 	public void init() {
 		logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
@@ -414,26 +419,38 @@ public class CNWNewsModel {
 			} else {
 				processReleasesData();
 			}
-		} catch (IOException e) {
+		} catch (IOException | ApplicationException | SystemException e) {
 			logger.error("Error :: CNWNewsModel :: init :: error trace: {}", e);
 		}
 	}
 
-	public void processOverviewData() throws IOException {
+	/**
+	 * Gets news overview data 
+	 * @throws IOException
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 */
+	public void processOverviewData() throws IOException, ApplicationException, SystemException {
 		logger.debug("Entry :: CNWNewsDetailsModel :: processOverviewData :: numberOfNews: {}, newsCategories: {}, locale: {}", numberOfNews, newsCategories, locale);
 		try {
 			if (null == numberOfNews || null == newsCategories) {
 				return;
 			}
 			releaseMain = newsService.getCNWNewsOverview(locale, numberOfNews, newsCategories);
-		} catch (IOException e) {
+		} catch (IOException | ApplicationException | SystemException e) {
 			logger.error("Error :: CNWNewsDetailsModel :: processOverviewData :: {}", e);
 			throw e;
 		}
 		logger.debug("Fetched news :: {}", releaseMain);
 	}
 
-	public void processReleasesData() throws IOException {
+	/**
+	 * Gets new listing data
+	 * @throws IOException
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 */
+	public void processReleasesData() throws IOException, ApplicationException, SystemException {
 		logger.debug("Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}", latestYear, numberOfTabs, locale, newsCategories, pageSize);
 		int year;
 		int totalNoYears;
@@ -487,7 +504,7 @@ public class CNWNewsModel {
 			if (logger.isDebugEnabled()) {
 				logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
 			}
-		} catch (IOException e) {
+		} catch (IOException | ApplicationException | SystemException e) {
 			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
 			throw e;
 		}

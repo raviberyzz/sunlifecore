@@ -634,11 +634,6 @@
                                             cq:styleLabel="Yellow Icon White Background"
                                             jcr:primaryType="nt:unstructured"/>
 										<item5
-                                            cq:styleClasses="tool-card-wrapper"
-                                            cq:styleId="1577978785269"
-                                            cq:styleLabel="Feature Tool Card"
-                                            jcr:primaryType="nt:unstructured"/>
-										<item6
                                             cq:styleClasses="cta-three-column-wrapper"
                                             cq:styleId="1577978785270"
                                             cq:styleLabel="CTA Three Column"
