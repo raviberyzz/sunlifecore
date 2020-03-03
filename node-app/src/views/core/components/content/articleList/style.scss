@@ -46,7 +46,8 @@
 } 
 .articleList_editorial-wrapper{
     .cmp-contentfragment{
-        width:33%;
+        width: 33%;
+        float: left;
         .articleImage--cmp-contentfragment__elements{
             padding-right:14px;
             text-align: center;
@@ -129,7 +130,8 @@
                 display:block;
             }
             .cmp-contentfragment{
-                width:33%;
+                width:100%;
+                float:none;
                 .cmp-contentfragment__elements{
                     text-align: center;
                     width:100%;               
