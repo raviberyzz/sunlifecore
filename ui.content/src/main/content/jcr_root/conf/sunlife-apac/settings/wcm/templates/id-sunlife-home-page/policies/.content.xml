@@ -38,6 +38,10 @@
 	                                cq:policy="sunlife/apac/id/components/content/layout-container/policy_layoutContainer"
 	                                jcr:primaryType="nt:unstructured"
 	                                sling:resourceType="wcm/core/components/policies/mapping"/>
+	                            <link-list 
+                            		cq:policy="sunlife/apac/id/components/content/link-list/policy_linkList" 
+                            		jcr:primaryType="nt:unstructured"
+                            		sling:resourceType="wcm/core/components/policies/mapping"/>
                                 <separator
                                     cq:policy="sunlife/apac/id/components/content/separator/policy_separator"
                                     jcr:primaryType="nt:unstructured"

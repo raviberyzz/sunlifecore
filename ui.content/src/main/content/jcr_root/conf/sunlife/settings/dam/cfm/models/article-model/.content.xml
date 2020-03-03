@@ -24,7 +24,7 @@
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="20">
+                        maxGeneratedOrder="23">
                         <articlePublishedDate
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
@@ -47,13 +47,25 @@
                         </articlePublishedDate>
                         <articleHeadline
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Article Headline"
-                            default-mime-type="text/html"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldDescription="Please provide the Article Headline"
-                            listOrder="2"
-                            metaType="text-multi"
+                            fieldLabel="Article Headline"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
                             name="articleHeadline"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <articlePageLink
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please provide the  Article Page URL."
+                            fieldLabel="Article Page Link"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="articlePageLink"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
@@ -71,12 +83,12 @@
                             valueType="string"/>
                         <articleMiniDescription
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Article Mini Description"
-                            default-mime-type="text/html"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldDescription="Please provide the Article Mini Description"
-                            listOrder="2"
-                            metaType="text-multi"
+                            fieldLabel="Article Mini Description"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
                             name="articleMiniDescription"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
@@ -103,6 +115,42 @@
                             listOrder="2"
                             metaType="text-multi"
                             name="articleMainDescription"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <articleSocialDescription
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Article Social Description"
+                            default-mime-type="text/html"
+                            fieldDescription="Please provide the Article Social Description."
+                            listOrder="21"
+                            metaType="text-multi"
+                            name="articleSocialDescription"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <articleSEODescription
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Article SEO Description"
+                            default-mime-type="text/html"
+                            fieldDescription="Please provide the Article SEO Description."
+                            listOrder="22"
+                            metaType="text-multi"
+                            name="articleSEODescription"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <articleKeywords
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please provide the Article Keywords."
+                            fieldLabel="Article Keywords"
+                            listOrder="23"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="articleKeywords"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
