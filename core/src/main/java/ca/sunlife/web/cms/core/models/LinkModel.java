@@ -51,9 +51,9 @@ public interface LinkModel {
 	String getNextList();
 	
 	/**
-	 * Gets the next list.
+	 * Gets the expanded list.
 	 *
-	 * @return the next list
+	 * @return the expanded list
 	 */
 	@Inject
 	String getExpandList();
