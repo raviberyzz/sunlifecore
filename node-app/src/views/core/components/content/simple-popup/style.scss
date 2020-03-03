@@ -22,14 +22,15 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-                .close-popup{
-                    font-size:1.125rem;
-                    opacity:1;
-                    margin:0;
-                    cursor:pointer;
-                    position: relative;
-                    top: -16px;
-                }
+        .close-popup{
+            font-size:1.125rem;
+            opacity:1;
+            margin:0;
+            cursor:pointer;
+            position: relative;
+            top: -22px;
+            left: 22px;
+        }
         .modal-body{
             padding:0;
             form{
@@ -83,6 +84,13 @@
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
+    .subscribe-popup-wrapper {
+        .modal-content {
+            .close-popup {
+                left: 0;
+            }
+        }
+    }
     .subscribe-popup-wrapper{
         .modal-content{
             width:624px;
@@ -107,6 +115,13 @@
     }
 }
 @media (max-width: $mobile-screen-max){
+    .subscribe-popup-wrapper {
+        .modal-content {
+            .close-popup {
+                left: 0;
+            }
+        }
+    }
     .subscribe-popup-wrapper{
         .modal-content{
             width:90%;
