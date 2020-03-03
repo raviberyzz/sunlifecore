@@ -731,7 +731,7 @@ ul {
             .icon-style {
               height: 60px;
               width: 60px;
-              padding: 13px;
+              padding: 11px;
               font-size: 34px;
               position: relative;
               bottom: 49px;
@@ -1102,7 +1102,7 @@ ul {
             width:60px;
             height:60px;
             position: relative;
-            top:10px;
+            padding:11px;
 		}
 	}
 	.aem-Grid--12 {
@@ -1134,7 +1134,6 @@ ul {
 			margin-left: 6px;
 		}
     }
-
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
@@ -1144,9 +1143,15 @@ ul {
                 padding-left: 20px;
             }
         }
+        .col-sm-6 {
+            .text {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
 	}
 }
-
 
 /*styles for related resource end */
 
