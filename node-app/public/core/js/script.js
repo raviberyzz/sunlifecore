@@ -4555,6 +4555,12 @@ $(document).ready(function () {
       var updatedString = a1.replace("&nbsp;", "");
       $('#userIdDiv').html(updatedString);
     } 
+    $("#form_signon .btn.btn-blue").click(function(){
+      return CheckClicks('e');
+    });
+    $("#rememberIDModal").click(function(){
+      remember(this);
+    });
 });     
 
 

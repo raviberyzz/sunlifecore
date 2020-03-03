@@ -1,5 +1,5 @@
 {{>core-components-content-button}}
-<div class="modal fade sign-in-modal-wrapper" data-section="{{data-section-sign-in}}" id="mySignInModal" role="dialog">
+<div class="modal fade sign-in-modal-wrapper" data-section="header-sign-in" id="mySignInModal" role="dialog">
         <div class="modal-dialog sign-in-modaldialog">
                 <!-- Modal content-->
                 <div class="modal-content modal-main horizontal-middle-align">
@@ -10,18 +10,18 @@
                         </div>
                         <div class="modal-body">
                                 <div class="slf-icon-reg">
-                                        <span class="icon-reg fa fa-user fa-inverse fa-stack-1x">&nbsp;</span>
+                                        <span class="icon-reg fa fa-user fa-inverse fa-stack-1x"></span>
                                 </div>
                                 <div class="login-container" id="signin-widget-modal">
-                                        <h4 id="customerSignInHeader" class="customerSignInHeader">{{client-text}}</h4>
+                                        <h4 id="customerSignInHeader" class="customerSignInHeader">Client sign in</h4>
                                         <div class="download-app">
                                                 <a href="https://www.sunlife.ca/ca/Support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
                                                         target="_blank">
-                                                        <img alt="Sun Life App" src="{{img-tag}}" />
+                                                        <img alt="Sun Life App" src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png" />
                                                 </a>
                                                 <div class="download-text">
-                                                        <p>{{img-text-1}}</p>
-                                                        <p class="download-text-bold">{{img-text-2}}</p>
+                                                        <p>For the best mobile experience</p>
+                                                        <p class="download-text-bold">download the my Sun Lifeapp</p>
                                                 </div>
                                         </div>
                                         <form name="form_signon_modal" id="form_signon">
@@ -32,42 +32,40 @@
                                                                         name="USER" id="accessIDModal" type="text"
                                                                         placeholder<input name="USER" id="accessIDModal"
                                                                         class="accessid" type="text"
-                                                                        placeholder="{{email}}" autocomplete="off"
+                                                                        placeholder="Email/Access ID" autocomplete="off"
                                                                         aria-label="Enter email/acess Id" />
                                                         </div>
-                                                        <div class="form-group form-second text-left">
-                                                                <input name="SAVEIDCHECK" class="remember"
-                                                                        id="rememberIDModal" onclick="remember(this)"
-                                                                        type="checkbox">
+                                                        <div class="form-group form-second text-left">                                                     
                                                                 <label id="remembermelabel" class="remeberme"
-                                                                        for="rememberIDModal">
-                                                                        &nbsp;
-                                                                        {{remember-text}}</label>
+                                                                        for="rememberIDModal"><input name="SAVEIDCHECK" class="remember"
+                                                                         id="rememberIDModal"
+                                                                        type="checkbox"/>
+                                                                        Remember me</label>
                                                         </div>
                                                 </div>
                                                 <label class="sr-only" for="accessPasswordModal"> Password</label><input
                                                         name="PASSWORD" class="password-input" id="accessPasswordModal"
-                                                        type="password" placeholder="{{password}}" autocomplete="off"
+                                                        type="password" placeholder="Password" autocomplete="off"
                                                         aria-label="Enter Password">
                                                 <input class="btn btn-blue" onclick="return CheckClicks('e');"
                                                         type="submit" alt="Sign in" value="Sign in" />
                                         </form>
                                         <p class="signin-links"><span class="signin-help-link">
                                                         <a href="https://www.sunlife.ca/ca/Support/Sign+in+help?vgnLocale=en_CA"
-                                                                target="_blank">{{sign-help}}</a> </span>
+                                                                target="_blank">Sign-in help</a> </span>
                                                 <span class="signin-register">
                                                         <a href="https://www.sunnet.sunlife.com/mysunlife/signin/register/bregister.asp"
-                                                                target="_blank">{{register}}</a>
+                                                                target="_blank">Register</a>
                                                 </span>
                                                 <span class="sr-only" aria-hidden="true"> now</span></p>
-                                        <div class="signin-terms">{{agree}}<a
+                                        <div class="signin-terms">By signing in, you agree to these<a
                                                         href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
-                                                        target="_blank">{{terms}}</a>
+                                                        target="_blank">terms and conditions.</a>
                                         </div>
                                         <div class="sign-plans"><a
                                                         href="https://www.sunlife.ca/ca/Support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA"
                                                         class="signin-sponsor"
-                                                        target="_blank">&nbsp;{{plan-advisor-text}}</a>
+                                                        target="_blank">Plan sponsors and advisors</a>
                                         </div>
                                 </div>
                         </div>

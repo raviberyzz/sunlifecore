@@ -32,7 +32,7 @@
                             <li data-sly-test="${regionObj.subLinks}">
                                     <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false" data-toggle="collapse">${regionObj.linkName}</a>                                    
                                         <ul class="list-unstyled accordion-list collapse" data-sly-list.subLink="${regionObj.subLinks}">
-                                            <li class="${firstElement && subLinkList.first ? 'nav-select' : ''}">
+                                            <li class="${regionObj.expandList  && subLinkList.first ? 'nav-select' : ''}">
                                                 <a href="${subLink.subLinkUrl @ extension = 'html'}">${subLink.subLinkName}</a>
                                             </li>
                                         </ul>
