@@ -3,10 +3,18 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="stylesheet" href="/static/vendor/css/vendor.css">
+  <link rel="stylesheet" href="/static/core/vendor/css/vendor.css">
   <link rel="stylesheet" href="/static/core/css/style.css">
-  <script src="/static/vendor/js/vendor.js"></script>
+  {{#if module}}
+    <link rel="stylesheet" href="/static/{{{module}}}/vendor/css/vendor.css">
+    <link rel="stylesheet" href="/static/{{{module}}}/css/style.css">
+  {{/if}}
+  <script src="/static/core/vendor/js/vendor.js"></script>
   <script src="/static/core/js/script.js"></script>
+  {{#if module}}
+    <script src="/static/{{{module}}}/vendor/js/vendor.js"></script>
+    <script src="/static/{{{module}}}/js/script.js"></script>
+  {{/if}}
   <title>{{componentName}}</title>
   <!-- UDO starts here -->
   <script type="text/javascript">
