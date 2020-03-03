@@ -1175,7 +1175,31 @@ ul {
         }
 	}
 }
+//related resources mobile styles
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
+    .cmp-related-resource {
+        padding: 20px 0 40px 0px;
+        .icon-parent{
+            display: none;
+        }
+        .icon-texts {
+            h3{
+                padding: 0 16px;
+            }
+            p{
+                padding: 0 16px;
+            }
+            .col-sm-6:first-of-type{
+                .cmp-text{
+                    border-bottom: 2px solid #D7D7D7;
+                    margin-bottom: 32px;
+                    padding-bottom: 32px;
+                }
+            } 
+        } 
 
+    }
+}
 /*styles for related resource end */
 
 @media (min-width: $tab-screen-min)
