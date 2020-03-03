@@ -215,7 +215,7 @@ ul {
     }
 }
 .cross-cta-wrapper {
-    padding: 24px 16px 14px 16px;
+    padding: 24px 16px 24px 16px;
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
@@ -1134,7 +1134,6 @@ ul {
 			margin-left: 6px;
 		}
     }
-
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
@@ -1144,9 +1143,15 @@ ul {
                 padding-left: 20px;
             }
         }
+        .col-sm-6 {
+            .text {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
 	}
 }
-
 
 /*styles for related resource end */
 
