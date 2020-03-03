@@ -53,16 +53,16 @@
                 </sly>
 			</sly>
          </sly>
-          {"@context":"http://schema.org","@type":"Article","author":{"@type":"Person","name":"${author}"},"datePublished":"<sly data-sly-list.elementList="${fragment.elements}" data-sly-unwrap><sly data-sly-test="${elementList.name == 'articlePublishedDate'}" data-sly-unwrap><sly data-sly-test="${elementList.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/content/article/calendar.html" data-sly-call="${tpl.element @ date = elementList.value}" data-sly-unwrap></sly></sly></sly>","headline":"${headline}","image":["${articleImage}"],"publisher":{"@type":"Organization","name":"Sun Life Assurance Company of Canada","logo":{"@type":"ImageObject","height":"60","width":"309","url":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-logo-mobile-en-amp.png"}},"dateModified":"${fragment.jcrLastModified}","description":"${miniDescription}","mainEntityOfPage":"${seoModel.seoCanonicalUrl}"}					
+          {"@context":"http://schema.org","@type":"Article","author":{"@type":"Person","name":"${author}"},"datePublished":"<sly data-sly-list.elementList="${fragment.elements}" data-sly-unwrap><sly data-sly-test="${elementList.name == 'articlePublishedDate'}" data-sly-unwrap><sly data-sly-test="${elementList.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/content/article/calendar.html" data-sly-call="${tpl.element @ date = elementList.value}" data-sly-unwrap></sly></sly></sly>","headline":"${headline @context ='html'}","image":["${articleImage}"],"publisher":{"@type":"Organization","name":"Sun Life Assurance Company of Canada","logo":{"@type":"ImageObject","height":"60","width":"309","url":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-logo-mobile-en-amp.png"}},"dateModified":"${fragment.jcrLastModified}","description":"${miniDescription @context ='html'}","mainEntityOfPage":"${seoModel.seoCanonicalUrl}"}					
 	</div>
 
 
-    <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
+    <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
     <sly data-sly-use.seoModel="ca.sunlife.web.cms.core.models.BasePageModel" />
-                {
+              PDRTJS_settings_${fragment.articleID} =  {
             "id" : "${fragment.articleID}",
             "unique_id" : "${fragment.articleUniqueID}",
-            "title" : "${headline}",
+            "title" : "${headline @context ='html'}",
             "permalink" : "${seoModel.seoCanonicalUrl}"
             }
     </div>

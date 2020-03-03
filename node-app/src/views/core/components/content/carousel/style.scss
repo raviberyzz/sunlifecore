@@ -1,0 +1,35 @@
+@import '../../../base/core';
+.cmp-carousel__item {
+    display: none;
+  }
+  .cmp-carousel__item--active {
+    display: block;
+  }
+  .cmp-carousel__indicators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position:relative;
+    bottom:30px;
+  }
+  .cmp-carousel__indicator {
+    position: relative;
+    flex: 0 1 auto;
+    width: 16px;
+    height: 16px;
+    margin: 0 7px;
+    border-radius: 50%;
+    font-size: 0;
+    text-indent: -3000px;
+    background: linear-gradient(to bottom, rgba(201, 201, 201, 1) 0%, rgba(228, 228, 228, 1) 100%);
+    zoom: 1;
+  }
+  .cmp-carousel__indicator--active {
+    background: linear-gradient(to bottom, rgba(135, 175, 215, 1) 0%, rgba(103, 150, 184, 1) 100%);
+  }
+  .carousel-wrapper .cmp-carousel__actions{
+     display:none;
+  }

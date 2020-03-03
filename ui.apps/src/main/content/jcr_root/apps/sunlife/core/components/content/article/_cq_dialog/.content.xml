@@ -67,6 +67,20 @@
                                                 name="./articleID"/>
                                         </items>
                                     </articleID>
+                                    <commentRequired
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./checkboxComment"
+                                        text="Comment Required"
+                                        uncheckedValue="false"
+                                        value="{Boolean}true"/>
+                                    <hideDisplayDate
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./checkboxHideDate"
+                                        text="Hide Display Date"
+                                        uncheckedValue="false"
+                                        value="{Boolean}true"/>
                                 </items>
                             </column>
                         </items>
