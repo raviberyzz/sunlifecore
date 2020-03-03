@@ -215,7 +215,7 @@ ul {
     }
 }
 .cross-cta-wrapper {
-    padding: 24px 16px 14px 16px;
+    padding: 24px 16px 24px 16px;
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
     .mega-menu-icon-wrapper {
@@ -279,7 +279,7 @@ ul {
         border-bottom: 1px solid $light-grey-separator-color;
     }
     .image-text-wrapper {
-        padding: 40px 15px 32px 15px;
+        padding: 40px 15px 12px 15px;
         text-align: center;
         background-color: $white-shade;
         height: 95%;
@@ -307,6 +307,12 @@ ul {
             }
         }
     }
+    .col-sm-4 {
+        .container-component {
+            background-color: $white-shade;
+        }
+    }
+
 }
 .yellow-icon-white-background {
     .cmp-container > div {
@@ -622,6 +628,23 @@ ul {
         .border-right {
             border-right: none;
         }
+        .col-sm-4 {
+            .container-border-right {
+                border-right: none;
+            }
+            .container-border-right::after {
+                content: '';
+                position: relative;
+                left: 0;
+                bottom: 0px;
+                height: 1px;
+                width: 100px;
+                border-bottom: 1px solid $container-border-color;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 12px;
+            }
+        }
     }
     .tool-card-wrapper .image-text-wrapper .side-image{
         display:block;
@@ -684,7 +707,7 @@ ul {
             }
         }
     .image-text-wrapper{
-        padding: 40px 15px 32px 15px;
+        padding: 40px 15px 12px 15px;
     }
     .left-item{
         padding-bottom: 32px;
@@ -731,7 +754,7 @@ ul {
             .icon-style {
               height: 60px;
               width: 60px;
-              padding: 13px;
+              padding: 11px;
               font-size: 34px;
               position: relative;
               bottom: 49px;
@@ -1102,7 +1125,7 @@ ul {
             width:60px;
             height:60px;
             position: relative;
-            top:10px;
+            padding:11px;
 		}
 	}
 	.aem-Grid--12 {
@@ -1134,7 +1157,6 @@ ul {
 			margin-left: 6px;
 		}
     }
-
 }
 @media (min-width: 768px) {
 	.cmp-related-resource {
@@ -1144,9 +1166,15 @@ ul {
                 padding-left: 20px;
             }
         }
+        .col-sm-6 {
+            .text {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
 	}
 }
-
 
 /*styles for related resource end */
 
@@ -1180,7 +1208,7 @@ ul {
             .text:last-child{
                 margin-bottom: 40px;
                 .cmp-text{
-                    p:last-child{    
+                    p:last-child{
                             margin-bottom:0px;
                     }
                 }
@@ -1226,8 +1254,8 @@ ul {
             }
         }
             }
-       
-    } 
+
+    }
 }
 @media(min-width: $desktop-screen-min)
 {
