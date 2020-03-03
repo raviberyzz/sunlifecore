@@ -49,6 +49,14 @@ public interface LinkModel {
 	 */
 	@Inject
 	String getNextList();
+	
+	/**
+	 * Gets the next list.
+	 *
+	 * @return the next list
+	 */
+	@Inject
+	String getExpandList();
 
 	/**
 	 * Gets the sub links.
