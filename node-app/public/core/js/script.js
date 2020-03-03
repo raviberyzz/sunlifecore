@@ -4254,6 +4254,7 @@ $('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
 });
 
 
+
 $(document).ready(function () {
 	$('.editorial-nav-mobile-wrapper .cmp-form-button').addClass('fa fa-chevron-right');
 		var pathName= window.location.pathname ;
@@ -4333,7 +4334,6 @@ $(document).ready(function () {
   }
 
 });
-
 
 
 
@@ -4924,7 +4924,6 @@ $(document).ready(function () {
     }
     /*link farm table code ends here */
 });
-
 $(document).ready(function(){
     popUpWidth();
     popUpHeight(); 
@@ -4991,61 +4990,6 @@ $(document).ready(function () {
    $('.desktop-primary-navigation a[data-toggle=dropdown]').click(function(){
       location.href = this.href;
   })
-});
-$(document).ready(function(){
-  var menuHeight= $('.slf-header-mega-menu2').height();
-  var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
-   $( ".dropdown-submenu").hover(
-       function(){
-           $('.slf-header-mega-menu2').height(submenuHeight+5);
-   },function(){
-     $('.slf-header-mega-menu2').height(menuHeight);
-      }
-   );
-  });
-
-  /*AEM JS*/
-  $(document).ready(function(){
-   var menuHeight=0;
- $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
-     function(){
-        menuHeight= $(this).parent().parent().parent().parent().height();
-          var submenuHeight=$(this).children('.dropdown-menu').height();
-         if ( submenuHeight > menuHeight)
-         {
-             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
-         }
-         else
-         {
-             $(this).children('.dropdown-menu').height(menuHeight);
-         }
-
- },function(){
-   $('.cmp-dynamic-megamenu').height(menuHeight);
-    }
- );
-});
-
-
-$(document).ready(function(){
-   var menuHeight=0;
- $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
-     function(){
-         menuHeight= $(this).parent().parent().parent().parent().height();
-          var submenuHeight=$(this).children('.dropdown-menu').height();
-         if ( submenuHeight > menuHeight)
-         {
-             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
-         }
-          else
-         {
-             $(this).children('.dropdown-menu').height(menuHeight-10);
-         }
-
- },function(){
-   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
-    }
- );
 });
 $(document).ready(function () {
     mobileLogoWidth();
@@ -5128,6 +5072,76 @@ $(document).ready(function () {
         }
     });  
 });   
+$(document).ready(function(){
+  var menuHeight= $('.slf-header-mega-menu2').height();
+  var submenuHeight=$('.dropdown-submenu .dropdown-menu').height();
+   $( ".dropdown-submenu").hover(
+       function(){
+           $('.slf-header-mega-menu2').height(submenuHeight+5);
+   },function(){
+     $('.slf-header-mega-menu2').height(menuHeight);
+      }
+   );
+  });
+
+  /*AEM JS*/
+  $(document).ready(function(){
+   var menuHeight=0;
+ $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
+     function(){
+        menuHeight= $(this).parent().parent().parent().parent().height();
+          var submenuHeight=$(this).children('.dropdown-menu').height();
+         if ( submenuHeight > menuHeight)
+         {
+             $('.cmp-dynamic-megamenu').height(submenuHeight+13);
+         }
+         else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight);
+         }
+
+ },function(){
+   $('.cmp-dynamic-megamenu').height(menuHeight);
+    }
+ );
+});
+
+
+$(document).ready(function(){
+   var menuHeight=0;
+ $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
+     function(){
+         menuHeight= $(this).parent().parent().parent().parent().height();
+          var submenuHeight=$(this).children('.dropdown-menu').height();
+         if ( submenuHeight > menuHeight)
+         {
+             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
+         }
+          else
+         {
+             $(this).children('.dropdown-menu').height(menuHeight-10);
+         }
+
+ },function(){
+   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
+    }
+ );
+});
+$(document).ready(function () {
+var pathName= window.location.pathname ;
+$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
+ var strLink =  $(this).attr('href');
+ var split = strLink.indexOf('.html')-1; 
+ strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
+ var strLink1 = strLink.lastIndexOf('/');
+ strLink = strLink.substr(strLink1,split);
+ strLink = pathName.indexOf(strLink);
+ if(strLink > -1){
+     $(this).addClass("nav-active");
+ }
+
+})
+});
 $(document).ready(function () {
 	$('footer .accordion-heading').click(function () {
 		$(this).siblings('.list-div').toggle('collapse');
@@ -5166,21 +5180,6 @@ $(document).ready(function () {
 	// 	}
 	// });
 // });
-$(document).ready(function () {
-var pathName= window.location.pathname ;
-$('ul.main-nav').find('li.nav-item:not(".hidden-lg") > a').each(function(){
- var strLink =  $(this).attr('href');
- var split = strLink.indexOf('.html')-1; 
- strLink = strLink.substr(1,(strLink.indexOf('.html')-1));
- var strLink1 = strLink.lastIndexOf('/');
- strLink = strLink.substr(strLink1,split);
- strLink = pathName.indexOf(strLink);
- if(strLink > -1){
-     $(this).addClass("nav-active");
- }
-
-})
-});
 $(document).ready(function () {
     life_moments_fix();
     $(window).resize(function () {
@@ -5601,6 +5600,211 @@ if('.breadcrumb'){
 });
 
 $(document).ready(function(){
+        //Polldaddy library
+        (function(d,c,j){
+            if(!document.getElementById(j)){
+                var pd=d.createElement(c),s;
+                pd.id=j;
+                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
+                s=document.getElementsByTagName(c)[0];
+                s.parentNode.insertBefore(pd,s);
+            }
+        }
+        (document,'script','pd-rating-js'));
+})
+//Version 2.0 - 2016.03.51
+var iconMarkerCorporate = '/static/ca/Find%20an%20advisor/images/icon_google-maps_office-building.png';
+var iconMarkerStandard = '/content/dam/sunlife/icon_google-maps_expert.png';
+var exists = false;
+var advisorInfo;
+if(typeof(advisorInfoMap) != 'undefined') {
+    advisorInfo = advisorInfoMap.map;
+}
+if(typeof(advisorInfo) !== 'undefined'){
+	exists = true;
+}
+$(document).ready(function () {
+    //Get page language
+    if($('.row-advisor').length){
+        var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
+        var loadMap = false;
+        var pageLabelData = {
+            'en': {	
+                'phone' : 'Phone:',
+                'cell': 'Cell:',
+                'moreinfo' : 'More Info',
+                'email': 'Email:'
+                },
+            'fr': {	
+                'phone' : 'TÃ©lÃ©phone :',
+                'cell': 'Cellulaire :',
+                'moreinfo' : 'Plus dâ€™infos',
+                'email': 'Courriel :'
+                }
+        };
+        //rssFeed();	
+        if(exists){
+        //setupAdvisorBio();
+        //setupAdvCookie();
+    
+        //Google large map link event
+        $("#largeGoogleMap").on("click", function(e){
+            window.open('//maps.google.com/maps?q=@' + advisorInfo.lat + ',' + advisorInfo.lng + '&hl='+ lang +'&z=14&f=q',null,'width=900,height=600,left=50,top=50,scrollbars=yes,resizable=yes');
+            e.preventDefault();
+        });
+    
+        //Init Google map
+        function initMap(){
+            //Set google map option
+            var mapOptions = {
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.LARGE,
+                    position: google.maps.ControlPosition.RIGHT_CENTER
+                },
+                mapTypeControl: false,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.LEFT_TOP
+                }    
+            };	
+            //Create a map
+            var map = new google.maps.Map(document.getElementById('GoogleMapDiv'), mapOptions);
+    
+            //Use lat & lng
+            if (advisorInfo.lat != "" && advisorInfo.lng != "" && advisorInfo.lat != "0" && advisorInfo.lng != "0"){	
+                createMaker( map );
+            }
+            //Use Geoorder
+            else {
+                getGeocoder( map);
+            }
+        }
+    
+        //Create Marker 
+        function createMaker(map){
+            var pos = new google.maps.LatLng(advisorInfo.lat, advisorInfo.lng);
+            map.setCenter(pos);
+            map.setZoom(14);	 
+            
+            var advIcon = advisorInfo.type == "ADVISOR" ? iconMarkerStandard : iconMarkerCorporate;
+            
+            var marker = new google.maps.Marker({position: pos, map :map, icon: advIcon });
+            marker.infowindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, 'mouseover', function(e) {
+               // If we can extract a map from the info window,
+               // it's already open.  So, no need to re-open it.
+               var infomap = marker.infowindow.getMap();
+               if( infomap == null || typeof infomap == "undefined" ){
+                var advname = cleanString(advisorInfo.name)  ;
+                var addressFormated = cleanString(advisorInfo.address) ;
+        
+                var mapHtml = "<b>" + advname + "</b><br/>" + addressFormated + "<br/>" ;
+                if( undefined!=advisorInfo.phone && advisorInfo.phone!=""){
+                    mapHtml = mapHtml + pageLabelData[lang]['phone'] + " " + advisorInfo.phone ;
+    
+                }
+                if( undefined!=advisorInfo.cell && advisorInfo.cell!=""){
+                    mapHtml = mapHtml + " | "  + pageLabelData[lang]['cell'] + " " + advisorInfo.cell ;
+                }
+    
+                if( undefined!=advisorInfo.email && advisorInfo.email!=""){
+                    mapHtml = mapHtml + "<br/>" + pageLabelData[lang]['email'] +  " " + "<a href='mailto:"+advisorInfo.email+ "'>" +advisorInfo.email+ "</a>";
+                }
+               marker.infowindow.setContent(mapHtml);
+               marker.infowindow.open(map, this);
+               }
+               });	
+        }
+        
+        function cleanString(input){
+            var output = "";
+            output = input.replace("\\u00e8","Ã¨").replace("\\u00E8","Ã¨").replace("\\u00e0","Ã ").replace("\\u00e2","Ã¢").replace("\\u00e4","Ã¤").replace("\\u00e7","Ã§").replace("\\u00e9","Ã©").replace("\\u00E9","Ã©").replace("\\u00ea","Ãª").replace("\\u00eb","Ã«").replace("\\u00ee","Ã®").replace("\\u00ef","Ã¯").replace("\\u00f4","Ã´").replace("\\u00f6","Ã¶").replace("\\u00f9","Ã¹").replace("\\u00fb","Ã»").replace("\\u00fc","Ã¼").replace("\\u00AE","Â®").replace("\\u00F4","Ã´");
+            
+            return output ;
+        }
+    
+        //Geocorder - from address
+        function getGeocoder(map){
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': advisorInfo.address}, function(results, status) {    
+                if (status == google.maps.GeocoderStatus.OK) {
+                    //Set the lat / lng
+                    advisorInfo.lat = results[0].geometry.location.lat();
+                    advisorInfo.lng = results[0].geometry.location.lng();
+                    createMaker( map );
+                }
+                else {
+                    //Default location
+                    advisorInfo.lat = 57;
+                    advisorInfo.lng = -105;
+                    createMaker( map );
+                }
+            });
+        }
+        }
+        //Google map accordion event
+        $('#map-title').on("click", function(){
+            var asset_title = "hide map";
+            if($(this).attr('aria-expanded') == "false"){
+                if ( loadMap == false ){
+                    googleMapApiInit();
+                }
+                asset_title = "show map";
+            }
+            utag.link({
+                "asset_type"	: "accordion",
+                "asset_title"	: asset_title,
+                "event_type"	: "Click",
+                "event_title"	: "page interaction",
+                "page_section"  : "map"});        
+        });
+        //Load Google map JS
+        function googleMapApiInit() {
+            var googleLangs = ["en", "fr"];
+            if (!jQuery.inArray(lang, googleLangs)) {
+                lang = 'en';
+            }
+    
+            //Load Google api with language
+            google.load('maps', '3.x', {
+                'other_params': 'client=gme-sunlife&libraries=geometry&language=' + lang,
+                'callback': initMap
+            });
+            loadMap = true;
+        }
+    
+        
+    // Setup Advisor Details
+    function setupAdvisorBio() {
+        var maxChars = 300;
+        $('.row-advisor-desc-bio').each(function() {
+            var bio = $(this).text();
+            if( bio.length > maxChars ) {
+                var shortBio = bio.substring(0, maxChars);
+                var fullBio = bio.substring(maxChars);
+                // If the last char is a space character, we're done.
+                for( var x = shortBio.length-1; shortBio[x] !== ' ' && x >= 0; x-- ) {
+                    fullBio = shortBio[x] + fullBio;
+                    shortBio = shortBio.substring(0, shortBio.length-1);
+                }
+                // Create More Info button
+                var btn = '<a href="#" data-toggle="row-advisor-desc-bio-full" class="row-advisor-desc-bio-toggle">'+pageLabelData[lang]['moreinfo']+'</a>';
+                fullBio = '<span class="row-advisor-desc-bio-full">' + fullBio + '</span>';
+                $(this).html(shortBio+fullBio+btn);
+                // Setup the event handler for the More Info button
+                $(this).find('.row-advisor-desc-bio-toggle').on('click', function(e) {
+                    e.preventDefault();
+                    $(this).siblings($('.'+$(this).data('toggle'))).toggleClass('js-enable');
+                    $(this).remove();
+                });
+            }
+        });
+    }	
+    }
+    }
+);
+$(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
@@ -5647,17 +5851,3 @@ $(document).ready(function(){
 		}
     });
 });
-
-$(document).ready(function(){
-        //Polldaddy library
-        (function(d,c,j){
-            if(!document.getElementById(j)){
-                var pd=d.createElement(c),s;
-                pd.id=j;
-                pd.src=('https:'==document.location.protocol)?'https://polldaddy.com/js/rating/rating.js':'http://i0.poll.fm/js/rating/rating.js';
-                s=document.getElementsByTagName(c)[0];
-                s.parentNode.insertBefore(pd,s);
-            }
-        }
-        (document,'script','pd-rating-js'));
-})
