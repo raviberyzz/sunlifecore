@@ -67,4 +67,12 @@ color: $medium-blue-color;
 .tooltip.in{
     opacity:1;
 }
+@media (max-width: 767px) {
+    .tooltip-inner{
+        padding: 16px ;
+        font-size: 14px;
+        min-width: 200px;
+        width: 200px;
+    }
+}
 /* tool tip text ends here*/
