@@ -121,7 +121,7 @@
     }
     .text-section {
         padding: 20px 27px;
-        width: 50%;
+        width: 405px;
         position: absolute;
         p {
             margin: 0;
@@ -175,6 +175,13 @@
 }
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .banner-section {
+        .editorial-hero-banner{
+            .image-text-wrapper {
+                .text-section {
+                    margin-top: 0;
+                }
+            }
+        }
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.75rem;
             line-height: 36px;
@@ -186,7 +193,7 @@
         }
         .image-text-wrapper {
             .text-section {
-                padding: 40px 24px 24px 30px;
+                padding: 40px 24px;
             }
         }
     }
@@ -252,7 +259,7 @@
             display: none;
         }
         .mobile-image {
-            display: inherit;
+            display: block;
         }
         .left-item {
             float: none;
@@ -260,7 +267,7 @@
         }
         .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
-                display: inherit;
+                display: block;
                 /*text-align: center;*/
                 text-align:left;
                 .text-section {
@@ -304,7 +311,7 @@
                     display: none !important;
                 }
                 .show-only-in-editorial {
-                    display: inherit !important;
+                    display: block !important;
                 }
             }
         }
