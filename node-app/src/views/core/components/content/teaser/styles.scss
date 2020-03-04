@@ -3,6 +3,11 @@
 .show-only-in-editorial {
     display: none !important;
 }
+.content-block-image {
+    .side-image {
+        width: auto;
+    }
+}
 .side-image {
     width: 100%;
 }
@@ -211,7 +216,7 @@
                     width:auto;
                 }
             }
-           
+
         }
     }
 }
