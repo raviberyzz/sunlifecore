@@ -1,6 +1,6 @@
 <form data-sly-use.formContainer="ca.sunlife.web.cms.core.models.FormContainer"
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
-      method="${formContainer.method}" action="${formContainer.formAction}" id="${formContainer.id}" name="${formContainer.name}"
+      method="${formContainer.method}" action="${formContainer.formAction}" name="${formContainer.name}"
       enctype="${formContainer.enctype}"
       class="cmp-form ${grid.cssClass}" data-parsley-validate="data-parsley-validate" onsubmit="${formContainer.validation @ context='scriptToken'}">
     <input type="hidden" name=":formstart" value="${resource.path}"/>
