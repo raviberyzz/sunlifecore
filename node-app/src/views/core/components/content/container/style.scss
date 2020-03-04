@@ -1181,6 +1181,9 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
+    .col-sm-6{
+        padding: 0px 9px 0 10px;
+    }
 	padding: 20px 0px 40px 8px;
 	background: #F7F7F7;
 	overflow: auto;
@@ -1220,6 +1223,10 @@ ul {
 	.cmp-text {
         ul{
             margin-left: 1em !important;
+            li{
+                text-align: justify;
+                display: flex;
+            }
         }
 		h3 {
 			font-size: 22px;
