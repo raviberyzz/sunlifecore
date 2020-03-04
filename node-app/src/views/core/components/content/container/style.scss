@@ -1182,23 +1182,23 @@ ul {
 /* styles for related resource start */
 .cmp-related-resource {
     .col-sm-6{
-        padding: 0px 9px 0 10px;
+        padding: 0px 8px 0 10px;
     }
 	padding: 20px 0px 40px 8px;
-	background: #F7F7F7;
+	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
 		float: left;
 		margin: 0 15px 25px 14px;
-		background: linear-gradient(#FFCB05, #EAAB00);
+		background: linear-gradient($medium-yellow-background, $primary-yellow-background);
 		color: $white-shade;
 		font-size: 2.2em;
 		border-radius: 100%;
-		border: 2px solid #fff;
+		border: 2px solid $white-shade;
 		text-align: center;
 		// line-height: 58px;
 		a {
-            color: #fff;
+            color: $white-shade;
             width:60px;
             height:60px;
             position: relative;
@@ -1239,11 +1239,11 @@ ul {
 		}
     }
 }
-@media (min-width: 768px) {
+@media (min-width: $tab-screen-min) {
 	.cmp-related-resource {
 		.col-sm-6:nth-child(2){
             .cmp-text{
-                border-left: 2px solid #D7D7D7;
+                border-left: 2px solid $light-grey-color;
                 padding-left: 20px;
             }
         }
@@ -1255,6 +1255,18 @@ ul {
             }
         }
 	}
+}
+//related resources ipad 768px not ipad pro
+@media (min-width:$tab-screen-min) and (max-width: 1023px){
+    .cmp-related-resource {
+        .cmp-text {
+            ul{
+                li{
+                    text-align: initial;
+                }
+            }
+        }
+    }
 }
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
