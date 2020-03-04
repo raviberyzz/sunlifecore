@@ -63,7 +63,7 @@
                                      <navigationOverview
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Navigation Overview title"
+                                        fieldLabel="Navigation Overview Title"
                                         name="./navigationOverview"/>
                                 </items>
                             </section-general>

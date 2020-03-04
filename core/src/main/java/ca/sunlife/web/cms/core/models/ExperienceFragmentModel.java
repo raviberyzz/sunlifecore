@@ -2,11 +2,7 @@ package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.jcr.RepositoryException;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -14,10 +10,15 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.day.cq.wcm.api.Page;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
+
+/**
+ * Sling model for Experience fragment model.
+ *
+ * @author MO93
+ */
 @Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ExperienceFragmentModel {
@@ -81,10 +82,9 @@ public class ExperienceFragmentModel {
 				String[] pathSplit = fragmentPath.split("/");
 				for(int i=0; i<pathSplit.length;i++) {
         		if(pathSplit[i].contains("header") || pathSplit[i].contains("footer")) {
-        			fragmentSplit = pathSplit[i];
-        			fragmentSplit = "/" + fragmentSplit + "/";
-        				break;
-        				}
+        			  fragmentSplit = "/" + pathSplit[i] + "/";
+        			  break;
+        		 }
 				}
 				String[] finalSplit = fragmentPath.split(fragmentSplit);
 				modifiedFragmentPath = headerPath + fragmentSplit + finalSplit[1];
