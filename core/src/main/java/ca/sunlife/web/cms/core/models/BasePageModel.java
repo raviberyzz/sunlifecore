@@ -40,6 +40,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
@@ -439,8 +440,8 @@ public class BasePageModel {
 			// Configuring custom social sharing - meta-tags
 			customMetadata.put(OG_TITLE, title);
 			customMetadata.put(TWITTER_TITLE, title);
-			customMetadata.put(OG_URL, seoCanonicalUrl);
-			customMetadata.put(TWITTER_URL, seoCanonicalUrl);
+			customMetadata.put(OG_URL, seoCanonicalUrl+BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(TWITTER_URL, seoCanonicalUrl+BasePageModelConstants.SLASH_CONSTANT);
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(OG_LOCALE, locale);
@@ -453,12 +454,12 @@ public class BasePageModel {
 			setAtlLanguages(altLanguages, pageLocale, pagePath);
 			// Sets UDO parameters
 			otherUDOTagsMap = new JsonObject();
-			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
+			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl+BasePageModelConstants.SLASH_CONSTANT); // canonical url
 			final String defaultReportingLanguage = configService.getConfigValues("defaultReportingLanguage", pagePath);
 			if( null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl ) {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/")); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace(BasePageModelConstants.SLASH_CONSTANT+pageLocaleDefault+BasePageModelConstants.SLASH_CONSTANT, BasePageModelConstants.SLASH_CONSTANT+defaultReportingLanguage+BasePageModelConstants.SLASH_CONSTANT)+BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			} else {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl+BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			}
 			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
 			setUDOParameters();
@@ -468,6 +469,7 @@ public class BasePageModel {
 			}
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 			udoTags = gson.toJson(otherUDOTagsMap);
+			seoCanonicalUrl = seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT;
 			logger.debug("Map Display {}", udoTags);
 		} catch (Exception e) {
 			logger.error("Error :: init method of BasePageModel :: {}", e);
@@ -496,15 +498,15 @@ public class BasePageModel {
 		for (final String lan : altLanguagesArray) {
 			logger.debug("{} {} ", lan, pagePath);
 			final String[] langArray = lan.split("_");
-			final String newUrl = pagePath.replace("/" + pageLocale.split("_")[0] + "/", "/" + langArray[0] + "/");
+			final String newUrl = pagePath.replace(BasePageModelConstants.SLASH_CONSTANT + pageLocale.split("_")[0] + BasePageModelConstants.SLASH_CONSTANT, BasePageModelConstants.SLASH_CONSTANT + langArray[0] + BasePageModelConstants.SLASH_CONSTANT);
 			logger.debug("New -- > {} {} ", langArray[0], newUrl);
 			if (null != resolver.getResource(newUrl)) {
 				logger.debug("value {}", newUrl);
-				altLanguageLinks.put(lan, newUrl);
+				altLanguageLinks.put(lan.replace("_", "-"), newUrl+BasePageModelConstants.SLASH_CONSTANT);
 			}
 		}
 		if (!altLanguageLinks.isEmpty()) {
-			altLanguageLinks.put(pageLocale, pagePath);
+			altLanguageLinks.put(pageLocale.replace("_", "-"), pagePath+BasePageModelConstants.SLASH_CONSTANT);
 		}
 
 		logger.debug("Map {}", altLanguageLinks);
@@ -528,7 +530,7 @@ public class BasePageModel {
 		}
 		if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0) {
 			String pageLocaleDefault = currentPage.getLanguage().getLanguage();
-			pagePath = pagePath.replace("/"+pageLocaleDefault+"/", "/"+defaultReportingLanguage+"/");
+			pagePath = pagePath.replace(BasePageModelConstants.SLASH_CONSTANT+pageLocaleDefault+BasePageModelConstants.SLASH_CONSTANT, BasePageModelConstants.SLASH_CONSTANT+defaultReportingLanguage+BasePageModelConstants.SLASH_CONSTANT);
 		}
 		
 		logger.debug("pagePath is: {}", pagePath);
@@ -539,7 +541,7 @@ public class BasePageModel {
         	pageResource = currentPage;
         }
 		
-		int startLevel = siteUrl.replaceFirst("/", "").split("/").length - 1;
+		int startLevel = siteUrl.replaceFirst(BasePageModelConstants.SLASH_CONSTANT, "").split(BasePageModelConstants.SLASH_CONSTANT).length - 1;
 		int currentLevel = null != pageResource ? pageResource.getDepth() : 0;
 		List<String> navList = new ArrayList<>();
 		while (startLevel < currentLevel) {
@@ -560,7 +562,7 @@ public class BasePageModel {
 			if (navList.size() > 2) {
 				pageSubCategory = navList.get(2);
 			}
-			breadCrumb = "/" + navList.stream().collect(Collectors.joining("/"));
+			breadCrumb = BasePageModelConstants.SLASH_CONSTANT + navList.stream().collect(Collectors.joining(BasePageModelConstants.SLASH_CONSTANT));
 		}
 		logger.debug("breadCrumb: {}, pageCategory: {}, pageSubCategory: {}", breadCrumb, pageCategory, pageSubCategory);
 		otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
@@ -596,13 +598,13 @@ public class BasePageModel {
 	public void setOtherUDOTags(String udoTagStart) throws Exception {
 		logger.debug("Entry :: setOtherUDOTags method of :: udoTagStart :: {}", udoTagStart);
 		String tagAbsolutePath = udoTagStart.replace("/content/cq:tags/", "");
-		String tagRootPath = tagAbsolutePath.substring(tagAbsolutePath.indexOf("/"));
+		String tagRootPath = tagAbsolutePath.substring(tagAbsolutePath.indexOf(BasePageModelConstants.SLASH_CONSTANT));
 		if (null != tags && tags.length > 0) {
 			logger.debug("tags :: {}", Arrays.asList(tags));
 			for (int i = 0; i < tags.length; i++) {
 				String[] array = tags[i].split(":");
-				if (array[1].startsWith(tagRootPath.replaceFirst("/", ""))) {
-					String path = array[1].replace(tagRootPath.substring(1) + "/", "");
+				if (array[1].startsWith(tagRootPath.replaceFirst(BasePageModelConstants.SLASH_CONSTANT, ""))) {
+					String path = array[1].replace(tagRootPath.substring(1) + BasePageModelConstants.SLASH_CONSTANT, "");
 					processUDOPath(path);
 				}
 			}
@@ -613,12 +615,12 @@ public class BasePageModel {
 	public void processUDOPath(String path) throws Exception {
 		logger.debug("Entry :: processUDOPath :: path :: {}", path);
 		try {
-			if( null == path || !path.contains("/")) {
+			if( null == path || !path.contains(BasePageModelConstants.SLASH_CONSTANT)) {
 				logger.debug("No child tag exists for path: {}", path);
 				return;
 			}
-			String key = path.split("/")[0];
-			String value = path.split("/")[1];
+			String key = path.split(BasePageModelConstants.SLASH_CONSTANT)[0];
+			String value = path.split(BasePageModelConstants.SLASH_CONSTANT)[1];
 			if (otherUDOTagsMap.has(key)) {
 				if (otherUDOTagsMap.get(key).isJsonArray()) {
 					JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
@@ -652,7 +654,7 @@ public class BasePageModel {
 				title =  newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
-				canonicalUrl = pagePath + "/" + newsDetails.getRelease().getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT) + "/" + releaseId + "/";
+				canonicalUrl = pagePath + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ","-").replaceAll("%","").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]","").toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
 		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException e) {

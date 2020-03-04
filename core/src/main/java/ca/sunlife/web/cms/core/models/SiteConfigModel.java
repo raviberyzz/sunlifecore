@@ -82,6 +82,24 @@ public interface SiteConfigModel {
 	@Inject
 	String getDefaultReportingLanguage();
 	
+	
+	/**
+	 * Gets the Experience fragment path.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getExperienceFragmentPath();
+	
+	
+	/**
+	 * Gets the Navigation Overview title.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getNavigationOverview();
+	
 	/**
 	 * Gets the UDO tag path.
 	 *

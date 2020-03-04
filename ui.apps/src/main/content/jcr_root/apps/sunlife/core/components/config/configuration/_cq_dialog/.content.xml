@@ -55,6 +55,16 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Default Reporting Language"
                                         name="./defaultReportingLanguage"/>
+                                    <experiencefragmentPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Experience Fragment Path"
+                                        name="./experienceFragmentPath"/>
+                                     <navigationOverview
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation Overview Title"
+                                        name="./navigationOverview"/>
                                 </items>
                             </section-general>
                             <section-page

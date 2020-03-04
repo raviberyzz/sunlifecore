@@ -1042,7 +1042,8 @@
 								cq:styleDefaultClasses="carousel-wrapper"
 								jcr:primaryType="nt:unstructured"
 								jcr:title="Carousel"
-								sling:resourceType="wcm/core/components/policy/policy">
+								sling:resourceType="wcm/core/components/policy/policy"
+								components="/apps/sunlife/apac/hk/components/content/teaser">
 								<jcr:content jcr:primaryType="nt:unstructured"/>                            
 							</policy_carousel>
 						</carousel>                       
@@ -2021,7 +2022,8 @@
 								cq:styleDefaultClasses="carousel-wrapper"
 								jcr:primaryType="nt:unstructured"
 								jcr:title="Carousel"
-								sling:resourceType="wcm/core/components/policy/policy">
+								sling:resourceType="wcm/core/components/policy/policy"
+								components="/apps/sunlife/apac/id/components/content/teaser">
 								<jcr:content jcr:primaryType="nt:unstructured"/>                            
 							</policy_carousel>
 						</carousel>                       
