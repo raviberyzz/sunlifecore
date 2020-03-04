@@ -243,6 +243,21 @@
                                                 cq:styleId="1577972369699"
                                                 cq:styleLabel="Bottom Spacing 40"
                                                 jcr:primaryType="nt:unstructured"/>
+                                            <item3
+                                            	cq:styleClasses="mt-18"
+                                            	cq:styleId="1583334405247"
+                                            	cq:styleLabel="Top Spacing18"
+                                            	jcr:primaryType="nt:unstructured"/>  
+                                            <item4
+                                            	cq:styleClasses="mt-20"
+                                            	cq:styleId="1583334422672"
+                                            	cq:styleLabel="Top Spacing 20"
+                                            	jcr:primaryType="nt:unstructured"/>     
+                                            <item5
+                                            	cq:styleClasses="mt-40"
+                                            	cq:styleId="1583334429290"
+                                            	cq:styleLabel="Top Spacing 40"
+                                            	jcr:primaryType="nt:unstructured"/>    
                                         </cq:styles>
                                     </item4>
                                     <item5
@@ -501,6 +516,42 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item7>
+                                <item8
+                                    cq:styleGroupLabel="Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1583331102428"
+                                            cq:styleLabel="Bottom Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1583331121462"
+                                            cq:styleLabel="Bottom Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1583331133428"
+                                            cq:styleLabel="Bottom Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/> 
+                                         <item3
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1583334405247"
+                                            cq:styleLabel="Top Spacing18"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item4
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1583334422672"
+                                            cq:styleLabel="Top Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>     
+                                         <item5
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1583334429290"
+                                            cq:styleLabel="Top Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>       
+                                    </cq:styles>
+                                </item8>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
@@ -1103,6 +1154,42 @@
                                                 jcr:primaryType="nt:unstructured"/>                                            
                                         </cq:styles>
                                     </item1>
+                                    <item2
+                                    cq:styleGroupLabel="Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1583331102428"
+                                            cq:styleLabel="Bottom Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1583331121462"
+                                            cq:styleLabel="Bottom Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1583331133428"
+                                            cq:styleLabel="Bottom Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/> 
+                                         <item3
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1583334405247"
+                                            cq:styleLabel="Top Spacing18"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item4
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1583334422672"
+                                            cq:styleLabel="Top Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>     
+                                         <item5
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1583334429290"
+                                            cq:styleLabel="Top Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>      
+                                    </cq:styles>
+                                	</item2>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text>
@@ -1112,7 +1199,45 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Tabs"
                             sling:resourceType="wcm/core/components/policy/policy">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>                            
+                            <jcr:content jcr:primaryType="nt:unstructured"/>  
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+		                         <item0
+                                    cq:styleGroupLabel="Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1583331102428"
+                                            cq:styleLabel="Bottom Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1583331121462"
+                                            cq:styleLabel="Bottom Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1583331133428"
+                                            cq:styleLabel="Bottom Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/> 
+                                         <item3
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1583334405247"
+                                            cq:styleLabel="Top Spacing18"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item4
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1583334422672"
+                                            cq:styleLabel="Top Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>     
+                                         <item5
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1583334429290"
+                                            cq:styleLabel="Top Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>      
+                                    </cq:styles>
+                                </item0>
+		                     </cq:styleGroups>                          
                         </policy_tabs>
                     </tabs>
 					<accordion jcr:primaryType="nt:unstructured">
@@ -1142,6 +1267,42 @@
 		                              	 jcr:primaryType="nt:unstructured"/>
 		                           </cq:styles>
 		                        </item0>
+		                        <item1
+                                    cq:styleGroupLabel="Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1583331102428"
+                                            cq:styleLabel="Bottom Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1583331121462"
+                                            cq:styleLabel="Bottom Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                         <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1583331133428"
+                                            cq:styleLabel="Bottom Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>    
+                                         <item3
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1583334405247"
+                                            cq:styleLabel="Top Spacing18"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item4
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1583334422672"
+                                            cq:styleLabel="Top Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>     
+                                         <item5
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1583334429290"
+                                            cq:styleLabel="Top Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item1>
 		                     </cq:styleGroups>
 		                  </policy_accordion>
 		               </accordion> 
