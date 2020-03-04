@@ -60,10 +60,10 @@ public class ExperienceFragmentModel {
 	@PostConstruct
 	public void init()  {	
 		
-		String headerPath = "";
-		String fragmentSplit = "";		
+		String headerPath = null;
+		String fragmentSplit = null;		
 		
-		
+		try {
 		if( null == fragmentPath )
 		{
 			return;
@@ -74,10 +74,10 @@ public class ExperienceFragmentModel {
 		else
 		{			
 			if(fragmentPath.contains("header")||fragmentPath.contains("footer")) {
-			try {
+			
 				headerPath = configService.getConfigValues("experienceFragmentPath", currentPage.getPath());	
-				log.info("Header path is" + headerPath);
-				if( null != headerPath && headerPath.length() > 0 ) {				
+				log.info("Header path is : {}" , headerPath);
+				if( null != headerPath && headerPath.length() > 0 ) {	
 				String[] pathSplit = fragmentPath.split("/");
 				for(int i=0; i<pathSplit.length;i++) {
         		if(pathSplit[i].contains("header") || pathSplit[i].contains("footer")) {
@@ -92,16 +92,17 @@ public class ExperienceFragmentModel {
 				else {
 					modifiedFragmentPath=fragmentPath;
 				}
-				}
-			 catch (Exception e) {
-				 log.error("Error :: init method of Experience fragment model :: {}", e);
-				}
-			
 			}
+			
 			else {
 				modifiedFragmentPath=fragmentPath;		
 			}
-
 		}
+		
+		}
+		 catch (Exception e) {
+			 log.error("Error :: init method of Experience fragment model :: {}", e);
+			}
 	  }
+	
 	}
