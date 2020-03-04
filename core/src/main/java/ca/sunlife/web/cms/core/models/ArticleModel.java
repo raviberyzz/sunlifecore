@@ -217,7 +217,7 @@ public class ArticleModel extends ContentFragmentImpl {
 		return dateParam;
 	}
 	
-	public String getAuthorName() {
+	public String getAuthorName() throws NullPointerException{
 		String artFragmentPath = getFragmentPath();
 		String authorName = "";
 		if(null != setAuthorDetail(artFragmentPath)) {
@@ -227,7 +227,7 @@ public class ArticleModel extends ContentFragmentImpl {
 		}
 		return authorName;
 	}
-	public String getAuthorPic() {
+	public String getAuthorPic() throws NullPointerException{
 		String artFragmentPath = getFragmentPath();
 		String authorPic = "";
 		if(null != setAuthorDetail(artFragmentPath)) {
@@ -244,23 +244,31 @@ public class ArticleModel extends ContentFragmentImpl {
 	 * @param fragmentPath the fragment path
 	 * @return the string
 	 */
-	public String setAuthorDetail(String fragmentPath) {
+	public String setAuthorDetail(String fragmentPath) throws NullPointerException {
 		String authorDetails = "";
 		try
 		{
-		     Session session = resolver.adaptTo(Session.class);  
-		     Node rootNode = session.getRootNode();
-		     String articlePath = fragmentPath+"/jcr:content/data/master";
-		     if(resolver.getResource(articlePath) != null) {
-		     Node articleNode = resolver.getResource(articlePath).adaptTo(Node.class);
-		     String authorNodePath = articleNode.getProperty("articleAuthor").getValue().toString();
-		     String authorPath = authorNodePath+"/jcr:content/data/master";
-		     if(resolver.getResource(authorPath) != null) {
-		     Node authorNode = resolver.getResource(authorPath).adaptTo(Node.class);
-		     String authorName = authorNode.getProperty("authorName").getValue().toString();
-		     String authorPic = authorNode.getProperty("authorPic").getValue().toString();
-		     authorDetails = authorName+","+authorPic;
-		     }
+		     String articlePath = "";
+		     articlePath = fragmentPath+"/jcr:content/data/master";
+		     if(resolver != null && !articlePath.equals("") && resolver.getResource(articlePath) != null && resolver.getResource(articlePath).adaptTo(Node.class) != null) {
+			     Node articleNode = null;
+			     articleNode = resolver.getResource(articlePath).adaptTo(Node.class);
+			     if(articleNode != null && articleNode.getProperty("articleAuthor") != null) {
+				     String authorNodePath = articleNode.getProperty("articleAuthor").getValue().toString();
+				     String authorPath = "";
+				     authorPath = authorNodePath+"/jcr:content/data/master";
+				     if(!authorPath.equals("") && resolver.getResource(authorPath) != null && resolver.getResource(authorPath).adaptTo(Node.class) != null) {
+					     Node authorNode = null;
+					     authorNode = resolver.getResource(authorPath).adaptTo(Node.class);
+					     String authorName = "";
+					     String authorPic = "";
+					     if(authorNode != null && authorNode.getProperty("authorName") !=null && authorNode.getProperty("authorPic") != null) {
+						     authorName = authorNode.getProperty("authorName").getValue().toString();
+						     authorPic = authorNode.getProperty("authorPic").getValue().toString();
+					     }
+					     authorDetails = authorName+","+authorPic;
+				     }
+			     }
 		     }
 		}
 		catch (Exception e) {
