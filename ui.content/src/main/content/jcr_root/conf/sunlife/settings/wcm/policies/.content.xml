@@ -248,12 +248,12 @@
                                             	cq:styleId="1583334405247"
                                             	cq:styleLabel="Top Spacing18"
                                             	jcr:primaryType="nt:unstructured"/>  
-                                         <item4
+                                            <item4
                                             	cq:styleClasses="mt-20"
                                             	cq:styleId="1583334422672"
                                             	cq:styleLabel="Top Spacing 20"
                                             	jcr:primaryType="nt:unstructured"/>     
-                                         <item5
+                                            <item5
                                             	cq:styleClasses="mt-40"
                                             	cq:styleId="1583334429290"
                                             	cq:styleLabel="Top Spacing 40"
