@@ -61,8 +61,8 @@ public class ExperienceFragmentModel {
 	@PostConstruct
 	public void init()  {	
 		
-		String headerPath = null;
-		String fragmentSplit = null;		
+		String headerPath = "";
+		String fragmentSplit = "";		
 		
 		try {
 		if( null == fragmentPath )
