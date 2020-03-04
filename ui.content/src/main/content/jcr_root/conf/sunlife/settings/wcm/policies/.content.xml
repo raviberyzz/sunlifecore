@@ -225,7 +225,7 @@
                                     </cq:styles>
                                 </item3>
 								<item4
-                                        cq:styleGroupLabel="Spacing"
+                                        cq:styleGroupLabel="Bottom Spacing"
                                         jcr:primaryType="nt:unstructured">
                                         <cq:styles jcr:primaryType="nt:unstructured">                                                                                     
                                             <item0
@@ -267,6 +267,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 	</item6>
+									<item7
+                                    cq:styleGroupLabel="Top Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1579252476265"
+                                            cq:styleLabel="Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1579082984654"
+                                            cq:styleLabel="Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                          <item2
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1579980828796"
+                                            cq:styleLabel="Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>   
+                                    </cq:styles>
+                                </item7>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -469,6 +490,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item6>
+								<item7
+                                    cq:styleGroupLabel="Image Text Variation"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="content-block-image"
+                                            cq:styleId="1577980596880"
+                                            cq:styleLabel="Content block with image"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item7>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>

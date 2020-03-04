@@ -3,6 +3,11 @@
 .show-only-in-editorial {
     display: none !important;
 }
+.content-block-image {
+    .side-image {
+        width: auto;
+    }
+}
 .side-image {
     width: 100%;
 }
@@ -143,7 +148,7 @@
 .white-box {
     .text-section {
         background: $light-grey-20;
-        opacity: 90%;
+        opacity: 0.9;
         margin: 0 27px;
         width: 470px;
     }
@@ -211,7 +216,7 @@
                     width:auto;
                 }
             }
-           
+
         }
     }
 }

@@ -51,6 +51,15 @@ public interface ListModel {
 		 */
 		@Inject
 		String getLinkUrl();
+		
+		
+		/**
+		 * Gets the Language attribute for the link.
+		 *
+		 * @return the Language attribute
+		 */
+		@Inject
+		String getLangCode();
 
 		/**
 		 * Gets the target.
