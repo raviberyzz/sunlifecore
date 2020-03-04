@@ -30,4 +30,39 @@ $(document).ready(function () {
     $("#rememberIDModal").click(function(){
       remember(this);
     });
+    $('#rememberIDModal').keypress(function(event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+
+      if (keycode == 13) {
+          clickCheckBox(this,event);
+      }
+      event.stopPropagation();
+     event.preventDefault();
+     return false;
+  });
+ function clickCheckBox(box,e) {
+  $(box).trigger('click');
+}
+ $(".signin-sponsor").keydown(function(e){
+      if (e.which == 9 ) {
+     e.preventDefault();
+         $('#closeSignInModal').focus();
+          e.stopPropagation();
+      }
+ });
+ $("#signinbutton").keydown(function(e){
+     if ($('#mySignInModal').hasClass('in')) {
+      if (e.which == 9 ) {
+       e.preventDefault();
+         $('#closeSignInModal').focus();
+          e.stopPropagation();
+      }
+     }
+ });
+ $("#closeSignInModal").keydown(function(e){
+      if (e.which == 13 ) {
+         $('#signinbutton').focus();
+          e.stopPropagation();
+      }
+ });
 });     
