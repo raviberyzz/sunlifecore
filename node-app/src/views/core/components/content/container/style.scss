@@ -119,10 +119,20 @@ ul {
         .icon-texts > :last-child{
             margin:0;
         }
+        .icon-texts {
+            .button-class{
+                padding: 6px 16px;
+            }
+        }
     }
     .overview-highlights-wrapper{
         .icon-parent {
             height: 24px;
+        }
+        .icon-texts {
+            .button-class{
+                padding: 6px 16px;
+            }
         }
     }
     .icon-text {
@@ -400,6 +410,20 @@ ul {
             .left-item, .right-item {
                 display: inherit;
             }
+        }
+    }
+    .social-icon-rte-wrapper{
+        ul {
+         margin-left: 30px;
+         margin-top: 7px; 
+        }
+        .icon-parent a {
+            text-align: center;
+            color: $dark-grey-color; 
+            padding-left:0px;
+        }
+        .icon-texts p {
+            float:left;
         }
     }
 }
