@@ -1405,6 +1405,7 @@ ul {
     @media (min-width:$tab-screen-min){
             /* triple cta tablet and desktop styles start here */
        .cta-three-column-wrapper{
+           margin-top:40px;
            .cmp-container{
                .cta-content-icon-wrapper{
                    padding:0;
