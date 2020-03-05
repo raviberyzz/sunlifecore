@@ -2,7 +2,7 @@
 .highlight-text{
     transition-duration: 4s;
     transition-delay: 5s;
-    background-image: $highlighted-gradient-color;
+    background-image: linear-gradient(to right,$white-gradient-background-color 50%,$highlighted-gradient-color 50%);
     -webkit-transition: background-position 3s linear;
     transition: background-position 3s linear;
     text-decoration: none;
