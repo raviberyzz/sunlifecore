@@ -656,7 +656,7 @@ ul {
             .container-border-right {
                 border-right: none;
             }
-            .container-border-right::after {
+            .container-border-right:after {
                 content: '';
                 position: relative;
                 left: 0;
@@ -1092,9 +1092,9 @@ ul {
                     width: 100%;
                 }
             }
-            .text-section {
+            /*.text-section {
                 margin-top: 32px;
-            }
+            }*/
         }
     }
     .content-highlight{
