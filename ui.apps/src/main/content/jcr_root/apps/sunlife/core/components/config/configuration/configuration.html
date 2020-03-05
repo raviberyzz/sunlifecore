@@ -10,7 +10,7 @@
 <div class="panel panel-default">
    <div class="panel-heading"><h4>Site Specific Configuration</h4></div>
    <div class="panel-body">
-      <fieldset class="col-md-6">
+      <fieldset class="col-md-8">
          <legend>General</legend>
          <div class="panel panel-default">
             <div class="panel-body">
@@ -20,23 +20,19 @@
                      <td>${siteConfig.domain}</td>
                   </tr>
 				  <tr>
-                     <td>Site Url:</td>
+                     <td>Site location:</td>
                      <td>${siteConfig.siteUrl}</td>
                   </tr>
                   <tr>
-                     <td>Site Suffix:</td>
-                     <td>${siteConfig.siteSuffix}</td>
+                     <td>Alternate languages:</td>
+                     <td>
+                     	<sly data-sly-repeat.altLang = "${siteConfig.alternateLanguages}">
+							Alternate language: ${altLang.languageCode}, Site location: ${altLang.siteLocation}, Domain: ${altLang.domain}, Is default?: ${altLang.defaultLanguage} <br/>
+                        </sly>
+                     </td>
                   </tr>
                   <tr>
-                     <td>Alternate Languages:</td>
-                     <td>${siteConfig.alternateLanguages}</td>
-                  </tr>
-				  <tr>
-                     <td>Reporting Language:</td>
-                     <td>${siteConfig.defaultReportingLanguage}</td>
-                  </tr>
-                  <tr>
-                     <td>Experience Fragment Path:</td>
+                     <td>Experience fragment path:</td>
                      <td>${siteConfig.experienceFragmentPath}</td>
                   </tr>
                   <tr>
@@ -48,25 +44,29 @@
          </div>
       </fieldset>
       <div class="clearfix"></div>
-      <fieldset class="col-md-6">
+      <fieldset class="col-md-8">
          <legend>Page Defaults</legend>
          <div class="panel panel-default">
             <div class="panel-body">
                <table class="table">
                   <tr>
-                     <td>Page Description:</td>
+                     <td>Page description:</td>
                      <td>${siteConfig.pageDescription}</td>
                   </tr>
                   <tr>
-                     <td>Page Locale:</td>
+                     <td>Page locale:</td>
                      <td>${siteConfig.pageLocale}</td>
                   </tr>
+                  <tr>
+                     <td>Page title format:</td>
+                     <td>${siteConfig.siteSuffix}</td>
+                  </tr>
 				  <tr>
-                     <td>Image:</td>
+                     <td>Social media image:</td>
                      <td>${siteConfig.socialMediaImage}</td>
                   </tr>
 				  <tr>
-                     <td>UDO Tags Path:</td>
+                     <td>UDO tags path:</td>
                      <td>${siteConfig.udoTagsPath}</td>
                   </tr>
                </table>

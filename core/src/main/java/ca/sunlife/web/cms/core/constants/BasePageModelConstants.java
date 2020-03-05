@@ -15,4 +15,7 @@ public class BasePageModelConstants {
 	private BasePageModelConstants() {}
 
 	public static final String SLASH_CONSTANT = "/";
+	public static final String PAGE_TITLE_FORMAT_CONSTANT = "${pageTitle}";
+	public static final String ALTERNATE_URL_ITEMS_CONSTANT = "item";
+	
 }
