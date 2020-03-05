@@ -1440,12 +1440,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="articleList_editorial-wrapper"
+                                            cq:styleClasses="articleList_editorial-wrapper clearfix"
                                             cq:styleId="1583304186619"
                                             cq:styleLabel="Editorial Articles List"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="articleList-wrapper"
+                                            cq:styleClasses="articleList-wrapper clearfix"
                                             cq:styleId="1583304203789"
                                             cq:styleLabel="Article List"
                                             jcr:primaryType="nt:unstructured"/>
