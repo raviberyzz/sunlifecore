@@ -415,11 +415,11 @@ ul {
     .social-icon-rte-wrapper{
         ul {
          margin-left: 30px;
-         margin-top: 7px; 
+         margin-top: 7px;
         }
         .icon-parent a {
             text-align: center;
-            color: $dark-grey-color; 
+            color: $dark-grey-color;
             padding-left:0px;
         }
         .icon-texts p {
@@ -1002,7 +1002,7 @@ ul {
                 .container-component{
                     .cmp-container{
                         .text:first-child{
-                          padding: 0px 10px; 
+                          padding: 0px 10px;
                         }
                     }
                 }
@@ -1191,9 +1191,10 @@ ul {
 		p {
 			display: table;
 		}
-		h3 {
-			font-size: 22px;
-            line-height: 28px;
+		h2, h3, h4, h5, h6 {
+            font-size: 1.125rem;
+            line-height: 33px;
+            margin: 0;
 		}
 	}
 	.cmp-text {
@@ -1204,10 +1205,6 @@ ul {
                 display: flex;
             }
         }
-		h3 {
-			font-size: 22px;
-			line-height: 28px;
-		}
 	}
 	.text {
 		.cmp-text {
@@ -1232,8 +1229,8 @@ ul {
         }
 	}
 }
-//related resources ipad 768px not ipad pro
-@media (min-width:$tab-screen-min) and (max-width: 1023px){
+//related resources ipad and mobile devices 768px not ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: 1023px){
     .cmp-related-resource {
         .cmp-text {
             ul{
@@ -1265,8 +1262,8 @@ ul {
                 margin-bottom: 32px;
                 padding-bottom: 32px;
             }
-        } 
-         
+        }
+
     }
 }
 /*styles for related resource end */
@@ -1412,7 +1409,7 @@ ul {
                .cta-content-icon-wrapper{
                    padding:0;
                    height:100%;
-                   ul{  
+                   ul{
                        height:100%;
                        li{
                            display: flex;
@@ -1439,7 +1436,7 @@ ul {
                }
            }
        }
-    /* triple cta tablet and desktop styles end here */ 
+    /* triple cta tablet and desktop styles end here */
     }
     /* scss styles starting from tablet view end here */
 
