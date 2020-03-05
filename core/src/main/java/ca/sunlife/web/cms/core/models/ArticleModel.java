@@ -27,58 +27,59 @@ import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 /**
  * The Class FormContainer.
  */
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class},adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = { SlingHttpServletRequest.class,
+		Resource.class }, adapters = ContentFragment.class, resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticleModel extends ContentFragmentImpl {
-	
+
 	/** The log */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/**
 	 * Instantiates a new article model.
 	 */
 	public ArticleModel() {
 		super();
 	}
-	
+
 	/** The fragment path. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String fragmentPath;
-	
+
 	@ScriptVariable
 	private ResourceResolver resolver;
-	
+
 	/** The article unique ID. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String articleUniqueID;
-	
+
 	/** The checkbox comment. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String checkboxComment;
-	
+
 	/** The checkbox hide date. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String checkboxHideDate;
-	
+
 	/** The article ID. */
 	@Inject
 	@Via("resource")
 	@Optional
 	private String articleID;
-	
+
 	/** The jcr last modified. */
 	@Inject
 	@Named("jcr:lastModified")
 	@Via("resource")
 	private String jcrLastModified;
-	
-	
+
 	/**
 	 * Gets the fragment path.
 	 *
@@ -88,16 +89,15 @@ public class ArticleModel extends ContentFragmentImpl {
 		return fragmentPath;
 	}
 
-
 	/**
 	 * Sets the fragment path.
 	 *
-	 * @param fragmentPath the new fragment path
+	 * @param fragmentPath
+	 *            the new fragment path
 	 */
 	public void setFragmentPath(String fragmentPath) {
 		this.fragmentPath = fragmentPath;
 	}
-
 
 	/**
 	 * Gets the checkbox comment.
@@ -108,16 +108,15 @@ public class ArticleModel extends ContentFragmentImpl {
 		return checkboxComment;
 	}
 
-
 	/**
 	 * Sets the checkbox comment.
 	 *
-	 * @param checkboxComment the new checkbox comment
+	 * @param checkboxComment
+	 *            the new checkbox comment
 	 */
 	public void setCheckboxComment(String checkboxComment) {
 		this.checkboxComment = checkboxComment;
 	}
-
 
 	/**
 	 * Gets the checkbox hide date.
@@ -128,16 +127,15 @@ public class ArticleModel extends ContentFragmentImpl {
 		return checkboxHideDate;
 	}
 
-
 	/**
 	 * Sets the checkbox hide date.
 	 *
-	 * @param checkboxHideDate the new checkbox hide date
+	 * @param checkboxHideDate
+	 *            the new checkbox hide date
 	 */
 	public void setCheckboxHideDate(String checkboxHideDate) {
 		this.checkboxHideDate = checkboxHideDate;
 	}
-
 
 	/**
 	 * Gets the article unique ID.
@@ -148,16 +146,15 @@ public class ArticleModel extends ContentFragmentImpl {
 		return articleUniqueID;
 	}
 
-
 	/**
 	 * Sets the article unique ID.
 	 *
-	 * @param articleUniqueID the new article unique ID
+	 * @param articleUniqueID
+	 *            the new article unique ID
 	 */
 	public void setArticleUniqueID(String articleUniqueID) {
 		this.articleUniqueID = articleUniqueID;
 	}
-
 
 	/**
 	 * Gets the article ID.
@@ -168,16 +165,16 @@ public class ArticleModel extends ContentFragmentImpl {
 		return articleID;
 	}
 
-
 	/**
 	 * Sets the article ID.
 	 *
-	 * @param articleID the new article ID
+	 * @param articleID
+	 *            the new article ID
 	 */
 	public void setArticleID(String articleID) {
 		this.articleID = articleID;
 	}
-	
+
 	/**
 	 * Gets the jcr last modified.
 	 *
@@ -187,94 +184,106 @@ public class ArticleModel extends ContentFragmentImpl {
 		return getFormatedDate(jcrLastModified);
 	}
 
-
 	/**
 	 * Sets the jcr last modified.
 	 *
-	 * @param jcrLastModified the new jcr last modified
+	 * @param jcrLastModified
+	 *            the new jcr last modified
 	 */
 	public void setJcrLastModified(String jcrLastModified) {
 		this.jcrLastModified = jcrLastModified;
 	}
 
-
 	/**
 	 * Gets the formated date.
 	 *
-	 * @param dateParam the date param
+	 * @param dateParam
+	 *            the date param
 	 * @return the formated date
 	 */
 	public String getFormatedDate(String dateParam) {
-		
+
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
 		SimpleDateFormat newFormatter = new SimpleDateFormat("MMMM DD YYYY");
 		try {
 			Date newdate = formatter.parse(dateParam);
-			dateParam= newFormatter.format(newdate);
-		}catch (ParseException e) {
+			dateParam = newFormatter.format(newdate);
+		} catch (ParseException e) {
 			logger.error("getFormatedDate :: {}", e.getMessage());
 		}
 		return dateParam;
 	}
-	
-	public String getAuthorName() throws NullPointerException{
+
+	public String getAuthorName() throws NullPointerException {
 		String artFragmentPath = getFragmentPath();
 		String authorName = "";
-		if(null != setAuthorDetail(artFragmentPath)) {
+		if (null != setAuthorDetail(artFragmentPath)) {
 			String[] splitAuthorDetails = setAuthorDetail(artFragmentPath).split(",");
-			if(splitAuthorDetails.length>0)
-			authorName = splitAuthorDetails[0];
+			if (splitAuthorDetails.length > 0)
+				authorName = splitAuthorDetails[0];
 		}
 		return authorName;
 	}
-	public String getAuthorPic() throws NullPointerException{
+
+	public String getAuthorPic() throws NullPointerException {
 		String artFragmentPath = getFragmentPath();
 		String authorPic = "";
-		if(null != setAuthorDetail(artFragmentPath)) {
+		if (null != setAuthorDetail(artFragmentPath)) {
 			String[] splitAuthorDetails = setAuthorDetail(artFragmentPath).split(",");
-			if(splitAuthorDetails.length>1)
+			if (splitAuthorDetails.length > 1)
 				authorPic = splitAuthorDetails[1];
 		}
 		return authorPic;
 	}
-	
+
 	/**
 	 * Sets the author detail.
 	 *
-	 * @param fragmentPath the fragment path
+	 * @param fragmentPath
+	 *            the fragment path
 	 * @return the string
 	 */
 	public String setAuthorDetail(String fragmentPath) throws NullPointerException {
 		String authorDetails = "";
-		try
-		{
-		     String articlePath = "";
-		     articlePath = fragmentPath+"/jcr:content/data/master";
-		     if(resolver != null && !articlePath.equals("") && resolver.getResource(articlePath) != null && resolver.getResource(articlePath).adaptTo(Node.class) != null) {
-			     Node articleNode = null;
-			     articleNode = resolver.getResource(articlePath).adaptTo(Node.class);
-			     if(articleNode != null && articleNode.getProperty("articleAuthor") != null) {
-				     String authorNodePath = articleNode.getProperty("articleAuthor").getValue().toString();
-				     String authorPath = "";
-				     authorPath = authorNodePath+"/jcr:content/data/master";
-				     if(!authorPath.equals("") && resolver.getResource(authorPath) != null && resolver.getResource(authorPath).adaptTo(Node.class) != null) {
-					     Node authorNode = null;
-					     authorNode = resolver.getResource(authorPath).adaptTo(Node.class);
-					     String authorName = "";
-					     String authorPic = "";
-					     if(authorNode != null && authorNode.getProperty("authorName") !=null && authorNode.getProperty("authorPic") != null) {
-						     authorName = authorNode.getProperty("authorName").getValue().toString();
-						     authorPic = authorNode.getProperty("authorPic").getValue().toString();
-					     }
-					     authorDetails = authorName+","+authorPic;
-				     }
-			     }
-		     }
+		try {
+			String articlePath = "";
+			articlePath = fragmentPath + "/jcr:content/data/master";
+			Resource resArt = resolver.getResource(articlePath);
+			if (!articlePath.equals("")) {
+				if (null != resArt) {
+					Node articleNode = null;					
+					articleNode = resArt.adaptTo(Node.class);
+					if (null != articleNode) {
+						if (null != articleNode.getProperty("articleAuthor")) {
+							String authorNodePath = articleNode.getProperty("articleAuthor").getValue().toString();
+							String authorPath = "";
+							authorPath = authorNodePath + "/jcr:content/data/master";
+							Resource resAuth = resolver.getResource(authorPath);
+							if (!authorPath.equals("")) {
+								if (null != resAuth) {
+									Node authorNode = null;
+									authorNode = resAuth.adaptTo(Node.class);
+									if (null != authorNode) {
+										String authorName = "";
+										String authorPic = "";
+											if(null != authorNode.getProperty("authorName") && null != authorNode.getProperty("authorPic")) {
+												authorName = authorNode.getProperty("authorName").getValue().toString();
+												authorPic = authorNode.getProperty("authorPic").getValue().toString();
+										}
+										authorDetails = authorName + "," + authorPic;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
+
 		catch (Exception e) {
 			logger.error("setAuthorDetail :: {}", e.getMessage());
 		}
-	         
+
 		return authorDetails;
 	}
 
