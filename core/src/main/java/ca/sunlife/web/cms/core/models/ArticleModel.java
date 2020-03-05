@@ -1,19 +1,25 @@
 
 package ca.sunlife.web.cms.core.models;
 
-import javax.inject.Inject;
-
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.jcr.Node;
+import javax.jcr.Session;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
-import javax.inject.Named;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.ContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
@@ -21,15 +27,26 @@ import com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragment;
 /**
  * The Class FormContainer.
  */
-@Model(adaptables = SlingHttpServletRequest.class,adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class},adapters = ContentFragment.class,resourceType = "sunlife/core/components/content/article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticleModel extends ContentFragmentImpl {
 	
+	/** The log */
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * Instantiates a new article model.
 	 */
 	public ArticleModel() {
 		super();
 	}
+	
+	/** The fragment path. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String fragmentPath;
+	
+	@ScriptVariable
+	private ResourceResolver resolver;
 	
 	/** The article unique ID. */
 	@Inject
@@ -62,6 +79,26 @@ public class ArticleModel extends ContentFragmentImpl {
 	private String jcrLastModified;
 	
 	
+	/**
+	 * Gets the fragment path.
+	 *
+	 * @return the fragment path
+	 */
+	public String getFragmentPath() {
+		return fragmentPath;
+	}
+
+
+	/**
+	 * Sets the fragment path.
+	 *
+	 * @param fragmentPath the new fragment path
+	 */
+	public void setFragmentPath(String fragmentPath) {
+		this.fragmentPath = fragmentPath;
+	}
+
+
 	/**
 	 * Gets the checkbox comment.
 	 *
@@ -175,9 +212,70 @@ public class ArticleModel extends ContentFragmentImpl {
 			Date newdate = formatter.parse(dateParam);
 			dateParam= newFormatter.format(newdate);
 		}catch (ParseException e) {
-			e.printStackTrace();
+			logger.error("getFormatedDate :: {}", e.getMessage());
 		}
 		return dateParam;
+	}
+	
+	public String getAuthorName() throws NullPointerException{
+		String artFragmentPath = getFragmentPath();
+		String authorName = "";
+		if(null != setAuthorDetail(artFragmentPath)) {
+			String[] splitAuthorDetails = setAuthorDetail(artFragmentPath).split(",");
+			if(splitAuthorDetails.length>0)
+			authorName = splitAuthorDetails[0];
+		}
+		return authorName;
+	}
+	public String getAuthorPic() throws NullPointerException{
+		String artFragmentPath = getFragmentPath();
+		String authorPic = "";
+		if(null != setAuthorDetail(artFragmentPath)) {
+			String[] splitAuthorDetails = setAuthorDetail(artFragmentPath).split(",");
+			if(splitAuthorDetails.length>1)
+				authorPic = splitAuthorDetails[1];
+		}
+		return authorPic;
+	}
+	
+	/**
+	 * Sets the author detail.
+	 *
+	 * @param fragmentPath the fragment path
+	 * @return the string
+	 */
+	public String setAuthorDetail(String fragmentPath) throws NullPointerException {
+		String authorDetails = "";
+		try
+		{
+		     String articlePath = "";
+		     articlePath = fragmentPath+"/jcr:content/data/master";
+		     if(resolver != null && !articlePath.equals("") && resolver.getResource(articlePath) != null && resolver.getResource(articlePath).adaptTo(Node.class) != null) {
+			     Node articleNode = null;
+			     articleNode = resolver.getResource(articlePath).adaptTo(Node.class);
+			     if(articleNode != null && articleNode.getProperty("articleAuthor") != null) {
+				     String authorNodePath = articleNode.getProperty("articleAuthor").getValue().toString();
+				     String authorPath = "";
+				     authorPath = authorNodePath+"/jcr:content/data/master";
+				     if(!authorPath.equals("") && resolver.getResource(authorPath) != null && resolver.getResource(authorPath).adaptTo(Node.class) != null) {
+					     Node authorNode = null;
+					     authorNode = resolver.getResource(authorPath).adaptTo(Node.class);
+					     String authorName = "";
+					     String authorPic = "";
+					     if(authorNode != null && authorNode.getProperty("authorName") !=null && authorNode.getProperty("authorPic") != null) {
+						     authorName = authorNode.getProperty("authorName").getValue().toString();
+						     authorPic = authorNode.getProperty("authorPic").getValue().toString();
+					     }
+					     authorDetails = authorName+","+authorPic;
+				     }
+			     }
+		     }
+		}
+		catch (Exception e) {
+			logger.error("setAuthorDetail :: {}", e.getMessage());
+		}
+	         
+		return authorDetails;
 	}
 
 }
