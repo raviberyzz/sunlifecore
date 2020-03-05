@@ -1,9 +1,17 @@
-<sly data-sly-use.list="com.adobe.cq.wcm.core.components.models.contentfragment.ContentFragmentList"
+<sly data-sly-use.list="ca.sunlife.web.cms.core.models.ArticleListModel"
      data-sly-test="${list.listItems.size>0}" data-sly-use.fragmentTemplate="/apps/sunlife/core/components/content/articleList/templates.html">
 
-    <section data-sly-list.fragment="${list.listItems}"
-             class="cmp-contentfragmentlist">
-        <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=fragment, wcmmode=wcmmode}"></sly>
+    <section data-sly-list="${list.listItems}"
+    class="cmp-contentfragmentlist">
+
+        <sly data-sly-test.top="${list.hideTop}"></sly>
+            <sly data-sly-test="${top && itemList.index>2}">
+                <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
+       		</sly>
+            <sly data-sly-test="${!top}">
+                <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
+       		</sly>
+
     </section>
 </sly>
 
