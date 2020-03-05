@@ -51,16 +51,15 @@
                     }
                 }
             }
-            
             > :first-child {
                 padding: 0;
                 .accordion-heading {
                     font-size: 1rem;
-                    font-weight: 700;
+                    //font-weight: 700;
                     cursor: pointer;
                     margin: 0;
                     text-decoration: none;
-                    color: $dark-grey-color;
+                    //color: $dark-grey-color;
                     padding-left: 0;
                     &:hover{                        
                         background-color: $white-shade;
@@ -104,6 +103,9 @@
                     font-weight: 700;
                     color: $dark-grey-color;
                 }
+            }
+            .nav-heading{
+                color: $dark-grey-color !important;
             }
         }
     }
