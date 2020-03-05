@@ -447,8 +447,8 @@ public class BasePageModel {
 			// Configuring custom social sharing - meta-tags
 			customMetadata.put(OG_TITLE, title);
 			customMetadata.put(TWITTER_TITLE, title);
-			customMetadata.put(OG_URL, seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
-			customMetadata.put(TWITTER_URL, seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(OG_URL, domain + seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(TWITTER_URL, domain + seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(OG_LOCALE, locale);
@@ -463,14 +463,14 @@ public class BasePageModel {
 
 			// Sets UDO parameters
 			otherUDOTagsMap = new JsonObject();
-			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url
+			otherUDOTagsMap.addProperty("page_canonical_url", domain + seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url
 
 			if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl) {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
+				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + seoCanonicalUrl.replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
 																																		BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage + BasePageModelConstants.SLASH_CONSTANT)
 																																		+ BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			} else {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			}
 			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
 			setUDOParameters();
@@ -480,7 +480,7 @@ public class BasePageModel {
 			}
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 			udoTags = gson.toJson(otherUDOTagsMap);
-			seoCanonicalUrl = seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT;
+			seoCanonicalUrl = domain + seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT;
 			logger.debug("Map Display {}", udoTags);
 		} catch (Exception e) {
 			logger.error("Error :: init method of BasePageModel :: {}", e);
@@ -508,8 +508,10 @@ public class BasePageModel {
 		logger.debug("Entry :: setAlternateURLs :: pagePath: {}, pageLocale: {}", pagePath, pageLocale);
 		String altLanguagesCount = null;
 		String siteUrl = null;
+		String siteDomain = null;
 		altLanguagesCount = configService.getConfigValues("altLangCount", pagePath);
 		siteUrl = configService.getConfigValues("siteUrl", pagePath);
+		siteDomain = configService.getConfigValues("domain", pagePath);
 		if (null != altLanguagesCount && altLanguagesCount.length() > 0) {
 			int altLangCount = Integer.parseInt(altLanguagesCount);
 			altLanguageLinks = new HashMap<>();
@@ -528,7 +530,7 @@ public class BasePageModel {
 				}
 			}
 			if (!altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), pagePath + BasePageModelConstants.SLASH_CONSTANT);
+				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain + pagePath + BasePageModelConstants.SLASH_CONSTANT);
 			}
 			logger.debug("Map {}", altLanguageLinks);
 		}
