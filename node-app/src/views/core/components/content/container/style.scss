@@ -1229,8 +1229,8 @@ ul {
         }
 	}
 }
-//related resources ipad 768px not ipad pro
-@media (min-width:$tab-screen-min) and (max-width: 1023px){
+//related resources ipad and mobile devices 768px not ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: 1023px){
     .cmp-related-resource {
         .cmp-text {
             ul{
