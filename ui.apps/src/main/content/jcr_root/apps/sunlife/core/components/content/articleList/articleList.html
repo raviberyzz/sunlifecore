@@ -7,11 +7,12 @@
         <sly data-sly-test.top="${list.hideTop}"></sly>
             <sly data-sly-test="${top && itemList.index>2}">
                 <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
+
        		</sly>
             <sly data-sly-test="${!top}">
                 <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
        		</sly>
-
+	<hr class="article-separator"/>
     </section>
 </sly>
 
