@@ -156,6 +156,44 @@ public class BasePageModel {
 	@Inject
 	@Via("resource")
 	private String isCNWNewsDetailPage;
+	
+	/** Head include . */
+	@Inject
+	@Via("resource")
+	private String headInclude;
+	
+	/** body include . */
+	@Inject
+	@Via("resource")
+	private String bodyInclude;
+
+	/**
+	 * @return the headInclude
+	 */
+	public final String getHeadInclude() {
+		return headInclude;
+	}
+
+	/**
+	 * @param headInclude the headInclude to set
+	 */
+	public final void setHeadInclude(String headInclude) {
+		this.headInclude = headInclude;
+	}
+
+	/**
+	 * @return the bodyInclude
+	 */
+	public final String getBodyInclude() {
+		return bodyInclude;
+	}
+
+	/**
+	 * @param bodyInclude the bodyInclude to set
+	 */
+	public final void setBodyInclude(String bodyInclude) {
+		this.bodyInclude = bodyInclude;
+	}
 
 	/** The config service. */
 	@Inject
