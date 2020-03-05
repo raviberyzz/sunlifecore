@@ -73,7 +73,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 	 */
 	@Override
 	public String getConfigValues(final String name, String pagePath) {
-		log.debug("SiteConfigServiceImpl :: getConfigValues");
+		log.debug("SiteConfigServiceImpl :: getConfigValues :: name :: {}, pagePath :: {}", name, pagePath);
 		String key = pagePath;
 		while (!siteConfigMap.containsKey(key) && (key.lastIndexOf('/') > 1)) {
 			key = key.substring(0, key.lastIndexOf('/'));
@@ -114,6 +114,20 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 				final Object value = e.getValue();
 				resultMap.put(key, value.toString());
 			}
+			final Resource altLangResource = resolver.getResource(hit.getPath() + "/jcr:content/config/alternateLanguages");
+			if (altLangResource != null) {
+				int count = 0;
+		        for (Resource currentResource : altLangResource.getChildren()) {
+		        	final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
+		        	for (final Entry<String, Object> e : currentResourceProperties.entrySet()) {
+						final String key = e.getKey();
+						final Object value = e.getValue();
+						resultMap.put(currentResource.getName()+"_"+key, value.toString());
+					}
+		        	count++;
+		        }
+		        resultMap.put("altLangCount", String.valueOf(count));
+		    }
 			siteConfigMap.put(properties.get("siteUrl", String.class), resultMap);
 		}
 

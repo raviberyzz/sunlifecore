@@ -3,6 +3,8 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.sling.api.resource.Resource;
@@ -48,7 +50,7 @@ public interface SiteConfigModel {
 	 * @return the alternate languages
 	 */
 	@Inject
-	String getAlternateLanguages();
+	List<AlternateLanguageModel> getAlternateLanguages();
 
 	/**
 	 * Gets the page description.
