@@ -929,12 +929,6 @@ ul {
                        .cmp-text{
                            p{
                                margin:0px 24px 24px 24px;
-                            //    a{
-                            //        display:block;
-                            //    }
-                            //    a:not(:first-child){
-                            //     border-top:2px dotted $light-grey-color
-                            //    }
                            }
                            ul{
                                margin:24px;
@@ -965,8 +959,11 @@ ul {
                    }
                    .text:last-child{
                        .cmp-text{
-                           p:not(:first-child){
+                           p:nth-child(n+3){
                                border-top:2px dotted $light-grey-color;
+                           }
+                           p{
+                               padding-top:5px;
                            }
                        }
                    }
@@ -1013,6 +1010,7 @@ ul {
         }
     }
    }
+    /*styles just for ipad end*/
    @media (min-width:$desktop-screen-min){
     .product-card{
         .row{
@@ -1032,7 +1030,6 @@ ul {
         }
     }
  }
-   /*styles just for ipad end*/
  /*new product-box code end */
 /* styles for product box end */
 //mobile css to overwrite display block css for mobile devices
@@ -1141,27 +1138,6 @@ ul {
         height:8px;   }
     }
 }
-	// .aem-GridColumn--default--12 {
-	// 	.text {
-	// 		padding: 0px 32px;
-	// 		.cmp-text {
-
-	// 			h3 {
-	// 				margin-top: 32px;
-	// 			}
-	// 			p {
-	// 				&:first-of-type {
-	// 					margin: 16px 0 56px 0;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// 	.button {
-	// 		margin: 24px 0 32px 0;
-	// 	}
-    // }
-
-
 }
 @media (min-width: 768px) {
     .cmp-contact-us {
@@ -1181,21 +1157,24 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
+    .col-sm-6{
+        padding: 0px 8px 0 10px;
+    }
 	padding: 20px 0px 40px 8px;
-	background: #F7F7F7;
+	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
 		float: left;
 		margin: 0 15px 25px 14px;
-		background: linear-gradient(#FFCB05, #EAAB00);
+		background: linear-gradient($medium-yellow-background, $primary-yellow-background);
 		color: $white-shade;
 		font-size: 2.2em;
 		border-radius: 100%;
-		border: 2px solid #fff;
+		border: 2px solid $white-shade;
 		text-align: center;
 		// line-height: 58px;
 		a {
-            color: #fff;
+            color: $white-shade;
             width:60px;
             height:60px;
             position: relative;
@@ -1220,6 +1199,10 @@ ul {
 	.cmp-text {
         ul{
             margin-left: 1em !important;
+            li{
+                text-align: justify;
+                display: flex;
+            }
         }
 		h3 {
 			font-size: 22px;
@@ -1232,11 +1215,11 @@ ul {
 		}
     }
 }
-@media (min-width: 768px) {
+@media (min-width: $tab-screen-min) {
 	.cmp-related-resource {
 		.col-sm-6:nth-child(2){
             .cmp-text{
-                border-left: 2px solid #D7D7D7;
+                border-left: 2px solid $light-grey-color;
                 padding-left: 20px;
             }
         }
@@ -1248,6 +1231,18 @@ ul {
             }
         }
 	}
+}
+//related resources ipad 768px not ipad pro
+@media (min-width:$tab-screen-min) and (max-width: 1023px){
+    .cmp-related-resource {
+        .cmp-text {
+            ul{
+                li{
+                    text-align: initial;
+                }
+            }
+        }
+    }
 }
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
@@ -1404,5 +1399,51 @@ ul {
 /* Tool Card Main Wrapper Ends Here*/
 
 
+/*****************************************************************
+*****************************************************************/
+/*** device specific scss for all experiences start here***/
 
 
+   /* scss styles starting from tablet view start here */
+    @media (min-width:$tab-screen-min){
+            /* triple cta tablet and desktop styles start here */
+       .cta-three-column-wrapper{
+           .cmp-container{
+               .cta-content-icon-wrapper{
+                   padding:0;
+                   height:100%;
+                   ul{  
+                       height:100%;
+                       li{
+                           display: flex;
+                           flex-direction: column;
+                           height: 100%;
+                        .icon-parent{
+                            height:auto;
+                            position: relative;
+                            bottom:40px;
+                            .icon-style{
+                                position:static;
+                            }
+                        }
+                        .icon-texts{
+                            height:100%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            margin-bottom: 40px;
+                        }
+                       }
+                   }
+               }
+           }
+       }
+    /* triple cta tablet and desktop styles end here */ 
+    }
+    /* scss styles starting from tablet view end here */
+
+
+/*** device specific scss for all experiences end here***/
+/*****************************************************************
+*****************************************************************/

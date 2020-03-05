@@ -45,6 +45,7 @@ app.get(/.views\/.*.html$/, (req, res) => {
     let viewsPath = path.join(__dirname, 'src') + req.path.replace('.html', '').replace(/\/\//g, '\\')
     let content = {}
     if (fs.existsSync(viewsPath + '/index.hbs')) {
+        let module = req.path.replace('/views/','').replace(/\/.*/,'');
         const mdFileContent = fs.readFileSync(viewsPath + '/README.md', 'utf8')
         const mdContents = pegparser.parse(mdFileContent)
         const fileContent = fs.readFileSync(viewsPath + '/index.hbs', 'utf8')
@@ -53,6 +54,9 @@ app.get(/.views\/.*.html$/, (req, res) => {
         content.componentName = mdContents.headings[0] ? mdContents.headings[0] : ''
         content.componentContent = source(data)
         content.componentInformation = markdown.toHTML(mdFileContent)
+        if(module != 'core') {
+            content.module = module;
+        }
     }
     res.render('component', content)
 })
