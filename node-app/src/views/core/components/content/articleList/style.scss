@@ -41,6 +41,10 @@
     }
 } 
 .articleList_editorial-wrapper{
+    padding: 10px;
+    .article-seperator{
+        display:none;
+    }
     .cmp-contentfragment{
         width: 33%;
         float: left;
@@ -123,7 +127,6 @@
             .cmp-contentfragment{
                 width:100%;
                 float:none;
-                height:230px;
                 .cmp-contentfragment__elements{
                     text-align: center;
                     width:100%;               
