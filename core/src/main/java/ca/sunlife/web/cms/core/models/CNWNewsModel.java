@@ -140,6 +140,8 @@ public class CNWNewsModel {
 
 	// overview ends
 
+	private String newsArticleShortenedUrl;
+	
 	/**
 	 * @return the latestYear
 	 */
@@ -410,6 +412,20 @@ public class CNWNewsModel {
 	}
 
 	/**
+	 * @return the newsArticleShortenedUrl
+	 */
+	public String getNewsArticleShortenedUrl() {
+		return newsArticleShortenedUrl;
+	}
+
+	/**
+	 * @param newsArticleShortenedUrl the newsArticleShortenedUrl to set
+	 */
+	public void setNewsArticleShortenedUrl(String newsArticleShortenedUrl) {
+		this.newsArticleShortenedUrl = newsArticleShortenedUrl;
+	}
+
+	/**
 	 * Post construct method - init once the model gets instantiated
 	 */
 	@PostConstruct
@@ -426,6 +442,11 @@ public class CNWNewsModel {
 				processOverviewData();
 			} else {
 				processReleasesData();
+			}
+			if( null != newsArticleUrl && newsArticleUrl.length() > 0 ) {
+				final String pagePath = currentPage.getPath();
+				final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+				newsArticleShortenedUrl = shortenURL(newsArticleUrl, siteUrl);
 			}
 		} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 			logger.error("Error :: CNWNewsModel :: init :: error trace: {}", e);
@@ -510,6 +531,7 @@ public class CNWNewsModel {
 			requestURL = requestURL.replace(".", "/");
 			final String pagePath = currentPage.getPath();
 			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+			relativeURL = shortenURL(relativeURL, siteUrl);
 			requestURL = shortenURL(requestURL, siteUrl);
 			logger.debug("requestURL - after clean up: {}", requestURL);
 			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
