@@ -499,6 +499,7 @@ public class CNWNewsModel {
 			if (selectors.length == 0) {
 				requestURL = requestURL + "." + activeYear;
 			}
+			requestURL = requestURL.replace(".", "/");
 			logger.debug("requestURL - after clean up: {}", requestURL);
 			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
 			if (logger.isDebugEnabled()) {
