@@ -738,7 +738,7 @@ public class BasePageModel {
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
 				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT)
-																																		+ BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
+																																		+ BasePageModelConstants.SLASH_CONSTANT + releaseId;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
 		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException | LoginException | RepositoryException e) {
