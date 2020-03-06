@@ -656,7 +656,7 @@ ul {
             .container-border-right {
                 border-right: none;
             }
-            .container-border-right::after {
+            .container-border-right:after {
                 content: '';
                 position: relative;
                 left: 0;
@@ -1097,9 +1097,9 @@ ul {
                     width: 100%;
                 }
             }
-            .text-section {
+            /*.text-section {
                 margin-top: 32px;
-            }
+            }*/
         }
     }
     .content-highlight{
@@ -1234,8 +1234,8 @@ ul {
         }
 	}
 }
-//related resources ipad 768px not ipad pro
-@media (min-width:$tab-screen-min) and (max-width: 1023px){
+//related resources ipad and mobile devices 768px not ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: 1023px){
     .cmp-related-resource {
         .cmp-text {
             ul{
@@ -1410,6 +1410,7 @@ ul {
     @media (min-width:$tab-screen-min){
             /* triple cta tablet and desktop styles start here */
        .cta-three-column-wrapper{
+           margin-top:40px;
            .cmp-container{
                .cta-content-icon-wrapper{
                    padding:0;

@@ -1,0 +1,31 @@
+<template data-sly-template.element="${@ element='The content fragment element'}">
+    <div class="cmp-contentfragment__element cmp-contentfragment__element--${element.name}" data-cmp-contentfragment-element-type="${element.dataType}">
+        <dd class="cmp-contentfragment__element-value">
+            <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="core/wcm/components/contentfragment/v1/contentfragment/calendar.html"
+                 data-sly-call="${tpl.element @ date = element.value}"></sly>
+            <sly data-sly-test="${element.dataType == 'boolean'}">${element.value ? "true" : "false"}</sly>
+            <sly data-sly-test="${element.dataType != 'calendar' && element.dataType != 'boolean' && element.name!='newsroomPagePath' }">${(element.value) @join='<br/>', context='html'}</sly>
+        </dd>
+    </div>
+</template>
+
+<!--Below template will be used for newsroom-announcement-list component -->
+<template data-sly-template.elementForNewsList="${@ element='The content fragment element'}">
+    <div class="cmp-contentfragment__element cmp-contentfragment__element--${element.name}" data-cmp-contentfragment-element-type="${element.dataType}">
+        <dd class="cmp-contentfragment__element-value">
+            <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="core/wcm/components/contentfragment/v1/contentfragment/calendar.html"
+                 data-sly-call="${tpl.element @ date = element.value}"></sly>
+            <sly data-sly-test="${element.dataType == 'boolean'}">${element.value ? "true" : "false"}</sly>
+			<sly data-sly-test="${element.name=='title' }">
+				<sly data-sly-test.linkTitle="${element.value}"/>
+			</sly>
+			<sly data-sly-test="${element.name=='newsroomPagePath'}">
+				<sly data-sly-test.linkURL="${element.value}"/>
+			</sly>
+			<a href="${linkURL @ extension = 'html'}">${linkTitle}</a>
+            <sly data-sly-test="${element.dataType != 'calendar' && element.dataType != 'boolean' && element.name!='newsroomPagePath' && element.name!='title'}">
+				${(element.value) @join='<br/>', context='html'}
+			</sly>
+        </dd>
+    </div>
+</template>
