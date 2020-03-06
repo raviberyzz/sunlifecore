@@ -13,7 +13,7 @@
             margin-bottom: 10px;
             a {
                 font-weight: 400;
-            } 
+            }
         }
     }
     a:hover {
@@ -104,8 +104,8 @@
             cursor: pointer;
         }
     }
-    .editorial-nav-desktop-wrapper{
-        display: none;
+    .container-component .cmp-container .editorial-nav-desktop-wrapper {
+        display: none !important;
     }
 }
 
