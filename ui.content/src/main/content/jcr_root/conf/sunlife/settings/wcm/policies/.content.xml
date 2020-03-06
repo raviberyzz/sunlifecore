@@ -653,7 +653,18 @@
                                                 cq:styleLabel="Heading 6"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
-                                    </item0>									
+                                    </item0>
+                                     <item1
+                                    	cq:styleGroupLabel="Spacing"
+                                   		jcr:primaryType="nt:unstructured">
+                                     <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mt-0"
+                                            cq:styleId="1583526910241"
+                                            cq:styleLabel="Top Spacing 0"
+                                            jcr:primaryType="nt:unstructured"/>
+                                       </cq:styles>
+                                     </item1>									
                                 </cq:styleGroups>
                             </policy_title>
                         </title>
