@@ -7,8 +7,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -22,9 +24,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.sunlife.web.cms.core.beans.News;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * @author mo92 The Class CNWNewsModel - Sling model for CNW News list
@@ -45,6 +49,10 @@ public class CNWNewsModel {
 	@Inject
 	private CNWNewsService newsService;
 
+	/** The config service. */
+	@Inject
+	private SiteConfigService configService;
+	
 	/** News display type */
 	@Inject
 	@Via("resource")
@@ -132,6 +140,8 @@ public class CNWNewsModel {
 
 	// overview ends
 
+	private String newsArticleShortenedUrl;
+	
 	/**
 	 * @return the latestYear
 	 */
@@ -402,6 +412,20 @@ public class CNWNewsModel {
 	}
 
 	/**
+	 * @return the newsArticleShortenedUrl
+	 */
+	public String getNewsArticleShortenedUrl() {
+		return newsArticleShortenedUrl;
+	}
+
+	/**
+	 * @param newsArticleShortenedUrl the newsArticleShortenedUrl to set
+	 */
+	public void setNewsArticleShortenedUrl(String newsArticleShortenedUrl) {
+		this.newsArticleShortenedUrl = newsArticleShortenedUrl;
+	}
+
+	/**
 	 * Post construct method - init once the model gets instantiated
 	 */
 	@PostConstruct
@@ -419,7 +443,12 @@ public class CNWNewsModel {
 			} else {
 				processReleasesData();
 			}
-		} catch (IOException | ApplicationException | SystemException e) {
+			if( null != newsArticleUrl && newsArticleUrl.length() > 0 ) {
+				final String pagePath = currentPage.getPath();
+				final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+				newsArticleShortenedUrl = shortenURL(newsArticleUrl, siteUrl);
+			}
+		} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 			logger.error("Error :: CNWNewsModel :: init :: error trace: {}", e);
 		}
 	}
@@ -450,7 +479,7 @@ public class CNWNewsModel {
 	 * @throws ApplicationException
 	 * @throws SystemException
 	 */
-	public void processReleasesData() throws IOException, ApplicationException, SystemException {
+	public void processReleasesData() throws IOException, ApplicationException, SystemException, LoginException, RepositoryException {
 		logger.debug("Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}", latestYear, numberOfTabs, locale, newsCategories, pageSize);
 		int year;
 		int totalNoYears;
@@ -500,14 +529,29 @@ public class CNWNewsModel {
 				requestURL = requestURL + "." + activeYear;
 			}
 			requestURL = requestURL.replace(".", "/");
+			final String pagePath = currentPage.getPath();
+			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+			relativeURL = shortenURL(relativeURL, siteUrl);
+			requestURL = shortenURL(requestURL, siteUrl);
 			logger.debug("requestURL - after clean up: {}", requestURL);
 			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
 			if (logger.isDebugEnabled()) {
 				logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
 			}
-		} catch (IOException | ApplicationException | SystemException e) {
+		} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
 			throw e;
 		}
+	}
+	
+	/**
+	 * Generates shorten url
+	 * @param url
+	 * @return shortened url
+	 */
+	public String shortenURL(String pagePath, String siteUrl) {
+		if( null == siteUrl )
+			return null;
+		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
 	}
 }
