@@ -274,17 +274,17 @@
                                         <item0
                                             cq:styleClasses="mt-18"
                                             cq:styleId="1579252476265"
-                                            cq:styleLabel="Spacing 18"
+                                            cq:styleLabel="Top Spacing 18"
                                             jcr:primaryType="nt:unstructured"/>
                                          <item1
                                             cq:styleClasses="mt-20"
                                             cq:styleId="1579082984654"
-                                            cq:styleLabel="Spacing 20"
+                                            cq:styleLabel="Top Spacing 20"
                                             jcr:primaryType="nt:unstructured"/>   
                                           <item2
                                             cq:styleClasses="mt-40"
                                             cq:styleId="1579980828796"
-                                            cq:styleLabel="Spacing 40"
+                                            cq:styleLabel="Top Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
@@ -1378,6 +1378,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
+                                <item1
+                                    cq:styleGroupLabel="Table Header"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="table-stickyheader"
+                                            cq:styleId="1583423760818"
+                                            cq:styleLabel="Sticky header"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         </cq:styles>
+                                </item1>
                             </cq:styleGroups>
                         </policy_table>
                     </table>
