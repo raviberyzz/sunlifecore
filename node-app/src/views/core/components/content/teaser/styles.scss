@@ -356,3 +356,15 @@
         }
     }
 }
+
+/* scss for teaser image component to apply bottom padding only if 
+.image-image and .bottom-aligned-text classes exists start */
+ .circular-image.bottom-aligned-text {
+     .image-text-wrapper{
+         .text-section{
+             margin-top:16px;
+         }
+     }
+ }
+/* scss for teaser image component to apply bottom padding only if 
+.image-image and .bottom-aligned-text classes exists end */

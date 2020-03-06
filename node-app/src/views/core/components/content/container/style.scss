@@ -222,6 +222,13 @@ ul {
             margin-top: 14px;
             padding: 6px 16px;
         }
+        .icon-texts{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+                font-size: 1.125rem;
+                font-weight:700;
+            }
+            
+        }
     }
 }
 .cross-cta-wrapper {
@@ -951,14 +958,14 @@ ul {
                     color: $dark-grey-color;
                     line-height: 23px;
                     font-size: 1.125rem;
-                    font-weight: bold;
                     padding: 15px;
-                    height: 56px;
+                    min-height: 56px;
                     display: flex;
                     justify-content: center;
                     h2, h3, h4, h5, h6 {
                         line-height: 23px;
                         font-size: 1.125rem;
+                        font-weight: 700;
                         margin: 0;
                     }
                    }
