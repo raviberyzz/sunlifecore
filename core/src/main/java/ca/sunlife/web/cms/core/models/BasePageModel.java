@@ -445,6 +445,7 @@ public class BasePageModel {
 			final String domain = configService.getConfigValues("domain", pagePath);
 			final String locale = configService.getConfigValues("pageLocale", pagePath);
 			final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
+			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
 			String pageLocaleDefault = null;
 
 			if (null != locale && locale.length() > 0) {
@@ -485,8 +486,8 @@ public class BasePageModel {
 			// Configuring custom social sharing - meta-tags
 			customMetadata.put(OG_TITLE, title);
 			customMetadata.put(TWITTER_TITLE, title);
-			customMetadata.put(OG_URL, seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
-			customMetadata.put(TWITTER_URL, seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(OG_URL, domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(TWITTER_URL, domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(OG_LOCALE, locale);
@@ -501,14 +502,14 @@ public class BasePageModel {
 
 			// Sets UDO parameters
 			otherUDOTagsMap = new JsonObject();
-			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url
+			otherUDOTagsMap.addProperty("page_canonical_url", domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT); // canonical url
 
 			if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl) {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
+				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + shortenURL(seoCanonicalUrl, siteUrl).replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
 																																		BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage + BasePageModelConstants.SLASH_CONSTANT)
 																																		+ BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			} else {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
 			}
 			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
 			setUDOParameters();
@@ -518,7 +519,7 @@ public class BasePageModel {
 			}
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 			udoTags = gson.toJson(otherUDOTagsMap);
-			seoCanonicalUrl = seoCanonicalUrl + BasePageModelConstants.SLASH_CONSTANT;
+			seoCanonicalUrl = domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT;
 			logger.debug("Map Display {}", udoTags);
 		} catch (Exception e) {
 			logger.error("Error :: init method of BasePageModel :: {}", e);
@@ -542,12 +543,33 @@ public class BasePageModel {
 			return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, title);
 	}
 
+	
+	/**
+	 * Generates shorten url
+	 * @param url
+	 * @return shortened url
+	 */
+	public String shortenURL(String pagePath, String siteUrl) {
+		if( null == siteUrl )
+			return null;
+		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+	}
+	
+	/**
+	 * Sets alternate URLs
+	 * @param pagePath
+	 * @param pageLocale
+	 * @throws LoginException
+	 * @throws RepositoryException
+	 */
 	public void setAlternateURLs(final String pagePath, final String pageLocale) throws LoginException, RepositoryException {
 		logger.debug("Entry :: setAlternateURLs :: pagePath: {}, pageLocale: {}", pagePath, pageLocale);
 		String altLanguagesCount = null;
 		String siteUrl = null;
+		String siteDomain = null;
 		altLanguagesCount = configService.getConfigValues("altLangCount", pagePath);
-		siteUrl = configService.getConfigValues("siteUrl", pagePath);
+		siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+		siteDomain = configService.getConfigValues("domain", pagePath);
 		if (null != altLanguagesCount && altLanguagesCount.length() > 0) {
 			int altLangCount = Integer.parseInt(altLanguagesCount);
 			altLanguageLinks = new HashMap<>();
@@ -562,11 +584,11 @@ public class BasePageModel {
 				final String newUrl = pagePath.replace(siteUrl, siteLocation);
 				logger.debug("setAlternateURLs :: New Url :: {}, defaultReportingLanguage :: {}", newUrl, defaultReportingLanguage);
 				if (null != resolver.getResource(newUrl)) {
-					altLanguageLinks.put(languageCode.replace("_", "-").toLowerCase(Locale.ROOT), domain + newUrl + BasePageModelConstants.SLASH_CONSTANT);
+					altLanguageLinks.put(languageCode.replace("_", "-").toLowerCase(Locale.ROOT), domain + shortenURL(newUrl, siteLocation) + BasePageModelConstants.SLASH_CONSTANT);
 				}
 			}
 			if (!altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), pagePath + BasePageModelConstants.SLASH_CONSTANT);
+				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
 			}
 			logger.debug("Map {}", altLanguageLinks);
 		}
@@ -582,7 +604,7 @@ public class BasePageModel {
 		logger.debug("Entry :: setUDOParameters :: ");
 		Page pageResource = null;
 		String pagePath = currentPage.getPath();
-		final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+		final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
 		logger.debug("setUDOParameters :: siteUrl: {}, defaultReportingLanguage: {}", siteUrl, defaultReportingLanguage);
 		if (null == siteUrl || siteUrl.length() <= 0) {
 			return;
@@ -707,6 +729,7 @@ public class BasePageModel {
 		logger.debug("Entry :: processDataForCNWNews :: ");
 		String releaseId = null;
 		try {
+			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
 			if (request.getRequestPathInfo().getSelectors().length > 0) {
 				releaseId = request.getRequestPathInfo().getSelectors()[0];
 				logger.debug("Selector fetched :: releaseId :: {}", releaseId);
@@ -714,13 +737,14 @@ public class BasePageModel {
 				title = newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
-				canonicalUrl = pagePath + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT)
+				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT)
 																																		+ BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
-		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException e) {
+		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 			logger.error("Error :: processDataForCNWNews :: {}", e);
 		}
 		logger.debug("Exit :: processDataForCNWNews :: ");
 	}
+	
 }
