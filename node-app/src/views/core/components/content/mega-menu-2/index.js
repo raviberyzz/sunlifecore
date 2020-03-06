@@ -48,8 +48,8 @@ $(document).ready(function(){
              $(this).children('.dropdown-menu').height(menuHeight-10);
          }
 
- },function(){
-   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
-    }
+ },function() {
+  $(this).parent().parent().parent().parent().height(menuHeight);
+  }
  );
 });

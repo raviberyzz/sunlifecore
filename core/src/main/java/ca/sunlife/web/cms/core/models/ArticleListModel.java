@@ -28,14 +28,14 @@ public class ArticleListModel extends ContentFragmentListImpl {
 	@Inject
 	@Via("resource")
 	@Optional
-	private String hideTop;
+	private int hideTop;
 	
 	/**
 	 * Gets the hide top.
 	 *
 	 * @return the hide top
 	 */
-	public String getHideTop() {
+	public int getHideTop() {
 		return hideTop;
 	}
 
@@ -44,7 +44,7 @@ public class ArticleListModel extends ContentFragmentListImpl {
 	 *
 	 * @param hideTop the new hide top
 	 */
-	public void setHideTop(String hideTop) {
+	public void setHideTop(int hideTop) {
 		this.hideTop = hideTop;
 	}
 

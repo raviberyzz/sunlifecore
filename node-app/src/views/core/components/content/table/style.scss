@@ -3,7 +3,9 @@
   display: block;
   position: relative;
 }
-
+table{
+  width: 100%;
+}
 // data table styles
 .cmp-table-data-content {
   border: 1px solid $white-shade;
