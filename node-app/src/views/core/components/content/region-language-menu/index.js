@@ -1,5 +1,7 @@
 $(document).ready(function () {
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
+    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').css('font-weight','700');
+    $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').addClass('nav-heading');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings().attr('aria-expanded', 'true');
     $('.desktop-region-language-menu-wrapper .content-region .accordion-heading').click(function () {
         if ($(this).attr('aria-expanded') == 'false') {

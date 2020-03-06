@@ -29,7 +29,7 @@
             background: $white-shade;
             border-color: $white-shade;
             border-style: solid;
-            border-width: 5px 1px 1px;
+            border-width: 9px 1px 1px;
             padding: 10px 11.3px 4px 17px;
             box-shadow: 0 4px 20px -10px $black-shade;
             display: inline;
@@ -40,7 +40,7 @@
         }
         .srch-btn {
             text-decoration: none;
-            padding: 8px 0 8px 2px;
+            padding: 0 0 0 2px;
             font-size: 14px;
             &::after {
                 font-family: FontAwesome;

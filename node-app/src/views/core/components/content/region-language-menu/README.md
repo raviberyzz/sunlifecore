@@ -16,7 +16,8 @@ JSON Format
             "accordion" : true,
             "list" : [{
                 "link" : "https://www.sunlife.ca",
-                "text" : "Sun Life Financial Canada"
+                "text" : "Sun Life Financial Canada",
+                "selected" : "nav-select"
             },{
                 "link" : "https://www.sunlifeglobalinvestments.com",
                 "text" : "Sun Life Global Investments"
@@ -42,8 +43,7 @@ JSON Format
             "accordion" : true,
             "list" : [{
                 "link" : "https://lifeinsurance.adityabirlacapital.com",
-                "text" : "Birla Sun Life",
-                "selected" : "nav-select"
+                "text" : "Birla Sun Life"
             },{
                 "link" : "http://www.sunlife.com/asiaservicecentre",
                 "text" : "Asia Service Centres"
