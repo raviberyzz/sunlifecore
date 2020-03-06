@@ -87,8 +87,11 @@
         margin: 20px 0;
         li{
             display: inline-block;
+            width:32px;
+            height: 32px;
             a{
                 border:none;
+                border-radius:4px;
             }
         }
         .previous {
@@ -97,6 +100,12 @@
                     display:none;
                 }
             }
+            width:auto;
+            height: auto;
+        }
+        .next{
+            width:auto;
+            height: auto;
         }
         .link-to-first{
             a {
@@ -119,6 +128,8 @@
         }
         .ellipsis{
             pointer-events:none;
+            width:auto;
+            height: auto;
         }
     }
     .pagination-indicator{
