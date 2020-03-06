@@ -1407,6 +1407,23 @@ ul {
 }
 /* Tool Card Main Wrapper Ends Here*/
 
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+.left-nav-with-content-section{
+ .container-component{
+     .cmp-container{
+         .text{
+             .cmp-text{
+                 h2:first-child{
+                      margin-top:0px;
+                 }
+             }
+         }
+     }
+ }
+}
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+
+
 
 /*****************************************************************
 *****************************************************************/
