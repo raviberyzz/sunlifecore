@@ -12,7 +12,10 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.jcr.RepositoryException;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,9 +27,11 @@ import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.News;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
@@ -53,11 +58,16 @@ public class CNWNewsModelTest {
 
 	@InjectMocks
 	private CNWNewsModel cnwNewsModel;
+	
+	@Mock
+	private SiteConfigService configService;
 
 	@BeforeEach
-	public void setup() {
+	public void setup() throws LoginException, RepositoryException {
 		MockitoAnnotations.initMocks(this);
 		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
+		when(currentPage.getPath()).thenReturn("/content/sunlife/ca/en/home");
+		when(configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, "/content/sunlife/ca/en/home")).thenReturn("/content/sunlife");
 	}
 
 	void setSelectors() {
