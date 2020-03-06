@@ -38,7 +38,7 @@
 						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
                             <div class="news-article">
                                 <p>${news.releaseDate}</p>
-                                <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleUrl}/${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a></p>
+                                <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}/${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a></p>
                                 <p>${news.summary @ context='html'}</p>
                             </div>
 						</sly>
