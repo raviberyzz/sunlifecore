@@ -1,5 +1,9 @@
 @import '../../../base/core';
 /* Navigation HK specific CSS starts here */
+.slf-header-wrapper .desktop-primary-navigation .menu-content {
+    padding: 0;
+    margin-top: -7px !important;
+}
 .nav .arrow .dropdown-toggle{
     padding: 0 16px;
            }
@@ -18,7 +22,7 @@
     }
     .box-class {
         background-color: $white-shade;
-        padding:15px 24px;
+        padding: 0 16px;
         z-index: 3000;
         position: relative;
         box-shadow: 0px 2px 0px 0px $white-shade;
@@ -45,9 +49,4 @@
           text-transform:uppercase;
     }
 } 
- 
-
-
-
-
 /* Navigation HK specific CSS ends here */
