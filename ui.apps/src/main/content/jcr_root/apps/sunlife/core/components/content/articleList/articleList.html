@@ -3,17 +3,12 @@
 
     <section data-sly-list="${list.listItems}"
     class="cmp-contentfragmentlist">
-
-        <sly data-sly-test.top="${list.hideTop}"></sly>
-            <sly data-sly-test="${top && itemList.index>2}">
+            <sly data-sly-test="${itemList.index >= list.hideTop}">
                 <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
-
+                <hr class="article-separator"/>
        		</sly>
-            <sly data-sly-test="${!top}">
-                <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
-       		</sly>
-	<hr class="article-separator"/>
     </section>
+    
 </sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
