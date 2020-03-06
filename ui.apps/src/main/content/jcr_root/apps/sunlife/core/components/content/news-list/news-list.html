@@ -18,7 +18,7 @@
         <div class="cmp-tabs" data-cmp-is="tabs">
             <ol role="tablist" class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}">
                 <li class="${yearsToShow == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" tabindex="-1" aria-selected="true" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
-                    <a href="${newsModel.relativeURL}/${yearsToShow}/">
+                    <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}/${yearsToShow}/">
                     <span class="slf-tab-title">${yearsToShow}</span>
                     </a>
                 </li>
@@ -29,7 +29,7 @@
                 class="${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
                 data-cmp-hook-tabs="tabpanel">
                 <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == newsModel.activeYear ? 'true' : 'false'}" tabindex="0">
-                    <a href="${newsModel.relativeURL}/${yearsTab}/">${yearsTab}</a>
+                    <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}/${yearsTab}/">${yearsTab}</a>
                 </div>
                 <sly data-sly-test="${yearsTab == newsModel.activeYear}">
 					<sly data-sly-test.newsList="${newsModel.news.releaseMain.releases.release}" />
@@ -68,29 +68,29 @@
                             </sly>
                             <sly data-sly-test="${paginationObj.curPage > 1}">
                                 <li class="previous ${previousCss}">
-                                	<a href="${newsModel.requestURL}/${paginationObj.prevPage}/">
+                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}/${paginationObj.prevPage}/">
                                 		<span class="fa fa-angle-left" aria-hidden="true"></span>
                                 		<span>${newsModel.previousText}</span>
                                 	</a>
                                 </li>
                             </sly>
                             <li class="link-to-first ${firstPageCss}">
-                                <a href="${newsModel.requestURL}/1/" aria-label="${paginationObj.firstPageText}">
+                                <a x-cq-linkchecker="skip" href="${newsModel.requestURL}/1/" aria-label="${paginationObj.firstPageText}">
                                 	<span class="fa fa-angle-double-left" aria-hidden="true"></span>
                                 	<span>1</span>
                                 </a>
                             </li>
                             <sly data-sly-list.pageItems="${paginationObj.pageItems}">
                                 <li data-sly-test = "${!paginationObj.ellipsis}" class="${paginationObj.curPage == pageItems.index ? 'active' : ''}">
-                                    <a href="${pageItems.href}/">
+                                    <a x-cq-linkchecker="skip" href="${pageItems.href}/">
                                     	<span>${pageItems.index}</span>
                                     </a>
                                 </li>
-                                <li data-sly-test = "${paginationObj.ellipsis}" class="ellipsis"><a><span>â€¦</span></a></li>
+                                <li data-sly-test = "${paginationObj.ellipsis}" class="ellipsis"><a><span>…</span></a></li>
                             </sly>
                             <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
                                 <li class="next ${nextCss}">
-                                	<a href="${newsModel.requestURL}/${paginationObj.nextPageNo}/">${newsModel.nextText}</a>
+                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}/${paginationObj.nextPageNo}/">${newsModel.nextText}</a>
                                 </li>
                             </sly>
                             </ul>
