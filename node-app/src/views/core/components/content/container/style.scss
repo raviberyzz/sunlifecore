@@ -956,6 +956,11 @@ ul {
                     height: 56px;
                     display: flex;
                     justify-content: center;
+                    h2, h3, h4, h5, h6 {
+                        line-height: 23px;
+                        font-size: 1.125rem;
+                        margin: 0;
+                    }
                    }
                    .text:last-child{
                        .cmp-text{
