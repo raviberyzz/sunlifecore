@@ -1,7 +1,6 @@
-<template data-sly-template.head="${ @ page }"
+<template data-sly-template.head="${ @ page, baseModel }"
           data-sly-use.headlibRenderer="headlibs.html"
-          data-sly-use.headResources="head.resources.html"
-          data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel">   
+          data-sly-use.headResources="head.resources.html">   
     <meta charset="UTF-8">
     <title>${baseModel.seoPageTitle @context = 'html'}</title>
     <meta data-sly-test.description="${baseModel.seoDescription @context = 'html'}" name="description" content="${description @context = 'unsafe'}"/>
