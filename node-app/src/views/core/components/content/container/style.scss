@@ -1173,7 +1173,7 @@ ul {
     .col-sm-6{
         padding: 0px 8px 0 10px;
     }
-	padding: 20px 0px 20px 4px;
+	padding: 40px 0px 40px 8px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1194,13 +1194,12 @@ ul {
             padding:11px;
 		}
 	}
-	.aem-Grid--12 {
-		.cmp-container {
-            margin-top: 0px;
-            .layout-container{
-                display: inline-table;
-            }
-		}
+	
+	.cmp-container {
+        margin-top: 0px;
+        .layout-container{
+            display: inline-table;
+        }
 	}
 	.icon-texts {
         padding-bottom: 16px;
