@@ -200,7 +200,7 @@
             }
         }
         .hide-in-editorial.text-section{
-            width: auto;
+            width: auto !important;
         }
     }
     .life-moment-second-level-banner .image-text-wrapper .text-section {
@@ -235,7 +235,7 @@
 }
 @media (max-width: $mobile-screen-max) {
     .side-image {
-            height: auto;
+            height: fit-content;;
         }
 
     .white-box {
