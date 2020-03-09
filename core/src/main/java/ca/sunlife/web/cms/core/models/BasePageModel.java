@@ -473,20 +473,6 @@ public class BasePageModel {
 	}
 
 	/**
-	 * @return the tags
-	 */
-	public String[] getTags() {
-		return tags;
-	}
-
-	/**
-	 * @param tags the tags to set
-	 */
-	public void setTags(String[] tags) {
-		this.tags = tags;
-	}
-
-	/**
 	 * Inits the model.
 	 *
 	 * @throws LoginException
