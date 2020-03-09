@@ -46,4 +46,6 @@ public final class AdvisorDetailConstants {
 	public static final String CITY_CONSTANT = "City";
 	public static final String PROVINCE_CONSTANT = "Province";
 	public static final String POSTAL_CODE_CONSTANT = "PostalCode";
+	public static final String PAGE_ADVISOR_ID_CONSTANT = "page_advisor_ID";
+	public static final String PAGE_ADVISOR_TYPE_CONSTANT = "page_advisor_type";
 }

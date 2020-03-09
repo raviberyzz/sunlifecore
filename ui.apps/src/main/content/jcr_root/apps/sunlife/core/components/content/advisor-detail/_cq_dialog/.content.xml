@@ -97,8 +97,8 @@
                                     <advisorImage
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Image"
-                                        fieldLabel="Image"
+                                        fieldDescription="Generic Placeholder Image"
+                                        fieldLabel="Generic Placeholder Image"
                                         name="./advisorImage"/>
                                     <cellPhone
                                         jcr:primaryType="nt:unstructured"
@@ -134,9 +134,21 @@
                                     <newWindowImage
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Image"
-                                        fieldLabel="Image"
+                                        fieldDescription="New Window Image"
+                                        fieldLabel="New Window Image"
                                         name="./newWindowImage"/>
+                                    <markerCorporateIcon
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Marker Icon (Corporate)"
+                                        fieldLabel="Marker Icon (Corporate)"
+                                        name="./iconMarkerCorporate"/>
+                                    <markerStandardIcon
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Marker Icon (Standard)"
+                                        fieldLabel="Marker Icon (Standard)"
+                                        name="./iconMarkerStandard"/>
                                 </items>
                             </mapSection>
                         </items>

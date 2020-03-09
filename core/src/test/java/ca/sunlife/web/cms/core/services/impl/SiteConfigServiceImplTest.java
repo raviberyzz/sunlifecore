@@ -47,6 +47,9 @@ public class SiteConfigServiceImplTest {
 	ResourceResolver resolver;
 
 	@Mock
+	Resource altLangResource;
+	
+	@Mock
 	Query query;
 	
 	@Mock
@@ -73,6 +76,8 @@ public class SiteConfigServiceImplTest {
 		final List<Hit> hits = Collections.singletonList(mockHit);
 		when(result.getHits()).thenReturn(hits);
 		when(resolver.getResource(any(String.class))).thenReturn(metadataResource);
+		when(mockHit.getPath()).thenReturn("/abc");
+		when(resolver.getResource("/abc/jcr:content/config/alternateLanguages")).thenReturn(altLangResource);
 		serviceImpl.activate(mock(SiteConfig.class));
 	}
 

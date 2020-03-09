@@ -127,6 +127,16 @@ public class AdvisorDetailModel {
 	@Via("resource")
 	private String newWindowImage;
 	
+	/** Marker corporate icon */
+	@Inject
+	@Via("resource")
+	private String iconMarkerCorporate;
+	
+	/** Marker standard icon */
+	@Inject
+	@Via("resource")
+	private String iconMarkerStandard;
+	
 	/** Advisor data json */
 	private String advisorData;
 
@@ -382,6 +392,34 @@ public class AdvisorDetailModel {
 	 */
 	public void setAdvisorMapData(String advisorMapData) {
 		this.advisorMapData = advisorMapData;
+	}
+
+	/**
+	 * @return the iconMarkerCorporate
+	 */
+	public String getIconMarkerCorporate() {
+		return iconMarkerCorporate;
+	}
+
+	/**
+	 * @param iconMarkerCorporate the iconMarkerCorporate to set
+	 */
+	public void setIconMarkerCorporate(String iconMarkerCorporate) {
+		this.iconMarkerCorporate = iconMarkerCorporate;
+	}
+
+	/**
+	 * @return the iconMarkerStandard
+	 */
+	public String getIconMarkerStandard() {
+		return iconMarkerStandard;
+	}
+
+	/**
+	 * @param iconMarkerStandard the iconMarkerStandard to set
+	 */
+	public void setIconMarkerStandard(String iconMarkerStandard) {
+		this.iconMarkerStandard = iconMarkerStandard;
 	}
 
 	/**
