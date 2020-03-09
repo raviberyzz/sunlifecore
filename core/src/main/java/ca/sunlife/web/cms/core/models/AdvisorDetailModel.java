@@ -108,6 +108,7 @@ public class AdvisorDetailModel {
 	private String advisorLinkLabel;
 
 	/** Advisor location label */
+	@Inject
 	@Via("resource")
 	private String advisorLocationLabel;
 	
