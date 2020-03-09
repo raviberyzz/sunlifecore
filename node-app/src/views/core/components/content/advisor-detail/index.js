@@ -1,8 +1,15 @@
 //Version 2.0 - 2016.03.51
-var iconMarkerCorporate = '/static/ca/Find%20an%20advisor/images/icon_google-maps_office-building.png';
-var iconMarkerStandard = '/content/dam/sunlife/icon_google-maps_expert.png';
+var iconMarkerCorporate;
+var iconMarkerStandard;
 var exists = false;
 var advisorInfo;
+
+if(typeof(iconMarkerCorporateVal) != 'undefined') {
+	iconMarkerCorporate = iconMarkerCorporateVal;
+}
+if(typeof(iconMarkerStandardVal) != 'undefined') {
+	iconMarkerStandard = iconMarkerStandardVal;
+}
 if(typeof(advisorInfoMap) != 'undefined') {
     advisorInfo = advisorInfoMap.map;
 }
