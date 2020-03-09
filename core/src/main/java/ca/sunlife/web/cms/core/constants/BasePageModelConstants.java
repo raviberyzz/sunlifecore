@@ -18,5 +18,8 @@ public class BasePageModelConstants {
 	public static final String PAGE_TITLE_FORMAT_CONSTANT = "${pageTitle}";
 	public static final String ALTERNATE_URL_ITEMS_CONSTANT = "item";
 	public static final String SITE_URL_CONSTANT = "siteUrl";
+	public static final String PAGE_TYPE_REGULAR_CONSTANT = "regular";
+	public static final String PAGE_TYPE_CNW_CONSTANT = "cnw";
+	public static final String PAGE_TYPE_ADVISOR_CONSTANT = "advisor";
 	
 }

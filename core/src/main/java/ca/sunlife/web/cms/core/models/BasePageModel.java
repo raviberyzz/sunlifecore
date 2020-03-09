@@ -152,10 +152,10 @@ public class BasePageModel {
 	@Via("resource")
 	private String socialMediaImage;
 
-	/** Is cnw news details page . */
+	/** Advanced page type . */
 	@Inject
 	@Via("resource")
-	private String isCNWNewsDetailPage;
+	private String advancedPageType;
 	
 	/** Head include . */
 	@Inject
@@ -431,6 +431,62 @@ public class BasePageModel {
 	}
 
 	/**
+	 * @return the advancedPageType
+	 */
+	public String getAdvancedPageType() {
+		return advancedPageType;
+	}
+
+	/**
+	 * @param advancedPageType the advancedPageType to set
+	 */
+	public void setAdvancedPageType(String advancedPageType) {
+		this.advancedPageType = advancedPageType;
+	}
+
+	/**
+	 * @return the socialMediaDescripton
+	 */
+	public String getSocialMediaDescripton() {
+		return socialMediaDescripton;
+	}
+
+	/**
+	 * @param socialMediaDescripton the socialMediaDescripton to set
+	 */
+	public void setSocialMediaDescripton(String socialMediaDescripton) {
+		this.socialMediaDescripton = socialMediaDescripton;
+	}
+
+	/**
+	 * @return the socialMediaImage
+	 */
+	public String getSocialMediaImage() {
+		return socialMediaImage;
+	}
+
+	/**
+	 * @param socialMediaImage the socialMediaImage to set
+	 */
+	public void setSocialMediaImage(String socialMediaImage) {
+		this.socialMediaImage = socialMediaImage;
+	}
+
+	/**
+	 * @return the tags
+	 */
+	public String[] getTags() {
+		return tags;
+	}
+
+	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(String[] tags) {
+		this.tags = tags;
+	}
+
+	/**
 	 * Inits the model.
 	 *
 	 * @throws LoginException
@@ -439,7 +495,7 @@ public class BasePageModel {
 	 *             the repository exception
 	 */
 	@PostConstruct
-	private void init() throws LoginException, RepositoryException {
+	public void init() throws LoginException, RepositoryException {
 		try {
 			final String pagePath = currentPage.getPath();
 			final String domain = configService.getConfigValues("domain", pagePath);
@@ -451,17 +507,22 @@ public class BasePageModel {
 			if (null != locale && locale.length() > 0) {
 				pageLocaleDefault = locale.split("_")[0];
 			}
-
 			logger.debug("pageLocaleDefault :: {}", pageLocaleDefault);
 
 			// Condition for CNW News details page starts
-			logger.debug("isCNWNewsDetailPage: {}", isCNWNewsDetailPage);
-			if (null != isCNWNewsDetailPage && "true".equals(isCNWNewsDetailPage)) {
+			logger.debug("advancedPageType: {}", advancedPageType);
+			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_CNW_CONSTANT.equals(advancedPageType)) {
 				logger.debug("Inside isCNWNewsDetailPage block");
 				processDataForCNWNews(locale, pagePath);
 			}
 			// Condition for CNW News details page ends
 
+			// Condition for advisor pages start
+			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT.equals(advancedPageType)) {
+				logger.debug("Inside advisor page block");
+			}
+			// Condition for advisor pages end
+			
 			// SEO title - <title> tag
 			seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
 
