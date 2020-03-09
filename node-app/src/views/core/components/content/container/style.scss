@@ -1173,7 +1173,7 @@ ul {
     .col-sm-6{
         padding: 0px 8px 0 10px;
     }
-	padding: 20px 0px 40px 8px;
+	padding: 20px 0px 20px 4px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1196,7 +1196,10 @@ ul {
 	}
 	.aem-Grid--12 {
 		.cmp-container {
-			margin-top: 0px;
+            margin-top: 0px;
+            .layout-container{
+                display: inline-table;
+            }
 		}
 	}
 	.icon-texts {
@@ -1257,7 +1260,7 @@ ul {
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
     .cmp-related-resource {
-        padding: 20px 0 40px 0px;
+        padding: 20px 0 20px 0px;
         .icon-parent{
             display: none;
         }
