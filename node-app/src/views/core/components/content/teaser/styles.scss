@@ -25,6 +25,9 @@
         font-size: 1.125rem;
         line-height: 23px;
     }
+    .side-image {
+        height: fit-content;
+    }
 }
 .editorial-hero-banner {
     h1, h2, h3, h4, h5, h6 {
@@ -235,7 +238,7 @@
 }
 @media (max-width: $mobile-screen-max) {
     .side-image {
-            height: fit-content;;
+            height: auto;
         }
 
     .white-box {
