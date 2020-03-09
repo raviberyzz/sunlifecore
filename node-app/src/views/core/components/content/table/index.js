@@ -14,7 +14,14 @@ function stickyHeader(){
         $(window).on("scroll", function() {
           if (window.pageYOffset > theaderPosition) {
             position = window.pageYOffset - theaderPosition;
-            tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            // in case of mobile header the sticky header should be after the mobile header 
+            if(window.innerWidth < 1025 && $('.mobile-header-navbar').length){
+              //aligning table sticky header after the mobile header in mobile devices and tablets
+              position += 50; 
+              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            } else {
+              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            } 
             //removing the transform property once the page scrolls past the table
             if(window.pageYOffset > tableHeight){
               tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
