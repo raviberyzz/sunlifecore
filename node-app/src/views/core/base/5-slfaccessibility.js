@@ -46,7 +46,7 @@ $(document).ready(function () {
 });
 /* Tabs Accessibility Ends Here*/
 
-// /* Full Header accessibility starts here */ //This is onhold due to header restructuring
+// /* Full Header accessibility starts here */
      $('.search-icon-container').keyup(function (event) {
 
         if (event.keyCode == 13) {
@@ -87,6 +87,7 @@ $(document).ready(function () {
             if(e.shiftKey){
               $("#language-btn").focus();
               e.preventDefault();
+              $(".desktop-primary-navigation li").removeClass("open");
             }
         }
     });
@@ -101,6 +102,7 @@ $(document).ready(function () {
             if(e.shiftKey) {
                 $(".srch-btn").focus();
                 e.preventDefault();
+                $(".desktop-primary-navigation li").removeClass("open");
             }
         }
     });

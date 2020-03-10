@@ -55,15 +55,15 @@
                
                 /*Mega Menu strats here*/
                 .desktop-navigation{
-                    position:relative;
+                    position: static;
                     float:left;
-                    margin-left:40px;
+                    margin-left:50px;
                     .desktop-mega-menu{
                         .desktop-primary-navigation {
                             margin: -7px 0 0 0;
                             .menu-content{
                                 padding:0;
-                                margin-top:0px;
+                                margin-top:-15px;
                             }
                             .nav-item{
                                 .dropdown-toggle{
@@ -181,4 +181,7 @@
             }
         }
     }
+}
+.panel-group{
+    display:none;
 }
