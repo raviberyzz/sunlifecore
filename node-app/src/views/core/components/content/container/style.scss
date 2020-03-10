@@ -340,10 +340,13 @@ ul {
         }
     }
 }
+/*icon-text-list desktop starts here*/
 .icon-text-list{
     .mega-menu-icon-wrapper{
         .icon-parent{
             margin-right: 15px;
+            float:left;
+            margin-bottom:0;
             .icon-style{
                 font-size: 2rem;
                 background: none;
@@ -357,6 +360,7 @@ ul {
         
     }
 }
+/*icon-text-list desktop ends here*/
 .subscribe-main-content-wrapper{
     background-color: $medium-yellow-background;
     padding: 32px 16px;
@@ -532,6 +536,18 @@ ul {
 }
 
 @media (max-width:$mobile-screen-max) {
+    /*icon-text-list mobile starts here*/
+    .icon-text-list{
+        .mega-menu-icon-wrapper{
+            .icon-parent{
+                text-align: center;
+                float: none;
+                margin-bottom: 5px;
+            }
+            
+        }
+    }
+    /*icon-text-list mobile ends here*/
     .content-block-icon {
         padding-bottom:4px;
         .cross-cta-wrapper {
@@ -768,6 +784,20 @@ ul {
         }
     }
 }
+/*icon-text-list tablet starts here*/
+.icon-text-list{
+    .col-sm-6{
+        width: 100%;
+    }
+    .mega-menu-icon-wrapper{
+        .icon-parent{
+            float: none;
+            margin-bottom: 5px;
+        }
+        
+    }
+}
+/*icon-text-list tablet ends here*/
 }
 @media (max-width:$tab-screen-max) {
     .content-block-icon .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
