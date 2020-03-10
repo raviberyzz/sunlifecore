@@ -6,8 +6,8 @@
 <sly data-sly-test.advisorCorp="${advisorDataObj.AdvisorCorp}" />
 <script type="text/javascript">
 	var advisorInfoMap = ${advisorDetailObj.advisorMapData @ context = 'unsafe'};
-	var iconMarkerCorporateVal = ${advisorDetailObj.iconMarkerCorporate @ context = 'unsafe'};
-	var iconMarkerStandardVal = ${advisorDetailObj.iconMarkerStandard @ context = 'unsafe'};
+	var iconMarkerCorporateVal = "${advisorDetailObj.iconMarkerCorporate @ context = 'unsafe'}";
+	var iconMarkerStandardVal = "${advisorDetailObj.iconMarkerStandard @ context = 'unsafe'}";
 </script>
 <!-- Advisor start -->
 <sly data-sly-test="${advisorStd}">
