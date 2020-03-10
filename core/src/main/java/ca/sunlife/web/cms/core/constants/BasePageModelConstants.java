@@ -21,5 +21,7 @@ public class BasePageModelConstants {
 	public static final String PAGE_TYPE_REGULAR_CONSTANT = "regular";
 	public static final String PAGE_TYPE_CNW_CONSTANT = "cnw";
 	public static final String PAGE_TYPE_ADVISOR_CONSTANT = "advisor";
+	public static final String ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT = "${advisorId}";
+	public static final String ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT = "${advisorType}";
 	
 }

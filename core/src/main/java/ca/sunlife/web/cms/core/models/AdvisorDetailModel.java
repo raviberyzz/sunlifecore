@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -53,8 +54,7 @@ public class AdvisorDetailModel {
 	private SiteConfigService configService;
 
 	/** Type of advisor - ADVISOR/CORP */
-	@Inject
-	@Via("resource")
+	@ValueMapValue(name = "advisorType")
 	private String advisorType;
 
 	/** Address Label */
@@ -434,7 +434,9 @@ public class AdvisorDetailModel {
 		try {
 			final String pagePath = currentPage.getPath();
 			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-
+			
+			advisorType = currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class);
+			
 			if (advisorType == null) {
 				logger.debug("Advisor type is not set, hence existing process to set map data.");
 				return;

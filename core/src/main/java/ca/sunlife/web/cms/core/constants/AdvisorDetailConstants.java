@@ -14,6 +14,7 @@ public final class AdvisorDetailConstants {
 	 */
 	private AdvisorDetailConstants() {}
 
+	public static final String ADVISOR_TYPE_CONSTANT = "advisorType";
 	public static final String CORP_CONSTANT = "CORP";
 	public static final String ADVISOR_CONSTANT = "ADVISOR";
 	public static final String ADVISOR_CORP_CONSTANT = "AdvisorCorp";
