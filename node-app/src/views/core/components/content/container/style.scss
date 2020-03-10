@@ -1456,7 +1456,7 @@ ul {
            margin-top:40px;
            .cmp-container{
                .cta-content-icon-wrapper{
-                   padding:0;
+                   padding:0px 24px;
                    height:100%;
                    ul{
                        height:100%;
@@ -1477,7 +1477,7 @@ ul {
                             height: 100%;
                             display: flex;
                             flex-direction: column;
-                            justify-content: space-between;
+                            // justify-content: space-between;
                             margin-bottom: 40px;
                         }
                        }
