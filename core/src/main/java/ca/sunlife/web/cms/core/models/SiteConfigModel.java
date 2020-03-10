@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 
 /**
  * The Interface SiteConfigModel.
@@ -109,5 +110,29 @@ public interface SiteConfigModel {
 	 */
 	@Inject
 	String getUdoTagsPath();
+	
+	/**
+	 * Gets the article date format.
+	 *
+	 * @return the article date format
+	 */
+	@Inject @Optional
+	String getArticleDateFormat();
+	
+	/**
+	 * Gets the article publisher name.
+	 *
+	 * @return the article publisher name
+	 */
+	@Inject @Optional
+	String getArticlePublisherName();
+	
+	/**
+	 * Gets the article publisher logo.
+	 *
+	 * @return the article publisher logo
+	 */
+	@Inject @Optional
+	String getArticlePublisherLogo();
 
 }

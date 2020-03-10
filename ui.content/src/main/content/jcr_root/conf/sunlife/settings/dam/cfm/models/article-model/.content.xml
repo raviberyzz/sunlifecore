@@ -112,6 +112,7 @@
                             name="articleImage"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
+                            rootPath="/content/dam"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
                         <articleMainDescription
