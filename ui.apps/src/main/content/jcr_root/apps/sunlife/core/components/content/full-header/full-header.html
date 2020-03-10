@@ -7,6 +7,7 @@
   <sly data-sly-test.listFrom="${listModel.listFrom}" />
   <sly data-sly-test.signinTitle="${listModel.signinTitle}" />
   <sly data-sly-test.searchTitle="${listModel.searchTitle}" />
+  <sly data-sly-test.searchUrl="${listModel.searchUrl}" />
   <sly data-sly-test.regionTitle="${listModel.regionTitle}" />
   <sly data-sly-test.text="${listModel.text}" />
   <sly data-sly-test.searchPlaceholder="${listModel.searchPlaceholder}" />
@@ -31,7 +32,7 @@
                   class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
               </a></div>
             <div class="global-search">
-              <form name="searchform-bottom" class="slf-search" action="https://www.sunlife.ca/ca/Search+results"
+              <form name="searchform-bottom" class="slf-search" action="${searchUrl @ extension = 'html'}"
                 method="get"><label class="sr-only" for="q-top">Search</label>
                 <div class="form-wrapper">
                   <div class="input-wrapper">
