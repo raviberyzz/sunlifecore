@@ -729,6 +729,11 @@
                                             cq:styleId="1580197354792"
                                             cq:styleLabel="Content Highlight"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="icon-text-list"
+                                            cq:styleId="1580237354793"
+                                            cq:styleLabel="Icon Text List"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -781,6 +786,11 @@
                                             cq:styleId="1579089827251"
                                             cq:styleLabel="Blue Grey"
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="grey-background-box"
+                                            cq:styleId="1579080027251"
+                                            cq:styleLabel="Grey"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
                                 <item3
