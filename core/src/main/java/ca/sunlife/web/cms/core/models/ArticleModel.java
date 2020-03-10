@@ -424,7 +424,7 @@ public class ArticleModel {
 			ValueMap pageProperties = currentPage.getProperties();
 			
 			setPageUrl(configService.getPageUrl(pagePath));
-			setOgImage(configService.getConfigValues(DOMAIN, pagePath).concat(pageProperties.containsKey(SOCIAL_MEDIA_IMAGE)?pageProperties.get(SOCIAL_MEDIA_IMAGE, String.class):configService.getConfigValues(SOCIAL_MEDIA_IMAGE, pagePath)));
+			setOgImage(configService.getConfigValues(DOMAIN, pagePath).concat(pageProperties.containsKey(SOCIAL_MEDIA_IMAGE)?(String)pageProperties.getOrDefault(SOCIAL_MEDIA_IMAGE, StringUtils.EMPTY):configService.getConfigValues(SOCIAL_MEDIA_IMAGE, pagePath)));
 			setOgDescription(pageProperties.containsKey("socialMediaDescripton")?pageProperties.get("socialMediaDescripton", String.class):configService.getConfigValues("pageDescription", pagePath));
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
 			setPageModifiedDate(formatter.format(currentPage.getLastModified().getTime()));
@@ -444,7 +444,7 @@ public class ArticleModel {
 	 */
 	private void setArticleAuthorData(ResourceResolver resourceResolver, ValueMap articleContent) {
 		if(articleContent.containsKey(ARTICLE_AUTHOR)) {
-			String articleAuthorPath = articleContent.get(ARTICLE_AUTHOR,String.class);
+			String articleAuthorPath = (String) articleContent.getOrDefault(ARTICLE_AUTHOR,StringUtils.EMPTY);
 			Resource authorResource = resourceResolver.getResource(articleAuthorPath.concat(JCR_CONTENT_DATA_MASTER));
 			if(null != authorResource) {
 				ValueMap authorContent = authorResource.getValueMap();
@@ -470,7 +470,7 @@ public class ArticleModel {
 	private void setArticlePublishDate(ValueMap articleContent) throws LoginException, RepositoryException {
 		String articlePublishedDate = StringUtils.EMPTY;
 		if(articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-			articlePublishedDate = getFormatedDate(articleContent.get(ARTICLE_PUBLISHED_DATE,String.class),configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			articlePublishedDate = getFormatedDate((String)articleContent.getOrDefault(ARTICLE_PUBLISHED_DATE,StringUtils.EMPTY),configService.getConfigValues("articleDateFormat", currentPage.getPath()));
 		}
 		articleData.put(ARTICLE_PUBLISHED_DATE,articlePublishedDate);
 	}
