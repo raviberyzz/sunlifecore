@@ -79,6 +79,15 @@ public interface HeaderModel {
 	
 	
 	/**
+	 * Read the Search action
+	 *
+	 * @ return the Search action
+	 */
+	@Inject
+	String getSearchUrl();	
+	
+	
+	/**
 	 * Read the Region display value
 	 *
 	 * @ return the Region display value
