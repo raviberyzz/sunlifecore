@@ -4,6 +4,8 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
+        cq:lastModified="{Date}2020-03-09T15:03:06.990-04:00"
+        cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/author-model/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
@@ -20,33 +22,34 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
+                    jcr:lastModified="{Date}2020-03-09T15:03:06.990-04:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="22">
+                        maxGeneratedOrder="20">
                         <authorName
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldDescription="Please provide the Author Name"
+                            fieldDescription="Enter the Author Name"
                             fieldLabel="Author Name"
-                            listOrder="21"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="authorName"
                             renderReadOnly="false"
+                            required="on"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-                        <authorPic
+                        <_x0031_583779212402
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                            fieldDescription="Please provide the Author Picture"
-                            fieldLabel="Author Bio Pic"
-                            filter="hierarchy"
-                            listOrder="22"
-                            metaType="reference"
-                            name="authorPic"
-                            nameSuffix="contentReference"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Author Body"
+                            default-mime-type="text/html"
+                            listOrder="2"
+                            metaType="text-multi"
+                            name="authorBody"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
