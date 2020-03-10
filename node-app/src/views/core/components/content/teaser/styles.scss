@@ -372,13 +372,17 @@
         display: none;
     }
 }
-/* scss for banner images in landscape mode for mobiles start here*/
+/* scss for banner images in landscape mode for mobiles end here*/
 /* scss for teaser image component to apply bottom padding only if 
 .image-image and .bottom-aligned-text classes exists start */
  .circular-image.bottom-aligned-text {
      .image-text-wrapper{
          .text-section{
              margin-top:16px;
+             h2,h3,h4,h5,h6{
+                font-size:1.125rem;
+                line-height: 1.4375rem; 
+             }
          }
      }
  }
