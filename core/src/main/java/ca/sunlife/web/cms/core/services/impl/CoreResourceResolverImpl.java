@@ -56,7 +56,7 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
 		param.put(ResourceResolverFactory.SUBSERVICE, config.getSubService());
 		ResourceResolver resolver = null;
 		resolver = resourceResolverFactory.getServiceResourceResolver(param);
-		log.debug("Exit :: getResourceResolver method of CoreResourceResolverImpl");
+		log.debug("Exit :: getResourceResolver method of CoreResourceResolverImpl {}",resolver);
 		return resolver;
 	}
 

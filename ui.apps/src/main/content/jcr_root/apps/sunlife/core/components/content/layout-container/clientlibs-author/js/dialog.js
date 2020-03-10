@@ -56,10 +56,8 @@
             var val = $(this).val();
             $('[name="./typeVal"]').val($(this).val());
             if(val === "modal-popup" || val === "site-notification" || val === "simple-popup") {
-                $('[name="./analyticsId"]').parent().show();
                 $('[name="./closeText"]').parent().show();
             }else {
-                $('[name="./analyticsId"]').parent().hide();
                 $('[name="./closeText"]').parent().hide();
             }
             if(val === "modal-popup") {
