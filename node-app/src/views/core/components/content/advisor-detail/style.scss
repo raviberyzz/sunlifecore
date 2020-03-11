@@ -2,6 +2,10 @@
 
     //accordian styling (advisor location tab)
 .google-map{
+    .panel{
+        -webkit-box-shadow: unset;
+        box-shadow: unset;
+    }
     #GoogleMapDiv{
         height: 300px; 
         width :100%;

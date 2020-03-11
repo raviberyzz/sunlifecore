@@ -98,8 +98,63 @@ JSON Format
             "LinkUrl":"https:\/\/www.linkedin.com\/in\/gordanazlomislic\/"
          }
       ],
-      "CorpTeamMembers":null,
-      "CorpWelcomMessage":"It's amazing what a little planning can do when you're building your financial future.  RRSPs are a key component of any financial picture. Whether you're just starting to plan for your future or you've been saving for your retirement for years, I can help you build the future you've dreamed of.",
+      "CorpTeamMembers":[
+         {
+            "Address":null,
+            "Aid":"106401731063395617951",
+            "Bio":null,
+            "ContactInfo":{
+               "CellPhone":null,
+               "Email":"Greg.Lampman@sunlife.com",
+               "Fax":null,
+               "Phone":"905-528-8691 ext. 2226",
+               "Url":"E\/search\/agent\/default.asp?AID=106401731063395617951"
+            },
+            "Disclaimer":null,
+            "DisplayPhoto":true,
+            "FormattedName":"Gregory Lampman",
+            "GoogleMap":null,
+            "Languages":[
+               "English"
+            ],
+            "Notices":null,
+            "PhotoUrl":"\/images\/AdvisorPhotos\/106401731063395617951.gif",
+            "SocialMediaLinks":[
+            ],
+            "TDLink":null,
+            "Type":"ADVISOR"
+         },
+         {
+            "Address":null,
+            "Aid":"106402730067390622957",
+            "Bio":null,
+            "ContactInfo":{
+               "CellPhone":null,
+               "Email":"Jonathan.Jackson@sunlife.com",
+               "Fax":null,
+               "Phone":"905-528-8691 ext. 2232",
+               "Url":"E\/search\/agent\/default.asp?AID=106402730067390622957"
+            },
+            "Disclaimer":null,
+            "DisplayPhoto":true,
+            "FormattedName":"Jonathan Jackson, CLU®FMA,FCSI",
+            "GoogleMap":null,
+            "Languages":[
+               "English"
+            ],
+            "Notices":null,
+            "PhotoUrl":"\/images\/AdvisorPhotos\/106402730067390622957.gif",
+            "SocialMediaLinks":[
+               {
+                  "LinkName":"Facebook",
+                  "LinkUrl":"https:\/\/www.facebook.com\/Jonathan-Jackson-Sun-Life-Financial-advisor-489437037846066\/"
+               }
+            ],
+            "TDLink":null,
+            "Type":"ADVISOR"
+         }
+      ],
+      "CorpWelcomMessage":"It's amazing what a little planning can do when you're building your financial future.  RRSPs are a key component of any financial pictpopure. Whether you're just starting to plan for your future or you've been saving for your retirement for years, I can help you build the future you've dreamed of.",
       "Disclaimer":null,
       "GoogleMap":{
          "Latitude":"0",
