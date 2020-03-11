@@ -59,6 +59,14 @@ public interface FormDropdown {
 	public List<ItemsGroup> getItemsGroup();
 	
 	/**
+	 * Gets the is custom action formation required flag.
+	 *
+	 * @return the help message
+	 */
+	@Inject
+	public String getCustomActionGenerationRequired();
+	
+	/**
 	 * The Interface ItemsGroup.
 	 */
 	@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
