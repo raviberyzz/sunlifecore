@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "list-wrapper-class": "editorial-nav-desktop-wrapper",
+    "list-wrapper-class": "left-nav-list-wrapper",
     "LinkText": "Quick Link",
     "link-id":"link1",
     "list" : [{
