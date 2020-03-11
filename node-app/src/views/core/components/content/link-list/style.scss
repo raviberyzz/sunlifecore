@@ -69,19 +69,26 @@
     
     .accordion-heading{
         font-weight: 700;
-        font-size: 18px;
-        line-height: 23px;
-        margin-bottom: 0;
+        color: $dark-grey-color;
+        font-size: 1rem;
+        line-height: 26px;
+    }
+    .accordion-heading:first {
+        margin-top: 0px;
     }
     .list-div{
         display: block;
-        padding-left:15px;
-
+        margin-top: 16px;
         .list-unstyled{
-           li{ 
-               padding-top:2px;
+            li{ 
+                padding: 0 0 8px 8px;
                a{
-                font-weight: 400;
+                    padding: 0;
+                    font-size: 1rem;
+                    color: $medium-blue-color;
+                    font-weight: 400;
+                    text-decoration: none;
+                    line-height: 26px;
                 }
             }
         }
@@ -95,6 +102,10 @@
     }
 }
 @media (min-width: $tab-screen-min) {
+    .left-nav-list-wrapper{
+        display: none;
+    }
+
     .lists-wrapper {
         .links {
             float: left;
@@ -113,9 +124,7 @@
 }
 @media (max-width: $mobile-screen-max) {
     .left-nav-list-wrapper{
-        .links{
-            padding-left: 50px;
-        }
+        display: none;
     }
 
     .lists-wrapper {
