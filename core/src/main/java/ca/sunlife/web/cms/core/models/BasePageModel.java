@@ -30,6 +30,8 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.settings.SlingSettingsService;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,9 +42,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
+import ca.sunlife.web.cms.core.services.AdvisorDetailService;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -80,6 +84,9 @@ public class BasePageModel {
 
 	/** The Constant TWITTER_IMAGE. */
 	static final String TWITTER_IMAGE = "twitter:image";
+
+	/** The Constant TWITTER_CARD. */
+	static final String TWITTER_CARD = "twitter:card";
 
 	/** The Constant LOGGER. */
 	private static final Logger logger = LoggerFactory.getLogger(BasePageModel.class);
@@ -152,48 +159,25 @@ public class BasePageModel {
 	@Via("resource")
 	private String socialMediaImage;
 
-	/** Is cnw news details page . */
+	/** Advanced page type . */
 	@Inject
 	@Via("resource")
-	private String isCNWNewsDetailPage;
-	
+	private String advancedPageType;
+
 	/** Head include . */
 	@Inject
 	@Via("resource")
 	private String headInclude;
-	
+
 	/** body include . */
 	@Inject
 	@Via("resource")
 	private String bodyInclude;
 
-	/**
-	 * @return the headInclude
-	 */
-	public final String getHeadInclude() {
-		return headInclude;
-	}
-
-	/**
-	 * @param headInclude the headInclude to set
-	 */
-	public final void setHeadInclude(String headInclude) {
-		this.headInclude = headInclude;
-	}
-
-	/**
-	 * @return the bodyInclude
-	 */
-	public final String getBodyInclude() {
-		return bodyInclude;
-	}
-
-	/**
-	 * @param bodyInclude the bodyInclude to set
-	 */
-	public final void setBodyInclude(String bodyInclude) {
-		this.bodyInclude = bodyInclude;
-	}
+	/** Advispr type . */
+	@Inject
+	@Via("resource")
+	private String advisorType;
 
 	/** The config service. */
 	@Inject
@@ -201,6 +185,9 @@ public class BasePageModel {
 
 	@Inject
 	private CNWNewsService cnwNewsService;
+
+	@Inject
+	private AdvisorDetailService advisorDetailService;
 
 	/** The meta data. */
 	private Map<String, String> customMetadata;
@@ -431,6 +418,81 @@ public class BasePageModel {
 	}
 
 	/**
+	 * @return the advancedPageType
+	 */
+	public String getAdvancedPageType() {
+		return advancedPageType;
+	}
+
+	/**
+	 * @param advancedPageType
+	 *            the advancedPageType to set
+	 */
+	public void setAdvancedPageType(String advancedPageType) {
+		this.advancedPageType = advancedPageType;
+	}
+
+	/**
+	 * @return the socialMediaDescripton
+	 */
+	public String getSocialMediaDescripton() {
+		return socialMediaDescripton;
+	}
+
+	/**
+	 * @param socialMediaDescripton
+	 *            the socialMediaDescripton to set
+	 */
+	public void setSocialMediaDescripton(String socialMediaDescripton) {
+		this.socialMediaDescripton = socialMediaDescripton;
+	}
+
+	/**
+	 * @return the socialMediaImage
+	 */
+	public String getSocialMediaImage() {
+		return socialMediaImage;
+	}
+
+	/**
+	 * @param socialMediaImage
+	 *            the socialMediaImage to set
+	 */
+	public void setSocialMediaImage(String socialMediaImage) {
+		this.socialMediaImage = socialMediaImage;
+	}
+
+	/**
+	 * @return the headInclude
+	 */
+	public final String getHeadInclude() {
+		return headInclude;
+	}
+
+	/**
+	 * @param headInclude
+	 *            the headInclude to set
+	 */
+	public final void setHeadInclude(String headInclude) {
+		this.headInclude = headInclude;
+	}
+
+	/**
+	 * @return the bodyInclude
+	 */
+	public final String getBodyInclude() {
+		return bodyInclude;
+	}
+
+	/**
+	 * @param bodyInclude
+	 *            the bodyInclude to set
+	 */
+	public final void setBodyInclude(String bodyInclude) {
+		this.bodyInclude = bodyInclude;
+	}
+
+	/**
 	 * Inits the model.
 	 *
 	 * @throws LoginException
@@ -439,7 +501,7 @@ public class BasePageModel {
 	 *             the repository exception
 	 */
 	@PostConstruct
-	private void init() throws LoginException, RepositoryException {
+	public void init() throws LoginException, RepositoryException {
 		try {
 			final String pagePath = currentPage.getPath();
 			final String domain = configService.getConfigValues("domain", pagePath);
@@ -451,16 +513,22 @@ public class BasePageModel {
 			if (null != locale && locale.length() > 0) {
 				pageLocaleDefault = locale.split("_")[0];
 			}
-
 			logger.debug("pageLocaleDefault :: {}", pageLocaleDefault);
 
 			// Condition for CNW News details page starts
-			logger.debug("isCNWNewsDetailPage: {}", isCNWNewsDetailPage);
-			if (null != isCNWNewsDetailPage && "true".equals(isCNWNewsDetailPage)) {
+			logger.debug("advancedPageType: {}", advancedPageType);
+			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_CNW_CONSTANT.equals(advancedPageType)) {
 				logger.debug("Inside isCNWNewsDetailPage block");
 				processDataForCNWNews(locale, pagePath);
 			}
 			// Condition for CNW News details page ends
+
+			// Condition for advisor pages start
+			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT.equals(advancedPageType)) {
+				logger.debug("Inside advisor page block");
+				processDataForAdvisorPages();
+			}
+			// Condition for advisor pages end
 
 			// SEO title - <title> tag
 			seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
@@ -475,7 +543,7 @@ public class BasePageModel {
 			socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
 
 			// SEO canonical URL - <link rel="canonical"> tag
-			seoCanonicalUrl = null == canonicalUrl ? pagePath : canonicalUrl;
+			seoCanonicalUrl = null == canonicalUrl ? domain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT : canonicalUrl;
 
 			setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
 			setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
@@ -486,8 +554,8 @@ public class BasePageModel {
 			// Configuring custom social sharing - meta-tags
 			customMetadata.put(OG_TITLE, title);
 			customMetadata.put(TWITTER_TITLE, title);
-			customMetadata.put(OG_URL, domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
-			customMetadata.put(TWITTER_URL, domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+			customMetadata.put(OG_URL, seoCanonicalUrl);
+			customMetadata.put(TWITTER_URL, seoCanonicalUrl);
 			customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
 			customMetadata.put(OG_LOCALE, locale);
@@ -502,24 +570,35 @@ public class BasePageModel {
 
 			// Sets UDO parameters
 			otherUDOTagsMap = new JsonObject();
-			otherUDOTagsMap.addProperty("page_canonical_url", domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT); // canonical url
+			otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
 			if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0 && null != seoCanonicalUrl) {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + shortenURL(seoCanonicalUrl, siteUrl).replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
-																																		BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage + BasePageModelConstants.SLASH_CONSTANT)
-																																		+ BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl.replace(BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault + BasePageModelConstants.SLASH_CONSTANT,
+																																		BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage + BasePageModelConstants.SLASH_CONSTANT)); // canonical
+																																																													// url
+																																																													// -
+																																																													// default
 			} else {
-				otherUDOTagsMap.addProperty("page_canonical_url_default", domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT); // canonical url - default
+				otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url - default
 			}
 			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
+
+			// Sets UDO parameters
 			setUDOParameters();
+
 			// Sets UDO other parameters
 			if (null != udoTagsPath && udoTagsPath.length() > 0) {
 				setOtherUDOTags(udoTagsPath);
 			}
+
+			// Sets UDO tags specific to advisor pages
+			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT.equals(advancedPageType)) {
+				customMetadata.put(TWITTER_CARD, "summary_large_image");
+				setUDOTagsForAdvisorPages();
+			}
+
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 			udoTags = gson.toJson(otherUDOTagsMap);
-			seoCanonicalUrl = domain + shortenURL(seoCanonicalUrl, siteUrl) + BasePageModelConstants.SLASH_CONSTANT;
 			logger.debug("Map Display {}", udoTags);
 		} catch (Exception e) {
 			logger.error("Error :: init method of BasePageModel :: {}", e);
@@ -543,20 +622,21 @@ public class BasePageModel {
 			return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, title);
 	}
 
-	
 	/**
 	 * Generates shorten url
+	 * 
 	 * @param url
 	 * @return shortened url
 	 */
 	public String shortenURL(String pagePath, String siteUrl) {
-		if( null == siteUrl )
+		if (null == siteUrl)
 			return null;
 		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
 	}
-	
+
 	/**
 	 * Sets alternate URLs
+	 * 
 	 * @param pagePath
 	 * @param pageLocale
 	 * @throws LoginException
@@ -578,7 +658,7 @@ public class BasePageModel {
 				String languageCode = configService.getConfigValues(BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_languageCode", pagePath);
 				String siteLocation = configService.getConfigValues(BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_siteLocation", pagePath);
 				String defaultLanguage = configService.getConfigValues(BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_defaultLanguage", pagePath);
-				if (null != defaultLanguage && defaultLanguage.length() >0 ) {
+				if (null != defaultLanguage && defaultLanguage.length() > 0) {
 					defaultReportingLanguage = languageCode.split("_")[0];
 				}
 				final String newUrl = pagePath.replace(siteUrl, siteLocation);
@@ -649,6 +729,9 @@ public class BasePageModel {
 		otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
 		otherUDOTagsMap.addProperty("page_category", pageCategory == null ? "" : pageCategory); // Page category
 		otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page sub category
+
+		// For advisor pages
+
 		logger.debug("Exit :: setUDOParameters :: otherUDOTagsMap: {}", otherUDOTagsMap);
 	}
 
@@ -725,6 +808,12 @@ public class BasePageModel {
 		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 
+	/**
+	 * Sets cnw news pages data
+	 * 
+	 * @param pageLocale
+	 * @param pagePath
+	 */
 	public void processDataForCNWNews(String pageLocale, String pagePath) {
 		logger.debug("Entry :: processDataForCNWNews :: ");
 		String releaseId = null;
@@ -737,8 +826,8 @@ public class BasePageModel {
 				title = newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
-				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT)
-																																		+ BasePageModelConstants.SLASH_CONSTANT + releaseId;
+				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "")
+																																		.toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
 		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException | LoginException | RepositoryException e) {
@@ -746,5 +835,72 @@ public class BasePageModel {
 		}
 		logger.debug("Exit :: processDataForCNWNews :: ");
 	}
-	
+
+	/**
+	 * Sets advisor pages data
+	 * 
+	 * @throws RepositoryException
+	 * @throws LoginException
+	 * @throws SystemException
+	 * @throws ApplicationException
+	 * @throws JSONException
+	 */
+	public void processDataForAdvisorPages() throws LoginException, RepositoryException, ApplicationException, SystemException, JSONException {
+		logger.debug("Entry :: BasePageModel :: processDataForAdvisorPages :: ");
+		String advisorId = null;
+		String pageLocaleDefault = null;
+		final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+		if (request.getRequestPathInfo().getSelectors().length > 0) {
+			if (null != locale && locale.length() > 0) {
+				pageLocaleDefault = locale.split("_")[0];
+			}
+			advisorId = request.getRequestPathInfo().getSelectors()[0];
+			canonicalUrl = canonicalUrl.replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId).replace(BasePageModelConstants.ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT, advisorType);
+			logger.debug("canonicalUrl :: {}", canonicalUrl);
+
+			String advisorData = advisorDetailService.getAdvisorDetails(pageLocaleDefault, advisorType, advisorId);
+			if (null != advisorData) {
+				JSONObject inputJson = new JSONObject(advisorData);
+				pageTitle = getPageTitle(getAdvisorTitle(inputJson));
+			}
+		}
+		logger.debug("Exit :: BasePageModel :: processDataForAdvisorPages :: canonicalUrl :: {}", canonicalUrl);
+	}
+
+	/**
+	 * Gets title of advisor page
+	 * 
+	 * @param inputJson
+	 * @return
+	 * @throws JSONException
+	 */
+	public String getAdvisorTitle(JSONObject inputJson) throws JSONException {
+		logger.debug("Entry :: BasePageModel :: getAdvisorTitle :: ");
+		String advisorTitle = null;
+		if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
+			JSONObject advisorCorpJson = inputJson.getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
+			advisorTitle = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
+		} else {
+			JSONObject advisorStdJson = inputJson.getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
+			advisorTitle = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
+		}
+		logger.debug("Entry :: BasePageModel :: getAdvisorTitle :: advisorTitle :: {}", advisorTitle);
+		return advisorTitle;
+	}
+
+	/**
+	 * 
+	 * Sets UDO tags for advisor
+	 */
+	public void setUDOTagsForAdvisorPages() {
+		logger.debug("Entry :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
+		String advisorId = null;
+		if (request.getRequestPathInfo().getSelectors().length > 0) {
+			advisorId = request.getRequestPathInfo().getSelectors()[0];
+			otherUDOTagsMap.addProperty(AdvisorDetailConstants.PAGE_ADVISOR_ID_CONSTANT, advisorId);
+			otherUDOTagsMap.addProperty(AdvisorDetailConstants.PAGE_ADVISOR_TYPE_CONSTANT, advisorType);
+		}
+		logger.debug("setUDOTagsForAdvisorPages :: advisorId :: {}, advisorType :: {}", advisorId, advisorType);
+		logger.debug("Exit :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
+	}
 }

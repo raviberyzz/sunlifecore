@@ -250,6 +250,7 @@ ul {
         .icon-texts {
             h2,h3,h4,h5,h6{
                 margin-top:0px;
+                font-size:1.125rem;
             }
             padding-bottom: 0;
             display: table;
@@ -318,6 +319,7 @@ ul {
         .cmp-container > div {
             display: flex;
             width: 100%;
+            height: 100%;
             background-color: $white-shade;
             .teaser {
                 flex: 1;
@@ -339,7 +341,27 @@ ul {
         }
     }
 }
-
+/*icon-text-list desktop starts here*/
+.icon-text-list{
+    .mega-menu-icon-wrapper{
+        .icon-parent{
+            margin-right: 15px;
+            float:left;
+            margin-bottom:0;
+            .icon-style{
+                font-size: 2rem;
+                background: none;
+                color: $medium-blue-color;
+                height: 57px;
+                width: 57px;
+                padding: 7px;
+                border: 5px solid $dark-grey-color;
+            }
+        }
+        
+    }
+}
+/*icon-text-list desktop ends here*/
 .subscribe-main-content-wrapper{
     background-color: $medium-yellow-background;
     padding: 32px 16px;
@@ -515,6 +537,18 @@ ul {
 }
 
 @media (max-width:$mobile-screen-max) {
+    /*icon-text-list mobile starts here*/
+    .icon-text-list{
+        .mega-menu-icon-wrapper{
+            .icon-parent{
+                text-align: center;
+                float: none;
+                margin-bottom: 5px;
+            }
+            
+        }
+    }
+    /*icon-text-list mobile ends here*/
     .content-block-icon {
         padding-bottom:4px;
         .cross-cta-wrapper {
@@ -751,6 +785,20 @@ ul {
         }
     }
 }
+/*icon-text-list tablet starts here*/
+.icon-text-list{
+    .col-sm-6{
+        width: 100%;
+    }
+    .mega-menu-icon-wrapper{
+        .icon-parent{
+            float: none;
+            margin-bottom: 5px;
+        }
+        
+    }
+}
+/*icon-text-list tablet ends here*/
 }
 @media (max-width:$tab-screen-max) {
     .content-block-icon .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
@@ -1079,9 +1127,9 @@ ul {
                     transform: translateX(-50%);
                 }
             }
-            .text-section {
+            /* .text-section {
                 margin-top: 32px;
-            }
+            } */
         }
     }
 
@@ -1169,10 +1217,18 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
-    .col-sm-6{
-        padding: 0px 8px 0 10px;
+    p{
+        font-size: 1rem;
     }
-	padding: 20px 0px 40px 8px;
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.125rem;
+        line-height: 33px;
+        margin: 0;
+    }
+    .col-sm-6{
+        padding: 0px 8px 0 10px !important;
+    }
+	padding: 40px 0px 40px 8px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1193,20 +1249,17 @@ ul {
             padding:11px;
 		}
 	}
-	.aem-Grid--12 {
-		.cmp-container {
-			margin-top: 0px;
-		}
+	
+	.cmp-container {
+        margin-top: 0px;
+        .layout-container{
+            display: inline-table;
+        }
 	}
 	.icon-texts {
         padding-bottom: 16px;
 		p {
 			display: table;
-		}
-		h2, h3, h4, h5, h6 {
-            font-size: 1.125rem;
-            line-height: 33px;
-            margin: 0;
 		}
 	}
 	.cmp-text {
@@ -1256,7 +1309,7 @@ ul {
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
     .cmp-related-resource {
-        padding: 20px 0 40px 0px;
+        padding: 20px 0 20px 0px;
         .icon-parent{
             display: none;
         }
@@ -1407,6 +1460,23 @@ ul {
 }
 /* Tool Card Main Wrapper Ends Here*/
 
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+.left-nav-with-content-section{
+ .container-component{
+     .cmp-container{
+         .text{
+             .cmp-text{
+                 h2:first-child{
+                      margin-top:0px;
+                 }
+             }
+         }
+     }
+ }
+}
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+
+
 
 /*****************************************************************
 *****************************************************************/
@@ -1420,7 +1490,7 @@ ul {
            margin-top:40px;
            .cmp-container{
                .cta-content-icon-wrapper{
-                   padding:0;
+                   padding:0px 24px;
                    height:100%;
                    ul{
                        height:100%;
@@ -1441,7 +1511,7 @@ ul {
                             height: 100%;
                             display: flex;
                             flex-direction: column;
-                            justify-content: space-between;
+                            // justify-content: space-between;
                             margin-bottom: 40px;
                         }
                        }

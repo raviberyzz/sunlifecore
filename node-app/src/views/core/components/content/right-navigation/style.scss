@@ -163,3 +163,10 @@
         padding: 0;
     }
 }
+@media (min-width:$desktop-screen-min){
+    .right-navigation-wrapper{
+        .cmp-container:first-child{
+            margin:0px;
+        }
+    }
+}

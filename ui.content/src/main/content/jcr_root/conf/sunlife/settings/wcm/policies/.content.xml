@@ -729,6 +729,11 @@
                                             cq:styleId="1580197354792"
                                             cq:styleLabel="Content Highlight"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="icon-text-list"
+                                            cq:styleId="1580237354793"
+                                            cq:styleLabel="Icon Text List"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -781,6 +786,11 @@
                                             cq:styleId="1579089827251"
                                             cq:styleLabel="Blue Grey"
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="grey-background-box"
+                                            cq:styleId="1579080027251"
+                                            cq:styleLabel="Grey"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -928,6 +938,17 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item12>
+								<item13
+										cq:styleGroupLabel="Grey Border Required"
+										jcr:primaryType="nt:unstructured">
+										<cq:styles jcr:primaryType="nt:unstructured">
+											<item0
+												cq:styleClasses="grey-border-box"
+												cq:styleId="1579257421555"
+												cq:styleLabel="Yes"
+												jcr:primaryType="nt:unstructured"/>   
+										</cq:styles>
+								</item13>	
                             </cq:styleGroups>
                         </policy_container>
                     </container>
@@ -1061,6 +1082,11 @@
                                             cq:styleId="1580209903474"
                                             cq:styleLabel="Editorial Navigation"
                                             jcr:primaryType="nt:unstructured"/>
+										<item1
+                                            cq:styleClasses="left-nav-list-wrapper"
+                                            cq:styleId="1580209903400"
+                                            cq:styleLabel="Left Navigation"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
