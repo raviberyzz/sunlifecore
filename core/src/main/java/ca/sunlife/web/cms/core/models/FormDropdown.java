@@ -61,7 +61,7 @@ public interface FormDropdown {
 	/**
 	 * Gets the is custom action formation required flag.
 	 *
-	 * @return the help message
+	 * @return the is custom action formation required flag
 	 */
 	@Inject
 	public String getCustomActionGenerationRequired();
