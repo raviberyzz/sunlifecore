@@ -1,9 +1,8 @@
 
 package ca.sunlife.web.cms.core.models;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -403,6 +402,9 @@ public class ArticleModel {
 	 */
 	@PostConstruct
 	private void init() {
+		if(StringUtils.isEmpty(getFragmentPath())) {
+			return;
+		}
 		try {
 			ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
 			logger.debug("Reading content fragment {}",getFragmentPath()+JCR_CONTENT_DATA_MASTER);
@@ -470,31 +472,10 @@ public class ArticleModel {
 	private void setArticlePublishDate(ValueMap articleContent) throws LoginException, RepositoryException {
 		String articlePublishedDate = StringUtils.EMPTY;
 		if(articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-			articlePublishedDate = getFormatedDate((String)articleContent.getOrDefault(ARTICLE_PUBLISHED_DATE,StringUtils.EMPTY),configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			logger.debug("formatting date to {}",configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			SimpleDateFormat formatter = new SimpleDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			articlePublishedDate = formatter.format(((GregorianCalendar)articleContent.getOrDefault(ARTICLE_PUBLISHED_DATE,new GregorianCalendar())).getTime());
 		}
 		articleData.put(ARTICLE_PUBLISHED_DATE,articlePublishedDate);
 	}
-
-	/**
-	 * Gets the formated date.
-	 *
-	 * @param date the date
-	 * @param dateFormat the date format
-	 * @return the formated date
-	 */
-	public String getFormatedDate(String date, String dateFormat) {
-		logger.debug("Formatting Date {} using {} dateformat",date,dateFormat);
-		String returnDate = StringUtils.EMPTY;
-		String dtStr = date.replaceAll("T.*", StringUtils.EMPTY);
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
-		SimpleDateFormat newFormatter = new SimpleDateFormat(dateFormat);
-		try {
-			Date newdate = formatter.parse(dtStr);
-			returnDate = newFormatter.format(newdate);
-		} catch (ParseException e) {
-			logger.error("getFormatedDate :: {}", e.getMessage());
-		}
-		return returnDate;
-	}
-
 }

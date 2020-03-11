@@ -24,6 +24,7 @@
                                         fieldLabel="Article Content Fragment"
                                         fieldDescription="Select article content fragment"
                                         emptyText="Select article content fragment"
+                                        required="{Boolean}true"
                                         name="./fragmentPath"/>
                                     <ratingRequired
                                         granite:class="cq-dialog-dropdown-showhide"
