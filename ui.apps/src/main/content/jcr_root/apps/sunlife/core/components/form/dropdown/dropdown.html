@@ -3,7 +3,7 @@
         <sly data-sly-test="${options.type == 'drop-down' || options.type == 'multi-drop-down'}">
             <label class="cmp-form-options__label" for="${options.id}" data-sly-test="${options.title}">${options.title}</label>
                 <select class="cmp-form-options__field cmp-form-options__field--${options.type}" name="${options.name}" id="${options.id}" 
-                	data-sly-list.itemGroup="${options.itemsGroup}" data-sly-attribute.multiple="${options.type == 'multi-drop-down'}">
+                	data-sly-list.itemGroup="${options.itemsGroup}" data-sly-attribute.multiple="${options.type == 'multi-drop-down'}" data-attribute-onchange-required = "${options.customActionGenerationRequired}">
 					<optgroup label="${itemGroup.groupText}" data-sly-unwrap="${!itemGroup.groupText}">
 						<sly data-sly-list.items="${itemGroup.items}">
                      		<option value="${items.value}" selected="${items.selected}" disabled="${items.disabled}" data-shortname="${items.shortName}">${items.text}</option>
