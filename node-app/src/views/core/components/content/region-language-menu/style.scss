@@ -396,8 +396,8 @@
                color: $medium-blue-color;
                font-family: sunlife-sans;
                 font-weight: 700;
-                font-size: 16px;
-                line-height: 120%;
+                font-size: 1rem;
+                line-height: 26px;
                 padding: 20px 14px;
            }
            .accordion-heading[aria-expanded="false"]:before {
@@ -417,18 +417,20 @@
             vertical-align: middle; 
             li {
                 font-family: sunlife-sans;
-                font-weight: 400;
-                font-size: 16px;
+                font-size: 0.875rem;
                     padding: 20px;
-                line-height: 140%;
-                border-bottom: 2px dotted $light-grey-color; 
+                line-height: 18px;
+                border-bottom: 2px dotted $light-grey-color;
+                margin-left:16px; 
                 a {
-                    font-family: sunlife-sans;
-                    font-weight: normal;
+                    font-weight: 700;
                     color: $medium-blue-color;
-                    font-size: 16px;
                     text-decoration: none; 
+                    padding-left:0px;
                 }
+            }
+            li:last-child{
+                border-bottom: none;
             }
           
            }

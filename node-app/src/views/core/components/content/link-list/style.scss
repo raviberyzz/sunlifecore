@@ -13,7 +13,7 @@
             margin-bottom: 10px;
             a {
                 font-weight: 400;
-            } 
+            }
         }
     }
     a:hover {
@@ -24,6 +24,7 @@
 .editorial-nav-desktop-wrapper{
     .links{
         width: 100%;
+        padding:0px;
         .accordion-heading{
             display: none;
         }
@@ -65,7 +66,51 @@
         }
     }
 }
-
+.left-nav-list-wrapper{
+    
+    .accordion-heading{
+        font-weight: 700;
+        color: $dark-grey-color;
+        font-size: 1rem;
+        line-height: 26px;
+    }
+    .cmp-container {
+        .link-list:nth-of-type(1) {
+            .accordion-heading{
+                margin-top: 0px; 
+            }
+        }
+    }
+    .links {
+        padding: 0 8px;
+        border-top: none;
+    }
+    .list-div{
+        display: block;
+        margin-top: 16px;
+        .list-unstyled{
+            li{ 
+                padding: 0 0 8px 8px;
+                margin-bottom: 0px;
+               a{
+                    padding: 0;
+                    font-size: 1rem;
+                    color: $medium-blue-color;
+                    font-weight: 400;
+                    text-decoration: none;
+                    line-height: 26px;
+                }
+            }
+        }
+    }
+    .selectedlink{
+        a{
+            font-weight: 700 !important;
+            border-bottom: 2px solid $medium-yellow-background;
+            text-decoration: none;
+        }
+    }
+}
 @media (min-width: $tab-screen-min) {
     .lists-wrapper {
         .links {
@@ -81,6 +126,17 @@
         .list-div {
             margin-top: 5px;
         }
+    }
+
+    .left-nav-list-wrapper {
+        .accordion-heading {
+            line-height: 26px;
+        }
+    }
+}
+@media (max-width: $tab-screen-max) {
+    .left-nav-list-wrapper{
+        display: none;
     }
 }
 @media (max-width: $mobile-screen-max) {
@@ -104,8 +160,8 @@
             cursor: pointer;
         }
     }
-    .editorial-nav-desktop-wrapper{
-        display: none;
+    .container-component .cmp-container .editorial-nav-desktop-wrapper {
+        display: none !important;
     }
 }
 

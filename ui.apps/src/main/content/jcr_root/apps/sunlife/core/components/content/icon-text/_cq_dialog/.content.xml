@@ -24,7 +24,7 @@
                         fieldLabel="Title Level"
                         name="./titleLevel">
                         <items jcr:primaryType="nt:unstructured">
-                        	<none
+                            <none
                                 jcr:primaryType="nt:unstructured"
                                 text="None"
                                 value="none"/>
@@ -48,7 +48,6 @@
                                 jcr:primaryType="nt:unstructured"
                                 text="H6"
                                 value="heading-6"/>
-                            
                         </items>
                     </titleLevel>
                     <IconText
@@ -79,6 +78,12 @@
                                             fieldLabel="Icon's Link"
                                             name="./link"
                                             rootPath="/content"/>
+                                        <srText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="For screen Reader"
+                                            fieldLabel="Screen Reader"
+                                            name="./srText"/>
                                         <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"

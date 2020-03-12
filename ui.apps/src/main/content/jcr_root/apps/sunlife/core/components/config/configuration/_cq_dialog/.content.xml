@@ -88,6 +88,24 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Navigation overview title"
                                         name="./navigationOverview"/>
+                                    <articleDateFormat
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Article Date Format"
+                                        fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        name="./articleDateFormat"/>
+                                     <articlePublisherName
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Article Publisher Name"
+                                        fieldDescription="Enter the article publisher name for SEO JSON"
+                                        name="./articlePublisherName"/>
+                                     <articlePublisherLogo
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Article Publisher Logo"
+                                        fieldDescription="Enter the article publisher logo for SEO JSON"
+                                        name="./articlePublisherLogo"/>
                                 </items>
                             </section-general>
                             <section-page

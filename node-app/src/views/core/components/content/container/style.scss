@@ -222,6 +222,13 @@ ul {
             margin-top: 14px;
             padding: 6px 16px;
         }
+        .icon-texts{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+                font-size: 1.125rem;
+                font-weight:700;
+            }
+            
+        }
     }
 }
 .cross-cta-wrapper {
@@ -243,6 +250,7 @@ ul {
         .icon-texts {
             h2,h3,h4,h5,h6{
                 margin-top:0px;
+                font-size:1.125rem;
             }
             padding-bottom: 0;
             display: table;
@@ -311,6 +319,7 @@ ul {
         .cmp-container > div {
             display: flex;
             width: 100%;
+            height: 100%;
             background-color: $white-shade;
             .teaser {
                 flex: 1;
@@ -332,7 +341,27 @@ ul {
         }
     }
 }
-
+/*icon-text-list desktop starts here*/
+.icon-text-list{
+    .mega-menu-icon-wrapper{
+        .icon-parent{
+            margin-right: 15px;
+            float:left;
+            margin-bottom:0;
+            .icon-style{
+                font-size: 2rem;
+                background: none;
+                color: $medium-blue-color;
+                height: 57px;
+                width: 57px;
+                padding: 7px;
+                border: 5px solid $dark-grey-color;
+            }
+        }
+        
+    }
+}
+/*icon-text-list desktop ends here*/
 .subscribe-main-content-wrapper{
     background-color: $medium-yellow-background;
     padding: 32px 16px;
@@ -508,6 +537,18 @@ ul {
 }
 
 @media (max-width:$mobile-screen-max) {
+    /*icon-text-list mobile starts here*/
+    .icon-text-list{
+        .mega-menu-icon-wrapper{
+            .icon-parent{
+                text-align: center;
+                float: none;
+                margin-bottom: 5px;
+            }
+            
+        }
+    }
+    /*icon-text-list mobile ends here*/
     .content-block-icon {
         padding-bottom:4px;
         .cross-cta-wrapper {
@@ -744,6 +785,20 @@ ul {
         }
     }
 }
+/*icon-text-list tablet starts here*/
+.icon-text-list{
+    .col-sm-6{
+        width: 100%;
+    }
+    .mega-menu-icon-wrapper{
+        .icon-parent{
+            float: none;
+            margin-bottom: 5px;
+        }
+        
+    }
+}
+/*icon-text-list tablet ends here*/
 }
 @media (max-width:$tab-screen-max) {
     .content-block-icon .cross-cta-wrapper .mega-menu-icon-wrapper .icon-style {
@@ -882,38 +937,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version
-@media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
-    .mobileapp{
-        .text{
-            .cmp-text{
-                p:last-child{
-                    a{
-                        display:block;
-                        text-align: center;
-                        .view-all-category:after{
-                            display:inline;
-                        }
-                    }
-                }
-            }
-        }
-        .image{
-            display:none !important;
-        }
-        .col-sm-4 .container-component .cmp-container>div.image {
-            display: none !important;
-        }
-        .col-sm-8 {
-            .row>div:nth-child(1) {
-                float: left;
-            }
-            .row>div:nth-child(2) {
-                float: right;
-            }
-        }
-    }
-}
+
 /* styles for mobile app end  */
 
 /* styles for product box start */
@@ -951,14 +975,14 @@ ul {
                     color: $dark-grey-color;
                     line-height: 23px;
                     font-size: 1.125rem;
-                    font-weight: bold;
                     padding: 15px;
-                    height: 56px;
+                    min-height: 56px;
                     display: flex;
                     justify-content: center;
                     h2, h3, h4, h5, h6 {
                         line-height: 23px;
                         font-size: 1.125rem;
+                        font-weight: 700;
                         margin: 0;
                     }
                    }
@@ -977,28 +1001,9 @@ ul {
         }
     }
 }
-@media (min-width:$tab-screen-min){
-    .product-card{
-        .row{
-            display: flex;
-            div[class^="col-"]{
-                display: flex;
-                .container-component{
-                    .cmp-container{
-                        height:100%;
-                        .text:first-child{
-                            .cmp-text{
-                                p{
-                                    margin:0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    @media (min-width:$tab-screen-min){
+
     }
- }
    /*styles just for ipad start*/
    @media(min-width:$tab-screen-min) and (max-width:1023px){
     .product-card{
@@ -1072,9 +1077,9 @@ ul {
                     transform: translateX(-50%);
                 }
             }
-            .text-section {
+            /* .text-section {
                 margin-top: 32px;
-            }
+            } */
         }
     }
 
@@ -1162,10 +1167,18 @@ ul {
 
 /* styles for related resource start */
 .cmp-related-resource {
-    .col-sm-6{
-        padding: 0px 8px 0 10px;
+    p{
+        font-size: 1rem;
     }
-	padding: 20px 0px 40px 8px;
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.125rem;
+        line-height: 33px;
+        margin: 0;
+    }
+    .col-sm-6{
+        padding: 0px 8px 0 10px !important;
+    }
+	padding: 40px 0px 40px 8px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1186,20 +1199,17 @@ ul {
             padding:11px;
 		}
 	}
-	.aem-Grid--12 {
-		.cmp-container {
-			margin-top: 0px;
-		}
+	
+	.cmp-container {
+        margin-top: 0px;
+        .layout-container{
+            display: inline-table;
+        }
 	}
 	.icon-texts {
         padding-bottom: 16px;
 		p {
 			display: table;
-		}
-		h2, h3, h4, h5, h6 {
-            font-size: 1.125rem;
-            line-height: 33px;
-            margin: 0;
 		}
 	}
 	.cmp-text {
@@ -1249,7 +1259,7 @@ ul {
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
     .cmp-related-resource {
-        padding: 20px 0 40px 0px;
+        padding: 20px 0 20px 0px;
         .icon-parent{
             display: none;
         }
@@ -1400,20 +1410,77 @@ ul {
 }
 /* Tool Card Main Wrapper Ends Here*/
 
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+.left-nav-with-content-section{
+ .container-component{
+     .cmp-container{
+         .text{
+             .cmp-text{
+                 h2:first-child{
+                      margin-top:0px;
+                 }
+             }
+         }
+     }
+ }
+}
+/* Customer service page text component next to left nav is not aligning with the top of left nav scss start here */
+
+
 
 /*****************************************************************
 *****************************************************************/
 /*** device specific scss for all experiences start here***/
 
 
+           /****** styles for mobile start here *******/
+        @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+            /* mobile app styles for mobile start here */
+            .mobileapp{
+                .text{
+                    .cmp-text{
+                        p:last-child{
+                            a{
+                                display:block;
+                                text-align: center;
+                                .view-all-category:after{
+                                    display:inline;
+                                }
+                            }
+                        }
+                    }
+                }
+                .image{
+                    display:none !important;
+                }
+                .col-sm-4 .container-component .cmp-container>div.image {
+                    display: none !important;
+                }
+                .col-sm-8 {
+                    .row>div:nth-child(1) {
+                        float: left;
+                        padding:0px;
+                    }
+                    .row>div:nth-child(2) {
+                        float: right;
+                        padding:0px;
+                    }
+                }
+            }
+            /* mobile app styles for mobile start here */
+        }
+             /****** styles for mobile end here ********/
+
+
+
    /* scss styles starting from tablet view start here */
     @media (min-width:$tab-screen-min){
-            /* triple cta tablet and desktop styles start here */
+      /*** triple cta tablet and desktop styles start here ***/
        .cta-three-column-wrapper{
            margin-top:40px;
            .cmp-container{
                .cta-content-icon-wrapper{
-                   padding:0;
+                   padding:0px 24px;
                    height:100%;
                    ul{
                        height:100%;
@@ -1434,7 +1501,7 @@ ul {
                             height: 100%;
                             display: flex;
                             flex-direction: column;
-                            justify-content: space-between;
+                            // justify-content: space-between;
                             margin-bottom: 40px;
                         }
                        }
@@ -1442,7 +1509,32 @@ ul {
                }
            }
        }
-    /* triple cta tablet and desktop styles end here */
+       /*** triple cta tablet and desktop styles end here ***/
+       
+
+       /*** Product card styles start ***/
+       .product-card{
+        .row{
+            display: flex;
+            div[class^="col-"]{
+                display: flex;
+                .container-component{
+                    .cmp-container{
+                        height:100%;
+                        .text:first-child{
+                            .cmp-text{
+                                p{
+                                    margin:0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+       /*** Product card styles end ***/
+
     }
     /* scss styles starting from tablet view end here */
 

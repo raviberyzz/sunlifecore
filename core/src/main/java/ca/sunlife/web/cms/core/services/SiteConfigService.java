@@ -27,4 +27,12 @@ public interface SiteConfigService {
 	 * @throws RepositoryException the repository exception
 	 */
 	public void setConfiguration() throws LoginException, RepositoryException;
+	
+	/**
+	 * Gets the page url.
+	 *
+	 * @param pagePath the page path
+	 * @return the page url
+	 */
+	public String getPageUrl(String pagePath);
 }

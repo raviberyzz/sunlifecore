@@ -65,33 +65,37 @@ $(document).ready(function () {
 		$(this).height(taeser_height);
 
 	});
-
+/**
+ * Commenting the implementation as we are setting the height using flex container
+ */
 	//for editorial article
-    var editorial_teaser_height=0;
-	var editorial_teaser = $('.editorial-articles-wrapper').find('.teaser');
+    // var editorial_teaser_height=0;
+	// var editorial_teaser = $('.editorial-articles-wrapper').find('.teaser');
 
-    editorail_height();
+    // editorail_height();
 
-    function editorail_height()
-    {
-        if ($(window).width() > 767)
-        {
-            editorial_teaser.each(function (index) {
-            editorial_teaser_height = editorial_teaser_height > $(this).height() ? editorial_teaser_height : $(this).height();
-            });
-            editorial_teaser.each(function (index) {
-            $(this).height(editorial_teaser_height);
-            });
-        }
-        else
-        {
-             editorial_teaser.each(function (index) {
-            $(this).css('height','auto');
-            });
-        }
+    // function editorail_height()
+    // {
+    //     if ($(window).width() > 767)
+    //     {
+    //         editorial_teaser.each(function (index) {
+    //         editorial_teaser_height = editorial_teaser_height > $(this).height() ? editorial_teaser_height : $(this).height();
+    //         });
+    //         editorial_teaser.each(function (index) {
+    //         $(this).height(editorial_teaser_height);
+    //         });
+    //     }
+    //     else
+    //     {
+    //          editorial_teaser.each(function (index) {
+    //         $(this).css('height','auto');
+    //         });
+    //     }
 
-    }
-
+    // }
+/**
+ * End of the change
+ */
 	//for CTA_Height
 	// var cta_height = 0;
 	// if (($(window).width() > 767)) {

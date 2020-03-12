@@ -132,7 +132,7 @@ class RestServiceImplTest {
 	 */
 	@Test
 	void testCallGetWebServiceWhenThrowsIOException() throws ApplicationException, SystemException, IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		String url = "https://www.abc.com";
+		String url = "https://www.sunlife/";
 		restServiceImpl.activate(restClientConfig);
 		Assertions.assertThrows(IOException.class, () -> {
 			restServiceImpl.callGetWebService(url);

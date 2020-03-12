@@ -2,6 +2,6 @@
 <sly data-sly-test.empty="${!tableText.text}"/>
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
-<div class="slf-table">
+<div class="slf-table table-responsive">
 		${tableText.tableData @context ='html'}
 </div>

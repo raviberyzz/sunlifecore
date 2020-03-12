@@ -12,16 +12,21 @@
         </div>
         {{/if}}
     </div>
-    <div class="article-teaser">
+    {{!-- <div class="article-teaser">
         {{article-teaser}}
-    </div>
+    </div> --}}
     <figure class="article-image">
         <img src="{{article-image}}" alt="{{article-image-alt}}">
     </figure>
     <div class="article-body">
-        {{article-body}}
+        {{{article-body}}}
     </div>
     <div class="article-rating">
         <div class="mar-bottom-30" id="pd_rating_holder_7600084"></div>
     </div>
+    {{#if article-footer}}
+    <div class="article-footer">
+        {{{article-footer}}}
+    </div>
+    {{/if}}
 </article>
