@@ -231,24 +231,6 @@ public class ArticleListModel {
 	}
 
 	/**
-	 * Gets the tag names.
-	 *
-	 * @return the tagNames
-	 */
-	public final String[] getTagNames() {
-		return tagNames;
-	}
-
-	/**
-	 * Sets the tag names.
-	 *
-	 * @param tagNames the tagNames to set
-	 */
-	public final void setTagNames(String[] tagNames) {
-		this.tagNames = tagNames;
-	}
-
-	/**
 	 * Gets the display type.
 	 *
 	 * @return the displayType
