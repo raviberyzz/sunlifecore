@@ -74,6 +74,13 @@
         font-size: 1rem;
         line-height: 26px;
     }
+    .cmp-container {
+        .link-list:nth-of-type(1) {
+            .accordion-heading{
+                margin-top: 0px; 
+            }
+        }
+    }
     .links {
         padding: 0 8px;
         border-top: none;
