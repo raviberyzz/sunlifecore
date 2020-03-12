@@ -20,6 +20,16 @@ $(document).ready(function () {
 			$(this).parent().addClass("selected");
 		}
 	})
+
+	$('.left-nav-list-wrapper .list-div ul').find('a').each(function(){
+		var strLink =  $(this).attr('href');
+		var strLink1 = strLink.localeCompare(pathName);
+		if(!strLink1){
+			$(this).parent().addClass("selectedlink");
+		}
+	})
+
+
 });
 
 /* Node app js*/

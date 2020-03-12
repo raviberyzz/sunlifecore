@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -53,8 +54,7 @@ public class AdvisorDetailModel {
 	private SiteConfigService configService;
 
 	/** Type of advisor - ADVISOR/CORP */
-	@Inject
-	@Via("resource")
+	@ValueMapValue(name = "advisorType")
 	private String advisorType;
 
 	/** Address Label */
@@ -126,6 +126,16 @@ public class AdvisorDetailModel {
 	@Inject
 	@Via("resource")
 	private String newWindowImage;
+	
+	/** Marker corporate icon */
+	@Inject
+	@Via("resource")
+	private String iconMarkerCorporate;
+	
+	/** Marker standard icon */
+	@Inject
+	@Via("resource")
+	private String iconMarkerStandard;
 	
 	/** Advisor data json */
 	private String advisorData;
@@ -385,6 +395,34 @@ public class AdvisorDetailModel {
 	}
 
 	/**
+	 * @return the iconMarkerCorporate
+	 */
+	public String getIconMarkerCorporate() {
+		return iconMarkerCorporate;
+	}
+
+	/**
+	 * @param iconMarkerCorporate the iconMarkerCorporate to set
+	 */
+	public void setIconMarkerCorporate(String iconMarkerCorporate) {
+		this.iconMarkerCorporate = iconMarkerCorporate;
+	}
+
+	/**
+	 * @return the iconMarkerStandard
+	 */
+	public String getIconMarkerStandard() {
+		return iconMarkerStandard;
+	}
+
+	/**
+	 * @param iconMarkerStandard the iconMarkerStandard to set
+	 */
+	public void setIconMarkerStandard(String iconMarkerStandard) {
+		this.iconMarkerStandard = iconMarkerStandard;
+	}
+
+	/**
 	 * Advisor Detail Model - init method to process data after model loads
 	 */
 	@PostConstruct
@@ -396,7 +434,9 @@ public class AdvisorDetailModel {
 		try {
 			final String pagePath = currentPage.getPath();
 			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-
+			
+			advisorType = currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class);
+			
 			if (advisorType == null) {
 				logger.debug("Advisor type is not set, hence existing process to set map data.");
 				return;

@@ -72,7 +72,7 @@
 @media (max-width:$mobile-screen-max){
   .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
   {
-    height:94px;
+    min-height:94px;
     background-image:none;
   }
 }

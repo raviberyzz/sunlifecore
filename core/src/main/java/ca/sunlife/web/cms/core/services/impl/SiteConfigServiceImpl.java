@@ -25,6 +25,7 @@ import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.osgi.config.SiteConfig;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
@@ -133,6 +134,16 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 
 		resolver.close();
 		log.debug("Exit :: setConfiguration method of SiteConfigServiceImpl :: siteConfigMap: {}", siteConfigMap);
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.sunlife.web.cms.core.services.SiteConfigService#getPageUrl(java.lang.String)
+	 */
+	@Override
+	public String getPageUrl(final String pagePath) {
+		final String domain = getConfigValues("domain", pagePath);
+		final String siteUrl = getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+		return domain.concat(pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "").concat(BasePageModelConstants.SLASH_CONSTANT));
 	}
 
 }

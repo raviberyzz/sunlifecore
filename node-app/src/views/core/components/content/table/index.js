@@ -5,16 +5,25 @@ function stickyHeader(){
      the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
       in pop up modal. */
     if($('.table-stickyheader').length){
-      let tableHeader = $(".cmp-table-data-content table tbody tr:first-child");
+      let tableHeader = $(".table-stickyheader table tbody tr:first-child");
       let theaderPosition = tableHeader.offset().top;
-      let tableBottom = $('.cmp-table-data-content table tbody tr:last-child').offset().top; 
-      let tableHeight = theaderPosition + tableBottom -64;
+      let tableBottom = $('.table-stickyheader table tbody tr:last-child').offset().top; 
+      // 64 px is the height of the table header. 
+      let tableHeight = theaderPosition + tableBottom - 64;
       let position = 0;
       //sticky header function on scroll 
         $(window).on("scroll", function() {
           if (window.pageYOffset > theaderPosition) {
             position = window.pageYOffset - theaderPosition;
-            tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            // in case of mobile header the sticky header should be after the mobile header 
+            if(window.innerWidth < 1025 && $('.mobile-header-navbar').length){
+              //aligning table sticky header after the mobile header in mobile devices and tablets
+              // 50 px is the height of the mobile header. 
+              position += 50; 
+              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            } else {
+              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+            } 
             //removing the transform property once the page scrolls past the table
             if(window.pageYOffset > tableHeight){
               tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
