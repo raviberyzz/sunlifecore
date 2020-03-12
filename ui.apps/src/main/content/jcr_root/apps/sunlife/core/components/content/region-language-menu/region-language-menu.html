@@ -37,7 +37,7 @@
                                             </li>
                                         </ul>
                             </li>
-                            <li data-sly-test="${!regionObj.subLinks}">
+                            <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
                                 <a href="${regionObj.linkUrl @ extension = 'html'}">${regionObj.linkName}</a>
                             </li>
                         </ul>
@@ -106,7 +106,7 @@
                     </div>
                 </li>
 
-                <li data-sly-test="${!regionObj.subLinks}">
+                <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
                     <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
                 </li>
             </ul>
