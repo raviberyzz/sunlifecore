@@ -75,6 +75,14 @@ public interface IconTextModel {
 		 */
 		@Inject
 		String getTarget();
+		
+		/**
+		 * Gets the srText.
+		 *
+		 * @return the srText
+		 */
+		@Inject
+		String getSrText();
 
 	}
 }

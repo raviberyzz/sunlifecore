@@ -24,6 +24,7 @@
 .editorial-nav-desktop-wrapper{
     .links{
         width: 100%;
+        padding:0px;
         .accordion-heading{
             display: none;
         }
@@ -69,19 +70,35 @@
     
     .accordion-heading{
         font-weight: 700;
-        font-size: 18px;
-        line-height: 23px;
-        margin-bottom: 0;
+        color: $dark-grey-color;
+        font-size: 1rem;
+        line-height: 26px;
+    }
+    .cmp-container {
+        .link-list:nth-of-type(1) {
+            .accordion-heading{
+                margin-top: 0px; 
+            }
+        }
+    }
+    .links {
+        padding: 0 8px;
+        border-top: none;
     }
     .list-div{
         display: block;
-        padding-left:15px;
-
+        margin-top: 16px;
         .list-unstyled{
-           li{ 
-               padding-top:2px;
+            li{ 
+                padding: 0 0 8px 8px;
+                margin-bottom: 0px;
                a{
-                font-weight: 400;
+                    padding: 0;
+                    font-size: 1rem;
+                    color: $medium-blue-color;
+                    font-weight: 400;
+                    text-decoration: none;
+                    line-height: 26px;
                 }
             }
         }
@@ -110,14 +127,19 @@
             margin-top: 5px;
         }
     }
-}
-@media (max-width: $mobile-screen-max) {
-    .left-nav-list-wrapper{
-        .links{
-            padding-left: 50px;
+
+    .left-nav-list-wrapper {
+        .accordion-heading {
+            line-height: 26px;
         }
     }
-
+}
+@media (max-width: $tab-screen-max) {
+    .left-nav-list-wrapper{
+        display: none;
+    }
+}
+@media (max-width: $mobile-screen-max) {
     .lists-wrapper {
         .links {
             .collapse.show {

@@ -352,9 +352,9 @@ ul {
                 font-size: 2rem;
                 background: none;
                 color: $medium-blue-color;
-                height: 64px;
-                width: 64px;
-                padding: 10px;
+                height: 57px;
+                width: 57px;
+                padding: 7px;
                 border: 5px solid $dark-grey-color;
             }
         }
@@ -937,38 +937,7 @@ ul {
 		}
 	}
 }
-// styles for mobile version
-@media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
-    .mobileapp{
-        .text{
-            .cmp-text{
-                p:last-child{
-                    a{
-                        display:block;
-                        text-align: center;
-                        .view-all-category:after{
-                            display:inline;
-                        }
-                    }
-                }
-            }
-        }
-        .image{
-            display:none !important;
-        }
-        .col-sm-4 .container-component .cmp-container>div.image {
-            display: none !important;
-        }
-        .col-sm-8 {
-            .row>div:nth-child(1) {
-                float: left;
-            }
-            .row>div:nth-child(2) {
-                float: right;
-            }
-        }
-    }
-}
+
 /* styles for mobile app end  */
 
 /* styles for product box start */
@@ -1032,28 +1001,9 @@ ul {
         }
     }
 }
-@media (min-width:$tab-screen-min){
-    .product-card{
-        .row{
-            display: flex;
-            div[class^="col-"]{
-                display: flex;
-                .container-component{
-                    .cmp-container{
-                        height:100%;
-                        .text:first-child{
-                            .cmp-text{
-                                p{
-                                    margin:0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    @media (min-width:$tab-screen-min){
+
     }
- }
    /*styles just for ipad start*/
    @media(min-width:$tab-screen-min) and (max-width:1023px){
     .product-card{
@@ -1483,9 +1433,49 @@ ul {
 /*** device specific scss for all experiences start here***/
 
 
+           /****** styles for mobile start here *******/
+        @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+            /* mobile app styles for mobile start here */
+            .mobileapp{
+                .text{
+                    .cmp-text{
+                        p:last-child{
+                            a{
+                                display:block;
+                                text-align: center;
+                                .view-all-category:after{
+                                    display:inline;
+                                }
+                            }
+                        }
+                    }
+                }
+                .image{
+                    display:none !important;
+                }
+                .col-sm-4 .container-component .cmp-container>div.image {
+                    display: none !important;
+                }
+                .col-sm-8 {
+                    .row>div:nth-child(1) {
+                        float: left;
+                        padding:0px;
+                    }
+                    .row>div:nth-child(2) {
+                        float: right;
+                        padding:0px;
+                    }
+                }
+            }
+            /* mobile app styles for mobile start here */
+        }
+             /****** styles for mobile end here ********/
+
+
+
    /* scss styles starting from tablet view start here */
     @media (min-width:$tab-screen-min){
-            /* triple cta tablet and desktop styles start here */
+      /*** triple cta tablet and desktop styles start here ***/
        .cta-three-column-wrapper{
            margin-top:40px;
            .cmp-container{
@@ -1519,7 +1509,32 @@ ul {
                }
            }
        }
-    /* triple cta tablet and desktop styles end here */
+       /*** triple cta tablet and desktop styles end here ***/
+       
+
+       /*** Product card styles start ***/
+       .product-card{
+        .row{
+            display: flex;
+            div[class^="col-"]{
+                display: flex;
+                .container-component{
+                    .cmp-container{
+                        height:100%;
+                        .text:first-child{
+                            .cmp-text{
+                                p{
+                                    margin:0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+       /*** Product card styles end ***/
+
     }
     /* scss styles starting from tablet view end here */
 

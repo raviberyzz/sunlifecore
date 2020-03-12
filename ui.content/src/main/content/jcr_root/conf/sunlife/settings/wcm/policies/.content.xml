@@ -938,6 +938,17 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item12>
+								<item13
+										cq:styleGroupLabel="Grey Border Required"
+										jcr:primaryType="nt:unstructured">
+										<cq:styles jcr:primaryType="nt:unstructured">
+											<item0
+												cq:styleClasses="grey-border-box"
+												cq:styleId="1579257421555"
+												cq:styleLabel="Yes"
+												jcr:primaryType="nt:unstructured"/>   
+										</cq:styles>
+								</item13>	
                             </cq:styleGroups>
                         </policy_container>
                     </container>
@@ -1071,6 +1082,11 @@
                                             cq:styleId="1580209903474"
                                             cq:styleLabel="Editorial Navigation"
                                             jcr:primaryType="nt:unstructured"/>
+										<item1
+                                            cq:styleClasses="left-nav-list-wrapper"
+                                            cq:styleId="1580209903400"
+                                            cq:styleLabel="Left Navigation"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>

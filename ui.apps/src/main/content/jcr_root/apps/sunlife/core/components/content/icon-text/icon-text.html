@@ -3,16 +3,16 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
 <sly data-sly-test.valueNone="${iconText.titleLevel=='none'}">
-	<span class="side-text" aria-label="${iconText.title}" data-sly-test="${iconText.title}">${iconText.title}</span>
+   <span class="side-text" aria-label="${iconText.title}" data-sly-test="${iconText.title}">${iconText.title}</span>
 </sly>
 <sly data-sly-test="${!valueNone}">
-	<div data-sly-test="${iconText.title}" class="${iconText.titleLevel}">${iconText.title}</div>
+   <div data-sly-test="${iconText.title}" class="${iconText.titleLevel}">${iconText.title}</div>
 </sly>
-
 <ul data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
    <li>
       <div class="icon-parent">
-         <a class="icon-style fa ${iconsText.icon}" href="${iconsText.link @ extension = 'html'}" target="${iconsText.target}"></a>
+         <a class="icon-style fa ${iconsText.icon}" href="${iconsText.link @ extension = 'html'}" target="${iconsText.target}" tabindex="0">
+         <span data-sly-test="${iconsText.srText}" class="sr-only">${iconsText.srText}</span></a>
       </div>
       <div class="icon-texts">
          ${iconsText.text @context ='html'}

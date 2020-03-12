@@ -9,7 +9,7 @@
         cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/article-model/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Article Model"
+        jcr:title="Article Content"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default">
         <model
@@ -112,7 +112,6 @@
                             name="articleImage"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
-                            rootPath="/content/dam"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
                         <articleMainDescription

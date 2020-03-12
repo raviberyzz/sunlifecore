@@ -37,4 +37,23 @@
     .article-rating{
         margin-bottom: 30px;
     }
+    .article-footer{
+        .article-author{
+            border-bottom: 2px dotted #e5e5e5;
+            border-top: 2px dotted #e5e5e5;
+        }
+
+    }
+
 }
+
+
+/*** Media Quries Start ***/
+@media (min-width:$tab-screen-min){
+    // .article-wrapper{
+    //     .article-footer{
+    //         text-align: left;
+    //     }
+    // }
+}
+/*** Media Quries end ***/

@@ -366,7 +366,7 @@
 @media (min-width:560px) and (max-width:$mobile-screen-max){
     .desktop-image {
         display: block;
-        height:auto;
+        height:auto!important;
     }
     .mobile-image {
         display: none;
