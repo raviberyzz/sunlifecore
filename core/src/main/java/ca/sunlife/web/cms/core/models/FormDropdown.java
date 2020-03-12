@@ -51,6 +51,14 @@ public interface FormDropdown {
 	public String getHelpMessage();
 	
 	/**
+	 * Gets the aria label.
+	 *
+	 * @return the aria label
+	 */
+	@Inject
+	public String getAriaLabel();
+	
+	/**
 	 * Gets the items group.
 	 *
 	 * @return the items group
