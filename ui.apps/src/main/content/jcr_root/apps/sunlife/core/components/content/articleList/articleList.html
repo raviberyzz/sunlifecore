@@ -1,14 +1,34 @@
 <sly data-sly-use.list="ca.sunlife.web.cms.core.models.ArticleListModel"
      data-sly-test="${list.listItems.size>0}" data-sly-use.fragmentTemplate="/apps/sunlife/core/components/content/articleList/templates.html">
 
-    <section data-sly-list="${list.listItems}"
-    class="cmp-contentfragmentlist">
-            <sly data-sly-test="${itemList.index >= list.hideTop}">
-                <sly data-sly-call="${fragmentTemplate.contentFragment @ fragment=item, wcmmode=wcmmode}"></sly>
-                <hr class="article-separator"/>
-       		</sly>
-    </section>
-    
+    <sly data-sly-test="list.displayType == 'editorialArticleList'">
+        <div class="row related-articles">
+            <sly data-sly-test="list.title">
+                <div class="title" data-sly-element="${list.titleLevel}">${list.title}</div>
+            </sly>
+            <sly data-sly-list="${list.listItems}">
+                <div class="col-sm-3 col-md-3">
+                    <div>
+                        <sly data-sly-list.element="${item.elements}">
+                            <sly data-sly-test="${element.name == 'articleImage'}" data-sly-test.img="${element.value}"/>
+                            <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
+                            <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
+                        </sly>
+                        <a href="${pageLink}">
+                            <div>
+                                <img src="${img}" aria-hidden="true" />
+                                ${headline}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </sly>
+        </div>
+    </sly>
+
+    <sly data-sly-test="list.displayType == 'relatedArticleList'">
+        
+    </sly>
 </sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
