@@ -103,9 +103,21 @@ $(document).ready(function () {
                 $(".srch-btn").focus();
                 e.preventDefault();
                 $(".desktop-primary-navigation li").removeClass("open");
+                $(".desktop-primary-navigation li a").removeClass("box-class");
             }
         }
     });
+
+    $('.desktop-primary-navigation .navbar-new').children('li:last-child').children().keydown(function(e){
+      if (e.which == 9 ) {
+          
+        // $(".srch-btn").focus();
+        //e.preventDefault();
+        $(".desktop-primary-navigation li").removeClass("open");
+        $(".desktop-primary-navigation li a").removeClass("box-class");
+          
+      }
+  });
 
 // /* Full Header accessibility ends here */
 
