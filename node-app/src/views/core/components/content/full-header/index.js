@@ -54,8 +54,9 @@ $(document).ready(function () {
     });
 
       // open the full header menu on focus for screen readers. 
-      $('.nav-active').on("focus", function(){
+      $('.dropdown-toggle').on("focus", function(){
         $('.dropdown').removeClass("open");
         $(this).parent().addClass("open");
+        $(this).addClass('box-class');
     })
 });
