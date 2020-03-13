@@ -40,6 +40,7 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 
+import ca.sunlife.web.cms.core.beans.Pagination;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -123,6 +124,43 @@ public class ArticleListModel {
 	@ScriptVariable
 	private Page currentPage;
 	
+	/** The pagination. */
+	private Pagination pagination;
+	
+	private String pageUrl;
+	
+	/**
+	 * @return the pageUrl
+	 */
+	public final String getPageUrl() {
+		return pageUrl;
+	}
+
+	/**
+	 * @param pageUrl the pageUrl to set
+	 */
+	public final void setPageUrl(String pageUrl) {
+		this.pageUrl = pageUrl;
+	}
+
+	/**
+	 * Gets the pagination.
+	 *
+	 * @return the pagination
+	 */
+	public final Pagination getPagination() {
+		return pagination;
+	}
+
+	/**
+	 * Sets the pagination.
+	 *
+	 * @param pagination the pagination to set
+	 */
+	public final void setPagination(Pagination pagination) {
+		this.pagination = pagination;
+	}
+
 	/**
 	 * Gets the total match.
 	 *
@@ -142,6 +180,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Gets the title.
+	 *
 	 * @return the title
 	 */
 	public final String getTitle() {
@@ -149,6 +189,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Sets the title.
+	 *
 	 * @param title the title to set
 	 */
 	public final void setTitle(String title) {
@@ -156,6 +198,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Gets the title level.
+	 *
 	 * @return the titleLevel
 	 */
 	public final String getTitleLevel() {
@@ -163,6 +207,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Sets the title level.
+	 *
 	 * @param titleLevel the titleLevel to set
 	 */
 	public final void setTitleLevel(String titleLevel) {
@@ -354,6 +400,8 @@ public class ArticleListModel {
 		                leakingResourceResolver.close();
 		            }
 		        }
+		        setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), currentPage.getPath()));
+		        setPageUrl(currentPage.getPath());
 			} catch (LoginException | RepositoryException e) {
 				logger.error("Login exception while trying to get resource resolver {}",e);
 			} finally {
@@ -366,8 +414,10 @@ public class ArticleListModel {
 	 }
 
 	/**
-	 * @param selectors
-	 * @param queryParameterMap
+	 * Sets the query parameter map.
+	 *
+	 * @param selectors the selectors
+	 * @param queryParameterMap the query parameter map
 	 */
 	private void setQueryParameterMap(String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
