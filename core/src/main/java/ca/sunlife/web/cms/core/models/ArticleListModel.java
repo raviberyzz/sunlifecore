@@ -256,7 +256,7 @@ public class ArticleListModel {
 	
 	/** The element names. */
 	private String[] elementNames = {"articlePublishedDate","articleHeadline","articlePageLink",
-			"articleAuthor","articleMiniDescription","articleImage","articleMainDescription"};
+			"articleAuthor","articleMiniDescription","articleImage","articleMainDescription","articleThumbnailImage"};
 	
 	/**
 	 * Gets the parent path.
@@ -421,16 +421,17 @@ public class ArticleListModel {
 	 */
 	private void setQueryParameterMap(String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
+		int limit = getMaxItems();
 		if (selectors.length > 0) {
 			setPageNum(Integer.parseInt(selectors[0]));
-			offset = getPageNum()*getMaxItems(); // Pagination
+			offset = (getPageNum()-1)*getMaxItems(); // Pagination
 		} else if (getHideTop() > 0) {
 			offset = getHideTop();
-			setMaxItems(getMaxItems() - getHideTop());
+			limit = getMaxItems() - getHideTop();
 		}
 		queryParameterMap.put("path", getParentPath());
 		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
-		queryParameterMap.put("p.limit", Integer.toString(getMaxItems()));
+		queryParameterMap.put("p.limit", Integer.toString(limit));
 		queryParameterMap.put("p.offset", Integer.toString(offset));
 		queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
 		queryParameterMap.put("1_property.value", "/conf/sunlife/settings/dam/cfm/models/article-model");
