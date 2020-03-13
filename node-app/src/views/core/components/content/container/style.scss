@@ -879,6 +879,12 @@ ul {
 
 /* styles for mobile app start */
 .mobileapp {
+    .col-sm-6:first-of-type{
+        .image{
+            text-align: -webkit-center;
+        }
+    }
+    
     font-size: 18px !important;
 	.text {
 		.cmp-text {
@@ -965,7 +971,7 @@ ul {
                                    margin-left: -1em;
                                }
                            }
-                           h3{
+                           *{
                                margin-top: 0;
                            }
                        }
@@ -975,11 +981,11 @@ ul {
                     color: $dark-grey-color;
                     line-height: 23px;
                     font-size: 1.125rem;
-                    padding: 15px;
+                    padding: 24px;
                     min-height: 56px;
                     display: flex;
                     justify-content: center;
-                    h2, h3, h4, h5, h6 {
+                    *{
                         line-height: 23px;
                         font-size: 1.125rem;
                         font-weight: 700;
@@ -1005,7 +1011,7 @@ ul {
 
     }
    /*styles just for ipad start*/
-   @media(min-width:$tab-screen-min) and (max-width:1023px){
+   /*@media(min-width:$tab-screen-min) and (max-width:1023px){
     .product-card{
         .row{
             div[class^="col-"]{
@@ -1019,7 +1025,7 @@ ul {
             }
         }
     }
-   }
+   }*/
     /*styles just for ipad end*/
    @media (min-width:$desktop-screen-min){
     .product-card{
