@@ -30,3 +30,51 @@
     </div>
     {{/if}}
 </article>
+
+<!-- Related articles and Related-articles start  -->
+<div class="row related-articles">
+    {{#if related-articles.title}}
+    <div class="title col-sm-12 col-md-12 col-xs-12">{{{related-articles.title}}}</div>
+    {{/if}}
+    {{#each related-articles.articles}}
+    <div class="col-sm-4 col-md-4 col-xs-12">{{{this}}}</div>
+    {{/each}}
+</div>
+<!-- Related articles and Rrelated-articles end  -->
+
+<!-- Related articles and Editorial-related-articles start  -->
+<div class="row editorial-related-articles">
+    {{#if editorial-related-articles.title}}
+    <div class="title col-sm-12 col-md-12 col-xs-12">{{{related-articles.title}}}</div>
+    {{/if}}
+    {{#each editorial-related-articles}}
+    <div class="col-sm-4 col-md-4 col-xs-12">{{{this}}}</div>
+    {{/each}}
+</div>
+<!-- Related articles and Editorial-related-articles end  -->
+<div style="border:2px solid black"></div>
+<!-- Article listing and pagination start -->
+<div class="row article-lists">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <ul>
+            {{#each article-lists}}
+            <li>{{{this}}}</li>
+            {{/each}}
+        </ul>
+        <!--pagination starts here -->
+        <div class="pagination-component">
+            <nav role="navigation" aria-label="Page" class="text-center">
+                <ul class="pagination pagination-list">
+                    {{#each pages}}
+                    <li>{{{this}}}</li>
+                    {{/each}}
+                </ul>
+                <div class="pagination-indicator">
+                    {{indicator}}
+                </div>
+            </nav>
+        </div>
+         <!--pagination starts here -->
+    </div>
+</div>
+<!-- Article listing and pagination end -->

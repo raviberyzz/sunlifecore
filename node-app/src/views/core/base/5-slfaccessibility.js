@@ -97,16 +97,44 @@ $(document).ready(function () {
           $('#sun-search .close-div a').focus();
       }
   });
-    $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().keydown(function(e){
+    $('.desktop-primary-navigation .navbar-new').children('li:first-child').keydown(function(e){
         if (e.which == 9 ) {
             if(e.shiftKey) {
                 $(".srch-btn").focus();
                 e.preventDefault();
                 $(".desktop-primary-navigation li").removeClass("open");
+                $(".desktop-primary-navigation li a").removeClass("box-class");
             }
         }
     });
 
+    $('.desktop-primary-navigation .navbar-new').children('li:not(:last-child)').keydown(function(e){
+      if (e.which == 9 ) {
+        $(this).removeClass("open");
+        $(this).next().focus();
+      }
+  });
+
+//   $('.desktop-primary-navigation .navbar-new').children('li').keydown(function(e){
+//     if (e.which == 40 ) {
+//       $('.desktop-primary-navigation .navbar-new .quick-link li:first').focus();
+//     }
+// });
+
+    $('.desktop-primary-navigation .navbar-new').children('li:last-child').children().keydown(function(e){
+      if (e.which == 9 ) { 
+        //e.preventDefault();
+        $(".desktop-primary-navigation li").removeClass("open");
+        $(".desktop-primary-navigation li a").removeClass("box-class");
+          
+      }
+  });
+    // open the full header menu on focus for screen readers. 
+    $('.dropdown-toggle').on("focus", function(){
+      $('.dropdown').removeClass("open");
+      $(this).parent().addClass("open");
+      $(this).addClass('box-class');
+    });
 // /* Full Header accessibility ends here */
 
 /* Footer accessibility starts here */

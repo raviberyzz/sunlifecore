@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    var copyText=$('.footer-copyright-wrapper .slf-copyright p:first-child').text();
-    $('.footer-copyright-wrapper .slf-copyright p:first-child').text('');
-    var cIndex=copyText.indexOf("©");
-    var i=cIndex+2;
-    var oldDate=copyText.substring(i, i+4);
-    var  copyText= copyText.replace(oldDate, "");
     var currentDate = new Date(); 
-	copyText = [copyText.slice(0, i), currentDate.getFullYear(), copyText.slice(i)].join('');
-    $('.footer-copyright-wrapper .slf-copyright p:first-child').text(copyText);
-
+    $.each($('.footer-copyright-wrapper .slf-copyright p'), function(index, value) {
+		var textarr = value.innerText.split(' ');
+	    for(var i=0; i< textarr.length; i++) {
+        	if(textarr[i].length == 4 && textarr[i].match(/\d+/)) {
+				textarr[i] = currentDate.getFullYear();
+            }
+         }
+         value.innerText = textarr.join(' ');
+    });
 });
