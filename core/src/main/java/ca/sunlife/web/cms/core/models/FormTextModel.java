@@ -35,5 +35,13 @@ public interface FormTextModel {
 	 */
 	@Inject
 	String getValidationError();
+	
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	@Inject
+	String getId();
 
 }
