@@ -53,9 +53,5 @@ $(document).ready(function () {
         $('#language-btn').removeClass('lang-true');
     });
 
-      // open the full header menu on focus for screen readers. 
-      $('.nav-active').on("focus", function(){
-        $('.dropdown').removeClass("open");
-        $(this).parent().addClass("open");
-    })
+      
 });
