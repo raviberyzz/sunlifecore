@@ -1,4 +1,5 @@
 @import '../../../base/core';
+
 .article-wrapper{
     .article-intro{
         .article-date{
@@ -63,8 +64,8 @@
                 padding: 29px 0px 5px;
                 a {
                     font-weight: 700;
-                    color: #004C6C;
-                    font-size: 16px;
+                    color: $medium-blue-color;
+                    font-size: 1rem;
                     .article-image{
                         img{
                             display:none;
@@ -91,15 +92,15 @@
                     bottom: -5px;
                     right: -5px;
                     left: -5px;
-                    background-image: linear-gradient(#FFCB05, #EAAB00);
+                    background-image: linear-gradient($medium-yellow-background, $primary-yellow-background);
                     z-index: -1;
                     border-radius: 50%;
                 }
                 .editorial-image{
-                    position: relative;
+                            position: relative;
                             margin: auto;
                             border-radius: 50%;
-                            background: #fff;
+                            background: $white-shade;
                             z-index: 1;
                             width: 220px;
                             height: 100%;
@@ -117,7 +118,7 @@
                 margin-bottom: 20px;
                 font-family: 'sunlife-sans';
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 0.875rem;
                 line-height: 18px;
                 text-transform: uppercase;
             }
@@ -137,11 +138,11 @@
      //article listing styles start
      .article-lists{
         div[class^="col-"]{
-            ul{
+            .content-list{
                 list-style: none;
                 margin: 0;
                 padding: 0;
-                border-bottom: solid 2px #e1e1e1;
+                border-bottom: solid 2px $container-border-color;
                 li{
                     padding-top: 30px;
                     position: relative;
@@ -153,8 +154,8 @@
                         a{
                             font-family: 'sunlife-sans';
                             font-weight: 700;
-                            color: #004C6C;
-                            font-size: 16px;
+                            color: $medium-blue-color;
+                            font-size: 1rem;
                             text-decoration: none;
                             img{
                                 vertical-align:middle;
@@ -165,18 +166,18 @@
                         .date{
                             font-family: 'sunlife-sans';
                             font-weight: 400;
-                            font-size: 14px;
+                            font-size: 0.875rem;
                             line-height: 18px;
                             text-transform: uppercase;
                         }
                         h2,h3,h4,h5,h6{
                             font-weight: 400;
-                            font-size: 32px;
+                            font-size: 2rem;
                             line-height: 31px!important;
                             a{
                                 font-family: 'sunlife-sans';
                                 font-weight: 400;
-                                font-size: 24px !important;
+                                font-size: 1.5rem!important;
                                 line-height: 31px; 
                             }
                         }
@@ -200,7 +201,7 @@
                 height: 2px;
                 width: 60px;
                 margin: 10px auto;
-                background: #FFCB05;
+                background: $medium-yellow-background;
             }
         }
     }
@@ -209,7 +210,7 @@
     /*** article listing styles start ***/
     .article-lists{
         div[class^="col-"]{
-            ul{
+            .content-list{
                 li:not(:first-child):before{
                     content: '';
                     display: block;
@@ -219,7 +220,7 @@
                     width: 100px;
                     margin-left: -50px;
                     height: 0;
-                    border-top: 2px solid #e1e1e1;
+                    border-top: 2px solid $container-border-color;
                 }
             }
         }
@@ -247,7 +248,7 @@
                         bottom: -5px;
                         right: -5px;
                         left: -5px;
-                        background-image: linear-gradient(#FFCB05, #EAAB00);
+                        background-image: linear-gradient($medium-yellow-background, $primary-yellow-background);
                         z-index: -1;
                         border-radius: inherit;
                     }
@@ -255,7 +256,7 @@
                             position: relative;
                             margin: auto;
                             border-radius: 50%;
-                            background: #fff;
+                            background: $white-shade;
                             z-index: 1;
                             width: 220px;
                             height: 100%;
@@ -281,7 +282,7 @@
 
       .article-lists{
         div[class^="col-"]{
-            ul{
+            .content-list{
                 li{
                     text-align: left;
                    .content-list-thumbnail{
@@ -307,3 +308,13 @@
       /*** article listing styles start end ***/
 }
 /*** Media Quries end ***/
+
+
+
+
+
+
+
+
+
+
