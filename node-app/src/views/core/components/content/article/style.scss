@@ -47,35 +47,35 @@
 
 }
   /** related articles and editorial related articles css start here **/
-  // related articles start
-  .related-articles{
-      margin: 30px 0px;
-      .title{
-          h2,h3,h4,h5,h5{
-              margin-top:0px;
-              text-align:center;
-          }
-      }
-      div[class^="col-"]{
-          text-align: center;
-          .article-content{
-              margin:10px 0px;
-              padding: 29px 0px 5px;
-            a {
-                font-weight: 700;
-                color: #004C6C;
-                font-size: 16px;
-                  .article-image{
-                      img{
-                        display:none;
-                        
-                      }
-                  }
-              }
-          }
-         
-      }
-  }
+    // related articles start
+    .related-articles{
+        margin: 30px 0px;
+        .title{
+            h2,h3,h4,h5,h5{
+                margin-top:0px;
+                text-align:center;
+            }
+        }
+        div[class^="col-"]{
+            text-align: center;
+            .article-content{
+                margin:10px 0px;
+                padding: 29px 0px 5px;
+                a {
+                    font-weight: 700;
+                    color: #004C6C;
+                    font-size: 16px;
+                    .article-image{
+                        img{
+                            display:none;
+                            
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
   //related articles end 
 
      //editorial related articles start
@@ -133,6 +133,59 @@
         }
      }
      //editorial related articles end
+
+     //article listing styles start
+     .article-lists{
+        div[class^="col-"]{
+            ul{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                border-bottom: solid 2px #e1e1e1;
+                li{
+                    padding-top: 30px;
+                    position: relative;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    .content-list-thumbnail{
+                        display:none;
+                        a{
+                            font-family: 'sunlife-sans';
+                            font-weight: 700;
+                            color: #004C6C;
+                            font-size: 16px;
+                            text-decoration: none;
+                            img{
+                                vertical-align:middle;
+                            }
+                        }
+                    }
+                    .content-list-summary{
+                        .date{
+                            font-family: 'sunlife-sans';
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 18px;
+                            text-transform: uppercase;
+                        }
+                        h2,h3,h4,h5,h6{
+                            font-weight: 400;
+                            font-size: 32px;
+                            line-height: 31px!important;
+                            a{
+                                font-family: 'sunlife-sans';
+                                font-weight: 400;
+                                font-size: 24px !important;
+                                line-height: 31px; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+     }
+     //article listing styles end
    /** related articles and editorial related articles css end here **/
 
 /*** Media Quries Start ***/
@@ -152,6 +205,26 @@
         }
     }
     /*** editorialrelated articles css end ****/
+
+    /*** article listing styles start ***/
+    .article-lists{
+        div[class^="col-"]{
+            ul{
+                li:not(:first-child):before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    top:0;
+                    width: 100px;
+                    margin-left: -50px;
+                    height: 0;
+                    border-top: 2px solid #e1e1e1;
+                }
+            }
+        }
+     }
+     /*** article listing styles end ***/
 }
 
 
@@ -203,5 +276,34 @@
         }
     }
       /*** related articles css end****/
+
+      /*** article listing styles start here ***/
+
+      .article-lists{
+        div[class^="col-"]{
+            ul{
+                li{
+                    text-align: left;
+                   .content-list-thumbnail{
+                       display:table-cell;
+                       vertical-align: top;
+                       width: 250px;
+                       a{
+                           img{
+                               width:220px;
+                               height: 220px;
+                           }
+                       }
+                   }
+                   .content-list-summary{
+                    display:table-cell;
+                    vertical-align: top;
+                    padding-right: 30px;
+                   }
+                }
+            }
+        }
+     }
+      /*** article listing styles start end ***/
 }
 /*** Media Quries end ***/
