@@ -10,7 +10,7 @@
                 <div class="col-sm-4 col-md-4 col-xs-12">
                     <div class="article-content">
                         <sly data-sly-list.element="${item.elements}">
-                            <sly data-sly-test="${element.name == 'articleImage'}" data-sly-test.img="${element.value}"/>
+                            <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
                             <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
                             <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                         </sly>
@@ -33,7 +33,7 @@
                     <div class="row-separator-yellow"></div>
                     <div class="editorial-article-content">
                         <sly data-sly-list.element="${item.elements}">
-                            <sly data-sly-test="${element.name == 'articleImage'}" data-sly-test.img="${element.value}"/>
+                            <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
                             <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
                             <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                             <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
@@ -57,13 +57,13 @@
     </sly>    
 
     <sly data-sly-test="${list.displayType=='articleList'}">
-        <div class="row article-list">
+        <div class="row article-lists">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <ul>
+                <ul class="content-list">
                     <sly data-sly-list="${list.listItems}">
                         <li>
                             <sly data-sly-list.element="${item.elements}">
-                                <sly data-sly-test="${element.name == 'articleImage'}" data-sly-test.img="${element.value}"/>
+                                <sly data-sly-test="${element.name == 'articleThumbnailImage'}" data-sly-test.img="${element.value}"/>
                                 <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
                                 <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                                 <sly data-sly-test="${element.name == 'articleMiniDescription'}" data-sly-test.description="${element.value}" />
