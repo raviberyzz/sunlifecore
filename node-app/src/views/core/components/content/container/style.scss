@@ -159,7 +159,7 @@ ul {
     .cmp-text > :last-child{
         margin: 0;
     }
-    .text{
+    .cmp-text{
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -227,7 +227,7 @@ ul {
                 font-size: 1.125rem;
                 font-weight:700;
             }
-            
+
         }
     }
 }
@@ -358,7 +358,7 @@ ul {
                 border: 5px solid $dark-grey-color;
             }
         }
-        
+
     }
 }
 /*icon-text-list desktop ends here*/
@@ -545,7 +545,7 @@ ul {
                 float: none;
                 margin-bottom: 5px;
             }
-            
+
         }
     }
     /*icon-text-list mobile ends here*/
@@ -795,7 +795,7 @@ ul {
             float: none;
             margin-bottom: 5px;
         }
-        
+
     }
 }
 /*icon-text-list tablet ends here*/
@@ -1199,7 +1199,7 @@ ul {
             padding:11px;
 		}
 	}
-	
+
 	.cmp-container {
         margin-top: 0px;
         .layout-container{
@@ -1510,7 +1510,7 @@ ul {
            }
        }
        /*** triple cta tablet and desktop styles end here ***/
-       
+
 
        /*** Product card styles start ***/
        .product-card{
