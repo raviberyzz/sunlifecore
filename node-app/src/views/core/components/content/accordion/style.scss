@@ -44,6 +44,11 @@
             }
         }
         .cmp-accordion__panel{
+            .text{
+                .cmp-text p:last-child{
+                    margin-bottom: 0;
+                }
+            }
             padding:0 32px 24px 16px;
             font-size:0.875rem;
             .grey-horizontal-separator div {
@@ -101,9 +106,9 @@
                  min-height: 56px;
                  display: inline-flex;
             }
-            .cmp-accordion__panel{
+            /*.cmp-accordion__panel{
                 padding-top:5px;
-            }
+            }*/
         }
         .cmp-accordion__header{
             .cmp-accordion__button{
@@ -116,9 +121,9 @@
             .cmp-accordion__header{
                  height:auto;
             }
-            .cmp-accordion__panel{
+            /*.cmp-accordion__panel{
                 padding-top:5px;
-            }
+            }*/
         }
         .cmp-accordion__header{
             .cmp-accordion__button{
