@@ -312,12 +312,6 @@ public class ArticleListModel {
 		        }
 		        
 		        String[] selectors = request.getRequestPathInfo().getSelectors();
-		        int offset = 0;
-				if (selectors.length > 0) {
-					setPageNum(Integer.parseInt(selectors[0]));
-					offset = getPageNum()*getMaxItems(); // Pagination
-				}
-
 		        QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
 		        if (queryBuilder == null) {
 		            logger.warn("Query builder was null therefore no query was executed");
@@ -325,29 +319,7 @@ public class ArticleListModel {
 		        }
 
 		        Map<String, String> queryParameterMap = new HashMap<>();
-		        queryParameterMap.put("path", getParentPath());
-		        queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
-		        queryParameterMap.put("p.limit", Integer.toString(getMaxItems()));
-		        queryParameterMap.put("p.offset", Integer.toString(offset));
-		        queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
-		        queryParameterMap.put("1_property.value", "/conf/sunlife/settings/dam/cfm/models/article-model");
-		        queryParameterMap.put("orderby", "@"+JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
-		        queryParameterMap.put("orderby.sort", "desc");
-		        ArrayList<String> allTags = new ArrayList<>();
-		        if (tagNames != null && tagNames.length > 0) {
-		            allTags.addAll(Arrays.asList(tagNames));
-		        }
-
-		        if (!allTags.isEmpty()) {
-		            // Check for the taggable mixin
-		            queryParameterMap.put("2_property", JcrConstants.JCR_CONTENT + "/metadata/" + JcrConstants.JCR_MIXINTYPES);
-		            queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
-		            // Check for the actual tags (by default, tag are or'ed)
-		            queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
-		            for (int i = 0; i < allTags.size(); i++) {
-		                queryParameterMap.put(String.format("tagid.%d_value", i + 1), allTags.get(i));
-		            }
-		        }
+		        setQueryParameterMap(selectors, queryParameterMap);
 
 		        
 		        PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
@@ -392,5 +364,43 @@ public class ArticleListModel {
 	        
 		 
 	 }
+
+	/**
+	 * @param selectors
+	 * @param queryParameterMap
+	 */
+	private void setQueryParameterMap(String[] selectors, Map<String, String> queryParameterMap) {
+		int offset = 0;
+		if (selectors.length > 0) {
+			setPageNum(Integer.parseInt(selectors[0]));
+			offset = getPageNum()*getMaxItems(); // Pagination
+		} else if (getHideTop() > 0) {
+			offset = getHideTop();
+			setMaxItems(getMaxItems() - getHideTop());
+		}
+		queryParameterMap.put("path", getParentPath());
+		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
+		queryParameterMap.put("p.limit", Integer.toString(getMaxItems()));
+		queryParameterMap.put("p.offset", Integer.toString(offset));
+		queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
+		queryParameterMap.put("1_property.value", "/conf/sunlife/settings/dam/cfm/models/article-model");
+		queryParameterMap.put("orderby", "@"+JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
+		queryParameterMap.put("orderby.sort", "desc");
+		ArrayList<String> allTags = new ArrayList<>();
+		if (tagNames != null && tagNames.length > 0) {
+		    allTags.addAll(Arrays.asList(tagNames));
+		}
+
+		if (!allTags.isEmpty()) {
+		    // Check for the taggable mixin
+		    queryParameterMap.put("2_property", JcrConstants.JCR_CONTENT + "/metadata/" + JcrConstants.JCR_MIXINTYPES);
+		    queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
+		    // Check for the actual tags (by default, tag are or'ed)
+		    queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
+		    for (int i = 0; i < allTags.size(); i++) {
+		        queryParameterMap.put(String.format("tagid.%d_value", i + 1), allTags.get(i));
+		    }
+		}
+	}
 
 }

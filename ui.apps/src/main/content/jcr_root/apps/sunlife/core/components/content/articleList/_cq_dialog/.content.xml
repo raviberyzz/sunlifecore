@@ -80,6 +80,7 @@
                                         fieldDescription="Maximum number of items displayed in the list. Empty for all items."
                                         fieldLabel="Max Items"
                                         min="{Long}0"
+                                        required="{Boolean}true"
                                         name="./maxItems"/>
                                     <container
                                         granite:class="hide displayType-showhide-target foundation-layout-util-vmargin"
