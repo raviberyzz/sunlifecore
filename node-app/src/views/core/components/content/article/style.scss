@@ -314,8 +314,6 @@
 
       .article-lists{
         border-right: 2px solid #9a9a9a;
-        margin-top: -25px;
-        padding-top: 25px;
         div[class^="col-"]{
             .content-list{
                 li{
@@ -344,6 +342,14 @@
         }
      }
       /*** article listing styles start end ***/
+
+      // Featured-content-list start
+    .articleList{
+        margin-top: -25px;
+        padding-top: 25px;
+        border-right: 2px solid $medium-grey-background;
+    }
+     // Featured content-list end
 }
 /*** Media Quries end ***/
 
