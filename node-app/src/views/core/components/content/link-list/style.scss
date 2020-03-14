@@ -169,7 +169,7 @@
     }
     .left-nav-list-wrapper {
         .accordion-heading:before {
-            content: "";
+            content: "" !important;
         }
     }
 }
