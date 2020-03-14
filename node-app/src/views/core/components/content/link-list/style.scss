@@ -134,9 +134,13 @@
         }
     }
 }
-@media (max-width: $tab-screen-max) {
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
     .left-nav-list-wrapper{
-        display: none;
+        .layout-container {
+            float: left;
+            clear: none;
+            width: 50%;
+        }
     }
 }
 @media (max-width: $mobile-screen-max) {
@@ -162,6 +166,11 @@
     }
     .container-component .cmp-container .editorial-nav-desktop-wrapper {
         display: none !important;
+    }
+    .left-nav-list-wrapper {
+        .accordion-heading:before {
+            content: "";
+        }
     }
 }
 
