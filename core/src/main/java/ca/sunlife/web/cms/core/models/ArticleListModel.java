@@ -344,7 +344,7 @@ public class ArticleListModel {
  	 */
  	@PostConstruct
 	 private void initModel() {
-	        if (StringUtils.isEmpty(getParentPath())) {
+	        if (StringUtils.isEmpty(getParentPath()) || !getDisplayType().equals("articleList")) {
 	            return;
 	        }
 	        ResourceResolver resourceResolver = null;
