@@ -200,7 +200,23 @@
             }
         } 
      }
-     
+       //tools and calculators section in featured content list starts 
+      .featured-content-list-tools{
+          li{
+              .icon-texts{
+                  ul{
+                      padding-bottom:24px;
+                      li{
+                        padding: 10px 0px;  
+                      }
+                      li:last-child span{
+                          border-bottom:none;
+                      }
+                  }
+              }
+          }
+      }
+      //tools and calculators section in featured content list ends
       //Featured content list css end 
 
    /** related articles and editorial related articles article listings and Featured content list css end here **/
@@ -297,6 +313,9 @@
       /*** article listing styles start here ***/
 
       .article-lists{
+        border-right: 2px solid #9a9a9a;
+        margin-top: -25px;
+        padding-top: 25px;
         div[class^="col-"]{
             .content-list{
                 li{
