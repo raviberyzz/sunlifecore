@@ -207,10 +207,10 @@
                   ul{
                       padding-bottom:24px;
                       li{
-                        padding: 10px 0px;  
+                        padding: 10px 0px;
                       }
-                      li:last-child span{
-                          border-bottom:none;
+                      li:not(:last-child){
+                        border-bottom: 2px dotted $light-grey-color;  
                       }
                   }
               }
