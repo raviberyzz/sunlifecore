@@ -344,8 +344,12 @@ public class ArticleListModel {
  	 */
  	@PostConstruct
 	 private void initModel() {
-	        if (StringUtils.isEmpty(getParentPath()) || !getDisplayType().equals("articleList")) {
+	        if (StringUtils.isEmpty(getParentPath())) {
 	            return;
+	        }
+	        String[] selectors = request.getRequestPathInfo().getSelectors();
+	        if(selectors.length > 0 && (Integer.parseInt(selectors[0]) > 1 && !getDisplayType().equals("articleList"))) {
+	        	return;
 	        }
 	        ResourceResolver resourceResolver = null;
 			try {
@@ -356,8 +360,6 @@ public class ArticleListModel {
 		            logger.warn("Session was null therefore no query was executed");
 		            return;
 		        }
-		        
-		        String[] selectors = request.getRequestPathInfo().getSelectors();
 		        QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
 		        if (queryBuilder == null) {
 		            logger.warn("Query builder was null therefore no query was executed");
