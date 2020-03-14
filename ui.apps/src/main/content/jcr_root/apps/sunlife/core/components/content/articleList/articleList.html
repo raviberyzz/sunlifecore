@@ -91,6 +91,20 @@
         </div>
     </sly>
 
+    <sly data-sly-test="${list.displayType=='overviewHighlight'}">
+        <ul class="dotted">
+            <sly data-sly-list="${list.listItems}">
+                <li>
+                    <sly data-sly-list.element="${item.elements}">
+                        <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
+                        <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
+                    </sly>
+                    <a href="${pageLink}">${headline}</a>
+                </li>
+            </sly>
+        </ul>
+    </sly>
+
 </sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
