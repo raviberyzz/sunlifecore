@@ -28,6 +28,7 @@ JSON Format
 		"<div class='content-list-thumbnail'><a href=''><img src='https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg'/></a></div><div class='content-list-summary'><span class='date'>January 23, 2019</span><h2><a href=''>Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips</a></h2><p>What’s new in Canada’s Food Guide? It’s not about food groups and portion sizes, but more about healthy, mindful eating. Plus, a whole lot of plants.</p></div>",
 		"<div class='content-list-thumbnail'><a href=''><img src='https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg'/></a></div><div class='content-list-summary'><span class='date'>January 23, 2019</span><h2><a href=''>Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips</a></h2><p>What’s new in Canada’s Food Guide? It’s not about food groups and portion sizes, but more about healthy, mindful eating. Plus, a whole lot of plants.</p></div>",
 		"<div class='content-list-thumbnail'><a href=''><img src='https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg'/></a></div><div class='content-list-summary'><span class='date'>January 23, 2019</span><h2><a href=''>Canada’s new Food Guide: Get a head start on a healthier diet with these 7 tips</a></h2><p>What’s new in Canada’s Food Guide? It’s not about food groups and portion sizes, but more about healthy, mindful eating. Plus, a whole lot of plants.</p></div>"
-	]
+	],
+	"featured-content-list": ["<a href='text'>first link</a>","<a href='text'>first link</a>"]
 }
 ```
