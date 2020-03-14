@@ -1477,7 +1477,22 @@ ul {
 
 
 
-   /* scss styles starting from tablet view start here */
+   /* cta triple column height applied to only desktop over 1024px and not mobile in landscape more */
+   @media (min-width:1025px){
+        .cta-three-column-wrapper{
+            .cmp-container{
+                .cta-content-icon-wrapper{
+                    ul{
+                        li{
+                            .icon-parent{
+                            height:40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     @media (min-width:$tab-screen-min){
       /*** triple cta tablet and desktop styles start here ***/
        .cta-three-column-wrapper{
@@ -1493,7 +1508,6 @@ ul {
                            flex-direction: column;
                            height: 100%;
                         .icon-parent{
-                            height:40px;
                             position: relative;
                             bottom:40px;
                             .icon-style{
