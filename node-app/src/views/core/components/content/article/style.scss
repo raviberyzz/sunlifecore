@@ -47,7 +47,7 @@
     }
 
 }
-  /** related articles and editorial related articles css start here **/
+/** related articles and editorial related articles article listings and Featured content list css start here **/
     // related articles start
     .related-articles{
         margin: 30px 0px;
@@ -187,7 +187,23 @@
         }
      }
      //article listing styles end
-   /** related articles and editorial related articles css end here **/
+
+     //Featured content list css starts
+     .articleList{
+         padding: 0 15px;
+        .dotted {
+            li{
+               padding: 10px 0px;
+            }
+            li:not(:last-child){
+                border-bottom: 2px dotted $light-grey-color;
+            }
+        } 
+     }
+     
+      //Featured content list css end 
+
+   /** related articles and editorial related articles article listings and Featured content list css end here **/
 
 /*** Media Quries Start ***/
 
