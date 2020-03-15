@@ -1039,7 +1039,12 @@
                                             cq:styleClasses="mt-40"
                                             cq:styleId="1579089938796"
                                             cq:styleLabel="Spacing 40"
-                                            jcr:primaryType="nt:unstructured"/>   
+                                            jcr:primaryType="nt:unstructured"/>
+										<item3
+                                            cq:styleClasses="mt-80"
+                                            cq:styleId="1584307765307"
+                                            cq:styleLabel="Spacing 80"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
 								<item3
