@@ -7,6 +7,38 @@ ul {
 }
 // content block with icon start
 
+//overview highlights triple cta css for border and spacing
+.col-sm-4 {
+    .overview-highlights-wrapper {
+        .icon-texts{
+            p:not(:nth-last-of-type(-n+2)) {
+                border-bottom: 2px dotted #9A9A9A;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            h3:first-child {
+                padding-bottom: 32px;
+            }
+        }
+    }
+}
+@media (max-width: 767px){
+    .col-sm-4:not(:nth-last-of-type(-n+1)) {
+        .blue-icon-yellow-background {
+            margin-bottom: 62px
+        }
+    }
+    
+    .no-padding{
+        .col-sm-4{
+            .text-border-right.blue-icon-yellow-background{
+                .icon-text.overview-highlights-wrapper{
+                    padding-right: 16px;
+                }
+            }
+        } 
+    }
+}
 .content-block-icon {
     background-color: $light-grey-20;
     padding: 8px 0 2px 0;
@@ -390,7 +422,7 @@ ul {
     background-color: $medium-yellow-background;
     padding: 32px 16px;
     min-width: 158px;
-    margin: 40px 0;
+    /*margin: 40px 0;*/
     .cta-content-icon-wrapper {
         padding-right: 16px;
         .icon-style {
@@ -643,8 +675,10 @@ ul {
         }
       }
     }
-    .yellow-icon-blue-background,.cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 62px;
+    .col-sm-6:nth-child(1) {
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom:62px;    
+        }
     }
     .no-padding{
         .yellow-icon-white-background{
