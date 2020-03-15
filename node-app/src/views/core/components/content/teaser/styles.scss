@@ -49,6 +49,15 @@
         }
     }
 }
+// banner image background images code starts
+.banner-section{
+    .left-image-position.background-img{
+        background:url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
+        background-size:cover;
+        height: 210px;
+    }
+}
+// banner image background images code ends
 .yellow-border-bottom {
     .right-image-position, .left-image-position  {
         border-bottom: 7px solid $primary-yellow-background;
@@ -332,6 +341,14 @@
             height: 220px;
         }
     }
+    // background image styles start here
+    .banner-section{
+        .left-image-position.background-img{
+            height: 398px;
+        }
+    }
+   
+    // background image styles start here
 }
 @media (max-width: $tab-screen-max) {
     // .banner-section {
@@ -388,3 +405,92 @@
  }
 /* scss for teaser image component to apply bottom padding only if 
 .image-image and .bottom-aligned-text classes exists end */
+
+
+//test
+.life-moments{
+    .banner{
+        background: url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
+        height: 398px;
+        .text-section{
+            width: 47.2%;
+            vertical-align: middle;
+        }
+        // .right-item{
+        //     float: right;
+        // }
+    }
+    .text{
+        h2,h3,h4,h5,h6{
+            font-size: 36px;
+            line-height: 46px;
+            color:#424242;
+        }
+        p{
+            font-size: 18px;
+            line-height: 23px;
+            color:#424242;  
+        }
+    }
+    .text-section-mobile{
+        text-align: center;
+        margin:30px 0px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+.no-padding{
+    padding:0px;
+}
+@media (min-width:$tab-screen-min){
+    .life-moments{
+        .banner{
+            display:table;
+            vertical-align: middle;
+            .text-section{
+                display: table-cell;
+                .content{
+                    width: 47.2%;
+                    margin-right: 30px;
+                }
+                .right-item{
+                    float:right;
+                }
+                .left-item{
+                    float:left
+                }
+                .center-item{
+                    margin:0 auto!important;
+                }
+                .hero-cta-container{
+                    background-color: rgba(255, 255, 255, 0.8);
+                    box-shadow: 0px 10px 15px rgba(124,124,124,0.4), -5px 5px 5px rgba(216,213,212,0.4), 5px 5px 5px rgba(216,213,212,0.4);
+                    padding-left: 2em;
+                    padding-right: 2em;
+                    border-radius:4px;
+                }
+            }
+        }
+    }
+}
+//for ipad media quries
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .life-moments{
+        .banner{
+            background-position: center !important;
+            .text-section{
+                .content{
+                    margin-right:15px;
+                }
+            }
+        }
+    }
+}
+@media (max-width:$mobile-screen-max){
+    .life-moments{
+        .banner{
+            background-size:cover;
+            height: 210px;
+    }
+}
+}

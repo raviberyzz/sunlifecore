@@ -17,7 +17,10 @@ JSON Format
     "wrapper-class": "banner-section",
     "banner-text-alignment": "text-right-align",
     "banner-box": "",
-    "data-section-banner" : "body search ad"
+    "data-section-banner" : "body search ad",
+    "life-moments": {
+        "text": "<h1>This is health. This is wealth. This is life!</h1><p>Tips, tools and great advice for all of life’s important moments.</p><p class='hidden-xs mar-top-20'><a class='btn btn-blue hero-btn at-element-click-tracking' href='/ca/Tools+and+Resources/Life+moments?vgnLocale=en_CA' id='planning_cta' role='button'>Start planning </a></p"
+    }
 }
 ```
 <!-- "text-alignment": middle-aligned-text (if vertically middle aligned) / bottom-aligned-text (if text is placed below the image)-->
