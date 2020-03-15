@@ -3,7 +3,7 @@
 	{{#if is-right-aligned-image}}
 	<div class="right-image-position">
 		<div class="left-item text-section hide-in-editorial">
-			<p>{{text}}</p>
+			{{{text}}}
 		</div>
 		<div class="right-item">
 			{{!-- <a href="{{desk-image-link}}">
@@ -14,15 +14,15 @@
 			</a> --}}
 		</div>
 		<div class="left-item text-section show-only-in-editorial">
-			<p>{{{text}}}</p>
+			{{{text}}}
 		</div>
 	</div>
 	{{else}}
 	<div class="left-image-position background-img">
 		<div class="left-item col-xs-12 col-sm-12 col-md-12">
-			<a href="{{desk-image-link}}">
-				{{!-- <img class="side-image desktop-image" src="{{desk-image-src}}" alt="{{desk-alt}}" aria-hidden="true"> --}}
-			</a>
+			{{!-- <a href="{{desk-image-link}}">
+				<img class="side-image desktop-image" src="{{desk-image-src}}" alt="{{desk-alt}}" aria-hidden="true">
+			</a> --}}
 			{{!-- <a href="{{mob-image-link}}">
 				<img class="side-image mobile-image" src="{{mob-image-src}}" alt="{{mob-alt}}" aria-hidden="true">
 			</a>  --}}
