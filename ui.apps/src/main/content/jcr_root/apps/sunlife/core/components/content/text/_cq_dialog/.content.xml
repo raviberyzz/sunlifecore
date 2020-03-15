@@ -78,7 +78,11 @@
                                                             <side-arrow
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="view-all-category"
-                                                                text="Side Arrow"/>															
+                                                                text="Side Arrow"/>		
+                                                            <blue-chevron-arrow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="blue-chevron-arrow"
+                                                                text="Blue Chevron"/>    													
                                                             <pdf-link
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="pdf-link"
