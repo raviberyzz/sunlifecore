@@ -9,7 +9,7 @@ JSON Format
     "mob-image-src": "https://www.sunlife.com/static/ca/About%20us/Newsroom/istock_55332366_thb_u_newsroom_220x220.jpg",
     "desk-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
     "mob-alt": "Voted Reader's Digest Most Trusted Brand 10 years",
-    "text": "TRUSTED BRAND 10 YEARS IN A ROW",
+    "text": "<h1>This is health. This is wealth. This is life!</h1><p>Tips, tools and great advice for all of life’s important moments.</p><p class='hidden-xs mar-top-20'><a class='btn btn-blue hero-btn at-element-click-tracking' href='/ca/Tools+and+Resources/Life+moments?vgnLocale=en_CA' id='planning_cta' role='button'>Start planning </a></p>",
     "is-right-aligned-image": false,
     "text-alignment": "bottom-aligned-text",
     "image-type": "",
@@ -19,7 +19,7 @@ JSON Format
     "banner-box": "",
     "data-section-banner" : "body search ad",
     "life-moments": {
-        "text": "<h1>This is health. This is wealth. This is life!</h1><p>Tips, tools and great advice for all of life’s important moments.</p><p class='hidden-xs mar-top-20'><a class='btn btn-blue hero-btn at-element-click-tracking' href='/ca/Tools+and+Resources/Life+moments?vgnLocale=en_CA' id='planning_cta' role='button'>Start planning </a></p"
+        "text": "<h1>This is health. This is wealth. This is life!</h1><p>Tips, tools and great advice for all of life’s important moments.</p><p class='hidden-xs mar-top-20'><a class='btn btn-blue hero-btn at-element-click-tracking' href='/ca/Tools+and+Resources/Life+moments?vgnLocale=en_CA' id='planning_cta' role='button'>Start planning </a></p>"
     }
 }
 ```
