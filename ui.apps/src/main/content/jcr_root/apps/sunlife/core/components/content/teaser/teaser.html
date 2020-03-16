@@ -6,10 +6,20 @@
 <sly data-sly-test.mobileImage = "${teaser.fileReferenceMobile ? teaser.fileReferenceMobile : teaser.fileReference}"/>
 <sly data-sly-test="${!empty}">
    <div class="image-text-wrapper" data-section="${teaser.analyticsId }">
+   
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position clearfix">
          <div class="left-item text-section hide-in-editorial">
             ${teaser.description @context ='html'}
          </div>
+
+        <sly data-sly-test.backgroundImgTesting="${teaser.backgroundImageCheck}">
+         <div class="right-item">
+			<div class="hidden-xs desk-img" style="background:url('${teaser.fileReference @ context='styleString'}') no-repeat;"></div>	
+			<div class="hidden-sm hidden-md hidden-lg mobile-img" style="background:url('${mobileImage @ context='styleString'}') no-repeat; background-size:cover;"></div>	
+         </div>
+         </sly>
+
+         <sly data-sly-test="${!backgroundImgTesting}">
          <div class="right-item">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
                <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}">
@@ -24,12 +34,27 @@
                <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" aria-hidden="true">               
             </sly>
          </div>
+         </sly>
+         
 		 <div class="left-item text-section show-only-in-editorial">
 			${teaser.description @context ='html'}
-		</div>
 		 </div>
-      <div data-sly-test="${!imageRight}" class="left-image-position clearfix">
-         <div class="left-item">
+		 </div>
+		 
+		 
+		 
+         <div data-sly-test="${!imageRight}" class="left-image-position clearfix">
+
+         <sly data-sly-test.backgroundImgTesting="${teaser.backgroundImageCheck}">
+			<div class="left-item">
+			<div class="hidden-xs desk-img" style="background:url('${teaser.fileReference @ context='styleString'}') no-repeat;"></div>	
+			<div class="hidden-sm hidden-md hidden-lg mobile-img" style="background:url('${mobileImage @ context='styleString'}') no-repeat; background-size:cover;"></div>	
+            </div>
+         </sly>
+
+         <sly data-sly-test="${!backgroundImgTesting}">
+
+          <div class="left-item">
             <sly data-sly-test="${teaser.linkURL}">
                <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}">
 				<img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}" aria-hidden="true">
@@ -43,6 +68,9 @@
                <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" aria-hidden="true"/>               
             </sly>
          </div>
+
+         </sly> 
+
          <div class="right-item text-section">
             ${teaser.description @context ='html'}
          </div>
