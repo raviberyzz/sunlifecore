@@ -91,17 +91,24 @@ public class LeftNavigationModal extends NavigationImpl   {
     private int structureStart;
     private boolean skipNavigationRoot;
     
+    /* list to capture the items with overview */
+    
     List<NavigationItem> updatedList = new ArrayList();
     
-    
+    /**
+	 * Gets the navigation list.
+	 *
+	 * @return the navigation list
+	 */
     public List<NavigationItem> getUpdatedList() {
 		return updatedList;
 	}
 
-	/**
-	 * Sets the form action.
+    /**
+	 * Sets the navigation list.
 	 *
-	 * @param formAction the formAction to set
+	 * @param updatedlist
+	 *            the list to be displayed
 	 */
 	public void setUpdatedList(List<NavigationItem> updatedList) {
 		this.updatedList = updatedList;
