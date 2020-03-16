@@ -285,6 +285,22 @@
             }
         }
     }
+    .landing-page-hero-banner.right-img-align-position{
+        .right-image-position{
+            .right-item{
+                .mobile-img{
+                    background-position:right!important;
+                }
+            }
+        }
+        .left-image-position{
+            .left-item{
+                .mobile-img{
+                    background-position:right!important; 
+                }
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
     .banner-section {

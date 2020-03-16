@@ -601,6 +601,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                          </cq:styles>
                                 </item10>
+                                <item11
+                                    cq:styleGroupLabel="Banner Mobile image position"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                           cq:styleClasses="right-img-align-position"
+                                            cq:styleId="1584368882937"
+                                            cq:styleLabel="Right align"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                     </cq:styles>
+                                </item11>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>

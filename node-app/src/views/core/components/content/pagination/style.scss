@@ -97,16 +97,20 @@
         }
         .previous {
             a {
+                padding-right:48px;
                 span:first-child{
                     display:none;
                 }
             }
-            width:auto;
-            height: auto;
+            width:32px;
+            height: 32px;
         }
         .next{
-            width:auto;
-            height: auto;
+            width:32px;
+            height: 32px;
+            a{
+                padding-left:48px;
+            }
         }
         .link-to-first{
             a {
