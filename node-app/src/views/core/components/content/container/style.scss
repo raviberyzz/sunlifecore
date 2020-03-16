@@ -184,7 +184,7 @@ ul {
         }
         .icon-texts {
             .button-class{
-                padding: 6px;
+                padding: 6px 16px;
             }
         }
     }
@@ -680,6 +680,11 @@ ul {
       }
     }
     .col-sm-6:nth-child(1) {
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom:62px;    
+        }
+    }
+    .col-sm-4:not(:last-child) {
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
             margin-bottom:62px;    
         }
