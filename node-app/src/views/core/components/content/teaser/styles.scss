@@ -36,6 +36,7 @@
     .right-image-position{
       .text-section a {
         font-size: 1.5rem;
+        font-weight:500;
         }
        }
     p {
@@ -45,21 +46,57 @@
 .banner-section {
     .left-image-position {
         .left-item {
-            // float: right;
-            background: url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
-            height: 398px;
-            background-size:cover;
+            .mobile-img{
+                float: right;
+                // background: url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
+                background-size:cover;
+            }
+
         }
-        .hero-cta-container{
-                    background-color: rgba(255, 255, 255, 0.8);
-                    box-shadow: 0px 10px 15px rgba(124,124,124,0.4), -5px 5px 5px rgba(216,213,212,0.4), 5px 5px 5px rgba(216,213,212,0.4);
-                    padding-left: 2em;
-                    padding-right: 2em;
-                    border-radius:4px;
-                }
+               
+    }
+    .right-image-position{
+           .right-item{
+               .mobile-img{
+                height: 259px;
+                background-size:cover;
+               }
+          
+           }         
     }
 }
-
+.banner-section.home-page-hero-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+}
+.life-moment-second-level-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height:260px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 260px;
+            }
+        }
+    }
+}
 .yellow-border-bottom {
     .right-image-position, .left-image-position  {
         border-bottom: 7px solid $primary-yellow-background;
@@ -124,18 +161,21 @@
         width: 405px;
         margin-left: 50px;
     }
-    // h1, h2, h3, h4, h5, h6 {
-    //     margin-top: 0;
-    // }
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
     .right-image-position, .left-image-position {
         position: relative;
     }
     .left-item {
         float: none;
         margin-right: 0;
+        div{
+            width:100%;
+        }
     }
     .text-section {
-        // padding: 20px 27px;
+        padding: 20px 27px;
         width: 47.2%;
         position: absolute;
         p {
@@ -237,6 +277,12 @@
                 
             }
         }
+        .right-image-position{
+            .right-item{
+                background-size:cover;
+               height: 260px; 
+            }
+        }
     }
 }
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
@@ -266,7 +312,18 @@
     .banner-section {
         .left-image-position {
             .left-item {
-                background-position: center !important;
+                .desk-img{
+                    background-position: center !important;
+                }
+
+            }
+        }
+        .right-image-position{
+            .right-item{
+                .desk-img{
+                    background-position: center !important; 
+                }
+
             }
         }
     }
@@ -314,7 +371,7 @@
         .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
                 display: block;
-                /*text-align: center;*/
+                 text-align: center;
                 text-align:left;
                 .text-section {
                     margin: 0;
@@ -369,19 +426,73 @@
             height: 220px;
         }
     }
-    // background image styles start here
     .banner-section{
-        .left-image-position.background-img{
-            height: 398px;
+        .right-image-position{
+            .right-item{
+                width:100%;
+            }
+        }
+        .left-image-position{
+            .left-item{
+                width:100%;
+            }
         }
     }
-    .text-right-align {
-        .text-section {
-            right: 30px;
-            bottom:20%;
+   .banner-section.home-page-hero-banner{
+       .right-image-position{
+           .right-item{
+               .desk-img{
+                   height:400px;
+                   background:cover;
+               }
+           }
+       }
+       .left-image-position{
+           .left-item{
+               .desk-img{
+                height:400px;
+                background:cover;
+               }
+           }
+       }
+   }
+
+   .banner-section.landing-page-hero-banner{
+    .right-image-position{
+        .right-item{
+            .desk-img{
+                height:261px;
+                background:cover;
+            }
         }
     }
-    // background image styles start here
+    .left-image-position{
+        .left-item{
+            .desk-img{
+             height:261px;
+             background:cover;
+            }
+        }
+    }
+   }
+
+   .life-moment-second-level-banner{
+    .left-image-position{
+        .left-item{
+            .desk-img{
+                height:350px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .desk-img{
+                height: 350px;
+            }
+        }
+    }
+
+}
 }
 @media (max-width: $tab-screen-max) {
     // .banner-section {
