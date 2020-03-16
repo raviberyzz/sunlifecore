@@ -285,11 +285,18 @@
             }
         }
     }
-    .landing-page-hero-banner{
+    .landing-page-hero-banner.right-img-align-position{
         .right-image-position{
-            .righ-item{
-                .right-img-align-position{
+            .right-item{
+                .mobile-img{
                     background-position:right!important;
+                }
+            }
+        }
+        .left-image-position{
+            .left-item{
+                .mobile-img{
+                    background-position:right!important; 
                 }
             }
         }
