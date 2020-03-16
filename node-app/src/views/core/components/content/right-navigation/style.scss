@@ -3,7 +3,6 @@
     
     float: left;
     .cmp-container{
-    margin: 40px 0;
     text-align: center;
     float: left;
     background-color: $light-cool-blue-color;
@@ -133,6 +132,11 @@
     .legal-text{
         color: $dark-grey-color;
     }
+    .col-sm-12.light-orange{
+
+        border-top:none;
+        border-bottom:none;
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
@@ -141,6 +145,7 @@
         padding: 0;
         .cmp-container{
             padding: 0;
+            width:100%;
             .light-orange{
                 border-top:10px solid $white-shade;
                 border-bottom: 10px solid $white-shade;
@@ -161,12 +166,14 @@
 {
     .cmp-container{
         padding: 0;
+        width:100%;
     }
 }
 @media (min-width:$desktop-screen-min){
     .right-navigation-wrapper{
         .cmp-container:first-child{
-            margin:0px;
+            margin: 0 0 0 -10px;
+            width: calc(100% + 20px);
         }
     }
 }
