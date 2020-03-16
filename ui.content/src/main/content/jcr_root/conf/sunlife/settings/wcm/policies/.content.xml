@@ -585,6 +585,22 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item9>
+                                <item10
+                                    cq:styleGroupLabel="Banner height variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                           cq:styleClasses="home-page-hero-banner"
+                                            cq:styleId="1584325433237"
+                                            cq:styleLabel="Home page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item1
+                                            cq:styleClasses="landing-page-hero-banner"
+                                            cq:styleId="1584325445177"
+                                            cq:styleLabel="Landing page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         </cq:styles>
+                                </item10>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
