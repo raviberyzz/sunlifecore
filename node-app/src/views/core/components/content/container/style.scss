@@ -312,6 +312,10 @@ ul {
             display: table;
             .button-class{
                 padding: 6px 16px;
+                margin-bottom: 5px;
+            }
+            .button-class:not(:first-child){
+                margin-left: 10px;
             }
         }
     }
