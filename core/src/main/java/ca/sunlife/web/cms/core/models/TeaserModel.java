@@ -19,6 +19,15 @@ public interface TeaserModel {
 	 */
 	@Inject
 	String getImageAlignment();
+	
+	
+	/**
+	 * Gets whether image is banner image.
+	 *
+	 * @return the banner image
+	 */
+	@Inject
+	String getBackgroundImageCheck();
 
 	/**
 	 * Gets the file reference.
