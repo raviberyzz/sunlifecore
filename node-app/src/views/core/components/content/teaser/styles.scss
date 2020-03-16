@@ -259,12 +259,12 @@
         }
     }
     .life-moment-second-level-banner .image-text-wrapper .text-section {
-        padding: 0;
+        // padding: 0;
         margin: 0 !important;
-        position: absolute;
+        // position: absolute;
         background: transparent;
         top: 50%;
-        transform: translate(-50%, -50%);
+        // transform: translate(-50%, -50%);
         h2, h3, h4, h5, h6 {
             padding-bottom: 0;
             margin-bottom: 0;
@@ -494,20 +494,26 @@
    }
 
    .life-moment-second-level-banner{
-    .left-image-position{
-        .left-item{
-            .desk-img{
-                height:350px;
+        .left-image-position{
+            .left-item{
+                .desk-img{
+                    height:350px;
+                }
+            }
+            .text-section{
+                margin-right:63px;
             }
         }
-    }
-    .right-image-position{
-        .right-item{
-            .desk-img{
-                height: 350px;
+        .right-image-position{
+            .right-item{
+                .desk-img{
+                    height: 350px;
+                }
+            }
+            .text-section{
+                margin-right:63px;
             }
         }
-    }
 
 }
 }
