@@ -1,8 +1,8 @@
 @import '../../../base/core';
 
-.show-only-in-editorial {
+ .show-only-in-editorial {
     display: none !important;
-}
+ }
 .content-block-image {
     .side-image {
         width: auto;
@@ -36,6 +36,7 @@
     .right-image-position{
       .text-section a {
         font-size: 1.5rem;
+        font-weight:500;
         }
        }
     p {
@@ -45,7 +46,55 @@
 .banner-section {
     .left-image-position {
         .left-item {
-            float: right;
+            .mobile-img{
+                float: right;
+                // background: url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
+                background-size:cover;
+                height:259px;
+            }
+
+        }
+               
+    }
+    .right-image-position{
+           .right-item{
+               .mobile-img{
+                height: 259px;
+                background-size:cover;
+               }
+          
+           }         
+    }
+}
+.banner-section.home-page-hero-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+}
+.life-moment-second-level-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height:260px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 260px;
+            }
         }
     }
 }
@@ -122,10 +171,13 @@
     .left-item {
         float: none;
         margin-right: 0;
+        div{
+            width:100%;
+        }
     }
     .text-section {
         padding: 20px 27px;
-        width: 50%;
+        width: 47.2%;
         position: absolute;
         p {
             margin: 0;
@@ -218,6 +270,21 @@
             margin-bottom: 0;
         }
     }
+    .banner-section {
+        .left-image-position {
+            .left-item {
+               background-size:cover;
+               height: 260px;
+                
+            }
+        }
+        .right-image-position{
+            .right-item{
+                background-size:cover;
+               height: 260px; 
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
     .banner-section {
@@ -236,6 +303,34 @@
         }
     }
 }
+// css for ipad 
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .text-right-align {
+        .text-section {
+            right: 15px;
+        }
+    }
+    .banner-section {
+        .left-image-position {
+            .left-item {
+                .desk-img{
+                    background-position: center !important;
+                }
+
+            }
+        }
+        .right-image-position{
+            .right-item{
+                .desk-img{
+                    background-position: center !important; 
+                }
+
+            }
+        }
+    }
+
+}
+
 @media (max-width: $mobile-screen-max) {
     .side-image {
             height: auto;
@@ -277,7 +372,7 @@
         .middle-aligned-text, .bottom-aligned-text {
             .right-image-position, .left-image-position  {
                 display: block;
-                /*text-align: center;*/
+                 text-align: center;
                 text-align:left;
                 .text-section {
                     margin: 0;
@@ -332,6 +427,73 @@
             height: 220px;
         }
     }
+    .banner-section{
+        .right-image-position{
+            .right-item{
+                width:100%;
+            }
+        }
+        .left-image-position{
+            .left-item{
+                width:100%;
+            }
+        }
+    }
+   .banner-section.home-page-hero-banner{
+       .right-image-position{
+           .right-item{
+               .desk-img{
+                   height:400px;
+                   background:cover;
+               }
+           }
+       }
+       .left-image-position{
+           .left-item{
+               .desk-img{
+                height:400px;
+                background:cover;
+               }
+           }
+       }
+   }
+
+   .banner-section.landing-page-hero-banner{
+    .right-image-position{
+        .right-item{
+            .desk-img{
+                height:261px;
+                background:cover;
+            }
+        }
+    }
+    .left-image-position{
+        .left-item{
+            .desk-img{
+             height:261px;
+             background:cover;
+            }
+        }
+    }
+   }
+
+   .life-moment-second-level-banner{
+    .left-image-position{
+        .left-item{
+            .desk-img{
+                height:350px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .desk-img{
+                height: 350px;
+            }
+        }
+    }
+
+}
 }
 @media (max-width: $tab-screen-max) {
     // .banner-section {
@@ -388,3 +550,13 @@
  }
 /* scss for teaser image component to apply bottom padding only if 
 .image-image and .bottom-aligned-text classes exists end */
+
+
+
+
+
+
+
+
+
+

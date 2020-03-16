@@ -7,6 +7,38 @@ ul {
 }
 // content block with icon start
 
+//overview highlights triple cta css for border and spacing
+.col-sm-4 {
+    .overview-highlights-wrapper {
+        .icon-texts{
+            p:not(:nth-last-of-type(-n+2)) {
+                border-bottom: 2px dotted #9A9A9A;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            h3:first-child {
+                padding-bottom: 32px;
+            }
+        }
+    }
+}
+@media (max-width: 767px){
+    .col-sm-4:not(:nth-last-of-type(-n+1)) {
+        .blue-icon-yellow-background {
+            margin-bottom: 62px
+        }
+    }
+    
+    .no-padding{
+        .col-sm-4{
+            .text-border-right.blue-icon-yellow-background{
+                .icon-text.overview-highlights-wrapper{
+                    padding-right: 16px;
+                }
+            }
+        } 
+    }
+}
 .content-block-icon {
     background-color: $light-grey-20;
     padding: 8px 0 2px 0;
@@ -62,6 +94,9 @@ ul {
     background-color: $medium-blue-color;
     color: $white-shade;
     text-align: center;
+    .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--offset--default--1{
+        margin-left: 0
+    }
     a {
         color: $white-shade;
         text-decoration: none;
@@ -69,10 +104,16 @@ ul {
     .fa{
         color: $white-shade;
     }
+    .legal-text{
+        color: $white-shade;
+    }
 }
 .yellow-icon-grey-background > * {
     background-color: $light-cool-blue-color;
     text-align: center;
+    .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--offset--default--1{
+        margin-left: 0;
+    }
 }
 .cta-three-column-wrapper > * {
     background-color: $light-cool-blue-color;
@@ -81,6 +122,9 @@ ul {
 .yellow-icon-white-background > * {
     background-color: $white-shade;
     text-align: center;
+    .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--offset--default--1{
+        margin-left: 0;
+    }
 }
 
 .yellow-icon-white-background {
@@ -95,6 +139,15 @@ ul {
 .blue-icon-yellow-background > * {
     background-color: $medium-yellow-background;
     text-align: center;
+    .aem-Grid.aem-Grid--tablet--12 > .aem-GridColumn.aem-GridColumn--offset--tablet--8{
+        margin-left: 0;
+    }
+    .aem-Grid.aem-Grid--tablet--12 > .aem-GridColumn.aem-GridColumn--offset--tablet--1{
+        margin-left: 0;
+    }
+    .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--offset--default--1{
+        margin-left: 0;
+    }
     .icon-style {
         background: linear-gradient($medium-blue-color, $blue-gradient-color);
     }
@@ -131,7 +184,7 @@ ul {
         }
         .icon-texts {
             .button-class{
-                padding: 6px 16px;
+                padding: 6px;
             }
         }
     }
@@ -159,7 +212,7 @@ ul {
     .cmp-text > :last-child{
         margin: 0;
     }
-    .text{
+    .cmp-text{
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -227,7 +280,7 @@ ul {
                 font-size: 1.125rem;
                 font-weight:700;
             }
-            
+
         }
     }
 }
@@ -235,6 +288,9 @@ ul {
     padding: 24px 16px 14px 16px;
     background-color: $light-orange-20;
     border: 1px solid $light-orange-40;
+    .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--offset--default--1{
+        margin-left: 0;
+    }
     .mega-menu-icon-wrapper {
         .icon-style {
             background: linear-gradient($medium-blue-color, $blue-gradient-color);
@@ -256,6 +312,10 @@ ul {
             display: table;
             .button-class{
                 padding: 6px 16px;
+                margin-bottom: 5px;
+            }
+            .button-class:not(:first-child){
+                margin-left: 10px;
             }
         }
     }
@@ -358,7 +418,7 @@ ul {
                 border: 5px solid $dark-grey-color;
             }
         }
-        
+
     }
 }
 /*icon-text-list desktop ends here*/
@@ -366,7 +426,7 @@ ul {
     background-color: $medium-yellow-background;
     padding: 32px 16px;
     min-width: 158px;
-    margin: 40px 0;
+    /*margin: 40px 0;*/
     .cta-content-icon-wrapper {
         padding-right: 16px;
         .icon-style {
@@ -545,7 +605,7 @@ ul {
                 float: none;
                 margin-bottom: 5px;
             }
-            
+
         }
     }
     /*icon-text-list mobile ends here*/
@@ -619,8 +679,10 @@ ul {
         }
       }
     }
-    .yellow-icon-blue-background,.cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-        margin-bottom: 62px;
+    .col-sm-6:nth-child(1) {
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom:62px;    
+        }
     }
     .no-padding{
         .yellow-icon-white-background{
@@ -795,7 +857,7 @@ ul {
             float: none;
             margin-bottom: 5px;
         }
-        
+
     }
 }
 /*icon-text-list tablet ends here*/
@@ -879,6 +941,12 @@ ul {
 
 /* styles for mobile app start */
 .mobileapp {
+    .col-sm-6:first-of-type{
+        .image{
+            text-align: -webkit-center;
+        }
+    }
+    
     font-size: 18px !important;
 	.text {
 		.cmp-text {
@@ -965,7 +1033,7 @@ ul {
                                    margin-left: -1em;
                                }
                            }
-                           h3{
+                           *{
                                margin-top: 0;
                            }
                        }
@@ -975,11 +1043,11 @@ ul {
                     color: $dark-grey-color;
                     line-height: 23px;
                     font-size: 1.125rem;
-                    padding: 15px;
+                    padding: 24px;
                     min-height: 56px;
                     display: flex;
                     justify-content: center;
-                    h2, h3, h4, h5, h6 {
+                    *{
                         line-height: 23px;
                         font-size: 1.125rem;
                         font-weight: 700;
@@ -1001,11 +1069,9 @@ ul {
         }
     }
 }
-    @media (min-width:$tab-screen-min){
 
-    }
    /*styles just for ipad start*/
-   @media(min-width:$tab-screen-min) and (max-width:1023px){
+   /*@media(min-width:$tab-screen-min) and (max-width:1023px){
     .product-card{
         .row{
             div[class^="col-"]{
@@ -1019,7 +1085,7 @@ ul {
             }
         }
     }
-   }
+   }*/
     /*styles just for ipad end*/
    @media (min-width:$desktop-screen-min){
     .product-card{
@@ -1172,13 +1238,13 @@ ul {
     }
     h1, h2, h3, h4, h5, h6 {
         font-size: 1.125rem;
-        line-height: 33px;
+        line-height: 1.1;
         margin: 0;
     }
     .col-sm-6{
         padding: 0px 8px 0 10px !important;
     }
-	padding: 40px 0px 40px 8px;
+	padding: 40px 0px 30px 8px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1199,7 +1265,7 @@ ul {
             padding:11px;
 		}
 	}
-	
+
 	.cmp-container {
         margin-top: 0px;
         .layout-container{
@@ -1207,7 +1273,7 @@ ul {
         }
 	}
 	.icon-texts {
-        padding-bottom: 16px;
+        padding-bottom: 0px;
 		p {
 			display: table;
 		}
@@ -1215,9 +1281,9 @@ ul {
 	.cmp-text {
         ul{
             margin-left: 1em !important;
+            margin-bottom: 10px;
             li{
                 text-align: justify;
-                display: flex;
             }
         }
 	}
@@ -1259,7 +1325,7 @@ ul {
 //related resources mobile styles
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max){
     .cmp-related-resource {
-        padding: 20px 0 20px 0px;
+        padding: 40px 0 30px 0px;
         .icon-parent{
             display: none;
         }
@@ -1473,7 +1539,22 @@ ul {
 
 
 
-   /* scss styles starting from tablet view start here */
+   /* cta triple column height applied to only desktop over 1024px and not mobile in landscape more */
+   @media (min-width:1025px){
+        .cta-three-column-wrapper{
+            .cmp-container{
+                .cta-content-icon-wrapper{
+                    ul{
+                        li{
+                            .icon-parent{
+                            height:40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     @media (min-width:$tab-screen-min){
       /*** triple cta tablet and desktop styles start here ***/
        .cta-three-column-wrapper{
@@ -1489,7 +1570,6 @@ ul {
                            flex-direction: column;
                            height: 100%;
                         .icon-parent{
-                            height:auto;
                             position: relative;
                             bottom:40px;
                             .icon-style{
@@ -1510,7 +1590,7 @@ ul {
            }
        }
        /*** triple cta tablet and desktop styles end here ***/
-       
+
 
        /*** Product card styles start ***/
        .product-card{

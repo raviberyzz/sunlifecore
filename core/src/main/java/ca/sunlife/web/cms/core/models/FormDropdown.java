@@ -27,6 +27,14 @@ public interface FormDropdown {
 	public String getTitle();
 	
 	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	@Inject
+	public String getId();
+	
+	/**
 	 * Gets the name.
 	 *
 	 * @return the name

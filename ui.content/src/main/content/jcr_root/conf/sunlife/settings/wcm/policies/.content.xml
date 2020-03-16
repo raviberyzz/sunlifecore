@@ -585,6 +585,22 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item9>
+                                <item10
+                                    cq:styleGroupLabel="Banner height variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                           cq:styleClasses="home-page-hero-banner"
+                                            cq:styleId="1584325433237"
+                                            cq:styleLabel="Home page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>  
+                                         <item1
+                                            cq:styleClasses="landing-page-hero-banner"
+                                            cq:styleId="1584325445177"
+                                            cq:styleLabel="Landing page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         </cq:styles>
+                                </item10>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
@@ -1039,7 +1055,12 @@
                                             cq:styleClasses="mt-40"
                                             cq:styleId="1579089938796"
                                             cq:styleLabel="Spacing 40"
-                                            jcr:primaryType="nt:unstructured"/>   
+                                            jcr:primaryType="nt:unstructured"/>
+										<item3
+                                            cq:styleClasses="mt-80"
+                                            cq:styleId="1584307765307"
+                                            cq:styleLabel="Spacing 80"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
 								<item3
@@ -1081,11 +1102,6 @@
                                             cq:styleClasses="editorial-nav-desktop-wrapper"
                                             cq:styleId="1580209903474"
                                             cq:styleLabel="Editorial Navigation"
-                                            jcr:primaryType="nt:unstructured"/>
-										<item1
-                                            cq:styleClasses="left-nav-list-wrapper"
-                                            cq:styleId="1580209903400"
-                                            cq:styleLabel="Left Navigation"
                                             jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
@@ -1225,6 +1241,17 @@
                                         </cq:styles>
                                     </item1>
                                     <item2
+                                        cq:styleGroupLabel="Link List Dotted Border"
+                                        jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="featured-content-list-tools"
+                                                cq:styleId="1577796141275"
+                                                cq:styleLabel="Yes"
+                                                jcr:primaryType="nt:unstructured"/>                                            
+                                        </cq:styles>
+                                    </item2>
+                                    <item3
                                     cq:styleGroupLabel="Bottom Spacing"
                                     jcr:primaryType="nt:unstructured">
                                         <cq:styles jcr:primaryType="nt:unstructured">
@@ -1244,8 +1271,8 @@
                                                 cq:styleLabel="Bottom Spacing 40"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
-                                	</item2>
-                                    <item3
+                                	</item3>
+                                    <item4
                                     cq:styleGroupLabel="Top Spacing"
                                     jcr:primaryType="nt:unstructured">
                                         <cq:styles jcr:primaryType="nt:unstructured">
@@ -1265,7 +1292,7 @@
                                                 cq:styleLabel="Top Spacing 40"
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
-                                	</item3>
+                                	</item4>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text>

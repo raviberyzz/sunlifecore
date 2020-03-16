@@ -26,6 +26,12 @@ public class FormButtonModel extends ButtonImpl {
 	@Optional
 	private String dataTitle;
 	
+	
+	/** The id. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private String id;
 	/**
 	 * Gets the modified title.
 	 *
@@ -52,6 +58,25 @@ public class FormButtonModel extends ButtonImpl {
 	 */
 	public void setDataTitle(String dataTitle) {
 		this.dataTitle = dataTitle;
+	}
+
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 }
 	

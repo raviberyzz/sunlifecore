@@ -40,6 +40,7 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 
+import ca.sunlife.web.cms.core.beans.Pagination;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -123,6 +124,43 @@ public class ArticleListModel {
 	@ScriptVariable
 	private Page currentPage;
 	
+	/** The pagination. */
+	private Pagination pagination;
+	
+	private String pageUrl;
+	
+	/**
+	 * @return the pageUrl
+	 */
+	public final String getPageUrl() {
+		return pageUrl;
+	}
+
+	/**
+	 * @param pageUrl the pageUrl to set
+	 */
+	public final void setPageUrl(String pageUrl) {
+		this.pageUrl = pageUrl;
+	}
+
+	/**
+	 * Gets the pagination.
+	 *
+	 * @return the pagination
+	 */
+	public final Pagination getPagination() {
+		return pagination;
+	}
+
+	/**
+	 * Sets the pagination.
+	 *
+	 * @param pagination the pagination to set
+	 */
+	public final void setPagination(Pagination pagination) {
+		this.pagination = pagination;
+	}
+
 	/**
 	 * Gets the total match.
 	 *
@@ -142,6 +180,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Gets the title.
+	 *
 	 * @return the title
 	 */
 	public final String getTitle() {
@@ -149,6 +189,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Sets the title.
+	 *
 	 * @param title the title to set
 	 */
 	public final void setTitle(String title) {
@@ -156,6 +198,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Gets the title level.
+	 *
 	 * @return the titleLevel
 	 */
 	public final String getTitleLevel() {
@@ -163,6 +207,8 @@ public class ArticleListModel {
 	}
 
 	/**
+	 * Sets the title level.
+	 *
 	 * @param titleLevel the titleLevel to set
 	 */
 	public final void setTitleLevel(String titleLevel) {
@@ -210,7 +256,7 @@ public class ArticleListModel {
 	
 	/** The element names. */
 	private String[] elementNames = {"articlePublishedDate","articleHeadline","articlePageLink",
-			"articleAuthor","articleMiniDescription","articleImage","articleMainDescription"};
+			"articleAuthor","articleMiniDescription","articleImage","articleMainDescription","articleThumbnailImage"};
 	
 	/**
 	 * Gets the parent path.
@@ -301,6 +347,10 @@ public class ArticleListModel {
 	        if (StringUtils.isEmpty(getParentPath())) {
 	            return;
 	        }
+	        String[] selectors = request.getRequestPathInfo().getSelectors();
+	        if(selectors.length > 0 && (Integer.parseInt(selectors[0]) > 1 && !getDisplayType().equals("articleList"))) {
+	        	return;
+	        }
 	        ResourceResolver resourceResolver = null;
 			try {
 				setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
@@ -310,8 +360,6 @@ public class ArticleListModel {
 		            logger.warn("Session was null therefore no query was executed");
 		            return;
 		        }
-		        
-		        String[] selectors = request.getRequestPathInfo().getSelectors();
 		        QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
 		        if (queryBuilder == null) {
 		            logger.warn("Query builder was null therefore no query was executed");
@@ -354,6 +402,8 @@ public class ArticleListModel {
 		                leakingResourceResolver.close();
 		            }
 		        }
+		        setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), currentPage.getPath()));
+		        setPageUrl(currentPage.getPath());
 			} catch (LoginException | RepositoryException e) {
 				logger.error("Login exception while trying to get resource resolver {}",e);
 			} finally {
@@ -366,21 +416,24 @@ public class ArticleListModel {
 	 }
 
 	/**
-	 * @param selectors
-	 * @param queryParameterMap
+	 * Sets the query parameter map.
+	 *
+	 * @param selectors the selectors
+	 * @param queryParameterMap the query parameter map
 	 */
 	private void setQueryParameterMap(String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
+		int limit = getMaxItems();
 		if (selectors.length > 0) {
 			setPageNum(Integer.parseInt(selectors[0]));
-			offset = getPageNum()*getMaxItems(); // Pagination
+			offset = (getPageNum()-1)*getMaxItems(); // Pagination
 		} else if (getHideTop() > 0) {
 			offset = getHideTop();
-			setMaxItems(getMaxItems() - getHideTop());
+			limit = getMaxItems() - getHideTop();
 		}
 		queryParameterMap.put("path", getParentPath());
 		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
-		queryParameterMap.put("p.limit", Integer.toString(getMaxItems()));
+		queryParameterMap.put("p.limit", Integer.toString(limit));
 		queryParameterMap.put("p.offset", Integer.toString(offset));
 		queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
 		queryParameterMap.put("1_property.value", "/conf/sunlife/settings/dam/cfm/models/article-model");
