@@ -11,6 +11,7 @@ import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.ValueMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,11 +50,15 @@ public class AdvisorDetailModelTest {
 	@Mock
 	private AdvisorDetailService advisorDetailService;
 	
+	@Mock
+	private ValueMap valueMap;
+	
 	final static String PAGE_PATH = "/content/sunlife/ca/en/home";
 	
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
+		when(currentPage.getProperties()).thenReturn(valueMap);
 	}
 	
 	@Test
@@ -64,7 +69,7 @@ public class AdvisorDetailModelTest {
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {advisorId}));
 		when(advisorDetailService.getAdvisorDetails("en", AdvisorDetailConstants.ADVISOR_CONSTANT, advisorId)).thenReturn(responseStr);
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.ADVISOR_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.ADVISOR_CONSTANT);
 		advisorDetailModel.init();
 		assertEquals(responseStr, advisorDetailModel.getAdvisorData());
 		String responseStrWhenNoAddrress2 = "{\"AdvisorCorp\":null,\"AdvisorStd\":{\"Address\":{\"City\":\"Kingston\",\"PostalCode\":\"ABC 4R5\",\"Province\":\"Ontario\",\"StreetAddress1\":\"5 Alamein Drive\",\"StreetAddress2\":\"\"},\"Aid\":\"1000010000\",\"Bio\":\"I will work closely with you to fully understand your specific situation and goals. Based on your needs, I’ll help you make informed financial choices to build your savings and protect what you save against unexpected events and to prepare financially for the future.\",\"ContactInfo\":{\"CellPhone\":null,\"Email\":\"Masked.Data1607@sunlife.com\",\"Fax\":\"613-476-9244\",\"Phone\":\"613-558-4524\",\"Url\":\"scott.buckley\"},\"Disclaimer\":\"Mutual funds distributed by Sun Life Financial Investment Services (Canada) Inc. \",\"DisplayPhoto\":true,\"FormattedName\":\"Scott Buckley, CFP\",\"GoogleMap\":{\"Latitude\":\"44.25903\",\"Longitude\":\"-76.52087\"},\"Languages\":[\"English\",\"French\"],\"Notices\":[{\"AgentContent\":\"The most important step in providing clear financial solutions is understanding your needs. When we meet, here's the information we'll need for both you and your spouse:<UL> \\u000d\\u000a<LI>Salary or income, investments and insurance amounts<\\/LI>\\u000d\\u000a<LI>Pension and registered savings information<\\/LI>\\u000d\\u000a<LI>Assets and debts<\\/LI>\\u000d\\u000a<LI>Financial information for any business you own<\\/LI><\\/UL>\",\"AgentTitle\":\"Preparing for an appointment\"},{\"AgentContent\":\"Hi ,This isfor testing\",\"AgentTitle\":\"Hi\"}],\"PhotoUrl\":null,\"SocialMediaLinks\":[],\"TDLink\":\"some value&agent=CL002023 target=_blank\",\"Type\":\"ADVISOR\"},\"ClientVersion\":\"1.0\",\"ErrorCode\":\"SUCCESS\",\"ErrorDesc\":\"\",\"HelpfulLinks\":[{\"Alt\":null,\"DisplayData\":\"<A HREF=http:\\/\\/www.cancer.ca\\/ccs\\/internet\\/frontdoor\\/0,,3172,00.html target=\\\"_blank\\\">Canadian Cancer Society - Test Pran<\\/A>\",\"Title\":null,\"Url\":\"http:\\/\\/www.cancer.ca\\/ccs\\/internet\\/frontdoor\\/0,,3172,00.html\"},{\"Alt\":null,\"DisplayData\":\"test\",\"Title\":null,\"Url\":\"test\"},{\"Alt\":null,\"DisplayData\":\"<A HREF=http:\\/\\/www4.gouv.qc.ca\\/EN\\/portail\\/citoyens\\/evenements\\/aines\\/pages\\/placement-adulte-centre-hebergement.aspx target=\\\"_blank\\\">w-phoney<\\/A>\",\"Title\":null,\"Url\":\"http:\\/\\/www4.gouv.qc.ca\\/EN\\/portail\\/citoyens\\/evenements\\/aines\\/pages\\/placement-adulte-centre-hebergement.aspx\"},{\"Alt\":null,\"DisplayData\":\"<A HREF=test link target=\\\"_blank\\\">Suzanne test<\\/A>\",\"Title\":null,\"Url\":\"test link\"}],\"PageType\":\"ADVISOR\",\"ServiceVersion\":\"V1.0\"}";
@@ -80,7 +85,7 @@ public class AdvisorDetailModelTest {
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {advisorId}));
 		when(advisorDetailService.getAdvisorDetails("en", AdvisorDetailConstants.CORP_CONSTANT, advisorId)).thenReturn(responseStr);
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.CORP_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.CORP_CONSTANT);
 		advisorDetailModel.init();
 		assertEquals(responseStr, advisorDetailModel.getAdvisorData());
 	}
@@ -90,7 +95,7 @@ public class AdvisorDetailModelTest {
 		when(currentPage.getPath()).thenReturn(PAGE_PATH);
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {}));
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.ADVISOR_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.ADVISOR_CONSTANT);
 		advisorDetailModel.init();
 		assertNull(advisorDetailModel.getAdvisorData());
 	}
@@ -110,7 +115,7 @@ public class AdvisorDetailModelTest {
 		when(currentPage.getPath()).thenReturn(PAGE_PATH);
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {advisorId}));
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.ADVISOR_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.ADVISOR_CONSTANT);
 		when(advisorDetailService.getAdvisorDetails("en", AdvisorDetailConstants.ADVISOR_CONSTANT, advisorId)).thenThrow(ApplicationException.class);
 		advisorDetailModel.init();
 		assertNull(advisorDetailModel.getAdvisorData());
@@ -124,7 +129,7 @@ public class AdvisorDetailModelTest {
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {advisorId}));
 		when(advisorDetailService.getAdvisorDetails("en", AdvisorDetailConstants.CORP_CONSTANT, advisorId)).thenReturn(responseStr);
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.CORP_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.CORP_CONSTANT);
 		advisorDetailModel.init();
 		assertNull(advisorDetailModel.getAdvisorMapData());
 	}
@@ -137,7 +142,7 @@ public class AdvisorDetailModelTest {
 		when(configService.getConfigValues("pageLocale", PAGE_PATH)).thenReturn(TestUtils.CANADA_LOCALE.toString());
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {"1000010022997"}));
 		when(advisorDetailService.getAdvisorDetails("en", AdvisorDetailConstants.CORP_CONSTANT, advisorId)).thenReturn(responseStr);
-		advisorDetailModel.setAdvisorType(AdvisorDetailConstants.CORP_CONSTANT);
+		when(currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class)).thenReturn(AdvisorDetailConstants.CORP_CONSTANT);
 		advisorDetailModel.init();
 		assertNull(advisorDetailModel.getAdvisorData());
 	}

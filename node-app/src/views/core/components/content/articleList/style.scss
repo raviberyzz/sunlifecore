@@ -1,10 +1,12 @@
 @import '../../../base/core';
 .articleList-wrapper{
-    .article-seperator{
+    padding-top:10px;
+    .article-separator{
         display:none;
     }
     .cmp-contentfragment{
         display: table-row;
+        height:230px;
         .articleImage--cmp-contentfragment__elements{
             float:left;
             padding-right:14px;
@@ -23,32 +25,30 @@
                 padding-top: 10px;       
            }
            .articleHeadline{
+               padding-top:10px;
+               padding-bottom:10px;
                p{
-                   padding-top: 10px;
-                   a{
-                        font-family: 'sunlife-sans';
-                        font-weight: 400;
-                        font-size: 24px !important;
-                        line-height: 31px;
-                   }
+                   padding-top: 10px;                
                }
-           }
-           .articleMiniDescription{
-               p{
-                    margin-block-start: 1em;
-                    margin-block-end: 1em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-               }
+               a{
+                font-family: 'sunlife-sans';
+                font-weight: 400;
+                font-size: 24px !important;
+                line-height: 31px;
+                }
            }
         }
     }
 } 
 .articleList_editorial-wrapper{
+    padding: 10px;
+    .article-separator{
+        display:none;
+    }
     .cmp-contentfragment{
-        width:33%;
+        width: 33%;
+        float: left;
         .articleImage--cmp-contentfragment__elements{
-            padding-right:14px;
             text-align: center;
             img{
                 height: 220px;
@@ -68,24 +68,19 @@
             padding-top: 10px;       
        }
        .articleHeadline{
+            padding-top:10px;
+            padding-bottom:10px;
            p{
-               padding-top: 10px;
-               a{
-                    font-family: 'sunlife-sans';
-                    font-weight: 400;
-                    font-size: 24px !important;
-                    line-height: 31px;
-               }
+               padding-top: 10px;             
+           }
+           a{
+            font-family: 'sunlife-sans';
+            font-weight: 400;
+            font-size: 24px !important;
+            line-height: 31px;
            }
        }
-       .articleMiniDescription{
-           p{
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
-           }
-       }
+       
     }
   }
 }
@@ -106,9 +101,12 @@
 
     @media (max-width: $mobile-screen-max) {
         .articleList-wrapper{
-            .article-seperator{
+             hr:last-child {
+                display:none!important;
+              }
+            .article-separator{
                 width: 30%;
-                border-top: 5px solid;
+                border-top: 2px solid;
                 display:block;
                 color: $container-border-color;
             }
@@ -122,14 +120,18 @@
             }
         }
         .articleList_editorial-wrapper{
-            .article-seperator{
+            hr:last-child {
+                display:none!important;
+              }
+            .article-separator{
                 width: 30%;
                 color: $light-yellow-color;
-                border-top: 5px solid;
+                border-top: 2px solid;
                 display:block;
             }
             .cmp-contentfragment{
-                width:33%;
+                width:100%;
+                float:none;
                 .cmp-contentfragment__elements{
                     text-align: center;
                     width:100%;               

@@ -2,7 +2,7 @@
 .form-wrapper{
   text-align: center;
   width: 50%;
- 
+
 }
 .form-wrapper-simple{
     border: 1px solid $black-shade;
@@ -17,7 +17,7 @@
 }
 .form-yellow-wrapper{
     background-color:$medium-yellow-background;
-   
+
 }
 .form-alignment-left{
     text-align: left;
@@ -36,7 +36,7 @@
     display: table-cell;
     height: 48px;
     top: 6px;
-    
+
 }
 
 
@@ -53,7 +53,7 @@
 }
 
 
-.parsley-errors-list:before {
+.filled:before {
     content: '';
     display: block;
     position: absolute;
@@ -75,7 +75,7 @@
 .editorial-nav-mobile-wrapper{
     width: 100%;
     background-color: $medium-yellow-background;
-    .options{ 
+    .options{
         padding: 0 5px;
         .cmp-form-options{
             height: 68px;
@@ -128,7 +128,53 @@
        .subscribe-main-form-wrapper{
           padding:0px !important;
               }
+/*Thank You wrapper Starts Here*/
 
+.thankyou-wrapper{
+	background-color: $medium-yellow-background;
+    text-align:center;
+    padding: 32px 0 22px 0;
+    form{
+        width:66.66%;
+        display:inline-block;
+        .cmp-text{ 
+            .heading-1,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6,h2,h3,h4,h5,h6{
+            font-size: 1.5rem;
+            line-height:30px;
+            font-weight:400;
+            margin: 0;
+            }
+        }
+        .text,.dropdown {
+            width:50% !important;
+             padding: 0 8px;
+             margin-bottom: 16px;
+        }
+        .dropdown .cmp-form-options--drop-down {
+            width:100%;
+        }
+        .cmp-form-button{
+            width: 100%;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        
+        }
+    }
+    div.text:first-of-type {
+        width: 80% !important;
+        float:none !important;
+        padding:0 30px;
+        display:inline-block;
+        margin-bottom:32px;
+    }
+    div.text:last-child {
+       width: 100% !important;
+       margin-bottom:0px;
+       padding: 0 50px;
+   }
+} 
+
+/*Thank You wrapper Ends Here*/
 @media (max-width: $mobile-screen-max) {
 .subscribe-popup-form-wrapper{
     padding:0 ;
@@ -136,10 +182,22 @@
         padding-bottom:16px !important;
     }
     }
+    .thankyou-wrapper{
+        padding: 32px 16px 22px 16px;
+        form {
+            width:100%;
+            display:inline-block;
+            .text, .dropdown {
+                width:100% !important;
+                 padding: 0;
+                 margin-bottom: 16px;
+            }
+        } 
+    }
 }
 @media (min-width: $tab-screen-min)  {
 .editorial-nav-mobile-wrapper {
-    display: none; } 
+    display: none; }
 
 	.subscribe-popup-form-wrapper{
         padding:24px;
@@ -149,7 +207,7 @@
                 width:25% !important;
             }
           }
-        form > *
+        form :not(:last-child)
         {
             padding-right:16px !important;
         }
@@ -168,7 +226,21 @@
             }
         }
     }
-	
+
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
+    .thankyou-wrapper {
+        padding: 32px 32px 22px 32px;
+        form{
+            width:100%;
+            display:inline-block;
+            .text, .dropdown {
+                width:100% !important;
+                padding: 0;
+                margin-bottom: 16px;
+            }
+        }
+    }
 }
 @media (min-width: $desktop-screen-min)
 {
@@ -184,7 +256,7 @@
                 display: inline-block !important;
             }
             .button-wrapper{
-                min-width: 33.33%  !important;
+                min-width: 41.8% !important;
                 width: auto  !important;
                 max-width: 50%  !important;
     	        margin: 0 auto !important;
@@ -203,8 +275,8 @@
         width:58.31%!important;
         padding-right:16px;
             }
-    
+
     .subscribe-main-form-wrapper .button{
         width:41.65% !important;
-            }    
+            }
 }

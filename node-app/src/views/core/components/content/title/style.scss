@@ -1,7 +1,7 @@
 @import '../../../base/core';
 .title-wrapper-yellow-grey{
     background-color:$medium-yellow-background;
-    padding:32px 0 32px 15px;
+    padding:32px 15px 32px 15px;
     min-height:100px;
     color:$dark-grey-color;
     margin-bottom:40px;
@@ -72,7 +72,10 @@
 @media (max-width:$mobile-screen-max){
   .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
   {
-    height:94px;
+    min-height:94px;
     background-image:none;
+  }
+  .title-wrapper-yellow-grey-rings{
+    margin-top: 12%;
   }
 }

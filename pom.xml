@@ -148,8 +148,8 @@
               <descriptors>
                 <descriptor>assembly.xml</descriptor>
               </descriptors>
-              <appendAssemblyId>false</appendAssemblyId>
-			  <finalName>${pom.artifactId}-${pom.version}-Sources</finalName>
+              <appendAssemblyId>true</appendAssemblyId>
+			  <finalName>${project.artifactId}-${project.version}-Sources</finalName>
               <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
             </configuration>
           </execution>

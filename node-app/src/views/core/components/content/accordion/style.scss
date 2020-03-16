@@ -44,6 +44,11 @@
             }
         }
         .cmp-accordion__panel{
+            .text{
+                .cmp-text p:last-child{
+                    margin-bottom: 0;
+                }
+            }
             padding:0 32px 24px 16px;
             font-size:0.875rem;
             .grey-horizontal-separator div {
@@ -64,6 +69,7 @@
     @extend .accordion-container;
     .cmp-accordion__item{
         margin-bottom:10px;
+        //padding: 24px 0px;
         .cmp-accordion__header{
             color:$medium-blue-color;
             .cmp-accordion__button{
@@ -73,6 +79,7 @@
                             content: "\f055";
                             color:$medium-yellow-background;
                             padding-right:3px;
+                            //margin-left: 16px;
                         }
                     }
                     &[aria-expanded="true"] {
@@ -80,6 +87,7 @@
                             content: "\f056";
                             color:$medium-yellow-background;
                             padding-right:3px;
+                            //margin-left: 16px;
                         }
                     }
                 }
@@ -95,10 +103,12 @@
         .cmp-accordion__item {
             .cmp-accordion__header{
                  height:auto;
+                 min-height: 56px;
+                 display: inline-flex;
             }
-            .cmp-accordion__panel{
+            /*.cmp-accordion__panel{
                 padding-top:5px;
-            }
+            }*/
         }
         .cmp-accordion__header{
             .cmp-accordion__button{
@@ -111,9 +121,9 @@
             .cmp-accordion__header{
                  height:auto;
             }
-            .cmp-accordion__panel{
+            /*.cmp-accordion__panel{
                 padding-top:5px;
-            }
+            }*/
         }
         .cmp-accordion__header{
             .cmp-accordion__button{

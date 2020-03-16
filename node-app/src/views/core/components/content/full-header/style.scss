@@ -18,9 +18,8 @@
             height:92px;
              /*Logo starts here*/
              .desktop-sunlife-logo{
-                  position:absolute;
-                  bottom:5px;
-                  height:100%;
+                  float:left;
+                  margin-top:-11px;
                 img{
                     width:149px;
                     height:36px;
@@ -34,8 +33,11 @@
                 float:right;
                 padding:0;
                 .utility-nav-wrapper{
-                    padding:8px 0px;                        
+                    padding:0 0 8px 0;                        
                     .utility-nav-links{
+                        .lang-btn{
+                            padding:0 14px;
+                        }
                         .search-icon-container{
                             padding-right:0;
                         }
@@ -53,15 +55,15 @@
                
                 /*Mega Menu strats here*/
                 .desktop-navigation{
-                    position:static;
+                    position: static;
                     float:left;
-                    margin:-5px 0 0 200px;
+                    margin-left:50px;
                     .desktop-mega-menu{
                         .desktop-primary-navigation {
-                            margin-left: 0px;
+                            margin: -7px 0 0 0;
                             .menu-content{
                                 padding:0;
-                                margin-top:0px;
+                                margin-top:-15px;
                             }
                             .nav-item{
                                 .dropdown-toggle{
@@ -179,4 +181,7 @@
             }
         }
     }
+}
+.panel-group{
+    display:none;
 }

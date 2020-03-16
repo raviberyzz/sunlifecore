@@ -9,8 +9,12 @@ const gulp = require('gulp'),
  fse = require('fs-extra')
  path = require('path'),
  sort = require('gulp-sort'),
- flatten = require('gulp-flatten');
- gulpif = require('gulp-if');
+ flatten = require('gulp-flatten'),
+ gulpif = require('gulp-if'),
+ merge = require('merge-stream');
+//Constants declarations
+ const srcViews = 'src/views';
+ const sitePaths = {'hk':'apac/hk','id':'apac/id'};
 
 gulp.task('browser-sync', () => {
   browserSync.init({
@@ -27,6 +31,7 @@ const compareFiles = (f1, f2) => {
   return Number(f1Name.split('-')[0]) > Number(f2Name.split('-')[0]) ? 1 : -1;
 }
 
+
 const compareNames = (f1, f2) => {
   if(isNaN(f1.split('-')[0]) || isNaN(f2.split('-')[0])) {
     return f1 > f2 ? 1 : -1;
@@ -34,77 +39,66 @@ const compareNames = (f1, f2) => {
   return Number(f1.split('-')[0]) > Number(f2.split('-')[0]) ? 1 : -1;
 }
 
-gulp.task('core-sass', () => {
-  return gulp.src('src/views/core/**/*.scss')
-    .pipe(sass())
-    .pipe(sort(compareFiles))
-    .pipe(concat('style.css'))
-    //.pipe(cssnano())
-    .pipe(gulp.dest('public/core/css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
-});
-gulp.task('vendor-css',() => {
-  return gulp.src('src/views/core/vendor/**/*.css')
-  .pipe(sort(compareFiles))
-  .pipe(concat('vendor.css'))
-  //.pipe(cssnano())
-  .pipe(gulp.dest('public/vendor/css'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
-});
-gulp.task('core-js',() => {
-  return gulp.src(['src/views/core/base/**/*.js','src/views/core/components/**/*.js'])
-  .pipe(sort(compareFiles))
-  .pipe(concat('script.js'))
-  //.pipe(uglify())
-  .pipe(gulp.dest('public/core/js'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
-});
-gulp.task('core-fonts',() => {
-  return gulp.src('src/views/core/vendor/resources/*.*')
-  //.pipe(flatten({ includeParents: -1} ))
-  .pipe(gulp.dest('public/vendor/resources'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
-});
-gulp.task('core-base-fonts',() => {
-  return gulp.src('src/views/core/base/resources/*.*')
-  //.pipe(flatten({ includeParents: -1} ))
-  .pipe(gulp.dest('public/core/resources'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
+const getFolders = (dir) => {
+  return fs.readdirSync(dir).filter((file)=>{return fs.statSync(path.join(dir, file)).isDirectory();});
+}
+
+gulp.task('compile-files', (done) => {
+  const folders = getFolders(srcViews);
+  if (folders.length === 0) return done(); // nothing to do!
+  const sassTasks = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, '/**/*.scss'))
+      .pipe(sass())
+      .pipe(sort(compareFiles))
+      .pipe(concat('style.css'))
+      //.pipe(cssnano())
+      .pipe(gulp.dest('public/'+folder+'/css'))
+  });
+  const vendorCssTasks = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, 'vendor/**/*.css'))
+      .pipe(sort(compareFiles))
+      .pipe(concat('vendor.css'))
+      //.pipe(cssnano())
+      .pipe(gulp.dest('public/'+folder+'/vendor/css'))
+      //.pipe(cssnano())
+  });
+  const jsTasks = folders.map((folder)=> {
+    return gulp.src([path.join(srcViews, folder, 'base/**/*.js'),path.join(srcViews, folder, 'components/**/*.js')])
+      .pipe(sort(compareFiles))
+      .pipe(concat('script.js'))
+      //.pipe(uglify())
+      .pipe(gulp.dest('public/'+folder+'/js'))
+  });
+  const vendorJsTasks = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, 'vendor/**/*.js'))
+      .pipe(sort(compareFiles))
+      .pipe(concat('vendor.js'))
+      //.pipe(uglify())
+      .pipe(gulp.dest('public/'+folder+'/vendor/js'))
+  });
+  const fontsVendorTask = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, 'vendor/resources/*.*'))
+      .pipe(flatten({ includeParents: -1} ))
+      .pipe(gulp.dest('public/'+folder+'/vendor'))
+  });
+  const fontsBaseTask = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, 'base/resources/*.*'))
+      .pipe(flatten({ includeParents: -1} ))
+      .pipe(gulp.dest('public/'+folder))
+  });
+  return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,fontsVendorTask,fontsBaseTask);
 });
 
-
-gulp.task('vendor-js',() => {
-  return gulp.src(['src/views/core/vendor/**/*.js'])
-  .pipe(sort(compareFiles))
-  .pipe(concat('vendor.js'))
-  //.pipe(uglify())
-  .pipe(gulp.dest('public/vendor/js'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
-});
-
-gulp.task('watch', function () {
-  gulp.watch('src/views/core/**/*.scss', gulp.series('core-sass')); 
-  gulp.watch('src/views/core/**/*.js', gulp.series('core-js')); 
-  gulp.watch('src/views/core/vendor/**/*.css', gulp.series('vendor-css')); 
-  gulp.watch('src/views/core/vendor/**/*.js', gulp.series('vendor-js')); 
-  gulp.watch('src/views/core/**/resources/*.*', gulp.series('core-fonts')); 
+gulp.task('watch', () => {
+  gulp.watch(['src/views/**/*.scss','src/views/**/*.css','src/views/**/*.js','src/views/**/resources/*.*'], gulp.series('compile-files')); 
 })
 
-gulp.task('clean', () => {
-  return gulp.src('dist')
-    .pipe(gulpif(fs.existsSync('dist'),clean({read: false, force: true})))
+gulp.task('clean', (done) => {
+  if(fs.existsSync('dist')) {
+    return gulp.src('dist')
+      .pipe(clean({read: false, force: true}))
+  }
+  done();
 });
 
 gulp.task('compile-sass',() =>{
@@ -135,6 +129,11 @@ const generateClientLibs = (cb) => {
       });
     } 
   })
+  fs.readdirSync('dist').forEach( (name) => {
+    if(sitePaths[name]) {
+      fse.moveSync(path.join('dist', name),path.join('dist', sitePaths[name]));
+    }
+  });
   cb();
 }
 
@@ -200,5 +199,5 @@ gulp.task('copy-build-files',() => {
   .pipe(gulp.dest('../ui.apps/src/main/content/jcr_root/apps/sunlife'));
 });
 
-gulp.task('dev',gulp.parallel('core-sass','vendor-css','vendor-js','core-js','core-fonts','core-base-fonts','watch','browser-sync'));
-gulp.task('build:dev',gulp.series('copy-files','compile-sass',generateClientLibs,'copy-build-files','clean'));
+gulp.task('dev',gulp.parallel('compile-files','watch','browser-sync'));
+gulp.task('build:dev',gulp.series('clean','copy-files','compile-sass',generateClientLibs,'copy-build-files','clean'));

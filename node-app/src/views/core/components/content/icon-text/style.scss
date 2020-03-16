@@ -155,6 +155,7 @@
     border-radius: 4px;
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-weight: 700;
+        font-size:1.5rem;
         line-height: 30px;
         padding: 0 25px 9px 25px; //clarification.
         top: -15px;
@@ -188,7 +189,7 @@
     }
     .icon-texts{
         text-align: center;
-        padding: 0;
+        padding: 6px;
     }
 }
 .text-border-right {

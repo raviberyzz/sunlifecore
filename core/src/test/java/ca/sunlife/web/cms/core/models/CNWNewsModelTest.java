@@ -12,7 +12,10 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.jcr.RepositoryException;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,9 +27,11 @@ import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.News;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
@@ -53,11 +58,16 @@ public class CNWNewsModelTest {
 
 	@InjectMocks
 	private CNWNewsModel cnwNewsModel;
+	
+	@Mock
+	private SiteConfigService configService;
 
 	@BeforeEach
-	public void setup() {
+	public void setup() throws LoginException, RepositoryException {
 		MockitoAnnotations.initMocks(this);
 		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
+		when(currentPage.getPath()).thenReturn("/content/sunlife/ca/en/home");
+		when(configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, "/content/sunlife/ca/en/home")).thenReturn("/content/sunlife");
 	}
 
 	void setSelectors() {
@@ -87,7 +97,7 @@ public class CNWNewsModelTest {
 		String expectedRequestURL = "home.page";// should NOT have the page number
 
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
-		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), expectedRequestURL, DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
+		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), expectedRequestURL.replace(".", "/"), DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
 		cnwNewsModel.setNewsType("2");
 		cnwNewsModel.init();
 
@@ -103,7 +113,7 @@ public class CNWNewsModelTest {
 		assertEquals("home", cnwNewsModel.getRelativeURL());
 
 		// check for requestURL
-		assertEquals(expectedRequestURL, cnwNewsModel.getRequestURL());
+		assertEquals(expectedRequestURL.replace(".", "/"), cnwNewsModel.getRequestURL());
 
 		// news should NOT be null
 		assertNotNull(cnwNewsModel.getNews());
@@ -118,7 +128,7 @@ public class CNWNewsModelTest {
 		cnwNewsModel.init();
 
 		// requestURL should have the page number
-		assertEquals("home.page-18", cnwNewsModel.getRequestURL());
+		assertEquals("home.page-18".replace(".", "/"), cnwNewsModel.getRequestURL());
 
 		// news should be null
 		assertNull(cnwNewsModel.getNews());
@@ -131,7 +141,7 @@ public class CNWNewsModelTest {
 			setSelectors();
 			setInitialData("2020", "3", "10", new String[] { "773" });
 			when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
-			when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page", DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenThrow(IOException.class);
+			when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page".replace(".", "/"), DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenThrow(IOException.class);
 			cnwNewsModel.setNewsType("2");
 			cnwNewsModel.init();
 		} catch (Exception exception) {
@@ -171,7 +181,7 @@ public class CNWNewsModelTest {
 		setInitialData(null, "3", "10", new String[] { "773" });
 		cnwNewsModel.setNewsType("2");
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
-		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page", DUMMY_PAGE_NUMBER, String.valueOf(Calendar.getInstance().get(Calendar.YEAR)), "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
+		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page".replace(".", "/"), DUMMY_PAGE_NUMBER, String.valueOf(Calendar.getInstance().get(Calendar.YEAR)), "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
 		cnwNewsModel.init();
 		assertNull(cnwNewsModel.getNews());
 	}
@@ -182,7 +192,7 @@ public class CNWNewsModelTest {
 		setInitialData(DUMMY_ACTIVE_YEAR, "3", "10", new String[] { "773" });
 		cnwNewsModel.setNewsType("2");
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
-		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page", DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenThrow(ApplicationException.class);
+		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page".replace(".", "/"), DUMMY_PAGE_NUMBER, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenThrow(ApplicationException.class);
 		assertNull(cnwNewsModel.getReleaseMain());
 	}
 
@@ -221,7 +231,7 @@ public class CNWNewsModelTest {
 		cnwNewsModel.setNewsType("2");
 		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(new String[] {}));
 		when(request.getRequestURI()).thenReturn(DUMMY_URI_CURRENT_PAGE);
-		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page-23.1950", null, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
+		when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage(), "home.page-23.1950".replace(".", "/"), null, DUMMY_ACTIVE_YEAR, "10", cnwNewsModel.getNewsCategories())).thenReturn(new News());
 		cnwNewsModel.init();
 		
 		assertNotNull(cnwNewsModel.getNews());

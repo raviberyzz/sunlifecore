@@ -27,6 +27,14 @@ public interface FormDropdown {
 	public String getTitle();
 	
 	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	@Inject
+	public String getId();
+	
+	/**
 	 * Gets the name.
 	 *
 	 * @return the name
@@ -51,12 +59,28 @@ public interface FormDropdown {
 	public String getHelpMessage();
 	
 	/**
+	 * Gets the aria label.
+	 *
+	 * @return the aria label
+	 */
+	@Inject
+	public String getAriaLabel();
+	
+	/**
 	 * Gets the items group.
 	 *
 	 * @return the items group
 	 */
 	@Inject
 	public List<ItemsGroup> getItemsGroup();
+	
+	/**
+	 * Gets the is custom action formation required flag.
+	 *
+	 * @return the is custom action formation required flag
+	 */
+	@Inject
+	public String getCustomActionGenerationRequired();
 	
 	/**
 	 * The Interface ItemsGroup.

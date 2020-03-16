@@ -4,5 +4,4 @@
     jcr:description="Displays a list of Articles"
     jcr:primaryType="cq:Component"
     jcr:title="Article List"
-    sling:resourceSuperType="/apps/core/wcm/components/contentfragmentlist/v1/contentfragmentlist"
     componentGroup=".hidden"/>

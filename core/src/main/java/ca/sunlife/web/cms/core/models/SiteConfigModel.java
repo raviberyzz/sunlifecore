@@ -3,11 +3,14 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 
 /**
  * The Interface SiteConfigModel.
@@ -48,7 +51,7 @@ public interface SiteConfigModel {
 	 * @return the alternate languages
 	 */
 	@Inject
-	String getAlternateLanguages();
+	List<AlternateLanguageModel> getAlternateLanguages();
 
 	/**
 	 * Gets the page description.
@@ -82,6 +85,24 @@ public interface SiteConfigModel {
 	@Inject
 	String getDefaultReportingLanguage();
 	
+	
+	/**
+	 * Gets the Experience fragment path.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getExperienceFragmentPath();
+	
+	
+	/**
+	 * Gets the Navigation Overview title.
+	 *
+	 * @return the page locale
+	 */
+	@Inject
+	String getNavigationOverview();
+	
 	/**
 	 * Gets the UDO tag path.
 	 *
@@ -89,5 +110,29 @@ public interface SiteConfigModel {
 	 */
 	@Inject
 	String getUdoTagsPath();
+	
+	/**
+	 * Gets the article date format.
+	 *
+	 * @return the article date format
+	 */
+	@Inject @Optional
+	String getArticleDateFormat();
+	
+	/**
+	 * Gets the article publisher name.
+	 *
+	 * @return the article publisher name
+	 */
+	@Inject @Optional
+	String getArticlePublisherName();
+	
+	/**
+	 * Gets the article publisher logo.
+	 *
+	 * @return the article publisher logo
+	 */
+	@Inject @Optional
+	String getArticlePublisherLogo();
 
 }

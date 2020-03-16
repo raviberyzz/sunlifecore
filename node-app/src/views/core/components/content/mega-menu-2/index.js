@@ -41,15 +41,15 @@ $(document).ready(function(){
           var submenuHeight=$(this).children('.dropdown-menu').height();
          if ( submenuHeight > menuHeight)
          {
-             $('.cmp-dynamic-megamenu-grey').height(submenuHeight+13);
+            $(this).parent().parent().parent().parent().height(submenuHeight+13);
          }
           else
          {
              $(this).children('.dropdown-menu').height(menuHeight-10);
          }
 
- },function(){
-   $('.cmp-dynamic-megamenu-grey').height(menuHeight);
-    }
+ },function() {
+  $(this).parent().parent().parent().parent().height(menuHeight);
+  }
  );
 });

@@ -27,34 +27,85 @@
                                         name="./domain"/>
                                     <site-url
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Site URL"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Site content location"
                                         name="./siteUrl"/>
-                                    <site-suffix
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Site Suffix"
-                                        name="./siteSuffix"/>
                                     <alt-langague
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Alternate Languages"
-                                        name="./alternateLanguages"/>
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add' to add a new alternate language"
+                                        fieldLabel="Alternate languages">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./alternateLanguages">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <languageCode
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Language code"
+                                                    name="./languageCode"/>
+                                                <siteLocation
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Site location"
+                                                    name="./siteLocation"/>
+                                                <domain
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Domain"
+                                                    name="./domain"/>
+                                                <defaultLanguage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    defaultValue="false"
+                                                    fieldDescription="Is default language?"
+                                                    fieldLabel="Is default language?"
+                                                    name="./defaultLanguage"
+                                                    text="Is default language?"
+                                                    value="{Boolean}true"/>
+                                            </items>
+                                        </field>
+                                    </alt-langague>
                                     <analyticsScriptPath
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Analytics Synchronous Script Path"
+                                        fieldLabel="Analytics synchronous script path"
                                         name="./analyticsScriptPath"/>
                                     <analyticsTealiumScript
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                        fieldLabel="Analytics Tealium Script"
+                                        fieldLabel="Analytics tealium script"
                                         name="./analyticsTealiumScript"/>
-                                    <defaultReportingLanguage
+                                    <experiencefragmentPath
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Default Reporting Language"
-                                        name="./defaultReportingLanguage"/>
+                                        fieldLabel="Experience fragment path"
+                                        name="./experienceFragmentPath"/>
+                                    <navigationOverview
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation overview title"
+                                        name="./navigationOverview"/>
+                                    <articleDateFormat
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Article Date Format"
+                                        fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        name="./articleDateFormat"/>
+                                     <articlePublisherName
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Article Publisher Name"
+                                        fieldDescription="Enter the article publisher name for SEO JSON"
+                                        name="./articlePublisherName"/>
+                                     <articlePublisherLogo
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Article Publisher Logo"
+                                        fieldDescription="Enter the article publisher logo for SEO JSON"
+                                        name="./articlePublisherLogo"/>
                                 </items>
                             </section-general>
                             <section-page
@@ -65,24 +116,29 @@
                                     <description
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                        fieldLabel="Page Description"
+                                        fieldLabel="Page description"
                                         name="./pageDescription"/>
                                     <locale
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Page Locale"
+                                        fieldLabel="Page locale"
                                         name="./pageLocale"/>
+                                    <site-suffix
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Page title format"
+                                        name="./siteSuffix"/>
                                     <image
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Image"
-                                        fieldLabel="Image"
+                                        fieldDescription="Social media image"
+                                        fieldLabel="Social media image"
                                         name="./socialMediaImage"/>
                                     <udoTagsPath
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="UDO Tags Path"
-                                        fieldLabel="UDO Tags Path"
+                                        fieldDescription="UDO tags path"
+                                        fieldLabel="UDO tags path"
                                         name="./udoTagsPath"/>
                                 </items>
                             </section-page>

@@ -45,6 +45,11 @@
                                             rootPath="/content"
 											required="{Boolean}true"
                                             suffix=".html"/>
+                                        <language
+                      						jcr:primaryType="nt:unstructured"
+                        					sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        					fieldLabel="Lang Attribute"
+                        					name="./langCode"/>    
                                         <target
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"

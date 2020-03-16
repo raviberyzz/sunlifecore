@@ -158,7 +158,13 @@ a {
 .no-gutter {
     padding: 0 !important;
 }
-
+.mt-0{
+    margin-top:0px;
+    h1,h2,h3,h4,h5,h5{
+        margin-top:0px;
+    }
+   
+}
 .mt-20{
     margin-top:20px;
 }
@@ -177,6 +183,9 @@ a {
     margin-top:40px;
 }
 
+.mt-80{
+    margin-top:80px;
+}
 .mb-40{
     margin-bottom:40px;
 }
@@ -240,7 +249,16 @@ a {
         text-decoration: none;
     }
 }
-
+.blue-chevron-arrow{
+    &:after {
+        content: '\f138';
+        font-family: fontawesome;
+        color: $medium-blue-color;
+        margin-left: 5px;
+        display:inline-block;
+        text-decoration: none;
+    }
+}
 .pdf-link {
     &::before {
         content: "\f1c1";
@@ -317,9 +335,9 @@ footer {
             color: $medium-yellow-background;
             font-weight: bold;
             display: inline-block;
-            width: 1.7rem;
-            padding-left: 16px;
-            margin-left: -2em;
+            width: 1rem;
+            // padding-left: 16px;
+            margin-left: -1em;
         }
     }
 }

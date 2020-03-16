@@ -1,6 +1,6 @@
-<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
-<sly data-sly-use.siteConfig="ca.sunlife.web.cms.core.models.SiteConfigModel" />
+<sly data-sly-use.siteConfig="ca.sunlife.web.cms.core.models.SiteConfigModel"></sly>
 
 <div class="container">
 <div class="page-header">
@@ -10,7 +10,7 @@
 <div class="panel panel-default">
    <div class="panel-heading"><h4>Site Specific Configuration</h4></div>
    <div class="panel-body">
-      <fieldset class="col-md-6">
+      <fieldset class="col-md-8">
          <legend>General</legend>
          <div class="panel panel-default">
             <div class="panel-body">
@@ -20,45 +20,75 @@
                      <td>${siteConfig.domain}</td>
                   </tr>
 				  <tr>
-                     <td>Site Url:</td>
+                     <td>Site location:</td>
                      <td>${siteConfig.siteUrl}</td>
                   </tr>
                   <tr>
-                     <td>Site Suffix:</td>
-                     <td>${siteConfig.siteSuffix}</td>
+                     <td>Alternate languages:</td>
+                     <td>
+                     	<sly data-sly-repeat.altLang = "${siteConfig.alternateLanguages}">
+							Alternate language: ${altLang.languageCode}, Site location: ${altLang.siteLocation}, Domain: ${altLang.domain}, Is default?: ${altLang.defaultLanguage} <br/>
+                        </sly>
+                     </td>
                   </tr>
                   <tr>
-                     <td>Alternate Languages:</td>
-                     <td>${siteConfig.alternateLanguages}</td>
+                     <td>Experience fragment path:</td>
+                     <td>${siteConfig.experienceFragmentPath}</td>
                   </tr>
-				  <tr>
-                     <td>Reporting Language:</td>
-                     <td>${siteConfig.defaultReportingLanguage}</td>
+                  <tr>
+                     <td>Navigation overview title:</td>
+                     <td>${siteConfig.navigationOverview}</td>
                   </tr>
                </table>
             </div>
          </div>
       </fieldset>
       <div class="clearfix"></div>
-      <fieldset class="col-md-6">
+      <fieldset class="col-md-8">
+         <legend>Article Related Properties</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Article Date Format:</td>
+                     <td>${siteConfig.articleDateFormat}</td>
+                  </tr>
+				      <tr>
+                     <td>Article Publisher Name:</td>
+                     <td>${siteConfig.articlePublisherName}</td>
+                  </tr>
+                  <tr>
+                     <td>Article Publisher Logo:</td>
+                     <td>${siteConfig.articlePublisherLogo}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+      <div class="clearfix"></div>
+      <fieldset class="col-md-8">
          <legend>Page Defaults</legend>
          <div class="panel panel-default">
             <div class="panel-body">
                <table class="table">
                   <tr>
-                     <td>Page Description:</td>
+                     <td>Page description:</td>
                      <td>${siteConfig.pageDescription}</td>
                   </tr>
                   <tr>
-                     <td>Page Locale:</td>
+                     <td>Page locale:</td>
                      <td>${siteConfig.pageLocale}</td>
                   </tr>
+                  <tr>
+                     <td>Page title format:</td>
+                     <td>${siteConfig.siteSuffix}</td>
+                  </tr>
 				  <tr>
-                     <td>Image:</td>
+                     <td>Social media image:</td>
                      <td>${siteConfig.socialMediaImage}</td>
                   </tr>
 				  <tr>
-                     <td>UDO Tags Path:</td>
+                     <td>UDO tags path:</td>
                      <td>${siteConfig.udoTagsPath}</td>
                   </tr>
                </table>
