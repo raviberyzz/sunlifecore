@@ -83,7 +83,7 @@ ul {
     .col-sm-4{
         .blue-icon-yellow-background{
             .cmp-container{
-                .cta-content-icon-wrapper{
+                .overview-highlights-wrapper{
                     -webkit-box-orient: vertical;
                     -webkit-box-direction: normal;
                     flex-direction: column;
@@ -91,10 +91,13 @@ ul {
                     flex-grow: 1;
                     display: flex;
                 }
+                .button-class{
+                    padding: 6px 16px;
+                }
             } 
         }
     }
-    .col-sm-6{
+    /*.col-sm-6{
         .blue-icon-yellow-background{
             .cmp-container{
                 .cta-content-icon-wrapper{
@@ -107,7 +110,7 @@ ul {
                 }
             } 
         }
-    }
+    }*/
 }
 .content-highlight {
     background-color : $light-grey-20;
