@@ -138,6 +138,19 @@
                 <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
             </div>
         </sly>
+		<sly data-sly-test="${layout.type == 'footer'}">
+            <div class="top-footer-section">
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+                </div>
+            </div>
+        </sly>
     </sly>
     <sly data-sly-test="${layout.noc == '4'}">
         <sly data-sly-test="${layout.type == '25:25:25:25'}">
