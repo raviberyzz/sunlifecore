@@ -3,23 +3,36 @@ package ca.sunlife.web.cms.core.models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.jcr.RangeIterator;
+import javax.jcr.RepositoryException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.*;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.adobe.cq.wcm.core.components.internal.models.v1.NavigationImpl;
 import com.adobe.cq.wcm.core.components.internal.models.v1.NavigationItemImpl;
-import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.adobe.cq.wcm.core.components.internal.models.v2.PageImpl;
+import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
@@ -29,6 +42,9 @@ import com.day.cq.wcm.api.designer.Style;
 import com.day.cq.wcm.msm.api.LiveRelationship;
 import com.day.cq.wcm.msm.api.LiveRelationshipManager;
 
+import ca.sunlife.web.cms.core.services.SiteConfigService;
+
+
 /**
  * The Class LeftNavigationModal.
  */
@@ -36,6 +52,9 @@ import com.day.cq.wcm.msm.api.LiveRelationshipManager;
 public class LeftNavigationModal extends NavigationImpl   {
 	
     public static final String RESOURCE_TYPE = "sunlife/core/components/content/left-navigation";
+    
+    /** The Constant LOGGER. */
+	private static final Logger log = LoggerFactory.getLogger(LeftNavigationModal.class);
 
     @Self
     private SlingHttpServletRequest request;
@@ -60,25 +79,81 @@ public class LeftNavigationModal extends NavigationImpl   {
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     private String accessibilityLabel;
+    
+    
+    /** The config service. */
+	@Inject
+	private SiteConfigService configService;
 
     private int structureDepth;
     private String navigationRootPage;
     private List<NavigationItem> items;
     private int structureStart;
+    private boolean skipNavigationRoot;
+    
+    /* list to capture the items with overview */
+    
+    List<NavigationItem> updatedList = new ArrayList();
+    
+    /**
+	 * Gets the navigation list.
+	 *
+	 * @return the navigation list
+	 */
+    public List<NavigationItem> getUpdatedList() {
+		return updatedList;
+	}
+
+    /**
+	 * Sets the navigation list.
+	 *
+	 * @param updatedlist
+	 *            the list to be displayed
+	 */
+	public void setUpdatedList(List<NavigationItem> updatedList) {
+		this.updatedList = updatedList;
+	}
 
     @PostConstruct
     private void initModel() {
     	
     	/* As per sunlife requirements leftnavigation should be autopopulated and it should not be read from dialog
     	  So the value of structuredepth, Navigation root page and structure start is hardcoded in the code  */
+    	  
+        	   
+           	int pageDepth = currentPage.getDepth();
+           	int m = pageDepth - 6;
+           	Page page = currentPage.getParent(m);
+           	structureDepth = 2;
+            navigationRootPage = page.getPath();
+            structureStart = 0;              
+            updatedList = processNavigationList(getItems());
+               
+    }
+        
+    /* Method to iterate the navigation results and add the overview to the pages at each level  */
+    
+    public List<NavigationItem> processNavigationList(List<NavigationItem> navigationItems) {
     	
-    	int pageDepth = currentPage.getDepth();
-    	int m = pageDepth - 6;
-    	Page page = currentPage.getParent(m);
-    	structureDepth = 2;
-        navigationRootPage = page.getPath();
-        structureStart = 0;
-       
+    	String title = null;
+		try {
+			title = configService.getConfigValues("navigationOverview", currentPage.getPath());
+		} catch (Exception e) {
+			log.error("Error :: init method of Left Navigation Model :: {}", e);
+		}
+    	
+    	Page parentPage;    
+    	List<NavigationItem> children1 = new ArrayList();    	
+     	for( NavigationItem navigationItem : navigationItems ) {     		
+    		
+    		if(navigationItem.getChildren().size() != 0) {    	
+    		parentPage = navigationItem.getPage();
+    		LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, false, request, navigationItem.getLevel()+1, children1, title);
+    		navigationItem.getChildren().add(0, leftItemImpl);
+    		}
+    		processNavigationList(navigationItem.getChildren());
+    	}
+		return items;
     }
 
     @Override
@@ -155,6 +230,7 @@ public class LeftNavigationModal extends NavigationImpl   {
                 if (structureStart == 0) {
                     level = level + 1;
                 }
+                
                 pages.add(new NavigationItemImpl(page, isSelected, request, level, children));
             }
         }
