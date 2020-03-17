@@ -1,11 +1,12 @@
 <template data-sly-template.head="${ @ page, baseModel }"
           data-sly-use.headlibRenderer="headlibs.html"
           data-sly-use.headResources="head.resources.html">   
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>${baseModel.seoPageTitle @context = 'html'}</title>
     <meta data-sly-test.description="${baseModel.seoDescription @context = 'html'}" name="description" content="${description @context = 'unsafe'}"/>
     <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <sly data-sly-include="head.socialmedia.html"></sly>
     <sly data-sly-include="customheaderlibs.html"></sly>
     <sly data-sly-call="${headlibRenderer.headlibs @
