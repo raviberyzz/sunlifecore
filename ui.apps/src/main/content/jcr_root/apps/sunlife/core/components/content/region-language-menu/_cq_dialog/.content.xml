@@ -194,6 +194,13 @@
                                             name="subLinkSeparator"
                                             text="Do you want a separator after this link?"
                                             value="yes"/>
+										<subLinkHighlight
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            fieldLabel="Do you want to highlight the Language?"
+                                            name="subLinkHighlight"
+                                            text="Do you want to highlight the Language?"
+                                            value="yes"/>
                                     </items>
                                 </field>
                             </language>
