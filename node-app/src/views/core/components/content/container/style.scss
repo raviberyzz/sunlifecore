@@ -1569,6 +1569,13 @@ ul {
         @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
             /* mobile app styles for mobile start here */
             .mobileapp{
+                .col-sm-6{
+                    .image{
+                        .cmp-image__image{
+                            width: 150px;
+                        }
+                    }
+                }
                 .text{
                     .cmp-text{
                         p:last-child{
