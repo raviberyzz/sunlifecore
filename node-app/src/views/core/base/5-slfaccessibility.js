@@ -65,7 +65,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#language-btn-container').keyup(function (event) {
+    $('#language-btn-container').keydown(function (event) {
         if (event.keyCode == 13) {
             if ($('#sun-language').hasClass('in')) {
                 $('#sun-language').removeClass('in');
@@ -91,6 +91,19 @@ $(document).ready(function () {
             }
         }
     });
+    $(".sunLanguageCrossBtn").keydown(function(e){
+      if (e.which == 13 ) {
+          e.preventDefault();
+           $("#sun-language").removeClass('in');
+            $('#language-btn').removeClass('lang-true');
+          	$('#language-btn').focus();
+      }
+  });
+    $("#sun-search .close-div .fa-remove.collapse-x").keydown(function(e){
+      if (e.which == 13 ) {
+          	$('#search-btn').focus();
+      }
+  });
     $("#sun-search .primary-blue-button-form .cmp-form-button").keydown(function(e){
       if (e.which == 9 ) {
           e.preventDefault();
@@ -130,8 +143,10 @@ $(document).ready(function () {
       }
   });
     // open the full header menu on focus for screen readers. 
-    $('.dropdown-toggle').on("focus", function(){
-      $('.dropdown').removeClass("open");
+    $('.navigation').children('a').on("focus", function(){
+      $('.navigation').removeClass("open");
+      $('.navigation').children('a').removeClass("box-class");
+      $('.navigation').removeClass("open");
       $(this).parent().addClass("open");
       $(this).addClass('box-class');
     });

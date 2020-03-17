@@ -6,6 +6,8 @@
         CUI = window.CUI,
         ARIA_LABEL_FIELD = "aria-label",
 		DATA_TITLE_FIELD = "data-title",
+		DATA_TARGET_FIELD = "data-target",
+		DATA_TOGGLE_FIELD = "data-toggle",
         RTE_LINK_DIALOG = "rtelinkdialog";
     if(CUI.rte.ui.cui.CuiDialogHelper.eaemExtended){
         return;
@@ -29,12 +31,19 @@
 
             var ariaLabelField = this.getFieldByType(ARIA_LABEL_FIELD);
 			var dataTitleField = this.getFieldByType(DATA_TITLE_FIELD);
+			var dataTargetField = this.getFieldByType(DATA_TARGET_FIELD);
+			var dataToggleField = this.getFieldByType(DATA_TOGGLE_FIELD);
 
             var ariaLabelVal = ariaLabelField.val();
 			var dataTitleVal = dataTitleField.val();
+			var dataTargetVal = dataTargetField.val();
+			var dataToggleVal = dataToggleField.val();
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
 			this.objToEdit.attributes["data-title"] = dataTitleVal;
+			this.objToEdit.attributes["data-target"] = dataTargetVal;
+			this.objToEdit.attributes["data-toggle"] = dataToggleVal;
+			
         },
         
         dlgFromModel: function() {
@@ -42,11 +51,20 @@
 
             var ariaValue = this.objToEdit.attributes['aria-label'];
 			var dataValue = this.objToEdit.attributes['data-title'];
+			var dataTargetValue = this.objToEdit.attributes['data-target'];
+			var dataToggleValue = this.objToEdit.attributes['data-toggle'];
+			
 
             var ariaSelect = this.$rteDialog.find("[data-type='aria-label']")[0];
 			var dataSelect = this.$rteDialog.find("[data-type='data-title']")[0];
+			var dataTargetSelect = this.$rteDialog.find("[data-type='data-target']")[0];
+			var dataToggleSelect = this.$rteDialog.find("[data-type='data-toggle']")[0];
+			
 			ariaSelect.value=ariaValue?ariaValue:'';
 			dataSelect.value=dataValue?dataValue:'';
+			dataTargetSelect.value=dataTargetValue?dataTargetValue:'';
+			dataToggleSelect.value=dataToggleValue?dataToggleValue:'';
+			
 			
         }
     });
@@ -82,7 +100,17 @@
 					"<div class='rte-dialog-columnContainer'>"+
             		"<div class='rte-dialog-column'>"+
                     "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''></label> </div></div>";
+            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-title' placeholder='data title' data-invalid='false' value=''></label> </div></div>"+
+					"<div class='rte-dialog-columnContainer'>"+
+            		"<div class='rte-dialog-column'>"+
+                    "<label>"+ 
+            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-target' placeholder='data target' data-target-invalid='false' value=''></label> </div></div>"+
+					"<div class='rte-dialog-columnContainer'>"+
+            		"<div class='rte-dialog-column'>"+
+                    "<label>"+ 
+            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''></label> </div></div>";
+
+
 
                      return html;
 

@@ -78,7 +78,11 @@
                                                             <side-arrow
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="view-all-category"
-                                                                text="Side Arrow"/>															
+                                                                text="Side Arrow"/>		
+                                                            <blue-chevron-arrow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="blue-chevron-arrow"
+                                                                text="Blue Chevron"/>    													
                                                             <pdf-link
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="pdf-link"
@@ -95,14 +99,22 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="yellow-colored-font"
                                                                 text="Yellow Font"/>
-                                                             <tool-tip
+                                                            <tool-tip
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="tool-tip-box"
                                                                 text="Tool Tip"/>
 															<dotted-bottom-border
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="border-bottom-dotted"
-                                                                text="Dotted bottom border"/>																
+                                                                text="Dotted bottom border"/>	
+															<blue-font
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="blue-font"
+                                                                text="Blue Font"/>
+															<white-font
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="white-font"
+                                                                text="White Font"/>	
                                                         </styles>
                                                     </styles>
                                                     <format

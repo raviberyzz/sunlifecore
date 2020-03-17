@@ -114,6 +114,20 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
+                        <articleThumbnailImage
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldDescription="Select Article Featured Thumbnail Image"
+                            fieldLabel="Article Thumbnail Image"
+                            filter="hierarchy"
+                            listOrder="8"
+                            required="on"
+                            metaType="reference"
+                            name="articleThumbnailImage"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
                         <articleMainDescription
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"

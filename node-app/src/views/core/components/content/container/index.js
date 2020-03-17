@@ -141,6 +141,8 @@ $(document).ready(function () {
 	function cta_padding_fix() {
 		if (($(window).width() > 767)) {
 			if ($('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').hasClass('no-padding')) {
+				
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').children().children().css('padding', '');
 			}
 			else {
 				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').children().children().css('padding', ' 0px 10px 0px 10px');

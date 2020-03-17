@@ -264,6 +264,12 @@ $(document).ready(function () {
 
     //For legal text Height
     $('.right-navigation-wrapper form .legal-text').parent().css({'text-size':'14px','line-height':'18px'});
+
+    if ($('.right-navigation-wrapper .cmp-container').children().first().hasClass('light-orange')) {
+
+        $('.right-navigation-wrapper .cmp-container').children().first().css('border-top','none');
+         $('.right-navigation-wrapper .cmp-container').children().first().css('border-bottom','none');
+    }
      
  });
  

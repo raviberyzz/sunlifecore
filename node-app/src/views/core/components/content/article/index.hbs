@@ -52,15 +52,28 @@
     {{/each}}
 </div>
 <!-- Related articles and Editorial-related-articles end  -->
-
+<div style="border:2px solid black"></div>
 <!-- Article listing and pagination start -->
-<div class="row">
+<div class="row article-lists">
     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
         <ul>
             {{#each article-lists}}
             <li>{{{this}}}</li>
             {{/each}}
         </ul>
+        <!--pagination starts here -->
+       {{>core-components-content-pagination}} 
+         <!--pagination ends here -->
     </div>
 </div>
 <!-- Article listing and pagination end -->
+
+<!-- lists in cta component Featured content list start -->
+<div class='articleList'>
+    <ul class='dotted'>
+        {{#each featured-content-list}}
+        <li>{{{this}}}</li>
+        {{/each}}
+    </ul>
+</div>
+<!-- lists in cta component Featured content list end -->
