@@ -438,7 +438,7 @@ ul {
 .icon-text-list{
     .mega-menu-icon-wrapper{
         .icon-parent{
-            margin-right: 15px;
+            margin-right: 25px;
             float:left;
             margin-bottom:0;
             .icon-style{
@@ -638,7 +638,9 @@ ul {
                 float: none;
                 margin-bottom: 5px;
             }
-
+            .icon-texts{
+                text-align: center;
+            }
         }
     }
     /*icon-text-list mobile ends here*/
