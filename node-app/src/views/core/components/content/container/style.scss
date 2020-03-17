@@ -1125,8 +1125,8 @@ ul {
                            p:nth-child(n+3){
                                border-top:2px dotted $light-grey-color;
                            }
-                           p{
-                               padding-top:5px;
+                           *:first-child{
+                               margin-top:24px;
                            }
                        }
                    }

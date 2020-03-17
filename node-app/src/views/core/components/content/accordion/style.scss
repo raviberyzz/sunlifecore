@@ -98,7 +98,16 @@
         }
     }
 }
-@media (max-width: 767px /*$mobile-screen-max*/){
+
+.expand-collapse{
+    .cmp-accordion__item {
+        .cmp-accordion__header{
+          min-height: 56px!important;
+        }
+
+    }
+}
+@media (max-width:$mobile-screen-max){
     .accordion-container {
         .cmp-accordion__item {
             .cmp-accordion__header{
@@ -128,6 +137,21 @@
         .cmp-accordion__header{
             .cmp-accordion__button{
                 transform: translateY(0%);
+            }
+        }
+    }
+}
+
+@media(min-width:$tab-screen-min){
+    .expand-collapse{
+        .cmp-accordion__item {
+            .cmp-accordion__header{
+                display:flex;
+            }
+            .cmp-accordion__button.vertical-middle-align{
+                position:static;
+                top:0;
+                transform:translateY(0);
             }
         }
     }
