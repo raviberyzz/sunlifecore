@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	$('.social-link-icon-wrapper .fa-facebook-square').click(shareFB);
-    $('.social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
-    $('.social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
+	$('.breadcrumb .social-link-icon-wrapper .fa-facebook-square').click(shareFB);
+    $('.breadcrumb .social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);
+    $('.breadcrumb .social-link-icon-wrapper .fa-linkedin-square').click(shareLinkedIn);
 /* for height fixing of multiple links */
 if('.breadcrumb'){
     $('.breadcrumb .social-link-icon-wrapper').addClass('vertical-middle-align');
