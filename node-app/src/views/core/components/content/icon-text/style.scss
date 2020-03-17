@@ -17,10 +17,16 @@
 }
 .right-nav-icon-wrapper{
     text-align: center;
+    .icon-parent{
+        a[href] {
+            pointer-events:visible;
+        }
+    }
     .icon-style {
         font-size: 2.25rem;
         color: $medium-blue-color;
         margin-top: 20px;
+        pointer-events: none;
         &:hover {
             text-decoration: none;
             pointer-events: none;
