@@ -22,7 +22,7 @@ ul {
         }
     }
 }
-@media (max-width: 767px){
+@media (max-width:$mobile-screen-max){
     .col-sm-4:not(:nth-last-of-type(-n+1)) {
         .blue-icon-yellow-background {
             margin-bottom: 62px
@@ -79,6 +79,39 @@ ul {
 }
 
 // content block with icon end
+@media (min-width: $tab-screen-min) {
+    .col-sm-4{
+        .blue-icon-yellow-background{
+            .cmp-container{
+                .overview-highlights-wrapper{
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    flex-direction: column;
+                    -webkit-box-flex: 1;
+                    flex-grow: 1;
+                    display: flex;
+                }
+                .button-class{
+                    padding: 6px 16px;
+                }
+            } 
+        }
+    }
+    /*.col-sm-6{
+        .blue-icon-yellow-background{
+            .cmp-container{
+                .cta-content-icon-wrapper{
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    flex-direction: column;
+                    -webkit-box-flex: 1;
+                    flex-grow: 1;
+                    display: flex;
+                }
+            } 
+        }
+    }*/
+}
 .content-highlight {
     background-color : $light-grey-20;
     padding: 24px 16px;
@@ -184,7 +217,7 @@ ul {
         }
         .icon-texts {
             .button-class{
-                padding: 6px;
+                padding: 6px 16px;
             }
         }
     }
@@ -680,6 +713,11 @@ ul {
       }
     }
     .col-sm-6:nth-child(1) {
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom:62px;    
+        }
+    }
+    .col-sm-4:not(:last-child) {
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
             margin-bottom:62px;    
         }
