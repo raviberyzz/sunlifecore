@@ -35,10 +35,7 @@
        width: 80%;
     }
 }
-.page-separator {
-    margin-left: -15px;
-    margin-right: -15px;
-    :after {
+.page-separator:after {
         display: block;
         content: ' ';
         height: 2px;
@@ -46,7 +43,6 @@
         background: $light-grey-20;
         margin: 0 auto;
       }
-}
 
 @media (min-width: 768px) {
     .page-separator:after {
