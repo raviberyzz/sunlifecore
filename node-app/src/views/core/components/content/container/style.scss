@@ -6,18 +6,31 @@ ul {
     padding-bottom: 24px;
 }
 // content block with icon start
-
 //overview highlights triple cta css for border and spacing
+
+@media (min-width:$tab-screen-min){
+    .col-sm-4 {
+        .overview-highlights-wrapper {
+            .articleList{
+                margin-top: -25px;
+                border-right: 2px solid #9A9A9A;
+            }
+        }
+    }
+}
 .col-sm-4 {
     .overview-highlights-wrapper {
         .icon-texts{
-            p:not(:nth-last-of-type(-n+2)) {
+            li:not(:nth-last-of-type(-n+1)) {
                 border-bottom: 2px dotted #9A9A9A;
                 margin-left: 5px;
                 margin-right: 5px;
             }
-            h3:first-child {
-                padding-bottom: 32px;
+            li {
+                padding: 10px 0px;
+            }
+            h1,h2,h3,h4,h5,h6:first-child {
+                padding-bottom: 22px;
             }
         }
     }
