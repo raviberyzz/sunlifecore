@@ -35,3 +35,17 @@
        width: 80%;
     }
 }
+.page-separator:after {
+        display: block;
+        content: ' ';
+        height: 2px;
+        width: 100%;
+        background: $light-grey-20;
+        margin: 0 auto;
+      }
+
+@media (min-width: 768px) {
+    .page-separator:after {
+        width: 75%;
+    }
+  }

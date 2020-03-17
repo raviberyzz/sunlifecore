@@ -79,3 +79,9 @@
     margin-top: 12%;
   }
 }
+
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
+  .title-wrapper-yellow-grey-rings{
+    margin-top: 6%;
+  }
+}

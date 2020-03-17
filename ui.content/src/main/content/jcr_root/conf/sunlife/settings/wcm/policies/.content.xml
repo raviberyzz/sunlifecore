@@ -1151,6 +1151,11 @@
 												cq:styleId="1577973868299"
 												cq:styleLabel="Grey - Left"
 												jcr:primaryType="nt:unstructured"/>
+											<item4
+												cq:styleClasses="page-separator"
+												cq:styleId="1584482989271"
+												cq:styleLabel="Page separator"
+												jcr:primaryType="nt:unstructured"/>	
 										</cq:styles>
 									</item0>									
 								</cq:styleGroups>                                

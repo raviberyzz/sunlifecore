@@ -18,6 +18,19 @@ $(document).ready(function () {
         modalWidth();
       }
     });
+    function slfMmodalWidth(){
+      var winWidths=$(window).width();
+      $(".slf-modal").width(winWidths);
+      $(".slf-modal").addClass('horizontal-middle-align');
+    }
+    if ($(window).width() > 1024) {
+      slfMmodalWidth();
+    }
+    $(window).resize(function() {
+      if ($(window).width() > 1024) {
+        slfMmodalWidth();
+      }
+    });
     $('.icon-reg').html('');
     var a1=$('#userIdDiv').html();
     if(a1 && a1.indexOf("&nbsp;") != -1){

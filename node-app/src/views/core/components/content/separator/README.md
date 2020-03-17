@@ -3,7 +3,7 @@
 JSON Format
 ```
 {
-    "separator-wrapper" : "grey-horizontal-separator"
+    "separator-wrapper" : "page-separator"
 }
 ```
 

@@ -45,6 +45,14 @@ public interface SubLinkModel {
 	 */
 	@Inject
 	String getSubLinkSeparator();
+	
+	/**
+	 * Gets the sub link highlight.
+	 *
+	 * @return the sub link highlight
+	 */
+	@Inject
+	String getSubLinkHighlight();
 
 	/**
 	 * Gets the selected.

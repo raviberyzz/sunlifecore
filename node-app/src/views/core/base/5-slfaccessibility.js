@@ -143,8 +143,10 @@ $(document).ready(function () {
       }
   });
     // open the full header menu on focus for screen readers. 
-    $('.dropdown-toggle').on("focus", function(){
-      $('.dropdown').removeClass("open");
+    $('.navigation').children('a').on("focus", function(){
+      $('.navigation').removeClass("open");
+      $('.navigation').children('a').removeClass("box-class");
+      $('.navigation').removeClass("open");
       $(this).parent().addClass("open");
       $(this).addClass('box-class');
     });
