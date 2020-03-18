@@ -1613,8 +1613,9 @@ ul {
             }
             /* mobile app styles for mobile start here */
         }
-        //button alignment and spacing
-        @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max){
+        //button alignment and spacin
+        //for smaller ipad
+        @media (min-width: $tab-screen-min) and (max-width:1023px){
             .col-sm-8 {
                 .row>div:nth-child(2) {
                     .cmp-image{
@@ -1623,9 +1624,11 @@ ul {
                 }
             }
         }
-        @media (min-width: $desktop-screen-min) and (max-width:$desktop-screen-max){
+        //for ipad pro + desktop
+        @media (min-width: $tab-screen-max){
             .col-sm-8 {
                 .row>div:nth-child(2) {
+                    //for ipad pro + desktop
                     .cmp-image{
                         margin: 0 -65px;
                     }
