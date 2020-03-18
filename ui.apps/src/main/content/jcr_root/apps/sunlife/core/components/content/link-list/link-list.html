@@ -7,7 +7,7 @@
 			<div class="collapse list-div">				
 				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
 					<li>
-					   <a lang ="${links.langCode}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+					   <a lang ="${links.langCode}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName @ context='html'}</a>
 					 </li>
 				  </ul>				
 			</div>
