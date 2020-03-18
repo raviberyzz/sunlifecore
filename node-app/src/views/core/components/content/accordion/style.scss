@@ -3,13 +3,14 @@
     .cmp-accordion__item{
         margin-bottom:5px;
         background-color:$light-cool-blue-color;
-        padding-left:16px;
+        padding:10px 16px 10px 16px;
+        min-height:56px;
         cursor:pointer;
         .cmp-accordion__header{
             font-size:1rem;
-            height:56px;
+            // height:56px;
             padding-right:32px;
-            margin:0;
+            margin-top:10px;
             font-weight:700;
             color:$dark-grey-color;
             .accordion-arrow{
@@ -25,6 +26,7 @@
                 border-width:0;
                 text-align:left;
                 line-height:18px;
+                transform:translateY(0);
                 .cmp-accordion__icon{
                     &[aria-expanded="false"] {
                         &::before {
@@ -69,9 +71,11 @@
     @extend .accordion-container;
     .cmp-accordion__item{
         margin-bottom:10px;
-        //padding: 24px 0px;
+        padding: 10px 16px 10px 16px;
+        min-height:56px;
         .cmp-accordion__header{
             color:$medium-blue-color;
+            margin-top:10px;
             .cmp-accordion__button{
                 .cmp-accordion__icon{
                     &[aria-expanded="false"] {
@@ -98,12 +102,14 @@
         }
     }
 }
-@media (max-width: 767px /*$mobile-screen-max*/){
+
+
+@media (max-width:$mobile-screen-max){
     .accordion-container {
         .cmp-accordion__item {
             .cmp-accordion__header{
                  height:auto;
-                 min-height: 56px;
+                //  min-height: 56px;
                  display: inline-flex;
             }
             /*.cmp-accordion__panel{
@@ -128,6 +134,21 @@
         .cmp-accordion__header{
             .cmp-accordion__button{
                 transform: translateY(0%);
+            }
+        }
+    }
+}
+
+@media(min-width:$tab-screen-min){
+    .expand-collapse{
+        .cmp-accordion__item {
+            .cmp-accordion__header{
+                display:flex;
+            }
+            .cmp-accordion__button.vertical-middle-align{
+                position:static;
+                top:0;
+                transform:translateY(0);
             }
         }
     }

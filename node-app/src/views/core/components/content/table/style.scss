@@ -5,6 +5,27 @@
 }
 table{
   width: 100%;
+  tbody{
+    tr{
+      td{
+        ul {
+          margin-left: 2em;
+          li{
+            text-align:left;
+          }
+          li::before {
+              content: "\2022";
+              color: $medium-yellow-background;
+              font-weight: bold;
+              display: inline-block;
+              width: 1rem;
+              // padding-left: 16px;
+              margin-left: -1em;
+          }
+       }
+      }
+    }
+  }
 }
 // data table styles
 .cmp-table-data-content {

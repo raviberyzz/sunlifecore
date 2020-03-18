@@ -242,6 +242,16 @@
         }
     }
 }
+//style for cta form input form alignment
+@media (max-width: $mobile-screen-max){
+    .cta-form-wrapper{
+        .cmp-form-text{
+            input{
+                width: 100%;
+            }
+        } 
+    } 
+}
 @media (min-width: $desktop-screen-min)
 {
 	.cta-form-wrapper{
