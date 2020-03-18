@@ -1037,9 +1037,12 @@ ul {
 		line-height: 2em;
 		background: linear-gradient(#FFCB05, #EAAB00);
 		border-radius: 50%;
-	}
+    }
+    .icon-parent a:hover{
+        color: $white-shade;
+    }
 	.icon-style {
-		color: #fff;
+		color: $white-shade;
     }
 
 	.icon-texts {
@@ -1572,7 +1575,7 @@ ul {
                 .col-sm-6{
                     .image{
                         .cmp-image__image{
-                            width: 150px;
+                            width: 95%;
                         }
                     }
                 }
@@ -1599,16 +1602,38 @@ ul {
                     .row>div:nth-child(1) {
                         float: left;
                         padding:0px;
+                        width: 50%;
                     }
                     .row>div:nth-child(2) {
                         float: right;
                         padding:0px;
+                        width: 50%;
                     }
                 }
             }
             /* mobile app styles for mobile start here */
         }
-             /****** styles for mobile end here ********/
+        //button alignment and spacing
+        @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max){
+            .col-sm-8 {
+                .row>div:nth-child(2) {
+                    .cmp-image{
+                        margin: 0 -20px;
+                    }
+                }
+            }
+        }
+        @media (min-width: $desktop-screen-min) and (max-width:$desktop-screen-max){
+            .col-sm-8 {
+                .row>div:nth-child(2) {
+                    .cmp-image{
+                        margin: 0 -65px;
+                    }
+                }
+            }
+        }
+        
+        /****** styles for mobile end here ********/
 
 
 
