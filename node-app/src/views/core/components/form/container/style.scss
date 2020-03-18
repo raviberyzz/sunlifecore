@@ -172,8 +172,16 @@
        margin-bottom:0px;
        padding: 0 50px;
    }
+   .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
+        width: 80% !important;
+        float: none !important;
+        padding: 0 30px;
+        display: inline-block;
+    }
+    textarea {
+        width:100%;
+    }
 } 
-
 /*Thank You wrapper Ends Here*/
 @media (max-width: $mobile-screen-max) {
 .subscribe-popup-form-wrapper{
@@ -191,6 +199,9 @@
                 width:100% !important;
                  padding: 0;
                  margin-bottom: 16px;
+            }
+            .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
+                width: 100% !important;
             }
         } 
     }
@@ -238,6 +249,9 @@
                 width:100% !important;
                 padding: 0;
                 margin-bottom: 16px;
+            }
+            .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
+                width: 100% !important;
             }
         }
     }
