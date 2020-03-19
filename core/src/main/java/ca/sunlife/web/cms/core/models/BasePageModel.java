@@ -819,6 +819,7 @@ public class BasePageModel {
 		String releaseId = null;
 		try {
 			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+			final String domain = configService.getConfigValues("domain", pagePath);
 			if (request.getRequestPathInfo().getSelectors().length > 0) {
 				releaseId = request.getRequestPathInfo().getSelectors()[0];
 				logger.debug("Selector fetched :: releaseId :: {}", releaseId);
@@ -826,7 +827,7 @@ public class BasePageModel {
 				title = newsDetails.getRelease().getHeadline();
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
-				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "")
+				canonicalUrl = domain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "")
 																																		.toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
