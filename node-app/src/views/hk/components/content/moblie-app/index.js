@@ -305,7 +305,8 @@ $(document).ready(function(){
         key: "publish",
         value: function publish() {
           if (Object.keys(this.options).length === 0) {
-            throw new Error('No options detected. Please consult documentation.');
+             //throw new Error('No options detected. Please consult documentation.');
+             return true;
           }
     
           if (_bakery.default.baked) {
@@ -472,4 +473,8 @@ $(document).ready(function(){
     
     },{"./bakery.js":1,"./detector.js":2,"./optionparser.js":4}]},{},[3]);
     /* existing js ends here*/
+
+    $(".close-smart").click(function(){
+        $(".smartbanner").addClass("app-hide");
+    });
 });
