@@ -11,8 +11,9 @@
 <ul data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
    <li>
       <div class="icon-parent">
-         <a class="icon-style fa ${iconsText.icon}" href="${iconsText.link @ extension = 'html'}" target="${iconsText.target}" tabindex="0">
-         <span data-sly-test="${iconsText.srText}" class="sr-only">${iconsText.srText}</span></a>
+         <a class="icon-style fa ${iconsText.icon}" href="${iconsText.link @context = 'html',  extension = 'html'}" target="${iconsText.target}" tabindex="${iconsText.link ? '0' : '-1'}">
+         	<span data-sly-test="${iconsText.srText}" class="sr-only">${iconsText.srText}</span>
+         </a>
       </div>
       <div class="icon-texts">
          ${iconsText.text @context ='html'}
