@@ -55,6 +55,9 @@
         }
     }
 }
+.app-hide{
+    display:none;
+}
 @media (min-width:$tab-screen-min){
     .smartbanner{
         display:none;
