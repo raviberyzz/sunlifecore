@@ -339,7 +339,12 @@ ul {
                 font-size: 1.125rem;
                 font-weight:700;
             }
-
+            ul{
+                margin-left: 1em !important;
+                li{
+                    text-align: left !important;
+                }
+            }
         }
     }
 }
