@@ -563,6 +563,7 @@ public class BasePageModel {
 				customMetadata.put(OG_IMAGE, domain + socialMediaImage);
 				customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
 			}
+			customMetadata.put(TWITTER_CARD, "summary_large_image");
 			logger.debug("metadata :: {}", customMetadata);
 
 			// Sets alternate URLs
@@ -593,7 +594,6 @@ public class BasePageModel {
 
 			// Sets UDO tags specific to advisor pages
 			if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ADVISOR_CONSTANT.equals(advancedPageType)) {
-				customMetadata.put(TWITTER_CARD, "summary_large_image");
 				setUDOTagsForAdvisorPages();
 			}
 
@@ -827,7 +827,7 @@ public class BasePageModel {
 				description = "";
 				socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0, Math.min(newsDetails.getRelease().getSummary().length(), 200));
 				canonicalUrl = shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "")
-																																		.toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId;
+																																		.toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
 		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException | LoginException | RepositoryException e) {
