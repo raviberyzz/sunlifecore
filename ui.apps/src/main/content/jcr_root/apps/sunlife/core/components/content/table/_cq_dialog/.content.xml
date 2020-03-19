@@ -24,17 +24,17 @@
                         editorType="table"
                         name="./tableData"
                         useFixedInlineToolbar="{Boolean}true">
+                        <htmlRules jcr:primaryType="nt:unstructured">
+                            <docType jcr:primaryType="nt:unstructured">
+                                <typeConfig jcr:primaryType="nt:unstructured"
+                                        useSemanticMarkup="{Boolean}true">
+                                    <semanticMarkupMap
+                                            b="strong"
+                                            i="em"/>
+                                </typeConfig>
+                            </docType>
+                        </htmlRules>
                         <rtePlugins jcr:primaryType="nt:unstructured">
-                            <htmlRules jcr:primaryType="nt:unstructured">
-                                <docType jcr:primaryType="nt:unstructured">
-                                    <typeConfig jcr:primaryType="nt:unstructured"
-                                            useSemanticMarkup="{Boolean}true">
-                                        <semanticMarkupMap
-                                                b="strong"
-                                                i="em"/>
-                                    </typeConfig>
-                                </docType>
-                            </htmlRules>
                             <styles
                                 jcr:primaryType="nt:unstructured"
                                 features="*">
@@ -134,16 +134,6 @@
                                 features="*"/>
                         </rtePlugins>
                         <uiSettings jcr:primaryType="nt:unstructured">
-                            <htmlRules jcr:primaryType="nt:unstructured">
-                                <docType jcr:primaryType="nt:unstructured">
-                                    <typeConfig jcr:primaryType="nt:unstructured"
-                                            useSemanticMarkup="{Boolean}true">
-                                        <semanticMarkupMap
-                                                b="strong"
-                                                i="em"/>
-                                    </typeConfig>
-                                </docType>
-                            </htmlRules>
                             <cui jcr:primaryType="nt:unstructured">
                                 <dialogFullScreen
                                     jcr:primaryType="nt:unstructured"

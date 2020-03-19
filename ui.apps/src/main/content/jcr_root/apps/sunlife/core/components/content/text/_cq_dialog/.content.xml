@@ -34,6 +34,16 @@
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                 name="./text"
                                                 useFixedInlineToolbar="{Boolean}true">
+                                                <htmlRules jcr:primaryType="nt:unstructured">
+                                                    <docType jcr:primaryType="nt:unstructured">
+                                                            <typeConfig jcr:primaryType="nt:unstructured"
+                                                                useSemanticMarkup="{Boolean}true">
+                                                            <semanticMarkupMap
+                                                                    b="strong"
+                                                                    i="em"/>
+                                                        </typeConfig>
+                                                    </docType>
+                                                </htmlRules>
                                                 <rtePlugins jcr:primaryType="nt:unstructured">
                                                     <styles
                                                         jcr:primaryType="nt:unstructured"
@@ -160,25 +170,8 @@
                                                     <justify
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
-                                                    <htmlRules jcr:primaryType="nt:unstructured">
-                                                        <docType jcr:primaryType="nt:unstructured">
-                                                            <typeConfig
-                                                                jcr:primaryType="nt:unstructured"
-                                                                useSemanticMarkup="{Boolean}true"/>
-                                                        </docType>
-                                                    </htmlRules>
                                                 </rtePlugins>
                                                 <uiSettings jcr:primaryType="nt:unstructured">
-                                                    <htmlRules jcr:primaryType="nt:unstructured">
-                                                        <docType jcr:primaryType="nt:unstructured">
-                                                            <typeConfig jcr:primaryType="nt:unstructured"
-                                                                    useSemanticMarkup="{Boolean}true">
-                                                                <semanticMarkupMap
-                                                                        b="strong"
-                                                                        i="em"/>
-                                                            </typeConfig>
-                                                        </docType>
-                                                    </htmlRules>
                                                     <cui jcr:primaryType="nt:unstructured">
                                                         <dialogFullScreen
                                                             jcr:primaryType="nt:unstructured"
