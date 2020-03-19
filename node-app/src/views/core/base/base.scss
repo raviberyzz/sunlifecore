@@ -427,9 +427,10 @@ ul {
     .container {
         max-width: 1064px;
         width: 100%;
-        position: relative;
+      /*  position: relative;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); */
+        margin:0 auto;
         padding: 0;
         width: 100%;
     }
@@ -439,9 +440,10 @@ ul {
     .container {
         max-width: $desktop-screen-min;
         width: 100%;
-        position: relative;
+      /*  position: relative;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); */
+        margin:0 auto;
         padding: 0;
         width: 100%;
     }
