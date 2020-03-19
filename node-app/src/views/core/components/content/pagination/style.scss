@@ -1,5 +1,10 @@
 @import '../../../base/core'; 
-@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
+.pagination-component{
+    .pagination-list>.active>a{
+        z-index: 1 !important;
+    }
+}
+@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){auto
     .pagination-component{
         display: block;
         .pagination-list {
@@ -19,7 +24,7 @@
             .next{
                 display:inline-block;
                 margin-left: 0px;
-                width: 50%;
+                width: auto;
             }
             .previous{
                 display:inline-block;
@@ -102,11 +107,11 @@
                     display:none;
                 }
             }
-            width:32px;
+            width:auto;
             height: 32px;
         }
         .next{
-            width:32px;
+            width:auto;
             height: 32px;
             a{
                 padding-left:48px;
