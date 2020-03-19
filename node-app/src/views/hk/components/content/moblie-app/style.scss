@@ -1,0 +1,65 @@
+@import '../../../base/core';
+.smartbanner{
+    display:block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: auto;
+    background: $light-orange-color;
+    padding:24px 16px 0 16px;
+    .app-wrapper{
+        font-size:1rem;
+        font-weight:400;
+        width:100%;
+        display:inline-block;
+        .captureClick{
+            float:left;
+            width:95%;
+            .smartbanner__icon{
+                float:left;
+                background-color: transparent;
+                box-shadow: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 15px;
+                background-image: url(https://www.sunlife.com.hk/static/hk/About%20Us/Tools%20&%20Resources/MySunLife%20App/My-Sun-Life-App-Icon-1024.png);
+                background-size: 50px 50px;
+            }
+        }
+        .smartbanner__info{
+            width:81%;
+            float:left;
+            padding-left:6px;
+            align-items: center;
+            font-size:1rem;
+            font-weight:400;
+            padding-top:2px;
+            div[class^="smartbanner_"]{
+                line-height:1.25rem;
+            }
+        }
+        .smartbanner__exit{
+            float:right;
+        }
+    }
+    .java-button{
+        margin-top:-8px;
+        .smartbanner__button{
+            padding-left:56px;
+            .smartbanner__button__label{
+                font-size:1rem;
+                font-weight:700;
+            }
+        }
+    }
+}
+.app-hide{
+    display:none;
+}
+@media (min-width:$tab-screen-min){
+    .smartbanner{
+        display:none;
+    }
+}

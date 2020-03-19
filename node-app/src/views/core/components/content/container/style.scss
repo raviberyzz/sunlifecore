@@ -14,6 +14,7 @@ ul {
             .article-list-container{
                 margin-top: -25px;
                 border-right: 2px solid $medium-grey-background;
+                min-height: 250px;
             }
         }
     }
@@ -33,9 +34,13 @@ ul {
         }
         .overview-highlights-wrapper {
             .icon-texts{
+                li{
+                    margin-left: -25px;
+                    margin-right: 5px;
+                }
                 li:not(:nth-last-of-type(-n+1)) {
                     border-bottom: 2px dotted $medium-grey-background;
-                    margin-left: 5px;
+                    margin-left: -32px;
                     margin-right: 5px;
                 }
                 li {
@@ -339,7 +344,12 @@ ul {
                 font-size: 1.125rem;
                 font-weight:700;
             }
-
+            ul{
+                margin-left: 1em !important;
+                li{
+                    text-align: left !important;
+                }
+            }
         }
     }
 }
@@ -1037,9 +1047,12 @@ ul {
 		line-height: 2em;
 		background: linear-gradient(#FFCB05, #EAAB00);
 		border-radius: 50%;
-	}
+    }
+    .icon-parent a:hover{
+        color: $white-shade;
+    }
 	.icon-style {
-		color: #fff;
+		color: $white-shade;
     }
 
 	.icon-texts {
@@ -1572,7 +1585,7 @@ ul {
                 .col-sm-6{
                     .image{
                         .cmp-image__image{
-                            width: 150px;
+                            width: 95%;
                         }
                     }
                 }
@@ -1599,16 +1612,41 @@ ul {
                     .row>div:nth-child(1) {
                         float: left;
                         padding:0px;
+                        width: 50%;
                     }
                     .row>div:nth-child(2) {
                         float: right;
                         padding:0px;
+                        width: 50%;
                     }
                 }
             }
             /* mobile app styles for mobile start here */
         }
-             /****** styles for mobile end here ********/
+        //button alignment and spacin
+        //for smaller ipad
+        @media (min-width: $tab-screen-min) and (max-width:1023px){
+            .col-sm-8 {
+                .row>div:nth-child(2) {
+                    .cmp-image{
+                        margin: 0 -20px;
+                    }
+                }
+            }
+        }
+        //for ipad pro + desktop
+        @media (min-width: $tab-screen-max){
+            .col-sm-8 {
+                .row>div:nth-child(2) {
+                    //for ipad pro + desktop
+                    .cmp-image{
+                        margin: 0 -65px;
+                    }
+                }
+            }
+        }
+        
+        /****** styles for mobile end here ********/
 
 
 
