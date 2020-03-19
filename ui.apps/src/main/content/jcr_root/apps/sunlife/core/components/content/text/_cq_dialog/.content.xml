@@ -39,7 +39,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*">
                                                         <styles jcr:primaryType="nt:unstructured">
-                                                        	<heading-2
+                                                            <heading-2
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="heading-2"
                                                                 text="Heading 2"/>
@@ -58,7 +58,7 @@
                                                             <heading-6
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="heading-6"
-                                                                text="Heading 6"/>  
+                                                                text="Heading 6"/>
                                                             <text-accessibility
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="sr-only"
@@ -78,11 +78,11 @@
                                                             <side-arrow
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="view-all-category"
-                                                                text="Side Arrow"/>		
+                                                                text="Side Arrow"/>
                                                             <blue-chevron-arrow
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="blue-chevron-arrow"
-                                                                text="Blue Chevron"/>    													
+                                                                text="Blue Chevron"/>
                                                             <pdf-link
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="pdf-link"
@@ -103,18 +103,18 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="tool-tip-box"
                                                                 text="Tool Tip"/>
-															<dotted-bottom-border
+                                                            <dotted-bottom-border
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="border-bottom-dotted"
-                                                                text="Dotted bottom border"/>	
-															<blue-font
+                                                                text="Dotted bottom border"/>
+                                                            <blue-font
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="blue-font"
                                                                 text="Blue Font"/>
-															<white-font
+                                                            <white-font
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="white-font"
-                                                                text="White Font"/>	
+                                                                text="White Font"/>
                                                         </styles>
                                                     </styles>
                                                     <format
@@ -160,8 +160,25 @@
                                                     <justify
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
+                                                    <htmlRules jcr:primaryType="nt:unstructured">
+                                                        <docType jcr:primaryType="nt:unstructured">
+                                                            <typeConfig
+                                                                jcr:primaryType="nt:unstructured"
+                                                                useSemanticMarkup="{Boolean}true"/>
+                                                        </docType>
+                                                    </htmlRules>
                                                 </rtePlugins>
                                                 <uiSettings jcr:primaryType="nt:unstructured">
+                                                    <htmlRules jcr:primaryType="nt:unstructured">
+                                                        <docType jcr:primaryType="nt:unstructured">
+                                                            <typeConfig jcr:primaryType="nt:unstructured"
+                                                                    useSemanticMarkup="{Boolean}true">
+                                                                <semanticMarkupMap
+                                                                        b="strong"
+                                                                        i="em"/>
+                                                            </typeConfig>
+                                                        </docType>
+                                                    </htmlRules>
                                                     <cui jcr:primaryType="nt:unstructured">
                                                         <dialogFullScreen
                                                             jcr:primaryType="nt:unstructured"
@@ -172,9 +189,9 @@
                                                                     items="paraformat:getFormats:paraformat-pulldown"
                                                                     ref="paraformat"/>
                                                                 <styles
-																    jcr:primaryType="nt:unstructured"
-																    items="styles:getStyles:styles-pulldown"
-																    ref="styles"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    items="styles:getStyles:styles-pulldown"
+                                                                    ref="styles"/>
                                                             </popovers>
                                                         </dialogFullScreen>
                                                         <tableEditOptions
