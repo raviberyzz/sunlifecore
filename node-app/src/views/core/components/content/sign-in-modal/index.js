@@ -21,7 +21,7 @@ $(document).ready(function () {
     function slfMmodalWidth(){
       var winWidths=$(window).width();
       $(".slf-modal").width(winWidths);
-      $(".slf-modal").addClass('horizontal-middle-align');
+      //$(".slf-modal").addClass('horizontal-middle-align');
     }
     if ($(window).width() > 1024) {
       slfMmodalWidth();
@@ -29,7 +29,10 @@ $(document).ready(function () {
     $(window).resize(function() {
       if ($(window).width() > 1024) {
         slfMmodalWidth();
-      }
+      } else{
+        var winWidth = $(window).width();
+       $(".slf-modal").width(winWidth);
+    }
     });
     $('.icon-reg').html('');
     var a1=$('#userIdDiv').html();
