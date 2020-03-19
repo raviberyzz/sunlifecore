@@ -4,7 +4,7 @@
         z-index: 1 !important;
     }
 }
-@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){auto
+@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .pagination-component{
         display: block;
         .pagination-list {
