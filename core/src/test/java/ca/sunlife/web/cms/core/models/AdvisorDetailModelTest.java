@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ValueMap;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +41,9 @@ public class AdvisorDetailModelTest {
 
 	@Mock
 	private SlingHttpServletRequest request;
+	
+	@Mock
+	private SlingHttpServletResponse response;
 	
 	@Mock
 	private SiteConfigService configService;

@@ -3,16 +3,20 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.json.JSONException;
@@ -45,6 +49,9 @@ public class AdvisorDetailModel {
 	@Self
 	private SlingHttpServletRequest request;
 
+	@ScriptVariable
+	private SlingHttpServletResponse response;
+	
 	/** The AdvisorDetailService service. */
 	@Inject
 	private AdvisorDetailService advisorDetailService;
@@ -460,6 +467,25 @@ public class AdvisorDetailModel {
 		logger.debug("Exit :: init method of AdvisorDetailModel :: advisorData :: {}", advisorData);
 	}
 
+	/**
+	 * Validates advisor data
+	 */
+	public void validateAdvisorData() {
+		logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData :: ");
+		JSONObject inputJson = null;
+		String errorCode = null;
+		try {
+			inputJson = new JSONObject(advisorData);
+			errorCode = inputJson.getString(AdvisorDetailConstants.ERROR_CODE_CONSTANT);
+			if( null != errorCode && AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT.equals(errorCode) ) {
+				response.sendRedirect("/content/sunlife/external/ca/en/error/404");
+			}
+		} catch (IOException | JSONException e) {
+			logger.error("Error :: AdvisorDetailModel :: validateAdvisorData :: IOException :: {}", e);
+		}
+		logger.debug("Exit :: AdvisorDetailModel :: validateAdvisorData :: ");
+	}
+	
 	/**
 	 * Sets data for advisor map
 	 */
