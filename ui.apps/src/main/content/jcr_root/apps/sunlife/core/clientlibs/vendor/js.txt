@@ -1,5 +1,4 @@
 #base=js
 1-jquery-3.2.1.slim.js
-jquery-migrate.js
 2-bootstrap.js
 3-parsley.js
