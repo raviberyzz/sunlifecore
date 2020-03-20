@@ -1708,6 +1708,63 @@
                                 </cq:styleGroups>
                             </policy_formButton>
                         </button>
+                        <text jcr:primaryType="nt:unstructured">
+	                        <policy_text
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="form-text"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525201322"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_text>
+	                    </text>
+	                    <options jcr:primaryType="nt:unstructured">
+	                        <policy_options
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Form Options"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525284184"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_options>
+	                    </options>
+	                    <dropdown jcr:primaryType="nt:unstructured">
+	                        <policy_dropdown
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Form Dropdown"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525555983"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_dropdown>
+	                    </dropdown>
                     </form>
                 </components>
             </hk>
@@ -3355,6 +3412,63 @@
                                 </cq:styleGroups>
                             </policy_formButton>
                         </button>
+                        <text jcr:primaryType="nt:unstructured">
+	                        <policy_text
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="form-text"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525201322"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_text>
+	                    </text>
+	                    <options jcr:primaryType="nt:unstructured">
+	                        <policy_options
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Form Options"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525284184"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_options>
+	                    </options>
+	                    <dropdown jcr:primaryType="nt:unstructured">
+	                        <policy_dropdown
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Form Dropdown"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0 jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-element-full-width-wrapper"
+	                                            cq:styleId="1584525555983"
+	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                            </cq:styleGroups>
+	                        </policy_dropdown>
+	                    </dropdown>
                     </form>
                 </components>
             </id>
