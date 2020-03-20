@@ -396,7 +396,7 @@ ul {
     .cross-cta-wrapper {
         .mega-menu-icon-wrapper {
             .icon-texts {
-                text-align: -webkit-center;
+                text-align: -webkit-center !important;
                 a:first-child{
                     .button-class{
                         margin-top: 14px;
