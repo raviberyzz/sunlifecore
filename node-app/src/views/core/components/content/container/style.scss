@@ -391,7 +391,6 @@ ul {
         }
     }
 }
-
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
     .cross-cta-wrapper {
         .mega-menu-icon-wrapper {
@@ -410,6 +409,11 @@ ul {
                 .button-class {
                     margin-bottom: -8px;
                     display: list-item;
+                }
+                a:not(:first-child) {
+                    .button-class{
+                        margin-left: 0;
+                    }
                 }
             }
         }
