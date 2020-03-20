@@ -2,12 +2,13 @@
 
 .button-wrapper{
     .cmp-form-button{
-        height: 48px;
-        width: 180px;
+        min-height: 48px;
+        //width: 180px;
+        line-height: 26px;
         min-width: 136px;
         max-width: 275px;
         border-radius: 4px;
-        padding: 6px;
+        padding: 6px 16px;
         text-align: center;
         cursor: pointer;
         border: none;
