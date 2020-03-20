@@ -473,8 +473,52 @@ $(document).ready(function(){
     
     },{"./bakery.js":1,"./detector.js":2,"./optionparser.js":4}]},{},[3]);
     /* existing js ends here*/
-
-    $(".close-smart").click(function(){
+    function checkCookie() {
+        var user=getCookie("app_show");
+        var show=true;
+        var newTime=new Date();
+        var newTime1=newTime.getTime();
+        if(sessionStorage.clickSession){
+            if(newTime1>sessionStorage.clickSession){
+                show=true;
+            }
+            else{
+                show=false;
+            }
+        }
+        if (user == "" || user == null || user == undefined || show == true) {
+            $(".smartbanner").removeClass("app-hide");         
+        } else {
+            $(".smartbanner").addClass("app-hide");  
+        }
+      }
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function setCookie(cname,cvalue,minutes) {
+        var exDate = new Date();
+        exDate.setTime(exDate.getTime() + (minutes * 60 * 1000));
+        sessionStorage.clickSession=exDate.getTime();
+        var expires = "expires=" + exDate;
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;";
+      }
+    $(".smartbanner .close-smart").click(function(){
         $(".smartbanner").addClass("app-hide");
+        setCookie("app_show", 'true' , 30);
     });
+    if($(".smartbanner")){
+        checkCookie();
+    }
 });
