@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
-    include-filter.config.resource-types="[sunlife/ca/components/content/full-header,sunlife/ca/components/content/footer-copyright]"
+    include-filter.config.resource-types="[sunlife/ca/components/content/full-header,sunlife/ca/components/content/footer-copyright,sunlife/ca/components/content/articleList]"
     include-filter.config.extension=""
 	include-filter.config.enabled="true"
 	include-filter.config.path="/content/experience-fragments/sunlife/external"

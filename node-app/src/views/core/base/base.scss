@@ -327,7 +327,11 @@ footer {
         }
     }
 }
-
+.ca-sunlife-home-page {
+    footer {
+        margin-top: 0px;
+    }
+}
 .border-right {
     border-right: 2px solid $light-grey-20;
 }
@@ -426,9 +430,10 @@ ul {
     .container {
         max-width: 1064px;
         width: 100%;
-        position: relative;
+      /*  position: relative;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); */
+        margin:0 auto;
         padding: 0;
         width: 100%;
     }
@@ -438,9 +443,10 @@ ul {
     .container {
         max-width: $desktop-screen-min;
         width: 100%;
-        position: relative;
+      /*  position: relative;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); */
+        margin:0 auto;
         padding: 0;
         width: 100%;
     }

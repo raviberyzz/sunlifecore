@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2020-03-08T15:05:40.291-04:00"
+        cq:lastModified="{Date}2020-03-19T18:26:13.925-04:00"
         cq:lastModifiedBy="admin"
         cq:tags="[workflow:dam,workflow:wcm]"
         cq:template="/libs/cq/workflow/templates/model"
@@ -183,7 +183,7 @@
                 jcr:created="{Date}2014-07-15T00:55:55.869+05:30"
                 jcr:createdBy="admin"
                 jcr:description="This process will create one or more thumbnails for the asset, create web enabled rendition and update folder thumbnail."
-                jcr:lastModified="{Date}2020-03-08T15:05:40.264-04:00"
+                jcr:lastModified="{Date}2020-03-19T18:26:13.894-04:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Process Thumbnails"
@@ -201,7 +201,7 @@
                     PROCESS="com.day.cq.dam.core.impl.process.ThumbnailProcess"
                     PROCESS_AUTO_ADVANCE="true"
                     QUALITY="90"
-                    SKIP="[audio/mpeg,video/(.*),image/jpeg,(.*)]"
+                    SKIP="(.*)"
                     WIDTH="1280"/>
             </thumbnailprocess>
             <deleteimagepreviewpr

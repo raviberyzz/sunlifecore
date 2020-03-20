@@ -49,4 +49,8 @@ public final class AdvisorDetailConstants {
 	public static final String POSTAL_CODE_CONSTANT = "PostalCode";
 	public static final String PAGE_ADVISOR_ID_CONSTANT = "page_advisor_ID";
 	public static final String PAGE_ADVISOR_TYPE_CONSTANT = "page_advisor_type";
+	public static final String ERROR_CODE_CONSTANT = "ErrorCode";
+	public static final String ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT = "LANGUAGE_NOT_SUPPORTED";
+	public static final String ERROR_CODE_INVALID_ADVISOR_ID_CONSTANT = "INVALID_ADVISOR_ID";
+	
 }

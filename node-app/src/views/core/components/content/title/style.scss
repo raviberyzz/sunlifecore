@@ -72,16 +72,15 @@
 @media (max-width:$mobile-screen-max){
   .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
   {
-    min-height:94px;
+    height:94px;
     background-image:none;
-  }
-  .title-wrapper-yellow-grey-rings{
-    margin-top: 12%;
+    margin-top: 4px;
   }
 }
 
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
   .title-wrapper-yellow-grey-rings{
-    margin-top: 6%;
+    margin-top: 4px;
+    height:100px;
   }
 }
