@@ -32,7 +32,7 @@
   },
   "nodemonConfig": {
     "ignore": [
-      ".*!index.js"
+      "*.*"
     ]
   },
   "devDependencies": {

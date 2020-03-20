@@ -16,10 +16,11 @@ const gulp = require('gulp'),
  const srcViews = 'src/views';
  const sitePaths = {'hk':'apac/hk','id':'apac/id'};
 
-gulp.task('browser-sync', () => {
+gulp.task('browser-sync', (done) => {
   browserSync.init({
     proxy: 'http://localhost:3000'
   });
+  done();
 });
 
 const compareFiles = (f1, f2) => {
@@ -89,9 +90,13 @@ gulp.task('compile-files', (done) => {
   return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,fontsVendorTask,fontsBaseTask);
 });
 
-gulp.task('watch', () => {
-  gulp.watch(['src/views/**/*.scss','src/views/**/*.css','src/views/**/*.js','src/views/**/resources/*.*'], gulp.series('compile-files')); 
-})
+gulp.task('browser-reload',(done) => {browserSync.reload();done();});
+
+gulp.task('watch', (done) => {
+  console.log('Change detected ...  watching files');
+  gulp.watch(['src/views/**/*.scss','src/views/**/*.css','src/views/**/*.js','src/views/**/resources/*.*'], gulp.series(['compile-files','browser-reload'])); 
+  done();
+});
 
 gulp.task('clean', (done) => {
   if(fs.existsSync('dist')) {
@@ -199,5 +204,5 @@ gulp.task('copy-build-files',() => {
   .pipe(gulp.dest('../ui.apps/src/main/content/jcr_root/apps/sunlife'));
 });
 
-gulp.task('dev',gulp.parallel('compile-files','watch','browser-sync'));
+gulp.task('dev',gulp.series('compile-files','watch','browser-sync'));
 gulp.task('build:dev',gulp.series('clean','copy-files','compile-sass',generateClientLibs,'copy-build-files','clean'));
