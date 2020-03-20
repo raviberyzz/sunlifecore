@@ -383,8 +383,34 @@ ul {
                 padding: 6px 16px;
                 margin-bottom: 5px;
             }
-            .button-class:not(:first-child){
-                margin-left: 10px;
+            a:not(:first-child){
+                .button-class{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+    .cross-cta-wrapper {
+        .mega-menu-icon-wrapper {
+            .icon-texts {
+                text-align: -webkit-center;
+                a:first-child{
+                    .button-class{
+                        margin-top: 14px;
+                    }
+                }
+                a:last-child{
+                    .button-class{
+                        margin-bottom: 14px;
+                    }
+                }
+                .button-class {
+                    margin-bottom: -8px;
+                    display: list-item;
+                }
             }
         }
     }
