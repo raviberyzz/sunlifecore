@@ -280,14 +280,22 @@
                 display: inline-block !important;
             }
             .button-wrapper{
-                min-width: 41.8% !important;
+             /*   min-width: 41.8% !important;
                 width: auto  !important;
                 max-width: 50%  !important;
     	        margin: 0 auto !important;
-                display: inline-block !important;
+                display: inline-block !important; */
+                .cmp-form-button{
+                    min-width:136px;
+                    max-width:275px;
+                    line-height: 26px;
+                    min-height: 48px;
+                    border-radius: 4px;
+                    padding: 6px 16px;
+                }
             }
             .aem-GridColumn--default--12{
-                float:none !important;
+                float:left !important;
             }
             .cmp-form-options--drop-down{
                 width: 100%;
