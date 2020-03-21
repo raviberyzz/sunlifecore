@@ -137,6 +137,19 @@
         border-top:none;
         border-bottom:none;
     }
+    .social-link-icon-wrapper{
+        ul{
+            display: flex;
+            justify-content: center;
+            li{
+                .icon-parent{
+                    .icon-style{
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
@@ -179,6 +192,15 @@
         .cmp-container:first-child{
             margin: 0 0 0 -10px;
             width: calc(100% + 20px);
+        }
+    }
+}
+@media(min-width:$tab-screen-min){
+    .right-navigation-wrapper{
+        .social-link-icon-wrapper{
+            ul{
+                justify-content: space-between;
+            }
         }
     }
 }

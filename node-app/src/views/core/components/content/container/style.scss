@@ -500,6 +500,22 @@ ul {
         }
     }
 }
+
+/* social icons in the body section start */
+.social-link-icon-wrapper{
+    ul{
+        display: flex;
+        li{
+            padding:0px 10px;
+            .icon-parent{
+                .icon-style{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+/* social icons in the body section end */
 /*icon-text-list desktop starts here*/
 .icon-text-list{
     .mega-menu-icon-wrapper{
@@ -913,7 +929,22 @@ ul {
             display:none;
                     }
     }
-
+  /* social icons in the body section start */
+  .social-link-icon-wrapper{
+     ul{
+        display: flex;
+        justify-content: center;
+        li{
+         padding:0px;
+            .icon-parent{
+                .icon-style{
+                    font-size: 2rem;
+                }
+            }
+        }
+     }
+   }
+/* social icons in the body section end */
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
     .content-highlight {
@@ -1324,7 +1355,7 @@ ul {
     }
 }
 }
-@media (min-width: 768px) {
+@media (min-width: $tab-screen-min) {
     .cmp-contact-us {
         .layout-container{
             .container-component{
@@ -1337,6 +1368,15 @@ ul {
             }
         }
     }
+
+      /* social icons in the body section start */
+  .social-link-icon-wrapper{
+    ul{
+
+       justify-content: space-around;
+    }
+  }
+/* social icons in the body section end */
 }
 /* styles for contact us box end */
 
