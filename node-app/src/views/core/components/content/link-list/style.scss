@@ -25,11 +25,13 @@
     .links{
         width: 100%;
         padding:0px;
+        border: none;
         .accordion-heading{
             display: none;
         }
         .list-div{
             display: block;
+            margin-top: 0px;
             ul{
                 min-height: 84px;
                 background-color: $medium-yellow-background;
