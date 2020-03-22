@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
+    //$('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
     $('.cmp-tabs__tab').click(function(){
       set_active($(this));
