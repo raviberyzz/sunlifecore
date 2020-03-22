@@ -7,11 +7,11 @@ if('.breadcrumb'){
     $('.breadcrumb .social-link-icon-wrapper').addClass('vertical-middle-align');
     $('.breadcrumb .right-area .side-text').addClass('vertical-middle-align');
     $('.breadcrumb .right-area .social-link-icon-wrapper .side-text').removeClass('vertical-middle-align');
-    var liArray=$('.breadcrumb .left-area ol').children('li');
+    /*var liArray=$('.breadcrumb .left-area ol').children('li');
     if(($('.breadcrumb .left-area ol').children('li')) && ($('.breadcrumb .left-area ol').children('li').length>5)){
         var nextPosition=liArray[4];
         $(nextPosition).after("<br>");
-    }   
+    }   */
     function leftHeightFun(){
         var leftHeight=$('.breadcrumb .left-area').height();
         $('.breadcrumb .right-area').height(leftHeight);
