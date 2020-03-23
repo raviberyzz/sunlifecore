@@ -1376,7 +1376,46 @@ ul {
        justify-content: center;
     }
   }
-/* social icons in the body section end */
+    /* social icons in the body section end */
+    /*footer social icons start */
+    footer {
+        margin-top: 40px;
+        background-color: $light-cool-blue-color;
+        .social-link-icon-wrapper {
+            ul {
+                float: right;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+
+            }
+            li {
+                float: left;
+                padding-left: 5px;
+                padding-right: 7px;
+            }
+            .icon-style {
+                font-size: 2rem;
+            }
+        }
+    }
+    /*footer social icons end */
+    /*Breadcrumb social icons start */
+    .breadcrumb{
+        .social-link-icon-wrapper{
+            ul{
+                li{
+                    padding: 0px 0px 0px 5px;
+                    .icon-parent{
+                        .icon-style{
+                            font-size:1.125rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*Breadcrumb social icons end */
 }
 /* styles for contact us box end */
 
