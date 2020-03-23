@@ -1229,8 +1229,10 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                     </item0>
-                                     <item1 jcr:primaryType="nt:unstructured">
-                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                     <item1 
+                                         cq:styleGroupLabel="Button Alignment"
+                                         jcr:primaryType="nt:unstructured">
+                                         <cq:styles jcr:primaryType="nt:unstructured">
                                             <item0
                                                 cq:styleClasses="btn-center-align"
                                                 cq:styleId="1584994685327"
