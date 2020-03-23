@@ -173,9 +173,9 @@
        padding: 0 50px;
    }
    .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
-        width: 80% !important;
+        width: 100% !important;
         float: none !important;
-        padding: 0 30px;
+        padding: 0;
         display: inline-block;
     }
     textarea {
