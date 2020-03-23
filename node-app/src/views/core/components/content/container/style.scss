@@ -377,11 +377,15 @@ ul {
                 margin-top:0px;
                 font-size:1.125rem;
             }
+            ul{
+                margin-bottom: 10px;
+            }
             padding-bottom: 0;
             display: table;
             .button-class{
                 padding: 9px 16px 6px 16px;
                 margin-bottom: 5px;
+                margin-top: 24px;
             }
             a:not(:first-child){
                 .button-class{
