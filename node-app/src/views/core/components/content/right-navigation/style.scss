@@ -173,7 +173,17 @@
         .yellow-horizontal-separator{
             display: none;
         }
-        
+      .social-link-icon-wrapper{
+          ul{
+              li{
+                  .icon-parent{
+                      .icon-style{
+                          font-size:1.5rem;
+                      }
+                  }
+              }
+          }
+      }  
 
     }
 }
