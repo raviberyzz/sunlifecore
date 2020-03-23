@@ -935,7 +935,7 @@ ul {
         display: flex;
         justify-content: center;
         li{
-         padding:0px;
+        //  padding:0px;
             .icon-parent{
                 .icon-style{
                     font-size: 2rem;
@@ -1383,20 +1383,22 @@ ul {
         background-color: $light-cool-blue-color;
         .social-link-icon-wrapper {
             ul {
-                float: right;
-                position: relative;
-                top: 50%;
-                transform: translateY(-50%);
+                // float: right;
+                // position: relative;
+                // top: 50%;
+                // transform: translateY(-50%);
+                li {
+                    float: left;
+                    padding-left: 5px;
+                    padding-right: 7px;
+                    .icon-style {
+                        font-size: 2rem;
+                    }
+                }
 
             }
-            li {
-                float: left;
-                padding-left: 5px;
-                padding-right: 7px;
-            }
-            .icon-style {
-                font-size: 2rem;
-            }
+           
+
         }
     }
     /*footer social icons end */
@@ -1408,7 +1410,7 @@ ul {
                     padding: 0px 0px 0px 5px;
                     .icon-parent{
                         .icon-style{
-                            font-size:1.125rem;
+                            font-size:1.25rem;
                         }
                     }
                 }
