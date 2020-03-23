@@ -110,6 +110,43 @@
         position: relative; 
     }
 }
+/* layout container background colors start */
+    .layout-container.medium-yellow{
+        .row{
+            background: $medium-yellow-background;
+        }
+    }
+    .layout-container.light-grey{
+         .row{
+            background: $light-grey-color;
+        }
+    }
+    .layout-container.light-grey-20{
+        .row{
+            background:$light-grey-20;
+        }
+        
+    }
+    .layout-container.light-cool-blue{
+        .row{
+            background:$light-cool-blue-color;
+        }
+        
+    }
+    .layout-container.light-orange-20{
+        .row{
+            background: $light-orange-20;
+        }
+        
+    }
+    .layout-container.light-orange-40{
+        .row{
+            background:$light-orange-40;
+        }
+       
+    }
+
+/* layout container background colors end */
 @media(max-width:767px){
     .row.flex-height{
         display:block;

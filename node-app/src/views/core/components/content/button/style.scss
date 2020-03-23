@@ -109,6 +109,12 @@
 .button-text {
     margin: 0;
 }
+/* button horizonal center align */
+.btn-center-align{
+    display: flex;
+    justify-content: center;
+}
+/* button horizonal center align */
 .signIn-button {
     .button-class {
         background-color: $medium-yellow-background;
