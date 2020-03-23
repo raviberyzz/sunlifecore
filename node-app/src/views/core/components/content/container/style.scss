@@ -281,6 +281,15 @@ ul {
         padding-right: 16px;
     }
 }
+/* dual cta buttons and input field aligning next to one and other start */
+    .yellow-icon-blue-background,.yellow-icon-grey-background,.blue-icon-yellow-background, .yellow-icon-white-background{
+        .cta-form-wrapper{
+            .button-wrapper{
+            width:auto!important;
+            }
+        }
+    }
+/* dual cta buttons and input field aligning next to one and other end */
 .no-padding{
     .yellow-icon-white-background{
         .cta-content-icon-wrapper{
