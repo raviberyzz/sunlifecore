@@ -459,6 +459,7 @@ public class AdvisorDetailModel {
 			logger.debug("advisorId: {}", advisorId);
 			advisorData = advisorDetailService.getAdvisorDetails(language, advisorType, advisorId);
 			if (null != advisorData) {
+				validateAdvisorData();
 				setMapData();
 			}
 		} catch (ApplicationException | LoginException | RepositoryException | SystemException e) {
