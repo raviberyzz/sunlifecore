@@ -19,7 +19,7 @@ if(typeof(advisorInfo) !== 'undefined'){
 $(document).ready(function () {
     //Get page language
     if($('.row-advisor').length){
-        var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
+        var lang = ($('html').attr('lang') === 'fr-CA') ? 'fr' : 'en' ; 
         var loadMap = false;
         var pageLabelData = {
             'en': {	
