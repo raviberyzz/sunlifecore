@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
+import javax.servlet.ServletException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -479,9 +480,9 @@ public class AdvisorDetailModel {
 			inputJson = new JSONObject(advisorData);
 			errorCode = inputJson.getString(AdvisorDetailConstants.ERROR_CODE_CONSTANT);
 			if( null != errorCode && AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT.equals(errorCode) ) {
-				response.sendRedirect("/content/sunlife/external/ca/en/error/404");
+				request.getRequestDispatcher("/content/sunlife/external/ca/en/error/404.html").forward(request, response);
 			}
-		} catch (IOException | JSONException e) {
+		} catch (IOException | JSONException | ServletException e) {
 			logger.error("Error :: AdvisorDetailModel :: validateAdvisorData :: IOException :: {}", e);
 		}
 		logger.debug("Exit :: AdvisorDetailModel :: validateAdvisorData :: ");
