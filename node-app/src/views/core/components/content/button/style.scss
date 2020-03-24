@@ -141,3 +141,38 @@
         }
     }
 }
+
+
+@media(max-width:$mobile-screen-max){
+    .primary-blue-button-rte{
+        display:flex;
+       margin:0 auto;
+    }
+    
+    .primary-yellow-button-rte{
+        display:flex;
+         margin:0 auto;
+    }
+    
+    .secondary-button-rte{
+        display:flex;
+         margin:0 auto;
+     }
+}
+
+
+    
+@media(min-width:$tab-screen-min){
+    .primary-blue-button-rte{
+    display:inline-flex;
+    }
+    
+    .primary-yellow-button-rte{
+     display:inline-flex;
+    }
+    
+    .secondary-button-rte{
+         display:inline-flex;
+        }
+}
+    
