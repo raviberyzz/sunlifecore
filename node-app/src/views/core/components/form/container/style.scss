@@ -311,4 +311,11 @@
     .subscribe-main-form-wrapper .button{
         width:41.65% !important;
             }
+
+  .thankyou-wrapper{
+    .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
+        padding: 0px 8px;
+    }
+  }
+
 }
