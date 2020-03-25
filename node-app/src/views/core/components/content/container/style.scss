@@ -1431,6 +1431,18 @@ ul {
         }
     }
     /*Breadcrumb social icons end */
+
+    /* cross-cell cta buttons margin for tabs and desktop start */
+    .cross-cta-wrapper{
+        .mega-menu-icon-wrapper{
+            .icon-texts{
+                .button-class {
+                    margin-right:25px;
+                }
+            }
+        }
+    }
+    /* cross-cell cta buttons margin for tabs and desktop end */
 }
 /* styles for contact us box end */
 
