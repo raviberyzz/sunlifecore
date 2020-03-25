@@ -1160,7 +1160,7 @@
 // }	
 
 // update the domains to match the environment
-$('#mySignInModal').on('show.bs.modal', function() {
+$('#signin-widget-modal').on('show.bs.modal', function() {
 	// get host from variable defined in signin.js
 	// it is assumed to be defined, if not, then default to prod
 	var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
