@@ -7,8 +7,8 @@ $(document).ready(function () {
     });
     function modalWidth(){
       var winWidth=$(window).width();
-      $("#mySignInModal").width(winWidth);
-      $("#mySignInModal").addClass('horizontal-middle-align');
+      $("#signin-widget-modal").width(winWidth);
+      $("#signin-widget-modal").addClass('horizontal-middle-align');
     }
     if ($(window).width() > 1024) {
       modalWidth();
@@ -67,7 +67,7 @@ $(document).ready(function () {
       }
  });
  $("#signinbutton").keydown(function(e){
-     if ($('#mySignInModal').hasClass('in')) {
+     if ($('#signin-widget-modal').hasClass('in')) {
       if (e.which == 9 ) {
        e.preventDefault();
          $('#closeSignInModal').focus();
