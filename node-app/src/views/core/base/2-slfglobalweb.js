@@ -1159,25 +1159,25 @@
 // 	}
 // }	
 
-// // update the domains to match the environment
-// $('#signin-widget-modal').on('show.bs.modal', function() {
-// 	// get host from variable defined in signin.js
-// 	// it is assumed to be defined, if not, then default to prod
-// 	var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
-// 	if (host === null || host === undefined) {
-// 		host = "https://www.sunnet.sunlife.com";
-// 	}
+// update the domains to match the environment
+$('#mySignInModal').on('show.bs.modal', function() {
+	// get host from variable defined in signin.js
+	// it is assumed to be defined, if not, then default to prod
+	var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
+	if (host === null || host === undefined) {
+		host = "https://www.sunnet.sunlife.com";
+	}
 
-// 	// update all the domains
-// 	var signinWidget = $('#signin-widget-modal').html();
-// 	var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
-// 	$('#signin-widget-modal').html(newString);
-	
-// 	// re-initialize these functions
-// 	signinbuttonclick();	
-// 	// this not getting triggered on shown, so call it explicitly, here
-// 	updateSignInForm('form_signon');
-// })
+	// update all the domains
+	var signinWidget = $('#signin-widget-modal').html();
+	var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
+	$('#signin-widget-modal').html(newString);
+
+	// re-initialize these functions
+	//signinbuttonclick();	
+	// this not getting triggered on shown, so call it explicitly, here
+	updateSignInForm('form_signon');
+})
 
 function createCookie(name,value,days, isSession) {
   if (days) {
