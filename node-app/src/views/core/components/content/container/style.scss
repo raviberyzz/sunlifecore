@@ -282,13 +282,13 @@ ul {
     }
 }
 /* dual cta buttons and input field aligning next to one and other start */
-    .yellow-icon-blue-background,.yellow-icon-grey-background,.blue-icon-yellow-background, .yellow-icon-white-background{
+  //  .yellow-icon-blue-background,.yellow-icon-grey-background,.blue-icon-yellow-background, .yellow-icon-white-background{
         .cta-form-wrapper{
             .button-wrapper{
             width:auto!important;
             }
         }
-    }
+  //  }
 /* dual cta buttons and input field aligning next to one and other end */
 .no-padding{
     .yellow-icon-white-background{
@@ -396,11 +396,11 @@ ul {
                 margin-bottom: 5px;
                 margin-top: 14px;
             }
-            a:not(:first-child){
+          /*  a:not(:first-child){
                 .button-class{
                    // margin-left: 10px;
                 }
-            }
+            } */
         }
     }
 }
@@ -423,11 +423,11 @@ ul {
                     margin-bottom: -8px;
                     margin-top: 24px;
                 }
-                a:not(:first-child) {
-                    .button-class{
-                       // margin-left: 0;
-                    }
-                }
+               /*  a:not(:first-child) {
+                   .button-class{
+                        margin-left: 0;
+                    } 
+                } */
             }
         }
     }
