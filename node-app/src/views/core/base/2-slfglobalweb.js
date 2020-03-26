@@ -1160,7 +1160,7 @@
 // }	
 
 // update the domains to match the environment
-$('#signin-widget').on('show.bs.modal', function() {
+$('#signin-widget-modal').on('show.bs.modal', function() {
 	// get host from variable defined in signin.js
 	// it is assumed to be defined, if not, then default to prod
 	var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
@@ -1169,9 +1169,9 @@ $('#signin-widget').on('show.bs.modal', function() {
 	}
 
 	// update all the domains
-	var signinWidget = $('#signin-widget').html();
+	var signinWidget = $('#signin-widget-modal').html();
 	var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
-	$('#signin-widget').html(newString);
+	$('#signin-widget-modal').html(newString);
 
 	// re-initialize these functions
 	//signinbuttonclick();	

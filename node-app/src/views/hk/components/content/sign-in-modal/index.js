@@ -2,13 +2,13 @@ $(document).ready(function () {
     $("a.customer-sign-sm").click(function() {
         updateSignInForm('form_signon_mobile');     
       });  
-    $('#signin-widget-modal').on('shown.bs.modal', function() {
+    $('#signin-widget-modal-modal').on('shown.bs.modal', function() {
           updateSignInForm('form_signon');        
     });
     function modalWidth(){
       var winWidth=$(window).width();
-      $("#signin-widget").width(winWidth);
-      $("#signin-widget").addClass('horizontal-middle-align');
+      $("#signin-widget-modal").width(winWidth);
+      $("#signin-widget-modal").addClass('horizontal-middle-align');
     }
     if ($(window).width() > 1024) {
       modalWidth();
