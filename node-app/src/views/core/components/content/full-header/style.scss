@@ -1,4 +1,13 @@
 @import '../../../base/core';
+
+#signin-widget-modal {
+    .loading {
+        z-index: 1000;
+        position: absolute;
+        display: block;
+        margin-left: -30px;
+    }
+}
 .slf-header-wrapper{
     .desktop-sign-in{
         .button-class{
