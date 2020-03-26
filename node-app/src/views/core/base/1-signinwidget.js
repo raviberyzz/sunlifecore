@@ -36,20 +36,20 @@ $(document).ready(function () {
 			}
 			catch(e)
 			{
-				$('#signin-widget-modal').on('shown.bs.modal', function() {
+				$('#signin-widget').on('shown.bs.modal', function() {
                 updateSignInFormFromDeeplink('form_signon',deepLinkName);
                });
-				$("#signin-widget-modal").modal("show");
+				$("#signin-widget").modal("show");
 			  	
 			}			         
 		
 	 },
 			  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 console.log("Status: " + textStatus+ " Error: " + errorThrown);
-				$('#signin-widget-modal').on('shown.bs.modal', function() {
+				$('#signin-widget').on('shown.bs.modal', function() {
                 updateSignInFormFromDeeplink('form_signon',deepLinkName);
                });
-				$("#signin-widget-modal").modal("show");
+				$("#signin-widget").modal("show");
     } 
     });
 	return false;

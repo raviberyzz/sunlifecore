@@ -232,7 +232,7 @@ JSON Format
     "language-region":"language-region",    
 "button-type": "button",
 "button-wrapper-class":"sign-in-wrapper",
-"data-target":"#mySignInModal",
+"data-target":"#signin-widget",
 "data-toggle":"modal",
 "img-src":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg",
 "sign-in-text":"Ouvrir une session",
