@@ -446,23 +446,20 @@ ul {
         }
     }
 }
-.company_highlights_new {
-    .teaser{
-        .bottom-aligned-text{
-            .right-image-position, .bottom-aligned-text{
-                .left-image-position{
-                    height: 100%;
-                    display: flex !important;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-                .text-section{         
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
+.company-highlight-yellow-grey-background {
+    .bottom-aligned-text{
+        .right-image-position, .left-image-position{
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .text-section{         
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            
             }
         }
     }
