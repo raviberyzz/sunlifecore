@@ -405,7 +405,17 @@ ul {
         }
     }
 }
-
+//skip to main content (accessibility css)
+a.skip-main {
+    left: -999px;
+    position: absolute;
+}
+a.skip-main:focus, a.skip-main:active {
+    color: #000;
+    left: 0;
+    width: auto;
+    height: auto;
+}
 .white-box {
     background-color: $light-grey-20;
     opacity: 90%;
