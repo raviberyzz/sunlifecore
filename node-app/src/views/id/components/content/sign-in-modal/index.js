@@ -29,8 +29,8 @@ popupID();
   });
   function modalWidth(){
   var winWidth=$(window).width();
-  $("#mySignInModal").width(winWidth);
-  $("#mySignInModal").addClass('horizontal-middle-align');
+  $("#signin-widget").width(winWidth);
+  $("#signin-widget").addClass('horizontal-middle-align');
   }
   if ($(window).width() > 1024) {
   modalWidth();
