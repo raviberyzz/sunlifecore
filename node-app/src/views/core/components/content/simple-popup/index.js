@@ -9,7 +9,7 @@ $(document).ready(function () {
   $(window).resize(function () {
     popUpWidth();
   });
-  $(".modal-content .cmp-form-button").keydown(function (e) {
+  $("#subscribe .modal-content .cmp-form-button").keydown(function (e) {
     if (e.which == 9) {
       e.preventDefault();
       $(".close-popup").focus();
