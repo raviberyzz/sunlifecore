@@ -17,9 +17,9 @@ providerURL="https://www.sunnet.sunlife.com/mysunlife/ca/e/signinInfo.wca";
 
 $(document).ready(function () {
 	// deeplink handler for public pages
-	 $('.deeplink').click(function(){
+	$('a[data-deeplink]').click(function(){
 	 console.log("before hiting ping url in mbrportal");
-     	 var deepLinkName=$(this).attr('deepLinkname');
+     	 var deepLinkName=$(this).attr('data-deeplink');
 
      	$.ajax({url:'https://www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping',xhrFields: {withCredentials: true},
 
