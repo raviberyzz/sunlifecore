@@ -8,6 +8,7 @@
 		DATA_TITLE_FIELD = "data-title",
 		DATA_TARGET_FIELD = "data-target",
 		DATA_TOGGLE_FIELD = "data-toggle",
+        DATA_DEEPLINK_FIELD = "data-deeplink",
         RTE_LINK_DIALOG = "rtelinkdialog";
     if(CUI.rte.ui.cui.CuiDialogHelper.eaemExtended){
         return;
@@ -33,16 +34,19 @@
 			var dataTitleField = this.getFieldByType(DATA_TITLE_FIELD);
 			var dataTargetField = this.getFieldByType(DATA_TARGET_FIELD);
 			var dataToggleField = this.getFieldByType(DATA_TOGGLE_FIELD);
+            var dataDeepLinkField = this.getFieldByType(DATA_DEEPLINK_FIELD);
 
             var ariaLabelVal = ariaLabelField.val();
 			var dataTitleVal = dataTitleField.val();
 			var dataTargetVal = dataTargetField.val();
 			var dataToggleVal = dataToggleField.val();
+            var dataDeepLinkVal = dataDeepLinkField.val();
 
             this.objToEdit.attributes["aria-label"] = ariaLabelVal;
 			this.objToEdit.attributes["data-title"] = dataTitleVal;
 			this.objToEdit.attributes["data-target"] = dataTargetVal;
 			this.objToEdit.attributes["data-toggle"] = dataToggleVal;
+            this.objToEdit.attributes["data-deeplink"] = dataDeepLinkVal;
 			
         },
         
@@ -53,19 +57,20 @@
 			var dataValue = this.objToEdit.attributes['data-title'];
 			var dataTargetValue = this.objToEdit.attributes['data-target'];
 			var dataToggleValue = this.objToEdit.attributes['data-toggle'];
-			
+            var dataDeepLinkValue = this.objToEdit.attributes['data-deeplink'];
 
             var ariaSelect = this.$rteDialog.find("[data-type='aria-label']")[0];
 			var dataSelect = this.$rteDialog.find("[data-type='data-title']")[0];
 			var dataTargetSelect = this.$rteDialog.find("[data-type='data-target']")[0];
 			var dataToggleSelect = this.$rteDialog.find("[data-type='data-toggle']")[0];
+            var dataDeepLinkSelect = this.$rteDialog.find("[data-type='data-deeplink']")[0];
 			
 			ariaSelect.value=ariaValue?ariaValue:'';
 			dataSelect.value=dataValue?dataValue:'';
 			dataTargetSelect.value=dataTargetValue?dataTargetValue:'';
 			dataToggleSelect.value=dataToggleValue?dataToggleValue:'';
-			
-			
+			dataDeepLinkSelect.value=dataDeepLinkValue?dataDeepLinkValue:'';
+
         }
     });
 
@@ -108,12 +113,13 @@
 					"<div class='rte-dialog-columnContainer'>"+
             		"<div class='rte-dialog-column'>"+
                     "<label>"+ 
-            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''></label> </div></div>";
+            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-toggle' placeholder='data toggle' data-toggle-invalid='false' value=''></label> </div></div>"+
+                    "<div class='rte-dialog-columnContainer'>"+
+            		"<div class='rte-dialog-column'>"+
+                    "<label>"+ 
+            		"<input is='coral-textfield' class='coral3-Textfield' data-type='data-deeplink' placeholder='deep link name' deeplink-invalid='false' value=''></label> </div></div>";
 
-
-
-                     return html;
-
+      	return html;
     }
 
     CUI.rte.ui.cui.CuiDialogHelper.eaemExtended = true;
