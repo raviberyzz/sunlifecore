@@ -436,7 +436,7 @@ function displayContingencyWidget() {
     signinDataCallDone = true;
     contigencyWidgetDisplayed = true;
     if (currentSignInForm == "form_signon") {
-        $("#signin-widget-modal").hide();
+        $("#signin-widget").hide();
         $("#contigency-widget").show();
 
     } else if (currentSignInForm == "form_signon_mobile") {
