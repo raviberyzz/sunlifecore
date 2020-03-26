@@ -7,7 +7,7 @@ JSON Format
 "button-wrapper":"button-wrapper",
 "button-class": "signIn-button",
 "button-text": "Sign-in",
-"data-target":"#signin-widget",
+"data-target":"#signin-widget-modal",
 "data-toggle":"modal",
 "id":"signin",
 "client-text":"Client sign in",

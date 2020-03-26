@@ -109,7 +109,7 @@ $('#SignIn').click(function(){
 
 // Sign In Modal (Sign-in-modal expansion) analytics starts here
 function signinmodal() {
-    if ($('#signin-widget').hasClass('in')){
+    if ($('#signin-widget-modal').hasClass('in')){
         utag.link({
             "asset_type"	: "Module",
             "asset_title"	: "Sign In - Modal",

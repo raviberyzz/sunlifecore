@@ -36,20 +36,20 @@ $(document).ready(function () {
 			}
 			catch(e)
 			{
-				$('#signin-widget').on('shown.bs.modal', function() {
+				$('#signin-widget-modal').on('shown.bs.modal', function() {
                 updateSignInFormFromDeeplink('form_signon',deepLinkName);
                });
-				$("#signin-widget").modal("show");
+				$("#signin-widget-modal").modal("show");
 			  	
 			}			         
 		
 	 },
 			  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 console.log("Status: " + textStatus+ " Error: " + errorThrown);
-				$('#signin-widget').on('shown.bs.modal', function() {
+				$('#signin-widget-modal').on('shown.bs.modal', function() {
                 updateSignInFormFromDeeplink('form_signon',deepLinkName);
                });
-				$("#signin-widget").modal("show");
+				$("#signin-widget-modal").modal("show");
     } 
     });
 	return false;
@@ -436,16 +436,16 @@ function displayContingencyWidget() {
     signinDataCallDone = true;
     contigencyWidgetDisplayed = true;
     if (currentSignInForm == "form_signon") {
-        $("#signin-widget").hide();
+        $("#signin-widget-modal").hide();
         $("#contigency-widget").show();
 
     } else if (currentSignInForm == "form_signon_mobile") {
-        $("#signin-widget-mobile").hide();
+        $("#signin-widget-modal-mobile").hide();
         $("#contigency-widget-mobile").show();
 
 
     } else {
-        $("#signin-widget-pinbar").hide();
+        $("#signin-widget-modal-pinbar").hide();
         $("#contigency-widget-pinbar").show();
 
     }
