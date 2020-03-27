@@ -18,7 +18,6 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
@@ -76,7 +75,6 @@ public class ArticleModel {
 	/** The fragment path. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String fragmentPath;
 
 	/** The resolver. */
@@ -86,31 +84,26 @@ public class ArticleModel {
 	/** The article unique ID. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String articleUniqueID;
 
 	/** The checkbox comment. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String checkboxComment;
 
 	/** The checkbox hide date. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String checkboxHideDate;
 
 	/** The article ID. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String articleID;
 	
 	/** The rating required. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String ratingRequired;
 	
 	/** The page url. */

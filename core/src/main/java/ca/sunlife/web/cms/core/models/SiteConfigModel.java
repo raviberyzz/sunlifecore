@@ -116,7 +116,7 @@ public interface SiteConfigModel {
 	 *
 	 * @return the article date format
 	 */
-	@Inject @Optional
+	@Inject
 	String getArticleDateFormat();
 	
 	/**
@@ -124,7 +124,7 @@ public interface SiteConfigModel {
 	 *
 	 * @return the article publisher name
 	 */
-	@Inject @Optional
+	@Inject
 	String getArticlePublisherName();
 	
 	/**
@@ -132,7 +132,7 @@ public interface SiteConfigModel {
 	 *
 	 * @return the article publisher logo
 	 */
-	@Inject @Optional
+	@Inject
 	String getArticlePublisherLogo();
 
 }

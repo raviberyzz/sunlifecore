@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.beans;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -60,7 +61,7 @@ public class NewsReleases {
 	 * @return the release
 	 */
 	public List<Release> getRelease() {
-		return release;
+		return Collections.unmodifiableList(release);
 	}
 
 	/**
@@ -68,7 +69,7 @@ public class NewsReleases {
 	 *            the release to set
 	 */
 	public void setRelease(List<Release> release) {
-		this.release = release;
+		this.release = Collections.unmodifiableList(release);
 	}
 
 	/**

@@ -96,7 +96,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
 
 		final Map<String, String> map = new HashMap<>();
 		map.put("path", sitePath);
-		map.put("type", "cq:Page");
+		map.put("type", com.day.cq.wcm.api.NameConstants.NT_PAGE);
 		map.put("property", "jcr:content/config/sling:resourceType");
 		map.put("property.value", "sunlife/core/components/config/configuration");
 

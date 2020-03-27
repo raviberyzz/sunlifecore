@@ -2,6 +2,9 @@ package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.LoginException;
+import javax.jcr.RepositoryException;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -10,7 +13,9 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.day.cq.wcm.api.Page;
+
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 
@@ -65,42 +70,42 @@ public class ExperienceFragmentModel {
 		String fragmentSplit = "";		
 		
 		try {
-		if( null == fragmentPath )
-		{
-			return;
-		}
-		else if(currentPage.getPath().contains("/content/experience-fragments")) {
-			modifiedFragmentPath = fragmentPath;
-		}
-		else
-		{			
-			if(fragmentPath.contains("header")||fragmentPath.contains("footer")) {
-			
-				headerPath = configService.getConfigValues("experienceFragmentPath", currentPage.getPath());	
-				log.info("Header path is : {}" , headerPath);
-				if( null != headerPath && headerPath.length() > 0 ) {	
-				String[] pathSplit = fragmentPath.split("/");
-				for(int i=0; i<pathSplit.length;i++) {
-        		if(pathSplit[i].contains("header") || pathSplit[i].contains("footer")) {
-        			  fragmentSplit = "/" + pathSplit[i] + "/";
-        			  break;
-        		 }
-				}
-				String[] finalSplit = fragmentPath.split(fragmentSplit);
-				modifiedFragmentPath = headerPath + fragmentSplit + finalSplit[1];
-				}
-				else {
-					modifiedFragmentPath=fragmentPath;
-				}
-			}
-			
-			else {
-				modifiedFragmentPath=fragmentPath;		
-			}
-		}
+    		if( null == fragmentPath )
+    		{
+    			return;
+    		}
+    		else if(currentPage.getPath().contains("/content/experience-fragments")) {
+    			modifiedFragmentPath = fragmentPath;
+    		}
+    		else
+    		{			
+    			if(fragmentPath.contains("header")||fragmentPath.contains("footer")) {
+    			
+    				headerPath = configService.getConfigValues("experienceFragmentPath", currentPage.getPath());	
+    				log.info("Header path is : {}" , headerPath);
+    				if( null != headerPath && headerPath.length() > 0 ) {	
+    				String[] pathSplit = fragmentPath.split("/");
+    				for(int i=0; i<pathSplit.length;i++) {
+            		if(pathSplit[i].contains("header") || pathSplit[i].contains("footer")) {
+            			  fragmentSplit = "/" + pathSplit[i] + "/";
+            			  break;
+            		 }
+    				}
+    				String[] finalSplit = fragmentPath.split(fragmentSplit);
+    				modifiedFragmentPath = headerPath + fragmentSplit + finalSplit[1];
+    				}
+    				else {
+    					modifiedFragmentPath=fragmentPath;
+    				}
+    			}
+    			
+    			else {
+    				modifiedFragmentPath=fragmentPath;		
+    			}
+    		}
 		
 		}
-		 catch (Exception e) {
+		 catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
 			 log.error("Error :: init method of Experience fragment model :: {}", e);
 			}
 	  }

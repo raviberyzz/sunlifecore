@@ -19,7 +19,6 @@ public interface MegaMenuModel {
 	 * @return the meganavlinks
 	 */
 	@Inject
-	@Optional
 	Resource getMeganavlinks();
 
 }

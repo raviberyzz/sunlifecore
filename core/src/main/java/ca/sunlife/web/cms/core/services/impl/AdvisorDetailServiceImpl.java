@@ -66,7 +66,6 @@ public class AdvisorDetailServiceImpl implements AdvisorDetailService {
 			logger.debug("getAdvisorDetails url: {}", builder);
 			return restService.callGetWebService(builder.toString());
 		} catch (IOException e) {
-			logger.error("Error :: getAdvisorDetails method of AdvisorDetailServiceImpl :: error :: {}", e);
 			throw new ApplicationException(ErrorCodes.APP_ERROR_001, e);
 		}
 	}

@@ -64,7 +64,6 @@ public interface LinkModel {
 	 * @return the sub links
 	 */
 	@ChildResource(name="subLinks")
-	@Optional
 	List<SubLinkModel> getSubLinks();
 
 }

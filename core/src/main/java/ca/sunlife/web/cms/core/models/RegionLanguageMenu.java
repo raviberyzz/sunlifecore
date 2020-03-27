@@ -4,6 +4,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -71,7 +72,7 @@ public class RegionLanguageMenu {
 	 * @return the region links
 	 */
 	public List<List<LinkModel>> getRegionLinks() {
-		return regionLinks;
+		return Collections.unmodifiableList(regionLinks);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class RegionLanguageMenu {
 	 * @param regionLinks the new region links
 	 */
 	public void setRegionLinks(final List<List<LinkModel>> regionLinks) {
-		this.regionLinks = regionLinks;
+		this.regionLinks = Collections.unmodifiableList(regionLinks);
 	}
 
 	/**
@@ -125,7 +126,7 @@ public class RegionLanguageMenu {
 	 * @return the regions
 	 */
 	public List<LinkModel> getRegions() {
-		return regions;
+		return Collections.unmodifiableList(regions);
 	}
 
 	/**
@@ -134,7 +135,7 @@ public class RegionLanguageMenu {
 	 * @param regions the new regions
 	 */
 	public void setRegions(List<LinkModel> regions) {
-		this.regions = regions;
+		this.regions = Collections.unmodifiableList(regions);
 	}
 
 	/**
@@ -179,7 +180,7 @@ public class RegionLanguageMenu {
 	 * @return the language links
 	 */
 	public List<SubLinkModel> getLanguageLinks() {
-		return languageLinks;
+		return Collections.unmodifiableList(languageLinks);
 	}
 
 	/**
@@ -188,7 +189,7 @@ public class RegionLanguageMenu {
 	 * @param languageLinks the new language links
 	 */
 	public void setLanguageLinks(List<SubLinkModel> languageLinks) {
-		this.languageLinks = languageLinks;
+		this.languageLinks = Collections.unmodifiableList(languageLinks);
 	}
 
 	/**

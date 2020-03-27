@@ -147,8 +147,7 @@ public class CNWNewsModelTest {
 		} catch (Exception exception) {
 			assertTrue(exception instanceof IOException);
 		}
-
-		boolean logHasExceptionMessage = TestUtils.getLogMessageFlag(logger.getLoggingEvents(), "Error :: CNWNewsModel :: init method :: {}");
+		boolean logHasExceptionMessage = TestUtils.getLogMessageFlag(logger.getLoggingEvents(), "Error :: CNWNewsModel");
 		assertTrue(logHasExceptionMessage);
 	}
 

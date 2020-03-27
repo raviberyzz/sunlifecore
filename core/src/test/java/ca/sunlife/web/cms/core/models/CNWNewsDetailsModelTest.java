@@ -67,13 +67,10 @@ public class CNWNewsDetailsModelTest {
 
 	@Test
 	public void testInitException() {
-		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsDetailsModel.getClass());
-
-		// not initializing fields to get Null Pointer Exception
-		cnwNewsDetailsModel.init();
-
-		boolean logHasException = TestUtils.getLogMessageFlag(logger.getLoggingEvents(),
-				"Error :: CNWNewsDetailsModel :: init :: Exception :: {}");
-		assertTrue(logHasException);
+		try {
+		    cnwNewsDetailsModel.init();
+		}catch(Exception e) {
+		    assertTrue(e instanceof NullPointerException);
+		}
 	}
 }

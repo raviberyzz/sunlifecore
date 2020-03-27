@@ -1,5 +1,8 @@
 package ca.sunlife.web.cms.core.models;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -14,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 
 /**
@@ -49,11 +54,11 @@ public class CNWNewsDetailsModel {
 	public void init() {
 		logger.debug("Entry :: CNWNewsDetailsModel :: init ");
 		try {
-			releaseId = request.getRequestPathInfo().getSelectors()[0];
-			newsDetails = newsService.getCNWNewsDetails(releaseId, currentPage.getLanguage().getLanguage());
-		} catch (Exception e) {
-			logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
-		}
+		    releaseId = request.getRequestPathInfo().getSelectors()[0];
+            newsDetails = newsService.getCNWNewsDetails(releaseId, currentPage.getLanguage().getLanguage());
+        } catch (IOException | ParseException | ApplicationException | SystemException e) {
+            logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
+        }
 	}
 
 	/**

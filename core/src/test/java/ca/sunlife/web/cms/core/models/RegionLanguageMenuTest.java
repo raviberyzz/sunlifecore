@@ -30,7 +30,7 @@ public class RegionLanguageMenuTest {
 	@Test
 	public void testInitNullValues() {
 		regionLanguageMenu.init();
-		assertNull(regionLanguageMenu.getRegionLinks());
+		assertNull(regionLanguageMenu.getLanguageSectionTitle());
 	}
 
 	@Test

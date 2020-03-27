@@ -21,7 +21,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
@@ -56,43 +55,36 @@ public class ArticleListModel {
 	/** The parent path. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String parentPath;
 	
 	/** The tag names. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String[] tagNames;
 	
 	/** The display type. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String displayType;
 	
 	/** The hide top. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private int hideTop;
 	
 	/** The max items. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private int maxItems;
 	
 	/** The title. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String title;
 	
 	/** The title level. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private String titleLevel;
 	
 	/** The items. */

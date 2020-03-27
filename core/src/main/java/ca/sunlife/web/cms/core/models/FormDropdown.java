@@ -23,7 +23,7 @@ public interface FormDropdown {
 	 * @return the title
 	 */
 	@Inject
-	@Named("jcr:title")
+	@Named(com.day.cq.commons.jcr.JcrConstants.JCR_TITLE)
 	public String getTitle();
 	
 	/**

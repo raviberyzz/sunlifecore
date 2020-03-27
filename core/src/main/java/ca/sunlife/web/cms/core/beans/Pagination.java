@@ -4,6 +4,7 @@
 package ca.sunlife.web.cms.core.beans;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -56,7 +57,7 @@ public class Pagination {
 		this.curPage = curPage;
 		this.nextPageNo = nextPageNo;
 		this.totalPages = totalPages;
-		this.pageItems = pageItems;
+		this.pageItems = Collections.unmodifiableList(pageItems);
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class Pagination {
 	 * @return the pageItems
 	 */
 	public List<PageItem> getPageItems() {
-		return pageItems;
+		return Collections.unmodifiableList(pageItems);
 	}
 
 	/**
@@ -146,7 +147,7 @@ public class Pagination {
 	 * @param pageItems the pageItems to set
 	 */
 	public void setPageItems(List<PageItem> pageItems) {
-		this.pageItems = pageItems;
+		this.pageItems = Collections.unmodifiableList(pageItems);
 	}
 
 	/**

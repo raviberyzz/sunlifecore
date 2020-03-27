@@ -3,6 +3,7 @@ package ca.sunlife.web.cms.core.models;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -296,7 +297,7 @@ public class CNWNewsModel {
 	 * @return the yearsToShow
 	 */
 	public List<Integer> getYearsToShow() {
-		return yearsToShow;
+		return Collections.unmodifiableList(yearsToShow);
 	}
 
 	/**
@@ -304,7 +305,7 @@ public class CNWNewsModel {
 	 *            the yearsToShow to set
 	 */
 	public void setYearsToShow(List<Integer> yearsToShow) {
-		this.yearsToShow = yearsToShow;
+		this.yearsToShow = Collections.unmodifiableList(yearsToShow);
 	}
 
 	/**
@@ -341,7 +342,7 @@ public class CNWNewsModel {
 	 * @return the newsCategories
 	 */
 	public List<NewsCategory> getNewsCategories() {
-		return newsCategories;
+		return Collections.unmodifiableList(newsCategories);
 	}
 
 	/**
@@ -349,7 +350,7 @@ public class CNWNewsModel {
 	 *            the newsCategories to set
 	 */
 	public void setNewsCategories(List<NewsCategory> newsCategories) {
-		this.newsCategories = newsCategories;
+		this.newsCategories = Collections.unmodifiableList(newsCategories);
 	}
 
 	/**
@@ -461,15 +462,10 @@ public class CNWNewsModel {
 	 */
 	public void processOverviewData() throws IOException, ApplicationException, SystemException {
 		logger.debug("Entry :: CNWNewsDetailsModel :: processOverviewData :: numberOfNews: {}, newsCategories: {}, locale: {}", numberOfNews, newsCategories, locale);
-		try {
-			if (null == numberOfNews || null == newsCategories) {
-				return;
-			}
-			releaseMain = newsService.getCNWNewsOverview(locale, numberOfNews, newsCategories);
-		} catch (IOException | ApplicationException | SystemException e) {
-			logger.error("Error :: CNWNewsDetailsModel :: processOverviewData :: {}", e);
-			throw e;
-		}
+		if (null == numberOfNews || null == newsCategories) {
+            return;
+        }
+        releaseMain = newsService.getCNWNewsOverview(locale, numberOfNews, newsCategories);
 		logger.debug("Fetched news :: {}", releaseMain);
 	}
 
@@ -485,63 +481,58 @@ public class CNWNewsModel {
 		int totalNoYears;
 		String strYear = null;
 		String pageNum = null;
-		try {
-			if (null == latestYear) {
-				year = Calendar.getInstance().get(Calendar.YEAR);
-			} else {
-				year = Integer.parseInt(latestYear);
-			}
+		if (null == latestYear) {
+            year = Calendar.getInstance().get(Calendar.YEAR);
+        } else {
+            year = Integer.parseInt(latestYear);
+        }
 
-			int downYear = year;
-			totalNoYears = Integer.parseInt(numberOfTabs);
-			logger.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
-			yearsToShow = new ArrayList<>();
-			for (int i = 0; i < totalNoYears; i++) {
-				yearsToShow.add(downYear--);
-			}
-			logger.debug("yearsToShow :: {}", yearsToShow);
+        int downYear = year;
+        totalNoYears = Integer.parseInt(numberOfTabs);
+        logger.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
+        yearsToShow = new ArrayList<>();
+        for (int i = 0; i < totalNoYears; i++) {
+            yearsToShow.add(downYear--);
+        }
+        logger.debug("yearsToShow :: {}", yearsToShow);
 
-			activeYear = year;
+        activeYear = year;
 
-			String[] selectors = request.getRequestPathInfo().getSelectors();
-			if (selectors.length > 0) {
-				strYear = selectors[0]; // Year - Selector
-				if (selectors.length > 1) {
-					pageNum = selectors[1]; // Page number - Selector
-				}
-			}
-			logger.debug("Fetched params  pageNum: {}, strYear: {}", pageNum, strYear);
+        String[] selectors = request.getRequestPathInfo().getSelectors();
+        if (selectors.length > 0) {
+            strYear = selectors[0]; // Year - Selector
+            if (selectors.length > 1) {
+                pageNum = selectors[1]; // Page number - Selector
+            }
+        }
+        logger.debug("Fetched params  pageNum: {}, strYear: {}", pageNum, strYear);
 
-			if (null != strYear && !"".equals(strYear) && !"html".equals(strYear)) {
-				activeYear = Integer.parseInt(strYear);
-			}
-			logger.debug("activeYear :: {}", activeYear);
+        if (null != strYear && !"".equals(strYear) && !"html".equals(strYear)) {
+            activeYear = Integer.parseInt(strYear);
+        }
+        logger.debug("activeYear :: {}", activeYear);
 
-			String uri = request.getRequestURI();
-			logger.debug("uri: {}", uri);
-			relativeURL = uri.contains(".") ? uri.substring(0, uri.indexOf('.')) : uri;
-			requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
-			logger.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
-			if (null != pageNum) { // Code to remove page number from url
-				requestURL = requestURL.replaceAll("." + pageNum + "$", "");
-			}
-			if (selectors.length == 0) {
-				requestURL = requestURL + "." + activeYear;
-			}
-			requestURL = requestURL.replace(".", "/");
-			final String pagePath = currentPage.getPath();
-			final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
-			relativeURL = shortenURL(relativeURL, siteUrl);
-			requestURL = shortenURL(requestURL, siteUrl);
-			logger.debug("requestURL - after clean up: {}", requestURL);
-			news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
-			}
-		} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
-			logger.error("Error :: CNWNewsModel :: init method :: {}", e);
-			throw e;
-		}
+        String uri = request.getRequestURI();
+        logger.debug("uri: {}", uri);
+        relativeURL = uri.contains(".") ? uri.substring(0, uri.indexOf('.')) : uri;
+        requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
+        logger.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
+        if (null != pageNum) { // Code to remove page number from url
+            requestURL = requestURL.replaceAll("." + pageNum + "$", "");
+        }
+        if (selectors.length == 0) {
+            requestURL = requestURL + "." + activeYear;
+        }
+        requestURL = requestURL.replace(".", "/");
+        final String pagePath = currentPage.getPath();
+        final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+        relativeURL = shortenURL(relativeURL, siteUrl);
+        requestURL = shortenURL(requestURL, siteUrl);
+        logger.debug("requestURL - after clean up: {}", requestURL);
+        news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize, newsCategories);
+        if (logger.isDebugEnabled()) {
+            logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
+        }
 	}
 	
 	/**

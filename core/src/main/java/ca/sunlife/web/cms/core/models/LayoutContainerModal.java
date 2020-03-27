@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
 
 
 /**
@@ -35,7 +34,7 @@ public interface LayoutContainerModal {
 	 *
 	 * @return the close text
 	 */
-    @Inject @Optional
+    @Inject
 	String getCloseText();
 
 	/**
@@ -43,7 +42,7 @@ public interface LayoutContainerModal {
 	 *
 	 * @return the modal id
 	 */
-    @Inject @Optional
+    @Inject
     String getModalID();
 
 	/**
@@ -51,7 +50,7 @@ public interface LayoutContainerModal {
 	 *
 	 * @return the modal title
 	 */
-    @Inject @Optional
+    @Inject
     String getModalTitle();
     
     /**
@@ -59,7 +58,7 @@ public interface LayoutContainerModal {
 	 *
 	 * @return the modal title level
 	 */
-    @Inject @Optional
+    @Inject
 	String getModalTitleLevel();
     
     /**
@@ -67,7 +66,7 @@ public interface LayoutContainerModal {
      *
      * @return the analytics id
      */
-    @Inject @Optional
+    @Inject
    	String getAnalyticsId();
     
     /**
@@ -75,6 +74,6 @@ public interface LayoutContainerModal {
      *
      * @return the flex required
      */
-    @Inject @Optional
+    @Inject
     String getFlexRequired();
 }

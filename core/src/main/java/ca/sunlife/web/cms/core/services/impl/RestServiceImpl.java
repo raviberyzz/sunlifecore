@@ -84,19 +84,15 @@ public class RestServiceImpl implements RestService {
 		int statusCode;
 		String responseStr = null;
 		try {
-			HttpGet httpGet = new HttpGet(url);
-			response = client.execute(httpGet);
-			statusCode = response.getStatusLine().getStatusCode();
-			logger.debug("Response code :: {}", statusCode);
-			if (statusCode != HttpStatus.SC_OK) {
-				logger.error("Response Error :: statusCode: {}, error msg: {}", statusCode, response.getStatusLine());
-				throw new SystemException(ErrorCodes.APP_ERROR_001);
-			} else {
-				responseStr = EntityUtils.toString(response.getEntity());
-			}
-		} catch (IOException e) {
-			logger.error("Error :: RestServiceImpl :: callGetWebService :: {}", e);
-			throw e;
+		    HttpGet httpGet = new HttpGet(url);
+            response = client.execute(httpGet);
+            statusCode = response.getStatusLine().getStatusCode();
+            logger.debug("Response code :: {}", statusCode);
+            if (statusCode != HttpStatus.SC_OK) {
+                throw new SystemException(ErrorCodes.APP_ERROR_001);
+            } else {
+                responseStr = EntityUtils.toString(response.getEntity());
+            }
 		} finally {
 			if (null != response) {
 				response.close();

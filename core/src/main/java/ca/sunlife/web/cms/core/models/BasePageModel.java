@@ -124,19 +124,19 @@ public class BasePageModel {
 
 	/** The description. */
 	@Inject
-	@Named("jcr:description")
+	@Named(com.day.cq.commons.jcr.JcrConstants.JCR_DESCRIPTION)
 	@Via("resource")
 	private String description;
 
 	/** The language. */
 	@Inject
-	@Named("jcr:language")
+	@Named(com.day.cq.commons.jcr.JcrConstants.JCR_LANGUAGE)
 	@Via("resource")
 	private String language;
 
 	/** The title. */
 	@Inject
-	@Named("jcr:title")
+	@Named(com.day.cq.commons.jcr.JcrConstants.JCR_TITLE)
 	@Via("resource")
 	private String title;
 
@@ -212,7 +212,7 @@ public class BasePageModel {
 
 	/** Tags - UDO */
 	@Inject
-	@Named("cq:tags")
+	@Named(com.day.cq.tagging.TagConstants.PN_TAGS)
 	@Via("resource")
 	private String[] tags;
 
@@ -543,7 +543,7 @@ public class BasePageModel {
 			socialMediaImage = null == socialMediaImage ? configService.getConfigValues("socialMediaImage", pagePath) : socialMediaImage;
 
 			// SEO canonical URL - <link rel="canonical"> tag
-			seoCanonicalUrl = null == canonicalUrl ? domain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT : canonicalUrl;
+			seoCanonicalUrl = null == canonicalUrl ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT) : canonicalUrl;
 
 			setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
 			setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
@@ -777,34 +777,29 @@ public class BasePageModel {
 		logger.debug("Exit :: setOtherUDOTags method of :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 
-	public void processUDOPath(String path) throws Exception {
+	public void processUDOPath(String path) {
 		logger.debug("Entry :: processUDOPath :: path :: {}", path);
-		try {
-			if (null == path || !path.contains(BasePageModelConstants.SLASH_CONSTANT)) {
-				logger.debug("No child tag exists for path: {}", path);
-				return;
-			}
-			String key = path.split(BasePageModelConstants.SLASH_CONSTANT)[0];
-			String value = path.split(BasePageModelConstants.SLASH_CONSTANT)[1];
-			if (otherUDOTagsMap.has(key)) {
-				if (otherUDOTagsMap.get(key).isJsonArray()) {
-					JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
-					jsonArray.add(value);
-					otherUDOTagsMap.add(key, jsonArray);
-				} else {
-					String oldValue = otherUDOTagsMap.get(key).getAsString();
-					JsonArray jsonArray = new JsonArray();
-					jsonArray.add(oldValue);
-					jsonArray.add(value);
-					otherUDOTagsMap.add(key, jsonArray);
-				}
-			} else {
-				otherUDOTagsMap.addProperty(key, value);
-			}
-		} catch (Exception e) {
-			logger.error("Error :: processUDOPath :: ");
-			throw e;
-		}
+		if (null == path || !path.contains(BasePageModelConstants.SLASH_CONSTANT)) {
+            logger.debug("No child tag exists for path: {}", path);
+            return;
+        }
+        String key = path.split(BasePageModelConstants.SLASH_CONSTANT)[0];
+        String value = path.split(BasePageModelConstants.SLASH_CONSTANT)[1];
+        if (otherUDOTagsMap.has(key)) {
+            if (otherUDOTagsMap.get(key).isJsonArray()) {
+                JsonArray jsonArray = otherUDOTagsMap.getAsJsonArray(key);
+                jsonArray.add(value);
+                otherUDOTagsMap.add(key, jsonArray);
+            } else {
+                String oldValue = otherUDOTagsMap.get(key).getAsString();
+                JsonArray jsonArray = new JsonArray();
+                jsonArray.add(oldValue);
+                jsonArray.add(value);
+                otherUDOTagsMap.add(key, jsonArray);
+            }
+        } else {
+            otherUDOTagsMap.addProperty(key, value);
+        }
 		logger.debug("Exit :: processUDOPath :: otherUDOTagsMap :: {}", otherUDOTagsMap);
 	}
 
@@ -831,7 +826,7 @@ public class BasePageModel {
 																																		.toLowerCase(Locale.ROOT) + BasePageModelConstants.SLASH_CONSTANT + releaseId + BasePageModelConstants.SLASH_CONSTANT;
 				logger.debug("processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}", title, description, socialMediaDescripton, canonicalUrl);
 			}
-		} catch (IOException | ParseException | NullPointerException | ApplicationException | SystemException | LoginException | RepositoryException e) {
+		} catch (IOException | ParseException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 			logger.error("Error :: processDataForCNWNews :: {}", e);
 		}
 		logger.debug("Exit :: processDataForCNWNews :: ");
