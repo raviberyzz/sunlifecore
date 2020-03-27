@@ -121,13 +121,19 @@
     }
 
 
-    .subscribe-main-form-wrapper form .button-wrapper .cmp-form-button {
+.subscribe-main-form-wrapper form .button-wrapper .cmp-form-button {
         width: 100%;
         min-width: 100%;
-        max-width: 100%; }
-       .subscribe-main-form-wrapper{
-          padding:0px !important;
-              }
+        max-width: 100%;
+    }
+.subscribe-main-form-wrapper{
+    padding:0px !important;
+    .cmp-form-text{
+        input{
+            width: 100%;
+        }
+    }   
+}
 /*Thank You wrapper Starts Here*/
 
 .thankyou-wrapper{
