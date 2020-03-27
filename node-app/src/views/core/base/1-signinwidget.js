@@ -6,12 +6,12 @@ var providerURL;
 var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
 if (lang == 'fr'){
 
-providerURL="https://www.sunnet.sunlife.com/masunlife/ca/f/signinInfo.wca"; 
+providerURL="https://sit-www.sunnet.sunlife.com/masunlife/ca/f/signinInfo.wca"; 
 
 }
 else{
 
-providerURL="https://www.sunnet.sunlife.com/mysunlife/ca/e/signinInfo.wca"; 
+providerURL="https://sit-www.sunnet.sunlife.com/mysunlife/ca/e/signinInfo.wca"; 
 
 }
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
 	 console.log("before hiting ping url in mbrportal");
      	 var deepLinkName=$(this).attr('data-deeplink');
 
-     	$.ajax({url:'https://www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping',xhrFields: {withCredentials: true},
+     	$.ajax({url:'https://sit-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping',xhrFields: {withCredentials: true},
 
 		           
 			success: function (data, status, xhr) { 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 		       response = JSON.parse(data);
 			    if(xhr.status=="200"&&response.status=="OK")
 	            {
-	               window.location.href = "https://www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC="+deepLinkName;
+	               window.location.href = "https://sit-www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC="+deepLinkName;
 		        }
 			}
 			catch(e)
