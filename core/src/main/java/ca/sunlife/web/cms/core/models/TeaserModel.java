@@ -9,87 +9,87 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface TeaserModel.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface TeaserModel {
 
-	/**
-	 * Gets the image alignment.
-	 *
-	 * @return the image alignment
-	 */
-	@Inject
-	String getImageAlignment();
-	
-	
-	/**
-	 * Gets whether image is banner image.
-	 *
-	 * @return the banner image
-	 */
-	@Inject
-	String getBackgroundImageCheck();
+  /**
+   * Gets the image alignment.
+   *
+   * @return the image alignment
+   */
+  @ Inject
+  String getImageAlignment();
 
-	/**
-	 * Gets the file reference.
-	 *
-	 * @return the file reference
-	 */
-	@Inject
-	String getFileReference();
+  /**
+   * Gets whether image is banner image.
+   *
+   * @return the banner image
+   */
+  @ Inject
+  String getBackgroundImageCheck();
 
-	/**
-	 * Gets the file reference mobile.
-	 *
-	 * @return the file reference mobile
-	 */
-	@Inject
-	String getFileReferenceMobile();
+  /**
+   * Gets the file reference.
+   *
+   * @return the file reference
+   */
+  @ Inject
+  String getFileReference();
 
-	/**
-	 * Gets the alt text.
-	 *
-	 * @return the alt text
-	 */
-	@Inject
-	String getAltText();
+  /**
+   * Gets the file reference mobile.
+   *
+   * @return the file reference mobile
+   */
+  @ Inject
+  String getFileReferenceMobile();
 
-	/**
-	 * Gets the description.
-	 *
-	 * @return the description
-	 */
-	@Inject
-	String getDescription();
+  /**
+   * Gets the alt text.
+   *
+   * @return the alt text
+   */
+  @ Inject
+  String getAltText();
 
-	/**
-	 * Gets the link URL.
-	 *
-	 * @return the link URL
-	 */
-	@Inject
-	String getLinkURL();
+  /**
+   * Gets the description.
+   *
+   * @return the description
+   */
+  @ Inject
+  String getDescription();
 
-	/**
-	 * Gets the target.
-	 *
-	 * @return the target
-	 */
-	@Inject
-	String getTarget();
-	
-	/**
-	 * Gets the analytics id.
-	 *
-	 * @return the analytics id
-	 */
-	@Inject
-	String getAnalyticsId();
+  /**
+   * Gets the link URL.
+   *
+   * @return the link URL
+   */
+  @ Inject
+  String getLinkURL();
 
-	/**
-	 * Gets the decorative image.
-	 *
-	 * @return the decorative image
-	 */
-	@Inject
-	String getIsDecorative();
+  /**
+   * Gets the target.
+   *
+   * @return the target
+   */
+  @ Inject
+  String getTarget();
+
+  /**
+   * Gets the analytics id.
+   *
+   * @return the analytics id
+   */
+  @ Inject
+  String getAnalyticsId();
+
+  /**
+   * Gets the decorative image.
+   *
+   * @return the decorative image
+   */
+  @ Inject
+  String getIsDecorative();
 }

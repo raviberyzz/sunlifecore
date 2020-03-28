@@ -28,52 +28,51 @@ import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
 /**
- * @author mo92
- * The class CNWNewsDetailsModelTest
+ * @author mo92 The class CNWNewsDetailsModelTest
  */
-@ExtendWith(AemContextExtension.class)
+@ ExtendWith (AemContextExtension.class)
 public class CNWNewsDetailsModelTest {
-	private final String DUMMY = "dummy";
-	private final String[] DUMMY_STRING_ARRAY = { DUMMY, "string", "array" };
+  private final String DUMMY = "dummy";
+  private final String [ ] DUMMY_STRING_ARRAY = { DUMMY , "string" , "array" };
 
-	@Mock
-	private Page currentPage;
-	@Mock
-	private SlingHttpServletRequest request;
-	@Mock
-	private CNWNewsService newsService;
+  @ Mock
+  private Page currentPage;
+  @ Mock
+  private SlingHttpServletRequest request;
+  @ Mock
+  private CNWNewsService newsService;
 
-	@InjectMocks
-	private CNWNewsDetailsModel cnwNewsDetailsModel;
+  @ InjectMocks
+  private CNWNewsDetailsModel cnwNewsDetailsModel;
 
-	@BeforeEach
-	public void setup() {
-		MockitoAnnotations.initMocks(this);
-		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
-	}
+  @ BeforeEach
+  public void setup() {
+    MockitoAnnotations.initMocks(this);
+    when(currentPage.getLanguage( )).thenReturn(TestUtils.CANADA_LOCALE);
+  }
 
-	@Test
-	public void testInit() throws IOException, ParseException, ApplicationException, SystemException {
-		when(request.getRequestPathInfo()).thenReturn(TestUtils.getDummyRequestPathInfo(DUMMY_STRING_ARRAY));
+  @ Test
+  public void testInit()
+      throws IOException , ParseException , ApplicationException , SystemException {
+    when(request.getRequestPathInfo( ))
+        .thenReturn(TestUtils.getDummyRequestPathInfo(DUMMY_STRING_ARRAY));
 
-		cnwNewsDetailsModel.init();
-		assertEquals(DUMMY, cnwNewsDetailsModel.getReleaseId());
-		assertNull(cnwNewsDetailsModel.getNewsDetails());
+    cnwNewsDetailsModel.init( );
+    assertEquals(DUMMY , cnwNewsDetailsModel.getReleaseId( ));
+    assertNull(cnwNewsDetailsModel.getNewsDetails( ));
 
-		when(newsService.getCNWNewsDetails(DUMMY, TestUtils.CANADA_LOCALE.getLanguage())).thenReturn(new NewsDetails());
-		cnwNewsDetailsModel.init();
-		assertNotNull(cnwNewsDetailsModel.getNewsDetails());
-	}
+    when(newsService.getCNWNewsDetails(DUMMY , TestUtils.CANADA_LOCALE.getLanguage( )))
+        .thenReturn(new NewsDetails( ));
+    cnwNewsDetailsModel.init( );
+    assertNotNull(cnwNewsDetailsModel.getNewsDetails( ));
+  }
 
-	@Test
-	public void testInitException() {
-		TestLogger logger = TestLoggerFactory.getTestLogger(cnwNewsDetailsModel.getClass());
-
-		// not initializing fields to get Null Pointer Exception
-		cnwNewsDetailsModel.init();
-
-		boolean logHasException = TestUtils.getLogMessageFlag(logger.getLoggingEvents(),
-				"Error :: CNWNewsDetailsModel :: init :: Exception :: {}");
-		assertTrue(logHasException);
-	}
+  @ Test
+  public void testInitException() {
+    try {
+      cnwNewsDetailsModel.init( );
+    } catch (Exception e) {
+      assertTrue(e instanceof NullPointerException);
+    }
+  }
 }

@@ -9,29 +9,24 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface ButtonModel.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ButtonModel {
 
-	/**
-	 * Gets the target.
-	 *
-	 * @return the target
-	 */
-	@Inject
-	String getTarget();
-	
-	/**
-	 * Gets the dataTitle.
-	 *
-	 * @return the dataTitle
-	 */
-    @Inject
-	String getDataTitle();
-    
+  /**
+   * Gets the target.
+   *
+   * @return the target
+   */
+  @ Inject
+  String getTarget();
+
+  /**
+   * Gets the dataTitle.
+   *
+   * @return the dataTitle
+   */
+  @ Inject
+  String getDataTitle();
+
 }
-	
-	
-	
-   
-
-

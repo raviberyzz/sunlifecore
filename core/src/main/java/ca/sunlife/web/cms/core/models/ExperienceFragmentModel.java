@@ -2,6 +2,8 @@ package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.RepositoryException;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -10,99 +12,120 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.day.cq.wcm.api.Page;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
 
+import com.day.cq.wcm.api.Page;
+
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * Sling model for Experience fragment model.
  *
  * @author MO93
  */
-@Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class ,
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ExperienceFragmentModel {
-	
-    /** The Constant LOGGER. */
-	private static final Logger log = LoggerFactory.getLogger(ExperienceFragmentModel.class);
-	
-		
-	/** The Fragment Path. */
-	@Inject
-	@Via("resource")
-	private String fragmentPath;
-	
-	
-	/** The config service. */
-	@Inject
-	private SiteConfigService configService;
-	
-	private String modifiedFragmentPath;	
-	
-	@ScriptVariable
-    private Page currentPage;
 
-	public String getFragmentPath() {
-		return fragmentPath;
-	}
+  /** The Constant LOGGER. */
+  private static final Logger log = LoggerFactory.getLogger(ExperienceFragmentModel.class);
 
-	public void setFragmentPath(String fragmentPath) {
-		this.fragmentPath = fragmentPath;
-	}
+  /** The Fragment Path. */
+  @ Inject
+  @ Via ("resource")
+  private String fragmentPath;
 
-	public String getModifiedFragmentPath() {
-		return modifiedFragmentPath;
-	}
+  /** The config service. */
+  @ Inject
+  private SiteConfigService configService;
 
-	public void setModifiedFragmentPath(String modifiedFragmentPath) {
-		this.modifiedFragmentPath = modifiedFragmentPath;
-	}
+  /** The modified fragment path. */
+  private String modifiedFragmentPath;
 
-	@PostConstruct
-	public void init()  {	
-		
-		String headerPath = "";
-		String fragmentSplit = "";		
-		
-		try {
-		if( null == fragmentPath )
-		{
-			return;
-		}
-		else if(currentPage.getPath().contains("/content/experience-fragments")) {
-			modifiedFragmentPath = fragmentPath;
-		}
-		else
-		{			
-			if(fragmentPath.contains("header")||fragmentPath.contains("footer")) {
-			
-				headerPath = configService.getConfigValues("experienceFragmentPath", currentPage.getPath());	
-				log.info("Header path is : {}" , headerPath);
-				if( null != headerPath && headerPath.length() > 0 ) {	
-				String[] pathSplit = fragmentPath.split("/");
-				for(int i=0; i<pathSplit.length;i++) {
-        		if(pathSplit[i].contains("header") || pathSplit[i].contains("footer")) {
-        			  fragmentSplit = "/" + pathSplit[i] + "/";
-        			  break;
-        		 }
-				}
-				String[] finalSplit = fragmentPath.split(fragmentSplit);
-				modifiedFragmentPath = headerPath + fragmentSplit + finalSplit[1];
-				}
-				else {
-					modifiedFragmentPath=fragmentPath;
-				}
-			}
-			
-			else {
-				modifiedFragmentPath=fragmentPath;		
-			}
-		}
-		
-		}
-		 catch (Exception e) {
-			 log.error("Error :: init method of Experience fragment model :: {}", e);
-			}
-	  }
-	
-	}
+  /** The current page. */
+  @ ScriptVariable
+  private Page currentPage;
+
+  /**
+   * Gets the fragment path.
+   *
+   * @return the fragment path
+   */
+  public String getFragmentPath() {
+    return fragmentPath;
+  }
+
+  /**
+   * Sets the fragment path.
+   *
+   * @param fragmentPath
+   *          the new fragment path
+   */
+  public void setFragmentPath(final String fragmentPath) {
+    this.fragmentPath = fragmentPath;
+  }
+
+  /**
+   * Gets the modified fragment path.
+   *
+   * @return the modified fragment path
+   */
+  public String getModifiedFragmentPath() {
+    return modifiedFragmentPath;
+  }
+
+  /**
+   * Sets the modified fragment path.
+   *
+   * @param modifiedFragmentPath
+   *          the new modified fragment path
+   */
+  public void setModifiedFragmentPath(final String modifiedFragmentPath) {
+    this.modifiedFragmentPath = modifiedFragmentPath;
+  }
+
+  /**
+   * Inits the.
+   */
+  @ PostConstruct
+  public void init() {
+
+    String headerPath = "";
+    String fragmentSplit = "";
+
+    try {
+      if (null == fragmentPath) {
+        return;
+      } else if (currentPage.getPath().contains("/content/experience-fragments")) {
+        modifiedFragmentPath = fragmentPath;
+      } else {
+        if (fragmentPath.contains("header") || fragmentPath.contains("footer")) {
+
+          headerPath = configService.getConfigValues("experienceFragmentPath",
+              currentPage.getPath());
+          log.info("Header path is : {}", headerPath);
+          if (null != headerPath && headerPath.length() > 0) {
+            final String [ ] pathSplit = fragmentPath.split("/");
+            for (final String element : pathSplit) {
+              if (element.contains("header") || element.contains("footer")) {
+                fragmentSplit = "/" + element + "/";
+                break;
+              }
+            }
+            final String [ ] finalSplit = fragmentPath.split(fragmentSplit);
+            modifiedFragmentPath = headerPath + fragmentSplit + finalSplit [ 1 ];
+          } else {
+            modifiedFragmentPath = fragmentPath;
+          }
+        }
+
+        else {
+          modifiedFragmentPath = fragmentPath;
+        }
+      }
+
+    } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
+      log.error("Error :: init method of Experience fragment model :: {}", e);
+    }
+  }
+
+}

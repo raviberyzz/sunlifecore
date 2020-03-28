@@ -31,249 +31,331 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.RestService;
 
 /**
- * @author mo92 The class CNWNewsServiceImpl
+ * The Class CNWNewsServiceImpl.
  *
+ * @author mo92 The class CNWNewsServiceImpl
  */
-@Component(service = { CNWNewsService.class }, immediate = true)
-@Designate(ocd = CNWNewsConfig.class)
+@ Component (service = { CNWNewsService.class } , immediate = true)
+@ Designate (ocd = CNWNewsConfig.class)
 public class CNWNewsServiceImpl implements CNWNewsService {
 
-	/**
-	 * The logger.
-	 */
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+  /**
+   * The logger.
+   */
+  private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * CNWNewsConfig object
-	 */
-	private CNWNewsConfig cnwNewsConfig;
+  /** CNWNewsConfig object. */
+  private CNWNewsConfig cnwNewsConfig;
 
-	@Reference
-	private RestService restService;
+  /** The rest service. */
+  @ Reference
+  private RestService restService;
 
-	public static final String CNW_SERVICE_PARAM = "?service=cnw"; // CNW service
-	public static final String METHOD_LIST = "&method=list"; // CNW service method
-	public static final String HTML_SAFE = "&safehtml=1"; // Safe HTML
-	public static final String CATEGORY = "&category[]="; // Category for ca site
-	public static final String FORMAT_JSON = "&format=json"; // JSON format output
-	public static final String CNW_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss zzzzz"; // CNW date format
-	private SimpleDateFormat inputDateFormatter = new SimpleDateFormat(CNW_DATE_PATTERN); // date input formatter
-	private HashMap<String, String> dateFormatMap;
+  /** The Constant CNW_SERVICE_PARAM. */
+  public static final String CNW_SERVICE_PARAM = "?service=cnw"; // CNW service
 
-	@Activate
-	public void activate(CNWNewsConfig cnwNewsConfig) {
-		this.cnwNewsConfig = cnwNewsConfig;
-		logger.debug("Entry :: CNWNewsServiceImpl :: activate :: cnwNewsConfig: {}, inputFormatter: {}", cnwNewsConfig.getCnwServiceUrl(), this.inputDateFormatter);
-		String[] dateFormatConfig = this.cnwNewsConfig.getDateFormatLocaleMapping();
-		if (null != dateFormatConfig) {
-			dateFormatMap = new HashMap<>();
-			for (String dateFormat : dateFormatConfig) {
-				String[] dateFormatArray = dateFormat.split("~");
-				dateFormatMap.put(dateFormatArray[0], dateFormatArray[1]);
-			}
-		} else {
-			logger.debug("Warning :: date format - locale mapping does not exist :: ");
-		}
-		logger.debug("Exit :: CNWNewsServiceImpl :: activate :: dateFormatMap: {}", dateFormatMap);
-	}
+  /** The Constant METHOD_LIST. */
+  public static final String METHOD_LIST = "&method=list"; // CNW service method
 
-	public ReleaseMain getCNWNewsOverview(String locale, String numberOfNews, List<NewsCategory> newsCategories) throws IOException, ApplicationException, SystemException {
-		logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsOverview :: locale :: {}", locale);
-		if (null == dateFormatMap) {
-			logger.debug("getCNWNewsOverview :: Date format is not set, please configure date format :: ");
-			return null;
-		}
-		ReleaseMain releaseMain = null;
-		StringBuilder importUrl = new StringBuilder();
-		boolean isLocaleEn = (null != locale && "en".equals(locale));
-		logger.debug("getCNWNewsOverview :: isLocaleEn :: {}", Boolean.valueOf(isLocaleEn));
-		String cnwRequestListURI = this.cnwNewsConfig.getCnwServiceUrl();
-		importUrl.append(cnwRequestListURI);
-		importUrl.append(CNW_SERVICE_PARAM);
-		importUrl.append(METHOD_LIST);
-		if (!isLocaleEn) {
-			importUrl.append("_" + locale);
-		}
-		importUrl.append(HTML_SAFE);
-		for (NewsCategory category : newsCategories) {
-			importUrl.append(CATEGORY + category.getCategory());
-		}
-		importUrl.append(FORMAT_JSON);
-		importUrl.append("&limit=");
-		importUrl.append(numberOfNews);
+  /** The Constant HTML_SAFE. */
+  public static final String HTML_SAFE = "&safehtml=1"; // Safe HTML
 
-		String response = this.restService.callGetWebService(importUrl.toString());
-		if (null != response && response.length() > 0)
-			releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
-		logger.debug("locale: {}, {}", locale, releaseMain);
-		if (null != releaseMain && null != releaseMain.getReleases() && null != releaseMain.getReleases().getRelease()) {
-			releaseMain.getReleases().getRelease().stream().forEach(o -> {
-				try {
-					Date date = this.inputDateFormatter.parse(o.getReleaseDate());
-					o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
-					o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
-				} catch (ParseException e) {
-					logger.error("Error :: parsing the release date {}", e);
-					return;
-				}
-			});
-		}
-		return releaseMain;
-	}
+  /** The Constant CATEGORY. */
+  public static final String CATEGORY = "&category[]="; // Category for ca site
 
-	public News getCNWNews(String locale, String requestURL, String pageNum, String activeYear, String pageSize, List<NewsCategory> newsCategories) throws IOException, ApplicationException, SystemException {
-		logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNews ");
-		int curPage = 1;
-		int prevPage = 0;
-		News newsObj = null;
-		try {
-			if (null == dateFormatMap) {
-				logger.debug("getCNWNews :: Date format is not set, please configure date format :: ");
-				return null;
-			}
-			StringBuilder importUrl = new StringBuilder();
-			String cnwRequestListURI = this.cnwNewsConfig.getCnwServiceUrl();
-			importUrl.append(cnwRequestListURI);
-			importUrl.append(CNW_SERVICE_PARAM);
-			importUrl.append(METHOD_LIST);
-			if (null != locale && !"en".equals(locale)) {
-				importUrl.append("_" + locale);
-			}
-			importUrl.append(HTML_SAFE);
-			importUrl.append(FORMAT_JSON);
-			importUrl.append("&fields=releaseDate,headline,subheadline,summary");
-			for (NewsCategory category : newsCategories) {
-				importUrl.append(CATEGORY + category.getCategory());
-			}
-			importUrl.append("&start_date=");
-			importUrl.append(activeYear);
-			importUrl.append("0101&end_date=");
-			importUrl.append(activeYear);
-			importUrl.append("1231");
-			importUrl.append("&limit=");
-			importUrl.append(pageSize);
+  /** The Constant FORMAT_JSON. */
+  public static final String FORMAT_JSON = "&format=json"; // JSON format output
 
-			if (pageNum != null) {
-				curPage = Integer.parseInt(pageNum);
-				if (curPage <= 0) {
-					curPage = 1;
-				}
-				prevPage = curPage - 1;
-				int offset = prevPage * Integer.parseInt(pageSize);
-				importUrl.append("&offset=");
-				importUrl.append(offset);
-			}
-			logger.debug("importUrl: {}", importUrl);
-			ReleaseMain news = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
-			if (null != news && null != news.getReleases() && null != news.getReleases().getRelease()) {
-				news.getReleases().getRelease().stream().forEach(o -> {
-					try {
-						Date date = this.inputDateFormatter.parse(o.getReleaseDate());
-						o.setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(date));
-						o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "").replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
-					} catch (ParseException e) {
-						logger.error("Error :: parsing the release date {}", e);
-					}
-				});
-				newsObj = new News();
-				newsObj.setReleaseMain(news);
-				newsObj.setPagination(setPagination(curPage, prevPage, requestURL, news.getReleases().getMatchingCount()));
-			}
+  /** The Constant CNW_DATE_PATTERN. */
+  public static final String CNW_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss zzzzz"; // CNW date
+                                                                                   // format
 
-			logger.debug("Fetched news :: {}", news);
-			logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNews :: {}", newsObj);
-			return newsObj;
-		} catch (IOException | ApplicationException | SystemException e) {
-			logger.error("Error :: CNWNewsServiceImpl :: getCNWNews :: {}", e);
-			throw e;
-		}
-	}
+  /** The input date formatter. */
+  private final SimpleDateFormat inputDateFormatter = new SimpleDateFormat(CNW_DATE_PATTERN); // date
+                                                                                              // input
 
-	private Pagination setPagination(int curPage, int prevPage, String requestURL, String totalResults) {
-		logger.debug("Entry :: CNWNewsServiceImpl :: setPagination :: curPage: {}, prevPage: {}, requestURL: {}", curPage, prevPage, requestURL);
-		String rcordPerPageStr = "10";
-		int firstBreakPt = 5;
-		int firstMinTotal = 6;
-		int resultSize = 0;
-		final String requestUrlStr = requestURL + "/";
-		logger.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", rcordPerPageStr, totalResults);
+  /** The date format map. */
+  // formatter
+  private HashMap <String , String> dateFormatMap;
 
-		int recordPerPage = Integer.parseInt(rcordPerPageStr);
-		resultSize = Integer.parseInt(totalResults);
-		int mod = resultSize % recordPerPage;
-		int totalPages = resultSize / recordPerPage;
-		if (mod > 0) {
-			totalPages++;
-		}
-		logger.debug("mod ={}, totalPages={}", Integer.valueOf(mod), Integer.valueOf(totalPages));
+  /**
+   * Activate.
+   *
+   * @param cnwNewsConfig
+   *          the cnw news config
+   */
+  @ Activate
+  public void activate(final CNWNewsConfig cnwNewsConfig) {
+    this.cnwNewsConfig = cnwNewsConfig;
+    logger.debug("Entry :: CNWNewsServiceImpl :: activate :: cnwNewsConfig: {}, inputFormatter: {}",
+        cnwNewsConfig.getCnwServiceUrl(), inputDateFormatter);
+    final String [ ] dateFormatConfig = this.cnwNewsConfig.getDateFormatLocaleMapping();
+    if (null != dateFormatConfig) {
+      dateFormatMap = new HashMap <>();
+      for (final String dateFormat : dateFormatConfig) {
+        final String [ ] dateFormatArray = dateFormat.split("~");
+        dateFormatMap.put(dateFormatArray [ 0 ], dateFormatArray [ 1 ]);
+      }
+    } else {
+      logger.debug("Warning :: date format - locale mapping does not exist :: ");
+    }
+    logger.debug("Exit :: CNWNewsServiceImpl :: activate :: dateFormatMap: {}", dateFormatMap);
+  }
 
-		int secondBreakPt = totalPages - 4;
+  /*
+   * (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.CNWNewsService#getCNWNewsOverview(java.lang.String,
+   * java.lang.String, java.util.List)
+   */
+  @ Override
+  public ReleaseMain getCNWNewsOverview(final String locale , final String numberOfNews ,
+      final List <NewsCategory> newsCategories)
+      throws IOException , ApplicationException , SystemException {
+    logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsOverview :: locale :: {}", locale);
+    if (null == dateFormatMap) {
+      logger
+          .debug("getCNWNewsOverview :: Date format is not set, please configure date format :: ");
+      return null;
+    }
+    ReleaseMain releaseMain = null;
+    final StringBuilder importUrl = new StringBuilder();
+    final boolean isLocaleEn = null != locale && "en".equals(locale);
+    logger.debug("getCNWNewsOverview :: isLocaleEn :: {}", Boolean.valueOf(isLocaleEn));
+    final String cnwRequestListURI = cnwNewsConfig.getCnwServiceUrl();
+    importUrl.append(cnwRequestListURI);
+    importUrl.append(CNW_SERVICE_PARAM);
+    importUrl.append(METHOD_LIST);
+    if ( ! isLocaleEn) {
+      importUrl.append("_" + locale);
+    }
+    importUrl.append(HTML_SAFE);
+    for (final NewsCategory category : newsCategories) {
+      importUrl.append(CATEGORY + category.getCategory());
+    }
+    importUrl.append(FORMAT_JSON);
+    importUrl.append("&limit=");
+    importUrl.append(numberOfNews);
 
-		if (totalPages <= 1) {
-			return null;
-		}
-		List<PageItem> pageItems = new ArrayList<>();
-		PageItem pageItemEllipsis = new PageItem();
-		pageItemEllipsis.setEllipsis(true);
+    final String response = restService.callGetWebService(importUrl.toString());
+    if (null != response && response.length() > 0) {
+      releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
+    }
+    logger.debug("locale: {}, {}", locale, releaseMain);
+    if (null != releaseMain && null != releaseMain.getReleases()
+        && null != releaseMain.getReleases().getRelease()) {
+      releaseMain.getReleases().getRelease().stream().forEach(o -> {
+        try {
+          final Date date = inputDateFormatter.parse(o.getReleaseDate());
+          o.setReleaseDate(
+              new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale)).format(date));
+          o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
+              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
+        } catch (final ParseException e) {
+          logger.error("Error :: parsing the release date {}", e);
+          return;
+        }
+      });
+    }
+    return releaseMain;
+  }
 
-		if (curPage < firstBreakPt || totalPages <= firstMinTotal) {
-			int maxFirst = firstBreakPt;
-			if (totalPages < firstMinTotal + 1) {
-				maxFirst = totalPages;
-			}
-			setInnerPageItems(2, maxFirst, pageItems, requestUrlStr);
-			if (totalPages > firstMinTotal) {
-				pageItems.add(pageItemEllipsis);
+  /*
+   * (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.CNWNewsService#getCNWNews(java.lang.String,
+   * java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List)
+   */
+  @ Override
+  public News getCNWNews(final String locale , final String requestURL , final String pageNum ,
+      final String activeYear , final String pageSize , final List <NewsCategory> newsCategories)
+      throws IOException , ApplicationException , SystemException {
+    logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNews ");
+    int curPage = 1;
+    int prevPage = 0;
+    News newsObj = null;
+    if (null == dateFormatMap) {
+      logger.debug("getCNWNews :: Date format is not set, please configure date format :: ");
+      return null;
+    }
+    final StringBuilder importUrl = new StringBuilder();
+    final String cnwRequestListURI = cnwNewsConfig.getCnwServiceUrl();
+    importUrl.append(cnwRequestListURI);
+    importUrl.append(CNW_SERVICE_PARAM);
+    importUrl.append(METHOD_LIST);
+    if (null != locale && ! "en".equals(locale)) {
+      importUrl.append("_" + locale);
+    }
+    importUrl.append(HTML_SAFE);
+    importUrl.append(FORMAT_JSON);
+    importUrl.append("&fields=releaseDate,headline,subheadline,summary");
+    for (final NewsCategory category : newsCategories) {
+      importUrl.append(CATEGORY + category.getCategory());
+    }
+    importUrl.append("&start_date=");
+    importUrl.append(activeYear);
+    importUrl.append("0101&end_date=");
+    importUrl.append(activeYear);
+    importUrl.append("1231");
+    importUrl.append("&limit=");
+    importUrl.append(pageSize);
 
-				PageItem pageItem = new PageItem();
-				pageItem.setHref(requestUrlStr + String.valueOf(totalPages));
-				pageItem.setIndex(totalPages);
-				pageItems.add(pageItem);
-			}
-		} else if (curPage >= secondBreakPt) {
-			pageItems.add(pageItemEllipsis);
-			setInnerPageItems(secondBreakPt, totalPages, pageItems, requestUrlStr);
-		} else {
-			pageItems.add(pageItemEllipsis);
-			setInnerPageItems(curPage - 2, curPage + 2, pageItems, requestUrlStr);
-			pageItems.add(pageItemEllipsis);
+    if (pageNum != null) {
+      curPage = Integer.parseInt(pageNum);
+      if (curPage <= 0) {
+        curPage = 1;
+      }
+      prevPage = curPage - 1;
+      final int offset = prevPage * Integer.parseInt(pageSize);
+      importUrl.append("&offset=");
+      importUrl.append(offset);
+    }
+    logger.debug("importUrl: {}", importUrl);
+    final ReleaseMain news = new ObjectMapper()
+        .readValue(restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
+    if (null != news && null != news.getReleases() && null != news.getReleases().getRelease()) {
+      news.getReleases().getRelease().stream().forEach(o -> {
+        try {
+          final Date date = inputDateFormatter.parse(o.getReleaseDate());
+          o.setReleaseDate(
+              new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale)).format(date));
+          o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
+              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
+        } catch (final ParseException e) {
+          logger.error("Error :: parsing the release date {}", e);
+        }
+      });
+      newsObj = new News();
+      newsObj.setReleaseMain(news);
+      newsObj.setPagination(
+          setPagination(curPage, prevPage, requestURL, news.getReleases().getMatchingCount()));
+    }
 
-			PageItem pageItem = new PageItem();
-			pageItem.setHref(requestUrlStr + String.valueOf(totalPages));
-			pageItem.setIndex(totalPages);
-			pageItems.add(pageItem);
-		}
-		int nextPageNo = curPage + 1;
-		return new Pagination(prevPage, curPage, nextPageNo, totalPages, pageItems);
-	}
+    logger.debug("Fetched news :: {}", news);
+    logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNews :: {}", newsObj);
+    return newsObj;
+  }
 
-	public void setInnerPageItems(int startIndex, int endIndex, List<PageItem> pageItems, String requestUrlStr) {
-		for (int i = startIndex; i <= endIndex; i++) {
-			PageItem pageItem = new PageItem();
-			pageItem.setHref(requestUrlStr + String.valueOf(i));
-			pageItem.setIndex(i);
-			pageItems.add(pageItem);
-		}
-	}
+  /**
+   * Sets the pagination.
+   *
+   * @param curPage
+   *          the cur page
+   * @param prevPage
+   *          the prev page
+   * @param requestURL
+   *          the request URL
+   * @param totalResults
+   *          the total results
+   * @return the pagination
+   */
+  private Pagination setPagination(final int curPage , final int prevPage ,
+      final String requestURL , final String totalResults) {
+    logger.debug(
+        "Entry :: CNWNewsServiceImpl :: setPagination :: curPage: {}, prevPage: {}, requestURL: {}",
+        curPage, prevPage, requestURL);
+    final String rcordPerPageStr = "10";
+    final int firstBreakPt = 5;
+    final int firstMinTotal = 6;
+    int resultSize = 0;
+    final String requestUrlStr = requestURL + "/";
+    logger.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", rcordPerPageStr,
+        totalResults);
 
-	public NewsDetails getCNWNewsDetails(String id, String locale) throws IOException, ParseException, ApplicationException, SystemException {
-		logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsDetails :: id: {}, locale: {}", id, locale);
-		NewsDetails newsDetails = null;
-		StringBuilder importUrl = new StringBuilder();
-		importUrl.append(this.cnwNewsConfig.getCnwServiceUrl());
-		importUrl.append(CNW_SERVICE_PARAM);
-		importUrl.append("&method=get");
-		importUrl.append(HTML_SAFE);
-		importUrl.append(FORMAT_JSON);
-		importUrl.append("&id=" + id);
-		try {
-			newsDetails = new ObjectMapper().readValue(this.restService.callGetWebService(importUrl.toString()), NewsDetails.class);
-			newsDetails.getRelease().setReleaseDate((new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))).format(this.inputDateFormatter.parse(newsDetails.getRelease().getReleaseDate())));
-		} catch (ParseException e) {
-			logger.error("Error :: ParseException :: {}", e);
-			throw e;
-		}
-		logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNewsDetails :: newsDetails :: {}", newsDetails);
-		return newsDetails;
-	}
+    final int recordPerPage = Integer.parseInt(rcordPerPageStr);
+    resultSize = Integer.parseInt(totalResults);
+    final int mod = resultSize % recordPerPage;
+    int totalPages = resultSize / recordPerPage;
+    if (mod > 0) {
+      totalPages++ ;
+    }
+    logger.debug("mod ={}, totalPages={}", Integer.valueOf(mod), Integer.valueOf(totalPages));
+
+    final int secondBreakPt = totalPages - 4;
+
+    if (totalPages <= 1) {
+      return null;
+    }
+    final List <PageItem> pageItems = new ArrayList <>();
+    final PageItem pageItemEllipsis = new PageItem();
+    pageItemEllipsis.setEllipsis(true);
+
+    if (curPage < firstBreakPt || totalPages <= firstMinTotal) {
+      int maxFirst = firstBreakPt;
+      if (totalPages < firstMinTotal + 1) {
+        maxFirst = totalPages;
+      }
+      setInnerPageItems(2, maxFirst, pageItems, requestUrlStr);
+      if (totalPages > firstMinTotal) {
+        pageItems.add(pageItemEllipsis);
+
+        final PageItem pageItem = new PageItem();
+        pageItem.setHref(requestUrlStr + String.valueOf(totalPages));
+        pageItem.setIndex(totalPages);
+        pageItems.add(pageItem);
+      }
+    } else if (curPage >= secondBreakPt) {
+      pageItems.add(pageItemEllipsis);
+      setInnerPageItems(secondBreakPt, totalPages, pageItems, requestUrlStr);
+    } else {
+      pageItems.add(pageItemEllipsis);
+      setInnerPageItems(curPage - 2, curPage + 2, pageItems, requestUrlStr);
+      pageItems.add(pageItemEllipsis);
+
+      final PageItem pageItem = new PageItem();
+      pageItem.setHref(requestUrlStr + String.valueOf(totalPages));
+      pageItem.setIndex(totalPages);
+      pageItems.add(pageItem);
+    }
+    final int nextPageNo = curPage + 1;
+    return new Pagination(prevPage,curPage,nextPageNo,totalPages,pageItems);
+  }
+
+  /**
+   * Sets the inner page items.
+   *
+   * @param startIndex
+   *          the start index
+   * @param endIndex
+   *          the end index
+   * @param pageItems
+   *          the page items
+   * @param requestUrlStr
+   *          the request url str
+   */
+  public void setInnerPageItems(final int startIndex , final int endIndex ,
+      final List <PageItem> pageItems , final String requestUrlStr) {
+    for (int i = startIndex ; i <= endIndex ; i++ ) {
+      final PageItem pageItem = new PageItem();
+      pageItem.setHref(requestUrlStr + String.valueOf(i));
+      pageItem.setIndex(i);
+      pageItems.add(pageItem);
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.CNWNewsService#getCNWNewsDetails(java.lang.String,
+   * java.lang.String)
+   */
+  @ Override
+  public NewsDetails getCNWNewsDetails(final String id , final String locale)
+      throws IOException , ParseException , ApplicationException , SystemException {
+    logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsDetails :: id: {}, locale: {}", id,
+        locale);
+    NewsDetails newsDetails = null;
+    final StringBuilder importUrl = new StringBuilder();
+    importUrl.append(cnwNewsConfig.getCnwServiceUrl());
+    importUrl.append(CNW_SERVICE_PARAM);
+    importUrl.append("&method=get");
+    importUrl.append(HTML_SAFE);
+    importUrl.append(FORMAT_JSON);
+    importUrl.append("&id=" + id);
+    newsDetails = new ObjectMapper().readValue(restService.callGetWebService(importUrl.toString()),
+        NewsDetails.class);
+    newsDetails.getRelease()
+        .setReleaseDate(new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale))
+            .format(inputDateFormatter.parse(newsDetails.getRelease().getReleaseDate())));
+    logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNewsDetails :: newsDetails :: {}",
+        newsDetails);
+    return newsDetails;
+  }
 }

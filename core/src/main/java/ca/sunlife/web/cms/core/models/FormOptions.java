@@ -13,30 +13,31 @@ import com.adobe.cq.wcm.core.components.models.form.Options;
 /**
  * The Class FormOptions.
  */
-@Model(adaptables = SlingHttpServletRequest.class,adapters = Options.class,resourceType = "sunlife/core/components/form/options")
+@ Model (adaptables = SlingHttpServletRequest.class , adapters = Options.class , resourceType = "sunlife/core/components/form/options")
 public class FormOptions extends OptionsImpl {
-	/** The id. */
-	@Inject
-	@Via("resource")
-	@Optional
-	private String id;
-	
-	/**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	@Override
-	public String getId() {
-		return id;
-	}
+  /** The id. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String id;
 
-	/**
-	 * Sets the id.
-	 *
-	 * @param id the new id
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
+  /**
+   * Gets the id.
+   *
+   * @return the id
+   */
+  @ Override
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets the id.
+   *
+   * @param id
+   *          the new id
+   */
+  public void setId(final String id) {
+    this.id = id;
+  }
 }

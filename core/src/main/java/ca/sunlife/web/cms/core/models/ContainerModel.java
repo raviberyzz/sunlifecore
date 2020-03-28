@@ -9,23 +9,24 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface ContainerModel.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ContainerModel {
 
-	/**
-	 * Gets the analytics id.
-	 *
-	 * @return the analytics id
-	 */
-	@Inject
-	public String getAnalyticsId();
+  /**
+   * Gets the analytics id.
+   *
+   * @return the analytics id
+   */
+  @ Inject
+  public String getAnalyticsId();
 
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	@Inject
-	public String getType();
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
+  @ Inject
+  public String getType();
 
 }

@@ -32,81 +32,83 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
-@ExtendWith(AemContextExtension.class)
+@ ExtendWith (AemContextExtension.class)
 public class SiteConfigServiceImplTest {
 
-	private final AemContext context = new AemContext();
+  private final AemContext context = new AemContext( );
 
-	@Mock
-	private CoreResourceResolver resourceResolver;
+  @ Mock
+  private CoreResourceResolver resourceResolver;
 
-	@Mock
-	private QueryBuilder builder;
+  @ Mock
+  private QueryBuilder builder;
 
-	@Mock
-	ResourceResolver resolver;
+  @ Mock
+  ResourceResolver resolver;
 
-	@Mock
-	Resource altLangResource;
-	
-	@Mock
-	Query query;
-	
-	@Mock
-	SearchResult result;
-	
-	@Mock
-	Map<String, HashMap<String, String>> siteConfigMap;
+  @ Mock
+  Resource altLangResource;
 
-	@InjectMocks
-	private SiteConfigServiceImpl serviceImpl;
+  @ Mock
+  Query query;
 
-	@BeforeEach
-	void setup() {
-		MockitoAnnotations.initMocks(this);
-	}
+  @ Mock
+  SearchResult result;
 
-	@Test
-	void activate() throws LoginException, RepositoryException {
-		Resource metadataResource = context.create().resource("/content", "jcr:primaryType", "nt:unstructured");
-		when(resourceResolver.getResourceResolver()).thenReturn(resolver);
-		when(builder.createQuery(any(), any())).thenReturn(query);
-		when(query.getResult()).thenReturn(result);
-		Hit mockHit = mock(Hit.class);
-		final List<Hit> hits = Collections.singletonList(mockHit);
-		when(result.getHits()).thenReturn(hits);
-		when(resolver.getResource(any(String.class))).thenReturn(metadataResource);
-		when(mockHit.getPath()).thenReturn("/abc");
-		when(resolver.getResource("/abc/jcr:content/config/alternateLanguages")).thenReturn(altLangResource);
-		serviceImpl.activate(mock(SiteConfig.class));
-	}
+  @ Mock
+  Map <String , HashMap <String , String>> siteConfigMap;
 
-	@Test
-	void getConfigValues1() {
-		String name = "NAME";
-		String path = "/PAGE/NewPage";
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(name, "ABC");
-		when(siteConfigMap.containsKey(any())).thenReturn(true);
-		when(siteConfigMap.get(any())).thenReturn(map);
-		String out = serviceImpl.getConfigValues(name, path);
-		assertNotNull(out);
-	}
-	
-	@Test
-	void getConfigValuesNeg() {
-		String name = "NAME";
-		String path = "/PAGE/NewPage";
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(name, "ABC");
-		when(siteConfigMap.containsKey(any())).thenReturn(false);
-		when(siteConfigMap.get(any())).thenReturn(map);
-		String out = serviceImpl.getConfigValues(name, path);
-		assertNotNull(out);
-	}
-	
-	@Test
-	void setConfiguration() {
+  @ InjectMocks
+  private SiteConfigServiceImpl serviceImpl;
 
-	}
+  @ BeforeEach
+  void setup() {
+    MockitoAnnotations.initMocks(this);
+  }
+
+  @ Test
+  void activate() throws LoginException , RepositoryException {
+    Resource metadataResource = context.create( ).resource("/content" , "jcr:primaryType" ,
+        "nt:unstructured");
+    when(resourceResolver.getResourceResolver( )).thenReturn(resolver);
+    when(builder.createQuery(any( ) , any( ))).thenReturn(query);
+    when(query.getResult( )).thenReturn(result);
+    Hit mockHit = mock(Hit.class);
+    final List <Hit> hits = Collections.singletonList(mockHit);
+    when(result.getHits( )).thenReturn(hits);
+    when(resolver.getResource(any(String.class))).thenReturn(metadataResource);
+    when(mockHit.getPath( )).thenReturn("/abc");
+    when(resolver.getResource("/abc/jcr:content/config/alternateLanguages"))
+        .thenReturn(altLangResource);
+    serviceImpl.activate(mock(SiteConfig.class));
+  }
+
+  @ Test
+  void getConfigValues1() {
+    String name = "NAME";
+    String path = "/PAGE/NewPage";
+    HashMap <String , String> map = new HashMap <String , String>( );
+    map.put(name , "ABC");
+    when(siteConfigMap.containsKey(any( ))).thenReturn(true);
+    when(siteConfigMap.get(any( ))).thenReturn(map);
+    String out = serviceImpl.getConfigValues(name , path);
+    assertNotNull(out);
+  }
+
+  @ Test
+  void getConfigValuesNeg() {
+    String name = "NAME";
+    String path = "/PAGE/NewPage";
+    HashMap <String , String> map = new HashMap <String , String>( );
+    map.put(name , "ABC");
+    when(siteConfigMap.containsKey(any( ))).thenReturn(false);
+    when(siteConfigMap.get(any( ))).thenReturn(map);
+    String out = serviceImpl.getConfigValues(name , path);
+    assertNotNull(out);
+  }
+
+  @ Test
+  void setConfiguration() {
+
+  }
 }
