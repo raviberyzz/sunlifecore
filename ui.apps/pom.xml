@@ -114,7 +114,7 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeDownloadRoot>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/org/nodejs/node/</nodeDownloadRoot>
+                            <!-- nodeDownloadRoot>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/org/nodejs/node/</nodeDownloadRoot-->
                             <nodeVersion>v11.1.0</nodeVersion>
                         </configuration>
                     </execution>
@@ -123,13 +123,13 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
-                        <configuration>
+                        <!-- configuration>
                             <arguments>install --registry http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
                             <environmentVariables>
                                     <SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass</SASS_BINARY_SITE> 
 
                                 </environmentVariables> 
-                        </configuration>
+                        </configuration -->
                     </execution>
                     <execution>
                         <id>gulp build:dev</id>

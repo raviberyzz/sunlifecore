@@ -11,47 +11,49 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface UtilityNav.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface UtilityNav {
 
-	/**
-	 * Gets the navlinks.
-	 *
-	 * @return the navlinks
-	 */
-	@Inject
-	List<Navlinks> getNavlinks(); // the name `getNavlinks` corresponds to the multifield name="./navlinks"
+  /**
+   * Gets the navlinks.
+   *
+   * @return the navlinks
+   */
+  @ Inject
+  List <Navlinks> getNavlinks(); // the name `getNavlinks` corresponds to the multifield
+                                 // name="./navlinks"
 
-	/**
-	 * The Interface Navlinks.
-	 */
-	@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-	interface Navlinks {
+  /**
+   * The Interface Navlinks.
+   */
+  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  interface Navlinks {
 
-		/**
-		 * Gets the link name.
-		 *
-		 * @return the link name
-		 */
-		@Inject
-		String getLinkName();
+    /**
+     * Gets the link name.
+     *
+     * @return the link name
+     */
+    @ Inject
+    String getLinkName();
 
-		/**
-		 * Gets the target.
-		 *
-		 * @return the target
-		 */
-		@Inject
-		String getTarget();
+    /**
+     * Gets the target.
+     *
+     * @return the target
+     */
+    @ Inject
+    String getTarget();
 
-		/**
-		 * Gets the link url.
-		 *
-		 * @return the link url
-		 */
-		@Inject
-		String getLinkUrl();
+    /**
+     * Gets the link url.
+     *
+     * @return the link url
+     */
+    @ Inject
+    String getLinkUrl();
 
-	}
+  }
 
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.models;
 
@@ -35,540 +35,644 @@ import ca.sunlife.web.cms.core.services.AdvisorDetailService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * The Class AdvisorDetailModel
+ * The Class AdvisorDetailModel.
  */
-@Model(adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class ,
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class AdvisorDetailModel {
 
-	/** The log */
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  /** The log. */
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Inject
-	private Page currentPage;
+  /** The current page. */
+  @ Inject
+  private Page currentPage;
 
-	@Self
-	private SlingHttpServletRequest request;
+  /** The request. */
+  @ Self
+  private SlingHttpServletRequest request;
 
-	@ScriptVariable
-	private SlingHttpServletResponse response;
-	
-	/** The AdvisorDetailService service. */
-	@Inject
-	private AdvisorDetailService advisorDetailService;
+  /** The response. */
+  @ ScriptVariable
+  private SlingHttpServletResponse response;
 
-	/** The SiteConfigService service. */
-	@Inject
-	private SiteConfigService configService;
+  /** The AdvisorDetailService service. */
+  @ Inject
+  private AdvisorDetailService advisorDetailService;
 
-	/** Type of advisor - ADVISOR/CORP */
-	@ValueMapValue(name = "advisorType")
-	private String advisorType;
+  /** The SiteConfigService service. */
+  @ Inject
+  private SiteConfigService configService;
 
-	/** Address Label */
-	@Inject
-	@Via("resource")
-	private String addressLabel;
+  /** Type of advisor - ADVISOR/CORP. */
+  @ ValueMapValue (name = "advisorType")
+  private String advisorType;
 
-	/** Languages Label */
-	@Inject
-	@Via("resource")
-	private String languagesLabel;
+  /** Address Label. */
+  @ Inject
+  @ Via ("resource")
+  private String addressLabel;
 
-	/** Phone Label */
-	@Inject
-	@Via("resource")
-	private String phoneLabel;
+  /** Languages Label. */
+  @ Inject
+  @ Via ("resource")
+  private String languagesLabel;
 
-	/** Cell Phone Label */
-	@Inject
-	@Via("resource")
-	private String cellPhoneLabel;
+  /** Phone Label. */
+  @ Inject
+  @ Via ("resource")
+  private String phoneLabel;
 
-	/** Email Label */
-	@Inject
-	@Via("resource")
-	private String emailLabel;
+  /** Cell Phone Label. */
+  @ Inject
+  @ Via ("resource")
+  private String cellPhoneLabel;
 
-	/** Fax Label */
-	@Inject
-	@Via("resource")
-	private String faxLabel;
+  /** Email Label. */
+  @ Inject
+  @ Via ("resource")
+  private String emailLabel;
 
-	/** Disclaimer Asterisk */
-	@Inject
-	@Via("resource")
-	private String disclaimerAsteriskLabel;
+  /** Fax Label. */
+  @ Inject
+  @ Via ("resource")
+  private String faxLabel;
 
-	/** Advisor Image */
-	@Inject
-	@Via("resource")
-	private String advisorImage;
+  /** Disclaimer Asterisk. */
+  @ Inject
+  @ Via ("resource")
+  private String disclaimerAsteriskLabel;
 
-	/** Image Domain */
-	@Inject
-	@Via("resource")
-	private String domain;
+  /** Advisor Image. */
+  @ Inject
+  @ Via ("resource")
+  private String advisorImage;
 
-	/** Visit my link label */
-	@Inject
-	@Via("resource")
-	private String advisorLinkLabel;
+  /** Image Domain. */
+  @ Inject
+  @ Via ("resource")
+  private String domain;
 
-	/** Advisor location label */
-	@Inject
-	@Via("resource")
-	private String advisorLocationLabel;
-	
-	/** View larger map label */
-	@Inject
-	@Via("resource")
-	private String viewLargerMapLabel;
-	
-	/** View larger map title */
-	@Inject
-	@Via("resource")
-	private String viewLargerMapTitle;
-	
-	/** New Window Image */
-	@Inject
-	@Via("resource")
-	private String newWindowImage;
-	
-	/** Marker corporate icon */
-	@Inject
-	@Via("resource")
-	private String iconMarkerCorporate;
-	
-	/** Marker standard icon */
-	@Inject
-	@Via("resource")
-	private String iconMarkerStandard;
-	
-	/** Advisor data json */
-	private String advisorData;
+  /** Visit my link label. */
+  @ Inject
+  @ Via ("resource")
+  private String advisorLinkLabel;
 
-	/** Advisor map data json */
-	private String advisorMapData;
+  /** Advisor location label. */
+  @ Inject
+  @ Via ("resource")
+  private String advisorLocationLabel;
 
-	/**
-	 * @return the advisorType
-	 */
-	public String getAdvisorType() {
-		return advisorType;
-	}
+  /** View larger map label. */
+  @ Inject
+  @ Via ("resource")
+  private String viewLargerMapLabel;
 
-	/**
-	 * @param advisorType
-	 *            the advisorType to set
-	 */
-	public void setAdvisorType(String advisorType) {
-		this.advisorType = advisorType;
-	}
+  /** View larger map title. */
+  @ Inject
+  @ Via ("resource")
+  private String viewLargerMapTitle;
 
-	/**
-	 * @return the addressLabel
-	 */
-	public String getAddressLabel() {
-		return addressLabel;
-	}
+  /** New Window Image. */
+  @ Inject
+  @ Via ("resource")
+  private String newWindowImage;
 
-	/**
-	 * @param addressLabel
-	 *            the addressLabel to set
-	 */
-	public void setAddressLabel(String addressLabel) {
-		this.addressLabel = addressLabel;
-	}
+  /** Marker corporate icon. */
+  @ Inject
+  @ Via ("resource")
+  private String iconMarkerCorporate;
 
-	/**
-	 * @return the languagesLabel
-	 */
-	public String getLanguagesLabel() {
-		return languagesLabel;
-	}
+  /** Marker standard icon. */
+  @ Inject
+  @ Via ("resource")
+  private String iconMarkerStandard;
 
-	/**
-	 * @param languagesLabel
-	 *            the languagesLabel to set
-	 */
-	public void setLanguagesLabel(String languagesLabel) {
-		this.languagesLabel = languagesLabel;
-	}
+  /** Advisor data json. */
+  private String advisorData;
 
-	/**
-	 * @return the phoneLabel
-	 */
-	public String getPhoneLabel() {
-		return phoneLabel;
-	}
+  /** Advisor map data json. */
+  private String advisorMapData;
 
-	/**
-	 * @param phoneLabel
-	 *            the phoneLabel to set
-	 */
-	public void setPhoneLabel(String phoneLabel) {
-		this.phoneLabel = phoneLabel;
-	}
+  /**
+   * Gets the advisor type.
+   *
+   * @return the advisorType
+   */
+  public String getAdvisorType() {
+    return advisorType;
+  }
 
-	/**
-	 * @return the cellPhoneLabel
-	 */
-	public String getCellPhoneLabel() {
-		return cellPhoneLabel;
-	}
+  /**
+   * Sets the advisor type.
+   *
+   * @param advisorType
+   *          the advisorType to set
+   */
+  public void setAdvisorType(final String advisorType) {
+    this.advisorType = advisorType;
+  }
 
-	/**
-	 * @param cellPhoneLabel
-	 *            the cellPhoneLabel to set
-	 */
-	public void setCellPhoneLabel(String cellPhoneLabel) {
-		this.cellPhoneLabel = cellPhoneLabel;
-	}
+  /**
+   * Gets the address label.
+   *
+   * @return the addressLabel
+   */
+  public String getAddressLabel() {
+    return addressLabel;
+  }
 
-	/**
-	 * @return the emailLabel
-	 */
-	public String getEmailLabel() {
-		return emailLabel;
-	}
+  /**
+   * Sets the address label.
+   *
+   * @param addressLabel
+   *          the addressLabel to set
+   */
+  public void setAddressLabel(final String addressLabel) {
+    this.addressLabel = addressLabel;
+  }
 
-	/**
-	 * @param emailLabel
-	 *            the emailLabel to set
-	 */
-	public void setEmailLabel(String emailLabel) {
-		this.emailLabel = emailLabel;
-	}
+  /**
+   * Gets the languages label.
+   *
+   * @return the languagesLabel
+   */
+  public String getLanguagesLabel() {
+    return languagesLabel;
+  }
 
-	/**
-	 * @return the faxLabel
-	 */
-	public String getFaxLabel() {
-		return faxLabel;
-	}
+  /**
+   * Sets the languages label.
+   *
+   * @param languagesLabel
+   *          the languagesLabel to set
+   */
+  public void setLanguagesLabel(final String languagesLabel) {
+    this.languagesLabel = languagesLabel;
+  }
 
-	/**
-	 * @param faxLabel
-	 *            the faxLabel to set
-	 */
-	public void setFaxLabel(String faxLabel) {
-		this.faxLabel = faxLabel;
-	}
+  /**
+   * Gets the phone label.
+   *
+   * @return the phoneLabel
+   */
+  public String getPhoneLabel() {
+    return phoneLabel;
+  }
 
-	/**
-	 * @return the disclaimerAsteriskLabel
-	 */
-	public String getDisclaimerAsteriskLabel() {
-		return disclaimerAsteriskLabel;
-	}
+  /**
+   * Sets the phone label.
+   *
+   * @param phoneLabel
+   *          the phoneLabel to set
+   */
+  public void setPhoneLabel(final String phoneLabel) {
+    this.phoneLabel = phoneLabel;
+  }
 
-	/**
-	 * @param disclaimerAsteriskLabel
-	 *            the disclaimerAsteriskLabel to set
-	 */
-	public void setDisclaimerAsteriskLabel(String disclaimerAsteriskLabel) {
-		this.disclaimerAsteriskLabel = disclaimerAsteriskLabel;
-	}
+  /**
+   * Gets the cell phone label.
+   *
+   * @return the cellPhoneLabel
+   */
+  public String getCellPhoneLabel() {
+    return cellPhoneLabel;
+  }
 
-	/**
-	 * @return the advisorImage
-	 */
-	public String getAdvisorImage() {
-		return advisorImage;
-	}
+  /**
+   * Sets the cell phone label.
+   *
+   * @param cellPhoneLabel
+   *          the cellPhoneLabel to set
+   */
+  public void setCellPhoneLabel(final String cellPhoneLabel) {
+    this.cellPhoneLabel = cellPhoneLabel;
+  }
 
-	/**
-	 * @param advisorImage
-	 *            the advisorImage to set
-	 */
-	public void setAdvisorImage(String advisorImage) {
-		this.advisorImage = advisorImage;
-	}
+  /**
+   * Gets the email label.
+   *
+   * @return the emailLabel
+   */
+  public String getEmailLabel() {
+    return emailLabel;
+  }
 
-	/**
-	 * @return the domain
-	 */
-	public String getDomain() {
-		return domain;
-	}
+  /**
+   * Sets the email label.
+   *
+   * @param emailLabel
+   *          the emailLabel to set
+   */
+  public void setEmailLabel(final String emailLabel) {
+    this.emailLabel = emailLabel;
+  }
 
-	/**
-	 * @param domain
-	 *            the domain to set
-	 */
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
+  /**
+   * Gets the fax label.
+   *
+   * @return the faxLabel
+   */
+  public String getFaxLabel() {
+    return faxLabel;
+  }
 
-	/**
-	 * @return the advisorLinkLabel
-	 */
-	public String getAdvisorLinkLabel() {
-		return advisorLinkLabel;
-	}
+  /**
+   * Sets the fax label.
+   *
+   * @param faxLabel
+   *          the faxLabel to set
+   */
+  public void setFaxLabel(final String faxLabel) {
+    this.faxLabel = faxLabel;
+  }
 
-	/**
-	 * @param advisorLinkLabel
-	 *            the advisorLinkLabel to set
-	 */
-	public void setAdvisorLinkLabel(String advisorLinkLabel) {
-		this.advisorLinkLabel = advisorLinkLabel;
-	}
+  /**
+   * Gets the disclaimer asterisk label.
+   *
+   * @return the disclaimerAsteriskLabel
+   */
+  public String getDisclaimerAsteriskLabel() {
+    return disclaimerAsteriskLabel;
+  }
 
-	/**
-	 * @return the advisorLocationLabel
-	 */
-	public String getAdvisorLocationLabel() {
-		return advisorLocationLabel;
-	}
+  /**
+   * Sets the disclaimer asterisk label.
+   *
+   * @param disclaimerAsteriskLabel
+   *          the disclaimerAsteriskLabel to set
+   */
+  public void setDisclaimerAsteriskLabel(final String disclaimerAsteriskLabel) {
+    this.disclaimerAsteriskLabel = disclaimerAsteriskLabel;
+  }
 
-	/**
-	 * @param advisorLocationLabel the advisorLocationLabel to set
-	 */
-	public void setAdvisorLocationLabel(String advisorLocationLabel) {
-		this.advisorLocationLabel = advisorLocationLabel;
-	}
+  /**
+   * Gets the advisor image.
+   *
+   * @return the advisorImage
+   */
+  public String getAdvisorImage() {
+    return advisorImage;
+  }
 
-	/**
-	 * @return the viewLargerMapLabel
-	 */
-	public String getViewLargerMapLabel() {
-		return viewLargerMapLabel;
-	}
+  /**
+   * Sets the advisor image.
+   *
+   * @param advisorImage
+   *          the advisorImage to set
+   */
+  public void setAdvisorImage(final String advisorImage) {
+    this.advisorImage = advisorImage;
+  }
 
-	/**
-	 * @param viewLargerMapLabel the viewLargerMapLabel to set
-	 */
-	public void setViewLargerMapLabel(String viewLargerMapLabel) {
-		this.viewLargerMapLabel = viewLargerMapLabel;
-	}
+  /**
+   * Gets the domain.
+   *
+   * @return the domain
+   */
+  public String getDomain() {
+    return domain;
+  }
 
-	/**
-	 * @return the viewLargerMapTitle
-	 */
-	public String getViewLargerMapTitle() {
-		return viewLargerMapTitle;
-	}
+  /**
+   * Sets the domain.
+   *
+   * @param domain
+   *          the domain to set
+   */
+  public void setDomain(final String domain) {
+    this.domain = domain;
+  }
 
-	/**
-	 * @param viewLargerMapTitle the viewLargerMapTitle to set
-	 */
-	public void setViewLargerMapTitle(String viewLargerMapTitle) {
-		this.viewLargerMapTitle = viewLargerMapTitle;
-	}
+  /**
+   * Gets the advisor link label.
+   *
+   * @return the advisorLinkLabel
+   */
+  public String getAdvisorLinkLabel() {
+    return advisorLinkLabel;
+  }
 
-	/**
-	 * @return the newWindowImage
-	 */
-	public String getNewWindowImage() {
-		return newWindowImage;
-	}
+  /**
+   * Sets the advisor link label.
+   *
+   * @param advisorLinkLabel
+   *          the advisorLinkLabel to set
+   */
+  public void setAdvisorLinkLabel(final String advisorLinkLabel) {
+    this.advisorLinkLabel = advisorLinkLabel;
+  }
 
-	/**
-	 * @param newWindowImage the newWindowImage to set
-	 */
-	public void setNewWindowImage(String newWindowImage) {
-		this.newWindowImage = newWindowImage;
-	}
+  /**
+   * Gets the advisor location label.
+   *
+   * @return the advisorLocationLabel
+   */
+  public String getAdvisorLocationLabel() {
+    return advisorLocationLabel;
+  }
 
-	/**
-	 * @return the advisorData
-	 */
-	public String getAdvisorData() {
-		return advisorData;
-	}
+  /**
+   * Sets the advisor location label.
+   *
+   * @param advisorLocationLabel
+   *          the advisorLocationLabel to set
+   */
+  public void setAdvisorLocationLabel(final String advisorLocationLabel) {
+    this.advisorLocationLabel = advisorLocationLabel;
+  }
 
-	/**
-	 * @param advisorData
-	 *            the advisorData to set
-	 */
-	public void setAdvisorData(String advisorData) {
-		this.advisorData = advisorData;
-	}
+  /**
+   * Gets the view larger map label.
+   *
+   * @return the viewLargerMapLabel
+   */
+  public String getViewLargerMapLabel() {
+    return viewLargerMapLabel;
+  }
 
-	/**
-	 * @return the advisorMapData
-	 */
-	public String getAdvisorMapData() {
-		return advisorMapData;
-	}
+  /**
+   * Sets the view larger map label.
+   *
+   * @param viewLargerMapLabel
+   *          the viewLargerMapLabel to set
+   */
+  public void setViewLargerMapLabel(final String viewLargerMapLabel) {
+    this.viewLargerMapLabel = viewLargerMapLabel;
+  }
 
-	/**
-	 * @param advisorMapData
-	 *            the advisorMapData to set
-	 */
-	public void setAdvisorMapData(String advisorMapData) {
-		this.advisorMapData = advisorMapData;
-	}
+  /**
+   * Gets the view larger map title.
+   *
+   * @return the viewLargerMapTitle
+   */
+  public String getViewLargerMapTitle() {
+    return viewLargerMapTitle;
+  }
 
-	/**
-	 * @return the iconMarkerCorporate
-	 */
-	public String getIconMarkerCorporate() {
-		return iconMarkerCorporate;
-	}
+  /**
+   * Sets the view larger map title.
+   *
+   * @param viewLargerMapTitle
+   *          the viewLargerMapTitle to set
+   */
+  public void setViewLargerMapTitle(final String viewLargerMapTitle) {
+    this.viewLargerMapTitle = viewLargerMapTitle;
+  }
 
-	/**
-	 * @param iconMarkerCorporate the iconMarkerCorporate to set
-	 */
-	public void setIconMarkerCorporate(String iconMarkerCorporate) {
-		this.iconMarkerCorporate = iconMarkerCorporate;
-	}
+  /**
+   * Gets the new window image.
+   *
+   * @return the newWindowImage
+   */
+  public String getNewWindowImage() {
+    return newWindowImage;
+  }
 
-	/**
-	 * @return the iconMarkerStandard
-	 */
-	public String getIconMarkerStandard() {
-		return iconMarkerStandard;
-	}
+  /**
+   * Sets the new window image.
+   *
+   * @param newWindowImage
+   *          the newWindowImage to set
+   */
+  public void setNewWindowImage(final String newWindowImage) {
+    this.newWindowImage = newWindowImage;
+  }
 
-	/**
-	 * @param iconMarkerStandard the iconMarkerStandard to set
-	 */
-	public void setIconMarkerStandard(String iconMarkerStandard) {
-		this.iconMarkerStandard = iconMarkerStandard;
-	}
+  /**
+   * Gets the advisor data.
+   *
+   * @return the advisorData
+   */
+  public String getAdvisorData() {
+    return advisorData;
+  }
 
-	/**
-	 * Advisor Detail Model - init method to process data after model loads
-	 */
-	@PostConstruct
-	public void init() {
-		logger.debug("Entry :: init method of AdvisorDetailModel :: advisorType: {}", advisorType);
-		String language = null;
-		String[] requestSelectors = null;
-		String advisorId = null;
-		try {
-			final String pagePath = currentPage.getPath();
-			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-			
-			advisorType = currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT, String.class);
-			
-			if (advisorType == null) {
-				logger.debug("Advisor type is not set, hence existing process to set map data.");
-				return;
-			}
-			
-			requestSelectors = request.getRequestPathInfo().getSelectors();
-			if (requestSelectors.length <= 0) {
-				logger.debug("Selector for advisor page doesn't exist, please use selector for advisor id.");
-				return;
-			}
-			language = pageLocale.split("_")[0];
-			advisorId = requestSelectors[0];
-			logger.debug("advisorId: {}", advisorId);
-			advisorData = advisorDetailService.getAdvisorDetails(language, advisorType, advisorId);
-			if (null != advisorData) {
-				validateAdvisorData();
-				setMapData();
-			}
-		} catch (ApplicationException | LoginException | RepositoryException | SystemException e) {
-			logger.error("Error :: init method of AdvisorDetailModel :: {}", e);
-		}
-		logger.debug("Exit :: init method of AdvisorDetailModel :: advisorData :: {}", advisorData);
-	}
+  /**
+   * Sets the advisor data.
+   *
+   * @param advisorData
+   *          the advisorData to set
+   */
+  public void setAdvisorData(final String advisorData) {
+    this.advisorData = advisorData;
+  }
 
-	/**
-	 * Validates advisor data
-	 */
-	public void validateAdvisorData() {
-		logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData :: ");
-		JSONObject inputJson = null;
-		String errorCode = null;
-		try {
-			inputJson = new JSONObject(advisorData);
-			errorCode = inputJson.getString(AdvisorDetailConstants.ERROR_CODE_CONSTANT);
-			if( null != errorCode && AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT.equals(errorCode) ) {
-				response.sendRedirect("/content/sunlife/external/ca/en/error/404");
-			}
-		} catch (IOException | JSONException e) {
-			logger.error("Error :: AdvisorDetailModel :: validateAdvisorData :: IOException :: {}", e);
-		}
-		logger.debug("Exit :: AdvisorDetailModel :: validateAdvisorData :: ");
-	}
-	
-	/**
-	 * Sets data for advisor map
-	 */
-	private void setMapData() {
-		logger.debug("Entry :: setMapData :: advisorData :: {}", advisorData);
-		JSONObject jsonObject = null;
-		String address = null;
-		String lng = null;
-		String phone = null;
-		String name = null;
-		String cell = null;
-		String aid = null;
-		String lat = null;
-		String email = null;
-		try {
-			JSONObject inputJson = new JSONObject(advisorData);
+  /**
+   * Gets the advisor map data.
+   *
+   * @return the advisorMapData
+   */
+  public String getAdvisorMapData() {
+    return advisorMapData;
+  }
 
-			if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
-				JSONObject advisorCorpJson = inputJson.getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
-				address = buildAddress(advisorCorpJson.getJSONObject(AdvisorDetailConstants.CORP_ADDRESS_CONSTANT));
-				JSONObject corpContactInfoJson = advisorCorpJson.getJSONObject(AdvisorDetailConstants.CORP_CONTACT_INFO_CONSTANT);
-				phone = corpContactInfoJson.getString(AdvisorDetailConstants.PHONE_CONSTANT);
-				cell = corpContactInfoJson.isNull(AdvisorDetailConstants.CELL_PHONE_CONSTANT) ? null : corpContactInfoJson.getString(AdvisorDetailConstants.CELL_PHONE_CONSTANT);
-				name = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
-				aid = advisorCorpJson.getString(AdvisorDetailConstants.AID_CONSTANT);
-				JSONObject googleMapJson = advisorCorpJson.getJSONObject(AdvisorDetailConstants.GOOGLE_MAP_CONSTANT);
-				lat = googleMapJson.getString(AdvisorDetailConstants.LATITUDE_CONSTANT);
-				lng = googleMapJson.getString(AdvisorDetailConstants.LONGITUDE_CONSTANT);
-				email = corpContactInfoJson.getString(AdvisorDetailConstants.EMAIL_CONSTANT);
-			} else {
-				JSONObject advisorStdJson = inputJson.getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
-				address = buildAddress(advisorStdJson.getJSONObject(AdvisorDetailConstants.ADDRESS_CONSTANT));
-				JSONObject contactInfoJson = advisorStdJson.getJSONObject(AdvisorDetailConstants.CONTACT_INFO_CONSTANT);
-				phone = contactInfoJson.getString(AdvisorDetailConstants.PHONE_CONSTANT);
-				cell = contactInfoJson.isNull(AdvisorDetailConstants.CELL_PHONE_CONSTANT) ? null : contactInfoJson.getString(AdvisorDetailConstants.CELL_PHONE_CONSTANT);
-				name = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
-				aid = advisorStdJson.getString(AdvisorDetailConstants.AID_CONSTANT);
-				JSONObject googleMapJson = advisorStdJson.getJSONObject(AdvisorDetailConstants.GOOGLE_MAP_CONSTANT);
-				lat = googleMapJson.getString(AdvisorDetailConstants.LATITUDE_CONSTANT);
-				lng = googleMapJson.getString(AdvisorDetailConstants.LONGITUDE_CONSTANT);
-				email = contactInfoJson.getString(AdvisorDetailConstants.EMAIL_CONSTANT);
-			}
-			jsonObject = new JSONObject();
-			jsonObject.put(AdvisorDetailConstants.ADDRESS_SM_CONSTANT, address);
-			jsonObject.put(AdvisorDetailConstants.PHONE_SM_CONSTANT, phone);
-			jsonObject.put(AdvisorDetailConstants.NAME_CONSTANT, name);
-			jsonObject.put(AdvisorDetailConstants.LANG_CONSTANT, "EN"); // Need to check in WEM
-			jsonObject.put(AdvisorDetailConstants.CELL_CONSTANT, cell);
-			jsonObject.put(AdvisorDetailConstants.TYPE_CONSTANT, advisorType);
-			jsonObject.put(AdvisorDetailConstants.AID_SM_CONSTANT, aid);
-			jsonObject.put(AdvisorDetailConstants.LNG_CONSTANT, lng);
-			jsonObject.put(AdvisorDetailConstants.LAT_CONSTANT, lat);
-			jsonObject.put(AdvisorDetailConstants.EMAIL_SM_CONSTANT, email);
-			Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-			advisorMapData = gson.toJson(jsonObject);
-		} catch (JSONException e) {
-			logger.error("Error :: setMapData :: {}", e);
-		}
-		logger.debug("Exit :: setMapData :: advisorMapData :: {}", advisorMapData);
-	}
+  /**
+   * Sets the advisor map data.
+   *
+   * @param advisorMapData
+   *          the advisorMapData to set
+   */
+  public void setAdvisorMapData(final String advisorMapData) {
+    this.advisorMapData = advisorMapData;
+  }
 
-	/**
-	 * Prepares full address
-	 * @param addressJson
-	 * @return
-	 * @throws JSONException
-	 */
-	private String buildAddress(JSONObject addressJson) throws JSONException {
-		logger.debug("Entry :: buildAddress :: ");
-		StringBuilder address = new StringBuilder();
-		address.append(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_1_CONSTANT));
-		address.append(", ");
-		if (addressJson.has(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT) && null != addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT) && !"".equals(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT))) {
-			address.append(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT));
-			address.append(", ");
-		}
-		address.append(addressJson.get(AdvisorDetailConstants.CITY_CONSTANT));
-		address.append(", ");
-		address.append(addressJson.get(AdvisorDetailConstants.PROVINCE_CONSTANT));
-		address.append(", ");
-		address.append(addressJson.get(AdvisorDetailConstants.POSTAL_CODE_CONSTANT));
-		logger.debug("Exit :: buildAddress :: address :: {}", address);
-		return address.toString();
-	}
+  /**
+   * Gets the icon marker corporate.
+   *
+   * @return the iconMarkerCorporate
+   */
+  public String getIconMarkerCorporate() {
+    return iconMarkerCorporate;
+  }
+
+  /**
+   * Sets the icon marker corporate.
+   *
+   * @param iconMarkerCorporate
+   *          the iconMarkerCorporate to set
+   */
+  public void setIconMarkerCorporate(final String iconMarkerCorporate) {
+    this.iconMarkerCorporate = iconMarkerCorporate;
+  }
+
+  /**
+   * Gets the icon marker standard.
+   *
+   * @return the iconMarkerStandard
+   */
+  public String getIconMarkerStandard() {
+    return iconMarkerStandard;
+  }
+
+  /**
+   * Sets the icon marker standard.
+   *
+   * @param iconMarkerStandard
+   *          the iconMarkerStandard to set
+   */
+  public void setIconMarkerStandard(final String iconMarkerStandard) {
+    this.iconMarkerStandard = iconMarkerStandard;
+  }
+
+  /**
+   * Advisor Detail Model - init method to process data after model loads.
+   */
+  @ PostConstruct
+  public void init() {
+    logger.debug("Entry :: init method of AdvisorDetailModel :: advisorType: {}", advisorType);
+    String language = null;
+    String [ ] requestSelectors = null;
+    String advisorId = null;
+    try {
+      final String pagePath = currentPage.getPath();
+      final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+
+      advisorType = currentPage.getProperties().get(AdvisorDetailConstants.ADVISOR_TYPE_CONSTANT,
+          String.class);
+
+      if (advisorType == null) {
+        logger.debug("Advisor type is not set, hence existing process to set map data.");
+        return;
+      }
+
+      requestSelectors = request.getRequestPathInfo().getSelectors();
+      if (requestSelectors.length <= 0) {
+        logger
+            .debug("Selector for advisor page doesn't exist, please use selector for advisor id.");
+        return;
+      }
+      language = pageLocale.split("_") [ 0 ];
+      advisorId = requestSelectors [ 0 ];
+      logger.debug("advisorId: {}", advisorId);
+      advisorData = advisorDetailService.getAdvisorDetails(language, advisorType, advisorId);
+      if (null != advisorData) {
+        validateAdvisorData();
+        setMapData();
+      }
+    } catch (ApplicationException | LoginException | RepositoryException | SystemException e) {
+      logger.error("Error :: init method of AdvisorDetailModel :: {}", e);
+    }
+    logger.debug("Exit :: init method of AdvisorDetailModel :: advisorData :: {}", advisorData);
+  }
+
+  /**
+   * Validates advisor data.
+   */
+  public void validateAdvisorData() {
+    logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData :: ");
+    JSONObject inputJson = null;
+    String errorCode = null;
+    try {
+      inputJson = new JSONObject(advisorData);
+      errorCode = inputJson.getString(AdvisorDetailConstants.ERROR_CODE_CONSTANT);
+      if (null != errorCode
+          && AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT.equals(errorCode)) {
+        response.sendRedirect("/content/sunlife/external/ca/en/error/404");
+      }
+    } catch (IOException | JSONException e) {
+      logger.error("Error :: AdvisorDetailModel :: validateAdvisorData :: IOException :: {}", e);
+    }
+    logger.debug("Exit :: AdvisorDetailModel :: validateAdvisorData :: ");
+  }
+
+  /**
+   * Sets data for advisor map.
+   */
+  private void setMapData() {
+    logger.debug("Entry :: setMapData :: advisorData :: {}", advisorData);
+    JSONObject jsonObject = null;
+    String address = null;
+    String lng = null;
+    String phone = null;
+    String name = null;
+    String cell = null;
+    String aid = null;
+    String lat = null;
+    String email = null;
+    try {
+      final JSONObject inputJson = new JSONObject(advisorData);
+
+      if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
+        final JSONObject advisorCorpJson = inputJson
+            .getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
+        address = buildAddress(
+            advisorCorpJson.getJSONObject(AdvisorDetailConstants.CORP_ADDRESS_CONSTANT));
+        final JSONObject corpContactInfoJson = advisorCorpJson
+            .getJSONObject(AdvisorDetailConstants.CORP_CONTACT_INFO_CONSTANT);
+        phone = corpContactInfoJson.getString(AdvisorDetailConstants.PHONE_CONSTANT);
+        cell = corpContactInfoJson.isNull(AdvisorDetailConstants.CELL_PHONE_CONSTANT) ? null
+            : corpContactInfoJson.getString(AdvisorDetailConstants.CELL_PHONE_CONSTANT);
+        name = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
+        aid = advisorCorpJson.getString(AdvisorDetailConstants.AID_CONSTANT);
+        final JSONObject googleMapJson = advisorCorpJson
+            .getJSONObject(AdvisorDetailConstants.GOOGLE_MAP_CONSTANT);
+        lat = googleMapJson.getString(AdvisorDetailConstants.LATITUDE_CONSTANT);
+        lng = googleMapJson.getString(AdvisorDetailConstants.LONGITUDE_CONSTANT);
+        email = corpContactInfoJson.getString(AdvisorDetailConstants.EMAIL_CONSTANT);
+      } else {
+        final JSONObject advisorStdJson = inputJson
+            .getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
+        address = buildAddress(
+            advisorStdJson.getJSONObject(AdvisorDetailConstants.ADDRESS_CONSTANT));
+        final JSONObject contactInfoJson = advisorStdJson
+            .getJSONObject(AdvisorDetailConstants.CONTACT_INFO_CONSTANT);
+        phone = contactInfoJson.getString(AdvisorDetailConstants.PHONE_CONSTANT);
+        cell = contactInfoJson.isNull(AdvisorDetailConstants.CELL_PHONE_CONSTANT) ? null
+            : contactInfoJson.getString(AdvisorDetailConstants.CELL_PHONE_CONSTANT);
+        name = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
+        aid = advisorStdJson.getString(AdvisorDetailConstants.AID_CONSTANT);
+        final JSONObject googleMapJson = advisorStdJson
+            .getJSONObject(AdvisorDetailConstants.GOOGLE_MAP_CONSTANT);
+        lat = googleMapJson.getString(AdvisorDetailConstants.LATITUDE_CONSTANT);
+        lng = googleMapJson.getString(AdvisorDetailConstants.LONGITUDE_CONSTANT);
+        email = contactInfoJson.getString(AdvisorDetailConstants.EMAIL_CONSTANT);
+      }
+      jsonObject = new JSONObject();
+      jsonObject.put(AdvisorDetailConstants.ADDRESS_SM_CONSTANT, address);
+      jsonObject.put(AdvisorDetailConstants.PHONE_SM_CONSTANT, phone);
+      jsonObject.put(AdvisorDetailConstants.NAME_CONSTANT, name);
+      jsonObject.put(AdvisorDetailConstants.LANG_CONSTANT, "EN"); // Need to check in WEM
+      jsonObject.put(AdvisorDetailConstants.CELL_CONSTANT, cell);
+      jsonObject.put(AdvisorDetailConstants.TYPE_CONSTANT, advisorType);
+      jsonObject.put(AdvisorDetailConstants.AID_SM_CONSTANT, aid);
+      jsonObject.put(AdvisorDetailConstants.LNG_CONSTANT, lng);
+      jsonObject.put(AdvisorDetailConstants.LAT_CONSTANT, lat);
+      jsonObject.put(AdvisorDetailConstants.EMAIL_SM_CONSTANT, email);
+      final Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+      advisorMapData = gson.toJson(jsonObject);
+    } catch (final JSONException e) {
+      logger.error("Error :: setMapData :: {}", e);
+    }
+    logger.debug("Exit :: setMapData :: advisorMapData :: {}", advisorMapData);
+  }
+
+  /**
+   * Prepares full address.
+   *
+   * @param addressJson
+   *          the address json
+   * @return the string
+   * @throws JSONException
+   *           the JSON exception
+   */
+  private String buildAddress(final JSONObject addressJson) throws JSONException {
+    logger.debug("Entry :: buildAddress :: ");
+    final StringBuilder address = new StringBuilder();
+    address.append(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_1_CONSTANT));
+    address.append(", ");
+    if (addressJson.has(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT)
+        && null != addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT)
+        && ! "".equals(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT))) {
+      address.append(addressJson.get(AdvisorDetailConstants.STREET_ADDRESS_2_CONSTANT));
+      address.append(", ");
+    }
+    address.append(addressJson.get(AdvisorDetailConstants.CITY_CONSTANT));
+    address.append(", ");
+    address.append(addressJson.get(AdvisorDetailConstants.PROVINCE_CONSTANT));
+    address.append(", ");
+    address.append(addressJson.get(AdvisorDetailConstants.POSTAL_CODE_CONSTANT));
+    logger.debug("Exit :: buildAddress :: address :: {}", address);
+    return address.toString();
+  }
 }

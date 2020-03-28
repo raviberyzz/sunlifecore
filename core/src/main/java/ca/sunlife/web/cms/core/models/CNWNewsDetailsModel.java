@@ -24,69 +24,85 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 /**
  * The Class CNWNewsDetailsModel.
  */
-@Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class ,
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsDetailsModel {
 
-	/** logger */
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	@Self
-	private SlingHttpServletRequest request;
+  /** logger. */
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Inject
-	private Page currentPage;
-	
-	@Inject
-	private CNWNewsService newsService;
+  /** The request. */
+  @ Self
+  private SlingHttpServletRequest request;
 
-	/** news details */
-	private NewsDetails newsDetails;
+  /** The current page. */
+  @ Inject
+  private Page currentPage;
 
-	/** news - release id */
-	private String releaseId;
+  /** The news service. */
+  @ Inject
+  private CNWNewsService newsService;
 
-	/** Getters/Setters */
-	/**
-	 * CNWNewsDetailsModel - init method for processing the data
-	 */
-	@PostConstruct
-	public void init() {
-		logger.debug("Entry :: CNWNewsDetailsModel :: init ");
-		try {
-		    releaseId = request.getRequestPathInfo().getSelectors()[0];
-            newsDetails = newsService.getCNWNewsDetails(releaseId, currentPage.getLanguage().getLanguage());
-        } catch (IOException | ParseException | ApplicationException | SystemException e) {
-            logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
-        }
-	}
+  /** news details. */
+  private NewsDetails newsDetails;
 
-	/**
-	 * @return the newsDetails
-	 */
-	public NewsDetails getNewsDetails() {
-		return newsDetails;
-	}
+  /** news - release id. */
+  private String releaseId;
 
-	/**
-	 * @param newsDetails the newsDetails to set
-	 */
-	public void setNewsDetails(NewsDetails newsDetails) {
-		this.newsDetails = newsDetails;
-	}
+  /**
+   * Getters/Setters.
+   */
+  /**
+   * CNWNewsDetailsModel - init method for processing the data
+   */
+  @ PostConstruct
+  public void init() {
+    logger.debug("Entry :: CNWNewsDetailsModel :: init ");
+    try {
+      releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
+      newsDetails = newsService.getCNWNewsDetails(releaseId,
+          currentPage.getLanguage().getLanguage());
+    } catch (IOException | ParseException | ApplicationException | SystemException e) {
+      logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
+    }
+  }
 
-	/**
-	 * @return the releaseId
-	 */
-	public String getReleaseId() {
-		return releaseId;
-	}
+  /**
+   * Gets the news details.
+   *
+   * @return the newsDetails
+   */
+  public NewsDetails getNewsDetails() {
+    return newsDetails;
+  }
 
-	/**
-	 * @param releaseId the releaseId to set
-	 */
-	public void setReleaseId(String releaseId) {
-		this.releaseId = releaseId;
-	}
+  /**
+   * Sets the news details.
+   *
+   * @param newsDetails
+   *          the newsDetails to set
+   */
+  public void setNewsDetails(final NewsDetails newsDetails) {
+    this.newsDetails = newsDetails;
+  }
+
+  /**
+   * Gets the release id.
+   *
+   * @return the releaseId
+   */
+  public String getReleaseId() {
+    return releaseId;
+  }
+
+  /**
+   * Sets the release id.
+   *
+   * @param releaseId
+   *          the releaseId to set
+   */
+  public void setReleaseId(final String releaseId) {
+    this.releaseId = releaseId;
+  }
 
 }

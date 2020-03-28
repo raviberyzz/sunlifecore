@@ -1,69 +1,80 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.beans;
 
 /**
- * @author mo92 
- * The Class PageItem
+ * The Class PageItem.
+ *
+ * @author mo92 The Class PageItem
  */
 public class PageItem {
 
-	/**
-	 * anchor tag link - href
-	 */
-	private String href;
-	/**
-	 * li index
-	 */
-	private int index;
-	/**
-	 * ellipsis - ... for pagination
-	 */
-	private boolean ellipsis;
-	
-	/**
-	 * @return the href
-	 */
-	public String getHref() {
-		return href;
-	}
+  /** anchor tag link - href. */
+  private String href;
 
-	/**
-	 * @param href
-	 *            the href to set
-	 */
-	public void setHref(String href) {
-		this.href = href;
-	}
+  /** li index. */
+  private int index;
+  /**
+   * ellipsis - ... for pagination
+   */
+  private boolean ellipsis;
 
-	/**
-	 * @return the index
-	 */
-	public int getIndex() {
-		return index;
-	}
+  /**
+   * Gets the href.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
 
-	/**
-	 * @param index
-	 *            the index to set
-	 */
-	public void setIndex(int index) {
-		this.index = index;
-	}
+  /**
+   * Sets the href.
+   *
+   * @param href
+   *          the href to set
+   */
+  public void setHref(final String href) {
+    this.href = href;
+  }
 
-	/**
-	 * @return the ellipsis
-	 */
-	public boolean isEllipsis() {
-		return ellipsis;
-	}
+  /**
+   * Gets the index.
+   *
+   * @return the index
+   */
+  public int getIndex() {
+    return index;
+  }
 
-	/**
-	 * @param ellipsis the ellipsis to set
-	 */
-	public void setEllipsis(boolean ellipsis) {
-		this.ellipsis = ellipsis;
-	}
+  /**
+   * Sets the index.
+   *
+   * @param index
+   *          the index to set
+   */
+  public void setIndex(final int index) {
+    this.index = index;
+  }
+
+  /**
+   * Checks if is ellipsis.
+   *
+   * @return the ellipsis
+   */
+  public boolean isEllipsis() {
+    return ellipsis;
+  }
+
+  /**
+   * Sets the ellipsis.
+   *
+   * @param ellipsis
+   *          the ellipsis to set
+   */
+  public void setEllipsis(final boolean ellipsis) {
+    this.ellipsis = ellipsis;
+  }
 
 }

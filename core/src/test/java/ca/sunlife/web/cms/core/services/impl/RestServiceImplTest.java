@@ -24,143 +24,150 @@ import junit.framework.Assert;
 /**
  * @author mo92 The class RestServiceImplTest
  */
-@ExtendWith(AemContextExtension.class)
+@ ExtendWith (AemContextExtension.class)
 class RestServiceImplTest {
-	/**
-	 * RestServiceImpl object
-	 */
-	private RestServiceImpl restServiceImpl = new RestServiceImpl();
+  /**
+   * RestServiceImpl object
+   */
+  private RestServiceImpl restServiceImpl = new RestServiceImpl( );
 
-	/**
-	 * Mock RestClientConfig
-	 */
-	@Mock
-	private RestClientConfig restClientConfig;
+  /**
+   * Mock RestClientConfig
+   */
+  @ Mock
+  private RestClientConfig restClientConfig;
 
-	/**
-	 * Initial setup before each test method
-	 */
-	@BeforeEach
-	void setup() {
-		MockitoAnnotations.initMocks(this);
-		setRestClientConfig(500, 500, false);
-	}
-	
-	void setRestClientConfig(int socketTimeout, int connectionTimeout, boolean byPassSSLRequired) {
-		restClientConfig = new RestClientConfig() {
-			@Override
-			public Class<? extends Annotation> annotationType() {
-				return null;
-			}
+  /**
+   * Initial setup before each test method
+   */
+  @ BeforeEach
+  void setup() {
+    MockitoAnnotations.initMocks(this);
+    setRestClientConfig(500 , 500 , false);
+  }
 
-			@Override
-			public int getSocketTimeout() {
-				return socketTimeout;
-			}
+  void setRestClientConfig(int socketTimeout , int connectionTimeout , boolean byPassSSLRequired) {
+    restClientConfig = new RestClientConfig( ) {
+      @ Override
+      public Class <? extends Annotation> annotationType() {
+        return null;
+      }
 
-			@Override
-			public int getConnectionTimeout() {
-				return connectionTimeout;
-			}
+      @ Override
+      public int getSocketTimeout() {
+        return socketTimeout;
+      }
 
-			@Override
-			public boolean isSSLByPassRequired() {
-				return byPassSSLRequired;
-			}
-		};
-	}
+      @ Override
+      public int getConnectionTimeout() {
+        return connectionTimeout;
+      }
 
-	/**
-	 * Tests activate method
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
-	 */
-	@Test
-	void activateTest() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		restServiceImpl.activate(restClientConfig);
-	}
+      @ Override
+      public boolean isSSLByPassRequired() {
+        return byPassSSLRequired;
+      }
+    };
+  }
 
-	/**
-	 * Tests callGetWebService method
-	 * 
-	 * @throws IOException
-	 * @throws SystemException
-	 * @throws ApplicationException
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
-	 */
-	@Test
-	void testCallGetWebService() throws IOException, ApplicationException, SystemException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		String url = "https://www.sunlife.ca/";
-		restServiceImpl.activate(restClientConfig);
-		String testResponse = null;
-		try {
-			testResponse = restServiceImpl.callGetWebService(url);
-			Assert.assertTrue(testResponse.contains("<title>Sun Life | Life Insurance, Investments & Group Benefits</title>"));
-		} catch (Exception e) {
-			Assert.assertNull(testResponse);
-		}
-	
-	}
+  /**
+   * Tests activate method
+   * 
+   * @throws KeyStoreException
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
+  @ Test
+  void activateTest() throws KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+    restServiceImpl.activate(restClientConfig);
+  }
 
-	/**
-	 * @throws IOException
-	 * @throws ApplicationException
-	 * @throws SystemException
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
-	 */
-	@Test
-	void testCallGetWebServiceWhenSSLByPassIsSet() throws IOException, ApplicationException, SystemException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		String url = "https://www.sunlife.ca/";
-		setRestClientConfig(500, 500, true);
-		String testResponse = null;
-		try {
-		restServiceImpl.activate(restClientConfig);
-		testResponse = restServiceImpl.callGetWebService(url);
-		Assert.assertTrue(testResponse.contains("<title>Sun Life | Life Insurance, Investments & Group Benefits</title>"));
-		} catch (Exception e) {
-			Assert.assertNull(testResponse);
-		}
-	}
-	
-	/**
-	 * @throws ApplicationException
-	 * @throws SystemException
-	 * @throws IOException
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
-	 */
-	@Test
-	void testCallGetWebServiceWhenThrowsIOException() throws ApplicationException, SystemException, IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		String url = "https://www.sunlife/";
-		restServiceImpl.activate(restClientConfig);
-		Assertions.assertThrows(IOException.class, () -> {
-			restServiceImpl.callGetWebService(url);
-		});
-	}
-	
-	/**
-	 * @throws ApplicationException
-	 * @throws SystemException
-	 * @throws IOException
-	 * @throws KeyStoreException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyManagementException 
-	 */
-	@Test
-	void testCallGetWebServiceWhenNotFound() throws ApplicationException, SystemException, IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		String url = "https://www.sunlife.ca/demo";
-		restServiceImpl.activate(restClientConfig);
-		try {
-			restServiceImpl.callGetWebService(url);
-		} catch (Exception e) {
-			assertTrue(e instanceof Exception);
-		}
-	}
-	
+  /**
+   * Tests callGetWebService method
+   * 
+   * @throws IOException
+   * @throws SystemException
+   * @throws ApplicationException
+   * @throws KeyStoreException
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
+  @ Test
+  void testCallGetWebService() throws IOException , ApplicationException , SystemException ,
+      KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+    String url = "https://www.sunlife.ca/";
+    restServiceImpl.activate(restClientConfig);
+    String testResponse = null;
+    try {
+      testResponse = restServiceImpl.callGetWebService(url);
+      Assert.assertTrue(testResponse
+          .contains("<title>Sun Life | Life Insurance, Investments & Group Benefits</title>"));
+    } catch (Exception e) {
+      Assert.assertNull(testResponse);
+    }
+
+  }
+
+  /**
+   * @throws IOException
+   * @throws ApplicationException
+   * @throws SystemException
+   * @throws KeyStoreException
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
+  @ Test
+  void testCallGetWebServiceWhenSSLByPassIsSet() throws IOException , ApplicationException ,
+      SystemException , KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+    String url = "https://www.sunlife.ca/";
+    setRestClientConfig(500 , 500 , true);
+    String testResponse = null;
+    try {
+      restServiceImpl.activate(restClientConfig);
+      testResponse = restServiceImpl.callGetWebService(url);
+      Assert.assertTrue(testResponse
+          .contains("<title>Sun Life | Life Insurance, Investments & Group Benefits</title>"));
+    } catch (Exception e) {
+      Assert.assertNull(testResponse);
+    }
+  }
+
+  /**
+   * @throws ApplicationException
+   * @throws SystemException
+   * @throws IOException
+   * @throws KeyStoreException
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
+  @ Test
+  void testCallGetWebServiceWhenThrowsIOException() throws ApplicationException , SystemException ,
+      IOException , KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+    String url = "https://www.sunlife/";
+    restServiceImpl.activate(restClientConfig);
+    Assertions.assertThrows(IOException.class , () -> {
+      restServiceImpl.callGetWebService(url);
+    });
+  }
+
+  /**
+   * @throws ApplicationException
+   * @throws SystemException
+   * @throws IOException
+   * @throws KeyStoreException
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
+  @ Test
+  void testCallGetWebServiceWhenNotFound() throws ApplicationException , SystemException ,
+      IOException , KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+    String url = "https://www.sunlife.ca/demo";
+    restServiceImpl.activate(restClientConfig);
+    try {
+      restServiceImpl.callGetWebService(url);
+    } catch (Exception e) {
+      assertTrue(e instanceof Exception);
+    }
+  }
+
 }

@@ -9,14 +9,15 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface HtmlComponentModel.
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/content/html-component")
-public interface HtmlComponentModel{
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , resourceType = "sunlife/core/components/content/html-component")
+public interface HtmlComponentModel {
 
-	/**
-	 * Gets the text.
-	 *
-	 * @return the text
-	 */
-	@Inject
-	String getText();  
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
+  @ Inject
+  String getText();
 }

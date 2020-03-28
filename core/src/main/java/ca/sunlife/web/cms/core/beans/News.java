@@ -1,51 +1,57 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.beans;
 
 /**
- * @author mo92
- *	the class News
+ * The Class News.
+ *
+ * @author mo92 the class News
  */
 public class News {
 
-	/**
-	 * release - news
-	 */
-	private ReleaseMain releaseMain;
-	/**
-	 * pagination
-	 */
-	private Pagination pagination;
+  /** release - news. */
+  private ReleaseMain releaseMain;
 
-	/**
-	 * @return the releaseMain
-	 */
-	public ReleaseMain getReleaseMain() {
-		return releaseMain;
-	}
+  /** pagination. */
+  private Pagination pagination;
 
-	/**
-	 * @param releaseMain
-	 *            the releaseMain to set
-	 */
-	public void setReleaseMain(ReleaseMain releaseMain) {
-		this.releaseMain = releaseMain;
-	}
+  /**
+   * Gets the release main.
+   *
+   * @return the releaseMain
+   */
+  public ReleaseMain getReleaseMain() {
+    return releaseMain;
+  }
 
-	/**
-	 * @return the pagination
-	 */
-	public Pagination getPagination() {
-		return pagination;
-	}
+  /**
+   * Sets the release main.
+   *
+   * @param releaseMain
+   *          the releaseMain to set
+   */
+  public void setReleaseMain(final ReleaseMain releaseMain) {
+    this.releaseMain = releaseMain;
+  }
 
-	/**
-	 * @param pagination
-	 *            the pagination to set
-	 */
-	public void setPagination(Pagination pagination) {
-		this.pagination = pagination;
-	}
+  /**
+   * Gets the pagination.
+   *
+   * @return the pagination
+   */
+  public Pagination getPagination() {
+    return pagination;
+  }
+
+  /**
+   * Sets the pagination.
+   *
+   * @param pagination
+   *          the pagination to set
+   */
+  public void setPagination(final Pagination pagination) {
+    this.pagination = pagination;
+  }
 
 }

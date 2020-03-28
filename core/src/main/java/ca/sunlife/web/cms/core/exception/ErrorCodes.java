@@ -1,16 +1,36 @@
 package ca.sunlife.web.cms.core.exception;
 
+/**
+ * The Enum ErrorCodes.
+ */
 public enum ErrorCodes {
-	SYS_ERROR_001("System error code"),
-	APP_ERROR_001("Application error code");
-	
-	private String errorMsg;
-	
-	ErrorCodes(String s){
-		this.errorMsg = s;
-	}
-	
-	public static String getValue(ErrorCodes e) {
-		return e+" "+e.errorMsg;
-	}
+
+  /** The sys error 001. */
+  SYS_ERROR_001 ("System error code") ,
+  /** The app error 001. */
+  APP_ERROR_001 ("Application error code");
+
+  /** The error msg. */
+  private String errorMsg;
+
+  /**
+   * Instantiates a new error codes.
+   *
+   * @param s
+   *          the s
+   */
+  ErrorCodes(final String s) {
+    errorMsg = s;
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @param e
+   *          the e
+   * @return the value
+   */
+  public static String getValue(final ErrorCodes e) {
+    return e + " " + e.errorMsg;
+  }
 }

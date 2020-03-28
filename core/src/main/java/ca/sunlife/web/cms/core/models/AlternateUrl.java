@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.models;
 
@@ -11,18 +11,30 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 /**
- * @author MO92
+ * The Interface AlternateUrl.
  *
+ * @author MO92
  */
-@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public @interface AlternateUrl {
 
-	@Inject
-	@Named("altLanguageSeo")
-	String getAltLanguageSeo();
-	
-	@Inject
-	@Named("altLanguageUrlSeo")
-	String getAltLanguageUrlSeo();
-	
+  /**
+   * Gets the alt language seo.
+   *
+   * @return the alt language seo
+   */
+  @ Inject
+  @ Named ("altLanguageSeo")
+  String getAltLanguageSeo ();
+
+  /**
+   * Gets the alt language url seo.
+   *
+   * @return the alt language url seo
+   */
+  @ Inject
+  @ Named ("altLanguageUrlSeo")
+  String getAltLanguageUrlSeo ();
+
 }

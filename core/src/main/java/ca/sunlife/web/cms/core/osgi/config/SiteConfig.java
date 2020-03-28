@@ -6,15 +6,15 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface SiteConfig.
  */
-@ObjectClassDefinition(name = "Sunlife Site configuration pages", description = "Sunlife Site configuration pages")
+@ ObjectClassDefinition (name = "Sunlife Site configuration pages" , description = "Sunlife Site configuration pages")
 public @interface SiteConfig {
 
-	/**
-	 * Gets the site path.
-	 *
-	 * @return the site path
-	 */
-	@AttributeDefinition(name = "siteConfigPath", description = "Site Config Root Path")
-	String getSitePath();
+  /**
+   * Gets the site path.
+   *
+   * @return the site path
+   */
+  @ AttributeDefinition (name = "siteConfigPath" , description = "Site Config Root Path")
+  String getSitePath ();
 
 }

@@ -6,42 +6,46 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
+
 import com.adobe.cq.wcm.core.components.internal.models.v1.BreadcrumbImpl;
 import com.adobe.cq.wcm.core.components.models.Breadcrumb;
-
 
 /**
  * The Class BreadcrumbModel.
  */
-@Model(adaptables = SlingHttpServletRequest.class,adapters = Breadcrumb.class,resourceType = "sunlife/core/components/content/breadcrumb")
+@ Model (adaptables = SlingHttpServletRequest.class , adapters = Breadcrumb.class , resourceType = "sunlife/core/components/content/breadcrumb")
 public class BreadcrumbModel extends BreadcrumbImpl {
-	
-	public BreadcrumbModel() {
-		super();
-	}
-	
-	/** The social share reqd. */
-	@Inject
-	@Via("resource")
-	@Optional
-	private String socialShareReqd;
-	 
-	/**
-	 * Gets the social share reqd.
-	 *
-	 * @return the social share reqd
-	 */
-	public String getSocialShareReqd() {
-		return socialShareReqd;
-	}
 
-	/**
-	 * Sets the social share reqd.
-	 *
-	 * @param socialShareReqd the new social share reqd
-	 */
-	public void setSocialShareReqd(String socialShareReqd) {
-		this.socialShareReqd = socialShareReqd;
-	}
+  /**
+   * Instantiates a new breadcrumb model.
+   */
+  public BreadcrumbModel() {
+    super();
+  }
+
+  /** The social share reqd. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String socialShareReqd;
+
+  /**
+   * Gets the social share reqd.
+   *
+   * @return the social share reqd
+   */
+  public String getSocialShareReqd() {
+    return socialShareReqd;
+  }
+
+  /**
+   * Sets the social share reqd.
+   *
+   * @param socialShareReqd
+   *          the new social share reqd
+   */
+  public void setSocialShareReqd(final String socialShareReqd) {
+    this.socialShareReqd = socialShareReqd;
+  }
 
 }

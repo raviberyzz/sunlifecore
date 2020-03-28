@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.services;
 
@@ -9,19 +9,26 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 
 /**
- * @author mo92
- * The Interface RestService
+ * The Interface RestService.
+ *
+ * @author mo92 The Interface RestService
  */
 public interface RestService {
 
-	/**
-	 * Calls the GET url using HTTP client
-	 * @param url
-	 * @return
-	 * @throws SystemException 
-	 * @throws ApplicationException 
-	 * @throws IOException 
-	 */
-	public String callGetWebService(String url) throws ApplicationException, SystemException, IOException;
-	
+  /**
+   * Calls the GET url using HTTP client.
+   *
+   * @param url
+   *          the url
+   * @return the string
+   * @throws ApplicationException
+   *           the application exception
+   * @throws SystemException
+   *           the system exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public String callGetWebService(String url)
+      throws ApplicationException , SystemException , IOException;
+
 }
