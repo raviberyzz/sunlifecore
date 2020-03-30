@@ -53,5 +53,23 @@ $(document).ready(function () {
         $('#language-btn').removeClass('lang-true');
     });
 
+    //function to keep sticky header at the top of the page when scrolling and site level notif is present
+    if(window.innerWidth < 1024){
+        $(function () {
+            var $win = $(window);
+            //when page is reloaded in the middle
+            if ($win.scrollTop() != 0){
+               $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
+            }
+            //on scroll
+            $win.scroll(function () {
+                if ($win.scrollTop() == 0)
+                   $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': 'auto' });
+                else {
+                   $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
+                }
+            });
+        });
+   }
       
 });
