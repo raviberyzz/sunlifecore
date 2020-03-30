@@ -351,50 +351,6 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>com.github.eirslett</groupId>
-							<artifactId>frontend-maven-plugin</artifactId>
-							<!-- Use the latest released version: https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-							<version>1.7.6</version>
-							<configuration>
-								<workingDirectory>../node-app</workingDirectory>
-							</configuration>
-							<executions>
-								<execution>
-									<id>Install node and npm</id>
-									<phase>${node.phase.prop}</phase>
-									<goals>
-										<goal>install-node-and-npm</goal>
-									</goals>
-									<configuration>
-										<nodeVersion>v11.1.0</nodeVersion>
-									</configuration>
-								</execution>
-								<execution>
-									<id>npm install</id>
-									<phase>${node.phase.prop}</phase>
-									<goals>
-										<goal>npm</goal>
-									</goals>
-								</execution>
-								<execution>
-									<id>gulp build:dev</id>
-									<phase>${node.phase.prop}</phase>
-									<goals>
-										<goal>gulp</goal>
-									</goals>
-									<configuration>
-										<arguments>build:dev</arguments>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
 			<properties>
 				<releaseRepository-Id>adobe-public-releases</releaseRepository-Id>
 				<releaseRepository-Name>Adobe Public Releases</releaseRepository-Name>
@@ -468,8 +424,7 @@
 										<goal>npm</goal>
 									</goals>
 									<configuration>
-										<arguments>install registry
-											http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
+										<arguments>install --registry http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
 										<environmentVariables>
 											<SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass</SASS_BINARY_SITE>
 										</environmentVariables>
