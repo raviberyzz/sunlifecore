@@ -57,13 +57,13 @@
                     <acHandling>merge_preserve</acHandling>
                     <group>sunlife</group>
                     <allowIndexDefinitions>true</allowIndexDefinitions>
-                    <subPackages>
+                    <!--  subPackages>
 			            <subPackage>
 			                <groupId>com.adobe.acs</groupId>
 			                <artifactId>acs-aem-commons-content</artifactId>
 			                <filter>true</filter>
 			            </subPackage>
-			        </subPackages>
+			        </subPackages-->
                 </configuration>
             </plugin>
             <plugin>
@@ -93,12 +93,12 @@
             <artifactId>uber-jar</artifactId>
             <classifier>apis</classifier>
         </dependency>
-        <dependency>
+        <!-- dependency>
 		    <groupId>com.adobe.acs</groupId>
 		    <artifactId>acs-aem-commons-content</artifactId>
 		    <version>4.3.4</version>
 		    <type>content-package</type>
-		</dependency>
+		</dependency -->
 
     </dependencies>
 </project>
