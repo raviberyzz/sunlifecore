@@ -139,9 +139,11 @@
     }
     .social-link-icon-wrapper{
         margin:16px 0px;
+        width:100%;
         ul{
             display: flex;
             justify-content: center;
+            margin-top:16px;
             li{
                 .icon-parent{
                     .icon-style{

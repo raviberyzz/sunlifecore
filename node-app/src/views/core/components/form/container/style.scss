@@ -187,8 +187,94 @@
     textarea {
         width:100%;
     }
+    .text.form-element-full-width-wrapper{
+        textarea{
+            padding:10px 8px;
+        }
+    }
 } 
 /*Thank You wrapper Ends Here*/
+
+
+/* Generic form styles start here */
+.generic-form-wrapper{
+    form{
+        .row{
+            display:flex;
+            div[class^="col-"]{
+                padding:0px;
+            }
+            div[class^="col-"]:first-child{
+                margin-right: 10px;
+            }
+            div[class^="col-"]:last-child{
+                input[name=Ext]{
+                    width:100px;
+                }
+            }
+        }
+        .cmp-form-text{
+            textarea{
+                width:100%;
+            }
+        }
+        .dropdown{
+            .cmp-form-options{
+                width:100%;
+            }
+        }
+        .text, .dropdown, .layout-container{
+            margin-bottom:8px;
+        }
+    }
+}
+@media(min-width:$tab-screen-min){
+    .generic-form-wrapper{
+        form{
+            .row{
+                div[class^="col-"]:first-child{
+                    width:285px;
+                }
+            }
+            input[type=text]{
+                width:285px;
+            }
+            label{
+                display: block;
+            }
+            .dropdown{
+                .cmp-form-options{
+                    width:395px;
+                }
+            }
+            .text{
+                textarea{
+                    width:395px;
+                }
+            }
+        }
+    }
+}
+
+/* styles for landscape view start */
+@media(min-width:500px) and (max-width:$mobile-screen-max){
+    .generic-form-wrapper{
+        form{
+            .row{
+                div[class^="col-"]:first-child{
+                    width:100%;
+                } 
+            }
+            label{
+                display: block;
+            }
+        }
+    }
+}
+/* styles for landscape view end */
+/*Generic form styles end here */
+
+
 @media (max-width: $mobile-screen-max) {
 .subscribe-popup-form-wrapper{
     padding:0 ;
