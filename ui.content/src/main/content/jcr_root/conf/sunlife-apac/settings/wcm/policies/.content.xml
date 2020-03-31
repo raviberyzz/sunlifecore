@@ -1598,33 +1598,7 @@
                                 </item0>
                             </cq:styleGroups>
                         </policy_lifeMoments>
-                    </life-moments>  
-                    <articleList jcr:primaryType="nt:unstructured">
-                        <policy_articleList
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Article List"
-                            sling:resourceType="wcm/core/components/policy/policy">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                            <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleGroupLabel="Article List"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="articleList_editorial-wrapper clearfix"
-                                            cq:styleId="1583304186619"
-                                            cq:styleLabel="Editorial Articles List"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
-                                            cq:styleClasses="articleList-wrapper clearfix"
-                                            cq:styleId="1583304203789"
-                                            cq:styleLabel="Article List"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item0>
-                            </cq:styleGroups>
-                        </policy_articleList>
-                    </articleList>                 
+                    </life-moments>                    
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">
@@ -3349,33 +3323,7 @@
                                 </item0>
                             </cq:styleGroups>
                         </policy_lifeMoments>
-                    </life-moments>  
-                    <articleList jcr:primaryType="nt:unstructured">
-                        <policy_articleList
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Article List"
-                            sling:resourceType="wcm/core/components/policy/policy">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                            <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleGroupLabel="Article List"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="articleList_editorial-wrapper clearfix"
-                                            cq:styleId="1583304186619"
-                                            cq:styleLabel="Editorial Articles List"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item1
-                                            cq:styleClasses="articleList-wrapper clearfix"
-                                            cq:styleId="1583304203789"
-                                            cq:styleLabel="Article List"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item0>
-                            </cq:styleGroups>
-                        </policy_articleList>
-                    </articleList>                 
+                    </life-moments>                    
                     </content>
                     <form jcr:primaryType="nt:unstructured">
                         <container jcr:primaryType="nt:unstructured">
