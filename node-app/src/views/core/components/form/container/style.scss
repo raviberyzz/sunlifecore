@@ -226,6 +226,18 @@
         .text, .dropdown, .layout-container{
             margin-bottom:8px;
         }
+        input[type=checkbox]:after{
+            margin-top: 1px;
+            margin-left: 4px;
+        }
+        .cmp-form-options__field-description{
+            margin-left:30px;
+        }
+        .form-dropdown-fittosection{
+            .cmp-form-options{
+                width:285px!important;
+            }
+        }
     }
 }
 @media(min-width:$tab-screen-min){
