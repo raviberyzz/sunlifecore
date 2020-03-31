@@ -1652,7 +1652,12 @@
                                             cq:styleClasses="thankyou-wrapper"
                                             cq:styleId="1580210911444"
                                             cq:styleLabel="Thank You"
-                                            jcr:primaryType="nt:unstructured"/>	
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="generic-form-wrapper"
+                                            cq:styleId="1580210222333"
+                                            cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/>    	
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -1800,6 +1805,11 @@
 		                                            cq:styleId="1584525555983"
 		                                            cq:styleLabel="Full Width"
 		                                            jcr:primaryType="nt:unstructured"/>
+		                                         <item1
+		                                            cq:styleClasses="form-dropdown-fittosection"
+		                                            cq:styleId="1584525666666"
+		                                            cq:styleLabel="Fit tosection"
+		                                            jcr:primaryType="nt:unstructured"/>    
 		                                    </cq:styles>
 		                                </item0>
 		                            </cq:styleGroups>
