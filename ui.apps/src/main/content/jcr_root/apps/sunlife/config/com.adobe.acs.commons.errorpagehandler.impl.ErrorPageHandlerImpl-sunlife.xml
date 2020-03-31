@@ -3,4 +3,5 @@
     jcr:primaryType="sling:OsgiConfig"
     enabled="{Boolean}true"
     cache.serve-authenticated="{Boolean}true"
+    paths="[/content/dam/sunlife/legacy/assets/ca:/content/sunlife/external/ca/en/error/404,/content/dam/sunlife/external/ca:/content/sunlife/external/ca/en/error/404]"
     cache.ttl="{Long}300"/>
