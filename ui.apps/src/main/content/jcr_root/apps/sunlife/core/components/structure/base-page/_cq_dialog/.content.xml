@@ -54,6 +54,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Advisor page"
                                                         value="advisor"/>
+                                                    <article
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Article page"
+                                                        value="article"/>
                                                 </items>
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
