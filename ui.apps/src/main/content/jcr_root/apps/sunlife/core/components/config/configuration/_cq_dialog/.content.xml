@@ -20,6 +20,11 @@
                                 jcr:title="General"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                 <items jcr:primaryType="nt:unstructured">
+                                    <siteName
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Site name"
+                                        name="./siteName"/>
                                     <domain
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -88,26 +93,57 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Navigation overview title"
                                         name="./navigationOverview"/>
+                                </items>
+                            </section-general>
+                            <section-article
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Article Related Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
                                     <articleDateFormat
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Article Date Format"
                                         fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        fieldLabel="Article Date Format"
                                         name="./articleDateFormat"/>
-                                     <articlePublisherName
+                                    <articlePublisherName
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldLabel="Article Publisher Name"
                                         fieldDescription="Enter the article publisher name for SEO JSON"
+                                        fieldLabel="Article Publisher Name"
                                         name="./articlePublisherName"/>
-                                     <articlePublisherLogo
+                                    <articlePublisherLogo
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldLabel="Article Publisher Logo"
                                         fieldDescription="Enter the article publisher logo for SEO JSON"
+                                        fieldLabel="Article Publisher Logo"
                                         name="./articlePublisherLogo"/>
+                                    <articleType
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article type"
+                                        fieldLabel="Article type"
+                                        name="./articleType"/>
+                                    <articlePublisherForMetaTag
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article publisher (Social meta tags)"
+                                        fieldLabel="Article publisher (Social meta tags)"
+                                        name="./articlePublisherForMetaTag"/>
+                                    <articleCreator
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article creator"
+                                        fieldLabel="Article creator"
+                                        name="./articleCreator"/>
+                                    <articleSite
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article site"
+                                        fieldLabel="Article site"
+                                        name="./articleSite"/>
                                 </items>
-                            </section-general>
+                            </section-article>
                             <section-page
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Page Defaults"

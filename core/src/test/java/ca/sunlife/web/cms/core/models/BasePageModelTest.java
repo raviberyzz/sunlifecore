@@ -171,4 +171,16 @@ public class BasePageModelTest {
     }
 
   }
+  
+  @ Test
+  public void testInitForArticlePageType() {
+    try {
+      setInitData( );
+      basePageModel.setAdvancedPageType(BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT);
+      basePageModel.init( );
+    } catch (Exception e) {
+      assertTrue(e instanceof NullPointerException);
+    }
+
+  }
 }

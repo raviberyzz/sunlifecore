@@ -21,10 +21,19 @@ import org.apache.sling.models.annotations.Model;
 public interface SiteConfigModel {
 
   /**
+   * Gets the site name.
+   *
+   * @return the site name
+   */
+  @ Inject
+  String getSiteName();
+  
+  /**
    * Gets the domain.
    *
    * @return the domain
    */
+  
   @ Inject
   String getDomain();
 
@@ -33,6 +42,7 @@ public interface SiteConfigModel {
    *
    * @return the site url
    */
+  
   @ Inject
   String getSiteUrl();
 
@@ -132,4 +142,35 @@ public interface SiteConfigModel {
   @ Inject
   String getArticlePublisherLogo();
 
+  /**
+   * Gets the article type.
+   *
+   * @return the article type
+   */
+  @ Inject
+  String getArticleType();
+  
+  /**
+   * Gets the article publisher for meta tag.
+   *
+   * @return the article publisher for meta tag
+   */
+  @ Inject
+  String getArticlePublisherForMetaTag();
+  
+  /**
+   * Gets the article creator.
+   *
+   * @return the article creator
+   */
+  @ Inject
+  String getArticleCreator();
+  
+  /**
+   * Gets the article site.
+   *
+   * @return the article site
+   */
+  @ Inject
+  String getArticleSite();
 }
