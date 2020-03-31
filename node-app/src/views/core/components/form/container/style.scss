@@ -137,7 +137,7 @@
 /*Thank You wrapper Starts Here*/
 
 .thankyou-wrapper{
-	background-color: $medium-yellow-background;
+	//background-color: $medium-yellow-background;
     text-align:center;
     padding: 32px 0 22px 0;
     form{
@@ -151,7 +151,7 @@
             margin: 0;
             }
         }
-        .text,.dropdown {
+        .form-input,.dropdown {
             width:50% !important;
              padding: 0 8px;
              margin-bottom: 16px;
@@ -165,13 +165,19 @@
             margin-bottom: 16px;
         
         }
+        textarea{
+            padding: 0px 16px;
+        }
     }
-    div.text:first-of-type {
+    .form-input-text {
         width: 80% !important;
         float:none !important;
         padding:0 30px;
         display:inline-block;
-        margin-bottom:32px;
+        margin:0px auto!important;
+    }
+    .form-input-text:first-of-type{
+        margin:0px auto 32px!important;
     }
     div.text:last-child {
        width: 100% !important;
@@ -240,6 +246,17 @@
         }
     }
 }
+.col-sm-4, .col-md-4, .col-lg-4 {
+    .generic-form-wrapper{
+        form{
+            .text{
+                input[type=text]{
+                    width:100%;
+                }
+            }
+        }
+    }
+}
 @media(min-width:$tab-screen-min){
     .generic-form-wrapper{
         form{
@@ -256,7 +273,7 @@
             }
             .dropdown{
                 .cmp-form-options{
-                    width:395px;
+                    max-width:395px;
                 }
             }
             .text{
