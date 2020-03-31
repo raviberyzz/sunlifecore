@@ -5,8 +5,10 @@ package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -18,10 +20,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jcr.RepositoryException;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
@@ -43,6 +47,7 @@ import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
+import ca.sunlife.web.cms.core.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
@@ -88,7 +93,28 @@ public class BasePageModel {
 
   /** The Constant TWITTER_CARD. */
   static final String TWITTER_CARD = "twitter:card";
-
+  
+  /** The Constant OG_TYPE. */
+  static final String OG_TYPE = "og:type";
+  
+  /** The Constant OG_TYPE. */
+  static final String OG_PUBLISHED_DATE = "og:published_date";
+  
+  /** The Constant OG_TYPE. */
+  static final String OG_MODIFIED_DATE = "og:modified_time";
+  
+  /** The Constant OG_TYPE. */
+  static final String OG_PUBLISHER = "og:publisher";
+  
+  /** The Constant OG_TYPE. */
+  static final String OG_SITENAME = "og:sitename";
+  
+  /** The Constant OG_TYPE. */
+  static final String TWITTER_SITE = "twitter:site";
+  
+  /** The Constant OG_TYPE. */
+  static final String TWITTER_CREATOR = "twitter:creator";
+  
   /** The Constant LOGGER. */
   private static final Logger logger = LoggerFactory.getLogger(BasePageModel.class);
 
@@ -228,6 +254,15 @@ public class BasePageModel {
 
   /** Default reporting language. */
   private String defaultReportingLanguage;
+  
+  /** The Constant JCR_CONTENT_DATA_MASTER. */
+  private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
+  
+  /** The Constant ARTICLE_PUBLISHED_DATE. */
+  private static final String ARTICLE_PUBLISHED_DATE = "articlePublishedDate";
+  
+  /** The Constant ARTICLE_MODIFIED_DATE. */
+  private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
 
   /**
    * Gets the seo page title.
@@ -636,6 +671,13 @@ public class BasePageModel {
       customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
     }
     customMetadata.put(TWITTER_CARD, "summary_large_image");
+    // Condition for article pages start
+    if (null != advancedPageType
+        && BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT.equals(advancedPageType)) {
+      logger.debug("Inside article page block");
+      setArticlePageSocialMetaTags();
+    }
+    // Condition for article pages end
     logger.debug("metadata :: {}", customMetadata);
 
     // Sets alternate URLs
@@ -1053,5 +1095,58 @@ public class BasePageModel {
     logger.debug("setUDOTagsForAdvisorPages :: advisorId :: {}, advisorType :: {}", advisorId,
         advisorType);
     logger.debug("Exit :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
+  }
+  
+  public void setArticlePageSocialMetaTags() throws LoginException, RepositoryException {
+	  logger.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
+	  String pagePath = currentPage.getPath();
+	  final String articleType = configService.getConfigValues(ArticleConstants.ARTICLE_TYPE_CONSTANT, pagePath);
+      final String articlePublisherForMetaTag = configService.getConfigValues(ArticleConstants.ARTICLE_PUBLISHER_CONSTANT, pagePath);
+      final String siteName = configService.getConfigValues("siteName", pagePath);
+      final String articleSite = configService.getConfigValues(ArticleConstants.ARTICLE_SITE_CONSTANT, pagePath);
+      final String articleCreator = configService.getConfigValues(ArticleConstants.ARTICLE_CREATOR_CONSTANT, pagePath);
+      
+      customMetadata.put(OG_TYPE, articleType);
+      customMetadata.put(OG_PUBLISHER, articlePublisherForMetaTag);
+      customMetadata.put(OG_SITENAME, siteName);
+      customMetadata.put(TWITTER_SITE, articleSite);
+      customMetadata.put(TWITTER_CREATOR, articleCreator);
+      
+      String articlePath = pagePath + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
+      final Resource articleResource = null != resolver ? resolver.getResource(articlePath) : null;
+      if( null == articleResource ) {
+    	  logger.debug("articleResource is null");
+    	  return;
+      }
+      final ValueMap articleResContent = articleResource.getValueMap();
+      
+      String fragmentPath = articleResContent.containsKey("fragmentPath") ? articleResContent.get("fragmentPath", String.class) : null;
+      String articlePublishedDate = StringUtils.EMPTY;
+      String articlePublishedModifiedDate = StringUtils.EMPTY;
+      
+      if( null == fragmentPath ) {
+    	  logger.debug("fragmentPath is null");
+    	  return;
+      }
+      
+	  final Resource articleFragmentResource =resolver.getResource(fragmentPath.concat(JCR_CONTENT_DATA_MASTER));
+	  if( null == articleFragmentResource ) {
+		  logger.debug("articleFragmentResource is null");
+		  return;
+	  }
+	  final ValueMap articleContent = articleFragmentResource.getValueMap();
+	  
+	  final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+	  if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
+	      articlePublishedDate = formatter.format(((GregorianCalendar) articleContent.getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
+	  }
+	  
+	  if (articleContent.containsKey(ARTICLE_MODIFIED_DATE)) {
+		  articlePublishedModifiedDate = formatter.format(((GregorianCalendar) articleContent.getOrDefault(ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
+	  }
+	  
+	  customMetadata.put(OG_PUBLISHED_DATE, articlePublishedDate);
+	  customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
+	  logger.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
   }
 }
