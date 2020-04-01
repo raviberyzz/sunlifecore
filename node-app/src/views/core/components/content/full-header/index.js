@@ -54,22 +54,28 @@ $(document).ready(function () {
     });
 
     //function to keep sticky header at the top of the page when scrolling and site level notif is present
-    if ($(window).width() < 1024) {
-        $(function () {
-            var $win = $(window);
-            //when page is reloaded in the middle
-            if ($win.scrollTop() != 0){
+    function mobileHeader() {
+        var $win = $(window);
+        //when page is reloaded in the middle
+        if ($win.scrollTop() != 0){
+           $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
+        }
+        //on scroll
+        $win.scroll(function () {
+            if ($win.scrollTop() == 0)
+               $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': 'auto' });
+            else {
                $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
             }
-            //on scroll
-            $win.scroll(function () {
-                if ($win.scrollTop() == 0)
-                   $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': 'auto' });
-                else {
-                   $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
-                }
-            });
         });
-   }
+    };
+    if ($(window).width() < 1024) {
+        $(mobileHeader);
+    }
+    $(window).resize(function () {
+        if ($(window).width() < 1024) {
+            $(mobileHeader);
+        }
+    });
       
 });
