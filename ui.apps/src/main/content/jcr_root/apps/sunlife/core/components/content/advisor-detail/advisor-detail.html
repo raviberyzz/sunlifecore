@@ -2,6 +2,7 @@
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
 <sly data-sly-use.advisorDetailObj="ca.sunlife.web.cms.core.models.AdvisorDetailModel" />
 <sly data-sly-use.advisorDataObj="${'advisor-details.js' @ jsonString=advisorDetailObj.advisorData, context='scriptString'}" />
+<sly data-sly-test.errorCode="${advisorDataObj.ErrorCode}" />
 <sly data-sly-test.advisorStd="${advisorDataObj.AdvisorStd}" />
 <sly data-sly-test.advisorCorp="${advisorDataObj.AdvisorCorp}" />
 <script type="text/javascript">
@@ -9,6 +10,17 @@
 	var iconMarkerCorporateVal = "${advisorDetailObj.iconMarkerCorporate @ context = 'unsafe'}";
 	var iconMarkerStandardVal = "${advisorDetailObj.iconMarkerStandard @ context = 'unsafe'}";
 </script>
+
+<!-- Error code - LANGUAGE_NOT_SUPPORTED start -->
+<sly data-sly-test="${errorCode == 'LANGUAGE_NOT_SUPPORTED'}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
+		<p>
+			${advisorDetailObj.languageNotSupportedMessage @context = 'html'} <a href="${advisorDetailObj.alternateUrl}">${advisorDetailObj.alternateLanguage}</a>
+		</p>
+    </div>
+</sly>
+<!-- Error code - LANGUAGE_NOT_SUPPORTED end -->
+
 <!-- Advisor start -->
 <sly data-sly-test="${advisorStd}">
 	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
