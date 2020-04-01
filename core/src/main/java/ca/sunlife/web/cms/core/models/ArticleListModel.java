@@ -413,8 +413,10 @@ public class ArticleListModel {
           leakingResourceResolver.close();
         }
       }
-      setPagination(new Pagination(request,getMaxItems(),getTotalMatch(),currentPage.getPath()));
-      setPageUrl(currentPage.getPath());
+      String path = currentPage.getPath();
+      path = path.replace(configService.getConfigValues("siteUrl", path), "");
+      setPagination(new Pagination(request,getMaxItems(),getTotalMatch(),path));
+      setPageUrl(path);
     } catch (LoginException | RepositoryException e) {
       logger.error("Login exception while trying to get resource resolver {}", e);
     } finally {
