@@ -14,7 +14,7 @@
                             <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
                             <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                         </sly>
-                        <a href="${pageLink}">
+                        <a href="${pageLink @ extension = 'html'}">
                             <div class="article-image">
                                 <img src="${img}" aria-hidden="true" />                                
                             </div>
@@ -41,13 +41,13 @@
                                 data-sly-test.date="${element.value}" />
                         </sly>
                         <div class="editorial-image">
-                            <a href="${pageLink}">
+                            <a href="${pageLink @ extension = 'html'}">
                                 <img src="${img}" aria-hidden="true" />
                             </a>
                         </div>
                         <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly> <br/></div>
                         <div class="editorial">
-                            <a href="${pageLink}">${headline}</a><br />
+                            <a href="${pageLink @ extension = 'html'}">${headline}</a><br />
                         </div>
                         <p>${description}</p>
                     </div>
@@ -71,14 +71,14 @@
                                     data-sly-test.date="${element.value}" />
                             </sly>
                             <div class="content-list-thumbnail">
-                                <a href="${pageLink}">
+                                <a href="${pageLink @ extension = 'html'}">
                                     <img src="${img}" aria-hidden="true" />
                                 </a>
                             </div>
                             <div class="content-list-summary">
                                 <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly></div>
                                 <h2>
-                                    <a href="${pageLink}">${headline}</a>
+                                    <a href="${pageLink @ extension = 'html'}">${headline}</a>
                                 </h2>
                                 <p>${description}</p>
                             </div>
@@ -99,7 +99,7 @@
                         <sly data-sly-test="${element.name == 'articlePageLink'}" data-sly-test.pageLink="${element.value}" />
                         <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                     </sly>
-                    <a href="${pageLink}">${headline}</a>
+                    <a href="${pageLink @ extension = 'html'}">${headline}</a>
                 </li>
             </sly>
         </ul>
