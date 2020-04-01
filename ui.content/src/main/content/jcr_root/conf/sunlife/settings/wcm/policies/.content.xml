@@ -293,7 +293,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="form-input"
+                                            cq:styleClasses="form-input-text"
                                             cq:styleId="1579258484845"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
