@@ -80,6 +80,24 @@
                                         fieldDescription="Cell Phone Label"
                                         fieldLabel="Cell Phone Label"
                                         name="./cellPhoneLabel"/>
+                                    <languageNotSupportedMessage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Language not supported message"
+                                        fieldLabel="Language not supported message"
+                                        name="./languageNotSupportedMessage"/>
+                                    <alternateLanguage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Alternate language"
+                                        fieldLabel="Alternate language"
+                                        name="./alternateLanguage"/>
+                                    <alternateUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Alternate URL"
+                                        fieldLabel="Alternate URL"
+                                        name="./alternateUrl"/>
                                 </items>
                             </labelSection>
                             <mapSection
