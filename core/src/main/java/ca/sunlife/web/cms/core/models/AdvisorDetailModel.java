@@ -713,6 +713,7 @@ public class AdvisorDetailModel {
   }
   
   /**
+   * validates advisor data
    * @param advisorId
    * @throws JSONException
    */
