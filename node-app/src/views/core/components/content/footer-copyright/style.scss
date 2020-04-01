@@ -69,11 +69,11 @@
     }
 }
 //specific case for ipad only. the footer heading was overlapping the social icons so set width to break the word into 2 lines
-@media (min-width: $tab-screen-min) and (max-width: 1023) {
+@media (min-width: $tab-screen-min) and (max-width: 1023px) {
     footer{
         .teaser{
             .text-section {
-                width: 400px;
+                width: 325px;
             }
         }
     }
