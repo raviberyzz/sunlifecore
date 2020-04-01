@@ -288,6 +288,17 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
+                                <item8
+                                    cq:styleGroupLabel="Form Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="form-input"
+                                            cq:styleId="1579258484845"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                     </cq:styles>
+                                </item8>
                             </cq:styleGroups>
                             </policy_text>
                         </text>

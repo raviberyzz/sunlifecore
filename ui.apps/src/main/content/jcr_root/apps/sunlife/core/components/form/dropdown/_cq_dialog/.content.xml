@@ -31,6 +31,14 @@
                                                 fieldLabel="Dropdown Id"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 name="./id"/>
+                                            <isScreenReader
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the title has to be hide and read for screenreader only"
+                                                name="./isScreenReader"
+                                                text="Do you want to Make title hidden"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>   
 											<aria-label
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
