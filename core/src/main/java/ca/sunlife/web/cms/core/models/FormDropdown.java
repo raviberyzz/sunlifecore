@@ -32,6 +32,14 @@ public interface FormDropdown {
    */
   @ Inject
   public String getId();
+  
+  /**
+   * Gets the Screen reader value for title
+   *
+   * @return the Screen reader value
+   */
+  @ Inject
+  public String getIsScreenReader();  
 
   /**
    * Gets the name.
