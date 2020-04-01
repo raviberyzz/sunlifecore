@@ -30,12 +30,6 @@
                                                 fieldDescription="Canonical URL"
                                                 fieldLabel="Canonical URL"
                                                 name="./canonicalUrl"/>
-                                            <errorPage
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                fieldDescription="Error pages for this content tree"
-                                                fieldLabel="Error Pages"
-                                                name="./errorPages"/>
                                             <advancedPageType
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
@@ -119,6 +113,20 @@
                                                 name="./bodyInclude"/>
                                         </items>
                                     </tools-resources>
+                                    <error-page
+                                        cq:showOnCreate="{Boolean}false"
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Error Page Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <errorPage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Error pages for this content tree"
+                                                fieldLabel="Error Pages located path"
+                                                name="./errorPages"/>
+                                        </items>
+                                    </error-page>
                                 </items>
                             </columns>
                         </items>
