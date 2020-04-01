@@ -464,6 +464,14 @@ ul {
         }
     }
 }    
+//this is for dual and triple cta's not appearing in the same row on Ipad
+@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
+    .layout-container{
+        .row.flex-height{
+            display: -webkit-box;
+        }
+    }
+}
 .company-highlight-blue-grey-background {
     background: linear-gradient(to bottom, $medium-blue-color, $medium-blue-color 50%, $light-grey-20 50% );
 }
