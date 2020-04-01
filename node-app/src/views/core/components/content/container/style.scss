@@ -464,8 +464,8 @@ ul {
         }
     }
 }    
-//this is for dual and triple cta's not appearing in the same row on Ipad
-@media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
+//this is for dual and triple cta's not appearing in the same row on Ipad and macbooks
+@media (min-width: $tab-screen-min){
     .layout-container{
         .row.flex-height{
             display: -webkit-box;
