@@ -2,7 +2,6 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/sunlife"/>
     <filter root="/apps/foundation/components/form"/>
-    <filter root="/apps/cq"/>
-	<filter root="/apps/dam/cfm"/>    
+    <filter root="/apps/cq"/>	
     <filter root="/apps/sling/servlet/errorhandler" />
 </workspaceFilter>
