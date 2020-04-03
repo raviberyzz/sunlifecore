@@ -1148,7 +1148,8 @@ ul {
 		height: 2em;
 		line-height: 2em;
 		background: linear-gradient(#FFCB05, #EAAB00);
-		border-radius: 50%;
+        border-radius: 50%;
+        pointer-events: none;
     }
     .icon-parent a:hover{
         color: $white-shade;
