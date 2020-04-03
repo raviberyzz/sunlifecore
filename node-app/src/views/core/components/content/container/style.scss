@@ -1184,6 +1184,15 @@ ul {
 		}
 	}
 }
+@media (max-width: $tab-screen-max) and (min-width: $tab-screen-min){
+    .mobileapp{
+        .col-sm-4{
+            .cmp-image__image{
+                width: 100%;
+            }
+        }
+    }
+}
 
 /* styles for mobile app end  */
 
