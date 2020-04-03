@@ -1025,6 +1025,20 @@ ul {
         }
     }
 }
+/* orange background for right nav wrapper in the body section start */
+.light-orange {
+    background-color: $light-orange-20;
+    border-top: 20px solid $white-shade;
+    border-bottom: 20px solid $white-shade;
+}
+/* orange background for right nav wrapper in the body section end */
+
+/* image responsive for images start*/
+    img{
+      max-width:100%;
+      height:auto;
+    }
+/* image responsive for images end */ 
 /*icon-text-list tablet starts here*/
 .icon-text-list{
     .col-sm-6{
