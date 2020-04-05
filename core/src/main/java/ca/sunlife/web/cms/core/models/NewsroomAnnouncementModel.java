@@ -31,8 +31,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * The Class NewsroomArticleModel.
  */
 @ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = NewsroomArticleModel.class , resourceType = "sunlife/apac/hk/components/content/newsroom-article")
-public class NewsroomArticleModel {
+    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = NewsroomAnnouncementModel.class , resourceType = "sunlife/apac/hk/components/content/newsroom-article")
+public class NewsroomAnnouncementModel {
 
   /** The Constant ARTICLE_PUBLISHED_DATE. */
   private static final String ARTICLE_PUBLISHED_DATE = "articlePublishedDate";
@@ -50,7 +50,7 @@ public class NewsroomArticleModel {
   private static final String NEWSROOM_HEADING = "newsroomHeading";
 
   /** The log. */
-  private static final Logger logger = LoggerFactory.getLogger(NewsroomArticleModel.class);
+  private static final Logger logger = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
 
   /** The fragment path. */
   @ Inject
@@ -65,72 +65,6 @@ public class NewsroomArticleModel {
   @ Inject
   @ Via ("resource")
   private String checkboxHideDate;
-
-  /** The page url. */
-  private String pageUrl;
-
-  /** The og image. */
-  private String ogImage;
-
-  /** The og description. */
-  private String ogDescription;
-
-  /**
-   * Gets the og image.
-   *
-   * @return the ogImage
-   */
-  public final String getOgImage() {
-    return ogImage;
-  }
-
-  /**
-   * Sets the og image.
-   *
-   * @param ogImage
-   *          the ogImage to set
-   */
-  public final void setOgImage(final String ogImage) {
-    this.ogImage = ogImage;
-  }
-
-  /**
-   * Gets the og description.
-   *
-   * @return the ogDescription
-   */
-  public final String getOgDescription() {
-    return ogDescription;
-  }
-
-  /**
-   * Sets the og description.
-   *
-   * @param ogDescription
-   *          the ogDescription to set
-   */
-  public final void setOgDescription(final String ogDescription) {
-    this.ogDescription = ogDescription;
-  }
-
-  /**
-   * Gets the page url.
-   *
-   * @return the page url
-   */
-  public final String getPageUrl() {
-    return pageUrl;
-  }
-
-  /**
-   * Sets the page url.
-   *
-   * @param pageUrl
-   *          the new page url
-   */
-  public final void setPageUrl(final String pageUrl) {
-    this.pageUrl = pageUrl;
-  }
 
   /** The config service. */
   @ Inject
@@ -208,7 +142,6 @@ public class NewsroomArticleModel {
       logger.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
       final Resource articleResource = resourceResolver
           .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
-      final String pagePath = currentPage.getPath();
       if (null != articleResource) {
         logger.debug("Parsing Article Data");
         final ValueMap articleContent = articleResource.getValueMap();
@@ -227,12 +160,6 @@ public class NewsroomArticleModel {
         setArticlePublishDate(articleContent);        
       }
       logger.debug("Article Data {}", articleData);
-      final ValueMap pageProperties = currentPage.getProperties();
-
-      setPageUrl(configService.getPageUrl(pagePath));
-      setOgDescription(pageProperties.containsKey("socialMediaDescripton")
-          ? pageProperties.get("socialMediaDescripton", String.class)
-          : configService.getConfigValues("pageDescription", pagePath));
       resourceResolver.close();
     } catch (LoginException | RepositoryException e) {
       logger.error("Login Error while getting resource resolver : {}", e);
