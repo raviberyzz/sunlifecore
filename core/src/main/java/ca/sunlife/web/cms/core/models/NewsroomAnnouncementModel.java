@@ -28,7 +28,7 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * The Class NewsroomArticleModel.
+ * The Class NewsroomAnnouncement Model.
  */
 @ Model (adaptables = { SlingHttpServletRequest.class ,
     Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = NewsroomAnnouncementModel.class , resourceType = "sunlife/apac/hk/components/content/newsroom-article")
