@@ -15,4 +15,5 @@
     <filter root="/etc/map.stage.publish"/>
     <filter root="/etc/map.prod.publish"/>
     <filter root="/var/workflow/models/dam/update_asset"/>
+    <filter root="/content/sunlife-tools"/>
 </workspaceFilter>

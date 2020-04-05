@@ -1,0 +1,10 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-use.akamai="ca.sunlife.web.cms.core.models.AkamaiPurgeModel"></sly>
+<sly data-sly-test.notEmpty="${akamai.akamaiResponse}">
+    <div>
+    <h1>Akamai Response</h1>
+    ${akamai.akamaiResponse @context='html'}
+    </div>
+</sly>
+<sly data-sly-test="!notEmpty"><h1>Edit component to add the paths for Akamai purge</h1></sly>
+        
