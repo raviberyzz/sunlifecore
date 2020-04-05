@@ -259,7 +259,7 @@ public class ArticleListModel {
   private int totalMatch;
 
   /** The element names. */
-  private final String [ ] elementNames = { "articlePublishedDate" , "articleHeadline" ,
+  private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate" , "articleHeadline" ,
       "articlePageLink" , "articleAuthor" , "articleMiniDescription" , "articleImage" ,
       "articleMainDescription" , "articleThumbnailImage" };
 
@@ -403,7 +403,7 @@ public class ArticleListModel {
           }
 
           final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
-              contentTypeConverter,null,elementNames);
+              contentTypeConverter,null,ELEMENT_NAMES);
 
           items.add(contentFragmentModel);
         }
@@ -436,7 +436,7 @@ public class ArticleListModel {
    *          the query parameter map
    */
   private void setQueryParameterMap(final String [ ] selectors ,
-      final Map <String , String> queryParameterMap) {
+      Map <String , String> queryParameterMap) {
     int offset = 0;
     int limit = getMaxItems();
     if (selectors.length > 0) {
@@ -456,20 +456,14 @@ public class ArticleListModel {
     queryParameterMap.put("orderby",
         "@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
     queryParameterMap.put("orderby.sort", "desc");
-    final ArrayList <String> allTags = new ArrayList <>();
     if (tagNames != null && tagNames.length > 0) {
-      allTags.addAll(Arrays.asList(tagNames));
-    }
-
-    if ( ! allTags.isEmpty()) {
-      // Check for the taggable mixin
       queryParameterMap.put("2_property",
           JcrConstants.JCR_CONTENT + "/metadata/" + JcrConstants.JCR_MIXINTYPES);
       queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
-      for (int i = 0 ; i < allTags.size() ; i++ ) {
-        queryParameterMap.put(String.format("tagid.%d_value", i + 1), allTags.get(i));
+      for (int i = 0 ; i < tagNames.length ; i++ ) {
+        queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ]);
       }
     }
   }
