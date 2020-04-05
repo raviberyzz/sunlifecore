@@ -1,16 +1,16 @@
-<sly data-sly-use.newsroomArticle="ca.sunlife.web.cms.core.models.NewsroomArticleModel"></sly>
-<sly data-sly-test.notEmpty="${newsroomArticle.fragmentPath}">
+<sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
+<sly data-sly-test.notEmpty="${newsroomAnnouncement.fragmentPath}">
     <article class="article-wrapper">
         <div class="article-intro">
-            <div class="article-date" data-sly-test="${!newsroomArticle.checkboxHideDate}">
-                ${newsroomArticle.articleData.articlePublishedDate}
+            <div class="article-date" data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
+                ${newsroomAnnouncement.articleData.articlePublishedDate}
             </div>
-            <div class="article-title heading-2" data-sly-test="${newsroomArticle.articleData.newsroomHeading}">
-                ${newsroomArticle.articleData.newsroomHeading}
+            <div class="article-title heading-2" data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
+                ${newsroomAnnouncement.articleData.newsroomHeading}
             </div>
         </div>
         <div class="article-body">
-            ${newsroomArticle.articleData.newsroomContent  @context='html'}
+            ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
         </div>
     </article>
 </sly>
