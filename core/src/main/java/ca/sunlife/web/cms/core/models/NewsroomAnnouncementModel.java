@@ -142,7 +142,6 @@ public class NewsroomAnnouncementModel {
       logger.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
       final Resource articleResource = resourceResolver
           .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
-      final String pagePath = currentPage.getPath();
       if (null != articleResource) {
         logger.debug("Parsing Article Data");
         final ValueMap articleContent = articleResource.getValueMap();
