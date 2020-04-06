@@ -5,7 +5,10 @@
     .cmp-container{
     text-align: center;
     float: left;
-    background-color: $light-cool-blue-color;
+    //background-color: $light-cool-blue-color;
+    > div:not(.light-orange){
+        background-color: $light-cool-blue-color  
+    }
     .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
         font-size: 18px;
         font-weight: 700;
@@ -87,9 +90,20 @@
     .light-orange{
         background-color: $light-orange-20;
         border-top: 20px solid  $white-shade;
-        border-bottom: 20px solid  $white-shade;
+       // border-bottom: 20px solid  $white-shade;
+        margin-bottom:24px;
         & > *{
             padding: 15px 0;
+        }
+        .cmp-text{
+            padding:24px 0px 32px 0px;
+
+            p:last-child{
+                margin:0px;
+                .button-class{
+                    margin-bottom:0px!important;
+                }
+            }
         }
     }
     .phone-numbers{
@@ -151,6 +165,11 @@
                     }
                 }
             }
+        }
+    }
+    .cmp-container{
+        > div:not(.light-orange){
+            background-color:#f4f7f6;
         }
     }
 }

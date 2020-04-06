@@ -1029,7 +1029,8 @@ ul {
 .light-orange {
     background-color: $light-orange-20;
     border-top: 20px solid $white-shade;
-    border-bottom: 20px solid $white-shade;
+   // border-bottom: 20px solid $white-shade;
+    padding: 24px 15px;
 }
 /* orange background for right nav wrapper in the body section end */
 
