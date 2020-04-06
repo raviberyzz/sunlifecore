@@ -648,9 +648,11 @@ public class BasePageModel {
         : socialMediaImage;
 
     // SEO canonical URL - <link rel="canonical"> tag
-    seoCanonicalUrl = null == canonicalUrl
-        ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT)
-        : canonicalUrl;
+    if( null != domain && domain.length() > 0 ) {
+    	seoCanonicalUrl = null == canonicalUrl
+         ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT)
+         : canonicalUrl;
+    } 
 
     setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
     setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
