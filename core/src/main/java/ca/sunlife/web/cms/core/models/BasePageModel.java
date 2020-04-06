@@ -648,9 +648,11 @@ public class BasePageModel {
         : socialMediaImage;
 
     // SEO canonical URL - <link rel="canonical"> tag
-    seoCanonicalUrl = null == canonicalUrl
-        ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT)
-        : canonicalUrl;
+    if( null != domain && domain.length() > 0 ) {
+    	seoCanonicalUrl = null == canonicalUrl
+         ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT)
+         : canonicalUrl;
+    } 
 
     setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
     setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
@@ -738,7 +740,7 @@ public class BasePageModel {
   public String getPageTitle(final String title) throws LoginException , RepositoryException {
     final String pagePath = currentPage.getPath();
     final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
-    if (null == siteSuffix) {
+    if (null == siteSuffix || siteSuffix.length() <= 1) {
       return title;
     } else {
       return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, title);
@@ -755,7 +757,7 @@ public class BasePageModel {
    * @return shortened url
    */
   public String shortenURL(final String pagePath , final String siteUrl) {
-    if (null == siteUrl) {
+    if (null == siteUrl || siteUrl.length() <= 0) {
       return null;
     }
     return pagePath.replace(
