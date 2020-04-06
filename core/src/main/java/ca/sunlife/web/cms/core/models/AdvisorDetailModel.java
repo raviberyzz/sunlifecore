@@ -36,8 +36,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class AdvisorDetailModel.
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class AdvisorDetailModel {
 
   /** The log. */
@@ -86,17 +86,17 @@ public class AdvisorDetailModel {
   @ Inject
   @ Via ("resource")
   private String cellPhoneLabel;
-  
+
   /** Language not supported alert message. */
   @ Inject
   @ Via ("resource")
   private String languageNotSupportedMessage;
-  
+
   /** Alternate language. */
   @ Inject
   @ Via ("resource")
   private String alternateLanguage;
-  
+
   /** Alternate URL. */
   @ Inject
   @ Via ("resource")
@@ -528,47 +528,50 @@ public class AdvisorDetailModel {
   public void setIconMarkerStandard(final String iconMarkerStandard) {
     this.iconMarkerStandard = iconMarkerStandard;
   }
-  
+
   /**
    * @return the languageNotSupportedMessage
    */
   public String getLanguageNotSupportedMessage() {
-	return languageNotSupportedMessage;
+    return languageNotSupportedMessage;
   }
 
   /**
-   * @param languageNotSupportedMessage the languageNotSupportedMessage to set
+   * @param languageNotSupportedMessage
+   *          the languageNotSupportedMessage to set
    */
-  public void setLanguageNotSupportedMessage(String languageNotSupportedMessage) {
-	this.languageNotSupportedMessage = languageNotSupportedMessage;
+  public void setLanguageNotSupportedMessage(final String languageNotSupportedMessage) {
+    this.languageNotSupportedMessage = languageNotSupportedMessage;
   }
 
   /**
    * @return the alternateLanguage
    */
   public String getAlternateLanguage() {
-	return alternateLanguage;
+    return alternateLanguage;
   }
 
   /**
-   * @param alternateLanguage the alternateLanguage to set
+   * @param alternateLanguage
+   *          the alternateLanguage to set
    */
-  public void setAlternateLanguage(String alternateLanguage) {
-	this.alternateLanguage = alternateLanguage;
+  public void setAlternateLanguage(final String alternateLanguage) {
+    this.alternateLanguage = alternateLanguage;
   }
 
   /**
    * @return the alternateUrl
    */
   public String getAlternateUrl() {
-	return alternateUrl;
+    return alternateUrl;
   }
 
   /**
-   * @param alternateUrl the alternateUrl to set
+   * @param alternateUrl
+   *          the alternateUrl to set
    */
-  public void setAlternateUrl(String alternateUrl) {
-	this.alternateUrl = alternateUrl;
+  public void setAlternateUrl(final String alternateUrl) {
+    this.alternateUrl = alternateUrl;
   }
 
   /**
@@ -603,10 +606,11 @@ public class AdvisorDetailModel {
       logger.debug("advisorId: {}", advisorId);
       advisorData = advisorDetailService.getAdvisorDetails(language, advisorType, advisorId);
       if (null != advisorData) {
-    	validateAdvisorData(advisorId);
+        validateAdvisorData(advisorId);
         setMapData();
       }
-    } catch (ApplicationException | LoginException | RepositoryException | SystemException | JSONException e) {
+    } catch (ApplicationException | LoginException | RepositoryException | SystemException
+        | JSONException e) {
       logger.error("Error :: init method of AdvisorDetailModel :: {}", e);
     }
     logger.debug("Exit :: init method of AdvisorDetailModel :: advisorData :: {}", advisorData);
@@ -680,7 +684,8 @@ public class AdvisorDetailModel {
     } catch (final JSONException e) {
       logger.error("Error :: AdvisorDetailModel :: setMapData :: {}", e);
     }
-    logger.debug("Exit :: AdvisorDetailModel :: setMapData :: advisorMapData :: {}", advisorMapData);
+    logger.debug("Exit :: AdvisorDetailModel :: setMapData :: advisorMapData :: {}",
+        advisorMapData);
   }
 
   /**
@@ -711,28 +716,33 @@ public class AdvisorDetailModel {
     logger.debug("Exit :: AdvisorDetailModel :: buildAddress :: address :: {}", address);
     return address.toString();
   }
-  
+
   /**
    * validates advisor data
+   *
    * @param advisorId
    * @throws JSONException
    */
-  public void validateAdvisorData(String advisorId) throws JSONException {
-	  logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
-	  final JSONObject inputJson = new JSONObject(advisorData);
-	  if(inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT) && inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT).equals(AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT)) {
-		  setAlternateURL(advisorId);
-	  }
-	  logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
+  public void validateAdvisorData(final String advisorId) throws JSONException {
+    logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
+    final JSONObject inputJson = new JSONObject(advisorData);
+    if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+        && inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+            .equals(AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT)) {
+      setAlternateURL(advisorId);
+    }
+    logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
   }
-  
+
   /**
    * sets alternate url for negative scenario
+   *
    * @param advisorId
    */
-  public void setAlternateURL(String advisorId) {
-	  logger.debug("Entry :: AdvisorDetailModel :: setAlternateURL");
-	  this.alternateUrl = this.alternateUrl.replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId);
-	  logger.debug("Exit :: AdvisorDetailModel :: setAlternateURL :: {}", this.alternateUrl);
+  public void setAlternateURL(final String advisorId) {
+    logger.debug("Entry :: AdvisorDetailModel :: setAlternateURL");
+    alternateUrl = alternateUrl
+        .replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId);
+    logger.debug("Exit :: AdvisorDetailModel :: setAlternateURL :: {}", alternateUrl);
   }
 }

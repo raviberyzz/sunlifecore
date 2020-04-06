@@ -61,7 +61,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * @author MO92
  */
 @ Model (adaptables = {
-    SlingHttpServletRequest.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , resourceType = "sunlife/core/components/structure/base-page")
+    SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
 public class BasePageModel {
 
   /** The Constant OG_URL. */
@@ -93,28 +93,28 @@ public class BasePageModel {
 
   /** The Constant TWITTER_CARD. */
   static final String TWITTER_CARD = "twitter:card";
-  
+
   /** The Constant OG_TYPE. */
   static final String OG_TYPE = "og:type";
-  
+
   /** The Constant OG_TYPE. */
   static final String OG_PUBLISHED_DATE = "og:published_date";
-  
+
   /** The Constant OG_TYPE. */
   static final String OG_MODIFIED_DATE = "og:modified_time";
-  
+
   /** The Constant OG_TYPE. */
   static final String OG_PUBLISHER = "og:publisher";
-  
+
   /** The Constant OG_TYPE. */
   static final String OG_SITENAME = "og:sitename";
-  
+
   /** The Constant OG_TYPE. */
   static final String TWITTER_SITE = "twitter:site";
-  
+
   /** The Constant OG_TYPE. */
   static final String TWITTER_CREATOR = "twitter:creator";
-  
+
   /** The Constant LOGGER. */
   private static final Logger logger = LoggerFactory.getLogger(BasePageModel.class);
 
@@ -220,10 +220,10 @@ public class BasePageModel {
   private AdvisorDetailService advisorDetailService;
 
   /** The meta data. */
-  private Map <String , String> customMetadata;
+  private Map <String, String> customMetadata;
 
   /** The alt language links. */
-  private Map <String , String> altLanguageLinks;
+  private Map <String, String> altLanguageLinks;
 
   /** The analytics scriptlet. */
   private String analyticsScriptlet;
@@ -254,13 +254,13 @@ public class BasePageModel {
 
   /** Default reporting language. */
   private String defaultReportingLanguage;
-  
+
   /** The Constant JCR_CONTENT_DATA_MASTER. */
   private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
-  
+
   /** The Constant ARTICLE_PUBLISHED_DATE. */
   private static final String ARTICLE_PUBLISHED_DATE = "articlePublishedDate";
-  
+
   /** The Constant ARTICLE_MODIFIED_DATE. */
   private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
 
@@ -364,7 +364,7 @@ public class BasePageModel {
    *
    * @return the customMetadata
    */
-  public Map <String , String> getCustomMetadata() {
+  public Map <String, String> getCustomMetadata() {
     return customMetadata;
   }
 
@@ -374,7 +374,7 @@ public class BasePageModel {
    * @param customMetadata
    *          the customMetadata to set
    */
-  public void setCustomMetadata(final Map <String , String> customMetadata) {
+  public void setCustomMetadata(final Map <String, String> customMetadata) {
     this.customMetadata = customMetadata;
   }
 
@@ -383,7 +383,7 @@ public class BasePageModel {
    *
    * @return the alt language links
    */
-  public Map <String , String> getAltLanguageLinks() {
+  public Map <String, String> getAltLanguageLinks() {
     return altLanguageLinks;
   }
 
@@ -393,7 +393,7 @@ public class BasePageModel {
    * @param altLanguageLinks
    *          the alt language links
    */
-  public void setAltLanguageLinks(final Map <String , String> altLanguageLinks) {
+  public void setAltLanguageLinks(final Map <String, String> altLanguageLinks) {
     this.altLanguageLinks = altLanguageLinks;
   }
 
@@ -596,7 +596,7 @@ public class BasePageModel {
    *           the repository exception
    */
   @ PostConstruct
-  public void init() throws LoginException , RepositoryException {
+  public void init() throws LoginException, RepositoryException {
     final String pagePath = currentPage.getPath();
     final String domain = configService.getConfigValues("domain", pagePath);
     final String locale = configService.getConfigValues("pageLocale", pagePath);
@@ -648,11 +648,10 @@ public class BasePageModel {
         : socialMediaImage;
 
     // SEO canonical URL - <link rel="canonical"> tag
-    if( null != domain && domain.length() > 0 ) {
-    	seoCanonicalUrl = null == canonicalUrl
-         ? domain.concat(shortenURL(pagePath, siteUrl)).concat(BasePageModelConstants.SLASH_CONSTANT)
-         : canonicalUrl;
-    } 
+    if (null != domain && domain.length() > 0) {
+      seoCanonicalUrl = null == canonicalUrl ? domain.concat(shortenURL(pagePath, siteUrl))
+          .concat(BasePageModelConstants.SLASH_CONSTANT) : canonicalUrl;
+    }
 
     setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
     setAnalyticsScriptlet(configService.getConfigValues("analyticsTealiumScript", pagePath));
@@ -737,7 +736,7 @@ public class BasePageModel {
    * @throws RepositoryException
    *           the repository exception
    */
-  public String getPageTitle(final String title) throws LoginException , RepositoryException {
+  public String getPageTitle(final String title) throws LoginException, RepositoryException {
     final String pagePath = currentPage.getPath();
     final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
     if (null == siteSuffix || siteSuffix.length() <= 1) {
@@ -756,7 +755,7 @@ public class BasePageModel {
    *          the site url
    * @return shortened url
    */
-  public String shortenURL(final String pagePath , final String siteUrl) {
+  public String shortenURL(final String pagePath, final String siteUrl) {
     if (null == siteUrl || siteUrl.length() <= 0) {
       return null;
     }
@@ -776,8 +775,8 @@ public class BasePageModel {
    * @throws RepositoryException
    *           the repository exception
    */
-  public void setAlternateURLs(final String pagePath , final String pageLocale)
-      throws LoginException , RepositoryException {
+  public void setAlternateURLs(final String pagePath, final String pageLocale)
+      throws LoginException, RepositoryException {
     logger.debug("Entry :: setAlternateURLs :: pagePath: {}, pageLocale: {}", pagePath, pageLocale);
     String altLanguagesCount = null;
     String siteUrl = null;
@@ -808,7 +807,7 @@ public class BasePageModel {
               domain + shortenURL(newUrl, siteLocation) + BasePageModelConstants.SLASH_CONSTANT);
         }
       }
-      if ( ! altLanguageLinks.isEmpty()) {
+      if (! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
       }
@@ -824,7 +823,7 @@ public class BasePageModel {
    * @throws RepositoryException
    *           the repository exception
    */
-  public void setUDOParameters() throws LoginException , RepositoryException {
+  public void setUDOParameters() throws LoginException, RepositoryException {
     logger.debug("Entry :: setUDOParameters :: ");
     Page pageResource = null;
     String pagePath = currentPage.getPath();
@@ -868,7 +867,7 @@ public class BasePageModel {
       startLevel++ ;
     }
 
-    if ( ! navList.isEmpty()) {
+    if (! navList.isEmpty()) {
       if (navList.size() > 1) {
         pageCategory = navList.get(1);
       }
@@ -981,7 +980,7 @@ public class BasePageModel {
    * @param pagePath
    *          the page path
    */
-  public void processDataForCNWNews(final String pageLocale , final String pagePath) {
+  public void processDataForCNWNews(final String pageLocale, final String pagePath) {
     logger.debug("Entry :: processDataForCNWNews :: ");
     String releaseId = null;
     try {
@@ -1028,8 +1027,8 @@ public class BasePageModel {
    * @throws JSONException
    *           the JSON exception
    */
-  public void processDataForAdvisorPages() throws LoginException , RepositoryException ,
-      ApplicationException , SystemException , JSONException {
+  public void processDataForAdvisorPages() throws LoginException, RepositoryException,
+      ApplicationException, SystemException, JSONException {
     logger.debug("Entry :: BasePageModel :: processDataForAdvisorPages :: ");
     String advisorId = null;
     String pageLocaleDefault = null;
@@ -1098,57 +1097,67 @@ public class BasePageModel {
         advisorType);
     logger.debug("Exit :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
   }
-  
+
   public void setArticlePageSocialMetaTags() throws LoginException, RepositoryException {
-	  logger.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
-	  String pagePath = currentPage.getPath();
-	  final String articleType = configService.getConfigValues(ArticleConstants.ARTICLE_TYPE_CONSTANT, pagePath);
-      final String articlePublisherForMetaTag = configService.getConfigValues(ArticleConstants.ARTICLE_PUBLISHER_CONSTANT, pagePath);
-      final String siteName = configService.getConfigValues("siteName", pagePath);
-      final String articleSite = configService.getConfigValues(ArticleConstants.ARTICLE_SITE_CONSTANT, pagePath);
-      final String articleCreator = configService.getConfigValues(ArticleConstants.ARTICLE_CREATOR_CONSTANT, pagePath);
-      
-      customMetadata.put(OG_TYPE, articleType);
-      customMetadata.put(OG_PUBLISHER, articlePublisherForMetaTag);
-      customMetadata.put(OG_SITENAME, siteName);
-      customMetadata.put(TWITTER_SITE, articleSite);
-      customMetadata.put(TWITTER_CREATOR, articleCreator);
-      
-      String articlePath = pagePath + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
-      final Resource articleResource = null != resolver ? resolver.getResource(articlePath) : null;
-      if( null == articleResource ) {
-    	  logger.debug("articleResource is null");
-    	  return;
-      }
-      final ValueMap articleResContent = articleResource.getValueMap();
-      
-      String fragmentPath = articleResContent.containsKey("fragmentPath") ? articleResContent.get("fragmentPath", String.class) : null;
-      String articlePublishedDate = StringUtils.EMPTY;
-      String articlePublishedModifiedDate = StringUtils.EMPTY;
-      
-      if( null == fragmentPath ) {
-    	  logger.debug("fragmentPath is null");
-    	  return;
-      }
-      
-	  final Resource articleFragmentResource =resolver.getResource(fragmentPath.concat(JCR_CONTENT_DATA_MASTER));
-	  if( null == articleFragmentResource ) {
-		  logger.debug("articleFragmentResource is null");
-		  return;
-	  }
-	  final ValueMap articleContent = articleFragmentResource.getValueMap();
-	  
-	  final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-	  if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-	      articlePublishedDate = formatter.format(((GregorianCalendar) articleContent.getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
-	  }
-	  
-	  if (articleContent.containsKey(ARTICLE_MODIFIED_DATE)) {
-		  articlePublishedModifiedDate = formatter.format(((GregorianCalendar) articleContent.getOrDefault(ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
-	  }
-	  
-	  customMetadata.put(OG_PUBLISHED_DATE, articlePublishedDate);
-	  customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
-	  logger.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
+    logger.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
+    final String pagePath = currentPage.getPath();
+    final String articleType = configService.getConfigValues(ArticleConstants.ARTICLE_TYPE_CONSTANT,
+        pagePath);
+    final String articlePublisherForMetaTag = configService
+        .getConfigValues(ArticleConstants.ARTICLE_PUBLISHER_CONSTANT, pagePath);
+    final String siteName = configService.getConfigValues("siteName", pagePath);
+    final String articleSite = configService.getConfigValues(ArticleConstants.ARTICLE_SITE_CONSTANT,
+        pagePath);
+    final String articleCreator = configService
+        .getConfigValues(ArticleConstants.ARTICLE_CREATOR_CONSTANT, pagePath);
+
+    customMetadata.put(OG_TYPE, articleType);
+    customMetadata.put(OG_PUBLISHER, articlePublisherForMetaTag);
+    customMetadata.put(OG_SITENAME, siteName);
+    customMetadata.put(TWITTER_SITE, articleSite);
+    customMetadata.put(TWITTER_CREATOR, articleCreator);
+
+    final String articlePath = pagePath
+        + "/jcr:content/root/layout_container/container1/layout_container/container1/article";
+    final Resource articleResource = null != resolver ? resolver.getResource(articlePath) : null;
+    if (null == articleResource) {
+      logger.debug("articleResource is null");
+      return;
+    }
+    final ValueMap articleResContent = articleResource.getValueMap();
+
+    final String fragmentPath = articleResContent.containsKey("fragmentPath")
+        ? articleResContent.get("fragmentPath", String.class)
+        : null;
+    String articlePublishedDate = StringUtils.EMPTY;
+    String articlePublishedModifiedDate = StringUtils.EMPTY;
+
+    if (null == fragmentPath) {
+      logger.debug("fragmentPath is null");
+      return;
+    }
+
+    final Resource articleFragmentResource = resolver
+        .getResource(fragmentPath.concat(JCR_CONTENT_DATA_MASTER));
+    if (null == articleFragmentResource) {
+      logger.debug("articleFragmentResource is null");
+      return;
+    }
+    final ValueMap articleContent = articleFragmentResource.getValueMap();
+
+    final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
+      articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
+          .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
+    }
+
+    if (articleContent.containsKey(ARTICLE_MODIFIED_DATE)) {
+      articlePublishedModifiedDate = formatter.format( ((GregorianCalendar) articleContent
+          .getOrDefault(ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
+    }
+
+    customMetadata.put(OG_PUBLISHED_DATE, articlePublishedDate);
+    customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
+    logger.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
   }
 }

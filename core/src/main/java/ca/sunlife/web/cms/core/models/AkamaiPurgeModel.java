@@ -23,8 +23,8 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 /**
  * The Class AkamaiPurgeModel.
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = AkamaiPurgeModel.class , resourceType = "sunlife/core/components/config/akamai-purge")
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = AkamaiPurgeModel.class, resourceType = "sunlife/core/components/config/akamai-purge")
 public class AkamaiPurgeModel {
 
   /** The paths. */
@@ -61,7 +61,7 @@ public class AkamaiPurgeModel {
    * @param akamaiResponse
    *          the akamaiResponse to set
    */
-  public final void setAkamaiResponse(String akamaiResponse) {
+  public final void setAkamaiResponse(final String akamaiResponse) {
     this.akamaiResponse = akamaiResponse;
   }
 
@@ -74,9 +74,9 @@ public class AkamaiPurgeModel {
       LOG.debug("Exiting the model as no paths set");
       return;
     }
-    List <String> damPaths = new ArrayList < >();
-    List <String> pagePaths = new ArrayList < >();
-    for (String path : paths) {
+    final List <String> damPaths = new ArrayList <>();
+    final List <String> pagePaths = new ArrayList <>();
+    for (final String path : paths) {
       if (path.startsWith("/content/dam")) {
         damPaths.add(path);
       } else {
@@ -84,35 +84,36 @@ public class AkamaiPurgeModel {
       }
     }
     setAkamaiResponse(StringUtils.EMPTY);
-    if ( ! damPaths.isEmpty()) {
+    if (! damPaths.isEmpty()) {
       try {
         LOG.debug("Clearing akamai cache for {} ", damPaths);
-        setAkamaiResponse("<pre>"+akamaiCacheClear
-            .invalidateAssets(damPaths.toArray(new String [ damPaths.size() ]))+"</pre>");
-      } catch (ApplicationException e) {
+        setAkamaiResponse("<pre>"
+            + akamaiCacheClear.invalidateAssets(damPaths.toArray(new String [ damPaths.size() ]))
+            + "</pre>");
+      } catch (final ApplicationException e) {
         setAkamaiResponse("<p style='color:red'>Unable to process below paths ");
         damPaths.forEach(path -> {
-          setAkamaiResponse(getAkamaiResponse().concat("<br />"+path));
+          setAkamaiResponse(getAkamaiResponse().concat("<br />" + path));
         });
         setAkamaiResponse(getAkamaiResponse().concat("</p>"));
       }
     }
-    if ( ! pagePaths.isEmpty()) {
+    if (! pagePaths.isEmpty()) {
       try {
         LOG.debug("Clearing akamai cache for {} ", pagePaths);
-        setAkamaiResponse(getAkamaiResponse().concat( akamaiCacheClear
-            .invalidatePages(pagePaths.toArray(new String [ pagePaths.size() ])) ));
-      } catch (ApplicationException e) {
+        setAkamaiResponse(getAkamaiResponse().concat(
+            akamaiCacheClear.invalidatePages(pagePaths.toArray(new String [ pagePaths.size() ]))));
+      } catch (final ApplicationException e) {
         setAkamaiResponse("<p style='color:red'>Unable to process below pages ");
         pagePaths.forEach(path -> {
-          setAkamaiResponse(getAkamaiResponse().concat("<br />"+path));
+          setAkamaiResponse(getAkamaiResponse().concat("<br />" + path));
         });
         setAkamaiResponse(getAkamaiResponse().concat("</p>"));
       }
     }
     try {
-      Node n = resource.adaptTo(Node.class);
-      if( null != n && null != n.getProperty("paths")) {
+      final Node n = resource.adaptTo(Node.class);
+      if (null != n && null != n.getProperty("paths")) {
         n.getProperty("paths").remove();
       }
       resource.getResourceResolver().commit();

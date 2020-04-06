@@ -41,36 +41,37 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class AkamaiCacheClearImpl.
  */
-@ Component (service = AkamaiCacheClear.class , immediate = true)
+@ Component (service = AkamaiCacheClear.class, immediate = true)
 @ Designate (ocd = AkamaiConfig.class)
 public class AkamaiCacheClearImpl implements AkamaiCacheClear {
-  
+
   private static final String DOMAIN = "domain";
 
   /** The config. */
   private AkamaiConfig config;
-  
+
   /** The config service. */
-  @Reference
+  @ Reference
   private SiteConfigService configService;
-  
+
   /** The core resource resolver. */
-  @Reference
+  @ Reference
   private CoreResourceResolver coreResourceResolver;
-  
+
   /** The Constant INVALIDATE_API. */
   private static final String INVALIDATE_API = "/ccu/v3/invalidate/url/production";
-  
+
   /** The Constant PROTOCOL. */
   private static final String PROTOCOL = "https://";
 
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(AkamaiCacheClearImpl.class);
-  
+
   /**
    * Activate.
    *
-   * @param config the config
+   * @param config
+   *          the config
    */
   @ Activate
   public void activate(final AkamaiConfig config) {
@@ -80,24 +81,24 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
     LOGGER.debug("Exit :: activate method of AkamaiCacheClearImpl");
   }
 
-
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
    * @see ca.sunlife.web.cms.core.services.AkamaiCacheClear#invalidatePages(java.lang.String[])
    */
   @ Override
-  public String invalidatePages(String [ ] paths) throws ApplicationException {
+  public String invalidatePages(final String [ ] paths) throws ApplicationException {
     LOGGER.debug("Entry :: invalidatePages method of AkamaiCacheClearImpl");
-    JSONObject request = new JSONObject();
-    JSONArray objects = new JSONArray();
+    final JSONObject request = new JSONObject();
+    final JSONArray objects = new JSONArray();
     try {
-      for(String path:paths) {
+      for (final String path : paths) {
         LOGGER.debug("Processing path {}", path);
-        if(StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, path))) {
+        if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, path))) {
           objects.put(configService.getPageUrl(path));
         } else {
           LOGGER.warn("Not able to get domain for {}", path);
         }
-        
+
       }
       request.put("objects", objects);
       return processAkamaiPurge(request.toString());
@@ -105,67 +106,74 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       throw new ApplicationException(ErrorCodes.APP_ERROR_200, e);
     }
   }
-  
+
   /**
    * Process akamai purge.
    *
-   * @param jsonRequest the json request
+   * @param jsonRequest
+   *          the json request
    * @return the string
-   * @throws ApplicationException the application exception
+   * @throws ApplicationException
+   *           the application exception
    */
-  private String processAkamaiPurge(String jsonRequest) throws ApplicationException {
+  private String processAkamaiPurge(final String jsonRequest) throws ApplicationException {
     LOGGER.debug("Entry :: processAkamaiPurge method of AkamaiCacheClearImpl");
     try {
-      ClientCredential clientCredential = ClientCredential.builder().accessToken(config.getAccessKey())
-        .clientToken(config.getClientToken()).clientSecret(config.getClientSecret()).host(config.getHost())
-        .build();
-      HttpClient client = HttpClientBuilder.create()
+      final ClientCredential clientCredential = ClientCredential.builder()
+          .accessToken(config.getAccessKey()).clientToken(config.getClientToken())
+          .clientSecret(config.getClientSecret()).host(config.getHost()).build();
+      final HttpClient client = HttpClientBuilder.create()
           .addInterceptorFirst(new ApacheHttpClientEdgeGridInterceptor(clientCredential))
-          .setRoutePlanner(new ApacheHttpClientEdgeGridRoutePlanner(clientCredential))
-          .build();
-      HttpPost httpPost = new HttpPost(PROTOCOL.concat(config.getHost()).concat(INVALIDATE_API));
-      StringEntity entity = new StringEntity(jsonRequest);
+          .setRoutePlanner(new ApacheHttpClientEdgeGridRoutePlanner(clientCredential)).build();
+      final HttpPost httpPost = new HttpPost(
+          PROTOCOL.concat(config.getHost()).concat(INVALIDATE_API));
+      final StringEntity entity = new StringEntity(jsonRequest);
       httpPost.setHeader("Accept", "application/json");
       httpPost.setHeader("Content-type", "application/json");
       httpPost.setEntity(entity);
-      HttpResponse response = client.execute(httpPost);
+      final HttpResponse response = client.execute(httpPost);
       LOGGER.debug("Got AKAMAI response code {}", response.getStatusLine().getStatusCode());
       if (response.getStatusLine().getStatusCode() != HttpStatus.SC_CREATED) {
         throw new ApplicationException(ErrorCodes.APP_ERROR_200);
       } else {
-        String content = IOUtils.readString(response.getEntity().getContent());
+        final String content = IOUtils.readString(response.getEntity().getContent());
         LOGGER.debug(" AKAMAI Respose {}", content);
         return content;
       }
-    } catch (IOException e) {
+    } catch (final IOException e) {
       throw new ApplicationException(ErrorCodes.APP_ERROR_200, e);
     }
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
    * @see ca.sunlife.web.cms.core.services.AkamaiCacheClear#invalidateAssets(java.lang.String[])
    */
   @ Override
-  public String invalidateAssets(String [ ] paths) throws ApplicationException {
+  public String invalidateAssets(final String [ ] paths) throws ApplicationException {
     LOGGER.debug("Entry :: invalidateAssets method of AkamaiCacheClearImpl");
     try {
-      ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-      JSONObject request = new JSONObject();
-      JSONArray objects = new JSONArray();
-      for (String path:paths) {
-        Resource resource = resourceResolver.getResource(path);
-        if( resource!=null && ((String)resource.getValueMap().getOrDefault("jcr:primaryType", "")).equalsIgnoreCase("dam:Asset") ) {
-          Map<String, ReferenceSearch.Info> searchResult = new ReferenceSearch().search(resourceResolver, path);
+      final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
+      final JSONObject request = new JSONObject();
+      final JSONArray objects = new JSONArray();
+      for (final String path : paths) {
+        final Resource resource = resourceResolver.getResource(path);
+        if (resource != null
+            && ((String) resource.getValueMap().getOrDefault("jcr:primaryType", ""))
+                .equalsIgnoreCase("dam:Asset")) {
+          final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
+              .search(resourceResolver, path);
           searchResult.forEach((key, reference) -> {
             try {
-              String domain = configService.getConfigValues(DOMAIN, reference.getPagePath());
+              final String domain = configService.getConfigValues(DOMAIN, reference.getPagePath());
               LOGGER.debug("Adding domain {}", domain.concat(path));
-              if(StringUtils.isNotBlank(domain)) {
-                objects.put(domain.concat(path));  
+              if (StringUtils.isNotBlank(domain)) {
+                objects.put(domain.concat(path));
               } else {
-                LOGGER.warn("Not able to get the domain for asset {} and page {}", path , reference.getPagePath());
+                LOGGER.warn("Not able to get the domain for asset {} and page {}", path,
+                    reference.getPagePath());
               }
-              
+
             } catch (LoginException | RepositoryException e) {
               LOGGER.error("Error while processing {} with exception {}", path, e);
             }

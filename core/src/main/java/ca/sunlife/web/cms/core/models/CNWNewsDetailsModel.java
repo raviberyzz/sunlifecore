@@ -24,8 +24,8 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 /**
  * The Class CNWNewsDetailsModel.
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsDetailsModel {
 
   /** logger. */

@@ -7,7 +7,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface RestClientConfig.
  */
-@ ObjectClassDefinition (name = "Rest Client Configuration" , description = "Rest Client Configuration")
+@ ObjectClassDefinition (name = "Rest Client Configuration", description = "Rest Client Configuration")
 public @interface RestClientConfig {
 
   /**
@@ -15,7 +15,7 @@ public @interface RestClientConfig {
    *
    * @return the site path
    */
-  @ AttributeDefinition (name = "socketTimeout" , description = "Socket Timeout")
+  @ AttributeDefinition (name = "socketTimeout", description = "Socket Timeout")
   int getSocketTimeout ();
 
   /**
@@ -23,7 +23,7 @@ public @interface RestClientConfig {
    *
    * @return the site path
    */
-  @ AttributeDefinition (name = "connectionTimeout" , description = "Connection Timeout")
+  @ AttributeDefinition (name = "connectionTimeout", description = "Connection Timeout")
   int getConnectionTimeout ();
 
   /**
@@ -31,6 +31,6 @@ public @interface RestClientConfig {
    *
    * @return true, if is SSL by pass required
    */
-  @ AttributeDefinition (name = "byPassSSLRequired" , description = "By Pass SSL for Test Environment" , type = AttributeType.BOOLEAN)
+  @ AttributeDefinition (name = "byPassSSLRequired", description = "By Pass SSL for Test Environment", type = AttributeType.BOOLEAN)
   boolean isSSLByPassRequired ();
 }

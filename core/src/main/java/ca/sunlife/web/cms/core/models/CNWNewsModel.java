@@ -36,8 +36,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  *
  * @author mo92 The Class CNWNewsModel - Sling model for CNW News list
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsModel {
 
   /** The log. */
@@ -552,7 +552,7 @@ public class CNWNewsModel {
    * @throws SystemException
    *           the system exception
    */
-  public void processOverviewData() throws IOException , ApplicationException , SystemException {
+  public void processOverviewData() throws IOException, ApplicationException, SystemException {
     logger.debug(
         "Entry :: CNWNewsDetailsModel :: processOverviewData :: numberOfNews: {}, newsCategories: {}, locale: {}",
         numberOfNews, newsCategories, locale);
@@ -577,8 +577,8 @@ public class CNWNewsModel {
    * @throws RepositoryException
    *           the repository exception
    */
-  public void processReleasesData() throws IOException , ApplicationException , SystemException ,
-      LoginException , RepositoryException {
+  public void processReleasesData() throws IOException, ApplicationException, SystemException,
+      LoginException, RepositoryException {
     logger.debug(
         "Entry :: CNWNewsModel :: processReleasesData :: latestYear: {}, numberOfTabs: {}, locale: {}, newsCategories: {}, pageSize: {}",
         latestYear, numberOfTabs, locale, newsCategories, pageSize);
@@ -651,7 +651,7 @@ public class CNWNewsModel {
    *          the site url
    * @return shortened url
    */
-  public String shortenURL(final String pagePath , final String siteUrl) {
+  public String shortenURL(final String pagePath, final String siteUrl) {
     if (null == siteUrl) {
       return null;
     }

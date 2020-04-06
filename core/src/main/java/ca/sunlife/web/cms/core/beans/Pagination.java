@@ -55,8 +55,8 @@ public class Pagination {
    * @param pageItems
    *          the page items
    */
-  public Pagination(final int prevPage , final int curPage , final int nextPageNo ,
-      final int totalPages , final List <PageItem> pageItems) {
+  public Pagination(final int prevPage, final int curPage, final int nextPageNo,
+      final int totalPages, final List <PageItem> pageItems) {
     super();
     this.prevPage = prevPage;
     this.curPage = curPage;
@@ -191,7 +191,7 @@ public class Pagination {
    * @param pageUrl
    *          the page url
    */
-  public Pagination(final SlingHttpServletRequest request , final int pageSize , final int total ,
+  public Pagination(final SlingHttpServletRequest request, final int pageSize, final int total,
       final String pageUrl) {
     super();
     int pageNo = 1;
@@ -271,8 +271,8 @@ public class Pagination {
    * @param requestUrlStr
    *          the request url str
    */
-  public void setInnerPageItems(final int startIndex , final int endIndex ,
-      final List <PageItem> pageItems , final String requestUrlStr) {
+  public void setInnerPageItems(final int startIndex, final int endIndex,
+      final List <PageItem> pageItems, final String requestUrlStr) {
     for (int i = startIndex ; i <= endIndex ; i++ ) {
       final PageItem pageItem = new PageItem();
       pageItem.setHref(requestUrlStr + String.valueOf(i));

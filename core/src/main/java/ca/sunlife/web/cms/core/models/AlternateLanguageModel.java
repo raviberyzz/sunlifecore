@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.Model;
  *
  * @author mo92 The Interface AlternateLanguageModel
  */
-@ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface AlternateLanguageModel {
 
   /**

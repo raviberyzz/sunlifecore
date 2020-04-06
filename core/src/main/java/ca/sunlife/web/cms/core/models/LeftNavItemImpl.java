@@ -51,10 +51,10 @@ public class LeftNavItemImpl extends PageListItemImpl implements NavigationItem 
    * @param navTitle
    *          the nav title
    */
-  public LeftNavItemImpl(final Page page , final boolean active ,
-      final SlingHttpServletRequest request , final int level ,
-      final List <NavigationItem> children , final String navTitle) {
-    super(request,page);
+  public LeftNavItemImpl(final Page page, final boolean active,
+      final SlingHttpServletRequest request, final int level, final List <NavigationItem> children,
+      final String navTitle) {
+    super(request, page);
     this.active = active;
     this.level = level;
     this.children = children;

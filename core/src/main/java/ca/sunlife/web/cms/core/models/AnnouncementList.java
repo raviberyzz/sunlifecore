@@ -60,8 +60,6 @@ public class AnnouncementList {
   @ Via ("resource")
   private int maxItems;
 
-  
-
   /** The items. */
   private final List <DAMContentFragment> items = new ArrayList <>();
 
@@ -197,7 +195,7 @@ public class AnnouncementList {
 
   /** The element names. */
   private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading",
-      "newsroomPagePath", "newsroomContent"};
+      "newsroomPagePath", "newsroomContent" };
 
   /**
    * Gets the parent path.
@@ -330,13 +328,13 @@ public class AnnouncementList {
    *          the query parameter map
    */
   private void setQueryParameterMap(final String [ ] selectors,
-      Map <String, String> queryParameterMap) {
+      final Map <String, String> queryParameterMap) {
     int offset = 0;
-    int limit = getMaxItems();
+    final int limit = getMaxItems();
     if (selectors.length > 0) {
       setPageNum(Integer.parseInt(selectors [ 0 ]));
       offset = (getPageNum() - 1) * getMaxItems(); // Pagination
-    } 
+    }
     queryParameterMap.put("path", getParentPath());
     queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
     queryParameterMap.put("p.limit", Integer.toString(limit));
@@ -347,7 +345,7 @@ public class AnnouncementList {
     queryParameterMap.put("orderby",
         "@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
     queryParameterMap.put("orderby.sort", "desc");
-  
+
   }
 
 }

@@ -13,7 +13,7 @@ import com.adobe.cq.wcm.core.components.models.Accordion;
 /**
  * The Class AccordionModel.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = Accordion.class , resourceType = "sunlife/core/components/content/accordion")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = Accordion.class, resourceType = "sunlife/core/components/content/accordion")
 public class AccordionModel extends AccordionImpl {
 
   /**

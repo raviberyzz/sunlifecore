@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface FooterCopyrightModel.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface FooterCopyrightModel {
 
   /**
@@ -50,7 +50,7 @@ public interface FooterCopyrightModel {
   /**
    * The Interface FooterItems.
    */
-  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface FooterItems {
 
     /**

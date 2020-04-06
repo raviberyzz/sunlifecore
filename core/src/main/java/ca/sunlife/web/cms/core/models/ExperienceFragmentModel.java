@@ -22,8 +22,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  *
  * @author MO93
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ExperienceFragmentModel {
 
   /** The Constant LOGGER. */

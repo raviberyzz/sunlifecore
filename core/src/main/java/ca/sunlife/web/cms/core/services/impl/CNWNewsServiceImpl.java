@@ -35,7 +35,7 @@ import ca.sunlife.web.cms.core.services.RestService;
  *
  * @author mo92 The class CNWNewsServiceImpl
  */
-@ Component (service = { CNWNewsService.class } , immediate = true)
+@ Component (service = { CNWNewsService.class }, immediate = true)
 @ Designate (ocd = CNWNewsConfig.class)
 public class CNWNewsServiceImpl implements CNWNewsService {
 
@@ -76,7 +76,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
 
   /** The date format map. */
   // formatter
-  private HashMap <String , String> dateFormatMap;
+  private HashMap <String, String> dateFormatMap;
 
   /**
    * Activate.
@@ -108,9 +108,9 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    * java.lang.String, java.util.List)
    */
   @ Override
-  public ReleaseMain getCNWNewsOverview(final String locale , final String numberOfNews ,
+  public ReleaseMain getCNWNewsOverview(final String locale, final String numberOfNews,
       final List <NewsCategory> newsCategories)
-      throws IOException , ApplicationException , SystemException {
+      throws IOException, ApplicationException, SystemException {
     logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsOverview :: locale :: {}", locale);
     if (null == dateFormatMap) {
       logger
@@ -125,7 +125,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     importUrl.append(cnwRequestListURI);
     importUrl.append(CNW_SERVICE_PARAM);
     importUrl.append(METHOD_LIST);
-    if ( ! isLocaleEn) {
+    if (! isLocaleEn) {
       importUrl.append("_" + locale);
     }
     importUrl.append(HTML_SAFE);
@@ -147,7 +147,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
         try {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());
           o.setReleaseDate(
-              new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale)).format(date));
+              new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
           o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
               .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
         } catch (final ParseException e) {
@@ -165,9 +165,9 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    * java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List)
    */
   @ Override
-  public News getCNWNews(final String locale , final String requestURL , final String pageNum ,
-      final String activeYear , final String pageSize , final List <NewsCategory> newsCategories)
-      throws IOException , ApplicationException , SystemException {
+  public News getCNWNews(final String locale, final String requestURL, final String pageNum,
+      final String activeYear, final String pageSize, final List <NewsCategory> newsCategories)
+      throws IOException, ApplicationException, SystemException {
     logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNews ");
     int curPage = 1;
     int prevPage = 0;
@@ -216,7 +216,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
         try {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());
           o.setReleaseDate(
-              new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale)).format(date));
+              new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
           o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
               .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
         } catch (final ParseException e) {
@@ -247,8 +247,8 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    *          the total results
    * @return the pagination
    */
-  private Pagination setPagination(final int curPage , final int prevPage ,
-      final String requestURL , final String totalResults) {
+  private Pagination setPagination(final int curPage, final int prevPage, final String requestURL,
+      final String totalResults) {
     logger.debug(
         "Entry :: CNWNewsServiceImpl :: setPagination :: curPage: {}, prevPage: {}, requestURL: {}",
         curPage, prevPage, requestURL);
@@ -306,7 +306,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
       pageItems.add(pageItem);
     }
     final int nextPageNo = curPage + 1;
-    return new Pagination(prevPage,curPage,nextPageNo,totalPages,pageItems);
+    return new Pagination(prevPage, curPage, nextPageNo, totalPages, pageItems);
   }
 
   /**
@@ -321,8 +321,8 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    * @param requestUrlStr
    *          the request url str
    */
-  public void setInnerPageItems(final int startIndex , final int endIndex ,
-      final List <PageItem> pageItems , final String requestUrlStr) {
+  public void setInnerPageItems(final int startIndex, final int endIndex,
+      final List <PageItem> pageItems, final String requestUrlStr) {
     for (int i = startIndex ; i <= endIndex ; i++ ) {
       final PageItem pageItem = new PageItem();
       pageItem.setHref(requestUrlStr + String.valueOf(i));
@@ -337,8 +337,8 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    * java.lang.String)
    */
   @ Override
-  public NewsDetails getCNWNewsDetails(final String id , final String locale)
-      throws IOException , ParseException , ApplicationException , SystemException {
+  public NewsDetails getCNWNewsDetails(final String id, final String locale)
+      throws IOException, ParseException, ApplicationException, SystemException {
     logger.debug("Entry :: CNWNewsServiceImpl :: getCNWNewsDetails :: id: {}, locale: {}", id,
         locale);
     NewsDetails newsDetails = null;
@@ -352,7 +352,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     newsDetails = new ObjectMapper().readValue(restService.callGetWebService(importUrl.toString()),
         NewsDetails.class);
     newsDetails.getRelease()
-        .setReleaseDate(new SimpleDateFormat(dateFormatMap.get(locale),new Locale(locale))
+        .setReleaseDate(new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))
             .format(inputDateFormatter.parse(newsDetails.getRelease().getReleaseDate())));
     logger.debug("Exit :: CNWNewsServiceImpl :: getCNWNewsDetails :: newsDetails :: {}",
         newsDetails);

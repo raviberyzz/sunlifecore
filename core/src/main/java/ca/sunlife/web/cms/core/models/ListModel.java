@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface ListModel.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface ListModel {
 
   /**
@@ -34,7 +34,7 @@ public interface ListModel {
   /**
    * Links model has a name, url and target.
    */
-  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
 
     /**

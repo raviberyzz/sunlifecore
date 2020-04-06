@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface IconTextModel.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface IconTextModel {
 
   /**
@@ -42,7 +42,7 @@ public interface IconTextModel {
   /**
    * The Interface IconsText.
    */
-  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface IconsText {
 
     /**

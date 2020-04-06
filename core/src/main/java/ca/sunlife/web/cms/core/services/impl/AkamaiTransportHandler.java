@@ -22,15 +22,14 @@ import ca.sunlife.web.cms.core.services.AkamaiCacheClear;
 /**
  * The Class AkamaiTransportHandler.
  */
-@ Component (service = TransportHandler.class , immediate = true)
+@ Component (service = TransportHandler.class, immediate = true)
 public class AkamaiTransportHandler implements TransportHandler {
-  
-  
+
   /** The akamai cache. */
-  @Reference
+  @ Reference
   private AkamaiCacheClear akamaiCache;
 
-  /**  Logger Instantiation for Akamai Transport Handler. */
+  /** Logger Instantiation for Akamai Transport Handler. */
   private static final Logger LOGGER = LoggerFactory.getLogger(AkamaiTransportHandler.class);
 
   /** Protocol for replication agent transport URI that triggers this transport handler. */
@@ -40,17 +39,17 @@ public class AkamaiTransportHandler implements TransportHandler {
    * {@inheritDoc}
    */
   @ Override
-  public boolean canHandle(AgentConfig config) {
+  public boolean canHandle(final AgentConfig config) {
     final String transportURI = config.getTransportURI();
 
-    return (transportURI != null) && (transportURI.startsWith(AKAMAI_PROTOCOL));
+    return transportURI != null && transportURI.startsWith(AKAMAI_PROTOCOL);
   }
 
   /**
    * {@inheritDoc}
    */
   @ Override
-  public ReplicationResult deliver(TransportContext ctx , ReplicationTransaction tx)
+  public ReplicationResult deliver(final TransportContext ctx, final ReplicationTransaction tx)
       throws ReplicationException {
 
     final ReplicationActionType replicationType = tx.getAction().getType();
@@ -61,7 +60,7 @@ public class AkamaiTransportHandler implements TransportHandler {
         || replicationType == ReplicationActionType.DEACTIVATE
         || replicationType == ReplicationActionType.DELETE) {
       LOGGER.info("Replication  Type in Akamai Handler: {}", replicationType);
-      String resourcePath = tx.getAction().getPath();
+      final String resourcePath = tx.getAction().getPath();
       if (resourcePath.startsWith("/content")) {
         return doActivate(resourcePath);
       } else {
@@ -76,28 +75,33 @@ public class AkamaiTransportHandler implements TransportHandler {
   /**
    * Do activate.
    *
-   * @param ctx the ctx
-   * @param tx the tx
+   * @param ctx
+   *          the ctx
+   * @param tx
+   *          the tx
    * @return the replication result
-   * @throws ReplicationException the replication exception
-   * @throws RequestSigningException the request signing exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ReplicationException
+   *           the replication exception
+   * @throws RequestSigningException
+   *           the request signing exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    */
-  private ReplicationResult doActivate(String path) {
+  private ReplicationResult doActivate(final String path) {
     LOGGER.info("Inside doActivate of Akamai");
     LOGGER.debug("Processing paths {} ", path);
     try {
-      if(path.startsWith("/content/dam")) {
-        String response = akamaiCache.invalidateAssets(new String[] {path});
+      if (path.startsWith("/content/dam")) {
+        final String response = akamaiCache.invalidateAssets(new String [ ] { path });
         LOGGER.debug("AKAMAI Response {}", response);
       } else {
-        String response = akamaiCache.invalidatePages(new String[] {path});
+        final String response = akamaiCache.invalidatePages(new String [ ] { path });
         LOGGER.debug("AKAMAI Response {}", response);
       }
       return ReplicationResult.OK;
-    }catch (ApplicationException e) {
+    } catch (final ApplicationException e) {
       return new ReplicationResult(false, 0, "Replication failed");
-    }    
+    }
   }
 
 }

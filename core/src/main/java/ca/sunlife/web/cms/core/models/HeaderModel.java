@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface HeaderModel.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface HeaderModel {
 
   /**
@@ -130,7 +130,7 @@ public interface HeaderModel {
   /**
    * The Interface Links.
    */
-  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
 
     /**

@@ -27,11 +27,11 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  *
  * @author 660717
  */
-@ Component (service = Servlet.class , property = {
-    Constants.SERVICE_DESCRIPTION + "=Site Config Servlet" ,
-    "sling.servlet.methods=" + HttpConstants.METHOD_GET ,
-    "sling.servlet.resourceTypes=" + "sunlife/core/components/config/configuration" ,
-    "sling.servlet.extensions=json" , "sling.servlet.selectors=config" })
+@ Component (service = Servlet.class, property = {
+    Constants.SERVICE_DESCRIPTION + "=Site Config Servlet",
+    "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+    "sling.servlet.resourceTypes=" + "sunlife/core/components/config/configuration",
+    "sling.servlet.extensions=json", "sling.servlet.selectors=config" })
 public class SiteConfigServlet extends SlingSafeMethodsServlet {
 
   /** The Constant serialVersionUID. */
@@ -50,8 +50,8 @@ public class SiteConfigServlet extends SlingSafeMethodsServlet {
    * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
    */
   @ Override
-  protected void doGet(final SlingHttpServletRequest request ,
-      final SlingHttpServletResponse response) throws ServletException , IOException {
+  protected void doGet(final SlingHttpServletRequest request,
+      final SlingHttpServletResponse response) throws ServletException, IOException {
     try {
       final String name = request.getParameter("param");
       final String path = request.getParameter("path");

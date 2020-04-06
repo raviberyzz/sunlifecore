@@ -33,7 +33,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class SiteConfigServiceImpl.
  */
-@ Component (service = SiteConfigService.class , immediate = true)
+@ Component (service = SiteConfigService.class, immediate = true)
 @ Designate (ocd = SiteConfig.class)
 public class SiteConfigServiceImpl implements SiteConfigService {
 
@@ -52,7 +52,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
   private QueryBuilder builder;
 
   /** The site config map. */
-  private Map <String , HashMap <String , String>> siteConfigMap;
+  private Map <String, HashMap <String, String>> siteConfigMap;
 
   /**
    * Activate.
@@ -65,7 +65,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
    *           the repository exception
    */
   @ Activate
-  public void activate(final SiteConfig config) throws LoginException , RepositoryException {
+  public void activate(final SiteConfig config) throws LoginException, RepositoryException {
     log.debug("Entry :: activate method of SiteConfigServiceImpl");
     siteConfig = config;
     setConfiguration();
@@ -78,11 +78,11 @@ public class SiteConfigServiceImpl implements SiteConfigService {
    * java.lang.String)
    */
   @ Override
-  public String getConfigValues(final String name , final String pagePath) {
+  public String getConfigValues(final String name, final String pagePath) {
     log.debug("SiteConfigServiceImpl :: getConfigValues :: name :: {}, pagePath :: {}", name,
         pagePath);
     String key = pagePath;
-    while ( ! siteConfigMap.containsKey(key) && key.lastIndexOf('/') > 1) {
+    while (! siteConfigMap.containsKey(key) && key.lastIndexOf('/') > 1) {
       key = key.substring(0, key.lastIndexOf('/'));
     }
 
@@ -95,13 +95,13 @@ public class SiteConfigServiceImpl implements SiteConfigService {
    * @see ca.sunlife.web.cms.core.services.SiteConfigService#setConfiguration()
    */
   @ Override
-  public void setConfiguration() throws LoginException , RepositoryException {
+  public void setConfiguration() throws LoginException, RepositoryException {
     log.debug("Entry :: setConfiguration method of SiteConfigServiceImpl");
     final ResourceResolver resolver = resourceResolver.getResourceResolver();
 
     final String sitePath = siteConfig.getSitePath();
 
-    final Map <String , String> map = new HashMap <>();
+    final Map <String, String> map = new HashMap <>();
     map.put("path", sitePath);
     map.put("type", com.day.cq.wcm.api.NameConstants.NT_PAGE);
     map.put("property", "jcr:content/config/sling:resourceType");
@@ -117,8 +117,8 @@ public class SiteConfigServiceImpl implements SiteConfigService {
       log.info("\n {}", hit.getPath() + "/jcr:content/config");
       final Resource resource = resolver.getResource(hit.getPath() + "/jcr:content/config");
       final ValueMap properties = ResourceUtil.getValueMap(resource);
-      final HashMap <String , String> resultMap = new HashMap <>();
-      for (final Entry <String , Object> e : properties.entrySet()) {
+      final HashMap <String, String> resultMap = new HashMap <>();
+      for (final Entry <String, Object> e : properties.entrySet()) {
         final String key = e.getKey();
         final Object value = e.getValue();
         resultMap.put(key, value.toString());
@@ -129,7 +129,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
         int count = 0;
         for (final Resource currentResource : altLangResource.getChildren()) {
           final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
-          for (final Entry <String , Object> e : currentResourceProperties.entrySet()) {
+          for (final Entry <String, Object> e : currentResourceProperties.entrySet()) {
             final String key = e.getKey();
             final Object value = e.getValue();
             resultMap.put(currentResource.getName() + "_" + key, value.toString());

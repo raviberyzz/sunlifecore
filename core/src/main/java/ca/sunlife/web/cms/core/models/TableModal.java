@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface TableModal.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface TableModal {
 
   /**

@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface UtilityNav.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface UtilityNav {
 
   /**
@@ -27,7 +27,7 @@ public interface UtilityNav {
   /**
    * The Interface Navlinks.
    */
-  @ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Navlinks {
 
     /**

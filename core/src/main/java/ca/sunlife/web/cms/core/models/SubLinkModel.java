@@ -11,7 +11,7 @@ import org.apache.sling.models.annotations.Model;
  *
  * @author MO92
  */
-@ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface SubLinkModel {
 
   /**

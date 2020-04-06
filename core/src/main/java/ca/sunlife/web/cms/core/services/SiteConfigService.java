@@ -22,8 +22,8 @@ public interface SiteConfigService {
    * @throws RepositoryException
    *           the repository exception
    */
-  public String getConfigValues(String name , String resourcePath)
-      throws LoginException , RepositoryException;
+  public String getConfigValues(String name, String resourcePath)
+      throws LoginException, RepositoryException;
 
   /**
    * Sets the configuration.
@@ -33,7 +33,7 @@ public interface SiteConfigService {
    * @throws RepositoryException
    *           the repository exception
    */
-  public void setConfiguration() throws LoginException , RepositoryException;
+  public void setConfiguration() throws LoginException, RepositoryException;
 
   /**
    * Gets the page url.

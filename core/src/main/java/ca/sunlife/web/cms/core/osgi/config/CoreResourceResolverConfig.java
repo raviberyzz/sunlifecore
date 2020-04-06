@@ -6,7 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface CoreResourceResolverConfig.
  */
-@ ObjectClassDefinition (name = "Sunlife Core Resource Resolver" , description = "Sunlife Core Resource Resolver")
+@ ObjectClassDefinition (name = "Sunlife Core Resource Resolver", description = "Sunlife Core Resource Resolver")
 public @interface CoreResourceResolverConfig {
 
   /**
@@ -14,6 +14,6 @@ public @interface CoreResourceResolverConfig {
    *
    * @return the system user
    */
-  @ AttributeDefinition (name = "subService" , description = "Sub service name for sunlife core application" , defaultValue = "application")
+  @ AttributeDefinition (name = "subService", description = "Sub service name for sunlife core application", defaultValue = "application")
   String getSubService ();
 }

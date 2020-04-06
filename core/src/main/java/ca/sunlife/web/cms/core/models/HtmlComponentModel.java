@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface HtmlComponentModel.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , resourceType = "sunlife/core/components/content/html-component")
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/content/html-component")
 public interface HtmlComponentModel {
 
   /**

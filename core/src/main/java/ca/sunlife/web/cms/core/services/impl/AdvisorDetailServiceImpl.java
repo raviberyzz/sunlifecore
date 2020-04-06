@@ -25,7 +25,7 @@ import ca.sunlife.web.cms.core.services.RestService;
  *
  * @author mo92 The class AdvisorDetailServiceImpl
  */
-@ Component (service = AdvisorDetailService.class , immediate = true)
+@ Component (service = AdvisorDetailService.class, immediate = true)
 @ Designate (ocd = AdvisorWebServiceConfig.class)
 public class AdvisorDetailServiceImpl implements AdvisorDetailService {
 
@@ -58,8 +58,8 @@ public class AdvisorDetailServiceImpl implements AdvisorDetailService {
    * java.lang.String, java.lang.String)
    */
   @ Override
-  public String getAdvisorDetails(final String language , final String pageId ,
-      final String advisorId) throws ApplicationException , SystemException {
+  public String getAdvisorDetails(final String language, final String pageId,
+      final String advisorId) throws ApplicationException, SystemException {
     logger.debug(
         "Entry :: getAdvisorDetails method of AdvisorDetailServiceImpl :: language: {}, pageId: {}, advisorId: {}",
         language, pageId, advisorId);
@@ -75,7 +75,7 @@ public class AdvisorDetailServiceImpl implements AdvisorDetailService {
       logger.debug("getAdvisorDetails url: {}", builder);
       return restService.callGetWebService(builder.toString());
     } catch (final IOException e) {
-      throw new ApplicationException(ErrorCodes.APP_ERROR_001,e);
+      throw new ApplicationException(ErrorCodes.APP_ERROR_001, e);
     }
   }
 

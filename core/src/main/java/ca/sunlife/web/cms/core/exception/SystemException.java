@@ -33,7 +33,7 @@ public class SystemException extends Exception {
    * @param th
    *          the th
    */
-  public SystemException(final ErrorCodes errorCode , final Throwable th) {
-    super(ErrorCodes.getValue(errorCode),th);
+  public SystemException(final ErrorCodes errorCode, final Throwable th) {
+    super(ErrorCodes.getValue(errorCode), th);
   }
 }

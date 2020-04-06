@@ -21,7 +21,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
  * @author MO92
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class RegionLanguageMenu {
 
   /** The title. */
