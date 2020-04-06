@@ -17,11 +17,7 @@
                             	<accordion
                                     cq:policy="sunlife/apac/id/components/content/accordion/policy_accordion"
                                     jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="wcm/core/components/policies/mapping"/>
-								<articleList 
-									cq:policy="sunlife/apac/id/components/content/articleList/policy_articleList" 
-									jcr:primaryType="nt:unstructured"
-									sling:resourceType="wcm/core/components/policies/mapping"/>
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>								
                                 <breadcrumb
                                     cq:policy="sunlife/apac/id/components/content/breadcrumb/policy_breadcrumb"
                                     jcr:primaryType="nt:unstructured"
