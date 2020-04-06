@@ -3,5 +3,5 @@
     cq:icon="tableHistogram"
     jcr:description="Displays the Newsroom Announcement"
     jcr:primaryType="cq:Component"
-    jcr:title="Newsroom Announcement"
+    jcr:title="News Announcement"
     componentGroup=".hidden"/>
