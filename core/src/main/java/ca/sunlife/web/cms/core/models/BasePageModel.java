@@ -738,7 +738,7 @@ public class BasePageModel {
   public String getPageTitle(final String title) throws LoginException , RepositoryException {
     final String pagePath = currentPage.getPath();
     final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
-    if (null == siteSuffix) {
+    if (null == siteSuffix || siteSuffix.length() <= 1) {
       return title;
     } else {
       return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, title);
