@@ -266,7 +266,8 @@
                 }
             }
             input[type=text]{
-                width:285px;
+                max-width:285px;
+                width:100%;
             }
             label{
                 display: block;

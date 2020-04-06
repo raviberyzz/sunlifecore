@@ -1436,11 +1436,16 @@ ul {
     }
 
       /* social icons in the body section start */
-  .social-link-icon-wrapper{
+  .social-icons-center{
     ul{
 
        justify-content: center;
     }
+  }
+  .social-icons-right{
+      ul{
+          justify-content: flex-end;
+      }
   }
     /* social icons in the body section end */
     /*footer social icons start */
