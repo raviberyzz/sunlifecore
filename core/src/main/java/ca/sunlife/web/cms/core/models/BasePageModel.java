@@ -755,7 +755,7 @@ public class BasePageModel {
    * @return shortened url
    */
   public String shortenURL(final String pagePath , final String siteUrl) {
-    if (null == siteUrl) {
+    if (null == siteUrl || siteUrl.length() <= 0) {
       return null;
     }
     return pagePath.replace(
