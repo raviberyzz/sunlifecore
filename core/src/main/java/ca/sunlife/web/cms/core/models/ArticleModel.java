@@ -31,8 +31,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class ArticleModel.
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = ArticleModel.class , resourceType = "sunlife/core/components/content/article")
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = ArticleModel.class, resourceType = "sunlife/core/components/content/article")
 public class ArticleModel {
 
   /** The Constant DOMAIN. */
@@ -294,14 +294,14 @@ public class ArticleModel {
   private Page currentPage;
 
   /** The article data. */
-  private final Map <String , String> articleData = new HashMap <>();
+  private final Map <String, String> articleData = new HashMap <>();
 
   /**
    * Gets the article data.
    *
    * @return the article data
    */
-  public Map <String , String> getArticleData() {
+  public Map <String, String> getArticleData() {
     return articleData;
   }
 
@@ -472,7 +472,7 @@ public class ArticleModel {
    * @param articleContent
    *          the article content
    */
-  private void setArticleAuthorData(final ResourceResolver resourceResolver ,
+  private void setArticleAuthorData(final ResourceResolver resourceResolver,
       final ValueMap articleContent) {
     if (articleContent.containsKey(ARTICLE_AUTHOR)) {
       final String articleAuthorPath = (String) articleContent.getOrDefault(ARTICLE_AUTHOR,
@@ -508,7 +508,7 @@ public class ArticleModel {
    *           the repository exception
    */
   private void setArticlePublishDate(final ValueMap articleContent)
-      throws LoginException , RepositoryException {
+      throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
       logger.debug("formatting date to {}",

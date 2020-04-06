@@ -1,7 +1,6 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -46,7 +45,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class ArticleListModel.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = ArticleListModel.class , resourceType = "sunlife/core/components/content/articleList" , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = ArticleListModel.class, resourceType = "sunlife/core/components/content/articleList", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticleListModel {
 
   /** The logger. */
@@ -259,9 +258,9 @@ public class ArticleListModel {
   private int totalMatch;
 
   /** The element names. */
-  private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate" , "articleHeadline" ,
-      "articlePageLink" , "articleAuthor" , "articleMiniDescription" , "articleImage" ,
-      "articleMainDescription" , "articleThumbnailImage" };
+  private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
+      "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
+      "articleMainDescription", "articleThumbnailImage" };
 
   /**
    * Gets the parent path.
@@ -376,7 +375,7 @@ public class ArticleListModel {
         return;
       }
 
-      final Map <String , String> queryParameterMap = new HashMap <>();
+      final Map <String, String> queryParameterMap = new HashMap <>();
       setQueryParameterMap(selectors, queryParameterMap);
 
       final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
@@ -403,7 +402,7 @@ public class ArticleListModel {
           }
 
           final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
-              contentTypeConverter,null,ELEMENT_NAMES);
+              contentTypeConverter, null, ELEMENT_NAMES);
 
           items.add(contentFragmentModel);
         }
@@ -415,7 +414,7 @@ public class ArticleListModel {
       }
       String path = currentPage.getPath();
       path = path.replace(configService.getConfigValues("siteUrl", path), "");
-      setPagination(new Pagination(request,getMaxItems(),getTotalMatch(),path));
+      setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
       setPageUrl(path);
     } catch (LoginException | RepositoryException e) {
       logger.error("Login exception while trying to get resource resolver {}", e);
@@ -435,8 +434,8 @@ public class ArticleListModel {
    * @param queryParameterMap
    *          the query parameter map
    */
-  private void setQueryParameterMap(final String [ ] selectors ,
-      Map <String , String> queryParameterMap) {
+  private void setQueryParameterMap(final String [ ] selectors,
+      final Map <String, String> queryParameterMap) {
     int offset = 0;
     int limit = getMaxItems();
     if (selectors.length > 0) {

@@ -33,9 +33,8 @@ public interface CNWNewsService {
    * @throws SystemException
    *           the system exception
    */
-  public ReleaseMain getCNWNewsOverview(String locale , String numberOfNews ,
-      List <NewsCategory> newsCategories)
-      throws IOException , ApplicationException , SystemException;
+  public ReleaseMain getCNWNewsOverview(String locale, String numberOfNews,
+      List <NewsCategory> newsCategories) throws IOException, ApplicationException, SystemException;
 
   /**
    * Gets CNW News Release List.
@@ -60,9 +59,9 @@ public interface CNWNewsService {
    * @throws SystemException
    *           the system exception
    */
-  public News getCNWNews(String locale , String requestURL , String pageNum , String strYear ,
-      String pageSize , List <NewsCategory> newsCategories)
-      throws IOException , ApplicationException , SystemException;
+  public News getCNWNews(String locale, String requestURL, String pageNum, String strYear,
+      String pageSize, List <NewsCategory> newsCategories)
+      throws IOException, ApplicationException, SystemException;
 
   /**
    * Gets CNW news details using release id.
@@ -81,6 +80,6 @@ public interface CNWNewsService {
    * @throws SystemException
    *           the system exception
    */
-  public NewsDetails getCNWNewsDetails(String id , String locale)
-      throws IOException , ParseException , ApplicationException , SystemException;
+  public NewsDetails getCNWNewsDetails(String id, String locale)
+      throws IOException, ParseException, ApplicationException, SystemException;
 }

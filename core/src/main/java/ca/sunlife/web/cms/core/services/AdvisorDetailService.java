@@ -26,7 +26,7 @@ public interface AdvisorDetailService {
    * @throws SystemException
    *           the system exception
    */
-  public String getAdvisorDetails(String language , String pageId , String advisorId)
-      throws ApplicationException , SystemException;
+  public String getAdvisorDetails(String language, String pageId, String advisorId)
+      throws ApplicationException, SystemException;
 
 }

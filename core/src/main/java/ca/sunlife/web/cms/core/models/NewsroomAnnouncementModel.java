@@ -30,8 +30,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class NewsroomAnnouncement Model.
  */
-@ Model (adaptables = { SlingHttpServletRequest.class ,
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , adapters = NewsroomAnnouncementModel.class , resourceType = "sunlife/apac/hk/components/content/newsroom-article")
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = NewsroomAnnouncementModel.class, resourceType = "sunlife/apac/hk/components/content/newsroom-article")
 public class NewsroomAnnouncementModel {
 
   /** The Constant ARTICLE_PUBLISHED_DATE. */
@@ -79,14 +79,14 @@ public class NewsroomAnnouncementModel {
   private Page currentPage;
 
   /** The article data. */
-  private final Map <String , String> articleData = new HashMap <>();
+  private final Map <String, String> articleData = new HashMap <>();
 
   /**
    * Gets the article data.
    *
    * @return the article data
    */
-  public Map <String , String> getArticleData() {
+  public Map <String, String> getArticleData() {
     return articleData;
   }
 
@@ -128,7 +128,6 @@ public class NewsroomAnnouncementModel {
     this.checkboxHideDate = checkboxHideDate;
   }
 
-
   /**
    * Inits the model.
    */
@@ -157,7 +156,7 @@ public class NewsroomAnnouncementModel {
             articleContent.containsKey(NEWSROOM_PAGE_PATH)
                 ? articleContent.get(NEWSROOM_PAGE_PATH, String.class)
                 : StringUtils.EMPTY);
-        setArticlePublishDate(articleContent);        
+        setArticlePublishDate(articleContent);
       }
       logger.debug("Article Data {}", articleData);
       resourceResolver.close();
@@ -177,7 +176,7 @@ public class NewsroomAnnouncementModel {
    *           the repository exception
    */
   private void setArticlePublishDate(final ValueMap articleContent)
-      throws LoginException , RepositoryException {
+      throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
       logger.debug("formatting date to {}",

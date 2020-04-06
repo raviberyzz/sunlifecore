@@ -35,7 +35,7 @@ import ca.sunlife.web.cms.core.services.RestService;
  *
  * @author mo92 The Class RestServiceImpl.
  */
-@ Component (service = RestService.class , immediate = true)
+@ Component (service = RestService.class, immediate = true)
 @ Designate (ocd = RestClientConfig.class)
 public class RestServiceImpl implements RestService {
 
@@ -59,7 +59,7 @@ public class RestServiceImpl implements RestService {
    */
   @ Activate
   public void activate(final RestClientConfig clientConfig)
-      throws KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+      throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
     logger.debug(
         "Entry :: RestClientConfig params: activate method :: Socket timeout: {}, Conn timeout: {}",
         clientConfig.getSocketTimeout(), clientConfig.getConnectionTimeout());
@@ -89,9 +89,9 @@ public class RestServiceImpl implements RestService {
    *           the key store exception
    */
   public static void setSSLForTestEnvironment(final HttpClientBuilder httpClientBuilder)
-      throws KeyManagementException , NoSuchAlgorithmException , KeyStoreException {
+      throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
     httpClientBuilder.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
-        .setSSLContext(new SSLContextBuilder().loadTrustMaterial((arg0 , arg1) -> true).build());
+        .setSSLContext(new SSLContextBuilder().loadTrustMaterial((arg0, arg1) -> true).build());
   }
 
   /*
@@ -100,7 +100,7 @@ public class RestServiceImpl implements RestService {
    */
   @ Override
   public String callGetWebService(final String url)
-      throws ApplicationException , SystemException , IOException {
+      throws ApplicationException, SystemException, IOException {
     logger.debug("Entry :: RestServiceImpl :: callGetWebService :: url :: {}", url);
     CloseableHttpResponse response = null;
     int statusCode;

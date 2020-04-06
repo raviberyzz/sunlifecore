@@ -13,7 +13,7 @@ import com.adobe.cq.wcm.core.components.models.form.Container;
 /**
  * The Class FormContainer.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = Container.class , resourceType = "sunlife/core/components/form/container")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = Container.class, resourceType = "sunlife/core/components/form/container")
 public class FormContainer extends ContainerImpl {
 
   /**

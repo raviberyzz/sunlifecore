@@ -11,7 +11,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  *
  * @author mo92 The Interface CNWNewsConfig.
  */
-@ ObjectClassDefinition (name = "CNW Services Configuration" , description = "CNW Services Configuration")
+@ ObjectClassDefinition (name = "CNW Services Configuration", description = "CNW Services Configuration")
 public @interface CNWNewsConfig {
 
   /**
@@ -19,7 +19,7 @@ public @interface CNWNewsConfig {
    *
    * @return the cnw service url
    */
-  @ AttributeDefinition (name = "cnwServiceUrl" , description = "CNW Service URL" , defaultValue = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca")
+  @ AttributeDefinition (name = "cnwServiceUrl", description = "CNW Service URL", defaultValue = "http://internal-www.sunlife.ca/slfServiceApp/invokeService.wca")
   String getCnwServiceUrl ();
 
   /**
@@ -27,8 +27,8 @@ public @interface CNWNewsConfig {
    *
    * @return the date format locale mapping
    */
-  @ AttributeDefinition (name = "dateFormatLocaleMapping" , description = "Date format locale mapping" , defaultValue = {
-      "en~MMMM dd, yyyy" , "fr~dd MMMM yyyy" })
+  @ AttributeDefinition (name = "dateFormatLocaleMapping", description = "Date format locale mapping", defaultValue = {
+      "en~MMMM dd, yyyy", "fr~dd MMMM yyyy" })
   String [ ] getDateFormatLocaleMapping ();
 
 }

@@ -19,7 +19,7 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 /**
  * The Class CoreResourceResolverImpl.
  */
-@ Component (service = CoreResourceResolver.class , immediate = true)
+@ Component (service = CoreResourceResolver.class, immediate = true)
 @ Designate (ocd = CoreResourceResolverConfig.class)
 public class CoreResourceResolverImpl implements CoreResourceResolver {
 
@@ -54,7 +54,7 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
   @ Override
   public ResourceResolver getResourceResolver() throws LoginException {
     log.debug("Entry :: getResourceResolver method of CoreResourceResolverImpl");
-    final Map <String , Object> param = new HashMap <>();
+    final Map <String, Object> param = new HashMap <>();
     param.put(ResourceResolverFactory.SUBSERVICE, config.getSubService());
     ResourceResolver resolver = null;
     resolver = resourceResolverFactory.getServiceResourceResolver(param);

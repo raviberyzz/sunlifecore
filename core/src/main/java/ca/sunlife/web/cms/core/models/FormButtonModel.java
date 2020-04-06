@@ -13,7 +13,7 @@ import com.adobe.cq.wcm.core.components.models.form.Button;
 /**
  * The class FormButtonModel.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = Button.class , resourceType = "sunlife/core/components/form/button")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = Button.class, resourceType = "sunlife/core/components/form/button")
 public class FormButtonModel extends ButtonImpl {
 
   /**

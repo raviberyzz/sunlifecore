@@ -42,7 +42,7 @@ public class BasePageModelConstants {
 
   /** The Constant ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT. */
   public static final String ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT = "${advisorType}";
-  
+
   /** The Constant PAGE_TYPE_ARTICLE_PAGES_CONSTANT. */
   public static final String PAGE_TYPE_ARTICLE_PAGES_CONSTANT = "article";
 

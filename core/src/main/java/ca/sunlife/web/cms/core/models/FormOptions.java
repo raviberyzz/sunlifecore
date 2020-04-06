@@ -13,7 +13,7 @@ import com.adobe.cq.wcm.core.components.models.form.Options;
 /**
  * The Class FormOptions.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = Options.class , resourceType = "sunlife/core/components/form/options")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = Options.class, resourceType = "sunlife/core/components/form/options")
 public class FormOptions extends OptionsImpl {
   /** The id. */
   @ Inject

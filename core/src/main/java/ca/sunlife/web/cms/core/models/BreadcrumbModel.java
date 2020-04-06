@@ -13,7 +13,7 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 /**
  * The Class BreadcrumbModel.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = Breadcrumb.class , resourceType = "sunlife/core/components/content/breadcrumb")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = Breadcrumb.class, resourceType = "sunlife/core/components/content/breadcrumb")
 public class BreadcrumbModel extends BreadcrumbImpl {
 
   /**

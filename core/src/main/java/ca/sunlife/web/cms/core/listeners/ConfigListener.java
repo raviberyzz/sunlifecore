@@ -23,8 +23,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  *
  * @see ConfigEvent
  */
-@ Component (service = EventHandler.class , property = {
-    EventConstants.EVENT_TOPIC + "=org/apache/sling/api/resource/Resource/*" ,
+@ Component (service = EventHandler.class, property = {
+    EventConstants.EVENT_TOPIC + "=org/apache/sling/api/resource/Resource/*",
     EventConstants.EVENT_FILTER
         + "(&amp;(path=/content/sunlife/config/*)(resourceType=sunlife/core/components/config/configuration)" })
 public class ConfigListener implements EventHandler {

@@ -13,7 +13,7 @@ import org.apache.sling.models.annotations.Model;
  * The Interface FormDropdown.
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface FormDropdown {
 
   /**
@@ -32,14 +32,14 @@ public interface FormDropdown {
    */
   @ Inject
   public String getId();
-  
+
   /**
    * Gets the Screen reader value for title
    *
    * @return the Screen reader value
    */
   @ Inject
-  public String getIsScreenReader();  
+  public String getIsScreenReader();
 
   /**
    * Gets the name.
@@ -93,7 +93,7 @@ public interface FormDropdown {
    * The Interface ItemsGroup.
    */
   @ Model (adaptables = {
-      Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+      Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   public interface ItemsGroup {
 
     /**
@@ -118,7 +118,7 @@ public interface FormDropdown {
    * The Interface Items.
    */
   @ Model (adaptables = {
-      Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+      Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   public interface Items {
 
     /**

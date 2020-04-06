@@ -29,6 +29,6 @@ public interface RestService {
    *           Signals that an I/O exception has occurred.
    */
   public String callGetWebService(String url)
-      throws ApplicationException , SystemException , IOException;
+      throws ApplicationException, SystemException, IOException;
 
 }

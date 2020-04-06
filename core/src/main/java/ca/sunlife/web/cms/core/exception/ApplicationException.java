@@ -33,8 +33,8 @@ public class ApplicationException extends Exception {
    * @param th
    *          the th
    */
-  public ApplicationException(final ErrorCodes errorCode , final Throwable th) {
-    super(ErrorCodes.getValue(errorCode),th);
+  public ApplicationException(final ErrorCodes errorCode, final Throwable th) {
+    super(ErrorCodes.getValue(errorCode), th);
   }
 
 }

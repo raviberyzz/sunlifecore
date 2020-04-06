@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
  *
  * @author MO92
  */
-@ Model (adaptables = Resource.class , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface LinkModel {
 
   /**

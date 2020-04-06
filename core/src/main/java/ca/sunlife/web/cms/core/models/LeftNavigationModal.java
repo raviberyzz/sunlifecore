@@ -47,7 +47,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class LeftNavigationModal.
  */
-@ Model (adaptables = SlingHttpServletRequest.class , adapters = LeftNavigationModal.class , resourceType = "sunlife/core/components/content/left-navigation")
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = LeftNavigationModal.class, resourceType = "sunlife/core/components/content/left-navigation")
 public class LeftNavigationModal extends NavigationImpl {
 
   /** The Constant RESOURCE_TYPE. */
@@ -177,10 +177,10 @@ public class LeftNavigationModal extends NavigationImpl {
     final List <NavigationItem> children1 = new ArrayList <>();
     for (final NavigationItem navigationItem : navigationItems) {
 
-      if ( ! navigationItem.getChildren().isEmpty()) {
+      if (! navigationItem.getChildren().isEmpty()) {
         parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
-        final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage,false,request,
-            navigationItem.getLevel() + 1,children1,title);
+        final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, false, request,
+            navigationItem.getLevel() + 1, children1, title);
         navigationItem.getChildren().add(0, leftItemImpl);
       }
       processNavigationList(navigationItem.getChildren());
@@ -198,7 +198,7 @@ public class LeftNavigationModal extends NavigationImpl {
       final PageManager pageManager = currentPage.getPageManager();
       final Page rootPage = pageManager.getPage(navigationRootPage);
       if (rootPage != null) {
-        NavigationRoot navigationRoot = new NavigationRoot(rootPage,structureDepth);
+        NavigationRoot navigationRoot = new NavigationRoot(rootPage, structureDepth);
         final Page navigationRootLanguageRoot = navigationRoot.getPageResource()
             .map(languageManager::getLanguageRoot).orElse(null);
         final Page currentPageLanguageRoot = languageManager
@@ -217,7 +217,7 @@ public class LeftNavigationModal extends NavigationImpl {
               .getPage(ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/"
                   + getRelativePath(navigationRootLanguageRoot, navigationRoot.page)));
           if (languageCopyNavigationRoot != null) {
-            navigationRoot = new NavigationRoot(languageCopyNavigationRoot,structureDepth);
+            navigationRoot = new NavigationRoot(languageCopyNavigationRoot, structureDepth);
           }
         } else if (liveCopiesIterator != null) {
           while (liveCopiesIterator.hasNext()) {
@@ -225,7 +225,7 @@ public class LeftNavigationModal extends NavigationImpl {
             if (currentPage.getPath().startsWith(relationship.getTargetPath() + "/")) {
               final Page liveCopyNavigationRoot = pageManager.getPage(relationship.getTargetPath());
               if (liveCopyNavigationRoot != null) {
-                navigationRoot = new NavigationRoot(liveCopyNavigationRoot,structureDepth);
+                navigationRoot = new NavigationRoot(liveCopyNavigationRoot, structureDepth);
                 break;
               }
             }
@@ -266,7 +266,7 @@ public class LeftNavigationModal extends NavigationImpl {
    *          the current sub-tree root (changes depending on the level of recursion)
    * @return the list of collected navigation trees
    */
-  private List <NavigationItem> getItems(final NavigationRoot navigationRoot ,
+  private List <NavigationItem> getItems(final NavigationRoot navigationRoot,
       final Page subtreeRoot) {
     final List <NavigationItem> pages = new ArrayList <>();
     if (navigationRoot.structureDepth == - 1
@@ -282,7 +282,7 @@ public class LeftNavigationModal extends NavigationImpl {
           level = level + 1;
         }
 
-        pages.add(new NavigationItemImpl(page,isSelected,request,level,children));
+        pages.add(new NavigationItemImpl(page, isSelected, request, level, children));
       }
     }
     return pages;
@@ -304,8 +304,8 @@ public class LeftNavigationModal extends NavigationImpl {
     }
     if (structureStart == 0) {
       final boolean isSelected = checkSelected(navigationRoot.page);
-      final NavigationItemImpl root = new NavigationItemImpl(navigationRoot.page,isSelected,request,
-          0,itemTree);
+      final NavigationItemImpl root = new NavigationItemImpl(navigationRoot.page, isSelected,
+          request, 0, itemTree);
       itemTree = new ArrayList <>();
       itemTree.add(root);
     }
@@ -321,7 +321,7 @@ public class LeftNavigationModal extends NavigationImpl {
    *          the structure start
    * @return the root items
    */
-  private List <NavigationRoot> getRootItems(final NavigationRoot navigationRoot ,
+  private List <NavigationRoot> getRootItems(final NavigationRoot navigationRoot,
       final int structureStart) {
     final LinkedList <NavigationRoot> pages = new LinkedList <>();
     pages.addLast(navigationRoot);
@@ -333,7 +333,7 @@ public class LeftNavigationModal extends NavigationImpl {
           final NavigationRoot item = pages.removeFirst();
           final Iterator <Page> it = item.page.listChildren(new PageFilter());
           while (it.hasNext()) {
-            pages.addLast(new NavigationRoot(it.next(),structureDepth));
+            pages.addLast(new NavigationRoot(it.next(), structureDepth));
           }
           size = size - 1;
         }
@@ -401,7 +401,7 @@ public class LeftNavigationModal extends NavigationImpl {
    *          the child
    * @return the relative path
    */
-  private String getRelativePath(final Page root , final Page child) {
+  private String getRelativePath(final Page root, final Page child) {
     if (child.equals(root)) {
       return ".";
     } else if ( (child.getPath() + "/").startsWith(root.getPath())) {
@@ -432,7 +432,7 @@ public class LeftNavigationModal extends NavigationImpl {
      * @param configuredStructureDepth
      *          the configured structure depth
      */
-    private NavigationRoot(final Page navigationRoot , final int configuredStructureDepth) {
+    private NavigationRoot(final Page navigationRoot, final int configuredStructureDepth) {
       page = navigationRoot;
       startLevel = getLevel(navigationRoot);
       if (configuredStructureDepth > - 1) {

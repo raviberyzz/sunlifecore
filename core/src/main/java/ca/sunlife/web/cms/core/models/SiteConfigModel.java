@@ -17,7 +17,7 @@ import org.apache.sling.models.annotations.Model;
  * @author MO92 Sling model for site specific configuration
  */
 @ Model (adaptables = {
-    Resource.class } , defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL , resourceType = "sunlife/core/components/config/configuration")
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/config/configuration")
 public interface SiteConfigModel {
 
   /**
@@ -27,13 +27,13 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getSiteName();
-  
+
   /**
    * Gets the domain.
    *
    * @return the domain
    */
-  
+
   @ Inject
   String getDomain();
 
@@ -42,7 +42,7 @@ public interface SiteConfigModel {
    *
    * @return the site url
    */
-  
+
   @ Inject
   String getSiteUrl();
 
@@ -149,7 +149,7 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticleType();
-  
+
   /**
    * Gets the article publisher for meta tag.
    *
@@ -157,7 +157,7 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticlePublisherForMetaTag();
-  
+
   /**
    * Gets the article creator.
    *
@@ -165,7 +165,7 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticleCreator();
-  
+
   /**
    * Gets the article site.
    *
