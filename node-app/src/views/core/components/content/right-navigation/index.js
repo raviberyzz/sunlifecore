@@ -1,5 +1,9 @@
 $(document).ready(function () {
     var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
+    if ($('.right-navigation-wrapper .cmp-container .experiencefragment .xf-content-height').length==1){
+            var comp = $('.right-navigation-wrapper .cmp-container .experiencefragment .xf-content-height > div').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
+    
+        }
     var child=comp.length;
     var count1=0;
     var cta_index=0;
@@ -32,27 +36,32 @@ $(document).ready(function () {
         for (var i=cta_index-1; i<child; i++)
         {
             $(comp[i]).removeClass('col-sm-6 col-sm-4').addClass('col-sm-12');
+            $(comp[i]).removeClass("aem-GridColumn aem-GridColumn--default--12");
         }       
     }
     function right_nav_width(child) 
     {
         if (child==1)
     {
-        comp.each(function(){$( this ).addClass( "col-xs-12" )});
+        comp.each(function(){$( this ).addClass( "col-xs-12" );
+        $(this).removeClass("aem-GridColumn aem-GridColumn--default--12");});
     }
     if (child==2)
     {
         
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
+        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" );
+        $(this).removeClass("aem-GridColumn aem-GridColumn--default--12");});
     }
     if (child==3)
     {
         
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
+        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" );
+        $(this).removeClass("aem-GridColumn aem-GridColumn--default--12");});
     }
     if (child==4)
     {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" )});
+        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-6 col-md-12" );
+        $(this).removeClass("aem-GridColumn aem-GridColumn--default--12");});
     }
     if (child==5)
     {
@@ -61,10 +70,12 @@ $(document).ready(function () {
             for (var i=1; i<4; i++)
             {
                 $(comp[i]).addClass('col-xs-12 col-sm-4 col-md-12');
+                $(comp[i]).removeClass("aem-GridColumn aem-GridColumn--default--12");
             }
             for (var i=4; i<=5; i++)
             {
                 $(comp[i]).addClass('col-xs-12 col-sm-6 col-md-12');
+                $(comp[i]).removeClass("aem-GridColumn aem-GridColumn--default--12");
             }
         }
         else
@@ -72,17 +83,20 @@ $(document).ready(function () {
             for (var i=0; i<3; i++)
             {
                 $(comp[i]).addClass('col-xs-12 col-sm-4 col-md-12');
+                $(comp[i]).removeClass("aem-GridColumn aem-GridColumn--default--12");
             }
             for (var i=3; i<=4; i++)
             {
                 $(comp[i]).addClass('col-xs-12 col-sm-6 col-md-12');
+                $(comp[i]).removeClass("aem-GridColumn aem-GridColumn--default--12");
             }
         }
         
     }
     if (child==6)
     {
-        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" )});
+        comp.each(function(){$( this ).addClass( "col-xs-12 col-sm-4 col-md-12" );
+        $(this).removeClass("aem-GridColumn aem-GridColumn--default--12");});
     }
         
     }
@@ -134,6 +148,9 @@ $(document).ready(function () {
                         if (index < cta_index-1)
                         {
                             maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+                        } else if  (index > cta_index-1)
+                        {
+                            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
                         }
                     }
                     else
@@ -150,6 +167,10 @@ $(document).ready(function () {
                     if (cta_index > 0)
                     {
                         if (index < cta_index-1)
+                        {
+                            $(this).height(maxHeight);
+                            
+                        } else if (index > cta_index-1)
                         {
                             $(this).height(maxHeight);
                             
@@ -270,6 +291,24 @@ $(document).ready(function () {
         $('.right-navigation-wrapper .cmp-container').children().first().css('border-top','none');
          $('.right-navigation-wrapper .cmp-container').children().first().css('border-bottom','none');
     }
-     
+     // for multiple experience fragments start
+     comp.each(function(){
+        if($('.right-navigation-wrapper .cmp-container').length == 1){
+           var x = $(this).find('.light-orange');
+        if(x.length == 1){
+       var orangeBackground = $(this).find('.light-orange');
+            console.log(orangeBackground);
+            console.log("working");
+           orangeBackground.removeClass('light-orange');
+            $(this).addClass('light-orange');
+            $(this).removeClass('col-sm-6');
+            $(this).addClass('col-sm-12');
+           // $(this).css("margin-bottom":"24px");
+            $(this).next().removeClass('col-sm-6');
+            $(this).next().addClass('col-sm-12');
+        }
+        }
+    })
+     // for multiple experience fragments end
  });
  
