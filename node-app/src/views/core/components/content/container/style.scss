@@ -5,6 +5,7 @@ ul {
 .icon-texts {
     padding-bottom: 24px;
 }
+
 // content block with icon start
 //overview highlights triple cta css for border and spacing
 
@@ -457,7 +458,7 @@ ul {
             align-items: center;
             .text-section{         
                 height: 100%;
-                display: flex;
+                display: flex !important;
                 flex-direction: column;
                 justify-content: space-between;
             
@@ -469,7 +470,7 @@ ul {
 @media (min-width: $tab-screen-min){
     .layout-container{
         .row.flex-height{
-            display: -webkit-box;
+            flex-wrap: unset;
         }
     }
 }
@@ -507,7 +508,7 @@ ul {
         .left-image-position, .right-image-position {
             display: inherit;
             .left-item, .right-item {
-                display: inherit;
+                display: unset;
             }
         }
         .left-item{
