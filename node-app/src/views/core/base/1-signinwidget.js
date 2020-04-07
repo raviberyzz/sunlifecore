@@ -2,17 +2,24 @@ var currentSignInForm;
 var contingencyWidgetDisplayed = false;
 var signinDataCallDone = false;
 var providerURL;
-
+var hostname = window.location.hostname;
 var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
+var sunnetUrl;
+
+//checks hostname to set sunnet url
+if(hostname == 'www.sunlife.ca') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if(hostname == 'stage-www.sunlife.ca') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else {
+	sunnetUrl = "https://sit-www.sunnet.sunlife.com";
+}
+
 if (lang == 'fr'){
-
-providerURL="https://sit-www.sunnet.sunlife.com/masunlife/ca/f/signinInfo.wca"; 
-
+	providerURL = sunnetUrl + "/masunlife/ca/f/signinInfo.wca";
 }
 else{
-
-providerURL="https://sit-www.sunnet.sunlife.com/mysunlife/ca/e/signinInfo.wca"; 
-
+	providerURL = sunnetUrl + "/mysunlife/ca/e/signinInfo.wca"; 
 }
 
 $(document).ready(function () {
@@ -20,8 +27,8 @@ $(document).ready(function () {
 	$('a[data-deeplink]').click(function(){
 	 console.log("before hiting ping url in mbrportal");
      	 var deepLinkName=$(this).attr('data-deeplink');
-
-     	$.ajax({url:'https://sit-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping',xhrFields: {withCredentials: true},
+		 var pingServiceUrl = sunnetUrl + "/mbrportal/req/externalPingServices/ping";
+     	$.ajax({url: pingServiceUrl,xhrFields: {withCredentials: true},
 
 		           
 			success: function (data, status, xhr) { 
@@ -31,7 +38,7 @@ $(document).ready(function () {
 		       response = JSON.parse(data);
 			    if(xhr.status=="200"&&response.status=="OK")
 	            {
-	               window.location.href = "https://sit-www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC="+deepLinkName;
+	               window.location.href = sunnetUrl +"/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC="+deepLinkName;
 		        }
 			}
 			catch(e)
