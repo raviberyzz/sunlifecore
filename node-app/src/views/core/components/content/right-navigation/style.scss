@@ -89,7 +89,7 @@
     }
     .light-orange{
         background-color: $light-orange-20;
-        border-top: 20px solid  $white-shade;
+       // border-top: 20px solid  $white-shade;
        // border-bottom: 20px solid  $white-shade;
         margin-bottom:24px;
         & > *{
@@ -146,11 +146,11 @@
     .legal-text{
         color: $dark-grey-color;
     }
-    .col-sm-12.light-orange{
+   /* .col-sm-12.light-orange{
 
         border-top:none;
         border-bottom:none;
-    }
+    } */
     .social-link-icon-wrapper{
         margin:16px 0px;
         width:100%;
