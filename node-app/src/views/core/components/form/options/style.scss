@@ -18,6 +18,7 @@ select::-ms-expand {
 }
 
 .cmp-form-options__field--drop-down{
+    overflow-wrap: initial;
     border: 1px solid $medium-grey-background;
     border-radius: 0;
     display: block;

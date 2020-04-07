@@ -1,5 +1,12 @@
 @import '../../../base/core';
 
+/* for ios devices - defect causing text to overflow div*/
+.teaser.circular-image{
+    .right-item {
+        display: table-cell;
+    }
+}
+/* for ios devices - defect causing text to overflow div ends here*/
  .show-only-in-editorial {
     display: none !important;
  }
