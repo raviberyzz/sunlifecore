@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +27,6 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,6 +65,7 @@ public class AnnouncementList {
 	@Via("resource")
 	private int maxItems;
 
+	/** The news type. */
 	@Inject
 	@Via("resource")
 	private String newsType;
@@ -81,6 +82,7 @@ public class AnnouncementList {
 	@Inject
 	private SiteConfigService configService;
 
+	/** The latest year. */
 	@Inject
 	@Via("resource")
 	private String latestYear;
@@ -89,11 +91,6 @@ public class AnnouncementList {
 	@Inject
 	@Via("resource")
 	private String numberOfTabs;
-
-	/** Page size. */
-	@Inject
-	@Via("resource")
-	private String pageSize;
 
 	/** Previous button text. */
 	@Inject
@@ -157,11 +154,12 @@ public class AnnouncementList {
 	/** The items. */
 	private final List<DAMContentFragment> items = new ArrayList<>();
 
+	/** The filtered items. */
 	private List<DAMContentFragment> filteredItems = new ArrayList<>();
 
 	/** The element names. */
 	private static final String[] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading", "newsroomPagePath",
-	"newsroomContent" };
+			"newsroomContent" };
 
 	/** The logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
@@ -308,110 +306,227 @@ public class AnnouncementList {
 		return Collections.unmodifiableCollection(items);
 	}
 
+	/**
+	 * Gets the news type.
+	 *
+	 * @return the news type
+	 */
 	public String getNewsType() {
 		return newsType;
 	}
 
+	/**
+	 * Sets the news type.
+	 *
+	 * @param newsType the new news type
+	 */
 	public void setNewsType(String newsType) {
 		this.newsType = newsType;
 	}
 
+	/**
+	 * Gets the latest year.
+	 *
+	 * @return the latest year
+	 */
 	public String getLatestYear() {
 		return latestYear;
 	}
 
+	/**
+	 * Sets the latest year.
+	 *
+	 * @param latestYear the new latest year
+	 */
 	public void setLatestYear(String latestYear) {
 		this.latestYear = latestYear;
 	}
 
+	/**
+	 * Gets the number of tabs.
+	 *
+	 * @return the number of tabs
+	 */
 	public String getNumberOfTabs() {
 		return numberOfTabs;
 	}
 
+	/**
+	 * Sets the number of tabs.
+	 *
+	 * @param numberOfTabs the new number of tabs
+	 */
 	public void setNumberOfTabs(String numberOfTabs) {
 		this.numberOfTabs = numberOfTabs;
 	}
 
-	public String getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(String pageSize) {
-		this.pageSize = pageSize;
-	}
-
+	/**
+	 * Gets the previous text.
+	 *
+	 * @return the previous text
+	 */
 	public String getPreviousText() {
 		return previousText;
 	}
 
+	/**
+	 * Sets the previous text.
+	 *
+	 * @param previousText the new previous text
+	 */
 	public void setPreviousText(String previousText) {
 		this.previousText = previousText;
 	}
 
+	/**
+	 * Gets the next text.
+	 *
+	 * @return the next text
+	 */
 	public String getNextText() {
 		return nextText;
 	}
 
+	/**
+	 * Sets the next text.
+	 *
+	 * @param nextText the new next text
+	 */
 	public void setNextText(String nextText) {
 		this.nextText = nextText;
 	}
 
+	/**
+	 * Gets the page text.
+	 *
+	 * @return the page text
+	 */
 	public String getPageText() {
 		return pageText;
 	}
 
+	/**
+	 * Sets the page text.
+	 *
+	 * @param pageText the new page text
+	 */
 	public void setPageText(String pageText) {
 		this.pageText = pageText;
 	}
 
+	/**
+	 * Gets the of text.
+	 *
+	 * @return the of text
+	 */
 	public String getOfText() {
 		return ofText;
 	}
 
+	/**
+	 * Sets the of text.
+	 *
+	 * @param ofText the new of text
+	 */
 	public void setOfText(String ofText) {
 		this.ofText = ofText;
 	}
 
+	/**
+	 * Gets the no news message.
+	 *
+	 * @return the no news message
+	 */
 	public String getNoNewsMessage() {
 		return noNewsMessage;
 	}
 
+	/**
+	 * Sets the no news message.
+	 *
+	 * @param noNewsMessage the new no news message
+	 */
 	public void setNoNewsMessage(String noNewsMessage) {
 		this.noNewsMessage = noNewsMessage;
 	}
 
+	/**
+	 * Gets the active year.
+	 *
+	 * @return the active year
+	 */
 	public int getActiveYear() {
 		return activeYear;
 	}
 
+	/**
+	 * Sets the active year.
+	 *
+	 * @param activeYear the new active year
+	 */
 	public void setActiveYear(int activeYear) {
 		this.activeYear = activeYear;
 	}
 
+	/**
+	 * Gets the years to show.
+	 *
+	 * @return the years to show
+	 */
 	public List<Integer> getYearsToShow() {
 		return yearsToShow;
 	}
 
+	/**
+	 * Sets the years to show.
+	 *
+	 * @param yearsToShow the new years to show
+	 */
 	public void setYearsToShow(List<Integer> yearsToShow) {
 		this.yearsToShow = yearsToShow;
 	}
 
+	/**
+	 * Gets the request URL.
+	 *
+	 * @return the request URL
+	 */
 	public String getRequestURL() {
 		return requestURL;
 	}
 
+	/**
+	 * Sets the request URL.
+	 *
+	 * @param requestURL the new request URL
+	 */
 	public void setRequestURL(String requestURL) {
 		this.requestURL = requestURL;
 	}
 
+	/**
+	 * Gets the relative URL.
+	 *
+	 * @return the relative URL
+	 */
 	public String getRelativeURL() {
 		return relativeURL;
 	}
 
+	/**
+	 * Sets the relative URL.
+	 *
+	 * @param relativeURL the new relative URL
+	 */
 	public void setRelativeURL(String relativeURL) {
 		this.relativeURL = relativeURL;
 	}
 
+	/**
+	 * Gets the filtered items.
+	 *
+	 * @return the filtered items
+	 */
 	public List<DAMContentFragment> getFilteredItems() {
 		return filteredItems;
 	}
@@ -492,7 +607,7 @@ public class AnnouncementList {
 			try {
 				String path = currentPage.getPath();
 				processReleasesData();
-				setPagination(new Pagination(request, Integer.parseInt(getPageSize()), getTotalMatch(), path));
+				setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
 			} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 				LOGGER.error("Error :: AnnouncementList :: init :: error trace: {}", e);
 			}
@@ -511,8 +626,9 @@ public class AnnouncementList {
 	private void setQueryParameterMap(final String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
 		int limit = getMaxItems();
-		if (selectors.length > 0) {
-			setPageNum(Integer.parseInt(selectors[0]));
+
+		if (selectors.length > 1) {
+			setPageNum(Integer.parseInt(selectors[1]));
 			offset = (getPageNum() - 1) * getMaxItems(); // Pagination
 		}
 		queryParameterMap.put("path", getParentPath());
@@ -526,6 +642,15 @@ public class AnnouncementList {
 
 	}
 
+	/**
+	 * Process releases data.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ApplicationException the application exception
+	 * @throws SystemException the system exception
+	 * @throws LoginException the login exception
+	 * @throws RepositoryException the repository exception
+	 */
 	public void processReleasesData()
 			throws IOException, ApplicationException, SystemException, LoginException, RepositoryException {
 
@@ -600,14 +725,21 @@ public class AnnouncementList {
 		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
 	}
 
+	/**
+	 * Filteritems based on year.
+	 *
+	 * @param items the items
+	 * @param activeYear the active year
+	 * @return the list
+	 */
 	public List<DAMContentFragment> filteritemsBasedOnYear(List<DAMContentFragment> items, int activeYear) {
-		List<DAMContentElement> elementList;
+		List<DAMContentElement> elementList = new ArrayList<>();
 		List<DAMContentFragment> filteredItemList = new ArrayList<>();
 		for (int i = 0; i < items.size(); i++) {
 			elementList = items.get(i).getElements();
 			for (int j = 0; j < elementList.size(); j++) {
 				if ("articlePublishedDate".equals(elementList.get(j).getName())) {
-					Calendar articlePublishedDate = (Calendar) elementList.get(j).getValue();
+					GregorianCalendar articlePublishedDate = (GregorianCalendar) elementList.get(j).getValue();
 					if (activeYear == articlePublishedDate.get(Calendar.YEAR)) {
 						filteredItemList.add(items.get(i));
 					}

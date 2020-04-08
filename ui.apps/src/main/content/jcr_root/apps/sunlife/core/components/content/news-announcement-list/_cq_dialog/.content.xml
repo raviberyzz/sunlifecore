@@ -56,24 +56,6 @@
                                         name="./parentPath"
                                         required="{Boolean}true"
                                         rootPath="/content/dam"/>
-                                    <overview
-                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <maxItems
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                fieldDescription="Maximum number of items displayed in the list."
-                                                fieldLabel="Max Items"
-                                                min="{Long}0"
-                                                name="./maxItems"
-                                                required="{Boolean}true"/>
-                                        </items>
-                                        <granite:data
-                                            jcr:primaryType="nt:unstructured"
-                                            showhidetargetvalue="1"/>
-                                    </overview>
                                     <release
                                         granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                         jcr:primaryType="nt:unstructured"
@@ -131,6 +113,14 @@
                                         fieldLabel="News Article URL"
                                         name="./newsArticleUrl"
                                         required="{Boolean}false"/>
+                                    <maxItems
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Maximum number of items displayed in the list."
+                                        fieldLabel="Max Items"
+                                        min="{Long}0"
+                                        name="./maxItems"
+                                        required="{Boolean}true"/>
                                 </items>
                             </generalSection>
                             <paginationSection
@@ -163,12 +153,6 @@
                                         fieldDescription="Of Label"
                                         fieldLabel="Of Label"
                                         name="./ofText"/>
-                                    <pageSize
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Page Size"
-                                        fieldLabel="Page Size"
-                                        name="./pageSize"/>
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
