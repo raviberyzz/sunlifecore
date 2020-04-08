@@ -742,7 +742,9 @@ public class AdvisorDetailModel {
   public void setAlternateURL(final String advisorId) {
     logger.debug("Entry :: AdvisorDetailModel :: setAlternateURL");
     alternateUrl = alternateUrl
-        .replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId);
+        .replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId)
+		.replace(BasePageModelConstants.ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT,
+                advisorType);
     logger.debug("Exit :: AdvisorDetailModel :: setAlternateURL :: {}", alternateUrl);
   }
 }
