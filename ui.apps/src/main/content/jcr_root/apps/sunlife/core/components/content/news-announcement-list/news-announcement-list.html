@@ -1,4 +1,5 @@
-<sly data-sly-use.list="ca.sunlife.web.cms.core.models.AnnouncementList" data-sly-test="${list.listItems.size>0}">
+<sly data-sly-use.list="ca.sunlife.web.cms.core.models.AnnouncementList" >
+	<sly data-sly-test.overview="${list.newsType=='1' && list.listItems.size>0}">
         <div class="row article-lists">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="content-list">
@@ -19,11 +20,49 @@
                         </li>
                     </sly>
                 </ul>
-                <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html"
-                        data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
+                
             </div>            
         </div>
-</sly>
+	</sly>
+    <sly data-sly-test = "${list.newsType == '2'}">
+    <div class="tabs tabs-wrapper news">
+        <div class="cmp-tabs" data-cmp-is="tabs">
+            <ol role="tablist" class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${list.yearsToShow}">
+                <li class="${yearsToShow == list.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" tabindex="-1" aria-selected="true" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
+                    <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsToShow}/">
+                    <span class="slf-tab-title">${yearsToShow}</span>
+                    </a>
+                </li>
+            </ol>
+            <div data-sly-repeat.yearsTab="${list.yearsToShow}"
+                role="tabpanel" 
+                tabindex="0" 
+                class="${yearsTab == list.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
+                data-cmp-hook-tabs="tabpanel">
+                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == list.activeYear ? 'true' : 'false'}" tabindex="0">
+                    <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsTab}/">${yearsTab}</a>
+                </div>
+                <sly data-sly-test="${yearsTab == list.activeYear}">
+					<sly data-sly-test.newsList="${list.news.releaseMain.releases.release}" />
 
-<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
+                    <div class="option-box no-margin news-option-table">
+						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
+                            <div class="news-article">
+                                <p>${news.releaseDate}</p>
+                                <p><a x-cq-linkchecker="skip" href="${list.newsArticleShortenedUrl}/${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a></p>
+                                <p>${news.summary @ context='html'}</p>
+                            </div>
+						</sly>
+                    </div>
+
+					<sly data-sly-test = "${!newsList}">
+						<div class="news-article">
+							<p>${list.noNewsMessage @ context='html'}</p>
+						</div>
+					</sly>
+                </sly>
+            </div>
+        </div>
+    </div>
+</sly>
+</sly>

@@ -1,6 +1,8 @@
 package ca.sunlife.web.cms.core.models;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,12 +26,14 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
+import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment.DAMContentElement;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
@@ -38,314 +42,580 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class AnnouncementList.
  */
-@ Model (adaptables = SlingHttpServletRequest.class, adapters = AnnouncementList.class, resourceType = "sunlife/core/components/content/news-announcement-list", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = { SlingHttpServletRequest.class,
+		Resource.class }, adapters = AnnouncementList.class, resourceType = "sunlife/core/components/content/news-announcement-list", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class AnnouncementList {
 
-  /** The logger. */
-  private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
+	/** The parent path. */
+	@Inject
+	@Via("resource")
+	private String parentPath;
 
-  /** The parent path. */
-  @ Inject
-  @ Via ("resource")
-  private String parentPath;
+	/** The max items. */
+	@Inject
+	@Via("resource")
+	private int maxItems;
 
-  /** The max items. */
-  @ Inject
-  @ Via ("resource")
-  private int maxItems;
+	@Inject
+	@Via("resource")
+	private String newsType;
 
-  /** The items. */
-  private final List <DAMContentFragment> items = new ArrayList <>();
+	/** The content type converter. */
+	@Inject
+	private ContentTypeConverter contentTypeConverter;
 
-  /** The sling http servlet request. */
-  @ Self (injectionStrategy = InjectionStrategy.REQUIRED)
-  private SlingHttpServletRequest request;
+	/** The core resource resolver. */
+	@Inject
+	private CoreResourceResolver coreResourceResolver;
 
-  /** The content type converter. */
-  @ Inject
-  private ContentTypeConverter contentTypeConverter;
+	/** The config service. */
+	@Inject
+	private SiteConfigService configService;
 
-  /** The core resource resolver. */
-  @ Inject
-  private CoreResourceResolver coreResourceResolver;
+	@Inject
+	@Via("resource")
+	private String latestYear;
 
-  /** The config service. */
-  @ Inject
-  private SiteConfigService configService;
+	/** No. of tabs */
+	@Inject
+	@Via("resource")
+	private String numberOfTabs;
 
-  /** The page num. */
-  private int pageNum = 0;
+	/** Page size. */
+	@Inject
+	@Via("resource")
+	private String pageSize;
 
-  /** The date format. */
-  private String dateFormat;
+	/** Previous button text. */
+	@Inject
+	@Via("resource")
+	private String previousText;
 
-  /** The current page. */
-  @ ScriptVariable
-  private Page currentPage;
+	/** Next button text. */
+	@Inject
+	@Via("resource")
+	private String nextText;
 
-  /** The pagination. */
-  private Pagination pagination;
+	/** Page label text. */
+	@Inject
+	@Via("resource")
+	private String pageText;
 
-  /** The page url. */
-  private String pageUrl;
+	/** Of label text. */
+	@Inject
+	@Via("resource")
+	private String ofText;
 
-  /**
-   * Gets the page url.
-   *
-   * @return the pageUrl
-   */
-  public final String getPageUrl() {
-    return pageUrl;
-  }
+	/** Message when no news are there. */
+	@Inject
+	@Via("resource")
+	private String noNewsMessage;
 
-  /**
-   * Sets the page url.
-   *
-   * @param pageUrl
-   *          the pageUrl to set
-   */
-  public final void setPageUrl(final String pageUrl) {
-    this.pageUrl = pageUrl;
-  }
+	/** The sling http servlet request. */
+	@Self(injectionStrategy = InjectionStrategy.REQUIRED)
+	private SlingHttpServletRequest request;
 
-  /**
-   * Gets the pagination.
-   *
-   * @return the pagination
-   */
-  public final Pagination getPagination() {
-    return pagination;
-  }
+	/** The current page. */
+	@ScriptVariable
+	private Page currentPage;
 
-  /**
-   * Sets the pagination.
-   *
-   * @param pagination
-   *          the pagination to set
-   */
-  public final void setPagination(final Pagination pagination) {
-    this.pagination = pagination;
-  }
+	/** Active Year. */
+	private int activeYear;
 
-  /**
-   * Gets the total match.
-   *
-   * @return the totalMatch
-   */
-  public final int getTotalMatch() {
-    return totalMatch;
-  }
+	/** Years To Show - Tabs. */
+	private List<Integer> yearsToShow;
 
-  /**
-   * Gets the date format.
-   *
-   * @return the dateFormat
-   */
-  public final String getDateFormat() {
-    return dateFormat;
-  }
+	/** requestURL. */
+	private String requestURL;
 
-  /**
-   * Sets the date format.
-   *
-   * @param dateFormat
-   *          the dateFormat to set
-   */
-  public final void setDateFormat(final String dateFormat) {
-    this.dateFormat = dateFormat;
-  }
+	/** relative URL - without any selectors. */
+	private String relativeURL;
+	/** The page num. */
+	private int pageNum = 0;
 
-  /**
-   * Gets the page num.
-   *
-   * @return the pageNum
-   */
-  public final int getPageNum() {
-    return pageNum;
-  }
+	/** The date format. */
+	private String dateFormat;
 
-  /**
-   * Sets the page num.
-   *
-   * @param pageNum
-   *          the pageNum to set
-   */
-  public final void setPageNum(final int pageNum) {
-    this.pageNum = pageNum;
-  }
+	/** The pagination. */
+	private Pagination pagination;
 
-  /**
-   * Sets the total match.
-   *
-   * @param totalMatch
-   *          the totalMatch to set
-   */
-  public final void setTotalMatch(final int totalMatch) {
-    this.totalMatch = totalMatch;
-  }
+	/** The page url. */
+	private String pageUrl;
 
-  /** The total match. */
-  private int totalMatch;
+	/** The total match. */
+	private int totalMatch;
 
-  /** The element names. */
-  private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading",
-      "newsroomPagePath", "newsroomContent" };
+	/** The items. */
+	private final List<DAMContentFragment> items = new ArrayList<>();
 
-  /**
-   * Gets the parent path.
-   *
-   * @return the parentPath
-   */
-  public final String getParentPath() {
-    return parentPath;
-  }
+	private List<DAMContentFragment> filteredItems = new ArrayList<>();
 
-  /**
-   * Sets the parent path.
-   *
-   * @param parentPath
-   *          the parentPath to set
-   */
-  public final void setParentPath(final String parentPath) {
-    this.parentPath = parentPath;
-  }
+	/** The element names. */
+	private static final String[] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading", "newsroomPagePath",
+	"newsroomContent" };
 
-  /**
-   * Gets the max items.
-   *
-   * @return the maxItems
-   */
-  public final int getMaxItems() {
-    return maxItems;
-  }
+	/** The logger. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
 
-  /**
-   * Sets the max items.
-   *
-   * @param maxItems
-   *          the maxItems to set
-   */
-  public final void setMaxItems(final int maxItems) {
-    this.maxItems = maxItems;
-  }
+	/**
+	 * Gets the page url.
+	 *
+	 * @return the pageUrl
+	 */
+	public final String getPageUrl() {
+		return pageUrl;
+	}
 
-  /**
-   * Gets the list items.
-   *
-   * @return the list items
-   */
-  public Collection <DAMContentFragment> getListItems() {
-    return Collections.unmodifiableCollection(items);
-  }
+	/**
+	 * Sets the page url.
+	 *
+	 * @param pageUrl
+	 *            the pageUrl to set
+	 */
+	public final void setPageUrl(final String pageUrl) {
+		this.pageUrl = pageUrl;
+	}
 
-  /**
-   * Inits the model.
-   */
-  @ PostConstruct
-  private void initModel() {
-    if (StringUtils.isEmpty(getParentPath())) {
-      return;
-    }
-    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    ResourceResolver resourceResolver = null;
-    try {
-      setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-      resourceResolver = coreResourceResolver.getResourceResolver();
-      final Session session = resourceResolver.adaptTo(Session.class);
-      if (session == null) {
-        LOGGER.warn("Session was null therefore no query was executed");
-        return;
-      }
-      final QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
-      if (queryBuilder == null) {
-        LOGGER.warn("Query builder was null therefore no query was executed");
-        return;
-      }
+	/**
+	 * Gets the pagination.
+	 *
+	 * @return the pagination
+	 */
+	public final Pagination getPagination() {
+		return pagination;
+	}
 
-      final Map <String, String> queryParameterMap = new HashMap <>();
-      setQueryParameterMap(selectors, queryParameterMap);
+	/**
+	 * Sets the pagination.
+	 *
+	 * @param pagination
+	 *            the pagination to set
+	 */
+	public final void setPagination(final Pagination pagination) {
+		this.pagination = pagination;
+	}
 
-      final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
-      LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
-      final Query query = queryBuilder.createQuery(predicateGroup, session);
+	/**
+	 * Gets the total match.
+	 *
+	 * @return the totalMatch
+	 */
+	public final int getTotalMatch() {
+		return totalMatch;
+	}
 
-      final SearchResult searchResult = query.getResult();
+	/**
+	 * Sets the total match.
+	 *
+	 * @param totalMatch
+	 *            the totalMatch to set
+	 */
+	public final void setTotalMatch(final int totalMatch) {
+		this.totalMatch = totalMatch;
+	}
 
-      LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
-          searchResult.getTotalMatches());
+	/**
+	 * Gets the date format.
+	 *
+	 * @return the dateFormat
+	 */
+	public final String getDateFormat() {
+		return dateFormat;
+	}
 
-      setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
-      // Query builder has a leaking resource resolver, so the following work around
-      // is required.
-      ResourceResolver leakingResourceResolver = null;
-      try {
-        // Iterate over the hits if you need special information
-        final Iterator <Resource> resourceIterator = searchResult.getResources();
-        while (resourceIterator.hasNext()) {
-          final Resource resource = resourceIterator.next();
-          if (leakingResourceResolver == null) {
-            // Get a reference to QB's leaking resource resolver
-            leakingResourceResolver = resource.getResourceResolver();
-          }
+	/**
+	 * Sets the date format.
+	 *
+	 * @param dateFormat
+	 *            the dateFormat to set
+	 */
+	public final void setDateFormat(final String dateFormat) {
+		this.dateFormat = dateFormat;
+	}
 
-          final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
-              contentTypeConverter, null, ELEMENT_NAMES);
+	/**
+	 * Gets the page num.
+	 *
+	 * @return the pageNum
+	 */
+	public final int getPageNum() {
+		return pageNum;
+	}
 
-          items.add(contentFragmentModel);
-        }
-      } finally {
-        if (null != leakingResourceResolver) {
-          // Always close the leaking query builder resource resolver
-          leakingResourceResolver.close();
-        }
-      }
-      String path = currentPage.getPath();
-      path = path.replace(configService.getConfigValues("siteUrl", path), "");
-      setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
-      setPageUrl(path);
-    } catch (LoginException | RepositoryException e) {
-      LOGGER.error("Login exception while trying to get resource resolver {}", e);
-    } finally {
-      if (null != resourceResolver) {
-        resourceResolver.close();
-      }
-    }
+	/**
+	 * Sets the page num.
+	 *
+	 * @param pageNum
+	 *            the pageNum to set
+	 */
+	public final void setPageNum(final int pageNum) {
+		this.pageNum = pageNum;
+	}
 
-  }
+	/**
+	 * Gets the parent path.
+	 *
+	 * @return the parentPath
+	 */
+	public final String getParentPath() {
+		return parentPath;
+	}
 
-  /**
-   * Sets the query parameter map.
-   *
-   * @param selectors
-   *          the selectors
-   * @param queryParameterMap
-   *          the query parameter map
-   */
-  private void setQueryParameterMap(final String [ ] selectors,
-      final Map <String, String> queryParameterMap) {
-    int offset = 0;
-    final int limit = getMaxItems();
-    if (selectors.length > 0) {
-      setPageNum(Integer.parseInt(selectors [ 0 ]));
-      offset = (getPageNum() - 1) * getMaxItems(); // Pagination
-    }
-    queryParameterMap.put("path", getParentPath());
-    queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
-    queryParameterMap.put("p.limit", Integer.toString(limit));
-    queryParameterMap.put("p.offset", Integer.toString(offset));
-    queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
-    queryParameterMap.put("1_property.value",
-        "/conf/sunlife-apac/settings/dam/cfm/models/newsroom-model");
-    queryParameterMap.put("orderby",
-        "@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
-    queryParameterMap.put("orderby.sort", "desc");
+	/**
+	 * Sets the parent path.
+	 *
+	 * @param parentPath
+	 *            the parentPath to set
+	 */
+	public final void setParentPath(final String parentPath) {
+		this.parentPath = parentPath;
+	}
 
-  }
+	/**
+	 * Gets the max items.
+	 *
+	 * @return the maxItems
+	 */
+	public final int getMaxItems() {
+		return maxItems;
+	}
 
+	/**
+	 * Sets the max items.
+	 *
+	 * @param maxItems
+	 *            the maxItems to set
+	 */
+	public final void setMaxItems(final int maxItems) {
+		this.maxItems = maxItems;
+	}
+
+	/**
+	 * Gets the list items.
+	 *
+	 * @return the list items
+	 */
+	public Collection<DAMContentFragment> getListItems() {
+		return Collections.unmodifiableCollection(items);
+	}
+
+	public String getNewsType() {
+		return newsType;
+	}
+
+	public void setNewsType(String newsType) {
+		this.newsType = newsType;
+	}
+
+	public String getLatestYear() {
+		return latestYear;
+	}
+
+	public void setLatestYear(String latestYear) {
+		this.latestYear = latestYear;
+	}
+
+	public String getNumberOfTabs() {
+		return numberOfTabs;
+	}
+
+	public void setNumberOfTabs(String numberOfTabs) {
+		this.numberOfTabs = numberOfTabs;
+	}
+
+	public String getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(String pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getPreviousText() {
+		return previousText;
+	}
+
+	public void setPreviousText(String previousText) {
+		this.previousText = previousText;
+	}
+
+	public String getNextText() {
+		return nextText;
+	}
+
+	public void setNextText(String nextText) {
+		this.nextText = nextText;
+	}
+
+	public String getPageText() {
+		return pageText;
+	}
+
+	public void setPageText(String pageText) {
+		this.pageText = pageText;
+	}
+
+	public String getOfText() {
+		return ofText;
+	}
+
+	public void setOfText(String ofText) {
+		this.ofText = ofText;
+	}
+
+	public String getNoNewsMessage() {
+		return noNewsMessage;
+	}
+
+	public void setNoNewsMessage(String noNewsMessage) {
+		this.noNewsMessage = noNewsMessage;
+	}
+
+	public int getActiveYear() {
+		return activeYear;
+	}
+
+	public void setActiveYear(int activeYear) {
+		this.activeYear = activeYear;
+	}
+
+	public List<Integer> getYearsToShow() {
+		return yearsToShow;
+	}
+
+	public void setYearsToShow(List<Integer> yearsToShow) {
+		this.yearsToShow = yearsToShow;
+	}
+
+	public String getRequestURL() {
+		return requestURL;
+	}
+
+	public void setRequestURL(String requestURL) {
+		this.requestURL = requestURL;
+	}
+
+	public String getRelativeURL() {
+		return relativeURL;
+	}
+
+	public void setRelativeURL(String relativeURL) {
+		this.relativeURL = relativeURL;
+	}
+
+	public List<DAMContentFragment> getFilteredItems() {
+		return filteredItems;
+	}
+
+	/**
+	 * Inits the model.
+	 */
+	@PostConstruct
+	private void initModel() {
+		if (StringUtils.isEmpty(getParentPath())) {
+			return;
+		}
+		final String[] selectors = request.getRequestPathInfo().getSelectors();
+		ResourceResolver resourceResolver = null;
+		try {
+			setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			resourceResolver = coreResourceResolver.getResourceResolver();
+			final Session session = resourceResolver.adaptTo(Session.class);
+			if (session == null) {
+				LOGGER.warn("Session was null therefore no query was executed");
+				return;
+			}
+			final QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
+			if (queryBuilder == null) {
+				LOGGER.warn("Query builder was null therefore no query was executed");
+				return;
+			}
+
+			final Map<String, String> queryParameterMap = new HashMap<>();
+			setQueryParameterMap(selectors, queryParameterMap);
+
+			final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
+			LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
+			final Query query = queryBuilder.createQuery(predicateGroup, session);
+
+			final SearchResult searchResult = query.getResult();
+
+			LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
+					searchResult.getTotalMatches());
+
+			setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
+			// Query builder has a leaking resource resolver, so the following work around
+			// is required.
+			ResourceResolver leakingResourceResolver = null;
+			try {
+				// Iterate over the hits if you need special information
+				final Iterator<Resource> resourceIterator = searchResult.getResources();
+				while (resourceIterator.hasNext()) {
+					final Resource resource = resourceIterator.next();
+					if (leakingResourceResolver == null) {
+						// Get a reference to QB's leaking resource resolver
+						leakingResourceResolver = resource.getResourceResolver();
+					}
+
+					final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(resource,
+							contentTypeConverter, null, ELEMENT_NAMES);
+
+					items.add(contentFragmentModel);
+				}
+			} finally {
+				if (null != leakingResourceResolver) {
+					// Always close the leaking query builder resource resolver
+					leakingResourceResolver.close();
+				}
+			}
+			String path = currentPage.getPath();
+			path = path.replace(configService.getConfigValues("siteUrl", path), "");
+			setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
+			setPageUrl(path);
+		} catch (LoginException | RepositoryException e) {
+			LOGGER.error("Login exception while trying to get resource resolver {}", e);
+		} finally {
+			if (null != resourceResolver) {
+				resourceResolver.close();
+			}
+		}
+		if (newsType.equals("2")) {
+			try {
+				String path = currentPage.getPath();
+				processReleasesData();
+				setPagination(new Pagination(request, Integer.parseInt(getPageSize()), getTotalMatch(), path));
+			} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
+				LOGGER.error("Error :: AnnouncementList :: init :: error trace: {}", e);
+			}
+		}
+
+	}
+
+	/**
+	 * Sets the query parameter map.
+	 *
+	 * @param selectors
+	 *            the selectors
+	 * @param queryParameterMap
+	 *            the query parameter map
+	 */
+	private void setQueryParameterMap(final String[] selectors, Map<String, String> queryParameterMap) {
+		int offset = 0;
+		int limit = getMaxItems();
+		if (selectors.length > 0) {
+			setPageNum(Integer.parseInt(selectors[0]));
+			offset = (getPageNum() - 1) * getMaxItems(); // Pagination
+		}
+		queryParameterMap.put("path", getParentPath());
+		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
+		queryParameterMap.put("p.limit", Integer.toString(limit));
+		queryParameterMap.put("p.offset", Integer.toString(offset));
+		queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
+		queryParameterMap.put("1_property.value", "/conf/sunlife-apac/settings/dam/cfm/models/newsroom-model");
+		queryParameterMap.put("orderby", "@" + JcrConstants.JCR_CONTENT + "/data/master/articlePublishedDate");
+		queryParameterMap.put("orderby.sort", "desc");
+
+	}
+
+	public void processReleasesData()
+			throws IOException, ApplicationException, SystemException, LoginException, RepositoryException {
+
+		int year;
+		int totalNoYears;
+		String strYear = null;
+		String pageNum = null;
+		if (null == latestYear) {
+			year = Calendar.getInstance().get(Calendar.YEAR);
+		} else {
+			year = Integer.parseInt(latestYear);
+		}
+
+		int downYear = year;
+		totalNoYears = Integer.parseInt(numberOfTabs);
+		LOGGER.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
+		yearsToShow = new ArrayList<>();
+		for (int i = 0; i < totalNoYears; i++) {
+			yearsToShow.add(downYear--);
+		}
+		LOGGER.debug("yearsToShow :: {}", yearsToShow);
+
+		activeYear = year;
+
+		final String[] selectors = request.getRequestPathInfo().getSelectors();
+		if (selectors.length > 0) {
+			strYear = selectors[0]; // Year - Selector
+			if (selectors.length > 1) {
+				pageNum = selectors[1]; // Page number - Selector
+			}
+		}
+		LOGGER.debug("Fetched params  pageNum: {}, strYear: {}", pageNum, strYear);
+
+		if (null != strYear && !"".equals(strYear) && !"html".equals(strYear)) {
+			activeYear = Integer.parseInt(strYear);
+		}
+		LOGGER.debug("activeYear :: {}", activeYear);
+
+		final String uri = request.getRequestURI();
+		LOGGER.debug("uri: {}", uri);
+		relativeURL = uri.contains(".") ? uri.substring(0, uri.indexOf('.')) : uri;
+		requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
+		LOGGER.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
+		if (null != pageNum) { // Code to remove page number from url
+			requestURL = requestURL.replaceAll("." + pageNum + "$", "");
+		}
+		if (selectors.length == 0) {
+			requestURL = requestURL + "." + activeYear;
+		}
+		requestURL = requestURL.replace(".", "/");
+		final String pagePath = currentPage.getPath();
+		final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+		relativeURL = shortenURL(relativeURL, siteUrl);
+		requestURL = shortenURL(requestURL, siteUrl);
+		LOGGER.debug("requestURL - after clean up: {}", requestURL);
+		filteredItems = filteritemsBasedOnYear(items, activeYear);
+	}
+
+	/**
+	 * Generates shorten url.
+	 *
+	 * @param pagePath
+	 *            the page path
+	 * @param siteUrl
+	 *            the site url
+	 * @return shortened url
+	 */
+	public String shortenURL(final String pagePath, final String siteUrl) {
+		if (null == siteUrl) {
+			return null;
+		}
+		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+	}
+
+	public List<DAMContentFragment> filteritemsBasedOnYear(List<DAMContentFragment> items, int activeYear) {
+		List<DAMContentElement> elementList;
+		List<DAMContentFragment> filteredItemList = new ArrayList<>();
+		for (int i = 0; i < items.size(); i++) {
+			elementList = items.get(i).getElements();
+			for (int j = 0; j < elementList.size(); j++) {
+				if ("articlePublishedDate".equals(elementList.get(j).getName())) {
+					Calendar articlePublishedDate = (Calendar) elementList.get(j).getValue();
+					if (activeYear == articlePublishedDate.get(Calendar.YEAR)) {
+						filteredItemList.add(items.get(i));
+					}
+					LOGGER.debug("Published year ::{}", articlePublishedDate.get(Calendar.YEAR));
+				}
+			}
+		}
+		setTotalMatch(filteredItemList.size());
+		return filteredItemList;
+	}
 }
