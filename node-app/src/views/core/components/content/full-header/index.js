@@ -77,5 +77,11 @@ $(document).ready(function () {
             $(mobileHeader);
         }
     });
-      
+    if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
+        if($('.full-header').parents('.experiencefragment').next().hasClass('breadcrumb')) {
+            $('.full-header').parents('.experiencefragment').next().next().attr('id','main-content');
+        } else {
+            $('.full-header').parents('.experiencefragment').next().attr('id','main-content');
+        }
+    }
 });
