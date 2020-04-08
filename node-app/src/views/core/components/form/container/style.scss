@@ -168,6 +168,11 @@
         textarea{
             padding: 0px 16px;
         }
+        fieldset{
+            legend{
+                border-bottom: none;
+            }
+        }
     }
     .form-input-text {
         width: 80% !important;
@@ -244,6 +249,11 @@
                 width:285px!important;
             }
         }
+        fieldset{
+            legend{
+                border-bottom: none;
+            }
+        }
     }
 }
 .col-sm-4, .col-md-4, .col-lg-4 {
@@ -279,7 +289,7 @@
             }
             .text{
                 textarea{
-                    width:395px;
+                    max-width:395px;
                 }
             }
         }
