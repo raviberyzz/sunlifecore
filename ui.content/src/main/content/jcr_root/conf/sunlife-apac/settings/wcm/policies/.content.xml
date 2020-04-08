@@ -1659,7 +1659,12 @@
                                             cq:styleClasses="thankyou-wrapper"
                                             cq:styleId="1580210911444"
                                             cq:styleLabel="Thank You"
-                                            jcr:primaryType="nt:unstructured"/>	
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="generic-form-wrapper"
+                                            cq:styleId="1580210222333"
+                                            cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -3384,7 +3389,12 @@
                                             cq:styleClasses="thankyou-wrapper"
                                             cq:styleId="1580210911444"
                                             cq:styleLabel="Thank You"
-                                            jcr:primaryType="nt:unstructured"/>	
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item2
+                                            cq:styleClasses="generic-form-wrapper"
+                                            cq:styleId="1580210222333"
+                                            cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/> 	
                                     </cq:styles>
                                 </item2>
                                 <item3
