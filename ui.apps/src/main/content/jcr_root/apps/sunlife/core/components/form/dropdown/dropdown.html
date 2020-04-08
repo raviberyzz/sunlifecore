@@ -2,7 +2,7 @@
     <fieldset class="cmp-form-options cmp-form-options--${options.type}">
         <sly data-sly-test="${options.type == 'drop-down' || options.type == 'multi-drop-down'}">
             <label class="cmp-form-options__label ${options.isScreenReader ? 'sr-only' : ''}" for="${options.id}" data-sly-test="${options.title}">${options.title}</label>
-                <select class="cmp-form-options__field cmp-form-options__field--${options.type}" aria-labelledby="${options.ariaLabel}" name="${options.name}" id="${options.id}" 
+                <select class="cmp-form-options__field cmp-form-options__field--${options.type}" aria-labelledby="${options.ariaLabel}" name="${options.name}" id="${options.id}" data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
                 	data-sly-list.itemGroup="${options.itemsGroup}" data-sly-attribute.multiple="${options.type == 'multi-drop-down'}" data-attribute-onchange-required = "${options.customActionGenerationRequired}">
 					<optgroup label="${itemGroup.groupText}" data-sly-unwrap="${!itemGroup.groupText}">
 						<sly data-sly-list.items="${itemGroup.items}">

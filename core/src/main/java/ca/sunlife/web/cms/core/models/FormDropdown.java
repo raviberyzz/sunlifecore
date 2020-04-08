@@ -40,6 +40,22 @@ public interface FormDropdown {
    */
   @ Inject
   public String getIsScreenReader();
+  
+  /**
+   * Gets the Is required value
+   *
+   * @return the Is required value
+   */
+  @ Inject
+  public String getRequired();
+  
+  /**
+   * Gets the Validation message
+   *
+   * @return the Validation message
+   */
+  @ Inject
+  public String getConstraintMessage();
 
   /**
    * Gets the name.

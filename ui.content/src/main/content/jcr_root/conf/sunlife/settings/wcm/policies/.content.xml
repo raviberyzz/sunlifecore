@@ -1367,6 +1367,22 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                 	</item4>
+                                	<item5
+                                       cq:styleGroupLabel="Social Icons Alignment"
+                                       jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                 cq:styleClasses="social-icons-center"
+                                                 cq:styleId="1583383838383"
+                                                 cq:styleLabel="Center"
+                                                 jcr:primaryType="nt:unstructured"/>  
+                                            <item1
+                                                 cq:styleClasses="social-icons-right"
+                                                 cq:styleId="1583391919191"
+                                                 cq:styleLabel="Right"
+                                                 jcr:primaryType="nt:unstructured"/>   
+                                            </cq:styles>
+                                	</item5>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text>
