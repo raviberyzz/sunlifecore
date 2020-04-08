@@ -128,8 +128,34 @@ public interface HeaderModel {
   List <Links> getLinks(); // the name `getLinks` corresponds to the multifield name="./links"
 
   /**
+   * Gets the skip to signin label.
+   *
+   * @return the skip to signin label
+   */
+  @ Inject
+  String getSkipToSignInLabel();
+  
+  /**
+   * Gets the skip to main content label.
+   *
+   * @return the skip to main content label
+   */
+  
+  @ Inject
+  String getSkipToMainContentLabel();
+  
+  /**
+   * Gets the skip to footer label.
+   *
+   * @return the skip to footer label
+   */
+  @ Inject
+  String getSkipToFooterLabel();
+  
+  /**
    * The Interface Links.
    */
+  
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
 
