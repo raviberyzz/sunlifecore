@@ -559,22 +559,39 @@ ul {
 /* social icons in the body section end */
 /*icon-text-list desktop starts here*/
 .icon-text-list{
-    .mega-menu-icon-wrapper{
-        .icon-parent{
-            margin-right: 25px;
-            float:left;
-            margin-bottom:0;
-            .icon-style{
-                font-size: 2rem;
-                background: none;
-                color: $medium-blue-color;
-                height: 57px;
-                width: 57px;
-                padding: 7px;
-                border: 5px solid $dark-grey-color;
+    margin-top: 22px;
+    .layout-container{
+        .col-sm-6{
+            padding: 0;
+            .mega-menu-icon-wrapper{
+                .icon-parent{
+                    margin-right: 16px;
+                    float:left;
+                    margin-bottom:0;
+                    .icon-style{
+                        font-size: 2rem;
+                        background: none;
+                        color: $medium-blue-color;
+                        height: 57px;
+                        width: 57px;
+                        padding: 7px;
+                        border: 5px solid $dark-grey-color;
+                    }
+                    .icon-texts{
+                        padding-bottom: 16px;
+                    }
+                }
             }
         }
-
+    }
+    .layout-container .col-sm-6:first-child{
+        padding-right: 24px;
+    }
+    .layout-container .col-sm-6:last-child{
+        padding-left: 24px;
+    }
+    .text{
+        margin-top: 40px;
     }
 }
 /*icon-text-list desktop ends here*/
@@ -756,14 +773,20 @@ ul {
 @media (max-width:$mobile-screen-max) {
     /*icon-text-list mobile starts here*/
     .icon-text-list{
-        .mega-menu-icon-wrapper{
-            .icon-parent{
-                text-align: center;
-                float: none;
-                margin-bottom: 5px;
-            }
-            .icon-texts{
-                text-align: center;
+        .layout-container{
+            .col-sm-6{
+                padding: 0!important;
+                .mega-menu-icon-wrapper{
+                    .icon-parent{
+                        text-align: center;
+                        float: none;
+                        margin-bottom: 16px;
+                        margin-right: 0;
+                    }
+                    .icon-texts{
+                        text-align: center;
+                    }
+                }
             }
         }
     }
@@ -1036,15 +1059,11 @@ ul {
 /* image responsive for images end */ 
 /*icon-text-list tablet starts here*/
 .icon-text-list{
-    .col-sm-6{
-        width: 100%;
-    }
+    margin-top: 6px;
     .mega-menu-icon-wrapper{
         .icon-parent{
-            float: none;
-            margin-bottom: 5px;
+            padding-bottom: 18px;
         }
-
     }
 }
 /*icon-text-list tablet ends here*/

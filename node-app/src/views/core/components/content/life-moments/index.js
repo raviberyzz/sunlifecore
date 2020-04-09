@@ -30,7 +30,7 @@ $(document).ready(function () {
             $('.yellow-background-wrapper').siblings('.layout-container').css('width','95%');
             $('.yellow-background-wrapper').siblings('.layout-container').addClass('horizontal-middle-align');
             $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','-18px');
-            $('.yellow-background-wrapper').css('z-index','-1');
+            $('.yellow-background-wrapper').siblings('.layout-container').css('z-index','1');
             var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
             $('.yellow-background-wrapper').css('padding-top',layoutHeight);
             $('.yellow-background-wrapper').css('padding-bottom',"27px");
