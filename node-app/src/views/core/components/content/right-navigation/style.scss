@@ -155,12 +155,12 @@
         border-bottom:none;
     } */
     .social-link-icon-wrapper{
-        margin:16px 0px;
+      //  margin:16px 0px;
         width:100%;
         ul{
             display: flex;
             justify-content: center;
-            margin-top:16px;
+            margin:16px 0px;
             li{
                 .icon-parent{
                     .icon-style{
@@ -230,7 +230,7 @@
         }
     }
 }
-@media(min-width:$tab-screen-min){
+/*@media(min-width:$tab-screen-min){
     .right-navigation-wrapper{
         .social-link-icon-wrapper{
             ul{
@@ -238,4 +238,4 @@
             }
         }
     }
-}
+}*/
