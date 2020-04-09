@@ -461,6 +461,7 @@ ul {
                 display: flex !important;
                 flex-direction: column;
                 justify-content: space-between;
+                word-break: break-all;
             
             }
         }
@@ -1947,3 +1948,46 @@ ul {
 /*** device specific scss for all experiences end here***/
 /*****************************************************************
 *****************************************************************/
+
+/** Browser Specific CSS starts here **/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+    .company-highlight-yellow-grey-background {
+        .bottom-aligned-text{
+            .image-text-wrapper{
+                margin-bottom: 40px;
+            }
+            .right-image-position, .left-image-position{
+                height: 100%;
+                display: inherit !important;
+                flex-direction: none;
+                .text-section{         
+                    height: 100%;
+                    display: inherit!important;
+                    flex-direction: none;
+                    justify-content: space-between;
+                    word-break: break-all;
+                    p {
+                        margin-bottom:20px;
+                    }
+                    p:last-child {
+                        position : absolute;
+                        top: 85%;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }    
+
+
+
+.company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
+    display: inherit; }
+}
+
+
+/** Browser Specific CSS ends here **/
+
