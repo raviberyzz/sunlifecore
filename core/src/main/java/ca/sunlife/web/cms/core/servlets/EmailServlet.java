@@ -3,6 +3,8 @@ package ca.sunlife.web.cms.core.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 import javax.inject.Inject;
 import javax.jcr.Node;
@@ -25,12 +27,18 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.commons.osgi.PropertiesUtil;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.osgi.framework.Constants;
+import org.osgi.service.cm.Configuration;
+import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ca.sunlife.web.cms.core.osgi.config.MailConfig;
 
 //
 /**
@@ -38,6 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 @Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "=Email Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET, "sling.servlet.paths=" + "/bin/emailServlet" })
+@Designate(ocd = MailConfig.class)
 public class EmailServlet extends SlingAllMethodsServlet {
 
 	/** The Constant serialVersionUID. */
@@ -45,28 +54,35 @@ public class EmailServlet extends SlingAllMethodsServlet {
 
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(EmailServlet.class);
-	
+
+	@Reference
+	private transient ConfigurationAdmin configAdmin;
+
 	/**
 	 * Null check.
 	 *
-	 * @param value the value
+	 * @param value
+	 *            the value
 	 * @return the string
 	 */
-	//null check method
+	// null check method
 	public String nullCheck(String value) {
 		return value != null ? value : "";
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see org.apache.sling.api.servlets.SlingAllMethodsServlet#doPost(org.apache.sling.api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.apache.sling.api.servlets.SlingAllMethodsServlet#doPost(org.apache.sling.
+	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@Override
 	public void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//variable initialization - Starts
-		//CF - Content Fragment
+
+		// variable initialization - Starts
+		// CF - Content Fragment
 		String CF_PATH_PREFIX = "/content/dam/sunlife/external/ca/en/content-fragments/form-email-templates/";
 		String CF_PATH_SUFFIX = "/jcr:content/data";
 		String CF_PATH = "";
@@ -81,12 +97,24 @@ public class EmailServlet extends SlingAllMethodsServlet {
 		String COMPONENT_PATH = "";
 		String SUCCESS_PAGE_URL = "";
 		String ERROR_PAGE_URL = "";
-		final String MAIL_API = "http://dev-public.ca.sunlife/slfServiceApp/invokeService.wca?service=email&method=email&format=json";
-		final String API_KEY = "Ng1vE%^Uvdk$aP@E7SepA1N06#lQ!*kLs4siHSFq";
-		//variable initialization - Ends
+		String MAIL_API = "";
+		String API_KEY = "";
 		
+
+		// getting configuration values from OSGI
+		Configuration mailConfig = configAdmin.getConfiguration("ca.sunlife.web.cms.core.servlets.EmailServlet");
+		Dictionary<String, Object> properties = mailConfig.getProperties();
+		if (null != properties) {
+			MAIL_API = properties.get("apiUrl").toString();
+			API_KEY = properties.get("apiKey").toString();
+		} else {
+			LOG.info("OSGI configuration is not done. Properties are ");
+		}
+
+		// variable initialization - Ends
+
 		try {
-			//getting all request parameters - Starts
+			// getting all request parameters - Starts
 			@SuppressWarnings("unchecked")
 			Enumeration<String> requestParameterNames = request.getParameterNames();
 			HashMap<String, String> requestParameters = new HashMap<String, String>();
@@ -94,7 +122,7 @@ public class EmailServlet extends SlingAllMethodsServlet {
 				final String key = requestParameterNames.nextElement();
 				requestParameters.put(key, request.getParameter(key));
 			}
-			//getting all request parameters - Ends
+			// getting all request parameters - Ends
 
 			COMPONENT_PATH = requestParameters.get(":formstart");
 			TO_EMAIL_ID = requestParameters.get("email-id");
@@ -107,7 +135,7 @@ public class EmailServlet extends SlingAllMethodsServlet {
 						CF_NAME = componentNode.getProperty("id").getString();
 					}
 				}
-				//content fragment path
+				// content fragment path
 				CF_PATH = CF_PATH_PREFIX + CF_NAME + CF_PATH_SUFFIX;
 
 				Resource contentResource = request.getResourceResolver().getResource(CF_PATH);
@@ -123,14 +151,15 @@ public class EmailServlet extends SlingAllMethodsServlet {
 							EMAIL_SUBJECT = nullCheck(childNode.getProperty("subject-email").getString());
 							EMAIL_BODY = nullCheck(childNode.getProperty("body-email").getString());
 							FROM_EMAIL_TEXT = nullCheck(childNode.getProperty("from-text-email").getString());
-							SUCCESS_PAGE_URL = nullCheck(childNode.getProperty("success-page-url").getString()) + ".html";
+							SUCCESS_PAGE_URL = nullCheck(childNode.getProperty("success-page-url").getString())
+									+ ".html";
 							ERROR_PAGE_URL = nullCheck(childNode.getProperty("error-page-url").getString()) + ".html";
 						}
 					}
 				}
 				StrSubstitutor strSub = new StrSubstitutor(requestParameters);
 				EMAIL_BODY = strSub.replace(EMAIL_BODY);
-				//Mail API service
+				// Mail API service
 				HttpClient client = HttpClientBuilder.create().build();
 				HttpPost post = new HttpPost(MAIL_API);
 				List<BasicNameValuePair> apiParameters = new ArrayList<BasicNameValuePair>(1);
@@ -159,8 +188,12 @@ public class EmailServlet extends SlingAllMethodsServlet {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.apache.sling.api.servlets.SlingSafeMethodsServlet#doGet(org.apache.sling.api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.apache.sling.api.servlets.SlingSafeMethodsServlet#doGet(org.apache.sling.
+	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@Override
 	public void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response)

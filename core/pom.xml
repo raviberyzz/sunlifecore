@@ -141,7 +141,7 @@
     </dependency>
 	<dependency>
 		<artifactId>commons-lang3</artifactId>
-		<version>3.6</version>
+		<version>3.9</version>
 		<groupId>org.apache.commons</groupId>
 		<scope>provided</scope>
 	</dependency>
