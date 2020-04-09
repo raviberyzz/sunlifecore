@@ -14,7 +14,7 @@ input[type=email] {
     font-size: 1rem;
     padding: 0 16px;
     height: 48px;
-    width: auto;
+    width: 100%;
     border: 1px solid $medium-grey-background;
 }
 
@@ -27,5 +27,6 @@ input[type=email] {
     height: 48px;
     width: auto;
     border: 1px solid $medium-grey-background;
+    color: $dark-grey-color;
     }
 }
