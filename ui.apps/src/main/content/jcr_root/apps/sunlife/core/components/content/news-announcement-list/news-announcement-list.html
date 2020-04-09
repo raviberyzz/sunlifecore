@@ -40,37 +40,33 @@
                         <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsTab}/">${yearsTab}</a>
                     </div>
                     <sly data-sly-test="${yearsTab == list.activeYear}">
-                        <sly data-sly-test.newsList="${list.filteredItems}" />
                         <div class="option-box no-margin news-option-table">
-                            <sly data-sly-test.announcementPresent="${list.filteredItems}" data-sly-list="${list.filteredItems}">
-                                <li>
+                            <sly data-sly-test.announcementPresent="${list.listItems}" data-sly-list="${list.listItems}">
+                                <div class="news-article">
                                     <sly data-sly-list.element="${item.elements}">
                                         <sly data-sly-test="${element.name == 'newsroomPagePath'}" data-sly-test.pageLink="${element.value}" />
                                         <sly data-sly-test="${element.name == 'newsroomHeading'}" data-sly-test.headline="${element.value}" />
                                         <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html" data-sly-test.date="${element.value}" />
                                     </sly>
-                                    <div class="content-list-summary">
-                                        <div class="date">
-                                            <sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly>
-                                        </div>
-                                        <h2>
-                                        <a href="${pageLink @ extension = 'html'}">${headline}</a>
-                                    </h2>
-                                    </div>
-                                </li>
+                                    <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
+                                    <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
+
+                                </div>
                             </sly>
                             <sly data-sly-test="${!announcementPresent}">
                                 <div class="news-article">
                                     <p>${list.noNewsMessage @ context='html'}</p>
                                 </div>
                             </sly>
+                            <sly data-sly-test.aaurl="${list.pageUrl}/${yearsTab}">
+                                <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
                         </div>
-                        <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
-                    </sly>
+
+                        </sly>
 
                 </div>
             </div>
         </div>
+        </sly>
     </sly>
-</sly>
-<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
+    <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>

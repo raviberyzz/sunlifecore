@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +32,6 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
-import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment.DAMContentElement;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
@@ -154,13 +152,10 @@ public class AnnouncementList {
 	/** The items. */
 	private final List<DAMContentFragment> items = new ArrayList<>();
 
-	/** The filtered items. */
-	private List<DAMContentFragment> filteredItems = new ArrayList<>();
-
 	/** The element names. */
 	private static final String[] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading", "newsroomPagePath",
 			"newsroomContent" };
-
+	private static String JCR_SLASH="/";
 	/** The logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
 
@@ -523,15 +518,6 @@ public class AnnouncementList {
 	}
 
 	/**
-	 * Gets the filtered items.
-	 *
-	 * @return the filtered items
-	 */
-	public List<DAMContentFragment> getFilteredItems() {
-		return filteredItems;
-	}
-
-	/**
 	 * Inits the model.
 	 */
 	@PostConstruct
@@ -607,7 +593,14 @@ public class AnnouncementList {
 			try {
 				String path = currentPage.getPath();
 				processReleasesData();
+				if (selectors.length > 0) {
+					path = path + JCR_SLASH + selectors[0];
+				} else {
+					path = path + JCR_SLASH + activeYear;
+				}
 				setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
+				LOGGER.debug("Totalt results:: {}", getTotalMatch());
+				setPageUrl(path);
 			} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
 				LOGGER.error("Error :: AnnouncementList :: init :: error trace: {}", e);
 			}
@@ -626,12 +619,21 @@ public class AnnouncementList {
 	private void setQueryParameterMap(final String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
 		int limit = getMaxItems();
-
+		int year = latestYear == null ? Calendar.getInstance().get(Calendar.YEAR) : Integer.parseInt(latestYear);
+		String completePath = getParentPath();
+		if (selectors.length == 0) {
+			completePath = getParentPath() + JCR_SLASH + year;
+		}
+		
+		if (selectors.length > 0) {
+			completePath = completePath + JCR_SLASH + selectors[0];
+		}
+		
 		if (selectors.length > 1) {
 			setPageNum(Integer.parseInt(selectors[1]));
 			offset = (getPageNum() - 1) * getMaxItems(); // Pagination
 		}
-		queryParameterMap.put("path", getParentPath());
+		queryParameterMap.put("path", completePath);
 		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
 		queryParameterMap.put("p.limit", Integer.toString(limit));
 		queryParameterMap.put("p.offset", Integer.toString(offset));
@@ -706,7 +708,6 @@ public class AnnouncementList {
 		relativeURL = shortenURL(relativeURL, siteUrl);
 		requestURL = shortenURL(requestURL, siteUrl);
 		LOGGER.debug("requestURL - after clean up: {}", requestURL);
-		filteredItems = filteritemsBasedOnYear(items, activeYear);
 	}
 
 	/**
@@ -723,31 +724,5 @@ public class AnnouncementList {
 			return null;
 		}
 		return pagePath.replace(siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
-	}
-
-	/**
-	 * Filteritems based on year.
-	 *
-	 * @param items the items
-	 * @param activeYear the active year
-	 * @return the list
-	 */
-	public List<DAMContentFragment> filteritemsBasedOnYear(List<DAMContentFragment> items, int activeYear) {
-		List<DAMContentElement> elementList = new ArrayList<>();
-		List<DAMContentFragment> filteredItemList = new ArrayList<>();
-		for (int i = 0; i < items.size(); i++) {
-			elementList = items.get(i).getElements();
-			for (int j = 0; j < elementList.size(); j++) {
-				if ("articlePublishedDate".equals(elementList.get(j).getName())) {
-					GregorianCalendar articlePublishedDate = (GregorianCalendar) elementList.get(j).getValue();
-					if (activeYear == articlePublishedDate.get(Calendar.YEAR)) {
-						filteredItemList.add(items.get(i));
-					}
-					LOGGER.debug("Published year ::{}", articlePublishedDate.get(Calendar.YEAR));
-				}
-			}
-		}
-		setTotalMatch(filteredItemList.size());
-		return filteredItemList;
 	}
 }

@@ -19,7 +19,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <selectionSection
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Please select"
+                                jcr:title="Select variation"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                 <items jcr:primaryType="nt:unstructured">
                                     <newsType
@@ -98,21 +98,14 @@
                                             <noNewsMessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Message to be displayed when no news are present"
-                                                fieldLabel="Message to be displayed when no news are present"
+                                                fieldDescription="Message to be displayed when no announcement is present"
+                                                fieldLabel="Message to be displayed when no announcement is present"
                                                 name="./noNewsMessage"/>
                                         </items>
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
                                             showhidetargetvalue="2"/>
                                     </release>
-                                    <newsArticleUrl
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="News Article URL"
-                                        fieldLabel="News Article URL"
-                                        name="./newsArticleUrl"
-                                        required="{Boolean}false"/>
                                     <maxItems
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
