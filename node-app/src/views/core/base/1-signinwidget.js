@@ -3,7 +3,7 @@ var contingencyWidgetDisplayed = false;
 var signinDataCallDone = false;
 var providerURL;
 var hostname = window.location.hostname;
-var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
+var lang = ($('html').attr('lang') === 'fr-CA') ? 'fr' : 'en' ; 
 var sunnetUrl;
 
 //checks hostname to set sunnet url

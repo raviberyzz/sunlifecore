@@ -15,7 +15,7 @@
 <sly data-sly-test="${errorCode == 'LANGUAGE_NOT_SUPPORTED'}">
 	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
 		<p>
-			${advisorDetailObj.languageNotSupportedMessage @context = 'html'} <a href="${advisorDetailObj.alternateUrl}">${advisorDetailObj.alternateLanguage}</a>
+			${advisorDetailObj.languageNotSupportedMessage @context = 'html'} <a x-cq-linkchecker="skip" href="${advisorDetailObj.alternateUrl}">${advisorDetailObj.alternateLanguage}</a>
 		</p>
     </div>
 </sly>
