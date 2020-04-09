@@ -1436,6 +1436,16 @@ ul {
        justify-content: center;
     }
   }
+  .social-link-icon-wrapper.social-icons-center{
+      .heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+          text-align: center;
+      }
+  }
+  .social-link-icon-wrapper.social-icons-right{
+    .heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+        text-align: right;
+    }
+}
   .social-icons-right{
       ul{
           justify-content: flex-end;
