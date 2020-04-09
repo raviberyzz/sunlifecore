@@ -6,20 +6,6 @@ ul {
     padding-bottom: 24px;
 }
 
-@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max) {
-    .col-sm-4 {
-        .blue-icon-yellow-background {
-            .article-list-container{
-                line-height: 22px;
-            }
-            .primary-blue-button{
-                max-width: 200px;
-                align-self: center;
-            }
-        }
-    }
-}
-
 // content block with icon start
 //overview highlights triple cta css for border and spacing
 
