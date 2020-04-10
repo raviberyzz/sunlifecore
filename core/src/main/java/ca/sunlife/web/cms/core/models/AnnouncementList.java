@@ -580,31 +580,25 @@ public class AnnouncementList {
 			}
 			String path = currentPage.getPath();
 			path = path.replace(configService.getConfigValues("siteUrl", path), "");
-			setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
-			setPageUrl(path);
-		} catch (LoginException | RepositoryException e) {
-			LOGGER.error("Login exception while trying to get resource resolver {}", e);
-		} finally {
-			if (null != resourceResolver) {
-				resourceResolver.close();
-			}
-		}
-		if (newsType.equals("2")) {
-			try {
-				String path = currentPage.getPath();
+			if ("2".equals(newsType)) {
+				 path = currentPage.getPath();
 				processReleasesData();
 				if (selectors.length > 0) {
 					path = path + JCR_SLASH + selectors[0];
 				} else {
 					path = path + JCR_SLASH + activeYear;
 				}
-				setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
-				LOGGER.debug("Totalt results:: {}", getTotalMatch());
-				setPageUrl(path);
-			} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
-				LOGGER.error("Error :: AnnouncementList :: init :: error trace: {}", e);
+			}
+			setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
+			setPageUrl(path);
+		} catch (IOException | ApplicationException | SystemException | LoginException | RepositoryException e) {
+			LOGGER.error("Login exception while trying to get resource resolver {}", e);
+		} finally {
+			if (null != resourceResolver) {
+				resourceResolver.close();
 			}
 		}
+		
 
 	}
 
@@ -620,15 +614,12 @@ public class AnnouncementList {
 		int offset = 0;
 		int limit = getMaxItems();
 		int year = latestYear == null ? Calendar.getInstance().get(Calendar.YEAR) : Integer.parseInt(latestYear);
-		String completePath = getParentPath();
-		if (selectors.length == 0) {
-			completePath = getParentPath() + JCR_SLASH + year;
+		String completePath;
+		if ("1".equals(newsType)) {
+			completePath = getParentPath();
+		} else {
+			completePath = selectors.length == 0 ? getParentPath() + JCR_SLASH + year : getParentPath() + JCR_SLASH + selectors[0];
 		}
-		
-		if (selectors.length > 0) {
-			completePath = completePath + JCR_SLASH + selectors[0];
-		}
-		
 		if (selectors.length > 1) {
 			setPageNum(Integer.parseInt(selectors[1]));
 			offset = (getPageNum() - 1) * getMaxItems(); // Pagination
