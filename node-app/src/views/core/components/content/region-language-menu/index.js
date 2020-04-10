@@ -1,4 +1,21 @@
 $(document).ready(function () {
+    var langIndex=0;
+    var linkRow=[];
+	$.each($('link'), function(index, value) {
+        if(value.rel == "alternate"){
+            linkRow.push(value.href);
+        }
+    });
+
+    $('.desktop-region-language-menu-wrapper .content-language li a').each(function(){
+        if(langIndex < linkRow.length){
+			$(this).attr('href',linkRow[langIndex]);
+            //console.log('hi');
+            langIndex = langIndex + 1;
+        }
+    });
+
+
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').css('font-weight','700');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').addClass('nav-heading');
