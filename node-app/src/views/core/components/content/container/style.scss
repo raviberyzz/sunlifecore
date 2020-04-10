@@ -1557,7 +1557,7 @@ ul {
     .col-sm-6{
         padding: 0px 8px 0 10px !important;
     }
-	padding: 40px 0px 30px 8px;
+	padding: 40px 8px 30px 8px;
 	background: $light-grey-20;
 	overflow: auto;
 	.icon-parent {
@@ -1581,9 +1581,6 @@ ul {
 
 	.cmp-container {
         margin-top: 0px;
-        .layout-container{
-            display: inline-table;
-        }
 	}
 	.icon-texts {
         padding-bottom: 0px;
@@ -1643,7 +1640,7 @@ ul {
             display: none;
         }
         .icon-texts {
-            h3{
+            h1, h2, h3, h4, h5, h6{
                 padding: 0 16px;
             }
             p{
