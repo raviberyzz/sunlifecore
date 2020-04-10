@@ -113,6 +113,8 @@ ul {
 
 // content block with icon end
 @media (min-width: $tab-screen-min) {
+
+    /* Over View Highlight Style*/
     .col-sm-4{
         .blue-icon-yellow-background{
             .cmp-container{
@@ -121,15 +123,26 @@ ul {
                     -webkit-box-direction: normal;
                     flex-direction: column;
                     -webkit-box-flex: 1;
-                    flex-grow: 1;
                     display: flex;
                 }
                 .button-class{
                     padding: 6px 16px;
                 }
+                .text {
+                    height: 100%;
+                }
+                .text-border-right {
+                    .cmp-text {
+                        border-right: 2px solid $medium-grey-background;
+                        margin: 0;
+                        height: 100%;
+                    }
+                }
             } 
         }
     }
+    /* Over View Highlight Style End*/
+
     /*.col-sm-6{
         .blue-icon-yellow-background{
             .cmp-container{
