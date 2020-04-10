@@ -67,16 +67,34 @@
             font-size: 1.5rem;
             padding: 7px;
             margin:0;
-            min-width:56px;
+            width:56px;
         }
         .mobile-signin-text {
             font-size: 0.75rem;
             font-weight: bold;
             text-align: center;
-            white-space: nowrap;
             font-family: sunlife-sans;
         }
     }
+    //french pages padding is different for mobile device in portrait orientation due to less room
+    @media (max-width: 375px){
+        :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-icon {
+            padding-left: 1px !important;
+            padding-right: 1px !important;
+        }
+        :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-text {
+        font-size: 10px !important;
+        white-space: unset !important;       
+        }
+    }
+    
+    @media (max-width: 600px){
+    :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-icon {
+            padding-top: 2px !important;
+            padding-bottom: 2px !important;
+        }
+    }
+    
     /* Mobile Header End */
     /* Hamburger Menu Start */
     .hamburger-menu-wrapper{
