@@ -2,7 +2,7 @@
       data-sly-use.grid="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid"
       method="${formContainer.method}" action="${formContainer.formAction}" name="${formContainer.name}"
       enctype="${formContainer.enctype}"
-      class="cmp-form ${grid.cssClass}" data-parsley-validate="data-parsley-validate" onsubmit="${formContainer.validation @ context='scriptToken'}">
+      class="cmp-form ${grid.cssClass}" data-section="${formContainer.dataSection}" data-parsley-validate="data-parsley-validate" onsubmit="${formContainer.validation @ context='scriptToken'}">
     <input type="hidden" name=":formstart" value="${resource.path}"/>
     <input type="hidden" name="_charset_" value="utf-8"/>
     <input data-sly-test="${formContainer.redirect}" type="hidden" name=":redirect" value="${formContainer.redirect @ extension='html'}"/>
