@@ -3,4 +3,5 @@
     jcr:primaryType="cq:Page">
     <article-model/>
     <author-model/>
+    <form-email-model/>
 </jcr:root>
