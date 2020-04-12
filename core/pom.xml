@@ -139,6 +139,12 @@
 		<artifactId>edgegrid-signer-core</artifactId>
 		<version>4.0.1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.github.spullara.mustache.java/compiler -->
+	<dependency>
+		<groupId>com.github.spullara.mustache.java</groupId>
+		<artifactId>compiler</artifactId>
+		<version>0.9.6</version>
+	</dependency>
   </dependencies>
   <build>
     <plugins>
@@ -200,7 +206,7 @@
                             javax.annotation;version=0.0.0,
                             *</Import-Package>
             <Bundle-SymbolicName>sunlife.core</Bundle-SymbolicName>
-            <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core;inline=true</Embed-Dependency>
+            <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler;inline=true</Embed-Dependency>
             <Sling-Model-Packages>ca.sunlife.web.cms.core</Sling-Model-Packages>
             <Sling-Initial-Content>SLING-INF/content;path:=/libs/system/config;overwrite:=true;</Sling-Initial-Content>
             <_dsannotations>*</_dsannotations>
