@@ -4,5 +4,6 @@
     jcr:primaryType="cq:Page">
     <article-model/>
     <author-model/>
+	<form-email-model/>
     <mustache-template/>
 </jcr:root>
