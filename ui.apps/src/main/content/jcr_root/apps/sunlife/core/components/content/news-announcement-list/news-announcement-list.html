@@ -1,8 +1,8 @@
 <sly data-sly-use.list="ca.sunlife.web.cms.core.models.AnnouncementList">
     <sly data-sly-test.overview="${list.newsType=='1' && list.listItems.size>0}">
-        <div class="row news-list">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <sly data-sly-list="${list.listItems}">
+                    <div class="news-list" data-sly-list="${list.listItems}">
                         
                             <sly data-sly-list.element="${item.elements}">
                                 <sly data-sly-test="${element.name == 'newsroomPagePath'}" data-sly-test.pageLink="${element.value}" />
@@ -13,7 +13,7 @@
                                     <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
                                 <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
                             </div>
-                    </sly>
+                    </div>
              </div>
         </div>
     </sly>
