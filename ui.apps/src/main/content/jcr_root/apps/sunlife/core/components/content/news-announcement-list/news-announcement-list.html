@@ -51,7 +51,9 @@
                                 </div>
                             </sly>
 
-                            <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
+                            <sly data-sly-test="${list.pagination.totalPages>1}">
+                            	<sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
+                            </sly>
                         </div>
                     </sly>
                 </div>
