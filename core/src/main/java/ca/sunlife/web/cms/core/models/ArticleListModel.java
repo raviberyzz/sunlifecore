@@ -39,6 +39,7 @@ import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
@@ -413,7 +414,10 @@ public class ArticleListModel {
         }
       }
       String path = currentPage.getPath();
-      path = path.replace(configService.getConfigValues("siteUrl", path), "");
+      String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
+      path = path
+          .replace(siteUrl.substring(0,
+              siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
       setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
       setPageUrl(path);
     } catch (LoginException | RepositoryException e) {
