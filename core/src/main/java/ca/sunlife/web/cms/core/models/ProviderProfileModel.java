@@ -80,6 +80,20 @@ public class ProviderProfileModel {
 	private String profileHTML;
 
 	/**
+	 * @return the fragmentPath
+	 */
+	public String getFragmentPath() {
+		return fragmentPath;
+	}
+
+	/**
+	 * @param fragmentPath the fragmentPath to set
+	 */
+	public void setFragmentPath(String fragmentPath) {
+		this.fragmentPath = fragmentPath;
+	}
+
+	/**
 	 * @return the profileHTML
 	 */
 	public String getProfileHTML() {
@@ -100,7 +114,7 @@ public class ProviderProfileModel {
 	 * ProviderProfileModel model.
 	 */
 	@PostConstruct
-	private void init() {
+	public void init() {
 		LOGGER.debug("Entry :: ProviderProfileModel :: init :: fragmentPath :: {}", fragmentPath);
 		if (null == fragmentPath) {
 			LOGGER.info("ProviderProfileModel :: fragment path is null, please configure it.");
