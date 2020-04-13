@@ -20,7 +20,7 @@
     <div data-sly-test="${listFromSignin == 'signintrue'}" class="desktop-sign-in">
       <div class="modal fade sign-in-modal-wrapper" data-section="header-sign-in" id="signin-widget-modal" role="dialog">
         <div class="modal-dialog sign-in-modaldialog">
-          ${text @context ='unsafe'}
+          ${text @context ='html'}
         </div>
       </div>
     </div>
@@ -76,13 +76,31 @@
 		  <a href="#signinbutton" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>
 		  <a href="#main-content" class="sr-only kbfocus">${listModel.skipToMainContentLabel}</a>
           <a href="#mainfooter" class="sr-only kbfocus">${listModel.skipToFooterLabel}</a>
-          <div class="utility-nav-wrapper">
+          
+          
+          
+          <div class="col-md-3 col-lg-3">
+          <div data-sly-test="${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel"
+            class="desktop-sunlife-logo" data-section="header-logo" >
+            <sly data-sly-list.links="${listModel.links}">
+              <a href="${links.linkUrl @ extension = 'html' }">
+                <img class="vertical-middle-align" alt="${links.altText}" src="${links.logoImage}">
+                </img>
+              </a>
+            </sly>
+          </div>
+          </div>
+          
+          
+          <div class="col-md-9 col-lg-9">
+          
+            <div class="utility-nav-wrapper">
             <div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
               <ul data-sly-use.listModel="ca.sunlife.web.cms.core.models.UtilityNav" role="navigation"
                 aria-label="Helpful links">
                 <sly data-sly-list.links="${listModel.navlinks}">
                   <li>
-                    <a href="${links.linkUrl @ extension = 'html'}" tabindex="2">${links.linkName}</a>
+                    <a href="${links.linkUrl @ extension = 'html'}" >${links.linkName}</a>
                   </li>
                 </sly>
               </ul>
@@ -92,7 +110,7 @@
                 <li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation"
                   aria-label="Region & Language Selection">
                   <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
-                    data-target="#sun-language" aria-controls="sun-language" tabindex="2" aria-expanded="false">
+                    data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
                     <label class="sr-only">
                       Expand or collapse region and language section
                       Développer ou réduire le volet Régions et langue
@@ -103,7 +121,7 @@
                 <li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search"
                   aria-label="search-bar">
                   <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
-                    tabindex="2" aria-expanded="false">
+                     aria-expanded="false" tabindex="0">
                     <a>${searchTitle}<label class="sr-only">Expand or collapse search
                         Développer ou réduire le volet recherche</label></a>
                   </div>
@@ -111,17 +129,14 @@
               </ul>
             </div>
           </div>
+          
+          
+          </div>
+          
+        
         </div>
         <div class="col-xs-12 desktop-sunlife-navigation">
-          <div data-sly-test="${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel"
-            class="desktop-sunlife-logo" data-section="header-logo" tabindex="1">
-            <sly data-sly-list.links="${listModel.links}">
-              <a href="${links.linkUrl @ extension = 'html' }">
-                <img class="vertical-middle-align" alt="${links.altText}" src="${links.logoImage}">
-                </img>
-              </a>
-            </sly>
-          </div>
+          
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
               <div class="desktop-primary-navigation" data-section="nav-main">
