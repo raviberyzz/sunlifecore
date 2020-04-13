@@ -198,9 +198,6 @@ public class Pagination {
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
     if (selectors.length > 0) {
       pageNo = Integer.parseInt(selectors [ 0 ]);
-      if(selectors.length>1) {
-    	  pageNo = Integer.parseInt(selectors [ 1 ]);
-      }
     }
     if (pageNo > 1) {
       prevPage = pageNo - 1;

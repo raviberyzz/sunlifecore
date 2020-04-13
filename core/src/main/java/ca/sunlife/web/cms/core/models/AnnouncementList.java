@@ -2,7 +2,6 @@ package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -155,7 +154,7 @@ public class AnnouncementList {
 	/** The element names. */
 	private static final String[] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading", "newsroomPagePath",
 			"newsroomContent" };
-	private static String JCR_SLASH="/";
+	private static String slash = "/";
 	/** The logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
 
@@ -583,11 +582,6 @@ public class AnnouncementList {
 			if ("2".equals(newsType)) {
 				 path = currentPage.getPath();
 				processReleasesData();
-				if (selectors.length > 0) {
-					path = path + JCR_SLASH + selectors[0];
-				} else {
-					path = path + JCR_SLASH + activeYear;
-				}
 			}
 			setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
 			setPageUrl(path);
@@ -613,18 +607,11 @@ public class AnnouncementList {
 	private void setQueryParameterMap(final String[] selectors, Map<String, String> queryParameterMap) {
 		int offset = 0;
 		int limit = getMaxItems();
-		int year = latestYear == null ? Calendar.getInstance().get(Calendar.YEAR) : Integer.parseInt(latestYear);
-		String completePath;
-		if ("1".equals(newsType)) {
-			completePath = getParentPath();
-		} else {
-			completePath = selectors.length == 0 ? getParentPath() + JCR_SLASH + year : getParentPath() + JCR_SLASH + selectors[0];
-		}
-		if (selectors.length > 1) {
-			setPageNum(Integer.parseInt(selectors[1]));
+		if (selectors.length > 0) {
+			setPageNum(Integer.parseInt(selectors[0]));
 			offset = (getPageNum() - 1) * getMaxItems(); // Pagination
 		}
-		queryParameterMap.put("path", completePath);
+		queryParameterMap.put("path", getParentPath());
 		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
 		queryParameterMap.put("p.limit", Integer.toString(limit));
 		queryParameterMap.put("p.offset", Integer.toString(offset));
@@ -649,10 +636,10 @@ public class AnnouncementList {
 
 		int year;
 		int totalNoYears;
-		String strYear = null;
 		String pageNum = null;
 		if (null == latestYear) {
-			year = Calendar.getInstance().get(Calendar.YEAR);
+			String requestPath = currentPage.getPath();
+			year = Integer.parseInt(requestPath.substring(requestPath.lastIndexOf(slash) + 1));
 		} else {
 			year = Integer.parseInt(latestYear);
 		}
@@ -670,30 +657,20 @@ public class AnnouncementList {
 
 		final String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length > 0) {
-			strYear = selectors[0]; // Year - Selector
-			if (selectors.length > 1) {
-				pageNum = selectors[1]; // Page number - Selector
-			}
+			pageNum = selectors[0];
 		}
-		LOGGER.debug("Fetched params  pageNum: {}, strYear: {}", pageNum, strYear);
-
-		if (null != strYear && !"".equals(strYear) && !"html".equals(strYear)) {
-			activeYear = Integer.parseInt(strYear);
-		}
+		LOGGER.debug("Fetched params  pageNum: {}, year: {}", pageNum, year);
 		LOGGER.debug("activeYear :: {}", activeYear);
-
 		final String uri = request.getRequestURI();
 		LOGGER.debug("uri: {}", uri);
 		relativeURL = uri.contains(".") ? uri.substring(0, uri.indexOf('.')) : uri;
+		relativeURL = relativeURL.substring(0, relativeURL.lastIndexOf(slash));
 		requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
 		LOGGER.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
 		if (null != pageNum) { // Code to remove page number from url
 			requestURL = requestURL.replaceAll("." + pageNum + "$", "");
 		}
-		if (selectors.length == 0) {
-			requestURL = requestURL + "." + activeYear;
-		}
-		requestURL = requestURL.replace(".", "/");
+		requestURL = requestURL.replace(".", slash);
 		final String pagePath = currentPage.getPath();
 		final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
 		relativeURL = shortenURL(relativeURL, siteUrl);
