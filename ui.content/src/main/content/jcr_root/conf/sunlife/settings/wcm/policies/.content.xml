@@ -632,7 +632,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            allowedTypes="h1"
+                            allowedTypes="[h1,p]"
                             linkDisabled="false"
                             type="h1">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
