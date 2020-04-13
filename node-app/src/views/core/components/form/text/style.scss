@@ -8,13 +8,26 @@ input[type=text] {
     width: auto;
     border: 1px solid $medium-grey-background;
 }
+
 input[type=email] {
     font-family: 'sunlife-sans';
     font-weight: 400;
     font-size: 1rem;
     padding: 0 16px;
-    height: 48px;
+    height: 48px !important;
     width: 100%;
+    max-width: 258px;
+    border: 1px solid $medium-grey-background;
+}
+
+input[type=tel] {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0 16px;
+    height: 48px !important;
+    width: 100%;
+    max-width: 258px;
     border: 1px solid $medium-grey-background;
 }
 
