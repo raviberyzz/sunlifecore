@@ -2,19 +2,19 @@
     <sly data-sly-test.overview="${list.newsType=='1' && list.listItems.size>0}">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="news-list" data-sly-list="${list.listItems}">
-                        
-                            <sly data-sly-list.element="${item.elements}">
-                                <sly data-sly-test="${element.name == 'newsroomPagePath'}" data-sly-test.pageLink="${element.value}" />
-                                <sly data-sly-test="${element.name == 'newsroomHeading'}" data-sly-test.headline="${element.value}" />
-                                <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html" data-sly-test.date="${element.value}" />
-                            </sly>
-                            <div class="news-article">
-                                    <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
-                                <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
-                            </div>
+                <div class="news-list" data-sly-list="${list.listItems}">
+
+                    <sly data-sly-list.element="${item.elements}">
+                        <sly data-sly-test="${element.name == 'newsroomPagePath'}" data-sly-test.pageLink="${element.value}" />
+                        <sly data-sly-test="${element.name == 'newsroomHeading'}" data-sly-test.headline="${element.value}" />
+                        <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html" data-sly-test.date="${element.value}" />
+                    </sly>
+                    <div class="news-article">
+                        <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
+                        <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
                     </div>
-             </div>
+                </div>
+            </div>
         </div>
     </sly>
     <sly data-sly-test="${list.newsType == '2'}">
@@ -50,15 +50,13 @@
                                     <p>${list.noNewsMessage @ context='html'}</p>
                                 </div>
                             </sly>
-                            <sly data-sly-test.aaurl="${list.pageUrl}/${yearsTab}">
-                                <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
+
+                            <sly data-sly-test="${list.pagination}" data-sly-use.tpl="sunlife/core/components/templates/pagination.html" data-sly-call="${tpl.pagination @ paginationObj = list.pagination, pageUrl = list.pageUrl}" />
                         </div>
-
-                        </sly>
-
+                    </sly>
                 </div>
             </div>
         </div>
-        </sly>
     </sly>
-    <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
+</sly>
+<div data-sly-test="${!list.parentPath}" class="cq-placeholder" data-emptytext="${component.title}"></div>
