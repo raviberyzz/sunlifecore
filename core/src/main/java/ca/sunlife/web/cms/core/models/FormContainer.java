@@ -34,6 +34,12 @@ public class FormContainer extends ContainerImpl {
   @ Via ("resource")
   @ Optional
   private String validation;
+  
+  /** The data section. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String dataSection;
 
   /**
    * Gets the form action.
@@ -71,6 +77,25 @@ public class FormContainer extends ContainerImpl {
    */
   public void setValidation(final String validation) {
     this.validation = validation;
+  }
+  
+  /**
+   * Gets the data section attribute.
+   *
+   * @return the data section attribute
+   */
+  public String getDataSection() {
+    return dataSection;
+  }
+
+  /**
+   * Sets the data section attributes
+   *
+   * @param data section
+   *          the data section to set
+   */
+  public void setDataSection(final String dataSection) {
+    this.dataSection = dataSection;
   }
 
 }
