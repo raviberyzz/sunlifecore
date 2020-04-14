@@ -41,6 +41,23 @@ public interface FormDropdown {
   @ Inject
   public String getIsScreenReader();
   
+ /** Gets the Data title
+  *
+  * @return the Data title
+  */
+ @ Inject
+ public String getDataTitle();  
+ 
+ /**
+  * Gets the Data value
+  *
+  * @return the Data value
+  */
+ @ Inject
+ public String getDataValue();
+ 
+ /**
+  
   /**
    * Gets the Is required value
    *
