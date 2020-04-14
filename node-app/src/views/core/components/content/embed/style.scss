@@ -25,3 +25,29 @@
       }
   }
 }
+
+.embed.video-center-align{
+    text-align:-webkit-center;
+    }
+.embed.video-right-align{
+        text-align:-webkit-right;
+ }
+ embed.video-medium {
+ .video_container{
+    max-width: 415px;
+    max-height: 235px;
+ }
+}
+embed.video-small{ 
+    .video_container{
+    max-width: 220px;
+    max-height: 120px;
+    }
+}
+.embed.circle-220-desktop {
+    .vidyard-player-container {
+    .play-button{
+    left:28%;
+    }
+ }
+}

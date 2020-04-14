@@ -166,14 +166,47 @@
             cursor: pointer;
         }
     }
-    .container-component .cmp-container .editorial-nav-desktop-wrapper {
+   /* .container-component .cmp-container .editorial-nav-desktop-wrapper {
         display: none !important;
-    }
+    } */
     .left-nav-list-wrapper {
         .accordion-heading:before {
             content: "" !important;
         }
     }
+    .editorial-nav-desktop-wrapper{
+        .list-div{
+            form{
+              //  min-height: 84px;
+                background-color: #FFCB05;
+                padding: 16px;
+                width: 100%;
+                .Editorial-form-input{
+                    width: 88%;
+                    vertical-align: top;
+                    display: inline-block !important;
+
+                    select{
+                        height:48px;
+                        width:100%; 
+                    }
+                }
+                .Editorial-form-button{
+                    display:inline-block;
+                   margin-left:15px;
+                    button{
+                        font-size: 16px !important;
+                        padding: 11px 19px !important;
+                        margin: 0 !important;
+                        border: 2px;
+                        min-height: 48px !important;
+                        white-space: normal;
+                        font-family: 'sunlife-sans';
+                        font-weight: 700;
+                        border-radius: 4px !important
+                    }
+                }
+            }
+        }
+    }
 }
-
-
