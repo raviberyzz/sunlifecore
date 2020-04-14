@@ -1,15 +1,15 @@
 <sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
 <sly data-sly-test.notEmpty="${newsroomAnnouncement.fragmentPath}">
-    <div class="article-wrapper">
-        <div class="article-intro">
-            <div class="article-date" data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
+    <div>
+        <div>
+            <div data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
                 ${newsroomAnnouncement.articleData.articlePublishedDate}
             </div>
-            <div class="article-title heading-2" data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
+            <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
                 ${newsroomAnnouncement.articleData.newsroomHeading}
-            </div>
+            </h3>
         </div>
-        <div class="article-body">
+        <div>
             ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
         </div>
     </div>
