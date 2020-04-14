@@ -1,1 +1,8 @@
 // @import '../../core/base/base';
+body:lang(zh-TW) {
+    font-family: 'Noto Sans TC' !important;
+}
+
+body:lang(zh-SG) {
+    font-family: 'Noto Sans SC' !important;
+}
