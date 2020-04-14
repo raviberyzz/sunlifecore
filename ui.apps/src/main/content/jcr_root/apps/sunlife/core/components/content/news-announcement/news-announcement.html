@@ -5,9 +5,9 @@
             <div data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
                 ${newsroomAnnouncement.articleData.articlePublishedDate}
             </div>
-            <div data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
+            <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
                 ${newsroomAnnouncement.articleData.newsroomHeading}
-            </div>
+            </h3>
         </div>
         <div>
             ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
