@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -66,10 +67,38 @@ public class AkamaiPurgeModel {
   }
 
   /**
+  * @return the paths
+  */
+  public String[] getPaths() {
+	return null != paths ? Arrays.copyOf(paths, paths.length) : new String[0];
+  }
+
+  /**
+  * @param paths the paths to set
+  */
+  public void setPaths(String[] paths) {
+	this.paths = null != paths ? paths.clone() : null;
+  }
+
+  /**
+  * @return the akamaiCacheClear
+  */
+  public ca.sunlife.web.cms.core.services.AkamaiCacheClear getAkamaiCacheClear() {
+	return akamaiCacheClear;
+  }
+
+  /**
+  * @param akamaiCacheClear the akamaiCacheClear to set
+  */
+  public void setAkamaiCacheClear(ca.sunlife.web.cms.core.services.AkamaiCacheClear akamaiCacheClear) {
+	this.akamaiCacheClear = akamaiCacheClear;
+  }
+
+  /**
    * Inits the model.
    */
   @ PostConstruct
-  private void init() {
+  public void init() {
     if (null == paths || paths.length < 1) {
       LOG.debug("Exiting the model as no paths set");
       return;

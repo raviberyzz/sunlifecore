@@ -19,6 +19,7 @@ public class TestUtils {
     try {
       BeanRunner beanRunner = new BeanRunner( );
       beanRunner.testBean(bean);
+      beanRunner.testException(Exception.class);
     } catch (Exception e) {
       System.err.println("Exception occured:" + e.toString( ));
     }
