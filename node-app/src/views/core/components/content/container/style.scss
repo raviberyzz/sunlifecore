@@ -1696,8 +1696,16 @@ ul {
 //Related resources for IE
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
     .cmp-related-resource{
-        .layout-container{
-            display: -ms-inline-flexbox;
+        .row{
+            .col-xs-12{
+                .container-component{
+                    .cmp-container{
+                        .layout-container{
+                            display: -ms-inline-flexbox;
+                        }
+                    }
+                }
+            }
         }
     }
 }
