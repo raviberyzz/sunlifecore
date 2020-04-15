@@ -1850,7 +1850,7 @@ ul {
 }
 
 /* Only apply padding if immediately following another experiencefragment NOT if first */
-.experiencefragment + .experiencefragment.light-orange, .experiencefragment.light-orange + .experiencefragment.light-orange{
+.experiencefragment + .experiencefragment.light-orange{
     margin-top:24px;
 }
 
