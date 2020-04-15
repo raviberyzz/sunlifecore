@@ -114,7 +114,7 @@
         background-color: $white-shade;
         &.active{
             left:0;
-            overflow:hidden auto;
+            overflow: auto;
         }
         &.inactive{
             left: -270px;
