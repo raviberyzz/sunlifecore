@@ -179,7 +179,8 @@ public class LeftNavigationModal extends NavigationImpl {
 
       if (! navigationItem.getChildren().isEmpty()) {
         parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
-        final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, false, request,
+        final boolean isSelected = currentPage.equals(parentPage) || currentPageIsRedirectTarget(parentPage);
+        final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, isSelected, request,
             navigationItem.getLevel() + 1, children1, title);
         navigationItem.getChildren().add(0, leftItemImpl);
       }
@@ -351,7 +352,7 @@ public class LeftNavigationModal extends NavigationImpl {
    * @return true, if successful
    */
   private boolean checkSelected(final Page page) {
-    return currentPage.equals(page) || currentPage.getPath().startsWith(page.getPath() + "/")
+	  return currentPage.equals(page) || currentPage.getPath().startsWith(page.getPath() + "/")
         || currentPageIsRedirectTarget(page);
   }
 

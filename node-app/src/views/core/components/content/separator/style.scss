@@ -35,7 +35,7 @@
        width: 80%;
     }
 }
-.page-separator:after {
+.page-separator {
         display: block;
         content: ' ';
         height: 2px;
@@ -45,7 +45,7 @@
       }
 
 @media (min-width: 768px) {
-    .page-separator:after {
+    .page-separator {
         width: 75%;
     }
   }

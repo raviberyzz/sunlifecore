@@ -588,6 +588,20 @@ public class BasePageModel {
   }
 
   /**
+   * @return the tags
+  */
+  public String[] getTags() {
+	return null != tags ? Arrays.copyOf(tags, tags.length) : new String[0];
+  }
+
+  /**
+   * @param tags the tags to set
+  */
+  public void setTags(String[] tags) {
+	this.tags = null != tags ? tags.clone() : null;
+  }
+
+  /**
    * Inits the model.
    *
    * @throws LoginException
