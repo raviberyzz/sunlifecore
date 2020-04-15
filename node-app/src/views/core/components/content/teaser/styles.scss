@@ -1,11 +1,14 @@
 @import '../../../base/core';
 
-/* for ios devices - defect causing text to overflow div*/
-.teaser.circular-image{
-    .right-item {
-        display: table-cell;
+/* for ios devices - defect causing text to overflow div, causes defect in IE11 added supports annotation*/
+@supports not (-ms-high-contrast: none){
+    .teaser.circular-image{
+        .right-item {
+            display: table-cell;
+        }
     }
 }
+
 /* for ios devices - defect causing text to overflow div ends here*/
  .show-only-in-editorial {
     display: none !important;
@@ -143,9 +146,14 @@
     margin-right: 32px;
     display: table;
 }
-.right-item {
-    display: table;
+
+/* Supports browsers that is not IE11 to prevent internet explorer overlap defect */
+@supports not (-ms-high-contrast: none) {
+    .right-item {
+        display: table;
+    }
 }
+
 .view-all-category:after{
     text-decoration:none;
     display:inline-block;
@@ -545,7 +553,7 @@
         }
     }
     .middle-aligned-text {
-        .right-image-position, .left-image-position  {
+        .left-image-position  {
             .text-section {
                 top: 50%;
                 transform: translateY(-50%);
