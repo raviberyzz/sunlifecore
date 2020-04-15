@@ -45,6 +45,7 @@
                     display: flex;
                     flex: auto;
                     padding: 0 10px;
+                    padding-right:25px;// first link (ALL) on the list was overlapping so added this for IE
                     margin-bottom: 0;
                     a{
                         font-size: 1rem;
