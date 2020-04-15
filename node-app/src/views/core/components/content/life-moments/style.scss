@@ -128,7 +128,7 @@
                 li:not(:last-child):after{
                     content:"";
                     display: block;
-                    border-right: 2px solid $light-yellow-color;
+                    border-right: 2px solid (#FFDD00);//changed link seperator color
                     margin: 10px auto;
                     height: 35px;
                     padding-right: 24px;
