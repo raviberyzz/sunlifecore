@@ -1693,6 +1693,14 @@ ul {
 
     }
 }
+//Related resources for IE
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+    .cmp-related-resource{
+        .layout-container{
+            display: -ms-inline-flexbox;
+        }
+    }
+}
 /*styles for related resource end */
 
 @media (min-width: $tab-screen-min)
