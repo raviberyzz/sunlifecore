@@ -1856,10 +1856,13 @@ ul {
    //  border-bottom: 20px solid $white-shade;
     padding: 24px 15px;
 }
-.experiencefragment.light-orange{
+
+/* Only apply padding if immediately following another experiencefragment NOT if first */
+.experiencefragment + .experiencefragment.light-orange{
     margin-top:24px;
-   }
-/* orange background for right nav wrapper in the body section end */
+}
+
+   /* orange background for right nav wrapper in the body section end */
 .right-navigation-wrapper{
     .cmp-container{
         .experiencefragment{
