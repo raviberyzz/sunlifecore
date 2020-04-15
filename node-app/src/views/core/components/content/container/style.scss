@@ -112,9 +112,19 @@ ul {
 }
 
 // content block with icon end
-@media (min-width: $tab-screen-min) {
 
-    /* Over View Highlight Style*/
+ /* Over View Highlight Style*/
+
+ .overview-content-wrapper {
+    .blue-icon-yellow-background {
+        .cmp-container {
+            background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+        
+         }
+    } 
+
+ }
+@media (min-width: $tab-screen-min) {
     .col-sm-4{
         .blue-icon-yellow-background{
             .cmp-container{
@@ -141,6 +151,18 @@ ul {
             } 
         }
     }
+    .overview-content-wrapper {
+        .blue-icon-yellow-background {
+            .cmp-container {
+                .primary-blue-button{
+                        padding-left: 16px;
+                        padding-right: 16px;
+                }
+            
+            }
+        } 
+    
+     }
     /* Over View Highlight Style End*/
 
     /*.col-sm-6{
