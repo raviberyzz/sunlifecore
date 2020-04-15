@@ -429,6 +429,8 @@ ul {
             }
             padding-bottom: 0;
             display: table;
+            word-wrap: break-word;
+            -ms-word-wrap: break-word;
             .button-class{
                 padding: 6px 16px;
                 margin-bottom: 5px;
