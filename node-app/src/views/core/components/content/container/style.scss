@@ -2094,13 +2094,9 @@ ul {
     display: inherit; }
 }
 
-.container-component.content-highlight:last-child {
-    p:last-child {
-        padding-top: 16px; /* footnote section of content highlight needs 40px padding add 16px to the 24px already on the .content-highlight div */ 
-    }
+.content-block-icon + .content-highlight {
+    padding-top:40px;   /* footnote 40px */
 }
-
-
 
 /** Browser Specific CSS ends here **/
 
