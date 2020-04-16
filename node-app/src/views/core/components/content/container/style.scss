@@ -75,6 +75,11 @@ ul {
 .content-block-icon {
     background-color: $light-grey-20;
     padding: 8px 0 2px 0;
+
+    div[class^="col-"]{
+        padding: 0px;
+    }
+
     .cross-cta-wrapper {
         background-color: transparent;
         border: none;
@@ -2088,6 +2093,13 @@ ul {
 .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
     display: inherit; }
 }
+
+.container-component.content-highlight:last-child {
+    p:last-child {
+        padding-top: 16px; /* footnote section of content highlight needs 40px padding add 16px to the 24px already on the .content-highlight div */ 
+    }
+}
+
 
 
 /** Browser Specific CSS ends here **/
