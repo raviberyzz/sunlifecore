@@ -24,8 +24,6 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import uk.org.lidalia.slf4jtest.TestLogger;
-import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
 /**
  * @author mo92 The class CNWNewsDetailsModelTest

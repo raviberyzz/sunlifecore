@@ -132,7 +132,7 @@ public class NewsroomAnnouncementModel {
    * Inits the model.
    */
   @ PostConstruct
-  private void init() {
+  public void init() {
     if (StringUtils.isEmpty(getFragmentPath())) {
       return;
     }

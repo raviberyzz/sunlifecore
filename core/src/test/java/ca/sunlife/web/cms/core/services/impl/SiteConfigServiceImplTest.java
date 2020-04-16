@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.core.services.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -27,6 +28,7 @@ import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.osgi.config.SiteConfig;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -110,5 +112,19 @@ public class SiteConfigServiceImplTest {
   @ Test
   void setConfiguration() {
 
+  }
+  
+  /**
+  * Tests get page url.
+  */
+  @ Test
+  void testGetPageUrl() {
+	  String name = "domain";
+	  HashMap <String , String> map = new HashMap <String , String>( );
+	  map.put(name , "www.aem-site.ca/en/");
+	  map.put(BasePageModelConstants.SITE_URL_CONSTANT , "/content/sunlife/ca/en/");
+	  when(siteConfigMap.containsKey(any( ))).thenReturn(true);
+	  when(siteConfigMap.get(any( ))).thenReturn(map);
+	  assertEquals("www.aem-site.ca/en//home/", serviceImpl.getPageUrl("/content/sunlife/ca/en/home"));
   }
 }
