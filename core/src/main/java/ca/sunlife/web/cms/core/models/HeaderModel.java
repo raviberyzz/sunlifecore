@@ -8,6 +8,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
+import ca.sunlife.web.cms.core.models.UtilityNav.Navlinks;
+
 /**
  * The Interface HeaderModel.
  */
@@ -150,7 +152,15 @@ public interface HeaderModel {
    * @return the skip to footer label
    */
   @ Inject
-  String getSkipToFooterLabel();
+  String getSkipToFooterLabel();  
+  
+  /**
+   * Gets the meganavlinks.
+   *
+   * @return the meganavlinks
+   */
+  @ Inject
+  Resource getMeganavlinks();
   
   /**
    * The Interface Links.
@@ -192,5 +202,47 @@ public interface HeaderModel {
     String getLinkUrl();
 
   }
+  
+  /**
+   * Gets the navlinks.
+   *
+   * @return the navlinks
+   */
+  @ Inject
+  List <Navlinks> getNavlinks(); // the name `getNavlinks` corresponds to the multifield
+                                 // name="./navlinks"
+
+  /**
+   * The Interface Navlinks.
+   */
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  interface Navlinks {
+
+    /**
+     * Gets the link name.
+     *
+     * @return the link name
+     */
+    @ Inject
+    String getLinkName();
+
+    /**
+     * Gets the target.
+     *
+     * @return the target
+     */
+    @ Inject
+    String getTarget();
+
+    /**
+     * Gets the link url.
+     *
+     * @return the link url
+     */
+    @ Inject
+    String getLinkUrl();
+
+  }
+
 
 }
