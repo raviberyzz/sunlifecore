@@ -1,8 +1,129 @@
 // @import '../../core/base/base';
 body:lang(zh-TW) {
     font-family: 'Noto Sans TC' !important;
+    line-height: 140%;
+    h1, .heading-1{
+        font-size:2.375rem;
+        line-height:120%;
+    }
+    
+    h2, .heading-2 {
+        font-size: 1.875rem;
+        line-height:120%;
+    }
+    
+    h3, .heading-3 {
+        font-size: 1.5rem;
+        line-height:120%;
+    }
+    
+    h4, .heading-4 {
+        font-size: 1.25rem;
+        line-height:120%;
+    }
+    
+    h5, .heading-5 {
+        font-size: 1.125rem;
+        line-height:120% ;
+    }
+    
+    .heading-1{
+        h1,h2,h3,h4,h5,h6{
+            font-size:2.375rem;
+            line-height:120%;
+        }
+    }
+    .heading-2{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.875rem;
+            line-height:120%;
+        }
+    }
+    .heading-3{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.5rem;
+            line-height:120%;
+        }
+    }
+    .heading-4{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.25rem;
+            line-height:120%;
+        }
+    }
+    .heading-5{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.125rem;
+            line-height:120% ;
+        }
+    }
+    
+    .legal-text{
+        font-size: 0.75rem;
+        line-height: 120%;
+    }
 }
-
 body:lang(zh-SG) {
     font-family: 'Noto Sans SC' !important;
+    line-height: 140%;
+    h1, .heading-1{
+        font-size:2.375rem;
+        line-height:120%;
+    }
+    
+    h2, .heading-2 {
+        font-size: 1.875rem;
+        line-height:120%;
+    }
+    
+    h3, .heading-3 {
+        font-size: 1.5rem;
+        line-height:120%;
+    }
+    
+    h4, .heading-4 {
+        font-size: 1.25rem;
+        line-height:120%;
+    }
+    
+    h5, .heading-5 {
+        font-size: 1.125rem;
+        line-height:120% ;
+    }
+    
+    .heading-1{
+        h1,h2,h3,h4,h5,h6{
+            font-size:2.375rem;
+            line-height:120%;
+        }
+    }
+    .heading-2{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.875rem;
+            line-height:120%;
+        }
+    }
+    .heading-3{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.5rem;
+            line-height:120%;
+        }
+    }
+    .heading-4{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.25rem;
+            line-height:120%;
+        }
+    }
+    .heading-5{
+        h1,h2,h3,h4,h5,h6{
+            font-size:1.125rem;
+            line-height:120% ;
+        }
+    }
+    
+    .legal-text{
+        font-size: 0.75rem;
+        line-height: 120%;
+    }
 }

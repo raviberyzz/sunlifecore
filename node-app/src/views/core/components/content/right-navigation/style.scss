@@ -1,6 +1,5 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
-    
     float: left;
     .cmp-container{
     text-align: center;
@@ -116,11 +115,9 @@
     }
     &>*{
         float: left;
-
     }
     .right-nav-icon-wrapper
     {
-        
         .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
@@ -175,6 +172,17 @@
             background-color:#f4f7f6;
         }
     }
+
+    // video component with in right rail css 
+    .embed{
+        text-align: -webkit-center;
+        .video_container{
+            max-width:226px;
+              max-height:127px;
+          }
+    }
+    
+    // video css end
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
