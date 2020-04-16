@@ -507,17 +507,11 @@ ul {
 }    
 //this is for dual and triple cta's not appearing in the same row on Ipad and macbooks plus feature tool cards not working in tablets
 @media (min-width: $tab-screen-min){
-    .clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after,
-    .container:before, .container:after, .container-fluid:before, .container-fluid:after,
-    .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after,
-    .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before,
-    .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before,
-    .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before,
-    .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before,
-    .panel-body:after, .modal-header:before, .modal-header:after, .modal-footer:before,
-    .modal-footer:after {
-        display: -webkit-box;
-        content: " "
+    .layout-container{
+        .row:before, .row:after {
+            display: -webkit-box;
+            content: " "
+        }  
     }
 }
 .company-highlight-blue-grey-background {
@@ -923,6 +917,10 @@ ul {
     .col-sm-4:not(:last-child) {
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
             margin-bottom:62px;    
+        }
+    }.col-sm-4:last-child{ //add 22px padding to last cell inorder to have all cta's equal length apart
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom: 22px;
         }
     }
     .no-padding{

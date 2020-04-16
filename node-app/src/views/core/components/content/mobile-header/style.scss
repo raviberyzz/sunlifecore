@@ -65,7 +65,7 @@
         .mobile-signin-icon {
             color: $medium-blue-color;
             font-size: 1.5rem;
-            padding: 7px;
+            padding: 5px;
             margin:0;
             width:56px;
         }
@@ -82,12 +82,13 @@
             padding-left: 1px !important;
             padding-right: 1px !important;
         }
+    }
+    @media (max-width: $tab-screen-max){
         :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-text {
-        font-size: 10px !important;
-        white-space: unset !important;       
+            font-size: 10px !important;
+            white-space: unset !important;       
         }
     }
-    
     @media (max-width: 600px){
     :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-icon {
             padding-top: 2px !important;
