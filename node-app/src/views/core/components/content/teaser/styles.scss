@@ -590,10 +590,32 @@
 
 
 
-
-
-
-
+@media (min-width: $tab-screen-min) and (max-width: 1023px) {
+    //ipad specific case in which teaser text is going beyond the page
+    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+        .left-image-position, .right-image-position{
+            display: block;
+        }
+    }
+    .col-sm-3 {
+        //ipad specific - circular teaser height set to auto so it is always circular for 4 teaser case
+        .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix{
+            img {
+                max-width: 100%;
+                height: auto !important;  
+            }
+            .left-item{
+                margin-right: 0 !important;
+            }
+        }
+        //ipad specific - circular image height set to auto so it is always circular for 4 teaser case
+        .image.text-center.circular-image.circle-220-desktop.circle-150-mobile.round-border{
+            img{
+                height: auto !important; 
+            }
+        } 
+    }
+}
 
 
 

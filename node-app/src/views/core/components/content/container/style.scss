@@ -505,12 +505,13 @@ ul {
         }
     }
 }    
-//this is for dual and triple cta's not appearing in the same row on Ipad and macbooks
+//this is for dual and triple cta's not appearing in the same row on Ipad and macbooks plus feature tool cards not working in tablets
 @media (min-width: $tab-screen-min){
     .layout-container{
-        .row.flex-height{
-            flex-wrap: unset;
-        }
+        .row:before, .row:after {
+            display: -webkit-box;
+            content: " "
+        }  
     }
 }
 .company-highlight-blue-grey-background {
@@ -642,7 +643,7 @@ ul {
     /*margin: 40px 0;*/
 
     div[class^="col-"] {
-        padding: 0 px;
+        padding: 0;
     }
 
 
@@ -916,6 +917,10 @@ ul {
     .col-sm-4:not(:last-child) {
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
             margin-bottom:62px;    
+        }
+    }.col-sm-4:last-child{ //add 22px padding to last cell inorder to have all cta's equal length apart
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+            margin-bottom: 22px;
         }
     }
     .no-padding{

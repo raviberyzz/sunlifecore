@@ -68,6 +68,22 @@
         }
     }
 }
+//only in Ipad view the editorial nav is going outside the page. 
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-min) {
+    .editorial-nav-desktop-wrapper{
+        .links{
+            .list-div{
+                ul{
+                    li{
+                        a{
+                            font-size: 0.875rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 .left-nav-list-wrapper{
     
     .accordion-heading{
