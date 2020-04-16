@@ -159,8 +159,8 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       for (final String path : paths) {
         final Resource resource = resourceResolver.getResource(path);
         if (resource != null
-            && ((String) resource.getValueMap().getOrDefault("jcr:primaryType", ""))
-                .equalsIgnoreCase("dam:Asset")) {
+            && ((String) resource.getValueMap().getOrDefault(com.day.cq.commons.jcr.JcrConstants.JCR_PRIMARYTYPE, ""))
+                .equalsIgnoreCase(com.day.cq.dam.api.DamConstants.NT_DAM_ASSET)) {
           final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
               .search(resourceResolver, path);
           searchResult.forEach((key, reference) -> {
