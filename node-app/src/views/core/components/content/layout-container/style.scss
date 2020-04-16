@@ -152,6 +152,7 @@
 @media(max-width:767px){
     .row.flex-height{
         display:block;
+        padding-bottom:32px;//added paddiing at the bottom to remove extra whitespace(gap between columns)
     }
 }
 /* flex column ends here */
