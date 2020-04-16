@@ -8,8 +8,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
-import ca.sunlife.web.cms.core.models.UtilityNav.Navlinks;
-
 /**
  * The Interface HeaderModel.
  */
