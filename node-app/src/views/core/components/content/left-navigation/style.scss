@@ -62,7 +62,7 @@
     }
 }
 @media (max-width: $tab-screen-max) {
-    .left-nav-wrapper {
+    .left-nav-wrapper, .left-nav-list-wrapper {
         display: none;
     }
 }
