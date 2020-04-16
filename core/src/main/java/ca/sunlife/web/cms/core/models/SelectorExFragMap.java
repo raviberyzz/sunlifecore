@@ -11,23 +11,23 @@ import org.apache.sling.models.annotations.Model;
  * The Interface SelectorExFragMap.
  */
 @Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface SelectorExFragMap {
-	
-	/**
-	 * Gets the selector.
-	 *
-	 * @return the selector
-	 */
-	@Inject
-	public String getSelector();
+  
+  /**
+   * Gets the selector.
+   *
+   * @return the selector
+   */
+  @Inject
+  public String getSelector();
 
-	/**
-	 * Gets the exfrag path.
-	 *
-	 * @return the exfrag path
-	 */
-	@Inject
-	public String getExfragPath();
+  /**
+   * Gets the exfrag path.
+   *
+   * @return the exfrag path
+   */
+  @Inject
+  public String getExfragPath();
 
 }
