@@ -346,6 +346,9 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     importUrl.append(cnwNewsConfig.getCnwServiceUrl());
     importUrl.append(CNW_SERVICE_PARAM);
     importUrl.append("&method=get");
+    if (null != locale && ! "en".equals(locale)) {
+       importUrl.append("_" + locale);
+    }
     importUrl.append(HTML_SAFE);
     importUrl.append(FORMAT_JSON);
     importUrl.append("&id=" + id);
