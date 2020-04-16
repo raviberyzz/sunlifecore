@@ -81,7 +81,7 @@ public class SelectorToExfragMapModel {
   public void init() {
     final String[] selectors = request.getRequestPathInfo().getSelectors();
     LOGGER.debug("No of entries {}", getItems().size());
-    if (!getItems().isEmpty() && selectors.length > 0) {
+    if (selectors.length > 0 && !getItems().isEmpty()) {
       Iterator<SelectorExFragMap> itemIterator = items.iterator();
       while (itemIterator.hasNext()) {
         SelectorExFragMap item = itemIterator.next();
