@@ -468,7 +468,7 @@ public class AnnouncementList {
 	 * @return the years to show
 	 */
 	public List<Integer> getYearsToShow() {
-		return yearsToShow;
+		return Collections.unmodifiableList(yearsToShow);
 	}
 
 	/**
@@ -477,7 +477,7 @@ public class AnnouncementList {
 	 * @param yearsToShow the new years to show
 	 */
 	public void setYearsToShow(List<Integer> yearsToShow) {
-		this.yearsToShow = yearsToShow;
+		this.yearsToShow = Collections.unmodifiableList(yearsToShow);
 	}
 
 	/**
