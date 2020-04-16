@@ -112,9 +112,19 @@ ul {
 }
 
 // content block with icon end
-@media (min-width: $tab-screen-min) {
 
-    /* Over View Highlight Style*/
+ /* Over View Highlight Style*/
+
+ .overview-content-wrapper {
+    .blue-icon-yellow-background {
+        .cmp-container {
+            background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+        
+         }
+    } 
+
+ }
+@media (min-width: $tab-screen-min) {
     .col-sm-4{
         .blue-icon-yellow-background{
             .cmp-container{
@@ -141,6 +151,18 @@ ul {
             } 
         }
     }
+    .overview-content-wrapper {
+        .blue-icon-yellow-background {
+            .cmp-container {
+                .primary-blue-button{
+                        padding-left: 16px;
+                        padding-right: 16px;
+                }
+            
+            }
+        } 
+    
+     }
     /* Over View Highlight Style End*/
 
     /*.col-sm-6{
@@ -407,6 +429,8 @@ ul {
             }
             padding-bottom: 0;
             display: table;
+            word-wrap: break-word;
+            -ms-word-wrap: break-word;
             .button-class{
                 padding: 6px 16px;
                 margin-bottom: 5px;
@@ -616,6 +640,12 @@ ul {
     padding: 32px 16px;
     min-width: 158px;
     /*margin: 40px 0;*/
+
+    div[class^="col-"] {
+        padding: 0 px;
+    }
+
+
     .cta-content-icon-wrapper {
         padding-right: 16px;
         .icon-style {
@@ -1663,6 +1693,22 @@ ul {
 
     }
 }
+//Related resources for IE
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+    .cmp-related-resource{
+        .row{
+            .col-xs-12{
+                .container-component{
+                    .cmp-container{
+                        .layout-container{
+                            display: -ms-inline-flexbox;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 /*styles for related resource end */
 
 @media (min-width: $tab-screen-min)
@@ -1748,10 +1794,6 @@ ul {
 {
 .tool-card-main-wrapper{
     // width: 100% !important;
-    margin-left:0;
-    div[class^="col-"] {
-        padding: 0 15px;
-    }
     .row{
         display:flex;
         flex-wrap: wrap !important;
@@ -1818,10 +1860,13 @@ ul {
    //  border-bottom: 20px solid $white-shade;
     padding: 24px 15px;
 }
-.experiencefragment.light-orange{
+
+/* Only apply padding if immediately following another experiencefragment NOT if first */
+.experiencefragment + .experiencefragment.light-orange{
     margin-top:24px;
-   }
-/* orange background for right nav wrapper in the body section end */
+}
+
+   /* orange background for right nav wrapper in the body section end */
 .right-navigation-wrapper{
     .cmp-container{
         .experiencefragment{

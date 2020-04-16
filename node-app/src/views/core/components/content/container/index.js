@@ -202,5 +202,14 @@ $(document).ready(function () {
         }
 
     }
-
+   
+			/* video component links to add onclick function starts */
+			var videoHref = $("a[href^='#fn_vidyard']");
+			videoHref.each(function(){
+			var atr = $(this).attr("href");
+			var fnc = atr.replace("#","")
+			$(this).attr("onClick", fnc);
+			$(this).attr("href", "javascript:void(0);");
+			})
+			/* video component links to add onclick function ends */
 });
