@@ -75,7 +75,7 @@
 		                  		jcr:title="Accordion" 
 		                  		sling:resourceType="wcm/core/components/policy/policy" 
 		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
-		                  		components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/text,/apps/sunlife/apac/hk/components/content/title]" 
+		                  		components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/content/embed,/apps/sunlife/apac/hk/components/content/icon-text,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/layout-container,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/table,/apps/sunlife/apac/hk/components/content/text,/apps/sunlife/apac/hk/components/content/teaser,/apps/sunlife/apac/hk/components/content/title]" 
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -1804,7 +1804,7 @@
 		                  		jcr:title="Accordion" 
 		                  		sling:resourceType="wcm/core/components/policy/policy" 
 		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
-		                  		components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/text,/apps/sunlife/apac/id/components/content/title]" 
+		                  		components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/content/embed,/apps/sunlife/apac/id/components/content/icon-text,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/layout-container,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/table,/apps/sunlife/apac/id/components/content/text,/apps/sunlife/apac/id/components/content/teaser,/apps/sunlife/apac/id/components/content/title]" 
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
