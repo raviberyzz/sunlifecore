@@ -614,12 +614,11 @@ ul {
                     margin-bottom:0;
                     .icon-style{
                         font-size: 2rem;
-                        background: none;
-                        color: $medium-blue-color;
+                        background: linear-gradient($medium-blue-color, $blue-gradient-color);
+                        color: $white-shade;
                         height: 57px;
                         width: 57px;
-                        padding: 7px;
-                        border: 5px solid $dark-grey-color;
+                        padding: 10px;
                         pointer-events: none;
                     }
                     .icon-texts{
