@@ -621,6 +621,11 @@
                                             cq:styleId="1584368882937"
                                             cq:styleLabel="Right align"
                                             jcr:primaryType="nt:unstructured"/>  
+                                         <item1
+                                            cq:styleClasses="center-img-align-position"
+                                            cq:styleId="1584393939393"
+                                            cq:styleLabel="Center align"
+                                            jcr:primaryType="nt:unstructured"/>   
                                      </cq:styles>
                                 </item11>
                             </cq:styleGroups>
