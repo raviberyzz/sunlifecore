@@ -152,7 +152,7 @@
 @media(max-width:767px){
     .row.flex-height{
         display:block;
-        padding-bottom:32px;//added paddiing at the bottom to remove extra whitespace(gap between columns)
+        margin: 0 auto; // new fix  applied to get rid of extra whitepsace issue
     }
 }
 /* flex column ends here */
