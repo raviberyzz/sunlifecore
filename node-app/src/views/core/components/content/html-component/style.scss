@@ -459,6 +459,11 @@
                 width:0;
             }
         }
+        .btn-close {
+            border: 1px solid $medium-blue-color !important;
+            height: 48px !important;
+            font-size: 1.25rem !important;
+        }
     }
     .search-autocomplete {
         .search-autocomplete-list {
