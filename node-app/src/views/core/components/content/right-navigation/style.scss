@@ -1,6 +1,5 @@
 @import '../../../base/core';
 .right-navigation-wrapper{
-    
     float: left;
     .cmp-container{
     text-align: center;
@@ -94,7 +93,7 @@
         background-color: $light-orange-20;
        // border-top: 20px solid  $white-shade;
        // border-bottom: 20px solid  $white-shade;
-        margin-bottom:24px;
+        margin:24px 0px;
         & > *{
             padding: 15px 0;
         }
@@ -109,6 +108,11 @@
             }
         }
     }
+    .cmp-container >{
+        .light-orange{
+            margin-top:0px;
+        }
+    }
     .phone-numbers{
         font-weight: 400;
         font-size: 22px;
@@ -116,11 +120,9 @@
     }
     &>*{
         float: left;
-
     }
     .right-nav-icon-wrapper
     {
-        
         .h2,.h3,.h4,.h5,.h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
             font-size: 18px;
             font-weight: 700;
@@ -175,6 +177,17 @@
             background-color:#f4f7f6;
         }
     }
+
+    // video component with in right rail css 
+    .embed{
+        text-align: -webkit-center;
+        .video_container{
+            max-width:226px;
+              max-height:127px;
+          }
+    }
+    
+    // video css end
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {

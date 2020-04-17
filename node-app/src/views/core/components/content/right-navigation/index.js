@@ -293,17 +293,14 @@ $(document).ready(function () {
     }
      // for multiple experience fragments start
      comp.each(function(){
-        if($('.right-navigation-wrapper .cmp-container').length == 1){
-           var x = $(this).find('.light-orange');
-        if(x.length == 1){
+        if($(this).hasClass('experiencefragment')){
+           var currentElem = $(this).find('.light-orange');
+        if(currentElem.length == 1){
        var orangeBackground = $(this).find('.light-orange');
-            console.log(orangeBackground);
-            console.log("working");
            orangeBackground.removeClass('light-orange');
             $(this).addClass('light-orange');
             $(this).removeClass('col-sm-6');
             $(this).addClass('col-sm-12');
-           // $(this).css("margin-bottom":"24px");
             $(this).next().removeClass('col-sm-6');
             $(this).next().addClass('col-sm-12');
         }

@@ -40,6 +40,13 @@ public class Pagination {
 
   /** rcordPerPageStr. */
   private String rcordPerPageStr = "10"; // Default to 10 items per page
+  
+  /**
+   * Pagination constructor.
+   */
+  public Pagination() {
+	super();
+  }
 
   /**
    * Instantiates a new pagination.

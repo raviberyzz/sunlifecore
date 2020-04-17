@@ -21,7 +21,6 @@ select::-ms-expand {
     overflow-wrap: initial;
     border: 1px solid $medium-grey-background;
     border-radius: 0;
-    display: block;
     width: 100%;
     height: 48px;
     padding: 0 42px 0 16px;
@@ -56,7 +55,7 @@ select::-ms-expand {
     color: $dark-grey-color;
 }
 input[type=checkbox] {
-    margin: 0;
+    //margin: 0; commenting out because due to this checkbox is not aligned with text
     &{
         display: block;
         content: '';
@@ -139,4 +138,12 @@ input[type=radio] {
         vertical-align: super;
     }
    
+}
+//fixing checkbox to textbox alignment issue only for devices ipad pro and above
+@media (min-width: $tab-screen-max) {
+    .cmp-form-options--checkbox{
+        .cmp-form-options__field-description{
+            margin: 20px 15px 20px 0px;
+        }
+    }
 }

@@ -1,0 +1,3 @@
+<sly data-sly-use.selectorFragMap="ca.sunlife.web.cms.core.models.SelectorToExfragMapModel" />
+<sly data-sly-test.configured="${selectorFragMap.items.size>0}" data-sly-resource="${@path=selectorFragMap.fragPath, selectors='content', wcmmode='disabled'}"></sly>
+<div data-sly-test="${!configured}" class="cq-placeholder" data-emptytext="${component.title}"></div>

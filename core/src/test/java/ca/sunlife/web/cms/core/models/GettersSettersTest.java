@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import ca.sunlife.web.cms.core.beans.NewsReleases;
+import ca.sunlife.web.cms.core.beans.PageItem;
+import ca.sunlife.web.cms.core.beans.Pagination;
+import ca.sunlife.web.cms.core.beans.Release;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ ExtendWith (AemContextExtension.class)
@@ -23,9 +27,13 @@ public class GettersSettersTest {
   private FormContainer formContainer;
   private FormOptions formOptions;
   private LeftNavigationModal leftNavigationModal;
+  private NewsReleases newsReleases;
   private NewsroomAnnouncementModel newsroomAnnouncementModel;
+  private PageItem pageItem;
+  private Pagination pagination;
   private ProviderProfileModel providerProfileModel;
   private RegionLanguageMenu regionLanguageMenu;
+  private Release release;
 
   @ BeforeEach
   void setup() {
@@ -44,10 +52,13 @@ public class GettersSettersTest {
     formContainer = new FormContainer( );
     formOptions = new FormOptions( );
     leftNavigationModal = new LeftNavigationModal( );
+    newsReleases = new NewsReleases( );
     newsroomAnnouncementModel = new NewsroomAnnouncementModel( );
+    pageItem = new PageItem( );
+    pagination = new Pagination( );
     providerProfileModel = new ProviderProfileModel( );
     regionLanguageMenu = new RegionLanguageMenu( );
-    
+    release = new Release();
   }
 
   @ Test
@@ -139,6 +150,26 @@ public class GettersSettersTest {
   @ Test
   void testNewsroomAnnouncementModel() {
     TestUtils.executeTestBean(newsroomAnnouncementModel);
+  }
+  
+  @ Test
+  void testNewsReleases() {
+    TestUtils.executeTestBean(newsReleases);
+  }
+  
+  @ Test
+  void testPageItem() {
+    TestUtils.executeTestBean(pageItem);
+  }
+  
+  @ Test
+  void testPagination() {
+    TestUtils.executeTestBean(pagination);
+  }
+  
+  @ Test
+  void testRelease() {
+    TestUtils.executeTestBean(release);
   }
   
 }
