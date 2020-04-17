@@ -1051,6 +1051,11 @@
                                             cq:styleId="1582902650532"
                                             cq:styleLabel="Product box"
                                             jcr:primaryType="nt:unstructured"/>
+                                          <item9
+                                            cq:styleClasses="overview-content-wrapper"
+                                            cq:styleId="1582976767676"
+                                            cq:styleLabel="Overview highlights"
+                                            jcr:primaryType="nt:unstructured"/>  
                                     </cq:styles>
                                 </item0>
 								<item1
