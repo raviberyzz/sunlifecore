@@ -271,6 +271,11 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
+        .social-link-icon-wrapper{
+            .icon-style{
+                position: static;
+            }
+        }
     .cta-content-icon-wrapper{
         .icon-parent {
             height: 24px;
@@ -1106,14 +1111,6 @@ ul {
         }
     }
 }
-
-
-/* image responsive for images start*/
-    img{
-      max-width:100%;
-      height:auto;
-    }
-/* image responsive for images end */ 
 /*icon-text-list tablet starts here*/
 .icon-text-list{
     margin-top: 6px;
@@ -1510,7 +1507,13 @@ ul {
             }
         }
     }
-
+      .subscribe-main-content-wrapper{
+          .text{
+              .cmp-text{
+                  margin-left:87px;
+              }
+          }
+      }
       /* social icons in the body section start */
   .social-icons-center{
     ul{

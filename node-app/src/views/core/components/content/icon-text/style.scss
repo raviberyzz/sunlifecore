@@ -11,9 +11,13 @@
         }
 }
 .social-link-icon-wrapper{
-    .icon-texts{
-        display: none;
+    ul{
+         margin:16px 0px;
+        .icon-texts{
+            display: none;
+        }
     }
+   
 }
 .right-nav-icon-wrapper{
     text-align: center;
