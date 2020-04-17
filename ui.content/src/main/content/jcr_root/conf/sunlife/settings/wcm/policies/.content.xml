@@ -621,6 +621,11 @@
                                             cq:styleId="1584368882937"
                                             cq:styleLabel="Right align"
                                             jcr:primaryType="nt:unstructured"/>  
+                                         <item1
+                                            cq:styleClasses="center-img-align-position"
+                                            cq:styleId="1584393939393"
+                                            cq:styleLabel="Center align"
+                                            jcr:primaryType="nt:unstructured"/>   
                                      </cq:styles>
                                 </item11>
                             </cq:styleGroups>
@@ -1046,6 +1051,11 @@
                                             cq:styleId="1582902650532"
                                             cq:styleLabel="Product box"
                                             jcr:primaryType="nt:unstructured"/>
+                                          <item9
+                                            cq:styleClasses="overview-content-wrapper"
+                                            cq:styleId="1582976767676"
+                                            cq:styleLabel="Overview highlights"
+                                            jcr:primaryType="nt:unstructured"/>  
                                     </cq:styles>
                                 </item0>
 								<item1

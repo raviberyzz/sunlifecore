@@ -80,8 +80,7 @@
           
           
           <div class="col-md-3 col-lg-3">
-          <div data-sly-test="${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel"
-            class="desktop-sunlife-logo" data-section="header-logo" >
+          <div data-sly-test="${listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo" >
             <sly data-sly-list.links="${listModel.links}">
               <a href="${links.linkUrl @ extension = 'html' }">
                 <img class="vertical-middle-align" alt="${links.altText}" src="${links.logoImage}">
@@ -96,8 +95,7 @@
           
             <div class="utility-nav-wrapper">
             <div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
-              <ul data-sly-use.listModel="ca.sunlife.web.cms.core.models.UtilityNav" role="navigation"
-                aria-label="Helpful links">
+              <ul role="navigation" aria-label="Helpful links">
                 <sly data-sly-list.links="${listModel.navlinks}">
                   <li>
                     <a href="${links.linkUrl @ extension = 'html'}" >${links.linkName}</a>
@@ -140,8 +138,7 @@
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
               <div class="desktop-primary-navigation" data-section="nav-main">
-                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation" aria-label="Main"
-                  data-sly-use.listModel="ca.sunlife.web.cms.core.models.MegaMenuModel">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation" aria-label="Main">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
@@ -186,8 +183,7 @@
               <span class="icon-bar" id="a3">&nbsp;</span>
             </div>
           </div>
-          <div data-sly-test="${listFrom == 'yes'}" data-sly-use.listModel="ca.sunlife.web.cms.core.models.HeaderModel"
-            class="slf-header-mobile-logo" data-section="header-logo">
+          <div data-sly-test="${listFrom == 'yes'}" class="slf-header-mobile-logo" data-section="header-logo">
             <sly data-sly-list.links="${listModel.links}">
               <a href="${links.linkUrl @ extension = 'html' }">
                 <img class="vertical-middle-align" alt="sunlife logo" src="${links.logoImage}">
