@@ -1329,7 +1329,10 @@ ul {
                    }
                    .text:last-child{
                        .cmp-text{
-                           p:nth-child(n+3){
+                           p{
+                               padding-top:10px;
+                           }
+                           p:nth-of-type(n+3){
                                border-top:2px dotted $light-grey-color;
                            }
                            *:first-child{
