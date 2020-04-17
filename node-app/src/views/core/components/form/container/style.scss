@@ -274,7 +274,7 @@
                     width:285px;
                 }
             }
-            input[type=text]{
+            input[type=text],input[type=email],input[type=tel]{
                 max-width:285px;
                 width:100%;
             }
