@@ -8,19 +8,6 @@ ul {
 
 // content block with icon start
 //overview highlights triple cta css for border and spacing
-
-
-@media (min-width:$tab-screen-min){
-    .col-sm-4 {
-        .blue-icon-yellow-background {
-            .article-list-container{
-                margin-top: -25px;
-                border-right: 2px solid $medium-grey-background;
-                min-height: 250px;
-            }
-        }
-    }
-}
 .col-sm-4 {
     .blue-icon-yellow-background{
         .article-list-container{
@@ -132,6 +119,13 @@ ul {
 @media (min-width: $tab-screen-min) {
     .col-sm-4{
         .blue-icon-yellow-background{
+            .article-list-container{
+                margin-top: -25px;
+                border-right: 2px solid $medium-grey-background;
+                min-height: 250px;
+                height: 100%;
+            }
+        
             .cmp-container{
                 .overview-highlights-wrapper{
                     -webkit-box-orient: vertical;
@@ -148,7 +142,7 @@ ul {
                 }
                 .text-border-right {
                     .cmp-text {
-                        border-right: 2px solid $light-grey-20;
+                        border-right: 2px solid $medium-grey-background;
                         margin: 0;
                         height: 100%;
                     }
