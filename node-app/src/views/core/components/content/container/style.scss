@@ -8,6 +8,19 @@ ul {
 
 // content block with icon start
 //overview highlights triple cta css for border and spacing
+
+
+@media (min-width:$tab-screen-min){
+    .col-sm-4 {
+        .blue-icon-yellow-background {
+            .article-list-container{
+                margin-top: -25px;
+                border-right: 2px solid $medium-grey-background;
+                min-height: 250px;
+            }
+        }
+    }
+}
 .col-sm-4 {
     .blue-icon-yellow-background{
         .article-list-container{
@@ -119,13 +132,6 @@ ul {
 @media (min-width: $tab-screen-min) {
     .col-sm-4{
         .blue-icon-yellow-background{
-            .article-list-container{
-                margin-top: -25px;
-                border-right: 2px solid $medium-grey-background;
-                min-height: 250px;
-                height: 100%;
-            }
-        
             .cmp-container{
                 .overview-highlights-wrapper{
                     -webkit-box-orient: vertical;
@@ -142,7 +148,7 @@ ul {
                 }
                 .text-border-right {
                     .cmp-text {
-                        border-right: 2px solid $medium-grey-background;
+                        border-right: 2px solid $light-grey-20;
                         margin: 0;
                         height: 100%;
                     }
@@ -265,11 +271,6 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
-        .social-link-icon-wrapper{
-            .icon-style{
-                position: static;
-            }
-        }
     .cta-content-icon-wrapper{
         .icon-parent {
             height: 24px;
@@ -379,6 +380,27 @@ ul {
         }
     }
 }
+
+.no-padding-left-right {
+    .row{
+        div[class^="col-"]:first-child{
+            padding-left:0px;
+        }
+        div[class^="col-"]:last-child{
+            padding-right:0px;
+        }
+    }
+}
+
+  .bottom-padding{
+    padding-bottom:10px;
+    }
+    .top-padding{
+    padding-top:10px;
+    }
+    .top-bottom-padding{
+    padding:10px 0px;
+    }
 .cta-three-column-wrapper{
     border: 1px solid $light-grey-color;
     .cta-content-icon-wrapper{
@@ -600,6 +622,14 @@ ul {
         }
     }
 }
+    .social-icons-center,.social-icons-right,.social-icons-left{
+        ul{
+            margin:16px 0px;
+        }
+    }
+    .social-icons-left{
+        text-align:left;
+    }
 /* social icons in the body section end */
 /*icon-text-list desktop starts here*/
 .icon-text-list{
@@ -1105,6 +1135,14 @@ ul {
         }
     }
 }
+
+
+/* image responsive for images start*/
+    img{
+      max-width:100%;
+      height:auto;
+    }
+/* image responsive for images end */ 
 /*icon-text-list tablet starts here*/
 .icon-text-list{
     margin-top: 6px;
@@ -1329,14 +1367,14 @@ ul {
                    }
                    .text:last-child{
                        .cmp-text{
-                           p{
-                               padding-top:10px;
-                           }
-                           p:nth-of-type(n+3){
+                           p:nth-child(n+3){
                                border-top:2px dotted $light-grey-color;
                            }
                            *:first-child{
                                margin-top:24px;
+                           }
+                           p{
+                               padding-top:10px;
                            }
                        }
                    }
@@ -1504,13 +1542,7 @@ ul {
             }
         }
     }
-      .subscribe-main-content-wrapper{
-          .text{
-              .cmp-text{
-                  margin-left:87px;
-              }
-          }
-      }
+
       /* social icons in the body section start */
   .social-icons-center{
     ul{
