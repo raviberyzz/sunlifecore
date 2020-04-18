@@ -9,6 +9,18 @@ ul {
 // content block with icon start
 //overview highlights triple cta css for border and spacing
 
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){ //for tablet - increase min-height so the borders dont break
+    .col-sm-4 {
+        .blue-icon-yellow-background {
+            .article-list-container{
+                min-height: 280px;
+            }
+        }
+        .primary-blue-button .button-class, .primary-yellow-button .button-class, .secondary-button .button-class{
+            max-width: 200px;
+        }
+    }
+}
 
 @media (min-width:$tab-screen-min){
     .col-sm-4 {
@@ -36,20 +48,22 @@ ul {
         }
         .overview-highlights-wrapper {
             .icon-texts{
-                li{
-                    margin-left: -25px;
-                    margin-right: 5px;
-                }
-                li:not(:nth-last-of-type(-n+1)) {
-                    border-bottom: 2px dotted $medium-grey-background;
-                    margin-left: -32px;
-                    margin-right: 5px;
-                }
-                li {
-                    padding: 10px 0px;
-                }
                 h1,h2,h3,h4,h5,h6:first-child {
                     padding-bottom: 22px;
+                }
+                .text{
+                    li{
+                        margin-left: -25px;
+                        margin-right: 5px;
+                    }
+                    li:not(:nth-last-of-type(-n+1)) {
+                        border-bottom: 2px dotted $medium-grey-background;
+                        margin-left: -32px;
+                        margin-right: 5px;
+                    }
+                    li {
+                        padding: 10px 0px;
+                    }
                 }
             }
         }    
@@ -1827,13 +1841,14 @@ ul {
                 margin-bottom: 40px;
                 .cmp-text{
                     p:last-child{
-                            margin-bottom:0px;
+                        margin-bottom:0px;
                     }
                 }
             }
-            h2,h3,h4,h5,h6{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 font-size:18px;
                 font-weight:700;
+                margin-top: 0px;
             }
         }
         // .image-text-wrapper .side-image {
