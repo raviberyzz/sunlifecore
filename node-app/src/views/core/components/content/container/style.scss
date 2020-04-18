@@ -323,6 +323,16 @@ ul {
         padding-right: 16px;
     }
 }
+
+.yellow-icon-blue-background{
+    .social-link-icon-wrapper{
+        .icon-parent{
+            .icon-style{
+                position:static;
+            }
+        }
+    }
+}
 /* dual cta buttons and input field aligning next to one and other start */
   //  .yellow-icon-blue-background,.yellow-icon-grey-background,.blue-icon-yellow-background, .yellow-icon-white-background{
         .cta-form-wrapper{
@@ -393,13 +403,13 @@ ul {
 }
 
   .bottom-padding{
-    padding-bottom:10px;
+    padding-bottom:10px!important;
     }
     .top-padding{
-    padding-top:10px;
+    padding-top:10px!important;
     }
     .top-bottom-padding{
-    padding:10px 0px;
+    padding:10px 0px!important;
     }
 .cta-three-column-wrapper{
     border: 1px solid $light-grey-color;
@@ -725,7 +735,7 @@ ul {
     }
     .text{
         .cmp-text{
-            margin-left: 88px;
+            margin-left: 78px;
             padding-right: 16px;
         }
     }
@@ -1367,7 +1377,7 @@ ul {
                    }
                    .text:last-child{
                        .cmp-text{
-                           p:nth-child(n+3){
+                           p:nth-of-type(n+3){
                                border-top:2px dotted $light-grey-color;
                            }
                            *:first-child{
