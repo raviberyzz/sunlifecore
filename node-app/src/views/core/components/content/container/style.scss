@@ -1383,6 +1383,15 @@ ul {
                            *:first-child{
                                margin-top:24px;
                            }
+                           ul {
+                            &:first-child {
+                                ~p {
+                                    &:nth-of-type(n+2) {
+                                        border-top: 2px dotted $light-grey-color;
+                                    }
+                                }
+                            }
+                        }
                            p{
                                padding-top:10px;
                            }
