@@ -4,7 +4,7 @@ $(document).ready(function () {
         var $par = $(this);
         $(this).parent().find('a').each(function() {
             var href = $(this).attr('href');
-            if(href && (href.startsWith('http') || href.startsWith('//'))) {
+            if(href && (href.indexOf('http') == 0 || href.indexOf('//') == 0)) {
                 href = href.substr(href.indexOf('//')+2);
                 href = href.substr(href.indexOf('/'));
             }
