@@ -591,6 +591,15 @@ a.skip-main:focus, a.skip-main:active {
         text-decoration: none;
     }
 }
+#SunLifeFindAnAdvisor-modal{
+    .slf-icon {
+        background: url("/content/dam/sunlife/legacy/assets/ca/faa-modal/images/app-am-sprite-legacy.png") no-repeat;
+        display: inline-block;
+        overflow: hidden;
+        text-decoration: none;
+        vertical-align: inherit;
+    }
+} 
 @media (max-width: $mobile-screen-max){
     #SunLifeFindAnAdvisor {
         .slf-faa-input {
