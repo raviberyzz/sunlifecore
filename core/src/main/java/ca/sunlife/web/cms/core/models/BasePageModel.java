@@ -894,7 +894,7 @@ public class BasePageModel {
     logger.debug("breadCrumb: {}, pageCategory: {}, pageSubCategory: {}", breadCrumb, pageCategory,
         pageSubCategory);
     otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
-    otherUDOTagsMap.addProperty("page_category", pageCategory == null ? "" : pageCategory); // Page
+    otherUDOTagsMap.addProperty("page_category", pageCategory == null ? breadCrumb : pageCategory); // Page
                                                                                             // category
     otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page
                                                                                                      // sub
