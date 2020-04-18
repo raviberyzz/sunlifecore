@@ -649,6 +649,7 @@ ul {
     .cmp-text {
         h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
           margin-top: 0;
+        }
     }
     p {
         margin: 0;
@@ -987,7 +988,7 @@ ul {
         }
     }.col-sm-4:last-child{ //add 22px padding to last cell inorder to have all cta's equal length apart
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-            margin-bottom: 22px;
+            margin-bottom: -18px;
         }
     }
     .no-padding{
