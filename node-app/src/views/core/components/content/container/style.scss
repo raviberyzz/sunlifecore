@@ -644,6 +644,16 @@ ul {
 /*icon-text-list desktop starts here*/
 .icon-text-list{
     padding: 24px 16px !important;
+    border: none;
+    background-color: #F4F7F6;
+    .cmp-text {
+        h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+          margin-top: 0;
+    }
+    p {
+        margin: 0;
+        line-height: 24px;
+    }
     .text:first-child {
         padding-bottom: 22px;
     }
