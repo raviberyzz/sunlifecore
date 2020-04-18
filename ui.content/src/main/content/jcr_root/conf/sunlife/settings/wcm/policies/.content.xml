@@ -299,6 +299,27 @@
                                             jcr:primaryType="nt:unstructured"/>
                                      </cq:styles>
                                 </item8>
+                                <item9
+                                    cq:styleGroupLabel="Padding"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="top-padding"
+                                            cq:styleId="1579292929292"
+                                            cq:styleLabel="Top"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="bottom-padding"
+                                            cq:styleId="1579276767676"
+                                            cq:styleLabel="Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item2
+                                            cq:styleClasses="top-bottom-padding"
+                                            cq:styleId="1579777555898"
+                                            cq:styleLabel="Top and Bottom padding"
+                                            jcr:primaryType="nt:unstructured"/>       
+                                     </cq:styles>
+                                </item9>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
@@ -1067,6 +1088,11 @@
                                             cq:styleId="1580457847375"
                                             cq:styleLabel="No Padding"
                                             jcr:primaryType="nt:unstructured"/>                                   
+                                        <item1
+                                            cq:styleClasses="no-padding-left-right"
+                                            cq:styleId="1580492929292"
+                                            cq:styleLabel="No Padding Left/Right"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item1>
 								<item2
@@ -1390,8 +1416,13 @@
                                                  cq:styleClasses="social-icons-right"
                                                  cq:styleId="1583391919191"
                                                  cq:styleLabel="Right"
-                                                 jcr:primaryType="nt:unstructured"/>   
-                                            </cq:styles>
+                                                 jcr:primaryType="nt:unstructured"/>
+                                            <item2
+                                                 cq:styleClasses="social-icons-left"
+                                                 cq:styleId="1583338383838"
+                                                 cq:styleLabel="Left"
+                                                 jcr:primaryType="nt:unstructured"/>    
+                                           </cq:styles>
                                 	</item5>
                                 </cq:styleGroups>
                             </policy_iconText>
