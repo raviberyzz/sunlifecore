@@ -49,7 +49,7 @@
                         <div class="editorial">
                             <a href="${pageLink @ extension = 'html'}">${headline}</a><br />
                         </div>
-                        <p>${description}</p>
+                        ${description @context='html'}
                     </div>
                 </div>
             </sly>
@@ -80,7 +80,7 @@
                                 <h2>
                                     <a href="${pageLink @ extension = 'html'}">${headline}</a>
                                 </h2>
-                                <p>${description}</p>
+                                ${description @context='html'}
                             </div>
                         </li>
                     </sly>

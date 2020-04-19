@@ -91,12 +91,12 @@
                             valueType="string"/>
                         <articleMiniDescription
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Article Mini Description"
+                            default-mime-type="text/html"
                             fieldDescription="Enter Article Mini Description"
-                            fieldLabel="Article Mini Description"
                             listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
+                            metaType="text-multi"
                             name="articleMiniDescription"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
