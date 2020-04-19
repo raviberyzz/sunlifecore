@@ -155,6 +155,7 @@ public class ArticleModelTest {
 	@ BeforeEach
 	void setup() {
 		MockitoAnnotations.initMocks(this);
+		articleModel.setResourceType("/content/sunlife/external/ca/en/tools-and-resources/money-and-finances/investing-basics/3-market-trends-to-watch-for-the-rest-of-2017-video/jcr:content/root/layout_container/container1/layout_container/container1/article");
 	}
 
 	/**

@@ -420,6 +420,20 @@ public class ArticleModel {
   }
 
   /**
+   * @return the resourceType
+  */
+  public String getResourceType() {
+	return resourceType;
+  }
+
+  /**
+   * @param resourceType the resourceType to set
+  */
+  public void setResourceType(String resourceType) {
+	this.resourceType = resourceType;
+  }
+
+  /**
    * Inits the model.
    */
   @ PostConstruct
