@@ -30,6 +30,10 @@
                                     cq:policy="sunlife/apac/hk/components/content/container/policy_container"
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <embed
+                                    cq:policy="sunlife/apac/hk/components/content/embed/policy_embed"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
                                 <icon-text
                                     cq:policy="sunlife/apac/hk/components/content/icon-text/policy_iconText"
                                     jcr:primaryType="nt:unstructured"
