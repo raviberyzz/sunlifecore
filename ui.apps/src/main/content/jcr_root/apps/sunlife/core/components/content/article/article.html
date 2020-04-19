@@ -18,6 +18,7 @@
         </figure>
         <div class="article-body">
             ${article.articleData.articleMainDescription  @context='html'}
+            <div><sly data-sly-resource="${'layout-container' @ resourceType=article.layoutResourceType}"></sly></div>
         </div>
         <div class="article-rating" data-sly-test="${article.ratingRequired == 'true'}">
             <div class="mar-bottom-30" id="pd_rating_holder_${article.articleID}"></div>
