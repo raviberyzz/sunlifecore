@@ -99,12 +99,15 @@
         }
         .cmp-text{
             padding:24px 0px 32px 0px;
-
             p:last-child{
                 margin:0px;
                 .button-class{
                     margin-bottom:0px!important;
                 }
+            }
+            h2,h3,h4,h5,h6,p:first-child{
+                font-size:1.125rem;
+                font-weight: bold;
             }
         }
     }
@@ -112,7 +115,42 @@
         .light-orange{
             margin-top:0px;
         }
+        .form-container-component{
+            &:first-child {
+                padding-top:24px;
+                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,p:first-child{
+                    margin:0px;
+                    }
+            }
+        }
+        .icon-text{
+            &:first-child {
+                padding-top:24px;
+                h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,p:first-child{
+                margin:0px;
+                }
+        }
+        }
+        .text{
+            &:first-child {
+                padding-top:24px;
+                h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,p:first-child{
+                margin:0px;
+                }
+         }
+        }
+        .text,.icon-text,.form-container-component{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,p:first-child{
+                margin:0px!important;
+                }
+        }
+        .text{
+            &:last-child{
+                padding:40px 10px;
+            }
+        }
     }
+      
     .phone-numbers{
         font-weight: 400;
         font-size: 22px;
@@ -221,7 +259,17 @@
               }
           }
       }  
-
+      .cmp-container {
+		>.form-container-component {
+			padding-top: 24px;
+		}
+		>.icon-text {
+			padding-top: 24px;
+		}
+		>.text {
+			padding-top: 24px;
+		}
+	 }
     }
 }
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max)
