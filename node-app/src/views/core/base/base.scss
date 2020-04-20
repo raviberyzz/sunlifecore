@@ -549,3 +549,73 @@ a.skip-main:focus, a.skip-main:active {
 }
 
 /*contact us box styles end here */
+
+/* Sunlife find an advisor css starts*/
+#SunLifeFindAnAdvisor{
+    text-align: -webkit-center;
+    label {
+        font-family: "sunlife-sans" !important;
+        font-size: 20px;
+        font-weight: normal;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .slf-faa-input {
+        line-height: 40px !important;
+        width: auto;
+        border: none;
+        margin-bottom: 20px !important;
+    }
+    .btn-blue {
+        background-color: #004C6C;
+        color: #ffffff;
+        line-height: 26px;
+        min-height: 48px;
+        min-width: 136px;
+        max-width: 275px;
+        border-radius: 4px;
+        padding: 6px 16px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        font-weight: 700;
+        display: inline-flex !important;
+        flex-direction: column;
+        justify-content: center;
+        display: inline-block;
+        text-decoration: none;
+    }
+    .btn-blue:hover {
+        background-color: #4A7283;
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+#SunLifeFindAnAdvisor-modal{
+    .slf-icon {
+        background: url("/content/dam/sunlife/legacy/assets/ca/faa-modal/images/app-am-sprite-legacy.png") no-repeat;
+        display: inline-block;
+        overflow: hidden;
+        text-decoration: none;
+        vertical-align: inherit;
+    }
+} 
+@media (max-width: $mobile-screen-max){
+    #SunLifeFindAnAdvisor {
+        .slf-faa-input {
+            width: 80%;
+        }
+        #slf-locate-advisors-btn {
+            align-items: center;
+            width: 80%;
+        }
+    }
+}
+@media (min-width: 576px){
+    #SunLifeFindAnAdvisor{
+        #consumerPC {
+            margin-right: 10px;
+        }
+    }
+}
+/* Sunlife find an advisor css ends*/

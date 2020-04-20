@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -148,8 +149,10 @@ public class CNWNewsServiceImpl implements CNWNewsService {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());
           o.setReleaseDate(
               new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
-          o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
-              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
+          String headlineURL = o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
+        	  .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
+          headlineURL = Normalizer.normalize(headlineURL, Normalizer.Form.NFD);
+          o.setHeadlineUrl(headlineURL);
         } catch (final ParseException e) {
           logger.error("Error :: parsing the release date {}", e);
           return;
@@ -217,8 +220,10 @@ public class CNWNewsServiceImpl implements CNWNewsService {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());
           o.setReleaseDate(
               new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
-          o.setHeadlineUrl(o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
-              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT));
+          String headlineURL = o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
+        	  .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
+	      headlineURL = Normalizer.normalize(headlineURL, Normalizer.Form.NFD);
+          o.setHeadlineUrl(headlineURL);
         } catch (final ParseException e) {
           logger.error("Error :: parsing the release date {}", e);
         }

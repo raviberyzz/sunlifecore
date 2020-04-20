@@ -9,6 +9,18 @@ ul {
 // content block with icon start
 //overview highlights triple cta css for border and spacing
 
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){ //for tablet - increase min-height so the borders dont break
+    .col-sm-4 {
+        .blue-icon-yellow-background {
+            .article-list-container{
+                min-height: 280px;
+            }
+        }
+        .primary-blue-button .button-class, .primary-yellow-button .button-class, .secondary-button .button-class{
+            max-width: 200px;
+        }
+    }
+}
 
 @media (min-width:$tab-screen-min){
     .col-sm-4 {
@@ -36,20 +48,22 @@ ul {
         }
         .overview-highlights-wrapper {
             .icon-texts{
-                li{
-                    margin-left: -25px;
-                    margin-right: 5px;
-                }
-                li:not(:nth-last-of-type(-n+1)) {
-                    border-bottom: 2px dotted $medium-grey-background;
-                    margin-left: -32px;
-                    margin-right: 5px;
-                }
-                li {
-                    padding: 10px 0px;
-                }
                 h1,h2,h3,h4,h5,h6:first-child {
                     padding-bottom: 22px;
+                }
+                .text{
+                    li{
+                        margin-left: -25px;
+                        margin-right: 5px;
+                    }
+                    li:not(:nth-last-of-type(-n+1)) {
+                        border-bottom: 2px dotted $medium-grey-background;
+                        margin-left: -32px;
+                        margin-right: 5px;
+                    }
+                    li {
+                        padding: 10px 0px;
+                    }
                 }
             }
         }    
@@ -115,7 +129,26 @@ ul {
     }
 
 }
-
+/* experience fragment dual cta code start*/
+.row.flex-height {
+	div[class^='col-'] {
+		.experiencefragment {
+			height: 100%;
+			.xf-content-height {
+				height: 100%;
+				.aem-Grid {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+.experiencefragment {
+	.cta-three-column-wrapper {
+		height: calc(100% - 40px) !important;
+	}
+}
+/* experience fragment dual cta code start*/
 // content block with icon end
 
  /* Over View Highlight Style*/
@@ -271,11 +304,6 @@ ul {
             bottom: 56px;
             pointer-events: none;
         }
-        .social-link-icon-wrapper{
-            .icon-style{
-                position: static;
-            }
-        }
     .cta-content-icon-wrapper{
         .icon-parent {
             height: 24px;
@@ -326,6 +354,16 @@ ul {
     .cmp-text{
         padding-left: 16px;
         padding-right: 16px;
+    }
+}
+
+.yellow-icon-blue-background{
+    .social-link-icon-wrapper{
+        .icon-parent{
+            .icon-style{
+                position:static;
+            }
+        }
     }
 }
 /* dual cta buttons and input field aligning next to one and other start */
@@ -385,6 +423,27 @@ ul {
         }
     }
 }
+
+.no-padding-left-right {
+    .row{
+        div[class^="col-"]:first-child{
+            padding-left:0px;
+        }
+        div[class^="col-"]:last-child{
+            padding-right:0px;
+        }
+    }
+}
+
+  .bottom-padding{
+    padding-bottom:10px!important;
+    }
+    .top-padding{
+    padding-top:10px!important;
+    }
+    .top-bottom-padding{
+    padding:10px 0px!important;
+    }
 .cta-three-column-wrapper{
     border: 1px solid $light-grey-color;
     .cta-content-icon-wrapper{
@@ -606,10 +665,35 @@ ul {
         }
     }
 }
+    .social-icons-center,.social-icons-right,.social-icons-left{
+        ul{
+            margin:16px 0px;
+        }
+    }
+    .social-icons-left{
+        text-align:left;
+    }
 /* social icons in the body section end */
 /*icon-text-list desktop starts here*/
 .icon-text-list{
-    margin-top: 22px;
+    padding: 24px 16px !important;
+    border: none;
+    background-color: #F4F7F6;
+    .cmp-text {
+        h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+          margin-top: 0;
+        }
+    }
+    p {
+        margin: 0;
+        line-height: 24px;
+    }
+    .text:first-child {
+        padding-bottom: 22px;
+    }
+    .text:last-child {
+        padding-top: 14px;
+    }
     .layout-container{
         .col-sm-6{
             padding: 0;
@@ -617,32 +701,39 @@ ul {
                 .icon-parent{
                     margin-right: 16px;
                     float:left;
-                    margin-bottom:0;
+                    margin-bottom:24px;
                     .icon-style{
                         font-size: 2rem;
-                        background: none;
-                        color: $medium-blue-color;
+                        background: linear-gradient($medium-blue-color, $blue-gradient-color);
+                        color: $white-shade;
                         height: 57px;
                         width: 57px;
-                        padding: 7px;
-                        border: 5px solid $dark-grey-color;
+                        padding: 10px;
                         pointer-events: none;
                     }
-                    .icon-texts{
-                        padding-bottom: 16px;
-                    }
+                }
+                .icon-texts{
+                    padding-bottom: 0 !important;
                 }
             }
         }
+        .col-sm-6:first-child {
+            padding-right: 24px; 
+        }
+        .col-sm-6:last-child {
+            padding-left: 24px; 
+        }
     }
-    .layout-container .col-sm-6:first-child{
-        padding-right: 24px;
+}
+@media (min-width:320px) and (max-width:767px){
+    .icon-text-list .icon-text{
+        padding-bottom:16px;
+        }
+    .icon-text-list .text:last-child {
+        padding-top: 24px;
     }
-    .layout-container .col-sm-6:last-child{
-        padding-left: 24px;
-    }
-    .text{
-        margin-top: 24px;
+    .icon-text-list{
+        text-align: center;
     }
 }
 /*icon-text-list desktop ends here*/
@@ -701,7 +792,7 @@ ul {
     }
     .text{
         .cmp-text{
-            margin-left: 88px;
+            margin-left: 78px;
             padding-right: 16px;
         }
     }
@@ -930,7 +1021,7 @@ ul {
         }
     }.col-sm-4:last-child{ //add 22px padding to last cell inorder to have all cta's equal length apart
         .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
-            margin-bottom: 22px;
+            margin-bottom: -18px;
         }
     }
     .no-padding{
@@ -1111,6 +1202,14 @@ ul {
         }
     }
 }
+
+
+/* image responsive for images start*/
+    img{
+      max-width:100%;
+      height:auto;
+    }
+/* image responsive for images end */ 
 /*icon-text-list tablet starts here*/
 .icon-text-list{
     margin-top: 6px;
@@ -1335,11 +1434,23 @@ ul {
                    }
                    .text:last-child{
                        .cmp-text{
-                           p:nth-child(n+3){
+                           p:nth-of-type(n+3){
                                border-top:2px dotted $light-grey-color;
                            }
                            *:first-child{
                                margin-top:24px;
+                           }
+                           ul {
+                            &:first-child {
+                                ~p {
+                                    &:nth-of-type(n+2) {
+                                        border-top: 2px dotted $light-grey-color;
+                                    }
+                                }
+                            }
+                        }
+                           p{
+                               padding-top:10px;
                            }
                        }
                    }
@@ -1507,13 +1618,7 @@ ul {
             }
         }
     }
-      .subscribe-main-content-wrapper{
-          .text{
-              .cmp-text{
-                  margin-left:87px;
-              }
-          }
-      }
+
       /* social icons in the body section start */
   .social-icons-center{
     ul{
@@ -1598,7 +1703,7 @@ ul {
     p{
         font-size: 1rem;
     }
-    h1, h2, h3, h4, h5, h6 {
+    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6 {
         font-size: 1.125rem;
         line-height: 1.1;
         margin: 0;
@@ -1689,7 +1794,7 @@ ul {
             display: none;
         }
         .icon-texts {
-            h1, h2, h3, h4, h5, h6{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 padding: 0 16px;
             }
             p{
@@ -1755,13 +1860,14 @@ ul {
                 margin-bottom: 40px;
                 .cmp-text{
                     p:last-child{
-                            margin-bottom:0px;
+                        margin-bottom:0px;
                     }
                 }
             }
-            h2,h3,h4,h5,h6{
+            h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                 font-size:18px;
                 font-weight:700;
+                margin-top: 0px;
             }
         }
         // .image-text-wrapper .side-image {
@@ -1880,27 +1986,6 @@ ul {
 }
 
    /* orange background for right nav wrapper in the body section end */
-.right-navigation-wrapper{
-    .cmp-container{
-        .experiencefragment{
-            padding:0px;
-           > .icon-text, > .text, > .form-container-component, > .separator, > .link-list{
-                padding: 0px 15px;
-            }
-            .xf-content-height{
-                .light-orange{
-                    border-top: 24px solid $white-shade;
-                    border-bottom: 24px solid $white-shade;
-                }
-                > .aem-Grid{
-                    > .icon-text, > .text{
-                        padding:0px 15px;
-                    }
-                }
-            }
-        }
-    }
-}
 
 /*****************************************************************
 *****************************************************************/
@@ -2100,10 +2185,6 @@ ul {
 
 .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
     display: inherit; }
-}
-
-.content-block-icon + .content-highlight {
-    padding-top:40px;   /* footnote 40px */
 }
 
 /** Browser Specific CSS ends here **/

@@ -84,4 +84,16 @@ $(document).ready(function () {
             $('.full-header').parents('.experiencefragment').next().attr('id','main-content');
         }
     }
+    
+    //474 FIX - RELATED TO ACCESSIBILITY
+    $('#sun-search').on('hidden.bs.collapse', function () {
+		document.getElementById("search-btn").focus()
+	});
+    
+    var liEle = $("#sun-language .content-language li").last()[0];
+    var finalAnchorEle = $(liEle).find('a:first');
+    $(finalAnchorEle).on('focusout', function (e) {
+            $('#sun-language').collapse("hide");
+     $('#language-btn').focus();
+    });
 });
