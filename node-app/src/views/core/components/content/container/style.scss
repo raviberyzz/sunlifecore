@@ -1044,6 +1044,18 @@ ul {
         border-right: 1px solid $light-grey-color;
         border-left: 1px solid $light-grey-color;
     }
+    //company hightlights show the horizontal separator in mobile
+    .company-highlight-yellow-grey-background {
+        .col-sm-4:not(:last-child){
+            .container-component:after {
+                border: 1px solid #e5e7e9;
+                width: 30%;
+                margin: auto;
+                content: "";
+                display: inline-block;
+            }
+        }
+    } 
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         padding-top: 24px;
         .cmp-text{
@@ -1142,6 +1154,7 @@ ul {
      }
    }
 /* social icons in the body section end */
+    
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
     .content-highlight {
@@ -2166,7 +2179,7 @@ ul {
                     display: inherit!important;
                     flex-direction: none;
                     justify-content: space-between;
-                    word-break: break-all;
+                    word-break: break-word;
                     p {
                         margin-bottom:20px;
                     }
