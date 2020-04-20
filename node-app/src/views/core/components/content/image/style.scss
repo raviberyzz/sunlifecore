@@ -9,11 +9,6 @@
         overflow: hidden;
     }
 
-    @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
-        .img{
-            max-width: 100%;
-        }
-    }
 /* image responsive for images start*/
 /*img{
     max-width:100%;
