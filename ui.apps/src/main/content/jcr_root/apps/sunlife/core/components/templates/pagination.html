@@ -17,10 +17,18 @@
                 </sly>
                 <sly data-sly-test="${paginationObj.curPage > 1}">
                     <li class="previous ${previousCss}">
-                        <a x-cq-linkchecker="skip" href="${pageUrl}/${paginationObj.prevPage}/">
-                            <span class="fa fa-angle-left" aria-hidden="true"></span>
-                            <span>${'Prev' @ i18n}</span>
-                        </a>
+                    	<sly data-sly-test="${paginationObj.prevPage > 1}">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}/${paginationObj.prevPage}/">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span>${'Prev' @ i18n}</span>
+                            </a>
+                        </sly>
+                        <sly data-sly-test="${paginationObj.prevPage == 1}">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}/">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span>${'Prev' @ i18n}</span>
+                            </a>
+                        </sly>
                     </li>
                 </sly>
                 <li class="link-to-first ${firstPageCss}">
