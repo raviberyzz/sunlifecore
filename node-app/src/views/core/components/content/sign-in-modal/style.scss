@@ -56,14 +56,14 @@
         width: 317px;
         padding: 0 10px;
         height:48px;
-        border: 1px solid $medium-grey-background;
+        border: 1px solid $light-grey-color;
     }
     .password-input {
         width: 317px;
         margin-bottom: 16px;
         padding: 0 10px;
         height: 48px;
-        border: 1px solid $medium-grey-background;
+        border: 1px solid $light-grey-color;
         color: $dark-grey-color;
     }
     .login-container {
@@ -168,7 +168,7 @@
     }
     .remeberme {
         font-size: 1rem;
-        font-weight: 700;
+        font-weight:700;
         margin:4px 0 0 20px;
     }
     input[type=checkbox]{
