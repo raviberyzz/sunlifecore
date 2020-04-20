@@ -22,8 +22,37 @@
         }
 
     }
+    .tab-accordian-heading[aria-expanded="false"] {
+		&:before {
+			content: '';
+		}
+		a {
+			span {
+				&:before {
+					content: "\f0da";
+					font-family: FontAwesome;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
+	.tab-accordian-heading[aria-expanded="true"] {
+		&:before {
+			content: '';
+		}
+		a {
+			span {
+				&:before {
+					content: "\f0d7";
+					font-family: FontAwesome;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
     
 }
+
 .news-article{
     border: 2px solid #E1E1E1;
     padding: 20px 20px 20px 15px;
