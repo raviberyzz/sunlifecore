@@ -129,7 +129,26 @@ ul {
     }
 
 }
-
+/* experience fragment dual cta code start*/
+.row.flex-height {
+	div[class^='col-'] {
+		.experiencefragment {
+			height: 100%;
+			.xf-content-height {
+				height: 100%;
+				.aem-Grid {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+.experiencefragment {
+	.cta-three-column-wrapper {
+		height: calc(100% - 40px) !important;
+	}
+}
+/* experience fragment dual cta code start*/
 // content block with icon end
 
  /* Over View Highlight Style*/
