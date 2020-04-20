@@ -1394,7 +1394,6 @@ ul {
         }
     }
 }
-
 /* styles for mobile app end  */
 
 /* styles for product box start */
@@ -2005,6 +2004,15 @@ ul {
 
            /****** styles for mobile start here *******/
         @media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+            .layout-container.medium-yellow {
+                .col-xs-12{
+                    .image{
+                            .cmp-image__image{
+                                width: 100%;
+                        }
+                    }
+                }
+            }
             /* mobile app styles for mobile start here */
             .mobileapp{
                 .col-sm-6{
