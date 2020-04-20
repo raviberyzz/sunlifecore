@@ -693,9 +693,6 @@ ul {
                 }
                 .icon-texts{
                     padding-bottom: 0 !important;
-                    margin-bottom: 10px;
-                    justify-content: left;
-                    display: flex;
                 }
             }
         }
@@ -707,7 +704,21 @@ ul {
         }
     }
 }
-@media (min-width:320px) and (max-width:767px){
+//for tablet and above
+@media (min-width:$tab-screen-min){
+    .icon-text-list{
+        .col-sm-6{
+            .mega-menu-icon-wrapper{
+                .icon-texts{
+                    margin-bottom: 10px;
+                    justify-content: left;
+                    display: flex;
+                }
+            }
+        } 
+    }
+}
+@media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .icon-text-list .icon-text{
         padding-bottom:16px;
         }
