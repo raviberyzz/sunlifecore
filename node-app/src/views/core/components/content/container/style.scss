@@ -160,14 +160,12 @@ ul {
                 .text {
                     height: 100%;
                 }
-                .text-border-right {
-                    .cmp-text {
-                        border-right: 2px solid $light-grey-20;
-                        margin: 0;
-                        height: 100%;
-                    }
-                }
             } 
+        }
+        .text-border-right {
+            .icon-texts {
+                border-right: 2px solid $medium-grey-background;
+            }
         }
     }
     .overview-content-wrapper {
