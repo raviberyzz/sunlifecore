@@ -33,7 +33,6 @@ $(document).ready(function () {
             $('.yellow-background-wrapper').siblings('.layout-container').css('z-index','1');
             var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
             $('.yellow-background-wrapper').css('padding-top',layoutHeight);
-            $('.yellow-background-wrapper').css('padding-bottom',"27px");
         }
         else{
             $('.yellow-background-wrapper').siblings('.layout-container').css('position','');
@@ -42,7 +41,6 @@ $(document).ready(function () {
             $('.yellow-background-wrapper').siblings('.layout-container').css('margin-top','0px');
 			$('.yellow-background-wrapper').css('z-index','0');
             $('.yellow-background-wrapper').css('padding-top','48px');
-            $('.yellow-background-wrapper').css('padding-bottom',"48px");
         }
     }
 })
