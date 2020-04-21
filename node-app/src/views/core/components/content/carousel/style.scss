@@ -12,7 +12,10 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    position:relative;
+    position: absolute;
+    float: left;
+    left: 50%;
+    transform: translateX(-50%);
     bottom:30px;
   }
   .cmp-carousel__indicator {
@@ -36,5 +39,6 @@
   @media (max-width: $mobile-screen-max){
     .carousel-wrapper .cmp-carousel__indicators{
       padding-bottom:8px;
+      position: relative;
     }
   }
