@@ -48,4 +48,9 @@
     .page-separator {
         width: 75%;
     }
-  }
+}
+@media (max-width:767px){}//added to remove gap between columns for defect 662
+    .yellow-horizontal-separator{
+        display: block;
+        margin: 0 auto;
+}
