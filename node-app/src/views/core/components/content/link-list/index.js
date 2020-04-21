@@ -79,10 +79,10 @@ function mobileEditorial(){
         selected.attr('selected','selected');
         $('.list-div form').attr('action', selectedVal);
    })
-   $('.Editorial-form-button').click(function(){
-		  console.log($('.Editorial-form-input select').value);
+		/*  $('.Editorial-form-button').click(function(){
+				console.log($('.Editorial-form-input select').value);
 
-   })
+		}) */
 }
 mobileEditorial();
 $(window).resize(mobileEditorial);
