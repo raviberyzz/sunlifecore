@@ -30,7 +30,7 @@
         margin: 0;
         line-height: 26px;
     }
-    .coverage-period {
+    p {
         color: $dark-grey-color;
         font-size: 16px;
         margin-top: 5px;
@@ -39,6 +39,8 @@
     }
     ul {
         margin-left: 14px;
+        list-style: none;
+        padding: 0;
         li::before {
             content: "\2022";
             color: $blue-gradient-color;
@@ -56,5 +58,19 @@
         top: 0;
         left: 0;
         text-indent: -100000px;
+    }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max)
+{
+    .layout-container.product-card-wrapper{
+        div[class^="col-"]{
+           width: 100% !important;
+        }
+    }
+    .product-card-wrapper{
+        .imageCard{
+            display: none;
+        }
     }
 }
