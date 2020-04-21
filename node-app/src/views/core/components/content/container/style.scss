@@ -11,11 +11,6 @@ ul {
 
 @media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){ //for tablet - increase min-height so the borders dont break
     .col-sm-4 {
-        .blue-icon-yellow-background {
-            .article-list-container{
-                min-height: 280px;
-            }
-        }
         .primary-blue-button .button-class, .primary-yellow-button .button-class, .secondary-button .button-class{
             max-width: 200px;
         }
@@ -28,7 +23,7 @@ ul {
             .article-list-container{
                 margin-top: -25px;
                 border-right: 2px solid $medium-grey-background;
-                min-height: 250px;
+                height: 100%;
             }
         }
     }
@@ -51,22 +46,27 @@ ul {
                 h1,h2,h3,h4,h5,h6:first-child {
                     padding-bottom: 22px;
                 }
-                .text{
-                    li{
-                        margin-left: -25px;
-                        margin-right: 5px;
-                    }
-                    li:not(:nth-last-of-type(-n+1)) {
-                        border-bottom: 2px dotted $medium-grey-background;
-                        margin-left: -32px;
-                        margin-right: 5px;
-                    }
-                    li {
-                        padding: 10px 0px;
-                    }
-                }
             }
         }    
+    }
+}
+.overview-content-wrapper{
+    .blue-icon-yellow-background{
+        .text{
+            ul{
+                margin-top: -25px;
+            }
+            li{
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+            li:not(:nth-last-of-type(-n+1)) {
+                border-bottom: 2px dotted $medium-grey-background;
+            }
+            li {
+                padding: 10px 0px;
+            }
+        }
     }
 }
 @media (max-width:$mobile-screen-max){
@@ -179,14 +179,12 @@ ul {
                 .text {
                     height: 100%;
                 }
-                .text-border-right {
-                    .cmp-text {
-                        border-right: 2px solid $light-grey-20;
-                        margin: 0;
-                        height: 100%;
-                    }
-                }
             } 
+        }
+        .text-border-right {
+            .icon-texts {
+                border-right: 2px solid $medium-grey-background;
+            }
         }
     }
     .overview-content-wrapper {
@@ -568,7 +566,7 @@ ul {
                 display: flex !important;
                 flex-direction: column;
                 justify-content: space-between;
-                word-break: break-all;
+                word-break: break-word;
             
             }
         }
@@ -725,7 +723,21 @@ ul {
         }
     }
 }
-@media (min-width:320px) and (max-width:767px){
+//for tablet and above
+@media (min-width:$tab-screen-min){
+    .icon-text-list{
+        .col-sm-6{
+            .mega-menu-icon-wrapper{
+                .icon-texts{
+                    margin-bottom: 10px;
+                    justify-content: left;
+                    display: flex;
+                }
+            }
+        } 
+    }
+}
+@media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .icon-text-list .icon-text{
         padding-bottom:16px;
         }
@@ -1065,6 +1077,18 @@ ul {
         border-right: 1px solid $light-grey-color;
         border-left: 1px solid $light-grey-color;
     }
+    //company hightlights show the horizontal separator in mobile
+    .company-highlight-yellow-grey-background {
+        .col-sm-4:not(:last-child){
+            .container-component:after {
+                border: 1px solid #e5e7e9;
+                width: 30%;
+                margin: auto;
+                content: "";
+                display: inline-block;
+            }
+        }
+    } 
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         padding-top: 24px;
         .cmp-text{
@@ -1163,6 +1187,7 @@ ul {
      }
    }
 /* social icons in the body section end */
+    
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
     .content-highlight {
@@ -2166,7 +2191,7 @@ ul {
                     display: inherit!important;
                     flex-direction: none;
                     justify-content: space-between;
-                    word-break: break-all;
+                    word-break: break-word;
                     p {
                         margin-bottom:20px;
                     }
