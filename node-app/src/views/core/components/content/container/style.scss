@@ -1390,6 +1390,9 @@ ul {
 
 /* styles for mobile app start */
 .mobileapp {
+    .col-sm-4{
+        padding-left: 46px;
+    }
     .col-sm-6:first-of-type{
         .image{
             text-align: -webkit-center;
@@ -1418,7 +1421,7 @@ ul {
 		width: 2em;
 		height: 2em;
 		line-height: 2em;
-		background: linear-gradient(#FFCB05, #EAAB00);
+		background: linear-gradient($medium-yellow-background, $primary-yellow-background);
         border-radius: 50%;
         pointer-events: none;
     }
@@ -1439,6 +1442,7 @@ ul {
         p:last-child{
             line-height:23px;
             display:table;
+            color: $light-grey-20;
         }
     }
     .icon-text {
@@ -1450,13 +1454,6 @@ ul {
             }
         }
     }
-	.cmp-container {
-		.aem-GridColumn--default--8 {
-			.cmp-container {
-				margin-right: 56px;
-			}
-		}
-	}
 }
 @media (max-width: $tab-screen-max) and (min-width: $tab-screen-min){
     .mobileapp{
@@ -1467,7 +1464,14 @@ ul {
         }
     }
 }
-
+//padding btw text and img total of 56px for desktop
+@media (min-width: $desktop-screen-min){
+   .mobileapp {
+        .col-sm-4{
+            padding-left: 46px;
+        }
+    }
+}
 /* styles for mobile app end  */
 
 /* styles for product box start */
