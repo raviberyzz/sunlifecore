@@ -6,6 +6,65 @@ ul {
     padding-bottom: 24px;
 }
 
+// bright solutions starts here
+.cta-home-wrapper{
+    background-color:$medium-yellow-background;
+    .row{
+        width:95%;
+        margin-top: -18px;
+        float: left;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.bright-solutions-wrapper{
+    .bc_submit_btn .btn-blue{
+        background: $blue-gradient-color !important;
+        color: $white-shade !important;
+        border: 2px solid $blue-gradient-color;
+        font-size: 1rem !important;
+        padding: 7px 19px !important;
+        margin: 0 !important;
+        min-height: 40px !important;
+        white-space: normal;
+        font-family: 'sunlife-sans';
+        font-weight: 700;
+        border-radius: 0 !important;
+    }
+    .cmp-text p{
+        margin:0;
+    }
+} 
+
+.no-padding .yellow-icon-white-background{
+    .cmp-text h2{
+        margin-top:16px;
+    }
+    .cmp-text > :last-child .primary-blue-button-rte{
+        margin-top:14px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+} 
+
+@media (max-width: $mobile-screen-max) {
+    .bright-solutions-wrapper .bc_submit_btn .btn-blue{
+        width:80%;
+        margin-bottom:20px !important;
+    }
+    .cta-home-wrapper{
+        background-color:$white-shade;
+        .row{
+            margin-top:0;
+            width:100%;                  
+        }
+    }
+}
+// bright solutions ends here
+
 // content block with icon start
 //overview highlights triple cta css for border and spacing
 
