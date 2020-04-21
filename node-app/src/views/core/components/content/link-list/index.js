@@ -28,41 +28,65 @@ $(document).ready(function () {
 			$(this).parent().addClass("selectedlink");
 		}
 	})
-   // editorial navigation logic starts here
-   function mobileEditorial(){
-		if($(window).width() < 768){
-			if($(".editorial-nav-desktop-wrapper").length){
-				if( $(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").length){
-				$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").remove();
-				}
-			console.log("working2");
-				var items=[];
-				var mobileNavigation = "<form><div><label class='sr-only'>Select a topic</label><select></select></div><div><button><span class='fa fa-chevron-right'></span></button></div></form>";
-				$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").after(mobileNavigation);
-				$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled li").each(function(index){
-				items.push($(this).text());
+// editorial navigation logic starts here
+function mobileEditorial(){
+	if($(window).width() < 768){
+		 var editorialLinks=[];
+		  var linkHrefs = [];
+		if($(".editorial-nav-desktop-wrapper").length){
+			if( $(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").length){
+			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").remove();
+			}
 
-			})
-				for (i=0;i<items.length;i++){
+			var editorialLists=[];
+			var mobileNavigation = "<form action method='post'><div><label class='sr-only'>Select a topic</label><select class='form-control cta-input list-topic-dropdown'></select></div><div><button><span class='fa fa-chevron-right'></span></button></div></form>";
+			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").after(mobileNavigation);
+            $('.Editorial-form-input select').addClass('form-control cta-input list-topic-dropdown');
 
-					var option = "<option></option>";
-					var options = $(".links .list-div form select").append(option);
-					var options = $(".links .list-div form select option");
-					options[i].append(items[i]);
-				}
-		    } 
+			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled li").each(function(index){
+			/*editorialLists.push($(this).text()); */
+			 var editorialLinks = $(this).children();
+			   editorialLists.push(editorialLinks.text());
+				  linkHrefs.push(editorialLinks.attr('href'));
+		})
+			console.log(linkHrefs);
+			for (i=0;i<editorialLists.length;i++){
+				var option = "<option></option>";
+				var options = $(".links .list-div form select").append(option);
+				var options = $(".links .list-div form select option");
+				options[i].append(editorialLists[i]);
+				   options[i].setAttribute('value',linkHrefs[i]);
+			}
+		} 
 
-			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").css("display","none");
-			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:first-child").addClass('Editorial-form-input');
-			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:nth-child(2)").addClass('primary-blue-button-form Editorial-form-button');
+		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").css("display","none");
+		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:first-child").addClass('Editorial-form-input');
+		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:nth-child(2)").addClass('primary-blue-button-form Editorial-form-button');
+        $('.Editorial-form-button button').attr('id','list-topic-btn');
+        $('.Editorial-form-button button').attr('type','submit');
+        $('#list-topic-btn').click(function(){
+              console.log('button clicked');
+        })
 
-		} else{
-		  $(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").css("display","inline-flex");
-			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").css("display", "none");
-		}
-    }
-    mobileEditorial();
-    $(window).resize(mobileEditorial);
+	} else{
+		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").css("display","inline-flex");
+		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form").css("display", "none");
+	}
+	$('.Editorial-form-input select').change(function(){
+		  console.log($(this).children("option:selected").val());
+        selectedVal = $(this).children("option:selected").val()
+        var selected = $(this).children("option:selected");
+
+        selected.attr('selected','selected');
+        $('.list-div form').attr('action', selectedVal);
+   })
+   $('.Editorial-form-button').click(function(){
+		  console.log($('.Editorial-form-input select').value);
+
+   })
+}
+mobileEditorial();
+$(window).resize(mobileEditorial);
 
 });
 
