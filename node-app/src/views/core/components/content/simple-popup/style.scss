@@ -54,7 +54,7 @@
         .cmp-container > :last-child{
             padding-bottom: 0px;
         }
-        form :not(:last-child){
+        form .button{
             padding:0;
         }
         .cta-content-icon-wrapper{
