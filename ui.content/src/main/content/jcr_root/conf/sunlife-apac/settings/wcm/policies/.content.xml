@@ -978,6 +978,11 @@
                                             cq:styleId="1580237354793"
                                             cq:styleLabel="Icon Text List"
                                             jcr:primaryType="nt:unstructured"/>	
+                                        <item5
+                                            cq:styleClasses="bright-solutions-wrapper"
+                                            cq:styleId="1580237354863"
+                                            cq:styleLabel="Bright solutions"
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -1344,6 +1349,11 @@
                                             cq:styleClasses="overview-content-wrapper"
                                             cq:styleId="1582976767676"
                                             cq:styleLabel="Overview Highlights"
+                                            jcr:primaryType="nt:unstructured"/>
+                                          <item10
+                                            cq:styleClasses="cta-home-wrapper"
+                                            cq:styleId="1582976767876"
+                                            cq:styleLabel="CTA"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -2854,6 +2864,11 @@
                                             cq:styleId="1580237354793"
                                             cq:styleLabel="Icon Text List"
                                             jcr:primaryType="nt:unstructured"/>	
+                                        <item5
+                                            cq:styleClasses="bright-solutions-wrapper"
+                                            cq:styleId="1580237354864"
+                                            cq:styleLabel="Bright solutions"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -3221,7 +3236,12 @@
                                             cq:styleClasses="overview-content-wrapper"
                                             cq:styleId="1582976767676"
                                             cq:styleLabel="Overview Highlights"
-                                            jcr:primaryType="nt:unstructured"/>  
+                                            jcr:primaryType="nt:unstructured"/> 
+                                          <item10
+                                            cq:styleClasses="cta-home-wrapper"
+                                            cq:styleId="1582976767877"
+                                            cq:styleLabel="CTA"
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item0>
 								<item1
