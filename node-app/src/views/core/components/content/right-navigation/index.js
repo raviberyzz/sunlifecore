@@ -172,7 +172,13 @@ $(document).ready(function () {
                             
                         } else if (index > cta_index-1)
                         {
-                            $(this).height(maxHeight);
+                            var previousElem = $(this).prev();
+                            if(previousElem.hasClass('light-orange')){
+                                     $(this).css("height", "auto");
+                            } else {
+                                   $(this).height(maxHeight);
+                            }
+
                             
                         }
                     }

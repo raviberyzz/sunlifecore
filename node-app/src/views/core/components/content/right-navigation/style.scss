@@ -192,6 +192,7 @@
     .cmp-container >{
         .light-orange:first-child{
             margin-top:0px;
+            padding-bottom:24px;
         }
        .light-orange:not(:first-child){
           padding:24px 15px;
@@ -245,25 +246,6 @@
         .link-list {
 			padding-top: 24px;
 		}
-		.separator {
-			+ {
-				.text {
-					padding-top: 0px;
-				}
-				.icon-text {
-					padding-top: 0px;
-				}
-				.form-container-component {
-					padding-top: 0px;
-				}
-				.embed {
-					padding-top: 0px;
-                }
-                .link-list {
-					padding-top: 0px;
-				}
-			}
-        }
         .experiencefragment{
             padding:0px;
             .icon-text, .text, .form-container-component, .separator, .link-list{
@@ -354,6 +336,27 @@
                 height:auto;
             }
         }
+        .cmp-container > {
+            .separator {
+                + {
+                    .text {
+                        padding-top: 0px;
+                    }
+                    .icon-text {
+                        padding-top: 0px;
+                    }
+                    .form-container-component {
+                        padding-top: 0px;
+                    }
+                    .embed {
+                        padding-top: 0px;
+                    }
+                    .link-list {
+                        padding-top: 0px;
+                    }
+                }
+            }
+        }
     }
     
 }
@@ -363,14 +366,29 @@
             margin: 0 0 0 -10px;
             width: calc(100% + 20px);
         }
-    }
-}
-@media(min-width:$desktop-screen-min){
-    .right-navigation-wrapper{
         .cmp-container{
             .embed,.text{
                 width:100%;
                 height:auto;
+            }
+            .separator {
+                + {
+                    .text {
+                        padding-top: 0px;
+                    }
+                    .icon-text {
+                        padding-top: 0px;
+                    }
+                    .form-container-component {
+                        padding-top: 0px;
+                    }
+                    .embed {
+                        padding-top: 0px;
+                    }
+                    .link-list {
+                        padding-top: 0px;
+                    }
+                }
             }
         }
     }
