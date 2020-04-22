@@ -23,6 +23,7 @@ public class GettersSettersTest {
   private CNWNewsDetailsModel cnwNewsDetailsModel;
   private CNWNewsModel cnwNewsModel;
   private ExperienceFragmentModel experienceFragmentModel;
+  private FooterItemsModel footerItemsModel;
   private FormButtonModel formButtonModel;
   private FormContainer formContainer;
   private FormOptions formOptions;
@@ -50,6 +51,7 @@ public class GettersSettersTest {
     cnwNewsDetailsModel = new CNWNewsDetailsModel( );
     cnwNewsModel = new CNWNewsModel( );
     experienceFragmentModel = new ExperienceFragmentModel( );
+    footerItemsModel = new FooterItemsModel( );
     formButtonModel = new FormButtonModel( );
     formContainer = new FormContainer( );
     formOptions = new FormOptions( );
@@ -186,4 +188,8 @@ public class GettersSettersTest {
     TestUtils.executeTestBean(selectorToExfragMapModel);
   }
   
+  @ Test
+  void testFooterItemsModel() {
+  	TestUtils.executeTestBean(footerItemsModel);
+  }
 }
