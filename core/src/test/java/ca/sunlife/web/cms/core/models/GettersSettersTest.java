@@ -34,6 +34,8 @@ public class GettersSettersTest {
   private ProviderProfileModel providerProfileModel;
   private RegionLanguageMenu regionLanguageMenu;
   private Release release;
+  private SelectorToExfragMapModel selectorToExfragMapModel;
+  private Title title;
 
   @ BeforeEach
   void setup() {
@@ -59,6 +61,8 @@ public class GettersSettersTest {
     providerProfileModel = new ProviderProfileModel( );
     regionLanguageMenu = new RegionLanguageMenu( );
     release = new Release();
+    title = new Title( );
+    selectorToExfragMapModel = new SelectorToExfragMapModel( );
   }
 
   @ Test
@@ -170,6 +174,16 @@ public class GettersSettersTest {
   @ Test
   void testRelease() {
     TestUtils.executeTestBean(release);
+  }
+  
+  @ Test
+  void testTitle() {
+    TestUtils.executeTestBean(title);
+  }
+  
+  @ Test
+  void testSelectorToExfragMapModel() {
+    TestUtils.executeTestBean(selectorToExfragMapModel);
   }
   
 }

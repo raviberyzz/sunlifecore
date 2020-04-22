@@ -88,6 +88,7 @@
 				<artifactId>filevault-package-maven-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
+					<acHandling>merge_preserve</acHandling>
 					<group>sunlife</group>
 					<embeddeds>
 						<embedded>

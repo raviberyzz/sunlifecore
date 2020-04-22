@@ -653,6 +653,9 @@ ul {
         p{
             padding-bottom:2px;
         }
+        h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+            font-size: 1.5rem;
+        }
     }
     .container-component .cmp-container .grey-horizontal-separator{
         display: none !important;
@@ -1418,7 +1421,7 @@ ul {
 		width: 2em;
 		height: 2em;
 		line-height: 2em;
-		background: linear-gradient(#FFCB05, #EAAB00);
+		background: linear-gradient($medium-yellow-background, $primary-yellow-background);
         border-radius: 50%;
         pointer-events: none;
     }
@@ -1439,6 +1442,7 @@ ul {
         p:last-child{
             line-height:23px;
             display:table;
+            color: $light-grey-20;
         }
     }
     .icon-text {
@@ -1450,13 +1454,6 @@ ul {
             }
         }
     }
-	.cmp-container {
-		.aem-GridColumn--default--8 {
-			.cmp-container {
-				margin-right: 56px;
-			}
-		}
-	}
 }
 @media (max-width: $tab-screen-max) and (min-width: $tab-screen-min){
     .mobileapp{
@@ -1467,6 +1464,17 @@ ul {
         }
     }
 }
+<<<<<<< HEAD
+=======
+//padding btw text and img total of 56px for desktop
+@media (min-width: $desktop-screen-min){
+   .mobileapp {
+        .col-sm-4{
+            padding-left: 46px;
+        }
+    }
+}
+>>>>>>> develop
 /* styles for mobile app end  */
 
 /* styles for product box start */
@@ -2268,6 +2276,9 @@ ul {
 
 .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
     display: inherit; }
+
+    
+       
 }
 
 /** Browser Specific CSS ends here **/

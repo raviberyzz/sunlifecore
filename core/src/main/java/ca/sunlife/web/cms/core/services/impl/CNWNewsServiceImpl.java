@@ -232,6 +232,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
       newsObj.setReleaseMain(news);
       newsObj.setPagination(
           setPagination(curPage, prevPage, requestURL, news.getReleases().getMatchingCount()));
+      logger.debug("Fetched news - returned count :: {}", news.getReleases().getReturnedCount());
     }
 
     logger.debug("Fetched news :: {}", news);

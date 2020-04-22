@@ -5,8 +5,10 @@ import java.text.ParseException;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -20,6 +22,7 @@ import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class CNWNewsDetailsModel.
@@ -46,6 +49,10 @@ public class CNWNewsDetailsModel {
   /** news details. */
   private NewsDetails newsDetails;
 
+  /** The config service. */
+  @ Inject
+  private SiteConfigService configService;
+  
   /** news - release id. */
   private String releaseId;
 
@@ -58,11 +65,15 @@ public class CNWNewsDetailsModel {
   @ PostConstruct
   public void init() {
     logger.debug("Entry :: CNWNewsDetailsModel :: init ");
+    String pageLocaleDefault = null;
     try {
+      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
       releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
-      newsDetails = newsService.getCNWNewsDetails(releaseId,
-          currentPage.getLanguage().getLanguage());
-    } catch (IOException | ParseException | ApplicationException | SystemException e) {
+      if (null != locale && locale.length() > 0) {
+          pageLocaleDefault = locale.split("_") [ 0 ];
+        }
+      newsDetails = newsService.getCNWNewsDetails(releaseId, pageLocaleDefault);
+    } catch (IOException | ParseException | ApplicationException | SystemException | LoginException | RepositoryException e) {
       logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
     }
   }
