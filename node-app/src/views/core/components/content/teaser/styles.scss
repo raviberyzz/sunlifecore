@@ -577,14 +577,6 @@
             }
         }
     }
-.middle-aligned-text {
-        .right-image-position, .left-image-position  {
-            .text-section {
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        }
-    }
 }
 /* scss for banner images in landscape mode for mobiles start here*/
 @media (min-width:560px) and (max-width:$mobile-screen-max){
