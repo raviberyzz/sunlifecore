@@ -23,6 +23,7 @@ import ca.sunlife.web.cms.core.beans.NewsDetails;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
@@ -35,18 +36,27 @@ public class CNWNewsDetailsModelTest {
 
   @ Mock
   private Page currentPage;
+  
   @ Mock
   private SlingHttpServletRequest request;
+  
   @ Mock
   private CNWNewsService newsService;
 
   @ InjectMocks
   private CNWNewsDetailsModel cnwNewsDetailsModel;
-
+  
+  @ Mock
+  private SiteConfigService configService;
+  
   @ BeforeEach
   public void setup() {
     MockitoAnnotations.initMocks(this);
-    when(currentPage.getLanguage( )).thenReturn(TestUtils.CANADA_LOCALE);
+    try {
+		when(configService.getConfigValues("pageLocale", currentPage.getPath())).thenReturn("en_CA");
+	} catch (Exception e) {
+		assertTrue(e instanceof Exception);
+	}
   }
 
   @ Test
