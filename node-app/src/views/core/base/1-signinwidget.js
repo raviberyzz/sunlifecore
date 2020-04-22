@@ -473,12 +473,20 @@ function hideLoadingImage() {
 
 }
 
-
+function signInClick(){
+		//alert('index.js');
+    	utag.link({
+            "ev_action": "signin",
+  			"ev_title": "homepage sign in",
+  			"ev_type": "authenticate"
+        });
+   }
 
 var isSubmitted;
 isSubmitted = false;
 
 function CheckClicks(lang) {
+    	signInClick();
 		if( isSubmitted == true ) {
 				if (lang=="f")
 						alert('Veuillez patienter pendant que nous soumettons vos renseignements.');

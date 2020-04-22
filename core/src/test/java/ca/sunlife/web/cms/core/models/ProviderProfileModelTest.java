@@ -132,10 +132,8 @@ public class ProviderProfileModelTest {
 		} catch (ApplicationException e) {
 			e.printStackTrace();
 		} catch (SystemException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

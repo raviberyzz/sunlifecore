@@ -8,3 +8,16 @@
     .overflow-hidden{
         overflow: hidden;
     }
+
+    @media (max-width: $mobile-screen-max) {
+        img{ 
+            max-width:100%;
+        }
+        
+    }
+/* image responsive for images start*/
+/*img{
+    max-width:100%;
+    height:auto;
+  } */
+/* image responsive for images end */ 

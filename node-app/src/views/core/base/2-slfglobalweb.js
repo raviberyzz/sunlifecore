@@ -1192,33 +1192,33 @@ function createCookie(name,value,days, isSession) {
 		document.cookie = name+"="+value+expires+"; path=/;";
   }
 }
-// function readCookie(name) {
-//   var nameEQ = name + "=";
-//   var ca = document.cookie.split(';');
-//   for(var i=0;i < ca.length;i++) {
-//     var c = ca[i];
-//     while (c.charAt(0)==' ') c = c.substring(1,c.length);
-//     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-//   }
-//   return null;
-// }
-// function pageLevelNotify(){
+function readCookie(name) {
+   var nameEQ = name + "=";
+   var ca = document.cookie.split(';');
+   for(var i=0;i < ca.length;i++) {
+     var c = ca[i];
+     while (c.charAt(0)==' ') c = c.substring(1,c.length);
+     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+   }
+   return null;
+}
+//function pageLevelNotify(){
 // $('#page-notify button.close[data-dismiss="alert"]').click(function(){
-// createCookie("pageNotification","true",1,false);
+//	 createCookie("pageNotification","true",1,false);
 // });
 // $('#browser-alert button.close[data-dismiss="alert"]').click(function(){
 // 	createCookie("browserNotification","true",1,false);
 // });
-// }
-// function checkCookieExists(){
-// var cookieExists=readCookie("pageNotification");
-// if(cookieExists){
-// $("#page-notify").hide();
-// }
-// else {
-// $("#page-notify").show();
-// }
-// }
+//}
+function checkCookieExists(){
+	 var cookieExists=readCookie("pageNotification");
+	 if(cookieExists){
+		 $('.site-level-notification').css('display', 'none');
+	 }
+	 else {
+		 $('.site-level-notification').css('display', '');
+	 }
+}
 // function checkBrowserCookieExists(){
 // var cookieExists=readCookie("browserNotification");
 // if(cookieExists){

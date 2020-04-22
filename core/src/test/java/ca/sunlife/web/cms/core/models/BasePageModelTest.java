@@ -152,10 +152,10 @@ public class BasePageModelTest {
     basePageModel.init( );
     assertEquals("This is my news headline." , basePageModel.getSeoPageTitle( ));
 
-    // basePageModel.setTags(new String[] {"sunlife:UDO/ca/page_audience/Advisor",
-    // "sunlife:UDO/ca/abcs", "sunlife:UDO/ca/page_audience/Agent",
-    // "sunlife:UDO/ca/page_manager/None", "sunlife:UDO/ca/page_manager/Value1",
-    // "sunlife:UDO/ca/page_manager/Value2", "sunlife:UDO/ca/page_dir/None"});
+    basePageModel.setTags(new String[] {"sunlife:UDO/ca/page_audience/Advisor",
+    "sunlife:UDO/ca/abcs", "sunlife:UDO/ca/page_audience/Agent",
+    "sunlife:UDO/ca/page_manager/None", "sunlife:UDO/ca/page_manager/Value1",
+    "sunlife:UDO/ca/page_manager/Value2", "sunlife:UDO/ca/page_dir/None"});
     basePageModel.init( );
 
   }

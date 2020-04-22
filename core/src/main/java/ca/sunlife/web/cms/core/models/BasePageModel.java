@@ -263,7 +263,10 @@ public class BasePageModel {
 
   /** The Constant ARTICLE_MODIFIED_DATE. */
   private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
-
+  
+  /** The page locale. */
+  private String pageLocaleDefault = null;
+  
   /**
    * Gets the seo page title.
    *
@@ -588,6 +591,34 @@ public class BasePageModel {
   }
 
   /**
+   * @return the tags
+  */
+  public String[] getTags() {
+	return null != tags ? Arrays.copyOf(tags, tags.length) : new String[0];
+  }
+
+  /**
+   * @param tags the tags to set
+  */
+  public void setTags(String[] tags) {
+	this.tags = null != tags ? tags.clone() : null;
+  }
+  
+  /**
+   * @return the pageLocaleDefault
+   */
+  public String getPageLocaleDefault() {
+	return pageLocaleDefault;
+  }
+
+  /**
+   * @param pageLocaleDefault the pageLocaleDefault to set
+  */
+  public void setPageLocaleDefault(String pageLocaleDefault) {
+	this.pageLocaleDefault = pageLocaleDefault;
+  }
+
+  /**
    * Inits the model.
    *
    * @throws LoginException
@@ -603,12 +634,11 @@ public class BasePageModel {
     final String udoTagsPath = configService.getConfigValues("udoTagsPath", pagePath);
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         pagePath);
-    String pageLocaleDefault = null;
 
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
-    logger.debug("pageLocaleDefault :: {}", pageLocaleDefault);
+    logger.debug("Base page model :: locale found is {}, language is {}", locale, pageLocaleDefault);
 
     // Condition for CNW News details page starts
     logger.debug("advancedPageType: {}", advancedPageType);
@@ -835,12 +865,9 @@ public class BasePageModel {
       return;
     }
     if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0) {
-      final String pageLocaleDefault = currentPage.getLanguage().getLanguage();
       pagePath = pagePath.replace(
-          BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault
-              + BasePageModelConstants.SLASH_CONSTANT,
-          BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage
-              + BasePageModelConstants.SLASH_CONSTANT);
+          BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault,
+          BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage);
     }
 
     logger.debug("pagePath is: {}", pagePath);
@@ -880,7 +907,7 @@ public class BasePageModel {
     logger.debug("breadCrumb: {}, pageCategory: {}, pageSubCategory: {}", breadCrumb, pageCategory,
         pageSubCategory);
     otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
-    otherUDOTagsMap.addProperty("page_category", pageCategory == null ? "" : pageCategory); // Page
+    otherUDOTagsMap.addProperty("page_category", pageCategory == null ? breadCrumb : pageCategory); // Page
                                                                                             // category
     otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page
                                                                                                      // sub
@@ -1031,12 +1058,7 @@ public class BasePageModel {
       ApplicationException, SystemException, JSONException {
     logger.debug("Entry :: BasePageModel :: processDataForAdvisorPages :: ");
     String advisorId = null;
-    String pageLocaleDefault = null;
-    final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
     if (request.getRequestPathInfo().getSelectors().length > 0) {
-      if (null != locale && locale.length() > 0) {
-        pageLocaleDefault = locale.split("_") [ 0 ];
-      }
       advisorId = request.getRequestPathInfo().getSelectors() [ 0 ];
       if (null != advisorId && null != canonicalUrl) {
         canonicalUrl = canonicalUrl

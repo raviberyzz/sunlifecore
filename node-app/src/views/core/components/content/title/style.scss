@@ -5,7 +5,7 @@
     min-height:100px;
     color:$dark-grey-color;
     margin-bottom:40px;
-    h1,h2,h3,h4,h5,h6{
+    h1,h2,h3,h4,h5,h6,p{
       margin:0;
       font-size:1.75rem;
       line-height:36px;
@@ -72,7 +72,7 @@
 @media (max-width:$mobile-screen-max){
   .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
   {
-    height:94px;
+    min-height:94px; //should be min-height so if text is larger then 1 line the wrapper gets bigger 
     background-image:none;
     margin-top: 4px;
   }
@@ -81,6 +81,6 @@
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
   .title-wrapper-yellow-grey-rings{
     margin-top: 4px;
-    height:100px;
+    min-height:100px; //should be min-height so if text is larger then 1 line the wrapper gets bigger 
   }
 }

@@ -1,11 +1,14 @@
 @import '../../../base/core';
 
-/* for ios devices - defect causing text to overflow div*/
-.teaser.circular-image{
-    .right-item {
-        display: table-cell;
+/* for ios devices - defect causing text to overflow div, causes defect in IE11 added supports annotation*/
+@supports not (-ms-high-contrast: none){
+    .teaser.circular-image{
+        .right-item {
+            display: table-cell;
+        }
     }
 }
+
 /* for ios devices - defect causing text to overflow div ends here*/
  .show-only-in-editorial {
     display: none !important;
@@ -143,9 +146,14 @@
     margin-right: 32px;
     display: table;
 }
-.right-item {
-    display: table;
+
+/* Supports browsers that is not IE11 to prevent internet explorer overlap defect */
+@supports not (-ms-high-contrast: none) {
+    .right-item {
+        display: table;
+    }
 }
+
 .view-all-category:after{
     text-decoration:none;
     display:inline-block;
@@ -214,6 +222,15 @@
         opacity: 0.9;
         margin: 0 27px;
         width: 470px;
+    }
+}
+// IE Specific fix for white box 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .white-box {
+        .text-section {
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
 .editorial-hero-banner {
@@ -304,6 +321,22 @@
             .left-item{
                 .mobile-img{
                     background-position:right!important; 
+                }
+            }
+        }
+    }
+    .landing-page-hero-banner.center-img-align-position{
+        .right-image-position{
+            .right-item{
+                .mobile-img{
+                    background-position:center!important;
+                }
+            }
+        }
+        .left-image-position{
+            .left-item{
+                .mobile-img{
+                    background-position:center!important; 
                 }
             }
         }
@@ -443,7 +476,7 @@
             }
         }
 }
-@media (min-width: $tab-screen-min) {
+@media (min-width: $tab-screen-max) {
     .circle-220-desktop {
         img {
             width: 220px;
@@ -544,6 +577,7 @@
             }
         }
     }
+<<<<<<< HEAD
     .middle-aligned-text {
         .right-image-position, .left-image-position  {
             .text-section {
@@ -557,6 +591,8 @@
             top:65px;
         }
     }
+=======
+>>>>>>> develop
 }
 /* scss for banner images in landscape mode for mobiles start here*/
 @media (min-width:560px) and (max-width:$mobile-screen-max){
@@ -587,10 +623,110 @@
 
 
 
+@media (min-width: $tab-screen-min) and (max-width: 1023px) {
+    //ipad specific case in which teaser text is going beyond the page
+    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+        .left-image-position, .right-image-position{
+            display: block;
+        }
+    }
+    .col-sm-3 {
+        //ipad specific - circular teaser height set to auto so it is always circular for 4 teaser case
+        .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix{
+            img {
+                max-width: 100%;
+                height: auto !important;  
+            }
+            .left-item{
+                margin-right: 0 !important;
+            }
+        }
+        //ipad specific - circular image height set to auto so it is always circular for 4 teaser case
+        .image.text-center.circular-image.circle-220-desktop.circle-150-mobile.round-border{
+            img{
+                height: auto !important; 
+            }
+        } 
+    }
+}
 
 
-
-
-
-
+@media (min-width: $tab-screen-min) {
+	.circle-220-desktop {
+		img {
+			width: 220px;
+			height: 220px;
+		}
+	}
+	.banner-section {
+		.right-image-position {
+			.right-item {
+				width: 100%;
+			}
+		}
+		.left-image-position {
+			.left-item {
+				width: 100%;
+			}
+		}
+	}
+	.banner-section.home-page-hero-banner {
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 400px;
+					background: cover;
+				}
+			}
+		}
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 400px;
+					background: cover;
+				}
+			}
+		}
+	}
+	.banner-section.landing-page-hero-banner {
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 261px;
+					background: cover;
+				}
+			}
+		}
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 261px;
+					background: cover;
+				}
+			}
+		}
+	}
+	.life-moment-second-level-banner {
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 350px;
+				}
+			}
+			.text-section {
+				margin-right: 63px;
+			}
+		}
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 350px;
+				}
+			}
+			.text-section {
+				margin-right: 63px;
+			}
+		}
+	}
+}
 

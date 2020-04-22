@@ -27,7 +27,7 @@
                 class="${yearsTab == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" 
                 data-cmp-hook-tabs="tabpanel">
                 <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == newsModel.activeYear ? 'true' : 'false'}" tabindex="0">
-                    <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}/${yearsTab}/">${yearsTab}</a>
+                    <a x-cq-linkchecker="skip" href="${newsModel.relativeURL}/${yearsTab}/"><span>${yearsTab}</span></a>
                 </div>
                 <sly data-sly-test="${yearsTab == newsModel.activeYear}">
 					<sly data-sly-test.newsList="${newsModel.news.releaseMain.releases.release}" />

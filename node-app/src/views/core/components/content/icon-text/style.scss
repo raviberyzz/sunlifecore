@@ -11,9 +11,9 @@
         }
 }
 .social-link-icon-wrapper{
-    .icon-texts{
-        display: none;
-    }
+        .icon-texts{
+            display: none;
+        }
 }
 .right-nav-icon-wrapper{
     text-align: center;
@@ -109,6 +109,8 @@
     .icon-texts {
         padding-top: 32px;
         padding-bottom: 0;
+        word-wrap: break-word;
+        -ms-word-wrap: break-word;
         h1, h2, h3, h4, h5, h6, a{
             text-align: center;
         }

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang.StringUtils;
@@ -16,6 +17,7 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
@@ -72,7 +74,7 @@ public class ArticleModel {
   private static final String ARTICLE_HEADLINE = "articleHeadline";
 
   /** The log. */
-  private static final Logger logger = LoggerFactory.getLogger(ArticleModel.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ArticleModel.class);
 
   /** The fragment path. */
   @ Inject
@@ -97,6 +99,15 @@ public class ArticleModel {
   @ Inject
   @ Via ("resource")
   private String checkboxHideDate;
+  
+  /** The resource type. */
+  @ Inject
+  @ Via ("resource")
+  @ Named (JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY)
+  private String resourceType;
+  
+  /** The layout resource type. */
+  private String layoutResourceType;
 
   /** The article ID. */
   @ Inject
@@ -138,6 +149,14 @@ public class ArticleModel {
     return articleImage;
   }
 
+  /**
+   * Gets the layout container resource type.
+   *
+   * @return the layoutResourceType
+   */
+  public final String getLayoutResourceType() {
+    return layoutResourceType;
+  }
   /**
    * Sets the article image.
    *
@@ -401,21 +420,35 @@ public class ArticleModel {
   }
 
   /**
+   * @return the resourceType
+  */
+  public String getResourceType() {
+	return resourceType;
+  }
+
+  /**
+   * @param resourceType the resourceType to set
+  */
+  public void setResourceType(String resourceType) {
+	this.resourceType = resourceType;
+  }
+
+  /**
    * Inits the model.
    */
   @ PostConstruct
-  private void init() {
+  public void init() {
     if (StringUtils.isEmpty(getFragmentPath())) {
       return;
     }
     try {
       final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-      logger.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
+      LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
       final Resource articleResource = resourceResolver
           .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
       final String pagePath = currentPage.getPath();
       if (null != articleResource) {
-        logger.debug("Parsing Article Data");
+        LOGGER.debug("Parsing Article Data");
         final ValueMap articleContent = articleResource.getValueMap();
         articleData.put(ARTICLE_HEADLINE,
             articleContent.containsKey(ARTICLE_HEADLINE)
@@ -442,9 +475,9 @@ public class ArticleModel {
         setArticleImage(
             configService.getConfigValues(DOMAIN, pagePath).concat(articleData.get(ARTICLE_IMAGE)));
       }
-      logger.debug("Article Data {}", articleData);
+      LOGGER.debug("Article Data {}", articleData);
       final ValueMap pageProperties = currentPage.getProperties();
-
+      layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/')).concat("/layout-container");
       setPageUrl(configService.getPageUrl(pagePath));
       setOgImage(configService.getConfigValues(DOMAIN, pagePath)
           .concat(pageProperties.containsKey(SOCIAL_MEDIA_IMAGE)
@@ -460,7 +493,7 @@ public class ArticleModel {
           .concat(configService.getConfigValues("articlePublisherLogo", pagePath)));
       resourceResolver.close();
     } catch (LoginException | RepositoryException e) {
-      logger.error("Login Error while getting resource resolver : {}", e);
+      LOGGER.error("Login Error while getting resource resolver : {}", e);
     }
   }
 
@@ -511,7 +544,7 @@ public class ArticleModel {
       throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-      logger.debug("formatting date to {}",
+      LOGGER.debug("formatting date to {}",
           configService.getConfigValues("articleDateFormat", currentPage.getPath()));
       final SimpleDateFormat formatter = new SimpleDateFormat(
           configService.getConfigValues("articleDateFormat", currentPage.getPath()));

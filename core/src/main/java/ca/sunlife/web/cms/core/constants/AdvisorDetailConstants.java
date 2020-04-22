@@ -14,6 +14,7 @@ public final class AdvisorDetailConstants {
    * Constructor AdvisorDetailConstants.
    */
   private AdvisorDetailConstants() {
+	  throw new IllegalStateException("AdvisorDetailConstants class");
   }
 
   /** The Constant ADVISOR_TYPE_CONSTANT. */

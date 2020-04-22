@@ -87,6 +87,7 @@
     background-size: 120% 100%;
     text-align: center;
     position: relative;
+    padding-bottom:27px;
     h3{
         margin: 0 0 16px 0;
     }
@@ -140,7 +141,7 @@
         display: none;
     }
     .bright-start{
-        padding-left: 82px;
+        padding: 0px;
         h4{
             margin: 0 0 16px 0;
             line-height: 18px;
@@ -279,6 +280,14 @@
         }
         img{
             display: none;
+        }
+    }
+}
+
+@media(min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .blue-background-wrapper{
+        .bright-start{
+            padding-left:82px;
         }
     }
 }

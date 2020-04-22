@@ -19,6 +19,7 @@ public class TestUtils {
     try {
       BeanRunner beanRunner = new BeanRunner( );
       beanRunner.testBean(bean);
+      beanRunner.testException(Exception.class);
     } catch (Exception e) {
       System.err.println("Exception occured:" + e.toString( ));
     }
@@ -47,7 +48,7 @@ public class TestUtils {
     return flag;
   }
 
-  static boolean getLogArgumentFlag(List <LoggingEvent> eventList , String expectedArgument) {
+  /*static boolean getLogArgumentFlag(List <LoggingEvent> eventList , String expectedArgument) {
     boolean flag = false;
     for (LoggingEvent event : eventList) {
       if (event.getArguments( ).toString( ).contains(expectedArgument)) {
@@ -56,9 +57,9 @@ public class TestUtils {
       }
     }
     return flag;
-  }
+  }*/
 
-  static RequestPathInfo getDummyRequestPathInfo(String [ ] dummySelector) {
+  public static RequestPathInfo getDummyRequestPathInfo(String [ ] dummySelector) {
     return new RequestPathInfo( ) {
 
       @ Override

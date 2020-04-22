@@ -75,7 +75,7 @@
 		                  		jcr:title="Accordion" 
 		                  		sling:resourceType="wcm/core/components/policy/policy" 
 		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
-		                  		components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/text,/apps/sunlife/apac/hk/components/content/title]" 
+		                  		components="[/apps/sunlife/apac/hk/components/content/button,/apps/sunlife/apac/hk/components/content/container,/apps/sunlife/apac/hk/components/content/embed,/apps/sunlife/apac/hk/components/content/icon-text,/apps/sunlife/apac/hk/components/content/image,/apps/sunlife/apac/hk/components/content/layout-container,/apps/sunlife/apac/hk/components/content/link-list,/apps/sunlife/apac/hk/components/content/separator,/apps/sunlife/apac/hk/components/content/table,/apps/sunlife/apac/hk/components/content/text,/apps/sunlife/apac/hk/components/content/teaser,/apps/sunlife/apac/hk/components/content/title]" 
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -384,9 +384,125 @@
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
                                 </item7>
+                                <item8
+                                    cq:styleGroupLabel="Form Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="form-input-text"
+                                            cq:styleId="1579258484845"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                     </cq:styles>
+                                </item8>
+                                <item9
+                                    cq:styleGroupLabel="Padding"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="top-padding"
+                                            cq:styleId="1579292929292"
+                                            cq:styleLabel="Top"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="bottom-padding"
+                                            cq:styleId="1579276767676"
+                                            cq:styleLabel="Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item2
+                                            cq:styleClasses="top-bottom-padding"
+                                            cq:styleId="1579777555898"
+                                            cq:styleLabel="Top and Bottom padding"
+                                            jcr:primaryType="nt:unstructured"/>       
+                                     </cq:styles>
+                                </item9>
                             </cq:styleGroups>
                             </policy_text>
                         </text>
+                        <embed jcr:primaryType="nt:unstructured">
+                        	<policy_embed
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Embed"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0
+	                                    cq:styleGroupLabel="Alignment"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="video-center-align"
+	                                            cq:styleId="1586877567737"
+	                                            cq:styleLabel="Center"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                        <item1
+	                                            cq:styleClasses="video-right-align"
+	                                            cq:styleId="1586877583405"
+	                                            cq:styleLabel="Right"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                                <item1
+	                                    cq:styleGroupLabel="Thumbnail Sizes"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="video-small"
+	                                            cq:styleId="1586879717806"
+	                                            cq:styleLabel="Small"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                        <item1
+	                                            cq:styleClasses="video-medium"
+	                                            cq:styleId="1586879730077"
+	                                            cq:styleLabel="Medium"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item1>
+	                                <item2
+	                                    cq:styleGroupLabel="Top Spacing"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="mt-18"
+	                                            cq:styleId="1583334405247"
+	                                            cq:styleLabel="Top Spacing 18"
+	                                            jcr:primaryType="nt:unstructured"/>  
+	                                         <item1
+	                                            cq:styleClasses="mt-20"
+	                                            cq:styleId="1583334422672"
+	                                            cq:styleLabel="Top Spacing 20"
+	                                            jcr:primaryType="nt:unstructured"/>   
+	                                         <item2
+	                                            cq:styleClasses="mt-40"
+	                                            cq:styleId="1583334429290"
+	                                            cq:styleLabel="Top Spacing 40"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item2>
+	                                <item3
+	                                    cq:styleGroupLabel="Bottom Spacing"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="mb-18"
+	                                            cq:styleId="1583331102428"
+	                                            cq:styleLabel="Bottom Spacing 18"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+	                                            cq:styleClasses="mb-20"
+	                                            cq:styleId="1583331121462"
+	                                            cq:styleLabel="Bottom Spacing 20"
+	                                            jcr:primaryType="nt:unstructured"/>   
+	                                         <item2
+	                                            cq:styleClasses="mb-40"
+	                                            cq:styleId="1583331133428"
+	                                            cq:styleLabel="Bottom Spacing 40"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item3>
+	                            </cq:styleGroups>
+	                        </policy_embed>
+                    	</embed>                   
                         <image jcr:primaryType="nt:unstructured">
                         	<policy_image
 	                            jcr:primaryType="nt:unstructured"
@@ -704,8 +820,13 @@
                                         <item0
                                            cq:styleClasses="right-img-align-position"
                                             cq:styleId="1584368882937"
-                                            cq:styleLabel="Right align"
-                                            jcr:primaryType="nt:unstructured"/>  
+                                            cq:styleLabel="Right"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="center-img-align-position"
+                                            cq:styleId="1584393939393"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>     
                                      </cq:styles>
                                 </item11>
                             </cq:styleGroups>
@@ -717,7 +838,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            allowedTypes="h1"
+                            allowedTypes="[h1,p]"
                             linkDisabled="false"
                             type="h1">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
@@ -857,6 +978,11 @@
                                             cq:styleId="1580237354793"
                                             cq:styleLabel="Icon Text List"
                                             jcr:primaryType="nt:unstructured"/>	
+                                        <item5
+                                            cq:styleClasses="bright-solutions-wrapper"
+                                            cq:styleId="1580237354863"
+                                            cq:styleLabel="Bright solutions"
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -1217,7 +1343,17 @@
                                           <item8
                                             cq:styleClasses="product-card"
                                             cq:styleId="1582902650532"
-                                            cq:styleLabel="Product box"
+                                            cq:styleLabel="Product Box"
+                                            jcr:primaryType="nt:unstructured"/>
+                                          <item9
+                                            cq:styleClasses="overview-content-wrapper"
+                                            cq:styleId="1582976767676"
+                                            cq:styleLabel="Overview Highlights"
+                                            jcr:primaryType="nt:unstructured"/>
+                                          <item10
+                                            cq:styleClasses="cta-home-wrapper"
+                                            cq:styleId="1582976767876"
+                                            cq:styleLabel="CTA"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -1451,6 +1587,22 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                 	</item4>
+                                	<item5
+                                       cq:styleGroupLabel="Social Icons Alignment"
+                                       jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                 cq:styleClasses="social-icons-center"
+                                                 cq:styleId="1583383838383"
+                                                 cq:styleLabel="Center"
+                                                 jcr:primaryType="nt:unstructured"/>  
+                                            <item1
+                                                 cq:styleClasses="social-icons-right"
+                                                 cq:styleId="1583391919191"
+                                                 cq:styleLabel="Right"
+                                                 jcr:primaryType="nt:unstructured"/>   
+                                            </cq:styles>
+                                	</item5>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text> 
@@ -1606,7 +1758,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Form-container"
                                 sling:resourceType="wcm/core/components/policy/policy"
-                                components="group:Sunlife CA">
+                                components="group:Sunlife HK">
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
                                     <item0
@@ -1786,6 +1938,11 @@
 	                                            cq:styleId="1584525555983"
 	                                            cq:styleLabel="Full Width"
 	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+		                                         cq:styleClasses="form-dropdown-fittosection"
+		                                         cq:styleId="1584525666666"
+		                                         cq:styleLabel="Fit to section"
+		                                         jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
 	                            </cq:styleGroups>
@@ -1804,7 +1961,7 @@
 		                  		jcr:title="Accordion" 
 		                  		sling:resourceType="wcm/core/components/policy/policy" 
 		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
-		                  		components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/text,/apps/sunlife/apac/id/components/content/title]" 
+		                  		components="[/apps/sunlife/apac/id/components/content/button,/apps/sunlife/apac/id/components/content/container,/apps/sunlife/apac/id/components/content/embed,/apps/sunlife/apac/id/components/content/icon-text,/apps/sunlife/apac/id/components/content/image,/apps/sunlife/apac/id/components/content/layout-container,/apps/sunlife/apac/id/components/content/link-list,/apps/sunlife/apac/id/components/content/separator,/apps/sunlife/apac/id/components/content/table,/apps/sunlife/apac/id/components/content/text,/apps/sunlife/apac/id/components/content/teaser,/apps/sunlife/apac/id/components/content/title]" 
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -2112,10 +2269,126 @@
                                             cq:styleLabel="Top Spacing 40"
                                             jcr:primaryType="nt:unstructured"/>   
                                     </cq:styles>
-                                </item7>
-                            </cq:styleGroups>
+                                	</item7>
+                                	<item8
+	                                    cq:styleGroupLabel="Form Alignment"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="form-input-text"
+	                                            cq:styleId="1579258484845"
+	                                            cq:styleLabel="Center"
+	                                            jcr:primaryType="nt:unstructured"/>
+                                     	</cq:styles>
+                                  </item8>
+                                  <item9
+                                    cq:styleGroupLabel="Padding"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="top-padding"
+                                            cq:styleId="1579292929292"
+                                            cq:styleLabel="Top"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="bottom-padding"
+                                            cq:styleId="1579276767676"
+                                            cq:styleLabel="Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item2
+                                            cq:styleClasses="top-bottom-padding"
+                                            cq:styleId="1579777555898"
+                                            cq:styleLabel="Top and Bottom padding"
+                                            jcr:primaryType="nt:unstructured"/>       
+                                     </cq:styles>
+                                </item9>
+                            	</cq:styleGroups>
                             </policy_text>
                         </text>
+                        <embed jcr:primaryType="nt:unstructured">
+                        	<policy_embed
+	                            jcr:primaryType="nt:unstructured"
+	                            jcr:title="Embed"
+	                            sling:resourceType="wcm/core/components/policy/policy">
+	                            <jcr:content jcr:primaryType="nt:unstructured"/>
+	                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+	                                <item0
+	                                    cq:styleGroupLabel="Alignment"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="video-center-align"
+	                                            cq:styleId="1586877567737"
+	                                            cq:styleLabel="Center"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                        <item1
+	                                            cq:styleClasses="video-right-align"
+	                                            cq:styleId="1586877583405"
+	                                            cq:styleLabel="Right"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item0>
+	                                <item1
+	                                    cq:styleGroupLabel="Thumbnail Sizes"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="video-small"
+	                                            cq:styleId="1586879717806"
+	                                            cq:styleLabel="Small"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                        <item1
+	                                            cq:styleClasses="video-medium"
+	                                            cq:styleId="1586879730077"
+	                                            cq:styleLabel="Medium"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item1>
+	                                <item2
+	                                    cq:styleGroupLabel="Top Spacing"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="mt-18"
+	                                            cq:styleId="1583334405247"
+	                                            cq:styleLabel="Top Spacing 18"
+	                                            jcr:primaryType="nt:unstructured"/>  
+	                                         <item1
+	                                            cq:styleClasses="mt-20"
+	                                            cq:styleId="1583334422672"
+	                                            cq:styleLabel="Top Spacing 20"
+	                                            jcr:primaryType="nt:unstructured"/>   
+	                                         <item2
+	                                            cq:styleClasses="mt-40"
+	                                            cq:styleId="1583334429290"
+	                                            cq:styleLabel="Top Spacing 40"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item2>
+	                                <item3
+	                                    cq:styleGroupLabel="Bottom Spacing"
+	                                    jcr:primaryType="nt:unstructured">
+	                                    <cq:styles jcr:primaryType="nt:unstructured">
+	                                        <item0
+	                                            cq:styleClasses="mb-18"
+	                                            cq:styleId="1583331102428"
+	                                            cq:styleLabel="Bottom Spacing 18"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+	                                            cq:styleClasses="mb-20"
+	                                            cq:styleId="1583331121462"
+	                                            cq:styleLabel="Bottom Spacing 20"
+	                                            jcr:primaryType="nt:unstructured"/>   
+	                                         <item2
+	                                            cq:styleClasses="mb-40"
+	                                            cq:styleId="1583331133428"
+	                                            cq:styleLabel="Bottom Spacing 40"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                    </cq:styles>
+	                                </item3>
+	                            </cq:styleGroups>
+	                        </policy_embed>
+                    	</embed>                   
                         <image jcr:primaryType="nt:unstructured">
                         	<policy_image
 	                            jcr:primaryType="nt:unstructured"
@@ -2433,7 +2706,12 @@
                                         <item0
                                            cq:styleClasses="right-img-align-position"
                                             cq:styleId="1584368882937"
-                                            cq:styleLabel="Right align"
+                                            cq:styleLabel="Right"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="center-img-align-position"
+                                            cq:styleId="1584393939393"
+                                            cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>  
                                      </cq:styles>
                                 </item11>
@@ -2446,7 +2724,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            allowedTypes="h1"
+                            allowedTypes="[h1,p]"
                             linkDisabled="false"
                             type="h1">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
@@ -2586,6 +2864,11 @@
                                             cq:styleId="1580237354793"
                                             cq:styleLabel="Icon Text List"
                                             jcr:primaryType="nt:unstructured"/>	
+                                        <item5
+                                            cq:styleClasses="bright-solutions-wrapper"
+                                            cq:styleId="1580237354864"
+                                            cq:styleLabel="Bright solutions"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -2947,8 +3230,18 @@
                                           <item8
                                             cq:styleClasses="product-card"
                                             cq:styleId="1582902650532"
-                                            cq:styleLabel="Product box"
+                                            cq:styleLabel="Product Box"
                                             jcr:primaryType="nt:unstructured"/>
+                                          <item9
+                                            cq:styleClasses="overview-content-wrapper"
+                                            cq:styleId="1582976767676"
+                                            cq:styleLabel="Overview Highlights"
+                                            jcr:primaryType="nt:unstructured"/> 
+                                          <item10
+                                            cq:styleClasses="cta-home-wrapper"
+                                            cq:styleId="1582976767877"
+                                            cq:styleLabel="CTA"
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item0>
 								<item1
@@ -3181,6 +3474,22 @@
                                                 jcr:primaryType="nt:unstructured"/>
                                         </cq:styles>
                                 	</item4>
+                                	<item5
+                                       cq:styleGroupLabel="Social Icons Alignment"
+                                       jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                 cq:styleClasses="social-icons-center"
+                                                 cq:styleId="1583383838383"
+                                                 cq:styleLabel="Center"
+                                                 jcr:primaryType="nt:unstructured"/>  
+                                            <item1
+                                                 cq:styleClasses="social-icons-right"
+                                                 cq:styleId="1583391919191"
+                                                 cq:styleLabel="Right"
+                                                 jcr:primaryType="nt:unstructured"/>   
+                                            </cq:styles>
+                                	</item5>
                                 </cq:styleGroups>
                             </policy_iconText>
                         </icon-text> 
@@ -3336,7 +3645,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Form-container"
                                 sling:resourceType="wcm/core/components/policy/policy"
-                                components="group:Sunlife CA">
+                                components="group:Sunlife ID">
                                 <jcr:content jcr:primaryType="nt:unstructured"/>
                                 <cq:styleGroups jcr:primaryType="nt:unstructured">
                                     <item0
@@ -3394,6 +3703,11 @@
                                             cq:styleClasses="generic-form-wrapper"
                                             cq:styleId="1580210222333"
                                             cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/> 
+                                          <item3
+                                            cq:styleClasses="contact-us-id-wrapper"
+                                            cq:styleId="1580210222343"
+                                            cq:styleLabel="Contact Us"
                                             jcr:primaryType="nt:unstructured"/> 	
                                     </cq:styles>
                                 </item2>
@@ -3516,6 +3830,11 @@
 	                                            cq:styleId="1584525555983"
 	                                            cq:styleLabel="Full Width"
 	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+		                                         cq:styleClasses="form-dropdown-fittosection"
+		                                         cq:styleId="1584525666666"
+		                                         cq:styleLabel="Fit to section"
+		                                         jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
 	                            </cq:styleGroups>
