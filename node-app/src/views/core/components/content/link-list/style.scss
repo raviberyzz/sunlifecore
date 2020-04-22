@@ -221,3 +221,19 @@
         }
     }
 }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    //interent explorer 
+    .editorial-nav-desktop-wrapper{
+        .links{
+            .list-div{
+                .ui{
+                    .li{
+                        display:table-cell;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
+    }
