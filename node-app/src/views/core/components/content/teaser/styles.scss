@@ -224,6 +224,15 @@
         width: 470px;
     }
 }
+// IE Specific fix for white box 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .white-box {
+        .text-section {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
 .editorial-hero-banner {
     .left-image-position, .right-image-position {
         background: $light-grey-20;

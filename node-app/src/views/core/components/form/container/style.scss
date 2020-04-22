@@ -393,6 +393,11 @@
         }
     }
 }
+.cmp-container .cta-form-wrapper form.cmp-form {
+    justify-content: center;
+    display: flex;
+}
+
 //style for cta form input form alignment
 @media (max-width: $tab-screen-max){
     .cta-form-wrapper{
@@ -413,7 +418,6 @@
                 min-width: 41.8% !important;
                 width: auto !important;
                 max-width: 50% !important;
-                margin: 0 auto !important;
                 display: inline-block !important;
             }
             .button-wrapper{
