@@ -2540,5 +2540,6 @@ $(document).ready(function(){
                 });
         }
     });
+    checkCookieExists();
 });
 /* Tags formatting ends here */
