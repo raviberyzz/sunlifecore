@@ -118,12 +118,13 @@ ul {
             li{
                 margin-left: 0px;
                 margin-right: 0px;
+                padding: 10px 0px;
             }
             li:not(:nth-last-of-type(-n+1)) {
                 border-bottom: 2px dotted $medium-grey-background;
             }
-            li {
-                padding: 10px 0px;
+            li::before{
+                display: none;
             }
         }
     }
