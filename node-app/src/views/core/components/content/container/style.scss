@@ -1940,9 +1940,10 @@ ul {
         padding: 0px 10px;
         background-color: #F4F7F6;
         margin-bottom:16px;
+        padding-top: 24px !important;
         .cmp-container{
-            .text:first-child{
-                margin-top:24px;
+            .image {
+                flex-grow: 1;
             }
             .text:last-child{
                 margin-bottom: 40px;
