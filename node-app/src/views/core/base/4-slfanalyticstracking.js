@@ -83,9 +83,9 @@ $(document).ready(function () {
               "ev_title": "sign in modal",
               "ev_type": "other"
       });
-        if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+       /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
             SignInHomeButton();
-        } 
+        } */
         //setTimeout(signinmodal,200);
     })
     
@@ -99,9 +99,9 @@ $(document).ready(function () {
               "ev_title": "sign in modal",
               "ev_type": "other"
       });	
-        if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+       /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
             SignInHomeButton();
-        }
+        }*/
        // setTimeout(signinmodal,200);
     });
     // Sign In Modal (Mobile Sign In button) analytics ends here
