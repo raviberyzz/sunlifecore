@@ -93,10 +93,17 @@ public class Title {
   private Style currentStyle;
   
   /**
+   * @param text the text to set
+  */
+  public void setText(String text) {
+	this.text = text;
+  }
+
+  /**
    * Inits the.
    */
   @PostConstruct
-  private void init() {
+  public void init() {
     if (StringUtils.isBlank(text)) {
       text = StringUtils.defaultIfEmpty(currentPage.getPageTitle(), currentPage.getTitle());
     }

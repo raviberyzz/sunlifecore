@@ -17,7 +17,6 @@ import org.mockito.MockitoAnnotations;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ ExtendWith (AemContextExtension.class)
-
 public class RegionLanguageMenuTest {
   @ InjectMocks
   private RegionLanguageMenu regionLanguageMenu;
