@@ -50,7 +50,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 public class ArticleListModel {
 
   /** The logger. */
-  private static final Logger logger = LoggerFactory.getLogger(ArticleListModel.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ArticleListModel.class);
 
   /** The parent path. */
   @ Inject
@@ -367,12 +367,12 @@ public class ArticleListModel {
       resourceResolver = coreResourceResolver.getResourceResolver();
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
-        logger.warn("Session was null therefore no query was executed");
+        LOGGER.warn("Session was null therefore no query was executed");
         return;
       }
       final QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
       if (queryBuilder == null) {
-        logger.warn("Query builder was null therefore no query was executed");
+        LOGGER.warn("Query builder was null therefore no query was executed");
         return;
       }
 
@@ -380,12 +380,12 @@ public class ArticleListModel {
       setQueryParameterMap(selectors, queryParameterMap);
 
       final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
-      logger.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
+      LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
       final Query query = queryBuilder.createQuery(predicateGroup, session);
 
       final SearchResult searchResult = query.getResult();
 
-      logger.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
+      LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
           searchResult.getTotalMatches());
 
       setTotalMatch(Integer.parseInt(searchResult.getTotalMatches() + StringUtils.EMPTY));
@@ -413,15 +413,17 @@ public class ArticleListModel {
           leakingResourceResolver.close();
         }
       }
-      String path = currentPage.getPath();
-      String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
-      path = path
-          .replace(siteUrl.substring(0,
-              siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
-      setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
-      setPageUrl(path);
+      if (getDisplayType().equals("articleList")) {
+        String path = currentPage.getPath();
+        String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
+        path = path
+            .replace(siteUrl.substring(0,
+                siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+        setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
+        setPageUrl(path);
+      }
     } catch (LoginException | RepositoryException e) {
-      logger.error("Login exception while trying to get resource resolver {}", e);
+      LOGGER.error("Login exception while trying to get resource resolver {}", e);
     } finally {
       if (null != resourceResolver) {
         resourceResolver.close();
@@ -465,7 +467,7 @@ public class ArticleListModel {
       queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
-      for (int i = 0 ; i < tagNames.length ; i++ ) {
+      for (int i = 0; i < tagNames.length; i++) {
         queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ]);
       }
     }

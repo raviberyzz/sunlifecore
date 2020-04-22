@@ -197,11 +197,12 @@
                 background-color: #FFCB05;
                 padding: 16px;
                 width: 100%;
+                display:flex;
+                justify-content: space-between;
                 .Editorial-form-input{
-                    width: 88%;
+                    width: 82%;
                     vertical-align: top;
                     display: inline-block !important;
-
                     select{
                         height:48px;
                         width:100%; 
@@ -209,12 +210,13 @@
                 }
                 .Editorial-form-button{
                     display:inline-block;
-                   margin-left:15px;
+                   //margin-left:8px;
                     button{
                         font-size: 16px !important;
                         padding: 11px 19px !important;
                         margin: 0 !important;
                         border: 2px;
+                        max-width:50px;
                         min-height: 48px !important;
                         white-space: normal;
                         font-family: 'sunlife-sans';

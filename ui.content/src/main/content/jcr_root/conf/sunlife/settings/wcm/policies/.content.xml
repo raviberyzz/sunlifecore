@@ -1487,7 +1487,7 @@
 		                  		jcr:title="Accordion" 
 		                  		sling:resourceType="wcm/core/components/policy/policy" 
 		                  		allowedHeadingElements="[h2,h3,h4,h5,h6]" 
-		                  		components="[/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title]" 
+		                  		components="[/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title,/apps/sunlife/ca/components/content/embed,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/teaser]" 
 		                  		headingElement="h3">
 		                     <jcr:content jcr:primaryType="nt:unstructured" />
 		                     <cq:styleGroups jcr:primaryType="nt:unstructured">

@@ -64,7 +64,8 @@ public class CNWNewsModelTest {
   @ BeforeEach
   public void setup() throws LoginException , RepositoryException {
     MockitoAnnotations.initMocks(this);
-    when(currentPage.getLanguage( )).thenReturn(TestUtils.CANADA_LOCALE);
+    //when(currentPage.getLanguage( )).thenReturn(TestUtils.CANADA_LOCALE);
+    when(configService.getConfigValues("pageLocale", "/content/sunlife/ca/en/home")).thenReturn("en_CA");
     when(currentPage.getPath( )).thenReturn("/content/sunlife/ca/en/home");
     when(configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT ,
         "/content/sunlife/ca/en/home")).thenReturn("/content/sunlife");
