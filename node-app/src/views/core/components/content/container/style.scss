@@ -653,6 +653,9 @@ ul {
         p{
             padding-bottom:2px;
         }
+        h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
+            font-size: 1.5rem;
+        }
     }
     .container-component .cmp-container .grey-horizontal-separator{
         display: none !important;
@@ -2270,6 +2273,9 @@ ul {
 
 .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
     display: inherit; }
+
+    
+       
 }
 
 /** Browser Specific CSS ends here **/
