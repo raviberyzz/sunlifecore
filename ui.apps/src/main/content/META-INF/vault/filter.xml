@@ -2,7 +2,7 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/sunlife"/>
     <filter root="/apps/foundation/components/form"/>
-    <filter root="/apps/cq/xssprotection/config.xml"/>
-    <filter root="/apps/cq/gui/components/authoring/editors/clientlibs/core/js/edit/ToolbarActions/edit.ToolbarActions.PASTE.js"/>
+    <filter root="/apps/cq/xssprotection"/>
+    <filter root="/apps/cq/gui/components/authoring/editors/clientlibs/core/js/edit/ToolbarActions"/>
     <filter root="/apps/sling/servlet/errorhandler" />
 </workspaceFilter>

@@ -85,9 +85,9 @@ public class SiteConfigServiceImpl implements SiteConfigService {
     while (! siteConfigMap.containsKey(key) && key.lastIndexOf('/') > 1) {
       key = key.substring(0, key.lastIndexOf('/'));
     }
-
-    log.debug("SiteConfigServiceImpl :: getConfigValues :: Page ");
-    return siteConfigMap.containsKey(key) ? siteConfigMap.get(key).get(name) : "";
+    String paramValue = siteConfigMap.containsKey(key) ? siteConfigMap.get(key).get(name) : "";
+    log.debug("SiteConfigServiceImpl :: getConfigValues :: Page :: value :: {}", paramValue);
+    return paramValue;
   }
 
   /*

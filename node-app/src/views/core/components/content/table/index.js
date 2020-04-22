@@ -5,7 +5,7 @@ function stickyHeader(){
      the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
       in pop up modal. */
     if($('.table-stickyheader').length){
-      let tableHeader = $(".table-stickyheader table tbody tr:first-child");
+      let tableHeader = $(".table-stickyheader table tbody tr:first-child th");
       let theaderPosition = tableHeader.offset().top;
       let tableBottom = $('.table-stickyheader table tbody tr:last-child').offset().top; 
       // 64 px is the height of the table header. 

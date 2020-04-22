@@ -517,14 +517,15 @@ public class CNWNewsModel {
   @ PostConstruct
   public void init() {
     logger.debug("Entry :: CNWNewsModel :: init :: newsType: {}", newsType);
-
-    locale = currentPage.getLanguage().getLanguage();
-    logger.debug("Fetched locale: {}, newsType: {}", locale, newsType);
-
     if (null == newsType) {
       return;
     }
     try {
+      final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
+      if (null != pageLocale && pageLocale.length() > 0) {
+    	locale = pageLocale.split("_") [ 0 ];
+      }
+      logger.debug("Fetched locale: {}, newsType: {}", locale, newsType);
       if (newsType.equals("1")) {
         processOverviewData();
       } else {

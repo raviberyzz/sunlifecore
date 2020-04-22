@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  * The Class SelectorToExfragMapModel.
  */
 @Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class },resourceType = "/apps/sunlife/core/components/content/recommended-products-article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		Resource.class },resourceType = "sunlife/core/components/content/recommended-products-article", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class SelectorToExfragMapModel {
 
   /** The items. */
