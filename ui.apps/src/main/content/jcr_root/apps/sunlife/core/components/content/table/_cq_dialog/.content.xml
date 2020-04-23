@@ -42,7 +42,7 @@
                                     <text-accessibility
                                         jcr:primaryType="nt:unstructured"
                                         cssName="sr-only"
-                                        text="Text Accessibility"/>
+                                        text="Screen Reader Only Text"/>
                                     <button-blue
                                         jcr:primaryType="nt:unstructured"
                                         cssName="button-class primary-blue-button-rte"
