@@ -1403,7 +1403,7 @@ ul {
     font-size: 18px !important;
 	.text {
 		.cmp-text {
-            h2, .heading-2{
+            h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
                 line-height: 46px !important;
                 font-size: 36px !important;
             }
@@ -1962,9 +1962,9 @@ ul {
         margin-bottom:16px;
         padding-top: 24px !important;
         .cmp-container{
-            .image {
-                flex-grow: 1;
-            }
+        div.text:nth-last-of-type(2){
+            flex-grow: 1;
+        }
             .text:last-child{
                 margin-bottom: 40px;
                 .cmp-text{
