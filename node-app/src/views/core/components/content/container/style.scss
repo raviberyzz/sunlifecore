@@ -1867,7 +1867,8 @@ ul {
 		.col-sm-6:nth-child(2){
             .cmp-text{
                 border-left: 2px solid $light-grey-color;
-                padding-left: 20px;
+                padding-left: 18px;
+                margin-left: -2px
             }
         }
         .col-sm-6 {
