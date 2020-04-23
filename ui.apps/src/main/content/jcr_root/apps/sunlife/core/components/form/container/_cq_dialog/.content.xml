@@ -118,7 +118,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Please configure the data section"
-                                                fieldDescription="Please configure the data section"
+                                                fieldDescription="Populates the Adobe Analytics Activity Map region. Specify a string that is representative of the page region where the link is located. Use dashes &quot;-&quot; as separators. For example, &quot;right-rail&quot;."
                                                 fieldLabel="Data Section"
                                                 name="./dataSection"/>
                                          </items>

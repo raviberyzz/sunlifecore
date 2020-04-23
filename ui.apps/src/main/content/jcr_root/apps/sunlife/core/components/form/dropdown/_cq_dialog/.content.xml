@@ -217,7 +217,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Please configure the data title"
-                                                fieldDescription="Please configure the data title."
+                                                fieldDescription="Populates the AEM enabled Adobe Analytics custom event tag. Provide the contextual title that is representative of the link that was clicked. For example, if a find an advisor component has a &quot;learn more&quot; button, a good data title value would be &quot;find an advisor learn more&quot;."
                                                 fieldLabel="Data Title"
                                                 name="./dataTitle"/>
                                           <dataValue
