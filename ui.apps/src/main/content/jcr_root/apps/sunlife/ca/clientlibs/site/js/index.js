@@ -7,21 +7,21 @@ $('.getting-started-icon-wrapper .icon-texts a').click(function(){
     if (value == 'compare life insurance products'){
     	utag.link({
             "ev_action"		: "onpage_impr",
-  			"ev_title"		: value+ "modal open",
+  			"ev_title"		: value+ " modal open",
   			"ev_type"		: "other"
         });
     }
-    else if(value == 'compare term life insurance products modal open'){
+    else if(value == 'compare term life insurance products'){
         utag.link({
             "ev_action"		: "onpage_impr",
-  			"ev_title"		: value+ "modal open",
+  			"ev_title"		: value+ " modal open",
   			"ev_type"		: "other"
         });
     }
-    else if(value == 'compare permanent life insurance products modal open'){
+    else if(value == 'compare permanent life insurance products'){
         utag.link({
             "ev_action"		: "onpage_impr",
-  			"ev_title"		: value+ "modal open",
+  			"ev_title"		: value+ " modal open",
   			"ev_type"		: "other"
         });
     }
