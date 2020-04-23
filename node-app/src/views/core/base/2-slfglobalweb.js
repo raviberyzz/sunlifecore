@@ -2473,31 +2473,38 @@ function getCookie(cname) {
 // 					|| window.location.href.indexOf("/ca/Tools+and+Resources/Health+and+Wellness") > -1) {
      
     $(document).ready(function(){
-$(window).scroll(function() {
+        $(window).scroll(function() {
         //$("#subscribe").modal({show:true});
-		if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
-			if (getCookie('subscribecookie') == "") {
-				//var url = new URL(window.location.href);
-				//var wtmcid = url.searchParams.get("WT.mc_id");
-				var wtmcid = getQuerystring("WT.mc_id");
-				if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
-					//setCookie('subscribecookie', 'displayed', 180);
-					createCookie('subscribecookie', 'displayed', 180, false)
-				} else {
-					if($("#subscribe").length==1){
-						$("#subscribe").modal({show:true});
-						//setCookie('subscribecookie', 'displayed', 0);
-						// check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
-						if (navigator.userAgent.indexOf("MSIE") > 0) {
-							createCookie('subscribecookie', 'displayed', 1, false)
-						} else {
-							createCookie('subscribecookie', 'displayed', -1, true)
-						}
- 					}
-				}
-			}
-		}
-	});
+            if($(window).scrollTop() + $(window).height() >= $(document).height()/2) {
+                if (getCookie('subscribecookie') == "") {
+                    //var url = new URL(window.location.href);
+                    //var wtmcid = url.searchParams.get("WT.mc_id");
+                    var wtmcid = getQuerystring("WT.mc_id");
+                    if ( (wtmcid != null) && (wtmcid.indexOf("Direct:Newsletter") > -1) ) {
+                        //setCookie('subscribecookie', 'displayed', 180);
+                        createCookie('subscribecookie', 'displayed', 180, false)
+                    } else {
+                        if($("#subscribe").length==1){
+                            $("#subscribe").modal({show:true});
+                            //setCookie('subscribecookie', 'displayed', 0);
+                            // check for IE11: session cookies disabled by default, so for IE, set expiry for 1 day
+                            if (navigator.userAgent.indexOf("MSIE") > 0) {
+                                createCookie('subscribecookie', 'displayed', 1, false)
+                            } else {
+                                createCookie('subscribecookie', 'displayed', -1, true)
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        var hostname = window.location.hostname;
+        $('a').each(function(){
+            var href = $(this).attr('href');
+            if(href && href.indexOf('javascript') < 0 && href.indexOf('#') < 0 && (href.indexOf(hostname) < 0 || href.indexOf('.pdf') > 0)) {
+                $(this).attr('target','_blank');
+            }
+        });
 
     });
 
