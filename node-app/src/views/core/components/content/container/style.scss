@@ -118,12 +118,13 @@ ul {
             li{
                 margin-left: 0px;
                 margin-right: 0px;
+                padding: 10px 0px;
             }
             li:not(:nth-last-of-type(-n+1)) {
                 border-bottom: 2px dotted $medium-grey-background;
             }
-            li {
-                padding: 10px 0px;
+            li::before{
+                display: none;
             }
         }
     }
@@ -1442,7 +1443,6 @@ ul {
         p:last-child{
             line-height:23px;
             display:table;
-            color: $light-grey-20;
         }
     }
     .icon-text {
@@ -1469,6 +1469,23 @@ ul {
    .mobileapp {
         .col-sm-4{
             padding-left: 46px;
+        }
+    }
+
+    .product-card {
+        .row{
+            .col-sm-6:nth-child(1){
+                padding-left: 0px;
+            }
+            .col-sm-6:nth-child(2){
+                padding-right: 0px;
+            }
+            .col-sm-4:nth-child(1){
+                padding-left: 0px;
+            }
+            .col-sm-4:nth-child(3){
+                padding-right: 0px;
+            }
         }
     }
 }

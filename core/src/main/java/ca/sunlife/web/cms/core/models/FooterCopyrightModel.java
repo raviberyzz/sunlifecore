@@ -45,52 +45,6 @@ public interface FooterCopyrightModel {
    * @return the footer items
    */
   @ Inject
-  List <FooterItems> getFooterItems();
-
-  /**
-   * The Interface FooterItems.
-   */
-  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-  interface FooterItems {
-
-    /**
-     * Gets the label.
-     *
-     * @return the label
-     */
-    @ Inject
-    String getLabel();
-
-    /**
-     * Gets the url.
-     *
-     * @return the url
-     */
-    @ Inject
-    String getUrl();
-
-    /**
-     * Gets the target.
-     *
-     * @return the target
-     */
-    @ Inject
-    String getTarget();
-
-    /**
-     * Gets the checkbox separator.
-     *
-     * @return the checkbox separator
-     */
-    @ Inject
-    String getCheckboxSeparator();
-
-    /**
-     * Gets the checkbox hide.
-     *
-     * @return the checkbox hide
-     */
-    @ Inject
-    String getCheckboxHide();
-  }
+  List <FooterItemsModel> getFooterItems();
+  
 }

@@ -1,5 +1,25 @@
 @import '../../../base/core';
+
 .sign-in-modal-wrapper {
+    //styles for contigency-widget for signin
+    #contigency-widget{
+        #blockpagebutton{
+            width: 100% !important;
+        }
+        .mar-top-10 {
+            margin-top: 10px !important;
+        }
+        .pad-top-30 {
+            padding-top: 30px !important;
+        }
+        .signin-terms {
+            padding-top: 8px;
+            margin-bottom: 5px;
+            margin-top: 0px;
+            line-height: 24px;
+        }
+    }
+     //styles for contigency-widget for signin end
     opacity: 1;
     background-color: $background-black-ovrelay-color;
     padding: 0;
@@ -168,7 +188,7 @@
     }
     .remeberme {
         font-size: 1rem;
-        font-weight:700;
+        font-weight:400;
         margin: 0 0 0 30px;
     }
     input[type=checkbox]{
