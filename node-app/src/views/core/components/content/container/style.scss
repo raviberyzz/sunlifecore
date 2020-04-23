@@ -2257,6 +2257,12 @@ ul {
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
+    .landing-page-hero-banner {
+        .text-section {
+            top:50%;
+            transform: translateY(-50%);
+        }
+    }
     .company-highlight-yellow-grey-background {
         .bottom-aligned-text{
             .image-text-wrapper{
