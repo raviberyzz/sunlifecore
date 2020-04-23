@@ -1471,6 +1471,23 @@ ul {
             padding-left: 46px;
         }
     }
+
+    .product-card {
+        .row{
+            .col-sm-6:nth-child(1){
+                padding-left: 0px;
+            }
+            .col-sm-6:nth-child(2){
+                padding-right: 0px;
+            }
+            .col-sm-4:nth-child(1){
+                padding-left: 0px;
+            }
+            .col-sm-4:nth-child(3){
+                padding-right: 0px;
+            }
+        }
+    }
 }
 /* styles for mobile app end  */
 
