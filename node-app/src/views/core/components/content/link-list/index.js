@@ -38,7 +38,7 @@ function mobileEditorial(){
 			}
 
 			var editorialLists=[];
-			var mobileNavigation = "<form action method='post'><div><label class='sr-only'>Select a topic</label><select class='form-control cta-input list-topic-dropdown'></select></div><div><button><span class='fa fa-chevron-right'></span></button></div></form>";
+			var mobileNavigation = "<form><div><label class='sr-only'>Select a topic</label><select class='form-control cta-input list-topic-dropdown'></select></div><div><button><span class='fa fa-chevron-right'></span></button></div></form>";
 			$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div .list-unstyled").after(mobileNavigation);
             $('.Editorial-form-input select').addClass('form-control cta-input list-topic-dropdown');
 
@@ -62,7 +62,7 @@ function mobileEditorial(){
 		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:first-child").addClass('Editorial-form-input');
 		$(".editorial-nav-desktop-wrapper .lists-wrapper .links .list-div form div:nth-child(2)").addClass('primary-blue-button-form Editorial-form-button');
         $('.Editorial-form-button button').attr('id','list-topic-btn');
-        $('.Editorial-form-button button').attr('type','submit');
+        //$('.Editorial-form-button button').attr('type','submit');
         $('#list-topic-btn').click(function(){
               console.log('button clicked');
         })
@@ -79,10 +79,15 @@ function mobileEditorial(){
         selected.attr('selected','selected');
         $('.list-div form').attr('action', selectedVal);
    })
-		/*  $('.Editorial-form-button').click(function(){
-				console.log($('.Editorial-form-input select').value);
-
-		}) */
+		var path =window.location.pathname;
+		//console.log(path);
+		 var selectOptions = $('.Editorial-form-input select').children();
+		selectOptions.each(function(){
+			var optionValue = $(this).attr('value')
+			if(optionValue == path){
+				$(this).attr("selected","selected");
+			}
+		})
 }
 mobileEditorial();
 $(window).resize(mobileEditorial);
