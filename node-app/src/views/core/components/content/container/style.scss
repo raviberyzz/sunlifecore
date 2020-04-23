@@ -1403,8 +1403,8 @@ ul {
     font-size: 18px !important;
 	.text {
 		.cmp-text {
-            h2{
-                line-height: 46px;
+            h2, .heading-2{
+                line-height: 46px !important;
                 font-size: 36px !important;
             }
 			p {
