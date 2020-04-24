@@ -5,11 +5,13 @@ function stickyHeader(){
      the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
       in pop up modal. */
     if($('.table-stickyheader').length){
-      let tableHeader = $(".table-stickyheader table tbody tr:first-child th");
+      let tableHeader = $(".table-stickyheader table:eq(0) tbody tr:first-child th");
       let theaderPosition = tableHeader.offset().top;
-      let tableBottom = $('.table-stickyheader table tbody tr:last-child').offset().top; 
-      // 64 px is the height of the table header. 
-      let tableHeight = theaderPosition + tableBottom - 64;
+      let tableBottom = $('.table-stickyheader table:eq(0) tbody tr:last-child'); 
+      let tbottomPosition = tableBottom.offset().top;
+
+      let numberOfTables = $(".table-stickyheader table").length;
+      let currTable = 0;
       let position = 0;
       //sticky header function on scroll 
         $(window).on("scroll", function() {
@@ -25,9 +27,23 @@ function stickyHeader(){
               tableHeader.attr("style", "transform: translateY(" + position + "px)");
             } 
             //removing the transform property once the page scrolls past the table
-            if(window.pageYOffset > tableHeight){
+            if(window.pageYOffset > tbottomPosition + tableHeader.height()){
               tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+              //If more than one table set new parameters
+              if(numberOfTables > currTable + 1){
+                currTable++;
+                tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child th");
+                tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child'); 
+                theaderPosition = tableHeader.offset().top;  //New table header position
+                tbottomPosition = tableBottom.offset().top;  //New table bottom position
+              }
             }
+          } else if(window.pageYOffset < theaderPosition && currTable > 0){
+            currTable --;
+            tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child th");
+            tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child'); 
+            theaderPosition = tableHeader.offset().top;  //New table header position
+            tbottomPosition = tableBottom.offset().top;  //New table bottom position
           } else if (position !== 0) {
             position = 0;
             tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
