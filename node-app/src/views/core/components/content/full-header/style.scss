@@ -102,6 +102,11 @@
                     max-width:375px;
                     float:right;
                     margin-top:7px;
+                    .signIn-button {
+                        .button-class {
+                            padding:10px 16px !important;
+                        }
+                    }
                 }
             }
         }
