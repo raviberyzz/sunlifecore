@@ -171,6 +171,22 @@
       </div>
     </div>
     <div class="mobile-header">
+    <sly data-sly-test.isCampaignHeader = "${listModel.campaignHeader == 'true'}">
+    <div class="campaign-header-wrapper">
+    <div class="campaign-header">
+        <div class="slf-header-logo vertical-middle-align">
+        <sly data-sly-list.links="${listModel.links}">
+          <a class="logo" href="links.linkUrl @ extension = 'html'">
+                <img class="logo-img" alt="Sun Life" aria-label="Sun Life" src="${links.logoImage}">
+                </img>
+            </a>
+            </sly>
+        </div>
+    </div>
+  </div>
+   </sly>
+    
+    <sly data-sly-test = "${!isCampaignHeader}">
       <div class="slf-mobile-header-wrapper">
         <!-- sign-in modal start -->
         <!-- sign-in modal end-->
@@ -242,6 +258,7 @@
         <!-- Hamburger Menu End -->
 
       </div>
+    </sly>
     </div>
   </div>
 </header>

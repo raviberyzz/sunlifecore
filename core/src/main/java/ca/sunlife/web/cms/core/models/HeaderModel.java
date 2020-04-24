@@ -94,6 +94,14 @@ public interface HeaderModel {
    */
   @ Inject
   String getListFrom();
+  
+  /**
+   * Read the campaign header display value @ return the campaign header display value.
+   *
+   * @return the Is Campaign Header
+   */
+  @ Inject
+  String getCampaignHeader();
 
   /**
    * Read the Utility Nav display value @ return the Utility Nav display value.

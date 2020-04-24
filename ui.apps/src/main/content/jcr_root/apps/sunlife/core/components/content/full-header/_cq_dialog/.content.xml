@@ -50,6 +50,14 @@
                                                         value="yes"/>
                                                 </items>
                                             </logo>
+                                            <campaignHeader
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the header is campaign header."
+                                                name="./campaignHeader"
+                                                text="Is Campaign Header"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <yes
                                                 granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                                 jcr:primaryType="nt:unstructured"
