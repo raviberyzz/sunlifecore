@@ -277,9 +277,18 @@ margin-top:10px;
   font-weight: 400;
   margin-left:20px;
 }
-.mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--6 .icon-texts{
-  padding:0 0 0 8px
-           }
+.mega-menu-wrapper-desk {
+    .aem-Grid.aem-Grid--default--10 {
+        .aem-Grid.aem-Grid--default--12 > {
+            .aem-GridColumn.aem-GridColumn--default--6 {
+                .icon-texts{
+                    padding:0 0 0 8px;
+                    font-size: 1rem; //heading for tools and resources mega menu
+                }
+            } 
+        }
+    }
+}  
 
 
  .mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--10 .aem-Grid.aem-Grid--default--12 > .aem-GridColumn.aem-GridColumn--default--3 .icon-parent {
