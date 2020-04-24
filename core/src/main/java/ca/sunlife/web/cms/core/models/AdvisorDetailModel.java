@@ -87,11 +87,16 @@ public class AdvisorDetailModel {
   @ Via ("resource")
   private String cellPhoneLabel;
 
+  /** Invalid advisor alert message. */
+  @ Inject
+  @ Via ("resource")
+  private String invalidAdvisorIdMessage;
+
   /** Language not supported alert message. */
   @ Inject
   @ Via ("resource")
   private String languageNotSupportedMessage;
-
+  
   /** Alternate language. */
   @ Inject
   @ Via ("resource")
@@ -529,7 +534,25 @@ public class AdvisorDetailModel {
     this.iconMarkerStandard = iconMarkerStandard;
   }
 
-  /**
+	/**
+	 * @return the
+	 *         invalidAdvisorIdMessage
+	 */
+	public String getInvalidAdvisorIdMessage() {
+		return invalidAdvisorIdMessage;
+	}
+
+	/**
+	 * @param invalidAdvisorIdMessage
+	 *          the
+	 *          invalidAdvisorIdMessage
+	 *          to set
+	 */
+	public void setInvalidAdvisorIdMessage(String invalidAdvisorIdMessage) {
+		this.invalidAdvisorIdMessage = invalidAdvisorIdMessage;
+	}
+
+	/**
    * @return the languageNotSupportedMessage
    */
   public String getLanguageNotSupportedMessage() {

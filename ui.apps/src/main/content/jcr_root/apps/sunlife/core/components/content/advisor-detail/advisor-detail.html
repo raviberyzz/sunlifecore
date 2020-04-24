@@ -21,6 +21,16 @@
 </sly>
 <!-- Error code - LANGUAGE_NOT_SUPPORTED end -->
 
+<!-- Error code - INVALID_ADVISOR_ID start -->
+<sly data-sly-test="${errorCode == 'INVALID_ADVISOR_ID'}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
+		<p>
+			${advisorDetailObj.invalidAdvisorIdMessage @context = 'html'}
+		</p>
+    </div>
+</sly>
+<!-- Error code - INVALID_ADVISOR_ID end -->
+
 <!-- Advisor start -->
 <sly data-sly-test="${advisorStd}">
 	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
