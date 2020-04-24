@@ -24,7 +24,7 @@
         }
         .desktop-header-content{
             padding: 0 15px 18px 5px;
-            height:100px;
+            height:92px;
              /*Logo starts here*/
              .desktop-sunlife-logo{
                   float:left;
@@ -101,7 +101,12 @@
                 .desktop-sign-button{
                     max-width:375px;
                     float:right;
-                    margin-top:3px;
+                    margin-top:7px;
+                    .signIn-button {
+                        .button-class {
+                            padding:10px 16px !important;
+                        }
+                    }
                 }
             }
         }
