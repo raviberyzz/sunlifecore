@@ -1403,11 +1403,14 @@ ul {
     font-size: 18px !important;
 	.text {
 		.cmp-text {
-            h2{
-                line-height: 46px;
+            h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
+                line-height: 46px !important;
                 font-size: 36px !important;
             }
 			p {
+				&:first-child {
+					line-height: 23px;
+				}
 				&:last-child {
 					margin-bottom: 40px;
 				}
@@ -1957,9 +1960,10 @@ ul {
         padding: 0px 10px;
         background-color: #F4F7F6;
         margin-bottom:16px;
+        padding-top: 24px !important;
         .cmp-container{
-            .text:first-child{
-                margin-top:24px;
+            div.text:nth-last-of-type(2){
+                flex-grow: 1;
             }
             .text:last-child{
                 margin-bottom: 40px;
@@ -2069,6 +2073,9 @@ ul {
              .cmp-text{
                  h2:first-child{
                       margin-top:0px;
+                 }
+                 ul + p {
+                     margin-top: 10px;
                  }
              }
          }
