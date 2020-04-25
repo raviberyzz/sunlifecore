@@ -2274,7 +2274,8 @@ ul {
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-    .landing-page-hero-banner {
+    
+    .landing-page-hero-banner, .life-moment-second-level-banner {
         .text-section {
             top:50%;
             transform: translateY(-50%);
@@ -2316,20 +2317,4 @@ ul {
 
     
        
-}
-
-/** Browser Specific CSS ends here **/
-.form-container-component{
-    .cmp-form{
-        .text-form-input{
-            padding-bottom:8px;
-        }
-    }
-}
-.form-container-component{
-    .cmp-form{
-        .cmp-text{
-            padding-bottom:8px;
-        }
-    }
 }
