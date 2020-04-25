@@ -1975,9 +1975,6 @@ ul {
         margin-bottom:16px;
         padding-top: 24px !important;
         .cmp-container{
-            div.text:nth-last-of-type(2){
-                flex-grow: 1;
-            }
             .text:last-child{
                 margin-bottom: 40px;
                 .cmp-text{
@@ -2044,8 +2041,17 @@ ul {
                 .cmp-container{
                     display:flex;
                     flex-direction: column;
-                    justify-content: space-between;
                     padding:0px 10px;
+                    .text{
+                        &:last-child{
+                            .cmp-text{
+                                display: flex;
+                                flex-direction: column;
+                                height: 100%;
+                                justify-content: space-between;
+                            }
+                        }
+                    }
                 }
             }
         }
