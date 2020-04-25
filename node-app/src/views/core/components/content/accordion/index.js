@@ -5,10 +5,21 @@ $(document).ready(function(){
             $(this).siblings('.accordion-container .cmp-accordion__panel').removeClass('in');
         }
         else{     
-            $('.accordion-container .cmp-accordion__panel').removeClass('in');
-            $('.accordion-container .cmp-accordion__icon').attr('aria-expanded',false);
-            $(this).siblings('.accordion-container .cmp-accordion__panel').addClass('in');
+            $('.accordion-container .cmp-accordion__panel').removeClass('in');              // closes all open accordians
+            $('.accordion-container .cmp-accordion__icon').attr('aria-expanded',false); 
+            $(this).siblings('.accordion-container .cmp-accordion__panel').addClass('in');      // opens clicked accordian
             $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
+            
+            //Accomadate mobile header size
+            if(window.innerWidth < 1025 && $('.mobile-header-navbar').length){
+                // Scroll immediately to top of clicked accoridan
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $(this).parent().offset().top - 50 },1);
+            }else{
+                // Scroll immediately to top of clicked accoridan
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $(this).parent().offset().top },1);
+            }
         }
     });
     $('.expand-collapse .cmp-accordion__header').click(function(){
