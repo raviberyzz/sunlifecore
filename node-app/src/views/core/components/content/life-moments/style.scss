@@ -309,3 +309,12 @@
         }
     }
 }
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+	.life-moments {
+		h2{
+			margin-top: 0 px;
+			margin-bottom: 24px;
+		}
+	}
+}
