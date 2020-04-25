@@ -2501,11 +2501,10 @@ function getCookie(cname) {
         var hostname = window.location.hostname;
         $('a').each(function(){
             var href = $(this).attr('href');
-            if(href && href.indexOf('javascript') < 0 && href.indexOf('#') < 0 && (href.indexOf(hostname) < 0 || href.indexOf('.pdf') > 0)) {
+            if(href && ((href.indexOf('//') > 0 && href.indexOf(hostname) < 0 ) || href.indexOf('.pdf') > 0)) {
                 $(this).attr('target','_blank');
             }
         });
-
     });
 
 // $(document).ready(function(){
