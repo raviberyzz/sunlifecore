@@ -291,3 +291,21 @@
         }
     }
 }
+//Only for ipad
+@media(min-width:$tab-screen-min) and (max-width:1023px){
+    .yellow-background-wrapper{
+
+        .bright-start {
+            p{
+                max-width: 50%;
+                padding: 0 !important;
+                margin: auto !important;
+            }
+            h3{
+                margin: 0 auto 16px auto !important;
+                max-width: 50%;
+            }
+
+        }
+    }
+}
