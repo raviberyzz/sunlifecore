@@ -1,8 +1,24 @@
 $(document).ready(function () {
-    var comp=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
+    var rightRails = $('.right-navigation-wrapper');
+    rightRails.each(function(index){
+            var rightRailContainer = $(this).children();
+        var thisRail = $(this);
+        function margin(){
+        if(index > 0){
+            if($(window).width() > 1024){
+                console.log(thisRail);
+             thisRail.css("margin-top","24px");
+            } else if($(window).width() > 767 && $(window).width() < 1024){
+                     thisRail.css("margin-top","0px");
+            }
+        }
+        }
+        margin();
+        if(rightRailContainer.hasClass('cmp-container')){
+    var comp=rightRailContainer.children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
     if ($('.right-navigation-wrapper .cmp-container .experiencefragment .xf-content-height').length==1){
             var comp = $('.right-navigation-wrapper .cmp-container .experiencefragment .xf-content-height > div').children().filter(function(){return !$(this).hasClass('yellow-horizontal-separator')});
-    
+
         }
     var child=comp.length;
     var count1=0;
@@ -14,6 +30,7 @@ $(document).ready(function () {
         {  
          cta_index=count1;
         }
+        $(this).css('padding-bottom','24px');
     });
     
 
@@ -147,17 +164,17 @@ $(document).ready(function () {
                     {
                         if (index < cta_index-1)
                         {
-                            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+                            maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
                         } else if  (index > cta_index-1)
                         {
-                            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+                            maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeightt();
                         }
                     }
                     else
                     {
                         if (index > cta_index-1)
                         {
-                            maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+                            maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
                         }
                     }
                     
@@ -168,7 +185,7 @@ $(document).ready(function () {
                     {
                         if (index < cta_index-1)
                         {
-                            $(this).height(maxHeight);
+                            $(this).outerHeight(maxHeight);
                             
                         } else if (index > cta_index-1)
                         {
@@ -176,7 +193,7 @@ $(document).ready(function () {
                             if(previousElem.hasClass('light-orange')){
                                      $(this).css("height", "auto");
                             } else {
-                                   $(this).height(maxHeight);
+                                   $(this).outerHeight(maxHeight);
                             }
 
                             
@@ -186,13 +203,16 @@ $(document).ready(function () {
                     {
                         if (index > cta_index-1)
                         {
-                            $(this).height(maxHeight);
-                            
+
+                            $(this).outerHeight(maxHeight);
+
+
                         }
                     }
                    
                     
                 });
+
             }
             else
             {
@@ -203,21 +223,21 @@ $(document).ready(function () {
                     var row2=$('.right-navigation-wrapper .cmp-container').children().filter(function(){return $(this).hasClass('col-sm-6')});
                     row1.each(function(index) {
                         
-                     height1 =height1 > $(this).height() ? height1 : $(this).height();
+                     height1 =height1 > $(this).outerHeight() ? height1 : $(this).outerHeight();
                             
                     });
                     row1.each(function(index) {
-                           $(this).height(height1);
+                           $(this).outerHeight(height1);
                            
                            
                     });
                     row2.each(function(index) {
                             var abc = $(this).height();
-                            height2 = height2 > $(this).height() ? height2 : $(this).height();
+                            height2 = height2 > $(this).outerHeight() ? height2 : $(this).outerHeight();
                     });
                    
                     row2.each(function(index) {
-                        $(this).height(height2);
+                        $(this).outerHeight(height2);
                            
                            
                     });
@@ -232,23 +252,23 @@ $(document).ready(function () {
                         if (index < row1_child)
                         {
                             
-                             height1 = height1 > $(this).height() ? height1 : $(this).height();
+                             height1 = height1 > $(this).outerHeight() ? height1 : $(this).outerHeight();
                             
                         }
                         else
                         {
-                             height2 = height2 > $(this).height() ? height2 : $(this).height();
+                             height2 = height2 > $(this).outerHeight() ? height2 : $(this).outerHeight();
                         }
                         
                     });
                     row1.each(function(index) {
                         if (index < row1_child)
                         {
-                            $(this).height(height1+30);
+                            $(this).outerHeight(height1); // +30
                         }
                         else
                         {
-                            $(this).height(height2+30);
+                            $(this).outerHeight(height2); // +30
                         }
                        
                     });
@@ -256,23 +276,23 @@ $(document).ready(function () {
                         if (index < row1_child)
                         {
                             
-                             height1 = height1 > $(this).height() ? height1 : $(this).height();
+                             height1 = height1 > $(this).outerHeight() ? height1 : $(this).outerHeight();
                             
                         }
                         else
                         {
-                             height2 = height2 > $(this).height() ? height2 : $(this).height();
+                             height2 = height2 > $(this).outerHeight() ? height2 : $(this).outerHeight();
                         }
                         
                     });
                     row2.each(function(index) {
                         if (index < row1_child)
                         {
-                            $(this).height(height1 );
+                            $(this).outerHeight(height1);
                         }
                         else
                         {
-                            $(this).height(height2 );
+                            $(this).outerHeight(height2);
                         }
                        
                     });
@@ -288,6 +308,7 @@ $(document).ready(function () {
             });
         }
     }
+
 
     //For legal text Height
     $('.right-navigation-wrapper form .legal-text').parent().css({'text-size':'14px','line-height':'18px'});
@@ -311,7 +332,11 @@ $(document).ready(function () {
             $(this).next().addClass('col-sm-12');
         }
         }
-    })
-     // for multiple experience fragments end
+       })
+        // for multiple experience fragments end
+       } // rightRails end  starts here
+$(window).resize(margin);
+     })// rightRails end  ends here
+
+
  });
- 
