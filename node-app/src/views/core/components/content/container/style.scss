@@ -19,6 +19,14 @@ ul {
     }
 }
 
+.text {
+    .cmp-text {
+        ul + p {
+            margin-top: 10px;
+        }
+    }
+}
+
 .bright-solutions-wrapper{
     .bc_submit_btn .btn-blue{
         background: $blue-gradient-color !important;
@@ -2078,9 +2086,6 @@ ul {
              .cmp-text{
                  h2:first-child{
                       margin-top:0px;
-                 }
-                 ul + p {
-                     margin-top: 10px;
                  }
              }
          }
