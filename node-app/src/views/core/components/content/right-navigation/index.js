@@ -167,7 +167,7 @@ $(document).ready(function () {
                             maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
                         } else if  (index > cta_index-1)
                         {
-                            maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeightt();
+                            maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
                         }
                     }
                     else

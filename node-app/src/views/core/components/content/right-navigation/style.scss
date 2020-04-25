@@ -304,6 +304,9 @@
             .experiencefragment{
                 margin-bottom:24px;
             }
+            .yellow-horizontal-separator {
+                display:none;
+              }
         }
         .yellow-horizontal-separator{
             display: none;
@@ -358,10 +361,12 @@
         }
     }
     .right-navigation-wrapper > {
-        .cmp-container>*{
-            display: inherit;
-            border-right: 10px solid  $white-shade;
-            border-left: 10px solid  $white-shade;
+        .cmp-containerb > *{
+            
+                    display: inherit;
+                    border-right: 10px solid  $white-shade;
+                    border-left: 10px solid  $white-shade;
+            
         }
     }
  
