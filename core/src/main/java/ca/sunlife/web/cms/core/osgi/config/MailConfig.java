@@ -15,7 +15,7 @@ public @interface MailConfig {
 	 * @return the string
 	 */
 	@AttributeDefinition(name = "Mail API", description = "Mail API URL")
-	String apiUrl();
+	String getApiUrl();
 
 	/**
 	 * Api key.
@@ -23,7 +23,7 @@ public @interface MailConfig {
 	 * @return the string
 	 */
 	@AttributeDefinition(name = "Mail API KEY", description = "API KEY for Mail service")
-	String apiKey();
+	String getApiKey();
 
 	/**
 	 * Template paths.
@@ -31,5 +31,5 @@ public @interface MailConfig {
 	 * @return the string
 	 */
 	@AttributeDefinition(name = "Template Path", description = "Content fragment paths for email templates")
-  String templatePath();
+  String getTemplatePath();
 }

@@ -227,11 +227,6 @@
                 margin:0px!important;
                 }
         }
-        .text{
-            &:last-child{
-                padding:40px 10px;
-            }
-        }
         .text {
 			padding-top: 24px;
 		}
@@ -477,6 +472,11 @@
         .cmp-container > {
             .text,.icon-text,.form-container-component,.link-list,.embed{
                 padding-bottom:0px!important;
+            }
+            .text{
+                &:last-child{
+                    padding:40px 10px;
+                }
             }
         }
     }
