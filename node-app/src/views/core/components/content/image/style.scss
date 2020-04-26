@@ -8,8 +8,8 @@
     .overflow-hidden{
         overflow: hidden;
     }
-
-    @media (max-width: $mobile-screen-max) {
+//from phone to ipad only
+    @media (max-width: 1023px) {
         img{ 
             max-width:100%;
         }
