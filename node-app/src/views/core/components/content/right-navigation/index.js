@@ -32,6 +32,9 @@ $(document).ready(function () {
     });
     function updateRightRailHeight() {
         $('.right-navigation-wrapper').each(function(){
+            if (($(window).width() < 1025 && $(window).width() > 767)) {
+                $(this).css('margin-top','0');
+            }
             var rightRailContainer = $(this).children();
             if (rightRailContainer.hasClass('cmp-container')) {
                 var comp = rightRailContainer.children().filter(function () { return !$(this).hasClass('separator') });
