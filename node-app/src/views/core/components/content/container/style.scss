@@ -1094,16 +1094,16 @@ ul {
       }
     }
     .col-sm-6:nth-child(1) {
-        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background {
             margin-bottom:62px;    
         }
     }
     .col-sm-4:not(:last-child) {
-        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background {
             margin-bottom:62px;    
         }
     }.col-sm-4:last-child{ //add 22px padding to last cell inorder to have all cta's equal length apart
-        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background{
+        .yellow-icon-blue-background, .cta-three-column-wrapper, .yellow-icon-grey-background, .blue-icon-yellow-background {
             margin-bottom: -18px;
         }
     }
@@ -2280,7 +2280,8 @@ ul {
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-    .landing-page-hero-banner {
+    
+    .landing-page-hero-banner, .life-moment-second-level-banner {
         .text-section {
             top:50%;
             transform: translateY(-50%);
@@ -2314,9 +2315,6 @@ ul {
             }
         }
     }    
-
-
-
 .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-yellow-grey-background .image-text-wrapper .right-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .left-image-position .right-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .left-item, .company-highlight-blue-grey-background .image-text-wrapper .right-image-position .right-item {
     display: inherit; }
 
