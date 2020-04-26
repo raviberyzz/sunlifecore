@@ -31,10 +31,26 @@ $(document).ready(function () {
         }
     });
     function updateRightRailHeight() {
-        $('.right-navigation-wrapper').each(function(){
-            if (($(window).width() < 1025 && $(window).width() > 767)) {
+        $('.right-navigation-wrapper').each(function(i){
+          /*  if (($(window).width() < 1025 && $(window).width() > 767)) {
                 $(this).css('margin-top','0');
-            }
+            } else if($(window).width() > 1025){
+                if(i > 0 )  $(this).css('margin-top','24px');
+            } */
+            if (($(window).width() < 1025 && $(window).width() > 767)) {
+                if(i == 0){ 
+                    $(this).css('margin-top','24px');  
+                } else {
+                    $(this).css('margin-top','0');
+                }
+            } else if($(window).width() > 1025){
+                console.log(i);
+                    if(i > 0 ) {
+                        $(this).css('margin-top','24px');
+                    }   else if(i==0){
+                            $(this).css('margin-top','0px');
+                        }
+            } 
             var rightRailContainer = $(this).children();
             if (rightRailContainer.hasClass('cmp-container')) {
                 var comp = rightRailContainer.children().filter(function () { return !$(this).hasClass('separator') });
