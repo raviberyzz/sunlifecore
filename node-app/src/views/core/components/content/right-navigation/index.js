@@ -1,38 +1,40 @@
 $(document).ready(function () {
-    $('.right-navigation-wrapper').each(function () {
+    $('.right-navigation-wrapper').each(function (index) {
         var rightRailContainer = $(this).children();
+        if(index != 0) {
+            $(this).css('margin-top','24px');
+        }
         $(this).find('.aem-GridColumn.aem-GridColumn--default--12').removeClass('aem-GridColumn aem-GridColumn--default--12')
         if (rightRailContainer.hasClass('cmp-container')) {
             var comp = rightRailContainer.children().filter(function () { return !$(this).hasClass('separator') });
             if(comp.length == 1) {
                 comp.each(function () {
                     $(this).addClass("col-xs-12");
-                    $(this).css('padding-bottom', '24px');
                 });
             }else if(comp.length == 2 || comp.length == 4) {
                 comp.each(function () {
                     $(this).addClass("col-xs-12 col-sm-6 col-md-12");
-                    $(this).css('padding-bottom', '24px');
                 });
             }else if(comp.length == 3 || comp.length == 6) {
                 comp.each(function () {
                     $(this).addClass("col-xs-12 col-sm-4 col-md-12");
-                    $(this).css('padding-bottom', '24px');
                 });
             }else if(comp.length == 5) {
                 comp.each(function (i) {
-                    if(i<4) {
+                    if(i<3) {
                         $(this).addClass("col-xs-12 col-sm-4 col-md-12");
                     }else {
                         $(this).addClass("col-xs-12 col-sm-6 col-md-12");
                     }
-                    $(this).css('padding-bottom', '24px');
                 });
             }
         }
     });
     function updateRightRailHeight() {
         $('.right-navigation-wrapper').each(function(){
+            if (($(window).width() < 1025 && $(window).width() > 767)) {
+                $(this).css('margin-top','0');
+            }
             var rightRailContainer = $(this).children();
             if (rightRailContainer.hasClass('cmp-container')) {
                 var comp = rightRailContainer.children().filter(function () { return !$(this).hasClass('separator') });
