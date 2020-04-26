@@ -3,6 +3,36 @@
   display: block;
   position: relative;
 }
+
+
+.popup-modal-wrapper {
+  .modal-content {
+    .table {
+      overflow-y: auto ;
+    }
+  }
+}
+
+@media (min-width: $tab-screen-min){
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        height: 750px !important;
+      }
+    }
+  }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        height: 600px !important;
+      }
+    }
+  }
+}
+
 table{
   width: 100%;
   tbody{
