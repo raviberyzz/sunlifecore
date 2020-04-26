@@ -68,8 +68,8 @@
         }
     }
 }
-//only in Ipad view the editorial nav is going outside the page. 
-@media (min-width: $tab-screen-min) and (max-width: $tab-screen-min) {
+//in mobile landscape to ipad view the editorial nav is going outside the page. 
+@media (min-width: $mobile-screen-min) and (max-width: $tab-screen-min) {
     .editorial-nav-desktop-wrapper{
         .links{
             .list-div{
