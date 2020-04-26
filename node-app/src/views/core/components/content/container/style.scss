@@ -2044,6 +2044,7 @@ ul {
                     padding:0px 10px;
                     .text{
                         &:last-child{
+                            flex-grow: 1;
                             .cmp-text{
                                 display: flex;
                                 flex-direction: column;
