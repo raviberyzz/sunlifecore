@@ -2208,6 +2208,23 @@ ul {
             }
         }
     }
+    //for ipad only:
+    @media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+        /*** triple cta tablet and desktop styles start here ***/
+         .cta-three-column-wrapper{
+             .cmp-container{
+                 .cta-content-icon-wrapper{
+                     ul{
+                        li{
+                            .icon-parent{
+                                bottom:31px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     @media (min-width:$tab-screen-min){
       /*** triple cta tablet and desktop styles start here ***/
        .cta-three-column-wrapper{
