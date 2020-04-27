@@ -317,18 +317,33 @@ $(document).ready(function () {
     // Phone No General Analytics ends here //
     
     //Related Articles Analytics starts here//
-    $('.editorial-articles-wrapper .right-item a').click(function(){
-        value=$(this).text();
-    //alert(value);
-            utag.link({
-                "ev_action"		: "clk",
-                "ev_data_one" 	: "related articles",
-                "ev_data_two"	: value,
-                  "ev_title"		: "related articles",
-                  "ev_type"		: "others"
-            });
-            //console.log("mobile sign in module expanding is being tracked successfully");        
-        });	
+
+    // $('.editorial-articles-wrapper .right-item a').click(function(){
+    //     value=$(this).text();
+    // //alert(value);
+    //         utag.link({
+    //             "ev_action"		: "clk",
+    //             "ev_data_one" 	: "related articles",
+    //             "ev_data_two"	: value,
+    //               "ev_title"		: "related articles",
+    //               "ev_type"		: "others"
+    //         });
+    //         //console.log("mobile sign in module expanding is being tracked successfully");        
+    //     });
+    
+    $('.article-list-container .related-articles a').click(function(){
+        value=$(this).text().trim();
+        //alert(value);
+        utag.link({
+            "ev_action"		: "clk",
+            "ev_data_one" 	: "related articles",
+            "ev_data_two"	: value,
+            "ev_title"		: "related articles",
+            "ev_type"		: "others"
+        });
+    //console.log("mobile sign in module expanding is being tracked successfully");        
+    });
+    
     //Related Articles Analytics ends here//
     
     // Search Page Analytics starts here //
