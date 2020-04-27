@@ -2,13 +2,14 @@
 .slf-table.table-responsive {
   display: block;
   position: relative;
+  overflow-x: visible;
 }
 
 
 .popup-modal-wrapper {
   .modal-content {
     .table {
-      overflow-y: auto ;
+      overflow-y: auto;
     }
   }
 }
