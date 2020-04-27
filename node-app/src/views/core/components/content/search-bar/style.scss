@@ -42,7 +42,10 @@
         }
     }
     .search-box {
-        padding: 44px 0;
+        padding: 40px 0;
+        input[type=text] {
+            border-color: #d7d7d7;
+        }
     }
 
     .close-div {
