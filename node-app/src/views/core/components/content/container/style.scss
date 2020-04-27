@@ -807,7 +807,39 @@ ul {
             }
         } 
     }
+    .cmp-contact-us{ 
+        .row{
+            div.col-sm-4:last-child{
+                .div.text:first-child{
+                    border:none;
+
+            }
+        }
+    }
 }
+    .cmp-contact-us{
+        .row{ 
+            .col-sm-4{
+                div.text:first-child{
+                    h2, h3, h4, h5, h6{
+                        margin-top:0px;
+                    }
+                }
+            }
+        }
+    }
+    .cmp-contact-us{
+        .row{
+            .col-sm-4{
+                div.text:first-child{
+                    margin-top:32px;
+                    border-right:2px solid #f7f7f7
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .icon-text-list .icon-text{
         padding-bottom:16px;
