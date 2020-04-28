@@ -1,4 +1,10 @@
 @import '../../../base/core';
+
+div.button .button-class {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
 .primary-blue-button {
     .button-class {
         background-color: $medium-blue-color;
