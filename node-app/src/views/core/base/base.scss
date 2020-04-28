@@ -606,6 +606,7 @@ a.skip-main:focus, a.skip-main:active {
         #slf-locate-advisors-btn {
             align-items: center;
             width: 80%;
+            max-width: inherit;
         }
     }
 }
