@@ -1405,6 +1405,7 @@ ul {
             .cmp-form-button{
                 width: 100%;
                 min-width: 100%;
+                margin-top:15px;
             }
         }
 
@@ -2359,6 +2360,12 @@ ul {
     
        
 }
-
+.layout-container{
+    .subscribe-main-content-wrapper{
+        .col-xs-10, col-xs-12{
+            padding: 0 10px;
+        }
+    }
+}
 /** Browser Specific CSS ends here **/
 
