@@ -88,14 +88,26 @@ $(document).ready(function () {
     }
     
     //474 FIX - RELATED TO ACCESSIBILITY
+
+    //jaws fix (such that search is entered and properly exited)
+    $('#sun-search').on('shown.bs.collapse', function (e) {
+		$(this).find("#q-top").focus();
+	});
     $('#sun-search').on('hidden.bs.collapse', function () {
 		document.getElementById("search-btn").focus()
 	});
-    
+
+    //Jaws fix (such that region language menu is entered)
+    $('#sun-language').on('shown.bs.collapse', function (e) {
+		$(this).find(".fa-remove").focus();
+	});
     var liEle = $("#sun-language .content-language li").last()[0];
     var finalAnchorEle = $(liEle).find('a:first');
     $(finalAnchorEle).on('focusout', function (e) {
-            $('#sun-language').collapse("hide");
-     $('#language-btn').focus();
+		// Close this sub menu
+        $("#language-btn").trigger("click");
+		$("#language-btn").focus();
+		return false;
     });
+    
 });
