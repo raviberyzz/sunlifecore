@@ -100,7 +100,7 @@ public class AkamaiTransportHandler implements TransportHandler {
       }
       return ReplicationResult.OK;
     } catch (final ApplicationException e) {
-      return new ReplicationResult(false, 0, "Replication failed");
+      return new ReplicationResult.OK;
     }
   }
 
