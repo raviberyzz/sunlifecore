@@ -9,7 +9,6 @@
     <p data-sly-test="${!text.placeholder && text.helpMessage}" class="cmp-form-text__help-block">${text.helpMessage}</p>
     <textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
         data-cmp-hook-form-text="input"
-	<!-- aria-label="${text.hideTitle && text.title}" -->
         id="${customText.id}"
         placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.requiredMessage}"
@@ -21,7 +20,6 @@
         rows="${text.rows}">${text.value}</textarea>
     <input data-sly-test="${!useTextarea}"
         data-cmp-hook-form-text="input"
-        <!-- aria-label="${text.hideTitle && text.title}" -->
         type="${text.type}"
         id="${customText.id}"
         placeholder="${text.placeholder}"
