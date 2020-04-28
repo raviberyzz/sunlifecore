@@ -173,9 +173,12 @@ public class BasePageModel {
   @ Via ("resource")
   private String socialMediaDescripton;
 
+  /** The page title - browser title. */
+  private String socialMediaTitle;
+
   /** The seo page title. */
   private String seoPageTitle;
-
+  
   /** The seo canonical url. */
   private String seoCanonicalUrl;
 
@@ -274,6 +277,20 @@ public class BasePageModel {
   private String searchApi;
   
   /**
+	 * @return the pageTitleTag
+	 */
+	public String getPageTitleTag() {
+		return socialMediaTitle;
+	}
+
+	/**
+	 * @param pageTitleTag the pageTitleTag to set
+	 */
+	public void setPageTitleTag(String pageTitleTag) {
+		this.socialMediaTitle = pageTitleTag;
+	}
+
+	/**
    * Gets the seo page title.
    *
    * @return the seoPageTitle
@@ -697,7 +714,11 @@ public class BasePageModel {
 
     // SEO title - <title> tag
     seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
-
+    
+    // socialMediaTitle
+    String navTitle = currentPage.getNavigationTitle();
+    socialMediaTitle = null == navTitle ? title : navTitle;
+    
     // SEO description - <meta name="description"> tag
     seoDescription = description;
 
@@ -724,8 +745,8 @@ public class BasePageModel {
     customMetadata = new HashMap <>();
 
     // Configuring custom social sharing - meta-tags
-    customMetadata.put(OG_TITLE, title);
-    customMetadata.put(TWITTER_TITLE, title);
+    customMetadata.put(OG_TITLE, socialMediaTitle);
+    customMetadata.put(TWITTER_TITLE, socialMediaTitle);
     customMetadata.put(OG_URL, seoCanonicalUrl);
     customMetadata.put(TWITTER_URL, seoCanonicalUrl);
     customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
@@ -962,12 +983,12 @@ public class BasePageModel {
    * @return the breadcrumb title
    */
   public String getBreadcrumbTitle(final Page page) {
-    String titleStr = page.getNavigationTitle();
+    String titleStr = page.getTitle();
     if (titleStr == null) {
-      titleStr = page.getPageTitle();
+      titleStr = page.getNavigationTitle();
     }
     if (titleStr == null) {
-      titleStr = page.getTitle();
+      titleStr = page.getPageTitle();
     }
     if (titleStr == null) {
       titleStr = page.getName();
