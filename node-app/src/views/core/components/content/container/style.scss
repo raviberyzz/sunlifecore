@@ -70,6 +70,9 @@ ul {
             width:100%;                  
         }
     }
+    .product-card .row div[class^="col-"] {
+        padding: 0px;
+    }
 }
 // bright solutions ends here
 
