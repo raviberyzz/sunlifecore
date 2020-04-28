@@ -9,7 +9,7 @@
     <p data-sly-test="${!text.placeholder && text.helpMessage}" class="cmp-form-text__help-block">${text.helpMessage}</p>
     <textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
         data-cmp-hook-form-text="input"
-        aria-label="${text.hideTitle && text.title}"
+	<!-- aria-label="${text.hideTitle && text.title}" -->
         id="${customText.id}"
         placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.requiredMessage}"
@@ -17,21 +17,21 @@
         data-parsley-id="4"
         name="${text.name}"
         readonly="${text.readOnly}"
-        required="${text.required}"
+        data-parsley-required="${text.required}"
         rows="${text.rows}">${text.value}</textarea>
     <input data-sly-test="${!useTextarea}"
         data-cmp-hook-form-text="input"
-        aria-label="${text.hideTitle && text.title}"
+        <!-- aria-label="${text.hideTitle && text.title}" -->
         type="${text.type}"
         id="${customText.id}"
         placeholder="${text.placeholder}"
         data-parsley-error-message="${customText.validationError}"
-		data-parsley-required-message="${customText.requiredMessage}"
+	data-parsley-required-message="${customText.requiredMessage}"
         data-parsley-pattern="${customText.validation}"
         data-parsley-pattern-message="${customText.validationError}"
         data-parsley-id="4"
         name="${text.name}"
         value="${text.value}"
         readonly="${text.readOnly}"
-        required="${text.required}"/>
+        data-parsley-required="${text.required}"/>
 </div>

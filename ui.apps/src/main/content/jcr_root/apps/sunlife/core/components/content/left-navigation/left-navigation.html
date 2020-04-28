@@ -1,4 +1,4 @@
-<nav class="cmp-navigation left-nav-wrapper"
+<left-nav class="cmp-navigation left-nav-wrapper"
      itemscope itemtype="http://schema.org/SiteNavigationElement"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-use.navigation="ca.sunlife.web.cms.core.models.LeftNavigationModal"
@@ -7,5 +7,5 @@
      data-sly-call="${groupTemplate.group @ items=navigation.items}"
      aria-label="${navigation.accessibilityLabel}"
      data-section="nav-left">
-</nav>
+</left-nav>
 <sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-navigation'}"></sly>
