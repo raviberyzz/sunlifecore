@@ -176,7 +176,7 @@ $(document).ready(function () {
             });
         }*/
     } 
-    $('.right-navigation-wrapper .light-orange-20 .button-class').click(function(){
+    $('.right-navigation-wrapper.light-orange-20 .button-class').click(function(){
         var btnTxt1=$(this).parent().text();
         rightNavAnalytics(btnTxt1);
     });
