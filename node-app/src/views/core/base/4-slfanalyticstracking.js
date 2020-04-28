@@ -166,7 +166,7 @@ $(document).ready(function () {
             "event_title"	: btnTxt,
             "page_section" : "Right Rail"
         });
-        var adv='advisor';
+        /*var adv='advisor';
         if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
             utag.link({
             "utm_source":utmSource, //[INSERT LOCATION OF WIDGET, slfca-hp for homepage]
@@ -174,9 +174,9 @@ $(document).ready(function () {
             "utm_content":_pageLanguage, //[INSERT CORRECT LANGUAGE en-ca or fr-ca]
             "utm_campaign":"slfca"
             });
-        }
+        }*/
     } 
-    $('.right-navigation-wrapper .light-orange .button-class').click(function(){
+    $('.right-navigation-wrapper .light-orange-20 .button-class').click(function(){
         var btnTxt1=$(this).parent().text();
         rightNavAnalytics(btnTxt1);
     });
