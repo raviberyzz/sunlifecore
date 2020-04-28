@@ -98,10 +98,10 @@ public class AkamaiTransportHandler implements TransportHandler {
         final String response = akamaiCache.invalidatePages(new String [ ] { path });
         LOGGER.debug("AKAMAI Response {}", response);
       }
-      return ReplicationResult.OK;
     } catch (final ApplicationException e) {
-      return new ReplicationResult.OK;
+      LOGGER.error("Error while processing request {}", e);
     }
+    return ReplicationResult.OK;
   }
 
 }
