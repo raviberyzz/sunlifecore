@@ -22,9 +22,10 @@ import ca.sunlife.web.cms.core.services.MailService;
  * The Class EmailServlet.
  */
 @ Component (service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "=Email Servlet",
-    "sling.servlet.methods= [" + HttpConstants.METHOD_GET + "," + HttpConstants.METHOD_POST + "]",
+    "sling.servlet.methods="+ HttpConstants.METHOD_GET,
     "sling.servlet.resourceTypes=" + "sunlife/core/components/config/email",
-    "sling.servlet.extensions=json" })
+    "sling.servlet.selectors=email",
+    "sling.servlet.extensions=service" })
 public class EmailServlet extends SlingAllMethodsServlet {
 
   /** The Constant serialVersionUID. */

@@ -6,7 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface CoreResourceResolverConfig.
  */
-@ ObjectClassDefinition (name = "Sunlife Core Resource Resolver", description = "Sunlife Core Resource Resolver")
+@ ObjectClassDefinition (name = "Sun Life - Core Resource Resolver", description = "Sunlife Core Resource Resolver")
 public @interface CoreResourceResolverConfig {
 
   /**

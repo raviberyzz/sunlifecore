@@ -11,7 +11,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  *
  * @author mo92 The Interface CNWNewsConfig.
  */
-@ ObjectClassDefinition (name = "CNW Services Configuration", description = "CNW Services Configuration")
+@ ObjectClassDefinition (name = "Sun Life - CNW Services Configuration", description = "CNW Services Configuration")
 public @interface CNWNewsConfig {
 
   /**

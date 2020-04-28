@@ -267,6 +267,12 @@ public class BasePageModel {
   /** The page locale. */
   private String pageLocaleDefault = null;
   
+  /** The search auto complete url. */
+  private String autoCompleteUrl;
+  
+  /** The search API url. */
+  private String searchApi;
+  
   /**
    * Gets the seo page title.
    *
@@ -284,6 +290,34 @@ public class BasePageModel {
    */
   public void setSeoPageTitle(final String seoPageTitle) {
     this.seoPageTitle = seoPageTitle;
+  }
+
+  /**
+   * @return the autoCompleteUrl
+   */
+  public final String getAutoCompleteUrl() {
+    return autoCompleteUrl;
+  }
+
+  /**
+   * @param autoCompleteUrl the autoCompleteUrl to set
+   */
+  public final void setAutoCompleteUrl(String autoCompleteUrl) {
+    this.autoCompleteUrl = autoCompleteUrl;
+  }
+
+  /**
+   * @return the searchApi
+   */
+  public final String getSearchApi() {
+    return searchApi;
+  }
+
+  /**
+   * @param searchApi the searchApi to set
+   */
+  public final void setSearchApi(String searchApi) {
+    this.searchApi = searchApi;
   }
 
   /**
@@ -752,6 +786,8 @@ public class BasePageModel {
 
     final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
     udoTags = gson.toJson(otherUDOTagsMap);
+    setAutoCompleteUrl(StringUtils.defaultIfEmpty(configService.getConfigValues("autoCompleteUrl", pagePath), StringUtils.EMPTY));
+    setSearchApi(StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath), StringUtils.EMPTY));
     logger.debug("Map Display {}", udoTags);
   }
 

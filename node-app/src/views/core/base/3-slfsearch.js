@@ -1,10 +1,5 @@
 // /* globals jQuery, document, window, __slf_search_config, utag */
 $(document).ready(function () {
-    var __slf_search_config = {
-        api_url: "https://sp10050fd8.guided.ss-omtrdc.net/",
-        autocomplete_url: "https://content.atomz.com/autocomplete/sp10/05/0f/d8/",
-        sayt_url: "https://sp10050fd8.guided.ss-omtrdc.net/"
-    };
     (function ($) {
         var apiPrefix = __slf_search_config.api_url;
     

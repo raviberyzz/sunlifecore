@@ -6,7 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface MailConfig.
  */
-@ObjectClassDefinition(name = "Mail API Configuration", description = "API configuration for mail service - URL and KEY")
+@ObjectClassDefinition(name = "Sun Life - Mail API Configuration", description = "API configuration for mail service - URL and KEY")
 public @interface MailConfig {
 
 	/**

@@ -6,7 +6,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface AkamaiConfig.
  */
-@ ObjectClassDefinition (name = "Sunlife Akamai Configuration", description = "Sunlife Akamai Configuration")
+@ ObjectClassDefinition (name = "Sun Life - Akamai Configuration", description = "Sun Life Akamai Configuration")
 public @interface AkamaiConfig {
 
   /**
