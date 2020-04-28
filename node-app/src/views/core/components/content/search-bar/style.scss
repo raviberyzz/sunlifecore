@@ -15,6 +15,7 @@
             height: 48px;
             width:462px;
             color:$dark-grey-color;
+            border-color: $light-grey-color;
         }
 
         .search-autocomplete {
@@ -43,9 +44,6 @@
     }
     .search-box {
         padding: 40px 0;
-        input[type=text] {
-            border-color: #d7d7d7;
-        }
     }
 
     .close-div {
