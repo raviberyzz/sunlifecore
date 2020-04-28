@@ -93,6 +93,16 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Navigation overview title"
                                         name="./navigationOverview"/>
+                                    <searchApi
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search API URL"
+                                        name="./searchApi"/>
+                                    <autoCompleteUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search Auto Complete URL"
+                                        name="./autoCompleteUrl"/>
                                 </items>
                             </section-general>
                             <section-article

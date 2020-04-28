@@ -7,7 +7,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface RestClientConfig.
  */
-@ ObjectClassDefinition (name = "Rest Client Configuration", description = "Rest Client Configuration")
+@ ObjectClassDefinition (name = "Sun Life - Rest Client Configuration", description = "Rest Client Configuration")
 public @interface RestClientConfig {
 
   /**

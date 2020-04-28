@@ -14,6 +14,7 @@ import javax.jcr.PathNotFoundException;
 import javax.jcr.RepositoryException;
 import javax.jcr.ValueFormatException;
 
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -64,9 +65,9 @@ public class MailServiceImpl implements MailService {
    */
   @ Override
   public String processHttpRequest(SlingHttpServletRequest request) {
+    LOG.trace("Inside MailServiceImpl:processHttpRequest");
     final String cfPathSuffix = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data");
     final int timeOut = 5000;
-    final int successStatusCode = 200;
     String cfPath = "";
     String cfName = "";
     String fromEmailId = "";
@@ -86,6 +87,7 @@ public class MailServiceImpl implements MailService {
       if (null != request) {
         // getting all request parameters - Starts
         Enumeration <String> requestParameterNames = request.getParameterNames();
+        LOG.debug("Request parameters {}",requestParameterNames);
         HashMap <String, String> requestParameters = new HashMap <>();
         while (requestParameterNames.hasMoreElements()) {
           final String key = requestParameterNames.nextElement();
@@ -97,6 +99,7 @@ public class MailServiceImpl implements MailService {
         toEmailId = requestParameters.get("email-id");
         Resource componentResource = request.getResourceResolver().getResource(componentPath);
         if (null != componentResource) {
+          LOG.debug("Got the component path {}", componentResource.getPath());
           Node componentNode = componentResource.adaptTo(Node.class);
           if (null != componentNode && null != componentNode.getProperty("id")) {
             cfName = componentNode.getProperty("id").getString();
@@ -104,8 +107,10 @@ public class MailServiceImpl implements MailService {
         }
         // content fragment path
         cfPath = mailConfig.getTemplatePath() + cfName + cfPathSuffix;
+        LOG.debug("cfPath {}", cfPath);
         Resource contentResource = request.getResourceResolver().getResource(cfPath);
         if (null != contentResource) {
+          LOG.debug("Content Resource Path {}", contentResource.getPath());
           Node node = contentResource.adaptTo(Node.class);
           if (null != node && node.hasNodes()) {
             NodeIterator ite = node.getNodes();
@@ -149,7 +154,7 @@ public class MailServiceImpl implements MailService {
         HttpResponse emailResponse = client.execute(post);
         LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode()
             + " :: " + emailResponse.getStatusLine().getReasonPhrase());
-        return emailResponse.getStatusLine().getStatusCode() == successStatusCode ? successPageUrl
+        return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successPageUrl
                 : errorPageUrl;
 
       }

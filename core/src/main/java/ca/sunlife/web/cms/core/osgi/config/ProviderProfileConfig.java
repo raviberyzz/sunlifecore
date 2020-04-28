@@ -8,7 +8,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  * The Interface
  * ProviderProfileConfig.
  */
-@ObjectClassDefinition(name = "Provider profile configuration", description = "Provider profile configuration")
+@ObjectClassDefinition(name = "Sun Life - Provider profile configuration", description = "Provider profile configuration")
 public @interface ProviderProfileConfig {
 
 	/**

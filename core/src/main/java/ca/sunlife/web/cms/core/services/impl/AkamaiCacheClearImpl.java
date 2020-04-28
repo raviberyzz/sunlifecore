@@ -100,6 +100,9 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
         }
 
       }
+      if(objects.length() < 1) {
+        return "No valid paths to purge";
+      }
       request.put("objects", objects);
       return processAkamaiPurge(request.toString());
     } catch (JSONException | LoginException | RepositoryException e) {
@@ -180,6 +183,9 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
           });
         }
         resourceResolver.close();
+      }
+      if(objects.length() < 1) {
+        return "No valid paths to purge";
       }
       request.put("objects", objects);
       return processAkamaiPurge(request.toString());

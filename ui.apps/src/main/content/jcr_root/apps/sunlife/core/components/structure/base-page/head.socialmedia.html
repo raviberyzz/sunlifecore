@@ -8,7 +8,12 @@
 
 <!-- UDO starts here -->
 <script type="text/javascript">
-	var utag_data = ${baseModel.udoTags @context='unsafe'}
+      var __slf_search_config = {
+            api_url: "${baseModel.searchApi @context='unsafe'}",
+            autocomplete_url: "${baseModel.autoCompleteUrl @context='unsafe'}",
+            sayt_url: "${baseModel.searchApi @context='unsafe'}"
+      };
+      var utag_data = ${baseModel.udoTags @context='unsafe'}
 </script>
 <!-- UDO ends here -->
 <sly>${baseModel.headInclude @ context = 'unsafe'}</sly>
