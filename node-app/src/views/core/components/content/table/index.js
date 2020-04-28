@@ -5,6 +5,17 @@ function stickyHeader(){
      the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
       in pop up modal. */
     if($('.table-stickyheader').length){
+      //pop-up modal logic
+      $(document).on('show.bs.modal', function(){
+        let tableHeader = $(".modal-body .table-stickyheader table:eq(0) tbody tr:first-child th");
+        tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+        let modalTable = $('.modal-body .table.table-stickyheader');
+        modalTable.on("scroll", function(){
+          let offset = this.scrollTop;
+          tableHeader.attr("style", "transform: translateY(" + offset + "px)");
+        });
+      });
+
       let tableHeader = $(".table-stickyheader table:eq(0) tbody tr:first-child th");
       let theaderPosition = tableHeader.offset().top;
       let tableBottom = $('.table-stickyheader table:eq(0) tbody tr:last-child'); 
