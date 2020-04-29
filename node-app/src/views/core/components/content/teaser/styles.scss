@@ -17,6 +17,19 @@
     .side-image {
         width: auto;
     }
+    .image-text-wrapper{
+        .text-section{
+            h2,h3,h4,h5{
+                font-size:1rem;
+                font-weight:700;
+                line-height: 26px;
+            }
+            p{
+                font-size:1rem;
+                line-height: 26px;  
+            }
+        }
+    }
 }
 .side-image {
     width: 100%;
@@ -338,6 +351,18 @@
             .left-item{
                 .mobile-img{
                     background-position:center!important; 
+                }
+            }
+        }
+    }
+    .content-block-image {
+        .image-text-wrapper{
+            .text-section.right-item{
+                padding: 0px 10px;
+               >*{ 
+                  &:first-child {
+                    margin-top:32px;
+                   }
                 }
             }
         }

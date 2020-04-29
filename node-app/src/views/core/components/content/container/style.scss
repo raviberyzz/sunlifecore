@@ -1749,6 +1749,19 @@ ul {
     }
 }
 }
+
+/*** vertical seperator 75 % **/
+.container-seperator-75:after{
+    content: '';
+    top: 12.5%;
+    bottom: 12.5%;
+    left: 100%;
+    width: 2px;
+    background:$container-border-color;
+    position: absolute;
+
+}
+/*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
     .cmp-contact-us {
         .layout-container{

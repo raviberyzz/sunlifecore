@@ -125,8 +125,10 @@
 }
 
 /* button horizonal center align */
-div.button .button-class {
-    padding: 10px 16px;
+div.button {
+    .button-class {
+        padding: 10px 16px;
+    }
 }
 
 .signIn-button {

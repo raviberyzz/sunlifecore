@@ -176,10 +176,10 @@ table{
             vertical-align: top !important;
           }
            td:last-of-type {
-           border-right: 2px solid #ddd;
+           border-right: 2px solid $grey-previous-background-color;
           }
            th:first-of-type {
-            border-left: 1px solid #ddd;
+            border-left: 1px solid $grey-previous-background-color;
           }
            td {
             border-left: 2px solid $white-shade;
@@ -200,6 +200,11 @@ table{
         }
         tr:nth-child(even){
           background-color: $white-shade;
+        }
+        tr:last-child > {
+            *{
+              border-bottom: 2px solid $grey-previous-background-color;
+            }
         }
         .large-green{
           color:#0b713a;
