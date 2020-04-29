@@ -14,17 +14,40 @@
   }
 }
 
-@media (min-width: $tab-screen-min){
+@media (min-width: $desktop-screen-min) {
   .popup-modal-wrapper {
     .modal-content {
       .table {
-        height: 750px !important;
+        height: 750px !important;      
+      }
+    }
+  }  
+} 
+
+/* Tablet modal height */
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) and (orientation:portrait) {
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        height: 750px !important;      
       }
     }
   }
 }
 
-@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) and (orientation:landscape) {
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        max-height: 500px !important;      
+      }
+    }
+  }
+}
+/*Tablet modal height end */
+
+/* Phone modal height */
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) and (orientation:portrait) {
   .popup-modal-wrapper {
     .modal-content {
       .table {
@@ -33,6 +56,21 @@
     }
   }
 }
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) and (orientation:landscape) {
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        max-height: 200px !important;
+        th{
+          padding: 0 !important;
+        }
+      }
+    }
+  }
+}
+/* Phone modal height end */
+
 
 table{
   width: 100%;
@@ -84,9 +122,10 @@ table{
           text-align: center;
           border-bottom: 0;
           width: 15%;
-          vertical-align: middle;
+          vertical-align: top;
           height: 64px;
           border-top: 1px solid $light-grey-color !important;
+          padding: 32px 16px !important;
         }
          th:first-child {
           width: 25%; //table header first child width
@@ -96,8 +135,9 @@ table{
      tbody {
        tr {
         td {
-          padding: 32px 8px;
+          padding: 32px 16px;
           text-align: center;
+          vertical-align: top;
           &:nth-of-type(odd) {
             background-color: $light-orange-color;
           }
@@ -131,8 +171,9 @@ table{
        cursor: pointer;
          tr {
            th {
-            text-align: left;
-            padding:32px 8px;
+            text-align: center !important;
+            padding:32px 16px;
+            vertical-align: top !important;
           }
            td:last-of-type {
            border-right: 2px solid #ddd;
@@ -143,7 +184,8 @@ table{
            td {
             border-left: 2px solid $white-shade;
             text-align: center;
-            padding: 32px 0;
+            padding: 32px 16px;
+            vertical-align: top;
           }
          
         }

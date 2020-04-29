@@ -123,7 +123,12 @@
     display: flex;
     justify-content: center;
 }
+
 /* button horizonal center align */
+div.button .button-class {
+    padding: 10px 16px;
+}
+
 .signIn-button {
     .button-class {
         background-color: $medium-yellow-background;
