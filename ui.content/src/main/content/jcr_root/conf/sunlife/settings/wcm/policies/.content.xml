@@ -905,7 +905,12 @@
                                             cq:styleClasses="container-border-right"
                                             cq:styleId="1579257415353"
                                             cq:styleLabel="Container Separator"
-                                            jcr:primaryType="nt:unstructured"/>											
+                                            jcr:primaryType="nt:unstructured"/>	
+                                        <item2
+                                            cq:styleClasses="container-seperator-75"
+                                            cq:styleId="1578685848382"
+                                            cq:styleLabel="Container Separator 75%"
+                                            jcr:primaryType="nt:unstructured"/>     										
                                     </cq:styles>
                                 </item5>
                                 <item6
