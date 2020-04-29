@@ -523,7 +523,9 @@ a.skip-main:focus, a.skip-main:active {
     padding:0
 }
 /* aem class ends here */
-
+a:not([href]){
+    pointer-events:none;
+}
 /* contact us box styles start here */
 .cmp-contact-us {
 	.aem-GridColumn--default--12 {
