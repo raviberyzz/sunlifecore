@@ -371,7 +371,7 @@ ul {
     .icon-style {
             position: relative;
             bottom: 56px;
-            pointer-events: none;
+           /* pointer-events: none; */
         }
     .cta-content-icon-wrapper{
         .icon-parent {
@@ -1755,7 +1755,7 @@ ul {
     content: '';
     top: 12.5%;
     bottom: 12.5%;
-    left: 100%;
+    left: 104%;
     width: 2px;
     background:$container-border-color;
     position: absolute;
