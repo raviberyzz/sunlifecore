@@ -6,6 +6,9 @@
     li {
       float: left;
       padding-left: 5px;
+      a{
+        pointer-events: all!important;
+      }
     }
   }
 }
