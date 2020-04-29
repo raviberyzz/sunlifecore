@@ -2,9 +2,20 @@
 .slf-table.table-responsive {
   display: block;
   position: relative;
-  overflow-x: visible;
 }
 
+//IE fix for popup modal scrolling
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+  .popup-modal-wrapper {
+    .modal-content {
+      .table {
+        .slf-table.table-responsive{
+          overflow-x: visible;
+        }
+      }
+    }
+  }
+}
 
 .popup-modal-wrapper {
   .modal-content {
