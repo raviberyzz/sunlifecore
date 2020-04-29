@@ -173,4 +173,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticleSite();
+  
+  /**
+   * Gets the featured image path.
+   *
+   * @return the featured image path
+   */
+  @ Inject
+  String getFeaturedImagePath();
 }

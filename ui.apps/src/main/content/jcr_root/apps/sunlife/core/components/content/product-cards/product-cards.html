@@ -1,0 +1,16 @@
+<sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardsModel">
+<div class="thumbnail" data-sly-list.cardDetails="${productCardModel.listOfProductCards}">
+        <img src="${cardDetails.pcImage}" alt="Foresight Deferred Annuity Plan" class="imageCard">
+        <span data-sly-test="${cardDetails.pcFeaturedCard}"><img src="//cdn.sunlife.com/static/hk/images/slf_featured_icon.png" alt="" class="topright"></span>
+		<p>${cardDetails.pcFeaturedCardImage}</p>
+        <div class="caption">
+            <h2 class="product-name">${cardDetails.pcHeading}</h2>
+            ${cardDetails.pcContent @context='html'}
+        </div>
+        <a href="${cardDetails.pcPath}">${cardDetails.pcHeading}</a>
+</div>
+</sly>
+
+
+
+
