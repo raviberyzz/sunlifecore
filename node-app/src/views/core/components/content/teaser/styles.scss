@@ -578,6 +578,11 @@
             }
         }
     }
+    .teaser.editorial-hero-banner.content-block-image{
+        .side-image.desktop-image{
+            width:100%;
+        }
+    }
 }
 /* scss for banner images in landscape mode for mobiles start here*/
 @media (min-width:560px) and (max-width:$mobile-screen-max){

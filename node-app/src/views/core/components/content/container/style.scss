@@ -432,6 +432,9 @@ ul {
             .icon-style{
                 position:static;
             }
+            a[href='']{
+                pointer-events: all;
+            }
         }
     }
 }
@@ -1658,9 +1661,9 @@ ul {
     .teaser {
         .image-text-wrapper {
             padding: 0 15px;
-            .text-section{
+         /*   .text-section{
                 padding: 0;
-            }
+            } */
             .right-image-position {
                 .right-item {
                     position: relative;
