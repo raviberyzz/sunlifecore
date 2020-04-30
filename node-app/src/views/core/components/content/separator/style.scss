@@ -40,11 +40,9 @@
         content: ' ';
         height: 2px;
         width: 100%;
-        border: 2px solid $light-grey-20;
         background: $light-grey-20;
         margin: 0 auto;
       }
-
 @media (min-width: 768px) {
     .page-separator {
         width: 75%;
