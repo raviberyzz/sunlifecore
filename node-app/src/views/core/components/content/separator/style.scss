@@ -38,8 +38,10 @@
 .page-separator {
         display: block;
         content: ' ';
+        height: 2px;
         width: 100%;
         border-bottom: 2px solid $light-grey-20;
+        background: $light-grey-20;
         margin: 0 auto;
       }
 
