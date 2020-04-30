@@ -1,3 +1,4 @@
+// /* globals jQuery, document, window, __slf_search_config, utag */
 $(document).ready(function () {
     var __slf_search_config = {
         api_url: "https://sp10050fd8.guided.ss-omtrdc.net/",
@@ -676,3 +677,5 @@ $(document).ready(function () {
         });
         }
     });
+        
+    // /** ADOBE GlobalSEARCH JS ENDS HERE **/
