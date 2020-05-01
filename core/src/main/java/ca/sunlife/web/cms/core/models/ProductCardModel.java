@@ -16,6 +16,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.Value;
 import javax.jcr.Property;
 import java.util.Iterator;
@@ -23,15 +24,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Collection;
 import javax.jcr.Session;
-import java.io.IOException;
-import javax.jcr.PathNotFoundException;
-import javax.jcr.ValueFormatException;
-import javax.jcr.RepositoryException;
 import org.apache.sling.api.resource.LoginException;
-import ca.sunlife.web.cms.core.exception.ApplicationException;
-import ca.sunlife.web.cms.core.exception.SystemException;
-
+import org.apache.sling.api.resource.ValueMap;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
@@ -41,226 +38,320 @@ import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMCo
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.commons.jcr.JcrConstants;
 
+/**
+ * The Class ProductCardModel.
+ */
 @Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/content/product-cards")
 public class ProductCardModel {
 
+	/** The topc. */
 	@Inject
 	@Via("resource")
 	private String topc;
 
+	/** The fragment path. */
 	@Inject
 	@Via("resource")
 	private String fragmentPath;
 
+	/** The folder path. */
 	@Inject
 	@Via("resource")
 	private String folderPath;
 	
+	/** The title. */
 	@Inject
 	@Via("resource")
 	private String title;
 	
+	/** The icon. */
 	@Inject
 	@Via("resource")
 	private String icon;
 	
+	/** The text. */
 	@Inject
 	@Via("resource")
 	private String text;
 	
+	/** The card is featured. */
 	@Inject
 	@Via("resource")
 	private String cardIsFeatured;
 
+	/** The config service. */
 	@Inject
 	private SiteConfigService configService;
 
+	/** The current page. */
 	@ScriptVariable
 	private Page currentPage;
 
+	/** The core resource resolver. */
 	@Inject
 	private CoreResourceResolver coreResourceResolver;
 
+	/** The content type converter. */
 	@Inject
 	private ContentTypeConverter contentTypeConverter;
 
-	// Static final variables
-	private static final String JCR_CONTENT_DATA = "/jcr:content/data";
+	/** The Constant JCR_CONTENT_DATA_MASTER. */
+	private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
+	
+	/** The Constant JCR_CONTENT_METADATA. */
 	private static final String JCR_CONTENT_METADATA = "/jcr:content/metadata";
-	private static final String PC_PATH = "pcPath";
-	private static final String PC_FEATURED_CARD = "pcFeaturedCard";
-	private static final String PC_FEATURED_CARD_IMAGE = "pcFeaturedCardImage";
-	private static final String PC_IMAGE = "pcImage";
-	private static final String PC_HEADING = "pcHeading";
-	private static final String PC_CONTENT = "pcContent";
-	// private static final ResourceResolver resourceResolver=null;
-	private static final String[] ELEMENT_NAMES = { "productCardHeading", "productCardImage", "productCardContent",
-			"productCardPagePath", "featuredCard" };
+	
+	/** The Constant ELEMENT_NAMES. */
+	private static final String[] ELEMENT_NAMES = { "productCardHeading", "productCardContent",
+			"productCardPagePath", "featuredCard", "productCardImage" };
+	
+	/** The featured image path. */
 	private String featuredImagePath;
+	
+	/** The pc data. */
 	private final Map<String, String> pcData = new HashMap<>();
+	
+	/** The list of product cards. */
 	private final List<Map<String, String>> listOfProductCards = new ArrayList<>();
-	// private final List<DAMContentFragment> items = new ArrayList<>();
+	
+	/** The item list. */
 	private final List<DAMContentFragment> itemList = new ArrayList<>();
-
-	private ResourceResolver resourceResolver;
-
+	
+	/** The article CF path. */
 	private String articleCFPath;
+	
+	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ProductCardModel.class);
-
+	
+	/**
+	 * Gets the topc.
+	 *
+	 * @return the topc
+	 */
 	public String getTopc() {
 		return topc;
 	}
 
+	/**
+	 * Sets the topc.
+	 *
+	 * @param topc the new topc
+	 */
 	public void setTopc(String topc) {
 		this.topc = topc;
 	}
 
+	/**
+	 * Gets the fragment path.
+	 *
+	 * @return the fragment path
+	 */
 	public String getFragmentPath() {
 		return fragmentPath;
 	}
 
+	/**
+	 * Sets the fragment path.
+	 *
+	 * @param fragmentPath the new fragment path
+	 */
 	public void setFragmentPath(String fragmentPath) {
 		this.fragmentPath = fragmentPath;
 	}
 
+	/**
+	 * Gets the folder path.
+	 *
+	 * @return the folder path
+	 */
 	public String getFolderPath() {
 		return folderPath;
 	}
 
+	/**
+	 * Sets the folder path.
+	 *
+	 * @param folderPath the new folder path
+	 */
 	public void setFolderPath(String folderPath) {
 		this.folderPath = folderPath;
 	}
 
+	/**
+	 * Gets the pc data.
+	 *
+	 * @return the pc data
+	 */
 	public final Map<String, String> getPcData() {
-		return pcData;
+		return Collections.unmodifiableMap(pcData);
 	}
 
+	/**
+	 * Gets the list of product cards.
+	 *
+	 * @return the list of product cards
+	 */
 	public final List<Map<String, String>> getListOfProductCards() {
 		return listOfProductCards;
 	}
 
+	/**
+	 * Gets the featured image path.
+	 *
+	 * @return the featured image path
+	 */
 	public String getFeaturedImagePath() {
 		return featuredImagePath;
 	}
 
+	/**
+	 * Sets the featured image path.
+	 *
+	 * @param featuredImagePath the new featured image path
+	 */
 	public void setFeaturedImagePath(String featuredImagePath) {
 		this.featuredImagePath = featuredImagePath;
 	}
 
-	public List<DAMContentFragment> getItemList() {
-		return itemList;
+	/**
+	 * Gets the item list.
+	 *
+	 * @return the item list
+	 */
+	public Collection<DAMContentFragment> getItemList() {
+		return Collections.unmodifiableCollection(itemList);
 	}
 
+	/**
+	 * Gets the title.
+	 *
+	 * @return the title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * Sets the title.
+	 *
+	 * @param title the new title
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * Gets the icon.
+	 *
+	 * @return the icon
+	 */
 	public String getIcon() {
 		return icon;
 	}
 
+	/**
+	 * Sets the icon.
+	 *
+	 * @param icon the new icon
+	 */
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
 
+	/**
+	 * Gets the text.
+	 *
+	 * @return the text
+	 */
 	public String getText() {
 		return text;
 	}
 
+	/**
+	 * Sets the text.
+	 *
+	 * @param text the new text
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}
 
+	/**
+	 * Gets the card is featured.
+	 *
+	 * @return the card is featured
+	 */
 	public String getCardIsFeatured() {
 		return cardIsFeatured;
 	}
 
+	/**
+	 * Sets the card is featured.
+	 *
+	 * @param cardIsFeatured the new card is featured
+	 */
 	public void setCardIsFeatured(String cardIsFeatured) {
 		this.cardIsFeatured = cardIsFeatured;
 	}
 
-	private String nullCheck(String value) {
-		return value.equalsIgnoreCase(null) ? StringUtils.EMPTY : value;
-	}
 
+	/**
+	 * Inits the.
+	 */
 	@PostConstruct
 	private void init() {
-		
-		/*if (StringUtils.isEmpty(getFragmentPath()) && StringUtils.isEmpty(getFolderPath()) && !("rightNav".equalsIgnoreCase(getTopc()))) {
-			return;
-		}*/
-
 		try {
 			featuredImagePath = configService.getConfigValues("featuredImagePath", currentPage.getPath());
 			if (topc.equalsIgnoreCase("static")) {
-				getProductCardData(getFragmentPath());
+				getProductCardData();
 				LOG.debug("Sent Product Card data for static cards");
 			} else if (topc.equalsIgnoreCase("dynamic")) {
 				LOG.debug("Dynamic option selected");
-				getProductCardDataDynamic(getFolderPath());
-
+				getProductCardDataDynamic();
 			} else if (topc.equalsIgnoreCase("rightnav")) {
 				LOG.debug("Rignt Nav option selected");
 			}
 		} catch (Exception ex) {
-			LOG.error("Exception occured in main :: " + ex);
+			LOG.error("Exception occured in main :: {}", ex);
 		}
 
 	}
 
-	public void getProductCardData(String path) {
+	/**
+	 * Gets the product card data.
+	 *
+	 * @return the product card data
+	 */
+	public void getProductCardData() {
+		ResourceResolver resourceResolver;
 		try {
-			ResourceResolver pcResourceResolver = coreResourceResolver.getResourceResolver();
-			LOG.debug("Reading content fragment {}", path.concat(JCR_CONTENT_DATA));
-			final Resource pcResource = pcResourceResolver.getResource(path.concat(JCR_CONTENT_DATA));
-			if (null != pcResource) {
-				LOG.debug("Parsing Content Fragment Data");
-				Node node = pcResource.adaptTo(Node.class);
-				LOG.debug("node adapted");
-				if (null != node && node.hasNodes()) {
-					Iterator<Node> ite = node.getNodes();
-					while (ite.hasNext()) {
-						Node childNode = ite.next();
-						pcData.put(PC_HEADING, nullCheck(childNode.getProperty("productCardHeading").getString()));
-						pcData.put(PC_IMAGE, nullCheck(childNode.getProperty("productCardImage").getString()));
-						pcData.put(PC_CONTENT, nullCheck(childNode.getProperty("productCardContent").getString()));
-						pcData.put(PC_PATH, nullCheck(childNode.getProperty("productCardPagePath").getString()));
-						pcData.put(PC_FEATURED_CARD,
-								childNode.getProperty("featuredCard").getBoolean() ? "true" : null);
-						if (childNode.getProperty("featuredCard").getBoolean()) {
-							pcData.put(PC_FEATURED_CARD_IMAGE,
-									configService.getConfigValues("featuredImagePath", currentPage.getPath()));
-						}
-						LOG.debug("Added data to hash map :: " + pcData.get("pcHeading"));
-						if (listOfProductCards.size() <= 3) {
-							listOfProductCards.add(pcData);
-							LOG.debug("Added map to array");
-						}
-					}
-
-				}
-
-			} else {
-				LOG.debug("productCard resouce is null ");
-			}
-		} catch (PathNotFoundException pathEx) {
-			LOG.error("Exception occured :: Path not found {}", pathEx);
-		} catch (ValueFormatException valEx) {
-			LOG.error("Exception occured :: Incorrect value format {}", valEx);
-		} catch (RepositoryException repEx) {
-			LOG.error("Exception occured :: Repository not found {}", repEx);
-		} catch (LoginException logEx) {
-			LOG.error("Exception occured :: Login failed {}", logEx);
+			resourceResolver = coreResourceResolver.getResourceResolver();
+			LOG.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
+		      final Resource productCardResource = resourceResolver
+		          .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
+		      
+		      if (null != productCardResource) {
+		          LOG.debug("Parsing Article Data");
+		          final ValueMap productContent = productCardResource.getValueMap();
+		          for (int i = 0; i < ELEMENT_NAMES.length; i++) {
+		        	  pcData.put(ELEMENT_NAMES[i], productContent.containsKey(ELEMENT_NAMES[i]) ? productContent.get(ELEMENT_NAMES[i], String.class) : StringUtils.EMPTY);
+		          }
+		      }
+		      LOG.debug("Statict Product Card Data {}", pcData);
+		      
+		} catch (LoginException  e) {
+			LOG.debug(" Exception in getProductCardData {}", e);
 		}
-
+	      
 	}
 
-	public void getProductCardDataDynamic(String folderPath) throws IOException, ApplicationException, SystemException {
+	/**
+	 * Gets the product card data dynamic.
+	 *
+	 * @return the product card data dynamic
+	 */
+	public void getProductCardDataDynamic() {
 		ResourceResolver resourceResolver = null;
 		try {
 			resourceResolver = coreResourceResolver.getResourceResolver();
@@ -277,41 +368,43 @@ public class ProductCardModel {
 			List<String> articleTags = getTags(getArticleCFPath(currentPage.getPath()));
 
 			switch (articleTags.size()) {
-			case 0: {
+			case 0: 
 				LOG.info("Article does not contain any tags.");
 				break;
-			}
+			
 
-			case 1: {
+			case 1: 
 				LOG.info("Article does not contains 1 tag.");
-				itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(0), 3));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 3));
 				LOG.info("Number of results {}", itemList.size());
 				break;
-			}
+			
 
-			case 2: {
+			case 2: 
 				LOG.info("Article does not contains 2 tags.");
-				itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(0), 2));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 2));
 
 				if (itemList.size() == 2) {
 					itemList.addAll(1,
-							getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(1), 1));
+							getContentFragmentList(queryBuilder, session, articleTags.get(1), 1));
 
 				} else {
-					itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(1), 2));
+					itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(1), 2));
 				}
 
 				break;
-			}
+			
 
-			case 3: {
+			case 3:
 				LOG.info("Article does not contains 3 tags.");
-				getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(0), 1);
-				itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(0), 1));
-				itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(1), 1));
-				itemList.addAll(getContentFragmentList(folderPath, queryBuilder, session, articleTags.get(2), 1));
+				getContentFragmentList(queryBuilder, session, articleTags.get(0), 1);
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 1));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(1), 1));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(2), 1));
 				break;
-			}
+			
+			default:
+				break;
 			}
 
 		} catch (LoginException e) {
@@ -323,12 +416,21 @@ public class ProductCardModel {
 		}
 	}
 
-	private List<DAMContentFragment> getContentFragmentList(String folderPath, QueryBuilder queryBuilder,
+	/**
+	 * Gets the content fragment list.
+	 *
+	 * @param queryBuilder the query builder
+	 * @param session the session
+	 * @param tag the tag
+	 * @param limit the limit
+	 * @return the content fragment list
+	 */
+	private List<DAMContentFragment> getContentFragmentList(QueryBuilder queryBuilder,
 			Session session, String tag, int limit) {
 		int offset = 0;
 		List<DAMContentFragment> items = new ArrayList<>();
 		final Map<String, String> queryParameterMap = new HashMap<>();
-		queryParameterMap.put("path", folderPath);
+		queryParameterMap.put("path", getFolderPath());
 		queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
 		queryParameterMap.put("p.limit", Integer.toString(limit));
 		queryParameterMap.put("p.offset", Integer.toString(offset));
@@ -374,15 +476,21 @@ public class ProductCardModel {
 		return items;
 	}
 
-	public ArrayList<String> getTags(String path) {
-		ArrayList<String> tagList = new ArrayList<String>();
+	/**
+	 * Gets the tags.
+	 *
+	 * @param path the path
+	 * @return the tags
+	 */
+	public List<String> getTags(String path) {
+		ArrayList<String> tagList = new ArrayList<>();
 		try {
-			resourceResolver = coreResourceResolver.getResourceResolver();
+			ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
 			final Resource productCardMetadata = resourceResolver.getResource(path + JCR_CONTENT_METADATA);
 			if (null != productCardMetadata) {
 				LOG.info("Fetching metadata");
 				Node metaNode = productCardMetadata.adaptTo(Node.class);
-				LOG.info("Metanode is :: " + metaNode);
+				LOG.info("Metanode is :: {}", metaNode);
 				if (null != metaNode) {
 					Property tagArray = metaNode.getProperty("cq:tags");
 					Value[] tags = tagArray.getValues();
@@ -394,25 +502,31 @@ public class ProductCardModel {
 			resourceResolver.close();
 
 		} catch (Exception ex) {
-			LOG.info("Exception occured :: in tags" + ex);
+			LOG.info("Exception occured :: in tags {}", ex);
 		}
 
 		return tagList;
 
 	}
 
+	/**
+	 * Gets the article CF path.
+	 *
+	 * @param path the path
+	 * @return the article CF path
+	 */
 	public String getArticleCFPath(String path) {
 		if (!path.equals("")) {
 			try {
 				ResourceResolver acfpResourceResolver = coreResourceResolver.getResourceResolver();
 				final Resource pageResource = acfpResourceResolver.getResource(path);
 				Node startNode = pageResource.adaptTo(Node.class);
-				Iterator<Node> iterator = startNode.getNodes();
+				 NodeIterator iterator = startNode.getNodes();
 				while (iterator.hasNext()) {
-					Node childNode = iterator.next();
+					 Node childNode = (Node) iterator.next();
 					if (childNode.hasProperty("articleID")) {
 						articleCFPath = childNode.getProperty("fragmentPath").getString();
-						LOG.info("Article path is :: " + articleCFPath);
+						LOG.info("Article path is :: {}", articleCFPath);
 						break;
 					} else {
 						getArticleCFPath(childNode.getPath());
@@ -420,7 +534,7 @@ public class ProductCardModel {
 				}
 				acfpResourceResolver.close();
 			} catch (Exception e) {
-				LOG.info("Exception occured while fetching article path :: " + e);
+				LOG.info("Exception occured while fetching article path :: {}", e);
 			}
 		}
 		return articleCFPath;
