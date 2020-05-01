@@ -823,13 +823,22 @@ ul {
             .col-sm-4{
                 div.text:first-child{
                     margin-top:32px;
-                    border-right:2px solid #f7f7f7;
+                    //border-right:2px solid #f7f7f7;
                     h2, h3, h4, h5, h6{
                         margin-top:0px;
                     }
                 }
+                .container-seperator-75:after{
+                    top: 10.5%;
+                    bottom: 39.5%;
+                    left: 110%;
+                }
+                .primary-blue-button-rte{
+                    margin-top: 24px;
+                }
             }
         }
+   
     }
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .icon-text-list .icon-text{
@@ -1745,6 +1754,17 @@ ul {
       .overview-highlights-wrapper{
         .icon-parent{
         height:8px;   }
+    }
+    .container-component{
+        .cmp-container{
+            .text:first-child{
+                .cmp-text{
+                    h2,h3,h4,h5,h6{
+                        font-size: 1.75rem;
+                    }
+                }
+            }
+        }
     }
 }
 }
