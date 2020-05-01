@@ -2079,9 +2079,12 @@ ul {
                     display:flex;
                     flex-direction: column;
                     padding:0px 10px;
+                    div.image + div.text{
+                        flex-grow: 1;
+                    }
                     .text{
                         &:last-child{
-                            flex-grow: 1;
+                            //flex-grow: 1;
                             .cmp-text{
                                 display: flex;
                                 flex-direction: column;

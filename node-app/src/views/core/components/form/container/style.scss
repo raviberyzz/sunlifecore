@@ -231,11 +231,6 @@
             div[class^="col-"]:first-child{
                 margin-right: 10px;
             }
-            div[class^="col-"]:last-child{
-                input[name=Ext]{
-                    width:100px;
-                }
-            }
         }
         .cmp-form-text{
             textarea{
@@ -288,8 +283,13 @@
                 div[class^="col-"]:first-child{
                     width:285px;
                 }
+                div[class^="col-"]:last-child{
+                    input[name=Ext]{
+                        width:100px;
+                    }
+                }
             }
-            input[type=text],input[type=email],input[type=tel]{
+            input[type=text],input[type=email],input[type=tel],.parsley-errors-list{
                 max-width:285px;
                 width:100%;
             }
@@ -308,10 +308,30 @@
             }
         }
         .cmp-form-text{
-           max-width:285px;
+          // max-width:285px;
            width:100%;
         }
+        .form-element-full-width-wrapper {
+            .cmp-form-text{
+               // max-width:395px;
+                width:100%;
+                input,.parsley-errors-list{
+                    max-width:395px;
+                    width:100%;
+                }         
+            }
+        }
     }
+    .form-alignment-center.generic-form-wrapper{
+        .parsley-errors-list{
+            margin:0 auto;
+        }
+    }
+    .form-alignment-right.generic-form-wrapper{
+        .parsley-errors-list{
+            margin-left:auto;
+        }
+    } 
 }
 
 /* styles for landscape view start */
@@ -355,10 +375,18 @@
             }
         } 
     }
+    .generic-form-wrapper{
+        .layout-container{
+            input[type=tel]{
+                max-width:100%;
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-min)  {
-.editorial-nav-mobile-wrapper {
-    display: none; }
+    .editorial-nav-mobile-wrapper {
+    display: none; 
+    }
 
 	.subscribe-popup-form-wrapper{
         padding:24px;
@@ -367,12 +395,19 @@
             .button-wrapper{
                 width:25% !important;
             }
-          }
+        }
         form :not(:last-child)
         {
             padding-right:16px !important;
         }
     }
+    .generic-form-wrapper{
+        .dropdown{
+            .parsley-errors-list{
+                max-width:395px;
+            }
+        } 
+    } 
 }
 @media (max-width: $tab-screen-max){
     .cta-form-wrapper{
@@ -413,6 +448,13 @@
             }
             .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
                 width: 100% !important;
+            }
+        }
+    }
+    .generic-form-wrapper{
+        .cmp-form-text{
+            input[type=email]{
+                max-width:285px;
             }
         }
     }
