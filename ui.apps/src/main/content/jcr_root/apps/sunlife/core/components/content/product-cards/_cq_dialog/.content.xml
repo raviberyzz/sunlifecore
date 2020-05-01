@@ -47,7 +47,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldDescription="Enter the product card content fragment path"
                                 fieldLabel="Content Fragment Path"
-                                name="./fragmentPath"
+                                name="./productCardFragmentPath"
                                 rootPath="/content"/>
                         </items>
                         <granite:data

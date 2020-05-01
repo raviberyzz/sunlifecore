@@ -53,7 +53,7 @@ public class ProductCardModel {
 	/** The fragment path. */
 	@Inject
 	@Via("resource")
-	private String fragmentPath;
+	private String productCardFragmentPath;
 
 	/** The folder path. */
 	@Inject
@@ -142,22 +142,24 @@ public class ProductCardModel {
 		this.topc = topc;
 	}
 
+	
 	/**
-	 * Gets the fragment path.
+	 * Gets the product card fragment path.
 	 *
-	 * @return the fragment path
+	 * @return the product card fragment path
 	 */
-	public String getFragmentPath() {
-		return fragmentPath;
+	public String getProductCardFragmentPath() {
+		return productCardFragmentPath;
 	}
 
+	
 	/**
-	 * Sets the fragment path.
+	 * Sets the product card fragment path.
 	 *
-	 * @param fragmentPath the new fragment path
+	 * @param productCardFragmentPath the new product card fragment path
 	 */
-	public void setFragmentPath(String fragmentPath) {
-		this.fragmentPath = fragmentPath;
+	public void setProductCardFragmentPath(String productCardFragmentPath) {
+		this.productCardFragmentPath = productCardFragmentPath;
 	}
 
 	/**
@@ -320,16 +322,14 @@ public class ProductCardModel {
 
 	/**
 	 * Gets the product card data.
-	 *
-	 * @return the product card data
 	 */
 	public void getProductCardData() {
 		ResourceResolver resourceResolver;
 		try {
 			resourceResolver = coreResourceResolver.getResourceResolver();
-			LOG.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
+			LOG.debug("Reading content fragment {}", getProductCardFragmentPath() + JCR_CONTENT_DATA_MASTER);
 		      final Resource productCardResource = resourceResolver
-		          .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
+		          .getResource(getProductCardFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
 		      
 		      if (null != productCardResource) {
 		          LOG.debug("Parsing Article Data");
@@ -348,8 +348,6 @@ public class ProductCardModel {
 
 	/**
 	 * Gets the product card data dynamic.
-	 *
-	 * @return the product card data dynamic
 	 */
 	public void getProductCardDataDynamic() {
 		ResourceResolver resourceResolver = null;
@@ -516,27 +514,30 @@ public class ProductCardModel {
 	 * @return the article CF path
 	 */
 	public String getArticleCFPath(String path) {
-		if (!path.equals("")) {
 			try {
 				ResourceResolver acfpResourceResolver = coreResourceResolver.getResourceResolver();
 				final Resource pageResource = acfpResourceResolver.getResource(path);
-				Node startNode = pageResource.adaptTo(Node.class);
-				 NodeIterator iterator = startNode.getNodes();
-				while (iterator.hasNext()) {
-					 Node childNode = (Node) iterator.next();
-					if (childNode.hasProperty("articleID")) {
-						articleCFPath = childNode.getProperty("fragmentPath").getString();
-						LOG.info("Article path is :: {}", articleCFPath);
-						break;
-					} else {
-						getArticleCFPath(childNode.getPath());
-					}
+				if (null != pageResource) {
+					Node startNode = pageResource.adaptTo(Node.class);
+					NodeIterator iterator = null != startNode ? startNode.getNodes() : null; 
+					if (null != iterator) {
+						 while (iterator.hasNext()) {
+							 Node childNode = (Node) iterator.next();
+							if (childNode.hasProperty("articleID")) {
+								articleCFPath = childNode.getProperty("fragmentPath").getString();
+								LOG.info("Article path is :: {}", articleCFPath);
+								break;
+							} else {
+								getArticleCFPath(childNode.getPath());
+							}
+						}
+					 }
 				}
 				acfpResourceResolver.close();
 			} catch (Exception e) {
 				LOG.info("Exception occured while fetching article path :: {}", e);
 			}
-		}
+		
 		return articleCFPath;
 	}
 }
