@@ -24,6 +24,7 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,6 @@ import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
-import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -86,6 +86,9 @@ public class ArticleListModel {
   @ Inject
   @ Via ("resource")
   private String titleLevel;
+  
+  @SlingObject
+  private ResourceResolver resourceResolver;
 
   /** The items. */
   private final List <DAMContentFragment> items = new ArrayList <>();
@@ -97,10 +100,6 @@ public class ArticleListModel {
   /** The content type converter. */
   @ Inject
   private ContentTypeConverter contentTypeConverter;
-
-  /** The core resource resolver. */
-  @ Inject
-  private CoreResourceResolver coreResourceResolver;
 
   /** The config service. */
   @ Inject
@@ -361,10 +360,8 @@ public class ArticleListModel {
         && ! getDisplayType().equals("articleList")) {
       return;
     }
-    ResourceResolver resourceResolver = null;
     try {
       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-      resourceResolver = coreResourceResolver.getResourceResolver();
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
         LOGGER.warn("Session was null therefore no query was executed");
@@ -382,7 +379,7 @@ public class ArticleListModel {
       final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
       LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
       final Query query = queryBuilder.createQuery(predicateGroup, session);
-
+      LOGGER.debug("Query before search {}", query);
       final SearchResult searchResult = query.getResult();
 
       LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
@@ -424,12 +421,7 @@ public class ArticleListModel {
       }
     } catch (LoginException | RepositoryException e) {
       LOGGER.error("Login exception while trying to get resource resolver {}", e);
-    } finally {
-      if (null != resourceResolver) {
-        resourceResolver.close();
-      }
     }
-
   }
 
   /**
@@ -468,7 +460,7 @@ public class ArticleListModel {
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
       for (int i = 0; i < tagNames.length; i++) {
-        queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ]);
+        queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ].trim());
       }
     }
   }

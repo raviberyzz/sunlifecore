@@ -360,13 +360,7 @@
      // Featured content-list end
 }
 /*** Media Quries end ***/
-
-
-
-
-
-
-
-
-
-
+//to hide rating info icon defect #951
+[id^=rating_info] {
+    display: none !important;
+}

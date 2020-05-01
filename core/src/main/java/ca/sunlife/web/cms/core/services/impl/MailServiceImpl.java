@@ -24,7 +24,9 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.osgi.services.HttpClientBuilderFactory;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -38,6 +40,7 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 
 import ca.sunlife.web.cms.core.osgi.config.MailConfig;
+import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.MailService;
 
 /**
@@ -59,6 +62,9 @@ public class MailServiceImpl implements MailService {
   /** The http client builder factory. */
   @ Reference
   private HttpClientBuilderFactory httpClientBuilderFactory;
+  
+  @Reference
+  private CoreResourceResolver coreResourceResolver;
 
   /* (non-Javadoc)
    * @see ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.sling.api.SlingHttpServletRequest)
@@ -97,7 +103,8 @@ public class MailServiceImpl implements MailService {
 
         componentPath = requestParameters.get(":formstart");
         toEmailId = requestParameters.get("email-id");
-        Resource componentResource = request.getResourceResolver().getResource(componentPath);
+        ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
+        Resource componentResource = resourceResolver.getResource(componentPath);
         if (null != componentResource) {
           LOG.debug("Got the component path {}", componentResource.getPath());
           Node componentNode = componentResource.adaptTo(Node.class);
@@ -129,6 +136,7 @@ public class MailServiceImpl implements MailService {
             }
           }
         }
+        resourceResolver.close();
         MustacheFactory mf = new DefaultMustacheFactory();
         StringWriter writer = new StringWriter();
         Mustache mustache = mf.compile(new StringReader(emailBody), " ");
@@ -166,6 +174,8 @@ public class MailServiceImpl implements MailService {
       LOG.error("Exception occured :: Repository not found {}", repEx);
     } catch (IOException e) {
       LOG.error("Exception occured :: IOException {}", e);
+    } catch (LoginException e) {
+      LOG.error("Exception occured :: LoginException {}", e);
     } 
     return null;
   }
