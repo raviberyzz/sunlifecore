@@ -1212,7 +1212,7 @@ function readCookie(name) {
 //}
 function checkCookieExists(){
     $('.site-level-notification .close-div').each(function() {
-		var siteNotification = this.closest(".site-level-notification");
+		var siteNotification = $(this).closest(".site-level-notification");
         var siteNotificationDiv = $(siteNotification).find(".cmp-container");
         var siteNotificationId = siteNotificationDiv.attr('id');
         var cookieExists = readCookie("pageNotification-"+siteNotificationId);
