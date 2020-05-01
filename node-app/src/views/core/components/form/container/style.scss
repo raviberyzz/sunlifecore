@@ -376,11 +376,10 @@
         } 
     }
     .generic-form-wrapper{
-        .layout-container{
             input[type=tel]{
                 max-width:100%;
+                width:100%;
             }
-        }
     }
 }
 @media (min-width: $tab-screen-min)  {
@@ -457,7 +456,17 @@
                 max-width:285px;
             }
         }
+        .form-element-full-width-wrapper{
+            .cmp-form-text{
+                input,.parsley-errors-list{
+                    max-width:395px;
+                    width:100%; 
+                }
+            }
+        }
     }
+
+
 }
 .cmp-container .cta-form-wrapper form.cmp-form {
     justify-content: center;
