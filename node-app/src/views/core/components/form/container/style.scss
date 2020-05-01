@@ -281,10 +281,10 @@
         form{
             .row{
                 div[class^="col-"]:first-child{
-                    width:285px;
+                    max-width:285px;
                 }
                 div[class^="col-"]:last-child{
-                    input[name=Ext]{
+                    input{
                         width:100px;
                     }
                 }
