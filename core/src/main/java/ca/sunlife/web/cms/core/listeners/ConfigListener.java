@@ -26,7 +26,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 @ Component (service = EventHandler.class, property = {
     EventConstants.EVENT_TOPIC + "=org/apache/sling/api/resource/Resource/*",
     EventConstants.EVENT_FILTER
-        + "(&amp;(path=/content/sunlife/config/*)(resourceType=sunlife/core/components/config/configuration)" })
+        + "(&amp;(path=/content/sunlife/config/*)(resourceType=sunlife/core/components/config/configuration))" })
 public class ConfigListener implements EventHandler {
 
   /** The logger. */
@@ -45,7 +45,10 @@ public class ConfigListener implements EventHandler {
    */
   @ Override
   public void handleEvent(final Event event) {
-    logger.info("event handler called");
+    if (!event.getProperty("path").toString().startsWith("/content/sunlife/config") || !event.getProperty("resourceType").toString().equalsIgnoreCase("sunlife/core/components/config/configuration")) {
+      return;
+    }
+    logger.info("event handler called {}", event);
     try {
       configService.setConfiguration();
     } catch (LoginException | RepositoryException e) {
