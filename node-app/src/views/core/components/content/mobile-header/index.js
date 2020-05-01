@@ -53,14 +53,18 @@ $(document).ready(function () {
     $('.third-level-navigation .go-back').click(function(){
         $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionSecond);
     });
-    $('.navigation-menu').children("a").click(function(){
-        $(this).parent().closest('div').scrollTop(0);
-        $(this).siblings("div").addClass('active');         
-        $(this).parent().closest('div').css({'overflow-y':'hidden'});
+    $('.navigation-menu').click(function(){
+        // $(this).parent().closest('div').scrollTop(0);
+        // $(this).siblings("div").addClass('active');         
+        // $(this).parent().closest('div').css({'overflow-y':'hidden'});
+        $(this).children('div').scrollTop(0);
+        $(this).children("div").addClass('active');
+        $(this).closest('div').css({'overflow-y':'hidden'});
     });
-    $('.go-back').click(function(){ 
+    $('.go-back').click(function(event){ 
         $(this).closest("div").removeClass('active');          
         $(this).closest('div').parent().closest('div').css({'overflow-y':'auto'});
+         event.stopPropagation();
     });
     $('.language-region .second-level-navigation .go-back').click(function(){  
         $('.language-region .second-level-navigation').removeClass('active');         
