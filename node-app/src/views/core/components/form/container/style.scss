@@ -376,11 +376,10 @@
         } 
     }
     .generic-form-wrapper{
-        .layout-container{
             input[type=tel]{
                 max-width:100%;
+                width:100%;
             }
-        }
     }
 }
 @media (min-width: $tab-screen-min)  {
