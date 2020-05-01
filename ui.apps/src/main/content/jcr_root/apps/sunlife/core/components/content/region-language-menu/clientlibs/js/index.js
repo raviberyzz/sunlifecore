@@ -112,7 +112,7 @@ $(document).ready(function () {
             $(this).attr('aria-expanded', 'false');
             $(this).siblings().removeClass('in');
         }
-    })
+    });
     $('.desktop-region-language-menu-wrapper .slf-tab-region .slf-tab').click(function () {
         $(this).addClass('active').siblings().removeClass('active');
     });
