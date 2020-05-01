@@ -143,16 +143,32 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         features="specialchars">
                                                         <specialCharsConfig jcr:primaryType="nt:unstructured">
-                                                          <chars
-                                                             jcr:primaryType="nt:unstructured"
-                                                             override="true">
-                                                             <item0
+                                                            <chars
                                                                 jcr:primaryType="nt:unstructured"
-                                                                entity="&amp;#160;"
-                                                                name="nbsp"/> 
-                                                           </chars> 
-                                                         </specialCharsConfig> 
-                                                     </misctools>   
+                                                                override="true">
+                                                                <item0
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;copy;"
+                                                                    name="copyright"/>
+                                                                <item1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;euro;"
+                                                                    name="euro"/>
+                                                                <item2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;reg;"
+                                                                    name="registered"/>
+                                                                <item3
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;trade;"
+                                                                    name="trademark"/>
+                                                                <item4
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;#160;"
+                                                                    name="nbsp"/>    
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
                                                     <undo
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
