@@ -66,7 +66,7 @@ $(document).ready(function () {
     if ($(node).parent().hasClass('col-xs-12') && $(node).parent().hasClass('no-gutter')) {
       return true;
     }
-    if (classes.filter(function (cl) { return cl.indexOf('mt-') && cl.indexOf('mb-') }).length > 1 || $(node).parent().hasClass('row')) {
+    if (classes.filter(function (cl) { return cl.indexOf('mt-') && cl.indexOf('mb-') }).length > 1 || $(node).parent().hasClass('row') || $(node).parents('.article-body').length > 0) {
       return false;
     }
     return checkTextParents($(node).parent());
