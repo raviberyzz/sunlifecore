@@ -213,7 +213,7 @@
         }
         .pagination-indicator{
             text-align: center;
-            font-size: 12px;
+            font-size: 0.75rem;
             margin-bottom: 30px;
         }
     }
@@ -231,7 +231,7 @@
     .search-result-toggle.active{
         display:block;
     }
-    .search-result-items{
+    #search-result-items{
         .bottom-buffer{
             display: block;
             margin-bottom: 30px;
@@ -242,7 +242,7 @@
             }
             .search-result-display-url {
                 font-weight: 700;
-                font-size: 0.875rem;
+                font-size: 0.7rem;
                 line-height: 1.2em;
             }
         }

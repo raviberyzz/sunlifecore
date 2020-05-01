@@ -1211,13 +1211,20 @@ function readCookie(name) {
 // });
 //}
 function checkCookieExists(){
-	 var cookieExists=readCookie("pageNotification");
-	 if(cookieExists){
-		 $('.site-level-notification').css('display', 'none');
-	 }
-	 else {
-		 $('.site-level-notification').css('display', '');
-	 }
+    $('.site-level-notification .close-div').each(function() {
+		var siteNotification = this.closest(".site-level-notification");
+        var siteNotificationDiv = $(siteNotification).find(".cmp-container");
+        var siteNotificationId = siteNotificationDiv.attr('id');
+        var cookieExists = readCookie("pageNotification-"+siteNotificationId);
+
+        if(cookieExists){
+        	$(siteNotification).css('display', 'none');
+        }
+        else {
+            $(siteNotification).css('display', '');
+        }
+
+    });
 }
 // function checkBrowserCookieExists(){
 // var cookieExists=readCookie("browserNotification");

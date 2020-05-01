@@ -28,14 +28,20 @@
                         <item0
                             jcr:primaryType="nt:unstructured"
                             icon="fa-facebook-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Facebook"
                             target="_self"/>
                         <item1
                             jcr:primaryType="nt:unstructured"
                             icon="fa-twitter-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Twitter"
                             target="_self"/>
                         <item2
                             jcr:primaryType="nt:unstructured"
                             icon="fa-linkedin-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Linkedin"
                             target="_self"/>
                     </iconsText>
                 </socialIcons>
