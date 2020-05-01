@@ -150,7 +150,8 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 entity="&amp;#160;"
                                                                 name="nbsp"/> 
-                                                           </chars>  
+                                                           </chars> 
+                                                         </specialCharsConfig> 
                                                      </misctools>   
                                                     <undo
                                                         jcr:primaryType="nt:unstructured"
