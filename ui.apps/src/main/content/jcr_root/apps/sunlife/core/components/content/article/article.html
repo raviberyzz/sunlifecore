@@ -6,10 +6,10 @@
                 ${article.articleData.articlePublishedDate}
             </div>
             <div class="article-title heading-2" data-sly-test="${article.articleData.articleHeadline}">
-                <h1>${article.articleData.articleHeadline}</h1>
+                <h1>${article.articleData.articleHeadline @context='html'}</h1>
             </div>
             <div class="article-author-name" data-sly-test="${article.articleData.authorName}">
-                ${article.articleData.authorName}
+                ${article.articleData.authorName @context='html'}
             </div>
         </div>
         ${article.articleData.articleMiniDescription  @context='html'}
@@ -29,9 +29,9 @@
     </article>
     <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
         {"@context":"http://schema.org","@type":"Article",
-        "author":{"@type":"Person","name":"${article.articleData.authorName}"},
+        "author":{"@type":"Person","name":"${article.articleData.authorName @context='html'}"},
         "datePublished":"${article.articleData.articlePublishedDate}",
-        "headline":"${article.articleData.articleHeadline}",
+        "headline":"${article.articleData.articleHeadline @context='html'}",
         "image":["${article.articleImage}","${article.ogImage}"],
         "publisher":{"@type":"Organization","name":"${article.publisherName}","logo":{"@type":"ImageObject","height":"60","width":"309","url":"${article.publisherLogo}"}},
         "dateModified":"${article.pageModifiedDate}",
