@@ -126,6 +126,22 @@ public interface HeaderModel {
    */
   @ Inject
   String getRegionTitle();
+  
+  /**
+   * Gets the Region screen reader text.
+   *
+   * @return the Region screen reader text
+   */
+  @ Inject
+  String getSrRegionText();
+  
+  /**
+   * Gets the Search screen reader text.
+   *
+   * @return the Search screen reader text
+   */
+  @ Inject
+  String getSrSearchText();
 
   /**
    * Gets the links.
