@@ -236,21 +236,20 @@ ul {
 @media (min-width: $tab-screen-min) {
     .col-sm-4{
         .blue-icon-yellow-background{
-            .cmp-container{
-                .overview-highlights-wrapper{
-                    -webkit-box-orient: vertical;
-                    -webkit-box-direction: normal;
-                    flex-direction: column;
-                    -webkit-box-flex: 1;
-                    display: flex;
-                }
-                .button-class{
-                    padding: 6px 16px;
-                }
-                .text {
-                    height: 100%;
-                }
-            } 
+            .overview-highlights-wrapper{
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                flex-direction: column;
+                -webkit-box-flex: 1;
+                display: flex;
+            }
+            .button-class{
+                padding: 6px 16px;
+            }
+            .text {
+                height: 100%;
+            }
+             
         }
         .text-border-right {
             .icon-texts {
@@ -2384,5 +2383,21 @@ ul {
         }
     }
 }
+
+
+/** IOS specific code starts here  **/
+
+/* Safari 7.1+ */
+_::-webkit-full-page-media, _:future, :root .safari_only {
+    .col-sm-4{
+        .blue-icon-yellow-background{
+            .overview-highlights-wrapper{
+                display: block;
+            }
+        }
+    }
+}
+/** IOS specific code ends here  **/
+
 /** Browser Specific CSS ends here **/
 
