@@ -1,0 +1,47 @@
+<sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardModel">
+    <sly data-sly-test="${productCardModel.topc=='static'}">
+
+        <div>
+
+            <img src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+            <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
+
+            <div class="caption">
+                <h2 class="product-name"><a href="${productCardModel.pcData.productCardPagePath}">${productCardModel.pcData.productCardHeading}</a></h2> ${productCardModel.pcData.productCardContent @context='html'}
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${productCardModel.topc=='dynamic'}">
+        <sly data-sly-test.pcFeaturedCardImage="${productCardModel.featuredImagePath}"></sly>
+        <div class="thumbnail" data-sly-list.cardDetails="${productCardModel.itemList}">
+            <sly data-sly-list.element="${cardDetails.elements}">
+                <sly data-sly-test="${element.name == 'productCardImage'}" data-sly-test.pcImage="${element.value}" />
+                <sly data-sly-test="${element.name == 'featuredCard'}" data-sly-test.pcFeaturedCard="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardHeading'}" data-sly-test.pcHeading="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardContent'}" data-sly-test.pcContent="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardPagePath'}" data-sly-test.pcPath="${element.value}" />
+            </sly>
+            <img src="${pcImage}" alt="" class="imageCard">
+            <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
+            <div class="caption">
+                <h2 class="product-name"><a href="${pcPath}">${pcHeading}</a></h2> ${pcContent @context='html'}
+            </div>
+
+        </div>
+    </sly>
+    <div class="row module-1" data-sly-test="${productCardModel.topc=='rightNav'}">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div>
+                ${productCardModel.title}
+            </div>
+
+            <div data-section="product-secondary-CTA">
+                <sly data-sly-test="${productCardModel.cardIsFeatured=='yes'}"><img src="${productCardModel.featuredImagePath}" alt="Featured"></sly>
+                <div class="fa ${productCardModel.icon}"></div>
+                ${productCardModel.text @ context='html'}
+            </div>
+        </div>
+
+    </div>
+
+</sly>
