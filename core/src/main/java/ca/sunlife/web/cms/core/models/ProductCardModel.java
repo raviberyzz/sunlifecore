@@ -75,10 +75,6 @@ public class ProductCardModel {
 	@Via("resource")
 	private String text;
 	
-	/** The card is featured. */
-	@Inject
-	@Via("resource")
-	private String cardIsFeatured;
 
 	/** The config service. */
 	@Inject
@@ -279,24 +275,6 @@ public class ProductCardModel {
 		this.text = text;
 	}
 
-	/**
-	 * Gets the card is featured.
-	 *
-	 * @return the card is featured
-	 */
-	public String getCardIsFeatured() {
-		return cardIsFeatured;
-	}
-
-	/**
-	 * Sets the card is featured.
-	 *
-	 * @param cardIsFeatured the new card is featured
-	 */
-	public void setCardIsFeatured(String cardIsFeatured) {
-		this.cardIsFeatured = cardIsFeatured;
-	}
-
 
 	/**
 	 * Inits the.
@@ -364,7 +342,9 @@ public class ProductCardModel {
 				return;
 			}
 			List<String> articleTags = getTags(getArticleCFPath(currentPage.getPath()));
-
+			
+			LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(), currentPage.getParent().getPath());
+			
 			switch (articleTags.size()) {
 			case 0: 
 				LOG.info("Article does not contain any tags.");
