@@ -9,6 +9,7 @@
     .thumbnail{
         padding: 0;
         height: 100%;
+        position: relative;
         &:hover {
             box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
             transform: scale(1.05, 1.05);
@@ -20,7 +21,7 @@
         background-color: $light-cool-blue-color ;
         box-shadow: 0px 0px 10px $light-grey-color; 
         .topright{
-            display:block;
+            display: block;
             position: absolute;
             top: 0px;
             right: 0px;
@@ -33,7 +34,6 @@
         display:none;
     }
     .imageCard{
-        display: block;
         max-width: 100%;
         height: auto;
     }
