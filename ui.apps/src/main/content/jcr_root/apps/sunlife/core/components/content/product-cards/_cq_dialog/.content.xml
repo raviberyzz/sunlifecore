@@ -100,14 +100,6 @@
                                 fieldLabel="Text"
                                 name="./text"
                                 useFixedInlineToolbar="{Boolean}true"/>
-                            <isFeatured
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                fieldDescription="Check if it is a featured Product Card"
-                                name="./cardIsFeatured"
-                                text="Product Card is Featured"
-                                uncheckedValue="no"
-                                value="yes"/>
                         </items>
                         <granite:data
                             jcr:primaryType="nt:unstructured"
