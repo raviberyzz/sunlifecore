@@ -48,7 +48,7 @@
                                 fieldDescription="Enter the product card content fragment path"
                                 fieldLabel="Content Fragment Path"
                                 name="./productCardFragmentPath"
-                                rootPath="/content"/>
+                                rootPath="/content/dam/sunlife"/>
                         </items>
                         <granite:data
                             jcr:primaryType="nt:unstructured"
@@ -67,7 +67,7 @@
                                 fieldDescription="Enter the product cards content fragment parent folder path"
                                 fieldLabel="Content Fragment Parent Path"
                                 name="./folderPath"
-                                rootPath="/content"/>
+                                rootPath="/content/dam/sunlife"/>
                         </items>
                         <granite:data
                             jcr:primaryType="nt:unstructured"
