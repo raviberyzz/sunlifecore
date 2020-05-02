@@ -276,6 +276,14 @@
         }
     }
 }
+.generic-form-wrapper{
+    form{
+        input[type=checkbox]{
+            max-width: 24px;
+            width:24px;
+        }
+    }
+}
 @media(min-width:$tab-screen-min){
     .generic-form-wrapper{
         form{
@@ -289,7 +297,7 @@
                     }
                 }
             }
-            input[type=text],input[type=email],input[type=tel],.parsley-errors-list{
+            input,.parsley-errors-list{
                 max-width:285px;
                 width:100%;
             }
@@ -376,9 +384,15 @@
         } 
     }
     .generic-form-wrapper{
-            input[type=tel]{
+            //input[type=tel]{
+                input{
                 max-width:100%;
                 width:100%;
+            }
+            .layout-container{
+                .row{
+                    display: block;
+                }
             }
     }
 }

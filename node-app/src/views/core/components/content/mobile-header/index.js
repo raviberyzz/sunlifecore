@@ -53,12 +53,12 @@ $(document).ready(function () {
     $('.third-level-navigation .go-back').click(function(){
         $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionSecond);
     });
-    $('.navigation-menu').children("a").click(function(){
+    $('.navigation-menu').children('a').click(function(){
         $(this).parent().closest('div').scrollTop(0);
         $(this).siblings("div").addClass('active');         
         $(this).parent().closest('div').css({'overflow-y':'hidden'});
     });
-    $('.go-back').click(function(){ 
+    $('.go-back').click(function(event){ 
         $(this).closest("div").removeClass('active');          
         $(this).closest('div').parent().closest('div').css({'overflow-y':'auto'});
     });
