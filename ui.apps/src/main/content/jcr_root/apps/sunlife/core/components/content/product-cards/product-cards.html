@@ -4,39 +4,38 @@
             <img src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading}" class="imageCard">
             <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
             <div class="caption">
-                <h2 class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
-                ${productCardModel.pcData.productCardContent @context='html'}
+                <h2 class="product-name">${productCardModel.pcData.productCardHeading}</h2> ${productCardModel.pcData.productCardContent @context='html'}
             </div>
             <a href="${productCardModel.pcData.productCardPagePath}">${productCardModel.pcData.productCardHeading}</a>
         </div>
     </sly>
     <div class="product-card-wrapper layout-container" data-sly-test="${productCardModel.topc=='dynamic'}">
         <div class="row flex-height">
-        <sly data-sly-test.pcFeaturedCardImage="${productCardModel.featuredImagePath}"></sly>
-        <div data-sly-list.cardDetails="${productCardModel.itemList}">
-            <div class="col-sm-4">
-            <div class="container-component">
-            <div class="cmp-container">
-            <sly data-sly-list.element="${cardDetails.elements}">
-                <sly data-sly-test="${element.name == 'productCardImage'}" data-sly-test.pcImage="${element.value}" />
-                <sly data-sly-test="${element.name == 'featuredCard'}" data-sly-test.pcFeaturedCard="${element.value}" />
-                <sly data-sly-test="${element.name == 'productCardHeading'}" data-sly-test.pcHeading="${element.value}" />
-                <sly data-sly-test="${element.name == 'productCardContent'}" data-sly-test.pcContent="${element.value}" />
-                <sly data-sly-test="${element.name == 'productCardPagePath'}" data-sly-test.pcPath="${element.value}" />
-            </sly>
-            <div class="thumbnail ${pcFeaturedCard ? 'feature-card' : ''}">
-            <img src="${pcImage}" alt="${pcHeading}" class="imageCard">
-            <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
-            <div class="caption">
-                <h2 class="product-name">${pcHeading}</h2> 
-                ${pcContent @context='html'}
+            <sly data-sly-test.pcFeaturedCardImage="${productCardModel.featuredImagePath}"></sly>
+            <div data-sly-list.cardDetails="${productCardModel.itemList}">
+                <div class="col-sm-4">
+                    <div class="container-component">
+                        <div class="cmp-container">
+                            <sly data-sly-list.element="${cardDetails.elements}">
+                                <sly data-sly-test="${element.name == 'productCardImage'}" data-sly-test.pcImage="${element.value}" />
+                                <sly data-sly-test="${element.name == 'featuredCard'}" data-sly-test.pcFeaturedCard="${element.value}" />
+                                <sly data-sly-test="${element.name == 'productCardHeading'}" data-sly-test.pcHeading="${element.value}" />
+                                <sly data-sly-test="${element.name == 'productCardContent'}" data-sly-test.pcContent="${element.value}" />
+                                <sly data-sly-test="${element.name == 'productCardPagePath'}" data-sly-test.pcPath="${element.value}" />
+                            </sly>
+                            <div class="thumbnail ${pcFeaturedCard ? 'feature-card' : ''}">
+                                <img src="${pcImage}" alt="${pcHeading}" class="imageCard">
+                                <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
+                                <div class="caption">
+                                    <h2 class="product-name">${pcHeading}</h2> ${pcContent @context='html'}
+                                </div>
+                                <a href="${pcPath}">${pcHeading}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-                <a href="${pcPath}">${pcHeading}</a>
-          </div>
-          </div>
-          </div>
-          </div>
-        </div></div>
+        </div>
     </div>
     <div class="row module-1" data-sly-test="${productCardModel.topc=='rightNav'}">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
