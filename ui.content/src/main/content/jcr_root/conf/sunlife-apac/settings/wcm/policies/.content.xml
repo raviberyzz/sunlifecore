@@ -1355,6 +1355,11 @@
                                             cq:styleId="1582976767876"
                                             cq:styleLabel="CTA"
                                             jcr:primaryType="nt:unstructured"/>
+                                          <item11
+                                            cq:styleClasses="product-card-wrapper"
+                                            cq:styleId="1582976767886"
+                                            cq:styleLabel="Product Card"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1
@@ -3242,6 +3247,11 @@
                                             cq:styleId="1582976767877"
                                             cq:styleLabel="CTA"
                                             jcr:primaryType="nt:unstructured"/> 
+                                          <item11
+                                            cq:styleClasses="product-card-wrapper"
+                                            cq:styleId="1582976768886"
+                                            cq:styleLabel="Product Card"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1
