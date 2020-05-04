@@ -164,7 +164,8 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Enter the featured image path"
                                         fieldLabel="Featured Image Path"
-                                        name="./featuredImagePath"/>
+                                        name="./featuredImagePath"
+                                        rootPath="/content/dam/sunlife"/>
                                 </items>
                             </section-productcards>
                             <section-page
