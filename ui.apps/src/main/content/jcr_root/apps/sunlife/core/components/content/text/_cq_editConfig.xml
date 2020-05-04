@@ -12,7 +12,7 @@
                     <docType jcr:primaryType="nt:unstructured">
                         <typeConfig jcr:primaryType="nt:unstructured"
                                 useSemanticMarkup="{Boolean}true">
-                            <semanticMarkupMap
+                            <semanticMarkupMap jcr:primaryType="nt:unstructured"
                                     b="strong"
                                     i="em"/>
                         </typeConfig>
