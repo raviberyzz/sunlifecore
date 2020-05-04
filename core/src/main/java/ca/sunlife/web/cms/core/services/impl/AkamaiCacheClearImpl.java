@@ -94,7 +94,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
       for (final String path : paths) {
         LOGGER.debug("Processing path {}", path);
-        if (path.startsWith("/content/experience-fragments")) {
+        if (path.startsWith("/content/experience-fragments") && !path.contains("header") && !path.contains("footer")) {
           final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
               .search(resourceResolver, path);
           searchResult.forEach((key, reference) -> {
