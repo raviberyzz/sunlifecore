@@ -336,7 +336,7 @@ public class ProductCardModel {
 				LOG.warn("Query builder was null therefore no query was executed");
 				return;
 			}
-			String[] articleTags = tagNames;
+			String[] articleTags = tagNames; 
 			LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(), currentPage.getParent().getPath());
 			
 			switch (articleTags.length) {
