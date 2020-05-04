@@ -15,10 +15,6 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.Value;
-import javax.jcr.Property;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
@@ -60,6 +56,11 @@ public class ProductCardModel {
 	@Via("resource")
 	private String folderPath;
 	
+	/** The tag names. */
+	  @ Inject
+	  @ Via ("resource")
+	  private String [ ] tagNames;
+	
 	/** The title. */
 	@Inject
 	@Via("resource")
@@ -75,10 +76,6 @@ public class ProductCardModel {
 	@Via("resource")
 	private String text;
 	
-	/** The card is featured. */
-	@Inject
-	@Via("resource")
-	private String cardIsFeatured;
 
 	/** The config service. */
 	@Inject
@@ -99,9 +96,6 @@ public class ProductCardModel {
 	/** The Constant JCR_CONTENT_DATA_MASTER. */
 	private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
 	
-	/** The Constant JCR_CONTENT_METADATA. */
-	private static final String JCR_CONTENT_METADATA = "/jcr:content/metadata";
-	
 	/** The Constant ELEMENT_NAMES. */
 	private static final String[] ELEMENT_NAMES = { "productCardHeading", "productCardContent",
 			"productCardPagePath", "featuredCard", "productCardImage" };
@@ -117,9 +111,6 @@ public class ProductCardModel {
 	
 	/** The item list. */
 	private final List<DAMContentFragment> itemList = new ArrayList<>();
-	
-	/** The article CF path. */
-	private String articleCFPath;
 	
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(ProductCardModel.class);
@@ -279,24 +270,6 @@ public class ProductCardModel {
 		this.text = text;
 	}
 
-	/**
-	 * Gets the card is featured.
-	 *
-	 * @return the card is featured
-	 */
-	public String getCardIsFeatured() {
-		return cardIsFeatured;
-	}
-
-	/**
-	 * Sets the card is featured.
-	 *
-	 * @param cardIsFeatured the new card is featured
-	 */
-	public void setCardIsFeatured(String cardIsFeatured) {
-		this.cardIsFeatured = cardIsFeatured;
-	}
-
 
 	/**
 	 * Inits the.
@@ -363,9 +336,10 @@ public class ProductCardModel {
 				LOG.warn("Query builder was null therefore no query was executed");
 				return;
 			}
-			List<String> articleTags = getTags(getArticleCFPath(currentPage.getPath()));
-
-			switch (articleTags.size()) {
+			String[] articleTags = tagNames;
+			LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(), currentPage.getParent().getPath());
+			
+			switch (articleTags.length) {
 			case 0: 
 				LOG.info("Article does not contain any tags.");
 				break;
@@ -373,21 +347,21 @@ public class ProductCardModel {
 
 			case 1: 
 				LOG.info("Article does not contains 1 tag.");
-				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 3));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[0], 3));
 				LOG.info("Number of results {}", itemList.size());
 				break;
 			
 
 			case 2: 
 				LOG.info("Article does not contains 2 tags.");
-				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 2));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[0], 2));
 
 				if (itemList.size() == 2) {
 					itemList.addAll(1,
-							getContentFragmentList(queryBuilder, session, articleTags.get(1), 1));
+							getContentFragmentList(queryBuilder, session, articleTags[1], 1));
 
 				} else {
-					itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(1), 2));
+					itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[1], 2));
 				}
 
 				break;
@@ -395,10 +369,9 @@ public class ProductCardModel {
 
 			case 3:
 				LOG.info("Article does not contains 3 tags.");
-				getContentFragmentList(queryBuilder, session, articleTags.get(0), 1);
-				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(0), 1));
-				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(1), 1));
-				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags.get(2), 1));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[0], 1));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[1], 1));
+				itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags[2], 1));
 				break;
 			
 			default:
@@ -474,70 +447,5 @@ public class ProductCardModel {
 		return items;
 	}
 
-	/**
-	 * Gets the tags.
-	 *
-	 * @param path the path
-	 * @return the tags
-	 */
-	public List<String> getTags(String path) {
-		ArrayList<String> tagList = new ArrayList<>();
-		try {
-			ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-			final Resource productCardMetadata = resourceResolver.getResource(path + JCR_CONTENT_METADATA);
-			if (null != productCardMetadata) {
-				LOG.info("Fetching metadata");
-				Node metaNode = productCardMetadata.adaptTo(Node.class);
-				LOG.info("Metanode is :: {}", metaNode);
-				if (null != metaNode) {
-					Property tagArray = metaNode.getProperty("cq:tags");
-					Value[] tags = tagArray.getValues();
-					for (int i = 0; i < tags.length; i++) {
-						tagList.add(tags[i].toString());
-					}
-				}
-			}
-			resourceResolver.close();
-
-		} catch (Exception ex) {
-			LOG.info("Exception occured :: in tags {}", ex);
-		}
-
-		return tagList;
-
-	}
-
-	/**
-	 * Gets the article CF path.
-	 *
-	 * @param path the path
-	 * @return the article CF path
-	 */
-	public String getArticleCFPath(String path) {
-			try {
-				ResourceResolver acfpResourceResolver = coreResourceResolver.getResourceResolver();
-				final Resource pageResource = acfpResourceResolver.getResource(path);
-				if (null != pageResource) {
-					Node startNode = pageResource.adaptTo(Node.class);
-					NodeIterator iterator = null != startNode ? startNode.getNodes() : null; 
-					if (null != iterator) {
-						 while (iterator.hasNext()) {
-							 Node childNode = (Node) iterator.next();
-							if (childNode.hasProperty("articleID")) {
-								articleCFPath = childNode.getProperty("fragmentPath").getString();
-								LOG.info("Article path is :: {}", articleCFPath);
-								break;
-							} else {
-								getArticleCFPath(childNode.getPath());
-							}
-						}
-					 }
-				}
-				acfpResourceResolver.close();
-			} catch (Exception e) {
-				LOG.info("Exception occured while fetching article path :: {}", e);
-			}
-		
-		return articleCFPath;
-	}
+	
 }
