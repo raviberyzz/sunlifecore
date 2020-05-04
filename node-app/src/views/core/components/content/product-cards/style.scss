@@ -1,11 +1,28 @@
 @import '../../../base/core';
+.experiencefragment .product-card-wrapper {
+    margin-bottom:20px;
+}
+.product-cards{
+    .layout-container.product-card-wrapper{
+        .row >div {
+            width:100%;
+        }
+    } 
+    div[class^="col-"] 
+    {
+        height:100%;
+    }   
+} 
 .layout-container.product-card-wrapper{
     div[class^="col-"]{
         padding:0 15px;
-        height: 100%;
     }
 }
 .product-card-wrapper{
+    .product-cards {
+        height:100%;
+        margin-bottom:20px;
+    }
     .thumbnail{
         padding: 0;
         height: 100%;
@@ -48,6 +65,7 @@
         color: $blue-gradient-color;
         margin: 0;
         line-height: 120%;
+        word-break: break-all;
     }
     p {
         color: $dark-grey-color;
@@ -116,15 +134,21 @@
 
 @media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max)
 {
+    .product-cards .layout-container.product-card-wrapper div[class^="col-"] 
+    {
+        min-height: 144px;
+        height:auto;
+    }
     .layout-container.product-card-wrapper{
         div[class^="col-"]{
            width: 100% !important;
+           min-height: 144px;
            height: auto;
         }
     }
     .product-card-wrapper{
         .imageCard{
-            display: none;
+            display: none !important;
         }
         .feature-card {
             border-radius: 5px;
@@ -132,3 +156,6 @@
         }
     }
 }
+
+
+
