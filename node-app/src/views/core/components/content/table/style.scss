@@ -104,6 +104,10 @@ table{
           }
        }
       }
+      .pdf-link {
+        font-size: 1.8em;
+        font-weight: normal;
+      }
     }
   }
 }
@@ -179,7 +183,6 @@ table{
 .cmp-table-comparision{
    table {
      tbody{
-       cursor: pointer;
          tr {
            th {
             text-align: center !important;
