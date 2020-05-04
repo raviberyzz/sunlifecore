@@ -68,6 +68,13 @@
                                 fieldLabel="Content Fragment Parent Path"
                                 name="./folderPath"
                                 rootPath="/content/dam/sunlife"/>
+                             <tags
+                                 jcr:primaryType="nt:unstructured"
+                                 sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                 fieldDescription="Tags for displaying the product cards."
+                                 fieldLabel="Tags"
+                                 multiple="{Boolean}true"
+                                 name="./tagNames"/>
                         </items>
                         <granite:data
                             jcr:primaryType="nt:unstructured"
