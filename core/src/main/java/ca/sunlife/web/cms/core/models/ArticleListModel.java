@@ -384,8 +384,7 @@ public class ArticleListModel {
         && ! getDisplayType().equals("articleList")) {
       return;
     }
-    try {
-    	
+    try {    	
       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));     
       
       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
