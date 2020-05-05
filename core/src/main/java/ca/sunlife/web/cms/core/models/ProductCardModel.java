@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
+
+import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ValueMap;
@@ -186,7 +188,7 @@ public class ProductCardModel {
 	 * @return the list of product cards
 	 */
 	public final List<Map<String, String>> getListOfProductCards() {
-		return listOfProductCards;
+		return Collections.unmodifiableList(listOfProductCards);
 	}
 
 	/**
@@ -276,6 +278,9 @@ public class ProductCardModel {
 	 */
 	@PostConstruct
 	private void init() {
+		if (StringUtils.isEmpty(getTopc())) {
+		      return;
+		    }
 		try {
 			featuredImagePath = configService.getConfigValues("featuredImagePath", currentPage.getPath());
 			if (topc.equalsIgnoreCase("static")) {
@@ -287,8 +292,8 @@ public class ProductCardModel {
 			} else if (topc.equalsIgnoreCase("rightnav")) {
 				LOG.debug("Rignt Nav option selected");
 			}
-		} catch (Exception ex) {
-			LOG.error("Exception occured in main :: {}", ex);
+		} catch (LoginException | RepositoryException e) {
+			LOG.error("Exception occured in main :: {}", e);
 		}
 
 	}
@@ -314,7 +319,7 @@ public class ProductCardModel {
 		      LOG.debug("Statict Product Card Data {}", pcData);
 		      
 		} catch (LoginException  e) {
-			LOG.debug(" Exception in getProductCardData {}", e);
+			LOG.error(" Exception in getProductCardData {}", e);
 		}
 	      
 	}

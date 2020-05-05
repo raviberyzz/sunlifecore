@@ -887,11 +887,6 @@ ul {
                         margin-top:0px;
                     }
                 }
-                .container-seperator-75:after{
-                    top: 10.5%;
-                    bottom: 39.5%;
-                    left: 110%;
-                }
                 .primary-blue-button-rte{
                     margin-top: 24px;
                 }
@@ -1488,6 +1483,11 @@ ul {
             padding:0;
         }
     }
+    .content-area{
+        .prvsrch-form-search-btn{
+            height:48px;
+        }
+    }
 }
 }
 
@@ -1797,18 +1797,12 @@ ul {
 .cmp-contact-us {
     .layout-container{
         border: 1px solid #d7d7d7;
-    }
-    .text-border-right {
-        .cmp-text {
-            border-right: 2px solid #9a9a9a;
-            margin: 32px 0 32px 32px;
-        }
-        .text{
-            .cmp-text{
-                margin: 32px 0 32px 32px;
-            }
-        }
-    }
+            .row.flex-height{
+                .col-sm-4{
+                    padding: 0 32px;
+                        }
+                    }
+                }
     .blue-icon-yellow-background {
       .overview-highlights-wrapper{
         .icon-parent{
@@ -1847,7 +1841,16 @@ ul {
                 .primary-blue-button{
                     div{
                         display: flex;
-                        justify-content: center;
+                        justify-content: center;   
+                    }
+                }
+                .row{
+                    .col-sm-4{
+                        .container-seperator-75:after{
+                            top: 10.5%;
+                            bottom: 39.5%;
+                            left: 110%;
+                        }
                     }
                 }
             }

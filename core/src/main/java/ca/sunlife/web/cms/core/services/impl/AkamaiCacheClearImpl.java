@@ -91,16 +91,29 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
     final JSONObject request = new JSONObject();
     final JSONArray objects = new JSONArray();
     try {
+      final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
       for (final String path : paths) {
         LOGGER.debug("Processing path {}", path);
-        if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, path))) {
+        if (path.startsWith("/content/experience-fragments") && !path.contains("header") && !path.contains("footer")) {
+          final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
+              .search(resourceResolver, path);
+          searchResult.forEach((key, reference) -> {
+            try {
+              if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, key))) {
+                objects.put(configService.getPageUrl(path));
+              }
+            } catch (LoginException | RepositoryException e) {
+              LOGGER.error("Error while processing {} with exception {}", path, e);
+            }
+          });
+        } else if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, path))) {
           objects.put(configService.getPageUrl(path));
         } else {
           LOGGER.warn("Not able to get domain for {}", path);
         }
 
       }
-      if(objects.length() < 1) {
+      if (objects.length() < 1) {
         return "No valid paths to purge";
       }
       request.put("objects", objects);
@@ -184,7 +197,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
         }
         resourceResolver.close();
       }
-      if(objects.length() < 1) {
+      if (objects.length() < 1) {
         return "No valid paths to purge";
       }
       request.put("objects", objects);
