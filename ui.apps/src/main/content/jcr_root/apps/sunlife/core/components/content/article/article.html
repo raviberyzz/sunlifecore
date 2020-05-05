@@ -9,7 +9,7 @@
                 <h1>${article.articleData.articleHeadline @context='html'}</h1>
             </div>
             <div class="article-author-name" data-sly-test="${article.articleData.authorName}">
-                ${article.articleData.authorName @context='html'}
+                ${'By' @ i18n} ${article.articleData.authorName @context='html'}
             </div>
         </div>
         ${article.articleData.articleMiniDescription  @context='html'}
