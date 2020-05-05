@@ -544,19 +544,22 @@ public class ArticleModel {
   private void setArticlePublishDate(final ValueMap articleContent)
       throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
-    String pageLocaleDefault = StringUtils.EMPTY;
+  //  String pageLocaleDefault = StringUtils.EMPTY;
     
     try {
-        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
-        if (null != locale && locale.length() > 0) {
-            pageLocaleDefault = locale.split("_") [ 0 ];
-          }
+//        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
+//        if (null != locale && locale.length() > 0) {
+//            pageLocaleDefault = locale.split("_") [ 0 ];
+//          }
         
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
       LOGGER.debug("formatting date to {}",
           configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+//      final SimpleDateFormat formatter = new SimpleDateFormat(
+//          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
+      
       final SimpleDateFormat formatter = new SimpleDateFormat(
-          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
+              configService.getConfigValues("articleDateFormat", currentPage.getPath()));
       articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
           .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
     }
