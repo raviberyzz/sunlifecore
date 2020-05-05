@@ -149,7 +149,10 @@ div.button {
     }
     a {
 		&:hover {
-			text-decoration: none;
+            text-decoration: none;
+            background: $cool-blue-color !important;
+            color: $white-shade !important;
+            border: 2px solid $cool-blue-colo;
 		}
 	}
 }
@@ -187,4 +190,14 @@ div.button {
          display:inline-flex;
         }
 }
-    
+ 
+//removing underline on hover
+a[role='button']:hover{
+    text-decoration:none;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+    a[role='button']{
+        display:-ms-inline-flexbox;
+    }
+}

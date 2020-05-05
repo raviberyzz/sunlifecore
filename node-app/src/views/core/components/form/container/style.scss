@@ -228,9 +228,6 @@
             div[class^="col-"]{
                 padding:0px;
             }
-            div[class^="col-"]:first-child{
-                margin-right: 10px;
-            }
         }
         .cmp-form-text{
             textarea{
@@ -290,6 +287,7 @@
             .row{
                 div[class^="col-"]:first-child{
                     max-width:285px;
+                    margin-right: 10px;
                 }
                 div[class^="col-"]:last-child{
                     input{
