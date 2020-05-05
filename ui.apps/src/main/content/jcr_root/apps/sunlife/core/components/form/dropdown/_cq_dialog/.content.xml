@@ -42,8 +42,8 @@
 											<aria-label
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="Please configure the aria label"
-                                                fieldLabel="Aria Label"
+                                                emptyText="Please configure the aria labelledby"
+                                                fieldLabel="Aria-Labelledby"
                                                 name="./ariaLabel"/>
                                             <optionTypes jcr:primaryType="nt:unstructured">
                                                 <items
