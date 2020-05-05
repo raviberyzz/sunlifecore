@@ -15,8 +15,8 @@
                             <sly data-sly-test="${element.name == 'articleHeadline'}" data-sly-test.headline="${element.value}" />
                         </sly>
                         <a href="${pageLink @ extension = 'html'}">
-                            <div class="article-image">
-                                <img src="${img}" aria-hidden="true" />                                
+                            <div class="article-image" aria-hidden="true">
+                                <img src="${img}" />                                
                             </div>
                             ${headline @context='html'}
                         </a>
@@ -41,8 +41,8 @@
                                 data-sly-test.date="${element.value}" />
                         </sly>
                         <div class="editorial-image">
-                            <a href="${pageLink @ extension = 'html'}">
-                                <img src="${img}" aria-hidden="true" />
+                            <a href="${pageLink @ extension = 'html'}" aria-hidden="true">
+                                <img src="${img}" />
                             </a>
                         </div>
                         <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly> <br/></div>
