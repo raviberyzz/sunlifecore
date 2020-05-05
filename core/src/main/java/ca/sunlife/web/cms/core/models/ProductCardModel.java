@@ -278,6 +278,9 @@ public class ProductCardModel {
 	 */
 	@PostConstruct
 	private void init() {
+		if (StringUtils.isEmpty(getTopc())) {
+		      return;
+		    }
 		try {
 			featuredImagePath = configService.getConfigValues("featuredImagePath", currentPage.getPath());
 			if (topc.equalsIgnoreCase("static")) {
