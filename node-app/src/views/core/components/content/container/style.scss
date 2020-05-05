@@ -889,6 +889,9 @@ ul {
                 }
                 .primary-blue-button-rte{
                     margin-top: 24px;
+                    margin-right:30px;
+                    height:48px;
+
                 }
             }
         }
@@ -1803,25 +1806,32 @@ ul {
                         }
                     }
                 }
+                /**
     .blue-icon-yellow-background {
       .overview-highlights-wrapper{
         .icon-parent{
         height:8px;   }
     }
+    **/
     .container-component{
         .cmp-container{
             .text:first-child{
                 .cmp-text{
-                    h2,h3,h4,h5,h6{
+                    h2,h4,h5,h6{
                         font-size: 1.75rem;
+                    }
+                }
+            }
+            .text{
+                .cmp-text{
+                    h3{
+                        font-size: 1rem;
                     }
                 }
             }
         }
     }
 }
-}
-
 /*** vertical seperator 75 % **/
 .container-seperator-75:after{
     content: '';
