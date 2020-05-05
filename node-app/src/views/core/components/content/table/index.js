@@ -8,11 +8,11 @@ function stickyHeader(){
       //pop-up modal logic
       $(document).on('show.bs.modal', function(){
         let tableHeader = $(".modal-body .table-stickyheader table:eq(0) tbody tr:first-child th");
-        tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+        tableHeader.css("transform", "translateY(" + 0 + "px)");
         let modalTable = $('.modal-body .table.table-stickyheader');
         modalTable.on("scroll", function(){
           let offset = this.scrollTop;
-          tableHeader.attr("style", "transform: translateY(" + offset + "px)");
+          tableHeader.css("transform", "translateY(" + offset + "px)");
         });
       });
 
@@ -33,13 +33,13 @@ function stickyHeader(){
               //aligning table sticky header after the mobile header in mobile devices and tablets
               // 50 px is the height of the mobile header. 
               position += 50; 
-              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+              tableHeader.css("transform", "translateY(" + position + "px)");
             } else {
-              tableHeader.attr("style", "transform: translateY(" + position + "px)");
+              tableHeader.css("transform", "translateY(" + position + "px)");
             } 
             //removing the transform property once the page scrolls past the table
             if(window.pageYOffset > tbottomPosition + tableHeader.height()){
-              tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+              tableHeader.css("transform", "translateY(" + 0 + "px)");
               //If more than one table set new parameters
               if(numberOfTables > currTable + 1){
                 currTable++;
@@ -57,7 +57,7 @@ function stickyHeader(){
             tbottomPosition = tableBottom.offset().top;  //New table bottom position
           } else if (position !== 0) {
             position = 0;
-            tableHeader.attr("style", "transform: translateY(" + 0 + "px)");
+            tableHeader.css("transform", "translateY(" + 0 + "px)");
           }
         });
     }
@@ -90,5 +90,23 @@ function stickyHeader(){
        } 
  }
 }
+
+function mobileDisplay() {
+  $(".modal.popup-modal-wrapper").on("show.bs.modal", function () {
+    if (window.innerWidth <= 767 && $('.mobile-header-navbar').length) {
+
+      //Row titles are repeated across the rows to accommodate for small screen sizes.
+      $(".cmp-table-comparision table tbody tr + tr").each(function (index) {
+        $('<div class="mobileTableTitles">' + $(this).find("th").html() + '</div><br>').prependTo($(this).children().not(":first-child"));
+      });
+
+      // left column is dropped
+      $(".cmp-table-comparision table tbody tr th:first-child").css("display", "none");
+    }
+  });
+}
+
+
 $(stickyHeader);
+$(mobileDisplay);
 $(window).resize(stickyHeader);
