@@ -97,7 +97,7 @@ function mobileDisplay() {
 
       //Row titles are repeated across the rows to accommodate for small screen sizes.
       $(".cmp-table-comparision table tbody tr + tr").each(function (index) {
-        $("<strong>" + $(this).find("th").html() + "</strong><br>").prependTo($(this).children().not(":first-child"));
+        $('<div class="mobileTableTitles">' + $(this).find("th").html() + '</div><br>').prependTo($(this).children().not(":first-child"));
       });
 
       // left column is dropped
