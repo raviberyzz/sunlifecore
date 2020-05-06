@@ -125,6 +125,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="white-font"
                                                                 text="White Font"/>
+															<user-icon
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="user-icon"
+                                                                text="Sign In Button"/>	
                                                         </styles>
                                                     </styles>
                                                     <format
