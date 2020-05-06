@@ -97,11 +97,12 @@ ul {
       }
       .search-result-filter-list {
         height: auto !important;
+     /*   a:not(.active) {
+            color: $blue-search-color;
+          } */
       }
     }
-   /* a:not(.active) {
-      color: $blue-search-color;
-    } */
+
     .text-larger {
       font-size: 1.125rem; // 18px
     }
