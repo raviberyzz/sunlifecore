@@ -45,7 +45,7 @@
                                 <img src="${img}" />
                             </a>
                         </div>
-                        <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly> <br/></div>
+                        <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly> <br/></div>
                         <div class="editorial">
                             <a href="${pageLink @ extension = 'html'}">${headline @context='html'}</a><br />
                         </div>
@@ -76,7 +76,7 @@
                                 </a>
                             </div>
                             <div class="content-list-summary">
-                                <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></sly></div>
+                                <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly></div>
                                 <h2>
                                     <a href="${pageLink @ extension = 'html'}">${headline @context='html'}</a>
                                 </h2>
