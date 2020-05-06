@@ -111,8 +111,8 @@ public class ArticleListModel {
   /** The date format. */
   private String dateFormat;
   
-  /** The page locale. */
-  private String pageLocale;
+//  /** The page locale. */
+//  private String pageLocale;
 
   /** The current page. */
   @ ScriptVariable
@@ -180,14 +180,14 @@ public class ArticleListModel {
     return dateFormat;
   }
   
-  /**
-   * Gets the page locale.
-   *
-   * @return the pageLocale
-   */
-  public final String getPageLocale() {
-    return pageLocale;
-  }
+//  /**
+//   * Gets the page locale.
+//   *
+//   * @return the pageLocale
+//   */
+//  public final String getPageLocale() {
+//    return pageLocale;
+//  }
 
   /**
    * Gets the title.
@@ -237,15 +237,15 @@ public class ArticleListModel {
     this.dateFormat = dateFormat;
   }
   
-  /**
-   * Sets the page locale.
-   *
-   * @param pageLocale
-   *          the pageLocale to set
-   */
-  public final void setPageLocale(final String pageLocale) {
-    this.pageLocale = pageLocale;
-  }
+//  /**
+//   * Sets the page locale.
+//   *
+//   * @param pageLocale
+//   *          the pageLocale to set
+//   */
+//  public final void setPageLocale(final String pageLocale) {
+//    this.pageLocale = pageLocale;
+//  }
 
   /**
    * Gets the page num.
@@ -375,7 +375,7 @@ public class ArticleListModel {
   @ PostConstruct
   private void initModel() {
 	  
-	String pageLocaleDefault = StringUtils.EMPTY;
+	//String pageLocaleDefault = StringUtils.EMPTY;
     if (StringUtils.isEmpty(getParentPath())) {
       return;
     }
@@ -387,12 +387,12 @@ public class ArticleListModel {
     try {    	
       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));     
       
-      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
-      if (null != locale && locale.length() > 0) {
-          pageLocaleDefault = locale.split("_") [ 0 ];
-        }
-      
-      setPageLocale(pageLocaleDefault);
+//      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
+//      if (null != locale && locale.length() > 0) {
+//          pageLocaleDefault = locale.split("_") [ 0 ];
+//        }
+//      
+//      setPageLocale(pageLocaleDefault);
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
         LOGGER.warn("Session was null therefore no query was executed");
