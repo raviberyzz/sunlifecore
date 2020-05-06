@@ -481,7 +481,7 @@ ul {
     }
     form :not(:last-child){
 
-        padding-right: 10px;
+        margin-right: 10px;
     }
     .cmp-text > :last-child{
         margin: 0;
@@ -2438,6 +2438,11 @@ ul {
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
+    #slf-locate-advisors-form > div {
+        display: -ms-flexbox;
+        height: 48px;
+        justify-content: center;
+    }
     
     .landing-page-hero-banner, .life-moment-second-level-banner {
         .text-section {
