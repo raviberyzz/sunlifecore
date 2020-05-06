@@ -872,6 +872,10 @@ ul {
         } 
     }
     .cmp-contact-us{ 
+        .primary-blue-button-rte{
+            margin-top: 14px; //adds up to 24 as per style guide with paragraph tags
+            margin-bottom: 22px; //adds up to 32 as per style guide with paragraph tags    
+        }
         .row{
             div.col-sm-4:last-child{
                 .div.text:first-child{
@@ -882,17 +886,13 @@ ul {
             .col-sm-4{
                 div.text:first-child{
                     margin-top:32px;
+                    min-height: 150px;                      // add height so second text section starts on same line
                     //border-right:2px solid #f7f7f7;
                     h2, h3, h4, h5, h6{
                         margin-top:0px;
                     }
                 }
-                .primary-blue-button-rte{
-                    margin-top: 24px;
-                    margin-right:30px;
-                    height:48px;
-
-                }
+                
             }
         }
    
@@ -906,6 +906,34 @@ ul {
     }
     .icon-text-list{
         text-align: center;
+    }
+    .cmp-contact-us {
+        .layout-container{
+            .row{
+                .col-sm-4 .container-component{      // add margins between sections in contact us box [32 top 32 bottom between horizontal seperators]
+                    margin-top: 32px;
+                    margin-bottom: 32px;
+                }
+                &.flex-height {
+                    .col-sm-4 {
+                        padding: 0 16px;    // Padding left and right for mobile view
+                    }
+                }
+            }
+            &:not(:first-child){        // Removes border in mobile view
+                margin-top: 14px;
+                border: none;           
+            }
+        } 
+        .container-seperator-75:after {            /* Horizontal seperator for mobile view  */
+            width: 100%;
+            height: 2px;
+            top: 116%;
+            left: 0;
+        } 
+        .primary-blue-button-rte {
+            margin-top: 32px; // total of 64px spacing between button and text in mobile view
+        }
     }
 }
 /*icon-text-list desktop ends here*/
@@ -1799,8 +1827,10 @@ ul {
 }
 .cmp-contact-us {
     .layout-container{
-        border: 1px solid #d7d7d7;
-            .row.flex-height{
+        &:not(:first-child){
+            border: 1px solid #d7d7d7;
+        }
+            .row{
                 .col-sm-4{
                     padding: 0 32px;
                         }
@@ -1817,14 +1847,14 @@ ul {
         .cmp-container{
             .text:first-child{
                 .cmp-text{
-                    h2,h4,h5,h6{
+                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6, p{
                         font-size: 1.75rem;
                     }
                 }
             }
             .text{
                 .cmp-text{
-                    h3{
+                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6, p{
                         font-size: 1rem;
                     }
                 }
@@ -1836,8 +1866,8 @@ ul {
 .container-seperator-75:after{
     content: '';
     top: 12.5%;
-    bottom: 12.5%;
-    left: 104%;
+    bottom: 44.5%;
+    left: 116%;
     width: 2px;
     background:$container-border-color;
     position: absolute;
@@ -1857,10 +1887,9 @@ ul {
                 .row{
                     .col-sm-4{
                         .container-seperator-75:after{
-                            top: 10.5%;
-                            bottom: 39.5%;
-                            left: 110%;
-                            border-right: none;
+                            top: 12.5%;
+                            bottom: 42.5%;
+                            left: 116%;
                         }
                     }
                 }
