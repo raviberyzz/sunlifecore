@@ -448,6 +448,9 @@
         background-color: #FDF7E7;
         border: 1px solid #FAE6B3;
         padding: 5px 15px;
+        p{
+            margin:10px 0px;
+        }
     }
     form.slf-search {
         .form-wrapper {
@@ -458,6 +461,9 @@
             border: 0;
             margin-bottom: 20px;
         }
+    }
+    .search-bottom{
+        margin-bottom:20px;
     }
 }
 .html-component{
