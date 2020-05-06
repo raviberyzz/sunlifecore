@@ -97,11 +97,12 @@ ul {
       }
       .search-result-filter-list {
         height: auto !important;
+     /*   a:not(.active) {
+            color: $blue-search-color;
+          } */
       }
     }
-    a:not(.active) {
-      color: $blue-search-color;
-    }
+
     .text-larger {
       font-size: 1.125rem; // 18px
     }
@@ -118,6 +119,13 @@ ul {
           font-size: 0.7em;   // smaller font size for url
         }
       }
+    }
+    .pagination >{
+         li >{
+            a{
+                padding: 4px 13px;
+            }
+         }
     }
 }
 /* Search results code ends here */
