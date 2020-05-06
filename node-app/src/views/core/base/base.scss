@@ -276,6 +276,13 @@ a {
         margin-right: 5px;
     }
 }
+.user-icon{
+    &::before{
+        content: "\f007";
+        font-family: fontawesome;
+        margin-right: 5px;
+    }
+}
 .legal-text{
     font-size: 0.875rem;
     line-height: 18px;
