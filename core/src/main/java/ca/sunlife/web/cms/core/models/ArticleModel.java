@@ -544,24 +544,26 @@ public class ArticleModel {
   private void setArticlePublishDate(final ValueMap articleContent)
       throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
-  //  String pageLocaleDefault = StringUtils.EMPTY;
+    String pageLocaleDefault = StringUtils.EMPTY;
     
     try {
-//        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
-//        if (null != locale && locale.length() > 0) {
-//            pageLocaleDefault = locale.split("_") [ 0 ];
-//          }
-        
+        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
+        if (null != locale && locale.length() > 0) {
+            pageLocaleDefault = locale.split("_") [ 0 ];
+          }
+        LOGGER.debug("Locale is" + pageLocaleDefault);
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
       LOGGER.debug("formatting date to {}",
           configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-//      final SimpleDateFormat formatter = new SimpleDateFormat(
-//          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
-      
+      LOGGER.debug("Before adding locale");
       final SimpleDateFormat formatter = new SimpleDateFormat(
-              configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
+      LOGGER.debug("after adding locale");
+//      final SimpleDateFormat formatter = new SimpleDateFormat(
+//              configService.getConfigValues("articleDateFormat", currentPage.getPath()));
       articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
           .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
+      LOGGER.debug("After date formatting");
     }
     articleData.put(ARTICLE_PUBLISHED_DATE, articlePublishedDate);
     }
