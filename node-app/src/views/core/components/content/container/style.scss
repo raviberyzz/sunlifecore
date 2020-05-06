@@ -2465,7 +2465,11 @@ ul {
 *****************************************************************/
 
 /** Browser Specific CSS starts here **/
-
+#slf-locate-advisors-form {
+    #slf-locate-advisors-btn {
+        margin-top: -1px;
+    }
+}
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
     #slf-locate-advisors-form > div {
