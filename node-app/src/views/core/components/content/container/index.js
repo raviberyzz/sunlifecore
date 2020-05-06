@@ -146,8 +146,8 @@ $(document).ready(function () {
 			}
 			else {
 				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').children().children().css('padding', ' 0px 10px 0px 10px');
-				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').children().children().first().css('padding-left', '0');
-				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').parents('.layout-container').children().children().last().css('padding-right', '0');
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').closest('.layout-container').children().children().first().css('padding-left', '0');
+				$('.yellow-icon-blue-background, .yellow-icon-grey-background, .blue-icon-yellow-background, .yellow-icon-white-background, .cta-three-column-wrapper').closest('.layout-container').children().children().last().css('padding-right', '0');
 			}
 		}
 		else {
