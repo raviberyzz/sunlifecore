@@ -281,6 +281,7 @@ a {
         content: "\f007";
         font-family: fontawesome;
         margin-right: 5px;
+        font-weight: normal;
     }
 }
 .legal-text{
@@ -339,6 +340,12 @@ footer {
             margin-bottom: 8px;
         }
     }
+    
+    /** Disclaimer css start **/
+    .disclaimer {
+        background: #ffffff;
+    }
+    /** Disclaimer css end **/
 }
 .ca-sunlife-home-page {
     footer {
