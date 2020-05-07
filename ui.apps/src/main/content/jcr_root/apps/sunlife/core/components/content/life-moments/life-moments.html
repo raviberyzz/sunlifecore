@@ -7,7 +7,8 @@ ${lifeText.heading @context ='html'}
 <div class="collapse list-div">				
    <ul class="list-unstyled" data-sly-list.links="${lifeText.links}">
 	 <li>
-       <a href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+      <a data-sly-test="${links.contentUrl}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+      <a data-sly-test="${!links.contentUrl}" href ="${links.linkUrl}" target ="${links.target}">${links.linkName}</a>
 	 </li>
    </ul>				
 </div>
@@ -18,7 +19,8 @@ ${lifeText.heading @context ='html'}
 <div class="collapse list-div">				
    <ul class="list-unstyled" data-sly-list.links="${lifeText.links}">
 	 <li>
-       <a href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+       <a data-sly-test="${links.contentUrl}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName}</a>
+       <a data-sly-test="${!links.contentUrl}" href ="${links.linkUrl}" target ="${links.target}">${links.linkName}</a>
 	 </li>
    </ul>				
 </div>
