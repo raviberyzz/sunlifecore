@@ -9,7 +9,17 @@ $(function(){
     
         //vidyard component 
     
-    
+     
+        $('.embed').each(function(){
+            var uuId = $(this).find('img').attr('data-uuid');
+            var dataType = $(this).find('img').attr('data-type');
+            let scriptElem = document.createElement('script');
+            var id = "vidyard_embed_code_" + uuId;
+            var source = '//play.vidyard.com/'+ uuId + '.js?v=3.1.1&amp;type=' + dataType;
+            scriptElem.setAttribute('id', id);
+            scriptElem.setAttribute('src', source);
+            document.getElementsByTagName('head')[0].appendChild(scriptElem);
+        })
         /*Vidyard progress-events.js file
     Original code: play.vidyard.com/v1/progress-events.js
     Last custom edit (5/6/17): Implemented new check 
