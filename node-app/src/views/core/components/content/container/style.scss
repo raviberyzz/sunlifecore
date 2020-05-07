@@ -1181,11 +1181,12 @@ ul {
             padding: 0 16px;
         }
     }
+    /* This is affecting button alignment on pages. Commenting it out
     .container-component {
         .cmp-container > div {
             display: block !important;
         }
-    }
+    }*/
     .content-highlight {
         text-align: center;
         padding: 40px 16px 40px 16px;
