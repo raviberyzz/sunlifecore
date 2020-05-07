@@ -1,5 +1,8 @@
 package ca.sunlife.web.cms.core.listeners;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,6 +52,10 @@ public class ConfigListenerTest {
 	 */
 	@ Test
 	void testHandleEvent() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("path", "/content/sunlife/config/ca/en");
+		map.put("resourceType", "sunlife/core/components/config/configuration");
+		event = new Event("topic", map);
 		configListener.handleEvent(event);
 	}
 }

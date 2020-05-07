@@ -83,7 +83,7 @@ $(document).ready(function () {
             $('.full-header').parents('.experiencefragment').next().next().attr('role','main');
         } else {
             $('.full-header').parents('.experiencefragment').next().attr('id','main-content');
-            $('.full-header').parents('.experiencefragment').next().next().attr('role','main');
+            $('.full-header').parents('.experiencefragment').next().attr('role','main');
         }
     }
     

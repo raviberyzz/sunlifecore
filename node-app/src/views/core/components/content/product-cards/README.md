@@ -8,25 +8,29 @@ JSON Format
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
-        "description-input" : "To find an advisor near you"
+        "description-input" : "To find an advisor near you",
+        "feature-card":"feature-card"
     },
     {
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
-        "description-input" : "To find an advisor near you"
+        "description-input" : "To find an advisor near you",
+        "feature-card":""
     },
     {
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
-        "description-input" : "To find an advisor near you"
+        "description-input" : "To find an advisor near you",
+        "feature-card":""
     },
     {
         "fa-icon":"fa-map-marker",
         "text-input": "Find an advisor",
         "href" : "javascript:void(0)",
-        "description-input" : "To find an advisor near you"
+        "description-input" : "To find an advisor near you",
+        "feature-card":""
     }],
     "explore-product":true,
     "tools-resource":false,

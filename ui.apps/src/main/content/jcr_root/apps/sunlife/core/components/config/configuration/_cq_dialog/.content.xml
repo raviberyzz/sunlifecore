@@ -154,6 +154,20 @@
                                         name="./articleSite"/>
                                 </items>
                             </section-article>
+                            <section-productcards
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Product Card Related Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <featuredImagePath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Enter the featured image path"
+                                        fieldLabel="Featured Image Path"
+                                        name="./featuredImagePath"
+                                        rootPath="/content/dam/sunlife"/>
+                                </items>
+                            </section-productcards>
                             <section-page
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Page Defaults"
@@ -188,6 +202,7 @@
                                         name="./udoTagsPath"/>
                                 </items>
                             </section-page>
+                            
                         </items>
                     </general>
                 </items>

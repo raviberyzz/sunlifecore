@@ -2,6 +2,6 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
     operation="add"
-    aces=["type\=allow;privileges\=jcr:read,rep:write;path\=/content/sunlife"]
+    aces="[type\=allow;privileges\=jcr:read,rep:write;path\=/content/sunlife]"
     principalName="sunlife-app-systemuser"
     ensure-immediately="{Boolean}true" />

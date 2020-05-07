@@ -28,7 +28,7 @@
                             <docType jcr:primaryType="nt:unstructured">
                                 <typeConfig jcr:primaryType="nt:unstructured"
                                         useSemanticMarkup="{Boolean}true">
-                                    <semanticMarkupMap
+                                    <semanticMarkupMap jcr:primaryType="nt:unstructured"
                                             b="strong"
                                             i="em"/>
                                 </typeConfig>
@@ -103,7 +103,34 @@
                                 features="*"/>
                             <misctools
                                 jcr:primaryType="nt:unstructured"
-                                features="specialchars"/>
+                                features="specialchars">
+                                <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                    <chars
+                                        jcr:primaryType="nt:unstructured"
+                                        override="true">
+                                        <item0
+                                            jcr:primaryType="nt:unstructured"
+                                            entity="&amp;copy;"
+                                            name="copyright"/>
+                                        <item1
+                                            jcr:primaryType="nt:unstructured"
+                                            entity="&amp;euro;"
+                                            name="euro"/>
+                                        <item2
+                                            jcr:primaryType="nt:unstructured"
+                                            entity="&amp;reg;"
+                                            name="registered"/>
+                                        <item3
+                                            jcr:primaryType="nt:unstructured"
+                                            entity="&amp;trade;"
+                                            name="trademark"/>
+                                        <item4
+                                            jcr:primaryType="nt:unstructured"
+                                            entity="&amp;#160;"
+                                            name="nbsp"/>    
+                                    </chars>
+                                </specialCharsConfig>
+                            </misctools>
                             <undo
                                 jcr:primaryType="nt:unstructured"
                                 features="*"/>

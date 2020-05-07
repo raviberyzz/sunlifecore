@@ -508,7 +508,7 @@
 	                            jcr:primaryType="nt:unstructured"
 	                            jcr:title="Image"
 	                            sling:resourceType="wcm/core/components/policy/policy"
-	                            allowUpload="true"
+	                            allowUpload="false"
 	                            altValueFromDAM="true"
 	                            disableLazyLoading="true"
 	                            displayPopupTitle="true"
@@ -1077,6 +1077,11 @@
                                             cq:styleClasses="container-border-right"
                                             cq:styleId="1579257415353"
                                             cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="container-seperator-75"
+                                            cq:styleId="1578685848382"
+                                            cq:styleLabel="Container Separator 75%"
                                             jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
@@ -1354,6 +1359,11 @@
                                             cq:styleClasses="cta-home-wrapper"
                                             cq:styleId="1582976767876"
                                             cq:styleLabel="CTA"
+                                            jcr:primaryType="nt:unstructured"/>
+                                          <item11
+                                            cq:styleClasses="product-card-wrapper"
+                                            cq:styleId="1582976767886"
+                                            cq:styleLabel="Product Card"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -2394,7 +2404,7 @@
 	                            jcr:primaryType="nt:unstructured"
 	                            jcr:title="Image"
 	                            sling:resourceType="wcm/core/components/policy/policy"
-	                            allowUpload="true"
+	                            allowUpload="false"
 	                            altValueFromDAM="true"
 	                            disableLazyLoading="true"
 	                            displayPopupTitle="true"
@@ -2963,6 +2973,11 @@
                                             cq:styleClasses="container-border-right"
                                             cq:styleId="1579257415353"
                                             cq:styleLabel="Container Separator"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="container-seperator-75"
+                                            cq:styleId="1578685848382"
+                                            cq:styleLabel="Container Separator 75%"
                                             jcr:primaryType="nt:unstructured"/>											
                                     </cq:styles>
                                 </item5>
@@ -3242,6 +3257,11 @@
                                             cq:styleId="1582976767877"
                                             cq:styleLabel="CTA"
                                             jcr:primaryType="nt:unstructured"/> 
+                                          <item11
+                                            cq:styleClasses="product-card-wrapper"
+                                            cq:styleId="1582976768886"
+                                            cq:styleLabel="Product Card"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
 								<item1

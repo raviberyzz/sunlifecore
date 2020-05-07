@@ -27,19 +27,19 @@
                 text-align:left;
                 line-height:18px;
                 transform:translateY(0);
-                .cmp-accordion__icon{
-                    &[aria-expanded="false"] {
-                        &::before {
-                        @extend  .accordion-arrow;
-                        }
-                    }
-                    &[aria-expanded="true"] {
-                        &::before {
-                            @extend  .accordion-arrow;
-                            content: "\f0d7";
-                        }
+                
+                &[aria-expanded="false"] {
+                    &::before {
+                    @extend  .accordion-arrow;
                     }
                 }
+                &[aria-expanded="true"] {
+                    &::before {
+                        @extend  .accordion-arrow;
+                        content: "\f0d7";
+                    }
+                }
+                
                 .cmp-accordion__title{
                     padding-left:7px;
                 }
@@ -77,24 +77,23 @@
             color:$medium-blue-color;
             margin-top:10px;
             .cmp-accordion__button{
-                .cmp-accordion__icon{
-                    &[aria-expanded="false"] {
-                        &::before {
-                            content: "\f055";
-                            color:$medium-yellow-background;
-                            padding-right:3px;
-                            //margin-left: 16px;
-                        }
-                    }
-                    &[aria-expanded="true"] {
-                        &::before {
-                            content: "\f056";
-                            color:$medium-yellow-background;
-                            padding-right:3px;
-                            //margin-left: 16px;
-                        }
+                &[aria-expanded="false"] {
+                    &::before {
+                        content: "\f055";
+                        color:$medium-yellow-background;
+                        padding-right:3px;
+                        //margin-left: 16px;
                     }
                 }
+                &[aria-expanded="true"] {
+                    &::before {
+                        content: "\f056";
+                        color:$medium-yellow-background;
+                        padding-right:3px;
+                        //margin-left: 16px;
+                    }
+                }
+    
                 .cmp-accordion__title{
                     padding-left:2px;
                 }

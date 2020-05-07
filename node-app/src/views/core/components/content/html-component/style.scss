@@ -417,10 +417,10 @@
         }
     }
 }
-.search-container .search-results .pagination .previous a{
+/*.search-container .search-results .pagination .previous a{
     padding-left:0;
     padding-right:13px;
-}
+}*/
 .search-container{
     .search-results{
         .pagination.last-page{
@@ -443,6 +443,27 @@
                 width:20%
             }
         }
+    }
+    .yellow-bg {
+        background-color: #FDF7E7;
+        border: 1px solid #FAE6B3;
+        padding: 5px 15px;
+        p{
+            margin:10px 0px;
+        }
+    }
+    form.slf-search {
+        .form-wrapper {
+            display: table;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 auto;
+            border: 0;
+            margin-bottom: 20px;
+        }
+    }
+    .search-bottom{
+        margin-bottom:20px;
     }
 }
 .html-component{

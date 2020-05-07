@@ -24,6 +24,7 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,6 @@ import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
-import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -86,6 +86,9 @@ public class ArticleListModel {
   @ Inject
   @ Via ("resource")
   private String titleLevel;
+  
+  @SlingObject
+  private ResourceResolver resourceResolver;
 
   /** The items. */
   private final List <DAMContentFragment> items = new ArrayList <>();
@@ -98,10 +101,6 @@ public class ArticleListModel {
   @ Inject
   private ContentTypeConverter contentTypeConverter;
 
-  /** The core resource resolver. */
-  @ Inject
-  private CoreResourceResolver coreResourceResolver;
-
   /** The config service. */
   @ Inject
   private SiteConfigService configService;
@@ -111,6 +110,9 @@ public class ArticleListModel {
 
   /** The date format. */
   private String dateFormat;
+  
+  /** The page locale. */
+  private String pageLocale;
 
   /** The current page. */
   @ ScriptVariable
@@ -177,6 +179,15 @@ public class ArticleListModel {
   public final String getDateFormat() {
     return dateFormat;
   }
+  
+  /**
+   * Gets the page locale.
+   *
+   * @return the pageLocale
+   */
+  public final String getPageLocale() {
+    return pageLocale;
+  }
 
   /**
    * Gets the title.
@@ -224,6 +235,16 @@ public class ArticleListModel {
    */
   public final void setDateFormat(final String dateFormat) {
     this.dateFormat = dateFormat;
+  }
+  
+  /**
+   * Sets the page locale.
+   *
+   * @param pageLocale
+   *          the pageLocale to set
+   */
+  public final void setPageLocale(final String pageLocale) {
+    this.pageLocale = pageLocale;
   }
 
   /**
@@ -353,6 +374,8 @@ public class ArticleListModel {
    */
   @ PostConstruct
   private void initModel() {
+	  
+	String pageLocaleDefault = StringUtils.EMPTY;
     if (StringUtils.isEmpty(getParentPath())) {
       return;
     }
@@ -361,10 +384,15 @@ public class ArticleListModel {
         && ! getDisplayType().equals("articleList")) {
       return;
     }
-    ResourceResolver resourceResolver = null;
-    try {
-      setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-      resourceResolver = coreResourceResolver.getResourceResolver();
+    try {    	
+      setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));     
+      
+      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
+      if (null != locale && locale.length() > 0) {
+          pageLocaleDefault = locale.split("_") [ 0 ];
+        }
+      
+      setPageLocale(pageLocaleDefault);
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
         LOGGER.warn("Session was null therefore no query was executed");
@@ -382,7 +410,7 @@ public class ArticleListModel {
       final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
       LOGGER.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
       final Query query = queryBuilder.createQuery(predicateGroup, session);
-
+      LOGGER.debug("Query before search {}", query);
       final SearchResult searchResult = query.getResult();
 
       LOGGER.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
@@ -424,12 +452,7 @@ public class ArticleListModel {
       }
     } catch (LoginException | RepositoryException e) {
       LOGGER.error("Login exception while trying to get resource resolver {}", e);
-    } finally {
-      if (null != resourceResolver) {
-        resourceResolver.close();
-      }
     }
-
   }
 
   /**
@@ -468,7 +491,7 @@ public class ArticleListModel {
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
       for (int i = 0; i < tagNames.length; i++) {
-        queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ]);
+        queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ].trim());
       }
     }
   }

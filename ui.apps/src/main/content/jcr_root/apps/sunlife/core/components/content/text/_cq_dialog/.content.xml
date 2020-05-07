@@ -38,7 +38,7 @@
                                                     <docType jcr:primaryType="nt:unstructured">
                                                             <typeConfig jcr:primaryType="nt:unstructured"
                                                                 useSemanticMarkup="{Boolean}true">
-                                                            <semanticMarkupMap
+                                                            <semanticMarkupMap jcr:primaryType="nt:unstructured"
                                                                     b="strong"
                                                                     i="em"/>
                                                         </typeConfig>
@@ -125,6 +125,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="white-font"
                                                                 text="White Font"/>
+															<user-icon
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="user-icon"
+                                                                text="Sign In Button"/>	
                                                         </styles>
                                                     </styles>
                                                     <format
@@ -141,7 +145,18 @@
                                                         features="*"/>
                                                     <misctools
                                                         jcr:primaryType="nt:unstructured"
-                                                        features="specialchars"/>
+                                                        features="specialchars">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                          <chars
+                                                             jcr:primaryType="nt:unstructured"
+                                                             override="true">
+                                                             <item0
+                                                                jcr:primaryType="nt:unstructured"
+                                                                entity="&amp;#160;"
+                                                                name="nbsp"/> 
+                                                           </chars> 
+                                                         </specialCharsConfig> 
+                                                     </misctools>   
                                                     <undo
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>

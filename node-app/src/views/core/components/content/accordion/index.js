@@ -1,14 +1,14 @@
 $(document).ready(function(){
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
-            $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
+            $(this).find('.cmp-accordion__button').attr('aria-expanded',false);
             $(this).siblings('.accordion-container .cmp-accordion__panel').removeClass('in');
         }
         else{     
             $('.accordion-container .cmp-accordion__panel').removeClass('in');              // closes all open accordians
-            $('.accordion-container .cmp-accordion__icon').attr('aria-expanded',false); 
+            $('.accordion-container .cmp-accordion__button').attr('aria-expanded',false); 
             $(this).siblings('.accordion-container .cmp-accordion__panel').addClass('in');      // opens clicked accordian
-            $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
+            $(this).find('.cmp-accordion__button').attr('aria-expanded',true);
             
             //Accomadate mobile header size
             if(window.innerWidth < 1025 && $('.mobile-header-navbar').length){
@@ -24,12 +24,12 @@ $(document).ready(function(){
     });
     $('.expand-collapse .cmp-accordion__header').click(function(){
         if($(this).siblings('.expand-collapse .cmp-accordion__panel').hasClass('in')){
-            $(this).find('.cmp-accordion__icon').attr('aria-expanded',false);
+            $(this).find('.cmp-accordion__button').attr('aria-expanded',false);
             $(this).siblings('.expand-collapse .cmp-accordion__panel').removeClass('in');
         }
         else{     
             $(this).siblings('.expand-collapse .cmp-accordion__panel').addClass('in');
-            $(this).find('.cmp-accordion__icon').attr('aria-expanded',true);
+            $(this).find('.cmp-accordion__button').attr('aria-expanded',true);
         }
     });
     /* For first open accordion */
@@ -39,7 +39,7 @@ $(document).ready(function(){
         if(accLength>1){
             var firstAcc=acc[0];
             $(firstAcc).find('.cmp-accordion__panel').addClass('in');
-            $(firstAcc).find('.cmp-accordion__icon').attr('aria-expanded',true);
+            $(firstAcc).find('.cmp-accordion__button').attr('aria-expanded',true);
         }
     }
     

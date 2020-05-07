@@ -42,10 +42,19 @@
         width: 100%;
         background: $light-grey-20;
         margin: 0 auto;
-      }
-
+}
+/*** for modal the seperator border is also coming from wem migration.css
+causing the seperator to overlap on one another ***/
+.modal-dialog {
+    hr.page-separator {
+        border-bottom: none;
+    }
+}
+/*** for modal the seperator border is also coming from wem migration.css
+causing the seperator to overlap on one another ends ***/
 @media (min-width: 768px) {
     .page-separator {
         width: 75%;
     }
 }
+

@@ -276,6 +276,14 @@ a {
         margin-right: 5px;
     }
 }
+.user-icon{
+    &::before{
+        content: "\f007";
+        font-family: fontawesome;
+        margin-right: 5px;
+        font-weight: normal;
+    }
+}
 .legal-text{
     font-size: 0.875rem;
     line-height: 18px;
@@ -332,6 +340,12 @@ footer {
             margin-bottom: 8px;
         }
     }
+    
+    /** Disclaimer css start **/
+    .disclaimer {
+        background: #ffffff;
+    }
+    /** Disclaimer css end **/
 }
 .ca-sunlife-home-page {
     footer {
@@ -523,8 +537,10 @@ a.skip-main:focus, a.skip-main:active {
     padding:0
 }
 /* aem class ends here */
-a:not([href]){
-    pointer-events:none;
+.icon-text{
+    a:not([href]){
+        pointer-events:none;
+    }
 }
 /* contact us box styles start here */
 .cmp-contact-us {
