@@ -930,7 +930,7 @@ ul {
             }
             &:not(:first-child){        // Removes border in mobile view
                 margin-top: 14px;
-                border: none;           
+                border: none !important;           
             }
         } 
         .container-seperator-75:after {            /* Horizontal seperator for mobile view  */
