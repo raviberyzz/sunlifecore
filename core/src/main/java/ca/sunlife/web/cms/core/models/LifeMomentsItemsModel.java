@@ -97,11 +97,11 @@ public class LifeMomentsItemsModel {
 	 */
 	@PostConstruct
 	public void init() {
-		logger.debug("Entry :: init method of LufeMomentsItemsImpl :: label {}", linkName);
+		logger.debug("Entry :: init method of LifeMomentsItemsImpl :: label {}", linkName);
 		if( null != linkUrl && linkUrl.length() > 0 ) {
 			contentUrl = linkUrl.startsWith("/");
 		}
-		logger.debug("Exit :: init method of FooterItemsImpl :: contentUrl :: {}", contentUrl);
+		logger.debug("Exit :: init method of LifeMomentsItemsImpl :: contentUrl :: {}", contentUrl);
 	}
 	
 	
