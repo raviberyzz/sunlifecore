@@ -106,13 +106,13 @@ function mobileDisplay() {
   });
 }
 
-function closeButton() {
-  $(".modal-body .table + .button .button-class").on('click', function() {
-    $(".modal.popup-modal-wrapper").modal('hide');
-  });
-}
 
 $(stickyHeader);
 $(mobileDisplay);
-$(closeButton);
+// Close button for table modal
+$(function () {
+  $(".modal-body .table + .button .button-class").on('click', function() {
+    $(".modal.popup-modal-wrapper").modal('hide');
+  });
+});
 $(window).resize(stickyHeader);
