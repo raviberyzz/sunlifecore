@@ -15,7 +15,8 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.responsiveGrid="${ @ container}" >
     <div data-sly-use.containerCustom="ca.sunlife.web.cms.core.models.ContainerModel" 
-    	data-sly-element="${containerCustom.type}" id="${container.id}"
+    	data-sly-element="${containerCustom.type}" 
+    	role="${containerCustom.type}" id="${container.id}"
          class="cmp-container"
          style="${container.backgroundStyle @ context='styleString'}" data-section="${containerCustom.analyticsId}">
         <sly data-sly-resource="${resource @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
