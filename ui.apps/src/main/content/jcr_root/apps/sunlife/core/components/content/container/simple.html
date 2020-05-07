@@ -17,6 +17,7 @@
     <sly  data-sly-test="${wcmmode.edit}" data-sly-use.allowed="com.day.cq.wcm.foundation.AllowedComponentList" ></sly>
     <div data-sly-use.containerCustom="ca.sunlife.web.cms.core.models.ContainerModel"
     	 data-sly-element="${containerCustom.type}" 
+    	 role="${containerCustom.type}" 
     	 data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
          id="${container.id}"
          class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]}"
