@@ -177,7 +177,14 @@ span.user-icon {
 		color: $white-shade !important;
 	}
 }
-
+.user-icon-style {
+	&:hover {
+		text-decoration: none;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+}
 
 @media(max-width:$mobile-screen-max){
     .primary-blue-button-rte{
