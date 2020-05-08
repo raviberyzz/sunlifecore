@@ -2473,6 +2473,10 @@ ul {
 /** Browser Specific CSS starts here **/
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
+    .editorial-articles-wrapper .teaser {
+        height: auto;
+    }
+
     .blue-icon-yellow-background .experiencefragment {
         height: auto !important;
     }
