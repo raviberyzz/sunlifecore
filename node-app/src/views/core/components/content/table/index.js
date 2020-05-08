@@ -1,9 +1,7 @@
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.table-responsive').length){
-    /* sticky header is implemented for data table only and user can choose to implement sticky header or not by adding
-     the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
-      in pop up modal. */
+    /* sticky header is functionality is added by including the table-stickyheader class */
     if($('.table-stickyheader').length){
       //pop-up modal logic
       $(document).on('show.bs.modal', function(){
