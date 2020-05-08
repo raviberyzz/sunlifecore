@@ -930,7 +930,7 @@ ul {
             }
             &:not(:first-child){        // Removes border in mobile view
                 margin-top: 14px;
-                border: none;           
+                border: none !important;           
             }
         } 
         .container-seperator-75:after {            /* Horizontal seperator for mobile view  */
@@ -1181,11 +1181,12 @@ ul {
             padding: 0 16px;
         }
     }
+    /* This is affecting button alignment on pages. Commenting it out
     .container-component {
         .cmp-container > div {
             display: block !important;
         }
-    }
+    }*/
     .content-highlight {
         text-align: center;
         padding: 40px 16px 40px 16px;
@@ -1364,8 +1365,13 @@ ul {
     }
     .editorial-articles-wrapper{
         .image-text-wrapper .left-image-position .left-item{
-            display:none;
-                    }
+                        display:none;
+        }
+        .image {
+            .cmp-image {
+                text-align: center;
+            }
+        }
     }
   /* social icons in the body section start */
   .social-link-icon-wrapper{
@@ -1855,7 +1861,7 @@ ul {
         .cmp-container{
             .text:first-child{
                 .cmp-text{
-                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6, p{
+                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                         font-size: 1.75rem;
                     }
                 }
