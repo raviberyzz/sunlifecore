@@ -2473,6 +2473,10 @@ ul {
 /** Browser Specific CSS starts here **/
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
+    .blue-icon-yellow-background .experiencefragment {
+        height: auto !important;
+    }
+
     #slf-locate-advisors-form > div {
         display: -ms-flexbox;
         height: 48px;
