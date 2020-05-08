@@ -21,7 +21,8 @@
     	 data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
          id="${container.id}"
          class="cmp-container${wcmmode.edit ? ' {0}': '' @ format=[allowed.cssClass]}"
-         style="${container.backgroundStyle @ context='styleString'}" data-section="${containerCustom.analyticsId}">
+         style="${container.backgroundStyle @ context='styleString'}" data-section="${containerCustom.analyticsId}"
+         aria-label="${containerCustom.ariaLabel}">
         <sly data-sly-test.isAllowedApplicable="${allowed.isApplicable}"
              data-sly-test="${isAllowedApplicable}"
              data-sly-use.allowedTemplate="allowedcomponents.html"
