@@ -599,10 +599,10 @@ public class BasePageModel {
   }
 
   /**
-   * Sets the social media descripton.
+   * Sets the Page indexing value.
    *
-   * @param socialMediaDescripton
-   *          the socialMediaDescripton to set
+   * @param pageIndexing
+   *          the pageIndexing to set
    */
   public void setPageIndexing(final String pageIndexing) {
     this.pageIndexing = pageIndexing;
