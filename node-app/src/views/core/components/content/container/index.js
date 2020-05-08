@@ -1,5 +1,8 @@
 $(document).ready(function () {
-	//for footer
+    //if mac then add class to body for specific targetting
+    if(navigator.userAgent.indexOf('Mac') > 0)
+        $('body').addClass('mac-os-target');   
+    //for footer
 	if ($(window).width() < 768) {
 		$('footer .social-link-icon-wrapper').css({ "padding": "0" });
 	} else {

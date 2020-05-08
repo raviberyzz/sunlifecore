@@ -7,8 +7,10 @@
     background-size: 120% 120%;
     text-align: center;
     position: relative;
-    h3{
+    h2,h3,h4,h5,h6{
         margin: 0 0 16px 0;
+        font-size: 1.75rem;
+        line-height: 36px;
     }
     p{
         font-size: 0.875rem;
