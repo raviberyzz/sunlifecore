@@ -1,13 +1,13 @@
 @import '../../../base/core';
 
-/* for ios devices - defect causing text to overflow div, causes defect in IE11 added supports annotation*/
+/* for ios devices - defect causing text to overflow div, causes defect in IE11 added supports annotation
 @supports not (-ms-high-contrast: none){
     .teaser.circular-image{
         .right-item {
             display: table-cell;
         }
-    }
-}
+    }commenting out as this seems to be creating some issues
+}*/
 
 /* for ios devices - defect causing text to overflow div ends here*/
  .show-only-in-editorial {
@@ -160,13 +160,13 @@
     display: table;
 }
 
-/* Supports browsers that is not IE11 to prevent internet explorer overlap defect */
+/* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
 @supports not (-ms-high-contrast: none) {
     .right-item {
         display: table;
     }
-}
-
+}commenting as this seems to be breaking stuff
+*/
 .view-all-category:after{
     text-decoration:none;
     display:inline-block;
