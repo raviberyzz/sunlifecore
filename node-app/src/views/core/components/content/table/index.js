@@ -1,7 +1,7 @@
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.table-responsive').length){
-    /* sticky header is functionality is added by including the table-stickyheader class */
+    /* sticky header functionality is added by including the table-stickyheader class */
     if($('.table-stickyheader').length){
       //pop-up modal logic
       $(document).on('show.bs.modal', function(){
