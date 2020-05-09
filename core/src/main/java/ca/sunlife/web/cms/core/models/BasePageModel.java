@@ -25,6 +25,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -39,7 +40,12 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.WCMException;
+import com.day.cq.wcm.msm.api.LiveCopy;
+import com.day.cq.wcm.msm.api.LiveRelationship;
+import com.day.cq.wcm.msm.api.LiveRelationshipManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -135,6 +141,12 @@ public class BasePageModel {
   @ OSGiService
   private SlingSettingsService settingsService;
 
+  @OSGiService
+  private LanguageManager languageManager;
+
+  @OSGiService
+  private LiveRelationshipManager relationshipManager;
+  
   /** The canonical url. */
   @ Inject
   @ Via ("resource")
@@ -205,10 +217,15 @@ public class BasePageModel {
   @ Via ("resource")
   private String bodyInclude;
 
-  /** Advispr type . */
+  /** Advisor type . */
   @ Inject
   @ Via ("resource")
   private String advisorType;
+  
+  /** Alternate urls. */
+  @ Inject
+  @ Via ("resource")
+  private Resource alternateUrls;
 
   /** The config service. */
   @ Inject
@@ -257,6 +274,9 @@ public class BasePageModel {
 
   /** Default reporting language. */
   private String defaultReportingLanguage;
+  
+  /** Master page. */
+  private String masterPagePath;
 
   /** The Constant JCR_CONTENT_DATA_MASTER. */
   private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
@@ -767,29 +787,26 @@ public class BasePageModel {
     logger.debug("metadata :: {}", customMetadata);
 
     // Sets alternate URLs
-    setAlternateURLs(pagePath, locale);
-
+    if( null != resolver && null != resolver.getResource(currentPage.getPath()))
+    	generateAlternateUrls(resolver.getResource(currentPage.getPath()));
+    
     // Sets UDO parameters
     otherUDOTagsMap = new JsonObject();
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
-    if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0
-        && null != seoCanonicalUrl) {
-      otherUDOTagsMap.addProperty("page_canonical_url_default",
-          seoCanonicalUrl.replace(
-              BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault
-                  + BasePageModelConstants.SLASH_CONSTANT,
-              BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage
-                  + BasePageModelConstants.SLASH_CONSTANT)); // canonical
-                                                             // url
-                                                             // -
-                                                             // default
-    } else {
-      otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
-                                                                                  // -
-                                                                                  // default
-    }
-    otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
+		if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
+			otherUDOTagsMap.addProperty("page_canonical_url_default", domain.concat(
+			                                                            shortenURL(masterPagePath, configService.getConfigValues("siteUrl", masterPagePath)))
+			                                                            .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical
+			                                                                                                             // url
+			                                                                                                             // -
+			                                                                                                             // default
+		} else {
+			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
+			                                                                            // -
+			                                                                            // default
+		}
+		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
 
     // Sets UDO parameters
     setUDOParameters();
@@ -809,6 +826,7 @@ public class BasePageModel {
     udoTags = gson.toJson(otherUDOTagsMap);
     setAutoCompleteUrl(StringUtils.defaultIfEmpty(configService.getConfigValues("autoCompleteUrl", pagePath), StringUtils.EMPTY));
     setSearchApi(StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath), StringUtils.EMPTY));
+    
     logger.debug("Map Display {}", udoTags);
   }
 
@@ -921,12 +939,7 @@ public class BasePageModel {
     if (null == siteUrl || siteUrl.length() <= 0) {
       return;
     }
-    if (null != defaultReportingLanguage && defaultReportingLanguage.length() > 0) {
-      pagePath = pagePath.replace(
-          BasePageModelConstants.SLASH_CONSTANT + pageLocaleDefault,
-          BasePageModelConstants.SLASH_CONSTANT + defaultReportingLanguage);
-    }
-
+    pagePath = null == masterPagePath ? pagePath : masterPagePath;
     logger.debug("pagePath is: {}", pagePath);
     final Resource resource = resolver.getResource(pagePath);
     if (null != resource) {
@@ -1239,4 +1252,108 @@ public class BasePageModel {
     customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
     logger.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
   }
+  
+	/**
+	 * Generates alternate urls
+	 * @param resource
+	 */
+	private void generateAlternateUrls(Resource resource) {
+		logger.debug("Entry :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+		try {
+			if( null != alternateUrls ) {
+				generatePageSpecificAlternateUrls();
+				return;
+			}
+			final String pagePath = currentPage.getPath();
+			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+			final String siteDomain = configService.getConfigValues("domain", pagePath);
+			final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+
+			// check if it is a source
+			logger.debug("is source {}", relationshipManager.isSource(resource));
+			if (relationshipManager.isSource(resource)) {
+				logger.debug("Page is a source page");
+			}
+			// check if it is a live copy
+			logger.debug("has live relationship {}", relationshipManager.hasLiveRelationship(resource));
+			if (relationshipManager.hasLiveRelationship(resource)) {
+				altLanguageLinks = new HashMap<>();
+
+				// the resource is a live copy
+				LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resource,
+				                                                            false);
+				if (liveRelationship != null) {
+					LiveCopy liveCopy = liveRelationship.getLiveCopy();
+					if (liveCopy != null) {
+						String sourcePath = liveCopy.getBlueprintPath(); // returns the source path
+						masterPagePath = sourcePath;
+						String sourcePageLocale = configService.getConfigValues("pageLocale", sourcePath);
+						String sourceSiteUrl = configService.getConfigValues("siteUrl", sourcePath);
+						String sourceSiteDomain = configService.getConfigValues("domain", sourcePath);
+						logger.debug("generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+						                                                            sourcePath,
+						                                                            sourcePageLocale,
+						                                                            sourceSiteUrl);
+						altLanguageLinks.put(sourcePageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
+						                                                            sourceSiteDomain + shortenURL(sourcePath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+					}
+				}
+			}
+			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
+				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
+				                                                            + shortenURL(pagePath, siteUrl)
+				                                                            + BasePageModelConstants.SLASH_CONSTANT);
+			}
+			logger.debug("New altLanguageLinks :: {}", altLanguageLinks);
+		} catch (WCMException | LoginException | RepositoryException e) {
+			logger.error("Unable to get the live copy: {}", e.getMessage());
+		}
+		logger.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+	}
+	
+	/**
+	 * Generates page specific alt
+	 * urls.
+	 * 
+	 * @param pagePath
+	 * @param pageLocale
+	 */
+	public void generatePageSpecificAlternateUrls() {
+		logger.debug("Entry :: setAlternateURLs");
+		if (null == alternateUrls)
+			return;
+		altLanguageLinks = new HashMap<>();
+		try {
+			for (final Resource currentResource : alternateUrls.getChildren()) {
+				final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
+				String altLang = (String) currentResourceProperties.getOrDefault("alternateLanguage",
+				                                                            StringUtils.EMPTY);
+				String altUrl = (String) currentResourceProperties.getOrDefault("alternateUrl",
+				                                                            StringUtils.EMPTY);
+				String defaultLanguage = (String) currentResourceProperties.getOrDefault("defaultLanguage",
+				                                                            StringUtils.EMPTY);
+				
+				String altSiteUrl = configService.getConfigValues("siteUrl", altUrl);
+				String altSiteDomain = configService.getConfigValues("domain", altUrl);
+				
+				masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
+				altLanguageLinks.put(altLang.replace("_", "-").toLowerCase(Locale.ROOT), altSiteDomain
+				                                                            + shortenURL(altUrl, altSiteUrl)
+				                                                            + BasePageModelConstants.SLASH_CONSTANT);
+			}
+			final String pagePath = currentPage.getPath();
+			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+			final String siteDomain = configService.getConfigValues("domain", pagePath);
+			final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
+				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
+				                                                            + shortenURL(pagePath, siteUrl)
+				                                                            + BasePageModelConstants.SLASH_CONSTANT);
+			}
+			logger.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
+		} catch (LoginException | RepositoryException e) {
+			logger.error("Error while generating alternate urls :: {}", e.getMessage());
+		}
+		logger.debug("Map {}", altLanguageLinks);
+	}
 }
