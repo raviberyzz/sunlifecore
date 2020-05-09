@@ -184,6 +184,11 @@ public class BasePageModel {
   @ Inject
   @ Via ("resource")
   private String socialMediaDescripton;
+  
+  /** The Page indexing value. */
+  @ Inject
+  @ Via ("resource")
+  private String pageIndexing;
 
   /** The page title - browser title. */
   private String socialMediaTitle;
@@ -602,6 +607,25 @@ public class BasePageModel {
    */
   public void setSocialMediaDescripton(final String socialMediaDescripton) {
     this.socialMediaDescripton = socialMediaDescripton;
+  }
+  
+  /**
+   * Gets the page indexing value.
+   *
+   * @return the page indexing value
+   */
+  public String getPageIndexing() {
+    return pageIndexing;
+  }
+
+  /**
+   * Sets the Page indexing value.
+   *
+   * @param pageIndexing
+   *          the pageIndexing to set
+   */
+  public void setPageIndexing(final String pageIndexing) {
+    this.pageIndexing = pageIndexing;
   }
 
   /**

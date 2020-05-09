@@ -131,6 +131,22 @@
                                                 name="./errorPages"/>
                                         </items>
                                     </error-page>
+									<page-indexing
+                                        cq:showOnCreate="{Boolean}false"
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Page Indexing"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                             <pageIndexing
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the page should not be displayed in sitemap"
+                                                name="./pageIndexing"
+                                                text="Is page needs to be removed from Indexing"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                        </items>
+                                    </page-indexing>
 									<alternate-url
                                         cq:showOnCreate="{Boolean}false"
                                         jcr:primaryType="nt:unstructured"

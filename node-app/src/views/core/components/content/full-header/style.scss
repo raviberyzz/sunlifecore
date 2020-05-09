@@ -207,3 +207,21 @@
 .panel-group{
     display:none;
 }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .slf-header-wrapper {
+        .desktop-header-wrapper {
+            .desktop-header-content {
+                .desktop-sunlife-navigation {
+                    .desktop-sign-button {
+                        .signIn-button {
+                            .button-class {
+                                padding: 7px 16px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
