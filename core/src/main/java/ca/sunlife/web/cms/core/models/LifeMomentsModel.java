@@ -22,6 +22,44 @@ public interface LifeMomentsModel {
   @ Inject
   String getHeading();
 
+  /**
+   * Gets the Life Moments Links.
+   *
+   * @return the Life Moments Links
+   */
+  @ Inject
+  List <Links> getLinks();
+
+  /**
+   * The Interface Links.
+   */
+  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+  interface Links {
+
+    /**
+     * Gets the link name.
+     *
+     * @return the link name
+     */
+    @ Inject
+    String getLinkName();
+
+    /**
+     * Gets the link url.
+     *
+     * @return the link url
+     */
+    @ Inject
+    String getLinkUrl();
+
+    /**
+     * Gets the target.
+     *
+     * @return the target
+     */
+    @ Inject
+    String getTarget();
+  }
 
   /**
    * Gets the description.
@@ -30,14 +68,5 @@ public interface LifeMomentsModel {
    */
   @ Inject
   String getDescription();
-  
-  
-  /**
-   * Gets the Life Moments Links.
-   *
-   * @return the Life Moments Links
-   */
-  @ Inject
-  List <LifeMomentsItemsModel> getLinks();
 
 }
