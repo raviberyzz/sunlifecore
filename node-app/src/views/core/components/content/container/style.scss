@@ -1880,12 +1880,11 @@ ul {
 .container-seperator-75:after{
     content: '';
     top: 12.5%;
-    bottom: 44.5%;
-    left: 116%;
+    bottom: 12.5%;
+    left: 100%;
     width: 2px;
     background:$container-border-color;
     position: absolute;
-
 }
 /*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
@@ -2050,6 +2049,7 @@ ul {
 		}
     }
 }
+
 @media (min-width: $tab-screen-min) {
 	.cmp-related-resource {
 		.col-sm-6:nth-child(2){
@@ -2118,6 +2118,11 @@ ul {
                     }
                 }
             }
+        }
+    }
+    .text.light-orange-background-wrapper{
+        p{
+            text-align: center;
         }
     }
 }
