@@ -6,7 +6,7 @@ $(document).ready(function () {
 	if ($(window).width() < 768) {
 		$('#mainfooter .social-link-icon-wrapper').css({ "padding": "0" });
 	} else {
-		var teaser_height = $('footer .teaser').height();
+		var teaser_height = $('#mainfooter .teaser').height();
 		$('#mainfooter .social-link-icon-wrapper').css({ "padding": "16px 11px 16px 0" });
 		$('#mainfooter .social-link-icon-wrapper').height(teaser_height);
 	}
@@ -14,7 +14,7 @@ $(document).ready(function () {
 		if ($(window).width() < 768) {
 			$('#mainfooter .social-link-icon-wrapper').css({ "padding": "0" });
 		} else {
-			var teaser_height = $('footer .teaser').height();
+			var teaser_height = $('#mainfooter .teaser').height();
 			$('#mainfooter .social-link-icon-wrapper').css({ "padding": "16px 11px 16px 0" });
 			$('#mainfooter .social-link-icon-wrapper').height(teaser_height);
 		}
