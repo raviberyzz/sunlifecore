@@ -18,8 +18,6 @@
 		<module>core</module>
 		<module>ui.apps</module>
 		<module>ui.content</module>
-		<!-- <module>it.tests</module> <module>it.launcher</module> -->
-		<!-- <module>migration</module> <module>exporter</module> -->
 	</modules>
 
 	<properties>
