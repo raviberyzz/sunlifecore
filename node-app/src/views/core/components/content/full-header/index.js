@@ -79,7 +79,6 @@ $(document).ready(function () {
     });
     if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
         if($('#left-navigation').parents('.col-md-3').next().hasClass('left-nav-with-content-section')) {
-            console.log("in");
             $('#left-navigation').parents('.col-md-3').next().attr('id','main-content');
             $('#left-navigation').parents('.col-md-3').next().attr('role','main');
         }
