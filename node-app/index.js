@@ -12,7 +12,6 @@ const watch = require('node-watch')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'src/views'))
 app.set('view engine', 'hbs')
-
 const readPaths = (viewsPath) => {
     let index = []
     fs.readdirSync(viewsPath).forEach(function(name) {
