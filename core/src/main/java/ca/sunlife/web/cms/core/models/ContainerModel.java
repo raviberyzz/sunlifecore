@@ -28,5 +28,13 @@ public interface ContainerModel {
    */
   @ Inject
   public String getType();
+  
+  /**
+   * Gets the aria label.
+   *
+   * @return the aria label
+   */
+  @ Inject
+  public String getAriaLabel();
 
 }

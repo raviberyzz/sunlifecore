@@ -930,7 +930,7 @@ ul {
             }
             &:not(:first-child){        // Removes border in mobile view
                 margin-top: 14px;
-                border: none;           
+                border: none !important;           
             }
         } 
         .container-seperator-75:after {            /* Horizontal seperator for mobile view  */
@@ -1100,6 +1100,12 @@ ul {
 
 }
 .editorial-articles-wrapper {
+    .col-sm-4{
+        padding: 0;
+        .cmp-container{
+            padding: 0 10px;
+        }
+    }
     .image-text-wrapper{
         .left-image-position, .right-image-position {
             display: inherit;
@@ -1181,11 +1187,12 @@ ul {
             padding: 0 16px;
         }
     }
+    /* This is affecting button alignment on pages. Commenting it out
     .container-component {
         .cmp-container > div {
             display: block !important;
         }
-    }
+    }*/
     .content-highlight {
         text-align: center;
         padding: 40px 16px 40px 16px;
@@ -1364,8 +1371,13 @@ ul {
     }
     .editorial-articles-wrapper{
         .image-text-wrapper .left-image-position .left-item{
-            display:none;
-                    }
+                        display:none;
+        }
+        .image {
+            .cmp-image {
+                text-align: center;
+            }
+        }
     }
   /* social icons in the body section start */
   .social-link-icon-wrapper{
@@ -1667,7 +1679,7 @@ ul {
                     color: $dark-grey-color;
                     line-height: 23px;
                     font-size: 1.125rem;
-                    padding: 24px;
+                    padding: 16px 24px;
                     min-height: 56px;
                     display: flex;
                     justify-content: center;
@@ -1855,7 +1867,7 @@ ul {
         .cmp-container{
             .text:first-child{
                 .cmp-text{
-                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6, p{
+                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
                         font-size: 1.75rem;
                     }
                 }
@@ -1874,12 +1886,11 @@ ul {
 .container-seperator-75:after{
     content: '';
     top: 12.5%;
-    bottom: 44.5%;
-    left: 116%;
+    bottom: 12.5%;
+    left: 100%;
     width: 2px;
     background:$container-border-color;
     position: absolute;
-
 }
 /*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
@@ -2044,6 +2055,7 @@ ul {
 		}
     }
 }
+
 @media (min-width: $tab-screen-min) {
 	.cmp-related-resource {
 		.col-sm-6:nth-child(2){
@@ -2112,6 +2124,11 @@ ul {
                     }
                 }
             }
+        }
+    }
+    .text.light-orange-background-wrapper{
+        p{
+            text-align: center;
         }
     }
 }
@@ -2465,8 +2482,15 @@ ul {
 *****************************************************************/
 
 /** Browser Specific CSS starts here **/
-
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+    .editorial-articles-wrapper .teaser {
+        height: auto;
+    }
+
+    .blue-icon-yellow-background .experiencefragment {
+        height: auto !important;
+    }
 
     #slf-locate-advisors-form > div {
         display: -ms-flexbox;
@@ -2525,8 +2549,8 @@ ul {
 
 /** IOS specific code starts here  **/
 
-/* Safari 7.1+ */
-_::-webkit-full-page-media, _:future, :root .safari_only {
+/* mac targetting */
+.mac-os-target {
     .col-sm-4{
         .blue-icon-yellow-background{
             .overview-highlights-wrapper{

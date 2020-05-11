@@ -1,9 +1,7 @@
 function stickyHeader(){
   // sticky header works if table components exists
   if($('.table-responsive').length){
-    /* sticky header is implemented for data table only and user can choose to implement sticky header or not by adding
-     the class table-stickyheader, sticky header cannot be implemented on comparision table as comparision table opens up
-      in pop up modal. */
+    /* sticky header functionality is added by including the table-stickyheader class */
     if($('.table-stickyheader').length){
       //pop-up modal logic
       $(document).on('show.bs.modal', function(){
@@ -92,9 +90,9 @@ function stickyHeader(){
 }
 
 function mobileDisplay() {
-  $(".modal.popup-modal-wrapper").on("show.bs.modal", function () {
-    if (window.innerWidth <= 767 && $('.mobile-header-navbar').length) {
-
+  if (window.innerWidth <= 767 && $('.mobile-header-navbar').length) {
+    //If left column is not already dropped (Prevents duplicate trigger on orientation change from landscape to portrait or re-opening the modal)
+    if($(".cmp-table-comparision table tbody tr th:first-child").css("display") != "none"){
       //Row titles are repeated across the rows to accommodate for small screen sizes.
       $(".cmp-table-comparision table tbody tr + tr").each(function (index) {
         $('<div class="mobileTableTitles">' + $(this).find("th").html() + '</div><br>').prependTo($(this).children().not(":first-child"));
@@ -103,10 +101,19 @@ function mobileDisplay() {
       // left column is dropped
       $(".cmp-table-comparision table tbody tr th:first-child").css("display", "none");
     }
-  });
+  }
 }
 
 
 $(stickyHeader);
-$(mobileDisplay);
 $(window).resize(stickyHeader);
+
+$(mobileDisplay);
+$(window).resize(mobileDisplay);
+
+// Close button for table modal
+$(function () {
+  $(".modal-body .table + .button .button-class").on('click', function() {
+    $(".modal.popup-modal-wrapper").modal('hide');
+  });
+});

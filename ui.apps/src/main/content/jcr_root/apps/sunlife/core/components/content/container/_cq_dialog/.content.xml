@@ -27,6 +27,13 @@
                                                 fieldDescription="Please configure the container type"
                                                 fieldLabel="Container Type"
                                                 name="./type"/>
+											<arialLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please configure the aria label"
+                                                fieldDescription="Please configure the aria label"
+                                                fieldLabel="Aria Label"
+                                                name="./ariaLabel"/>
                                         </items>
                                     </column>
                                 </items>
