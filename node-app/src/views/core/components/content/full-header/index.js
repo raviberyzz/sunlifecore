@@ -78,7 +78,11 @@ $(document).ready(function () {
         }
     });
     if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
-        if($('.full-header').parents('.experiencefragment').next().hasClass('breadcrumb')) {
+        if($('#left-navigation').parents('.col-md-3').next().hasClass('left-nav-with-content-section')) {
+            $('#left-navigation').parents('.col-md-3').next().attr('id','main-content');
+            $('#left-navigation').parents('.col-md-3').next().attr('role','main');
+        }
+        else if($('.full-header').parents('.experiencefragment').next().hasClass('breadcrumb')) {
             $('.full-header').parents('.experiencefragment').next().next().attr('id','main-content');
             $('.full-header').parents('.experiencefragment').next().next().attr('role','main');
         } else {
