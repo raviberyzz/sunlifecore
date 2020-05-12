@@ -185,11 +185,7 @@
         border: 4px solid $primary-yellow-background;
     }
 }
-.banner-section {
-    .hide-in-editorial.text-section{
-        width: 405px;
-        margin-left: 50px;
-    }
+.banner-section{
     h1, h2, h3, h4, h5, h6 {
         margin-top: 0;
     }
@@ -667,6 +663,14 @@
 
 
 @media (min-width: $tab-screen-min) {
+    //css targetting for ipad and above for all landing page banners
+    .landing-page-hero-banner {
+        .text-section {
+            width: 405px !important;
+            margin-left: 50px !important;
+            padding: 20px 0px !important;
+        }
+    }
 	.circle-220-desktop {
 		img {
 			width: 220px;
