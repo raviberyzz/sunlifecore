@@ -19,7 +19,7 @@
     <ul >
       <li class="go-back"><a>Back</a></li>
       <li data-sly-test = "${level == 0}" class="navigation-title"><a>${title}</a></li>
-      <li data-sly-test = "${level == 0 || level == 1}" class="subnav"><a href="${url}">${title} overview</a></li>
+      
        <sly data-sly-list="${items}">
         <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
         </sly>
