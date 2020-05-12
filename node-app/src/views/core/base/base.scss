@@ -289,7 +289,7 @@ a {
     line-height: 18px;
     color:$blue-legal-text-color;
 }
-footer {
+#mainfooter {
     margin-top: 40px;
     background-color: $light-cool-blue-color;
     .social-link-icon-wrapper {
@@ -348,7 +348,7 @@ footer {
     /** Disclaimer css end **/
 }
 .ca-sunlife-home-page {
-    footer {
+    #mainfooter {
         margin-top: 0px;
     }
 }
@@ -391,7 +391,7 @@ ul {
     list-style: none;
     padding: 0;
 }
-.social-link-icon-wrapper,.right-nav-icon-wrapper,.cta-content-icon-wrapper,.mega-menu-icon-wrapper,.getting-started-icon-wrapper,.banner-section,.editorial-hero-banner,footer,.footer-copyright-wrapper,.right-navigation-wrapper,.demo-class,.form-group-wrapper{
+.social-link-icon-wrapper,.right-nav-icon-wrapper,.cta-content-icon-wrapper,.mega-menu-icon-wrapper,.getting-started-icon-wrapper,.banner-section,.editorial-hero-banner,#mainfooter,.footer-copyright-wrapper,.right-navigation-wrapper,.demo-class,.form-group-wrapper{
     .cmp-text{
         ul{
             list-style: none;
@@ -482,7 +482,7 @@ a.skip-main:focus, a.skip-main:active {
         max-width: 100%;
         width: 100%;
     }
-    footer {
+    #mainfooter {
         .top-footer-section, .bottom-footer-section {
             padding: 20px 0 32px 0 !important;
         }
@@ -490,7 +490,7 @@ a.skip-main:focus, a.skip-main:active {
 }
 
 @media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
-    footer {
+    #mainfooter {
         .social-link-icon-wrapper {
             height: auto !important;
             ul {

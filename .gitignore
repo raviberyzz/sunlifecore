@@ -1,5 +1,6 @@
 # Created by https://www.gitignore.io/api/eclipse,java,maven
 node-app/node_modules/
+node-app/public/
 ### Eclipse ###
 *.pydevproject
 .metadata

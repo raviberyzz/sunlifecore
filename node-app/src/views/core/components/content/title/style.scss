@@ -50,7 +50,7 @@
 }
 .title-wrapper-yellow-grey-rings{
   @extend .title-wrapper-yellow-grey;
-  background: url(https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
   background-color:$medium-yellow-background;
   background-size: contain;
 }
@@ -61,7 +61,7 @@
 }
  .title-wrapper-blue-yellow-rings{
   @extend .title-wrapper-yellow-grey;
-  background:url(https://www.sunlife.com/static/Global/images/CircleOutline_bg.png) right no-repeat;
+  background:url(/content/dam/sunlife/legacy/assets/slfglobal/Images/CircleOutline_bg.png) right no-repeat;
   background-color:$medium-blue-color;
   color: $medium-yellow-background;
  }

@@ -7,7 +7,12 @@
 			<div class="collapse list-div">				
 				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
 					<li>
+					   <sly data-sly-test.linkChecker = "${links.target == 'modal'}">
+					     <a lang ="${links.langCode}" href ="javascript:void(0)" data-target ="${links.linkUrl}" data-toggle="${links.target}">${links.linkName @ context='html'}</a>
+					    </sly>
+					   <sly data-sly-test = "${!linkChecker}">  
 					   <a lang ="${links.langCode}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName @ context='html'}</a>
+					   </sly>
 					 </li>
 				  </ul>				
 			</div>

@@ -199,6 +199,11 @@
                     select{
                         height:48px;
                         width:100%; 
+                        background-image: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png);
+                        background-size: 30px 10px;
+                        background-repeat: no-repeat;
+                        background-position: right center;
+                        -webkit-appearance: none;
                     }
                 }
                 .Editorial-form-button{

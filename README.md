@@ -1,6 +1,4 @@
-# Sample AEM project template
-
-This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
+# Sun Life AEM wcm core project
 
 ## Modules
 
@@ -8,9 +6,8 @@ The main parts of the template are:
 
 * core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
 * ui.apps: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, templates, runmode specific configs as well as Hobbes-tests
-* ui.content: contains sample content using the components from the ui.apps
-* ui.tests: Java bundle containing JUnit tests that are executed server-side. This bundle is not to be deployed onto production.
-* ui.launcher: contains glue code that deploys the ui.tests bundle (and dependent bundles) to the server and triggers the remote JUnit execution
+* ui.content: contains content using the components from the ui.apps
+* node-app: contains front end application details i.e., component javascript and CSS code, which will be compiled at build to create clientlibs
 
 ## How to build
 
@@ -34,25 +31,19 @@ Or to deploy only the bundle to the author, run
 
     mvn clean install -PautoInstallBundle
 
-## Testing
-
-There are three levels of testing contained in the project:
-
-* unit test in core: this show-cases classic unit testing of the code contained in the bundle. To test, execute:
-
-    mvn clean test
-
-* server-side integration tests: this allows to run unit-like tests in the AEM-environment, ie on the AEM server. To test, execute:
-
-    mvn clean verify -PintegrationTests
-
-* client-side Hobbes.js tests: JavaScript-based browser-side tests that verify browser-side behavior. To test:
-
-    in the browser, open the page in 'Developer mode', open the left panel and switch to the 'Tests' tab and find the generated 'MyName Tests' and run them.
-
+## How to configure
+Create sunlife-app-systemuser system user and provide read permissions to /content folder
 
 ## Maven settings
 
 The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
 
     http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
+
+### Import SSL certificate into maven
+
+While performing build if you see SSL certificate error follow below instructions.
+- Access https://repo.adobe.com/ 
+- Download the SSL certificate (Use certificate export utility)
+- Import the exported SSL certificate in JAVA certs using the below command
+    keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -alias Root -import -file <certificate path>
