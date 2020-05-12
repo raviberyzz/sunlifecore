@@ -82,6 +82,10 @@ $(document).ready(function () {
             $('#left-navigation').parents('.col-md-3').next().attr('id','main-content');
             $('#left-navigation').parents('.col-md-3').next().attr('role','main');
         }
+        else if($('#right-railId')) {
+            $('#right-railId').prev().attr('id','main-content');
+            $('#right-railId').prev().attr('role','main');
+        }
         else if($('.full-header').parents('.experiencefragment').next().hasClass('breadcrumb')) {
             $('.full-header').parents('.experiencefragment').next().next().attr('id','main-content');
             $('.full-header').parents('.experiencefragment').next().next().attr('role','main');
