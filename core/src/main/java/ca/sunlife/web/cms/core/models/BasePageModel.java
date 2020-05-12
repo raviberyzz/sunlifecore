@@ -824,7 +824,7 @@ public class BasePageModel {
 			                                                                            // -
 			                                                                            // default
 		}
-		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault); // Page language
+		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault.toLowerCase(Locale.ROOT)); // Page language
 
     // Sets UDO parameters
     setUDOParameters();
@@ -1410,4 +1410,5 @@ public class BasePageModel {
 		}
 		logger.debug("Map {}", altLanguageLinks);
 	}
+	
 }
