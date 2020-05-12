@@ -38,7 +38,7 @@
                   <div class="input-wrapper">
                     <div class="input-wrapper form-group-wrapper">
                       <input data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q"
-                        type="text" maxlength="" placeholder="${searchPlaceholder}" required="required"
+                        type="text" maxlength="" placeholder="${searchPlaceholder}"
                         data-parsley-pattern-message="" data-parsley-pattern="/[a-z]/g" data-parsley-id="8">
                     </div>
                     <div class="search-autocomplete">
@@ -114,8 +114,7 @@
                     ${regionTitle}
                   </div>
                 </li>
-                <li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search"
-                  aria-label="search-bar">
+                <li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search">
                   <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
                      aria-expanded="false" tabindex="0">
                     <a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
@@ -135,7 +134,7 @@
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
               <div class="desktop-primary-navigation" data-section="nav-main">
-                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation" aria-label="Main">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"

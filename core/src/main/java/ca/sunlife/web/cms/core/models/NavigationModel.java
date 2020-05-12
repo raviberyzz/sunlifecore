@@ -20,13 +20,18 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
+/**
+ * The Class Navigation Model.
+ */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = NavigationModel.class, resourceType = "sunlife/core/components/content/navigation")
 public class NavigationModel extends NavigationImpl {
 	
-	
-	public NavigationModel() {
+	  /**
+	   * Instantiates a new Navigation Model.
+	   */
+	  public NavigationModel() {
 		super();
-	}
+      }
 	
 	  /** The Constant LOGGER. */
 	  private static final Logger log = LoggerFactory.getLogger(NavigationModel.class);
@@ -43,6 +48,7 @@ public class NavigationModel extends NavigationImpl {
 	  @ Self
 	  private SlingHttpServletRequest request;
 	  
+	  /* Field to collect the modified items */
 	  private Collection<NavigationItem> modifiedItems;
 	  
 	  
@@ -65,6 +71,10 @@ public class NavigationModel extends NavigationImpl {
 	    this.modifiedItems = Collections.unmodifiableCollection(modifiedItems);
 	  }
 	  
+	  
+	  /**
+	   * Inits the model.
+	   */
 	  @PostConstruct
 		private void init() {
 		 
@@ -72,7 +82,17 @@ public class NavigationModel extends NavigationImpl {
 		  
 	  }
 	  
-	  
+	  /*
+	   * Method to iterate the navigation results and add the overview to the pages at each level
+	   */
+
+	  /**
+	   * Process navigation list.
+	   *
+	   * @param navigationItems
+	   *          the navigation items
+	   * @return the list
+	   */
 	  public List<NavigationItem> processNavigationList(List<NavigationItem> navigationItems) {
 		  
 		  String title = null;
@@ -83,23 +103,18 @@ public class NavigationModel extends NavigationImpl {
 		    }
 		    
 		  Page parentPage;
-		  final List <NavigationItem> children1 = new ArrayList <>();
+		  final List <NavigationItem> itemChildren = new ArrayList <>();
 		  for (final NavigationItem navigationItem : navigationItems) {
 			  
 			  if (! navigationItem.getChildren().isEmpty()) {
 				  parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
 				  final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage,false, request,
-				            navigationItem.getLevel() + 1, children1, title);
+				            navigationItem.getLevel() + 1, itemChildren, title);
 				  navigationItem.getChildren().add(0, leftItemImpl);
 				  
 			  }
 			  processNavigationList(navigationItem.getChildren());
 		  }
-		  
 		return Collections.unmodifiableList(navigationItems);
-		  
-		  
 	  }
-	
-	
 }
