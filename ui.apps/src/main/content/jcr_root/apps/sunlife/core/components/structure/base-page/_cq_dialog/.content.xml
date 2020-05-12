@@ -142,7 +142,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="Check if the page should not be displayed in sitemap"
                                                 name="./pageIndexing"
-                                                text="Is page needs to be removed from Indexing"
+                                                text="Skip Search Indexing"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
                                         </items>
