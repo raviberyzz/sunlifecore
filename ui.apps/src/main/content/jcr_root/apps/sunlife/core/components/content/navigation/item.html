@@ -19,10 +19,10 @@
           data-sly-use.itemContentTemplate="itemContent.html">
     <li class="${item.children.size > 0 ? 'navigation-menu' : 'subnav'}">
 
-        <sly data-sly-test.a = "${item.children.size != 0}">    
+        <sly data-sly-test.itemSize = "${item.children.size != 0}">    
          <a>${item.title}</a>
         </sly>
-         <sly data-sly-test = "${!a}">
+         <sly data-sly-test = "${!itemSize}">
         <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>
         </sly>
         <sly data-sly-test="${item.children.size > 0}" data-sly-call="${groupTemplate.group @ items = item.children , level = item.level, title = item.title, url = item.URL}"></sly>
