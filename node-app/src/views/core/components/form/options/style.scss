@@ -122,28 +122,25 @@ input[type=radio] {
     }
 
 }
+
 .cmp-form-options--checkbox{
-    .cmp-form-options__field-description{
-        font-weight: 700;
-        margin: 20px 15px 20px 20px;
-        position: relative;
-        vertical-align: middle;
-        top: 2px;
+    .cmp-form-options__field-label {
+        text-align: left;
+        .cmp-form-options__field-description{
+            margin-left: 30px;
+            font-weight: 700;
+            position: relative;
+            vertical-align: middle;
+            top: 2px;
+        }
     }
 }
-.cmp-form-options--radio{
+
+ .cmp-form-options--radio{
     .cmp-form-options__field-description{
         font-weight: 700;
         margin: 10px;
         vertical-align: super;
     }
    
-}
-//fixing checkbox to textbox alignment issue only for devices ipad pro and above
-@media (min-width: $tab-screen-max) {
-    .cmp-form-options--checkbox{
-        .cmp-form-options__field-description{
-            margin: 20px 15px 20px 0px;
-        }
-    }
 }
