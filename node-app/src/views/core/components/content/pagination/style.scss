@@ -4,6 +4,32 @@
         z-index: 1 !important;
     }
 }
+/*Search pagination + filter results accessibility fixes start*/
+.search-container {
+    .pagination-item {
+        .active-text{
+            display: none;
+        }
+    }
+    .pagination-item.active{
+        .active-text{
+            display: block;
+        }
+    }
+    .check-container {
+		>a {
+			.active-text {
+				display: none;
+			}
+		}
+		>a.active {
+			.active-text {
+				display: block;
+			}
+		}
+	}
+}
+/*Search pagination + filter results accessibility fixes ends*/
 @media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
     .pagination-component{
         display: block;
