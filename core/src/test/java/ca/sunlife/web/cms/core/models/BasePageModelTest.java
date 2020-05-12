@@ -21,7 +21,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.msm.api.LiveRelationshipManager;
 
@@ -49,9 +48,6 @@ public class BasePageModelTest {
   @ Mock
   private Resource resource;
   
-  @ Mock
-  private LanguageManager languageManager;
-
   @ Mock
   private LiveRelationshipManager relationshipManager;
   

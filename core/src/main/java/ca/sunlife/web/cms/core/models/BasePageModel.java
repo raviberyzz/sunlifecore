@@ -42,7 +42,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.launches.utils.LaunchUtils;
-import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.WCMException;
 import com.day.cq.wcm.msm.api.LiveCopy;
@@ -143,9 +142,7 @@ public class BasePageModel {
   @ OSGiService
   private SlingSettingsService settingsService;
 
-  @OSGiService
-  private LanguageManager languageManager;
-
+  /** The live relationship manager. */
   @OSGiService
   private LiveRelationshipManager relationshipManager;
   
@@ -277,7 +274,7 @@ public class BasePageModel {
   /** Default reporting language. */
   private String defaultReportingLanguage;
   
-  /** Master page. */
+  /** Live copy source path. */
   private String masterPagePath;
 
   /** The Constant JCR_CONTENT_DATA_MASTER. */
