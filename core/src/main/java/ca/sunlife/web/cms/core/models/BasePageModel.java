@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.cq.wcm.launches.utils.LaunchUtils;
 import com.day.cq.wcm.api.LanguageManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.WCMException;
@@ -227,11 +229,6 @@ public class BasePageModel {
   @ Via ("resource")
   private String advisorType;
   
-  /** Alternate urls. */
-  @ Inject
-  @ Via ("resource")
-  private Resource alternateUrls;
-
   /** The config service. */
   @ Inject
   private SiteConfigService configService;
@@ -811,7 +808,7 @@ public class BasePageModel {
     logger.debug("metadata :: {}", customMetadata);
 
     // Sets alternate URLs
-    if( null != resolver && null != resolver.getResource(currentPage.getPath()))
+    if( null != resolver && null != currentPage.getPath() && null != resolver.getResource(currentPage.getPath()))
     	generateAlternateUrls(resolver.getResource(currentPage.getPath()));
     
     // Sets UDO parameters
@@ -1214,6 +1211,9 @@ public class BasePageModel {
     logger.debug("Exit :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
   }
 
+  /**
+   * Sets social meta tags for article pages.
+  */
   public void setArticlePageSocialMetaTags() throws LoginException, RepositoryException {
     logger.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
     final String pagePath = currentPage.getPath();
@@ -1279,12 +1279,19 @@ public class BasePageModel {
   
 	/**
 	 * Generates alternate urls
+	 * 
 	 * @param resource
 	 */
 	private void generateAlternateUrls(Resource resource) {
 		logger.debug("Entry :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
 		try {
-			if( null != alternateUrls ) {
+			if (null == resolver || null == resource || null == resource.getPath()) {
+				return;
+			}
+			Resource altLanResource = resolver.getResource(resource.getPath()
+			                                                            + "/jcr:content/alternateUrls");
+			logger.debug("Alt urls --> {}", altLanResource);
+			if (null != altLanResource) {
 				generatePageSpecificAlternateUrls();
 				return;
 			}
@@ -1297,6 +1304,30 @@ public class BasePageModel {
 			logger.debug("is source {}", relationshipManager.isSource(resource));
 			if (relationshipManager.isSource(resource)) {
 				logger.debug("Page is a source page");
+				Resource target = resolver.getResource(resource.getPath());
+				@ SuppressWarnings("deprecation")
+				Collection<LiveRelationship> relationships = relationshipManager.getLiveRelationships(
+				                                                            target, null, null, false);
+				altLanguageLinks = new HashMap<>();
+				for (LiveRelationship relationship : relationships) {
+					String liveCopyPath = relationship.getTargetPath();
+					// filter non-existing
+					// LiveCopy Resources and
+					// LiveCopy Launches
+					if (relationship.getStatus().isTargetExisting() && !LaunchUtils.isLaunchResourcePath(
+					                                                            liveCopyPath)) {
+						logger.debug("path :: {}", liveCopyPath);
+						String sourcePageLocale = configService.getConfigValues("pageLocale", liveCopyPath);
+						String sourceSiteUrl = configService.getConfigValues("siteUrl", liveCopyPath);
+						String sourceSiteDomain = configService.getConfigValues("domain", liveCopyPath);
+						logger.debug("generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+						                                                            liveCopyPath,
+						                                                            sourcePageLocale,
+						                                                            sourceSiteUrl);
+						altLanguageLinks.put(sourcePageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
+						                                                            sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+					}
+				}
 			}
 			// check if it is a live copy
 			logger.debug("has live relationship {}", relationshipManager.hasLiveRelationship(resource));
@@ -1334,7 +1365,7 @@ public class BasePageModel {
 		}
 		logger.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
 	}
-	
+
 	/**
 	 * Generates page specific alt
 	 * urls.
@@ -1344,6 +1375,8 @@ public class BasePageModel {
 	 */
 	public void generatePageSpecificAlternateUrls() {
 		logger.debug("Entry :: setAlternateURLs");
+		Resource alternateUrls = resolver.getResource(currentPage.getPath()
+		                                                            + "/jcr:content/alternateUrls");
 		if (null == alternateUrls)
 			return;
 		altLanguageLinks = new HashMap<>();
@@ -1356,10 +1389,10 @@ public class BasePageModel {
 				                                                            StringUtils.EMPTY);
 				String defaultLanguage = (String) currentResourceProperties.getOrDefault("defaultLanguage",
 				                                                            StringUtils.EMPTY);
-				
+
 				String altSiteUrl = configService.getConfigValues("siteUrl", altUrl);
 				String altSiteDomain = configService.getConfigValues("domain", altUrl);
-				
+
 				masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
 				altLanguageLinks.put(altLang.replace("_", "-").toLowerCase(Locale.ROOT), altSiteDomain
 				                                                            + shortenURL(altUrl, altSiteUrl)
