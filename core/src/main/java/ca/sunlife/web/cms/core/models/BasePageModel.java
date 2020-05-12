@@ -789,7 +789,7 @@ public class BasePageModel {
     customMetadata.put(TWITTER_URL, seoCanonicalUrl);
     customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
     customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
-    customMetadata.put(OG_LOCALE, locale);
+    customMetadata.put(OG_LOCALE, null != locale ? locale.replace("_", "-").toLowerCase(Locale.ROOT) : null);
     if (socialMediaImage != null) {
       customMetadata.put(OG_IMAGE, domain + socialMediaImage);
       customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
@@ -926,7 +926,7 @@ public class BasePageModel {
         logger.debug("setAlternateURLs :: New Url :: {}, defaultReportingLanguage :: {}", newUrl,
             defaultReportingLanguage);
         if (null != resolver.getResource(newUrl)) {
-          altLanguageLinks.put(languageCode.replace("_", "-").toLowerCase(Locale.ROOT),
+          altLanguageLinks.put(languageCode.split("_") [ 0 ] + "-" + languageCode.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
               domain + shortenURL(newUrl, siteLocation) + BasePageModelConstants.SLASH_CONSTANT);
         }
       }
@@ -1321,7 +1321,7 @@ public class BasePageModel {
 						                                                            liveCopyPath,
 						                                                            sourcePageLocale,
 						                                                            sourceSiteUrl);
-						altLanguageLinks.put(sourcePageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
+						altLanguageLinks.put(sourcePageLocale.split("_") [ 0 ] + "-" + sourcePageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
 						                                                            sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
 					}
 				}
@@ -1346,13 +1346,13 @@ public class BasePageModel {
 						                                                            sourcePath,
 						                                                            sourcePageLocale,
 						                                                            sourceSiteUrl);
-						altLanguageLinks.put(sourcePageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
+						altLanguageLinks.put(sourcePageLocale.split("_") [ 0 ] + "-" + sourcePageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
 						                                                            sourceSiteDomain + shortenURL(sourcePath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
 					}
 				}
 			}
 			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
+				altLanguageLinks.put(pageLocale.split("_") [ 0 ] + "-" + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
 				                                                            + shortenURL(pagePath, siteUrl)
 				                                                            + BasePageModelConstants.SLASH_CONSTANT);
 			}
@@ -1391,7 +1391,7 @@ public class BasePageModel {
 				String altSiteDomain = configService.getConfigValues("domain", altUrl);
 
 				masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
-				altLanguageLinks.put(altLang.replace("_", "-").toLowerCase(Locale.ROOT), altSiteDomain
+				altLanguageLinks.put(altLang.split("_") [ 0 ] + "-" + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), altSiteDomain
 				                                                            + shortenURL(altUrl, altSiteUrl)
 				                                                            + BasePageModelConstants.SLASH_CONSTANT);
 			}
@@ -1400,7 +1400,7 @@ public class BasePageModel {
 			final String siteDomain = configService.getConfigValues("domain", pagePath);
 			final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
 			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
+				altLanguageLinks.put(pageLocale.split("_") [ 0 ] + "-" + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
 				                                                            + shortenURL(pagePath, siteUrl)
 				                                                            + BasePageModelConstants.SLASH_CONSTANT);
 			}
