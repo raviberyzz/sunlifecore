@@ -158,7 +158,6 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
             } else {
                 actualValue=data;
                 }
-            console.log(actualValue);
             if(countryCode.toLowerCase()=='ph' && actualValue.length() > 0){
                 countrySpecificResponse = sunlife.vgncms.cda.asia.quote.AsiaQuickQuoteCalculation.getPhResult(key,amount, countryCode,dob,frequencyTxt,mYear,actualValue,prop);
             }
