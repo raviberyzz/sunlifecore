@@ -77,12 +77,12 @@ $(document).ready(function () {
             $(mobileHeader);
         }
     });
+    var attr = ($('#right-railId')).attr('role');
     if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
         if($('#left-navigation').parents('.col-md-3').next().hasClass('left-nav-with-content-section')) {
             $('#left-navigation').parents('.col-md-3').next().attr('id','main-content');
             $('#left-navigation').parents('.col-md-3').next().attr('role','main');
         }
-        var attr = ($('#right-railId')).attr('role');
         else if(typeof attr !== typeof undefined && attr !== false) {
             $('#right-railId').prev().attr('id','main-content');
             $('#right-railId').prev().attr('role','main');
