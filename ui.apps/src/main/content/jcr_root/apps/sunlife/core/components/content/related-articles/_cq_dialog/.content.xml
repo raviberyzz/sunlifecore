@@ -17,7 +17,8 @@
                         fieldDescription="Enter the related aricle content fragment path"
                         fieldLabel="Content Fragment Path"
                         name="./articleFragmentPath"
-                        rootPath="/content/dam/sunlife"/>
+                        rootPath="/content/dam/sunlife"
+                        required="{Boolean}true"/>
                 </items>
             </column>
         </items>
