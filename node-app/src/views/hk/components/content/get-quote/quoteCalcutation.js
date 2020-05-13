@@ -10,89 +10,155 @@
     var DOB="dob";
     var FREQUENCY_TEXT="freq_text";
     var INVESTMENT_YEAR="investmentYear";
+  function addCommas(input) {
+      return (input.toString()).replace(
+          /^([-+]?)(0?)(\d+)(.?)(\d+)$/g,
+          function(match, sign, zeros, before, decimal, after) {
+  
+              var reverseString = function(string) {
+                  return string.split('').reverse().join('');
+              };
+  
+              var insertCommas = function(string) {
+  
+                  var reversed = reverseString(string);
+  
+                  var reversedWithCommas = reversed.match(/.{1,3}/g).join(',');
+  
+                  return reverseString(reversedWithCommas);
+              };
+              var result = sign + (decimal ? insertCommas(before) + decimal + after : insertCommas(before + after));
+              return result;
+          }
+      );
+  }
+function fetching(jspData){
+let langcalc=$('html').attr('lang');
+    var splitByPipe = jspData.split("||");
+    var amount = splitByPipe[0];
+    var runiqueID = splitByPipe[1]
+    var arrayOfResult = amount.split(',');
+    var uniqueID = runiqueID.substring(0, 8);
+    if ($('#uniqueID').length > 0)
+        $('#uniqueID').remove();
+    $('<input>').attr({
+        type: 'hidden',
+        id: 'uniqueID',
+        value: uniqueID
+    }).appendTo('#qc_container');
+    //if jsp returns only zero and blank
+    if (arrayOfResult.length == 0 || arrayOfResult[0].trim() == "0.0" || arrayOfResult[0].trim() == "") {
+        console.log("return 0 from jsp");
+    } else {
+        /*Fixing issue of dots disappear before the Quote Result is displayed*/
+        setTimeout(function() {
+            $(".qc_loading_ani").show();
+        }, "2000");
+        /*Fixing issue of dots disappear before the Quote Result is displayed*/
+        $("#qc_result").slideUp(300, function() {
 
-    function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequencyTxt,mYear) {
-      let actualValue = "";
-        let countrySpecificResponse="";
-        function getCountForHK(){
-                var NUMBER_OF_HITS = 0;
-            var currentDate = moment();
-            NUMBER_OF_HITS = NUMBER_OF_HITS + 1;
-            var uniqueId = "";
-            //calendar code goes here
-            var currentTime = moment();
-            var gmtTime = currentTime.tz("Etc/GMT");
-            var hkTime = gmtTime.tz("Asia/Hong_Kong");
-            //console.log(hkTime.format());
-            if(!currentDate.isSame(hkTime, 'day')){
-                NUMBER_OF_HITS = 1;
-                currentDate = hkTime;
+            setTimeout(function() {
+                $(".qc_loading_ani").hide();
+                $("#qc_result").slideDown(500);
+            }, "2000");
+
+        });
+        //appending "/annual" at the end with each price
+        arrayOfResult.forEach(function(value, index) {
+            var elementItem = index + 1;
+            if (langcalc == 'en-CA') {
+                $('#qc_result' + elementItem + ' div.qc_result_price').html('HKD' + addCommas($.trim(value)) + '/ annual');
+            } else {
+                $('#qc_result' + elementItem + ' div.qc_result_price').html('æ¯å¹´æ¸¯å…ƒ' + addCommas($.trim(value)));
             }
-            uniqueId = uniqueId.concat(currentDate.year());
-            if(currentDate.month()<9){
-                uniqueId = uniqueId.concat('0');
-                uniqueId = uniqueId.concat(currentDate.month()+1);
-            }
-            else{
-                uniqueId = uniqueId.concat(currentDate.month()+1);
-            }
-            if(currentDate.date()<10){
-                uniqueId = uniqueId.concat('0');
-                uniqueId = uniqueId.concat(currentDate.date());
-            }
-            else{
-                uniqueId = uniqueId.concat(currentDate.date());
-            }
-            uniqueId = uniqueId.concat('00');
-            uniqueId = uniqueId.concat(NUMBER_OF_HITS);
-            uniqueId=uniqueId.toString();
-            return uniqueId;
-            }
-        let builder='';
-        try {
-            let url="/content/dam/sunlife/legacy/assets/hk/hk-premiumRates.properties?logActivity=true";
-            var content='';
-            function readTextFile(file){
-                var rawFile = new XMLHttpRequest();
-                rawFile.open("GET", file);
-                rawFile.onreadystatechange = function ()
+
+        });
+    }
+}
+function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequencyTxt,mYear) {
+    var key=key;
+    let actualValue = "";
+    let countrySpecificResponse="";
+    function getCountForHK(){
+        var NUMBER_OF_HITS = 0;
+        var currentDate = moment();
+        NUMBER_OF_HITS = NUMBER_OF_HITS + 1;
+        var uniqueId = "";
+        var currentTime = moment();
+        var gmtTime = currentTime.tz("Etc/GMT");
+        var hkTime = gmtTime.tz("Asia/Hong_Kong");
+        //console.log(hkTime.format());
+        if(!currentDate.isSame(hkTime, 'day')){
+            NUMBER_OF_HITS = 1;
+            currentDate = hkTime;
+        }
+        uniqueId = uniqueId.concat(currentDate.year());
+        if(currentDate.month()<9){
+            uniqueId = uniqueId.concat('0');
+            uniqueId = uniqueId.concat(currentDate.month()+1);
+        }
+        else{
+            uniqueId = uniqueId.concat(currentDate.month()+1);
+        }
+        if(currentDate.date()<10){
+            uniqueId = uniqueId.concat('0');
+            uniqueId = uniqueId.concat(currentDate.date());
+        }
+        else{
+            uniqueId = uniqueId.concat(currentDate.date());
+        }
+        uniqueId = uniqueId.concat('00');
+        uniqueId = uniqueId.concat(NUMBER_OF_HITS);
+        uniqueId=uniqueId.toString();
+        return uniqueId;
+        }
+    let builder='';
+    try {
+        let hostname=window.location.hostname;
+        let path="/content/dam/sunlife/legacy/assets/hk/hk-premiumRates.properties?logActivity=true";
+        let url='https://'.concat(hostname).concat(path);
+        var content='';
+        function readTextFile(file){
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
                 {
-                    if(rawFile.readyState === 4)
+                    if(rawFile.status === 200 || rawFile.status == 0)
                     {
-                        if(rawFile.status === 200 || rawFile.status == 0)
-                        {
-                            content = rawFile.responseText;
-                            //console.log(allText);
-                        }
+                        content = rawFile.responseText;
+                        //console.log(allText);
                     }
                 }
-                rawFile.send(null);
             }
-            readTextFile(url);
-            if(content){
-                content=JSON.stringify(content);
-                console.log(content);
+            rawFile.send(null);
+        }
+        readTextFile(url);
+        setTimeout(operator,500);
+        function operator(){
+            content=content.toString();
+            content=content.split(productName+'=')[1];
+            content =content.substring(content,content.indexOf("}")+1);                
+            var isCalculable =content.isCalculable;
+            var equation = content.equation;
+            let data=content.split(key)[1];
+            data=data.split(":")[1].trim();
+            data=data.substring(data,data.indexOf("]")+1);
+            data=data.trim();
+            data=data.split(",");
+            if(data.length==3){
+                data=data[0].substring(2,(data[0].length-2))+','+data[1].substring(2,(data[1].length-2))+','+data[2].substring(2,(data[2].length-2));
             }
             else{
-                content='';
-                throw new Error('content not found');
+                    data=data[0].substring(2,(data[0].length-2))+','+data[1].substring(2,(data[1].length-2))+','+data[2].substring(2,(data[2].length-2))+','+data[3].substring(2,(data[3].length-2));
             }
-            var propContent=content[productName];
-            var isCalculable =propContent.isCalculable;
-            var equation = propContent.equation;
             if (isCalculable=='true') {
                 console.log("calculable");              
-            } else { 
-                    var jsonArray = propContent[key];
-                    for (var i = 0; i < jsonArray.length; i++) {
-                        if (i > 0){
-                            actualValue = actualValue + "," + jsonArray[i];
-                        }
-                        else{
-                            actualValue = jsonArray[i];
-                        }
-                    }
+            } else {
+                actualValue=data;
                 }
+            console.log(actualValue);
             if(countryCode.toLowerCase()=='ph' && actualValue.length() > 0){
                 countrySpecificResponse = sunlife.vgncms.cda.asia.quote.AsiaQuickQuoteCalculation.getPhResult(key,amount, countryCode,dob,frequencyTxt,mYear,actualValue,prop);
             }
@@ -100,10 +166,11 @@
                 getCountForHK();
                 countrySpecificResponse=getCountForHK();
             }
-        } catch (e) {
-            console.log(e);
+                console.log(builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString());
+                jspData=builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString();
+                fetching(jspData);
         }
-        console.log(builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString());
-        return (builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString());
+    } catch (e) {
+        console.log(e);
     }
-
+}
