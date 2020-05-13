@@ -1891,6 +1891,7 @@ ul {
     width: 2px;
     background:$container-border-color;
     position: absolute;
+    z-index: 10;
 }
 /*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
