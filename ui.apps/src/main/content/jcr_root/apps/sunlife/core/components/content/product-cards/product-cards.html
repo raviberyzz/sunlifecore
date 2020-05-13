@@ -1,6 +1,6 @@
 <sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardModel">
     <sly data-sly-test="${productCardModel.topc=='static'}">
-        <div class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
+        <div data-sly-test.hasPath="${productCardModel.productCardFragmentPath}" class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
             <img src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading}" class="imageCard">
             <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
             <div class="caption">
@@ -9,8 +9,10 @@
             </div>
             <a href="${productCardModel.pcData.productCardPagePath @ extension = 'html'}">${productCardModel.pcData.productCardHeading}</a>
         </div>
+        <div data-sly-test="${!hasPath}" class="cq-placeholder" data-emptytext="${component.title}"></div>
     </sly>
-    <div class="product-card-wrapper layout-container" data-sly-test="${productCardModel.topc=='dynamic'}">
+    <sly data-sly-test="${productCardModel.topc=='dynamic'}" >
+    <div data-sly-test.hasFolderPath="${productCardModel.folderPath}" class="product-card-wrapper layout-container" >
         <div class="row flex-height">
         <sly data-sly-test.pcFeaturedCardImage="${productCardModel.featuredImagePath}"></sly>
         <div data-sly-list.cardDetails="${productCardModel.itemList}">
@@ -38,6 +40,8 @@
           </div>
         </div></div>
     </div>
+    <div data-sly-test="${!hasFolderPath}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+    </sly>
     <div class="row module-1" data-sly-test="${productCardModel.topc=='rightNav'}">
 
             <div class="product-name">

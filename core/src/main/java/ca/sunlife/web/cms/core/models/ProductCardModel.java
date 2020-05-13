@@ -283,15 +283,16 @@ public class ProductCardModel {
 		    }
 		try {
 			featuredImagePath = configService.getConfigValues("featuredImagePath", currentPage.getPath());
-			if (topc.equalsIgnoreCase("static")) {
+			if (topc.equalsIgnoreCase("static") && (!StringUtils.isEmpty(getProductCardFragmentPath()))) {
 				getProductCardData();
 				LOG.debug("Sent Product Card data for static cards");
-			} else if (topc.equalsIgnoreCase("dynamic")) {
+			} else if (topc.equalsIgnoreCase("dynamic") && (!StringUtils.isEmpty(getFolderPath()))) {
 				LOG.debug("Dynamic option selected");
 				getProductCardDataDynamic();
 			} else if (topc.equalsIgnoreCase("rightnav")) {
 				LOG.debug("Rignt Nav option selected");
 			}
+			
 		} catch (LoginException | RepositoryException e) {
 			LOG.error("Exception occured in main :: {}", e);
 		}
