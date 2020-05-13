@@ -9,13 +9,14 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface CNWNewsConfig.
  *
- * @author mo92 The Interface CNWNewsConfig.
+ * @author TCS
+ * @version 1.0
  */
 @ ObjectClassDefinition (name = "Sun Life - CNW Services Configuration", description = "CNW Services Configuration")
 public @interface CNWNewsConfig {
 
   /**
-   * Web service url for CNW services.
+   * Gets the cnw service url.
    *
    * @return the cnw service url
    */

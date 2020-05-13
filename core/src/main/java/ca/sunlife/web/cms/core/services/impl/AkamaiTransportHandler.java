@@ -1,13 +1,14 @@
-package ca.sunlife.web.cms.core.services.impl;
+/*
+ *
+ */
 
-import java.io.IOException;
+package ca.sunlife.web.cms.core.services.impl;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.akamai.edgegrid.signer.exceptions.RequestSigningException;
 import com.day.cq.replication.AgentConfig;
 import com.day.cq.replication.ReplicationActionType;
 import com.day.cq.replication.ReplicationException;
@@ -21,6 +22,9 @@ import ca.sunlife.web.cms.core.services.AkamaiCacheClear;
 
 /**
  * The Class AkamaiTransportHandler.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = TransportHandler.class, immediate = true)
 public class AkamaiTransportHandler implements TransportHandler {
@@ -29,14 +33,15 @@ public class AkamaiTransportHandler implements TransportHandler {
   @ Reference
   private AkamaiCacheClear akamaiCache;
 
-  /** Logger Instantiation for Akamai Transport Handler. */
+  /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(AkamaiTransportHandler.class);
 
-  /** Protocol for replication agent transport URI that triggers this transport handler. */
+  /** The Constant AKAMAI_PROTOCOL. */
   private static final String AKAMAI_PROTOCOL = "akamai://";
 
-  /**
-   * {@inheritDoc}
+  /*
+   * (non-Javadoc)
+   * @see com.day.cq.replication.TransportHandler#canHandle(com.day.cq.replication.AgentConfig)
    */
   @ Override
   public boolean canHandle(final AgentConfig config) {
@@ -45,8 +50,10 @@ public class AkamaiTransportHandler implements TransportHandler {
     return transportURI != null && transportURI.startsWith(AKAMAI_PROTOCOL);
   }
 
-  /**
-   * {@inheritDoc}
+  /*
+   * (non-Javadoc)
+   * @see com.day.cq.replication.TransportHandler#deliver(com.day.cq.replication.TransportContext,
+   * com.day.cq.replication.ReplicationTransaction)
    */
   @ Override
   public ReplicationResult deliver(final TransportContext ctx, final ReplicationTransaction tx)
@@ -75,17 +82,9 @@ public class AkamaiTransportHandler implements TransportHandler {
   /**
    * Do activate.
    *
-   * @param ctx
-   *          the ctx
-   * @param tx
-   *          the tx
+   * @param path
+   *          the path
    * @return the replication result
-   * @throws ReplicationException
-   *           the replication exception
-   * @throws RequestSigningException
-   *           the request signing exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
    */
   private ReplicationResult doActivate(final String path) {
     LOGGER.info("Inside doActivate of Akamai");

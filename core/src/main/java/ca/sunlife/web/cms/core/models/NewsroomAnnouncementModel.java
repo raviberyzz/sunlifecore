@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +32,10 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * The Class NewsroomAnnouncement Model.
+ * The Class NewsroomAnnouncementModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = NewsroomAnnouncementModel.class, resourceType = "sunlife/apac/hk/components/content/newsroom-article")
@@ -49,7 +56,7 @@ public class NewsroomAnnouncementModel {
   /** The Constant NEWSROOM_HEADING. */
   private static final String NEWSROOM_HEADING = "newsroomHeading";
 
-  /** The log. */
+  /** The Constant logger. */
   private static final Logger logger = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
 
   /** The fragment path. */
@@ -129,7 +136,7 @@ public class NewsroomAnnouncementModel {
   }
 
   /**
-   * Inits the model.
+   * Inits the.
    */
   @ PostConstruct
   public void init() {

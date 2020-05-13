@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.Collections;
@@ -26,88 +30,106 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 
 /**
  * The Class RelatedArticles.
+ *
+ * @author TCS
+ * @version 1.0
  */
-@Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/content/related-articles")
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/content/related-articles")
 public class RelatedArticles {
 
-	
-	/** The fragment path. */
-	@Inject
-	@Via("resource")
-	private String articleFragmentPath;
+  /** The article fragment path. */
+  @ Inject
+  @ Via ("resource")
+  private String articleFragmentPath;
 
-	/** The current page. */
-	@ScriptVariable
-	private Page currentPage;
+  /** The current page. */
+  @ ScriptVariable
+  private Page currentPage;
 
-	/** The core resource resolver. */
-	@Inject
-	private CoreResourceResolver coreResourceResolver;
+  /** The core resource resolver. */
+  @ Inject
+  private CoreResourceResolver coreResourceResolver;
 
-	/** The Constant JCR_CONTENT_DATA_MASTER. */
-	private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
-	
-	/** The Constant ELEMENT_NAMES. */
-	private static final String[] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
-		      "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
-		      "articleMainDescription", "articleThumbnailImage" };
-	
-	/** The article data. */
-	private final Map<String, String> articleData = new HashMap<>();
-	
-	/** The Constant LOG. */
-	private static final Logger LOG = LoggerFactory.getLogger(RelatedArticles.class);
-	
-	
-	public String getArticleFragmentPath() {
-		return articleFragmentPath;
-	}
+  /** The Constant JCR_CONTENT_DATA_MASTER. */
+  private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
 
-	
-	
-	public void setArticleFragmentPath(String articleFragmentPath) {
-		this.articleFragmentPath = articleFragmentPath;
-	}
+  /** The Constant ELEMENT_NAMES. */
+  private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
+      "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
+      "articleMainDescription", "articleThumbnailImage" };
 
-	
-	public final Map<String, String> getArticleData() {
-		return Collections.unmodifiableMap(articleData);
-	}
+  /** The article data. */
+  private final Map <String, String> articleData = new HashMap <>();
 
-	/**
-	 * Inits the.
-	 */
-	@PostConstruct
-	private void init() {
-		if (!StringUtils.isEmpty(getArticleFragmentPath())) {
-			getRelatedArticleData();
-		    }	
-	}
+  /** The Constant LOG. */
+  private static final Logger LOG = LoggerFactory.getLogger(RelatedArticles.class);
 
-	/**
-	 * Gets the article data.
-	 */
-	public void getRelatedArticleData() {
-		ResourceResolver resourceResolver;
-		try {
-			resourceResolver = coreResourceResolver.getResourceResolver();
-			LOG.debug("Reading content fragment {}", getArticleFragmentPath() + JCR_CONTENT_DATA_MASTER);
-		      final Resource articleResource = resourceResolver
-		          .getResource(getArticleFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
-		      
-		      if (null != articleResource) {
-		          LOG.debug("Parsing Article Data");
-		          final ValueMap articleContent = articleResource.getValueMap();
-		          for (int i = 0; i < ELEMENT_NAMES.length; i++) {
-		        	  articleData.put(ELEMENT_NAMES[i], articleContent.containsKey(ELEMENT_NAMES[i]) ? articleContent.get(ELEMENT_NAMES[i], String.class) : StringUtils.EMPTY);
-		          }
-		      }
-		      LOG.debug("Article Data {}", articleData);
-		      
-		} catch (LoginException  e) {
-			LOG.error(" Exception in getRelatedArticleData {}", e);
-		}
-	      
-	}	
+  /**
+   * Gets the article fragment path.
+   *
+   * @return the article fragment path
+   */
+  public String getArticleFragmentPath() {
+    return articleFragmentPath;
+  }
+
+  /**
+   * Sets the article fragment path.
+   *
+   * @param articleFragmentPath
+   *          the new article fragment path
+   */
+  public void setArticleFragmentPath(final String articleFragmentPath) {
+    this.articleFragmentPath = articleFragmentPath;
+  }
+
+  /**
+   * Gets the article data.
+   *
+   * @return the article data
+   */
+  public final Map <String, String> getArticleData() {
+    return Collections.unmodifiableMap(articleData);
+  }
+
+  /**
+   * Inits the.
+   */
+  @ PostConstruct
+  private void init() {
+    if (! StringUtils.isEmpty(getArticleFragmentPath())) {
+      getRelatedArticleData();
+    }
+  }
+
+  /**
+   * Gets the related article data.
+   *
+   * @return the related article data
+   */
+  public void getRelatedArticleData() {
+    ResourceResolver resourceResolver;
+    try {
+      resourceResolver = coreResourceResolver.getResourceResolver();
+      LOG.debug("Reading content fragment {}", getArticleFragmentPath() + JCR_CONTENT_DATA_MASTER);
+      final Resource articleResource = resourceResolver
+          .getResource(getArticleFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
+
+      if (null != articleResource) {
+        LOG.debug("Parsing Article Data");
+        final ValueMap articleContent = articleResource.getValueMap();
+        for (final String element : ELEMENT_NAMES) {
+          articleData.put(element,
+              articleContent.containsKey(element) ? articleContent.get(element, String.class)
+                  : StringUtils.EMPTY);
+        }
+      }
+      LOG.debug("Article Data {}", articleData);
+
+    } catch (final LoginException e) {
+      LOG.error(" Exception in getRelatedArticleData {}", e);
+    }
+
+  }
 }

@@ -16,9 +16,10 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 /**
- * Sling model for regional languages menu.
+ * The Class RegionLanguageMenu.
  *
- * @author MO92
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)

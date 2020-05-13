@@ -63,9 +63,10 @@ import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * Sling model for Base Page details.
+ * The Class BasePageModel.
  *
- * @author MO92
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
@@ -104,25 +105,25 @@ public class BasePageModel {
   /** The Constant OG_TYPE. */
   static final String OG_TYPE = "og:type";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant OG_PUBLISHED_DATE. */
   static final String OG_PUBLISHED_DATE = "og:published_date";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant OG_MODIFIED_DATE. */
   static final String OG_MODIFIED_DATE = "og:modified_time";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant OG_PUBLISHER. */
   static final String OG_PUBLISHER = "og:publisher";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant OG_SITENAME. */
   static final String OG_SITENAME = "og:sitename";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant TWITTER_SITE. */
   static final String TWITTER_SITE = "twitter:site";
 
-  /** The Constant OG_TYPE. */
+  /** The Constant TWITTER_CREATOR. */
   static final String TWITTER_CREATOR = "twitter:creator";
 
-  /** The Constant LOGGER. */
+  /** The Constant logger. */
   private static final Logger logger = LoggerFactory.getLogger(BasePageModel.class);
 
   /** The current page. */
@@ -142,10 +143,10 @@ public class BasePageModel {
   @ OSGiService
   private SlingSettingsService settingsService;
 
-  /** The live relationship manager. */
-  @OSGiService
+  /** The relationship manager. */
+  @ OSGiService
   private LiveRelationshipManager relationshipManager;
-  
+
   /** The canonical url. */
   @ Inject
   @ Via ("resource")
@@ -156,7 +157,7 @@ public class BasePageModel {
   @ Via ("resource")
   private String pageDescription;
 
-  /** The page title - refers to more title in page properties. */
+  /** The page title. */
   @ Inject
   @ Via ("resource")
   private String pageTitle;
@@ -179,22 +180,22 @@ public class BasePageModel {
   @ Via ("resource")
   private String title;
 
-  /** The social media description. */
+  /** The social media descripton. */
   @ Inject
   @ Via ("resource")
   private String socialMediaDescripton;
-  
-  /** The Page indexing value. */
+
+  /** The page indexing. */
   @ Inject
   @ Via ("resource")
   private String pageIndexing;
 
-  /** The page title - browser title. */
+  /** The social media title. */
   private String socialMediaTitle;
 
   /** The seo page title. */
   private String seoPageTitle;
-  
+
   /** The seo canonical url. */
   private String seoCanonicalUrl;
 
@@ -206,26 +207,26 @@ public class BasePageModel {
   @ Via ("resource")
   private String socialMediaImage;
 
-  /** Advanced page type . */
+  /** The advanced page type. */
   @ Inject
   @ Via ("resource")
   private String advancedPageType;
 
-  /** Head include . */
+  /** The head include. */
   @ Inject
   @ Via ("resource")
   private String headInclude;
 
-  /** body include . */
+  /** The body include. */
   @ Inject
   @ Via ("resource")
   private String bodyInclude;
 
-  /** Advisor type . */
+  /** The advisor type. */
   @ Inject
   @ Via ("resource")
   private String advisorType;
-  
+
   /** The config service. */
   @ Inject
   private SiteConfigService configService;
@@ -238,7 +239,7 @@ public class BasePageModel {
   @ Inject
   private AdvisorDetailService advisorDetailService;
 
-  /** The meta data. */
+  /** The custom metadata. */
   private Map <String, String> customMetadata;
 
   /** The alt language links. */
@@ -247,34 +248,34 @@ public class BasePageModel {
   /** The analytics scriptlet. */
   private String analyticsScriptlet;
 
-  /** The analytics script. */
+  /** The analytics script path. */
   private String analyticsScriptPath;
 
-  /** Bread crumb - UDO. */
+  /** The bread crumb. */
   private String breadCrumb;
 
-  /** The page category. - UDO */
+  /** The page category. */
   private String pageCategory;
 
-  /** The page sub category. - UDO */
+  /** The page sub category. */
   private String pageSubCategory;
 
-  /** Tags - UDO. */
+  /** The tags. */
   @ Inject
   @ Named (com.day.cq.tagging.TagConstants.PN_TAGS)
   @ Via ("resource")
   private String [ ] tags;
 
-  /** Tags - Other UDO tags. */
+  /** The other UDO tags map. */
   private JsonObject otherUDOTagsMap;
 
-  /** UDO Tags - string. */
+  /** The udo tags. */
   private String udoTags;
 
-  /** Default reporting language. */
+  /** The default reporting language. */
   private String defaultReportingLanguage;
-  
-  /** Live copy source path. */
+
+  /** The master page path. */
   private String masterPagePath;
 
   /** The Constant JCR_CONTENT_DATA_MASTER. */
@@ -285,34 +286,39 @@ public class BasePageModel {
 
   /** The Constant ARTICLE_MODIFIED_DATE. */
   private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
-  
-  /** The page locale. */
+
+  /** The page locale default. */
   private String pageLocaleDefault = null;
-  
-  /** The search auto complete url. */
+
+  /** The auto complete url. */
   private String autoCompleteUrl;
-  
-  /** The search API url. */
+
+  /** The search api. */
   private String searchApi;
-  
+
   /**
-	 * @return the pageTitleTag
-	 */
-	public String getPageTitleTag() {
-		return socialMediaTitle;
-	}
+   * Gets the page title tag.
+   *
+   * @return the page title tag
+   */
+  public String getPageTitleTag() {
+    return socialMediaTitle;
+  }
 
-	/**
-	 * @param pageTitleTag the pageTitleTag to set
-	 */
-	public void setPageTitleTag(String pageTitleTag) {
-		this.socialMediaTitle = pageTitleTag;
-	}
+  /**
+   * Sets the page title tag.
+   *
+   * @param pageTitleTag
+   *          the new page title tag
+   */
+  public void setPageTitleTag(final String pageTitleTag) {
+    socialMediaTitle = pageTitleTag;
+  }
 
-	/**
+  /**
    * Gets the seo page title.
    *
-   * @return the seoPageTitle
+   * @return the seo page title
    */
   public String getSeoPageTitle() {
     return seoPageTitle;
@@ -322,44 +328,54 @@ public class BasePageModel {
    * Sets the seo page title.
    *
    * @param seoPageTitle
-   *          the seoPageTitle to set
+   *          the new seo page title
    */
   public void setSeoPageTitle(final String seoPageTitle) {
     this.seoPageTitle = seoPageTitle;
   }
 
   /**
-   * @return the autoCompleteUrl
+   * Gets the auto complete url.
+   *
+   * @return the auto complete url
    */
   public final String getAutoCompleteUrl() {
     return autoCompleteUrl;
   }
 
   /**
-   * @param autoCompleteUrl the autoCompleteUrl to set
+   * Sets the auto complete url.
+   *
+   * @param autoCompleteUrl
+   *          the new auto complete url
    */
-  public final void setAutoCompleteUrl(String autoCompleteUrl) {
+  public final void setAutoCompleteUrl(final String autoCompleteUrl) {
     this.autoCompleteUrl = autoCompleteUrl;
   }
 
   /**
-   * @return the searchApi
+   * Gets the search api.
+   *
+   * @return the search api
    */
   public final String getSearchApi() {
     return searchApi;
   }
 
   /**
-   * @param searchApi the searchApi to set
+   * Sets the search api.
+   *
+   * @param searchApi
+   *          the new search api
    */
-  public final void setSearchApi(String searchApi) {
+  public final void setSearchApi(final String searchApi) {
     this.searchApi = searchApi;
   }
 
   /**
    * Gets the page category.
    *
-   * @return the pageCategory
+   * @return the page category
    */
   public final String getPageCategory() {
     return pageCategory;
@@ -369,7 +385,7 @@ public class BasePageModel {
    * Sets the page category.
    *
    * @param pageCategory
-   *          the pageCategory to set
+   *          the new page category
    */
   public final void setPageCategory(final String pageCategory) {
     this.pageCategory = pageCategory;
@@ -378,7 +394,7 @@ public class BasePageModel {
   /**
    * Gets the page sub category.
    *
-   * @return the pageSubCategory
+   * @return the page sub category
    */
   public final String getPageSubCategory() {
     return pageSubCategory;
@@ -388,7 +404,7 @@ public class BasePageModel {
    * Sets the page sub category.
    *
    * @param pageSubCategory
-   *          the pageSubCategory to set
+   *          the new page sub category
    */
   public final void setPageSubCategory(final String pageSubCategory) {
     this.pageSubCategory = pageSubCategory;
@@ -397,7 +413,7 @@ public class BasePageModel {
   /**
    * Gets the analytics script path.
    *
-   * @return the analyticsScript
+   * @return the analytics script path
    */
   public final String getAnalyticsScriptPath() {
     return analyticsScriptPath;
@@ -416,7 +432,7 @@ public class BasePageModel {
   /**
    * Gets the analytics scriptlet.
    *
-   * @return the analyticsScriptlet
+   * @return the analytics scriptlet
    */
   public final String getAnalyticsScriptlet() {
     return analyticsScriptlet;
@@ -426,7 +442,7 @@ public class BasePageModel {
    * Sets the analytics scriptlet.
    *
    * @param analyticsScriptlet
-   *          the analyticsScriptlet to set
+   *          the new analytics scriptlet
    */
   public final void setAnalyticsScriptlet(final String analyticsScriptlet) {
     this.analyticsScriptlet = analyticsScriptlet;
@@ -435,7 +451,7 @@ public class BasePageModel {
   /**
    * Gets the custom metadata.
    *
-   * @return the customMetadata
+   * @return the custom metadata
    */
   public Map <String, String> getCustomMetadata() {
     return customMetadata;
@@ -445,7 +461,7 @@ public class BasePageModel {
    * Sets the custom metadata.
    *
    * @param customMetadata
-   *          the customMetadata to set
+   *          the custom metadata
    */
   public void setCustomMetadata(final Map <String, String> customMetadata) {
     this.customMetadata = customMetadata;
@@ -473,7 +489,7 @@ public class BasePageModel {
   /**
    * Gets the seo canonical url.
    *
-   * @return the seoCanonicalUrl
+   * @return the seo canonical url
    */
   public String getSeoCanonicalUrl() {
     return seoCanonicalUrl;
@@ -483,7 +499,7 @@ public class BasePageModel {
    * Sets the seo canonical url.
    *
    * @param seoCanonicalUrl
-   *          the seoCanonicalUrl to set
+   *          the new seo canonical url
    */
   public void setSeoCanonicalUrl(final String seoCanonicalUrl) {
     this.seoCanonicalUrl = seoCanonicalUrl;
@@ -492,7 +508,7 @@ public class BasePageModel {
   /**
    * Gets the seo description.
    *
-   * @return the seoDescription
+   * @return the seo description
    */
   public String getSeoDescription() {
     return seoDescription;
@@ -502,7 +518,7 @@ public class BasePageModel {
    * Sets the seo description.
    *
    * @param seoDescription
-   *          the seoDescription to set
+   *          the new seo description
    */
   public void setSeoDescription(final String seoDescription) {
     this.seoDescription = seoDescription;
@@ -511,7 +527,7 @@ public class BasePageModel {
   /**
    * Gets the bread crumb.
    *
-   * @return the breadCrumb
+   * @return the bread crumb
    */
   public String getBreadCrumb() {
     return breadCrumb;
@@ -521,7 +537,7 @@ public class BasePageModel {
    * Sets the bread crumb.
    *
    * @param breadCrumb
-   *          the breadCrumb to set
+   *          the new bread crumb
    */
   public void setBreadCrumb(final String breadCrumb) {
     this.breadCrumb = breadCrumb;
@@ -530,7 +546,7 @@ public class BasePageModel {
   /**
    * Gets the other UDO tags map.
    *
-   * @return the otherUDOTagsMap
+   * @return the other UDO tags map
    */
   public JsonObject getOtherUDOTagsMap() {
     return otherUDOTagsMap;
@@ -540,7 +556,7 @@ public class BasePageModel {
    * Sets the other UDO tags map.
    *
    * @param otherUDOTagsMap
-   *          the otherUDOTagsMap to set
+   *          the new other UDO tags map
    */
   public void setOtherUDOTagsMap(final JsonObject otherUDOTagsMap) {
     this.otherUDOTagsMap = otherUDOTagsMap;
@@ -549,7 +565,7 @@ public class BasePageModel {
   /**
    * Gets the udo tags.
    *
-   * @return the udoTags
+   * @return the udo tags
    */
   public String getUdoTags() {
     return udoTags;
@@ -559,7 +575,7 @@ public class BasePageModel {
    * Sets the udo tags.
    *
    * @param udoTags
-   *          the udoTags to set
+   *          the new udo tags
    */
   public void setUdoTags(final String udoTags) {
     this.udoTags = udoTags;
@@ -568,7 +584,7 @@ public class BasePageModel {
   /**
    * Gets the advanced page type.
    *
-   * @return the advancedPageType
+   * @return the advanced page type
    */
   public String getAdvancedPageType() {
     return advancedPageType;
@@ -578,7 +594,7 @@ public class BasePageModel {
    * Sets the advanced page type.
    *
    * @param advancedPageType
-   *          the advancedPageType to set
+   *          the new advanced page type
    */
   public void setAdvancedPageType(final String advancedPageType) {
     this.advancedPageType = advancedPageType;
@@ -587,7 +603,7 @@ public class BasePageModel {
   /**
    * Gets the social media descripton.
    *
-   * @return the socialMediaDescripton
+   * @return the social media descripton
    */
   public String getSocialMediaDescripton() {
     return socialMediaDescripton;
@@ -597,26 +613,26 @@ public class BasePageModel {
    * Sets the social media descripton.
    *
    * @param socialMediaDescripton
-   *          the socialMediaDescripton to set
+   *          the new social media descripton
    */
   public void setSocialMediaDescripton(final String socialMediaDescripton) {
     this.socialMediaDescripton = socialMediaDescripton;
   }
-  
+
   /**
-   * Gets the page indexing value.
+   * Gets the page indexing.
    *
-   * @return the page indexing value
+   * @return the page indexing
    */
   public String getPageIndexing() {
     return pageIndexing;
   }
 
   /**
-   * Sets the Page indexing value.
+   * Sets the page indexing.
    *
    * @param pageIndexing
-   *          the pageIndexing to set
+   *          the new page indexing
    */
   public void setPageIndexing(final String pageIndexing) {
     this.pageIndexing = pageIndexing;
@@ -625,7 +641,7 @@ public class BasePageModel {
   /**
    * Gets the social media image.
    *
-   * @return the socialMediaImage
+   * @return the social media image
    */
   public String getSocialMediaImage() {
     return socialMediaImage;
@@ -635,7 +651,7 @@ public class BasePageModel {
    * Sets the social media image.
    *
    * @param socialMediaImage
-   *          the socialMediaImage to set
+   *          the new social media image
    */
   public void setSocialMediaImage(final String socialMediaImage) {
     this.socialMediaImage = socialMediaImage;
@@ -644,7 +660,7 @@ public class BasePageModel {
   /**
    * Gets the head include.
    *
-   * @return the headInclude
+   * @return the head include
    */
   public final String getHeadInclude() {
     return headInclude;
@@ -654,7 +670,7 @@ public class BasePageModel {
    * Sets the head include.
    *
    * @param headInclude
-   *          the headInclude to set
+   *          the new head include
    */
   public final void setHeadInclude(final String headInclude) {
     this.headInclude = headInclude;
@@ -663,7 +679,7 @@ public class BasePageModel {
   /**
    * Gets the body include.
    *
-   * @return the bodyInclude
+   * @return the body include
    */
   public final String getBodyInclude() {
     return bodyInclude;
@@ -673,42 +689,52 @@ public class BasePageModel {
    * Sets the body include.
    *
    * @param bodyInclude
-   *          the bodyInclude to set
+   *          the new body include
    */
   public final void setBodyInclude(final String bodyInclude) {
     this.bodyInclude = bodyInclude;
   }
 
   /**
+   * Gets the tags.
+   *
    * @return the tags
-  */
-  public String[] getTags() {
-	return null != tags ? Arrays.copyOf(tags, tags.length) : new String[0];
+   */
+  public String [ ] getTags() {
+    return null != tags ? Arrays.copyOf(tags, tags.length) : new String [ 0 ];
   }
 
   /**
-   * @param tags the tags to set
-  */
-  public void setTags(String[] tags) {
-	this.tags = null != tags ? tags.clone() : null;
+   * Sets the tags.
+   *
+   * @param tags
+   *          the new tags
+   */
+  public void setTags(final String [ ] tags) {
+    this.tags = null != tags ? tags.clone() : null;
   }
-  
+
   /**
-   * @return the pageLocaleDefault
+   * Gets the page locale default.
+   *
+   * @return the page locale default
    */
   public String getPageLocaleDefault() {
-	return pageLocaleDefault;
+    return pageLocaleDefault;
   }
 
   /**
-   * @param pageLocaleDefault the pageLocaleDefault to set
-  */
-  public void setPageLocaleDefault(String pageLocaleDefault) {
-	this.pageLocaleDefault = pageLocaleDefault;
+   * Sets the page locale default.
+   *
+   * @param pageLocaleDefault
+   *          the new page locale default
+   */
+  public void setPageLocaleDefault(final String pageLocaleDefault) {
+    this.pageLocaleDefault = pageLocaleDefault;
   }
 
   /**
-   * Inits the model.
+   * Inits the.
    *
    * @throws LoginException
    *           the login exception
@@ -727,7 +753,8 @@ public class BasePageModel {
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
-    logger.debug("Base page model :: locale found is {}, language is {}", locale, pageLocaleDefault);
+    logger.debug("Base page model :: locale found is {}, language is {}", locale,
+        pageLocaleDefault);
 
     // Condition for CNW News details page starts
     logger.debug("advancedPageType: {}", advancedPageType);
@@ -752,11 +779,11 @@ public class BasePageModel {
 
     // SEO title - <title> tag
     seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
-    
+
     // socialMediaTitle
-    String navTitle = currentPage.getNavigationTitle();
+    final String navTitle = currentPage.getNavigationTitle();
     socialMediaTitle = null == navTitle ? title : navTitle;
-    
+
     // SEO description - <meta name="description"> tag
     seoDescription = description;
 
@@ -789,7 +816,8 @@ public class BasePageModel {
     customMetadata.put(TWITTER_URL, seoCanonicalUrl);
     customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
     customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
-    customMetadata.put(OG_LOCALE, null != locale ? locale.replace("_", "-").toLowerCase(Locale.ROOT) : null);
+    customMetadata.put(OG_LOCALE,
+        null != locale ? locale.replace("_", "-").toLowerCase(Locale.ROOT) : null);
     if (socialMediaImage != null) {
       customMetadata.put(OG_IMAGE, domain + socialMediaImage);
       customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
@@ -805,26 +833,30 @@ public class BasePageModel {
     logger.debug("metadata :: {}", customMetadata);
 
     // Sets alternate URLs
-    if( null != resolver && null != currentPage.getPath() && null != resolver.getResource(currentPage.getPath()))
-    	generateAlternateUrls(resolver.getResource(currentPage.getPath()));
-    
+    if (null != resolver && null != currentPage.getPath()
+        && null != resolver.getResource(currentPage.getPath())) {
+      generateAlternateUrls(resolver.getResource(currentPage.getPath()));
+    }
+
     // Sets UDO parameters
     otherUDOTagsMap = new JsonObject();
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
-		if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-			otherUDOTagsMap.addProperty("page_canonical_url_default", domain.concat(
-			                                                            shortenURL(masterPagePath, configService.getConfigValues("siteUrl", masterPagePath)))
-			                                                            .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical
-			                                                                                                             // url
-			                                                                                                             // -
-			                                                                                                             // default
-		} else {
-			otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
-			                                                                            // -
-			                                                                            // default
-		}
-		otherUDOTagsMap.addProperty("page_language", pageLocaleDefault.toLowerCase(Locale.ROOT)); // Page language
+    if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
+      otherUDOTagsMap.addProperty("page_canonical_url_default", domain
+          .concat(
+              shortenURL(masterPagePath, configService.getConfigValues("siteUrl", masterPagePath)))
+          .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical
+                                                           // url
+                                                           // -
+                                                           // default
+    } else {
+      otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
+                                                                                  // -
+                                                                                  // default
+    }
+    otherUDOTagsMap.addProperty("page_language", pageLocaleDefault.toLowerCase(Locale.ROOT)); // Page
+                                                                                              // language
 
     // Sets UDO parameters
     setUDOParameters();
@@ -842,14 +874,16 @@ public class BasePageModel {
 
     final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
     udoTags = gson.toJson(otherUDOTagsMap);
-    setAutoCompleteUrl(StringUtils.defaultIfEmpty(configService.getConfigValues("autoCompleteUrl", pagePath), StringUtils.EMPTY));
-    setSearchApi(StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath), StringUtils.EMPTY));
-    
+    setAutoCompleteUrl(StringUtils.defaultIfEmpty(
+        configService.getConfigValues("autoCompleteUrl", pagePath), StringUtils.EMPTY));
+    setSearchApi(StringUtils.defaultIfEmpty(configService.getConfigValues("searchApi", pagePath),
+        StringUtils.EMPTY));
+
     logger.debug("Map Display {}", udoTags);
   }
 
   /**
-   * Formats page title.
+   * Gets the page title.
    *
    * @param title
    *          the title
@@ -870,13 +904,13 @@ public class BasePageModel {
   }
 
   /**
-   * Generates shorten url.
+   * Shorten URL.
    *
    * @param pagePath
    *          the page path
    * @param siteUrl
    *          the site url
-   * @return shortened url
+   * @return the string
    */
   public String shortenURL(final String pagePath, final String siteUrl) {
     if (null == siteUrl || siteUrl.length() <= 0) {
@@ -887,7 +921,7 @@ public class BasePageModel {
   }
 
   /**
-   * Sets alternate URLs.
+   * Sets the alternate UR ls.
    *
    * @param pagePath
    *          the page path
@@ -926,7 +960,9 @@ public class BasePageModel {
         logger.debug("setAlternateURLs :: New Url :: {}, defaultReportingLanguage :: {}", newUrl,
             defaultReportingLanguage);
         if (null != resolver.getResource(newUrl)) {
-          altLanguageLinks.put(languageCode.split("_") [ 0 ] + "-" + languageCode.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+          altLanguageLinks.put(
+              languageCode.split("_") [ 0 ] + "-"
+                  + languageCode.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
               domain + shortenURL(newUrl, siteLocation) + BasePageModelConstants.SLASH_CONSTANT);
         }
       }
@@ -939,7 +975,7 @@ public class BasePageModel {
   }
 
   /**
-   * Sets UDO tags.
+   * Sets the UDO parameters.
    *
    * @throws LoginException
    *           the login exception
@@ -996,7 +1032,7 @@ public class BasePageModel {
         pageSubCategory);
     otherUDOTagsMap.addProperty("page_breadcrumb", breadCrumb); // Bread crumb
     otherUDOTagsMap.addProperty("page_category", pageCategory == null ? breadCrumb : pageCategory); // Page
-                                                                                            // category
+    // category
     otherUDOTagsMap.addProperty("page_subcategory", pageSubCategory == null ? "" : pageSubCategory); // Page
                                                                                                      // sub
                                                                                                      // category
@@ -1007,7 +1043,7 @@ public class BasePageModel {
   }
 
   /**
-   * Forms title to be displayed in bread crumb.
+   * Gets the breadcrumb title.
    *
    * @param page
    *          the page
@@ -1028,12 +1064,10 @@ public class BasePageModel {
   }
 
   /**
-   * Sets UDO tags.
+   * Sets the other UDO tags.
    *
    * @param udoTagStart
    *          the new other UDO tags
-   * @throws Exception
-   *           the exception
    */
   public void setOtherUDOTags(final String udoTagStart) {
     logger.debug("Entry :: setOtherUDOTags method of :: udoTagStart :: {}", udoTagStart);
@@ -1088,7 +1122,7 @@ public class BasePageModel {
   }
 
   /**
-   * Sets cnw news pages data.
+   * Process data for CNW news.
    *
    * @param pageLocale
    *          the page locale
@@ -1129,7 +1163,7 @@ public class BasePageModel {
   }
 
   /**
-   * Sets advisor pages data.
+   * Process data for advisor pages.
    *
    * @throws LoginException
    *           the login exception
@@ -1168,7 +1202,7 @@ public class BasePageModel {
   }
 
   /**
-   * Gets title of advisor page.
+   * Gets the advisor title.
    *
    * @param inputJson
    *          the input json
@@ -1193,7 +1227,7 @@ public class BasePageModel {
   }
 
   /**
-   * Sets UDO tags for advisor.
+   * Sets the UDO tags for advisor pages.
    */
   public void setUDOTagsForAdvisorPages() {
     logger.debug("Entry :: BasePageModel :: setUDOTagsForAdvisorPages :: ");
@@ -1209,8 +1243,13 @@ public class BasePageModel {
   }
 
   /**
-   * Sets social meta tags for article pages.
-  */
+   * Sets the article page social meta tags.
+   *
+   * @throws LoginException
+   *           the login exception
+   * @throws RepositoryException
+   *           the repository exception
+   */
   public void setArticlePageSocialMetaTags() throws LoginException, RepositoryException {
     logger.debug("Entry :: BasePageModel :: setArticlePageSocialMetaTags :: ");
     final String pagePath = currentPage.getPath();
@@ -1273,142 +1312,152 @@ public class BasePageModel {
     customMetadata.put(OG_MODIFIED_DATE, articlePublishedModifiedDate);
     logger.debug("Exit :: BasePageModel :: setArticlePageSocialMetaTags :: ");
   }
-  
-	/**
-	 * Generates alternate urls
-	 * 
-	 * @param resource
-	 */
-	private void generateAlternateUrls(Resource resource) {
-		logger.debug("Entry :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
-		try {
-			if (null == resolver || null == resource || null == resource.getPath()) {
-				return;
-			}
-			Resource altLanResource = resolver.getResource(resource.getPath()
-			                                                            + "/jcr:content/alternateUrls");
-			logger.debug("Alt urls --> {}", altLanResource);
-			if (null != altLanResource) {
-				generatePageSpecificAlternateUrls();
-				return;
-			}
-			final String pagePath = currentPage.getPath();
-			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-			final String siteDomain = configService.getConfigValues("domain", pagePath);
-			final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
 
-			// check if it is a source
-			logger.debug("is source {}", relationshipManager.isSource(resource));
-			if (relationshipManager.isSource(resource)) {
-				logger.debug("Page is a source page");
-				Resource target = resolver.getResource(resource.getPath());
-				@ SuppressWarnings("deprecation")
-				Collection<LiveRelationship> relationships = relationshipManager.getLiveRelationships(
-				                                                            target, null, null, false);
-				altLanguageLinks = new HashMap<>();
-				for (LiveRelationship relationship : relationships) {
-					String liveCopyPath = relationship.getTargetPath();
-					// filter non-existing
-					// LiveCopy Resources and
-					// LiveCopy Launches
-					if (relationship.getStatus().isTargetExisting() && !LaunchUtils.isLaunchResourcePath(
-					                                                            liveCopyPath)) {
-						logger.debug("path :: {}", liveCopyPath);
-						String sourcePageLocale = configService.getConfigValues("pageLocale", liveCopyPath);
-						String sourceSiteUrl = configService.getConfigValues("siteUrl", liveCopyPath);
-						String sourceSiteDomain = configService.getConfigValues("domain", liveCopyPath);
-						logger.debug("generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
-						                                                            liveCopyPath,
-						                                                            sourcePageLocale,
-						                                                            sourceSiteUrl);
-						altLanguageLinks.put(sourcePageLocale.split("_") [ 0 ] + "-" + sourcePageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-						                                                            sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
-					}
-				}
-			}
-			// check if it is a live copy
-			logger.debug("has live relationship {}", relationshipManager.hasLiveRelationship(resource));
-			if (relationshipManager.hasLiveRelationship(resource)) {
-				altLanguageLinks = new HashMap<>();
+  /**
+   * Generate alternate urls.
+   *
+   * @param resource
+   *          the resource
+   */
+  private void generateAlternateUrls(final Resource resource) {
+    logger.debug("Entry :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+    try {
+      if (null == resolver || null == resource || null == resource.getPath()) {
+        return;
+      }
+      final Resource altLanResource = resolver
+          .getResource(resource.getPath() + "/jcr:content/alternateUrls");
+      logger.debug("Alt urls --> {}", altLanResource);
+      if (null != altLanResource) {
+        generatePageSpecificAlternateUrls();
+        return;
+      }
+      final String pagePath = currentPage.getPath();
+      final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+      final String siteDomain = configService.getConfigValues("domain", pagePath);
+      final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
 
-				// the resource is a live copy
-				LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resource,
-				                                                            false);
-				if (liveRelationship != null) {
-					LiveCopy liveCopy = liveRelationship.getLiveCopy();
-					if (liveCopy != null) {
-						String sourcePath = liveCopy.getBlueprintPath(); // returns the source path
-						masterPagePath = sourcePath;
-						String sourcePageLocale = configService.getConfigValues("pageLocale", sourcePath);
-						String sourceSiteUrl = configService.getConfigValues("siteUrl", sourcePath);
-						String sourceSiteDomain = configService.getConfigValues("domain", sourcePath);
-						logger.debug("generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
-						                                                            sourcePath,
-						                                                            sourcePageLocale,
-						                                                            sourceSiteUrl);
-						altLanguageLinks.put(sourcePageLocale.split("_") [ 0 ] + "-" + sourcePageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-						                                                            sourceSiteDomain + shortenURL(sourcePath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
-					}
-				}
-			}
-			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.split("_") [ 0 ] + "-" + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
-				                                                            + shortenURL(pagePath, siteUrl)
-				                                                            + BasePageModelConstants.SLASH_CONSTANT);
-			}
-			logger.debug("New altLanguageLinks :: {}", altLanguageLinks);
-		} catch (WCMException | LoginException | RepositoryException e) {
-			logger.error("Unable to get the live copy: {}", e.getMessage());
-		}
-		logger.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
-	}
+      // check if it is a source
+      logger.debug("is source {}", relationshipManager.isSource(resource));
+      if (relationshipManager.isSource(resource)) {
+        logger.debug("Page is a source page");
+        final Resource target = resolver.getResource(resource.getPath());
+        @ SuppressWarnings ("deprecation")
+        final Collection <LiveRelationship> relationships = relationshipManager
+            .getLiveRelationships(target, null, null, false);
+        altLanguageLinks = new HashMap <>();
+        for (final LiveRelationship relationship : relationships) {
+          final String liveCopyPath = relationship.getTargetPath();
+          // filter non-existing
+          // LiveCopy Resources and
+          // LiveCopy Launches
+          if (relationship.getStatus().isTargetExisting()
+              && ! LaunchUtils.isLaunchResourcePath(liveCopyPath)) {
+            logger.debug("path :: {}", liveCopyPath);
+            final String sourcePageLocale = configService.getConfigValues("pageLocale",
+                liveCopyPath);
+            final String sourceSiteUrl = configService.getConfigValues("siteUrl", liveCopyPath);
+            final String sourceSiteDomain = configService.getConfigValues("domain", liveCopyPath);
+            logger.debug(
+                "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+                liveCopyPath, sourcePageLocale, sourceSiteUrl);
+            altLanguageLinks
+                .put(
+                    sourcePageLocale.split("_") [ 0 ] + "-"
+                        + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
+                            .toLowerCase(Locale.ROOT),
+                    sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl)
+                        + BasePageModelConstants.SLASH_CONSTANT);
+          }
+        }
+      }
+      // check if it is a live copy
+      logger.debug("has live relationship {}", relationshipManager.hasLiveRelationship(resource));
+      if (relationshipManager.hasLiveRelationship(resource)) {
+        altLanguageLinks = new HashMap <>();
 
-	/**
-	 * Generates page specific alt
-	 * urls.
-	 * 
-	 * @param pagePath
-	 * @param pageLocale
-	 */
-	public void generatePageSpecificAlternateUrls() {
-		logger.debug("Entry :: setAlternateURLs");
-		Resource alternateUrls = resolver.getResource(currentPage.getPath()
-		                                                            + "/jcr:content/alternateUrls");
-		if (null == alternateUrls)
-			return;
-		altLanguageLinks = new HashMap<>();
-		try {
-			for (final Resource currentResource : alternateUrls.getChildren()) {
-				final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
-				String altLang = (String) currentResourceProperties.getOrDefault("alternateLanguage",
-				                                                            StringUtils.EMPTY);
-				String altUrl = (String) currentResourceProperties.getOrDefault("alternateUrl",
-				                                                            StringUtils.EMPTY);
-				String defaultLanguage = (String) currentResourceProperties.getOrDefault("defaultLanguage",
-				                                                            StringUtils.EMPTY);
+        // the resource is a live copy
+        final LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resource,
+            false);
+        if (liveRelationship != null) {
+          final LiveCopy liveCopy = liveRelationship.getLiveCopy();
+          if (liveCopy != null) {
+            final String sourcePath = liveCopy.getBlueprintPath(); // returns the source path
+            masterPagePath = sourcePath;
+            final String sourcePageLocale = configService.getConfigValues("pageLocale", sourcePath);
+            final String sourceSiteUrl = configService.getConfigValues("siteUrl", sourcePath);
+            final String sourceSiteDomain = configService.getConfigValues("domain", sourcePath);
+            logger.debug(
+                "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+                sourcePath, sourcePageLocale, sourceSiteUrl);
+            altLanguageLinks
+                .put(
+                    sourcePageLocale.split("_") [ 0 ] + "-"
+                        + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
+                            .toLowerCase(Locale.ROOT),
+                    sourceSiteDomain + shortenURL(sourcePath, sourceSiteUrl)
+                        + BasePageModelConstants.SLASH_CONSTANT);
+          }
+        }
+      }
+      if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
+        altLanguageLinks.put(
+            pageLocale.split("_") [ 0 ] + "-"
+                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+            siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+      }
+      logger.debug("New altLanguageLinks :: {}", altLanguageLinks);
+    } catch (WCMException | LoginException | RepositoryException e) {
+      logger.error("Unable to get the live copy: {}", e.getMessage());
+    }
+    logger.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+  }
 
-				String altSiteUrl = configService.getConfigValues("siteUrl", altUrl);
-				String altSiteDomain = configService.getConfigValues("domain", altUrl);
+  /**
+   * Generate page specific alternate urls.
+   */
+  public void generatePageSpecificAlternateUrls() {
+    logger.debug("Entry :: setAlternateURLs");
+    final Resource alternateUrls = resolver
+        .getResource(currentPage.getPath() + "/jcr:content/alternateUrls");
+    if (null == alternateUrls) {
+      return;
+    }
+    altLanguageLinks = new HashMap <>();
+    try {
+      for (final Resource currentResource : alternateUrls.getChildren()) {
+        final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
+        final String altLang = (String) currentResourceProperties.getOrDefault("alternateLanguage",
+            StringUtils.EMPTY);
+        final String altUrl = (String) currentResourceProperties.getOrDefault("alternateUrl",
+            StringUtils.EMPTY);
+        final String defaultLanguage = (String) currentResourceProperties
+            .getOrDefault("defaultLanguage", StringUtils.EMPTY);
 
-				masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
-				altLanguageLinks.put(altLang.split("_") [ 0 ] + "-" + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), altSiteDomain
-				                                                            + shortenURL(altUrl, altSiteUrl)
-				                                                            + BasePageModelConstants.SLASH_CONSTANT);
-			}
-			final String pagePath = currentPage.getPath();
-			final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-			final String siteDomain = configService.getConfigValues("domain", pagePath);
-			final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
-			if (null != altLanguageLinks && !altLanguageLinks.isEmpty()) {
-				altLanguageLinks.put(pageLocale.split("_") [ 0 ] + "-" + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT), siteDomain
-				                                                            + shortenURL(pagePath, siteUrl)
-				                                                            + BasePageModelConstants.SLASH_CONSTANT);
-			}
-			logger.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
-		} catch (LoginException | RepositoryException e) {
-			logger.error("Error while generating alternate urls :: {}", e.getMessage());
-		}
-		logger.debug("Map {}", altLanguageLinks);
-	}
-	
+        final String altSiteUrl = configService.getConfigValues("siteUrl", altUrl);
+        final String altSiteDomain = configService.getConfigValues("domain", altUrl);
+
+        masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
+        altLanguageLinks.put(
+            altLang.split("_") [ 0 ] + "-"
+                + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+            altSiteDomain + shortenURL(altUrl, altSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+      }
+      final String pagePath = currentPage.getPath();
+      final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+      final String siteDomain = configService.getConfigValues("domain", pagePath);
+      final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
+      if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
+        altLanguageLinks.put(
+            pageLocale.split("_") [ 0 ] + "-"
+                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+            siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+      }
+      logger.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
+    } catch (LoginException | RepositoryException e) {
+      logger.error("Error while generating alternate urls :: {}", e.getMessage());
+    }
+    logger.debug("Map {}", altLanguageLinks);
+  }
+
 }

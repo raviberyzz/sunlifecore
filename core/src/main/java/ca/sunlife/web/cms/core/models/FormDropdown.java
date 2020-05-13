@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -11,6 +15,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface FormDropdown.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -34,42 +41,41 @@ public interface FormDropdown {
   public String getId();
 
   /**
-   * Gets the Screen reader value for title
+   * Gets the checks if is screen reader.
    *
-   * @return the Screen reader value
+   * @return the checks if is screen reader
    */
   @ Inject
   public String getIsScreenReader();
-  
- /** Gets the Data title
-  *
-  * @return the Data title
-  */
- @ Inject
- public String getDataTitle();  
- 
- /**
-  * Gets the Data value
-  *
-  * @return the Data value
-  */
- @ Inject
- public String getDataValue();
- 
- /**
-  
+
   /**
-   * Gets the Is required value
+   * Gets the data title.
    *
-   * @return the Is required value
+   * @return the data title
+   */
+  @ Inject
+  public String getDataTitle();
+
+  /**
+   * Gets the data value.
+   *
+   * @return the data value
+   */
+  @ Inject
+  public String getDataValue();
+
+  /**
+   * Gets the required.
+   *
+   * @return the required
    */
   @ Inject
   public String getRequired();
-  
+
   /**
-   * Gets the Validation message
+   * Gets the constraint message.
    *
-   * @return the Validation message
+   * @return the constraint message
    */
   @ Inject
   public String getConstraintMessage();
@@ -115,15 +121,18 @@ public interface FormDropdown {
   public List <ItemsGroup> getItemsGroup();
 
   /**
-   * Gets the is custom action formation required flag.
+   * Gets the custom action generation required.
    *
-   * @return the is custom action formation required flag
+   * @return the custom action generation required
    */
   @ Inject
   public String getCustomActionGenerationRequired();
 
   /**
    * The Interface ItemsGroup.
+   *
+   * @author TCS
+   * @version 1.0
    */
   @ Model (adaptables = {
       Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -149,6 +158,9 @@ public interface FormDropdown {
 
   /**
    * The Interface Items.
+   *
+   * @author TCS
+   * @version 1.0
    */
   @ Model (adaptables = {
       Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)

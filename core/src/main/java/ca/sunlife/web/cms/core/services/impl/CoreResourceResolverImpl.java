@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.util.HashMap;
@@ -18,6 +22,9 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 
 /**
  * The Class CoreResourceResolverImpl.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = CoreResourceResolver.class, immediate = true)
 @ Designate (ocd = CoreResourceResolverConfig.class)

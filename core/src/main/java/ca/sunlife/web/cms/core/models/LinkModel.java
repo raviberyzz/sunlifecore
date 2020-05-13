@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,9 +14,10 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 /**
- * Sling model for Links - regional languages menu.
+ * The Interface LinkModel.
  *
- * @author MO92
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface LinkModel {
@@ -50,9 +55,9 @@ public interface LinkModel {
   String getNextList();
 
   /**
-   * Gets the expanded list.
+   * Gets the expand list.
    *
-   * @return the expanded list
+   * @return the expand list
    */
   @ Inject
   String getExpandList();

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -9,17 +13,20 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface SelectorExFragMap.
+ *
+ * @author TCS
+ * @version 1.0
  */
-@Model(adaptables = { SlingHttpServletRequest.class,
+@ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface SelectorExFragMap {
-  
+
   /**
    * Gets the selector.
    *
    * @return the selector
    */
-  @Inject
+  @ Inject
   public String getSelector();
 
   /**
@@ -27,7 +34,7 @@ public interface SelectorExFragMap {
    *
    * @return the exfrag path
    */
-  @Inject
+  @ Inject
   public String getExfragPath();
 
 }

@@ -23,24 +23,25 @@ import ca.sunlife.web.cms.core.services.RestService;
 /**
  * The Class AdvisorDetailServiceImpl.
  *
- * @author mo92 The class AdvisorDetailServiceImpl
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = AdvisorDetailService.class, immediate = true)
 @ Designate (ocd = AdvisorWebServiceConfig.class)
 public class AdvisorDetailServiceImpl implements AdvisorDetailService {
 
-  /** The log. */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  /** RestService injected. */
+  /** The rest service. */
   @ Reference
   private RestService restService;
 
-  /** Advisor WebService Config injected. */
+  /** The advisor web service config. */
   private AdvisorWebServiceConfig advisorWebServiceConfig;
 
   /**
-   * Activate method.
+   * Activate.
    *
    * @param webServiceConfig
    *          the web service config

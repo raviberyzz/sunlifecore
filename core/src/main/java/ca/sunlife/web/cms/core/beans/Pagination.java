@@ -14,38 +14,37 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class Pagination.
  *
- * @author mo92 The calss Pagination.
+ * @author TCS
+ * @version 1.0
  */
 public class Pagination {
 
-  /**
-   * The logger.
-   */
+  /** The Constant logger. */
   private static final Logger logger = LoggerFactory.getLogger(Pagination.class);
 
-  /** prevPage. */
+  /** The prev page. */
   private int prevPage = 0;
 
-  /** curPage. */
+  /** The cur page. */
   private int curPage = 1;
 
-  /** Next page no. */
+  /** The next page no. */
   private int nextPageNo;
 
-  /** total pages. */
+  /** The total pages. */
   private int totalPages = 0;
 
-  /** page items - li. */
+  /** The page items. */
   private List <PageItem> pageItems;
 
-  /** rcordPerPageStr. */
+  /** The rcord per page str. */
   private String rcordPerPageStr = "10"; // Default to 10 items per page
-  
+
   /**
-   * Pagination constructor.
+   * Instantiates a new pagination.
    */
   public Pagination() {
-	super();
+    super();
   }
 
   /**
@@ -75,7 +74,7 @@ public class Pagination {
   /**
    * Gets the prev page.
    *
-   * @return the prevPage
+   * @return the prev page
    */
   public int getPrevPage() {
     return prevPage;
@@ -85,7 +84,7 @@ public class Pagination {
    * Sets the prev page.
    *
    * @param prevPage
-   *          the prevPage to set
+   *          the new prev page
    */
   public void setPrevPage(final int prevPage) {
     this.prevPage = prevPage;
@@ -94,7 +93,7 @@ public class Pagination {
   /**
    * Gets the cur page.
    *
-   * @return the curPage
+   * @return the cur page
    */
   public int getCurPage() {
     return curPage;
@@ -104,7 +103,7 @@ public class Pagination {
    * Sets the cur page.
    *
    * @param curPage
-   *          the curPage to set
+   *          the new cur page
    */
   public void setCurPage(final int curPage) {
     this.curPage = curPage;
@@ -113,7 +112,7 @@ public class Pagination {
   /**
    * Gets the next page no.
    *
-   * @return the nextPageNo
+   * @return the next page no
    */
   public int getNextPageNo() {
     return nextPageNo;
@@ -123,7 +122,7 @@ public class Pagination {
    * Sets the next page no.
    *
    * @param nextPageNo
-   *          the nextPageNo to set
+   *          the new next page no
    */
   public void setNextPageNo(final int nextPageNo) {
     this.nextPageNo = nextPageNo;
@@ -132,7 +131,7 @@ public class Pagination {
   /**
    * Gets the total pages.
    *
-   * @return the totalPages
+   * @return the total pages
    */
   public int getTotalPages() {
     return totalPages;
@@ -142,7 +141,7 @@ public class Pagination {
    * Sets the total pages.
    *
    * @param totalPages
-   *          the totalPages to set
+   *          the new total pages
    */
   public void setTotalPages(final int totalPages) {
     this.totalPages = totalPages;
@@ -151,7 +150,7 @@ public class Pagination {
   /**
    * Gets the page items.
    *
-   * @return the pageItems
+   * @return the page items
    */
   public List <PageItem> getPageItems() {
     return Collections.unmodifiableList(pageItems);
@@ -161,7 +160,7 @@ public class Pagination {
    * Sets the page items.
    *
    * @param pageItems
-   *          the pageItems to set
+   *          the new page items
    */
   public void setPageItems(final List <PageItem> pageItems) {
     this.pageItems = Collections.unmodifiableList(pageItems);
@@ -170,7 +169,7 @@ public class Pagination {
   /**
    * Gets the rcord per page str.
    *
-   * @return the rcordPerPageStr
+   * @return the rcord per page str
    */
   public String getRcordPerPageStr() {
     return rcordPerPageStr;
@@ -180,7 +179,7 @@ public class Pagination {
    * Sets the rcord per page str.
    *
    * @param rcordPerPageStr
-   *          the rcordPerPageStr to set
+   *          the new rcord per page str
    */
   public void setRcordPerPageStr(final String rcordPerPageStr) {
     this.rcordPerPageStr = rcordPerPageStr;

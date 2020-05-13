@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -8,6 +12,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface TeaserModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -22,9 +29,9 @@ public interface TeaserModel {
   String getImageAlignment();
 
   /**
-   * Gets whether image is banner image.
+   * Gets the background image check.
    *
-   * @return the banner image
+   * @return the background image check
    */
   @ Inject
   String getBackgroundImageCheck();
@@ -86,9 +93,9 @@ public interface TeaserModel {
   String getAnalyticsId();
 
   /**
-   * Gets the decorative image.
+   * Gets the checks if is decorative.
    *
-   * @return the decorative image
+   * @return the checks if is decorative
    */
   @ Inject
   String getIsDecorative();

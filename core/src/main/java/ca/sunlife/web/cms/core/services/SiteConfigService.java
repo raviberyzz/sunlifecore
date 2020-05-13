@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services;
 
 import javax.jcr.RepositoryException;
@@ -6,6 +10,9 @@ import org.apache.sling.api.resource.LoginException;
 
 /**
  * The Interface SiteConfigService.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public interface SiteConfigService {
 

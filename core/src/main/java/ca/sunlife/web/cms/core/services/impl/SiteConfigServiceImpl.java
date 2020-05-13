@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.util.HashMap;
@@ -7,6 +11,7 @@ import java.util.Map.Entry;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -32,12 +37,15 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class SiteConfigServiceImpl.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = SiteConfigService.class, immediate = true)
 @ Designate (ocd = SiteConfig.class)
 public class SiteConfigServiceImpl implements SiteConfigService {
 
-  /** The resolver factory. */
+  /** The resource resolver. */
   @ Reference
   private CoreResourceResolver resourceResolver;
 
@@ -85,7 +93,8 @@ public class SiteConfigServiceImpl implements SiteConfigService {
     while (! siteConfigMap.containsKey(key) && key.lastIndexOf('/') > 1) {
       key = key.substring(0, key.lastIndexOf('/'));
     }
-    String paramValue = siteConfigMap.containsKey(key) ? siteConfigMap.get(key).get(name) : "";
+    final String paramValue = siteConfigMap.containsKey(key) ? siteConfigMap.get(key).get(name)
+        : "";
     log.debug("SiteConfigServiceImpl :: getConfigValues :: Page :: value :: {}", paramValue);
     return paramValue;
   }
@@ -154,12 +163,15 @@ public class SiteConfigServiceImpl implements SiteConfigService {
   public String getPageUrl(final String pagePath) {
     final String domain = getConfigValues("domain", pagePath);
     final String siteUrl = getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
-    return domain
-        .concat(
-            pagePath
-                .replace(siteUrl.substring(0,
-                    siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "")
-                .concat(BasePageModelConstants.SLASH_CONSTANT));
+    if (StringUtils.isNotEmpty(siteUrl)) {
+      return domain
+          .concat(
+              pagePath
+                  .replace(siteUrl.substring(0,
+                      siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "")
+                  .concat(BasePageModelConstants.SLASH_CONSTANT));
+    }
+    return StringUtils.EMPTY;
   }
 
 }

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -9,11 +13,15 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 /**
- * The Interface LifeMoments.
+ * The Interface LifeMomentsModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface LifeMomentsModel {
+
   /**
    * Gets the heading.
    *
@@ -23,15 +31,18 @@ public interface LifeMomentsModel {
   String getHeading();
 
   /**
-   * Gets the Life Moments Links.
+   * Gets the links.
    *
-   * @return the Life Moments Links
+   * @return the links
    */
   @ Inject
   List <Links> getLinks();
 
   /**
    * The Interface Links.
+   *
+   * @author TCS
+   * @version 1.0
    */
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {

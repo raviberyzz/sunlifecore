@@ -33,16 +33,17 @@ import ca.sunlife.web.cms.core.services.RestService;
 /**
  * The Class RestServiceImpl.
  *
- * @author mo92 The Class RestServiceImpl.
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = RestService.class, immediate = true)
 @ Designate (ocd = RestClientConfig.class)
 public class RestServiceImpl implements RestService {
 
-  /** The log. */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  /** Http Client. */
+  /** The client. */
   private CloseableHttpClient client;
 
   /**

@@ -1,9 +1,16 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 
 /**
  * The Interface MailService.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public interface MailService {
 

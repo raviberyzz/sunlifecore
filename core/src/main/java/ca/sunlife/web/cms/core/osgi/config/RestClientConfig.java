@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.osgi.config;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
@@ -6,6 +10,9 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 /**
  * The Interface RestClientConfig.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ ObjectClassDefinition (name = "Sun Life - Rest Client Configuration", description = "Rest Client Configuration")
 public @interface RestClientConfig {
@@ -13,7 +20,7 @@ public @interface RestClientConfig {
   /**
    * Gets the socket timeout.
    *
-   * @return the site path
+   * @return the socket timeout
    */
   @ AttributeDefinition (name = "socketTimeout", description = "Socket Timeout")
   int getSocketTimeout ();
@@ -21,13 +28,13 @@ public @interface RestClientConfig {
   /**
    * Gets the connection timeout.
    *
-   * @return the site path
+   * @return the connection timeout
    */
   @ AttributeDefinition (name = "connectionTimeout", description = "Connection Timeout")
   int getConnectionTimeout ();
 
   /**
-   * Gets parameter for SSL by pass is needed or not.
+   * Checks if is SSL by pass required.
    *
    * @return true, if is SSL by pass required
    */

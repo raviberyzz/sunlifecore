@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -12,6 +16,9 @@ import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 
 /**
  * The Class BreadcrumbModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Breadcrumb.class, resourceType = "sunlife/core/components/content/breadcrumb")
 public class BreadcrumbModel extends BreadcrumbImpl {

@@ -14,7 +14,8 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface SiteConfigModel.
  *
- * @author MO92 Sling model for site specific configuration
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/config/configuration")
@@ -79,9 +80,9 @@ public interface SiteConfigModel {
   String getPageLocale();
 
   /**
-   * Gets the social media image path.
+   * Gets the social media image.
    *
-   * @return the page locale
+   * @return the social media image
    */
   @ Inject
   String getSocialMediaImage();
@@ -89,31 +90,31 @@ public interface SiteConfigModel {
   /**
    * Gets the default reporting language.
    *
-   * @return the page locale
+   * @return the default reporting language
    */
   @ Inject
   String getDefaultReportingLanguage();
 
   /**
-   * Gets the Experience fragment path.
+   * Gets the experience fragment path.
    *
-   * @return the page locale
+   * @return the experience fragment path
    */
   @ Inject
   String getExperienceFragmentPath();
 
   /**
-   * Gets the Navigation Overview title.
+   * Gets the navigation overview.
    *
-   * @return the page locale
+   * @return the navigation overview
    */
   @ Inject
   String getNavigationOverview();
 
   /**
-   * Gets the UDO tag path.
+   * Gets the udo tags path.
    *
-   * @return the page locale
+   * @return the udo tags path
    */
   @ Inject
   String getUdoTagsPath();
@@ -173,7 +174,7 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticleSite();
-  
+
   /**
    * Gets the featured image path.
    *

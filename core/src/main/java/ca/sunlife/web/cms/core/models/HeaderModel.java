@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,13 +14,16 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface HeaderModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface HeaderModel {
 
   /**
-   * Read the sign in display value @ return the sign in display value.
+   * Gets the list from signin.
    *
    * @return the list from signin
    */
@@ -24,7 +31,7 @@ public interface HeaderModel {
   String getListFromSignin();
 
   /**
-   * Read the sign in title @ return the sign in title.
+   * Gets the signin title.
    *
    * @return the signin title
    */
@@ -32,15 +39,15 @@ public interface HeaderModel {
   String getSigninTitle();
 
   /**
-   * Gets the Sign in text.
+   * Gets the text.
    *
-   * @return the Sign in text
+   * @return the text
    */
   @ Inject
   String getText();
 
   /**
-   * Read the search display value @ return the search display value.
+   * Gets the list from search.
    *
    * @return the list from search
    */
@@ -48,7 +55,7 @@ public interface HeaderModel {
   String getListFromSearch();
 
   /**
-   * Read the Search placeholder value @ return the Search placeholder value.
+   * Gets the search placeholder.
    *
    * @return the search placeholder
    */
@@ -56,7 +63,7 @@ public interface HeaderModel {
   String getSearchPlaceholder();
 
   /**
-   * Read the Search button value @ return the Search button value.
+   * Gets the search button.
    *
    * @return the search button
    */
@@ -64,7 +71,7 @@ public interface HeaderModel {
   String getSearchButton();
 
   /**
-   * Read the Search title @ return the Search title.
+   * Gets the search title.
    *
    * @return the search title
    */
@@ -72,7 +79,7 @@ public interface HeaderModel {
   String getSearchTitle();
 
   /**
-   * Read the Search action @ return the Search action.
+   * Gets the search url.
    *
    * @return the search url
    */
@@ -80,7 +87,7 @@ public interface HeaderModel {
   String getSearchUrl();
 
   /**
-   * Read the Region display value @ return the Region display value.
+   * Gets the list from region.
    *
    * @return the list from region
    */
@@ -88,23 +95,23 @@ public interface HeaderModel {
   String getListFromRegion();
 
   /**
-   * Read the logo display value @ return the logo display value.
+   * Gets the list from.
    *
    * @return the list from
    */
   @ Inject
   String getListFrom();
-  
+
   /**
-   * Read the campaign header display value @ return the campaign header display value.
+   * Gets the campaign header.
    *
-   * @return the Is Campaign Header
+   * @return the campaign header
    */
   @ Inject
   String getCampaignHeader();
 
   /**
-   * Read the Utility Nav display value @ return the Utility Nav display value.
+   * Gets the list from nav.
    *
    * @return the list from nav
    */
@@ -112,7 +119,7 @@ public interface HeaderModel {
   String getListFromNav();
 
   /**
-   * Read the MegaNav display value @ return the MegaNav display value.
+   * Gets the list from meganav.
    *
    * @return the list from meganav
    */
@@ -120,25 +127,25 @@ public interface HeaderModel {
   String getListFromMeganav();
 
   /**
-   * Gets the Region title.
+   * Gets the region title.
    *
-   * @return the Region title
+   * @return the region title
    */
   @ Inject
   String getRegionTitle();
-  
+
   /**
-   * Gets the Region screen reader text.
+   * Gets the sr region text.
    *
-   * @return the Region screen reader text
+   * @return the sr region text
    */
   @ Inject
   String getSrRegionText();
-  
+
   /**
-   * Gets the Search screen reader text.
+   * Gets the sr search text.
    *
-   * @return the Search screen reader text
+   * @return the sr search text
    */
   @ Inject
   String getSrSearchText();
@@ -152,30 +159,30 @@ public interface HeaderModel {
   List <Links> getLinks(); // the name `getLinks` corresponds to the multifield name="./links"
 
   /**
-   * Gets the skip to signin label.
+   * Gets the skip to sign in label.
    *
-   * @return the skip to signin label
+   * @return the skip to sign in label
    */
   @ Inject
   String getSkipToSignInLabel();
-  
+
   /**
    * Gets the skip to main content label.
    *
    * @return the skip to main content label
    */
-  
+
   @ Inject
   String getSkipToMainContentLabel();
-  
+
   /**
    * Gets the skip to footer label.
    *
    * @return the skip to footer label
    */
   @ Inject
-  String getSkipToFooterLabel();  
-  
+  String getSkipToFooterLabel();
+
   /**
    * Gets the meganavlinks.
    *
@@ -183,11 +190,14 @@ public interface HeaderModel {
    */
   @ Inject
   Resource getMeganavlinks();
-  
+
   /**
    * The Interface Links.
+   *
+   * @author TCS
+   * @version 1.0
    */
-  
+
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
 
@@ -224,7 +234,7 @@ public interface HeaderModel {
     String getLinkUrl();
 
   }
-  
+
   /**
    * Gets the navlinks.
    *
@@ -235,8 +245,11 @@ public interface HeaderModel {
                                  // name="./navlinks"
 
   /**
-   * The Interface Navlinks.
-   */
+                                  * The Interface Navlinks.
+                                  *
+                                  * @author TCS
+                                  * @version 1.0
+                                  */
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Navlinks {
 
@@ -265,6 +278,5 @@ public interface HeaderModel {
     String getLinkUrl();
 
   }
-
 
 }

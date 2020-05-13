@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
@@ -23,6 +27,9 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 
 /**
  * The Class AkamaiPurgeModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = AkamaiPurgeModel.class, resourceType = "sunlife/core/components/config/akamai-purge")
@@ -50,7 +57,7 @@ public class AkamaiPurgeModel {
   /**
    * Gets the akamai response.
    *
-   * @return the akamaiResponse
+   * @return the akamai response
    */
   public final String getAkamaiResponse() {
     return akamaiResponse;
@@ -60,42 +67,53 @@ public class AkamaiPurgeModel {
    * Sets the akamai response.
    *
    * @param akamaiResponse
-   *          the akamaiResponse to set
+   *          the new akamai response
    */
   public final void setAkamaiResponse(final String akamaiResponse) {
     this.akamaiResponse = akamaiResponse;
   }
 
   /**
-  * @return the paths
-  */
-  public String[] getPaths() {
-	return null != paths ? Arrays.copyOf(paths, paths.length) : new String[0];
+   * Gets the paths.
+   *
+   * @return the paths
+   */
+  public String [ ] getPaths() {
+    return null != paths ? Arrays.copyOf(paths, paths.length) : new String [ 0 ];
   }
 
   /**
-  * @param paths the paths to set
-  */
-  public void setPaths(String[] paths) {
-	this.paths = null != paths ? paths.clone() : null;
+   * Sets the paths.
+   *
+   * @param paths
+   *          the new paths
+   */
+  public void setPaths(final String [ ] paths) {
+    this.paths = null != paths ? paths.clone() : null;
   }
 
   /**
-  * @return the akamaiCacheClear
-  */
+   * Gets the akamai cache clear.
+   *
+   * @return the akamai cache clear
+   */
   public ca.sunlife.web.cms.core.services.AkamaiCacheClear getAkamaiCacheClear() {
-	return akamaiCacheClear;
+    return akamaiCacheClear;
   }
 
   /**
-  * @param akamaiCacheClear the akamaiCacheClear to set
-  */
-  public void setAkamaiCacheClear(ca.sunlife.web.cms.core.services.AkamaiCacheClear akamaiCacheClear) {
-	this.akamaiCacheClear = akamaiCacheClear;
+   * Sets the akamai cache clear.
+   *
+   * @param akamaiCacheClear
+   *          the new akamai cache clear
+   */
+  public void setAkamaiCacheClear(
+      final ca.sunlife.web.cms.core.services.AkamaiCacheClear akamaiCacheClear) {
+    this.akamaiCacheClear = akamaiCacheClear;
   }
 
   /**
-   * Inits the model.
+   * Inits the.
    */
   @ PostConstruct
   public void init() {

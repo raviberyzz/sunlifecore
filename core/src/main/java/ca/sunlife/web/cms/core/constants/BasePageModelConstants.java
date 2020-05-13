@@ -6,12 +6,13 @@ package ca.sunlife.web.cms.core.constants;
 /**
  * The Class BasePageModelConstants.
  *
- * @author mo92 The Class BasePageModelConstants
+ * @author TCS
+ * @version 1.0
  */
 public class BasePageModelConstants {
 
   /**
-   * Constructor BasePageModelConstants.
+   * Instantiates a new base page model constants.
    */
   private BasePageModelConstants() {
   }

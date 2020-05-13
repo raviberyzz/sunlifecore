@@ -8,11 +8,14 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 
 /**
  * The Interface AdvisorDetailService.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public interface AdvisorDetailService {
 
   /**
-   * Gets advisor details.
+   * Gets the advisor details.
    *
    * @param language
    *          the language

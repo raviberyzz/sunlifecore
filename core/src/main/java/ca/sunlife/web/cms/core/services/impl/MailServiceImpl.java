@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.io.IOException;
@@ -45,11 +49,15 @@ import ca.sunlife.web.cms.core.services.MailService;
 
 /**
  * The Class MailServiceImpl.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = MailService.class, immediate = true)
 @ Designate (ocd = MailConfig.class)
 
 public class MailServiceImpl implements MailService {
+
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
@@ -62,15 +70,18 @@ public class MailServiceImpl implements MailService {
   /** The http client builder factory. */
   @ Reference
   private HttpClientBuilderFactory httpClientBuilderFactory;
-  
-  @Reference
+
+  /** The core resource resolver. */
+  @ Reference
   private CoreResourceResolver coreResourceResolver;
 
-  /* (non-Javadoc)
-   * @see ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.sling.api.SlingHttpServletRequest)
+  /*
+   * (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.sling.api.
+   * SlingHttpServletRequest)
    */
   @ Override
-  public String processHttpRequest(SlingHttpServletRequest request) {
+  public String processHttpRequest(final SlingHttpServletRequest request) {
     LOG.trace("Inside MailServiceImpl:processHttpRequest");
     final String cfPathSuffix = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data");
     final int timeOut = 5000;
@@ -92,9 +103,9 @@ public class MailServiceImpl implements MailService {
     try {
       if (null != request) {
         // getting all request parameters - Starts
-        Enumeration <String> requestParameterNames = request.getParameterNames();
-        LOG.debug("Request parameters {}",requestParameterNames);
-        HashMap <String, String> requestParameters = new HashMap <>();
+        final Enumeration <String> requestParameterNames = request.getParameterNames();
+        LOG.debug("Request parameters {}", requestParameterNames);
+        final HashMap <String, String> requestParameters = new HashMap <>();
         while (requestParameterNames.hasMoreElements()) {
           final String key = requestParameterNames.nextElement();
           requestParameters.put(key, request.getParameter(key));
@@ -103,11 +114,11 @@ public class MailServiceImpl implements MailService {
 
         componentPath = requestParameters.get(":formstart");
         toEmailId = requestParameters.get("email-id");
-        ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-        Resource componentResource = resourceResolver.getResource(componentPath);
+        final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
+        final Resource componentResource = resourceResolver.getResource(componentPath);
         if (null != componentResource) {
           LOG.debug("Got the component path {}", componentResource.getPath());
-          Node componentNode = componentResource.adaptTo(Node.class);
+          final Node componentNode = componentResource.adaptTo(Node.class);
           if (null != componentNode && null != componentNode.getProperty("id")) {
             cfName = componentNode.getProperty("id").getString();
           }
@@ -115,14 +126,14 @@ public class MailServiceImpl implements MailService {
         // content fragment path
         cfPath = mailConfig.getTemplatePath() + cfName + cfPathSuffix;
         LOG.debug("cfPath {}", cfPath);
-        Resource contentResource = request.getResourceResolver().getResource(cfPath);
+        final Resource contentResource = request.getResourceResolver().getResource(cfPath);
         if (null != contentResource) {
           LOG.debug("Content Resource Path {}", contentResource.getPath());
-          Node node = contentResource.adaptTo(Node.class);
+          final Node node = contentResource.adaptTo(Node.class);
           if (null != node && node.hasNodes()) {
-            NodeIterator ite = node.getNodes();
+            final NodeIterator ite = node.getNodes();
             while (ite.hasNext()) {
-              Node childNode = ite.nextNode();
+              final Node childNode = ite.nextNode();
               fromEmailId = nullCheck(childNode.getProperty("from-email-id").getString());
               ccEmailId = nullCheck(childNode.getProperty("cc-email-id").getString());
               bccEmailId = nullCheck(childNode.getProperty("bcc-email-id").getString());
@@ -137,19 +148,19 @@ public class MailServiceImpl implements MailService {
           }
         }
         resourceResolver.close();
-        MustacheFactory mf = new DefaultMustacheFactory();
-        StringWriter writer = new StringWriter();
-        Mustache mustache = mf.compile(new StringReader(emailBody), " ");
+        final MustacheFactory mf = new DefaultMustacheFactory();
+        final StringWriter writer = new StringWriter();
+        final Mustache mustache = mf.compile(new StringReader(emailBody), " ");
         mustache.execute(writer, requestParameters);
         emailBody = writer.toString();
         // Mail API service
-        HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
-        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(timeOut)
+        final HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
+        final RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(timeOut)
             .setSocketTimeout(timeOut).build();
         builder.setDefaultRequestConfig(requestConfig);
-        HttpClient client = builder.build();
-        HttpPost post = new HttpPost(mailConfig.getApiUrl());
-        List <BasicNameValuePair> apiParameters = new ArrayList <>(1);
+        final HttpClient client = builder.build();
+        final HttpPost post = new HttpPost(mailConfig.getApiUrl());
+        final List <BasicNameValuePair> apiParameters = new ArrayList <>(1);
         apiParameters.add(new BasicNameValuePair("slf-from-email-address", fromEmailId));
         apiParameters.add(new BasicNameValuePair("slf-to-email-address", toEmailId));
         apiParameters.add(new BasicNameValuePair("slf-cc-email-address", ccEmailId));
@@ -159,37 +170,38 @@ public class MailServiceImpl implements MailService {
         apiParameters.add(new BasicNameValuePair("slf-from-email-text", fromEmailText));
         apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
         post.setEntity(new UrlEncodedFormEntity(apiParameters));
-        HttpResponse emailResponse = client.execute(post);
+        final HttpResponse emailResponse = client.execute(post);
         LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode()
             + " :: " + emailResponse.getStatusLine().getReasonPhrase());
         return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successPageUrl
-                : errorPageUrl;
+            : errorPageUrl;
 
       }
-    } catch (PathNotFoundException pathEx) {
+    } catch (final PathNotFoundException pathEx) {
       LOG.error("Exception occured :: Path not found {}", pathEx);
-    } catch (ValueFormatException valEx) {
+    } catch (final ValueFormatException valEx) {
       LOG.error("Exception occured :: Incorrect value format {}", valEx);
-    } catch (RepositoryException repEx) {
+    } catch (final RepositoryException repEx) {
       LOG.error("Exception occured :: Repository not found {}", repEx);
-    } catch (IOException e) {
+    } catch (final IOException e) {
       LOG.error("Exception occured :: IOException {}", e);
-    } catch (LoginException e) {
+    } catch (final LoginException e) {
       LOG.error("Exception occured :: LoginException {}", e);
-    } 
+    }
     return null;
   }
-  
+
   /**
    * Activate.
    *
-   * @param config the config
+   * @param config
+   *          the config
    */
-  @Activate
-  protected void activate(MailConfig config) {
-    this.mailConfig = config;
+  @ Activate
+  protected void activate(final MailConfig config) {
+    mailConfig = config;
   }
-  
+
   /**
    * Null check.
    *
@@ -197,9 +209,8 @@ public class MailServiceImpl implements MailService {
    *          the value
    * @return the string
    */
-  public String nullCheck(String value) {
+  public String nullCheck(final String value) {
     return value != null ? value : "";
   }
-
 
 }

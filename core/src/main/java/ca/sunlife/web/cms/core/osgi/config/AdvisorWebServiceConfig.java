@@ -9,7 +9,8 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 /**
  * The Interface AdvisorWebServiceConfig.
  *
- * @author mo92 The Interface AdvisorWebServiceConfig
+ * @author TCS
+ * @version 1.0
  */
 @ ObjectClassDefinition (name = "Sun Life - Advisor Web Service Configuration", description = "Advisor Web Service Configuration")
 public @interface AdvisorWebServiceConfig {

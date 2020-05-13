@@ -6,18 +6,18 @@ package ca.sunlife.web.cms.core.beans;
 /**
  * The Class PageItem.
  *
- * @author mo92 The Class PageItem
+ * @author TCS
+ * @version 1.0
  */
 public class PageItem {
 
-  /** anchor tag link - href. */
+  /** The href. */
   private String href;
 
-  /** li index. */
+  /** The index. */
   private int index;
-  /**
-   * ellipsis - ... for pagination
-   */
+
+  /** The ellipsis. */
   private boolean ellipsis;
 
   /**
@@ -33,7 +33,7 @@ public class PageItem {
    * Sets the href.
    *
    * @param href
-   *          the href to set
+   *          the new href
    */
   public void setHref(final String href) {
     this.href = href;
@@ -52,7 +52,7 @@ public class PageItem {
    * Sets the index.
    *
    * @param index
-   *          the index to set
+   *          the new index
    */
   public void setIndex(final int index) {
     this.index = index;
@@ -61,7 +61,7 @@ public class PageItem {
   /**
    * Checks if is ellipsis.
    *
-   * @return the ellipsis
+   * @return true, if is ellipsis
    */
   public boolean isEllipsis() {
     return ellipsis;
@@ -71,7 +71,7 @@ public class PageItem {
    * Sets the ellipsis.
    *
    * @param ellipsis
-   *          the ellipsis to set
+   *          the new ellipsis
    */
   public void setEllipsis(final boolean ellipsis) {
     this.ellipsis = ellipsis;

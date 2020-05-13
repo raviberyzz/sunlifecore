@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -12,6 +16,9 @@ import com.adobe.cq.wcm.core.components.models.form.Container;
 
 /**
  * The Class FormContainer.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Container.class, resourceType = "sunlife/core/components/form/container")
 public class FormContainer extends ContainerImpl {
@@ -34,7 +41,7 @@ public class FormContainer extends ContainerImpl {
   @ Via ("resource")
   @ Optional
   private String validation;
-  
+
   /** The data section. */
   @ Inject
   @ Via ("resource")
@@ -44,7 +51,7 @@ public class FormContainer extends ContainerImpl {
   /**
    * Gets the form action.
    *
-   * @return the formAction
+   * @return the form action
    */
   public String getFormAction() {
     return formAction;
@@ -54,7 +61,7 @@ public class FormContainer extends ContainerImpl {
    * Sets the form action.
    *
    * @param formAction
-   *          the formAction to set
+   *          the new form action
    */
   public void setFormAction(final String formAction) {
     this.formAction = formAction;
@@ -73,26 +80,26 @@ public class FormContainer extends ContainerImpl {
    * Sets the validation.
    *
    * @param validation
-   *          the validation to set
+   *          the new validation
    */
   public void setValidation(final String validation) {
     this.validation = validation;
   }
-  
+
   /**
-   * Gets the data section attribute.
+   * Gets the data section.
    *
-   * @return the data section attribute
+   * @return the data section
    */
   public String getDataSection() {
     return dataSection;
   }
 
   /**
-   * Sets the data section attributes
+   * Sets the data section.
    *
-   * @param data section
-   *          the data section to set
+   * @param dataSection
+   *          the new data section
    */
   public void setDataSection(final String dataSection) {
     this.dataSection = dataSection;

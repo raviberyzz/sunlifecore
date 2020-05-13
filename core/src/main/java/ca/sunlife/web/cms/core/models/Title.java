@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
@@ -20,14 +24,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The Class Title.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = Title.class, resourceType = "sunlife/core/components/content/title")
 public class Title {
-  
+
   /** The Constant PN_TITLE_LINK_DISABLED. */
   private static final String PN_TITLE_LINK_DISABLED = "linkDisabled";
-  
+
   /**
    * Gets the type.
    *
@@ -40,16 +47,16 @@ public class Title {
   /**
    * Gets the link URL.
    *
-   * @return the linkURL
+   * @return the link URL
    */
   public final String getLinkURL() {
     return linkURL;
   }
 
   /**
-   * Gets the title.
+   * Gets the text.
    *
-   * @return the title
+   * @return the text
    */
   public final String getText() {
     return text;
@@ -58,7 +65,7 @@ public class Title {
   /**
    * Checks if is link disabled.
    *
-   * @return the linkDisabled
+   * @return true, if is link disabled
    */
   public final boolean isLinkDisabled() {
     return linkDisabled;
@@ -68,49 +75,52 @@ public class Title {
   @ Inject
   @ Via ("resource")
   private String type;
-  
+
   /** The link URL. */
   @ Inject
   @ Via ("resource")
   private String linkURL;
-  
-  /** The title. */
+
+  /** The text. */
   @ Inject
   @ Via ("resource")
   @ Named (JcrConstants.JCR_TITLE)
   private String text;
-  
+
   /** The link disabled. */
   private boolean linkDisabled = false;
-  
+
   /** The current page. */
-  @ScriptVariable
+  @ ScriptVariable
   private Page currentPage;
 
   /** The current style. */
-  @ScriptVariable(injectionStrategy = InjectionStrategy.OPTIONAL)
-  @JsonIgnore
+  @ ScriptVariable (injectionStrategy = InjectionStrategy.OPTIONAL)
+  @ JsonIgnore
   private Style currentStyle;
-  
+
   /**
-   * @param text the text to set
-  */
-  public void setText(String text) {
-	this.text = text;
+   * Sets the text.
+   *
+   * @param text
+   *          the new text
+   */
+  public void setText(final String text) {
+    this.text = text;
   }
 
   /**
    * Inits the.
    */
-  @PostConstruct
+  @ PostConstruct
   public void init() {
     if (StringUtils.isBlank(text)) {
       text = StringUtils.defaultIfEmpty(currentPage.getPageTitle(), currentPage.getTitle());
     }
-    
+
     if (currentStyle != null) {
       linkDisabled = currentStyle.get(Title.PN_TITLE_LINK_DISABLED, linkDisabled);
     }
   }
-  
+
 }
