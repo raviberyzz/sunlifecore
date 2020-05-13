@@ -82,7 +82,8 @@ $(document).ready(function () {
             $('#left-navigation').parents('.col-md-3').next().attr('id','main-content');
             $('#left-navigation').parents('.col-md-3').next().attr('role','main');
         }
-        else if($('#right-railId')) {
+        var attr = ($('#right-railId')).attr('role');
+        else if(typeof attr !== typeof undefined && attr !== false) {
             $('#right-railId').prev().attr('id','main-content');
             $('#right-railId').prev().attr('role','main');
         }
