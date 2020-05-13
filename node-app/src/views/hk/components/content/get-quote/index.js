@@ -167,14 +167,14 @@ $(document).ready(function(){
               var url = window.location.href;
               var age = getAge();
               var productName = getProductName();
-            //   utag.link({
-            //       ev_type: "calc",
-            //       ev_action: "clk",
-            //       ev_title: "quick quote",
-            //       ev_data_one: "step 1:first interaction",
-            //       ev_data_two: "" + productName + ":age=" + age + "",
-            //       page_url: url
-            //   });
+              utag.link({
+                  ev_type: "calc",
+                  ev_action: "clk",
+                  ev_title: "quick quote",
+                  ev_data_one: "step 1:first interaction",
+                  ev_data_two: "" + productName + ":age=" + age + "",
+                  page_url: url
+              });
               if ($("#qc_q1_ans").val() == "" || $("#qc_q1_ans").val() == null)
                   $("#qc_q1_ans").removeClass("isAnsOut");
   
@@ -378,7 +378,6 @@ $(document).ready(function(){
                   let key1='';
                   key1=getAge()+'_'+getSecondQuetionAns();
                   var product = getProductName();
-                  console.log(product);
                   if(product=='SunHealth_Medical_Essential'){
 					key1 = getAge();
                   }else{
