@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -12,6 +16,9 @@ import com.adobe.cq.wcm.core.components.models.Accordion;
 
 /**
  * The Class AccordionModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Accordion.class, resourceType = "sunlife/core/components/content/accordion")
 public class AccordionModel extends AccordionImpl {
@@ -23,7 +30,7 @@ public class AccordionModel extends AccordionImpl {
     super();
   }
 
-  /** The accordion analytics id. */
+  /** The analytics id. */
   @ Inject
   @ Via ("resource")
   @ Optional
@@ -42,7 +49,7 @@ public class AccordionModel extends AccordionImpl {
    * Sets the analytics id.
    *
    * @param analyticsId
-   *          the analytics text
+   *          the new analytics id
    */
   public void setAnalyticsId(final String analyticsId) {
     this.analyticsId = analyticsId;

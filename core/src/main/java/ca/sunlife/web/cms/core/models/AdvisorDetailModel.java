@@ -35,12 +35,15 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class AdvisorDetailModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class AdvisorDetailModel {
 
-  /** The log. */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   /** The current page. */
@@ -55,128 +58,128 @@ public class AdvisorDetailModel {
   @ ScriptVariable
   private SlingHttpServletResponse response;
 
-  /** The AdvisorDetailService service. */
+  /** The advisor detail service. */
   @ Inject
   private AdvisorDetailService advisorDetailService;
 
-  /** The SiteConfigService service. */
+  /** The config service. */
   @ Inject
   private SiteConfigService configService;
 
-  /** Type of advisor - ADVISOR/CORP. */
+  /** The advisor type. */
   @ ValueMapValue (name = "advisorType")
   private String advisorType;
 
-  /** Address Label. */
+  /** The address label. */
   @ Inject
   @ Via ("resource")
   private String addressLabel;
 
-  /** Languages Label. */
+  /** The languages label. */
   @ Inject
   @ Via ("resource")
   private String languagesLabel;
 
-  /** Phone Label. */
+  /** The phone label. */
   @ Inject
   @ Via ("resource")
   private String phoneLabel;
 
-  /** Cell Phone Label. */
+  /** The cell phone label. */
   @ Inject
   @ Via ("resource")
   private String cellPhoneLabel;
 
-  /** Invalid advisor alert message. */
+  /** The invalid advisor id message. */
   @ Inject
   @ Via ("resource")
   private String invalidAdvisorIdMessage;
 
-  /** Language not supported alert message. */
+  /** The language not supported message. */
   @ Inject
   @ Via ("resource")
   private String languageNotSupportedMessage;
-  
-  /** Alternate language. */
+
+  /** The alternate language. */
   @ Inject
   @ Via ("resource")
   private String alternateLanguage;
 
-  /** Alternate URL. */
+  /** The alternate url. */
   @ Inject
   @ Via ("resource")
   private String alternateUrl;
 
-  /** Email Label. */
+  /** The email label. */
   @ Inject
   @ Via ("resource")
   private String emailLabel;
 
-  /** Fax Label. */
+  /** The fax label. */
   @ Inject
   @ Via ("resource")
   private String faxLabel;
 
-  /** Disclaimer Asterisk. */
+  /** The disclaimer asterisk label. */
   @ Inject
   @ Via ("resource")
   private String disclaimerAsteriskLabel;
 
-  /** Advisor Image. */
+  /** The advisor image. */
   @ Inject
   @ Via ("resource")
   private String advisorImage;
 
-  /** Image Domain. */
+  /** The domain. */
   @ Inject
   @ Via ("resource")
   private String domain;
 
-  /** Visit my link label. */
+  /** The advisor link label. */
   @ Inject
   @ Via ("resource")
   private String advisorLinkLabel;
 
-  /** Advisor location label. */
+  /** The advisor location label. */
   @ Inject
   @ Via ("resource")
   private String advisorLocationLabel;
 
-  /** View larger map label. */
+  /** The view larger map label. */
   @ Inject
   @ Via ("resource")
   private String viewLargerMapLabel;
 
-  /** View larger map title. */
+  /** The view larger map title. */
   @ Inject
   @ Via ("resource")
   private String viewLargerMapTitle;
 
-  /** New Window Image. */
+  /** The new window image. */
   @ Inject
   @ Via ("resource")
   private String newWindowImage;
 
-  /** Marker corporate icon. */
+  /** The icon marker corporate. */
   @ Inject
   @ Via ("resource")
   private String iconMarkerCorporate;
 
-  /** Marker standard icon. */
+  /** The icon marker standard. */
   @ Inject
   @ Via ("resource")
   private String iconMarkerStandard;
 
-  /** Advisor data json. */
+  /** The advisor data. */
   private String advisorData;
 
-  /** Advisor map data json. */
+  /** The advisor map data. */
   private String advisorMapData;
 
   /**
    * Gets the advisor type.
    *
-   * @return the advisorType
+   * @return the advisor type
    */
   public String getAdvisorType() {
     return advisorType;
@@ -186,7 +189,7 @@ public class AdvisorDetailModel {
    * Sets the advisor type.
    *
    * @param advisorType
-   *          the advisorType to set
+   *          the new advisor type
    */
   public void setAdvisorType(final String advisorType) {
     this.advisorType = advisorType;
@@ -195,7 +198,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the address label.
    *
-   * @return the addressLabel
+   * @return the address label
    */
   public String getAddressLabel() {
     return addressLabel;
@@ -205,7 +208,7 @@ public class AdvisorDetailModel {
    * Sets the address label.
    *
    * @param addressLabel
-   *          the addressLabel to set
+   *          the new address label
    */
   public void setAddressLabel(final String addressLabel) {
     this.addressLabel = addressLabel;
@@ -214,7 +217,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the languages label.
    *
-   * @return the languagesLabel
+   * @return the languages label
    */
   public String getLanguagesLabel() {
     return languagesLabel;
@@ -224,7 +227,7 @@ public class AdvisorDetailModel {
    * Sets the languages label.
    *
    * @param languagesLabel
-   *          the languagesLabel to set
+   *          the new languages label
    */
   public void setLanguagesLabel(final String languagesLabel) {
     this.languagesLabel = languagesLabel;
@@ -233,7 +236,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the phone label.
    *
-   * @return the phoneLabel
+   * @return the phone label
    */
   public String getPhoneLabel() {
     return phoneLabel;
@@ -243,7 +246,7 @@ public class AdvisorDetailModel {
    * Sets the phone label.
    *
    * @param phoneLabel
-   *          the phoneLabel to set
+   *          the new phone label
    */
   public void setPhoneLabel(final String phoneLabel) {
     this.phoneLabel = phoneLabel;
@@ -252,7 +255,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the cell phone label.
    *
-   * @return the cellPhoneLabel
+   * @return the cell phone label
    */
   public String getCellPhoneLabel() {
     return cellPhoneLabel;
@@ -262,7 +265,7 @@ public class AdvisorDetailModel {
    * Sets the cell phone label.
    *
    * @param cellPhoneLabel
-   *          the cellPhoneLabel to set
+   *          the new cell phone label
    */
   public void setCellPhoneLabel(final String cellPhoneLabel) {
     this.cellPhoneLabel = cellPhoneLabel;
@@ -271,7 +274,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the email label.
    *
-   * @return the emailLabel
+   * @return the email label
    */
   public String getEmailLabel() {
     return emailLabel;
@@ -281,7 +284,7 @@ public class AdvisorDetailModel {
    * Sets the email label.
    *
    * @param emailLabel
-   *          the emailLabel to set
+   *          the new email label
    */
   public void setEmailLabel(final String emailLabel) {
     this.emailLabel = emailLabel;
@@ -290,7 +293,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the fax label.
    *
-   * @return the faxLabel
+   * @return the fax label
    */
   public String getFaxLabel() {
     return faxLabel;
@@ -300,7 +303,7 @@ public class AdvisorDetailModel {
    * Sets the fax label.
    *
    * @param faxLabel
-   *          the faxLabel to set
+   *          the new fax label
    */
   public void setFaxLabel(final String faxLabel) {
     this.faxLabel = faxLabel;
@@ -309,7 +312,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the disclaimer asterisk label.
    *
-   * @return the disclaimerAsteriskLabel
+   * @return the disclaimer asterisk label
    */
   public String getDisclaimerAsteriskLabel() {
     return disclaimerAsteriskLabel;
@@ -319,7 +322,7 @@ public class AdvisorDetailModel {
    * Sets the disclaimer asterisk label.
    *
    * @param disclaimerAsteriskLabel
-   *          the disclaimerAsteriskLabel to set
+   *          the new disclaimer asterisk label
    */
   public void setDisclaimerAsteriskLabel(final String disclaimerAsteriskLabel) {
     this.disclaimerAsteriskLabel = disclaimerAsteriskLabel;
@@ -328,7 +331,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the advisor image.
    *
-   * @return the advisorImage
+   * @return the advisor image
    */
   public String getAdvisorImage() {
     return advisorImage;
@@ -338,7 +341,7 @@ public class AdvisorDetailModel {
    * Sets the advisor image.
    *
    * @param advisorImage
-   *          the advisorImage to set
+   *          the new advisor image
    */
   public void setAdvisorImage(final String advisorImage) {
     this.advisorImage = advisorImage;
@@ -357,7 +360,7 @@ public class AdvisorDetailModel {
    * Sets the domain.
    *
    * @param domain
-   *          the domain to set
+   *          the new domain
    */
   public void setDomain(final String domain) {
     this.domain = domain;
@@ -366,7 +369,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the advisor link label.
    *
-   * @return the advisorLinkLabel
+   * @return the advisor link label
    */
   public String getAdvisorLinkLabel() {
     return advisorLinkLabel;
@@ -376,7 +379,7 @@ public class AdvisorDetailModel {
    * Sets the advisor link label.
    *
    * @param advisorLinkLabel
-   *          the advisorLinkLabel to set
+   *          the new advisor link label
    */
   public void setAdvisorLinkLabel(final String advisorLinkLabel) {
     this.advisorLinkLabel = advisorLinkLabel;
@@ -385,7 +388,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the advisor location label.
    *
-   * @return the advisorLocationLabel
+   * @return the advisor location label
    */
   public String getAdvisorLocationLabel() {
     return advisorLocationLabel;
@@ -395,7 +398,7 @@ public class AdvisorDetailModel {
    * Sets the advisor location label.
    *
    * @param advisorLocationLabel
-   *          the advisorLocationLabel to set
+   *          the new advisor location label
    */
   public void setAdvisorLocationLabel(final String advisorLocationLabel) {
     this.advisorLocationLabel = advisorLocationLabel;
@@ -404,7 +407,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the view larger map label.
    *
-   * @return the viewLargerMapLabel
+   * @return the view larger map label
    */
   public String getViewLargerMapLabel() {
     return viewLargerMapLabel;
@@ -414,7 +417,7 @@ public class AdvisorDetailModel {
    * Sets the view larger map label.
    *
    * @param viewLargerMapLabel
-   *          the viewLargerMapLabel to set
+   *          the new view larger map label
    */
   public void setViewLargerMapLabel(final String viewLargerMapLabel) {
     this.viewLargerMapLabel = viewLargerMapLabel;
@@ -423,7 +426,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the view larger map title.
    *
-   * @return the viewLargerMapTitle
+   * @return the view larger map title
    */
   public String getViewLargerMapTitle() {
     return viewLargerMapTitle;
@@ -433,7 +436,7 @@ public class AdvisorDetailModel {
    * Sets the view larger map title.
    *
    * @param viewLargerMapTitle
-   *          the viewLargerMapTitle to set
+   *          the new view larger map title
    */
   public void setViewLargerMapTitle(final String viewLargerMapTitle) {
     this.viewLargerMapTitle = viewLargerMapTitle;
@@ -442,7 +445,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the new window image.
    *
-   * @return the newWindowImage
+   * @return the new window image
    */
   public String getNewWindowImage() {
     return newWindowImage;
@@ -452,7 +455,7 @@ public class AdvisorDetailModel {
    * Sets the new window image.
    *
    * @param newWindowImage
-   *          the newWindowImage to set
+   *          the new new window image
    */
   public void setNewWindowImage(final String newWindowImage) {
     this.newWindowImage = newWindowImage;
@@ -461,7 +464,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the advisor data.
    *
-   * @return the advisorData
+   * @return the advisor data
    */
   public String getAdvisorData() {
     return advisorData;
@@ -471,7 +474,7 @@ public class AdvisorDetailModel {
    * Sets the advisor data.
    *
    * @param advisorData
-   *          the advisorData to set
+   *          the new advisor data
    */
   public void setAdvisorData(final String advisorData) {
     this.advisorData = advisorData;
@@ -480,7 +483,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the advisor map data.
    *
-   * @return the advisorMapData
+   * @return the advisor map data
    */
   public String getAdvisorMapData() {
     return advisorMapData;
@@ -490,7 +493,7 @@ public class AdvisorDetailModel {
    * Sets the advisor map data.
    *
    * @param advisorMapData
-   *          the advisorMapData to set
+   *          the new advisor map data
    */
   public void setAdvisorMapData(final String advisorMapData) {
     this.advisorMapData = advisorMapData;
@@ -499,7 +502,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the icon marker corporate.
    *
-   * @return the iconMarkerCorporate
+   * @return the icon marker corporate
    */
   public String getIconMarkerCorporate() {
     return iconMarkerCorporate;
@@ -509,7 +512,7 @@ public class AdvisorDetailModel {
    * Sets the icon marker corporate.
    *
    * @param iconMarkerCorporate
-   *          the iconMarkerCorporate to set
+   *          the new icon marker corporate
    */
   public void setIconMarkerCorporate(final String iconMarkerCorporate) {
     this.iconMarkerCorporate = iconMarkerCorporate;
@@ -518,7 +521,7 @@ public class AdvisorDetailModel {
   /**
    * Gets the icon marker standard.
    *
-   * @return the iconMarkerStandard
+   * @return the icon marker standard
    */
   public String getIconMarkerStandard() {
     return iconMarkerStandard;
@@ -528,77 +531,90 @@ public class AdvisorDetailModel {
    * Sets the icon marker standard.
    *
    * @param iconMarkerStandard
-   *          the iconMarkerStandard to set
+   *          the new icon marker standard
    */
   public void setIconMarkerStandard(final String iconMarkerStandard) {
     this.iconMarkerStandard = iconMarkerStandard;
   }
 
-	/**
-	 * @return the
-	 *         invalidAdvisorIdMessage
-	 */
-	public String getInvalidAdvisorIdMessage() {
-		return invalidAdvisorIdMessage;
-	}
+  /**
+   * Gets the invalid advisor id message.
+   *
+   * @return the invalid advisor id message
+   */
+  public String getInvalidAdvisorIdMessage() {
+    return invalidAdvisorIdMessage;
+  }
 
-	/**
-	 * @param invalidAdvisorIdMessage
-	 *          the
-	 *          invalidAdvisorIdMessage
-	 *          to set
-	 */
-	public void setInvalidAdvisorIdMessage(String invalidAdvisorIdMessage) {
-		this.invalidAdvisorIdMessage = invalidAdvisorIdMessage;
-	}
+  /**
+   * Sets the invalid advisor id message.
+   *
+   * @param invalidAdvisorIdMessage
+   *          the new invalid advisor id message
+   */
+  public void setInvalidAdvisorIdMessage(final String invalidAdvisorIdMessage) {
+    this.invalidAdvisorIdMessage = invalidAdvisorIdMessage;
+  }
 
-	/**
-   * @return the languageNotSupportedMessage
+  /**
+   * Gets the language not supported message.
+   *
+   * @return the language not supported message
    */
   public String getLanguageNotSupportedMessage() {
     return languageNotSupportedMessage;
   }
 
   /**
+   * Sets the language not supported message.
+   *
    * @param languageNotSupportedMessage
-   *          the languageNotSupportedMessage to set
+   *          the new language not supported message
    */
   public void setLanguageNotSupportedMessage(final String languageNotSupportedMessage) {
     this.languageNotSupportedMessage = languageNotSupportedMessage;
   }
 
   /**
-   * @return the alternateLanguage
+   * Gets the alternate language.
+   *
+   * @return the alternate language
    */
   public String getAlternateLanguage() {
     return alternateLanguage;
   }
 
   /**
+   * Sets the alternate language.
+   *
    * @param alternateLanguage
-   *          the alternateLanguage to set
+   *          the new alternate language
    */
   public void setAlternateLanguage(final String alternateLanguage) {
     this.alternateLanguage = alternateLanguage;
   }
 
   /**
-   * @return the alternateUrl
+   * Gets the alternate url.
+   *
+   * @return the alternate url
    */
   public String getAlternateUrl() {
     return alternateUrl;
   }
 
   /**
+   * Sets the alternate url.
+   *
    * @param alternateUrl
-   *          the alternateUrl to set
+   *          the new alternate url
    */
   public void setAlternateUrl(final String alternateUrl) {
     this.alternateUrl = alternateUrl;
   }
 
   /**
-   * Advisor Detail Model - init method to process data after model loads.
+   * Inits the.
    */
   @ PostConstruct
   public void init() {
@@ -640,7 +656,7 @@ public class AdvisorDetailModel {
   }
 
   /**
-   * Sets data for advisor map.
+   * Sets the map data.
    */
   private void setMapData() {
     logger.debug("Entry :: AdvisorDetailModel :: setMapData :: advisorData :: {}", advisorData);
@@ -712,7 +728,7 @@ public class AdvisorDetailModel {
   }
 
   /**
-   * Prepares full address.
+   * Builds the address.
    *
    * @param addressJson
    *          the address json
@@ -741,10 +757,12 @@ public class AdvisorDetailModel {
   }
 
   /**
-   * validates advisor data
+   * Validate advisor data.
    *
    * @param advisorId
+   *          the advisor id
    * @throws JSONException
+   *           the JSON exception
    */
   public void validateAdvisorData(final String advisorId) throws JSONException {
     logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
@@ -758,16 +776,16 @@ public class AdvisorDetailModel {
   }
 
   /**
-   * sets alternate url for negative scenario
+   * Sets the alternate URL.
    *
    * @param advisorId
+   *          the new alternate URL
    */
   public void setAlternateURL(final String advisorId) {
     logger.debug("Entry :: AdvisorDetailModel :: setAlternateURL");
     alternateUrl = alternateUrl
         .replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId)
-		.replace(BasePageModelConstants.ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT,
-                advisorType);
+        .replace(BasePageModelConstants.ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT, advisorType);
     logger.debug("Exit :: AdvisorDetailModel :: setAlternateURL :: {}", alternateUrl);
   }
 }

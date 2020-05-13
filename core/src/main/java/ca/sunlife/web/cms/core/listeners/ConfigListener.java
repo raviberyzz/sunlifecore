@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.listeners;
 
 import javax.jcr.RepositoryException;
@@ -18,7 +22,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The listener interface for receiving config events. The class that is interested in processing a
  * config event implements this interface, and the object created with that class is registered with
- * a component using the component's <code>addConfigListener</code> method. When the config event
+ * a component using the component's <code>addConfigListener<code> method. When the config event
  * occurs, that object's appropriate method is invoked.
  *
  * @see ConfigEvent
@@ -45,7 +49,9 @@ public class ConfigListener implements EventHandler {
    */
   @ Override
   public void handleEvent(final Event event) {
-    if (!event.getProperty("path").toString().startsWith("/content/sunlife/config") || !event.getProperty("resourceType").toString().equalsIgnoreCase("sunlife/core/components/config/configuration")) {
+    if (! event.getProperty("path").toString().startsWith("/content/sunlife/config")
+        || ! event.getProperty("resourceType").toString()
+            .equalsIgnoreCase("sunlife/core/components/config/configuration")) {
       return;
     }
     logger.info("event handler called {}", event);

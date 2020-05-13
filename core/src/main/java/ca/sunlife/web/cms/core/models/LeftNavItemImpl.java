@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.Collections;
@@ -15,11 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * The Class LeftNavItemImpl.
  *
- * @author mo93 The class LeftNavItemImpl
+ * @author TCS
+ * @version 1.0
  */
 public class LeftNavItemImpl extends PageListItemImpl implements NavigationItem {
 
-  /** The Constant LOGGER. */
+  /** The Constant log. */
   private static final Logger log = LoggerFactory.getLogger(LeftNavigationModal.class);
 
   /** The children. */

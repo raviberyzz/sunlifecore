@@ -6,20 +6,21 @@ package ca.sunlife.web.cms.core.beans;
 /**
  * The Class News.
  *
- * @author mo92 the class News
+ * @author TCS
+ * @version 1.0
  */
 public class News {
 
-  /** release - news. */
+  /** The release main. */
   private ReleaseMain releaseMain;
 
-  /** pagination. */
+  /** The pagination. */
   private Pagination pagination;
 
   /**
    * Gets the release main.
    *
-   * @return the releaseMain
+   * @return the release main
    */
   public ReleaseMain getReleaseMain() {
     return releaseMain;
@@ -29,7 +30,7 @@ public class News {
    * Sets the release main.
    *
    * @param releaseMain
-   *          the releaseMain to set
+   *          the new release main
    */
   public void setReleaseMain(final ReleaseMain releaseMain) {
     this.releaseMain = releaseMain;
@@ -48,7 +49,7 @@ public class News {
    * Sets the pagination.
    *
    * @param pagination
-   *          the pagination to set
+   *          the new pagination
    */
   public void setPagination(final Pagination pagination) {
     this.pagination = pagination;

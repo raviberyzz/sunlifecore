@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.filters;
 
 import java.io.IOException;
@@ -17,7 +21,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Simple servlet filter component that logs incoming requests.
+ * The Class LoggingFilter.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = Filter.class, property = {
     Constants.SERVICE_DESCRIPTION + "=Demo to filter incoming requests",

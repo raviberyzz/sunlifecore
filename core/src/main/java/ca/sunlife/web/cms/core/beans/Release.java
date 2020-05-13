@@ -1,29 +1,36 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.beans;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * The Class Release.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ JsonIgnoreProperties (ignoreUnknown = true)
 public class Release {
 
-  /** Release id. */
+  /** The id. */
   private String id;
 
-  /** headline. */
+  /** The headline. */
   private String headline;
 
-  /** releaseDate. */
+  /** The release date. */
   private String releaseDate;
 
-  /** summary. */
+  /** The summary. */
   private String summary;
 
-  /** body. */
+  /** The body. */
   private String body;
 
-  /** headlineUrl. */
+  /** The headline url. */
   private String headlineUrl;
 
   /**
@@ -39,7 +46,7 @@ public class Release {
    * Sets the id.
    *
    * @param id
-   *          the id to set
+   *          the new id
    */
   public void setId(final String id) {
     this.id = id;
@@ -58,7 +65,7 @@ public class Release {
    * Sets the headline.
    *
    * @param headline
-   *          the headline to set
+   *          the new headline
    */
   public void setHeadline(final String headline) {
     this.headline = headline;
@@ -67,7 +74,7 @@ public class Release {
   /**
    * Gets the release date.
    *
-   * @return the releaseDate
+   * @return the release date
    */
   public String getReleaseDate() {
     return releaseDate;
@@ -77,7 +84,7 @@ public class Release {
    * Sets the release date.
    *
    * @param releaseDate
-   *          the releaseDate to set
+   *          the new release date
    */
   public void setReleaseDate(final String releaseDate) {
     this.releaseDate = releaseDate;
@@ -96,7 +103,7 @@ public class Release {
    * Sets the summary.
    *
    * @param summary
-   *          the summary to set
+   *          the new summary
    */
   public void setSummary(final String summary) {
     this.summary = summary;
@@ -115,7 +122,7 @@ public class Release {
    * Sets the body.
    *
    * @param body
-   *          the body to set
+   *          the new body
    */
   public void setBody(final String body) {
     this.body = body;
@@ -124,7 +131,7 @@ public class Release {
   /**
    * Gets the headline url.
    *
-   * @return the headlineUrl
+   * @return the headline url
    */
   public String getHeadlineUrl() {
     return headlineUrl;
@@ -134,7 +141,7 @@ public class Release {
    * Sets the headline url.
    *
    * @param headlineUrl
-   *          the headlineUrl to set
+   *          the new headline url
    */
   public void setHeadlineUrl(final String headlineUrl) {
     this.headlineUrl = headlineUrl;

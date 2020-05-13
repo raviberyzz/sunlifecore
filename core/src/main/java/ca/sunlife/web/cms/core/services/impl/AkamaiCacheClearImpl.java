@@ -1,6 +1,11 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.jcr.RepositoryException;
@@ -40,11 +45,15 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class AkamaiCacheClearImpl.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = AkamaiCacheClear.class, immediate = true)
 @ Designate (ocd = AkamaiConfig.class)
 public class AkamaiCacheClearImpl implements AkamaiCacheClear {
 
+  /** The Constant DOMAIN. */
   private static final String DOMAIN = "domain";
 
   /** The config. */
@@ -94,18 +103,17 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
       for (final String path : paths) {
         LOGGER.debug("Processing path {}", path);
-        if (path.startsWith("/content/experience-fragments") && !path.contains("header") && !path.contains("footer")) {
-          final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
-              .search(resourceResolver, path);
-          searchResult.forEach((key, reference) -> {
-            try {
-              if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, key))) {
-                objects.put(configService.getPageUrl(path));
-              }
-            } catch (LoginException | RepositoryException e) {
-              LOGGER.error("Error while processing {} with exception {}", path, e);
+        if (path.startsWith("/content/experience-fragments") && ! path.contains("header")
+            && ! path.contains("footer")) {
+          final Collection <ReferenceSearch.Info> searchResult = new ReferenceSearch()
+              .search(resourceResolver, path).values();
+          for (final ReferenceSearch.Info info : searchResult) {
+            final String refPath = info.getPage().getPath();
+            if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, refPath))) {
+              objects.put(configService.getPageUrl(refPath));
             }
-          });
+
+          }
         } else if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, path))) {
           objects.put(configService.getPageUrl(path));
         } else {
@@ -174,8 +182,8 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       final JSONArray objects = new JSONArray();
       for (final String path : paths) {
         final Resource resource = resourceResolver.getResource(path);
-        if (resource != null
-            && ((String) resource.getValueMap().getOrDefault(com.day.cq.commons.jcr.JcrConstants.JCR_PRIMARYTYPE, ""))
+        if (resource != null && ((String) resource.getValueMap()
+            .getOrDefault(com.day.cq.commons.jcr.JcrConstants.JCR_PRIMARYTYPE, ""))
                 .equalsIgnoreCase(com.day.cq.dam.api.DamConstants.NT_DAM_ASSET)) {
           final Map <String, ReferenceSearch.Info> searchResult = new ReferenceSearch()
               .search(resourceResolver, path);

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.beans;
 
 import java.util.Collections;
@@ -9,29 +13,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * The Class NewsReleases.
  *
- * @author mo92 The Class NewsReleases
+ * @author TCS
+ * @version 1.0
  */
 public class NewsReleases {
 
-  /** Matching count. */
+  /** The matching count. */
   @ JsonProperty ("matching_count")
   private String matchingCount;
 
-  /** Returned count. */
+  /** The returned count. */
   @ JsonProperty ("returned_count")
   private String returnedCount;
 
-  /** Release. */
+  /** The release. */
   @ JsonFormat (with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
   private List <Release> release;
 
-  /** Last modified. */
+  /** The latest modified. */
   private String latestModified;
 
   /**
    * Gets the matching count.
    *
-   * @return the matchingCount
+   * @return the matching count
    */
   public String getMatchingCount() {
     return matchingCount;
@@ -41,7 +46,7 @@ public class NewsReleases {
    * Sets the matching count.
    *
    * @param matchingCount
-   *          the matchingCount to set
+   *          the new matching count
    */
   public void setMatchingCount(final String matchingCount) {
     this.matchingCount = matchingCount;
@@ -50,7 +55,7 @@ public class NewsReleases {
   /**
    * Gets the returned count.
    *
-   * @return the returnedCount
+   * @return the returned count
    */
   public String getReturnedCount() {
     return returnedCount;
@@ -60,7 +65,7 @@ public class NewsReleases {
    * Sets the returned count.
    *
    * @param returnedCount
-   *          the returnedCount to set
+   *          the new returned count
    */
   public void setReturnedCount(final String returnedCount) {
     this.returnedCount = returnedCount;
@@ -79,7 +84,7 @@ public class NewsReleases {
    * Sets the release.
    *
    * @param release
-   *          the release to set
+   *          the new release
    */
   public void setRelease(final List <Release> release) {
     this.release = Collections.unmodifiableList(release);
@@ -88,7 +93,7 @@ public class NewsReleases {
   /**
    * Gets the latest modified.
    *
-   * @return the latestModified
+   * @return the latest modified
    */
   public String getLatestModified() {
     return latestModified;
@@ -98,7 +103,7 @@ public class NewsReleases {
    * Sets the latest modified.
    *
    * @param latestModified
-   *          the latestModified to set
+   *          the new latest modified
    */
   public void setLatestModified(final String latestModified) {
     this.latestModified = latestModified;

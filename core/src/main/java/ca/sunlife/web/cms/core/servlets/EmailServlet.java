@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.servlets;
 
 import java.io.IOException;
@@ -20,12 +24,14 @@ import ca.sunlife.web.cms.core.services.MailService;
 
 /**
  * The Class EmailServlet.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "=Email Servlet",
-    "sling.servlet.methods="+ HttpConstants.METHOD_GET,
+    "sling.servlet.methods=" + HttpConstants.METHOD_GET,
     "sling.servlet.resourceTypes=" + "sunlife/core/components/config/email",
-    "sling.servlet.selectors=email",
-    "sling.servlet.extensions=service" })
+    "sling.servlet.selectors=email", "sling.servlet.extensions=service" })
 public class EmailServlet extends SlingAllMethodsServlet {
 
   /** The Constant serialVersionUID. */
@@ -37,7 +43,6 @@ public class EmailServlet extends SlingAllMethodsServlet {
   /** The mail service. */
   @ Reference
   private transient MailService mailService;
-  
 
   /*
    * (non-Javadoc)
@@ -48,8 +53,8 @@ public class EmailServlet extends SlingAllMethodsServlet {
   public void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
       throws ServletException, IOException {
     LOG.debug("Processing reqest");
-    String redirectUrl = mailService.processHttpRequest(request);
-    response.sendRedirect(StringUtils.isNotBlank(redirectUrl)? redirectUrl : "");
+    final String redirectUrl = mailService.processHttpRequest(request);
+    response.sendRedirect(StringUtils.isNotBlank(redirectUrl) ? redirectUrl : "");
   }
 
   /*

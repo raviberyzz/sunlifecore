@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.io.IOException;
@@ -26,97 +30,96 @@ import ca.sunlife.web.cms.core.services.ProviderProfileService;
 import ca.sunlife.web.cms.core.services.RestService;
 
 /**
- * @author mo92 The Class
- *         ProviderProfileServiceImpl.
+ * The Class ProviderProfileServiceImpl.
+ *
+ * @author TCS
+ * @version 1.0
  */
-@Component(service = { ProviderProfileService.class }, immediate = true)
-@Designate(ocd = ProviderProfileConfig.class)
+@ Component (service = { ProviderProfileService.class }, immediate = true)
+@ Designate (ocd = ProviderProfileConfig.class)
 public class ProviderProfileServiceImpl implements ProviderProfileService {
-	/**
-	 * The logger.
-	 */
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * The ProviderProfileConfig
-	 * object.
-	 */
-	private ProviderProfileConfig providerProfileConfig;
+  /** The logger. */
+  private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	/** The rest service. */
-	@Reference
-	private RestService restService;
+  /** The provider profile config. */
+  private ProviderProfileConfig providerProfileConfig;
 
-	/**
-	 * Activates the provider
-	 * profile config.
-	 * 
-	 * @param providerProfileConfig
-	 *            the provider
-	 *            profile config
-	 */
-	@Activate
-	public void activate(final ProviderProfileConfig providerProfileConfig) {
-		this.providerProfileConfig = providerProfileConfig;
-		logger.debug("ProviderProfileServiceImpl :: activate :: ProviderProfileServiceUrl: {} ", this.providerProfileConfig.getProviderProfileServiceUrl());
-	}
+  /** The rest service. */
+  @ Reference
+  private RestService restService;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ca.sunlife.web.cms.core.
-	 * services.
-	 * ProviderProfileService#
-	 * getProviderProfile(java.
-	 * lang.String,
-	 * java.lang.String,
-	 * java.lang.String)
-	 */
-	@Override
-	public String getProviderProfile(String locale, String pageNo, String mustachTemplate) throws ApplicationException, SystemException,
-	                                                                                                                        IOException {
-		logger.debug("Entry :: ProviderProfileServiceImpl :: getProviderProfile :: locale :: {}, pageNo :: {}", locale, pageNo);
-		StringBuilder url = new StringBuilder(providerProfileConfig.getProviderProfileServiceUrl());
-		url.append("?");
-		Map<String, String> queryParameterMap = getQueryParameters(pageNo);
+  /**
+   * Activate.
+   *
+   * @param providerProfileConfig
+   *          the provider profile config
+   */
+  @ Activate
+  public void activate(final ProviderProfileConfig providerProfileConfig) {
+    this.providerProfileConfig = providerProfileConfig;
+    logger.debug("ProviderProfileServiceImpl :: activate :: ProviderProfileServiceUrl: {} ",
+        this.providerProfileConfig.getProviderProfileServiceUrl());
+  }
 
-		if (null != queryParameterMap && queryParameterMap.size() > 0) {
-			queryParameterMap.forEach((key, value) -> url.append(key + "=" + value + "&"));
-		}
-		url.append(ProviderProfileConstants.LOCALE_CONSTANT + "=" + locale);
-		logger.debug("provider profile url :: {}", url);
-		String providerProfileResponse = restService.callGetWebService(url.toString());
-		logger.debug("providerProfileResponse :: {}", providerProfileResponse);
-		@SuppressWarnings("unchecked")
-		HashMap<String, Object> profileDataMap = new ObjectMapper().readValue(providerProfileResponse, HashMap.class);
-		MustacheFactory mf = new DefaultMustacheFactory();
-		StringWriter writer = new StringWriter();
-		Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
-		mustache.execute(writer, profileDataMap);
-		return writer.toString().replace("&amp;", "&");
-	}
+  /*
+   * (non-Javadoc)
+   * @see ca.sunlife.web.cms.core. services. ProviderProfileService# getProviderProfile(java.
+   * lang.String, java.lang.String, java.lang.String)
+   */
+  @ Override
+  public String getProviderProfile(final String locale, final String pageNo,
+      final String mustachTemplate) throws ApplicationException, SystemException, IOException {
+    logger.debug(
+        "Entry :: ProviderProfileServiceImpl :: getProviderProfile :: locale :: {}, pageNo :: {}",
+        locale, pageNo);
+    final StringBuilder url = new StringBuilder(
+        providerProfileConfig.getProviderProfileServiceUrl());
+    url.append("?");
+    final Map <String, String> queryParameterMap = getQueryParameters(pageNo);
 
-	/**
-	 * Fetches query parameters
-	 * 
-	 * @param queryString
-	 * @return
-	 */
-	private Map<String, String> getQueryParameters(String queryString) {
-		logger.debug("Entry :: ProviderProfileServiceImpl :: getQueryParameters :: queryString :: {}", queryString);
-		Map<String, String> queryParamMap = null;
-		if (null != queryString) {
-			queryParamMap = new HashMap<>();
-			String[] parameterArray = queryString.split(ProviderProfileConstants.WEB_PARAM_FORMAT_DELIMETER_CONSTANT);
-			for (String parameter : parameterArray) {
-				String[] actualParameterArray = parameter.split(ProviderProfileConstants.WEB_PARAM_KEY_DELIMETER_CONSTANT);
-				queryParamMap.put(actualParameterArray[0], actualParameterArray[1]);
-			}
-		}
-		logger.info("ProviderProfileServiceImpl :: queryParamMap :: {}", queryParamMap);
-		logger.debug("Exit :: ProviderProfileServiceImpl :: getQueryParameters :: queryParamMap :: {}", queryParamMap);
-		return queryParamMap;
-	}
+    if (null != queryParameterMap && queryParameterMap.size() > 0) {
+      queryParameterMap.forEach((key, value) -> url.append(key + "=" + value + "&"));
+    }
+    url.append(ProviderProfileConstants.LOCALE_CONSTANT + "=" + locale);
+    logger.debug("provider profile url :: {}", url);
+    final String providerProfileResponse = restService.callGetWebService(url.toString());
+    logger.debug("providerProfileResponse :: {}", providerProfileResponse);
+    @ SuppressWarnings ("unchecked")
+    final HashMap <String, Object> profileDataMap = new ObjectMapper()
+        .readValue(providerProfileResponse, HashMap.class);
+    final MustacheFactory mf = new DefaultMustacheFactory();
+    final StringWriter writer = new StringWriter();
+    final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
+    mustache.execute(writer, profileDataMap);
+    return writer.toString().replace("&amp;", "&");
+  }
+
+  /**
+   * Gets the query parameters.
+   *
+   * @param queryString
+   *          the query string
+   * @return the query parameters
+   */
+  private Map <String, String> getQueryParameters(final String queryString) {
+    logger.debug("Entry :: ProviderProfileServiceImpl :: getQueryParameters :: queryString :: {}",
+        queryString);
+    Map <String, String> queryParamMap = null;
+    if (null != queryString) {
+      queryParamMap = new HashMap <>();
+      final String [ ] parameterArray = queryString
+          .split(ProviderProfileConstants.WEB_PARAM_FORMAT_DELIMETER_CONSTANT);
+      for (final String parameter : parameterArray) {
+        final String [ ] actualParameterArray = parameter
+            .split(ProviderProfileConstants.WEB_PARAM_KEY_DELIMETER_CONSTANT);
+        queryParamMap.put(actualParameterArray [ 0 ], actualParameterArray [ 1 ]);
+      }
+    }
+    logger.info("ProviderProfileServiceImpl :: queryParamMap :: {}", queryParamMap);
+    logger.debug("Exit :: ProviderProfileServiceImpl :: getQueryParameters :: queryParamMap :: {}",
+        queryParamMap);
+    return queryParamMap;
+  }
 
 }

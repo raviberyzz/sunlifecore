@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
@@ -26,12 +30,15 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class CNWNewsDetailsModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsDetailsModel {
 
-  /** logger. */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   /** The request. */
@@ -46,18 +53,18 @@ public class CNWNewsDetailsModel {
   @ Inject
   private CNWNewsService newsService;
 
-  /** news details. */
+  /** The news details. */
   private NewsDetails newsDetails;
 
   /** The config service. */
   @ Inject
   private SiteConfigService configService;
-  
-  /** news - release id. */
+
+  /** The release id. */
   private String releaseId;
 
   /**
-   * Getters/Setters.
+   * Inits the.
    */
   /**
    * CNWNewsDetailsModel - init method for processing the data
@@ -70,10 +77,11 @@ public class CNWNewsDetailsModel {
       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
       releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
       if (null != locale && locale.length() > 0) {
-          pageLocaleDefault = locale.split("_") [ 0 ];
-        }
+        pageLocaleDefault = locale.split("_") [ 0 ];
+      }
       newsDetails = newsService.getCNWNewsDetails(releaseId, pageLocaleDefault);
-    } catch (IOException | ParseException | ApplicationException | SystemException | LoginException | RepositoryException e) {
+    } catch (IOException | ParseException | ApplicationException | SystemException | LoginException
+        | RepositoryException e) {
       logger.error("Error :: CNWNewsDetailsModel :: init :: Exception :: {}", e);
     }
   }
@@ -81,7 +89,7 @@ public class CNWNewsDetailsModel {
   /**
    * Gets the news details.
    *
-   * @return the newsDetails
+   * @return the news details
    */
   public NewsDetails getNewsDetails() {
     return newsDetails;
@@ -91,7 +99,7 @@ public class CNWNewsDetailsModel {
    * Sets the news details.
    *
    * @param newsDetails
-   *          the newsDetails to set
+   *          the new news details
    */
   public void setNewsDetails(final NewsDetails newsDetails) {
     this.newsDetails = newsDetails;
@@ -100,7 +108,7 @@ public class CNWNewsDetailsModel {
   /**
    * Gets the release id.
    *
-   * @return the releaseId
+   * @return the release id
    */
   public String getReleaseId() {
     return releaseId;
@@ -110,7 +118,7 @@ public class CNWNewsDetailsModel {
    * Sets the release id.
    *
    * @param releaseId
-   *          the releaseId to set
+   *          the new release id
    */
   public void setReleaseId(final String releaseId) {
     this.releaseId = releaseId;

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -11,7 +15,10 @@ import com.adobe.cq.wcm.core.components.internal.models.v1.form.ButtonImpl;
 import com.adobe.cq.wcm.core.components.models.form.Button;
 
 /**
- * The class FormButtonModel.
+ * The Class FormButtonModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Button.class, resourceType = "sunlife/core/components/form/button")
 public class FormButtonModel extends ButtonImpl {
@@ -35,10 +42,9 @@ public class FormButtonModel extends ButtonImpl {
   @ Optional
   private String id;
 
-  /**
-   * Gets the modified title.
-   *
-   * @return the Title
+  /*
+   * (non-Javadoc)
+   * @see com.adobe.cq.wcm.core.components.internal.models.v1.form.ButtonImpl#getTitle()
    */
   @ Override
   public String getTitle() {
@@ -48,7 +54,7 @@ public class FormButtonModel extends ButtonImpl {
   /**
    * Gets the data title.
    *
-   * @return the dataTitle
+   * @return the data title
    */
   public String getDataTitle() {
     return dataTitle;
@@ -58,16 +64,15 @@ public class FormButtonModel extends ButtonImpl {
    * Sets the data title.
    *
    * @param dataTitle
-   *          the dataTitle to set
+   *          the new data title
    */
   public void setDataTitle(final String dataTitle) {
     this.dataTitle = dataTitle;
   }
 
-  /**
-   * Gets the id.
-   *
-   * @return the id
+  /*
+   * (non-Javadoc)
+   * @see com.adobe.cq.wcm.core.components.internal.models.v1.form.AbstractFieldImpl#getId()
    */
   @ Override
   public String getId() {

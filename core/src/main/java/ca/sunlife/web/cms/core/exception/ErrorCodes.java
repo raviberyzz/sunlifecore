@@ -1,12 +1,20 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.exception;
 
 /**
  * The Enum ErrorCodes.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public enum ErrorCodes {
 
   /** The sys error 001. */
   SYS_ERROR_001 ("System error code"),
+
   /** The app error 001. */
   APP_ERROR_001 ("Application error code"),
 

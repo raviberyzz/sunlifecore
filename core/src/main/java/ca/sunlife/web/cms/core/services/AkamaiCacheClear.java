@@ -1,9 +1,16 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services;
 
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 
 /**
  * The Interface AkamaiCacheClear.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public interface AkamaiCacheClear {
 

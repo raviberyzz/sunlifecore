@@ -4,32 +4,35 @@
 package ca.sunlife.web.cms.core.constants;
 
 /**
- * @author mo92 The Class ArticleConstants.
+ * The Class ArticleConstants.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public class ArticleConstants {
 
   /**
-   * private constructor.
+   * Instantiates a new article constants.
    */
   private ArticleConstants() {
     throw new IllegalStateException("ArticleConstants class");
   }
 
-  /** The Constant Article type. */
+  /** The Constant ARTICLE_TYPE_CONSTANT. */
   public static final String ARTICLE_TYPE_CONSTANT = "articleType";
 
-  /** The Constant Article publisher for meta tags. */
+  /** The Constant ARTICLE_PUBLISHER_CONSTANT. */
   public static final String ARTICLE_PUBLISHER_CONSTANT = "articlePublisherForMetaTag";
 
-  /** The Constant Article site. */
+  /** The Constant ARTICLE_SITE_CONSTANT. */
   public static final String ARTICLE_SITE_CONSTANT = "articleSite";
 
-  /** The Constant Article creator. */
+  /** The Constant ARTICLE_CREATOR_CONSTANT. */
   public static final String ARTICLE_CREATOR_CONSTANT = "articleCreator";
 
-  /** The Constant Article component path. */
+  /** The Constant ARTICLE_PATH_CONSTANT. */
   public static final String ARTICLE_PATH_CONSTANT = "/jcr:content/root/layout_container/container1/layout_container/container1/article";
 
-  /** The Constant Article date format. */
+  /** The Constant ARTICLE_DATE_FORMAT_CONSTANT. */
   public static final String ARTICLE_DATE_FORMAT_CONSTANT = "articleDateFormat";
 }

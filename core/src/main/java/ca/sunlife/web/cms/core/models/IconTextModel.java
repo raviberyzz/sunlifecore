@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,6 +14,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface IconTextModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -24,9 +31,9 @@ public interface IconTextModel {
   String getTitle();
 
   /**
-   * Gets the titleLabel.
+   * Gets the title level.
    *
-   * @return the titleLabel
+   * @return the title level
    */
   @ Inject
   String getTitleLevel();
@@ -41,6 +48,9 @@ public interface IconTextModel {
 
   /**
    * The Interface IconsText.
+   *
+   * @author TCS
+   * @version 1.0
    */
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface IconsText {
@@ -78,9 +88,9 @@ public interface IconTextModel {
     String getTarget();
 
     /**
-     * Gets the srText.
+     * Gets the sr text.
      *
-     * @return the srText
+     * @return the sr text
      */
     @ Inject
     String getSrText();

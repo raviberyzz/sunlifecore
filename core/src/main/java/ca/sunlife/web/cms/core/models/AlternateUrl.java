@@ -13,7 +13,8 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface AlternateUrl.
  *
- * @author MO92
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)

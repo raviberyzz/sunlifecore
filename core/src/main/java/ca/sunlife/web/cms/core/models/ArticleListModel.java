@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
@@ -45,11 +49,14 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class ArticleListModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = ArticleListModel.class, resourceType = "sunlife/core/components/content/articleList", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticleListModel {
 
-  /** The logger. */
+  /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(ArticleListModel.class);
 
   /** The parent path. */
@@ -86,14 +93,15 @@ public class ArticleListModel {
   @ Inject
   @ Via ("resource")
   private String titleLevel;
-  
-  @SlingObject
+
+  /** The resource resolver. */
+  @ SlingObject
   private ResourceResolver resourceResolver;
 
   /** The items. */
   private final List <DAMContentFragment> items = new ArrayList <>();
 
-  /** The sling http servlet request. */
+  /** The request. */
   @ Self (injectionStrategy = InjectionStrategy.REQUIRED)
   private SlingHttpServletRequest request;
 
@@ -110,7 +118,7 @@ public class ArticleListModel {
 
   /** The date format. */
   private String dateFormat;
-  
+
   /** The page locale. */
   private String pageLocale;
 
@@ -127,7 +135,7 @@ public class ArticleListModel {
   /**
    * Gets the page url.
    *
-   * @return the pageUrl
+   * @return the page url
    */
   public final String getPageUrl() {
     return pageUrl;
@@ -137,7 +145,7 @@ public class ArticleListModel {
    * Sets the page url.
    *
    * @param pageUrl
-   *          the pageUrl to set
+   *          the new page url
    */
   public final void setPageUrl(final String pageUrl) {
     this.pageUrl = pageUrl;
@@ -156,7 +164,7 @@ public class ArticleListModel {
    * Sets the pagination.
    *
    * @param pagination
-   *          the pagination to set
+   *          the new pagination
    */
   public final void setPagination(final Pagination pagination) {
     this.pagination = pagination;
@@ -165,7 +173,7 @@ public class ArticleListModel {
   /**
    * Gets the total match.
    *
-   * @return the totalMatch
+   * @return the total match
    */
   public final int getTotalMatch() {
     return totalMatch;
@@ -174,16 +182,16 @@ public class ArticleListModel {
   /**
    * Gets the date format.
    *
-   * @return the dateFormat
+   * @return the date format
    */
   public final String getDateFormat() {
     return dateFormat;
   }
-  
+
   /**
    * Gets the page locale.
    *
-   * @return the pageLocale
+   * @return the page locale
    */
   public final String getPageLocale() {
     return pageLocale;
@@ -202,7 +210,7 @@ public class ArticleListModel {
    * Sets the title.
    *
    * @param title
-   *          the title to set
+   *          the new title
    */
   public final void setTitle(final String title) {
     this.title = title;
@@ -211,7 +219,7 @@ public class ArticleListModel {
   /**
    * Gets the title level.
    *
-   * @return the titleLevel
+   * @return the title level
    */
   public final String getTitleLevel() {
     return titleLevel;
@@ -221,7 +229,7 @@ public class ArticleListModel {
    * Sets the title level.
    *
    * @param titleLevel
-   *          the titleLevel to set
+   *          the new title level
    */
   public final void setTitleLevel(final String titleLevel) {
     this.titleLevel = titleLevel;
@@ -231,17 +239,17 @@ public class ArticleListModel {
    * Sets the date format.
    *
    * @param dateFormat
-   *          the dateFormat to set
+   *          the new date format
    */
   public final void setDateFormat(final String dateFormat) {
     this.dateFormat = dateFormat;
   }
-  
+
   /**
    * Sets the page locale.
    *
    * @param pageLocale
-   *          the pageLocale to set
+   *          the new page locale
    */
   public final void setPageLocale(final String pageLocale) {
     this.pageLocale = pageLocale;
@@ -250,7 +258,7 @@ public class ArticleListModel {
   /**
    * Gets the page num.
    *
-   * @return the pageNum
+   * @return the page num
    */
   public final int getPageNum() {
     return pageNum;
@@ -260,7 +268,7 @@ public class ArticleListModel {
    * Sets the page num.
    *
    * @param pageNum
-   *          the pageNum to set
+   *          the new page num
    */
   public final void setPageNum(final int pageNum) {
     this.pageNum = pageNum;
@@ -270,7 +278,7 @@ public class ArticleListModel {
    * Sets the total match.
    *
    * @param totalMatch
-   *          the totalMatch to set
+   *          the new total match
    */
   public final void setTotalMatch(final int totalMatch) {
     this.totalMatch = totalMatch;
@@ -279,7 +287,7 @@ public class ArticleListModel {
   /** The total match. */
   private int totalMatch;
 
-  /** The element names. */
+  /** The Constant ELEMENT_NAMES. */
   private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "articleHeadline",
       "articlePageLink", "articleAuthor", "articleMiniDescription", "articleImage",
       "articleMainDescription", "articleThumbnailImage" };
@@ -287,7 +295,7 @@ public class ArticleListModel {
   /**
    * Gets the parent path.
    *
-   * @return the parentPath
+   * @return the parent path
    */
   public final String getParentPath() {
     return parentPath;
@@ -297,7 +305,7 @@ public class ArticleListModel {
    * Sets the parent path.
    *
    * @param parentPath
-   *          the parentPath to set
+   *          the new parent path
    */
   public final void setParentPath(final String parentPath) {
     this.parentPath = parentPath;
@@ -306,7 +314,7 @@ public class ArticleListModel {
   /**
    * Gets the display type.
    *
-   * @return the displayType
+   * @return the display type
    */
   public final String getDisplayType() {
     return displayType;
@@ -316,7 +324,7 @@ public class ArticleListModel {
    * Sets the display type.
    *
    * @param displayType
-   *          the displayType to set
+   *          the new display type
    */
   public final void setDisplayType(final String displayType) {
     this.displayType = displayType;
@@ -325,7 +333,7 @@ public class ArticleListModel {
   /**
    * Gets the hide top.
    *
-   * @return the hideTop
+   * @return the hide top
    */
   public final int getHideTop() {
     return hideTop;
@@ -335,7 +343,7 @@ public class ArticleListModel {
    * Sets the hide top.
    *
    * @param hideTop
-   *          the hideTop to set
+   *          the new hide top
    */
   public final void setHideTop(final int hideTop) {
     this.hideTop = hideTop;
@@ -344,7 +352,7 @@ public class ArticleListModel {
   /**
    * Gets the max items.
    *
-   * @return the maxItems
+   * @return the max items
    */
   public final int getMaxItems() {
     return maxItems;
@@ -354,7 +362,7 @@ public class ArticleListModel {
    * Sets the max items.
    *
    * @param maxItems
-   *          the maxItems to set
+   *          the new max items
    */
   public final void setMaxItems(final int maxItems) {
     this.maxItems = maxItems;
@@ -374,8 +382,8 @@ public class ArticleListModel {
    */
   @ PostConstruct
   private void initModel() {
-	  
-	String pageLocaleDefault = StringUtils.EMPTY;
+
+    String pageLocaleDefault = StringUtils.EMPTY;
     if (StringUtils.isEmpty(getParentPath())) {
       return;
     }
@@ -384,14 +392,14 @@ public class ArticleListModel {
         && ! getDisplayType().equals("articleList")) {
       return;
     }
-    try {    	
-      setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));     
-      
-      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
+    try {
+      setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+
+      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
       if (null != locale && locale.length() > 0) {
-          pageLocaleDefault = locale.split("_") [ 0 ];
-        }
-      
+        pageLocaleDefault = locale.split("_") [ 0 ];
+      }
+
       setPageLocale(pageLocaleDefault);
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
@@ -443,10 +451,10 @@ public class ArticleListModel {
       }
       if (getDisplayType().equals("articleList")) {
         String path = currentPage.getPath();
-        String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
-        path = path
-            .replace(siteUrl.substring(0,
-                siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+        final String siteUrl = configService
+            .getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
+        path = path.replace(
+            siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
         setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
         setPageUrl(path);
       }
@@ -490,7 +498,7 @@ public class ArticleListModel {
       queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
-      for (int i = 0; i < tagNames.length; i++) {
+      for (int i = 0 ; i < tagNames.length ; i++ ) {
         queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ].trim());
       }
     }

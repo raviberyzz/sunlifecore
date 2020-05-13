@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
@@ -34,13 +38,14 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class CNWNewsModel.
  *
- * @author mo92 The Class CNWNewsModel - Sling model for CNW News list
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CNWNewsModel {
 
-  /** The log. */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   /** The current page. */
@@ -59,66 +64,66 @@ public class CNWNewsModel {
   @ Inject
   private SiteConfigService configService;
 
-  /** News display type. */
+  /** The news type. */
   @ Inject
   @ Via ("resource")
   private String newsType;
 
   // overview starts
 
-  /** Number of news to be displayed. */
+  /** The number of news. */
   @ Inject
   @ Via ("resource")
   private String numberOfNews;
 
   // overview ends
 
-  /** Latest year. */
+  /** The latest year. */
   @ Inject
   @ Via ("resource")
   private String latestYear;
 
-  /** No. of tabs */
+  /** The number of tabs. */
   @ Inject
   @ Via ("resource")
   private String numberOfTabs;
 
-  /** News categories. */
+  /** The news categories. */
   @ Inject
   @ Via ("resource")
   private List <NewsCategory> newsCategories;
 
-  /** News article url. */
+  /** The news article url. */
   @ Inject
   @ Via ("resource")
   private String newsArticleUrl;
 
-  /** Page size. */
+  /** The page size. */
   @ Inject
   @ Via ("resource")
   private String pageSize;
 
-  /** Previous button text. */
+  /** The previous text. */
   @ Inject
   @ Via ("resource")
   private String previousText;
 
-  /** Next button text. */
+  /** The next text. */
   @ Inject
   @ Via ("resource")
   private String nextText;
 
-  /** Page label text. */
+  /** The page text. */
   @ Inject
   @ Via ("resource")
   private String pageText;
 
-  /** Of label text. */
+  /** The of text. */
   @ Inject
   @ Via ("resource")
   private String ofText;
 
-  /** Message when no news are there. */
+  /** The no news message. */
   @ Inject
   @ Via ("resource")
   private String noNewsMessage;
@@ -126,23 +131,23 @@ public class CNWNewsModel {
   /** The locale. */
   private String locale;
 
-  /** News. */
+  /** The news. */
   private News news;
 
-  /** Active Year. */
+  /** The active year. */
   private int activeYear;
 
-  /** Years To Show - Tabs. */
+  /** The years to show. */
   private List <Integer> yearsToShow;
 
-  /** requestURL. */
+  /** The request URL. */
   private String requestURL;
 
-  /** relative URL - without any selectors. */
+  /** The relative URL. */
   private String relativeURL;
 
   // overview starts
-  /** Release News Object. */
+  /** The release main. */
   private ReleaseMain releaseMain;
 
   // overview ends
@@ -153,7 +158,7 @@ public class CNWNewsModel {
   /**
    * Gets the latest year.
    *
-   * @return the latestYear
+   * @return the latest year
    */
   public String getLatestYear() {
     return latestYear;
@@ -163,7 +168,7 @@ public class CNWNewsModel {
    * Sets the latest year.
    *
    * @param latestYear
-   *          the latestYear to set
+   *          the new latest year
    */
   public void setLatestYear(final String latestYear) {
     this.latestYear = latestYear;
@@ -172,7 +177,7 @@ public class CNWNewsModel {
   /**
    * Gets the number of tabs.
    *
-   * @return the numberOfTabs
+   * @return the number of tabs
    */
   public String getNumberOfTabs() {
     return numberOfTabs;
@@ -182,7 +187,7 @@ public class CNWNewsModel {
    * Sets the number of tabs.
    *
    * @param numberOfTabs
-   *          the numberOfTabs to set
+   *          the new number of tabs
    */
   public void setNumberOfTabs(final String numberOfTabs) {
     this.numberOfTabs = numberOfTabs;
@@ -191,7 +196,7 @@ public class CNWNewsModel {
   /**
    * Gets the news article url.
    *
-   * @return the newsArticleUrl
+   * @return the news article url
    */
   public String getNewsArticleUrl() {
     return newsArticleUrl;
@@ -201,7 +206,7 @@ public class CNWNewsModel {
    * Sets the news article url.
    *
    * @param newsArticleUrl
-   *          the newsArticleUrl to set
+   *          the new news article url
    */
   public void setNewsArticleUrl(final String newsArticleUrl) {
     this.newsArticleUrl = newsArticleUrl;
@@ -210,7 +215,7 @@ public class CNWNewsModel {
   /**
    * Gets the page size.
    *
-   * @return the pageSize
+   * @return the page size
    */
   public String getPageSize() {
     return pageSize;
@@ -220,7 +225,7 @@ public class CNWNewsModel {
    * Sets the page size.
    *
    * @param pageSize
-   *          the pageSize to set
+   *          the new page size
    */
   public void setPageSize(final String pageSize) {
     this.pageSize = pageSize;
@@ -229,7 +234,7 @@ public class CNWNewsModel {
   /**
    * Gets the previous text.
    *
-   * @return the previousText
+   * @return the previous text
    */
   public String getPreviousText() {
     return previousText;
@@ -239,7 +244,7 @@ public class CNWNewsModel {
    * Sets the previous text.
    *
    * @param previousText
-   *          the previousText to set
+   *          the new previous text
    */
   public void setPreviousText(final String previousText) {
     this.previousText = previousText;
@@ -248,7 +253,7 @@ public class CNWNewsModel {
   /**
    * Gets the next text.
    *
-   * @return the nextText
+   * @return the next text
    */
   public String getNextText() {
     return nextText;
@@ -258,7 +263,7 @@ public class CNWNewsModel {
    * Sets the next text.
    *
    * @param nextText
-   *          the nextText to set
+   *          the new next text
    */
   public void setNextText(final String nextText) {
     this.nextText = nextText;
@@ -267,7 +272,7 @@ public class CNWNewsModel {
   /**
    * Gets the page text.
    *
-   * @return the pageText
+   * @return the page text
    */
   public String getPageText() {
     return pageText;
@@ -277,7 +282,7 @@ public class CNWNewsModel {
    * Sets the page text.
    *
    * @param pageText
-   *          the pageText to set
+   *          the new page text
    */
   public void setPageText(final String pageText) {
     this.pageText = pageText;
@@ -286,7 +291,7 @@ public class CNWNewsModel {
   /**
    * Gets the of text.
    *
-   * @return the ofText
+   * @return the of text
    */
   public String getOfText() {
     return ofText;
@@ -296,7 +301,7 @@ public class CNWNewsModel {
    * Sets the of text.
    *
    * @param ofText
-   *          the ofText to set
+   *          the new of text
    */
   public void setOfText(final String ofText) {
     this.ofText = ofText;
@@ -305,7 +310,7 @@ public class CNWNewsModel {
   /**
    * Gets the active year.
    *
-   * @return the activeYear
+   * @return the active year
    */
   public int getActiveYear() {
     return activeYear;
@@ -315,7 +320,7 @@ public class CNWNewsModel {
    * Sets the active year.
    *
    * @param activeYear
-   *          the activeYear to set
+   *          the new active year
    */
   public void setActiveYear(final int activeYear) {
     this.activeYear = activeYear;
@@ -334,7 +339,7 @@ public class CNWNewsModel {
    * Sets the news.
    *
    * @param news
-   *          the news to set
+   *          the new news
    */
   public void setNews(final News news) {
     this.news = news;
@@ -343,7 +348,7 @@ public class CNWNewsModel {
   /**
    * Gets the years to show.
    *
-   * @return the yearsToShow
+   * @return the years to show
    */
   public List <Integer> getYearsToShow() {
     return Collections.unmodifiableList(yearsToShow);
@@ -353,7 +358,7 @@ public class CNWNewsModel {
    * Sets the years to show.
    *
    * @param yearsToShow
-   *          the yearsToShow to set
+   *          the new years to show
    */
   public void setYearsToShow(final List <Integer> yearsToShow) {
     this.yearsToShow = Collections.unmodifiableList(yearsToShow);
@@ -362,7 +367,7 @@ public class CNWNewsModel {
   /**
    * Gets the request URL.
    *
-   * @return the requestURL
+   * @return the request URL
    */
   public String getRequestURL() {
     return requestURL;
@@ -372,7 +377,7 @@ public class CNWNewsModel {
    * Sets the request URL.
    *
    * @param requestURL
-   *          the requestURL to set
+   *          the new request URL
    */
   public void setRequestURL(final String requestURL) {
     this.requestURL = requestURL;
@@ -381,7 +386,7 @@ public class CNWNewsModel {
   /**
    * Gets the relative URL.
    *
-   * @return the relativeURL
+   * @return the relative URL
    */
   public String getRelativeURL() {
     return relativeURL;
@@ -391,7 +396,7 @@ public class CNWNewsModel {
    * Sets the relative URL.
    *
    * @param relativeURL
-   *          the relativeURL to set
+   *          the new relative URL
    */
   public void setRelativeURL(final String relativeURL) {
     this.relativeURL = relativeURL;
@@ -400,7 +405,7 @@ public class CNWNewsModel {
   /**
    * Gets the news categories.
    *
-   * @return the newsCategories
+   * @return the news categories
    */
   public List <NewsCategory> getNewsCategories() {
     return Collections.unmodifiableList(newsCategories);
@@ -410,7 +415,7 @@ public class CNWNewsModel {
    * Sets the news categories.
    *
    * @param newsCategories
-   *          the newsCategories to set
+   *          the new news categories
    */
   public void setNewsCategories(final List <NewsCategory> newsCategories) {
     this.newsCategories = Collections.unmodifiableList(newsCategories);
@@ -419,7 +424,7 @@ public class CNWNewsModel {
   /**
    * Gets the news type.
    *
-   * @return the newsType
+   * @return the news type
    */
   public String getNewsType() {
     return newsType;
@@ -429,7 +434,7 @@ public class CNWNewsModel {
    * Sets the news type.
    *
    * @param newsType
-   *          the newsType to set
+   *          the new news type
    */
   public void setNewsType(final String newsType) {
     this.newsType = newsType;
@@ -438,7 +443,7 @@ public class CNWNewsModel {
   /**
    * Gets the number of news.
    *
-   * @return the numberOfNews
+   * @return the number of news
    */
   public String getNumberOfNews() {
     return numberOfNews;
@@ -448,7 +453,7 @@ public class CNWNewsModel {
    * Sets the number of news.
    *
    * @param numberOfNews
-   *          the numberOfNews to set
+   *          the new number of news
    */
   public void setNumberOfNews(final String numberOfNews) {
     this.numberOfNews = numberOfNews;
@@ -457,7 +462,7 @@ public class CNWNewsModel {
   /**
    * Gets the release main.
    *
-   * @return the releaseMain
+   * @return the release main
    */
   public ReleaseMain getReleaseMain() {
     return releaseMain;
@@ -467,7 +472,7 @@ public class CNWNewsModel {
    * Sets the release main.
    *
    * @param releaseMain
-   *          the releaseMain to set
+   *          the new release main
    */
   public void setReleaseMain(final ReleaseMain releaseMain) {
     this.releaseMain = releaseMain;
@@ -476,7 +481,7 @@ public class CNWNewsModel {
   /**
    * Gets the no news message.
    *
-   * @return the noNewsMessage
+   * @return the no news message
    */
   public String getNoNewsMessage() {
     return noNewsMessage;
@@ -486,7 +491,7 @@ public class CNWNewsModel {
    * Sets the no news message.
    *
    * @param noNewsMessage
-   *          the noNewsMessage to set
+   *          the new no news message
    */
   public void setNoNewsMessage(final String noNewsMessage) {
     this.noNewsMessage = noNewsMessage;
@@ -495,7 +500,7 @@ public class CNWNewsModel {
   /**
    * Gets the news article shortened url.
    *
-   * @return the newsArticleShortenedUrl
+   * @return the news article shortened url
    */
   public String getNewsArticleShortenedUrl() {
     return newsArticleShortenedUrl;
@@ -505,14 +510,14 @@ public class CNWNewsModel {
    * Sets the news article shortened url.
    *
    * @param newsArticleShortenedUrl
-   *          the newsArticleShortenedUrl to set
+   *          the new news article shortened url
    */
   public void setNewsArticleShortenedUrl(final String newsArticleShortenedUrl) {
     this.newsArticleShortenedUrl = newsArticleShortenedUrl;
   }
 
   /**
-   * Post construct method - init once the model gets instantiated.
+   * Inits the.
    */
   @ PostConstruct
   public void init() {
@@ -523,7 +528,7 @@ public class CNWNewsModel {
     try {
       final String pageLocale = configService.getConfigValues("pageLocale", currentPage.getPath());
       if (null != pageLocale && pageLocale.length() > 0) {
-    	locale = pageLocale.split("_") [ 0 ];
+        locale = pageLocale.split("_") [ 0 ];
       }
       logger.debug("Fetched locale: {}, newsType: {}", locale, newsType);
       if (newsType.equals("1")) {
@@ -544,7 +549,7 @@ public class CNWNewsModel {
   }
 
   /**
-   * Gets news overview data.
+   * Process overview data.
    *
    * @throws IOException
    *           Signals that an I/O exception has occurred.
@@ -565,7 +570,7 @@ public class CNWNewsModel {
   }
 
   /**
-   * Gets new listing data.
+   * Process releases data.
    *
    * @throws IOException
    *           Signals that an I/O exception has occurred.
@@ -644,13 +649,13 @@ public class CNWNewsModel {
   }
 
   /**
-   * Generates shorten url.
+   * Shorten URL.
    *
    * @param pagePath
    *          the page path
    * @param siteUrl
    *          the site url
-   * @return shortened url
+   * @return the string
    */
   public String shortenURL(final String pagePath, final String siteUrl) {
     if (null == siteUrl) {

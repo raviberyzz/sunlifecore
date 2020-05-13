@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -8,6 +12,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface ButtonModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -22,9 +29,9 @@ public interface ButtonModel {
   String getTarget();
 
   /**
-   * Gets the dataTitle.
+   * Gets the data title.
    *
-   * @return the dataTitle
+   * @return the data title
    */
   @ Inject
   String getDataTitle();

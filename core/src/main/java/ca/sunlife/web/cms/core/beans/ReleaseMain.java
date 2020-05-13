@@ -1,13 +1,18 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.beans;
 
 /**
  * The Class ReleaseMain.
  *
- * @author mo92 The Class ReleaseMain
+ * @author TCS
+ * @version 1.0
  */
 public class ReleaseMain {
 
-  /** News releases. */
+  /** The releases. */
   private NewsReleases releases;
 
   /**
@@ -23,7 +28,7 @@ public class ReleaseMain {
    * Sets the releases.
    *
    * @param releases
-   *          the releases to set
+   *          the new releases
    */
   public void setReleases(final NewsReleases releases) {
     this.releases = releases;

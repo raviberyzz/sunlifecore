@@ -12,7 +12,8 @@ import org.apache.sling.models.annotations.Model;
 /**
  * The Interface AlternateLanguageModel.
  *
- * @author mo92 The Interface AlternateLanguageModel
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface AlternateLanguageModel {
@@ -20,7 +21,7 @@ public interface AlternateLanguageModel {
   /**
    * Gets the language code.
    *
-   * @return language code
+   * @return the language code
    */
   @ Inject
   String getLanguageCode();
@@ -28,7 +29,7 @@ public interface AlternateLanguageModel {
   /**
    * Gets the site location.
    *
-   * @return site location
+   * @return the site location
    */
   @ Inject
   String getSiteLocation();
@@ -36,15 +37,15 @@ public interface AlternateLanguageModel {
   /**
    * Gets the domain.
    *
-   * @return domain
+   * @return the domain
    */
   @ Inject
   String getDomain();
 
   /**
-   * Gets if default language.
+   * Gets the default language.
    *
-   * @return if default language
+   * @return the default language
    */
   @ Inject
   String getDefaultLanguage();

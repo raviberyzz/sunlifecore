@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.annotation.PostConstruct;
@@ -18,18 +22,19 @@ import com.day.cq.wcm.api.Page;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * Sling model for Experience fragment model.
+ * The Class ExperienceFragmentModel.
  *
- * @author MO93
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ExperienceFragmentModel {
 
-  /** The Constant LOGGER. */
+  /** The Constant log. */
   private static final Logger log = LoggerFactory.getLogger(ExperienceFragmentModel.class);
 
-  /** The Fragment Path. */
+  /** The fragment path. */
   @ Inject
   @ Via ("resource")
   private String fragmentPath;

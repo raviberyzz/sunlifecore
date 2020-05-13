@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,6 +14,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface FooterCopyrightModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -46,5 +53,5 @@ public interface FooterCopyrightModel {
    */
   @ Inject
   List <FooterItemsModel> getFooterItems();
-  
+
 }

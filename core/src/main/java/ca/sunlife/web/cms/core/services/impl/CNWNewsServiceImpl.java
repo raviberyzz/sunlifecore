@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.io.IOException;
@@ -34,18 +38,17 @@ import ca.sunlife.web.cms.core.services.RestService;
 /**
  * The Class CNWNewsServiceImpl.
  *
- * @author mo92 The class CNWNewsServiceImpl
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = { CNWNewsService.class }, immediate = true)
 @ Designate (ocd = CNWNewsConfig.class)
 public class CNWNewsServiceImpl implements CNWNewsService {
 
-  /**
-   * The logger.
-   */
+  /** The logger. */
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
-  /** CNWNewsConfig object. */
+  /** The cnw news config. */
   private CNWNewsConfig cnwNewsConfig;
 
   /** The rest service. */
@@ -71,11 +74,19 @@ public class CNWNewsServiceImpl implements CNWNewsService {
   public static final String CNW_DATE_PATTERN = "EEE, dd MMM yyyy HH:mm:ss zzzzz"; // CNW date
                                                                                    // format
 
-  /** The input date formatter. */
+  /**
+                                                                                    * The input date
+                                                                                    * formatter.
+                                                                                    */
   private final SimpleDateFormat inputDateFormatter = new SimpleDateFormat(CNW_DATE_PATTERN); // date
                                                                                               // input
 
-  /** The date format map. */
+  /**
+                                                                                               * The
+                                                                                               * date
+                                                                                               * format
+                                                                                               * map.
+                                                                                               */
   // formatter
   private HashMap <String, String> dateFormatMap;
 
@@ -150,7 +161,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
           o.setReleaseDate(
               new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
           String headlineURL = o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
-        	  .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
+              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
           headlineURL = Normalizer.normalize(headlineURL, Normalizer.Form.NFD);
           o.setHeadlineUrl(headlineURL);
         } catch (final ParseException e) {
@@ -221,8 +232,8 @@ public class CNWNewsServiceImpl implements CNWNewsService {
           o.setReleaseDate(
               new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale)).format(date));
           String headlineURL = o.getHeadline().replaceAll(" ", "-").replaceAll("%", "")
-        	  .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
-	      headlineURL = Normalizer.normalize(headlineURL, Normalizer.Form.NFD);
+              .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT);
+          headlineURL = Normalizer.normalize(headlineURL, Normalizer.Form.NFD);
           o.setHeadlineUrl(headlineURL);
         } catch (final ParseException e) {
           logger.error("Error :: parsing the release date {}", e);
@@ -353,7 +364,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     importUrl.append(CNW_SERVICE_PARAM);
     importUrl.append("&method=get");
     if (null != locale && ! "en".equals(locale)) {
-       importUrl.append("_" + locale);
+      importUrl.append("_" + locale);
     }
     importUrl.append(HTML_SAFE);
     importUrl.append(FORMAT_JSON);

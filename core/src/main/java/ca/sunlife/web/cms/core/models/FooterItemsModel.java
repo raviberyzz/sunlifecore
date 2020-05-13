@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ca.sunlife.web.cms.core.models;
 
@@ -14,142 +14,164 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author mo92 The class
- *         FooterItemsModel.
+ * The Class FooterItemsModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
-@ Model(adaptables = { SlingHttpServletRequest.class,
+@ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class FooterItemsModel {
 
-	/** The log. */
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  /** The logger. */
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	/** The label. */
-	@ Inject
-	private String label;
+  /** The label. */
+  @ Inject
+  private String label;
 
-	/** The url. */
-	@ Inject
-	private String url;
+  /** The url. */
+  @ Inject
+  private String url;
 
-	/** The target. */
-	@ Inject
-	private String target;
+  /** The target. */
+  @ Inject
+  private String target;
 
-	/** The checkboxSeparator. */
-	@ Inject
-	private String checkboxSeparator;
+  /** The checkbox separator. */
+  @ Inject
+  private String checkboxSeparator;
 
-	/** The checkboxHide. */
-	@ Inject
-	private String checkboxHide;
+  /** The checkbox hide. */
+  @ Inject
+  private String checkboxHide;
 
-	/** The contentUrl. */
-	private boolean contentUrl;
-	
-	/**
-	 * @return the label
-	 */
-	public String getLabel() {
-		return label;
-	}
+  /** The content url. */
+  private boolean contentUrl;
 
-	/**
-	 * @param label
-	 *          the label to set
-	 */
-	public void setLabel(String label) {
-		this.label = label;
-	}
+  /**
+   * Gets the label.
+   *
+   * @return the label
+   */
+  public String getLabel() {
+    return label;
+  }
 
-	/**
-	 * @return the url
-	 */
-	public String getUrl() {
-		return url;
-	}
+  /**
+   * Sets the label.
+   *
+   * @param label
+   *          the new label
+   */
+  public void setLabel(final String label) {
+    this.label = label;
+  }
 
-	/**
-	 * @param url
-	 *          the url to set
-	 */
-	public void setUrl(String url) {
-		this.url = url;
-	}
+  /**
+   * Gets the url.
+   *
+   * @return the url
+   */
+  public String getUrl() {
+    return url;
+  }
 
-	/**
-	 * @return the target
-	 */
-	public String getTarget() {
-		return target;
-	}
+  /**
+   * Sets the url.
+   *
+   * @param url
+   *          the new url
+   */
+  public void setUrl(final String url) {
+    this.url = url;
+  }
 
-	/**
-	 * @param target
-	 *          the target to set
-	 */
-	public void setTarget(String target) {
-		this.target = target;
-	}
+  /**
+   * Gets the target.
+   *
+   * @return the target
+   */
+  public String getTarget() {
+    return target;
+  }
 
-	/**
-	 * @return the
-	 *         checkboxSeparator
-	 */
-	public String getCheckboxSeparator() {
-		return checkboxSeparator;
-	}
+  /**
+   * Sets the target.
+   *
+   * @param target
+   *          the new target
+   */
+  public void setTarget(final String target) {
+    this.target = target;
+  }
 
-	/**
-	 * @param checkboxSeparator
-	 *          the
-	 *          checkboxSeparator
-	 *          to set
-	 */
-	public void setCheckboxSeparator(String checkboxSeparator) {
-		this.checkboxSeparator = checkboxSeparator;
-	}
+  /**
+   * Gets the checkbox separator.
+   *
+   * @return the checkbox separator
+   */
+  public String getCheckboxSeparator() {
+    return checkboxSeparator;
+  }
 
-	/**
-	 * @return the checkboxHide
-	 */
-	public String getCheckboxHide() {
-		return checkboxHide;
-	}
+  /**
+   * Sets the checkbox separator.
+   *
+   * @param checkboxSeparator
+   *          the new checkbox separator
+   */
+  public void setCheckboxSeparator(final String checkboxSeparator) {
+    this.checkboxSeparator = checkboxSeparator;
+  }
 
-	/**
-	 * @param checkboxHide
-	 *          the checkboxHide
-	 *          to set
-	 */
-	public void setCheckboxHide(String checkboxHide) {
-		this.checkboxHide = checkboxHide;
-	}
+  /**
+   * Gets the checkbox hide.
+   *
+   * @return the checkbox hide
+   */
+  public String getCheckboxHide() {
+    return checkboxHide;
+  }
 
-	/**
-	 * @return the contentUrl
-	 */
-	public boolean isContentUrl() {
-		return contentUrl;
-	}
+  /**
+   * Sets the checkbox hide.
+   *
+   * @param checkboxHide
+   *          the new checkbox hide
+   */
+  public void setCheckboxHide(final String checkboxHide) {
+    this.checkboxHide = checkboxHide;
+  }
 
-	/**
-	 * @param contentUrl the contentUrl to set
-	 */
-	public void setContentUrl(boolean contentUrl) {
-		this.contentUrl = contentUrl;
-	}
+  /**
+   * Checks if is content url.
+   *
+   * @return true, if is content url
+   */
+  public boolean isContentUrl() {
+    return contentUrl;
+  }
 
-	/**
-	 * Inits FooterItemsImpl
-	 * model.
-	 */
-	@PostConstruct
-	public void init() {
-		logger.debug("Entry :: init method of FooterItemsImpl :: label {}", label);
-		if( null != url && url.length() > 0 ) {
-			contentUrl = url.startsWith("/");
-		}
-		logger.debug("Exit :: init method of FooterItemsImpl :: contentUrl :: {}", contentUrl);
-	}
+  /**
+   * Sets the content url.
+   *
+   * @param contentUrl
+   *          the new content url
+   */
+  public void setContentUrl(final boolean contentUrl) {
+    this.contentUrl = contentUrl;
+  }
+
+  /**
+   * Inits the.
+   */
+  @ PostConstruct
+  public void init() {
+    logger.debug("Entry :: init method of FooterItemsImpl :: label {}", label);
+    if (null != url && url.length() > 0) {
+      contentUrl = url.startsWith("/");
+    }
+    logger.debug("Exit :: init method of FooterItemsImpl :: contentUrl :: {}", contentUrl);
+  }
 }

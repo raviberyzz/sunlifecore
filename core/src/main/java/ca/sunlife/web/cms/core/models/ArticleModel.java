@@ -1,3 +1,6 @@
+/*
+ *
+ */
 
 package ca.sunlife.web.cms.core.models;
 
@@ -33,6 +36,9 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class ArticleModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = ArticleModel.class, resourceType = "sunlife/core/components/content/article")
@@ -74,7 +80,7 @@ public class ArticleModel {
   /** The Constant ARTICLE_HEADLINE. */
   private static final String ARTICLE_HEADLINE = "articleHeadline";
 
-  /** The log. */
+  /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(ArticleModel.class);
 
   /** The fragment path. */
@@ -100,13 +106,13 @@ public class ArticleModel {
   @ Inject
   @ Via ("resource")
   private String checkboxHideDate;
-  
+
   /** The resource type. */
   @ Inject
   @ Via ("resource")
   @ Named (JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY)
   private String resourceType;
-  
+
   /** The layout resource type. */
   private String layoutResourceType;
 
@@ -144,25 +150,26 @@ public class ArticleModel {
   /**
    * Gets the article image.
    *
-   * @return the articleImage
+   * @return the article image
    */
   public final String getArticleImage() {
     return articleImage;
   }
 
   /**
-   * Gets the layout container resource type.
+   * Gets the layout resource type.
    *
-   * @return the layoutResourceType
+   * @return the layout resource type
    */
   public final String getLayoutResourceType() {
     return layoutResourceType;
   }
+
   /**
    * Sets the article image.
    *
    * @param articleImage
-   *          the articleImage to set
+   *          the new article image
    */
   public final void setArticleImage(final String articleImage) {
     this.articleImage = articleImage;
@@ -171,7 +178,7 @@ public class ArticleModel {
   /**
    * Gets the og image.
    *
-   * @return the ogImage
+   * @return the og image
    */
   public final String getOgImage() {
     return ogImage;
@@ -181,7 +188,7 @@ public class ArticleModel {
    * Sets the og image.
    *
    * @param ogImage
-   *          the ogImage to set
+   *          the new og image
    */
   public final void setOgImage(final String ogImage) {
     this.ogImage = ogImage;
@@ -190,7 +197,7 @@ public class ArticleModel {
   /**
    * Gets the og description.
    *
-   * @return the ogDescription
+   * @return the og description
    */
   public final String getOgDescription() {
     return ogDescription;
@@ -200,7 +207,7 @@ public class ArticleModel {
    * Sets the og description.
    *
    * @param ogDescription
-   *          the ogDescription to set
+   *          the new og description
    */
   public final void setOgDescription(final String ogDescription) {
     this.ogDescription = ogDescription;
@@ -209,7 +216,7 @@ public class ArticleModel {
   /**
    * Gets the page modified date.
    *
-   * @return the pageModifiedDate
+   * @return the page modified date
    */
   public final String getPageModifiedDate() {
     return pageModifiedDate;
@@ -219,7 +226,7 @@ public class ArticleModel {
    * Sets the page modified date.
    *
    * @param pageModifiedDate
-   *          the pageModifiedDate to set
+   *          the new page modified date
    */
   public final void setPageModifiedDate(final String pageModifiedDate) {
     this.pageModifiedDate = pageModifiedDate;
@@ -228,7 +235,7 @@ public class ArticleModel {
   /**
    * Gets the publisher name.
    *
-   * @return the publisherName
+   * @return the publisher name
    */
   public final String getPublisherName() {
     return publisherName;
@@ -238,7 +245,7 @@ public class ArticleModel {
    * Sets the publisher name.
    *
    * @param publisherName
-   *          the publisherName to set
+   *          the new publisher name
    */
   public final void setPublisherName(final String publisherName) {
     this.publisherName = publisherName;
@@ -247,7 +254,7 @@ public class ArticleModel {
   /**
    * Gets the publisher logo.
    *
-   * @return the publisherLogo
+   * @return the publisher logo
    */
   public final String getPublisherLogo() {
     return publisherLogo;
@@ -257,7 +264,7 @@ public class ArticleModel {
    * Sets the publisher logo.
    *
    * @param publisherLogo
-   *          the publisherLogo to set
+   *          the new publisher logo
    */
   public final void setPublisherLogo(final String publisherLogo) {
     this.publisherLogo = publisherLogo;
@@ -285,7 +292,7 @@ public class ArticleModel {
   /**
    * Gets the rating required.
    *
-   * @return the ratingRequired
+   * @return the rating required
    */
   public final String getRatingRequired() {
     return ratingRequired;
@@ -295,7 +302,7 @@ public class ArticleModel {
    * Sets the rating required.
    *
    * @param ratingRequired
-   *          the ratingRequired to set
+   *          the new rating required
    */
   public final void setRatingRequired(final String ratingRequired) {
     this.ratingRequired = ratingRequired;
@@ -421,21 +428,26 @@ public class ArticleModel {
   }
 
   /**
-   * @return the resourceType
-  */
+   * Gets the resource type.
+   *
+   * @return the resource type
+   */
   public String getResourceType() {
-	return resourceType;
+    return resourceType;
   }
 
   /**
-   * @param resourceType the resourceType to set
-  */
-  public void setResourceType(String resourceType) {
-	this.resourceType = resourceType;
+   * Sets the resource type.
+   *
+   * @param resourceType
+   *          the new resource type
+   */
+  public void setResourceType(final String resourceType) {
+    this.resourceType = resourceType;
   }
 
   /**
-   * Inits the model.
+   * Inits the.
    */
   @ PostConstruct
   public void init() {
@@ -478,7 +490,8 @@ public class ArticleModel {
       }
       LOGGER.debug("Article Data {}", articleData);
       final ValueMap pageProperties = currentPage.getProperties();
-      layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/')).concat("/layout-container");
+      layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/'))
+          .concat("/layout-container");
       setPageUrl(configService.getPageUrl(pagePath));
       setOgImage(configService.getConfigValues(DOMAIN, pagePath)
           .concat(pageProperties.containsKey(SOCIAL_MEDIA_IMAGE)
@@ -545,30 +558,30 @@ public class ArticleModel {
       throws LoginException, RepositoryException {
     String articlePublishedDate = StringUtils.EMPTY;
     String pageLocaleDefault = StringUtils.EMPTY;
-    
+
     try {
-        final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());        
-        if (null != locale && locale.length() > 0) {
-            pageLocaleDefault = locale.split("_") [ 0 ];
-          }
-        LOGGER.debug("Locale is" + pageLocaleDefault);
-    if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-      LOGGER.debug("formatting date to {}",
-          configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-      LOGGER.debug("Before adding locale");
-      final SimpleDateFormat formatter = new SimpleDateFormat(
-          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
-      LOGGER.debug("after adding locale");
-//      final SimpleDateFormat formatter = new SimpleDateFormat(
-//              configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-      articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
-          .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
-      LOGGER.debug("After date formatting");
-    }
-    articleData.put(ARTICLE_PUBLISHED_DATE, articlePublishedDate);
-    }
-    catch(RepositoryException | org.apache.sling.api.resource.LoginException e) {
-  	  LOGGER.error("Error ::ArticleModel :: Article published date :: Exception :: {}", e);
+      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+      if (null != locale && locale.length() > 0) {
+        pageLocaleDefault = locale.split("_") [ 0 ];
+      }
+      LOGGER.debug("Locale is" + pageLocaleDefault);
+      if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
+        LOGGER.debug("formatting date to {}",
+            configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+        LOGGER.debug("Before adding locale");
+        final SimpleDateFormat formatter = new SimpleDateFormat(
+            configService.getConfigValues("articleDateFormat", currentPage.getPath()),
+            new Locale(pageLocaleDefault));
+        LOGGER.debug("after adding locale");
+        // final SimpleDateFormat formatter = new SimpleDateFormat(
+        // configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+        articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
+            .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
+        LOGGER.debug("After date formatting");
+      }
+      articleData.put(ARTICLE_PUBLISHED_DATE, articlePublishedDate);
+    } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
+      LOGGER.error("Error ::ArticleModel :: Article published date :: Exception :: {}", e);
     }
   }
 }

@@ -11,12 +11,13 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 /**
  * The Interface RestService.
  *
- * @author mo92 The Interface RestService
+ * @author TCS
+ * @version 1.0
  */
 public interface RestService {
 
   /**
-   * Calls the GET url using HTTP client.
+   * Call get web service.
    *
    * @param url
    *          the url

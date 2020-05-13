@@ -6,15 +6,16 @@ package ca.sunlife.web.cms.core.constants;
 /**
  * The Class AdvisorDetailConstants.
  *
- * @author mo92 The Class AdvisorDetailConstants
+ * @author TCS
+ * @version 1.0
  */
 public final class AdvisorDetailConstants {
 
   /**
-   * Constructor AdvisorDetailConstants.
+   * Instantiates a new advisor detail constants.
    */
   private AdvisorDetailConstants() {
-	  throw new IllegalStateException("AdvisorDetailConstants class");
+    throw new IllegalStateException("AdvisorDetailConstants class");
   }
 
   /** The Constant ADVISOR_TYPE_CONSTANT. */

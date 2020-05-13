@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,6 +14,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface UtilityNav.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -25,8 +32,11 @@ public interface UtilityNav {
                                  // name="./navlinks"
 
   /**
-   * The Interface Navlinks.
-   */
+                                  * The Interface Navlinks.
+                                  *
+                                  * @author TCS
+                                  * @version 1.0
+                                  */
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Navlinks {
 

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.List;
@@ -10,6 +14,9 @@ import org.apache.sling.models.annotations.Model;
 
 /**
  * The Interface ListModel.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = {
     Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -32,7 +39,10 @@ public interface ListModel {
   List <Links> getLinks(); // the name `getLinks` corresponds to the multifield name="./links"
 
   /**
-   * Links model has a name, url and target.
+   * The Interface Links.
+   *
+   * @author TCS
+   * @version 1.0
    */
   @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
   interface Links {
@@ -54,9 +64,9 @@ public interface ListModel {
     String getLinkUrl();
 
     /**
-     * Gets the Language attribute for the link.
+     * Gets the lang code.
      *
-     * @return the Language attribute
+     * @return the lang code
      */
     @ Inject
     String getLangCode();

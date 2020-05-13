@@ -25,7 +25,8 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class SiteConfigServlet.
  *
- * @author 660717
+ * @author TCS
+ * @version 1.0
  */
 @ Component (service = Servlet.class, property = {
     Constants.SERVICE_DESCRIPTION + "=Site Config Servlet",

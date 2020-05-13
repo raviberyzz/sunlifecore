@@ -1,7 +1,14 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.exception;
 
 /**
  * The Class ApplicationException.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public class ApplicationException extends Exception {
 

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.osgi.config;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
@@ -5,14 +9,17 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 /**
  * The Interface AkamaiConfig.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ ObjectClassDefinition (name = "Sun Life - Akamai Configuration", description = "Sun Life Akamai Configuration")
 public @interface AkamaiConfig {
 
   /**
-   * Gets the base akamai url.
+   * Gets the host.
    *
-   * @return the base akamai url
+   * @return the host
    */
   @ AttributeDefinition (name = "host", description = "Akamai Host", defaultValue = "akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net")
   String getHost ();

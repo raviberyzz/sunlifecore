@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.services;
 
 import java.io.IOException;
@@ -13,11 +17,14 @@ import ca.sunlife.web.cms.core.models.NewsCategory;
 
 /**
  * The Interface CNWNewsService.
+ *
+ * @author TCS
+ * @version 1.0
  */
 public interface CNWNewsService {
 
   /**
-   * Gets top 3 CNW news.
+   * Gets the CNW news overview.
    *
    * @param locale
    *          the locale
@@ -25,7 +32,7 @@ public interface CNWNewsService {
    *          the number of news
    * @param newsCategories
    *          the news categories
-   * @return ReleaseMain
+   * @return the CNW news overview
    * @throws IOException
    *           Signals that an I/O exception has occurred.
    * @throws ApplicationException
@@ -37,7 +44,7 @@ public interface CNWNewsService {
       List <NewsCategory> newsCategories) throws IOException, ApplicationException, SystemException;
 
   /**
-   * Gets CNW News Release List.
+   * Gets the CNW news.
    *
    * @param locale
    *          the locale
@@ -51,7 +58,7 @@ public interface CNWNewsService {
    *          the page size
    * @param newsCategories
    *          the news categories
-   * @return News
+   * @return the CNW news
    * @throws IOException
    *           Signals that an I/O exception has occurred.
    * @throws ApplicationException
@@ -64,13 +71,13 @@ public interface CNWNewsService {
       throws IOException, ApplicationException, SystemException;
 
   /**
-   * Gets CNW news details using release id.
+   * Gets the CNW news details.
    *
    * @param id
    *          the id
    * @param locale
    *          the locale
-   * @return NewsDetails
+   * @return the CNW news details
    * @throws IOException
    *           Signals that an I/O exception has occurred.
    * @throws ParseException

@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
@@ -46,6 +50,9 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
  * The Class LeftNavigationModal.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = LeftNavigationModal.class, resourceType = "sunlife/core/components/content/left-navigation")
 public class LeftNavigationModal extends NavigationImpl {
@@ -53,7 +60,7 @@ public class LeftNavigationModal extends NavigationImpl {
   /** The Constant RESOURCE_TYPE. */
   public static final String RESOURCE_TYPE = "sunlife/core/components/content/left-navigation";
 
-  /** The Constant LOGGER. */
+  /** The Constant log. */
   private static final Logger log = LoggerFactory.getLogger(LeftNavigationModal.class);
 
   /** The request. */
@@ -113,16 +120,16 @@ public class LeftNavigationModal extends NavigationImpl {
   List <NavigationItem> updatedList = new ArrayList <>();
 
   /**
-   * Gets the navigation list.
+   * Gets the updated list.
    *
-   * @return the navigation list
+   * @return the updated list
    */
   public List <NavigationItem> getUpdatedList() {
     return Collections.unmodifiableList(updatedList);
   }
 
   /**
-   * Sets the navigation list.
+   * Sets the updated list.
    *
    * @param updatedList
    *          the new updated list
@@ -179,7 +186,8 @@ public class LeftNavigationModal extends NavigationImpl {
 
       if (! navigationItem.getChildren().isEmpty()) {
         parentPage = currentPage.getPageManager().getPage(navigationItem.getPath());
-        final boolean isSelected = currentPage.equals(parentPage) || currentPageIsRedirectTarget(parentPage);
+        final boolean isSelected = currentPage.equals(parentPage)
+            || currentPageIsRedirectTarget(parentPage);
         final LeftNavItemImpl leftItemImpl = new LeftNavItemImpl(parentPage, isSelected, request,
             navigationItem.getLevel() + 1, children1, title);
         navigationItem.getChildren().add(0, leftItemImpl);
@@ -259,13 +267,13 @@ public class LeftNavigationModal extends NavigationImpl {
   }
 
   /**
-   * Builds the navigation tree for a {@code navigationRoot} page.
+   * Gets the items.
    *
    * @param navigationRoot
-   *          the global navigation tree root (start page)
+   *          the navigation root
    * @param subtreeRoot
-   *          the current sub-tree root (changes depending on the level of recursion)
-   * @return the list of collected navigation trees
+   *          the subtree root
+   * @return the items
    */
   private List <NavigationItem> getItems(final NavigationRoot navigationRoot,
       final Page subtreeRoot) {
@@ -352,7 +360,7 @@ public class LeftNavigationModal extends NavigationImpl {
    * @return true, if successful
    */
   private boolean checkSelected(final Page page) {
-	  return currentPage.equals(page) || currentPage.getPath().startsWith(page.getPath() + "/")
+    return currentPage.equals(page) || currentPage.getPath().startsWith(page.getPath() + "/")
         || currentPageIsRedirectTarget(page);
   }
 
@@ -413,6 +421,9 @@ public class LeftNavigationModal extends NavigationImpl {
 
   /**
    * The Class NavigationRoot.
+   *
+   * @author TCS
+   * @version 1.0
    */
   private class NavigationRoot {
 
@@ -442,9 +453,9 @@ public class LeftNavigationModal extends NavigationImpl {
     }
 
     /**
-     * Gets the resource representation of the navigation root page.
+     * Gets the page resource.
      *
-     * @return the resource for the navigation root, empty if the resource could not be resolved
+     * @return the page resource
      */
 
     final Optional <Resource> getPageResource() {

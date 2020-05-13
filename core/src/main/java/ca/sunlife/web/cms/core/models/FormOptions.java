@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 package ca.sunlife.web.cms.core.models;
 
 import javax.inject.Inject;
@@ -12,19 +16,22 @@ import com.adobe.cq.wcm.core.components.models.form.Options;
 
 /**
  * The Class FormOptions.
+ *
+ * @author TCS
+ * @version 1.0
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Options.class, resourceType = "sunlife/core/components/form/options")
 public class FormOptions extends OptionsImpl {
+
   /** The id. */
   @ Inject
   @ Via ("resource")
   @ Optional
   private String id;
 
-  /**
-   * Gets the id.
-   *
-   * @return the id
+  /*
+   * (non-Javadoc)
+   * @see com.adobe.cq.wcm.core.components.internal.models.v1.form.AbstractFieldImpl#getId()
    */
   @ Override
   public String getId() {
