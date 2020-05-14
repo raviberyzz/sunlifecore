@@ -137,21 +137,36 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
         readTextFile(url);
         setTimeout(operator,500);
         function operator(){
-            content=content.toString();
-            content=content.split(productName+'=')[1];
-            content =content.substring(content,content.indexOf("}")+1);                
-            var isCalculable =content.isCalculable;
-            var equation = content.equation;
-            let data=content.split(key)[1];
-            data=data.split(":")[1].trim();
-            data=data.substring(data,data.indexOf("]")+1);
-            data=data.trim();
-            data=data.split(",");
-            if(data.length==3){
-                data=data[0].substring(2,(data[0].length-2))+','+data[1].substring(2,(data[1].length-2))+','+data[2].substring(2,(data[2].length-2));
+            let data='';
+            if(productName=='SunHealth_Medical_Essential'){
+				content=content.toString();
+                content=content.split(productName+'=')[1];
+                content =content.substring(content,content.indexOf("}")+1);                
+                var isCalculable =content.isCalculable;
+                var equation = content.equation;
+                key='"'+key+'"';
+                data=content.split(key+':[')[1];
+                data=data.substring(data,data.indexOf("]"));
+                data=data.trim();
+                data=data.split(",");
+                data=data[0].substring(1,(data[0].length-1))+','+data[1].substring(1,(data[1].length-1))+','+data[2].substring(1,(data[2].length-1))+','+data[3].substring(1,(data[3].length-1));
             }
             else{
-                    data=data[0].substring(2,(data[0].length-2))+','+data[1].substring(2,(data[1].length-2))+','+data[2].substring(2,(data[2].length-2))+','+data[3].substring(2,(data[3].length-2));
+				content=content.toString();
+                content=content.split(productName+'=')[1];
+                content =content.substring(content,content.indexOf("}")+1);                
+                var isCalculable =content.isCalculable;
+                var equation = content.equation;
+                data=content.split(key)[1];
+                data=data.split(":")[1].trim();
+                data=data.substring(data,data.indexOf("]")+1);
+                data=data.trim();
+                data=data.split(",");
+				for(let i=0;i<data.length;i++){
+                    data[i]=data[i].trim();
+                    let digits = data[i].match(/(\d+)/);
+                    data[i]=digits[0];
+                }
             }
             if (isCalculable=='true') {
                 console.log("calculable");              
