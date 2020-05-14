@@ -1336,7 +1336,7 @@ public class BasePageModel {
       }
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
-			if (null != pageLocale && pageLocale.length() > 0) {
+			if (null == pageLocale || pageLocale.length() == 0) {
 				return;
 			}
       final String siteDomain = configService.getConfigValues("domain", pagePath);
