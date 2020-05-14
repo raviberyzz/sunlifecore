@@ -79,10 +79,18 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
     final Map <String, String> queryParameterMap = getQueryParameters(pageNo);
 
     if (null != queryParameterMap && queryParameterMap.size() > 0) {
+      if(queryParameterMap.containsKey("distance")) {
+      	queryParameterMap.remove("distance");
+      }
+      if(queryParameterMap.containsKey("position")) {
+      	queryParameterMap.remove("position");
+      }
+    }
+    if (null != queryParameterMap && queryParameterMap.size() > 0) {
       queryParameterMap.forEach((key, value) -> url.append(key + "=" + value + "&"));
     }
     url.append(ProviderProfileConstants.LOCALE_CONSTANT + "=" + locale);
-    logger.debug("provider profile url :: {}", url);
+    logger.debug("New provider profile url :: {}", url);
     final String providerProfileResponse = restService.callGetWebService(url.toString());
     logger.debug("providerProfileResponse :: {}", providerProfileResponse);
     @ SuppressWarnings ("unchecked")
