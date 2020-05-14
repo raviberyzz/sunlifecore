@@ -855,8 +855,10 @@ public class BasePageModel {
                                                                                   // -
                                                                                   // default
     }
-    otherUDOTagsMap.addProperty("page_language", pageLocaleDefault.toLowerCase(Locale.ROOT)); // Page
-                                                                                              // language
+		if (null != pageLocaleDefault && pageLocaleDefault.length() > 0) {
+			otherUDOTagsMap.addProperty("page_language", pageLocaleDefault.toLowerCase(Locale.ROOT)); // Page
+			// language
+		}
 
     // Sets UDO parameters
     setUDOParameters();
@@ -1334,6 +1336,9 @@ public class BasePageModel {
       }
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues("pageLocale", pagePath);
+			if (null != pageLocale && pageLocale.length() > 0) {
+				return;
+			}
       final String siteDomain = configService.getConfigValues("domain", pagePath);
       final String siteUrl = configService.getConfigValues("siteUrl", pagePath);
 
