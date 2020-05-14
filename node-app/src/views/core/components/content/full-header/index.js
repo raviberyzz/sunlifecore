@@ -97,6 +97,10 @@ $(document).ready(function () {
             $('.full-header').parents('.experiencefragment').next().attr('id','main-content');
             $('.full-header').parents('.experiencefragment').next().attr('role','main');
         }
+        if($('.link-list').hasClass('editorial-nav-desktop-wrapper')) {
+            $('.link-list.editorial-nav-desktop-wrapper').attr('aria-label','Filter');
+            $('.link-list.editorial-nav-desktop-wrapper').attr('role','navigation');
+        }
     }
     
     //474 FIX - RELATED TO ACCESSIBILITY
