@@ -46,12 +46,12 @@ $(document).ready(function () {
 
 		if (pageErrorType === "error-page") {
 			if (utag_data.page_language == 'en') {
-				$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', "/content/sunlife/external/ca/en/tools-and-resources/english-article-not-found");
+				$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', enErrorPage);
 				$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', document.referrer);
 			}
 			if (utag_data.page_language == 'fr') {
 				$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', document.referrer);
-				$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', "/content/sunlife/external/ca/fr/tools-and-resources/french-article-not-found");
+				$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', frErrorPage);
 			}
 		} else {
 			if (linkRow.length > 0) {
@@ -66,10 +66,10 @@ $(document).ready(function () {
 			if (linkRow.length == 0 && linkCanRef != null) {
 				if (utag_data.page_language == 'en') {
 					$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', linkCanRef);
-					$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', "/content/sunlife/external/ca/fr/tools-and-resources/french-article-not-found");
+					$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', frErrorPage);
 				}
 				if (utag_data.page_language == 'fr') {
-					$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', "/content/sunlife/external/ca/en/tools-and-resources/english-article-not-found");
+					$('.desktop-region-language-menu-wrapper .content-language li a').first().attr('href', enErrorPage);
 					$('.desktop-region-language-menu-wrapper .content-language li:nth-child(2)').children('a').attr('href', linkCanRef);
 				}
 			}

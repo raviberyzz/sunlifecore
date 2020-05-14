@@ -246,7 +246,26 @@
                                 </items>
                             </selectedTabMobile>
                         </items>
-                    </tab3>                    
+                    </tab3> 
+					<tab4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Language Error Pages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <enErrorPage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Language error Page - English"
+                                name="./enErrorPage"
+                                required="{Boolean}true"/>
+                            <frErrorPage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Language error Page - French"
+                                name="./frErrorPage"
+                                required="{Boolean}true"/>
+                        </items>
+                    </tab4>
                 </items>
             </tab>
         </items>
