@@ -288,7 +288,7 @@ public class BasePageModel {
   private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
 
   /** The page locale default. */
-  private String pageLocaleDefault = null;
+  private String pageLocaleDefault = "en";
 
   /** The auto complete url. */
   private String autoCompleteUrl;
