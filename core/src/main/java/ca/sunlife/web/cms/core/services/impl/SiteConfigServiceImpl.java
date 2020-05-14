@@ -94,9 +94,9 @@ public class SiteConfigServiceImpl implements SiteConfigService {
       key = key.substring(0, key.lastIndexOf('/'));
     }
     final String paramValue = siteConfigMap.containsKey(key) ? siteConfigMap.get(key).get(name)
-        : "";
+        : StringUtils.EMPTY;
     log.debug("SiteConfigServiceImpl :: getConfigValues :: Page :: value :: {}", paramValue);
-    return paramValue;
+    return StringUtils.defaultIfBlank(paramValue, StringUtils.EMPTY);
   }
 
   /*
