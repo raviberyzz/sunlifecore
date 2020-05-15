@@ -2485,7 +2485,7 @@ ul {
 /** Browser Specific CSS starts here **/
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-    .editorial-articles-wrapper .teaser {
+    .editorial-articles-wrapper .text + .teaser {
         height: auto;
     }
 

@@ -359,7 +359,14 @@ line-height:110%;
                     .cmp-text {
                         padding-left: 10px;
                         ul {
-                            padding-left:25px;
+                            margin-left: 2.5em !important;
+                            > li{
+                                line-height: 16px;
+                                padding: 5px 0px;
+                            }
+                            > li::before{
+                                display: table-cell;
+                            }
                         }
                         a {
                             font-weight: 400;
