@@ -102,39 +102,39 @@
                     border-radius: 50%;
                 }
                 .editorial-image{
-                            position: relative;
-                            margin: auto;
-                            border-radius: 50%;
-                            background: $white-shade;
-                            z-index: 1;
-                            width: 220px;
-                            height: 100%;
+                    position: relative;
+                    margin: auto;
+                    border-radius: 50%;
+                    background: $white-shade;
+                    z-index: 1;
+                    width: 220px;
+                    height: 100%;
                     img{
                         width:220px;
                         height:220px;
                         max-width:220px;
                         border-radius:50%;
                     }
-                   
-               
-            }
-            .date{
-                margin-top: 20px;
-                margin-bottom: 20px;
-                font-family: 'sunlife-sans';
-                font-weight: 400;
-                font-size: 0.875rem;
-                line-height: 18px;
-                text-transform: uppercase;
-            }
-            
-            .editorial{
-                margin-bottom:20px;
-            }
-            p{
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
+                }
+                .date{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-family: 'sunlife-sans';
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    line-height: 18px;
+                    text-transform: uppercase;
+                }
+                .editorial{
+                    margin-bottom:20px;
+                }
+                p{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                a{
+                    font-size: 1.125rem;  
+                }
             }
         }
      }
