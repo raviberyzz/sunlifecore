@@ -64,7 +64,7 @@ public class RegionLanguageMenu {
   /** The selected tab mobile. */
   @ Inject
   private String selectedTabMobile;
-
+  
   /** The region links. */
   private List <List <LinkModel>> regionLinks;
 
@@ -276,7 +276,7 @@ public class RegionLanguageMenu {
   public void setSelectedTabMobile(final String selectedTabMobile) {
     this.selectedTabMobile = selectedTabMobile;
   }
-
+ 
   /**
    * Inits the.
    */
