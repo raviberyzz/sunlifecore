@@ -33,7 +33,7 @@
       );
   }
 function fetching(jspData){
-let langcalc=$('html').attr('lang');
+	let langcalc=$('html').attr('lang');
     var splitByPipe = jspData.split("||");
     var amount = splitByPipe[0];
     var runiqueID = splitByPipe[1]
@@ -69,7 +69,7 @@ let langcalc=$('html').attr('lang');
             if (langcalc == 'en-CA') {
                 $('#qc_result' + elementItem + ' div.qc_result_price').html('HKD' + addCommas($.trim(value)) + '/ annual');
             } else {
-                $('#qc_result' + elementItem + ' div.qc_result_price').html('æ¯å¹´æ¸¯å…ƒ' + addCommas($.trim(value)));
+                $('#qc_result' + elementItem + ' div.qc_result_price').html('每年港元' + addCommas($.trim(value)));
             }
 
         });

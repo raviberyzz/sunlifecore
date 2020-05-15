@@ -366,10 +366,28 @@ $(document).ready(function(){
           //getting from utag
           function getProductName() {  
               var productName = "";
-
-              productName=$('.titlebar').children().text().trim();
-			productName = productName.replace(/ /g, "_");
-              return productName;
+              productName=$("link[rel='canonical']").attr('href');				
+              productName=productName.split('/');
+              productName=productName[productName.length-2];
+              let product='';
+              if(productName.indexOf('-')!=-1){
+              	productName=productName.split('-');
+                  productName[0]=productName[0].replace(/h/,'H');
+              	for(let i=0;i<productName.length;i++){
+                    if(i==0){
+						productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
+                    	product+=productName[i];
+                    }
+                    else{
+                        productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
+                    	product+='_'+productName[i];
+                    }
+                }
+              }else{
+				productName=productName.charAt(0).toUpperCase() + productName.slice(1);
+                  product=productName.replace(/h/,'H');
+              }
+              return product;
           }
           $("#qc_submit .btn").click(function() {
               if (qc_formvalid) {
