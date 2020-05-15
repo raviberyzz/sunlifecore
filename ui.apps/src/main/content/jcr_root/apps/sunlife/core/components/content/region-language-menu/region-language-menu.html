@@ -2,10 +2,6 @@
 <sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
 
 <sly data-sly-use.languageRegionModel="ca.sunlife.web.cms.core.models.RegionLanguageMenu" />
-<script>	
-	var enErrorPage = "${languageRegionModel.enErrorPage @context='unsafe'}";
-	var frErrorPage = "${languageRegionModel.frErrorPage @context='unsafe'}";    
-</script>
 <sly data-sly-test.regionsEmpty="${!languageRegionModel.regionLinks}" />
 <sly data-sly-test.languagesEmpty="${!languageRegionModel.languageLinks}" />
 

@@ -65,14 +65,6 @@ public class RegionLanguageMenu {
   @ Inject
   private String selectedTabMobile;
   
-  /** The English Language Error Page. */
-  @ Inject
-  private String enErrorPage;
-  
-  /** The French Language Error Page. */
-  @ Inject
-  private String frErrorPage;
-
   /** The region links. */
   private List <List <LinkModel>> regionLinks;
 
@@ -284,43 +276,7 @@ public class RegionLanguageMenu {
   public void setSelectedTabMobile(final String selectedTabMobile) {
     this.selectedTabMobile = selectedTabMobile;
   }
-  /**
-   * Gets English Language Error Page.
-   *
-   * @return the English Language Error Page
-   */
-  public String getEnErrorPage() {
-    return enErrorPage;
-  }
-
-  /**
-   * Sets English Language Error Page.
-   *
-   * @param enErrorPage
-   *          the English Language Error Page
-   */
-  public void setEnErrorPage(final String enErrorPage) {
-    this.enErrorPage = enErrorPage;
-  }
-  /**
-   * Gets French Language Error Page.
-   *
-   * @return the French Language Error Page
-   */
-  public String getFrErrorPage() {
-    return frErrorPage;
-  }
-
-  /**
-   * Sets French Language Error Page.
-   *
-   * @param frErrorPage
-   *          the French Language Error Page
-   */
-  public void setFrErrorPage(final String frErrorPage) {
-    this.frErrorPage = frErrorPage;
-  }
-
+ 
   /**
    * Inits the.
    */
