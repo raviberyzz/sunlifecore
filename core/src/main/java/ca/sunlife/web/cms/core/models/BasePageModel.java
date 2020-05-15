@@ -921,61 +921,7 @@ public class BasePageModel {
     return pagePath.replace(
         siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
   }
-
-  /**
-   * Sets the alternate UR ls.
-   *
-   * @param pagePath
-   *          the page path
-   * @param pageLocale
-   *          the page locale
-   * @throws LoginException
-   *           the login exception
-   * @throws RepositoryException
-   *           the repository exception
-   */
-  public void setAlternateURLs(final String pagePath, final String pageLocale)
-      throws LoginException, RepositoryException {
-    logger.debug("Entry :: setAlternateURLs :: pagePath: {}, pageLocale: {}", pagePath, pageLocale);
-    String altLanguagesCount = null;
-    String siteUrl = null;
-    String siteDomain = null;
-    altLanguagesCount = configService.getConfigValues("altLangCount", pagePath);
-    siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
-    siteDomain = configService.getConfigValues("domain", pagePath);
-    if (null != altLanguagesCount && altLanguagesCount.length() > 0) {
-      final int altLangCount = Integer.parseInt(altLanguagesCount);
-      altLanguageLinks = new HashMap <>();
-      for (int i = 0 ; i < altLangCount ; i++ ) {
-        final String domain = configService.getConfigValues(
-            BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_domain", pagePath);
-        final String languageCode = configService.getConfigValues(
-            BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_languageCode", pagePath);
-        final String siteLocation = configService.getConfigValues(
-            BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_siteLocation", pagePath);
-        final String defaultLanguage = configService.getConfigValues(
-            BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + i + "_defaultLanguage", pagePath);
-        if (null != defaultLanguage && defaultLanguage.length() > 0) {
-          defaultReportingLanguage = languageCode.split("_") [ 0 ];
-        }
-        final String newUrl = pagePath.replace(siteUrl, siteLocation);
-        logger.debug("setAlternateURLs :: New Url :: {}, defaultReportingLanguage :: {}", newUrl,
-            defaultReportingLanguage);
-        if (null != resolver.getResource(newUrl)) {
-          altLanguageLinks.put(
-              languageCode.split("_") [ 0 ] + "-"
-                  + languageCode.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-              domain + shortenURL(newUrl, siteLocation) + BasePageModelConstants.SLASH_CONSTANT);
-        }
-      }
-      if (! altLanguageLinks.isEmpty()) {
-        altLanguageLinks.put(pageLocale.replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
-      }
-      logger.debug("Map {}", altLanguageLinks);
-    }
-  }
-
+  
   /**
    * Sets the UDO parameters.
    *
