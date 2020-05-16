@@ -406,7 +406,24 @@
             }
         }
     }
-
+    .banner-section.home-page-hero-banner {
+        .left-image-position {
+            .left-item {
+                .desk-img {
+                    background-position: initial !important;
+                }
+            }
+        }
+    }
+    .life-moment-second-level-banner.banner-section {
+        .left-image-position {
+            .left-item {
+                .desk-img {
+                    background-position: initial !important;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: $mobile-screen-max) {

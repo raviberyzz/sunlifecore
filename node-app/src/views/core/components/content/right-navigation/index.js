@@ -44,7 +44,6 @@ $(document).ready(function () {
                     $(this).css('margin-top','0');
                 }
             } else if($(window).width() > 1025){
-                console.log(i);
                     if(i > 0 ) {
                         $(this).css('margin-top','24px');
                     }   else if(i==0){
