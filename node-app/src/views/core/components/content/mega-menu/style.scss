@@ -185,7 +185,7 @@ text-align: right;
         .aem-Grid--default--10 {
             .aem-Grid--12 {
                 .aem-Grid--default--6 {
-                    .icon-text{
+                    .icon-text:nth-child(3){
                         margin-top: 16px;
                     }
                 }
@@ -412,7 +412,6 @@ line-height:110%;
                 .text{
                     .cmp-text{
                         padding-left:0px;
-                        padding-bottom:16px;
                         ul{
                             padding-left:0px!important;
                             li:before{
