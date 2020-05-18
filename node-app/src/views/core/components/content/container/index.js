@@ -509,5 +509,8 @@ $(document).ready(function () {
     });
 			}
 
-			/* video component links to add onclick function ends */
+            /* video component links to add onclick function ends */
+            
+    //for bright solution cta 
+    $('.cta-home-wrapper').addClass('clearfix');  
 });
