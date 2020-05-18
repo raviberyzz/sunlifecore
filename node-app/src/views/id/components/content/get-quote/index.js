@@ -147,13 +147,13 @@ $(document).ready(function() {
         autoclose: true,
         endDate: '+0d'
     };
-    $('.form_date').datepicker(options);
-    $('.form_date').datepicker()
-        .on("show", function(e) {
-            if (!$("#qc_q1_ans_main").hasClass("isAns")) {
-                $("#qc_q1_ans_main").addClass("isAns");
-            }
-        });
+    // $('.form_date').datepicker(options);
+    // $('.form_date').datepicker()
+    //     .on("show", function(e) {
+    //         if (!$("#qc_q1_ans_main").hasClass("isAns")) {
+    //             $("#qc_q1_ans_main").addClass("isAns");
+    //         }
+    //     });
     if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
         $('#qc_q3_ans_Frequency_Trad').prepend('<option value="" selected="selected" disabled="disabled"></option>');
         $('#qc_q4_ans').prepend('<option value="" selected="selected" disabled="disabled"></option>');
@@ -1463,4 +1463,4 @@ $(".icon-twitter").click(function() {
         ev_title: "bright curator",
         ev_data_one: "twitter share"
     });
-});f
+});
