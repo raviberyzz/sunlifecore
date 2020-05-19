@@ -917,10 +917,19 @@ ul {
     }
     .cmp-contact-us {
         .layout-container{
+            p {
+                display: flex; //added to fix alignment issues
+                flex-direction: column;
+            }
             .row{
-                .col-sm-4 .container-component{      // add margins between sections in contact us box [32 top 32 bottom between horizontal seperators]
-                    margin-top: 32px;
-                    margin-bottom: 32px;
+                .col-sm-4 {
+                    p{
+                        padding-bottom: 6px;
+                    }
+                    .container-component{      // add margins between sections in contact us box [32 top 32 bottom between horizontal seperators]
+                        margin-top: 32px;
+                        margin-bottom: 16px;
+                    }
                 }
                 &.flex-height {
                     .col-sm-4 {
@@ -929,18 +938,19 @@ ul {
                 }
             }
             &:not(:first-child){        // Removes border in mobile view
-                margin-top: 14px;
+                padding-top: 8px;
                 border: none !important;           
             }
         } 
         .container-seperator-75:after {            /* Horizontal seperator for mobile view  */
             width: 100%;
             height: 2px;
-            top: 116%;
+            top: 109%;
             left: 0;
         } 
         .primary-blue-button-rte {
             margin-top: 32px; // total of 64px spacing between button and text in mobile view
+            margin: 0;
         }
     }
 }
@@ -1846,6 +1856,16 @@ ul {
 	}
 }
 .cmp-contact-us {
+    .text:first-child {
+        .cmp-text{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+    p:first-child {
+        flex-grow: 1;
+    }
     .layout-container{
         &:not(:first-child){
             border: 1px solid #d7d7d7;
@@ -1912,10 +1932,13 @@ ul {
                 }
                 .row{
                     .col-sm-4{
+                        p{
+                            padding-bottom: 6px;
+                        }
                         .container-seperator-75:after{
                             top: 12.5%;
                             bottom: 42.5%;
-                            left: 116%;
+                            left: 117%;
                         }
                     }
                 }
