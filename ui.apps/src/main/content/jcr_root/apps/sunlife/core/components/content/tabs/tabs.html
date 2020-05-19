@@ -18,7 +18,6 @@
     </ol>
     <div data-sly-repeat.item="${tabs.items}"
          role="tabpanel"
-         tabindex="0"
          class="cmp-tabs__tabpanel${item.name == tabs.activeItem ? ' cmp-tabs__tabpanel--active' : ''}"
          data-cmp-hook-tabs="tabpanel">
          <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">${item.title}</div>
