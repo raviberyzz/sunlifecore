@@ -192,7 +192,7 @@ table{
            td:last-of-type {
            border-right: 2px solid $grey-previous-background-color;
           }
-           th:first-of-type {
+          td:first-of-type,th:first-of-type {
             border-left: 1px solid $grey-previous-background-color;
           }
            td {
