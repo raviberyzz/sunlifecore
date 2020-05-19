@@ -128,6 +128,14 @@ const generateClientLibs = (cb) => {
         if(cname != 'clientlibs' && cname != 'components') {
           fse.moveSync(path.join(parentFolder,cname),path.join(pClientLib,cname));
           createClientLibs(path.join(pClientLib,cname),'sunlife.'+name+'.'+cname);
+          fs.readdirSync(path.join(pClientLib,cname)).forEach( (vname) => {
+            const vstat = fs.statSync(path.join(pClientLib,cname,vname));
+            if (vstat.isDirectory()) {
+              if(vname != 'js' && vname !='css' && vname != 'resource') {
+                createClientLibs(path.join(pClientLib,cname,vname),'sunlife.'+name+'.'+cname+'.'+vname);
+              }
+            }
+          });
         } else if (cname === 'components') {
           parseComponentFolders(path.join(parentFolder,cname),'sunlife.'+name+'.component');
         }
@@ -142,7 +150,7 @@ const generateClientLibs = (cb) => {
   cb();
 }
 
-const parseComponentFolders = (fpath,name) => {
+const parseComponentFolders = (fpath,name) => { 
   const css = fs.readdirSync(fpath).filter((n) => { return n.endsWith('.css')});
   const js = fs.readdirSync(fpath).filter((n) => { return n.endsWith('.js')});
   if(css.length > 0 || js.length > 0 ) {
