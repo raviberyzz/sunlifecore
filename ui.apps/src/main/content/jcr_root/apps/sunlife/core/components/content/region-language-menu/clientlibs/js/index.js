@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	
+
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().addClass('in');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').css('font-weight','700');
     $('.desktop-region-language-menu-wrapper .content-region .nav-select').parent().siblings('.accordion-heading').addClass('nav-heading');
