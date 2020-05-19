@@ -10,8 +10,91 @@
     var DOB="dob";
     var FREQUENCY_TEXT="freq_text";
     var INVESTMENT_YEAR="investmentYear";
-  
 
+    function fetching(data,productName){
+            var data1 = data.split('||');
+            var arrayOfResult = data1[0].split(',');
+            console.log(arrayOfResult);
+
+            //Nan check for PHP data 
+            if ((arrayOfResult[0].split("||").length) > 0) {
+
+                if ($.trim(data[1]) != '') {
+                    var obj = $.parseJSON(data[1]);
+                    $('.qc_plan_cta a').attr('href', obj['advisorMatchUrl']);
+                }
+                /*Fixing issue of dots disappear before the Quote Result is displayed*/
+                setTimeout(function() {
+                    $(".qc_loading_ani").show();
+                }, "2000");
+                /*Fixing issue of dots disappear before the Quote Result is displayed*/
+                $("#qc_result").slideUp(300, function() {
+
+                    setTimeout(function() {
+                        $(".qc_loading_ani").hide();
+                        $("#qc_result").slideDown(500);
+                    }, "2000");
+                    //$(".qc_loading_ani").hide();
+                });
+                var product=productName;
+                sumAssured = $(".user_sum_assured").val();
+                var langCalc=$('html').attr('lang');
+                //appending "/month" at the end with each price
+                arrayOfResult.forEach(function(value, index) {
+                    var elementItem = index + 1;
+                    
+                    if (product == "Term_Life") {
+                        //	var datavalue=addCommas($.trim(value));
+                        if (band == 'band1') {
+                            $('#qc_result2').hide();
+                            $('#qc_result3').hide();
+                        } else {
+                            $('#qc_result2').show();
+                            $('#qc_result3').show();
+                        }
+                        value = ((value / 100000) * sumAssured) / 1000;
+                        var result = getPremium($.trim(value), freq);
+                        $('#text_' + elementItem).html(addData_Term_Life(elementItem));
+                        $('#result_' + elementItem).html(result);
+                    } else if (product == "Asuransi_Brilliance_Sejahtera") {
+                        if ($.trim(value) == 'NULL') {
+                            $('#icon_' + elementItem).hide();
+                            $('#result_' + elementItem).hide();
+                        } else {
+                            $('#icon_' + elementItem).show();
+                            $('#result_' + elementItem).show();
+                            if (elementItem == 1 || elementItem == 4) {
+                                if (langCalc=='en-CA') {
+                                    $('#result_' + elementItem).html("Premium:<br>IDR " + addCommas($.trim(value)) + " / year");
+                                } else {
+                                    $('#result_' + elementItem).html("Premi:<br>Rp " + addDot($.trim(value)) + " / tahun");
+                                }
+                                //$('#result_'+elementItem).html("IDR "+addCommas($.trim(value)/12)+"/month");
+                            } else {
+                                if (langCalc=='en-CA') {
+                                    $('#result_' + elementItem).html('' + addData(elementItem) + addCommas($.trim(value)) + '</b>');
+                                } else {
+                                    $('#result_' + elementItem).html('' + addData(elementItem) + addDot($.trim(value)) + '</b>');
+                                }
+                            }
+
+                        }
+                    }
+                });
+                if (product == "Asuransi_Brilliance_Sejahtera") {
+                    if (!$("#qc_result_2").hasClass('qc_bg_yellow')) {
+                        $("#qc_result_2").removeClass('qc_bg_grey');
+                        $("#qc_result_2").addClass('qc_bg_yellow');
+                        $("#qc_result_2 div.qc_result_plan_title").removeClass('qc_result_plan_title').addClass('qc_result_plan_title_hightlight');
+                    }
+                } else {
+                    change_result_color();
+                }
+            }
+            $(".qc_submit_btn a").attr("disabled", "disabled");
+            $(".qc_submit_btn a").removeClass("btn-yellow");
+            $(".qc_submit_btn a").addClass("btn-blue");
+    }
 function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequencyTxt,mYear) {
     var key=key;
     let actualValue = "";
@@ -75,20 +158,6 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
         setTimeout(operator,500);
         function operator(){
             let data='';
-            if(productName=='SunHealth_Medical_Essential'){
-				content=content.toString();
-                content=content.split(productName+'=')[1];
-                content =content.substring(content,content.indexOf("}")+1);                
-                var isCalculable =content.isCalculable;
-                var equation = content.equation;
-                key='"'+key+'"';
-                data=content.split(key+':[')[1];
-                data=data.substring(data,data.indexOf("]"));
-                data=data.trim();
-                data=data.split(",");
-                data=data[0].substring(1,(data[0].length-1))+','+data[1].substring(1,(data[1].length-1))+','+data[2].substring(1,(data[2].length-1))+','+data[3].substring(1,(data[3].length-1));
-            }
-            else{
 				content=content.toString();
                 content=content.split(productName+'=')[1];
                 content =content.substring(content,content.indexOf("}")+1);                
@@ -104,7 +173,6 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
                     let digits = data[i].match(/(\d+)/);
                     data[i]=digits[0];
                 }
-            }
             if (isCalculable=='true') {
                 console.log("calculable");              
             } else {
@@ -117,9 +185,9 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
                 getCountForHK();
                 countrySpecificResponse=getCountForHK();
             }
-                console.log(builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString());
-                jspData=builder.concat(actualValue).concat("||").concat(countrySpecificResponse).toString();
-                fetching(jspData);
+                //console.log(builder.concat(actualValue).concat("||"));
+                jspData=builder.concat(actualValue).concat("||");
+                fetching(jspData,productName);
         }
     } catch (e) {
         console.log(e);
