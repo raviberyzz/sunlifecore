@@ -331,7 +331,7 @@
         // Could also be (and given directly from DOM) a valid selector like `'#div'`
         errorsContainer: function errorsContainer(Field) {},
         // ul elem that would receive errors' list
-        errorsWrapper: '<ul class="parsley-errors-list"></ul>',
+        errorsWrapper: '<ul role="alert" class="parsley-errors-list"></ul>',
         // li elem that would receive error message
         errorTemplate: '<li></li>'
     };
