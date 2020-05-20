@@ -15,6 +15,9 @@ $(document).ready(function () {
       $(this).children(".tool-tip-box").each(function () {
         tool_content = tool_content + "<p>" + $(this).html() + "</p>";
       });
+      $(this).children().children(".tool-tip-box").each(function () {
+        tool_content = tool_content + "<p>" + $(this).html() + "</p>";
+      });
     }
     $('.fa-info-circle').attr('data-toggle', 'tooltip');
     if (windowsize > 767) {
@@ -31,6 +34,7 @@ $(document).ready(function () {
     }
     else {
       $(this).children('a').attr('data-original-title', tool_content);
+      $(this).children().children('a').attr('data-original-title', tool_content);
     }
     $('[data-toggle="tooltip"]').tooltip();
     $('.fa-info-circle').click(function () {
