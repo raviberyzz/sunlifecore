@@ -6,6 +6,7 @@ package ca.sunlife.web.cms.core.osgi.config;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.osgi.service.metatype.annotations.Option;
 
 /**
  * The Interface AkamaiConfig.
@@ -23,6 +24,21 @@ public @interface AkamaiConfig {
    */
   @ AttributeDefinition (name = "host", description = "Akamai Host", defaultValue = "akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net")
   String getHost ();
+  
+  /**
+   * Gets the environment.
+   *
+   * @return the environment
+   */
+  @AttributeDefinition(
+      name = "Environment",
+      description = "Select akamai environment",
+      options = {
+          @Option(label = "PRODUCTION", value = "production"),
+          @Option(label = "STAGING", value = "staging")
+      }
+  )
+  String getEnvironment() default "production";
 
   /**
    * Gets the access key.

@@ -68,7 +68,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
   private CoreResourceResolver coreResourceResolver;
 
   /** The Constant INVALIDATE_API. */
-  private static final String INVALIDATE_API = "/ccu/v3/invalidate/url/production";
+  private static final String INVALIDATE_API = "/ccu/v3/invalidate/url/";
 
   /** The Constant PROTOCOL. */
   private static final String PROTOCOL = "https://";
@@ -150,7 +150,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
           .addInterceptorFirst(new ApacheHttpClientEdgeGridInterceptor(clientCredential))
           .setRoutePlanner(new ApacheHttpClientEdgeGridRoutePlanner(clientCredential)).build();
       final HttpPost httpPost = new HttpPost(
-          PROTOCOL.concat(config.getHost()).concat(INVALIDATE_API));
+          PROTOCOL.concat(config.getHost()).concat(INVALIDATE_API).concat(config.getEnvironment()));
       final StringEntity entity = new StringEntity(jsonRequest);
       httpPost.setHeader("Accept", "application/json");
       httpPost.setHeader("Content-type", "application/json");
