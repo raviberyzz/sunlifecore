@@ -94,6 +94,12 @@ public class AkamaiCacheClearImplTest {
 			public String getAccessKey() {
 				return "adk$~!hkfd2fjro49+_#@";
 			}
+
+      @ Override
+      public String getEnvironment() {
+        // TODO Auto-generated method stub
+        return "production";
+      }
 		};
 	}
 	
