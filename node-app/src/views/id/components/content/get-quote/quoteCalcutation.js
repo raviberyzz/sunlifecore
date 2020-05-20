@@ -11,7 +11,7 @@
     var FREQUENCY_TEXT="freq_text";
     var INVESTMENT_YEAR="investmentYear";
 
-    function fetching(data,productName){
+    function fetching(data,productName,freq){
             var data1 = data.split('||');
             var arrayOfResult = data1[0].split(',');
             console.log(arrayOfResult);
@@ -95,7 +95,7 @@
             $(".qc_submit_btn a").removeClass("btn-yellow");
             $(".qc_submit_btn a").addClass("btn-blue");
     }
-function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequencyTxt,mYear) {
+function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequencyTxt,mYear) {
     var key=key;
     let actualValue = "";
     let countrySpecificResponse="";
@@ -187,7 +187,7 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
             }
                 //console.log(builder.concat(actualValue).concat("||"));
                 jspData=builder.concat(actualValue).concat("||");
-                fetching(jspData,productName);
+                fetching(jspData,productName,freq);
         }
     } catch (e) {
         console.log(e);

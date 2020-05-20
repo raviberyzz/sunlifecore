@@ -8,7 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +18,7 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.jcr.RangeIterator;
 import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang.StringUtils;
@@ -1290,38 +1290,38 @@ public class BasePageModel {
 
       // check if it is a source
       logger.debug("is source {}", relationshipManager.isSource(resource));
-      if (relationshipManager.isSource(resource)) {
-        logger.debug("Page is a source page");
-        final Resource target = resolver.getResource(resource.getPath());
-        @ SuppressWarnings ("deprecation")
-        final Collection <LiveRelationship> relationships = relationshipManager
-            .getLiveRelationships(target, null, null, false);
-        altLanguageLinks = new HashMap <>();
-        for (final LiveRelationship relationship : relationships) {
-          final String liveCopyPath = relationship.getTargetPath();
-          // filter non-existing
-          // LiveCopy Resources and
-          // LiveCopy Launches
-          if (relationship.getStatus().isTargetExisting()
-              && ! LaunchUtils.isLaunchResourcePath(liveCopyPath)) {
-            logger.debug("path :: {}", liveCopyPath);
-            final String sourcePageLocale = configService.getConfigValues("pageLocale",
-                liveCopyPath);
-            final String sourceSiteUrl = configService.getConfigValues("siteUrl", liveCopyPath);
-            final String sourceSiteDomain = configService.getConfigValues("domain", liveCopyPath);
-            logger.debug(
-                "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
-                liveCopyPath, sourcePageLocale, sourceSiteUrl);
-            altLanguageLinks
-                .put(
-                    sourcePageLocale.split("_") [ 0 ] + "-"
-                        + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
-                            .toLowerCase(Locale.ROOT),
-                    sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl)
-                        + BasePageModelConstants.SLASH_CONSTANT);
-          }
-        }
-      }
+			if (relationshipManager.isSource(resource)) {
+				logger.debug("Page is a source page");
+				final Resource target = resolver.getResource(resource.getPath());
+				final RangeIterator relationships = relationshipManager.getLiveRelationships(target, null,
+				                                                            null);
+				if (relationships != null) {
+					altLanguageLinks = new HashMap<>();
+					while (relationships.hasNext()) {
+						LiveRelationship relationship = (LiveRelationship) relationships.next();
+
+						final String liveCopyPath = relationship.getTargetPath();
+						// filter non-existing
+						// LiveCopy Resources and
+						// LiveCopy Launches
+						if (relationship.getStatus().isTargetExisting() && !LaunchUtils.isLaunchResourcePath(
+						                                                            liveCopyPath)) {
+							logger.debug("path :: {}", liveCopyPath);
+							final String sourcePageLocale = configService.getConfigValues("pageLocale",
+							                                                            liveCopyPath);
+							final String sourceSiteUrl = configService.getConfigValues("siteUrl", liveCopyPath);
+							final String sourceSiteDomain = configService.getConfigValues("domain", liveCopyPath);
+							logger.debug("generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+							                                                            liveCopyPath,
+							                                                            sourcePageLocale,
+							                                                            sourceSiteUrl);
+							altLanguageLinks.put(sourcePageLocale.split("_")[0] + "-" + sourcePageLocale.split(
+							                                                            "_")[1].replace("_", "-").toLowerCase(Locale.ROOT),
+							                                                            sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+						}
+					}
+				}
+			}
       // check if it is a live copy
       logger.debug("has live relationship {}", relationshipManager.hasLiveRelationship(resource));
       if (relationshipManager.hasLiveRelationship(resource)) {
