@@ -160,6 +160,15 @@
             line-height: 36px;
         }
       }
+      
+    > .separator + .layout-container {
+        padding-top: 0;
+        .cmp-container{
+            div:first-child {
+                padding-top: 0;
+            }
+        }
+    }
     }
     .legal-text{
         color: $dark-grey-color;
