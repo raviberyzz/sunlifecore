@@ -19,22 +19,22 @@ if(typeof(advisorInfo) !== 'undefined'){
 $(document).ready(function () {
     //Get page language
     if($('.row-advisor').length){
-        var lang = ($('html').attr('lang') === 'fr-CA') ? 'fr' : 'en' ; 
+        var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
         var loadMap = false;
         var pageLabelData = {
-            'en': {	
-                'phone' : 'Phone:',
-                'cell': 'Cell:',
-                'moreinfo' : 'More Info',
-                'email': 'Email:'
-                },
-            'fr': {	
-                'phone' : 'TÃ©lÃ©phone :',
-                'cell': 'Cellulaire :',
-                'moreinfo' : 'Plus dâ€™infos',
-                'email': 'Courriel :'
-                }
-        };
+		'en': {	
+			'phone' : 'Phone:',
+			'cell': 'Cell:',
+			'moreinfo' : 'More Info',
+			'email': 'Email:'
+			},
+		'fr': {	
+			'phone' : 'Téléphone :',
+			'cell': 'Cellulaire :',
+			'moreinfo' : 'Plus d’infos',
+			'email': 'Courriel :'
+			}
+	     };
         //rssFeed();	
         if(exists){
         setupAdvisorBio();
