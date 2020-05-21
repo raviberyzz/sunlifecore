@@ -11,7 +11,7 @@
 					     <a lang ="${links.langCode}" href ="javascript:void(0)" data-target ="${links.linkUrl}" data-toggle="${links.target}">${links.linkName @ context='html'}</a>
 					    </sly>
 					   <sly data-sly-test = "${!linkChecker}">  
-					   <a lang ="${links.langCode}" href ="${links.linkUrl @ extension = 'html'}" target ="${links.target}">${links.linkName @ context='html'}</a>
+					   <a lang ="${links.langCode}" href ="${links.linkUrl}" target ="${links.target}">${links.linkName @ context='html'}</a>
 					   </sly>
 					 </li>
 				  </ul>				
