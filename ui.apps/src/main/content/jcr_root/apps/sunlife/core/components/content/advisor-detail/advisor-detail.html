@@ -374,6 +374,15 @@
 	</div>
 </sly>
 <!-- Corp end -->
+<!-- hidden div for link -->
+<div class="collapse list-div" id="advisor-helpful-links-div" style = "display:none">
+	<ul class="list-unstyled" data-sly-list.helpfulLink="${advisorDataObj.HelpfulLinks}">
+	  <li>
+		${helpfulLink.DisplayData @context = 'html'}
+	  </li>
+	</ul>
+</div>
+<!-- hidden div for link ends-->
 <!-- Advisor Map Starts  -->
 <sly data-sly-test="${advisorDetailObj.advisorMapData}">
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>

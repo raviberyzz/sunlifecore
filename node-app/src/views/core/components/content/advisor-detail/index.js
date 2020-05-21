@@ -195,5 +195,6 @@ $(document).ready(function () {
         });
     }	
     }
+	if($( "div#helpful-links-right" ))$( "div#helpful-links-right" ).replaceWith( $( "div#advisor-helpful-links-div" ) );
     }
 );
