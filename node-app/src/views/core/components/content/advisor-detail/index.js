@@ -37,7 +37,7 @@ $(document).ready(function () {
         };
         //rssFeed();	
         if(exists){
-        //setupAdvisorBio();
+        setupAdvisorBio();
         //setupAdvCookie();
     
         //Google large map link event
@@ -195,6 +195,7 @@ $(document).ready(function () {
         });
     }	
     }
-	if($( "div#helpful-links-right" ))$( "div#helpful-links-right" ).replaceWith( $( "div#advisor-helpful-links-div" ) );
+	var helpfulLinksVar = document.getElementById("advisor-helpful-links-div");
+	if( helpfulLinksVar )$( "div#helpful-links-right" ).replaceWith( $( "div#advisor-helpful-links-div" ) );
     }
 );
