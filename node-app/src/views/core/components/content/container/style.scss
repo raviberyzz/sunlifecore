@@ -897,11 +897,14 @@ ul {
             .col-sm-4{
                 div.text:first-child{
                     margin-top:32px;
-                    min-height: 150px;                      // add height so second text section starts on same line
+                    min-height: 130px;  // add height so second text section starts on same line
                     //border-right:2px solid #f7f7f7;
                     h2, h3, h4, h5, h6{
                         margin-top:0px;
                     }
+                }
+                div.text:last-child{
+                    margin-top: 46px;
                 }
                 
             }
@@ -919,11 +922,13 @@ ul {
         text-align: center;
     }
     .cmp-contact-us {
-        .layout-container{
+        .container-component{
             p {
                 display: flex; //added to fix alignment issues
                 flex-direction: column;
             }
+        }
+        .layout-container{
             .row{
                 .col-sm-4 {
                     p{
@@ -941,7 +946,7 @@ ul {
                 }
             }
             &:not(:first-child){        // Removes border in mobile view
-                padding-top: 8px;
+                padding-top: 14px;
                 border: none !important;           
             }
         } 
@@ -952,8 +957,8 @@ ul {
             left: 0;
         } 
         .primary-blue-button-rte {
-            margin-top: 32px; // total of 64px spacing between button and text in mobile view
-            margin: 0;
+            margin: 32px 0 0 0; // total of 64px spacing between button and text in mobile view
+            max-width: unset;
         }
     }
 }
