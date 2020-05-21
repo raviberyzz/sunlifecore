@@ -127,6 +127,11 @@ $(document).ready(function () {
         $(this).next().focus();
       }
   });
+    $('.signIn-button').children('a').on("focus", function(){
+      $('.navigation').removeClass("open");
+      $('.navigation').children('a').removeClass("box-class");
+      $('.navigation').removeClass("open");
+    });
 
 //   $('.desktop-primary-navigation .navbar-new').children('li').keydown(function(e){
 //     if (e.which == 40 ) {
