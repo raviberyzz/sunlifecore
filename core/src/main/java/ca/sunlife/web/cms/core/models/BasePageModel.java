@@ -952,13 +952,17 @@ public class BasePageModel {
     int startLevel = siteUrl.replaceFirst(BasePageModelConstants.SLASH_CONSTANT, "")
     		.split(BasePageModelConstants.SLASH_CONSTANT).length;
     int rootPageLevel = startLevel - 1;
-    final int currentLevel = null != pageResource ? pageResource.getDepth() : 0;
+    int currentLevel = null != pageResource ? pageResource.getDepth() : 0;
     final List <String> navList = new ArrayList <>();
     // Root page title fetch
     final Page rootPage = null != pageResource ? pageResource.getAbsoluteParent(rootPageLevel) : null;
     if (rootPage != null) {
       navList.add(getBreadcrumbTitle(rootPage).toLowerCase(Locale.getDefault()));
     }
+		if (null != advancedPageType && BasePageModelConstants.PAGE_TYPE_ARTICLE_PAGES_CONSTANT
+		                                                            .equals(advancedPageType)) {
+			currentLevel = currentLevel - 1;
+		}
     while (startLevel < currentLevel) {
       final Page page = null != pageResource ? pageResource.getAbsoluteParent(startLevel) : null;
       if (page != null) {
