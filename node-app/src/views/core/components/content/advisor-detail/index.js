@@ -196,6 +196,9 @@ $(document).ready(function () {
     }	
     }
 	var helpfulLinksVar = document.getElementById("advisor-helpful-links-div");
-	if( helpfulLinksVar )$( "div#helpful-links-right" ).replaceWith( $( "div#advisor-helpful-links-div" ) );
+	if( helpfulLinksVar ) {
+		$( "div#helpful-links-right" ).replaceWith( $( "div#advisor-helpful-links-div" ) );
+		$( "#advisor-helpful-links-div" ).remove();
+	}	
     }
 );
