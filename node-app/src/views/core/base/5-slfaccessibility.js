@@ -1,4 +1,19 @@
 $(document).ready(function () {
+  
+var ENTER = 13;
+var TAB = 9;
+var DOWN = 40;
+var RIGHT = 39;
+var LEFT = 37;
+var UP = 38;
+var ESC = 27;
+// Adds aria-labels to mega menu by tagging it with the text in the anchor tags 
+addMegaMenuAriaLabels = () => {
+  $(".desktop-mega-menu .dropdown-menu .mega-menu-wrapper-desk a:not(.icon-style)").each(function(){
+    $(this).attr("aria-label", $(this).text());
+  });
+}
+addMegaMenuAriaLabels();
   function set_active(tab)
   {
     var tab_number=$(tab).index();
@@ -121,32 +136,45 @@ $(document).ready(function () {
         }
     });
 
-    $('.desktop-primary-navigation .navbar-new').children('li:not(:last-child)').keydown(function(e){
-      if (e.which == 9 ) {
-        $(this).removeClass("open");
-        $(this).next().focus();
-      }
-  });
+
     $('.signIn-button').children('a').on("focus", function(){
       $('.navigation').removeClass("open");
       $('.navigation').children('a').removeClass("box-class");
       $('.navigation').removeClass("open");
     });
 
+    $('.desktop-primary-navigation .focus-exp li').on('keydown', function (e) {
+      if ($('.desktop-primary-navigation .navbar-nav').hasClass('focus-exp')) {
+        if (e.keyCode == TAB) {
+          $(this).removeClass("open");
+          $(this).next().focus();
+        }
+        $(".desktop-primary-navigation .navbar-nav").removeClass("focus-exp");
+      }
+      });
+
+    $('.desktop-primary-navigation, .desktop-utility-nav, #signinbutton').keydown(function (e) {
+      if (e.keyCode == TAB && e.shiftKey) {
+        $(".desktop-primary-navigation .navbar-nav").addClass("focus-exp");
+        $(".desktop-primary-navigation .navbar-nav").addClass("focus-tr");
+      }
+    });
+
+    $('.desktop-primary-navigation .focus-tr li:last-child').keydown(function (e) {
+    if ($('.desktop-primary-navigation .navbar-nav').hasClass('focus-tr')) {
+        if (e.keyCode == TAB) {
+          $(this).removeClass("open");
+          $(this).next().focus();
+        }
+    $(".desktop-primary-navigation .navbar-nav").removeClass("focus-tr");
+      }
+    });
 //   $('.desktop-primary-navigation .navbar-new').children('li').keydown(function(e){
 //     if (e.which == 40 ) {
 //       $('.desktop-primary-navigation .navbar-new .quick-link li:first').focus();
 //     }
 // });
 
-    $('.desktop-primary-navigation .navbar-new').children('li:last-child').children().keydown(function(e){
-      if (e.which == 9 ) { 
-        //e.preventDefault();
-        $(".desktop-primary-navigation li").removeClass("open");
-        $(".desktop-primary-navigation li a").removeClass("box-class");
-          
-      }
-  });
     // open the full header menu on focus for screen readers. 
     $('.navigation').children('a').on("focus", function(){
       $('.navigation').removeClass("open");
