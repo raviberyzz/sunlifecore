@@ -204,7 +204,8 @@ const clientLibContentXMLContent = (cName) => {
   '<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"\n'+
    'jcr:primaryType="cq:ClientLibraryFolder"\n'+
    'allowProxy="{Boolean}true"\n' +
-    'categories="['+cName+']"/>';
+   'jsProcessor="[default:none,min:gcc;languageIn=STABLE;compilationLevel=simple]"\n'+
+   'categories="['+cName+']"/>';
 }
 
 gulp.task('copy-build-files',() => {
