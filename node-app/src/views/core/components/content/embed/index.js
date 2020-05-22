@@ -312,7 +312,13 @@ function VideoAnalyticsLoadEvent() {
            VideoAnalyticsLoadEvent();
         }
 
-  setTimeout(embedAnalytics, 5000);
+		// callback for multiple players
+		window.onVidyardAPI = (vidyardEmbed) => {
+			vidyardEmbed.api.addReadyListener((_, player) => {
+				embedAnalytics();
+			}, ) // because we're looking for multiple players, we have no UUID specified here
+			}
+		}
 
     }
 
