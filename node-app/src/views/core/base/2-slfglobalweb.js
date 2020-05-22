@@ -2509,7 +2509,7 @@ function getCookie(cname) {
         $('a').each(function(){
             var href = $(this).attr('href');
             var target = $(this).attr('target');
-            if(href && !target ((href.indexOf('//') > 0 && href.indexOf(hostname) < 0 ) || href.indexOf('.pdf') > 0)) {
+            if(href && !target && ((href.indexOf('//') > 0 && href.indexOf(hostname) < 0 ) || href.indexOf('.pdf') > 0)) {
                 $(this).attr('target','_blank');
             }
         });
