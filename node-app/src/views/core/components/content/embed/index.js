@@ -311,16 +311,15 @@ function VideoAnalyticsLoadEvent() {
 
            VideoAnalyticsLoadEvent();
         }
-
-				// callback for multiple players
- window.onVidyardAPI = (vidyardEmbed) => {
+// callback for a single player
+// Add the UUID of the player you're trying to reference where indicated
+window.onVidyardAPI = (vidyardEmbed) => {
 	vidyardEmbed.api.addReadyListener((_, player) => {
  
  console.log('player ready:', player.ready());
-	console.log(player.uuid);
 	// put your code here
-     embedAnalytics();
- }, ) // because we're looking for multiple players, we have no UUID specified here
+		embedAnalytics();
+ }, VidyardV4.players[VidyardV4.players.length - 1].uuid)      
 	}
     }
 
