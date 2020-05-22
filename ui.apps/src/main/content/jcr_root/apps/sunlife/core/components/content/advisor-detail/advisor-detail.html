@@ -52,7 +52,7 @@
 					<p class="row-advisor-desc-bio">${advisorStd.Bio}</p>
 					<p data-sly-repeat.notice="${advisorStd.Notices}">
 						<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
-						${notice.AgentContent @ context = 'unsafe'}
+						${notice.AgentContent @ context = 'html'}
 					</p>
 				</div>
 			</div>
@@ -124,7 +124,7 @@
 				</p>
 				<p data-sly-repeat.notice="${advisorStd.Notices}">
 					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
-					${notice.AgentContent @ context = 'unsafe'}
+					${notice.AgentContent @ context = 'html'}
 				</p>
 				<div class="col-xs-12 col-sm-4 row-advisor-contact-social">
 					<ul class="row-advisor-socials list-inline"
@@ -168,7 +168,7 @@
 				<p class="row-advisor-desc-bio">${advisorCorp.CorpWelcomMessage}</p>
 				<p data-sly-repeat.notice="${advisorCorp.Notices}">
 					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
-					${notice.AgentContent @ context = 'unsafe'}
+					${notice.AgentContent @ context = 'html'}
 				</p>
 			</div>
 			<div class="row">
@@ -270,7 +270,7 @@
 				<p class="cwelcomemsg">${advisorCorp.CorpWelcomMessage}</p>
 				<p data-sly-repeat.notice="${advisorCorp.Notices}">
 					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
-					${notice.AgentContent @ context = 'unsafe'}
+					${notice.AgentContent @ context = 'html'}
 				</p>
 			</div>
 			<sly data-sly-list.corpMember="${advisorCorp.CorpTeamMembers}">
@@ -342,7 +342,7 @@
 							<p>${advisorCorp.CorpWelcomMessage}</p>
 							<p data-sly-repeat.notice="${advisorCorp.Notices}">
 								<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
-								${notice.AgentContent @ context = 'unsafe'}
+								${notice.AgentContent @ context = 'html'}
 							</p>
 						</div>
 					</div>
