@@ -312,7 +312,7 @@ function VideoAnalyticsLoadEvent() {
            VideoAnalyticsLoadEvent();
         }
 
-  setTimeout(embedAnalytics, 1000);
+  setTimeout(embedAnalytics, 5000);
 
     }
 
