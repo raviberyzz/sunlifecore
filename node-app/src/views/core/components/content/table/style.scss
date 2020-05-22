@@ -178,9 +178,17 @@ table{
   margin-top: 15px !important;
 }
 
-// comparison table styles
-
 .cmp-table-comparision{
+  .slf-table {
+    th, td {
+      &:first-child {
+        border-left: 1px solid $grey-previous-background-color;
+      }
+      &:last-child {
+        border-right: 1px solid $grey-previous-background-color;
+      }
+    }
+  }
    table {
      tbody{
          tr {
@@ -218,7 +226,7 @@ table{
         }
         tr:last-child > {
             *{
-              border-bottom: 2px solid $grey-previous-background-color;
+              border-bottom: 1px solid $grey-previous-background-color;
             }
         }
         .large-green{
