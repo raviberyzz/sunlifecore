@@ -146,7 +146,7 @@ function VideoAnalyticsLoadEvent() {
 	  var index = listeners.length;
         console.log(index + " " + "listeners");
 	   listeners.push(function (result) {
-	    //console.log(results + `${result.player.metadata.chapters_attributes[result.chapter].video_attributes.name}: ${result.event}%.`);
+	    //console.log(results + ${result.player.metadata.chapters_attributes[result.chapter].video_attributes.name}: ${result.event}%.);
         var chapterName = result.player.metadata.chapters_attributes[result.chapter].video_attributes.name;
 		if (result.event != 100) {
 			if (typeof utag === "object" && typeof s === "object")  {
@@ -315,9 +315,6 @@ function VideoAnalyticsLoadEvent() {
 // Add the UUID of the player you're trying to reference where indicated
 window.onVidyardAPI = (vidyardEmbed) => {
 	vidyardEmbed.api.addReadyListener((_, player) => {
- 
- console.log('player ready:', player.ready());
-	// put your code here
 		embedAnalytics();
  }, VidyardV4.players[VidyardV4.players.length - 1].uuid)      
 	}

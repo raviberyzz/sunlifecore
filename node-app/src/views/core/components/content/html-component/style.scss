@@ -252,6 +252,12 @@
             color:$blue-search-color;
         }
     }
+    .results-ad {
+        background-color: #fdf7e6;
+        border: 1px #f9e6b3 solid;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
 }
 
 @media (max-width: $mobile-screen-max) {
