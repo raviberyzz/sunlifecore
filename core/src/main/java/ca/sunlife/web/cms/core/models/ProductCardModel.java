@@ -285,7 +285,7 @@ public class ProductCardModel {
   public void setText(final String text) {
     this.text = text;
   }
-
+  
   /**
    * Inits the.
    */
@@ -365,41 +365,43 @@ public class ProductCardModel {
       final String [ ] articleTags = tagNames;
       LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(),
           currentPage.getParent().getPath());
+      if (articleTags != null) {
+    	  switch (articleTags.length) {
+          case 0 :
+            LOG.info("Article does not contain any tags.");
+            break;
 
-      switch (articleTags.length) {
-      case 0 :
-        LOG.info("Article does not contain any tags.");
-        break;
+          case 1 :
+            LOG.info("Article does not contains 1 tag.");
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 3));
+            LOG.info("Number of results {}", itemList.size());
+            break;
 
-      case 1 :
-        LOG.info("Article does not contains 1 tag.");
-        itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 3));
-        LOG.info("Number of results {}", itemList.size());
-        break;
+          case 2 :
+            LOG.info("Article does not contains 2 tags.");
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 2));
 
-      case 2 :
-        LOG.info("Article does not contains 2 tags.");
-        itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 2));
+            if (itemList.size() == 2) {
+              itemList.addAll(1, getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
 
-        if (itemList.size() == 2) {
-          itemList.addAll(1, getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
+            } else {
+              itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 2));
+            }
 
-        } else {
-          itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 2));
-        }
+            break;
 
-        break;
+          case 3 :
+            LOG.info("Article does not contains 3 tags.");
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 1));
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 2 ], 1));
+            break;
 
-      case 3 :
-        LOG.info("Article does not contains 3 tags.");
-        itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 1));
-        itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
-        itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 2 ], 1));
-        break;
-
-      default :
-        break;
+          default :
+            break;
+          }
       }
+      
 
     } catch (final LoginException e) {
       LOG.error("Login exception while trying to get resource resolver {}", e);
