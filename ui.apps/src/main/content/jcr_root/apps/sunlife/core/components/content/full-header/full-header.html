@@ -134,14 +134,14 @@
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
               <div class="desktop-primary-navigation" data-section="nav-main">
-                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth" role="navigation">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr" role="navigation">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
                         href="${head.linkUrl @ extension='html'}">
                         <span
                           class="nav-item-heading ">${head.linkName}</span></a>
-                      <div data-sly-test="${head.fragmentPath}" role="menu" class="dropdown-menu menu-content" aria-label="${head.linkName}">
+                      <div data-sly-test="${head.fragmentPath}" role="menu" class="dropdown-menu menu-content">
                         <div class="mega-menu-wrapper-desk">
 
                           <sly

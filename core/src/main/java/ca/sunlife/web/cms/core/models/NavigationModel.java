@@ -106,7 +106,13 @@ public class NavigationModel extends NavigationImpl {
 
     String title = null;
     try {
-      title = configService.getConfigValues("navigationOverview", currentPage.getPath());
+    	String expPath = currentPage.getPath();
+    	if(null != expPath && expPath.length() > 0 && expPath.contains("experience-fragments")) {
+    	expPath = expPath.replace("/experience-fragments", "");
+    	expPath = expPath.substring(0, expPath.indexOf("/header"));
+    	}
+    	
+      title = configService.getConfigValues("navigationOverview", expPath);
     } catch (RepositoryException | LoginException e) {
       log.error("Error :: init method of Left Navigation Model :: {}", e);
     }
