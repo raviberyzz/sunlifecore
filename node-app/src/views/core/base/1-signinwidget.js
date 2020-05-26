@@ -9,6 +9,8 @@ var sunnetUrl;
 //checks hostname to set sunnet url
 if(hostname == 'www.sunlife.ca') {
 	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if(hostname == 'www2.sunlife.ca') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
 } else if(hostname == 'stage-www.sunlife.ca') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else {
