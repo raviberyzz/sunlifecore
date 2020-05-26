@@ -7,6 +7,7 @@ package ca.sunlife.web.cms.core.osgi.config;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface MailConfig.
  *
@@ -39,4 +40,28 @@ public @interface MailConfig {
    */
   @ AttributeDefinition (name = "Template Path", description = "Content fragment paths for email templates")
   String getTemplatePath ();
+  
+  /**
+   * Gets the template path suffix.
+   *
+   * @return the template path suffix
+   */
+  @ AttributeDefinition (name = "Template Path Suffic", description = "Content fragment paths for email templates suffix")
+  String getTemplatePathSuffix ();
+  
+  /**
+   * Gets the success response.
+   *
+   * @return the success response
+   */
+  @AttributeDefinition(name = "Success Response", description = "JSON Response for success")
+  String getSuccessResponse();
+	
+  /**
+   * Gets the error response.
+   *
+   * @return the error response
+   */
+  @AttributeDefinition(name = "Error Response", description = "JSON Response for error")
+  String getErrorResponse();
 }
