@@ -83,7 +83,7 @@ public class MailServiceImpl implements MailService {
     LOG.trace("Inside MailServiceImpl:processHttpRequest");
     final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
     final int timeOut = 5000;
-    final String SPLITVAR = "-";
+    final String SPLITVAR = "_";
     String cfPath = "";
     String cfName = "";
     String fromEmailId = "";
