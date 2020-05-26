@@ -7,7 +7,6 @@ package ca.sunlife.web.cms.core.osgi.config;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface MailConfig.
  *
