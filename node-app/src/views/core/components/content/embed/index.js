@@ -287,14 +287,21 @@ $(function () {
 			VideoAnalyticsLoadEvent();
 		}
 		// this can be defined anywhere in the client code
-		new Promise(res => window.vidyardEmbed
-			? res(window.vidyardEmbed)
-			: (window['onVidyardAPI'] = (vyApi) => res(vyApi))
-		).then((vyApi) => {
-			console.log('The Vidyard API is ready ', vyApi);
-			embedAnalytics();
-		});
-
+		// new Promise(res => window.vidyardEmbed
+		// 	? res(window.vidyardEmbed)
+		// 	: (window['onVidyardAPI'] = (vyApi) => res(vyApi))
+		// ).then((vyApi) => {
+		// 	embedAnalytics();
+		// });
+		
+		// new Promise(function (res) {
+		// 	return window.vidyardEmbed ? res(window.vidyardEmbed) : window['onVidyardAPI'] = function (vyApi) {
+		// 	  return res(vyApi);
+		// 	};
+		//   }).then(function (vyApi) {
+		// 	embedAnalytics(vyApi);
+		//   });
+		setTimeout(embedAnalytics, 2000);
 	}
 
 })
