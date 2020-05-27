@@ -143,11 +143,11 @@ addMegaMenuAriaLabels();
       $('.navigation').removeClass("open");
     });
 
-    $('.desktop-primary-navigation .focus-exp li').on('keydown', function (e) {
+    $('.desktop-primary-navigation .navbar-nav li:first-child a').on('keydown', function (e) {
       if ($('.desktop-primary-navigation .navbar-nav').hasClass('focus-exp')) {
         if (e.keyCode == TAB) {
-          $(this).removeClass("open");
-          $(this).next().focus();
+          $(this).parent().removeClass("open");
+          $(this).parent().next().focus();
         }
         $(".desktop-primary-navigation .navbar-nav").removeClass("focus-exp");
       }
@@ -160,13 +160,13 @@ addMegaMenuAriaLabels();
       }
     });
 
-    $('.desktop-primary-navigation .focus-tr li:last-child').keydown(function (e) {
+    $('.desktop-primary-navigation .navbar-nav li:last-child a').keydown(function (e) {
     if ($('.desktop-primary-navigation .navbar-nav').hasClass('focus-tr')) {
         if (e.keyCode == TAB) {
-          $(this).removeClass("open");
-          $(this).next().focus();
+          $(this).parent().removeClass("open");
+          $(this).closest('.desktop-navigation').next().children('a').focus();
         }
-    $(".desktop-primary-navigation .navbar-nav").removeClass("focus-tr");
+   // $(".desktop-primary-navigation .navbar-nav").removeClass("focus-tr");
       }
     });
 //   $('.desktop-primary-navigation .navbar-new').children('li').keydown(function(e){

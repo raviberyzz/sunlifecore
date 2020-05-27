@@ -3,11 +3,13 @@ var contingencyWidgetDisplayed = false;
 var signinDataCallDone = false;
 var providerURL;
 var hostname = window.location.hostname;
-var lang = ($('html').attr('lang') === 'fr-CA') ? 'fr' : 'en' ; 
+var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en' ; 
 var sunnetUrl;
 
 //checks hostname to set sunnet url
 if(hostname == 'www.sunlife.ca') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if(hostname == 'www2.sunlife.ca') {
 	sunnetUrl = "https://www.sunnet.sunlife.com";
 } else if(hostname == 'stage-www.sunlife.ca') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";

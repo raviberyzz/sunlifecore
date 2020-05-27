@@ -1933,6 +1933,9 @@ ul {
         background:$medium-grey-background;
     }
 }
+.blue-icon-yellow-background.container-seperator-75:after{
+    background:$medium-grey-background;
+}
 /*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
     .cmp-contact-us {
