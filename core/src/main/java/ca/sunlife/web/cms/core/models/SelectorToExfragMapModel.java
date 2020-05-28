@@ -44,6 +44,9 @@ public class SelectorToExfragMapModel {
   /** The frag path. */
   private String fragPath;
 
+  /** The ready to display. */
+  private boolean readyToDisplay;
+
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(SelectorToExfragMapModel.class);
 
@@ -76,15 +79,37 @@ public class SelectorToExfragMapModel {
   }
 
   /**
+   * Checks if is ready to display.
+   *
+   * @return true, if is ready to display
+   */
+  public boolean isReadyToDisplay() {
+	return readyToDisplay;
+  }
+
+  /**
+   * Sets the ready to display.
+   *
+   * @param readyToDisplay the new ready to display
+   */
+  public void setReadyToDisplay(boolean readyToDisplay) {
+	this.readyToDisplay = readyToDisplay;
+  }
+
+/**
    * Inits the.
    */
   @ PostConstruct
   public void init() {
-    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length == 0 || getItems().isEmpty()) {
+    String[] selectors = request.getRequestPathInfo().getSelectors();
+    readyToDisplay = false;
+    LOGGER.debug("Selectors in the page {}", selectors.length);
+    if (selectors.length == 0 || getItems()==null || getItems().isEmpty()) {
+    	LOGGER.debug("Not ready");
     	return;
     }
     if (selectors.length > 0 && ! getItems().isEmpty()) {
+    	readyToDisplay = true;
     	 LOGGER.debug("No of entries {}", getItems().size());
       final Iterator <SelectorExFragMap> itemIterator = items.iterator();
       while (itemIterator.hasNext()) {
