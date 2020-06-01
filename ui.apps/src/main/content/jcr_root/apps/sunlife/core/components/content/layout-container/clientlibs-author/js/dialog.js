@@ -41,12 +41,14 @@
             }
             else{
 			$('[name="./flexRequired"]').show();
+            $('[name="./siteNotificationId"]').parent().hide();
             }
         });
         $(document).ready(function(){
 		 var noc = $('[name="./noc"]').val();
             if(noc== 1){
                 $('[name="./flexRequired"]').hide();
+
             }
             else{
 			$('[name="./flexRequired"]').show();
@@ -64,17 +66,25 @@
 				$('coral-select[name="./modelTitleLevel"]').parent().show();
                 $('[name="./modalID"]').parent().show();
                 $('[name="./modalTitle"]').parent().show();
-
+                $('[name="./siteNotificationId"]').parent().hide();
 
             }else if(val === "simple-popup") {
                 $('[name="./modalID"]').parent().show();
                 $('coral-select[name="./modelTitleLevel"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
+                $('[name="./siteNotificationId"]').parent().hide();
+
+            }else if(val === "site-notification") {
+                $('[name="./siteNotificationId"]').parent().show();
+                $('coral-select[name="./modelTitleLevel"]').parent().hide();
+                $('[name="./modalTitle"]').parent().hide();
+                $('[name="./modalID"]').parent().hide();
 
             }else {
                 $('coral-select[name="./modelTitleLevel"]').parent().hide();
                 $('[name="./modalID"]').parent().hide();
                 $('[name="./modalTitle"]').parent().hide();
+                $('[name="./siteNotificationId"]').parent().hide();
             }
 
 
