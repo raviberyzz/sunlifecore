@@ -5,6 +5,7 @@
 package ca.sunlife.web.cms.core.services;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.json.JSONObject;
 
 /**
  * The Interface MailService.
@@ -21,5 +22,5 @@ public interface MailService {
    *          the request
    * @return the string
    */
-  public String processHttpRequest(SlingHttpServletRequest request);
+  public JSONObject processHttpRequest(SlingHttpServletRequest request);
 }

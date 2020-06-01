@@ -3,4 +3,7 @@
     jcr:primaryType="sling:OsgiConfig"
     getApiKey="Ng1vE%^Uvdk$aP@E7SepA1N06#lQ!*kLs4siHSFq"
 	getApiUrl="https://www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json"
-    getTemplatePath="/content/dam/sunlife/email-templates/" />
+    getTemplatePath="/content/dam/sunlife/external/"
+    getTemplatePathSuffix="/content-fragments/email-templates/"
+	getErrorResponse="failure"
+    getSuccessResponse="success"/>

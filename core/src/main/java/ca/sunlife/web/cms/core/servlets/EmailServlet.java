@@ -14,6 +14,8 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -32,6 +34,8 @@ import ca.sunlife.web.cms.core.services.MailService;
     "sling.servlet.methods=" + HttpConstants.METHOD_GET,
     "sling.servlet.resourceTypes=" + "sunlife/core/components/config/email",
     "sling.servlet.selectors=email", "sling.servlet.extensions=service" })
+/*@Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "=Email Servlet",
+	"sling.servlet.methods=" + HttpConstants.METHOD_POST, "sling.servlet.paths=" + "/bin/emailServlet" })*/
 public class EmailServlet extends SlingAllMethodsServlet {
 
   /** The Constant serialVersionUID. */
@@ -53,8 +57,16 @@ public class EmailServlet extends SlingAllMethodsServlet {
   public void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
       throws ServletException, IOException {
     LOG.debug("Processing reqest");
-    final String redirectUrl = mailService.processHttpRequest(request);
-    response.sendRedirect(StringUtils.isNotBlank(redirectUrl) ? redirectUrl : "");
+    JSONObject mailResponse = mailService.processHttpRequest(request);
+    try {
+	if(mailResponse.getString("type").equalsIgnoreCase("url")) {
+	    response.sendRedirect(StringUtils.isNotBlank(mailResponse.getString("url"))? mailResponse.getString("url") : "");
+	}else if(mailResponse.getString("type").equalsIgnoreCase("json")) {
+	    response.getWriter().write(StringUtils.isNotBlank(mailResponse.getString("response"))? mailResponse.getString("response") : "");
+	}
+    } catch (JSONException e) {
+	LOG.error("Error occured while capturing mail response" + e);
+    }
   }
 
   /*
