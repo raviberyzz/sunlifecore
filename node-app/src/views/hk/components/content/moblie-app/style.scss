@@ -7,7 +7,7 @@
     overflow-x: hidden;
     width: 100%;
     height: auto;
-    background: $light-grey-background-10;
+    background: $light-grey-20;
     padding:24px 16px 0 16px;
     .app-wrapper{
         font-size:1rem;
@@ -21,23 +21,27 @@
                 float:left;
                 background-color: transparent;
                 box-shadow: none;
-                width: 50px;
-                height: 50px;
+                width: 64px;
+                height: 64px;
                 border-radius: 15px;
-                background-image: url(/content/dam/sunlife/legacy/assets/hk/About%20Us/Tools%20&%20Resources/MySunLife%20App/My-Sun-Life-App-Icon-1024.png);
-                background-size: 50px 50px;
+                //background-image: url(/content/dam/sunlife/legacy/assets/hk/About%20Us/Tools%20&%20Resources/MySunLife%20App/My-Sun-Life-App-Icon-1024.png);
+                background-image: url(https://www.sunlife.com.hk/static/hk/About%20Us/Tools%20&%20Resources/MySunLife%20App/My-Sun-Life-App-Icon-1024.png);
+                background-size: 64px 64px;
             }
         }
         .smartbanner__info{
             width:81%;
             float:left;
-            padding-left:6px;
+            padding-left:8px;
             align-items: center;
             font-size:1rem;
-            font-weight:700;
-            padding-top:2px;
+            font-weight:400;
             div[class^="smartbanner_"]{
-                line-height:1.25rem;
+                line-height:26px; /*1.625rem*/
+                font-size:1rem;
+            }
+            .smartbanner__info__title{
+                font-weight:700;
             }
         }
         .smartbanner__exit{
@@ -45,12 +49,14 @@
         }
     }
     .java-button{
-        margin-top:-8px;
+        margin-top:-3px;
         .smartbanner__button{
-            padding-left:56px;
+            padding-left:72px;
+            line-height:26px;
             .smartbanner__button__label{
                 font-size:1rem;
                 font-weight:700;
+                line-height:26px;
             }
         }
     }
