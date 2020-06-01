@@ -51,6 +51,9 @@
     }
     .java-button{
         margin-top:-3px;
+        a:hover,a:focus{
+            text-decoration:none;
+        }
         .smartbanner__button{
             padding-left:72px;
             line-height:26px;
