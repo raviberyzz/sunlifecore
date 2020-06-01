@@ -19,6 +19,8 @@
     };
 
     /** client story specific code starts **/
+    $(".left-item a").each(function( index ) { $(this).attr('data-target', $(this).attr('href'));  });
+
     var desktopmodeon=true;
 	
 	function openDialogSliderBasedOnScreen(){
