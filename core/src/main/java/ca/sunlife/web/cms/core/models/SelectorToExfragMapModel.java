@@ -44,9 +44,6 @@ public class SelectorToExfragMapModel {
   /** The frag path. */
   private String fragPath;
 
-  /** The ready to display. */
-  private boolean readyToDisplay;
-
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(SelectorToExfragMapModel.class);
 
@@ -56,7 +53,7 @@ public class SelectorToExfragMapModel {
    * @return the items
    */
   public Collection <SelectorExFragMap> getItems() {
-    return Collections.unmodifiableCollection(items);
+    return null != items ? Collections.unmodifiableCollection(items) : null;
   }
 
   /**
@@ -78,38 +75,17 @@ public class SelectorToExfragMapModel {
     this.fragPath = fragPath;
   }
 
-  /**
-   * Checks if is ready to display.
-   *
-   * @return true, if is ready to display
-   */
-  public boolean isReadyToDisplay() {
-	return readyToDisplay;
-  }
-
-  /**
-   * Sets the ready to display.
-   *
-   * @param readyToDisplay the new ready to display
-   */
-  public void setReadyToDisplay(boolean readyToDisplay) {
-	this.readyToDisplay = readyToDisplay;
-  }
-
 /**
    * Inits the.
    */
   @ PostConstruct
   public void init() {
     String[] selectors = request.getRequestPathInfo().getSelectors();
-    readyToDisplay = false;
-    LOGGER.debug("Selectors in the page {}", selectors.length);
-    if (selectors.length == 0 || getItems()==null || getItems().isEmpty()) {
-    	LOGGER.debug("Not ready");
+    if (selectors.length == 0 || null == items) {
+    	LOGGER.debug("Either there are no selectors or the component is not not configured");
     	return;
     }
-    if (selectors.length > 0 && ! getItems().isEmpty()) {
-    	readyToDisplay = true;
+    if (selectors.length > 0 && !getItems().isEmpty()) {
     	 LOGGER.debug("No of entries {}", getItems().size());
       final Iterator <SelectorExFragMap> itemIterator = items.iterator();
       while (itemIterator.hasNext()) {
