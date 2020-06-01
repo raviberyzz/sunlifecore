@@ -12,13 +12,8 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.PathNotFoundException;
-import javax.jcr.RepositoryException;
-import javax.jcr.ValueFormatException;
-
 import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -31,6 +26,9 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -81,10 +79,11 @@ public class MailServiceImpl implements MailService {
    * SlingHttpServletRequest)
    */
   @ Override
-  public String processHttpRequest(final SlingHttpServletRequest request) {
+  public JSONObject processHttpRequest(final SlingHttpServletRequest request) {
     LOG.trace("Inside MailServiceImpl:processHttpRequest");
-    final String cfPathSuffix = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data");
+    final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
     final int timeOut = 5000;
+    final String SPLITVAR = "_";
     String cfPath = "";
     String cfName = "";
     String fromEmailId = "";
@@ -94,9 +93,10 @@ public class MailServiceImpl implements MailService {
     String emailSubject = "";
     String emailBody = "";
     String fromEmailText = "";
-    String componentPath = "";
     String successPageUrl = "";
     String errorPageUrl = "";
+    JSONObject successResponse = null;
+    JSONObject errorResponse = null;
 
     // variable initialization - Ends
 
@@ -112,45 +112,48 @@ public class MailServiceImpl implements MailService {
         }
         // getting all request parameters - Ends
 
-        componentPath = requestParameters.get(":formstart");
-        toEmailId = requestParameters.get("email-id");
-        final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-        final Resource componentResource = resourceResolver.getResource(componentPath);
-        if (null != componentResource) {
-          LOG.debug("Got the component path {}", componentResource.getPath());
-          final Node componentNode = componentResource.adaptTo(Node.class);
-          if (null != componentNode && null != componentNode.getProperty("id")) {
-            cfName = componentNode.getProperty("id").getString();
-          }
-        }
-        // content fragment path
-        cfPath = mailConfig.getTemplatePath() + cfName + cfPathSuffix;
-        LOG.debug("cfPath {}", cfPath);
-        final Resource contentResource = request.getResourceResolver().getResource(cfPath);
-        if (null != contentResource) {
-          LOG.debug("Content Resource Path {}", contentResource.getPath());
-          final Node node = contentResource.adaptTo(Node.class);
-          if (null != node && node.hasNodes()) {
-            final NodeIterator ite = node.getNodes();
-            while (ite.hasNext()) {
-              final Node childNode = ite.nextNode();
-              fromEmailId = nullCheck(childNode.getProperty("from-email-id").getString());
-              ccEmailId = nullCheck(childNode.getProperty("cc-email-id").getString());
-              bccEmailId = nullCheck(childNode.getProperty("bcc-email-id").getString());
-              emailSubject = nullCheck(childNode.getProperty("subject-email").getString());
-              emailBody = nullCheck(childNode.getProperty("body-email").getString());
-              fromEmailText = nullCheck(childNode.getProperty("from-text-email").getString());
-              successPageUrl = nullCheck(childNode.getProperty("success-page-url").getString())
-                  + ".html";
-              errorPageUrl = nullCheck(childNode.getProperty("error-page-url").getString())
-                  + ".html";
-            }
-          }
-        }
-        resourceResolver.close();
+        cfName = requestParameters.get("cfname");
+        final String localeInfo = requestParameters.get("locale");
+        final String localeArray[] = StringUtils.lowerCase(localeInfo).split(SPLITVAR);
+        final String cfLocale = localeArray[1] + "/" + localeArray[0];
+        LOG.debug("Locale info is :: {}", cfLocale);
+	ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
+	// content fragment path
+	cfPath = mailConfig.getTemplatePath() + cfLocale + mailConfig.getTemplatePathSuffix() + cfName + cfNodePath;
+	LOG.debug("cfPath {}", cfPath);
+	Resource contentResource = request.getResourceResolver().getResource(cfPath);
+	if (null != contentResource) {
+	    LOG.debug("Content Resource Path {}", contentResource.getPath());
+	    final ValueMap mailContent = contentResource.getValueMap();
+	    fromEmailId = mailContent.containsKey("from-email-id")
+		    ? mailContent.get("from-email-id", String.class)
+		    : StringUtils.EMPTY;
+	    toEmailId = mailContent.containsKey("to-email-id") ? mailContent.get("to-email-id", String.class)
+		    : nullCheck(requestParameters.get("toEmailId"));
+	    ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
+		    : StringUtils.EMPTY;
+	    bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
+		    : StringUtils.EMPTY;
+	    emailSubject = mailContent.containsKey("subject-email")
+		    ? mailContent.get("subject-email", String.class)
+		    : StringUtils.EMPTY;
+	    emailBody = mailContent.containsKey("body-email") ? mailContent.get("body-email", String.class)
+		    : StringUtils.EMPTY;
+	    fromEmailText = mailContent.containsKey("from-text-email")
+		    ? mailContent.get("from-text-email", String.class)
+		    : StringUtils.EMPTY;
+	    successPageUrl = mailContent.containsKey("success-page-url")
+		    ? mailContent.get("success-page-url", String.class)
+		    : StringUtils.EMPTY;
+	    errorPageUrl = mailContent.containsKey("error-page-url")
+		    ? mailContent.get("error-page-url", String.class)
+		    : StringUtils.EMPTY;
+	}
+	resourceResolver.close();
+	
         final MustacheFactory mf = new DefaultMustacheFactory();
         final StringWriter writer = new StringWriter();
-        final Mustache mustache = mf.compile(new StringReader(emailBody), " ");
+        final Mustache mustache = mf.compile(new StringReader(nullCheck(emailBody)), " ");
         mustache.execute(writer, requestParameters);
         emailBody = writer.toString();
         // Mail API service
@@ -170,19 +173,16 @@ public class MailServiceImpl implements MailService {
         apiParameters.add(new BasicNameValuePair("slf-from-email-text", fromEmailText));
         apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
         post.setEntity(new UrlEncodedFormEntity(apiParameters));
+        LOG.debug("Trying to connect to mail API...");
         final HttpResponse emailResponse = client.execute(post);
         LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode()
             + " :: " + emailResponse.getStatusLine().getReasonPhrase());
-        return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successPageUrl
-            : errorPageUrl;
+        successResponse = modifyResponse(successPageUrl, mailConfig.getSuccessResponse());
+	errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
+	return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successResponse
+		: errorResponse;
 
       }
-    } catch (final PathNotFoundException pathEx) {
-      LOG.error("Exception occured :: Path not found {}", pathEx);
-    } catch (final ValueFormatException valEx) {
-      LOG.error("Exception occured :: Incorrect value format {}", valEx);
-    } catch (final RepositoryException repEx) {
-      LOG.error("Exception occured :: Repository not found {}", repEx);
     } catch (final IOException e) {
       LOG.error("Exception occured :: IOException {}", e);
     } catch (final LoginException e) {
@@ -210,7 +210,36 @@ public class MailServiceImpl implements MailService {
    * @return the string
    */
   public String nullCheck(final String value) {
-    return value != null ? value : "";
+    return value != null ? value : StringUtils.EMPTY;
+  }
+  
+  /**
+   * Modify response.
+   *
+   * @param url
+   *            the url
+   * @param osgiResponse
+   *            the osgi response
+   * @return the JSON object
+   */
+  public JSONObject modifyResponse(String url, String osgiResponse) {
+	JSONObject response = new JSONObject();
+	try {
+	    if (StringUtils.isEmpty(url)) {
+		response.put("type", "json");
+		response.put("response", osgiResponse);
+	    } else {
+		response.put("type", "url");
+		response.put("url", url.concat(".html"));
+	    }
+
+	    return response;
+
+	} catch (JSONException ex) {
+	    LOG.error("Error in modifying response :: " + ex);
+	}
+	return null;
+
   }
 
 }

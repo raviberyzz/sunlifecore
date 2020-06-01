@@ -95,7 +95,7 @@
                             fieldDescription="Body text"
                             fieldLabel="Body"
                             listOrder="1"
-                            maxlength="255"
+                            maxlength="10000"
                             metaType="text-single"
                             name="body-email"
                             renderReadOnly="false"
