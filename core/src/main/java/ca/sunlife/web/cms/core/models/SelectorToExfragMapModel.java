@@ -53,7 +53,7 @@ public class SelectorToExfragMapModel {
    * @return the items
    */
   public Collection <SelectorExFragMap> getItems() {
-    return Collections.unmodifiableCollection(items);
+    return null != items ? Collections.unmodifiableCollection(items) : null;
   }
 
   /**
@@ -75,14 +75,18 @@ public class SelectorToExfragMapModel {
     this.fragPath = fragPath;
   }
 
-  /**
+/**
    * Inits the.
    */
   @ PostConstruct
   public void init() {
-    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    LOGGER.debug("No of entries {}", getItems().size());
-    if (selectors.length > 0 && ! getItems().isEmpty()) {
+    String[] selectors = request.getRequestPathInfo().getSelectors();
+    if (selectors.length == 0 || null == items) {
+    	LOGGER.debug("Either there are no selectors or the component is not not configured");
+    	return;
+    }
+    if (selectors.length > 0 && !getItems().isEmpty()) {
+    	 LOGGER.debug("No of entries {}", getItems().size());
       final Iterator <SelectorExFragMap> itemIterator = items.iterator();
       while (itemIterator.hasNext()) {
         final SelectorExFragMap item = itemIterator.next();
@@ -91,6 +95,5 @@ public class SelectorToExfragMapModel {
         }
       }
     }
-
   }
 }
