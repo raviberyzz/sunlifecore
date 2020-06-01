@@ -6,11 +6,11 @@
     <sly data-sly-test="${layout.noc == '1'}">
         <sly data-sly-test="${layout.type == 'normal'}">
             <div class="col-xs-12 no-gutter">
-				<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-			</div>
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
         </sly>
-        <sly data-sly-test="${layout.type == 'site-notification'}" >
-            <div class="site-level-notification">
+        <sly data-sly-test="${layout.type == 'site-notification'}" > 
+            <div class="site-level-notification" id="${layout.siteNotificationId}">
                 <div class="close-div">
                     <span class="fa fa-remove collapse-x" tabindex="0" aria-label="${layout.closeText}">&nbsp;</span>
                 </div>
@@ -34,16 +34,16 @@
             </div>
         </sly>
         <sly data-sly-test="${layout.type == 'simple-popup'}">
-			<div class="${wcmmode.edit ? '' : 'modal fade subscribe-popup-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}"> 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
-					<div class="modal-body" tabindex="0">
-						<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-					</div>
-				</div>
-			</div>
-		</sly>
+            <div class="${wcmmode.edit ? '' : 'modal fade subscribe-popup-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}"> 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
+                    <div class="modal-body" tabindex="0">
+                        <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                    </div>
+                </div>
+            </div>
+        </sly>
     </sly>
     <sly data-sly-test="${layout.noc == '2'}" >
         <sly data-sly-test="${layout.type == '50:50'}">
@@ -137,7 +137,7 @@
                 <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
             </div>
         </sly>
-		<sly data-sly-test="${layout.type == 'footer'}">
+        <sly data-sly-test="${layout.type == 'footer'}">
             <div class="top-footer-section">
                 <div class="col-sm-4">
                     <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
