@@ -83,4 +83,12 @@ public interface LayoutContainerModal {
    */
   @ Inject
   String getFlexRequired();
+  
+  /**
+   * Gets the site notification id.
+   *
+   * @return the site notification id
+   */
+  @Inject
+  String getSiteNotificationId();
 }
