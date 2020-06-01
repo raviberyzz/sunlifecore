@@ -9,6 +9,7 @@
     height: auto;
     background: $light-grey-20;
     padding:24px 16px 0 16px;
+    z-index:2;
     .app-wrapper{
         font-size:1rem;
         font-weight:400;
@@ -60,6 +61,12 @@
             }
         }
     }
+}
+.top-not{
+    top:0!important;
+}
+.xf-content-height.xf-height{
+    min-height:auto;
 }
 .app-hide{
     display:none;
