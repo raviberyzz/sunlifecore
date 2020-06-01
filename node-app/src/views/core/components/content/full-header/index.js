@@ -57,24 +57,32 @@ $(document).ready(function () {
     function mobileHeader() {
         var $win = $(window);
         //when page is reloaded in the middle
-        if ($win.scrollTop() != 0){
-           $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
+        let height = 0;
+        //If site-level-notification exits and mobile header, then stick the site-level-notification to the top and have the mobile header stick following it.
+        if($('.site-level-notification').length > 0 && $('.site-level-notification').css('display') != "none" ){
+          $('.site-level-notification').css({'position':'fixed'});
+          $('.site-level-notification').css({'z-index':'2'});
+          $('.site-level-notification').css({'top':'0'});
+		  height = $('.site-level-notification').outerHeight();
+          $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': `${height}px` });
         }
         //on scroll
         $win.scroll(function () {
-            if ($win.scrollTop() == 0)
-               $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': 'auto' });
-            else {
-               $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': '0' });
-            }
+            if($('.site-level-notification').length == 0 || $('.site-level-notification').css('display') == "none" ){ height = 0; }
+            $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': `${height}px` });
         });
     };
-    if ($(window).width() < 1024) {
+    if ($(window).width() <= 1024) {
         $(mobileHeader);
     }
     $(window).resize(function () {
-        if ($(window).width() < 1024) {
+        if ($(window).width() <= 1024) {
             $(mobileHeader);
+        }else{
+            //Ipad pro switch from portrait to landscape - Switch back to desktop behavior
+            if($('.site-level-notification').length > 0 && $('.site-level-notification').css('display') != "none" ){
+                $('.site-level-notification').css({'position':'relative'});           
+            }
         }
     });
     if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
