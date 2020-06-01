@@ -272,6 +272,13 @@
     }
 }
 
+//from mobile to ipad&ipad-pro (not ipad pro since css is different for ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max){
+    .banner-section.home-page-hero-banner {
+        margin-top: 50px;
+    }
+}
+
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .banner-section {
         h1, h2, h3, h4, h5, h6 {
