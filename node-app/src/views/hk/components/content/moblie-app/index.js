@@ -473,13 +473,46 @@ $(document).ready(function(){
     
     },{"./bakery.js":1,"./detector.js":2,"./optionparser.js":4}]},{},[3]);
     /* existing js ends here*/
+    /* structure js starts here */
+    if($("#123")){
+      var title='My Sun Life HK Mobile app';
+      var author='Sun Life Financial';
+      var price='A one stop solution for Claim Submission';
+      var smartBannerId=$("#mobile-app-banner");
+      $(smartBannerId).addClass('smartbanner smartbanner--android js_smartbanner');
+      $(smartBannerId).empty();
+      $(smartBannerId).append(`
+      <div class="app-wrapper">
+        <a href="https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife" target="_blank"
+            class="captureClick">
+            <div class="smartbanner__icon">
+            </div>
+            <div class="smartbanner__info">
+                <div>
+                    <div class="smartbanner__info__title">${title}</div>
+                    <div class="smartbanner__info__author">${author}</div>
+                    <div class="smartbanner__info__price">${price}</div>
+                </div>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="smartbanner__exit js_smartbanner__exit close-smart fa fa-remove"></a>
+    </div>
+    <div class="java-button">
+        <a href="https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife" target="_blank"
+            class="smartbanner__button">
+            <span class="smartbanner__button__label">DOWNLOAD</span>
+        </a>
+    </div>
+      `);
+    }
+    /* structure js ends here */
     function checkCookie() {
         var user=getCookie("app_show");
         var show=true;
         var newTime=new Date();
         var newTime1=newTime.getTime();
-        if(sessionStorage.clickSession){
-            if(newTime1>sessionStorage.clickSession){
+        if(localStorage.clickSession){
+            if(newTime1>localStorage.clickSession){
                 show=true;
             }
             else{
@@ -510,7 +543,7 @@ $(document).ready(function(){
       function setCookie(cname,cvalue,minutes) {
         var exDate = new Date();
         exDate.setTime(exDate.getTime() + (minutes * 60 * 1000));
-        sessionStorage.clickSession=exDate.getTime();
+        localStorage.clickSession=exDate.getTime();
         var expires = "expires=" + exDate;
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;";
       }
