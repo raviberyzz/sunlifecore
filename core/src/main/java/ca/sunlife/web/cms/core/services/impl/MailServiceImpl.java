@@ -83,9 +83,9 @@ public class MailServiceImpl implements MailService {
     LOG.trace("Inside MailServiceImpl:processHttpRequest");
     final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
     final int timeOut = 5000;
-    final String SPLITVAR = "_";
     String cfPath = "";
     String cfName = "";
+    String cfLocale = "";
     String fromEmailId = "";
     String toEmailId = "";
     String ccEmailId = "";
@@ -113,10 +113,7 @@ public class MailServiceImpl implements MailService {
         // getting all request parameters - Ends
 
         cfName = requestParameters.get("cfname");
-        final String localeInfo = requestParameters.get("locale");
-        final String localeArray[] = StringUtils.lowerCase(localeInfo).split(SPLITVAR);
-        final String cfLocale = localeArray[1] + "/" + localeArray[0];
-        LOG.debug("Locale info is :: {}", cfLocale);
+        cfLocale = requestParameters.get("cfLocale");
 	ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
 	// content fragment path
 	cfPath = mailConfig.getTemplatePath() + cfLocale + mailConfig.getTemplatePathSuffix() + cfName + cfNodePath;
@@ -175,13 +172,10 @@ public class MailServiceImpl implements MailService {
         post.setEntity(new UrlEncodedFormEntity(apiParameters));
         LOG.debug("Trying to connect to mail API...");
         final HttpResponse emailResponse = client.execute(post);
-        LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode()
-            + " :: " + emailResponse.getStatusLine().getReasonPhrase());
+	LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode() + " :: " + emailResponse.getStatusLine().getReasonPhrase());
         successResponse = modifyResponse(successPageUrl, mailConfig.getSuccessResponse());
-	errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
-	return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successResponse
-		: errorResponse;
-
+        errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
+	return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successResponse : errorResponse;
       }
     } catch (final IOException e) {
       LOG.error("Exception occured :: IOException {}", e);
