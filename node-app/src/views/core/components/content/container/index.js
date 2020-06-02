@@ -125,20 +125,22 @@ $(document).ready(function () {
 	// }
 
 	var cta_icon_text = $('.no-padding .yellow-icon-white-background').children().find('.icon-text');
-	cta_icon_text.each(function (index) {
-		taeser_height = taeser_height > $(this).height() ? taeser_height : $(this).height();
+    function cta_height(){
+         var ctaHeight = 0;
+         cta_icon_text.each(function (index) {
+            $(this).css('height','fit-content');
+            ctaHeight = ctaHeight > $(this).outerHeight() ? ctaHeight : $(this).outerHeight();
+            $(this).outerHeight(ctaHeight);
 	});
-	cta_icon_text.each(function (index) {
-		$(this).height(taeser_height);
-
-	});
-
+    }
 	//CTA Padding FIX.
-
+    cta_height();
 	cta_padding_fix();
 
 	$(window).resize(function () {
-		cta_padding_fix();
+	   cta_padding_fix();
+       cta_height();
+
 	});
 
 	function cta_padding_fix() {
