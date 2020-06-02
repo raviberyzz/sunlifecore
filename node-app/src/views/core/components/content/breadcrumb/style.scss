@@ -45,6 +45,15 @@
             pointer-events: none;
           }
         }
+        li:last-child{
+          line-height:18px;
+          font-size:0.875rem;
+          a,span{
+            font-weight: 400;
+            color:$dark-grey-color;
+            font-size:0.875rem;
+          }
+        }
         &>li:not(:first-child):before {
           content: "\f105";
           font-weight: 400;
