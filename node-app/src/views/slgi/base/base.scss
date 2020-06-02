@@ -1,0 +1,8 @@
+@import 'core';
+
+a {
+  color: $dark-blue;
+  &:hover {
+    color: $dark-blue;
+  }
+}
