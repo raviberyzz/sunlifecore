@@ -101,7 +101,7 @@ class RestServiceImplTest {
     try {
       testResponse = restServiceImpl.callGetWebService(url);
       Assert.assertTrue(testResponse
-          .contains("<title>Sun Life | Life Insurance, Investments & Group Benefits</title>"));
+          .contains("<title>Life Insurance, Investments &amp; Group Benefits | Sun Life</title>"));
     } catch (Exception e) {
       Assert.assertNull(testResponse);
     }
