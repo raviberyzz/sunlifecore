@@ -475,9 +475,26 @@ $(document).ready(function(){
       /* existing js ends here*/
       /* structure js starts here */
       if($("#123")){
-        var title='My Sun Life HK Mobile app';
-        var author='Sun Life Financial';
-        var price='A one stop solution for Claim Submission';
+        var title='',author='',price='',downloadText='';
+        if($('html').attr('lang')=='zh-TW'){
+          /* Content for traditional chinese page */
+          title='My Sun Life HK 流動應用程式';
+          author='永明金融';
+          price='提供一站式遞交索償服務';
+          downloadText='下載';
+        }else if($('html').attr('lang')=='zh-SG'){
+          /* Content for simplified chinese page */
+          title='My Sun Life HK 流动应用程式';
+          author='永明金融';
+          price='提供一站式递交索偿服务';
+          downloadText='下载';
+        }else{
+          /* Content for english page */
+           title='My Sun Life HK Mobile app';
+           author='Sun Life Financial';
+           price='A one stop solution for Claim Submission';
+           downloadText='DOWNLOAD';
+        }
         var smartBannerId=$("#mobile-app-banner");
         $(smartBannerId).addClass('smartbanner smartbanner--android js_smartbanner');
         $(smartBannerId).empty();
@@ -488,11 +505,9 @@ $(document).ready(function(){
               <div class="smartbanner__icon">
               </div>
               <div class="smartbanner__info">
-                  <div>
-                      <div class="smartbanner__info__title">${title}</div>
-                      <div class="smartbanner__info__author">${author}</div>
-                      <div class="smartbanner__info__price">${price}</div>
-                  </div>
+                  <div class="smartbanner__info__title">${title}</div>
+                  <div class="smartbanner__info__author">${author}</div>
+                  <div class="smartbanner__info__price">${price}</div>
               </div>
           </a>
           <a href="javascript:void(0)" class="smartbanner__exit js_smartbanner__exit close-smart fa fa-remove"></a>
@@ -500,7 +515,7 @@ $(document).ready(function(){
       <div class="java-button">
           <a href="https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife" target="_blank"
               class="smartbanner__button">
-              <span class="smartbanner__button__label">DOWNLOAD</span>
+              <span class="smartbanner__button__label">${downloadText}</span>
           </a>
       </div>
         `);
@@ -574,7 +589,7 @@ $(document).ready(function(){
             $("#mobile-app-banner").parent().closest('.xf-content-height').css({'min-height':'auto'});
         }
         else{
-          if($(window).width()<768){
+          if($(window).width()<1440){
               $(target).addClass('top-not');
               mobileAppHeight(target);
           }
@@ -593,7 +608,7 @@ $(document).ready(function(){
               $("#mobile-app-banner").parent().closest('.xf-content-height').css({'min-height':'auto'});
           }
           else{         
-            if($(window).width()<768){
+            if($(window).width()<1440){
                 mobileAppHeight(target);
             }
             else{

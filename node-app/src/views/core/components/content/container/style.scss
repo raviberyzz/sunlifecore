@@ -50,8 +50,10 @@ ul {
 } 
 
 .no-padding .yellow-icon-white-background{
-    .cmp-text h2{
-        margin-top:16px;
+    .cmp-text {
+        h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6{
+            margin-top:16px;
+        }
     }
     .cmp-text > :last-child .primary-blue-button-rte{
         margin-top:14px;
@@ -1421,6 +1423,15 @@ ul {
     
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max) {
+    .cmp-contact-us{
+        .row{
+            .col-sm-4{
+                div.text:first-child{
+                    min-height: 150px;  // add height so second text section starts on same line
+                }
+            }
+        }
+    }
     .content-highlight {
         h1, h2, h3, h4, h5, h6 {
             font-size: 1.5rem;
@@ -1939,6 +1950,11 @@ ul {
 /*** vertical seperator 75 % **/
 @media (min-width: $tab-screen-min) {
     .cmp-contact-us {
+        .cmp-container{
+            .mb-20.text {
+                margin-bottom: 32px;
+            }
+        } 
         .layout-container{
             .container-component{
                 .primary-blue-button{
@@ -1950,9 +1966,9 @@ ul {
                 .row{
                     .col-sm-4{
                         .container-seperator-75:after{
-                            top: 12.5%;
+                            top: 9.5%;
                             bottom: 42.5%;
-                            left: 117%;
+                            left: 116%;
                         }
                     }
                 }
