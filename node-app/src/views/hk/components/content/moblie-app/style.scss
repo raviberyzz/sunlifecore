@@ -10,6 +10,7 @@
     background: $light-grey-20;
     padding:24px 16px 0 16px;
     z-index:2;
+    display: block;
     .app-wrapper{
         font-size:1rem;
         font-weight:400;
@@ -31,7 +32,7 @@
             }
         }
         .smartbanner__info{
-            width:81%;
+            width:76%;
             float:left;
             padding-left:8px;
             align-items: center;
@@ -74,8 +75,8 @@
 .app-hide{
     display:none;
 }
-@media (min-width:$tab-screen-min){
+/*@media (min-width:$tab-screen-min){
     .smartbanner{
         display:none;
     }
-}
+}*/
