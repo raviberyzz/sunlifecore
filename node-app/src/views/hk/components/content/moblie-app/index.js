@@ -505,11 +505,9 @@ $(document).ready(function(){
               <div class="smartbanner__icon">
               </div>
               <div class="smartbanner__info">
-                  <div>
-                      <div class="smartbanner__info__title">${title}</div>
-                      <div class="smartbanner__info__author">${author}</div>
-                      <div class="smartbanner__info__price">${price}</div>
-                  </div>
+                  <div class="smartbanner__info__title">${title}</div>
+                  <div class="smartbanner__info__author">${author}</div>
+                  <div class="smartbanner__info__price">${price}</div>
               </div>
           </a>
           <a href="javascript:void(0)" class="smartbanner__exit js_smartbanner__exit close-smart fa fa-remove"></a>
