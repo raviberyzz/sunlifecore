@@ -163,11 +163,6 @@
       
     > .separator + .layout-container {
         padding-top: 0;
-        .cmp-container{
-            div:first-child {
-                padding-top: 0;
-            }
-        }
     }
     }
     .legal-text{
@@ -337,6 +332,7 @@
             > div {
                 padding-bottom: 10px;
             }
+
         }
         .yellow-horizontal-separator{
             display: none;
@@ -436,6 +432,13 @@
             div{
                 padding-bottom:0px;
             }
+            > .separator + .layout-container {
+                .cmp-container{
+                    div:first-child {
+                        padding-top: 0;
+                    }
+                }
+            }
         }
     }
     .right-navigation-wrapper > {
@@ -457,6 +460,13 @@
        > .cmp-container{
             margin: 0 0 0 -10px;
             width: calc(100% + 20px);
+            > .separator + .layout-container {
+                .cmp-container{
+                    div:first-child {
+                        padding-top: 0;
+                    }
+                }
+            }
         }
         .cmp-container {
             .embed,.text{
