@@ -116,7 +116,7 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
     try {
         let hostname=window.location.hostname;
         let path="/content/dam/sunlife/legacy/assets/hk/hk-premiumRates.properties?logActivity=true";
-        let url='https://'.concat(hostname).concat(path);
+        let url='//'.concat(hostname).concat(path);
         var content='';
         function readTextFile(file){
             var rawFile = new XMLHttpRequest();
