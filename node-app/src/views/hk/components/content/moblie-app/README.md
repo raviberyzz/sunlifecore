@@ -1,5 +1,5 @@
-#Mobile APP Component
-#Displays Mobile APP HK
+#Mobile App Component
+#Displays Mobile App HK
 JSON Format
 ```
 {
