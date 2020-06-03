@@ -1,11 +1,12 @@
 @import '../../../base/core';
+@import '../../../../core/components/content/breadcrumb/style';
 
-// .breadcrumb-wrapper-brown {
-//   @extend  .breadcrumb-wrapper-light-cool-blue;         /* Extend from main breadcrumb css style */ 
-//   background-color: $white-smoke; /* White Smoke */
-//   .social-link-icon-wrapper {
-//     .icon-style{
-//         color: $dark-blue;
-//       }
-//   }
-// }
+.breadcrumb-wrapper-blue {
+  @extend  .breadcrumb-wrapper-light-cool-blue;         /* Extend from main breadcrumb css style */ 
+  background-color: $white-smoke; /* White Smoke */
+  .social-link-icon-wrapper {
+    .icon-style{
+        color: $dark-blue;
+      }
+  }
+}
