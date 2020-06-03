@@ -65,6 +65,11 @@ body:lang(zh-TW) {
         font-size: 0.75rem;
         line-height: 120%;
     }
+    .slf-mobile-header-wrapper{
+        .mobile-signin-text{
+            width:max-content;
+        }
+    }
 }
 body:lang(zh-SG) {
     font-family: 'Noto Sans SC' !important;
@@ -131,5 +136,10 @@ body:lang(zh-SG) {
     .legal-text{
         font-size: 0.75rem;
         line-height: 120%;
+    }
+    .slf-mobile-header-wrapper{
+        .mobile-signin-text{
+            width:max-content;
+        }
     }
 }
