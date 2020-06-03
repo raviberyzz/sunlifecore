@@ -69,11 +69,22 @@
 			}
 			.right-item{
 					padding-bottom: 40px;
+					
+					.read-more-grey-border-left{
+						display:none;
+						border-bottom: none !important;
+					}
+					.read-more-grey-border-right{
+						border-top: 1px solid $light-grey-color;
+						width: 70% !important;
+						display: inline-block !important;
+						margin: 2px;
+					}
 				}	
 		}
 	}
 }
-#firstClientStory, #secondClientStory, #thirdClientStory {
+#firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal {
 	.modal-content {
 		.modal-header {
 			background-color: $white-shade;
@@ -265,11 +276,25 @@
 					height: 220px;
 				}
 			}
+			.right-item {
+				.read-more-grey-border-left {
+					border-top: 1px solid $light-grey-color !important;
+					width: 28% !important;
+					display: inline-block !important;
+					margin: 3px;
+				}
+				.read-more-grey-border-right {
+					border-top: 1px solid $light-grey-color !important;
+					width: 28% !important;
+					display: inline-block !important;
+					margin: 3px;
+				}
+			}
 		}
 	}
 }
 @media (min-width: 1025px) {
-	#firstClientStory, #secondClientStory, #thirdClientStory{
+	#firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal{
 		height: auto !important;
 	}
 }
