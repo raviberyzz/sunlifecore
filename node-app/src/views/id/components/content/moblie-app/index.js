@@ -476,26 +476,12 @@ $(document).ready(function(){
       /* structure js starts here */
       if($("#123")){
         var title='',author='',price='',downloadText='';
-        let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife';
-        if($('html').attr('lang')=='zh-TW'){
-          /* Content for traditional chinese page */
-          title='My Sun Life HK 流動應用程式';
-          author='永明金融';
-          price='提供一站式遞交索償服務';
-          downloadText='下載';
-        }else if($('html').attr('lang')=='zh-SG'){
-          /* Content for simplified chinese page */
-          title='My Sun Life HK 流动应用程式';
-          author='永明金融';
-          price='提供一站式递交索偿服务';
-          downloadText='下载';
-        }else{
-          /* Content for english page */
-           title='My Sun Life HK Mobile app';
-           author='Sun Life Financial';
-           price='A one stop solution for Claim Submission';
-           downloadText='DOWNLOAD';
-        }
+        let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.id.clientapp&hl=in';
+        /* Content for english  and bhasa page */
+          title='my Sun Life';
+          author='Sun Life Financial';
+          price='&nbsp;Free';
+          downloadText='Download';
         var smartBannerId=$("#mobile-app-banner");
         $(smartBannerId).addClass('smartbanner smartbanner--android js_smartbanner');
         $(smartBannerId).empty();
