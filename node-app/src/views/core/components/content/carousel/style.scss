@@ -76,7 +76,7 @@
 					}
 					.read-more-grey-border-right{
 						border-top: 1px solid $light-grey-color;
-						width: 70% !important;
+						width: calc(100% - 120px);
 						display: inline-block !important;
 						margin: 2px;
 					}
