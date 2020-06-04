@@ -6,7 +6,6 @@ $(document).ready(function () {
           updateSignInForm('form_signon');        
     });*/
 	//Added for disabling sign call to sunnet
-	$('#signin-widget-modal').unbind("on");
     $('#signin-widget-modal').unbind("shown.bs.modal");
     $('#signin-widget-modal').off('show.bs.modal');
     function modalWidth(){
