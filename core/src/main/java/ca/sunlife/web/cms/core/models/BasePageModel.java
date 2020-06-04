@@ -816,8 +816,7 @@ public class BasePageModel {
     customMetadata.put(TWITTER_URL, seoCanonicalUrl);
     customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
     customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
-    customMetadata.put(OG_LOCALE,
-        null != locale ? locale.replace("_", "-").toLowerCase(Locale.ROOT) : null);
+    customMetadata.put(OG_LOCALE, locale);
     if (socialMediaImage != null) {
       customMetadata.put(OG_IMAGE, domain + socialMediaImage);
       customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
