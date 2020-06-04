@@ -92,10 +92,10 @@ function stickyHeader(){
 function mobileDisplay() {
   if (window.innerWidth <= 767 && $('.mobile-header-navbar').length) {
     //If left column is not already dropped (Prevents duplicate trigger on orientation change from landscape to portrait or re-opening the modal)
-    if($(".cmp-table-comparision table tbody tr th:first-child").css("display") != "none"){
+    if($(".cmp-table-comparision table tbody tr *:first-child").css("display") != "none"){
       //Row titles are repeated across the rows to accommodate for small screen sizes.
       $(".cmp-table-comparision table tbody tr + tr").each(function (index) {
-        $('<div class="mobileTableTitles">' + $(this).find("th").html() + '</div><br>').prependTo($(this).children().not(":first-child"));
+        $('<div class="mobileTableTitles">' + $(this).find("th,td").html() + '</div><br>').prependTo($(this).children().not(":first-child"));
       });
 
       // left column is dropped

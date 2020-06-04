@@ -3,6 +3,28 @@ $(document).ready(function () {
     $(window).resize(function () {
 		life_moments_fix();
     });
+
+  function validate(){
+            var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
+              var postalVal = $('.yellow-icon-white-background #locate-advisors .home-cta-form-wrapper .cmp-form-text #consumerPC').val();
+              var regEx = /^[A-Za-z]\d[A-Za-z][ ]?\d[A-Za-z]\d$/;
+               var valid = regEx.test(postalVal);
+            if(!valid){
+            var increasedHeight = layoutHeight + 58;
+             $('.yellow-background-wrapper').css('padding-top',increasedHeight);
+            } else {
+                var layoutHeight=$('.yellow-background-wrapper').siblings('.layout-container').height();
+                var reducedHeight = layoutHeight-58;
+                  $('.yellow-background-wrapper').css('padding-top',reducedHeight);
+            }
+        }
+
+     $('.home-cta-form-wrapper .cmp-form-text #consumerPC').on('input',function(){
+           validate();
+        }) 
+    $('.yellow-icon-white-background #locate-advisors .home-cta-form-wrapper #locate-advisors-btn').on('click', function(){
+        validate();
+    })
     $('.blue-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){
         var text=$(this).text();
         var lastWord=text.split(" ").pop();
