@@ -51,7 +51,7 @@ $(document).ready(function () {
     // Region and language menu analytics starts here
         $('#language-btn').click(function(){
             if($(this).attr('aria-expanded') == "false"){
-            utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+            utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
             //   console.log("language panel expansion event tracked sucessfully");
     
         }
@@ -150,7 +150,7 @@ $(document).ready(function () {
     $('.navigation-menu.language-region').click(function(){
         //console.log("Inside languagepanelmobile.");
         if($('.navigation-menu.language-region .second-level-navigation').hasClass('active')){
-            utag.link({"asset_type"	: "Module","asset_title"	: "Language Panel","event_type"	: "On Page Impression","event_title"	: "Language Panel Expansion","page_section" : "Language Bar" });
+            utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
             //console.log("Event fired for mobile lang pannel expansion");
         }
     });
