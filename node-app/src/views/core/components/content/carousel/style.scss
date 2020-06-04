@@ -44,7 +44,7 @@
   }
 
   /* client story specific styles starts */
-.carousel {
+.carousel-client-story {
 	padding-bottom: 50px;
 	.cmp-carousel__content {
 		.teaser {
@@ -223,7 +223,7 @@
 			transform: inherit;
 		}
 	}
-	.carousel {
+	.carousel-client-story {
 		.middle-aligned-text {
 			.right-image-position {
 				display: block;
@@ -237,7 +237,7 @@
 	}
 }
 @media (min-width: 767px) {
-	.carousel {
+	.carousel-client-story {
 		.cmp-carousel__content {
 			.teaser {
 				.left-item {
@@ -267,7 +267,7 @@
 			}
 		}
 	}
-	.carousel {
+	.carousel-client-story {
 		.teaser {
 			.image-text-wrapper {
 				padding: 0;
