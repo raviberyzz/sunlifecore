@@ -289,7 +289,18 @@
 				}
 			}
 		}
-	}
+  }
+  .carousel {
+    .life-moment-second-level-banner {
+      .image-text-wrapper {
+        .text-section {
+          h3 {
+            padding-bottom: 14px;
+          }
+        }
+      }
+    }
+  } // fix for life moments h3 bottom spacing
 }
 @media (min-width: 1025px) {
 	#firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal{
