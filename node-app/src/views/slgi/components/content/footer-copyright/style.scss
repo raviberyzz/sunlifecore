@@ -1,0 +1,19 @@
+@import '../../../base/core';
+.footer-copyright-wrapper{
+  background-color: $dark-blue;
+}
+
+/* Tablet Only Styles Start*/
+@media (min-width: $tab-screen-min){
+  .footer-copyright-wrapper{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+}
+/* Tablet Only Styles End */
+
+/* Mobile Only Styles Start*/
+@media (max-width: $mobile-screen-max){
+}
+/* Mobile Only Styles End*/
