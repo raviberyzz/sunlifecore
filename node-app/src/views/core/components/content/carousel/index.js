@@ -19,21 +19,21 @@
     };
 
     /** client story specific code starts **/
-    $(".left-item a").each(function( index ) { $(this).attr('data-target', $(this).attr('href'));  });
+    $(".carousel-client-story .left-item a").each(function( index ) { $(this).attr('data-target', $(this).attr('href'));  });
 
     var desktopmodeon=true;
 	
 	function openDialogSliderBasedOnScreen(){
 		if($(window).width() >= 1068){
 				desktopmodeon = true;
-				$(".cmp-carousel__item").each(function( index ) {
+				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
                     $("#dynamicslideUp").remove(); 
 					$( this ).find("a").attr("data-toggle","modal"); //allows dialog to open
 				});
 				
 			}else if($(window).width() < 1068){
 				desktopmodeon = false;
-				$(".cmp-carousel__item").each(function( index ) {
+				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
                     if($(this).hasClass('cmp-carousel__item--active')){
 					$( this ).find("a").removeAttr("data-toggle");  //prevent dialog from opening
                     generateSliderIfTabletOrMobile();
@@ -49,7 +49,7 @@
 	remove slider if previously present 
 	**/
 	function generateSliderIfTabletOrMobile(){
-				$(".cmp-carousel__item").each(function( index ) {
+				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
 					var currentitem= $(this);
 					if(desktopmodeon === false){
 						$( this ).find("a").unbind('click');
@@ -100,7 +100,7 @@
 
 
     	//remove the linkage whenever a carousel item is selected.
-	$('.cmp-carousel__indicators li').on('click', function(){ 
+	$('.carousel-client-story .cmp-carousel__indicators li').on('click', function(){ 
 		console.log(desktopmodeon);
 		if(!desktopmodeon){
 			console.log($(this).index());
@@ -133,7 +133,7 @@
 		}
 	 });
 
-    $('.carousel .teaser .left-image-position').click(function(){
+    $('.carousel-client-story .teaser .left-image-position').click(function(){
         openDialogSliderBasedOnScreen();
         });
     /** Client Stories code ends **/

@@ -44,7 +44,7 @@
   }
 
   /* client story specific styles starts */
-.carousel {
+.carousel-client-story {
 	padding-bottom: 50px;
 	.cmp-carousel__content {
 		.teaser {
@@ -69,11 +69,22 @@
 			}
 			.right-item{
 					padding-bottom: 40px;
+					
+					.read-more-grey-border-left{
+						display:none;
+						border-bottom: none !important;
+					}
+					.read-more-grey-border-right{
+						border-top: 1px solid $light-grey-color;
+						width: calc(100% - 120px);
+						display: inline-block !important;
+						margin: 2px;
+					}
 				}	
 		}
 	}
 }
-#firstClientStory, #secondClientStory, #thirdClientStory {
+#firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal {
 	.modal-content {
 		.modal-header {
 			background-color: $white-shade;
@@ -212,21 +223,19 @@
 			transform: inherit;
 		}
 	}
-	.carousel {
+	.carousel-client-story {
 		.middle-aligned-text {
 			.right-image-position {
 				display: block;
 			}
-		}
-	}
-	.middle-aligned-text {
-		.left-image-position {
-			display: block;
+			.left-image-position {
+				display: block;
+			}
 		}
 	}
 }
 @media (min-width: 767px) {
-	.carousel {
+	.carousel-client-story {
 		.cmp-carousel__content {
 			.teaser {
 				.left-item {
@@ -256,7 +265,7 @@
 			}
 		}
 	}
-	.carousel {
+	.carousel-client-story {
 		.teaser {
 			.image-text-wrapper {
 				padding: 0;
@@ -265,11 +274,36 @@
 					height: 220px;
 				}
 			}
+			.right-item {
+				.read-more-grey-border-left {
+					border-top: 1px solid $light-grey-color !important;
+					width: 28% !important;
+					display: inline-block !important;
+					margin: 3px;
+				}
+				.read-more-grey-border-right {
+					border-top: 1px solid $light-grey-color !important;
+					width: 28% !important;
+					display: inline-block !important;
+					margin: 3px;
+				}
+			}
 		}
-	}
+  }
+  .carousel {
+    .life-moment-second-level-banner {
+      .image-text-wrapper {
+        .text-section {
+          h3 {
+            padding-bottom: 14px;
+          }
+        }
+      }
+    }
+  } // fix for life moments h3 bottom spacing
 }
 @media (min-width: 1025px) {
-	#firstClientStory, #secondClientStory, #thirdClientStory{
+	#firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal{
 		height: auto !important;
 	}
 }

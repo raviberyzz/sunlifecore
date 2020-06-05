@@ -136,7 +136,7 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
     try {
         let hostname=window.location.hostname;
         let path="/content/dam/sunlife/legacy/assets/id/id-premiumRates.properties"; // ?logActivity=true
-        let url='https://'.concat(hostname).concat(path);
+        let url='//'.concat(hostname).concat(path);
         var content='';
         function readTextFile(file){
             var rawFile = new XMLHttpRequest();

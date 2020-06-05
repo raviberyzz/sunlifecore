@@ -616,15 +616,15 @@
 
 // IE specific css
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    @media (min-width: $desktop-screen-min){
-        .teaser.banner-section {
-            .right-image-position {
-                .left-item.text-section {
-                    top: 20%;
-                }
-            }
-        }        
-    }
+    // @media (min-width: $desktop-screen-min){
+    //     .teaser.banner-section {
+    //         .right-image-position {
+    //             .left-item.text-section {
+    //                 top: 20%;
+    //             }
+    //         }
+    //     }        
+    // }
 
     .bottom-aligned-text {
         .right-image-position, .left-image-position  {

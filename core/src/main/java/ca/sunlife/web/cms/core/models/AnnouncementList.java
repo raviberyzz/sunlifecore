@@ -684,7 +684,7 @@ public class AnnouncementList {
     }
     LOGGER.debug("yearsToShow :: {}", yearsToShow);
 
-    activeYear = year;
+    activeYear = Integer.parseInt(currentPage.getPath().substring(currentPage.getPath().lastIndexOf(slash) + 1));
 
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
     if (selectors.length > 0) {

@@ -128,7 +128,15 @@
 															<user-icon
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="user-icon"
-                                                                text="Sign In Button"/>	
+                                                                text="Sign In Button"/>
+                                                            <grey-border-left
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="read-more-grey-border-left"
+                                                                text="Grey Border Left"/>
+                                                            <grey-border-right
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="read-more-grey-border-right"
+                                                                text="Grey Border Right"/>	
                                                         </styles>
                                                     </styles>
                                                     <format
