@@ -1,4 +1,34 @@
 @import '../../../base/core';
+#form_signon{  
+    .help-block:before, .arrow-help-block:before {
+        content: '\f12a';
+        font-family: FontAwesome;
+        color: #fff;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .help-block {
+        margin-bottom: 10px;
+    }
+    .help-block, .arrow-help-block {
+        background: #b81f41;
+        color: #fff !important;
+        position: relative;
+        min-height: 48px;
+        top: 6px;
+        padding: 10px 10px 4px 17px;
+        text-align: left;
+    }
+    [type="checkbox"]:disabled + label {
+        color: #757575;
+        opacity: 0.4;
+    }
+    [type="checkbox"]:disabled{
+        color: #757575;
+        opacity: 0.4;
+    }
+}
 
 .sign-in-modal-wrapper {
     //styles for contigency-widget for signin
