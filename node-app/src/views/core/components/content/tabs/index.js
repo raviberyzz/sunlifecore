@@ -13,7 +13,11 @@ $(document).ready(function(){
 		}
 		else if ($(this).attr('aria-expanded') == 'false') {
 			$(this).attr('aria-expanded', true);
-		}
+    }
+    if (window.innerWidth < 768) {
+      $([document.documentElement, document.body]).animate({
+        scrollTop: $(this).parent().offset().top - 50 },1);
+    }
     });
 
   function set_active(tab)
