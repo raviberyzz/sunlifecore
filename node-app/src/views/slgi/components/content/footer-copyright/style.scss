@@ -1,0 +1,14 @@
+@import '../../../base/core';
+.footer-copyright-wrapper{
+  background-color: $dark-blue;
+}
+
+/* Tablet Only Styles Start*/
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+}
+/* Tablet Only Styles End */
+
+/* Mobile Only Styles Start*/
+@media (max-width: $mobile-screen-max){
+}
+/* Mobile Only Styles End*/

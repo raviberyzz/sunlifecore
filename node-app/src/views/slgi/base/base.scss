@@ -6,3 +6,33 @@ a {
     color: $dark-blue;
   }
 }
+
+/* Footer Styles */
+#mainfooter{
+  background-color: $white-smoke;
+  .row[data-section="footer-middle-layer"] {
+    > div {
+      border-top: 1px solid $white-shade;
+      &:last-child{
+        .lists-wrapper .links a{ 
+              pointer-events: none;
+              cursor: default;
+              text-decoration: none;
+              color: $font-color;
+        }
+      }
+    }
+  }
+}
+
+/* Not mobile styles starts here */
+@media (min-width: $tab-screen-min){
+  #mainfooter{
+    .social-link-icon-wrapper {
+      ul {
+        transform: none;
+      }
+    }   
+  }
+}
+/* Not mobile styles starts here */
