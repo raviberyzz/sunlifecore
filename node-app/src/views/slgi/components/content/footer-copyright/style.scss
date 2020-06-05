@@ -4,7 +4,12 @@
 }
 
 /* Tablet Only Styles Start*/
-@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+@media (min-width: $tab-screen-min){
+  .footer-copyright-wrapper{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    width: 100%;
+  }
 }
 /* Tablet Only Styles End */
 
