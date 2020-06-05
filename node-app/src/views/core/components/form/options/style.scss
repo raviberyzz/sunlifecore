@@ -144,3 +144,21 @@ input[type=radio] {
     }
    
 }
+
+.captcha-wrapper {
+    border: 1px solid $light-grey-shade;
+    margin-left: 1px;
+    padding: 15px 0 15px 15px;
+    background-color: $captcha-background-color;
+    margin-bottom: 10px;
+    width:35% !important;
+    }
+.captcha-wrapper legend {
+    display:none;
+}
+@media (max-width: $mobile-screen-max) {
+    .captcha-wrapper {
+        width:60% !important;
+    }
+    
+}

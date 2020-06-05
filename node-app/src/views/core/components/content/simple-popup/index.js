@@ -18,3 +18,6 @@ $(document).ready(function () {
   //   $("#subscribe").modal({show:true});
 
 });
+
+//For Lead gen modal dismiss
+$("#myModal .modal-body .button").click(function(){$("#myModal").hide()});
