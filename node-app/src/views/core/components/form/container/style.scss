@@ -669,10 +669,15 @@
         height: 100px;
         border: 1px solid $medium-grey-background; 
     }
-    .lead-gen-wrapper input[type="date"]
+    input[type=date]
     {
         width: 100%;
     }
+    input[type=email]
+    {
+        width: 100%;
+        max-width:100%;
+    }   
     .text .cmp-text p {
         margin-bottom:0;
     }
