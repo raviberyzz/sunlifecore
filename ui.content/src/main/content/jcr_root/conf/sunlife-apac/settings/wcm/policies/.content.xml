@@ -1623,7 +1623,18 @@
 								jcr:title="Carousel"
 								sling:resourceType="wcm/core/components/policy/policy"
 								components="/apps/sunlife/apac/hk/components/content/teaser">
-								<jcr:content jcr:primaryType="nt:unstructured"/>                            
+								<jcr:content jcr:primaryType="nt:unstructured"/> 
+								<cq:styleGroups jcr:primaryType="nt:unstructured">
+                                    <item0 jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="carousel-wrapper carousel-client-story"
+                                                cq:styleId="1591272701516"
+                                                cq:styleLabel="Client Story"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item0>
+                                </cq:styleGroups>                           
 							</policy_carousel>
 						</carousel> 
 						<tabs jcr:primaryType="nt:unstructured">
@@ -3525,7 +3536,18 @@
 								jcr:title="Carousel"
 								sling:resourceType="wcm/core/components/policy/policy"
 								components="/apps/sunlife/apac/id/components/content/teaser">
-								<jcr:content jcr:primaryType="nt:unstructured"/>                            
+								<jcr:content jcr:primaryType="nt:unstructured"/>
+								<cq:styleGroups jcr:primaryType="nt:unstructured">
+                                    <item0 jcr:primaryType="nt:unstructured">
+                                        <cq:styles jcr:primaryType="nt:unstructured">
+                                            <item0
+                                                cq:styleClasses="carousel-wrapper carousel-client-story"
+                                                cq:styleId="1591272701515"
+                                                cq:styleLabel="Client Story"
+                                                jcr:primaryType="nt:unstructured"/>
+                                        </cq:styles>
+                                    </item0>
+                                </cq:styleGroups>                            
 							</policy_carousel>
 						</carousel>      
 						<tabs jcr:primaryType="nt:unstructured">

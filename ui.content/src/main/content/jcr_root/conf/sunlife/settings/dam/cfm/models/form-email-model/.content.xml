@@ -4,8 +4,6 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:lastModified="{Date}2020-03-19T19:41:48.333+05:30"
-        cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/form-email-model/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
@@ -22,13 +20,11 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
-                    jcr:lastModified="{Date}2020-03-19T19:41:48.333+05:30"
-                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="21">
+                        maxGeneratedOrder="22">
                         <_x0031_584340062413
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -50,30 +46,6 @@
                             maxlength="255"
                             metaType="text-single"
                             name="to-email-id"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string"/>
-                        <_x0031_584340149052
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldDescription="CC for email ID in forms."
-                            fieldLabel="CC"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="cc-email-id"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string"/>
-                        <_x0031_584340204587
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldDescription="BCC for email in forms."
-                            fieldLabel="BCC"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="bcc-email-id"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
@@ -101,15 +73,62 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-                        <_x0031_584340353276
+                        <_x0031_591258180113
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            fieldDescription="Does the content fragment include mail to client?"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="isClient"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Mail to Client?"
+                            valueType="boolean"/>
+                        <_x0031_584340149052
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldDescription="From text for email in forms."
-                            fieldLabel="From text"
+                            fieldDescription="Subject for Client Email"
+                            fieldLabel="Client Subject"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
-                            name="from-text-email"
+                            name="client-subject-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584340204587
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Email Body for Client"
+                            fieldLabel="Client Body"
+                            listOrder="1"
+                            maxlength="10000"
+                            metaType="text-single"
+                            name="client-body-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_591272496905
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Subject for error mail sent to Marketing team"
+                            fieldLabel="Error Subject"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="error-subject-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_591272574880
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Body of error mail sent to Marketing team"
+                            fieldLabel="Error Body"
+                            listOrder="22"
+                            maxlength="10000"
+                            metaType="text-single"
+                            name="error-body-email"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
@@ -131,7 +150,7 @@
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
                             fieldLabel="Error Page"
                             filter="hierarchy"
-                            listOrder="21"
+                            listOrder="8"
                             metaType="reference"
                             name="error-page-url"
                             nameSuffix="contentReference"

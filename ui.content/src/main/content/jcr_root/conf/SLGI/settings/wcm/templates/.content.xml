@@ -3,4 +3,5 @@
     jcr:primaryType="cq:Page">
     <slgi-content-page/>
     <slgi-home-page/>
+	<slgi-experience-fragment/>
 </jcr:root>

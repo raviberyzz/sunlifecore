@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang.StringUtils;
@@ -51,57 +52,65 @@ import ca.sunlife.web.cms.core.services.MailService;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = MailService.class, immediate = true)
-@ Designate (ocd = MailConfig.class)
+@Component(service = MailService.class, immediate = true)
+@Designate(ocd = MailConfig.class)
 
 public class MailServiceImpl implements MailService {
 
-  /** The Constant serialVersionUID. */
-  private static final long serialVersionUID = 1L;
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 1L;
 
-  /** The Constant LOG. */
-  private static final Logger LOG = LoggerFactory.getLogger(MailServiceImpl.class);
+    /** The Constant LOG. */
+    private static final Logger LOG = LoggerFactory.getLogger(MailServiceImpl.class);
 
-  /** The mail config. */
-  private MailConfig mailConfig;
+    /** The mail config. */
+    private MailConfig mailConfig;
 
-  /** The http client builder factory. */
-  @ Reference
-  private HttpClientBuilderFactory httpClientBuilderFactory;
+    /** The http client builder factory. */
+    @Reference
+    private HttpClientBuilderFactory httpClientBuilderFactory;
 
-  /** The core resource resolver. */
-  @ Reference
-  private CoreResourceResolver coreResourceResolver;
+    /** The core resource resolver. */
+    @Reference
+    private CoreResourceResolver coreResourceResolver;
 
-  /*
-   * (non-Javadoc)
-   * @see ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.sling.api.
-   * SlingHttpServletRequest)
-   */
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.
+     * sling.api. SlingHttpServletRequest)
+     */
+    private final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
+    private static final int TIMEOUT = 5000;
+    private String fromEmailId = "";
+    private String toEmailId = "";
+    private String emailSubject = "";
+    private String emailBody = "";
+    private String isClient = "";
+    private String clientToEmailId = "";
+    private String clientEmailSubject = "";
+    private String clientEmailBody = "";
+    private String errorEmailSubject = "";
+    private String errorEmailBody = "";
+    private String successPageUrl = "";
+    private String errorPageUrl = "";
+    
+    
   @ Override
   public JSONObject processHttpRequest(final SlingHttpServletRequest request) {
     LOG.trace("Inside MailServiceImpl:processHttpRequest");
-    final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
-    final int timeOut = 5000;
+    
     String cfPath = "";
     String cfName = "";
     String cfLocale = "";
-    String fromEmailId = "";
-    String toEmailId = "";
-    String ccEmailId = "";
-    String bccEmailId = "";
-    String emailSubject = "";
-    String emailBody = "";
-    String fromEmailText = "";
-    String successPageUrl = "";
-    String errorPageUrl = "";
+    HttpResponse mailResponse = null;
     JSONObject successResponse = null;
     JSONObject errorResponse = null;
 
-    // variable initialization - Ends
-
     try {
       if (null != request) {
+        
         // getting all request parameters - Starts
         final Enumeration <String> requestParameterNames = request.getParameterNames();
         LOG.debug("Request parameters {}", requestParameterNames);
@@ -126,18 +135,23 @@ public class MailServiceImpl implements MailService {
 		    ? mailContent.get("from-email-id", String.class)
 		    : StringUtils.EMPTY;
 	    toEmailId = mailContent.containsKey("to-email-id") ? mailContent.get("to-email-id", String.class)
-		    : nullCheck(requestParameters.get("toEmailId"));
-	    ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
 		    : StringUtils.EMPTY;
-	    bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
+	    clientToEmailId = nullCheck(requestParameters.get("slf-leadgen-email-address"));
+	    isClient = mailContent.containsKey("isClient") ? mailContent.get("isClient", String.class)
+		    : StringUtils.EMPTY;
+	    clientEmailSubject = mailContent.containsKey("client-subject-email") ? mailContent.get("client-subject-email", String.class)
+		    : StringUtils.EMPTY;
+	    clientEmailBody = mailContent.containsKey("client-body-email") ? mailContent.get("client-body-email", String.class)
 		    : StringUtils.EMPTY;
 	    emailSubject = mailContent.containsKey("subject-email")
 		    ? mailContent.get("subject-email", String.class)
 		    : StringUtils.EMPTY;
 	    emailBody = mailContent.containsKey("body-email") ? mailContent.get("body-email", String.class)
 		    : StringUtils.EMPTY;
-	    fromEmailText = mailContent.containsKey("from-text-email")
-		    ? mailContent.get("from-text-email", String.class)
+	    errorEmailSubject = mailContent.containsKey("error-subject-email")
+		    ? mailContent.get("error-subject-email", String.class)
+		    : StringUtils.EMPTY;
+	    errorEmailBody = mailContent.containsKey("error-body-email") ? mailContent.get("error-body-email", String.class)
 		    : StringUtils.EMPTY;
 	    successPageUrl = mailContent.containsKey("success-page-url")
 		    ? mailContent.get("success-page-url", String.class)
@@ -148,75 +162,117 @@ public class MailServiceImpl implements MailService {
 	}
 	resourceResolver.close();
 	
-        final MustacheFactory mf = new DefaultMustacheFactory();
-        final StringWriter writer = new StringWriter();
-        final Mustache mustache = mf.compile(new StringReader(nullCheck(emailBody)), " ");
-        mustache.execute(writer, requestParameters);
-        emailBody = writer.toString();
-        // Mail API service
-        final HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
-        final RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(timeOut)
-            .setSocketTimeout(timeOut).build();
-        builder.setDefaultRequestConfig(requestConfig);
-        final HttpClient client = builder.build();
-        final HttpPost post = new HttpPost(mailConfig.getApiUrl());
-        final List <BasicNameValuePair> apiParameters = new ArrayList <>(1);
-        apiParameters.add(new BasicNameValuePair("slf-from-email-address", fromEmailId));
-        apiParameters.add(new BasicNameValuePair("slf-to-email-address", toEmailId));
-        apiParameters.add(new BasicNameValuePair("slf-cc-email-address", ccEmailId));
-        apiParameters.add(new BasicNameValuePair("slf-bcc-email-address", bccEmailId));
-        apiParameters.add(new BasicNameValuePair("slf-email-subject", emailSubject));
-        apiParameters.add(new BasicNameValuePair("slf-email-body", emailBody));
-        apiParameters.add(new BasicNameValuePair("slf-from-email-text", fromEmailText));
-        apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
-        post.setEntity(new UrlEncodedFormEntity(apiParameters));
-        LOG.debug("Trying to connect to mail API...");
-        final HttpResponse emailResponse = client.execute(post);
-	LOG.debug("Response code for email is :: " + emailResponse.getStatusLine().getStatusCode() + " :: " + emailResponse.getStatusLine().getReasonPhrase());
-        successResponse = modifyResponse(successPageUrl, mailConfig.getSuccessResponse());
-        errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
-	return emailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK ? successResponse : errorResponse;
+	successResponse = modifyResponse(successPageUrl, mailConfig.getSuccessResponse());
+	errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
+        
+        if("true".equalsIgnoreCase(isClient)) {
+            mailResponse = sendMail(fromEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
+            if(mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+        	LOG.debug("Mail sent to client..");
+            }else {
+        	LOG.error("Error in sending mail to client..");
+        	mailResponse = sendMail(fromEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
+        	LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
+            }
+        }
+        
+        mailResponse = sendMail(fromEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
+        if(mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+    		LOG.debug("Mail sent to marketing team..");
+    		return successResponse;
+        }else {
+    		LOG.error("Error in sending mail to marketing team..");
+    		return errorResponse;
+        }
+        
+
+	
       }
-    } catch (final IOException e) {
-      LOG.error("Exception occured :: IOException {}", e);
     } catch (final LoginException e) {
       LOG.error("Exception occured :: LoginException {}", e);
     }
     return null;
   }
 
-  /**
-   * Activate.
-   *
-   * @param config
-   *          the config
-   */
-  @ Activate
-  protected void activate(final MailConfig config) {
-    mailConfig = config;
-  }
+    /**
+     * Activate.
+     *
+     * @param config
+     *            the config
+     */
+    @Activate
+    protected void activate(final MailConfig config) {
+	mailConfig = config;
+    }
 
-  /**
-   * Null check.
-   *
-   * @param value
-   *          the value
-   * @return the string
-   */
-  public String nullCheck(final String value) {
-    return value != null ? value : StringUtils.EMPTY;
-  }
-  
-  /**
-   * Modify response.
-   *
-   * @param url
-   *            the url
-   * @param osgiResponse
-   *            the osgi response
-   * @return the JSON object
-   */
-  public JSONObject modifyResponse(String url, String osgiResponse) {
+    /**
+     * Null check.
+     *
+     * @param value
+     *            the value
+     * @return the string
+     */
+    public String nullCheck(final String value) {
+	return value != null ? value : StringUtils.EMPTY;
+    }
+
+    /**
+     * Send mail.
+     *
+     * @param fromEmailId
+     *            the from email id
+     * @param toEmailId
+     *            the to email id
+     * @param emailSubject
+     *            the email subject
+     * @param emailBody
+     *            the email body
+     * @param apiKey
+     *            the api key
+     * @return the http response
+     */
+    public HttpResponse sendMail(String fromEmailId, String toEmailId, String emailSubject, String emailBody,
+	    String apiKey, Map <String, String> requestParameters) {
+	// Mail API service
+	try {
+	    HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
+	    RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(TIMEOUT).setSocketTimeout(TIMEOUT)
+		    .build();
+	    builder.setDefaultRequestConfig(requestConfig);
+	    HttpClient client = builder.build();
+	    HttpPost post = new HttpPost(mailConfig.getApiUrl());
+	    final MustacheFactory mf = new DefaultMustacheFactory();
+	    final StringWriter writer = new StringWriter();
+	    final Mustache mustache = mf.compile(new StringReader(nullCheck(emailBody)), " ");
+	    mustache.execute(writer, requestParameters);
+	    emailBody = writer.toString();
+	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
+	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", fromEmailId));
+	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", toEmailId));
+	    apiParameters.add(new BasicNameValuePair("slf-email-subject", emailSubject));
+	    apiParameters.add(new BasicNameValuePair("slf-email-body", emailBody));
+	    apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
+	    post.setEntity(new UrlEncodedFormEntity(apiParameters));
+	    LOG.debug("Trying to connect to mail API...");
+	    return client.execute(post);
+	} catch (final IOException e) {
+	      LOG.error("Exception occured :: IOException {}", e);
+	}
+	return null;
+
+    }
+    
+
+    /**
+     * Modify response.
+     *
+     * @param url
+     *            the url
+     * @param osgiResponse
+     *            the osgi response
+     * @return the JSON object
+     */
+    public JSONObject modifyResponse(String url, String osgiResponse) {
 	JSONObject response = new JSONObject();
 	try {
 	    if (StringUtils.isEmpty(url)) {
@@ -234,6 +290,6 @@ public class MailServiceImpl implements MailService {
 	}
 	return null;
 
-  }
+    }
 
 }

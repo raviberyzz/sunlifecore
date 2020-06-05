@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+  $('#signin-widget-modal').unbind("shown.bs.modal");
+  $('#signin-widget-modal').off('show.bs.modal');
   $("#id_sign_in").change(function(){
       if($("#id_sign_in").children("option:selected").attr('label') !== ''){
           $("#signIn input").removeAttr("disabled");

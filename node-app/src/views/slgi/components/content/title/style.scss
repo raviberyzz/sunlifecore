@@ -1,0 +1,8 @@
+@import '../../../base/core';
+@import '../../../../core/components/content/title/style';
+
+.title-wrapper-dark-blue{  
+  @extend .title-wrapper-yellow-grey;
+  background-color: $dark-blue;
+  color: #fff;
+}
