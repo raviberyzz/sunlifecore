@@ -656,6 +656,10 @@
             padding-left: 35px;
         }
     }
+    .cmp-form-options--drop-down 
+    {
+        width: 100%;
+    }
     .cmp-form-options__legend {
         font-size: 1rem;
         font-weight: 700;
@@ -689,6 +693,10 @@
             float:left;
         }
    } 
+   .cmp-form-button
+   {
+       margin-top: 10px;
+   }
 } 
   
 /* Lead Gen Form Ends Here*/
