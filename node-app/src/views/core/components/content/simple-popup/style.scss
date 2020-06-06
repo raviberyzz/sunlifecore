@@ -93,6 +93,16 @@
 #myModal .close-popup {
     display:none;
 }
+
+#contactusModal .modal-content {
+    background-color: $white-shade;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#contactusModal .close-popup {
+    display:none;
+}
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
 {
     .subscribe-popup-wrapper {
