@@ -1,0 +1,16 @@
+@import '../../../base/core';
+
+.search-bar-wrapper{
+  background-image: linear-gradient(to left, #DF7227 10%, #A81E22 40%, #580B11 90%);
+  .search-box{
+    position: relative;
+  }
+  .collapse-x {
+    color: $white-shade;
+  }
+  .cmp-form-button {
+    background-color: $white-shade;
+    color: $dark-blue;
+    border: 2px solid $dark-blue;
+  }
+}
