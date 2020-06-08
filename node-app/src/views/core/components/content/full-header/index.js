@@ -57,7 +57,7 @@ $(document).ready(function () {
     function mobileHeader() {
         var $win = $(window);
         //when page is reloaded in the middle
-        let height = 0;
+        var height = 0;
         //If site-level-notification exits and mobile header, then stick the site-level-notification to the top and have the mobile header stick following it.
         if($('.site-level-notification').length > 0 && $('.site-level-notification').css('display') != "none" ){
           $('.site-level-notification').css({'position':'fixed'});
