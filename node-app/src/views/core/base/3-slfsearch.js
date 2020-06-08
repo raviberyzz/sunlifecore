@@ -68,17 +68,17 @@ $(document).ready(function () {
         }
         
             var urlParam = getParams();
-                    var strings="";
-                    var vgnLocaleSearch = urlParam.vgnLocale;
+               var strings="";
+               var vgnLocaleSearch = $('html')[0].lang;
     
-               if(vgnLocaleSearch === "fr_CA" ){
+               if(vgnLocaleSearch === "fr" ){
                 strings=stringsFr;
     
-                } else if(vgnLocaleSearch === "zh_TW"){
+                } else if(vgnLocaleSearch === "zh-TW"){
                     strings=stringsZh;
-                } else if(vgnLocaleSearch === "zh_SG"){
+                } else if(vgnLocaleSearch === "zh-SG"){
                     strings=stringsZhSG;
-                }else if(vgnLocaleSearch ==="in_ID"){
+                }else if(vgnLocaleSearch ==="id"){
                     strings=stringsIn;
                 }
                 else if(vgnLocaleSearch ==="vi_VN"){
@@ -194,7 +194,7 @@ $(document).ready(function () {
             }
         }
     
-        function populateResults(results, originalSearchTerm, action,vgnLocaleSearch) {
+        function populateResults(results, originalSearchTerm, action) {
             resetPage();
             var resultItems = results.resultsets[0].results;
             var searchTerm = results.general.query;
@@ -217,8 +217,7 @@ $(document).ready(function () {
                     .attr("href", buildSearchString({
                         q: results.general.query,
                         filter: currentResultType,
-                        page: page,
-                       vgnLocale: vgnLocaleSearch
+                        page: page
                     }));
                 return paginationItems.add(el);
             }
@@ -274,8 +273,7 @@ $(document).ready(function () {
                             .attr('href', buildSearchString({
                                 q: results.general.query,
                                 filter: filter.result_type,
-                                action: 'filter',
-                vgnLocale: vgnLocaleSearch
+                                action: 'filter'
                             }))
     
                         if (filter.selected) {
@@ -299,8 +297,7 @@ $(document).ready(function () {
                     .attr("href", buildSearchString({
                         q: results.general.query,
                         filter: currentResultType,
-                        page: currentPage - 1,
-               vgnLocale: vgnLocaleSearch
+                        page: currentPage - 1
                     }));
                 $("#search-results-pagination-next")
                     .toggleClass("disabled", currentPage >= totalPages)
@@ -308,8 +305,7 @@ $(document).ready(function () {
                     .attr("href", buildSearchString({
                         q: results.general.query,
                         filter: currentResultType,
-                        page: currentPage + 1,
-                 vgnLocale: vgnLocaleSearch
+                        page: currentPage + 1
                     }));
                 var paginationItems = $();
     
@@ -359,25 +355,7 @@ $(document).ready(function () {
             var filter = urlParams.filter || "all";
             var page = parseInt(urlParams.page);
             var action = urlParams.action;
-        var vgnLocaleSearch = urlParams.vgnLocale;
-        if(document.documentElement.lang.indexOf("fr")>=0){
-            vgnLocaleSearch = "fr_CA";
-    
-        } else if(document.documentElement.lang.indexOf("zh")>=0){
-            if(vgnLocaleSearch == "zh_SG"){
-                vgnLocaleSearch = "zh_SG";
-            }else{
-                vgnLocaleSearch = "zh_TW";
-            }
-        } else if(document.documentElement.lang.indexOf("in")>=0){
-            vgnLocaleSearch = "in_ID";
-        } else if(document.documentElement.lang.indexOf("vi")>=0){
-            vgnLocaleSearch = "vi_VN";
-        }
-        else{
-            vgnLocaleSearch ="en_CA";
-            }
-    
+        
             if (isNaN(page)) page = 1;
     
             $("form.slf-search input[name=q]").val(searchString);
@@ -387,7 +365,7 @@ $(document).ready(function () {
             }
             apiCall({q: searchString, pt: filter, page: page}).then(function (results) {
                 try {
-                    populateResults(results, searchString, action,vgnLocaleSearch);
+                    populateResults(results, searchString, action);
     
                 } catch(e) {
                     searchError(e);
