@@ -64,12 +64,12 @@ $(document).ready(function () {
           $('.site-level-notification').css({'z-index':'2'});
           $('.site-level-notification').css({'top':'0'});
 		  height = $('.site-level-notification').outerHeight();
-          $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': `${height}px` });
+          $('.slf-header-wrapper .slf-mobile-header-wrapper').css( 'top', height );
         }
         //on scroll
         $win.scroll(function () {
             if($('.site-level-notification').length == 0 || $('.site-level-notification').css('display') == "none" ){ height = 0; }
-            $('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': `${height}px` });
+            $('.slf-header-wrapper .slf-mobile-header-wrapper').css( 'top', height );
         });
     };
     if ($(window).width() <= 1024) {
