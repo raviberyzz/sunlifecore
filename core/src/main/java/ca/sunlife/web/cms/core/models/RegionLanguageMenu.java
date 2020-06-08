@@ -74,7 +74,7 @@ public class RegionLanguageMenu {
    * @return the region links
    */
   public List <List <LinkModel>> getRegionLinks() {
-    return Collections.unmodifiableList(regionLinks);
+    return null != regionLinks ? Collections.unmodifiableList(regionLinks) : null;
   }
 
   /**
@@ -131,7 +131,7 @@ public class RegionLanguageMenu {
    * @return the regions
    */
   public List <LinkModel> getRegions() {
-    return Collections.unmodifiableList(regions);
+    return null != regions ? Collections.unmodifiableList(regions) : null;
   }
 
   /**
