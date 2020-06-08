@@ -281,7 +281,19 @@
             max-width: 24px;
             width:24px;
         }
+        .options {
+            input[type=radio] {
+                width: 24px;
+                height: 24px;
+                + {
+                    span.cmp-form-options__field-description {
+                        margin-left: 0px;
+                    }
+                }
+            }
+        }
     }
+  
 }
 @media(min-width:$tab-screen-min){
     .generic-form-wrapper{
@@ -495,7 +507,15 @@
                 width: 100%;
             }
         } 
-    } 
+    }
+    .blue-icon-yellow-background {
+        .cta-form-wrapper {
+            input[type=email] {
+                max-width: 100%;
+            }
+        }
+    }
+     
 }
 @media (min-width: $desktop-screen-min)
 {
@@ -536,11 +556,11 @@
     .subscribe-main-form-wrapper .text{
         width:58.31%!important;
         padding-right:16px;
-            }
+    }
 
     .subscribe-main-form-wrapper .button{
         width:41.65% !important;
-            }
+    }
 
   .thankyou-wrapper{
     .text.form-element-full-width-wrapper, .dropdown.form-element-full-width-wrapper{
@@ -556,7 +576,13 @@
         }
     }
   }
-
+  .blue-icon-yellow-background {
+	.cta-form-wrapper {
+		input[type=email] {
+			width: 100%;
+		}
+	}
+}
 }
 
 
@@ -656,6 +682,10 @@
             padding-left: 35px;
         }
     }
+    .cmp-form-options--drop-down 
+    {
+        width: 100%;
+    }
     .cmp-form-options__legend {
         font-size: 1rem;
         font-weight: 700;
@@ -689,6 +719,10 @@
             float:left;
         }
    } 
+   .cmp-form-button
+   {
+       margin-top: 10px;
+   }
 } 
   
 /* Lead Gen Form Ends Here*/
