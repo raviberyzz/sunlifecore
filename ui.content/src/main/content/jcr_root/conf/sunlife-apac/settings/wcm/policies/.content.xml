@@ -1039,6 +1039,11 @@
                                             cq:styleClasses="grey-background-box"
                                             cq:styleId="1579080027251"
                                             cq:styleLabel="Grey"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item3
+                                            cq:styleClasses="light-orange-20"
+                                            cq:styleId="1570202939384"
+                                            cq:styleLabel="Light orange"
                                             jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
@@ -2951,6 +2956,11 @@
                                             cq:styleClasses="grey-background-box"
                                             cq:styleId="1579080027251"
                                             cq:styleLabel="Grey"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="light-orange-20"
+                                            cq:styleId="1570202939384"
+                                            cq:styleLabel="Light orange"
                                             jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
@@ -3117,8 +3127,7 @@
 								</item13>	
                             </cq:styleGroups>
                         </policy_container>
-                    </container>
-					
+                    </container>					
                      <separator jcr:primaryType="nt:unstructured">
                             <policy_separator
                                 cq:styleDefaultClasses="row yellow-horizontal-separator"                                
