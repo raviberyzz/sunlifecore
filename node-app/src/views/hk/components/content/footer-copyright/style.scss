@@ -45,8 +45,11 @@
             font-size: 0.875rem;
             font-weight: 400;
             float: right;
-            max-width: 40%;
-            width:40%;
+            max-width: 42%;
+            width:42%;
+            p{
+                float: right;
+            }
         }
         .not-slf-acronym {
             color: $white-shade;
@@ -69,11 +72,13 @@
     .footer-copyright-wrapper {
         height: auto;
         padding: 32px 15px;
-        .slf-copyright{
-            width: 50%;
-        }
-        .slf-acronym{
-            width:40%;
+        .bottom-part{
+            .slf-copyright{
+                width: 50%;
+            }
+            .slf-acronym{
+                width:42%;
+            }
         }
     }
 }
@@ -117,6 +122,9 @@
             }
             .slf-acronym{
                 width:100%;
+                p{
+                    float: none;
+                }
             }
             .slf-acronym,.not-slf-acronym {
                 padding-top: 16px; 
