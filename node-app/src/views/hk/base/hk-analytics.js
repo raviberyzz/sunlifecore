@@ -357,7 +357,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 }
 /* Investment Risk Assesment ends here */
 /* Health Calculator starts here */
-    /*start estimate */
+    /* start estimate */
     $("#startBtn.mcice__button.mcice__button-start").click(function(){
         utag.link({ 
             ev_type: "calc", 
@@ -378,20 +378,107 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     });
      /* next question of age */
     $(".mcice__section-question #nextAgeBtn").click(function(){
-        let num=$("#mcice .mcice__section-question .mcice__steps .mcice__indicator-active").text().trim();
-        if(num==1){
-            let inputAge=$(".mcice__section-question #nextAgeBtn").parent().find(".mcice__question__circle #ageId").val();
-            utag.link({ 
-                ev_type: "calc", 
-                ev_action: "clk", 
-                ev_title: "health calculator", 
-                ev_data_one: "step 1:first interaction", 
-                ev_data_two: "age="+inputAge
-            });
-        }            
+        let inputAge=$(".mcice__section-question #nextAgeBtn").parent().find(".mcice__question__circle #ageId").val();
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "step 1:first interaction", 
+            ev_data_two: "age="+inputAge
+        });           
     });
     /* next question of gender */
-
+    let gender,smoker;
+    $(".mcice__section-question .mcice__field-gender .mcice__field__radio label").click(function(){
+        gender=$(this).text();  
+    });
+    $(".mcice__section-question #nextGenderBtn").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "step 2", 
+            ev_data_two: "gender="+gender
+        });
+    });
+    /* next question of smoker */
+    $(".mcice__section-question .mcice__field-smoker .mcice__field__radio label").click(function(){
+        smoker=$(this).text();              
+    });
+    /* for next page coverage loading starts here */
+    function coverage(){
+        utag.view({ 
+            ev_type: "calc", 
+            ev_action: "page_imp", 
+            ev_title: "health calculator", 
+            ev_data_one: "result", 
+            ev_data_two: "age="+age+" :gender="+gender+" :smoker="+smoker
+        });            
+    }
+    /* for next page coverage loading ends here */
+    $(".mcice__section-question #coveregeNext").click(function(){ 
+        setTimeout(coverage,500);      
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "submit", 
+            ev_title: "health calculator", 
+            ev_data_one: "step 3:last interaction", 
+            ev_data_two: "smoker="+smoker
+        });
+    }); 
+    /* reset click */     
+    $("#resetBtn.mcice__button.mcice__button-reset").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "reset"
+        });            
+    });
+    /*medical insurance click */
+    $("#medicalIns.mcice__pill__button img:nth-child(2)").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "medical insurance"
+        });            
+    });
+    /* request an advisor click */
+    $("#requestAdwisor.mcice__cta-link").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "find an advisor", 
+            ev_data_two: "age="+age+" :gender="+gender+":smoker="+smoker
+        });            
+    });
+    /* social media sharing */
+    $(".icon-parent .fa-facebook-square").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "facebook share"
+        });       
+    });
+    $(".icon-parent .fa-linkedin-square").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "linkedin share"
+        });             
+    });
+    $(".icon-parent .fa-twitter-square").click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "health calculator", 
+            ev_data_one: "twitter share"
+        });                     
+    });
 /* Health Calculator ends here */
 
 });
