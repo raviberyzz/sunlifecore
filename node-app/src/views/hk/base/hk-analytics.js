@@ -480,5 +480,44 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });                     
     });
 /* Health Calculator ends here */
+/* talk to advisor form starts here */
+    // talk to advisor click
+    let talk;
+    $(".cmp-tabs__tab").click(function(){
+        talk='true';
+        if($(this).text().toLowerCase().match('talk to an advisor')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "onpage_impr", 
+                ev_title: "lead-gen-form", 
+                ev_data_one: "form selected"
+            });
+        }        
+    });
+    // yes or no radio button
+    $(".form-container-component .cmp-form-options__field.cmp-form-options__field--radio").click(function(){
+        if(talk=='true'){
+            let valOption=$(this).parent().find('span').text();
+            utag.link({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "lead-gen-form", 
+                ev_data_one: "existing client="+valOption
+            });
+        }                
+    });
+    // advisor form submission
+    $(".cmp-form-button[value='submit']").click(function(){
+        if(talk=='true'){
+            utag.link({ 
+                ev_type: "lead_form", 
+                ev_action: "submit", 
+                ev_title: "lead-gen-form", 
+                ev_data_one: "successful submission"
+            });
+            talk='';
+        }                    
+    });
+/* talk to advisor form ends here */
 
 });
