@@ -1950,6 +1950,11 @@
 	                                            cq:styleId="1584525284184"
 	                                            cq:styleLabel="Full Width"
 	                                            jcr:primaryType="nt:unstructured"/>
+	                                        <item1
+	                                            cq:styleClasses="captcha-wrapper"
+	                                            cq:styleId="1584629114184"
+	                                            cq:styleLabel="Captcha"
+	                                            jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
 	                            </cq:styleGroups>
@@ -3871,6 +3876,11 @@
 	                                            cq:styleClasses="form-element-full-width-wrapper"
 	                                            cq:styleId="1584525284184"
 	                                            cq:styleLabel="Full Width"
+	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+	                                            cq:styleClasses="captcha-wrapper"
+	                                            cq:styleId="1584629114184"
+	                                            cq:styleLabel="Captcha"
 	                                            jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
