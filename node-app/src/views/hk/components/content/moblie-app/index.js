@@ -474,7 +474,7 @@ $(document).ready(function(){
       },{"./bakery.js":1,"./detector.js":2,"./optionparser.js":4}]},{},[3]);
       /* existing js ends here*/
       /* structure js starts here */
-      if($("#123")){
+      if($("#mobile-app-banner")){
         var title='',author='',price='',downloadText='';
         let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife';
         if($('html').attr('lang')=='zh-TW'){
@@ -499,27 +499,23 @@ $(document).ready(function(){
         var smartBannerId=$("#mobile-app-banner");
         $(smartBannerId).addClass('smartbanner smartbanner--android js_smartbanner');
         $(smartBannerId).empty();
-        $(smartBannerId).append(`
-        <div class="app-wrapper">
-          <a href="${my_sunlife_app_link}" target="_blank"
-              class="captureClick">
-              <div class="smartbanner__icon">
-              </div>
-              <div class="smartbanner__info">
-                  <div class="smartbanner__info__title">${title}</div>
-                  <div class="smartbanner__info__author">${author}</div>
-                  <div class="smartbanner__info__price">${price}</div>
-              </div>
-          </a>
-          <a href="javascript:void(0)" class="smartbanner__exit js_smartbanner__exit close-smart fa fa-remove"></a>
-      </div>
-      <div class="java-button">
-          <a href="${my_sunlife_app_link}" target="_blank"
-              class="smartbanner__button">
-              <span class="smartbanner__button__label">${downloadText}</span>
-          </a>
-      </div>
-        `);
+        $(smartBannerId).append('<div class="app-wrapper">\
+          <a href='+my_sunlife_app_link+' target="_blank" class="captureClick">\
+              <div class="smartbanner__icon">\
+              </div>\
+              <div class="smartbanner__info">\
+                  <div class="smartbanner__info__title">'+title+'</div>\
+                  <div class="smartbanner__info__author">'+author+'</div>\
+                  <div class="smartbanner__info__price">'+price+'</div>\
+              </div>\
+          </a>\
+          <a href="javascript:void(0)" class="smartbanner__exit js_smartbanner__exit close-smart fa fa-remove"></a>\
+        </div>\
+        <div class="java-button">\
+          <a href='+my_sunlife_app_link+' target="_blank" class="smartbanner__button">\
+              <span class="smartbanner__button__label">'+downloadText+'</span>\
+          </a>\
+        </div>');
       }
       /* structure js ends here */
       function checkCookie() {
