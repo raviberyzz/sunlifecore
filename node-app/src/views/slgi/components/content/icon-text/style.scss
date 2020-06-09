@@ -1,0 +1,14 @@
+@import '../../../base/core';
+
+
+.blue-gradient-background-box{
+  background-image: linear-gradient(#004C6C, #002d3c);
+  color: $white-shade;
+  // Blue/orange icons as per DSM
+  .overview-highlights-wrapper{
+    .icon-style {
+      background: none;
+      background-color: $cinnamon-orange;
+    }
+  }
+}
