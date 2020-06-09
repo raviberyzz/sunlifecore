@@ -47,7 +47,7 @@ $(document).ready(function () {
         });
     
         //Init Google map
-        function initMap(){
+         var initMap = function (){
             //Set google map option
             var mapOptions = {
                 zoomControl: true,
