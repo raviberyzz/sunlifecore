@@ -1,0 +1,32 @@
+@import "../../../base/core";
+@import "../../../../core/components/content/container/style";
+
+
+/* Homepage Triple CTA */
+.orange-icon-white-background {
+  @extend .yellow-icon-white-background;
+  border: 1px solid $light-grey-separator-color;
+  .cta-content-icon-wrapper {
+    .icon-style {
+      background-color: $cinnamon-orange;
+      background-image: none;
+    }
+    .icon-texts {
+      p:last-child {
+        padding-top: 24px;
+      }
+    }
+  }
+}
+
+.cta-content-icon-wrapper .icon-style.fa-map-o {
+  padding: 17px 15px 15px 15px;   /* Center Map-Icon within circle */
+}
+
+.company-highlight-blue-orange {
+  @extend .company-highlight-yellow-grey-background;
+  background: linear-gradient(to bottom, $dark-blue 50%, $white-smoke 50%);
+  .view-all-category::after{
+    color: $dark-blue;  /* Turn chevron dark-blue */
+  }
+}
