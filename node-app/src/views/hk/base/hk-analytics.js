@@ -724,8 +724,13 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     /* lead gen form starts here */
     $("#advisor-modal-submit-btnContact").click(function() {
         let brightPage=localStorage.getItem("brightPage");
-        let brightValue=sessionStorage.getItem('brightValue1');
-        let brightSecondValue=sessionStorage.getItem('brightValue2');
+        let brightValue=localStorage.getItem('brightValue1');
+        let brightSecondValue=localStorage.getItem('brightValue2');
+        function localClean(){
+            localStorage.removeItem('brightPage');
+            localStorage.removeItem('brightValue1');
+            localStorage.removeItem('brightValue2');
+        }
         if (brightPage) {
             /* reditrecting from bright Solution */
             // Submit clicked tracked with error
@@ -737,7 +742,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     ev_data_one: "error"
                 });                    
                 // parsley-errors-list finished 
-            } else if(brightValue=='employee') {
+            } else if(brightValue.toLowerCase()=='employee') {
                 /* first value is employee */
                 utag.link({ 
                     ev_type: "lead_form", 
@@ -745,7 +750,8 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     ev_title: "talk-to-an-advisor-lead-gen-form", 
                     ev_data_one:  "successful submission:tool referrer=bright solutions", 
                     ev_data_two: "coverage=employee"
-                });                
+                });
+                localClean();                
             }
             else{
                 /* first value is family */
@@ -754,8 +760,9 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     ev_action: "submit", 
                     ev_title: "talk-to-an-advisor-lead-gen-form", 
                     ev_data_one:  "successful submission:tool referrer=bright solutions", 
-                    ev_data_two: "coverage=myself or family:product interest="+brightSecondValue
-                });                
+                    ev_data_two: "coverage=myself or family:product interest="+brightSecondValue.toLowerCase()
+                }); 
+                localClean();               
             }
             // normal lead-gen-form submit button click
         } else {
@@ -774,10 +781,10 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     ev_action: "submit", 
                     ev_title: "talk-to-an-advisor-lead-gen-form", 
                     ev_data_one: "successful submission"
-                });                    
+                });
+                localClean();                    
             }
         }
-    
     });
     /* lead gen form ends here */
 });
