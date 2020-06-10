@@ -588,7 +588,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         }                       
     });
     /* mpf Fund Proccess ends here */
-
+    /* Bright Solution analytics starts here */
     // Global variable
     var advsleadClk = false;
     //get product name from current page.
@@ -598,8 +598,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, "_");
         return productName;
     }
-
-    /* Bright Solution analytics starts here */
     //tagging for bright curator submit
     $("#bc_submit a").click(function() {
         var firstDrop = $('#bc_q1_1_ans_select_1').children('option:selected').val();
@@ -638,10 +636,8 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 
             advsleadClk = true;
             localStorage.setItem("someVarKey", advsleadClk);
-            //storage
             localStorage.setItem("brightValue1", firstDrop);
             localStorage.setItem("brightValue2", secondDrop);
-            // localStorage.setItem("brightPage", homePage);
         }
 
     });
@@ -688,7 +684,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             }
         }
     });
-
     //facebook share
     $(".icon-parent .fa-facebook-square").click(function(){
         var homePage = getProductName();
@@ -701,7 +696,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             });     
         }  
     });
-
     //twitter share
     $(".icon-parent .fa-twitter-square").click(function(){
         var homePage = getProductName();
@@ -714,7 +708,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             });     
         }  
     });
-
     //linkedin share
     $(".icon-parent .fa-linkedin-square").click(function(){
         var homePage = getProductName();
@@ -728,4 +721,63 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         }  
     });
     /* Bright Solution analytics ends here */
+    /* lead gen form starts here */
+    $("#advisor-modal-submit-btnContact").click(function() {
+        let brightPage=localStorage.getItem("brightPage");
+        let brightValue=sessionStorage.getItem('brightValue1');
+        let brightSecondValue=sessionStorage.getItem('brightValue2');
+        if (brightPage) {
+            /* reditrecting from bright Solution */
+            // Submit clicked tracked with error
+            if ($(".parsley-errors-list").hasClass("filled")) {
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one: "error"
+                });                    
+                // parsley-errors-list finished 
+            } else if(brightValue=='employee') {
+                /* first value is employee */
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one:  "successful submission:tool referrer=bright solutions", 
+                    ev_data_two: "coverage=employee"
+                });                
+            }
+            else{
+                /* first value is family */
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one:  "successful submission:tool referrer=bright solutions", 
+                    ev_data_two: "coverage=myself or family:product interest="+brightSecondValue
+                });                
+            }
+            // normal lead-gen-form submit button click
+        } else {
+            if ($(".parsley-errors-list").hasClass("filled")) {
+                // Submit clicked tracked with error
+                utag.link({
+                    ev_type: "lead_form",
+                    ev_action: "submit",
+                    ev_title: "talk-to-an-advisor-lead-gen-form",
+                    ev_data_one: "error"
+                });
+            } else {
+                // Submit clicked tracked with no error
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one: "successful submission"
+                });                    
+            }
+        }
+    
+    });
+    /* lead gen form ends here */
 });
