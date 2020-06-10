@@ -27,6 +27,6 @@
   @extend .company-highlight-yellow-grey-background;
   background: linear-gradient(to bottom, $dark-blue 50%, $white-smoke 50%);
   .view-all-category::after{
-    color: $dark-blue;  /* Turn chevron dark-blue */
+    color: $cinnamon-orange;  /* Turn chevron dark-blue */
   }
 }
