@@ -519,5 +519,47 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         }                    
     });
 /* talk to advisor form ends here */
+/* Product cards starts here */
+    $(".product-cards .thumbnail").click(function(){
+        let productTitle=$(this).find('.product-name').text();
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "product-array-lvl3-"+productTitle
+        });            
+    });
+/* Products cards ends here */
+/* Mobile App Banner starts here */
+//on-loading of mobile app banner
+    if("#mobile-app-banner"){
+        function mobileBannerutag(){
+            utag.view({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "show"
+            });
+        }
+        setTimeout(mobileBannerUtag,500);        
+    }
+    //on clicking download button
+    $("#mobile-app-banner.smartbanner .java-button .smartbanner__button__label").click(function(){
+        utag.link({ 
+            ev_type: "ad", 
+            ev_action: "onpage_impr", 
+            ev_title: "app_download_mobile_banner", 
+            ev_data_one: "open"
+        });            
+    });
+    //on clicking close button 
+    $("#mobile-app-banner.smartbanner .app-wrapper .smartbanner__exit.js_smartbanner__exit").click(function(){
+        utag.link({ 
+            ev_type: "ad", 
+            ev_action: "onpage_impr", 
+            ev_title: "app_download_mobile_banner", 
+            ev_data_one: "close"
+        });                        
+    });
+/* Mobile App Banner ends here */
 
 });
