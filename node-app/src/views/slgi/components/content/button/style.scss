@@ -1,5 +1,41 @@
 @import "../../../base/core";
 
+/* Primary Blue Button */
+.primary-blue-button {
+  .button-class {
+    background-color: $dark-blue;
+  }
+}
 .primary-blue-button-rte {
   background-color: $dark-blue;
 }
+
+/* Primary Yellow Button */
+.primary-yellow-button {
+  .button-class {
+    color: $dark-blue;
+  }
+}
+.primary-yellow-button-rte {
+  color: $dark-blue;
+}
+
+/* White version-blue */
+.secondary-button {
+  .button-class {
+    color: $dark-blue;
+    border: 2px solid $dark-blue;
+  }
+}
+.secondary-button-rte{
+  color: $dark-blue;
+  border: 2px solid $dark-blue;
+}
+
+/* Sign-in button */
+.signIn-button {
+  .button-class {
+    color: $dark-blue;
+  }
+}
+/* Sign-in button class */
