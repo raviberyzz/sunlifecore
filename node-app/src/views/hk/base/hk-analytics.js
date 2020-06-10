@@ -455,30 +455,32 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });            
     });
     /* social media sharing */
-    $(".icon-parent .fa-facebook-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "facebook share"
-        });       
-    });
-    $(".icon-parent .fa-linkedin-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "linkedin share"
-        });             
-    });
-    $(".icon-parent .fa-twitter-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "twitter share"
-        });                     
-    });
+    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')){
+        $(".icon-parent .fa-facebook-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "facebook share"
+            });       
+        });
+        $(".icon-parent .fa-linkedin-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "linkedin share"
+            });             
+        });
+        $(".icon-parent .fa-twitter-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "twitter share"
+            });                     
+        });
+    }
 /* Health Calculator ends here */
 /* talk to advisor form starts here */
     // talk to advisor click
@@ -532,7 +534,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 /* Mobile App Banner starts here */
 //on-loading of mobile app banner
     if("#mobile-app-banner"){
-        function mobileBannerutag(){
+        function mobileBannerUtag(){
             utag.view({ 
                 ev_type: "ad", 
                 ev_action: "onpage_impr", 
@@ -561,7 +563,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });                        
     });
 /* Mobile App Banner ends here */
-/* mpf Fund Proces starts here */
+/* mpf Fund Proccess starts here */
     // show funds button click
     $("#show-fund-btn").click(function(){
         let mpfScheme=$("#scheme-list-dropdown option:selected").text().toLowerCase();
@@ -585,5 +587,204 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             });
         }                       
     });
-/* mpf Fund Proces ends here */
+    /* mpf Fund Proccess ends here */
+    /* Bright Solution analytics starts here */
+    // Global variable
+    var advsleadClk = false;
+    //get product name from current page.
+    function getProductName() {
+        var productName = "";
+        var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
+        productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, "_");
+        return productName;
+    }
+    //tagging for bright curator submit
+    $("#bc_submit a").click(function() {
+        var firstDrop = $('#bc_q1_1_ans_select_1').children('option:selected').val();
+        var secondDrop = $('#bc_q2_1_ans_select_1').children('option:selected').val();
+        if (secondDrop == "") {
+            secondDrop = $('#bc_q2_1_ans_select_2').children('option:selected').val();
+        }
+        //Tagging for submit click when Employee selected
+        var homePage = getProductName();
+        if (homePage == "home" || homePage == "bright_solutions") {
+            if (firstDrop == "Employee") {
+                if (typeof utag !== 'undefined') {
+                    utag.link({
+                        ev_type: "calc",
+                        ev_action: "submit",
+                        ev_title: "bright curator",
+                        ev_data_one: "step 2:last interaction",
+                        ev_data_two: "coverage=employee"
+                    });
+                }
+            } 
+            else if (firstDrop == "Myself or Family") {
+                //Tagging for submit click when myself or family selected
+                if (secondDrop != "") {
+                    if (typeof utag !== 'undefined') {
+                        utag.link({
+                            ev_type: "calc",
+                            ev_action: "submit",
+                            ev_title: "bright curator",
+                            ev_data_one: "step 3:last interaction",
+                            ev_data_two: "coverage=myself or family:product interest=" + secondDrop + ""
+                        });
+                    }
+                }
+            } 
+
+            advsleadClk = true;
+            localStorage.setItem("someVarKey", advsleadClk);
+            localStorage.setItem("brightValue1", firstDrop);
+            localStorage.setItem("brightValue2", secondDrop);
+        }
+
+    });
+    var AdvisorFag = localStorage.getItem("someVarKey");
+    var firstDroopp = localStorage.getItem("brightValue1");
+    var secondDroopp = localStorage.getItem("brightValue2");
+    //Tagging for Find And Advisor
+    $(".right-navigation-wrapper a").click(function() {
+        var clickText = $(this).children('span').text();
+        if(clickText == "Talk to our Advisor"){
+            //Clicking submit button and Find And Advisor 
+            var homePage = getProductName();
+            if (homePage == "home" || homePage == "bright_solutions") {
+                if (AdvisorFag == "true") {
+                    //Tagging for submit click when Employee selected
+                    //For HK
+                    if (firstDroopp == "Employee") {
+                        if (typeof utag !== 'undefined') {
+                            utag.link({
+                                ev_type: "calc",
+                                ev_action: "clk",
+                                ev_title: "bright curator",
+                                ev_data_one: "find an advisor",
+                                ev_data_two: "coverage=employee"
+                            });
+                        }
+                    } 
+                    else if (firstDroopp == "Myself or Family") {
+                        //Tagging for submit click when myself or family selected
+                        if (secondDroopp != "") {
+                            if (typeof utag !== 'undefined') {
+                                utag.link({
+                                    ev_type: "calc",
+                                    ev_action: "clk",
+                                    ev_title: "bright curator",
+                                    ev_data_one: "find an advisor",
+                                    ev_data_two: "coverage=myself or family:product interest=" + secondDroopp + ""
+                                });
+                            }
+                        }
+                    } 
+                    localStorage.setItem("brightPage", true);
+                } // advsleadClk == false End
+            }
+        }
+    });
+    //facebook share
+    $(".icon-parent .fa-facebook-square").click(function(){
+        var homePage = getProductName();
+        if (homePage == "home" || homePage == "bright_solutions") {
+            utag.link({ 
+                ev_type: "calc",
+                ev_action: "clk",
+                ev_title: "bright curator",
+                ev_data_one: "facebook share"
+            });     
+        }  
+    });
+    //twitter share
+    $(".icon-parent .fa-twitter-square").click(function(){
+        var homePage = getProductName();
+        if (homePage == "home" || homePage == "bright_solutions") {
+            utag.link({ 
+                ev_type: "calc",
+                ev_action: "clk",
+                ev_title: "bright curator",
+                ev_data_one: "twitter share"
+            });     
+        }  
+    });
+    //linkedin share
+    $(".icon-parent .fa-linkedin-square").click(function(){
+        var homePage = getProductName();
+        if (homePage == "home" || homePage == "bright_solutions") {
+            utag.link({ 
+                ev_type: "calc",
+                ev_action: "clk",
+                ev_title: "bright curator",
+                ev_data_one: "linkedin share"
+            });     
+        }  
+    });
+    /* Bright Solution analytics ends here */
+    /* lead gen form starts here */
+    $("#advisor-modal-submit-btnContact").click(function() {
+        let brightPage=localStorage.getItem("brightPage");
+        let brightValue=localStorage.getItem('brightValue1');
+        let brightSecondValue=localStorage.getItem('brightValue2');
+        function localClean(){
+            localStorage.removeItem('brightPage');
+            localStorage.removeItem('brightValue1');
+            localStorage.removeItem('brightValue2');
+        }
+        if (brightPage) {
+            /* reditrecting from bright Solution */
+            // Submit clicked tracked with error
+            if ($(".parsley-errors-list").hasClass("filled")) {
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one: "error"
+                });                    
+                // parsley-errors-list finished 
+            } else if(brightValue.toLowerCase()=='employee') {
+                /* first value is employee */
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one:  "successful submission:tool referrer=bright solutions", 
+                    ev_data_two: "coverage=employee"
+                });
+                localClean();                
+            }
+            else{
+                /* first value is family */
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one:  "successful submission:tool referrer=bright solutions", 
+                    ev_data_two: "coverage=myself or family:product interest="+brightSecondValue.toLowerCase()
+                }); 
+                localClean();               
+            }
+            // normal lead-gen-form submit button click
+        } else {
+            if ($(".parsley-errors-list").hasClass("filled")) {
+                // Submit clicked tracked with error
+                utag.link({
+                    ev_type: "lead_form",
+                    ev_action: "submit",
+                    ev_title: "talk-to-an-advisor-lead-gen-form",
+                    ev_data_one: "error"
+                });
+            } else {
+                // Submit clicked tracked with no error
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                    ev_data_one: "successful submission"
+                });
+                localClean();                    
+            }
+        }
+    });
+    /* lead gen form ends here */
 });
