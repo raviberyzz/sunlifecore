@@ -559,7 +559,13 @@ $(document).ready(function(){
           var expires = "expires=" + exDate;
           document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;";
         }
-      $(".smartbanner .close-smart").click(function(){
+      $("#mobile-app-banner.smartbanner .close-smart").click(function(){
+          utag.link({ 
+            ev_type: "ad", 
+            ev_action: "onpage_impr", 
+            ev_title: "app_download_mobile_banner", 
+            ev_data_one: "close"
+          });
           $(this).parent().closest('.xf-content-height').addClass('xf-height');
           $(".smartbanner").addClass("app-hide");
           $(".slf-mobile-header-wrapper").removeClass('top-not');
