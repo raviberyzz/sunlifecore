@@ -455,30 +455,32 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });            
     });
     /* social media sharing */
-    $(".icon-parent .fa-facebook-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "facebook share"
-        });       
-    });
-    $(".icon-parent .fa-linkedin-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "linkedin share"
-        });             
-    });
-    $(".icon-parent .fa-twitter-square").click(function(){
-        utag.link({ 
-            ev_type: "calc", 
-            ev_action: "clk", 
-            ev_title: "health calculator", 
-            ev_data_one: "twitter share"
-        });                     
-    });
+    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')){
+        $(".icon-parent .fa-facebook-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "facebook share"
+            });       
+        });
+        $(".icon-parent .fa-linkedin-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "linkedin share"
+            });             
+        });
+        $(".icon-parent .fa-twitter-square").click(function(){
+            utag.link({ 
+                ev_type: "calc", 
+                ev_action: "clk", 
+                ev_title: "health calculator", 
+                ev_data_one: "twitter share"
+            });                     
+        });
+    }
 /* Health Calculator ends here */
 /* talk to advisor form starts here */
     // talk to advisor click
@@ -532,7 +534,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 /* Mobile App Banner starts here */
 //on-loading of mobile app banner
     if("#mobile-app-banner"){
-        function mobileBannerutag(){
+        function mobileBannerUtag(){
             utag.view({ 
                 ev_type: "ad", 
                 ev_action: "onpage_impr", 
@@ -561,7 +563,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });                        
     });
 /* Mobile App Banner ends here */
-/* mpf Fund Proces starts here */
+/* mpf Fund Proccess starts here */
     // show funds button click
     $("#show-fund-btn").click(function(){
         let mpfScheme=$("#scheme-list-dropdown option:selected").text().toLowerCase();
@@ -585,5 +587,5 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             });
         }                       
     });
-/* mpf Fund Proces ends here */
+/* mpf Fund Proccess ends here */
 });
