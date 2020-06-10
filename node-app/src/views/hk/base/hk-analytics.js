@@ -590,7 +590,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     /* mpf Fund Proccess ends here */
 
     // Global variable
-    var advsleadClk = true;
+    var advsleadClk = false;
     //get product name from current page.
     function getProductName() {
         var productName = "";
@@ -598,7 +598,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, "_");
         return productName;
     }
-    
+
     /* Bright Solution analytics starts here */
     //tagging for bright curator submit
     $("#bc_submit a").click(function() {
@@ -635,31 +635,19 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     }
                 }
             } 
-            else {
-                //For ID
-                if (secondDrop != "") {
-                    if (typeof utag !== 'undefined') {
-                        utag.link({
-                            ev_type: "calc",
-                            ev_action: "submit",
-                            ev_title: "bright curator",
-                            ev_data_one: "step 3:last interaction",
-                            ev_data_two: "i would like to=" + firstDrop + ":my purpose=" + secondDrop + ""
-                        });
-                    }
-                }
-            }
 
-            advsleadClk = false;
+            advsleadClk = true;
             localStorage.setItem("someVarKey", advsleadClk);
             //storage
-            localStorage.setItem("firstDrop1", firstDrop);
-            localStorage.setItem("secondDrop2", secondDrop);
-            localStorage.setItem("homePagee", homePage);
+            localStorage.setItem("brightValue1", firstDrop);
+            localStorage.setItem("brightValue2", secondDrop);
+            // localStorage.setItem("brightPage", homePage);
         }
 
     });
-
+    var AdvisorFag = localStorage.getItem("someVarKey");
+    var firstDroopp = localStorage.getItem("brightValue1");
+    var secondDroopp = localStorage.getItem("brightValue2");
     //Tagging for Find And Advisor
     $(".right-navigation-wrapper a").click(function() {
         var clickText = $(this).children('span').text();
@@ -667,7 +655,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             //Clicking submit button and Find And Advisor 
             var homePage = getProductName();
             if (homePage == "home" || homePage == "bright_solutions") {
-                if (AdvisorFag == "false") {
+                if (AdvisorFag == "true") {
                     //Tagging for submit click when Employee selected
                     //For HK
                     if (firstDroopp == "Employee") {
@@ -695,20 +683,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                             }
                         }
                     } 
-                    else {
-                        //For ID
-                        if (secondDroopp != "") {
-                            if (typeof utag !== 'undefined') {
-                                utag.link({
-                                    ev_type: "calc",
-                                    ev_action: "clk",
-                                    ev_title: "bright curator",
-                                    ev_data_one: "find an advisor",
-                                    ev_data_two: "i would like to=" + firstDroopp + ":my purpose=" + secondDroopp + ""
-                                });
-                            }
-                        }
-                    }
+                    localStorage.setItem("brightPage", true);
                 } // advsleadClk == false End
             }
         }
