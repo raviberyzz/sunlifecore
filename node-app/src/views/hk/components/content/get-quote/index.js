@@ -548,45 +548,45 @@ $(document).ready(function(){
       }
   
   });
-  //Tagging for facebook
-  $(".fa-facebook-square").click(function() {
-    let productTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
-    var pageURLTag = $(location).attr("href");
-      //var product = getProductName();
-       utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "facebook share", 
-        ev_data_two: productTitle
-    });
-  });
-  //Tagging for linkedin
-  $(".fa-linkedin-square").click(function() {
-    let productTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
-    var pageURLTag = $(location).attr("href");
-      //var product = getProductName();
-     utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "linkedin share", 
-        ev_data_two: productTitle
-    });
-  });
-  //Tagging for twitter
-  $(".fa-twitter-square").click(function() {
-    let productTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
-    var pageURLTag = $(location).attr("href");
-      //var product = getProductName();
-     utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "twitter share", 
-        ev_data_two: productTitle 
-    });
-  });
+  let productTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
+  if(productTitle == ('sunhealth medical premier' || 'sunhealth medical care' || 'sunhealth medical essential' || 'wehealth' || 'wehealth plus')){
+    //Tagging for facebook
+    $(".fa-facebook-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+           utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "facebook share", 
+            ev_data_two: productTitle
+        });
+      });
+      //Tagging for linkedin
+      $(".fa-linkedin-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+         utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "linkedin share", 
+            ev_data_two: productTitle
+        });
+      });
+      //Tagging for twitter
+      $(".fa-twitter-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+         utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "twitter share", 
+            ev_data_two: productTitle 
+        });
+      });
+  } 
   //Function for all common /WeHealth ,SunHealth+Medical+Care & WeHealth+Plus.
   function getSecQusAns() {
     
