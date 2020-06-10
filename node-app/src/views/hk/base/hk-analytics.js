@@ -1,6 +1,6 @@
 $(document).ready(function () {
     /* Carousel analytics starts here */
-    if(".carousel-wrapper"){
+    if($(".carousel-wrapper")){
         $(".cmp-carousel__item").each(function(){
             var bannerPosition=$(this).index()+1;
             var bannerTitleText=$(this).find(".right-item.text-section").text();
