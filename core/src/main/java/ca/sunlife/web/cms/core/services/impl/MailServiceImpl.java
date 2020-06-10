@@ -241,16 +241,11 @@ public class MailServiceImpl implements MailService {
 	    builder.setDefaultRequestConfig(requestConfig);
 	    HttpClient client = builder.build();
 	    HttpPost post = new HttpPost(mailConfig.getApiUrl());
-	    final MustacheFactory mf = new DefaultMustacheFactory();
-	    final StringWriter writer = new StringWriter();
-	    final Mustache mustache = mf.compile(new StringReader(nullCheck(emailBody)), " ");
-	    mustache.execute(writer, requestParameters);
-	    emailBody = writer.toString();
 	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
-	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", fromEmailId));
-	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", toEmailId));
-	    apiParameters.add(new BasicNameValuePair("slf-email-subject", emailSubject));
-	    apiParameters.add(new BasicNameValuePair("slf-email-body", emailBody));
+	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailId, requestParameters)));
+	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailId, requestParameters)));
+	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubject, requestParameters)));
+	    apiParameters.add(new BasicNameValuePair("slf-email-body", populateContent(emailBody, requestParameters)));
 	    apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
 	    post.setEntity(new UrlEncodedFormEntity(apiParameters));
 	    LOG.debug("Trying to connect to mail API...");
@@ -260,6 +255,23 @@ public class MailServiceImpl implements MailService {
 	}
 	return null;
 
+    }
+    
+    /**
+     * Populate content.
+     *
+     * @param content the content
+     * @param requestParameters the request parameters
+     * @return the string
+     */
+    public String populateContent(String content, Map <String, String> requestParameters) {
+	LOG.debug("Populating content with variables...");
+	final MustacheFactory mf = new DefaultMustacheFactory();
+	final StringWriter writer = new StringWriter();
+	final Mustache mustache = mf.compile(new StringReader(nullCheck(content)), " ");
+	mustache.execute(writer, requestParameters);
+	return writer.toString();
+	
     }
     
 
