@@ -561,5 +561,29 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });                        
     });
 /* Mobile App Banner ends here */
-
+/* mpf Fund Proces starts here */
+    // show funds button click
+    $("#show-fund-btn").click(function(){
+        let mpfScheme=$("#scheme-list-dropdown option:selected").text().toLowerCase();
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "fund prices and performance", 
+            ev_data_one: "scheme selected="+mpfScheme+" :item=show funds"
+        });           
+    });
+    // fund price tab clicks
+    $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
+        let fundTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
+        let fundTab=$(this).text().toLowerCase();
+        if(fundTitle.indexOf('mpf fund prices') != -1){ 
+            utag.link({
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "fund prices and performance", 
+                ev_data_one: "tab selected="+fundTab
+            });
+        }                       
+    });
+/* mpf Fund Proces ends here */
 });
