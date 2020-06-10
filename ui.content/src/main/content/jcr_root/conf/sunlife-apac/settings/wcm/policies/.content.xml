@@ -1957,17 +1957,6 @@
 	                                            jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
-									<item1
-                                        cq:styleGroupLabel="Variation"
-                                        jcr:primaryType="nt:unstructured">
-										<cq:styles jcr:primaryType="nt:unstructured">
-	                                        <item0
-	                                            cq:styleClasses="captcha-wrapper"
-	                                            cq:styleId="1584529114184"
-	                                            cq:styleLabel="Captcha"
-	                                            jcr:primaryType="nt:unstructured"/>
-	                                    </cq:styles>
-									</item1>
 	                            </cq:styleGroups>
 	                        </policy_options>
 	                    </options>
@@ -3895,17 +3884,6 @@
 	                                            jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
-									<item1
-                                        cq:styleGroupLabel="Variation"
-                                        jcr:primaryType="nt:unstructured">
-										<cq:styles jcr:primaryType="nt:unstructured">
-	                                        <item0
-	                                            cq:styleClasses="captcha-wrapper"
-	                                            cq:styleId="1584529214184"
-	                                            cq:styleLabel="Captcha"
-	                                            jcr:primaryType="nt:unstructured"/>
-	                                    </cq:styles>
-									</item1>
 	                            </cq:styleGroups>
 	                        </policy_options>
 	                    </options>
