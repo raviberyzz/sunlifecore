@@ -131,5 +131,8 @@ public final class AdvisorDetailConstants {
 
   /** The Constant ERROR_CODE_INVALID_ADVISOR_ID_CONSTANT. */
   public static final String ERROR_CODE_INVALID_ADVISOR_ID_CONSTANT = "INVALID_ADVISOR_ID";
+  
+  /** The Constant ERROR_CODE_SUCCESS_CONSTANT. */
+  public static final String ERROR_CODE_SUCCESS_CONSTANT = "SUCCESS";
 
 }
