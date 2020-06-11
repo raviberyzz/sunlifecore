@@ -1,6 +1,11 @@
 @import "../../../base/core";
 @import "../../../../core/components/content/container/style";
 
+/* Overview Highlights Wrapper Start */
+.orange-icon-blue-background {
+  @extend .blue-icon-yellow-background;
+}
+/* Overview Highlights Wrapper End*/
 
 /* Homepage Triple CTA */
 .orange-icon-white-background {
@@ -28,6 +33,13 @@
   }
   .view-all-category::after{
     color: $cinnamon-orange;  /* Turn chevron dark-blue */
+  }
+}
+
+/* Tool Card Main Wrapper Starts Here*/
+.tool-card-main-wrapper{
+  .container-component {
+    background-color: $white-smoke;
   }
 }
 

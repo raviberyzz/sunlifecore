@@ -1,14 +1,21 @@
-@import '../../../base/core';
+@import "../../../base/core";
 
-
-.blue-gradient-background-box{
-  background-image: linear-gradient(#004C6C, #002d3c);
-  color: $white-shade;
-  // Blue/orange icons as per DSM
-  .overview-highlights-wrapper{
-    .icon-style {
-      background: none;
-      background-color: $cinnamon-orange;
+/* Overview Highlights Wrapper Start */
+.overview-content-wrapper {
+  .orange-icon-blue-background {
+    .cmp-container {
+      background: linear-gradient($medium-blue-color, $dark-blue);
+      .icon-style {
+        background: none;
+        background-color: $cinnamon-orange;
+      }
+      .icon-texts {
+        color: $white-shade;
+        .button-class {
+          background-color: $white-shade;
+          color: $dark-blue;
+        }
+      }
     }
   }
 }
