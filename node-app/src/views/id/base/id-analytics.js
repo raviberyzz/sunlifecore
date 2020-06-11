@@ -607,17 +607,17 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 /* Products cards ends here */
 /* Mobile App Banner starts here */
 //on-loading of mobile app banner
-    if("#mobile-app-banner"){
-        function mobileBannerUtag(){
-            utag.view({ 
-                ev_type: "ad", 
-                ev_action: "onpage_impr", 
-                ev_title: "app_download_mobile_banner", 
-                ev_data_one: "show"
-            });
-        }
-        setTimeout(mobileBannerUtag,500);        
+if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='my sun life indonesia app')){
+    function mobileBannerUtag(){
+        utag.view({ 
+            ev_type: "ad", 
+            ev_action: "onpage_impr", 
+            ev_title: "app_download_mobile_banner", 
+            ev_data_one: "show"
+        });
     }
+    setTimeout(mobileBannerUtag,500);   
+}
     //on clicking download button
     $("#mobile-app-banner.smartbanner .java-button .smartbanner__button__label").click(function(){
         utag.link({ 
