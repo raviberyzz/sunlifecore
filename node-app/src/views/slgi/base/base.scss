@@ -2,6 +2,9 @@
 
 a {
   color: $dark-blue;
+  &:hover {
+    color: $medium-blue-color;
+  }
 }
 
 /* Footer Styles */
