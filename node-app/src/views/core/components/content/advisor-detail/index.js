@@ -37,7 +37,7 @@ $(document).ready(function () {
 	     };
         //rssFeed();	
         if(exists){
-        setupAdvisorBio();
+        //setupAdvisorBio();
         //setupAdvCookie();
     
         //Google large map link event
@@ -47,7 +47,7 @@ $(document).ready(function () {
         });
     
         //Init Google map
-        function initMap(){
+         var initMap = function (){
             //Set google map option
             var mapOptions = {
                 zoomControl: true,

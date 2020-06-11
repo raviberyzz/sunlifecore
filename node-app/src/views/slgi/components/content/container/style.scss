@@ -1,0 +1,56 @@
+@import "../../../base/core";
+@import "../../../../core/components/content/container/style";
+
+
+/* Homepage Triple CTA */
+.orange-icon-white-background {
+  @extend .yellow-icon-white-background;
+  border: 1px solid $light-grey-separator-color;
+  .cta-content-icon-wrapper {
+    .icon-style {
+      background-color: $cinnamon-orange;
+      background-image: none;
+    }
+    .icon-texts {
+      p:last-child {
+        padding-top: 24px;
+      }
+    }
+  }
+}
+
+.company-highlight-blue-orange {
+  @extend .company-highlight-yellow-grey-background;
+  background: linear-gradient(to bottom, $dark-blue 50%, $white-smoke 50%);
+
+  h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6{
+    color: $white-shade;
+  }
+  .view-all-category::after{
+    color: $cinnamon-orange;  /* Turn chevron dark-blue */
+  }
+}
+
+/* Desktop only styles start */
+@media (max-width: $desktop-screen-min){
+  .cta-content-icon-wrapper .icon-style.fa-map-o {
+    padding: 17px 15px 15px 15px;   /* Center Map-Icon within circle */
+  }
+}
+/* Desktop only styles end */
+
+/* Tablet only styles start */
+@media (min-width: $tab-screen-min ) and (max-width: $tab-screen-max){
+  a.icon-style.fa.fa-map-o {
+    padding: 11px 11px 11px 8px;
+  }
+}
+/* Tablet only styles end */
+
+/* Mobile only styles start*/
+@media (max-width: $mobile-screen-max){
+  a.icon-style.fa.fa-map-o {
+    padding: 11px 11px 11px 8px;
+  }
+}
+/* Mobile only styles end*/

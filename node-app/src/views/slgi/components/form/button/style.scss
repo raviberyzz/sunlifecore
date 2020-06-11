@@ -1,0 +1,28 @@
+@import '../../../base/core';
+
+.button-wrapper{
+  .cmp-form-button{
+    &:hover {
+      background-color: $dark-blue;
+    }
+  }
+}
+
+.primary-blue-button-form {
+  button{
+  background-color: $dark-blue;
+  }
+}
+.primary-yellow-button-form {
+  button{
+  color: $dark-blue;
+
+  }
+}
+.secondary-button-form {
+  button{
+  color: $dark-blue;
+  border: 2px solid $dark-blue;
+
+  }
+}

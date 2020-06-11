@@ -34,6 +34,31 @@ $(document).ready(function(){
   
       return $("#qc_q2_ans").val();
   }
+  function getProductName() {  
+    var productName = "";
+    productName=$("link[rel='canonical']").attr('href');				
+    productName=productName.split('/');
+    productName=productName[productName.length-2];
+    let product='';
+    if(productName.indexOf('-')!=-1){
+        productName=productName.split('-');
+        productName[0]=productName[0].replace(/h/,'H');
+        for(let i=0;i<productName.length;i++){
+          if(i==0){
+              productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
+              product+=productName[i];
+          }
+          else{
+              productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
+              product+='_'+productName[i];
+          }
+      }
+    }else{
+      productName=productName.charAt(0).toUpperCase() + productName.slice(1);
+        product=productName.replace(/h/,'H');
+    }
+    return product;
+}
   
   var qc_optgender = "";
   var qc_optsmoke = "";
@@ -41,8 +66,6 @@ $(document).ready(function(){
   var dd1open = 0;
   var qc_formvalid = false;
   var langcalc = 'en';
-  $(document).ready(
-      function() {
           //var locale = $.urlParam('vgnLocale');
           var locale="en_CA";
           if (locale != null) {
@@ -187,7 +210,7 @@ $(document).ready(function(){
               var productName = getProductName();
           var url = window.location.href;
         var secondDrop = getSecQusAns();
-              if (productName == "SunHealth_Medical_Care") {
+              if (productName == "SunHealth_Medical_Care" || "WeHealth" || "WeHealth_Plus") {
                   utag.link({
                       ev_type: "calc",
                       ev_action: "clk",
@@ -202,7 +225,7 @@ $(document).ready(function(){
                       ev_action: "clk",
                       ev_title: "quick quote",
                       ev_data_one: "step 2",
-                      ev_data_two: "" + productName + ":gender=" + secondDrop + "",
+                      ev_data_two: "" + productName + ":annual deductible=" + secondDrop + "",
                       page_url: url
                   });
               }
@@ -237,8 +260,7 @@ $(document).ready(function(){
                   ev_action: "clk",
                   ev_title: "quick quote",
                   ev_data_one: "premium plan",
-                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + "",
-                  page_url: pageURLTag
+                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
               });
               advsleadClk = false;
           });
@@ -271,8 +293,7 @@ $(document).ready(function(){
                   ev_action: "clk",
                   ev_title: "quick quote",
                   ev_data_one: "premium plan",
-                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + "",
-                  page_url: pageURLTag
+                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
               });
               advsleadClk = false;
           });
@@ -306,8 +327,7 @@ $(document).ready(function(){
                   ev_action: "clk",
                   ev_title: "quick quote",
                   ev_data_one: "premium plan",
-                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + "",
-                  page_url: pageURLTag
+                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
               });
               advsleadClk = false;
           });
@@ -339,8 +359,7 @@ $(document).ready(function(){
                   ev_action: "clk",
                   ev_title: "quick quote",
                   ev_data_one: "premium plan",
-                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + "",
-                  page_url: pageURLTag
+                  ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
               });
               advsleadClk = false;
   
@@ -362,33 +381,6 @@ $(document).ready(function(){
               if ($("#qc_q2_ans").val() == "" || $("#qc_q2_ans").val() == null)
                   $("#qc_q2_ans").removeClass("isAnsOut");
           });
-  
-          //getting from utag
-          function getProductName() {  
-              var productName = "";
-              productName=$("link[rel='canonical']").attr('href');				
-              productName=productName.split('/');
-              productName=productName[productName.length-2];
-              let product='';
-              if(productName.indexOf('-')!=-1){
-              	productName=productName.split('-');
-                  productName[0]=productName[0].replace(/h/,'H');
-              	for(let i=0;i<productName.length;i++){
-                    if(i==0){
-						productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
-                    	product+=productName[i];
-                    }
-                    else{
-                        productName[i]=productName[i].charAt(0).toUpperCase() + productName[i].slice(1);
-                    	product+='_'+productName[i];
-                    }
-                }
-              }else{
-				productName=productName.charAt(0).toUpperCase() + productName.slice(1);
-                  product=productName.replace(/h/,'H');
-              }
-              return product;
-          }
           $("#qc_submit .btn").click(function() {
               if (qc_formvalid) {
                   $(".qc_loading_ani").show();
@@ -417,8 +409,7 @@ $(document).ready(function(){
                               ev_action: "submit",
                               ev_title: "quick quote",
                               ev_data_one: "step 3:last interaction",
-                              ev_data_two: "" + product + ":age=" + age + ":gender =" + secondDrop + "",
-                                page_url: pageURLTag 
+                              ev_data_two: "" + product + ":age=" + age + ":gender =" + secondDrop + ""
                           });
                      else
                           utag.link({
@@ -426,8 +417,7 @@ $(document).ready(function(){
                               ev_action: "submit",
                               ev_title: "quick quote",
                               ev_data_one: "step 3:last interaction",
-                              ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + "",
-                              page_url: pageURLTag
+                              ev_data_two: "" + product + ":age=" + age + "annual deductible=" + secondDrop + ""
                           });
                  else
                       utag.link({
@@ -435,8 +425,7 @@ $(document).ready(function(){
                             ev_action: "submit",
                             ev_title: "quick quote",
                             ev_data_one: "step 2:last interaction",
-                            ev_data_two: "" + product + ":age=" + age + "",
-                            page_url: pageURLTag
+                            ev_data_two: "" + product + ":age=" + age + ""
                         });
                   var json = new Object();
                   json.key = key1;
@@ -458,7 +447,6 @@ $(document).ready(function(){
 
               }      
           });
-      });
   
   function calcTime(offset) {
       // create Date object for current location
@@ -533,8 +521,7 @@ $(document).ready(function(){
               ev_action: "submit",
               ev_title: "talk-to-an-advisor-lead-gen-form",
               ev_data_one: "successful submission:tool referrer=quick quote",
-              ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + "",
-              page_url: pageURLTag
+              ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
           });
       } else {
           if ($(".parsley-errors-list").hasClass("filled")) {
@@ -544,8 +531,7 @@ $(document).ready(function(){
                         ev_type: "lead_form",
                         ev_action: "submit",
                         ev_title: "talk-to-an-advisor-lead-gen-form",
-                        ev_data_one: "error",
-                        page_url: pageURLTag
+                        ev_data_one: "error"
                     });
                 }
             } else {
@@ -555,53 +541,53 @@ $(document).ready(function(){
                         ev_type: "lead_form",
                         ev_action: "submit",
                         ev_title: "talk-to-an-advisor-lead-gen-form",
-                        ev_data_one: "successful submission",
-                        page_url: pageURLTag
+                        ev_data_one: "successful submission"
                     });
                 }
           }
       }
   
   });
-  //Tagging for facebook
-  $(".icon-facebook").click(function() {
-    var pageURLTag = $(location).attr("href");
-      var product = getProductName();
-       utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "facebook share", 
-        ev_data_two: "+product+",
-        page_url: pageURLTag 
-    });
-  });
-  //Tagging for linkedin
-  $(".icon-linkedin").click(function() {
-    var pageURLTag = $(location).attr("href");
-      var product = getProductName();
-     utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "linkedin share", 
-        ev_data_two: "+product+",
-        page_url: pageURLTag 
-    });
-  });
-  //Tagging for twitter
-  $(".icon-twitter").click(function() {
-    var pageURLTag = $(location).attr("href");
-      var product = getProductName();
-     utag.link({ 
-        ev_type: "calc", 
-        ev_action: "clk", 
-        ev_title: "quick quote", 
-        ev_data_one: "twitter share", 
-        ev_data_two: "+product+",
-        page_url: pageURLTag 
-    });
-  });
+  let pageName= utag_data.page_breadcrumb.split("/");
+  let productTitle = pageName[pageName.length - 1].toLowerCase();
+  if(productTitle == ('sunhealth medical premier' || 'sunhealth medical care' || 'sunhealth medical essential' || 'wehealth' || 'wehealth plus')){
+    //Tagging for facebook
+    $(".fa-facebook-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+           utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "facebook share", 
+            ev_data_two: productTitle
+        });
+      });
+      //Tagging for linkedin
+      $(".fa-linkedin-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+         utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "linkedin share", 
+            ev_data_two: productTitle
+        });
+      });
+      //Tagging for twitter
+      $(".fa-twitter-square").click(function() {
+        var pageURLTag = $(location).attr("href");
+          //var product = getProductName();
+         utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "twitter share", 
+            ev_data_two: productTitle 
+        });
+      });
+  } 
   //Function for all common /WeHealth ,SunHealth+Medical+Care & WeHealth+Plus.
   function getSecQusAns() {
     

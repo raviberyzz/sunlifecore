@@ -1,0 +1,23 @@
+@import '../../../base/core';
+
+.slf-mobile-header-wrapper{
+
+    /* Hamburger Menu Start */
+    .hamburger-menu-wrapper{
+      .language-region{
+        .mobile-language-region{
+          .go-back{
+            background-color: $dark-blue;
+          }
+          .tab-content {
+            background-color: $white-smoke;
+          }
+        }
+        .second-level-navigation {
+          background-color: $white-smoke;
+        }
+      }
+    }
+    /* Hamburger Menu End */
+
+}
