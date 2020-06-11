@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log('accordion changes');
     $('.accordion-container .cmp-accordion__header').click(function(){
         if($(this).siblings('.accordion-container .cmp-accordion__panel').hasClass('in')){
             $(this).find('.cmp-accordion__button').attr('aria-expanded',false);
