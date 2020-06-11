@@ -548,8 +548,7 @@ $(document).ready(function(){
       }
   
   });
-  let pageName= utag_data.page_breadcrumb.split("/");
-  let productTitle = pageName[pageName.length - 1].toLowerCase();
+  let productTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
   if(productTitle == ('sunhealth medical premier' || 'sunhealth medical care' || 'sunhealth medical essential' || 'wehealth' || 'wehealth plus')){
     //Tagging for facebook
     $(".fa-facebook-square").click(function() {

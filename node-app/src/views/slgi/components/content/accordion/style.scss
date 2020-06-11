@@ -1,0 +1,32 @@
+@import '../../../base/core';
+
+.accordion-container{
+   .cmp-accordion__item{
+    background-color:$white-smoke;
+    .cmp-accordion__header{
+        color:$dark-blue;
+    }
+   }
+}
+
+.expand-collapse{
+    .cmp-accordion__item{
+        background-color:$white-smoke;
+        .cmp-accordion__header{
+            color:$dark-blue;
+            .cmp-accordion__button{
+                &[aria-expanded="false"] {
+                    &::before {
+                        color:$dark-blue;
+                    }
+                }
+                &[aria-expanded="true"] {
+                    &::before {
+                        color:$dark-blue;
+
+                    }
+                }
+            }
+        }
+    }
+}

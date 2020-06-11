@@ -723,6 +723,11 @@
    {
        margin-top: 10px;
    }
+   input[type=checkbox]:checked:after
+   {
+    margin-top: 1px;
+    margin-left: 4px;
+   }
 } 
   
 /* Lead Gen Form Ends Here*/

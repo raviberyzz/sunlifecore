@@ -37,7 +37,7 @@ $(document).ready(function () {
 	     };
         //rssFeed();	
         if(exists){
-        setupAdvisorBio();
+        //setupAdvisorBio();
         //setupAdvCookie();
     
         //Google large map link event

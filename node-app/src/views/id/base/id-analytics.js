@@ -33,34 +33,106 @@ $("#SignIn,#signinbutton").click(function(){
         ev_data_one: "existing client"
 });
     });
-    $("#passwordDiv .moreon a").click(function(){
-        var signLink=$(this).text();
+    $('#id_sign_in').on('change', function() {
+        var dropdown=$('#id_sign_in option:selected').text();
         utag.link({ 
             ev_type: "authenticate", 
             ev_action: "clk", 
             ev_title: "sign in", 
-            ev_data_one: signLink
-        });
+            ev_data_one: "Selected dropdown= " +dropdown
+            });              
     });      
 /* Sign in modal analytics starts here */
 /* contact us analytics starts here */
-$(".contact-us").click(function(){
-    utag.view({ 
-        ev_type: "other", 
-        ev_action: "onpage_impr", 
-        ev_title: "contact-us-form", 
-        ev_data_one: "form selected"
-        });        
-})
-$(".contact-us dropdown").click(function(){
-    utag.link({ 
-        ev_type: "other", 
-        ev_action: "clk", 
-        ev_title: "contact-us-form", 
-        ev_data_one: "nature of enquiry="+$(this).value()
-        });              
-});
+if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='contact us')){
+    $(".cmp-form-button").click(function(){
+            setTimeout(
+                function() {
+                        if ($(".parsley-errors-list").hasClass("filled")) {
+                            // Submit clicked tracked with error
+                            if (typeof utag !== 'undefined') {
+                                var errorMsgContactUs= $('.parsley-custom-error-message').text();
+                                utag.link({ 
+                                    ev_type: "other", 
+                                    ev_action: "clk", 
+                                    ev_title: "contact-us-form", 
+                                    ev_data_one: "err:" + errorMsgContactUs
+                                    })                     
+                            }
+                        }
+                        else{
+                             // Submit clicked tracked with no error
+                            if (typeof utag !== 'undefined') {
+                                utag.link({ 
+                                    ev_type: "other", 
+                                    ev_action: "clk", 
+                                    ev_title: "contact-us-form", 
+                                    ev_data_one: "successful submission"
+                                    })        
+                           }
+                        }
+                },
+                1000);
+        });
+    $(".icon-parent .fa-facebook-square").click(function(){
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "facebook share"
+        });       
+    });
+    $(".icon-parent .fa-linkedin-square").click(function(){
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "linkedin share"
+        });             
+    });
+    $(".icon-parent .fa-twitter-square").click(function(){
+        utag.link({ 
+            ev_type: "ohter", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "twitter share"
+        });                     
+    });
+}
 /* contact us analytics ends here */
+/* Talk to an advisor form analytics starts here */
+if(($(".titlebar .cmp-title__text").text()=='Your nearest Sun Life') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='your nearest sun life')){
+    $(".form-container-component .cmp-form-button").click(function(){
+            setTimeout(
+                function() {
+                        if ($(".parsley-errors-list").hasClass("filled")) {
+                            // Submit clicked tracked with error
+                            if (typeof utag !== 'undefined') {
+                                var errorMsgContactUs= $('.parsley-custom-error-message').text();
+                                utag.link({ 
+                                    ev_type: "lead_form", 
+                                    ev_action: "submit",                                     
+                                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                                    ev_data_one: "err:" + errorMsgContactUs
+                                    })                     
+                            }
+                        }
+                        else{
+                             // Submit clicked tracked with no error
+                            if (typeof utag !== 'undefined') {
+                                utag.link({ 
+                                    ev_type: "lead_form", 
+                                    ev_action: "submit", 
+                                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                                    ev_data_one: "successful submission"
+                                    })
+                           }
+                        }
+                },
+                1000);
+        });
+}
+/* Talk to an advisor form analytics ends here */
 /* desktop language and region bar cross button stopping analytics from core starts here */
     $(".desktop-region-language-menu-wrapper .sunLanguageCrossBtn").click(function(event){
         event.stopImmediatePropagation();
@@ -177,7 +249,7 @@ if(($(".titlebar .cmp-title__text").text()=='Education budget calculator') || ($
 }
 /* Education Budget Calculator ends here */
 /* Investment Risk Assesment starts here */
-if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='investment risk assessment')){
+if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='investment risk assessment')){
    //continue button in modal
     $("#disclaimer-popup .slf-blue-button.btn-close").click(function(){
         utag.link({ 
@@ -306,14 +378,14 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     });
     /* cta link click */
     $("#tool_cta .display-table span .cta-link").click(function(){
-        if($(this).find('.nowrap').text().toLowerCase().trim()=='now' || $(this).text().trim()=='立即計算您的退休儲蓄'){
+        if($(this).find('.nowrap').text().toLowerCase().trim()=='now'){
             utag.link({ 
                 ev_type: "calc", 
                 ev_action: "clk", 
                 ev_title: "investment risk assessment", 
                 ev_data_one: "retirement savings"
             });
-        }else if($(this).find('.nowrap').text().toLowerCase().trim()=='products' || $(this).text().trim()=='了解更多我們的產品'){
+        }else if($(this).find('.nowrap').text().toLowerCase().trim()=='products'){
             utag.link({ 
                 ev_type: "calc", 
                 ev_action: "clk", 
@@ -357,7 +429,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
 }
 /* Investment Risk Assesment ends here */
 /* Health Calculator starts here */
-    /* start estimate */
+    /*start estimate */
     $("#startBtn.mcice__button.mcice__button-start").click(function(){
         utag.link({ 
             ev_type: "calc", 
@@ -455,7 +527,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
         });            
     });
     /* social media sharing */
-    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')||$(".titlebar .cmp-title__text").text().match('醫治重病開支估算')){
+    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')){
         $(".icon-parent .fa-facebook-square").click(function(){
             utag.link({ 
                 ev_type: "calc", 
@@ -481,13 +553,15 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
             });                     
         });
     }
+
+
 /* Health Calculator ends here */
 /* talk to advisor form starts here */
     // talk to advisor click
     let talk;
     $(".cmp-tabs__tab").click(function(){
         talk='true';
-        if($(this).text().toLowerCase().match('talk to an advisor')||$(this).text().match('聯絡理財顧問')){
+        if($(this).text().toLowerCase().match('talk to an advisor')){
             utag.view({ 
                 ev_type: "lead_form", 
                 ev_action: "onpage_impr", 
@@ -578,7 +652,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
         let fundTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
         let fundTab=$(this).text().toLowerCase();
-        if(fundTitle.indexOf('mpf fund prices') != -1 || fundTitle.indexOf('強積金基金價格及表現') != -1){ 
+        if(fundTitle.indexOf('mpf fund prices') != -1){ 
             utag.link({
                 ev_type: "other", 
                 ev_action: "clk", 
@@ -607,8 +681,8 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
         }
         //Tagging for submit click when Employee selected
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
-            if (firstDrop == "Employee" || firstDrop =='我的僱員') {
+        if (homePage == "home" || homePage == "bright_solutions") {
+            if (firstDrop == "Employee") {
                 if (typeof utag !== 'undefined') {
                     utag.link({
                         ev_type: "calc",
@@ -619,7 +693,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
                     });
                 }
             } 
-            else if (firstDrop == "Myself or Family" || firstDrop =='自己或家人') {
+            else if (firstDrop == "Myself or Family") {
                 //Tagging for submit click when myself or family selected
                 if (secondDrop != "") {
                     if (typeof utag !== 'undefined') {
@@ -647,10 +721,10 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     //Tagging for Find And Advisor
     $(".right-navigation-wrapper a").click(function() {
         var clickText = $(this).children('span').text();
-        if(clickText == "Talk to our Advisor" || clickText=='聯絡理財顧問'){
+        if(clickText == "Talk to our Advisor"){
             //Clicking submit button and Find And Advisor 
             var homePage = getProductName();
-            if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
+            if (homePage == "home" || homePage == "bright_solutions") {
                 if (AdvisorFag == "true") {
                     //Tagging for submit click when Employee selected
                     //For HK
@@ -680,13 +754,6 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
                         }
                     } 
                     localStorage.setItem("brightPage", true);
-                    function localClean(){
-                        localStorage.removeItem('brightPage');
-                        localStorage.removeItem('brightValue1');
-                        localStorage.removeItem('brightValue2');
-                        localStorage.removeItem('someVarKey');
-                    }
-                    setTimeout(localClean,1000*60*10);// clearing local after 10 minmutes due to inactivity
                 } // advsleadClk == false End
             }
         }
@@ -694,7 +761,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     //facebook share
     $(".icon-parent .fa-facebook-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions"  || homePage=='策劃閃耀人生') {
+        if (homePage == "home" || homePage == "bright_solutions") {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -706,7 +773,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     //twitter share
     $(".icon-parent .fa-twitter-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
+        if (homePage == "home" || homePage == "bright_solutions") {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -718,7 +785,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
     //linkedin share
     $(".icon-parent .fa-linkedin-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
+        if (homePage == "home" || homePage == "bright_solutions") {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -737,7 +804,6 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
             localStorage.removeItem('brightPage');
             localStorage.removeItem('brightValue1');
             localStorage.removeItem('brightValue2');
-            localStorage.removeItem('someVarKey');
         }
         if (brightPage) {
             /* reditrecting from bright Solution */
@@ -750,7 +816,7 @@ if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titleb
                     ev_data_one: "error"
                 });                    
                 // parsley-errors-list finished 
-            } else if(brightValue.toLowerCase()=='employee' || brightValue=='我的僱員') {
+            } else if(brightValue.toLowerCase()=='employee') {
                 /* first value is employee */
                 utag.link({ 
                     ev_type: "lead_form", 

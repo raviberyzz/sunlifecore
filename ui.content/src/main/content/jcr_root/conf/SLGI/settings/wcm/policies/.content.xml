@@ -858,6 +858,11 @@
                                             cq:styleId="1577978785270"
                                             cq:styleLabel="CTA Three Column"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="orange-icon-white-background"
+                                            cq:styleId="1577008785274"
+                                            cq:styleLabel="Orange Icon White Background"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item1>
                                 <item2
@@ -884,6 +889,11 @@
                                             cq:styleId="1570202939384"
                                             cq:styleLabel="Light orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="company-highlight-blue-orange"
+                                            cq:styleId="1570204539385"
+                                            cq:styleLabel="Blue Orange"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
                                 <item3
