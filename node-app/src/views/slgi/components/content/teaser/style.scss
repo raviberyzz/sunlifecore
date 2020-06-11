@@ -1,5 +1,17 @@
 @import '../../../base/core';
+@import '../../../../core/base/core.scss';
 
+.editorial-hero-banner {
+  .right-image-position, .left-image-position  {
+    background: $white-smoke;
+  }
+
+}
+.editorial-hero-banner.editorial-hero-banner-orange{
+  .right-image-position, .left-image-position  {
+    background: $light-orange-20;
+  }
+}
 .round-border {
   img {
       border: 4px solid $cinnamon-orange;

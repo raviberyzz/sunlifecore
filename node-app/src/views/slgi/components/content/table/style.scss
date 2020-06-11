@@ -1,0 +1,28 @@
+@import '../../../base/core';
+@import '../../../../core/base/core.scss';
+
+/*this is in reference to data table in the slgi style guide*/
+.cmp-table-data-content{
+    border: 1px solid $grey-previous-background-color;
+   tbody{
+       tr{
+           th{
+               background:$dark-blue;
+               color:$white-shade;
+           }
+       }
+   }
+}
+
+/* Data content table which is specific to SLGI styles start here */
+.data-content-table{
+    border: 1px solid $grey-previous-background-color;
+    tbody{
+        tr{
+            th{
+                background:$white-smoke;
+            }
+        }
+    }
+
+}
