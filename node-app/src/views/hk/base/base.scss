@@ -143,3 +143,10 @@ body:lang(zh-SG) {
         }
     }
 }
+
+//Checkbox style for generic
+input[type=checkbox]:checked:after
+{
+    margin-top: 1px;
+    margin-left: 4px;
+}
