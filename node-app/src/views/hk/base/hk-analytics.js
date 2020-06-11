@@ -680,6 +680,13 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                         }
                     } 
                     localStorage.setItem("brightPage", true);
+                    function localClean(){
+                        localStorage.removeItem('brightPage');
+                        localStorage.removeItem('brightValue1');
+                        localStorage.removeItem('brightValue2');
+                        localStorage.removeItem('someVarKey');
+                    }
+                    setTimeout(localClean,1000*60*10);// clearing local after 10 minmutes due to inactivity
                 } // advsleadClk == false End
             }
         }
@@ -730,6 +737,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             localStorage.removeItem('brightPage');
             localStorage.removeItem('brightValue1');
             localStorage.removeItem('brightValue2');
+            localStorage.removeItem('someVarKey');
         }
         if (brightPage) {
             /* reditrecting from bright Solution */
