@@ -33,34 +33,106 @@ $("#SignIn,#signinbutton").click(function(){
         ev_data_one: "existing client"
 });
     });
-    $("#passwordDiv .moreon a").click(function(){
-        var signLink=$(this).text();
+    $('#id_sign_in').on('change', function() {
+        var dropdown=$('#id_sign_in option:selected').text();
         utag.link({ 
             ev_type: "authenticate", 
             ev_action: "clk", 
             ev_title: "sign in", 
-            ev_data_one: signLink
-        });
+            ev_data_one: "Selected dropdown= " +dropdown
+            });              
     });      
 /* Sign in modal analytics starts here */
 /* contact us analytics starts here */
-$(".contact-us").click(function(){
-    utag.view({ 
-        ev_type: "other", 
-        ev_action: "onpage_impr", 
-        ev_title: "contact-us-form", 
-        ev_data_one: "form selected"
-        });        
-})
-$(".contact-us dropdown").click(function(){
-    utag.link({ 
-        ev_type: "other", 
-        ev_action: "clk", 
-        ev_title: "contact-us-form", 
-        ev_data_one: "nature of enquiry="+$(this).value()
-        });              
-});
+if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='contact us')){
+    $(".cmp-form-button").click(function(){
+            setTimeout(
+                function() {
+                        if ($(".parsley-errors-list").hasClass("filled")) {
+                            // Submit clicked tracked with error
+                            if (typeof utag !== 'undefined') {
+                                var errorMsgContactUs= $('.parsley-custom-error-message').text();
+                                utag.link({ 
+                                    ev_type: "other", 
+                                    ev_action: "clk", 
+                                    ev_title: "contact-us-form", 
+                                    ev_data_one: "err:" + errorMsgContactUs
+                                    })                     
+                            }
+                        }
+                        else{
+                             // Submit clicked tracked with no error
+                            if (typeof utag !== 'undefined') {
+                                utag.link({ 
+                                    ev_type: "other", 
+                                    ev_action: "clk", 
+                                    ev_title: "contact-us-form", 
+                                    ev_data_one: "successful submission"
+                                    })        
+                           }
+                        }
+                },
+                1000);
+        });
+    $(".icon-parent .fa-facebook-square").click(function(){
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "facebook share"
+        });       
+    });
+    $(".icon-parent .fa-linkedin-square").click(function(){
+        utag.link({ 
+            ev_type: "other", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "linkedin share"
+        });             
+    });
+    $(".icon-parent .fa-twitter-square").click(function(){
+        utag.link({ 
+            ev_type: "ohter", 
+            ev_action: "clk", 
+            ev_title: "contact-us-form", 
+            ev_data_one: "twitter share"
+        });                     
+    });
+}
 /* contact us analytics ends here */
+/* Talk to an advisor form analytics starts here */
+if(($(".titlebar .cmp-title__text").text()=='Your nearest Sun Life') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='your nearest sun life')){
+    $(".form-container-component .cmp-form-button").click(function(){
+            setTimeout(
+                function() {
+                        if ($(".parsley-errors-list").hasClass("filled")) {
+                            // Submit clicked tracked with error
+                            if (typeof utag !== 'undefined') {
+                                var errorMsgContactUs= $('.parsley-custom-error-message').text();
+                                utag.link({ 
+                                    ev_type: "lead_form", 
+                                    ev_action: "submit",                                     
+                                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                                    ev_data_one: "err:" + errorMsgContactUs
+                                    })                     
+                            }
+                        }
+                        else{
+                             // Submit clicked tracked with no error
+                            if (typeof utag !== 'undefined') {
+                                utag.link({ 
+                                    ev_type: "lead_form", 
+                                    ev_action: "submit", 
+                                    ev_title: "talk-to-an-advisor-lead-gen-form", 
+                                    ev_data_one: "successful submission"
+                                    })
+                           }
+                        }
+                },
+                1000);
+        });
+}
+/* Talk to an advisor form analytics ends here */
 /* desktop language and region bar cross button stopping analytics from core starts here */
     $(".desktop-region-language-menu-wrapper .sunLanguageCrossBtn").click(function(event){
         event.stopImmediatePropagation();
@@ -357,7 +429,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
 }
 /* Investment Risk Assesment ends here */
 /* Health Calculator starts here */
-    /* start estimate */
+    /*start estimate */
     $("#startBtn.mcice__button.mcice__button-start").click(function(){
         utag.link({ 
             ev_type: "calc", 
@@ -481,6 +553,8 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             });                     
         });
     }
+
+
 /* Health Calculator ends here */
 /* talk to advisor form starts here */
     // talk to advisor click
@@ -680,13 +754,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                         }
                     } 
                     localStorage.setItem("brightPage", true);
-                    function localClean(){
-                        localStorage.removeItem('brightPage');
-                        localStorage.removeItem('brightValue1');
-                        localStorage.removeItem('brightValue2');
-                        localStorage.removeItem('someVarKey');
-                    }
-                    setTimeout(localClean,1000*60*10);// clearing local after 10 minmutes due to inactivity
                 } // advsleadClk == false End
             }
         }
@@ -737,7 +804,6 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
             localStorage.removeItem('brightPage');
             localStorage.removeItem('brightValue1');
             localStorage.removeItem('brightValue2');
-            localStorage.removeItem('someVarKey');
         }
         if (brightPage) {
             /* reditrecting from bright Solution */

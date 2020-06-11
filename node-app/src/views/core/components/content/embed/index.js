@@ -1,13 +1,52 @@
 $(function () {
 
-	if ($('.video_container').length) {
+
+	var videoHref = $("a[href^='#fn_vidyard']");
+
+
+	if ($('.video_container').length || videoHref.length != 0) {
 		//dynamically injecting script tag
-		let scriptElem = document.createElement('script');
-		scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
-		document.getElementsByTagName('head')[0].appendChild(scriptElem);
+
+		if ($('.video_container').length) {
+			let scriptElem = document.createElement('script');
+			scriptElem.setAttribute('src', 'https://play.vidyard.com/embed/v4.js');
+			document.getElementsByTagName('head')[0].appendChild(scriptElem);
+		}
+
+		if (videoHref.length != 0) {
+			videoHref.each(function () {
+				var atr = $(this).attr("href");
+				var fnc = atr.replace("#", "")
+				$(this).attr("onClick", fnc);
+				$(this).attr("href", "javascript:void(0);");
+			})
+		}
 
 
-		function embedAnalytics() {
+		/*  function embedAnalytics(){
+			 //dynamically injecting script tag
+			let scriptElem1 = document.createElement('script');
+			scriptElem1.setAttribute('src', '/content/dam/vidyard_event_listener.js');
+			document.getElementsByTagName('body')[0].appendChild(scriptElem1);
+			}
+	
+		 setTimeout(embedAnalytics, 5000); */
+
+
+
+
+
+
+
+		/*Vidyard progress-events.js file
+Original code: play.vidyard.com/v1/progress-events.js
+Last custom edit (5/6/17): Implemented new check 
+if (s[t] != null && typeof s[t].interval != undefined){
+s[t].interval = [0, 0], u = !1
+}
+*/
+
+		function embedAnalytics(vyApi) {
 
 			! function (t) {
 				function e(t) {
@@ -76,7 +115,7 @@ $(function () {
 					var a, o = !0,
 						n = n || [1, 25, 50, 75, 90];
 					try {
-						a = new t.players
+						a = vyApi.players;
 					} catch (s) {
 						throw new Error("The Vidyard Player API must be loaded before this script can execute")
 					}
@@ -165,25 +204,39 @@ $(function () {
 				resetListeners();
 				var vidVidyard;
 				try {
-					vidVidyard = new Vidyard.players();
+					vidVidyard = vyApi.players;
 				} catch (e) {
 					throw new Error("Warning 1: The Vidyard API must be loaded before this script can execute");
 				}
 				/*Make analytics API calls during video defined events*/
-				var leng = Object.values(vidVidyard).length - 1;
-				Object.values(vidVidyard)[leng].on("ready", function () {
-					console.log("ready fucntion");
+				var leng = vidVidyard.length - 1;
+				vyApi.api.addReadyListener(function (_, player) {
 					utag.link({
-						"dcs_dcsuri": "/vidyard/" + this.metadata.name,
-						"wt_ti": "Vidyard/" + this.metadata.name,
+						"dcs_dcsuri": "/vidyard/" + player.metadata.name,
+						"wt_ti": "Vidyard/" + player.metadata.name,
 						"wt_dl": "6",
 						"dcsext_event_title": "player ready",
 						"ev_type": "vid",
 						"ev_action": "playlist_rdy",
-						"ev_title": "vidyard|" + this.metadata.name,
+						"ev_title": "vidyard|" + player.metadata.name,
 						"ev_data_one": ""
 					});
-				});
+				}, vidVidyard[leng].uuid);
+
+
+				/*Object.values(vidVidyard)[leng].on("ready", function(){
+						console.log("ready fucntion");
+								utag.link({
+						"dcs_dcsuri":"/vidyard/" + this.metadata.name,
+						"wt_ti":"Vidyard/" + this.metadata.name,
+						"wt_dl":"6",
+						"dcsext_event_title": "player ready",
+						"ev_type":"vid",
+						"ev_action":"playlist_rdy",
+						"ev_title":"vidyard|" + this.metadata.name,
+						"ev_data_one":""
+						});
+					});*/
 				for (var i in vidVidyard) {
 					if (vidVidyard.hasOwnProperty(i)) {
 						var playlistFlag = true;
@@ -286,22 +339,17 @@ $(function () {
 
 			VideoAnalyticsLoadEvent();
 		}
-		// this can be defined anywhere in the client code
-		// new Promise(res => window.vidyardEmbed
-		// 	? res(window.vidyardEmbed)
-		// 	: (window['onVidyardAPI'] = (vyApi) => res(vyApi))
-		// ).then((vyApi) => {
-		// 	embedAnalytics();
-		// });
-		
-		// new Promise(function (res) {
-		// 	return window.vidyardEmbed ? res(window.vidyardEmbed) : window['onVidyardAPI'] = function (vyApi) {
-		// 	  return res(vyApi);
-		// 	};
-		//   }).then(function (vyApi) {
-		// 	embedAnalytics(vyApi);
-		//   });
-		setTimeout(embedAnalytics, 2000);
+
+		if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
+			window.vidyardEmbed ? initApp(window.vidyardEmbed) : document.addEventListener('onVidyardAPI', function (_ref) {
+				var vyApi = _ref.detail;
+				return embedAnalytics(vyApi);
+			});
+		} else {
+			new Promise(function (d) { return window.vidyardEmbed ? d(window.vidyardEmbed) : window.onVidyardAPI = function (n) { return d(n) } }).then(function (n) { embedAnalytics(n) });
+		}
+
+
 	}
 
-})
+});

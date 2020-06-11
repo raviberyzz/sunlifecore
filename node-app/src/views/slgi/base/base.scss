@@ -25,6 +25,12 @@ a {
   }
 }
 
+.view-all-category {
+  &:after {
+    color: $cinnamon-orange;
+  }
+}
+
 /* Not mobile styles starts here */
 @media (min-width: $tab-screen-min){
   #mainfooter{
@@ -36,3 +42,4 @@ a {
   }
 }
 /* Not mobile styles starts here */
+
