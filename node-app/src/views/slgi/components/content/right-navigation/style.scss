@@ -1,10 +1,10 @@
 @import '../../../base/core';
 
 .right-navigation-wrapper{
-    > div{
-        background-color: $white-smoke;  
-    }
     >.cmp-container{
+        > div:not(.light-orange){
+            background-color: $white-smoke;  
+        }
         >.separator{
             .horizontal-middle-align{
                 border-bottom: 2px solid $armadillo-brown;
