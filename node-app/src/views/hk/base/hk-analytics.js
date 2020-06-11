@@ -177,7 +177,7 @@ if(($(".titlebar .cmp-title__text").text()=='Education budget calculator') || ($
 }
 /* Education Budget Calculator ends here */
 /* Investment Risk Assesment starts here */
-if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='investment risk assessment')){
+if(($(".titlebar .cmp-title__text").text()=='投資風險評估') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='investment risk assessment')){
    //continue button in modal
     $("#disclaimer-popup .slf-blue-button.btn-close").click(function(){
         utag.link({ 
@@ -306,14 +306,14 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     });
     /* cta link click */
     $("#tool_cta .display-table span .cta-link").click(function(){
-        if($(this).find('.nowrap').text().toLowerCase().trim()=='now'){
+        if($(this).find('.nowrap').text().toLowerCase().trim()=='now' || $(this).text().trim()=='立即計算您的退休儲蓄'){
             utag.link({ 
                 ev_type: "calc", 
                 ev_action: "clk", 
                 ev_title: "investment risk assessment", 
                 ev_data_one: "retirement savings"
             });
-        }else if($(this).find('.nowrap').text().toLowerCase().trim()=='products'){
+        }else if($(this).find('.nowrap').text().toLowerCase().trim()=='products' || $(this).text().trim()=='了解更多我們的產品'){
             utag.link({ 
                 ev_type: "calc", 
                 ev_action: "clk", 
@@ -455,7 +455,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         });            
     });
     /* social media sharing */
-    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')){
+    if($(".titlebar .cmp-title__text").text().toLowerCase().match('health calculator')||$(".titlebar .cmp-title__text").text().match('醫治重病開支估算')){
         $(".icon-parent .fa-facebook-square").click(function(){
             utag.link({ 
                 ev_type: "calc", 
@@ -487,7 +487,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     let talk;
     $(".cmp-tabs__tab").click(function(){
         talk='true';
-        if($(this).text().toLowerCase().match('talk to an advisor')){
+        if($(this).text().toLowerCase().match('talk to an advisor')||$(this).text().match('聯絡理財顧問')){
             utag.view({ 
                 ev_type: "lead_form", 
                 ev_action: "onpage_impr", 
@@ -578,7 +578,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
         let fundTitle=$(".titlebar .cmp-title__text").text().toLowerCase();
         let fundTab=$(this).text().toLowerCase();
-        if(fundTitle.indexOf('mpf fund prices') != -1){ 
+        if(fundTitle.indexOf('mpf fund prices') != -1 || fundTitle.indexOf('強積金基金價格及表現') != -1){ 
             utag.link({
                 ev_type: "other", 
                 ev_action: "clk", 
@@ -607,8 +607,8 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
         }
         //Tagging for submit click when Employee selected
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions") {
-            if (firstDrop == "Employee") {
+        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
+            if (firstDrop == "Employee" || firstDrop =='我的僱員') {
                 if (typeof utag !== 'undefined') {
                     utag.link({
                         ev_type: "calc",
@@ -619,7 +619,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     });
                 }
             } 
-            else if (firstDrop == "Myself or Family") {
+            else if (firstDrop == "Myself or Family" || firstDrop =='自己或家人') {
                 //Tagging for submit click when myself or family selected
                 if (secondDrop != "") {
                     if (typeof utag !== 'undefined') {
@@ -647,10 +647,10 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     //Tagging for Find And Advisor
     $(".right-navigation-wrapper a").click(function() {
         var clickText = $(this).children('span').text();
-        if(clickText == "Talk to our Advisor"){
+        if(clickText == "Talk to our Advisor" || clickText=='聯絡理財顧問'){
             //Clicking submit button and Find And Advisor 
             var homePage = getProductName();
-            if (homePage == "home" || homePage == "bright_solutions") {
+            if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
                 if (AdvisorFag == "true") {
                     //Tagging for submit click when Employee selected
                     //For HK
@@ -694,7 +694,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     //facebook share
     $(".icon-parent .fa-facebook-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions") {
+        if (homePage == "home" || homePage == "bright_solutions"  || homePage=='策劃閃耀人生') {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -706,7 +706,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     //twitter share
     $(".icon-parent .fa-twitter-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions") {
+        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -718,7 +718,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
     //linkedin share
     $(".icon-parent .fa-linkedin-square").click(function(){
         var homePage = getProductName();
-        if (homePage == "home" || homePage == "bright_solutions") {
+        if (homePage == "home" || homePage == "bright_solutions" || homePage=='策劃閃耀人生') {
             utag.link({ 
                 ev_type: "calc",
                 ev_action: "clk",
@@ -750,7 +750,7 @@ if(($(".titlebar .cmp-title__text").text()=='Investment Risk Assessment') || ($(
                     ev_data_one: "error"
                 });                    
                 // parsley-errors-list finished 
-            } else if(brightValue.toLowerCase()=='employee') {
+            } else if(brightValue.toLowerCase()=='employee' || brightValue=='我的僱員') {
                 /* first value is employee */
                 utag.link({ 
                     ev_type: "lead_form", 
