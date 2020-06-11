@@ -1,14 +1,26 @@
-@import '../../../base/core';
+@import "../../../base/core";
 
-
-.blue-gradient-background-box{
-  background-image: linear-gradient(#004C6C, #002d3c);
-  color: $white-shade;
-  // Blue/orange icons as per DSM
-  .overview-highlights-wrapper{
-    .icon-style {
+/* .orange-icon-blue-background style for 2-CTA's and Overview Highlight */
+.orange-icon-blue-background {
+  > * {
+    background-color: $dark-blue;
+    .icon-style{
       background: none;
-      background-color: $cinnamon-orange;
+      background-color: $cinnamon-orange;      
+    }
+    .icon-texts {
+      color: $white-shade;
     }
   }
 }
+
+
+/* Overview Highlights Specific Wrapper Start */
+.overview-content-wrapper {
+  .orange-icon-blue-background {
+    .cmp-container {
+      background: linear-gradient($medium-blue-color, $dark-blue);
+    }
+  }
+}
+/* Overview Highlights Specific Wrapper End */
