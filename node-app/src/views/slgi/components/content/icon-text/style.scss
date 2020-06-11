@@ -1,5 +1,12 @@
 @import "../../../base/core";
 
+.cta-content-icon-wrapper {
+  .icon-style {
+    background: none;
+    background-color: $cinnamon-orange;
+  }
+}
+
 /* .orange-icon-blue-background style for 2-CTA's and Overview Highlight */
 .orange-icon-blue-background {
   > * {

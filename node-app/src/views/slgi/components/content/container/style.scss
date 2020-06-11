@@ -7,6 +7,15 @@
 }
 /* Overview Highlights Wrapper End*/
 
+/* Tripple CTA Start */
+.cta-three-column-wrapper{
+  border: 1px solid $white-smoke;
+  > * {
+    background-color: $light-grey-color;
+  }
+}
+/* Tripple CTA End*/
+
 /* Homepage Triple CTA */
 .orange-icon-white-background {
   @extend .yellow-icon-white-background;
