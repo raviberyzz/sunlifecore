@@ -25,7 +25,7 @@ $(document).ready(function () {
     /* Carousel analytics ends here */
 
 /* Sign in modal analytics starts here */
-$("#SignIn,#signinbutton").click(function(){
+$("#signinbutton").click(function(){
     utag.link({ 
         ev_type: "authenticate", 
         ev_action: "clk", 
@@ -44,8 +44,8 @@ $("#SignIn,#signinbutton").click(function(){
     });      
 /* Sign in modal analytics starts here */
 /* contact us analytics starts here */
-if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='contact us')){
-    $(".cmp-form-button").click(function(){
+
+    $(".contact-us .cmp-form-button").click(function(){
             setTimeout(
                 function() {
                         if ($(".parsley-errors-list").hasClass("filled")) {
@@ -74,6 +74,7 @@ if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-
                 },
                 1000);
         });
+if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='contact us')){
     $(".icon-parent .fa-facebook-square").click(function(){
         utag.link({ 
             ev_type: "other", 
@@ -101,8 +102,7 @@ if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-
 }
 /* contact us analytics ends here */
 /* Talk to an advisor form analytics starts here */
-if(($(".titlebar .cmp-title__text").text()=='Your nearest Sun Life') || ($(".titlebar .cmp-title__text").text().toLowerCase()=='your nearest sun life')){
-    $(".form-container-component .cmp-form-button").click(function(){
+    $(".leadgen .cmp-form-button").click(function(){
             setTimeout(
                 function() {
                         if ($(".parsley-errors-list").hasClass("filled")) {
@@ -131,7 +131,7 @@ if(($(".titlebar .cmp-title__text").text()=='Your nearest Sun Life') || ($(".tit
                 },
                 1000);
         });
-}
+
 /* Talk to an advisor form analytics ends here */
 /* desktop language and region bar cross button stopping analytics from core starts here */
     $(".desktop-region-language-menu-wrapper .sunLanguageCrossBtn").click(function(event){
