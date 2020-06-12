@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  var popHeight = $(window).height();
-  $(".subscribe-popup-wrapper").height(popHeight);
   popUpWidth();
   function popUpWidth() {
     var popWidth = $(window).width();
