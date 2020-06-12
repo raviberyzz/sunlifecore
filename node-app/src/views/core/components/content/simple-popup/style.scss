@@ -135,9 +135,19 @@
         }
     }
 }
+@media (max-width: 360px){
+    .subscribe-popup-wrapper {
+        .modal-content {
+            transform: translate(-50%, -25%);        }
+    }
+}
+
 @media (max-width: $mobile-screen-max){
     .subscribe-popup-wrapper {
         .modal-content {
+            top: 5%;
+            left: 5%;
+            transform: unset;
             .close-popup {
                 left: 0;
             }
