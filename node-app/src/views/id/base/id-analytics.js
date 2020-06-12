@@ -685,10 +685,10 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
             if (firstDrop == "Get protected") {
                 if (typeof utag !== 'undefined') {
                     utag.link({
-                        ev_type: "calc",
-                        ev_action: "submit",
-                        ev_title: "bright curator",
-                        ev_data_one: "step 2:last interaction",
+                        ev_type: "calc", 
+                        ev_action: "submit", 
+                        ev_title: "bright curator", 
+                        ev_data_one: "step 3:last interaction", 
                         ev_data_two: "i would like to=" +firstDrop+ ":my purpose="+ secondDrop
 
                     });
@@ -722,12 +722,10 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
     //Tagging for Find And Advisor
     $(".right-navigation-wrapper a").click(function() {
         var clickText = $(this).children('span').text();
-        console.log(clickText);
-        if(clickText == "Talk to our Advisor"){
+        if(clickText == "Talk to our Advisor" || (clickText.toLowerCase()=='talk to our advisor')){
             //Clicking submit button and Find And Advisor 
             var homePage = getProductName();
             if (homePage == "home" || homePage == "bright_solutions") {
-                console.log(AdvisorFag);
                 if (AdvisorFag == "true") {
                     //Tagging for submit click when Employee selected
                     //For id
@@ -864,4 +862,13 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
         }
     });
     /* lead gen form ends here */
+    $("#get-a-quote-btn").click(function() {
+        var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "get a quote",
+            ev_data_one: productDropDownVal
+        });
+    });
 });
