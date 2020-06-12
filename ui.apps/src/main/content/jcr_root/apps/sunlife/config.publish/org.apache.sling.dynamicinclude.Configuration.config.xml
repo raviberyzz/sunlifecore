@@ -11,6 +11,7 @@
 	include-filter.config.appendSuffix="true"
 	include-filter.config.add_comment="true"
 	include-filter.config.rewrite="false"
-	include-filter.config.ttl=""/>
+	include-filter.config.ttl=""
+	include-filter.config.disableIgnoreUrlParams="true"/>
     
 	

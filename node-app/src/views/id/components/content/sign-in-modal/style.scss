@@ -48,6 +48,9 @@
             }
           }
           .login-container{
+                .customerSignInHeader{
+                    font-size:1.5rem;
+                }
                .form-group {
                     margin-bottom: 10px;
                     .btn-blue{
@@ -56,15 +59,23 @@
                         white-space: nowrap;
                         padding: 7px 19px;
                         margin: 20px 0 0 0;
-                        width:100px;
+                        width:inherit;
                         height:40px;
                         border:none;
+                        border-radius:0;
+                        &:hover{
+                            background-color:$cool-blue-color;
+                        }
                     }
-                    .btn[disabled]{
+                    .btn.btn-blue[disabled]{
                         opacity: 1;
                         background: $dark-grey-color;
                         border: 2px solid $dark-grey-color;
                         color:$white-shade;
+                        &:hover{
+                            background-color:$dark-grey-color;
+                            cursor:not-allowed;
+                        }
                     }
                }
           }

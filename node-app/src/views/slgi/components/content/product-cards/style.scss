@@ -1,0 +1,20 @@
+@import "../../../base/core";
+
+/* Product Card Styles Starts Here */
+.product-card {
+  .row {
+    div[class^="col-"] {
+      .container-component {
+        .cmp-container {
+          border: 2px solid $medium-grey-background;
+          .text {
+            &:first-child {
+              background: $white-smoke;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* Product Card Styles Ends Here */
