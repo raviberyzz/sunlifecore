@@ -1,13 +1,5 @@
 @import "../../../base/core";
 
-.button-wrapper {
-  .cmp-form-button {
-    &:hover {
-      background-color: $dark-blue;
-    }
-  }
-}
-
 .primary-blue-button-form {
   button {
     background-color: $dark-blue;
