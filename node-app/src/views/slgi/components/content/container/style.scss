@@ -19,6 +19,11 @@
   }
 }
 
+.mega-menu-icon-wrapper .icon-style {
+  background: none;
+  background-color: $cinnamon-orange;
+}
+
 /* Overview Highlights Wrapper Start */
 .overview-content-wrapper {
   .orange-icon-blue-background {
@@ -88,6 +93,18 @@
   }
 }
 /* Styles For Related Resources Ends */
+
+/* Cross Sell Cta Wrapper Starts Here */
+.cross-cta-wrapper {
+  background-color: $light-orange-30;
+  .mega-menu-icon-wrapper {
+    .icon-style {
+      background: none;
+      background-color: $cinnamon-orange;
+    } 
+  }
+}
+/* Cross Sell Cta Wrapper Ends Here */
 
 /* Desktop only styles start */
 @media (max-width: $desktop-screen-min){
