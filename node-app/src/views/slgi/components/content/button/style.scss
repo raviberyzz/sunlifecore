@@ -23,11 +23,13 @@
 /* White version-blue */
 .secondary-button {
   .button-class {
+    background-color: $white-shade;
     color: $dark-blue;
     border: 2px solid $dark-blue;
   }
 }
 .secondary-button-rte{
+  background-color: $white-shade;
   color: $dark-blue;
   border: 2px solid $dark-blue;
 }

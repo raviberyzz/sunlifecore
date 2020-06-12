@@ -34,6 +34,10 @@
   border: 1px solid $white-smoke;
   > * {
     background-color: $light-grey-color;
+    .icon-style{
+      background: none;
+      background-color: $cinnamon-orange;      
+    }
   }
 }
 /* Tripple CTA End*/
