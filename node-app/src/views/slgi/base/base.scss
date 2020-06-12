@@ -43,3 +43,11 @@ a {
 }
 /* Not mobile styles starts here */
 
+/* Turn bullet points to #D0651E as per DSM */
+.cmp-text, .text-section, .icon-texts, .article-wrapper .article-body{
+  ul{
+    li::before {
+      color: $cinnamon-orange;
+    }
+  }
+}

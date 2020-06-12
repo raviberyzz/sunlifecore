@@ -1,7 +1,7 @@
-@import '../../../base/core';
+@import "../../../base/core";
 
-.button-wrapper{
-  .cmp-form-button{
+.button-wrapper {
+  .cmp-form-button {
     &:hover {
       background-color: $dark-blue;
     }
@@ -9,20 +9,19 @@
 }
 
 .primary-blue-button-form {
-  button{
-  background-color: $dark-blue;
+  button {
+    background-color: $dark-blue;
   }
 }
 .primary-yellow-button-form {
-  button{
-  color: $dark-blue;
-
+  button {
+    color: $dark-blue;
   }
 }
 .secondary-button-form {
-  button{
-  color: $dark-blue;
-  border: 2px solid $dark-blue;
-
+  button {
+    background-color: $white-shade;
+    color: $dark-blue;
+    border: 2px solid $dark-blue;
   }
 }

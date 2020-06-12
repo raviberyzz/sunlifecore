@@ -30,11 +30,11 @@
 /* Overview Highlights Wrapper End*/
 
 /* Tripple CTA Start */
-.cta-three-column-wrapper{
+.cta-three-column-wrapper {
   border: 1px solid $white-smoke;
   > * {
     background-color: $light-grey-color;
-    .icon-style{
+    .icon-style {
       background: none;
       background-color: $cinnamon-orange;      
     }
@@ -66,17 +66,28 @@
   h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6{
     color: $white-shade;
   }
-  .view-all-category::after{
+  .view-all-category::after {
     color: $cinnamon-orange;  /* Turn chevron dark-blue */
   }
 }
 
 /* Tool Card Main Wrapper Starts Here*/
-.tool-card-main-wrapper{
+.tool-card-main-wrapper {
   .container-component {
     background-color: $white-smoke;
   }
 }
+/* Tool Card Main Wrapper Ends Here*/
+
+/* Styles For Related Resources Start */
+.cmp-related-resource {
+  background: $white-smoke;
+  .icon-parent {
+    background: none;
+    background-color: $cinnamon-orange;
+  }
+}
+/* Styles For Related Resources Ends */
 
 /* Desktop only styles start */
 @media (max-width: $desktop-screen-min){
@@ -95,7 +106,7 @@
 /* Tablet only styles end */
 
 /* Mobile only styles start*/
-@media (max-width: $mobile-screen-max){
+@media (max-width: $mobile-screen-max) {
   a.icon-style.fa.fa-map-o {
     padding: 11px 11px 11px 8px;
   }
