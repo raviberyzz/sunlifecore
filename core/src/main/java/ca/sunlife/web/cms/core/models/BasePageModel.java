@@ -816,7 +816,7 @@ public class BasePageModel {
     customMetadata.put(TWITTER_URL, seoCanonicalUrl);
     customMetadata.put(OG_DESCRIPTION, socialMediaDescripton);
     customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
-    customMetadata.put(OG_LOCALE, locale);
+    customMetadata.put(OG_LOCALE, null != locale ? locale.replace("-", "_") : null);
     if (socialMediaImage != null) {
       customMetadata.put(OG_IMAGE, domain + socialMediaImage);
       customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
@@ -1160,21 +1160,28 @@ public class BasePageModel {
   /**
    * Gets the advisor title.
    *
-   * @param inputJson
+   * @param advisorData
    *          the input json
    * @return the advisor title
    * @throws JSONException
    *           the JSON exception
    */
-  public String getAdvisorTitle(final JSONObject inputJson) throws JSONException {
+  public String getAdvisorTitle(final JSONObject advisorData) throws JSONException {
     logger.debug("Entry :: BasePageModel :: getAdvisorTitle :: ");
     String advisorTitle = null;
+    final JSONObject inputJson = new JSONObject(advisorData);
+    if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+        && !inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+            .equals(AdvisorDetailConstants.ERROR_CODE_SUCCESS_CONSTANT)) {
+    	logger.debug("BasePageModel :: getAdvisorTitle :: advisor details are not available");
+    	return advisorTitle;
+    }
     if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
-      final JSONObject advisorCorpJson = inputJson
+      final JSONObject advisorCorpJson = advisorData
           .getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
       advisorTitle = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
     } else {
-      final JSONObject advisorStdJson = inputJson
+      final JSONObject advisorStdJson = advisorData
           .getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
       advisorTitle = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
     }

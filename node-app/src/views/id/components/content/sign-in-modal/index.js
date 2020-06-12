@@ -8,26 +8,26 @@ $(document).ready(function () {
       }
   });
   function popupID(){
-var selectBox = document.getElementById('id_sign_in');
-var selIndex = selectBox.selectedIndex;
-  var selValue = selectBox.options[selIndex].value;	
-var day = new Date();
-var id = day.getTime();
-var tbar = 0;
-var sbar = 0;
-var mbar = 0;
+    var selectBox = document.getElementById('id_sign_in');
+    var selIndex = selectBox.selectedIndex;
+    var selValue = selectBox.options[selIndex].value;	
+    var day = new Date();
+    var id = day.getTime();
+    var tbar = 0;
+    var sbar = 0;
+    var mbar = 0;
     var rgn = window.location + '';
-    var url = selValue;   	
-if (selIndex == 2) {
-      tbar = 1;
-      sbar = 1;
-      mbar = 1;
-  
-}	
-eval("page" + id + " = window.open(url, '" + id + "', 'toolbar=" + tbar +", scrollbars=1, location=0, statusbar=" + sbar + ", menubar=" + mbar +", resizable=1, width=850, height=600, left = 215, top = 30');");
+    var urlId = selValue;
+    urlId=urlId;   	
+    if (selIndex == 2) {
+          tbar = 1;
+          sbar = 1;
+          mbar = 1; 
+    }	
+    eval("page" + id + " = window.open(urlId, '" + id + "', 'toolbar=" + tbar +", scrollbars=1, location=0, statusbar=" + sbar + ", menubar=" + mbar +", resizable=1, width=850, height=600, left = 215, top = 30');"); 
   }
   $("#signIn input").click(function(){
-popupID();
+    popupID();
   });
   function modalWidth(){
   var winWidth=$(window).width();

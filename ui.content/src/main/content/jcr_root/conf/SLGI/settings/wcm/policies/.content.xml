@@ -863,6 +863,11 @@
                                             cq:styleId="1577008785274"
                                             cq:styleLabel="Orange Icon White Background"
                                             jcr:primaryType="nt:unstructured"/>	
+										<item7
+                                            cq:styleClasses="orange-icon-blue-background"
+                                            cq:styleId="1577008785333"
+                                            cq:styleLabel="Orange Icon Blue Background"
+                                            jcr:primaryType="nt:unstructured"/>		
                                     </cq:styles>
                                 </item1>
                                 <item2

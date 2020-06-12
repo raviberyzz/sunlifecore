@@ -175,6 +175,9 @@ public class AdvisorDetailModel {
 
   /** The advisor map data. */
   private String advisorMapData;
+  
+  /** The if error scenario. */
+  private boolean isError;
 
   /**
    * Gets the advisor type.
@@ -614,7 +617,7 @@ public class AdvisorDetailModel {
   }
 
   /**
-   * Inits the.
+   * Inits sling model.
    */
   @ PostConstruct
   public void init() {
@@ -670,6 +673,9 @@ public class AdvisorDetailModel {
     String lat = null;
     String email = null;
     try {
+    	if(isError) {
+    		return;
+    	}
       final JSONObject inputJson = new JSONObject(advisorData);
 
       if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
@@ -764,16 +770,22 @@ public class AdvisorDetailModel {
    * @throws JSONException
    *           the JSON exception
    */
-  public void validateAdvisorData(final String advisorId) throws JSONException {
-    logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
-    final JSONObject inputJson = new JSONObject(advisorData);
-    if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
-        && inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
-            .equals(AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT)) {
-      setAlternateURL(advisorId);
-    }
-    logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
-  }
+	public void validateAdvisorData(final String advisorId) throws JSONException {
+		logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
+		final JSONObject inputJson = new JSONObject(advisorData);
+		if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT) && inputJson.get(
+		                                                            AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+		                                                            .equals(AdvisorDetailConstants.ERROR_CODE_LANGUAGE_NOT_SUPPORTED_CONSTANT)) {
+			isError = true;
+			setAlternateUrls(advisorId);
+		}
+		if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT) && inputJson.get(
+		                                                            AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+		                                                            .equals(AdvisorDetailConstants.ERROR_CODE_INVALID_ADVISOR_ID_CONSTANT)) {
+			isError = true;
+		}
+		logger.debug("Entry :: AdvisorDetailModel :: validateAdvisorData");
+	}
 
   /**
    * Sets the alternate URL.
@@ -781,8 +793,8 @@ public class AdvisorDetailModel {
    * @param advisorId
    *          the new alternate URL
    */
-  public void setAlternateURL(final String advisorId) {
-    logger.debug("Entry :: AdvisorDetailModel :: setAlternateURL");
+  public void setAlternateUrls(final String advisorId) {
+    logger.debug("Entry :: AdvisorDetailModel :: setAlternateUrls");
     alternateUrl = alternateUrl
         .replace(BasePageModelConstants.ADVISOR_ID_CANONICAL_URL_FORMAT_CONSTANT, advisorId)
         .replace(BasePageModelConstants.ADVISOR_TYPE_CANONICAL_URL_FORMAT_CONSTANT, advisorType);

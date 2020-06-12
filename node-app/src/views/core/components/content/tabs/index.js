@@ -31,5 +31,6 @@ $(document).ready(function(){
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
     $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
     $(tab).siblings().attr('tabindex','-1');
+    $(tab).attr('tabindex','0');
   }
 });
