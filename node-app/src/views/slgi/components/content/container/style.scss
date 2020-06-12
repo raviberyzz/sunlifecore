@@ -1,11 +1,42 @@
 @import "../../../base/core";
 @import "../../../../core/components/content/container/style";
 
-/* Overview Highlights Wrapper Start */
 .orange-icon-blue-background {
   @extend .blue-icon-yellow-background;
 }
+
+/* .orange-icon-blue-background style for 2-CTA's and Overview Highlight */
+.orange-icon-blue-background {
+  > * {
+    background-color: $dark-blue;
+    .icon-style{
+      background: none;
+      background-color: $cinnamon-orange;      
+    }
+    .icon-texts {
+      color: $white-shade;
+    }
+  }
+}
+
+/* Overview Highlights Wrapper Start */
+.overview-content-wrapper {
+  .orange-icon-blue-background {
+    .cmp-container {
+      background: linear-gradient($medium-blue-color, $dark-blue) !important;
+    }
+  }
+}
 /* Overview Highlights Wrapper End*/
+
+/* Tripple CTA Start */
+.cta-three-column-wrapper{
+  border: 1px solid $white-smoke;
+  > * {
+    background-color: $light-grey-color;
+  }
+}
+/* Tripple CTA End*/
 
 /* Homepage Triple CTA */
 .orange-icon-white-background {
