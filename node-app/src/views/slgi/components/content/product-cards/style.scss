@@ -6,10 +6,10 @@
     div[class^="col-"] {
       .container-component {
         .cmp-container {
-          border: 2px solid $medium-grey-background;
+          border: 2px solid $medium-grey-background !important;
           .text {
             &:first-child {
-              background: $white-smoke;
+              background: $white-smoke !important;
             }
           }
         }
