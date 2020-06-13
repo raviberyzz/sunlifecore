@@ -111,6 +111,11 @@
       &>li:not(:first-child):before{
         color:$white-shade;
       }
+      li:last-child{
+        a,span{
+          color:$white-shade;
+        }
+      }
     }
     .side-text {
       color: $white-shade;
