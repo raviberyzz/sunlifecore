@@ -682,18 +682,19 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
         //Tagging for submit click when Employee selected
         var homePage = getProductName();
         if (homePage == "home" || homePage == "bright_solutions") {
-            if (firstDrop == "Employee") {
+            if (firstDrop == "Get protected") {
                 if (typeof utag !== 'undefined') {
                     utag.link({
-                        ev_type: "calc",
-                        ev_action: "submit",
-                        ev_title: "bright curator",
-                        ev_data_one: "step 2:last interaction",
-                        ev_data_two: "coverage=employee"
+                        ev_type: "calc", 
+                        ev_action: "submit", 
+                        ev_title: "bright curator", 
+                        ev_data_one: "step 3:last interaction", 
+                        ev_data_two: "i would like to=" +firstDrop+ ":my purpose="+ secondDrop
+
                     });
                 }
             } 
-            else if (firstDrop == "Myself or Family") {
+            else if (firstDrop == "Plan my future") {
                 //Tagging for submit click when myself or family selected
                 if (secondDrop != "") {
                     if (typeof utag !== 'undefined') {
@@ -721,34 +722,34 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
     //Tagging for Find And Advisor
     $(".right-navigation-wrapper a").click(function() {
         var clickText = $(this).children('span').text();
-        if(clickText == "Talk to our Advisor"){
+        if(clickText == "Talk to our Advisor" || (clickText.toLowerCase()=='talk to our advisor')){
             //Clicking submit button and Find And Advisor 
             var homePage = getProductName();
             if (homePage == "home" || homePage == "bright_solutions") {
                 if (AdvisorFag == "true") {
                     //Tagging for submit click when Employee selected
-                    //For HK
-                    if (firstDroopp == "Employee") {
+                    //For id
+                    if (firstDroopp == "Get protected") {
                         if (typeof utag !== 'undefined') {
-                            utag.link({
-                                ev_type: "calc",
-                                ev_action: "clk",
-                                ev_title: "bright curator",
-                                ev_data_one: "find an advisor",
-                                ev_data_two: "coverage=employee"
-                            });
+                            utag.link({ 
+                                ev_type: "calc", 
+                                ev_action: "submit", 
+                                ev_title: "bright curator", 
+                                ev_data_one: "find an advisor", 
+                                ev_data_two: "i would like to= " +firstDroopp +" :my purpose= " + secondDroopp
+                            })   
                         }
                     } 
-                    else if (firstDroopp == "Myself or Family") {
+                    else if (firstDroopp == "Plan my future") {
                         //Tagging for submit click when myself or family selected
                         if (secondDroopp != "") {
                             if (typeof utag !== 'undefined') {
                                 utag.link({
-                                    ev_type: "calc",
-                                    ev_action: "clk",
-                                    ev_title: "bright curator",
-                                    ev_data_one: "find an advisor",
-                                    ev_data_two: "coverage=myself or family:product interest=" + secondDroopp + ""
+                                    ev_type: "calc", 
+                                    ev_action: "submit", 
+                                    ev_title: "bright curator", 
+                                    ev_data_one: "find an advisor", 
+                                    ev_data_two: "i would like to= " +firstDroopp +" :my purpose= " + secondDroopp
                                 });
                             }
                         }
@@ -861,4 +862,13 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
         }
     });
     /* lead gen form ends here */
+    $("#get-a-quote-btn").click(function() {
+        var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
+        utag.link({
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: "get a quote",
+            ev_data_one: productDropDownVal
+        });
+    });
 });
