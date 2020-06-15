@@ -18,6 +18,12 @@ $(document).ready(function () {
     var mbar = 0;
     var rgn = window.location + '';
     var urlId = selValue;
+    console.log(urlId);
+    function idUrl(){
+      $("#1234").append(urlId);
+      return urlId;
+    }
+    idUrl();
     urlId=urlId;   	
     if (selIndex == 2) {
           tbar = 1;
