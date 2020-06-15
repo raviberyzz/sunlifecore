@@ -1,4 +1,5 @@
 @import '../../../base/core';
+@import '../../../../core/base/core.scss';
 
 .right-navigation-wrapper{
     >.cmp-container{
@@ -20,4 +21,11 @@
         }
     }
 
+}
+.right-navigation-wrapper.light-orange-20{
+    >.cmp-container{
+        > div{
+            background-color:$light-orange-20;
+        }
+    }
 }

@@ -1,11 +1,51 @@
 @import "../../../base/core";
 @import "../../../../core/components/content/container/style";
 
-/* Overview Highlights Wrapper Start */
 .orange-icon-blue-background {
   @extend .blue-icon-yellow-background;
 }
+
+/* .orange-icon-blue-background style for 2-CTA's and Overview Highlight */
+.orange-icon-blue-background {
+  > * {
+    background-color: $dark-blue;
+    .icon-style{
+      background: none;
+      background-color: $cinnamon-orange;      
+    }
+    .icon-texts {
+      color: $white-shade;
+    }
+  }
+}
+
+.mega-menu-icon-wrapper .icon-style {
+  background: none;
+  background-color: $cinnamon-orange;
+}
+
+/* Overview Highlights Wrapper Start */
+.overview-content-wrapper {
+  .orange-icon-blue-background {
+    .cmp-container {
+      background: linear-gradient($medium-blue-color, $dark-blue) !important;
+    }
+  }
+}
 /* Overview Highlights Wrapper End*/
+
+/* Tripple CTA Start */
+.cta-three-column-wrapper {
+  border: 1px solid $white-smoke;
+  > * {
+    background-color: $light-grey-color;
+    .icon-style {
+      background: none;
+      background-color: $cinnamon-orange;      
+    }
+  }
+}
+/* Tripple CTA End*/
 
 /* Homepage Triple CTA */
 .orange-icon-white-background {
@@ -31,17 +71,40 @@
   h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6{
     color: $white-shade;
   }
-  .view-all-category::after{
+  .view-all-category::after {
     color: $cinnamon-orange;  /* Turn chevron dark-blue */
   }
 }
 
 /* Tool Card Main Wrapper Starts Here*/
-.tool-card-main-wrapper{
+.tool-card-main-wrapper {
   .container-component {
     background-color: $white-smoke;
   }
 }
+/* Tool Card Main Wrapper Ends Here*/
+
+/* Styles For Related Resources Start */
+.cmp-related-resource {
+  background: $white-smoke;
+  .icon-parent {
+    background: none;
+    background-color: $cinnamon-orange;
+  }
+}
+/* Styles For Related Resources Ends */
+
+/* Cross Sell Cta Wrapper Starts Here */
+.cross-cta-wrapper {
+  background-color: $light-orange-30;
+  .mega-menu-icon-wrapper {
+    .icon-style {
+      background: none;
+      background-color: $cinnamon-orange;
+    } 
+  }
+}
+/* Cross Sell Cta Wrapper Ends Here */
 
 /* Desktop only styles start */
 @media (max-width: $desktop-screen-min){
@@ -60,7 +123,7 @@
 /* Tablet only styles end */
 
 /* Mobile only styles start*/
-@media (max-width: $mobile-screen-max){
+@media (max-width: $mobile-screen-max) {
   a.icon-style.fa.fa-map-o {
     padding: 11px 11px 11px 8px;
   }
