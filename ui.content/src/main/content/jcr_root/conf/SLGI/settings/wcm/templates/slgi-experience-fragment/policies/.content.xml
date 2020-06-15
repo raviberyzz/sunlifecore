@@ -89,6 +89,10 @@
                                 cq:policy="sunlife/slgi/components/content/article/policy_article"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+							<full-header
+                                cq:policy="sunlife/slgi/components/content/full-header/policy_fullHeader"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>	
                         </content>
                         <form jcr:primaryType="nt:unstructured">
                             <container
