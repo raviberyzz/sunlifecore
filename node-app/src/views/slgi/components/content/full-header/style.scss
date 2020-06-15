@@ -37,6 +37,18 @@
       }
     }
     .hamburger-menu-wrapper {         /* Hamburger menu styles here */
+      .second-level-navigation {
+        background: $white-smoke;
+        .go-back {
+          background-color: $dark-blue;
+          &::before{
+            color: $white-shade
+          }
+          a {
+            color: $white-shade
+          }
+        }
+      }
       .navigation-menu a {
         color: $dark-blue;
       }
