@@ -7,6 +7,14 @@
                 text-align: center;
             }
         }
+        .modal-dialog.sign-in-modaldialog{
+            margin:0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            vertical-align: middle;
+            display: flex;
+        }
         .form-second {
             .moreon{
                 display: block;
