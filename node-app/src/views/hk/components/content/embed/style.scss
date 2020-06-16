@@ -1,0 +1,11 @@
+@import '../../../base/core';
+.embed{
+    padding:0 15px;
+    .video_container{
+        max-width:inherit;
+    }
+}
+.left-float{
+    float:left;
+    text-align:left !important;
+}
