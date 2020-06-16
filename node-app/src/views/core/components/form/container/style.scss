@@ -729,6 +729,24 @@
     margin-left: 4px;
    }
 } 
+
+@media (max-width: $mobile-screen-max)
+{
+	.lead-gen-wrapper
+	{
+    	.cmp-form-options--checkbox {
+            display: table;
+
+            .cmp-form-options__field--checkbox {
+                display: table-cell;
+            }
+            .cmp-form-options__help-message
+            {
+                display: table-cell;
+            }
+        }
+	}
+}
   
 /* Lead Gen Form Ends Here*/
 

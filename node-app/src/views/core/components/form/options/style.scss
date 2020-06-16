@@ -156,6 +156,14 @@ input[type=radio] {
 .captcha-wrapper legend {
     display:none;
 }
+//captcha inside right-nav
+.right-navigation-wrapper
+{
+    .captcha-wrapper
+    {
+        width:100% !important;
+    }
+}
 @media (max-width: $mobile-screen-max) {
     .captcha-wrapper {
         width:60% !important;

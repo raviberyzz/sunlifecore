@@ -18,13 +18,18 @@ $(document).ready(function () {
     var mbar = 0;
     var rgn = window.location + '';
     var urlId = selValue;
-    urlId=urlId;   	
+    console.log(urlId);
+    function idUrl(){
+        $("#1234").append(urlId);
+        return urlId;
+    }
+    idUrl();  	
     if (selIndex == 2) {
           tbar = 1;
           sbar = 1;
           mbar = 1; 
     }	
-    eval("page" + id + " = window.open(urlId, '" + id + "', 'toolbar=" + tbar +", scrollbars=1, location=0, statusbar=" + sbar + ", menubar=" + mbar +", resizable=1, width=850, height=600, left = 215, top = 30');"); 
+    eval("page" + id + " = window.open('"+urlId+"' , '" + id + "', 'toolbar=" + tbar +", scrollbars=1, location=0, statusbar=" + sbar + ", menubar=" + mbar +", resizable=1, width=850, height=600, left = 215, top = 30');"); 
   }
   $("#signIn input").click(function(){
     popupID();
