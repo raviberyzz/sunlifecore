@@ -4,14 +4,22 @@
 /*this is in reference to data table in the slgi style guide*/
 .cmp-table-data-content{
     border: 1px solid $grey-previous-background-color;
-   tbody{
-       tr{
-           th{
-               background:$dark-blue;
-               color:$white-shade;
-           }
-       }
-   }
+    table{
+        tbody{
+            tr{
+                th{
+                    background:$dark-blue;
+                    color:$white-shade;
+                }
+                td{
+                    &:nth-of-type(odd) {
+                        background-color: $white-smoke;
+                      }
+                }
+            }
+        }
+    }
+   
 }
 
 /* Data content table which is specific to SLGI styles start here */
@@ -33,5 +41,4 @@
             }
         }
     }
-
 }

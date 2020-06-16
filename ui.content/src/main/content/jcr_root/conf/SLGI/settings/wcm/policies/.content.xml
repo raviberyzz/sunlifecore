@@ -656,7 +656,7 @@
                     </teaser>
                     <titlebar jcr:primaryType="nt:unstructured">
                         <policy_titlebar
-                            cq:styleDefaultClasses="title-wrapper-yellow-grey-rings"
+                            cq:styleDefaultClasses="title-wrapper-dark-blue"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -1793,6 +1793,27 @@
                             </cq:styleGroups>
                         </policy_embed>
                     </embed>
+					<full-header jcr:primaryType="nt:unstructured">
+                        <policy_fullHeader                            
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Full Header"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="public-header"
+                                            cq:styleId="1592210362449"
+                                            cq:styleLabel="Megamenu Alignment"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_fullHeader>
+                    </full-header>
                 </content>
                 <form jcr:primaryType="nt:unstructured">
                     <container jcr:primaryType="nt:unstructured">
