@@ -1,0 +1,18 @@
+@import '../../../base/core';
+
+#contactus-modal-form 
+{
+    .cmp-form-text, .cmp-form-options__field--drop-down, .heading-2, .cmp-form-options--checkbox {
+       padding: 0 10px;
+    }
+    .col-sm-6 
+    {
+        .cmp-form-text, .cmp-form-options__field--drop-down, .heading-2, .cmp-form-options--checkbox {
+            padding: 0;
+         }
+    }
+    .cmp-form-options--checkbox .cmp-form-options__help-message
+    {
+        font-weight: 700;
+    }
+}
