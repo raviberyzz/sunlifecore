@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
+
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
@@ -117,22 +118,34 @@ public class SelectorToExfragMapModel {
   public void init() {
 	  
     String[] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length == 0 || null == items) {
-    	LOGGER.debug("Either there are no selectors or the component is not not configured");
-    	return;
-    }
-    if (selectors.length > 0 && !getItems().isEmpty()) {
-    	 LOGGER.debug("No of entries {}", getItems().size());
-      final Iterator <SelectorExFragMap> itemIterator = items.iterator();
-      while (itemIterator.hasNext()) {
-        final SelectorExFragMap item = itemIterator.next();
-        if (item.getSelector().equals(selectors [ 0 ])) {
+    String urlSelector = "";   
+    if (items != null && items.size() > 0) {    	  
+    	  LOGGER.debug("No of entries after items : {}", items.size());
+	      final Iterator <SelectorExFragMap> itemIterator = items.iterator();
+	      while (itemIterator.hasNext()) {
+	        final SelectorExFragMap item = itemIterator.next();
+	       	        
+	        //Code for default page selector for slgi - starts
+	        try {
+	        String siteName = configService.getConfigValues("siteName",
+	                  currentPage.getPath());
+	        if((selectors.length == 0) && (urlSelector.equalsIgnoreCase("")) && ( siteName.equalsIgnoreCase("SLGI"))) {	        	
+	        	urlSelector = item.getSelector();	        	
+	        }else if(selectors.length > 0) {	        	
+	        	urlSelector = selectors [ 0 ];
+	        }else {
+	        	//LOGGER.info("All other scenarios");
+	        }
+	        //Code for default page selector for slgi - ends
+	        
+        if (item.getSelector().equals(urlSelector)) {
           fragPath = item.getExfragPath();
           LOGGER.debug("fragPath is : ", fragPath);
+          
           //Code for language toggle of experience fragment - starts
           String headerPath = "";
           String fragmentSplit = "";
-          try {
+        //  try {
               if (null == fragPath) {
                 return;
               } else if (currentPage.getPath().contains("/content/experience-fragments")) {
@@ -161,13 +174,13 @@ public class SelectorToExfragMapModel {
 		            else {
 		              modifiedFragmentPath = fragPath;
 		            }
-              	}
-          } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
-            LOGGER.error("Error :: init method of Experience fragment model :: {}", e);
-        }
+              	}        
           
           //Code for language toggle of experience fragment - ends
       }
+	 }catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
+          LOGGER.error("Error :: init method of Experience fragment model :: {}", e);
+     }
     }
   }
  }
