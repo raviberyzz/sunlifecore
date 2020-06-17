@@ -397,12 +397,7 @@ public class ArticleListModel {
 
       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
       if (null != locale && locale.length() > 0) { 
-    	  if(locale.contains("-")) {
-    		  pageLocaleDefault = locale.split("-") [ 0 ]; 
-    	  }
-    	  else {
-    		  pageLocaleDefault = locale.split("_") [ 0 ];
-    	  }
+    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
         }
 
       setPageLocale(pageLocaleDefault);
