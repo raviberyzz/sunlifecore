@@ -656,7 +656,7 @@
                     </teaser>
                     <titlebar jcr:primaryType="nt:unstructured">
                         <policy_titlebar
-                            cq:styleDefaultClasses="title-wrapper-dark-blue"
+                            cq:styleDefaultClasses="title-wrapper-dark-blue no-title-bottom-spacing"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
