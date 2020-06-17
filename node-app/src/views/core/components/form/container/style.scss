@@ -673,7 +673,7 @@
 /* Lead Gen Form Starts Here*/
 .lead-gen-wrapper
 {
-    .cmp-form-text {
+    .cmp-form-text, .cmp-form-options__field--drop-down, .heading-2, .cmp-form-options--checkbox {
         margin-bottom: 20px; 
     }
     .options {
@@ -729,6 +729,13 @@
     margin-left: 4px;
    }
 } 
+
+//Lead gen right nav version
+
+.right-navigation-wrapper .lead-gen-wrapper .cmp-form-options--drop-down
+{
+    text-align: left;
+}
 
 @media (max-width: $mobile-screen-max)
 {
