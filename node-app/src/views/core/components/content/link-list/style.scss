@@ -31,9 +31,12 @@
         }
         .list-div{
             display: block;
+            min-height: 84px;
+            position: relative;
             margin-top: 0px;
             ul{
-                min-height: 84px;
+                position: absolute;
+                height: 100%;
                 background-color: $medium-yellow-background;
                 padding: 16px;
                 width: 100%;
@@ -229,16 +232,18 @@
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     //interent explorer 
-    .editorial-nav-desktop-wrapper{
-        .links{
-            .list-div{
-                ul{
-                    li{
-                        display:table-cell;
-                        vertical-align:middle;
-                    }
-                }
-            }
-        }
-    }
+
+    // commented due to IE fix of editorial wrapper
+    // .editorial-nav-desktop-wrapper{
+    //     .links{
+    //         .list-div{
+    //             ul{
+    //                 li{
+    //                     display:table-cell;
+    //                     vertical-align:middle;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     }
