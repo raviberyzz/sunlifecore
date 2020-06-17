@@ -88,6 +88,10 @@
     background-color: $white-shade;
     border-radius: 4px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+    .text {
+        margin-bottom: 20px;
+    }
 }
 
 #myModal .close-popup {
@@ -98,6 +102,9 @@
     background-color: $white-shade;
     border-radius: 4px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    .text {
+        margin-bottom: 20px;
+    }
 }
 
 #contactusModal .close-popup {

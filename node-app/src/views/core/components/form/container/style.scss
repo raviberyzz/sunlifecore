@@ -730,6 +730,13 @@
    }
 } 
 
+//Lead gen right nav version
+
+.right-navigation-wrapper .lead-gen-wrapper .cmp-form-options--drop-down
+{
+    text-align: left;
+}
+
 @media (max-width: $mobile-screen-max)
 {
 	.lead-gen-wrapper
