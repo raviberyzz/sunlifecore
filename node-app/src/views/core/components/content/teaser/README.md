@@ -26,7 +26,7 @@ JSON Format
 <!-- "text-alignment": middle-aligned-text (if vertically middle aligned) / bottom-aligned-text (if text is placed below the image)-->
 <!-- "image-type": "circular-image" & "circle-220-desktop" & "circle-150-mobile" (if circular image required. Else keep it blank) -->
 <!-- "img-border": "round-border" (if border required. Else keep it blank) -->
-<!-- "wrapper-class": "banner-section" "text-on-image-banner" (for HK only) / "banner-section"/"editorial-hero-banner", "content-block-image" (if banner, else keep it blank) -->
+<!-- "wrapper-class": "banner-section"/"editorial-hero-banner", "content-block-image" (if banner, else keep it blank) -->
 <!-- "banner-text-alignment": "text-left-align", "text-right-align", "text-center-align" -->
 <!-- "banner-box": "white-box" (if box required. else keep blank) -->
 <!-- when "wrapper-class": "banner-section" then mark  "is-right-aligned-image": false-->
