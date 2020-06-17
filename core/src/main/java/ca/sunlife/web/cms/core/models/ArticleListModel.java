@@ -396,9 +396,14 @@ public class ArticleListModel {
       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
 
       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-      if (null != locale && locale.length() > 0) {
-        pageLocaleDefault = locale.split("_") [ 0 ];
-      }
+      if (null != locale && locale.length() > 0) { 
+    	  if(locale.contains("-")) {
+    		  pageLocaleDefault = locale.split("-") [ 0 ]; 
+    	  }
+    	  else {
+    		  pageLocaleDefault = locale.split("_") [ 0 ];
+    	  }
+        }
 
       setPageLocale(pageLocaleDefault);
       final Session session = resourceResolver.adaptTo(Session.class);

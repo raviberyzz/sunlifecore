@@ -561,9 +561,15 @@ public class ArticleModel {
 
     try {
       final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-      if (null != locale && locale.length() > 0) {
-        pageLocaleDefault = locale.split("_") [ 0 ];
+      if (null != locale && locale.length() > 0) {    	  
+    	  if(locale.contains("-")) {
+    		  pageLocaleDefault = locale.split("-") [ 0 ]; 
+    	  }
+    	  else {
+    		  pageLocaleDefault = locale.split("_") [ 0 ];
+    	  }
       }
+      
       LOGGER.debug("Locale is" + pageLocaleDefault);
       if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
         LOGGER.debug("formatting date to {}",
