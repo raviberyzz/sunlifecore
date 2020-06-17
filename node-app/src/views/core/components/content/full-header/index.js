@@ -73,16 +73,14 @@ $(document).ready(function () {
         });
     };
     if ($(window).width() <= 1024) {
-        $(mobileHeader);
+       mobileHeader();
     }
     $(window).resize(function () {
         if ($(window).width() <= 1024) {
-            $(mobileHeader);
+            mobileHeader();
         }else{
             //Ipad pro switch from portrait to landscape - Switch back to desktop behavior
-            if($('.site-level-notification').length > 0 && $('.site-level-notification').css('display') != "none" ){
-                $('.site-level-notification').css({'position':'relative'});           
-            }
+            $('.site-level-notification').attr("style", "position:relative");
         }
     });
     if($('.full-header').parents('.experiencefragment').length > 0 && $('#main-content').length < 1) {
