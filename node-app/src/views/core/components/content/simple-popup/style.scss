@@ -93,11 +93,15 @@
         margin-bottom: 20px;
     }
 }
+#errorModal .modal-content {
+    background-color: $white-shade;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 
-#myModal .close-popup {
-    display:none;
+    .text {
+        margin-bottom: 20px;
+    }
 }
-
 #contactusModal .modal-content {
     background-color: $white-shade;
     border-radius: 4px;
@@ -107,7 +111,7 @@
     }
 }
 
-#contactusModal .close-popup {
+#contactusModal .close-popup ,#myModal .close-popup, #errorModal .close-popup {
     display:none;
 }
 @media (min-width: $tab-screen-min) and (max-width:$tab-screen-max)
