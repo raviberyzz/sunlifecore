@@ -1,7 +1,5 @@
 @import '../../../base/core';
-.experiencefragment .product-card-wrapper {
-   // margin-bottom:20px;
-}
+
 .product-cards{
     .layout-container.product-card-wrapper{
         .row >div {
@@ -139,6 +137,9 @@
             pointer-events: none;
         }
     } 
+}
+.right-navigation-wrapper .cmp-container >.experiencefragment .product-cards {
+    padding: 24px 15px 0 15px;
 }
 
 @media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max)
