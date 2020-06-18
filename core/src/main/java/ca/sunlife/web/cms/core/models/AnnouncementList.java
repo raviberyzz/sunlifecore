@@ -155,6 +155,9 @@ public class AnnouncementList {
 
   /** The total match. */
   private int totalMatch;
+  
+  /** The page locale. */
+  private String pageLocale;
 
   /** The items. */
   private final List <DAMContentFragment> items = new ArrayList <>();
@@ -540,10 +543,29 @@ public class AnnouncementList {
   }
 
   /**
+   * Gets the page locale.
+   *
+   * @return the page locale
+   */
+  public String getPageLocale() {
+	return pageLocale;
+  }
+
+  /**
+   * Sets the page locale.
+   *
+   * @param pageLocale the new page locale
+   */
+  public void setPageLocale(String pageLocale) {
+	this.pageLocale = pageLocale;
+  }
+
+/**
    * Inits the model.
    */
   @ PostConstruct
   private void initModel() {
+	  String pageLocaleDefault = StringUtils.EMPTY;
     if (StringUtils.isEmpty(getParentPath())) {
       return;
     }
@@ -551,6 +573,12 @@ public class AnnouncementList {
     ResourceResolver resourceResolver = null;
     try {
       setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+      if (null != locale && locale.length() > 0) { 
+    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
+        }
+
+      setPageLocale(pageLocaleDefault);
       resourceResolver = coreResourceResolver.getResourceResolver();
       final Session session = resourceResolver.adaptTo(Session.class);
       if (session == null) {
