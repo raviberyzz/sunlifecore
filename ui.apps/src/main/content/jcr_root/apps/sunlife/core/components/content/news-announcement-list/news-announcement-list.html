@@ -10,7 +10,7 @@
                         <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html" data-sly-test.date="${element.value}" />
                     </sly>
                     <div class="news-article">
-                        <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
+                        <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat,pageLocale = list.pageLocale}"></p>
                         <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                         <sly data-sly-test="${element.name == 'newsroomHeading'}" data-sly-test.headline="${element.value}" />
                                         <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html" data-sly-test.date="${element.value}" />
                                     </sly>
-                                    <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat}"></p>
+                                    <p data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></p>
                                     <p><a href="${pageLink @ extension = 'html'}">${headline}</a></p>
 
                                 </div>
