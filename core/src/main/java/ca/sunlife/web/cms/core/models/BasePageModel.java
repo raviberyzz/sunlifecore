@@ -22,6 +22,7 @@ import javax.jcr.RangeIterator;
 import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -779,6 +780,10 @@ public class BasePageModel {
 
     // SEO title - <title> tag
     seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
+    
+    if(null != advancedPageType && advancedPageType.equals("article")) {
+    	seoPageTitle = WordUtils.capitalize(seoPageTitle);
+    }
 
     // socialMediaTitle
     final String navTitle = currentPage.getNavigationTitle();

@@ -5,6 +5,7 @@
   @extend  .breadcrumb-wrapper-light-cool-blue;         /* Extend from main breadcrumb css style */ 
   background-color: $white-smoke; /* White Smoke */
   .social-link-icon-wrapper {
+    top:0%;
     .icon-style{
         color: $dark-blue;
       }
