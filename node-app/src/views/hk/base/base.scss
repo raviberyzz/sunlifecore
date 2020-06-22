@@ -1,4 +1,4 @@
-// @import '../../core/base/base';
+@import './core';
 body:lang(zh-TW) {
     font-family: 'Noto Sans TC' !important;
     line-height: 140%;
@@ -143,10 +143,39 @@ body:lang(zh-SG) {
         }
     }
 }
-
 //Checkbox style for generic
 input[type=checkbox]:checked:after
 {
     margin-top: 1px;
     margin-left: 4px;
 }
+/* right navigation with dropdown for investment linked pages starts here */
+.right-navigation-wrapper{
+    .cmp-container{
+        .html-component{
+           #choice1{
+                font-size:0.9375rem;
+                color: $blue-gradient-color;
+                padding: 0px 35px 0px 10px;
+                height: 40px;
+                border-radius:0; 
+                border-color: $light-grey-shade;
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-image: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                &:focus{
+                    background-color: $dropdown-light-orange-background;
+                    border-color: $blue-gradient-color;
+                }
+                option{
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                }      
+           } 
+        }
+    }
+}
+/* right navigation with dropdown for investment linked pages ends here */
