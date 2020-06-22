@@ -1338,7 +1338,7 @@ public class BasePageModel {
         }
       }
       if (relationshipManager.isSource(sourceResource)) {
-        LOG.debug("Page is a source page");
+        LOG.debug("source page {}",sourceResource.getPath());
         final Resource target = resolver.getResource(sourceResource.getPath());
         final RangeIterator relationships = relationshipManager.getLiveRelationships(target, null,
             null);
@@ -1353,24 +1353,11 @@ public class BasePageModel {
             // LiveCopy Launches
             if (relationship.getStatus().isTargetExisting()
                 && ! LaunchUtils.isLaunchResourcePath(liveCopyPath)) {
-              LOG.debug("path :: {}", liveCopyPath);
-              final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
-                  liveCopyPath);
-              final String sourceSiteUrl = configService.getConfigValues(SITE_URL, liveCopyPath);
-              final String sourceSiteDomain = configService.getConfigValues(DOMAIN_STR,
-                  liveCopyPath);
-              LOG.debug(
-                  "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
-                  liveCopyPath, sourcePageLocale, sourceSiteUrl);
-              altLanguageLinks.put(
-                  sourcePageLocale.split("_") [ 0 ] + "-"
-                      + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
-                          .toLowerCase(Locale.ROOT),
-                  sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl)
-                      + BasePageModelConstants.SLASH_CONSTANT);
+              addAlternateUrl(liveCopyPath);
             }
           }
         }
+        addAlternateUrl(sourceResource.getPath());
       }
       if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(
@@ -1383,6 +1370,30 @@ public class BasePageModel {
       LOG.error("Unable to get the live copy: {}", e.getMessage());
     }
     LOG.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+  }
+
+  /**
+   * @param liveCopyPath
+   * @throws LoginException
+   * @throws RepositoryException
+   */
+  private void addAlternateUrl(final String liveCopyPath)
+      throws LoginException, RepositoryException {
+    LOG.debug("path :: {}", liveCopyPath);
+    final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
+        liveCopyPath);
+    final String sourceSiteUrl = configService.getConfigValues(SITE_URL, liveCopyPath);
+    final String sourceSiteDomain = configService.getConfigValues(DOMAIN_STR,
+        liveCopyPath);
+    LOG.debug(
+        "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
+        liveCopyPath, sourcePageLocale, sourceSiteUrl);
+    altLanguageLinks.put(
+        sourcePageLocale.split("_") [ 0 ] + "-"
+            + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
+                .toLowerCase(Locale.ROOT),
+        sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl)
+            + BasePageModelConstants.SLASH_CONSTANT);
   }
 
   /**
