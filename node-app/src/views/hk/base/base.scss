@@ -167,8 +167,8 @@ input[type=checkbox]:checked:after
                 -moz-appearance: none;
                 appearance: none;
                 &:focus{
-                    background-color: #fdf7e6;
-                    border-color: #003946;
+                    background-color: $dropdown-light-orange-background;
+                    border-color: $blue-gradient-color;
                 }
                 option{
                     font-weight: 400;
