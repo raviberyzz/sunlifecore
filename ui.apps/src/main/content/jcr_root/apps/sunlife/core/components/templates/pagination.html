@@ -31,12 +31,14 @@
                         </sly>
                     </li>
                 </sly>
+                <sly data-sly-test = "${paginationObj.pageItems.size > 0}">
                 <li class="link-to-first ${firstPageCss}">
                     <a x-cq-linkchecker="skip" href="${pageUrl}/1/" aria-label="${paginationObj.firstPageText}">
                         <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                         <span>1</span>
                     </a>
                 </li>
+                </sly>
                 <sly data-sly-list.pageItems="${paginationObj.pageItems}">
 
                     <li data-sly-test = "${!paginationObj.ellipsis && pageItems.index != 0}" class="${paginationObj.curPage == pageItems.index ? 'active' : ''}">
