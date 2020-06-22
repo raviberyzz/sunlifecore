@@ -772,16 +772,17 @@
                 display: table-cell;
             }
         }
-    }
-    .cmp-form-options--radio {
-        display: table;
-        .cmp-form-options__legend {
-            display: table-cell;
+        .cmp-form-options--radio {
+            display: table;
+            .cmp-form-options__legend {
+                display: table-cell;
+            }
+            .cmp-form-options__field-label {
+                display: table-header-group;
+            }
         }
-        .cmp-form-options__field-label {
-            display: table-header-group;
-        }
     }
+    
 }
   
 /* Lead Gen Form Ends Here*/
