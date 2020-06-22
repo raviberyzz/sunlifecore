@@ -6,4 +6,7 @@
     <ca-sunlife-content-page/>    
     <ca-sunlife-experience-fragment/>
     <sunlife-config/>
+	<slgi-home-page/>
+    <slgi-content-page/>
+    <slgi-experience-fragment/>
 </jcr:root>
