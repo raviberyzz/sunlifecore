@@ -66,3 +66,17 @@
         display: none;
     }
 }
+
+/** IE specific css**/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.left-nav-wrapper {
+		.cmp-navigation__group {
+			.cmp-navigation__item--level-0 {
+				.cmp-navigation__item-link {
+					display: inline-block;
+					max-width: 220px;
+				}
+			}
+		}
+	}
+}
