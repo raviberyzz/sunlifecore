@@ -32,5 +32,7 @@ $(document).ready(function () {
                 }
             });
         }
+        $('.desktop-region-language-menu-wrapper .content-language li:nth-child(3)').children('a').attr('href', "/content/sunlife/external/hk/zh-hans");
+        $('.mobile-header .mobile-region-language-menu-wrapper .language-tab li:nth-child(3)').children('a').attr('href', "/content/sunlife/external/hk/zh-hans");
     }
 });
