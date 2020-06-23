@@ -1,7 +1,8 @@
 $(document).ready(function () {
 	$('.site-level-notification .close-div').click(function() {
 		if ($(window).width() <= 1024) {
-			$('.slf-header-wrapper .slf-mobile-header-wrapper').css({ 'top': "auto" });
+			$('.root > .aem-Grid > *:not(:first-child)').css("top", "0");
+			$('.slf-header-wrapper .slf-mobile-header-wrapper').css('top', "0");
 		}
 		var siteNotification = $(this).closest(".site-level-notification");
         var siteNotificationDiv = $(siteNotification).find(".cmp-container");
