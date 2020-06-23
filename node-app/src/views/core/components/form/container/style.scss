@@ -749,6 +749,16 @@
         .cmp-form-options--drop-down {
             text-align: left;
         }
+        .cmp-form-options--checkbox {
+            display : table; 
+            .cmp-form-options__field-label{
+                display : table-cell;
+            }
+            .cmp-form-options__help-message{
+                display : table-cell; 
+                text-align: left;
+            }
+        }
     }
     .cmp-form-text, .cmp-text, .cmp-form-options--checkbox, 
     .cmp-form-options--drop-down, .cmp-form-options--radio {
@@ -786,4 +796,3 @@
 }
   
 /* Lead Gen Form Ends Here*/
-
