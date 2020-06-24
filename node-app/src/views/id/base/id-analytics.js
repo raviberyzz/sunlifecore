@@ -26,6 +26,7 @@ $(document).ready(function () {
 
 /* Sign in modal analytics starts here */
 //Tagging for Upon clicking the Sign In button
+$("#signinbutton").unbind("click");
 $("#signinbutton").click(function() {
     var url = window.location.href;
     utag.link({
@@ -36,6 +37,8 @@ $("#signinbutton").click(function() {
     });
 });
 // Tagging for Upon clicking dropdown and clicking Sign In
+
+
 $("#signIn").click(function() {
     var url = window.location.href;
     var productDropDownVal = $('#id_sign_in').children('option:selected').text();
@@ -47,7 +50,7 @@ $("#signIn").click(function() {
     });
 });    
 /* Sign in modal analytics end here */
-/* get a quote analytics end here */
+/* get a quote analytics start here */
 $("#get-a-quote-btn").click(function() {
     var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
     utag.link({
@@ -57,6 +60,7 @@ $("#get-a-quote-btn").click(function() {
         ev_data_one: productDropDownVal
     });
 });
+/* get a quote analytics end here */
 /* contact us analytics starts here */
 
     $(".contact-us .cmp-form-button").click(function(){
