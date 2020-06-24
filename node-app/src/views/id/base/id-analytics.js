@@ -36,9 +36,6 @@ $("#signinbutton").click(function() {
         ev_data_one: "existing client",
     });
 });
-// Tagging for Upon clicking dropdown and clicking Sign In
-
-
 $("#signIn").click(function() {
     var productDropDownVal = $('#id_sign_in').children('option:selected').text();
     utag.link({
