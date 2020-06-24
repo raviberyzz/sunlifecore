@@ -169,5 +169,15 @@
     }
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .product-card-wrapper {
+        .caption{
+            word-wrap: break-word;
+            word-break: normal;
+           
+        }
+    }
+   
+}
 
 
