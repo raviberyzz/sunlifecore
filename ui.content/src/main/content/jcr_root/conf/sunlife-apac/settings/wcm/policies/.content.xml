@@ -577,7 +577,12 @@
                                             cq:styleClasses="overflow-hidden"
                                             cq:styleId="1582843987781"
                                             cq:styleLabel="Crop Overflow Image"
-                                            jcr:primaryType="nt:unstructured"/>     
+                                            jcr:primaryType="nt:unstructured"/> 
+										<item3
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border"
+                                            cq:styleId="1588787878787"
+                                            cq:styleLabel="Circular 150px"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>
                                 <item2
@@ -683,6 +688,11 @@
                                             cq:styleId="1577980770707"
                                             cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border clearfix"
+                                            cq:styleId="1570202020201"
+                                            cq:styleLabel="Circle-150px "
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -2499,7 +2509,12 @@
                                             cq:styleClasses="overflow-hidden"
                                             cq:styleId="1582843987781"
                                             cq:styleLabel="Crop Overflow Image"
-                                            jcr:primaryType="nt:unstructured"/>     
+                                            jcr:primaryType="nt:unstructured"/> 
+										<item3
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border"
+                                            cq:styleId="1588787878786"
+                                            cq:styleLabel="Circular 150px"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>
                                 <item2
@@ -2605,6 +2620,11 @@
                                             cq:styleId="1577980770707"
                                             cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border clearfix"
+                                            cq:styleId="1570202020202"
+                                            cq:styleLabel="Circle-150px "
+                                            jcr:primaryType="nt:unstructured"/> 
                                     </cq:styles>
                                 </item2>
                                 <item3
