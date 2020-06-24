@@ -332,6 +332,13 @@
             > div {
                 padding-bottom: 10px;
             }
+            .separator {
+                + {
+                    .experiencefragment {
+                        padding-top: 0px;
+                    }
+                } 
+            }    
 
         }
         .yellow-horizontal-separator{
