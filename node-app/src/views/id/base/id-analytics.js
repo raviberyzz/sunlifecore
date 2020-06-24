@@ -40,7 +40,6 @@ $("#signinbutton").click(function() {
 
 
 $("#signIn").click(function() {
-    var url = window.location.href;
     var productDropDownVal = $('#id_sign_in').children('option:selected').text();
     utag.link({
         ev_type: "authenticate",
