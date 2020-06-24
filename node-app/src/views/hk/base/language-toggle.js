@@ -2,7 +2,7 @@ $(document).ready(function () {
     //Code for Language toggle starts //
     var langIndex = 0;
 	var langIndexMobile = 0;
-    var linkRow = ["","","/content/sunlife/external/hk/zh-hans"];
+    var linkRow = ["","","/zh-hans/"];
     var linkCanRef = null;
     var pageLanguage = utag_data.page_language;
     if(pageLanguage != "zh-hans"){
