@@ -417,7 +417,7 @@ $(document).ready(function(){
                               ev_action: "submit",
                               ev_title: "quick quote",
                               ev_data_one: "step 3:last interaction",
-                              ev_data_two: "" + product + ":age=" + age + "annual deductible=" + secondDrop + ""
+                              ev_data_two: "" + product + ":age=" + age + ":annual deductible=" + secondDrop + ""
                           });
                  else
                       utag.link({
