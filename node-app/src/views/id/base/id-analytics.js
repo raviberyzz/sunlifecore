@@ -25,24 +25,38 @@ $(document).ready(function () {
     /* Carousel analytics ends here */
 
 /* Sign in modal analytics starts here */
-$("#signinbutton").click(function(){
-    utag.link({ 
-        ev_type: "authenticate", 
-        ev_action: "clk", 
-        ev_title: "sign in", 
-        ev_data_one: "existing client"
-});
+//Tagging for Upon clicking the Sign In button
+$("#signinbutton").click(function() {
+    var url = window.location.href;
+    utag.link({
+        ev_type: "authenticate",
+        ev_action: "clk",
+        ev_title: "sign in",
+        ev_data_one: "existing client",
     });
-    $('#id_sign_in').on('change', function() {
-        var dropdown=$('#id_sign_in option:selected').text();
-        utag.link({ 
-            ev_type: "authenticate", 
-            ev_action: "clk", 
-            ev_title: "sign in", 
-            ev_data_one: "Selected dropdown= " +dropdown
-            });              
-    });      
-/* Sign in modal analytics starts here */
+});
+// Tagging for Upon clicking dropdown and clicking Sign In
+$("#signIn").click(function() {
+    var url = window.location.href;
+    var productDropDownVal = $('#id_sign_in').children('option:selected').text();
+    utag.link({
+        ev_type: "authenticate",
+        ev_action: "clk",
+        ev_title: "sign in",
+        ev_data_one: productDropDownVal,
+    });
+});    
+/* Sign in modal analytics end here */
+/* get a quote analytics end here */
+$("#get-a-quote-btn").click(function() {
+    var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
+    utag.link({
+        ev_type: "other",
+        ev_action: "clk",
+        ev_title: "get a quote",
+        ev_data_one: productDropDownVal
+    });
+});
 /* contact us analytics starts here */
 
     $(".contact-us .cmp-form-button").click(function(){
@@ -100,7 +114,7 @@ if(($(".titlebar .cmp-title__text").text()=='Contact us') || ($(".titlebar .cmp-
         });                     
     });
 }
-/* contact us analytics ends here */
+/* contact us analytics ends here *
 /* Talk to an advisor form analytics starts here */
     $(".leadgen .cmp-form-button").click(function(){
             setTimeout(
@@ -862,13 +876,5 @@ if(($(".titlebar .cmp-title__text").text()=='My Sun Life Indonesia app') || ($("
         }
     });
     /* lead gen form ends here */
-    $("#get-a-quote-btn").click(function() {
-        var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
-        utag.link({
-            ev_type: "other",
-            ev_action: "clk",
-            ev_title: "get a quote",
-            ev_data_one: productDropDownVal
-        });
-    });
+
 });
