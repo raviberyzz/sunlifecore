@@ -42,6 +42,11 @@
       position: relative;
     }
   }
+  @media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max){
+    .carousel-wrapper .banner-section{
+      margin-top:50px;
+    }
+  }
 
   /* client story specific styles starts */
 .carousel-client-story {
