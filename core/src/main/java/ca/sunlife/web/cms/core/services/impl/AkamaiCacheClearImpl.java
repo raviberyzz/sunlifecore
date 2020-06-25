@@ -275,7 +275,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
     if (content.hasProperty(SLING_RESOURCE_TYPE) && content.getProperty(SLING_RESOURCE_TYPE).getString().endsWith("experiencefragment")
         && content.hasProperty(FRAGMENT_PATH) && StringUtils.isNotEmpty(content.getProperty(FRAGMENT_PATH).getString())) {
       String fragmentPath = content.getProperty(FRAGMENT_PATH).getString();
-      if (!fragmentPath.toLowerCase().contains("header") && !fragmentPath.toLowerCase().contains("footer")) {
+      if (!StringUtils.lowerCase(fragmentPath).contains("header") && !StringUtils.lowerCase(fragmentPath).contains("footer")) {
         try {
           replicator.replicate(content.getSession(), ReplicationActionType.ACTIVATE, fragmentPath, replicationOption);
         } catch (ReplicationException e) {
@@ -303,7 +303,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
    */
   private void processExperienceFragments(String path, Set<String> objects,
       ResourceResolver resourceResolver) {
-    if (! path.toLowerCase().contains("header") && ! path.toLowerCase().contains("footer")) {
+    if (! StringUtils.lowerCase(path).contains("header") && ! StringUtils.lowerCase(path).contains("footer")) {
       final Collection <ReferenceSearch.Info> searchResult = new ReferenceSearch()
           .search(resourceResolver, path).values();
       for (final ReferenceSearch.Info info : searchResult) {
