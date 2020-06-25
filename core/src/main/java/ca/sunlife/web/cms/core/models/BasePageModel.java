@@ -1338,7 +1338,7 @@ public class BasePageModel {
         }
       }
       if (relationshipManager.isSource(sourceResource)) {
-        LOG.debug("source page {}",sourceResource.getPath());
+        LOG.debug("source page {}", sourceResource.getPath());
         final Resource target = resolver.getResource(sourceResource.getPath());
         final RangeIterator relationships = relationshipManager.getLiveRelationships(target, null,
             null);

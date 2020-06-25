@@ -4,6 +4,8 @@
 
 package ca.sunlife.web.cms.core.services;
 
+import java.util.Set;
+
 import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.resource.LoginException;
@@ -50,4 +52,13 @@ public interface SiteConfigService {
    * @return the page url
    */
   public String getPageUrl(String pagePath);
+  
+  /**
+   * Gets the all sites.
+   *
+   * @param propName
+   *          the prop name
+   * @return the all sites
+   */
+  public Set<String> getAllSites(String propName);
 }
