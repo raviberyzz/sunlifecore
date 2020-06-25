@@ -59,10 +59,10 @@ public class EmailServlet extends SlingAllMethodsServlet {
     LOG.debug("Processing reqest");
     JSONObject mailResponse = mailService.processHttpRequest(request);
     try {
-	if(mailResponse.getString("type").equalsIgnoreCase("url")) {
-	    response.sendRedirect(StringUtils.isNotBlank(mailResponse.getString("url"))? mailResponse.getString("url") : "");
-	}else if(mailResponse.getString("type").equalsIgnoreCase("json")) {
-	    response.getWriter().write(StringUtils.isNotBlank(mailResponse.getString("response"))? mailResponse.getString("response") : "");
+	if (mailResponse.getString("type").equalsIgnoreCase("url")) {
+	    response.sendRedirect(StringUtils.isNotBlank(mailResponse.getString("url")) ? mailResponse.getString("url") : "");
+	} else if (mailResponse.getString("type").equalsIgnoreCase("json")) {
+	    response.getWriter().write(StringUtils.isNotBlank(mailResponse.getString("response")) ? mailResponse.getString("response") : "");
 	}
     } catch (JSONException e) {
 	LOG.error("Error occured while capturing mail response" + e);
