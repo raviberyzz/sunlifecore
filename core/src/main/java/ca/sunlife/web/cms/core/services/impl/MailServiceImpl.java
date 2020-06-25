@@ -286,7 +286,7 @@ public class MailServiceImpl implements MailService {
     public JSONObject modifyResponse(String url, String osgiResponse) {
 	JSONObject response = new JSONObject();
 	try {
-	    if (StringUtils.isEmpty(url) || url.contains("{{")) {
+	    if (StringUtils.isEmpty(url) || StringUtils.isBlank(url)) {
 		response.put("type", "json");
 		response.put("response", osgiResponse);
 	    } else {
