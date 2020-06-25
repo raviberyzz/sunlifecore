@@ -1,26 +1,53 @@
 $(document).ready(function () {
     /* Carousel analytics starts here */
-    if($(".carousel-wrapper")){
-        $(".cmp-carousel__item").each(function(){
-            var bannerPosition=$(this).index()+1;
-            var bannerTitleText=$(this).find(".right-item.text-section").text();
-            utag.link({ 
-                ev_type: "ad", 
-                ev_action: "onpage_impr", 
-                ev_title:	bannerTitleText, 
-                ev_data_one: "banner position="+bannerPosition
-                });           
-        });
+    //for home page only
+    if($('title').text()=='Home'){
+        //banner load
+        function bannerLoadHK() {
+            var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
+                utag.link({
+                    ev_type: "ad",
+                    ev_action: "onpage_impr",
+                    ev_title: bannerTitle,
+                    ev_data_one: "banner position=1"
+                });
+        }
+        //banner click
         $(".cmp-carousel__item").click(function(){
-			var bannerPosition=$(this).index()+1;
-            var bannerTitleText=$(this).find(".right-item.text-section").text();
+            var bannerPosition=$(this).index()+1;
+            var bannerTitleText=$(this).find(".right-item.text-section").text().split("\n");
+            bannerTitleText=bannerTitleText[1].trim();
             utag.link({ 
             ev_type: "ad", 
             ev_action: "clk", 
             ev_title: bannerTitleText,
-            ev_data_one: "banner position="+bannerPosition
+            ev_data_one: "banner position= "+bannerPosition
             });
-        })
+        });
+        //banner rotating
+        var maxCarouselCount=0,bannerCount=2;
+        if ($(".cmp-carousel__item").length > 0) {
+            maxCarouselCount = $(".cmp-carousel__content").find(".cmp-carousel__item").length * 2 //for 2 cycles only
+        }
+        var time=$(".carousel-wrapper .cmp-carousel").attr('data-cmp-delay');
+        function carouselCycle(){
+            if(bannerCount<=maxCarouselCount){
+            var position=$(".cmp-carousel__item.cmp-carousel__item--active").index()+1;
+            var bannerTitle=$(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section").text().split("\n");
+            bannerTitle=bannerTitle[1].trim();
+                if (typeof utag !== 'undefined') {
+                    utag.link({
+                        ev_type: "ad",
+                        ev_action: "onpage_impr",
+                        ev_title: bannerTitle,
+                        ev_data_one: "banner position=" + position + ""
+                    });
+                }
+                bannerCount++;
+            }
+        }
+        setInterval(carouselCycle,time);
+        bannerLoadHK();
     }
     /* Carousel analytics ends here */
 
