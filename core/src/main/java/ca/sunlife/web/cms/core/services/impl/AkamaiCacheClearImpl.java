@@ -51,6 +51,8 @@ import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.SearchResult;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.commons.ReferenceSearch;
 
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
@@ -72,9 +74,10 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 @ Designate (ocd = AkamaiConfig.class)
 public class AkamaiCacheClearImpl implements AkamaiCacheClear {
 
-  /**
-   * 
-   */
+  /** The Constant OBJECTS_STR. */
+  private static final String OBJECTS_STR = "objects";
+
+  /** The Constant SLING_RESOURCE_TYPE. */
   private static final String SLING_RESOURCE_TYPE = "sling:resourceType";
 
   /** The Constant FRAGMENT_PATH. */
@@ -110,6 +113,12 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
   /** The replication option. */
   private ReplicationOptions replicationOption = new ReplicationOptions();
   
+  /** The Constant PURGE_SIZE. */
+  private static final int PURGE_SIZE = 50;
+  
+  /** The Constant THREAD_SLEEP_TIME. */
+  private static final int THREAD_SLEEP_TIME = 1000;
+  
   /**
    * Activate.
    *
@@ -132,8 +141,6 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
   @ Override
   public String invalidatePages(final String [ ] paths) throws ApplicationException {
     LOGGER.debug("Entry :: invalidatePages method of AkamaiCacheClearImpl");
-    final JSONObject request = new JSONObject();
-    final JSONArray objects = new JSONArray();
     final Set<String> obj = new HashSet<>();
     try {
       final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
@@ -145,13 +152,34 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
           processPage(path, obj, resourceResolver);
         }
       }
-      obj.forEach(objects::put);
-      if (objects.length() < 1) {
+      if (obj.isEmpty()) {
         return "No valid paths to purge";
       }
-      request.put("objects", objects);
+      JSONObject request = new JSONObject();
+      JSONArray objects = new JSONArray();
+      String response = "";
+      int index = 1;
+      Iterator<String> itr = obj.iterator();
+      while (itr.hasNext()) {
+        objects.put(itr.next());
+        if ((index++ % PURGE_SIZE) == 0) {
+            request.put(OBJECTS_STR, objects);
+            try {
+              Thread.sleep(THREAD_SLEEP_TIME);
+              response = response.concat(processAkamaiPurge(request.toString()));
+            } catch (ApplicationException e) {
+              LOGGER.error(e.getMessage(), e);
+            } catch (InterruptedException e) {
+              LOGGER.error("Thread InterruptedException {}", e);
+            }
+            request = new JSONObject();
+            objects = new JSONArray();
+        }
+      }
+      request.put(OBJECTS_STR, objects);
+      response = response.concat(processAkamaiPurge(request.toString()));
       resourceResolver.close();
-      return processAkamaiPurge(request.toString());
+      return response;
     } catch (JSONException | LoginException e) {
       throw new ApplicationException(ErrorCodes.APP_ERROR_200, e);
     }
@@ -258,7 +286,12 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
             LOGGER.debug("Got resource path {}", resourcePath);
             replicator.replicate(content.getSession(), ReplicationActionType.ACTIVATE, resourcePath, replicationOption);
             if (!resourcePath.startsWith("/content/experience-fragments")) {
-              objects.add(configService.getPageUrl(resourcePath).concat("*"));              
+              Resource pageRes = resourceResolver.getResource(resourcePath);
+              Page page = pageRes != null ? pageRes.adaptTo(Page.class) : null;
+              if (null != page && !objects.contains(configService.getPageUrl(resourcePath))) {
+                objects.add(configService.getPageUrl(resourcePath));
+                page.listChildren().forEachRemaining(p -> objects.add(configService.getPageUrl(p.getPath())));
+              }
             }
           }
         } catch (ReplicationException e) {
@@ -321,8 +354,15 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       String sitePath = path.replace("/experience-fragments", "");
       try {
         if (StringUtils.isNotBlank(configService.getConfigValues(DOMAIN, sitePath))) {
-          String siteUrl = configService.getPageUrl(configService.getConfigValues("siteUrl", sitePath));
-          objects.add(siteUrl.concat("*"));
+          String siteUrl = configService.getConfigValues("siteUrl", sitePath);
+          Resource site = resourceResolver.getResource(siteUrl);
+          Page sitePage = site != null ? site.adaptTo(Page.class) : null;
+          if (null != sitePage) {
+            sitePage.listChildren(new PageFilter(), true).forEachRemaining(page -> {
+              objects.add(configService.getPageUrl(page.getPath()));
+            });
+          }
+          objects.add(configService.getPageUrl(siteUrl));
         }
       } catch (LoginException | RepositoryException e) {
         LOGGER.error(e.getMessage(), e);
@@ -356,11 +396,11 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       httpPost.setEntity(entity);
       final HttpResponse response = client.execute(httpPost);
       LOGGER.debug("Got AKAMAI response code {}", response.getStatusLine().getStatusCode());
+      final String content = IOUtils.readString(response.getEntity().getContent());
+      LOGGER.debug(" AKAMAI Respose {}", content);      
       if (response.getStatusLine().getStatusCode() != HttpStatus.SC_CREATED) {
         throw new ApplicationException(ErrorCodes.APP_ERROR_200);
       } else {
-        final String content = IOUtils.readString(response.getEntity().getContent());
-        LOGGER.debug(" AKAMAI Respose {}", content);
         return content;
       }
     } catch (final IOException e) {
@@ -391,7 +431,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       if (objects.length() < 1) {
         return "No valid paths to purge";
       }
-      request.put("objects", objects);
+      request.put(OBJECTS_STR, objects);
       return processAkamaiPurge(request.toString());
     } catch (LoginException | JSONException e) {
       throw new ApplicationException(ErrorCodes.APP_ERROR_200, e);
