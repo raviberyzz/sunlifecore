@@ -1,3 +1,4 @@
+
 /*
  *
  */
@@ -162,14 +163,14 @@ public class MailServiceImpl implements MailService {
 	}
 	resourceResolver.close();
 	
-	successResponse = modifyResponse(successPageUrl, mailConfig.getSuccessResponse());
-	errorResponse = modifyResponse(errorPageUrl, mailConfig.getErrorResponse());
+	successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
+	errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
         
-        if("true".equalsIgnoreCase(isClient)) {
+        if ("true".equalsIgnoreCase(isClient)) {
             mailResponse = sendMail(fromEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
-            if(mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
         	LOG.debug("Mail sent to client..");
-            }else {
+            } else {
         	LOG.error("Error in sending mail to client..");
         	mailResponse = sendMail(fromEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
         	LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
@@ -177,10 +178,10 @@ public class MailServiceImpl implements MailService {
         }
         
         mailResponse = sendMail(fromEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
-        if(mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+        if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
     		LOG.debug("Mail sent to marketing team..");
     		return successResponse;
-        }else {
+        } else {
     		LOG.error("Error in sending mail to marketing team..");
     		return errorResponse;
         }
@@ -216,23 +217,20 @@ public class MailServiceImpl implements MailService {
 	return value != null ? value : StringUtils.EMPTY;
     }
 
+    
     /**
      * Send mail.
      *
-     * @param fromEmailId
-     *            the from email id
-     * @param toEmailId
-     *            the to email id
-     * @param emailSubject
-     *            the email subject
-     * @param emailBody
-     *            the email body
-     * @param apiKey
-     *            the api key
+     * @param fromEmailIdParam the from email id param
+     * @param toEmailIdParam the to email id param
+     * @param emailSubjectParam the email subject param
+     * @param emailBodyParam the email body param
+     * @param apiKeyParam the api key param
+     * @param requestParametersParam the request parameters param
      * @return the http response
      */
-    public HttpResponse sendMail(String fromEmailId, String toEmailId, String emailSubject, String emailBody,
-	    String apiKey, Map <String, String> requestParameters) {
+    public HttpResponse sendMail(String fromEmailIdParam, String toEmailIdParam, String emailSubjectParam, String emailBodyParam,
+	    String apiKeyParam, Map <String, String> requestParametersParam) {
 	// Mail API service
 	try {
 	    HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
@@ -242,11 +240,11 @@ public class MailServiceImpl implements MailService {
 	    HttpClient client = builder.build();
 	    HttpPost post = new HttpPost(mailConfig.getApiUrl());
 	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
-	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailId, requestParameters)));
-	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailId, requestParameters)));
-	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubject, requestParameters)));
-	    apiParameters.add(new BasicNameValuePair("slf-email-body", populateContent(emailBody, requestParameters)));
-	    apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
+	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailIdParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-email-body", populateContent(emailBodyParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
 	    post.setEntity(new UrlEncodedFormEntity(apiParameters));
 	    LOG.debug("Trying to connect to mail API...");
 	    return client.execute(post);
@@ -257,19 +255,20 @@ public class MailServiceImpl implements MailService {
 
     }
     
+    
     /**
      * Populate content.
      *
      * @param content the content
-     * @param requestParameters the request parameters
+     * @param requestParametersParam the request parameters param
      * @return the string
      */
-    public String populateContent(String content, Map <String, String> requestParameters) {
+    public String populateContent(String content, Map <String, String> requestParametersParam) {
 	LOG.debug("Populating content with variables...");
 	final MustacheFactory mf = new DefaultMustacheFactory();
 	final StringWriter writer = new StringWriter();
 	final Mustache mustache = mf.compile(new StringReader(nullCheck(content)), " ");
-	mustache.execute(writer, requestParameters);
+	mustache.execute(writer, requestParametersParam);
 	return writer.toString();
 	
     }
@@ -287,7 +286,7 @@ public class MailServiceImpl implements MailService {
     public JSONObject modifyResponse(String url, String osgiResponse) {
 	JSONObject response = new JSONObject();
 	try {
-	    if (StringUtils.isEmpty(url)) {
+	    if (StringUtils.isEmpty(url) || StringUtils.isBlank(url)) {
 		response.put("type", "json");
 		response.put("response", osgiResponse);
 	    } else {
