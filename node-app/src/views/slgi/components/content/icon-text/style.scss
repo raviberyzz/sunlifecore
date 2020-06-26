@@ -1,0 +1,37 @@
+@import '../../../base/core';
+@import '../../../../core/base/core.scss';
+
+.icon-content{
+    .icon-parent{
+        width: 80px;
+        height: 80px;
+        background: $cinnamon-orange;
+        border-radius: 50%;
+        margin:0 30px 0 15px;
+        .icon-style{
+            font-size: 2.5rem;
+            color:$white-shade;
+            position: relative;
+            top: 20px;
+        }
+    }
+    .icon-texts{
+        p{
+            display:table;
+        }
+    }
+}
+@media (max-width:$mobile-screen-max){
+    .icon-content{
+        .icon-parent{
+            margin: 0 auto;
+        }
+    }
+}
+@media (min-width:$tab-screen-min){
+    .icon-content{
+        .icon-parent{
+            float: left;
+        }
+    }
+}

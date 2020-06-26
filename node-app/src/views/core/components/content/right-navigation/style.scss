@@ -189,11 +189,13 @@
             }
         }
     }
-    .cmp-container{
-        > div:not(.light-orange){
-            background-color:#f4f7f6;
-        }
-    }
+    >.cmp-container {
+		>div {
+			&:not(.light-orange) {
+				background-color: $light-cool-blue-color;
+			}
+		}
+	}
 
     // video component with in right rail css 
     .embed{
