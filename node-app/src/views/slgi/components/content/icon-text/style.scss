@@ -1,7 +1,7 @@
 @import '../../../base/core';
 @import '../../../../core/base/core.scss';
 
-.icon-content{
+.content-icon-slgi{
     .icon-parent{
         width: 80px;
         height: 80px;
@@ -22,14 +22,14 @@
     }
 }
 @media (max-width:$mobile-screen-max){
-    .icon-content{
+    .content-icon-slgi{
         .icon-parent{
             margin: 0 auto;
         }
     }
 }
 @media (min-width:$tab-screen-min){
-    .icon-content{
+    .content-icon-slgi{
         .icon-parent{
             float: left;
         }
