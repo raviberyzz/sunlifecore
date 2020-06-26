@@ -2457,6 +2457,11 @@
                                             cq:styleId="1577980606127"
                                             cq:styleLabel="Life Moment Second Level Banner"
                                             jcr:primaryType="nt:unstructured"/>
+                                         <item4
+                                            cq:styleClasses="editorial-hero-banner-orange editorial-hero-banner clearfix"
+                                            cq:styleId="1577675747311"
+                                            cq:styleLabel="Editorial Banner Orange"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -3365,6 +3370,11 @@
                                             cq:styleId="1577976171585"
                                             cq:styleLabel="CTA Wrapper"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item7
+                                            cq:styleClasses="content-icon-slgi"
+                                            cq:styleId="1570202020203"
+                                            cq:styleLabel="SLGI Content Icon"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -3597,8 +3607,13 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="data-content-table-slgi"
+                                            cq:styleId="1585555566666"
+                                            cq:styleLabel="Data content table"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>
                                 <item1
