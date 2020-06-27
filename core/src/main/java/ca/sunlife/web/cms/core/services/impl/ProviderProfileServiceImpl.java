@@ -40,7 +40,7 @@ import ca.sunlife.web.cms.core.services.RestService;
 public class ProviderProfileServiceImpl implements ProviderProfileService {
 
   /** The logger. */
-  private final Logger logger = LoggerFactory.getLogger(getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(ProviderProfileServiceImpl.class);
 
   /** The provider profile config. */
   private ProviderProfileConfig providerProfileConfig;
@@ -52,13 +52,13 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
   /**
    * Activate.
    *
-   * @param providerProfileConfig
+   * @param profileConfig
    *          the provider profile config
    */
   @ Activate
-  public void activate(final ProviderProfileConfig providerProfileConfig) {
-    this.providerProfileConfig = providerProfileConfig;
-    logger.debug("ProviderProfileServiceImpl :: activate :: ProviderProfileServiceUrl: {} ",
+  public void activate(ProviderProfileConfig profileConfig) {
+    this.providerProfileConfig = profileConfig;
+    LOG.debug("ProviderProfileServiceImpl :: activate :: ProviderProfileServiceUrl: {} ",
         this.providerProfileConfig.getProviderProfileServiceUrl());
   }
 
@@ -70,7 +70,7 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
   @ Override
   public String getProviderProfile(final String locale, final String pageNo,
       final String mustachTemplate) throws ApplicationException, SystemException, IOException {
-    logger.debug(
+    LOG.debug(
         "Entry :: ProviderProfileServiceImpl :: getProviderProfile :: locale :: {}, pageNo :: {}",
         locale, pageNo);
     final StringBuilder url = new StringBuilder(
@@ -79,10 +79,10 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
     final Map <String, String> queryParameterMap = getQueryParameters(pageNo);
 
     if (null != queryParameterMap && queryParameterMap.size() > 0) {
-      if(queryParameterMap.containsKey("distance")) {
+      if (queryParameterMap.containsKey("distance")) {
       	queryParameterMap.remove("distance");
       }
-      if(queryParameterMap.containsKey("position")) {
+      if (queryParameterMap.containsKey("position")) {
       	queryParameterMap.remove("position");
       }
     }
@@ -90,9 +90,9 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
       queryParameterMap.forEach((key, value) -> url.append(key + "=" + value + "&"));
     }
     url.append(ProviderProfileConstants.LOCALE_CONSTANT + "=" + locale);
-    logger.debug("New provider profile url :: {}", url);
+    LOG.debug("New provider profile url :: {}", url);
     final String providerProfileResponse = restService.callGetWebService(url.toString());
-    logger.debug("providerProfileResponse :: {}", providerProfileResponse);
+    LOG.debug("providerProfileResponse :: {}", providerProfileResponse);
     @ SuppressWarnings ("unchecked")
     final HashMap <String, Object> profileDataMap = new ObjectMapper()
         .readValue(providerProfileResponse, HashMap.class);
@@ -111,7 +111,7 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
    * @return the query parameters
    */
   private Map <String, String> getQueryParameters(final String queryString) {
-    logger.debug("Entry :: ProviderProfileServiceImpl :: getQueryParameters :: queryString :: {}",
+    LOG.debug("Entry :: ProviderProfileServiceImpl :: getQueryParameters :: queryString :: {}",
         queryString);
     Map <String, String> queryParamMap = null;
     if (null != queryString) {
@@ -124,8 +124,8 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
         queryParamMap.put(actualParameterArray [ 0 ], actualParameterArray [ 1 ]);
       }
     }
-    logger.info("ProviderProfileServiceImpl :: queryParamMap :: {}", queryParamMap);
-    logger.debug("Exit :: ProviderProfileServiceImpl :: getQueryParameters :: queryParamMap :: {}",
+    LOG.info("ProviderProfileServiceImpl :: queryParamMap :: {}", queryParamMap);
+    LOG.debug("Exit :: ProviderProfileServiceImpl :: getQueryParameters :: queryParamMap :: {}",
         queryParamMap);
     return queryParamMap;
   }

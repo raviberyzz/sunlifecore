@@ -9,7 +9,7 @@ package ca.sunlife.web.cms.core.constants;
  * @author TCS
  * @version 1.0
  */
-public class BasePageModelConstants {
+public final class BasePageModelConstants {
 
   /**
    * Instantiates a new base page model constants.
@@ -47,4 +47,6 @@ public class BasePageModelConstants {
   /** The Constant PAGE_TYPE_ARTICLE_PAGES_CONSTANT. */
   public static final String PAGE_TYPE_ARTICLE_PAGES_CONSTANT = "article";
 
+  /** The Constant TITLE_MAX_LENGTH_CONSTANT. */
+  public static final int TITLE_MAX_LENGTH_CONSTANT = 200;
 }
