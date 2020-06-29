@@ -295,7 +295,14 @@ public class ProductCardModel {
       return;
     }
     try {
-      featuredImagePath = configService.getConfigValues("featuredImagePath", currentPage.getPath());
+    	String currPagePath = currentPage.getPath();
+    	LOG.debug("Before :: currPagePath :: {}", currPagePath);
+    	if ( null != currPagePath && currPagePath.length() > 0 && currPagePath.startsWith("/content/experience-fragments") ) {
+    		currPagePath = currPagePath.replace("/experience-fragments", "");
+    	}
+    	LOG.debug("After :: currPagePath :: {}", currPagePath);
+      featuredImagePath = configService.getConfigValues("featuredImagePath", currPagePath);
+      LOG.debug("featuredImagePath :: {}", featuredImagePath);
       if (topc.equalsIgnoreCase("static") && ! StringUtils.isEmpty(getProductCardFragmentPath())) {
         getProductCardData();
         LOG.debug("Sent Product Card data for static cards");

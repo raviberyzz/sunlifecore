@@ -22,7 +22,7 @@ $(document).ready(function () {
      $('.home-cta-form-wrapper .cmp-form-text #consumerPC').on('input',function(){
            validate();
         }) 
-    $('.yellow-icon-white-background #locate-advisors .home-cta-form-wrapper #locate-advisors-btn').on('click', function(){
+    $('.yellow-icon-white-background #locate-advisors .home-cta-form-wrapper #locate-advisors-btn, #locate-advisors-submit').on('click', function(){
         validate();
     })
     $('.blue-background-wrapper').find('.life-moments-wrapper-desktop .list-unstyled').children('li').children('a').each(function(){

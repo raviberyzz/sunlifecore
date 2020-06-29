@@ -108,9 +108,14 @@ public class AkamaiCacheClearImplTest {
 		akamaiCacheClearImpl.activate(akamaiConfig);
 		try {
 			when(configService.getConfigValues("domain", "page1")).thenReturn(DOMAIN);
-			when(configService.getPageUrl(ArgumentMatchers.anyString( ))).thenReturn("/content/page");
+			when(configService.getPageUrl(ArgumentMatchers.anyString())).thenReturn("/content/page");
+			when(coreResourceResolver.getResourceResolver()).thenReturn(resourceResolver);
+			when(resourceResolver.getResource(ArgumentMatchers.anyString())).thenReturn(resource);
+			when(resource.getValueMap()).thenReturn(valueMap);
+			when(valueMap.getOrDefault(com.day.cq.commons.jcr.JcrConstants.JCR_PRIMARYTYPE, "")).thenReturn(com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
+			System.out.println(akamaiCacheClearImpl.invalidateAssets(pages));
 			System.out.println(akamaiCacheClearImpl.invalidatePages(pages));
-		} catch (ApplicationException | LoginException | RepositoryException e) {
+		} catch (Exception e) {
 			assertTrue(e instanceof ApplicationException | e instanceof LoginException);
 		}
 	}
