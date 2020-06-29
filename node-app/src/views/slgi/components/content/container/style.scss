@@ -60,6 +60,11 @@
       p:last-child {
         padding-top: 24px;
       }
+      > * {
+        span.button-class{
+          width: 100%;
+        }
+      }
     }
   }
 }
