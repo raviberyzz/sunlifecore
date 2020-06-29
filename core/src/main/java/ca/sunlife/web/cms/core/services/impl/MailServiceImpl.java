@@ -171,7 +171,7 @@ public class MailServiceImpl implements MailService {
             if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
         	LOG.debug("Mail sent to client..");
             } else {
-        	LOG.error("Error in sending mail to client..");
+        	LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
         	mailResponse = sendMail(fromEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
         	LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
             }
@@ -182,7 +182,7 @@ public class MailServiceImpl implements MailService {
     		LOG.debug("Mail sent to marketing team..");
     		return successResponse;
         } else {
-    		LOG.error("Error in sending mail to marketing team..");
+    		LOG.error("Error in sending mail to marketing team.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
     		return errorResponse;
         }
         
