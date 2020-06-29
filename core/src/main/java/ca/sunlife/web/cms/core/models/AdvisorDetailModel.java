@@ -673,7 +673,7 @@ public class AdvisorDetailModel {
     String lat = null;
     String email = null;
     try {
-    	if(isError) {
+    	if (isError) {
     		return;
     	}
       final JSONObject inputJson = new JSONObject(advisorData);

@@ -129,29 +129,26 @@ public class SelectorToExfragMapModel {
 	        try {
 	        String siteName = configService.getConfigValues("siteName",
 	                  currentPage.getPath());
-	        if((selectors.length == 0) && (urlSelector.equalsIgnoreCase("")) && ( siteName.equalsIgnoreCase("SLGI"))) {	        	
+	        if ((selectors.length == 0) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
 	        	urlSelector = item.getSelector();	        	
-	        }else if(selectors.length > 0) {	        	
+	        } else if (selectors.length > 0) {	        	
 	        	urlSelector = selectors [ 0 ];
-	        }else {
-	        	//LOGGER.info("All other scenarios");
 	        }
 	        //Code for default page selector for slgi - ends
 	        
         if (item.getSelector().equals(urlSelector)) {
           fragPath = item.getExfragPath();
-          LOGGER.debug("fragPath is : ", fragPath);
+          LOGGER.debug("fragPath is : {}", fragPath);
           
           //Code for language toggle of experience fragment - starts
           String headerPath = "";
           String fragmentSplit = "";
-        //  try {
               if (null == fragPath) {
                 return;
               } else if (currentPage.getPath().contains("/content/experience-fragments")) {
                 modifiedFragmentPath = fragPath;
               } else {
-            	  if (fragPath.contains("header") || fragPath.contains("footer")|| fragPath.contains("breadcrumb")) {
+            	  if (fragPath.contains("header") || fragPath.contains("footer") || fragPath.contains("breadcrumb")) {
             		  LOGGER.debug("fragPath  contains header or footer or breadcrumb::::");
 		              headerPath = configService.getConfigValues("experienceFragmentPath",
 		                  currentPage.getPath());
@@ -159,26 +156,25 @@ public class SelectorToExfragMapModel {
 		              if (null != headerPath && headerPath.length() > 0) {
 		                final String [ ] pathSplit = fragPath.split("/");
 		                for (final String element : pathSplit) {
-		                  if (element.contains("header") || element.contains("footer")|| element.contains("breadcrumb")) {		                	  
+		                  if (element.contains("header") || element.contains("footer") || element.contains("breadcrumb")) {		                	  
 		                    fragmentSplit = "/" + element + "/";
 		                    break;
 		                  }
 		                }
 		                final String [ ] finalSplit = fragPath.split(fragmentSplit);
 		                modifiedFragmentPath = headerPath + fragmentSplit + finalSplit [ 1 ];
-		                LOGGER.debug("modifiedFragmentPath : "+modifiedFragmentPath);
+		                LOGGER.debug("modifiedFragmentPath : {}", modifiedFragmentPath);
 		              } else {
 		                modifiedFragmentPath = fragPath;
 		              }
-		            }
-		            else {
+		            } else {
 		              modifiedFragmentPath = fragPath;
 		            }
               	}        
           
           //Code for language toggle of experience fragment - ends
       }
-	 }catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
+	 } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
           LOGGER.error("Error :: init method of Experience fragment model :: {}", e);
      }
     }

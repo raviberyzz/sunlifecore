@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 public class Pagination {
 
   /** The Constant logger. */
-  private static final Logger logger = LoggerFactory.getLogger(Pagination.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(Pagination.class);
 
   /** The prev page. */
   private int prevPage = 0;
@@ -214,22 +214,22 @@ public class Pagination {
     if (totalPages < curPage) {
       nextPageNo = curPage + 1;
     }
-    logger.debug("Pagination :: curPage: {}, prevPage: {}, requestURL: {}", curPage, prevPage,
+    LOGGER.debug("Pagination :: curPage: {}, prevPage: {}, requestURL: {}", curPage, prevPage,
         pageUrl);
     final int firstBreakPt = 5;
     final int firstMinTotal = 6;
     int resultSize = 0;
     final String requestUrlStr = pageUrl + "/";
-    logger.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", pageSize, total);
+    LOGGER.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", pageSize, total);
 
     final int recordPerPage = pageSize;
     resultSize = total;
     final int mod = resultSize % recordPerPage;
     totalPages = resultSize / recordPerPage;
     if (mod > 0) {
-      totalPages++ ;
+      totalPages++;
     }
-    logger.debug("mod ={}, totalPages={}", Integer.valueOf(mod), Integer.valueOf(totalPages));
+    LOGGER.debug("mod ={}, totalPages={}", Integer.valueOf(mod), Integer.valueOf(totalPages));
 
     final int secondBreakPt = totalPages - 4;
     pageItems = new ArrayList <>();
@@ -241,7 +241,7 @@ public class Pagination {
       if (totalPages < firstMinTotal + 1) {
         maxFirst = totalPages;
       }
-      setInnerPageItems(2, maxFirst, pageItems, requestUrlStr);
+      setInnerPageItems(2, maxFirst, requestUrlStr);
       if (totalPages > firstMinTotal) {
         pageItems.add(pageItemEllipsis);
 
@@ -252,10 +252,10 @@ public class Pagination {
       }
     } else if (curPage >= secondBreakPt) {
       pageItems.add(pageItemEllipsis);
-      setInnerPageItems(secondBreakPt, totalPages, pageItems, requestUrlStr);
+      setInnerPageItems(secondBreakPt, totalPages, requestUrlStr);
     } else {
       pageItems.add(pageItemEllipsis);
-      setInnerPageItems(curPage - 2, curPage + 2, pageItems, requestUrlStr);
+      setInnerPageItems(curPage - 2, curPage + 2, requestUrlStr);
       pageItems.add(pageItemEllipsis);
 
       final PageItem pageItem = new PageItem();
@@ -272,14 +272,12 @@ public class Pagination {
    *          the start index
    * @param endIndex
    *          the end index
-   * @param pageItems
-   *          the page items
    * @param requestUrlStr
    *          the request url str
    */
   public void setInnerPageItems(final int startIndex, final int endIndex,
-      final List <PageItem> pageItems, final String requestUrlStr) {
-    for (int i = startIndex ; i <= endIndex ; i++ ) {
+      final String requestUrlStr) {
+    for (int i = startIndex; i <= endIndex; i++) {
       final PageItem pageItem = new PageItem();
       pageItem.setHref(requestUrlStr + String.valueOf(i));
       pageItem.setIndex(i);
