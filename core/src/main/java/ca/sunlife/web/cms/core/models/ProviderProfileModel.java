@@ -130,13 +130,16 @@ public class ProviderProfileModel {
       if (null != providerProfileResource) {
         final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
         LOGGER.debug("pageLocale is {}", locale);
-        final ValueMap providerProfileContent = providerProfileResource.getValueMap();
-        profileHTML = providerProfileService.getProviderProfile(locale,
-            request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT),
-            providerProfileContent.get(ProviderProfileConstants.FRAGMENT_VAR_CONSTANT,
-                String.class));
-        LOGGER.debug("profileHTML :: {}", profileHTML);
+        String pageNo = request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT);
+        if( null != pageNo && pageNo.length() > 0 ) {
+        	final ValueMap providerProfileContent = providerProfileResource.getValueMap();
+          profileHTML = providerProfileService.getProviderProfile(locale,
+              request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT),
+              providerProfileContent.get(ProviderProfileConstants.FRAGMENT_VAR_CONSTANT,
+                  String.class));
+        }
       }
+      LOGGER.debug("profileHTML :: {}", profileHTML);
     } catch (LoginException | RepositoryException | ApplicationException | SystemException
         | IOException e) {
       LOGGER.error("Error :: ProviderProfileModel :: init :: error :: {}", e);
