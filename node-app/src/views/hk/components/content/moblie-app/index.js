@@ -227,16 +227,16 @@ $(document).ready(function(){
       function addEventListeners(self) {
         var closeIcon = document.querySelector('.js_smartbanner__exit');
         closeIcon.addEventListener('click', function (event) {
-            utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "close" })
+            //utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "close" })
           return handleExitClick(event, self);
         });  
         var openIcon = document.querySelector('.smartbanner__button');
         openIcon.addEventListener('click', function (event) {
-            utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "open" });    
+            //utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "open" });    
         });
         var fullBanner = document.querySelector('.captureClick');
         fullBanner.addEventListener('click', function (event) {
-            utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "open" });    
+           // utag.link({ ev_type: "ad", ev_action: "clk", ev_title: "app_download_mobile_banner", ev_data_one: "open" });    
         });
         if (_detector.default.jQueryMobilePage()) {
           $(document).on('pagebeforeshow', self, handleJQueryMobilePageLoad);
@@ -415,7 +415,7 @@ $(document).ready(function(){
           key: "html",
           get: function get() {
             var modifier = !this.options.customDesignModifier ? this.platform : this.options.customDesignModifier;
-            utag.view({ ev_type: "ad", ev_action: "onpage_impr", ev_title: "app_download_mobile_banner", ev_data_one: "show" })
+            //utag.view({ ev_type: "ad", ev_action: "onpage_impr", ev_title: "app_download_mobile_banner", ev_data_one: "show" })
            return "<div class=\"smartbanner smartbanner--".concat(modifier, " js_smartbanner\">\n      <a href=\"javascript:void();\" class=\"smartbanner__exit js_smartbanner__exit\"></a>\n      <a href=\"").concat(this.buttonUrl, "\" target=\"_blank\" class=\"captureClick\"><div class=\"smartbanner__icon\" style=\"background-image: url(").concat(this.icon, ");\"></div>\n      <div class=\"smartbanner__info\">\n        <div>\n          <div class=\"smartbanner__info__title\">").concat(this.options.title, "</div>\n          <div class=\"smartbanner__info__author\">").concat(this.options.author, "</div>\n          <div class=\"smartbanner__info__price\">").concat(this.options.price).concat(this.priceSuffix, "</div>\n        </div>\n      </div></a>\n      <a href=\"").concat(this.buttonUrl, "\" target=\"_blank\" class=\"smartbanner__button\"><span class=\"smartbanner__button__label\">").concat(this.options.button, "</span></a>\n    </div>");
           }
         }, {

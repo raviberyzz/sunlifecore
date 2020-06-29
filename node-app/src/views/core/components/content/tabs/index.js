@@ -15,8 +15,10 @@ $(document).ready(function(){
 			$(this).attr('aria-expanded', true);
     }
     if (window.innerWidth < 768) {
+      var isSiteLevelNotification =  ($('.site-level-notification').length > 0)?true:false;
+      var bufferZone = isSiteLevelNotification?$('.site-level-notification').outerHeight()+50:50;
       $([document.documentElement, document.body]).animate({
-        scrollTop: $(this).parent().offset().top - 50 },1);
+        scrollTop: $(this).parent().offset().top - bufferZone },1);
     }
     });
 

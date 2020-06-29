@@ -138,9 +138,9 @@
         }
     } 
 }
-.right-navigation-wrapper .cmp-container >.experiencefragment .product-cards {
+/*.right-navigation-wrapper .cmp-container >.experiencefragment .product-cards {
     padding: 24px 15px 0 15px;
-}
+}*/
 
 @media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max)
 {
@@ -169,5 +169,15 @@
     }
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .product-card-wrapper {
+        .caption{
+            word-wrap: break-word;
+            word-break: normal;
+           
+        }
+    }
+   
+}
 
 

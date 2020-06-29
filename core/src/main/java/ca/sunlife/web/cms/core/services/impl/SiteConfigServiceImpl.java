@@ -5,8 +5,10 @@
 package ca.sunlife.web.cms.core.services.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -172,6 +174,21 @@ public class SiteConfigServiceImpl implements SiteConfigService {
                   .concat(BasePageModelConstants.SLASH_CONSTANT));
     }
     return StringUtils.EMPTY;
+  }
+
+  /* (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.SiteConfigService#getAllSites(java.lang.String)
+   */
+  @ Override
+  public Set <String> getAllSites(String propName) {
+    Set<String> props = new HashSet<String>();
+    siteConfigMap.forEach((key, val) -> {
+      String prop = val.getOrDefault(propName, null);
+      if (StringUtils.isNotBlank(prop)) {
+        props.add(prop);
+      }
+    });
+    return props;
   }
 
 }

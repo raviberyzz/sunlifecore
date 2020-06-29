@@ -136,6 +136,12 @@
     $('.carousel-client-story .teaser .left-image-position').click(function(){
         openDialogSliderBasedOnScreen();
         });
+	/** hide the dots of the carousel if number of slide is 1 **/	
+	if( $('.carousel .cmp-carousel__indicators > li').length <= 1) { 
+			$('.carousel .cmp-carousel__indicators').hide(); 
+		} else { 
+			$('.carousel .cmp-carousel__indicators').show();
+	}	
     /** Client Stories code ends **/
 
     var properties = {

@@ -97,4 +97,12 @@
                 display:block;
             }
         }
-      }
+        body:lang(id) .sign-in-modal-wrapper{
+            .login-container {
+                .download-app{
+                    height:auto;
+                    transform: translateY(9px);
+                }
+            }
+        }
+    }
