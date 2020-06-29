@@ -93,14 +93,17 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
     LOG.debug("New provider profile url :: {}", url);
     final String providerProfileResponse = restService.callGetWebService(url.toString());
     LOG.debug("providerProfileResponse :: {}", providerProfileResponse);
-    @ SuppressWarnings ("unchecked")
-    final HashMap <String, Object> profileDataMap = new ObjectMapper()
-        .readValue(providerProfileResponse, HashMap.class);
-    final MustacheFactory mf = new DefaultMustacheFactory();
-    final StringWriter writer = new StringWriter();
-    final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
-    mustache.execute(writer, profileDataMap);
-    return writer.toString().replace("&amp;", "&");
+    if (null != providerProfileResponse && providerProfileResponse.length() > 0) {
+    	@ SuppressWarnings ("unchecked")
+      final HashMap <String, Object> profileDataMap = new ObjectMapper()
+          .readValue(providerProfileResponse, HashMap.class);
+      final MustacheFactory mf = new DefaultMustacheFactory();
+      final StringWriter writer = new StringWriter();
+      final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
+      mustache.execute(writer, profileDataMap);
+      return writer.toString().replace("&amp;", "&");
+    }
+    return null;
   }
 
   /**
