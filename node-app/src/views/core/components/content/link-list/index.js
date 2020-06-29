@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('#mainfooter .accordion-heading').click(function () {
+	$('#mainfooter .accordion-heading').off('click').on('click', function () {
 		$(this).siblings('.list-div').toggle('collapse');
 		$(this).closest('.col-xs-12').siblings().find('.list-div').css('display', 'none');
         $(this).closest('.col-xs-12').siblings().find('.accordion-heading').attr('aria-expanded', false);
