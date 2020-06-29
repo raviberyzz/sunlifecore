@@ -112,6 +112,26 @@
                 }
             }
         }
+        .header-signIn {
+            .desktop-utility-nav {
+                .desktop-sunlife-logo {
+                    .logo-separator {
+                        img {
+                            border-right: 2px solid $logo-separator-grey-shade;
+                            padding-right: 15px;
+                        }
+                        > :not(:first-child) {
+                            padding-left: 15px;
+                        }
+                    }
+                }
+            }
+            .desktop-sunlife-navigation {
+                .desktop-navigation {
+                    margin-left: 500px;
+                }
+            }
+        }
     }
     .search-autocomplete{
         position: absolute;
