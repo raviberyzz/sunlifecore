@@ -28,7 +28,8 @@
     font-size: 0;
     text-indent: -3000px;
     background: linear-gradient(to bottom, $medium-grey-background 0%, $light-grey-color 100%);
-    zoom: 1;
+	zoom: 1;
+	outline: none !important;
   }
   .cmp-carousel__indicator--active {
     background: linear-gradient(to bottom, $light-blue-color 0%, $medium-blue-color 100%);
