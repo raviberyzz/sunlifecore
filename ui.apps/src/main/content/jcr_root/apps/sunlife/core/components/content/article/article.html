@@ -14,7 +14,7 @@
         </div>
         ${article.articleData.articleMiniDescription  @context='html'}
         <figure class="article-image" data-sly-test="${article.articleData.articleImage}">
-            <img src="${article.articleData.articleImage}" aria-hidden="true">
+            <img src="${article.articleData.articleImage}" alt="${article.articleData.articleHeadline}" aria-hidden="true">
         </figure>
         <div class="article-body">
             ${article.articleData.articleMainDescription  @context='html'}
