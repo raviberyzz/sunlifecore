@@ -1,7 +1,7 @@
 $(document).ready(function () {
     /* Carousel analytics starts here */
     //for home page only
-    if($('title').text()=='Home'){
+    if($('title').text()=='Home'|| $('meta[name="template"]').attr('content')=='hk-sunlife-home-page' ){
         //banner load
         function bannerLoadHK() {
             var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
