@@ -135,7 +135,7 @@ function getPremiumPrice(productName,key,val,amount,age,countryCode,dob,frequenc
             rawFile.send(null);
         }
         readTextFile(url);
-        setTimeout(operator,500);
+        setTimeout(operator,1000);
         function operator(){
             let data='';
             if(productName=='SunHealth_Medical_Essential'){
