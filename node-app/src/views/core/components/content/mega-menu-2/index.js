@@ -41,7 +41,7 @@ $(document).ready(function(){
           var submenuHeight=$(this).children('.dropdown-menu').height();
          if ( submenuHeight > menuHeight)
          {
-            $(this).parent().parent().parent().parent().height(submenuHeight+13);
+            $(this).parent().parent().parent().parent().height(submenuHeight+9);
          }
           else
          {

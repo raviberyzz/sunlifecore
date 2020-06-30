@@ -34,7 +34,7 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
   private CoreResourceResolverConfig config;
 
   /** The log. */
-  private final Logger log = LoggerFactory.getLogger(this.getClass());
+  private static final Logger LOG = LoggerFactory.getLogger(CoreResourceResolverImpl.class);
 
   /** The resource resolver factory. */
   @ Reference
@@ -43,15 +43,15 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
   /**
    * Activate.
    *
-   * @param config
+   * @param coreResourceResolverConfig
    *          the config
    */
   @ Activate
-  public void activate(final CoreResourceResolverConfig config) {
-    log.debug("Entry :: activate method of CoreResourceResolverImpl");
-    this.config = config;
-    log.info("Got sub service {}", config.getSubService());
-    log.debug("Exit :: activate method of CoreResourceResolverImpl");
+  public void activate(CoreResourceResolverConfig coreResourceResolverConfig) {
+    LOG.debug("Entry :: activate method of CoreResourceResolverImpl");
+    this.config = coreResourceResolverConfig;
+    LOG.info("Got sub service {}", coreResourceResolverConfig.getSubService());
+    LOG.debug("Exit :: activate method of CoreResourceResolverImpl");
   }
 
   /*
@@ -60,12 +60,12 @@ public class CoreResourceResolverImpl implements CoreResourceResolver {
    */
   @ Override
   public ResourceResolver getResourceResolver() throws LoginException {
-    log.debug("Entry :: getResourceResolver method of CoreResourceResolverImpl");
+    LOG.debug("Entry :: getResourceResolver method of CoreResourceResolverImpl");
     final Map <String, Object> param = new HashMap <>();
     param.put(ResourceResolverFactory.SUBSERVICE, config.getSubService());
     ResourceResolver resolver = null;
     resolver = resourceResolverFactory.getServiceResourceResolver(param);
-    log.debug("Exit :: getResourceResolver method of CoreResourceResolverImpl {}", resolver);
+    LOG.debug("Exit :: getResourceResolver method of CoreResourceResolverImpl {}", resolver);
     return resolver;
   }
 

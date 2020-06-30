@@ -61,7 +61,7 @@ public class LeftNavigationModal extends NavigationImpl {
   public static final String RESOURCE_TYPE = "sunlife/core/components/content/left-navigation";
 
   /** The Constant log. */
-  private static final Logger log = LoggerFactory.getLogger(LeftNavigationModal.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(LeftNavigationModal.class);
 
   /** The request. */
   @ Self
@@ -111,13 +111,8 @@ public class LeftNavigationModal extends NavigationImpl {
   /** The structure start. */
   private int structureStart;
 
-  /** The skip navigation root. */
-  private boolean skipNavigationRoot;
-
-  /* list to capture the items with overview */
-
   /** The updated list. */
-  List <NavigationItem> updatedList = new ArrayList <>();
+  private List <NavigationItem> updatedList = new ArrayList <>();
 
   /**
    * Gets the updated list.
@@ -177,7 +172,7 @@ public class LeftNavigationModal extends NavigationImpl {
     try {
       title = configService.getConfigValues("navigationOverview", currentPage.getPath());
     } catch (RepositoryException | LoginException e) {
-      log.error("Error :: init method of Left Navigation Model :: {}", e);
+      LOGGER.error("Error :: init method of Left Navigation Model :: {}", e);
     }
 
     Page parentPage;
@@ -326,17 +321,17 @@ public class LeftNavigationModal extends NavigationImpl {
    *
    * @param navigationRoot
    *          the navigation root
-   * @param structureStart
+   * @param structureStartVar
    *          the structure start
    * @return the root items
    */
   private List <NavigationRoot> getRootItems(final NavigationRoot navigationRoot,
-      final int structureStart) {
+      final int structureStartVar) {
     final LinkedList <NavigationRoot> pages = new LinkedList <>();
     pages.addLast(navigationRoot);
-    if (structureStart != 0) {
+    if (structureStartVar != 0) {
       int level = 1;
-      while (level != structureStart && ! pages.isEmpty()) {
+      while (level != structureStartVar && ! pages.isEmpty()) {
         int size = pages.size();
         while (size > 0) {
           final NavigationRoot item = pages.removeFirst();
@@ -413,7 +408,7 @@ public class LeftNavigationModal extends NavigationImpl {
   private String getRelativePath(final Page root, final Page child) {
     if (child.equals(root)) {
       return ".";
-    } else if ( (child.getPath() + "/").startsWith(root.getPath())) {
+    } else if ((child.getPath() + "/").startsWith(root.getPath())) {
       return child.getPath().substring(root.getPath().length() + 1);
     }
     return null;
@@ -425,18 +420,18 @@ public class LeftNavigationModal extends NavigationImpl {
    * @author TCS
    * @version 1.0
    */
-  private class NavigationRoot {
+  private final class NavigationRoot {
 
     /** The page. */
-    final Page page;
+    private final Page page;
 
     /** The start level. */
-    int startLevel;
+    private int startLevel;
 
     /** The structure depth. */
-    int structureDepth = - 1;
-
-    /**
+    private int structureDepth = - 1;
+    
+		/**
      * Instantiates a new navigation root.
      *
      * @param navigationRoot

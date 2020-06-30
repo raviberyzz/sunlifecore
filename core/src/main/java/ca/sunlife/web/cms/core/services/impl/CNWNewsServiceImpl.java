@@ -93,14 +93,14 @@ public class CNWNewsServiceImpl implements CNWNewsService {
   /**
    * Activate.
    *
-   * @param cnwNewsConfig
+   * @param newsConfig
    *          the cnw news config
    */
   @ Activate
-  public void activate(final CNWNewsConfig cnwNewsConfig) {
-    this.cnwNewsConfig = cnwNewsConfig;
+  public void activate(CNWNewsConfig newsConfig) {
+    this.cnwNewsConfig = newsConfig;
     logger.debug("Entry :: CNWNewsServiceImpl :: activate :: cnwNewsConfig: {}, inputFormatter: {}",
-        cnwNewsConfig.getCnwServiceUrl(), inputDateFormatter);
+        newsConfig.getCnwServiceUrl(), inputDateFormatter);
     final String [ ] dateFormatConfig = this.cnwNewsConfig.getDateFormatLocaleMapping();
     if (null != dateFormatConfig) {
       dateFormatMap = new HashMap <>();
@@ -282,7 +282,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     final int mod = resultSize % recordPerPage;
     int totalPages = resultSize / recordPerPage;
     if (mod > 0) {
-      totalPages++ ;
+      totalPages++;
     }
     logger.debug("mod ={}, totalPages={}", Integer.valueOf(mod), Integer.valueOf(totalPages));
 
@@ -340,7 +340,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
    */
   public void setInnerPageItems(final int startIndex, final int endIndex,
       final List <PageItem> pageItems, final String requestUrlStr) {
-    for (int i = startIndex ; i <= endIndex ; i++ ) {
+    for (int i = startIndex; i <= endIndex; i++) {
       final PageItem pageItem = new PageItem();
       pageItem.setHref(requestUrlStr + String.valueOf(i));
       pageItem.setIndex(i);

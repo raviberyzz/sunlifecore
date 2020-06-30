@@ -126,6 +126,9 @@ public class ProductCardModel {
   /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(ProductCardModel.class);
 
+  /** The Constant NUMBER_3. */
+  private static final int NUMBER_3 = 3;
+  
   /**
    * Gets the topc.
    *
@@ -297,7 +300,7 @@ public class ProductCardModel {
     try {
     	String currPagePath = currentPage.getPath();
     	LOG.debug("Before :: currPagePath :: {}", currPagePath);
-    	if ( null != currPagePath && currPagePath.length() > 0 && currPagePath.startsWith("/content/experience-fragments") ) {
+    	if (null != currPagePath && currPagePath.length() > 0 && currPagePath.startsWith("/content/experience-fragments")) {
     		currPagePath = currPagePath.replace("/experience-fragments", "");
     	}
     	LOG.debug("After :: currPagePath :: {}", currPagePath);
@@ -322,7 +325,6 @@ public class ProductCardModel {
   /**
    * Gets the product card data.
    *
-   * @return the product card data
    */
   public void getProductCardData() {
     ResourceResolver resourceResolver;
@@ -353,7 +355,6 @@ public class ProductCardModel {
   /**
    * Gets the product card data dynamic.
    *
-   * @return the product card data dynamic
    */
   public void getProductCardDataDynamic() {
     ResourceResolver resourceResolver = null;
@@ -380,7 +381,7 @@ public class ProductCardModel {
 
           case 1 :
             LOG.info("Article does not contains 1 tag.");
-            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 3));
+            itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], NUMBER_3));
             LOG.info("Number of results {}", itemList.size());
             break;
 
@@ -397,7 +398,7 @@ public class ProductCardModel {
 
             break;
 
-          case 3 :
+          case NUMBER_3 :
             LOG.info("Article does not contains 3 tags.");
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 1));
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
