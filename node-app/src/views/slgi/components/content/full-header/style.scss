@@ -37,6 +37,9 @@
       }
     }
     .hamburger-menu-wrapper {         /* Hamburger menu styles here */
+      .close-hamburger-menu {
+        color: $dark-blue;
+      }
       .second-level-navigation {
         background: $white-smoke;
         .go-back {
@@ -49,8 +52,19 @@
           }
         }
       }
+      .third-level-navigation {
+        background: $white-smoke;
+      }
       .navigation-menu a {
         color: $dark-blue;
+      }
+      .hamburger-search {
+        background: $light-grey-shade-color;
+        .slf-search-mobile .form-wrapper .input-wrapper{
+          .search-field{
+            background: $light-grey-shade-color;
+          }
+        }
       }
     }
   }
