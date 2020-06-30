@@ -131,7 +131,7 @@ public class ProviderProfileModel {
         final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
         LOGGER.debug("pageLocale is {}", locale);
         String pageNo = request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT);
-        if( null != pageNo && pageNo.length() > 0 ) {
+        if (null != pageNo && pageNo.length() > 0) {
         	final ValueMap providerProfileContent = providerProfileResource.getValueMap();
           profileHTML = providerProfileService.getProviderProfile(locale,
               request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT),
