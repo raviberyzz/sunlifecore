@@ -1,4 +1,4 @@
-/*
+/**
  *
  */
 
@@ -498,7 +498,7 @@ public class ArticleListModel {
       queryParameterMap.put("2_property.value", TagConstants.NT_TAGGABLE);
       // Check for the actual tags (by default, tag are or'ed)
       queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
-      for (int i = 0 ; i < tagNames.length ; i++ ) {
+      for (int i = 0; i < tagNames.length; i++) {
         queryParameterMap.put(String.format("tagid.%d_value", i + 1), tagNames [ i ].trim());
       }
     }

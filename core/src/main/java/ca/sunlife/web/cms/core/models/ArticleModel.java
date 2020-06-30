@@ -565,7 +565,7 @@ public class ArticleModel {
     	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
        }
       
-      LOGGER.debug("Locale is" + pageLocaleDefault);
+      LOGGER.debug("Locale is {}", pageLocaleDefault);
       if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
         LOGGER.debug("formatting date to {}",
             configService.getConfigValues("articleDateFormat", currentPage.getPath()));
@@ -574,9 +574,7 @@ public class ArticleModel {
             configService.getConfigValues("articleDateFormat", currentPage.getPath()),
             new Locale(pageLocaleDefault));
         LOGGER.debug("after adding locale");
-        // final SimpleDateFormat formatter = new SimpleDateFormat(
-        // configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-        articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
+        articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
             .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
         LOGGER.debug("After date formatting");
       }

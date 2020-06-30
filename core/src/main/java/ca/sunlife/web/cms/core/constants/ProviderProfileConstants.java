@@ -9,7 +9,7 @@ package ca.sunlife.web.cms.core.constants;
  * @author TCS
  * @version 1.0
  */
-public class ProviderProfileConstants {
+public final class ProviderProfileConstants {
 
   /**
    * Instantiates a new provider profile constants.

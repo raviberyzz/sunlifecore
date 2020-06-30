@@ -9,7 +9,7 @@ package ca.sunlife.web.cms.core.constants;
  * @author TCS
  * @version 1.0
  */
-public class ArticleConstants {
+public final class ArticleConstants {
 
   /**
    * Instantiates a new article constants.

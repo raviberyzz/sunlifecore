@@ -13,13 +13,13 @@ package ca.sunlife.web.cms.core.exception;
 public enum ErrorCodes {
 
   /** The sys error 001. */
-  SYS_ERROR_001 ("System error code"),
+  SYS_ERROR_001("System error code"),
 
   /** The app error 001. */
-  APP_ERROR_001 ("Application error code"),
+  APP_ERROR_001("Application error code"),
 
   /** The app error 200. */
-  APP_ERROR_200 ("Not able to purge AKAMAI request");
+  APP_ERROR_200("Not able to purge AKAMAI request");
 
   /** The error msg. */
   private String errorMsg;

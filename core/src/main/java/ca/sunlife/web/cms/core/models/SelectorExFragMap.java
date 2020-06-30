@@ -24,7 +24,7 @@ public interface SelectorExFragMap {
   /**
    * Gets the selector.
    *
-   * @return the selector
+   * @return the selector.
    */
   @ Inject
   public String getSelector();
@@ -32,7 +32,7 @@ public interface SelectorExFragMap {
   /**
    * Gets the exfrag path.
    *
-   * @return the exfrag path
+   * @return the exfrag path.
    */
   @ Inject
   public String getExfragPath();
