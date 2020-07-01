@@ -118,6 +118,18 @@ $(document).ready(function () {
             $('.link-list.editorial-nav-desktop-wrapper').attr('role', 'navigation');
         }
     }
+    // signIn desktop header
+    if ($('.slf-header-wrapper').find('.header-signIn')) {
+        if($('.desktop-sunlife-logo').children().length === 1) {
+            $('.desktop-header-wrapper .header-signIn .desktop-sunlife-navigation .desktop-navigation').attr("style", "margin-left: 188px;");
+        }
+        else if($('.desktop-sunlife-logo').children().length === 2) {
+            $('.desktop-header-wrapper .header-signIn .desktop-sunlife-navigation .desktop-navigation').attr("style", "margin-left: 320px;");
+        }
+        else {
+            $('.desktop-header-wrapper .header-signIn .desktop-sunlife-navigation .desktop-navigation').attr("style", "margin-left: 500px;");
+        }
+    }
 
     // signIn mobile header
     if ($('.slf-header-wrapper').find('.mobile-header-signIn')) {
