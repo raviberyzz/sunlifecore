@@ -58,7 +58,7 @@ public class NewsroomAnnouncementModel {
   private static final String NEWSROOM_HEADING = "newsroomHeading";
 
   /** The Constant logger. */
-  private static final Logger logger = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
 
   /** The fragment path. */
   @ Inject
@@ -146,11 +146,11 @@ public class NewsroomAnnouncementModel {
     }
     try {
       final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-      logger.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
+      LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
       final Resource articleResource = resourceResolver
           .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
       if (null != articleResource) {
-        logger.debug("Parsing Article Data");
+        LOGGER.debug("Parsing Article Data");
         final ValueMap articleContent = articleResource.getValueMap();
         articleData.put(NEWSROOM_HEADING,
             articleContent.containsKey(NEWSROOM_HEADING)
@@ -166,10 +166,10 @@ public class NewsroomAnnouncementModel {
                 : StringUtils.EMPTY);
         setArticlePublishDate(articleContent);
       }
-      logger.debug("Article Data {}", articleData);
+      LOGGER.debug("Article Data {}", articleData);
       resourceResolver.close();
     } catch (LoginException | RepositoryException e) {
-      logger.error("Login Error while getting resource resolver : {}", e);
+      LOGGER.error("Login Error while getting resource resolver : {}", e);
     }
   }
 
@@ -191,16 +191,16 @@ public class NewsroomAnnouncementModel {
     if (null != locale && locale.length() > 0) {    	
   	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
      }
-    logger.debug("Locale is" + pageLocaleDefault);
+    LOGGER.debug("Locale is {}", pageLocaleDefault);
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-      logger.debug("formatting date to {}",
+      LOGGER.debug("formatting date to {}",
           configService.getConfigValues("articleDateFormat", currentPage.getPath()));
       final SimpleDateFormat formatter = new SimpleDateFormat(
-          configService.getConfigValues("articleDateFormat", currentPage.getPath()),new Locale(pageLocaleDefault));
+          configService.getConfigValues("articleDateFormat", currentPage.getPath()), new Locale(pageLocaleDefault));
       
-      articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
+      articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
           .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
-      logger.debug("after adding locale {}",articlePublishedDate);
+      LOGGER.debug("after adding locale {}", articlePublishedDate);
     }
     articleData.put(ARTICLE_PUBLISHED_DATE, articlePublishedDate);
   }

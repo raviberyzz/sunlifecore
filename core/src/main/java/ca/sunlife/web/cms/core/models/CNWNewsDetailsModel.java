@@ -1,4 +1,4 @@
-/*
+/**
  *
  */
 
@@ -65,9 +65,7 @@ public class CNWNewsDetailsModel {
 
   /**
    * Inits the.
-   */
-  /**
-   * CNWNewsDetailsModel - init method for processing the data
+   * CNWNewsDetailsModel - init method for processing the data.
    */
   @ PostConstruct
   public void init() {

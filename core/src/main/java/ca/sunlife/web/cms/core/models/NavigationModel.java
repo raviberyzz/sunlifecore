@@ -44,7 +44,7 @@ public class NavigationModel extends NavigationImpl {
   }
 
   /** The Constant log. */
-  private static final Logger log = LoggerFactory.getLogger(NavigationModel.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(NavigationModel.class);
 
   /** The current page. */
   @ ScriptVariable
@@ -74,11 +74,11 @@ public class NavigationModel extends NavigationImpl {
   /**
    * Sets the updated list.
    *
-   * @param modifiedItems
+   * @param modifiedItemList
    *          the new updated list
    */
-  public void setUpdatedList(final Collection <NavigationItem> modifiedItems) {
-    this.modifiedItems = Collections.unmodifiableCollection(modifiedItems);
+  public void setUpdatedList(Collection <NavigationItem> modifiedItemList) {
+    this.modifiedItems = Collections.unmodifiableCollection(modifiedItemList);
   }
 
   /**
@@ -87,7 +87,7 @@ public class NavigationModel extends NavigationImpl {
   @ PostConstruct
   private void init() {
 
-    modifiedItems = processNavigationList(super.getItems());
+    this.modifiedItems = processNavigationList(super.getItems());
 
   }
 
@@ -107,14 +107,14 @@ public class NavigationModel extends NavigationImpl {
     String title = null;
     try {
     	String expPath = currentPage.getPath();
-    	if(null != expPath && expPath.length() > 0 && expPath.contains("experience-fragments")) {
+    	if (null != expPath && expPath.length() > 0 && expPath.contains("experience-fragments")) {
     	expPath = expPath.replace("/experience-fragments", "");
     	expPath = expPath.substring(0, expPath.indexOf("/header"));
     	}
     	
       title = configService.getConfigValues("navigationOverview", expPath);
     } catch (RepositoryException | LoginException e) {
-      log.error("Error :: init method of Left Navigation Model :: {}", e);
+      LOGGER.error("Error :: init method of Left Navigation Model :: {}", e);
     }
 
     Page parentPage;

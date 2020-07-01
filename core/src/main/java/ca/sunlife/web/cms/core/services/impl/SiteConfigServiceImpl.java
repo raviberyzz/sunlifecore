@@ -145,7 +145,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
             final Object value = e.getValue();
             resultMap.put(currentResource.getName() + "_" + key, value.toString());
           }
-          count++ ;
+          count++;
         }
         resultMap.put("altLangCount", String.valueOf(count));
       }

@@ -57,8 +57,16 @@
       background-image: none;
     }
     .icon-texts {
+      h3:first-child{
+        min-height: 3rem;
+      }
       p:last-child {
         padding-top: 24px;
+      }
+      > * {
+        span.button-class{
+          width: 100%;
+        }
       }
     }
   }
@@ -107,9 +115,23 @@
 /* Cross Sell Cta Wrapper Ends Here */
 
 /* Desktop only styles start */
-@media (max-width: $desktop-screen-min){
+@media (min-width: $desktop-screen-min) and (max-width: $desktop-screen-max){
   .cta-content-icon-wrapper .icon-style.fa-map-o {
     padding: 17px 15px 15px 15px;   /* Center Map-Icon within circle */
+  }
+  .orange-icon-white-background {
+    .cta-content-icon-wrapper {
+      .icon-texts{
+        p{
+          &:lang(en):nth-of-type(1){
+            min-height: 80px;
+          }
+          &:lang(fr):nth-of-type(1){
+            min-height: 120px;
+          }
+        }
+      }
+    }
   }
 }
 /* Desktop only styles end */
@@ -119,6 +141,21 @@
   a.icon-style.fa.fa-map-o {
     padding: 11px 11px 11px 8px;
   }
+  .orange-icon-white-background {
+    .cta-content-icon-wrapper {
+      .icon-texts{
+        p{
+          &:lang(en):nth-of-type(1){
+            min-height: 120px;
+          }
+          &:lang(fr):nth-of-type(1){
+            min-height: 170px;
+          }
+        }
+      }
+    }
+  }
+
 }
 /* Tablet only styles end */
 
@@ -129,3 +166,10 @@
   }
 }
 /* Mobile only styles end*/
+
+/* Not Mobile */
+@media (min-width: $tab-screen-min) {
+  #mainfooter {
+    background-color: $white-smoke;
+  }
+}

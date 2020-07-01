@@ -70,6 +70,9 @@
         background-color: $cool-blue-color;
         color: $white-shade;
         text-decoration: none;
+        a{
+            text-decoration: none;
+        }
     }
     .icon-class {
         display: none;

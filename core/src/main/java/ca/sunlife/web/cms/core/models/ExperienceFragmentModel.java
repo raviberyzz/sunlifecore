@@ -32,7 +32,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 public class ExperienceFragmentModel {
 
   /** The Constant log. */
-  private static final Logger log = LoggerFactory.getLogger(ExperienceFragmentModel.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ExperienceFragmentModel.class);
 
   /** The fragment path. */
   @ Inject
@@ -107,7 +107,7 @@ public class ExperienceFragmentModel {
 
           headerPath = configService.getConfigValues("experienceFragmentPath",
               currentPage.getPath());
-          log.info("Header path is : {}", headerPath);
+          LOGGER.info("Header path is : {}", headerPath);
           if (null != headerPath && headerPath.length() > 0) {
             final String [ ] pathSplit = fragmentPath.split("/");
             for (final String element : pathSplit) {
@@ -121,15 +121,13 @@ public class ExperienceFragmentModel {
           } else {
             modifiedFragmentPath = fragmentPath;
           }
-        }
-
-        else {
+        } else {
           modifiedFragmentPath = fragmentPath;
         }
       }
 
     } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
-      log.error("Error :: init method of Experience fragment model :: {}", e);
+      LOGGER.error("Error :: init method of Experience fragment model :: {}", e);
     }
   }
 
