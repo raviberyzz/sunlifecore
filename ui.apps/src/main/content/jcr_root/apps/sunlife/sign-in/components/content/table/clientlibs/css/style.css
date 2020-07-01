@@ -1,0 +1,22 @@
+/*this is in reference to data table in the slgi style guide*/
+.cmp-table-data-content {
+  border: 1px solid #DDDDDD; }
+  .cmp-table-data-content table tbody tr th {
+    background: #002D3D;
+    color: #ffffff; }
+  .cmp-table-data-content table tbody tr td:nth-of-type(odd) {
+    background-color: #F3EEEE; }
+
+/* Data content table which is specific to SLGI styles start here */
+.data-content-table {
+  border: 1px solid #DDDDDD; }
+  .data-content-table tbody tr > * {
+    padding: 24px; }
+  .data-content-table tbody tr:not(:last-child) {
+    border-bottom: 1px solid #D7D7D7;
+    /* first row underline color */ }
+  .data-content-table tbody tr:nth-of-type(2) {
+    border-bottom: 1px solid #DDDDDD;
+    /* remainder row underline color */ }
+  .data-content-table tbody tr th {
+    background: #F3EEEE; }

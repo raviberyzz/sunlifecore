@@ -1,0 +1,13 @@
+.tabs-wrapper .cmp-tabs__tabpanel, .tabs-wrapper .cmp-tabs__tabpanel--active {
+  border: 2px solid #E1E1E1; }
+  .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text h2, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text h3, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text h4, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text h5, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text h6, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text .heading-2, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text .heading-3, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text .heading-4, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text .heading-5, .tabs-wrapper .cmp-tabs__tabpanel .text .cmp-text .heading-6, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text h2, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text h3, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text h4, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text h5, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text h6, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text .heading-2, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text .heading-3, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text .heading-4, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text .heading-5, .tabs-wrapper .cmp-tabs__tabpanel--active .text .cmp-text .heading-6 {
+    color: #002D3D; }
+
+.tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab {
+  background-color: #002D3D;
+  color: #ffffff;
+  border: 2px solid #F3EEEE; }
+
+.tabs-wrapper .cmp-tabs__tablist .cmp-tabs__tab--active {
+  background-color: #FFCB05;
+  color: #002D3D; }
