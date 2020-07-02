@@ -22,6 +22,18 @@ JSON Format
 "value":"sign in",
 "img-tag":"https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png",
 "img-text-1":"For the best mobile experience",
-"img-text-2":"download the my Sun Lifeapp"
+"img-text-2":"download the my Sun Lifeapp",
+"cool-blue-background":"cool-blu",
+"action-tag":"/views/core/components/content/sign-in-modal.html"
 }
 ```
+<!-- sign-in-framework starts here -->
+```
+{
+    "cool-blue-background":'cool-blue',
+    "action-tag":"/views/core/components/content/sign-in-modal.html"
+}
+```
+<!-- sign-in-framework ends here -->
+<!-- for cool blue background use "cool-blue" in "cool-blue-background" tag also put the the in the first json to compile in browser -->
+<!-- action-tag for exiting site is "https://www.sunnet.sunlife.com/siteminder/FormsAuthLogin.fcc" for node-app local will be "/views/core/components/content/sign-in-modal.html" and for aem will be ""-->

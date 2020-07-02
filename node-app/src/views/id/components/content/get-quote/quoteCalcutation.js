@@ -155,7 +155,7 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
             rawFile.send(null);
         }
         readTextFile(url);
-        setTimeout(operator,500);
+        setTimeout(operator,1000);
         function operator(){
             let data='';
 				content=content.toString();
