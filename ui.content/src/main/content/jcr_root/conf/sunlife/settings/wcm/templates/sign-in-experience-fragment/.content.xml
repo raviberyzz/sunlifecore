@@ -2,7 +2,7 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2020-07-02T13:05:40.198+05:30"
+        cq:lastModified="{Date}2020-07-02T16:50:40.925+05:30"
         cq:lastModifiedBy="admin"
         cq:templateType="/conf/sunlife/settings/wcm/template-types/sunlife-experience-fragment"
         jcr:primaryType="cq:PageContent"
