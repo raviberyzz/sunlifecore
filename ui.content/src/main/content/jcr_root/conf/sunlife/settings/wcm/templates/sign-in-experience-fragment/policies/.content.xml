@@ -2,7 +2,6 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2020-06-30T15:55:48.152+05:30"
         cq:lastModifiedBy="admin"
         cq:policy="sunlife/core/components/structure/base-page/policy_2294328547749100"
         jcr:primaryType="nt:unstructured"
