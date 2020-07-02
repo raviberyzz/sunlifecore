@@ -1,2 +1,2 @@
-#Sunlife SLGI Components
-##Node application for sunlife SLGI components
+#Sunlife Sign-in Components
+##Node application for sunlife Sign-in components
