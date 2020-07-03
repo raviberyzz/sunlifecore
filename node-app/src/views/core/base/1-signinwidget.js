@@ -484,7 +484,7 @@ function signInClick(){
   			"ev_title": "homepage sign in",
   			"ev_type": "authenticate"
         });
-   }
+}
 
 var isSubmitted;
 isSubmitted = false;

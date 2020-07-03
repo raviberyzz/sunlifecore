@@ -46,7 +46,8 @@ $(document).ready(function () {
                 }
                 document.form_signon.SAVEIDSUBMISSION.value = "FALSE";
         }*/
-        function CheckClicks(lang) {
+        var isSubmitted=false;
+        function CheckClick(lang) {
                 if( isSubmitted == true ) {
                         if (lang=="f")
                             alert('Veuillez patienter pendant que nous soumettons vos renseignements.');
@@ -82,11 +83,14 @@ $(document).ready(function () {
                         return true;
                 }
         }
-        $('input[name="signin"][type="submit"]').click(function(event){
-            event.preventDefault();
-            CheckClicks('e');
+        $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
+            CheckClick('e');
         });
         /* submit validation ends  here */
+    }
+    //to add classes for flex container to push first div in mobile view
+    if($('.mySlfSignIn').length>0){
+        $('.mySlfSignIn').closest('.row').addClass('flex-layout-container');
     }
 });
 /* sign in framework ends here */
