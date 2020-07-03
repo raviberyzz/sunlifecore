@@ -99,7 +99,7 @@ $(document).ready(function () {
             document.getElementsByName('SAVEIDSUBMISSION')[0].value = "TRUE";
         }
     }
-    $("#rememberID").click(function(event){
+    $(".mySlfSignIn #rememberID").click(function(event){
 		remember(event);
     });
     //to add classes for flex container to push first div in mobile view
