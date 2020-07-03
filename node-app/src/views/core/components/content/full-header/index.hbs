@@ -13,7 +13,7 @@
       <div class="col-xs-12 yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content">
-        
+        {{!-- <div class="col-xs-12 desktop-header-content header-signIn"> --}}
         <div class="col-xs-12 desktop-sunlife-navigation">
           <div class="{{desktop-sunlife-logo}}" data-section="{{data-section-logo}}">
             <a href="https://www.sunlife.ca">
@@ -21,6 +21,17 @@
                 src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
               </img>
             </a>
+            {{!-- FOR TEST --}} 
+            {{!-- <a href="https://www.sunlife.ca">
+              <img class="vertical-middle-align" alt="sunlife logo clickable"
+                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+              </img>
+            </a> --}}
+            {{!-- <a href="https://www.sunlife.ca">
+              <img class="vertical-middle-align" alt="sunlife logo clickable"
+                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+              </img>
+            </a>  --}}
           </div>
           <div class="col-xs-12 {{desktop-utility-nav}}">
           {{>core-components-content-utility-nav}}
@@ -37,6 +48,8 @@
       </div>
     </div>
     <div class="mobile-header">
+      {{!-- for checking signIn header --}}
+    {{!-- <div class="mobile-header mobile-header-signIn"></div> --}} 
       {{>core-components-content-mobile-header}}
     </div>
   </div>

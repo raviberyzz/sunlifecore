@@ -9,8 +9,17 @@
           .go-back{
             background-color: $dark-blue;
           }
-          .tab-content {
+          .slf-tab-region{
             background-color: $white-smoke;
+            .tab-content {
+              background-color: $white-smoke;
+            }
+            .slf-tab {
+              background-color: $white-smoke;
+              &.first{
+                display: none;  //Regions tab should not appear
+              }
+            }
           }
         }
         .second-level-navigation {

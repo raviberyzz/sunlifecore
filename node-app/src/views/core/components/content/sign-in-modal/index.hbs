@@ -17,7 +17,8 @@
                                         <div class="download-app">
                                                 <a href="https://www.sunlife.ca/ca/Support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
                                                         target="_blank">
-                                                        <img alt="Sun Life App" src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png" />
+                                                        <img alt="Sun Life App"
+                                                                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/en/sunlife-app-logo.png" />
                                                 </a>
                                                 <div class="download-text">
                                                         <p>For the best mobile experience</p>
@@ -35,11 +36,11 @@
                                                                         placeholder="Email/Access ID" autocomplete="off"
                                                                         aria-label="Enter email/acess Id" />
                                                         </div>
-                                                        <div class="form-group form-second text-left">                                                     
+                                                        <div class="form-group form-second text-left">
                                                                 <label id="remembermelabel" class="remeberme"
-                                                                        for="rememberIDModal"><input name="SAVEIDCHECK" class="remember"
-                                                                         id="rememberIDModal"
-                                                                        type="checkbox"/>
+                                                                        for="rememberIDModal"><input name="SAVEIDCHECK"
+                                                                                class="remember" id="rememberIDModal"
+                                                                                type="checkbox" />
                                                                         Remember me</label>
                                                         </div>
                                                 </div>
@@ -64,11 +65,95 @@
                                         </div>
                                         <div class="sign-plans"><a
                                                         href="https://www.sunlife.ca/ca/Support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA"
-                                                        class="signin-sponsor"
-                                                        target="_blank">Plan sponsors and advisors</a>
+                                                        class="signin-sponsor" target="_blank">Plan sponsors and
+                                                        advisors</a>
                                         </div>
                                 </div>
                         </div>
                 </div>
         </div>
 </div>
+{{!-- sign-in-framework starts here  --}}
+
+<div class="col-xs-12 row">
+        <div class="col-sm-8">some banner content goes down in mobile view</div>
+        <div class="col-sm-4">
+                <div class="login-container mySlfSignIn {{cool-blue-background}}">
+                        <div class="h4 text-center" id="customerSignInHeader">CLIENT SIGN IN</div>
+                        <div class="download-app visible-xs">
+                                <div class="download-app-wrapper"><a
+                                                href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                                                target="_blank"><img
+                                                        src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
+                                                        alt="Sun Life App"></a>
+                                        <p><a href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                                                        target="_blank">For the best mobile experience, <strong>download
+                                                                the my
+                                                                Sun Life
+                                                                app.</strong></a></p>
+                                </div>
+                        </div>
+                        <form id="form-signon" name="form_signon" method="POST" action="" class="form-sign-in">
+                                <input name="SMENC" type="hidden" value="ISO-8859-1"> <input name="SMLOCALE"
+                                        type="hidden" value="US-EN"> <input name="SMAGENTNAME" type="hidden"
+                                        value="-SM-vnzZipTlYFhTbdvwtRD+FfcstaT019Aed3AC0x2Ioco/HG0NGrSJQ5u9pG29W7sL">
+                                <input name="REALMOID" type="hidden" value="06-7dbcf0bc-4a50-1000-abba-8344b012304d">
+                                <input name="DOMAIN" type="hidden" value="CONSUMER"> <input name=" IPKey" type="hidden"
+                                        value=""> <input name="CONTEXT" type="hidden" value="INTERNET"> <input
+                                        name="LANGUAGE" type="hidden" value="E"> <input name="PLATFORM" type="hidden"
+                                        value="WEB"> <input name="SIGNINSITE" type="hidden" value="SLF"> <input
+                                        name="SCREENRES" type="hidden" value="1366 x 768"> <input name="LOGLANG"
+                                        type="hidden" value="en-ca"> <input name="BROWSERID" type="hidden"
+                                        value="SAFARI"> <input name="BROWSERVER" type="hidden" value="537"> <input
+                                        name="BROWSERDESC" type="hidden"
+                                        value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36">
+                                <input id="ClientIP" name="ClientIP" type="hidden" value="161.69.123.10"> <input
+                                        name="ESTABLISHSESSION" type="hidden" value="TRUE"> <input
+                                        name="SAVEIDSUBMISSION" type="hidden" value="FALSE"> <input
+                                        name="LOGONUSINGSAVEID" type="hidden" value="FALSE">
+                                <input name="ESAVEID" type="hidden"> <input name="REQUESTTYPE" type="hidden"
+                                        value="SUBMIT">
+                                <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER"> <input
+                                        name="REDIRECTPATH" type="hidden" value=""> <input name="ERRORREDIRPATH"
+                                        type="hidden" value="/signin/mysunlife/home.wca"> <input name="TARGET"
+                                        type="hidden" value="/mbrportal/req/secure/pphp/personalizedWelcome">
+                                <div class="form-group">
+                                        <div class="help-block" id="generalError"><span id="ERROR_HTML"
+                                                        name="ERROR_HTML">&nbsp;
+                                                </span><span id="APOL_HTML" name="APOL_HTML"></span></div>
+                                </div>
+                                <div class="form-group"><label for="USER" class="sr-only">Access ID</label> <input
+                                                id="USER" autocomplete="off" name="USER" size="30" type="text"
+                                                placeholder="Email/Access ID">
+                                        <div id="accessIdError" class="arrow-help-block"></div>
+                                </div>
+                                <div class="form-group text-left">
+                                        <input type="checkbox" name="SAVEIDCHECK" id="rememberID"
+                                                onclick="remember(this)"><label for="rememberID">Remember me</label>
+                                </div>
+                                <div id="passwordDiv" class="form-group"><label for="PASSWORD"
+                                                class="sr-only">Password</label>
+                                        <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30"
+                                                type="password" class="password-input" placeholder="Password">
+                                        <div id="passwordError" class="arrow-help-block"></div>
+                                        <input name="signin" class="btn btn-blue mar-left-10 no-break" value="Sign in"
+                                                type="submit" onclick="">
+
+                                </div>
+                        </form>
+                        <p class="signin-links"><span class="signin-help"><a
+                                                href="https://www.sunlife.ca/ca/Support/Sign+in+help?vgnLocale=en_CA"
+                                                target="_blank">Forgot Access ID?</a></span> <span
+                                        class="signin-register"><a href="/mysunlife/signin/register/bregister.asp"
+                                                target="_blank">Forgot
+                                                password?</a></span></p>
+                        <p class="signin-links-two">Don't have Access ID?<a
+                                        href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA#"
+                                        class="signin-sponsor" target="_blank">&nbsp;Register now</a></p>
+                        <p class="signin-terms">By signing in, you agree to these <a
+                                        href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
+                                        target="_blank">terms and conditions.</a></p>
+                </div>
+        </div>
+</div>
+{{!-- sign-in-framework ends here  --}}

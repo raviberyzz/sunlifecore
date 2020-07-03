@@ -37,20 +37,39 @@
       }
     }
     .hamburger-menu-wrapper {         /* Hamburger menu styles here */
+      .language-region {
+        .mobile-language-region .tab-content {
+          background-color: $white-smoke;
+        }
+      }
+      .close-hamburger-menu {
+        color: $dark-blue;
+      }
       .second-level-navigation {
         background: $white-smoke;
         .go-back {
           background-color: $dark-blue;
           &::before{
-            color: $white-shade
+            color: $white-shade;
           }
           a {
-            color: $white-shade
+            color: $white-shade;
           }
         }
       }
+      .third-level-navigation {
+        background: $white-smoke;
+      }
       .navigation-menu a {
         color: $dark-blue;
+      }
+      .hamburger-search {
+        background: $light-grey-shade-color;
+        .slf-search-mobile .form-wrapper .input-wrapper{
+          .search-field{
+            background: $light-grey-shade-color;
+          }
+        }
       }
     }
   }

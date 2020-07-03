@@ -1,7 +1,7 @@
 $(document).ready(function () {
     /* Carousel analytics starts here */
     //for home page only
-    if($('title').text()=='Home'){
+    if($('title').text()=='Home'||$('meta[name="template"]').attr('content')=='hk-sunlife-home-page'||utag_data.page_breadcrumb=='/home' ){
         //banner load
         function bannerLoadHK() {
             var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
@@ -111,8 +111,8 @@ $(".contact-us dropdown").click(function(){
         utag.link({ 
             ev_type: "other", 
             ev_action: "clk", 
-            ev_title: tab_group_name,
-            ev_data_one: tab_name
+            ev_title: "category=" + tab_group_name,
+            ev_data_one: "tab selected=" + tab_name
         });
     });
 /* tabs analytics ends here */

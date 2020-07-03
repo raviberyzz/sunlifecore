@@ -8,8 +8,22 @@ $(document).ready(function () {
         var isValid = formInstance.parsley({}).isValid();
         var layoutHeight = $('.yellow-background-wrapper').siblings('.layout-container').height();
         if (!isValid && formInstance.find('.parsley-errors-list').length == 0) {
-            var increasedHeight = layoutHeight + 58;
-            $('.yellow-background-wrapper').css('padding-top', increasedHeight);
+            if (formInstance[0].id == 'findadv') {
+                var inputLength = formInstance.find('input[type=text]').val();
+                if (inputLength.length > 5 || inputLength.length == 0) {
+                    setTimeout(function () {
+                        if (formInstance.find('.parsley-errors-list').length) {
+                            var increasedHeight = layoutHeight + 58;
+                            $('.yellow-background-wrapper').css('padding-top', increasedHeight);
+                        }
+                    }, 0)
+                } else if (inputLength.length == 0 && formInstance.find('.parsley-errors-list').length == 0) {
+                    $('.yellow-background-wrapper').css('padding-top', layoutHeight);
+                }
+            } else if (formInstance[0].id !== 'findadv') {
+                var increasedHeight = layoutHeight + 58;
+                $('.yellow-background-wrapper').css('padding-top', increasedHeight);
+            }
         }
         else if (isValid) {
             $('.yellow-background-wrapper').css('padding-top', layoutHeight);
