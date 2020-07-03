@@ -2,9 +2,10 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2020-07-03T01:41:46.721-04:00"
+        cq:lastModified="{Date}2020-07-03T06:07:43.035-04:00"
         cq:lastModifiedBy="rahul.tcs.kumar@sunlife.com"
         cq:policy="sunlife/core/components/structure/base-page/policy_sunlife_signin_clientlibs"
+        jcr:mixinTypes="[]"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
@@ -37,8 +38,8 @@
                 <ca jcr:primaryType="nt:unstructured">
                     <components jcr:primaryType="nt:unstructured">
                         <content jcr:primaryType="nt:unstructured">
-                            <layout-container
-                                cq:policy="sunlife/ca/components/content/layout-container/policy_layoutContainer"
+                            <icon-text
+                                cq:policy="sunlife/ca/components/content/icon-text/policy_iconText"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                         </content>

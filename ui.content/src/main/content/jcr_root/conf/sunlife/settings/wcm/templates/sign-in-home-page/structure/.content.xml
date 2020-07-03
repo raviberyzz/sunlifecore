@@ -4,6 +4,7 @@
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
         cq:template="/conf/sunlife/settings/wcm/templates/sign-in-home-page"
+        jcr:mixinTypes="[]"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="sunlife/core/components/structure/base-page">
         <root
