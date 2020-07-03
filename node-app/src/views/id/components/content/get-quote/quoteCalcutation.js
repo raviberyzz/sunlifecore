@@ -155,6 +155,13 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
             rawFile.send(null);
         }
         readTextFile(url);
+            // $.ajax({
+            //   url:
+            //     "/content/dam/sunlife/legacy/assets/id/id-premiumRates.properties?logActivity=true",
+            //   success: function (result) {
+            //     operator(result);
+            //   },
+            // });
         setTimeout(operator,1000);
         function operator(){
             let data='';
