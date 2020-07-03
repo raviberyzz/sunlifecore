@@ -1,5 +1,8 @@
 @import '../../../base/core';
 
+.hide-logo {
+    display: none;
+}
 #signin-widget-modal {
     .loading {
         z-index: 1000;
@@ -216,9 +219,6 @@
             height: 30px;
             margin: 10px 2px;
         }
-    }
-    .hide-logo {
-        display: none;
     }
 }
 @media(min-width:$desktop-screen-min){
