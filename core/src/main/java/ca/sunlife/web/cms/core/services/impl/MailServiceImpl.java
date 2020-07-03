@@ -58,6 +58,9 @@ import ca.sunlife.web.cms.core.services.MailService;
 @Designate(ocd = MailConfig.class)
 
 public class MailServiceImpl implements MailService {
+    
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 1L;
 
     /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(MailServiceImpl.class);
