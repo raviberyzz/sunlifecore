@@ -243,7 +243,13 @@ public interface HeaderModel {
     @ Inject
     String getSeparator();
 	
-	
+	/**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ Inject
+    String getHideLogo();
 
     /**
      * Gets the link url.
@@ -296,6 +302,14 @@ public interface HeaderModel {
      */
     @ Inject
     String getSeparator();
+	
+	/**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ Inject
+    String getHideLogo();
 
     /**
      * Gets the link url.

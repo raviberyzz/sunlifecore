@@ -24,7 +24,7 @@
                 jcr:lastModified="{Date}2020-07-02T13:09:07.671+05:30"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="sunlife/ca/components/content/layout-container"/>
+                sling:resourceType="sunlife/sign-in/components/content/layout-container"/>
             <experiencefragment_416066859
                 jcr:created="{Date}2020-07-02T13:09:23.982+05:30"
                 jcr:createdBy="admin"

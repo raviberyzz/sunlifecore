@@ -54,7 +54,7 @@
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Do you need sign in div wrapper"
+                                                fieldLabel="Do you need sign in wrapper"
                                                 name="./isSignInHeader">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -156,6 +156,22 @@
                                                                                             value="no"/>
                                                                                     </items>
                                                                                 </separator>
+                                                                                <hideLogo
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                    fieldLabel="Hide Logo"
+                                                                                    name="./hideLogo">
+                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                        <no
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="No"
+                                                                                            value="no"/>
+                                                                                        <yes
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="Yes"
+                                                                                            value="yes"/>
+                                                                                    </items>
+                                                                                </hideLogo>
                                                                             </items>
                                                                         </column>
                                                                     </items>

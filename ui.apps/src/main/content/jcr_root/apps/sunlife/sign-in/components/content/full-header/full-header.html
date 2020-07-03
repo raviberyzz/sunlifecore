@@ -9,6 +9,7 @@
   
   <sly data-sly-test.isSignInHeader="${listModel.isSignInHeader}" />
   <sly data-sly-test.separator="${listModel.links.separator}" />
+  <sly data-sly-test.hideLogo="${listModel.links.hideLogo}" />
   
   <sly data-sly-test.signinTitle="${listModel.signinTitle}" />
   <sly data-sly-test.searchTitle="${listModel.searchTitle}" />
@@ -87,7 +88,7 @@
 			<div class="col-md-5 col-lg-5">
 				<div data-sly-test="${listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo" >
 					<sly data-sly-list.links="${listModel.links}">
-						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''}">
+						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''} ${links.hideLogo == 'yes' ? 'hide-logo' : ''}">
 							<img alt="${links.altText}" src="${links.logoImage}">
 						</a>
 					</sly>
@@ -106,24 +107,6 @@
 			  </div>
 		  </sly>
 		  <!-- Sign In Header Changes Ends -->
-		  
-		  
-		  <!-- Test Data for Sign In Header starts 
-		   <div data-sly-test="${isSignInHeader == 'yes'}" class="desktop-sunlife-logo" data-section="header-sign-in" >
-                <p> You selected yes</p>
-           </div>
-		   <div data-sly-test="${isSignInHeader == 'no'}" class="desktop-sunlife-logo" data-section="header-sign-in" >
-                <p> You selected no</p>
-           </div>
-		  
-		   <div data-sly-test="${!empty}" class="desktop-sunlife-logo" data-section="header-logo" >
-            <sly data-sly-list.links="${listModel.links}">
-				<p>1. ${links.separator}</p>
-            </sly>
-           </div>
-		   <!-- Test Data for Sign In Header ends -->
-		  
-		  
 		  
 		  <!-- Sign In Header Changes Starts -->
 		  <sly data-sly-test="${isSignInHeader == 'yes'}" >
@@ -243,7 +226,7 @@
         </div>
       </div>
     </div>
-    <div class="mobile-header">
+    <div class="mobile-header ${isSignInHeader == 'yes' ? 'mobile-header-signIn' : ''}">
     <sly data-sly-test.isCampaignHeader = "${listModel.campaignHeader == 'true'}">
     <div class="campaign-header-wrapper">
     <div class="campaign-header">

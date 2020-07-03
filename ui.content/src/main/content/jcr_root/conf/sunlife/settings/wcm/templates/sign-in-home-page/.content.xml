@@ -2,8 +2,8 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2020-07-02T16:41:30.139+05:30"
-        cq:lastModifiedBy="admin"
+        cq:lastModified="{Date}2020-07-03T06:07:43.037-04:00"
+        cq:lastModifiedBy="rahul.tcs.kumar@sunlife.com"
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
         jcr:description="Template used to create Home page for Sign In"
         jcr:primaryType="cq:PageContent"
