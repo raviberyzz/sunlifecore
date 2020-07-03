@@ -8,6 +8,7 @@ package ca.sunlife.web.cms.core.services.impl;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ import ca.sunlife.web.cms.core.services.MailService;
 @Designate(ocd = MailConfig.class)
 
 public class MailServiceImpl implements MailService {
-
+    
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
@@ -237,6 +238,7 @@ public class MailServiceImpl implements MailService {
 	    RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(TIMEOUT).setSocketTimeout(TIMEOUT)
 		    .build();
 	    builder.setDefaultRequestConfig(requestConfig);
+	    
 	    HttpClient client = builder.build();
 	    HttpPost post = new HttpPost(mailConfig.getApiUrl());
 	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
@@ -245,7 +247,7 @@ public class MailServiceImpl implements MailService {
 	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-email-body", populateContent(emailBodyParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
-	    post.setEntity(new UrlEncodedFormEntity(apiParameters));
+	    post.setEntity(new UrlEncodedFormEntity(apiParameters, StandardCharsets.UTF_8));	    
 	    LOG.debug("Trying to connect to mail API...");
 	    return client.execute(post);
 	} catch (final IOException e) {
