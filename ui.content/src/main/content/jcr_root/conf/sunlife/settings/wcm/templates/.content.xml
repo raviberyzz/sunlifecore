@@ -3,10 +3,13 @@
     jcr:primaryType="cq:Page">
     <ca-sunlife-blank-page/>
     <ca-sunlife-home-page/>
-    <ca-sunlife-content-page/>    
+    <ca-sunlife-content-page/>
     <ca-sunlife-experience-fragment/>
     <sunlife-config/>
 	<slgi-home-page/>
     <slgi-content-page/>
     <slgi-experience-fragment/>
+    <sign-in-experience-fragment/>
+    <sign-in-home-page/>
+    <sign-in-content-page/>
 </jcr:root>

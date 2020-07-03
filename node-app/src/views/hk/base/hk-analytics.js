@@ -111,8 +111,8 @@ $(".contact-us dropdown").click(function(){
         utag.link({ 
             ev_type: "other", 
             ev_action: "clk", 
-            ev_title: tab_group_name,
-            ev_data_one: tab_name
+            ev_title: "category=" + tab_group_name,
+            ev_data_one: "tab selected=" + tab_name
         });
     });
 /* tabs analytics ends here */
