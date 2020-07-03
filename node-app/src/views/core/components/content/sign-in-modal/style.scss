@@ -497,6 +497,9 @@
                     line-height:20px;
                     font-size:1rem;
                     color:$dark-grey-color;
+                    &:active,&:hover{
+                        text-decoration: none;
+                    }
                     strong{
                         font-size:1rem;
                         font-weight:700;
@@ -518,7 +521,7 @@
 }
 //  sign-in-framework ends here 
 @media (max-width: $mobile-screen-max){
-    .col-sm-12.flex-layout-container{
+    .row.flex-layout-container,.row.flex-height.flex-layout-container{
         display:flex;
         flex-direction: column;
         .col-sm-8{

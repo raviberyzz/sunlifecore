@@ -88,6 +88,20 @@ $(document).ready(function () {
         });
         /* submit validation ends  here */
     }
+    //remember me function;
+    function remember(me) {
+        if (!me.checked) {
+            if (document.getElementsByName('ESAVEID')[0].value.length > 0) {
+                window.top.location.href = "saveIDRemoveConfirm.wca";
+            }
+            document.getElementsByName('SAVEIDSUBMISSION')[0].value = "FALSE";
+        } else {
+            document.getElementsByName('SAVEIDSUBMISSION')[0].value = "TRUE";
+        }
+    }
+    $("#rememberID").click(function(event){
+		remember(event);
+    });
     //to add classes for flex container to push first div in mobile view
     if($('.mySlfSignIn').length>0){
         $('.mySlfSignIn').closest('.row').addClass('flex-layout-container');
