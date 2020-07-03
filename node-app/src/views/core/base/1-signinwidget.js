@@ -484,7 +484,7 @@ function signInClick(){
   			"ev_title": "homepage sign in",
   			"ev_type": "authenticate"
         });
-}
+   }
 
 var isSubmitted;
 isSubmitted = false;
@@ -506,27 +506,29 @@ function CheckClicks(lang) {
 				var idLen;
 
 				//idField= $("#" + currentSignInForm + " input[name=USER]");
-                id=$("#" + currentSignInForm + " input[name=USER]").val();
-                if(id){
-                    idLen=id.length;
-                    for (i=0;i<idLen;i++) {
-                            if (id.charAt(i)!='*') {
-                                    IsSaveId=false;
-                                    if(id.charAt(i)=='&') {
-                                        id=id.replace('&',':');
-                                    } else if(id.charAt(i)=='!') {
-                                        id=id.replace('!',';');
-                                    }
-                            } else if (id.charAt(i)=='*') {
-                                    if (i==0) IsSaveId=true;
-                                    id=id.replace('*','!');
-                            }
-                    }
-                    if (IsSaveId){                               
-                    $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("TRUE");                   
-                    }                    
-                    $("#" + currentSignInForm + " input[name=USER]").val(id);
-                }
+				id=$("#" + currentSignInForm + " input[name=USER]").val();
+				idLen=id.length;
+				for (i=0;i<idLen;i++) {
+						if (id.charAt(i)!='*') {
+								IsSaveId=false;
+								if(id.charAt(i)=='&') {
+									id=id.replace('&',':');
+								} else if(id.charAt(i)=='!') {
+									id=id.replace('!',';');
+								}
+						} else if (id.charAt(i)=='*') {
+								if (i==0) IsSaveId=true;
+								id=id.replace('*','!');
+						}
+				}
+				if (IsSaveId){
+				 			
+				 $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("FALSE");
+				
+				}
+				
+				$("#" + currentSignInForm + " input[name=USER]").val(id);
+
 				//document.form_signon.submit();
 				return true;
 		}
