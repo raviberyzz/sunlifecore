@@ -106,7 +106,6 @@ public class RelatedArticles {
   /**
    * Gets the related article data.
    *
-   * @return the related article data
    */
   public void getRelatedArticleData() {
     ResourceResolver resourceResolver;

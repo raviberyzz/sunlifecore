@@ -1,6 +1,13 @@
 @import '../../../base/core';
 .footer-copyright-wrapper{
   background-color: $dark-blue;
+  .top-part{
+    .slf-legal{
+      > ul {
+        line-height: 26px;
+      }
+    }
+  }
 }
 
 /* Tablet Only Styles Start*/
@@ -9,6 +16,9 @@
     display: inline-flex;
     flex-direction: row-reverse;
     width: 100%;
+    .bottom-part{
+      width: 80%;
+    }
   }
 }
 /* Tablet Only Styles End */

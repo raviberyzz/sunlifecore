@@ -903,7 +903,7 @@ public class BasePageModel {
   /**
    * Gets the page title.
    *
-   * @param title
+   * @param titleStr
    *          the title
    * @return the page title
    * @throws LoginException
@@ -911,13 +911,13 @@ public class BasePageModel {
    * @throws RepositoryException
    *           the repository exception
    */
-  public String getPageTitle(final String title) throws LoginException, RepositoryException {
+  public String getPageTitle(String titleStr) throws LoginException, RepositoryException {
     final String pagePath = currentPage.getPath();
     final String siteSuffix = configService.getConfigValues("siteSuffix", pagePath);
     if (null == siteSuffix || siteSuffix.length() <= 1) {
-      return title;
+      return titleStr;
     } else {
-      return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, title);
+      return siteSuffix.replace(BasePageModelConstants.PAGE_TITLE_FORMAT_CONSTANT, titleStr);
     }
   }
 
@@ -989,7 +989,7 @@ public class BasePageModel {
           break;
         }
       }
-      startLevel++ ;
+      startLevel++;
     }
 
     if (! navList.isEmpty()) {
@@ -1118,7 +1118,7 @@ public class BasePageModel {
         title = newsDetails.getRelease().getHeadline();
         description = "";
         socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0,
-            Math.min(newsDetails.getRelease().getSummary().length(), 200));
+            Math.min(newsDetails.getRelease().getSummary().length(), BasePageModelConstants.TITLE_MAX_LENGTH_CONSTANT));
         canonicalUrl = domain + shortenURL(pagePath, siteUrl)
             + BasePageModelConstants.SLASH_CONSTANT
             + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "")
@@ -1280,12 +1280,12 @@ public class BasePageModel {
 
     final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     if (articleContent.containsKey(ARTICLE_PUBLISHED_DATE)) {
-      articlePublishedDate = formatter.format( ((GregorianCalendar) articleContent
+      articlePublishedDate = formatter.format(((GregorianCalendar) articleContent
           .getOrDefault(ARTICLE_PUBLISHED_DATE, new GregorianCalendar())).getTime());
     }
 
     if (articleContent.containsKey(ARTICLE_MODIFIED_DATE)) {
-      articlePublishedModifiedDate = formatter.format( ((GregorianCalendar) articleContent
+      articlePublishedModifiedDate = formatter.format(((GregorianCalendar) articleContent
           .getOrDefault(ARTICLE_MODIFIED_DATE, new GregorianCalendar())).getTime());
     }
 

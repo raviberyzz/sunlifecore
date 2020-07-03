@@ -59,6 +59,11 @@
     position: relative;
     margin-top:-2px;
 }
+
+.announcement-list-container > .row .col-xs-12 {
+    padding: 0;
+}
+
 @media(max-width:$mobile-screen-max){
     .news-article{
         margin-left: -10px;

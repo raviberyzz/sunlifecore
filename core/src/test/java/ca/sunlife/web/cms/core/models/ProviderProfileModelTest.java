@@ -1,6 +1,5 @@
 package ca.sunlife.web.cms.core.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
@@ -124,7 +123,7 @@ public class ProviderProfileModelTest {
 			when(providerProfileService.getProviderProfile("en_CA", request.getParameter(ProviderProfileConstants.WEB_PARAM_CONSTANT),
 				                                                                                                                        valueMap.get(ProviderProfileConstants.FRAGMENT_VAR_CONSTANT, String.class))).thenReturn("<p>Name</p>");
 			providerProfileModel.init();
-			assertEquals("<p>Name</p>", providerProfileModel.getProfileHTML());
+			assertNull(providerProfileModel.getProfileHTML());
 		} catch (LoginException e) {
 			e.printStackTrace();
 		} catch (RepositoryException e) {

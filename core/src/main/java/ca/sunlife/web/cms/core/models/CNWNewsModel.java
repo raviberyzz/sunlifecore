@@ -602,8 +602,8 @@ public class CNWNewsModel {
     totalNoYears = Integer.parseInt(numberOfTabs);
     logger.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
     yearsToShow = new ArrayList <>();
-    for (int i = 0 ; i < totalNoYears ; i++ ) {
-      yearsToShow.add(downYear-- );
+    for (int i = 0; i < totalNoYears; i++) {
+      yearsToShow.add(downYear--);
     }
     logger.debug("yearsToShow :: {}", yearsToShow);
 

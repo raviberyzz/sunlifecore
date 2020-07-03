@@ -695,7 +695,7 @@ public class AnnouncementList {
 
     int year;
     int totalNoYears;
-    String pageNum = null;
+    String pageNumStr = null;
     if (null == latestYear) {
       final String requestPath = currentPage.getPath();
       year = Integer.parseInt(requestPath.substring(requestPath.lastIndexOf(slash) + 1));
@@ -707,8 +707,8 @@ public class AnnouncementList {
     totalNoYears = Integer.parseInt(numberOfTabs);
     LOGGER.debug("downYear: {}, totalNoYears: {}", downYear, totalNoYears);
     yearsToShow = new ArrayList <>();
-    for (int i = 0 ; i < totalNoYears ; i++ ) {
-      yearsToShow.add(downYear-- );
+    for (int i = 0; i < totalNoYears; i++) {
+      yearsToShow.add(downYear--);
     }
     LOGGER.debug("yearsToShow :: {}", yearsToShow);
 
@@ -716,9 +716,9 @@ public class AnnouncementList {
 
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
     if (selectors.length > 0) {
-      pageNum = selectors [ 0 ];
+      pageNumStr = selectors [ 0 ];
     }
-    LOGGER.debug("Fetched params  pageNum: {}, year: {}", pageNum, year);
+    LOGGER.debug("Fetched params  pageNum: {}, year: {}", pageNumStr, year);
     LOGGER.debug("activeYear :: {}", activeYear);
     final String uri = request.getRequestURI();
     LOGGER.debug("uri: {}", uri);
@@ -726,8 +726,8 @@ public class AnnouncementList {
     relativeURL = relativeURL.substring(0, relativeURL.lastIndexOf(slash));
     requestURL = uri.contains(".") ? uri.substring(0, uri.lastIndexOf('.')) : uri;
     LOGGER.debug("relativeURL: {}, requestURL: {}", relativeURL, requestURL);
-    if (null != pageNum) { // Code to remove page number from url
-      requestURL = requestURL.replaceAll("." + pageNum + "$", "");
+    if (null != pageNumStr) { // Code to remove page number from url
+      requestURL = requestURL.replaceAll("." + pageNumStr + "$", "");
     }
     requestURL = requestURL.replace(".", slash);
     final String pagePath = currentPage.getPath();
