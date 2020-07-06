@@ -2,3 +2,15 @@
 .no-padding .yellow-icon-white-background .cmp-container > :first-child{
 	height: 100%;
 }
+
+//IE fix
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .no-padding .yellow-icon-white-background .home-cta-form-wrapper{
+		display: table;
+    	margin-bottom: 40px;
+        width: 100%;
+	}
+    .no-padding .yellow-icon-white-background .cmp-container .text:last-child{
+		padding-bottom: 32px;
+	}
+}

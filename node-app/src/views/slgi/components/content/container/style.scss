@@ -115,7 +115,7 @@
 /* Cross Sell Cta Wrapper Ends Here */
 
 /* Desktop only styles start */
-@media (min-width: $desktop-screen-min) and (max-width: $desktop-screen-max){
+@media (min-width: $desktop-screen-min){
   .cta-content-icon-wrapper .icon-style.fa-map-o {
     padding: 17px 15px 15px 15px;   /* Center Map-Icon within circle */
   }

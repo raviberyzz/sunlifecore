@@ -31,21 +31,37 @@
             </recommended_products_header>
             <recommended_products_breadcrumb
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="sunlife/slgi/components/content/recommended-products-article">
-                <items jcr:primaryType="nt:unstructured">
-                    <item0
-                        jcr:primaryType="nt:unstructured"
-                        exfragPath="/content/experience-fragments/sunlife/external/slgi/english/breadcrumb/master"
-                        selector="pub"/>
-                    <item1
-                        jcr:primaryType="nt:unstructured"
-                        exfragPath="/content/experience-fragments/sunlife/external/slgi/english/breadcrumb/breadcrumb-advisor"
-                        selector="adv"/>
-                    <item2
-                        jcr:primaryType="nt:unstructured"
-                        exfragPath="/content/experience-fragments/sunlife/external/slgi/english/breadcrumb/breadcrumb-investor"
-                        selector="inv"/>
-                </items>
+                sling:resourceType="sunlife/slgi/components/content/breadcrumb"
+                hideCurrent="false"
+                showHidden="false"
+                socialShareReqd="true"
+                startLevel="4">
+                <socialIcons
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="sunlife/core/components/content/icon-text"
+                    title="Share this:"
+                    titleLevel="none">
+                    <iconsText jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            icon="fa-facebook-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Facebook"
+                            target="_self"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            icon="fa-twitter-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Twitter"
+                            target="_self"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            icon="fa-linkedin-square"
+                            link="javascript:void(0)"
+                            srText="Share this on Linkedin"
+                            target="_self"/>
+                    </iconsText>
+                </socialIcons>
             </recommended_products_breadcrumb>
             <titlebar
                 jcr:primaryType="nt:unstructured"

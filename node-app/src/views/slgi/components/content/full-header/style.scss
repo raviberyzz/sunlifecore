@@ -37,6 +37,11 @@
       }
     }
     .hamburger-menu-wrapper {         /* Hamburger menu styles here */
+      .language-region {
+        .mobile-language-region .tab-content {
+          background-color: $white-smoke;
+        }
+      }
       .close-hamburger-menu {
         color: $dark-blue;
       }
@@ -45,10 +50,10 @@
         .go-back {
           background-color: $dark-blue;
           &::before{
-            color: $white-shade
+            color: $white-shade;
           }
           a {
-            color: $white-shade
+            color: $white-shade;
           }
         }
       }

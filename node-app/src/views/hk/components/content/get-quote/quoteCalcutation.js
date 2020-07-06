@@ -239,3 +239,14 @@ function getPremiumPrice(
     console.log(e);
   }
 }
+/* fix related to autoscrolltotop on clicking talk-to-advisor */
+$(document).ready(function(){
+	setTimeout(function(){
+      $('.qc_plan_cta').each(function(i, v){  
+        var currentdiv=$(this); 
+        var currentdivparent=$(this).parent(); 
+        $(this).remove(); 
+        currentdivparent.append(currentdiv);
+      });
+  },3000);
+});
