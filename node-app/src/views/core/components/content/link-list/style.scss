@@ -31,12 +31,9 @@
         }
         .list-div{
             display: block;
-            min-height: 84px;
-            position: relative;
             margin-top: 0px;
             ul{
-                position: absolute;
-                height: 100%;
+                min-height: 84px;
                 background-color: $medium-yellow-background;
                 padding: 16px;
                 width: 100%;
@@ -233,17 +230,16 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     //interent explorer 
 
-    // commented due to IE fix of editorial wrapper
-    // .editorial-nav-desktop-wrapper{
-    //     .links{
-    //         .list-div{
-    //             ul{
-    //                 li{
-    //                     display:table-cell;
-    //                     vertical-align:middle;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    .editorial-nav-desktop-wrapper{
+        .links{
+            .list-div{
+                ul{
+                    li{
+                        display:table-cell;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
     }
