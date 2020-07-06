@@ -1333,7 +1333,7 @@ public class BasePageModel {
           final LiveCopy liveCopy = liveRelationship.getLiveCopy();
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
-            masterPagePath = sourcePath;
+            masterPagePath = sourcePath; 
             sourceResource = resolver.getResource(sourcePath);
           }
         }
