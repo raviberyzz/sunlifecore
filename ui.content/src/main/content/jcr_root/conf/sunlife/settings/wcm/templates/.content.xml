@@ -12,4 +12,7 @@
     <sign-in-experience-fragment/>
     <sign-in-home-page/>
     <sign-in-content-page/>
+    <com-sunlife-home-page/>
+    <com-sunlife-content-page/>
+    <com-sunlife-experience-fragment/>
 </jcr:root>
