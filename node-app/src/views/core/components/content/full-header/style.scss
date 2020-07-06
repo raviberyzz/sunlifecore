@@ -1,8 +1,5 @@
 @import '../../../base/core';
 
-.hide-logo {
-    display: none;
-}
 #signin-widget-modal {
     .loading {
         z-index: 1000;
@@ -203,7 +200,10 @@
         }
     }
 }
-@media(max-width:$tab-screen-max){
+@media(max-width:$tab-screen-max){ 
+    .hide-logo {
+        display: none;
+    }
     .desktop-header-wrapper{
         display:none;
     }
@@ -212,12 +212,13 @@
         }
     .secondary-logo-wrapper {
         text-align: center;
-        border-bottom: 1px solid $light-grey-shade-color;
-        height: 50px;
+        min-height: 50px;
+        background-color: $white-shade;
+        position: initial;
         img {
             width: 113px;
             height: 30px;
-            margin: 10px 2px;
+            margin: 25px 2px 0px 2px;
         }
     }
 }
