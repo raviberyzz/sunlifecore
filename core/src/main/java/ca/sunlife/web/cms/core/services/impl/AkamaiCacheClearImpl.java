@@ -11,7 +11,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -76,9 +78,6 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
 
   /** The Constant OBJECTS_STR. */
   private static final String OBJECTS_STR = "objects";
-
-  /** The Constant SLING_RESOURCE_TYPE. */
-  private static final String SLING_RESOURCE_TYPE = "sling:resourceType";
 
   /** The Constant FRAGMENT_PATH. */
   private static final String FRAGMENT_PATH = "fragmentPath";
@@ -165,13 +164,11 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
         if ((index++ % PURGE_SIZE) == 0) {
             request.put(OBJECTS_STR, objects);
             try {
-              Thread.sleep(THREAD_SLEEP_TIME);
+              LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(THREAD_SLEEP_TIME));
               response = response.concat(processAkamaiPurge(request.toString()));
             } catch (ApplicationException e) {
-              LOGGER.error(e.getMessage(), e);
-            } catch (InterruptedException e) {
-              LOGGER.error("Thread InterruptedException {}", e);
-            }
+              LOGGER.error("Got application exception {}", e);
+            } 
             request = new JSONObject();
             objects = new JSONArray();
         }
@@ -214,7 +211,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
         LOGGER.warn("Not able to get domain for {}", path);
       }
     } catch (LoginException | RepositoryException e) {
-      LOGGER.error(e.getMessage(), e);
+      LOGGER.error("Got exception {}", e);
     }
   }
 
@@ -234,7 +231,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
    */
   private void processArticleContent(Node content, Set<String> objects,
       ResourceResolver resourceResolver) throws RepositoryException, LoginException {
-    if (content.hasProperty(SLING_RESOURCE_TYPE) && content.getProperty(SLING_RESOURCE_TYPE).getString().endsWith("article")
+    if (content.hasProperty(com.adobe.cq.social.srp.internal.AbstractSchemaMapper.CQ_RESOURCE_TYPE) && content.getProperty(com.adobe.cq.social.srp.internal.AbstractSchemaMapper.CQ_RESOURCE_TYPE).getString().endsWith("article")
         && content.hasProperty(FRAGMENT_PATH) && StringUtils.isNotEmpty(content.getProperty(FRAGMENT_PATH).getString())) {
       String fragmentMetaDataPath = content.getProperty(FRAGMENT_PATH).getString().concat(BasePageModelConstants.SLASH_CONSTANT)
           .concat(JcrConstants.JCR_CONTENT).concat(BasePageModelConstants.SLASH_CONSTANT).concat("metadata");
@@ -243,8 +240,8 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       Resource metadataResource = resourceResolver.getResource(fragmentMetaDataPath);
       if (null != metadataResource) {
         Node metadata = metadataResource.adaptTo(Node.class);
-        if (null != metadata && metadata.hasProperty("cq:tags")) {
-          Value[] values = metadata.getProperty("cq:tags").getValues();
+        if (null != metadata && metadata.hasProperty(com.day.cq.tagging.TagConstants.PN_TAGS)) {
+          Value[] values = metadata.getProperty(com.day.cq.tagging.TagConstants.PN_TAGS).getValues();
           for (Value value:values) {
             tags.add(value.getString());
           }
@@ -282,7 +279,8 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
               // Get a reference to QB's leaking resource resolver
               leakingResourceResolver = resource.getResourceResolver();
             }
-            String resourcePath = resource.getPath().substring(0, resource.getPath().contains(JcrConstants.JCR_CONTENT) ? resource.getPath().indexOf(JcrConstants.JCR_CONTENT) - 1 : 0);
+            String resourcePath = resource.getPath().substring(0, 
+                (resource.getPath().contains(JcrConstants.JCR_CONTENT) ? (resource.getPath().indexOf(JcrConstants.JCR_CONTENT) - 1) : 0));
             LOGGER.debug("Got resource path {}", resourcePath);
             replicator.replicate(content.getSession(), ReplicationActionType.ACTIVATE, resourcePath, replicationOption);
             if (!resourcePath.startsWith("/content/experience-fragments")) {
@@ -295,7 +293,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
             }
           }
         } catch (ReplicationException e) {
-          LOGGER.error(e.getMessage(), e);
+          LOGGER.error("Got replication exception : {}", e);
         } finally {
           if (null != leakingResourceResolver) {
             // Always close the leaking query builder resource resolver
@@ -305,14 +303,14 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
       }
       return;
     }
-    if (content.hasProperty(SLING_RESOURCE_TYPE) && content.getProperty(SLING_RESOURCE_TYPE).getString().endsWith("experiencefragment")
+    if (content.hasProperty(com.adobe.cq.social.srp.internal.AbstractSchemaMapper.CQ_RESOURCE_TYPE) && content.getProperty(com.adobe.cq.social.srp.internal.AbstractSchemaMapper.CQ_RESOURCE_TYPE).getString().endsWith("experiencefragment")
         && content.hasProperty(FRAGMENT_PATH) && StringUtils.isNotEmpty(content.getProperty(FRAGMENT_PATH).getString())) {
       String fragmentPath = content.getProperty(FRAGMENT_PATH).getString();
       if (!StringUtils.lowerCase(fragmentPath).contains("header") && !StringUtils.lowerCase(fragmentPath).contains("footer")) {
         try {
           replicator.replicate(content.getSession(), ReplicationActionType.ACTIVATE, fragmentPath, replicationOption);
         } catch (ReplicationException e) {
-          LOGGER.error(e.getMessage(), e);
+          LOGGER.error("Got replication exception {}", e);
         }
       }
     }
@@ -346,7 +344,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
             objects.add(configService.getPageUrl(refPath));
           }
         } catch (LoginException | RepositoryException e) {
-          LOGGER.error(e.getMessage(), e);
+          LOGGER.error("Got the repository exception : {}", e);
         }
       }
     } else {
@@ -365,7 +363,7 @@ public class AkamaiCacheClearImpl implements AkamaiCacheClear {
           objects.add(configService.getPageUrl(siteUrl));
         }
       } catch (LoginException | RepositoryException e) {
-        LOGGER.error(e.getMessage(), e);
+        LOGGER.error("Got repository exception {}", e);
       }
     }
   }
