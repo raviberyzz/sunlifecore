@@ -22,14 +22,14 @@
                         fieldLabel="Background Colour "
                         name="./backgroundColour">
                         <items jcr:primaryType="nt:unstructured">
-                            <cool-blue
-                                jcr:primaryType="nt:unstructured"
-                                text="Cool Blue"
-                                value="cool-blue"/>
                             <yellow
                                 jcr:primaryType="nt:unstructured"
                                 text="Yellow"
                                 value="yellow"/>
+                            <cool-blue
+                                jcr:primaryType="nt:unstructured"
+                                text="Cool Blue"
+                                value="cool-blue"/>
                         </items>
                     </backgroundColour>
                     <actionUrl
