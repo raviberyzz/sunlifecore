@@ -1333,6 +1333,7 @@ public class BasePageModel {
           final LiveCopy liveCopy = liveRelationship.getLiveCopy();
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
+            masterPagePath = sourcePath; 
             sourceResource = resolver.getResource(sourcePath);
           }
         }
@@ -1388,6 +1389,9 @@ public class BasePageModel {
     LOG.debug(
         "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
         liveCopyPath, sourcePageLocale, sourceSiteUrl);
+    if (StringUtils.isEmpty(sourcePageLocale) || StringUtils.isEmpty(sourceSiteUrl)) {
+    	return;
+    }
     altLanguageLinks.put(
         sourcePageLocale.split("_") [ 0 ] + "-"
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")

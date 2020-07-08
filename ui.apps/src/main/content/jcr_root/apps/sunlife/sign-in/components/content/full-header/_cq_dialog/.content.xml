@@ -109,8 +109,14 @@
                                                                                 <logoImage
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                    fieldLabel="Logo Image"
+                                                                                    fieldLabel="Logo Image for Desktop version"
                                                                                     name="./logoImage"
+                                                                                    rootPath="/content/"/>
+                                                                                <mobileLogoImage
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                    fieldLabel="Logo Image for Mobile version"
+                                                                                    name="./mobileLogoImage"
                                                                                     rootPath="/content/"/>
                                                                                 <linkUrl
                                                                                     jcr:primaryType="nt:unstructured"

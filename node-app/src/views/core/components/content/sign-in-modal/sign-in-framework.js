@@ -34,7 +34,15 @@ $(document).ready(function () {
             }                     
         }
         showSignInError();
-        /* Get the error code from URL and shows in the proper section of Sign In widget starts here */
+        /* Get the error code from URL and shows in the proper section of Sign In widget ends here */
+        /* checking the checkbox on initial load if access id is there*/
+        function checkbox(){
+            if($(".mySlfSignIn #USER").val()!=undefined && $(".mySlfSignIn #USER").val().length>0){
+                alert(1);
+                $(".mySlfSignIn #rememberID").prop("checked",true);
+            }
+        }
+        setTimeout(checkbox,500);
         /* submit validation starts here */
         /*function initForm() {
                 if (document.form_signon.USER.disabled == false) {
@@ -75,7 +83,7 @@ $(document).ready(function () {
                                 }
                             }
                             if (IsSaveId){
-                                $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");;
+                                $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");
                             }
                             $(".mySlfSignIn .form-group #USER").val(id);
                         }
@@ -89,18 +97,15 @@ $(document).ready(function () {
         /* submit validation ends  here */
     }
     //remember me function;
-    function remember(me) {
-        if (!me.checked) {
+    $(".mySlfSignIn #rememberID").click(function(event){
+        if($(this).prop("checked") == false){
             if (document.getElementsByName('ESAVEID')[0].value.length > 0) {
                 window.top.location.href = "saveIDRemoveConfirm.wca";
             }
-            document.getElementsByName('SAVEIDSUBMISSION')[0].value = "FALSE";
-        } else {
-            document.getElementsByName('SAVEIDSUBMISSION')[0].value = "TRUE";
+            $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("FALSE");
+        }else{
+            $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");
         }
-    }
-    $(".mySlfSignIn #rememberID").click(function(event){
-		remember(event);
     });
     //to add classes for flex container to push first div in mobile view
     if($('.mySlfSignIn').length>0){

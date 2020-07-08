@@ -5,12 +5,14 @@ $(document).ready(function () {
         //banner load
         function bannerLoadHK() {
             var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
+            if (typeof utag !== 'undefined') {
                 utag.link({
                     ev_type: "ad",
                     ev_action: "onpage_impr",
                     ev_title: bannerTitle,
                     ev_data_one: "banner position=1"
                 });
+            }
         }
         //banner click
         $(".cmp-carousel__item").click(function(){
@@ -52,6 +54,7 @@ $(document).ready(function () {
     /* Carousel analytics ends here */
 
 /* Sign in modal analytics starts here */
+$("#signinbutton").unbind("click");
 $("#SignIn,#signinbutton").click(function(){
     utag.link({ 
         ev_type: "authenticate", 
@@ -68,8 +71,20 @@ $("#SignIn,#signinbutton").click(function(){
             ev_title: "sign in", 
             ev_data_one: signLink
         });
-    });      
-/* Sign in modal analytics starts here */
+    });     
+     
+/* Sign in modal analytics ends here */
+// Tagging for Upon clicking Get a quote
+$("#get-a-quote-btn").click(function() {
+    var url = window.location.href;
+    var productDropDownVal = $('#select-product').children('optgroup').children('option:selected').text();
+    utag.link({
+        ev_type: "other",
+        ev_action: "clk",
+        ev_title: "get a quote",
+        ev_data_one: productDropDownVal
+    });
+});
 /* contact us analytics starts here */
 $(".contact-us").click(function(){
     utag.view({ 
