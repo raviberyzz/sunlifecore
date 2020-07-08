@@ -1782,6 +1782,11 @@
                                             cq:styleId="1580981343777"
                                             cq:styleLabel="Tools and Resource Page"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="lifemoments-apac"
+                                            cq:styleId="1580981343888"
+                                            cq:styleLabel="Home Page APAC"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
@@ -3714,6 +3719,11 @@
                                             cq:styleId="1580981343777"
                                             cq:styleLabel="Tools and Resource Page"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="lifemoments-apac"
+                                            cq:styleId="1580981347878"
+                                            cq:styleLabel="Home Page APAC"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
