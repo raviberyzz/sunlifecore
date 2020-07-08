@@ -2677,7 +2677,7 @@
                     </teaser>
                     <titlebar jcr:primaryType="nt:unstructured">
                         <policy_titlebar
-                            cq:styleDefaultClasses="title-wrapper-dark-blue no-title-bottom-spacing"
+                            cq:styleDefaultClasses="title-wrapper-dark-blue"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -2691,23 +2691,12 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="no-title-bottom-spacing title-wrapper-yellow-grey-rings"
+                                            cq:styleClasses="no-title-bottom-spacing title-wrapper-dark-blue"
                                             cq:styleId="1581071344190"
                                             cq:styleLabel="No bottom spacing"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
-                                <item1
-                                    cq:styleGroupLabel="Theme"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="title-wrapper-dark-blue"
-                                            cq:styleId="15810713441666"
-                                            cq:styleLabel="Dark Blue"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item1>
                             </cq:styleGroups>
                         </policy_titlebar>
                     </titlebar>
