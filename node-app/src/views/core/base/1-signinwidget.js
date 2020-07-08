@@ -521,9 +521,8 @@ function CheckClicks(lang) {
 								id=id.replace('*','!');
 						}
 				}
-				if (IsSaveId){
-				 			
-				 $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("FALSE");
+				if (IsSaveId){			
+				 $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val('TRUE');
 				
 				}
 				
