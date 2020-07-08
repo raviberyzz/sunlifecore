@@ -43,7 +43,7 @@ $(document).ready(function () {
     $(".sign-in-modal-wrapper #form_signon .btn.btn-blue").click(function(){
       return CheckClicks('e');
     });
-    $("#rememberIDModal").click(function(){
+    $(".sign-in-modal-wrapper #rememberIDModal").click(function(){
       remember(this);
     });
     $('#rememberIDModal').keypress(function(event) {
