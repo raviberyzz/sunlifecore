@@ -46,7 +46,7 @@ public class LeftNavItemImpl extends PageListItemImpl implements NavigationItem 
 	 * @param children the children to set
 	 */
 	public void setChildren(List<NavigationItem> children) {
-		this.children = children;
+		this.children = Collections.unmodifiableList(children);
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class LeftNavItemImpl extends PageListItemImpl implements NavigationItem 
     super(request, page);
     this.active = active;
     this.level = level;
-    this.children = children;
+    this.children = Collections.unmodifiableList(children);
     this.navTitle = navTitle;
   }
 
@@ -139,7 +139,7 @@ public class LeftNavItemImpl extends PageListItemImpl implements NavigationItem 
    */
   @ Override
   public List <NavigationItem> getChildren() {
-    return children;
+    return Collections.unmodifiableList(children);
   }
 
   /*

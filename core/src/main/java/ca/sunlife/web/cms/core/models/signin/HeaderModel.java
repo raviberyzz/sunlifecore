@@ -228,6 +228,14 @@ public interface HeaderModel {
     String getLogoImage();
 
     /**
+     * Gets the mobile logo image.
+     *
+     * @return the mobile logo image
+     */
+    @ Inject
+    String getMobileLogoImage();
+
+    /**
      * Gets the target.
      *
      * @return the target
