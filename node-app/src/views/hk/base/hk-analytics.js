@@ -5,12 +5,14 @@ $(document).ready(function () {
         //banner load
         function bannerLoadHK() {
             var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
+            if (typeof utag !== 'undefined') {
                 utag.link({
                     ev_type: "ad",
                     ev_action: "onpage_impr",
                     ev_title: bannerTitle,
                     ev_data_one: "banner position=1"
                 });
+            }
         }
         //banner click
         $(".cmp-carousel__item").click(function(){
