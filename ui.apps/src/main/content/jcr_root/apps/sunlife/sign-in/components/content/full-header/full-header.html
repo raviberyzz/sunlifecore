@@ -233,7 +233,7 @@
         <div class="slf-header-logo vertical-middle-align">
         <sly data-sly-list.links="${listModel.links}">
           <a class="logo" href="links.linkUrl @ extension = 'html'">
-                <img class="logo-img" alt="Sun Life" aria-label="Sun Life" src="${links.logoImage}">
+                <img class="logo-img" alt="Sun Life" aria-label="Sun Life" src="${links.mobileLogoImage == null ? links.logoImage : links.mobileLogoImage }">
             </a>
             </sly>
         </div>
@@ -257,7 +257,7 @@
           <div data-sly-test="${listFrom == 'yes'}" class="slf-header-mobile-logo" data-section="header-logo">
             <sly data-sly-list.links="${listModel.links}">
               <a href="${links.linkUrl @ extension = 'html' }">
-                <img class="vertical-middle-align" alt="sunlife logo" src="${links.logoImage}">
+                <img class="vertical-middle-align" alt="sunlife logo" src="${links.mobileLogoImage == null ? links.logoImage : links.mobileLogoImage }">
               </a>
             </sly>
           </div>
