@@ -2,6 +2,7 @@
 
 .blue-background-wrapper{
     height: auto;
+    min-height: 382px;
     padding-bottom: 27px;
 }
 
@@ -20,5 +21,11 @@
         .bright-start h3 {
             padding-left: 10px;
         }
+    }
+}
+
+@media(max-width:$mobile-screen-max){
+    .blue-background-wrapper{
+        padding-bottom: 48px;
     }
 }
