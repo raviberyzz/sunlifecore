@@ -12,7 +12,7 @@ $(document).ready(function () {
 		}
 	});
 	if ($('.banner-section').parents('.cmp-container').parents().parents().hasClass('col-sm-8')) {
-		var containerHeight = $('.banner-section').parents('.cmp-container').parents().parents()[0].clientHeight;
+		var containerHeight = $('.banner-section').parents('.cmp-container').parents().parents().next().children().children().children()[0].clientHeight;
         var backGroundSize = "auto"+" "+ containerHeight+"px";
 		$('.col-sm-8 .banner-section .image-text-wrapper .desk-img ').css({
 			"background-size": backGroundSize,
