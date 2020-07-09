@@ -120,6 +120,7 @@
                             border-right: 2px solid $logo-separator-grey-shade;
                             padding-right: 15px;
                             margin-right: 15px;
+                            width: auto;
                         }
                     }
                 }
@@ -200,6 +201,9 @@
         }
     }
 }
+.slf-header-wrapper .desktop-header-wrapper .header-signIn .desktop-utility-nav .desktop-sunlife-logo img {
+    width: auto; 
+}
 @media(max-width:$tab-screen-max){ 
     .hide-logo {
         display: none;
@@ -216,7 +220,7 @@
         background-color: $white-shade;
         position: initial;
         img {
-            width: 113px;
+            width: auto;
             height: 30px;
             margin: 25px 2px 0px 2px;
         }
