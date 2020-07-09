@@ -179,3 +179,10 @@ input[type=checkbox]:checked:after
     }
 }
 /* right navigation with dropdown for investment linked pages ends here */
+
+/* Teaser inside article component*/
+
+.article-wrapper .article-body .teaser.circle-220-desktop img {
+    width:auto;
+    margin:0;
+}
