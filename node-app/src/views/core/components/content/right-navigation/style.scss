@@ -527,3 +527,23 @@
         }
     }
 }*/
+
+/* right rail with app store images for sign in framework starts here */
+.flex-layout-container{
+    .col-sm-4{
+        .container-component{
+            .text.grey-background-box{
+                table{
+                    img{
+                        max-width:100%;
+                        width:auto;
+                        height:auto;
+                        min-height:40px;
+                        max-height:80px;
+                    }
+                }
+            }
+        }
+    }
+}
+/* right rail with app store images for sign in framework ends here */
