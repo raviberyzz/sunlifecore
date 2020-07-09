@@ -1,0 +1,24 @@
+@import '../../../base/core';
+
+.blue-background-wrapper{
+    height: auto;
+    padding-bottom: 27px;
+}
+
+@media(min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .blue-background-wrapper{
+        .bright-start h3 {
+            max-width: 60%; 
+            margin: auto;
+            margin-bottom: 16px;
+        }
+    }
+}
+
+@media(min-width:$desktop-screen-min){
+    .blue-background-wrapper{
+        .bright-start h3 {
+            padding-left: 10px;
+        }
+    }
+}

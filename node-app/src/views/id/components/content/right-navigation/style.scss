@@ -6,7 +6,14 @@
         p {
             a{
                 .button-class {
-                    margin: 0 0 15px 0;
+                    margin: 0 0 14px 0;
+                }
+            }
+        }
+        p:last-child {
+            a{
+                .button-class {
+                    margin: 0;
                 }
             }
         }
@@ -35,5 +42,22 @@
       }
     }
 
+}
+
+.right-navigation-wrapper.light-orange-20 
+{
+    > .cmp-container{
+        .right-nav-icon-wrapper {
+            ul {
+                li:first-child {
+                    .icon-parent {
+                        .icon-style {
+                            margin-top: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
