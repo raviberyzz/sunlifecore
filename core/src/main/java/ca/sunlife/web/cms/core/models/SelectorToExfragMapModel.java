@@ -129,7 +129,7 @@ public class SelectorToExfragMapModel {
 	        try {
 	        String siteName = configService.getConfigValues("siteName",
 	                  currentPage.getPath());
-	        if ((selectors.length == 0) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
+	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
 	        	urlSelector = item.getSelector();	        	
 	        } else if (selectors.length > 0) {	        	
 	        	urlSelector = selectors [ 0 ];
