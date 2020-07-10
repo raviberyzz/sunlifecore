@@ -26,8 +26,9 @@ $(document).ready(function () {
         $('.slf-header-mobile-logo').width(logowidth);
         }
         if ($('.mobile-header-signIn').children().children().next().hasClass('secondary-logo-wrapper')) {
-            heightSecondaryLogo = $('.secondary-logo-wrapper').height();
-            $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
+          //  var heightSecondaryLogo = $('.secondary-logo-wrapper').height();
+          //  $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
+          $('.full-header').parents('.experiencefragment').next().css('margin-top', 60);
         }
     } else {
         mobileLogoWidth();
