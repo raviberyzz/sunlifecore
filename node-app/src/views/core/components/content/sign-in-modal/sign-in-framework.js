@@ -91,7 +91,9 @@ $(document).ready(function () {
                 }
         }
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
-            CheckClick('e');
+            if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
+                CheckClick('e');
+            }           
         });
         /* submit validation ends  here */
     }

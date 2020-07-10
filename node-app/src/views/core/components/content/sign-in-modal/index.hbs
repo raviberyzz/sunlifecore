@@ -94,8 +94,8 @@
                                 </div>
                         </div>
                         <form id="form_signon" name="form_signon" method="POST" action="{{sign-in-action}}"
-                                class="form-sign-in">
-                                input name="SMENC" value="ISO-8859-1" type="hidden" />
+                                class="form-sign-in" data-parsley-validate="">
+                                <input name="SMENC" value="ISO-8859-1" type="hidden" />
                                 <input name="SMLOCALE" value="US-EN" type="hidden" />
                                 <input name="SMAGENTNAME" value="" type="hidden" />
                                 <input name="REALMOID" value="" type="hidden" />
@@ -128,7 +128,8 @@
                                 </div>
                                 <div class="form-group"><label for="USER" class="sr-only">Access ID</label> <input
                                                 id="USER" autocomplete="off" name="USER" size="30" type="text"
-                                                placeholder="Email/Access ID">
+                                                placeholder="Email/Access ID" data-parsley-required="true"
+                                                data-parsley-required-message="Required field">
                                         <div id="accessIdError" class="arrow-help-block"></div>
                                 </div>
                                 <div class="form-group text-left">
@@ -138,7 +139,9 @@
                                 <div id="passwordDiv" class="form-group"><label for="PASSWORD"
                                                 class="sr-only">Password</label>
                                         <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30"
-                                                type="password" class="password-input" placeholder="Password">
+                                                type="password" class="password-input" placeholder="Password"
+                                                data-parsley-required="true"
+                                                data-parsley-required-message="Required field">
                                         <div id="passwordError" class="arrow-help-block"></div>
                                         <input name="signin" class="btn btn-blue mar-left-10 no-break" value="Sign in"
                                                 type="submit">
