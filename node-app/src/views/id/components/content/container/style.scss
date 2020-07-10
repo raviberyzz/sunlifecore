@@ -1,0 +1,10 @@
+.no-padding .col-sm-4:last-child .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text
+{
+	position: relative;
+}
+.no-padding .col-sm-4:last-child .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text p
+{
+	position: absolute;
+    bottom: 0;
+    width: calc(100% - 32px);
+}
