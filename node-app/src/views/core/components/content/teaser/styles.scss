@@ -192,6 +192,19 @@
 		padding: 4px !important;
     }
 }
+/* article pages circular images 220 styles start */
+.article-wrapper{
+    .article-body{
+        .circle-220-desktop,.circle-150-desktop  {
+            .image-text-wrapper{
+                img{
+                    margin:0;
+                }
+            }
+        }
+    }
+} 
+/* article pages circular images 220 styles end */
 .circle-150-desktop {
 	.left-item {
 		height: 158px;
