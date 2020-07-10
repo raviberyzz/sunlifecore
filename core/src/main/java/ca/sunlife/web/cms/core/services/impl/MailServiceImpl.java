@@ -10,6 +10,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -245,7 +246,7 @@ public class MailServiceImpl implements MailService {
 	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailIdParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-email-body", populateContent(emailBodyParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-email-body", Base64.getEncoder().encodeToString(populateContent(emailBodyParam, requestParametersParam).getBytes())));
 	    apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
 	    post.setEntity(new UrlEncodedFormEntity(apiParameters, StandardCharsets.UTF_8));	    
 	    LOG.debug("Trying to connect to mail API...");
@@ -299,7 +300,7 @@ public class MailServiceImpl implements MailService {
 	    return response;
 
 	} catch (JSONException ex) {
-	    LOG.error("Error in modifying response :: " + ex);
+	    LOG.error("Error in modifying response :: {}", ex);
 	}
 	return null;
 
