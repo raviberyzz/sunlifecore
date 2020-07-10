@@ -1,2 +1,2 @@
 #base=js
-slgi-analytics.js
+slgi-accessibility.js
