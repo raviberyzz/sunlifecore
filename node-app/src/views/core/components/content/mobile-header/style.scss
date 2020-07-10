@@ -5,6 +5,15 @@
 .xf-content-height{
     margin:0;
 }
+.mobile-header-signIn .slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo {
+    a {
+        position: relative;
+        right: 38px;
+        img {
+            width: auto;
+        }
+    }
+}
 .slf-mobile-header-wrapper{
     position:fixed;
     z-index: 2;
