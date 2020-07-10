@@ -794,7 +794,13 @@ public class BasePageModel {
     seoPageTitle = null == pageTitle ? getPageTitle(title) : pageTitle;
 
     if (null != advancedPageType && advancedPageType.equals("article")) {
-      seoPageTitle = WordUtils.capitalize(seoPageTitle);
+    	
+    	final String articleTitleFormat = configService.getConfigValues("articleTitleFormat", pagePath);
+    	
+    	if(null != articleTitleFormat && null == pageTitle) {
+    		 seoPageTitle = WordUtils.capitalize(seoPageTitle);
+    	}
+     
     }
 
     // socialMediaTitle
