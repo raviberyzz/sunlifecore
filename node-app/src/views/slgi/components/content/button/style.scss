@@ -8,6 +8,11 @@
 }
 .primary-blue-button-rte {
   background-color: $dark-blue;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 /* Primary Yellow Button */
@@ -18,6 +23,11 @@
 }
 .primary-yellow-button-rte {
   color: $dark-blue;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 /* White version-blue */
@@ -32,6 +42,11 @@
   background-color: $white-shade;
   color: $dark-blue;
   border: 2px solid $dark-blue;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 /* Sign-in button */
