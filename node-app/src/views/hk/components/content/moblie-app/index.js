@@ -624,5 +624,9 @@ $(document).ready(function(){
       $(window).resize(function(){
       mobile_banner();
       });
+      //to overwrite default site level notification style for containers
+      if($("#mobile-app-banner").length>0){
+        $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+      }
        /*pushing mobile app above ends here*/
   });
