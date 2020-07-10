@@ -1,10 +1,12 @@
 @import '../../../base/core';
-
-    .full-width-image{
-        img{
-            width:100%;
+    @media (min-width:$tab-screen-min){
+        .full-width-image{
+            img{
+                width:100%;
+            }
         }
     }
+    
     .overflow-hidden{
         overflow: hidden;
     }

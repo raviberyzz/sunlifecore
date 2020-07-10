@@ -129,8 +129,10 @@ public class SelectorToExfragMapModel {
 	        try {
 	        String siteName = configService.getConfigValues("siteName",
 	                  currentPage.getPath());
-	        if ((selectors.length == 0) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
-	        	urlSelector = item.getSelector();	        	
+	        LOGGER.debug("SiteName is ::"+ siteName);
+	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
+	        	urlSelector = item.getSelector();
+	        	LOGGER.debug("No selector, taking default ::"+ urlSelector);
 	        } else if (selectors.length > 0) {	        	
 	        	urlSelector = selectors [ 0 ];
 	        }

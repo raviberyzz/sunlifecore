@@ -38,7 +38,6 @@ $(document).ready(function () {
         /* checking the checkbox on initial load if access id is there*/
         function checkbox(){
             if($(".mySlfSignIn #USER").val()!=undefined && $(".mySlfSignIn #USER").val().length>0){
-                alert(1);
                 $(".mySlfSignIn #rememberID").prop("checked",true);
             }
         }
