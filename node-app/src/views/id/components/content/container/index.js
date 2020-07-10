@@ -23,7 +23,8 @@ $(document).ready(function () {
 
 	});
         cta_icon_texts.each(function (index) {
-           $(this).outerHeight(ctaHeights);
+        //    $(this).outerHeight(ctaHeights);
+           $(this).css('min-height',ctaHeights);
 
 	});
     }
