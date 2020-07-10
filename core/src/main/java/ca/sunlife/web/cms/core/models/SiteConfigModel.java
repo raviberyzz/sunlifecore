@@ -174,6 +174,14 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getArticleSite();
+  
+  /**
+   * Gets the article browser title format.
+   *
+   * @return the article title format
+   */
+  @ Inject
+  String getArticleTitleFormat();
 
   /**
    * Gets the featured image path.

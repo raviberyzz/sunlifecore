@@ -152,6 +152,12 @@
                                         fieldDescription="Article site"
                                         fieldLabel="Article site"
                                         name="./articleSite"/>
+                                     <articleBrowserSite
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article browser title"
+                                        fieldLabel="Article browser title"
+                                        name="./articleTitleFormat"/>    
                                 </items>
                             </section-article>
                             <section-productcards
