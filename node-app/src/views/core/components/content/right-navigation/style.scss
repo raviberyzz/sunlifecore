@@ -527,3 +527,20 @@
         }
     }
 }*/
+/* width of images in right rail for sign-in framework starts here */
+.col-sm-4,.coral--light{
+    .container-component{
+        .text.grey-background-box{
+            table{
+                td{
+                    img{
+                        max-width:100%;
+                        width:auto;
+                        height:auto;
+                    }
+                }
+            }
+        }
+    }
+}
+/* width of images in right rail for sign-in framework ends here */

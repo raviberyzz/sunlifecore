@@ -8,3 +8,14 @@
     bottom: 0;
     width: calc(100% - 32px);
 }
+
+//IE fix
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .mobileapp {
+        .col-sm-6:first-of-type{
+            .image{
+                text-align:center;
+            }
+        }
+    }
+}
