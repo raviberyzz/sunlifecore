@@ -400,6 +400,17 @@
             display:none;
         }
     }
+    .parsley-errors-list.filled{
+        top:2px; 
+        li{
+            padding: 8px 10px 4px 16px;
+        }
+    }
+    #passwordDiv {
+        .parsley-errors-list{ 
+            top:-6px;
+        }
+    }
     .signin-links{
         font-size: 0.8125rem;
         display: flow-root;
