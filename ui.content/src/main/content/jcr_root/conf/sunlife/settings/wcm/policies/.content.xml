@@ -2526,6 +2526,11 @@
                                             cq:styleId="1577980770707"
                                             cq:styleLabel="Circle-220px "
                                             jcr:primaryType="nt:unstructured"/>
+										<item2
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border clearfix"
+                                            cq:styleId="1570202020202"
+                                            cq:styleLabel="Circle-150px "
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
                                 <item3
