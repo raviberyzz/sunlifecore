@@ -80,10 +80,9 @@
         .desktop-utility-nav {
           .utility-nav-wrapper {
             .utility-nav-links {
-              ul {
-                a {
-                    line-height: 26px;
-                }
+              padding-top: 8px;
+              .srch-btn {
+                padding: 0;
               }
             }
           }
