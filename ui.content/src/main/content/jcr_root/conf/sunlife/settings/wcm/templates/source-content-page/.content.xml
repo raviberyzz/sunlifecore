@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Template">
     <jcr:content
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
-        jcr:description="Source content page"
+        jcr:description="Sunlife source content page"
         jcr:primaryType="cq:PageContent"
         jcr:title="Source content page"
         status="enabled"/>

@@ -6,5 +6,5 @@
         jcr:description="Sunlife source home page"
         jcr:primaryType="cq:PageContent"
         jcr:title="Sunlife source home page"
-        status="draft"/>
+        status="enabled"/>
 </jcr:root>
