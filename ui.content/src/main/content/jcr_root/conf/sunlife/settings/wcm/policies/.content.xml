@@ -69,6 +69,14 @@
                         components="[group:Sunlife COM]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_com_content>
+					<policy_source_content
+                        jcr:description="Policy for content page template for Source"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sunlife source content"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[group:Sunlife COM]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_source_content>
                 </responsivegrid>
             </components>
         </foundation>
@@ -106,6 +114,14 @@
                             clientlibs="sunlife.com.site">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_com_clientlibs>
+						<policy_source_clientlibs
+                            jcr:description="Sunlife source clientlibs"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Sunlife source clientlibs"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            clientlibs="sunlife.source.site">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                        </policy_source_clientlibs>
                     </base-page>
                 </structure>
             </components>
@@ -7669,7 +7685,7 @@
                     <accordion jcr:primaryType="nt:unstructured">
                         <policy_1594575667392
                             cq:styleDefaultClasses="accordion-container"
-							jcr:primaryType="nt:unstructured"
+                            jcr:primaryType="nt:unstructured"
                             jcr:title="Accordion"
                             sling:resourceType="wcm/core/components/policy/policy"
                             allowedHeadingElements="[h2,h3,h4,h5,h6]"
