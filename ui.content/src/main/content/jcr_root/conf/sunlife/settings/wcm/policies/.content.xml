@@ -74,7 +74,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife source content"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[group:Sunlife COM]">
+                        components="[group:Sunlife Source]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_source_content>
                 </responsivegrid>
