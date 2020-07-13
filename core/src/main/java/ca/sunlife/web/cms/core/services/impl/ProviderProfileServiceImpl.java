@@ -124,7 +124,9 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
       for (final String parameter : parameterArray) {
         final String [ ] actualParameterArray = parameter
             .split(ProviderProfileConstants.WEB_PARAM_KEY_DELIMETER_CONSTANT);
-        queryParamMap.put(actualParameterArray [ 0 ], actualParameterArray [ 1 ]);
+        if ( actualParameterArray.length > 1 ) {
+        	queryParamMap.put(actualParameterArray [ 0 ], actualParameterArray [ 1 ]);
+        }
       }
     }
     LOG.info("ProviderProfileServiceImpl :: queryParamMap :: {}", queryParamMap);

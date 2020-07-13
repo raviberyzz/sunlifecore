@@ -55,8 +55,8 @@ $(document).ready(function () {
 
 /* Sign in modal analytics starts here */
 //Tagging for Upon clicking the Sign In button
-$("#signinbutton").unbind("click");
-$("#signinbutton").click(function() {
+$("#SignIn,#signinbutton").unbind("click");
+$("#SignIn,#signinbutton").click(function(){
     utag.link({
         ev_type: "authenticate",
         ev_action: "clk",
