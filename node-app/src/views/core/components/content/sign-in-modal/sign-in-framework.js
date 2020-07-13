@@ -112,5 +112,17 @@ $(document).ready(function () {
     if($('.mySlfSignIn').length>0){
         $('.mySlfSignIn').closest('.row').addClass('flex-layout-container');
     }
-});
+
 /* sign in framework ends here */
+/* sign in framework accessibility starts here */
+$(".signin-links-two a").keydown(function(e){
+    if (e.keyCode == 9 ){
+        if(e.shiftKey){
+            $(this).parent().prev().children(':last-child').focus();
+            return false;
+        }
+        $(this).parent().next().children('a').focus();
+    }
+});
+/* sign in framework accessibility ends here */
+});
