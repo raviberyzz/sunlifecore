@@ -54,7 +54,7 @@ $(document).ready(function () {
     /* Carousel analytics ends here */
 
 /* Sign in modal analytics starts here */
-$("#signinbutton").unbind("click");
+$("#SignIn,#signinbutton").unbind("click");
 $("#SignIn,#signinbutton").click(function(){
     utag.link({ 
         ev_type: "authenticate", 
