@@ -80,7 +80,7 @@
 					<policy_source_home
                         jcr:description="Policy for home page template for Source"
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Sunlife source content"
+                        jcr:title="Sunlife source home"
                         sling:resourceType="wcm/core/components/policy/policy"
                         components="[group:Sunlife Source]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
