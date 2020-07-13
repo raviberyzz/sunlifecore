@@ -99,6 +99,11 @@ $(document).ready(function () {
                     $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
                 }, 0)
             }
+            else if ($(window).width() > 1024 && $('.secondary-logo-wrapper')) {
+            setTimeout(function () {
+            $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+            }, 0)
+            }
         } else {
             function mobileLogoWidth() {
                 var hamburger = $('.hamburger-menu').width();
