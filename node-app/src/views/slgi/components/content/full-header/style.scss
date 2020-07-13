@@ -20,96 +20,109 @@
     }
   }
 
-  /* Mobile header styles start here */
-  .slf-mobile-header-wrapper{
-    .mobile-header-navbar {
-      .mobile-sign-in-box {
-        .mobile-signin-icon {
-          color: $dark-blue;      /* Mobile sign-in color */
-        }
-      }
-      .hamburger-menu{
-        .navbar-toggle {
-          .icon-bar{
-            background: $dark-blue;      /* Hamburger menu icon color */
-          } 
-        }
-      }
-    }
-    .hamburger-menu-wrapper {         /* Hamburger menu styles here */
-      .language-region {
-        .mobile-language-region .tab-content {
-          background-color: $white-smoke;
-        }
-      }
-      .close-hamburger-menu {
-        color: $dark-blue;
-      }
-      .second-level-navigation {
-        background: $white-smoke;
-        .go-back {
-          background-color: $dark-blue;
-          &::before{
-            color: $white-shade;
+  .slf-header-wrapper{
+    /* Mobile header styles start here */
+    .slf-mobile-header-wrapper{
+      .mobile-header-navbar {
+        .mobile-sign-in-box {
+          .mobile-signin-icon {
+            color: $dark-blue;      /* Mobile sign-in color */
           }
-          a {
-            color: $white-shade;
+        }
+        .hamburger-menu{
+          .navbar-toggle {
+            .icon-bar{
+              background: $dark-blue;      /* Hamburger menu icon color */
+            } 
           }
         }
       }
-      .third-level-navigation {
-        background: $white-smoke;
-      }
-      .navigation-menu a {
-        color: $dark-blue;
-      }
-      .hamburger-search {
-        background: $light-grey-shade-color;
-        .slf-search-mobile .form-wrapper .input-wrapper{
-          .search-field{
-            background: $light-grey-shade-color;
+      .hamburger-menu-wrapper {         /* Hamburger menu styles here */
+        .language-region {
+          .mobile-language-region .tab-content {
+            background-color: $white-smoke;
           }
         }
-      }
-    }
-  }
-  /* Mobile header styles end here */
-
-  .desktop-header-content{  
-    .desktop-sign-button .signIn-button .button-class { /* Desktop sign-in styles */
-      color: $dark-blue;
-      &:hover{
-        background: $dark-blue !important;
-      }
-    }
-    /* Desktop mega-menu styles start here */
-    .desktop-mega-menu {
-      .dropdown {
-        .dropdown-menu{
-          p {
-            padding-left: 20px;
-          
-          }
-          .list-unstyled {
-            padding-left: 20px;
-          }
-          .aem-Grid {
-            > .text, > .container-component{
-              padding: 20px 0;
+        .close-hamburger-menu {
+          color: $dark-blue;
+        }
+        .second-level-navigation {
+          background: $white-smoke;
+          .go-back {
+            background-color: $dark-blue;
+            &::before{
+              color: $white-shade;
+            }
+            a {
+              color: $white-shade;
             }
           }
-          .mega-menu-wrapper-desk {
-            .links{
-              h1, h2, h3, h4, h5, h6 {
-                margin-top: 10px;
-                padding-left: 20px;           
+        }
+        .third-level-navigation {
+          background: $white-smoke;
+        }
+        .navigation-menu a {
+          color: $dark-blue;
+        }
+        .hamburger-search {
+          background: $light-grey-shade-color;
+          .slf-search-mobile .form-wrapper .input-wrapper{
+            .search-field{
+              background: $light-grey-shade-color;
+            }
+          }
+        }
+      }
+    }
+    /* Mobile header styles end here */
+    .desktop-header-wrapper{
+      .desktop-header-content{ 
+        .desktop-utility-nav {
+          .utility-nav-wrapper {
+            .utility-nav-links {
+              ul {
+                a {
+                    line-height: 26px;
+                }
               }
             }
-            a{
-              font-weight: 400;
+          }
+        } 
+        .desktop-sign-button .signIn-button .button-class { /* Desktop sign-in styles */
+          color: $dark-blue;
+          &:hover{
+            background: $dark-blue !important;
+          }
+        }
+        /* Desktop mega-menu styles start here */
+        .desktop-mega-menu {
+          .dropdown {
+            .dropdown-menu{
+              p {
+                padding-left: 20px;
+              
+              }
+              .list-unstyled {
+                padding-left: 20px;
+              }
+              .aem-Grid {
+                > .text, > .container-component{
+                  padding: 20px 0;
+                }
+              }
+              .mega-menu-wrapper-desk {
+                .links{
+                  h1, h2, h3, h4, h5, h6 {
+                    margin-top: 10px;
+                    padding-left: 20px;           
+                  }
+                }
+                a{
+                  font-weight: 400;
+                }
+              }
             }
           }
-
         }
       }
     }
