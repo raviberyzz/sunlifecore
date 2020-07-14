@@ -3,4 +3,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Sign In Component"
     sling:resourceSuperType="sunlife/core/components/content/sign-in"
-    componentGroup=".hidden"/>
+    componentGroup="Sunlife CA"/>
