@@ -1,0 +1,98 @@
+<sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
+<sly data-sly-test.title="${listModel.title}" />
+<sly data-sly-test.backgroundColour="${listModel.backgroundColour}" />
+<sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
+<sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
+<sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
+<sly data-sly-test.buttonLabel="${listModel.buttonLabel}" />
+<sly data-sly-test.formActionUrl="${listModel.formActionUrl}" />
+<sly data-sly-test.forgotAccessIdLabel="${listModel.forgotAccessIdLabel}" />
+<sly data-sly-test.forgotAccessIdLink="${listModel.forgotAccessIdLink}" />
+<sly data-sly-test.forgotPasswordLabel="${listModel.forgotPasswordLabel}" />
+<sly data-sly-test.forgotPasswordLink="${listModel.forgotPasswordLink}" />
+<sly data-sly-test.signInContent="${listModel.signInContent}" />
+<sly data-sly-test.domain="${listModel.domain}" />
+<sly data-sly-test.language="${listModel.language}" />
+<sly data-sly-test.logLang="${listModel.logLang}" />
+<sly data-sly-test.target="${listModel.target}" />
+
+    <div class="login-container mySlfSignIn ${backgroundColour == 'cool-blue' ? 'cool-blue' : ''}">
+        <div class="h4 text-center" id="customerSignInHeader">${title}</div>
+        <div class="download-app visible-xs">
+            <div class="download-app-wrapper"><a
+                    href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                    target="_blank"><img
+                        src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
+                        alt="Sun Life App"></a>
+                <p><a href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                        target="_blank">For the best mobile experience, <strong>download the my
+                            Sun Life
+                            app.</strong></a></p>
+            </div>
+        </div>
+        <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in" data-parsely-validate="">
+            <input name="SMENC" type="hidden" value="ISO-8859-1" />
+			<input name="SMLOCALE" type="hidden"value="US-EN" />
+			<input name="SMAGENTNAME" type="hidden" value="" />
+			<input name="REALMOID" type="hidden" value="" /> 
+			<input name="DOMAIN" type="hidden" value="${domain}" />
+            <input name=" IPKey" type="hidden" value="" />
+			<input name="CONTEXT" type="hidden" value="INTERNET" />
+            <input name="LANGUAGE" type="hidden" value="${language}" />
+			<input name="PLATFORM" type="hidden" value="WEB" />
+            <input name="SIGNINSITE" type="hidden" value="SLF" />
+			<input name="SCREENRES" type="hidden" value="" />
+            <input name="LOGLANG" type="hidden" value="${logLang}" />
+			<input name="BROWSERID" type="hidden" value="" />
+            <input name="BROWSERVER" type="hidden" value="" />.
+			<input name="BROWSERDESC" type="hidden" value="" />
+            <input id="ClientIP" name="ClientIP" type="hidden" value="" />
+			<input name="ESTABLISHSESSION" type="hidden" value="TRUE" />
+			<input name="SAVEIDSUBMISSION" type="hidden" value="FALSE" />
+			<input name="LOGONUSINGSAVEID" type="hidden" value="FALSE" /> <input name="ESAVEID" type="hidden" value="" />
+            <input name="REQUESTTYPE" type="hidden" value="SUBMIT" />
+            <input name="SAVEIDIDENTIFIER" type="hidden" value="" />
+			<input name="REDIRECTPATH" type="hidden" value="" />
+			<input name="ERRORREDIRPATH" type="hidden" value="" />
+            <input name="TARGET" type="hidden" value="${target}" />
+			<sly data-sly-list.attributes="${listModel.hiddenMetadata}">
+				<input type="hidden" name="${attributes.name}" value="${attributes.value}" />
+			</sly>
+			
+            <div class="form-group">
+                <div class="help-block" id="generalError"><span id="ERROR_HTML" name="ERROR_HTML">&nbsp;
+                    </span><span id="APOL_HTML" name="APOL_HTML"></span></div>
+            </div>
+            <div class="form-group"><label for="USER" class="sr-only">Access ID</label> <input id="USER"
+                    autocomplete="off" name="USER" size="30" type="text" placeholder="${accessIDPlaceholder}" data-parsley-required="true"
+					data-parsley-required-message="Required field">
+                <div id="accessIdError" class="arrow-help-block"></div>
+            </div>
+            <div class="form-group text-left">
+                <input type="checkbox" name="SAVEIDCHECK" id="rememberID"><label
+                    for="rememberID">${checkboxLabel}</label></div>
+            <div id="passwordDiv" class="form-group"><label for="PASSWORD" class="sr-only">Password</label>
+                <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
+                    placeholder="${passwordPlaceholder}" data-parsley-required="true"
+                    data-parsley-required-message="Required field">
+                <div id="passwordError" class="arrow-help-block"></div>
+                <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${buttonLabel}" type="submit"
+                    onclick="return CheckClicks('e');">
+
+            </div>
+        </form>
+        <p class="signin-links"><span class="signin-help"><a x-cq-linkchecker="skip"
+                    href="${forgotAccessIdLink}" target="_blank">${forgotAccessIdLabel}
+					</a></span> <span class="signin-register"><a x-cq-linkchecker="skip" 
+					href="${forgotPasswordLink}"
+                    target="_blank">${forgotPasswordLabel}</a></span></p>
+        <!--<p class="signin-links-two">Don't have Access ID?<a
+                href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA#"
+                class="signin-sponsor" target="_blank">&nbsp;Register now</a></p>
+        <p class="signin-terms">By signing in, you agree to these <a
+                href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
+                target="_blank">terms and conditions.</a></p>-->
+		<div class="right-item text-section">
+            ${signInContent @context ='html'}
+         </div>
+    </div>

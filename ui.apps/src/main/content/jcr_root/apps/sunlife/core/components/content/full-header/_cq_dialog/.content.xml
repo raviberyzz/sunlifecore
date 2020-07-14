@@ -50,6 +50,28 @@
                                                         value="yes"/>
                                                 </items>
                                             </logo>
+                                            <signInHeader
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Do you need sign in wrapper"
+                                                name="./isSignInHeader">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".list-option-issigninheader-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <no
+                                                        granite:hide="${cqDesign.disableChildren}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="No"
+                                                        value="no"/>
+                                                    <yes
+                                                        granite:hide="${cqDesign.disableStatic}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Yes"
+                                                        value="yes"/>
+                                                </items>
+                                            </signInHeader>
                                             <campaignHeader
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -87,8 +109,14 @@
                                                                                 <logoImage
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                    fieldLabel="Logo Image"
+                                                                                    fieldLabel="Logo Image for Desktop version"
                                                                                     name="./logoImage"
+                                                                                    rootPath="/content/"/>
+                                                                                <mobileLogoImage
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                    fieldLabel="Logo Image for Mobile version"
+                                                                                    name="./mobileLogoImage"
                                                                                     rootPath="/content/"/>
                                                                                 <linkUrl
                                                                                     jcr:primaryType="nt:unstructured"
@@ -118,6 +146,38 @@
                                                                                             value="_blank"/>
                                                                                     </items>
                                                                                 </target>
+                                                                                <separator
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                    fieldLabel="Separator"
+                                                                                    name="./separator">
+                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                        <no
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="No"
+                                                                                            value="no"/>
+                                                                                        <yes
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="Yes"
+                                                                                            value="yes"/>
+                                                                                    </items>
+                                                                                </separator>
+                                                                                <hideLogo
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                    fieldLabel="Hide Logo"
+                                                                                    name="./hideLogo">
+                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                        <no
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="No"
+                                                                                            value="no"/>
+                                                                                        <yes
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            text="Yes"
+                                                                                            value="yes"/>
+                                                                                    </items>
+                                                                                </hideLogo>
                                                                             </items>
                                                                         </column>
                                                                     </items>
@@ -398,7 +458,7 @@
                                                     fieldLabel="Text"
                                                     name="./text"
                                                     granite:hide="${cqDesign.htmlDisabled}">                                                                
-                                                 	 </text>      
+                                                 	 </text>    
                                                         </items>
                                                     </column>
                                                 </items>
