@@ -477,6 +477,30 @@ $(document).ready(function(){
       if($("#123")){
         var title='',author='',price='',downloadText='';
         let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.id.clientapp&hl=in';
+        function getOS() {
+          var userAgent = window.navigator.userAgent,
+              platform = window.navigator.platform,
+              macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+              windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+              iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+              os = null;
+        
+          if (macosPlatforms.indexOf(platform) !== -1) {
+            os = 'Mac OS';
+          } else if (iosPlatforms.indexOf(platform) !== -1) {
+            os = 'iOS';
+          } else if (windowsPlatforms.indexOf(platform) !== -1) {
+            os = 'Windows';
+          } else if (/Android/.test(userAgent)) {
+            os = 'Android';
+          } else if (!os && /Linux/.test(platform)) {
+            os = 'Linux';
+          }                
+          if(os=='Mac OS' || os=='iOS' || $('body').hasClass('mac-os-target')){
+            my_sunlife_app_link="https://apps.apple.com/id/app/my-sun-life-indonesia/id1187822792";
+          }
+        }
+        getOS();
         /* Content for english  and bhasa page */
           title='my Sun Life';
           author='Sun Life Financial';
@@ -602,7 +626,19 @@ $(document).ready(function(){
         }
       }
       $(window).resize(function(){
-      mobile_banner();
+        mobile_banner();
+      });
+      //to overwrite default site level notification style for containers
+      if($("#mobile-app-banner").length>0){
+        $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+        if($('.breadcrumb')){
+          $('.breadcrumb').addClass('breadcrumb-none');
+        }
+      }
+      $(window).resize(function () {
+        if($("#mobile-app-banner").length>0){
+            $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+          }
       });
        /*pushing mobile app above ends here*/
   });
