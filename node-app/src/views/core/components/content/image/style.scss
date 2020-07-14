@@ -1,11 +1,11 @@
 @import '../../../base/core';
 
-    .image{
+    /*.image{
         img{
             background-image: linear-gradient(to bottom, $medium-yellow-background 70%, $primary-yellow-background 82%);
             padding: 4px !important;
         }
-    }
+    }*/
     @media (min-width:$tab-screen-min){
         .full-width-image{
             img{
