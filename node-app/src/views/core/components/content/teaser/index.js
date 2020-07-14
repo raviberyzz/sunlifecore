@@ -22,4 +22,11 @@ $(document).ready(function () {
 		$('.banner-section.home-page-hero-banner').css({ 'margin-top': 0 });
 		}	
 	}
+	$(window).resize(function () {
+		if ($('.banner-section').parents('.cmp-container').parents().parents().hasClass('col-sm-8')) {
+			if ($(window).width() < 1024 && $('.banner-section.home-page-hero-banner')) {
+			$('.banner-section.home-page-hero-banner').css({ 'margin-top': 0 });
+			}	
+		}
+	});
 });
