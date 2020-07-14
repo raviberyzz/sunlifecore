@@ -15,6 +15,7 @@
 <sly data-sly-test.language="${listModel.language}" />
 <sly data-sly-test.logLang="${listModel.logLang}" />
 <sly data-sly-test.target="${listModel.target}" />
+<sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
 
     <div class="login-container mySlfSignIn ${backgroundColour == 'cool-blue' ? 'cool-blue' : ''}">
         <div class="h4 text-center" id="customerSignInHeader">${title}</div>
@@ -65,7 +66,7 @@
             </div>
             <div class="form-group"><label for="USER" class="sr-only">Access ID</label> <input id="USER"
                     autocomplete="off" name="USER" size="30" type="text" placeholder="${accessIDPlaceholder}" data-parsley-required="true"
-					data-parsley-required-message="Required field">
+					data-parsley-required-message="${errorMsgPlaceholder}">
                 <div id="accessIdError" class="arrow-help-block"></div>
             </div>
             <div class="form-group text-left">
@@ -74,7 +75,7 @@
             <div id="passwordDiv" class="form-group"><label for="PASSWORD" class="sr-only">Password</label>
                 <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
                     placeholder="${passwordPlaceholder}" data-parsley-required="true"
-                    data-parsley-required-message="Required field">
+                    data-parsley-required-message="${errorMsgPlaceholder}">
                 <div id="passwordError" class="arrow-help-block"></div>
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${buttonLabel}" type="submit"
                     onclick="return CheckClicks('e');">
