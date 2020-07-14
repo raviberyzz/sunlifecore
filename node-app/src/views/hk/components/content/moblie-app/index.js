@@ -483,8 +483,7 @@ $(document).ready(function(){
               macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
               windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
               iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-              os = null;
-        
+              os = null;       
           if (macosPlatforms.indexOf(platform) !== -1) {
             os = 'Mac OS';
           } else if (iosPlatforms.indexOf(platform) !== -1) {
@@ -651,6 +650,14 @@ $(document).ready(function(){
       //to overwrite default site level notification style for containers
       if($("#mobile-app-banner").length>0){
         $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+        if($('.breadcrumb')){
+          $('.breadcrumb').addClass('breadcrumb-none');
+        }
       }
+      $(window).resize(function () {
+        if($("#mobile-app-banner").length>0){
+            $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+          }
+      });
        /*pushing mobile app above ends here*/
   });
