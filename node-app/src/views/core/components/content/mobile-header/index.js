@@ -25,11 +25,15 @@ $(document).ready(function () {
             var logowidth = windowwidth - hamburger;
             $('.slf-header-mobile-logo').width(logowidth);
         }
-        if ($(window).width() < 1024 && $('.secondary-logo-wrapper')) {
+        if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
             setTimeout(function () {
                 var heightSecondaryLogo = $('.secondary-logo-wrapper').height();
                 $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
             }, 0)
+        } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper')) {
+        setTimeout(function () {
+        $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+        }, 0)
         }
     } else {
         mobileLogoWidth();
@@ -93,7 +97,7 @@ $(document).ready(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
             }
             mobileLogoWidthSignIn();
-            if ($(window).width() < 1024 && $('.secondary-logo-wrapper')) {
+            if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
                 setTimeout(function () {
                     var heightSecondaryLogo = $('.secondary-logo-wrapper').height();
                     $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);

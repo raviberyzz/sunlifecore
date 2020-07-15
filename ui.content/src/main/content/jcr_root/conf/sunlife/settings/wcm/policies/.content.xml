@@ -1848,6 +1848,23 @@
                             jcr:title="Sign in component policy"
                             sling:resourceType="wcm/core/components/policy/policy">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Sign in type"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleId="1594797903428"
+                                            cq:styleLabel="SLF default"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="cool-blue"
+                                            cq:styleId="1594797946814"
+                                            cq:styleLabel="Neutral"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
                         </policy_signin>
                     </sign-in>
                 </content>
