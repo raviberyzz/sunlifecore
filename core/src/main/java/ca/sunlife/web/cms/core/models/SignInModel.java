@@ -28,14 +28,6 @@ public interface SignInModel {
    */
   @ Inject
   String getTitle();
-
-  /**
-   * Gets the background colour.
-   *
-   * @return the background colour
-   */
-  @ Inject
-  String getBackgroundColour();
   
   /**
    * Gets the access id placeholder.
