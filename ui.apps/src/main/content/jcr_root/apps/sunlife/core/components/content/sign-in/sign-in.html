@@ -1,6 +1,5 @@
 <sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
     <sly data-sly-test.title="${listModel.title}" />
-    <sly data-sly-test.backgroundColour="${listModel.backgroundColour}" />
     <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
     <sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
     <sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
@@ -17,7 +16,7 @@
     <sly data-sly-test.target="${listModel.target}" />
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
 
-    <div class="login-container mySlfSignIn ${backgroundColour == 'cool-blue' ? 'cool-blue' : ''}">
+    <div class="login-container mySlfSignIn">
         <div class="h4 text-center" id="customerSignInHeader">${title}</div>
         <div class="download-app visible-xs">
             <div class="download-app-wrapper"><a
