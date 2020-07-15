@@ -92,7 +92,12 @@ $(document).ready(function () {
         }
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
             if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
-                CheckClick('e');
+                let lang=$('html').attr('lang');
+                if(lang=='fr'){
+                    CheckClick('f');
+                }else{
+                    CheckClick('e');
+                }
             }           
         });
         /* submit validation ends  here */
