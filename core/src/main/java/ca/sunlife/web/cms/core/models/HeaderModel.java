@@ -102,6 +102,15 @@ public interface HeaderModel {
   @ Inject
   String getListFrom();
 
+   
+  /**
+   * Gets the list from.
+   *
+   * @return the list from
+   */
+  @ Inject
+  String getIsSignInHeader();
+
   /**
    * Gets the campaign header.
    *
@@ -218,6 +227,14 @@ public interface HeaderModel {
     String getLogoImage();
 
     /**
+     * Gets the mobile logo image.
+     *
+     * @return the mobile logo image
+     */
+    @ Inject
+    String getMobileLogoImage();
+
+    /**
      * Gets the target.
      *
      * @return the target
@@ -232,6 +249,23 @@ public interface HeaderModel {
      */
     @ Inject
     String getLinkUrl();
+
+    /**
+     * Gets the separator.
+     *
+     * @return the separator
+     */
+    @ Inject
+    String getSeparator();
+	
+	/**
+     * Gets the hide logo.
+     *
+     * @return the hide logo
+     */
+    @ Inject
+    String getHideLogo();
+
 
   }
 

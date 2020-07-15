@@ -1,0 +1,91 @@
+{{!-- sign-in-framework starts here  --}}
+<div class="col-xs-12 row">
+        <div class="col-sm-8">some banner content goes down in mobile view</div>
+        <div class="col-sm-4">
+                <div class="login-container mySlfSignIn {{cool-blue-background}}">
+                        <div class="h4 text-center" id="customerSignInHeader">CLIENT SIGN IN</div>
+                        <div class="download-app visible-xs">
+                                <div class="download-app-wrapper"><a
+                                                href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                                                target="_blank"><img
+                                                        src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
+                                                        alt="Sun Life App"></a>
+                                        <p><a href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                                                        target="_blank">For the best mobile experience, <strong>download
+                                                                the my
+                                                                Sun Life
+                                                                app.</strong></a></p>
+                                </div>
+                        </div>
+                        <form id="form_signon" name="form_signon" method="POST" action="{{sign-in-action}}"
+                                class="form-sign-in" data-parsley-validate="">
+                                <input name="SMENC" value="ISO-8859-1" type="hidden" />
+                                <input name="SMLOCALE" value="US-EN" type="hidden" />
+                                <input name="SMAGENTNAME" value="" type="hidden" />
+                                <input name="REALMOID" value="" type="hidden" />
+                                <input name="DOMAIN" value="CONSUMER" type="hidden" />
+                                <input name="CONTEXT" value="INTERNET" type="hidden" />
+                                <input name="LANGUAGE" value="E" type="hidden" />
+                                {{!-- STATIC ( E for english and F for french ) --}}
+                                <input name="PLATFORM" value="WEB" type="hidden" />
+                                <input name="SIGNINSITE" value="SLF" type="hidden" />
+                                <input name="SCREENRES" value="" type="hidden" />
+                                <input name="LOGLANG" value="en-ca" type="hidden" />
+                                <input name="BROWSERID" value="" type="hidden" />
+                                <input name="BROWSERVER" value="" type="hidden" />
+                                <input name="BROWSERDESC"
+                                        value="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)"
+                                        type="hidden" />
+                                <input name="ClientIP" id="ClientIP" value="" type="hidden" />
+                                <input name="ESTABLISHSESSION" value="TRUE" type="hidden" />
+                                <input name="SAVEIDSUBMISSION" value="FALSE" type="hidden" />
+                                <input name="LOGONUSINGSAVEID" value="FALSE" type="hidden" />
+                                <input name="ESAVEID" type="hidden" value="" />
+                                <input name="REQUESTTYPE" value="SUBMIT" type="hidden" />
+                                <input name="SAVEIDIDENTIFIER" value="" type="hidden" />
+                                <input name="ERRORREDIRPATH" value="" type="hidden" />
+                                <input name="TARGET" value="/mysunlifesecure/landing.aspx" type="hidden" />
+                                <div class="form-group">
+                                        <div class="help-block" id="generalError"><span id="ERROR_HTML"
+                                                        name="ERROR_HTML">&nbsp;
+                                                </span><span id="APOL_HTML" name="APOL_HTML"></span></div>
+                                </div>
+                                <div class="form-group"><label for="USER" class="sr-only">Access ID</label> <input
+                                                id="USER" autocomplete="off" name="USER" size="30" type="text"
+                                                placeholder="Email/Access ID" data-parsley-required="true"
+                                                data-parsley-required-message="Required field">
+                                        <div id="accessIdError" class="arrow-help-block"></div>
+                                </div>
+                                <div class="form-group text-left"><label for="rememberID" class="sr-only">Remember
+                                                me</label>
+                                        <input type="checkbox" name="SAVEIDCHECK" id="rememberID"><span
+                                                class="remember-text">Remember me</span>
+                                </div>
+                                <div id="passwordDiv" class="form-group"><label for="PASSWORD"
+                                                class="sr-only">Password</label>
+                                        <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30"
+                                                type="password" class="password-input" placeholder="Password"
+                                                data-parsley-required="true"
+                                                data-parsley-required-message="Required field">
+                                        <div id="passwordError" class="arrow-help-block"></div>
+                                        <input name="signin" class="btn btn-blue mar-left-10 no-break" value="Sign in"
+                                                type="submit">
+
+                                </div>
+                        </form>
+                        <p class="signin-links"><span class="signin-help"><a
+                                                href="https://www.sunlife.ca/ca/Support/Sign+in+help?vgnLocale=en_CA"
+                                                target="_blank">Forgot
+                                                Access ID?</a></span> <span class="signin-register"><a
+                                                href="/mysunlife/signin/register/bregister.asp" target="_blank">Forgot
+                                                password?</a></span></p>
+                        <p class="signin-links-two">Don't have Access ID?<a
+                                        href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/Plan+sponsor+and+advisors?vgnLocale=en_CA"
+                                        class="signin-sponsor" target="_blank">&nbsp;Register now</a></p>
+                        <p class="signin-terms">By signing in, you agree to these <a
+                                        href="https://www.sunlife.ca/ca/Support/Sign+in+help/Terms+and+conditions?vgnLocale=en_CA"
+                                        target="_blank" tabindex="0">terms and conditions.</a></p>
+                </div>
+        </div>
+</div> --}}
+{{!-- sign-in-framework ends here  --}}

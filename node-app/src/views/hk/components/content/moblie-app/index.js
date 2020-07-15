@@ -477,6 +477,29 @@ $(document).ready(function(){
       if($("#mobile-app-banner")){
         var title='',author='',price='',downloadText='';
         let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.hk.mysunlife';
+        function getOS() {
+          var userAgent = window.navigator.userAgent,
+              platform = window.navigator.platform,
+              macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+              windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+              iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+              os = null;       
+          if (macosPlatforms.indexOf(platform) !== -1) {
+            os = 'Mac OS';
+          } else if (iosPlatforms.indexOf(platform) !== -1) {
+            os = 'iOS';
+          } else if (windowsPlatforms.indexOf(platform) !== -1) {
+            os = 'Windows';
+          } else if (/Android/.test(userAgent)) {
+            os = 'Android';
+          } else if (!os && /Linux/.test(platform)) {
+            os = 'Linux';
+          }                
+          if(os=='Mac OS' || os=='iOS' || $('body').hasClass('mac-os-target')){
+            my_sunlife_app_link="https://itunes.apple.com/hk/app/my-sun-life-hk/id1335907850?l=en&mt=8";
+          }
+        }
+        getOS();
         if($('html').attr('lang')=='zh-TW'){
           /* Content for traditional chinese page */
           title='My Sun Life HK 流動應用程式';
@@ -628,5 +651,37 @@ $(document).ready(function(){
       if($("#mobile-app-banner").length>0){
         $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
       }
+      $(window).resize(function () {
+        if($("#mobile-app-banner").length>0){
+            $('.root > .aem-Grid > *:not(:first-child)').css({"top": 'auto'});
+          }
+      });
+      /* removing breadcrumb-none class for publish pages starts here */
+      // targeting via url
+      // let hostName=window.location.hostname;
+      // if($("#mobile-app-banner").length>0){
+      //     if($('.breadcrumb')){
+      //         if(hostName.includes("www.")){
+      //             alert(1);
+      //             $('.breadcrumb').removeClass('breadcrumb-none');
+      //         }
+      //     }
+  
+      // }
+      // targeting via wcmmode cookies for aem pages
+      if($("#mobile-app-banner").length>0){
+          if($('.breadcrumb')){
+              let wcmMode=getCookie('wcmmode');
+              if(document.cookie.indexOf('wcmmode')==-1 || ( wcmMode != "preview" && wcmMode != "edit")){
+                $('.breadcrumb').removeClass('breadcrumb-none');
+                if($('.titlebar').length>0){
+                  $('.titlebar').addClass('mar-top-0');
+                }
+              }else{
+                $('.breadcrumb').addClass('breadcrumb-none');
+              }
+          }
+      }
+      /* removing breadcrumb-none class for publish pages ends here */
        /*pushing mobile app above ends here*/
   });
