@@ -115,13 +115,26 @@ $(document).ready(function () {
 
 /* sign in framework ends here */
 /* sign in framework accessibility starts here */
-$(".signin-links-two a").keydown(function(e){
-    if (e.keyCode == 9 ){
-        if(e.shiftKey){
-            $(this).parent().prev().children(':last-child').focus();
-            return false;
+// remember me checkbox enter function
+$(".mySlfSignIn #rememberID").keydown(function(e){
+    if (e.which==13 ) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        let check=$('.mySlfSignIn #rememberID');
+        if(check.prop("checked")== false) {
+            check.prop("checked",true); 
         }
-        $(this).parent().next().children('a').focus();
+        else {
+            check.prop("checked",false);    
+        }
+        if($('.mySlfSignIn #rememberID').prop("checked") == false){
+            if (document.getElementsByName('ESAVEID')[0].value.length > 0) {
+                window.top.location.href = "saveIDRemoveConfirm.wca";
+            }
+            $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("FALSE");
+        }else{
+            $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");
+        }
     }
 });
 /* sign in framework accessibility ends here */
