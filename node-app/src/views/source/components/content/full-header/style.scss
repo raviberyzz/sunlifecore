@@ -6,11 +6,11 @@
     /* Mobile header styles end here */
     /* Desktop header styles starts here */
     .desktop-header-wrapper{
+      .yellow-stripe {    /* Change to blue stripe */
+        background-color: $medium-blue-color;
+      }
       .desktop-header-content{ 
         background-color: #FFCB05;  /* Header background-color */
-        .yellow-stripe {    /* Change to blue stripe */
-          background-color: $medium-blue-color;
-        }
       }
     }
     /* Desktop header styles end here */
