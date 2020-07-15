@@ -69,19 +69,18 @@
                                                 fieldDescription="Add Password Placeholder"
                                                 fieldLabel="Password Placeholder"
                                                 name="./passwordPlaceholder"/>
-                                            <buttonLabel
+                                            <signInButtonLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                fieldDescription="Add Button Label"
-                                                fieldLabel="Button Label"
-                                                name="./buttonLabel"/>
+                                                fieldDescription="Add Sign In Button Label"
+                                                fieldLabel="Sign In Button Label"
+                                                name="./signInButtonLabel"/>
                                             <formActionUrl
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                fieldDescription="Add Form Action Url"
                                                 fieldLabel="Form Action Url"
-                                                name="./formActionUrl"
-                                                rootPath="/content/"
-                                                suffix=".html"/>
+                                                name="./formActionUrl"/>
                                             <forgotAccessIdLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"

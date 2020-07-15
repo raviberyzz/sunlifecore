@@ -62,12 +62,12 @@ public interface SignInModel {
   String getCheckboxLabel();
   
   /**
-   * Gets the button label.
+   * Gets the sign in button label.
    *
-   * @return the button label
+   * @return the sign in button label
    */
   @ Inject
-  String getButtonLabel();
+  String getSignInButtonLabel();
   
   /**
    * Gets the form action url.
