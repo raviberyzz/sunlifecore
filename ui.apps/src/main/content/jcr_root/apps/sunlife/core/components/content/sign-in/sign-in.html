@@ -4,7 +4,7 @@
     <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
     <sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
     <sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
-    <sly data-sly-test.buttonLabel="${listModel.buttonLabel}" />
+    <sly data-sly-test.signInButtonLabel="${listModel.signInButtonLabel}" />
     <sly data-sly-test.formActionUrl="${listModel.formActionUrl}" />
     <sly data-sly-test.forgotAccessIdLabel="${listModel.forgotAccessIdLabel}" />
     <sly data-sly-test.forgotAccessIdLink="${listModel.forgotAccessIdLink}" />
@@ -83,7 +83,6 @@
                     data-parsley-required-message="${errorMsgPlaceholder}">
                 <div id="passwordError" class="arrow-help-block"></div>
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${buttonLabel}" type="submit">
-
             </div>
         </form>
         <p class="signin-links"><span class="signin-help"><a x-cq-linkchecker="skip" href="${forgotAccessIdLink}"
