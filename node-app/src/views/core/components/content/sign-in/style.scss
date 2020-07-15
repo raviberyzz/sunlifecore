@@ -372,12 +372,10 @@
         }
     }
 }
-
-.mySlfSignIn {
-    &.cool-blue {
+.sign-in.cool-blue{
+    .mySlfSignIn {
         @extend .mySlfSignIn;
         background-color: $light-cool-blue-color;
-
         .download-app {
             background-color: $white-shade;
         }
