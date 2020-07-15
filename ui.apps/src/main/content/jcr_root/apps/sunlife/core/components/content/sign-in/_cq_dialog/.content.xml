@@ -35,22 +35,6 @@
                                                 fieldDescription="Add title"
                                                 fieldLabel="Title"
                                                 name="./title"/>
-                                            <backgroundColour
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/select"
-                                                fieldLabel="Background Colour "
-                                                name="./backgroundColour">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <yellow
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Yellow"
-                                                        value="yellow"/>
-                                                    <cool-blue
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Cool Blue"
-                                                        value="cool-blue"/>
-                                                </items>
-                                            </backgroundColour>
                                             <accessIDPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
