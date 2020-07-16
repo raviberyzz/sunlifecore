@@ -9,9 +9,8 @@
     <slgi-home-page/>
     <slgi-content-page/>
     <slgi-experience-fragment/>
-    <sign-in-experience-fragment/>
-    <sign-in-home-page/>
-    <sign-in-content-page/>
+    <signin-experience-fragment/>
+    <signin-content-page/>
     <com-sunlife-home-page/>
     <com-sunlife-content-page/>
     <com-sunlife-experience-fragment/>
