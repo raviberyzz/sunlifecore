@@ -14,3 +14,10 @@
 		padding-bottom: 32px;
 	}
 }
+
+@media all and (-ms-high-contrast:none), all and (-ms-high-contrast:active){
+	.editorial-nav-desktop-wrapper .links .list-div ul li {
+		display: flex;
+		min-height: 50px;
+	}
+}
