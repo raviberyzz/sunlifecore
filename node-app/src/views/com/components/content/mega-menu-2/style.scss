@@ -1,6 +1,131 @@
 @import '../../../base/core';
-/* style for pdf link starts here */
-.pdf-link{
-    color:$light-grey-background-10;
-}
-/* style for pdf link ends here */
+
+/* Navigation for .com CSS starts here */  
+  .nav .arrow .dropdown-toggle {
+    padding: 0 16px; }
+  
+  .desktop-primary-navigation {
+    .main-nav {
+        margin-top: 5px; 
+    }
+    .box-class, .nav > li > a:hover {
+        background-color: $white-shade;
+        padding: 0 16px;
+        z-index: 1;
+        position: relative;
+        box-shadow: 0px 2px 0px 0px $white-shade; 
+    }
+    .nav-item.open {
+        height: 58px;
+        background-color: $white-shade;
+        border-bottom: none;
+        z-index: 1;
+        box-shadow: 0 0px 0px 0px $white-shade, 0 -15px 0px 0px $white-shade, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25); 
+    }
+    .dropdown-toggle.nav-active:focus {
+        background: none;
+        outline: 2px solid $blue-colour-focus; 
+    }
+      
+  }  
+  /* Navigation for .com CSS ends here */
+  
+  /*mega menu css starts here*/
+  .slf-header-wrapper {
+    .desktop-primary-navigation {
+        .menu-content {
+            margin-top: -17px !important;
+            border: 1px solid $light-grey-20; 
+            ul.mega-menu2-list {
+                >li:first-child {
+                    display: none;
+                }
+                >li:nth-child(2) {
+                    padding-top:24px !important; 
+                }
+                >li:last-child {
+                    padding-bottom:24px !important; 
+                }
+            }
+            .cmp-dynamic-megamenu-grey {
+                .dropdown-submenu:hover {
+                    background: $light-taupe-50; 
+                }
+                .mega-menu2-list {
+                    li {
+                        padding: 15px 32px;
+                        &:hover {
+                            background: $light-taupe-50; 
+                        }
+                    }
+                    .dropdown-menu {
+                        background: $light-taupe-50;
+                        ul a {
+                            background: $light-taupe-50;
+                            &:hover {
+                                background: $light-taupe-50; 
+                            }
+                        }
+                    }
+                } 
+                .text {
+                    padding: 15px 32px;
+                    width:224px;
+                    &:first-child {
+                        padding-top: 24px!important;
+                    }
+                    &:last-child {
+                        padding-bottom: 24px!important;
+                    }
+                    &:not(:first-child):hover {
+                        background: $light-taupe-50;
+                    }
+                    h4 {
+                        margin:0;
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 23px;
+                    }
+                    p {
+                        margin:0;
+                        a {
+                            font-weight: 400;
+
+                        }
+                    }
+                }
+            }
+            .teaser {
+                margin: 24px 32px 24px 0;
+                text-align: center;
+                .image-text-wrapper {
+                    .left-image-position
+                    {
+                        display:table;
+                        .left-item
+                        {
+                            display:table-cell;
+                            margin-right: 0;
+                            .side-image {
+                                width: auto;
+                            }
+                        }
+                        .right-item
+                        {
+                            display:table-caption;
+                        }
+                        .text-section  h4 {
+                            margin:0;
+                            font-size: 18px;
+                            font-weight: 700;
+                            line-height: 23px;
+                        }
+                    }
+                } 
+            } 
+
+        }
+    } 
+  } 
+  /*mega menu css end here*/
+  
