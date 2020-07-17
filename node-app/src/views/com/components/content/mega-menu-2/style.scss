@@ -60,11 +60,15 @@
                     }
                     .dropdown-menu {
                         background: $light-taupe-50;
+                        a {
+                            background: $light-taupe-50 !important ;
+                        }
                         ul a {
                             background: $light-taupe-50;
                             &:hover {
                                 background: $light-taupe-50; 
                             }
+
                         }
                     }
                 } 
@@ -80,9 +84,9 @@
                     &:not(:first-child):hover {
                         background: $light-taupe-50;
                     }
-                    h4 {
+                    h2,h3,h4,h5,h6 {
                         margin:0;
-                        font-size: 18px;
+                        font-size: 1.125rem;
                         font-weight: 700;
                         line-height: 23px;
                     }
@@ -114,11 +118,13 @@
                         {
                             display:table-caption;
                         }
-                        .text-section  h4 {
-                            margin:0;
-                            font-size: 18px;
-                            font-weight: 700;
-                            line-height: 23px;
+                        .text-section {
+                            h2,h3,h4,h5,h6 {
+                                margin:0;
+                                font-size: 1.125rem;
+                                font-weight: 700;
+                                line-height: 23px;
+                            }
                         }
                     }
                 } 
