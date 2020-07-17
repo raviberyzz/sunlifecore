@@ -9,13 +9,16 @@
     <slgi-home-page/>
     <slgi-content-page/>
     <slgi-experience-fragment/>
-    <sign-in-experience-fragment/>
-    <sign-in-home-page/>
-    <sign-in-content-page/>
+    <signin-experience-fragment/>
+    <signin-content-page/>
     <com-sunlife-home-page/>
     <com-sunlife-content-page/>
     <com-sunlife-experience-fragment/>
     <source-experience-fragment/>
     <source-content-page/>
 	<sunlife-source-home-page/>
+	<sunlife-source-blank-page/>
+	<asc-sunlife-home-page/>
+    <asc-sunlife-content-page/>
+    <asc-sunlife-experience-fragment/>
 </jcr:root>

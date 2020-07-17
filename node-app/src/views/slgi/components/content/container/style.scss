@@ -162,12 +162,21 @@
 /* Mobile only styles start*/
 @media (max-width: $mobile-screen-max) {
   #mainfooter {
-    .social-link-icon-wrapper::before {
-      content: "Follow Us";
-      display: block;
-      text-align: center;
-      font-size: 1.675rem;
-      padding-top: 2rem;
+    .social-link-icon-wrapper{
+      &:lang(en)::before {
+        content: "Follow Us";
+        display: block;
+        text-align: center;
+        font-size: 1.675rem;
+        padding-top: 2rem;
+      }
+      &:lang(fr)::before {
+        content: "Suivez-Nous";
+        display: block;
+        text-align: center;
+        font-size: 1.675rem;
+        padding-top: 2rem;
+      }
     }
   }
   a.icon-style.fa.fa-map-o {

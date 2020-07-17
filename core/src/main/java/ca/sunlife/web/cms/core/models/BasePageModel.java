@@ -797,7 +797,7 @@ public class BasePageModel {
     	
     	final String articleTitleFormat = configService.getConfigValues("articleTitleFormat", pagePath);
     	
-    	if(null != articleTitleFormat && null == pageTitle) {
+    	if(null != articleTitleFormat && articleTitleFormat.length() > 0 && null == pageTitle) {
     		 seoPageTitle = WordUtils.capitalize(seoPageTitle);
     	}
      
