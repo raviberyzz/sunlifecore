@@ -37,7 +37,8 @@ public class GettersSettersTest {
   private Release release;
   private SelectorToExfragMapModel selectorToExfragMapModel;
   private Title title;
-
+  private UserInfo userInfo;
+  
   @ BeforeEach
   void setup() {
     accordionModel = new AccordionModel( );
@@ -65,6 +66,7 @@ public class GettersSettersTest {
     release = new Release();
     title = new Title( );
     selectorToExfragMapModel = new SelectorToExfragMapModel( );
+    userInfo = new UserInfo( );
   }
 
   @ Test
@@ -191,5 +193,10 @@ public class GettersSettersTest {
   @ Test
   void testFooterItemsModel() {
   	TestUtils.executeTestBean(footerItemsModel);
+  }
+  
+  @ Test
+  void testUserInfo() {
+  	TestUtils.executeTestBean(userInfo);
   }
 }
