@@ -142,5 +142,13 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 });
+/* skip to sign in option for no sign in component page*/
+    if($('body').hasClass('signin-content-page') || $('body').hasClass('signin-home-page')){
+        if(!($('.mySlfSignIn').length)){
+            if($('.desktop-utility-nav a').attr('href')=='.mySlfSignIn'){
+				$('.desktop-utility-nav a[href=".mySlfSignIn"]').remove();
+            }
+        }
+    }
 /* sign in framework accessibility ends here */
 });
