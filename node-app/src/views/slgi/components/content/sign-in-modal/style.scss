@@ -3,6 +3,9 @@
 .mar-bottom-10 {
   margin-bottom: 10px !important;
 }
+.pad-top-10 {
+  padding-top: 10px !important;
+}
 
 .sign-in-modal-wrapper {
   .modal-content {
@@ -17,6 +20,7 @@
       .close-modal {
         top: 4px;
         right: 1px;
+        color: $dark-blue;
         .collapse-x {
           margin: 15px 15px 0 0;
         }
@@ -28,14 +32,16 @@
         .btn-blue {
           background: $dark-blue;
         }
-      }
-      // Styles for contigency-widget for signin
-      #contigency-widget {
-        .signin-terms {
-          // Nothing yet
+        hr.hard-separator-center {
+          display: block;
+          border: 0;
+          border-bottom: 2px solid #4A443F;
+          padding: 0px 0px 10px 0px;
+          position: static;
+          width: 300px;
         }
       }
-      // Styles for contigency-widget for signin end
+
       #signin-widget {
         form {
           .form-group {
@@ -123,6 +129,11 @@
             .password-input {
               width: 100%;
             }
+          }
+        }
+        .signin-help{
+          p{
+            margin-bottom: 16px;
           }
         }
       }
