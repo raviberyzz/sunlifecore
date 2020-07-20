@@ -54,7 +54,7 @@
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Do you need sign in wrapper"
+                                                fieldLabel="Do you want to add multiple logos"
                                                 name="./isSignInHeader">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
