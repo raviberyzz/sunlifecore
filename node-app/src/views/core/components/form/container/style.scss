@@ -767,6 +767,31 @@
     
 }
 
+
+//Leadgen Brightergen Academy Version
+
+/* Brightergen Academy Form*/
+
+.col-sm-6 {
+    .light-orange.lead-gen-wrapper {
+        .cmp-form-options--drop-down {
+            text-align: left; 
+        }
+        .cmp-form-options--checkbox {
+            display: table; 
+            .cmp-form-options__field-label {
+                display: table-cell; 
+            }
+            .cmp-form-options__help-message {
+                display: table-cell;
+                text-align: left; 
+            }
+        }
+        .captcha-wrapper {
+            width: calc(100% - 20px) !important;
+        }
+    }
+}
 @media (max-width: $mobile-screen-max)
 {
 	.lead-gen-wrapper
