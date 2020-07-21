@@ -310,7 +310,14 @@ public interface HeaderModel {
      */
     @ Inject
     String getLinkUrl();
-
+    
+    /**
+     * Gets the link icon.
+     *
+     * @return the link icon
+     */
+    @ Inject
+    String getLinkIcon();
   }
 
 }

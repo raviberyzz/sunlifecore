@@ -7,6 +7,7 @@
         "link" : "https://www.sunlife.ca/ca/Find+an+advisor?vgnLocale=en_CA",
         "text" : "Find an advisor",
         "text-link":"clickable link"
+        "icon":"fa fa-user"
     },{
         "link" : "https://www.sunlife.ca/ca/Get+a+quote?vgnLocale=en_CA",
         "text" : "Get a quote",

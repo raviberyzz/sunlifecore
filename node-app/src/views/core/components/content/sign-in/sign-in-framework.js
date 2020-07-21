@@ -1,7 +1,25 @@
 /* sign in framework starts here */
 $(document).ready(function () {
+   //domain matching for submitting
+    function domain() {
+        // get host from variable defined in signin.js
+        // it is assumed to be defined, if not, then default to prod
+        var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
+        if (host === null || host === undefined) {
+            host = "https://www.sunnet.sunlife.com";
+        }   
+        // update all the domains
+        var signinWidget = $('.mySlfSignIn').html();
+        var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
+        $('.mySlfSignIn').html(newString);   
+        // re-initialize these functions
+        //signinbuttonclick();	
+        // this not getting triggered on shown, so call it explicitly, here
+        updateSignInForm('form_signon');
+    }
     /* Get the error code from URL and shows in the proper section of Sign In widget starts here */
     if($(".mySlfSignIn").length>0){
+        domain();
         function showSignInError() {
             /* Get value of URL parameter */
             function getParameter(param) { 
