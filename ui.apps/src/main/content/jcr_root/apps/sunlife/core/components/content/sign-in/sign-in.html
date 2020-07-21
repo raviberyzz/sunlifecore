@@ -15,6 +15,7 @@
     <sly data-sly-test.logLang="${listModel.logLang}" />
     <sly data-sly-test.target="${listModel.target}" />
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
+    <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
 
     <div class="login-container mySlfSignIn">
         <div class="h4 text-center" id="customerSignInHeader">${title}</div>
@@ -53,9 +54,9 @@
             <input name="LOGONUSINGSAVEID" type="hidden" value="FALSE" /> <input name="ESAVEID" type="hidden"
                 value="" />
             <input name="REQUESTTYPE" type="hidden" value="SUBMIT" />
-            <input name="SAVEIDIDENTIFIER" type="hidden" value="" />
+            <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
             <input name="REDIRECTPATH" type="hidden" value="" />
-            <input name="ERRORREDIRPATH" type="hidden" value="" />
+            <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? 'https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome': errorRedirectPath}" />
             <input name="TARGET" type="hidden" value="${target}" />
             <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
                 <input type="hidden" name="${attributes.name}" value="${attributes.value}" />
