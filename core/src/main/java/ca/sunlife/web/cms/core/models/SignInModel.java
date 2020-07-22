@@ -148,6 +148,14 @@ public interface SignInModel {
    */
   @ Inject
   String getErrorMsgPlaceholder();
+
+  /**
+   * Gets the error redirect path.
+   *
+   * @return the error redirect path
+   */
+  @ Inject
+  String getErrorRedirectPath();
   
   /**
    * Gets the hidden metadata.
