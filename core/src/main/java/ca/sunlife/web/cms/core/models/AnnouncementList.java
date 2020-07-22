@@ -629,9 +629,11 @@ public class AnnouncementList {
         }
       }
       String path = currentPage.getPath();
-      path = path.replace(configService.getConfigValues("siteUrl", path), "");
+      final String siteUrl = configService
+              .getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
+          path = path.replace(
+              siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
       if ("2".equals(newsType)) {
-        path = currentPage.getPath();
         processReleasesData();
       }
       setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
