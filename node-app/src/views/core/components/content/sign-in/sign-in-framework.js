@@ -169,4 +169,12 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 /* sign in framework accessibility ends here */
+/* Iframe accessibility starts here */
+    if($('iframe').length>0){
+        let attr=$('iframe').attr('frameborder');
+        if(attr!=undefined && attr ){
+            $('iframe').removeAttr('frameborder');
+        }
+    }
+/* Iframe accessibility ends here */
 });
