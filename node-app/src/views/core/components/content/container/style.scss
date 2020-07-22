@@ -1876,6 +1876,26 @@ ul {
                 }
             }
         }
+        .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background { 
+            .circular-image.round-border {
+                .left-image-position {
+                    .left-item {
+                        border-radius: inherit;
+                        background-image: none;
+                        padding: inherit;
+                    }
+                }
+            }
+            .circular-image.round-border {
+                .right-image-position {
+                    .right-item {
+                        border-radius: inherit;
+                        background-image: none;
+                        padding: inherit;
+                    }
+                }
+            }
+        }
 }
 
 
