@@ -2576,6 +2576,7 @@
                                             cq:styleLabel="Circle-150px "
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
+                                 </item2>
                                 <item3
                                     cq:styleGroupLabel="Image Border"
                                     jcr:primaryType="nt:unstructured">
