@@ -745,9 +745,9 @@
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
-                    <titlebar jcr:primaryType="nt:unstructured">
-                        <policy_titlebar
-                            cq:styleDefaultClasses="title-wrapper-yellow-grey-rings"
+                 <titlebar jcr:primaryType="nt:unstructured">
+                        <policy_1594569444706
+                            cq:styleDefaultClasses="title-wrapper-blue-yellow-rings"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -761,14 +761,35 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
+                                            cq:styleClasses="no-title-bottom-spacing title-wrapper-blue-yellow-rings"
+                                            cq:styleId="1595424208025"
+                                            cq:styleLabel="No bottom spacing-Blue"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
                                             cq:styleClasses="no-title-bottom-spacing title-wrapper-yellow-grey-rings"
-                                            cq:styleId="1581071344190"
-                                            cq:styleLabel="No bottom spacing"
+                                            cq:styleId="1595424221932"
+                                            cq:styleLabel="No bottom spacing-Yellow"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
+                                <item1
+                                    cq:styleGroupLabel="Background Color"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="title-wrapper-blue-yellow-rings"
+                                            cq:styleId="1595424283381"
+                                            cq:styleLabel="Blue with Yellow rings"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="title-wrapper-yellow-grey-rings"
+                                            cq:styleId="1595424296666"
+                                            cq:styleLabel="Yellow with Grey rings"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item1>
                             </cq:styleGroups>
-                        </policy_titlebar>
+                        </policy_1594569444706>
                     </titlebar>
                     <title jcr:primaryType="nt:unstructured">
                         <policy_title
