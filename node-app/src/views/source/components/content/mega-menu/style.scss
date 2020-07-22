@@ -1,0 +1,43 @@
+@import "../../../base/core";
+
+.mega-menu-wrapper-desk {
+	.aem-GridColumn--default--10 {
+		.aem-Grid--default--6 {
+			.aem-Grid--default--3 {
+				.text {
+					.cmp-text {
+						padding-left: 0px;
+						ul {
+							padding-left: 0px !important;
+						}
+					}
+				}
+			}
+		}
+		.text {
+			.cmp-text {
+				ul {
+					li {
+						&:before {
+							content: '';
+						}
+					}
+				}
+			}
+		}
+	}
+	.aem-GridColumn.aem-GridColumn--default--10 {
+		>.cmp-container {
+			padding: 32px 24px 48px;
+		}
+	}
+	.cmp-container {
+		.text {
+			.cmp-text {
+				ul {
+					margin-left: 0px;
+				}
+			}
+		}
+	}
+}
