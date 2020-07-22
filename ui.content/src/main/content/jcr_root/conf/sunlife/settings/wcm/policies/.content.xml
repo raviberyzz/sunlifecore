@@ -45,6 +45,14 @@
                         components="[group:SLGI]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_slgi_content>
+					<policy_slgi_dynamic_page
+						jcr:description="Policy for Dynamic page template"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="SLGI Dynamic"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[group:SLGI,group:Sunlife Export]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_slgi_dynamic_page>
                     <policy_sunlife_com_home
                         jcr:description="Policy for Home page template for COM"
                         jcr:primaryType="nt:unstructured"
