@@ -322,7 +322,8 @@
     .download-app {
         min-height: 66px;
         height: auto;
-        margin: 6px 0 16px 0;
+        top:6px;
+        margin: 0 0 16px 0;
         background-color: $light-cool-blue-color;
         width: calc(100% + 48px);
         position: relative;
@@ -378,6 +379,8 @@
         background-color: $light-cool-blue-color;
         .download-app {
             background-color: $white-shade;
+            top:6px;
+            margin: 0 0 16px 0;
         }
         .right-item.signin-links-two{
             margin-bottom:0;
