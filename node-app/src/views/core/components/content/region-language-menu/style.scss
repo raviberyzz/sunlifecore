@@ -1,7 +1,7 @@
 @import '../../../base/core';
 .desktop-region-language-menu-wrapper {
     width: 100%;
-    padding: 0 16px 16px;
+    padding: 0 16px 16px !important;
     box-shadow: 0 4px 20px -10px $black-shade;
     .cross-btn {
         width: 100%;
@@ -17,7 +17,7 @@
     }
     .slf-region,
     .slf-language {
-        padding: 0;
+        padding: 0 !important;
     }
     .title-region {
         h4 {
@@ -30,7 +30,7 @@
     .slf-region {
         border-right: 2px solid $light-grey-color;
         .content-region {
-            padding:0 32px 0 0;
+            // padding:0 32px 0 0;
             ul {
                 margin-bottom: 0;
                 li {
@@ -299,9 +299,9 @@
     .desktop-region-language-menu-wrapper {
         .slf-region {
             border-right: 2px solid $light-grey-color;
-            .content-region {
-                padding:0 22px 0 0;
-            }
+            // .content-region {
+            //     padding:0 22px 0 0;
+            // }
         }
     }
 }
