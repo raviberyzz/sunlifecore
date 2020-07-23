@@ -135,7 +135,8 @@ $(document).ready(function () {
     if ($('.slf-header-wrapper').find('.mobile-header-signIn')) {
         if($('.slf-header-mobile-logo').children().length > 1) {
             $('.slf-header-mobile-logo').children('a:not(:first-child)').wrapAll('<div class="col-xs-12 clearfix secondary-logo-wrapper">');
-            $('.secondary-logo-wrapper').detach().insertAfter('.mobile-header-navbar');
+            var headerParent = $('.full-header').parents('.experiencefragment');
+            $('.secondary-logo-wrapper').detach().insertAfter(headerParent);
         }
     }
 

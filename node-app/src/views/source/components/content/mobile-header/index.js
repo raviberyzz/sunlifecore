@@ -7,7 +7,7 @@ $(document).ready(function () {
             $('.slf-header-mobile-logo').width(logowidth);
         }, 0)
     }
-    if($(window).width < 1025){
+    if($(window).width() < 1025){
         mobileLogoWidthSource();
         $(window).resize(mobileLogoWidthSource);
     }

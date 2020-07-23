@@ -1,7 +1,7 @@
 @import '../../../base/core';
 .desktop-region-language-menu-wrapper {
     width: 100%;
-    padding: 0 16px 16px;
+    padding: 0 16px 16px !important;
     box-shadow: 0 4px 20px -10px $black-shade;
     .cross-btn {
         width: 100%;
@@ -17,7 +17,7 @@
     }
     .slf-region,
     .slf-language {
-        padding: 0;
+        padding: 0 !important;
     }
     .title-region {
         h4 {
@@ -30,7 +30,7 @@
     .slf-region {
         border-right: 2px solid $light-grey-color;
         .content-region {
-            padding:0 32px 0 0;
+            // padding:0 32px 0 0;
             ul {
                 margin-bottom: 0;
                 li {
@@ -163,7 +163,7 @@
 .mobile-region-language-menu-wrapper{
     width:270px;
     font-size: 1rem;
-    padding:0;
+    padding:0 !important;
     .go-back{
         background-color:$medium-blue-color;
         color: $white-shade;
@@ -180,7 +180,7 @@
         }
     }
     .slf-tab-region{
-        padding: 0;
+        padding: 0 !important;
         height: 42px;
         background-color: $medium-blue-color;
         color: $white-shade;
@@ -205,7 +205,7 @@
         }
     }
     .tab-content{
-        padding: 0;
+        padding: 0 !important;
         .region-tab{
             padding-top: 32px;
             .list-unstyled{
@@ -216,6 +216,8 @@
                         color: $medium-blue-color;
                         font-weight: 400;
                         padding-left: 16px;
+                        padding-right: 16px;
+                        display: block;
                     }
                 }
                 .nav-select {
@@ -227,7 +229,8 @@
                 .accordion-heading{
                     font-size: 1rem;
                     color: $medium-blue-color;
-                    margin: 0 0 8px 0;
+                    // margin: 0 0 8px 0;
+                    margin: 0;
                     padding-left: 16px;
                 }
                 .accordion-heading[aria-expanded="false"]:after {
@@ -243,6 +246,7 @@
                 .accordion-list{
                     a{
                         padding-left: 35px;
+                        display: block;
                     }
                 }
             }
@@ -299,9 +303,9 @@
     .desktop-region-language-menu-wrapper {
         .slf-region {
             border-right: 2px solid $light-grey-color;
-            .content-region {
-                padding:0 22px 0 0;
-            }
+            // .content-region {
+            //     padding:0 22px 0 0;
+            // }
         }
     }
 }
