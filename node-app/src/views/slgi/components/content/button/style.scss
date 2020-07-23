@@ -23,6 +23,11 @@
 }
 .primary-yellow-button-rte {
   color: $dark-blue;
+  &:hover {
+    a {
+      color: $white-shade;
+    }
+  }
   a {
     &:hover {
       text-decoration: none;
