@@ -36,14 +36,10 @@ $(document).ready(function () {
         var heightheader = $('.mobile-header-navbar').height();
         var heightMargin = heightSecondaryLogo + heightheader;
         let wcmMode=getCookie('wcmmode');
-        if(document.cookie.indexOf('wcmmode')==-1 || ( wcmMode != "preview" && wcmMode != "edit")){
+        if( wcmMode != "preview" && wcmMode != "edit"){
             $('.full-header').parents('.experiencefragment').next().css('margin-top', heightMargin);
-            console.log('publish');
-            console.log(heightMargin);
             }else{               
                 $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
-                console.log('auth');
-                console.log(heightSecondaryLogo);
             }
     }
       /* function for second header logo height ends here*/
