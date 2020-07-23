@@ -9,6 +9,7 @@
     <slgi-home-page/>
     <slgi-content-page/>
     <slgi-experience-fragment/>
+	<slgi-dynamic-page/>
     <signin-experience-fragment/>
     <signin-content-page/>
     <com-sunlife-home-page/>

@@ -278,7 +278,7 @@
             color: $dark-grey-color;
 
             a {
-                font-size: 0.8125rem;
+                font-size: 0.875rem;
                 line-height: 18px;
                 font-weight: 700;
                 color: $medium-blue-color;
@@ -297,7 +297,7 @@
             width: 100%;
             max-width: 317px;
             text-align: center;
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             line-height: 18px;
             font-weight: 400;
             color: $dark-grey-color;
@@ -305,7 +305,7 @@
 
         p:last-child {
             a {
-                font-size: 0.8125rem;
+                font-size: 0.875rem;
                 line-height: 18px;
                 display: block;
                 font-weight: 700;
@@ -322,7 +322,8 @@
     .download-app {
         min-height: 66px;
         height: auto;
-        margin: 6px 0 16px 0;
+        top:6px;
+        margin: 0 0 16px 0;
         background-color: $light-cool-blue-color;
         width: calc(100% + 48px);
         position: relative;
@@ -378,6 +379,9 @@
         background-color: $light-cool-blue-color;
         .download-app {
             background-color: $white-shade;
+            top:6px;
+            margin: 0 0 16px 0;
+            margin-left: -24px;
         }
         .right-item.signin-links-two{
             margin-bottom:0;
@@ -401,4 +405,8 @@
             order: 1;
         }
     }
+}
+// iframe
+iframe{
+    border:0;
 }

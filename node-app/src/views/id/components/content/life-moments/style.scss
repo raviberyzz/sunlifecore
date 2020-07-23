@@ -5,9 +5,12 @@
 	background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat,linear-gradient(#eaab00,#ffdd36);
 	text-align: center;
 	background-size: 120% 120%;
+	height: 382px;
+    padding-top: 48px;
 	h2,h3,h4,h5,h6 {
-		font-size: 2rem;
-		line-height: 41px;
+		margin: 0 0 16px 0;
+		font-size: 1.75rem;
+		line-height: 36px;
 	}
 	p {
 		font-size: .875rem;
@@ -65,6 +68,11 @@
 	}
 	.bright-start {
 		text-align: left;
+		img{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
 	}
 }
 @media (max-width:$mobile-screen-max) {
@@ -128,9 +136,6 @@
 }
 @media (min-width:$tab-screen-min) {
 	.lifemoments-apac {
-		h2,h3,h4,h5,h6 {
-			padding-top: 20px;
-		}
 		.life-moments-wrapper-mobile {
 			display: none;
 		}

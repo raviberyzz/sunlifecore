@@ -45,6 +45,14 @@
                         components="[group:SLGI]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_slgi_content>
+					<policy_slgi_dynamic_page
+						jcr:description="Policy for Dynamic page template"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="SLGI Dynamic"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[group:SLGI,group:Sunlife Export]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_slgi_dynamic_page>
                     <policy_sunlife_com_home
                         jcr:description="Policy for Home page template for COM"
                         jcr:primaryType="nt:unstructured"
@@ -602,6 +610,11 @@
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1577680771093"
+                                            cq:styleLabel="No Round Border"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
                                 <item4
@@ -749,7 +762,8 @@
                             allowedTypes="[h1,p]"
                             linkDisabled="false"
                             type="h1">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <jcr:content
+                                jcr:primaryType="nt:unstructured"/>
                             <cq:styleGroups jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleGroupLabel="Spacing"
@@ -2571,7 +2585,7 @@
                                             cq:styleLabel="Circle-150px "
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
-                                </item2>
+                                 </item2>
                                 <item3
                                     cq:styleGroupLabel="Image Border"
                                     jcr:primaryType="nt:unstructured">
@@ -2580,6 +2594,11 @@
                                             cq:styleClasses="round-border clearfix"
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1577980771098"
+                                            cq:styleLabel="No Round Border"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
@@ -4587,6 +4606,11 @@
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1577980778093"
+                                            cq:styleLabel="No Round Border"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
                                 <item4
@@ -6078,7 +6102,8 @@
             <components jcr:primaryType="nt:unstructured">
                 <content jcr:primaryType="nt:unstructured">
                     <titlebar jcr:primaryType="nt:unstructured">
-                        <policy_1594569444706
+                        <policy_titlebar
+                            cq:styleDefaultClasses="title-wrapper-blue-yellow-rings"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -6086,10 +6111,44 @@
                             linkDisabled="false"
                             type="h1">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_1594569444706>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="no-title-bottom-spacing title-wrapper-blue-yellow-rings"
+                                            cq:styleId="1595424208025"
+                                            cq:styleLabel="No bottom spacing-Blue"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="no-title-bottom-spacing title-wrapper-yellow-grey-rings"
+                                            cq:styleId="1595424221932"
+                                            cq:styleLabel="No bottom spacing-Yellow"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                                <item1
+                                    cq:styleGroupLabel="Background Color"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="title-wrapper-blue-yellow-rings"
+                                            cq:styleId="1595424283381"
+                                            cq:styleLabel="Blue with Yellow rings"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="title-wrapper-yellow-grey-rings"
+                                            cq:styleId="1595424296666"
+                                            cq:styleLabel="Yellow with Grey rings"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item1>
+                            </cq:styleGroups>
+                        </policy_titlebar>
                     </titlebar>
                     <title jcr:primaryType="nt:unstructured">
-                        <policy_1594569513864
+                        <policy_title
                             jcr:description="Source title"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Title"
@@ -6098,10 +6157,10 @@
                             linkDisabled="false"
                             type="h1">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_1594569513864>
+                        </policy_title>
                     </title>
                     <text jcr:primaryType="nt:unstructured">
-                        <policy_1594569533547
+                        <policy_text
                             jcr:description="Source text"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Text"
@@ -6216,28 +6275,28 @@
                                     jcr:primaryType="nt:unstructured"
                                     features="-"/>
                             </rtePlugins>
-                        </policy_1594569533547>
+                        </policy_text>
                     </text>
                     <teaser jcr:primaryType="nt:unstructured">
-                        <policy_1594569552181
+                        <policy_teaser
                             jcr:description="Source teaser"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Teaser"
                             sling:resourceType="wcm/core/components/policy/policy">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_1594569552181>
+                        </policy_teaser>
                     </teaser>
                     <tabs jcr:primaryType="nt:unstructured">
-                        <policy_1594569680726
+                        <policy_tabs
                             jcr:description="Source tabs"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Tabs"
                             sling:resourceType="wcm/core/components/policy/policy">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_1594569680726>
+                        </policy_tabs>
                     </tabs>
                     <table jcr:primaryType="nt:unstructured">
-                        <policy_1594569696745
+                        <policy_table
                             jcr:description="Source table"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Table"
@@ -6270,10 +6329,10 @@
                                     </cq:styles>
                                 </item1>
                             </cq:styleGroups>
-                        </policy_1594569696745>
+                        </policy_table>
                     </table>
                     <link-list jcr:primaryType="nt:unstructured">
-                        <policy_1594569904861
+                        <policy_linklist
                             jcr:description="Source link list"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Link list"
@@ -6292,10 +6351,10 @@
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594569904861>
+                        </policy_linklist>
                     </link-list>
                     <separator jcr:primaryType="nt:unstructured">
-                        <policy_1594569979193
+                        <policy_separator
                             cq:styleDefaultClasses="row yellow-horizontal-separator"
                             jcr:description="Source separator"
                             jcr:primaryType="nt:unstructured"
@@ -6335,10 +6394,10 @@
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594569979193>
+                        </policy_separator>
                     </separator>
                     <image jcr:primaryType="nt:unstructured">
-                        <policy_1594570094541
+                        <policy_image
                             jcr:description="Source image"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Image"
@@ -6463,10 +6522,10 @@
                                     </cq:styles>
                                 </item3>
                             </cq:styleGroups>
-                        </policy_1594570094541>
+                        </policy_image>
                     </image>
                     <icon-text jcr:primaryType="nt:unstructured">
-                        <policy_1594570313446
+                        <policy_iconText
                             jcr:description="Source icon text"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Icon Text"
@@ -6600,10 +6659,10 @@
                                     </cq:styles>
                                 </item5>
                             </cq:styleGroups>
-                        </policy_1594570313446>
+                        </policy_iconText>
                     </icon-text>
                     <embed jcr:primaryType="nt:unstructured">
-                        <policy_1594574519838
+                        <policy_embed
                             jcr:description="Source embed"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Embed"
@@ -6688,10 +6747,10 @@
                                     </cq:styles>
                                 </item3>
                             </cq:styleGroups>
-                        </policy_1594574519838>
+                        </policy_embed>
                     </embed>
                     <container jcr:primaryType="nt:unstructured">
-                        <policy_1594574727952
+                        <policy_container
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Container"
                             sling:resourceType="wcm/core/components/policy/policy">
@@ -6952,10 +7011,10 @@
                                     </cq:styles>
                                 </item13>
                             </cq:styleGroups>
-                        </policy_1594574727952>
+                        </policy_container>
                     </container>
                     <button jcr:primaryType="nt:unstructured">
-                        <policy_1594575489945
+                        <policy_button
                             cq:styleDefaultClasses="primary-blue-button"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Button"
@@ -6998,10 +7057,10 @@
                                     </cq:styles>
                                 </item1>
                             </cq:styleGroups>
-                        </policy_1594575489945>
+                        </policy_button>
                     </button>
                     <breadcrumb jcr:primaryType="nt:unstructured">
-                        <policy_1594575575181
+                        <policy_breadcrumb
                             cq:styleDefaultClasses="breadcrumb-section breadcrumb-wrapper-light-cool-blue"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Breadcrumb"
@@ -7028,10 +7087,10 @@
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594575575181>
+                        </policy_breadcrumb>
                     </breadcrumb>
                     <accordion jcr:primaryType="nt:unstructured">
-                        <policy_1594575667392
+                        <policy_accordion
                             cq:styleDefaultClasses="accordion-container"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Accordion"
@@ -7099,12 +7158,12 @@
                                     </cq:styles>
                                 </item2>
                             </cq:styleGroups>
-                        </policy_1594575667392>
+                        </policy_accordion>
                     </accordion>
                 </content>
                 <form jcr:primaryType="nt:unstructured">
                     <text jcr:primaryType="nt:unstructured">
-                        <policy_1594570594741
+                        <policy_formText
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Form Text"
                             sling:resourceType="wcm/core/components/policy/policy">
@@ -7120,10 +7179,10 @@
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594570594741>
+                        </policy_formText>
                     </text>
                     <options jcr:primaryType="nt:unstructured">
-                        <policy_1594570635834
+                        <policy_formOptions
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Form Options"
                             sling:resourceType="wcm/core/components/policy/policy">
@@ -7139,10 +7198,10 @@
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594570635834>
+                        </policy_formOptions>
                     </options>
                     <dropdown jcr:primaryType="nt:unstructured">
-                        <policy_1594570691848
+                        <policy_formDropdown
                             jcr:description="Source form dropdown"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Form Dropdown"
@@ -7159,15 +7218,15 @@
                                         <item1
                                             cq:styleClasses="form-dropdown-fittosection"
                                             cq:styleId="1594570716455"
-                                            cq:styleLabel="Fit tosection"
+                                            cq:styleLabel="Fit to section"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
-                        </policy_1594570691848>
+                        </policy_formDropdown>
                     </dropdown>
                     <container jcr:primaryType="nt:unstructured">
-                        <policy_1594570750576
+                        <policy_formContainer
                             jcr:description="Source form container"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Form Container"
@@ -7265,10 +7324,10 @@
                                     </cq:styles>
                                 </item4>
                             </cq:styleGroups>
-                        </policy_1594570750576>
+                        </policy_formContainer>
                     </container>
                     <button jcr:primaryType="nt:unstructured">
-                        <policy_1594574408601
+                        <policy_formButton
                             cq:styleDefaultClasses="primary-blue-button"
                             jcr:description="Source button"
                             jcr:primaryType="nt:unstructured"
@@ -7312,7 +7371,7 @@
                                     </cq:styles>
                                 </item1>
                             </cq:styleGroups>
-                        </policy_1594574408601>
+                        </policy_formButton>
                     </button>
                 </form>
             </components>
