@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Stock Ticker"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tab
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <tab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Stock Ticker Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <position
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="The component is placed at"
+                                name="./position">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <header
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Header"/>
+                                    <body
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Body"
+                                        value="body"/>
+                                </items>
+                            </position>
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"/>
+                            <viewAll
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceSuperType="sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Configure to view all stock data"
+                                fieldLabel="View All"
+                                name="./viewAll"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <delayText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Delay text"
+                                name="./delayText"/>
+                            <disclaimerText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Disclaimer"
+                                fieldLabel="Configure disclaimer text"
+                                name="./disclaimerText"/>
+                            <disclaimerLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Link to the disclaimer page"
+                                fieldLabel="Disclaimer Link"
+                                name="./disclaimerLink"/>
+                        </items>
+                    </tab>
+                </items>
+            </tab>
+        </items>
+    </content>
+</jcr:root>
