@@ -704,6 +704,11 @@
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
                                             jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1677980771093"
+                                            cq:styleLabel="No Round Border"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
                                 <item4
@@ -2640,6 +2645,11 @@
                                             cq:styleClasses="round-border clearfix"
                                             cq:styleId="1577980771093"
                                             cq:styleLabel="Round"
+                                            jcr:primaryType="nt:unstructured"/>
+                                         <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1577180771093"
+                                            cq:styleLabel="No Round Border"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item3>
