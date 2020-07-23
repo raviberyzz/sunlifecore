@@ -15,6 +15,21 @@ $(document).ready(function () {
         }
     });
     /* end hamburger menu close logic */
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
     // signIn mobile header
     if ($('.slf-header-wrapper').children().hasClass('mobile-header-signIn')) {
         mobileLogoWidthSignIn();
@@ -25,6 +40,18 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
                 }, 0)
+        }
+        if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
+            let wcmMode=getCookie('wcmmode');
+            if( wcmMode != "preview" && wcmMode != "edit") {
+            setTimeout(function () {
+                $('.secondary-logo-wrapper').css('margin-top', 50);
+                }, 0)
+            } else {
+                setTimeout(function () {
+                    $('.secondary-logo-wrapper').css('margin-top', 0);
+                    }, 0) 
+            }
         }
     } else {
         mobileLogoWidth();
@@ -92,6 +119,19 @@ $(document).ready(function () {
                     }, 0)
             }
             mobileLogoWidthSignIn();
+            
+        if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
+            let wcmMode=getCookie('wcmmode');
+            if( wcmMode != "preview" && wcmMode != "edit") {
+            setTimeout(function () {
+                $('.secondary-logo-wrapper').css('margin-top', 50);
+                }, 0)
+            } else {
+                setTimeout(function () {
+                    $('.secondary-logo-wrapper').css('margin-top', 0);
+                    }, 0) 
+            }
+        }
         } else {
             function mobileLogoWidth() {
                 var hamburger = $('.hamburger-menu').width();
