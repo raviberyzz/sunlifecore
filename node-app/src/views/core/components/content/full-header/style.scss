@@ -230,6 +230,9 @@
     .mobile-header{
     display:none;
     }
+    .secondary-logo-wrapper {
+        display: none;
+    }
 }
 @media(max-width: $mobile-screen-max){
     .desktop-header-content{
