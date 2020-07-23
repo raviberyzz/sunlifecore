@@ -38,8 +38,12 @@ $(document).ready(function () {
         let wcmMode=getCookie('wcmmode');
         if(document.cookie.indexOf('wcmmode')==-1 || ( wcmMode != "preview" && wcmMode != "edit")){
             $('.full-header').parents('.experiencefragment').next().css('margin-top', heightMargin);
+            console.log('publish');
+            console.log(heightMargin);
             }else{               
                 $('.full-header').parents('.experiencefragment').next().css('margin-top', heightSecondaryLogo);
+                console.log('auth');
+                console.log(heightSecondaryLogo);
             }
     }
       /* function for second header logo height ends here*/
@@ -55,7 +59,7 @@ $(document).ready(function () {
                 }, 0)
         }
         if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
-            headerLogoHeight();
+            setTimeout(headerLogoHeight,500);
         } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper')) {
         setTimeout(function () {
         $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
@@ -128,7 +132,7 @@ $(document).ready(function () {
             }
             mobileLogoWidthSignIn();
             if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
-                headerLogoHeight();
+                setTimeout(headerLogoHeight,500);
             }
             else if ($(window).width() > 1024 && $('.secondary-logo-wrapper')) {
             setTimeout(function () {
