@@ -109,6 +109,9 @@ $(document).ready(function () {
                 }
         }
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
+            parsleyAnalytics(event); 
+            var $form = $('.mySlfSignIn #form_signon');
+            $form.parsley().validate();     
             if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
                 let lang=$('html').attr('lang');
                 if(lang=='fr'){
