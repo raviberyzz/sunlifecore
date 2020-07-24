@@ -11,7 +11,7 @@
 @media (min-width: $tab-screen-min) {
     .bottom-footer-section {
         .text {
-            .collapse {
+            .collapse.show {
                 display: block !important;
             }
             .accordion-heading {
