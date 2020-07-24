@@ -41,7 +41,7 @@ $(document).ready(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
                 }, 0)
         }
-        if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
+        if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
             let wcmMode=getCookie('wcmmode');
             if( wcmMode != "preview" && wcmMode != "edit") {
             setTimeout(function () {
@@ -135,7 +135,7 @@ $(document).ready(function () {
             }
             mobileLogoWidthSignIn();
             
-        if ($(window).width() < 1025 && $('.secondary-logo-wrapper')) {
+        if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
             let wcmMode=getCookie('wcmmode');
             if( wcmMode != "preview" && wcmMode != "edit") {
             setTimeout(function () {
