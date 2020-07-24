@@ -80,7 +80,11 @@
                             <life-moments
                                 cq:policy="sunlife/com/components/content/life-moments/policy_lifeMoments"
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="wcm/core/components/policies/mapping"/>                                                                                                            	
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <full-header
+                                cq:policy="sunlife/com/components/content/full-header/policy_fullHeader"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>	                                                                                                            	
                         </content> 
                         <form jcr:primaryType="nt:unstructured">
                             <container
