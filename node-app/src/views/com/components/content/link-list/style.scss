@@ -11,7 +11,7 @@
 @media (min-width: $tab-screen-min) {
     .bottom-footer-section {
         .text {
-            .collapse.show {
+            .collapse {
                 display: block !important;
             }
             .accordion-heading {
@@ -31,7 +31,7 @@
     .bottom-footer-section  {
         .text {
             padding: 0 5px;
-            .collapse {
+            .collapse.show {
                 display: block !important;
             }
             .accordion-heading[aria-expanded="false"]:before {
