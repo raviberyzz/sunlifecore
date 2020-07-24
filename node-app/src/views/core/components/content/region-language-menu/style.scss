@@ -396,15 +396,49 @@
     /*mobile styles start */
     .mobile-region-language-menu-wrapper{
         width:100%!important;
+        .slf-tab-region {
+            background-color: $light-cool-blue-color;
+            padding: 19px 15px !important;
+            margin: -1px;
+            border: 1px solid $light-grey-color;
+            min-height: 64px;
+            height: auto;
+            color: inherit;
+            .first {
+                width: 100%;
+                padding: 0;
+                font-weight:700;
+                font-size: 16px;
+                line-height: 26px;
+                height: auto;
+                text-align: left;
+            }
+            .second {
+                display:none;
+            }
+        }
+        .tab-content .region-tab {
+            padding-top:0;
+            .accordion-list li {
+                line-height: 26px;
+                padding: 0 15px 15px 0;
+                a  {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding-left: 0 !important;
+                }
+            }
+        }
         .slf-accordion-arrow {
             .accordion-heading{
                background-color:$light-cool-blue-color;
-               color: $medium-blue-color;
-               font-family: sunlife-sans;
+                color: inherit;
+                font-family: "sunlife-sans";
                 font-weight: 700;
                 font-size: 1rem;
                 line-height: 26px;
-                padding: 20px 14px;
+                padding: 15px;
            }
            .accordion-heading[aria-expanded="false"]:before {
             content: "\f0da";
@@ -416,13 +450,19 @@
             font-family: FontAwesome;
             padding-right:10px;
            }
+           .accordion-heading[aria-expanded="false"]:after {
+            content: '';
+            }
+            .accordion-heading[aria-expanded="true"]:after {
+                content: '';
+            }
            ul {
-            margin: 12px 0 12px 12px;
+            margin: 12px 15px 12px 12px;
             padding: 0;
             list-style: none;
             vertical-align: middle; 
             li {
-                font-family: sunlife-sans;
+                font-family: "sunlife-sans";
                 font-size: 0.875rem;
                     padding: 20px;
                 line-height: 18px;
@@ -446,3 +486,5 @@
     /*mobile styles end here*/
 }
 /* link farm table styles end here */
+
+
