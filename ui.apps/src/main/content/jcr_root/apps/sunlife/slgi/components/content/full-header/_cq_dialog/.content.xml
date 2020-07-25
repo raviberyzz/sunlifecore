@@ -590,16 +590,16 @@
                         </items>
                     </meganav>
                       <mobilenavlinks
-                                             jcr:primaryType="nt:unstructured"
-                                             jcr:title="MobileNav"
-                                             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                             composite="{Boolean}true"
-                                             fieldLabel="Mobilenav links">
-                                             <field
-                                                   jcr:primaryType="nt:unstructured"
-                                                   sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                   name="./mobilenavlinks">
-                                                   <items jcr:primaryType="nt:unstructured">
+                               jcr:primaryType="nt:unstructured"
+                               jcr:title="MobileNav"
+                               sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                               composite="{Boolean}true"
+                               fieldLabel="Mobilenav links">
+                                   <field
+                                         jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/container"
+                                         name="./mobilenavlinks">
+                                          <items jcr:primaryType="nt:unstructured">
                                                        <column
                                                               jcr:primaryType="nt:unstructured"
                                                               sling:resourceType="granite/ui/components/coral/foundation/container">
