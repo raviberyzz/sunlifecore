@@ -6412,6 +6412,215 @@
                             jcr:title="Teaser"
                             sling:resourceType="wcm/core/components/policy/policy">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
+							<cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Banner Variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="editorial-hero-banner clearfix"
+                                            cq:styleId="1595870531965"
+                                            cq:styleLabel="Editorial Banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="banner-section clearfix"
+                                            cq:styleId="1595870553261"
+                                            cq:styleLabel="Banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="banner-section clearfix yellow-border-bottom"
+                                            cq:styleId="1595870572226"
+                                            cq:styleLabel="Banner with Yellow Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="banner-section clearfix life-moment-second-level-banner"
+                                            cq:styleId="1595870593882"
+                                            cq:styleLabel="Life Moment Second Level Banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                                <item1
+                                    cq:styleGroupLabel="Banner Box"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="white-box clearfix"
+                                            cq:styleId="1595871412767"
+                                            cq:styleLabel="White Box"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item1>
+                                <item2
+                                    cq:styleGroupLabel="Image Type"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="circular-image clearfix"
+                                            cq:styleId="1595871451455"
+                                            cq:styleLabel="Circular"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="circular-image circle-220-desktop circle-150-mobile round-border clearfix"
+                                            cq:styleId="1595871479260"
+                                            cq:styleLabel="Circle-220px "
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="circular-image circle-150-desktop circle-150-mobile round-border clearfix"
+                                            cq:styleId="1595871503627"
+                                            cq:styleLabel="Circle-150px"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item2>
+                                <item3
+                                    cq:styleGroupLabel="Image Border"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="round-border clearfix"
+                                            cq:styleId="1595871544919"
+                                            cq:styleLabel="Round"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="no-round-border clearfix"
+                                            cq:styleId="1595871610842"
+                                            cq:styleLabel="No Round Border"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item3>
+                                <item4
+                                    cq:styleGroupLabel="Banner Text Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="text-left-align clearfix"
+                                            cq:styleId="1595871646330"
+                                            cq:styleLabel="Left"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="text-right-align clearfix"
+                                            cq:styleId="1595871660514"
+                                            cq:styleLabel="Right"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="text-center-align clearfix"
+                                            cq:styleId="1595871689314"
+                                            cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item4>
+                                <item5
+                                    cq:styleGroupLabel="Text Alignment"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="middle-aligned-text clearfix"
+                                            cq:styleId="1595871713356"
+                                            cq:styleLabel="Middle"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="bottom-aligned-text clearfix"
+                                            cq:styleId="1595871736744"
+                                            cq:styleLabel="Bottom"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item5>
+                                <item6
+                                    cq:styleGroupLabel="Separator"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="border-right clearfix"
+                                            cq:styleId="1595871776853"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item6>
+                                <item7
+                                    cq:styleGroupLabel="Image Text Variation"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="content-block-image"
+                                            cq:styleId="1595871812496"
+                                            cq:styleLabel="Content block with image"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item7>
+                                <item8
+                                    cq:styleGroupLabel="Bottom Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mb-18"
+                                            cq:styleId="1595871844984"
+                                            cq:styleLabel="Bottom Spacing 18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="mb-20"
+                                            cq:styleId="1595871862061"
+                                            cq:styleLabel="Bottom Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="mb-40"
+                                            cq:styleId="1595871880661"
+                                            cq:styleLabel="Bottom Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item8>
+                                <item9
+                                    cq:styleGroupLabel="Top Spacing"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="mt-18"
+                                            cq:styleId="1595871923921"
+                                            cq:styleLabel="Top Spacing18"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="mt-20"
+                                            cq:styleId="1595871936302"
+                                            cq:styleLabel="Top Spacing 20"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="mt-40"
+                                            cq:styleId="1595871937891"
+                                            cq:styleLabel="Top Spacing 40"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item9>
+                                <item10
+                                    cq:styleGroupLabel="Banner height variations"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="home-page-hero-banner"
+                                            cq:styleId="1595871983867"
+                                            cq:styleLabel="Home page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="landing-page-hero-banner"
+                                            cq:styleId="1595872002044"
+                                            cq:styleLabel="Landing page hero banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item10>
+                                <item11
+                                    cq:styleGroupLabel="Banner Mobile image position"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="right-img-align-position"
+                                            cq:styleId="1595872035591"
+                                            cq:styleLabel="Right align"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="center-img-align-position"
+                                            cq:styleId="1595872046016"
+                                            cq:styleLabel="Center align"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item11>
+                            </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
                     <tabs jcr:primaryType="nt:unstructured">
