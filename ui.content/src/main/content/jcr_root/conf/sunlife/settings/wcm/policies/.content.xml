@@ -6296,6 +6296,115 @@
                                     jcr:primaryType="nt:unstructured"
                                     features="-"/>
                             </rtePlugins>
+	<cq:styleGroups jcr:primaryType="nt:unstructured"
+		xmlns:jcr="http://www.jcp.org/jcr/1.0"
+		xmlns:cq="http://www.day.com/jcr/cq/1.0">
+		<item0 cq:styleGroupLabel=" Background Variations"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="light-orange"
+					cq:styleId="1595615703098"
+					cq:styleLabel="Orange for Right Navigation"
+					jcr:primaryType="nt:unstructured" />
+				<item1 cq:styleClasses="grey-border-box"
+					cq:styleId="1595615714666" cq:styleLabel="Grey Border"
+					jcr:primaryType="nt:unstructured" />
+				<item2 cq:styleClasses="grey-background-box"
+					cq:styleId="1595615730840" cq:styleLabel="Grey Background"
+					jcr:primaryType="nt:unstructured" />
+				<item3 cq:styleClasses="yellow-gradient-box"
+					cq:styleId="1595615745991" cq:styleLabel="Yellow Background"
+					jcr:primaryType="nt:unstructured" />
+				<item4 cq:styleClasses="light-orange-background-wrapper"
+					cq:styleId="1595615770721" cq:styleLabel="Orange Background"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item0>
+		<item1 cq:styleGroupLabel="CTA Styles"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="right-nav-cta"
+					cq:styleId="1595615821844" cq:styleLabel="Full Width"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item1>
+		<item2 cq:styleGroupLabel="Margin"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="text-border-right"
+					cq:styleId="1595615867143" cq:styleLabel="Yes"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item2>
+		<item3 cq:styleGroupLabel="Bottom Spacing"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="mb-18" cq:styleId="1595615901013"
+					cq:styleLabel="Bottom Spacing 18" jcr:primaryType="nt:unstructured" />
+				<item1 cq:styleClasses="mb-20" cq:styleId="1595615917613"
+					cq:styleLabel="Bottom Spacing 20" jcr:primaryType="nt:unstructured" />
+				<item2 cq:styleClasses="mb-40" cq:styleId="1595615934747"
+					cq:styleLabel="Bottom Spacing 40" jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item3>
+		<item4 cq:styleGroupLabel="Dotted border bottom"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="border-bottom-dotted"
+					cq:styleId="1595615969523" cq:styleLabel="Yes"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item4>
+		<item5 cq:styleGroupLabel="Product Box"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="light-yellow-box-header"
+					cq:styleId="1595615999024" cq:styleLabel="Light Yellow Box"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item5>
+		<item6 cq:styleGroupLabel="Top Spacing"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="mt-18" cq:styleId="1595616028506"
+					cq:styleLabel="Top Spacing 18" jcr:primaryType="nt:unstructured" />
+				<item1 cq:styleClasses="mt-20" cq:styleId="1595616038399"
+					cq:styleLabel="Top Spacing 20" jcr:primaryType="nt:unstructured" />
+				<item2 cq:styleClasses="mt-40" cq:styleId="1595616056936"
+					cq:styleLabel="Top Spacing 40" jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item6>
+		<item7 cq:styleGroupLabel="Form Alignment"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="form-input-text"
+					cq:styleId="1595616086373" cq:styleLabel="Center"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item7>
+		<item8 cq:styleGroupLabel="Padding"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="top-padding"
+					cq:styleId="1595616120490" cq:styleLabel="Top"
+					jcr:primaryType="nt:unstructured" />
+				<item1 cq:styleClasses="bottom-padding"
+					cq:styleId="1595616136756" cq:styleLabel="Bottom"
+					jcr:primaryType="nt:unstructured" />
+				<item2 cq:styleClasses="top-bottom-padding"
+					cq:styleId="1595616151520" cq:styleLabel="Top and Bottom padding"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item8>
+		<item9 cq:styleGroupLabel="Text Separator"
+			jcr:primaryType="nt:unstructured">
+			<cq:styles jcr:primaryType="nt:unstructured">
+				<item0 cq:styleClasses="text-border-right"
+					cq:styleId="1595616229482" cq:styleLabel="Yes"
+					jcr:primaryType="nt:unstructured" />
+			</cq:styles>
+		</item9>
+	</cq:styleGroups>
                         </policy_text>
                     </text>
                     <teaser jcr:primaryType="nt:unstructured">
