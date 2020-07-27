@@ -73,7 +73,7 @@ $(document).ready(function () {
          //removing the mobile language region in desktop view
          $('.cmp-linkfarm-table .col-xs-12').removeClass("mobile-language-region");
          $('.cmp-linkfarm-table .go-back').remove();
-         $('.slf-tab-region').remove();
+        // $('.slf-tab-region').remove();
          $('.tab-content .tab-pane').addClass('active');
          $(".region-link").addClass("slf-accordion-arrow");
          // in mobile view expand the country links and scroll to the top of the page
