@@ -6296,9 +6296,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     features="-"/>
                             </rtePlugins>
-							<cq:styleGroups jcr:primaryType="nt:unstructured"
-								xmlns:jcr="http://www.jcp.org/jcr/1.0"
-								xmlns:cq="http://www.day.com/jcr/cq/1.0">
+							<cq:styleGroups jcr:primaryType="nt:unstructured">
 								<item0 cq:styleGroupLabel=" Background Variations"
 									jcr:primaryType="nt:unstructured">
 									<cq:styles jcr:primaryType="nt:unstructured">
@@ -6342,9 +6340,9 @@
 										<item0 cq:styleClasses="mb-18" cq:styleId="1595615901013"
 											cq:styleLabel="Bottom Spacing 18" jcr:primaryType="nt:unstructured" />
 											<item1 cq:styleClasses="mb-20" cq:styleId="1595615917613"
-												cq:styleLabel="Bottom Spacing 20" jcr:primaryType="nt:unstructured" />
+												cq:styleLabel="Bottom Spacing 20" jcr:primaryType="nt:unstructured"/>
 											<item2 cq:styleClasses="mb-40" cq:styleId="1595615934747"
-													cq:styleLabel="Bottom Spacing 40" jcr:primaryType="nt:unstructured" />
+													cq:styleLabel="Bottom Spacing 40" jcr:primaryType="nt:unstructured"/>
 									</cq:styles>
 								</item3>
 								<item4 cq:styleGroupLabel="Dotted border bottom"
