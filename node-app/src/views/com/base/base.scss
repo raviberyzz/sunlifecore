@@ -3,6 +3,15 @@
 #mainfooter {
     .image {
         padding: 16px 0 15px 15px; }
+    .text {
+        img {
+            background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_grey.png');
+            background-repeat: no-repeat;
+            &:hover {
+                background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_blue.png');
+            }
+        }
+    }
 } 
 
 @media (max-width:$mobile-screen-max) {
