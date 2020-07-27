@@ -1,4 +1,4 @@
-ksl/* sign in framework analytics starts here */
+/* sign in framework analytics starts here */
 /* inserting error code in url for credential and server validation starts here */
 function insertParam(key, value) {
     key = encodeURIComponent(key);
@@ -34,7 +34,6 @@ function parsleyAnalytics(event){
      ($('.mySlfSignIn #PASSWORD').val()!=null && $('.mySlfSignIn #USER').val()==null)){
          let EC='slnv0001';
          let UrlEC='SLNV0001';
-         console.log(csi);
         utag.link({
             "ev_action": "onpage_impr",
             "ev_data_one": csi+utag_data.page_subcategory,
