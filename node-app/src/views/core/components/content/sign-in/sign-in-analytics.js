@@ -29,13 +29,14 @@ function insertParam(key, value) {
 /* inserting error code in url for credential and server validation ends here */
 function parsleyAnalytics(event){
     // for only no userId
+    let csi="signin - csi \\";
     if(($('.mySlfSignIn #PASSWORD').val()!='' && $('.mySlfSignIn #USER').val()=='') ||
      ($('.mySlfSignIn #PASSWORD').val()!=null && $('.mySlfSignIn #USER').val()==null)){
          let EC='slnv0001';
          let UrlEC='SLNV0001';
         utag.link({
             "ev_action": "onpage_impr",
-            "ev_data_one": "signin - csi \/"+utag_data.page_subcategory,
+            "ev_data_one": csi+utag_data.page_subcategory,
             "ev_data_two": "username required - "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
@@ -49,7 +50,7 @@ function parsleyAnalytics(event){
          let UrlEC='SLNV0003';
         utag.link({
             "ev_action": "onpage_impr",
-            "ev_data_one": "signin - csi "+"\/"+utag_data.page_subcategory,
+            "ev_data_one": csi+utag_data.page_subcategory,
             "ev_data_two": "password required - "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
@@ -63,7 +64,7 @@ function parsleyAnalytics(event){
          let UrlEC='SLNV0004';
         utag.link({
             "ev_action": "onpage_impr",
-            "ev_data_one": "signin - csi "+"\/"+utag_data.page_subcategory,
+            "ev_data_one": csi+utag_data.page_subcategory,
             "ev_data_two": "not entering any credentials - "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
@@ -86,9 +87,10 @@ $(document).ready(function (){
     // invalid user id or password combination
     if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1)){
         errorCode=errorCode.trim();
+        let csi="signin - csi \\";
         utag.link({
             "ev_action": "onpage_impr",
-            "ev_data_one": "signin - csi "+"\/"+utag_data.page_subcategory,
+            "ev_data_one": csi+utag_data.page_subcategory,
             "ev_data_two": "invalid pw/username combination - "+errorCode,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
