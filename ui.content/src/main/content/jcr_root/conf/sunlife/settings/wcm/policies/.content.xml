@@ -6630,6 +6630,30 @@
                             jcr:title="Tabs"
                             sling:resourceType="wcm/core/components/policy/policy">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
+							<cq:styleGroups jcr:primaryType="nt:unstructured">
+								<item0 cq:styleGroupLabel="Bottom Spacing"
+									jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="mb-18" cq:styleId="1595949490695"
+										cq:styleLabel="Bottom Spacing 18" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="mb-20" cq:styleId="1595949505625"
+										cq:styleLabel="Bottom Spacing 20" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="mb-40" cq:styleId="1595949526133"
+										cq:styleLabel="Bottom Spacing 40" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item0>
+								<item1 cq:styleGroupLabel="Top Spacing"
+									jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="mt-18" cq:styleId="1595949571345"
+										cq:styleLabel="Top Spacing18" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="mt-20" cq:styleId="1595949574385"
+										cq:styleLabel="Top Spacing 20" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="mt-40" cq:styleId="1595949575756"
+										cq:styleLabel="Top Spacing 40" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item1>
+							</cq:styleGroups>
                         </policy_tabs>
                     </tabs>
                     <table jcr:primaryType="nt:unstructured">
