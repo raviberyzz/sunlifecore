@@ -19,14 +19,16 @@
               .mega-menu-wrapper-desk {
                 .aem-Grid {
                   > .container-component:first-child {
-                    padding: 0 32px 48px 32px;
                     .links {
                       .accordion-heading {
                         font-weight: normal;
+                        font-size: 16px;
+                        margin-top: 10px;
                       }
                     }
                   }
                   > .container-component:last-child {
+                    padding: 48px 24px;
                     .layout-container {
                       .icon-text {
                         li {
@@ -51,6 +53,9 @@
                           }
                           .icon-texts {
                             padding: 0;
+                            h6 {
+                              font-size: 16px;
+                            }
                           }
                         }
                       }
