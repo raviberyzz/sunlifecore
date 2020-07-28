@@ -29,7 +29,7 @@ function insertParam(key, value) {
 /* inserting error code in url for credential and server validation ends here */
 function parsleyAnalytics(event){
     // for only no userId
-    let csi="signin - csi \\";
+    let csi="signin - csi \/";
     if(($('.mySlfSignIn #PASSWORD').val()!='' && $('.mySlfSignIn #USER').val()=='') ||
      ($('.mySlfSignIn #PASSWORD').val()!=null && $('.mySlfSignIn #USER').val()==null)){
          let EC='slnv0001';
@@ -87,7 +87,7 @@ $(document).ready(function (){
     // invalid user id or password combination
     if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1)){
         errorCode=errorCode.trim();
-        let csi="signin - csi \\";
+        let csi="signin - csi \/";
         utag.link({
             "ev_action": "onpage_impr",
             "ev_data_one": csi+utag_data.page_subcategory,
