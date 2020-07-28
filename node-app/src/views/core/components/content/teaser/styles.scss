@@ -194,6 +194,49 @@
         }
     }
 }
+
+.circle-150-desktop {
+    .left-image-position {
+	    .left-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .left-image-position {
+        .left-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
+.circle-150-desktop {
+    .right-image-position {
+	    .right-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .right-image-position {
+        .right-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
 .circular-image.round-border {
     .right-image-position {
         .right-item {
@@ -234,22 +277,6 @@
     }
 } 
 /* article pages circular images 220 styles end */
-.circle-150-desktop {
-	.left-item {
-		height: 158px;
-        width: 158px;
-        img{
-            width:150px;
-            height: 150px;
-        }
-	}
-}
-.circle-220-desktop {
-	.left-item {
-		height: 228px;
-		width: 228px;
-	}
-}
 .banner-section{
     h1, h2, h3, h4, h5, h6 {
         margin-top: 0;
