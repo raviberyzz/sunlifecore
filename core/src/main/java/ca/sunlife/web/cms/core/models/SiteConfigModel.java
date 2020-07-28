@@ -190,4 +190,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getFeaturedImagePath();
+  
+  /**
+   * Gets the enable context hub param.
+   *
+   * @return the enable context hub param
+   */
+  @ Inject
+  String getEnableContextHub();
 }

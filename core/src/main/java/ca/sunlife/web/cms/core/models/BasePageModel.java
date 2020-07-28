@@ -308,6 +308,9 @@ public class BasePageModel {
 
   /** The search api. */
   private String searchApi;
+  
+  /** The enable context hinub. */
+  private String enableContextHub;
 
   /**
    * Gets the page title tag.
@@ -745,8 +748,25 @@ public class BasePageModel {
   public void setPageLocaleDefault(final String pageLocaleDefault) {
     this.pageLocaleDefault = pageLocaleDefault;
   }
+  
+	/**
+	 * Gets the enableContextHub
+	 * 
+	 * @return the enableContextHub
+	 */
+	public String getEnableContextHub() {
+		return enableContextHub;
+	}
 
-  /**
+	/**
+	 * @param enableContextHub
+	 *          the enableContextHub to set
+	 */
+	public void setEnableContextHub(String enableContextHub) {
+		this.enableContextHub = enableContextHub;
+	}
+
+	/**
    * Inits the.
    *
    * @throws LoginException
@@ -762,7 +782,7 @@ public class BasePageModel {
     final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         pagePath);
-
+    enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
