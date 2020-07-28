@@ -21,7 +21,7 @@
         border-bottom: none;
         z-index: 1;
         box-shadow: 0 0px 0px 0px $white-shade, 0 -15px 0px 0px $white-shade, 0px 0 15px -5px rgba(0, 0, 0, 0.25), 0px 0 15px 0px rgba(0, 0, 0, 0.25); 
-        a {
+        >a {
             height: 58px;
         }
     }
@@ -132,9 +132,19 @@
                     }
                 } 
             } 
-
+            .cmp-dynamic-megamenu-greybackground {
+                .teaser {
+                    background-color: $light-grey-color;
+                            margin: 15px !important;
+                            padding: 30px 12px;
+                }
+    
+            } 
         }
     } 
   } 
   /*mega menu css end here*/
+  
+
+
   
