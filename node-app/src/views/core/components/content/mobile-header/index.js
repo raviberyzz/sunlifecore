@@ -53,6 +53,15 @@ $(document).ready(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
                 }, 0)
         }
+        $('.slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo a').css({
+            "position": "relative",
+            "right": "30px"
+        });
+        if($('.dot-com').length === 0 ) {
+            $('.slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo a img').css({
+                "width": "auto"
+            });
+    }
     }
 
         // signIn mobile header
@@ -157,6 +166,15 @@ $(document).ready(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
                 }, 0)
         }
+        $('.slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo a').css({
+            "position": "relative",
+            "right": "30px"
+        });
+        if($('.dot-com').length === 0 ) {
+            $('.slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo a img').css({
+                "width": "auto"
+            });
+    }
     }
     $(document).ready(function () {   
         if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
