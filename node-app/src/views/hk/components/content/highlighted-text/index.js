@@ -1,9 +1,6 @@
 $(document).ready(function(){
-    // $( ".highlight-text" ).one( "mousemove mousehover keydown scroll", function( event ) {
-    //     alert( "The " + event.type + " event happened!" );
-    //     a();
-    //   });
-    function highlighted(){ 
+  /* default functionality for visible first time in browser */  
+  function highlighted(){ 
         $(".highlight-text").each(function(i, el) {
           var el = $(el);
           if (el.visible(true)) {
@@ -11,12 +8,41 @@ $(document).ready(function(){
           } 
         });  
     }
-    $(window).scroll(function(event) {
+    /*$(window).scroll(function(event) {
         highlighted();     
       });
-      setTimeout(highlighted,800);     
+      setTimeout(highlighted,800);*/ 
+      var count = 0;
+    $('.highlight-text').each(function( index ) {		
+      if ($(this).isInViewport()) {
+        $(this).addClass('active-text');
+      }
+      if(index == 0){
+        count = 2;
+        $(this).attr("style","transition-delay: "+count+"s;");
+      }else{
+        count = count + 3;
+        $(this).attr("style","transition-delay: "+count+"s;");
+      }
+    });   
 });
-(function($) {  
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();  
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  $(window).on('resize scroll', function() {
+    $('.highlight-text').each(function() {
+      if ($(this).isInViewport()) {
+        $(this).addClass('active-text');
+      }
+    });
+  });
+
+  (function($) {  
     $.fn.visible = function(partial) {     
         var $t            = $(this),
             $w            = $(window),
