@@ -634,6 +634,24 @@
                 }
             }
         }
+    .no-mobile-image {
+        .left-image-position {
+            .left-item {
+                display: none;
+            }
+            .text-section {
+                text-align: center;
+            }
+        }
+        .right-image-position {
+            .right-item {
+                display: none;
+            }
+            .text-section {
+                text-align: center;
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-max) {
     .circle-220-desktop {
