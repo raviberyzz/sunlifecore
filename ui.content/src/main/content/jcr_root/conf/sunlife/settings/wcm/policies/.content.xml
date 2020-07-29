@@ -750,6 +750,28 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item11>
+                                <item12
+                                    cq:styleGroupLabel="Sign In Framework Banner"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="signIn-banner"
+                                            cq:styleId="1596021993774"
+                                            cq:styleLabel="Sign In Banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item12>
+                                <item13
+                                    cq:styleGroupLabel="Mobile Image View"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="no-mobile-image"
+                                            cq:styleId="1596024605258"
+                                            cq:styleLabel="No Mobile Image"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item13>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
