@@ -327,7 +327,7 @@
 }
 .signIn-banner {
     height: 100%;
-    margin-top: 0;
+    margin-top: 0 !important;
     .image-text-wrapper {
         height: 100%;
         .left-image-position {
@@ -335,7 +335,7 @@
             .left-item {
                 height: 100%;
                 .desk-img {
-                    height: 100%;
+                    height: 100% !important;
                 }
             }
         }
@@ -344,7 +344,7 @@
             .right-item {
                 height: 100%;
                 .desk-img {
-                    height: 100%;
+                    height: 100% !important;
                 }
             }
         }
