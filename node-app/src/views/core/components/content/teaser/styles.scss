@@ -537,6 +537,13 @@
             }
         }
     }
+    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text {
+        .image-text-wrapper {
+            img {
+                max-width: inherit;
+            }
+        }
+    }
 }
 
 @media (max-width: $mobile-screen-max) {
@@ -782,11 +789,13 @@
 
 @media (min-width: $tab-screen-min) and (max-width: 1023px) {
     //ipad specific case in which teaser text is going beyond the page
-    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
-        .left-image-position, .right-image-position{
-            display: block;
-        }
-    }
+
+    // .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+    //     .left-image-position, .right-image-position{
+    //         display: block;
+    //     }
+    // }
+
     .col-sm-3 {
         //ipad specific - circular teaser height set to auto so it is always circular for 4 teaser case
         .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix{

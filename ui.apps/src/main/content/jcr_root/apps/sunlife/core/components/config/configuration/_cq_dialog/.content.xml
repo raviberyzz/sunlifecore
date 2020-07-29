@@ -103,6 +103,14 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Search Auto Complete URL"
                                         name="./autoCompleteUrl"/>
+									<enableContextHub
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Enable context hub"
+                                        name="./enableContextHub"
+                                        text="Enable context hub"
+                                        value="{Boolean}true"/>	
                                 </items>
                             </section-general>
                             <section-article

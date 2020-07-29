@@ -24,6 +24,15 @@
   }
 }
 
+.circular-image.round-border {
+  .left-image-position {
+      .left-item {
+          background-image: none;
+          padding: 0px !important;
+      }
+  }
+}
+
 //from mobile to ipad (not ipad pro since css is different for ipad pro
 @media (min-width: $mobile-screen-min) and (max-width: 1023px){
   .banner-section {
