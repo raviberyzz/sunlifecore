@@ -1,7 +1,7 @@
 $(document).ready(function(){
   /* default functionality for visible first time in browser */  
   function highlighted(){ 
-        $(".highlight-text").each(function(i, el) {
+        $(".highlight-text,.highlight_text_bg").each(function(i, el) {
           var el = $(el);
           if (el.visible(true)) {
             el.addClass("active-text"); 
@@ -13,7 +13,7 @@ $(document).ready(function(){
       });
       setTimeout(highlighted,800);*/ 
       var count = 0;
-    $('.highlight-text').each(function( index ) {		
+    $('.highlight-text,.highlight_text_bg').each(function( index ) {		
       if ($(this).isInViewport()) {
         $(this).addClass('active-text');
       }
@@ -35,7 +35,7 @@ $(document).ready(function(){
     return elementBottom > viewportTop && elementTop < viewportBottom;
   };
   $(window).on('resize scroll', function() {
-    $('.highlight-text').each(function() {
+    $('.highlight-text,.highlight_text_bg').each(function() {
       if ($(this).isInViewport()) {
         $(this).addClass('active-text');
       }
