@@ -67,6 +67,12 @@ $(document).ready(function () {
                     $('.secondary-logo-wrapper').css('margin-top', 0);
                     }, 0) 
             }
+            if($('.hide-logo').length > 0) {
+                $('.hide-logo').remove();
+                if($('.secondary-logo-wrapper').children().length === 0) {
+                    $('.secondary-logo-wrapper').remove();
+                }
+            }
         } else if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length === 0) {
             let wcmMode=getCookie('wcmmode');
             if( wcmMode != "preview" && wcmMode != "edit") {
