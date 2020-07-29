@@ -29,15 +29,15 @@ function insertParam(key, value) {
 /* inserting error code in url for credential and server validation ends here */
 function parsleyAnalytics(event){
     // for only no userId
-    let csi="signin - csi \/";
+    let csi="signin - csi - ";
     if(($('.mySlfSignIn #PASSWORD').val()!='' && $('.mySlfSignIn #USER').val()=='') ||
      ($('.mySlfSignIn #PASSWORD').val()!=null && $('.mySlfSignIn #USER').val()==null)){
          let EC='slnv0001';
          let UrlEC='SLNV0001';
-        utag.link({
-            "ev_action": "onpage_impr",
-            "ev_data_one": csi+utag_data.page_subcategory,
-            "ev_data_two": "username required - "+EC,
+         utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- username required: "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
@@ -48,10 +48,10 @@ function parsleyAnalytics(event){
      ($('.mySlfSignIn #PASSWORD').val()==null && $('.mySlfSignIn #USER').val()!=null)){
          let EC='slnv0003';
          let UrlEC='SLNV0003';
-        utag.link({
-            "ev_action": "onpage_impr",
-            "ev_data_one": csi+utag_data.page_subcategory,
-            "ev_data_two": "password required - "+EC,
+         utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- password required: "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
@@ -62,10 +62,10 @@ function parsleyAnalytics(event){
      ($('.mySlfSignIn #PASSWORD').val()==null && $('.mySlfSignIn #USER').val()==null)){
          let EC='slnv0004';
          let UrlEC='SLNV0004';
-        utag.link({
-            "ev_action": "onpage_impr",
-            "ev_data_one": csi+utag_data.page_subcategory,
-            "ev_data_two": "not entering any credentials - "+EC,
+         utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- not entering any credentials: "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
@@ -83,18 +83,110 @@ $(document).ready(function (){
         }
         return false;
     }
-    let errorCode = getParameter('EC');   
-    // invalid user id or password combination
-    if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1)){
+    let errorCode = getParameter('EC');
+    let refer = getParameter('refer');
+    
+    /* normal sunnet domain analytics starts here */
+    // for no UserId only
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0001") != -1) && (refer==false)){
         errorCode=errorCode.trim();
-        let csi="signin - csi \/";
-        utag.link({
-            "ev_action": "onpage_impr",
-            "ev_data_one": csi+utag_data.page_subcategory,
-            "ev_data_two": "invalid pw/username combination - "+errorCode,
+        let EC='slnv001';
+        utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- username required: "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
     }
+    //for no Password only
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer==false)){
+        errorCode=errorCode.trim();
+        let EC='slnv003';
+        utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- password required: "+EC,
+            "ev_title": "signin - "+utag_data.page_category,
+            "ev_type": "other"
+        });
+    }
+    //for no userID and password both
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer==false)){
+        errorCode=errorCode.trim();
+        let EC='slnv004';
+        utag.link({ 
+            "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
+            "ev_data_two": "error- not entering any credentials: "+EC,
+            "ev_title": "signin - "+utag_data.page_category,
+            "ev_type": "other"
+        });
+    }
+    // invalid user id or password combination
+    if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1)  &&(refer==false)){
+        errorCode=errorCode.trim();
+        let csi="signin - csi - ";
+        let EC='slsc0099';
+        utag.link({
+            "ev_action": "onpage_impr",
+            "ev_data_one": csi+utag_data.page_subcategory,
+            "ev_data_two": "error- invalid pw/username combination: "+EC,
+            "ev_title": "signin - "+utag_data.page_category,
+            "ev_type": "other"
+        });
+        
+    }
+    /* normal sunnet domain analytics starts here */
+    /* CaHome referer starts here */
+    // for only no userID
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0001") != -1) && (refer.indexOf("caHome") != -1)){
+        errorCode=errorCode.trim();
+        let EC='slnv001';
+        utag.link({
+             "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - sunlife.ca", 
+            "ev_data_two": "error- username required: "+EC,
+            "ev_title": "signin – sunlife.ca",
+            "ev_type": "other"
+        });
+    }
+    //for no password only
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer.indexOf("caHome") != -1)){
+        errorCode=errorCode.trim();
+        let EC='slnv003';
+        utag.link({
+             "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - sunlife.ca", 
+            "ev_data_two": "error- password required: "+EC,
+            "ev_title": "signin – sunlife.ca",
+            "ev_type": "other"
+        });
+    }
+    // for no userId and password Both
+    if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer.indexOf("caHome") != -1)){
+        errorCode=errorCode.trim();
+        let EC='slnv004';
+        utag.link({
+             "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - sunlife.ca", 
+            "ev_data_two": "error- not entering any credentials: "+EC,
+            "ev_title": "signin – sunlife.ca",
+            "ev_type": "other"
+        });
+    }
+    //for wrong userID and password combination
+    if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1) && (refer.indexOf("caHome") != -1)){
+        errorCode=errorCode.trim();
+        let EC='slsc0099';
+        utag.link({
+             "ev_action": "onpage_impr", 
+            "ev_data_one": "signin - csi - sunlife.ca", 
+            "ev_data_two": "error- invalid pw/username combination: "+EC,
+            "ev_title": "signin – sunlife.ca",
+            "ev_type": "other"
+        });
+    }
+    /* CaHome referer ends here */
 });
 /* sign in framework analytics ends here */
