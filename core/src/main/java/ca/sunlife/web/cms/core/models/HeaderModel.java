@@ -199,6 +199,15 @@ public interface HeaderModel {
    */
   @ Inject
   Resource getMeganavlinks();
+  
+  
+  /**
+   * Gets the mobilenavlinks.
+   *
+   * @return the mobilenavlinks
+   */
+  @ Inject
+  Resource getMobilenavlinks();
 
   /**
    * The Interface Links.
