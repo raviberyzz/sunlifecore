@@ -1,6 +1,6 @@
 @import '../../../base/core';
-.highlight-text{
-    transition-duration: 4s;
+.highlight-text,.highlight_text_bg{
+    transition-duration: 3s;
     transition-delay: 5s;
     background-image: linear-gradient(to right,$white-gradient-background-color 50%,$highlighted-gradient-color 50%);
     -webkit-transition: background-position 3s linear;

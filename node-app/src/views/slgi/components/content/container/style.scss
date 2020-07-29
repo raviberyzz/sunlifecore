@@ -32,6 +32,27 @@
     }
   }
 }
+
+/* Code to align buttons */
+.blue-icon-yellow-background {
+  .icon-text.overview-highlights-wrapper {
+    height: 100%;
+    ul {
+      height: 100%;
+      li {
+        height: 100%;
+        .icon-texts {
+          height: calc(100% - 21px);
+          display: flex;
+          flex-direction: column;
+          p:last-child {
+            margin-top: auto;
+          }
+        }
+      }
+    }
+  }
+}
 /* Overview Highlights Wrapper End*/
 
 /* Tripple CTA Start */

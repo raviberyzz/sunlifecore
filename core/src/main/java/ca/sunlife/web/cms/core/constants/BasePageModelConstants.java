@@ -49,4 +49,7 @@ public final class BasePageModelConstants {
 
   /** The Constant TITLE_MAX_LENGTH_CONSTANT. */
   public static final int TITLE_MAX_LENGTH_CONSTANT = 200;
+  
+  /** The Constant ENABLE_CONTEXT_HUB_CONSTANT. */
+  public static final String ENABLE_CONTEXT_HUB_CONSTANT = "enableContextHub";
 }

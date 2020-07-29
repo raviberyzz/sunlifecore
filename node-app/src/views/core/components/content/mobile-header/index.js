@@ -30,8 +30,20 @@ $(document).ready(function () {
         }
         return "";
       }
-    // signIn mobile header
-    if ($('.slf-header-wrapper').children().hasClass('mobile-header-signIn') || $('.dot-com')) {
+
+    //   if sign in button is present or not
+    if ($('.mobile-sign-in-box').length > 0) {
+        mobileLogoWidth();
+        function mobileLogoWidth() {
+            var hamburger = $('.hamburger-menu').width();
+            var signbutton = $('.mobile-sign-in-box').width();
+            var windowwidth = $(window).width();
+            var logowidth = windowwidth - signbutton - hamburger;
+            setTimeout(function () {
+                $('.slf-header-mobile-logo').width(logowidth);
+                }, 0)
+        }
+    } else {
         mobileLogoWidthSignIn();
         function mobileLogoWidthSignIn() {
             var hamburger = $('.hamburger-menu').width();
@@ -41,6 +53,9 @@ $(document).ready(function () {
                 $('.slf-header-mobile-logo').width(logowidth);
                 }, 0)
         }
+    }
+
+        // signIn mobile header
         if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
             let wcmMode=getCookie('wcmmode');
             if( wcmMode != "preview" && wcmMode != "edit") {
@@ -68,18 +83,6 @@ $(document).ready(function () {
                 $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
                 }, 0)
         }
-    } else {
-        mobileLogoWidth();
-        function mobileLogoWidth() {
-            var hamburger = $('.hamburger-menu').width();
-            var signbutton = $('.mobile-sign-in-box').width();
-            var windowwidth = $(window).width();
-            var logowidth = windowwidth - signbutton - hamburger;
-            setTimeout(function () {
-                $('.slf-header-mobile-logo').width(logowidth);
-                }, 0)
-        }
-    }
     $("#hamburgerMenu").click(function () {
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');
         $('.offcanvas-overlay').addClass('active');
@@ -124,16 +127,29 @@ $(document).ready(function () {
         $('.hamburger-menu-wrapper').scrollTop(sessionStorage.scrollPositionFirst);
     });
     $(window).resize(function () {
-        if ($('.slf-header-wrapper').children().hasClass('mobile-header-signIn') || $('.dot-com')) {
-            function mobileLogoWidthSignIn() {
-                var hamburger = $('.hamburger-menu').width();
-                var windowwidth = $(window).width();
-                var logowidth = windowwidth - hamburger;
-                setTimeout(function () {
-                    $('.slf-header-mobile-logo').width(logowidth);
-                    }, 0)
-            }
-            mobileLogoWidthSignIn();
+    //   if sign in button is present or not
+    if ($('.mobile-sign-in-box').length > 0) {
+        mobileLogoWidth();
+        function mobileLogoWidth() {
+            var hamburger = $('.hamburger-menu').width();
+            var signbutton = $('.mobile-sign-in-box').width();
+            var windowwidth = $(window).width();
+            var logowidth = windowwidth - signbutton - hamburger;
+            setTimeout(function () {
+                $('.slf-header-mobile-logo').width(logowidth);
+                }, 0)
+        }
+    } else {
+        mobileLogoWidthSignIn();
+        function mobileLogoWidthSignIn() {
+            var hamburger = $('.hamburger-menu').width();
+            var windowwidth = $(window).width();
+            var logowidth = windowwidth - hamburger;
+            setTimeout(function () {
+                $('.slf-header-mobile-logo').width(logowidth);
+                }, 0)
+        }
+    }
             
         if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
             let wcmMode=getCookie('wcmmode');
@@ -162,18 +178,6 @@ $(document).ready(function () {
                 $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
                 }, 0)
             }
-        } else {
-            function mobileLogoWidth() {
-                var hamburger = $('.hamburger-menu').width();
-                var signbutton = $('.mobile-sign-in-box').width();
-                var windowwidth = $(window).width();
-                var logowidth = windowwidth - signbutton - hamburger;
-                setTimeout(function () {
-                    $('.slf-header-mobile-logo').width(logowidth);
-                    }, 0)
-            }
-            mobileLogoWidth();
-        }
         if ($(window).width() > 1024) {
             $('.container').css({ 'margin': '0 auto' });
             $('body').removeClass('overflow-hidden');

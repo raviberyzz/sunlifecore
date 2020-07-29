@@ -194,6 +194,49 @@
         }
     }
 }
+
+.circle-150-desktop {
+    .left-image-position {
+	    .left-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .left-image-position {
+        .left-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
+.circle-150-desktop {
+    .right-image-position {
+	    .right-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .right-image-position {
+        .right-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
 .circular-image.round-border {
     .right-image-position {
         .right-item {
@@ -234,22 +277,6 @@
     }
 } 
 /* article pages circular images 220 styles end */
-.circle-150-desktop {
-	.left-item {
-		height: 158px;
-        width: 158px;
-        img{
-            width:150px;
-            height: 150px;
-        }
-	}
-}
-.circle-220-desktop {
-	.left-item {
-		height: 228px;
-		width: 228px;
-	}
-}
 .banner-section{
     h1, h2, h3, h4, h5, h6 {
         margin-top: 0;
@@ -458,6 +485,14 @@
 
         }
     }
+    .signIn-banner.white-box {
+        .text-section {
+            width: 100%;
+            margin: 0;
+            right: inherit;
+            bottom: 0;
+        }
+    }
 }
 // css for ipad 
 @media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
@@ -499,6 +534,13 @@
                 .desk-img {
                     background-position: initial !important;
                 }
+            }
+        }
+    }
+    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text {
+        .image-text-wrapper {
+            img {
+                max-width: inherit;
             }
         }
     }
@@ -747,11 +789,13 @@
 
 @media (min-width: $tab-screen-min) and (max-width: 1023px) {
     //ipad specific case in which teaser text is going beyond the page
-    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
-        .left-image-position, .right-image-position{
-            display: block;
-        }
-    }
+
+    // .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+    //     .left-image-position, .right-image-position{
+    //         display: block;
+    //     }
+    // }
+
     .col-sm-3 {
         //ipad specific - circular teaser height set to auto so it is always circular for 4 teaser case
         .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix{

@@ -262,6 +262,7 @@
         margin-bottom:0;
         p {
             margin: 0;
+            font-size: 0.875rem;
         }
 
         p:first-child {
@@ -272,7 +273,7 @@
             max-width: 317px;
             margin: 32px 0;
             text-align: center;
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             line-height: 18px;
             font-weight: 400;
             color: $dark-grey-color;
@@ -322,11 +323,10 @@
     .download-app {
         min-height: 66px;
         height: auto;
-        top:6px;
         margin: 0 0 16px 0;
         background-color: $light-cool-blue-color;
         width: calc(100% + 48px);
-        position: inherit;
+        position: relative;
         margin-left: -24px;
         padding: 0 24px;
 
@@ -403,6 +403,11 @@
 
         .col-sm-4 {
             order: 1;
+        }
+    }
+    .mySlfSignIn{
+        .h4#customerSignInHeader{
+            margin-bottom:16px;
         }
     }
 }
