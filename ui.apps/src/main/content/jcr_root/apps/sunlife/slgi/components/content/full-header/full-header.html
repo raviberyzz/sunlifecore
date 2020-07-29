@@ -78,7 +78,7 @@
       <div class="col-xs-12 desktop-header-content ${isSignInHeader == 'yes' ? 'header-signIn' : ''} ">
 
         <div class="col-xs-12 desktop-utility-nav">
-		  <a href="${isSignInHeader == 'yes' ? '.mySlfSignIn' : '#signinbutton'}" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>
+		  <a href="#signinbutton" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>
 		  <a href="#main-content" class="sr-only kbfocus">${listModel.skipToMainContentLabel}</a>
           <a href="#mainfooter" class="sr-only kbfocus">${listModel.skipToFooterLabel}</a>
 
@@ -87,7 +87,7 @@
 			<div class="col-md-6 col-lg-6">
 				<div data-sly-test="${listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo" >
 					<sly data-sly-list.links="${listModel.links}">
-						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''}">
+						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''} ${links.hideLogo == 'yes' ? 'hide-logo' : ''}">
 							<img alt="${links.altText}" src="${links.logoImage}">
 						</a>
 					</sly>
@@ -116,7 +116,7 @@
 				  <ul role="navigation" aria-label="Helpful links">
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
-						<a href="${utilityListParsing.navPath}" >${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
+						<a href="${utilityListParsing.navPath}" >${links.linkName}</a>
 					  </li>
 					</sly>
 				  </ul>
@@ -154,7 +154,7 @@
 				  <ul role="navigation" aria-label="Helpful links">
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
-						<a href="${utilityListParsing.navPath}" >${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
+						<a href="${utilityListParsing.navPath}" >${links.linkName}</a>
 					  </li>
 					</sly>
 				  </ul>
@@ -255,7 +255,7 @@
           </div>
           <div data-sly-test="${listFrom == 'yes'}" class="slf-header-mobile-logo" data-section="header-logo">
             <sly data-sly-list.links="${listModel.links}">
-              <a href="${links.linkUrl @ extension = 'html' }" class="${links.hideLogo == 'yes' ? 'hide-logo' : ''}">
+              <a href="${links.linkUrl @ extension = 'html' }">
                 <img class="vertical-middle-align" alt="sunlife logo" src="${links.mobileLogoImage == null ? links.logoImage : links.mobileLogoImage }">
               </a>
             </sly>
@@ -293,9 +293,9 @@
             </form>
           </div>
           <ul class="first-level-navigation">
-
-            <sly data-sly-resource="${ @resourceType='sunlife/core/components/content/navigation'}" />
-
+             <sly data-sly-list.mobileNav="${listModel.mobilenavlinks.listChildren}">
+                <sly data-sly-resource="${mobileNav.path @resourceType='sunlife/core/components/content/navigation'}" />
+             </sly>
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
               <a>${regionTitle @context='html'}</a>
               <div class="second-level-navigation" role="menu">
