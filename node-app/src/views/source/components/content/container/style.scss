@@ -1,0 +1,8 @@
+@import "../../../base/core";
+
+.company-highlight-blue-yellow-background {
+    background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%), url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat;
+    .cmp-text {
+        color: $white-shade;
+    }
+}
