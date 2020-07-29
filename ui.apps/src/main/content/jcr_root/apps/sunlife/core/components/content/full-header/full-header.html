@@ -87,7 +87,7 @@
 			<div class="col-md-6 col-lg-6">
 				<div data-sly-test="${listFrom == 'yes'}" class="desktop-sunlife-logo" data-section="header-logo" >
 					<sly data-sly-list.links="${listModel.links}">
-						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''} ${links.hideLogo == 'yes' ? 'hide-logo' : ''}">
+						<a href="${links.linkUrl @ extension = 'html' }" class="${links.separator == 'yes' ? 'logo-separator' : ''}">
 							<img alt="${links.altText}" src="${links.logoImage}">
 						</a>
 					</sly>
@@ -255,7 +255,7 @@
           </div>
           <div data-sly-test="${listFrom == 'yes'}" class="slf-header-mobile-logo" data-section="header-logo">
             <sly data-sly-list.links="${listModel.links}">
-              <a href="${links.linkUrl @ extension = 'html' }">
+              <a href="${links.linkUrl @ extension = 'html' }" class="${links.hideLogo == 'yes' ? 'hide-logo' : ''}">
                 <img class="vertical-middle-align" alt="sunlife logo" src="${links.mobileLogoImage == null ? links.logoImage : links.mobileLogoImage }">
               </a>
             </sly>
