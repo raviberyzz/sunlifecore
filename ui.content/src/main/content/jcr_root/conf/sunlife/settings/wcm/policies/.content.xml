@@ -772,6 +772,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item13>
+                                <item14
+                                    cq:styleGroupLabel="Sign In Banner Height"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="same-signin-height"
+                                            cq:styleId="1596099419364"
+                                            cq:styleLabel="Same as Sign In Component"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item14>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
