@@ -19,7 +19,11 @@ public enum ErrorCodes {
   APP_ERROR_001("Application error code"),
 
   /** The app error 200. */
-  APP_ERROR_200("Not able to purge AKAMAI request");
+  APP_ERROR_200("Not able to purge AKAMAI request"),
+  
+  APP_ERROR_201("Not able to get or create poilicy vrsion"),
+  
+  APP_ERROR_202("Unable to parse rules");
 
   /** The error msg. */
   private String errorMsg;
