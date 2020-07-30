@@ -30,12 +30,12 @@ $(document).ready(function () {
     }
 	//CTA Padding FIX.
     cta_height();
-    cta_heights();
+    // cta_heights();
 
 
     $(window).resize(function () {
        cta_height();
-       cta_heights();
+    //    cta_heights();
 
     });
 });
