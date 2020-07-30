@@ -1,4 +1,32 @@
 @import '../../../base/core';
+.desktop-region-language-menu-wrapper{
+    .slf-region{
+        .content-region{
+            ul {
+                li{
+                    a:hover{
+                        background-color: $light-taupe-50;
+                    }
+                }
+            }
+            .nav-select{
+                background-color: $light-taupe-50;
+            }
+        }
+    }
+    .content-language{
+        ul{
+            li{
+                &:hover{
+                    background-color: $light-taupe-50;
+                }
+            }
+            .nav-select{
+                background-color: $light-taupe-50;
+            }
+        }
+    }
+}
 .mobile-region-language-menu-wrapper{
     .slf-tab-region{
         .active{

@@ -772,6 +772,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item13>
+                                <item14
+                                    cq:styleGroupLabel="Sign In Banner Height"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="same-signin-height"
+                                            cq:styleId="1596099419364"
+                                            cq:styleLabel="Same as Sign In Component"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item14>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
@@ -5326,6 +5337,11 @@
                                             cq:styleId="1584999220349"
                                             cq:styleLabel="40% Light orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="light-taupe-50-bg"
+                                            cq:styleId="1584999220350"
+                                            cq:styleLabel="50% Light taupe"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item4>
                             </cq:styleGroups>
@@ -5991,6 +6007,11 @@
                                             cq:styleClasses="generic-form-wrapper"
                                             cq:styleId="1580210222333"
                                             cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/>
+										<item3
+                                            cq:styleClasses="lead-gen-wrapper"
+                                            cq:styleId="1580210222443"
+                                            cq:styleLabel="Unclaimed Demutualization Benefits"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
@@ -7240,6 +7261,11 @@
                                             cq:styleClasses="light-orange-20"
                                             cq:styleId="1594574906469"
                                             cq:styleLabel="Light Orange"
+                                            jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="company-highlight-blue-yellow-background"
+                                            cq:styleId="1594574906470"
+                                            cq:styleLabel="Blue Yellow"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
