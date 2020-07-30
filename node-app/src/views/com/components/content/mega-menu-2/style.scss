@@ -135,10 +135,12 @@
             .cmp-dynamic-megamenu-greybackground {
                 .teaser {
                     background-color: $light-grey-color;
-                            margin: 15px !important;
-                            padding: 30px 12px;
+                    margin: 24px 15px !important;
+                    padding: 30px 12px;
+                    .image-text-wrapper .left-image-position .left-item .side-image {
+                        width: 100%;
+                    }           
                 }
-    
             } 
         }
     } 
