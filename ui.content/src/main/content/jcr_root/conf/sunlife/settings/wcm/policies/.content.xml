@@ -5337,6 +5337,11 @@
                                             cq:styleId="1584999220349"
                                             cq:styleLabel="40% Light orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="light-taupe-50-bg"
+                                            cq:styleId="1584999220349"
+                                            cq:styleLabel="50% Light taupe"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item4>
                             </cq:styleGroups>
