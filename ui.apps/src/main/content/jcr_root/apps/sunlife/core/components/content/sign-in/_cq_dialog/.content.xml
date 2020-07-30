@@ -130,10 +130,6 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Consumer"
                                                         value="CONSUMER"/>
-                                                    <test
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="test"
-                                                        value="test"/>
                                                 </items>
                                             </domain>
                                             <language
