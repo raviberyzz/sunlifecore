@@ -31,6 +31,7 @@
         border-right: 2px solid $light-grey-color;
         .content-region {
             // padding:0 32px 0 0;
+            padding: 0 !important;
             ul {
                 margin-bottom: 0;
                 li {
@@ -120,7 +121,7 @@
         }
     }
     .content-language {
-        padding-left: 16px;
+        padding-left: 16px !important;
         ul {
             margin-bottom: 0;
             li {

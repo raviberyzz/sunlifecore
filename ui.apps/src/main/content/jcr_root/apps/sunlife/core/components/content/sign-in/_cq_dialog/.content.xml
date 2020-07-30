@@ -186,6 +186,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/mysunlifesecure/landing.aspx"
                                                         value="/mysunlifesecure/landing.aspx"/>
+                                                    <mbrportal
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="/mbrportal/req/secure/pphp/personalizedWelcome"
+                                                        value="/mbrportal/req/secure/pphp/personalizedWelcome"/>
                                                 </items>
                                             </target>
                                             <errorMsgPlaceholder
@@ -196,10 +200,32 @@
                                                 name="./errorMsgPlaceholder"/>
                                             <errorRedirectPath
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                fieldDescription="Add Error Redirect Path"
+                                                sling:resourceType="granite/ui/components/foundation/form/select"
                                                 fieldLabel="Error Redirect Path"
-                                                name="./errorRedirectPath"/>
+                                                name="./errorRedirectPath">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <sitSunnetCAHome
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
+                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
+                                                    <sitSunnet
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"
+                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
+                                                    <prodSunnetCAHome
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
+                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
+                                                    <prodSunnet
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"
+                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
+                                                    <sunnetHome
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="/signin/mysunlife/home.wca"
+                                                        value="/signin/mysunlife/home.wca"/>
+                                                </items>
+                                            </errorRedirectPath>
                                             <hiddenMetadata
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
