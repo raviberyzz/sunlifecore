@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 @ Component (service = Servlet.class, property = {
     Constants.SERVICE_DESCRIPTION + "=Akamai Edge Redirect Servlet",
     "sling.servlet.methods=" + HttpConstants.METHOD_POST,
-    "sling.servlet.resourceTypes=" + "sunlife-tools/components/akamai-edge-redirects",
+    "sling.servlet.resourceTypes=" + "sunlife/core/components/config/akamai-edge-redirects",
     "sling.servlet.extensions=service", "sling.servlet.selectors=config" })
 public class AkamaiEdgeRedirects extends SlingAllMethodsServlet {
 
