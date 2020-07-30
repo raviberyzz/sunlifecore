@@ -5,6 +5,11 @@
 .xf-content-height{
     margin:0;
 }
+.secondary-logo-wrapper {
+    a {
+        right: inherit !important;
+    }
+}
 .mobile-header-signIn .slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo {
     a {
         position: relative;
