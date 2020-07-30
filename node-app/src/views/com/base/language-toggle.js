@@ -39,6 +39,23 @@ $(document).ready(function () {
             }
         });
     }
+    else if (pageCategory == "investors" && pageSubcategory == "financial news") {
+        linkRow[0] = "/en/investors/financial-news/";
+        linkRow[1] = "/fr/investors/financial-news/";
+
+        $('.desktop-region-language-menu-wrapper .content-language li a').each(function () {
+            if (langIndex < linkRow.length) {
+                $(this).attr('href', linkRow[langIndex]);
+                langIndex = langIndex + 1;
+            }
+        });
+        $('.mobile-header .mobile-region-language-menu-wrapper .language-tab li a').each(function () {
+            if (langIndexMobile < linkRow.length) {
+                $(this).attr('href', linkRow[langIndexMobile]);
+                langIndexMobile = langIndexMobile + 1;
+            }
+        });
+    }
     else {
         if (linkRow.length > 0) {
             $('.desktop-region-language-menu-wrapper .content-language li a').each(function () {
