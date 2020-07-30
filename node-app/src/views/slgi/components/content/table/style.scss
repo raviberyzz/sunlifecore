@@ -42,3 +42,22 @@
         }
     }
 }
+
+// Comparison Table
+.cmp-table-comparision {
+    table {
+        tbody {
+            tr {
+                &:nth-child(odd){
+                    background-color: $white-smoke;    
+                }
+                &:first-child {
+                    th {
+                        background-color: $dark-blue;
+                        color: $white-shade;
+                    }
+                }
+            }
+        }
+    }
+}

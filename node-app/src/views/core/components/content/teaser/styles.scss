@@ -325,6 +325,31 @@
         max-height: 100%;
     }
 }
+.signIn-banner {
+    height: 100%;
+    margin-top: 0 !important;
+    .image-text-wrapper {
+        height: 100%;
+        .left-image-position {
+            height: 100%;
+            .left-item {
+                height: 100%;
+                .desk-img {
+                    height: 100% !important;
+                }
+            }
+        }
+        .right-image-position {
+            height: 100%;
+            .right-item {
+                height: 100%;
+                .desk-img {
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+}
 // IE Specific fix for white box 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .white-box {

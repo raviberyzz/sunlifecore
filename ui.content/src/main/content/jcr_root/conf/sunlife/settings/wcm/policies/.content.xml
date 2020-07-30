@@ -772,6 +772,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item13>
+                                <item14
+                                    cq:styleGroupLabel="Sign In Banner Height"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="same-signin-height"
+                                            cq:styleId="1596099419364"
+                                            cq:styleLabel="Same as Sign In Component"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item14>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
@@ -5326,6 +5337,11 @@
                                             cq:styleId="1584999220349"
                                             cq:styleLabel="40% Light orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item6
+                                            cq:styleClasses="light-taupe-50-bg"
+                                            cq:styleId="1584999220350"
+                                            cq:styleLabel="50% Light taupe"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item4>
                             </cq:styleGroups>
@@ -5574,6 +5590,17 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item5>
+								<item6
+								   cq:styleGroupLabel="Background Color"
+								   jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0
+											 cq:styleClasses="light-orange"
+											 cq:styleId="1583383838393"
+											 cq:styleLabel="Light Orange"
+											 jcr:primaryType="nt:unstructured"/>  
+										</cq:styles>
+                                </item6>
                             </cq:styleGroups>
                         </policy_iconText>
                     </icon-text>
@@ -5980,6 +6007,11 @@
                                             cq:styleClasses="generic-form-wrapper"
                                             cq:styleId="1580210222333"
                                             cq:styleLabel="Generic Form"
+                                            jcr:primaryType="nt:unstructured"/>
+										<item3
+                                            cq:styleClasses="lead-gen-wrapper"
+                                            cq:styleId="1580210222443"
+                                            cq:styleLabel="Unclaimed Demutualization Benefits"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
@@ -7230,6 +7262,11 @@
                                             cq:styleId="1594574906469"
                                             cq:styleLabel="Light Orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="company-highlight-blue-yellow-background"
+                                            cq:styleId="1594574906470"
+                                            cq:styleLabel="Blue Yellow"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -7543,7 +7580,59 @@
                             </cq:styleGroups>
                         </policy_accordion>
                     </accordion>
-                </content>
+					<layout-container  jcr:primaryType="nt:unstructured">
+						<policy_layoutContainer  jcr:primaryType="nt:unstructured" jcr:title="Layout Container" sling:resourceType="wcm/core/components/policy/policy">
+							<jcr:content jcr:primaryType="nt:unstructured" />
+							<cq:styleGroups  jcr:primaryType="nt:unstructured">
+								<item0 cq:styleGroupLabel="Variations" jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="subscribe-main-content-wrapper" cq:styleId="1590727153749" cq:styleLabel="Subscribe" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="editorial-articles-wrapper" cq:styleId="1590457847367" cq:styleLabel="Editorial Articles" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="tripple-call-deeper-wrapper" cq:styleId="1590457845667" cq:styleLabel="Triple Call" jcr:primaryType="nt:unstructured" />
+										<item3 cq:styleClasses="mobileapp" cq:styleId="1590457456987" cq:styleLabel="Sunlife Mobile app" jcr:primaryType="nt:unstructured" />
+										<item4 cq:styleClasses="cmp-contact-us" cq:styleId="1590458734567" cq:styleLabel="Contact us" jcr:primaryType="nt:unstructured" />
+										<item5 cq:styleClasses="cmp-related-resource" cq:styleId="1591032987442" cq:styleLabel="Related resource" jcr:primaryType="nt:unstructured" />
+										<item6 cq:styleClasses="content-block-icon" cq:styleId="1596032987442" cq:styleLabel="Grey Content Block Icon" jcr:primaryType="nt:unstructured" />
+										<item7 cq:styleClasses="tool-card-main-wrapper" cq:styleId="1596032987445" cq:styleLabel="Feature Tool Card" jcr:primaryType="nt:unstructured" />
+										<item8 cq:styleClasses="product-card" cq:styleId="1592902650532" cq:styleLabel="Product box" jcr:primaryType="nt:unstructured" />
+										<item9 cq:styleClasses="overview-content-wrapper" cq:styleId="1592976767676" cq:styleLabel="Overview highlights" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item0>
+								<item1 cq:styleGroupLabel="Padding" jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="no-padding" cq:styleId="1590457847375" cq:styleLabel="No Padding" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="no-padding-left-right" cq:styleId="1590492929292" cq:styleLabel="No Padding Left/Right" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item1>
+								<item2 cq:styleGroupLabel="Top Spacing" jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="mt-18" cq:styleId="1599367426265" cq:styleLabel="Spacing 18" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="mt-20" cq:styleId="1599199824654" cq:styleLabel="Spacing 20" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="mt-40" cq:styleId="1599089938796" cq:styleLabel="Spacing 40" jcr:primaryType="nt:unstructured" />
+										<item3 cq:styleClasses="mt-80" cq:styleId="1594307765307" cq:styleLabel="Spacing 80" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item2>
+								<item3 cq:styleGroupLabel="Bottom Spacing" jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="mb-18" cq:styleId="1599477426265" cq:styleLabel="Spacing 18" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="mb-20" cq:styleId="1599089494654" cq:styleLabel="Spacing 20" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="mb-40" cq:styleId="1599369828796" cq:styleLabel="Spacing 40" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item3>
+								<item4 cq:styleGroupLabel="Container Background Color" jcr:primaryType="nt:unstructured">
+									<cq:styles jcr:primaryType="nt:unstructured">
+										<item0 cq:styleClasses="medium-yellow" cq:styleId="1594998530621" cq:styleLabel="Medium Yellow" jcr:primaryType="nt:unstructured" />
+										<item1 cq:styleClasses="light-grey" cq:styleId="1594999204108" cq:styleLabel="Light grey" jcr:primaryType="nt:unstructured" />
+										<item2 cq:styleClasses="light-grey-20" cq:styleId="1594999208976" cq:styleLabel="20% Light grey" jcr:primaryType="nt:unstructured" />
+										<item3 cq:styleClasses="light-cool-blue" cq:styleId="1594999212196" cq:styleLabel="20% Light cool blue" jcr:primaryType="nt:unstructured" />
+										<item4 cq:styleClasses="light-orange-20" cq:styleId="1594999216684" cq:styleLabel="20% Light orange" jcr:primaryType="nt:unstructured" />
+										<item5 cq:styleClasses="light-orange-40" cq:styleId="1594999220349" cq:styleLabel="40% Light orange" jcr:primaryType="nt:unstructured" />
+									</cq:styles>
+								</item4>
+							</cq:styleGroups>
+						</policy_layoutContainer>
+					</layout-container>
+				</content>
                 <form jcr:primaryType="nt:unstructured">
                     <text jcr:primaryType="nt:unstructured">
                         <policy_formText

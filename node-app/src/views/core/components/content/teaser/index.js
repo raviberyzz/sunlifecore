@@ -10,29 +10,29 @@ $(document).ready(function () {
 		} else {
 			$(".banner-section .right-image-position .hide-in-editorial").insertBefore(".banner-section .right-image-position .right-item");
 		}
+		if ($(window).width() > 767 && $('.same-signin-height').length > 0) {
+			if($('.sign-in').length > 0) {
+				var signInHeight = $('.sign-in').height();
+				$('.same-signin-height').css({
+					"height": signInHeight
+				});
+			}
+		} else {
+            $('.same-signin-height').css({
+					"height": "inherit"
+				});
+        }
 	});
-	if ($('.banner-section').parents('.cmp-container').parents().parents().hasClass('col-sm-8')) {
-		var containerHeight = $('.banner-section').parents('.cmp-container').parents().parents().next().children().children().children()[0].clientHeight;
-        var backGroundSize = "auto"+" "+ containerHeight+"px";
-		$('.col-sm-8 .banner-section .image-text-wrapper .desk-img ').css({
-			"background-size": backGroundSize,
-			"height": containerHeight
-		});	
-		if ($(window).width() < 1025 && $('.banner-section.home-page-hero-banner')) {
-		$('.banner-section.home-page-hero-banner').css({ 'margin-top': 0 });
-		}	
-	}
-	$(window).resize(function () {
-		if ($('.banner-section').parents('.cmp-container').parents().parents().hasClass('col-sm-8')) {
-			var containerHeight = $('.banner-section').parents('.cmp-container').parents().parents().next().children().children().children()[0].clientHeight;
-			var backGroundSize = "auto"+" "+ containerHeight+"px";
-			$('.col-sm-8 .banner-section .image-text-wrapper .desk-img ').css({
-				"background-size": backGroundSize,
-				"height": containerHeight
-			});	
-			if ($(window).width() < 1025 && $('.banner-section.home-page-hero-banner')) {
-			$('.banner-section.home-page-hero-banner').css({ 'margin-top': 0 });
-			}	
+	if ($(window).width() > 767 && $('.same-signin-height').length > 0) {
+		if($('.sign-in').length > 0) {
+			var signInHeight = $('.sign-in').height();
+			$('.same-signin-height').css({
+                "height": signInHeight
+            });
 		}
-	});
+	} else {
+		$('.same-signin-height').css({
+				"height": "inherit"
+			});
+	}
 });
