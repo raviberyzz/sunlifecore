@@ -7257,6 +7257,11 @@
                                             cq:styleId="1594574906469"
                                             cq:styleLabel="Light Orange"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="company-highlight-blue-yellow-background"
+                                            cq:styleId="1594574906470"
+                                            cq:styleLabel="Blue Yellow"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
                                 <item3
