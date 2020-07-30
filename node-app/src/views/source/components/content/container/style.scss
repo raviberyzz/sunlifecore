@@ -1,7 +1,9 @@
 @import "../../../base/core";
+@import "../../../../core/components/content/container/style";
 
 .company-highlight-blue-yellow-background {
-    background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%), url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat;
+    @extend .company-highlight-yellow-grey-background;
+    background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     .cmp-text {
         color: $white-shade;
     }
