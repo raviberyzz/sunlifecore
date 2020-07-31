@@ -65,7 +65,7 @@ $(document).ready(function () {
     }
 
         // signIn mobile header
-        $(document).ready(function () {
+                $(document).ready(function () {
         if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length > 0) {
             let wcmMode=getCookie('wcmmode');
             if( wcmMode != "preview" && wcmMode != "edit") {
@@ -83,22 +83,23 @@ $(document).ready(function () {
                     $('.secondary-logo-wrapper').remove();
                 }
             }
-        } else if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length === 0) {
-            let wcmMode=getCookie('wcmmode');
-            if( wcmMode != "preview" && wcmMode != "edit") {
-            setTimeout(function () {
-                $('.full-header').parents('.experiencefragment').next().css('margin-top', 50);
-                }, 0)
-            } else {
-                setTimeout(function () {
-                    $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
-                }, 0)
-            }
-        } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper').length === 0) {
-            setTimeout(function () {
-                $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
-                }, 0)
-        }
+        } 
+        // else if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length === 0) {
+        //     let wcmMode=getCookie('wcmmode');
+        //     if( wcmMode != "preview" && wcmMode != "edit") {
+        //     setTimeout(function () {
+        //         $('.full-header').parents('.experiencefragment').next().css('margin-top', 50);
+        //         }, 0)
+        //     } else {
+        //         setTimeout(function () {
+        //             $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+        //         }, 0)
+        //     }
+        // } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper').length === 0) {
+        //     setTimeout(function () {
+        //         $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+        //         }, 0)
+        // }
     });
     $("#hamburgerMenu").click(function () {
         $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');
@@ -194,22 +195,23 @@ $(document).ready(function () {
                     $('.secondary-logo-wrapper').remove();
                 }
             }
-        } else if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length === 0) {
-            let wcmMode=getCookie('wcmmode');
-            if( wcmMode != "preview" && wcmMode != "edit") {
-            setTimeout(function () {
-                $('.full-header').parents('.experiencefragment').next().css('margin-top', 50);
-                }, 0)
-            } else {
-                setTimeout(function () {
-                    $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
-                }, 0)
-            }
-        } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper').length === 0) {
-            setTimeout(function () {
-                $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
-                }, 0)
-            }
+        } 
+        // else if ($(window).width() < 1025 && $('.secondary-logo-wrapper').length === 0) {
+        //     let wcmMode=getCookie('wcmmode');
+        //     if( wcmMode != "preview" && wcmMode != "edit") {
+        //     setTimeout(function () {
+        //         $('.full-header').parents('.experiencefragment').next().css('margin-top', 50);
+        //         }, 0)
+        //     } else {
+        //         setTimeout(function () {
+        //             $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+        //         }, 0)
+        //     }
+        // } else if ($(window).width() > 1024 && $('.secondary-logo-wrapper').length === 0) {
+        //     setTimeout(function () {
+        //         $('.full-header').parents('.experiencefragment').next().css('margin-top', 0);
+        //         }, 0)
+        //     }
         });
         if ($(window).width() > 1024) {
             $('.container').css({ 'margin': '0 auto' });
