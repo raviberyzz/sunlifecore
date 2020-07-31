@@ -11,6 +11,7 @@ import java.util.concurrent.locks.LockSupport;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -99,14 +100,17 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
     // Create a ClientBuilder Object by setting the connection manager
     HttpClientBuilder clientbuilder = HttpClients.custom().setConnectionManager(connManager);
 
-    // Build the CloseableHttpClient object using the build() method.
-
+    final RequestConfig reqConfig = RequestConfig.custom()
+        .setConnectTimeout(config.getConnectionTimeout())
+        .setConnectionRequestTimeout(config.getConnectionTimeout())
+        .setSocketTimeout(config.getSocketTimeout()).build();
     final ClientCredential clientCredential = ClientCredential.builder()
         .accessToken(config.getAccessKey()).clientToken(config.getClientToken())
         .clientSecret(config.getClientSecret()).host(config.getHost()).build();
     client = clientbuilder
         .addInterceptorFirst(new ApacheHttpClientEdgeGridInterceptor(clientCredential))
         .setConnectionManager(connManager)
+        .setDefaultRequestConfig(reqConfig)
         .setRoutePlanner(new ApacheHttpClientEdgeGridRoutePlanner(clientCredential)).build();
     LOGGER.info("Got akamai host {}", config.getHost());
     LOGGER.debug("Exit :: activate method of AkamaiCacheClearImpl");
@@ -232,8 +236,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
         }
       }
     } catch (JSONException | IOException e) {
-      LOGGER.error("Got Exception in createOrUpdateRule ", e);
-      throw new ApplicationException(ErrorCodes.APP_ERROR_202);
+      throw new ApplicationException(ErrorCodes.APP_ERROR_202, e);
     }
     return returnJson;
   }
@@ -280,7 +283,6 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       }
       createRuleResponse.close();
     } catch (JSONException | IOException e) {
-      LOGGER.error("Got Exception in createRule ", e);
       LOGGER.error("Unable to create rule ", e);
       return FAIL;
     }
@@ -332,7 +334,6 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       }
       updateRuleResponse.close();
     } catch (JSONException | IOException e) {
-      LOGGER.error("Got Exception in updateRule ", e);
       LOGGER.error("Unable to update rule ", e);
       return FAIL;
     }
@@ -380,8 +381,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       }
       return version;
     } catch (IOException | JSONException e) {
-      LOGGER.error("Got Exception in getOrCreateVersion ", e);
-      throw new ApplicationException(ErrorCodes.APP_ERROR_201);
+      throw new ApplicationException(ErrorCodes.APP_ERROR_201, e);
     }
   }
 
@@ -421,8 +421,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       createVersionResponse.close();
       return String.valueOf(jsonObj.getInt("version"));
     } catch (IOException | JSONException e) {
-      LOGGER.error("Got Exception in createPolicyVersion ", e);
-      throw new ApplicationException(ErrorCodes.APP_ERROR_201);
+      throw new ApplicationException(ErrorCodes.APP_ERROR_201, e);
     }
   }
 
