@@ -6,3 +6,9 @@
   color: $medium-yellow-background;
   background-size: contain;
 }
+
+@media (max-width:$mobile-screen-max){
+  .title-wrapper-blue-yellow-rings {
+    background-image: none;
+  }
+}
