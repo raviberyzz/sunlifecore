@@ -6679,6 +6679,7 @@
                     </teaser>
                     <tabs jcr:primaryType="nt:unstructured">
                         <policy_tabs
+							cq:styleDefaultClasses="tabs-wrapper"
                             jcr:description="Source tabs"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Tabs"
