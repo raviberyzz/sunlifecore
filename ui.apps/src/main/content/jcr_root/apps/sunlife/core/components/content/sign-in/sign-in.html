@@ -1,5 +1,5 @@
 <sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
-    <sly data-sly-test.title="${listModel.title}" />
+    <sly data-sly-test.signInHeadingText="${listModel.signInHeadingText}" />
     <sly data-sly-test.mobileAppBadge="${listModel.mobileAppBadge}" />
     <sly data-sly-test.mobileAppBadgeLink="${listModel.mobileAppBadgeLink}" />
     <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
@@ -20,10 +20,12 @@
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
 
     <div class="login-container mySlfSignIn">
-        <div class="h4 text-center">${title  @context ='html'}</div>
+        <div class="h4 text-center">${signInHeadingText  @context ='html'}</div>
         <div class="download-app visible-xs">
             <a class="download-app-wrapper" href="${mobileAppBadgeLink}">
-				<div class="mobile-app-text">${mobileAppBadge @context ='html'}</div>
+                <div class="mobile-app-text">
+                	${mobileAppBadge @context ='html'}
+                </div>
             </a>
         </div>
         <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in">
@@ -50,8 +52,12 @@
             <input name="REQUESTTYPE" type="hidden" value="SUBMIT" />
             <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
             <input name="REDIRECTPATH" type="hidden" value="" />
-            <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? 'https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome': errorRedirectPath}" />
-            <input name="TARGET" type="hidden" value="${target}" />
+			<sly data-sly-test="${errorRedirectPath}">
+            	<input name="ERRORREDIRPATH" type="hidden" value="${errorRedirectPath}" />
+            </sly>
+            <sly data-sly-test="${target}">
+				<input name="TARGET" type="hidden" value="${target}" />
+            </sly>
             <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
                 <input type="hidden" name="${attributes.name}" value="${attributes.value}" />
             </sly>

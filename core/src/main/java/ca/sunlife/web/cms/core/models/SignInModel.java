@@ -22,12 +22,12 @@ import org.apache.sling.models.annotations.Model;
 public interface SignInModel {
 	
   /**
-   * Gets the title.
+   * Gets the sign in heading text.
    *
-   * @return the title
+   * @return the sign in heading text
    */
   @ Inject
-  String getTitle();
+  String getSignInHeadingText();
   
    /**
    * Gets the mobile app badge.
