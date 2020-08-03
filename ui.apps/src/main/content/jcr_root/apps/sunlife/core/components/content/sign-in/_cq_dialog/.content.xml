@@ -31,10 +31,20 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <title
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                 fieldDescription="Add title"
                                                 fieldLabel="Title"
-                                                name="./title"/>
+                                                name="./title"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <mobileAppBadgeText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add Mobile App Badge Text"
+                                                fieldLabel="Mobile App Badge Text"
+                                                name="./mobileAppBadgeText"
+                                                useFixedInlineToolbar="{Boolean}true"/>
                                             <accessIDPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
@@ -91,13 +101,13 @@
                                                 name="./forgotPasswordLink"
                                                 rootPath="/content/"
                                                 suffix=".html"/>
-                                            <signInContent
+                                            <signInBottomText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add Sign In Content"
-                                                fieldLabel="Sign In Content"
-                                                name="./signInContent"
+                                                fieldDescription="Add Sign in bottom text"
+                                                fieldLabel="Sign in bottom text"
+                                                name="./signInBottomText"
                                                 useFixedInlineToolbar="{Boolean}true"/>
                                         </items>
                                     </column>
@@ -170,14 +180,6 @@
                                                 fieldLabel="Target"
                                                 name="./target">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <sit
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"
-                                                        value="https://sit-www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"/>
-                                                    <production
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"
-                                                        value="https://www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"/>
                                                     <landing
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/mysunlifesecure/landing.aspx"
@@ -200,22 +202,6 @@
                                                 fieldLabel="Error Redirect Path"
                                                 name="./errorRedirectPath">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <sitSunnetCAHome
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
-                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
-                                                    <sitSunnet
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"
-                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
-                                                    <prodSunnetCAHome
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
-                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
-                                                    <prodSunnet
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"
-                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
                                                     <sunnetHome
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/signin/mysunlife/home.wca"
