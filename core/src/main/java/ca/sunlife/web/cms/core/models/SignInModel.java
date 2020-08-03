@@ -30,12 +30,20 @@ public interface SignInModel {
   String getTitle();
   
    /**
-   * Gets the mobile app badge text.
+   * Gets the mobile app badge.
    *
-   * @return the mobile app badge text
+   * @return the mobile app badge
    */
   @ Inject
-  String getMobileAppBadgeText();
+  String getMobileAppBadge();
+
+  /**
+   * Gets the mobile app badge link.
+   *
+   * @return the mobile app badge link
+   */
+  @ Inject
+  String getMobileAppBadgeLink();
 
   /**
    * Gets the access id placeholder.
