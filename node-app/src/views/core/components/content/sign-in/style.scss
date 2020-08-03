@@ -13,6 +13,15 @@
         line-height: 24px;
         color: $dark-grey-color;
     }
+    .h4{
+        p{
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 24px;
+            color: $dark-grey-color;
+            margin:0;
+        }
+    }
 
     .form-sign-in {
         left: 50%;
@@ -428,6 +437,11 @@
             background-color: $white-shade;
             margin: 0 0 16px 0;
             margin-left: -24px;
+        }
+        .download-app.no-text{
+            min-height:0;
+            display: none;
+            margin-bottom:0;
         }
 
         .right-item.signin-links-two {
