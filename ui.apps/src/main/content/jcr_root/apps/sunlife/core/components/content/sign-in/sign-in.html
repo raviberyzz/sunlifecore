@@ -1,6 +1,7 @@
 <sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
     <sly data-sly-test.title="${listModel.title}" />
-    <sly data-sly-test.mobileAppBadgeText="${listModel.mobileAppBadgeText}" />
+    <sly data-sly-test.mobileAppBadge="${listModel.mobileAppBadge}" />
+    <sly data-sly-test.mobileAppBadgeLink="${listModel.mobileAppBadgeLink}" />
     <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
     <sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
     <sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
@@ -21,13 +22,9 @@
     <div class="login-container mySlfSignIn">
         <div class="h4 text-center">${title  @context ='html'}</div>
         <div class="download-app visible-xs">
-            <div class="download-app-wrapper"><a
-                    href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
-                    target="_blank"><img
-                        src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
-                        alt="Sun Life App"></a>
-			<div class="mobile-app-text">${mobileAppBadgeText @context ='html'}</div>
-            </div>
+            <a class="download-app-wrapper" href="${mobileAppBadgeLink}">
+				<div class="mobile-app-text">${mobileAppBadge @context ='html'}</div>
+            </a>
         </div>
         <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in">
             <input name="SMENC" type="hidden" value="ISO-8859-1" />

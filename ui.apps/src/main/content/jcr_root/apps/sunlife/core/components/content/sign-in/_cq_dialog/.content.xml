@@ -37,14 +37,21 @@
                                                 fieldLabel="Title"
                                                 name="./title"
                                                 useFixedInlineToolbar="{Boolean}true"/>
-                                            <mobileAppBadgeText
+                                            <mobileAppBadge
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add Mobile App Badge Text"
-                                                fieldLabel="Mobile App Badge Text"
-                                                name="./mobileAppBadgeText"
+                                                fieldDescription="Add Mobile App Badge"
+                                                fieldLabel="Mobile App Badge"
+                                                name="./mobileAppBadge"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                            <mobileAppBadgeLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Mobile App Badge Link"
+                                                name="./mobileAppBadgeLink"
+                                                rootPath="/content/"
+                                                suffix=".html"/>
                                             <accessIDPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
@@ -182,6 +189,7 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <landing
                                                         jcr:primaryType="nt:unstructured"
+                                                        selected="{Boolean}false"
                                                         text="/mysunlifesecure/landing.aspx"
                                                         value="/mysunlifesecure/landing.aspx"/>
                                                     <mbrportal
