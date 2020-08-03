@@ -1,5 +1,7 @@
 <sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
     <sly data-sly-test.title="${listModel.title}" />
+    <sly data-sly-test.mobileAppBadge="${listModel.mobileAppBadge}" />
+    <sly data-sly-test.mobileAppBadgeLink="${listModel.mobileAppBadgeLink}" />
     <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
     <sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
     <sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
@@ -9,7 +11,7 @@
     <sly data-sly-test.forgotAccessIdLink="${listModel.forgotAccessIdLink}" />
     <sly data-sly-test.forgotPasswordLabel="${listModel.forgotPasswordLabel}" />
     <sly data-sly-test.forgotPasswordLink="${listModel.forgotPasswordLink}" />
-    <sly data-sly-test.signInContent="${listModel.signInContent}" />
+    <sly data-sly-test.signInBottomText="${listModel.signInBottomText}" />
     <sly data-sly-test.domain="${listModel.domain}" />
     <sly data-sly-test.language="${listModel.language}" />
     <sly data-sly-test.logLang="${listModel.logLang}" />
@@ -18,18 +20,11 @@
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
 
     <div class="login-container mySlfSignIn">
-        <div class="h4 text-center" id="customerSignInHeader">${title}</div>
+        <div class="h4 text-center">${title  @context ='html'}</div>
         <div class="download-app visible-xs">
-            <div class="download-app-wrapper"><a
-                    href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
-                    target="_blank"><img
-                        src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
-                        alt="Sun Life App"></a>
-                <p><a href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
-                        target="_blank">For the best mobile experience, <strong>download the my
-                            Sun Life
-                            app.</strong></a></p>
-            </div>
+            <a class="download-app-wrapper" href="${mobileAppBadgeLink}">
+				<div class="mobile-app-text">${mobileAppBadge @context ='html'}</div>
+            </a>
         </div>
         <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in">
             <input name="SMENC" type="hidden" value="ISO-8859-1" />
@@ -90,6 +85,6 @@
                 </a></span> <span class="signin-register"><a href="${forgotPasswordLink}"
                     target="_blank">${forgotPasswordLabel}</a></span></p>
         <div class="right-item text-section signin-links-two">
-            ${signInContent @context ='html'}
+            ${signInBottomText @context ='html'}
         </div>
     </div>
