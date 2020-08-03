@@ -29,6 +29,22 @@ public interface SignInModel {
   @ Inject
   String getTitle();
   
+   /**
+   * Gets the mobile app badge.
+   *
+   * @return the mobile app badge
+   */
+  @ Inject
+  String getMobileAppBadge();
+
+  /**
+   * Gets the mobile app badge link.
+   *
+   * @return the mobile app badge link
+   */
+  @ Inject
+  String getMobileAppBadgeLink();
+
   /**
    * Gets the access id placeholder.
    *
@@ -102,12 +118,12 @@ public interface SignInModel {
   String getForgotPasswordLink();
   
   /**
-   * Gets the sign in content.
+   * Gets the sign in bottom text.
    *
-   * @return the sign in content
+   * @return the sign in bottom text
    */
   @ Inject
-  String getSignInContent();
+  String getSignInBottomText();
   
   /**
    * Gets the domain.
