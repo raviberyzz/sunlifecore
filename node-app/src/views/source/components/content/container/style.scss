@@ -3,15 +3,19 @@
 
 .company-highlight-blue-yellow-background {
     @extend .company-highlight-yellow-grey-background;
-    background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+    background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     .cmp-text {
         color: $white-shade;
     }
+    .border-right {
+        border-right: 2px solid $light-grey-color;
+    }
 }
 
-/** For display graphic yellow ring image in background for desktop**/
-@media (min-width: $desktop-screen-min) {
+/** background yellow Rings to be dropped in mobile view **/
+@media (max-width:$mobile-screen-max) {
     .company-highlight-blue-yellow-background {
-        background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+        background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     } 
 }
+
