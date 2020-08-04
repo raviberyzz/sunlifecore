@@ -5,7 +5,7 @@
   <sly data-sly-test.listFromMeganav="${listModel.listFromMeganav}" />
   <sly data-sly-test.listFromSignin="${listModel.listFromSignin}" />
   <sly data-sly-test.listFrom="${listModel.listFrom}" />
-  
+
   <sly data-sly-test.isSignInHeader="${listModel.isSignInHeader}" />
   <sly data-sly-test.separator="${listModel.links.separator}" />
   <sly data-sly-test.hideLogo="${listModel.links.hideLogo}" />
@@ -78,7 +78,7 @@
       <div class="col-xs-12 desktop-header-content ${isSignInHeader == 'yes' ? 'header-signIn' : ''} ">
 
         <div class="col-xs-12 desktop-utility-nav">
-		  <a href="${isSignInHeader == 'yes' ? '.mySlfSignIn' : '#signinbutton'}" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>
+		  <a href="${pageProperties.cq:template == '/conf/sunlife/settings/wcm/templates/signin-content-page' ? '.mySlfSignIn' : '#signinbutton'}" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>
 		  <a href="#main-content" class="sr-only kbfocus">${listModel.skipToMainContentLabel}</a>
           <a href="#mainfooter" class="sr-only kbfocus">${listModel.skipToFooterLabel}</a>
 
