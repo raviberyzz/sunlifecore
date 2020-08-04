@@ -20,13 +20,13 @@
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
 
     <div class="login-container mySlfSignIn">
-        <div class="h4 text-center">${signInHeadingText  @context ='html'}</div>
+        <div class="h4 text-center">${signInHeadingText @context ='html'}</div>
         <div class="download-app visible-xs">
-            <a class="download-app-wrapper" href="${mobileAppBadgeLink}">
+            <div class="download-app-wrapper" onclick="window.open('${mobileAppBadgeLink @context='uri'}')">
                 <div class="mobile-app-text">
                 	${mobileAppBadge @context ='html'}
                 </div>
-            </a>
+            </div>
         </div>
         <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in">
             <input name="SMENC" type="hidden" value="ISO-8859-1" />
