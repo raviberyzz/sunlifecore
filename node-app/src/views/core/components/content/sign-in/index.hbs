@@ -3,9 +3,9 @@
         <div class="col-sm-8">some banner content goes down in mobile view</div>
         <div class="col-sm-4">
                 <div class="login-container mySlfSignIn {{cool-blue-background}}">
-                        <div class="h4 text-center" id="customerSignInHeader">CLIENT SIGN IN</div>
+                        <div class="h4 text-center">CLIENT SIGN IN</div>
                         <div class="download-app visible-xs">
-                                <div class="download-app-wrapper"><a
+                                {{!-- <div class="download-app-wrapper"><a
                                                 href="https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
                                                 target="_blank"><img
                                                         src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
@@ -15,10 +15,20 @@
                                                                 the my
                                                                 Sun Life
                                                                 app.</strong></a></p>
-                                </div>
+                                </div> --}}
+                                <a class="download-app-wrapper"
+                                        href="https://sit-www.sunnet.sunlife.com/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA"
+                                        target="_blank">
+                                        <div class="mobile-app-text">
+                                                <p><img src="https://www.sunlife.ca/static/canada/signin/mysunlife/images/sunlife-app-logo.png"
+                                                                alt=""></p>
+                                                <p>For the best mobile experience,</p>
+                                                <p><strong>Download the my Sun Life App</strong></p>
+                                        </div>
+                                </a>
                         </div>
                         <form id="form_signon" name="form_signon" method="POST" action="{{sign-in-action}}"
-                                class="form-sign-in" >
+                                class="form-sign-in">
                                 <input name="SMENC" value="ISO-8859-1" type="hidden" />
                                 <input name="SMLOCALE" value="US-EN" type="hidden" />
                                 <input name="SMAGENTNAME" value="" type="hidden" />

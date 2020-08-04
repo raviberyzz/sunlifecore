@@ -29,13 +29,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <title
+                                            <signInHeadingText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add title"
-                                                fieldLabel="Title"
-                                                name="./title"
+                                                fieldDescription="Add sign in heading text"
+                                                fieldLabel="Sign in heading text"
+                                                name="./signInHeadingText"
                                                 useFixedInlineToolbar="{Boolean}true"/>
                                             <mobileAppBadge
                                                 jcr:primaryType="nt:unstructured"
@@ -187,9 +187,12 @@
                                                 fieldLabel="Target"
                                                 name="./target">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value=""/>
                                                     <landing
                                                         jcr:primaryType="nt:unstructured"
-                                                        selected="{Boolean}false"
                                                         text="/mysunlifesecure/landing.aspx"
                                                         value="/mysunlifesecure/landing.aspx"/>
                                                     <mbrportal
@@ -210,6 +213,10 @@
                                                 fieldLabel="Error Redirect Path"
                                                 name="./errorRedirectPath">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value=""/>
                                                     <sunnetHome
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/signin/mysunlife/home.wca"
