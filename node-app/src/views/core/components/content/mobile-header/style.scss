@@ -5,6 +5,11 @@
 .xf-content-height{
     margin:0;
 }
+.secondary-logo-wrapper {
+    a {
+        right: inherit !important;
+    }
+}
 .mobile-header-signIn .slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo {
     a {
         position: relative;
@@ -17,7 +22,7 @@
 .dot-com .slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo {
     a {
         position: relative;
-        right: 36px;
+        right: 36px !important;
     }
 }
 .slf-mobile-header-wrapper{

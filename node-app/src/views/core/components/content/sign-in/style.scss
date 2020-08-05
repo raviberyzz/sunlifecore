@@ -1,4 +1,5 @@
 @import '../../../base/core';
+
 //  sign-in-framework starts here
 .mySlfSignIn {
     // width:100%;
@@ -11,6 +12,15 @@
         font-weight: 700;
         line-height: 24px;
         color: $dark-grey-color;
+    }
+    .h4{
+        p{
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 24px;
+            color: $dark-grey-color;
+            margin:0;
+        }
     }
 
     .form-sign-in {
@@ -259,9 +269,11 @@
     /*  for aem styles */
     .right-item.signin-links-two {
         padding: 0;
-        margin-bottom:0;
+        margin-bottom: 0;
+
         p {
             margin: 0;
+            font-size: 0.875rem;
         }
 
         p:first-child {
@@ -272,7 +284,7 @@
             max-width: 317px;
             margin: 32px 0;
             text-align: center;
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             line-height: 18px;
             font-weight: 400;
             color: $dark-grey-color;
@@ -320,7 +332,7 @@
     }
 
     .download-app {
-        min-height: 66px;
+        min-height:66px;
         height: auto;
         margin: 0 0 16px 0;
         background-color: $light-cool-blue-color;
@@ -330,33 +342,26 @@
         padding: 0 24px;
 
         .download-app-wrapper {
-            min-height: 66px;
             height: auto;
             width: 100%;
             max-width: 317px;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-
-            a {
-                img {
-                    width: 50px;
-                    height: 50px;
-                    float: left;
-                    margin-top: 8px;
-                }
-            }
-
-            p {
-                margin-left: 60px;
-                padding-top: 2px;
-
-                a {
+            display: flex;
+            position: relative;
+            .mobile-app-text{
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                position: relative;
+                p{
+                    width:100%;
+                    margin-bottom:0;
                     font-weight: 400;
                     line-height: 20px;
                     font-size: 1rem;
                     color: $dark-grey-color;
-
                     &:active,
                     &:hover {
                         text-decoration: none;
@@ -365,25 +370,82 @@
                     strong {
                         font-size: 1rem;
                         font-weight: 700;
+                        line-height: 20px;
                         color: $medium-blue-color;
                     }
+                }
+                p:first-child{
+                    margin-top:10px;
+                }
+            }
+            .mobile-app-text.app-logo {
+                display: inline-block;
+
+                p:first-child {
+                    float: left;
+                    margin: 0;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        margin-top: 8px;
+                    }
+                }
+
+                p {
+                    width:auto;
+                    float: none;
+                    margin:0 0 0 60px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    font-size: 1rem;
+                    color: $dark-grey-color;
+                    position:relative;
+                    word-break: break-word;
+                    overflow: hidden;
+                    &:active,
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    strong {
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 20px;
+                        color: $medium-blue-color;
+                    }
+                }
+                p:nth-child(2){
+                    margin-top:12px;
                 }
             }
         }
     }
+    .download-app.no-text{
+        min-height:0;
+        display: none;
+        margin-bottom:0;
+    }
 }
-.sign-in.cool-blue{
+
+.sign-in.cool-blue {
     .mySlfSignIn {
         @extend .mySlfSignIn;
         background-color: $light-cool-blue-color;
+
         .download-app {
             background-color: $white-shade;
-            top:6px;
             margin: 0 0 16px 0;
             margin-left: -24px;
         }
-        .right-item.signin-links-two{
+        .download-app.no-text{
+            min-height:0;
+            display: none;
             margin-bottom:0;
+        }
+
+        .right-item.signin-links-two {
+            margin-bottom: 0;
         }
     }
 }
@@ -404,13 +466,15 @@
             order: 1;
         }
     }
-    .mySlfSignIn{
-        .h4#customerSignInHeader{
-            margin-bottom:16px;
+
+    .mySlfSignIn {
+        .h4 {
+            margin-bottom: 16px;
         }
     }
 }
+
 // iframe
-iframe{
-    border:0;
+iframe {
+    border: 0;
 }
