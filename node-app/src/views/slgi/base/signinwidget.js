@@ -9,174 +9,173 @@ var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
 // By default assign Advisor URL
 providerURL = (lang == 'fr')
-	? "https://www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
-	: "https://www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
+	? "https://sit-www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
+	: "https://sit-www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
 
-	function handleUserSelection(selectedVal){
-		var url, targetPath, errorPath, forgotPassword, forgotAccess, saveidentity, esaveid, clientip;
-			//Forget Access 
-			if (selectedVal == 'ADVISOR') {
-				saveidentity = "SLGIADV"; 
-				esaveid = "";
-				clientip="";
-				url = (lang == "fr")
-					? "/Slgi/signin/slgiadv/forgotAccessId?vgnLocale=fr_CA"
-					: "/Slgi/signin/slgiadv/forgotAccessId?vgnLocale=en_CA";
-					
-					// Change Hidden input val
-					forgotAccess = "#";
-					$("#forgot_access").attr("href", url);
-			}
-			else if (selectedVal == 'SLGIINV') {
-			saveidentity = "SLGIINV";
-			esaveid = "";
-			clientip="";
-			
-			
-	
-				$("#forgot_access").attr("href", clientIntialForgotaccess);
-			}
-			//Forget Password
-			if (selectedVal == 'ADVISOR') 
-		   {
-			var str = $("#forgot_password").attr("href");
-			var newStr = str.replace("/slgipubinv/","/slgipubadv/");
-			$("#forgot_password").attr("href",newStr);
-			}
-			else if (selectedVal == 'SLGIINV') {
-			var str = $("#forgot_password").attr("href");
-			var newStr1 = str.replace("/slgipubadv/","/slgipubinv/");
-			$("#forgot_password").attr("href",newStr1);
-			};
-	
-		// Hidden Input Element Error Path
-			if (selectedVal == 'ADVISOR') {
-				url = (lang == "fr")
-					? "/slgiadv/f/signinInfo.wca"
-					: "/slgiadv/e/signinInfo.wca";
-					errorPath = (lang =="fr")
-					? "/signin/slgiadv/f/home.wca" 
-					: "/signin/slgiadv/e/home.wca";
-	
-					providerURL = (lang == 'fr')
-					? "https://www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
-		: "https://www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
-	
-				// Change Hidden input val
-				targetPath = "/slgiadv/advisorSignInAction.wca";
-				
-	
-				//$("#form_signon").attr("action", url);
-			}
-			else if (selectedVal == 'SLGIINV') {
-				url = (lang == "fr")
-				? "https://www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
-				: "https://www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
-	
-			providerURL = (lang == 'fr')
-				? "https://www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
-				: "https://www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
-	
-				errorPath = (lang =="fr")
-					? "/signin/slgiinv/f/home.wca" 
-					: "/signin/slgiinv/e/home.wca"
-				targetPath = "/slgiinv/investorSignInAction.wca";
-			
-	
-				//$("#form_signon").attr("action", url);
-			}
-		$('input[id=target-path]').val(targetPath);
-		$('input[id=error-path]').val(errorPath);
-		$('input[id=save-identity]').val(saveidentity);
-		$('input[name=ESAVEID]').val(esaveid);
-		$('input[id=ClientIP]').val(clientip);
-		$("#" + currentSignInForm + " #rememberIDModal").prop(
-			"checked",
-			false
-		);
-		$("#" + currentSignInForm + " #accessIDModal").val(
-			""
-		);
-	
+function handleUserSelection(selectedVal) {
+	var url, targetPath, errorPath, forgotPassword, forgotAccess, saveidentity, esaveid, clientip;
+	//Forget Access 
+	if (selectedVal == 'ADVISOR') {
+		saveidentity = "SLGIADV";
+		esaveid = "";
+		clientip = "";
+		url = (lang == "fr")
+			? "/Slgi/signin/slgiadv/forgotAccessId?vgnLocale=fr_CA"
+			: "/Slgi/signin/slgiadv/forgotAccessId?vgnLocale=en_CA";
+
+		// Change Hidden input val
+		forgotAccess = "#";
+		$("#forgot_access").attr("href", url);
 	}
+	else if (selectedVal == 'SLGIINV') {
+		saveidentity = "SLGIINV";
+		esaveid = "";
+		clientip = "";
+
+
+
+		$("#forgot_access").attr("href", clientIntialForgotaccess);
+	}
+	//Forget Password
+	if (selectedVal == 'ADVISOR') {
+		var str = $("#forgot_password").attr("href");
+		var newStr = str.replace("/slgipubinv/", "/slgipubadv/");
+		$("#forgot_password").attr("href", newStr);
+	}
+	else if (selectedVal == 'SLGIINV') {
+		var str = $("#forgot_password").attr("href");
+		var newStr1 = str.replace("/slgipubadv/", "/slgipubinv/");
+		$("#forgot_password").attr("href", newStr1);
+	};
+
+	// Hidden Input Element Error Path
+	if (selectedVal == 'ADVISOR') {
+		url = (lang == "fr")
+			? "/slgiadv/f/signinInfo.wca"
+			: "/slgiadv/e/signinInfo.wca";
+		errorPath = (lang == "fr")
+			? "/signin/slgiadv/f/home.wca"
+			: "/signin/slgiadv/e/home.wca";
+
+		providerURL = (lang == 'fr')
+			? "https://sit-www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
+			: "https://sit-www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
+
+		// Change Hidden input val
+		targetPath = "/slgiadv/advisorSignInAction.wca";
+
+
+		//$("#form_signon").attr("action", url);
+	}
+	else if (selectedVal == 'SLGIINV') {
+		url = (lang == "fr")
+			? "https://sit-www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
+			: "https://sit-www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
+
+		providerURL = (lang == 'fr')
+			? "https://sit-www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
+			: "https://sit-www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
+
+		errorPath = (lang == "fr")
+			? "/signin/slgiinv/f/home.wca"
+			: "/signin/slgiinv/e/home.wca"
+		targetPath = "/slgiinv/investorSignInAction.wca";
+
+
+		//$("#form_signon").attr("action", url);
+	}
+	$('input[id=target-path]').val(targetPath);
+	$('input[id=error-path]').val(errorPath);
+	$('input[id=save-identity]').val(saveidentity);
+	$('input[name=ESAVEID]').val(esaveid);
+	$('input[id=ClientIP]').val(clientip);
+	$("#" + currentSignInForm + " #rememberIDModal").prop(
+		"checked",
+		false
+	);
+	$("#" + currentSignInForm + " #accessIDModal").val(
+		""
+	);
+
+}
 
 $(document).ready(function () {
-$(document).on("click","#forgot_access, #forgot_password",function(event) {
+	$(document).on("click", "#forgot_access, #forgot_password", function (event) {
 		var isValid = true;
-	   $('input[data-link-required]').each( function() {
-		  if ($(this).parsley().validate() !== true){ event.preventDefault(); isValid = false;}
-		  else{
-			var isValid = true;
-		  }
-	   });
-});
-	
-$(document).on("click","input[type=submit]",function(event) {
-	var rememberMeControl = $('#rememberIDModal')[0];
-	
-	if(rememberMeControl.checked){
-		localStorage.removeItem('userRole');
-		//localStorage.setItem('remberMeFlag', '0');
-		var selectedUserType = $("input[type=radio][name=DOMAIN]:checked").val();
-		localStorage.setItem('userRole', selectedUserType);
-		remember(rememberMeControl);
-	}
-});
-
-$("#signin-widget-modal").on("show.bs.modal",function(event) {
-	// Read Local Storage and set radio option
-	$("#signinclose").focus();
-			var selectedUserType = localStorage.getItem("userRole");
-	$("input[name=DOMAIN][value='"+ selectedUserType +"']").prop("checked",true);
-	handleUserSelection(selectedUserType); 
-}); 
-
-$(document).on('change', 'input[type=radio][name=DOMAIN]', function () {
-	handleUserSelection(this.value);
-	updateSignInForm('form_signon');
-});
-	
-
-	
-	
-	// deeplink handler for public pages
-	/* $('.deeplink').click(function () {
-		console.log("before hiting ping url in mbrportal");
-		var deepLinkName = $(this).attr('deepLinkname');
-
-		$.ajax({
-			url: 'https://dev-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping', xhrFields: { withCredentials: true },
-
-
-			success: function (data, status, xhr) {
-				console.log("return code " + xhr.status);
-				var response;
-				try {
-					response = JSON.parse(data);
-					if (xhr.status == "200" && response.status == "OK") {
-						window.location.href =
-							"https://www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC=" +
-							deepLinkName;
-					}
-				} catch (e) {
-					$("#signin-widget-modal").on("shown.bs.modal", function () {
-						updateSignInFormFromDeeplink(
-							"form_signon",
-							deepLinkName
-						);
-					});
-					$("#signin-widget-modal").modal("show");
-				}
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				console.log("Status: " + textStatus + " Error: " + errorThrown);
-				$("#signin-widget-modal").on("shown.bs.modal", function () {
-					updateSignInFormFromDeeplink("form_signon", deepLinkName);
-				});
-				$("#signin-widget-modal").modal("show");
+		$('input[data-link-required]').each(function () {
+			if ($(this).parsley().validate() !== true) { event.preventDefault(); isValid = false; }
+			else {
+				var isValid = true;
 			}
 		});
-		return false;
+	});
+
+	$(document).on("click", "input[type=submit]", function (event) {
+		var rememberMeControl = $('#rememberIDModal')[0];
+
+		if (rememberMeControl.checked) {
+			localStorage.removeItem('userRole');
+			//localStorage.setItem('remberMeFlag', '0');
+			var selectedUserType = $("input[type=radio][name=DOMAIN]:checked").val();
+			localStorage.setItem('userRole', selectedUserType);
+			remember(rememberMeControl);
+		}
+	});
+
+	$("#signin-widget-modal").on("show.bs.modal", function (event) {
+		// Read Local Storage and set radio option
+		$("#signinclose").focus();
+		var selectedUserType = localStorage.getItem("userRole");
+		$("input[name=DOMAIN][value='" + selectedUserType + "']").prop("checked", true);
+		handleUserSelection(selectedUserType);
+	});
+
+	$(document).on('change', 'input[type=radio][name=DOMAIN]', function () {
+		handleUserSelection(this.value);
+		updateSignInForm('form_signon');
+	});
+
+
+
+
+	// deeplink handler for public pages
+	/* $('.deeplink').click(function () {
+					console.log("before hiting ping url in mbrportal");
+					var deepLinkName = $(this).attr('deepLinkname');
+
+					$.ajax({
+									url: 'https://dev-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping', xhrFields: { withCredentials: true },
+
+
+									success: function (data, status, xhr) {
+													console.log("return code " + xhr.status);
+													var response;
+													try {
+																	response = JSON.parse(data);
+																	if (xhr.status == "200" && response.status == "OK") {
+																					window.location.href =
+																									"https://www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC=" +
+																									deepLinkName;
+																	}
+													} catch (e) {
+																	$("#signin-widget-modal").on("shown.bs.modal", function () {
+																					updateSignInFormFromDeeplink(
+																									"form_signon",
+																									deepLinkName
+																					);
+																	});
+																	$("#signin-widget-modal").modal("show");
+													}
+									},
+									error: function (XMLHttpRequest, textStatus, errorThrown) {
+													console.log("Status: " + textStatus + " Error: " + errorThrown);
+													$("#signin-widget-modal").on("shown.bs.modal", function () {
+																	updateSignInFormFromDeeplink("form_signon", deepLinkName);
+													});
+													$("#signin-widget-modal").modal("show");
+									}
+					});
+					return false;
 	}); */
 
 });
@@ -230,7 +229,7 @@ function getQueryParamExists(paramName) {
     var queryParamName = paramName;
     var pValue = false;
     if (urlParams[queryParamName]) {
-        pValue = unescape(urlParams[queryParamName]);
+       pValue = unescape(urlParams[queryParamName]);
     }
 
     return pValue;
@@ -450,7 +449,7 @@ function getBrowserInfo() {
 		screenRes
 	);
 
-	//return	"&browRes=" + browRes + "&OS=" + encodeURIComponent(strOS) + "&tzone=" + timeZone + "&date=" + dtime + "&browserId=" + encodeURIComponent(browserName) + "&browserVersionId=" + encodeURIComponent(browserVersion) + "&browserVersMaj=" + encodeURIComponent(bVersionMajor) + "&browserVersMin=" + encodeURIComponent(bVersionMinor) + "&screenRes=" + screenRes + "&colorDepth=" + colorDepth;
+	//return               "&browRes=" + browRes + "&OS=" + encodeURIComponent(strOS) + "&tzone=" + timeZone + "&date=" + dtime + "&browserId=" + encodeURIComponent(browserName) + "&browserVersionId=" + encodeURIComponent(browserVersion) + "&browserVersMaj=" + encodeURIComponent(bVersionMajor) + "&browserVersMin=" + encodeURIComponent(bVersionMinor) + "&screenRes=" + screenRes + "&colorDepth=" + colorDepth;
 }
 
 /*** Start Browser check values ****/
@@ -470,53 +469,53 @@ function getBrowserValues(parameter) {
 // similar to "updateSidnInForm", but handles deeplinks
 /* function updateSignInFormFromDeeplink(formName, deepLinkName) {
 
+                setTimeout(function () {
+                                if (!signinDataCallDone) {
+                                                displayContingencyWidget();
+                                }
+                }, 5000);
+
+                currentSignInForm = formName;
+
+                try {
+                                var rpc = new easyXDM.Rpc(
+                                                {
+                                                                remote: providerURL + "?deepLink=" + deepLinkName
+                                                },
+                                                {
+                                                                local: {
+                                                                                signinInfo: function (successFn, errorFn) { }
+                                                                },
+
+                                                                remote: {
+                                                                                signinInfo: {}
+                                                                }
+                                                }
+                                );
+                } catch (err) {
+                                //show some error widget
+                                //  alert(err.message);
+                                displayContingencyWidget();
+                }
+
+                rpc.signinInfo(success, error);
+
+} */
+
+function updateSignInForm(formName) {
 	setTimeout(function () {
 		if (!signinDataCallDone) {
 			displayContingencyWidget();
 		}
 	}, 5000);
 
-	currentSignInForm = formName;
-
-	try {
-		var rpc = new easyXDM.Rpc(
-			{
-				remote: providerURL + "?deepLink=" + deepLinkName
-			},
-			{
-				local: {
-					signinInfo: function (successFn, errorFn) { }
-				},
-
-				remote: {
-					signinInfo: {}
-				}
-			}
-		);
-	} catch (err) {
-		//show some error widget
-		//  alert(err.message);
-		displayContingencyWidget();
-	}
-
-	rpc.signinInfo(success, error);
-
-} */
-
-function updateSignInForm(formName) {
-	setTimeout(function() {
-		if (!signinDataCallDone) {
-			displayContingencyWidget();
-		}
-	}, 5000);
-
 
 	currentSignInForm = formName;
 
 	try {
-		
+
 		var rpc = new easyXDM.Rpc({
-			
+
 			remote: providerURL
 		}, {
 			local: {
@@ -533,14 +532,14 @@ function updateSignInForm(formName) {
 		//  alert(err.message);
 		displayContingencyWidget();
 		/*
-	  if (currentSignInForm == "form_signon") {
+if (currentSignInForm == "form_signon") {
 		  $("#contigency-widget").show();
-	  } else if (currentSignInForm == "form_signon_mobile") {
+} else if (currentSignInForm == "form_signon_mobile") {
 		  $("#contigency-widget-mobile").show();
-  
-	  } else if (currentSignInForm == "form_signon_pinbar"){
+ 
+} else if (currentSignInForm == "form_signon_pinbar"){
 		  $("#contigency-widget-pinbar").show();
-	  }*/
+}*/
 	}
 
 	rpc.signinInfo(success, error);
@@ -608,7 +607,7 @@ function success(data) {
 						decodedSaveIdValue
 					);
 					// put asteriks for visible user ID field.
-					
+
 					if (currentSignInForm == "form_signon") {
 						$("#" + currentSignInForm + " #accessIDModal").val(
 							"***********"
@@ -668,8 +667,8 @@ function success(data) {
 			/* var selectedUserType = localStorage.getItem("userRole");
 			$("input[name=DOMAIN][value='"+ selectedUserType +"']").prop("checked",true);
 
-			handleUserSelection(selectedUserType); */ 
-	 
+			handleUserSelection(selectedUserType); */
+
 			/* alert("Testing"); */
 		}
 	}
@@ -681,7 +680,7 @@ function error(data) {
 }
 //called when input field 'remember me' is checked.
 function remember(me) {
-	if (me.checked && $("#accessIDModal").val().charAt(0)!='*') {
+	if (me.checked && $("#accessIDModal").val().charAt(0) != '*') {
 		$("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val(
 			"TRUE"
 		);
@@ -723,62 +722,62 @@ var isSubmitted;
 isSubmitted = false;
 
 /* function CheckClicks(lang) {
-	if (isSubmitted == true) {
-		if (lang == "f")
-			alert(
-				"Veuillez patienter pendant que nous soumettons vos renseignements."
-			);
-		else alert("Please wait while we submit your information");
-		return false;
-	} else {
-		isSubmitted = true;
-		var idField;
-		var id;
-		var i;
-		var IsSaveId = false;
-		var idLen;
+                if (isSubmitted == true) {
+                                if (lang == "f")
+                                                alert(
+                                                                "Veuillez patienter pendant que nous soumettons vos renseignements."
+                                                );
+                                else alert("Please wait while we submit your information");
+                                return false;
+                } else {
+                                isSubmitted = true;
+                                var idField;
+                                var id;
+                                var i;
+                                var IsSaveId = false;
+                                var idLen;
 
-		//idField= $("#" + currentSignInForm + " input[name=USER]");
-		id = $("#" + currentSignInForm + " input[name=USER]").val();
-		idLen = id.length;
-		for (i = 0; i < idLen; i++) {
-			if (id.charAt(i) != "*") {
-				IsSaveId = false;
-				if (id.charAt(i) == "&") {
-					id = id.replace("&", ":");
-				} else if (id.charAt(i) == "!") {
-					id = id.replace("!", ";");
-				}
-			} else if (id.charAt(i) == "*") {
-				if (i == 0) IsSaveId = true;
-				id = id.replace("*", "!");
-			}
-		}
-		if (IsSaveId) {
-			$("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val(
-				"FALSE"
-			);
-		}
-		$("#" + currentSignInForm + " input[name=USER]").val(id);
-		//document.form_signon.submit();
-		return true;
-	}
+                                //idField= $("#" + currentSignInForm + " input[name=USER]");
+                                id = $("#" + currentSignInForm + " input[name=USER]").val();
+                                idLen = id.length;
+                                for (i = 0; i < idLen; i++) {
+                                                if (id.charAt(i) != "*") {
+                                                                IsSaveId = false;
+                                                                if (id.charAt(i) == "&") {
+                                                                                id = id.replace("&", ":");
+                                                                } else if (id.charAt(i) == "!") {
+                                                                                id = id.replace("!", ";");
+                                                                }
+                                                } else if (id.charAt(i) == "*") {
+                                                                if (i == 0) IsSaveId = true;
+                                                                id = id.replace("*", "!");
+                                                }
+                                }
+                                if (IsSaveId) {
+                                                $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val(
+                                                                "FALSE"
+                                                );
+                                }
+                                $("#" + currentSignInForm + " input[name=USER]").val(id);
+                                //document.form_signon.submit();
+                                return true;
+                }
 } */
 
-	
-	
-	var userRoleGet = localStorage.getItem("userRole");
-	var remberMeFlagGet = localStorage.getItem("remberMeFlag");
-	if(userRoleGet == "ADVISOR" && remberMeFlagGet == "1"){
+
+
+var userRoleGet = localStorage.getItem("userRole");
+var remberMeFlagGet = localStorage.getItem("remberMeFlag");
+if (userRoleGet == "ADVISOR" && remberMeFlagGet == "1") {
 	$("#ADVISOR").attr('checked', 'checked');
-	}
-	else if(userRoleGet == "INVESTOR" && remberMeFlagGet == "1"){
+}
+else if (userRoleGet == "INVESTOR" && remberMeFlagGet == "1") {
 	$("#SLGIINV").attr('checked', 'checked');
-	}
-	
-	
-	
-	
-	
+}
+
+
+
+
+
 
 /* End Sunlife ca phase 2 ****/
