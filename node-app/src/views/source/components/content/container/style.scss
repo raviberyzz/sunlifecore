@@ -1,21 +1,21 @@
-@import "../../../base/core";
-@import "../../../../core/components/content/container/style";
+// @import "../../../base/core";
+// @import "../../../../core/components/content/container/style";
 
-.company-highlight-blue-yellow-background {
-    @extend .company-highlight-yellow-grey-background;
-    background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
-    .cmp-text {
-        color: $white-shade;
-    }
-    .border-right {
-        border-right: 2px solid $light-grey-color;
-    }
-}
+// .company-highlight-blue-yellow-background {
+//     @extend .company-highlight-yellow-grey-background;
+//     background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+//     .cmp-text {
+//         color: $white-shade;
+//     }
+//     .border-right {
+//         border-right: 2px solid $light-grey-color;
+//     }
+// }
 
-/** background yellow Rings to be dropped in mobile view **/
-@media (max-width:$mobile-screen-max) {
-    .company-highlight-blue-yellow-background {
-        background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
-    } 
-}
+// /** background yellow Rings to be dropped in mobile view **/
+// @media (max-width:$mobile-screen-max) {
+//     .company-highlight-blue-yellow-background {
+//         background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+//     } 
+// }
 
