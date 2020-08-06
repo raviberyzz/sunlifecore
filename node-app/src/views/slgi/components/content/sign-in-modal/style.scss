@@ -6,7 +6,9 @@
 .pad-top-10 {
   padding-top: 10px !important;
 }
-
+#form_signon div#generalError, #form_signon_mobile div#generalError_mobile {
+  display: none;
+}
 .sign-in-modal-wrapper {
   .modal-content {
     background: $medium-yellow-background;
