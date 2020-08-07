@@ -348,12 +348,14 @@
                         li {
                           .accordion-heading {
                               font-weight: 400;
-                              font-size: 20px;
-                              line-height: 23px; 
+                              font-size: 16px;
+                              line-height: 26px; 
                               color: #424242; 
                               border-bottom: 2px dotted $light-grey-color;
                               display: block;
-                              padding: 10px 0px;
+                              padding-bottom: 15px;
+                              text-decoration: none;
+
                             }
                         }
                           .list-unstyled{
@@ -383,6 +385,7 @@
                               }
                               li:last-child{  
                                   border:none!important;
+                                  margin-bottom: 20px;
                               }
                           }
                     }
@@ -402,7 +405,6 @@
         .slf-tab-region {
             background-color: $light-cool-blue-color;
             padding: 19px 15px !important;
-            margin: -1px;
             border: 1px solid $light-grey-color;
             min-height: 64px;
             height: auto;
@@ -456,6 +458,7 @@
                 font-size: 1rem;
                 line-height: 26px;
                 padding: 15px;
+                padding-left: 15px !important;
            }
            .accordion-heading[aria-expanded="false"]:before {
             content: "\f0da";
