@@ -6679,6 +6679,7 @@
                     </teaser>
                     <tabs jcr:primaryType="nt:unstructured">
                         <policy_tabs
+							cq:styleDefaultClasses="tabs-wrapper"
                             jcr:description="Source tabs"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Tabs"
@@ -7629,6 +7630,17 @@
 										<item5 cq:styleClasses="light-orange-40" cq:styleId="1594999220349" cq:styleLabel="40% Light orange" jcr:primaryType="nt:unstructured" />
 									</cq:styles>
 								</item4>
+								<item5
+                                    cq:styleGroupLabel="Box Required"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="company-highlight-box-shadow"
+                                            cq:styleId="1594999220351"
+                                            cq:styleLabel="Yes"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item5>
 							</cq:styleGroups>
 						</policy_layoutContainer>
 					</layout-container>
@@ -7800,7 +7812,7 @@
                     </container>
                     <button jcr:primaryType="nt:unstructured">
                         <policy_formButton
-                            cq:styleDefaultClasses="primary-blue-button"
+                            cq:styleDefaultClasses="button-wrapper primary-blue-button-form"
                             jcr:description="Source button"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Button"
@@ -7810,24 +7822,19 @@
                                 <item0 jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="primary-blue-button"
+                                            cq:styleClasses="button-wrapper primary-blue-button-form"
                                             cq:styleId="1594574431998"
                                             cq:styleLabel="Primary blue button"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item1
-                                            cq:styleClasses="primary-yellow-button"
+                                            cq:styleClasses="button-wrapper primary-yellow-button-form"
                                             cq:styleId="1594574437509"
                                             cq:styleLabel="Primary yellow button"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item2
-                                            cq:styleClasses="secondary-button"
+                                            cq:styleClasses="button-wrapper secondary-button-form"
                                             cq:styleId="1594574438580"
                                             cq:styleLabel="Secondary button"
-                                            jcr:primaryType="nt:unstructured"/>
-                                        <item3
-                                            cq:styleClasses="signIn-button"
-                                            cq:styleId="1594574439187"
-                                            cq:styleLabel="Sign-in button"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>

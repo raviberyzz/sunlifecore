@@ -59,7 +59,7 @@
 .cta-three-column-wrapper {
   border: 1px solid $white-smoke;
   > * {
-    background-color: $light-grey-color;
+    background-color: $white-smoke;
     .icon-style {
       background: none;
       background-color: $cinnamon-orange;      
@@ -73,6 +73,7 @@
   @extend .yellow-icon-white-background;
   border: 1px solid $light-grey-separator-color;
   .cta-content-icon-wrapper {
+    height: 100%;
     .icon-style {
       background-color: $cinnamon-orange;
       background-image: none;
@@ -87,6 +88,21 @@
       > * {
         span.button-class{
           width: 100%;
+        }
+      }
+    }
+    /* Align Home 3-CTA Buttons */
+    ul {
+      height: 100%;
+      li {
+        height: 100%;
+        .icon-texts {
+          display: flex;
+          height: calc(100% - 24px);
+          flex-direction: column;
+          p:last-child {
+            margin-top: auto;
+          }
         }
       }
     }

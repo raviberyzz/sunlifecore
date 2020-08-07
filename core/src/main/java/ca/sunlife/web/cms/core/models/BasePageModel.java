@@ -1384,7 +1384,9 @@ public class BasePageModel {
             }
           }
         }
+        if(relationshipManager.hasLiveRelationship(resource)) {
         addAlternateUrl(sourceResource.getPath());
+        }
       }
       if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(

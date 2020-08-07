@@ -204,8 +204,10 @@
 .slf-header-wrapper .desktop-header-wrapper .header-signIn .desktop-utility-nav .desktop-sunlife-logo img {
     width: auto; 
 }
-.header-signIn .desktop-primary-navigation .nav>li>a {
-    padding-top: 6px;
+.signin-content-page, .signin-home-page{
+    .desktop-primary-navigation .nav>li>a {
+        padding-top: 6px;
+    }
 }
 @media(max-width:$tab-screen-max){ 
     .hide-logo {

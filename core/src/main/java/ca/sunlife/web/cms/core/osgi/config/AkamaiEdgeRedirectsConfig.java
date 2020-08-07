@@ -63,5 +63,20 @@ public @interface AkamaiEdgeRedirectsConfig {
    */
   @ AttributeDefinition (name = "clientToken", description = "Client Token")
   String getClientToken () default "akab-riiprq6w6gs4jehm-7b5yjbp6qjm7bvbv";
+  
+  /**
+   * Gets the socket timeout.
+   *
+   * @return the socket timeout
+   */
+  @ AttributeDefinition (name = "socketTimeout", description = "Socket Timeout")
+  int getSocketTimeout () default 25000;
 
+  /**
+   * Gets the connection timeout.
+   *
+   * @return the connection timeout
+   */
+  @ AttributeDefinition (name = "connectionTimeout", description = "Connection Timeout")
+  int getConnectionTimeout () default 25000;
 }

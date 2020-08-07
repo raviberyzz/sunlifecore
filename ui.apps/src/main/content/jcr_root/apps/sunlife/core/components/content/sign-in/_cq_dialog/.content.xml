@@ -29,12 +29,29 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <title
+                                            <signInHeadingText
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                fieldDescription="Add title"
-                                                fieldLabel="Title"
-                                                name="./title"/>
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add sign in heading text"
+                                                fieldLabel="Sign in heading text"
+                                                name="./signInHeadingText"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <mobileAppBadge
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add Mobile App Badge"
+                                                fieldLabel="Mobile App Badge"
+                                                name="./mobileAppBadge"
+                                                useFixedInlineToolbar="{Boolean}true"/>
+                                            <mobileAppBadgeLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Mobile App Badge Link"
+                                                name="./mobileAppBadgeLink"
+                                                rootPath="/content/"
+                                                suffix=".html"/>
                                             <accessIDPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
@@ -91,13 +108,13 @@
                                                 name="./forgotPasswordLink"
                                                 rootPath="/content/"
                                                 suffix=".html"/>
-                                            <signInContent
+                                            <signInBottomText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add Sign In Content"
-                                                fieldLabel="Sign In Content"
-                                                name="./signInContent"
+                                                fieldDescription="Add Sign in bottom text"
+                                                fieldLabel="Sign in bottom text"
+                                                name="./signInBottomText"
                                                 useFixedInlineToolbar="{Boolean}true"/>
                                         </items>
                                     </column>
@@ -170,14 +187,10 @@
                                                 fieldLabel="Target"
                                                 name="./target">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <sit
+                                                    <none
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"
-                                                        value="https://sit-www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"/>
-                                                    <production
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"
-                                                        value="https://www.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife"/>
+                                                        text="None"
+                                                        value=""/>
                                                     <landing
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/mysunlifesecure/landing.aspx"
@@ -200,22 +213,10 @@
                                                 fieldLabel="Error Redirect Path"
                                                 name="./errorRedirectPath">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <sitSunnetCAHome
+                                                    <none
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
-                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
-                                                    <sitSunnet
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"
-                                                        value="https://sit-www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
-                                                    <prodSunnetCAHome
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"
-                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome"/>
-                                                    <prodSunnet
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"
-                                                        value="https://www.sunnet.sunlife.com/signin/mysunlife/home.wca"/>
+                                                        text="None"
+                                                        value=""/>
                                                     <sunnetHome
                                                         jcr:primaryType="nt:unstructured"
                                                         text="/signin/mysunlife/home.wca"

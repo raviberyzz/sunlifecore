@@ -37,21 +37,23 @@
 
         });
         bindRulesTableEvents();
-        $('#non-published-rules').click(function(){
-            $.getJSON(contentPath.concat('.1.json'),{},function(data) {
+        $('#non-published-rules').click(function () {
+            $.getJSON(contentPath.concat('.1.json'), {}, function (data) {
                 var content = '<button is="coral-button" variant="primary" icon="play" iconsize="M" size="L" id="publishRules">Publish Rules</button>';
-                content+='<table is="coral-table" selectable multiple><colgroup><col is="coral-table-column" fixedwidth>'+
-                '<col is="coral-table-column"><col is="coral-table-column"></colgroup><thead is="coral-table-head"><tr is="coral-table-row">'+
-                '<th is="coral-table-headercell"><coral-checkbox coral-table-select></coral-checkbox></th><th is="coral-table-headercell">Source</th>'+
-                '<th is="coral-table-headercell">Target</th></tr></thead><tbody is="coral-table-body">';
-                $.each(data,function(key, val) {
-                    if(val instanceof Object && val.status && val.status === 'Not Published') {
-                        content+='<tr is="coral-table-row"><td is="coral-table-cell"><coral-checkbox coral-table-rowselect></coral-checkbox></td>'+
-                        '<td is="coral-table-cell">'+val.source+'</td><td is="coral-table-cell">'+val.destination+'</td></tr>';
+                content += '<div id="non-published-rules-message"></div>';
+                content += '<table is="coral-table" selectable multiple><colgroup><col is="coral-table-column" fixedwidth>' +
+                    '<col is="coral-table-column"><col is="coral-table-column"></colgroup><thead is="coral-table-head"><tr is="coral-table-row">' +
+                    '<th is="coral-table-headercell"><coral-checkbox coral-table-select></coral-checkbox></th><th is="coral-table-headercell">Source</th>' +
+                    '<th is="coral-table-headercell">Target</th></tr></thead><tbody is="coral-table-body" id="non-published-rules-table-body">';
+                $.each(data, function (key, val) {
+                    if (val instanceof Object && val.status && val.status === 'Not Published') {
+                        content += '<tr is="coral-table-row" data-rule="' + encodeURI(JSON.stringify(val)) + '" data-rule-name="' + key + '"><td is="coral-table-cell"><coral-checkbox coral-table-rowselect></coral-checkbox></td>' +
+                            '<td is="coral-table-cell">' + val.source + '</td><td is="coral-table-cell">' + val.destination + '</td></tr>';
                     }
                 });
-                content+='</tbody></table>';
+                content += '</tbody></table>';
                 $('#non-published-rules-content').html(content);
+                bindNonPublishedRulesEvents();
             });
         });
     });
@@ -107,9 +109,9 @@
                 obj[nodeName.concat('date')] = new Date().getTime();
                 var trData = { name: nName, source: $('#domain').val().concat($('input[name="edit-source"]').val()), destination: destVal };
                 $.post(contentPath, obj, function (data) {
-                    $('tr[data-name="'+trData.name+'"]').find('[data-name="tr-source"]').text(trData.source);
-                    $('tr[data-name="'+trData.name+'"]').find('[data-name="tr-destination"]').text(trData.destination);
-                    $('#editRuleDialog').remove();                    
+                    $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-source"]').text(trData.source);
+                    $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-destination"]').text(trData.destination);
+                    $('#editRuleDialog').remove();
                 });
             });
         });
@@ -130,15 +132,15 @@
             });
             document.body.appendChild(dialog);
             $('#disableRuleDialog')[0].show();
-            $('#disable-yes').click(function(){
+            $('#disable-yes').click(function () {
                 var obj = {};
                 var nodeName = "./" + nName + "/";
                 obj[nodeName.concat('status')] = 'Not Published';
                 obj[nodeName.concat('state')] = 'Delete';
                 obj[nodeName.concat('date')] = new Date().getTime();
                 $.post(contentPath, obj, function (data) {
-                    $('tr[data-name="'+nName+'"]').find('[icon="exclude"]').remove();
-                    $('tr[data-name="'+nName+'"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="play" size="S" data-name="'+nName+'" style="cursor: pointer" name="enableRule" title="Enable Rule"></coral-icon>');
+                    $('tr[data-name="' + nName + '"]').find('[icon="exclude"]').remove();
+                    $('tr[data-name="' + nName + '"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="play" size="S" data-name="' + nName + '" style="cursor: pointer" name="enableRule" title="Enable Rule"></coral-icon>');
                     $('#disableRuleDialog').remove();
                     bindRulesTableEvents();
                 });
@@ -161,19 +163,94 @@
             });
             document.body.appendChild(dialog);
             $('#enableRuleDialog')[0].show();
-            $('#enable-yes').click(function(){
+            $('#enable-yes').click(function () {
                 var obj = {};
                 var nodeName = "./" + nName + "/";
                 obj[nodeName.concat('status')] = 'Not Published';
                 obj[nodeName.concat('state')] = 'Edit';
                 obj[nodeName.concat('date')] = new Date().getTime();
                 $.post(contentPath, obj, function (data) {
-                    $('tr[data-name="'+nName+'"]').find('[icon="play"]').remove();
-                    $('tr[data-name="'+nName+'"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S" data-name="'+nName+'" style="cursor: pointer" name="disableRule" title="Deactivate Rule"></coral-icon>');
+                    $('tr[data-name="' + nName + '"]').find('[icon="play"]').remove();
+                    $('tr[data-name="' + nName + '"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S" data-name="' + nName + '" style="cursor: pointer" name="disableRule" title="Deactivate Rule"></coral-icon>');
                     $('#enableRuleDialog').remove();
                     bindRulesTableEvents();
                 });
             });
         });
-    }
+    };
+    var bindNonPublishedRulesEvents = function () {
+        $('#publishRules').off('click').on('click', function () {
+            var rules = [];
+            $('#non-published-rules-table-body > tr:selected').each(function () { 
+                var rule = JSON.parse(decodeURI($(this).data('rule'))); 
+                rule.name = ""+$(this).data('rule-name');
+                rules.push(rule);
+            });
+            if(rules.length < 1) {
+                var alert = new Coral.Alert().set({
+                    variant: "error",
+                    header: {
+                        innerHTML: ""
+                    },
+                    content: {
+                        innerHTML: "No rules selected to publish"
+                    }
+                });
+                $('#non-published-rules-message').html(alert);
+            }else {
+                $('#non-published-rules-message').html('');
+                $('body').append('<div id="overlay"></div>');
+                $('#overlay').css({'opacity':'.30','background':'#000', 'top': 0,'left':0, 'width': window.innerWidth, 'height': window.innerHeight, 'position':'fixed'});
+                $('body').append(new Coral.Wait().set({
+                    size: "L",
+                    centered: true
+                }));
+                $.post(contentPath+".config.service",{policyID: $('#policyID').val(), rules: JSON.stringify(rules)},function(data){
+                    var obj = {};
+                    var message = '';
+                    if(data.publishStatus == "Success") {
+                        message += '<coral-alert variant="success"><coral-alert-content><b>Policy activated successfully, following are individual rule status</b></coral-alert-content></coral-alert><br />';
+                    } else {
+                        message += '<coral-alert variant="error"><coral-alert-content><b>Due to technical reasons policy was not able to activate, please try again after 30 minutes. Following are individual rule status</b></coral-alert-content></coral-alert><br />';
+                    }
+                    $.each(data, function(key,val) {
+                        if(key != "publishStatus") {
+                            obj['./'+key+'/status'] = val == "Fail" ? "Not Published" : "Published";
+                            $.each(rules, function(index, content) {
+                                if(content.name == key) {
+                                    if(val == "Success") {
+                                        message += '<coral-alert variant="success"><coral-alert-content>Source : '+content.source+' <br />Destination : '+content.destination+' <br />Rule created or updated successfully</coral-alert-content></coral-alert><br />';
+                                    } else {
+                                        message += '<coral-alert variant="error"><coral-alert-content>Source : '+content.source+' <br />Destination : '+content.destination+' <br />Rule was not able to create or update</coral-alert-content></coral-alert><br />';
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    $.post(contentPath, obj, function(res){
+                        $('#overlay').remove();
+                        $('coral-wait').remove();
+                        var dialog = new Coral.Dialog().set({
+                            id: "publishStatusDailog",
+                            header: {
+                                innerHTML: "Publish Satus"
+                            },
+                            content: {
+                                innerHTML: message
+                            },
+                            footer: {
+                                innerHTML: "<button is=\"coral-button\" variant=\"primary\" id='publish-status-ok'>Ok</button>"
+                            }
+                        });
+                        document.body.appendChild(dialog);
+                        $('#publishStatusDailog')[0].show();
+                        $('#publish-status-ok').click(function () {
+                            $('#publishStatusDailog').remove();
+                            $('#non-published-rules').trigger('click');
+                        });
+                    });
+                });
+            }
+        });
+    };
 })($, $(document));

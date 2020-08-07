@@ -140,19 +140,17 @@ $(document).ready(function () {
     }
 
 /* sign in framework ends here */
-/* french page download app content starts here */
-if($('html').attr('lang')=='fr'){
+/* mobile app badge logo styling starts here */
+    if($('.mySlfSignIn .download-app-wrapper .mobile-app-text img').length>0){
+        $('.mySlfSignIn .download-app-wrapper .mobile-app-text').addClass('app-logo');
+    }
     if($('.mySlfSignIn').length>0){
-        if($('.mySlfSignIn .download-app').length>0){
-            let appText='Améliorez votre expérience mobile, ';
-            let appStringText="téléchargez l'appli ma Sun Life.";
-            $('.mySlfSignIn .download-app .download-app-wrapper p a').text(appText);
-			 $('.mySlfSignIn .download-app .download-app-wrapper p a').append('<strong>'+appStringText+'</strong/>');
-            //$('.mySlfSignIn .download-app .download-app-wrapper p a strong').text(appStringText);
+        if(($('.mySlfSignIn .download-app-wrapper .mobile-app-text').children().length==undefined) ||
+        ($('.mySlfSignIn .download-app-wrapper .mobile-app-text').children().length==0)){
+            $('.mySlfSignIn .download-app').addClass('no-text');
         }
     }
-}
-/* french page download app content ends here */
+/* mobile app badge logo styling ends here */
 /* sign in framework accessibility starts here */
 // remember me checkbox enter function
 $(".mySlfSignIn #rememberID").keydown(function(e){
@@ -193,4 +191,57 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 /* Iframe accessibility ends here */
+/* signout fucntionality starts here */
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0){
+                return c.substring(nameEQ.length,c.length);
+            }
+        }
+        return null;
+    }
+    function getCSIUrl(lang){
+        var cookie = readCookie('CCS');
+        var domain = window.location.hostname;
+        var protocol = window.location.protocol;
+        var port = window.location.port;
+        var urlPrefix;
+        if(port != ""){
+            urlPrefix = protocol + '//' + domain + ':' + port;
+        } 
+        else {
+            urlPrefix = protocol + '//' + domain;
+        }
+        var eURL = '/signin/mysunlife/home.wca';
+        var fURL = '/signin/masunlife/home.wca';
+        if(cookie != null) {
+            var vars = cookie.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if(unescape(pair[0]) == 'CSISigninURLe'){
+                    if (unescape(pair[1]).indexOf(urlPrefix) > -1){
+                        eURL = unescape(pair[1]);
+                    }else{
+                        eURL = urlPrefix + unescape(pair[1]);
+                    }
+                } else if(unescape(pair[0]) == 'CSISigninURLf') {
+                    if (unescape(pair[1]).indexOf(urlPrefix) > -1){
+                        fURL = unescape(pair[1]);
+                    } else {
+                        fURL = urlPrefix + unescape(pair[1]);
+                    }
+                }
+            }
+        }
+        if(lang == 'en'){
+            window.open(eURL,'_self');
+        }else {
+            window.open(fURL,'_self');
+        }
+    }
+/* signout fucntionality ends here */
 });

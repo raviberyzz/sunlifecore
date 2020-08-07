@@ -60,6 +60,9 @@
       .text-section a {
         font-size: 1.5rem;
         font-weight:500;
+         .button-class{
+             font-size:1rem;
+         }
         }
        }
     p {
@@ -947,3 +950,10 @@
 	}
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+.teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+        .left-image-position, .right-image-position{
+            display: block;
+        }
+    }
+}
