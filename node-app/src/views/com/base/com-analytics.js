@@ -67,15 +67,17 @@ $(document).ready(function () {
         }
         // product and services other pages explore product and service section
         pageName.forEach((element,index) => {
-            if(element.match('products and services')){
-                let linkText=$(this).text();
-                let parentCountry=$(this).parent().parents('li').children('a').text();
-                utag.link({
-                    "asset_type" : "Text Link",
-                    "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
-                    "event_type" : "Click",
-                    "event_title" :  parentCountry+" - "+linkText,
-                    "page_section" : "Explore products & services"
+            if(element.match('products and services') && productTitle!='products and services'){
+                $('.cmp-linkfarm-table ul li a').click(function(e){
+                    let linkText=$(this).text();
+                    let parentCountry=$(this).parent().parents('li').children('a').text();
+                    utag.link({
+                        "asset_type" : "Text Link",
+                        "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
+                        "event_type" : "Click",
+                        "event_title" :  parentCountry+" - "+linkText,
+                        "page_section" : "Explore products & services"
+                    });
                 });
             }
         });
