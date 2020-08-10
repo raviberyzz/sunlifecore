@@ -11,6 +11,20 @@
         border-right: 2px solid $light-grey-color;
     }
 }
+/* for Footer*/
+#mainfooter {
+    .image {
+        padding: 16px 0 16px 15px; }
+    .text {
+        img {
+            background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_grey.png');
+            background-repeat: no-repeat;
+            &:hover {
+                background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_blue.png');
+            }
+        }
+    }
+}
 
 /* background yellow Rings to be dropped in mobile view */
 
