@@ -11,7 +11,7 @@ $(document).ready(function () {
                    }
                 }
             }
-            if ($('.mobile-header  .mobile-region-language-menu-wrapper .nav-select').parent().parent().siblings().html() === 'India') {
+            if ($('.mobile-header .mobile-region-language-menu-wrapper .nav-select').parent().parent().siblings('.accordion-heading')[0].innerText === 'India') {
                 $('.mobile-header  .mobile-region-language-menu-wrapper .nav-select').parent().children('li:last-child').addClass('nav-select');
                 $('.mobile-header  .mobile-region-language-menu-wrapper .nav-select').parent().children('li:first-child').removeClass('nav-select');
             }
