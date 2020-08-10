@@ -141,6 +141,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="audio-file-icon"
                                                                 text="Audio File"/>  
+															<sign-out-link
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="sign-out-link"
+                                                                text="Sign Out Link"/>
                                                         </styles>
                                                     </styles>
                                                     <format
