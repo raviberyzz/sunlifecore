@@ -78,15 +78,15 @@ $(document).ready(function () {
          $(".region-link").addClass("slf-accordion-arrow");
          // in mobile view expand the country links and scroll to the top of the page
          $('.cmp-linkfarm-table .tab-content .slf-accordion-arrow .accordion-heading').click(function () {
-             if ($(this).attr('aria-expanded') == 'false') {
+             /*if ($(this).attr('aria-expanded') == 'false') {
                  $(this).attr('aria-expanded', 'true');
                  $(this).siblings().toggle('fast');
              }
              else {
                  $(this).attr('aria-expanded', 'false');
                  $(this).siblings().toggle('fast');
-             }
-             $(this).closest('li').siblings().find(".collapse").css("display", "none");
+             }*/
+             $(this).closest('li').siblings().find(".collapse").removeClass("in");
              $(this).closest('li').siblings().find(".accordion-heading").attr("aria-expanded", "false");
              $(this).siblings().find('.collapse').css("display", "block");
              if ($(this).closest(".region-link").find(".collapse").length === 1) {
