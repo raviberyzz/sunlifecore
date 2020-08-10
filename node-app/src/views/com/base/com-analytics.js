@@ -65,20 +65,20 @@ $(document).ready(function () {
                 });
             });
         }
-        
-        // pageName.forEach((element,index) => {
-        //     if(element.match('products and services')){
-        //         let linkText=$(this).text();
-        //         let parentCountry=$(this).parent().parents('li').children('a').text();
-        //         utag.link({
-        //             "asset_type" : "Text Link",
-        //             "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
-        //             "event_type" : "Click",
-        //             "event_title" :  parentCountry+" - "+linkText,
-        //             "page_section" : "Explore products & services"
-        //         });
-        //     }
-        // });
+        // product and services other pages explore product and service section
+        pageName.forEach((element,index) => {
+            if(element.match('products and services')){
+                let linkText=$(this).text();
+                let parentCountry=$(this).parent().parents('li').children('a').text();
+                utag.link({
+                    "asset_type" : "Text Link",
+                    "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
+                    "event_type" : "Click",
+                    "event_title" :  parentCountry+" - "+linkText,
+                    "page_section" : "Explore products & services"
+                });
+            }
+        });
 
     /* product and services pages analytics ends here */
     /* contact us page analytics starts here */    
