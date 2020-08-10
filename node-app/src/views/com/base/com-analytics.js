@@ -277,4 +277,17 @@ $(document).ready(function () {
         }
     });
     /* inside language bar link analytics ends here */
+    /* Newsroom page analytics starts here */
+    $('#right-railId .html-component .explore-module a').click(function(){
+        let linkName=$(this).text();
+        let country=$(this).parent().parent().parents('ul.explore-item').find('.content-label').text();
+        utag.link({
+            "asset_type" : "Text Link",
+            "asset_title" : "Triage  - media - newsroom",
+            "event_type" : "Click",
+            "event_title" : country+" - "+linkName,
+            "page_section" : "right rail"
+           });
+    });
+    /* Newsroom page analytics ends here */
 });
