@@ -52,7 +52,17 @@ $(document).ready(function () {
         $('.mobile-header .region-tab').css({ 'display': 'none' });
         $('.mobile-header .language-tab').css({ 'display': 'block' });
     });
-
+    
+    // No language present scenario starts here
+    var languageNumber = $('.mobile-header .mobile-region-language-menu-wrapper .language-tab ul').children('li');
+    if(languageNumber.length == 1){
+		$('.mobile-header .mobile-region-language-menu-wrapper .slf-tab-region').css("display","none");
+		$('.mobile-header .mobile-region-language-menu-wrapper .region-tab').prepend('<p>Regions</p>');
+        $('.mobile-header .mobile-region-language-menu-wrapper .region-tab').children('p').css('padding','0 0 4px 16px');
+        $('.mobile-header .mobile-region-language-menu-wrapper .region-tab').children('p').css('margin-bottom','8px');
+        $('.mobile-header .mobile-region-language-menu-wrapper .region-tab').children('p').css('font-weight','700');
+    }
+    // No language present scenario ends here
 
      /*link farm table code starts here */
      var linkFarm = $(".cmp-linkfarm-table");
