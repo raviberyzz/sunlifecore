@@ -136,7 +136,11 @@
                                                             <grey-border-right
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="read-more-grey-border-right"
-                                                                text="Grey Border Right"/>	
+                                                                text="Grey Border Right"/>
+															<sign-out-link
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="sign-out-link"
+                                                                text="Sign Out Link"/>
                                                         </styles>
                                                     </styles>
                                                     <format
