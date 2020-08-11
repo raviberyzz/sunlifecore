@@ -7,7 +7,9 @@
                 <h2 class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
                 ${productCardModel.pcData.productCardContent @context='html'}
             </div>
-            <a href="${productCardModel.pcData.productCardPagePath}">${productCardModel.pcData.productCardHeading}</a>
+            <sly data-sly-use.urlParsing = "${'pc-url-parsing.js' @ path=productCardModel.pcData.productCardPagePath}">               
+             <a href="${urlParsing.navPath}">${productCardModel.pcData.productCardHeading}</a>
+            </sly>
         </div>
         <div data-sly-test="${!hasPath}" class="cq-placeholder" data-emptytext="${component.title}"></div>
     </sly>
@@ -33,7 +35,9 @@
                 <h2 class="product-name">${pcHeading}</h2> 
                 ${pcContent @context='html'}
             </div>
-                <a href="${pcPath}">${pcHeading}</a>
+                <sly data-sly-use.urlParsing = "${'pc-url-parsing.js' @ path=pcPath}">                
+                    <a href="${urlParsing.navPath}">${pcHeading}</a>
+                </sly>
           </div>
           </div>
           </div>
