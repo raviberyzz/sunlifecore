@@ -17,12 +17,12 @@
             .cmp-accordion__button{
                 &[aria-expanded="false"] {
                     &::before {
-                        color:$dark-blue;
+                        color:$cinnamon-orangeblue;
                     }
                 }
                 &[aria-expanded="true"] {
                     &::before {
-                        color:$dark-blue;
+                        color:$cinnamon-orange;
 
                     }
                 }
