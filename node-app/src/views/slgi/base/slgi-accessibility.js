@@ -16,11 +16,11 @@ $(document).ready(function () {
             $('#left-navigation').parents('.col-sm-4').next().attr('role', 'main');
         }
         else if ($('.full-header').parents('.recommended-products-article').next().hasClass('breadcrumb')) {
-            $('.full-header').parents('.recommended-products-article').next().next().next().attr('id', 'main-content');
-            $('.full-header').parents('.recommended-products-article').next().next().next().attr('role', 'main');
-        } else {
             $('.full-header').parents('.recommended-products-article').next().next().attr('id', 'main-content');
             $('.full-header').parents('.recommended-products-article').next().next().attr('role', 'main');
+        } else {
+            $('.full-header').parents('.recommended-products-article').next().attr('id', 'main-content');
+            $('.full-header').parents('.recommended-products-article').next().attr('role', 'main');
         }
         if ($('.link-list').hasClass('editorial-nav-desktop-wrapper')) {
             $('.link-list.editorial-nav-desktop-wrapper').attr('aria-label', 'Filter');

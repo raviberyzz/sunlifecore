@@ -135,3 +135,16 @@
     padding-right: 8px !important; 
   }
 }
+
+//the signin button breaks to next line when making screen size smaller due to large margins
+@media (min-width: $tab-screen-max) and (max-width: 1281px){
+  .desktop-header-wrapper{
+    .desktop-header-content{ 
+      .desktop-sunlife-navigation {
+        .desktop-navigation{
+          margin-left: 164px !important;
+        }
+      }
+    }
+  }
+}
