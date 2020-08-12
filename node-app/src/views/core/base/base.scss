@@ -288,6 +288,10 @@ a {
     font-size: 0.875rem;
     line-height: 18px;
     color:$blue-legal-text-color;
+    a {
+        font-size: 0.875rem;
+        line-height: 18px;
+    }
 }
 #mainfooter {
     margin-top: 40px;
@@ -521,6 +525,11 @@ a.skip-main:focus, a.skip-main:active {
         h2 {
             font-size: 1.625rem;
         } */
+
+    .container-border-right {
+    border-right: none;  
+    }
+
 }
 /* light orange background*/
 .light-orange-background-wrapper{
