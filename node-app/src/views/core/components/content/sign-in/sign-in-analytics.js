@@ -90,7 +90,7 @@ $(document).ready(function (){
     // for no UserId only
     if ((errorCode!=false) && (errorCode.indexOf("SLNV0001") != -1) && (refer==false)){
         errorCode=errorCode.trim();
-        let EC='slnv001';
+        let EC='slnv0001';
         utag.link({ 
             "ev_action": "onpage_impr", 
             "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
@@ -102,7 +102,7 @@ $(document).ready(function (){
     //for no Password only
     if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer==false)){
         errorCode=errorCode.trim();
-        let EC='slnv003';
+        let EC='slnv0003';
         utag.link({ 
             "ev_action": "onpage_impr", 
             "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
@@ -114,7 +114,7 @@ $(document).ready(function (){
     //for no userID and password both
     if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer==false)){
         errorCode=errorCode.trim();
-        let EC='slnv004';
+        let EC='slnv0004';
         utag.link({ 
             "ev_action": "onpage_impr", 
             "ev_data_one": "signin - csi - "+utag_data.page_subcategory,
@@ -154,7 +154,7 @@ $(document).ready(function (){
     //for no password only
     if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer.indexOf("caHome") != -1)){
         errorCode=errorCode.trim();
-        let EC='slnv003';
+        let EC='slnv0003';
         utag.link({
              "ev_action": "onpage_impr", 
             "ev_data_one": "signin - csi - sunlife.ca", 
@@ -166,7 +166,7 @@ $(document).ready(function (){
     // for no userId and password Both
     if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer.indexOf("caHome") != -1)){
         errorCode=errorCode.trim();
-        let EC='slnv004';
+        let EC='slnv0004';
         utag.link({
              "ev_action": "onpage_impr", 
             "ev_data_one": "signin - csi - sunlife.ca", 
