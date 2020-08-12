@@ -1,5 +1,4 @@
 @import '../../../base/core';
-
 //  sign-in-framework starts here
 .mySlfSignIn {
     // width:100%;
@@ -15,6 +14,13 @@
     }
     .h4{
         p{
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 24px;
+            color: $dark-grey-color;
+            margin:0;
+        }
+       *{
             font-size: 1.125rem;
             font-weight: 700;
             line-height: 24px;
@@ -477,4 +483,12 @@
 // iframe
 iframe {
     border: 0;
+}
+.sign-out-link{
+    font-weight: 700;
+    color: $medium-blue-color;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: $transparent;
 }

@@ -191,4 +191,66 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 /* Iframe accessibility ends here */
+//pushing the function to home button o=f sign out page
+    let pageLang=$('html').attr('lang');
+    if($('span.sign-out-link').length>0){
+        if(pageLang=='fr'){
+            $('span.sign-out-link').attr('onclick','getCSIUrl("fr")');
+        }else{
+            $('span.sign-out-link').attr('onclick','getCSIUrl("en")');
+        }
+    }
 });
+/* signout fucntionality starts here */
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0){
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return null;
+}
+function getCSIUrl(lang){
+    var cookie = readCookie('CCS');
+    var domain = window.location.hostname;
+    var protocol = window.location.protocol;
+    var port = window.location.port;
+    var urlPrefix;
+    if(port != ""){
+        urlPrefix = protocol + '//' + domain + ':' + port;
+    } 
+    else {
+        urlPrefix = protocol + '//' + domain;
+    }
+    var eURL = '/signin/mysunlife/home.wca';
+    var fURL = '/signin/masunlife/home.wca';
+    if(cookie != null) {
+        var vars = cookie.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if(unescape(pair[0]) == 'CSISigninURLe'){
+                if (unescape(pair[1]).indexOf(urlPrefix) > -1){
+                    eURL = unescape(pair[1]);
+                }else{
+                    eURL = urlPrefix + unescape(pair[1]);
+                }
+            } else if(unescape(pair[0]) == 'CSISigninURLf') {
+                if (unescape(pair[1]).indexOf(urlPrefix) > -1){
+                    fURL = unescape(pair[1]);
+                } else {
+                    fURL = urlPrefix + unescape(pair[1]);
+                }
+            }
+        }
+    }
+    if(lang == 'en'){
+        window.open(eURL,'_self');
+    }else {
+        window.open(fURL,'_self');
+    }
+}
+/* signout fucntionality ends here */
