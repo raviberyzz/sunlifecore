@@ -1,4 +1,4 @@
-<sly data-sly-use.options="com.adobe.cq.wcm.core.components.models.form.Options"
+<sly data-sly-use.options="ca.sunlife.web.cms.core.models.FormOptions"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-test.isNotEmpty="${options.items.size}">
     <fieldset class="cmp-form-options cmp-form-options--${options.type.value}">
@@ -6,6 +6,7 @@
             <legend class="cmp-form-options__legend">${options.title}</legend>
             <label class="cmp-form-options__field-label" data-sly-repeat.optionItem="${options.items}">
                 <input class="cmp-form-options__field cmp-form-options__field--${options.type.value}" type="${options.type.value}" name="${options.name}" id="${options.id}"
+                       data-parsley-error-message="${options.constraintMessage}" required="${options.required}"
                        value="${optionItem.value}" checked="${optionItem.selected}" disabled="${optionItem.disabled}"/>
                 <span class="cmp-form-options__field-description">${optionItem.text}</span>
             </label>
