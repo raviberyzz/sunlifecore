@@ -65,20 +65,22 @@ $(document).ready(function () {
                 });
             });
         }
-        
-        // pageName.forEach((element,index) => {
-        //     if(element.match('products and services')){
-        //         let linkText=$(this).text();
-        //         let parentCountry=$(this).parent().parents('li').children('a').text();
-        //         utag.link({
-        //             "asset_type" : "Text Link",
-        //             "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
-        //             "event_type" : "Click",
-        //             "event_title" :  parentCountry+" - "+linkText,
-        //             "page_section" : "Explore products & services"
-        //         });
-        //     }
-        // });
+        // product and services other pages explore product and service section
+        pageName.forEach((element,index) => {
+            if(element.match('products and services') && productTitle!='products and services'){
+                $('.cmp-linkfarm-table ul li a').click(function(e){
+                    let linkText=$(this).text();
+                    let parentCountry=$(this).parent().parents('li').children('a').text();
+                    utag.link({
+                        "asset_type" : "Text Link",
+                        "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
+                        "event_type" : "Click",
+                        "event_title" :  parentCountry+" - "+linkText,
+                        "page_section" : "Explore products & services"
+                    });
+                });
+            }
+        });
 
     /* product and services pages analytics ends here */
     /* contact us page analytics starts here */    
@@ -277,4 +279,17 @@ $(document).ready(function () {
         }
     });
     /* inside language bar link analytics ends here */
+    /* Newsroom page analytics starts here */
+    $('#right-railId .html-component .explore-module a').click(function(){
+        let linkName=$(this).text();
+        let country=$(this).parent().parent().parents('ul.explore-item').find('.content-label').text();
+        utag.link({
+            "asset_type" : "Text Link",
+            "asset_title" : "Triage  - media - newsroom",
+            "event_type" : "Click",
+            "event_title" : country+" - "+linkName,
+            "page_section" : "right rail"
+           });
+    });
+    /* Newsroom page analytics ends here */
 });

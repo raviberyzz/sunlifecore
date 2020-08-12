@@ -478,3 +478,11 @@
 iframe {
     border: 0;
 }
+.sign-out-link{
+    font-weight: 700;
+    color: $medium-blue-color;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: $transparent;
+}
