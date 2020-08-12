@@ -3,7 +3,11 @@
 .no-padding .yellow-icon-white-background .cmp-container > :first-child{
 	height: 100%;
 }
-
+.no-padding  .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text p .primary-blue-button-rte
+{
+    margin-top: 0;
+	
+}
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max) {
 	.no-padding {
 		.yellow-icon-white-background >* {
