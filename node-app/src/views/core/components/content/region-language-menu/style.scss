@@ -355,6 +355,7 @@
                               display: block;
                               padding-bottom: 15px;
                               text-decoration: none;
+                              cursor: default;
 
                             }
                         }
@@ -410,6 +411,7 @@
             height: auto;
             color: inherit;
             margin-bottom: 4px;
+            margin: 1px;
             .first {
                 width: 100%;
                 padding: 0;
