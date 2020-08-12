@@ -11,4 +11,10 @@ $(document).ready(function () {
             });
         }
     }
+
+    //search-result page
+
+$('.right-navigation-wrapper .html-component #search-result-banner-right').parents('.html-component').css('min-height', '0');
+$('.right-navigation-wrapper .html-component #search-result-banner-right').parents('.html-component').css('padding', '0');
+
 });
