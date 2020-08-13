@@ -39,6 +39,15 @@ public interface SiteConfigModel {
   String getDomain();
 
   /**
+   * Gets the staticPath.
+   *
+   * @return the staticPath
+   */
+
+  @ Inject
+  String getStaticPath();
+  
+  /**
    * Gets the site url.
    *
    * @return the site url
