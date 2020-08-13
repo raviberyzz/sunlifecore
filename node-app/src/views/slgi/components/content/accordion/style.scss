@@ -17,7 +17,7 @@
             .cmp-accordion__button{
                 &[aria-expanded="false"] {
                     &::before {
-                        color:$cinnamon-orangeblue;
+                       // color: $cinnamon-orangeblue;
                     }
                 }
                 &[aria-expanded="true"] {
