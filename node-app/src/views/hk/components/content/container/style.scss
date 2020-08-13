@@ -1,8 +1,8 @@
 @import '../../../base/core';
 // Home CTA Button Alignment
-.no-padding .yellow-icon-white-background .cmp-container > :first-child{
+/*.no-padding .yellow-icon-white-background .cmp-container > :first-child{
 	height: 100%;
-}
+}*/
 .no-padding  .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text p .primary-blue-button-rte
 {
     margin-top: 0;
@@ -14,18 +14,6 @@
 			border-top: 1px solid $light-grey-color;			
 		}
 	} 
-}
-
-//IE fix
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .no-padding .yellow-icon-white-background .home-cta-form-wrapper{
-		display: table;
-    	margin-bottom: 40px;
-        width: 100%;
-	}
-    .no-padding .yellow-icon-white-background .cmp-container .text:last-child{
-		padding-bottom: 32px;
-	}
 }
 
 @media all and (-ms-high-contrast:none), all and (-ms-high-contrast:active){
