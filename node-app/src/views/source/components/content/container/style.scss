@@ -34,3 +34,46 @@
     } 
 }
 
+//what time is it widget -- starts here --
+.internationaltime {
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #003946 !important;
+        margin: 0 0 24px;
+    }
+    .content {
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            height: 48px;
+            padding: 0 12px;
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-image: url(../../../../content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+}
+@media (max-width: $mobile-screen-max){
+	.internationaltime .content {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+	.internationaltime .content {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+}
+@media (min-width: $desktop-screen-min){
+	.internationaltime .content {
+		padding-right: 25%;
+		padding-left: 25%;
+	}
+}
+//what time is it widget -- ends here --
+
