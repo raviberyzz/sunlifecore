@@ -12,4 +12,6 @@ $(document).ready(function () {
         $(window).resize(mobileLogoWidthSource);
     }
 
+    $(".mobile-signin-text")[0].innerHTML="Find";
+
 })
