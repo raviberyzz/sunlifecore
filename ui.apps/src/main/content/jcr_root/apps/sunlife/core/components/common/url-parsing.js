@@ -22,5 +22,4 @@ use(function () {
            navPath : navPath
         }
 
-
     });
