@@ -1,6 +1,5 @@
 "use strict";
 use(function () {
-
        var navPath = this.path;
 
     if (navPath == null || navPath.equals("")) {
@@ -8,7 +7,6 @@ use(function () {
             navPath : navPath
         };
     }
-
 
     if(navPath.indexOf("/content/sunlife") != -1){
         if(navPath.indexOf("/?") != -1){
@@ -19,7 +17,6 @@ use(function () {
             navPath = navPath + ".html";
         }
     }
-
 
     return {
            navPath : navPath
