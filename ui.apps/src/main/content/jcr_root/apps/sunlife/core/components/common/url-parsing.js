@@ -1,7 +1,6 @@
 "use strict";
 use(function () {
        var navPath = this.path;
-
     if (navPath == null || navPath.equals("")) {
         return {
             navPath : navPath
