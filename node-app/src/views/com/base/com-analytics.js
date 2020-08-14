@@ -293,7 +293,7 @@ $(document).ready(function () {
     });
     /* Newsroom page analytics ends here */
     /* Home page modal analytics starts here */
-    // onpage loading impreesion
+    // onpage loading impression
         function comModal(){
             if($('#myModal').hasClass('in')){
                 utag.link({
