@@ -289,7 +289,53 @@ $(document).ready(function () {
             "event_type" : "Click",
             "event_title" : country+" - "+linkName,
             "page_section" : "right rail"
-           });
+        });
     });
     /* Newsroom page analytics ends here */
+    /* Home page modal analytics starts here */
+    // onpage loading impression
+        function comModal(){
+            if($('#myModal').hasClass('in')){
+                utag.link({
+                    "asset_type" : "Modal",
+                    "asset_title" : "Modal Impression",
+                    "event_type" : "On Page Impression",
+                    "event_title" : "Modal Impression",
+                    "page_section" : "Modal"
+                });
+            }
+        }
+        setTimeout(comModal,500);
+    // stay button is pressed
+    $('#myModal .modal-body #stayoncom').click(function(){
+        utag.link({
+            "asset_type" : "Button",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Stay on Sunlife.com",
+            "page_section" : "Modal"
+        });
+    });
+    // modal "x" button is pressed
+    $('#myModal .modal-header button.close').click(function(){
+        utag.link({
+            "asset_type" : "Button",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Close modal",
+            "page_section" : "Modal"
+        });
+    });
+    // go modal button or enter key is pressed
+    $('#myModal .modal-body #regionSubmit').click(function(){
+        let countryName=$('#myModal #select-location-popup option:selected').text().trim();
+        utag.link({
+            "asset_type" : "Dropdown",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Country selected - "+countryName,
+            "page_section" : "Modal"
+        });
+    });
+    /* Home page modal analytics ends here */
 });
