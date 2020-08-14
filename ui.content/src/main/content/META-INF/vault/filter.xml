@@ -3,6 +3,8 @@
 	<filter root="/conf/sunlife-apac"/>	
 	<filter root="/conf/SLGI"/>
     <filter root="/conf/global/settings/workflow/models/dam/update_asset" />
+    <filter root="/conf/global/settings/dam/adminui-extension" />
+    <filter root="/conf/global/settings/dam/search" />
     <filter root="/conf/sunlife"/>
     <filter root="/etc/map.dev.publish"/>
     <filter root="/etc/map.sit.publish"/>
