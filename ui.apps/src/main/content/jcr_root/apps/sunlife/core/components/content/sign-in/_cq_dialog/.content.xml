@@ -31,12 +31,10 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <signInHeadingText
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldDescription="Add sign in heading text"
                                                 fieldLabel="Sign in heading text"
-                                                name="./signInHeadingText"
-                                                useFixedInlineToolbar="{Boolean}true"/>
+                                                name="./signInHeadingText"/>
                                             <mobileAppBadge
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"

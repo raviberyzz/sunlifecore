@@ -22,12 +22,39 @@ import com.adobe.cq.wcm.core.components.models.form.Options;
  */
 @ Model (adaptables = SlingHttpServletRequest.class, adapters = Options.class, resourceType = "sunlife/core/components/form/options")
 public class FormOptions extends OptionsImpl {
+	
+  /**
+	* Instantiates a new form options.
+   */
+  public FormOptions() {
+	    super();
+  }
 
   /** The id. */
   @ Inject
   @ Via ("resource")
   @ Optional
   private String id;
+  
+  /**
+   * Gets the constraint message.
+   *
+   * @return the constraint message
+   */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String constraintMessage;
+  
+  /**
+   * Gets the required.
+   *
+   * @return the required
+   */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String required;
 
   /*
    * (non-Javadoc)
@@ -47,4 +74,46 @@ public class FormOptions extends OptionsImpl {
   public void setId(final String id) {
     this.id = id;
   }
+  
+ 
+  
+  
+  /**
+   * Gets the form action.
+   *
+   * @return the form action
+   */
+  public String getRequired() {
+    return required;
+  }
+
+  /**
+   * Sets the form action.
+   *
+   * @param formAction
+   *          the new form action
+   */
+  public void setRequired(final String required) {
+    this.required = required;
+  }
+  
+  /**
+   * Gets the form action.
+   *
+   * @return the form action
+   */
+  public String getConstraintMessage() {
+    return constraintMessage;
+  }
+
+  /**
+   * Sets the form action.
+   *
+   * @param formAction
+   *          the new form action
+   */
+  public void setConstraintMessage(final String constraintMessage) {
+    this.constraintMessage = constraintMessage;
+  }
+  
 }

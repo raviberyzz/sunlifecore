@@ -65,20 +65,22 @@ $(document).ready(function () {
                 });
             });
         }
-        
-        // pageName.forEach((element,index) => {
-        //     if(element.match('products and services')){
-        //         let linkText=$(this).text();
-        //         let parentCountry=$(this).parent().parents('li').children('a').text();
-        //         utag.link({
-        //             "asset_type" : "Text Link",
-        //             "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
-        //             "event_type" : "Click",
-        //             "event_title" :  parentCountry+" - "+linkText,
-        //             "page_section" : "Explore products & services"
-        //         });
-        //     }
-        // });
+        // product and services other pages explore product and service section
+        pageName.forEach((element,index) => {
+            if(element.match('products and services') && productTitle!='products and services'){
+                $('.cmp-linkfarm-table ul li a').click(function(e){
+                    let linkText=$(this).text();
+                    let parentCountry=$(this).parent().parents('li').children('a').text();
+                    utag.link({
+                        "asset_type" : "Text Link",
+                        "asset_title" : "Triage - clients & prospects -products & services - "+productTitle,
+                        "event_type" : "Click",
+                        "event_title" :  parentCountry+" - "+linkText,
+                        "page_section" : "Explore products & services"
+                    });
+                });
+            }
+        });
 
     /* product and services pages analytics ends here */
     /* contact us page analytics starts here */    
@@ -287,7 +289,54 @@ $(document).ready(function () {
             "event_type" : "Click",
             "event_title" : country+" - "+linkName,
             "page_section" : "right rail"
-           });
+        });
     });
     /* Newsroom page analytics ends here */
+    /* Home page modal analytics starts here */
+    // onpage loading impression
+        function comModal(){
+            if($('#myModal').hasClass('in')){
+                utag.link({
+                    "asset_type" : "Modal",
+                    "asset_title" : "Modal Impression",
+                    "event_type" : "On Page Impression",
+                    "event_title" : "Modal Impression",
+                    "page_section" : "Modal"
+                });
+            }
+        }
+        setTimeout(comModal,500);
+    // stay button is pressed
+    $('#myModal .modal-body #stayoncom').click(function(){
+        utag.link({
+            "asset_type" : "Button",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Stay on Sunlife.com",
+            "page_section" : "Modal"
+        });
+    });
+    // modal "x" button is pressed
+    $('#myModal .modal-header button.close').click(function(){
+        utag.link({
+            "asset_type" : "Button",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Close modal",
+            "page_section" : "Modal"
+        });
+    });
+    // go modal button or enter key is pressed
+    $('#myModal .modal-body #regionSubmit').click(function(){
+        let countryName=$('#myModal #select-location-popup option:selected').text().trim();
+        console.log('button pressed'+countryName);
+        utag.link({
+            "asset_type" : "Dropdown",
+            "asset_title" : "Triage - clients & prospects - modal",
+            "event_type" : "Click",
+            "event_title" : "Country selected - "+countryName,
+            "page_section" : "Modal"
+        });
+    });
+    /* Home page modal analytics ends here */
 });
