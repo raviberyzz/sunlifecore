@@ -329,7 +329,7 @@ $(document).ready(function () {
     // go modal button or enter key is pressed
     $('#myModal .modal-body #regionSubmit').click(function(){
         let countryName=$('#myModal #select-location-popup option:selected').text().trim();
-        console.log('button pressed'+country);
+        console.log('button pressed'+countryName);
         utag.link({
             "asset_type" : "Dropdown",
             "asset_title" : "Triage - clients & prospects - modal",
