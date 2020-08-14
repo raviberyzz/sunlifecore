@@ -18,8 +18,16 @@
 //Background Color:
 .light-taupe-50-bg{
     background-color: $light-taupe-50;
+    //border: 1px #e1dcd2 solid;
 }
 
+.audio-file-icon {
+    &::before {
+        content: "\f1c7";
+        font-family: fontawesome;
+        margin-right: 5px;
+    }
+}
 @media (max-width:$mobile-screen-max) {
     #mainfooter {
         .image {

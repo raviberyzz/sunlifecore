@@ -778,6 +778,7 @@ public class BasePageModel {
   public void init() throws LoginException, RepositoryException {
     final String pagePath = currentPage.getPath();
     final String domain = configService.getConfigValues(DOMAIN_STR, pagePath);
+    final String staticPath = configService.getConfigValues(BasePageModelConstants.STATIC_PATH_CONSTANT, pagePath);
     final String locale = configService.getConfigValues(PAGE_LOCALE, pagePath);
     final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
@@ -861,8 +862,8 @@ public class BasePageModel {
     customMetadata.put(TWITTER_DESCRIPTION, socialMediaDescripton);
     customMetadata.put(OG_LOCALE, null != locale ? locale.replace("-", "_") : null);
     if (socialMediaImage != null) {
-      customMetadata.put(OG_IMAGE, domain + socialMediaImage);
-      customMetadata.put(TWITTER_IMAGE, domain + socialMediaImage);
+      customMetadata.put(OG_IMAGE, staticPath + socialMediaImage);
+      customMetadata.put(TWITTER_IMAGE, staticPath + socialMediaImage);
     }
     customMetadata.put(TWITTER_CARD, "summary_large_image");
     // Condition for article pages start
@@ -1384,7 +1385,9 @@ public class BasePageModel {
             }
           }
         }
+        if(relationshipManager.hasLiveRelationship(resource)) {
         addAlternateUrl(sourceResource.getPath());
+        }
       }
       if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(

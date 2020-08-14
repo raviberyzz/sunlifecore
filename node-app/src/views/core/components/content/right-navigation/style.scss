@@ -26,6 +26,7 @@
         font-size: 18px;
         font-weight: 700;
         margin: 0px!important;
+        line-height:23px;
     }
     .lists-wrapper{
         .links{
@@ -164,6 +165,7 @@
     > .separator + .layout-container {
         padding-top: 0;
     }
+
     }
     .legal-text{
         color: $dark-grey-color;
@@ -555,3 +557,17 @@
     }
 }
 /* width of images in right rail for sign-in framework ends here */
+
+//for search result page
+
+.right-navigation-wrapper{
+    > .cmp-container {
+        .html-component {
+            #search-result-banner-right > div {
+                background-color: $light-cool-blue-color;
+                padding: 24px 15px 40px 15px;
+    
+            }
+        }
+    }
+}

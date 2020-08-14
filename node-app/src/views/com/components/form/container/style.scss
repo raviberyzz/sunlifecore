@@ -1,0 +1,24 @@
+@import '../../../base/core';
+
+.form-yellow-wrapper {
+    .icon-text  .icon-style {
+        background: linear-gradient( $medium-blue-color , $blue-gradient-color);
+    }
+    /*.cmp-form-options--drop-down {
+        width: 100%;
+        margin: 6px 0 16px 0;
+    }
+     .button-wrapper .cmp-form-button {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 0 8px 0;
+    }*/
+}
+
+.row.flex-height {
+    .form-yellow-wrapper {
+        height: 100%;
+        
+    }
+    
+}

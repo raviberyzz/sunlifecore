@@ -11,11 +11,70 @@
         border-right: 2px solid $light-grey-color;
     }
 }
+/* for Footer*/
+#mainfooter {
+    .image {
+        padding: 16px 0 16px 15px; }
+    .text {
+        img {
+            background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_grey.png');
+            background-repeat: no-repeat;
+            &:hover {
+                background-image: url('/content/dam/sunlife/legacy/assets/com/Global/IT%20Site%20Administration/images/Globe_blue.png');
+            }
+        }
+    }
+}
 
-/** background yellow Rings to be dropped in mobile view **/
-@media (max-width:$mobile-screen-max) {
+/* background yellow Rings to be dropped in mobile view */
+
+@media (max-width: $mobile-screen-max) {
     .company-highlight-blue-yellow-background {
         background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     } 
 }
+
+//what time is it widget -- starts here --
+.internationaltime {
+    margin-top: -24px;
+    h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #003946 !important;
+        margin: 0 0 24px;
+    }
+    .content {
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            height: 48px;
+            padding: 0 12px;
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-image: url('/content/dam/sunlife/internal/source/images/form-ui-select-dropdown-arrow.png');
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+}
+@media (max-width: $mobile-screen-max){
+	.internationaltime .content {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+	.internationaltime .content {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+}
+@media (min-width: $desktop-screen-min){
+	.internationaltime .content {
+		padding-right: 25%;
+		padding-left: 25%;
+	}
+}
+//what time is it widget -- ends here --
 

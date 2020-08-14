@@ -1,14 +1,9 @@
 @import '../../../base/core';
-/*.no-padding .col-sm-4:last-child .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text
-{
-	position: relative;
-}*/
+
 .no-padding .col-sm-4:last-child .yellow-icon-white-background .cmp-container > .text:last-child .cmp-text p .primary-blue-button-rte
 {
     margin-top: 0;
-	/*position: absolute;
-    bottom: 0;
-    width: calc(100% - 32px);*/
+	
 }
 
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max) {

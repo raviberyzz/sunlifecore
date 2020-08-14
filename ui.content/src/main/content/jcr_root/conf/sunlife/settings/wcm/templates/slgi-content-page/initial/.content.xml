@@ -63,12 +63,21 @@
                     </iconsText>
                 </socialIcons>
             </recommended_products_breadcrumb>
-            <titlebar
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="sunlife/slgi/components/content/titlebar"/>
             <layout_container
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="sunlife/slgi/components/content/layout-container"/>
+                sling:resourceType="sunlife/slgi/components/content/layout-container"
+                modelTitleLevel="p"
+                noc="1"
+                type="normal">
+                <container1
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="sunlife/slgi/components/content/container">
+                    <titlebar
+                        cq:styleIds="[1581071344190]"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="sunlife/slgi/components/content/titlebar"/>
+                </container1>
+            </layout_container>
             <recommended_products_footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/slgi/components/content/recommended-products-article">

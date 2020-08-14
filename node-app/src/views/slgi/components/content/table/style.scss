@@ -3,8 +3,8 @@
 
 /*this is in reference to data table in the slgi style guide*/
 .cmp-table-data-content{
-    border: 1px solid $grey-previous-background-color;
     table{
+        border: 1px solid $grey-previous-background-color;
         tbody{
             tr{
                 th{
@@ -24,17 +24,17 @@
 
 /* Data content table which is specific to SLGI styles start here */
 .data-content-table-slgi{
-    border: 1px solid $grey-previous-background-color;
+   // border: 1px solid $grey-previous-background-color;
     tbody{
         tr{
             > * {
                 padding: 24px;
             }
             &:not(:last-child) {
-                border-bottom: 1px solid $light-grey-color; /* first row underline color */
+                border-bottom: 1px solid $grey-previous-background-color; /* first row underline color */
             }
             &:nth-of-type(2) {
-                border-bottom: 1px solid $grey-previous-background-color; /* remainder row underline color */
+                border-bottom: 1px solid $medium-grey-background; /* remainder row underline color */
             }
             th{
                 background:$white-smoke;
