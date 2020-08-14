@@ -314,7 +314,7 @@
 
 /* link farm table styles start here */
 .cmp-linkfarm-table{
-   
+            display: flow-root;
     /* desktop styles start */
        .desktop-linkfarm-table{
         margin-bottom: 40px;
@@ -355,6 +355,7 @@
                               display: block;
                               padding-bottom: 15px;
                               text-decoration: none;
+                              cursor: default;
 
                             }
                         }
@@ -410,6 +411,7 @@
             height: auto;
             color: inherit;
             margin-bottom: 4px;
+            margin: 1px;
             .first {
                 width: 100%;
                 padding: 0;
@@ -495,6 +497,21 @@
     }
   
     /*mobile styles end here*/
+}
+
+//Link farm table inside flex container 
+
+.row.flex-height {
+}
+.row.flex-height {
+    .cmp-linkfarm-table {
+        .desktop-linkfarm-table {
+            margin-top: 0;
+        }
+        .slf-region .content-region {
+            flex-direction: inherit;
+        }
+    }
 }
 /* link farm table styles end here */
 

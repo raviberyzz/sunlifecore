@@ -106,7 +106,7 @@ table{
        }
       }
       .pdf-link {
-        font-size: 1.8em;
+        font-size: 1rem;
         font-weight: normal;
       }
     }
@@ -144,9 +144,9 @@ table{
           border-top: 1px solid $light-grey-color !important;
           padding: 24px 16px !important;
         }
-         th:first-child {
+        /* th:first-child {
           width: 25%; //table header first child width
-        }
+        } */
       }
     }
      tbody {

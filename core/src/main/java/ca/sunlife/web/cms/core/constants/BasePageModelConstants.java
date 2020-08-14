@@ -52,4 +52,7 @@ public final class BasePageModelConstants {
   
   /** The Constant ENABLE_CONTEXT_HUB_CONSTANT. */
   public static final String ENABLE_CONTEXT_HUB_CONSTANT = "enableContextHub";
+  
+  /** The Constant STATIC_PATH_CONSTANT. */
+  public static final String STATIC_PATH_CONSTANT = "staticPath";
 }
