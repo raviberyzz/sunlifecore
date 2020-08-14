@@ -318,7 +318,6 @@ $(document).ready(function () {
     });
     // modal "x" button is pressed
     $('#myModal .modal-header button.close').click(function(){
-        console.log('close');
         utag.link({
             "asset_type" : "Button",
             "asset_title" : "Triage - clients & prospects - modal",
