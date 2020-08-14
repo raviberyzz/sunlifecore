@@ -318,6 +318,7 @@ $(document).ready(function () {
     });
     // modal "x" button is pressed
     $('#myModal .modal-header button.close').click(function(){
+        console.log('close');
         utag.link({
             "asset_type" : "Button",
             "asset_title" : "Triage - clients & prospects - modal",
@@ -329,6 +330,7 @@ $(document).ready(function () {
     // go modal button or enter key is pressed
     $('#myModal .modal-body #regionSubmit').click(function(){
         let countryName=$('#myModal #select-location-popup option:selected').text().trim();
+        console.log('button pressed'+country);
         utag.link({
             "asset_type" : "Dropdown",
             "asset_title" : "Triage - clients & prospects - modal",
