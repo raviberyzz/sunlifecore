@@ -6,6 +6,7 @@ const hbs = require('hbs')
 const app = express()
 const port = 3000
 const fs = require('fs')
+const {createProxyMiddleware} = require('http-proxy-middleware')
 const watch = require('node-watch')
 // const hostname = '157.227.227.253';
 
@@ -81,7 +82,16 @@ const loadHandlebars = function(viewsPath) {
     })
 }
 
-loadHandlebars(path.join(__dirname, 'src/views'))
+const loadServices = function() {
+    const fileContents = fs.readFileSync('services.properties', 'utf8').split(/\r?\n/);
+    fileContents.forEach(function(line){
+        const props = line.split('=');
+        app.get(props[0], createProxyMiddleware({target: props[1], changeOrigin: true}));
+    });
+}
+
+loadHandlebars(path.join(__dirname, 'src/views'));
+loadServices();
 
 // app.listen(port, hostname, () => console.log(`Sunlife core app started at http://${hostname}:${port}/`))
 
