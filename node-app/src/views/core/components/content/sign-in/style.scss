@@ -492,3 +492,15 @@ iframe {
     cursor: pointer;
     background-color: $transparent;
 }
+
+//sign in specific footer change
+.signin-content-page {
+    #mainfooter {
+        .social-link-icon-wrapper {
+            ul {
+                top: inherit;
+                transform: inherit;
+            }
+        }
+    }
+}
