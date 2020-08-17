@@ -4,7 +4,7 @@
     .icon-text  .icon-style {
         background: linear-gradient( $medium-blue-color , $blue-gradient-color);
     }
-    /*.cmp-form-options--drop-down {
+    .cmp-form-options--drop-down {
         width: 100%;
         margin: 6px 0 16px 0;
     }
@@ -12,7 +12,7 @@
         max-width: 100%;
         width: 100%;
         margin: 0 0 8px 0;
-    }*/
+    }
 }
 
 .row.flex-height {
@@ -21,4 +21,31 @@
         
     }
     
+}
+
+//yellow form tablet view style
+
+@media(min-width:$tab-screen-min) and (max-width:$tab-screen-max) {
+
+    .form-yellow-wrapper {
+        text-align: center;
+        .options {
+            float: none !important;
+            display: inline-block;
+            width: auto !important;
+            vertical-align: top;
+            .cmp-form-options--drop-down {
+                margin: 0;
+            }
+        .button-wrapper  {
+            float: none !important;
+            display: inline-block;
+            width: auto !important;
+            max-width: 275px;
+            vertical-align: top;
+            
+        }
+        }
+    }
+
 }
