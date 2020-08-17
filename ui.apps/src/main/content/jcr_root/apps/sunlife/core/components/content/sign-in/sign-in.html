@@ -19,10 +19,10 @@
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
 
-    <div class="login-container mySlfSignIn">
+    <div class="login-container mySlfSignIn" id="slfSignIn">
         <h2 class="h2 text-center">${signInHeadingText @context ='html'}</h2>
         <div class="download-app visible-xs">
-            <div class="download-app-wrapper" onclick="window.open('${mobileAppBadgeLink @context='uri'}')">
+            <div class="download-app-wrapper" onclick="window.open('${mobileAppBadgeLink @context='+uri+'}')">
                 <div class="mobile-app-text">
                 	${mobileAppBadge @context ='html'}
                 </div>
