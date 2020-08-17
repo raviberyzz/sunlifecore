@@ -462,6 +462,15 @@
             margin-bottom: 16px;
         }
     }
+    .signin-content-page {
+        #mainfooter {
+            .social-link-icon-wrapper {
+                ul {
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
 }
 
 // iframe
