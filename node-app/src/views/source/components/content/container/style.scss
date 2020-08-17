@@ -1,9 +1,10 @@
 @import "../../../base/core";
 @import "../../../../core/components/content/container/style";
 
+/* for company highlight section --- starts here*/
 .company-highlight-blue-yellow-background {
     @extend .company-highlight-yellow-grey-background;
-    background: url(/content/dam/sunlife/internal/source/images/yellow_rings.jpg) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+    background: url(/content/dam/sunlife/internal/source/images/Events_Rings.png) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     .cmp-text {
         color: $white-shade;
     }
@@ -11,7 +12,15 @@
         border-right: 2px solid $light-grey-color;
     }
 }
-/* for Footer*/
+
+@media (max-width: $mobile-screen-max) {
+    .company-highlight-blue-yellow-background {
+        background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+    } 
+}
+/* for company highlight section --- ends here*/
+
+/* for Footer --- starts here*/
 #mainfooter {
     .image {
         padding: 16px 0 16px 15px; }
@@ -25,14 +34,7 @@
         }
     }
 }
-
-/* background yellow Rings to be dropped in mobile view */
-
-@media (max-width: $mobile-screen-max) {
-    .company-highlight-blue-yellow-background {
-        background: linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
-    } 
-}
+/* for Footer --- ends here*/
 
 //what time is it widget -- starts here --
 .internationaltime {
