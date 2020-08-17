@@ -1,9 +1,12 @@
+const gulpSort = require('gulp-sort');
+
 const gulp = require('gulp'),
  cssnano = require('gulp-cssnano'),
  sass = require('gulp-sass'),
  concat = require('gulp-concat'),
  uglify = require('gulp-uglify'),
  browserSync = require('browser-sync').create(),
+ babel = require('gulp-babel'),
  clean = require('gulp-clean'),
  fs   = require('fs'),
  fse = require('fs-extra')
@@ -87,14 +90,24 @@ gulp.task('compile-files', (done) => {
       .pipe(flatten({ includeParents: -1} ))
       .pipe(gulp.dest('public/'+folder))
   });
-  return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,fontsVendorTask,fontsBaseTask);
+  const reactJsTasks = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
+      .pipe(concat('react.js'))
+      .pipe(babel({
+        presets: ["@babel/preset-env", "@babel/preset-react"]
+      }))
+      //.pipe(concat('react.js'))
+      //.pipe(uglify())
+      .pipe(gulp.dest('public/'+folder+'/js'))
+  });
+  return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,reactJsTasks,fontsVendorTask,fontsBaseTask);
 });
 
 gulp.task('browser-reload',(done) => {browserSync.reload();done();});
 
 gulp.task('watch', (done) => {
   console.log('Change detected ...  watching files');
-  gulp.watch(['src/views/**/*.scss','src/views/**/*.css','src/views/**/*.js','src/views/**/resources/*.*'], gulp.series(['compile-files','browser-reload'])); 
+  gulp.watch(['src/views/**/*.scss','src/views/**/*.css','src/views/**/*.js','src/views/**/*.jsx','src/views/**/resources/*.*'], gulp.series(['compile-files','browser-reload'])); 
   done();
 });
 
@@ -110,6 +123,20 @@ gulp.task('compile-sass',() =>{
   return gulp.src('src/views/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist'))
+});
+
+gulp.task('compile-react',(done) =>{
+  const folders = getFolders(srcViews);
+  const reactJsTasks = folders.map((folder)=> {
+    return gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
+      .pipe(concat('components.js'))
+      .pipe(babel({
+        presets: ["@babel/preset-env", "@babel/preset-react"]
+      }))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/'+folder+'/react-components'))
+  });
+  return merge(reactJsTasks);
 });
 
 gulp.task('copy-files',() => {
@@ -204,7 +231,7 @@ const clientLibContentXMLContent = (cName) => {
   '<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"\n'+
    'jcr:primaryType="cq:ClientLibraryFolder"\n'+
    'allowProxy="{Boolean}true"\n' +
-   'jsProcessor="[default:none,min:gcc;languageIn=STABLE;compilationLevel=simple]"\n'+
+   //'jsProcessor="[default:none,min:gcc;languageIn=STABLE;compilationLevel=simple]"\n'+
    'categories="['+cName+']"/>';
 }
 
@@ -214,4 +241,4 @@ gulp.task('copy-build-files',() => {
 });
 
 gulp.task('dev',gulp.series('compile-files','watch','browser-sync'));
-gulp.task('build:dev',gulp.series('clean','copy-files','compile-sass',generateClientLibs,'copy-build-files','clean'));
+gulp.task('build:dev',gulp.series('clean','copy-files','compile-sass','compile-react',generateClientLibs,'copy-build-files','clean'));

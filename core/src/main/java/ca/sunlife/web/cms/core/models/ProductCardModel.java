@@ -380,13 +380,13 @@ public class ProductCardModel {
             break;
 
           case 1 :
-            LOG.info("Article does not contains 1 tag.");
+            LOG.info("Article contains 1 tag.");
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], NUMBER_3));
             LOG.info("Number of results {}", itemList.size());
             break;
 
           case 2 :
-            LOG.info("Article does not contains 2 tags.");
+            LOG.info("Article contains 2 tags.");
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 2));
 
             if (itemList.size() == 2) {
@@ -399,7 +399,7 @@ public class ProductCardModel {
             break;
 
           case NUMBER_3 :
-            LOG.info("Article does not contains 3 tags.");
+            LOG.info("Article contains 3 tags.");
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 0 ], 1));
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 1 ], 1));
             itemList.addAll(getContentFragmentList(queryBuilder, session, articleTags [ 2 ], 1));
