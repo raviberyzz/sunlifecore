@@ -9,7 +9,8 @@
         aria-label="${tabs.accessibilityLabel}"
         aria-multiselectable="false">
         <sly data-sly-test.isActive="${tab.name == tabs.activeItem}"/>
-        <li 
+        <sly data-sly-test.isDynamic = "${tabs.accessibilityLabel}-id-${tabList.index}"/>
+        <li id="${tabs.accessibilityLabel ? isDynamic : ''}"
             class="cmp-tabs__tab${isActive ? ' cmp-tabs__tab--active' : ''}"
             tabindex="${isActive ? '0' : '-1'}"
 	    aria-selected="${isActive ? 'true' : 'false'}"
