@@ -138,13 +138,73 @@
                                             <domain
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/select"
-                                                fieldLabel="Domain"
+                                                fieldLabel="Domain | Target"
                                                 name="./domain">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="None"
+                                                        value=""/>
                                                     <consumer
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Consumer"
-                                                        value="CONSUMER"/>
+                                                        text="Consumer | /mbrportal/req/secure/pphp/personalizedWelcome"
+                                                        value="Consumer | /mbrportal/req/secure/pphp/personalizedWelcome"/>
+                                                    <consumerCA
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Consumer | /mbrportal/req/secure/login/sunlife"
+                                                        value="Consumer | /mbrportal/req/secure/login/sunlife"/>
+                                                    <consumer_x0028_CSI_x0029_
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Consumer(CSI) | /mbrportal/req/secure/pphp/personalizedWelcome"
+                                                        value="Consumer(CSI) | /mbrportal/req/secure/pphp/personalizedWelcome"/>
+                                                    <sponsor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Sponsor | /signin/redirect.wca"
+                                                        value="Sponsor | /signin/redirect.wca"/>
+                                                    <sponsor_x0028_CSI_x0029_
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Sponsor(CSI) | /signin/redirect.wca"
+                                                        value="Sponsor(CSI) | /signin/redirect.wca"/>
+                                                    <misc
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="MISC | /signin/redirect.wca"
+                                                        value="MISC | /signin/redirect.wca"/>
+                                                    <uwManual_x0028_MISC_x0029_
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="UWManual(MISC) | /signin/redirect.wca"
+                                                        value="UWManual(MISC) | /signin/redirect.wca"/>
+                                                    <provider
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Provider | /signin/redirect.wca"
+                                                        value="Provider | /signin/redirect.wca"/>
+                                                    <slgiInv
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="SLGI INV | /slgiinv/investorSignInAction.wca"
+                                                        value="SLGI INV | /slgiinv/investorSignInAction.wca"/>
+                                                    <slgiAdv
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="SLGI ADV | /slgiadv/advisorSignInAction.wca"
+                                                        value="SLGI ADV | /slgiadv/advisorSignInAction.wca"/>
+                                                    <planAdvisor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Plan Advisor | /pa/e/palanding.asp"
+                                                        value="Plan Advisor | /pa/e/palanding.asp"/>
+                                                    <advisor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Advisor | /advisor_portal/servlet/start?action=login"
+                                                        value="Advisor | /advisor_portal/servlet/start?action=login"/>
+                                                    <abc
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="ABC | /secure/e/landing.aspx"
+                                                        value="ABC | /secure/e/landing.aspx"/>
+                                                    <awl
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="AWL | /signin/redirect.wca"
+                                                        value="AWL | /signin/redirect.wca"/>
+                                                    <slgiAdmin
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="SLGI ADMIN | /signin/redirect.wca"
+                                                        value="SLGI ADMIN | /signin/redirect.wca"/>
                                                 </items>
                                             </domain>
                                             <language
@@ -179,26 +239,6 @@
                                                         value="fr-ca"/>
                                                 </items>
                                             </logLang>
-                                            <target
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/select"
-                                                fieldLabel="Target"
-                                                name="./target">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <none
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="None"
-                                                        value=""/>
-                                                    <landing
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="/mysunlifesecure/landing.aspx"
-                                                        value="/mysunlifesecure/landing.aspx"/>
-                                                    <mbrportal
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="/mbrportal/req/secure/pphp/personalizedWelcome"
-                                                        value="/mbrportal/req/secure/pphp/personalizedWelcome"/>
-                                                </items>
-                                            </target>
                                             <errorMsgPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
@@ -207,20 +247,10 @@
                                                 name="./errorMsgPlaceholder"/>
                                             <errorRedirectPath
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                fieldDescription="Add Error Redirect Path"
                                                 fieldLabel="Error Redirect Path"
-                                                name="./errorRedirectPath">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <none
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="None"
-                                                        value=""/>
-                                                    <sunnetHome
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="/signin/mysunlife/home.wca"
-                                                        value="/signin/mysunlife/home.wca"/>
-                                                </items>
-                                            </errorRedirectPath>
+                                                name="./errorRedirectPath"/>
                                             <hiddenMetadata
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
