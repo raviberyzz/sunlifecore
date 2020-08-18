@@ -6244,7 +6244,7 @@
                             <rtePlugins jcr:primaryType="nt:unstructured">
                                 <paraformat
                                     jcr:primaryType="nt:unstructured"
-                                    features="-">
+                                    features="*">
                                     <formats
                                         jcr:primaryType="nt:unstructured"
                                         override="true">
@@ -6254,37 +6254,33 @@
                                             tag="p"/>
                                         <item1
                                             jcr:primaryType="nt:unstructured"
-                                            description="Heading 1"
-                                            tag="h1"/>
-                                        <item2
-                                            jcr:primaryType="nt:unstructured"
                                             description="Heading 2"
                                             tag="h2"/>
-                                        <item3
+                                        <item2
                                             jcr:primaryType="nt:unstructured"
                                             description="Heading 3"
                                             tag="h3"/>
-                                        <item4
+                                        <item3
                                             jcr:primaryType="nt:unstructured"
                                             description="Heading 4"
                                             tag="h4"/>
-                                        <item5
+                                        <item4
                                             jcr:primaryType="nt:unstructured"
                                             description="Heading 5"
                                             tag="h5"/>
-                                        <item6
+                                        <item5
                                             jcr:primaryType="nt:unstructured"
                                             description="Heading 6"
                                             tag="h6"/>
-                                        <item7
+                                        <item6
                                             jcr:primaryType="nt:unstructured"
                                             description="Quote"
                                             tag="blockquote"/>
-                                        <item8
+                                        <item7
                                             jcr:primaryType="nt:unstructured"
                                             description="Horizontal Rule (visual line break)"
                                             tag="hr"/>
-                                        <item9
+                                        <item8
                                             jcr:primaryType="nt:unstructured"
                                             description="Preformatted"
                                             tag="pre"/>
@@ -6292,7 +6288,7 @@
                                 </paraformat>
                                 <misctools
                                     jcr:primaryType="nt:unstructured"
-                                    features="-">
+                                    features="specialchars">
                                     <specialCharsConfig jcr:primaryType="nt:unstructured">
                                         <chars
                                             jcr:primaryType="nt:unstructured"
@@ -6313,42 +6309,46 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 entity="&amp;trade;"
                                                 name="trademark"/>
+                                            <item4
+                                                jcr:primaryType="nt:unstructured"
+                                                entity="&amp;#160;"
+                                                name="nbsp"/>
                                         </chars>
                                     </specialCharsConfig>
                                 </misctools>
                                 <edit
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
+                                    features="paste-plaintext,paste-wordhtml"/>
+                                <lists
+                                    jcr:primaryType="nt:unstructured"
+                                    features="*"/>
+                                <format
+                                    jcr:primaryType="nt:unstructured"
+                                    features="bold,italic,underline"/>
+                                <links
+                                    jcr:primaryType="nt:unstructured"
+                                    features="modifylink,unlink"/>
                                 <findreplace
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
+                                    features="*"/>
                                 <undo
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
+                                    features="*"/>
                                 <spellcheck
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
+                                    features="*"/>
                                 <image
-                                    jcr:primaryType="nt:unstructured"
-                                    features="-"/>
-                                <table
-                                    jcr:primaryType="nt:unstructured"
-                                    features="-"/>
-                                <lists
                                     jcr:primaryType="nt:unstructured"
                                     features="*"/>
                                 <justify
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
-                                <format
+                                    features="*"/>
+                                <table
                                     jcr:primaryType="nt:unstructured"
-                                    features="bold,italic"/>
-                                <links
-                                    jcr:primaryType="nt:unstructured"
-                                    features="modifylink,unlink"/>
+                                    features="*"/>
                                 <subsuperscript
                                     jcr:primaryType="nt:unstructured"
-                                    features="-"/>
+                                    features="*"/>
                             </rtePlugins>
 							<cq:styleGroups jcr:primaryType="nt:unstructured">
 								<item0 cq:styleGroupLabel=" Background Variations"
