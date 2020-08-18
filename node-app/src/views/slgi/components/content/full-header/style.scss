@@ -137,7 +137,7 @@
 }
 
 //the signin button breaks to next line when making screen size smaller due to large margins
-@media (min-width: $tab-screen-max) and (max-width: 1281px){
+@media (min-width: $tab-screen-max) and (max-width: 1280px){
   .desktop-header-wrapper{
     .desktop-header-content{ 
       .desktop-sunlife-navigation {
@@ -147,4 +147,9 @@
       }
     }
   }
+  #signinbutton:lang(fr) {
+    margin-top: -54px !important;
+    padding-top: 4px !important;
+    padding-bottom: 5px !important;
+}
 }
