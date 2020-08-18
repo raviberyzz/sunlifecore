@@ -228,3 +228,15 @@
     background-color: $white-smoke;
   }
 }
+
+/* IE specific styles start */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+  .orange-icon-white-background {
+    .cta-content-icon-wrapper{
+      ul{
+         width:100%;
+      }
+    }
+  } 
+}
+/* IE specific styles end */

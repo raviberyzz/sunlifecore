@@ -473,7 +473,7 @@
             width: calc(100% + 20px);
             > .separator + .layout-container {
                 .cmp-container{
-                    div:first-child {
+                   > div:first-child {
                         padding-top: 0;
                     }
                 }
