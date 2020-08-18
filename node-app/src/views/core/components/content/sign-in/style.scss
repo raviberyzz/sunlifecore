@@ -443,23 +443,32 @@
 //  sign-in-framework ends here 
 @media (max-width: $mobile-screen-max) {
 
-    .row.flex-layout-container,
-    .row.flex-height.flex-layout-container {
-        display: flex;
-        flex-direction: column;
+    // .row.flex-layout-container,
+    // .row.flex-height.flex-layout-container {
+    //     display: flex;
+    //     flex-direction: column;
 
-        .col-sm-8 {
-            order: 2;
-        }
+    //     .col-sm-8 {
+    //         order: 2;
+    //     }
 
-        .col-sm-4 {
-            order: 1;
-        }
-    }
+    //     .col-sm-4 {
+    //         order: 1;
+    //     }
+    // }
 
     .mySlfSignIn {
         .h2 {
             margin-bottom: 16px;
+        }
+    }
+    .signin-content-page {
+        #mainfooter {
+            .social-link-icon-wrapper {
+                ul {
+                    transform: translateX(-50%);
+                }
+            }
         }
     }
 }
