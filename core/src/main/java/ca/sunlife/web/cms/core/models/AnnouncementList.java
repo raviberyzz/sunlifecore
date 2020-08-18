@@ -6,6 +6,7 @@ package ca.sunlife.web.cms.core.models;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -713,8 +714,14 @@ public class AnnouncementList {
       yearsToShow.add(downYear--);
     }
     LOGGER.debug("yearsToShow :: {}", yearsToShow);
-
-    activeYear = Integer.parseInt(currentPage.getPath().substring(currentPage.getPath().lastIndexOf(slash) + 1));
+    try {
+    	activeYear = Integer.parseInt(currentPage.getPath().substring(currentPage.getPath().lastIndexOf(slash) + 1));	
+    }
+    catch(NumberFormatException  e) {
+    	LOGGER.info("URL doesnot contain year");
+    	activeYear= Calendar.getInstance().get(Calendar.YEAR);
+    }
+    
 
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
     if (selectors.length > 0) {
