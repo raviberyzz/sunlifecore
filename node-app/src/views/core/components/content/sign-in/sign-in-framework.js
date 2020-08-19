@@ -19,7 +19,7 @@ $(document).ready(function () {
     }
     /* Get the error code from URL and shows in the proper section of Sign In widget starts here */
     if($(".mySlfSignIn").length>0){
-        domain();
+        //domain();
         function showSignInError() {
             /* Get value of URL parameter */
             function getParameter(param) { 
