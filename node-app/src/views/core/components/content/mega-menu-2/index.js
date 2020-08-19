@@ -15,7 +15,7 @@ $(document).ready(function(){
    var menuHeight=0;
  $( ".cmp-dynamic-megamenu .dropdown-submenu ").hover(
      function(){
-        menuHeight= $(this).parent().parent().parent().parent().height();
+        menuHeight= $(this).parent().parent().parent().parent().parent().parent().height();
           var submenuHeight=$(this).children('.dropdown-menu').height();
          if ( submenuHeight > menuHeight)
          {
@@ -37,7 +37,7 @@ $(document).ready(function(){
    var menuHeight=0;
  $( ".cmp-dynamic-megamenu-grey .dropdown-submenu ").hover(
      function(){
-         menuHeight= $(this).parent().parent().parent().parent().height();
+         menuHeight= $(this).parent().parent().parent().parent().parent().parent().height();
           var submenuHeight=$(this).children('.dropdown-menu').height();
          if ( submenuHeight > menuHeight)
          {
