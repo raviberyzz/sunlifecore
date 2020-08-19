@@ -1,0 +1,11 @@
+@import '../../../base/core';
+@import '../../../../core/base/core.scss';
+
+.nav{
+    .arrow {
+        .dropdown-toggle{
+            padding-left:8px;
+            padding-right:8px;
+        }
+    }
+} 
