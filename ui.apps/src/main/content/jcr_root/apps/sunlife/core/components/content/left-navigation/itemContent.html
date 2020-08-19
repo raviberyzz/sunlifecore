@@ -4,7 +4,7 @@
 	  </sly>
       <sly data-sly-test="${(item.level==1) && !(item.level==0)}" >
           <sly data-sly-test="${item.getChildren.size>0 }">
-              <a href="#" data-toggle="collapse" aria-current="${item.active && 'page'}" aria-expanded="false"
+              <a data-toggle="collapse" aria-current="${item.active && 'page'}" aria-expanded="false"
                class="cmp-navigation__item-link ${item.active ? ' cmp-navigation__item--active' : ''}" >${item.title}</a>
           </sly>
            <sly data-sly-test="${item.getChildren.size==0}">

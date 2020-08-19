@@ -4,211 +4,545 @@
 
 package ca.sunlife.web.cms.core.models;
 
-
 import java.util.List;
+import java.util.regex.Pattern;
+
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.RepositoryException;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.day.cq.wcm.api.Page;
+
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**
- * The Interface SignInModel.
+ * The Class SigninModel.
  *
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = {
-    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface SignInModel {
+@Model(adaptables = { SlingHttpServletRequest.class,
+		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = SignInModel.class, resourceType = "sunlife/core/components/content/sign-in")
+public class SignInModel {
+
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(SignInModel.class);
 	
-  /**
-   * Gets the sign in heading text.
-   *
-   * @return the sign in heading text
-   */
-  @ Inject
-  String getSignInHeadingText();
-  
-   /**
-   * Gets the mobile app badge.
-   *
-   * @return the mobile app badge
-   */
-  @ Inject
-  String getMobileAppBadge();
-
-  /**
-   * Gets the mobile app badge link.
-   *
-   * @return the mobile app badge link
-   */
-  @ Inject
-  String getMobileAppBadgeLink();
-
-  /**
-   * Gets the access id placeholder.
-   *
-   * @return the access id placeholder
-   */
-  @ Inject
-  String getAccessIDPlaceholder();
-  
-   /**
-   * Gets the password placeholder.
-   *
-   * @return the password placeholder
-   */
-  @ Inject
-  String getPasswordPlaceholder();
-  
-  /**
-   * Gets the checkbox label.
-   *
-   * @return the checkbox label
-   */
-  @ Inject
-  String getCheckboxLabel();
-  
-  /**
-   * Gets the sign in button label.
-   *
-   * @return the sign in button label
-   */
-  @ Inject
-  String getSignInButtonLabel();
-  
-  /**
-   * Gets the form action url.
-   *
-   * @return the form action url
-   */
-  @ Inject
-  String getFormActionUrl();
-  
-  /**
-   * Gets the forgot access id label.
-   *
-   * @return the forgot access id label
-   */
-  @ Inject
-  String getForgotAccessIdLabel();
-  
-  /**
-   * Gets the forgot access id link.
-   *
-   * @return the forgot access id link
-   */
-  @ Inject
-  String getForgotAccessIdLink();
-  
-  /**
-   * Gets the forgot password label.
-   *
-   * @return the forgot password label
-   */
-  @ Inject
-  String getForgotPasswordLabel();
-  
-  /**
-   * Gets the forgot password link.
-   *
-   * @return the forgot password link
-   */
-  @ Inject
-  String getForgotPasswordLink();
-  
-  /**
-   * Gets the sign in bottom text.
-   *
-   * @return the sign in bottom text
-   */
-  @ Inject
-  String getSignInBottomText();
-  
-  /**
-   * Gets the domain.
-   *
-   * @return the domain
-   */
-  @ Inject
-  String getDomain();
-  
-  /**
-   * Gets the language.
-   *
-   * @return the language
-   */
-  @ Inject
-  String getLanguage();
-  
-  /**
-   * Gets the loglang.
-   *
-   * @return the loglang
-   */
-  @ Inject
-  String getLogLang();
-  
-  /**
-   * Gets the target.
-   *
-   * @return the target
-   */
-  @ Inject
-  String getTarget();
-
-  /**
-   * Gets the error message placeholder.
-   *
-   * @return the error message placeholder
-   */
-  @ Inject
-  String getErrorMsgPlaceholder();
-
-  /**
-   * Gets the error redirect path.
-   *
-   * @return the error redirect path
-   */
-  @ Inject
-  String getErrorRedirectPath();
-  
-  /**
-   * Gets the hidden metadata.
-   *
-   * @return the hidden metadata
-   */
-  @ Inject
-  List <HiddenMetadata> getHiddenMetadata(); // the name `getHiddenMetadata` corresponds to the multifield name="./hiddenMetadata"
-  
-  
-  /**
-   * The Interface HiddenMetadata.
-   *
-   * @author TCS
-   * @version 1.0
-   */
-
-  @ Model (adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-  interface HiddenMetadata {
-
-    /**
-     * Gets the name.
-     *
-     * @return the name
-     */
+	/** The config service. */
     @ Inject
-    String getName();
+    private SiteConfigService configService;
+    
+    /** The current page. */
+    @ ScriptVariable
+    private Page currentPage;
+    
+    /** The Constant DOMAIN_STR. */
+    private static final String DOMAIN_STR = "domain";
 
-    /**
-     * Gets the value.
-     *
-     * @return the value
-     */
-    @ Inject
-    String getValue();
+	/** The Constant SEPARATOR. */
+	private static final String SEPARATOR = "|";
 
-  }
+	/** The signInHeadingText. */
+	@Inject
+	@Via("resource")
+	private String signInHeadingText;
 
+	/** The mobileAppBadge. */
+	@Inject
+	@Via("resource")
+	private String mobileAppBadge;
+
+	/** The mobileAppBadgeLink. */
+	@Inject
+	@Via("resource")
+	private String mobileAppBadgeLink;
+
+	/** The accessIDPlaceholder. */
+	@Inject
+	@Via("resource")
+	private String accessIDPlaceholder;
+
+	/** The passwordPlaceholder. */
+	@Inject
+	@Via("resource")
+	private String passwordPlaceholder;
+
+	/** The checkboxLabel. */
+	@Inject
+	@Via("resource")
+	private String checkboxLabel;
+
+	/** The signInButtonLabel. */
+	@Inject
+	@Via("resource")
+	private String signInButtonLabel;
+
+	/** The formActionUrl. */
+	@Inject
+	@Via("resource")
+	private String formActionUrl;
+
+	/** The forgotAccessIdLabel. */
+	@Inject
+	@Via("resource")
+	private String forgotAccessIdLabel;
+
+	/** The forgotAccessIdLink. */
+	@Inject
+	@Via("resource")
+	private String forgotAccessIdLink;
+
+	/** The forgotPasswordLabel. */
+	@Inject
+	@Via("resource")
+	private String forgotPasswordLabel;
+
+	/** The forgotPasswordLink. */
+	@Inject
+	@Via("resource")
+	private String forgotPasswordLink;
+
+	/** The signInBottomText. */
+	@Inject
+	@Via("resource")
+	private String signInBottomText;
+
+	/** The domain. */
+	@Inject
+	@Via("resource")
+	private String domain;
+
+	/** The language. */
+	@Inject
+	@Via("resource")
+	private String language;
+
+	/** The logLang. */
+	@Inject
+	@Via("resource")
+	private String logLang;
+
+	/** The target. */
+	private String target;
+
+	/** The errorMsgPlaceholder. */
+	@Inject
+	@Via("resource")
+	private String errorMsgPlaceholder;
+
+	/** The errorRedirectPath. */
+	@Inject
+	@Via("resource")
+	private String errorRedirectPath;
+
+	/** The hiddenMetadata. */
+	@Inject
+	@Via("resource")
+	@Optional
+	private List<HiddenMetadataModel> hiddenMetadata;
+
+	/**
+	 * @return the signInHeadingText
+	 */
+	public String getSignInHeadingText() {
+		return signInHeadingText;
+	}
+
+	/**
+	 * @param signInHeadingText
+	 *            the signInHeadingText to set
+	 */
+	public void setSignInHeadingText(String signInHeadingText) {
+		this.signInHeadingText = signInHeadingText;
+	}
+
+	/**
+	 * @return the mobileAppBadge
+	 */
+	public String getMobileAppBadge() {
+		return mobileAppBadge;
+	}
+
+	/**
+	 * @param mobileAppBadge
+	 *            the mobileAppBadge to set
+	 */
+	public void setMobileAppBadge(String mobileAppBadge) {
+		this.mobileAppBadge = mobileAppBadge;
+	}
+
+	/**
+	 * @return the mobileAppBadgeLink
+	 */
+	public String getMobileAppBadgeLink() {
+		return mobileAppBadgeLink;
+	}
+
+	/**
+	 * @param mobileAppBadgeLink
+	 *            the mobileAppBadgeLink to set
+	 */
+	public void setMobileAppBadgeLink(String mobileAppBadgeLink) {
+		this.mobileAppBadgeLink = mobileAppBadgeLink;
+	}
+
+	/**
+	 * @return the accessIDPlaceholder
+	 */
+	public String getAccessIDPlaceholder() {
+		return accessIDPlaceholder;
+	}
+
+	/**
+	 * @param accessIDPlaceholder
+	 *            the accessIDPlaceholder to set
+	 */
+	public void setAccessIDPlaceholder(String accessIDPlaceholder) {
+		this.accessIDPlaceholder = accessIDPlaceholder;
+	}
+
+	/**
+	 * @return the passwordPlaceholder
+	 */
+	public String getPasswordPlaceholder() {
+		return passwordPlaceholder;
+	}
+
+	/**
+	 * @param passwordPlaceholder
+	 *            the passwordPlaceholder to set
+	 */
+	public void setPasswordPlaceholder(String passwordPlaceholder) {
+		this.passwordPlaceholder = passwordPlaceholder;
+	}
+
+	/**
+	 * @return the checkboxLabel
+	 */
+	public String getCheckboxLabel() {
+		return checkboxLabel;
+	}
+
+	/**
+	 * @param checkboxLabel
+	 *            the checkboxLabel to set
+	 */
+	public void setCheckboxLabel(String checkboxLabel) {
+		this.checkboxLabel = checkboxLabel;
+	}
+
+	/**
+	 * @return the signInButtonLabel
+	 */
+	public String getSignInButtonLabel() {
+		return signInButtonLabel;
+	}
+
+	/**
+	 * @param signInButtonLabel
+	 *            the signInButtonLabel to set
+	 */
+	public void setSignInButtonLabel(String signInButtonLabel) {
+		this.signInButtonLabel = signInButtonLabel;
+	}
+
+	/**
+	 * @return the formActionUrl
+	 */
+	public String getFormActionUrl() {
+		return formActionUrl;
+	}
+
+	/**
+	 * @param formActionUrl
+	 *            the formActionUrl to set
+	 */
+	public void setFormActionUrl(String formActionUrl) {
+		this.formActionUrl = formActionUrl;
+	}
+
+	/**
+	 * @return the forgotAccessIdLabel
+	 */
+	public String getForgotAccessIdLabel() {
+		return forgotAccessIdLabel;
+	}
+
+	/**
+	 * @param forgotAccessIdLabel
+	 *            the forgotAccessIdLabel to set
+	 */
+	public void setForgotAccessIdLabel(String forgotAccessIdLabel) {
+		this.forgotAccessIdLabel = forgotAccessIdLabel;
+	}
+
+	/**
+	 * @return the forgotAccessIdLink
+	 */
+	public String getForgotAccessIdLink() {
+		return forgotAccessIdLink;
+	}
+
+	/**
+	 * @param forgotAccessIdLink
+	 *            the forgotAccessIdLink to set
+	 */
+	public void setForgotAccessIdLink(String forgotAccessIdLink) {
+		this.forgotAccessIdLink = forgotAccessIdLink;
+	}
+
+	/**
+	 * @return the forgotPasswordLabel
+	 */
+	public String getForgotPasswordLabel() {
+		return forgotPasswordLabel;
+	}
+
+	/**
+	 * @param forgotPasswordLabel
+	 *            the forgotPasswordLabel to set
+	 */
+	public void setForgotPasswordLabel(String forgotPasswordLabel) {
+		this.forgotPasswordLabel = forgotPasswordLabel;
+	}
+
+	/**
+	 * @return the forgotPasswordLink
+	 */
+	public String getForgotPasswordLink() {
+		return forgotPasswordLink;
+	}
+
+	/**
+	 * @param forgotPasswordLink
+	 *            the forgotPasswordLink to set
+	 */
+	public void setForgotPasswordLink(String forgotPasswordLink) {
+		this.forgotPasswordLink = forgotPasswordLink;
+	}
+
+	/**
+	 * @return the signInBottomText
+	 */
+	public String getSignInBottomText() {
+		return signInBottomText;
+	}
+
+	/**
+	 * @param signInBottomText
+	 *            the signInBottomText to set
+	 */
+	public void setSignInBottomText(String signInBottomText) {
+		this.signInBottomText = signInBottomText;
+	}
+
+	/**
+	 * @return the domain
+	 */
+	public String getDomain() {
+		return domain;
+	}
+
+	/**
+	 * @param domain
+	 *            the domain to set
+	 */
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	/**
+	 * @return the language
+	 */
+	public String getLanguage() {
+		return language;
+	}
+
+	/**
+	 * @param language
+	 *            the language to set
+	 */
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	/**
+	 * @return the logLang
+	 */
+	public String getLogLang() {
+		return logLang;
+	}
+
+	/**
+	 * @param logLang
+	 *            the logLang to set
+	 */
+	public void setLogLang(String logLang) {
+		this.logLang = logLang;
+	}
+
+	/**
+	 * @return the target
+	 */
+	public String getTarget() {
+		return target;
+	}
+
+	/**
+	 * @param target
+	 *            the target to set
+	 */
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	/**
+	 * @return the errorMsgPlaceholder
+	 */
+	public String getErrorMsgPlaceholder() {
+		return errorMsgPlaceholder;
+	}
+
+	/**
+	 * @param errorMsgPlaceholder
+	 *            the errorMsgPlaceholder to set
+	 */
+	public void setErrorMsgPlaceholder(String errorMsgPlaceholder) {
+		this.errorMsgPlaceholder = errorMsgPlaceholder;
+	}
+
+	/**
+	 * @return the errorRedirectPath
+	 */
+	public String getErrorRedirectPath() {
+		return errorRedirectPath;
+	}
+
+	/**
+	 * @param errorRedirectPath
+	 *            the errorRedirectPath to set
+	 */
+	public void setErrorRedirectPath(String errorRedirectPath) {
+		this.errorRedirectPath = errorRedirectPath;
+	}
+
+	/**
+	 * @return the hiddenMetadata
+	 */
+	public List<HiddenMetadataModel> getHiddenMetadata() {
+		return hiddenMetadata;
+	}
+
+	/**
+	 * @param hiddenMetadata
+	 *            the hiddenMetadata to set
+	 */
+	public void setHiddenMetadata(List<HiddenMetadataModel> hiddenMetadata) {
+		this.hiddenMetadata = hiddenMetadata;
+	}
+
+	/**
+	 * Inits the.
+	 */
+	@PostConstruct
+	public void init() {
+		try {
+			LOGGER.debug("SignInModel :: initial value for domain is {}", domain);
+			final String pagePath = currentPage.getPath();
+		    final String domainName = configService.getConfigValues(DOMAIN_STR, pagePath);
+
+			if (null != domain && !StringUtils.isEmpty(domain)) {
+				String domainTargetArray[] = domain.split(Pattern.quote(SEPARATOR));
+				if (domainTargetArray.length > 1) {
+					domain = domainTargetArray[0].trim();
+					target = domainTargetArray[1].trim();
+					LOGGER.debug("SignInModel :: domain after split is {}", domain);
+					LOGGER.debug("SignInModel :: target after split is {}", target);
+				}
+			}
+			if(null != domainName && !StringUtils.isEmpty(domainName)) {
+				if(null != target && !StringUtils.isEmpty(target)) {
+					target = domainName.concat(target);
+				}
+				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath)) {
+					errorRedirectPath = domainName.concat(errorRedirectPath);
+				}
+				LOGGER.debug("SignInModel :: target is {}", target);
+				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
+			}
+		} catch (NullPointerException e) {
+			LOGGER.error("NullPointerException :: init method of SignInModel :: {}", e);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			LOGGER.error("ArrayIndexOutOfBoundsException :: init method of SignInModel :: {}", e);
+		} catch (LoginException e) {
+			LOGGER.error("LoginException :: init method of SignInModel :: {}", e);
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException :: init method of SignInModel :: {}", e);
+		}
+
+	}
+
+
+	/**
+	 * The Class HiddenMetadataModel.
+	 *
+	 * @author TCS
+	 * @version 1.0
+	 */
+	@Model(adaptables = { SlingHttpServletRequest.class,
+			Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+	public static class HiddenMetadataModel {
+
+		/** The name. */
+		@Inject
+		private String name;
+
+		/** The value. */
+		@Inject
+		private String value;
+
+		/**
+		 * @return the name
+		 */
+		public String getName() {
+			return name;
+		}
+
+		/**
+		 * @param name
+		 *            the name to set
+		 */
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		/**
+		 * @return the value
+		 */
+		public String getValue() {
+			return value;
+		}
+
+		/**
+		 * @param value
+		 *            the value to set
+		 */
+		public void setValue(String value) {
+			this.value = value;
+		}
+
+	}
 
 }
