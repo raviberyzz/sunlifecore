@@ -22,6 +22,6 @@ public @interface SiteConfig {
    * @return the site path
    */
   @ AttributeDefinition (name = "siteConfigPath", description = "Site Config Root Path")
-  String getSitePath ();
+  String getSitePath () default "/content/sunlife/config";
 
 }
