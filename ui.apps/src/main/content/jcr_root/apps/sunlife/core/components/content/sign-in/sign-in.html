@@ -55,9 +55,8 @@
             <input name="REQUESTTYPE" type="hidden" value="SUBMIT" />
             <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
             <input name="REDIRECTPATH" type="hidden" value="" />
-			<sly data-sly-test="${errorRedirectPath}">
-            	<input name="ERRORREDIRPATH" type="hidden" value="${errorRedirectPath}" />
-            </sly>
+            <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? '&nbsp;' : errorRedirectPath}" />
+            
             <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
                 <input name="${attributes.name}" type="hidden" value="${attributes.value}" />
             </sly>
