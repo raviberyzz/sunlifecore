@@ -1,6 +1,13 @@
 $(document).ready(function(){
     //$('.tabs-wrapper .cmp-tabs__tab--active').attr('aria-selected','true');
     var li_arr=$('.cmp-tabs__tablist').children();
+    var url = window.location.href;
+    if(url.indexOf("#")!=-1){
+    var id = url.substring(url.lastIndexOf("#"), url.length);
+        if($(id).length>0){
+         set_active($(id));
+        }
+    }
     $('.cmp-tabs__tab').click(function(){
       set_active($(this));
     });

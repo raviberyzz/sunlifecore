@@ -26,10 +26,14 @@
         .icon-parent{
             margin: 0 auto;
         }
+        .icon-texts{
+            padding: 0px 16px 24px 16px;
+        }
     }
 }
 @media (min-width:$tab-screen-min){
     .content-icon-slgi{
+        min-height:100px;
         .icon-parent{
             float: left;
         }

@@ -151,6 +151,16 @@ $(document).ready(function () {
         }
     }
 /* mobile app badge logo styling ends here */
+/* blank errorredirect path starts here */
+if($('.mySlfSignIn').length>0){
+    if(($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()=='') ||
+    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()==null)||
+    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()==String.fromCharCode(160))){
+        let relativePath=window.location.pathname;
+        $('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value',relativePath);
+    }
+}
+/* blank errorredirect path ends here */
 /* sign in framework accessibility starts here */
 // remember me checkbox enter function
 $(".mySlfSignIn #rememberID").keydown(function(e){
