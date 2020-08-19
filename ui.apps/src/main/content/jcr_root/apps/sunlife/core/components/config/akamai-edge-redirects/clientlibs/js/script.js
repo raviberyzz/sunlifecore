@@ -3,12 +3,53 @@
     var contentPath = window.location.pathname.replace(/\.html.*/gi, '') + '/jcr:content';
     $(document).ready(function () {
         $('#addRule').click(function () {
-            if ($.trim($('input[name="source"]').val()) == "" || $('input[name="source"]').val().indexOf('http') > -1) {
-                $('input[name="source"]').val('');
+            var src = $.trim($('input[name="source"]').val());
+            var dest = $.trim($('input[name="dest').val());
+            var blockedPaths = [];
+            if($('#blockedPaths').val()) {
+                blockedPaths = $('#blockedPaths').val().split(',');
+            }
+            var displayAddError = function(msg) {
+                $('[target="#createRule"] coral-alert').remove();
+                var alert = new Coral.Alert().set({
+                    variant: "error",
+                    content: {
+                      innerHTML: msg
+                    }
+                });
+                $('[target="#createRule"] .coral3-Popover-content form').prepend(alert);
+            };
+            var blockedPath = false;
+            $(blockedPaths).each(function(i,val){
+                if(val == src) {
+                    blockedPath = true;
+                }
+            });
+            if (src == "" || src.indexOf('http') > -1 || src.indexOf('*') >= 0 || blockedPath) {
+                displayAddError('Invalid Source Value');
                 return;
             }
-            if ($.trim($('input[name="dest').val()) == "") {
-                $('input[name="dest').val('');
+            if (dest == "") {
+                displayAddError('Invalid Target Value');
+                return;
+            }
+            if(src.indexOf('/') == 0) {
+                displayAddError('Source Value should not start with /');
+                return;
+            }
+            if(dest.indexOf('http') < 0 && dest.indexOf('/') != 0) {
+                displayAddError('Target value should either starts with http or https or /');
+                return;
+            }
+            src = $('#domain').val().concat(src);
+            var unique = true;
+            $('[data-name="tr-source"]').each(function(){
+                if(src === $.trim($(this).text())) {
+                    unique = false;
+                }
+            });
+            if(!unique) {
+                displayAddError('Rule already exists for specified source');
                 return;
             }
             var nm = new Date().getTime();
@@ -20,10 +61,10 @@
             }
             obj[nodeName.concat('status')] = 'Not Published';
             obj[nodeName.concat('state')] = 'New';
-            obj[nodeName.concat('source')] = $('#domain').val().concat($('input[name="source"]').val());
+            obj[nodeName.concat('source')] = src;
             obj[nodeName.concat('destination')] = destVal;
             obj[nodeName.concat('date')] = nm;
-            var trData = { name: nm, source: $('#domain').val().concat($('input[name="source"]').val()), destination: destVal };
+            var trData = { name: nm, source: src, destination: destVal };
             $.post(contentPath, obj, function (data) {
                 $('input[name="source"]').val('');
                 $('input[name="dest"]').val('');
@@ -70,7 +111,7 @@
                     innerHTML: "Edit Rule"
                 },
                 content: {
-                    innerHTML: '<form class="coral-Form coral-Form--vertical" onsubmit="return false;">' +
+                    innerHTML: '<form class="coral-Form coral-Form--vertical" onsubmit="return false;" id="edit-rule-dailog">' +
                         '<section class="coral-Form-fieldset"><div class="coral-Form-fieldwrapper"><label class="coral-Form-fieldlabel" id="edit-source-label">' + domain + '</label>' +
                         '<input is="coral-textfield" class="coral-Form-field" placeholder="Source" name="edit-source" labelledby="edit-source-label" required value=' + source + ' />' +
                         '<coral-icon class="coral-Form-fieldinfo" icon="infoCircle" size="S" id="edit-source-fieldinfo"></coral-icon>' +
@@ -88,12 +129,53 @@
             document.body.appendChild(dialog);
             $('#editRuleDialog')[0].show();
             $('#edit-save-changes').click(function () {
-                if ($.trim($('input[name="edit-source"]').val()) == "" || $('input[name="edit-source"]').val().indexOf('http') > -1) {
-                    $('input[name="edit-source"]').val('');
+                var src = $.trim($('input[name="edit-source"]').val());
+                var dest = $.trim($('input[name="edit-dest').val());
+                var blockedPaths = [];
+                if($('#blockedPaths').val()) {
+                    blockedPaths = $('#blockedPaths').val().split(',');
+                }
+                var displayAddError = function(msg) {
+                    $('#edit-rule-dailog coral-alert').remove();
+                    var alert = new Coral.Alert().set({
+                        variant: "error",
+                        content: {
+                            innerHTML: msg
+                        }
+                    });
+                    $('#edit-rule-dailog').prepend(alert);
+                };
+                var blockedPath = false;
+                $(blockedPaths).each(function(i,val){
+                    if(val == src) {
+                        blockedPath = true;
+                    }
+                });
+                if (src == "" || src.indexOf('http') > -1 || src.indexOf('*') >= 0 || blockedPath) {
+                    displayAddError('Invalid Source Value');
                     return;
                 }
-                if ($.trim($('input[name="edit-dest').val()) == "") {
-                    $('input[name="edit-dest').val('');
+                if (dest == "") {
+                    displayAddError('Invalid Target Value');
+                    return;
+                }
+                if(src.indexOf('/') == 0) {
+                    displayAddError('Source Value should not start with /');
+                    return;
+                }
+                if(dest.indexOf('http') < 0 && dest.indexOf('/') != 0) {
+                    displayAddError('Target value should either starts with http or https or /');
+                    return;
+                }
+                src = $('#domain').val().concat(src);
+                var unique = true;
+                $('[data-name="tr-source"]').each(function(){
+                    if(src === $.trim($(this).text()) && $(this).parents('tr').data('name') != nName) {
+                        unique = false;
+                    }
+                });
+                if(!unique) {
+                    displayAddError('Rule already exists for specified source');
                     return;
                 }
                 var obj = {};
@@ -104,10 +186,10 @@
                 }
                 obj[nodeName.concat('status')] = 'Not Published';
                 obj[nodeName.concat('state')] = 'Edit';
-                obj[nodeName.concat('source')] = $('#domain').val().concat($('input[name="edit-source"]').val());
+                obj[nodeName.concat('source')] = src;
                 obj[nodeName.concat('destination')] = destVal;
                 obj[nodeName.concat('date')] = new Date().getTime();
-                var trData = { name: nName, source: $('#domain').val().concat($('input[name="edit-source"]').val()), destination: destVal };
+                var trData = { name: nName, source: src, destination: destVal };
                 $.post(contentPath, obj, function (data) {
                     $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-source"]').text(trData.source);
                     $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-destination"]').text(trData.destination);
