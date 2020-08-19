@@ -473,11 +473,17 @@ public class SignInModel {
 				}
 			}
 			if(null != domainName && !StringUtils.isEmpty(domainName)) {
-				target = domainName.concat(target);
-				errorRedirectPath = domainName.concat(errorRedirectPath);
+				if(null != target && !StringUtils.isEmpty(target)) {
+					target = domainName.concat(target);
+				}
+				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath)) {
+					errorRedirectPath = domainName.concat(errorRedirectPath);
+				}
 				LOGGER.debug("SignInModel :: target is {}", target);
 				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
 			}
+		} catch (NullPointerException e) {
+			LOGGER.error("NullPointerException :: init method of SignInModel :: {}", e);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			LOGGER.error("ArrayIndexOutOfBoundsException :: init method of SignInModel :: {}", e);
 		} catch (LoginException e) {
