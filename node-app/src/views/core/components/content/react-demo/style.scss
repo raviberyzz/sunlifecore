@@ -1,28 +1,28 @@
 @import '../../../base/core'; 
 .stock-ticker-wrapper{
     .share-performance {
-        background: #f3cd66;
-        border-top: 1px solid #eaab00;
-        border-bottom: 1px solid #eaab00;
+        background: $medium-yellow-background;
+        border-top: 1px solid $medium-yellow-background;
+        border-bottom: 1px solid $medium-yellow-background;
         font-size: 18px;
         padding: 24px 0 11px;
     }
     .share-performance.new {
-        background: #ffcb05;
-        border-top: 1px solid #ffcb05;
-        border-bottom: 1px solid #ffcb05;
+        background: $medium-yellow-background;
+        border-top: 1px solid $medium-yellow-background;
+        border-bottom: 1px solid $medium-yellow-background;
         font-size: 16px;
         padding: 24px 0 11px;
     }
     .share-performance.new {
-        padding-left: 3%;
-        padding-right: 5%;
+        padding-left: 32px;
+        padding-right: 32px;
     }
     .stock-row.new {
         margin-bottom: 0%;
     }
     .slf-icon-reg {
-        border: 2px solid white;
+        border: 2px solid $white-shade;
         border-radius: 100%;
         margin: 0 auto;
         top: -7px;
@@ -32,7 +32,7 @@
         width: 64px;
     }
     .circle-gradient-blue {
-        background: linear-gradient(#004C6C, #003946) !important;
+        background: linear-gradient($medium-blue-color, $blue-gradient-color) !important;
     }
     .icon-reg {
         top: 18px;
@@ -64,11 +64,10 @@
         padding-top: 1% !important;
     }
     strong {
-        font-family: sunlife-sans;
         font-weight: 700;
     }
     .share-performance .share-separator {
-        border-right: 1px solid #bea35b;
+        border-right: 1px solid $yellow-separator-border;
         height: 30px;
         display: inline-block;
         /* margin: 0 18px; */
@@ -91,7 +90,7 @@
         float: left;
          .mega-share {
            
-            background: #D7D7D7;
+            background: $light-grey-color;
             width: 246px;
             display: block;
             margin: 15px;
@@ -112,7 +111,7 @@
         }
         .mega-tsx {
             font-size: 18px;
-            border-bottom: 1px solid #c1c1c1;
+            border-bottom: 1px solid $border-grey-color;
             margin-bottom: 10px;
         }
         .mega-nyse {
@@ -190,7 +189,7 @@
         }
         .share-performance .share-separator {
             border-right: 0;
-            border-top: 1px solid #bea35b;
+            border-top: 1px solid $yellow-separator-border;
             width: 30%;
             display: block;
             margin: 18px auto -12px;

@@ -27,33 +27,35 @@ class ReactDemo extends React.Component {
 	}
   getStockPrice(){
     var resultArr = {};
-    fetch("/stockticker/getIndices")
-      .then(res => res.json())
-      .then((res) => {
-          for(var i=0; i<res.lookup_results.quote.length; i++){
-            if(res.lookup_results.quote[i].exch == "TSX" || res.lookup_results.quote[i].exch == "NYSE"){
-              resultArr[res.lookup_results.quote[i].exch] = res.lookup_results.quote[i];
-            }
+    $.ajax({
+      type: "GET",
+      url: "/stockticker/getIndices",
+      dataType: "json",
+      success: (res) => {
+        for(var i=0; i<res.lookup_results.quote.length; i++){
+          if(res.lookup_results.quote[i].exch == "TSX" || res.lookup_results.quote[i].exch == "NYSE"){
+            resultArr[res.lookup_results.quote[i].exch] = res.lookup_results.quote[i];
           }
-          Object.keys(resultArr).map((key,index) => {
-            if(this.state.pageLang == "fr"){
-              resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2).replace('.',',');
-              resultArr[key].currency = resultArr[key].currency.replace("CAD", "CA").replace("USD", "US");
-            }
-            else{
-              resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2);
-              resultArr[key].currency = resultArr[key].currency.replace("CAD", "C").replace("USD", "US");
-            }
-          })
-          this.setState({
-            resultArr: resultArr
-          })
-          console.log(this.state.resultArr);
         }
-      )
-      .catch((err) => {
+        Object.keys(resultArr).map((key,index) => {
+          if(this.state.pageLang == "fr"){
+            resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2).replace('.',',');
+            resultArr[key].currency = resultArr[key].currency.replace("CAD", "CA").replace("USD", "US");
+          }
+          else{
+            resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2);
+            resultArr[key].currency = resultArr[key].currency.replace("CAD", "C").replace("USD", "US");
+          }
+        })
+        this.setState({
+          resultArr: resultArr
+        })
+        console.log(this.state.resultArr);
+      },
+      error: (err) => {
         console.log(err);
-      })
+      }
+    });
   }
   render() {
     return (
