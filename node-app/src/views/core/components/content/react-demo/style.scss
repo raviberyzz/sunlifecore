@@ -12,20 +12,25 @@
         border-top: 1px solid $medium-yellow-background;
         border-bottom: 1px solid $medium-yellow-background;
         font-size: 16px;
-        padding: 24px 0 11px;
+        // padding: 24px 0 11px;
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
     .share-performance.new {
         padding-left: 32px;
         padding-right: 32px;
     }
-    .stock-row.new {
-        margin-bottom: 0%;
+    .share-performance.new > .col-xs-12{
+        padding: 0;
+    }
+    .stock-row.new > .col-md-1{
+        padding: 0;
     }
     .slf-icon-reg {
         border: 2px solid $white-shade;
         border-radius: 100%;
         margin: 0 auto;
-        top: -7px;
+        // top: -7px;
         position: relative;
         font-size: 32px;
         height: 64px;
@@ -33,6 +38,7 @@
     }
     .circle-gradient-blue {
         background: linear-gradient($medium-blue-color, $blue-gradient-color) !important;
+        margin-left: 0;
     }
     .icon-reg {
         top: 18px;
@@ -41,7 +47,9 @@
         content: "\f080";
     }
     .stock-label.new {
-        padding-top: 1%;
+        // padding-top: 1%;
+        padding-top: 16px;
+        padding-left: 0;
     }
     h2{
         margin-top: 0 !important;
@@ -58,10 +66,10 @@
         line-height: 23px;
     }
     .stock-detail.new {
-        padding-top: 1% !important;
-    }
-    .stock-label.new {
-        padding-top: 1% !important;
+        // padding-top: 1% !important;
+        padding-top: 16px;
+        text-align: right;
+        padding-right: 0;
     }
     strong {
         font-weight: 700;
@@ -71,8 +79,12 @@
         height: 30px;
         display: inline-block;
         /* margin: 0 18px; */
-        margin: 0px 16px 0px 11px;
+        // margin: 0px 16px 0px 11px;
         vertical-align: middle;
+        margin: 0 24px;
+    }
+    .disclaimer-section .col-xs-12{
+        padding: 0;
     }
     .stock-disclaimer a {
         font-size: 14px;
@@ -143,12 +155,15 @@
 }
 @media only screen and (max-device-width: $tab-screen-max) and (min-device-width: $tab-screen-min) and (orientation: landscape){
     .stock-ticker-wrapper{
-        .share-performance.new {
-            padding-left: 3% !important;
-            padding-right: 0% !important;
-        }
+        // .share-performance.new {
+        //     padding-left: 3% !important;
+        //     padding-right: 0% !important;
+        // }
         .stock-label.new {
             margin-bottom: -2% !important;
+        }
+        .stock-detail.new {
+            text-align: left;
         }
     }
 }
@@ -196,6 +211,9 @@
         }
         .stock-disclaimer {
             margin-top: 15px;
+        }
+        .stock-detail.new {
+            text-align: center;
         }
     }
 }
