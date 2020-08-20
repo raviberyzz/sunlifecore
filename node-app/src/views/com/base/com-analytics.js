@@ -66,8 +66,8 @@ $(document).ready(function () {
             });
         }
         // product and services other pages explore product and service section
-        pageName.forEach((element,index) => {
-            if(element.match('products and services') && productTitle!='products and services'){
+        $(pageName).each(function(index,item) {
+            if(item.match('products and services') && productTitle!='products and services'){
                 $('.cmp-linkfarm-table ul li a').click(function(e){
                     let linkText=$(this).text();
                     let parentCountry=$(this).parent().parents('li').children('a').text();
