@@ -474,10 +474,10 @@ public class SignInModel {
 			}
 			if(null != domainName && !StringUtils.isEmpty(domainName)) {
 				if(null != target && !StringUtils.isEmpty(target)) {
-					target = domainName.concat(target);
+					target = domainName.concat(target.trim());
 				}
 				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath)) {
-					errorRedirectPath = domainName.concat(errorRedirectPath);
+					errorRedirectPath = domainName.concat(errorRedirectPath.trim());
 				}
 				LOGGER.debug("SignInModel :: target is {}", target);
 				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
