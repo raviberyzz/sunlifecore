@@ -50,7 +50,7 @@ class ReactDemo extends React.Component {
         this.setState({
           resultArr: resultArr
         })
-        console.log(this.state.resultArr);
+        // console.log(this.state.resultArr);
       },
       error: (err) => {
         console.log(err);
@@ -92,7 +92,7 @@ class ReactDemo extends React.Component {
                         </span>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row disclaimer-section">
                       <div class="col-md-1 visible-md visible-lg"></div>
                       <div class="col-xs-12 col-sm-12 col-md-11">
                         <p class="stock-disclaimer new">
