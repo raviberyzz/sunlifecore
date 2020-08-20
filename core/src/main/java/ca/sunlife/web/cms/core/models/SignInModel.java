@@ -473,11 +473,11 @@ public class SignInModel {
 				}
 			}
 			if(null != domainName && !StringUtils.isEmpty(domainName)) {
-				if(null != target && !StringUtils.isEmpty(target)) {
-					target = domainName.concat(target.trim());
+				if(null != target && !StringUtils.isEmpty(target.trim())) {
+					target = domainName.concat(target);
 				}
-				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath)) {
-					errorRedirectPath = domainName.concat(errorRedirectPath.trim());
+				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
+					errorRedirectPath = domainName.concat(errorRedirectPath);
 				}
 				LOGGER.debug("SignInModel :: target is {}", target);
 				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
