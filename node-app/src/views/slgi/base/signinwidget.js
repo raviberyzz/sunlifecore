@@ -3,14 +3,28 @@ var contingencyWidgetDisplayed = false;
 var signinDataCallDone = false;
 var providerURL;
 var clientIntialForgotaccess = $("#forgot_access").attr("href");
-
-
 var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
+var sunnetUrl;
+
+//checks hostname to set sunnet url
+if (hostname == 'www.sunlifeglobalinvestments.com') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if (hostname == 'cmsstage-sunlifeglobalinvestments.ca.sunlife') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else if (hostname == 'stage-www.sunlifeglobalinvestments.com') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else {
+	sunnetUrl = "https://sit-www.sunnet.sunlife.com";
+}
 
 // By default assign Advisor URL
-providerURL = (lang == 'fr')
-	? "https://sit-www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
-	: "https://sit-www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
+
+if (lang == 'fr') {
+	providerURL = sunnetUrl + "/signin/slgiadv/f/signinInfo.wca";
+}
+else {
+	providerURL = sunnetUrl + "/signin/slgiadv/e/signinInfo.wca";
+}
 
 function handleUserSelection(selectedVal) {
 	var url, targetPath, errorPath, forgotPassword, forgotAccess, saveidentity, esaveid, clientip;
@@ -58,8 +72,8 @@ function handleUserSelection(selectedVal) {
 			: "/signin/slgiadv/e/home.wca";
 
 		providerURL = (lang == 'fr')
-			? "https://sit-www.sunnet.sunlife.com/signin/slgiadv/f/signinInfo.wca"
-			: "https://sit-www.sunnet.sunlife.com/signin/slgiadv/e/signinInfo.wca";
+			? sunnetUrl + "/signin/slgiadv/f/signinInfo.wca"
+			: sunnetUrl + "/signin/slgiadv/e/signinInfo.wca";
 
 		// Change Hidden input val
 		targetPath = "/slgiadv/advisorSignInAction.wca";
@@ -69,12 +83,12 @@ function handleUserSelection(selectedVal) {
 	}
 	else if (selectedVal == 'SLGIINV') {
 		url = (lang == "fr")
-			? "https://sit-www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
-			: "https://sit-www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
+			? sunnetUrl + "/masunlife/slgiinv/f/signinInfo.wca"
+			: sunnetUrl + "/mysunlife/slgiinv/e/signinInfo.wca";
 
 		providerURL = (lang == 'fr')
-			? "https://sit-www.sunnet.sunlife.com/masunlife/slgiinv/f/signinInfo.wca"
-			: "https://sit-www.sunnet.sunlife.com/mysunlife/slgiinv/e/signinInfo.wca";
+			? sunnetUrl + "/masunlife/slgiinv/f/signinInfo.wca"
+			: sunnetUrl + "/mysunlife/slgiinv/e/signinInfo.wca";
 
 		errorPath = (lang == "fr")
 			? "/signin/slgiinv/f/home.wca"
@@ -140,42 +154,42 @@ $(document).ready(function () {
 
 	// deeplink handler for public pages
 	/* $('.deeplink').click(function () {
-					console.log("before hiting ping url in mbrportal");
-					var deepLinkName = $(this).attr('deepLinkname');
+																	console.log("before hiting ping url in mbrportal");
+																	var deepLinkName = $(this).attr('deepLinkname');
 
-					$.ajax({
-									url: 'https://dev-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping', xhrFields: { withCredentials: true },
+																	$.ajax({
+																																	url: 'https://dev-www.sunnet.sunlife.com/mbrportal/req/externalPingServices/ping', xhrFields: { withCredentials: true },
 
 
-									success: function (data, status, xhr) {
-													console.log("return code " + xhr.status);
-													var response;
-													try {
-																	response = JSON.parse(data);
-																	if (xhr.status == "200" && response.status == "OK") {
-																					window.location.href =
-																									"https://www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC=" +
-																									deepLinkName;
-																	}
-													} catch (e) {
-																	$("#signin-widget-modal").on("shown.bs.modal", function () {
-																					updateSignInFormFromDeeplink(
-																									"form_signon",
-																									deepLinkName
-																					);
+																																	success: function (data, status, xhr) {
+																																																	console.log("return code " + xhr.status);
+																																																	var response;
+																																																	try {
+																																																																	response = JSON.parse(data);
+																																																																	if (xhr.status == "200" && response.status == "OK") {
+																																																																																	window.location.href =
+																																																																																																	"https://www.sunnet.sunlife.com/redirectBreak.html?RedirectBreak=1&LINK=PPHP_GBC&FC=" +
+																																																																																																	deepLinkName;
+																																																																	}
+																																																	} catch (e) {
+																																																																	$("#signin-widget-modal").on("shown.bs.modal", function () {
+																																																																																	updateSignInFormFromDeeplink(
+																																																																																																	"form_signon",
+																																																																																																	deepLinkName
+																																																																																	);
+																																																																	});
+																																																																	$("#signin-widget-modal").modal("show");
+																																																	}
+																																	},
+																																	error: function (XMLHttpRequest, textStatus, errorThrown) {
+																																																	console.log("Status: " + textStatus + " Error: " + errorThrown);
+																																																	$("#signin-widget-modal").on("shown.bs.modal", function () {
+																																																																	updateSignInFormFromDeeplink("form_signon", deepLinkName);
+																																																	});
+																																																	$("#signin-widget-modal").modal("show");
+																																	}
 																	});
-																	$("#signin-widget-modal").modal("show");
-													}
-									},
-									error: function (XMLHttpRequest, textStatus, errorThrown) {
-													console.log("Status: " + textStatus + " Error: " + errorThrown);
-													$("#signin-widget-modal").on("shown.bs.modal", function () {
-																	updateSignInFormFromDeeplink("form_signon", deepLinkName);
-													});
-													$("#signin-widget-modal").modal("show");
-									}
-					});
-					return false;
+																	return false;
 	}); */
 
 });
@@ -536,7 +550,7 @@ if (currentSignInForm == "form_signon") {
 		  $("#contigency-widget").show();
 } else if (currentSignInForm == "form_signon_mobile") {
 		  $("#contigency-widget-mobile").show();
- 
+
 } else if (currentSignInForm == "form_signon_pinbar"){
 		  $("#contigency-widget-pinbar").show();
 }*/
@@ -749,7 +763,7 @@ isSubmitted = false;
                                                                                 id = id.replace("!", ";");
                                                                 }
                                                 } else if (id.charAt(i) == "*") {
-                                                                if (i == 0) IsSaveId = true;
+                                                               if (i == 0) IsSaveId = true;
                                                                 id = id.replace("*", "!");
                                                 }
                                 }
