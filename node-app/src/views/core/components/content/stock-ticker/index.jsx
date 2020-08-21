@@ -1,4 +1,4 @@
-class ReactDemo extends React.Component {
+class stockTicker extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -129,4 +129,4 @@ class ReactDemo extends React.Component {
     );
   }
 }
-reactComponents["react-demo"] = ReactDemo;
+reactComponents["stock-ticker"] = stockTicker;
