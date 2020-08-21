@@ -19,7 +19,7 @@ $(document).ready(function () {
     }
     /* Get the error code from URL and shows in the proper section of Sign In widget starts here */
     if($(".mySlfSignIn").length>0){
-        domain();
+        //domain();
         function showSignInError() {
             /* Get value of URL parameter */
             function getParameter(param) { 
@@ -154,8 +154,8 @@ $(document).ready(function () {
 /* blank errorredirect path starts here */
 if($('.mySlfSignIn').length>0){
     if(($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()=='') ||
-    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()==null)||
-    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()==String.fromCharCode(160))){
+    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()==String.fromCharCode(160)||
+    ($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()=='&nbsp;'))){
         let relativePath=window.location.pathname;
         $('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value',relativePath);
     }

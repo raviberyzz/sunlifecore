@@ -22,4 +22,7 @@
 	<asc-sunlife-home-page/>
     <asc-sunlife-content-page/>
     <asc-sunlife-experience-fragment/>
+	<slcm-home-page/>
+    <slcm-content-page/>
+    <slcm-experience-fragment/>
 </jcr:root>

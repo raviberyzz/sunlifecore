@@ -151,6 +151,11 @@
 }
 /* Cross Sell Cta Wrapper Ends Here */
 
+/* content highlights start here */
+.content-highlight {
+  background-color: $white-smoke;
+}
+/* content highlights end here */
 /* Desktop only styles start */
 @media (min-width: $desktop-screen-min){
   .cta-content-icon-wrapper .icon-style.fa-map-o {
