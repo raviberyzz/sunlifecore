@@ -1,11 +1,11 @@
 var multiPurposeComponentConfig = [
     {
         "componentName": "Stock Ticker Component",
-        "reactComponentName": "react-demo",
+        "reactComponentName": "stock-ticker",
         "props" : [
             {
                 name: "stockTickerType",
-                label: "Stock Ticker Type",
+                label: "Stock Ticker Type (yellow or grey)",
                 value: "yellow",
                 required: true
             },
@@ -17,7 +17,7 @@ var multiPurposeComponentConfig = [
             },
             {
                 name: "stockTickerHeadingText",
-                label: "",
+                label: "Heading Text",
                 value: "Stock Ticker Heading Text",
                 required: true
             },
@@ -50,21 +50,6 @@ var multiPurposeComponentConfig = [
                 label: "Disclaimer Link",
                 value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
                 required: true
-            }
-        ]
-    },{
-        "componentName": "Stock Ticker Component 2",
-        "reactComponentName": "StockTickerComponent2",
-        "props" : [
-            {
-                name: "prop1",
-                label: "Heading Text",
-                type: "text"
-            },
-            {
-                name: "prop2",
-                label: "Heading Text 2",
-                type: "text"
             }
         ]
     }
