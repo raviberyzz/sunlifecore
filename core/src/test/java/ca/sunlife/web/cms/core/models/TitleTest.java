@@ -36,6 +36,7 @@ public class TitleTest {
 	
 	@ Test
 	void testInit() {
+		title.init();
 		title.setText("Test title");
 		when(currentPage.getPageTitle()).thenReturn("page title");
 		title.init();
