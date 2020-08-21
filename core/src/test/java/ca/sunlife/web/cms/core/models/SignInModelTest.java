@@ -3,25 +3,29 @@
  */
 package ca.sunlife.web.cms.core.models;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jcr.RepositoryException;
+
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.ValueMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.day.cq.wcm.api.Page;
 
+import ca.sunlife.web.cms.core.models.SignInModel.HiddenMetadataModel;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-
-import static org.mockito.Mockito.when;
-
-import javax.jcr.RepositoryException;
-
-import org.apache.sling.api.resource.LoginException;
-import org.apache.sling.api.resource.ValueMap;
-
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
@@ -33,26 +37,29 @@ class SignInModelTest {
 
 	SignInModel sm;
 
-	@Mock
 	private Page currentPage;
 
 	@Mock
 	private ValueMap valueMap;
 
 	final static String PAGE_PATH = "/content/sunlife/signin/en";
-
+	
+	private SiteConfigService configService;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
 		sm = new SignInModel();
+		currentPage = Mockito.mock(Page.class);
+		configService = Mockito.mock(SiteConfigService.class);
+		FieldUtils.getDeclaredField(SignInModel.class, "currentPage", true).set(sm, currentPage);
+		FieldUtils.getDeclaredField(SignInModel.class, "configService", true).set(sm, configService);
 		MockitoAnnotations.initMocks(this);
-		when(currentPage.getPath()).thenReturn(PAGE_PATH);
 	}
 
-	@Mock
-	private SiteConfigService configService;
+	
 
 	/**
 	 * Test method for
@@ -193,7 +200,7 @@ class SignInModelTest {
 	@Test
 	void testSetDomain() {
 		sm.setDomain("https://cmsdev-auth.ca.sunlife");
-		assertTrue(sm.getDomain() == "Not yet implemented");
+		assertTrue(sm.getDomain() == "https://cmsdev-auth.ca.sunlife");
 	}
 
 	/**
@@ -252,8 +259,15 @@ class SignInModelTest {
 	 */
 	@Test
 	void testSetHiddenMetadata() {
-		sm.setHiddenMetadata(null);
-		assertTrue(sm.getHiddenMetadata() == null);
+		HiddenMetadataModel hiddenMetadataModel = new HiddenMetadataModel();
+		List<HiddenMetadataModel> hiddenMetadataModelList = new ArrayList<HiddenMetadataModel>();
+		hiddenMetadataModel.setName("testname");
+		hiddenMetadataModel.setValue("testValue");
+		assertNotNull(hiddenMetadataModel.getName());
+		assertNotNull(hiddenMetadataModel.getValue());
+		hiddenMetadataModelList.add(hiddenMetadataModel);
+		sm.setHiddenMetadata(hiddenMetadataModelList);
+		assertNotNull(sm.getHiddenMetadata());
 	}
 
 	/**
@@ -261,7 +275,7 @@ class SignInModelTest {
 	 */
 	@Test
 	void testInit() {
-		//when(currentPage.getPath()).thenReturn(PAGE_PATH);
+		when(currentPage.getPath()).thenReturn(PAGE_PATH);
 		//String pagePath = PAGE_PATH;
 		try {
 			when(configService.getConfigValues("domain", PAGE_PATH))
