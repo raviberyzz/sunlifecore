@@ -28,6 +28,23 @@
         margin-right: 5px;
     }
 }
+
+//For news room bullet points
+.news-announcement {
+    ul {
+        margin-left: 28px;
+        li::before {
+            content: "\2022";
+            color: $medium-yellow-background;
+            font-weight: bold;
+            display: inline-block;
+            width: 1rem;
+            margin-left: -1em;
+        }
+    }
+     
+} 
+
 @media (max-width:$mobile-screen-max) {
     #mainfooter {
         .image {
