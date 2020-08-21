@@ -20,10 +20,14 @@
         $(props).each(function(i, data){
             $formFixedColumn.append(coralFormField(data.name, data.value?data.value:'', data.label, data.required?'required':''));
         });
-        var componentData = JSON.parse($('[name="./componentData"]').val());
-        $.each(componentData, function(key,val) {
-            $('[name="'+key+'"]').val(val);
-        });
+        var componentData = $('[name="./componentData"]').val();
+        if(componentData!=undefined && componentData!=''){
+           var componentData = JSON.parse($('[name="./componentData"]').val());
+            $.each(componentData, function(key,val) {
+                $('[name="'+key+'"]').val(val);
+            });
+        }
+
         $('.custom-dailog-field > input').keyup(function(){
             var data = {};
             $('.custom-dailog-field > input').each(function(){
