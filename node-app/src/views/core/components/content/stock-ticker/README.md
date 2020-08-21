@@ -1,1 +1,1 @@
-#React Demo Component
+#StockTicker Component
