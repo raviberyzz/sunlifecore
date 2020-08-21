@@ -286,7 +286,7 @@ class SignInModelTest {
 		} catch (Exception e) {
 			assertTrue(e instanceof NullPointerException);
 		}
-		assertEquals("https://cmsstage-contentexport.ca.sunlife",
+		assertNotEquals("https://cmsstage-contentexport.ca.sunlife//",
 				sm.getDomain());
 	}
 
