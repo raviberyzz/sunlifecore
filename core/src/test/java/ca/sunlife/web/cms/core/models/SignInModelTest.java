@@ -3,8 +3,21 @@
  */
 package ca.sunlife.web.cms.core.models;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.day.cq.wcm.api.Page;
+
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+import ca.sunlife.web.cms.core.models.SignInModel.HiddenMetadataModel;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
+
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -12,20 +25,9 @@ import java.util.List;
 
 import javax.jcr.RepositoryException;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ValueMap;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import com.day.cq.wcm.api.Page;
-
-import ca.sunlife.web.cms.core.models.SignInModel.HiddenMetadataModel;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
@@ -35,8 +37,10 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 @ExtendWith(AemContextExtension.class)
 class SignInModelTest {
 
-	SignInModel sm;
+	@InjectMocks
+	private SignInModel sm;
 
+	@Mock
 	private Page currentPage;
 
 	@Mock
@@ -44,22 +48,8 @@ class SignInModelTest {
 
 	final static String PAGE_PATH = "/content/sunlife/signin/en";
 	
+	@Mock
 	private SiteConfigService configService;
-	
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeEach
-	void setUp() throws Exception {
-		sm = new SignInModel();
-		currentPage = Mockito.mock(Page.class);
-		configService = Mockito.mock(SiteConfigService.class);
-		FieldUtils.getDeclaredField(SignInModel.class, "currentPage", true).set(sm, currentPage);
-		FieldUtils.getDeclaredField(SignInModel.class, "configService", true).set(sm, configService);
-		MockitoAnnotations.initMocks(this);
-	}
-
-	
 
 	/**
 	 * Test method for
@@ -199,8 +189,8 @@ class SignInModelTest {
 	 */
 	@Test
 	void testSetDomain() {
-		sm.setDomain("https://cmsdev-auth.ca.sunlife");
-		assertTrue(sm.getDomain() == "https://cmsdev-auth.ca.sunlife");
+		sm.setDomain("Consumer | /mbrportal/req/secure/pphp/personalizedWelcome");
+		assertTrue(sm.getDomain() == "Consumer | /mbrportal/req/secure/pphp/personalizedWelcome");
 	}
 
 	/**
@@ -271,20 +261,33 @@ class SignInModelTest {
 	}
 
 	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeEach
+	void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+	}
+
+	public void setInitData() throws LoginException, RepositoryException {
+		when(currentPage.getPath()).thenReturn(PAGE_PATH);
+		when(configService.getConfigValues("domain", PAGE_PATH))
+				.thenReturn("https://cmsstage-contentexport.ca.sunlife");
+		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
+	}
+
+	/**
 	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#init()}.
 	 */
 	@Test
 	void testInit() {
-		when(currentPage.getPath()).thenReturn(PAGE_PATH);
-		//String pagePath = PAGE_PATH;
 		try {
-			when(configService.getConfigValues("domain", PAGE_PATH))
-					.thenReturn("https://cmsstage-contentexport.ca.sunlife");
-		} catch (LoginException | RepositoryException e) {
-			assertTrue(e instanceof LoginException);
+			setInitData();
+			sm.init();
+		} catch (Exception e) {
+			assertTrue(e instanceof NullPointerException);
 		}
-		sm.init();
-		//assertEquals("https://cmsstage-contentexport.ca.sunlife/mbrportal/req/secure/pphp/personalizedWelcome",sm.getTarget());
+		assertEquals("https://cmsstage-contentexport.ca.sunlife",
+				sm.getDomain());
 	}
 
 }
