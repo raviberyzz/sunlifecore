@@ -7,338 +7,253 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.day.cq.wcm.api.Page;
+
+import ca.sunlife.web.cms.core.services.SiteConfigService;
+
+import static org.mockito.Mockito.when;
+
+import javax.jcr.RepositoryException;
+
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.ValueMap;
+
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
  * @author yj99
  *
  */
+@ExtendWith(AemContextExtension.class)
 class SignInModelTest {
+
+	SignInModel sm;
+
+	@Mock
+	private Page currentPage;
+
+	@Mock
+	private ValueMap valueMap;
+
+	final static String PAGE_PATH = "/content/sunlife/signin/en";
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		sm = new SignInModel();
+		MockitoAnnotations.initMocks(this);
+		when(currentPage.getPath()).thenReturn(PAGE_PATH);
 	}
 
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getSignInHeadingText()}.
-	 */
-	@Test
-	void testGetSignInHeadingText() {
-		fail("Not yet implemented");
-	}
+	@Mock
+	private SiteConfigService configService;
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInHeadingText(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInHeadingText(java.lang.String)}.
 	 */
 	@Test
 	void testSetSignInHeadingText() {
-		fail("Not yet implemented");
+		sm.setSignInHeadingText("Client sign in..");
+		assertTrue(sm.getSignInHeadingText() == "Client sign in..");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getMobileAppBadge()}.
-	 */
-	@Test
-	void testGetMobileAppBadge() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setMobileAppBadge(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setMobileAppBadge(java.lang.String)}.
 	 */
 	@Test
 	void testSetMobileAppBadge() {
-		fail("Not yet implemented");
+		sm.setMobileAppBadge("For the best mobile experience");
+		assertTrue(sm.getMobileAppBadge() == "For the best mobile experience");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getMobileAppBadgeLink()}.
-	 */
-	@Test
-	void testGetMobileAppBadgeLink() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setMobileAppBadgeLink(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setMobileAppBadgeLink(java.lang.String)}.
 	 */
 	@Test
 	void testSetMobileAppBadgeLink() {
-		fail("Not yet implemented");
+		sm.setMobileAppBadgeLink(
+				"https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA");
+		assertTrue(sm
+				.getMobileAppBadgeLink() == "https://www.sunlife.ca/ca/Customer+support/Sign+in+help/my+Sun+Life+Mobile?vgnLocale=en_CA");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getAccessIDPlaceholder()}.
-	 */
-	@Test
-	void testGetAccessIDPlaceholder() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setAccessIDPlaceholder(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setAccessIDPlaceholder(java.lang.String)}.
 	 */
 	@Test
 	void testSetAccessIDPlaceholder() {
-		fail("Not yet implemented");
+		sm.setAccessIDPlaceholder("Email/Access ID");
+		assertTrue(sm.getAccessIDPlaceholder() == "Email/Access ID");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getPasswordPlaceholder()}.
-	 */
-	@Test
-	void testGetPasswordPlaceholder() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setPasswordPlaceholder(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setPasswordPlaceholder(java.lang.String)}.
 	 */
 	@Test
 	void testSetPasswordPlaceholder() {
-		fail("Not yet implemented");
+		sm.setPasswordPlaceholder("Password");
+		assertTrue(sm.getPasswordPlaceholder() == "Password");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getCheckboxLabel()}.
-	 */
-	@Test
-	void testGetCheckboxLabel() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setCheckboxLabel(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setCheckboxLabel(java.lang.String)}.
 	 */
 	@Test
 	void testSetCheckboxLabel() {
-		fail("Not yet implemented");
+		sm.setCheckboxLabel("Remember me");
+		assertTrue(sm.getCheckboxLabel() == "Remember me");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getSignInButtonLabel()}.
-	 */
-	@Test
-	void testGetSignInButtonLabel() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInButtonLabel(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInButtonLabel(java.lang.String)}.
 	 */
 	@Test
 	void testSetSignInButtonLabel() {
-		fail("Not yet implemented");
+		sm.setSignInButtonLabel("Sign in");
+		assertTrue(sm.getSignInButtonLabel() == "Sign in");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getFormActionUrl()}.
-	 */
-	@Test
-	void testGetFormActionUrl() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setFormActionUrl(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setFormActionUrl(java.lang.String)}.
 	 */
 	@Test
 	void testSetFormActionUrl() {
-		fail("Not yet implemented");
+		sm.setFormActionUrl("https://sit-www.sunnet.sunlife.com/siteminder/FormsAuthLogin.fcc");
+		assertTrue(sm.getFormActionUrl() == "https://sit-www.sunnet.sunlife.com/siteminder/FormsAuthLogin.fcc");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getForgotAccessIdLabel()}.
-	 */
-	@Test
-	void testGetForgotAccessIdLabel() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotAccessIdLabel(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotAccessIdLabel(java.lang.String)}.
 	 */
 	@Test
 	void testSetForgotAccessIdLabel() {
-		fail("Not yet implemented");
+		sm.setForgotAccessIdLabel("Forgot Access ID?");
+		assertTrue(sm.getForgotAccessIdLabel() == "Forgot Access ID?");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getForgotAccessIdLink()}.
-	 */
-	@Test
-	void testGetForgotAccessIdLink() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotAccessIdLink(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotAccessIdLink(java.lang.String)}.
 	 */
 	@Test
 	void testSetForgotAccessIdLink() {
-		fail("Not yet implemented");
+		sm.setForgotAccessIdLink("/content/sunlife/external/signin/en/mysunlife");
+		assertTrue(sm.getForgotAccessIdLink() == "/content/sunlife/external/signin/en/mysunlife");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getForgotPasswordLabel()}.
-	 */
-	@Test
-	void testGetForgotPasswordLabel() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotPasswordLabel(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotPasswordLabel(java.lang.String)}.
 	 */
 	@Test
 	void testSetForgotPasswordLabel() {
-		fail("Not yet implemented");
+		sm.setForgotPasswordLabel("Forgot password?");
+		assertTrue(sm.getForgotPasswordLabel() == "Forgot password?");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getForgotPasswordLink()}.
-	 */
-	@Test
-	void testGetForgotPasswordLink() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotPasswordLink(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setForgotPasswordLink(java.lang.String)}.
 	 */
 	@Test
 	void testSetForgotPasswordLink() {
-		fail("Not yet implemented");
+		sm.setForgotPasswordLink("/content/sunlife/external/signin/en/mysunlife");
+		assertTrue(sm.getForgotPasswordLink() == "/content/sunlife/external/signin/en/mysunlife");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getSignInBottomText()}.
-	 */
-	@Test
-	void testGetSignInBottomText() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInBottomText(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setSignInBottomText(java.lang.String)}.
 	 */
 	@Test
 	void testSetSignInBottomText() {
-		fail("Not yet implemented");
+		sm.setSignInBottomText("Don't have an Access ID");
+		assertTrue(sm.getSignInBottomText() == "Don't have an Access ID");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getDomain()}.
-	 */
-	@Test
-	void testGetDomain() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setDomain(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setDomain(java.lang.String)}.
 	 */
 	@Test
 	void testSetDomain() {
-		fail("Not yet implemented");
+		sm.setDomain("https://cmsdev-auth.ca.sunlife");
+		assertTrue(sm.getDomain() == "Not yet implemented");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getLanguage()}.
-	 */
-	@Test
-	void testGetLanguage() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setLanguage(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setLanguage(java.lang.String)}.
 	 */
 	@Test
 	void testSetLanguage() {
-		fail("Not yet implemented");
+		sm.setLanguage("en");
+		assertTrue(sm.getLanguage() == "en");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getLogLang()}.
-	 */
-	@Test
-	void testGetLogLang() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setLogLang(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setLogLang(java.lang.String)}.
 	 */
 	@Test
 	void testSetLogLang() {
-		fail("Not yet implemented");
+		sm.setLogLang("en-CA");
+		assertTrue(sm.getLogLang() == "en-CA");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getTarget()}.
-	 */
-	@Test
-	void testGetTarget() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setTarget(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setTarget(java.lang.String)}.
 	 */
 	@Test
 	void testSetTarget() {
-		fail("Not yet implemented");
+		sm.setTarget("/mbrportal/req/secure/pphp/personalizedWelcome");
+		assertTrue(sm.getTarget() == "/mbrportal/req/secure/pphp/personalizedWelcome");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getErrorMsgPlaceholder()}.
-	 */
-	@Test
-	void testGetErrorMsgPlaceholder() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setErrorMsgPlaceholder(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setErrorMsgPlaceholder(java.lang.String)}.
 	 */
 	@Test
 	void testSetErrorMsgPlaceholder() {
-		fail("Not yet implemented");
+		sm.setErrorMsgPlaceholder("Required Field");
+		assertTrue(sm.getErrorMsgPlaceholder() == "Required Field");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getErrorRedirectPath()}.
-	 */
-	@Test
-	void testGetErrorRedirectPath() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setErrorRedirectPath(java.lang.String)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setErrorRedirectPath(java.lang.String)}.
 	 */
 	@Test
 	void testSetErrorRedirectPath() {
-		fail("Not yet implemented");
+		sm.setErrorRedirectPath("");
+		assertTrue(sm.getErrorRedirectPath() == "");
 	}
 
 	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#getHiddenMetadata()}.
-	 */
-	@Test
-	void testGetHiddenMetadata() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link ca.sunlife.web.cms.core.models.SignInModel#setHiddenMetadata(java.util.List)}.
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setHiddenMetadata(java.util.List)}.
 	 */
 	@Test
 	void testSetHiddenMetadata() {
-		fail("Not yet implemented");
+		sm.setHiddenMetadata(null);
+		assertTrue(sm.getHiddenMetadata() == null);
 	}
 
 	/**
@@ -346,7 +261,16 @@ class SignInModelTest {
 	 */
 	@Test
 	void testInit() {
-		fail("Not yet implemented");
+		//when(currentPage.getPath()).thenReturn(PAGE_PATH);
+		//String pagePath = PAGE_PATH;
+		try {
+			when(configService.getConfigValues("domain", PAGE_PATH))
+					.thenReturn("https://cmsstage-contentexport.ca.sunlife");
+		} catch (LoginException | RepositoryException e) {
+			assertTrue(e instanceof LoginException);
+		}
+		sm.init();
+		//assertEquals("https://cmsstage-contentexport.ca.sunlife/mbrportal/req/secure/pphp/personalizedWelcome",sm.getTarget());
 	}
 
 }
