@@ -5,7 +5,7 @@ var multiPurposeComponentConfig = [
         "props" : [
             {
                 name: "stockTickerType",
-                label: "Stock Ticker Type",
+                label: "Stock Ticker Type (yellow or grey)",
                 value: "yellow",
                 required: true
             },
@@ -17,7 +17,7 @@ var multiPurposeComponentConfig = [
             },
             {
                 name: "stockTickerHeadingText",
-                label: "",
+                label: "Heading Text",
                 value: "Stock Ticker Heading Text",
                 required: true
             },
@@ -52,58 +52,5 @@ var multiPurposeComponentConfig = [
                 required: true
             }
         ]
-    },{
-            "componentName": "Stock Ticker Component",
-            "reactComponentName": "stock-ticker",
-            "props" : [
-                {
-                    name: "stockTickerType",
-                    label: "Stock Ticker Type",
-                    value: "grey",
-                    required: true
-                },
-                {
-                    name: "iconName",
-                    label: "Icon Name",
-                    value: "fa-bar-chart",
-                    required: true
-                },
-                {
-                    name: "stockTickerHeadingText",
-                    label: "",
-                    value: "Stock Ticker Heading Text",
-                    required: true
-                },
-                {
-                    name: "viewAllLink",
-                    label: "View All Link",
-                    value: "/en/investors/share-performance/share-charts/",
-                    required: true
-                },
-                {
-                    name: "viewAllText",
-                    label: "View All Text",
-                    value: "View All",
-                    required: true
-                },
-                {
-                    name: "dataDelayedText",
-                    label: "Data Delayed Text",
-                    value: "Data delayed by 15 minutes",
-                    required: true
-                },
-                {
-                    name: "disclaimerText",
-                    label: "Disclaimer Text",
-                    value: "disclaimer",
-                    required: true
-                },
-                {
-                    name: "disclaimerLink",
-                    label: "Disclaimer Link",
-                    value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
-                    required: true
-                }
-            ]
-        }
+    }
 ];
