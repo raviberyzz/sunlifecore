@@ -718,7 +718,7 @@ public class AnnouncementList {
     	activeYear = Integer.parseInt(currentPage.getPath().substring(currentPage.getPath().lastIndexOf(slash) + 1));	
     }
     catch(NumberFormatException  e) {
-    	LOGGER.info("URL doesnot contain year");
+    	LOGGER.error("URL doesnot contain year");
     	activeYear= Calendar.getInstance().get(Calendar.YEAR);
     }
     
