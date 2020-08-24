@@ -60,7 +60,7 @@ class stockTicker extends React.Component {
   render() {
     return (
       <div class="stock-ticker-wrapper">
-        {this.props.stockTickerType.toLowerCase() == "yellow" && 
+        {this.props.stockTickerType == "yellow" && 
           <div class="share-performance" data-section="hp investor">
             <div class="stock-row clearfix">
                 <div class="slf-icon-reg circle-gradient-blue stock-icon">
@@ -100,7 +100,7 @@ class stockTicker extends React.Component {
             </div>
           </div>
         }
-        {this.props.stockTickerType.toLowerCase() == "grey" && 
+        {this.props.stockTickerType == "grey" && 
           <div class="mega-menu-col3">
             <div class="displayStockTicker advanced">
               <div class="mega-share hidden-sm hidden-xs">
