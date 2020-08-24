@@ -35,6 +35,7 @@
             });
             $('[name="./componentData"]').val(JSON.stringify(data));
         });
+        $('#componentDisplayName').val($('coral-select[name="./componentType"] coral-selectlist-item:selected').text());
     };
     $document.on('dialog-ready',function(){
         var type = $('coral-select[name="./componentType"]').get(0).items;

@@ -2,4 +2,4 @@
 <sly data-sly-test.empty="${!comp.componentType}" />
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 <div data-component-render="react" data-component-render-name="${comp.componentName}" 
-data-component-render-props='${comp.componentData}'></div>
+data-component-render-props='${comp.componentData}'><sly data-sly-test="${wcmmode.edit}">${component.componentDisplayName} updated</sly></div>
