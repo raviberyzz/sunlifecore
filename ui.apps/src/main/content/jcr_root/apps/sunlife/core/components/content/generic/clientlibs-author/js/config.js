@@ -1,6 +1,7 @@
 var multiPurposeComponentConfig = [
     {
         "componentName": "Stock Ticker Component",
+        "componentDisplayName": "Stock Ticker",
         "reactComponentName": "stock-ticker",
         "props" : [
             {
