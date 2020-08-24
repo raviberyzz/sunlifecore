@@ -6,6 +6,7 @@ package ca.sunlife.web.cms.core.models;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
@@ -478,7 +479,7 @@ public class SignInModel {
 				}
 				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
 					errorRedirectPath = errorRedirectPath.trim();
-					if(!(errorRedirectPath.toLowerCase().startsWith("http") || errorRedirectPath.toLowerCase().startsWith(HTTPS))) {
+					if(!(errorRedirectPath.toLowerCase(Locale.ROOT).startsWith("http") || errorRedirectPath.toLowerCase(Locale.ROOT).startsWith(HTTPS))) {
 						errorRedirectPath = domainName.concat(errorRedirectPath);
 					}
 				}
