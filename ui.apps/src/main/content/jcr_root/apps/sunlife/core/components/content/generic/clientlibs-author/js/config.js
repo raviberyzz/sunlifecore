@@ -18,7 +18,7 @@ var multiPurposeComponentConfig = [
             {
                 name: "stockTickerHeadingText",
                 label: "Heading Text",
-                value: "Stock Ticker Heading Text",
+                value: "",
                 required: true
             },
             {
@@ -30,7 +30,7 @@ var multiPurposeComponentConfig = [
             {
                 name: "viewAllText",
                 label: "View All Text",
-                value: "View All",
+                value: "",
                 required: true
             },
             {
@@ -42,7 +42,7 @@ var multiPurposeComponentConfig = [
             {
                 name: "disclaimerText",
                 label: "Disclaimer Text",
-                value: "disclaimer",
+                value: "",
                 required: true
             },
             {

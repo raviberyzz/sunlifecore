@@ -41,4 +41,12 @@ public interface GenericModal {
    */
   @Inject
   String getComponentName();
+
+  /**
+   * Gets the component display name.
+   *
+   * @return the component display name
+   */
+  @Inject
+  String getComponentDisplayName();
 }
