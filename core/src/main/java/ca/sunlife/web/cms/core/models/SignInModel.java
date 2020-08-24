@@ -51,9 +51,6 @@ public class SignInModel {
     /** The Constant DOMAIN_STR. */
     private static final String DOMAIN_STR = "domain";
     
-    /** The Constant HTTP. */
-    private static final String HTTP = "http";
-    
     /** The Constant HTTPS. */
     private static final String HTTPS = "https";
 
@@ -481,7 +478,7 @@ public class SignInModel {
 				}
 				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
 					errorRedirectPath = errorRedirectPath.trim();
-					if(!(errorRedirectPath.startsWith(HTTP) || errorRedirectPath.startsWith(HTTPS))) {
+					if(!(errorRedirectPath.toLowerCase().startsWith("http") || errorRedirectPath.toLowerCase().startsWith(HTTPS))) {
 						errorRedirectPath = domainName.concat(errorRedirectPath);
 					}
 				}
