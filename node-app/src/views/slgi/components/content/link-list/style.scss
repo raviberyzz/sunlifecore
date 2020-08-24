@@ -35,3 +35,18 @@
         }
     } 
 } 
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+    .editorial-nav-desktop-wrapper {
+        .links {
+            .list-div {
+                ul {
+                    li {
+                        min-height: 50px;
+                        display: inline-flex;
+                    }
+                }
+            }
+        }
+    }
+}
