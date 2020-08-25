@@ -45,10 +45,10 @@ $(document).ready(function () {
                 let parentCountry=$(this).parent().parents('li').children('a').text();
                 utag.link({
                      "asset_type" : "Text Link",
-                     "asset_title" : "Triage - clients & prospects -products & services",
+                     "asset_title" : "Triage  - clients & prospects - sign in",
                      "event_type" : "Click",
                      "event_title" : parentCountry+" - "+linkText,
-                     "page_section" : "Explore products & services"
+                     "page_section" : "sign in module"
                 });
             });
         }
@@ -228,7 +228,7 @@ $(document).ready(function () {
     /* Countries/Regions page analytics starts here */
     if(productTitle=='regions' || productTitle=='countries'){
     // clicking on tooltip
-        $('#map-point-container .map-point a span').click(function(){
+        /*$('#map-point-container .map-point a span').click(function(){
             let country=$(this).parent().siblings('.map-point-content').find('h5').text();
             utag.link({
                 "asset_type" : "Image Link",
@@ -237,7 +237,7 @@ $(document).ready(function () {
                 "event_title" : country,
                 "page_section" : "Map"
             });
-        });
+        });*/
         // link click in the overlay of tooltip
         $('#map-point-container .map-point .map-point-content p a').click(function(){
             let linkText=$(this).text();
