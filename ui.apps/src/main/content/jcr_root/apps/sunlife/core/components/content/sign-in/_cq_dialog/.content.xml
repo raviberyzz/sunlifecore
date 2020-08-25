@@ -191,7 +191,7 @@
                                                     <slgiAdmin
                                                         jcr:primaryType="nt:unstructured"
                                                         text="SLGI ADMIN | /signin/redirect.wca"
-                                                        value="SLGIADVssss | /signin/redirect.wca"/>
+                                                        value="SLGIADV | /signin/redirect.wca"/>
                                                 </items>
                                             </domain>
                                             <language

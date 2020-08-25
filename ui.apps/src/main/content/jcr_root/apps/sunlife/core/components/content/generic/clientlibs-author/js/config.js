@@ -1,11 +1,12 @@
 var multiPurposeComponentConfig = [
     {
         "componentName": "Stock Ticker Component",
-        "reactComponentName": "react-demo",
+        "componentDisplayName": "Stock Ticker",
+        "reactComponentName": "stock-ticker",
         "props" : [
             {
                 name: "stockTickerType",
-                label: "Stock Ticker Type",
+                label: "Stock Ticker Type (yellow or grey)",
                 value: "yellow",
                 required: true
             },
@@ -17,8 +18,8 @@ var multiPurposeComponentConfig = [
             },
             {
                 name: "stockTickerHeadingText",
-                label: "",
-                value: "Stock Ticker Heading Text",
+                label: "Heading Text",
+                value: "",
                 required: true
             },
             {
@@ -30,7 +31,7 @@ var multiPurposeComponentConfig = [
             {
                 name: "viewAllText",
                 label: "View All Text",
-                value: "View All",
+                value: "",
                 required: true
             },
             {
@@ -42,7 +43,7 @@ var multiPurposeComponentConfig = [
             {
                 name: "disclaimerText",
                 label: "Disclaimer Text",
-                value: "disclaimer",
+                value: "",
                 required: true
             },
             {
@@ -50,21 +51,6 @@ var multiPurposeComponentConfig = [
                 label: "Disclaimer Link",
                 value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
                 required: true
-            }
-        ]
-    },{
-        "componentName": "Stock Ticker Component 2",
-        "reactComponentName": "StockTickerComponent2",
-        "props" : [
-            {
-                name: "prop1",
-                label: "Heading Text",
-                type: "text"
-            },
-            {
-                name: "prop2",
-                label: "Heading Text 2",
-                type: "text"
             }
         ]
     }

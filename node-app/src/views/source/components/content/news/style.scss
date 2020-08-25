@@ -1,0 +1,102 @@
+@import '../../../base/core'; 
+
+.secondary-button-form {
+    button{
+    border: 2px solid $medium-blue-color !important;
+ 
+    }
+}
+.cmp-form-options--checkbox{
+    .cmp-form-options__field-label {
+        .cmp-form-options__field-description{
+            font-weight: 400 !important;
+        }
+    }
+} 
+
+.news-wrapper{
+    .news-tool-bar {
+        .tool {
+            padding: 16px 15px;
+            .left-text{
+                font-size: 24px;
+                font-weight: 700;
+                margin: 0;
+            }
+            .right-text{
+                span{
+                    padding-left: 5px;
+                }
+                
+            }
+        }
+        .horizontal-middle-align{
+            border-bottom: 2px solid $medium-yellow-background;
+            margin-bottom: 24px;
+        }
+    }
+    .news-list-container{
+        .news-image{
+            width: 200px;
+        }
+        .dynamic-news-tile{
+            padding: 0;
+            .tile{
+                padding: 0 16px 0 0;
+            }
+        }
+        .tile{
+            height: 290px;
+            margin-bottom: 16px;
+        }
+        .static-news-tile{
+            padding: 0;
+            .workday-tile{
+                padding: 20px;
+                background: #026CB5;
+                color: $white-shade;
+            }
+            .workplace-tile{
+                padding: 20px;
+                background: $light-grey-color;
+            }
+        }
+    }
+
+    .preference-popup-wrapper{
+        opacity: 1;
+        background-color: $background-black-ovrelay-color;
+        padding: 0;
+        position: fixed;
+        padding-left:0;
+        .preference-list{
+            margin-bottom: 40px;
+        }
+        .preference-modaldialog {
+            position: relative;
+            margin-top: 30px;
+        }
+        .modal-content{
+            background: $white-shade;
+            padding: 40px;
+            width: 800px;
+            border-radius: 0;
+            .close-popup{
+                background: none;
+                border: none;
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                color: $medium-blue-color;
+                cursor: pointer;
+            .collapse-x {
+                font-size: 1rem;
+            }
+            }
+            .modal-body{
+                padding:0;
+                
+            }
+        }
+    }
+}

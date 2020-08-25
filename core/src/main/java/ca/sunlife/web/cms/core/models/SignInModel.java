@@ -4,7 +4,9 @@
 
 package ca.sunlife.web.cms.core.models;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +19,6 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
@@ -51,8 +52,8 @@ public class SignInModel {
     /** The Constant DOMAIN_STR. */
     private static final String DOMAIN_STR = "domain";
     
-    /** The Constant HTTP. */
-    private static final String HTTP = "http";
+    /** The Constant HTTPS. */
+    private static final String HTTPS = "https";
 
 	/** The Constant SEPARATOR. */
 	private static final String SEPARATOR = "|";
@@ -153,7 +154,6 @@ public class SignInModel {
 	/** The hiddenMetadata. */
 	@Inject
 	@Via("resource")
-	@Optional
 	private List<HiddenMetadataModel> hiddenMetadata;
 
 	/**
@@ -167,7 +167,7 @@ public class SignInModel {
 	 * @param signInHeadingText
 	 *            the signInHeadingText to set
 	 */
-	public void setSignInHeadingText(String signInHeadingText) {
+	public void setSignInHeadingText(final String signInHeadingText) {
 		this.signInHeadingText = signInHeadingText;
 	}
 
@@ -182,7 +182,7 @@ public class SignInModel {
 	 * @param mobileAppBadge
 	 *            the mobileAppBadge to set
 	 */
-	public void setMobileAppBadge(String mobileAppBadge) {
+	public void setMobileAppBadge(final String mobileAppBadge) {
 		this.mobileAppBadge = mobileAppBadge;
 	}
 
@@ -197,7 +197,7 @@ public class SignInModel {
 	 * @param mobileAppBadgeLink
 	 *            the mobileAppBadgeLink to set
 	 */
-	public void setMobileAppBadgeLink(String mobileAppBadgeLink) {
+	public void setMobileAppBadgeLink(final String mobileAppBadgeLink) {
 		this.mobileAppBadgeLink = mobileAppBadgeLink;
 	}
 
@@ -212,7 +212,7 @@ public class SignInModel {
 	 * @param accessIDPlaceholder
 	 *            the accessIDPlaceholder to set
 	 */
-	public void setAccessIDPlaceholder(String accessIDPlaceholder) {
+	public void setAccessIDPlaceholder(final String accessIDPlaceholder) {
 		this.accessIDPlaceholder = accessIDPlaceholder;
 	}
 
@@ -227,7 +227,7 @@ public class SignInModel {
 	 * @param passwordPlaceholder
 	 *            the passwordPlaceholder to set
 	 */
-	public void setPasswordPlaceholder(String passwordPlaceholder) {
+	public void setPasswordPlaceholder(final String passwordPlaceholder) {
 		this.passwordPlaceholder = passwordPlaceholder;
 	}
 
@@ -242,7 +242,7 @@ public class SignInModel {
 	 * @param checkboxLabel
 	 *            the checkboxLabel to set
 	 */
-	public void setCheckboxLabel(String checkboxLabel) {
+	public void setCheckboxLabel(final String checkboxLabel) {
 		this.checkboxLabel = checkboxLabel;
 	}
 
@@ -257,7 +257,7 @@ public class SignInModel {
 	 * @param signInButtonLabel
 	 *            the signInButtonLabel to set
 	 */
-	public void setSignInButtonLabel(String signInButtonLabel) {
+	public void setSignInButtonLabel(final String signInButtonLabel) {
 		this.signInButtonLabel = signInButtonLabel;
 	}
 
@@ -272,7 +272,7 @@ public class SignInModel {
 	 * @param formActionUrl
 	 *            the formActionUrl to set
 	 */
-	public void setFormActionUrl(String formActionUrl) {
+	public void setFormActionUrl(final String formActionUrl) {
 		this.formActionUrl = formActionUrl;
 	}
 
@@ -287,7 +287,7 @@ public class SignInModel {
 	 * @param forgotAccessIdLabel
 	 *            the forgotAccessIdLabel to set
 	 */
-	public void setForgotAccessIdLabel(String forgotAccessIdLabel) {
+	public void setForgotAccessIdLabel(final String forgotAccessIdLabel) {
 		this.forgotAccessIdLabel = forgotAccessIdLabel;
 	}
 
@@ -302,7 +302,7 @@ public class SignInModel {
 	 * @param forgotAccessIdLink
 	 *            the forgotAccessIdLink to set
 	 */
-	public void setForgotAccessIdLink(String forgotAccessIdLink) {
+	public void setForgotAccessIdLink(final String forgotAccessIdLink) {
 		this.forgotAccessIdLink = forgotAccessIdLink;
 	}
 
@@ -317,7 +317,7 @@ public class SignInModel {
 	 * @param forgotPasswordLabel
 	 *            the forgotPasswordLabel to set
 	 */
-	public void setForgotPasswordLabel(String forgotPasswordLabel) {
+	public void setForgotPasswordLabel(final String forgotPasswordLabel) {
 		this.forgotPasswordLabel = forgotPasswordLabel;
 	}
 
@@ -332,7 +332,7 @@ public class SignInModel {
 	 * @param forgotPasswordLink
 	 *            the forgotPasswordLink to set
 	 */
-	public void setForgotPasswordLink(String forgotPasswordLink) {
+	public void setForgotPasswordLink(final String forgotPasswordLink) {
 		this.forgotPasswordLink = forgotPasswordLink;
 	}
 
@@ -347,7 +347,7 @@ public class SignInModel {
 	 * @param signInBottomText
 	 *            the signInBottomText to set
 	 */
-	public void setSignInBottomText(String signInBottomText) {
+	public void setSignInBottomText(final String signInBottomText) {
 		this.signInBottomText = signInBottomText;
 	}
 
@@ -362,7 +362,7 @@ public class SignInModel {
 	 * @param domain
 	 *            the domain to set
 	 */
-	public void setDomain(String domain) {
+	public void setDomain(final String domain) {
 		this.domain = domain;
 	}
 
@@ -377,7 +377,7 @@ public class SignInModel {
 	 * @param language
 	 *            the language to set
 	 */
-	public void setLanguage(String language) {
+	public void setLanguage(final String language) {
 		this.language = language;
 	}
 
@@ -392,7 +392,7 @@ public class SignInModel {
 	 * @param logLang
 	 *            the logLang to set
 	 */
-	public void setLogLang(String logLang) {
+	public void setLogLang(final String logLang) {
 		this.logLang = logLang;
 	}
 
@@ -407,7 +407,7 @@ public class SignInModel {
 	 * @param target
 	 *            the target to set
 	 */
-	public void setTarget(String target) {
+	public void setTarget(final String target) {
 		this.target = target;
 	}
 
@@ -422,7 +422,7 @@ public class SignInModel {
 	 * @param errorMsgPlaceholder
 	 *            the errorMsgPlaceholder to set
 	 */
-	public void setErrorMsgPlaceholder(String errorMsgPlaceholder) {
+	public void setErrorMsgPlaceholder(final String errorMsgPlaceholder) {
 		this.errorMsgPlaceholder = errorMsgPlaceholder;
 	}
 
@@ -437,7 +437,7 @@ public class SignInModel {
 	 * @param errorRedirectPath
 	 *            the errorRedirectPath to set
 	 */
-	public void setErrorRedirectPath(String errorRedirectPath) {
+	public void setErrorRedirectPath(final String errorRedirectPath) {
 		this.errorRedirectPath = errorRedirectPath;
 	}
 
@@ -445,15 +445,15 @@ public class SignInModel {
 	 * @return the hiddenMetadata
 	 */
 	public List<HiddenMetadataModel> getHiddenMetadata() {
-		return hiddenMetadata;
+		return Collections.unmodifiableList(hiddenMetadata);
 	}
 
 	/**
 	 * @param hiddenMetadata
 	 *            the hiddenMetadata to set
 	 */
-	public void setHiddenMetadata(List<HiddenMetadataModel> hiddenMetadata) {
-		this.hiddenMetadata = hiddenMetadata;
+	public void setHiddenMetadata(final List<HiddenMetadataModel> hiddenMetadata) {
+		 this.hiddenMetadata = Collections.unmodifiableList(hiddenMetadata);
 	}
 
 	/**
@@ -462,10 +462,8 @@ public class SignInModel {
 	@PostConstruct
 	public void init() {
 		try {
-			LOGGER.debug("SignInModel :: initial value for domain is {}", domain);
 			final String pagePath = currentPage.getPath();
 		    final String domainName = configService.getConfigValues(DOMAIN_STR, pagePath);
-
 			if (null != domain && !StringUtils.isEmpty(domain)) {
 				String domainTargetArray[] = domain.split(Pattern.quote(SEPARATOR));
 				if (domainTargetArray.length > 1) {
@@ -481,15 +479,13 @@ public class SignInModel {
 				}
 				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
 					errorRedirectPath = errorRedirectPath.trim();
-					if(!errorRedirectPath.startsWith(HTTP)) {
+					if(!errorRedirectPath.toLowerCase(Locale.ROOT).startsWith(HTTPS)) {
 						errorRedirectPath = domainName.concat(errorRedirectPath);
 					}
 				}
 				LOGGER.debug("SignInModel :: target is {}", target);
 				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
 			}
-		} catch (NullPointerException e) {
-			LOGGER.error("NullPointerException :: init method of SignInModel :: {}", e);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			LOGGER.error("ArrayIndexOutOfBoundsException :: init method of SignInModel :: {}", e);
 		} catch (LoginException e) {
@@ -530,7 +526,7 @@ public class SignInModel {
 		 * @param name
 		 *            the name to set
 		 */
-		public void setName(String name) {
+		public void setName(final String name) {
 			this.name = name;
 		}
 
@@ -545,7 +541,7 @@ public class SignInModel {
 		 * @param value
 		 *            the value to set
 		 */
-		public void setValue(String value) {
+		public void setValue(final String value) {
 			this.value = value;
 		}
 

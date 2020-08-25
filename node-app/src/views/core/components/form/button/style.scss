@@ -41,7 +41,6 @@
         button{
         background-color: $transparent;
         color: $medium-blue-color;
-        border: 2px solid $medium-blue-color;
-     
+        border: 2px solid $medium-blue-color !important;  
         }
     }

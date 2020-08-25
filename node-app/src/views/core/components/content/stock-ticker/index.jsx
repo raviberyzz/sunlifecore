@@ -1,4 +1,4 @@
-class ReactDemo extends React.Component {
+class stockTicker extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -60,55 +60,47 @@ class ReactDemo extends React.Component {
   render() {
     return (
       <div class="stock-ticker-wrapper">
-        {this.props.stockTickerType === "yellow" && 
-          <div class="row">						
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
-              <div class="displayStockTicker stock-widget new" data-section="hp investor">
-                <div class="row share-performance new">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="row stock-row new">
-                      <div class="col-md-1 visible-md visible-lg">
-                        <div class="slf-icon-reg circle-gradient-blue stock-icon">
-                          <span class={`icon-reg fa ${this.props.iconName} fa-inverse fa-stack-1x`}> </span>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 stock-label new">
-                        <h2 class="pad-bottom-10-xs">{this.props.stockTickerHeadingText}</h2>
-                      </div>
-                      <div class="col-sm-8 col-md-8 stock-detail new">
-                        {Object.keys(this.state.resultArr).map((key,index) => {
-                          return(
-                            <span>
-                              <span>
-                                <strong>{this.state.resultArr[key].symbol}({this.state.resultArr[key].exch})</strong>
-                                &nbsp;{this.state.resultArr[key].currency}${this.state.resultArr[key].last}&nbsp;{this.priceChange(this.state.resultArr[key].change,this.state.pageLang)}
-                              </span>
-                              <span class="share-separator"></span>
-                            </span>
-                          )
-                        }) }
-                        <span>
-                          <a href={this.props.viewAllLink}>{this.props.viewAllText}</a>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="row disclaimer-section">
-                      <div class="col-md-1 visible-md visible-lg"></div>
-                      <div class="col-xs-12 col-sm-12 col-md-11">
-                        <p class="stock-disclaimer new">
-                          {this.props.dataDelayedText}  (
-                          <a href={`javascript:WindowDisclaimer("${this.props.disclaimerLink}");`}>{this.props.disclaimerText}</a>
-                          )
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+        {this.props.stockTickerType == "yellow" && 
+          <div class="share-performance" data-section="hp investor">
+            <div class="stock-row clearfix">
+                <div class="slf-icon-reg circle-gradient-blue stock-icon">
+                    <span class={`icon-reg fa ${this.props.iconName} fa-inverse fa-stack-1x`}> </span>
                 </div>
-              </div>								
+                <div class="stock-label">
+                  {this.props.stockTickerHeadingText}
+                </div>
+                <div class="stock-detail">
+                  {Object.keys(this.state.resultArr).map((key,index) => {
+                    return(
+                      <span>
+                        <span>
+                          <strong>{this.state.resultArr[key].symbol}({this.state.resultArr[key].exch})</strong>
+                          &nbsp;{this.state.resultArr[key].currency}${this.state.resultArr[key].last}&nbsp;{this.priceChange(this.state.resultArr[key].change,this.state.pageLang)}
+                        </span>
+                        <span class="share-separator"></span>
+                      </span>
+                    )
+                  }) }
+                  <span>
+                    <a href={this.props.viewAllLink}>{this.props.viewAllText}</a>
+                  </span>
+                </div>
             </div>
-          </div> 
+            <div class="disclaimer-row">
+              <p class="stock-disclaimer">
+                {this.props.dataDelayedText}
+                <span>  
+                  &nbsp;(
+                  <a href={`javascript:WindowDisclaimer("${this.props.disclaimerLink}");`}>
+                    {this.props.disclaimerText}
+                  </a>
+                  )
+                </span>
+              </p>
+            </div>
+          </div>
         }
-        {this.props.stockTickerType === "grey" && 
+        {this.props.stockTickerType == "grey" && 
           <div class="mega-menu-col3">
             <div class="displayStockTicker advanced">
               <div class="mega-share hidden-sm hidden-xs">
@@ -137,4 +129,4 @@ class ReactDemo extends React.Component {
     );
   }
 }
-reactComponents["react-demo"] = ReactDemo;
+reactComponents["stock-ticker"] = stockTicker;

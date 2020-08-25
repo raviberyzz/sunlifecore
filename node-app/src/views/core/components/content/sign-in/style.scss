@@ -466,7 +466,7 @@
         #mainfooter {
             .social-link-icon-wrapper {
                 ul {
-                    transform: translateX(-50%);
+                    transform: translateX(-50%) !important;
                 }
             }
         }

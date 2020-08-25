@@ -1,0 +1,8 @@
+@import '../../../base/core';
+.cta-home-wrapper{
+    background-color: $grey-cta-background;
+    .row{
+        margin-top: 0;
+        top: -40px;
+    }
+}
