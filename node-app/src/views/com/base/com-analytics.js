@@ -45,10 +45,10 @@ $(document).ready(function () {
                 let parentCountry=$(this).parent().parents('li').children('a').text();
                 utag.link({
                      "asset_type" : "Text Link",
-                     "asset_title" : "Triage  - clients & prospects - sign in",
+                     "asset_title" : "Triage - clients & prospects -products & services",
                      "event_type" : "Click",
                      "event_title" : parentCountry+" - "+linkText,
-                     "page_section" : "sign in module"
+                     "page_section" : "Explore products & services"
                 });
             });
         }
@@ -58,10 +58,10 @@ $(document).ready(function () {
                 let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
                 utag.link({
                     "asset_type" : "Dropdown",
-                    "asset_title" : "Triage  - clients & prospects - products & services",
+                    "asset_title" : "Triage  - clients & prospects - sign in",
                     "event_type" : "Click",
                     "event_title" : "Country selected - "+country,
-                    "page_section" : "Learn about our products & services "
+                    "page_section" : "sign in module"
                 });
             });
         }
