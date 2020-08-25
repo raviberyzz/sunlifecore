@@ -705,7 +705,7 @@ ul {
         }
     }
 }
-.company-highlight-yellow-grey-background {
+.company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
     .bottom-aligned-text{
         .right-image-position, .left-image-position{
             height: 100%;
@@ -1308,7 +1308,7 @@ ul {
         border-left: 1px solid $light-grey-color;
     }
     //company hightlights show the horizontal separator in mobile
-    .company-highlight-yellow-grey-background {
+    .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         .col-sm-4:not(:last-child){
             .container-component:after {
                 border: 1px solid #e5e7e9;
@@ -2593,7 +2593,7 @@ ul {
             transform: translateY(-50%);
         }
     }
-    .company-highlight-yellow-grey-background {
+    .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         .bottom-aligned-text{
             .image-text-wrapper{
                 margin-bottom: 40px;
