@@ -479,7 +479,7 @@ public class SignInModel {
 				}
 				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
 					errorRedirectPath = errorRedirectPath.trim();
-					if(!(errorRedirectPath.toLowerCase(Locale.ROOT).startsWith("http") || errorRedirectPath.toLowerCase(Locale.ROOT).startsWith(HTTPS))) {
+					if(!errorRedirectPath.toLowerCase(Locale.ROOT).startsWith(HTTPS)) {
 						errorRedirectPath = domainName.concat(errorRedirectPath);
 					}
 				}
