@@ -356,7 +356,11 @@
                               padding-bottom: 15px;
                               text-decoration: none;
                               cursor: default;
+                              pointer-events: none;
 
+                            }
+                            .accordion-list.collapse {
+                                display: block !important;
                             }
                         }
                           .list-unstyled{
