@@ -27,12 +27,30 @@
             }
         }
     }
+    .cta-content-icon-wrapper {
+		.icon-style {
+			background-image: linear-gradient($medium-blue-color, $dark-blue);
+		}
+    }
+    .form-container-component {
+        .options{
+            .cmp-form-options--checkbox{
+                input[type='checkbox'] {
+                    + {
+                        .cmp-form-options__field-description {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
 .right-navigation-wrapper.light-orange-20{
     >.cmp-container{
         > div{
-            background-color:$light-orange-20;
+            background-color:$light-orange-20; 
         }
     }
 }

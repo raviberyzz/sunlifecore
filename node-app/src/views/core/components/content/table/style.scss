@@ -158,6 +158,9 @@ table{
           &:nth-of-type(odd) {
             background-color: $light-orange-color;
           }
+          &:nth-of-type(even) {
+            background-color: $white-shade;
+          }
         }
       }
     }

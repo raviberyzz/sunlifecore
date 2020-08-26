@@ -462,15 +462,15 @@
             margin-bottom: 16px;
         }
     }
-    .signin-content-page {
-        #mainfooter {
-            .social-link-icon-wrapper {
-                ul {
-                    transform: translateX(-50%);
-                }
-            }
-        }
-    }
+    // .signin-content-page {
+    //     #mainfooter {
+    //         .social-link-icon-wrapper {
+    //             ul {
+    //                 transform: translateX(-50%) !important;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 // iframe
@@ -487,13 +487,13 @@ iframe {
 }
 
 //sign in specific footer change
-.signin-content-page {
-    #mainfooter {
-        .social-link-icon-wrapper {
-            ul {
-                top: inherit;
-                transform: inherit;
-            }
-        }
-    }
-}
+// .signin-content-page {
+//     #mainfooter {
+//         .social-link-icon-wrapper {
+//             ul {
+//                 top: inherit;
+//                 transform: inherit;
+//             }
+//         }
+//     }
+// }

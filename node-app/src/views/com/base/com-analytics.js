@@ -58,10 +58,10 @@ $(document).ready(function () {
                 let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
                 utag.link({
                     "asset_type" : "Dropdown",
-                    "asset_title" : "Triage  - clients & prospects - products & services",
+                    "asset_title" : "Triage  - clients & prospects - sign in",
                     "event_type" : "Click",
                     "event_title" : "Country selected - "+country,
-                    "page_section" : "Learn about our products & services "
+                    "page_section" : "sign in module"
                 });
             });
         }
@@ -170,7 +170,7 @@ $(document).ready(function () {
     if(productTitle=='careers'){
         //current opportunities dropdown go button click
         $('.container-component form .button button').click(function(e){
-            let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
+            let country=$(this).parent().siblings('.dropdown.options').find('select option:selected').text();
             utag.link({
                 "asset_type" : "Dropdown",
                 "asset_title" : "Triage  - job seekers - careers",
@@ -228,7 +228,7 @@ $(document).ready(function () {
     /* Countries/Regions page analytics starts here */
     if(productTitle=='regions' || productTitle=='countries'){
     // clicking on tooltip
-        $('#map-point-container .map-point a span').click(function(){
+        /*$('#map-point-container .map-point a span').click(function(){
             let country=$(this).parent().siblings('.map-point-content').find('h5').text();
             utag.link({
                 "asset_type" : "Image Link",
@@ -237,7 +237,7 @@ $(document).ready(function () {
                 "event_title" : country,
                 "page_section" : "Map"
             });
-        });
+        });*/
         // link click in the overlay of tooltip
         $('#map-point-container .map-point .map-point-content p a').click(function(){
             let linkText=$(this).text();
