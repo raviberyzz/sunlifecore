@@ -170,7 +170,7 @@ $(document).ready(function () {
     if(productTitle=='careers'){
         //current opportunities dropdown go button click
         $('.container-component form .button button').click(function(e){
-            let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
+            let country=$(this).parent().siblings('.dropdown.options').find('select option:selected').text();
             utag.link({
                 "asset_type" : "Dropdown",
                 "asset_title" : "Triage  - job seekers - careers",
