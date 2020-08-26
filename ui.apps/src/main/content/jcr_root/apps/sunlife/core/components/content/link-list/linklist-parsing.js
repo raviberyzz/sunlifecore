@@ -11,7 +11,19 @@ use(function () {
 
 
     if(navPath.indexOf("/content/sunlife") != -1){
-        navPath = navPath + ".html";
+
+
+       if(navPath.indexOf("/#") != -1){
+			var splitUrl=navPath.split("/#");
+            navPath=splitUrl[0]+".html#"+splitUrl[1];
+        }
+        else if(navPath.indexOf("#") != -1){
+			var splitUrl=navPath.split("#");
+            navPath=splitUrl[0]+".html#"+splitUrl[1];
+        }
+        else{
+            navPath = navPath + ".html";
+        }
     }
 
 

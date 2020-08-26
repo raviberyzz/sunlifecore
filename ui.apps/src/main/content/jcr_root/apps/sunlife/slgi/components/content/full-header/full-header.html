@@ -216,8 +216,13 @@
           </div>
           <div data-sly-test="${listFromSignin == 'signintrue'}" class="desktop-sign-button" id="signinbutton" data-section="header-sign-in">
             <div class="signIn-button">
-              <a href="javascript:void(0)" role="button" data-target="#signin-widget-modal" data-toggle="modal"
+              <sly data-sly-test.linkChecker = "${listModel.signinTarget == 'modal'}">
+                  <a href="javascript:void(0)" role="button" data-target="${listModel.signinUrl}" data-toggle="modal"
                 class="CTA-wrapper">
+            </sly>
+             <sly data-sly-test = "${!linkChecker}">
+                <a role="button" href="${listModel.signinUrl}"  class="CTA-wrapper">
+             </sly>
                 <span class="button-class"><span class="icon-class fa fa-user"></span>${signinTitle}</span>
               </a>
             </div>
@@ -261,8 +266,14 @@
             </sly>
           </div>
           <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn"
-            data-toggle="modal" data-target="#signin-widget-modal" data-section="header-sign-in"><a data-toggle="modal" role="button"
-              href="javascript:void(0)"> <span class="fa fa-user mobile-signin-icon">
+            data-toggle="${listModel.signinTarget == 'modal' ? 'modal' : ''}" data-target="${listModel.signinTarget == 'modal' ? listModel.signinUrl : ''}" data-section="header-sign-in">
+             <sly data-sly-test.mobilelinkChecker = "${listModel.signinTarget == 'modal'}">
+              <a data-toggle="modal" role="button" href="javascript:void(0)">
+             </sly>
+             <sly data-sly-test = "${!mobilelinkChecker}">
+              <a data-toggle="modal" role="button" href="${listModel.signinUrl}">
+              </sly>
+              <span class="fa fa-user mobile-signin-icon">
                 <div class="mobile-signin-text">${signinTitle}</div>
               </span></a>
           </div>
