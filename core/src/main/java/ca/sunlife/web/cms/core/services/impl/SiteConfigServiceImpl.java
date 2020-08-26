@@ -149,7 +149,8 @@ public class SiteConfigServiceImpl implements SiteConfigService {
         }
         resultMap.put("altLangCount", String.valueOf(count));
       }
-      siteConfigMap.put(properties.get("siteUrl", String.class), resultMap);
+      siteConfigMap.put(properties.get("siteUrl", String.class), resultMap);	//site content
+      siteConfigMap.put(properties.get("experienceFragmentPath", String.class), resultMap);	//site experience fragment
     }
 
     resolver.close();
