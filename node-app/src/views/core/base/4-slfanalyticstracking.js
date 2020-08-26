@@ -158,14 +158,16 @@ $(document).ready(function () {
     
     // Right Navigation analytics starts here
     function rightNavAnalytics(btnTxt1){
-        var btnTxt=$.trim(btnTxt1);
-        utag.link({
-            "asset_type"	: "Module",
-            "asset_title"	: "CTA Module",
-            "event_type"	: "Click",
-            "event_title"	: btnTxt,
-            "page_section" : "Right Rail"
-        });
+        if(utag_data!=undefined && utag_data.page_canonical_url.indexOf('www.sunlife.ca')>-1){
+            var btnTxt=$.trim(btnTxt1);
+            utag.link({
+                "asset_type"	: "Module",
+                "asset_title"	: "CTA Module",
+                "event_type"	: "Click",
+                "event_title"	: btnTxt,
+                "page_section" : "Right Rail"
+            });
+        }
         /*var adv='advisor';
         if ((btnTxt == 'search') || (btnTxt == 'Search') || (btnTxt.indexOf(adv) != -1)){
             utag.link({
@@ -177,6 +179,7 @@ $(document).ready(function () {
         }*/
     } 
     $('.right-navigation-wrapper.light-orange-20 .button-class').click(function(){
+
         var btnTxt1=$(this).parent().text();
         rightNavAnalytics(btnTxt1);
     });
