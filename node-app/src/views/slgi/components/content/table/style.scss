@@ -38,8 +38,10 @@
                     border-bottom: 1px solid $medium-grey-background; /* remainder row underline color */
                 }
             }
-            th{
-                background:$white-smoke;
+            &:nth-of-type(1) {
+                th{
+                    background:$white-smoke;
+                }
             }
         }
     }
