@@ -12,5 +12,9 @@
     <ph-sunlife-blank-page/>
     <ph-sunlife-home-page/>
     <ph-sunlife-content-page/>    
-    <ph-sunlife-experience-fragment/>  
+    <ph-sunlife-experience-fragment/>
+    <vn-sunlife-blank-page/>
+    <vn-sunlife-home-page/>
+    <vn-sunlife-content-page/>    
+    <vn-sunlife-experience-fragment/>    
 </jcr:root>
