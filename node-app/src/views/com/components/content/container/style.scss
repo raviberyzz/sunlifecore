@@ -6,3 +6,11 @@
         top: -40px;
     }
 }
+
+@media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max) {
+	.no-padding {
+		.yellow-icon-white-background >* {
+			border-top: 1px solid $light-grey-color;			
+		}
+	} 
+}
