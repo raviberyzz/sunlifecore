@@ -87,6 +87,9 @@
         .icon-class {
             display: none;
         }
+	&:hover{
+		border: 2px solid $cool-blue-color;
+	}	
     }
 }
 .secondary-button-rte
@@ -111,6 +114,7 @@
     text-decoration: none;
     &:hover {
         background-color: $cool-blue-color;
+		border: 2px solid $cool-blue-color;
         color: $white-shade;
         text-decoration: none;
     }
