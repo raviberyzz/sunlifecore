@@ -53,6 +53,10 @@
                 top: -30px;
                 margin-bottom: -30px;
             }
+            .stock-disclaimer:lang(fr){
+                top: -10px;
+                margin-bottom: -10px;
+            }
         }
     }
     .mega-menu-col3 {
@@ -112,6 +116,20 @@
         }
     }
 }
+@media (min-width: $tab-screen-min){
+    .stock-ticker-wrapper{
+        .share-performance{
+            .stock-row{
+                .stock-label{
+                    max-width: 25%;
+                }
+                .stock-detail{
+                    max-width: 72%;
+                }
+            }
+        }
+    }
+}
 @media (max-width: $tab-screen-max) and (min-width: $tab-screen-min){
     .stock-ticker-wrapper{
         .share-performance{
@@ -120,13 +138,10 @@
                 .slf-icon-reg{
                     display: none;
                 }
-                .stock-detail{
-                    max-width: 74%;
-                }
             }
             .disclaimer-row{
                 padding-left: 0;
-                .stock-disclaimer{
+                .stock-disclaimer, .stock-disclaimer:lang(fr){
                     top: 0;
                     margin-bottom: 0;
                 }
@@ -163,7 +178,7 @@
             }
             .disclaimer-row{
                 padding-left: 0;
-                .stock-disclaimer{
+                .stock-disclaimer, .stock-disclaimer:lang(fr){
                     top: 0;
                     margin-bottom: 0;
                     span{
