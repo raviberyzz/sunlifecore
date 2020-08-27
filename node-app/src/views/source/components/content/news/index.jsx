@@ -1,5 +1,5 @@
 class NewsComponent extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       pageLang: utag_data.page_language,
@@ -10,45 +10,86 @@ class NewsComponent extends React.Component {
     this.roundUp2 = this.roundUp2.bind(this);
     this.priceChange = this.priceChange.bind(this);
   }
-  componentDidMount(){
+  componentDidMount() {
     this.getStockPrice();
   }
-  roundUp2(input1){
-		return  Math.abs(Math.round(input1*100)/100);
+  roundUp2(input1) {
+    return Math.abs(Math.round(input1 * 100) / 100);
   }
-  priceChange(val, lang){
-		var outputHtml = (val< 0) ?'-':'+';
-		if ( lang == 'fr' ){
-			return outputHtml + Math.abs(val).toFixed(2).toString().replace('.',',');
-		}
-		else {
-			return outputHtml + Math.abs(val).toFixed(2);
-		}
-	}
-  getStockPrice(){
+  priceChange(val, lang) {
+    var outputHtml = (val < 0) ? '-' : '+';
+    if (lang == 'fr') {
+      return outputHtml + Math.abs(val).toFixed(2).toString().replace('.', ',');
+    }
+    else {
+      return outputHtml + Math.abs(val).toFixed(2);
+    }
+  }
+  getStockPrice() {
     var resultArr = {};
+    var data = {
+      "filters": {
+        "businessGroup": [
+          "Canada",
+          "Corporate",
+          "Enterprise Services",
+          "Hong Kong",
+          "Indonesia",
+          "International",
+          "Philippines",
+          "SLC Management",
+          "Asia",
+          "U.S.",
+          "U.K.",
+          "Vietnam"
+        ],
+        "topic": [
+          "Business continuity",
+          "Business critical",
+          "Client stories",
+          "Company performance",
+          "Compliance",
+          "Corporate Real Estate",
+          "COVID-19",
+          "Digital Enterprise",
+          "Diversity & Inclusion",
+          "Employee engagement",
+          "General HR",
+          "Innovation",
+          "my Benefits and Wellness",
+          "my Career",
+          "my Learning",
+          "my Pay",
+          "Organization announcements",
+          "Philanthropy/Sponsorship",
+          "Recognition",
+          "Sustainability",
+          "Technology"
+        ]
+      }
+    };
     $.ajax({
       type: "GET",
       url: "/stockticker/getIndices",
       dataType: "json",
       success: (res) => {
-        for(var i=0; i<res.lookup_results.quote.length; i++){
-          if(res.lookup_results.quote[i].exch == "TSX" || res.lookup_results.quote[i].exch == "NYSE"){
+        for (var i = 0; i < res.lookup_results.quote.length; i++) {
+          if (res.lookup_results.quote[i].exch == "TSX" || res.lookup_results.quote[i].exch == "NYSE") {
             resultArr[res.lookup_results.quote[i].exch] = res.lookup_results.quote[i];
           }
         }
-        Object.keys(resultArr).map((key,index) => {
-          if(this.state.pageLang == "fr"){
-            resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2).replace('.',',');
+        Object.keys(resultArr).map((key, index) => {
+          if (this.state.pageLang == "fr") {
+            resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2).replace('.', ',');
             resultArr[key].currency = resultArr[key].currency.replace("CAD", "CA").replace("USD", "US");
           }
-          else{
+          else {
             resultArr[key].last = this.roundUp2(resultArr[key].last).toFixed(2);
             resultArr[key].currency = resultArr[key].currency.replace("CAD", "C").replace("USD", "US");
           }
         })
         this.setState({
-          resultArr: resultArr
+          resultArr: data
         })
         // console.log(this.state.resultArr);
       },
@@ -70,19 +111,20 @@ class NewsComponent extends React.Component {
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
               </div>
-              <div class="stock-detail">
-                  {Object.keys(this.state.resultArr).map((key,index) => {
-                    return(
+              {/* <div class="stock-detail">
+                {Object.keys(this.state.resultArr).map((key, index) => {
+                  return (
+                    <span>
                       <span>
-                        <span>
-                          <strong>{this.state.resultArr[key].symbol}({this.state.resultArr[key].exch})</strong>
-                          &nbsp;{this.state.resultArr[key].currency}${this.state.resultArr[key].last}&nbsp;{this.priceChange(this.state.resultArr[key].change,this.state.pageLang)}
-                        </span>
-                        <span class="share-separator"></span>
+                        <strong>{this.state.resultArr[key].symbol}({this.state.resultArr[key].exch})</strong>
+                          &nbsp;{this.state.resultArr[key].currency}${this.state.resultArr[key].last}&nbsp;{this.priceChange(this.state.resultArr[key].change, this.state.pageLang)}
                       </span>
-                    )
-                  }) }
-                </div>
+                      <span class="share-separator"></span>
+                    </span>
+                  )
+                })}
+
+              </div> */}
               {/* <div class="row news-list-container">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 tile">
@@ -141,50 +183,40 @@ class NewsComponent extends React.Component {
                   <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
                   <span class="cmp-form-options__field-description">Select all</span>
                 </label></p>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <h5>Business Group</h5>
-                  <ul>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                  </ul>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                <h5>Business Group</h5>
+                  {Object.keys(this.state.resultArr).map((key,index) => {
+                    return (
+                      <ul>
+                        {this.state.resultArr[key].businessGroup.map((value, index) => {
+                          return (
+                            <li key={index} class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
+                              <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
+                              <span class="cmp-form-options__field-description">{value}</span>
+                            </label></li>
+                          )
+                        })}
+                      </ul>
+                    )
+                  })}
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <h5>Topic</h5>
-                  <ul>
-                  <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-                    <li class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                      <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                      <span class="cmp-form-options__field-description">Apply</span>
-                    </label></li>
-
-                  </ul>
+                <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                <h5>Topic</h5>
+                  {Object.keys(this.state.resultArr).map((key,index) => {
+                    return (
+                      <ul>
+                        {this.state.resultArr[key].topic.map((value, index) => {
+                          return (
+                            <li key={index} class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
+                              <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
+                              <span class="cmp-form-options__field-description">{value}</span>
+                            </label></li>
+                          )
+                        })}
+                      </ul>
+                    )
+                  })}
                 </div>
-
               </div>
 
               <div class="row">
