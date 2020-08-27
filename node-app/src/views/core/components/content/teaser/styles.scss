@@ -956,10 +956,11 @@
 	}
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+//commented for middle aligned circular image and text to work in I.E
+/*@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
         .left-image-position, .right-image-position{
             display: block;
         }
     }
-}
+}*/
