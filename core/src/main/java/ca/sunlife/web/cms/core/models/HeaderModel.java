@@ -45,6 +45,22 @@ public interface HeaderModel {
    */
   @ Inject
   String getText();
+  
+  /**
+   * Gets the SigninURL.
+   *
+   * @return the SigninURL
+   */
+  @ Inject
+  String getSigninUrl();
+  
+  /**
+   * Gets the SigninTarget.
+   *
+   * @return the SigninTarget
+   */
+  @ Inject
+  String getSigninTarget();
 
   /**
    * Gets the list from search.
