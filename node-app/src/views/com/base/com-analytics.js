@@ -123,8 +123,8 @@ $(document).ready(function () {
                         "asset_type" : "Text Link",
                         "asset_title" : "Triage  - media - contact us",
                         "event_type" : "Click",
-                        "event_title" : country+" - "+linkTitle,
-                        "page_section" : "tab: "+tabName
+                        "event_title" : "MIXED-"+ linkTitle,
+                        "page_section" : "tab:For media"
                     });
                 }
             });
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - investors - shareholder contacts",
                 "event_type" : "Click",
-                "event_title" : country+" - "+link,
+                "event_title" : "MIXED -"+link,
                 "page_section" : "Page body"
             });
         });
@@ -187,7 +187,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - job seekers - careers",
                 "event_type" : "Click",
-                "event_title" : parentCountry+" - "+linkText,
+                "event_title" : parentCountry+"-"+linkText,
                 "page_section" : "Explore career opportunities"
             });
         });
@@ -203,7 +203,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - job seekers - why join Sun Life",
                 "event_type" : "Click",
-                "event_title" : parentCountry+" - "+linkText,
+                "event_title" : parentCountry+"-"+linkText,
                 "page_section" : "Explore career opportunities"
             });
         });
@@ -219,7 +219,7 @@ $(document).ready(function () {
                     "asset_type" : "Text Link",
                     "asset_title" : "Triage  - donations - d&S",
                     "event_type" : "Click",
-                    "event_title" : parentCountry+" - "+linkText,
+                    "event_title" : parentCountry+"-"+linkText,
                     "page_section" : "Explore donations and sponsorships"
                 });
             });
@@ -271,9 +271,9 @@ $(document).ready(function () {
             let linkName=$(this).text();
             utag.link({
                 "asset_type" : "Language Module",
-                "asset_title" : "Triage - Language Panel",
+                "asset_title" : "Triage-Language Panel",
                 "event_type" : "Click",
-                "event_title" : country+" - "+linkName,
+                "event_title" : country+"- "+linkName,
                 "page_section" : "Language bar"
             });
         }
