@@ -22,9 +22,13 @@
     }
     
 }
+//Cta form wrapper style
+
+.cta-form-wrapper .dropdown  {
+    padding-right: 10px;
+}
 
 //yellow form tablet view style
-
 @media(min-width:$tab-screen-min) and (max-width:$tab-screen-max) {
 
     .form-yellow-wrapper {
