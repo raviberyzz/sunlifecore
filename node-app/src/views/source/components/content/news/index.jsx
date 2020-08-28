@@ -174,59 +174,67 @@ class NewsComponent extends React.Component {
         <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align" role="dialog">
           <div class="modal-dialog preference-modaldialog">
             <div class="modal-content horizontal-middle-align">
-              <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal" aria-label="Close"></button>
-              <div class="modal-body">
-                <h4>{this.props.preferenceModalHeading}</h4>
+              <div class="modal-header preference-modal-header">
+                <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
+                  data-dismiss="modal">
+                </button>
+                <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
+                <p>
+                  <input type="checkbox" name="all" value="all" data-parsley-multiple="all" />
+                  <span class="chk-lbl">Select all</span>
+               </p>
+
               </div>
-              <div class="row preference-list">
-                <p class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                  <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                  <span class="cmp-form-options__field-description">Select all</span>
-                </label></p>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                <h5>Business Group</h5>
-                  {Object.keys(this.state.resultArr).map((key,index) => {
-                    return (
-                      <ul>
-                        {this.state.resultArr[key].businessGroup.map((value, index) => {
-                          return (
-                            <li key={index} class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                              <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                              <span class="cmp-form-options__field-description">{value}</span>
-                            </label></li>
-                          )
-                        })}
-                      </ul>
-                    )
-                  })}
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
-                <h5>Topic</h5>
-                  {Object.keys(this.state.resultArr).map((key,index) => {
-                    return (
-                      <ul>
-                        {this.state.resultArr[key].topic.map((value, index) => {
-                          return (
-                            <li key={index} class="cmp-form-options cmp-form-options--checkbox"><label class="cmp-form-options__field-label">
-                              <input class="cmp-form-options__field cmp-form-options__field--checkbox" type="checkbox" name="apply" value="Apply" data-parsley-multiple="apply" />
-                              <span class="cmp-form-options__field-description">{value}</span>
-                            </label></li>
-                          )
-                        })}
-                      </ul>
-                    )
-                  })}
+              <div class="modal-body preference-modal-body">
+                <div class="row preference-list">
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <p class="heading-text">Business Group</p>
+                    {Object.keys(this.state.resultArr).map((key, index) => {
+                      return (
+                        <ul class="prefernce-col-list">
+                          {this.state.resultArr[key].businessGroup.map((value, index) => {
+                            return (
+                              <li key={index}>
+                                <input type="checkbox" name={value} value={value} data-parsley-multiple={value} />
+                                <span class="chk-lbl">{value}</span>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      )
+                    })}
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+                    <p class="heading-text">Topic</p>
+                    {Object.keys(this.state.resultArr).map((key, index) => {
+                      return (
+                        <ul class="prefernce-col-list topic-col">
+                          {this.state.resultArr[key].topic.map((value, index) => {
+                            return (
+                              <li key={index}>
+                                <input type="checkbox" name={value} value={value} data-parsley-multiple={value} />
+                                <span class="chk-lbl">{value}</span>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                  <button class="cmp-form-button pull-right">{this.props.preferenceModalHeadingbtn1}</button>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
-                  <button class="cmp-form-button sec-btn">{this.props.preferenceModalHeadingbtn2}</button>
+              <div class="modal-footer preference-modal-footer">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
+                    <button class="cmp-form-button pull-right">{this.props.preferenceModalHeadingbtn1}</button>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
+                    <button class="cmp-form-button sec-btn">{this.props.preferenceModalHeadingbtn2}</button>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
