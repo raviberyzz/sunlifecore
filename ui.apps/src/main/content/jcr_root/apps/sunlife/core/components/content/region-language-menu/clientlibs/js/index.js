@@ -124,9 +124,4 @@ $(document).ready(function () {
  
      }
      /*link farm table code ends here */
-
-     //Link farm table accessibility
-
-     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('href');
-     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('aria-expanded');
 });
