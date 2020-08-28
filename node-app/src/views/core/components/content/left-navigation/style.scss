@@ -75,7 +75,7 @@
 	.left-nav-wrapper {
 		.cmp-navigation__group {
 			.cmp-navigation__item--level-0 {
-				.cmp-navigation__item-link {
+				.cmp-navigation__item-link[data-toggle] {
 					display: inline-block;
 					max-width: 220px;
 				}
