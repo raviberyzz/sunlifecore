@@ -26,18 +26,25 @@ $(document).ready(function () {
                      }
                  }
                 if(utag_data.page_language == "en"){
-					if(altLang.indexOf("=EN") > -1) {
+                    if(altLang.indexOf("/en") > -1){
+						altLang = altLang.replace("/en", "/fr");
+                    }
+                    if(altLang.indexOf("=EN") > -1) {
 						altLang = altLang.replace("=EN", "=FR");
 					} else if(altLang.indexOf("=en") > -1){
 						 altLang = altLang.replace("=en", "=fr");
 					}
 				} else if (utag_data.page_language == "fr"){
+                    if(altLang.indexOf("/fr") > -1){
+						altLang = altLang.replace("/fr", "/en");
+                    }
 					if(altLang.indexOf("=FR") > -1) {
 						altLang = altLang.replace("=FR", "=EN");
 					} else if(altLang.indexOf("=fr") > -1){
 						altLang = altLang.replace("=fr", "=en");
 					}
 				}
+
                 linkRow.push(altLang);
             } else if (window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) {
                 var firstSection = window.location.href;
