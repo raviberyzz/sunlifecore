@@ -203,7 +203,7 @@ public class Pagination {
     int pageNo = 1;
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
     if (selectors.length > 0) {
-      pageNo = Integer.parseInt(selectors [ 0 ]);
+      pageNo = Integer.parseInt(selectors [ selectors.length - 1 ]);
     }
     if (pageNo > 1) {
       prevPage = pageNo - 1;
