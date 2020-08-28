@@ -445,6 +445,10 @@ a.skip-main:focus, a.skip-main:active {
     background-color: $transparent;
 }
 
+.clicking{
+    outline: none;
+}
+
 .banner-box-shadow {
     box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4);
 }
