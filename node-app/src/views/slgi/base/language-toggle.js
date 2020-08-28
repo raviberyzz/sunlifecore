@@ -25,13 +25,18 @@ $(document).ready(function () {
 						altLang = altLang.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
                      }
                  }
-                if(utag_data.page_language == "en"){
-					if(altLang.indexOf("=EN") > -1) {
+				if(altLang.indexOf("/en/slgi-funds") > -1){
+						altLang = altLang.replace("/en/slgi-funds", "/fr/slgi-funds");
+                } else if(altLang.indexOf("/fr/slgi-funds") > -1){
+						altLang = altLang.replace("/fr/slgi-funds", "/en/slgi-funds");
+                }
+                if(utag_data.page_language == "en"){                    
+                    if(altLang.indexOf("=EN") > -1) {
 						altLang = altLang.replace("=EN", "=FR");
 					} else if(altLang.indexOf("=en") > -1){
 						 altLang = altLang.replace("=en", "=fr");
 					}
-				} else if (utag_data.page_language == "fr"){
+				} else if (utag_data.page_language == "fr"){                    
 					if(altLang.indexOf("=FR") > -1) {
 						altLang = altLang.replace("=FR", "=EN");
 					} else if(altLang.indexOf("=fr") > -1){
