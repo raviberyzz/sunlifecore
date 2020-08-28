@@ -205,10 +205,15 @@ addMegaMenuAriaLabels();
 /* Footer accessibility ends here */
 
 /* Accordion accessibility starts here */
-$('.cmp-accordion__button,.cmp-accordion__panel').mousedown(function(e) {
-  if (e.which === 1) {
-      $(this).css({'outline':'none'});
-  }
-});
+  $('.cmp-accordion__button,.cmp-accordion__panel').mouseup(function(e) {
+    $(this).addClass('clicking');
+  });
+
+  $('.cmp-accordion__button,.cmp-accordion__panel').keyup(function(e) {
+    if (e.keyCode === TAB) {
+      $(this).removeClass('clicking');
+      $(this).focus();
+    }
+  });
 /* Accordion accessibility ends here */
 });
