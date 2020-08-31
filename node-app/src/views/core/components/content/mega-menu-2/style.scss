@@ -60,6 +60,10 @@
     
 
 /* AEM Style */
+
+.mega-menu2-list .dropdown-toggle:focus {
+  outline: auto;
+}
 .cmp-dynamic-megamenu {
   border: 3px solid $medium-yellow-background;
   padding: 0;
