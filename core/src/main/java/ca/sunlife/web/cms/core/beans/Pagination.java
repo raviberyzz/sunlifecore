@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -202,8 +203,8 @@ public class Pagination {
     super();
     int pageNo = 1;
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length > 0) {
-      pageNo = Integer.parseInt(selectors [ 0 ]);
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[selectors.length - 1 ])) {
+      pageNo = Integer.parseInt(selectors [ selectors.length - 1 ]);
     }
     if (pageNo > 1) {
       prevPage = pageNo - 1;

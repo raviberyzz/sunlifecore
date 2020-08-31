@@ -115,6 +115,9 @@ public class ArticleListModel {
 
   /** The page num. */
   private int pageNum = 0;
+  
+  /** The selector index */
+  private int index = 0;
 
   /** The date format. */
   private String dateFormat;
@@ -388,7 +391,8 @@ public class ArticleListModel {
       return;
     }
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length > 0 && Integer.parseInt(selectors [ 0 ]) > 1
+    index = selectors.length > 0 ? selectors.length - 1 : 0;
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[index]) && Integer.parseInt(selectors [ index ]) > 1
         && ! getDisplayType().equals("articleList")) {
       return;
     }
@@ -475,8 +479,8 @@ public class ArticleListModel {
       final Map <String, String> queryParameterMap) {
     int offset = 0;
     int limit = getMaxItems();
-    if (selectors.length > 0) {
-      setPageNum(Integer.parseInt(selectors [ 0 ]));
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[index])) {
+      setPageNum(Integer.parseInt(selectors [ index ]));
       offset = (getPageNum() - 1) * getMaxItems(); // Pagination
     } else if (getHideTop() > 0) {
       offset = getHideTop();

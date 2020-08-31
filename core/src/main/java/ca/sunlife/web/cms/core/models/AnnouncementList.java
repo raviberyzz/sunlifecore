@@ -44,7 +44,6 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.beans.Pagination;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
@@ -629,11 +628,8 @@ public class AnnouncementList {
           leakingResourceResolver.close();
         }
       }
-      String path = currentPage.getPath();
-      final String siteUrl = configService
-              .getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
-          path = path.replace(
-              siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+      String path = configService.getPageUrl(currentPage.getPath()).substring(0, configService.getPageUrl(currentPage.getPath()).lastIndexOf(slash));
+          
       if ("2".equals(newsType)) {
         processReleasesData();
       }
@@ -716,8 +712,7 @@ public class AnnouncementList {
     LOGGER.debug("yearsToShow :: {}", yearsToShow);
     try {
     	activeYear = Integer.parseInt(currentPage.getPath().substring(currentPage.getPath().lastIndexOf(slash) + 1));	
-    }
-    catch (NumberFormatException  e) {
+    } catch (NumberFormatException  e) {
     	LOGGER.error("URL doesnot contain year : {}", e);
     	activeYear = Calendar.getInstance().get(Calendar.YEAR);
     }
@@ -739,28 +734,8 @@ public class AnnouncementList {
       requestURL = requestURL.replaceAll("." + pageNumStr + "$", "");
     }
     requestURL = requestURL.replace(".", slash);
-    final String pagePath = currentPage.getPath();
-    final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
-        pagePath);
-    relativeURL = shortenURL(relativeURL, siteUrl);
-    requestURL = shortenURL(requestURL, siteUrl);
+    relativeURL = configService.getPageUrl(relativeURL).substring(0, configService.getPageUrl(relativeURL).lastIndexOf(slash));
+    requestURL = configService.getPageUrl(requestURL).substring(0, configService.getPageUrl(requestURL).lastIndexOf(slash));
     LOGGER.debug("requestURL - after clean up: {}", requestURL);
-  }
-
-  /**
-   * Shorten URL.
-   *
-   * @param pagePath
-   *          the page path
-   * @param siteUrl
-   *          the site url
-   * @return the string
-   */
-  public String shortenURL(final String pagePath, final String siteUrl) {
-    if (null == siteUrl) {
-      return null;
-    }
-    return pagePath.replace(
-        siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
   }
 }

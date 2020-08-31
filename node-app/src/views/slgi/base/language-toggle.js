@@ -15,39 +15,55 @@ $(document).ready(function () {
     $.each($('link'), function (index, value) {
         if (value.rel == "alternate") {
             //linkAltRef = linkAltRef + 1;
-            if (((window.location.href.indexOf("sunnet.sunlife.com") > -1) && (window.location.href.indexOf("/Slgi-funds") > -1)) || (window.location.href.indexOf("/Slgi-funds") > -1)) {
+            if (((window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) && (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) || 
+                (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) {
                 var altLang = window.location.href;
-                if (pageCategory == "adv") {
-                    altLang = altLang.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
+                 if (pageCategory.toLowerCase() == "adv") {
+                     if(altLang.indexOf("sunlifeglobalinvestments.com") < -1){
+                        altLang = altLang.replace("placementsmondiauxsunlife.com", "sunnet.sunlife.com/Slgi");
+                     } else {
+						altLang = altLang.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
+                     }
+                 }
+				if(altLang.indexOf("/en/slgi-funds") > -1){
+						altLang = altLang.replace("/en/slgi-funds", "/fr/slgi-funds");
+                } else if(altLang.indexOf("/fr/slgi-funds") > -1){
+						altLang = altLang.replace("/fr/slgi-funds", "/en/slgi-funds");
                 }
-                if (utag_data.page_language == "en") {
-                    if (altLang.indexOf("lang=EN") > -1) {
-                        altLang = altLang.replace("lang=EN", "lang=FR");
-                    } else if (altLang.indexOf("lang=en") > -1) {
-                        altLang = altLang.replace("lang=en", "lang=fr");
-                    }
-                } else if (utag_data.page_language == "fr") {
-                    if (altLang.indexOf("lang=FR") > -1) {
-                        altLang = altLang.replace("lang=FR", "lang=EN");
-                    } else if (altLang.indexOf("lang=fr") > -1) {
-                        altLang = altLang.replace("lang=fr", "lang=en");
-                    }
-                }
+                if(utag_data.page_language == "en"){                    
+                    if(altLang.indexOf("=EN") > -1) {
+						altLang = altLang.replace("=EN", "=FR");
+					} else if(altLang.indexOf("=en") > -1){
+						 altLang = altLang.replace("=en", "=fr");
+					}
+				} else if (utag_data.page_language == "fr"){                    
+					if(altLang.indexOf("=FR") > -1) {
+						altLang = altLang.replace("=FR", "=EN");
+					} else if(altLang.indexOf("=fr") > -1){
+						altLang = altLang.replace("=fr", "=en");
+					}
+				}
                 linkRow.push(altLang);
-            } else if (window.location.href.indexOf("sunnet.sunlife.com") > -1) {
+            } else if (window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) {
                 var firstSection = window.location.href;
-                firstSection = firstSection.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
-                if (utag_data.page_language == "en") {
-                    if (firstSection.indexOf("/Slgi/adv") > -1) {
-                        firstSection = firstSection.replace("/Slgi/adv", "/Slgi/fr/adv");
-                    } else if (firstSection.indexOf("/Slgi/en") > -1) {
-                        firstSection = firstSection.replace("/Slgi/en", "/Slgi/fr");
-                    }
-                } else if (utag_data.page_language == "fr") {
-                    if (firstSection.indexOf("/Slgi/fr") > -1) {
-                        firstSection = firstSection.replace("/Slgi/fr", "/Slgi/en");
-                    }
-                }
+                if (pageCategory.toLowerCase() == "adv") {
+                     if(firstSection.indexOf("sunlifeglobalinvestments.com") < -1){
+                        firstSection = firstSection.replace("placementsmondiauxsunlife.com", "sunnet.sunlife.com/Slgi");
+                     } else {
+						firstSection = firstSection.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
+                     }
+                 }
+                if(utag_data.page_language == "en"){
+					if(firstSection.indexOf("/Slgi/adv") > -1){
+						firstSection = firstSection.replace("/Slgi/adv" ,"/Slgi/fr/adv");
+					} else if(firstSection.indexOf("/Slgi/en") > -1){
+						firstSection = firstSection.replace("/Slgi/en" ,"/Slgi/fr");
+					}
+				}else if(utag_data.page_language == "fr"){
+					if(firstSection.indexOf("/Slgi/fr") > -1) {
+						firstSection = firstSection.replace("/Slgi/fr" ,"/Slgi/en");
+					 }
+				}
                 linkRow.push(firstSection);
             } else {
                 linkRow.push(value.href);
