@@ -182,7 +182,12 @@ addMegaMenuAriaLabels();
           e.stopPropagation();
           var firstLink = $(this).closest('.col-sm-3').find('a').first().get(0);
           if($(this).get(0) == firstLink){
-            $(this).closest('.col-sm-3').prev('.col-sm-3').find('a').last().focus();
+            if($(this).closest('.col-sm-3').prev('.col-sm-3').find('a').last().parent().parent().hasClass('dropdown-menu')){
+              $(this).closest('.col-sm-3').prev('.col-sm-3').find('a').last().parent().parent().siblings('a').focus();
+            }
+            else{
+              $(this).closest('.col-sm-3').prev('.col-sm-3').find('a').last().focus();
+            }
           }
           else{
             $(this).parents('.text').prev('.text').find('a').focus();
