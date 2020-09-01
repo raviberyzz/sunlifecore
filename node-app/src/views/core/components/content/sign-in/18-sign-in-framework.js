@@ -113,11 +113,19 @@ $(document).ready(function () {
             var $form = $('.mySlfSignIn #form_signon');
             $form.parsley().validate();     
             if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
-                let lang=$('html').attr('lang');
-                if(lang=='fr'){
-                    CheckClick('f');
+                var action=$(".mySlfSignIn #form_signon").attr('action').trim();
+                if(action==undefined || action==''){
+                    console.log('transmit');
+                    onSignInClick();
+                    event.preventDefault();
                 }else{
-                    CheckClick('e');
+                    console.log('siteminder');
+                    let lang=$('html').attr('lang');
+                    if(lang=='fr'){
+                        CheckClick('f');
+                    }else{
+                        CheckClick('e');
+                    }
                 }
             }           
         });
