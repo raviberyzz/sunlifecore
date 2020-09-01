@@ -246,16 +246,6 @@
         }
     }
 
-    .signin-links,
-    .signin-links-two,
-    .signin-terms {
-
-        a:hover,
-        a:active {
-            text-decoration: none;
-        }
-    }
-
     /*  for aem styles */
     .right-item.signin-links-two {
         padding: 0;
@@ -284,11 +274,6 @@
                 line-height: 18px;
                 font-weight: 700;
                 color: $medium-blue-color;
-
-                &:hover,
-                &:active {
-                    text-decoration: none;
-                }
             }
         }
 
@@ -313,10 +298,6 @@
                 font-weight: 700;
                 color: $medium-blue-color;
 
-                &:hover,
-                &:active {
-                    text-decoration: none;
-                }
             }
         }
     }
