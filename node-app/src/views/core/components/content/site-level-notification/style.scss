@@ -21,9 +21,15 @@
 			div.site-level-notification {
 				margin-bottom: 4px;
 			}
+        }
+        &:last-child {
+			div.site-level-notification {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
+
 @media (max-width: $mobile-screen-max) {
     .site-level-notification .cross-cta-wrapper .mega-menu-icon-wrapper .icon-parent {
        display: none; 
