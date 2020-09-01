@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <form id="form_signon" name="form_signon" method="POST" action="${formActionUrl}" class="form-sign-in">
+        <form id="form_signon" name="form_signon" method="POST" action="${!formActionUrl ? ' ' : formActionUrl }" class="form-sign-in">
             <input name="SMENC" type="hidden" value="ISO-8859-1" />
             <input name="SMLOCALE" type="hidden" value="US-EN" />
             <input name="SMAGENTNAME" type="hidden" value="" />

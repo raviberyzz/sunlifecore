@@ -1,5 +1,10 @@
 /* sign in framework starts here */
 $(document).ready(function () {
+    if($(".mySlfSignIn").length>0){
+        var action=$(".mySlfSignIn #form_signon").attr('action').trim();
+        action=decodeURIComponent(action).trim();
+        $(".mySlfSignIn #form_signon").attr('action',action);
+    }
    //domain matching for submitting
     function domain() {
         // get host from variable defined in signin.js
