@@ -82,26 +82,26 @@
                                             <forgotAccessIdLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                fieldDescription="Add Forgot Access ID Label"
-                                                fieldLabel="Forgot Access ID Label"
+                                                fieldDescription="Add Link 1 Label"
+                                                fieldLabel="Link 1 Label"
                                                 name="./forgotAccessIdLabel"/>
                                             <forgotAccessIdLink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldLabel="Forgot Access Id Link"
+                                                fieldLabel="Link 1 URL"
                                                 name="./forgotAccessIdLink"
                                                 rootPath="/content/"
                                                 suffix=".html"/>
                                             <forgotPasswordLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                fieldDescription="Add Forgot Password Label"
-                                                fieldLabel="Forgot Password Label"
+                                                fieldDescription="Add Link 2 Label"
+                                                fieldLabel="Link 2 Label"
                                                 name="./forgotPasswordLabel"/>
                                             <forgotPasswordLink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldLabel="Forgot Password Link"
+                                                fieldLabel="Link 2 URL"
                                                 name="./forgotPasswordLink"
                                                 rootPath="/content/"
                                                 suffix=".html"/>
