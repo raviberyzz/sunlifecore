@@ -3,7 +3,7 @@ $(document).ready(function () {
     if($(".mySlfSignIn").length>0){
         var action=$(".mySlfSignIn #form_signon").attr('action').trim();
         action=decodeURIComponent(action).trim();
-        if(action=='' || action ==undefined){
+        if(action=='' || action ==undefined || action=='%20'){
             $(".mySlfSignIn #form_signon").attr('action',action);
         }
     }
