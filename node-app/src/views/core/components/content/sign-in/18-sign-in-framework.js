@@ -3,7 +3,9 @@ $(document).ready(function () {
     if($(".mySlfSignIn").length>0){
         var action=$(".mySlfSignIn #form_signon").attr('action').trim();
         action=decodeURIComponent(action).trim();
-        $(".mySlfSignIn #form_signon").attr('action',action);
+        if(action=='' || action ==undefined){
+            $(".mySlfSignIn #form_signon").attr('action',action);
+        }
     }
    //domain matching for submitting
     function domain() {
