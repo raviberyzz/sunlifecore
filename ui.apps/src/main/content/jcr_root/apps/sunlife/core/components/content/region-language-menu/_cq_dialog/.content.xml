@@ -246,7 +246,19 @@
                                 </items>
                             </selectedTabMobile>
                         </items>
-                    </tab3> 					
+                    </tab3> 
+					<tab4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Analytics"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <analyticsId
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Data Section"
+                                name="./analyticsId"/>
+                        </items>
+                    </tab4> 					
                 </items>
             </tab>
         </items>
