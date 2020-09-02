@@ -1,4 +1,4 @@
-class NewsComponent extends React.Component {
+class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,4 +162,4 @@ class NewsComponent extends React.Component {
     );
   }
 }
-reactComponents["news-component"] = NewsComponent;
+reactComponents["news-tiles"] = NewsTiles;
