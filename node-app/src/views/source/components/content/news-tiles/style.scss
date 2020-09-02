@@ -6,13 +6,6 @@
  
     }
 }
-.cmp-form-options--checkbox{
-    .cmp-form-options__field-label {
-        .cmp-form-options__field-description{
-            font-weight: 400 !important;
-        }
-    }
-} 
 
 .news-wrapper{
     .news-tool-bar {
@@ -41,8 +34,59 @@
         }
         .dynamic-news-tile{
             padding: 0;
+            .aggregate-tile{
+                background: $primary-yellow-background;
+                height: 290px;
+                text-align: center;
+                padding: 16px;
+                .icon{
+                    width:60px;
+                    height: 60px;
+                }
+                .title{
+                    color: $medium-blue-color;
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+                .bg-name{
+                    color: $medium-blue-color;
+                    font-size: 10px;
+                    margin: 0;
+                }
+            }
             .tile{
                 padding: 0 16px 0 0;
+                .tile-img{
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    height: 290px;
+                    .overlay-container {
+                        position: absolute;
+                        width: calc(100% - 16px);
+                        height: 75px;
+                        bottom: 0;
+                        padding: 8px 16px;
+                        background-color: rgba(0, 0, 0, 0.75);
+                        .detail-container{
+                            padding: 0;
+                            .title{
+                                font-size: 14px;
+                                color: $white-shade;
+                            }
+                            .date{
+                                font-size: 10px;
+                                color: $light-grey-color;
+                            }
+                        }
+                        .bg-name{
+                            font-size: 10px;
+                            color: $light-yellow-color;
+                            text-transform: uppercase;
+                        }
+                      }
+                      
+                      
+                }
             }
         }
         .tile{
@@ -51,14 +95,19 @@
         }
         .static-news-tile{
             padding: 0;
+            .m-top-bt{
+                margin:30px 0px;
+            }
             .workday-tile{
-                padding: 20px;
-                background: #026CB5;
+                padding: 40px 20px;
+                background: #005cb9;
                 color: $white-shade;
+                text-align: center;
             }
             .workplace-tile{
-                padding: 20px;
+                padding: 40px 20px;
                 background: $light-grey-color;
+                text-align: center;
             }
         }
     }
