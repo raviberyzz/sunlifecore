@@ -67,7 +67,10 @@ public class RegionLanguageMenu {
   
   /** The region links. */
   private List <List <LinkModel>> regionLinks;
-
+  
+  /** The analytics id. */
+  @ Inject
+  private String analyticsId;
   /**
    * Gets the region links.
    *
@@ -278,6 +281,24 @@ public class RegionLanguageMenu {
   }
  
   /**
+   * Gets the analytics id.
+   *
+   * @return the analytics id
+   */
+  public String getAnalyticsId() {
+	return analyticsId;
+  }
+
+  /**
+   * Sets the analytics id.
+   *
+   * @param analyticsId the new analytics id
+   */
+  public void setAnalyticsId(String analyticsId) {
+	this.analyticsId = analyticsId;
+  }
+
+/**
    * Inits the.
    */
   @ PostConstruct

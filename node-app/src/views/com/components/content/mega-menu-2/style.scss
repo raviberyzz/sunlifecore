@@ -106,7 +106,7 @@
                 margin: 24px 32px 24px 0;
                 text-align: center;
                 .image-text-wrapper {
-                    .left-image-position
+                    .left-image-position, .right-image-position
                     {
                         display:table;
                         .left-item
@@ -137,9 +137,13 @@
                     background-color: $light-grey-color;
                     margin: 24px 15px !important;
                     padding: 30px 12px;
-                    .image-text-wrapper .left-image-position .left-item .side-image {
-                        width: 100%;
-                    }           
+                    .image-text-wrapper {
+                        .left-image-position, .right-image-position {
+                            .left-item .side-image {
+                                width: 100%;
+                            }   
+                        } 
+                    }        
                 }
             } 
         }

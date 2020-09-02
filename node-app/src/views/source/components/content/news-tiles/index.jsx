@@ -1,4 +1,4 @@
-class NewsComponent extends React.Component {
+class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -105,7 +105,7 @@ class NewsComponent extends React.Component {
       }]
     };
 
-    this.getNewsTilesData = this.getNewsTilesData.bind(this);
+    this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.dateTransform = this.dateTransform.bind(this);
@@ -113,7 +113,7 @@ class NewsComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.getNewsTilesData();
+    this.newsTiles();
   }
 
   handleAllChecked(event) {
@@ -156,8 +156,8 @@ class NewsComponent extends React.Component {
     })
     return bg;
   }
-  getNewsTilesData() {
-    var resultArr = {
+  newsTiles() {
+    var data = {
       "filters": {
         "businessGroup": [
           { id: 1, value: "Canada", isChecked: true },
@@ -199,7 +199,7 @@ class NewsComponent extends React.Component {
       }
     };
     this.setState({
-      resultArr: resultArr,
+      resultArr: data,
     })
   }
 
@@ -344,4 +344,4 @@ class NewsComponent extends React.Component {
     );
   }
 }
-reactComponents["news-component"] = NewsComponent;
+reactComponents["news-tiles"] = NewsTiles;

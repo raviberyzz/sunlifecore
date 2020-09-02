@@ -21,121 +21,121 @@
     /** client story specific code starts **/
     $(".carousel-client-story .left-item a").each(function( index ) { $(this).attr('data-target', $(this).attr('href'));  });
 
-    var desktopmodeon=true;
-	
-	function openDialogSliderBasedOnScreen(){
-		if($(window).width() >= 1068){
-				desktopmodeon = true;
-				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
-                    $("#dynamicslideUp").remove(); 
-					$( this ).find("a").attr("data-toggle","modal"); //allows dialog to open
-				});
-				
-			}else if($(window).width() < 1068){
-				desktopmodeon = false;
-				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
-                    if($(this).hasClass('cmp-carousel__item--active')){
-					$( this ).find("a").removeAttr("data-toggle");  //prevent dialog from opening
-                    generateSliderIfTabletOrMobile();
-                    }
-					
-				}); 
-			}
-	}
+    var desktopmodeon = true;
 
-    /**
+
+/**
 	code to dynamically generate slider goes here
 	createslider and append content to it  
 	remove slider if previously present 
 	**/
-	function generateSliderIfTabletOrMobile(){
-				$(".carousel-client-story .cmp-carousel__item").each(function( index ) {
-					var currentitem= $(this);
-					if(desktopmodeon === false){
-						$( this ).find("a").unbind('click');
-						$( this ).find("a").on('click', function(){
-										if($("#dynamicslideUp").length > 0) {
-											$("#dynamicslideUp").remove();
-										}
-                            			if(desktopmodeon === false){
-											console.log("data-target"+($(this).attr("data-target")));
-											var currentclientstorymodalid = $(this).attr("data-target");
-                                            currentitem.prepend("<div id='dynamicslideUp' class='dynamicslideclass' style='height:100%; width:100%;'></div>");
-										  $("#dynamicslideUp").append($(currentclientstorymodalid).html());
-                                            $("#dynamicslideUp").children().removeClass('modal-content');
-                                            $('html, body').animate({scrollTop: $("#dynamicslideUp").offset().top - 140},'easeInSine');
-                                            $('.close-popup').on('click', function(){
-                                                if($("#dynamicslideUp").length > 0) {
-                                                $("#dynamicslideUp").remove();
-                                                desktopmodeon = false;
 
-											}
-										});
-                                        }
-									//add styling to the cross button	
-									$("#dynamicslideUp .close-popup").css("border-radius","50%");
-									$("#dynamicslideUp .close-popup").css("color","#003946");
-									$("#dynamicslideUp .close-popup").css("background-color","white");
-									$("#dynamicslideUp .close-popup").css("height","30px");
-									$("#dynamicslideUp .close-popup").css("width","30px");
-									$("#dynamicslideUp .close-popup").css("font-size","32px");
-                            		$("#dynamicslideUp .close-popup").css("opacity","1");
-                            		$("#dynamicslideUp video").css("height","auto");
 
-						});      
-					}
-				});
-	}
-
-    	$(window).resize(function() {
-            if($(window).width() < 1068){
-            $('.close-popup').click() //close modal if open
+    $(window).resize(function() {
+        if ($(window).width() > 1068) {
+            if ($("#dynamicslideUp").length > 0) {
+                $('.close-popup').click() //close modal  if open - when changing from mobile/tablet to desktop 
             }
-			openDialogSliderBasedOnScreen();
-			generateSliderIfTabletOrMobile();
-			if($("#dynamicslideUp").length > 0) {
-				$("#dynamicslideUp").remove();
-			}
-	});
+        }
+        else if ($(window).width() < 1068) {
+            if ($("#dynamicslideUp").length == 0) {
+                $('.close-popup').click() //close modal if open - when changing from desktop to mobile/tablet  
+            }
 
-
-    	//remove the linkage whenever a carousel item is selected.
-	$('.carousel-client-story .cmp-carousel__indicators li').on('click', function(){ 
-		console.log(desktopmodeon);
-		if(!desktopmodeon){
-			console.log($(this).index());
-			var currentitemnumber = $(this).index();
-
-			$(".cmp-carousel__item").each(function( index ) {
-				if($(this).index() != currentitemnumber){  
-				$( this ).find("a").attr("data-toggle","modal"); //allows dialog to open
-				}
-				else{
-				$( this ).find("a").removeAttr("data-toggle");
-				}
-			});
-		}
-	});
-
-    	//to change style of the cross icon dynamically while scrolling for tablet and mobile view
-	$(window).scroll(function(){
-		if(!desktopmodeon && $("#dynamicslideUp").length > 0){
-				if (($(window).scrollTop()>$("#dynamicslideUp").offset().top-70) && ($(window).scrollTop()<$("#dynamicslideUp").offset().top + $("#dynamicslideUp").find('.horizontal-middle-align').height() - 120)){
-
-						$("#dynamicslideUp .close-popup").css("position","fixed");
-						$("#dynamicslideUp .close-popup").css("top","5%");
-                   		$("#dynamicslideUp .close-popup").css("z-index","2");
-				} else {
-
-						$("#dynamicslideUp .close-popup").css("position","relative");
-						$("#dynamicslideUp .close-popup").css("top","0px");
-					}
-		}
-	 });
-
-    $('.carousel-client-story .teaser .left-image-position').click(function(){
+        }
         openDialogSliderBasedOnScreen();
+
+    });
+
+    openDialogSliderBasedOnScreen();
+
+
+    //remove the linkage whenever a carousel item is selected.
+    function openDialogSliderBasedOnScreen() {
+        $('.carousel-client-story .cmp-carousel__indicators li').on('click', function() {
+            if (!desktopmodeon) {
+                var currentitemnumber = $(this).index();
+                $(".cmp-carousel__item").each(function(index) {
+                    if ($(this).index() != currentitemnumber) {
+                        $(this).find("a").attr("data-toggle", "modal"); //allows dialog to open
+                    } else {
+                        $(this).find("a").removeAttr("data-toggle");
+                    }
+                });
+            }
         });
+
+        //to change style of the cross icon dynamically while scrolling for tablet and mobile view
+        $(window).scroll(function() {
+            if (!desktopmodeon && $("#dynamicslideUp").length > 0) {
+                if (($(window).scrollTop() > $("#dynamicslideUp").offset().top - 70) && ($(window).scrollTop() < $("#dynamicslideUp").offset().top + $("#dynamicslideUp").find('.horizontal-middle-align').height() - 120)) {
+
+                    $("#dynamicslideUp .close-popup").css("position", "fixed");
+                    $("#dynamicslideUp .close-popup").css("top", "5%");
+                    $("#dynamicslideUp .close-popup").css("z-index", "2");
+                } else {
+
+                    $("#dynamicslideUp .close-popup").css("position", "relative");
+                    $("#dynamicslideUp .close-popup").css("top", "0px");
+                }
+            }
+        });
+
+        $('.carousel-client-story .teaser').click(function() {
+            if ($(window).width() >= 1068) {
+                desktopmodeon = true;
+                $(".carousel-client-story .cmp-carousel__item").each(function(index) {
+                    $("#dynamicslideUp").remove();
+                    $(this).find("a").attr("data-toggle", "modal"); //allows dialog to open
+                });
+
+            } else if ($(window).width() < 1068) {
+                desktopmodeon = false;
+                $(".carousel-client-story .cmp-carousel__item").each(function(index) {
+                    if ($(this).hasClass('cmp-carousel__item--active')) {
+                        $(this).find("a").removeAttr("data-toggle"); //prevent dialog from opening
+                        $(".carousel-client-story .cmp-carousel__item").each(function(index) {
+                            var currentitem = $(this);
+                            if (desktopmodeon === false) {
+                                $(this).find("a").unbind('click');
+                                if ($("#dynamicslideUp").length > 0) {
+                                    $("#dynamicslideUp").remove();
+                                }
+                                if (desktopmodeon === false) {
+                                    var x = $(this).find("a");
+                                    var currentclientstorymodalid = x.attr("data-target");
+                                    currentitem.prepend("<div id='dynamicslideUp' class='dynamicslideclass' style='height:100%; width:100%;'></div>");
+                                    $("#dynamicslideUp").append($(currentclientstorymodalid).html());
+                                    $("#dynamicslideUp").children().removeClass('modal-content');
+                                    $('html, body').animate({
+                                        scrollTop: $("#dynamicslideUp").offset().top - 140
+                                    }, 'easeInSine');
+                                    $('.close-popup').on('click', function() {
+                                        if ($("#dynamicslideUp").length > 0) {
+                                            $("#dynamicslideUp").remove();
+                                            desktopmodeon = false;
+
+                                        }
+                                    });
+                                }
+                                //add styling to the cross button	
+                                $("#dynamicslideUp .close-popup").css("border-radius", "50%");
+                                $("#dynamicslideUp .close-popup").css("color", "#003946");
+                                $("#dynamicslideUp .close-popup").css("background-color", "white");
+                                $("#dynamicslideUp .close-popup").css("height", "30px");
+                                $("#dynamicslideUp .close-popup").css("width", "30px");
+                                $("#dynamicslideUp .close-popup").css("font-size", "32px");
+                                $("#dynamicslideUp .close-popup").css("opacity", "1");
+                                $("#dynamicslideUp video").css("height", "auto");
+
+                            }
+                        });
+                    }
+
+                });
+            }
+        });
+    }
 	/** hide the dots of the carousel if number of slide is 1 **/	
 	if( $('.carousel .cmp-carousel__indicators > li').length <= 1) { 
 			$('.carousel .cmp-carousel__indicators').hide(); 

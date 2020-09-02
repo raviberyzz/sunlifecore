@@ -26,11 +26,23 @@
 
 .cta-form-wrapper .dropdown  {
     padding-right: 10px;
+    .cmp-form-options--drop-down {
+        width: 100%;
+    }
 }
 
-//yellow form tablet view style
+//Home page Cta style fix for exp frag
+
+.home-cta-form-wrapper {
+    .experiencefragment {
+        height: auto !important;
+    }
+}
+
 @media(min-width:$tab-screen-min) and (max-width:$tab-screen-max) {
 
+    //yellow form tablet view style
+    
     .form-yellow-wrapper {
         text-align: center;
         .options, .experiencefragment {
@@ -39,7 +51,7 @@
             width: auto !important;
             vertical-align: top;
             .cmp-form-options--drop-down {
-                margin: 0;
+                margin: 0 !important;
             }
         
         }
@@ -53,4 +65,22 @@
         }
     }
 
+}
+
+
+@media(min-width : $mobile-screen-min) and (max-width : $mobile-screen-max) {
+
+    //home cta mobile-view fix
+
+    .home-cta-form-wrapper {
+        .experiencefragment {
+            width: 75% !important;
+            margin-right: 10px;
+            .dropdown {
+                width: 100% !important;
+                margin-right: 0;
+            }
+        }
+    }
+    
 }

@@ -1,0 +1,82 @@
+.sign-in{
+    html, body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .content {
+        max-width: 80%;
+        margin: auto;
+        margin-top: 40px;
+        background-color: white;
+        color: darkslategray;
+    }
+
+    .header {
+        color: #000000;
+    }
+
+    .button_submit {
+        display: block;
+        width: 150px;
+        height: 40px;
+        height: 30px;
+        margin-top: 20px;
+        padding: 4px;
+    }
+
+    #home_content {
+        display: block;
+    }
+
+    .option_button {
+        width: 80%;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+    .hidden_container {
+        display: none !important;
+    }
+
+    .selected_span {
+        margin-left: 5px;
+        color: green;
+    }
+
+    #sign_in_modal_container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #sign_in_modal_content_container {
+        margin: auto;
+        margin-top: 10%;
+        width: 20%;
+        background-color: rgb(206, 209, 15);
+        padding: 10px;
+    }
+
+    .sign_in_input {
+        width: 100%;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    #sign_in_button {
+        width: 100%;
+        margin-top: 10px;
+        background-color: rgb(37, 87, 197);
+        color: white;
+    }
+
+    #sign_in_cancel_button {
+        width: 100%;
+        margin-top: 10px;
+        color: rgb(230, 32, 32);
+    }
+}
