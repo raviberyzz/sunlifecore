@@ -1,5 +1,10 @@
 /* sign in framework starts here */
 $(document).ready(function () {
+    if($(".mySlfSignIn").length>0){
+        var action=$(".mySlfSignIn #form_signon").attr('action').trim();
+        action=decodeURIComponent(action).trim();
+        $(".mySlfSignIn #form_signon").attr('action',action);
+    }
    //domain matching for submitting
     function domain() {
         // get host from variable defined in signin.js
@@ -113,11 +118,19 @@ $(document).ready(function () {
             var $form = $('.mySlfSignIn #form_signon');
             $form.parsley().validate();     
             if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
-                let lang=$('html').attr('lang');
-                if(lang=='fr'){
-                    CheckClick('f');
+                var action=$(".mySlfSignIn #form_signon").attr('action').trim();
+                if(action==undefined || action==''){
+                    console.log('transmit');
+                    onSignInClick();
+                    event.preventDefault();
                 }else{
-                    CheckClick('e');
+                    console.log('siteminder');
+                    let lang=$('html').attr('lang');
+                    if(lang=='fr'){
+                        CheckClick('f');
+                    }else{
+                        CheckClick('e');
+                    }
                 }
             }           
         });

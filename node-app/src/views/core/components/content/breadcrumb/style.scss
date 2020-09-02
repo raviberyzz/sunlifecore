@@ -131,8 +131,8 @@
 @media (max-width: $tab-screen-max){
   .breadcrumb-wrapper-light-cool-blue,.breadcrumb-wrapper-cool-blue{
    /* height: 37px !important; */
-    display: block;
-    visibility: hidden;
+    display: none;
+    // visibility: hidden;
   }
   .breadcrumb-author{
     display:block;

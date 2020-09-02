@@ -32,6 +32,9 @@
                 a{
                     position: relative;
                     top: 38px;
+                    &:hover{
+                        text-decoration:none;
+                    }
                 }  
                 img{
                     width:149px;
