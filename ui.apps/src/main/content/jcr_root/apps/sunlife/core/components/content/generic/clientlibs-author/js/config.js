@@ -53,5 +53,18 @@ var multiPurposeComponentConfig = [
                 required: true
             }
         ]
-    }
+    },
+	{
+		"componentName": "News tiles component",
+        "componentDisplayName": "News tiles component",
+        "reactComponentName": "news-tiles",
+        "props" : [
+            {
+                name: "tilesType",
+                label: "News tiles component",
+                value: "yellow",
+                required: true
+            }
+		]	
+	}
 ];
