@@ -70,7 +70,7 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the socket timeout
    */
   @ AttributeDefinition (name = "socketTimeout", description = "Socket Timeout")
-  int getSocketTimeout () default 25000;
+  int getSocketTimeout () default 250000;
 
   /**
    * Gets the connection timeout.
@@ -78,5 +78,5 @@ public @interface AkamaiEdgeRedirectsConfig {
    * @return the connection timeout
    */
   @ AttributeDefinition (name = "connectionTimeout", description = "Connection Timeout")
-  int getConnectionTimeout () default 25000;
+  int getConnectionTimeout () default 250000;
 }
