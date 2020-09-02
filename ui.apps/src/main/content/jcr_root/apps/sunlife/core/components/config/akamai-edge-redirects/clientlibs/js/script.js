@@ -296,7 +296,7 @@
                         message += '<coral-alert variant="error"><coral-alert-content><b>Due to technical reasons policy was not able to activate, please try again after 30 minutes. Following are individual rule status</b></coral-alert-content></coral-alert><br />';
                     }
                     $.each(data, function(key,val) {
-                        if(key != "publishStatus") {
+                        if(key != "publishStatus" && key != "error") {
                             obj['./'+key+'/status'] = val == "Fail" ? "Not Published" : "Published";
                             $.each(rules, function(index, content) {
                                 if(content.name == key) {
