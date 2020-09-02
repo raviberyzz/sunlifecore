@@ -526,6 +526,14 @@
         margin-right: -10px;
     }
 }
+.no-padding {
+    .col-md-9 {
+        .cmp-linkfarm-table {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
 /* link farm table styles end here */
 
 
