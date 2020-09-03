@@ -79,7 +79,7 @@ $(document).ready(function () {
                 document.form_signon.SAVEIDSUBMISSION.value = "FALSE";
         }*/
         var isSubmitted=false;
-        function CheckClick(lang) {
+        /*function CheckClick(lang) {
                 if( isSubmitted == true ) {
                         if (lang=="f")
                             alert('Veuillez patienter pendant que nous soumettons vos renseignements.');
@@ -114,7 +114,7 @@ $(document).ready(function () {
                         //document.form_signon.submit();
                         return true;
                 }
-        }
+        }*/
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
             parsleyAnalytics(event); 
             var $form = $('.mySlfSignIn #form_signon');
@@ -129,9 +129,9 @@ $(document).ready(function () {
                     console.log('siteminder');
                     let lang=$('html').attr('lang');
                     if(lang=='fr'){
-                        CheckClick('f');
+                        //CheckClick('f');
                     }else{
-                        CheckClick('e');
+                        //CheckClick('e');
                     }
                 }
             }           
