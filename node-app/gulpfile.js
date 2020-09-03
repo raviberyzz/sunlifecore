@@ -17,7 +17,7 @@ const gulp = require('gulp'),
  merge = require('merge-stream');
 //Constants declarations
  const srcViews = 'src/views';
- const sitePaths = {'hk':'apac/hk','id':'apac/id'};
+ const sitePaths = {'hk':'apac/hk','id':'apac/id','ph':'apac/ph','vn':'apac/vn'};
 
 gulp.task('browser-sync', (done) => {
   browserSync.init({
