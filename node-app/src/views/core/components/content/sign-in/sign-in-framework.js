@@ -1,12 +1,5 @@
 /* sign in framework starts here */
 $(document).ready(function () {
-    if($(".mySlfSignIn").length>0){
-        var action=$(".mySlfSignIn #form_signon").attr('action').trim();
-        action=decodeURIComponent(action).trim();
-        if(action=='' || action ==undefined || action=='%20'){
-            $(".mySlfSignIn #form_signon").attr('action',action);
-        }
-    }
    //domain matching for submitting
     function domain() {
         // get host from variable defined in signin.js
@@ -79,7 +72,7 @@ $(document).ready(function () {
                 document.form_signon.SAVEIDSUBMISSION.value = "FALSE";
         }*/
         var isSubmitted=false;
-        /*function CheckClick(lang) {
+        function CheckClick(lang) {
                 if( isSubmitted == true ) {
                         if (lang=="f")
                             alert('Veuillez patienter pendant que nous soumettons vos renseignements.');
@@ -114,25 +107,17 @@ $(document).ready(function () {
                         //document.form_signon.submit();
                         return true;
                 }
-        }*/
+        }
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
             parsleyAnalytics(event); 
             var $form = $('.mySlfSignIn #form_signon');
             $form.parsley().validate();     
             if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
-                var action=$(".mySlfSignIn #form_signon").attr('action').trim();
-                if(action==undefined || action==''){
-                    console.log('transmit');
-                    onSignInClick();
-                    event.preventDefault();
+                let lang=$('html').attr('lang');
+                if(lang=='fr'){
+                    CheckClick('f');
                 }else{
-                    console.log('siteminder');
-                    let lang=$('html').attr('lang');
-                    if(lang=='fr'){
-                        //CheckClick('f');
-                    }else{
-                        //CheckClick('e');
-                    }
+                    CheckClick('e');
                 }
             }           
         });
