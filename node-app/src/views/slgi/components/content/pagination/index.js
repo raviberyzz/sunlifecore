@@ -6,7 +6,7 @@ $(document).ready(function () {
             Object.values(paginationLinks).forEach(element => {
                 if (typeof element === 'object' && element.nodeType !== undefined) {
                     var anchorTag = element.getAttribute('href');
-                    var modifiedUrl = "/slgi" + anchorTag;
+                    var modifiedUrl = "/Slgi" + anchorTag;
                     element.setAttribute("href", modifiedUrl);
                 }
 
