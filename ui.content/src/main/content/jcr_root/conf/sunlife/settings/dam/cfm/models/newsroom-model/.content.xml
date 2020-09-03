@@ -4,8 +4,6 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:lastModified="{Date}2020-09-03T17:55:14.695+05:30"
-        cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/newsroom-model/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:description="This model should be used to create newsroom announcements/articles"
