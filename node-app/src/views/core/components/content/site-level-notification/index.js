@@ -19,4 +19,11 @@ $(document).ready(function () {
 	        $(siteNotification).css('display', 'none');
 		}
 	});
+
+	//Last Child margin issue handle
+	
+    if ($('.site-level-notification').length > 0) {
+		var siteLvlNotification= $('.site-level-notification').filter(function () { return !$(this).hasClass('container-component') });
+        siteLvlNotification.last().css('margin-bottom','0');
+	}
 });
