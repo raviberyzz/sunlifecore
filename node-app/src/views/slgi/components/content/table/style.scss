@@ -29,6 +29,7 @@
         tr{
             > * {
                 padding: 24px;
+                vertical-align: top;
             }
             &:not(:last-child) {
                 border-bottom: 1px solid $grey-previous-background-color; /* first row underline color */
