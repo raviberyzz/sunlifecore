@@ -251,7 +251,7 @@ $(document).ready(function () {
             });
         });
         // link below the map section click
-        $(".country-sect .country-item .country-content li a").click(function(){
+        /*$(".country-sect .country-item .country-content li a").click(function(){
             let linkText=$(this).text();
             let country=$(this).parent().parents('.country-item').find('span.country-title').text();
             utag.link({
@@ -261,7 +261,7 @@ $(document).ready(function () {
                 "event_title" : country+" - "+linkText,
                 "page_section" : "Below Map"
             });
-        });
+        });*/
     }
     /* Countries/Regions page analytics ends here */
     /* inside language bar link analytics starts here */
