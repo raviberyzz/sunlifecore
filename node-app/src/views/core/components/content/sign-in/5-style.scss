@@ -204,100 +204,37 @@
         }
     }
 
-    .signin-terms {
-        left: 50%;
-        position: relative;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 317px;
-        text-align: center;
-        font-size: 0.8125rem;
-        line-height: 18px;
-        font-weight: 400;
-        color: $dark-grey-color;
-
-        a {
-            font-size: 0.8125rem;
-            line-height: 18px;
-            display: block;
-            font-weight: 700;
-            color: $medium-blue-color;
-        }
-    }
-
-    .signin-links-two {
-        left: 50%;
-        position: relative;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 317px;
-        margin: 32px 0;
-        text-align: center;
-        font-size: 0.8125rem;
-        line-height: 18px;
-        font-weight: 400;
-        color: $dark-grey-color;
-
-        .signin-sponsor {
-            font-size: 0.8125rem;
-            line-height: 18px;
-            font-weight: 700;
-            color: $medium-blue-color;
-        }
-    }
-
     /*  for aem styles */
     .right-item.signin-links-two {
         padding: 0;
         margin-bottom: 0;
-
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 317px;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 18px;
+        font-weight: 400;
+        color: $dark-grey-color;
         p {
-            margin: 0;
-            font-size: 0.875rem;
-        }
-
-        p:first-child {
-            left: 50%;
-            position: relative;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 317px;
-            margin: 32px 0;
-            text-align: center;
+            margin: 32px 0 0 0;
             font-size: 0.875rem;
             line-height: 18px;
             font-weight: 400;
             color: $dark-grey-color;
-
+            max-width: 317px;
             a {
                 font-size: 0.875rem;
-                line-height: 18px;
                 font-weight: 700;
                 color: $medium-blue-color;
             }
-        }
-
-        p:nth-child(2) {
-            left: 50%;
-            position: relative;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 317px;
-            text-align: center;
-            font-size: 0.875rem;
-            line-height: 18px;
-            font-weight: 400;
-            color: $dark-grey-color;
-        }
-
-        p:last-child {
-            a {
-                font-size: 0.875rem;
-                line-height: 18px;
-                display: block;
-                font-weight: 700;
-                color: $medium-blue-color;
-
+            &.no-margin-top{
+                margin:0;
+            }
+            .no-margin-top{
+                margin:0;
             }
         }
     }

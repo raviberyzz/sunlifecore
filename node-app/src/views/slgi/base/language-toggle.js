@@ -18,7 +18,7 @@ $(document).ready(function () {
             if (((window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) && (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) || 
                 (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) {
                 var altLang = window.location.href;
-                 if (pageCategory.toLowerCase() == "adv") {
+                 if (pageCategory.toLowerCase() == "adv" || pageCategory.toLowerCase() == "inv") {
                      if(altLang.indexOf("sunlifeglobalinvestments.com") < -1){
                         altLang = altLang.replace("placementsmondiauxsunlife.com", "sunnet.sunlife.com/Slgi");
                      } else {
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 linkRow.push(altLang);
             } else if (window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) {
                 var firstSection = window.location.href;
-                if (pageCategory.toLowerCase() == "adv") {
+                if (pageCategory.toLowerCase() == "adv" || pageCategory.toLowerCase() == "inv") {
                      if(firstSection.indexOf("sunlifeglobalinvestments.com") < -1){
                         firstSection = firstSection.replace("placementsmondiauxsunlife.com", "sunnet.sunlife.com/Slgi");
                      } else {
@@ -56,10 +56,12 @@ $(document).ready(function () {
                 if(utag_data.page_language == "en"){
 					if(firstSection.indexOf("/Slgi/adv") > -1){
 						firstSection = firstSection.replace("/Slgi/adv" ,"/Slgi/fr/adv");
-					} else if(firstSection.indexOf("/Slgi/en") > -1){
+					} else if(firstSection.indexOf("/Slgi/en/") > -1){
 						firstSection = firstSection.replace("/Slgi/en" ,"/Slgi/fr");
+					} else if(firstSection.indexOf("/Slgi/inv") > -1){
+						firstSection = firstSection.replace("/Slgi/inv" ,"/Slgi/fr/inv");
 					}
-				}else if(utag_data.page_language == "fr"){
+				} else if(utag_data.page_language == "fr"){
 					if(firstSection.indexOf("/Slgi/fr") > -1) {
 						firstSection = firstSection.replace("/Slgi/fr" ,"/Slgi/en");
 					 }
