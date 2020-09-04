@@ -166,6 +166,12 @@ $(document).ready(function () {
         }
     }
 /* mobile app badge logo styling ends here */
+// no-top-padding-added
+    if($('.mySlfSignIn').length>0){
+        if($('.mySlfSignIn .right-item.signin-links-two .no-margin-top').length>0){
+            $('.mySlfSignIn .right-item.signin-links-two .no-margin-top').closest('p').addClass('no-margin-top');
+        }
+    }
 /* blank errorredirect path starts here */
 if($('.mySlfSignIn').length>0){
     if(($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()=='') ||
