@@ -101,7 +101,7 @@ $(document).ready(function () {
              $(this).siblings().find('.collapse').css("display", "block");
              if ($(this).closest(".region-link").find(".collapse").length === 1) {
                  var offset = $(this).offset();
-                 var headerHeight = $('.slf-mobile-header-wrapper').height();
+                 var headerHeight = $('.slf-mobile-header-wrapper').position().top + $('.slf-mobile-header-wrapper').height();
                  var scroll = offset.top - headerHeight;
                  $("html, body").animate({
                      scrollTop: scroll
