@@ -44,9 +44,9 @@
     }
   }
   @media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max){
-    .carousel-wrapper .banner-section{
-      //margin-top : 50px;
-    }
+    // .carousel-wrapper .banner-section{
+    //   //margin-top : 50px;
+    // }
   }
 
   /* client story specific styles starts */
@@ -88,6 +88,11 @@
 					}
 				}	
 		}
+	}
+	.circular-image .left-image-position .left-item {
+		border-radius: inherit !important;
+		background-image: none !important;
+		padding: inherit !important;
 	}
 }
 #firstClientStory, #secondClientStory, #thirdClientStory, .client-story-modal {
@@ -347,8 +352,8 @@
 				background-image: linear-gradient(to bottom, $medium-yellow-background 70%, $primary-yellow-background 82%);
 				padding: 4px !important;
 			}
-			height: 228px;
-			width: 228px;
+			height: 228px !important;
+			width: 228px !important;
 		}
 	}
 }
@@ -382,7 +387,7 @@
 				.image-text-wrapper {
 					.left-image-position {
 						.left-item {
-							width: 255px;
+							width: 255px !important;
 						}
 					}
 				}
