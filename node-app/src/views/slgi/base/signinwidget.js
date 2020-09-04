@@ -114,6 +114,11 @@ function handleUserSelection(selectedVal) {
 }
 
 $(document).ready(function () {
+
+	function signinModalClkEve() {
+		utag.link({ "asset_type": "Module", "asset_title": "Sign In - Main", "event_type": "Click", "event_title": "Sign In", "page_section": "Homepage main signin" });
+	}
+	
 	$(document).on("click", "#forgot_access, #forgot_password", function (event) {
 		var isValid = true;
 		$('input[data-link-required]').each(function () {
