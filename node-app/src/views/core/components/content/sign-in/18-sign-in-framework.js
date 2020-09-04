@@ -127,6 +127,13 @@ $(document).ready(function () {
                     event.preventDefault();
                 }else{
                     console.log('siteminder');
+                    if($(".mySlfSignIn input[name=ESAVEID]").attr('value')!=undefined){
+                        if($(".mySlfSignIn input[name=ESAVEID]").attr('value').trim().length>0 &&
+                         $(".mySlfSignIn input[name=ESAVEID]").attr('value').trim()!='false'){
+                            $(".mySlfSignIn input[name=LOGONUSINGSAVEID]").val("TRUE");
+                            console.log($(".mySlfSignIn input[name=LOGONUSINGSAVEID]").attr('value'));
+                        }
+                    }
                     let lang=$('html').attr('lang');
                     if(lang=='fr'){
                         //CheckClick('f');
