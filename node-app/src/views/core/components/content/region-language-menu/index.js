@@ -127,6 +127,9 @@ $(document).ready(function () {
 
      //Link farm table accessibility
 
-     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('href');
-     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('aria-expanded');
+     /*$('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('href');
+     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').removeAttr('aria-expanded');*/
+     $('.cmp-linkfarm-table .desktop-linkfarm-table .accordion-heading').replaceWith(function() { 
+        return '<span class="accordion-heading">' + this.innerHTML + '</span>'; 
+    });
 });
