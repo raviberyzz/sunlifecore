@@ -7,6 +7,15 @@
     }
 }
 
+@media  (max-width: $tab-screen-max) {
+    //ASC search result page
+    .col-xs-12.no-gutter {
+        .search-container {
+            padding: 0 10px;
+        }
+    }
+}
+
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max) {
 	.no-padding {
 		.yellow-icon-white-background >* {
@@ -14,3 +23,4 @@
 		}
 	} 
 }
+

@@ -127,6 +127,13 @@ $(document).ready(function () {
                     event.preventDefault();
                 }else{
                     console.log('siteminder');
+                    if($(".mySlfSignIn input[name=ESAVEID]").attr('value')!=undefined){
+                        if($(".mySlfSignIn input[name=ESAVEID]").attr('value').trim().length>0 &&
+                         $(".mySlfSignIn input[name=ESAVEID]").attr('value').trim()!='false'){
+                            $(".mySlfSignIn input[name=LOGONUSINGSAVEID]").val("TRUE");
+                            console.log($(".mySlfSignIn input[name=LOGONUSINGSAVEID]").attr('value'));
+                        }
+                    }
                     let lang=$('html').attr('lang');
                     if(lang=='fr'){
                         //CheckClick('f');
@@ -166,6 +173,12 @@ $(document).ready(function () {
         }
     }
 /* mobile app badge logo styling ends here */
+// no-top-padding-added
+    if($('.mySlfSignIn').length>0){
+        if($('.mySlfSignIn .right-item.signin-links-two .no-margin-top').length>0){
+            $('.mySlfSignIn .right-item.signin-links-two .no-margin-top').closest('p').addClass('no-margin-top');
+        }
+    }
 /* blank errorredirect path starts here */
 if($('.mySlfSignIn').length>0){
     if(($('.mySlfSignIn #form_signon input[name="ERRORREDIRPATH"]').attr('value').trim()=='') ||
