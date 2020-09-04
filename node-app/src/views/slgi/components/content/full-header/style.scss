@@ -134,6 +134,17 @@
     padding-left: 8px !important;
     padding-right: 8px !important; 
   }
+  .slf-header-wrapper {
+    .desktop-header-wrapper {
+      .desktop-header-content {
+        .desktop-sunlife-navigation{
+          .desktop-navigation{
+            margin-left:160px;
+          }
+        }
+      }  
+    }
+  }
 }
 /*
 //the signin button breaks to next line when making screen size smaller due to large margins
