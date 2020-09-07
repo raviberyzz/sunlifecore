@@ -77,6 +77,7 @@ $(document).ready(function () {
             } else if ($win.width() > 1024) {
                 $('.root > .aem-Grid > *:not(:first-child)').css("top", "0");
                 $('.site-level-notification').attr("style", "position:relative");
+                $('.site-level-notification').last().attr("style", "margin-bottom:0");
             }
         }
 
