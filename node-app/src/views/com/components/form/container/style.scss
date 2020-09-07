@@ -47,7 +47,7 @@
         text-align: center;
         .options, .experiencefragment {
             float: none !important;
-            display: inline-block;
+            display: inline-block !important;
             width: auto !important;
             vertical-align: top;
             .cmp-form-options--drop-down {
@@ -83,7 +83,7 @@
         }
     }
     .no-padding .yellow-icon-white-background .home-cta-form-wrapper form .experiencefragment .dropdown {
-        width: 100%;
+        width: 100% !important;
         margin-right: 0;
     }
     
