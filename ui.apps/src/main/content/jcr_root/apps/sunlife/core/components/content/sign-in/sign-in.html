@@ -85,10 +85,18 @@
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}" type="submit">
             </div>
         </form>
-        <p class="signin-links"><span class="signin-help"><a href="${forgotAccessIdLink}"
-                    target="_blank">${forgotAccessIdLabel}
-                </a></span> <span class="signin-register"><a href="${forgotPasswordLink}"
-                    target="_blank">${forgotPasswordLabel}</a></span></p>
+        <p class="signin-links">
+            <span class="signin-help">
+                <sly data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotAccessIdLink}">
+                    <a href="${utilityListParsing.navPath}" target="_blank">${forgotAccessIdLabel}</a>
+                </sly>
+            </span>
+            <span class="signin-register">
+                <sly data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotPasswordLink}">
+                    <a href="${utilityListParsing.navPath}" target="_blank">${forgotPasswordLabel}</a>
+                </sly>
+            </span>
+        </p>
         <div class="right-item text-section signin-links-two">
             ${signInBottomText @context ='html'}
         </div>
