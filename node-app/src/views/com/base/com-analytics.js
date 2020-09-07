@@ -105,8 +105,8 @@ $(document).ready(function () {
                         "asset_type" : "Text Link",
                         "asset_title" : "Triage  - investors - contact us",
                         "event_type" : "Click",
-                        "event_title" : "NA - "+linkTitle,
-                        "page_section" : "tab: "+tabName
+                        "event_title" : "NA -"+linkTitle,
+                        "page_section" : "tab:"+tabName
                     });
                 }
             });
@@ -144,8 +144,8 @@ $(document).ready(function () {
                         "asset_type" : "Text link",
                         "asset_title" : "Triage  - clients & prospects - contact us",
                         "event_type" : "Click",
-                        "event_title" : country+" - "+linkTitle,
-                        "page_section" : "Tab:  "+tabName+" "
+                        "event_title" : country+"-"+linkTitle,
+                        "page_section" : "Tab:"+tabName
                     });
                 }
             });
@@ -287,7 +287,7 @@ $(document).ready(function () {
             "asset_type" : "Text Link",
             "asset_title" : "Triage  - media - newsroom",
             "event_type" : "Click",
-            "event_title" : country+" - "+linkName,
+            "event_title" : country+"-"+linkName,
             "page_section" : "right rail"
         });
     });
