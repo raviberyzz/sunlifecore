@@ -106,9 +106,9 @@ $(document).ready(function () {
                                         id=id.replace('*','!');
                                 }
                             }
-                            if (IsSaveId){
-                                $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");
-                            }
+                            // if (IsSaveId){
+                            //     $(".mySlfSignIn input[name=SAVEIDSUBMISSION]").val("TRUE");
+                            // }
                             $(".mySlfSignIn .form-group #USER").val(id);
                         }
                         //document.form_signon.submit();
@@ -137,9 +137,9 @@ $(document).ready(function () {
                     }
                     let lang=$('html').attr('lang');
                     if(lang=='fr'){
-                        //CheckClick('f');
+                        CheckClick('f');
                     }else{
-                        //CheckClick('e');
+                        CheckClick('e');
                     }
                 }
             }           
