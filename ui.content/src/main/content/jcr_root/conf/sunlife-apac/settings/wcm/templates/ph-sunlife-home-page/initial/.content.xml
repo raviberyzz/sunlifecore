@@ -11,7 +11,7 @@
             <experiencefragment_header
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/apac/ph/components/content/experiencefragment"
-                fragmentPath="/content/experience-fragments/sunlife/external/hk/en/header/master"/>
+                fragmentPath="/content/experience-fragments/sunlife/external/ph/en/header/master"/>
             <layout_container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/apac/ph/components/content/layout-container"/>
