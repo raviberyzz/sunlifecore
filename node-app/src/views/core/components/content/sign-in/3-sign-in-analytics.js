@@ -41,7 +41,7 @@ function parsleyAnalytics(event){
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
-        insertParam('EC', UrlEC);
+        //insertParam('EC', UrlEC);
     }
     //for only no password
     if(($('.mySlfSignIn #PASSWORD').val()=='' && $('.mySlfSignIn #USER').val()!='') ||
@@ -55,7 +55,7 @@ function parsleyAnalytics(event){
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
-        insertParam('EC', UrlEC);
+        //insertParam('EC', UrlEC);
     }
     //for no userID and password
     if(($('.mySlfSignIn #PASSWORD').val()=='' && $('.mySlfSignIn #USER').val()=='') ||
@@ -69,7 +69,7 @@ function parsleyAnalytics(event){
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
-        insertParam('EC', UrlEC);
+        //insertParam('EC', UrlEC);
     }
 }
 $(document).ready(function (){
