@@ -79,7 +79,7 @@ $(document).ready(function () {
                 document.form_signon.SAVEIDSUBMISSION.value = "FALSE";
         }*/
         var isSubmitted=false;
-        /*function CheckClick(lang) {
+        function CheckClick(lang) {
                 if( isSubmitted == true ) {
                         if (lang=="f")
                             alert('Veuillez patienter pendant que nous soumettons vos renseignements.');
@@ -102,7 +102,7 @@ $(document).ready(function () {
                                             id=id.replace('!',';');
                                         }
                                 } else if (id.charAt(i)=='*') {
-                                        if (i==0) IsSaveId=true;
+                                        //if (i==0) IsSaveId=true;
                                         id=id.replace('*','!');
                                 }
                             }
@@ -114,7 +114,7 @@ $(document).ready(function () {
                         //document.form_signon.submit();
                         return true;
                 }
-        }*/
+        }
         $('.mySlfSignIn input[name="signin"][type="submit"]').click(function(event){
             parsleyAnalytics(event); 
             var $form = $('.mySlfSignIn #form_signon');
