@@ -1,16 +1,18 @@
 @import '../../../base/core';
+
 //  sign-in-framework starts here
 .mySlfSignIn {
     // width:100%;
     height: auto;
     background-color: $medium-yellow-background;
     padding: 24px 24px 40px 24px;
-    .h2{
+
+    .h2 {
         font-size: 1.125rem;
         font-weight: 700;
         line-height: 24px;
         color: $dark-grey-color;
-        margin:16px 0 10px 0;
+        margin: 16px 0 10px 0;
     }
 
     .form-sign-in {
@@ -218,6 +220,7 @@
         line-height: 18px;
         font-weight: 400;
         color: $dark-grey-color;
+
         p {
             margin: 32px 0 0 0;
             font-size: 0.875rem;
@@ -225,22 +228,25 @@
             font-weight: 400;
             color: $dark-grey-color;
             max-width: 317px;
+
             a {
                 font-size: 0.875rem;
                 font-weight: 700;
                 color: $medium-blue-color;
             }
-            &.no-margin-top{
-                margin:0;
+
+            &.no-margin-top {
+                margin: 0;
             }
-            .no-margin-top{
-                margin:0;
+
+            .no-margin-top {
+                margin: 0;
             }
         }
     }
 
     .download-app {
-        min-height:66px;
+        min-height: 66px;
         height: auto;
         margin: 0 0 16px 0;
         background-color: $light-cool-blue-color;
@@ -258,18 +264,21 @@
             transform: translateX(-50%);
             display: flex;
             position: relative;
-            .mobile-app-text{
+
+            .mobile-app-text {
                 position: relative;
                 left: 50%;
                 transform: translateX(-50%);
                 position: relative;
-                p{
-                    width:100%;
-                    margin-bottom:0;
+
+                p {
+                    width: 100%;
+                    margin-bottom: 0;
                     font-weight: 400;
                     line-height: 20px;
                     font-size: 1rem;
                     color: $dark-grey-color;
+
                     &:active,
                     &:hover {
                         text-decoration: none;
@@ -282,10 +291,12 @@
                         color: $medium-blue-color;
                     }
                 }
-                p:first-child{
-                    margin-top:10px;
+
+                p:first-child {
+                    margin-top: 10px;
                 }
             }
+
             .mobile-app-text.app-logo {
                 display: inline-block;
 
@@ -301,16 +312,17 @@
                 }
 
                 p {
-                    width:auto;
+                    width: auto;
                     float: none;
-                    margin:0 0 0 60px;
+                    margin: 0 0 0 60px;
                     font-weight: 400;
                     line-height: 20px;
                     font-size: 1rem;
                     color: $dark-grey-color;
-                    position:relative;
+                    position: relative;
                     word-break: break-word;
                     overflow: hidden;
+
                     &:active,
                     &:hover {
                         text-decoration: none;
@@ -323,16 +335,18 @@
                         color: $medium-blue-color;
                     }
                 }
-                p:nth-child(2){
-                    margin-top:12px;
+
+                p:nth-child(2) {
+                    margin-top: 12px;
                 }
             }
         }
     }
-    .download-app.no-text{
-        min-height:0;
+
+    .download-app.no-text {
+        min-height: 0;
         display: none;
-        margin-bottom:0;
+        margin-bottom: 0;
     }
 }
 
@@ -346,10 +360,11 @@
             margin: 0 0 16px 0;
             margin-left: -24px;
         }
-        .download-app.no-text{
-            min-height:0;
+
+        .download-app.no-text {
+            min-height: 0;
             display: none;
-            margin-bottom:0;
+            margin-bottom: 0;
         }
 
         .right-item.signin-links-two {
@@ -380,22 +395,14 @@
             margin-bottom: 16px;
         }
     }
-    // .signin-content-page {
-    //     #mainfooter {
-    //         .social-link-icon-wrapper {
-    //             ul {
-    //                 transform: translateX(-50%) !important;
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 // iframe
 iframe {
     border: 0;
 }
-.sign-out-link{
+
+.sign-out-link {
     font-weight: 700;
     color: $medium-blue-color;
     font-size: 1rem;
@@ -404,14 +411,42 @@ iframe {
     background-color: $transparent;
 }
 
-//sign in specific footer change
-// .signin-content-page {
-//     #mainfooter {
-//         .social-link-icon-wrapper {
-//             ul {
-//                 top: inherit;
-//                 transform: inherit;
-//             }
-//         }
-//     }
-// }
+/* mfa modal starts here */
+.sign-in {
+    .transmit-modal {
+        background-color: $background-black-ovrelay-color;
+        padding: 0;
+        padding-right: 0 !important;
+
+        .modal-dialog {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: relative;
+
+            .transmit-modal-content {
+                margin: 0;
+                width: 80%;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+
+                .transmit-modal-header {
+                    .close-transmit {
+                        margin: 0;
+                        padding: 0;
+                        font-size: 1.5rem;
+                        color: $black-shade;
+                        font-weight: 700;
+                    }
+                }
+                #sign_in_modal_container{
+                    position:relative;
+                }
+            }
+        }
+    }
+}
+
+/* mfa modal ends here */

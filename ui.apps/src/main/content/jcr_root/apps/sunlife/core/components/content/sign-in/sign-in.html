@@ -18,24 +18,53 @@
     <sly data-sly-test.target="${listModel.target}" />
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
-
+    <!-- {{!-- transmit modal starts here --}} -->
+    <div class="modal fade transmit-modal" id="transmitModal" role="dialog" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content transmit-modal-content" id="transmitModalContent">
+                <div class="modal-header transmit-modal-header">
+                    <button type="button" class="close close-transmit" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Transmit Journey</h4>
+                </div>
+                <div class="modal-body transmit-modal-body" id="transmitModalBody">
+                    <p>This is some content.</p>
+                    <div id="sign_in_modal_container">
+                        <div id="sign_in_modal_content_container" class="centered_container">
+                            <label>Sign In</label>
+                            <br />
+                            <input id="sign_in_client_id_input" class="sign_in_input" type="text"
+                                placeholder="client id" />
+                            <input id="sign_in_password_input" class="sign_in_input" type="password"
+                                placeholder="password" />
+                            <button onclick="onSignInClick();" id="sign_in_button">Sign In</button>
+                            <button onclick="onSignInCancelClick();" id="sign_in_cancel_button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- transmit modal ends here -->
     <div class="login-container mySlfSignIn" id="slfSignIn">
         <h2 class="h2 text-center">${signInHeadingText @context ='html'}</h2>
         <div class="download-app visible-xs">
             <div class="download-app-wrapper" onclick="window.open('${mobileAppBadgeLink @context='uri'}')">
                 <div class="mobile-app-text">
-                	${mobileAppBadge @context ='html'}
+                    ${mobileAppBadge @context ='html'}
                 </div>
             </div>
         </div>
-        <form id="form_signon" name="form_signon" method="POST" action="${!formActionUrl ? ' ' : formActionUrl }" class="form-sign-in">
+        <form id="form_signon" name="form_signon" method="POST" action="${!formActionUrl ? ' ' : formActionUrl }"
+            class="form-sign-in">
             <input name="SMENC" type="hidden" value="ISO-8859-1" />
             <input name="SMLOCALE" type="hidden" value="US-EN" />
             <input name="SMAGENTNAME" type="hidden" value="" />
             <input name="REALMOID" type="hidden" value="" />
             <sly data-sly-test="${domain}">
                 <input name="DOMAIN" type="hidden" value="${domain}" />
-				<input name="TARGET" type="hidden" value="${target}" />
+                <input name="TARGET" type="hidden" value="${target}" />
             </sly>
             <input name="IPKey" type="hidden" value="" />
             <input name="CONTEXT" type="hidden" value="INTERNET" />
@@ -56,7 +85,7 @@
             <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
             <input name="REDIRECTPATH" type="hidden" value="" />
             <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? '&nbsp;' : errorRedirectPath}" />
-            
+
             <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
                 <input name="${attributes.name}" type="hidden" value="${attributes.value}" />
             </sly>
@@ -65,9 +94,10 @@
                 <div class="help-block" id="generalError"><span id="ERROR_HTML" name="ERROR_HTML">&nbsp;
                     </span><span id="APOL_HTML" name="APOL_HTML"></span></div>
             </div>
-            <div class="form-group"><label for="USER" class="sr-only">${!accessIDPlaceholder ? 'Access ID': accessIDPlaceholder}</label> <input id="USER"
-                    autocomplete="off" name="USER" size="30" type="text" placeholder="${accessIDPlaceholder}"
-                    data-parsley-required="true" data-parsley-required-message="${errorMsgPlaceholder}">
+            <div class="form-group"><label for="USER" class="sr-only">${!accessIDPlaceholder ? 'Access ID':
+                    accessIDPlaceholder}</label> <input id="USER" autocomplete="off" name="USER" size="30" type="text"
+                    placeholder="${accessIDPlaceholder}" data-parsley-required="true"
+                    data-parsley-required-message="${errorMsgPlaceholder}">
                 <div id="accessIdError" class="arrow-help-block"></div>
             </div>
             <div class="form-group text-left">
@@ -77,22 +107,26 @@
                 <input type="checkbox" name="SAVEIDCHECK" id="rememberID"><span
                     class="remember-text">${checkboxLabel}</span>
             </div>
-            <div id="passwordDiv" class="form-group"><label for="PASSWORD" class="sr-only">${!passwordPlaceholder ? 'Password': passwordPlaceholder}</label>
+            <div id="passwordDiv" class="form-group"><label for="PASSWORD" class="sr-only">${!passwordPlaceholder ?
+                    'Password': passwordPlaceholder}</label>
                 <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
                     placeholder="${passwordPlaceholder}" data-parsley-required="true"
                     data-parsley-required-message="${errorMsgPlaceholder}">
                 <div id="passwordError" class="arrow-help-block"></div>
-                <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}" type="submit">
+                <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}"
+                    type="submit">
             </div>
         </form>
         <p class="signin-links">
             <span class="signin-help">
-                <sly data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotAccessIdLink}">
+                <sly
+                    data-sly-use.utilityListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotAccessIdLink}">
                     <a href="${utilityListParsing.navPath}" target="_blank">${forgotAccessIdLabel}</a>
                 </sly>
             </span>
             <span class="signin-register">
-                <sly data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotPasswordLink}">
+                <sly
+                    data-sly-use.utilityListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotPasswordLink}">
                     <a href="${utilityListParsing.navPath}" target="_blank">${forgotPasswordLabel}</a>
                 </sly>
             </span>
