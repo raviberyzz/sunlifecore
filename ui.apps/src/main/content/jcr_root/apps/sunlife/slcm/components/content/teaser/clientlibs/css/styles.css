@@ -1,0 +1,6 @@
+.landing-page-hero-banner .text-section {
+  color: #ffffff; }
+
+@media (max-width: 767px) {
+  .landing-page-hero-banner .right-item, .landing-page-hero-banner .left-item {
+    background-color: #004C6C; } }
