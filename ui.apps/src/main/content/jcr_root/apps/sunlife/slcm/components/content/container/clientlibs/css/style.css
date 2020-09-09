@@ -1,0 +1,13 @@
+.cta-home-wrapper {
+  background-color: #f2f5f6; }
+  .cta-home-wrapper .row {
+    margin-top: 0;
+    top: -40px; }
+
+@media (max-width: 1024px) {
+  .col-xs-12.no-gutter .search-container {
+    padding: 0 10px; } }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .no-padding .yellow-icon-white-background > * {
+    border-top: 1px solid #D7D7D7; } }
