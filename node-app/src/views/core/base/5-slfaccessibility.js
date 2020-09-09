@@ -230,6 +230,7 @@ addMegaMenuAriaLabels();
                 e.preventDefault();
                 e.stopPropagation();
                 $(this).closest('.dropdown-submenu').removeClass('open');
+                $(this).closest('.cmp-dynamic-megamenu-grey').css('height','auto');
                 $(this).parent().parent().siblings('a').focus();
               }
           })
