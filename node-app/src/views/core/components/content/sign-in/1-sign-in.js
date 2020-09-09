@@ -13,31 +13,31 @@ function onSignInClick() {
         return alert('Please type a valid client id and password to login');
     }
 
-//     const clientContext = getClientContext();
-//     const additionalParams = { user: clientId };
-//     const journeyName = "fetch_partyid";
+    // const clientContext = getClientContext();
+    // const additionalParams = { user: clientId };
+    // const journeyName = "fetch_partyid";
     
-//     // add the password to the client context
-//     clientContext.password = password;
+    // add the password to the client context
+    // clientContext.password = password;
 
-//     setAppContentApperance(false);
+    // setAppContentApperance(false);
 
-//     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
+    // journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
-//     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext)
-//         .then((results) => {
-//             journeyEnded(clientContext);
+    // journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext)
+    //     .then((results) => {
+    //         journeyEnded(clientContext);
 
-//             const token = results.getToken();
-//             if (token) {
-//                 updateSessionToken(token);
-//                 showHomeDiv();
-//             }
-//         })
-//         .catch((error) => {
-//             console.error(`Authenticate Error: ${error}`);
-//             journeyEnded(clientContext);
-//         });
+    //         const token = results.getToken();
+    //         if (token) {
+    //             updateSessionToken(token);
+    //             showHomeDiv();
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.error(`Authenticate Error: ${error}`);
+    //         journeyEnded(clientContext);
+    //     });
  }
 
 function journeyEnded(clientContext) {
