@@ -15,13 +15,6 @@
     }
 }
 
-.row.flex-height {
-    .form-yellow-wrapper {
-        height: 100%;
-        
-    }
-    
-}
 //Cta form wrapper style
 
 .cta-form-wrapper .dropdown  {
@@ -36,6 +29,49 @@
 .home-cta-form-wrapper {
     .experiencefragment {
         height: auto !important;
+    }
+}
+
+//Linkfarm with sign-in variation
+
+.row.flex-height {
+    .form-yellow-wrapper {
+        height: 100%;
+        .icon-text {
+            .icon-style {
+                height: 60px;
+                width: 60px;
+                padding: 6px;
+            }
+            .icon-texts {
+                padding-top: 16px !important;
+                h2,h3,h4,h5,h6 {
+                    margin-bottom: 16px !important;
+                    font-size: 18px;
+                    line-height: 23px;
+                    font-weight: 700;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+@media(min-width :$desktop-screen-min) {
+    .row.flex-height {
+        .form-yellow-wrapper {
+            padding: 24px !important;
+            form {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .cmp-form-options--drop-down {
+                margin-top: 14px;
+            }
+            
+        }   
     }
 }
 
