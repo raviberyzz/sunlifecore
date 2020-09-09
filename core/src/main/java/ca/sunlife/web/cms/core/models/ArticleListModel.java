@@ -391,7 +391,7 @@ public class ArticleListModel {
       return;
     }
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    index = selectors.length > 0 ? selectors.length - 1 : 0;
+    index = selectors.length > 0 ? (selectors.length - 1) : 0;
     if (selectors.length > 0 && StringUtils.isNumeric(selectors[index]) && Integer.parseInt(selectors [ index ]) > 1
         && ! getDisplayType().equals("articleList")) {
       return;
