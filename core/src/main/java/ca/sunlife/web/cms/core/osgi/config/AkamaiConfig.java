@@ -22,8 +22,8 @@ public @interface AkamaiConfig {
    *
    * @return the host
    */
-  @ AttributeDefinition (name = "host", description = "Akamai Host", defaultValue = "akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net")
-  String getHost ();
+  @ AttributeDefinition (name = "host", description = "Akamai Host")
+  String getHost () default "akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net";
   
   /**
    * Gets the environment.
@@ -45,23 +45,23 @@ public @interface AkamaiConfig {
    *
    * @return the access key
    */
-  @ AttributeDefinition (name = "accessKey", description = "Access Key", defaultValue = "akab-coaxo5i7uyh25rdl-ukgkilqkilqhekri")
-  String getAccessKey ();
+  @ AttributeDefinition (name = "accessKey", description = "Access Key")
+  String getAccessKey () default "akab-coaxo5i7uyh25rdl-ukgkilqkilqhekri";
 
   /**
    * Gets the client secret.
    *
    * @return the client secret
    */
-  @ AttributeDefinition (name = "clientSecret", description = "Client Secret", defaultValue = "5nBJ+6AZyG6e2+tkxZWhrilX2Ys2UObM7fKB8ld0rvY=")
-  String getClientSecret ();
+  @ AttributeDefinition (name = "clientSecret", description = "Client Secret")
+  String getClientSecret () default "5nBJ+6AZyG6e2+tkxZWhrilX2Ys2UObM7fKB8ld0rvY=";
 
   /**
    * Gets the client token.
    *
    * @return the client token
    */
-  @ AttributeDefinition (name = "clientToken", description = "Client Token", defaultValue = "akab-7ilhfrrlqf3ak4w2-awgfokfuslr7th2u")
-  String getClientToken ();
+  @ AttributeDefinition (name = "clientToken", description = "Client Token")
+  String getClientToken () default "akab-7ilhfrrlqf3ak4w2-awgfokfuslr7th2u";
 
 }
