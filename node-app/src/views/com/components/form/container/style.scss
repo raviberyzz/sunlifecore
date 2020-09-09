@@ -62,7 +62,7 @@
     
 }
 
-@media(min-width :$desktop-screen-min) {
+@media(min-width : $desktop-screen-min) {
     .row.flex-height {
         .form-yellow-wrapper {
             form {
@@ -72,7 +72,10 @@
             }
             .cmp-form-options--drop-down {
                 margin-top: 14px;
-            }   
+            }
+            .button-wrapper .cmp-form-button { 
+                margin-bottom: 0 !important;   
+            }
         }   
     }
 }
