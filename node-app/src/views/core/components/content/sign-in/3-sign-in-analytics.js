@@ -1,11 +1,11 @@
 /* sign in framework analytics starts here */
 /* inserting error code in url for credential and server validation starts here */
-function insertParam(key, value) {
+/*function insertParam(key, value) {
     key = encodeURIComponent(key);
     value = encodeURIComponent(value);
     var kvp = document.location.search.substr(1).split('&');
     for(let i=0; i<kvp.length; i++){
-        if (kvp[i].startsWith(key + '=')) {
+        if (kvp[i].indexOf(key + '=')) {
             let pair = kvp[i].split('=');
             pair[1] = value;
             kvp[i] = pair.join('=');
@@ -25,7 +25,26 @@ function insertParam(key, value) {
     window.history.replaceState(null, null, params);
     // reload page with new params
     //document.location.search = params;
-}
+}*/
+function updateQueryStringParameter(key, value) {
+    let uri=(location.pathname+location.search).substr(1);
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+      let param= uri.replace(re, '$1' + key + "=" + value + '$2');
+      param = param.split("?").pop();
+      param='?'+param;
+      console.log(param);
+      window.history.replaceState(null, null, param);
+    }
+    else {
+      let param=uri + separator + key + "=" + value;
+      param = param.split("?").pop();
+      param='?'+param;
+      console.log(param);
+      window.history.replaceState(null, null, param);
+    }
+  }
 /* inserting error code in url for credential and server validation ends here */
 function parsleyAnalytics(event){
     // for only no userId
@@ -40,8 +59,8 @@ function parsleyAnalytics(event){
             "ev_data_two": "error- username required: "+EC,
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
-        });
-        //insertParam('EC', UrlEC);
+        });       
+        updateQueryStringParameter('EC',UrlEC);        
     }
     //for only no password
     if(($('.mySlfSignIn #PASSWORD').val()=='' && $('.mySlfSignIn #USER').val()!='') ||
@@ -55,7 +74,7 @@ function parsleyAnalytics(event){
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
-        //insertParam('EC', UrlEC);
+        updateQueryStringParameter('EC',UrlEC);
     }
     //for no userID and password
     if(($('.mySlfSignIn #PASSWORD').val()=='' && $('.mySlfSignIn #USER').val()=='') ||
@@ -69,7 +88,7 @@ function parsleyAnalytics(event){
             "ev_title": "signin - "+utag_data.page_category,
             "ev_type": "other"
         });
-        //insertParam('EC', UrlEC);
+        updateQueryStringParameter('EC',UrlEC);
     }
 }
 $(document).ready(function (){
