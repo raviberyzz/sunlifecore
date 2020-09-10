@@ -93,7 +93,7 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
           HttpPost post = new HttpPost(uri);
           post.addHeader("CQ-Action", "Delete");
           post.addHeader("CQ-Handle", path.trim());
-          post.addHeader("CQ-Host", domain);
+          post.addHeader("Host", domain);
           post.setEntity(new StringEntity(path.trim()));
           final CloseableHttpResponse res = client.execute(post);
           String responseText = IOUtils.toString(res.getEntity().getContent(), StandardCharsets.UTF_8);
