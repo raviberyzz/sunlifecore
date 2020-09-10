@@ -25,4 +25,7 @@
 	<slcm-home-page/>
     <slcm-content-page/>
     <slcm-experience-fragment/>
+	<workplace-benefits-home-page/>
+    <workplace-benefits-content-page/>
+    <workplace-benefits-experience-fragment/>
 </jcr:root>
