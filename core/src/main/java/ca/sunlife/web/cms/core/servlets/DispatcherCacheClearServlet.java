@@ -65,8 +65,10 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
   @Activate
   public void activate() {
     for (final Agent agent : agentManager.getAgents().values()) {
-      if(agent.isEnabled() && agent.getConfiguration().getSerializationType().equalsIgnoreCase("flush") && StringUtils.startsWith(agent.getConfiguration().getTransportURI(), "http")) {
-        dispatchers.add(agent.getConfiguration().getTransportURI());
+      String uri = agent.getConfiguration().getTransportURI();
+      if(agent.isEnabled() && agent.getConfiguration().getSerializationType().equalsIgnoreCase("flush") && StringUtils.isNotEmpty(uri) &&
+          (uri.startsWith("http://") || uri.startsWith("https://"))) {
+        dispatchers.add(uri);
       }
     }
     LOGGER.debug("Got dispatcher agents {}", dispatchers);
