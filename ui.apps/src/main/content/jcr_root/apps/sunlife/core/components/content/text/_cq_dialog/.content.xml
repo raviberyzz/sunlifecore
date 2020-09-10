@@ -145,6 +145,10 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 cssName="sign-out-link"
                                                                 text="Sign Out Link"/>
+                                                            <remove-top-padding
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cssName="no-margin-top"
+                                                                text="Remove Top Padding"/>
                                                         </styles>
                                                     </styles>
                                                     <format

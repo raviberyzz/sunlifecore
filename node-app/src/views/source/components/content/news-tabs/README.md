@@ -1,0 +1,1 @@
+#NEWS TABS Component

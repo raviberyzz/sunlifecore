@@ -47,6 +47,14 @@ public interface FooterCopyrightModel {
   String getSlfText();
 
   /**
+   * Gets the Feedback link display.
+   *
+   * @return the Feedback link display
+   */
+  @ Inject
+  String getFeedbackLink();
+  
+  /**
    * Gets the footer items.
    *
    * @return the footer items

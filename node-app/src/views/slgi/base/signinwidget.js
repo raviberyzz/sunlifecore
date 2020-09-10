@@ -9,9 +9,13 @@ var sunnetUrl;
 //checks hostname to set sunnet url
 if (hostname == 'www.sunlifeglobalinvestments.com') {
 	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if (hostname == 'www.placementsmondiauxsunlife.com') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
 } else if (hostname == 'cmsstage-sunlifeglobalinvestments.ca.sunlife') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else if (hostname == 'stage-www.sunlifeglobalinvestments.com') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else if (hostname == 'stage-www.placementsmondiauxsunlife.com') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else {
 	sunnetUrl = "https://sit-www.sunnet.sunlife.com";
@@ -115,9 +119,6 @@ function handleUserSelection(selectedVal) {
 
 $(document).ready(function () {
 
-	function signinModalClkEve() {
-		utag.link({ "asset_type": "Module", "asset_title": "Sign In - Main", "event_type": "Click", "event_title": "Sign In", "page_section": "Homepage main signin" });
-	}
 	
 	$(document).on("click", "#forgot_access, #forgot_password", function (event) {
 		var isValid = true;
@@ -795,6 +796,9 @@ else if (userRoleGet == "INVESTOR" && remberMeFlagGet == "1") {
 }
 
 
+function signInModalEve() {
+	utag.link({ "asset_type": "Module", "asset_title": "Sign In - Main", "event_type": "Click", "event_title": "Sign In", "page_section": "Homepage main signin" });
+}
 
 
 

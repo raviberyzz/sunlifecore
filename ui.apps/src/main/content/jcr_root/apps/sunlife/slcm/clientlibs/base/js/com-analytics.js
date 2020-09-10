@@ -58,16 +58,16 @@ $(document).ready(function () {
                 let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
                 utag.link({
                     "asset_type" : "Dropdown",
-                    "asset_title" : "Triage  - clients & prospects - products & services",
+                    "asset_title" : "Triage  - clients & prospects - sign in",
                     "event_type" : "Click",
                     "event_title" : "Country selected - "+country,
-                    "page_section" : "Learn about our products & services "
+                    "page_section" : "sign in module"
                 });
             });
         }
         // product and services other pages explore product and service section
-        pageName.forEach((element,index) => {
-            if(element.match('products and services') && productTitle!='products and services'){
+        $(pageName).each(function(index,item) {
+            if(item.match('products and services') && productTitle!='products and services'){
                 $('.cmp-linkfarm-table ul li a').click(function(e){
                     let linkText=$(this).text();
                     let parentCountry=$(this).parent().parents('li').children('a').text();
@@ -105,8 +105,8 @@ $(document).ready(function () {
                         "asset_type" : "Text Link",
                         "asset_title" : "Triage  - investors - contact us",
                         "event_type" : "Click",
-                        "event_title" : "NA - "+linkTitle,
-                        "page_section" : "tab: "+tabName
+                        "event_title" : "NA -"+linkTitle,
+                        "page_section" : "tab:"+tabName
                     });
                 }
             });
@@ -123,8 +123,8 @@ $(document).ready(function () {
                         "asset_type" : "Text Link",
                         "asset_title" : "Triage  - media - contact us",
                         "event_type" : "Click",
-                        "event_title" : country+" - "+linkTitle,
-                        "page_section" : "tab: "+tabName
+                        "event_title" : "MIXED-"+ linkTitle,
+                        "page_section" : "tab:For media"
                     });
                 }
             });
@@ -144,8 +144,8 @@ $(document).ready(function () {
                         "asset_type" : "Text link",
                         "asset_title" : "Triage  - clients & prospects - contact us",
                         "event_type" : "Click",
-                        "event_title" : country+" - "+linkTitle,
-                        "page_section" : "Tab:  "+tabName+" "
+                        "event_title" : country+"-"+linkTitle,
+                        "page_section" : "Tab:"+tabName
                     });
                 }
             });
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - investors - shareholder contacts",
                 "event_type" : "Click",
-                "event_title" : country+" - "+link,
+                "event_title" : "MIXED -"+link,
                 "page_section" : "Page body"
             });
         });
@@ -170,7 +170,7 @@ $(document).ready(function () {
     if(productTitle=='careers'){
         //current opportunities dropdown go button click
         $('.container-component form .button button').click(function(e){
-            let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
+            let country=$(this).parent().siblings('.dropdown.options').find('select option:selected').text();
             utag.link({
                 "asset_type" : "Dropdown",
                 "asset_title" : "Triage  - job seekers - careers",
@@ -187,7 +187,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - job seekers - careers",
                 "event_type" : "Click",
-                "event_title" : parentCountry+" - "+linkText,
+                "event_title" : parentCountry+"-"+linkText,
                 "page_section" : "Explore career opportunities"
             });
         });
@@ -203,7 +203,7 @@ $(document).ready(function () {
                 "asset_type" : "Text Link",
                 "asset_title" : "Triage  - job seekers - why join Sun Life",
                 "event_type" : "Click",
-                "event_title" : parentCountry+" - "+linkText,
+                "event_title" : parentCountry+"-"+linkText,
                 "page_section" : "Explore career opportunities"
             });
         });
@@ -219,7 +219,7 @@ $(document).ready(function () {
                     "asset_type" : "Text Link",
                     "asset_title" : "Triage  - donations - d&S",
                     "event_type" : "Click",
-                    "event_title" : parentCountry+" - "+linkText,
+                    "event_title" : parentCountry+"-"+linkText,
                     "page_section" : "Explore donations and sponsorships"
                 });
             });
@@ -228,7 +228,7 @@ $(document).ready(function () {
     /* Countries/Regions page analytics starts here */
     if(productTitle=='regions' || productTitle=='countries'){
     // clicking on tooltip
-        $('#map-point-container .map-point a span').click(function(){
+        /*$('#map-point-container .map-point a span').click(function(){
             let country=$(this).parent().siblings('.map-point-content').find('h5').text();
             utag.link({
                 "asset_type" : "Image Link",
@@ -237,7 +237,7 @@ $(document).ready(function () {
                 "event_title" : country,
                 "page_section" : "Map"
             });
-        });
+        });*/
         // link click in the overlay of tooltip
         $('#map-point-container .map-point .map-point-content p a').click(function(){
             let linkText=$(this).text();
@@ -251,7 +251,7 @@ $(document).ready(function () {
             });
         });
         // link below the map section click
-        $(".country-sect .country-item .country-content li a").click(function(){
+        /*$(".country-sect .country-item .country-content li a").click(function(){
             let linkText=$(this).text();
             let country=$(this).parent().parents('.country-item').find('span.country-title').text();
             utag.link({
@@ -261,7 +261,7 @@ $(document).ready(function () {
                 "event_title" : country+" - "+linkText,
                 "page_section" : "Below Map"
             });
-        });
+        });*/
     }
     /* Countries/Regions page analytics ends here */
     /* inside language bar link analytics starts here */
@@ -271,9 +271,9 @@ $(document).ready(function () {
             let linkName=$(this).text();
             utag.link({
                 "asset_type" : "Language Module",
-                "asset_title" : "Triage - Language Panel",
+                "asset_title" : "Triage-Language Panel",
                 "event_type" : "Click",
-                "event_title" : country+" - "+linkName,
+                "event_title" : country+"- "+linkName,
                 "page_section" : "Language bar"
             });
         }
@@ -287,7 +287,7 @@ $(document).ready(function () {
             "asset_type" : "Text Link",
             "asset_title" : "Triage  - media - newsroom",
             "event_type" : "Click",
-            "event_title" : country+" - "+linkName,
+            "event_title" : country+"-"+linkName,
             "page_section" : "right rail"
         });
     });

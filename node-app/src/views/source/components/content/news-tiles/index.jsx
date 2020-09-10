@@ -5,47 +5,47 @@ class NewsTiles extends React.Component {
       pageLang: utag_data.page_language,
       resultArr: {},
       newsList: [{
-        "publishedDate": 1597935060000,
-        "heading": "News article 1",
+        "publishedDate": 1584037800000,
+        "heading": "How to raise a Healthy family",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada"]
       }, {
-        "publishedDate": 1597935060000,
-        "heading": "News article 2",
+        "publishedDate": 1584037800000,
+        "heading": "Insights from the DHS - A Customer Journey",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/es", "sunlife:source/business-units/corporate", "sunlife:source/business-units/us", "sunlife:source/business-units/slc"]
       }, {
-        "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "publishedDate": 1583951400000,
+        "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada"]
       }, {
-        "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "publishedDate": 1583778600000,
+        "heading": "Dean's Message",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada"]
       }, {
         "publishedDate": 1597935060000,
-        "heading": "News article 1",
+        "heading": "5 ways to avoid burnout",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada"]
       }, {
         "publishedDate": 1597935060000,
-        "heading": "News article 2",
+        "heading": "How to talk to your boss about your mental health",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada"]
       }, {
         "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "heading": "What you need to know before you see a therapist",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/corporate", "sunlife:source/business-units/es", "sunlife:source/business-units/slc", "sunlife:source/business-units/us"]
       },
       {
         "publishedDate": 1597935060000,
@@ -110,6 +110,7 @@ class NewsTiles extends React.Component {
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.dateTransform = this.dateTransform.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
+    this.clearAll =  this.clearAll.bind(this);
   }
 
   componentDidMount() {
@@ -118,22 +119,38 @@ class NewsTiles extends React.Component {
 
   handleAllChecked(event) {
     let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(fruite => fruite.isChecked = event.target.checked)
-    preference.filters.topic.forEach(fruite => fruite.isChecked = event.target.checked)
+    preference.filters.businessGroup.forEach(prefer => {
+      if(prefer.value != 'Canada'){
+        prefer.isChecked = event.target.checked
+      }
+      })
+    preference.filters.topic.forEach(prefer => prefer.isChecked = event.target.checked)
     this.setState({ resultArr: preference })
   }
 
   handleCheckChildElement(event) {
     let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(fruite => {
-      if (fruite.value === event.target.value)
-        fruite.isChecked = event.target.checked
+    preference.filters.businessGroup.forEach(prefer => {
+      if (prefer.value === event.target.value)
+        prefer.isChecked = event.target.checked
     })
-    preference.filters.topic.forEach(fruite => {
-      if (fruite.value === event.target.value)
-        fruite.isChecked = event.target.checked
+    preference.filters.topic.forEach(prefer => {
+      if (prefer.value === event.target.value)
+        prefer.isChecked = event.target.checked
     })
     this.setState({ resultArr: preference })
+  }
+
+  clearAll() {
+    let preference = this.state.resultArr
+    preference.filters.businessGroup.forEach(prefer => {
+      if(prefer.value != 'Canada'){
+        prefer.isChecked = false;
+      }
+      })
+    preference.filters.topic.forEach(prefer => prefer.isChecked = false)
+    this.setState({ resultArr: preference })
+    $("#preferenceModal").modal("hide");
   }
 
   dateTransform(date) {
@@ -214,6 +231,11 @@ class NewsTiles extends React.Component {
                   <div class="row news-tool-bar">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
                       <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
+                      <div class="preference-tag-container">
+                        <span class="tag">Philippines</span>
+                        <span class="tag">my Benefits and Wellness</span>
+                        <span class="more-tag">More - 4</span>
+                      </div>
                       <a class="right-text pull-right" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
@@ -227,7 +249,7 @@ class NewsTiles extends React.Component {
                           </button>
                           <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
                           <p>
-                            <input type="checkbox" onChange={this.handleAllChecked} name="selectAll" value="selectAll" />
+                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" value="selectAll" />
                             <span class="chk-lbl">Select all</span>
                           </p>
                         </div>
@@ -241,7 +263,7 @@ class NewsTiles extends React.Component {
                                     {this.state.resultArr[key].businessGroup.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} />
+                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.value === 'Canada'}/>
                                           <span class="chk-lbl">{value.value}</span>
                                         </li>
                                       )
@@ -275,7 +297,7 @@ class NewsTiles extends React.Component {
                               <button class="cmp-form-button pull-right">{this.props.preferenceModalHeadingbtn1}</button>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
-                              <button class="cmp-form-button sec-btn">{this.props.preferenceModalHeadingbtn2}</button>
+                              <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
                             </div>
                           </div>
                         </div>
@@ -309,7 +331,7 @@ class NewsTiles extends React.Component {
                         </div>
                         {Object.keys(this.state.newsList).slice(4,7).map((key, index) => {
                           return (
-                            <div>
+                            <div class="mar-btm">
                               <a class="title" href="">{this.state.newsList[key].heading}</a>
                               <p class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</p>
                             </div>

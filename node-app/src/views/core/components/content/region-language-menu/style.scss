@@ -429,6 +429,9 @@
                 display:none;
             }
         }
+        .tab-content {
+            margin-top: 8px;
+        }
         .tab-content .region-tab {
             padding-top:0;
             .list-unstyled {
@@ -531,6 +534,11 @@
         .cmp-linkfarm-table {
             margin-left: 0;
             margin-right: 0;
+            .mobile-region-language-menu-wrapper {
+                .tab-content .language-tab {
+                     padding-top: 0; 
+                }
+            }
         }
     }
 }
