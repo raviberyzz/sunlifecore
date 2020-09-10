@@ -1,4 +1,4 @@
-class NewsTiles extends React.Component {
+class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -110,7 +110,7 @@ class NewsTiles extends React.Component {
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.dateTransform = this.dateTransform.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
-    this.clearAll =  this.clearAll.bind(this);
+    this.clearAll = this.clearAll.bind(this);
   }
 
   componentDidMount() {
@@ -120,10 +120,10 @@ class NewsTiles extends React.Component {
   handleAllChecked(event) {
     let preference = this.state.resultArr
     preference.filters.businessGroup.forEach(prefer => {
-      if(prefer.value != 'Canada'){
+      if (prefer.value != 'Canada') {
         prefer.isChecked = event.target.checked
       }
-      })
+    })
     preference.filters.topic.forEach(prefer => prefer.isChecked = event.target.checked)
     this.setState({ resultArr: preference })
   }
@@ -144,10 +144,10 @@ class NewsTiles extends React.Component {
   clearAll() {
     let preference = this.state.resultArr
     preference.filters.businessGroup.forEach(prefer => {
-      if(prefer.value != 'Canada'){
+      if (prefer.value != 'Canada') {
         prefer.isChecked = false;
       }
-      })
+    })
     preference.filters.topic.forEach(prefer => prefer.isChecked = false)
     this.setState({ resultArr: preference })
     $("#preferenceModal").modal("hide");
@@ -263,7 +263,7 @@ class NewsTiles extends React.Component {
                                     {this.state.resultArr[key].businessGroup.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.value === 'Canada'}/>
+                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.value === 'Canada'} />
                                           <span class="chk-lbl">{value.value}</span>
                                         </li>
                                       )
@@ -306,54 +306,135 @@ class NewsTiles extends React.Component {
                   </div>
                 </div>
               }
-              {this.props.newsListContainer == "true" &&
-                <div class="row news-list-container">
-                  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
-                    {Object.keys(this.state.newsList).slice(0, 4).map((key, index) => {
-                      return (
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                          <div class="tile-img" style={{ backgroundImage: `url(${this.state.newsList[key].imageLink})` }}>
-                            <div class="overlay-container">
-                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
-                                <span class="title pull-left">{this.state.newsList[key].heading}</span>
-                                <span class="date pull-right">{this.dateTransform(this.state.newsList[key].publishedDate)}</span>
-                              </div>
-                              <span class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</span>
+              {this.props.newsTabsContainer == "true" &&
+                <div class="news-tabs-container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="we-tabs aem-GridColumn aem-GridColumn--default--12 tabs-wrapper">
+                    <div class="cmp-tabs">
+                      <ol role="tablist" class="cmp-tabs__tablist" aria-multiselectable="false">
+                        <li role="presentation" class="cmp-tabs__tab cmp-tabs__tab--active" tabindex="0" data-cmp-hook-tabs="tab" aria-controls="familytab-content" aria-selected="true">2020
+                            </li>
+                        <li role="presentation" class="cmp-tabs__tab" tabindex="-1" data-cmp-hook-tabs="tab" aria-controls="coupletab-content" aria-selected="false">2019
+                            </li>
+                        <li role="presentation" class="cmp-tabs__tab" tabindex="-1" data-cmp-hook-tabs="tab" aria-controls="singletab-content" aria-selected="false">2018
+                            </li>
+                      </ol >
+                      <div role="tabpanel" tabindex="0" class="cmp-tabs__tabpanel cmp-tabs__tabpanel--active" data-cmp-hook-tabs="tabpanel">
+                        <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">2020</div>
+                        <div class="responsivegrid">
+                          <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
                             </div>
                           </div>
                         </div>
-                      )
-                    })}
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                      <div class="aggregate-tile">
-                        <div class="circular-image">
-                          <img class="icon" src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
-                        </div>
-                        {Object.keys(this.state.newsList).slice(4,7).map((key, index) => {
-                          return (
-                            <div class="mar-btm">
-                              <a class="title" href="">{this.state.newsList[key].heading}</a>
-                              <p class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</p>
-                            </div>
-                          )
-                        })}
-                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="#">More News</a></span></span></p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
-                      <p><a href="#"><img src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/internal/source/images/workday.jpg" alt="" /></a></p>
-                      <p>{this.props.workdayText}</p>
-                      <p><a href="https://cmsdev-auth.ca.sunlife/content/sunlife/external.html" target="_blank"><span class="view-all-category white-font">{this.props.workdayLinkText}</span></a>
-                      </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
-                      <p><a href="#"><img src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/internal/source/images/workplace.png" alt="" /></a></p>
-                      <p><strong><span class="blue-font">by Facebook</span></strong></p>
-                      <p class="m-top-bt">{this.props.workplaceText}</p>
-                      <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="https://sunlife.workplace.com" target="_blank">{this.props.workplaceLinkText}</a></span></span>
-                      </p>
+                      <div role="tabpanel" tabindex="0" class="cmp-tabs__tabpanel" data-cmp-hook-tabs="tabpanel" aria-hidden="true">
+                        <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">2019</div>
+                        <div class="responsivegrid">
+                          <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+                          <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div role="tabpanel" tabindex="0" class="cmp-tabs__tabpanel" data-cmp-hook-tabs="tabpanel" aria-hidden="true">
+                        <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">2018</div>
+                        <div class="responsivegrid">
+                        <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            <div class="news-list-box">
+                              <p>
+                                September 08, 2020</p>
+                              <p>
+                                <a href="/Global/Newsroom/News+releases/Announcement/Nearly+half+of+all+Canadians+feel+less+financially+secure+due+to+COVID-19?vgnLocale=en_CA&amp;id=123452">Nearly half of all Canadians feel less financially secure due to COVID-19</a>
+                              </p>
+                              <p>A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and...</p>
+                            </div>
+                            
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -366,4 +447,4 @@ class NewsTiles extends React.Component {
     );
   }
 }
-reactComponents["news-tiles"] = NewsTiles;
+reactComponents["news-tabs"] = NewsTabs;

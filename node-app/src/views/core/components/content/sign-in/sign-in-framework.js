@@ -123,8 +123,8 @@ $(document).ready(function () {
                 var action=$(".mySlfSignIn #form_signon").attr('action').trim();
                 if(action==undefined || action==''){
                     console.log('transmit');
-                    mfaModalTrigger();
-                    onSignInClick();
+                    //mfaModalTrigger();
+                    //onSignInClick();
                     event.preventDefault();
                 }else{
                     console.log('siteminder');

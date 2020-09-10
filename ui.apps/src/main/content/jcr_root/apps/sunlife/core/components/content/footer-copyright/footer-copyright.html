@@ -14,7 +14,9 @@
                   <a data-sly-test="${!footerItems.contentUrl}" href="${footerItems.url}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
                </li>
                </sly>
+               <sly data-sly-test = "${!footercopyright.feedbackLink}">
                <li id="feedback-footer"></li>
+               </sly>
             </ul>
         </div>
     </div>
