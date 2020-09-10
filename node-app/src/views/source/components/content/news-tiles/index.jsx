@@ -3,114 +3,115 @@ class NewsTiles extends React.Component {
     super(props);
     this.state = {
       pageLang: utag_data.page_language,
-      resultArr: {},
+      businessGroupList: [],
+      topicsList: [],
+      selectedPreferenceList: [],
       newsList: [{
         "publishedDate": 1584037800000,
         "heading": "How to raise a Healthy family",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"]
       }, {
         "publishedDate": 1584037800000,
         "heading": "Insights from the DHS - A Customer Journey",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/es", "sunlife:source/business-units/corporate", "sunlife:source/business-units/us", "sunlife:source/business-units/slc"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/es", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/us", "sunlife:source/business-groups/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"]
       }, {
         "publishedDate": 1583951400000,
         "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/corporate-real-estate"]
       }, {
         "publishedDate": 1583778600000,
         "heading": "Dean's Message",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/digital-enterprise"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "5 ways to avoid burnout",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/covid-19"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "How to talk to your boss about your mental health",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/general-HR"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "What you need to know before you see a therapist",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/corporate", "sunlife:source/business-units/es", "sunlife:source/business-units/slc", "sunlife:source/business-units/us"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/es", "sunlife:source/business-groups/slc", "sunlife:source/business-groups/us", "sunlife:source/topics/diversity-&-inclusion"]
       },
       {
         "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "heading": "News article 10",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/innovation"]
+      }, {
+        "publishedDate": 1597935060000,
+        "heading": "News article 9",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/business-groups/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"]
+      }, {
+        "publishedDate": 1597935060000,
+        "heading": "News article 8",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/topics/general-HR", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "News article 1",
-        "link": "/content/sunlife/internal/source/en/news/article1",
+        "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/compliance"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "News article 2",
-        "link": "/content/sunlife/internal/source/en/news/article2",
+        "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/business-groups/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/compliance"]
       }, {
         "publishedDate": 1597935060000,
         "heading": "News article 3",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
-      }, {
-        "publishedDate": 1597935060000,
-        "heading": "News article 3",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
-      }, {
-        "publishedDate": 1597935060000,
-        "heading": "News article 1",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
       }, {
         "publishedDate": 1597935060000,
-        "heading": "News article 2",
+        "heading": "News article 4",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/my-benefits-and-wellness"]
       }, {
         "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "heading": "News article 5",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/business-groups/canada", "sunlife:source/topics/philanthropy-sponsorship"]
       },
       {
         "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "heading": "News article 6",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"]
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/business-groups/corporate", "sunlife:source/topics/sustainability"]
       }]
     };
 
     this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
-    this.dateTransform = this.dateTransform.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
-    this.clearAll =  this.clearAll.bind(this);
+    this.clearAll = this.clearAll.bind(this);
   }
 
   componentDidMount() {
@@ -118,23 +119,21 @@ class NewsTiles extends React.Component {
   }
 
   handleAllChecked(event) {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
-      if(prefer.value != 'Canada'){
+    this.state.businessGroupList.forEach(prefer => {
+      if (prefer.name != 'Canada') {
         prefer.isChecked = event.target.checked
       }
-      })
-    preference.filters.topic.forEach(prefer => prefer.isChecked = event.target.checked)
+    })
+    this.state.topicsList.forEach(prefer => prefer.isChecked = event.target.checked)
     this.setState({ resultArr: preference })
   }
 
   handleCheckChildElement(event) {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
+    this.state.businessGroupList.forEach(prefer => {
       if (prefer.value === event.target.value)
         prefer.isChecked = event.target.checked
     })
-    preference.filters.topic.forEach(prefer => {
+    this.state.topicsList.forEach(prefer => {
       if (prefer.value === event.target.value)
         prefer.isChecked = event.target.checked
     })
@@ -144,79 +143,70 @@ class NewsTiles extends React.Component {
   clearAll() {
     let preference = this.state.resultArr
     preference.filters.businessGroup.forEach(prefer => {
-      if(prefer.value != 'Canada'){
+      if (prefer.name != 'Canada') {
         prefer.isChecked = false;
       }
-      })
+    })
     preference.filters.topic.forEach(prefer => prefer.isChecked = false)
     this.setState({ resultArr: preference })
     $("#preferenceModal").modal("hide");
   }
 
-  dateTransform(date) {
-    var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var d1 = new Date(date);
-    var d = d1.getDate();
-    var m = d1.getMonth();
-    return monthName[m] + " " + d;
-  }
   bgBinding(bgList) {
     var bg = "";
     Object.keys(bgList).map((key, index) => {
       var bgarr = bgList[key].split('/');
-      if (bgList.length > 1) {
-        bg += bgarr[bgarr.length - 1] + " | ";
-      } else {
-        bg = bgarr[bgarr.length - 1];
+      if (bgarr[1] == "business-groups") {
+        if (bgList.length > 1) {
+          bg += bgarr[bgarr.length - 1] + " | ";
+        } else {
+          bg = bgarr[bgarr.length - 1];
+        }
       }
     })
     return bg;
   }
   newsTiles() {
-    var data = {
-      "filters": {
-        "businessGroup": [
-          { id: 1, value: "Canada", isChecked: true },
-          { id: 2, value: "Corporate", isChecked: false },
-          { id: 3, value: "Enterprise Services", isChecked: false },
-          { id: 4, value: "Hong Kong", isChecked: false },
-          { id: 5, value: "Indonesia", isChecked: false },
-          { id: 6, value: "International", isChecked: false },
-          { id: 7, value: "Philippines", isChecked: false },
-          { id: 8, value: "SLC Management", isChecked: false },
-          { id: 9, value: "Asia", isChecked: false },
-          { id: 10, value: "U.S.", isChecked: false },
-          { id: 11, value: "U.K.", isChecked: false },
-          { id: 12, value: "Vietnam", isChecked: false }
-        ],
-        "topic": [
-          { id: 1, value: "Business continuity", isChecked: false },
-          { id: 2, value: "Business critical", isChecked: false },
-          { id: 3, value: "Client stories", isChecked: false },
-          { id: 4, value: "Company performance", isChecked: false },
-          { id: 5, value: "Compliance", isChecked: false },
-          { id: 6, value: "Corporate Real Estate", isChecked: false },
-          { id: 7, value: "COVID-19", isChecked: false },
-          { id: 8, value: "Digital Enterprise", isChecked: false },
-          { id: 9, value: "Diversity & Inclusion", isChecked: false },
-          { id: 10, value: "Employee engagement", isChecked: false },
-          { id: 11, value: "General HR", isChecked: false },
-          { id: 12, value: "Innovation", isChecked: false },
-          { id: 13, value: "my Benefits and Wellness", isChecked: false },
-          { id: 14, value: "my Career", isChecked: false },
-          { id: 15, value: "my Learning", isChecked: false },
-          { id: 16, value: "my Pay", isChecked: false },
-          { id: 17, value: "Organization announcements", isChecked: false },
-          { id: 18, value: "Philanthropy/Sponsorship", isChecked: false },
-          { id: 19, value: "Recognition", isChecked: false },
-          { id: 20, value: "Sustainability", isChecked: false },
-          { id: 21, value: "Technology", isChecked: false }
-        ]
-      }
-    };
+    let businessGroupObj = [
+      { name: "Canada", value: "sunlife:source/business-groups/canada" },
+      { name: "Corporate", value: "sunlife:source/business-groups/corporate" },
+      { name: "Enterprise Services", value: "sunlife:source/business-groups/enterprise-services" },
+      { name: "Hong Kong", value: "sunlife:source/business-groups/hong-kong" },
+      { name: "Indonesia", value: "sunlife:source/business-groups/indonesia" },
+      { name: "International", value: "sunlife:source/business-groups/international" },
+      { name: "Philippines", value: "sunlife:source/business-groups/philippines" },
+      { name: "SLC Management", value: "sunlife:source/business-groups/slc-management" },
+      { name: "Asia", value: "sunlife:source/business-groups/asia" },
+      { name: "U.S.", value: "sunlife:source/business-groups/us" },
+      { name: "U.K.", value: "sunlife:source/business-groups/uk" },
+      { name: "Vietnam", value: "sunlife:source/business-groups/vietnam" }
+    ];
+    let topicsObj = [
+      { name: "Business continuity", value: "sunlife:source/topics/business-continuity" },
+      { name: "Business critical", value: "sunlife:source/topics/business-critical" },
+      { name: "Client stories", value: "sunlife:source/topics/client-stories" },
+      { name: "Company performance", value: "sunlife:source/topics/company-performance" },
+      { name: "Compliance", value: "sunlife:source/topics/compliance" },
+      { name: "Corporate Real Estate", value: "sunlife:source/topics/corporate-real-estate" },
+      { name: "COVID-19", value: "sunlife:source/topics/covid-19" },
+      { name: "Digital Enterprise", value: "sunlife:source/topics/digital-enterprise" },
+      { name: "Diversity & Inclusion", value: "sunlife:source/topics/diversity-&-inclusion" },
+      { name: "Employee engagement", value: "sunlife:source/topics/employee-engagement" },
+      { name: "General HR", value: "sunlife:source/topics/general-HR" },
+      { name: "Innovation", value: "sunlife:source/topics/innovation" },
+      { name: "My Benefits and Wellness", value: "sunlife:source/topics/my-benefits-and-wellness" },
+      { name: "My Career", value: "sunlife:source/topics/my-career" },
+      { name: "My Learning", value: "sunlife:source/topics/my-learning" },
+      { name: "My Pay", value: "sunlife:source/topics/my-pay" },
+      { name: "Organization announcements", value: "sunlife:source/topics/organization-announcements" },
+      { name: "Philanthropy/Sponsorship", value: "sunlife:source/topics/philanthropy-sponsorship" },
+      { name: "Recognition", value: "sunlife:source/topics/recognition" },
+      { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
+      { name: "Technology", value: "sunlife:source/topics/technology" }
+    ];
     this.setState({
-      resultArr: data,
+      businessGroupList: businessGroupObj,
+      topicsList: topicsObj,
     })
   }
 
@@ -257,37 +247,29 @@ class NewsTiles extends React.Component {
                           <div class="row preference-list">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                               <p class="heading-text">Business Group</p>
-                              {Object.keys(this.state.resultArr).map((key, index) => {
-                                return (
-                                  <ul class="prefernce-col-list">
-                                    {this.state.resultArr[key].businessGroup.map((value, index) => {
-                                      return (
-                                        <li key={index}>
-                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.value === 'Canada'}/>
-                                          <span class="chk-lbl">{value.value}</span>
-                                        </li>
-                                      )
-                                    })}
-                                  </ul>
-                                )
-                              })}
+                              <ul class="prefernce-col-list">
+                                {this.state.businessGroupList.map((value, index) => {
+                                  return (
+                                    <li key={index}>
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.name === 'Canada'} disabled={value.name === 'Canada'} />
+                                      <span class="chk-lbl">{value.name}</span>
+                                    </li>
+                                  )
+                                })}
+                              </ul>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
                               <p class="heading-text">Topic</p>
-                              {Object.keys(this.state.resultArr).map((key, index) => {
-                                return (
-                                  <ul class="prefernce-col-list topic-col">
-                                    {this.state.resultArr[key].topic.map((value, index) => {
-                                      return (
-                                        <li key={index}>
-                                          <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} />
-                                          <span class="chk-lbl">{value.value}</span>
-                                        </li>
-                                      )
-                                    })}
-                                  </ul>
-                                )
-                              })}
+                              <ul class="prefernce-col-list topic-col">
+                                {this.state.topicsList.map((value, index) => {
+                                  return (
+                                    <li key={index}>
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} />
+                                      <span class="chk-lbl">{value.name}</span>
+                                    </li>
+                                  )
+                                })}
+                              </ul>
                             </div>
                           </div>
                         </div>
@@ -316,7 +298,7 @@ class NewsTiles extends React.Component {
                             <div class="overlay-container">
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
                                 <span class="title pull-left">{this.state.newsList[key].heading}</span>
-                                <span class="date pull-right">{this.dateTransform(this.state.newsList[key].publishedDate)}</span>
+                                <span class="date pull-right">{moment(this.state.newsList[key].publishedDate).format('MMM DD')}</span>
                               </div>
                               <span class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</span>
                             </div>
@@ -329,7 +311,7 @@ class NewsTiles extends React.Component {
                         <div class="circular-image">
                           <img class="icon" src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
                         </div>
-                        {Object.keys(this.state.newsList).slice(4,7).map((key, index) => {
+                        {Object.keys(this.state.newsList).slice(4, 7).map((key, index) => {
                           return (
                             <div class="mar-btm">
                               <a class="title" href="">{this.state.newsList[key].heading}</a>
