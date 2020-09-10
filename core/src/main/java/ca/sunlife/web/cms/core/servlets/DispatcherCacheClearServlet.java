@@ -4,14 +4,19 @@
 package ca.sunlife.web.cms.core.servlets;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 
 import javax.servlet.Servlet;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
@@ -51,13 +56,21 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
   /** The dispatchers. */
   private final HashSet<String> dispatchers = new HashSet<>();
   
+  private final static int TIME_OUT = 36000;
+  
+  /** The req config. */
+  private final RequestConfig reqConfig = RequestConfig.custom()
+      .setConnectTimeout(TIME_OUT)
+      .setConnectionRequestTimeout(TIME_OUT)
+      .setSocketTimeout(TIME_OUT).build();
+  
   /**
    * Activate.
    */
   @Activate
   public void activate() {
     for (final Agent agent : agentManager.getAgents().values()) {
-      if(agent.isEnabled() && agent.getConfiguration().getSerializationType().equalsIgnoreCase("flush") && agent.getConfiguration().getTransportURI().startsWith("http")) {
+      if(agent.isEnabled() && agent.getConfiguration().getSerializationType().equalsIgnoreCase("flush") && StringUtils.startsWith(agent.getConfiguration().getTransportURI(), "http")) {
         dispatchers.add(agent.getConfiguration().getTransportURI());
       }
     }
@@ -77,17 +90,17 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
         LOGGER.debug("Invalidating path {} for domain {}", path, domain);
         for(String uri: dispatchers) {
           LOGGER.debug("Invalidating dispatcher {}", uri);
-          HttpClient client = new HttpClient();
-          PostMethod post = new PostMethod(uri);
-          post.setRequestHeader("CQ-Action", "Delete");
-          post.setRequestHeader("CQ-Handle", path.trim());
-          post.setRequestHeader("CQ-Host", domain);
-          StringRequestEntity body = new StringRequestEntity(path.trim(), null, null);
-          post.setRequestEntity(body);
-          post.setRequestHeader("Content-length", String.valueOf(body.getContentLength()));
-          client.executeMethod(post);
-          LOGGER.debug("result : {}", post.getResponseBodyAsString());
-          post.releaseConnection();
+          CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(reqConfig).build();
+          HttpPost post = new HttpPost(uri);
+          post.setHeader("CQ-Action", "Delete");
+          post.setHeader("CQ-Handle", path.trim());
+          post.setHeader("CQ-Host", domain);
+          post.setEntity(new StringEntity(path.trim()));
+          final CloseableHttpResponse res = client.execute(post);
+          String responseText = IOUtils.toString(res.getEntity().getContent(), StandardCharsets.UTF_8);
+          LOGGER.debug("result : {}", responseText);
+          res.close();
+          client.close();
         }
       }
     }
