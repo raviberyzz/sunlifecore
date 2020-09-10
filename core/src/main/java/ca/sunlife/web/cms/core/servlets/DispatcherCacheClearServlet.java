@@ -46,6 +46,9 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
   
+  /** The Constant TIME_OUT. */
+  private static final int TIME_OUT = 36000;
+  
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(DispatcherCacheClearServlet.class);
   
@@ -55,14 +58,6 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
   
   /** The dispatchers. */
   private final HashSet<String> dispatchers = new HashSet<>();
-  
-  private final static int TIME_OUT = 36000;
-  
-  /** The req config. */
-  private final RequestConfig reqConfig = RequestConfig.custom()
-      .setConnectTimeout(TIME_OUT)
-      .setConnectionRequestTimeout(TIME_OUT)
-      .setSocketTimeout(TIME_OUT).build();
   
   /**
    * Activate.
@@ -90,6 +85,10 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
         LOGGER.debug("Invalidating path {} for domain {}", path, domain);
         for(String uri: dispatchers) {
           LOGGER.debug("Invalidating dispatcher {}", uri);
+          RequestConfig reqConfig = RequestConfig.custom()
+              .setConnectTimeout(TIME_OUT)
+              .setConnectionRequestTimeout(TIME_OUT)
+              .setSocketTimeout(TIME_OUT).build();
           CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(reqConfig).build();
           HttpPost post = new HttpPost(uri);
           post.setHeader("CQ-Action", "Delete");
