@@ -124,7 +124,7 @@ $(document).ready(function () {
                 if(action==undefined || action==''){
                     console.log('transmit');
                     //mfaModalTrigger();
-                    onSignInClick();
+                    //onSignInClick();
                     event.preventDefault();
                 }else{
                     console.log('siteminder');
