@@ -91,9 +91,9 @@ public class DispatcherCacheClearServlet extends SlingAllMethodsServlet {
               .setSocketTimeout(TIME_OUT).build();
           CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(reqConfig).build();
           HttpPost post = new HttpPost(uri);
-          post.setHeader("CQ-Action", "Delete");
-          post.setHeader("CQ-Handle", path.trim());
-          post.setHeader("CQ-Host", domain);
+          post.addHeader("CQ-Action", "Delete");
+          post.addHeader("CQ-Handle", path.trim());
+          post.addHeader("CQ-Host", domain);
           post.setEntity(new StringEntity(path.trim()));
           final CloseableHttpResponse res = client.execute(post);
           String responseText = IOUtils.toString(res.getEntity().getContent(), StandardCharsets.UTF_8);
