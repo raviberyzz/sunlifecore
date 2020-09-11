@@ -146,6 +146,13 @@
                             clientlibs="sunlife.slcm.site">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_slcm_clientlibs>
+                        <policy_signin_clientlibs
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Sunlife Signin Clientlibs"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            clientlibs="[sunlife.ca.site,sunlife.signin.mfa]">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                        </policy_signin_clientlibs>
                     </base-page>
                 </structure>
             </components>
