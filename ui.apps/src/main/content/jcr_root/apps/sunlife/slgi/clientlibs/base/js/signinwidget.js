@@ -9,9 +9,13 @@ var sunnetUrl;
 //checks hostname to set sunnet url
 if (hostname == 'www.sunlifeglobalinvestments.com') {
 	sunnetUrl = "https://www.sunnet.sunlife.com";
+} else if (hostname == 'www.placementsmondiauxsunlife.com') {
+	sunnetUrl = "https://www.sunnet.sunlife.com";
 } else if (hostname == 'cmsstage-sunlifeglobalinvestments.ca.sunlife') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else if (hostname == 'stage-www.sunlifeglobalinvestments.com') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else if (hostname == 'stage-www.placementsmondiauxsunlife.com') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else {
 	sunnetUrl = "https://sit-www.sunnet.sunlife.com";
