@@ -5,7 +5,8 @@ class NewsTiles extends React.Component {
       pageLang: utag_data.page_language,
       businessGroupList: [],
       topicsList: [],
-      selectedPreferenceList: [],
+      allChecked: false,
+      selectedPreferenceList: ["sunlife:source/business-groups/canada"],
       newsList: [{
         "publishedDate": 1584037800000,
         "heading": "How to raise a Healthy family",
@@ -19,7 +20,7 @@ class NewsTiles extends React.Component {
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/es", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/us", "sunlife:source/business-groups/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"]
       }, {
-        "publishedDate": 1583951400000,
+        "publishedDate": 1583778600000,
         "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
@@ -31,87 +32,90 @@ class NewsTiles extends React.Component {
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/digital-enterprise"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "5 ways to avoid burnout",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/covid-19"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "How to talk to your boss about your mental health",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/general-HR"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "What you need to know before you see a therapist",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/es", "sunlife:source/business-groups/slc", "sunlife:source/business-groups/us", "sunlife:source/topics/diversity-&-inclusion"]
       },
       {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 10",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/innovation"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 9",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/business-groups/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 8",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/topics/general-HR", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 1",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/compliance"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 2",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/business-groups/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/compliance"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 3",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 4",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/my-benefits-and-wellness"]
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 5",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/business-groups/canada", "sunlife:source/topics/philanthropy-sponsorship"]
       },
       {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583346600000,
         "heading": "News article 6",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/business-groups/corporate", "sunlife:source/topics/sustainability"]
-      }]
+      }],
+      filterNewsList: []
     };
 
     this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
+    this.dateTransform = this.dateTransform.bind(this);
     this.clearAll = this.clearAll.bind(this);
+    this.filteringNewsList = this.filteringNewsList.bind(this);
   }
 
   componentDidMount() {
@@ -125,7 +129,11 @@ class NewsTiles extends React.Component {
       }
     })
     this.state.topicsList.forEach(prefer => prefer.isChecked = event.target.checked)
-    this.setState({ resultArr: preference })
+    this.setState({
+      allChecked: event.target.checked,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
   }
 
   handleCheckChildElement(event) {
@@ -137,35 +145,75 @@ class NewsTiles extends React.Component {
       if (prefer.value === event.target.value)
         prefer.isChecked = event.target.checked
     })
-    this.setState({ resultArr: preference })
+    this.setState({
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
+  }
+  
+  filteringNewsList() {
+    this.state.selectedPreferenceList = [];
+    this.state.businessGroupList.forEach(prefer => {
+      if (prefer.isChecked) {
+        this.state.selectedPreferenceList.push(prefer.value);
+      }
+    })
+    this.state.topicsList.forEach(prefer => {
+      if (prefer.isChecked) {
+        this.state.selectedPreferenceList.push(prefer.value);
+      }
+    })
+    this.state.filterNewsList = [];
+    this.state.filterNewsList=this.state.newsList.filter((news)=> {
+      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+    });
+    this.state.filterNewsList.sort(function(a, b) { 
+      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+    });
+    this.setState({
+      selectedPreferenceList: this.state.selectedPreferenceList,
+      filterNewsList: this.state.filterNewsList
+    });
+    $("#preferenceModal").modal("hide");
+    console.log(this.state.filterNewsList);
   }
 
   clearAll() {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
+    this.state.businessGroupList.forEach(prefer => {
       if (prefer.name != 'Canada') {
         prefer.isChecked = false;
       }
     })
-    preference.filters.topic.forEach(prefer => prefer.isChecked = false)
-    this.setState({ resultArr: preference })
-    $("#preferenceModal").modal("hide");
+    this.state.topicsList.forEach(prefer => prefer.isChecked = false)
+    this.setState({
+      allChecked: false,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
+    this.filteringNewsList();
   }
 
   bgBinding(bgList) {
-    var bg = "";
+    let bg = "";
     Object.keys(bgList).map((key, index) => {
-      var bgarr = bgList[key].split('/');
+      let bgarr = bgList[key].split('/');
       if (bgarr[1] == "business-groups") {
-        if (bgList.length > 1) {
-          bg += bgarr[bgarr.length - 1] + " | ";
-        } else {
-          bg = bgarr[bgarr.length - 1];
-        }
+        bg += bgarr[bgarr.length - 1] + " | ";
       }
     })
     return bg;
   }
+
+  dateTransform(date) {
+    var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var d1 = new Date(date);
+    var d = d1.getDate();
+    var m = d1.getMonth();
+    return monthName[m] + " " + d;
+    // return moment(date).format('MMM DD');
+  }
+
   newsTiles() {
     let businessGroupObj = [
       { name: "Canada", value: "sunlife:source/business-groups/canada" },
@@ -204,7 +252,25 @@ class NewsTiles extends React.Component {
       { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
       { name: "Technology", value: "sunlife:source/topics/technology" }
     ];
+    businessGroupObj.forEach((data)=> {
+      if(data.name == "Canada"){
+        data["isChecked"] = true;
+      } else{
+        data["isChecked"] = false;
+      }
+    });
+    topicsObj.forEach((data)=> {
+      data["isChecked"] = false;
+    });
+    this.state.filterNewsList = [];
+    this.state.filterNewsList=this.state.newsList.filter((news)=> {
+      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+    });
+    this.state.filterNewsList.sort(function(a, b) { 
+      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+    });
     this.setState({
+      filterNewsList: this.state.filterNewsList,
       businessGroupList: businessGroupObj,
       topicsList: topicsObj,
     })
@@ -239,7 +305,7 @@ class NewsTiles extends React.Component {
                           </button>
                           <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
                           <p>
-                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" value="selectAll" />
+                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
                             <span class="chk-lbl">Select all</span>
                           </p>
                         </div>
@@ -251,7 +317,7 @@ class NewsTiles extends React.Component {
                                 {this.state.businessGroupList.map((value, index) => {
                                   return (
                                     <li key={index}>
-                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.name === 'Canada'} disabled={value.name === 'Canada'} />
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked | value.name === 'Canada'} disabled={value.name === 'Canada'} />
                                       <span class="chk-lbl">{value.name}</span>
                                     </li>
                                   )
@@ -276,7 +342,7 @@ class NewsTiles extends React.Component {
                         <div class="modal-footer preference-modal-footer">
                           <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                              <button class="cmp-form-button pull-right">{this.props.preferenceModalHeadingbtn1}</button>
+                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsList}>{this.props.preferenceModalHeadingbtn1}</button>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
                               <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
@@ -291,16 +357,16 @@ class NewsTiles extends React.Component {
               {this.props.newsListContainer == "true" &&
                 <div class="row news-list-container">
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
-                    {Object.keys(this.state.newsList).slice(0, 4).map((key, index) => {
+                    {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
                       return (
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                          <div class="tile-img" style={{ backgroundImage: `url(${this.state.newsList[key].imageLink})` }}>
+                          <div class="tile-img" style={{ backgroundImage: `url(${this.state.filterNewsList[key].imageLink})` }}>
                             <div class="overlay-container">
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
-                                <span class="title pull-left">{this.state.newsList[key].heading}</span>
-                                <span class="date pull-right">{moment(this.state.newsList[key].publishedDate).format('MMM DD')}</span>
+                                <span class="title pull-left">{this.state.filterNewsList[key].heading}</span>
+                                <span class="date pull-right">{this.dateTransform(this.state.filterNewsList[key].publishedDate)}</span>
                               </div>
-                              <span class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</span>
+                              <span class="bg-name">{this.bgBinding(this.state.filterNewsList[key]["cq:tags"])}</span>
                             </div>
                           </div>
                         </div>
@@ -311,11 +377,11 @@ class NewsTiles extends React.Component {
                         <div class="circular-image">
                           <img class="icon" src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
                         </div>
-                        {Object.keys(this.state.newsList).slice(4, 7).map((key, index) => {
+                        {Object.keys(this.state.filterNewsList).slice(4, 7).map((key, index) => {
                           return (
                             <div class="mar-btm">
-                              <a class="title" href="">{this.state.newsList[key].heading}</a>
-                              <p class="bg-name">{this.bgBinding(this.state.newsList[key]["cq:tags"])}</p>
+                              <a class="title" href="">{this.state.filterNewsList[key].heading}</a>
+                              <p class="bg-name">{this.bgBinding(this.state.filterNewsList[key]["cq:tags"])}</p>
                             </div>
                           )
                         })}

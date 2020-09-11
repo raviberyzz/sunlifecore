@@ -5,123 +5,125 @@ class NewsTabs extends React.Component {
       pageLang: utag_data.page_language,
       businessGroupList: [],
       topicsList: [],
-      selectedPreferenceList: [],
       tabHeading: [],
+      allChecked: false,
+      selectedPreferenceList: ["sunlife:source/business-groups/canada"],
       newsList: [{
         "publishedDate": 1584037800000,
         "heading": "How to raise a Healthy family",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
         "publishedDate": 1584037800000,
         "heading": "Insights from the DHS - A Customer Journey",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/es", "sunlife:source/business-units/corporate", "sunlife:source/business-units/us", "sunlife:source/business-units/slc"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/es", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/us", "sunlife:source/business-groups/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1583951400000,
+        "publishedDate": 1583778600000,
         "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/corporate-real-estate"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
         "publishedDate": 1583778600000,
         "heading": "Dean's Message",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/digital-enterprise"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "5 ways to avoid burnout",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/covid-19"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "How to talk to your boss about your mental health",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/general-HR"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1597935060000,
+        "publishedDate": 1583778600000,
         "heading": "What you need to know before you see a therapist",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/canada", "sunlife:source/business-units/corporate", "sunlife:source/business-units/es", "sunlife:source/business-units/slc", "sunlife:source/business-units/us"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/es", "sunlife:source/business-groups/slc", "sunlife:source/business-groups/us", "sunlife:source/topics/diversity-&-inclusion"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       },
       {
-        "publishedDate": 1597935060000,
-        "heading": "News article 3",
+        "publishedDate": 1583346600000,
+        "heading": "News article 10",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/innovation"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1569177000000,
-        "heading": "News article 1",
+        "publishedDate": 1583346600000,
+        "heading": "News article 9",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/business-groups/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1569177000000,
-        "heading": "News article 2",
+        "publishedDate": 1583346600000,
+        "heading": "News article 8",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/topics/general-HR", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1569177000000,
-        "heading": "News article 3",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"],
-        "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-      }, {
-        "publishedDate": 1569177000000,
-        "heading": "News article 3",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"],
-        "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-      }, {
-        "publishedDate": 1537641000000,
+        "publishedDate": 1583346600000,
         "heading": "News article 1",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/compliance"],
+        "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
+      }, {
+        "publishedDate": 1583346600000,
+        "heading": "News article 2",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/business-groups/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/compliance"],
+        "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
+      }, {
+        "publishedDate": 1583346600000,
+        "heading": "News article 3",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1537641000000,
-        "heading": "News article 2",
+        "publishedDate": 1583346600000,
+        "heading": "News article 4",
         "link": "/content/sunlife/internal/source/en/news/article2",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu2", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/my-benefits-and-wellness"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       }, {
-        "publishedDate": 1537641000000,
-        "heading": "News article 3",
+        "publishedDate": 1569177000000,
+        "heading": "News article 5",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/business-groups/canada", "sunlife:source/topics/philanthropy-sponsorship"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
       },
       {
         "publishedDate": 1537641000000,
-        "heading": "News article 3",
+        "heading": "News article 6",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-units/bu1", "sunlife:source/business-units/bu3"],
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/business-groups/corporate", "sunlife:source/topics/sustainability"],
         "content": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-      }]
+      }],
+      filterNewsList: []
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -131,51 +133,94 @@ class NewsTabs extends React.Component {
     this.dateTransform = this.dateTransform.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
     this.clearAll = this.clearAll.bind(this);
+    this.filteringNewsList = this.filteringNewsList.bind(this);
   }
 
   componentDidMount() {
-    this.getTabsHeading();
     this.newsTiles();
+    this.getTabsHeading();
   }
 
   handleAllChecked(event) {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
-      if (prefer.value != 'Canada') {
+    this.state.businessGroupList.forEach(prefer => {
+      if (prefer.name != 'Canada') {
         prefer.isChecked = event.target.checked
       }
     })
-    preference.filters.topic.forEach(prefer => prefer.isChecked = event.target.checked)
-    this.setState({ resultArr: preference })
+    this.state.topicsList.forEach(prefer => prefer.isChecked = event.target.checked)
+    this.setState({
+      allChecked: event.target.checked,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
   }
 
   handleCheckChildElement(event) {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
+    this.state.businessGroupList.forEach(prefer => {
       if (prefer.value === event.target.value)
         prefer.isChecked = event.target.checked
     })
-    preference.filters.topic.forEach(prefer => {
+    this.state.topicsList.forEach(prefer => {
       if (prefer.value === event.target.value)
         prefer.isChecked = event.target.checked
     })
-    this.setState({ resultArr: preference })
+    this.setState({
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
   }
-
-  clearAll() {
-    let preference = this.state.resultArr
-    preference.filters.businessGroup.forEach(prefer => {
-      if (prefer.value != 'Canada') {
-        prefer.isChecked = false;
+  
+  filteringNewsList() {
+    this.state.selectedPreferenceList = [];
+    this.state.businessGroupList.forEach(prefer => {
+      if (prefer.isChecked) {
+        this.state.selectedPreferenceList.push(prefer.value);
       }
     })
-    preference.filters.topic.forEach(prefer => prefer.isChecked = false)
-    this.setState({ resultArr: preference })
+    this.state.topicsList.forEach(prefer => {
+      if (prefer.isChecked) {
+        this.state.selectedPreferenceList.push(prefer.value);
+      }
+    })
+    this.state.filterNewsList = [];
+    this.state.filterNewsList=this.state.newsList.filter((news)=> {
+      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+    });
+    this.state.filterNewsList.sort(function(a, b) { 
+      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+    });
+    this.getTabsHeading();
+    this.setState({
+      selectedPreferenceList: this.state.selectedPreferenceList,
+      filterNewsList: this.state.filterNewsList
+    });
     $("#preferenceModal").modal("hide");
   }
 
+  clearAll() {
+    this.state.businessGroupList.forEach(prefer => {
+      if (prefer.name != 'Canada') {
+        prefer.isChecked = false;
+      }
+    })
+    this.state.topicsList.forEach(prefer => prefer.isChecked = false)
+    this.setState({
+      allChecked: false,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList
+    });
+    this.filteringNewsList();
+    this.getTabsHeading();
+  }
+
   dateTransform(date) {
-    return moment(date).format('MMMM DD, YYYY');
+    var monthName = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    var d1 = new Date(date);
+    var d = d1.getDate();
+    var m = d1.getMonth();
+    return monthName[m] + " " + d;
+    // return moment(date).format('MMMM DD, YYYY');
   }
 
   bgBinding(bgList) {
@@ -199,7 +244,7 @@ class NewsTabs extends React.Component {
         year: yearVal,
         data: [],
       };
-      this.state.newsList.forEach((news) => {
+      this.state.filterNewsList.forEach((news) => {
         if (new Date(news.publishedDate).getFullYear() === yearVal) {
           yearObj.data.push(news);
         }
@@ -250,7 +295,25 @@ class NewsTabs extends React.Component {
       { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
       { name: "Technology", value: "sunlife:source/topics/technology" }
     ];
+    businessGroupObj.forEach((data)=> {
+      if(data.name == "Canada"){
+        data["isChecked"] = true;
+      } else{
+        data["isChecked"] = false;
+      }
+    });
+    topicsObj.forEach((data)=> {
+      data["isChecked"] = false;
+    });
+    this.state.filterNewsList = [];
+    this.state.filterNewsList=this.state.newsList.filter((news)=> {
+      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+    });
+    this.state.filterNewsList.sort(function(a, b) { 
+      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+    });
     this.setState({
+      filterNewsList: this.state.filterNewsList,
       businessGroupList: businessGroupObj,
       topicsList: topicsObj,
     })
@@ -285,7 +348,7 @@ class NewsTabs extends React.Component {
                           </button>
                           <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
                           <p>
-                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" value="selectAll" />
+                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
                             <span class="chk-lbl">Select all</span>
                           </p>
                         </div>
@@ -297,7 +360,7 @@ class NewsTabs extends React.Component {
                                 {this.state.businessGroupList.map((value, index) => {
                                   return (
                                     <li key={index}>
-                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.name === 'Canada'} disabled={value.name === 'Canada'} />
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked | value.name === 'Canada'} disabled={value.name === 'Canada'} />
                                       <span class="chk-lbl">{value.name}</span>
                                     </li>
                                   )
@@ -322,7 +385,7 @@ class NewsTabs extends React.Component {
                         <div class="modal-footer preference-modal-footer">
                           <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                              <button class="cmp-form-button pull-right">{this.props.preferenceModalHeadingbtn1}</button>
+                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsList}>{this.props.preferenceModalHeadingbtn1}</button>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
                               <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
