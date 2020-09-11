@@ -164,4 +164,11 @@ $(document).ready(function () {
         return false;
     });
 
+    // top margin for all pages in mobile & tablet view
+        if ($('.full-header').parents('.experiencefragment').next().hasClass('breadcrumb')) {
+            $('.breadcrumb').next().addClass('margin-top-fifty');
+        } else {
+            $('.full-header').parents('.experiencefragment').next().addClass('margin-top-fifty');
+        }
+
 });
