@@ -61,6 +61,9 @@
         .news-list-box{
             border: 2px solid $container-border-color;
             padding: 20px 20px 20px 15px;
+            p:first-child{
+                text-transform: capitalize;
+            }
         }
         .news-list-box:not(:first-child) {
             border-top:none;
