@@ -39,7 +39,7 @@
                             target="_self"/>
                          <item2
                             jcr:primaryType="nt:unstructured"
-                            icon="vn-icon-email"
+                            icon="fa-envelope"
                             link="javascript:void(0)"
                             srText="Send mail"
                             target="_self"/>
