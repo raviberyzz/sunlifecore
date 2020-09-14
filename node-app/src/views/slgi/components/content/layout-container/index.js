@@ -4,7 +4,7 @@ function formatFooterMiddleSection() {
 
   for (let i = 0; i < numOfSection; i++) {
     if(numOfSection == 3){
-      var className = "col-sm-" + (numofSection+i);
+      var className = "col-sm-" + (numOfSection+i);
       $(sections[i]).removeClass().addClass(className);   //Divide: col-sm-3 col-sm-4 col-sm-5
     }else{
       if(i == 0){
