@@ -10,6 +10,24 @@
   }
 }
 
+#mainfooter {
+  .row[data-section="footer-middle-layer"]{
+    > div:last-child {
+      .lists-wrapper {
+        .links {
+          a[href] {
+            pointer-events: initial;
+            cursor: pointer;
+          }
+          a[href]:hover {
+            color: #004C6C;
+            text-decoration: underline; 
+          }
+        }
+      }
+    }
+  }
+}
 /* Tablet Only Styles Start*/
 @media (min-width: $tab-screen-min){
   .footer-copyright-wrapper{

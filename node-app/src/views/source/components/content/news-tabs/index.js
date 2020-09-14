@@ -12,4 +12,6 @@ $(document).ready(function () {
             popUpWidth();
         }
     });
+    $('#tabList li').first().addClass('cmp-tabs__tab--active');
+    $('#tabs-container div').first().addClass('cmp-tabs__tabpanel--active');
 });

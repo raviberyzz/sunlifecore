@@ -70,6 +70,12 @@
                     font-weight: 700;
                     display: inline-block;
                     line-height: 18px;
+                    max-height: 38px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
                 .bg-name{
                     color: $medium-blue-color;
@@ -99,6 +105,12 @@
                                 color: $white-shade;
                                 width: 70%;
                                 line-height: 18px;
+                                max-height: 38px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
                             }
                             .date{
                                 font-size: 10px;
