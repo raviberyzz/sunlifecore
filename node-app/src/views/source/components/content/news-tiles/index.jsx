@@ -27,14 +27,14 @@ class NewsTiles extends React.Component {
         "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/corporate-real-estate"]
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/topics/corporate-real-estate"]
       }, 
       {
         "publishedDate": 1583778600000,
         "heading": "Dean's Message",
         "link": "/content/sunlife/internal/source/en/news/article3",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/digital-enterprise"]
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/digital-enterprise"]
       }, 
       {
         "publishedDate": 1583778600000,
@@ -809,8 +809,7 @@ class NewsTiles extends React.Component {
       this.state.filterNewsList = this.state.newsList;
     }
     this.state.filterNewsList.sort(function(a, b) { 
-      // return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
-      return - ( a.publishedDate - b.publishedDate);
+      return - ( a.publishedDate - b.publishedDate || b.heading.localeCompare(a.heading));
     });
     this.setState({
       selectedPreferenceList: this.state.selectedPreferenceList,
@@ -919,8 +918,7 @@ class NewsTiles extends React.Component {
       this.state.filterNewsList = this.state.newsList;
     }
     this.state.filterNewsList.sort(function(a, b) { 
-      // return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
-      return - ( a.publishedDate - b.publishedDate);
+      return - ( a.publishedDate - b.publishedDate || b.heading.localeCompare(a.heading));
     });
     this.setState({
       filterNewsList: this.state.filterNewsList,

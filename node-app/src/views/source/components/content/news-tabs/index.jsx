@@ -191,7 +191,7 @@ class NewsTabs extends React.Component {
       this.state.filterNewsList = this.state.newsList;
     }
     this.state.filterNewsList.sort(function(a, b) { 
-      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      return - ( a.publishedDate - b.publishedDate || b.heading.localeCompare(a.heading));
     });
     this.getTabsHeading();
     this.setState({
@@ -324,7 +324,7 @@ class NewsTabs extends React.Component {
       this.state.filterNewsList = this.state.newsList;
     }
     this.state.filterNewsList.sort(function(a, b) { 
-      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      return - ( a.publishedDate - b.publishedDate || b.heading.localeCompare(a.heading));
     });
     this.setState({
       filterNewsList: this.state.filterNewsList,
