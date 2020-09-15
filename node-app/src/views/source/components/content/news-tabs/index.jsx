@@ -183,9 +183,13 @@ class NewsTabs extends React.Component {
       }
     })
     this.state.filterNewsList = [];
-    this.state.filterNewsList=this.state.newsList.filter((news)=> {
-      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
-    });
+    if (this.state.selectedPreferenceList.length > 0){
+      this.state.filterNewsList=this.state.newsList.filter((news)=> {
+        return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+      });
+    } else{
+      this.state.filterNewsList = this.state.newsList;
+    }
     this.state.filterNewsList.sort(function(a, b) { 
       return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
     });
@@ -296,19 +300,29 @@ class NewsTabs extends React.Component {
       { name: "Technology", value: "sunlife:source/topics/technology" }
     ];
     businessGroupObj.forEach((data)=> {
-      if(data.name == "Canada"){
-        data["isChecked"] = true;
-      } else{
-        data["isChecked"] = false;
-      }
+      data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
     });
     topicsObj.forEach((data)=> {
       data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
     });
     this.state.filterNewsList = [];
-    this.state.filterNewsList=this.state.newsList.filter((news)=> {
-      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
-    });
+    if (this.state.selectedPreferenceList.length > 0){
+      this.state.filterNewsList=this.state.newsList.filter((news)=> {
+        return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+      });
+    } else{
+      this.state.filterNewsList = this.state.newsList;
+    }
     this.state.filterNewsList.sort(function(a, b) { 
       return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
     });
@@ -360,7 +374,7 @@ class NewsTabs extends React.Component {
                                 {this.state.businessGroupList.map((value, index) => {
                                   return (
                                     <li key={index}>
-                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked | value.name === 'Canada'} disabled={value.name === 'Canada'} />
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.name === 'Canada'} />
                                       <span class="chk-lbl">{value.name}</span>
                                     </li>
                                   )

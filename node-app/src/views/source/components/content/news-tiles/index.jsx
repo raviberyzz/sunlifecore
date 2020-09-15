@@ -7,105 +7,742 @@ class NewsTiles extends React.Component {
       topicsList: [],
       allChecked: false,
       selectedPreferenceList: ["sunlife:source/business-groups/canada"],
-      newsList: [{
+      newsList: [
+        {
         "publishedDate": 1584037800000,
         "heading": "How to raise a Healthy family",
         "link": "/content/sunlife/internal/source/en/news/article1",
         "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"]
-      }, {
+      },
+      {
         "publishedDate": 1584037800000,
         "heading": "Insights from the DHS - A Customer Journey",
         "link": "/content/sunlife/internal/source/en/news/article2",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/es", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/us", "sunlife:source/business-groups/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"]
-      }, {
+      }, 
+      {
         "publishedDate": 1583778600000,
         "heading": "Inclusive work spaces",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/corporate-real-estate"]
-      }, {
+      }, 
+      {
         "publishedDate": 1583778600000,
         "heading": "Dean's Message",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/digital-enterprise"]
-      }, {
+      }, 
+      {
         "publishedDate": 1583778600000,
         "heading": "5 ways to avoid burnout",
         "link": "/content/sunlife/internal/source/en/news/article1",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/covid-19"]
-      }, {
+      }, 
+      {
         "publishedDate": 1583778600000,
         "heading": "How to talk to your boss about your mental health",
         "link": "/content/sunlife/internal/source/en/news/article2",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/topics/general-HR"]
-      }, {
+      }, 
+      {
         "publishedDate": 1583778600000,
         "heading": "What you need to know before you see a therapist",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/innovation_220x220.jpg",
         "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/es", "sunlife:source/business-groups/slc", "sunlife:source/business-groups/us", "sunlife:source/topics/diversity-&-inclusion"]
       },
       {
         "publishedDate": 1583346600000,
-        "heading": "News article 10",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/innovation"]
-      }, {
-        "publishedDate": 1583346600000,
-        "heading": "News article 9",
-        "link": "/content/sunlife/internal/source/en/news/article1",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/business-groups/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"]
-      }, {
-        "publishedDate": 1583346600000,
-        "heading": "News article 8",
-        "link": "/content/sunlife/internal/source/en/news/article2",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/topics/general-HR", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"]
-      }, {
-        "publishedDate": 1583346600000,
         "heading": "News article 1",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/compliance"]
-      }, {
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/about-us_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/innovation"]
+      }, 
+      {
         "publishedDate": 1583346600000,
         "heading": "News article 2",
-        "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/business-groups/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/compliance"]
-      }, {
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/awards-recognition_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/business-groups/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"]
+      }, 
+      {
         "publishedDate": 1583346600000,
         "heading": "News article 3",
-        "link": "/content/sunlife/internal/source/en/news/article1",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/leadership_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/business-groups/canada", "sunlife:source/business-groups/corporate", "sunlife:source/topics/my-benefits-and-wellness", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"]
       }, {
         "publishedDate": 1583346600000,
         "heading": "News article 4",
-        "link": "/content/sunlife/internal/source/en/news/article2",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/my-benefits-and-wellness"]
-      }, {
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/getty-640126811-circle-220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/canada", "sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/compliance"]
+      }, 
+      {
         "publishedDate": 1583346600000,
         "heading": "News article 5",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/business-groups/canada", "sunlife:source/topics/philanthropy-sponsorship"]
-      },
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/istock-84413525-awards-and-recognition-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/business-groups/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/organization-announcements"]
+      }, 
       {
         "publishedDate": 1583346600000,
         "heading": "News article 6",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 7",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Investors/M19-016-InvestorDay_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/my-benefits-and-wellness"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 8",
         "link": "/content/sunlife/internal/source/en/news/article3",
-        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/topics/philanthropy-sponsorship"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 9",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
         "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/business-groups/corporate", "sunlife:source/topics/sustainability"]
-      }],
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 10",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 11",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/business-groups/es", "sunlife:source/business-groups/corporate", "sunlife:source/business-groups/us", "sunlife:source/business-groups/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 12",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/corporate-real-estate"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 13",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/digital-enterprise"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 14",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 15",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/general-HR"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 16",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/innovation_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/business-groups/es", "sunlife:source/business-groups/slc", "sunlife:source/business-groups/us", "sunlife:source/topics/diversity-&-inclusion"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 17",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/topics/business-critical"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 18",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 19",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/corporate", "sunlife:source/topics/general-HR"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 20",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/business-critical"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 21",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/my-career"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 22",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 23",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 24",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/organization-announcements"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 25",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/my-career"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 26",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/enterprise-services", "sunlife:source/topics/my-benefits-and-wellness"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 27",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 28",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/business-critical"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 29",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 30",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 31",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/organization-announcements"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 32",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/client-stories"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 33",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/compliance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 34",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/hong-kong", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 35",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/digital-enterprise"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 36",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/business-critical"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 37",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 38",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 39",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/client-stories"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 40",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/organization-announcements"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 41",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/compliance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 42",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/indonesia", "sunlife:source/topics/digital-enterprise"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 43",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/corporate-real-estate"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 44",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 45",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/business-critical"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 46",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/compliance"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 47",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 48",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/corporate-real-estate"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 49",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/client-stories"]
+      }, 
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 50",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/international", "sunlife:source/topics/organization-announcements"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 51",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/my-career", "sunlife:source/topics/recognition"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 52",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/business-critical"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 53",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/company-performance"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 54",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/corporate-real-estate"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 55",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/my-career", "sunlife:source/topics/recognition"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 56",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/organization-announcements"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 57",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 58",
+        "link": "/content/sunlife/internal/source/en/news/article2",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
+        "cq:tags": ["sunlife:source/business-groups/philippines", "sunlife:source/topics/covid-19"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 59",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/sustainability"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 60",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/organization-announcements"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 61",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/covid-19"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 62",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/sustainability"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 63",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/business-critical"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 64",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/corporate-real-estate"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 65",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/compliance"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 66",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 67",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/sustainability"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 68",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/slc-management", "sunlife:source/topics/sustainability"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 69",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 70",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/corporate-real-estate"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 71",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/business-critical"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 72",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 73",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/company-performance"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 74",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/covid-19"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 75",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/organization-announcements"]
+      },
+      {
+        "publishedDate": 1583778600000,
+        "heading": "News article 76",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
+        "cq:tags": ["sunlife:source/business-groups/asia", "sunlife:source/topics/compliance"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 77",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/client-stories"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 78",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/corporate-real-estate"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 79",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/organization-announcements"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 80",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/philanthropy-sponsorship"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 81",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/compliance"]
+      },
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 82",
+        "link": "/content/sunlife/internal/source/en/news/article3",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/us", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 83",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 84",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/client-stories"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 85",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/corporate-real-estate"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 86",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/company-performance"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 87",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/compliance"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 88",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/covid-19"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 89",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/employee-engagement"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 90",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
+        "cq:tags": ["sunlife:source/business-groups/uk", "sunlife:source/topics/organization-announcements"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 91",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/client-stories"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 92",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/business-continuity"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 93",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/corporate-real-estate"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 94",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/compliance"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 95",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/business-continuity"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 96",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/business-continuity"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 97",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/business-continuity"]
+      }, 
+      {
+        "publishedDate": 1583346600000,
+        "heading": "News article 98",
+        "link": "/content/sunlife/internal/source/en/news/article1",
+        "imageLink": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
+        "cq:tags": ["sunlife:source/business-groups/vietnam", "sunlife:source/topics/covid-19"]
+      }
+    ],
       filterNewsList: []
     };
 
@@ -164,11 +801,16 @@ class NewsTiles extends React.Component {
       }
     })
     this.state.filterNewsList = [];
-    this.state.filterNewsList=this.state.newsList.filter((news)=> {
-      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
-    });
+    if (this.state.selectedPreferenceList.length > 0){
+      this.state.filterNewsList=this.state.newsList.filter((news)=> {
+        return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+      });
+    } else{
+      this.state.filterNewsList = this.state.newsList;
+    }
     this.state.filterNewsList.sort(function(a, b) { 
-      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      // return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      return - ( a.publishedDate - b.publishedDate);
     });
     this.setState({
       selectedPreferenceList: this.state.selectedPreferenceList,
@@ -253,21 +895,32 @@ class NewsTiles extends React.Component {
       { name: "Technology", value: "sunlife:source/topics/technology" }
     ];
     businessGroupObj.forEach((data)=> {
-      if(data.name == "Canada"){
-        data["isChecked"] = true;
-      } else{
-        data["isChecked"] = false;
-      }
+      data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
     });
     topicsObj.forEach((data)=> {
       data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
     });
     this.state.filterNewsList = [];
-    this.state.filterNewsList=this.state.newsList.filter((news)=> {
-      return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
-    });
+    if (this.state.selectedPreferenceList.length > 0){
+      this.state.filterNewsList=this.state.newsList.filter((news)=> {
+        return news["cq:tags"].some(val => this.state.selectedPreferenceList.includes(val));
+      });
+    } else{
+      this.state.filterNewsList = this.state.newsList;
+    }
     this.state.filterNewsList.sort(function(a, b) { 
-      return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      // return - ( a.publishedDate - b.publishedDate || a.heading.localeCompare(b.heading));
+      return - ( a.publishedDate - b.publishedDate);
     });
     this.setState({
       filterNewsList: this.state.filterNewsList,
@@ -287,11 +940,11 @@ class NewsTiles extends React.Component {
                   <div class="row news-tool-bar">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
                       <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
-                      <div class="preference-tag-container">
+                      {/* <div class="preference-tag-container">
                         <span class="tag">Philippines</span>
                         <span class="tag">my Benefits and Wellness</span>
                         <span class="more-tag">More - 4</span>
-                      </div>
+                      </div> */}
                       <a class="right-text pull-right" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
@@ -317,7 +970,7 @@ class NewsTiles extends React.Component {
                                 {this.state.businessGroupList.map((value, index) => {
                                   return (
                                     <li key={index}>
-                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked | value.name === 'Canada'} disabled={value.name === 'Canada'} />
+                                      <input type="checkbox" name={value.value} value={value.value} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.name === 'Canada'} />
                                       <span class="chk-lbl">{value.name}</span>
                                     </li>
                                   )
