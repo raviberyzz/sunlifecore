@@ -1,3 +1,12 @@
 #base=js
-1-app.js
-2-sign-in.js
+1-polyfill.min.js
+2-xmsdk.js
+3-xmui.js
+4-custom-ui-handler.js
+5-app.js
+6-sign-in.js
+7-verified-phone-list-session.js
+8-password-authenticator-session.js
+9-password-auth-with-password.js
+10-step-up-auth-select-target-session.js
+11-step-up-input-otp-code-session.js
