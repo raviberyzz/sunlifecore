@@ -56,6 +56,17 @@ UIHandlerForStepUp.prototype.createOtpAuthSession = function(title, username, po
     return new StepUpOTPSession(title, username, possibleTargets, autoExecedTarget);
 }
 
+UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
+    return new Promise((resolve, reject) => {
+        if (jsonData.SMSESSION) {
+            console.log(jsonData.SMSESSION);
+            document.cookie="SMSESSION"+"="+jsonData.SMSESSION + ";domain=.sunnet.sunlife.com;path=/";
+        }
+        resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
+    });
+}
+    
+
 UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, buttonText, failureData, actionContext, clientContext) {
     return new Promise((resolve, reject) => {
     const failType = (failureData && failureData.reason && failureData.reason.type) ? failureData.reason.type : null;
