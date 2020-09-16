@@ -1,0 +1,70 @@
+.sign-in html, .sign-in body {
+  margin: 0px;
+  padding: 0px;
+}
+.sign-in .content {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  background-color: white;
+  color: darkslategray;
+}
+.sign-in .header {
+  color: #000000;
+}
+.sign-in .button_submit {
+  display: block;
+  width: 150px;
+  height: 40px;
+  height: 30px;
+  margin-top: 20px;
+  padding: 4px;
+}
+.sign-in #home_content {
+  display: block;
+}
+.sign-in .option_button {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+}
+.sign-in .hidden_container {
+  display: none !important;
+}
+.sign-in .selected_span {
+  margin-left: 5px;
+  color: green;
+}
+.sign-in #sign_in_modal_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.sign-in #sign_in_modal_content_container {
+  margin: auto;
+  margin-top: 10%;
+  width: 20%;
+  background-color: #ced10f;
+  padding: 10px;
+}
+.sign-in .sign_in_input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+.sign-in #sign_in_button {
+  width: 100%;
+  margin-top: 10px;
+  background-color: #2557c5;
+  color: white;
+}
+.sign-in #sign_in_cancel_button {
+  width: 100%;
+  margin-top: 10px;
+  color: #e62020;
+}
+
+/*# sourceMappingURL=mfa-style.css.map */
