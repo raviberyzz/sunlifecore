@@ -28,4 +28,7 @@
 	<workplace-benefits-home-page/>
     <workplace-benefits-content-page/>
     <workplace-benefits-experience-fragment/>
+	<db-solutions-home-page/>
+    <db-solutions-content-page/>
+    <db-solutions-experience-fragment/>
 </jcr:root>
