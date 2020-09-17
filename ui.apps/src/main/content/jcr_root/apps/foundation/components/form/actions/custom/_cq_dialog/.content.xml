@@ -53,5 +53,22 @@
             fieldDescription="Please specify the form validation function."
             fieldLabel="Validation Function"
             name="./validation"/>
+		<formTarget
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+            fieldDescription="Please select the target (If required)"
+            fieldLabel="Target"
+            name="./formTarget">
+            <items jcr:primaryType="nt:unstructured">
+                <select
+                    jcr:primaryType="nt:unstructured"
+                    text=""
+                    value=""/>
+                <newTab
+                    jcr:primaryType="nt:unstructured"
+                    text="New Tab"
+                    value="_blank"/>
+            </items>
+        </formTarget>	
     </items>
 </jcr:root>
