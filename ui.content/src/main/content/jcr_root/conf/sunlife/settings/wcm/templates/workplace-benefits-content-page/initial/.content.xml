@@ -2,30 +2,17 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2020-08-28T12:08:56.234-04:00"
-        cq:lastModifiedBy="admin"
         cq:template="/conf/sunlife/settings/wcm/templates/workplace-benefits-content-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="sunlife/core/components/structure/base-page">
         <root
-            jcr:lastModified="{Date}2020-08-19T15:01:35.381-04:00"
-            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
             <experiencefragment
-                jcr:created="{Date}2020-08-28T11:58:57.988-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2020-08-28T12:00:47.940-04:00"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/ca/components/content/experiencefragment"
-                fragmentPath="/content/experience-fragments/sunlife/external/ca/workplace_benefits/en/header/master"
-                text="Weâ€™ve noticed a rise in COVID-19 scams by email, text and phone.Â Please be cautious. Hereâ€™sÂ how you can protect yourselfÂ andÂ what to do if you suspect fraud. You can also find the latest info on how weâ€™re responding to the pandemic atÂ sunlife.ca/covid-19. Client sign in For the best mobile experience download the my Sun Lifeapp Access ID Remember me Password Sign-in help Register now By signing in, you agree to theseterms and conditions. Plan sponsors and advisors Client sign in Please sign in through mySunlife.ca Sign in Not registered? Register now Plan sponsors and advisors By signing in, you agree to these terms and conditions. Close search Search Search Please select your language preference on the right hand side. Languages - Canada English FranÃ§ais Back Region Language English FranÃ§ais Support You are on the Sun Life Financial Canada website. Language selection is English. Expand or collapse region and language section. CANADA | EN SearchExpand or collapse search Group Retirement Services Quick links TBD TBD TBD TBD Products &amp; Investments Member Experience News Insights abc Sustainable Investing Core Investing Platform Decumulation Partnerships Product Information def Digital innovation Wellness ghi Breaking news &amp; innovation Legislation updates Investment news jkl Planalytics Data &amp; case studies Bright papers Small Business klm SunAdvantage VRSP Group Benefits Quick links Lumino Health Virtual Care Carry the Torch Bright papers Forms Products and Solutions News and Insights GB for Business Owners Sponsored Markets abc Health Solution Wellness Solutions Fraud Risk Management Digital Solutions def Focus Updates Bright papers Webinars / Podcasts ghi Advisor / Overview Mid sizeÂ Business 50+ employeesÂ â€‹Sun Solutions overview Small Business - 0 - 49 employees Overview jkl Association and affinity groups Creditor Student / Educational Institutions Sign in Navigation Menu Sign in Explore products Back Explore products Explore products Insurance Back Insurance Health insurance Life insurance Travel insurance Mortgage protection insurance Family insurance Workplace benefits Affinity markets Business owner insurance Investments Back Investments Savings Retirement income Guaranteed interest products Annuity products Mutual funds Segregated funds Brokerage services RRSP, TFSA and RESP RRIF and LIF Workplace investments Tools &amp; Resources Back Tools &amp; Resources Tools &amp; Resources Money &amp; Finances Back Money &amp; Finances Managing your money Saving for retirement Investing basics Understanding life insurance Understanding health insurance Help for homeowners Planning your travel Health &amp; Wellness Back Health &amp; Wellness Fitness and family health Mental wellness Eating well Preventing and treating illness Giving back Living in retirement Lumino Health Life moments Back Life moments Starting a family Owning a home Managing your career Managing your health Planning your retirement Money for Life Financial planning and advice Back Financial planning and advice Build your financial plan What does a Sun Life Financial advisor do Tips on finding the right advisor Estate and Financial Planning Services (EFPS) Work with one of our licensed professionals Tools &amp; Calculators Back Tools &amp; Calculators Bright Start Tool Budget Calculator Life Insurance Calculator Critical illness insurance calculator Life expectancy calculator Retirement savings calculator RRSP calculator CPP/QPP calculator Annuity calculator Net worth calculator Financial check-up RESP calculator RRSP loan calculator RRSP vs. Mortgage calculator Life insurance calculator new Support Back Support Support Sign-in help Download our app Find a form Submit or track a claim Check your coverage Print your coverage card Check your balance Change your beneficiaries Change your address Change your banking information Contributions, withdrawals and fund changes RRSP receipts and tax slips How to make a complaint Unclaimed property Leaving your workplace plan Contact us About us Back About us About us Who we are Leadership Back Leadership Jacques Goulet Patricia Callon Rowena Chan Jordy Chilcott Robert Dumas Doug Gardiner Jim Giesinger Alex Guertin Dave Jones Vineet Kochhar Eric Monteiro Sylvia Moretti David Rackus Thomas Reid Amanda Rosso Mike Schofield Newsroom Back Newsroom News releases Achievements Sustainability Donations and sponsorships Back Donations and sponsorships Supporting health Supporting arts and culture Sponsorships Employee giving Philanthropy program guidelines Accessibility commitment Back Accessibility commitment Customer service policy statement Careers Back Careers Careers Why join us Back Why join us subscribe-to-career-opportunities Career profiles Student and new graduate programs Back Student and new graduate programs Rotational Leadership Development Programs Actuarial Graduate Program Co-op and summer internship opportunities Chartered Professional Accountant (CPA) Pre-Approved Program Student and new grad profiles Become an advisor Back Become an advisor You're ready Job Application FAQ Call Centre and Customer Service Jobs Find an advisor Get a quote CANADA | EN Please select your language preference on the right hand side. Languages - Canada English FranÃ§ais Back Region Language English FranÃ§ais"/>
+                fragmentPath="/content/experience-fragments/sunlife/external/ca/workplace_benefits/en/header/master"/>
             <breadcrumb
-                jcr:created="{Date}2020-08-28T12:02:45.917-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2020-08-28T12:03:15.056-04:00"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/ca/components/content/breadcrumb"
                 hideCurrent="false"
@@ -33,8 +20,6 @@
                 socialShareReqd="true"
                 startLevel="4">
                 <socialIcons
-                    jcr:lastModified="{Date}2020-08-28T12:08:49.062-04:00"
-                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="sunlife/core/components/content/icon-text"
                     textIsRich="[true,true,true]"
@@ -63,21 +48,12 @@
                 </socialIcons>
             </breadcrumb>
             <layout_container
-                jcr:created="{Date}2020-08-28T11:59:04.188-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2020-08-28T11:59:04.188-04:00"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/ca/components/content/layout-container"/>
             <experiencefragment_1244522708
-                jcr:created="{Date}2020-08-28T11:59:08.570-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2020-08-28T12:01:58.726-04:00"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/ca/components/content/experiencefragment"
-                fragmentPath="/content/experience-fragments/sunlife/external/ca/workplace_benefits/en/footer/master"
-                text="TAKING STEPS TOÂ PREVENT DIABETES Follow us on Facebook Follow us on Twitter Follow us on Instagram Follow us on Linkedin Follow us on YouTube Quick links Group Retirement Savings Group Benefits Plan sponsors &amp; advisors Plan sponsor sign-in Plan advisor sign-in About us Who we are Newsroom Sustainability Donations and sponsorships Careers Become an employee Become an advisor Student and new graduate programs Contact us Contact us Support Talk to an advisor Lifeâ€™s brighter under the sun Legal Privacy Security Accessibility Site map Â© Sun Life Assurance Company of Canada. All rights reserved. SLF"/>
+                fragmentPath="/content/experience-fragments/sunlife/external/ca/workplace_benefits/en/footer/master"/>
         </root>
     </jcr:content>
 </jcr:root>
