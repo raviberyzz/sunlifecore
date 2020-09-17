@@ -48,6 +48,12 @@ public class FormContainer extends ContainerImpl {
   @ Optional
   private String dataSection;
 
+  /** The form target. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String formTarget;
+  
   /**
    * Gets the form action.
    *
@@ -104,5 +110,24 @@ public class FormContainer extends ContainerImpl {
   public void setDataSection(final String dataSection) {
     this.dataSection = dataSection;
   }
+
+	/**
+	 * Gets the formTarget.
+	 * 
+	 * @return the formTarget
+	 */
+	public String getFormTarget() {
+		return formTarget;
+	}
+
+	/**
+	 * Sets the form target.
+	 * 
+	 * @param formTarget 
+	 * 				the formTarget to set
+	 */
+	public void setFormTarget(String formTarget) {
+		this.formTarget = formTarget;
+	}
 
 }
