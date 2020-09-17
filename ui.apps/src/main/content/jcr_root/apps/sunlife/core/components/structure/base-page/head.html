@@ -17,9 +17,11 @@
                                 hasCloudconfigSupport     = page.hasCloudconfigSupport}"></sly>
     <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
     <sly data-sly-include="head.socialmedia.html"></sly>
-	<!--/* Include Context Hub */-->
+	<!-- Include Context Hub -->
 	<sly data-sly-test = "${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
         <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
-		<sly data-sly-test="${!wcmmode.disabled}" data-sly-call="${clientlib.all @ categories='cq.widgets'}"></sly>
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+			<sly data-sly-test="${!wcmmode.disabled}" data-sly-call="${clientLib.all @ categories='cq.widgets'}"></sly>
+        </sly>    
 	</sly>	
 </template>
