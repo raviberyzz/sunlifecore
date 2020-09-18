@@ -40,7 +40,6 @@ class ArticleRatings extends React.Component {
     this.state.aveRatings = Math.round(
       (this.state.aveRatings + i) / this.state.noOfRatings
     );
-    //console.log(this.state.noOfRatings, this.state.aveRatings);
     $(".rating-value").val(this.state.aveRatings);
     $(".no-of-rating .val").text(this.state.noOfRatings);
   }
@@ -187,7 +186,7 @@ class ArticleComments extends React.Component {
   </section>`;
     this.state.ratingComment.commentDetails.push(newCommentVal);
     $('#commentText').val('');
-    $('.comment-count .val').text(4);
+    $('.comment-count .val').text(4); 
     //$('.comment-wrapper')[0].;
     // this.state.noOfRatings=this.state.noOfRatings+1;
     // this.state.aveRatings=Math.round((this.state.aveRatings+i)/this.state.noOfRatings);

@@ -187,5 +187,29 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
+	},{
+		"componentName": "Article Rating",
+        "componentDisplayName": "Article Rating",
+        "reactComponentName": "article-ratings",
+        "props" : [
+            {
+                name: "showRating",
+                label: "showRating",
+                value: "true",
+                required: true
+            }
+		]	
+	},{
+		"componentName": "Article Comment",
+        "componentDisplayName": "Article Comment",
+        "reactComponentName": "article-comments",
+        "props" : [
+            {
+                name: "showComment",
+                label: "showComment",
+                value: "true",
+                required: true
+            }
+		]	
 	}
 ];
