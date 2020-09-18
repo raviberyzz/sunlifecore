@@ -13,25 +13,16 @@
          <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
             ${newsroomAnnouncement.articleData.newsroomHeading}
          </h3>
-         <div data-sly-test="${newsroomAnnouncement.articleData.toDetail || newsroomAnnouncement.articleData.fromDetail}" class="mail-wrapper">
-            <sly data-sly-test="${newsroomAnnouncement.articleData.toDetail}">
-               <p> <strong>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  ${newsroomAnnouncement.articleData.toDetail}</p>
-            </sly>
-            <sly data-sly-test="${newsroomAnnouncement.articleData.fromDetail}">
-               <p> <strong>FROM:&nbsp;</strong>  ${newsroomAnnouncement.articleData.fromDetail}</p>
-            </sly>
-            <p class="border-bottom"></p>
-         </div>
       </div>
       <section class="article-body">
          ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
       </section>
-            <div data-sly-test="${newsroomAnnouncement.checkboxDisplayRating}">
-        <!--/* Rating  Goes here */-->
-      </div>
-      <div data-sly-test="${newsroomAnnouncement.checkboxDisplayComments}">
+      <sly data-sly-test="${newsroomAnnouncement.checkboxDisplayRating}">
+         <!--/* Rating  Goes here */-->
+      </sly>
+      <sly data-sly-test="${newsroomAnnouncement.checkboxDisplayComments}">
          <!--/* Comments Goes here */-->
-      </div>
+      </sly>
    </div>
 </sly>
 <div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>

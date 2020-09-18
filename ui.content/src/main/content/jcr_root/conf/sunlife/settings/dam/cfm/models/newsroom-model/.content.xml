@@ -61,32 +61,6 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-						<to
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            emptyText="To"
-                            fieldDescription="To"
-                            fieldLabel="To"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="toDetail"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string"/>
-                        <from
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            emptyText="From"
-                            fieldDescription="From"
-                            fieldLabel="From"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="fromDetail"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string"/>
                         <newsroomPagePath
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"

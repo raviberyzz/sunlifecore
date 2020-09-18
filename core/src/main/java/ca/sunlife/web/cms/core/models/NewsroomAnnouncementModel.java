@@ -66,12 +66,6 @@ public class NewsroomAnnouncementModel {
   /** The Constant CQ_TAGS. */
   private static final String CQ_TAGS = "cq:tags";
 
-  /** The Constant TO. */
-  private static final String TO = "toDetail";
-
-  /** The Constant FROM. */
-  private static final String FROM = "fromDetail";
-
   /** The Constant COLON_CHAR. */
   private static final char COLON_CHAR = ':';
 
@@ -181,8 +175,6 @@ public class NewsroomAnnouncementModel {
   public void setCheckboxHideDate(final String checkboxHideDate) {
     this.checkboxHideDate = checkboxHideDate;
   }
-  
-  
 
   /**
    * Gets the checkbox display tags.
@@ -286,10 +278,6 @@ public class NewsroomAnnouncementModel {
             articleContent.containsKey(NEWSROOM_PAGE_PATH)
                 ? articleContent.get(NEWSROOM_PAGE_PATH, String.class)
                 : StringUtils.EMPTY);
-        articleData.put(TO,
-				articleContent.containsKey(TO) ? articleContent.get(TO, String.class) : StringUtils.EMPTY);
-		articleData.put(FROM,
-				articleContent.containsKey(FROM) ? articleContent.get(FROM, String.class) : StringUtils.EMPTY);
 		articleData.put(THUMBNAIL_IMAGE,
 				articleContent.containsKey(THUMBNAIL_IMAGE) ? articleContent.get(THUMBNAIL_IMAGE, String.class) : StringUtils.EMPTY);
 		articleData.put(PIN_ARTICLE,
@@ -305,9 +293,7 @@ public class NewsroomAnnouncementModel {
 			if (cfTagsArray != null) {
 				Collections.addAll(contentFragmentTagList, cfTagsArray);
 				sortAndSetTagNames(contentFragmentTagList);
-
 			}
-
 		}
       LOGGER.debug("Article Data {}", articleData);
       resourceResolver.close();
