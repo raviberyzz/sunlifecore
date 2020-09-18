@@ -61,6 +61,32 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
+						<to
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            emptyText="To"
+                            fieldDescription="To"
+                            fieldLabel="To"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="toDetail"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <from
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            emptyText="From"
+                            fieldDescription="From"
+                            fieldLabel="From"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="fromDetail"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
                         <newsroomPagePath
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
@@ -79,18 +105,29 @@
                         <articleImagePath
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                            emptyText="Select Newsroom Image"
-                            fieldDescription="Select Newsroom Announcement Image Path."
-                            fieldLabel="Newsroom Image"
+                            emptyText="Select Thumbnail Image"
+                            fieldDescription="Select Thumbnail Image Path."
+                            fieldLabel="Thumbnail Image"
                             filter="hierarchy"
                             listOrder="8"
                             metaType="reference"
-                            name="articleImagePath"
+                            name="thumbnailImage"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             rootPath="/content/dam/sunlife"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
+						<pinArticle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            fieldDescription="Pin article"
+                            listOrder="21"
+                            metaType="boolean"
+                            name="pinAnnouncement"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Pin article"
+                            valueType="boolean"/>
                         <newsroomContent
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"

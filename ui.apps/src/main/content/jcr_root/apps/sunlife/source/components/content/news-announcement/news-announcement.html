@@ -1,0 +1,37 @@
+<sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
+<sly data-sly-test.notEmpty="${newsroomAnnouncement.fragmentPath}">
+   <div class="news-article-wrapper">
+      <div>
+         <div data-sly-test="${newsroomAnnouncement.checkboxDisplayTags}" class="article-tags">
+            <sly data-sly-list="${newsroomAnnouncement.getTagList}">
+               <span class="tag">${item}</span>
+            </sly>
+         </div>
+         <div data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
+            ${newsroomAnnouncement.articleData.articlePublishedDate}
+         </div>
+         <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
+            ${newsroomAnnouncement.articleData.newsroomHeading}
+         </h3>
+         <div data-sly-test="${newsroomAnnouncement.articleData.toDetail || newsroomAnnouncement.articleData.fromDetail}" class="mail-wrapper">
+            <sly data-sly-test="${newsroomAnnouncement.articleData.toDetail}">
+               <p> <strong>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  ${newsroomAnnouncement.articleData.toDetail}</p>
+            </sly>
+            <sly data-sly-test="${newsroomAnnouncement.articleData.fromDetail}">
+               <p> <strong>FROM:&nbsp;</strong>  ${newsroomAnnouncement.articleData.fromDetail}</p>
+            </sly>
+            <p class="border-bottom"></p>
+         </div>
+      </div>
+      <section class="article-body">
+         ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
+      </section>
+            <div data-sly-test="${newsroomAnnouncement.checkboxDisplayRating}">
+        <!--/* Rating  Goes here */-->
+      </div>
+      <div data-sly-test="${newsroomAnnouncement.checkboxDisplayComments}">
+         <!--/* Comments Goes here */-->
+      </div>
+   </div>
+</sly>
+<div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
