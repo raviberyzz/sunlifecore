@@ -1,4 +1,3 @@
-// import ReactPaginate from 'react-paginate';
 class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
