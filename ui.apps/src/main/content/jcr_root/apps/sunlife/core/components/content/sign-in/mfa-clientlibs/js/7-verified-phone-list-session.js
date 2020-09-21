@@ -66,7 +66,8 @@ function VerifiedPhoneListFormSession(formId, payload) {
 
     function setupForm() {
         const self = this;
-        $.get("transmit/signin/verified-phone-list-screen.html", function (data) {
+        $.get("/content/dam/sunlife/external/signin/transmit/verified-phone-list-screen.html", function (data) {
+            console.log(data);
             $(self.clientContext.uiContainer).html(data);
 
             $("#verified-phone-list-screen_add-number").on("click", function () {
