@@ -58,7 +58,8 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
     function setupForm() {
         const self = this;
-        $.get("transmit/signin/step-up-auth-select-target-form.html", function (data) {
+        $.get("/content/dam/sunlife/external/signin/transmit/step-up-auth-select-target-form.html", function (data) {
+            console.log(data);
             $(self.clientContext.uiContainer).html(data);
 
             $("#step-up-send-code-button").on("click", function () {
