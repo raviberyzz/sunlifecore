@@ -5,7 +5,9 @@
     <filter root="/conf/global/settings/workflow/models/dam/update_asset" />
     <filter root="/conf/global/settings/dam/adminui-extension" />
     <filter root="/conf/global/settings/dam/search" />
-    <filter root="/conf/sunlife"/>
+    <filter root="/conf/sunlife">
+		<exclude pattern="/conf/sunlife/settings/wcm/segments(/.*)" />
+	</filter>
     <filter root="/etc/map.dev.publish"/>
     <filter root="/etc/map.sit.publish"/>
     <filter root="/etc/map.stage.publish"/>
