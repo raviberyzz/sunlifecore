@@ -68,6 +68,9 @@
         .news-list-box:not(:first-child) {
             border-top:none;
         }
+        .pagination-component {
+            border :none;
+        }
     }
 
     .preference-popup-wrapper{
