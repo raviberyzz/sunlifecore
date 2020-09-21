@@ -13,6 +13,16 @@ function onSignInClick() {
         return alert('Please type a valid client id and password to login');
     }
 
+    const queryParam= window.location.search;
+    console.log("queryParam :"+queryParam);
+
+    const urlParams= new URLSearchParams(queryParam);
+    console.log(urlParams);
+    const isMFA = urlParams.get('isMFA')
+    console.log(isMFA);
+
+    if(isMFA){
+
     const clientContext = getClientContext();
     const additionalParams = { user: clientId };
     const journeyName = "Consumer_SignIn_FetchPartyID";
@@ -38,6 +48,10 @@ function onSignInClick() {
             journeyEnded(clientContext);
             console.error(`Authenticate Error: ${error}`);           
         });
+    }
+    else{
+      this.form.submit();
+    }
 }
 
 function journeyEnded(clientContext) {
