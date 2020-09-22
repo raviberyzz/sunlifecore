@@ -1139,14 +1139,14 @@ class NewsTabs extends React.Component {
                   <div class="row news-tool-bar">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
                       <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
-                      {/* <div class="preference-tag-container hidden-sm hidden-xs">
-                        {this.state.selectedPreferenceTags.map((value, index) => {
+                      <div class="preference-tag-container hidden-sm hidden-xs">
+                        {this.state.selectedPreferenceTags.slice(0, 4).map((value, index) => {
                           return (<span class="tag">{value}</span>)
                         })}
-                        {this.state.selectedPreferenceTags.length > 3 &&
-                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length}`}</span>
+                        {this.state.selectedPreferenceTags.length > 4 &&
+                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                         }
-                      </div> */}
+                      </div>
                       <span class="pull-right">
                         {this.state.selectedPreferenceTags.length > 0 &&
                           <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>

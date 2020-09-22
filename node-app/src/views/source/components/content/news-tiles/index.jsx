@@ -863,9 +863,11 @@ class NewsTiles extends React.Component {
     this.clearAll = this.clearAll.bind(this);
     this.filteringNewsList = this.filteringNewsList.bind(this);
     this.tagSorting = this.tagSorting.bind(this);
+    this.getNewsList = this.getNewsList.bind(this);
   }
 
   componentDidMount() {
+    this.getNewsList();
     this.newsTiles();
     this.tagSorting();
   }
@@ -1001,6 +1003,20 @@ class NewsTiles extends React.Component {
     });
   }
 
+  getNewsList(){
+    $.ajax({
+      type: "GET",
+      url: "/bin/getNews",
+      dataType: "json",
+      success: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
   newsTiles() {
     let businessGroupObj = [
       { name: "Canada", value: "sunlife:source/business-groups/canada" },
@@ -1092,14 +1108,14 @@ class NewsTiles extends React.Component {
                   <div class="row news-tool-bar">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
                       <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
-                      {/* <div class="preference-tag-container hidden-sm hidden-xs">
-                        {this.state.selectedPreferenceTags.map((value, index) => {
+                      <div class="preference-tag-container hidden-sm hidden-xs">
+                        {this.state.selectedPreferenceTags.slice(0, 4).map((value, index) => {
                           return (<span class="tag">{value}</span>)
                         })}
-                        {this.state.selectedPreferenceTags.length > 3 &&
-                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length}`}</span>
+                        {this.state.selectedPreferenceTags.length > 4 &&
+                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                         }
-                      </div> */}
+                      </div>
                       <span class="pull-right">
                       {this.state.selectedPreferenceTags.length > 0 &&
                         <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
