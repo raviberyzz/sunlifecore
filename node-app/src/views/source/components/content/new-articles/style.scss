@@ -2,7 +2,8 @@
 .news-article-wrapper{
     //margin:0 5px;
     .article-tags{
-        padding:10px 0 0 0;
+        margin-top:24px;
+        padding:0 0 10px 0;
         display: inline-block;
         .tag{
             background-color:$medium-blue-color;
@@ -12,6 +13,9 @@
             text-transform: uppercase; 
             line-height: 35px;
         }
+    }
+    .date{
+        margin-bottom: 24px;
     }
     .mail-wrapper{
         padding-top:15px;
@@ -26,26 +30,5 @@
     }
     .article-body{
         padding:20px 0;
-    }
-    .star-rating{
-        font-size:1.25rem;
-        .fa-star{
-            cursor: pointer;
-        }
-        .fa-star.active{
-            color:$medium-yellow-background;
-        }
-        .fa-star.yellow{
-            color:$medium-yellow-background;
-        }
-        .fa-star.grey{
-            color:$black-shade;
-            &.active{
-                color:$black-shade;
-            }
-        }
-    }
-    .no-of-rating{
-        margin-left:10px;
     }
 }
