@@ -1034,9 +1034,9 @@ class NewsTabs extends React.Component {
     let topicsTag = [];
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
-        if (element.includes("business-groups") && element != "sunlife:source/business-groups/canada") {
+        if (element.split("/")[1] == "business-groups" && element != "sunlife:source/business-groups/canada") {
           businessTag.push(element);
-        } else if (element.includes("topics")) {
+        } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
         }
       });
