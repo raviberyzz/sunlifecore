@@ -1,0 +1,12 @@
+@import '../../../base/core';
+
+.article-wrapper{
+    .article-body{
+       .author-image {
+           img {
+               width: inherit;
+           }
+       }
+    } 
+
+}
