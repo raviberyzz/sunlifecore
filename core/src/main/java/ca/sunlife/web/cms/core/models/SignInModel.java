@@ -127,7 +127,7 @@ public class SignInModel {
 	@Inject
 	@Via("resource")
 	private String domain;
-
+	
 	/** The language. */
 	@Inject
 	@Via("resource")
@@ -140,6 +140,11 @@ public class SignInModel {
 
 	/** The target. */
 	private String target;
+	
+	/** The isTargetPathAbsolute. */
+	@Inject
+	@Via("resource")
+	private String isTargetPathAbsolute;
 
 	/** The errorMsgPlaceholder. */
 	@Inject
@@ -150,7 +155,7 @@ public class SignInModel {
 	@Inject
 	@Via("resource")
 	private String errorRedirectPath;
-
+	
 	/** The hiddenMetadata. */
 	@Inject
 	@Via("resource")
@@ -412,6 +417,20 @@ public class SignInModel {
 	}
 
 	/**
+	 * @return the isTargetPathAbsolute
+	 */
+	public String getIsTargetPathAbsolute() {
+		return isTargetPathAbsolute;
+	}
+
+	/**
+	 * @param isTargetPathAbsolute the isTargetPathAbsolute to set
+	 */
+	public void setIsTargetPathAbsolute(final String isTargetPathAbsolute) {
+		this.isTargetPathAbsolute = isTargetPathAbsolute;
+	}
+
+	/**
 	 * @return the errorMsgPlaceholder
 	 */
 	public String getErrorMsgPlaceholder() {
@@ -473,19 +492,14 @@ public class SignInModel {
 					LOGGER.debug("SignInModel :: target after split is {}", target);
 				}
 			}
-			if(null != domainName && !StringUtils.isEmpty(domainName)) {
-				if(null != target && !StringUtils.isEmpty(target.trim())) {
-					target = domainName.concat(target);
-				}
-				if(null != errorRedirectPath && !StringUtils.isEmpty(errorRedirectPath.trim())) {
-					errorRedirectPath = errorRedirectPath.trim();
-					if(!errorRedirectPath.toLowerCase(Locale.ROOT).startsWith(HTTPS)) {
-						errorRedirectPath = domainName.concat(errorRedirectPath);
-					}
-				}
-				LOGGER.debug("SignInModel :: target is {}", target);
-				LOGGER.debug("SignInModel :: errorRedirectPath is {}", errorRedirectPath);
-			}
+			if(null != isTargetPathAbsolute && !StringUtils.isEmpty(isTargetPathAbsolute.trim()) && isTargetPathAbsolute.trim().equalsIgnoreCase("true")) {
+				if(null != domainName && !StringUtils.isEmpty(domainName.trim())) {
+						if(null != target && !StringUtils.isEmpty(target.trim())) {
+							target = domainName.concat(target);
+						}
+						LOGGER.debug("SignInModel :: target is {}", target);
+			   }
+		   }
 		} catch (ArrayIndexOutOfBoundsException e) {
 			LOGGER.error("ArrayIndexOutOfBoundsException :: init method of SignInModel :: {}", e);
 		} catch (LoginException e) {
