@@ -5,8 +5,7 @@
 4-custom-ui-handler.js
 5-app.js
 6-sign-in.js
-7-verified-phone-list-session.js
-8-password-authenticator-session.js
-9-password-auth-with-password.js
-10-step-up-auth-select-target-session.js
-11-step-up-input-otp-code-session.js
+7-password-authenticator-session.js
+8-password-auth-with-password.js
+9-step-up-auth-select-target-session.js
+10-step-up-input-otp-code-session.js

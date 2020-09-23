@@ -82,12 +82,13 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     this.renderWaitingForInput = function(format, target) {
         const self = this;
         const selectedNumber = this.clientContext.otpSelection.selectedPhone;
-        const instuctionText = `To verify ${selectedNumber} we've sent you a code. Type it to continue:`
+        //const instuctionText = `To verify ${selectedNumber} we've sent you a code. Type it to continue:`
+        const instuctionText = `To verify <span class="text-bold">${selectedNumber} </span>, we've sent you a code.
+                        <span class="desktop-text-block">Enter it to continue</span>`
 
         $.get("/content/dam/sunlife/external/signin/transmit/step-up-input-otp-code.html", function(data){
-            console.log(data);
             $(self.clientContext.uiContainer).html(data);
-            $("#step-up-input-otp-code-screen-input-label").text(instuctionText);  
+            $("#step-up-input-otp-code-screen-input-label").html(instuctionText);  
             $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
             $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
             $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked);

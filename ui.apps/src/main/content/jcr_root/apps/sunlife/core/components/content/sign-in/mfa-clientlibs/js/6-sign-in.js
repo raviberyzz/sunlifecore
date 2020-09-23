@@ -3,15 +3,16 @@ function onShowSignInModal() {
 }
 
 function onSignInClick() {
-    console.log('inside onSignInClick');
-    // const clientId = $(`#${elementsIds.signInClientIdInput}`).val();
-    // const password = $(`#${elementsIds.signInPasswordInput}`).val();
-    const clientId = $('.mySlfSignIn #USER').val();
-    const password = $('.mySlfSignIn #PASSWORD').val();
+
+    console.log("Inside onSignInClick")
+    var clientId =$(".mySlfSignIn #USER").val();
+    var password =$(".mySlfSignIn #PASSWORD").val();
 
     if (clientId.length === 0 || password.length === 0) {
         return alert('Please type a valid client id and password to login');
     }
+
+    
 
     const clientContext = getClientContext();
     const additionalParams = { user: clientId };
@@ -24,6 +25,7 @@ function onSignInClick() {
 
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
+    $("#mfa_signin_modal").modal("show");
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext)
         .then((results) => {
             journeyEnded(clientContext);
@@ -31,21 +33,25 @@ function onSignInClick() {
             const token = results.getToken();
             if (token) {
                 updateSessionToken(token);
-                showHomeDiv();
+               // $("#mfa_signin_modal").modal("show");
+               // showHomeDiv();
+               
             }
         })
         .catch((error) => {
             journeyEnded(clientContext);
             console.error(`Authenticate Error: ${error}`);           
         });
+  
 }
 
 function journeyEnded(clientContext) {
     clearTransmitContainer(clientContext);
-    setAppContentApperance(true);
+     setAppContentApperance(true);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
 
 function onSignInCancelClick() {
     toggleSignInModalVisibility(false);
 }
+    
