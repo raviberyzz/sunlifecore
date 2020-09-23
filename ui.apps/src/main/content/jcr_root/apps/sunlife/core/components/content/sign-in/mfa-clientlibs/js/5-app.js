@@ -180,7 +180,8 @@ function initJourneyPlayer() {
 
 function getTransmitConnectionSettings() {
     
-    const serverUrl = "https://sv0a0729.sunlifecorp.com:8443";
+   //const serverUrl = "https://sv0a0729.sunlifecorp.com:8443";
+     const serverUrl = "http://mfa-dev.sunlifecorp.com";
     const appId = "mfa_signin";
     const apiTokenId = "";
     const apiToken = "";
