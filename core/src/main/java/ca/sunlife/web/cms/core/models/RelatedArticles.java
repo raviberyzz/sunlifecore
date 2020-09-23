@@ -97,7 +97,7 @@ public class RelatedArticles {
    * Inits the.
    */
   @ PostConstruct
-  private void init() {
+  public void init() {
     if (! StringUtils.isEmpty(getArticleFragmentPath())) {
       getRelatedArticleData();
     }
