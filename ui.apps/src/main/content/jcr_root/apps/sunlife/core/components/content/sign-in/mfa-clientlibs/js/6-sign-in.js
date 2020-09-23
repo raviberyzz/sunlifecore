@@ -49,4 +49,3 @@ function journeyEnded(clientContext) {
 function onSignInCancelClick() {
     toggleSignInModalVisibility(false);
 }
-    

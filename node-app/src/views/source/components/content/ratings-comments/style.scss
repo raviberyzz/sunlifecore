@@ -1,6 +1,6 @@
 @import '../../../base/core'; 
 .rating-wrapper{
-    margin:20px 10px;
+    margin:40px 10px 0 10px;
     .rate-this{
         font-size:0.875rem;
         font-weight:700;
@@ -28,16 +28,17 @@
     }
 }
 .comment-wrapper{
-    margin:10px 10px;
+    margin:40px 10px 10px 10px;
     .comment-count{
         font-size:1rem;
         font-weight:700;
     }
     .info{
         font-size:0.875rem;
+        margin-bottom:0; 
     }
     .old-comments{
-        margin:10px 0 25px 0;
+        margin:30px 0 0 0;
         .name-time{
             margin-bottom:5px;
             .name{
@@ -53,11 +54,14 @@
         }
     }
     .add-comment{
+        float:none;
         height:140px;
-        margin-bottom:20px;
+        margin-bottom:0;
+        margin-top:24px;
         position: relative;
         .col-sm-7,.col-sm-3{
             height:100%;
+            padding-left:0;
         }
         textarea{
             width:100%;
