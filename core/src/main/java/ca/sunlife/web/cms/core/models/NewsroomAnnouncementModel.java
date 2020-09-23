@@ -5,8 +5,11 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -56,6 +59,25 @@ public class NewsroomAnnouncementModel {
 
   /** The Constant NEWSROOM_HEADING. */
   private static final String NEWSROOM_HEADING = "newsroomHeading";
+  
+  /** The Constant JCR_CONTENT_METADATA. */
+  private static final String JCR_CONTENT_METADATA = "/jcr:content/metadata";
+
+  /** The Constant CQ_TAGS. */
+  private static final String CQ_TAGS = "cq:tags";
+
+  /** The Constant COLON_CHAR. */
+  private static final char COLON_CHAR = ':';
+
+  /** The Constant COLON_STRING. */
+  private static final String COLON_STRING = ":";
+  
+  /** The Constant THUMBNAIL_IMAGE. */
+  private static final String THUMBNAIL_IMAGE = "thumbnailImage";
+  
+  /** The Constant PIN_ARTICLE. */
+  private static final String PIN_ARTICLE = "pinAnnouncement";
+
 
   /** The Constant logger. */
   private static final Logger LOGGER = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
@@ -73,6 +95,21 @@ public class NewsroomAnnouncementModel {
   @ Inject
   @ Via ("resource")
   private String checkboxHideDate;
+  
+  /** The checkbox hide tags. */
+  @Inject
+  @Via("resource")
+  private String checkboxDisplayTags;
+  
+  /** The checkbox display rating. */
+  @Inject
+  @Via("resource")
+  private String checkboxDisplayRating;
+
+  /** The checkbox display comments. */
+  @Inject
+  @Via("resource")
+  private String checkboxDisplayComments;
 
   /** The config service. */
   @ Inject
@@ -88,6 +125,9 @@ public class NewsroomAnnouncementModel {
 
   /** The article data. */
   private final Map <String, String> articleData = new HashMap <>();
+  
+  /** The tag list. */
+  private List<String> tagList = new ArrayList<>();
 
   /**
    * Gets the article data.
@@ -137,6 +177,78 @@ public class NewsroomAnnouncementModel {
   }
 
   /**
+   * Gets the checkbox display tags.
+   *
+   * @return the checkbox display tags
+   */
+  public String getCheckboxDisplayTags() {
+	return checkboxDisplayTags;
+  }
+
+  /**
+   * Sets the checkbox display tags.
+   *
+   * @param checkboxDisplayTags the new checkbox display tags
+   */
+  public void setCheckboxDisplayTags(String checkboxDisplayTags) {
+	this.checkboxDisplayTags = checkboxDisplayTags;
+  }
+
+  /**
+   * Gets the checkbox display rating.
+   *
+   * @return the checkbox display rating
+   */
+  public String getCheckboxDisplayRating() {
+	return checkboxDisplayRating;
+  }
+
+  /**
+   * Sets the checkbox display rating.
+   *
+   * @param checkboxDisplayRating the new checkbox display rating
+   */
+  public void setCheckboxDisplayRating(String checkboxDisplayRating) {
+	this.checkboxDisplayRating = checkboxDisplayRating;
+  }
+
+  /**
+   * Gets the checkbox display comments.
+   *
+   * @return the checkbox display comments
+   */
+  public String getCheckboxDisplayComments() {
+	return checkboxDisplayComments;
+  }
+
+  /**
+   * Sets the checkbox display comments.
+   *
+   * @param checkboxDisplayComments the new checkbox display comments
+   */
+  public void setCheckboxDisplayComments(String checkboxDisplayComments) {
+	this.checkboxDisplayComments = checkboxDisplayComments;
+  }
+
+  /**
+   * Gets the tag list.
+   *
+   * @return the tag list
+   */
+  public List<String> getTagList() {
+	return tagList;
+  }
+
+  /**
+   * Sets the tag list.
+   *
+   * @param tagList the new tag list
+   */
+  public void setTagList(List<String> tagList) {
+	this.tagList = tagList;
+  }
+
+/**
    * Inits the.
    */
   @ PostConstruct
@@ -149,6 +261,8 @@ public class NewsroomAnnouncementModel {
       LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
       final Resource articleResource = resourceResolver
           .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
+      final Resource metaDataResource = resourceResolver
+				.getResource(getFragmentPath().concat(JCR_CONTENT_METADATA));
       if (null != articleResource) {
         LOGGER.debug("Parsing Article Data");
         final ValueMap articleContent = articleResource.getValueMap();
@@ -164,8 +278,23 @@ public class NewsroomAnnouncementModel {
             articleContent.containsKey(NEWSROOM_PAGE_PATH)
                 ? articleContent.get(NEWSROOM_PAGE_PATH, String.class)
                 : StringUtils.EMPTY);
-        setArticlePublishDate(articleContent);
+		articleData.put(THUMBNAIL_IMAGE,
+				articleContent.containsKey(THUMBNAIL_IMAGE) ? articleContent.get(THUMBNAIL_IMAGE, String.class) : StringUtils.EMPTY);
+		articleData.put(PIN_ARTICLE,
+				articleContent.containsKey(PIN_ARTICLE) ? articleContent.get(PIN_ARTICLE, String.class) : StringUtils.EMPTY);
+		setArticlePublishDate(articleContent);
       }
+		if (null != metaDataResource) {
+			final ValueMap metaDataContent = metaDataResource.getValueMap();
+			String[] cfTagsArray = metaDataContent.containsKey(CQ_TAGS)
+					? metaDataContent.get(CQ_TAGS, String[].class)
+					: null;
+			List<String> contentFragmentTagList = new ArrayList<>();
+			if (cfTagsArray != null) {
+				Collections.addAll(contentFragmentTagList, cfTagsArray);
+				sortAndSetTagNames(contentFragmentTagList);
+			}
+		}
       LOGGER.debug("Article Data {}", articleData);
       resourceResolver.close();
     } catch (LoginException | RepositoryException e) {
@@ -204,4 +333,31 @@ public class NewsroomAnnouncementModel {
     }
     articleData.put(ARTICLE_PUBLISHED_DATE, articlePublishedDate);
   }
+  
+	/**
+	 * Sort and set tag names.
+	 *
+	 * @param contentFragmentTagList
+	 *            the content fragment tag list
+	 */
+	private void sortAndSetTagNames(List<String> contentFragmentTagList) {
+		Collections.sort(contentFragmentTagList);
+		for (String item : contentFragmentTagList) {
+			String tag;
+			if (item.contains("/")) {
+				tag = StringUtils.capitalize(item.substring(item.lastIndexOf('/') + 1));
+				tag = tag.replace('-', ' ');
+				tagList.add(tag);
+			} else if (item.contains(COLON_STRING) && (item.length() > (item.lastIndexOf(COLON_CHAR) + 1))) {
+				tag = StringUtils.capitalize(item.substring(item.lastIndexOf(COLON_CHAR) + 1));
+				tag = tag.replace('-', ' ');
+				tagList.add(tag);
+			} else if (item.contains(COLON_STRING)) {
+				tag = StringUtils.capitalize(item.substring(0, item.indexOf(COLON_CHAR)));
+				tag = tag.replace('-', ' ');
+				tagList.add(tag);
+			}
+		}
+
+	}
 }

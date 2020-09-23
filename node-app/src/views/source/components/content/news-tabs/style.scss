@@ -26,19 +26,21 @@
                display: inline-block;
                margin: 0 16px;
                .tag{
-                   background-color: $medium-blue-color;
-                   color: $white-shade;
-                   margin-right: 10px;
-                   padding: 2px 10px;
-                   text-transform: uppercase;
+                    background-color: $medium-blue-color;
+                    color: $white-shade;
+                    margin-right: 10px;
+                    padding: 8px;
+                    font-size: 9px;
+                    text-transform: uppercase;
                 }
-               .more-tag{
-                    background-color: $light-grey-shade;
+                .more-tag{
+                    background-color: #D8D8D8;
                     color: $medium-blue-color;
                     margin-right: 10px;
-                    padding: 2px 10px;
-                    font-weight: 700;
-               }
+                    padding: 8px;
+                    font-size: 9px;
+                    text-transform: uppercase;
+                }
             }
         }
         .horizontal-middle-align{
@@ -67,6 +69,9 @@
         }
         .news-list-box:not(:first-child) {
             border-top:none;
+        }
+        .pagination-component {
+            border :none;
         }
     }
 

@@ -132,5 +132,84 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
+	},
+	{
+		"componentName": "News listing",
+        "componentDisplayName": "News listing",
+        "reactComponentName": "news-tabs",
+        "props" : [
+            {
+                name: "newsToolBar",
+                label: "newsToolBar",
+                value: "true",
+                required: true
+            },
+			{
+                name: "newsTabsContainer",
+                label: "newsTabsContainer",
+                value: "true",
+                required: true
+            },
+			{
+                name: "toolbarLeftText",
+                label: "toolbarLeftText",
+                value: "News",
+                required: true
+            },
+			{
+                name: "toolbarRightText",
+                label: "toolbarRightText",
+                value: "Preferences",
+                required: true
+            },
+			{
+                name: "preferenceModalHeading",
+                label: "preferenceModalHeading",
+                value: "Your Preferences",
+                required: true
+            },
+			{
+                name: "preferenceModalHeadingbtn1",
+                label: "preferenceModalHeadingbtn1",
+                value: "Apply",
+                required: true
+            },
+			{
+                name: "preferenceModalHeadingbtn2",
+                label: "preferenceModalHeadingbtn2",
+                value: "Clear all",
+                required: true
+            },
+			{
+                name: "iconName",
+                label: "iconName",
+                value: "fa-sliders",
+                required: true
+            }
+		]	
+	},{
+		"componentName": "Article Rating",
+        "componentDisplayName": "Article Rating",
+        "reactComponentName": "article-ratings",
+        "props" : [
+            {
+                name: "showRating",
+                label: "showRating",
+                value: "true",
+                required: true
+            }
+		]	
+	},{
+		"componentName": "Article Comment",
+        "componentDisplayName": "Article Comment",
+        "reactComponentName": "article-comments",
+        "props" : [
+            {
+                name: "showComment",
+                label: "showComment",
+                value: "true",
+                required: true
+            }
+		]	
 	}
 ];
