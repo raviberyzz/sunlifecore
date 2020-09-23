@@ -9,3 +9,4 @@
 8-password-auth-with-password.js
 9-step-up-auth-select-target-session.js
 10-step-up-input-otp-code-session.js
+11-main.js
