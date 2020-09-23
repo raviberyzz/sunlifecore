@@ -3,7 +3,7 @@ $(document).ready(function () {
         var ratingLevel=Math.round($('.star-rating .rating-value').val());
         $('.star-rating .fa-star').removeClass('yellow');
         $('.star-rating .fa-star').removeClass('grey');
-        $('.star-rating .fa-star').each((index,value)=>{
+        $('.star-rating .fa-star').each(function(index,value){
         if(ratingLevel>0){
             $(value).addClass('active');
         }
