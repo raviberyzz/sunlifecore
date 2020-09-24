@@ -15,7 +15,6 @@ function PasswordAuthenticatorSession(title, username) {
         /*********************************************************************** */
 
         $.get("/content/dam/sunlife/external/signin/transmit/password-authenticator.html", function(data){
-            console.log(data);
             $(clientContext.uiContainer).html(data);                        
             $("#custom-password-authenticator_title").text(title);
             $("#custom-password-authenticator_text").text(`Hello ${username}, please type your password to continue`);

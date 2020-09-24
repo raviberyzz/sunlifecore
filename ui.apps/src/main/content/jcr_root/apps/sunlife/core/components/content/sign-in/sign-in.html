@@ -18,9 +18,25 @@
     <sly data-sly-test.target="${listModel.target}" />
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
+
     <!-- transmit container starts here -->
-    <div id="transmitContainer"></div>
+    <div class="modal slf-modal fix-order" id="mfa_signin_modal" role="dialog" tabindex="-1" data-keyboard="false"
+        data-backdrop="static">
+        <span id="startOfModal" class="sr-only">Start of dialog window</span>
+        <div class="modal-dialog slf-yellow-modal">
+            <div class="modal-content">
+                <div class="modal-body" id="termsAndConditionContent">
+                    <div id="transmitContainer">
+                    </div>
+                    <!-- start modal content -->
+                    <!-- put your transmit container here -->
+                </div>
+            </div>
+        </div>
+        <span id="endOfModal" class="sr-only">End of dialog window</span>
+    </div>
     <!-- transmit container ends here -->
+
     <div class="login-container mySlfSignIn" id="slfSignIn">
         <h2 class="h2 text-center">${signInHeadingText @context ='html'}</h2>
         <div class="download-app visible-xs">

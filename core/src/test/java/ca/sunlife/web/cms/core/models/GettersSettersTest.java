@@ -38,6 +38,10 @@ public class GettersSettersTest {
   private SelectorToExfragMapModel selectorToExfragMapModel;
   private Title title;
   private UserInfo userInfo;
+  private RelatedArticles relatedArticles;
+  private NavigationModel navigationModel;
+  private ProductCardModel productCardModel;
+  private SignInModel signInModel;
   
   @ BeforeEach
   void setup() {
@@ -67,6 +71,10 @@ public class GettersSettersTest {
     title = new Title( );
     selectorToExfragMapModel = new SelectorToExfragMapModel( );
     userInfo = new UserInfo( );
+    relatedArticles = new RelatedArticles();
+    navigationModel = new NavigationModel();
+    productCardModel = new ProductCardModel();
+    signInModel = new SignInModel();
   }
 
   @ Test
@@ -198,5 +206,25 @@ public class GettersSettersTest {
   @ Test
   void testUserInfo() {
   	TestUtils.executeTestBean(userInfo);
+  }
+  
+  @ Test
+  void testRelatedArticles() {
+  	TestUtils.executeTestBean(relatedArticles);
+  }
+  
+  @ Test
+  void testNavigationModel() {
+  	TestUtils.executeTestBean(navigationModel);
+  }  
+  
+  @ Test
+  void testProductCardModel() {
+  	TestUtils.executeTestBean(productCardModel);
+  }  
+  
+  @ Test
+  void testSignInModel() {
+  	TestUtils.executeTestBean(signInModel);
   }
 }

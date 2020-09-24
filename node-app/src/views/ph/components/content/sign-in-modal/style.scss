@@ -1,0 +1,18 @@
+@import '../../../base/core';
+    .sign-in-modal-wrapper {
+        .modal-dialog {
+            width: 365px;
+        }
+         .modal-content {
+            background: $medium-yellow-background;
+        }
+        .modal-body {
+            padding: 40px 40px !important;
+        }
+        .h4 {
+            font-family: 'sunlife-sans';
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }

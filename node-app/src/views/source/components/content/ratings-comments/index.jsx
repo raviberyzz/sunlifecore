@@ -15,6 +15,61 @@ class ArticleRatings extends React.Component {
     //this.submitRating();
   }
   getRatingComment() {
+    // let headers = new Headers();
+
+    // headers.append("Content-Type", "application/json");
+    // headers.append("Accept", "application/json");
+    // headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    // headers.append("Access-Control-Allow-Origin", "*");
+    // headers.append("Access-Control-Allow-Credentials", "true");
+    // headers.append("GET", "POST", "OPTIONS");
+    // headers.append("Authorization", "Basic " + btoa("admin" + ":" + "admin"));
+    let articlePath = "http://159.208.176.139:4502/bin/ratingcomments";
+    let data1 = {
+      id: 1,
+      articlePath: "en/ca/home",
+    };
+    // $.ajax({
+    //   type: "GET",
+    //   url: '/stockticker/getIndice',
+    //   dataType: "json",
+    //   crossDomain: true,
+    //   headers: {
+    //     // "Content-Type": "application/json",
+    //     // "Access-Control-Request-Headers":"Content-Type",
+    //     // "Access-Control-Allow-Credentials": "true",
+    //     // "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+    //   },
+    //   data: data1,
+    //   success: function (response) {
+    //     console.log(response);
+    //   },
+    //   error: function (error) {
+    //     console.log(error);
+    //   },
+    // });
+    // $.ajax({
+    //   type: "GET",
+    //   //url: "/stockticker/getIndices",
+    //   url:'/bin/ratingcomments',
+    //   mode:'cors',
+    //   dataType: "json",
+    //   crossDomain: true,
+    //   header:{
+    //     'Access-Control-Allow-Origin':'*',
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Request-Headers":"Content-Type",
+    //     "Access-Control-Allow-Credentials": "true",
+    //     "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+    //   },
+    //   //data:data1,
+    //   success: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // });
     this.state.ratingComment = {
       commentCount: 1,
       commentDetails: [
@@ -153,7 +208,7 @@ class ArticleComments extends React.Component {
           email: "string",
           updatedDate: "2020-07-10T14:14:16.018Z",
           userName: "Karan Breaker",
-        }
+        },
       ],
       ratingAverage: 3,
       ratingCount: 1,
@@ -163,30 +218,37 @@ class ArticleComments extends React.Component {
   setComments() {
     this.state.ratingComment.commentDetails.map((value, index) => {
       let cdate = value.updatedDate.split("T")[0];
-      cdate=this.dateChange(cdate);
+      cdate = this.dateChange(cdate);
       //console.log(cdate);
       this.state.ratingComment.commentDetails[index].updatedDate = cdate;
     });
   }
   submitComment(i, event) {
-    let newCommentVal=$('#commentText').val();
-    let newComment={
+    let newCommentVal = $("#commentText").val();
+    let newComment = {
       commentId: 4,
       commentText: newCommentVal,
       email: "string",
       updatedDate: "2020-07-10T14:14:16.018Z",
-      userName: "Karan Breaker"
+      userName: "Karan Breaker",
     };
-    let html=`<section class="old-comments">
+    let html =
+      `<section class="old-comments">
     <p class="name-time">
-      <span class="name">`+newComment.userName+`</span>
-      <span class="time">`+newComment.updatedDate+`</span>
+      <span class="name">` +
+      newComment.userName +
+      `</span>
+      <span class="time">` +
+      newComment.updatedDate +
+      `</span>
     </p>
-    <p class="desc">`+newComment.commentText+`</p>
+    <p class="desc">` +
+      newComment.commentText +
+      `</p>
   </section>`;
     this.state.ratingComment.commentDetails.push(newCommentVal);
-    $('#commentText').val('');
-    $('.comment-count .val').text(4); 
+    $("#commentText").val("");
+    $(".comment-count .val").text(4);
     //$('.comment-wrapper')[0].;
     // this.state.noOfRatings=this.state.noOfRatings+1;
     // this.state.aveRatings=Math.round((this.state.aveRatings+i)/this.state.noOfRatings);
@@ -200,18 +262,26 @@ class ArticleComments extends React.Component {
         {this.props.showComment == "true" && (
           <div class="comment-wrapper">
             <p class="comment-count">
-              Comments(<span class="val">{this.state.ratingComment.commentCount}</span>)
+              Comments(
+              <span class="val">{this.state.ratingComment.commentCount}</span>)
             </p>
             <p class="info">
               (When you add a comment your name will be automatically displayed)
             </p>
             <div class="add-comment row col-xs-12">
               <div class="col-sm-7">
-                <textarea id="commentText" placeholder="Write your comment"></textarea>
+                <textarea
+                  id="commentText"
+                  placeholder="Write your comment"
+                ></textarea>
               </div>
               <div class="col-sm-3">
-                <button class="submit-comment vertical-middle-align" 
-                onClick={this.submitComment.bind(this)}>Add comment</button>
+                <button
+                  class="submit-comment vertical-middle-align"
+                  onClick={this.submitComment.bind(this)}
+                >
+                  Add comment
+                </button>
               </div>
             </div>
             {this.state.ratingComment.commentDetails.map((value, index) => {

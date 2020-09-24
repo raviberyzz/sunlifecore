@@ -3,7 +3,7 @@
     //margin:0 5px;
     .article-tags{
         margin-top:24px;
-        padding:0 0 10px 0;
+        padding:0 0 2px 0;
         display: inline-block;
         .tag{
             background-color:$medium-blue-color;
@@ -14,11 +14,11 @@
             line-height: 35px;
         }
     }
-    .date{
-        margin-bottom: 24px;
+    .article-date{
+        margin-bottom:24px;
     }
     .mail-wrapper{
-        padding-top:15px;
+        margin-bottom: 24px;
         p{
             margin-bottom: 0;
         }
@@ -29,6 +29,6 @@
         }
     }
     .article-body{
-        padding:20px 0;
+        padding:0;
     }
 }

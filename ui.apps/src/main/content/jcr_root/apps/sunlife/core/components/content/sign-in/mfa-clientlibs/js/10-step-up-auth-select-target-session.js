@@ -42,8 +42,11 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
     function handleSendCode() {
         const selectedPhone = $('input[name="phone_number_target"]:checked').val();
+        console.log("selectedPhone:"+selectedPhone);
         const selectedMethod = $('input[name="send_code_method"]:checked').val();
-        const selectedCommunicationId = $('input[name="mfa_communication_target"]').val();
+        console.log("selectedMethod:"+selectedMethod);
+        const selectedCommunicationId = $('input[id="'+selectedPhone+'"]').val();
+        console.log("selectedCommunicationId:"+selectedCommunicationId);
         
 
         const otpSelection = {
@@ -59,7 +62,6 @@ function StepUpSelectTargetFormSession(formId, payload) {
     function setupForm() {
         const self = this;
         $.get("/content/dam/sunlife/external/signin/transmit/step-up-auth-select-target-form.html", function (data) {
-            console.log(data);
             $(self.clientContext.uiContainer).html(data);
 
             $("#step-up-send-code-button").on("click", function () {
@@ -85,15 +87,31 @@ function StepUpSelectTargetFormSession(formId, payload) {
     function renderPhone(phoneNumber, index) {
         const self = this;
         const checked = (index === 0) ? "checked" : "";
-
-        const elem = $(`<div>
-            <input type="radio" id="su-phone-number-item-${index}" name="phone_number_target" value="${phoneNumber.commData}" ${checked}>
-            <input type="hidden" id=${phoneNumber.mfaCommunId} name="mfa_communication_target" value="${phoneNumber.mfaCommunId}">
-            <label for="su-phone-number-item-${index}">${phoneNumber.commData}</label><br>
-        </div>`);
+        const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
+        console.log(phone);
+        const elem = $(`
+        <div class="radio-btn-selected radio-btn-container">
+        <input type="hidden" id=${phone} name="mfa_communication_target" value="${phone}">
+        <input
+            id="su-phone-number-item-${index}"
+            class="mfa-receive-code-choice"
+            name="phone_number_target"
+            value="${phone}"
+            type="radio"
+            required
+            data-parsley-min-check="1"
+            data-parsley-error-message="Please select a phone number"
+            data-parsley-errors-container=".radio-min-phone-err"
+            data-parsley-class-handler=".radio-min-phone-err"
+            ${checked}
+        >
+        <label for="su-phone-number-item-${index}">${phone}</label>
+     </div>
+        `);
 
         return elem;
     }
 
-    this.constructor = VerifiedPhoneListFormSession;
+    //this.constructor = VerifiedPhoneListFormSession;
+    this.constructor=StepUpSelectTargetFormSession;
 }
