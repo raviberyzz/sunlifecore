@@ -14,8 +14,6 @@
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_content_page>
                     <policy_home_page
-                        jcr:lastModified="{Date}2020-09-24T14:12:45.558-04:00"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife - Source Home Page"
                         sling:resourceType="wcm/core/components/policy/policy"
@@ -76,8 +74,6 @@
                             </cq:styleGroups>
                         </policy_titlebar>
                         <policy_74315774432074
-                            jcr:lastModified="{Date}2020-09-24T12:22:43.227-04:00"
-                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Policy_titlebar"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -1922,8 +1918,6 @@
                 <structure jcr:primaryType="nt:unstructured">
                     <base-page jcr:primaryType="nt:unstructured">
                         <policy_content_page
-                            jcr:lastModified="{Date}2020-09-24T14:01:42.340-04:00"
-                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sunlife - Source (Clientlibs)"
                             sling:resourceType="wcm/core/components/policy/policy"
@@ -1931,8 +1925,6 @@
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_content_page>
                         <policy_home_page
-                            jcr:lastModified="{Date}2020-09-24T14:11:13.339-04:00"
-                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Source - Home page (Client libs)"
                             sling:resourceType="wcm/core/components/policy/policy"
