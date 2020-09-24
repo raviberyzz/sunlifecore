@@ -7,7 +7,7 @@
     <filter root="/conf/global/settings/dam/search" />
     <filter root="/conf/sunlife" />
 	<filter root="/conf/sunlife-source">
-		<exclude pattern="/conf/sunlife/settings/wcm/segments(/.*)" />
+		<exclude pattern="/conf/sunlife-source/settings/wcm/segments(/.*)" />
 	</filter>
     <filter root="/etc/map.dev.publish"/>
     <filter root="/etc/map.sit.publish"/>
