@@ -6,7 +6,6 @@
             <components jcr:primaryType="nt:unstructured">
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <policy_content_page
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="sunlife-source"
                         sling:resourceType="wcm/core/components/policy/policy"
