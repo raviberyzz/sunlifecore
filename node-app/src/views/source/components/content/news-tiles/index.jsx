@@ -864,9 +864,11 @@ class NewsTiles extends React.Component {
     this.filteringNewsList = this.filteringNewsList.bind(this);
     this.tagSorting = this.tagSorting.bind(this);
     this.getNewsList = this.getNewsList.bind(this);
+    this.getPreferenceList = this.getPreferenceList.bind(this);
   }
 
   componentDidMount() {
+    this.getPreferenceList();
     this.getNewsList();
     this.newsTiles();
     this.tagSorting();
@@ -996,7 +998,6 @@ class NewsTiles extends React.Component {
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
-      console.log(this.state.selectedPreferenceTags);
     }
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags
@@ -1007,6 +1008,20 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "GET",
       url: "/bin/getNews",
+      dataType: "json",
+      success: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  getPreferenceList(){
+    $.ajax({
+      type: "GET",
+      url: "/content/dam/sunlife/internal/source/en/prefenrences.json",
       dataType: "json",
       success: (res) => {
         console.log(res);

@@ -1049,7 +1049,6 @@ class NewsTabs extends React.Component {
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
-      console.log(this.state.selectedPreferenceTags);
     }
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags
