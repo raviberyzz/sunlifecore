@@ -82,15 +82,15 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 						if (null != contentFragmentData) {
 							jsonObject = new JSONObject();
 							ValueMap valueMap = contentFragmentData.getValueMap();
-							jsonObject.put(NewsConstants.ARTICLE_PUBLISHED_DATE_CONSTANT, valueMap.get(NewsConstants.ARTICLE_PUBLISHED_DATE_CONSTANT, String.class)); // published
+							jsonObject.put(NewsConstants.PUBLISHED_DATE_CONSTANT, valueMap.get(NewsConstants.PUBLISHED_DATE_CONSTANT, String.class)); // published
 																																																					// date
-							jsonObject.put(NewsConstants.NEWS_HEADING_CONSTANT, valueMap.get(NewsConstants.NEWS_HEADING_CONSTANT, String.class)); // heading
-							jsonObject.put(NewsConstants.NEWS_PAGE_CONSTANT, valueMap.get(NewsConstants.NEWS_PAGE_CONSTANT, String.class)); // article page path
-							jsonObject.put(NewsConstants.ARTICLE_IMAGE_CONSTANT, valueMap.get(NewsConstants.ARTICLE_IMAGE_CONSTANT, String.class)); // image path
-							jsonObject.put(NewsConstants.PIN_ANNOUNCEMENT_CONSTANT, valueMap.get(NewsConstants.PIN_ANNOUNCEMENT_CONSTANT, String.class)); // image path
-							String summary = valueMap.get("newsroomContent", String.class);
+							jsonObject.put(NewsConstants.HEADING_CONSTANT, valueMap.get(NewsConstants.HEADING_CONSTANT, String.class)); // heading
+							jsonObject.put(NewsConstants.PAGE_CONSTANT, valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article page path
+							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, valueMap.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)); // image path
+							jsonObject.put(NewsConstants.PIN_ARTICLE_CONSTANT, valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)); // image path
+							String summary = valueMap.get(NewsConstants.ARTICLE_CONTENT_CONSTANT, String.class);
 							int summaryMaxSize = 155;
-							jsonObject.put(NewsConstants.NEWS_SUMMARY_CONSTANT,
+							jsonObject.put(NewsConstants.SUMMARY_CONSTANT,
 									null != summary && summary.length() > summaryMaxSize ? summary.substring(0, summaryMaxSize)
 											: summary); // summary
 						}

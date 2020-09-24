@@ -72,28 +72,6 @@
                                 </item1>
                             </cq:styleGroups>
                         </policy_titlebar>
-                        <policy_74315774432074
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Policy_titlebar"
-                            sling:resourceType="wcm/core/components/policy/policy"
-                            allowedTypes="[h1,p]"
-                            linkDisabled="false"
-                            type="h1">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                            <cq:styleGroups jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleGroupLabel="sizing"
-                                    jcr:primaryType="nt:unstructured">
-                                    <cq:styles jcr:primaryType="nt:unstructured">
-                                        <item0
-                                            cq:styleClasses="test-ca"
-                                            cq:styleId="1600964548944"
-                                            cq:styleLabel="test"
-                                            jcr:primaryType="nt:unstructured"/>
-                                    </cq:styles>
-                                </item0>
-                            </cq:styleGroups>
-                        </policy_74315774432074>
                     </titlebar>
                     <title jcr:primaryType="nt:unstructured">
                         <policy_title

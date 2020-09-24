@@ -17,24 +17,27 @@ public class NewsConstants {
     throw new IllegalStateException("NewsConstants class.");
   }
 
-  /** The Constant ARTICLE_PUBLISHED_DATE_CONSTANT. */
-  public static final String ARTICLE_PUBLISHED_DATE_CONSTANT = "articlePublishedDate";
+  /** The Constant PUBLISHED_DATE_CONSTANT. */
+  public static final String PUBLISHED_DATE_CONSTANT = "publishedDate";
   
-  /** The Constant NEWS_HEADING_CONSTANT. */
-  public static final String NEWS_HEADING_CONSTANT = "newsroomHeading";
+  /** The Constant HEADING_CONSTANT. */
+  public static final String HEADING_CONSTANT = "heading";
   
-  /** The Constant NEWS_PAGE_CONSTANT. */
-  public static final String NEWS_PAGE_CONSTANT = "newsroomPagePath";
+  /** The Constant PAGE_CONSTANT. */
+  public static final String PAGE_CONSTANT = "pagePath";
   
-  /** The Constant ARTICLE_IMAGE_CONSTANT. */
-  public static final String ARTICLE_IMAGE_CONSTANT = "articleImagePath";
+  /** The Constant THUMBNAIL_IMAGE_CONSTANT. */
+  public static final String THUMBNAIL_IMAGE_CONSTANT = "thumbnailImage";
 
   /** The Constant PIN_ANNOUNCEMENT_CONSTANT. */
-  public static final String PIN_ANNOUNCEMENT_CONSTANT = "pinAnnouncement";
+  public static final String PIN_ARTICLE_CONSTANT = "pinArticle";
   
-  /** The Constant NEWS_SUMMARY_CONSTANT. */
-  public static final String NEWS_SUMMARY_CONSTANT = "newsroomSummary";
+  /** The Constant SUMMARY_CONSTANT. */
+  public static final String SUMMARY_CONSTANT = "newsroomSummary";
   
   /** The Constant TAGS_CONSTANT. */
   public static final String TAGS_CONSTANT = "tags";
+  
+  /** The Constant ARTICLE_CONTENT_CONSTANT. */
+  public static final String ARTICLE_CONTENT_CONSTANT = "articleContent";
 }
