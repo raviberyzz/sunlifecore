@@ -63,6 +63,9 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
             document.cookie="SMSESSION"+"="+jsonData.SMSESSION + ";domain=.sunnet.sunlife.com;path=/";
         }
         resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
+        if(jsonData.target != undefined && jsonData.target != ""){
+            window.location.href = jsonData.target;
+          }
     });
 }
     
@@ -74,11 +77,21 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
                 alert("User is locked");
+                console.log(clientContext.uiContainer);
+               // $.get("transmit/signin/account-locked-out.html");
+                $.get("/content/dam/sunlife/external/signin/transmit/html/account-locked-out.html", function (data) {
+                    $(clientContext.uiContainer).html(data);
+              });
             } else {
                 alert("User is locked. Come back later");
-            }
-        }
+                console.log(clientContext.uiContainer);
+              // $.get("mfa_singin/signin/come-back-later.html");
+               $.get("/content/dam/sunlife/external/signin/transmit/html/come-back-later.html", function (data) {
+                $(clientContext.uiContainer).html(data);
+          });
 
+        }
+    }
     resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
     });
 }
