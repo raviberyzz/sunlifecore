@@ -6,7 +6,6 @@ package ca.sunlife.web.cms.core.models;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
@@ -52,9 +51,6 @@ public class SignInModel {
     /** The Constant DOMAIN_STR. */
     private static final String DOMAIN_STR = "domain";
     
-    /** The Constant HTTPS. */
-    private static final String HTTPS = "https";
-
 	/** The Constant SEPARATOR. */
 	private static final String SEPARATOR = "|";
 

@@ -11,10 +11,14 @@
             .cmp-navigation__group{
                 margin-top: 16px;
                 .cmp-navigation__item--active{
-                    .cmp-navigation__item-link{
+                    .cmp-navigation__item-link.cmp-navigation__item--active{
                         border-bottom: 2px solid $medium-yellow-background;
                         font-weight: 700;
                         text-decoration: none;
+                    }
+                    .cmp-navigation__item-link.cmp-navigation__item--active[data-toggle="collapse"]{
+                        border: none;
+                        font-weight: 400;
                     }
                 }
                 .cmp-navigation__item--level-1{ 
@@ -54,12 +58,12 @@
                         word-break: keep-all;
                     }
                 }
-                .cmp-navigation__item--active{
-                    .cmp-navigation__item-link{
-                        font-weight: 700;
-                        text-decoration: none;
-                    }
-                }
+                // .cmp-navigation__item--active{
+                //     .cmp-navigation__item-link{
+                //         font-weight: 700;
+                //         text-decoration: none;
+                //     }
+                // }
             }
         }
     }
