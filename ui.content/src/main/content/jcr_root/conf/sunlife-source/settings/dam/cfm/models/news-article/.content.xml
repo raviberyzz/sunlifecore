@@ -4,11 +4,11 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/newsroom-model/jcr:content/model"
+        cq:scaffolding="/conf/source/settings/dam/cfm/models/news-article/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
-        jcr:description="This model should be used to create newsroom announcements/articles"
+        jcr:description="News article"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Newsroom Announcement"
+        jcr:title="News article"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default">
         <model
@@ -21,23 +21,21 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
-                    jcr:lastModified="{Date}2020-09-03T17:55:14.695+05:30"
-                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="20">
-                        <articlePublishedDate
+                        maxGeneratedOrder="22">
+                        <_x0031_600798925320
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                             displayedFormat="YYYY-MM-DD HH:mm"
                             emptyText="YYYY-MM-DD HH:mm"
-                            fieldDescription="Select Newsroom Announcement Published Date"
-                            fieldLabel="Newsroom Announcement Published Date"
+                            fieldDescription="Select news article published date"
+                            fieldLabel="News article published date"
                             listOrder="5"
                             metaType="date"
-                            name="articlePublishedDate"
+                            name="publishedDate"
                             renderReadOnly="false"
                             required="on"
                             showEmptyInReadOnly="true"
@@ -47,70 +45,103 @@
                             <granite:data
                                 jcr:primaryType="nt:unstructured"
                                 typeHint="Date"/>
-                        </articlePublishedDate>
-                        <newsroomHeading
+                        </_x0031_600798925320>
+                        <_x0031_600799041746
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            emptyText="Newsroom Announcement Heading"
-                            fieldDescription="Enter Newsroom Announcement Heading"
-                            fieldLabel="Newsroom Announcement Heading"
+                            emptyText="Please enter news article heading"
+                            fieldDescription="Max length is 300"
+                            fieldLabel="News article heading"
                             listOrder="1"
+                            maxlength="300"
+                            metaType="text-single"
+                            name="heading"
+                            renderReadOnly="false"
+                            required="on"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_600800484447
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            emptyText="Enter to field"
+                            fieldDescription="Enter to field"
+                            fieldLabel="To"
+                            listOrder="21"
                             maxlength="255"
                             metaType="text-single"
-                            name="newsroomHeading"
+                            name="to"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-                        <newsroomPagePath
+                        <_x0031_600800668577
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            emptyText="Enter from"
+                            fieldDescription="Enter from"
+                            fieldLabel="From"
+                            listOrder="22"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="from"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_600799183357
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                            emptyText="Select Newsroom Announcement Page Path"
-                            fieldDescription="Select Newsroom Announcement Page Path."
-                            fieldLabel="Newsroom Announcement Page Link"
+                            emptyText="Please select news article page path"
+                            fieldDescription="Please select news article page path"
+                            fieldLabel="News article page path"
                             filter="hierarchy"
                             listOrder="8"
                             metaType="reference"
-                            name="newsroomPagePath"
+                            name="pagePath"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
-                            rootPath="/content/sunlife"
+                            required="on"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-                        <articleImagePath
+                        <_x0031_600799254634
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                            emptyText="Select Thumbnail Image"
-                            fieldDescription="Select Thumbnail Image Path."
-                            fieldLabel="Thumbnail Image"
+                            emptyText="Please select thumbnail image"
+                            fieldDescription="Please select thumbnail image"
+                            fieldLabel="Thumbnail image"
                             filter="hierarchy"
                             listOrder="8"
                             metaType="reference"
                             name="thumbnailImage"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
-                            rootPath="/content/dam/sunlife"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
-						<pinArticle
+                        <_x0031_600799307534
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                            fieldDescription="Pin article"
-                            listOrder="21"
-                            metaType="boolean"
-                            name="pinAnnouncement"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                            emptyOption="{Boolean}true"
+                            fieldDescription="Please specify order for pinning the news article"
+                            fieldLabel="Select the order for pinning the news article"
+                            listOrder="6"
+                            metaType="enumeration"
+                            name="pinArticle"
+                            options="1,2,3,4,5"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            text="Pin article"
-                            valueType="boolean"/>
-                        <newsroomContent
+                            valueType="string">
+                            <datasource
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/admin/components/datasources/optionrenderer"
+                                variant="default"/>
+                        </_x0031_600799307534>
+                        <_x0031_600799421604
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Newsroom Announcement Content"
+                            cfm-element="News article content"
                             default-mime-type="text/html"
-                            fieldDescription="Enter Newsroom Announcement Content"
+                            fieldDescription="Please enter new article content"
                             listOrder="2"
                             metaType="text-multi"
-                            name="newsroomContent"
+                            name="articleContent"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
