@@ -1218,10 +1218,10 @@ function checkCookieExists(){
         var cookieExists = readCookie("pageNotification-"+siteNotificationId);
 
         if(cookieExists){
-        	$(siteNotification).css('display', 'none');
+        	$(siteNotification).css('display', '');
         }
         else {
-            $(siteNotification).css('display', '');
+            $(siteNotification).css('display', 'block');
         }
 
     });
