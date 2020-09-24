@@ -48,28 +48,28 @@ class ArticleRatings extends React.Component {
     //     console.log(error);
     //   },
     // });
-    $.ajax({
-      type: "GET",
-      //url: "/stockticker/getIndices",
-      url:'/bin/ratingcomments',
-      mode:'cors',
-      dataType: "json",
-      crossDomain: true,
-      header:{
-        'Access-Control-Allow-Origin':'*',
-        "Content-Type": "application/json",
-        "Access-Control-Request-Headers":"Content-Type",
-        "Access-Control-Allow-Credentials": "true",
-        "Authorization": "Basic " + btoa("admin" + ":" + "admin")
-      },
-      //data:data1,
-      success: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+    // $.ajax({
+    //   type: "GET",
+    //   //url: "/stockticker/getIndices",
+    //   url:'/bin/ratingcomments',
+    //   mode:'cors',
+    //   dataType: "json",
+    //   crossDomain: true,
+    //   header:{
+    //     'Access-Control-Allow-Origin':'*',
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Request-Headers":"Content-Type",
+    //     "Access-Control-Allow-Credentials": "true",
+    //     "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+    //   },
+    //   //data:data1,
+    //   success: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // });
     this.state.ratingComment = {
       commentCount: 1,
       commentDetails: [
