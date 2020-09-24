@@ -75,7 +75,7 @@
     min-height:auto;
 }
 .app-hide{
-    display:none;
+    display:none !important;
 }
 @media(max-width:$tab-screen-max){
     .breadcrumb-none{
