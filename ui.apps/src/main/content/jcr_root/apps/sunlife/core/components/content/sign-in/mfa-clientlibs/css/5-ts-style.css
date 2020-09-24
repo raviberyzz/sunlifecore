@@ -16,7 +16,7 @@
   padding: 10px;
 }
 
-.sign-in button {
+.sign-in .button {
   padding: 8px;
   font-size: 14px;
 }
@@ -31,7 +31,7 @@
   color: #ffffff;
 }
 
-.sign-in .label-warning {
+.sign-in .sign-in .label-warning {
   color: #c0392b;
 }
 
