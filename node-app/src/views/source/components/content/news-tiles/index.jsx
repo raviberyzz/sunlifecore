@@ -1004,22 +1004,6 @@ class NewsTiles extends React.Component {
     });
   }
 
-  // getData(ajaxurl) { 
-  //   return $.ajax({
-  //     url: ajaxurl,
-  //     type: 'GET',
-  //   });
-  // };
-  
-  // async getNewsList() {
-  //   try {
-  //     const res = await getData('https://cmsdev-auth.ca.sunlife/bin/getNews')
-  //     console.log(res)
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // }
-
   getNewsList(){
     $.ajax({
       type: "GET",
