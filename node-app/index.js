@@ -86,7 +86,7 @@ const loadServices = function() {
     const fileContents = fs.readFileSync('services.properties', 'utf8').split(/\r?\n/);
     fileContents.forEach(function(line){
         const props = line.split('=');
-        app.get(props[0], createProxyMiddleware({target: props[1], changeOrigin: true}));
+        app.use(props[0], createProxyMiddleware({target: props[1], changeOrigin: true}));
     });
 }
 
