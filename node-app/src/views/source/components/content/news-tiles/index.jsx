@@ -1037,14 +1037,16 @@ class NewsTiles extends React.Component {
   }
 
   addSelectedPreference(){
+    let reqData = {
+      "siteName": "source",
+      "userACF2Id": "JG22",
+      "articlefilter": this.state.selectedPreferenceList
+    };
     $.ajax({
       type: "POST",
       url: "/source-services/addPreference",
-      data: {
-        "siteName": "source",
-        "userACF2Id": "JG22",
-        "articlefilter": this.state.selectedPreferenceList
-      },
+      contentType: 'application/json',
+      data: reqData,
       dataType: "json",
       success: (res) => {
         console.log(res);
