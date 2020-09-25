@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ca.sunlife.web.cms.core.servlets;
+package ca.sunlife.web.cms.source.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,8 +25,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ca.sunlife.web.cms.core.constants.NewsConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
+import ca.sunlife.web.cms.source.constants.NewsConstants;
 
 /**
  * The Class NewsListServlet.
@@ -73,7 +73,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 			resource = coreResourceResolver.getResourceResolver().getResource("/content/dam/sunlife/internal/source/en/content-fragments/news-articles"); //Currently hard coded - will remove it once we configure it
 			if (null != resource) {
 				resource.listChildren().forEachRemaining(o -> {
-					log.debug("Fetching news in content fragment parent path [ {} ]", o.getName());
+					log.debug("Fetching news in content fragment parent path [ {} ] ", o.getName());
 					try {
 						JSONObject jsonObject = null;
 						// Data

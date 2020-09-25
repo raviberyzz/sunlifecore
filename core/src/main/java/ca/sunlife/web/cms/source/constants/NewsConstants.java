@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ca.sunlife.web.cms.core.constants;
+package ca.sunlife.web.cms.source.constants;
 
 /**
  * The Class NewsConstants.
@@ -11,12 +11,18 @@ package ca.sunlife.web.cms.core.constants;
  */
 public class NewsConstants {
 	/**
-   * Instantiates a news constants.
+   * Instantiates  news constants.
    */
   private NewsConstants() {
     throw new IllegalStateException("NewsConstants class.");
   }
 
+  /** The Constant TO_CONSTANT. */
+  public static final String TO_CONSTANT = "to";
+  
+  /** The Constant FROM_CONSTANT. */
+  public static final String FROM_CONSTANT = "from";
+  
   /** The Constant PUBLISHED_DATE_CONSTANT. */
   public static final String PUBLISHED_DATE_CONSTANT = "publishedDate";
   
@@ -33,7 +39,7 @@ public class NewsConstants {
   public static final String PIN_ARTICLE_CONSTANT = "pinArticle";
   
   /** The Constant SUMMARY_CONSTANT. */
-  public static final String SUMMARY_CONSTANT = "newsroomSummary";
+  public static final String SUMMARY_CONSTANT = "summary";
   
   /** The Constant TAGS_CONSTANT. */
   public static final String TAGS_CONSTANT = "tags";
