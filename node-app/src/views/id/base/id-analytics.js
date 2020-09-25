@@ -59,7 +59,7 @@ $("#SignIn,#signinbutton").unbind("click");
 $("#SignIn,#signinbutton").click(function(){
     utag.link({
         ev_type: "authenticate",
-        ev_action: "clk",
+        ev_action: "signin",
         ev_title: "sign in",
         ev_data_one: "existing client",
     });
@@ -68,7 +68,7 @@ $("#signIn").click(function() {
     var productDropDownVal = $('#id_sign_in').children('option:selected').text();
     utag.link({
         ev_type: "authenticate",
-        ev_action: "clk",
+        ev_action: "signin",
         ev_title: "sign in",
         ev_data_one: productDropDownVal,
     });
