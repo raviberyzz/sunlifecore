@@ -35,7 +35,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 /**
  * The Class NewsroomAnnouncementModel.
  *
- * @author TCS
+ * @author TCS 
  * @version 1.0
  */
 @ Model (adaptables = { SlingHttpServletRequest.class,
