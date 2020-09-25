@@ -117,7 +117,7 @@ public class SiteConfigServiceImpl implements SiteConfigService {
     map.put("type", com.day.cq.wcm.api.NameConstants.NT_PAGE);
     map.put("property", "jcr:content/config/sling:resourceType");
     map.put("property.value", "sunlife/core/components/config/configuration");
-    map.put("p.limit", "20");
+    map.put("p.limit", "50");
     final Query query = builder.createQuery(PredicateGroup.create(map),
         resolver.adaptTo(Session.class));
     final SearchResult result = query.getResult();
