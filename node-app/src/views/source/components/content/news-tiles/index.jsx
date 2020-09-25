@@ -1039,13 +1039,11 @@ class NewsTiles extends React.Component {
   addSelectedPreference(){
     $.ajax({
       type: "POST",
-      url: "http://dev-cmsservices.ca.sunlife/source-services/addPreference",
+      url: "/source-services/addPreference",
       data: {
         "siteName": "source",
         "userACF2Id": "JG22",
-        "articlefilter": [
-          "ca"
-        ]
+        "articlefilter": this.state.selectedPreferenceList
       },
       dataType: "json",
       success: (res) => {
@@ -1060,7 +1058,7 @@ class NewsTiles extends React.Component {
   retrieveSelectedPreference(){
     $.ajax({
       type: "GET",
-      url: "http://dev-cmsservices.ca.sunlife/source-services/retrievePreference",
+      url: "/source-services/retrievePreference",
       data: {
         "siteName":"source",
         "userACF2Id":"JG22",
