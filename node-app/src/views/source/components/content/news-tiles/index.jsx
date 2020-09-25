@@ -865,9 +865,12 @@ class NewsTiles extends React.Component {
     this.tagSorting = this.tagSorting.bind(this);
     this.getNewsList = this.getNewsList.bind(this);
     this.getPreferenceList = this.getPreferenceList.bind(this);
+    this.addSelectedPreference = this.addSelectedPreference.bind(this);
+    this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
   }
 
   componentDidMount() {
+    this.retrieveSelectedPreference();
     this.getPreferenceList();
     this.getNewsList();
     this.newsTiles();
@@ -904,6 +907,7 @@ class NewsTiles extends React.Component {
   }
 
   filteringNewsList() {
+    this.addSelectedPreference();
     this.state.selectedPreferenceList = [];
     this.state.businessGroupList.forEach(prefer => {
       if (prefer.isChecked) {
@@ -1022,6 +1026,45 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "GET",
       url: "/content/dam/sunlife/internal/source/en/prefenrences.json",
+      dataType: "json",
+      success: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  addSelectedPreference(){
+    $.ajax({
+      type: "POST",
+      url: "http://dev-cmsservices.ca.sunlife/source-services/addPreference",
+      data: {
+        "siteName": "source",
+        "userACF2Id": "JG22",
+        "articlefilter": [
+          "ca"
+        ]
+      },
+      dataType: "json",
+      success: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  retrieveSelectedPreference(){
+    $.ajax({
+      type: "GET",
+      url: "http://dev-cmsservices.ca.sunlife/source-services/retrievePreference",
+      data: {
+        "siteName":"source",
+        "userACF2Id":"JG22",
+      },
       dataType: "json",
       success: (res) => {
         console.log(res);
