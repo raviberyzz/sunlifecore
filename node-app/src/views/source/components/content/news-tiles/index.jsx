@@ -870,9 +870,9 @@ class NewsTiles extends React.Component {
   }
 
   componentDidMount() {
-    this.retrieveSelectedPreference();
-    this.getPreferenceList();
-    this.getNewsList();
+    // this.retrieveSelectedPreference();
+    // this.getPreferenceList();
+    // this.getNewsList();
     this.newsTiles();
     this.tagSorting();
   }
@@ -944,6 +944,7 @@ class NewsTiles extends React.Component {
     });
     this.tagSorting();
     $("#preferenceModal").modal("hide");
+    window.location.reload();
   }
 
   clearAll() {
@@ -1008,12 +1009,35 @@ class NewsTiles extends React.Component {
     });
   }
 
-  getNewsList(){
+  getNewsList() {
     $.ajax({
       type: "GET",
       url: "/bin/getNews",
       dataType: "json",
       success: (res) => {
+        this.state.newsList = res;
+        let pinnedNewsList = [];
+        let preferedNewsList = [];
+        if (this.state.selectedPreferenceList.length > 0) {
+          preferedNewsList = this.state.newsList.filter((news) => {
+            return (!news.pinAnnouncement && news["cq:tags"].some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+          });
+          pinnedNewsList = this.state.newsList.filter((news) => {
+            return (news.pinAnnouncement && news["cq:tags"].some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+          });
+        } else {
+          preferedNewsList = this.state.newsList;
+        }
+        pinnedNewsList.sort(function (a, b) {
+          return (a.pinAnnouncement - b.pinAnnouncement || b.articlePublishedDate - a.articlePublishedDate || a.newsroomHeading.localeCompare(b.newsroomHeading));
+        });
+        preferedNewsList.sort(function (a, b) {
+          return (b.articlePublishedDate - a.articlePublishedDate || a.newsroomHeading.localeCompare(b.newsroomHeading));
+        });
+        this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
+        this.setState({
+          filterNewsList: this.state.filterNewsList,
+        })
         console.log(res);
       },
       error: (err) => {
@@ -1022,12 +1046,35 @@ class NewsTiles extends React.Component {
     });
   }
 
-  getPreferenceList(){
+  getPreferenceList() {
     $.ajax({
       type: "GET",
       url: "/content/dam/sunlife/internal/source/en/prefenrences.json",
       dataType: "json",
       success: (res) => {
+        this.state.businessGroupList = res["business-groups"];
+        this.state.topicsList = res["topics"];
+        this.state.businessGroupList.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.value) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.state.topicsList.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.value) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.setState({
+          businessGroupList: this.state.businessGroupList,
+          topicsList: this.state.topicsList,
+        })
+        this.getNewsList();
         console.log(res);
       },
       error: (err) => {
@@ -1036,17 +1083,18 @@ class NewsTiles extends React.Component {
     });
   }
 
-  addSelectedPreference(){
+  addSelectedPreference() {
     let reqData = {
       "siteName": "source",
       "userACF2Id": "JG22",
       "articlefilter": this.state.selectedPreferenceList
     };
+    console.log(JSON.stringify(reqData));
     $.ajax({
       type: "POST",
       url: "/source-services/addPreference",
       contentType: 'application/json',
-      data: reqData,
+      data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
         console.log(res);
@@ -1057,16 +1105,21 @@ class NewsTiles extends React.Component {
     });
   }
 
-  retrieveSelectedPreference(){
+  retrieveSelectedPreference() {
     $.ajax({
       type: "GET",
       url: "/source-services/retrievePreference",
       data: {
-        "siteName":"source",
-        "userACF2Id":"JG22",
+        "siteName": "source",
+        "userACF2Id": "JG22",
       },
       dataType: "json",
       success: (res) => {
+        this.state.selectedPreferenceList = res;
+        this.getPreferenceList();
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        })
         console.log(res);
       },
       error: (err) => {
@@ -1076,7 +1129,8 @@ class NewsTiles extends React.Component {
   }
 
   newsTiles() {
-    let businessGroupObj = [
+    // this.retrieveSelectedPreference();
+    this.state.businessGroupList = [
       { name: "Canada", value: "sunlife:source/business-groups/canada" },
       { name: "Corporate", value: "sunlife:source/business-groups/corporate" },
       { name: "Enterprise Services", value: "sunlife:source/business-groups/enterprise-services" },
@@ -1090,7 +1144,7 @@ class NewsTiles extends React.Component {
       { name: "U.K.", value: "sunlife:source/business-groups/uk" },
       { name: "Vietnam", value: "sunlife:source/business-groups/vietnam" }
     ];
-    let topicsObj = [
+    this.state.topicsList = [
       { name: "Business continuity", value: "sunlife:source/topics/business-continuity" },
       { name: "Business critical", value: "sunlife:source/topics/business-critical" },
       { name: "Client stories", value: "sunlife:source/topics/client-stories" },
@@ -1113,7 +1167,7 @@ class NewsTiles extends React.Component {
       { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
       { name: "Technology", value: "sunlife:source/topics/technology" }
     ];
-    businessGroupObj.forEach((data) => {
+    this.state.businessGroupList.forEach((data) => {
       data["isChecked"] = false;
       this.state.selectedPreferenceList.forEach(prefer => {
         if (prefer === data.value) {
@@ -1121,7 +1175,7 @@ class NewsTiles extends React.Component {
         }
       })
     });
-    topicsObj.forEach((data) => {
+    this.state.topicsList.forEach((data) => {
       data["isChecked"] = false;
       this.state.selectedPreferenceList.forEach(prefer => {
         if (prefer === data.value) {
@@ -1150,8 +1204,8 @@ class NewsTiles extends React.Component {
     this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
     this.setState({
       filterNewsList: this.state.filterNewsList,
-      businessGroupList: businessGroupObj,
-      topicsList: topicsObj,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList,
     })
   }
 
@@ -1175,10 +1229,10 @@ class NewsTiles extends React.Component {
                         }
                       </div>
                       <span class="pull-right">
-                      {this.state.selectedPreferenceTags.length > 0 &&
-                        <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
-                      }
-                      <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
+                        {this.state.selectedPreferenceTags.length > 0 &&
+                          <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
+                        }
+                        <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                       </span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
