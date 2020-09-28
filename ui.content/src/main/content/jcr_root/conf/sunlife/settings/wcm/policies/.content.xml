@@ -26,7 +26,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife CA Content"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/advisor-detail/apps/sunlife/ca/components/content/article,/apps/sunlife/ca/components/content/articleList,/apps/sunlife/ca/components/content/breadcrumb,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/embed,/apps/sunlife/ca/components/content/footer-copyright,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/full-header,/apps/sunlife/ca/components/content/html-component,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/life-moments,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/mega-menu-2,/apps/sunlife/ca/components/content/news-details,/apps/sunlife/ca/components/content/news-list,/apps/sunlife/ca/components/content/provider-profile,/apps/sunlife/ca/components/content/region-language-menu,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/site-map,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title,/apps/sunlife/ca/components/content/titlebar]">
+                        components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/advisor-detail/apps/sunlife/ca/components/content/article,/apps/sunlife/ca/components/content/articleList,/apps/sunlife/ca/components/content/breadcrumb,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/embed,/apps/sunlife/ca/components/content/footer-copyright,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/full-header,/apps/sunlife/ca/components/content/html-component,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/life-moments,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/mega-menu-2,/apps/sunlife/ca/components/content/news-details,/apps/sunlife/ca/components/content/news-list,/apps/sunlife/ca/components/content/provider-profile,/apps/sunlife/ca/components/content/region-language-menu,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/site-map,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title,/apps/sunlife/ca/components/content/titlebar,/apps/sunlife/ca/components/content/sign-in]">]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_ca_exp>
                     <policy_slgi_home
@@ -34,7 +34,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="SLGI Home"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/sunlife/slgi/components/content/accordion,/apps/sunlife/slgi/components/content/article,/apps/sunlife/slgi/components/content/articleList,/apps/sunlife/slgi/components/content/article,/apps/sunlife/slgi/components/content/button,/apps/sunlife/slgi/components/content/container,/apps/sunlife/slgi/components/content/experiencefragment,/apps/sunlife/slgi/components/form/button,/apps/sunlife/slgi/components/form/container,/apps/sunlife/slgi/components/form/dropdown,/apps/sunlife/slgi/components/form/hidden,/apps/sunlife/slgi/components/form/options,/apps/sunlife/slgi/components/form/text,/apps/sunlife/slgi/components/content/icon-text,/apps/sunlife/slgi/components/content/image,/apps/sunlife/slgi/components/content/layout-container,/apps/sunlife/slgi/components/content/left-navigation,/apps/sunlife/slgi/components/content/link-list,/apps/sunlife/slgi/components/content/life-moments,/apps/sunlife/slgi/components/content/separator,/apps/sunlife/slgi/components/content/table,/apps/sunlife/slgi/components/content/tabs,/apps/sunlife/slgi/components/content/teaser,/apps/sunlife/slgi/components/content/text]">
+                        components="[/apps/sunlife/slgi/components/content/accordion,/apps/sunlife/slgi/components/content/article,/apps/sunlife/slgi/components/content/articleList,/apps/sunlife/slgi/components/content/article,/apps/sunlife/slgi/components/content/button,/apps/sunlife/slgi/components/content/container,/apps/sunlife/slgi/components/content/experiencefragment,/apps/sunlife/slgi/components/form/button,/apps/sunlife/slgi/components/form/container,/apps/sunlife/slgi/components/form/dropdown,/apps/sunlife/slgi/components/form/hidden,/apps/sunlife/slgi/components/form/options,/apps/sunlife/slgi/components/form/text,/apps/sunlife/slgi/components/content/icon-text,/apps/sunlife/slgi/components/content/image,/apps/sunlife/slgi/components/content/layout-container,/apps/sunlife/slgi/components/content/left-navigation,/apps/sunlife/slgi/components/content/link-list,/apps/sunlife/slgi/components/content/life-moments,/apps/sunlife/slgi/components/content/separator,/apps/sunlife/slgi/components/content/table,/apps/sunlife/slgi/components/content/tabs,/apps/sunlife/slgi/components/content/teaser,/apps/sunlife/slgi/components/content/text,/apps/sunlife/slgi/components/content/sign-in]">]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_slgi_home>
                     <policy_slgi_content
@@ -90,7 +90,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife SLCM Home Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/sunlife/slcm/components/content/accordion,/apps/sunlife/slcm/components/content/button,/apps/sunlife/slcm/components/content/container,/apps/sunlife/slcm/components/content/experiencefragment,/apps/sunlife/slcm/components/form/button,/apps/sunlife/slcm/components/form/container,/apps/sunlife/slcm/components/form/dropdown,/apps/sunlife/slcm/components/form/hidden,/apps/sunlife/slcm/components/form/options,/apps/sunlife/slcm/components/form/text,/apps/sunlife/slcm/components/content/icon-text,/apps/sunlife/slcm/components/content/image,/apps/sunlife/slcm/components/content/layout-container,/apps/sunlife/slcm/components/content/left-navigation,/apps/sunlife/slcm/components/content/link-list,/apps/sunlife/slcm/components/content/life-moments,/apps/sunlife/slcm/components/content/separator,/apps/sunlife/slcm/components/content/table,/apps/sunlife/slcm/components/content/tabs,/apps/sunlife/slcm/components/content/teaser,/apps/sunlife/slcm/components/content/text,/apps/sunlife/slcm/components/content/html-component]">
+                        components="[/apps/sunlife/slcm/components/content/accordion,/apps/sunlife/slcm/components/content/button,/apps/sunlife/slcm/components/content/container,/apps/sunlife/slcm/components/content/experiencefragment,/apps/sunlife/slcm/components/form/button,/apps/sunlife/slcm/components/form/container,/apps/sunlife/slcm/components/form/dropdown,/apps/sunlife/slcm/components/form/hidden,/apps/sunlife/slcm/components/form/options,/apps/sunlife/slcm/components/form/text,/apps/sunlife/slcm/components/content/icon-text,/apps/sunlife/slcm/components/content/image,/apps/sunlife/slcm/components/content/layout-container,/apps/sunlife/slcm/components/content/left-navigation,/apps/sunlife/slcm/components/content/link-list,/apps/sunlife/slcm/components/content/life-moments,/apps/sunlife/slcm/components/content/separator,/apps/sunlife/slcm/components/content/table,/apps/sunlife/slcm/components/content/tabs,/apps/sunlife/slcm/components/content/teaser,/apps/sunlife/slcm/components/content/text,/apps/sunlife/slcm/components/content/html-component,/apps/sunlife/slcm/components/content/embed,/apps/sunlife/slcm/components/content/sign-in]">]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_slcm_home>
                     <policy_slcm_content
@@ -3975,6 +3975,31 @@
                             </cq:styleGroups>
                         </policy_fullHeader>
                     </full-header>
+					<sign-in jcr:primaryType="nt:unstructured">
+                        <policy_signin
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Sign in component policy"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                            <cq:styleGroups jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleGroupLabel="Sign in type"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleId="1594797903428"
+                                            cq:styleLabel="SLF default"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="cool-blue"
+                                            cq:styleId="1594797946814"
+                                            cq:styleLabel="Neutral"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item0>
+                            </cq:styleGroups>
+                        </policy_signin>
+                    </sign-in>
                 </content>
                 <form jcr:primaryType="nt:unstructured">
                     <container jcr:primaryType="nt:unstructured">
