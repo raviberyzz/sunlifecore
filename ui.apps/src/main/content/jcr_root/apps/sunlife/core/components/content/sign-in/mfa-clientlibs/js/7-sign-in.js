@@ -14,9 +14,11 @@ function onSignInClick() {
 
     
 
-    const clientContext = getClientContext();
-    const additionalParams = { user: clientId };
-    const journeyName = "Consumer_SignIn_FetchPartyID";
+  var clientContext = getClientContext();
+  var additionalParams = {
+    user: clientId
+  };
+    var journeyName = "Consumer_SignIn_FetchPartyID"; 
     
     // add the password to the client context
     clientContext.password = password;
@@ -26,11 +28,11 @@ function onSignInClick() {
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
     $("#mfa_signin_modal").modal("show");
-    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext)
-        .then((results) => {
+     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+        
             journeyEnded(clientContext);
 
-            const token = results.getToken();
+           var token = results.getToken();
             if (token) {
                 updateSessionToken(token);
                // $("#mfa_signin_modal").modal("show");
@@ -38,9 +40,9 @@ function onSignInClick() {
                
             }
         })
-        .catch((error) => {
+        .catch(function(error) {
             journeyEnded(clientContext);
-            console.error(`Authenticate Error: ${error}`);           
+            console.error("Authenticate Error: ".concat(error));       
         });
   
 }

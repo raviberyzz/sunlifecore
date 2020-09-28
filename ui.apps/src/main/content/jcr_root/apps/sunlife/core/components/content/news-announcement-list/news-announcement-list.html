@@ -29,7 +29,7 @@
                 </ol>
                 <div data-sly-repeat.yearsTab="${list.yearsToShow}" role="tabpanel" tabindex="0" class="${yearsTab == list.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" data-cmp-hook-tabs="tabpanel">
                     <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="${yearsTab == list.activeYear ? 'true' : 'false'}" tabindex="0">
-                        <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsTab}/">${yearsTab}</a>
+                       <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsTab}/"><span>${yearsTab}</span></a>
                     </div>
                     <sly data-sly-test="${yearsTab == list.activeYear}">
                         <div class="option-box no-margin news-option-table">
