@@ -654,15 +654,20 @@ a.skip-main:focus, a.skip-main:active {
 /*For news-announcement-list manual*/
 
 .announcement-list-container {
-    .tabs-wrapper .tab-accordian-heading[aria-expanded="true"]:before {
-        content: '' !important;
-        padding-right: 7px;
-        padding-left: 0;
-    }
-    .tab-accordian-heading[aria-expanded="true"] a span:before {
-        content: "\f0d7";
-        font-family: FontAwesome;
-        padding-right: 10px;
+    .tabs-wrapper {
+        .tab-accordian-heading[aria-expanded="true"]:before , .tab-accordian-heading[aria-expanded="false"]:before
+        {
+            content: '' !important;
+            padding-right: 7px;
+            padding-left: 0;
+        }
+    } 
+    .tab-accordian-heading[aria-expanded="true"] , .tab-accordian-heading[aria-expanded="false"] {
+        a span:before {
+            content: "\f0d7";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
     }
 }
 
