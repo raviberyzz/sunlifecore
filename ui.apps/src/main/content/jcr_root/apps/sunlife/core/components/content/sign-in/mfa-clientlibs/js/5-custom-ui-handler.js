@@ -24,7 +24,7 @@ CustomUIHandler.prototype.createPasswordAuthSession = function(title, username) 
 }
     
 CustomUIHandler.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         const shouldStoreJSON = clientContext["shouldStoreJSON"];
         if (shouldStoreJSON) {
             clientContext['json_data'] = jsonData;
@@ -57,7 +57,7 @@ UIHandlerForStepUp.prototype.createOtpAuthSession = function(title, username, po
 }
 
 UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         if (jsonData.SMSESSION) {
             console.log(jsonData.SMSESSION);
             document.cookie="SMSESSION"+"="+jsonData.SMSESSION + ";domain=.sunnet.sunlife.com;path=/";
@@ -71,21 +71,20 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
     
 
 UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, buttonText, failureData, actionContext, clientContext) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
     const failType = (failureData && failureData.reason && failureData.reason.type) ? failureData.reason.type : null;
     const authMethod = (failureData && failureData.source && failureData.source.method) ? failureData.source.method : null;
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
                 alert("User is locked");
-                console.log(clientContext.uiContainer);
-               // $.get("transmit/signin/account-locked-out.html");
+                
+               
                 $.get("/content/dam/sunlife/external/signin/transmit/html/account-locked-out.html", function (data) {
                     $(clientContext.uiContainer).html(data);
               });
             } else {
-                alert("User is locked. Come back later");
-                console.log(clientContext.uiContainer);
-              // $.get("mfa_singin/signin/come-back-later.html");
+               
+             
                $.get("/content/dam/sunlife/external/signin/transmit/html/come-back-later.html", function (data) {
                 $(clientContext.uiContainer).html(data);
           });
