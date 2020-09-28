@@ -54,6 +54,9 @@
         }
         .dynamic-news-tile{
             padding: 0;
+            .clickable-tile {
+                cursor: pointer;
+            }
             .aggregate-tile{
                 background: $medium-yellow-background;
                 height: 290px;
