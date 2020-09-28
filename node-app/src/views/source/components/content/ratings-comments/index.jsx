@@ -15,17 +15,60 @@ class ArticleRatings extends React.Component {
     //this.submitRating();
   }
   getRatingComment() {
+    // let headers = new Headers();
+
+    // headers.append("Content-Type", "application/json");
+    // headers.append("Accept", "application/json");
+    // headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    // headers.append("Access-Control-Allow-Origin", "*");
+    // headers.append("Access-Control-Allow-Credentials", "true");
+    // headers.append("GET", "POST", "OPTIONS");
+    // headers.append("Authorization", "Basic " + btoa("admin" + ":" + "admin"));
+    let articlePath = "http://159.208.176.139:4502/bin/ratingcomments";
+    let data1 = {
+      id: 1,
+      articlePath: "en/ca/home",
+    };
     // $.ajax({
     //   type: "GET",
-    //   url: hb_base_url + "consumer",
-    //   contentType: "application/json",
+    //   url: '/stockticker/getIndice',
     //   dataType: "json",
+    //   crossDomain: true,
+    //   headers: {
+    //     // "Content-Type": "application/json",
+    //     // "Access-Control-Request-Headers":"Content-Type",
+    //     // "Access-Control-Allow-Credentials": "true",
+    //     // "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+    //   },
+    //   data: data1,
     //   success: function (response) {
     //     console.log(response);
     //   },
-    //   error: function (response) {
-    //     console.log(response);
+    //   error: function (error) {
+    //     console.log(error);
     //   },
+    // });
+    // $.ajax({
+    //   type: "GET",
+    //   //url: "/stockticker/getIndices",
+    //   url:'/bin/ratingcomments',
+    //   mode:'cors',
+    //   dataType: "json",
+    //   crossDomain: true,
+    //   header:{
+    //     'Access-Control-Allow-Origin':'*',
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Request-Headers":"Content-Type",
+    //     "Access-Control-Allow-Credentials": "true",
+    //     "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+    //   },
+    //   //data:data1,
+    //   success: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
     // });
     this.state.ratingComment = {
       commentCount: 1,

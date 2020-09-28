@@ -12,6 +12,7 @@ import javax.jcr.Value;
 
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import ca.sunlife.web.cms.core.constants.UserInfoConstants;
+import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
@@ -32,6 +34,9 @@ public class UserInfoTest {
 
 	@ Mock
 	private SlingHttpServletRequest request;
+	
+	@ Mock
+	private CoreResourceResolver coreResourceResolver;
 	
 	@ Mock
 	private ResourceResolver resourceResolver;
@@ -54,10 +59,10 @@ public class UserInfoTest {
 	}
 	
 	@ Test
-	void testInit() throws RepositoryException {
+	void testInit() throws RepositoryException, LoginException {
 		Value[] vals = new Value[] {value1};
 		when(value1.getString()).thenReturn("test");
-    when(request.getResourceResolver()).thenReturn(resourceResolver);
+    when(coreResourceResolver.getResourceResolver()).thenReturn(resourceResolver);
     when(resourceResolver.adaptTo(User.class)).thenReturn(user);
 		when(user.hasProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)).thenReturn(true);
 		when(user.getProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)).thenReturn(vals);

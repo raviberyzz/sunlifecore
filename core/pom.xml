@@ -213,7 +213,7 @@
                             *</Import-Package>
             <Bundle-SymbolicName>sunlife.core</Bundle-SymbolicName>
             <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler;inline=true</Embed-Dependency>
-            <Sling-Model-Packages>ca.sunlife.web.cms.core</Sling-Model-Packages>
+            <Sling-Model-Packages>ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models</Sling-Model-Packages>
             <Sling-Initial-Content>SLING-INF/content;path:=/libs/system/config;overwrite:=true;</Sling-Initial-Content>
             <_dsannotations>*</_dsannotations>
             <_metatypeannotations>*</_metatypeannotations>

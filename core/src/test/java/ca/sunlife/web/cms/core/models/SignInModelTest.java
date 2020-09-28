@@ -222,6 +222,16 @@ class SignInModelTest {
 		sm.setTarget("/mbrportal/req/secure/pphp/personalizedWelcome");
 		assertTrue(sm.getTarget() == "/mbrportal/req/secure/pphp/personalizedWelcome");
 	}
+	
+	/**
+	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setIsTargetPathAbsolute(java.lang.String)}.
+	 */
+	@Test
+	void testSetIsTargetPathAbsolute() {
+		sm.setIsTargetPathAbsolute("false");
+		assertTrue(sm.getIsTargetPathAbsolute() == "false");
+	}
 
 	/**
 	 * Test method for

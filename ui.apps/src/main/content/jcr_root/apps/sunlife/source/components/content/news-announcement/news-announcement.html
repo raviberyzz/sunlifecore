@@ -1,27 +1,38 @@
-<sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
-<sly data-sly-test.notEmpty="${newsroomAnnouncement.fragmentPath}">
+<sly data-sly-use.newsArticle="ca.sunlife.web.cms.source.models.NewsArticleModel"></sly>
+<sly data-sly-test.notEmpty="${newsArticle.fragmentPath}">
    <div class="news-article-wrapper">
       <div>
-         <div data-sly-test="${newsroomAnnouncement.checkboxDisplayTags}" class="article-tags">
-            <sly data-sly-list="${newsroomAnnouncement.getTagList}">
+         <div data-sly-test="${newsArticle.checkboxDisplayTags && newsArticle.tagList}" class="article-tags">
+            <sly data-sly-list="${newsArticle.tagList}">
                <span class="tag">${item}</span>
             </sly>
          </div>
-         <div data-sly-test="${!newsroomAnnouncement.checkboxHideDate}" class="date">
-            ${newsroomAnnouncement.articleData.articlePublishedDate}
+         <div data-sly-test="${!newsArticle.checkboxHideDate}" class="date">
+            ${newsArticle.articleData.publishedDate}
          </div>
-         <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
-            ${newsroomAnnouncement.articleData.newsroomHeading}
+         <h3 data-sly-test="${newsArticle.articleData.heading}">
+            ${newsArticle.articleData.heading}
          </h3>
       </div>
+      <div data-sly-test="${newsArticle.articleData.to || newsArticle.articleData.from}" class="mail-wrapper">
+         <p data-sly-test="${newsArticle.articleData.to}"> <strong>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  ${newsArticle.articleData.to}</p>
+         <p data-sly-test="${newsArticle.articleData.from}"> <strong>FROM:&nbsp;</strong>  ${newsArticle.articleData.from}</p>
+         <p class="border-bottom"></p>
+      </div>
       <section class="article-body">
-         ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
+         ${newsArticle.articleData.articleContent  @context='html'}
       </section>
-      <sly data-sly-test="${newsroomAnnouncement.checkboxDisplayRating}">
+      <sly data-sly-test="${newsArticle.checkboxDisplayRating}">
          <!--/* Rating  Goes here */-->
+         <div data-component-render="react" data-component-render-name="article-ratings" data-component-render-props=''>
+         	<sly data-sly-test="${wcmmode.edit}">Article ratings updated</sly>
+         </div>
       </sly>
-      <sly data-sly-test="${newsroomAnnouncement.checkboxDisplayComments}">
+      <sly data-sly-test="${newsArticle.checkboxDisplayComments}">
          <!--/* Comments Goes here */-->
+         <div data-component-render="react" data-component-render-name="article-comments" data-component-render-props=''>
+         	<sly data-sly-test="${wcmmode.edit}">Article comments updated</sly>
+         </div>
       </sly>
    </div>
 </sly>

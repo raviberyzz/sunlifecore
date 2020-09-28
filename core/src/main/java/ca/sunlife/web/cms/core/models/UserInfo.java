@@ -8,16 +8,16 @@ import javax.jcr.RepositoryException;
 
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ca.sunlife.web.cms.core.constants.UserInfoConstants;
+import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 
 /**
  * The Class UserInfo.
@@ -31,10 +31,9 @@ public class UserInfo {
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
 
-	/** The sling request. */
-	@ Self
-	private SlingHttpServletRequest request;
-
+	/** The core resource resolver. */
+	private CoreResourceResolver coreResourceResolver;
+	
 	/** The user info object. */
 	private String profile;
 
@@ -59,12 +58,12 @@ public class UserInfo {
 
 	/**
 	 * Inits the user info sling model.
+	 * @throws LoginException 
 	 */
 	@ PostConstruct
-	public void init() {
+	public void init() throws LoginException {
 		LOG.debug("Entry :: UserInfo :: init");
-		ResourceResolver resolver = request.getResourceResolver();
-		User user = resolver.adaptTo(User.class);
+		User user = null != coreResourceResolver ? coreResourceResolver.getResourceResolver().adaptTo(User.class) : null;
 		if (null != user) {
 			try {
 				LOG.debug("Reading details for user: {}", user);
