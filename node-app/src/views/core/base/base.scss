@@ -650,3 +650,20 @@ a.skip-main:focus, a.skip-main:active {
     }
 }
 /* Sunlife find an advisor css ends*/
+
+/*For news-announcement-list manual*/
+
+.announcement-list-container {
+    .tabs-wrapper .tab-accordian-heading[aria-expanded="true"]:before {
+        content: '' !important;
+        padding-right: 7px;
+        padding-left: 0;
+    }
+    .tab-accordian-heading[aria-expanded="true"] a span:before {
+        content: "\f0d7";
+        font-family: FontAwesome;
+        padding-right: 10px;
+    }
+}
+
+
