@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    function resetRating(){;
+    function resetRating(){
         var ratingLevel=Math.round($('.star-rating .rating-value').val());
         $('.star-rating .fa-star').removeClass('yellow');
         $('.star-rating .fa-star').removeClass('grey');
@@ -10,16 +10,19 @@ $(document).ready(function () {
         ratingLevel--;
         });
     }
-    resetRating();
+    setTimeout(resetRating,500);
     //hover function
-    $('.star-rating .fa-star').hover(function(){
-        $('.star-rating .fa-star').removeClass('yellow');
-        $('.star-rating .fa-star').removeClass('grey');
-        $(this).addClass('yellow');
-        $(this).prevAll().addClass('yellow');
-        $(this).nextAll().addClass('grey');
-    });
-    $('.star-rating').mouseleave(function(){
-        resetRating();
-    });
+    function hov(){
+        $('.star-rating .fa-star').hover(function(){
+            $('.star-rating .fa-star').removeClass('yellow');
+            $('.star-rating .fa-star').removeClass('grey');
+            $(this).addClass('yellow');
+            $(this).prevAll().addClass('yellow');
+            $(this).nextAll().addClass('grey');
+        });
+        $('.star-rating').mouseleave(function(){
+            resetRating();
+        });
+    }
+    setTimeout(hov,800);
 });
