@@ -110,6 +110,9 @@ public class LeftNavigationModal extends NavigationImpl {
 
   /** The structure start. */
   private int structureStart;
+  
+  /** The Skip navigation root */
+  private boolean skipNavigationRoot;
 
   /** The updated list. */
   private List <NavigationItem> updatedList = new ArrayList <>();
@@ -148,9 +151,31 @@ public class LeftNavigationModal extends NavigationImpl {
     final int pageDepth = currentPage.getDepth();
     final int m = pageDepth - 6;
     final Page page = currentPage.getParent(m);
-    structureDepth = 2;
-    navigationRootPage = page.getPath();
-    structureStart = 0;
+    
+    structureDepth = properties.get(PN_STRUCTURE_DEPTH, currentStyle.get(PN_STRUCTURE_DEPTH, -1));
+    boolean collectAllPages = properties.get(PN_COLLECT_ALL_PAGES, currentStyle.get(PN_COLLECT_ALL_PAGES, true));
+    if (collectAllPages) {
+        structureDepth = -1;
+    }
+    navigationRootPage = properties.get(PN_NAVIGATION_ROOT, String.class);
+    if (currentStyle.containsKey(PN_STRUCTURE_START) || properties.containsKey(PN_STRUCTURE_START)) {
+        //workaround to maintain the content of Navigation component of users in case they update to the current i.e. the `structureStart` version.
+        structureStart = properties.get(PN_STRUCTURE_START, currentStyle.get(PN_STRUCTURE_START, 1));
+    } else {
+        skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT, currentStyle.get(PN_SKIP_NAVIGATION_ROOT, true));
+        if (skipNavigationRoot) {
+            structureStart = 1;
+        } else {
+            structureStart = 0;
+        }
+    }
+    
+    if(!(navigationRootPage != null && navigationRootPage.length() > 0) ) {
+  	    structureDepth = 2;
+	    navigationRootPage = page.getPath();
+	    structureStart = 0;
+    }
+    
     updatedList = processNavigationList(getItems());
 
   }
