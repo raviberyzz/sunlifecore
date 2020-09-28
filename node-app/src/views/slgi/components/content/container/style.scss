@@ -74,6 +74,9 @@
   border: 1px solid $light-grey-separator-color;
   .cta-content-icon-wrapper {
     height: 100%;
+    > ul{
+      width:100%;
+    }
     .icon-style {
       background-color: $cinnamon-orange;
       background-image: none;

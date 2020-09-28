@@ -293,7 +293,7 @@ public class ProductCardModel {
    * Inits the.
    */
   @ PostConstruct
-  private void init() {
+  public void init() {
     if (StringUtils.isEmpty(getTopc())) {
       return;
     }
@@ -371,8 +371,8 @@ public class ProductCardModel {
         return;
       }
       final String [ ] articleTags = tagNames;
-      LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(),
-          currentPage.getParent().getPath());
+      /*LOG.debug("Current page is {} and parent page is {}", currentPage.getPath(),
+          currentPage.getParent().getPath());*/
       if (articleTags != null) {
     	  switch (articleTags.length) {
           case 0 :
@@ -453,15 +453,16 @@ public class ProductCardModel {
     final PredicateGroup predicateGroup = PredicateGroup.create(queryParameterMap);
     LOG.debug("Query Params : {} : predicateGroup {}", queryParameterMap, predicateGroup);
     final Query query = queryBuilder.createQuery(predicateGroup, session);
-
+    ResourceResolver leakingResourceResolver = null;
+    try {
     final SearchResult searchResult = query.getResult();
 
     LOG.debug("Query statement: '{}' : total matches: {}", searchResult.getQueryStatement(),
         searchResult.getTotalMatches());
     // Query builder has a leaking resource resolver, so the following work around
     // is required.
-    ResourceResolver leakingResourceResolver = null;
-    try {
+    
+    
       // Iterate over the hits if you need special information
       final Iterator <Resource> resourceIterator = searchResult.getResources();
       while (resourceIterator.hasNext()) {
@@ -476,7 +477,9 @@ public class ProductCardModel {
 
         items.add(contentFragmentModel);
       }
-    } finally {
+    }catch(Exception e) {
+    	LOG.error(" Exception in ProductCard init {}", e);
+    }finally {    
       if (null != leakingResourceResolver) {
         // Always close the leaking query builder resource resolver
         leakingResourceResolver.close();

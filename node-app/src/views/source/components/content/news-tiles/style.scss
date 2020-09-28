@@ -54,6 +54,9 @@
         }
         .dynamic-news-tile{
             padding: 0;
+            .clickable-tile {
+                cursor: pointer;
+            }
             .aggregate-tile{
                 background: $medium-yellow-background;
                 height: 290px;
@@ -221,10 +224,10 @@
             }
             .preference-modal-body {
                 ul.topic-col {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    grid-template-rows: repeat(12, 1fr);
-                    grid-auto-flow: column;
+                    height: 400px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
                   }
             }
         }

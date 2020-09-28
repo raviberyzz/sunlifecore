@@ -58,4 +58,19 @@ public class LeftNavItemImplTest {
 		itemImpl = new LeftNavItemImpl(page, true, request, 1, navigationItems, "nav");
 		assertNotNull(itemImpl.getPath());
 	}
+	
+	@Test
+	void testgetTitle() {
+		when(page.getNavigationTitle()).thenReturn("title1");
+		when(page.getPageTitle()).thenReturn("title2");
+		when(page.getTitle()).thenReturn("title3");
+		when(page.getName()).thenReturn("title4");
+		when(page.getPageManager()).thenReturn(pageManager);
+		when(page.getProperties()).thenReturn(valueMap);
+		when(valueMap.get(PageImpl.PN_REDIRECT_TARGET, String.class)).thenReturn("Titlee");
+		when(pageManager.getPage("Titlee")).thenReturn(page);
+		when(page.getPath()).thenReturn("homepage");
+		itemImpl = new LeftNavItemImpl(page, true, request, 1, navigationItems, "nav");
+		itemImpl.getTitle();
+	}
 }

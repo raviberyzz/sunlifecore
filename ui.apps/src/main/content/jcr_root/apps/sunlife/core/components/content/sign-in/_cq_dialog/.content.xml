@@ -194,6 +194,14 @@
                                                         value="SLGIADV | /signin/redirect.wca"/>
                                                 </items>
                                             </domain>
+                                            <isTargetPathAbsolute
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check to make Target path an absolute URL"
+                                                name="./isTargetPathAbsolute"
+                                                text="Make Target path an absolute URL"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <language
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/select"
