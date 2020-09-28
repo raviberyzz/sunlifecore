@@ -25,7 +25,7 @@ $(document).ready(function () {
         let pageName= utag_data.page_breadcrumb.split("/");
         let productTitle = pageName[pageName.length - 1].toLowerCase();
         // .com home page explore product and service section drodwon go button starts here 
-        if(productTitle=='english' || productTitle=='french' || productTitle=='home'){
+        if(productTitle=='english' || productTitle=='french' || productTitle=='home' || productTitle=='global corporate website'){
             $("#select-location-cta-form .button button").click(function(){
                 let country=$(this).parent().siblings('.experiencefragment').find('select option:selected').text();
                 utag.link({

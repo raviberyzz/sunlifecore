@@ -191,7 +191,7 @@ class ArticleComments extends React.Component {
       dataType: "json",
       data: data1,
       success: (res) => {
-        console.log(res.commentDetails);
+        //console.log(res.commentDetails);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
