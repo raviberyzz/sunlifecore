@@ -26,44 +26,17 @@ class ArticleRatings extends React.Component {
     // headers.append("Authorization", "Basic " + btoa("admin" + ":" + "admin"));
     let articlePath = "http://159.208.176.139:4502/bin/ratingcomments";
     let data1 = {
-      id: 1,
-      articlePath: "en/ca/home",
+      articlePath: "/en/ca/home",
+      siteName:'ca',
+      userACF2Id:'yq12'
     };
     // $.ajax({
-    //   type: "GET",
-    //   url: '/stockticker/getIndice',
-    //   dataType: "json",
-    //   crossDomain: true,
-    //   headers: {
-    //     // "Content-Type": "application/json",
-    //     // "Access-Control-Request-Headers":"Content-Type",
-    //     // "Access-Control-Allow-Credentials": "true",
-    //     // "Authorization": "Basic " + btoa("admin" + ":" + "admin")
-    //   },
-    //   data: data1,
-    //   success: function (response) {
-    //     console.log(response);
-    //   },
-    //   error: function (error) {
-    //     console.log(error);
-    //   },
-    // });
-    // $.ajax({
-    //   type: "GET",
+    //   type: 'GET',
     //   //url: "/stockticker/getIndices",
-    //   url:'/bin/ratingcomments',
-    //   mode:'cors',
+    //   url:'/source-services/selectAll',
     //   dataType: "json",
-    //   crossDomain: true,
-    //   header:{
-    //     'Access-Control-Allow-Origin':'*',
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Request-Headers":"Content-Type",
-    //     "Access-Control-Allow-Credentials": "true",
-    //     "Authorization": "Basic " + btoa("admin" + ":" + "admin")
-    //   },
-    //   //data:data1,
-    //   success: (res) => {
+    //   data:data1,
+    //   success: (res) => { 
     //     console.log(res);
     //   },
     //   error: (err) => {
