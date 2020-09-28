@@ -3,78 +3,79 @@ class ArticleRatings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ratingComment: {},
+      commentCount: 0,
+      commentDetails: [],
+      ratingAverage: 0,
+      ratingCount: 0,
+      ratingExist: false,
+      artcilePath:"/en/ca/home",
+      siteName: "ca",
+      userACF2Id: "yq12",
+      apiCall:{}
     };
     this.getRatingComment = this.getRatingComment.bind(this);
-    this.setRating = this.setRating.bind(this);
     this.submitRating = this.submitRating.bind(this);
     this.getRatingComment();
-    this.setRating();
   }
   componentDidMount() {
     //this.submitRating();
   }
   getRatingComment() {
-    // let headers = new Headers();
-
-    // headers.append("Content-Type", "application/json");
-    // headers.append("Accept", "application/json");
-    // headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    // headers.append("Access-Control-Allow-Origin", "*");
-    // headers.append("Access-Control-Allow-Credentials", "true");
-    // headers.append("GET", "POST", "OPTIONS");
-    // headers.append("Authorization", "Basic " + btoa("admin" + ":" + "admin"));
-    let articlePath = "http://159.208.176.139:4502/bin/ratingcomments";
     let data1 = {
-      articlePath: "/en/ca/home",
-      siteName:'ca',
-      userACF2Id:'yq12'
+      articlePath: this.state.artcilePath,
+      siteName: this.state.siteName,
+      userACF2Id: this.state.userACF2Id,
     };
-    // $.ajax({
-    //   type: 'GET',
-    //   //url: "/stockticker/getIndices",
-    //   url:'/source-services/selectAll',
-    //   dataType: "json",
-    //   data:data1,
-    //   success: (res) => { 
-    //     console.log(res);
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   }
-    // });
-    this.state.ratingComment = {
-      commentCount: 1,
-      commentDetails: [
-        {
-          commentId: 2,
-          commentText: "string",
-          email: "string",
-          updatedDate: "2020-08-17T14:14:16.018Z",
-          userName: "string",
-        },
-      ],
-      ratingAverage: 3,
-      ratingCount: 1,
-      ratingExist: "true",
-    };
-  }
-  setRating() {
-    this.state.noOfRatings = this.state.ratingComment.ratingCount;
-    this.state.aveRatings = this.state.ratingComment.ratingAverage;
+    $.ajax({
+      type: "GET",
+      url: "/source-services/selectAll",
+      dataType: "json",
+      data: data1,
+      success: (res) => {
+        this.setState({
+          commentCount: res.commentCount,
+          commentDetails: res.commentDetails,
+          ratingAverage: res.ratingAverage,
+          ratingCount: res.ratingCount,
+          ratingExist: res.ratingExist,
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
   submitRating(i, event) {
-    this.state.noOfRatings = this.state.noOfRatings + 1;
-    this.state.aveRatings = Math.round(
-      (this.state.aveRatings + i) / this.state.noOfRatings
-    );
-    $(".rating-value").val(this.state.aveRatings);
-    $(".no-of-rating .val").text(this.state.noOfRatings);
+    let data1={
+        articlePath: this.state.artcilePath,
+        siteName: this.state.siteName,
+        userACF2Id: this.state.userACF2Id,
+        rating: i
+    }
+    $.ajax({
+      type: "POST",
+      url: "/source-services/addRating",
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify(data1),
+      success: (res) => {
+        console.log(res);
+        this.setState({
+          ratingAverage: res.ratingAverage,
+          ratingCount: this.state.ratingCount+1
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+    $(".rating-value").val(this.state.ratingAverage);
+    $(".no-of-rating .val").text(this.state.ratingCount);
   }
   render() {
     return (
       <div class="rating-check">
-        {this.state.ratingComment.ratingExist == "true" && (
+        {this.state.ratingExist == true && (
           <div class="rating-wrapper">
             <p class="rate-this">Rate this story</p>
             <div class="star-rating">
@@ -107,10 +108,10 @@ class ArticleRatings extends React.Component {
                 type="hidden"
                 name="rating-value"
                 class="rating-value"
-                value={`${this.state.aveRatings}`}
+                value={`${this.state.ratingAverage}`}
               />
               <span class="no-of-rating">
-                (<span class="val">{this.state.noOfRatings}</span>)
+                (<span class="val">{this.state.ratingCount}</span>)
               </span>
             </div>
           </div>
@@ -125,14 +126,36 @@ class ArticleComments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ratingComment: {},
+      commentCount: 0,
+      commentDetails: [
+        {
+          commentId: 1,
+          commentText:
+            "This is the first comment ever set. You can add more comments as per your wish.",
+          email: "string",
+          updatedDate: "2020-08-17T14:14:16.018Z",
+          userName: "John Patel",
+        }
+      ],
+      ratingAverage: 0,
+      ratingCount: 0,
+      ratingExist: false,
+      artcilePath:"/en/ca/home",
+      siteName: "ca",
+      userACF2Id: "yq12",
+      userName: "David jackson",
+      email: "john@gmail.com",
+      apiCall:{}
     };
     this.getRatingComment = this.getRatingComment.bind(this);
-    this.setComments = this.setComments.bind(this);
     this.submitComment = this.submitComment.bind(this);
-    this.dateChange = this.dateChange.bind(this);
+    this.dateChange=this.dateChange.bind(this);
+    this.dateLoad=this.dateLoad.bind(this);
+    this.deleteComment=this.deleteComment.bind(this);
     this.getRatingComment();
-    this.setComments();
+  }
+  componentDidMount(){
+    //this.dateLoad();
   }
   dateChange(date) {
     let monthName = [
@@ -157,77 +180,113 @@ class ArticleComments extends React.Component {
     // return moment(date).format('MMM DD');
   }
   getRatingComment() {
-    this.state.ratingComment = {
-      commentCount: 3,
-      commentDetails: [
-        {
-          commentId: 1,
-          commentText:
-            "This is the first comment ever set. You can add more comments as per your wish.",
-          email: "string",
-          updatedDate: "2020-08-17T14:14:16.018Z",
-          userName: "John Patel",
-        },
-        {
-          commentId: 2,
-          commentText: "This is the second comment ever set.Just for testing.",
-          email: "string",
-          updatedDate: "2020-09-26T14:14:16.018Z",
-          userName: "David De",
-        },
-        {
-          commentId: 3,
-          commentText: "This is the Third comment ever set.Just for testing.",
-          email: "string",
-          updatedDate: "2020-07-10T14:14:16.018Z",
-          userName: "Karan Breaker",
-        },
-      ],
-      ratingAverage: 3,
-      ratingCount: 1,
-      ratingExist: "true",
+    let data1 = {
+      articlePath: this.state.artcilePath,
+      siteName: this.state.siteName,
+      userACF2Id: this.state.userACF2Id,
     };
-  }
-  setComments() {
-    this.state.ratingComment.commentDetails.map((value, index) => {
-      let cdate = value.updatedDate.split("T")[0];
-      cdate = this.dateChange(cdate);
-      //console.log(cdate);
-      this.state.ratingComment.commentDetails[index].updatedDate = cdate;
+    $.ajax({
+      type: "GET",
+      url: "/source-services/selectAll",
+      dataType: "json",
+      data: data1,
+      success: (res) => {
+        console.log(res.commentDetails);
+        this.setState({
+          commentCount: res.commentCount,
+          commentDetails: res.commentDetails,
+          ratingAverage: res.ratingAverage,
+          ratingCount: res.ratingCount,
+          ratingExist: res.ratingExist,
+        });
+        this.dateLoad();
+      },
+      error: (err) => {
+        console.error(err);
+      },
     });
   }
-  submitComment(i, event) {
+  dateLoad(){
+    let commentArray=this.state.commentDetails;
+    commentArray.map((value, index) => {
+      if(value){
+        let cdate = value.updatedDate.split("T")[0];
+        cdate = this.dateChange(cdate);
+        //console.log(cdate);
+        commentArray[index].updatedDate=cdate;        
+      }
+    });
+    this.setState({
+      commentDetails:commentArray
+    });
+  }
+  submitComment(event) {
     let newCommentVal = $("#commentText").val();
     let newComment = {
-      commentId: 4,
+      articlePath: this.state.artcilePath,
+      siteName: this.state.siteName,
       commentText: newCommentVal,
-      email: "string",
-      updatedDate: "2020-07-10T14:14:16.018Z",
-      userName: "Karan Breaker",
+      userName: this.state.userName,
+      userACF2Id: this.state.userACF2Id,
+      email: this.state.email
     };
-    let html =
-      `<section class="old-comments">
-    <p class="name-time">
-      <span class="name">` +
-      newComment.userName +
-      `</span>
-      <span class="time">` +
-      newComment.updatedDate +
-      `</span>
-    </p>
-    <p class="desc">` +
-      newComment.commentText +
-      `</p>
-  </section>`;
-    this.state.ratingComment.commentDetails.push(newCommentVal);
-    $("#commentText").val("");
-    $(".comment-count .val").text(4);
-    //$('.comment-wrapper')[0].;
-    // this.state.noOfRatings=this.state.noOfRatings+1;
-    // this.state.aveRatings=Math.round((this.state.aveRatings+i)/this.state.noOfRatings);
-    // console.log(this.state.noOfRatings,this.state.aveRatings);
-    // $('.rating-value').val(this.state.aveRatings);
-    // $('.no-of-rating .val').text(this.state.noOfRatings);
+    $.ajax({
+      type: "POST",
+      url: "/source-services/addComment",
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify(newComment),
+      success: (res) => {
+        this.setState({
+          commentCount:res.commentCount,
+          commentDetails:res.commentDetails
+        });
+        this.dateLoad();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  //   let html =
+  //     `<section class="old-comments">
+  //   <p class="name-time">
+  //     <span class="name">` +
+  //     newComment.userName +
+  //     `</span>
+  //     <span class="time">` +
+  //     newComment.updatedDate +
+  //     `</span>
+  //   </p>
+  //   <p class="desc">` +
+  //     newComment.commentText +
+  //     `</p>
+  // </section>`;
+  }
+  deleteComment(){
+    let removeComment = {
+      articlePath: this.state.artcilePath,
+      siteName: this.state.siteName,
+      commentId: 17,
+      reasonText: "testing",
+      deleter_user_acf2_id: this.state.userACF2Id
+    };
+    $.ajax({
+      type: "DELETE",
+      url: "/source-services/deleteComment",
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify(removeComment),
+      success: (res) => {
+        this.setState({
+          commentCount:res.commentCount,
+          commentDetails:res.commentDetails
+        });
+        this.dateLoad();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
   render() {
     return (
@@ -236,7 +295,7 @@ class ArticleComments extends React.Component {
           <div class="comment-wrapper">
             <p class="comment-count">
               Comments(
-              <span class="val">{this.state.ratingComment.commentCount}</span>)
+              <span class="val">{this.state.commentCount}</span>)
             </p>
             <p class="info">
               (When you add a comment your name will be automatically displayed)
@@ -257,7 +316,7 @@ class ArticleComments extends React.Component {
                 </button>
               </div>
             </div>
-            {this.state.ratingComment.commentDetails.map((value, index) => {
+            {this.state.commentDetails.map((value, index) => {
               return (
                 <section class="old-comments">
                   <p class="name-time">
