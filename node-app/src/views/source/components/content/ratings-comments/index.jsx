@@ -45,30 +45,38 @@ class ArticleRatings extends React.Component {
       },
     });
   }
-  submitRating(i, event) {
+  submitRating(i, event) { 
     let data1={
         articlePath: this.state.artcilePath,
         siteName: this.state.siteName,
         userACF2Id: this.state.userACF2Id,
         rating: i
     }
-    $.ajax({
-      type: "POST",
-      url: "/source-services/addRating",
-      contentType: "application/json",
-      dataType: "json",
-      data: JSON.stringify(data1),
-      success: (res) => {
-        console.log(res);
-        this.setState({
-          ratingAverage: res.ratingAverage,
-          ratingCount: this.state.ratingCount+1
-        });
-      },
-      error: (err) => {
-        console.error(err);
-      },
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/source-services/addRating",
+    //   contentType: "application/json",
+    //   dataType: "json",
+    //   data: JSON.stringify(data1),
+    //   success: (res) => {
+    //     console.log(res);
+    //     this.setState({
+    //       ratingAverage: res.ratingAverage,
+    //       ratingCount: this.state.ratingCount+1
+    //     });
+    //   },
+    //   error: (err) => {
+    //     console.error(err);
+    //   },
+    // });
+    /* news rating analytics starts here */
+    let ratingGiven=i;
+    utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'news-rating-'+ratingGiven,
     });
+    /* news rating analytics ends here */
     $(".rating-value").val(this.state.ratingAverage);
     $(".no-of-rating .val").text(this.state.ratingCount);
   }
@@ -261,6 +269,13 @@ class ArticleComments extends React.Component {
   //     newComment.commentText +
   //     `</p>
   // </section>`;
+      /* news comment submit analytics starts here */
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'news-comment'
+        });      
+      /* news comment submit analytics ends here */
   }
   deleteComment(){
     let removeComment = {

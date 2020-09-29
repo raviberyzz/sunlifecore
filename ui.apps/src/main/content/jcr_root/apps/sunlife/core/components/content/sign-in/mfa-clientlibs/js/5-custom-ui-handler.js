@@ -22,6 +22,14 @@ CustomUIHandler.prototype.createOtpAuthSession = function(title, username, possi
 CustomUIHandler.prototype.createPasswordAuthSession = function(title, username) {
     return new PasswordAuthenticatorSession(title, username);
 }
+
+CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) {
+    console.log('start');
+}
+  
+CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) {
+    console.log('end');
+}
     
 CustomUIHandler.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
     return new Promise(function(resolve, reject) {
@@ -77,15 +85,13 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
                 alert("User is locked");
-                
                
-                $.get("/content/dam/sunlife/external/signin/transmit/html/account-locked-out.html", function (data) {
+                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
                     $(clientContext.uiContainer).html(data);
               });
             } else {
-               
-             
-               $.get("/content/dam/sunlife/external/signin/transmit/html/come-back-later.html", function (data) {
+                
+               $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
                 $(clientContext.uiContainer).html(data);
           });
 

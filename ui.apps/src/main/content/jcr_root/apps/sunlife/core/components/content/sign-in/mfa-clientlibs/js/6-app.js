@@ -152,7 +152,7 @@ function initJourneyPlayer() {
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized succesfuly: ".concat(results));
-
+    
     if (!getSessionToken()) {
       showSignInDiv();
     } else {
@@ -167,8 +167,9 @@ function initJourneyPlayer() {
 
 function getTransmitConnectionSettings() {
     
-   var serverUrl = "https://mfa-dev.sunlifecorp.com";
-    //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+   //const serverUrl = "https://sv0a0729.sunlifecorp.com:8443";
+      var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     // var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var apiTokenId = "";
   var apiToken = "";

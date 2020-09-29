@@ -8,6 +8,8 @@ function onSignInClick() {
     var clientId =$(".mySlfSignIn #USER").val();
     var password =$(".mySlfSignIn #PASSWORD").val();
 
+    var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
+
     if (clientId.length === 0 || password.length === 0) {
         return alert('Please type a valid client id and password to login');
     }
