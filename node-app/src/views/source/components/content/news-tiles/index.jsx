@@ -1303,7 +1303,7 @@ class NewsTiles extends React.Component {
                   </div>
                 </div>
               }
-              {this.props.newsListContainer == "true" && this.state.filterNewsList.length > 0 &&
+              {this.props.newsListContainer == "true" && 
                 <div class="row news-list-container">
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                     {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
@@ -1324,7 +1324,7 @@ class NewsTiles extends React.Component {
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                       <div class="aggregate-tile">
                         <div class="circular-image">
-                          <img class="icon" src="/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
+                          <img class="icon" src={this.props.moreNewsImg} />
                         </div>
                         {Object.keys(this.state.filterNewsList).slice(4, 7).map((key, index) => {
                           return (
@@ -1334,19 +1334,19 @@ class NewsTiles extends React.Component {
                             </div>
                           )
                         })}
-                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="#">{this.props.moreNewsText}</a></span></span></p>
+                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href={this.props.moreNewsLink}>{this.props.moreNewsText}</a></span></span></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
-                      <p><a href={this.props.workdayLink}><img src="/content/dam/sunlife/internal/source/images/workday.jpg" alt="" /></a></p>
+                      <p><a href={this.props.workdayLink}><img src={this.props.workdayImg} alt="" /></a></p>
                       <p>{this.props.workdayText}</p>
                       <p><a href={this.props.workdayLink} target="_blank"><span class="view-all-category white-font">{this.props.workdayLinkText}</span></a>
                       </p>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
-                      <p><a href={this.props.workplaceLink}><img src="/content/dam/sunlife/internal/source/images/workplace.png" alt="" /></a></p>
+                      <p><a href={this.props.workplaceLink}><img src={this.props.workplaceImg} alt="" /></a></p>
                       <p class="m-top-bt">{this.props.workplaceText}</p>
                       <p><span class="blue-chevron-arrow"><span class="blue-font"><a href={this.props.workplaceLink} target="_blank">{this.props.workplaceLinkText}</a></span></span>
                       </p>
