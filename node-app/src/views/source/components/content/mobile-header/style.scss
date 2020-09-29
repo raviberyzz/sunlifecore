@@ -22,3 +22,18 @@
         color: $white-shade;
     }
 }
+
+.hamburger-menu-wrapper {
+	ul[role="navigation"] {
+		margin: 48px 0px;
+		li {
+			margin: 16px 16px 0 16px;
+			a {
+				color: #004C6C;
+				font-weight: 400;
+				text-decoration: none;
+				line-height: 26px;
+			}
+		}
+	}
+}

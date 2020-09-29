@@ -14,4 +14,7 @@ $(document).ready(function () {
 
     $(".mobile-signin-text").text("Find");
 
+    // adding username and language toggle link to hamburger menu
+    $(".utility-nav-wrapper .utility-nav-links ul[role='navigation']").clone().appendTo('.hamburger-menu-wrapper');
+
 })
