@@ -142,11 +142,16 @@ border: 1px solid #18ac3d !important;
 
 @media (min-width: 768px){
 #mfa-container .sub-container .slf-alert-box:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900;
+  content: "\f00c" !important;
+  font-family: FontAwesome;
   font-size: 30px;
   padding-right: 15px;
   padding-top: 2px;
 }
+}
+
+
+#mfa-container .sub-container .legend-normal {
+   font-size: 18px;
 }
   
