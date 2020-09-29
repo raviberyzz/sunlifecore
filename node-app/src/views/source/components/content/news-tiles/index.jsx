@@ -1222,7 +1222,7 @@ class NewsTiles extends React.Component {
       <div class="news-wrapper">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
-            <div class="displayStockTicker news-widget" data-section="hp investor">
+            <div class="news-widget" data-section="hp investor">
               {this.props.newsToolBar == "true" &&
                 <div>
                   <div class="row news-tool-bar">
@@ -1233,7 +1233,7 @@ class NewsTiles extends React.Component {
                           return (<span class="tag">{value}</span>)
                         })}
                         {this.state.selectedPreferenceTags.length > 4 &&
-                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                          <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                         }
                       </div>
                       <span class="pull-right">
@@ -1255,7 +1255,7 @@ class NewsTiles extends React.Component {
                           <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
                           <p>
                             <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
-                            <span class="chk-lbl">Select all</span>
+                            <span class="chk-lbl">{this.props.selectAllText}</span>
                           </p>
                         </div>
                         <div class="modal-body preference-modal-body">
@@ -1324,7 +1324,7 @@ class NewsTiles extends React.Component {
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                       <div class="aggregate-tile">
                         <div class="circular-image">
-                          <img class="icon" src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
+                          <img class="icon" src="/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg" />
                         </div>
                         {Object.keys(this.state.filterNewsList).slice(4, 7).map((key, index) => {
                           return (
@@ -1334,22 +1334,21 @@ class NewsTiles extends React.Component {
                             </div>
                           )
                         })}
-                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="#">More News</a></span></span></p>
+                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="#">{this.props.moreNewsText}</a></span></span></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
-                      <p><a href="#"><img src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/internal/source/images/workday.jpg" alt="" /></a></p>
+                      <p><a href={this.props.workdayLink}><img src="/content/dam/sunlife/internal/source/images/workday.jpg" alt="" /></a></p>
                       <p>{this.props.workdayText}</p>
-                      <p><a href="https://cmsdev-auth.ca.sunlife/content/sunlife/external.html" target="_blank"><span class="view-all-category white-font">{this.props.workdayLinkText}</span></a>
+                      <p><a href={this.props.workdayLink} target="_blank"><span class="view-all-category white-font">{this.props.workdayLinkText}</span></a>
                       </p>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
-                      <p><a href="#"><img src="https://cmsdev-auth.ca.sunlife/content/dam/sunlife/internal/source/images/workplace.png" alt="" /></a></p>
-                      <p><strong><span class="blue-font">by Facebook</span></strong></p>
+                      <p><a href={this.props.workplaceLink}><img src="/content/dam/sunlife/internal/source/images/workplace.png" alt="" /></a></p>
                       <p class="m-top-bt">{this.props.workplaceText}</p>
-                      <p><span class="blue-chevron-arrow"><span class="blue-font"><a href="https://sunlife.workplace.com" target="_blank">{this.props.workplaceLinkText}</a></span></span>
+                      <p><span class="blue-chevron-arrow"><span class="blue-font"><a href={this.props.workplaceLink} target="_blank">{this.props.workplaceLinkText}</a></span></span>
                       </p>
                     </div>
                   </div>

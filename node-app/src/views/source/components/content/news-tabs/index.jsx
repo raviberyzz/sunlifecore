@@ -954,7 +954,8 @@ class NewsTabs extends React.Component {
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
-    return monthName[m] + " " + d;
+    let y = d1.getFullYear();
+    return `${monthName[m]} ${d}, ${y}`;
     // return moment(date).format('MMMM DD, YYYY');
   }
 
@@ -1132,7 +1133,7 @@ class NewsTabs extends React.Component {
       <div class="news-wrapper">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
-            <div class="displayStockTicker news-widget" data-section="hp investor">
+            <div class="news-widget" data-section="hp investor">
               {this.props.newsToolBar == "true" &&
                 <div>
                   <div class="row news-tool-bar">
@@ -1143,7 +1144,7 @@ class NewsTabs extends React.Component {
                           return (<span class="tag">{value}</span>)
                         })}
                         {this.state.selectedPreferenceTags.length > 4 &&
-                          <span class="more-tag">{`More - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                          <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                         }
                       </div>
                       <span class="pull-right">
@@ -1165,7 +1166,7 @@ class NewsTabs extends React.Component {
                           <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
                           <p>
                             <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
-                            <span class="chk-lbl">Select all</span>
+                            <span class="chk-lbl">{this.props.selectAllText}</span>
                           </p>
                         </div>
                         <div class="modal-body preference-modal-body">
@@ -1250,7 +1251,7 @@ class NewsTabs extends React.Component {
                                           <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
                                             <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                               <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                              <span>Previous</span>
+                                              <span>{this.props.previousText}</span>
                                             </a>
                                           </li>
                                         }
@@ -1277,12 +1278,12 @@ class NewsTabs extends React.Component {
                                         </li>
                                         {this.state.tabHeading[value].pageData.currentPage != this.state.tabHeading[value].pageData.totalPage &&
                                           <li className={`next ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'disabled' : ''}`}>
-                                            <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>Next</a>
+                                            <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
                                           </li>
                                         }
                                       </ul>
                                       <div class="pagination-indicator">
-                                        {`Page ${this.state.tabHeading[value].pageData.currentPage} of ${this.state.tabHeading[value].pageData.totalPage}`}
+                                        {`${this.props.pageText} ${this.state.tabHeading[value].pageData.currentPage} ${this.props.ofText} ${this.state.tabHeading[value].pageData.totalPage}`}
                                       </div>
                                     </nav>
                                   </div>
