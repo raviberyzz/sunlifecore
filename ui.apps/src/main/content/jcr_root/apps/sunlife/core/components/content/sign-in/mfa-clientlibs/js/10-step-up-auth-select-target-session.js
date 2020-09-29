@@ -38,25 +38,33 @@ this.onError = function (payload) {
   console.log(payload);
 }; //** End Form Session */
 
-  //** End Form Session */
+
 
 function handleSendCode() {
   var selectedPhone = $('input[name="phone_number_target"]:checked').val();
   var selectedMethod = $('input[name="send_code_method"]:checked').val();
-  var selectedCommunicationId = $('input[name="mfa_communication_target"]').val();
-  var otpSelection = {
-          selectedPhone: selectedPhone,
-          selectedMethod: selectedMethod,
-          selectedCommunicationId: selectedCommunicationId
-      };
+  //var selectedCommunicationId = $("#"+selectedPhone).val();
+  var selectedCommunicationId = $('input[id="'+selectedPhone+'"]').val();
+  var selectedId = $('input[name="phone_number_target"]:checked').attr('id');
+  var maskedPhoneNo = $('label[for="'+selectedId+'"]').text();
 
-      this.clientContext.otpSelection = otpSelection;
-      this.submitBlock(otpSelection);
-  }
+  console.log(maskedPhoneNo);
+  console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
+  var otpSelection = {
+    selectedPhone: selectedPhone,
+    selectedMethod: selectedMethod,
+    selectedCommunicationId: selectedCommunicationId,
+    maskedPhoneNo :maskedPhoneNo
+  };
+  this.clientContext.otpSelection = otpSelection;
+  this.submitBlock(otpSelection);
+}
 
   function setupForm() {
       const self = this;
-      $.get("/content/dam/sunlife/external/signin/transmit/step-up-auth-select-target-form.html", function (data) {
+      console.log(" lang :"+lang);
+      $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
+         
           $(self.clientContext.uiContainer).html(data);
 
           $("#step-up-send-code-button").on("click", function () {
@@ -67,24 +75,32 @@ function handleSendCode() {
       });
   }
 
- function setPhoneNumbersList() {
+
+ 
+  //this.constructor = VerifiedPhoneListFormSession;
+   this.constructor=StepUpSelectTargetFormSession;
+}
+
+function setPhoneNumbersList() {
   const phoneNumbers = this.phoneNumbers;
 
   let phoneListStr = '';
-  phoneNumbers.map((phone, index) => {
-      phoneListStr += renderPhone.call(this, phone, index);
-  });        
-
+  
+  for(var i=0;i<phoneNumbers.length;i++){
+      phoneListStr += renderPhone.call(this, phoneNumbers[i], i);
+  }
   $("#step-up-phone-list-container").html(phoneListStr);
 
 }
 
+
 function renderPhone(phoneNumber, index) {
   const checked = (index === 0) ? "checked" : "";
   const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
+  const maskPhone = phoneNumber.countryCd+"-***-"+"***"+phoneNumber.commData.substring(3,7);
   
   let phoneInfo  = '<div class="radio-btn-selected radio-btn-container">';
-      phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phone + '">';
+      phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phoneNumber.mfaCommunId + '">';
       phoneInfo += '<input ';
       phoneInfo += 'id="su-phone-number-item-' + index + '" ';
       phoneInfo += 'class="mfa-receive-code-choice" ';
@@ -98,11 +114,7 @@ function renderPhone(phoneNumber, index) {
       phoneInfo += 'data-parsley-class-handler=".radio-min-phone-err" ';
       phoneInfo +=  checked;
       phoneInfo +=  '/>';
-      phoneInfo += '<label for="su-phone-number-item-' + index + '">' + phone + '</label>';
+      phoneInfo += '<label for="su-phone-number-item-' + index + '" id='+index+'>' + maskPhone + '</label>';
       phoneInfo += '</div>';
   return phoneInfo;
-}
-
-  //this.constructor = VerifiedPhoneListFormSession;
-  this.constructor=StepUpSelectTargetFormSession;
 }
