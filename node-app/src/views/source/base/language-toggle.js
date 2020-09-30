@@ -26,30 +26,24 @@ $(document).ready(function () {
     if (pageErrorType === "error-page") {
         if (utag_data.page_language == 'en') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', document.referrer);
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', document.referrer);
         }
         if (utag_data.page_language == 'fr') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', document.referrer);
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', document.referrer);
         }
 
     } else if (linkRow.length > 0) {
         if (utag_data.page_language == 'en') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', linkRow[1]);
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', linkRow[1]);
         }
         if (utag_data.page_language == 'fr') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', linkRow[0]);
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', linkRow[0]);
         }
     } else if (linkRow.length == 0 && linkCanRef != null) {
         if (utag_data.page_language == 'en') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', "/content/sunlife/internal/source/fr/error/language-error");
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', "/content/sunlife/internal/source/fr/error/language-error");
         }
         if (utag_data.page_language == 'fr') {
             $('.utility-nav-wrapper .utility-nav-links li:nth-child(2) a').first().attr('href', "/content/sunlife/internal/source/en/error/language-error");
-            // $('.hamburger-menu-wrapper .first-level-navigation li:last-child a').last().attr('href', "/content/sunlife/internal/source/en/error/language-error");
         }
     }
     //Code for Language toggle ends //  

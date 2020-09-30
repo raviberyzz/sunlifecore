@@ -863,6 +863,10 @@ class NewsTabs extends React.Component {
     this.filteringNewsList = this.filteringNewsList.bind(this);
     this.paginationDataBuild = this.paginationDataBuild.bind(this);
     this.tagSorting = this.tagSorting.bind(this);
+    this.getNewsList = this.getNewsList.bind(this);
+    this.getPreferenceList = this.getPreferenceList.bind(this);
+    this.addSelectedPreference = this.addSelectedPreference.bind(this);
+    this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
   }
 
   componentDidMount() {
@@ -915,7 +919,7 @@ class NewsTabs extends React.Component {
     this.state.filterNewsList = [];
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.filterNewsList = this.state.newsList.filter((news) => {
-        return news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
+        return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
       });
     } else {
       this.state.filterNewsList = this.state.newsList;
@@ -928,8 +932,10 @@ class NewsTabs extends React.Component {
       selectedPreferenceList: this.state.selectedPreferenceList,
       filterNewsList: this.state.filterNewsList
     });
+    this.addSelectedPreference();
     this.tagSorting();
     $("#preferenceModal").modal("hide");
+    window.location.reload();
   }
 
   clearAll() {
@@ -1055,7 +1061,116 @@ class NewsTabs extends React.Component {
       selectedPreferenceTags: this.state.selectedPreferenceTags
     });
   }
+  getNewsList() {
+    $.ajax({
+      type: "GET",
+      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
+      dataType: "json",
+      success: (res) => {
+        this.state.newsList = res;
+        this.state.filterNewsList = [];
+        if (this.state.selectedPreferenceList.length > 0) {
+          this.state.filterNewsList = this.state.newsList.filter((news) => {
+            return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
+          });
+        } else {
+          this.state.filterNewsList = this.state.newsList;
+        }
+        this.state.filterNewsList.sort(function (a, b) {
+          return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+        });
+        this.setState({
+          newsList: this.state.newsList,
+          filterNewsList: this.state.filterNewsList,
+        })
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
 
+  getPreferenceList() {
+    $.ajax({
+      type: "GET",
+      url: "/content/cq:tags/sunlife/source.tags.json",
+      dataType: "json",
+      success: (res) => {
+        this.state.businessGroupList = res[0];
+        this.state.topicsList = res[1];
+        this.state.businessGroupList.tags.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.value) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.state.topicsList.tags.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.value) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.setState({
+          businessGroupList: this.state.businessGroupList,
+          topicsList: this.state.topicsList,
+        })
+        this.getNewsList();
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  addSelectedPreference() {
+    let reqData = {
+      "siteName": "source",
+      "userACF2Id": "JG22",
+      "articlefilter": this.state.selectedPreferenceList
+    };
+    $.ajax({
+      type: "POST",
+      url: "/source-services/addPreference",
+      contentType: 'application/json',
+      data: JSON.stringify(reqData),
+      dataType: "json",
+      success: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  retrieveSelectedPreference() {
+    $.ajax({
+      type: "GET",
+      url: "/source-services/retrievePreference",
+      data: {
+        "siteName": "source",
+        "userACF2Id": "JG22",
+      },
+      dataType: "json",
+      success: (res) => {
+        this.state.selectedPreferenceList = res;
+        this.getPreferenceList();
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        })
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
   newsTiles() {
     let businessGroupObj = [
       { name: "Canada", value: "sunlife:source/business-groups/canada" },
@@ -1113,7 +1228,7 @@ class NewsTabs extends React.Component {
     this.state.filterNewsList = [];
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.filterNewsList = this.state.newsList.filter((news) => {
-        return news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
+        return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
       });
     } else {
       this.state.filterNewsList = this.state.newsList;
