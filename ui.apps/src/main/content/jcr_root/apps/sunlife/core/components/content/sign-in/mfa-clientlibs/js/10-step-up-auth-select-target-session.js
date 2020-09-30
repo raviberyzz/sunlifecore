@@ -43,7 +43,6 @@ this.onError = function (payload) {
 function handleSendCode() {
   var selectedPhone = $('input[name="phone_number_target"]:checked').val();
   var selectedMethod = $('input[name="send_code_method"]:checked').val();
-  //var selectedCommunicationId = $("#"+selectedPhone).val();
   var selectedCommunicationId = $('input[id="'+selectedPhone+'"]').val();
   var selectedId = $('input[name="phone_number_target"]:checked').attr('id');
   var maskedPhoneNo = $('label[for="'+selectedId+'"]').text();
@@ -95,6 +94,9 @@ function setPhoneNumbersList() {
 
 
 function renderPhone(phoneNumber, index) {
+
+  var errorMsg = (lang === 'fr') ? 'Veuillez sélectionner un numéro de téléphone.' : 'Please select a phone number';
+
   const checked = (index === 0) ? "checked" : "";
   const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
   const maskPhone = phoneNumber.countryCd+"-***-"+"***"+phoneNumber.commData.substring(3,7);
@@ -109,7 +111,7 @@ function renderPhone(phoneNumber, index) {
       phoneInfo += 'type="radio" ';
       phoneInfo += 'required ';
       phoneInfo += 'data-parsley-min-check="1" ';
-      phoneInfo += 'data-parsley-error-message="Please select a phone number" ';
+      phoneInfo += 'data-parsley-error-message="'+errorMsg+'"';
       phoneInfo += 'data-parsley-errors-container=".radio-min-phone-err" '
       phoneInfo += 'data-parsley-class-handler=".radio-min-phone-err" ';
       phoneInfo +=  checked;
