@@ -5,6 +5,7 @@ package ca.sunlife.web.cms.source.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -49,46 +50,44 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@ Override
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
+	protected void doGet (SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("Entry :: CustomTagServlet :: doGet ::");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter writer = response.getWriter();
-		JSONArray jsonArrayMain = new JSONArray();
-		Resource resource = request.getResource();
-		resource.getChildren().forEach(child -> {
-			try {
-				if (null != child) {
-					JSONObject jsonObject = new JSONObject();
-					JSONArray jsonArray = new JSONArray();
-					Tag childTag = child.adaptTo(Tag.class);
-					if( null == childTag)
-						return;
-					child.getChildren().forEach(subChild -> {
-						try {
-							Tag tag = subChild.adaptTo(Tag.class);
-							if( null != tag ) {
-								JSONObject subChildObj = new JSONObject();
-								subChildObj.put("name", tag.getTitle());
-								subChildObj.put("value", tag.getTagID());
-								jsonArray.put(subChildObj);
-							}
-						} catch (JSONException e) {
-							LOGGER.error("Error while iterating child sub tags :: {}", e);
-						}
-					});
-					jsonObject.put("name", childTag.getTitle());
-					jsonObject.put("tags", jsonArray);
-					jsonArrayMain.put(jsonObject);
-				}
-			} catch (JSONException e) {
-				LOGGER.error("Error :: CustomTagServlet :: doGet :: {}", e);
+		String outJson = "";
+		try {
+			Resource resource = request.getResource();
+			Tag tag = resource.adaptTo(Tag.class);
+			if (null == tag) {
+				return;
 			}
-		});
-		LOGGER.debug("Json array :: {} ", jsonArrayMain);
-		writer.print(jsonArrayMain.toString());
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("name", tag.getName());
+			jsonObject.put("title", tag.getTitle());
+			jsonObject.put("id", tag.getTagID());
+			Iterator<Tag> childTags = tag.listChildren();
+			if (null != childTags) {
+				final JSONArray jsonArray = new JSONArray();
+				childTags.forEachRemaining(childTag -> {
+					JSONObject object = new JSONObject();
+					try {
+						object.put("name", childTag.getName());
+						object.put("title", childTag.getTitle());
+						object.put("id", childTag.getTagID());
+						jsonArray.put(object);
+					} catch (JSONException e) {
+						LOGGER.error("JSON error whie iterating the child {}", e);
+					}
+				});
+				jsonObject.put("tags", jsonArray);
+			}
+			outJson = jsonObject.toString();
+		} catch (JSONException e1) {
+			LOGGER.error("Error :: while parsing json {}", e1);
+		}
+		writer.write(outJson);
 		LOGGER.debug("Exit :: CustomTagServlet :: doGet ::");
 	}
-
 }

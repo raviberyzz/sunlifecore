@@ -91,7 +91,7 @@ public class ProviderProfileServiceImpl implements ProviderProfileService {
     }
     url.append(ProviderProfileConstants.LOCALE_CONSTANT + "=" + locale);
     LOG.debug("New provider profile url :: {}", url);
-    final String providerProfileResponse = restService.callGetWebService(url.toString());
+    final String providerProfileResponse = restService.callGetWebService(url.toString(), null);
     LOG.debug("providerProfileResponse :: {}", providerProfileResponse);
     if (null != providerProfileResponse && providerProfileResponse.length() > 0) {
     	@ SuppressWarnings ("unchecked")
