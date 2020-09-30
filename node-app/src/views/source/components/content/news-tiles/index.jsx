@@ -871,6 +871,7 @@ class NewsTiles extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
+    this.mergeArray = this.mergeArray.bind(this);
   }
 
   componentDidMount() {
@@ -940,7 +941,7 @@ class NewsTiles extends React.Component {
     preferedNewsList.sort(function (a, b) {
       return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
     });
-    this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
+    this.state.filterNewsList = this.mergeArray(preferedNewsList,pinnedNewsList,pinnedNewsList[0].pinArticle - 1);
     this.setState({
       selectedPreferenceList: this.state.selectedPreferenceList,
       filterNewsList: this.state.filterNewsList
@@ -1039,8 +1040,9 @@ class NewsTiles extends React.Component {
         preferedNewsList.sort(function (a, b) {
           return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
         });
-        this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
+        this.state.filterNewsList = this.mergeArray(preferedNewsList,pinnedNewsList,pinnedNewsList[0].pinArticle - 1);
         this.setState({
+          newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         })
         console.log(res);
@@ -1133,88 +1135,92 @@ class NewsTiles extends React.Component {
   }
 
   getNewsTilesData() {
-    this.retrieveSelectedPreference();
-    // this.state.businessGroupList = {
-    //   name:"Business groups",
-    //   tags:[
-    //   { name: "Canada", value: "sunlife:source/business-groups/canada" },
-    //   { name: "Corporate", value: "sunlife:source/business-groups/corporate" },
-    //   { name: "Enterprise Services", value: "sunlife:source/business-groups/enterprise-services" },
-    //   { name: "Hong Kong", value: "sunlife:source/business-groups/hong-kong" },
-    //   { name: "Indonesia", value: "sunlife:source/business-groups/indonesia" },
-    //   { name: "International", value: "sunlife:source/business-groups/international" },
-    //   { name: "Philippines", value: "sunlife:source/business-groups/philippines" },
-    //   { name: "SLC Management", value: "sunlife:source/business-groups/slc-management" },
-    //   { name: "Asia", value: "sunlife:source/business-groups/asia" },
-    //   { name: "U.S.", value: "sunlife:source/business-groups/us" },
-    //   { name: "U.K.", value: "sunlife:source/business-groups/uk" },
-    //   { name: "Vietnam", value: "sunlife:source/business-groups/vietnam" }
-    // ]};
-    // this.state.topicsList = {
-    //   name:"Topics",
-    //   tags:[
-    //   { name: "Business continuity", value: "sunlife:source/topics/business-continuity" },
-    //   { name: "Business critical", value: "sunlife:source/topics/business-critical" },
-    //   { name: "Client stories", value: "sunlife:source/topics/client-stories" },
-    //   { name: "Company performance", value: "sunlife:source/topics/company-performance" },
-    //   { name: "Compliance", value: "sunlife:source/topics/compliance" },
-    //   { name: "Corporate Real Estate", value: "sunlife:source/topics/corporate-real-estate" },
-    //   { name: "COVID-19", value: "sunlife:source/topics/covid-19" },
-    //   { name: "Digital Enterprise", value: "sunlife:source/topics/digital-enterprise" },
-    //   { name: "Diversity & Inclusion", value: "sunlife:source/topics/diversity-&-inclusion" },
-    //   { name: "Employee engagement", value: "sunlife:source/topics/employee-engagement" },
-    //   { name: "General HR", value: "sunlife:source/topics/general-HR" },
-    //   { name: "Innovation", value: "sunlife:source/topics/innovation" },
-    //   { name: "My Benefits and Wellness", value: "sunlife:source/topics/my-benefits-and-wellness" },
-    //   { name: "My Career", value: "sunlife:source/topics/my-career" },
-    //   { name: "My Learning", value: "sunlife:source/topics/my-learning" },
-    //   { name: "My Pay", value: "sunlife:source/topics/my-pay" },
-    //   { name: "Organization announcements", value: "sunlife:source/topics/organization-announcements" },
-    //   { name: "Philanthropy/Sponsorship", value: "sunlife:source/topics/philanthropy-sponsorship" },
-    //   { name: "Recognition", value: "sunlife:source/topics/recognition" },
-    //   { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
-    //   { name: "Technology", value: "sunlife:source/topics/technology" }
-    // ]};
-    // this.state.businessGroupList.tags.forEach((data) => {
-    //   data["isChecked"] = false;
-    //   this.state.selectedPreferenceList.forEach(prefer => {
-    //     if (prefer === data.value) {
-    //       data["isChecked"] = true;
-    //     }
-    //   })
-    // });
-    // this.state.topicsList.tags.forEach((data) => {
-    //   data["isChecked"] = false;
-    //   this.state.selectedPreferenceList.forEach(prefer => {
-    //     if (prefer === data.value) {
-    //       data["isChecked"] = true;
-    //     }
-    //   })
-    // });
-    // let pinnedNewsList = [];
-    // let preferedNewsList = [];
-    // if (this.state.selectedPreferenceList.length > 0) {
-    //   preferedNewsList = this.state.newsList.filter((news) => {
-    //     return (!news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
-    //   });
-    //   pinnedNewsList = this.state.newsList.filter((news) => {
-    //     return (news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
-    //   });
-    // } else {
-    //   preferedNewsList = this.state.newsList;
-    // }
-    // pinnedNewsList.sort(function (a, b) {
-    //   return (a.pinArticle - b.pinArticle || b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-    // });
-    // preferedNewsList.sort(function (a, b) {
-    //   return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-    // });
-    // this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
-    // this.setState({
-    //   filterNewsList: this.state.filterNewsList,
-    //   businessGroupList: this.state.businessGroupList,
-    //   topicsList: this.state.topicsList,
-    // })
+    // this.retrieveSelectedPreference();
+    this.state.businessGroupList = {
+      name:"Business groups",
+      tags:[
+      { name: "Canada", value: "sunlife:source/business-groups/canada" },
+      { name: "Corporate", value: "sunlife:source/business-groups/corporate" },
+      { name: "Enterprise Services", value: "sunlife:source/business-groups/enterprise-services" },
+      { name: "Hong Kong", value: "sunlife:source/business-groups/hong-kong" },
+      { name: "Indonesia", value: "sunlife:source/business-groups/indonesia" },
+      { name: "International", value: "sunlife:source/business-groups/international" },
+      { name: "Philippines", value: "sunlife:source/business-groups/philippines" },
+      { name: "SLC Management", value: "sunlife:source/business-groups/slc-management" },
+      { name: "Asia", value: "sunlife:source/business-groups/asia" },
+      { name: "U.S.", value: "sunlife:source/business-groups/us" },
+      { name: "U.K.", value: "sunlife:source/business-groups/uk" },
+      { name: "Vietnam", value: "sunlife:source/business-groups/vietnam" }
+    ]};
+    this.state.topicsList = {
+      name:"Topics",
+      tags:[
+      { name: "Business continuity", value: "sunlife:source/topics/business-continuity" },
+      { name: "Business critical", value: "sunlife:source/topics/business-critical" },
+      { name: "Client stories", value: "sunlife:source/topics/client-stories" },
+      { name: "Company performance", value: "sunlife:source/topics/company-performance" },
+      { name: "Compliance", value: "sunlife:source/topics/compliance" },
+      { name: "Corporate Real Estate", value: "sunlife:source/topics/corporate-real-estate" },
+      { name: "COVID-19", value: "sunlife:source/topics/covid-19" },
+      { name: "Digital Enterprise", value: "sunlife:source/topics/digital-enterprise" },
+      { name: "Diversity & Inclusion", value: "sunlife:source/topics/diversity-&-inclusion" },
+      { name: "Employee engagement", value: "sunlife:source/topics/employee-engagement" },
+      { name: "General HR", value: "sunlife:source/topics/general-HR" },
+      { name: "Innovation", value: "sunlife:source/topics/innovation" },
+      { name: "My Benefits and Wellness", value: "sunlife:source/topics/my-benefits-and-wellness" },
+      { name: "My Career", value: "sunlife:source/topics/my-career" },
+      { name: "My Learning", value: "sunlife:source/topics/my-learning" },
+      { name: "My Pay", value: "sunlife:source/topics/my-pay" },
+      { name: "Organization announcements", value: "sunlife:source/topics/organization-announcements" },
+      { name: "Philanthropy/Sponsorship", value: "sunlife:source/topics/philanthropy-sponsorship" },
+      { name: "Recognition", value: "sunlife:source/topics/recognition" },
+      { name: "Sustainability", value: "sunlife:source/topics/sustainability" },
+      { name: "Technology", value: "sunlife:source/topics/technology" }
+    ]};
+    this.state.businessGroupList.tags.forEach((data) => {
+      data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
+    });
+    this.state.topicsList.tags.forEach((data) => {
+      data["isChecked"] = false;
+      this.state.selectedPreferenceList.forEach(prefer => {
+        if (prefer === data.value) {
+          data["isChecked"] = true;
+        }
+      })
+    });
+    let pinnedNewsList = [];
+    let preferedNewsList = [];
+    if (this.state.selectedPreferenceList.length > 0) {
+      preferedNewsList = this.state.newsList.filter((news) => {
+        return (!news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+      });
+      pinnedNewsList = this.state.newsList.filter((news) => {
+        return (news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+      });
+    } else {
+      preferedNewsList = this.state.newsList;
+    }
+    pinnedNewsList.sort(function (a, b) {
+      return (a.pinArticle - b.pinArticle || b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+    });
+    preferedNewsList.sort(function (a, b) {
+      return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+    });
+    this.state.filterNewsList = this.mergeArray(preferedNewsList,pinnedNewsList,pinnedNewsList[0].pinArticle - 1);
+    this.setState({
+      filterNewsList: this.state.filterNewsList,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList,
+    })
+  }
+
+  mergeArray(a, b, i) {
+    return a.slice(0, i).concat(b, a.slice(i));
   }
 
   render() {
@@ -1303,7 +1309,7 @@ class NewsTiles extends React.Component {
                   </div>
                 </div>
               }
-              {this.props.newsListContainer == "true" && 
+              {this.props.newsListContainer == "true" && this.state.filterNewsList.length > 0 &&
                 <div class="row news-list-container">
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                     {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
