@@ -29,6 +29,7 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
@@ -50,9 +51,6 @@ public class NewsArticleModel {
 
 	/** The Constant JCR_CONTENT_METADATA. */
 	private static final String JCR_CONTENT_METADATA = "/jcr:content/metadata";
-
-	/** The Constant CQ_TAGS. */
-	private static final String CQ_TAGS = "cq:tags";
 
 	/** The Constant COLON_CHAR. */
 	private static final char COLON_CHAR = ':';
@@ -220,7 +218,7 @@ public class NewsArticleModel {
 	 * @return the tag list
 	 */
 	public List<String> getTagList() {
-		return tagList;
+		return Collections.unmodifiableList(tagList);
 	}
 
 	/**
@@ -230,7 +228,7 @@ public class NewsArticleModel {
 	 *          the new tag list
 	 */
 	public void setTagList(List<String> tagList) {
-		this.tagList = tagList;
+		this.tagList = Collections.unmodifiableList(tagList);
 	}
 
 	/**
@@ -281,7 +279,7 @@ public class NewsArticleModel {
 			final Resource metaDataResource = resourceResolver.getResource(getFragmentPath().concat(JCR_CONTENT_METADATA));
 			if (null != metaDataResource) {
 				final ValueMap metaDataContent = metaDataResource.getValueMap();
-				String[] cfTagsArray = metaDataContent.containsKey(CQ_TAGS) ? metaDataContent.get(CQ_TAGS, String[].class)
+				String[] cfTagsArray = metaDataContent.containsKey(TagConstants.PN_TAGS) ? metaDataContent.get(TagConstants.PN_TAGS, String[].class)
 						: null;
 				List<String> contentFragmentTagList = new ArrayList<>();
 				if (cfTagsArray != null) {
