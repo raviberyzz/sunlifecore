@@ -24,7 +24,7 @@ $(document).ready(function () {
 	if ($('.time-widget')) {
 		$('.time-widget form .dropdown .cmp-form-options__field--drop-down').on('change', function(){
 			var todate = moment(new Date());
-			var timeVal = $(this).attr('value');
+			var timeVal = $(this).val();
 			$('#timeVal').val(todate.tz(timeVal).format('dddd h:mm a'));
 		})
 	}
