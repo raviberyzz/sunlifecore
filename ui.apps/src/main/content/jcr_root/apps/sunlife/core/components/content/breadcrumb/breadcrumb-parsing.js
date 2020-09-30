@@ -18,10 +18,21 @@ use(function () {
         };
     }
 
-    var updatedUrl = navPath.substring(siteUrl.lastIndexOf('/'),navPath.lastIndexOf('.'));
+    var updatedUrl = navPath.substring(siteUrl.lastIndexOf('/'),navPath.lastIndexOf('.')) + "/";
 
-     return {
-           updatedUrl : updatedUrl
-        }
+    var domain = configService.getConfigValues('item0_domain', currentPage.getPath());
+
+    if(domain == null || domain.equals("")){
+       return {
+               navPath : navPath
+        };
+       }
+    var completeURL = domain + updatedUrl;
+    return {
+            completeURL : completeURL
+    }
+
+
+
 
 });
