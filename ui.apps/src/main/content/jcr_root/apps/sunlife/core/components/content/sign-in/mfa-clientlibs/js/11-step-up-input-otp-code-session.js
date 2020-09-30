@@ -3,6 +3,8 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
   this.clientContext = null;
   this.submitHandler = null;
+  this.alreadyLoaded = false;
+  this.resendCodeMsgTimer = null;
 
   this.startSession = function (description, mode, actionContext, clientContext) {
     console.log("started new ".concat(mode, " OTP session"));
@@ -55,6 +57,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   };
 
   this.endSession = function () {
+     clearTimeout(this.resendCodeMsgTimer);
     console.log('OTP session ended');
   };
 
@@ -84,9 +87,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     this.renderWaitingForInput = function(format, target) {
         var self = this;
         var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
-
-
+        if(!this.alreadyLoaded){
         $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-input-otp-code.html", function(data){
+            self.alreadyLoaded = true;
             $(self.clientContext.uiContainer).html(data);
             $("#step-up-input-otp-code-screen-input-label").html(selectedNumber);  
             $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
@@ -94,6 +97,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
             $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked);
             $("#step-up-input-otp-code-screen-input").attr("placeholder", self.generatePlaceholder(format));
         });
+      }
     }
 
     this.onCancelClicked = function(){
@@ -115,46 +119,30 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     
     /*$("#verify-code").on("click", function() {
         
-    })
+    })*/
     
-    $('#mfa-code').parsley().on('field:error', function() {
-        $("label[for='mfa-code']").addClass("label-error");
-        $("#step-up-input-otp-code-screen-input_resend_button").addClass("mar-top-10").removeClass("mar-top-30");
-    });
-    
-    $('#mfa-code').parsley().on('field:success', function() {
-        $("label[for='mfa-code']").removeClass("label-error");
-        $("step-up-input-otp-code-screen-input_resend_button").addClass("mar-top-30").removeClass("mar-top-10");
-    });*/
-
   this.onSubmitClicked = function () {
-   // $('#mfa-form').parsley().validate();
+   
     if ( $('#mfa-form').parsley().validate()){
     var code = $("#step-up-input-otp-code-screen-input").val();
     var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
     var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
-
     _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
-    }
+
+     }
   };
 
   this.onResendClicked = function () {
 
-    let alertMarkup = '<div role="alertdialog" role="alert" aria-labelledby="newCodeSentTxt" class="slf-alert-box slf-green-bg-10 mar-top-25 mar-bottom-25">';
-    alertMarkup += '<p id="newCodeSentTxt" class="no-padding">A new code has been sent</p>';
-    alertMarkup += '</div>';
-
-    $("#otp-resend-alert-msg").html(alertMarkup);
-    $("step-up-input-otp-code-screen-input_resend_button").hide();
+    $("#otp-resend-alert-msg").removeClass("hidden");
+    $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();
     var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(resend);
-
     _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
-
-     setTimeout(
+     this.resendCodeMsgTimer =  setTimeout(
          function(){
             $("#step-up-input-otp-code-screen-input_resend_button").show();
-            $("#otp-resend-alert-msg").empty();
+            $("#otp-resend-alert-msg").addClass("hidden"); 
         }, 
        30000
       );
@@ -162,7 +150,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
   this.generatePlaceholder = function (digitCount) {
     var length = digitCount.getOtpLength();
-    return "x".repeat(length);
+     return "x".repeat(length);
   }; // Logic to resolve the target selection programmatically
 
     // Logic to resolve the target selection programmatically
@@ -185,3 +173,4 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
 
 }
+
