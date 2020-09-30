@@ -409,4 +409,22 @@
 
 /** Fix for distorted border ends **/
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.carousel-client-story {
+		.cmp-carousel__content {
+			.teaser {
+				.left-item {
+					display: table;
+				}
+
+			}
+			.circle-150-mobile .left-item img {
+				padding: 0 !important;
+				border: 4px solid $primary-yellow-background;
+			}
+		}
+	}
+
+}
+
 /* client story specific styles ends */
