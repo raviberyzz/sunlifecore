@@ -39,18 +39,31 @@
     }
     .old-comments{
         margin:30px 0 0 0;
-        .name-time{
-            margin-bottom:5px;
-            .name{
-                color:$medium-blue-color;
-                font-weight:600;
-                padding-right: 20px;
+        width:90%;
+        section{
+            background-color:$light-grey-separator-color;
+            width:60%;
+            padding:10px;
+            border-radius:10px;
+            .name-time{
+                margin-bottom:5px;
+                .name{
+                    color:$medium-blue-color;
+                    font-weight:600;
+                    padding-right: 20px;
+                }
+            }
+            .desc{
+                width:70%;
+                text-align:left;
+                line-height:20px;
             }
         }
-        .desc{
-            width:70%;
-            text-align:left;
-            line-height:20px;
+        .three-dots,.comment-option{
+            display:none;
+            &.show{
+                display: block;
+            }
         }
     }
     .add-comment{
@@ -89,6 +102,12 @@
                 left:50%;
                 top:0%;
                 transform: translate(-50%,0%);
+            }
+        }
+        .old-comments{
+            width:100%;
+            section{
+                width:90%;
             }
         }
     }
