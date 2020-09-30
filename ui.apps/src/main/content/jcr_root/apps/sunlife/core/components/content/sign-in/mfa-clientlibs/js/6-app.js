@@ -166,8 +166,8 @@ function initJourneyPlayer() {
 // Transmit related helper methods
 
 function getTransmitConnectionSettings() {
-     // var serverUrl = "https://mfa-uat.sunlifecorp.com";
-  var serverUrl = "https://mfa-dev.sunlifecorp.com";
+     // var serverUrl = "https://mfa-uat.sunlifecorp.com";//sit
+  var serverUrl = "https://mfa-dev.sunlifecorp.com";//dev
   var appId = "mfa_signin";
   var apiTokenId = "";
   var apiToken = "";
