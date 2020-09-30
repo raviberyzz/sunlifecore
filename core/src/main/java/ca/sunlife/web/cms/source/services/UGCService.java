@@ -17,6 +17,17 @@ import ca.sunlife.web.cms.core.exception.SystemException;
  */
 public interface UGCService {
 
-	public String callWebService(String url, String methodType, String userInfo, Map<String, String[]> requestParams) throws ApplicationException, SystemException, IOException;
-	
+	/**
+	 * @param url
+	 * @param methodType
+	 * @param userInfo
+	 * @param requestParams
+	 * @return
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 * @throws IOException
+	 */
+	public String callWebService (String url, String methodType, String userInfo, Map<String, String[]> requestParams)
+			throws ApplicationException, SystemException, IOException;
+
 }
