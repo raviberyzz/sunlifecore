@@ -16,20 +16,27 @@ import ca.sunlife.web.cms.core.exception.SystemException;
  */
 public interface RestService {
 
-  /**
-   * Call get web service.
-   *
-   * @param url
-   *          the url
-   * @return the string
-   * @throws ApplicationException
-   *           the application exception
-   * @throws SystemException
-   *           the system exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   */
-  public String callGetWebService(String url)
-      throws ApplicationException, SystemException, IOException;
+	/**
+	 * @param url
+	 * @param requestHeaders
+	 * @return
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 * @throws IOException
+	 */
+	String callGetWebService (final String url, final String requestHeaders)
+			throws ApplicationException, SystemException, IOException;
+
+	/**
+	 * @param url
+	 * @param requestHeaders
+	 * @param requestParams
+	 * @return
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 * @throws IOException
+	 */
+	String callPostWebService (final String url, final String requestHeaders, final String requestParams)
+			throws ApplicationException, SystemException, IOException;
 
 }

@@ -131,27 +131,37 @@
   border-bottom: 1px solid #d7d7d7;
 }
 
-#mfa-container .sub-container .slf-green-bg-10:before  {
-border: 1px solid #18ac3d !important;
-  content: "\f00c" !important;
-  font-family: FontAwesome;
-  font-size: 30px;
-  padding-right: 15px;
-  padding-top: 2px;
+
+#mfa-container .slf-alert-box.slf-green-bg-10 {
+  border: 1px solid;
+  background: #edf0ea;
+  color: #536b2d;
 }
 
-@media (min-width: 768px){
 #mfa-container .sub-container .slf-alert-box:before {
-  content: "\f00c" !important;
+  content: "\f058";
+}
+
+#mfa-container .slf-alert-box:before {
+  content: "\f05a";
   font-family: FontAwesome;
   font-size: 30px;
   padding-right: 15px;
   padding-top: 2px;
 }
-}
-
 
 #mfa-container .sub-container .legend-normal {
    font-size: 18px;
+}
+
+#mfa-container .sub-container .input label {
+  position: absolute;
+  color: #757575;
+  pointer-events: none;
+  top: 12px;
+  left: 17px;
+  transition: all .2s ease;
+  background-color: #fff;
+  padding: 0 .8rem .4rem;
 }
   

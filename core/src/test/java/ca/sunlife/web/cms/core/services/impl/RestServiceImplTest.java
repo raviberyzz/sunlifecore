@@ -99,7 +99,7 @@ class RestServiceImplTest {
     restServiceImpl.activate(restClientConfig);
     String testResponse = null;
     try {
-      testResponse = restServiceImpl.callGetWebService(url);
+      testResponse = restServiceImpl.callGetWebService(url, null);
       Assert.assertTrue(testResponse
           .contains("<title>Life Insurance, Investments &amp; Group Benefits | Sun Life</title>"));
     } catch (Exception e) {
@@ -124,7 +124,7 @@ class RestServiceImplTest {
     String testResponse = null;
     try {
       restServiceImpl.activate(restClientConfig);
-      testResponse = restServiceImpl.callGetWebService(url);
+      testResponse = restServiceImpl.callGetWebService(url, null);
       Assert.assertTrue(testResponse
           .contains("<title>Life Insurance, Investments &amp; Group Benefits | Sun Life</title>"));
     } catch (Exception e) {
@@ -146,7 +146,7 @@ class RestServiceImplTest {
     String url = "https://www.sunlife/";
     restServiceImpl.activate(restClientConfig);
     Assertions.assertThrows(IOException.class , () -> {
-      restServiceImpl.callGetWebService(url);
+      restServiceImpl.callGetWebService(url, null);
     });
   }
 
@@ -164,7 +164,7 @@ class RestServiceImplTest {
     String url = "https://www.sunlife.ca/demo";
     restServiceImpl.activate(restClientConfig);
     try {
-      restServiceImpl.callGetWebService(url);
+      restServiceImpl.callGetWebService(url, null);
     } catch (Exception e) {
       assertTrue(e instanceof Exception);
     }

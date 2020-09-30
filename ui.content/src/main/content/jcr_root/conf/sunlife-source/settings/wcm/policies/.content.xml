@@ -1812,6 +1812,11 @@
                                             cq:styleId="1594574302782"
                                             cq:styleLabel="Generic Form"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item3
+                                            cq:styleClasses="time-widget"
+                                            cq:styleId="1601391356010"
+                                            cq:styleLabel="Time widget"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
                                 <item3
