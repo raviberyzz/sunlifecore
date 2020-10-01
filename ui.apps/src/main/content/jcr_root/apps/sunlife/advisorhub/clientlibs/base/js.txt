@@ -1,0 +1,6 @@
+#base=js
+language-toggle.js
+signinwidget.js
+slgi-accessibility.js
+slgi-controller.js
+slgi-init.js
