@@ -207,4 +207,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getEnableContextHub();
+  
+  /**
+   * Gets the mfaDomainPath param.
+   *
+   * @return the mfaDomainPath param
+   */
+  @ Inject
+  String getMfaDomainPath();
 }
