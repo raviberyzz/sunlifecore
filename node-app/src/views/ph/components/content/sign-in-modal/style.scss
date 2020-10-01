@@ -28,6 +28,9 @@
     .login-container .signin-terms {
         margin-bottom: 0;
     }
+    #signErr {
+        padding: 16px;
+    }
 }
 
 @media (max-width:$tab-screen-max) {
