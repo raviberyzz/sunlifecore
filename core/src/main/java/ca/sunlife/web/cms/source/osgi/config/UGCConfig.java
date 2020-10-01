@@ -12,7 +12,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  * @author TCS
  * @version 1.0
  */
-@ ObjectClassDefinition (name = "Sun Life - Source - News Configuration", description = "Source - UGC Services Configuration")
+@ ObjectClassDefinition (name = "Source - UGC Services Configuration", description = "Source - UGC Services Configuration")
 public @interface UGCConfig {
 
 	/**
@@ -30,6 +30,14 @@ public @interface UGCConfig {
    */
   @ AttributeDefinition (name = "getUGCServiceDomain", description = "UGC service doamin")
   String getUGCServiceDomain ();
+  
+  /**
+   * Gets the UGC service auth token.
+   *
+   * @return the UGC service auth token
+   */
+  @ AttributeDefinition (name = "getAuthToken", description = "UGC service authentication token")
+  String getAuthToken ();
   
   /**
    * Gets the UGC services.
