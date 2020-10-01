@@ -164,4 +164,8 @@
   background-color: #fff;
   padding: 0 .8rem .4rem;
 }
+
+.modal-backdrop{
+  position: fixed;
+}
   

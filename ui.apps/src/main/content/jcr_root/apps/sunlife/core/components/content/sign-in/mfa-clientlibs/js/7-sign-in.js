@@ -32,6 +32,7 @@ function onSignInClick() {
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
     $("#mfa_signin_modal").modal("show");
+     journeyPlayer.cancelCurrentRunningControlFlow();
      journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
         
             journeyEnded(clientContext);
@@ -46,6 +47,7 @@ function onSignInClick() {
         })
         .catch(function(error) {
             journeyEnded(clientContext);
+            onLogout();
             console.error("Authenticate Error: ".concat(error));       
         });
   
