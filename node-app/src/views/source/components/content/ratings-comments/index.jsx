@@ -10,7 +10,7 @@ class ArticleRatings extends React.Component {
       ratingExist: false,
       articlePath: "",
       siteName: "ca",
-      userACF2Id: "yq14",
+      userACF2Id: "yq15",
       apiCall: {},
     };
     this.articlePathFun = this.articlePathFun.bind(this);
@@ -37,7 +37,6 @@ class ArticleRatings extends React.Component {
     return articlePath1;
   }
   getRatingComment() {
-    console.log(this.state.articlePath);
     let data1 = {
       articlePath: this.state.articlePath,
       siteName: this.state.siteName,
@@ -253,7 +252,6 @@ class ArticleComments extends React.Component {
       if (value) {
         let cdate = value.updatedDate.split("T")[0];
         cdate = this.dateChange(cdate);
-        //console.log(cdate);
         commentArray[index].updatedDate = cdate;
       }
     });
@@ -358,7 +356,9 @@ class ArticleComments extends React.Component {
                 </p>
                 <p class="desc">{value.commentText}</p>
               </section>
-              <p class="three-dots">...</p>
+              <div class="three-dots">
+                <p>...</p>
+              </div>
               <div class="comment-option">
                 <ul>
                   <li>Delete</li>

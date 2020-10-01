@@ -100,7 +100,7 @@ function onLogout() {
   journeyPlayer.logout().then(function (results) {
     updateSessionToken(null); // clears the token from the session
 
-    //showSignInDiv();
+    showSignInDiv();
   }).catch(function (error) {
     console.log("Authenticate Error: ".concat(error));
   });
@@ -166,12 +166,13 @@ function initJourneyPlayer() {
 // Transmit related helper methods
 
 function getTransmitConnectionSettings() {
-     // var serverUrl = "https://mfa-uat.sunlifecorp.com";//sit
-  var serverUrl = "https://mfa-dev.sunlifecorp.com";//dev
+    
+    // var serverUrl = "https://mfa-uat.sunlifecorp.com";
+    //var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var apiTokenId = "";
   var apiToken = "";
-  var realm = ""; //let settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId, apiTokenId, apiToken);
+  var realm = ""; 
 
     //let settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId, apiTokenId, apiToken);
   var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
