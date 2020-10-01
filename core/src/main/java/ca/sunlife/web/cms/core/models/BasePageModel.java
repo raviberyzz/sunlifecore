@@ -78,6 +78,9 @@ public class BasePageModel {
 
   /** The Constant DOMAIN_STR. */
   private static final String DOMAIN_STR = "domain";
+  
+  /** The Constant Extra Clientlibs. */
+  private static final String EXTRA_CLIENTLIBS = "extraClientlibs";
 
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
@@ -311,6 +314,9 @@ public class BasePageModel {
   
   /** The enable context hinub. */
   private String enableContextHub;
+  
+  /** The extra Clientlibs. */
+  private String extraClientlibs;
 
   /**
    * Gets the page title tag.
@@ -767,6 +773,22 @@ public class BasePageModel {
 	}
 
 	/**
+	 * Gets the extraClientlibs
+	 * 
+	 * @return the extraClientlibs
+	 */
+	public String getExtraClientlibs() {
+		return extraClientlibs;
+	}
+
+	/**
+	 * @param extraClientlibs
+	 *          the extraClientlibs to set
+	 */
+	public void setExtraClientlibs(String extraClientlibs) {
+		this.extraClientlibs = extraClientlibs;
+	}
+	/**
    * Inits the.
    *
    * @throws LoginException
@@ -784,6 +806,7 @@ public class BasePageModel {
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         pagePath);
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
+    extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }

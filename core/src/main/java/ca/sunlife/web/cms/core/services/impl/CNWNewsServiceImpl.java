@@ -148,7 +148,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     importUrl.append("&limit=");
     importUrl.append(numberOfNews);
 
-    final String response = restService.callGetWebService(importUrl.toString());
+    final String response = restService.callGetWebService(importUrl.toString(), null);
     if (null != response && response.length() > 0) {
       releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
     }
@@ -224,7 +224,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     }
     logger.debug("importUrl: {}", importUrl);
     final ReleaseMain news = new ObjectMapper()
-        .readValue(restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
+        .readValue(restService.callGetWebService(importUrl.toString(), null), ReleaseMain.class);
     if (null != news && null != news.getReleases() && null != news.getReleases().getRelease()) {
       news.getReleases().getRelease().stream().forEach(o -> {
         try {
@@ -369,7 +369,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     importUrl.append(HTML_SAFE);
     importUrl.append(FORMAT_JSON);
     importUrl.append("&id=" + id);
-    newsDetails = new ObjectMapper().readValue(restService.callGetWebService(importUrl.toString()),
+    newsDetails = new ObjectMapper().readValue(restService.callGetWebService(importUrl.toString(), null),
         NewsDetails.class);
     newsDetails.getRelease()
         .setReleaseDate(new SimpleDateFormat(dateFormatMap.get(locale), new Locale(locale))

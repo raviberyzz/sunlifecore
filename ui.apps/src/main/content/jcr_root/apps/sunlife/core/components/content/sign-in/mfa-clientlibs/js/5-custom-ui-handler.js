@@ -22,7 +22,8 @@ CustomUIHandler.prototype.createOtpAuthSession = function(title, username, possi
 CustomUIHandler.prototype.createPasswordAuthSession = function(title, username) {
     return new PasswordAuthenticatorSession(title, username);
 }
-    
+
+
 CustomUIHandler.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
     return new Promise(function(resolve, reject) {
         const shouldStoreJSON = clientContext["shouldStoreJSON"];
@@ -65,6 +66,7 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
         resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
         if(jsonData.target != undefined && jsonData.target != ""){
             window.location.href = jsonData.target;
+           console.log("Redirecting to PPHP...");
           }
     });
 }
@@ -77,15 +79,13 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
                 alert("User is locked");
-                
                
-                $.get("/content/dam/sunlife/external/signin/transmit/html/account-locked-out.html", function (data) {
+                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
                     $(clientContext.uiContainer).html(data);
               });
             } else {
-               
-             
-               $.get("/content/dam/sunlife/external/signin/transmit/html/come-back-later.html", function (data) {
+                
+               $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
                 $(clientContext.uiContainer).html(data);
           });
 
@@ -93,4 +93,20 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
     }
     resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
     });
+}
+
+CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) {
+    console.log('start');
+}
+  
+CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) {
+    console.log('end');
+}
+
+UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, clientContext) {
+    console.log('start x');
+}
+  
+UIHandlerForStepUp.prototype.endActivityIndicator = function(actionContext, clientContext) {
+    console.log('end x');
 }

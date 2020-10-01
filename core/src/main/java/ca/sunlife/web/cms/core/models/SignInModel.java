@@ -51,6 +51,9 @@ public class SignInModel {
     /** The Constant DOMAIN_STR. */
     private static final String DOMAIN_STR = "domain";
     
+    /** The Constant MFA_DOMAIN_PATH. */
+    private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
+    
 	/** The Constant SEPARATOR. */
 	private static final String SEPARATOR = "|";
 
@@ -136,6 +139,9 @@ public class SignInModel {
 
 	/** The target. */
 	private String target;
+	
+	/** The mfaDomainPath. */
+	private String mfaDomainPath;
 	
 	/** The isTargetPathAbsolute. */
 	@Inject
@@ -411,6 +417,20 @@ public class SignInModel {
 	public void setTarget(final String target) {
 		this.target = target;
 	}
+	
+	/**
+	 * @return the mfaDomainPath
+	 */
+	public String getMfaDomainPath() {
+		return mfaDomainPath;
+	}
+
+	/**
+	 * @param mfaDomainPath the mfaDomainPath to set
+	 */
+	public void setMfaDomainPath(final String mfaDomainPath) {
+		this.mfaDomainPath = mfaDomainPath;
+	}
 
 	/**
 	 * @return the isTargetPathAbsolute
@@ -479,6 +499,8 @@ public class SignInModel {
 		try {
 			final String pagePath = currentPage.getPath();
 		    final String domainName = configService.getConfigValues(DOMAIN_STR, pagePath);
+		    mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
+		    
 			if (null != domain && !StringUtils.isEmpty(domain)) {
 				String domainTargetArray[] = domain.split(Pattern.quote(SEPARATOR));
 				if (domainTargetArray.length > 1) {

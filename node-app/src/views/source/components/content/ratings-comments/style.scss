@@ -38,19 +38,49 @@
         margin-bottom:0; 
     }
     .old-comments{
+        display: flex;
         margin:30px 0 0 0;
-        .name-time{
-            margin-bottom:5px;
-            .name{
-                color:$medium-blue-color;
-                font-weight:600;
-                padding-right: 20px;
+        width:90%;
+        section{
+            background-color:$light-grey-separator-color;
+            width:60%;
+            padding:10px;
+            border-radius:10px;
+            .name-time{
+                margin-bottom:5px;
+                .name{
+                    color:$medium-blue-color;
+                    font-weight:600;
+                    padding-right: 20px;
+                }
+            }
+            .desc{
+                width:70%;
+                text-align:left;
+                line-height:20px;
             }
         }
-        .desc{
-            width:70%;
-            text-align:left;
-            line-height:20px;
+        .three-dots,.comment-option{
+            //display:none;
+            display: block;
+            &.show{
+                display: block;
+            }
+        }
+        .three-dots{
+            width:5%;
+            position: relative;
+            text-align:center;
+            p{
+                border-radius:50%;
+                width:80%;
+                padding-bottom: 6px;
+                shape-outside: circle(50%);
+                position: relative; 
+                top:50%;
+                transform: translateY(-50%);
+                background-color:$light-grey-separator-color;
+            }
         }
     }
     .add-comment{
@@ -89,6 +119,12 @@
                 left:50%;
                 top:0%;
                 transform: translate(-50%,0%);
+            }
+        }
+        .old-comments{
+            width:100%;
+            section{
+                width:90%;
             }
         }
     }

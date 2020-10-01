@@ -74,7 +74,7 @@ public class AdvisorDetailServiceImpl implements AdvisorDetailService {
       builder.append("&encodedAdvisorId=" + advisorId);
       builder.append("&clientVersion=1.0");
       logger.debug("getAdvisorDetails url: {}", builder);
-      return restService.callGetWebService(builder.toString());
+      return restService.callGetWebService(builder.toString(), null);
     } catch (final IOException e) {
       throw new ApplicationException(ErrorCodes.APP_ERROR_001, e);
     }

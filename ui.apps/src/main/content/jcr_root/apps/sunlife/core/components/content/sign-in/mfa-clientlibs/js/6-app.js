@@ -1,3 +1,4 @@
+console.log("On loading app.js " + serverUrl);
 var journeyPlayer = xmsdk.XmSdk(); // the Transmit SDK object
 
 var XmUIHandler = new xmui.XmUIHandler(); // the default UI Handler
@@ -152,7 +153,7 @@ function initJourneyPlayer() {
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized succesfuly: ".concat(results));
-
+    
     if (!getSessionToken()) {
       showSignInDiv();
     } else {
@@ -166,13 +167,14 @@ function initJourneyPlayer() {
 // Transmit related helper methods
 
 function getTransmitConnectionSettings() {
-    
-   var serverUrl = "https://mfa-dev.sunlifecorp.com";
-    //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+  serverUrl=serverUrl;
+  console.log("From getTransmit method " + serverUrl);
+    // var serverUrl = "https://mfa-uat.sunlifecorp.com";
+    //var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var apiTokenId = "";
   var apiToken = "";
-  var realm = ""; //let settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId, apiTokenId, apiToken);
+  var realm = ""; 
 
     //let settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId, apiTokenId, apiToken);
   var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);

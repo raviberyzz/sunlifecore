@@ -32,3 +32,8 @@
         padding:0;
     }
 }
+@media(max-width:$tab-screen-max){
+    .news-article-wrapper{
+        padding:0 10px;
+    }
+}

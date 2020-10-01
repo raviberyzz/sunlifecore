@@ -1,31 +1,51 @@
 @import '../../../base/core';
-    .sign-in-modal-wrapper {
-        .modal-dialog {
-            width: 365px;
-        }
-         .modal-content {
-            background: $medium-yellow-background;
-        }
-        .modal-body {
-            padding: 24px 24px 40px 24px;
-        }
-        .icon-reg {
-            top: auto;
-            padding: 14px;
-        }
-        .h4 {
-            font-family: 'sunlife-sans';
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 24px;
-        }
-        .form_signon {
-            input {
-                width: 317px;
-                border: 1px solid $light-grey-color;
-            }
-        }
-        .login-container .signin-terms {
-            margin-bottom: 0;
+.sign-in-modal-wrapper {
+    .modal-dialog {
+        width: 366px;
+    }
+        .modal-content {
+        background: $medium-yellow-background;
+    }
+    .modal-body {
+        padding: 24px 24px 40px 24px;
+    }
+    .icon-reg {
+        top: auto;
+        padding: 14px;
+    }
+    .h4 {
+        font-family: 'sunlife-sans';
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    #form_signon {
+        input {
+            width: 317px;
+            border: 1px solid $light-grey-color;
         }
     }
+    .login-container .signin-terms {
+        margin-bottom: 0;
+    }
+    #signErr {
+        padding: 16px;
+    }
+}
+
+@media (max-width:$tab-screen-max) {
+    .sign-in-modal-wrapper {
+        .login-container{
+            .download-app {
+                display: block;
+                width: auto;
+                margin-left: -24px;
+                margin-right: -24px;
+                padding: 8px 10px;
+                a img {
+                    float: left;
+                }
+           }
+        }
+    } 
+}

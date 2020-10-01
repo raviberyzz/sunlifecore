@@ -1,6 +1,6 @@
-$(document).ready(function () {  
+$(document).ready(function () {
 	//for footer
-	if ( $('#mainfooter .teaser').length ==0 ) {
+	if ($('#mainfooter .teaser').length == 0) {
 		if ($(window).width() < 768) {
 			$('#mainfooter .social-link-icon-wrapper').css({ "padding": "0" });
 		} else {
@@ -18,5 +18,14 @@ $(document).ready(function () {
 			}
 		});
 
+	}
+
+	// What time is it widget logic
+	if ($('.time-widget')) {
+		$('.time-widget form .dropdown .cmp-form-options__field--drop-down').on('change', function(){
+			var todate = moment(new Date());
+			var timeVal = $(this).val();
+			$('#timeVal').val(todate.tz(timeVal).format('dddd h:mm a'));
+		})
 	}
 });
