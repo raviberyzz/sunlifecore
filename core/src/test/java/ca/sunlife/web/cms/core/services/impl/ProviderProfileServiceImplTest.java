@@ -89,7 +89,7 @@ public class ProviderProfileServiceImplTest {
 	void testGetProviderProfile() {
 		try {
 			profileServiceImpl.activate(providerProfileConfig);
-			when(restService.callGetWebService("/providerProfile?providerId=120000&locale=en_CA")).thenReturn("{\"providerId\":\"10000\"}");
+			when(restService.callGetWebService("/providerProfile?providerId=120000&locale=en_CA", null)).thenReturn("{\"providerId\":\"10000\"}");
 			assertEquals("<p>10000</p>", profileServiceImpl.getProviderProfile("en_CA", "providerId|120000", "<p>{{providerId}}</p>"));
 		} catch (ApplicationException | SystemException | IOException e) {
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class ProviderProfileServiceImplTest {
 	void testGetProviderProfileWhenException() {
 		try {
 			profileServiceImpl.activate(providerProfileConfig);
-			when(restService.callGetWebService("/providerProfile?providerId=120000&locale=en_CA")).thenThrow(new ApplicationException());
+			when(restService.callGetWebService("/providerProfile?providerId=120000&locale=en_CA", null)).thenThrow(new ApplicationException());
 			profileServiceImpl.getProviderProfile("en_CA", "providerId|120000", "<p>{{providerId}}</p>");
 		} catch (ApplicationException | SystemException | IOException e) {
 			assertTrue(e instanceof ApplicationException);

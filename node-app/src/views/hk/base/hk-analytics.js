@@ -58,7 +58,7 @@ $("#SignIn,#signinbutton").unbind("click");
 $("#SignIn,#signinbutton").click(function(){
     utag.link({ 
         ev_type: "authenticate", 
-        ev_action: "clk", 
+        ev_action: "signin", 
         ev_title: "sign in", 
         ev_data_one: "existing client"
 });
@@ -67,7 +67,7 @@ $("#SignIn,#signinbutton").click(function(){
         var signLink=$(this).text();
         utag.link({ 
             ev_type: "authenticate", 
-            ev_action: "clk", 
+            ev_action: "signin", 
             ev_title: "sign in", 
             ev_data_one: signLink
         });

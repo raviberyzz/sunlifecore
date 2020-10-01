@@ -95,44 +95,12 @@
             $(".qc_submit_btn a").removeClass("btn-yellow");
             $(".qc_submit_btn a").addClass("btn-blue");
     }
-function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequencyTxt,mYear) {
+function getPremiumPrice( productName,  key,  val,amount,  age,  countryCode, dob, frequencyTxt, mYear) {
+    console.log("product:"+ productName, "key:"+ key, "val:"+ val, "amaount:"+amount,"age"+age, "country"+countryCode,"dob"+dob,"freq:text"+frequencyTxt,"myear"+mYear);
     var key=key;
     let actualValue = "";
     let countrySpecificResponse="";
-    function getCountForHK(){
-        var NUMBER_OF_HITS = 0;
-        var currentDate = moment();
-        NUMBER_OF_HITS = NUMBER_OF_HITS + 1;
-        var uniqueId = "";
-        var currentTime = moment();
-        var gmtTime = currentTime.tz("Etc/GMT");
-        var hkTime = gmtTime.tz("Asia/Hong_Kong");
-        //console.log(hkTime.format());
-        if(!currentDate.isSame(hkTime, 'day')){
-            NUMBER_OF_HITS = 1;
-            currentDate = hkTime;
-        }
-        uniqueId = uniqueId.concat(currentDate.year());
-        if(currentDate.month()<9){
-            uniqueId = uniqueId.concat('0');
-            uniqueId = uniqueId.concat(currentDate.month()+1);
-        }
-        else{
-            uniqueId = uniqueId.concat(currentDate.month()+1);
-        }
-        if(currentDate.date()<10){
-            uniqueId = uniqueId.concat('0');
-            uniqueId = uniqueId.concat(currentDate.date());
-        }
-        else{
-            uniqueId = uniqueId.concat(currentDate.date());
-        }
-        uniqueId = uniqueId.concat('00');
-        uniqueId = uniqueId.concat(NUMBER_OF_HITS);
-        uniqueId=uniqueId.toString();
-        return uniqueId;
-        }
-    let builder='';
+    var JsonArray = new Array();
     try {
         let hostname=window.location.hostname;
         let path="/content/dam/sunlife/legacy/assets/ph/ph-premiumRates.properties"; // ?logActivity=true
@@ -155,26 +123,54 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
             rawFile.send(null);
         }
         readTextFile(url);
-            // $.ajax({
-            //   url:
-            //     "/content/dam/sunlife/legacy/assets/id/id-premiumRates.properties?logActivity=true",
-            //   success: function (result) {
-            //     operator(result);
-            //   },
-            // });
+
         setTimeout(operator,1000);
         function operator(){
             let data='';
-				content=content.toString();
-                content=content.split(productName+'=')[1];
-                content =content.substring(content,content.indexOf("}")+1);                
-                var isCalculable =content.isCalculable;
-                var equation = content.equation;
-                data=content.split(key)[1];
-                data=data.split(":")[1].trim();
-                data=data.substring(data,data.indexOf("]")+1);
-                data=data.trim();
-                data=data.split(",");
+			content=content.toString();
+            content1 = content;
+			//getting data based on productName
+            content=content.split(productName+'=')[1];
+			content =content.substring(content,content.indexOf("}")+1); 
+			//Json format of data
+			contentJson=JSON.parse(content);
+			var isCalculable =contentJson["isCalculable"];
+			var equation = contentJson["equation"];
+
+			if (isCalculable==="true") {
+				console.log("calculable");
+				var isBand = contentJson["isBand"];
+                console.log(isBand);
+				if(isBand==="true") {
+					console.log("is_band");
+				}
+				else {
+					console.log("not_is_band");
+					if ( JsonArray.length >0  ) {
+						console.log("true");
+					}
+					else {
+						var rate=contentJson[key];
+						if(countryCode==(COUNTRY_VN)){
+							rate = rate*(amount/1000);
+						}else{
+							rate = (amount*1000)/(rate*val);
+						}
+
+						console.log(rate);
+					}
+				}
+				
+			}
+			else {
+				console.log("not_calculable");
+			}
+			
+			/*data=content.split(key)[1];
+			data=data.split(":")[1].trim();
+			data=data.substring(data,data.indexOf("]")+1);
+			data=data.trim();
+			data=data.split(",");
 				for(let i=0;i<data.length;i++){
                     data[i]=data[i].trim();
                     let digits = data[i].match(/(\d+)/);
@@ -184,14 +180,11 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
                 console.log("calculable");              
             } else {
                 actualValue=data;
-                }
-            if(countryCode.toLowerCase()=='ph' && actualValue.length() > 0){
-                countrySpecificResponse = sunlife.vgncms.cda.asia.quote.AsiaQuickQuoteCalculation.getPhResult(key,amount, countryCode,dob,frequencyTxt,mYear,actualValue,prop);
+                }*/
+            if(countryCode=='ph' ){
+                countrySpecificResponse = getPhResult(key,amount, countryCode,dob,frequencyTxt,mYear,actualValue, content1);
             }
-            if(countryCode.toLowerCase()=='hk'){
-                getCountForHK();
-                countrySpecificResponse=getCountForHK();
-            }
+           
                 //console.log(builder.concat(actualValue).concat("||"));
                 jspData=builder.concat(actualValue).concat("||");
                 fetching(jspData,productName,freq);
@@ -199,4 +192,43 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
     } catch (e) {
         console.log(e);
     }
+}
+
+function getPhResult(key,amount, countryCode,dob,frequencyTxt,mYear,calculatedAmount,prop) {
+	console.log("ph result fun");
+	var response = "";
+    var wsUrl =prop.split("Ph_WS"+'=')[1];
+	console.log(wsUrl);
+	var smoker="Y";
+	var gender="";
+		if(key!=null){
+			 var keyTokens = key.split("_");
+			 //if key is like 18_NS_M 
+			 if(keyTokens.length > 2){
+				 smoker=keyTokens[1] == ("S") ? "Y" : "N";
+				 gender=keyTokens[2];
+				 
+			 }
+			 //if key is like 18_M 
+			 if(keyTokens.length == 2)
+				 gender=keyTokens[1];
+
+			 console.log(keyTokens);
+		}
+		var jsonRequest =  "{\"questionAndAnswerList\": [{\"question\": \"FLD001\",\"answer\": \""+dob+"\"}, { \"question\": \" FLD002\", \"answer\": \""+gender+"\" },{\"question\": \" FLD003\",\"answer\": \""+smoker+"\" }, {\"question\": \" FLD004\",\"answer\": \""+frequencyTxt+"\"},{ \"question\": \" FLD005\", \"answer\": \""+amount+"\"},{ \"question\": \" FLD006\",\"answer\": \""+mYear+"\" },{ \"question\": \" FLD007\",\"answer\": \""+calculatedAmount+"\"} ]}";
+		$.ajax({
+                type: "POST",
+                url: wsUrl,
+            	data: jsonRequest,
+                dataType: "text",
+           		contenType: "application/json; charset=UTF-8",
+
+            success: function(data){
+            console.log(data);
+        }, 
+               error: function(data){
+            console.log(data);
+        }   
+
+        });
 }

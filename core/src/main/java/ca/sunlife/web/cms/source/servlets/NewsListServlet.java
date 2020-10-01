@@ -28,6 +28,8 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.tagging.TagConstants;
+
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.source.constants.NewsConstants;
 import ca.sunlife.web.cms.source.osgi.config.NewsConfig;
@@ -135,7 +137,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 								.getResource(o.getPath().concat(JCR_CONTENT_METDATA_MASTER));
 						if (null != contentFragmentMetaData) {
 							ValueMap valueMap = contentFragmentMetaData.getValueMap();
-							jsonObject.put(NewsConstants.TAGS_CONSTANT, valueMap.get("cq:tags", String[].class)); // cq:tags
+							jsonObject.put(NewsConstants.TAGS_CONSTANT, valueMap.get(TagConstants.PN_TAGS, String[].class)); // cq:tags
 						}
 						if (null != jsonObject)
 							jsonArray.put(jsonObject);
