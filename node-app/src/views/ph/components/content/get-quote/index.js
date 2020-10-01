@@ -81,8 +81,9 @@ function getAge() {
 function getProductName() {
 
     var productName = "";
-    var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
-    productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, "_");
+   // var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
+    var breadcrumbPathArr = $("meta[property='og:title']").attr('content');
+    productName = breadcrumbPathArr.trim().replace(/ /g, "_");
     return productName;
 }
 
@@ -510,19 +511,20 @@ $(document).ready(function() {
                 key = age + '_' + gender;
 
             var json = new Object();
-            json.key = key;
+            /*json.key = key;
             json.product = product;
             json.freq = freq;
             json.amount = amount;
-            json.age = age;
-            json.country = 'ph';
-            json.freq_text = $('#qc_q4').find("select option:selected").html();
-            json.dob = $("#qc_q1_ans").val();
-            json.investmentYear = getTimeOfInvestment(getProductName()).split(' ')[0];
-            //	console.log("JSON:- " + JSON.stringify(json));
-            jsonData = "data=" + JSON.stringify(json);
+            json.age = age;*/
+            var country = 'ph';
+            var freq_text = $('#qc_q4').find("select option:selected").html();
+            var dob = $("#qc_q1_ans").val();
+            var investmentYear = getTimeOfInvestment(getProductName()).split(' ')[0];
+            //jsonData = "data=" + JSON.stringify(json);
 
-            getPremiumPrice(product,key1,freq,amount,age,countryCode.toLowerCase(),dob,frequencyTxt,mYear); 
+            console.log(product, key, freq, amount, age, country, freq_text, dob, investmentYear);
+
+            getPremiumPrice(product,key,freq,amount,age,country,dob,freq_text,investmentYear); 
 
         }
 
@@ -812,4 +814,3 @@ function advisTrackOnLoad() {
                         });
                     }
 }
- 
