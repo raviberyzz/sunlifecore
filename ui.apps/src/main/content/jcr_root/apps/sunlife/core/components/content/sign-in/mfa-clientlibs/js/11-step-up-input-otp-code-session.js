@@ -1,13 +1,18 @@
 function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   var _this = this;
 
+
   this.clientContext = null;
   this.submitHandler = null;
   this.alreadyLoaded = false;
   this.resendCodeMsgTimer = null;
+  this.actionContext = null;
+  
 
   this.startSession = function (description, mode, actionContext, clientContext) {
     console.log("started new ".concat(mode, " OTP session"));
+    console.log("actionContext :"+actionContext+ ":clientContext :"+clientContext);
+    this.actionContext=actionContext;
     this.clientContext = clientContext;
   };
 
@@ -101,25 +106,18 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     }
 
     this.onCancelClicked = function(){
+
         if (confirm("are you sure you want to cancel the authentication?")) {
-           // const controlRequest = com.ts.mobile.sdk.ControlRequest.create(com.ts.mobile.sdk.ControlRequestType.CancelAuthenticator);
-           // this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createControlResponse(controlRequest));
+
+         console.log("actionContext :"+_this.actionContext);
+          const escapeOptions = _this.actionContext.getEscapeOptions();
+          const cancelOption = escapeOptions.filter(option => option.getId() === "cancel")[0];
+          if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
+          _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
+
         }
-
-      /*  $.get("mfa_signin/"+lang+"/step-up-auth-select-target-form.html", function (data) {
-            $(clientContext.uiContainer).html(data);
-
-           $("#step-up-send-code-button").on("click", function () {
-               handleSendCode.call(self);
-           });
-
-           setPhoneNumbersList.call(self);
-         });*/
     }
     
-    /*$("#verify-code").on("click", function() {
-        
-    })*/
     
   this.onSubmitClicked = function () {
    
@@ -151,7 +149,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.generatePlaceholder = function (digitCount) {
     var length = digitCount.getOtpLength();
      return "x".repeat(length);
-  }; // Logic to resolve the target selection programmatically
+  };
 
     // Logic to resolve the target selection programmatically
 

@@ -38,6 +38,7 @@
         margin-bottom:0; 
     }
     .old-comments{
+        display: flex;
         margin:30px 0 0 0;
         width:90%;
         section{
@@ -60,9 +61,25 @@
             }
         }
         .three-dots,.comment-option{
-            display:none;
+            //display:none;
+            display: block;
             &.show{
                 display: block;
+            }
+        }
+        .three-dots{
+            width:5%;
+            position: relative;
+            text-align:center;
+            p{
+                border-radius:50%;
+                width:80%;
+                padding-bottom: 6px;
+                shape-outside: circle(50%);
+                position: relative; 
+                top:50%;
+                transform: translateY(-50%);
+                background-color:$light-grey-separator-color;
             }
         }
     }

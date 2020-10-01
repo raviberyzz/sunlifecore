@@ -73,10 +73,6 @@ function handleSendCode() {
           setPhoneNumbersList.call(self);
       });
   }
-
-
- 
-  //this.constructor = VerifiedPhoneListFormSession;
    this.constructor=StepUpSelectTargetFormSession;
 }
 
