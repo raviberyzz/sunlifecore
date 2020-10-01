@@ -4,7 +4,6 @@
 package ca.sunlife.web.cms.source.services.impl;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,17 +75,22 @@ public class UGCServiceImpl implements UGCService {
 		if ("GET".equals(methodType)) {
 			StringBuilder url = new StringBuilder(this.ugcConfig.getUGCServiceDomain());
 			url.append(servicesMap.get(serviceUrl));
+			url.append("?siteName=").append(this.ugcConfig.getUGCServiceSite());
 			if (null != requestParams && requestParams.size() > 0) {
 				requestParams.forEach( (key, value) -> {
-					url.append(key);
-					url.append("=");
-					url.append(Arrays.toString(value));
+					url.append("&").append(key).append("=").append(value[0]);
 				});
 			}
+			logger.debug("callWebService :: url :: {}", url);
 			return restService.callGetWebService(url.toString(), userInfo);
 		} else {
 			final JSONObject json = new JSONObject();
 			if (null != requestParams && requestParams.size() > 0) {
+				try {
+					json.put("siteName", this.ugcConfig.getUGCServiceSite());
+				} catch (JSONException e1) {
+					logger.error("JSONException :: while setting site name {}", e1);
+				}
 				requestParams.forEach( (key, value) -> {
 					try {
 						json.put(key, value);
