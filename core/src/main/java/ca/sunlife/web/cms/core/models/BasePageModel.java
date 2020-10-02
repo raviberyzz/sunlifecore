@@ -909,7 +909,8 @@ public class BasePageModel {
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-      otherUDOTagsMap.addProperty("page_canonical_url_default", domain
+      String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+      otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
           .concat(
               shortenURL(masterPagePath, configService.getConfigValues(SITE_URL, masterPagePath)))
           .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical
