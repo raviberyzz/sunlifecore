@@ -8,13 +8,13 @@
 
 <!-- UDO starts here -->
 <script type="text/javascript">
-	  var userInfo;
       var __slf_search_config = {
             api_url: "${baseModel.searchApi @context='unsafe'}",
             autocomplete_url: "${baseModel.autoCompleteUrl @context='unsafe'}",
             sayt_url: "${baseModel.searchApi @context='unsafe'}"
       };
       var utag_data = ${baseModel.udoTags @context='unsafe'};
+	  var userProfileHome;
 </script>
 <sly data-sly-resource="${@path='/apps/sunlife/source/resources/user-info', decorationTagName=''}" />
 <!-- UDO ends here -->
