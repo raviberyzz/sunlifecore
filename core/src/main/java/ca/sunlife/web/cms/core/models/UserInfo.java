@@ -105,6 +105,7 @@ public class UserInfo {
 				userInfoJson.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
 				userInfoJson.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
 				userInfoJson.put(UserInfoConstants.LANGAUGE_CONSTANT, language);
+				userInfoJson.put("home", user.getPath());
 				profile = userInfoJson.toString();
 			} catch (RepositoryException e) {
 				LOG.error("RepositoryException :: UserInfo :: init :: {}", e);
