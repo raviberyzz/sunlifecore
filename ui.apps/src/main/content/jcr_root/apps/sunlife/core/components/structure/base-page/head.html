@@ -19,10 +19,11 @@
     <sly data-sly-include="head.socialmedia.html"></sly>
 	<!-- Include Context Hub -->
 	<sly data-sly-test = "${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
-        <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
-        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+		<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+			<sly data-sly-call="${clientLib.js @ categories='granite.utils'}"/>
 			<sly data-sly-test="${!wcmmode.disabled}" data-sly-call="${clientLib.all @ categories='cq.widgets'}"></sly>
-        </sly>    
+		</sly> 
+		<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
 	</sly>
 	<!-- Include Extra Clientlibs -->
 	<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">			
