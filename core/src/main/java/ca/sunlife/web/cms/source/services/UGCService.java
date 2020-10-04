@@ -18,6 +18,7 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 public interface UGCService {
 
 	/**
+	 * Calls web service.
 	 * @param url
 	 * @param methodType
 	 * @param userInfo

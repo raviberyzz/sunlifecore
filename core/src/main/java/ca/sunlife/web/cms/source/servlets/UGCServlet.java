@@ -31,7 +31,7 @@ import ca.sunlife.web.cms.source.services.UGCService;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= UGC Services Servlet",
+@ Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= UGC Services Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET,
 		"sling.servlet.resourceTypes=" + "sunlife/source/components/content/generic", "sling.servlet.extensions=json",
 		"sling.servlet.selectors=ugc" })
@@ -59,7 +59,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@ Override
-	protected void doGet (SlingHttpServletRequest request, SlingHttpServletResponse response)
+	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("Entry :: doGet method of UGC Servlet :: ");
 		response.setCharacterEncoding("UTF-8");
@@ -86,7 +86,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@ Override
-	protected void doPost (SlingHttpServletRequest request, SlingHttpServletResponse response)
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("Entry :: doGet method of UGC Servlet :: ");
 		response.setCharacterEncoding("UTF-8");
@@ -103,7 +103,6 @@ public class UGCServlet extends SlingAllMethodsServlet {
 			LOGGER.error("Error :: doPost method of UGC Servlet :: {}", e);
 		}
 		writer.print(responseStr);
-
 	}
 
 }
