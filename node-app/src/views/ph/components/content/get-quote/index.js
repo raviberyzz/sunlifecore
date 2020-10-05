@@ -474,64 +474,7 @@ $(document).ready(function() {
         removeAllAnsCSS();
     });
 
-
-
-    $("#qc_submit .btn").click(function() {
-        if (qc_formvalid) {
-
-            $(".qc_returnzero_error_msg").attr("hidden", "");
-            $(".qc_loading_ani").show();
-            // submit and jump to solution result page here
-            var age = getAge();
-            var product = $('#product').val();
-            if (product == null) {
-                product = getProductName();
-            }
-			var gender = localStorage.getItem("genderVall"); 
-            var smoker = localStorage.getItem("smokeResultt");
-			if(gender == "Male"){
-				gender = "M";
-			}else{
-				gender= "F";
-			}
-			if(smoker== "Smoke"){
-				smoker="S";
-			}else{
-				smoker="NS";
-			}
-           // var gender = $("#qc_q2").find("div label.active").find("input").attr("value");
-           // var smoker = $("#qc_q3").find("div label.active").find("input").attr("value");
-            //var freq = $("#qc_q4 select").val();
-            var freq = $('#qc_q4').find("select:not(:hidden)").val();
-
-            var amount = investmentAmountVal;
-            var key = age + '_' + smoker + '_' + gender;
-
-            if (product == "Sun_StartUp")
-                key = age + '_' + gender;
-
-            var json = new Object();
-            /*json.key = key;
-            json.product = product;
-            json.freq = freq;
-            json.amount = amount;
-            json.age = age;*/
-            var country = 'ph';
-            var freq_text = $('#qc_q4').find("select option:selected").html();
-            var dob = $("#qc_q1_ans").val();
-            var investmentYear = getTimeOfInvestment(getProductName()).split(' ')[0];
-            //jsonData = "data=" + JSON.stringify(json);
-
-            console.log(product, key, freq, amount, age, country, freq_text, dob, investmentYear);
-
-            getPremiumPrice(product,key,freq,amount,age,country,dob,freq_text,investmentYear); 
-
-        }
-
-    });
-
-    //set products specific max and min coverage value based on multiple condition .
-    function setCoverageRange() {
+ function setCoverageRange() {
         var productName = getProductName();
         var age = getAge();
         if (productName == "Sun_MaxiLink_Bright") { //Sun_MaxiLink_Bright Condition
@@ -655,15 +598,6 @@ $(document).ready(function() {
 
 	}
 
-    $(".qc_plan_cta").click(function() {
-        if ($("#section_question").offset() != null)
-            $('html,body').animate({
-                scrollTop: $("#section_question").offset().top
-            }, 'easeInSine');
-    });
-});
-
-
 function roundAmount(number, decimalPlace) {
     if (number.indexOf('.') > -1 && number.indexOf('.00') == -1) {
         return parseFloat(Math.round(number * 100) / 100).toFixed(decimalPlace);
@@ -685,6 +619,74 @@ function showCoverageErrMsg() {
     $('#minCover').html(minCoverage);
     $(".coverageErrMsg").removeAttr("hidden");
 }
+
+
+    $("#qc_submit .btn").click(function() {
+        if (qc_formvalid) {
+
+            $(".qc_returnzero_error_msg").attr("hidden", "");
+            $(".qc_loading_ani").show();
+            // submit and jump to solution result page here
+            var age = getAge();
+            var product = $('#product').val();
+            if (product == null) {
+                product = getProductName();
+            }
+			var gender = localStorage.getItem("genderVall"); 
+            var smoker = localStorage.getItem("smokeResultt");
+			if(gender == "Male"){
+				gender = "M";
+			}else{
+				gender= "F";
+			}
+			if(smoker== "Smoke"){
+				smoker="S";
+			}else{
+				smoker="NS";
+			}
+           // var gender = $("#qc_q2").find("div label.active").find("input").attr("value");
+           // var smoker = $("#qc_q3").find("div label.active").find("input").attr("value");
+            //var freq = $("#qc_q4 select").val();
+            var freq = $('#qc_q4').find("select:not(:hidden)").val();
+
+            var amount = investmentAmountVal;
+            var key = age + '_' + smoker + '_' + gender;
+
+            if (product == "Sun_StartUp")
+                key = age + '_' + gender;
+
+            var json = new Object();
+            /*json.key = key;
+            json.product = product;
+            json.freq = freq;
+            json.amount = amount;
+            json.age = age;*/
+            var country = 'ph';
+            var freq_text = $('#qc_q4').find("select option:selected").html();
+            var dob = $("#qc_q1_ans").val();
+            var investmentYear = getTimeOfInvestment(getProductName()).split(' ')[0];
+            //jsonData = "data=" + JSON.stringify(json);
+
+            console.log(product, key, freq, amount, age, country, freq_text, dob, investmentYear);
+
+             getPremiumPrice(product,key,freq,amount,age,country,dob,freq_text,investmentYear); 
+			
+
+        }
+
+    });
+
+    //set products specific max and min coverage value based on multiple condition .
+   
+    $(".qc_plan_cta").click(function() {
+        if ($("#section_question").offset() != null)
+            $('html,body').animate({
+                scrollTop: $("#section_question").offset().top
+            }, 'easeInSine');
+    });
+});
+
+
 
 $(".qc_plan_cta a").on('click', function() {
     utag.link({
