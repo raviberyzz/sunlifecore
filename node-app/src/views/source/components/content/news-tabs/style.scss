@@ -66,6 +66,11 @@
             p:first-child{
                 text-transform: capitalize;
             }
+            p:last-child{
+                &:after {
+                    content: '...';
+                }
+            }
         }
         .news-list-box:not(:first-child) {
             border-top:none;
