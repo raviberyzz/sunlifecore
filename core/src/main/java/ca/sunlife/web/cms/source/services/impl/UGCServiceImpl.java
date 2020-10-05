@@ -29,8 +29,8 @@ import ca.sunlife.web.cms.source.services.UGCService;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = UGCService.class, immediate = true)
-@ Designate (ocd = UGCConfig.class)
+@ Component(service = UGCService.class, immediate = true)
+@ Designate(ocd = UGCConfig.class)
 public class UGCServiceImpl implements UGCService {
 
 	/** The logger. */
@@ -52,7 +52,7 @@ public class UGCServiceImpl implements UGCService {
 	 * @param ugcConfig
 	 */
 	@ Activate
-	public void activate (UGCConfig ugcConfig) {
+	public void activate(UGCConfig ugcConfig) {
 		logger.debug("Activating UGCConfig for NewsListing servlet");
 		this.ugcConfig = ugcConfig;
 		servicesMap = new HashMap<>();
@@ -70,7 +70,7 @@ public class UGCServiceImpl implements UGCService {
 	 * String, java.lang.String, java.util.Map)
 	 */
 	@ Override
-	public String callWebService (String serviceUrl, String methodType, String userInfo,
+	public String callWebService(String serviceUrl, String methodType, String userInfo,
 			Map<String, String[]> requestParams) throws ApplicationException, SystemException, IOException {
 		logger.debug("Entry :: callWebService method of UGCServiceImpl");
 		JSONObject reqHeaderjson = new JSONObject();
@@ -88,7 +88,7 @@ public class UGCServiceImpl implements UGCService {
 			url.append(servicesMap.get(serviceUrl));
 			url.append("?siteName=").append(this.ugcConfig.getUGCServiceSite());
 			if (null != requestParams && requestParams.size() > 0) {
-				requestParams.forEach( (key, value) -> {
+				requestParams.forEach((key, value) -> {
 					url.append("&").append(key).append("=").append(value[0]);
 				});
 			}
@@ -102,7 +102,7 @@ public class UGCServiceImpl implements UGCService {
 				} catch (JSONException e1) {
 					logger.error("JSONException :: while setting site name {}", e1);
 				}
-				requestParams.forEach( (key, value) -> {
+				requestParams.forEach((key, value) -> {
 					try {
 						json.put(key, value[0]);
 					} catch (JSONException e) {
