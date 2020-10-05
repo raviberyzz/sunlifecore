@@ -212,10 +212,10 @@ $(document).ready(function () {
 	$('.cta-home-wrapper').addClass('clearfix');  
 	
 	// adding span class to parent
-		$('h2, h3, h4, h5, h6').children('span').each(function(index,value){
+		$('h2 span, h3 span, h4 span, h5 span, h6 span').each(function(index,value){
 		var spanClass = $( this ).attr('class');
 		if (spanClass === 'heading-6' || spanClass === 'heading-5' || spanClass === 'heading-4' || spanClass === 'heading-3' || spanClass === 'heading-2') {
-			$( this ).parent().attr('class', spanClass);
+			$( this ).closest(':header').attr('class', spanClass);
 		}
 		});
 });

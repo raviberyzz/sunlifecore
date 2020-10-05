@@ -40,10 +40,15 @@
     .old-comments{
         display: flex;
         margin:30px 0 0 0;
-        width:90%;
+        width:80%;
+        border-bottom:1px solid $light-grey-separator-color;
+        &.first{
+            border-top:1px solid $light-grey-separator-color;
+            padding-top:20px;
+            margin-top:20px;
+        }
         section{
-            background-color:$light-grey-separator-color;
-            width:60%;
+            width:100%;
             padding:10px;
             border-radius:10px;
             .name-time{
@@ -61,26 +66,75 @@
             }
         }
         .three-dots,.comment-option{
-            //display:none;
-            display: block;
+            display:none;
             &.show{
-                display: block;
+                display: inline-block;
+            }
+        }
+        .comment-option{
+            z-index:1;
+            background-color:$white-shade;
+            width: 200px;
+            margin-left: -37px;
+            margin-top: 2px;
+            text-align: left;
+            a{
+                font-weight:400;
+                font-size:16px;
             }
         }
         .three-dots{
             width:5%;
             position: relative;
             text-align:center;
+            display: inline-block;
+            float:right;
+            width:25px;
+            height:25px;
+            text-align: center;
+            border-radius:50%;
+            shape-outside: circle(50%);
+            background-color:$light-grey-separator-color;
+            cursor: pointer;
             p{
-                border-radius:50%;
-                width:80%;
-                padding-bottom: 6px;
-                shape-outside: circle(50%);
-                position: relative; 
-                top:50%;
-                transform: translateY(-50%);
-                background-color:$light-grey-separator-color;
+                width:100%;
+                margin:0;
+                position: relative;                 
+                font-size: 18px;
+                font-weight: 700;
+                margin-top:-4px;
             }
+        }
+        .edit-popup{
+            width: 100%;
+            padding: 16px;
+            position: relative;
+            top: 10px;
+            border: 1px solid $dark-grey-shade;
+            border-radius: 5px;
+            background-color:$white-shade;
+        }
+        .edit-popup:before {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 40px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-bottom-color:$dark-grey-shade;
+        }
+        .edit-popup:after {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 42px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-bottom-color: white;
         }
     }
     .add-comment{
@@ -88,6 +142,8 @@
         height:140px;
         margin-bottom:0;
         margin-top:24px;
+        //padding-bottom:5px;
+       // border-bottom:1px solid $light-grey-separator-color;
         position: relative;
         .col-sm-7,.col-sm-3{
             height:100%;

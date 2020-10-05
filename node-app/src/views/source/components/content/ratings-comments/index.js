@@ -25,4 +25,14 @@ $(document).ready(function () {
         });
     }
     setTimeout(hov,800);
+    /* delete and edit popup starts here */
+    function optionClick(){
+        $('.three-dots').each(function(index,item){
+            $(item).click(function(){
+                $(item).children('.comment-option').toggle('show');
+            });
+        });
+    }
+    setTimeout(optionClick,1000);
+    /* delete and edit popup ends here */
 });
