@@ -31,7 +31,7 @@ JSON Format
 ```
 {
     "cool-blue-background":'cool-blue',
-    "action-tag":"/views/core/components/content/sign-in-modal.html"
+    "action-tag":"https://sit.sunnet.sunlife.com/siteminder/FormsAuthLogin.fcc"
 }
 ```
 <!-- sign-in-framework ends here -->

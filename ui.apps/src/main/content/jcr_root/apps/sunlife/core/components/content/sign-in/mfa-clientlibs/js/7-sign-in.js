@@ -5,8 +5,8 @@ function onShowSignInModal() {
 function onSignInClick() {
 
     console.log("Inside onSignInClick")
-    var clientId =$(".mySlfSignIn #USER").val();
-    var password =$(".mySlfSignIn #PASSWORD").val();
+    var clientId =$("#form_signon #USER").val();
+    var password =$("#form_signon #PASSWORD").val();
 
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
