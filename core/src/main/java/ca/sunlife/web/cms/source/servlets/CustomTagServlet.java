@@ -79,7 +79,6 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 			jsonObject.put("id", tag.getTagID());
 			Iterator<Tag> childTags = tag.listChildren();
 			if (null != childTags) {
-				//final JSONArray jsonArray = new JSONArray();
 				childTags.forEachRemaining(childTag -> {
 					JSONObject object = new JSONObject();
 					try {
@@ -104,14 +103,12 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 							});
 							object.put("tags", childJsonArray);
 						}
-						//jsonArray.put(object);
 						jsonObject.put(childTag.getName(), object);
 						// end
 					} catch (JSONException e) {
 						LOGGER.error("JSON error whie iterating the child {}", e);
 					}
 				});
-				//jsonObject.put("tags", jsonArray);
 			}
 			outJson = jsonObject.toString();
 		} catch (JSONException e1) {
