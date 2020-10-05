@@ -347,23 +347,29 @@ class ArticleComments extends React.Component {
           </div>
         </div>
         {this.state.commentDetails.map((value, index) => {
+          let a = "";
+          if (index == 0) {
+            a = "first";
+          }
           return (
-            <div class="old-comments">
+            <div class={`old-comments ${a}`}>
               <section class="" id={`${value.commentId}`}>
                 <p class="name-time">
                   <span class="name">{value.userName}</span>
                   <span class="time">{value.updatedDate}</span>
+                  <div class="three-dots">
+                    <p>...</p>
+                    <div class="comment-option">
+                      <div class="edit-popup">
+                        <a href="javascript:void(0)">Edit</a>
+                        <br />
+                        <a href="#">Delete</a>
+                      </div>
+                    </div>
+                  </div>
                 </p>
                 <p class="desc">{value.commentText}</p>
               </section>
-              <div class="three-dots">
-                <p>...</p>
-              </div>
-              <div class="comment-option">
-                <ul>
-                  <li>Delete</li>
-                </ul>
-              </div>
             </div>
           );
         })}
