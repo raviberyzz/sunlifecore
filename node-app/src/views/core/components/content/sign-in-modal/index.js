@@ -3,7 +3,14 @@ $(document).ready(function () {
         updateSignInForm('form_signon_mobile');     
       });  
     $('#signin-widget-modal').on('shown.bs.modal', function() {
-          updateSignInForm('form_signon');        
+      var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
+      if (host === null || host === undefined) {
+        host = "https://www.sunnet.sunlife.com";
+      }
+      var signinWidget = $('#signin-widget-modal .modal-body').html();
+      var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
+      $('#signin-widget-modal .modal-body').html(newString);
+      updateSignInForm('form_signon');        
     });
     function modalWidth(){
       var winWidth=$(window).width();
@@ -39,10 +46,13 @@ $(document).ready(function () {
     if(a1 && a1.indexOf("&nbsp;") != -1){
       var updatedString = a1.replace("&nbsp;", "");
       $('#userIdDiv').html(updatedString);
-    } 
-    $(".sign-in-modal-wrapper #form_signon .btn.btn-blue").click(function(){
-      return CheckClicks('e');
-    });
+    }
+    $('#caSubmit').click(function(e){
+      alert(1);
+      e.preventDefault();
+      e.stopPropagation();
+      alert(2);
+    })
     $(".sign-in-modal-wrapper #rememberIDModal").click(function(){
       remember(this);
     });
@@ -81,4 +91,27 @@ $(document).ready(function () {
           e.stopPropagation();
       }
  });
-});     
+}); 
+function CheckClicksCa(event){
+  var action=$("#signin-widget-modal #form_signon").attr('action').trim();
+  if(action==undefined || action==''){
+      console.log('transmit');
+      $("#signin-widget-modal").modal("hide");
+      //onSignInClick();
+      event.preventDefault();
+  }else{
+      console.log('siteminder');
+      if($("#signin-widget-modal input[name=ESAVEID]").attr('value')!=undefined){
+          if($(".mySlfSignIn input[name=ESAVEID]").attr('value').trim().length>0 &&
+            $(".mySlfSignIn input[name=ESAVEID]").attr('value').trim()!='false'){
+              $(".mySlfSignIn input[name=LOGONUSINGSAVEID]").val("TRUE");
+          }
+      }
+      let lang=$('html').attr('lang');
+      if(lang=='fr'){
+        CheckClicks('f');
+      }else{
+        CheckClicks('e');
+      }
+  }
+}    
