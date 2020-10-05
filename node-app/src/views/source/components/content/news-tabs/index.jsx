@@ -2,9 +2,10 @@ class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
     let contextHubData = localStorage.getItem("ContextHubPersistence");
+    let defaultBGValue = "";
     if (contextHubData) {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
-      let defaultBGValue = userProfile.store.profile.businessGroup;
+      defaultBGValue = userProfile.store.profile.businessGroup;
     }
     this.state = {
       defaultBG:defaultBGValue,
