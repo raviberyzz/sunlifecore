@@ -22,8 +22,11 @@ this.promiseFormInput = function () {
   var self = this;
   return new Promise(function (resolve, reject) {
     self.submitBlock = function (payload) {
+      console.log("Inside submit:");
+      if ( $('#mfa-form').parsley().validate()){
       resolve(com.ts.mobile.sdk.FormInput.createFormInputSubmissionRequest(Object.assign(payload)));
       self.submitBlock = null; // assign null to prevent using the same promise more then once
+      }
     };
   });
 };
@@ -77,25 +80,31 @@ function handleSendCode() {
 }
 
 function setPhoneNumbersList() {
+
+  console.log("selectedPhone : "+this.clientContext.otpSelection);
   const phoneNumbers = this.phoneNumbers;
 
   let phoneListStr = '';
   
   for(var i=0;i<phoneNumbers.length;i++){
-      phoneListStr += renderPhone.call(this, phoneNumbers[i], i);
+      if(phoneNumbers.length>1){
+      phoneListStr += renderPhone.call(this, phoneNumbers[i], i,"");
+      }else{
+        phoneListStr += renderPhone.call(this, phoneNumbers[i], i, "checked");  
+      }
   }
   $("#step-up-phone-list-container").html(phoneListStr);
 
 }
 
 
-function renderPhone(phoneNumber, index) {
+function renderPhone(phoneNumber, index, checked) {
 
   var errorMsg = (lang === 'fr') ? 'Veuillez sélectionner un numéro de téléphone.' : 'Please select a phone number';
 
-  const checked = (index === 0) ? "checked" : "";
+ // const checked = (index === 0) ? "checked" : "";
   const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
-  const maskPhone = phoneNumber.countryCd+"-***-"+"***"+phoneNumber.commData.substring(3,7);
+  const maskPhone = "+* ***-"+"***-"+phoneNumber.commData.substring(3,7);
   
   let phoneInfo  = '<div class="radio-btn-selected radio-btn-container">';
       phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phoneNumber.mfaCommunId + '">';

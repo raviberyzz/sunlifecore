@@ -168,4 +168,8 @@
 .modal-backdrop{
   position: fixed;
 }
+
+#mfa-container .page-separator{
+margin-top: 20Px;
+}
   

@@ -1,7 +1,6 @@
-console.log("On loading app.js " + serverUrl);
 var journeyPlayer = xmsdk.XmSdk(); // the Transmit SDK object
-
 var XmUIHandler = new xmui.XmUIHandler(); // the default UI Handler
+var sessionTimeout = new SessionTimeout();
 
 var useMarcServer = true;
 var elementsIds = {
@@ -167,10 +166,9 @@ function initJourneyPlayer() {
 // Transmit related helper methods
 
 function getTransmitConnectionSettings() {
-  serverUrl=serverUrl;
-  console.log("From getTransmit method " + serverUrl);
-    // var serverUrl = "https://mfa-uat.sunlifecorp.com";
-    //var serverUrl = "https://mfa-dev.sunlifecorp.com";
+    
+   var serverUrl = "https://mfa-uat.sunlifecorp.com";
+  //  var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var apiTokenId = "";
   var apiToken = "";
