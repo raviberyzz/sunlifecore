@@ -97,7 +97,7 @@ function CheckClicksCa(event){
   if(action==undefined || action==''){
       console.log('transmit');
       $("#signin-widget-modal").modal("hide");
-      //onSignInClick();
+      onSignInClick();
       event.preventDefault();
   }else{
       console.log('siteminder');
