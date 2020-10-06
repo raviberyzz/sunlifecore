@@ -1,22 +1,4 @@
- /*
- * #%L
- * ACS AEM Commons Bundle
- * %%
- * Copyright (C) 2014 Adobe
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * #L%
- */
+
 package ca.sunlife.web.cms.core.servlets;
 
 import com.adobe.acs.commons.util.ParameterUtil;
@@ -66,6 +48,9 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
 
+import ca.sunlife.web.cms.core.services.SiteConfigService;
+
+
 @Component(metatype = true, label = "ACS AEM Commons - Site Map Servlet", description = "Page and Asset Site Map Servlet", configurationFactory = true, policy = ConfigurationPolicy.REQUIRE)
 @Service
 @SuppressWarnings("serial") 
@@ -80,7 +65,7 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
 	  /** The Constant serialVersionUID. */
 	  private static final long serialVersionUID = 1L;
 	  
-    private static final Logger log = LoggerFactory.getLogger(CustomSiteMapServlet.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomSiteMapServlet.class);
 
     private static final FastDateFormat DATE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd");
 
@@ -142,6 +127,9 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
 
     @Reference
     private transient Externalizer externalizer;
+    
+    @Reference
+    private SiteConfigService configService;
 
     private String externalizerDomain;
 
@@ -170,6 +158,9 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
     private List<String> excludedPageTemplates;
 
     private boolean useVanityUrl;
+    
+    
+    
 
     @Activate
     protected void activate(Map<String, Object> properties) {
@@ -200,6 +191,7 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
+    	LOGGER.info("Get method triggeed");
         response.setContentType(request.getResponseContentType());
         if (StringUtils.isNotEmpty(this.characterEncoding)) {
             response.setCharacterEncoding(characterEncoding);
@@ -233,6 +225,7 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
             stream.writeEndElement();
 
             stream.writeEndDocument();
+            LOGGER.info("Get method ends");
         } catch (XMLStreamException e) {
             throw new IOException(e);
         } finally {
@@ -243,7 +236,7 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
                 }
                 catch ( XMLStreamException e )
                 {
-                    log.warn("Can not close xml stream writer", e);
+                    LOGGER.warn("Can not close xml stream writer", e);
                 }
             }
         }
@@ -297,15 +290,23 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
         String loc = "";
 
         if (useVanityUrl && !StringUtils.isEmpty(page.getVanityUrl())) {
-            loc = externalizeUri(request, page.getVanityUrl());
+            //loc = externalizeUri(request, page.getVanityUrl());
+            loc=configService.getPageUrl(page.getVanityUrl());
+        	LOGGER.info("Vanity URL created {} ", configService.getPageUrl(page.getVanityUrl()));
         } else if (!extensionlessUrls) {
-            loc = externalizeUri(request, String.format("%s.html", page.getPath()));
+        	loc=configService.getPageUrl(page.getPath());
+            //loc = externalizeUri(request, String.format("%s.html", page.getPath()));
+            LOGGER.info("Extensionless URL created {} ", configService.getPageUrl(page.getPath()));
         } else {
             String urlFormat = removeTrailingSlash ? "%s" : "%s/";
-            loc = externalizeUri(request, String.format(urlFormat, page.getPath()));
+            loc=configService.getPageUrl(page.getPath());
+            //loc = externalizeUri(request, String.format(urlFormat, page.getPath()));
+            LOGGER.info("URL created {} ", configService.getPageUrl(page.getPath()));
         }
 
         loc = applyUrlRewrites(loc);
+        LOGGER.info("LOC {} ", loc);
+        
 
         writeElement(stream, "loc", loc);
 
@@ -354,7 +355,7 @@ public final class CustomSiteMapServlet extends SlingSafeMethodsServlet {
         if (StringUtils.isNotBlank(externalizerDomain)) {
             return externalizer.externalLink(request.getResourceResolver(), externalizerDomain, path);
         } else {
-            log.debug("No externalizer domain configured, take into account current host header {} and current scheme {}", request.getServerName(), request.getScheme());
+            LOGGER.debug("No externalizer domain configured, take into account current host header {} and current scheme {}", request.getServerName(), request.getScheme());
             return externalizer.absoluteLink(request, request.getScheme(), path);
         }
     }
