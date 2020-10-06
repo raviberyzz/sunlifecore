@@ -246,7 +246,7 @@ function updateSignInFormFromDeeplink(formName,deepLinkName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 3000);
+  }, 5000);
 
    currentSignInForm = formName;
    
@@ -281,7 +281,7 @@ function updateSignInForm(formName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 3000);
+  }, 5000);
 
     
    currentSignInForm = formName;
@@ -380,7 +380,7 @@ function success(data) {
                
 
                 if (currentSignInForm == "form_signon") {
-                    $("#" + currentSignInForm + " #USER").val("***********");
+                    $("#" + currentSignInForm + " #accessIDModal").val("***********");
                 } else if (currentSignInForm == "form_signon_mobile") {
                     $("#" + currentSignInForm + " #accessIDMobile").val("***********");
 
@@ -490,8 +490,7 @@ var isSubmitted;
 isSubmitted = false;
 
 function CheckClicks(lang) {
-        signInClick();
-        console.log('inside widget');
+    	signInClick();
 		if( isSubmitted == true ) {
 				if (lang=="f")
 						alert('Veuillez patienter pendant que nous soumettons vos renseignements.');

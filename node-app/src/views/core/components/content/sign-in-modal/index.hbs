@@ -27,7 +27,9 @@
                                                         <p class="download-text-bold">download the my Sun Life app</p>
                                                 </div>
                                         </div>
-                                        <form name="form_signon_modal" id="form_signon" action="" method="post">
+                                        <form name="form_signon_modal" id="form_signon"
+                                                action="https://stage.sunnet.sunlife.com/siteminder/FormsAuthLogin.fcc"
+                                                method="post">
                                                 <input name="SMENC" type="hidden" value="ISO-8859-1">
                                                 <input name="SMLOCALE" type="hidden" value="US-EN">
                                                 <input name="DOMAIN" type="hidden" value="CONSUMER">
@@ -40,9 +42,9 @@
                                                 <input name="REQUESTTYPE" type="hidden" value="SUBMIT">
                                                 <input name="REDIRECTPATH" type="hidden">
                                                 <input name="ERRORREDIRPATH" type="hidden"
-                                                        value="https://sit.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome">
+                                                        value="https://stage.sunnet.sunlife.com/signin/mysunlife/home.wca?refer=caHome">
                                                 <input name="TARGET" type="hidden"
-                                                        value="https://sit.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife">
+                                                        value="https://stage.sunnet.sunlife.com/mbrportal/req/secure/login/sunlife">
                                                 <input name="SMAGENTNAME" type="hidden" value="">
                                                 <input name="REALMOID" type="hidden" value="">
                                                 <input name="ClientIP" id="ClientIP" type="hidden" value="">
@@ -63,8 +65,8 @@
                                                 <div role="group" aria-labelledby="form_signon">
                                                         <div class="form-group form-first" id="userIdDiv">
                                                                 <label class="sr-only" id="accessIDModalLabel"
-                                                                        for="USER">Access ID</label>
-                                                                <input name="USER" id="USER" class="accessid"
+                                                                        for="accessIDModal">Access ID</label>
+                                                                <input name="USER" id="accessIDModal" class="accessid"
                                                                         type="text" placeholder="Email/Access ID"
                                                                         autocomplete="off"
                                                                         aria-label="Enter email/acess Id" />
@@ -78,11 +80,11 @@
                                                                         Remember me</label>
                                                         </div>
                                                 </div>
-                                                <label class="sr-only" for="PASSWORD"> Password</label><input
-                                                        name="PASSWORD" class="password-input" id="PASSWORD"
+                                                <label class="sr-only" for="accessPasswordModal"> Password</label><input
+                                                        name="PASSWORD" class="password-input" id="accessPasswordModal"
                                                         type="password" placeholder="Password" autocomplete="off"
                                                         aria-label="Enter Password">
-                                                <input class="btn btn-blue" onclick="CheckClicksCa(event)"
+                                                <input class="btn btn-blue" onclick="return CheckClicks('e');"
                                                         type="submit" alt="Sign in" value="Sign in" />
                                         </form>
                                         <p class="signin-links"><span class="signin-help-link">
