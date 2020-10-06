@@ -100,22 +100,28 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
             $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
             $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
             $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked);
-            $("#step-up-input-otp-code-screen-input").attr("placeholder", self.generatePlaceholder(format));
         });
       }
     }
 
+    handleCancelData = function(){
+      var otpSelection = this.clientContext.otpSelection;
+      cons
+      this.clientContext.otpSelection = otpSelection;
+     this.submitBlock(otpSelection);
+    }
+
     this.onCancelClicked = function(){
 
-        if (confirm("are you sure you want to cancel the authentication?")) {
-
+       // if (confirm("are you sure you want to cancel the authentication?")) {
+      
          console.log("actionContext :"+_this.actionContext);
           const escapeOptions = _this.actionContext.getEscapeOptions();
           const cancelOption = escapeOptions.filter(option => option.getId() === "cancel")[0];
           if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
           _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
 
-        }
+        //}
     }
     
     

@@ -32,6 +32,7 @@ function onSignInClick() {
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
     $("#mfa_signin_modal").modal("show");
+    sessionTimeout.startTimeout();
      journeyPlayer.cancelCurrentRunningControlFlow();
      journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
         
