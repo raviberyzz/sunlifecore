@@ -85,3 +85,26 @@ color: $medium-blue-color;
 .padding-0-15 {
     padding: 0 15px;
 }
+/* Font Awesome CSS */
+@for $i from 14 through 36 {
+    @if $i % 2 == 0 {
+        .icon-size-#{$i} {
+            font-size: 0px + $i;
+        }
+    }
+}
+.icon-dark-white {
+    color: #FFF;
+}
+.icon-dark-grey {
+    color: #424242;
+}
+.icon-medium-red {
+    color: #b81f41;
+}
+.icon-medium-green {
+    color: #0b713a;
+}
+.font-awesome-icon {
+    padding: 0 8px;
+}
