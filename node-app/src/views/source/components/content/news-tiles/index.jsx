@@ -1089,7 +1089,7 @@ class NewsTiles extends React.Component {
           topicsList: this.state.topicsList,
         })
         this.getNewsList();
-        console.log(res);
+        //console.log(res);
       },
       error: (err) => {
         console.log(err);
