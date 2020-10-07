@@ -93,6 +93,7 @@ public class NewsArticleModelTest {
 		String pagePath = "/content/sunlife/internal/source/en/home";
 		String [] tags = {"sunlife:source/business-groups/canada","sunlife:source","sunlife:"};
 		try {
+			newsArticleModel.setResourceType("/content/sunlife/internal/source/en/news/news-article/jcr:content/root/layout_container/container1/news_announcement");
 			newsArticleModel.setFragmentPath(fragmentPath);
 			when(currentPage.getPath()).thenReturn(pagePath);
 			when(coreResourceResolver.getResourceResolver()).thenReturn(resolver);
@@ -100,19 +101,17 @@ public class NewsArticleModelTest {
 			when(resolver.getResource(fragmentPath.concat(JCR_CONTENT_METADATA))).thenReturn(metadataResource);
 			when(articleResource.getValueMap()).thenReturn(articleContent);
 			when(metadataResource.getValueMap()).thenReturn(metadataContent);
-			when(articleContent.containsKey(NewsConstants.TO_CONSTANT)).thenReturn(true);
-			when(articleContent.containsKey(NewsConstants.FROM_CONSTANT)).thenReturn(true);
 			when(articleContent.containsKey(NewsConstants.HEADING_CONSTANT)).thenReturn(true);
-			when(articleContent.containsKey(NewsConstants.ARTICLE_CONTENT_CONSTANT)).thenReturn(true);
+			when(articleContent.containsKey(NewsConstants.ARTICLE_SUMMARY_CONSTANT)).thenReturn(true);
 			when(articleContent.containsKey(NewsConstants.PAGE_CONSTANT)).thenReturn(true);
 			when(articleContent.containsKey(NewsConstants.THUMBNAIL_IMAGE_CONSTANT)).thenReturn(true);
 			when(articleContent.containsKey(NewsConstants.PIN_ARTICLE_CONSTANT)).thenReturn(true);
 			when(metadataContent.containsKey(TagConstants.PN_TAGS)).thenReturn(true);
 			when(configService.getConfigValues("articleDateFormat", pagePath)).thenReturn("dd/MM/yyyy");
-			when(articleContent.get(NewsConstants.TO_CONSTANT, String.class)).thenReturn("To");
-			when(articleContent.get(NewsConstants.FROM_CONSTANT, String.class)).thenReturn("From");
+			//when(articleContent.get(NewsConstants.TO_CONSTANT, String.class)).thenReturn("To");
+			//when(articleContent.get(NewsConstants.FROM_CONSTANT, String.class)).thenReturn("From");
 			when(articleContent.get(NewsConstants.HEADING_CONSTANT, String.class)).thenReturn("Heading");
-			when(articleContent.get(NewsConstants.ARTICLE_CONTENT_CONSTANT, String.class)).thenReturn("Article content");
+			when(articleContent.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class)).thenReturn("Article content summary");
 			when(articleContent.get(NewsConstants.PAGE_CONSTANT, String.class)).thenReturn("/content/sunlife/internal/source/en");
 			when(articleContent.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)).thenReturn("/content/dam/sunlife/internal/source/en");
 			when(articleContent.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)).thenReturn("true");

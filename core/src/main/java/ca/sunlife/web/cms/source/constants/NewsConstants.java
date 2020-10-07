@@ -17,12 +17,6 @@ public class NewsConstants {
     throw new IllegalStateException("NewsConstants class.");
   }
 
-  /** The Constant TO_CONSTANT. */
-  public static final String TO_CONSTANT = "to";
-  
-  /** The Constant FROM_CONSTANT. */
-  public static final String FROM_CONSTANT = "from";
-  
   /** The Constant PUBLISHED_DATE_CONSTANT. */
   public static final String PUBLISHED_DATE_CONSTANT = "publishedDate";
   
@@ -34,16 +28,16 @@ public class NewsConstants {
   
   /** The Constant THUMBNAIL_IMAGE_CONSTANT. */
   public static final String THUMBNAIL_IMAGE_CONSTANT = "thumbnailImage";
+  
+  /** The Constant THUMBNAIL_IMAGE_CONSTANT. */
+  public static final String THUMBNAIL_IMAGE_FEATURED_CONSTANT = "thumbnailImageFeatured";
 
   /** The Constant PIN_ANNOUNCEMENT_CONSTANT. */
   public static final String PIN_ARTICLE_CONSTANT = "pinArticle";
   
-  /** The Constant SUMMARY_CONSTANT. */
-  public static final String SUMMARY_CONSTANT = "summary";
-  
   /** The Constant TAGS_CONSTANT. */
   public static final String TAGS_CONSTANT = "tags";
   
-  /** The Constant ARTICLE_CONTENT_CONSTANT. */
-  public static final String ARTICLE_CONTENT_CONSTANT = "articleContent";
+  /** The Constant ARTICLE_SUMMARY_CONSTANT. */
+  public static final String ARTICLE_SUMMARY_CONSTANT = "summary";
 }

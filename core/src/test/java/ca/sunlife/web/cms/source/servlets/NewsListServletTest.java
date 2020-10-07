@@ -137,7 +137,7 @@ public class NewsListServletTest {
 	    when(valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)).thenReturn("pagePath");
 	    when(valueMap.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)).thenReturn("thumbnailImage");
 	    when(valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)).thenReturn("pinArticle");
-	    when(valueMap.get(NewsConstants.ARTICLE_CONTENT_CONSTANT, String.class)).thenReturn("\"<html><head><title>First parse</title></head>\"\r\n" + 
+	    when(valueMap.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class)).thenReturn("\"<html><head><title>First parse</title></head>\"\r\n" + 
 	    		"  + \"<body><p>Parsed HTML into a doc.</p></body></html>\";");
 	    when(metaDataValueMap.get(TagConstants.PN_TAGS, String.class)).thenReturn("test");
 	    newsListServlet.doGet(request, response);	    
