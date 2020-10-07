@@ -55,7 +55,7 @@ function set_active(tab)
 }
   function mobile_accordian_open(tab) {
       var tab_number=$(tab).index();
-      var tab_child=tab_number+1
+      var tab_child=tab_number+1;
       $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).children('.tab-accordian-heading').siblings().css('display','block');
       $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).children('.tab-accordian-heading').attr('aria-expanded', true);
   }
