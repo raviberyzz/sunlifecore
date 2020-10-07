@@ -264,7 +264,8 @@ class ArticleComments extends React.Component {
     });
   }
   dateLoad() {
-    let commentArray = this.state.commentDetails;
+    let commentArray = '';
+    commentArray=this.state.commentDetails;
     if (commentArray) {
       commentArray.map((value, index) => {
         if (value) {
