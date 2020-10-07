@@ -65,8 +65,8 @@
                     return;
                 }
                 fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' +
-                    dialog.find('[name="awesomeIconColor"]').val() + ' ' +
-                    dialog.find('[name="awesomeIconSize"]').val();
+                    dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').get(0).value + ' ' +
+                    dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').get(0).value;
                 //ek.relayCmd(FEATURE, data, ek.getEditContext());
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
@@ -129,8 +129,8 @@
                 this.fontAwesomeDialog = dialog;
             }
             dialog.$dialog.find('[name="awesomeIcon"]').val('');
-            dialog.$dialog.find('[name="awesomeIconColor"]').val('');
-            dialog.$dialog.find('[name="awesomeIconSize"]').val('');
+            dialog.$dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').removeAttr('selected');
+            dialog.$dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').removeAttr('selected');
             /*dialog.$dialog.find('[name="awesomeIcon"]').val(cs[1]?cs[1]:'');
             dialog.$dialog.find('[name="awesomeIconColor"]').val('');
             dialog.$dialog.find('[name="awesomeIconSize"]').val('');
