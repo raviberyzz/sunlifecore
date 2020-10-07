@@ -139,7 +139,7 @@
                                 </paraformat>
                                 <misctools
                                     jcr:primaryType="nt:unstructured"
-                                    features="specialchars">
+                                    features="*">
                                     <specialCharsConfig jcr:primaryType="nt:unstructured">
                                         <chars
                                             jcr:primaryType="nt:unstructured"

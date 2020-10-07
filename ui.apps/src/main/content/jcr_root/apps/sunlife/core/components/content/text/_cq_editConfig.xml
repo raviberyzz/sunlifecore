@@ -103,6 +103,9 @@
                 <format
                     jcr:primaryType="nt:unstructured"
                     features="bold,italic"/>
+                <sunlife
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
             </rtePlugins>
         </inplaceEditingConfig>
     </cq:inplaceEditing>

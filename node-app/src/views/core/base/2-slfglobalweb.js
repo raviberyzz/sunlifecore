@@ -1177,7 +1177,7 @@ $('#signin-widget-modal').on('show.bs.modal', function() {
 	//signinbuttonclick();	
 	// this not getting triggered on shown, so call it explicitly, here
 	updateSignInForm('form_signon');
-})
+});
 
 function createCookie(name,value,days, isSession) {
   if (days) {

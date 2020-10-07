@@ -527,7 +527,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -2540,7 +2540,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -4581,7 +4581,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -6594,7 +6594,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -8404,7 +8404,7 @@
                                 </paraformat>
                                 <misctools
                                     jcr:primaryType="nt:unstructured"
-                                    features="specialchars">
+                                    features="*">
                                     <specialCharsConfig jcr:primaryType="nt:unstructured">
                                         <chars
                                             jcr:primaryType="nt:unstructured"
@@ -8979,7 +8979,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1594570168237"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -10485,7 +10485,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>
@@ -12536,7 +12536,7 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center"
+                                            cq:styleClasses="text-center horizontal-middle-align"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
                                             jcr:primaryType="nt:unstructured"/>

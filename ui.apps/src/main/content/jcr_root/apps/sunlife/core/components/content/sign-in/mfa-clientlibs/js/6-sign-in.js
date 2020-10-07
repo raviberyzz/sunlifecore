@@ -5,8 +5,8 @@ function onShowSignInModal() {
 function onSignInClick() {
 
     console.log("Inside onSignInClick")
-    var clientId =$(".mySlfSignIn #USER").val();
-    var password =$(".mySlfSignIn #PASSWORD").val();
+    var clientId =$("#form_signon #USER").val();
+    var password =$("#form_signon #PASSWORD").val();
 
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
@@ -32,6 +32,7 @@ function onSignInClick() {
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
 
     $("#mfa_signin_modal").modal("show");
+    sessionTimeout.startTimeout();
      journeyPlayer.cancelCurrentRunningControlFlow();
      journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
         
