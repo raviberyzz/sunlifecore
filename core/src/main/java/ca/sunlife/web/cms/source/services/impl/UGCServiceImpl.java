@@ -111,7 +111,7 @@ public class UGCServiceImpl implements UGCService {
 				});
 			}
 			String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
-			return restService.callPostWebService(url, userInfo, reqHeaderjson.toString());
+			return restService.callPostWebService(url, reqHeaderjson.toString(), json.toString());
 		}
 	}
 
