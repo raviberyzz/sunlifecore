@@ -14,13 +14,9 @@
             ${newsArticle.articleData.heading}
          </h3>
       </div>
-      <div data-sly-test="${newsArticle.articleData.to || newsArticle.articleData.from}" class="mail-wrapper">
-         <p data-sly-test="${newsArticle.articleData.to}"> <strong>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>  ${newsArticle.articleData.to}</p>
-         <p data-sly-test="${newsArticle.articleData.from}"> <strong>FROM:&nbsp;</strong>  ${newsArticle.articleData.from}</p>
-         <p class="border-bottom"></p>
-      </div>
       <section class="article-body">
          ${newsArticle.articleData.articleContent  @context='html'}
+         <div><sly data-sly-resource="${'layout-container' @ resourceType=newsArticle.layoutResourceType}"></sly></div>
       </section>
       <sly data-sly-test="${newsArticle.checkboxDisplayRating}">
          <!--/* Rating  Goes here */-->
