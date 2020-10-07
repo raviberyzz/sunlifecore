@@ -44,11 +44,12 @@ class ArticleRatings extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
-        console.log('data from ugc is'+res);
+        console.log("data from ugc is" + res);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
@@ -59,7 +60,7 @@ class ArticleRatings extends React.Component {
         });
       },
       error: (err) => {
-        console.error('error from rating ugc'+err);
+        console.error("error from rating ugc" + err);
       },
     });
   }
@@ -73,7 +74,8 @@ class ArticleRatings extends React.Component {
       };
       $.ajax({
         type: "POST",
-        url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addRating.json",
+        url:
+          "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -171,7 +173,7 @@ class ArticleComments extends React.Component {
       email: "john@gmail.com",
       apiCall: {},
       canSubmit: true,
-      userEmail:''
+      userEmail: "",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -222,14 +224,14 @@ class ArticleComments extends React.Component {
     return monthName[m] + " " + d + ", " + y;
     // return moment(date).format('MMM DD');
   }
-  selectUserComment(){
-    if(ContextHub!=undefined){
-      let userDetails=ContextHub.getItem('profile');
-      if(userDetails.email){
+  selectUserComment() {
+    if (ContextHub != undefined) {
+      let userDetails = ContextHub.getItem("profile");
+      if (userDetails.email) {
         this.setState({
-          userEmail:userDetails.email
-        })
-      };
+          userEmail: userDetails.email,
+        });
+      }
     }
   }
   getRatingComment() {
@@ -240,7 +242,8 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -262,13 +265,15 @@ class ArticleComments extends React.Component {
   }
   dateLoad() {
     let commentArray = this.state.commentDetails;
-    commentArray.map((value, index) => {
-      if (value) {
-        let cdate = value.updatedDate.split("T")[0];
-        cdate = this.dateChange(cdate);
-        commentArray[index].updatedDate = cdate;
-      }
-    });
+    if (commentArray) {
+      commentArray.map((value, index) => {
+        if (value) {
+          let cdate = value.updatedDate.split("T")[0];
+          cdate = this.dateChange(cdate);
+          commentArray[index].updatedDate = cdate;
+        }
+      });
+    }
     this.setState({
       commentDetails: commentArray,
     });
@@ -277,15 +282,15 @@ class ArticleComments extends React.Component {
     let newCommentVal = $("#commentText").val();
     let newComment = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
+      //siteName: this.state.siteName,
       commentText: newCommentVal,
-      userName: this.state.userName,
-      userACF2Id: this.state.userACF2Id,
-      email: this.state.email,
+      ///userName: this.state.userName,
+      //userACF2Id: this.state.userACF2Id,
+      //email: this.state.email,
     };
     $.ajax({
       type: "POST",
-      url: "/source-services/addComment",
+      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -309,16 +314,17 @@ class ArticleComments extends React.Component {
     });
     /* news comment submit analytics ends here */
   }
-  deleteComment(commentId,event) {
+  deleteComment(commentId, event) {
     console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
       commentId: commentId,
-      reasonText:"testing"
+      reasonText: "testing",
     };
     $.ajax({
       type: "DELETE",
-      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.deleteComment.json",
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),
@@ -333,7 +339,7 @@ class ArticleComments extends React.Component {
         console.error(err);
       },
     });
-    $('.comment-option').removeClass('show');
+    $(".comment-option").removeClass("show");
   }
   render() {
     return (
@@ -361,79 +367,92 @@ class ArticleComments extends React.Component {
             </button>
           </div>
         </div>
-        {this.state.commentDetails.map((value, index) => {
-          let a = "";
-          if (index == 0) {
-            a = "first";
-          }
-          return (
-            <div class={`old-comments ${a}`}>
-              <section class="" id={`${value.commentId}`}>
-                <p class="name-time">
-                  <span class="name">{value.userName}</span>
-                  <span class="time">{value.updatedDate}</span>
-                  <div class={`three-dots ${value.email==this.state.userEmail?'show':''}`}>
-                    <p>...</p>
-                    <div class="comment-option" value={`${value.commentId}`}>
-                      <div class="edit-popup">
-                        <a href="javascript:void(0)">Edit</a>
-                        <br />
-                        <a
-                          class="delete-option"
-                          data-toggle="modal"
-                          data-target={"#deleteModal"+value.commentId}
-                        >
-                          Delete
-                        </a>
+        {this.state.commentDetails &&
+          this.state.commentDetails.lenght > 0 &&
+          this.state.commentDetails.map((value, index) => {
+            let a = "";
+            if (index == 0) {
+              a = "first";
+            }
+            return (
+              <div class={`old-comments ${a}`}>
+                <section class="" id={`${value.commentId}`}>
+                  <p class="name-time">
+                    <span class="name">{value.userName}</span>
+                    <span class="time">{value.updatedDate}</span>
+                    <div
+                      class={`three-dots ${
+                        value.email == this.state.userEmail ? "show" : ""
+                      }`}
+                    >
+                      <p>...</p>
+                      <div class="comment-option" value={`${value.commentId}`}>
+                        <div class="edit-popup">
+                          <a href="javascript:void(0)">Edit</a>
+                          <br />
+                          <a
+                            class="delete-option"
+                            data-toggle="modal"
+                            data-target={"#deleteModal" + value.commentId}
+                          >
+                            Delete
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </p>
-                <p class="desc">{value.commentText}</p>
-                <div
-                  class="modal fade popup-modal-wrapper delete-modal horizontal-middle-align"
-                  role="dialog"
-                  data-backdrop="static"
-                  data-keyboard="false"
-                  id={"deleteModal"+value.commentId}
-                >
-                  <div class="modal-content horizontal-middle-align">
-                    <div class="modal-header">
-                      <div class="modal-title">
-                        <h3 class="modal-heading" tabindex="0">
-                          Delete Comment
-                        </h3>
+                  </p>
+                  <p class="desc">{value.commentText}</p>
+                  <div
+                    class="modal fade popup-modal-wrapper delete-modal horizontal-middle-align"
+                    role="dialog"
+                    data-backdrop="static"
+                    data-keyboard="false"
+                    id={"deleteModal" + value.commentId}
+                  >
+                    <div class="modal-content horizontal-middle-align">
+                      <div class="modal-header">
+                        <div class="modal-title">
+                          <h3 class="modal-heading" tabindex="0">
+                            Delete Comment
+                          </h3>
+                          <button
+                            type="button"
+                            class="close close-popup fa fa-remove collapse-x"
+                            data-dismiss="modal"
+                          >
+                            <label class="sr-only">Close</label>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="modal-body" tabindex="0">
+                        Are you sure you want to delete the comment?
+                      </div>
+                      <div class="modal-footer">
                         <button
                           type="button"
-                          class="close close-popup fa fa-remove collapse-x"
+                          class="cancel"
                           data-dismiss="modal"
                         >
-                          <label class="sr-only">Close</label>
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          class="delete"
+                          onClick={this.deleteComment.bind(
+                            this,
+                            value.commentId
+                          )}
+                          data-dismiss="modal"
+                        >
+                          Delete
                         </button>
                       </div>
                     </div>
-                    <div class="modal-body" tabindex="0">
-                      Are you sure you want to delete the comment?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="cancel" data-dismiss="modal">
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        class="delete"
-                        onClick={this.deleteComment.bind(this,value.commentId)}
-                        data-dismiss="modal"
-                      >
-                        Delete
-                      </button>
-                    </div>
                   </div>
-                </div>
-              </section>
-            </div>
-          );
-        })}
+                </section>
+              </div>
+            );
+          })}
       </div>
     );
   }
