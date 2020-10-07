@@ -64,7 +64,7 @@ public class UGCServiceImplTest {
 		when(ugcConfig.getUGCServiceSite()).thenReturn("servicesite");
 		ugcServiceImpl.activate(ugcConfig);	
 		when(restService.callGetWebService(url, url)).thenReturn("get service response");
-		ugcServiceImpl.callWebService(url, "GET", userInfo, requestParams);
-		ugcServiceImpl.callWebService(url, "POST", userInfo, requestParams);
+		ugcServiceImpl.callWebService(url, "GET", userInfo, requestParams, null);
+		ugcServiceImpl.callWebService(url, "POST", userInfo, requestParams, null);
 	}
 }
