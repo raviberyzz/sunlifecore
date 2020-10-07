@@ -1065,9 +1065,9 @@ class NewsTiles extends React.Component {
       type: "GET",
       url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
       dataType: "json",
-      success: (res) => {
-        this.state.businessGroupList = res.business-group;
-        this.state.topicsList = res.topics;
+      success: (response) => {
+        this.state.businessGroupList = response["business-group"];
+        this.state.topicsList = response["topics"];
         this.state.businessGroupList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
