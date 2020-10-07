@@ -98,6 +98,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		String responseStr = null;
 		try {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
+				LOGGER.debug("request params :: {}", request.getParameterMap());
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
 						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap());

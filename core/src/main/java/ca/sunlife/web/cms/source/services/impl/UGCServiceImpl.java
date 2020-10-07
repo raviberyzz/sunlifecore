@@ -72,7 +72,7 @@ public class UGCServiceImpl implements UGCService {
 	@ Override
 	public String callWebService(String serviceUrl, String methodType, String userInfo,
 			Map<String, String[]> requestParams) throws ApplicationException, SystemException, IOException {
-		logger.debug("Entry :: callWebService method of UGCServiceImpl");
+		logger.debug("Entry :: callWebService method of UGCServiceImpl :: serviceUrl {}, methodType {}, userInfo {}, requestParams {}", serviceUrl, methodType, userInfo, requestParams);
 		JSONObject reqHeaderjson = new JSONObject();
 		try {
 			JSONObject userProfileJson = new JSONObject(userInfo);
