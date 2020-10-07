@@ -18,7 +18,8 @@ class NewsTiles extends React.Component {
       },
       allChecked: false,
       selectedPreferenceList: [],
-      newsList: [
+      newsList: [],
+      /*newsList: [
         {
           "publishedDate": 1584037800000,
           "heading": "How to raise a Healthy family",
@@ -861,7 +862,7 @@ class NewsTiles extends React.Component {
           "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/covid-19"],
           "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
         }
-      ],
+      ], */
       filterNewsList: [],
       selectedPreferenceTags: []
     };
@@ -1025,8 +1026,8 @@ class NewsTiles extends React.Component {
       type: "GET",
       url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
       dataType: "json",
-      success: (res) => {
-        this.state.newsList = res;
+      success: (response) => {
+        this.state.newsList = response;
         let pinnedNewsList = [];
         let preferedNewsList = [];
         if (this.state.selectedPreferenceList.length > 0) {
@@ -1052,7 +1053,6 @@ class NewsTiles extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         })
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
