@@ -16,7 +16,9 @@
     CUI.rte.templates['dlg-' + TCP_DIALOG] = CUI.rte.Templates['dlg-' + TCP_DIALOG] = function(data){
         var i,fontSizes='';
         for(i=14;i<=36;i=i+2) {
-            fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
+            if(i!=22 && i!=26 && i!=30 && i!=34) {
+                fontSizes = fontSizes + '<coral-select-item value="icon-size-'+i+'">'+i+'px</coral-select-item>';
+            }
         }
         return '<div class=" rte-dialog-columnContainer">'
             +'<div class=" rte-dialog-column">'
@@ -28,6 +30,7 @@
                 +'<coral-select class="coral-Form-field" placeholder="Select Color" name="awesomeIconColor" labelledby="label-vertical-0">'
                     +'<coral-select-item value="icon-dark-white">White</coral-select-item>'
                     +'<coral-select-item value="icon-dark-grey">Dark Grey</coral-select-item>'
+                    +'<coral-select-item value="icon-medium-blue">Medium Blue</coral-select-item>'
                     +'<coral-select-item value="icon-medium-red">Medium Red</coral-select-item>'
                     +'<coral-select-item value="icon-medium-green">Medium Green</coral-select-item>'
                 +'</coral-select>'
@@ -39,7 +42,7 @@
                 +'</coral-select>'
             +'</div>'
             +'<div class=" rte-dialog-column">'
-                +'<button is="coral-button" style="margin-top:20px;" class="coral3-Button coral3-Button--secondary" size="S" variant="secondary" type="button" icon="close" title="Cancel" aria-label="Cancel" data-type="cancel" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--close" icon="close" size="S" role="img" aria-label="close"></coral-icon><coral-button-label></coral-button-label></button>'
+                +'<button is="coral-button" style="margin-top:20px;" class="coral3-Button coral3-Button--secondary" size="S" variant="secondary" type="button" icon="close" title="Cancel" aria-label="Cancel" data-type="execCloseIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--close" icon="close" size="S" role="img" aria-label="close"></coral-icon><coral-button-label></coral-button-label></button>'
             +'</div>'
             +'<div class=" rte-dialog-column">'
                 +'<button is="coral-button" style="margin-top:20px;" class="coral3-Button coral3-Button--primary" size="M" variant="primary" type="button" icon="check" iconsize="S" data-type="execSaveIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--check" icon="check" size="S" role="img" aria-label="Save"></coral-icon><coral-button-label></coral-button-label></button>'
@@ -53,18 +56,23 @@
             console.log('config',config);
             this.exec = config.execute;
             this.$saveBtn = this.$dialog.find('[data-type="execSaveIcon"]');
+            this.$closeBtn = this.$dialog.find('[data-type="execCloseIcon"]');
             var dialog = this.$dialog,
             ek=this.editorKernel;
             this.$saveBtn.on('click',function(e){
-                var data = {};
                 var fClass = dialog.find('[name="awesomeIcon"]').val();
                 if($.trim(fClass) == "") {
                     return;
                 }
-                data.class = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' +
+                fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' +
                     dialog.find('[name="awesomeIconColor"]').val() + ' ' +
-                    dialog.find('[name="awesomeIconSize"]').val(); 
-                ek.relayCmd(FEATURE, data);
+                    dialog.find('[name="awesomeIconSize"]').val();
+                //ek.relayCmd(FEATURE, data, ek.getEditContext());
+                config.parameters.saveData($.trim(fClass));
+                dialog.hide();
+            });
+            this.$closeBtn.on('click',function(e) {
+                dialog.find('[name="awesomeIcon"]').val(' ');
                 dialog.hide();
             });
         },
@@ -90,18 +98,27 @@
             tbGenerator.registerIcon(groupFeature, "effects");
         },
         execute: function (id, value, envOptions) {
+            console.log(id,value,envOptions);
             var context = envOptions.editContext,
                 selection = CUI.rte.Selection.createProcessingSelection(context),
                 ek = this.editorKernel,
                 startNode = selection.startNode;
+            var bookmark = CUI.rte.Selection.createSelectionBookmark(context);
             if ((selection.startOffset === startNode.length) && (startNode != selection.endNode)) {
                 startNode = startNode.nextSibling;
             }
+            var saveData = function(cs) {
+                CUI.rte.Selection.selectBookmark(context, bookmark);
+                console.log('bookmark',bookmark);
+                var iHtml = '<span class="'+cs+'"></span>';
+                ek.execCmd('InsertHTML', iHtml, context);
+            };
             var dialog, dm = ek.getDialogManager(),
                 $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
                 propConfig = {
                     'parameters': {
-                        'command': this.pluginId + '#' + FEATURE
+                        'command': this.pluginId + '#' + FEATURE,
+                        'saveData': saveData
                     }
                 };
             if (this.fontAwesomeDialog) {
@@ -142,26 +159,4 @@
         }
     });
     CUI.rte.plugins.PluginRegistry.register(GROUP, TouchUIFontAwesomePlugin);
-    var FontAwesomePickerCmd = new Class({
-        toString: "FontAwesomePickerCmd",
-        extend: CUI.rte.commands.Command,
-        isCommand: function (cmdStr) {
-            return (cmdStr.toLowerCase() == FEATURE.toLowerCase());
-        },
-        getProcessingOptions: function () {
-            var cmd = CUI.rte.commands.Command;
-            return cmd.PO_SELECTION | cmd.PO_BOOKMARK | cmd.PO_NODELIST;
-        },
-        execute: function (execDef) {
-            var cs = execDef.value ? execDef.value.class : undefined,
-                selection = execDef.selection,
-                nodeList = execDef.nodeList;
-            if (!selection || !nodeList) {
-                return;
-            }
-            var iHtml = '<span class="'+cs+'"></span>';
-            execDef.component.execCmd('inserthtml', iHtml);
-        }
-    });
-    CUI.rte.commands.CommandRegistry.register(FEATURE, FontAwesomePickerCmd);
 }(jQuery, window.CUI, jQuery(document)));
