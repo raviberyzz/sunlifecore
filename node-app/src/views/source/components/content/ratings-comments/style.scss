@@ -75,19 +75,22 @@
             z-index:1;
             background-color:$white-shade;
             width: 200px;
-            margin-left: -37px;
+            margin-left: -155px;
             margin-top: 2px;
             text-align: left;
             a{
                 font-weight:400;
                 font-size:16px;
             }
+            &.show{
+                display: block;
+            }
         }
         .three-dots{
             width:5%;
             position: relative;
             text-align:center;
-            display: inline-block;
+            display: none;
             float:right;
             width:25px;
             height:25px;
@@ -96,6 +99,9 @@
             shape-outside: circle(50%);
             background-color:$light-grey-separator-color;
             cursor: pointer;
+            &.show{
+                display: block;
+            }
             p{
                 width:100%;
                 margin:0;
@@ -118,7 +124,7 @@
             content: '';
             display: block;  
             position: absolute;
-            left: 40px;
+            left: 159px;
             bottom: 100%;
             width: 0;
             height: 0;
@@ -129,7 +135,7 @@
             content: '';
             display: block;  
             position: absolute;
-            left: 42px;
+            left: 161px;
             bottom: 100%;
             width: 0;
             height: 0;
@@ -163,6 +169,36 @@
             padding:5px;
         }
     }
+    .delete-modal{
+        .modal-content{
+            width:70%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            margin-top:-10px;
+            .modal-body{
+                padding-top:5px;
+            }
+            .modal-footer{
+                border-top:0;
+                button{
+                    font-size:1rem;
+                    font-weight:700;
+                    color:$delete-button-text;
+                    width:217px;
+                    height:48px;
+                    &.cancel{
+                        background-color:$transparent;
+                        border:0;
+                    }
+                    &.delete{
+                        background-color: $medium-yellow-background;
+                        border:0;
+                        border-radius:6px;
+                    }
+                }
+            }
+        }
+    }
 }
 @media(max-width:767px){
     .comment-wrapper{
@@ -181,6 +217,19 @@
             width:100%;
             section{
                 width:90%;
+            }
+        }
+        .delete-modal{
+            .modal-content{
+                width:90%;
+                .modal-body{
+                    margin-bottom:10px;
+                }
+                .modal-footer{
+                    button{
+                        width:150px;
+                    }
+                }
             }
         }
     }

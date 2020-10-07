@@ -39,15 +39,16 @@ class ArticleRatings extends React.Component {
   getRatingComment() {
     let data1 = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      userACF2Id: this.state.userACF2Id,
+      // siteName: this.state.siteName,
+      // userACF2Id: this.state.userACF2Id,
     };
     $.ajax({
       type: "GET",
-      url: "/source-services/selectAll",
+      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
+        console.log('data from ugc is'+res);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
@@ -58,7 +59,7 @@ class ArticleRatings extends React.Component {
         });
       },
       error: (err) => {
-        console.error(err);
+        console.error('error from rating ugc'+err);
       },
     });
   }
@@ -66,13 +67,13 @@ class ArticleRatings extends React.Component {
     if (this.state.canSubmit !== true) {
       let data1 = {
         articlePath: this.state.articlePath,
-        siteName: this.state.siteName,
-        userACF2Id: this.state.userACF2Id,
+        // siteName: this.state.siteName,
+        // userACF2Id: this.state.userACF2Id,
         rating: i,
       };
       $.ajax({
         type: "POST",
-        url: "/source-services/addRating",
+        url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -170,6 +171,7 @@ class ArticleComments extends React.Component {
       email: "john@gmail.com",
       apiCall: {},
       canSubmit: true,
+      userEmail:''
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -177,6 +179,7 @@ class ArticleComments extends React.Component {
     this.dateChange = this.dateChange.bind(this);
     this.dateLoad = this.dateLoad.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
+    this.selectUserComment = this.selectUserComment.bind(this);
     this.articlePathFun();
     this.getRatingComment();
   }
@@ -219,15 +222,25 @@ class ArticleComments extends React.Component {
     return monthName[m] + " " + d + ", " + y;
     // return moment(date).format('MMM DD');
   }
+  selectUserComment(){
+    if(ContextHub!=undefined){
+      let userDetails=ContextHub.getItem('profile');
+      if(userDetails.email){
+        this.setState({
+          userEmail:userDetails.email
+        })
+      };
+    }
+  }
   getRatingComment() {
     let data1 = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      userACF2Id: this.state.userACF2Id,
+      // siteName: this.state.siteName,
+      // userACF2Id: this.state.userACF2Id,
     };
     $.ajax({
       type: "GET",
-      url: "/source-services/selectAll",
+      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -240,6 +253,7 @@ class ArticleComments extends React.Component {
           ratingExist: res.ratingExist,
         });
         this.dateLoad();
+        this.selectUserComment();
       },
       error: (err) => {
         console.error(err);
@@ -281,6 +295,7 @@ class ArticleComments extends React.Component {
           commentDetails: res.commentDetails,
         });
         this.dateLoad();
+        this.selectUserComment();
       },
       error: (err) => {
         console.error(err);
@@ -294,17 +309,16 @@ class ArticleComments extends React.Component {
     });
     /* news comment submit analytics ends here */
   }
-  deleteComment() {
+  deleteComment(commentId,event) {
+    console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      commentId: 17,
-      reasonText: "testing",
-      deleter_user_acf2_id: this.state.userACF2Id,
+      commentId: commentId,
+      reasonText:"testing"
     };
     $.ajax({
       type: "DELETE",
-      url: "/source-services/deleteComment",
+      url: "https://cmsdev-auth.ca.sunlife/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),
@@ -319,6 +333,7 @@ class ArticleComments extends React.Component {
         console.error(err);
       },
     });
+    $('.comment-option').removeClass('show');
   }
   render() {
     return (
@@ -357,18 +372,64 @@ class ArticleComments extends React.Component {
                 <p class="name-time">
                   <span class="name">{value.userName}</span>
                   <span class="time">{value.updatedDate}</span>
-                  <div class="three-dots">
+                  <div class={`three-dots ${value.email==this.state.userEmail?'show':''}`}>
                     <p>...</p>
-                    <div class="comment-option">
+                    <div class="comment-option" value={`${value.commentId}`}>
                       <div class="edit-popup">
                         <a href="javascript:void(0)">Edit</a>
                         <br />
-                        <a href="#">Delete</a>
+                        <a
+                          class="delete-option"
+                          data-toggle="modal"
+                          data-target={"#deleteModal"+value.commentId}
+                        >
+                          Delete
+                        </a>
                       </div>
                     </div>
                   </div>
                 </p>
                 <p class="desc">{value.commentText}</p>
+                <div
+                  class="modal fade popup-modal-wrapper delete-modal horizontal-middle-align"
+                  role="dialog"
+                  data-backdrop="static"
+                  data-keyboard="false"
+                  id={"deleteModal"+value.commentId}
+                >
+                  <div class="modal-content horizontal-middle-align">
+                    <div class="modal-header">
+                      <div class="modal-title">
+                        <h3 class="modal-heading" tabindex="0">
+                          Delete Comment
+                        </h3>
+                        <button
+                          type="button"
+                          class="close close-popup fa fa-remove collapse-x"
+                          data-dismiss="modal"
+                        >
+                          <label class="sr-only">Close</label>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body" tabindex="0">
+                      Are you sure you want to delete the comment?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="cancel" data-dismiss="modal">
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="delete"
+                        onClick={this.deleteComment.bind(this,value.commentId)}
+                        data-dismiss="modal"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </section>
             </div>
           );
