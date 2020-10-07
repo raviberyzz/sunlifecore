@@ -33,7 +33,10 @@ import ca.sunlife.web.cms.source.services.UGCService;
  */
 @ Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= UGC Services Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET,
-		"sling.servlet.resourceTypes=" + "sunlife/source/components/content/generic", "sling.servlet.extensions=json",
+		"sling.servlet.methods=" + HttpConstants.METHOD_POST,
+		"sling.servlet.resourceTypes=" + "sunlife/source/components/content/generic",
+		"sling.servlet.resourceTypes=" + "sunlife/source/components/content/news-announcement",
+		"sling.servlet.extensions=json",
 		"sling.servlet.selectors=ugc" })
 public class UGCServlet extends SlingAllMethodsServlet {
 
