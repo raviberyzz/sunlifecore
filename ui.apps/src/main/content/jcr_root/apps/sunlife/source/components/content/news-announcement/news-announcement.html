@@ -2,7 +2,10 @@
 <sly data-sly-test.notEmpty="${newsArticle.fragmentPath}">
    <div class="news-article-wrapper">
       <div>
-         <div data-sly-test="${newsArticle.checkboxDisplayTags && newsArticle.tagList}" class="article-tags">
+         <h3 data-sly-test="${newsArticle.articleData.heading}">
+            ${newsArticle.articleData.heading}
+         </h3>
+		 <div data-sly-test="${newsArticle.checkboxDisplayTags && newsArticle.tagList}" class="article-tags">
             <sly data-sly-list="${newsArticle.tagList}">
                <span class="tag">${item}</span>
             </sly>
@@ -10,9 +13,6 @@
          <div data-sly-test="${!newsArticle.checkboxHideDate}" class="date">
             ${newsArticle.articleData.publishedDate}
          </div>
-         <h3 data-sly-test="${newsArticle.articleData.heading}">
-            ${newsArticle.articleData.heading}
-         </h3>
       </div>
       <section class="article-body">
          ${newsArticle.articleData.articleContent  @context='html'}
