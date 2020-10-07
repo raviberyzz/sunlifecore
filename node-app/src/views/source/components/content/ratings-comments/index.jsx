@@ -368,7 +368,6 @@ class ArticleComments extends React.Component {
           </div>
         </div>
         {this.state.commentDetails &&
-          this.state.commentDetails.lenght > 0 &&
           this.state.commentDetails.map((value, index) => {
             let a = "";
             if (index == 0) {
