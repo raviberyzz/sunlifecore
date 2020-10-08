@@ -5,6 +5,7 @@ package ca.sunlife.web.cms.source.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.stream.Collectors;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -73,7 +74,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET",
-						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap());
+						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap(), null);
 			}
 		} catch (ApplicationException | SystemException e) {
 			LOGGER.error("Error :: doGet method of UGC Servlet :: {}", e);
@@ -98,9 +99,10 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		String responseStr = null;
 		try {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
+				LOGGER.debug("request params :: {}", request.getParameterMap());
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
-						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap());
+						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
 			}
 		} catch (ApplicationException | SystemException e) {
 			LOGGER.error("Error :: doPost method of UGC Servlet :: {}", e);

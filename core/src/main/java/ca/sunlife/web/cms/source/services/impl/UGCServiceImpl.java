@@ -71,8 +71,8 @@ public class UGCServiceImpl implements UGCService {
 	 */
 	@ Override
 	public String callWebService(String serviceUrl, String methodType, String userInfo,
-			Map<String, String[]> requestParams) throws ApplicationException, SystemException, IOException {
-		logger.debug("Entry :: callWebService method of UGCServiceImpl");
+			Map<String, String[]> requestParams, String requestJsonPost) throws ApplicationException, SystemException, IOException {
+		logger.debug("Entry :: callWebService method of UGCServiceImpl :: serviceUrl {}, methodType {}, userInfo {}, requestParams {}", serviceUrl, methodType, userInfo, requestParams);
 		JSONObject reqHeaderjson = new JSONObject();
 		try {
 			JSONObject userProfileJson = new JSONObject(userInfo);
@@ -95,23 +95,19 @@ public class UGCServiceImpl implements UGCService {
 			logger.debug("callWebService :: url :: {}", url);
 			return restService.callGetWebService(url.toString(), reqHeaderjson.toString());
 		} else {
-			final JSONObject json = new JSONObject();
-			if (null != requestParams && requestParams.size() > 0) {
+			JSONObject json = null;
 				try {
-					json.put("siteName", this.ugcConfig.getUGCServiceSite());
+					if (null != requestJsonPost && requestJsonPost.length() > 2) {
+						json = new JSONObject(requestJsonPost);
+						json.put("siteName", this.ugcConfig.getUGCServiceSite());
+					} else {
+						json = new JSONObject();
+					}
 				} catch (JSONException e1) {
 					logger.error("JSONException :: while setting site name {}", e1);
 				}
-				requestParams.forEach((key, value) -> {
-					try {
-						json.put(key, value[0]);
-					} catch (JSONException e) {
-						logger.error("Error :: while parsing the json for request params");
-					}
-				});
-			}
-			String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
-			return restService.callPostWebService(url, userInfo, reqHeaderjson.toString());
+				String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
+				return restService.callPostWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);
 		}
 	}
 
