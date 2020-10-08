@@ -151,7 +151,6 @@
 		<artifactId>compiler</artifactId>
 		<version>0.9.6</version>
 	</dependency>
-	
   </dependencies>
   <build>
     <plugins>
