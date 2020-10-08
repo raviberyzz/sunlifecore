@@ -141,6 +141,14 @@ function initJourneyPlayer() {
   journeyPlayer.setUiHandler(new CustomUIHandler());
   var askChooseLanguage = false;
 
+  if (lang === "fr"){
+    console.log("set French Locale.");
+		journeyPlayer.setLocale("fr-CA");
+	} else {
+    console.log("set English Locale.");
+		journeyPlayer.setLocale("en-CA");
+	}
+
     if (askChooseLanguage) {
         if (confirm("Would you like to use Franch language?")) {
 
