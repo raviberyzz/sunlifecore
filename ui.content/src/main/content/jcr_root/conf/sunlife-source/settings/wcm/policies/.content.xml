@@ -1819,8 +1819,13 @@
                                             jcr:primaryType="nt:unstructured"/>
                                         <item3
                                             cq:styleClasses="time-widget"
-                                            cq:styleId="1601391356010"
+                                            cq:styleId="1601384884223"
                                             cq:styleLabel="Time widget"
+                                            jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="find-people"
+                                            cq:styleId="1602177903387"
+                                            cq:styleLabel="Find people"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item2>
