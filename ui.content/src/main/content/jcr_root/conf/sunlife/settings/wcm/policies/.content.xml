@@ -8923,6 +8923,11 @@
                                             cq:styleId="1594570048442"
                                             cq:styleLabel="Page separator"
                                             jcr:primaryType="nt:unstructured"/>
+										<item5
+                                            cq:styleClasses="source-hr-separator"
+                                            cq:styleId="1602177801084"
+                                            cq:styleLabel="Full separator"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
@@ -10071,6 +10076,11 @@
                                             cq:styleId="1601384884223"
                                             cq:styleLabel="Time widget"
                                             jcr:primaryType="nt:unstructured"/>
+										<item4
+                                            cq:styleClasses="find-people"
+                                            cq:styleId="1602177903387"
+                                            cq:styleLabel="Find people"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
                                 <item3
