@@ -2,61 +2,65 @@ function onShowSignInModal() {
     toggleSignInModalVisibility(true);
 }
 
-function onSignInClick() {
+    function onSignInClick() {
 
-    console.log("Inside onSignInClick")
-    var clientId =$("#form_signon #USER").val();
-    var password =$("#form_signon #PASSWORD").val();
+        console.log("Inside onSignInClick")
+        var clientId =$(".mySlfSignIn #USER").val();
+        var password =$(".mySlfSignIn #PASSWORD").val();
+        var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
-    var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
+        if (clientId.length === 0 || password.length === 0) {
+            return alert('Please type a valid client id and password to login');
+        }
 
-    if (clientId.length === 0 || password.length === 0) {
-        return alert('Please type a valid client id and password to login');
-    }
+        var clientContext = getClientContext();
+        var loginParameters= getHiddenFormValues();
 
-  var clientContext = getClientContext();
-  var loginParameters= getHiddenFormValues();
-
-  var additionalParams = {
-    user: clientId,
-    loginParameters : loginParameters
-  };
-    var journeyName = "Consumer_SignIn_FetchPartyID"; 
-    
-    // add the password to the client context
-    clientContext.password = password;
-
-    setAppContentApperance(false);
-    
-
-    journeyPlayer.setUiHandler(new UIHandlerForStepUp());
-
-    $("#mfa_signin_modal").modal("show");
-    sessionTimeout.startTimeout();
-     journeyPlayer.cancelCurrentRunningControlFlow();
-     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+        var additionalParams = {
+            user: clientId,
+            loginParameters : loginParameters
+        };
+        var journeyName = "Consumer_SignIn_FetchPartyID"; 
+        clientContext.password = password;
         
-            journeyEnded(clientContext);
-
-           var token = results.getToken();
-            if (token) {
-                console.log("Journey completed successfully ...")
-                onLogout();
-               // updateSessionToken(token);
-                //journeyPlayer.logout();
-            }
-        })
-        .catch(function(error) {
+        $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
             journeyEnded(clientContext);
             onLogout();
-            console.error("Authenticate Error: ".concat(error));       
+            //journeyPlayer.clearDataForUser(clientId);
+            console.log("Modal closed...");
         });
-  
+
+        journeyPlayer.setUiHandler(new UIHandlerForStepUp());
+        journeyPlayer.cancelCurrentRunningControlFlow();
+        setAppContentApperance(true);
+        journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+           
+        journeyEnded(clientContext);
+        var token = results.getToken();
+           if (token) {
+             console.log("Journey completed successfully ...")
+              onLogout();
+                }
+            })
+            .catch(function(error) {
+                journeyEnded(clientContext);
+                console.error("Authenticate Error: ".concat(error));   
+                if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                    //onLogout();
+                }/*else if(error.getErrorCode() == com.ts.mobile.sdk.AuthenticationErrorCode.InvalidDeviceBinding){
+                    journeyPlayer.clearDataForUser(clientId);
+                }*/
+            
+                else{
+                    sessionTimeout.showErrorMessage();
+                }    
+            });
+    
 }
 
 function journeyEnded(clientContext) {
-    clearTransmitContainer(clientContext);
-     setAppContentApperance(true);
+     clearTransmitContainer(clientContext);
+     setAppContentApperance(false);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
 
