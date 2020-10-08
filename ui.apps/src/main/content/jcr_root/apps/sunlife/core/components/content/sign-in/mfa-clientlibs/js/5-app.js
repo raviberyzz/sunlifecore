@@ -18,7 +18,7 @@ var elementsIds = {
 };
 /*** Account Settings code is under ./accountSettings.js */
 
-function onRegisterPhoneNumbers() {
+ /*function onRegisterPhoneNumbers() {
   var journeyId = "multiple_phone_verification";
   var additionalParams = {};
   var clientContext = getClientContext();
@@ -43,7 +43,7 @@ function onProcessPhonesArray() {
      * 4. The journey use Display Information step to present the results
      * 
      */
-  var phonesArray = ["+1-208-972-3765", "+1-208-912-4324", "+1-208-976-5435", "+1-208-902-6566"];
+  /*var phonesArray = ["+1-208-972-3765", "+1-208-912-4324", "+1-208-976-5435", "+1-208-902-6566"];
 
   if (confirm("Click 'OK' to submit this phone numbers array to be processed in an AuthScript function:\n".concat(JSON.stringify(phonesArray)))) {
     var journeyId = "process_phones_array";
@@ -55,9 +55,9 @@ function onProcessPhonesArray() {
       console.log("Journey ended succesfully: ".concat(journeyId));
     });
   }
-}
+}*/
 
-function onAuthenticatorConfiguration() {
+/*function onAuthenticatorConfiguration() {
   setAppContentApperance(false);
   var clientContext = getClientContext();
   journeyPlayer.startAuthenticationConfiguration(clientContext).then(function (results) {
@@ -88,45 +88,53 @@ function onSubmitUserId() {
     updateSessionToken(token);
     clearTransmitContainer(clientContext);
     setAppContentApperance(true);
-    showHomeDiv();
   }).catch(function (error) {
     clearTransmitContainer(clientContext);
-    setAppContentApperance(true);
+    setAppContentApperance(false);
+    sessionTimeout.showErrorMessage();
+    reject(error);
     console.error("Authenticate Error: ".concat(error));
   });
 }
+*/
 
 function onLogout() {
   journeyPlayer.logout().then(function (results) {
     updateSessionToken(null); // clears the token from the session
-
-    showSignInDiv();
+    self.setAppContentApperance(false);
+    //showSignInDiv();
   }).catch(function (error) {
     console.log("Authenticate Error: ".concat(error));
+    console.log("ERROR CODE :"+error.getErrorCode());
+		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+				   // 	getMFADetailsForAccountSetting();
+				  }else{
+            self.setAppContentApperance(true);
+            sessionTimeout.showErrorMessage();
+            reject(error);
+          }
   });
 }
 
-/**
- * Transmit Code
- */
 
-function invokeJourney(journeyId, additionalParams, clientContext) {
-  var self = this;
-  return new Promise(function (resolve, reject) {
-    self.setAppContentApperance(false);
-    journeyPlayer.invokePolicy(journeyId, additionalParams, clientContext).then(function (results) {
-      clearTransmitContainer(clientContext);
-      self.setAppContentApperance(true);
-      resolve(results);
-    }).catch(function (error) {
-      console.error("error invoking journey with id: ".concat(journeyId, ", error: ").concat(error));
-      clearTransmitContainer(clientContext);
-      self.setAppContentApperance(true);
-      reject(error);
-    });
-  });
-}
 
+ /* function invokeJourney(journeyId, additionalParams, clientContext) {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+            self.setAppContentApperance(false);
+            journeyPlayer.invokePolicy(journeyId, additionalParams, clientContext).then(function (results) {
+                clearTransmitContainer(clientContext);
+                self.setAppContentApperance(true);
+                resolve(results);
+            }).catch(function (error) {
+                console.error("error invoking journey with id: ".concat(journeyId, ", error: ").concat(error));
+                onLogout();
+                sessionTimeout.showErrorMessage();
+                reject(error);
+            });
+        });
+  } 
+*/
 function initJourneyPlayer() {
   var settings = getTransmitConnectionSettings();
   journeyPlayer.setConnectionSettings(settings);
@@ -154,58 +162,76 @@ function initJourneyPlayer() {
     console.log("Transmit SDK initialized succesfuly: ".concat(results));
     
     if (!getSessionToken()) {
-      showSignInDiv();
+      setAppContentApperance(false);
     } else {
-      showHomeDiv();
+      setAppContentApperance(true);
     }
   }).catch(function (error) {
     console.error("Transmit SDK initialization error!: ".concat(error));
+		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+      setAppContentApperance(false);
+				  }else{
+            setAppContentApperance(true);
+            sessionTimeout.showErrorMessage();
+            reject(error);
+          }
   });
-} // Transmit related helper methods
+} 
 
-// Transmit related helper methods
-
-function getTransmitConnectionSettings() {
-    
-   var serverUrl = "https://mfa-uat.sunlifecorp.com";
-  //  var serverUrl = "https://mfa-dev.sunlifecorp.com";
-  var appId = "mfa_signin";
-  var apiTokenId = "";
-  var apiToken = "";
-  var realm = ""; 
-
-    //let settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId, apiTokenId, apiToken);
-  var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
-  settings.setRealm(realm);
-  return settings;
-
-}
-
-function getClientContext() {
-    return {
-        // returning the container div that will be used to present the authentication layer UI
-        uiContainer: document.getElementById(elementsIds.transmitContainer)
-    };
-}
-
-function clearTransmitContainer(clientContext) {
-    $(clientContext.uiContainer).html('');
-}
-
-function updateSessionToken(token) {
-  if (!token) {
-    sessionStorage.removeItem("transmit_session_token");
-    return;
+  function getTransmitConnectionSettings() {
+      
+      var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     // var serverUrl = "https://mfa-dev.sunlifecorp.com";
+      var appId = "mfa_signin";
+      var realm = ""; 
+      var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
+      settings.setRealm(realm);
+      return settings;
   }
 
-  sessionStorage.setItem('transmit_session_token', token);
-}
+  function getClientContext() {
+      return {
+          // returning the container div that will be used to present the authentication layer UI
+          uiContainer: document.getElementById(elementsIds.transmitContainer)
+      };
+  }
 
-function getSessionToken() {
-    return sessionStorage.getItem('transmit_session_token');
-}
+  function clearTransmitContainer(clientContext) {
+      $(clientContext.uiContainer).html('');
+  }
 
-/* End Transmit Code */
+  function updateSessionToken(token) {
+      if (!token) {
+        sessionStorage.removeItem("transmit_session_token");
+        return;
+      }
+      sessionStorage.setItem('transmit_session_token', token);
+  }
+
+  function getSessionToken() {
+      return sessionStorage.getItem('transmit_session_token');
+  }
+
+
+  function showModalPopup(){
+    $("#mfa_signin_modal").modal("show");
+  }
+
+  function showSpinner(){
+    $("#loadingMessageDiv").show();
+  }
+
+  function hideSpinner(){
+    $("#loadingMessageDiv").hide();
+  }
+
+  function CloseModalPopup(){
+    $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
+      onLogout();
+      console.log("Modal closed...");
+    });
+  }
+/* End Transmit Code 
 
 function showLoginDiv() {
   $("#".concat(elementsIds.login)).show();
@@ -250,18 +276,20 @@ function toggleSignInModalVisibility(isVisible) {
     $("#".concat(elementsIds.signInModalContainer)).hide();
   }
 }
-
+*/
 function onPageReady() {
     // When the document loads, we initialize the transmit journey player
-    toggleSignInModalVisibility(false);
+    //toggleSignInModalVisibility(false);
     initJourneyPlayer(); 
 }
 
 function setAppContentApperance(isVisible) {
     if (isVisible) {
-        $("#appContent").removeClass("hidden_container");
+        //$("#appContent").removeClass("hidden_container");
+        $("#mfa_signin_modal").modal("show");
     } else {
-        $("#appContent").addClass("hidden_container");
+        //$("#appContent").addClass("hidden_container");
+        $("#mfa_signin_modal").modal("hide");
     }
 }
 

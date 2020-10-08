@@ -104,17 +104,10 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       }
     }
 
-    handleCancelData = function(){
-      var otpSelection = this.clientContext.otpSelection;
-      cons
-      this.clientContext.otpSelection = otpSelection;
-     this.submitBlock(otpSelection);
-    }
-
     this.onCancelClicked = function(){
 
        // if (confirm("are you sure you want to cancel the authentication?")) {
-      
+
          console.log("actionContext :"+_this.actionContext);
           const escapeOptions = _this.actionContext.getEscapeOptions();
           const cancelOption = escapeOptions.filter(option => option.getId() === "cancel")[0];

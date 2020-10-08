@@ -12,6 +12,7 @@ class ArticleRatings extends React.Component {
       siteName: "ca",
       userACF2Id: "yq15",
       apiCall: {},
+      canSubmit: true,
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -49,14 +50,13 @@ class ArticleRatings extends React.Component {
       dataType: "json",
       data: data1,
       success: (res) => {
-        console.log("data from ugc is" + res);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
           ratingAverage: res.ratingAverage,
           ratingCount: res.ratingCount,
           ratingExist: res.ratingExist,
-          canSubmit: res.ratingExist,
+          canSubmit: !res.ratingExist,
         });
       },
       error: (err) => {
@@ -65,7 +65,7 @@ class ArticleRatings extends React.Component {
     });
   }
   submitRating(i, event) {
-    if (this.state.canSubmit !== true) {
+    if (this.state.canSubmit==true) {
       let data1 = {
         articlePath: this.state.articlePath,
         // siteName: this.state.siteName,
@@ -84,6 +84,8 @@ class ArticleRatings extends React.Component {
           this.setState({
             ratingAverage: res.ratingAverage,
             ratingCount: this.state.ratingCount + 1,
+            ratingExist: res.ratingExist,
+            canSubmit: false,
           });
         },
         error: (err) => {
@@ -172,7 +174,6 @@ class ArticleComments extends React.Component {
       userName: "David jackson",
       email: "john@gmail.com",
       apiCall: {},
-      canSubmit: true,
       userEmail: "",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
@@ -227,7 +228,7 @@ class ArticleComments extends React.Component {
   selectUserComment() {
     if (ContextHub != undefined) {
       let userDetails = ContextHub.getItem("profile");
-      if (userDetails.email) {
+      if (userDetails.email) {console.log(userDetails.email);
         this.setState({
           userEmail: userDetails.email,
         });

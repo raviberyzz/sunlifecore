@@ -119,6 +119,7 @@
             border: 1px solid $dark-grey-shade;
             border-radius: 5px;
             background-color:$white-shade;
+            z-index:2;
         }
         .edit-popup:before {
             content: '';
@@ -172,8 +173,7 @@
     .delete-modal{
         .modal-content{
             width:70%;
-            top: 50%;
-            transform: translate(-50%,-50%);
+            top: 10%;
             margin-top:-10px;
             .modal-body{
                 padding-top:5px;
