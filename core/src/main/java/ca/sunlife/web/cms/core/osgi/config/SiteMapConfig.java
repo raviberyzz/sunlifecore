@@ -8,13 +8,13 @@ public @interface SiteMapConfig {
 	
 
 	@ AttributeDefinition (name = "Sling Resource Type", description = "Sling Resource Type for the Home Page component or components.")
-	  String getResourceType();
+	  String getResourceType() default "sunlife/core/components/structure/base-page";
 	
 	@ AttributeDefinition (name = "Externalizer Domain", description = "Must correspond to a configuration of the Externalizer component. If blank the externalization will prepend the current request's scheme combined with the current request's host header.")
 	  String getExternalizerDomain() default "publish";
 	
 	@ AttributeDefinition (name = "Include Last Modified", description = "If true, the last modified value will be included in the sitemap.")
-	  boolean getIncludeLastModified();
+	  boolean getIncludeLastModified() default true;
 	
 	@ AttributeDefinition (name = "Change Frequency Properties", description = "The set of JCR property names which will contain the change frequency value.")
 	String[] getChangefreqProperties();
