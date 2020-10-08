@@ -10077,7 +10077,7 @@
                                             cq:styleLabel="Time widget"
                                             jcr:primaryType="nt:unstructured"/>
 										<item4
-                                            cq:styleClasses="find-people"
+                                            cq:styleClasses="find-people "
                                             cq:styleId="1602177903387"
                                             cq:styleLabel="Find people"
                                             jcr:primaryType="nt:unstructured"/>	
