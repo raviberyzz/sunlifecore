@@ -13,6 +13,8 @@ class ArticleRatings extends React.Component {
       userACF2Id: "yq15",
       apiCall: {},
       canSubmit: true,
+      apiPath:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -24,20 +26,30 @@ class ArticleRatings extends React.Component {
     //this.getRatingComment();
   }
   articlePathFun() {
-    let articlePath1 = window.location.pathname;
-    articlePath1 = articlePath1.trim();
-    if (articlePath1.indexOf(".html") > -1) {
-      articlePath1 = articlePath1.replace(".html", "");
-    }
-    if (articlePath1) {
-      if (articlePath1[articlePath1.length - 1] == "/") {
-        articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    // let articlePath1 = window.location.pathname;
+    // articlePath1 = articlePath1.trim();
+    // if (articlePath1.indexOf(".html") > -1) {
+    //   articlePath1 = articlePath1.replace(".html", "");
+    // }
+    // if (articlePath1) {
+    //   if (articlePath1[articlePath1.length - 1] == "/") {
+    //     articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    //   }
+    // }
+    let articlePath1 = "";
+    if (utag_data != undefined) {
+      articlePath1 = utag_data["page_canonical_url_default"];
+      let pathArr = articlePath1.split("/");
+      articlePath1='/';
+      for (let i = 3; i < pathArr.length - 1; i++) {
+        articlePath1+=pathArr[i]+'/';
       }
     }
     this.state.articlePath = articlePath1;
     return articlePath1;
   }
   getRatingComment() {
+    console.log(this.state.articlePath);
     let data1 = {
       articlePath: this.state.articlePath,
       // siteName: this.state.siteName,
@@ -45,8 +57,7 @@ class ArticleRatings extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
+      url: this.state.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -65,7 +76,7 @@ class ArticleRatings extends React.Component {
     });
   }
   submitRating(i, event) {
-    if (this.state.canSubmit==true) {
+    if (this.state.canSubmit == true) {
       let data1 = {
         articlePath: this.state.articlePath,
         // siteName: this.state.siteName,
@@ -74,8 +85,7 @@ class ArticleRatings extends React.Component {
       };
       $.ajax({
         type: "POST",
-        url:
-          "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addRating.json",
+        url: this.state.apiPath + ".addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -175,6 +185,8 @@ class ArticleComments extends React.Component {
       email: "john@gmail.com",
       apiCall: {},
       userEmail: "",
+      apiPath:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -190,14 +202,13 @@ class ArticleComments extends React.Component {
     //this.dateLoad();
   }
   articlePathFun() {
-    let articlePath1 = window.location.pathname;
-    articlePath1 = articlePath1.trim();
-    if (articlePath1.indexOf(".html") > -1) {
-      articlePath1 = articlePath1.replace(".html", "");
-    }
-    if (articlePath1) {
-      if (articlePath1[articlePath1.length - 1] == "/") {
-        articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    let articlePath1 = "";
+    if (utag_data != undefined) {
+      articlePath1 = utag_data["page_canonical_url_default"];
+      let pathArr = articlePath1.split("/");
+      articlePath1='/';
+      for (let i = 3; i < pathArr.length - 1; i++) {
+        articlePath1+=pathArr[i]+'/';
       }
     }
     this.state.articlePath = articlePath1;
@@ -228,7 +239,8 @@ class ArticleComments extends React.Component {
   selectUserComment() {
     if (ContextHub != undefined) {
       let userDetails = ContextHub.getItem("profile");
-      if (userDetails.email) {console.log(userDetails.email);
+      if (userDetails.email) {
+        console.log(userDetails.email);
         this.setState({
           userEmail: userDetails.email,
         });
@@ -243,12 +255,10 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.selectAll.json",
+      url: this.state.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
-        console.log(res.commentDetails);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
@@ -265,8 +275,8 @@ class ArticleComments extends React.Component {
     });
   }
   dateLoad() {
-    let commentArray = '';
-    commentArray=this.state.commentDetails;
+    let commentArray = "";
+    commentArray = this.state.commentDetails;
     if (commentArray) {
       commentArray.map((value, index) => {
         if (value) {
@@ -292,7 +302,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "POST",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addComment.json",
+      url: this.state.apiPath + ".addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -325,8 +335,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "DELETE",
-      url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.deleteComment.json",
+      url: this.state.apiPath + ".deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),

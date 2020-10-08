@@ -7,6 +7,7 @@ class NewsTabs extends React.Component {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
     }
+    
     this.state = {
       defaultBG:defaultBGValue,
       pageLang: utag_data.page_language,
@@ -874,7 +875,7 @@ class NewsTabs extends React.Component {
     this.filteringNewsList = this.filteringNewsList.bind(this);
     this.paginationDataBuild = this.paginationDataBuild.bind(this);
     this.tagSorting = this.tagSorting.bind(this);
-    this.getNewsList = this.getNewsList.bind(this);
+    this.getTabsNewsList = this.getTabsNewsList.bind(this);
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
@@ -1072,7 +1073,7 @@ class NewsTabs extends React.Component {
       selectedPreferenceTags: this.state.selectedPreferenceTags
     });
   }
-  getNewsList() {
+  getTabsNewsList() {
     $.ajax({
       type: "GET",
       url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
@@ -1130,7 +1131,7 @@ class NewsTabs extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
         })
-        this.getNewsList();
+        this.getTabsNewsList();
         console.log(res);
       },
       error: (err) => {
