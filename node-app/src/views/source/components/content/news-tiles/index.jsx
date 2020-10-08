@@ -956,7 +956,7 @@ class NewsTiles extends React.Component {
     this.addSelectedPreference();
     this.tagSorting();
     $("#preferenceModal").modal("hide");
-    window.location.reload();
+    //window.location.reload();
   }
 
   clearAll() {
