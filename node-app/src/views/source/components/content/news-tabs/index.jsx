@@ -7,6 +7,7 @@ class NewsTabs extends React.Component {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
     }
+    
     this.state = {
       defaultBG:defaultBGValue,
       pageLang: utag_data.page_language,
