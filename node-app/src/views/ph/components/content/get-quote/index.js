@@ -117,14 +117,16 @@ $(document).ready(function() {
         autoclose: true,
         endDate: '+0d'
     };
-    $('.form_date').datepicker(options);
-    $('.form_date').datepicker()
-        .on("show", function(e) {
-            if (!$("#qc_q1_ans_main").hasClass("isAns")) {
-                $("#qc_q1_ans_main").addClass("isAns");
-            }
-        });
 
+    if ( $('#qc_main').length > 0 ) {
+        $('.form_date').datepicker(options);
+        $('.form_date').datepicker()
+            .on("show", function(e) {
+                if (!$("#qc_q1_ans_main").hasClass("isAns")) {
+                    $("#qc_q1_ans_main").addClass("isAns");
+                }
+            });
+    }
     //validate each fields value.
     function checkSubmit() {
         investmentAmountVal = $.trim($("#qc_q5_ans").val()).replace(new RegExp(',', 'g'), '');
