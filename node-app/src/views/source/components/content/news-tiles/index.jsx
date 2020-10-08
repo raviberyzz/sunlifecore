@@ -1321,7 +1321,7 @@ class NewsTiles extends React.Component {
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                     {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
                       return (
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile clickable-tile" onClick={() => location.href = this.state.filterNewsList[key].pagePath}>
+                        <div class={`col-xs-12  tile clickable-tile ${index == 0 ? "col-sm-8 col-md-8" : "col-sm-4 col-md-4"}`} onClick={() => location.href = this.state.filterNewsList[key].pagePath}>
                           <div class="tile-img" style={{ backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})` }}>
                             <div class="overlay-container">
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
