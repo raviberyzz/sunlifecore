@@ -153,6 +153,7 @@ public class RestServiceImpl implements RestService {
 	@ Override
 	public String callPostWebService (final String url, final String requestHeaders, final String requestParams)
 			throws ApplicationException, SystemException, IOException {
+		logger.debug("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;

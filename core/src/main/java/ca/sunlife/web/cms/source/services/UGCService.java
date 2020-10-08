@@ -23,12 +23,13 @@ public interface UGCService {
 	 * @param methodType
 	 * @param userInfo
 	 * @param requestParams
+	 * @param requestJsonPost
 	 * @return
 	 * @throws ApplicationException
 	 * @throws SystemException
 	 * @throws IOException
 	 */
-	public String callWebService (String url, String methodType, String userInfo, Map<String, String[]> requestParams)
+	public String callWebService (String url, String methodType, String userInfo, Map<String, String[]> requestParams, String requestJsonPost)
 			throws ApplicationException, SystemException, IOException;
 
 }
