@@ -10825,6 +10825,11 @@
                                             cq:styleId="1584393939390"
                                             cq:styleLabel="Yellow with Grey rings"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="title-wrapper-blue-yellow"
+                                            cq:styleId="1584396429390"
+                                            cq:styleLabel="Solid Blue"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item1>
                             </cq:styleGroups>
