@@ -1,7 +1,7 @@
 function SessionTimeout(){
     this.debug = true;
     this.sessionTimeoutId = null;
-    this.inactivityTimeoutSeconds = 1080;//1080; // 18mins
+    this.inactivityTimeoutSeconds = 30;//1080; // 18mins
     this.events = ['keyup','click'];
     this.timedout = false;
     this.timeCountDown = 0;
@@ -21,14 +21,14 @@ function SessionTimeout(){
         
         const localizationContent = {
             en: {
-                title: 'Your session has ended',
-                message: 'You\'ve signed out of your Sun Life online account due to 18 minutes of inactivity',
-                button: 'Sign back in'
+                title: 'Session has expired to protect your information',
+                message: 'We noticed there hasn’t been any activity in your session for 18 minutes, so we ended the session for you.',
+                button: 'Sign in again'
             },
             fr:{
-                title: 'Your session has ended',
-                message: 'You\'ve signed out of your Sun Life online account due to 18 minutes of inactivity',
-                button: 'Sign back in'
+                title: 'Nous avons mis fin à la session pour protéger vos données.',
+                message: 'Nous avons remarqué qu’il n’y a plus d’activité sur cette page depuis 18 minutes. Nous avons donc mis fin à cette session pour vous.',
+                button: 'Ouvrir une nouvelle session'
             }
         }
 
@@ -47,6 +47,10 @@ function SessionTimeout(){
         $("#mfaErrorTitle").html(localizationContent[lang].title);
         $("#mfaErrorMessage").html(localizationContent[lang].message);
         $("#mfaSignInBtn").html(localizationContent[lang].button);
+
+        $("#mfaSignInBtn").on('click', function(){
+            // add your code here to sign them back in
+        });
     }
 
     this.startTimeout = function(){
@@ -70,6 +74,4 @@ function SessionTimeout(){
             self.inactivityTimeoutSeconds * 1000
         )        
     }// EO this.resetTimeout
-
-    this._init();
 }
