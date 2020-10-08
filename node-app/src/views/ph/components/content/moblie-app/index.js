@@ -478,7 +478,6 @@ $(document).ready(function(){
       /* structure js starts here */
       if($("#mobile-app-banner")){
         var title='',author='',price='',downloadText='';
-        https://play.google.com/store/apps/details?id=com.sunlifeph.android_sunlife_ph&hl=en
         let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlifeph.android_sunlife_ph&hl=en';
         function getOS() {
           var userAgent = window.navigator.userAgent,
