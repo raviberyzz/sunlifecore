@@ -53,7 +53,7 @@ import ca.sunlife.web.cms.core.services.SiteMapService;
 @ Component (service = Servlet.class, property = {
 	    Constants.SERVICE_DESCRIPTION + "=Page and Asset Site Map Servlet",
 	    "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-	    "sling.servlet.resourceTypes=" + "sunlife/core/components/config/configuration",
+	    "sling.servlet.resourceTypes=" + "sunlife/core/components/config/sitemap",
 	    "sling.servlet.extensions=xml", "sling.servlet.selectors=sitemap" })
 public final class SiteMapServlet extends SlingSafeMethodsServlet {
 
