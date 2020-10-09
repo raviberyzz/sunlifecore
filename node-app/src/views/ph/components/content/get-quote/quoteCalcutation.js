@@ -22,16 +22,16 @@ var bandProduct = false;
     function fetching(data){
 		
 			 setCoverageRange();
-            // var arrayOfResult = data.split(',');
+             var arrayOfResult = data.split(',');
             var data1 = data.split('||');
 			var arrayOfResult = data1[0];
-            //var arrayOfResult = data1[0].split(',');
+            var arrayOfResult = data1[0].split(',');
 			var min = minCoverage.indexOf(",") > -1 ? minCoverage.replace(/\,/g, '') : minCoverage == "" ? 0 : minCoverage;
             var max = maxCoverage.indexOf(",") > -1 ? maxCoverage.replace(/\,/g, '') : maxCoverage == "" ? 1e309 : maxCoverage; //1e309 equals to infinity(set to max value)
             console.log(arrayOfResult,min,max);
 			
 			//Nan check for PHP data 
-                if (((arrayOfResult[0].trim().replace("||", "")).length < 1 || arrayOfResult[0].trim() == "0.0") && !bandProduct) {
+                if (((arrayOfResult[0].trim().replace("||", "")).length < 1 || arrayOfResult[0].trim() == "0.0" || arrayOfResult[0].trim() == "NaN" ) && !bandProduct) {
                     showCombinationErrMsg();
                     $('#qc_result').css('display', 'none');
                     $(".qc_loading_ani").hide();
