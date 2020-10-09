@@ -40,9 +40,9 @@ class ArticleRatings extends React.Component {
     if (utag_data != undefined) {
       articlePath1 = utag_data["page_canonical_url_default"];
       let pathArr = articlePath1.split("/");
-      articlePath1='/';
+      articlePath1 = "/";
       for (let i = 3; i < pathArr.length - 1; i++) {
-        articlePath1+=pathArr[i]+'/';
+        articlePath1 += pathArr[i] + "/";
       }
     }
     this.state.articlePath = articlePath1;
@@ -206,9 +206,9 @@ class ArticleComments extends React.Component {
     if (utag_data != undefined) {
       articlePath1 = utag_data["page_canonical_url_default"];
       let pathArr = articlePath1.split("/");
-      articlePath1='/';
+      articlePath1 = "/";
       for (let i = 3; i < pathArr.length - 1; i++) {
-        articlePath1+=pathArr[i]+'/';
+        articlePath1 += pathArr[i] + "/";
       }
     }
     this.state.articlePath = articlePath1;
@@ -362,27 +362,31 @@ class ArticleComments extends React.Component {
         <p class="info">
           (When you add a comment your name will be automatically displayed)
         </p>
-        <div class="add-comment row col-xs-12">
-          <div class="col-sm-7">
-            <textarea
-              id="commentText"
-              placeholder="Write your comment"
-            ></textarea>
-          </div>
-          <div class="col-sm-3">
-            <button
-              class="submit-comment vertical-middle-align"
-              onClick={this.submitComment.bind(this)}
-            >
-              Add comment
-            </button>
+        <div class="add-comment col-xs-12">
+          <input
+            type="text"
+            class="col-xs-12 textarea"
+            id="commentText"
+            placeholder="Write your comment"
+          />
+          <div class="col-xs-12 add-button">
+            <div class="primary-yellow-button">
+              <a href="javascript:void(0)" role="button" class="CTA-wrapper">
+                <span class="button-class">
+                  <span class="icon-class fa fa-user"></span>Add Comment
+                </span>
+              </a>
+            </div>
           </div>
         </div>
         {this.state.commentDetails &&
           this.state.commentDetails.map((value, index) => {
             let a = "";
-            if (index == 0) {
-              a = "first";
+            // if (index == 0) {
+            //   a = "first";
+            // }
+            if(index==(this.state.commentDetails.length-1)){
+              a='last';
             }
             return (
               <div class={`old-comments ${a}`}>
@@ -395,7 +399,7 @@ class ArticleComments extends React.Component {
                         value.email == this.state.userEmail ? "show" : ""
                       }`}
                     >
-                      <p>...</p>
+                      <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
                           <a href="javascript:void(0)">Edit</a>

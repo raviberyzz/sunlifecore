@@ -9,6 +9,8 @@
         font-size:1.25rem;
         .fa-star{
             cursor: pointer;
+            color:$light-grey-color;
+            font-size:1.5rem;
         }
         .fa-star.active{
             color:$medium-yellow-background;
@@ -17,9 +19,9 @@
             color:$medium-yellow-background;
         }
         .fa-star.grey{
-            color:$black-shade;
+            color:$light-grey-color;
             &.active{
-                color:$black-shade;
+                color:$light-grey-color;
             }
         }
     }
@@ -39,17 +41,18 @@
     }
     .old-comments{
         display: flex;
-        margin:30px 0 0 0;
+        padding:40px;
         width:80%;
-        border-bottom:1px solid $light-grey-separator-color;
-        &.first{
-            border-top:1px solid $light-grey-separator-color;
-            padding-top:20px;
-            margin-top:20px;
+        border-bottom:1px solid $comment-border-color;
+        // &.first{
+        //     border-top:1px solid //$comment-border-color;
+        // }
+        &.last{
+            border-bottom: none;
         }
         section{
             width:100%;
-            padding:10px;
+            padding:0 16px;
             border-radius:10px;
             .name-time{
                 margin-bottom:5px;
@@ -97,10 +100,13 @@
             text-align: center;
             border-radius:50%;
             shape-outside: circle(50%);
-            background-color:$light-grey-separator-color;
+            //background-color:$light-grey-separator-color;
             cursor: pointer;
             &.show{
                 display: block;
+            }
+            .dots{
+                color:$dark-grey-color;
             }
             p{
                 width:100%;
@@ -145,29 +151,28 @@
         }
     }
     .add-comment{
-        float:none;
-        height:140px;
         margin-bottom:0;
         margin-top:24px;
-        //padding-bottom:5px;
-       // border-bottom:1px solid $light-grey-separator-color;
+        padding:0;
+        border:1px solid $comment-border-color;
         position: relative;
-        .col-sm-7,.col-sm-3{
-            height:100%;
-            padding-left:0;
-        }
-        textarea{
+        width:80%;
+        .textarea{
             width:100%;
-            height:140px;
-            padding:5px;
+            padding:24px 16px;
+            min-height:72px;
+            height:auto;
+            border:0;
+            border-bottom:1px solid $comment-border-color;
         }
-        .submit-comment{
-            width:100%;
-            color:$medium-blue-color;
-            background-color:$medium-yellow-background;
-            font-weight:700;
-            font-size:1rem;
-            padding:5px;
+        .add-button{
+            padding:24px 16px;
+            .primary-yellow-button{
+                float: right;
+                .button-class{
+                    padding-top: 10px;
+                }
+            }
         }
     }
     .delete-modal{
@@ -208,19 +213,12 @@
     .comment-wrapper{
         .add-comment{
             height:auto;
-            .submit-comment{
-                width:60%;
-                margin-top:10px;
-                position: relative;
-                left:50%;
-                top:0%;
-                transform: translate(-50%,0%);
-            }
+            width:100%;
         }
         .old-comments{
             width:100%;
             section{
-                width:90%;
+                width:100%;
             }
         }
         .delete-modal{
