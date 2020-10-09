@@ -399,7 +399,7 @@ class ArticleComments extends React.Component {
                         value.email == this.state.userEmail ? "show" : ""
                       }`}
                     >
-                      <p>...</p>
+                      <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
                           <a href="javascript:void(0)">Edit</a>

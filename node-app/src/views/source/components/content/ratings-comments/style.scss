@@ -100,10 +100,13 @@
             text-align: center;
             border-radius:50%;
             shape-outside: circle(50%);
-            background-color:$light-grey-separator-color;
+            //background-color:$light-grey-separator-color;
             cursor: pointer;
             &.show{
                 display: block;
+            }
+            .dots{
+                color:$dark-grey-color;
             }
             p{
                 width:100%;
