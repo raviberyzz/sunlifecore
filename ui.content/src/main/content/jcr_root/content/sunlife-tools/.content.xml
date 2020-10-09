@@ -5,4 +5,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Sun Life Tools"/>
     <akamai-purge/>
+	<user-info
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="sunlife/source/components/content/user-details"/>
 </jcr:root>
