@@ -65,8 +65,8 @@
                     return;
                 }
                 fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' +
-                    dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').get(0).value + ' ' +
-                    dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').get(0).value;
+                    dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val()?dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'' + ' ' +
+                    dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val()?dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
                 //ek.relayCmd(FEATURE, data, ek.getEditContext());
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
