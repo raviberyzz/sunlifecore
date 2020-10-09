@@ -7,6 +7,9 @@ $(document).ready(function(){
 			if (!contextHubUser || contextHubUser !== requestUser) {
 				profileStore.loadProfile(requestUser);
 			}
+			var userProfile = ContextHub.getItem('profile');
+			var userName = userProfile.displayName;
+			$('.utility-nav-links ul[role="navigation"] li:first-child a').text("Welcome" + " " + userName);
 		}
      }
 })
