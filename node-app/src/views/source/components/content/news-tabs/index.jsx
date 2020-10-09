@@ -872,7 +872,7 @@ class NewsTabs extends React.Component {
     this.dateTransform = this.dateTransform.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
     this.clearAll = this.clearAll.bind(this);
-    this.filteringNewsList = this.filteringNewsList.bind(this);
+    this.filteringNewsTabList = this.filteringNewsTabList.bind(this);
     this.paginationDataBuild = this.paginationDataBuild.bind(this);
     this.tagSorting = this.tagSorting.bind(this);
     this.getTabsNewsList = this.getTabsNewsList.bind(this);
@@ -916,7 +916,7 @@ class NewsTabs extends React.Component {
     });
   }
 
-  filteringNewsList() {
+  filteringNewsTabList() {
     this.state.selectedPreferenceList = [];
     this.state.businessGroupList.tags.forEach(prefer => {
       if (prefer.isChecked) {
@@ -962,7 +962,7 @@ class NewsTabs extends React.Component {
       businessGroupList: this.state.businessGroupList,
       topicsList: this.state.topicsList
     });
-    this.filteringNewsList();
+    this.filteringNewsTabList();
     this.getTabsHeading();
   }
 
@@ -1332,7 +1332,7 @@ class NewsTabs extends React.Component {
                         <div class="modal-footer preference-modal-footer">
                           <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsList}>{this.props.preferenceModalHeadingbtn1}</button>
+                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsTabList}>{this.props.preferenceModalHeadingbtn1}</button>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
                               <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>

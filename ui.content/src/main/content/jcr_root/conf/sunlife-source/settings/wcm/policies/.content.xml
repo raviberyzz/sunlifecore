@@ -139,7 +139,7 @@
                                 </paraformat>
                                 <misctools
                                     jcr:primaryType="nt:unstructured"
-                                    features="*">
+                                    features="specialchars">
                                     <specialCharsConfig jcr:primaryType="nt:unstructured">
                                         <chars
                                             jcr:primaryType="nt:unstructured"
@@ -733,6 +733,11 @@
                                             cq:styleId="1594570048442"
                                             cq:styleLabel="Page separator"
                                             jcr:primaryType="nt:unstructured"/>
+										<item5
+                                            cq:styleClasses="source-hr-separator yellow-horizontal-separator"
+                                            cq:styleId="1602177801084"
+                                            cq:styleLabel="Full separator"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
@@ -1814,7 +1819,7 @@
                                             jcr:primaryType="nt:unstructured"/>
                                         <item3
                                             cq:styleClasses="time-widget"
-                                            cq:styleId="1601391356010"
+                                            cq:styleId="1601384884223"
                                             cq:styleLabel="Time widget"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
