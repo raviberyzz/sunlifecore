@@ -53,25 +53,24 @@
         extend: CUI.rte.ui.cui.AbstractDialog,
         toString: "SunlifeFontAwesomeBaseDialog",
         initialize: function(config) {
-            console.log('config',config);
             this.exec = config.execute;
             this.$saveBtn = this.$dialog.find('[data-type="execSaveIcon"]');
             this.$closeBtn = this.$dialog.find('[data-type="execCloseIcon"]');
             var dialog = this.$dialog,
             ek=this.editorKernel;
-            this.$saveBtn.on('click',function(e){
+            this.$saveBtn.on('click',function(){
                 var fClass = dialog.find('[name="awesomeIcon"]').val();
                 if($.trim(fClass) == "") {
                     return;
                 }
-                fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' +
-                    dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val()?dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'' + ' ' +
-                    dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val()?dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
+                var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0?dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
+                var iconClass = dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').length > 0?dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'';
+                fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' + iconSize + ' ' + iconClass;
                 //ek.relayCmd(FEATURE, data, ek.getEditContext());
                 config.parameters.saveData($.trim(fClass));
                 dialog.hide();
             });
-            this.$closeBtn.on('click',function(e) {
+            this.$closeBtn.on('click',function() {
                 dialog.find('[name="awesomeIcon"]').val(' ');
                 dialog.hide();
             });
@@ -98,7 +97,6 @@
             tbGenerator.registerIcon(groupFeature, "effects");
         },
         execute: function (id, value, envOptions) {
-            console.log(id,value,envOptions);
             var context = envOptions.editContext,
                 selection = CUI.rte.Selection.createProcessingSelection(context),
                 ek = this.editorKernel,
@@ -109,7 +107,6 @@
             }
             var saveData = function(cs) {
                 CUI.rte.Selection.selectBookmark(context, bookmark);
-                console.log('bookmark',bookmark);
                 var iHtml = '<span class="'+cs+'"></span>';
                 ek.execCmd('InsertHTML', iHtml, context);
             };
