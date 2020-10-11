@@ -42,7 +42,7 @@ public class UserInfo {
 	 * 
 	 * @return the profile
 	 */
-	public String getProfile () {
+	public String getProfile() {
 		return profile;
 	}
 
@@ -52,7 +52,7 @@ public class UserInfo {
 	 * @param profile
 	 *          the profile to set
 	 */
-	public void setProfile (String profile) {
+	public void setProfile(String profile) {
 		this.profile = profile;
 	}
 
@@ -61,7 +61,7 @@ public class UserInfo {
 	 * 
 	 */
 	@ PostConstruct
-	public void init () {
+	public void init() {
 		LOG.debug("Entry :: UserInfo :: init");
 		User user = null != request ? request.getResourceResolver().adaptTo(User.class) : null;
 		if (null != user) {
@@ -95,7 +95,9 @@ public class UserInfo {
 				String language = user.hasProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)
 						? user.getProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)[0].getString()
 						: "NA"; // Language
-
+				String country = user.hasProperty("./profile/country")
+								? user.getProperty("./profile/country")[0].getString()
+								: "NA"; // Language
 				JSONObject userInfoJson = new JSONObject();
 				userInfoJson.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
 				userInfoJson.put(UserInfoConstants.USER_NAME_CONSTANT, familyName + " " + givenName);
@@ -105,6 +107,7 @@ public class UserInfo {
 				userInfoJson.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
 				userInfoJson.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
 				userInfoJson.put(UserInfoConstants.LANGAUGE_CONSTANT, language);
+				userInfoJson.put("country", country);
 				userInfoJson.put("home", user.getPath());
 				profile = userInfoJson.toString();
 			} catch (RepositoryException e) {

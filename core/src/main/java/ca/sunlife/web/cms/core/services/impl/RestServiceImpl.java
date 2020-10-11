@@ -63,7 +63,7 @@ public class RestServiceImpl implements RestService {
 	 *           the key store exception
 	 */
 	@ Activate
-	public void activate (final RestClientConfig clientConfig)
+	public void activate(final RestClientConfig clientConfig)
 			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		logger.debug("Entry :: RestClientConfig params: activate method :: Socket timeout: {}, Conn timeout: {}",
 				clientConfig.getSocketTimeout(), clientConfig.getConnectionTimeout());
@@ -91,7 +91,7 @@ public class RestServiceImpl implements RestService {
 	 * @throws KeyStoreException
 	 *           the key store exception
 	 */
-	public static void setSSLForTestEnvironment (final HttpClientBuilder httpClientBuilder)
+	public static void setSSLForTestEnvironment(final HttpClientBuilder httpClientBuilder)
 			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		httpClientBuilder.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
 				.setSSLContext(new SSLContextBuilder().loadTrustMaterial( (arg0, arg1) -> true).build());
@@ -106,7 +106,7 @@ public class RestServiceImpl implements RestService {
 	 */
 	@ SuppressWarnings ("unchecked")
 	@ Override
-	public String callGetWebService (final String url, final String requestHeaders)
+	public String callGetWebService(final String url, final String requestHeaders)
 			throws ApplicationException, SystemException, IOException {
 		logger.debug("Entry :: RestServiceImpl :: callGetWebService :: url :: {}", url);
 		CloseableHttpResponse response = null;
@@ -151,7 +151,7 @@ public class RestServiceImpl implements RestService {
 	 */
 	@ SuppressWarnings ("unchecked")
 	@ Override
-	public String callPostWebService (final String url, final String requestHeaders, final String requestParams)
+	public String callPostWebService(final String url, final String requestHeaders, final String requestParams)
 			throws ApplicationException, SystemException, IOException {
 		logger.debug("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
 		CloseableHttpResponse response = null;
