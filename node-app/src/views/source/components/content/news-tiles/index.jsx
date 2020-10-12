@@ -984,13 +984,16 @@ class NewsTiles extends React.Component {
       }
     })
     return bg.substring(0, bg.length - 3); */
+    var title = "";
     bgList.filter((id)=>{
       this.state.businessGroupIdTitle.forEach((obj)=>{
         if(Object.keys(obj) == id){
-          return obj[id];
+          title = title + obj[id] + " ";
+          // return obj[id];
         }
       })
     })
+    return title;
   }
 
   dateTransform(date) {
