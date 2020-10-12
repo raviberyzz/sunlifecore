@@ -73,6 +73,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 	 * Activate news config for NewsList servlet.
 	 * 
 	 * @param newsConfig
+	 * 	the newsConfig
 	 */
 	@ Activate
 	public void activate(NewsConfig newsConfig) {

@@ -18,6 +18,7 @@ class NewsTiles extends React.Component {
       },
       allChecked: false,
       selectedPreferenceList: [],
+      businessGroupIdTitle: [],
       newsList: [],
       /*newsList: [
         {
@@ -975,14 +976,24 @@ class NewsTiles extends React.Component {
   }
 
   bgBinding(bgList) {
-    let bg = "";
+    /*let bg = "";
     bgList.forEach((data) => {
       let bgarr = data.split('/');
       if (bgarr[1] == "business-group") {
         bg += bgarr[bgarr.length - 1] + " | ";
       }
     })
-    return bg.substring(0, bg.length - 3);
+    return bg.substring(0, bg.length - 3); */
+    var title = "";
+    bgList.filter((id)=>{
+      this.state.businessGroupIdTitle.forEach((obj)=>{
+        if(Object.keys(obj) == id){
+          title = title + obj[id] + " ";
+          // return obj[id];
+        }
+      })
+    })
+    return title;
   }
 
   dateTransform(date) {
@@ -1069,6 +1080,9 @@ class NewsTiles extends React.Component {
         this.state.businessGroupList = response["business-group"];
         this.state.topicsList = response["topics"];
         this.state.businessGroupList.tags.forEach((data) => {
+          var obj = {};
+          obj[data.id] = data.title;
+            this.state.businessGroupIdTitle.push(obj)
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
@@ -1087,6 +1101,7 @@ class NewsTiles extends React.Component {
         this.setState({
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
+          businessGroupIdTitle: this.state.businessGroupIdTitle
         })
         this.getNewsList();
         //console.log(res);

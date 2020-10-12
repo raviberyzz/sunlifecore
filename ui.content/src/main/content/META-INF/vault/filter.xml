@@ -18,4 +18,5 @@
 	<filter root="/content/sunlife-tools/email"/>
     <filter root="/content/sunlife-tools/permissions"/>
     <filter root="/content/sunlife-tools/dispatcher-flush-utility"/>
+	<filter root="/content/sunlife-tools/user-info"/>
 </workspaceFilter>

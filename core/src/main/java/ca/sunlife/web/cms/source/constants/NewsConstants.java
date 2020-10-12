@@ -9,7 +9,7 @@ package ca.sunlife.web.cms.source.constants;
  * @author TCS
  * @version 1.0
  */
-public class NewsConstants {
+public final class NewsConstants {
 	/**
    * Instantiates  news constants.
    */

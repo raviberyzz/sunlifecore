@@ -4,6 +4,9 @@ var sessionTimeout = new SessionTimeout();
 
 var useMarcServer = true;
 var elementsIds = {
+  transmitContainer: "transmitContainer"
+}
+/*var elementsIds = {
   login: "login_with_username_container",
   home: "home_container",
   homeContent: "home_content",
@@ -16,93 +19,15 @@ var elementsIds = {
   signInClientIdInput: "sign_in_client_id_input",
   signInPasswordInput: "sign_in_password_input"
 };
-/*** Account Settings code is under ./accountSettings.js */
-
- /*function onRegisterPhoneNumbers() {
-  var journeyId = "multiple_phone_verification";
-  var additionalParams = {};
-  var clientContext = getClientContext();
-  invokeJourney(journeyId, additionalParams, clientContext).then(function (results) {
-    console.log("Journey ended succesfully: ".concat(journeyId));
-  });
-}
-
-function onProcessPhonesArray() {
-    /**
-     * 
-     * This function submits an array of phone numbers (strings) to a Transmit journey that 
-     * process it to an array of objects using a AuthScript Function:
-     * --------------------------------------------------------------
-     * 
-     * 1. Invoke a Journey named `process_phones_array` with additionalParams containing the phonesArray to process
-     * 2. Journey invoke an AuthScript Function named `processPhonesArray` providing the phonesArray as input parameter
-     * 3. The AuthScript function loop the array (using @map) and returns an array of objects: 
-     *          ==============================================================================
-     *          @map(phonesArray, (phone) => { "phoneNumber": phone, "keyA": "valueA", "keyB": "valueB" })
-     *          ==============================================================================
-     * 4. The journey use Display Information step to present the results
-     * 
-     */
-  /*var phonesArray = ["+1-208-972-3765", "+1-208-912-4324", "+1-208-976-5435", "+1-208-902-6566"];
-
-  if (confirm("Click 'OK' to submit this phone numbers array to be processed in an AuthScript function:\n".concat(JSON.stringify(phonesArray)))) {
-    var journeyId = "process_phones_array";
-    var additionalParams = {
-      phonesArray: phonesArray
-    };
-    var clientContext = getClientContext();
-    invokeJourney(journeyId, additionalParams, clientContext).then(function (results) {
-      console.log("Journey ended succesfully: ".concat(journeyId));
-    });
-  }
-}*/
-
-/*function onAuthenticatorConfiguration() {
-  setAppContentApperance(false);
-  var clientContext = getClientContext();
-  journeyPlayer.startAuthenticationConfiguration(clientContext).then(function (results) {
-    console.log("Finished configuration with results: ".concat(results));
-    clearTransmitContainer(clientContext);
-    setAppContentApperance(true);
-  }).catch(function (err) {
-    console.error("Error: ".concat(err.getMessage()));
-    clearTransmitContainer(clientContext);
-    setAppContentApperance(true);
-  });
-}
-
-function onSubmitUserId() {
-  var userId = $("#".concat(elementsIds.userIdInput)).val();
-
-  if (!userId || userId.length === 0) {
-    alert('Please fill in your username to authenticate');
-    return;
-  }
-
-  var clientContext = getClientContext();
-  var additionalParams = {};
-  var journeyId = 'authenticate';
-  setAppContentApperance(false);
-  journeyPlayer.authenticate(userId, journeyId, additionalParams, clientContext).then(function (results) {
-    var token = results.getToken();
-    updateSessionToken(token);
-    clearTransmitContainer(clientContext);
-    setAppContentApperance(true);
-  }).catch(function (error) {
-    clearTransmitContainer(clientContext);
-    setAppContentApperance(false);
-    sessionTimeout.showErrorMessage();
-    reject(error);
-    console.error("Authenticate Error: ".concat(error));
-  });
-}
 */
 
-function onLogout() {
+/*function onLogout() {
   journeyPlayer.logout().then(function (results) {
-    updateSessionToken(null); // clears the token from the session
-    self.setAppContentApperance(false);
-    //showSignInDiv();
+    return new Promise(function(resolve, reject) {
+      updateSessionToken(null); // clears the token from the session
+      self.setAppContentApperance(false);
+      resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
+     });
   }).catch(function (error) {
     console.log("Authenticate Error: ".concat(error));
     console.log("ERROR CODE :"+error.getErrorCode());
@@ -114,33 +39,37 @@ function onLogout() {
             reject(error);
           }
   });
+}*/
+
+function onLogout() {
+ 
+  this.setAppContentApperance(false);
+  return new Promise(function(resolve,reject){
+   // journeyPlayer.cancelCurrentRunningControlFlow().then(function(){
+     journeyPlayer.cancelCurrentRunningControlFlow();
+     journeyPlayer.logout().then(function(result){
+        updateSessionToken(null);
+        resolve(true);
+      })
+      .catch(function (error) {
+        console.log("Authenticate Error: ".concat(error));
+        if(error.getErrorCode === 8) {
+           
+        }else
+        reject(error);
+      })
+     })
+    /* .catch(function (error) {
+      reject(error);
+    })
+  })*/
 }
 
-
-
- /* function invokeJourney(journeyId, additionalParams, clientContext) {
-        var self = this;
-        return new Promise(function (resolve, reject) {
-            self.setAppContentApperance(false);
-            journeyPlayer.invokePolicy(journeyId, additionalParams, clientContext).then(function (results) {
-                clearTransmitContainer(clientContext);
-                self.setAppContentApperance(true);
-                resolve(results);
-            }).catch(function (error) {
-                console.error("error invoking journey with id: ".concat(journeyId, ", error: ").concat(error));
-                onLogout();
-                sessionTimeout.showErrorMessage();
-                reject(error);
-            });
-        });
-  } 
-*/
 function initJourneyPlayer() {
   var settings = getTransmitConnectionSettings();
   journeyPlayer.setConnectionSettings(settings);
   journeyPlayer.setUiHandler(new CustomUIHandler());
-  var askChooseLanguage = false;
-
+  
   if (lang === "fr"){
     console.log("set French Locale.");
 		journeyPlayer.setLocale("fr-CA");
@@ -148,23 +77,6 @@ function initJourneyPlayer() {
     console.log("set English Locale.");
 		journeyPlayer.setLocale("en-CA");
 	}
-
-    if (askChooseLanguage) {
-        if (confirm("Would you like to use Franch language?")) {
-
-            /**
-             * 
-             * If you do not set a custom locale or the requested locale does not exist in the server,
-             * then the API returns an error and the SDK uses the preferred language configured bythe app.
-             * 
-             * It is recommended to call this method before the SDK is initialized. 
-             * The localeformat must be set according to ISO standard 639, "Code for the representation ofnames of languages" [ISO 639]. 
-             * For example: ("en-US") [Language code - Region code]
-             */
-    
-            journeyPlayer.setLocale("fr-FR");
-        }
-    }
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized succesfuly: ".concat(results));
@@ -199,7 +111,6 @@ function initJourneyPlayer() {
 
   function getClientContext() {
       return {
-          // returning the container div that will be used to present the authentication layer UI
           uiContainer: document.getElementById(elementsIds.transmitContainer)
       };
   }
@@ -239,65 +150,19 @@ function initJourneyPlayer() {
       console.log("Modal closed...");
     });
   }
-/* End Transmit Code 
 
-function showLoginDiv() {
-  $("#".concat(elementsIds.login)).show();
-  $("#".concat(elementsIds.home)).hide();
-}
-
-function showSignInDiv() {
-  $("#".concat(elementsIds.signInContainer)).show();
-  $("#".concat(elementsIds.home)).hide();
-  $("#".concat(elementsIds.login)).hide();
-}
-
-function showHomeDiv() {
-  $("#".concat(elementsIds.login)).hide();
-  $("#".concat(elementsIds.home)).show();
-  toggleSignInModalVisibility(false);
-  $("#".concat(elementsIds.homeContent)).show();
-  $("#".concat(elementsIds.accountSettings)).hide();
-  setHeaderTitle("Protect your account");
-  var currentPage = sessionStorage.getItem('currentPage');
-
-  if (currentPage === "edit_account_phones") {
-    onAccountSettingsEditPhones();
-  }
-}
-
-function showAccountSettings() {
-  $("#".concat(elementsIds.login)).hide();
-  $("#".concat(elementsIds.homeContent)).hide();
-  $("#".concat(elementsIds.accountSettings)).show();
-  setHeaderTitle("Account Settings");
-}
-
-function setHeaderTitle(title) {
-  $("#".concat(elementsIds.headerTitle)).text(title);
-}
-
-function toggleSignInModalVisibility(isVisible) {
-  if (isVisible) {
-    $("#".concat(elementsIds.signInModalContainer)).show();
-  } else {
-    $("#".concat(elementsIds.signInModalContainer)).hide();
-  }
-}
-*/
 function onPageReady() {
-    // When the document loads, we initialize the transmit journey player
-    //toggleSignInModalVisibility(false);
     initJourneyPlayer(); 
 }
 
 function setAppContentApperance(isVisible) {
     if (isVisible) {
-        //$("#appContent").removeClass("hidden_container");
+        $("#loadingMessageDiv").hide();
         $("#mfa_signin_modal").modal("show");
+        
     } else {
-        //$("#appContent").addClass("hidden_container");
         $("#mfa_signin_modal").modal("hide");
+       // $("#loadingMessageDiv").show();
     }
 }
 
