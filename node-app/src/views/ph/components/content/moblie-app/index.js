@@ -503,7 +503,7 @@ $(document).ready(function(){
         }
         getOS();
           /* Content for english page */
-           title='My Sun Life HK Mobile app';
+           title='My Sun Life PH Mobile app';
            author='Sun Life Financial';
            price='FREE';
            downloadText='DOWNLOAD';
