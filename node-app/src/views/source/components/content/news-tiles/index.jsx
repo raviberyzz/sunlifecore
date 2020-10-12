@@ -1079,9 +1079,7 @@ class NewsTiles extends React.Component {
         this.state.businessGroupList.tags.forEach((data) => {
           var obj = {};
           obj[data.id] = data.title;
-          this.setState({
-            businessGroupIdTitle: this.state.businessGroupIdTitle.push(obj)
-          })
+            this.state.businessGroupIdTitle.push(obj)
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
@@ -1100,6 +1098,7 @@ class NewsTiles extends React.Component {
         this.setState({
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
+          businessGroupIdTitle: this.state.businessGroupIdTitle
         })
         this.getNewsList();
         //console.log(res);
