@@ -1152,6 +1152,9 @@ class NewsTabs extends React.Component {
       dataType: "json",
       success: (res) => {
         console.log(res);
+        /* analytics starts here */
+        //dummy response=["sunlife:source/business-group/slf-canada", "sunlife:source/business-group/slf-hong-kong", "sunlife:source/topics/client-stories"]
+        /*analytics ends here */
       },
       error: (err) => {
         console.log(err);

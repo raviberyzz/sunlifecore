@@ -50,20 +50,24 @@ function handleSendCode() {
   var selectedId = $('input[name="phone_number_target"]:checked').attr('id');
   var maskedPhoneNo = $('label[for="'+selectedId+'"]').text();
 
-  console.log(maskedPhoneNo);
-  console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
-  var otpSelection = {
-    selectedPhone: selectedPhone,
-    selectedMethod: selectedMethod,
-    selectedCommunicationId: selectedCommunicationId,
-    maskedPhoneNo :maskedPhoneNo
-  };
-  this.clientContext.otpSelection = otpSelection;
-  this.submitBlock(otpSelection);
+  const valid = $('#mfa-form').parsley().validate()
+  if(valid){
+    console.log(maskedPhoneNo);
+    console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
+    var otpSelection = {
+      selectedPhone: selectedPhone,
+      selectedMethod: selectedMethod,
+      selectedCommunicationId: selectedCommunicationId,
+      maskedPhoneNo :maskedPhoneNo
+    };
+    this.clientContext.otpSelection = otpSelection;
+    this.submitBlock(otpSelection);
+  }
 }
 
   function setupForm() {
       const self = this;
+      setAppContentApperance(true);
       console.log(" lang :"+lang);
       $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
          
@@ -94,7 +98,14 @@ function setPhoneNumbersList() {
       }
   }
   $("#step-up-phone-list-container").html(phoneListStr);
+  
+  $("#su-phone-number-item-0").parsley().on("field:error", function() {
+    $("#step-up-phone-list-container").addClass("validation-error");
+  })
 
+  $("#su-phone-number-item-0").parsley().on("field:success", function() {
+    $("#step-up-phone-list-container").removeClass("validation-error");
+  })
 }
 
 

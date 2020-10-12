@@ -5,6 +5,7 @@ function onShowSignInModal() {
     function onSignInClick() {
 
         console.log("Inside onSignInClick")
+        journeyPlayer.clearAllData();
         var clientId =$(".mySlfSignIn #USER").val();
         var password =$(".mySlfSignIn #PASSWORD").val();
         var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
@@ -26,13 +27,10 @@ function onShowSignInModal() {
         $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
             journeyEnded(clientContext);
             onLogout();
-            //journeyPlayer.clearDataForUser(clientId);
             console.log("Modal closed...");
         });
 
         journeyPlayer.setUiHandler(new UIHandlerForStepUp());
-        journeyPlayer.cancelCurrentRunningControlFlow();
-        setAppContentApperance(true);
         journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
            
         journeyEnded(clientContext);
@@ -52,15 +50,24 @@ function onShowSignInModal() {
                 }*/
             
                 else{
+                    //sessionTimeout._init();
                     sessionTimeout.showErrorMessage();
                 }    
             });
     
 }
 
+/*function clearData(){
+    journeyPlayer.clearAllData().then(function (results) {
+    }).catch(function(error) {
+        console.error("Authenticate Error: ".concat(error));   
+         
+    });
+}*/
+
 function journeyEnded(clientContext) {
      clearTransmitContainer(clientContext);
-     setAppContentApperance(false);
+     //setAppContentApperance(false);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
 
