@@ -881,6 +881,7 @@ class NewsTiles extends React.Component {
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
     this.mergeArray = this.mergeArray.bind(this);
+    this.newsTileClick=this.newsTileClick.bind(this);
   }
 
   componentDidMount() {
@@ -1113,6 +1114,9 @@ class NewsTiles extends React.Component {
   }
 
   addSelectedPreference() {
+    console.log(this.state.businessGroupList.tags);
+    console.log(this.state.topicsList.tags);
+    console.log(this.state.selectedPreferenceList);
     let reqData = {
       "articlefilter": this.state.selectedPreferenceList
     };
@@ -1152,99 +1156,23 @@ class NewsTiles extends React.Component {
 
   getNewsTilesData() {
     this.retrieveSelectedPreference();
-    // this.state.businessGroupList = {
-    //   id: "sunlife:source/business-group",
-    //   title: "Business groups",
-    //   tags: [
-    //     { title: "Canada", id: "sunlife:source/business-group/canada" },
-    //     { title: "Corporate", id: "sunlife:source/business-group/corporate" },
-    //     { title: "Enterprise Services", id: "sunlife:source/business-group/enterprise-services" },
-    //     { title: "Hong Kong", id: "sunlife:source/business-group/hong-kong" },
-    //     { title: "Indonesia", id: "sunlife:source/business-group/indonesia" },
-    //     { title: "International", id: "sunlife:source/business-group/international" },
-    //     { title: "Philippines", id: "sunlife:source/business-group/philippines" },
-    //     { title: "SLC Management", id: "sunlife:source/business-group/slc-management" },
-    //     { title: "Asia", id: "sunlife:source/business-group/asia" },
-    //     { title: "U.S.", id: "sunlife:source/business-group/us" },
-    //     { title: "U.K.", id: "sunlife:source/business-group/uk" },
-    //     { title: "Vietnam", id: "sunlife:source/business-group/vietnam" }
-    //   ]
-    // };
-    // this.state.topicsList = {
-    //   id: "sunlife:source/topics",
-    //   title: "Topics",
-    //   tags: [
-    //     { title: "Business continuity", id: "sunlife:source/topics/business-continuity" },
-    //     { title: "Business critical", id: "sunlife:source/topics/business-critical" },
-    //     { title: "Client stories", id: "sunlife:source/topics/client-stories" },
-    //     { title: "Company performance", id: "sunlife:source/topics/company-performance" },
-    //     { title: "Compliance", id: "sunlife:source/topics/compliance" },
-    //     { title: "Corporate Real Estate", id: "sunlife:source/topics/corporate-real-estate" },
-    //     { title: "COVID-19", id: "sunlife:source/topics/covid-19" },
-    //     { title: "Digital Enterprise", id: "sunlife:source/topics/digital-enterprise" },
-    //     { title: "Diversity & Inclusion", id: "sunlife:source/topics/diversity-&-inclusion" },
-    //     { title: "Employee engagement", id: "sunlife:source/topics/employee-engagement" },
-    //     { title: "General HR", id: "sunlife:source/topics/general-HR" },
-    //     { title: "Innovation", id: "sunlife:source/topics/innovation" },
-    //     { title: "My Benefits and Wellness", id: "sunlife:source/topics/my-benefits-and-wellness" },
-    //     { title: "My Career", id: "sunlife:source/topics/my-career" },
-    //     { title: "My Learning", id: "sunlife:source/topics/my-learning" },
-    //     { title: "My Pay", id: "sunlife:source/topics/my-pay" },
-    //     { title: "Organization announcements", id: "sunlife:source/topics/organization-announcements" },
-    //     { title: "Philanthropy/Sponsorship", id: "sunlife:source/topics/philanthropy-sponsorship" },
-    //     { title: "Recognition", id: "sunlife:source/topics/recognition" },
-    //     { title: "Sustainability", id: "sunlife:source/topics/sustainability" },
-    //     { title: "Technology", id: "sunlife:source/topics/technology" }
-    //   ]
-    // };
-    // this.state.businessGroupList.tags.forEach((data) => {
-    //   data["isChecked"] = false;
-    //   this.state.selectedPreferenceList.forEach(prefer => {
-    //     if (prefer === data.id) {
-    //       data["isChecked"] = true;
-    //     }
-    //   })
-    // });
-    // this.state.topicsList.tags.forEach((data) => {
-    //   data["isChecked"] = false;
-    //   this.state.selectedPreferenceList.forEach(prefer => {
-    //     if (prefer === data.id) {
-    //       data["isChecked"] = true;
-    //     }
-    //   })
-    // });
-    // let pinnedNewsList = [];
-    // let preferedNewsList = [];
-    // if (this.state.selectedPreferenceList.length > 0) {
-    //   preferedNewsList = this.state.newsList.filter((news) => {
-    //     return (!news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
-    //   });
-    //   pinnedNewsList = this.state.newsList.filter((news) => {
-    //     return (news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
-    //   });
-    // } else {
-    //   preferedNewsList = this.state.newsList;
-    // }
-    // pinnedNewsList.sort(function (a, b) {
-    //   return (a.pinArticle - b.pinArticle || b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-    // });
-    // preferedNewsList.sort(function (a, b) {
-    //   return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-    // });
-    // if (pinnedNewsList.length > 0) {
-    //   this.state.filterNewsList = this.mergeArray(preferedNewsList, pinnedNewsList, pinnedNewsList[0].pinArticle - 1);
-    // }
-    // this.setState({
-    //   filterNewsList: this.state.filterNewsList,
-    //   businessGroupList: this.state.businessGroupList,
-    //   topicsList: this.state.topicsList,
-    // })
   }
 
   mergeArray(a, b, i) {
     return a.slice(0, i).concat(b, a.slice(i));
   }
-
+  newsTileClick(key,index,event){
+    console.log(this.state.filterNewsList);
+    /* homepage analytics starts here */
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: this.state.filterNewsList[key].heading,
+      ev_data_one: 'hp-news-'+index 
+      });    
+    /* homepage analytics ends here */
+    location.href = this.state.filterNewsList[key].pagePath;
+  }
   render() {
     return (
       <div class="news-wrapper">
@@ -1336,7 +1264,7 @@ class NewsTiles extends React.Component {
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                     {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
                       return (
-                        <div class={`col-xs-12  tile clickable-tile ${index == 0 ? "col-sm-8 col-md-8" : "col-sm-4 col-md-4"}`} onClick={() => location.href = this.state.filterNewsList[key].pagePath}>
+                        <div class={`col-xs-12  tile clickable-tile ${index == 0 ? "col-sm-8 col-md-8" : "col-sm-4 col-md-4"}`} onClick={this.newsTileClick(this,key,index+1)}>
                           <div class="tile-img" style={{ backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})` }}>
                             <div class="overlay-container">
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
