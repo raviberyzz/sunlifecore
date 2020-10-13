@@ -1014,10 +1014,15 @@ class NewsTiles extends React.Component {
     })
     return bg.substring(0, bg.length - 3); */
     var title = "";
-    bgList.filter((id) => {
+    bgList.filter((id,i) => {
       this.state.businessGroupIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
-          title = title + obj[id] + " ";
+          if(i==bgList.length-1){
+              title= title + obj[id];
+          }else{
+            title = title + obj[id] + " | ";
+          }
+
           // return obj[id];
         }
       });
@@ -1145,7 +1150,7 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (response) => {
         this.state.businessGroupList = response["business-group"];
-        this.state.topicsList = response["topics"];
+        this.state.topicsList = response["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
           var obj = {};
           obj[data.id] = data.title;
