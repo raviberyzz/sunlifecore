@@ -78,6 +78,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreText",
+                label: "moreText",
+                value: "More",
+                required: true
+            },
+			{
                 name: "toolbarRightText",
                 label: "toolbarRightText",
                 value: "Preferences",
@@ -87,6 +93,12 @@ var multiPurposeComponentConfig = [
                 name: "preferenceModalHeading",
                 label: "preferenceModalHeading",
                 value: "Your Preferences",
+                required: true
+            },
+			{
+                name: "selectAllText",
+                label: "selectAllText",
+                value: "Select all",
                 required: true
             },
 			{
@@ -108,6 +120,24 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreNewsText",
+                label: "moreNewsText",
+                value: "More news",
+                required: true
+            },
+			{
+                name: "moreNewsImg",
+                label: "moreNewsImg",
+                value: "",
+                required: true
+            },
+			{
+                name: "moreNewsLink",
+                label: "moreNewsLink",
+                value: "",
+                required: true
+            },
+			{
                 name: "workdayText",
                 label: "workdayText",
                 value: "Find information on all your core HR processes and latest Workday announcements",
@@ -120,6 +150,18 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workdayLink",
+                label: "workdayLink",
+                value: "",
+                required: true
+            },
+			{
+                name: "workdayImg",
+                label: "workdayImg",
+                value: "",
+                required: true
+            },
+			{
                 name: "workplaceText",
                 label: "workplaceText",
                 value: "Connect and collaborate with your colleagues across the globe",
@@ -129,6 +171,12 @@ var multiPurposeComponentConfig = [
                 name: "workplaceLinkText",
                 label: "workplaceLinkText",
                 value: "Go to Workplace",
+                required: true
+            },
+			{
+                name: "workplaceImg",
+                label: "workplaceImg",
+                value: "",
                 required: true
             }
 		]	
@@ -187,7 +235,8 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
-	},{
+	}
+	/*,{
 		"componentName": "Article Rating",
         "componentDisplayName": "Article Rating",
         "reactComponentName": "article-ratings",
@@ -211,5 +260,5 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
-	}
+	}*/
 ];
