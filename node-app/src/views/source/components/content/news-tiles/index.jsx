@@ -1460,7 +1460,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})`,
+                                  backgroundImage: `url(${index==0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
                                 }}
                               >
                                 <div class="overlay-container">
