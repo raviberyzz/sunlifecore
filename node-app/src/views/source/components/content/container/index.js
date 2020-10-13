@@ -26,6 +26,15 @@ $(document).ready(function () {
 			var todate = moment(new Date());
 			var timeVal = $(this).val();
 			$('#timeVal').val(todate.tz(timeVal).format('dddd h:mm a'));
+			/* time analytics starts here */
+			let selCountry=$('.time-widget select#select1 option:selected').text();
+			utag.link({
+				ev_type: 'other',
+				ev_action: 'clk',
+				ev_title: 'time-widget',
+				ev_data_one: selCountry // the value that populates this variable is the country selected
+			});			
+			/* time analytics ends here */
 		})
 	}
 });
