@@ -6043,7 +6043,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Form-container"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="group:Sunlife CA">
+                            components="group:Sunlife Advisor hub">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                             <cq:styleGroups jcr:primaryType="nt:unstructured">
                                 <item0
