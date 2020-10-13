@@ -1150,7 +1150,7 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (response) => {
         this.state.businessGroupList = response["business-group"];
-        this.state.topicsList = response["topics"];
+        this.state.topicsList = response["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
           var obj = {};
           obj[data.id] = data.title;
