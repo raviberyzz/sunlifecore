@@ -207,9 +207,7 @@ public final class SiteMapServlet extends SlingSafeMethodsServlet {
         String loc = "";
 
         if (siteMapService.getUseVanityUrl() && !StringUtils.isEmpty(page.getVanityUrl())) {
-            loc = configService.getPageUrl(page.getVanityUrl());        	
-        } else if (!siteMapService.getExtensionlessUrls()) {
-        	loc = configService.getPageUrl(page.getPath());            
+            loc = configService.getPageUrl(page.getVanityUrl());  
         } else {
             loc = configService.getPageUrl(page.getPath());            
         }
