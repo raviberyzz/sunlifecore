@@ -207,20 +207,13 @@ public final class SiteMapServlet extends SlingSafeMethodsServlet {
         String loc = "";
 
         if (siteMapService.getUseVanityUrl() && !StringUtils.isEmpty(page.getVanityUrl())) {
-            loc = configService.getPageUrl(page.getVanityUrl());
-        	LOGGER.info("Vanity URL created {} ", configService.getPageUrl(page.getVanityUrl()));
-        } else if (!siteMapService.getExtensionlessUrls()) {
-        	loc = configService.getPageUrl(page.getPath());
-            LOGGER.info("Extensionless URL created {} ", configService.getPageUrl(page.getPath()));
+            loc = configService.getPageUrl(page.getVanityUrl());  
         } else {
-            loc = configService.getPageUrl(page.getPath());
-            LOGGER.info("URL created {} ", configService.getPageUrl(page.getPath()));
+            loc = configService.getPageUrl(page.getPath());            
         }
 
         loc = applyUrlRewrites(loc);
-        LOGGER.info("LOC {} ", loc);
-        
-
+       
         writeElement(stream, "loc", loc);
 
         if (siteMapService.getIncludeLastModified()) {
@@ -270,7 +263,7 @@ public final class SiteMapServlet extends SlingSafeMethodsServlet {
         boolean flag = false;
         if (siteMapService.getExcludedPageTemplates() != null) {
             for (String pageTemplate : siteMapService.getExcludedPageTemplates()) {
-                flag = flag || page.getProperties().get("cq:template", StringUtils.EMPTY).equalsIgnoreCase(pageTemplate);
+                flag = flag || page.getProperties().get(com.day.cq.wcm.api.NameConstants.NN_TEMPLATE, StringUtils.EMPTY).equalsIgnoreCase(pageTemplate);
             }
         }
         return flag;
