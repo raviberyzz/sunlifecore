@@ -14,6 +14,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang.StringUtils;
@@ -22,6 +23,7 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
@@ -108,6 +110,15 @@ public class NewsArticleModel {
 	/** The tag list. */
 	private List<String> tagList = new ArrayList<>();
 
+	/** The resource type. */
+  @ Inject
+  @ Via ("resource")
+  @ Named (JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY)
+  private String resourceType;
+
+  /** The layout resource type. */
+  private String layoutResourceType;
+  
 	/**
 	 * Gets the article data.
 	 *
@@ -230,6 +241,44 @@ public class NewsArticleModel {
 	public void setTagList(List<String> tagList) {
 		this.tagList = Collections.unmodifiableList(tagList);
 	}
+	
+	/**
+	 * Gets the resourceType.
+	 *
+	 * @return the resourceType
+	 */
+	public String getResourceType() {
+		return resourceType;
+	}
+
+	/**
+	 * Sets the resourceType.
+	 *
+	 * @param resourceType
+	 *          resourceType
+	 */
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
+	}
+
+	/**
+	 * Gets the layoutResourceType.
+	 *
+	 * @return the layoutResourceType
+	 */
+	public String getLayoutResourceType() {
+		return layoutResourceType;
+	}
+
+	/**
+	 * Sets the layoutResourceType.
+	 *
+	 * @param layoutResourceType
+	 *          layoutResourceType
+	 */
+	public void setLayoutResourceType(String layoutResourceType) {
+		this.layoutResourceType = layoutResourceType;
+	}
 
 	/**
 	 * Inits the.
@@ -246,21 +295,13 @@ public class NewsArticleModel {
 			if (null != articleResource) {
 				LOGGER.debug("Parsing Article Data");
 				final ValueMap articleContent = articleResource.getValueMap();
-				articleData.put(NewsConstants.TO_CONSTANT,
-						articleContent.containsKey(NewsConstants.TO_CONSTANT)
-								? articleContent.get(NewsConstants.TO_CONSTANT, String.class)
-								: StringUtils.EMPTY);
-				articleData.put(NewsConstants.FROM_CONSTANT,
-						articleContent.containsKey(NewsConstants.FROM_CONSTANT)
-								? articleContent.get(NewsConstants.FROM_CONSTANT, String.class)
-								: StringUtils.EMPTY);
 				articleData.put(NewsConstants.HEADING_CONSTANT,
 						articleContent.containsKey(NewsConstants.HEADING_CONSTANT)
 								? articleContent.get(NewsConstants.HEADING_CONSTANT, String.class)
 								: StringUtils.EMPTY);
-				articleData.put(NewsConstants.ARTICLE_CONTENT_CONSTANT,
-						articleContent.containsKey(NewsConstants.ARTICLE_CONTENT_CONSTANT)
-								? articleContent.get(NewsConstants.ARTICLE_CONTENT_CONSTANT, String.class)
+				articleData.put(NewsConstants.ARTICLE_SUMMARY_CONSTANT,
+						articleContent.containsKey(NewsConstants.ARTICLE_SUMMARY_CONSTANT)
+								? articleContent.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class)
 								: StringUtils.EMPTY);
 				articleData.put(NewsConstants.PAGE_CONSTANT,
 						articleContent.containsKey(NewsConstants.PAGE_CONSTANT)
@@ -269,6 +310,10 @@ public class NewsArticleModel {
 				articleData.put(NewsConstants.THUMBNAIL_IMAGE_CONSTANT,
 						articleContent.containsKey(NewsConstants.THUMBNAIL_IMAGE_CONSTANT)
 								? articleContent.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)
+								: StringUtils.EMPTY);
+				articleData.put(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT,
+						articleContent.containsKey(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT)
+								? articleContent.get(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT, String.class)
 								: StringUtils.EMPTY);
 				articleData.put(NewsConstants.PIN_ARTICLE_CONSTANT,
 						articleContent.containsKey(NewsConstants.PIN_ARTICLE_CONSTANT)
@@ -288,6 +333,8 @@ public class NewsArticleModel {
 				}
 			}
 			LOGGER.debug("Article Data {}", articleData);
+			layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/'))
+          .concat("/layout-container");
 			resourceResolver.close();
 		} catch (LoginException | RepositoryException e) {
 			LOGGER.error("Login Error while getting resource resolver : {}", e);

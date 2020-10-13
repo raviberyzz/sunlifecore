@@ -25,4 +25,21 @@ $(document).ready(function () {
         });
     }
     setTimeout(hov,800);
+    /* delete and edit popup starts here */
+    function optionClick(){
+        $('.three-dots').each(function(index,item){
+            $(item).click(function(){
+                $('.comment-option').removeClass('show');
+                $(item).children('.comment-option').toggleClass('show');
+            });
+        });
+        $('body').click(function(event){
+            let target = $(event.target);
+            if(target.closest('.three-dots').length==0){
+                $('.comment-option').removeClass('show');
+            }
+        });
+    }
+    setTimeout(optionClick,1000);
+    /* delete and edit popup ends here */
 });

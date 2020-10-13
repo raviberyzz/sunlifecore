@@ -12,6 +12,9 @@ class ArticleRatings extends React.Component {
       siteName: "ca",
       userACF2Id: "yq15",
       apiCall: {},
+      canSubmit: true,
+      apiPath:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -23,28 +26,38 @@ class ArticleRatings extends React.Component {
     //this.getRatingComment();
   }
   articlePathFun() {
-    let articlePath1 = window.location.pathname;
-    articlePath1 = articlePath1.trim();
-    if (articlePath1.indexOf(".html") > -1) {
-      articlePath1 = articlePath1.replace(".html", "");
-    }
-    if (articlePath1) {
-      if (articlePath1[articlePath1.length - 1] == "/") {
-        articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    // let articlePath1 = window.location.pathname;
+    // articlePath1 = articlePath1.trim();
+    // if (articlePath1.indexOf(".html") > -1) {
+    //   articlePath1 = articlePath1.replace(".html", "");
+    // }
+    // if (articlePath1) {
+    //   if (articlePath1[articlePath1.length - 1] == "/") {
+    //     articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    //   }
+    // }
+    let articlePath1 = "";
+    if (utag_data != undefined) {
+      articlePath1 = utag_data["page_canonical_url_default"];
+      let pathArr = articlePath1.split("/");
+      articlePath1 = "/";
+      for (let i = 3; i < pathArr.length - 1; i++) {
+        articlePath1 += pathArr[i] + "/";
       }
     }
     this.state.articlePath = articlePath1;
     return articlePath1;
   }
   getRatingComment() {
+    console.log(this.state.articlePath);
     let data1 = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      userACF2Id: this.state.userACF2Id,
+      // siteName: this.state.siteName,
+      // userACF2Id: this.state.userACF2Id,
     };
     $.ajax({
       type: "GET",
-      url: "/source-services/selectAll",
+      url: this.state.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -54,25 +67,25 @@ class ArticleRatings extends React.Component {
           ratingAverage: res.ratingAverage,
           ratingCount: res.ratingCount,
           ratingExist: res.ratingExist,
-          canSubmit: res.ratingExist,
+          canSubmit: !res.ratingExist,
         });
       },
       error: (err) => {
-        console.error(err);
+        console.error("error from rating ugc" + err);
       },
     });
   }
   submitRating(i, event) {
-    if (this.state.canSubmit !== true) {
+    if (this.state.canSubmit == true) {
       let data1 = {
         articlePath: this.state.articlePath,
-        siteName: this.state.siteName,
-        userACF2Id: this.state.userACF2Id,
+        // siteName: this.state.siteName,
+        // userACF2Id: this.state.userACF2Id,
         rating: i,
       };
       $.ajax({
         type: "POST",
-        url: "/source-services/addRating",
+        url: this.state.apiPath + ".addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -81,6 +94,8 @@ class ArticleRatings extends React.Component {
           this.setState({
             ratingAverage: res.ratingAverage,
             ratingCount: this.state.ratingCount + 1,
+            ratingExist: res.ratingExist,
+            canSubmit: false,
           });
         },
         error: (err) => {
@@ -169,7 +184,9 @@ class ArticleComments extends React.Component {
       userName: "David jackson",
       email: "john@gmail.com",
       apiCall: {},
-      canSubmit: true,
+      userEmail: "",
+      apiPath:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -177,6 +194,7 @@ class ArticleComments extends React.Component {
     this.dateChange = this.dateChange.bind(this);
     this.dateLoad = this.dateLoad.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
+    this.selectUserComment = this.selectUserComment.bind(this);
     this.articlePathFun();
     this.getRatingComment();
   }
@@ -184,14 +202,13 @@ class ArticleComments extends React.Component {
     //this.dateLoad();
   }
   articlePathFun() {
-    let articlePath1 = window.location.pathname;
-    articlePath1 = articlePath1.trim();
-    if (articlePath1.indexOf(".html") > -1) {
-      articlePath1 = articlePath1.replace(".html", "");
-    }
-    if (articlePath1) {
-      if (articlePath1[articlePath1.length - 1] == "/") {
-        articlePath1 = articlePath1.substring(0, articlePath1.length - 1);
+    let articlePath1 = "";
+    if (utag_data != undefined) {
+      articlePath1 = utag_data["page_canonical_url_default"];
+      let pathArr = articlePath1.split("/");
+      articlePath1 = "/";
+      for (let i = 3; i < pathArr.length - 1; i++) {
+        articlePath1 += pathArr[i] + "/";
       }
     }
     this.state.articlePath = articlePath1;
@@ -219,19 +236,29 @@ class ArticleComments extends React.Component {
     return monthName[m] + " " + d + ", " + y;
     // return moment(date).format('MMM DD');
   }
+  selectUserComment() {
+    if (ContextHub != undefined) {
+      let userDetails = ContextHub.getItem("profile");
+      if (userDetails.email) {
+        console.log(userDetails.email);
+        this.setState({
+          userEmail: userDetails.email,
+        });
+      }
+    }
+  }
   getRatingComment() {
     let data1 = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      userACF2Id: this.state.userACF2Id,
+      // siteName: this.state.siteName,
+      // userACF2Id: this.state.userACF2Id,
     };
     $.ajax({
       type: "GET",
-      url: "/source-services/selectAll",
+      url: this.state.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
-        console.log(res.commentDetails);
         this.setState({
           commentCount: res.commentCount,
           commentDetails: res.commentDetails,
@@ -240,6 +267,7 @@ class ArticleComments extends React.Component {
           ratingExist: res.ratingExist,
         });
         this.dateLoad();
+        this.selectUserComment();
       },
       error: (err) => {
         console.error(err);
@@ -247,14 +275,17 @@ class ArticleComments extends React.Component {
     });
   }
   dateLoad() {
-    let commentArray = this.state.commentDetails;
-    commentArray.map((value, index) => {
-      if (value) {
-        let cdate = value.updatedDate.split("T")[0];
-        cdate = this.dateChange(cdate);
-        commentArray[index].updatedDate = cdate;
-      }
-    });
+    let commentArray = "";
+    commentArray = this.state.commentDetails;
+    if (commentArray) {
+      commentArray.map((value, index) => {
+        if (value) {
+          let cdate = value.updatedDate.split("T")[0];
+          cdate = this.dateChange(cdate);
+          commentArray[index].updatedDate = cdate;
+        }
+      });
+    }
     this.setState({
       commentDetails: commentArray,
     });
@@ -263,15 +294,15 @@ class ArticleComments extends React.Component {
     let newCommentVal = $("#commentText").val();
     let newComment = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
+      //siteName: this.state.siteName,
       commentText: newCommentVal,
-      userName: this.state.userName,
-      userACF2Id: this.state.userACF2Id,
-      email: this.state.email,
+      ///userName: this.state.userName,
+      //userACF2Id: this.state.userACF2Id,
+      //email: this.state.email,
     };
     $.ajax({
       type: "POST",
-      url: "/source-services/addComment",
+      url: this.state.apiPath + ".addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -281,6 +312,7 @@ class ArticleComments extends React.Component {
           commentDetails: res.commentDetails,
         });
         this.dateLoad();
+        this.selectUserComment();
       },
       error: (err) => {
         console.error(err);
@@ -294,17 +326,16 @@ class ArticleComments extends React.Component {
     });
     /* news comment submit analytics ends here */
   }
-  deleteComment() {
+  deleteComment(commentId, event) {
+    console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
-      siteName: this.state.siteName,
-      commentId: 17,
+      commentId: commentId,
       reasonText: "testing",
-      deleter_user_acf2_id: this.state.userACF2Id,
     };
     $.ajax({
       type: "DELETE",
-      url: "/source-services/deleteComment",
+      url: this.state.apiPath + ".deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),
@@ -319,6 +350,7 @@ class ArticleComments extends React.Component {
         console.error(err);
       },
     });
+    $(".comment-option").removeClass("show");
   }
   render() {
     return (
@@ -330,43 +362,111 @@ class ArticleComments extends React.Component {
         <p class="info">
           (When you add a comment your name will be automatically displayed)
         </p>
-        <div class="add-comment row col-xs-12">
-          <div class="col-sm-7">
-            <textarea
-              id="commentText"
-              placeholder="Write your comment"
-            ></textarea>
-          </div>
-          <div class="col-sm-3">
-            <button
-              class="submit-comment vertical-middle-align"
-              onClick={this.submitComment.bind(this)}
-            >
-              Add comment
-            </button>
+        <div class="add-comment col-xs-12">
+          <input
+            type="text"
+            class="col-xs-12 textarea"
+            id="commentText"
+            placeholder="Write your comment"
+          />
+          <div class="col-xs-12 add-button">
+            <div class="primary-yellow-button">
+              <a href="javascript:void(0)" role="button" class="CTA-wrapper">
+                <span class="button-class">
+                  <span class="icon-class fa fa-user"></span>Add Comment
+                </span>
+              </a>
+            </div>
           </div>
         </div>
-        {this.state.commentDetails.map((value, index) => {
-          return (
-            <div class="old-comments">
-              <section class="" id={`${value.commentId}`}>
-                <p class="name-time">
-                  <span class="name">{value.userName}</span>
-                  <span class="time">{value.updatedDate}</span>
-                </p>
-                <p class="desc">{value.commentText}</p>
-              </section>
-              <div class="three-dots">
-                <p>...</p>
+        {this.state.commentDetails &&
+          this.state.commentDetails.map((value, index) => {
+            let a = "";
+            // if (index == 0) {
+            //   a = "first";
+            // }
+            if(index==(this.state.commentDetails.length-1)){
+              a='last';
+            }
+            return (
+              <div class={`old-comments ${a}`}>
+                <section class="" id={`${value.commentId}`}>
+                  <p class="name-time">
+                    <span class="name">{value.userName}</span>
+                    <span class="time">{value.updatedDate}</span>
+                    <div
+                      class={`three-dots ${
+                        value.email == this.state.userEmail ? "show" : ""
+                      }`}
+                    >
+                      <p class="dots">...</p>
+                      <div class="comment-option" value={`${value.commentId}`}>
+                        <div class="edit-popup">
+                          <a href="javascript:void(0)">Edit</a>
+                          <br />
+                          <a
+                            class="delete-option"
+                            data-toggle="modal"
+                            data-target={"#deleteModal" + value.commentId}
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                  <p class="desc">{value.commentText}</p>
+                  <div
+                    class="modal fade popup-modal-wrapper delete-modal horizontal-middle-align"
+                    role="dialog"
+                    data-backdrop="static"
+                    data-keyboard="false"
+                    id={"deleteModal" + value.commentId}
+                  >
+                    <div class="modal-content horizontal-middle-align">
+                      <div class="modal-header">
+                        <div class="modal-title">
+                          <h3 class="modal-heading" tabindex="0">
+                            Delete Comment
+                          </h3>
+                          <button
+                            type="button"
+                            class="close close-popup fa fa-remove collapse-x"
+                            data-dismiss="modal"
+                          >
+                            <label class="sr-only">Close</label>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="modal-body" tabindex="0">
+                        Are you sure you want to delete the comment?
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="cancel"
+                          data-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          class="delete"
+                          onClick={this.deleteComment.bind(
+                            this,
+                            value.commentId
+                          )}
+                          data-dismiss="modal"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
-              <div class="comment-option">
-                <ul>
-                  <li>Delete</li>
-                </ul>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     );
   }

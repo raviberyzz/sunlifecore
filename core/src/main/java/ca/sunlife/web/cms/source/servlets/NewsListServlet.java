@@ -40,11 +40,11 @@ import ca.sunlife.web.cms.source.osgi.config.NewsConfig;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= News Listing Servlet",
+@ Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= News Listing Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET,
 		"sling.servlet.resourceTypes=" + "sunlife/source/components/content/generic", "sling.servlet.extensions=json",
 		"sling.servlet.selectors=news" })
-@ Designate (ocd = NewsConfig.class)
+@ Designate(ocd = NewsConfig.class)
 public class NewsListServlet extends SlingSafeMethodsServlet {
 
 	/** The Constant serialVersionUID. */
@@ -64,15 +64,19 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 	private static final String JCR_CONTENT_METDATA_MASTER = "/jcr:content/metadata";
 
 	/** The content fragment path map. */
-	private HashMap<String, String> contentFragmentPathMap = new HashMap<String, String>();
+	private HashMap<String, String> contentFragmentPathMap = new HashMap<>();
+
+	/** The summary text length. */
+	public static final int SUMMARY_LENGTH = 155;
 
 	/**
 	 * Activate news config for NewsList servlet.
 	 * 
 	 * @param newsConfig
+	 * 	the newsConfig
 	 */
 	@ Activate
-	public void activate (NewsConfig newsConfig) {
+	public void activate(NewsConfig newsConfig) {
 		LOGGER.debug("Activating NewsConfig for NewsListing servlet");
 		for (String path : newsConfig.getNewsPath()) {
 			String[] pathFields = path.split("~");
@@ -89,7 +93,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@ Override
-	protected void doGet (SlingHttpServletRequest request, SlingHttpServletResponse response)
+	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=utf-8");
@@ -98,8 +102,9 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 		final JSONArray jsonArray = new JSONArray();
 		String resourcePath = null;
 		try {
-			if (request.getRequestPathInfo().getSelectors().length < 1)
+			if (request.getRequestPathInfo().getSelectors().length < 1) {
 				return;
+			}
 			resourcePath = contentFragmentPathMap.get(request.getRequestPathInfo().getSelectors()[1]);
 			LOGGER.debug("News content fragment parent path fetched :: {}", resourcePath);
 			resource = coreResourceResolver.getResourceResolver().getResource(resourcePath);
@@ -120,17 +125,16 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 							jsonObject.put(NewsConstants.HEADING_CONSTANT,
 									valueMap.get(NewsConstants.HEADING_CONSTANT, String.class)); // heading
 							jsonObject.put(NewsConstants.PAGE_CONSTANT, valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article
-																																																										// page
-																																																										// path
+							// page
+							// path
 							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_CONSTANT,
 									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)); // image path
+							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT,
+									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT, String.class)); // image path - featured
 							jsonObject.put(NewsConstants.PIN_ARTICLE_CONSTANT,
-									valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)); // image path
-							String summary = valueMap.get(NewsConstants.ARTICLE_CONTENT_CONSTANT, String.class);
-							int summaryMaxSize = 155;
-							jsonObject.put(NewsConstants.SUMMARY_CONSTANT,
-									null != summary && summary.length() > summaryMaxSize ? summary.substring(0, summaryMaxSize)
-											: summary); // summary
+									valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)); // pin order
+							jsonObject.put(NewsConstants.ARTICLE_SUMMARY_CONSTANT,
+									valueMap.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class)); // summary
 						}
 						// Meta data
 						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()
@@ -139,8 +143,9 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 							ValueMap valueMap = contentFragmentMetaData.getValueMap();
 							jsonObject.put(NewsConstants.TAGS_CONSTANT, valueMap.get(TagConstants.PN_TAGS, String[].class)); // cq:tags
 						}
-						if (null != jsonObject)
+						if (null != jsonObject) {
 							jsonArray.put(jsonObject);
+						}
 						LOGGER.info("News list fetched: {}", jsonArray);
 					} catch (LoginException e) {
 						LOGGER.error("NewsListServlet :: LoginException :: {}", e);
@@ -156,5 +161,4 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 			writer.flush();
 		}
 	}
-
 }

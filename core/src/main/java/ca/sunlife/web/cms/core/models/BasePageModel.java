@@ -317,6 +317,23 @@ public class BasePageModel {
   
   /** The extra Clientlibs. */
   private String extraClientlibs;
+  
+  /** The favicon. */
+  private String favIcon;
+
+  /**
+   * @return the favIcon
+   */
+  public final String getFavIcon() {
+    return favIcon;
+  }
+
+  /**
+   * @param favIcon the favIcon to set
+   */
+  public final void setFavIcon(String favIcon) {
+    this.favIcon = favIcon;
+  }
 
   /**
    * Gets the page title tag.
@@ -805,6 +822,8 @@ public class BasePageModel {
     final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         pagePath);
+    setFavIcon(configService.getConfigValues("favIcon",
+        pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     if (null != locale && locale.length() > 0) {
@@ -909,7 +928,8 @@ public class BasePageModel {
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-      otherUDOTagsMap.addProperty("page_canonical_url_default", domain
+      String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+      otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
           .concat(
               shortenURL(masterPagePath, configService.getConfigValues(SITE_URL, masterPagePath)))
           .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical

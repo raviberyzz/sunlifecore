@@ -9,6 +9,8 @@
         font-size:1.25rem;
         .fa-star{
             cursor: pointer;
+            color:$light-grey-color;
+            font-size:1.5rem;
         }
         .fa-star.active{
             color:$medium-yellow-background;
@@ -17,9 +19,9 @@
             color:$medium-yellow-background;
         }
         .fa-star.grey{
-            color:$black-shade;
+            color:$light-grey-color;
             &.active{
-                color:$black-shade;
+                color:$light-grey-color;
             }
         }
     }
@@ -39,12 +41,18 @@
     }
     .old-comments{
         display: flex;
-        margin:30px 0 0 0;
-        width:90%;
+        padding:40px;
+        width:80%;
+        border-bottom:1px solid $comment-border-color;
+        // &.first{
+        //     border-top:1px solid //$comment-border-color;
+        // }
+        &.last{
+            border-bottom: none;
+        }
         section{
-            background-color:$light-grey-separator-color;
-            width:60%;
-            padding:10px;
+            width:100%;
+            padding:0 16px;
             border-radius:10px;
             .name-time{
                 margin-bottom:5px;
@@ -61,8 +69,22 @@
             }
         }
         .three-dots,.comment-option{
-            //display:none;
-            display: block;
+            display:none;
+            &.show{
+                display: inline-block;
+            }
+        }
+        .comment-option{
+            z-index:1;
+            background-color:$white-shade;
+            width: 200px;
+            margin-left: -155px;
+            margin-top: 2px;
+            text-align: left;
+            a{
+                font-weight:400;
+                font-size:16px;
+            }
             &.show{
                 display: block;
             }
@@ -71,40 +93,119 @@
             width:5%;
             position: relative;
             text-align:center;
-            p{
-                border-radius:50%;
-                width:80%;
-                padding-bottom: 6px;
-                shape-outside: circle(50%);
-                position: relative; 
-                top:50%;
-                transform: translateY(-50%);
-                background-color:$light-grey-separator-color;
+            display: none;
+            float:right;
+            width:25px;
+            height:25px;
+            text-align: center;
+            border-radius:50%;
+            shape-outside: circle(50%);
+            //background-color:$light-grey-separator-color;
+            cursor: pointer;
+            &.show{
+                display: block;
             }
+            .dots{
+                color:$dark-grey-color;
+            }
+            p{
+                width:100%;
+                margin:0;
+                position: relative;                 
+                font-size: 18px;
+                font-weight: 700;
+                margin-top:-4px;
+            }
+        }
+        .edit-popup{
+            width: 100%;
+            padding: 16px;
+            position: relative;
+            top: 10px;
+            border: 1px solid $dark-grey-shade;
+            border-radius: 5px;
+            background-color:$white-shade;
+            z-index:2;
+        }
+        .edit-popup:before {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 159px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-bottom-color:$dark-grey-shade;
+        }
+        .edit-popup:after {
+            content: '';
+            display: block;  
+            position: absolute;
+            left: 161px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-bottom-color: white;
         }
     }
     .add-comment{
-        float:none;
-        height:140px;
         margin-bottom:0;
         margin-top:24px;
+        padding:0;
+        border:1px solid $comment-border-color;
         position: relative;
-        .col-sm-7,.col-sm-3{
-            height:100%;
-            padding-left:0;
-        }
-        textarea{
+        width:80%;
+        .textarea{
             width:100%;
-            height:140px;
-            padding:5px;
+            padding:24px 16px;
+            min-height:72px;
+            height:auto;
+            border:0;
+            border-bottom:1px solid $comment-border-color;
         }
-        .submit-comment{
-            width:100%;
-            color:$medium-blue-color;
-            background-color:$medium-yellow-background;
-            font-weight:700;
-            font-size:1rem;
-            padding:5px;
+        .add-button{
+            padding:24px 16px;
+            .primary-yellow-button{
+                float: right;
+                .button-class{
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+    .delete-modal{
+        width:100% !important;
+        height:auto !important;
+        .modal-content{
+            width:70%;
+            top: 50%;
+            margin-top:-10px;
+            max-width:700px;
+            transform: translate(-50%,-50%);
+            .modal-body{
+                padding-top:5px;
+            }
+            .modal-footer{
+                border-top:0;
+                button{
+                    font-size:1rem;
+                    font-weight:700;
+                    color:$delete-button-text;
+                    width:217px;
+                    height:48px;
+                    &.cancel{
+                        background-color:$transparent;
+                        border:0;
+                    }
+                    &.delete{
+                        background-color: $medium-yellow-background;
+                        border:0;
+                        border-radius:6px;
+                    }
+                }
+            }
         }
     }
 }
@@ -112,19 +213,25 @@
     .comment-wrapper{
         .add-comment{
             height:auto;
-            .submit-comment{
-                width:60%;
-                margin-top:10px;
-                position: relative;
-                left:50%;
-                top:0%;
-                transform: translate(-50%,0%);
-            }
+            width:100%;
         }
         .old-comments{
             width:100%;
             section{
+                width:100%;
+            }
+        }
+        .delete-modal{
+            .modal-content{
                 width:90%;
+                .modal-body{
+                    margin-bottom:10px;
+                }
+                .modal-footer{
+                    button{
+                        width:150px;
+                    }
+                }
             }
         }
     }

@@ -4,7 +4,7 @@
   <parent>
     <groupId>ca.sunlife.web.cms</groupId>
     <artifactId>web-cms-aem-core</artifactId>
-    <version>1.5.40-SNAPSHOT</version>
+    <version>1.5.42-SNAPSHOT</version>
   </parent>
   <artifactId>web-cms-aem-core.core</artifactId>
   <packaging>bundle</packaging>
@@ -139,17 +139,22 @@
       <artifactId>edgegrid-signer-core</artifactId>
       <version>4.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.9</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spullara.mustache.java</groupId>
+      <artifactId>compiler</artifactId>
+      <version>0.9.6</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 	<dependency>
-		<artifactId>commons-lang3</artifactId>
-		<version>3.9</version>
-		<groupId>org.apache.commons</groupId>
-		<scope>provided</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.github.spullara.mustache.java/compiler -->
-	<dependency>
-		<groupId>com.github.spullara.mustache.java</groupId>
-		<artifactId>compiler</artifactId>
-		<version>0.9.6</version>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.13.1</version>
 	</dependency>
   </dependencies>
   <build>
@@ -212,7 +217,7 @@
                             javax.annotation;version=0.0.0,
                             *</Import-Package>
             <Bundle-SymbolicName>sunlife.core</Bundle-SymbolicName>
-            <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler;inline=true</Embed-Dependency>
+            <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler,jsoup;inline=true</Embed-Dependency>
             <Sling-Model-Packages>ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models</Sling-Model-Packages>
             <Sling-Initial-Content>SLING-INF/content;path:=/libs/system/config;overwrite:=true;</Sling-Initial-Content>
             <_dsannotations>*</_dsannotations>

@@ -71,6 +71,6 @@ public class UserInfoTest {
 	
     userInfo.init();
     
-    assertEquals("{\"familyName\":\"test\",\"givenName\":\"test\",\"email\":\"test\"}", userInfo.getProfile());
+    assertEquals("{\"country\":\"NA\",\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"buildingLocation\":\"NA\",\"language\":\"NA\",\"userName\":\"test test\",\"email\":\"test\",\"jobLevel\":\"NA\"}", userInfo.getProfile());
 	}
 }

@@ -6,6 +6,7 @@ package ca.sunlife.web.cms.source.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
+import java.util.Locale;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -31,7 +32,7 @@ import com.day.cq.tagging.Tag;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= Custom Tag Servlet",
+@ Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= Custom Tag Servlet",
 		"sling.servlet.methods=" + HttpConstants.METHOD_GET, "sling.servlet.resourceTypes=" + "cq/tagging/components/tag",
 		"sling.servlet.extensions=json", "sling.servlet.selectors=tags" })
 public class CustomTagServlet extends SlingSafeMethodsServlet {
@@ -42,6 +43,9 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 	/** The log. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomTagServlet.class);
 
+	/** The title constant. */
+	private static final String TITLE = "title";
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -50,7 +54,7 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
 	@ Override
-	protected void doGet (SlingHttpServletRequest request, SlingHttpServletResponse response)
+	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("Entry :: CustomTagServlet :: doGet ::");
 		response.setCharacterEncoding("UTF-8");
@@ -61,27 +65,50 @@ public class CustomTagServlet extends SlingSafeMethodsServlet {
 			Resource resource = request.getResource();
 			Tag tag = resource.adaptTo(Tag.class);
 			if (null == tag) {
+				LOGGER.debug("Parent tag is null");
 				return;
 			}
+			if (request.getRequestPathInfo().getSelectors().length < 2) {
+				LOGGER.debug("Length of selector doesn't match {}", request.getRequestPathInfo().getSelectors().length);
+				return;
+			}
+			final Locale locale = new Locale(request.getRequestPathInfo().getSelectors()[1]);
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("name", tag.getName());
-			jsonObject.put("title", tag.getTitle());
+			jsonObject.put(TITLE, tag.getLocalizedTitle(locale) == null ? tag.getTitle() : tag.getLocalizedTitle(locale));
 			jsonObject.put("id", tag.getTagID());
 			Iterator<Tag> childTags = tag.listChildren();
 			if (null != childTags) {
-				final JSONArray jsonArray = new JSONArray();
 				childTags.forEachRemaining(childTag -> {
 					JSONObject object = new JSONObject();
 					try {
-						object.put("name", childTag.getName());
-						object.put("title", childTag.getTitle());
+						object.put(TITLE,
+								childTag.getLocalizedTitle(locale) == null ? childTag.getTitle() : childTag.getLocalizedTitle(locale));
 						object.put("id", childTag.getTagID());
-						jsonArray.put(object);
+						// start
+						Iterator<Tag> subChildTags = childTag.listChildren();
+						if (null != subChildTags) {
+							final JSONArray childJsonArray = new JSONArray();
+							subChildTags.forEachRemaining(subChildTag -> {
+								JSONObject childObject = new JSONObject();
+								try {
+									childObject.put("name", subChildTag.getName());
+									childObject.put(TITLE, subChildTag.getLocalizedTitle(locale) == null ? subChildTag.getTitle()
+											: subChildTag.getLocalizedTitle(locale));
+									childObject.put("id", subChildTag.getTagID());
+									childJsonArray.put(childObject);
+								} catch (JSONException e) {
+									LOGGER.error("JSON error whie iterating the child {}", e);
+								}
+							});
+							object.put("tags", childJsonArray);
+						}
+						jsonObject.put(childTag.getName(), object);
+						// end
 					} catch (JSONException e) {
 						LOGGER.error("JSON error whie iterating the child {}", e);
 					}
 				});
-				jsonObject.put("tags", jsonArray);
 			}
 			outJson = jsonObject.toString();
 		} catch (JSONException e1) {

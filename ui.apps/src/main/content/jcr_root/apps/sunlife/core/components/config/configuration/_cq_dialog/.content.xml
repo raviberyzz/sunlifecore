@@ -115,7 +115,12 @@
                                         fieldLabel="Enable context hub"
                                         name="./enableContextHub"
                                         text="Enable context hub"
-                                        value="{Boolean}true"/>	
+                                        value="{Boolean}true"/>
+                                    <favIcon
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Fav Icon"
+                                        name="./favIcon"/>
                                 </items>
                             </section-general>
                             <section-article
