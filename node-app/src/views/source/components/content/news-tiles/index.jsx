@@ -4,17 +4,19 @@ class NewsTiles extends React.Component {
     let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
     if (contextHubData) {
-      let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
+      let userProfile = JSON.parse(
+        localStorage.getItem("ContextHubPersistence")
+      );
       defaultBGValue = userProfile.store.profile.businessGroup;
     }
     this.state = {
-      defaultBG:defaultBGValue,
+      defaultBG: defaultBGValue,
       pageLang: utag_data.page_language,
       businessGroupList: {
-        tags: []
+        tags: [],
       },
       topicsList: {
-        tags: []
+        tags: [],
       },
       allChecked: false,
       selectedPreferenceList: [],
@@ -865,7 +867,7 @@ class NewsTiles extends React.Component {
         }
       ], */
       filterNewsList: [],
-      selectedPreferenceTags: []
+      selectedPreferenceTags: [],
     };
 
     this.getNewsTilesData = this.getNewsTilesData.bind(this);
@@ -879,9 +881,11 @@ class NewsTiles extends React.Component {
     this.getNewsList = this.getNewsList.bind(this);
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
-    this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
+    this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(
+      this
+    );
     this.mergeArray = this.mergeArray.bind(this);
-    this.newsTileClick=this.newsTileClick.bind(this);
+    this.newsTileClick = this.newsTileClick.bind(this);
   }
 
   componentDidMount() {
@@ -890,70 +894,94 @@ class NewsTiles extends React.Component {
   }
 
   handleAllChecked(event) {
-    this.state.businessGroupList.tags.forEach(prefer => {
+    this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.title != this.state.defaultBG) {
-        prefer.isChecked = event.target.checked
+        prefer.isChecked = event.target.checked;
       }
-    })
-    this.state.topicsList.tags.forEach(prefer => prefer.isChecked = event.target.checked)
+    });
+    this.state.topicsList.tags.forEach(
+      (prefer) => (prefer.isChecked = event.target.checked)
+    );
     this.setState({
       allChecked: event.target.checked,
       businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList
+      topicsList: this.state.topicsList,
     });
   }
 
   handleCheckChildElement(event) {
-    this.state.businessGroupList.tags.forEach(prefer => {
+    this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
-        prefer.isChecked = event.target.checked
-    })
-    this.state.topicsList.tags.forEach(prefer => {
+        prefer.isChecked = event.target.checked;
+    });
+    this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
-        prefer.isChecked = event.target.checked
-    })
+        prefer.isChecked = event.target.checked;
+    });
     this.setState({
       businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList
+      topicsList: this.state.topicsList,
     });
   }
 
   filteringNewsList() {
     this.state.selectedPreferenceList = [];
-    this.state.businessGroupList.tags.forEach(prefer => {
+    this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
       }
-    })
-    this.state.topicsList.tags.forEach(prefer => {
+    });
+    this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
       }
-    })
+    });
     let pinnedNewsList = [];
     let preferedNewsList = [];
     if (this.state.selectedPreferenceList.length > 0) {
       preferedNewsList = this.state.newsList.filter((news) => {
-        return (!news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+        return (
+          !news.pinArticle &&
+          news.tags &&
+          news.tags.some(
+            (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+          )
+        );
       });
       pinnedNewsList = this.state.newsList.filter((news) => {
-        return (news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+        return (
+          news.pinArticle &&
+          news.tags &&
+          news.tags.some(
+            (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+          )
+        );
       });
     } else {
       preferedNewsList = this.state.newsList;
     }
     pinnedNewsList.sort(function (a, b) {
-      return (a.pinArticle - b.pinArticle || b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+      return (
+        a.pinArticle - b.pinArticle ||
+        b.publishedDate - a.publishedDate ||
+        a.heading.localeCompare(b.heading)
+      );
     });
     preferedNewsList.sort(function (a, b) {
-      return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+      return (
+        b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading)
+      );
     });
     if (pinnedNewsList.length > 0) {
-      this.state.filterNewsList = this.mergeArray(preferedNewsList, pinnedNewsList, pinnedNewsList[0].pinArticle - 1);
+      this.state.filterNewsList = this.mergeArray(
+        preferedNewsList,
+        pinnedNewsList,
+        pinnedNewsList[0].pinArticle - 1
+      );
     }
     this.setState({
       selectedPreferenceList: this.state.selectedPreferenceList,
-      filterNewsList: this.state.filterNewsList
+      filterNewsList: this.state.filterNewsList,
     });
     this.addSelectedPreference();
     this.tagSorting();
@@ -962,16 +990,16 @@ class NewsTiles extends React.Component {
   }
 
   clearAll() {
-    this.state.businessGroupList.tags.forEach(prefer => {
+    this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.title != this.state.defaultBG) {
         prefer.isChecked = false;
       }
-    })
-    this.state.topicsList.tags.forEach(prefer => prefer.isChecked = false)
+    });
+    this.state.topicsList.tags.forEach((prefer) => (prefer.isChecked = false));
     this.setState({
       allChecked: false,
       businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList
+      topicsList: this.state.topicsList,
     });
     this.filteringNewsList();
   }
@@ -986,20 +1014,32 @@ class NewsTiles extends React.Component {
     })
     return bg.substring(0, bg.length - 3); */
     var title = "";
-    bgList.filter((id)=>{
-      this.state.businessGroupIdTitle.forEach((obj)=>{
-        if(Object.keys(obj) == id){
+    bgList.filter((id) => {
+      this.state.businessGroupIdTitle.forEach((obj) => {
+        if (Object.keys(obj) == id) {
           title = title + obj[id] + " ";
           // return obj[id];
         }
-      })
-    })
+      });
+    });
     return title;
   }
 
   dateTransform(date) {
-    let monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let monthName = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
@@ -1012,7 +1052,10 @@ class NewsTiles extends React.Component {
     let topicsTag = [];
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
-        if (element.split("/")[1] == "business-group" && element != "sunlife:source/business-group/canada") {
+        if (
+          element.split("/")[1] == "business-group" &&
+          element != "sunlife:source/business-group/canada"
+        ) {
           businessTag.push(element);
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
@@ -1029,7 +1072,7 @@ class NewsTiles extends React.Component {
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
     }
     this.setState({
-      selectedPreferenceTags: this.state.selectedPreferenceTags
+      selectedPreferenceTags: this.state.selectedPreferenceTags,
     });
   }
 
@@ -1044,31 +1087,54 @@ class NewsTiles extends React.Component {
         let preferedNewsList = [];
         if (this.state.selectedPreferenceList.length > 0) {
           preferedNewsList = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+            return (
+              !news.pinArticle &&
+              news.tags &&
+              news.tags.some(
+                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+              )
+            );
           });
           pinnedNewsList = this.state.newsList.filter((news) => {
-            return (news.pinArticle && news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1));
+            return (
+              news.pinArticle &&
+              news.tags &&
+              news.tags.some(
+                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+              )
+            );
           });
         } else {
           preferedNewsList = this.state.newsList;
         }
         pinnedNewsList.sort(function (a, b) {
-          return (a.pinArticle - b.pinArticle || b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+          return (
+            a.pinArticle - b.pinArticle ||
+            b.publishedDate - a.publishedDate ||
+            a.heading.localeCompare(b.heading)
+          );
         });
         preferedNewsList.sort(function (a, b) {
-          return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+          return (
+            b.publishedDate - a.publishedDate ||
+            a.heading.localeCompare(b.heading)
+          );
         });
         if (pinnedNewsList.length > 0) {
-          this.state.filterNewsList = this.mergeArray(preferedNewsList, pinnedNewsList, pinnedNewsList[0].pinArticle - 1);
+          this.state.filterNewsList = this.mergeArray(
+            preferedNewsList,
+            pinnedNewsList,
+            pinnedNewsList[0].pinArticle - 1
+          );
         }
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
-        })
+        });
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
@@ -1083,47 +1149,73 @@ class NewsTiles extends React.Component {
         this.state.businessGroupList.tags.forEach((data) => {
           var obj = {};
           obj[data.id] = data.title;
-            this.state.businessGroupIdTitle.push(obj)
+          this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach(prefer => {
+          this.state.selectedPreferenceList.forEach((prefer) => {
             if (prefer === data.id) {
               data["isChecked"] = true;
             }
-          })
+          });
         });
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach(prefer => {
+          this.state.selectedPreferenceList.forEach((prefer) => {
             if (prefer === data.id) {
               data["isChecked"] = true;
             }
-          })
+          });
         });
         this.setState({
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
-          businessGroupIdTitle: this.state.businessGroupIdTitle
-        })
+          businessGroupIdTitle: this.state.businessGroupIdTitle,
+        });
         this.getNewsList();
         //console.log(res);
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
   addSelectedPreference() {
-    console.log(this.state.businessGroupList.tags);
-    console.log(this.state.topicsList.tags);
-    console.log(this.state.selectedPreferenceList);
+    /* submit analytics starts here */
+    var businessString='',topicString='';
+    //console.log(this.state.selectedPreferenceList);
+    if(this.state.selectedPreferenceList.length>0){
+      console.log('inside');
+      this.state.selectedPreferenceList.forEach((item,index)=>{
+        if(item.indexOf('business-group')>-1){
+          businessString+=item+',';
+        }else if(item.indexOf('topics')){
+          topicString+=item+',';
+        }
+      });
+    }
+    console.log(businessString[businessString.length-1]);
+    if(businessString[businessString.length-1]==','){
+      businessString=businessString.substring(0,businessString.length-1);
+    }
+    if(topicString[topicString.length-1]==','){
+      topicString=topicString.substring(0,topicString.length-1);
+    }
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessString,
+      ev_data_two: topicString
+    }); 
+    /* submit analytics ends here */
     let reqData = {
-      "articlefilter": this.state.selectedPreferenceList
+      articlefilter: this.state.selectedPreferenceList,
     };
     $.ajax({
       type: "POST",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addPreference.json",
-      contentType: 'application/json',
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addPreference.json",
+      contentType: "application/json",
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
@@ -1131,26 +1223,27 @@ class NewsTiles extends React.Component {
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
   retrieveSelectedPreference() {
     $.ajax({
       type: "GET",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
       dataType: "json",
       success: (res) => {
         this.state.selectedPreferenceList = res;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
-        })
+        });
         this.getPreferenceList();
-        console.log(res);
+        //console.log(res);
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
@@ -1161,15 +1254,15 @@ class NewsTiles extends React.Component {
   mergeArray(a, b, i) {
     return a.slice(0, i).concat(b, a.slice(i));
   }
-  newsTileClick(key,index,event){
-    console.log(this.state.filterNewsList);
+  newsTileClick(key, index, event) {
+    //console.log(this.state.filterNewsList);
     /* homepage analytics starts here */
     utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
+      ev_type: "other",
+      ev_action: "clk",
       ev_title: this.state.filterNewsList[key].heading,
-      ev_data_one: 'hp-news-'+index 
-      });    
+      ev_data_one: "hp-news-" + index,
+    });
     /* homepage analytics ends here */
     location.href = this.state.filterNewsList[key].pagePath;
   }
@@ -1177,69 +1270,139 @@ class NewsTiles extends React.Component {
     return (
       <div class="news-wrapper">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
+          <div
+            class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "
+            data-analytics="tab0"
+          >
             <div class="news-widget" data-section="hp investor">
-              {this.props.newsToolBar == "true" &&
+              {this.props.newsToolBar == "true" && (
                 <div>
                   <div class="row news-tool-bar">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
-                      <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
+                      <p class="left-text pull-left">
+                        {this.props.toolbarLeftText}
+                      </p>
                       <div class="preference-tag-container hidden-sm hidden-xs">
-                        {this.state.selectedPreferenceTags.slice(0, 4).map((value, index) => {
-                          return (<span class="tag">{value}</span>)
-                        })}
-                        {this.state.selectedPreferenceTags.length > 4 &&
-                          <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
-                        }
+                        {this.state.selectedPreferenceTags
+                          .slice(0, 4)
+                          .map((value, index) => {
+                            return <span class="tag">{value}</span>;
+                          })}
+                        {this.state.selectedPreferenceTags.length > 4 && (
+                          <span class="more-tag">{`${this.props.moreText} - ${
+                            this.state.selectedPreferenceTags.length - 4
+                          }`}</span>
+                        )}
                       </div>
                       <span class="pull-right">
-                        {this.state.selectedPreferenceTags.length > 0 &&
-                          <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
-                        }
-                        <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
+                        {this.state.selectedPreferenceTags.length > 0 && (
+                          <span class="hidden-md hidden-lg">
+                            ({this.state.selectedPreferenceTags.length})
+                          </span>
+                        )}
+                        <a
+                          class="right-text"
+                          data-target="#preferenceModal"
+                          data-toggle="modal"
+                          id="preferenceModalLink"
+                          href="#preferenceModal"
+                        >
+                          {this.props.toolbarRightText}
+                          <span class={`fa ${this.props.iconName}`}></span>
+                        </a>
                       </span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
                   </div>
-                  <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align" role="dialog">
+                  <div
+                    id="preferenceModal"
+                    class="modal fade preference-popup-wrapper horizontal-middle-align"
+                    role="dialog"
+                  >
                     <div class="modal-dialog preference-modaldialog">
                       <div class="modal-content horizontal-middle-align">
                         <div class="modal-header preference-modal-header">
-                          <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
-                            data-dismiss="modal">
-                          </button>
-                          <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
+                          <button
+                            type="button"
+                            class="fa fa-remove collapse-x close-modal"
+                            aria-label="Close"
+                            data-dismiss="modal"
+                          ></button>
+                          <h5 class="heading-text">
+                            {this.props.preferenceModalHeading}
+                          </h5>
                           <p>
-                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
-                            <span class="chk-lbl">{this.props.selectAllText}</span>
+                            <input
+                              type="checkbox"
+                              id="selectAll"
+                              onChange={this.handleAllChecked}
+                              name="selectAll"
+                              checked={this.state.allChecked}
+                              value="selectAll"
+                            />
+                            <span class="chk-lbl">
+                              {this.props.selectAllText}
+                            </span>
                           </p>
                         </div>
                         <div class="modal-body preference-modal-body">
                           <div class="row preference-list">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                              <p class="heading-text">{this.state.businessGroupList.title}</p>
+                              <p class="heading-text">
+                                {this.state.businessGroupList.title}
+                              </p>
                               <ul class="prefernce-col-list">
-                                {this.state.businessGroupList.tags.map((value, index) => {
-                                  return (
-                                    <li key={index}>
-                                      <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.title === this.state.defaultBG} />
-                                      <span class="chk-lbl">{value.title}</span>
-                                    </li>
-                                  )
-                                })}
+                                {this.state.businessGroupList.tags.map(
+                                  (value, index) => {
+                                    return (
+                                      <li key={index}>
+                                        <input
+                                          type="checkbox"
+                                          name={value.id}
+                                          value={value.id}
+                                          onChange={
+                                            this.handleCheckChildElement
+                                          }
+                                          checked={value.isChecked}
+                                          disabled={
+                                            value.isChecked &&
+                                            value.title === this.state.defaultBG
+                                          }
+                                        />
+                                        <span class="chk-lbl">
+                                          {value.title}
+                                        </span>
+                                      </li>
+                                    );
+                                  }
+                                )}
                               </ul>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-                              <p class="heading-text">{this.state.topicsList.title}</p>
+                              <p class="heading-text">
+                                {this.state.topicsList.title}
+                              </p>
                               <ul class="prefernce-col-list topic-col">
-                                {this.state.topicsList.tags.map((value, index) => {
-                                  return (
-                                    <li key={index}>
-                                      <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} />
-                                      <span class="chk-lbl">{value.title}</span>
-                                    </li>
-                                  )
-                                })}
+                                {this.state.topicsList.tags.map(
+                                  (value, index) => {
+                                    return (
+                                      <li key={index}>
+                                        <input
+                                          type="checkbox"
+                                          name={value.id}
+                                          value={value.id}
+                                          onChange={
+                                            this.handleCheckChildElement
+                                          }
+                                          checked={value.isChecked}
+                                        />
+                                        <span class="chk-lbl">
+                                          {value.title}
+                                        </span>
+                                      </li>
+                                    );
+                                  }
+                                )}
                               </ul>
                             </div>
                           </div>
@@ -1247,10 +1410,20 @@ class NewsTiles extends React.Component {
                         <div class="modal-footer preference-modal-footer">
                           <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsList}>{this.props.preferenceModalHeadingbtn1}</button>
+                              <button
+                                class="cmp-form-button pull-right"
+                                onClick={this.filteringNewsList}
+                              >
+                                {this.props.preferenceModalHeadingbtn1}
+                              </button>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
-                              <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
+                              <button
+                                class="cmp-form-button sec-btn"
+                                onClick={this.clearAll}
+                              >
+                                {this.props.preferenceModalHeadingbtn2}
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -1258,63 +1431,131 @@ class NewsTiles extends React.Component {
                     </div>
                   </div>
                 </div>
-              }
-              {this.props.newsListContainer == "true" && this.state.filterNewsList.length > 0 &&
-                <div class="row news-list-container">
-                  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
-                    {Object.keys(this.state.filterNewsList).slice(0, 4).map((key, index) => {
-                      return (
-                        <div class={`col-xs-12  tile clickable-tile ${index == 0 ? "col-sm-8 col-md-8" : "col-sm-4 col-md-4"}`} onClick={this.newsTileClick(this,key,index+1)}>
-                          <div class="tile-img" style={{ backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})` }}>
-                            <div class="overlay-container">
-                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
-                                <span class="title pull-left">{this.state.filterNewsList[key].heading}</span>
-                                <span class="date pull-right">{this.dateTransform(this.state.filterNewsList[key].publishedDate)}</span>
-                              </div>
-                              <span class="bg-name">{this.bgBinding(this.state.filterNewsList[key].tags)}</span>
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                      <div class="aggregate-tile">
-                        <div class="circular-image">
-                          <img class="icon" src={this.props.moreNewsImg} />
-                        </div>
-                        {Object.keys(this.state.filterNewsList).slice(4, 7).map((key, index) => {
+              )}
+              {this.props.newsListContainer == "true" &&
+                this.state.filterNewsList.length > 0 && (
+                  <div class="row news-list-container">
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
+                      {Object.keys(this.state.filterNewsList)
+                        .slice(0, 4)
+                        .map((key, index) => {
                           return (
-                            <div class="mar-btm">
-                              <a class="title" href="">{this.state.filterNewsList[key].heading}</a>
-                              <p class="bg-name">{this.bgBinding(this.state.filterNewsList[key].tags)}</p>
+                            <div
+                              class={`col-xs-12  tile clickable-tile ${
+                                index == 0
+                                  ? "col-sm-8 col-md-8"
+                                  : "col-sm-4 col-md-4"
+                              }`}
+                              onClick={this.newsTileClick.bind(
+                                this,
+                                key,
+                                index + 1
+                              )}
+                            >
+                              <div
+                                class="tile-img"
+                                style={{
+                                  backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})`,
+                                }}
+                              >
+                                <div class="overlay-container">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
+                                    <span class="title pull-left">
+                                      {this.state.filterNewsList[key].heading}
+                                    </span>
+                                    <span class="date pull-right">
+                                      {this.dateTransform(
+                                        this.state.filterNewsList[key]
+                                          .publishedDate
+                                      )}
+                                    </span>
+                                  </div>
+                                  <span class="bg-name">
+                                    {this.bgBinding(
+                                      this.state.filterNewsList[key].tags
+                                    )}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
-                          )
+                          );
                         })}
-                        <p><span class="blue-chevron-arrow"><span class="blue-font"><a href={this.props.moreNewsLink}>{this.props.moreNewsText}</a></span></span></p>
+                      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
+                        <div class="aggregate-tile">
+                          <div class="circular-image">
+                            <img class="icon" src={this.props.moreNewsImg} />
+                          </div>
+                          {Object.keys(this.state.filterNewsList)
+                            .slice(4, 7)
+                            .map((key, index) => {
+                              return (
+                                <div class="mar-btm">
+                                  <a class="title" href="">
+                                    {this.state.filterNewsList[key].heading}
+                                  </a>
+                                  <p class="bg-name">
+                                    {this.bgBinding(
+                                      this.state.filterNewsList[key].tags
+                                    )}
+                                  </p>
+                                </div>
+                              );
+                            })}
+                          <p>
+                            <span class="blue-chevron-arrow">
+                              <span class="blue-font">
+                                <a href={this.props.moreNewsLink}>
+                                  {this.props.moreNewsText}
+                                </a>
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
+                      <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
+                        <p>
+                          <a href={this.props.workdayLink}>
+                            <img src={this.props.workdayImg} alt="" />
+                          </a>
+                        </p>
+                        <p>{this.props.workdayText}</p>
+                        <p>
+                          <a href={this.props.workdayLink} target="_blank">
+                            <span class="view-all-category white-font">
+                              {this.props.workdayLinkText}
+                            </span>
+                          </a>
+                        </p>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
+                        <p>
+                          <a href={this.props.workplaceLink}>
+                            <img src={this.props.workplaceImg} alt="" />
+                          </a>
+                        </p>
+                        <p class="m-top-bt">{this.props.workplaceText}</p>
+                        <p>
+                          <span class="blue-chevron-arrow">
+                            <span class="blue-font">
+                              <a
+                                href={this.props.workplaceLink}
+                                target="_blank"
+                              >
+                                {this.props.workplaceLinkText}
+                              </a>
+                            </span>
+                          </span>
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
-                      <p><a href={this.props.workdayLink}><img src={this.props.workdayImg} alt="" /></a></p>
-                      <p>{this.props.workdayText}</p>
-                      <p><a href={this.props.workdayLink} target="_blank"><span class="view-all-category white-font">{this.props.workdayLinkText}</span></a>
-                      </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
-                      <p><a href={this.props.workplaceLink}><img src={this.props.workplaceImg} alt="" /></a></p>
-                      <p class="m-top-bt">{this.props.workplaceText}</p>
-                      <p><span class="blue-chevron-arrow"><span class="blue-font"><a href={this.props.workplaceLink} target="_blank">{this.props.workplaceLinkText}</a></span></span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              }
+                )}
             </div>
           </div>
         </div>
       </div>
-
     );
   }
 }

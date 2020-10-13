@@ -27,7 +27,7 @@ $(document).ready(function () {
 			var timeVal = $(this).val();
 			$('#timeVal').val(todate.tz(timeVal).format('dddd h:mm a'));
 			/* time analytics starts here */
-			let selCountry=$(this).text();
+			let selCountry=$('.time-widget select#select1 option:selected').text();
 			utag.link({
 				ev_type: 'other',
 				ev_action: 'clk',
