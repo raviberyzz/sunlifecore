@@ -1090,7 +1090,7 @@ class NewsTiles extends React.Component {
         this.state.newsList = response;
         if (ContextHub.getItem('profile').businessGroup && ContextHub.getItem('profile').businessUnit && ContextHub.getItem('profile').buildingLocation && ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
-          businessGroup = "sunlife:source/business_group/" + businessGroup.toLowerCase().replace(" ", "-");
+          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(" ", "-");
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
           var jobLevel = ContextHub.getItem('profile').jobLevel;
