@@ -107,8 +107,14 @@ public class UGCServiceImpl implements UGCService {
 					logger.error("JSONException :: while setting site name {}", e1);
 				}
 				String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
+				if("POST".equals(methodType)) {
 				return restService.callPostWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);
+				}
+				else {
+			    return restService.callDeleteWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);	
+				}
 		}
+	
 	}
 
 }

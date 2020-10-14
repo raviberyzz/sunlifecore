@@ -33,6 +33,7 @@ import ca.sunlife.web.cms.core.exception.ErrorCodes;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.osgi.config.RestClientConfig;
 import ca.sunlife.web.cms.core.services.RestService;
+import ca.sunlife.web.cms.core.services.HttpDeleteWithBody;
 
 /**
  * The Class RestServiceImpl.
@@ -189,5 +190,53 @@ public class RestServiceImpl implements RestService {
 			}
 		}
 		return responseStr;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String callDeleteWebService(String url, String requestHeaders, String requestParams)
+			throws ApplicationException, SystemException, IOException {
+		logger.debug("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
+		CloseableHttpResponse response = null;
+		int statusCode;
+		String responseStr = null;
+		
+		try {
+			HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(url);			
+			StringEntity entity = new StringEntity(requestParams);
+			httpDelete.setEntity(entity);
+			httpDelete.setHeader("Accept", "application/json");
+			httpDelete.setHeader("Content-type", "application/json");
+			
+			if (null != requestHeaders && requestHeaders.length() > 0) {
+				final JSONObject json = new JSONObject(requestHeaders);
+				json.keys().forEachRemaining(key -> {
+					try {
+						httpDelete.addHeader(key.toString(), json.getString(key.toString()));
+					} catch (JSONException e1) {
+						logger.error("Error while parsing json of request headers :: {}", e1);
+					}
+				});
+			}
+			
+			response = client.execute(httpDelete);
+			statusCode = response.getStatusLine().getStatusCode();
+			logger.debug("Response code :: {}", statusCode);
+			if (statusCode != HttpStatus.SC_OK) {
+				throw new SystemException(ErrorCodes.APP_ERROR_001);
+			} else {
+				responseStr = EntityUtils.toString(response.getEntity());
+			}
+		}
+		catch (JSONException e2) {
+			logger.error("Error :: callPostWebService method of RestServiceImpl :: {}", e2);
+		} finally {
+			if (null != response) {
+				response.close();
+			}
+		}
+		
+		return responseStr;
+		
 	}
 }

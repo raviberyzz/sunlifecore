@@ -49,5 +49,23 @@ public interface RestService {
 	 */
 	String callPostWebService(final String url, final String requestHeaders, final String requestParams)
 			throws ApplicationException, SystemException, IOException;
+	
+	/**
+	 * @param url
+	 * 	url
+	 * @param requestHeaders
+	 * 	requestHeaders
+	 * @param requestParams
+	 * 	requestParams
+	 * @return
+	 * @throws ApplicationException
+	 * 	ApplicationException
+	 * @throws SystemException
+	 * 	SystemException
+	 * @throws IOException
+	 * 	IOException
+	 */
+	String callDeleteWebService(final String url, final String requestHeaders, final String requestParams)
+			throws ApplicationException, SystemException, IOException;
 
 }
