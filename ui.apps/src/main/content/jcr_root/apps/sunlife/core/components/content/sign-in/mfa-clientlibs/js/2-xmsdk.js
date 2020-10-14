@@ -110,8 +110,8 @@
                   t.getHeaders().forEach(function (t) {
                     i.setRequestHeader(t.getName(), t.getValue());
                   });
-                //   i.setRequestHeader("Content-Type", "application/json"),
-                //   i.send(t.getBodyJson());
+                  i.setRequestHeader("Content-Type", "application/json"),
+                  i.send(t.getBodyJson());
               });
             },
           },
