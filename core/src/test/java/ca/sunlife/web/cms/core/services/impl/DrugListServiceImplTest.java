@@ -7,6 +7,8 @@ import com.adobe.granite.asset.api.Rendition;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -16,6 +18,7 @@ import org.mockito.internal.util.reflection.FieldSetter;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import javax.jcr.Session;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -30,6 +33,12 @@ import static org.mockito.Mockito.*;
 public class DrugListServiceImplTest {
 
     DrugListServiceImpl subject;
+
+    @Mock
+    ResourceResolverFactory resourceResolverFactory;
+
+    @Mock
+    ResourceResolver resourceResolver;
 
     @Mock
     AssetManager assetManager;
@@ -50,6 +59,11 @@ public class DrugListServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
+        when(resourceResolverFactory.getServiceResourceResolver(any(Map.class))).thenReturn(resourceResolver);
+        when(resourceResolver.adaptTo(AssetManager.class)).thenReturn(assetManager);
+        when(assetManager.assetExists(anyString())).thenReturn(true);
+        when(resourceResolver.adaptTo(Session.class)).thenReturn(mock(Session.class));
+
         when(paForms.getStream()).thenAnswer(new Answer<InputStream>(){
             @Override
             public InputStream answer(InvocationOnMock invocationOnMock) throws Throwable {
@@ -67,22 +81,28 @@ public class DrugListServiceImplTest {
 
         subject = new DrugListServiceImpl();
 
-        FieldSetter.setField(subject, subject.getClass().getDeclaredField("assetManager"), assetManager );
+        FieldSetter.setField(subject,
+                subject.getClass().getDeclaredField("resourceResolverFactory"),
+                resourceResolverFactory );
         when(assetManager.getAsset(anyString())).thenReturn(asset);
         when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup);
 
-        when(config.getPdfFolder()).thenReturn("/content/assets/sunlife/whatever");
+        when(config.getPdfFolder()).thenReturn("/content/dam/sunlife/data");
 
         subject.activate(config);
     }
 
     @Test
-    public void testSomething() throws Exception {
+    public void testWriteJsonAssetToDam() throws Exception {
 
         Asset outAsset = mock(Asset.class);
 
-        when(assetManager.createAsset("/content/assets/sunlife/whatever/druglist.json")).thenReturn(outAsset);
+        when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(false);
+        when(assetManager.createAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
         subject.updateDrugLists("paforms.xlsx", "lookup.xlsx");
+
+        verify(assetManager).assetExists("/content/dam/sunlife/data/druglist.json");
+        verify(assetManager).createAsset("/content/dam/sunlife/data/druglist.json");
 
         ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
         verify(outAsset).setRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), any(HashMap.class));
@@ -92,7 +112,7 @@ public class DrugListServiceImplTest {
 
         assertEquals(252, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
-        assertEquals(157, policy.size());
+        assertEquals(7, policy.size());
         assertNotNull(policy);
         JsonNode form = policy.get(0);
         assertNotNull(form);

@@ -54,36 +54,41 @@ public class DrugListServiceImpl implements DrugListService {
             "drug-list"
     );
 
-
     @Override
     public void updateDrugLists(String paFormsPath, String lookupPath) throws IOException {
 
         AssetManager assetManager = null;
-        ResourceResolver resourceResolver = null;
 
-        try {
-            resourceResolver = resourceResolverFactory.getServiceResourceResolver(authInfo);
+        try (ResourceResolver resourceResolver = resourceResolverFactory
+                .getServiceResourceResolver(authInfo)){
+
             assetManager = resourceResolver.adaptTo(AssetManager.class);
+
+            HashMap<String, PaForm> paForms = buildPaFormLookUpMap(paFormsPath, assetManager);
+
+            JsonObjectBuilder builder = buildJsonAsset(lookupPath, assetManager, paForms);
+
+            Asset outputAsset;
+            String assetName = pdfFolder + "/druglist.json";
+            if (assetManager.assetExists(assetName)) {
+                outputAsset = assetManager.getAsset(assetName);
+            } else {
+                outputAsset = assetManager.createAsset(assetName);
+            }
+            ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
+            outputAsset.setRendition(ORIGINAL, stream, new HashMap<>() );
+
+            resourceResolver.adaptTo(Session.class).save();
+
         } catch (LoginException e) {
             logger.error("Can't create AssetManager", e);
-            assetManager = null;
+        } catch (RepositoryException e) {
+            logger.error("Failed to save JSON asset", e);
         }
 
-        Workbook formsWorkbook = readWorkbook(paFormsPath, assetManager);
-        Sheet sheetEn = formsWorkbook.getSheetAt(0);
-        Sheet sheetFr = formsWorkbook.getSheetAt(1);
-        HashMap<String, PaForm> paForms = new HashMap<>();
-        for(int rowIndex = sheetEn.getFirstRowNum() + 1; rowIndex <= sheetEn.getLastRowNum(); rowIndex++) {
-            Row rowEn = sheetEn.getRow(rowIndex);
-            Row rowFr = sheetFr.getRow(rowIndex);
-            PaForm paForm = new PaForm(rowEn, rowFr);
-            if (paForm.isValid()) {
-                paForms.put(paForm.getFormNumber(),paForm);
-            } else {
-                logger.debug("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
-            }
-        }
+    }
 
+    private JsonObjectBuilder buildJsonAsset(String lookupPath, AssetManager assetManager, HashMap<String, PaForm> paForms) throws IOException {
         Workbook lookupWorkbook = readWorkbook(lookupPath, assetManager);
         Sheet lookupSheet = lookupWorkbook.getSheetAt(0);
         JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
@@ -129,24 +134,25 @@ public class DrugListServiceImpl implements DrugListService {
             }
         }
         builder.add("slf-policy", policyBuilder.build());
+        return builder;
+    }
 
-        Asset outputAsset;
-        String assetName = pdfFolder + "/druglist.json";
-        if (assetManager.assetExists(assetName)) {
-            outputAsset = assetManager.getAsset(assetName);
-        } else {
-            outputAsset = assetManager.createAsset(assetName);
+    private HashMap<String, PaForm> buildPaFormLookUpMap(String paFormsPath, AssetManager assetManager) throws IOException {
+        Workbook formsWorkbook = readWorkbook(paFormsPath, assetManager);
+        Sheet sheetEn = formsWorkbook.getSheetAt(0);
+        Sheet sheetFr = formsWorkbook.getSheetAt(1);
+        HashMap<String, PaForm> paForms = new HashMap<>();
+        for(int rowIndex = sheetEn.getFirstRowNum() + 1; rowIndex <= sheetEn.getLastRowNum(); rowIndex++) {
+            Row rowEn = sheetEn.getRow(rowIndex);
+            Row rowFr = sheetFr.getRow(rowIndex);
+            PaForm paForm = new PaForm(rowEn, rowFr);
+            if (paForm.isValid()) {
+                paForms.put(paForm.getFormNumber(),paForm);
+            } else {
+                logger.debug("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
+            }
         }
-        ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
-        outputAsset.setRendition(ORIGINAL, stream, new HashMap<>() );
-
-        try {
-            resourceResolver.adaptTo(Session.class).save();
-        } catch (RepositoryException e) {
-            throw new IOException(e);
-        }
-
-
+        return paForms;
     }
 
     private Workbook readWorkbook(String spreadsheetPath, AssetManager assetManager) throws IOException {
@@ -169,16 +175,6 @@ public class DrugListServiceImpl implements DrugListService {
 
     @Activate
     protected final void activate(DrugListConfig config) {
-
-        AssetManager result;
-
-        try {
-            ResourceResolver resourceResolver = resourceResolverFactory.getServiceResourceResolver(authInfo);
-            result = resourceResolver.adaptTo(AssetManager.class);
-        } catch (LoginException e) {
-            logger.error("Can't create AssetManager", e);
-            result = null;
-        }
 
         pdfFolder = config.getPdfFolder();
 
