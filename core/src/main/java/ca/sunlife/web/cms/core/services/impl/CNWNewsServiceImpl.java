@@ -153,8 +153,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
       releaseMain = new ObjectMapper().readValue(response, ReleaseMain.class);
     }
     logger.debug("locale: {}, {}", locale, releaseMain);
-    if (null != releaseMain && null != releaseMain.getReleases()
-        && null != releaseMain.getReleases().getRelease()) {
+    if (null != releaseMain && null != releaseMain.getReleases()) {
       releaseMain.getReleases().getRelease().stream().forEach(o -> {
         try {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());
@@ -225,7 +224,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     logger.debug("importUrl: {}", importUrl);
     final ReleaseMain news = new ObjectMapper()
         .readValue(restService.callGetWebService(importUrl.toString()), ReleaseMain.class);
-    if (null != news && null != news.getReleases() && null != news.getReleases().getRelease()) {
+    if (null != news.getReleases() ) {
       news.getReleases().getRelease().stream().forEach(o -> {
         try {
           final Date date = inputDateFormatter.parse(o.getReleaseDate());

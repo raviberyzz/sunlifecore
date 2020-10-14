@@ -136,11 +136,32 @@
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>assembly.xml</descriptor>
+								<descriptor>${myproject.basedir}/assembly.xml</descriptor>
 							</descriptors>
 							<appendAssemblyId>true</appendAssemblyId>
 							<finalName>${project.artifactId}-${project.version}-Sources</finalName>
 							<runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+				<version>0.3.1</version>
+				<executions>
+					<execution>
+						<id>directories</id>
+						<goals>
+							<goal>directory-of</goal>
+						</goals>
+						<phase>initialize</phase>
+						<configuration>
+							<property>myproject.basedir</property>
+							<project>
+								<groupId>ca.sunlife.web.cms</groupId>
+								<artifactId>web-cms-aem-core</artifactId>
+							</project>
 						</configuration>
 					</execution>
 				</executions>
@@ -729,6 +750,13 @@
 			</build>
 		</profile>
 
+		<profile>
+			<id>skipSpotbugs</id>
+			<properties>
+				<spotbugs.skip>true</spotbugs.skip>
+			</properties>
+		</profile>
+
 	</profiles>
 
 
@@ -834,6 +862,14 @@
 				<version>5.7.4</version>
 				<scope>provided</scope>
 			</dependency>
+			<!-- Apache POI - https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>3.17</version>
+				<scope>provided</scope>
+			</dependency>
+
 
 			<!-- Testing -->
 			<dependency>

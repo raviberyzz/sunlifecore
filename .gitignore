@@ -76,3 +76,6 @@ buildNumber.properties
 .idea/
 *.iml
 node-app/node/
+/core/src/test/resources/ca/sunlife/web/cms/core/services/impl/~$paforms.xlsx
+/core/src/test/resources/ca/sunlife/web/cms/core/services/impl/~$lookup.xlsx
+/ui.apps/src/main/content/jcr_root/apps/sunlife/config/org.apache.sling.commons.log.LogManager.factory.config-sunlife.xml
