@@ -4,7 +4,6 @@
 }
 
 .sign-in .content {
-  max-width: 80%;
   margin: auto;
   margin-top: 40px;
   background-color: white;
@@ -80,11 +79,40 @@
 }
 
 
+.sign-in .modal{
+  padding-right: 0px !important;
+}
+.sign-in .modal-header{
+  border-bottom: 0px;
+}
+.sign-in .modal-footer {
+  border-top: 0px;
+}
+.sign-in .modal-content {
+border-top: 6px solid #eaab00;
+  margin: auto;
+  padding: 0px;
+  width: 100%;
+  max-width: 1032px;
+  border-radius: 4px !important;
+}
+
+.modal-dialog {
+  width : 100%;
+  margin: 0px;
+  vertical-align: middle !important;
+}
+
+@media (min-width: 1025px) {
+  .modal-dialog {
+      margin-top : 50px;
+  }
+}
+
 @media (max-width: 767px) and (min-width:320px) {
   .modal-dialog {
       width : 100%;
       margin: 0px;
-      height:100%;
       vertical-align: middle !important;
   }
   
@@ -93,28 +121,9 @@
       margin: 0px;
       padding: 0px;
       width: 100%;
-      height:100%;
       border-radius: 0px;
-    }                                              
+    }
 }
-
-
-@media (min-width:768px) {
-  .modal-dialog {
-      width : 60%;
-      margin-top : 50px;
-      vertical-align: middle !important;
-  }
-  
-  .sign-in .modal-content {
-    border-top: 6px solid #eaab00;
-      margin: 0px;
-      padding: 0px;
-      width: 100%;
-      border-radius: 4px !important;
-  }                                              
-}
-
 
 .sign-in  .mfa-label{
   font-weight: 400 !important;
@@ -141,6 +150,7 @@
   border: 1px solid;
   background: #edf0ea;
   color: #536b2d;
+  padding: 20px;
 }
 
 #mfa-container .sub-container .slf-alert-box:before {
