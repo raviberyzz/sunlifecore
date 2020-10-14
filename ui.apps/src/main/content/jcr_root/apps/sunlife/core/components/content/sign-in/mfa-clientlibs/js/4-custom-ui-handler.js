@@ -78,7 +78,6 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
     const authMethod = (failureData && failureData.source && failureData.source.method) ? failureData.source.method : null;
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
-                alert("User is locked");
                 setAppContentApperance(true);
                 $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
                     $(clientContext.uiContainer).html(data);
@@ -108,5 +107,5 @@ UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, cl
 }
   
 UIHandlerForStepUp.prototype.endActivityIndicator = function(actionContext, clientContext) {
-   // $("#loadingMessageDiv").hide();
+    $("#loadingMessageDiv").hide();
 }

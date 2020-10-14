@@ -28,7 +28,8 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           return true;
       },
       messages: {
-          en: uiContext.getString('slf_verify_code_error_text')
+          en: "That code is incorrect. Try again.",
+          fr: "Ce code n’est pas valide. Réessayez."
       }
     });
   };
@@ -129,6 +130,16 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
                 $(this).val(code.replace(/[^0-9]/g,''));
             }
         });
+
+
+        $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
+          const keycode = (event.keyCode ? event.keyCode : event.which);
+          if (keycode == '13') {
+              self.onSubmitClicked();
+              return false; // prevent submission
+          }
+        });
+
         $("#step-up-input-otp-code-screen-input").change(function(){
             const code = $(this).val();
             if($.trim(code)){
