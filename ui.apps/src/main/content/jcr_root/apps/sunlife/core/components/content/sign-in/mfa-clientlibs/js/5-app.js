@@ -105,7 +105,6 @@ function initJourneyPlayer() {
      // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
       var realm = ""; 
-      var serverUrl=serverUrl;
       var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
       settings.setRealm(realm);
       return settings;
