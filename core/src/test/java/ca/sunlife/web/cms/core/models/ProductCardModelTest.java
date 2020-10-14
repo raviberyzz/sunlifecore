@@ -6,6 +6,10 @@ package ca.sunlife.web.cms.core.models;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -20,10 +24,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
+import com.day.cq.commons.jcr.JcrConstants;
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
@@ -85,6 +94,26 @@ public class ProductCardModelTest{
 	@ InjectMocks
 	private ProductCardModel productCardModel;
 	
+	/** The predicateGroup. */
+	@ Mock
+	PredicateGroup predicateGroup;
+	
+	/** The Query. */
+	@ Mock
+	Query query;
+	
+	/** The SearchResults. */
+	@ Mock
+	SearchResult searchResult;
+	
+	/** The resourceIterator. */
+	@ Mock
+	Iterator <Resource> resourceIterator;
+	
+	/** The resource. */
+	@ Mock	
+	Resource resource;
+	
 	/**
 	 * Sets up mocks.
 	 * 
@@ -133,7 +162,23 @@ public class ProductCardModelTest{
 		when(coreResourceResolver.getResourceResolver()).thenReturn(resolver);
 		when(resolver.adaptTo(Session.class)).thenReturn(session);
 		when(resolver.adaptTo(QueryBuilder.class)).thenReturn(queryBuilder);
-		//when(tagNames).thenReturn(tagNames);
+		Map <String, String> queryParameterMap = new HashMap <>();
+		queryParameterMap.put("path", folderPath);
+	    queryParameterMap.put("type", com.day.cq.dam.api.DamConstants.NT_DAM_ASSET);
+	    queryParameterMap.put("p.limit", Integer.toString(1));
+	    queryParameterMap.put("p.offset", Integer.toString(0));
+	    queryParameterMap.put("1_property", JcrConstants.JCR_CONTENT + "/data/cq:model");
+	    queryParameterMap.put("1_property.value",
+	        "/conf/sunlife-apac/settings/dam/cfm/models/product-card-model");
+	    queryParameterMap.put("tagid.property", JcrConstants.JCR_CONTENT + "/metadata/cq:tags");
+	    queryParameterMap.put("tagid", tagNames[0]);
+	    queryParameterMap.put("orderby",
+	        "@" + JcrConstants.JCR_CONTENT + "/data/master/productCardName");
+	    predicateGroup = PredicateGroup.create(queryParameterMap);	    
+	    when(queryBuilder.createQuery(Mockito.any(), Mockito.any())).thenReturn(query);
+	    when(query.getResult()).thenReturn(searchResult);
+	    when(searchResult.getResources()).thenReturn(resourceIterator);
+	    when(resourceIterator.next()).thenReturn(resource);		
 		productCardModel.init();	
 	}
 	
