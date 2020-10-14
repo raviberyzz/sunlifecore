@@ -51,7 +51,7 @@ public class PermissionCheck extends SlingSafeMethodsServlet {
         LOG.debug("authchecker says OK");
         response.setStatus(SlingHttpServletResponse.SC_OK);
       } catch (java.security.AccessControlException | RepositoryException e) {
-        LOG.debug("authchecker says READ access DENIED! {}", uri);
+        LOG.error("authchecker says READ access DENIED! {}", uri);
         response.setStatus(SlingHttpServletResponse.SC_FORBIDDEN);
       }
     }
