@@ -91,7 +91,7 @@ $(document).ready(function () {
                 	"top": "auto",
 					"border-top": "none"
                 });
-                $('.site-level-notification').last().css("margin-bottom", "0");
+                $('.notification').last().css("margin-bottom", "0");
             }
         }
 
