@@ -105,7 +105,7 @@
                         }
 					}
                 });
-                if (product == "Asuransi_Brilliance_Sejahtera" || procuct == "(Rider)_Sun_Medical_Platinum") {
+                if (product == "Asuransi_Brilliance_Sejahtera" || product == "(Rider)_Sun_Medical_Platinum") {
                     if (!$("#qc_result_2").hasClass('qc_bg_yellow')) {
                         $("#qc_result_2").removeClass('qc_bg_grey');
                         $("#qc_result_2").addClass('qc_bg_yellow');
