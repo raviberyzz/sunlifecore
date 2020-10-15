@@ -1088,16 +1088,21 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (response) => {
         this.state.newsList = response;
-        if (ContextHub.getItem('profile').businessGroup && ContextHub.getItem('profile').businessUnit && ContextHub.getItem('profile').buildingLocation && ContextHub.getItem('profile').jobLevel) {
+        let userProfileArticles = [];
+        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
-          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(" ", "-");
+          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
           var jobLevel = ContextHub.getItem('profile').jobLevel;
           var userProfileFilters = [];
           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
-          this.state.newsList = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && userProfileFilters.every(val => news.tags.includes(val)));
+          this.state.newsList.filter((news) => {
+           news.tags.forEach((tag)=>{
+              if(userProfileFilters.includes(tag)){
+                userProfileArticles.push(news);
+              }
+           })
           })
         }
         let pinnedNewsList = [];
@@ -1145,7 +1150,7 @@ class NewsTiles extends React.Component {
           );
         }
         this.setState({
-          newsList: this.state.newsList,
+          newsList: userProfileArticles,
           filterNewsList: this.state.filterNewsList,
         });
       },
