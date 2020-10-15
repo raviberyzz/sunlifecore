@@ -63,6 +63,9 @@ public class DrugListServiceImpl implements DrugListService {
                 .getServiceResourceResolver(authInfo)){
 
             assetManager = resourceResolver.adaptTo(AssetManager.class);
+            if(assetManager == null) {
+                throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
+            }
 
             HashMap<String, PaForm> paForms = buildPaFormLookUpMap(paFormsPath, assetManager);
 
@@ -78,7 +81,10 @@ public class DrugListServiceImpl implements DrugListService {
             ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
             outputAsset.setRendition(ORIGINAL, stream, new HashMap<>() );
 
-            resourceResolver.adaptTo(Session.class).save();
+            Session session = resourceResolver.adaptTo(Session.class);
+            if (session != null) {
+                session.save();
+            }
 
         } catch (LoginException e) {
             logger.error("Can't create AssetManager", e);
@@ -138,10 +144,10 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private HashMap<String, PaForm> buildPaFormLookUpMap(String paFormsPath, AssetManager assetManager) throws IOException {
+        HashMap<String, PaForm> paForms = new HashMap<>();
         Workbook formsWorkbook = readWorkbook(paFormsPath, assetManager);
         Sheet sheetEn = formsWorkbook.getSheetAt(0);
         Sheet sheetFr = formsWorkbook.getSheetAt(1);
-        HashMap<String, PaForm> paForms = new HashMap<>();
         for(int rowIndex = sheetEn.getFirstRowNum() + 1; rowIndex <= sheetEn.getLastRowNum(); rowIndex++) {
             Row rowEn = sheetEn.getRow(rowIndex);
             Row rowFr = sheetFr.getRow(rowIndex);
