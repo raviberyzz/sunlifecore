@@ -370,7 +370,7 @@ class ArticleComments extends React.Component {
             placeholder="Write your comment"
           />
           <div class="col-xs-12 add-button">
-            <div class="primary-yellow-button" onClick={submitComment}>
+            <div class="primary-yellow-button" onClick={this.submitComment}>
               <a href="javascript:void(0)" role="button" class="CTA-wrapper">
                 <span class="button-class">
                   <span class="icon-class fa fa-user"></span>Add Comment
