@@ -7,5 +7,5 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface DrugListConfig {
 
     @AttributeDefinition(name = "pdfFolder", description = "DAM folder containing the pdfs")
-    String getPdfFolder() default "/content/assets/sunlife/data";
+    String getPdfFolder() default "/content/dam/sunlife/data";
 }
