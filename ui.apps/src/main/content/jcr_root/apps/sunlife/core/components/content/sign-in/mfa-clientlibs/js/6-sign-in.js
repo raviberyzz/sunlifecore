@@ -37,7 +37,7 @@ function onShowSignInModal() {
         var token = results.getToken();
            if (token) {
              console.log("Journey completed successfully ...")
-              onLogout();
+              onLogout(true);
                 }
             })
             .catch(function(error) {

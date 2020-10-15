@@ -5,11 +5,14 @@ package ca.sunlife.web.cms.source.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
+import org.apache.commons.collections.iterators.EmptyIterator;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.LoginException;
@@ -28,7 +31,8 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.day.cq.tagging.TagConstants;
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.source.constants.NewsConstants;
@@ -140,8 +144,22 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()
 								.getResource(o.getPath().concat(JCR_CONTENT_METDATA_MASTER));
 						if (null != contentFragmentMetaData) {
-							ValueMap valueMap = contentFragmentMetaData.getValueMap();
-							jsonObject.put(NewsConstants.TAGS_CONSTANT, valueMap.get(TagConstants.PN_TAGS, String[].class)); // cq:tags
+							final TagManager tagManager = coreResourceResolver.getResourceResolver().adaptTo(TagManager.class);
+							final Tag[] tags = null != tagManager ? tagManager.getTags(contentFragmentMetaData) : null;
+							final ArrayList<String> tagList = new ArrayList<>();
+							if( null != tags ) {
+								Arrays.stream(tags).forEach(tag -> {
+									if(tag.listAllSubTags() instanceof EmptyIterator) {
+										tagList.add(tag.getTagID());
+									} else {
+										tag.listAllSubTags().forEachRemaining(childTagItr -> {
+											tagList.add(childTagItr.getTagID());
+										});
+									}
+									LOGGER.debug("tagList : {}", tagList);
+								});
+							}
+							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
 						}
 						if (null != jsonObject) {
 							jsonArray.put(jsonObject);

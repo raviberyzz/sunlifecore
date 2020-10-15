@@ -599,9 +599,14 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center horizontal-middle-align"
+                                            cq:styleClasses="text-center"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="horizontal-middle-align"
+                                            cq:styleId="1580717171234"
+                                            cq:styleLabel="Horizontal Middle Align"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -2552,9 +2557,14 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center horizontal-middle-align"
+                                            cq:styleClasses="text-center"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="horizontal-middle-align"
+                                            cq:styleId="1580717171234"
+                                            cq:styleLabel="Horizontal Middle Align"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -4499,9 +4509,14 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center horizontal-middle-align"
+                                            cq:styleClasses="text-center"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="horizontal-middle-align"
+                                            cq:styleId="1580717171234"
+                                            cq:styleLabel="Horizontal Middle Align"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -6446,9 +6461,14 @@
                                     jcr:primaryType="nt:unstructured">
                                     <cq:styles jcr:primaryType="nt:unstructured">
                                         <item0
-                                            cq:styleClasses="text-center horizontal-middle-align"
+                                            cq:styleClasses="text-center"
                                             cq:styleId="1580717178860"
                                             cq:styleLabel="Center"
+                                            jcr:primaryType="nt:unstructured"/>
+                                        <item1
+                                            cq:styleClasses="horizontal-middle-align"
+                                            cq:styleId="1580717171234"
+                                            cq:styleLabel="Horizontal Middle Align"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>

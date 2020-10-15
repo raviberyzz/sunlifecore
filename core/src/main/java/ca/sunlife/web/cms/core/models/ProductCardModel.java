@@ -477,8 +477,6 @@ public class ProductCardModel {
 
         items.add(contentFragmentModel);
       }
-    }catch(Exception e) {
-    	LOG.error(" Exception in ProductCard init {}", e);
     }finally {    
       if (null != leakingResourceResolver) {
         // Always close the leaking query builder resource resolver

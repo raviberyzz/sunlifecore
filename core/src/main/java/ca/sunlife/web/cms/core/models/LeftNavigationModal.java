@@ -117,6 +117,9 @@ public class LeftNavigationModal extends NavigationImpl {
   /** The updated list. */
   private List <NavigationItem> updatedList = new ArrayList <>();
 
+  /** The constant for skip nav root. */
+  private final static String PN_SKIP_NAVIGATION_ROOT_CONSTANT = "skipNavigationRoot";
+  
   /**
    * Gets the updated list.
    *
@@ -137,6 +140,25 @@ public class LeftNavigationModal extends NavigationImpl {
   }
 
   /**
+   * Gets the skipNavigationRoot.
+   *
+   * @return the skipNavigationRoot
+   */
+  public boolean isSkipNavigationRoot() {
+		return skipNavigationRoot;
+	}
+
+  /**
+   * Sets the skipNavigationRoot.
+   *
+   * @param skipNavigationRoot
+   *          the skipNavigationRoot
+   */
+	public void setSkipNavigationRoot(boolean skipNavigationRoot) {
+		this.skipNavigationRoot = skipNavigationRoot;
+	}
+
+	/**
    * Inits the model.
    */
   @ PostConstruct
@@ -162,7 +184,7 @@ public class LeftNavigationModal extends NavigationImpl {
         //workaround to maintain the content of Navigation component of users in case they update to the current i.e. the `structureStart` version.
         structureStart = properties.get(PN_STRUCTURE_START, currentStyle.get(PN_STRUCTURE_START, 1));
     } else {
-        skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT, currentStyle.get(PN_SKIP_NAVIGATION_ROOT, true));
+        skipNavigationRoot = properties.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, currentStyle.get(PN_SKIP_NAVIGATION_ROOT_CONSTANT, true));
         if (skipNavigationRoot) {
             structureStart = 1;
         } else {
