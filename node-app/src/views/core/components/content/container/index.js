@@ -218,4 +218,11 @@ $(document).ready(function () {
 			$( this ).closest(':header').attr('class', spanClass);
 		}
 		});
+
+	//fix for legal text line-height issue on span element
+	if($('.legal-text')){
+		$('span.legal-text').each(function(){
+		  $(this).parent().addClass($(this).attr('class'));
+		})
+	}		
 });
