@@ -4,6 +4,7 @@
     background-color: $light-orange-color;
     padding: 24px 16px;
     display: none;
+    width: 100%;
     p {
         margin: 0;
     }
@@ -29,6 +30,12 @@
 			}
 		}
 	}
+}
+
+.aem-AuthorLayer-Edit {
+    .site-level-notification {
+        display:block !important;
+    }
 }
 
 @media (max-width: $mobile-screen-max) {
