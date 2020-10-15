@@ -110,4 +110,29 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		writer.print(responseStr);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.apache.sling.api.servlets.SlingAllMethodsServlet#doDelete(org.apache.sling.api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
+	 */
+	@Override
+	protected void doDelete(SlingHttpServletRequest request, SlingHttpServletResponse response)
+			throws ServletException, IOException {
+		LOGGER.debug("Entry :: doDelete method of UGC Servlet :: ");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		String responseStr = null;
+		try {
+			if (request.getRequestPathInfo().getSelectors().length > 1) {
+				LOGGER.debug("request params :: {}", request.getParameterMap());
+				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
+				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "DELETE",
+						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
+			}
+		} catch (ApplicationException | SystemException e) {
+			LOGGER.error("Error :: doDelete method of UGC Servlet :: {}", e);
+		}
+		writer.print(responseStr);
+		
+	}
+
 }

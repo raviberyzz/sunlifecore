@@ -8,6 +8,11 @@
 }
 
 .news-wrapper{
+    > .row{
+        > div[class^="col-"] {
+            padding:0;
+        }
+    }
     .news-tool-bar {
         .tool {
             padding: 16px 15px;
@@ -103,6 +108,8 @@
                         bottom: 0;
                         padding: 8px 16px;
                         background-color: rgba(0, 0, 0, 0.75);
+                        display:flex;
+                        flex-direction: column;
                         .detail-container{
                             padding: 0;
                             .title{
@@ -128,6 +135,13 @@
                             color: $light-yellow-color;
                             text-transform: uppercase;
                             line-height: 18px;
+                            width: 90%;
+                            max-height: 16px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 1;
+                            -webkit-box-orient: vertical;   
                         }
                       }
                       
@@ -232,4 +246,53 @@
             }
         }
     }
+}
+
+@media (max-width:$tab-screen-max){
+    .news-wrapper{
+        .news-widget{
+            .news-tool-bar{
+                padding: 0 10px;
+            }
+            .news-list-container{
+                .dynamic-news-tile{
+                    .clickable-tile:nth-child(3n+2){
+
+                    } 
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:$mobile-screen-max){
+    .news-wrapper{
+        .news-widget{
+            .news-list-container{
+                .dynamic-news-tile{
+                    .tile {
+                        padding: 0;
+                        .tile-img{
+                            .overlay-container{
+                                width:100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .news-wrapper{
+        .news-widget{
+            .news-list-container{
+                .dynamic-news-tile{
+                    .tile:nth-of-type(3n+2) {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    } 
 }

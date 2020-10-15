@@ -1014,10 +1014,15 @@ class NewsTiles extends React.Component {
     })
     return bg.substring(0, bg.length - 3); */
     var title = "";
-    bgList.filter((id) => {
+    bgList.filter((id, i) => {
       this.state.businessGroupIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
-          title = title + obj[id] + " ";
+          if (i == bgList.length - 1) {
+            title = title + obj[id];
+          } else {
+            title = title + obj[id] + " | ";
+          }
+
           // return obj[id];
         }
       });
@@ -1083,6 +1088,23 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (response) => {
         this.state.newsList = response;
+        let userProfileArticles = [];
+        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
+          var businessGroup = ContextHub.getItem('profile').businessGroup;
+          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+          var businessUnit = ContextHub.getItem('profile').businessUnit;
+          var buildingLocation = ContextHub.getItem('profile').buildingLocation;
+          var jobLevel = ContextHub.getItem('profile').jobLevel;
+          var userProfileFilters = [];
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          this.state.newsList.filter((news) => {
+           news.tags.forEach((tag)=>{
+              if(userProfileFilters.includes(tag)){
+                userProfileArticles.push(news);
+              }
+           })
+          })
+        }
         let pinnedNewsList = [];
         let preferedNewsList = [];
         if (this.state.selectedPreferenceList.length > 0) {
@@ -1128,7 +1150,7 @@ class NewsTiles extends React.Component {
           );
         }
         this.setState({
-          newsList: this.state.newsList,
+          newsList: userProfileArticles,
           filterNewsList: this.state.filterNewsList,
         });
       },
@@ -1145,7 +1167,7 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (response) => {
         this.state.businessGroupList = response["business-group"];
-        this.state.topicsList = response["topics"];
+        this.state.topicsList = response["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
           var obj = {};
           obj[data.id] = data.title;
@@ -1181,24 +1203,24 @@ class NewsTiles extends React.Component {
 
   addSelectedPreference() {
     /* submit analytics starts here */
-    var businessString='',topicString='';
+    var businessString = '', topicString = '';
     //console.log(this.state.selectedPreferenceList);
-    if(this.state.selectedPreferenceList.length>0){
+    if (this.state.selectedPreferenceList.length > 0) {
       console.log('inside');
-      this.state.selectedPreferenceList.forEach((item,index)=>{
-        if(item.indexOf('business-group')>-1){
-          businessString+=item+',';
-        }else if(item.indexOf('topics')){
-          topicString+=item+',';
+      this.state.selectedPreferenceList.forEach((item, index) => {
+        if (item.indexOf('business-group') > -1) {
+          businessString += item + ',';
+        } else if (item.indexOf('topics')) {
+          topicString += item + ',';
         }
       });
     }
-    console.log(businessString[businessString.length-1]);
-    if(businessString[businessString.length-1]==','){
-      businessString=businessString.substring(0,businessString.length-1);
+    console.log(businessString[businessString.length - 1]);
+    if (businessString[businessString.length - 1] == ',') {
+      businessString = businessString.substring(0, businessString.length - 1);
     }
-    if(topicString[topicString.length-1]==','){
-      topicString=topicString.substring(0,topicString.length-1);
+    if (topicString[topicString.length - 1] == ',') {
+      topicString = topicString.substring(0, topicString.length - 1);
     }
     utag.link({
       ev_type: 'other',
@@ -1206,7 +1228,7 @@ class NewsTiles extends React.Component {
       ev_title: 'news-preferences',
       ev_data_one: businessString,
       ev_data_two: topicString
-    }); 
+    });
     /* submit analytics ends here */
     let reqData = {
       articlefilter: this.state.selectedPreferenceList,
@@ -1289,9 +1311,8 @@ class NewsTiles extends React.Component {
                             return <span class="tag">{value}</span>;
                           })}
                         {this.state.selectedPreferenceTags.length > 4 && (
-                          <span class="more-tag">{`${this.props.moreText} - ${
-                            this.state.selectedPreferenceTags.length - 4
-                          }`}</span>
+                          <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
+                            }`}</span>
                         )}
                       </div>
                       <span class="pull-right">
@@ -1441,11 +1462,10 @@ class NewsTiles extends React.Component {
                         .map((key, index) => {
                           return (
                             <div
-                              class={`col-xs-12  tile clickable-tile ${
-                                index == 0
+                              class={`col-xs-12  tile clickable-tile ${index == 0
                                   ? "col-sm-8 col-md-8"
                                   : "col-sm-4 col-md-4"
-                              }`}
+                                }`}
                               onClick={this.newsTileClick.bind(
                                 this,
                                 key,
@@ -1455,7 +1475,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${this.state.filterNewsList[key].thumbnailImage})`,
+                                  backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
                                 }}
                               >
                                 <div class="overlay-container">
