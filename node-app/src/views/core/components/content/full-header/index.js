@@ -59,12 +59,22 @@ $(document).ready(function () {
         //when page is reloaded in the middle
         var height = 0;
         //If site-level-notification exits and mobile header, then stick the site-level-notification to the top and have the mobile header stick following it.
-        if ($('.site-level-notification').length > 0 && $('.site-level-notification').css('display') != "none") {
+        if ($('.site-level-notification').length > 0 ) {
 
             $('.site-level-notification').css({ 'position': 'fixed' });
             $('.site-level-notification').css({ 'z-index': '2' });
-            $('.site-level-notification').css({ 'top': '0' });
-            height = $('.site-level-notification').outerHeight();
+            /*$('.site-level-notification').css({ 'top': '0' });*/
+            var notificationHeight = 0;
+			var notificationTop = 0;
+            $('.notification').each(function(index,value){
+			$(this).css('top', notificationTop);
+			notificationTop += $(this).outerHeight();
+			notificationHeight += $(this).outerHeight();
+                if(index>0){
+                $(this).css('border-top', '4px solid #fff');
+                }
+            });
+            height = notificationHeight;
             $('.slf-header-wrapper .slf-mobile-header-wrapper').css('top', height);
 
             if ($win.width() <= 1024) {
@@ -76,16 +86,20 @@ $(document).ready(function () {
                 $('.slf-header-wrapper .slf-mobile-header-wrapper').css('top', height);
             } else if ($win.width() > 1024) {
                 $('.root > .aem-Grid > *:not(:first-child)').css("top", "0");
-                $('.site-level-notification').css("position", "relative");
+                $('.site-level-notification').css({
+                    "position": "relative",
+                	"top": "auto",
+					"border-top": "none"
+                });
                 $('.site-level-notification').last().css("margin-bottom", "0");
             }
         }
 
         //on scroll
-        $win.scroll(function () {
+        /*$win.scroll(function () {
             if ($('.site-level-notification').length == 0 || $('.site-level-notification').css('display') == "none") { height = 0; }
             $('.slf-header-wrapper .slf-mobile-header-wrapper').css('top', height);
-        });
+        });*/
     };
     if ($(window).width() <= 1024) {
         mobileHeader();

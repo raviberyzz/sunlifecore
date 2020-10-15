@@ -1216,11 +1216,12 @@ function checkCookieExists(){
         var siteNotificationDiv = $(siteNotification).find(".cmp-container");
         var siteNotificationId = siteNotificationDiv.attr('id');
         var cookieExists = readCookie("pageNotification-"+siteNotificationId);
-        $(siteNotification).addClass('notification');
+        
         if(cookieExists){
         	$(siteNotification).css('display', '');
         }
         else {
+			$(siteNotification).addClass('notification');
             $(siteNotification).show();
         }
 
