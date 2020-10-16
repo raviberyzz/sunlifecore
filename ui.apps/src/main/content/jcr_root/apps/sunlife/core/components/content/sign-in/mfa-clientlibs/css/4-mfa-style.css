@@ -81,6 +81,7 @@
 
 .sign-in .modal{
   padding-right: 0px !important;
+  padding-bottom: 150px;
 }
 .sign-in .modal-header{
   border-bottom: 0px;
@@ -89,7 +90,7 @@
   border-top: 0px;
 }
 .sign-in .modal-content {
-border-top: 6px solid #eaab00;
+  border-top: 6px solid #eaab00;
   margin: auto;
   padding: 0px;
   width: 100%;
@@ -105,14 +106,18 @@ border-top: 6px solid #eaab00;
 
 @media (min-width: 1025px) {
   .modal-dialog {
-      margin-top : 50px;
+      margin-top : 96px;
   }
 }
 
 @media (max-width: 767px) and (min-width:320px) {
+  .modal{
+      padding-bottom: 0px;
+  }
   .modal-dialog {
       width : 100%;
       margin: 0px;
+      height: calc(100%);
       vertical-align: middle !important;
   }
   
@@ -122,6 +127,7 @@ border-top: 6px solid #eaab00;
       padding: 0px;
       width: 100%;
       border-radius: 0px;
+      min-height: calc(100%);
     }
 }
 
@@ -175,6 +181,8 @@ border-top: 6px solid #eaab00;
 
 #mfa-container .page-separator{
   margin-top: 20Px;
+  border-bottom: 1px solid #e1e1e1;
+  width: 100%;
 }
 
 input.parsley-error{
@@ -183,4 +191,8 @@ input.parsley-error{
 
 #newCodeSentTxt{
   margin: 0px;
+}
+
+.sign-in .close {
+  font-size: 20px;
 }
