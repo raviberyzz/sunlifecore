@@ -61,7 +61,7 @@ class stockTicker extends React.Component {
     return (
       <div class="stock-ticker-wrapper">
         {this.props.stockTickerType == "yellow" && 
-          <div class="share-performance" data-section="hp investor">
+          <div class="share-performance" data-section={this.props.analyticsId}>
             <div class="stock-row clearfix">
                 <div class="slf-icon-reg circle-gradient-blue stock-icon">
                     <span class={`icon-reg fa ${this.props.iconName} fa-inverse fa-stack-1x`}> </span>

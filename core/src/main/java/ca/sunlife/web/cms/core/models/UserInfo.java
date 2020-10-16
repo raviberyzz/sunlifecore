@@ -3,13 +3,21 @@
  */
 package ca.sunlife.web.cms.core.models;
 
+import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 
 import org.apache.jackrabbit.api.security.user.User;
+import org.apache.jackrabbit.api.security.user.UserManager;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.jcr.base.util.AccessControlUtil;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +32,7 @@ import ca.sunlife.web.cms.core.constants.UserInfoConstants;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = { SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class UserInfo {
 
 	/** The Constant LOG. */
@@ -36,7 +44,12 @@ public class UserInfo {
 
 	/** The user info object. */
 	private String profile;
-
+	
+	/** The user groups. */
+	@ Inject
+	@ Via ("resource")
+	private String[] userGroups;
+	
 	/**
 	 * Gets the profile.
 	 * 
@@ -54,6 +67,25 @@ public class UserInfo {
 	 */
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	/**
+	 * Gets the user groups.
+	 * 
+	 * @return the userGroups
+	 */
+	public String[] getUserGroups() {
+		return null != userGroups ? Arrays.copyOf(userGroups, userGroups.length) : new String [ 0 ];
+	}
+
+	/**
+	 * Sets user groups.
+	 * 
+	 * @param userGroups 
+	 * 					the userGroups to set
+	 */
+	public void setUserGroups(String[] userGroups) {
+		this.userGroups = null != userGroups ? userGroups.clone() : null;
 	}
 
 	/**
@@ -98,6 +130,18 @@ public class UserInfo {
 				String country = user.hasProperty("./profile/country")
 								? user.getProperty("./profile/country")[0].getString()
 								: "NA"; // Language
+				boolean isUserGroupMatched = false;
+								Session session = request.getResourceResolver().adaptTo(Session.class);
+				if( null != session ) {
+					final UserManager userManager = AccessControlUtil.getUserManager(session);
+					for (String userGroup : userGroups) {
+						LOG.debug("user group : {}", userGroup);
+						if( null != userManager.getAuthorizable(userGroup) ) {
+							isUserGroupMatched = true;
+							break;
+						}
+					}
+				}
 				JSONObject userInfoJson = new JSONObject();
 				userInfoJson.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
 				userInfoJson.put(UserInfoConstants.USER_NAME_CONSTANT, familyName + " " + givenName);
@@ -109,6 +153,7 @@ public class UserInfo {
 				userInfoJson.put(UserInfoConstants.LANGAUGE_CONSTANT, language);
 				userInfoJson.put("country", country);
 				userInfoJson.put("home", user.getPath());
+				userInfoJson.put("hasUserGroups", isUserGroupMatched);
 				profile = userInfoJson.toString();
 			} catch (RepositoryException e) {
 				LOG.error("RepositoryException :: UserInfo :: init :: {}", e);

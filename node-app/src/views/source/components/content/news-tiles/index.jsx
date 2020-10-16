@@ -1091,7 +1091,9 @@ class NewsTiles extends React.Component {
         let userProfileArticles = [];
         if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
+         // if(businessGroup!="" && businessGroup!==undefined){
           businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+         // }
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
           var jobLevel = ContextHub.getItem('profile').jobLevel;
@@ -1126,7 +1128,9 @@ class NewsTiles extends React.Component {
               )
             );
           });
-        } else {
+        }/* else if(ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel){
+             preferedNewsList = userProfileArticles;
+        }*/ else {
           preferedNewsList = this.state.newsList;
         }
         pinnedNewsList.sort(function (a, b) {
@@ -1150,7 +1154,7 @@ class NewsTiles extends React.Component {
           );
         }
         this.setState({
-          newsList: userProfileArticles,
+          newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         });
       },
@@ -1476,7 +1480,7 @@ class NewsTiles extends React.Component {
                                 class="tile-img"
                                 style={{
                                   backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
-                                }}
+                                }} 
                               >
                                 <div class="overlay-container">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
