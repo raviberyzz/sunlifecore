@@ -1095,9 +1095,9 @@ class NewsTiles extends React.Component {
         let userProfileArticles = [];
         if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
-         // if(businessGroup!="" && businessGroup!==undefined){
+          if(businessGroup!="" && businessGroup!==undefined){
           businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
-         // }
+          }
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
           var jobLevel = ContextHub.getItem('profile').jobLevel;
@@ -1132,9 +1132,9 @@ class NewsTiles extends React.Component {
               )
             );
           });
-        }/* else if(ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel){
+        } else if(ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel){
              preferedNewsList = userProfileArticles;
-        }*/ else {
+        } else {
           preferedNewsList = this.state.newsList;
         }
         pinnedNewsList.sort(function (a, b) {
