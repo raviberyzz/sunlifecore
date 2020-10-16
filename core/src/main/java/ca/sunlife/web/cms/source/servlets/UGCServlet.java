@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
@@ -74,9 +73,8 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		String responseStr = null;
 		try {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
-				final ResourceResolver resolver = request.getResourceResolver();
-				UserInfo userInfoModel = resolver.adaptTo(UserInfo.class);
-				LOGGER.debug("userInfoModel :: {}", userInfoModel);
+				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
+				LOGGER.debug("userInfoModel New :: {}", userInfoModel);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET",
 						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap(), null);
 			}
@@ -104,8 +102,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		try {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
 				LOGGER.debug("request params :: {}", request.getParameterMap());
-				final ResourceResolver resolver = request.getResourceResolver();
-				UserInfo userInfoModel = resolver.adaptTo(UserInfo.class);
+				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
 						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
 			}
@@ -129,8 +126,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 		try {
 			if (request.getRequestPathInfo().getSelectors().length > 1) {
 				LOGGER.debug("request params :: {}", request.getParameterMap());
-				final ResourceResolver resolver = request.getResourceResolver();
-				UserInfo userInfoModel = resolver.adaptTo(UserInfo.class);
+				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "DELETE",
 						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
 			}
