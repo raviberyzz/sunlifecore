@@ -32,7 +32,7 @@ import ca.sunlife.web.cms.core.constants.UserInfoConstants;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { Resource.class, SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class UserInfo {
 
 	/** The Constant LOG. */
@@ -94,7 +94,7 @@ public class UserInfo {
 	 */
 	@ PostConstruct
 	public void init() {
-		LOG.debug("Entry :: UserInfo :: init");
+		LOG.debug("Entry :: UserInfo :: init request :: {}", request);
 		User user = null != request ? request.getResourceResolver().adaptTo(User.class) : null;
 		if (null != user) {
 			try {
