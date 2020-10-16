@@ -330,8 +330,8 @@ class ArticleComments extends React.Component {
     console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
-      commentId: commentId,
-      reasonText: "testing",
+      commentId: commentId
+     // reasonText: "testing",
     };
     $.ajax({
       type: "DELETE",
