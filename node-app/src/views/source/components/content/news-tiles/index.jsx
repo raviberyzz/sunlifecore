@@ -1480,7 +1480,7 @@ class NewsTiles extends React.Component {
                                 class="tile-img"
                                 style={{
                                   backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
-                                }} data-section={"hp-news-position" + (index+1)}
+                                }} data-section="hp-news-position"
                               >
                                 <div class="overlay-container">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
