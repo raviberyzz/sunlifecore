@@ -51,6 +51,12 @@ var multiPurposeComponentConfig = [
                 label: "Disclaimer Link",
                 value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
                 required: true
+            },
+            {
+                name: "analyticsId",
+                label: "Analytics ID",
+                value: "hp investor",
+                required: true
             }
         ]
     },
