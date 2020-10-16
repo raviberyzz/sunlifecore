@@ -18,7 +18,7 @@ import org.apache.sling.jcr.base.util.AccessControlUtil;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
-import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -39,7 +39,7 @@ public class UserInfo {
 	private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
 
 	/** The sling request. */
-	@ Self
+	@ SlingObject
 	private SlingHttpServletRequest request;
 
 	/** The user info object. */
