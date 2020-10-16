@@ -938,8 +938,8 @@ class NewsTiles extends React.Component {
         this.state.selectedPreferenceList.push(prefer.id);
       }
     });
-    console.log(this.state.businessGroupList.tags);
-    console.log(this.state.topicsList.tags);
+    //console.log(this.state.businessGroupList.tags);
+    //console.log(this.state.topicsList.tags);
     let pinnedNewsList = [];
     let preferedNewsList = [];
     if (this.state.selectedPreferenceList.length > 0) {
