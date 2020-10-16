@@ -18,7 +18,7 @@ import org.apache.sling.jcr.base.util.AccessControlUtil;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -32,14 +32,14 @@ import ca.sunlife.web.cms.core.constants.UserInfoConstants;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = { Resource.class, SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class UserInfo {
 
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
 
 	/** The sling request. */
-	@ SlingObject
+	@ Self
 	private SlingHttpServletRequest request;
 
 	/** The user info object. */
@@ -131,14 +131,16 @@ public class UserInfo {
 								? user.getProperty("./profile/country")[0].getString()
 								: "NA"; // Language
 				boolean isUserGroupMatched = false;
-								Session session = request.getResourceResolver().adaptTo(Session.class);
+				Session session = request.getResourceResolver().adaptTo(Session.class);
 				if( null != session ) {
 					final UserManager userManager = AccessControlUtil.getUserManager(session);
-					for (String userGroup : userGroups) {
-						LOG.debug("user group : {}", userGroup);
-						if( null != userManager.getAuthorizable(userGroup) ) {
-							isUserGroupMatched = true;
-							break;
+					if( null != userGroups ) {
+						for (String userGroup : userGroups) {
+							LOG.debug("user group : {}", userGroup);
+							if( null != userManager.getAuthorizable(userGroup) ) {
+								isUserGroupMatched = true;
+								break;
+							}
 						}
 					}
 				}
