@@ -3,9 +3,7 @@ package ca.sunlife.web.cms.core.services.impl;
 import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
 import ca.sunlife.web.cms.core.services.druglist.DrugListService;
 import ca.sunlife.web.cms.core.services.druglist.PaForm;
-import com.adobe.granite.asset.api.Asset;
-import com.adobe.granite.asset.api.AssetManager;
-import com.adobe.granite.asset.api.Rendition;
+import com.adobe.granite.asset.api.*;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -31,9 +29,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Component(service = DrugListService.class, immediate = true)
 @Designate(ocd = DrugListConfig.class)
@@ -57,12 +55,10 @@ public class DrugListServiceImpl implements DrugListService {
     @Override
     public void updateDrugLists(String paFormsPath, String lookupPath) throws IOException {
 
-        AssetManager assetManager = null;
-
         try (ResourceResolver resourceResolver = resourceResolverFactory
                 .getServiceResourceResolver(authInfo)){
 
-            assetManager = resourceResolver.adaptTo(AssetManager.class);
+            AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
             if(assetManager == null) {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
             }
@@ -75,9 +71,18 @@ public class DrugListServiceImpl implements DrugListService {
             String assetName = pdfFolder + "/druglist.json";
             if (assetManager.assetExists(assetName)) {
                 outputAsset = assetManager.getAsset(assetName);
+
+                AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
+                if (versionManager == null) {
+                    throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
+                }
+
+                versionManager.createVersion(outputAsset.getPath(), UUID.randomUUID().toString());
+
             } else {
                 outputAsset = assetManager.createAsset(assetName);
             }
+
             ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
             outputAsset.setRendition(ORIGINAL, stream, new HashMap<>() );
 

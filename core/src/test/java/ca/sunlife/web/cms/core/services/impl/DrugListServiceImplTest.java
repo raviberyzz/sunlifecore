@@ -3,6 +3,7 @@ package ca.sunlife.web.cms.core.services.impl;
 import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
 import com.adobe.granite.asset.api.Asset;
 import com.adobe.granite.asset.api.AssetManager;
+import com.adobe.granite.asset.api.AssetVersionManager;
 import com.adobe.granite.asset.api.Rendition;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,6 +45,9 @@ public class DrugListServiceImplTest {
     AssetManager assetManager;
 
     @Mock
+    AssetVersionManager assetVersionManager;
+
+    @Mock
     Asset asset;
 
     @Mock
@@ -61,6 +65,7 @@ public class DrugListServiceImplTest {
 
         when(resourceResolverFactory.getServiceResourceResolver(any(Map.class))).thenReturn(resourceResolver);
         when(resourceResolver.adaptTo(AssetManager.class)).thenReturn(assetManager);
+        when(resourceResolver.adaptTo(AssetVersionManager.class)).thenReturn(assetVersionManager);
         when(assetManager.assetExists(anyString())).thenReturn(true);
         when(resourceResolver.adaptTo(Session.class)).thenReturn(mock(Session.class));
 
@@ -117,7 +122,22 @@ public class DrugListServiceImplTest {
         JsonNode form = policy.get(0);
         assertNotNull(form);
         assertEquals("Cancer", form.get("drug-category-en").textValue());
-        System.out.println(form.toString());
+
+        verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
+
+    }
+
+    @Test
+    public void testExistingAssetVersioned() throws Exception {
+
+        Asset outAsset = mock(Asset.class);
+        when(outAsset.getPath()).thenReturn("/content/dam/sunlife/data/druglist.json");
+
+        when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(true);
+        when(assetManager.getAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx");
+
+        verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
     }
 }
