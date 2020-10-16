@@ -241,6 +241,18 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
+	},{
+		"componentName": "Stock Information",
+        "componentDisplayName": "Stock Information",
+        "reactComponentName": "stock-information",
+        "props" : [
+            {
+                name: "stockInformationHeadingText",
+                label: "Heading Text",
+                value: "",
+                required: true
+            }
+		]	
 	}
 	/*,{
 		"componentName": "Article Rating",
