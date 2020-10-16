@@ -146,7 +146,7 @@ public class UserInfo {
 				}
 				JSONObject userInfoJson = new JSONObject();
 				userInfoJson.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
-				userInfoJson.put(UserInfoConstants.USER_NAME_CONSTANT, familyName + " " + givenName);
+				userInfoJson.put(UserInfoConstants.USER_NAME_CONSTANT, givenName + " " + familyName);
 				userInfoJson.put(UserInfoConstants.EMAIL_CONSTANT, email);
 				userInfoJson.put(UserInfoConstants.BUILDING_LOCATION_CONSTANT, buildingLocation);
 				userInfoJson.put(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
