@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OsgiConfig"
+    getAuthToken="qDDBrQXTrqpzFnVQUp7jy3jKK9BVBHHrEyQs45uLf4kVHLzSGSAG7Nj7ZffdghCc"
+    getUGCServiceDomain="http://sit-services.sunlife.com"
+    getUGCServices="[selectAll~/sourceservices/selectAll,addComment~/sourceservices/addComment,deleteComment~/sourceservices/deleteComment,addRating~/sourceservices/addRating,addPreference~/sourceservices/addPreference,retrievePreference~/sourceservices/retrievePreference]"
+    getUGCServiceSite="source"/>
