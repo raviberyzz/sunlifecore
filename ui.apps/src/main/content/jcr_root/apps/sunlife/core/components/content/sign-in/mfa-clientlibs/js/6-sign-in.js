@@ -2,71 +2,59 @@ function onShowSignInModal() {
     toggleSignInModalVisibility(true);
 }
 
-    function onSignInClick() {
+function onSignInClick() {
 
-        console.log("Inside onSignInClick")
-        journeyPlayer.clearAllData();
-        var clientId =$(".mySlfSignIn #USER").val();
-        var password =$(".mySlfSignIn #PASSWORD").val();
-        var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
+    console.log("Inside onSignInClick")
+    journeyPlayer.clearAllData();
+    var clientId =$(".mySlfSignIn #USER").val();
+    var password =$(".mySlfSignIn #PASSWORD").val();
+    var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
-        if (clientId.length === 0 || password.length === 0) {
-            return alert('Please type a valid client id and password to login');
-        }
+    if (clientId.length === 0 || password.length === 0) {
+        return alert('Please type a valid client id and password to login');
+    }
 
-        var clientContext = getClientContext();
-        var loginParameters= getHiddenFormValues();
+    var clientContext = getClientContext();
+    var loginParameters= getHiddenFormValues();
 
-        var additionalParams = {
-            user: clientId,
-            loginParameters : loginParameters
-        };
-        var journeyName = "Consumer_SignIn_FetchPartyID"; 
-        clientContext.password = password;
-        
-        $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
-            journeyEnded(clientContext);
-            onLogout();
-            console.log("Modal closed...");
-        });
-
-        journeyPlayer.setUiHandler(new UIHandlerForStepUp());
-        journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-           
-        journeyEnded(clientContext);
-        var token = results.getToken();
-           if (token) {
-             console.log("Journey completed successfully ...")
-              onLogout(true);
-                }
-            })
-            .catch(function(error) {
-                journeyEnded(clientContext);
-                console.error("Authenticate Error: ".concat(error));   
-                if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-                    //onLogout();
-                }/*else if(error.getErrorCode() == com.ts.mobile.sdk.AuthenticationErrorCode.InvalidDeviceBinding){
-                    journeyPlayer.clearDataForUser(clientId);
-                }*/
-            
-                else{
-                    //sessionTimeout._init();
-                    sessionTimeout.showErrorMessage();
-                }    
-            });
+    var additionalParams = {
+        user: clientId,
+        loginParameters : loginParameters
+    };
+    var journeyName = "Consumer_SignIn_FetchPartyID"; 
+    clientContext.password = password;
     
+    $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
+        journeyEnded(clientContext);
+        onLogout();
+        console.log("Modal closed...");
+    });
+
+    journeyPlayer.setUiHandler(new UIHandlerForStepUp());
+    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+        journeyEnded(clientContext);
+
+        var token = results.getToken();
+        if (token) {
+            console.log("Journey completed successfully ...")
+            onLogout(true);
+        }
+    })
+    .catch(function(error) {
+        journeyEnded(clientContext);
+        console.error("Authenticate Error: " + error);   
+        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+            //onLogout();
+        }
+        else{
+            //sessionTimeout._init();
+            sessionTimeout.showErrorMessage();
+        }    
+    });
 }
 
-/*function clearData(){
-    journeyPlayer.clearAllData().then(function (results) {
-    }).catch(function(error) {
-        console.error("Authenticate Error: ".concat(error));   
-         
-    });
-}*/
-
 function journeyEnded(clientContext) {
-     clearTransmitContainer(clientContext);
+     //clearTransmitContainer(clientContext);
      //setAppContentApperance(false);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
@@ -104,26 +92,24 @@ function getHiddenFormValues(){
     var errorRedirPath =$('input[name="ERRORREDIRPATH"]').val();
      
     var smParameter = {
-
-                    "language": language,
-                    "context": context,
-                    "signInSite": signinsite ,
-                    "screenRes": screenres ,
-                    "platform": plateform ,
-                    "domain": domain,
-                    "saveIdSubmission": saveIdSubmission,
-                    "logonUsingSaveId": logOnUsingSaveId ,
-                    "eSaveId": eSaveId ,
-                    "saveIdIdentifier": saveIdIdentifier ,
-                    "logLang": logLang ,
-                    "errorRedirPath": errorRedirPath ,
-                    "target": target ,
-                    "browsId": browserId ,
-                    "browserVer": browserVer ,
-                    "browseDesc": browserDesc,
-                    "clientIp": clientIP,
-                    "requestType": requestType
-        
+        "language": language,
+        "context": context,
+        "signInSite": signinsite ,
+        "screenRes": screenres ,
+        "platform": plateform ,
+        "domain": domain,
+        "saveIdSubmission": saveIdSubmission,
+        "logonUsingSaveId": logOnUsingSaveId ,
+        "eSaveId": eSaveId ,
+        "saveIdIdentifier": saveIdIdentifier ,
+        "logLang": logLang ,
+        "errorRedirPath": errorRedirPath ,
+        "target": target ,
+        "browsId": browserId ,
+        "browserVer": browserVer ,
+        "browseDesc": browserDesc,
+        "clientIp": clientIP,
+        "requestType": requestType
     }
     return smParameter;
 }

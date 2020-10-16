@@ -26,8 +26,8 @@ function StepUpSelectTargetFormSession(formId, payload) {
       self.submitBlock = function (payload) {
         console.log("Inside submit:");
         if ( $('#mfa-form').parsley().validate()){
-        resolve(com.ts.mobile.sdk.FormInput.createFormInputSubmissionRequest(Object.assign(payload)));
-        self.submitBlock = null; // assign null to prevent using the same promise more then once
+          resolve(com.ts.mobile.sdk.FormInput.createFormInputSubmissionRequest(Object.assign(payload)));
+          self.submitBlock = null; // assign null to prevent using the same promise more then once
         }
       };
     });
