@@ -45,6 +45,14 @@ public interface HeaderModel {
    */
   @ Inject
   String getSigninTitle();
+  
+  /**
+   * Gets the signin icon.
+   *
+   * @return the signin icon
+   */
+  @ Inject
+  String getSigninIcon();
 
   /**
    * Gets the text.
