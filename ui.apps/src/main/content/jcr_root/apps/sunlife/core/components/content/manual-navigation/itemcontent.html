@@ -1,0 +1,3 @@
+<template data-sly-template.itemcontent="${@ navLinksRef='The navigation item'}">
+ <a href ="${navLinksRef.hasChildren == true ? '' :  navLinksRef.linkUrl}">${navLinksRef.linkName @ context='html'}</a>
+</template>

@@ -302,7 +302,7 @@
           </div>
           <ul class="first-level-navigation">
 
-            <sly data-sly-resource="${ @resourceType='sunlife/core/components/content/navigation'}" />
+            <sly data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
 
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
               <a>${regionTitle @context='html'}</a>
