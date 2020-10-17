@@ -1095,12 +1095,19 @@ class NewsTiles extends React.Component {
         let userProfileArticles = [];
         if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
-          if(businessGroup!="" && businessGroup!==undefined){
-          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
-          }
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
           var jobLevel = ContextHub.getItem('profile').jobLevel;
+          if(businessGroup!="" && businessGroup!=undefined){
+          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+          }
+          if(businessUnit!="" && businessUnit!=undefined){
+            businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+          }
+          if(buildingLocation!="" && buildingLocation!=undefined){
+            buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+          }
+          
           var userProfileFilters = [];
           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
           this.state.newsList.filter((news) => {
@@ -1161,6 +1168,7 @@ class NewsTiles extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         });
+        this.retrieveSelectedPreference();
       },
       error: (err) => {
         console.log(err);
