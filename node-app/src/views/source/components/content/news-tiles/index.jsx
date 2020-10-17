@@ -1168,7 +1168,7 @@ class NewsTiles extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         });
-        this.retrieveSelectedPreference();
+        //this.retrieveSelectedPreference();
       },
       error: (err) => {
         console.log(err);
