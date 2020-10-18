@@ -872,7 +872,7 @@ class NewsTiles extends React.Component {
       topiocsNames:[]
     };
 
-    this.getNewsTilesData = this.getNewsTilesData.bind(this);
+    //this.getNewsTilesData = this.getNewsTilesData.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
@@ -891,7 +891,7 @@ class NewsTiles extends React.Component {
   }
 
   componentDidMount() {
-    this.getNewsTilesData();
+   // this.getNewsTilesData();
     this.tagSorting();
   }
 
