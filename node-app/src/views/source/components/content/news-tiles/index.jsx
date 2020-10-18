@@ -1107,7 +1107,9 @@ class NewsTiles extends React.Component {
           if(buildingLocation!="" && buildingLocation!=undefined){
             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
           }
-          
+          // if(jobLevel!="" && jobLevel!=undefined){
+            
+          // }
           var userProfileFilters = [];
           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
           this.state.newsList.filter((news) => {
@@ -1163,17 +1165,19 @@ class NewsTiles extends React.Component {
             pinnedNewsList,
             pinnedNewsList[0].pinArticle - 1
           );
+        } else{
+          this.state.filterNewsList = preferedNewsList;
         }
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
         });
-        //this.retrieveSelectedPreference();
       },
       error: (err) => {
         console.log(err);
       },
     });
+    this.retrieveSelectedPreference();
   }
 
   getPreferenceList() {
