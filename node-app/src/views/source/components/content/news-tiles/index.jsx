@@ -892,6 +892,11 @@ class NewsTiles extends React.Component {
 
   componentDidMount() {
    // this.getNewsTilesData();
+   /**adding all the functions with in component did mount */
+   this.retrieveSelectedPreference();
+   this.getNewsList();
+   this.getPreferenceList();
+    /**adding all the functions with in component did mount */
     this.tagSorting();
   }
 
@@ -1212,8 +1217,8 @@ class NewsTiles extends React.Component {
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
         });
-        this.getNewsList();
-        this.retrieveSelectedPreference();
+        //this.getNewsList();
+        //this.retrieveSelectedPreference();
         //console.log(res);
       },
       error: (err) => {
@@ -1263,6 +1268,7 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (res) => {
         console.log(res);
+        this.retrieveSelectedPreference();
       },
       error: (err) => {
         console.log(err);
@@ -1281,7 +1287,7 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         });
-        this.getPreferenceList();
+        //this.getPreferenceList();
         //console.log(res);
       },
       error: (err) => {
