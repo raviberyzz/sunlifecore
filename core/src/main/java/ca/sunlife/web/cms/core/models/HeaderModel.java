@@ -29,6 +29,14 @@ public interface HeaderModel {
    */
   @ Inject
   String getListFromSignin();
+  
+  /**
+   * Gets the mobilenav experience path.
+   *
+   * @return the mobilenav experience path.
+   */
+  @ Inject
+  Resource getMobilenav();
 
   /**
    * Gets the signin title.
@@ -37,6 +45,14 @@ public interface HeaderModel {
    */
   @ Inject
   String getSigninTitle();
+  
+  /**
+   * Gets the signin icon.
+   *
+   * @return the signin icon
+   */
+  @ Inject
+  String getSigninIcon();
 
   /**
    * Gets the text.

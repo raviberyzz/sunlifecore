@@ -1,0 +1,20 @@
+<sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.ManualListModel"/>
+<sly data-sly-test.empty="${!listModel.links.listChildren}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<div class="lists-wrapper clearfix" data-sly-test="${!empty}"> 
+	<div class="links manual-navigation">
+			<div class="collapse list-div">				
+				  <ul class="list-unstyled first-level-navigation" 
+                  data-sly-use.template="core/wcm/components/commons/v1/templates.html" 
+                   data-sly-use.groupTemplate="item.html"
+                   data-sly-use.itemContentTemplate="itemcontent.html"
+                  data-sly-list.navLinks = "${listModel.links.listChildren}">
+				<li class="${navLinks.hasChildren == true ? 'navigation-menu' : 'subnav'}">
+				<sly data-sly-call="${itemContentTemplate.itemcontent @ navLinksRef = navLinks}"></sly>
+		        <sly data-sly-call="${groupTemplate.group @ navLinks=navLinks}" />
+                  </li>
+				</sly>
+		      </ul>				
+		</div>
+	</div>
+</div>
