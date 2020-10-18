@@ -1177,7 +1177,7 @@ class NewsTiles extends React.Component {
         console.log(err);
       },
     });
-    this.retrieveSelectedPreference();
+    //this.retrieveSelectedPreference();
   }
 
   getPreferenceList() {
@@ -1213,6 +1213,7 @@ class NewsTiles extends React.Component {
           businessGroupIdTitle: this.state.businessGroupIdTitle,
         });
         this.getNewsList();
+        this.retrieveSelectedPreference();
         //console.log(res);
       },
       error: (err) => {
@@ -1289,9 +1290,9 @@ class NewsTiles extends React.Component {
     });
   }
 
-  getNewsTilesData() {
+ /* getNewsTilesData() {
     this.retrieveSelectedPreference();
-  }
+  } */
 
   mergeArray(a, b, i) {
     return a.slice(0, i).concat(b, a.slice(i));
