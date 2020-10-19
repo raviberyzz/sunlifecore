@@ -39,12 +39,36 @@ public interface HeaderModel {
   Resource getMobilenav();
 
   /**
-   * Gets the signin title.
+   * Gets the signin desktop title.
    *
-   * @return the signin title
+   * @return the signin desktop title
    */
   @ Inject
   String getSigninTitle();
+  
+  /**
+   * Gets the signin mobile title.
+   *
+   * @return the signin mobile title
+   */
+  @ Inject
+  String getSigninMobileTitle();
+  
+  /**
+   * Gets the signin button Id.
+   *
+   * @return the signin button Id
+   */
+  @ Inject
+  String getSigninButtonId();
+  
+  /**
+   * Gets the signin mobile title.
+   *
+   * @return the signin mobile title
+   */
+  @ Inject
+  String getSigninAnalyticsId();
   
   /**
    * Gets the signin icon.

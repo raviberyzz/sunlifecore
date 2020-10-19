@@ -393,7 +393,7 @@
                     </search>
                     <signin
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Sign in"
+                        jcr:title="Button"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -410,7 +410,7 @@
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldLabel="Do you need Signin for the site"
+                                                fieldLabel="Do you need button for the site"
                                                 name="./listFromSignin">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -443,18 +443,23 @@
                                                             <signintitle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Signin Button Title"
+                                                                fieldLabel="Desktop Button Title"
                                                                 name="./signinTitle"/>
+                                                             <signinmobiletitle
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Mobile Button Title"
+                                                                name="./signinMobileTitle"/>   
                                                              <signinicon
                                           						jcr:primaryType="nt:unstructured"
                                           						sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                            						fieldDescription="Add Icon"
-                                           						fieldLabel="Signin Icon"
+                                           						fieldLabel="Button Icon"
                                          						name="./signinIcon"/>   
                                                              <signinUrl
                                           						jcr:primaryType="nt:unstructured"
                                             					sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            					fieldLabel="Signin Url"
+                                            					fieldLabel="Button Url"
                                             					name="./signinUrl"
                                             					rootPath="/content"
 																required="{Boolean}true"
@@ -462,7 +467,7 @@
                                             				 <target
                                            					    jcr:primaryType="nt:unstructured"
                                             					sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            					fieldLabel="Target"
+                                            					fieldLabel="Button Target"
                                             					name="./signinTarget">
                                             				 <items jcr:primaryType="nt:unstructured">
                                                     			<link
@@ -474,11 +479,21 @@
                                                     				text="Modal"
                                                     				value="modal"/>    
                                             				</items>
-                                        					</target>   
+                                        					</target> 
+                                        					<signinbuttonid
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Button Id"
+                                                                name="./signinButtonId"/> 
+                                                             <signinanalyticsid
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Analytics Id"
+                                                                name="./signinAnalyticsId"/>    
                                                             <signinstyle
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                fieldLabel="Signin Style"
+                                                                fieldLabel="Button Style"
                                                                 name="./signinStyle">
                                                                 <items jcr:primaryType="nt:unstructured">
                                                                     <nocolor
