@@ -1175,7 +1175,7 @@ $('#signin-widget-modal').on('show.bs.modal', function() {
 
 	// re-initialize these functions
 	//signinbuttonclick();	
-	// this not getting triggered on shown, so call it explicitly, here
+    // this not getting triggered on shown, so call it explicitly, here
 	updateSignInForm('form_signon');
 });
 
