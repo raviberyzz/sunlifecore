@@ -161,7 +161,7 @@ function getBrowserInfo() {
         if (InStr(userAgent, "Windows NT 5.2") >= 0) {
             strOS = "Win2003";
         } else if (InStr(userAgent, "Windows NT 5.0") >= 0) {
-            strOS = "Win3000";
+            strOS = "Win2000";
         } else if ((InStr(userAgent, "Windows XP") >= 0) || (InStr(userAgent, "Windows NT 5.1") >= 0)) {
             strOS = "WinXP";
         } else if ((InStr(userAgent, "Windows 98") >= 0) || (InStr(userAgent, "Win98") >= 0)) {
