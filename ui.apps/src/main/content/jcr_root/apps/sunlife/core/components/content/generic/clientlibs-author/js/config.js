@@ -253,7 +253,38 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
-	}
+    },
+    {
+        "componentName": "Dynamic Form Component",
+        "componentDisplayName": "Dynamic Form",
+        "reactComponentName": "dynamic-form",
+        "props": [
+            {
+                name: "form",
+                label: "Form",
+                value: "true",
+                required: true
+            },
+            {
+                name: "primaryPath",
+                label: "Primary Path",
+                value: "",
+                required: true
+            },
+            {
+                name: "secondaryPath",
+                label: "Secondary Path",
+                value: "",
+                required: false
+            },
+            {
+                name: "apiURL",
+                label: "API URL",
+                value: "",
+                required: true
+            }
+        ]
+    }
 	/*,{
 		"componentName": "Article Rating",
         "componentDisplayName": "Article Rating",
