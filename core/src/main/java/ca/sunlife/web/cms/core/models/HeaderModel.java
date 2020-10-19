@@ -63,9 +63,9 @@ public interface HeaderModel {
   String getSigninButtonId();
   
   /**
-   * Gets the signin mobile title.
+   * Gets the button analytics id.
    *
-   * @return the signin mobile title
+   * @return the button analytics id.
    */
   @ Inject
   String getSigninAnalyticsId();
