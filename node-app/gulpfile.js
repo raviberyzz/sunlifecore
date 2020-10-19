@@ -15,6 +15,11 @@ const gulp = require('gulp'),
  flatten = require('gulp-flatten'),
  gulpif = require('gulp-if'),
  merge = require('merge-stream');
+const babelify = require('babelify');
+const browserify = require('browserify'); 
+const source = require('vinyl-source-stream');
+const glob =require('glob');
+
 //Constants declarations
  const srcViews = 'src/views';
  const sitePaths = {'hk':'apac/hk','id':'apac/id','ph':'apac/ph','vn':'apac/vn'};
@@ -91,14 +96,25 @@ gulp.task('compile-files', (done) => {
       .pipe(gulp.dest('public/'+folder))
   });
   const reactJsTasks = folders.map((folder)=> {
-    return gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
-      .pipe(concat('react.js'))
-      .pipe(babel({
-        presets: ["@babel/preset-env", "@babel/preset-react"]
-      }))
-      //.pipe(concat('react.js'))
-      //.pipe(uglify())
-      .pipe(gulp.dest('public/'+folder+'/js'))
+    if (folder !== 'core') {
+      return  gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
+        .pipe(concat('react.js'))
+        // .pipe(uglify())
+        .pipe(babel({
+          presets: ["@babel/preset-env", "@babel/preset-react"]
+        }))
+        .pipe(gulp.dest('public/' + folder + '/js'));
+
+    }else{
+        var files = glob.sync(srcViews+'/'+folder+'/**/*.jsx');
+        return browserify({ entries: files})
+        .transform("babelify", { presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-proposal-class-properties"] })
+        .bundle()
+        .pipe(source('react.js'))  
+        //.pipe(buffer())
+        //.pipe(uglify())  
+        .pipe(gulp.dest('public/'+folder+'/js')) 
+    }
   });
   return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,reactJsTasks,fontsVendorTask,fontsBaseTask);
 });
@@ -126,16 +142,27 @@ gulp.task('compile-sass',() =>{
 });
 
 gulp.task('compile-react',(done) =>{
-  const folders = getFolders(srcViews);
-  const reactJsTasks = folders.map((folder)=> {
-    return gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
-      .pipe(concat('components.js'))
-      .pipe(babel({
-        presets: ["@babel/preset-env", "@babel/preset-react"]
-      }))
-      .pipe(uglify())
-      .pipe(gulp.dest('dist/'+folder+'/react-components'))
-  });
+  const folders = getFolders(srcViews);  
+  const reactJsTasks =  folders.map((folder)=> {
+    if(folder !== 'core'){
+     return gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
+        .pipe(concat('components.js'))
+        .pipe(babel({
+          presets: ["@babel/preset-env", "@babel/preset-react"]
+        }))
+        //.pipe(uglify())
+        .pipe(gulp.dest('dist/'+folder+'/react-components'))  
+      }else{
+    var files = glob.sync(srcViews+'/'+folder+'/**/*.jsx');
+    return browserify({ entries: files})
+    .transform("babelify", { presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-proposal-class-properties"] })
+    .bundle()
+    .pipe(source('components.js'))  
+    //.pipe(buffer())
+    //.pipe(uglify())  
+    .pipe(gulp.dest('dist/'+folder+'/react-components')) 
+      }
+  });  
   return merge(reactJsTasks);
 });
 
