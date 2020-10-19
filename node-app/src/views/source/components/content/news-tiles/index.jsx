@@ -72,7 +72,7 @@ class NewsTiles extends React.Component {
           selectedPreferenceList: this.state.selectedPreferenceList,
         });
         //this.getPreferenceList();
-        //console.log(res);
+        console.log("Selected Preferences" + " " + res);
       },
       error: (err) => {
         console.log(err);
@@ -156,12 +156,15 @@ class NewsTiles extends React.Component {
             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
           }
           // if(jobLevel!="" && jobLevel!=undefined){
-
           // }
           var userProfileFilters = [];
           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
           this.state.newsList.filter((news) => {
             news.tags.forEach((tag) => {
+              // chekc if incomin tag is for job leve
+             /* if(tag.contains('job-leve')){
+               tag = tag.split('/').last
+              }*/
               if (userProfileFilters.includes(tag)) {
                 userProfileArticles.push(news);
               }
@@ -500,7 +503,7 @@ class NewsTiles extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log(res);
+        console.log("posting selected preferences" + " " + res);
         this.retrieveSelectedPreference();
       },
       error: (err) => {
