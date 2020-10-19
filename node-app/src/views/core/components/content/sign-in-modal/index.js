@@ -7,12 +7,12 @@ $(document).ready(function () {
     if (host === null || host === undefined) {
       host = "https://www.sunnet.sunlife.com";
     }
-    var signinWidget = $("#signin-widget-modal .ca-modal .modal-body").html();
+    var signinWidget = $("#signin-widget-modal .modal-body").html();
     var newString = signinWidget.replace(
       /(https?:\/\/)(.*?)(\/+?)/g,
       host + "$3"
     );
-    $("#signin-widget-modal .ca-modal .modal-body").html(newString);
+    $("#signin-widget-modal .modal-body").html(newString);
     updateSignInForm("form_signon");
     function mfaCssJs() {
       var newTime = new Date().getTime();
@@ -69,8 +69,10 @@ $(document).ready(function () {
       '
       );
     }
-    mfaHtml();
-    mfaCssJs();
+    if(window.location.hostname.indexOf('www')>-1 && window.location.hostname.indexOf('.ca')>-1){
+      mfaHtml();
+      mfaCssJs();
+    }
   });
   function modalWidth() {
     var winWidth = $(window).width();
