@@ -161,7 +161,7 @@ function getBrowserInfo() {
         if (InStr(userAgent, "Windows NT 5.2") >= 0) {
             strOS = "Win2003";
         } else if (InStr(userAgent, "Windows NT 5.0") >= 0) {
-            strOS = "Win2000";
+            strOS = "Win3000";
         } else if ((InStr(userAgent, "Windows XP") >= 0) || (InStr(userAgent, "Windows NT 5.1") >= 0)) {
             strOS = "WinXP";
         } else if ((InStr(userAgent, "Windows 98") >= 0) || (InStr(userAgent, "Win98") >= 0)) {
@@ -246,7 +246,7 @@ function updateSignInFormFromDeeplink(formName,deepLinkName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 5000);
+  }, 2000);
 
    currentSignInForm = formName;
    
@@ -281,7 +281,7 @@ function updateSignInForm(formName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 5000);
+  }, 2000);
 
     
    currentSignInForm = formName;
@@ -380,7 +380,7 @@ function success(data) {
                
 
                 if (currentSignInForm == "form_signon") {
-                    $("#" + currentSignInForm + " #accessIDModal").val("***********");
+                    $("#" + currentSignInForm + " #USER").val("***********");
                 } else if (currentSignInForm == "form_signon_mobile") {
                     $("#" + currentSignInForm + " #accessIDMobile").val("***********");
 
@@ -490,7 +490,8 @@ var isSubmitted;
 isSubmitted = false;
 
 function CheckClicks(lang) {
-    	signInClick();
+        signInClick();
+        console.log('inside widget');
 		if( isSubmitted == true ) {
 				if (lang=="f")
 						alert('Veuillez patienter pendant que nous soumettons vos renseignements.');
