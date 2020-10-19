@@ -246,7 +246,7 @@ function updateSignInFormFromDeeplink(formName,deepLinkName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 2000);
+  }, 3000);
 
    currentSignInForm = formName;
    
@@ -281,7 +281,7 @@ function updateSignInForm(formName) {
       if (!signinDataCallDone) {
           displayContingencyWidget();
       }
-  }, 2000);
+  }, 3000);
 
     
    currentSignInForm = formName;
