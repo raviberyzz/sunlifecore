@@ -504,7 +504,9 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (res) => {
         console.log("posting selected preferences" + " " + res);
-        this.retrieveSelectedPreference();
+        setTimeout(()=>{
+          this.retrieveSelectedPreference()
+        },1000); 
       },
       error: (err) => {
         console.log(err);
