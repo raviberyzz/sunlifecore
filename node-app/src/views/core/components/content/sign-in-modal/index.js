@@ -32,6 +32,44 @@ $(document).ready(function () {
       script.id = "mfa-js";
       $("body").append(script);
     }
+    function mfaHtml() {
+      $(".full-header header").append(
+        '<!-- transmit container starts here -->\
+        <div class="modal slf-modal fix-order" id="mfa_signin_modal"\
+        role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">\
+          <span id="startOfModal" class="sr-only">Start of dialog window</span>\
+          <div class="modal-dialog slf-yellow-modal">\
+              <div class="modal-content">\
+                  <div class="modal-header">\
+                      <h3 id="your_header_id" class="modal-title inline-block"></h3>\
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+                      <span class="fa fa-times"></span></button>\
+                  </div>\
+                  <div class="modal-body" id="termsAndConditionContent">\
+                      <div id="transmitContainer"></div>\
+                      <!-- start modal content -->\
+                  </div>\
+                  <div class="modal-footer"></div>\
+              </div>\
+          </div>\
+          <span id="endOfModal" class="sr-only">End of dialog window</span>\
+        </div>\
+        <!-- Spinner -->\
+        <div id="loadingMessageDiv" style="display:none;" class="loadingmessage" \
+        role="alert" aria-hidden="false" aria-label="Loading" aria-atomic="true">\
+          <div class="white-container">\
+              <div class="loading-container">\
+                  <i class="fa fa-spinner fa-pulse"></i>\
+                  <p><strong>Loading...</strong></p>\
+                  <p>One moment please</p>\
+              </div>\
+          </div>\
+        </div>\
+        <!-- transmit container ends here -->\
+      '
+      );
+    }
+    mfaHtml();
     mfaCssJs();
   });
   function modalWidth() {
