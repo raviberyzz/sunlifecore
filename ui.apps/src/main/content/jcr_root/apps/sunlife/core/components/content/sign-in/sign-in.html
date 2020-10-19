@@ -18,7 +18,6 @@
     <sly data-sly-test.target="${listModel.target}" />
     <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
     <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
-    <sly data-sly-test.mfaDomainPath="${listModel.mfaDomainPath}" />
 
     <!-- transmit container starts here -->
     <div class="modal slf-modal fix-order" id="mfa_signin_modal" role="dialog" tabindex="-1" data-keyboard="false"
@@ -146,5 +145,3 @@
             ${signInBottomText @context ='html'}
         </div>
     </div>
-
-    <script>var serverUrl = '${mfaDomainPath @ context="scriptString"}';</script>
