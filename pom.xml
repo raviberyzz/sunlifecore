@@ -757,6 +757,25 @@
 			</properties>
 		</profile>
 
+		<profile>
+			<id>ac-tool</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>com.day.jcr.vault</groupId>
+							<artifactId>content-package-maven-plugin</artifactId>
+							<configuration>
+								<properties>
+									<installhook.actool.class>biz.netcentric.cq.tools.actool.installhook.AcToolInstallHook</installhook.actool.class>
+								</properties>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
 	</profiles>
 
 
