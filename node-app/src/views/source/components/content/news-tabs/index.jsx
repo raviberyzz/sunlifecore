@@ -21,7 +21,8 @@ class NewsTabs extends React.Component {
       allChecked: false,
       selectedPreferenceList: [],
       filterNewsList: [],
-      selectedPreferenceTags: []
+      selectedPreferenceTags: [],
+      userProfileArticles: []
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -49,6 +50,190 @@ class NewsTabs extends React.Component {
     this.tagSorting();
   }
 
+  // get the selected preferences on page load
+  retrieveSelectedPreference() {
+    $.ajax({
+      type: "GET",
+      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
+      dataType: "json",
+      success: (res) => {
+        this.state.selectedPreferenceList = res;
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        })
+        //this.getPreferenceList();
+        setTimeout(() => {
+          this.tagSorting();
+        }, 1000);
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+ // get all the preference tags for preference pop up modal 
+  getPreferenceList() {
+    $.ajax({
+      type: "GET",
+      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
+      dataType: "json",
+      success: (res) => {
+        this.state.businessGroupList = res["business-group"];
+        this.state.topicsList = res["topic"];
+        this.state.businessGroupList.tags.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.id) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.state.topicsList.tags.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach(prefer => {
+            if (prefer === data.id) {
+              data["isChecked"] = true;
+            }
+          })
+        });
+        this.setState({
+          businessGroupList: this.state.businessGroupList,
+          topicsList: this.state.topicsList,
+        })
+        //this.getTabsNewsList();
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  // get all the news articles on page load 
+  getTabsNewsList() {
+    $.ajax({
+      type: "GET",
+      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
+      dataType: "json",
+      success: (res) => {
+        this.state.newsList = res;
+        this.state.filterNewsList = [];
+        // filter the response articles by user profile data if user profile data exists
+        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
+          var businessGroup = ContextHub.getItem('profile').businessGroup;
+          var businessUnit = ContextHub.getItem('profile').businessUnit;
+          var buildingLocation = ContextHub.getItem('profile').buildingLocation;
+          var jobLevel = ContextHub.getItem('profile').jobLevel;
+          if (businessGroup != "" && businessGroup != undefined) {
+            businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+          }
+          if (businessUnit != "" && businessUnit != undefined) {
+            businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+          }
+          if (buildingLocation != "" && buildingLocation != undefined) {
+            buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+          }
+          // if(jobLevel!="" && jobLevel!=undefined){
+          // }
+          var userProfileFilters = [];
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          this.state.newsList.filter((news) => {
+            news.tags.forEach((tag) => {
+              // chekc if incomin tag is for job level
+              if (tag.includes('job-level')) {
+                tag = tag.split('/')
+                tag = tag[tag.length - 1]
+              }
+              if (userProfileFilters.includes(tag)) {
+                userProfileArticles.push(news);
+              }
+            })
+          })
+        }
+        if (this.state.selectedPreferenceList.length > 0) {
+          this.state.filterNewsList = this.state.newsList.filter((news) => {
+            return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
+          });
+        } else {
+          this.state.filterNewsList = this.state.newsList;
+        }
+        this.state.filterNewsList.sort(function (a, b) {
+          return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
+        });
+        if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
+          //preferedNewsList = userProfileArticles;
+          this.state.filterNewsList = userProfileArticles;
+        } else if (this.state.selectedPreferenceList.length > 0) {
+          //preferedNewsList = this.state.newsList;
+          this.state.filterNewsList = preferedNewsList;
+        }
+        this.setState({
+          newsList: this.state.newsList,
+          filterNewsList: this.state.filterNewsList,
+          userProfileArticles: userProfileArticles
+        })
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  //Function to load the tab headings
+  getTabsHeading() {
+    let curyear = new Date().getFullYear();
+    let i = 3;
+    let yearList = [];
+    while (i > 0) {
+      const yearVal = curyear--;
+      const yearObj = {
+        year: yearVal,
+        data: [],
+        pageData: []
+      };
+      this.state.filterNewsList.forEach((news) => {
+        if (new Date(news.publishedDate).getFullYear() === yearVal) {
+          yearObj.data.push(news);
+        }
+      });
+      yearObj.pageData = this.paginationDataBuild(yearObj.data, 1);
+      yearList.push(yearObj);
+      i--;
+    }
+    this.setState({
+      tabHeading: yearList
+    })
+  }
+  
+  // sort the preferences
+  tagSorting() {
+    let businessTag = [];
+    let topicsTag = [];
+    if (this.state.selectedPreferenceList.length > 0) {
+      this.state.selectedPreferenceList.forEach((element) => {
+        if (element.split("/")[1] == "business-group") {
+          businessTag.push(element);
+        } else if (element.split("/")[1] == "topics") {
+          topicsTag.push(element);
+        }
+      });
+      businessTag.forEach((element, index) => {
+        businessTag[index] = element.split("/")[2];
+      });
+      topicsTag.forEach((element, index) => {
+        topicsTag[index] = element.split("/")[2];
+      });
+      businessTag.sort();
+      topicsTag.sort();
+      this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
+    }
+    this.setState({
+      selectedPreferenceTags: this.state.selectedPreferenceTags
+    });
+  }
   handleAllChecked(event) {
     this.state.businessGroupList.tags.forEach(prefer => {
       if (prefer.title != this.state.defaultBG) {
@@ -150,31 +335,6 @@ class NewsTabs extends React.Component {
     return bg;
   }
 
-  getTabsHeading() {
-    let curyear = new Date().getFullYear();
-    let i = 3;
-    let yearList = [];
-    while (i > 0) {
-      const yearVal = curyear--;
-      const yearObj = {
-        year: yearVal,
-        data: [],
-        pageData: []
-      };
-      this.state.filterNewsList.forEach((news) => {
-        if (new Date(news.publishedDate).getFullYear() === yearVal) {
-          yearObj.data.push(news);
-        }
-      });
-      yearObj.pageData = this.paginationDataBuild(yearObj.data, 1);
-      yearList.push(yearObj);
-      i--;
-    }
-    this.setState({
-      tabHeading: yearList
-    })
-  }
-
   paginationDataBuild(newsList, page) {
     const pageObj = {
       totalPage: Math.ceil(newsList.length / 10),
@@ -208,98 +368,6 @@ class NewsTabs extends React.Component {
     this.setState({
       tabHeading: this.state.tabHeading
     })
-  }
-
-  tagSorting() {
-    let businessTag = [];
-    let topicsTag = [];
-    if (this.state.selectedPreferenceList.length > 0) {
-      this.state.selectedPreferenceList.forEach((element) => {
-        if (element.split("/")[1] == "business-group") {
-          businessTag.push(element);
-        } else if (element.split("/")[1] == "topics") {
-          topicsTag.push(element);
-        }
-      });
-      businessTag.forEach((element, index) => {
-        businessTag[index] = element.split("/")[2];
-      });
-      topicsTag.forEach((element, index) => {
-        topicsTag[index] = element.split("/")[2];
-      });
-      businessTag.sort();
-      topicsTag.sort();
-      this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
-    }
-    this.setState({
-      selectedPreferenceTags: this.state.selectedPreferenceTags
-    });
-  }
-  getTabsNewsList() {
-    $.ajax({
-      type: "GET",
-      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
-      dataType: "json",
-      success: (res) => {
-        this.state.newsList = res;
-        this.state.filterNewsList = [];
-        if (this.state.selectedPreferenceList.length > 0) {
-          this.state.filterNewsList = this.state.newsList.filter((news) => {
-            return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
-          });
-        } else {
-          this.state.filterNewsList = this.state.newsList;
-        }
-        this.state.filterNewsList.sort(function (a, b) {
-          return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-        });
-        this.setState({
-          newsList: this.state.newsList,
-          filterNewsList: this.state.filterNewsList,
-        })
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-  }
-
-  getPreferenceList() {
-    $.ajax({
-      type: "GET",
-      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
-      dataType: "json",
-      success: (res) => {
-        this.state.businessGroupList = res["business-group"];
-        this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
-          data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach(prefer => {
-            if (prefer === data.id) {
-              data["isChecked"] = true;
-            }
-          })
-        });
-        this.state.topicsList.tags.forEach((data) => {
-          data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach(prefer => {
-            if (prefer === data.id) {
-              data["isChecked"] = true;
-            }
-          })
-        });
-        this.setState({
-          businessGroupList: this.state.businessGroupList,
-          topicsList: this.state.topicsList,
-        })
-        //this.getTabsNewsList();
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
   }
 
   addSelectedPreference() {
@@ -348,26 +416,6 @@ class NewsTabs extends React.Component {
       }
     });
   }
-
-  retrieveSelectedPreference() {
-    $.ajax({
-      type: "GET",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
-      dataType: "json",
-      success: (res) => {
-        this.state.selectedPreferenceList = res;
-        this.setState({
-          selectedPreferenceList: this.state.selectedPreferenceList,
-        })
-        this.getPreferenceList();
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-  }
-
 
   render() {
     return (

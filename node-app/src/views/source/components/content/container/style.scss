@@ -4,13 +4,18 @@
 /* for company highlight section --- starts here*/
 .company-highlight-blue-yellow-background {
     @extend .company-highlight-yellow-grey-background;
-    background: url(/content/dam/sunlife/internal/source/images/Events_Rings.png) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+    background: url(/content/dam/sunlife/regional/global-marketing/images/source/Events_Rings.png) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     .cmp-text {
         color: $white-shade;
     }
     .border-right {
         border-right: 2px solid $light-grey-color;
     }
+    .teaser.circular-image{
+        .image-text-wrapper{
+            width:100%;
+        }
+    } 
 }
 
 @media (max-width: $mobile-screen-max) {
