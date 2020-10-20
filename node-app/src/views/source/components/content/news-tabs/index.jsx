@@ -147,7 +147,7 @@ class NewsTabs extends React.Component {
                 tag = tag[tag.length - 1]
               }
               if (userProfileFilters.includes(tag)) {
-                userProfileArticles.push(news);
+                this.state.userProfileArticles.push(news);
               }
             })
           })
@@ -172,7 +172,7 @@ class NewsTabs extends React.Component {
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
-          userProfileArticles: userProfileArticles
+          userProfileArticles: this.state.userProfileArticles
         })
         console.log(res);
       },
