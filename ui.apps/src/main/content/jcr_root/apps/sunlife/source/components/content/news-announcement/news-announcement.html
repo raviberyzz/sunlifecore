@@ -20,13 +20,22 @@
       </section>
       <sly data-sly-test="${newsArticle.checkboxDisplayRating}">
          <!--/* Rating  Goes here */-->
-         <div data-component-render="react" data-component-render-name="article-ratings" data-component-render-props="{'rateStory':'${'rateStory' @ i18n}'}">
+		 <sly data-sly-test.rateStoryVar = '${"rateStory" @ i18n}' />
+         <div data-component-render="react" data-component-render-name="article-ratings" data-component-render-props='{"rateStory":"${rateStoryVar}"}'>
          	<sly data-sly-test="${wcmmode.edit}">Article ratings updated</sly>
          </div>
       </sly>
       <sly data-sly-test="${newsArticle.checkboxDisplayComments}">
          <!--/* Comments Goes here */-->
-         <div data-component-render="react" data-component-render-name="article-comments" data-component-render-props="{'comments':'${'comments' @ i18n}','commentsToolTip':'${'commentsToolTip' @ i18n}','writeComment':'${'writeComment' @ i18n}','addComment':'${'addComment' @ i18n}','deleteComment':'${'deleteComment' @ i18n}','deleteCommentConfirm':'${'deleteCommentConfirm' @ i18n}','cancel':'${'cancel' @ i18n}','delete':'${'delete' @ i18n}'}">
+		 <sly data-sly-test.commentsVar = '${"comments" @ i18n}' />
+		 <sly data-sly-test.commentsToolTipVar = '${"commentsToolTip" @ i18n}' />
+		 <sly data-sly-test.writeCommentVar = '${"writeComment" @ i18n}' />
+		 <sly data-sly-test.addCommentVar = '${"addComment" @ i18n}' />
+		 <sly data-sly-test.deleteCommentVar = '${"deleteComment" @ i18n}' />
+		 <sly data-sly-test.deleteCommentConfirmVar = '${"deleteCommentConfirm" @ i18n}' />
+		 <sly data-sly-test.cancelVar = '${"cancel" @ i18n}' />
+		 <sly data-sly-test.deleteVar = '${"delete" @ i18n}' />
+         <div data-component-render="react" data-component-render-name="article-comments" data-component-render-props='{"comments":"${commentsVar}", "commentsToolTip":"${commentsToolTipVar}", "writeComment":"${writeCommentVar}", "addComment":"${addCommentVar}", "deleteComment":"${deleteCommentVar}", "deleteCommentConfirm":"${deleteCommentConfirmVar}", "cancel":"${cancelVar}", "delete":"${deleteVar}"}'>
          	<sly data-sly-test="${wcmmode.edit}">Article comments updated</sly>
          </div>
       </sly>
