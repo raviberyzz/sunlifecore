@@ -432,7 +432,7 @@ class NewsTiles extends React.Component {
           if (i == bgList.length - 1) {
             title = title + obj[id];
             if (title.charAt(title.length - 2) == '|') {
-              title = title.substring(0, title.length - 1) + title.charAt(title.length - 1).replace("|", "");
+              title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
             }
           } else {
             title = title + obj[id] + " | ";
