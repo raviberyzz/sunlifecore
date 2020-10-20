@@ -320,7 +320,7 @@ class NewsTiles extends React.Component {
           );
         });
       }
-      this.state.filterNewsList = this.mergeArray(pinnedNewsList, pinnedNewsList[0].pinArticle - 1, this.state.userProfileArticles);
+      this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
       this.setState({
         filterNewsList: this.state.filterNewsList
       })
@@ -506,7 +506,7 @@ class NewsTiles extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log("posting selected preferences" + " " + repData);
+        console.log("posting selected preferences" + " " + reqData);
         setTimeout(()=>{
           this.retrieveSelectedPreference()
         },1000); 
