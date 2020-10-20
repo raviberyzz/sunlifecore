@@ -143,7 +143,7 @@ class NewsTabs extends React.Component {
     let bg = "";
     bgList.forEach((data) => {
       let bgarr = data.split('/');
-      if (bgarr[1] == "business_group") {
+      if (bgarr[1] == "business-group") {
         bg += " | " + bgarr[bgarr.length - 1];
       }
     })
@@ -215,7 +215,7 @@ class NewsTabs extends React.Component {
     let topicsTag = [];
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
-        if (element.split("/")[1] == "business_group" && element != "sunlife:source/business_group/canada") {
+        if (element.split("/")[1] == "business-group") {
           businessTag.push(element);
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
@@ -271,8 +271,8 @@ class NewsTabs extends React.Component {
       url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
-        this.state.businessGroupList = res.business_group;
-        this.state.topicsList = res.topics;
+        this.state.businessGroupList = res["business-group"];
+        this.state.topicsList = res["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
