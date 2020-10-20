@@ -352,7 +352,18 @@ class NewsTiles extends React.Component {
     });
     let pinnedNewsList = [];
     let preferedNewsList = [];
+    /* preferences apply analytics starts here */
+    businessTitle=businessTitle.join();
+    topicsTitle=topicsTitle.join();
     console.log(businessTitle,topicsTitle);
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessTitle ,
+      ev_data_two: topicsTitle
+    });    
+    /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
       preferedNewsList = this.state.newsList.filter((news) => {
         return (
