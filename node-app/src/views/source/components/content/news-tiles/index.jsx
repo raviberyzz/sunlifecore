@@ -448,8 +448,7 @@ class NewsTiles extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (
-          element.split("/")[1] == "business-group" &&
-          element != "sunlife:source/business-group/canada"
+          element.split("/")[1] == "business-group" 
         ) {
           businessTag.push(element);
         } else if (element.split("/")[1] == "topics") {
