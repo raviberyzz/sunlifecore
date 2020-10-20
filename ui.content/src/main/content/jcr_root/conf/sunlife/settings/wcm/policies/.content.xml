@@ -2846,6 +2846,28 @@
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item11>
+                                <item12
+                                    cq:styleGroupLabel="Sign In Framework Banner"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="signIn-banner"
+                                            cq:styleId="1603179823470"
+                                            cq:styleLabel="Sign In Banner"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item12>
+                                <item13
+                                    cq:styleGroupLabel="Sign In Banner Height"
+                                    jcr:primaryType="nt:unstructured">
+                                    <cq:styles jcr:primaryType="nt:unstructured">
+                                        <item0
+                                            cq:styleClasses="same-signin-height"
+                                            cq:styleId="1603179912904"
+                                            cq:styleLabel="Same as Sign In Component"
+                                            jcr:primaryType="nt:unstructured"/>
+                                    </cq:styles>
+                                </item13>
                             </cq:styleGroups>
                         </policy_teaser>
                     </teaser>
