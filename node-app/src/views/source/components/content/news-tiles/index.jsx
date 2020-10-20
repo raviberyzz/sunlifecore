@@ -52,11 +52,11 @@ class NewsTiles extends React.Component {
     this.retrieveSelectedPreference();
     this.getPreferenceList();
     this.getNewsList();
-  
+
     /**adding all the functions with in component did mount */
-   // this.tagSorting();
+    // this.tagSorting();
   }
-  
+
   // get the Selected Preferences 
   retrieveSelectedPreference() {
     $.ajax({
@@ -71,9 +71,9 @@ class NewsTiles extends React.Component {
         });
         //this.getPreferenceList();
         console.log("Selected Preferences" + " " + res);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.tagSorting();
-        },1000);
+        }, 1000);
       },
       error: (err) => {
         console.log(err);
@@ -95,13 +95,13 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
-          if(this.state.selectedPreferenceList.length > 0){
-          this.state.selectedPreferenceList.forEach((prefer) => {
-            if (prefer === data.id) {
-              data["isChecked"] = true;
-            }
-          });
-        }
+          if (this.state.selectedPreferenceList.length > 0) {
+            this.state.selectedPreferenceList.forEach((prefer) => {
+              if (prefer === data.id) {
+                data["isChecked"] = true;
+              }
+            });
+          }
         });
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
@@ -164,10 +164,11 @@ class NewsTiles extends React.Component {
           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
           this.state.newsList.filter((news) => {
             news.tags.forEach((tag) => {
-              // chekc if incomin tag is for job leve
-             /* if(tag.contains('job-leve')){
-               tag = tag.split('/').last
-              }*/
+              // chekc if incomin tag is for job level
+              if (tag.includes('job-level')) {
+                tag = tag.split('/')
+                tag = tag[tag.length - 1]
+              }
               if (userProfileFilters.includes(tag)) {
                 userProfileArticles.push(news);
               }
@@ -226,7 +227,7 @@ class NewsTiles extends React.Component {
         if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
           //preferedNewsList = userProfileArticles;
           this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
-        } else if(this.state.selectedPreferenceList.length > 0){
+        } else if (this.state.selectedPreferenceList.length > 0) {
           //preferedNewsList = this.state.newsList;
           this.state.filterNewsList = preferedNewsList;
         }
@@ -241,7 +242,7 @@ class NewsTiles extends React.Component {
       },
     });
   }
- 
+
   handleAllChecked(event) {
     this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.title != this.state.defaultBG) {
@@ -297,7 +298,7 @@ class NewsTiles extends React.Component {
     $("#preferenceModal").modal("hide");
   }
 
-  clearPreferences(){
+  clearPreferences() {
     this.state.selectedPreferenceList = [];
     let pinnedNewsList = [];
     // filter the whole response articles for pinned articles, as pinned articles are global 
@@ -306,46 +307,46 @@ class NewsTiles extends React.Component {
         news.pinArticle
       );
     });
-      // Sort pinned articles 
-      if (pinnedNewsList.length > 0) {
-        pinnedNewsList.sort(function (a, b) {
-          return (
-            a.pinArticle - b.pinArticle ||
-            b.publishedDate - a.publishedDate ||
-            a.heading.localeCompare(b.heading)
-          );
-        });
-      }
-      if (this.state.userProfileArticles.length > 0) {
-        this.state.userProfileArticles.sort(function (a, b) {
-          return (
-            b.publishedDate - a.publishedDate ||
-            a.heading.localeCompare(b.heading)
-          );
-        });
-      }
-      this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
-      this.setState({
-        filterNewsList: this.state.filterNewsList
-      })
+    // Sort pinned articles 
+    if (pinnedNewsList.length > 0) {
+      pinnedNewsList.sort(function (a, b) {
+        return (
+          a.pinArticle - b.pinArticle ||
+          b.publishedDate - a.publishedDate ||
+          a.heading.localeCompare(b.heading)
+        );
+      });
+    }
+    if (this.state.userProfileArticles.length > 0) {
+      this.state.userProfileArticles.sort(function (a, b) {
+        return (
+          b.publishedDate - a.publishedDate ||
+          a.heading.localeCompare(b.heading)
+        );
+      });
+    }
+    this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    this.setState({
+      filterNewsList: this.state.filterNewsList
+    })
   }
 
   filteringNewsList() {
     this.state.selectedPreferenceList = [];
-    let businessTitle=[],topicsTitle=[];
+    let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
-        if(prefer.title!==''){
+        if (prefer.title !== '') {
           businessTitle.push(prefer.title);
         }
-        
+
       }
     });
     this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
-        if(prefer.title!==''){
+        if (prefer.title !== '') {
           topicsTitle.push(prefer.title);
         }
       }
@@ -353,16 +354,16 @@ class NewsTiles extends React.Component {
     let pinnedNewsList = [];
     let preferedNewsList = [];
     /* preferences apply analytics starts here */
-    businessTitle=businessTitle.join();
-    topicsTitle=topicsTitle.join();
-    console.log(businessTitle,topicsTitle);
+    businessTitle = businessTitle.join();
+    topicsTitle = topicsTitle.join();
+    console.log(businessTitle, topicsTitle);
     utag.link({
       ev_type: 'other',
       ev_action: 'clk',
       ev_title: 'news-preferences',
-      ev_data_one: businessTitle ,
+      ev_data_one: businessTitle,
       ev_data_two: topicsTitle
-    });    
+    });
     /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
       preferedNewsList = this.state.newsList.filter((news) => {
@@ -430,8 +431,8 @@ class NewsTiles extends React.Component {
         if (Object.keys(obj) == id) {
           if (i == bgList.length - 1) {
             title = title + obj[id];
-            if(title.charAt(title.length-1) == '|'){
-              title = title.substring(0,title.length-1) + title.charAt(title.length-1).replace("|","");  
+            if (title.charAt(title.length - 1) == '|') {
+              title = title.substring(0, title.length - 1) + title.charAt(title.length - 1).replace("|", "");
             }
           } else {
             title = title + obj[id] + " | ";
@@ -472,7 +473,7 @@ class NewsTiles extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (
-          element.split("/")[1] == "business-group" 
+          element.split("/")[1] == "business-group"
         ) {
           businessTag.push(element);
         } else if (element.split("/")[1] == "topics") {
@@ -533,9 +534,9 @@ class NewsTiles extends React.Component {
       dataType: "json",
       success: (res) => {
         console.log("posting selected preferences" + " " + reqData);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.retrieveSelectedPreference()
-        },1000); 
+        }, 1000);
       },
       error: (err) => {
         console.log(err);
