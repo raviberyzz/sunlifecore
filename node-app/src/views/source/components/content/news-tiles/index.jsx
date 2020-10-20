@@ -56,7 +56,7 @@ class NewsTiles extends React.Component {
     this.getNewsList();
   
     /**adding all the functions with in component did mount */
-    this.tagSorting();
+   // this.tagSorting();
   }
   
   // get the Selected Preferences 
@@ -73,6 +73,9 @@ class NewsTiles extends React.Component {
         });
         //this.getPreferenceList();
         console.log("Selected Preferences" + " " + res);
+        setTimeout(()=>{
+          this.tagSorting();
+        },1000);
       },
       error: (err) => {
         console.log(err);
