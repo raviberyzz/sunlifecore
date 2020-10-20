@@ -6,8 +6,8 @@ function onSignInClick() {
 
     console.log("Inside onSignInClick")
     journeyPlayer.clearAllData();
-    var clientId =$(".mySlfSignIn #USER").val();
-    var password =$(".mySlfSignIn #PASSWORD").val();
+    var clientId =$("#USER").val();
+    var password =$("#PASSWORD").val();
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
     if (clientId.length === 0 || password.length === 0) {
