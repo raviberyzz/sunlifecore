@@ -2,9 +2,9 @@
 <sly data-sly-test.notEmpty="${newsArticle.fragmentPath}">
    <div class="news-article-wrapper">
       <div>
-         <h3 data-sly-test="${newsArticle.articleData.heading}">
+         <h1 data-sly-test="${newsArticle.articleData.heading}" class="heading-2">
             ${newsArticle.articleData.heading}
-         </h3>
+         </h1>
 		 <div data-sly-test="${newsArticle.checkboxDisplayTags && newsArticle.tagList}" class="article-tags">
             <sly data-sly-list="${newsArticle.tagList}">
                <span class="tag">${item}</span>
