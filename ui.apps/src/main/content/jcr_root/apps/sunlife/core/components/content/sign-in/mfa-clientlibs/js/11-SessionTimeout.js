@@ -21,14 +21,14 @@ function SessionTimeout(){
         
         const localizationContent = {
             en: {
-                title: 'Session has expired to protect your information',
-                message: 'We noticed there hasn’t been any activity in your session for 18 minutes, so we ended the session for you.',
-                button: 'Sign in again'
+                title: 'Oops, something went wrong',
+                message: 'We’re sorry. There was a problem on our end. We apologize for the inconvenience.',
+                button: 'Proceed to sign-in'
             },
             fr:{
-                title: 'Nous avons mis fin à la session pour protéger vos données.',
-                message: 'Nous avons remarqué qu’il n’y a plus d’activité sur cette page depuis 18 minutes. Nous avons donc mis fin à cette session pour vous.',
-                button: 'Ouvrir une nouvelle session'
+                title: 'Un problème s’est produit.',
+                message: 'Nous sommes désolés. Nous avons un problème. Nous nous excusons pour ce contretemps.',
+                button: 'Ouvrir une session'
             }
         }
 
@@ -43,7 +43,7 @@ function SessionTimeout(){
               errorMessage += '</div>';
               errorMessage += '</div>';
         
-        $("#mfa-container").html(errorMessage);
+        $("#transmitContainer").html(errorMessage);
         $("#mfaErrorTitle").html(localizationContent[lang].title);
         $("#mfaErrorMessage").html(localizationContent[lang].message);
         $("#mfaSignInBtn").html(localizationContent[lang].button);

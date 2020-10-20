@@ -6,8 +6,8 @@ function onSignInClick() {
 
     console.log("Inside onSignInClick")
     journeyPlayer.clearAllData();
-    var clientId =$("#USER").val();
-    var password =$("#PASSWORD").val();
+    var clientId =$(".mySlfSignIn #USER").val();
+    var password =$(".mySlfSignIn #PASSWORD").val();
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
     if (clientId.length === 0 || password.length === 0) {
@@ -41,6 +41,7 @@ function onSignInClick() {
         }
     })
     .catch(function(error) {
+        hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: " + error);   
         if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
