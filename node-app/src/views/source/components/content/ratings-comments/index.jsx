@@ -358,7 +358,7 @@ class ArticleComments extends React.Component {
             type="text"
             class="col-xs-12 textarea"
             id="commentText"
-            placeholder="{this.props.writeComment}"
+            placeholder={this.props.writeComment}
           />
           <div class="col-xs-12 add-button">
             <div class="primary-yellow-button" onClick={this.submitComment}>
@@ -400,7 +400,7 @@ class ArticleComments extends React.Component {
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                            {this.props.delete}Delete
+                            {this.props.delete}
                           </a>
                         </div>
                       </div>
