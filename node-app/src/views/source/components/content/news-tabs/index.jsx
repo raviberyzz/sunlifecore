@@ -120,6 +120,7 @@ class NewsTabs extends React.Component {
       success: (res) => {
         this.state.newsList = res;
         this.state.filterNewsList = [];
+        let preferedNewsList = [];
         // filter the response articles by user profile data if user profile data exists
         if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
@@ -151,6 +152,18 @@ class NewsTabs extends React.Component {
               }
             })
           })
+        }
+        // filter the response articles if there are any selected preferences
+        if (this.state.selectedPreferenceList.length > 0) {
+          preferedNewsList = this.state.newsList.filter((news) => {
+            return (
+              !news.pinArticle &&
+              news.tags &&
+              news.tags.some(
+                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+              )
+            );
+          });
         }
         if (this.state.selectedPreferenceList.length > 0) {
           this.state.filterNewsList = this.state.newsList.filter((news) => {
