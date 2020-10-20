@@ -97,11 +97,13 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if(this.state.selectedPreferenceList.length > 0){
           this.state.selectedPreferenceList.forEach((prefer) => {
             if (prefer === data.id) {
               data["isChecked"] = true;
             }
           });
+        }
         });
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
