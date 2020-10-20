@@ -284,6 +284,9 @@ class NewsTiles extends React.Component {
       topicsList: this.state.topicsList,
     });
     //this.filteringNewsList();
+    this.setState({
+      selectedPreferenceList: []
+    });
     this.addSelectedPreference();
     this.clearPreferences();
     this.tagSorting();
@@ -503,7 +506,7 @@ class NewsTiles extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log("posting selected preferences" + " " + res);
+        console.log("posting selected preferences" + " " + repData);
         setTimeout(()=>{
           this.retrieveSelectedPreference()
         },1000); 
