@@ -1,7 +1,11 @@
 var journeyPlayer = xmsdk.XmSdk(); // the Transmit SDK object
 var XmUIHandler = new xmui.XmUIHandler(); // the default UI Handler
 var sessionTimeout = new SessionTimeout();
-var waitLoaderStay = false;
+var waitLoader = {
+  keepWaitLoader: false,
+  noWaitLoader: false,
+};
+
 var useMarcServer = true;
 var elementsIds = {
   transmitContainer: "transmitContainer"
@@ -64,10 +68,8 @@ function initJourneyPlayer() {
 } 
 
   function getTransmitConnectionSettings() {
-     //var serverUrl = "https://mfa-dev.sunlifecorp.com";
-     // var serverUrl = "https://mfa-uat.sunlifecorp.com";
-      //var serverUrl =  "https://sit-www.sunnet.sunlife.com/mfaservices";
-
+     //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
       var realm = ""; 
       var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
@@ -108,7 +110,7 @@ function initJourneyPlayer() {
 
   function hideSpinner(){
     $("#loadingMessageDiv").hide();
-    waitLoaderStay = false;
+    waitLoader.keepWaitLoader = false;
   }
 
   function CloseModalPopup(){
