@@ -40,6 +40,6 @@ $(document).ready(function () {
             }
         });
     }
-    setTimeout(optionClick,1000);
+    setInterval(optionClick,1000);
     /* delete and edit popup ends here */
 });

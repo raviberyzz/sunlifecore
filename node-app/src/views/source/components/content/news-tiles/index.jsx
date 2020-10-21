@@ -495,32 +495,6 @@ class NewsTiles extends React.Component {
   }
 
   addSelectedPreference() {
-    /* submit analytics starts here */
-    var businessString = '', topicString = '';
-    //console.log(this.state.selectedPreferenceList);
-    if (this.state.selectedPreferenceList.length > 0) {
-      this.state.selectedPreferenceList.forEach((item, index) => {
-        if (item.indexOf('business-group') > -1) {
-          businessString += item + ',';
-        } else if (item.indexOf('topics')) {
-          topicString += item + ',';
-        }
-      });
-    }
-    if (businessString[businessString.length - 1] == ',') {
-      businessString = businessString.substring(0, businessString.length - 1);
-    }
-    if (topicString[topicString.length - 1] == ',') {
-      topicString = topicString.substring(0, topicString.length - 1);
-    }
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'news-preferences',
-      ev_data_one: businessString,
-      ev_data_two: topicString
-    });
-    /* submit analytics ends here */
     let reqData = {
       articlefilter: this.state.selectedPreferenceList,
     };

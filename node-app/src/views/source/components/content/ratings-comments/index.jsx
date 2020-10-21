@@ -400,7 +400,7 @@ class ArticleComments extends React.Component {
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                            {this.props.delete}
+                            Delete 
                           </a>
                         </div>
                       </div>
@@ -418,7 +418,7 @@ class ArticleComments extends React.Component {
                       <div class="modal-header">
                         <div class="modal-title">
                           <h3 class="modal-heading" tabindex="0">
-                          {this.props.deleteComment}
+                          Delete Comment{/* {this.props.deleteComment} */}
                           </h3>
                           <button
                             type="button"
@@ -430,7 +430,8 @@ class ArticleComments extends React.Component {
                         </div>
                       </div>
                       <div class="modal-body" tabindex="0">
-                      {this.props.deleteCommentConfirm}
+                      {/* {this.props.deleteCommentConfirm} */}
+                      Are you sure you want to delete the the comment?
                       </div>
                       <div class="modal-footer">
                         <button
@@ -449,7 +450,7 @@ class ArticleComments extends React.Component {
                           )}
                           data-dismiss="modal"
                         >
-                          {this.props.delete}
+                          Delete{/* {this.props.delete} */}
                         </button>
                       </div>
                     </div>

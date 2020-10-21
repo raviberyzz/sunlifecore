@@ -284,17 +284,36 @@ class NewsTabs extends React.Component {
 
   filteringNewsTabList() {
     this.state.selectedPreferenceList = [];
+    let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          businessTitle.push(prefer.title);
+        }
       }
     })
     this.state.topicsList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          topicsTitle.push(prefer.title);
+        }
       }
     })
     this.state.filterNewsList = [];
+    /* preferences apply analytics starts here */
+    businessTitle = businessTitle.join();
+    topicsTitle = topicsTitle.join();
+    console.log(businessTitle, topicsTitle);
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessTitle,
+      ev_data_two: topicsTitle
+    });
+    /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.filterNewsList = this.state.newsList.filter((news) => {
         return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
@@ -390,34 +409,6 @@ class NewsTabs extends React.Component {
   }
 
   addSelectedPreference() {
-    /* submit analytics starts here */
-    var businessString='',topicString='';
-    //console.log(this.state.selectedPreferenceList);
-    if(this.state.selectedPreferenceList.length>0){
-      console.log('inside');
-      this.state.selectedPreferenceList.forEach((item,index)=>{
-        if(item.indexOf('business-group')>-1){
-          businessString+=item+',';
-        }else if(item.indexOf('topics')){
-          topicString+=item+',';
-        }
-      });
-    }
-    console.log(businessString[businessString.length-1]);
-    if(businessString[businessString.length-1]==','){
-      businessString=businessString.substring(0,businessString.length-1);
-    }
-    if(topicString[topicString.length-1]==','){
-      topicString=topicString.substring(0,topicString.length-1);
-    }
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'news-preferences',
-      ev_data_one: businessString,
-      ev_data_two: topicString
-    }); 
-    /* submit analytics ends here */
     let reqData = {
       "articlefilter": this.state.selectedPreferenceList
     };
