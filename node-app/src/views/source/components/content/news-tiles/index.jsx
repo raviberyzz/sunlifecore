@@ -430,17 +430,17 @@ class NewsTiles extends React.Component {
       this.state.businessGroupIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
           if (i == bgList.length - 1) {
-            title = title + obj[id];
+            title = title + obj[id]; 
           } else {
             title = title + obj[id] + " | ";
           }
           // return obj[id];
         }
       });
-      if (title.charAt(title.length - 2) == '|') {
-        title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
-      }
     });
+    if (title.charAt(title.length - 2) == '|') {
+      title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
+    }
     return title;
   }
 
@@ -474,7 +474,12 @@ class NewsTiles extends React.Component {
         if (
           element.split("/")[1] == "business-group"
         ) {
-          businessTag.push(element);
+          this.state.businessGroupIdTitle.forEach((obj)=>{
+            if(Object.keys(obj)[0] == element){
+              businessTag.push(obj[element.toString()]);
+            }
+          })
+          
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
         }
