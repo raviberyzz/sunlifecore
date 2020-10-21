@@ -62,7 +62,7 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "GET",
       url:
-        `${this.props.retrieveSelectedPreferenceUrl}.ugc.retrievePreference.json`,
+        `${this.props.resourcePath}.ugc.retrievePreference.json`,
       dataType: "json",
       success: (res) => {
         this.state.selectedPreferenceList = res;
@@ -130,7 +130,7 @@ class NewsTiles extends React.Component {
   getNewsList() {
     $.ajax({
       type: "GET",
-      url: `${this.props.getNewsUrl}.news.${this.state.pageLang}.json`,
+      url: `${this.props.resourcePath}.news.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
         this.state.newsList = response;
@@ -501,7 +501,7 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "POST",
       url:
-        `${this.props.addSelectedPreference}.ugc.addPreference.json`,
+        `${this.props.resourcePath}.ugc.addPreference.json`,
       contentType: "application/json",
       data: JSON.stringify(reqData),
       dataType: "json",

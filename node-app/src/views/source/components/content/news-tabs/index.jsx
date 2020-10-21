@@ -57,7 +57,7 @@ class NewsTabs extends React.Component {
   retrieveSelectedPreference() {
     $.ajax({
       type: "GET",
-      url: `${this.props.retrieveSelectedPreferenceUrl}.ugc.retrievePreference.json`,
+      url: `${this.props.resourcePath}.ugc.retrievePreference.json`,
       dataType: "json",
       success: (res) => {
         this.state.selectedPreferenceList = res;
@@ -118,7 +118,7 @@ class NewsTabs extends React.Component {
   getTabsNewsList() {
     $.ajax({
       type: "GET",
-      url: `${this.props.getNewsTabListUrl}.news.${this.state.pageLang}.json`,
+      url: `${this.props.resourcePath}.news.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
         this.state.newsList = res;
@@ -414,7 +414,7 @@ class NewsTabs extends React.Component {
     };
     $.ajax({
       type: "POST",
-      url: `${this.props.addSelectedPreference}.ugc.addPreference.json`,
+      url: `${this.props.resourcePath}.ugc.addPreference.json`,
       contentType: 'application/json',
       data: JSON.stringify(reqData),
       dataType: "json",
