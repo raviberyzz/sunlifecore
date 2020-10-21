@@ -22,855 +22,12 @@ class NewsTiles extends React.Component {
       selectedPreferenceList: [],
       businessGroupIdTitle: [],
       newsList: [],
-      /*newsList: [
-        {
-          "publishedDate": 1584037800000,
-          "heading": "How to raise a Healthy family",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1584037800000,
-          "heading": "Insights from the DHS - A Customer Journey Insights from the DHS - A Customer Journey",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/business-group/es", "sunlife:source/business-group/corporate", "sunlife:source/business-group/us", "sunlife:source/business-group/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "Inclusive work spaces",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "Dean's Message",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "pinArticle": "1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/digital-enterprise"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "5 ways to avoid burnout",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "pinArticle": "1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "How to talk to your boss about your mental health",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/topics/general-HR"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "What you need to know before you see a therapist",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/innovation_220x220.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/business-group/corporate", "sunlife:source/business-group/es", "sunlife:source/business-group/slc", "sunlife:source/business-group/us", "sunlife:source/topics/diversity-&-inclusion"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 1",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/about-us_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/business-group/uk", "sunlife:source/topics/innovation"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 2",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/awards-recognition_220x220.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/business-group/philippines", "sunlife:source/topics/general-HR", "sunlife:source/topics/my-learning"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 3",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/leadership_220x220.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/business-group/canada", "sunlife:source/business-group/corporate", "sunlife:source/topics/my-benefits-and-wellness", "sunlife:source/topics/company-performance", "sunlife:source/topics/business-continuity"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        }, {
-          "publishedDate": 1577817000000,
-          "heading": "News article 4",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/leadership_220x220.jpg",
-          "tags": ["sunlife:source/business-group/canada", "sunlife:source/business-group/enterprise-services", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 5",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/istock-84413525-awards-and-recognition-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/business-group/hong-kong", "sunlife:source/topics/digital-enterprise", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 6",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/business-group/uk", "sunlife:source/topics/employee-engagement"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 7",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Investors/M19-016-InvestorDay_220x220.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/my-benefits-and-wellness"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 8",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/topics/philanthropy-sponsorship"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 9",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/business-group/corporate", "sunlife:source/topics/sustainability"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 10",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/business-critical", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 11",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/business-group/es", "sunlife:source/business-group/corporate", "sunlife:source/business-group/us", "sunlife:source/business-group/slc", "sunlife:source/topics/my-pay", "sunlife:source/topics/my-career", "sunlife:source/topics/my-hr", "sunlife:source/topics/recognition"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 12",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 13",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/digital-enterprise"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 14",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 15",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/general-HR"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 16",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/innovation_220x220.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/business-group/es", "sunlife:source/business-group/slc", "sunlife:source/business-group/us", "sunlife:source/topics/diversity-&-inclusion"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 17",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 18",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 19",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/corporate", "sunlife:source/topics/general-HR"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 20",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 21",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/my-career"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 22",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 23",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 24",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 25",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/my-career"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 26",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_girlblueshirtsmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/enterprise-services", "sunlife:source/topics/my-benefits-and-wellness"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 27",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 28",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 29",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 30",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 31",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 32",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 33",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 34",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_slfteamneworleans_275w_176h.jpg",
-          "tags": ["sunlife:source/business-group/hong-kong", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 35",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/digital-enterprise"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 36",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 37",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 38",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 39",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 40",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 41",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 42",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_3adultsinsuitssmiling_140w_114h.jpg",
-          "tags": ["sunlife:source/business-group/indonesia", "sunlife:source/topics/digital-enterprise"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 43",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 44",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 45",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 46",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 47",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 48",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 49",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1514917800000,
-          "heading": "News article 50",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_statuepraying_199w_193h.jpg",
-          "tags": ["sunlife:source/business-group/international", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 51",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/my-career", "sunlife:source/topics/recognition"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 52",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 53",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 54",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 55",
-          "pinArticle": "2",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/my-career", "sunlife:source/topics/recognition"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 56",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 57",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 58",
-          "pagePath": "/content/sunlife/internal/source/en/news/article2",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/global/images/photos/photo_towerspark_198w_193h.jpg",
-          "tags": ["sunlife:source/business-group/philippines", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 59",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/sustainability"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 60",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1577817000000,
-          "heading": "News article 61",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 62",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/sustainability"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 63",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 64",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 65",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 66",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 67",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/sustainability"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 68",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/slc-management", "sunlife:source/topics/sustainability"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 69",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 70",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 71",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/business-critical"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583778600000,
-          "heading": "News article 72",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 73",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 74",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 75",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 76",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/About%20us/Awards%20and%20recognition/getty-463028747-awards-and-recognition-rectangle-372x287.jpg",
-          "tags": ["sunlife:source/business-group/asia", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 77",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 78",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1546281000000,
-          "heading": "News article 79",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 80",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/philanthropy-sponsorship"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 81",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 82",
-          "pagePath": "/content/sunlife/internal/source/en/news/article3",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/diversity-inclusion_220x220.jpg",
-          "tags": ["sunlife:source/business-group/us", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 83",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/employee-engagement"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 84",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 85",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 86",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/company-performance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 87",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 88",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 89",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/employee-engagement"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 90",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/Newsroom/istock-76472107-newsroom-og-1200x628.jpg",
-          "tags": ["sunlife:source/business-group/uk", "sunlife:source/topics/organization-announcements"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 91",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/client-stories"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 92",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/business-continuity"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 93",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/corporate-real-estate"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 94",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/compliance"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 95",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/business-continuity"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 96",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/business-continuity"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 97",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/business-continuity"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        },
-        {
-          "publishedDate": 1583346600000,
-          "heading": "News article 98",
-          "pagePath": "/content/sunlife/internal/source/en/news/article1",
-          "thumbnailImage": "https://cmsdev-auth.ca.sunlife/content/dam/sunlife/legacy/assets/com/Global/In%20the%20community/sustainability_220x220.jpg",
-          "tags": ["sunlife:source/business-group/vietnam", "sunlife:source/topics/covid-19"],
-          "summary": "A recent Sun Life survey indicates that nearly half of all Canadians (45%) feel less financially secure since COVID-19 began. The survey also highlights the interconnectedness of health and..."
-        }
-      ], */
       filterNewsList: [],
       selectedPreferenceTags: [],
+      userProfileArticles: []
     };
 
-    this.getNewsTilesData = this.getNewsTilesData.bind(this);
+    //this.getNewsTilesData = this.getNewsTilesData.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.bgBinding = this.bgBinding.bind(this);
@@ -886,11 +43,204 @@ class NewsTiles extends React.Component {
     );
     this.mergeArray = this.mergeArray.bind(this);
     this.newsTileClick = this.newsTileClick.bind(this);
+    this.clearPreferences = this.clearPreferences.bind(this);
   }
 
   componentDidMount() {
-    this.getNewsTilesData();
-    this.tagSorting();
+    // this.getNewsTilesData();
+    /**adding all the functions with in component did mount */
+    this.retrieveSelectedPreference();
+    this.getPreferenceList();
+    this.getNewsList();
+
+    /**adding all the functions with in component did mount */
+    // this.tagSorting();
+  }
+
+  // get the Selected Preferences 
+  retrieveSelectedPreference() {
+    $.ajax({
+      type: "GET",
+      url:
+        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
+      dataType: "json",
+      success: (res) => {
+        this.state.selectedPreferenceList = res;
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        });
+        //this.getPreferenceList();
+        console.log("Selected Preferences" + " " + res);
+        setTimeout(() => {
+          this.tagSorting();
+        }, 1000);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  // get Preferences tag for pop modal 
+  getPreferenceList() {
+    $.ajax({
+      type: "GET",
+      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
+      dataType: "json",
+      success: (response) => {
+        this.state.businessGroupList = response["business-group"];
+        this.state.topicsList = response["topic"];
+        this.state.businessGroupList.tags.forEach((data) => {
+          var obj = {};
+          obj[data.id] = data.title;
+          this.state.businessGroupIdTitle.push(obj);
+          data["isChecked"] = false;
+          if (this.state.selectedPreferenceList.length > 0) {
+            this.state.selectedPreferenceList.forEach((prefer) => {
+              if (prefer === data.id) {
+                data["isChecked"] = true;
+              }
+            });
+          }
+        });
+        this.state.topicsList.tags.forEach((data) => {
+          data["isChecked"] = false;
+          this.state.selectedPreferenceList.forEach((prefer) => {
+            if (prefer === data.id) {
+              data["isChecked"] = true;
+            }
+          });
+        });
+        this.setState({
+          businessGroupList: this.state.businessGroupList,
+          topicsList: this.state.topicsList,
+          businessGroupIdTitle: this.state.businessGroupIdTitle,
+        });
+        //this.getNewsList();
+        //this.retrieveSelectedPreference();
+        //console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  // Get all the news Articles 
+  getNewsList() {
+    $.ajax({
+      type: "GET",
+      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
+      dataType: "json",
+      success: (response) => {
+        this.state.newsList = response;
+        let userProfileArticles = [];
+        let pinnedNewsList = [];
+        let preferedNewsList = [];
+        // filter the whole response articles for pinned articles, as pinned articles are global 
+        pinnedNewsList = this.state.newsList.filter((news) => {
+          return (
+            news.pinArticle
+          );
+        });
+        // filter the response articles by user profile data if user profile data exists
+        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
+          var businessGroup = ContextHub.getItem('profile').businessGroup;
+          var businessUnit = ContextHub.getItem('profile').businessUnit;
+          var buildingLocation = ContextHub.getItem('profile').buildingLocation;
+          var jobLevel = ContextHub.getItem('profile').jobLevel;
+          if (businessGroup != "" && businessGroup != undefined) {
+            businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+          }
+          if (businessUnit != "" && businessUnit != undefined) {
+            businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+          }
+          if (buildingLocation != "" && buildingLocation != undefined) {
+            buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+          }
+          // if(jobLevel!="" && jobLevel!=undefined){
+          // }
+          var userProfileFilters = [];
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          this.state.newsList.filter((news) => {
+            news.tags.forEach((tag) => {
+              // chekc if incomin tag is for job level
+              if (tag.includes('job-level')) {
+                tag = tag.split('/')
+                tag = tag[tag.length - 1]
+              }
+              if (userProfileFilters.includes(tag)) {
+                userProfileArticles.push(news);
+              }
+            })
+          })
+        }
+        // filter the response articles if there are any selected preferences
+        if (this.state.selectedPreferenceList.length > 0) {
+          preferedNewsList = this.state.newsList.filter((news) => {
+            return (
+              !news.pinArticle &&
+              news.tags &&
+              news.tags.some(
+                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+              )
+            );
+          });
+          /* pinnedNewsList = this.state.newsList.filter((news) => {
+             return (
+               news.pinArticle &&
+               news.tags &&
+               news.tags.some(
+                 (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+               )
+             );
+           }); */
+        }
+        // Sort pinned articles 
+        if (pinnedNewsList.length > 0) {
+          pinnedNewsList.sort(function (a, b) {
+            return (
+              a.pinArticle - b.pinArticle ||
+              b.publishedDate - a.publishedDate ||
+              a.heading.localeCompare(b.heading)
+            );
+          });
+        }
+        // sort the article list which is filtered according to preferences
+        if (preferedNewsList.length > 0) {
+          preferedNewsList.sort(function (a, b) {
+            return (
+              b.publishedDate - a.publishedDate ||
+              a.heading.localeCompare(b.heading)
+            );
+          });
+        }
+        if (pinnedNewsList.length > 0) {
+          this.state.filterNewsList = this.mergeArray(
+            preferedNewsList,
+            pinnedNewsList,
+            pinnedNewsList[0].pinArticle - 1
+          );
+        } else {
+          this.state.filterNewsList = preferedNewsList;
+        }
+        if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
+          //preferedNewsList = userProfileArticles;
+          this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
+        } else if (this.state.selectedPreferenceList.length > 0) {
+          //preferedNewsList = this.state.newsList;
+          this.state.filterNewsList = preferedNewsList;
+        }
+        this.setState({
+          newsList: this.state.newsList,
+          filterNewsList: this.state.filterNewsList,
+          userProfileArticles: userProfileArticles
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   handleAllChecked(event) {
@@ -913,6 +263,7 @@ class NewsTiles extends React.Component {
     this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
         prefer.isChecked = event.target.checked;
+
     });
     this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
@@ -924,20 +275,96 @@ class NewsTiles extends React.Component {
     });
   }
 
+  // clear all preferences from pop up modal 
+  clearAll() {
+    this.state.businessGroupList.tags.forEach((prefer) => {
+      if (prefer.title != this.state.defaultBG) {
+        prefer.isChecked = false;
+      }
+    });
+    this.state.topicsList.tags.forEach((prefer) => (prefer.isChecked = false));
+    this.setState({
+      allChecked: false,
+      businessGroupList: this.state.businessGroupList,
+      topicsList: this.state.topicsList,
+    });
+    //this.filteringNewsList();
+    this.setState({
+      selectedPreferenceList: []
+    });
+    this.addSelectedPreference();
+    this.clearPreferences();
+    this.tagSorting();
+    $("#preferenceModal").modal("hide");
+  }
+
+  clearPreferences() {
+    this.state.selectedPreferenceList = [];
+    let pinnedNewsList = [];
+    // filter the whole response articles for pinned articles, as pinned articles are global 
+    pinnedNewsList = this.state.newsList.filter((news) => {
+      return (
+        news.pinArticle
+      );
+    });
+    // Sort pinned articles 
+    if (pinnedNewsList.length > 0) {
+      pinnedNewsList.sort(function (a, b) {
+        return (
+          a.pinArticle - b.pinArticle ||
+          b.publishedDate - a.publishedDate ||
+          a.heading.localeCompare(b.heading)
+        );
+      });
+    }
+    if (this.state.userProfileArticles.length > 0) {
+      this.state.userProfileArticles.sort(function (a, b) {
+        return (
+          b.publishedDate - a.publishedDate ||
+          a.heading.localeCompare(b.heading)
+        );
+      });
+    }
+    this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    this.setState({
+      filterNewsList: this.state.filterNewsList
+    })
+  }
+
   filteringNewsList() {
     this.state.selectedPreferenceList = [];
+    let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          businessTitle.push(prefer.title);
+        }
+
       }
     });
     this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          topicsTitle.push(prefer.title);
+        }
       }
     });
     let pinnedNewsList = [];
     let preferedNewsList = [];
+    /* preferences apply analytics starts here */
+    businessTitle = businessTitle.join();
+    topicsTitle = topicsTitle.join();
+    console.log(businessTitle, topicsTitle);
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessTitle,
+      ev_data_two: topicsTitle
+    });
+    /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
       preferedNewsList = this.state.newsList.filter((news) => {
         return (
@@ -989,21 +416,6 @@ class NewsTiles extends React.Component {
     //window.location.reload();
   }
 
-  clearAll() {
-    this.state.businessGroupList.tags.forEach((prefer) => {
-      if (prefer.title != this.state.defaultBG) {
-        prefer.isChecked = false;
-      }
-    });
-    this.state.topicsList.tags.forEach((prefer) => (prefer.isChecked = false));
-    this.setState({
-      allChecked: false,
-      businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList,
-    });
-    this.filteringNewsList();
-  }
-
   bgBinding(bgList) {
     /*let bg = "";
     bgList.forEach((data) => {
@@ -1022,10 +434,12 @@ class NewsTiles extends React.Component {
           } else {
             title = title + obj[id] + " | ";
           }
-
           // return obj[id];
         }
       });
+      if (title.charAt(title.length - 2) == '|') {
+        title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
+      }
     });
     return title;
   }
@@ -1058,8 +472,7 @@ class NewsTiles extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (
-          element.split("/")[1] == "business-group" &&
-          element != "sunlife:source/business-group/canada"
+          element.split("/")[1] == "business-group"
         ) {
           businessTag.push(element);
         } else if (element.split("/")[1] == "topics") {
@@ -1081,132 +494,11 @@ class NewsTiles extends React.Component {
     });
   }
 
-  getNewsList() {
-    $.ajax({
-      type: "GET",
-      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
-      dataType: "json",
-      success: (response) => {
-        this.state.newsList = response;
-        let userProfileArticles = [];
-        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
-          var businessGroup = ContextHub.getItem('profile').businessGroup;
-          businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
-          var businessUnit = ContextHub.getItem('profile').businessUnit;
-          var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-          var jobLevel = ContextHub.getItem('profile').jobLevel;
-          var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
-          this.state.newsList.filter((news) => {
-           news.tags.forEach((tag)=>{
-              if(userProfileFilters.includes(tag)){
-                userProfileArticles.push(news);
-              }
-           })
-          })
-        }
-        let pinnedNewsList = [];
-        let preferedNewsList = [];
-        if (this.state.selectedPreferenceList.length > 0) {
-          preferedNewsList = this.state.newsList.filter((news) => {
-            return (
-              !news.pinArticle &&
-              news.tags &&
-              news.tags.some(
-                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-              )
-            );
-          });
-          pinnedNewsList = this.state.newsList.filter((news) => {
-            return (
-              news.pinArticle &&
-              news.tags &&
-              news.tags.some(
-                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-              )
-            );
-          });
-        } else {
-          preferedNewsList = this.state.newsList;
-        }
-        pinnedNewsList.sort(function (a, b) {
-          return (
-            a.pinArticle - b.pinArticle ||
-            b.publishedDate - a.publishedDate ||
-            a.heading.localeCompare(b.heading)
-          );
-        });
-        preferedNewsList.sort(function (a, b) {
-          return (
-            b.publishedDate - a.publishedDate ||
-            a.heading.localeCompare(b.heading)
-          );
-        });
-        if (pinnedNewsList.length > 0) {
-          this.state.filterNewsList = this.mergeArray(
-            preferedNewsList,
-            pinnedNewsList,
-            pinnedNewsList[0].pinArticle - 1
-          );
-        }
-        this.setState({
-          newsList: userProfileArticles,
-          filterNewsList: this.state.filterNewsList,
-        });
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  getPreferenceList() {
-    $.ajax({
-      type: "GET",
-      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
-      dataType: "json",
-      success: (response) => {
-        this.state.businessGroupList = response["business-group"];
-        this.state.topicsList = response["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
-          var obj = {};
-          obj[data.id] = data.title;
-          this.state.businessGroupIdTitle.push(obj);
-          data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach((prefer) => {
-            if (prefer === data.id) {
-              data["isChecked"] = true;
-            }
-          });
-        });
-        this.state.topicsList.tags.forEach((data) => {
-          data["isChecked"] = false;
-          this.state.selectedPreferenceList.forEach((prefer) => {
-            if (prefer === data.id) {
-              data["isChecked"] = true;
-            }
-          });
-        });
-        this.setState({
-          businessGroupList: this.state.businessGroupList,
-          topicsList: this.state.topicsList,
-          businessGroupIdTitle: this.state.businessGroupIdTitle,
-        });
-        this.getNewsList();
-        //console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
   addSelectedPreference() {
     /* submit analytics starts here */
     var businessString = '', topicString = '';
     //console.log(this.state.selectedPreferenceList);
     if (this.state.selectedPreferenceList.length > 0) {
-      console.log('inside');
       this.state.selectedPreferenceList.forEach((item, index) => {
         if (item.indexOf('business-group') > -1) {
           businessString += item + ',';
@@ -1215,7 +507,6 @@ class NewsTiles extends React.Component {
         }
       });
     }
-    console.log(businessString[businessString.length - 1]);
     if (businessString[businessString.length - 1] == ',') {
       businessString = businessString.substring(0, businessString.length - 1);
     }
@@ -1241,37 +532,19 @@ class NewsTiles extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log(res);
+        console.log("posting selected preferences" + " " + reqData);
+        setTimeout(() => {
+          this.retrieveSelectedPreference()
+        }, 1000);
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
-
-  retrieveSelectedPreference() {
-    $.ajax({
-      type: "GET",
-      url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
-      dataType: "json",
-      success: (res) => {
-        this.state.selectedPreferenceList = res;
-        this.setState({
-          selectedPreferenceList: this.state.selectedPreferenceList,
-        });
-        this.getPreferenceList();
-        //console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  getNewsTilesData() {
-    this.retrieveSelectedPreference();
-  }
+  /* getNewsTilesData() {
+     this.retrieveSelectedPreference();
+   } */
 
   mergeArray(a, b, i) {
     return a.slice(0, i).concat(b, a.slice(i));
@@ -1463,8 +736,8 @@ class NewsTiles extends React.Component {
                           return (
                             <div
                               class={`col-xs-12  tile clickable-tile ${index == 0
-                                  ? "col-sm-8 col-md-8"
-                                  : "col-sm-4 col-md-4"
+                                ? "col-sm-8 col-md-8"
+                                : "col-sm-4 col-md-4"
                                 }`}
                               onClick={this.newsTileClick.bind(
                                 this,
@@ -1476,7 +749,7 @@ class NewsTiles extends React.Component {
                                 class="tile-img"
                                 style={{
                                   backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
-                                }}
+                                }} data-section={"hp-news-position" + (index + 1)}
                               >
                                 <div class="overlay-container">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">

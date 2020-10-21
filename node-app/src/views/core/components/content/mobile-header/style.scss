@@ -190,6 +190,11 @@
         }
         .first-level-navigation{
             padding-top:16px;
+            .links.manual-navigation {
+                .collapse {
+                    display: block;
+                }
+            }
         }
         .navigation-menu{
             margin:16px 16px 0 16px;

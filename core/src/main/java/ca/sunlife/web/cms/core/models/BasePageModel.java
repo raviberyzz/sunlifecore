@@ -82,6 +82,9 @@ public class BasePageModel {
   /** The Constant Extra Clientlibs. */
   private static final String EXTRA_CLIENTLIBS = "extraClientlibs";
 
+  /** The Constant MFA_DOMAIN_PATH. */
+  private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
+
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
 
@@ -317,6 +320,9 @@ public class BasePageModel {
   
   /** The extra Clientlibs. */
   private String extraClientlibs;
+
+  /** The mfa Domain Path. */
+  private String mfaDomainPath;
   
   /** The favicon. */
   private String favIcon;
@@ -805,6 +811,24 @@ public class BasePageModel {
 	public void setExtraClientlibs(String extraClientlibs) {
 		this.extraClientlibs = extraClientlibs;
 	}
+	
+	/**
+	 * Gets the mfaDomainPath
+	 * 
+	 * @return the mfaDomainPath
+	 */
+	public String getMfaDomainPath() {
+		return mfaDomainPath;
+	}
+
+	/**
+	 * @param mfaDomainPath
+	 *          the mfaDomainPath to set
+	 */
+	public void setMfaDomainPath(final String mfaDomainPath) {
+		this.mfaDomainPath = mfaDomainPath;
+	}
+
 	/**
    * Inits the.
    *
@@ -826,6 +850,7 @@ public class BasePageModel {
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
+    mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }

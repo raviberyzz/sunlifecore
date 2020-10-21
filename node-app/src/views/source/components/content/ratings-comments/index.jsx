@@ -117,7 +117,7 @@ class ArticleRatings extends React.Component {
   render() {
     return (
       <div class="rating-wrapper">
-        <p class="rate-this">Rate this story</p>
+        <p class="rate-this">{this.props.rateStory}</p>
         <div class="star-rating">
           <span
             class="fa fa-star"
@@ -165,24 +165,15 @@ class ArticleComments extends React.Component {
     super(props);
     this.state = {
       commentCount: 0,
-      commentDetails: [
-        {
-          commentId: 1,
-          commentText:
-            "This is the first comment ever set. You can add more comments as per your wish.",
-          email: "string",
-          updatedDate: "2020-08-17T14:14:16.018Z",
-          userName: "John Patel",
-        },
-      ],
+      commentDetails: [],
       ratingAverage: 0,
       ratingCount: 0,
       ratingExist: false,
       articlePath: "",
-      siteName: "ca",
-      userACF2Id: "yq14",
-      userName: "David jackson",
-      email: "john@gmail.com",
+      siteName: "",
+      userACF2Id: "",
+      userName: "",
+      email: "",
       apiCall: {},
       userEmail: "",
       apiPath:
@@ -330,8 +321,8 @@ class ArticleComments extends React.Component {
     console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
-      commentId: commentId,
-      reasonText: "testing",
+      commentId: commentId
+     // reasonText: "testing",
     };
     $.ajax({
       type: "DELETE",
@@ -356,24 +347,24 @@ class ArticleComments extends React.Component {
     return (
       <div class="comment-wrapper">
         <p class="comment-count">
-          Comments(
+    {this.props.comments} (
           <span class="val">{this.state.commentCount}</span>)
         </p>
         <p class="info">
-          (When you add a comment your name will be automatically displayed)
+        ({this.props.commentsToolTip})
         </p>
         <div class="add-comment col-xs-12">
           <input
             type="text"
             class="col-xs-12 textarea"
             id="commentText"
-            placeholder="Write your comment"
+            placeholder={this.props.writeComment}
           />
           <div class="col-xs-12 add-button">
             <div class="primary-yellow-button" onClick={this.submitComment}>
               <a href="javascript:void(0)" role="button" class="CTA-wrapper">
                 <span class="button-class">
-                  <span class="icon-class fa fa-user"></span>Add Comment
+                  <span class="icon-class fa fa-user"></span>{this.props.addComment}
                 </span>
               </a>
             </div>
@@ -409,7 +400,7 @@ class ArticleComments extends React.Component {
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                            Delete
+                            {this.props.delete}
                           </a>
                         </div>
                       </div>
@@ -427,7 +418,7 @@ class ArticleComments extends React.Component {
                       <div class="modal-header">
                         <div class="modal-title">
                           <h3 class="modal-heading" tabindex="0">
-                            Delete Comment
+                          {this.props.deleteComment}
                           </h3>
                           <button
                             type="button"
@@ -439,7 +430,7 @@ class ArticleComments extends React.Component {
                         </div>
                       </div>
                       <div class="modal-body" tabindex="0">
-                        Are you sure you want to delete the comment?
+                      {this.props.deleteCommentConfirm}
                       </div>
                       <div class="modal-footer">
                         <button
@@ -447,7 +438,7 @@ class ArticleComments extends React.Component {
                           class="cancel"
                           data-dismiss="modal"
                         >
-                          Cancel
+                          {this.props.cancel}
                         </button>
                         <button
                           type="button"
@@ -458,7 +449,7 @@ class ArticleComments extends React.Component {
                           )}
                           data-dismiss="modal"
                         >
-                          Delete
+                          {this.props.delete}
                         </button>
                       </div>
                     </div>

@@ -92,6 +92,7 @@ public class BasePageModelTest {
         .thenReturn("/content/dam/sunlife/images/social.png");
     when(resolver.getResource(PAGE_PATH)).thenReturn(resource);
     when(currentPage.getLanguage( )).thenReturn(TestUtils.CANADA_LOCALE);
+    when(configService.getConfigValues("mfaDomainPath" , PAGE_PATH)).thenReturn("https://mfa-dev.sunlifecorp.com");
   }
 
   public void setAltLangParams() throws LoginException , RepositoryException {

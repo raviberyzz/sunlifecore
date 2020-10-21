@@ -94,18 +94,23 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
     });
 }
 
-// CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) {
-//     console.log('start');
-// }
+CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) {
+}
   
-// CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) {
-//     console.log('end');
-// }
+CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) {
+}
 
 UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, clientContext) {
-    $("#loadingMessageDiv").show();
+    if(!waitLoader.noWaitLoader){
+        console.log('start 1');
+        showSpinner();
+    }
 }
   
 UIHandlerForStepUp.prototype.endActivityIndicator = function(actionContext, clientContext) {
-    $("#loadingMessageDiv").hide();
+    if(!waitLoader.keepWaitLoader){
+        hideSpinner();
+        console.log('end 1');
+    }
+    
 }

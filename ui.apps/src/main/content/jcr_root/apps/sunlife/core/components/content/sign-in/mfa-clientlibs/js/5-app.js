@@ -1,69 +1,36 @@
 var journeyPlayer = xmsdk.XmSdk(); // the Transmit SDK object
 var XmUIHandler = new xmui.XmUIHandler(); // the default UI Handler
 var sessionTimeout = new SessionTimeout();
+var waitLoader = {
+  keepWaitLoader: false,
+  noWaitLoader: false,
+};
 
 var useMarcServer = true;
 var elementsIds = {
   transmitContainer: "transmitContainer"
 }
-/*var elementsIds = {
-  login: "login_with_username_container",
-  home: "home_container",
-  homeContent: "home_content",
-  accountSettings: "account_settings",
-  transmitContainer: "transmitContainer",
-  userIdInput: "input_username",
-  headerTitle: "header_title",
-  signInContainer: "landing_page_container",
-  signInModalContainer: "sign_in_modal_container",
-  signInClientIdInput: "sign_in_client_id_input",
-  signInPasswordInput: "sign_in_password_input"
-};
-*/
-
-/*function onLogout() {
-  journeyPlayer.logout().then(function (results) {
-    return new Promise(function(resolve, reject) {
-      updateSessionToken(null); // clears the token from the session
-      self.setAppContentApperance(false);
-      resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
-     });
-  }).catch(function (error) {
-    console.log("Authenticate Error: ".concat(error));
-    console.log("ERROR CODE :"+error.getErrorCode());
-		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-				   // 	getMFADetailsForAccountSetting();
-				  }else{
-            self.setAppContentApperance(true);
-            sessionTimeout.showErrorMessage();
-            reject(error);
-          }
-  });
-}*/
 
 function onLogout(isVisible) {
 
-   isVisible = isVisible || false ;
+  isVisible = isVisible || false ;
   this.setAppContentApperance(isVisible);
   return new Promise(function(resolve,reject){
-   // journeyPlayer.cancelCurrentRunningControlFlow().then(function(){
-     journeyPlayer.cancelCurrentRunningControlFlow();
-     journeyPlayer.logout().then(function(result){
-        updateSessionToken(null);
-        resolve(true);
-      })
-      .catch(function (error) {
-        console.log("Authenticate Error: ".concat(error));
-        if(error.getErrorCode === 8) {
-           
-        }else
-        reject(error);
-      })
-     })
-    /* .catch(function (error) {
-      reject(error);
+    journeyPlayer.cancelCurrentRunningControlFlow();
+    journeyPlayer.logout().then(function(result){
+      updateSessionToken(null);
+      resolve(true);
     })
-  })*/
+    .catch(function (error) {
+      console.log("Authenticate Error: ".concat(error));
+      if(error.getErrorCode === 8) {
+        
+      }
+      else{
+        reject(error);
+      }
+    })
+  })
 }
 
 function initJourneyPlayer() {
@@ -80,7 +47,7 @@ function initJourneyPlayer() {
 	}
 
   journeyPlayer.initialize().then(function (results) {
-    console.log("Transmit SDK initialized succesfuly: ".concat(results));
+    console.log("Transmit SDK initialized successfully: ".concat(results));
     
     if (!getSessionToken()) {
       setAppContentApperance(false);
@@ -91,16 +58,16 @@ function initJourneyPlayer() {
     console.error("Transmit SDK initialization error!: ".concat(error));
 		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
       setAppContentApperance(false);
-				  }else{
-            setAppContentApperance(true);
-            sessionTimeout.showErrorMessage();
-            reject(error);
-          }
+    }
+    else{
+      setAppContentApperance(true);
+      sessionTimeout.showErrorMessage();
+      reject(error);
+    }
   });
 } 
 
   function getTransmitConnectionSettings() {
-      
      //var serverUrl = "https://mfa-uat.sunlifecorp.com";
      // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
@@ -143,6 +110,7 @@ function initJourneyPlayer() {
 
   function hideSpinner(){
     $("#loadingMessageDiv").hide();
+    waitLoader.keepWaitLoader = false;
   }
 
   function CloseModalPopup(){
@@ -156,10 +124,9 @@ function onPageReady() {
     initJourneyPlayer(); 
 }
 
-function setAppContentApperance(isVisible) {
+function setAppContentApperance(isVisible){
     if (isVisible) {
-        $("#loadingMessageDiv").hide();
-        $("#mfa_signin_modal").modal("show");
+      showModalPopup();
         
     } else {
         $("#mfa_signin_modal").modal("hide");

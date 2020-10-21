@@ -5,8 +5,8 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.clientContext = null;
   this.submitHandler = null;
   this.alreadyLoaded = false;
-  this.resendCodeMsgTimer = null;
   this.actionContext = null;
+  this.resendCodeMsgTimer = null;
   let invalidCodeFlag = false; // for loading the error message when the jsp content is reloaded
   
   this.startSession = function (description, mode, actionContext, clientContext) {
@@ -15,21 +15,22 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     this.actionContext=actionContext;
     this.clientContext = clientContext;
 
-    const uiContext = this.actionContext.getUiContext();
     window.Parsley.addValidator('valid_code', {
       validateString: function(code) {
           if(code.length === 0 || !code.trim() || invalidCodeFlag){
               $("label[for='step-up-input-otp-code-screen-input']").addClass("label-error");
               $("#step-up-input-otp-code-screen-input_resend_button").addClass("mar-top-10").removeClass("mar-top-30");
-              return false;
+              $("#step-up-input-otp-code-screen-input").focus();
+              errorMessage = (lang =='en')? "That code is incorrect. Try again.": "Ce code n’est pas valide. Réessayez.";
+              return $.Deferred().reject(errorMessage);
           }
           $("label[for='step-up-input-otp-code-screen-input']").removeClass("label-error");
           $("#step-up-input-otp-code-screen-input_resend_button").addClass("mar-top-30").removeClass("mar-top-10");
           return true;
       },
       messages: {
-          en: "That code is incorrect. Try again.",
-          fr: "Ce code n’est pas valide. Réessayez."
+          en: "...",
+          fr: "..."
       }
     });
   };
@@ -80,7 +81,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   };
 
   this.endSession = function () {
-     clearTimeout(this.resendCodeMsgTimer);
+    clearTimeout(this.resendCodeMsgTimer);
     console.log('OTP session ended');
   };
 
@@ -89,6 +90,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       console.log("promiseRecoveryForError was called with error: ".concat(error));
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
+          hideSpinner();
           resolve(defaultRecovery);
       } else {
           resolve(defaultRecovery);
@@ -104,8 +106,10 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   };
 
   this.renderWaitingForInput = function(format, target) {
+
     var self = this;
     setAppContentApperance(true);
+    waitLoader.noWaitLoader = false;
     var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
     if(!this.alreadyLoaded){
       $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-input-otp-code.html", function(data){
@@ -114,23 +118,23 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input-label").html(selectedNumber);  
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
         $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
-        $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked);
+        $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
 
-          // force numberic values
-          $('#step-up-input-otp-code-screen-input').on('input', function() {
-            const code = $(this).val();
-            if(!/^\d+$/.test(code)){
-                invalidCodeFlag = true;
-            }
-            else{
-                invalidCodeFlag = false;
-            }
-            if($.trim(code)){
-                $('#mfa-form').parsley().validate();
-                $(this).val(code.replace(/[^0-9]/g,''));
-            }
+        $("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
+        // force numberic values
+        $('#step-up-input-otp-code-screen-input').on('input', function() {
+          const code = $(this).val();
+          if(!/^\d+$/.test(code)){
+              invalidCodeFlag = true;
+          }
+          else{
+              invalidCodeFlag = false;
+          }
+          if($.trim(code)){
+              $('#mfa-form').parsley().validate();
+              $(this).val(code.replace(/[^0-9]/g,''));
+          }
         });
-
 
         $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
           const keycode = (event.keyCode ? event.keyCode : event.which);
@@ -164,7 +168,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
         console.log("actionContext :"+_this.actionContext);
         const escapeOptions = _this.actionContext.getEscapeOptions();
-        const cancelOption = escapeOptions.filter(option => option.getId() === "cancel")[0];
+        const cancelOption = escapeOptions.filter(function (option) {
+            return option.getId() === "cancel";
+          })[0];
         if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
         _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
 
@@ -174,28 +180,33 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.onSubmitClicked = function () {
    
     if ( $('#mfa-form').parsley().validate()){
-    var code = $("#step-up-input-otp-code-screen-input").val();
-    var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
-    var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
-    _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
+      waitLoader.keepWaitLoader = true;
+      var code = $("#step-up-input-otp-code-screen-input").val(); 
+      var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
+      var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
+      _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
 
+      setTimeout(function(){
+        hideSpinner();
+      }, 30000);
      }
   };
 
   this.onResendClicked = function () {
+    waitLoader.noWaitLoader = true;
+    this.resendCodeMsgTimer = setTimeout(
+      function(){
+        $("#step-up-input-otp-code-screen-input_resend_button").show();
+        $("#otp-resend-alert-msg").addClass("hidden"); 
+      }, 
+      30000
+    );
 
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();
     var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(resend);
     _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
-     this.resendCodeMsgTimer =  setTimeout(
-         function(){
-            $("#step-up-input-otp-code-screen-input_resend_button").show();
-            $("#otp-resend-alert-msg").addClass("hidden"); 
-        }, 
-        30000
-      );
   };
 
   this.generatePlaceholder = function (digitCount) {

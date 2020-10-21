@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.request.RequestPathInfo;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,6 +46,10 @@ public class UGCServletTest {
 	@Mock
 	private RequestPathInfo requestPathInfo;
 	
+	/** The resourceResolver. */
+	@ Mock
+	private ResourceResolver resourceResolver;
+	
 	/** The ugc service. */
 	@Mock
 	private UGCService ugcService;
@@ -76,6 +81,7 @@ public class UGCServletTest {
 	    String[] selectors = {url,url};
 	    Map<String, String[]> params = new HashMap<>();
 	    UserInfo mockUserInfoModel = Mockito.mock(UserInfo.class);
+	    when(request.getResourceResolver()).thenReturn(resourceResolver);
 	    when(response.getWriter()).thenReturn(writer);
 	    when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
 	    when(requestPathInfo.getSelectors()).thenReturn(selectors);

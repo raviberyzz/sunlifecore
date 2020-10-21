@@ -93,6 +93,12 @@
                     margin: 0;
                     line-height: 18px;
                     text-transform: uppercase;
+                    max-height: 16px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
                 }
             }
             .tile{
@@ -254,13 +260,6 @@
             .news-tool-bar{
                 padding: 0 10px;
             }
-            .news-list-container{
-                .dynamic-news-tile{
-                    .clickable-tile:nth-child(3n+2){
-
-                    } 
-                }
-            }
         }
     }
 }
@@ -290,6 +289,9 @@
                 .dynamic-news-tile{
                     .tile:nth-of-type(3n+2) {
                         padding: 0;
+                        .overlay-container{
+                            width:100%;
+                        }
                     }
                 }
             }

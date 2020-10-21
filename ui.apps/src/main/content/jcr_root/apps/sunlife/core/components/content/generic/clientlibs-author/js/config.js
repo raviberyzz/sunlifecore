@@ -51,6 +51,12 @@ var multiPurposeComponentConfig = [
                 label: "Disclaimer Link",
                 value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
                 required: true
+            },
+            {
+                name: "analyticsId",
+                label: "Analytics ID",
+                value: "hp investor",
+                required: true
             }
         ]
     },
@@ -235,7 +241,50 @@ var multiPurposeComponentConfig = [
                 required: true
             }
 		]	
-	}
+	},{
+		"componentName": "Stock Information",
+        "componentDisplayName": "Stock Information",
+        "reactComponentName": "stock-information",
+        "props" : [
+            {
+                name: "stockInformationHeadingText",
+                label: "Heading Text",
+                value: "",
+                required: true
+            }
+		]	
+    },
+    {
+        "componentName": "Dynamic Form Component",
+        "componentDisplayName": "Dynamic Form",
+        "reactComponentName": "dynamic-form",
+        "props": [
+            {
+                name: "form",
+                label: "Form",
+                value: "true",
+                required: true
+            },
+            {
+                name: "primaryPath",
+                label: "Primary Path",
+                value: "",
+                required: true
+            },
+            {
+                name: "secondaryPath",
+                label: "Secondary Path",
+                value: "",
+                required: false
+            },
+            {
+                name: "apiURL",
+                label: "API URL",
+                value: "",
+                required: true
+            }
+        ]
+    }
 	/*,{
 		"componentName": "Article Rating",
         "componentDisplayName": "Article Rating",
