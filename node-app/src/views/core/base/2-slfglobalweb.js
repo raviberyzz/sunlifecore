@@ -2555,6 +2555,18 @@ $(document).ready(function(){
                 });
         }
     });
+    var uTag=$('body').find("u").filter(function(){return $(this)});
+    uTag.each(function(){
+        if($(this).attr("class")){
+        }
+        else{
+            $(this).replaceWith(function() {
+                return $('<ins>', {
+                    html: this.innerHTML
+                    });
+                });
+        }
+    });
     checkCookieExists();
 });
 /* Tags formatting ends here */
