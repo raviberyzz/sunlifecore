@@ -46,9 +46,9 @@ class NewsTabs extends React.Component {
     this.getPreferenceList();
     this.getTabsNewsList();
     //this.newsTiles();
-    setTimeout(()=>{
+   /* setTimeout(()=>{
       this.getTabsHeading();
-    },1000)
+    },1000) */
     
     this.tagSorting();
   }
@@ -189,6 +189,8 @@ class NewsTabs extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
           userProfileArticles: this.state.userProfileArticles
+        },()=>{
+          this.getTabsHeading();
         })
         console.log(res);
       },
