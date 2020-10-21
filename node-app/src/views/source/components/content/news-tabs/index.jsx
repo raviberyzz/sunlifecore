@@ -284,17 +284,36 @@ class NewsTabs extends React.Component {
 
   filteringNewsTabList() {
     this.state.selectedPreferenceList = [];
+    let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          businessTitle.push(prefer.title);
+        }
       }
     })
     this.state.topicsList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          topicsTitle.push(prefer.title);
+        }
       }
     })
     this.state.filterNewsList = [];
+    /* preferences apply analytics starts here */
+    businessTitle = businessTitle.join();
+    topicsTitle = topicsTitle.join();
+    console.log(businessTitle, topicsTitle);
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessTitle,
+      ev_data_two: topicsTitle
+    });
+    /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.filterNewsList = this.state.newsList.filter((news) => {
         return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
