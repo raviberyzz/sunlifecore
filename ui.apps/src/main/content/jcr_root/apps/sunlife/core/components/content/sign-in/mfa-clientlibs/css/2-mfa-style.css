@@ -194,3 +194,9 @@ input.parsley-error{
 .sign-in .close {
   font-size: 20px;
 }
+#step-up-input-otp-code-screen-input::-ms-clear{
+  display: none;
+}
+#step-up-input-otp-code-screen-input:-ms-input-placeholder{   
+  color:#757575;
+}

@@ -39,6 +39,7 @@ CustomUIHandler.prototype.processJsonData = function(jsonData, actionContext, cl
 function UIHandlerForStepUp() {
     xmui.XmUIHandler.call(this);
 }
+
 UIHandlerForStepUp.prototype = Object.create(xmui.XmUIHandler.prototype);
 UIHandlerForStepUp.prototype.constructor = UIHandlerForStepUp;
 
@@ -64,13 +65,13 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
             document.cookie="SMSESSION"+"="+jsonData.SMSESSION + ";domain=.sunnet.sunlife.com;path=/";
         }
         resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
+        
         if(jsonData.target != undefined && jsonData.target != ""){
             window.location.href = jsonData.target;
            console.log("Redirecting to PPHP...");
-          }
+        }
     });
 }
-    
 
 UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, buttonText, failureData, actionContext, clientContext) {
     return new Promise(function(resolve, reject) {
@@ -78,27 +79,24 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
     const authMethod = (failureData && failureData.source && failureData.source.method) ? failureData.source.method : null;
         if (failType && failType === "locked") {
             if (authMethod && authMethod === "otp") {
-                setAppContentApperance(true);
                 $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
                     $(clientContext.uiContainer).html(data);
-              });
+                    setAppContentApperance(true);
+                });
             } else {
-                setAppContentApperance(true);
-               $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
-                $(clientContext.uiContainer).html(data);
-          });
-
+                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
+                    $(clientContext.uiContainer).html(data);
+                    setAppContentApperance(true);
+                });
+            }
         }
-    }
-    resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
+        resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
     });
 }
 
-CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) {
-}
+CustomUIHandler.prototype.startActivityIndicator = function(actionContext, clientContext) { }
   
-CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) {
-}
+CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientContext) { }
 
 UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, clientContext) {
     if(!waitLoader.noWaitLoader){

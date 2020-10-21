@@ -69,11 +69,9 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
   function setupForm() {
     const self = this;
-    setAppContentApperance(true);
-    console.log(" lang :"+lang);
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
-        
       $(self.clientContext.uiContainer).html(data);
+      setAppContentApperance(true);
 
       $("#mfa-container").on('keypress', function(event){
         const keycode = (event.keyCode ? event.keyCode : event.which);
@@ -107,8 +105,13 @@ function setPhoneNumbersList() {
   }
   $("#step-up-phone-list-container").html(phoneListStr);
 
+  // select the last phone number
   if(this.clientContext.selectedId !== undefined){
     $("#"+this.clientContext.selectedId).prop('checked', true);
+  }
+  // select the last security code method
+  if(this.clientContext.otpSelection !== undefined){
+    $('input[name="send_code_method"][value="' + this.clientContext.otpSelection.selectedMethod + '"]').attr('checked', 'checked');
   }
 
   $("#su-phone-number-item-0").focus(); // focus the code intially on the first item

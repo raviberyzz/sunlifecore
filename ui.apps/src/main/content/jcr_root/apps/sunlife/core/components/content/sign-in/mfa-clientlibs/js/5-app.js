@@ -49,11 +49,11 @@ function initJourneyPlayer() {
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized successfully: ".concat(results));
     
-    if (!getSessionToken()) {
-      setAppContentApperance(false);
-    } else {
-      setAppContentApperance(true);
-    }
+    // if (!getSessionToken()) {
+    //   setAppContentApperance(false);
+    // } else {
+    //   setAppContentApperance(true);
+    // }
   }).catch(function (error) {
     console.error("Transmit SDK initialization error!: ".concat(error));
 		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
@@ -99,11 +99,6 @@ function initJourneyPlayer() {
       return sessionStorage.getItem('transmit_session_token');
   }
 
-
-  function showModalPopup(){
-    $("#mfa_signin_modal").modal("show");
-  }
-
   function showSpinner(){
     $("#loadingMessageDiv").show();
   }
@@ -126,11 +121,10 @@ function onPageReady() {
 
 function setAppContentApperance(isVisible){
     if (isVisible) {
-      showModalPopup();
+      $("#mfa_signin_modal").modal("show");
         
     } else {
         $("#mfa_signin_modal").modal("hide");
-       // $("#loadingMessageDiv").show();
     }
 }
 

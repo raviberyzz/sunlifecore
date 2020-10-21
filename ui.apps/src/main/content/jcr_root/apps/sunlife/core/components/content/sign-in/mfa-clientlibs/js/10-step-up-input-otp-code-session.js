@@ -108,7 +108,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.renderWaitingForInput = function(format, target) {
 
     var self = this;
-    setAppContentApperance(true);
     waitLoader.noWaitLoader = false;
     var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
     if(!this.alreadyLoaded){
@@ -119,6 +118,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
         $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
+        setAppContentApperance(true);
 
         $("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
         // force numberic values
