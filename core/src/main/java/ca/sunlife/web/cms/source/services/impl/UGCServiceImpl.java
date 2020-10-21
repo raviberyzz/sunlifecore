@@ -80,6 +80,9 @@ public class UGCServiceImpl implements UGCService {
 			reqHeaderjson.put("user-acf-id", userProfileJson.get(UserInfoConstants.ACF2_CONSTANT));
 			reqHeaderjson.put("user-given-name", userProfileJson.get(UserInfoConstants.USER_NAME_CONSTANT));
 			reqHeaderjson.put("user-email-address", userProfileJson.get(UserInfoConstants.EMAIL_CONSTANT));
+			if (this.ugcConfig.getByPassAkamaiAuth()) {
+				reqHeaderjson.put("x-sti-test", "SFI - wwSWGasd");	
+			}
 		} catch (JSONException e) {
 			logger.error("JSONException :: while setting request headers {}", e);
 		}
