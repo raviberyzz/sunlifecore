@@ -47,4 +47,12 @@ public @interface UGCConfig {
   @ AttributeDefinition (name = "getUGCServices", description = "UGC services")
   String [] getUGCServices ();
   
+  /**
+   * Gets the getByPassAkamaiAuth.
+   *
+   * @return the getByPassAkamaiAuth
+   */
+  @ AttributeDefinition (name = "getByPassAkamaiAuth", description = "By pass akamai auth")
+  boolean getByPassAkamaiAuth ();
+  
 }
