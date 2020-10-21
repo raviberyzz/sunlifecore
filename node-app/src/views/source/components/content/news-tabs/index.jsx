@@ -46,7 +46,7 @@ class NewsTabs extends React.Component {
     this.getPreferenceList();
     this.getTabsNewsList();
     //this.newsTiles();
-    this.getTabsHeading();
+   // this.getTabsHeading();
     this.tagSorting();
   }
 
@@ -193,6 +193,7 @@ class NewsTabs extends React.Component {
         console.log(err);
       }
     });
+    this.getTabsHeading();
   }
 
   //Function to load the tab headings
