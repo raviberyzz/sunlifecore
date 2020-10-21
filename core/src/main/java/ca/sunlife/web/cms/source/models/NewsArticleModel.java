@@ -31,7 +31,8 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.day.cq.tagging.TagConstants;
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
@@ -53,12 +54,6 @@ public class NewsArticleModel {
 
 	/** The Constant JCR_CONTENT_METADATA. */
 	private static final String JCR_CONTENT_METADATA = "/jcr:content/metadata";
-
-	/** The Constant COLON_CHAR. */
-	private static final char COLON_CHAR = ':';
-
-	/** The Constant COLON_STRING. */
-	private static final String COLON_STRING = ":";
 
 	/** The Constant logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(NewsArticleModel.class);
@@ -323,13 +318,15 @@ public class NewsArticleModel {
 			}
 			final Resource metaDataResource = resourceResolver.getResource(getFragmentPath().concat(JCR_CONTENT_METADATA));
 			if (null != metaDataResource) {
-				final ValueMap metaDataContent = metaDataResource.getValueMap();
-				String[] cfTagsArray = metaDataContent.containsKey(TagConstants.PN_TAGS) ? metaDataContent.get(TagConstants.PN_TAGS, String[].class)
-						: null;
-				List<String> contentFragmentTagList = new ArrayList<>();
-				if (cfTagsArray != null) {
-					Collections.addAll(contentFragmentTagList, cfTagsArray);
-					sortAndSetTagNames(contentFragmentTagList);
+				final TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+				final Tag[] tags = null != tagManager ? tagManager.getTags(metaDataResource) : null;
+				if( null != tags ) {
+					for(Tag tag : tags) {
+						if(tag.getTagID().startsWith("sunlife:source/business-group") || tag.getTagID().startsWith("sunlife:source/topic")) {
+							tagList.add(tag.getTitle());
+						}
+					}
+					Collections.sort(tagList);
 				}
 			}
 			LOGGER.debug("Article Data {}", articleData);
@@ -369,32 +366,5 @@ public class NewsArticleModel {
 			LOGGER.debug("after adding locale {}", articlePublishedDate);
 		}
 		articleData.put(NewsConstants.PUBLISHED_DATE_CONSTANT, articlePublishedDate);
-	}
-
-	/**
-	 * Sort and set tag names.
-	 *
-	 * @param contentFragmentTagList
-	 *          the content fragment tag list
-	 */
-	private void sortAndSetTagNames(List<String> contentFragmentTagList) {
-		Collections.sort(contentFragmentTagList);
-		for (String item : contentFragmentTagList) {
-			String tag;
-			if (item.contains("/")) {
-				tag = StringUtils.capitalize(item.substring(item.lastIndexOf('/') + 1));
-				tag = tag.replace('-', ' ');
-				tagList.add(tag);
-			} else if (item.contains(COLON_STRING) && (item.length() > (item.lastIndexOf(COLON_CHAR) + 1))) {
-				tag = StringUtils.capitalize(item.substring(item.lastIndexOf(COLON_CHAR) + 1));
-				tag = tag.replace('-', ' ');
-				tagList.add(tag);
-			} else if (item.contains(COLON_STRING)) {
-				tag = StringUtils.capitalize(item.substring(0, item.indexOf(COLON_CHAR)));
-				tag = tag.replace('-', ' ');
-				tagList.add(tag);
-			}
-		}
-
 	}
 }

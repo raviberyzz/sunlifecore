@@ -166,3 +166,17 @@
         }
     }
 }
+
+// test code 
+.tabs-wrapper{
+    .cmp-tabs__tabpanel:nth-of-type(1){
+        display:block!important;
+    }
+    .cmp-tabs__tablist{
+        .cmp-tabs__tab:nth-of-type(1){
+            background-color: #ffcb05;
+            color: #004c6c;
+            border: 0;
+        }
+    }
+}  

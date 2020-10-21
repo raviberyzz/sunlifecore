@@ -15,6 +15,8 @@ const gulp = require('gulp'),
  flatten = require('gulp-flatten'),
  gulpif = require('gulp-if'),
  merge = require('merge-stream');
+
+//Constants declarations for Browserify
 const babelify = require('babelify');
 const browserify = require('browserify'); 
 const source = require('vinyl-source-stream');
