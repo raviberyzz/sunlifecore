@@ -95,3 +95,12 @@
 	color: $medium-blue-color;
 }
 /* find people Dual CTA Component -- end here*/
+/* Triple CTA homepage -- starts here*/
+.cta-home-wrapper{
+    background-color: $grey-cta-background;
+    .row{
+        margin-top: 0;
+        top: -40px;
+    }
+}
+/* Triple CTA homepage -- ends here*/
