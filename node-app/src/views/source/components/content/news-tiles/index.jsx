@@ -62,7 +62,7 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "GET",
       url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
+        `${this.props.retrieveSelectedPreferenceUrl}.ugc.retrievePreference.json`,
       dataType: "json",
       success: (res) => {
         this.state.selectedPreferenceList = res;
@@ -85,7 +85,7 @@ class NewsTiles extends React.Component {
   getPreferenceList() {
     $.ajax({
       type: "GET",
-      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
+      url: `${this.props.getPrefernceListUrl}.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
         this.state.businessGroupList = response["business-group"];
@@ -130,7 +130,7 @@ class NewsTiles extends React.Component {
   getNewsList() {
     $.ajax({
       type: "GET",
-      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
+      url: `${this.props.getNewsUrl}.news.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
         this.state.newsList = response;
@@ -501,7 +501,7 @@ class NewsTiles extends React.Component {
     $.ajax({
       type: "POST",
       url:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addPreference.json",
+        `${this.props.addSelectedPreference}.ugc.addPreference.json`,
       contentType: "application/json",
       data: JSON.stringify(reqData),
       dataType: "json",
