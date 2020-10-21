@@ -32,8 +32,8 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.ErrorCodes;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.osgi.config.RestClientConfig;
-import ca.sunlife.web.cms.core.services.RestService;
 import ca.sunlife.web.cms.core.services.HttpDeleteWithBody;
+import ca.sunlife.web.cms.core.services.RestService;
 
 /**
  * The Class RestServiceImpl.
@@ -109,7 +109,7 @@ public class RestServiceImpl implements RestService {
 	@ Override
 	public String callGetWebService(final String url, final String requestHeaders)
 			throws ApplicationException, SystemException, IOException {
-		logger.debug("Entry :: RestServiceImpl :: callGetWebService :: url :: {}", url);
+		logger.debug("Entry :: RestServiceImpl :: callGetWebService :: url :: {}, requestHeaders :: {}", url, requestHeaders);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;

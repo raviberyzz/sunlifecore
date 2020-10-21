@@ -67,122 +67,134 @@ var multiPurposeComponentConfig = [
         "props" : [
             {
                 name: "newsToolBar",
-                label: "newsToolBar",
+                label: "News Tool Bar?",
                 value: "true",
                 required: true
             },
 			{
                 name: "newsListContainer",
-                label: "newsListContainer",
+                label: "News List Container?",
                 value: "true",
                 required: true
             },
 			{
                 name: "toolbarLeftText",
-                label: "toolbarLeftText",
+                label: "Tool Bar Left Text",
                 value: "News",
                 required: true
             },
 			{
                 name: "moreText",
-                label: "moreText",
+                label: "More Text",
                 value: "More",
                 required: true
             },
 			{
                 name: "toolbarRightText",
-                label: "toolbarRightText",
+                label: "Tool Bar Right Text",
                 value: "Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeading",
-                label: "preferenceModalHeading",
+                label: "Preference Modal Heading",
                 value: "Your Preferences",
                 required: true
             },
 			{
                 name: "selectAllText",
-                label: "selectAllText",
+                label: "Select All Text",
                 value: "Select all",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn1",
-                label: "preferenceModalHeadingbtn1",
+                label: "Preference Modal Heading Button (Apply)",
                 value: "Apply",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn2",
-                label: "preferenceModalHeadingbtn2",
+                label: "Preference Modal Heading Button (Clear all)",
                 value: "Clear all",
                 required: true
             },
 			{
                 name: "iconName",
-                label: "iconName",
+                label: "Icon Name",
                 value: "fa-sliders",
                 required: true
             },
 			{
                 name: "moreNewsText",
-                label: "moreNewsText",
+                label: "More News Text",
                 value: "More news",
                 required: true
             },
 			{
                 name: "moreNewsImg",
-                label: "moreNewsImg",
+                label: "More News Image",
                 value: "",
                 required: true
             },
 			{
                 name: "moreNewsLink",
-                label: "moreNewsLink",
+                label: "More News Link",
                 value: "",
                 required: true
             },
 			{
                 name: "workdayText",
-                label: "workdayText",
+                label: "Workday Text",
                 value: "Find information on all your core HR processes and latest Workday announcements",
                 required: true
             },
 			{
                 name: "workdayLinkText",
-                label: "workdayLinkText",
+                label: "Workday Link Text",
                 value: "Go to Workday",
                 required: true
             },
 			{
                 name: "workdayLink",
-                label: "workdayLink",
+                label: "Workday Link",
                 value: "",
                 required: true
             },
 			{
                 name: "workdayImg",
-                label: "workdayImg",
+                label: "Workday Image",
                 value: "",
                 required: true
             },
 			{
                 name: "workplaceText",
-                label: "workplaceText",
+                label: "Workplace Text",
                 value: "Connect and collaborate with your colleagues across the globe",
                 required: true
             },
 			{
                 name: "workplaceLinkText",
-                label: "workplaceLinkText",
+                label: "Workplace Link Text",
                 value: "Go to Workplace",
                 required: true
             },
 			{
                 name: "workplaceImg",
-                label: "workplaceImg",
+                label: "Workplace Image",
                 value: "",
+                required: true
+            },
+			{
+                name: "resourcePath",
+                label: "Resource path",
+                value: "/content/sunlife/internal/source/en/jcr:content/root/layout_container/container1/generic",
+                required: true
+            },
+			{
+                name: "getPrefernceListUrl",
+                label: "Preferences URL",
+                value: "/content/cq:tags/sunlife/source.tags",
                 required: true
             }
 		]	
@@ -194,50 +206,62 @@ var multiPurposeComponentConfig = [
         "props" : [
             {
                 name: "newsToolBar",
-                label: "newsToolBar",
+                label: "News Tool Bar?",
                 value: "true",
                 required: true
             },
 			{
                 name: "newsTabsContainer",
-                label: "newsTabsContainer",
+                label: "News Tabs Container?",
                 value: "true",
                 required: true
             },
 			{
                 name: "toolbarLeftText",
-                label: "toolbarLeftText",
+                label: "Tool Bar Left Text (News)",
                 value: "News",
                 required: true
             },
 			{
                 name: "toolbarRightText",
-                label: "toolbarRightText",
+                label: "Tool Bar Right Text (Preferences)",
                 value: "Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeading",
-                label: "preferenceModalHeading",
+                label: "Preference Modal Heading (Your preferences)",
                 value: "Your Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn1",
-                label: "preferenceModalHeadingbtn1",
+                label: "Preference Modal Heading (Apply)",
                 value: "Apply",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn2",
-                label: "preferenceModalHeadingbtn2",
+                label: "Preference Modal Heading (Clear All)",
                 value: "Clear all",
                 required: true
             },
 			{
                 name: "iconName",
-                label: "iconName",
+                label: "Icon Name",
                 value: "fa-sliders",
+                required: true
+            },
+			{
+                name: "resourcePath",
+                label: "Resource path",
+                value: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/layout_container/container1/generic",
+                required: true
+            },
+			{
+                name: "getPrefernceListUrl",
+                label: "Preferences URL",
+                value: "/content/cq:tags/sunlife/source.tags",
                 required: true
             }
 		]	
@@ -285,29 +309,4 @@ var multiPurposeComponentConfig = [
             }
         ]
     }
-	/*,{
-		"componentName": "Article Rating",
-        "componentDisplayName": "Article Rating",
-        "reactComponentName": "article-ratings",
-        "props" : [
-            {
-                name: "showRating",
-                label: "showRating",
-                value: "true",
-                required: true
-            }
-		]	
-	},{
-		"componentName": "Article Comment",
-        "componentDisplayName": "Article Comment",
-        "reactComponentName": "article-comments",
-        "props" : [
-            {
-                name: "showComment",
-                label: "showComment",
-                value: "true",
-                required: true
-            }
-		]	
-	}*/
 ];
