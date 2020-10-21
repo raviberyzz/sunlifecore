@@ -4,4 +4,5 @@
     getAuthToken="Jqn9PA2AAVCeDdw2amZ7h53Pfa8qE6RBr4V8M7p7V93P5feeEAm3fwGEUTvnzyyg"
     getUGCServiceDomain="http://dev-cmsservices.ca.sunlife"
     getUGCServices="[selectAll~/sourceservices/selectAll,addComment~/sourceservices/addComment,deleteComment~/sourceservices/deleteComment,addRating~/sourceservices/addRating,addPreference~/sourceservices/addPreference,retrievePreference~/sourceservices/retrievePreference]"
-    getUGCServiceSite="source"/>
+    getUGCServiceSite="source"
+	getByPassAkamaiAuth="{Boolean}true"/>
