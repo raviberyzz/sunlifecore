@@ -68,12 +68,14 @@ class NewsTiles extends React.Component {
         this.state.selectedPreferenceList = res;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
+        },()=>{
+          this.tagSorting();
         });
         //this.getPreferenceList();
         console.log("Selected Preferences" + " " + res);
-        setTimeout(() => {
+       /* setTimeout(() => {
           this.tagSorting();
-        }, 1000);
+        }, 1000); */
       },
       error: (err) => {
         console.log(err);
@@ -160,8 +162,12 @@ class NewsTiles extends React.Component {
           }
           // if(jobLevel!="" && jobLevel!=undefined){
           // }
+          var jobLevelAll = "sunlife:source/job-level/all/all";
+          var businessGroupAll = "sunlife:source/business-group/all";
+          var businessUnitAll = "sunlife:source/business-unit/all";
+          var buildingLocationAll = "sunlife:source/building-location/all";
           var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, jobLevelAll, businessGroupAll, businessUnitAll, buildingLocationAll);
           this.state.newsList.filter((news) => {
             news.tags.forEach((tag) => {
               // chekc if incomin tag is for job level
