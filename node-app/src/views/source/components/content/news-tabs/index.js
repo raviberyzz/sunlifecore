@@ -12,7 +12,7 @@ $(document).ready(function () {
             popUpWidth();
         }
     });
-    $('#tabs-container .cmp-tabs__tab').click(function () {
+   /* $('#tabs-container .cmp-tabs__tab').click(function () {
         $(this).siblings().removeClass('cmp-tabs__tab--active');
         $(this).addClass('cmp-tabs__tab--active');
         $(this).siblings().attr('aria-selected', 'false');
@@ -24,6 +24,6 @@ $(document).ready(function () {
                 $(this).addClass('cmp-tabs__tabpanel--active');
             }
         })
-    })
+    }) */
 
 });
