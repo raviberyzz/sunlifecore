@@ -114,8 +114,6 @@ function setPhoneNumbersList() {
     $('input[name="send_code_method"][value="' + this.clientContext.otpSelection.selectedMethod + '"]').attr('checked', 'checked');
   }
 
-  $("#su-phone-number-item-0").focus(); // focus the code intially on the first item
-
   $("#su-phone-number-item-0").parsley().on("field:error", function() {
     $("#step-up-phone-list-container").addClass("validation-error");
   })

@@ -184,7 +184,8 @@
 }
 
 input.parsley-error{
-  background-color: #fff
+  background-color: #fff;
+  border: 2px solid #b81f41 !important;
 }
 
 #newCodeSentTxt{

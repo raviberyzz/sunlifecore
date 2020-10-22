@@ -120,7 +120,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
         setAppContentApperance(true);
 
-        $("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
+        //$("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
         // force numberic values
         $('#step-up-input-otp-code-screen-input').on('input', function() {
           const code = $(this).val();
