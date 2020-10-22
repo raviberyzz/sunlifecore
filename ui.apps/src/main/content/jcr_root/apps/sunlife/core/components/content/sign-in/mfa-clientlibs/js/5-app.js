@@ -13,6 +13,17 @@ var elementsIds = {
 
 function onLogout(isVisible) {
 
+  // clear the oops message content
+  $("#transmitContainer").empty();
+  
+  if(!$("#rememberID").is(':checked')){
+    $("#USER").val('');
+    $("#PASSWORD").val('');           
+  }
+  else{
+    $("#PASSWORD").val('');
+  }
+
   isVisible = isVisible || false ;
   this.setAppContentApperance(isVisible);
   return new Promise(function(resolve,reject){
@@ -40,11 +51,21 @@ function initJourneyPlayer() {
   
   if (lang === "fr"){
     console.log("set French Locale.");
-		journeyPlayer.setLocale("fr-CA");
+    journeyPlayer.setLocale("fr-CA");
+
+    // update the wait loader and modal content
+    $("#loadingMessageDiv").attr("aria-label", "chargement");
+    $("#loadingMessageDiv strong[data-id='title']").html('chargement...');
+    $("#loadingMessageDiv p[data-id='message']").html('Un moment s\'il vous plait.');
+
+    $("#startOfModal").html("Début de la fenêtre de dialogue");
+    $("#mfa_signin_modal .modal-header .close").attr("aria-label","Fermer");
+    $("#endOfModal").html("Fin de la fenêtre de dialogue ");
+
 	} else {
     console.log("set English Locale.");
 		journeyPlayer.setLocale("en-CA");
-	}
+  }
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized successfully: ".concat(results));
