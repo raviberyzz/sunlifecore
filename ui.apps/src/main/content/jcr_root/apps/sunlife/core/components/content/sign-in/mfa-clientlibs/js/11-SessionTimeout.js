@@ -50,6 +50,7 @@ function SessionTimeout(){
 
         $("#mfaSignInBtn").on('click', function(){
             // add your code here to sign them back in
+            onLogout();
         });
     }
 
