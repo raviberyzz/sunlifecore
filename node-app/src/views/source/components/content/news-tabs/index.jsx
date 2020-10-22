@@ -22,7 +22,8 @@ class NewsTabs extends React.Component {
       selectedPreferenceList: [],
       filterNewsList: [],
       selectedPreferenceTags: [],
-      userProfileArticles: []
+      userProfileArticles: [],
+      businessGroupIdTitle:[]
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -86,6 +87,9 @@ class NewsTabs extends React.Component {
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
+          var obj = {};
+          obj[data.id] = data.title;
+          this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
@@ -104,6 +108,7 @@ class NewsTabs extends React.Component {
         this.setState({
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
+          businessGroupIdTitle: this.state.businessGroupIdTitle,
         })
         //this.getTabsNewsList();
         console.log(res);
@@ -234,14 +239,18 @@ class NewsTabs extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (element.split("/")[1] == "business-group") {
-          businessTag.push(element);
+          this.state.businessGroupIdTitle.forEach((obj) => {
+            if (Object.keys(obj)[0] == element) {
+              businessTag.push(obj[element.toString()]);
+            }
+          })
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
         }
       });
-      businessTag.forEach((element, index) => {
+      /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
-      });
+      });*/
       topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
       });
@@ -520,14 +529,14 @@ class NewsTabs extends React.Component {
                       <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
                         {Object.keys(this.state.tabHeading).map((value, index) => {
                           return (
-                            <li role="presentation" key={index} class="cmp-tabs__tab" tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected="true">{this.state.tabHeading[value].year}
+                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index==0 ? "true" : "false"}>{this.state.tabHeading[value].year}
                             </li>
                           )
                         })}
                       </ol>
                       {Object.keys(this.state.tabHeading).map((value, index) => {
                         return (
-                          <div role="tabpanel" tabindex={index} class="cmp-tabs__tabpanel" data-cmp-hook-tabs="tabpanel">
+                          <div role="tabpanel" tabindex={index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel">
                             <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex={index}>{this.state.tabHeading[value].year}</div>
                             <div class="responsivegrid">
                               <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">

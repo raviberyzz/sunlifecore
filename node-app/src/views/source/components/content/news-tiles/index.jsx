@@ -430,7 +430,7 @@ class NewsTiles extends React.Component {
       this.state.businessGroupIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
           if (i == bgList.length - 1) {
-            title = title + obj[id]; 
+            title = title + obj[id];
           } else {
             title = title + obj[id] + " | ";
           }
@@ -474,19 +474,19 @@ class NewsTiles extends React.Component {
         if (
           element.split("/")[1] == "business-group"
         ) {
-          this.state.businessGroupIdTitle.forEach((obj)=>{
-            if(Object.keys(obj)[0] == element){
+          this.state.businessGroupIdTitle.forEach((obj) => {
+            if (Object.keys(obj)[0] == element) {
               businessTag.push(obj[element.toString()]);
             }
           })
-          
+
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
         }
       });
-      businessTag.forEach((element, index) => {
+      /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
-      });
+      });*/
       topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
       });
