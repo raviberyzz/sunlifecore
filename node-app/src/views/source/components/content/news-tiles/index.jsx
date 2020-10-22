@@ -226,7 +226,8 @@ class NewsTiles extends React.Component {
         }
         if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
           //preferedNewsList = userProfileArticles;
-          this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
+          //this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
+          this.state.filterNewsList = pinnedNewsList.concat(userProfileArticles);
         } else if (this.state.selectedPreferenceList.length > 0) {
           //preferedNewsList = this.state.newsList;
           this.state.filterNewsList = preferedNewsList;
@@ -283,15 +284,14 @@ class NewsTiles extends React.Component {
       }
     });
     this.state.topicsList.tags.forEach((prefer) => (prefer.isChecked = false));
+    this.state.selectedPreferenceList = [];
     this.setState({
       allChecked: false,
       businessGroupList: this.state.businessGroupList,
       topicsList: this.state.topicsList,
+      selectedPreferenceList: this.state.selectedPreferenceList
     });
     //this.filteringNewsList();
-    this.setState({
-      selectedPreferenceList: []
-    });
     this.addSelectedPreference();
     this.clearPreferences();
     this.tagSorting();
@@ -325,7 +325,8 @@ class NewsTiles extends React.Component {
         );
       });
     }
-    this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    //this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    this.state.filterNewsList = pinnedNewsList.concat(this.state.userProfileArticles);
     this.setState({
       filterNewsList: this.state.filterNewsList
     })

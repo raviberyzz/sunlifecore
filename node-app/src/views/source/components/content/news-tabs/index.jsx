@@ -7,9 +7,9 @@ class NewsTabs extends React.Component {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
     }
-    
+
     this.state = {
-      defaultBG:defaultBGValue,
+      defaultBG: defaultBGValue,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: []
@@ -23,11 +23,11 @@ class NewsTabs extends React.Component {
       filterNewsList: [],
       selectedPreferenceTags: [],
       userProfileArticles: [],
-      businessGroupIdTitle:[]
+      businessGroupIdTitle: []
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
-   // this.newsTiles = this.newsTiles.bind(this);
+    // this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.dateTransform = this.dateTransform.bind(this);
@@ -40,6 +40,7 @@ class NewsTabs extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
+    this.tabClick = this.tabClick.bind(this);
   }
 
   componentDidMount() {
@@ -47,10 +48,10 @@ class NewsTabs extends React.Component {
     this.getPreferenceList();
     this.getTabsNewsList();
     //this.newsTiles();
-   /* setTimeout(()=>{
-      this.getTabsHeading();
-    },1000) */
-    
+    /* setTimeout(()=>{
+       this.getTabsHeading();
+     },1000) */
+
     this.tagSorting();
   }
 
@@ -77,7 +78,7 @@ class NewsTabs extends React.Component {
     });
   }
 
- // get all the preference tags for preference pop up modal 
+  // get all the preference tags for preference pop up modal 
   getPreferenceList() {
     $.ajax({
       type: "GET",
@@ -194,7 +195,7 @@ class NewsTabs extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
           userProfileArticles: this.state.userProfileArticles
-        },()=>{
+        }, () => {
           this.getTabsHeading();
         })
         console.log(res);
@@ -231,7 +232,7 @@ class NewsTabs extends React.Component {
       tabHeading: yearList
     })
   }
-  
+
   // sort the preferences
   tagSorting() {
     let businessTag = [];
@@ -351,11 +352,14 @@ class NewsTabs extends React.Component {
       }
     })
     this.state.topicsList.tags.forEach(prefer => prefer.isChecked = false)
+    this.state.selectedPreferenceList = [];
     this.setState({
       allChecked: false,
       businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList
+      topicsList: this.state.topicsList,
+      selectedPreferenceList: this.state.selectedPreferenceList
     });
+    this.addSelectedPreference()
     this.filteringNewsTabList();
     this.getTabsHeading();
   }
@@ -436,6 +440,37 @@ class NewsTabs extends React.Component {
     });
   }
 
+  tabClick(event) {
+    var element = event.target;
+    var tabs = document.getElementsByClassName("cmp-tabs__tab");
+    tabs.forEach((index) => {
+      if (tabs[index] == element) {
+        tabs[index].classList.add('cmp-tabs__tab--active');
+        tabs[index].setAttribute('aria-selected', true);
+        var tabIndex = element.getAttribute("tabindex");
+        var tabContentDiv = document.getElementsByClassName('cmp-tabs__tabpanel');
+        tabContentDiv.forEach((i) => {
+          tabContentDiv[i].classList.remove('cmp-tabs__tabpanel--active');
+          if (tabContentDiv[i].getAttribute('tabindex') == tabIndex) {
+            tabContentDiv[i].classList.add('cmp-tabs__tabpanel--active');
+          }
+        })
+        for (j = index - 1; j >= 0; j--) {
+          tabs[j].classList.remove("cmp-tabs__tab--active");
+          if (tabs[j].getAttribute('aria-selected') == "true") {
+            tabs[j].setAttribute('aria-selected', false);
+          }
+        }
+        for (k = index + 1; k <= tabs.length - 1; k++) {
+          var val = divs[k].getAttribute('aria-selected');
+          tabs[k].classList.remove("cmp-tabs__tab--active");
+          if (val == "true") {
+            divs[k].setAttribute('aria-selected', false);
+          }
+        }
+      }
+    })
+  }
   render() {
     return (
       <div class="news-wrapper">
@@ -529,7 +564,7 @@ class NewsTabs extends React.Component {
                       <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
                         {Object.keys(this.state.tabHeading).map((value, index) => {
                           return (
-                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index==0 ? "true" : "false"}>{this.state.tabHeading[value].year}
+                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick()}>{this.state.tabHeading[value].year}
                             </li>
                           )
                         })}
