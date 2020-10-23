@@ -3,6 +3,7 @@ class NewsTabs extends React.Component {
     super(props);
     let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
+    this.tab = React.createRef();
     if (contextHubData) {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
@@ -54,7 +55,7 @@ class NewsTabs extends React.Component {
 
     this.tagSorting();
     tabClick=()=> {
-      var element = event.target;
+      var element = this.tab.current;
       var tabs = document.getElementsByClassName("cmp-tabs__tab");
       tabs.forEach((index) => {
         if (tabs[index] == element) {
@@ -571,7 +572,7 @@ class NewsTabs extends React.Component {
                       <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
                         {Object.keys(this.state.tabHeading).map((value, index) => {
                           return (
-                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick}>{this.state.tabHeading[value].year}
+                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick} ref={this.tab}>{this.state.tabHeading[value].year}
                             </li>
                           )
                         })}
