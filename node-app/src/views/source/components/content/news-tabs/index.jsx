@@ -40,7 +40,7 @@ class NewsTabs extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
-    this.tabClick = this.tabClick.bind(this);
+    //this.tabClick = this.tabClick.bind(this);
   }
 
   componentDidMount() {

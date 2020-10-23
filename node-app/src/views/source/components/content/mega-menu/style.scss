@@ -32,10 +32,20 @@
 		}
 	}
 	.cmp-container {
-		.text {
-			.cmp-text {
-				ul {
-					margin-left: 0;
+		div[class^="col-"]{
+			.text {
+				.cmp-text {
+					ul {
+						margin-left: 0;
+						li{
+							padding:5px 0;
+							line-height: 16px;
+							&:before{
+								display:table-cell;
+							}
+						}
+
+					}
 				}
 			}
 		}
