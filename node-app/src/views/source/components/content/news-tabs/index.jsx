@@ -53,6 +53,37 @@ class NewsTabs extends React.Component {
      },1000) */
 
     this.tagSorting();
+    tabClick=()=> {
+      var element = event.target;
+      var tabs = document.getElementsByClassName("cmp-tabs__tab");
+      tabs.forEach((index) => {
+        if (tabs[index] == element) {
+          tabs[index].classList.add('cmp-tabs__tab--active');
+          tabs[index].setAttribute('aria-selected', true);
+          var tabIndex = element.getAttribute("tabindex");
+          var tabContentDiv = document.getElementsByClassName('cmp-tabs__tabpanel');
+          tabContentDiv.forEach((i) => {
+            tabContentDiv[i].classList.remove('cmp-tabs__tabpanel--active');
+            if (tabContentDiv[i].getAttribute('tabindex') == tabIndex) {
+              tabContentDiv[i].classList.add('cmp-tabs__tabpanel--active');
+            }
+          })
+          for (j = index - 1; j >= 0; j--) {
+            tabs[j].classList.remove("cmp-tabs__tab--active");
+            if (tabs[j].getAttribute('aria-selected') == "true") {
+              tabs[j].setAttribute('aria-selected', false);
+            }
+          }
+          for (k = index + 1; k <= tabs.length - 1; k++) {
+            var val = divs[k].getAttribute('aria-selected');
+            tabs[k].classList.remove("cmp-tabs__tab--active");
+            if (val == "true") {
+              divs[k].setAttribute('aria-selected', false);
+            }
+          }
+        }
+      })
+    }
   }
 
   // get the selected preferences on page load
@@ -446,37 +477,7 @@ class NewsTabs extends React.Component {
     });
   }
 
-  tabClick() {
-    var element = event.target;
-    var tabs = document.getElementsByClassName("cmp-tabs__tab");
-    tabs.forEach((index) => {
-      if (tabs[index] == element) {
-        tabs[index].classList.add('cmp-tabs__tab--active');
-        tabs[index].setAttribute('aria-selected', true);
-        var tabIndex = element.getAttribute("tabindex");
-        var tabContentDiv = document.getElementsByClassName('cmp-tabs__tabpanel');
-        tabContentDiv.forEach((i) => {
-          tabContentDiv[i].classList.remove('cmp-tabs__tabpanel--active');
-          if (tabContentDiv[i].getAttribute('tabindex') == tabIndex) {
-            tabContentDiv[i].classList.add('cmp-tabs__tabpanel--active');
-          }
-        })
-        for (j = index - 1; j >= 0; j--) {
-          tabs[j].classList.remove("cmp-tabs__tab--active");
-          if (tabs[j].getAttribute('aria-selected') == "true") {
-            tabs[j].setAttribute('aria-selected', false);
-          }
-        }
-        for (k = index + 1; k <= tabs.length - 1; k++) {
-          var val = divs[k].getAttribute('aria-selected');
-          tabs[k].classList.remove("cmp-tabs__tab--active");
-          if (val == "true") {
-            divs[k].setAttribute('aria-selected', false);
-          }
-        }
-      }
-    })
-  }
+
   render() {
     return (
       <div class="news-wrapper">
