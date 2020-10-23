@@ -116,6 +116,7 @@ public class NewsArticleModelTest {
 			when(articleContent.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)).thenReturn("/content/dam/sunlife/internal/source/en");
 			when(articleContent.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)).thenReturn("true");
 			when(metadataContent.get(TagConstants.PN_TAGS, String [].class)).thenReturn(tags);
+			newsArticleModel.setPageLocaleDefault("en_CA");
 			newsArticleModel.init();
 		} catch (LoginException | RepositoryException e) {
 			e.printStackTrace();
