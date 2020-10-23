@@ -57,7 +57,7 @@ class ArticleRatings extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -85,7 +85,7 @@ class ArticleRatings extends React.Component {
       };
       $.ajax({
         type: "POST",
-        url: this.state.apiPath + ".addRating.json",
+        url: this.props.apiPath + ".addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -246,7 +246,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -293,7 +293,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "POST",
-      url: this.state.apiPath + ".addComment.json",
+      url: this.props.apiPath + ".addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -326,7 +326,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "DELETE",
-      url: this.state.apiPath + ".deleteComment.json",
+      url: this.props.apiPath + ".deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),
