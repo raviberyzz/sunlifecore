@@ -71,7 +71,7 @@ $(document).ready(function () {
                var strings="";
                var vgnLocaleSearch = $('html')[0].lang;
     
-               if(vgnLocaleSearch === "fr" ){
+               if(vgnLocaleSearch.indexOf("fr") > -1 ){
                 strings=stringsFr;
     
                 } else if(vgnLocaleSearch === "zh-TW"){
