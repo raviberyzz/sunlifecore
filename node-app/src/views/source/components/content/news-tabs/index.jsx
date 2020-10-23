@@ -571,7 +571,7 @@ class NewsTabs extends React.Component {
                       <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
                         {Object.keys(this.state.tabHeading).map((value, index) => {
                           return (
-                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick()}>{this.state.tabHeading[value].year}
+                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick}>{this.state.tabHeading[value].year}
                             </li>
                           )
                         })}
