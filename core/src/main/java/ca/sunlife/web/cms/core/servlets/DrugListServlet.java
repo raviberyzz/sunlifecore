@@ -8,11 +8,11 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,8 +20,13 @@ import javax.servlet.Servlet;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= Drug List Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET, "sling.servlet.paths=" + "/bin/getDrugList" })
+@Component(service = Servlet.class, property = {
+        Constants.SERVICE_DESCRIPTION + "= Drug List Servlet",
+        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+        "sling.servlet.resourceTypes=sunlife/ca/components/content/drug-list",
+        "sling.servlet.selectors=druglist",
+        "sling.servlet.extensions=json"
+})
 public class DrugListServlet extends SlingSafeMethodsServlet{
 
     private static final long serialVersionUID = 5180493823438186865L;
@@ -35,9 +40,15 @@ public class DrugListServlet extends SlingSafeMethodsServlet{
 
         String json;
 
+        ValueMap valueMap = request.getResource().getValueMap();
+        String druglistJson = valueMap.get("assetPath", String.class);
+        if (StringUtils.isEmpty(druglistJson)) {
+            druglistJson = DRUGLIST_JSON;
+        }
+
         AssetManager assetManager = request.getResourceResolver().adaptTo(AssetManager.class);
-        if (assetManager != null && assetManager.assetExists(DRUGLIST_JSON)) {
-            Asset asset = assetManager.getAsset(DRUGLIST_JSON);
+        if (assetManager != null && assetManager.assetExists(druglistJson)) {
+            Asset asset = assetManager.getAsset(druglistJson);
             Rendition rendition = asset.getRendition("original");
             json = IOUtils.toString(rendition.getStream(), StandardCharsets.UTF_8);
 
@@ -46,6 +57,7 @@ public class DrugListServlet extends SlingSafeMethodsServlet{
             json = getErrorJson(null);
         }
 
+        response.setContentType("application/json; charset=UTF-8");
         response.getWriter().write(json);
 
     }

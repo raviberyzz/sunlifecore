@@ -22,11 +22,13 @@ public class ParseDrugListStep implements WorkflowProcess {
     public static final String PROCESS_ARGS = "PROCESS_ARGS";
     public static final String PAFORMS = "paforms";
     public static final String LOOKUP = "lookup";
+    public static final String NONPOLICY = "nonpolicy";
     @Reference
     DrugListService drugListService;
 
     private String forms = "PAForms-2A2B.xlsx";
     private String lookup = "PAForms-Lookup.xlsx";
+    private String nonpolicy = "drugList.properties";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -53,8 +55,10 @@ public class ParseDrugListStep implements WorkflowProcess {
                 }
             }
             String folder = payload.substring(0, payload.lastIndexOf("/"));
-            drugListService.updateDrugLists(String.format("%s/%s", folder, forms),
-                    String.format("%s/%s", folder, lookup));
+            drugListService.updateDrugLists(
+                    String.format("%s/%s", folder, forms),
+                    String.format("%s/%s", folder, lookup),
+                    String.format("%s/%s", folder, nonpolicy));
         } catch (IOException e) {
             logger.error("Failed to parse the drug list for files {} and {}", forms, lookup, e);
             throw new WorkflowException(e);

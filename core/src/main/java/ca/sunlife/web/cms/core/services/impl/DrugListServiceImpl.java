@@ -30,8 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Component(service = DrugListService.class, immediate = true)
 @Designate(ocd = DrugListConfig.class)
@@ -53,7 +51,7 @@ public class DrugListServiceImpl implements DrugListService {
     );
 
     @Override
-    public void updateDrugLists(String paFormsPath, String lookupPath) throws IOException {
+    public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath) throws IOException {
 
         try (ResourceResolver resourceResolver = resourceResolverFactory
                 .getServiceResourceResolver(authInfo)){
@@ -66,6 +64,7 @@ public class DrugListServiceImpl implements DrugListService {
             HashMap<String, PaForm> paForms = buildPaFormLookUpMap(paFormsPath, assetManager);
 
             JsonObjectBuilder builder = buildJsonAsset(lookupPath, assetManager, paForms);
+            buildNonPolicyRecords(nonPolicyPath, assetManager, builder);
 
             Asset outputAsset;
             String assetName = pdfFolder + "/druglist.json";
@@ -97,6 +96,63 @@ public class DrugListServiceImpl implements DrugListService {
             logger.error("Failed to save JSON asset", e);
         }
 
+    }
+
+    private void buildNonPolicyRecords(String nonPolicyPath, AssetManager assetManager, JsonObjectBuilder builder) throws IOException {
+
+        Rendition nonPolicies = assetManager.getAsset(nonPolicyPath).getRendition(ORIGINAL);
+        Properties nonPolicyProps = new Properties();
+        nonPolicyProps.load(nonPolicies.getStream());
+        JsonObjectBuilder nonPolicyBuilder = Json.createObjectBuilder();
+        HashMap<String, HashMap<String, String>> nonPolicyMap = new HashMap<>();
+        for(Map.Entry<Object, Object> nonPolicy : nonPolicyProps.entrySet()) {
+            String key = (String)nonPolicy.getKey();
+            String value = (String)nonPolicy.getValue();
+            if (key.startsWith("forms.default.message")) {
+                HashMap<String, String> messageMap;
+                if (nonPolicyMap.containsKey("default")) {
+                    messageMap = nonPolicyMap.get("default");
+                } else {
+                    messageMap = new HashMap<>();
+                    nonPolicyMap.put("default", messageMap);
+                }
+                if (key.endsWith("en")) {
+                    messageMap.put("message-en", value);
+                } else if (key.endsWith("fr")) {
+                    messageMap.put("message-fr", value);
+                }
+            } else {
+                String[] keyParts = key.split("-");
+                HashMap<String, String> messageMap;
+                if(nonPolicyMap.containsKey(keyParts[0])) {
+                    messageMap = nonPolicyMap.get(keyParts[0]);
+                } else {
+                    messageMap = new HashMap<>();
+                    nonPolicyMap.put(keyParts[0], messageMap);
+                }
+
+                if("ENG".equals(keyParts[1])) {
+                    messageMap.put("message-en", value);
+                } else if ("FR".equals(keyParts[1])) {
+                    messageMap.put("message-fr", value);
+                }
+            }
+
+        }
+        for(Map.Entry<String, HashMap<String, String>> entry : nonPolicyMap.entrySet()) {
+            JsonObjectBuilder messages = Json.createObjectBuilder();
+            for(Map.Entry<String, String> nonPolicyMessage : entry.getValue().entrySet()) {
+                messages.add(nonPolicyMessage.getKey(), nonPolicyMessage.getValue());
+            }
+            nonPolicyBuilder.add(
+                    entry.getKey(),
+                    Json.createArrayBuilder()
+                            .add(messages.build())
+                            .build()
+            );
+
+        }
+        builder.add("non-slf-policy", nonPolicyBuilder.build());
     }
 
     private JsonObjectBuilder buildJsonAsset(String lookupPath, AssetManager assetManager, HashMap<String, PaForm> paForms) throws IOException {

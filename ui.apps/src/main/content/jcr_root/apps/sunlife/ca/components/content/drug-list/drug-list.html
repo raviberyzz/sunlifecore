@@ -1,0 +1,89 @@
+<div id="form-container" class="no-display">
+    <div class="layout-container">
+        <div class="row">
+            <div class="col-8">
+                <div class="text form-input">
+                    <input
+                            type="text"
+                            id="contract-num"
+                            placeholder="Contract number"
+                            value="5943"
+                    />
+                </div>
+            </div>
+            <div class="col-4">
+                <div
+                        class="button button-wrapper primary-blue-button-form"
+                >
+                    <button onclick="drugListTotalBenefits.validate();">
+                        ${'Submit' @ i18n}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="table-container" class="no-display">
+    <table id="drug-list">
+        <caption class="sr-only">
+            Download drug details.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col" class="pad-left-20">${'Drug Category' @ i18n}</th>
+            <th scope="col" class="pad-left-20">${'Drugs' @ i18n}</th>
+            <th scope="col" class="pad-left-20">
+                ${'Prior Authorization Form' @ i18n}
+            </th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        <!-- LOOP GOES HERE (STARTS) -->
+        <!--/*
+        <tr>
+            <td>Anti-inflammatory - Specialty</td>
+            <td>Olumiant (baricitinib)</td>
+            <td>
+                <i
+                        class="fa fa-file-pdf-o pdf-icon mar-right-10"
+                        aria-hidden="true"
+                ></i>
+                <a
+                        id="pass_the_quoteId"
+                        href="#"
+                        onclick="openDocument('pass_file_path', 'pass_file_name_for_tealium');return false;"
+                        aria-label="title"
+                >ABBOT_hybrid
+                </a>
+            </td>
+        </tr>
+        */-->
+        <!-- LOOP GOES HERE (ENDS) -->
+        </tbody>
+    </table>
+</div>
+<div
+        id="loading-spinner"
+        role="alert"
+        aria-live="polite"
+        class="loading-spinner no-display"
+        hidden
+>
+    <div class="white-container">
+        <div class="loading-container">
+            <!--/*
+            <i class="fa fa-spinner fa-pulse"/>
+            */-->
+            <p>
+                <strong>${'Loading' @ i18n}</strong>
+                <strong aria-hidden="true">...</strong>
+            </p>
+            <p>${'Please wait' @ i18n}</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" data-sly-test="${wcmmode.disabled || wcmmode.preview}">
+    document.addEventListener("DOMContentLoaded", function() {
+        drugListTotalBenefits.init("${resource.path @ context='scriptString'}.druglist.json");
+    });
+</script>
