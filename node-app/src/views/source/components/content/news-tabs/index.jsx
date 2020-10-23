@@ -4,6 +4,7 @@ class NewsTabs extends React.Component {
     let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
     this.tab = React.createRef();
+    this.tabContent = React.createRef();
     if (contextHubData) {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
@@ -581,7 +582,7 @@ class NewsTabs extends React.Component {
                       </ol>
                       {Object.keys(this.state.tabHeading).map((value, index) => {
                         return (
-                          <div role="tabpanel" tabindex={index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel">
+                          <div role="tabpanel" tabindex={index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
                             <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex={index}>{this.state.tabHeading[value].year}</div>
                             <div class="responsivegrid">
                               <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
