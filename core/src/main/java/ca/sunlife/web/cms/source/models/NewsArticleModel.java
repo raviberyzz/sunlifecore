@@ -114,6 +114,9 @@ public class NewsArticleModel {
   /** The layout resource type. */
   private String layoutResourceType;
   
+  /** The page locale default. */
+  private String pageLocaleDefault;
+  
 	/**
 	 * Gets the article data.
 	 *
@@ -276,6 +279,22 @@ public class NewsArticleModel {
 	}
 
 	/**
+	 * Gets the pageLocaleDefault.
+	 * @return the pageLocaleDefault
+	 */
+	public String getPageLocaleDefault() {
+		return pageLocaleDefault;
+	}
+
+	/**
+	 * @param pageLocaleDefault 
+	 * the pageLocaleDefault to set.
+	 */
+	public void setPageLocaleDefault(String pageLocaleDefault) {
+		this.pageLocaleDefault = pageLocaleDefault;
+	}
+
+	/**
 	 * Inits the.
 	 */
 	@ PostConstruct
@@ -320,10 +339,13 @@ public class NewsArticleModel {
 			if (null != metaDataResource) {
 				final TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
 				final Tag[] tags = null != tagManager ? tagManager.getTags(metaDataResource) : null;
+				final Locale locale = new Locale(pageLocaleDefault);
 				if( null != tags ) {
 					for(Tag tag : tags) {
 						if(tag.getTagID().startsWith("sunlife:source/business-group") || tag.getTagID().startsWith("sunlife:source/topic")) {
-							tagList.add(tag.getTitle());
+							String locTitle = tag.getLocalizedTitle(locale);
+							LOGGER.debug("locale : {} , locTitle : {}", locale, locTitle);
+							tagList.add(locTitle != null ? locTitle : tag.getTitle());
 						}
 					}
 					Collections.sort(tagList);
@@ -350,7 +372,6 @@ public class NewsArticleModel {
 	 */
 	private void setArticlePublishDate(final ValueMap articleContent) throws LoginException, RepositoryException {
 		String articlePublishedDate = StringUtils.EMPTY;
-		String pageLocaleDefault = StringUtils.EMPTY;
 		final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
 		if (null != locale && locale.length() > 0) {
 			pageLocaleDefault = locale.contains("-") ? locale.split("-")[0] : locale.split("_")[0];
