@@ -21,7 +21,7 @@
       <sly data-sly-test="${newsArticle.checkboxDisplayRating}">
          <!--/* Rating  Goes here */-->
 		 <sly data-sly-test.rateStoryVar = '${"rateStory" @ i18n}' />
-         <div data-component-render="react" data-component-render-name="article-ratings" data-component-render-props='{"rateStory":"${rateStoryVar}"}'>
+         <div data-component-render="react" data-component-render-name="article-ratings" data-component-render-props='{"rateStory":"${rateStoryVar}", "apiPath":"${request.RequestPathInfo.ResourcePath}"}'>
          	<sly data-sly-test="${wcmmode.edit}">Article ratings updated</sly>
          </div>
       </sly>
@@ -35,7 +35,7 @@
 		 <sly data-sly-test.deleteCommentConfirmVar = '${"deleteCommentConfirm" @ i18n}' />
 		 <sly data-sly-test.cancelVar = '${"cancel" @ i18n}' />
 		 <sly data-sly-test.deleteVar = '${"delete" @ i18n}' />
-         <div data-component-render="react" data-component-render-name="article-comments" data-component-render-props='{"comments":"${commentsVar}", "commentsToolTip":"${commentsToolTipVar}", "writeComment":"${writeCommentVar}", "addComment":"${addCommentVar}", "deleteComment":"${deleteCommentVar}", "deleteCommentConfirm":"${deleteCommentConfirmVar}", "cancel":"${cancelVar}", "delete":"${deleteVar}"}'>
+         <div data-component-render="react" data-component-render-name="article-comments" data-component-render-props='{"comments":"${commentsVar}", "commentsToolTip":"${commentsToolTipVar}", "writeComment":"${writeCommentVar}", "addComment":"${addCommentVar}", "deleteComment":"${deleteCommentVar}", "deleteCommentConfirm":"${deleteCommentConfirmVar}", "cancel":"${cancelVar}", "delete":"${deleteVar}", "apiPath":"${request.RequestPathInfo.ResourcePath}"}'>
          	<sly data-sly-test="${wcmmode.edit}">Article comments updated</sly>
          </div>
       </sly>
