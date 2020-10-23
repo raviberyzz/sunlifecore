@@ -12,9 +12,7 @@ class ArticleRatings extends React.Component {
       siteName: "ca",
       userACF2Id: "yq15",
       apiCall: {},
-      canSubmit: true,
-      apiPath:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
+      canSubmit: true
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -57,7 +55,7 @@ class ArticleRatings extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -85,7 +83,7 @@ class ArticleRatings extends React.Component {
       };
       $.ajax({
         type: "POST",
-        url: this.state.apiPath + ".addRating.json",
+        url: this.props.apiPath + ".ugc.addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -175,9 +173,8 @@ class ArticleComments extends React.Component {
       userName: "",
       email: "",
       apiCall: {},
-      userEmail: "",
-      apiPath:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
+      userEmail: ""
+
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -246,7 +243,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -293,7 +290,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "POST",
-      url: this.state.apiPath + ".addComment.json",
+      url: this.props.apiPath + ".ugc.addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -326,7 +323,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "DELETE",
-      url: this.state.apiPath + ".deleteComment.json",
+      url: this.props.apiPath + ".ugc.deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),

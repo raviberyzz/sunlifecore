@@ -68,12 +68,14 @@ class NewsTiles extends React.Component {
         this.state.selectedPreferenceList = res;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
+        },()=>{
+          this.tagSorting();
         });
         //this.getPreferenceList();
         console.log("Selected Preferences" + " " + res);
-        setTimeout(() => {
+       /* setTimeout(() => {
           this.tagSorting();
-        }, 1000);
+        }, 1000); */
       },
       error: (err) => {
         console.log(err);
@@ -160,8 +162,12 @@ class NewsTiles extends React.Component {
           }
           // if(jobLevel!="" && jobLevel!=undefined){
           // }
+          var jobLevelAll = "sunlife:source/job-level/all/all";
+          var businessGroupAll = "sunlife:source/business-group/all";
+          var businessUnitAll = "sunlife:source/business-unit/all";
+          var buildingLocationAll = "sunlife:source/building-location/all";
           var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, jobLevelAll, businessGroupAll, businessUnitAll, buildingLocationAll);
           this.state.newsList.filter((news) => {
             news.tags.forEach((tag) => {
               // chekc if incomin tag is for job level
@@ -226,7 +232,8 @@ class NewsTiles extends React.Component {
         }
         if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
           //preferedNewsList = userProfileArticles;
-          this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
+          //this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
+          this.state.filterNewsList = pinnedNewsList.concat(userProfileArticles);
         } else if (this.state.selectedPreferenceList.length > 0) {
           //preferedNewsList = this.state.newsList;
           this.state.filterNewsList = preferedNewsList;
@@ -283,15 +290,14 @@ class NewsTiles extends React.Component {
       }
     });
     this.state.topicsList.tags.forEach((prefer) => (prefer.isChecked = false));
+    this.state.selectedPreferenceList = [];
     this.setState({
       allChecked: false,
       businessGroupList: this.state.businessGroupList,
       topicsList: this.state.topicsList,
+      selectedPreferenceList: this.state.selectedPreferenceList
     });
     //this.filteringNewsList();
-    this.setState({
-      selectedPreferenceList: []
-    });
     this.addSelectedPreference();
     this.clearPreferences();
     this.tagSorting();
@@ -325,7 +331,8 @@ class NewsTiles extends React.Component {
         );
       });
     }
-    this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    //this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
+    this.state.filterNewsList = pinnedNewsList.concat(this.state.userProfileArticles);
     this.setState({
       filterNewsList: this.state.filterNewsList
     })

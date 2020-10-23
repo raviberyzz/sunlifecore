@@ -53,6 +53,20 @@ const Dropdown = ({ name, val, handleChange, disabled, dataParsleyRequiredMessag
     );
 };
 
+//Datalist Component
+const Datalist = ({ name, val, handleChange, disabled, dataParsleyRequiredMessage, required }) => {
+    return (
+        <div>
+            <input type="text" required={required} id={name} name={name} data-parsley-required-message={dataParsleyRequiredMessage}
+                list="city_select" class="form-dropdown form-control" onChange={handleChange} disabled={disabled} />
+            <datalist id="city_select">
+                <option></option>{val.map(values => <option value={values.value} data-attr={values.dataAttr}
+                    key={values.value}>{values.display}</option>)}
+            </datalist>
+        </div>
+    );
+};
+
 //Radio Component
 const Radio = ({ name1, value1, value2, name2, id1, id2, group, required, disabled, handleChange, dataParsleyRequiredMessage }) => {
     return (
@@ -65,35 +79,6 @@ const Radio = ({ name1, value1, value2, name2, id1, id2, group, required, disabl
         </div>
     );
 };
-
-//Datepicker Component
-const Datepick = ({ id, startDate, endDate, datepickval, disabled, required, dataParsleyRequiredMessage, dateChanged, selected }) => {
-    return (
-        datepickval.map(datevalues => {
-            if (datevalues.type === "datepicker" && datevalues.dateRange === "inYears") {
-                return (
-                    <DatePicker selected={selected[id]} required={required} id={id} className="form-control" showYearDropdown
-                        showMonthDropdown popperPlacement="bottom-left" disabled={disabled}
-                        dateFormat="dd/MM/yyyy" minDate={subYears(new Date(), startDate)} maxDate={subYears(new Date(), endDate)}
-                        dropdownMode="select" onCalendarClose={function () { $('#' + id).parsley().validate(); }}
-                        customInput={<input type="text" data-parsley-required-message={dataParsleyRequiredMessage} />}
-                        onChange={(date) => { dateChanged(date, id) }} />
-                )
-            }
-            if (datevalues.type === "datepicker" && datevalues.dateRange === "inYears&Days") {
-                return (
-                    <DatePicker selected={selected[id]} required={required} id={id} className="form-control" showYearDropdown
-                        showMonthDropdown popperPlacement="bottom-left" disabled={disabled}
-                        dateFormat="dd/MM/yyyy" minDate={subYears(new Date(), startDate)} maxDate={subDays(new Date(), endDate)}
-                        dropdownMode="select" onCalendarClose={function () { $('#' + id).parsley().validate(); }}
-                        customInput={<input type="text" data-parsley-required-message={dataParsleyRequiredMessage} />}
-                        onChange={(date) => { dateChanged(date, id) }} />
-                )
-            }
-        })
-
-    );
-}
 
 //Checkbox Component
 const Checkbox = ({ name, label, label_div_id, handleChange, html }) => {
@@ -144,145 +129,9 @@ const Modal = ({ errorMsg }) => {
     )
 }
 
-const CreateDynamicForm = ({ val, handleChange, state, dateChanged }) => {
-    return (
-        val.map(values => {
-            if (values.required === undefined && values.name != undefined && !notReq.includes(values.name)) {
-                notReq.push(values.name)
-            }
-            if (values.type === "radio") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Radio group={values.group} key={values.group} disabled={values.disabled} id1={values.firstId} id2={values.secondId} value1={values.firstv} value2={values.secondv}
-                            dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} required={values.required}
-                            name1={values.firstn} name2={values.secondn} handleChange={handleChange} />
-                    </div>
-                );
-            }
-            if (values.type === "text") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Text name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
-                            key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={handleChange}
-                            dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
-                            dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
-                            dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
-                    </div>
-                );
-            }
-            if (values.type === "textarea") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Textarea name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
-                            key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={handleChange}
-                            dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
-                            dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
-                            dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
-                    </div>
-                );
-            }
-            if (values.type === "email") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Email name={values.name} placeholder={values.placeholder} key={values.placeholder} disabled={values.disabled} maxlength={values.maxlength}
-                            required={values.required} handleChange={handleChange} dataParsleyRequiredMessage={values.dataParsleyRequiredMessage}
-                            dataParsleyPattern={values.dataParsleyPattern} dataParsleyPatternMessage={values.dataParsleyPatternMessage}
-                            dataParsleyMinlength={values.dataParsleyMinlength} dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
-                    </div>
-                );
-            }
-            if (values.type === "textdynamic") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <input className="form-control" type="text" id={values.name} name={values.name} disabled={values.disabled}
-                            value={state.d2N_provience2} placeholder={values.placeholder} onChange={handleChange} maxlength={values.maxlength}
-                            data-parsley-pattern={values.dataParsleyPattern} data-parsley-pattern-message={values.dataParsleyPatternMessage}
-                            data-parsley-required-message={values.dataParsleyRequiredMessage} required={values.required}
-                            data-parsley-minlength={values.dataParsleyMinlength} data-parsley-minlength-message={values.dataParsleyMinlengthMessage} />
-                    </div>
-                );
-            }
-            if (values.type === "dropdown") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Dropdown name={values.name} val={values.values} required={values.required} disabled={values.disabled} key={values.name}
-                            dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} handleChange={handleChange} />
-                    </div>
-                );
-            }
-            if (values.type === "datepicker") {
-                return (
-                    <div className={values.css}>
-                        <label for={values.name}>{values.label}</label>
-                        <Datepick id={values.id} key={values.id} datepickval={val} disabled={values.disabled} endDate={values.endDate} startDate={values.startDate}
-                            dateRange={values.dateRange} name={values.id} dateChanged={dateChanged} selected={state}
-                            required={values.required} dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} />
-                    </div>
-                );
-            }
-            if (values.type === "checkbox") {
-                return (
-                    <div className={values.css} id={values.id}>
-                        <Checkbox key={values.name} label_div_id={values.label_div_id} name={values.name} handleChange={handleChange}
-                            html={values.html} label={values.label} />
-                    </div>
-                );
-            }
-            if (values.type === "other") {
-                return (
-                    <div className={values.css} dangerouslySetInnerHTML={{ __html: values.html }} />
-                );
-            }
-            if (values.type === "hidden") {
-                return (
-                    <Hidden name={values.name} handleChange={handleChange} value={values.value} target={values.targets} />
-                );
-            }
-        })
-    );
-}
-
-const GetInputType = ({ val, handleChange, state, dateChanged }) => {
-    return (
-        val.map(da => {
-            return (
-                <div className="row">
-                    <CreateDynamicForm val={da.values} state={state} dateChanged={dateChanged} handleChange={handleChange} />
-                </div>
-            );
-        })
-    );
-}
-
-
-const InputMap = ({ val, handleChange, state, dateChanged }) => {
-    return (
-        val.map(newVal => {
-            if (newVal.type === "multiple" && newVal.rows != null) {
-                return (<GetInputType val={newVal.rows} handleChange={handleChange} state={state} dateChanged={dateChanged} />);
-            }
-            else if (newVal.type === "details" && newVal.rows != null) {
-                return (<GetInputType val={newVal.rows} handleChange={handleChange} />
-                );
-            }
-            else if (newVal.type === "button" && newVal.rows != null) {
-                return (<GetInputType val={newVal.rows} handleChange={handleChange} />);
-            }
-        }
-        ));
-
-}
-
 class DynamicForm extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             d2N_provience2: "",
             primaryArr: {},
@@ -313,25 +162,20 @@ class DynamicForm extends React.Component {
             return false;
     }
 
-
-
     getJson() {
         if (this.props.primaryPath != "") {
             fetch(this.props.primaryPath)
                 .then(res => res.json())
                 .then(
                     (result) => {
-                        console.log('succ ' + this.props.primaryPath)
-                        console.log('from dynamic form' + result);
                         this.setState({
                             primaryArr: result,
                             dataArr: result
                         })
                     },
                     (error) => {
-                        console.log('error ' + this.props.primaryPath)
                         console.log("err" + JSON.stringify(error));
-                    }
+                       }
                 )
         }
 
@@ -340,15 +184,13 @@ class DynamicForm extends React.Component {
                 .then(res => res.json())
                 .then(
                     (result) => {
-                        console.log('succ ' + this.props.secondaryPath)
-                        console.log('from dynamic form' + result);
                         this.setState({
                             secondaryArr: result
                         })
                     },
                     (error) => {
-                        console.log('error ' + this.props.secondaryPath)
                         console.log("err" + JSON.stringify(error));
+                      
                     }
                 )
         }
@@ -441,16 +283,10 @@ class DynamicForm extends React.Component {
     }
 
     utagLink(ev_type, ev_action, ev_title, ev_data_one, ev_data_two) {
-        console.log("ev_type: " + ev_type, "ev_action: " + ev_action, "ev_title: " + ev_title, "ev_data_one: "
-            + ev_data_one, "ev_data_two: " + ev_data_two);
         if (typeof utag !== 'undefined') {
             return (
                 utag.link({
-                    ev_type: { ev_type },
-                    ev_action: { ev_action },
-                    ev_title: { ev_title },
-                    ev_data_one: { ev_data_one },
-                    ev_data_two: { ev_data_two }
+                    ev_type: ev_type, ev_action: ev_action, ev_title: ev_title, ev_data_one: ev_data_one, ev_data_two: ev_data_two
                 })
             );
         }
@@ -502,7 +338,6 @@ class DynamicForm extends React.Component {
         return { "strRequestApi": strReq, "headers": headers }
     }
 
-
     responseFunc(output, dataFromJson) {
         const responseType = dataFromJson.apiSignature.responseType;
         if (responseType.search('EDIST') != -1) {
@@ -525,7 +360,6 @@ class DynamicForm extends React.Component {
                 $('#payment_form').submit();
             }
         }
-
     }
 
     submitForm(e) {
@@ -553,7 +387,6 @@ class DynamicForm extends React.Component {
                 this.responseFunc(output, dataFromJson);
             },
             error: (resp) => {
-                console.log('error ' + JSON.stringify(resp));
                 //popup 
                 if (dataFromJson.apiSignature.error.popup != undefined && dataFromJson.apiSignature.error.errorMsg != undefined) {
                     $('#loading-image').addClass('hidden');
@@ -561,7 +394,7 @@ class DynamicForm extends React.Component {
                 }
                 //utag error
                 if (dataFromJson.apiSignature.error.utag != undefined) {
-
+                   
                 }
             }
         });
@@ -624,19 +457,27 @@ class DynamicForm extends React.Component {
                     this.createutag(data, 'button')
                 }
                 else if (key === "disabled") {
-                    this.disabledFunc(data);
+                    data.forEach(value => {
+                        this.disabledFunc(value);
+                    });
                 }
-                else if (key === "hide" || key === "secondHide") {
-                    this.hideFunc(data);
+                else if (key === "hide") {
+                    data.forEach(value => {
+                        this.hideFunc(value);
+                    });
                 }
-                else if (key === "show" || key === "secondShow") {
-                    this.showFunc(data);
+                else if (key === "show") {
+                    data.forEach(value => {
+                        this.showFunc(value);
+                    });
                 }
                 else if (key === "animate") {
                     this.animateFunc(data);
                 }
                 else if (key === "enabled") {
-                    this.enabledFunc(data);
+                    data.forEach(value => {
+                        this.enabledFunc(value);
+                    });
                 }
                 else if (key === "api") {
                     this.submitForm(bt);
@@ -658,6 +499,17 @@ class DynamicForm extends React.Component {
         this.setState({
             [event.currentTarget.name]: event.currentTarget.value
         });
+        if (event.target.list !== undefined && event.target.list !== null) {
+            var arr = event.target.list.options;
+            for (let att in arr) {
+                if (arr[att].value === event.currentTarget.value && event.currentTarget.value !== '') {
+                    this.setState({ d2N_provience2: arr[att].getAttribute('data-attr') })
+                    this.createutag('d2N_provience2', 'dynamictext', arr[att].getAttribute('data-attr'));
+                    break;
+                }
+            }
+            this.createutag(event.currentTarget.name, 'datalist', event.currentTarget.value);
+        }
         if (event.target[event.target.selectedIndex] != undefined && event.target[event.target.selectedIndex].getAttribute('data-attr') != ''
             && event.target[event.target.selectedIndex].getAttribute('data-attr') != null) {
             this.setState({ d2N_provience2: event.target[event.target.selectedIndex].getAttribute('data-attr') })
@@ -694,17 +546,15 @@ class DynamicForm extends React.Component {
                     for (let idx in array) {
                         const val = array[idx]
                         if (val === "ev_data_two_breadcrum") {
-                            var productName = "proteskipro";
-                            // var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
-                            //     productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, " ");
+                            //var productName = "proteskipro";
+                            var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
+                              var productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, " ");
                             data2Value = data2Value.replace('ev_data_two_breadcrum', productName);
                         }
                         else {
                             const subVal = val.split(".");
                             if (type === 'radio') {
-                                // console.log('subval '+ subVal[0],subVal[1])
                                 var radioLabel = $("input[name=" + subVal[0] + "]:checked + label").text();
-
                                 data2Value = data2Value.replace(val, radioLabel);
                             }
                             else if (type === 'datepicker') {
@@ -713,6 +563,9 @@ class DynamicForm extends React.Component {
                                 data2Value = data2Value.replace(val, dateValue);
                             }
                             else if (type === "dynamictext") {
+                                data2Value = data2Value.replace(val, text);
+                            }
+                            else if(type === "datalist"){
                                 data2Value = data2Value.replace(val, text);
                             }
                             else {
@@ -740,27 +593,152 @@ class DynamicForm extends React.Component {
         var buttonDt = data.form != undefined ? data.form.buttons : undefined;
         var display = data.form != undefined ? data.form.display : undefined;
         var errorMsg = data.apiSignature != undefined ? data.apiSignature.error.errorMsg : undefined;
-        console.log(this.state)
         return (
             <>
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 dynamic-form">
-                    {
-                        this.props.form == "true" &&
+                    {this.props.form == "true" &&
                         <form className={display} id="dynamic-form-display">
                             <fieldset>
-                                {
-                                    section != undefined && section.map(sec => {
-                                        if (sec.headingTitle != null && sec.input_type != null) {
-                                            return (
-                                                <div>
-                                                    <div key={sec.headingTitle}><h2 className={sec.headingCss}>{sec.headingTitle}</h2></div>
-                                                    <InputMap val={sec.input_type} key={sec.input_type} handleChange={this.handleChange}
-                                                        state={this.state} submitForm={this.submitForm} dateChanged={this.dateChanged} />
-                                                </div>
-                                            );
-                                        }
+                                {section != undefined && section.map(sec => {
+                                    if (sec.headingTitle != null && sec.input_type != null) {
+                                        return (
+                                            <div>
+                                                <div key={sec.headingTitle}><h2 className={sec.headingCss}>{sec.headingTitle}</h2></div>
+                                                { sec.input_type.map(inputTypeArr => {
+                                                    return (<>
+                                                        { inputTypeArr.rows.map(rowsArr => {
+                                                            return (
+                                                                <div className="row">
+                                                                    { rowsArr.values.map(values => {
+                                                                        if (values.required === undefined && values.name != undefined && !notReq.includes(values.name)) {
+                                                                            notReq.push(values.name)
+                                                                        }
+                                                                        if (values.type === "radio") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Radio group={values.group} key={values.group} disabled={values.disabled} id1={values.firstId} id2={values.secondId} value1={values.firstv} value2={values.secondv}
+                                                                                        dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} required={values.required}
+                                                                                        name1={values.firstn} name2={values.secondn} handleChange={this.handleChange} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "text") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Text name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
+                                                                                        key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
+                                                                                        dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
+                                                                                        dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
+                                                                                        dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "textarea") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Textarea name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
+                                                                                        key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
+                                                                                        dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
+                                                                                        dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
+                                                                                        dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "email") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Email name={values.name} placeholder={values.placeholder} key={values.placeholder} disabled={values.disabled} maxlength={values.maxlength}
+                                                                                        required={values.required} handleChange={this.handleChange} dataParsleyRequiredMessage={values.dataParsleyRequiredMessage}
+                                                                                        dataParsleyPattern={values.dataParsleyPattern} dataParsleyPatternMessage={values.dataParsleyPatternMessage}
+                                                                                        dataParsleyMinlength={values.dataParsleyMinlength} dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "textdynamic") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <input className="form-control" type="text" id={values.name} name={values.name} disabled={values.disabled}
+                                                                                        value={this.state.d2N_provience2} placeholder={values.placeholder} onChange={this.handleChange} maxlength={values.maxlength}
+                                                                                        data-parsley-pattern={values.dataParsleyPattern} data-parsley-pattern-message={values.dataParsleyPatternMessage}
+                                                                                        data-parsley-required-message={values.dataParsleyRequiredMessage} required={values.required}
+                                                                                        data-parsley-minlength={values.dataParsleyMinlength} data-parsley-minlength-message={values.dataParsleyMinlengthMessage} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "dropdown") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Dropdown name={values.name} val={values.values} required={values.required} disabled={values.disabled} key={values.name}
+                                                                                        dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} handleChange={this.handleChange} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "datalist") {
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <Datalist name={values.name} val={values.values} required={values.required} disabled={values.disabled} key={values.name}
+                                                                                        dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} handleChange={this.handleChange} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "datepicker") {
+                                                                            var dateID = values.id;
+                                                                            var maxDateFunc
+                                                                            if (values.dateRange === "inYears") maxDateFunc = subYears(new Date(), values.endDate)
+                                                                            else maxDateFunc = subDays(new Date(), values.endDate);
+                                                                            return (
+                                                                                <div className={values.css}>
+                                                                                    <label for={values.name}>{values.label}</label>
+                                                                                    <DatePicker selected={this.state[dateID]} required={values.required} id={dateID} className="form-control" showYearDropdown
+                                                                                        showMonthDropdown popperPlacement="bottom-left" disabled={values.disabled}
+                                                                                        dateFormat="dd/MM/yyyy" minDate={subYears(new Date(), values.startDate)} maxDate={maxDateFunc}
+                                                                                        dropdownMode="select" onCalendarClose={function () { $('#' + dateID).parsley().validate(); }}
+                                                                                        customInput={<input type="text" data-parsley-required-message={values.dataParsleyRequiredMessage} />}
+                                                                                        onChange={(date) => { this.dateChanged(date, values.id) }} />
+                                                                                </div>
+                                                                            );
+                                                                        }
 
-                                    })
+                                                                        else if (values.type === "checkbox") {
+                                                                            return (
+                                                                                <div className={values.css} id={values.id}>
+                                                                                    <Checkbox key={values.name} label_div_id={values.label_div_id} name={values.name} handleChange={this.handleChange}
+                                                                                        html={values.html} label={values.label} />
+                                                                                </div>
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "other") {
+                                                                            return (
+                                                                                <div className={values.css} dangerouslySetInnerHTML={{ __html: values.html }} />
+                                                                            );
+                                                                        }
+                                                                        else if (values.type === "hidden") {
+                                                                            return (
+                                                                                <Hidden name={values.name} handleChange={this.handleChange} value={values.value} target={values.targets} />
+                                                                            );
+                                                                        }
+                                                                    })
+                                                                    }
+                                                                </div>
+                                                            );
+                                                        })
+                                                        }
+                                                    </>);
+
+                                                })}
+
+                                            </div>
+                                        );
+                                    }
+
+                                })
                                 }
                             </fieldset>
                             <div className="col-xs-12 col-sm-12 mar-top-24">
