@@ -2,7 +2,7 @@
 $(document).ready(function () {
     (function ($) {
         var apiPrefix = __slf_search_config.api_url;
-    
+
         var stringsEn = {
             filter_names: {
                 "": "All",
@@ -24,37 +24,37 @@ $(document).ready(function () {
             }
         }
         /** added on sept 18  **/
-    
+
         var stringsZh = {
-                filter_names: {
-                    "": "全部",
-                    "all": "全部",
-                    "articles": "文章",
-                    "products": "產品",
-                    "tools": "工具",
-                    "videos": "影片",
-                }
+            filter_names: {
+                "": "全部",
+                "all": "全部",
+                "articles": "文章",
+                "products": "產品",
+                "tools": "工具",
+                "videos": "影片",
+            }
         }
-    
+
         var stringsZhSG = {
-                        filter_names: {
-                            "": "全部",
-                            "all": "全部",
-                            "articles": "'文章",
-                            "products": "产品",
-                            "tools": "工具",
-                            "videos": "视频",
-                        }
+            filter_names: {
+                "": "全部",
+                "all": "全部",
+                "articles": "'文章",
+                "products": "产品",
+                "tools": "工具",
+                "videos": "视频",
+            }
         }
         var stringsIn = {
-                filter_names: {
-                    "": "Semua",
-                    "all": "Semua",
-                    "articles": "Artikel",
-                    "products": "Produk",
-                    "tools": "Fitur",
-                    "videos": "Video",
-                }
+            filter_names: {
+                "": "Semua",
+                "all": "Semua",
+                "articles": "Artikel",
+                "products": "Produk",
+                "tools": "Fitur",
+                "videos": "Video",
+            }
         }
         var stringsVn = {
             filter_names: {
@@ -66,40 +66,65 @@ $(document).ready(function () {
                 "videos": "Video",
             }
         }
-        
-            var urlParam = getParams();
-               var strings="";
-               var vgnLocaleSearch = $('html')[0].lang;
-    
-               if(vgnLocaleSearch.indexOf("fr") > -1 ){
-                strings=stringsFr;
-    
-                } else if(vgnLocaleSearch === "zh-TW"){
-                    strings=stringsZh;
-                } else if(vgnLocaleSearch === "zh-SG"){
-                    strings=stringsZhSG;
-                }else if(vgnLocaleSearch ==="id"){
-                    strings=stringsIn;
+
+        var urlParam = getParams();
+        var strings = "";
+        var vgnLocaleSearch = $('html')[0].lang;
+
+        if (vgnLocaleSearch.indexOf("fr") > -1) {
+            strings = stringsFr;
+
+        } else if (vgnLocaleSearch === "zh-TW") {
+            strings = stringsZh;
+        } else if (vgnLocaleSearch === "zh-SG") {
+            strings = stringsZhSG;
+        } else if (vgnLocaleSearch === "id") {
+            strings = stringsIn;
+        }
+        else if (vgnLocaleSearch === "vi_VN") {
+            strings = stringsVn;
+        }
+        else {
+            vgnLocaleSearch = "en_CA";
+            strings = stringsEn;
+        }
+
+        if(window.location.hostname.indexOf('source') > -1) {
+            if (vgnLocaleSearch.indexOf("fr") > -1) {
+                strings = {
+                    filter_names: {
+                        "": "Tous",
+                        "all": "Tous",
+                        "articles": "Nouvelles",
+                        "products": "Principes directeurs et lignes directrices",
+                        "tools": "Mon emploi",
+                        "videos": "Vidéos"
+                    }
                 }
-                else if(vgnLocaleSearch ==="vi_VN"){
-                            strings=stringsVn;
+            } else {
+                strings = {
+                    filter_names: {
+                        "": "All",
+                        "all": "All",
+                        "articles": "News",
+                        "products": "Policies and guidelines",
+                        "tools": "My employment",
+                        "videos": "Videos"
+                    }
                 }
-                else{
-                    vgnLocaleSearch ="en_CA";
-                    strings=stringsEn;
             }
-    
-    
-    
+        }
+
+
         /** end **/
-    
+
         //var strings = document.documentElement.lang.indexOf("fr") >= 0 ? stringsFr : stringsEn;
-    
+
         var resultTemplate = $($("#search-result-item").html()).filter(".search-result-item");
-        var filterItemTemplate =$($("#search-result-filter-item").html()).filter(".check-container");
+        var filterItemTemplate = $($("#search-result-filter-item").html()).filter(".check-container");
         var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
         var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
-    
+
         function apiCall(query) {
             var deferred = jQuery.Deferred();
             $.ajax({
@@ -110,14 +135,14 @@ $(document).ready(function () {
                 success: function (data) {
                     deferred.resolve(data);
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     deferred.reject(errorThrown)
                 }
             });
-    
+
             return deferred.promise();
         }
-    
+
         function getParams() {
             var params = {};
             if (!window.location.search) return params;
@@ -132,7 +157,7 @@ $(document).ready(function () {
             });
             return params;
         }
-    
+
         function resetPage() {
             $("#search-result-items").empty();
             $("#search-result-filter-list").empty();
@@ -142,14 +167,14 @@ $(document).ready(function () {
             $("#search-result-results").hide();
             $("#search-result-banner-top").hide();
         }
-    
+
         function searchError(err) {
             resetPage();
             console.error("Error populating search!"); // eslint-disable-line
             console.error(err); // eslint-disable-line
             $("#search-result-error").show();
         }
-    
+
         function getCurrentFilter(filters) {
             var filtered = filters.filter(function (filter) { return filter.selected; })
             if (!filtered.length) return "all";
@@ -160,24 +185,24 @@ $(document).ready(function () {
             if (!filtered.length) return 1;
             return Number(filtered[0].page);
         }
-    
+
         function buildSearchString(obj) {
             return "?" + Object.keys(obj).map(function (key) {
                 if (obj[key] === null || typeof (obj[key]) === 'undefined') return;
                 return encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]).replace(/%20/g, '+');
             }).filter(function (v) { return !!v; }).join("&");
         }
-    
+
         function trackingCall(action, filter, totalResults, searchTerm) {
             if (!filter) filter = "all";
             var ev_title;
-    
+
             if (action === 'input') ev_title = "onsite search_client input";
             else if (action === 'input') ev_title = "onsite search_client input";
             else if (action === 'typeahead') ev_title = "onsite search_typeahead_text";
             else if (action === 'filter') ev_title = "onsite search_filter";
             else return;
-    
+
             var filterName = stringsEn.filter_names[filter] || stringsEn.filter_names.all;
             var options = {
                 ev_type: "other",
@@ -188,27 +213,27 @@ $(document).ready(function () {
             };
             try {
                 utag.link(options);
-            } catch(e) {
+            } catch (e) {
                 console.log("Couldn't perform utag.link() call.") // eslint-disable-line
                 console.log(options); // eslint-disable-line
             }
         }
-    
+
         function populateResults(results, originalSearchTerm, action) {
             resetPage();
             var resultItems = results.resultsets[0].results;
             var searchTerm = results.general.query;
             var totalResults = results.general.total;
             var filters = results.result_types;
-    
+
             var currentResultType = null;
             var currentPage = getCurrentPage(results.pagination[0]);
             var totalPages = Number(results.general.page_total);
-    
+
             if (filters) {
                 currentResultType = getCurrentFilter(filters);
             }
-    
+
             function setupPaginationItem(paginationItems, page) {
                 var el = (page === 1 ? paginationFirst : paginationItem).clone();
                 el.find(".txt").text(page)
@@ -221,20 +246,20 @@ $(document).ready(function () {
                     }));
                 return paginationItems.add(el);
             }
-    
+
             if (originalSearchTerm !== searchTerm) {
                 $("#search-result-misspelling").show();
                 $("#search-result-misspelling-term").text(searchTerm);
             } else {
                 $("#search-result-misspelling").hide();
             }
-    
+
             if (!resultItems.length) {
                 $("#search-result-none").show();
                 $("#search-result-none-term").text(searchTerm);
-                try{
+                try {
                     trackingCall(action, currentResultType, totalResults, searchTerm);
-                }catch (e){
+                } catch (e) {
                     console.log('tracking call failed - no search results');
                 }
             } else {
@@ -259,13 +284,13 @@ $(document).ready(function () {
                         });
                     return el;
                 });
-    
+
                 $("#search-result-items").append(els);
-    
+
                 if (filters) {
                     var filterEls = filters.map(function (filter) {
                         if (!filter || !filter.count) return;
-    
+
                         var el = filterItemTemplate.clone();
                         el.find(".txt").text(strings.filter_names[filter.result_type || "all"])
                         el.find(".num").text(filter.count)
@@ -275,22 +300,22 @@ $(document).ready(function () {
                                 filter: filter.result_type,
                                 action: 'filter'
                             }))
-    
+
                         if (filter.selected) {
                             linkEl.click(function (event) {
                                 event.preventDefault();
                             })
                         }
-    
+
                         return el;
-                    }).filter(function (v) { return v; }) ;
+                    }).filter(function (v) { return v; });
                     $("#search-result-filter-list").append(filterEls);
                     if (filterEls.length > 1) $("#search-result-filters").show();
-                              else $("#search-result-filters").hide();
-                          } else {
-                              $("#search-result-filters").css("display", "none");
+                    else $("#search-result-filters").hide();
+                } else {
+                    $("#search-result-filters").css("display", "none");
                 }
-    
+
                 $("#search-results-pagination-previous")
                     .toggleClass("disabled", currentPage < 2)
                     .find("a")
@@ -308,12 +333,12 @@ $(document).ready(function () {
                         page: currentPage + 1
                     }));
                 var paginationItems = $();
-    
-    
+
+
                 paginationItems = setupPaginationItem(paginationItems, 1);
-    
+
                 if (currentPage >= 5 && totalPages > 6) paginationItems = paginationItems.add($('<li class="ellipsis"><a><span>&hellip;</span></a></li>'));
-    
+
                 var startPage = Math.max(currentPage - 2, 2);
                 var endPage = currentPage + 2;
                 if (currentPage < 3) {
@@ -325,11 +350,11 @@ $(document).ready(function () {
                 for (var p = startPage; p <= endPage; p++) {
                     paginationItems = setupPaginationItem(paginationItems, p);
                 }
-    
+
                 if ((totalPages - currentPage) >= 4 && totalPages > 6) paginationItems = paginationItems.add($('<li class="ellipsis"><a><span>&hellip;</span></a></li>'));
-    
+
                 paginationItems = setupPaginationItem(paginationItems, totalPages);
-    
+
                 $(paginationItems).insertBefore($("#search-results-pagination-next"));
                 $("#search-result-pagination").toggleClass("first-page", currentPage < 2);
                 $("#search-result-pagination").toggleClass("last-page", currentPage >= totalPages);
@@ -337,43 +362,43 @@ $(document).ready(function () {
                 $("#search-result-page-num").text(currentPage);
                 $("#search-result-page-total").text(results.general.page_total);
             }
-    
+
             var topBanners = results.banners.filter(function (banner) { return banner.top; });
             if (topBanners[0] && topBanners[0].top) {
                 $("#search-result-banner-top").html(topBanners[0].top).show();
             }
-    
+
             var rightBanners = results.banners.filter(function (banner) { return banner.right; });
             if (rightBanners[0] && rightBanners[0].right) {
                 $("#search-result-banner-right").html(rightBanners[0].right).show();
             }
         }
-    
+
         function init() {
             var urlParams = getParams();
             var searchString = (urlParams.q || urlParams.gq || "").trim();
             var filter = urlParams.filter || "all";
             var page = parseInt(urlParams.page);
             var action = urlParams.action;
-        
+
             if (isNaN(page)) page = 1;
-    
+
             $("form.slf-search input[name=q]").val(searchString);
             if (!searchString) {
                 resetPage();
                 return;
             }
-            apiCall({q: searchString, pt: filter, page: page}).then(function (results) {
+            apiCall({ q: searchString, pt: filter, page: page }).then(function (results) {
                 try {
                     populateResults(results, searchString, action);
-    
-                } catch(e) {
+
+                } catch (e) {
                     searchError(e);
                 }
             }, function (err) {
                 searchError(err);
             });
-    
+
             $(".search-filter-btn").click(function () {
                 $("#search-result-filter-toggle").addClass("active");
                 $("#search-result-filter-toggle .btn-close").focus();
@@ -382,7 +407,7 @@ $(document).ready(function () {
                 $("#search-result-filter-toggle").removeClass("active");
                 $(".search-filter-btn").focus();
             })
-    
+
             $("[data-refocus]").focus(function () {
                 var selector = $(this).attr("data-refocus");
                 var el = $(selector);
@@ -391,16 +416,16 @@ $(document).ready(function () {
                 }
             })
         }
-    
+
         init();
     }(jQuery));
-    
-    
+
+
     /* global.search.js*/
-    
+
     /* globals jQuery, setTimeout, clearTimeout, __slf_search_config */
     (function ($) {
-    
+
         var idCnt = 0;
         var autoCompletePrefix = __slf_search_config.autocomplete_url;
         var saytPrefix = __slf_search_config.sayt_url;
@@ -408,7 +433,7 @@ $(document).ready(function () {
             max_results: 10,
             beginning: 1
         };
-    
+
         function throttle(cb, delay) {
             var timer = null;
             return function () {
@@ -421,14 +446,14 @@ $(document).ready(function () {
                 }, delay);
             }
         }
-    
+
         function autocompleteCall(query) {
             return $.get(autoCompletePrefix, $.extend({ query: query }, autocompleteOptions), null, 'jsonp');
         }
         function saytCall(query) {
             return $.get(saytPrefix, { q: query, type: 'sayt' }, null, 'jsonp');
         }
-    
+
         function setupAutocomplete(form, mobile) {
             if (mobile) {
                 var inputEl = form.find("input[name=q]");
@@ -443,24 +468,24 @@ $(document).ready(function () {
                 var listId = "slf-autocomplete-list-mobile-" + idNum;
             }
             else {
-                    var inputEl = form.find("input[name=q]");
-                    var actionEl = form.find("input[name=action]");
-                    var submitBtn = form.find("input[type=submit]");
-                    var autocompleteListEl = form.find(".search-autocomplete-list");
-                    var saytListEl = form.find(".search-sayt-list");
-                    var dropdownEl = form.find(".search-autocomplete");
-                    var lastVal = "";
-                    var suggestionIndex = -1;
-                    var suggestions = [];
-                    var idNum = idCnt++;
-                    var listId = "slf-autocomplete-list-" + idNum;
+                var inputEl = form.find("input[name=q]");
+                var actionEl = form.find("input[name=action]");
+                var submitBtn = form.find("input[type=submit]");
+                var autocompleteListEl = form.find(".search-autocomplete-list");
+                var saytListEl = form.find(".search-sayt-list");
+                var dropdownEl = form.find(".search-autocomplete");
+                var lastVal = "";
+                var suggestionIndex = -1;
+                var suggestions = [];
+                var idNum = idCnt++;
+                var listId = "slf-autocomplete-list-" + idNum;
             }
             var submitLock = false;
-    
+
             inputEl[0].autocomplete = 'off';
-    
+
             autocompleteListEl.attr("aria-hidden", "true");
-    
+
             function updateSelection() {
                 if (suggestionIndex < 0) {
                     if (inputEl.val() !== lastVal) inputEl.val(lastVal);
@@ -472,7 +497,7 @@ $(document).ready(function () {
                 autocompleteListEl.children().removeClass("active");
                 if (suggestionIndex >= 0) autocompleteListEl.children().eq(suggestionIndex).addClass("active");
             }
-    
+
             function clickSuggestion(event) {
                 event.preventDefault();
                 var suggestion = $(this).data("slf-search-value");
@@ -481,11 +506,11 @@ $(document).ready(function () {
                 inputEl.val(suggestion);
                 form.submit();
             }
-    
+
             function updateSuggestions(q, force) {
                 return function (results) {
                     if (!force && inputEl.val() !== q) return;
-    
+
                     suggestions = results.filter(function (r) {
                         return r !== lastVal;
                     });
@@ -505,18 +530,18 @@ $(document).ready(function () {
                     updateSelection();
                 }
             }
-    
+
             function updateSayt(q, force) {
                 return function (results) {
                     if (!force && inputEl.val() !== q) return;
-    
+
                     var arr;
                     try {
-                         arr = results.results;
-                    } catch(e) {
+                        arr = results.results;
+                    } catch (e) {
                         arr = [];
                     }
-    
+
                     if (!arr.length) saytListEl.hide();
                     else saytListEl.show();
                     saytListEl.empty().append(arr.map(function (resultItem) {
@@ -527,12 +552,12 @@ $(document).ready(function () {
                     }))
                 }
             }
-    
+
             function updateEmpty() {
                 updateSuggestions([], true)([]);
                 updateSayt(null, true)();
             }
-    
+
             var getSuggestions = throttle(function () {
                 var v = inputEl.val();
                 if (v === lastVal) return;
@@ -543,7 +568,7 @@ $(document).ready(function () {
                 }
                 else updateEmpty();
             }, 200);
-    
+
             inputEl.on('focus', function (event) {
                 var v = inputEl.val();
                 var stillInDropdown = $.contains(dropdownEl[0], event.relatedTarget);
@@ -558,9 +583,9 @@ $(document).ready(function () {
             form.on('focusout', function (event) {
                 var stillInDropdown = $.contains(dropdownEl[0], event.relatedTarget) || event.relatedTarget === inputEl[0];
                 if (!submitLock && !stillInDropdown) setTimeout(function () {
-            updateEmpty();
-          }, 0);
-    
+                    updateEmpty();
+                }, 0);
+
             });
             inputEl.on('keydown', function (event) {
                 if (event.key === "ArrowDown" || event.key === "Down") {
@@ -579,36 +604,36 @@ $(document).ready(function () {
                 } else if (event.key === 'Enter') {
                     submitLock = true;
                     setTimeout(function () {
-                       submitLock = false;
+                        submitLock = false;
                     }, 0);
                 } else if (event.key !== 'Tab') {
                     getSuggestions();
-                 }
+                }
             });
-            
-        if (submitBtn) {
+
+            if (submitBtn) {
                 submitBtn.on('mousedown', function () {
                     submitLock = true;
-                setTimeout(function () {
-                            submitLock = false;
+                    setTimeout(function () {
+                        submitLock = false;
                     }, 0);
                 });
-        }
-    
+            }
+
             autocompleteListEl.on('mousedown', function (event) {
                 event.preventDefault();
             })
             saytListEl.on('mousedown', function (event) {
                 event.preventDefault();
             })
-    
+
             form.on('submit', function (event) {
                 if (!inputEl.val().trim()) {
                     event.preventDefault();
                 }
             });
         }
-    
+
         function init() {
             $("form.slf-search").each(function (i, form) {
                 form = $(form);
@@ -616,39 +641,39 @@ $(document).ready(function () {
                 form.data("slf-search-initialized", true);
                 setupAutocomplete(form);
             });
-        $("form.slf-search-mobile").each(function (i, form) {
+            $("form.slf-search-mobile").each(function (i, form) {
                 form = $(form);
                 if (form.data("slf-search-initialized")) return;
                 form.data("slf-search-initialized", true);
                 setupAutocomplete(form, 'mobile');
             });
-                    // for left nav underline, in IE - "test-decoration-color" does not work in IE.
-                    var activeLeftNav = $(".left-nav-menu .active");
-                    if (null != activeLeftNav) {
-                        var activeText = activeLeftNav.text();
-                        activeLeftNav.html("<span>" + activeText + "</span>");
-                    }
+            // for left nav underline, in IE - "test-decoration-color" does not work in IE.
+            var activeLeftNav = $(".left-nav-menu .active");
+            if (null != activeLeftNav) {
+                var activeText = activeLeftNav.text();
+                activeLeftNav.html("<span>" + activeText + "</span>");
+            }
         }
-    
+
         init();
         $(init);
     }(jQuery));
-    
-    
+
+
     //set the height of the description box to be equal across all CTA boxes
     function setEqualHeight() {
         var cta_desc_height = 0;
-    
-        $(".div-one:not(.not-aligned)").each(function() {
-                $(this).css('height', 'auto'); //allow box to grow to a default height
-                if ($(this).height() > cta_desc_height) {
-                        cta_desc_height = $(this).height();
-                }
+
+        $(".div-one:not(.not-aligned)").each(function () {
+            $(this).css('height', 'auto'); //allow box to grow to a default height
+            if ($(this).height() > cta_desc_height) {
+                cta_desc_height = $(this).height();
+            }
         });
-        $(".div-one:not(.not-aligned)").each(function() {
-                $(this).css("height", cta_desc_height);
+        $(".div-one:not(.not-aligned)").each(function () {
+            $(this).css("height", cta_desc_height);
         });
-        }
-    });
-        
+    }
+});
+
     // /** ADOBE GlobalSEARCH JS ENDS HERE **/
