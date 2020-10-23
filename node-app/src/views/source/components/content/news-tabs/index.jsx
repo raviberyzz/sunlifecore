@@ -446,7 +446,7 @@ class NewsTabs extends React.Component {
     });
   }
 
-  tabClick(event) {
+  tabClick() {
     var element = event.target;
     var tabs = document.getElementsByClassName("cmp-tabs__tab");
     tabs.forEach((index) => {
