@@ -41,7 +41,7 @@ class NewsTabs extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
-    //this.tabClick = this.tabClick.bind(this);
+    this.tabClick = this.tabClick.bind(this);
   }
 
   componentDidMount() {
@@ -54,7 +54,7 @@ class NewsTabs extends React.Component {
      },1000) */
 
     this.tagSorting();
-    tabClick=()=> {
+   /* tabClick=()=> {
       var element = this.tab.current;
       var tabs = document.getElementsByClassName("cmp-tabs__tab");
       tabs.forEach((index) => {
@@ -84,9 +84,11 @@ class NewsTabs extends React.Component {
           }
         }
       })
-    }
+    }*/
   }
-
+  tabClick(){
+    console.log(this.tab.current);
+  }
   // get the selected preferences on page load
   retrieveSelectedPreference() {
     $.ajax({
