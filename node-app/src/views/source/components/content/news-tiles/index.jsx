@@ -68,14 +68,14 @@ class NewsTiles extends React.Component {
         this.state.selectedPreferenceList = res;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
-        },()=>{
+        }, () => {
           this.tagSorting();
         });
         //this.getPreferenceList();
         console.log("Selected Preferences" + " " + res);
-       /* setTimeout(() => {
-          this.tagSorting();
-        }, 1000); */
+        /* setTimeout(() => {
+           this.tagSorting();
+         }, 1000); */
       },
       error: (err) => {
         console.log(err);
@@ -145,8 +145,17 @@ class NewsTiles extends React.Component {
             news.pinArticle
           );
         });
+        if (pinnedArticles.length > 0) {
+          pinnedArticles.sort(function (a, b) {
+            return (
+              a.pinArticle - b.pinArticle ||
+              new Date(b.publishedDate) - new Date(a.publishedDate) ||
+              a.heading.localeCompare(b.heading)
+            );
+          });
+        }
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
+        if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
@@ -160,30 +169,35 @@ class NewsTiles extends React.Component {
           if (buildingLocation != "" && buildingLocation != undefined) {
             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
           }
-          // if(jobLevel!="" && jobLevel!=undefined){
-          // }
-          var jobLevelAll = "sunlife:source/job-level/all/all";
-          var businessGroupAll = "sunlife:source/business-group/all";
-          var businessUnitAll = "sunlife:source/business-unit/all";
-          var buildingLocationAll = "sunlife:source/building-location/all";
+
           var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, jobLevelAll, businessGroupAll, businessUnitAll, buildingLocationAll);
-          this.state.newsList.filter((news) => {
-            news.tags.forEach((tag) => {
-              // chekc if incomin tag is for job level
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          // filter the news article if they match BG & BU & BL & JL
+          this.state.newsList.forEach((news) => {
+            news.tags.forEach((tag, index) => {
               if (tag.includes('job-level')) {
-                tag = tag.split('/')
-                tag = tag[tag.length - 1]
-              }
-              if (userProfileFilters.includes(tag)) {
-                userProfileArticles.push(news);
+                var jL = tag.split('/');
+                var jL = jL[jL.length - 1];
+                news.tags[index] = jL;
               }
             })
+            filterProfileArticles(userProfileFilters, news.tags);
+            if (filterProfileArticles(userProfileFilters, news.tags)) {
+              this.state.userProfileArticles.push(news);
+            }
+          })
+          function filterProfileArticles(a, b) {
+            return (a.every(el => b.includes(el)));
+          }
+        } else {
+          //if no job profile filter the news articles by "all" tag. 
+          this.state.userProfileArticles = this.state.newsList.filter((news) => {
+            return (news.tags && news.tags.some((val) => val.includes("/all")))
           })
         }
-        // filter the response articles if there are any selected preferences
+        // if any selected preferences filter the articles from previously selected userProfile articles
         if (this.state.selectedPreferenceList.length > 0) {
-          preferedNewsList = this.state.newsList.filter((news) => {
+          preferedNewsList = this.state.userProfileArticles.filter((news) => {
             return (
               !news.pinArticle &&
               news.tags &&
@@ -192,52 +206,12 @@ class NewsTiles extends React.Component {
               )
             );
           });
-          /* pinnedNewsList = this.state.newsList.filter((news) => {
-             return (
-               news.pinArticle &&
-               news.tags &&
-               news.tags.some(
-                 (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-               )
-             );
-           }); */
         }
-        // Sort pinned articles 
-        if (pinnedNewsList.length > 0) {
-          pinnedNewsList.sort(function (a, b) {
-            return (
-              a.pinArticle - b.pinArticle ||
-              b.publishedDate - a.publishedDate ||
-              a.heading.localeCompare(b.heading)
-            );
-          });
-        }
-        // sort the article list which is filtered according to preferences
-        if (preferedNewsList.length > 0) {
-          preferedNewsList.sort(function (a, b) {
-            return (
-              b.publishedDate - a.publishedDate ||
-              a.heading.localeCompare(b.heading)
-            );
-          });
-        }
-        if (pinnedNewsList.length > 0) {
-          this.state.filterNewsList = this.mergeArray(
-            preferedNewsList,
-            pinnedNewsList,
-            pinnedNewsList[0].pinArticle - 1
-          );
-        } else {
-          this.state.filterNewsList = preferedNewsList;
-        }
-        if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
-          //preferedNewsList = userProfileArticles;
-          //this.state.filterNewsList = this.mergeArray(pinnedNewsList, userProfileArticles);
-          this.state.filterNewsList = pinnedNewsList.concat(userProfileArticles);
-        } else if (this.state.selectedPreferenceList.length > 0) {
-          //preferedNewsList = this.state.newsList;
-          this.state.filterNewsList = preferedNewsList;
-        }
+        preferedNewsList.sort(function (a, b) {
+          // || a.heading.localeCompare(b.heading)
+          return (new Date(b.publishedDate) - new Date(a.publishedDate));
+        });
+        this.state.filterNewsList = pinnedArticles.concat(preferedNewsList);
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
