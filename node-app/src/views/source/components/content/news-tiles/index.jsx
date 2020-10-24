@@ -145,8 +145,8 @@ class NewsTiles extends React.Component {
             news.pinArticle
           );
         });
-        if (pinnedArticles.length > 0) {
-          pinnedArticles.sort(function (a, b) {
+        if (pinnedNewsList.length > 0) {
+          pinnedNewsList.sort(function (a, b) {
             return (
               a.pinArticle - b.pinArticle ||
               new Date(b.publishedDate) - new Date(a.publishedDate) ||
@@ -211,7 +211,7 @@ class NewsTiles extends React.Component {
           // || a.heading.localeCompare(b.heading)
           return (new Date(b.publishedDate) - new Date(a.publishedDate));
         });
-        this.state.filterNewsList = pinnedArticles.concat(preferedNewsList);
+        this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
