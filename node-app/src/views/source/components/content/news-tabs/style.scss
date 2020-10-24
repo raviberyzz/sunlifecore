@@ -166,3 +166,10 @@
         }
     }
 }
+
+.cmp-tabs__tabpanel{
+    display: none;
+}
+.cmp-tabs__tabpanel.cmp-tabs__tabpanel--active{
+    display:block;
+}
