@@ -24,6 +24,7 @@ class NewsTiles extends React.Component {
       newsList: [],
       filterNewsList: [],
       selectedPreferenceTags: [],
+      pinnedNewsList:[],
       userProfileArticles: []
     };
 
@@ -137,16 +138,15 @@ class NewsTiles extends React.Component {
       success: (response) => {
         this.state.newsList = response;
         let userProfileArticles = [];
-        let pinnedNewsList = [];
         let preferedNewsList = [];
         // filter the whole response articles for pinned articles, as pinned articles are global 
-        pinnedNewsList = this.state.newsList.filter((news) => {
+        this.state.pinnedNewsList = this.state.newsList.filter((news) => {
           return (
             news.pinArticle
           );
         });
-        if (pinnedNewsList.length > 0) {
-          pinnedNewsList.sort(function (a, b) {
+        if (this.state.pinnedNewsList.length > 0) {
+          this.state.pinnedNewsList.sort(function (a, b) {
             return (
               a.pinArticle - b.pinArticle ||
               new Date(b.publishedDate) - new Date(a.publishedDate) ||
@@ -216,11 +216,12 @@ class NewsTiles extends React.Component {
           // || a.heading.localeCompare(b.heading)
           return (new Date(b.publishedDate) - new Date(a.publishedDate));
         });
-        this.state.filterNewsList = pinnedNewsList.concat(preferedNewsList);
+        this.state.filterNewsList = this.state.pinnedNewsList.concat(preferedNewsList);
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
-          userProfileArticles: userProfileArticles
+          userProfileArticles: userProfileArticles,
+          pinnedNewsList:this.state.pinnedNewsList
         });
       },
       error: (err) => {
@@ -285,15 +286,15 @@ class NewsTiles extends React.Component {
 
   clearPreferences() {
     this.state.selectedPreferenceList = [];
-    let pinnedNewsList = [];
+
     // filter the whole response articles for pinned articles, as pinned articles are global 
-    pinnedNewsList = this.state.newsList.filter((news) => {
+   /* pinnedNewsList = this.state.newsList.filter((news) => {
       return (
         news.pinArticle
       );
-    });
+    });*/
     // Sort pinned articles 
-    if (pinnedNewsList.length > 0) {
+    /*if (pinnedNewsList.length > 0) {
       pinnedNewsList.sort(function (a, b) {
         return (
           a.pinArticle - b.pinArticle ||
@@ -301,7 +302,7 @@ class NewsTiles extends React.Component {
           a.heading.localeCompare(b.heading)
         );
       });
-    }
+    } */
     if (this.state.userProfileArticles.length > 0) {
       this.state.userProfileArticles.sort(function (a, b) {
         return (
@@ -311,7 +312,7 @@ class NewsTiles extends React.Component {
       });
     }
     //this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
-    this.state.filterNewsList = pinnedNewsList.concat(this.state.userProfileArticles);
+    this.state.filterNewsList = this.state.pinnedNewsList.concat(this.state.userProfileArticles);
     this.setState({
       filterNewsList: this.state.filterNewsList
     })
@@ -337,7 +338,7 @@ class NewsTiles extends React.Component {
         }
       }
     });
-    let pinnedNewsList = [];
+    //let pinnedNewsList = [];
     let preferedNewsList = [];
     /* preferences apply analytics starts here */
     businessTitle = businessTitle.join();
@@ -352,7 +353,7 @@ class NewsTiles extends React.Component {
     });
     /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
-      preferedNewsList = this.state.newsList.filter((news) => {
+      preferedNewsList = this.state.userProfileArticles.filter((news) => {
         return (
           !news.pinArticle &&
           news.tags &&
@@ -361,7 +362,7 @@ class NewsTiles extends React.Component {
           )
         );
       });
-      pinnedNewsList = this.state.newsList.filter((news) => {
+     /* pinnedNewsList = this.state.newsList.filter((news) => {
         return (
           news.pinArticle &&
           news.tags &&
@@ -369,27 +370,27 @@ class NewsTiles extends React.Component {
             (val) => this.state.selectedPreferenceList.indexOf(val) > -1
           )
         );
-      });
+      });*/
     } else {
-      preferedNewsList = this.state.newsList;
+      preferedNewsList = this.state.userProfileArticles;
     }
-    pinnedNewsList.sort(function (a, b) {
+   /* pinnedNewsList.sort(function (a, b) {
       return (
         a.pinArticle - b.pinArticle ||
         b.publishedDate - a.publishedDate ||
         a.heading.localeCompare(b.heading)
       );
-    });
+    });*/
     preferedNewsList.sort(function (a, b) {
       return (
         b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading)
       );
     });
-    if (pinnedNewsList.length > 0) {
+    if (this.state.pinnedNewsList.length > 0) {
       this.state.filterNewsList = this.mergeArray(
         preferedNewsList,
-        pinnedNewsList,
-        pinnedNewsList[0].pinArticle - 1
+        this.state.pinnedNewsList,
+        this.state.pinnedNewsList[0].pinArticle - 1
       );
     }
     this.setState({
