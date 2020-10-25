@@ -169,11 +169,11 @@ class NewsTiles extends React.Component {
           if (buildingLocation != "" && buildingLocation != undefined) {
             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
           }
-
           var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
+          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
           // filter the news article if they match BG & BU & BL & JL
-          this.state.newsList.forEach((news) => {
+          // code to be removed
+         /* this.state.newsList.forEach((news) => {
             news.tags.forEach((tag, index) => {
               if (tag.includes('job-level')) {
                 var jL = tag.split('/');
@@ -188,11 +188,16 @@ class NewsTiles extends React.Component {
           })
           function filterProfileArticles(a, b) {
             return (a.every(el => b.includes(el)));
-          }
+          } */
+          //code to be removed ends
+          this.state.userProfileArticles = this.state.newsList.filter((news) => {
+            return (!news.pinArticle && news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+          })
+
         } else {
           //if no job profile filter the news articles by "all" tag. 
           this.state.userProfileArticles = this.state.newsList.filter((news) => {
-            return (news.tags && news.tags.some((val) => val.includes("/all")))
+            return (!news.pinArticle && news.tags && news.tags.some((val) => val.includes("/job-level/all/all")))
           })
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
