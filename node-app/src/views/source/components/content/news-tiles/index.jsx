@@ -211,6 +211,8 @@ class NewsTiles extends React.Component {
               )
             );
           });
+        } else{
+          preferedNewsList = this.state.userProfileArticles;
         }
         preferedNewsList.sort(function (a, b) {
           // || a.heading.localeCompare(b.heading)
