@@ -222,7 +222,7 @@ class NewsTiles extends React.Component {
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
-          userProfileArticles: userProfileArticles,
+          userProfileArticles: preferedNewsList,
           pinnedNewsList:this.state.pinnedNewsList
         });
       },
@@ -305,19 +305,19 @@ class NewsTiles extends React.Component {
         );
       });
     } */
-    if (this.state.userProfileArticles.length > 0) {
+   /* if (this.state.userProfileArticles.length > 0) {
       this.state.userProfileArticles.sort(function (a, b) {
         return (
           b.publishedDate - a.publishedDate ||
           a.heading.localeCompare(b.heading)
         );
       });
-    }
+    } */
     //this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
-    this.state.filterNewsList = this.state.pinnedNewsList.concat(this.state.userProfileArticles);
+   /* this.state.filterNewsList = this.state.pinnedNewsList.concat(this.state.userProfileArticles);
     this.setState({
       filterNewsList: this.state.filterNewsList
-    })
+    }) */
   }
 
   filteringNewsList() {
