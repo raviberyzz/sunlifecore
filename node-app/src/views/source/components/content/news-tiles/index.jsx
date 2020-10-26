@@ -80,7 +80,10 @@ class NewsTiles extends React.Component {
       success: (response) => {
         this.state.businessGroupList = response["business-group"];
         this.state.topicsList = response["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
+        this.state.businessGroupList.tags.forEach((data,index) => {
+          if(data.id == "sunlife:source/business-group/all" || data.id == "sunlife:source/business-group/na"){
+            this.state.businessGroupList.tags.splice(index,1);
+          }
           var obj = {};
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
