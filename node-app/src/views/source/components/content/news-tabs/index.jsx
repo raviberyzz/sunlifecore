@@ -40,7 +40,7 @@ class NewsTabs extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
-    //this.tabClick = this.tabClick.bind(this);
+    this.tabClick = this.tabClick.bind(this);
   }
 
   componentDidMount() {
@@ -50,21 +50,6 @@ class NewsTabs extends React.Component {
 
 
     this.tagSorting();
-    tabClick = () => {
-      var tab = $(this);
-      var tab_number=$(tab).index();
-      var tab_child=tab_number+1;
-      $(tab).addClass('cmp-tabs__tab--active');
-      $(tab).attr('aria-selected','true');
-      $(tab).siblings().attr('aria-selected','false');
-      $(tab).siblings().removeClass('cmp-tabs__tab--active');
-      // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
-      // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
-      $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
-      $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).addClass('cmp-tabs__tabpanel--active');
-      $(tab).siblings().attr('tabindex','-1');
-      $(tab).attr('tabindex','0');
-    }
   }
  
   // get the selected preferences on page load
@@ -449,7 +434,21 @@ class NewsTabs extends React.Component {
     });
   }
 
-
+  tabClick() {
+    var tab = $(this);
+    var tab_number=$(tab).index();
+    var tab_child=tab_number+1;
+    $(tab).addClass('cmp-tabs__tab--active');
+    $(tab).attr('aria-selected','true');
+    $(tab).siblings().attr('aria-selected','false');
+    $(tab).siblings().removeClass('cmp-tabs__tab--active');
+    // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
+    // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
+    $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
+    $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).addClass('cmp-tabs__tabpanel--active');
+    $(tab).siblings().attr('tabindex','-1');
+    $(tab).attr('tabindex','0');
+  }
   render() {
     return (
       <div class="news-wrapper">
