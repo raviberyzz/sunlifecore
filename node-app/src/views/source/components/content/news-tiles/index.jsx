@@ -119,7 +119,7 @@ class NewsTiles extends React.Component {
 
   // Get all the news Articles 
   getNewsList() {
-    fetch(`${this.props.resourcePath}.news.${this.state.pageLang}.json`,)
+    fetch(`${this.props.resourcePath}.news.${this.state.pageLang}.json`)
       .then((response) => {
         this.state.newsList = response;
         let userProfileArticles = [];
