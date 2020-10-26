@@ -47,7 +47,7 @@ class NewsTiles extends React.Component {
     // this.getNewsTilesData();
     /**adding all the functions with in component did mount */
     this.retrieveSelectedPreference();
-   // this.getPreferenceList();
+    this.getPreferenceList();
     this.getNewsList();
 
     /**adding all the functions with in component did mount */
@@ -66,8 +66,8 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.getPreferenceList();
-          setTimeout(()=>{this.tagSorting()},500)
+          //this.getPreferenceList();
+          this.tagSorting();
         });
       },
       error: (err) => {
