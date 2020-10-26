@@ -1,13 +1,9 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
-    if (contextHubData) {
-      let userProfile = JSON.parse(
-        localStorage.getItem("ContextHubPersistence")
-      );
-      defaultBGValue = userProfile.store.profile.businessGroup;
+    if (contextHub) {
+      defaultBGValue = ContextHub.getItem('profile').businessGroup;
     }
     this.state = {
       defaultBG: defaultBGValue,
@@ -51,7 +47,7 @@ class NewsTiles extends React.Component {
     // this.getNewsTilesData();
     /**adding all the functions with in component did mount */
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
+   // this.getPreferenceList();
     this.getNewsList();
 
     /**adding all the functions with in component did mount */
@@ -70,13 +66,9 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+          this.getPreferenceList();
+          setTimeout(()=>{this.tagSorting()},500)
         });
-        //this.getPreferenceList();
-        console.log("Selected Preferences" + " " + res);
-        /* setTimeout(() => {
-           this.tagSorting();
-         }, 1000); */
       },
       error: (err) => {
         console.log(err);
@@ -160,6 +152,7 @@ class NewsTiles extends React.Component {
           });
          /**new code ends here */
         // filter the response articles by user profile data if user profile data exists
+        if(ContextHub.getItem('profile').businessGroup != undefined && ContextHub.getItem('profile').businessUnit != undefined && ContextHub.getItem('profile').buildingLocation != undefined && ContextHub.getItem('profile').jobLevel != undefined){
         if (ContextHub.getItem('profile').businessGroup != "" || ContextHub.getItem('profile').businessUnit != "" || ContextHub.getItem('profile').buildingLocation != "" || ContextHub.getItem('profile').jobLevel != "") {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
           var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -182,7 +175,7 @@ class NewsTiles extends React.Component {
           userProfileFilters.push(businessGroup,"sunlife:source/business-group/all","sunlife:source/business-group/na");
           userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
           userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
-          userJobLevelFilters.push(jobLevel, "sunlife:source/job-level/all", "sunlife:source/job-level/na");
+          userJobLevelFilters.push(jobLevel, "all", "na");
           // filter the news article if they match BG & BU & BL & JL
           // code to be removed
          /* this.state.newsList.forEach((news) => {
@@ -226,11 +219,11 @@ class NewsTiles extends React.Component {
             b.publishedDate - a.publishedDate ||
             a.heading.localeCompare(b.heading)});
           this.state.userProfileArticles = JLArticles;
-
+        }
         } else {
           //if no job profile filter the news articles by "all" tag. 
           var noUserArticles = []
-          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na', 'sunlife:source/job-level/all/all']
+          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na']
           noUserArticles = this.state.newsList.filter((news) => {
             return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val)> -1))
           })
