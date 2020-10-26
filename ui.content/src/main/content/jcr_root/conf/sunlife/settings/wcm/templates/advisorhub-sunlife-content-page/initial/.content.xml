@@ -17,7 +17,7 @@
                 sling:resourceType="sunlife/advisorhub/components/content/breadcrumb"
                 hideCurrent="false"
                 showHidden="false"
-                socialShareReqd="true"
+                socialShareReqd="false"
                 startLevel="4">
                  <socialIcons
                     jcr:primaryType="nt:unstructured"
