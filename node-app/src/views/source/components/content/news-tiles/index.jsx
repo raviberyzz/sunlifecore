@@ -2,7 +2,7 @@ class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
     let defaultBGValue = "";
-    if (contextHub) {
+    if (ContextHub) {
       defaultBGValue = ContextHub.getItem('profile').businessGroup;
     }
     this.state = {
