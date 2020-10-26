@@ -140,12 +140,12 @@ class NewsTiles extends React.Component {
         let userProfileArticles = [];
         let preferedNewsList = [];
         // filter the whole response articles for pinned articles, as pinned articles are global 
-        this.state.pinnedNewsList = this.state.newsList.filter((news) => {
+        /* this.state.pinnedNewsList = this.state.newsList.filter((news) => {
           return (
             news.pinArticle
           );
         });
-        if (this.state.pinnedNewsList.length > 0) {
+       if (this.state.pinnedNewsList.length > 0) {
           this.state.pinnedNewsList.sort(function (a, b) {
             return (
               a.pinArticle - b.pinArticle ||
@@ -153,9 +153,14 @@ class NewsTiles extends React.Component {
               a.heading.localeCompare(b.heading)
             );
           });
-        }
+        } */
+          /**new code starts here  */
+          this.state.newsList.sort(function (a, b) {
+            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+          });
+         /**new code ends here */
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
+        if (ContextHub.getItem('profile').businessGroup != "" || ContextHub.getItem('profile').businessUnit != "" || ContextHub.getItem('profile').buildingLocation != "" || ContextHub.getItem('profile').jobLevel != "") {
           var businessGroup = ContextHub.getItem('profile').businessGroup;
           var businessUnit = ContextHub.getItem('profile').businessUnit;
           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
@@ -170,7 +175,14 @@ class NewsTiles extends React.Component {
             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
           }
           var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
+          var userBUFilters = [];
+          var userBLFilters = [];
+          var userJobLevelFilters = []
+          //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
+          userProfileFilters.push(businessGroup,"sunlife:source/business-group/all","sunlife:source/business-group/na");
+          userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
+          userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
+          userJobLevelFilters.push(jobLevel, "sunlife:source/job-level/all", "sunlife:source/job-level/na");
           // filter the news article if they match BG & BU & BL & JL
           // code to be removed
          /* this.state.newsList.forEach((news) => {
@@ -190,19 +202,48 @@ class NewsTiles extends React.Component {
             return (a.every(el => b.includes(el)));
           } */
           //code to be removed ends
-          this.state.userProfileArticles = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+          var BGArticles,BUArticles,BLArticles,JLArticles;
+          BGArticles = this.state.newsList.filter((news) => {
+            //Articles filtered by business Group
+            return (news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
           })
+          BUArticles = BGArticles.filter((news)=>{
+            return (news.tags && news.tags.some((val)=> userBUFilters.indexOf(val) > -1));
+          })
+          BLArticles = BUArticles.filter((news)=>{
+            return (news.tags && news.tags.some((val)=> userBLFilters.indexOf(val) > -1));
+          })
+          JLArticles = BLArticles.filter((news)=>{
+            return (news.tags && news.tags.some((val)=> {
+              if(val.includes('/job-level')){
+                val = val.split('/');
+                val = val[val.length-1];
+                userJobLevelFilters.indexOf(val) > -1
+              }
+            }));
+          })
+          JLArticles.sort(function(a,b){ a.pinArticle - b.pinArticle ||
+            b.publishedDate - a.publishedDate ||
+            a.heading.localeCompare(b.heading)});
+          this.state.userProfileArticles = JLArticles;
 
         } else {
           //if no job profile filter the news articles by "all" tag. 
-          this.state.userProfileArticles = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && news.tags.some((val) => val.includes("/job-level/all/all")))
+          var noUserArticles = []
+          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na', 'sunlife:source/job-level/all/all']
+          noUserArticles = this.state.newsList.filter((news) => {
+            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val)> -1))
+          })
+          this.state.userProfileArticles = noUserArticles.sort(function(a,b){
+            a.pinArticle - b.pinArticle ||
+            b.publishedDate - a.publishedDate ||
+            a.heading.localeCompare(b.heading)
           })
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
-        if (this.state.selectedPreferenceList.length > 0) {
-          preferedNewsList = this.state.userProfileArticles.filter((news) => {
+        if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
+          var preferenceArticles = [];
+          preferenceArticles = this.state.newsList.filter((news) => {
             return (
               !news.pinArticle &&
               news.tags &&
@@ -211,14 +252,18 @@ class NewsTiles extends React.Component {
               )
             );
           });
+          preferenceArticles.sort(function (a, b) {
+            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+          });
+          this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else{
-          preferedNewsList = this.state.userProfileArticles;
+          this.state.filterNewsList = this.state.userProfileArticles;
         }
-        preferedNewsList.sort(function (a, b) {
+        /*preferedNewsList.sort(function (a, b) {
           // || a.heading.localeCompare(b.heading)
           return (new Date(b.publishedDate) - new Date(a.publishedDate));
-        });
-        this.state.filterNewsList = this.state.pinnedNewsList.concat(preferedNewsList);
+        }); */
+        //this.state.filterNewsList = this.state.pinnedNewsList.concat(preferedNewsList);
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
