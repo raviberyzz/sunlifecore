@@ -528,6 +528,8 @@ class NewsTiles extends React.Component {
     location.href = this.state.filterNewsList[key].pagePath;
   }
   render() {
+    return(
+      <div>
     { this.state.loading && (<div><img src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>) }
     {
       !this.state.loading && (
@@ -817,8 +819,10 @@ class NewsTiles extends React.Component {
             </div>
           </div>
         </div>
-      );
+      )
     }
+    </div>
+    )
   }
 }
 reactComponents["news-tiles"] = NewsTiles;
