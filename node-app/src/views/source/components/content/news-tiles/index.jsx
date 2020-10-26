@@ -221,7 +221,8 @@ class NewsTiles extends React.Component {
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
           userProfileArticles: preferedNewsList,
-          pinnedNewsList: this.state.pinnedNewsList
+          pinnedNewsList: this.state.pinnedNewsList,
+          loading:false
         });
       },
       error: (err) => {
