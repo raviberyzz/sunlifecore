@@ -120,6 +120,7 @@ class NewsTiles extends React.Component {
   // Get all the news Articles 
   getNewsList() {
     fetch(`${this.props.resourcePath}.news.${this.state.pageLang}.json`)
+    .thne((response)=> response.json())
       .then((response) => {
         this.state.newsList = response;
         let userProfileArticles = [];
@@ -221,6 +222,9 @@ class NewsTiles extends React.Component {
           pinnedNewsList: this.state.pinnedNewsList,
           loading: false
         });
+      })
+      .catch((error)=>{
+        console.log(error);
       })
     /*$.ajax({
       type: "GET",
