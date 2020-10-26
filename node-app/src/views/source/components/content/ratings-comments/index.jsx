@@ -10,7 +10,7 @@ class ArticleRatings extends React.Component {
       ratingExist: false,
       articlePath: "",
       siteName: "ca",
-      userACF2Id: "yq15",
+      userACF2Id: "",
       apiCall: {},
       canSubmit: true
     };
@@ -225,7 +225,7 @@ class ArticleComments extends React.Component {
     // return moment(date).format('MMM DD');
   }
   selectUserComment() {
-    if (ContextHub != undefined) {
+    if (ContextHub !== undefined) {
       let userDetails = ContextHub.getItem("profile");
       if (userDetails.email) {
         console.log(userDetails.email);
@@ -315,7 +315,6 @@ class ArticleComments extends React.Component {
     /* news comment submit analytics ends here */
   }
   deleteComment(commentId, event) {
-    console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
       commentId: commentId
@@ -384,7 +383,7 @@ class ArticleComments extends React.Component {
                     <span class="time">{value.updatedDate}</span>
                     <div
                       class={`three-dots ${
-                        value.email == this.state.userEmail ? "show" : ""
+                        value.email == this.state.userEmail || hasUserGroups ?  "show" : "" 
                       }`}
                     >
                       <p class="dots">...</p>
@@ -397,7 +396,7 @@ class ArticleComments extends React.Component {
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                            Delete 
+                             {this.props.delete}
                           </a>
                         </div>
                       </div>
@@ -415,7 +414,7 @@ class ArticleComments extends React.Component {
                       <div class="modal-header">
                         <div class="modal-title">
                           <h3 class="modal-heading" tabindex="0">
-                          Delete Comment{/* {this.props.deleteComment} */}
+                          {this.props.deleteComment}
                           </h3>
                           <button
                             type="button"
@@ -427,8 +426,8 @@ class ArticleComments extends React.Component {
                         </div>
                       </div>
                       <div class="modal-body" tabindex="0">
-                      {/* {this.props.deleteCommentConfirm} */}
-                      Are you sure you want to delete the the comment?
+                      {this.props.deleteCommentConfirm} 
+
                       </div>
                       <div class="modal-footer">
                         <button
@@ -440,14 +439,14 @@ class ArticleComments extends React.Component {
                         </button>
                         <button
                           type="button"
-                          class="delete"
+                          enable={this.state}
                           onClick={this.deleteComment.bind(
                             this,
                             value.commentId
                           )}
                           data-dismiss="modal"
                         >
-                          Delete{/* {this.props.delete} */}
+                         {this.props.delete} 
                         </button>
                       </div>
                     </div>
