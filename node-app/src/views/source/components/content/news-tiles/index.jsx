@@ -1,13 +1,9 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
-    if (contextHubData) {
-      let userProfile = JSON.parse(
-        localStorage.getItem("ContextHubPersistence")
-      );
-      defaultBGValue = userProfile.store.profile.businessGroup;
+    if (contextHub) {
+      defaultBGValue = ContextHub.getItem('profile').businessGroup;
     }
     this.state = {
       defaultBG: defaultBGValue,
@@ -51,7 +47,7 @@ class NewsTiles extends React.Component {
     // this.getNewsTilesData();
     /**adding all the functions with in component did mount */
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
+   // this.getPreferenceList();
     this.getNewsList();
 
     /**adding all the functions with in component did mount */
@@ -70,13 +66,9 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+          this.getPreferenceList();
+          setTimeout(()=>{this.tagSorting()},500)
         });
-        //this.getPreferenceList();
-        console.log("Selected Preferences" + " " + res);
-        /* setTimeout(() => {
-           this.tagSorting();
-         }, 1000); */
       },
       error: (err) => {
         console.log(err);
