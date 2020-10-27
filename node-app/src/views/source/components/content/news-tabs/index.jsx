@@ -24,6 +24,7 @@ class NewsTabs extends React.Component {
       selectedPreferenceTags: [],
       userProfileArticles: [],
       businessGroupIdTitle: [],
+      loading: true
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
