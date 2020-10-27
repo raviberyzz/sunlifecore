@@ -389,7 +389,7 @@ class ArticleComments extends React.Component {
                       <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
-                          <a href="javascript:void(0)">Edit</a>
+                    <a href="javascript:void(0)">{this.props.edit}</a>
                           <br />
                           <a
                             class="delete-option"
@@ -439,7 +439,7 @@ class ArticleComments extends React.Component {
                         </button>
                         <button
                           type="button"
-                          enable={this.state}
+                          class="primary-blue-button-form"
                           onClick={this.deleteComment.bind(
                             this,
                             value.commentId

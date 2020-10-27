@@ -49,7 +49,12 @@ class NewsTiles extends React.Component {
     this.getPreferenceList();
     this.getNewsList();
   }
-
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.selectedPreferenceList!== this.state.selectedPreferenceList) {
+      this.tagSorting();
+    }
+  }
   // get the Selected Preferences 
   retrieveSelectedPreference() {
     $.ajax({
@@ -265,6 +270,9 @@ class NewsTiles extends React.Component {
 
   // clear all preferences from pop up modal 
   clearAll() {
+    this.setState({
+      loading:true
+    });
     this.state.businessGroupList.tags.forEach((prefer) => {
       if (prefer.title != this.state.defaultBG) {
         prefer.isChecked = false;
@@ -280,44 +288,14 @@ class NewsTiles extends React.Component {
     });
     //this.filteringNewsList();
     this.addSelectedPreference();
-    this.clearPreferences();
+    //this.clearPreferences();
     this.tagSorting();
     $("#preferenceModal").modal("hide");
   }
 
-  clearPreferences() {
+  /*clearPreferences() {
     this.state.selectedPreferenceList = [];
-
-    // filter the whole response articles for pinned articles, as pinned articles are global 
-    /* pinnedNewsList = this.state.newsList.filter((news) => {
-       return (
-         news.pinArticle
-       );
-     });*/
-    // Sort pinned articles 
-    /*if (pinnedNewsList.length > 0) {
-      pinnedNewsList.sort(function (a, b) {
-        return (
-          a.pinArticle - b.pinArticle ||
-          b.publishedDate - a.publishedDate ||
-          a.heading.localeCompare(b.heading)
-        );
-      });
-    } */
-    /* if (this.state.userProfileArticles.length > 0) {
-       this.state.userProfileArticles.sort(function (a, b) {
-         return (
-           b.publishedDate - a.publishedDate ||
-           a.heading.localeCompare(b.heading)
-         );
-       });
-     } */
-    //this.state.filterNewsList = this.mergeArray(pinnedNewsList, this.state.userProfileArticles);
-    /* this.state.filterNewsList = this.state.pinnedNewsList.concat(this.state.userProfileArticles);
-     this.setState({
-       filterNewsList: this.state.filterNewsList
-     }) */
-  }
+  }*/
 
   filteringNewsList() {
     this.state.selectedPreferenceList = [];
@@ -484,6 +462,7 @@ class NewsTiles extends React.Component {
     }
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags,
+      loading:false
     });
   }
 
@@ -499,7 +478,6 @@ class NewsTiles extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log("posting selected preferences" + " " + reqData);
         setTimeout(() => {
           this.retrieveSelectedPreference()
         }, 1000);
@@ -531,7 +509,7 @@ class NewsTiles extends React.Component {
   render() {
     return(
       <div>
-    { this.state.loading && (<div><img src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>) }
+    { this.state.loading && (<div><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>) }
     {
       !this.state.loading && (
         <div class="news-wrapper">
