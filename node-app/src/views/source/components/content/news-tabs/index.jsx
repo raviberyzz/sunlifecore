@@ -78,7 +78,7 @@ class NewsTabs extends React.Component {
   getPreferenceList() {
     $.ajax({
       type: "GET",
-      url: `${this.props.getPrefernceListUrl}.${this.state.pageLang}.json`,
+      url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
         this.state.businessGroupList = res["business-group"];
@@ -219,6 +219,8 @@ class NewsTabs extends React.Component {
           userProfileArticles: preferedNewsList,
           pinnedNewsList: this.state.pinnedNewsList,
           loading: false
+        },()=>{
+          this.getTabsHeading();
         });
         /* this.state.newsList = res;
          this.state.filterNewsList = [];
