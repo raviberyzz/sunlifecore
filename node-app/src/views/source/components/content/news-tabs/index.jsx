@@ -566,7 +566,7 @@ class NewsTabs extends React.Component {
       var accordianContentId = "responsivegrid" + selectedAccordianIndex;
       var activeAccordianContainer = document.getElementById(accordianContentId);
       activeAccordianContainer.classList.add('accordian-container-active');
-      var accordianContainer = document.getElementsByClassName(responsivegrid);
+      var accordianContainer = document.getElementsByClassName('responsivegrid');
       for (i = 0; i < accordianContainer.length; i++) {
         if (i !== selectedAccordianIndex) {
           accordianContainer[i].classList.remove('accordian-container-active');
