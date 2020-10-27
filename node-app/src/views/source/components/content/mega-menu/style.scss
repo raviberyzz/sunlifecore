@@ -54,3 +54,9 @@
 		}
 	}
 }
+
+.nav-active {
+	> span {
+		border-bottom: 2px solid $medium-blue-color;
+	}
+}

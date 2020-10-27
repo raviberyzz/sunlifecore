@@ -40,7 +40,17 @@
     }
 }
 /* for Footer --- ends here*/
-
+@media (min-width:$tab-screen-min){
+    .cta-home-wrapper {
+        .yellow-icon-white-background{
+            .cmp-container{
+                display:flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+}
 //what time is it widget -- starts here --
 .internationaltime {
     margin-top: -24px;
