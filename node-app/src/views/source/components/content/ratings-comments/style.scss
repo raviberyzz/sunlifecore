@@ -209,6 +209,10 @@
             }
         }
     }
+    .modal-footer{
+        display:flex;
+        justify-content: space-evenly;
+    }
 }
 @media(max-width:767px){
     .comment-wrapper{

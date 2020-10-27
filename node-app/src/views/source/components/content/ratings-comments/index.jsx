@@ -430,16 +430,19 @@ class ArticleComments extends React.Component {
 
                       </div>
                       <div class="modal-footer">
+                        <div class="button-wrapper secondary-button-form">
                         <button
                           type="button"
-                          class="cancel"
+                          class="cancel cmp-form-button sec-btn"
                           data-dismiss="modal"
                         >
                           {this.props.cancel}
                         </button>
+                        </div>
+                        <div class="button-wrapper primary-blue-button-form">
                         <button
                           type="button"
-                          class="primary-blue-button-form"
+                          class="cmp-form-button"
                           onClick={this.deleteComment.bind(
                             this,
                             value.commentId
@@ -448,6 +451,7 @@ class ArticleComments extends React.Component {
                         >
                          {this.props.delete} 
                         </button>
+                        </div>
                       </div>
                     </div>
                   </div>
