@@ -4,6 +4,7 @@ var sessionTimeout = new SessionTimeout();
 var waitLoader = {
   keepWaitLoader: false,
   noWaitLoader: false,
+  keepModalContent: false
 };
 
 var useMarcServer = true;
@@ -12,20 +13,27 @@ var elementsIds = {
 }
 
 function onLogout(isVisible) {
+  isVisible = isVisible || false ;
 
   // clear the oops message content
-  $("#transmitContainer").empty();
-  
+  this.setAppContentApperance(isVisible);
+
+  // do not clear the modal when the OTP code is valid. Keep the display until they are redirected.
+  if(!waitLoader.keepModalContent){
+    $("#transmitContainer").empty();
+    // make sure we do not show the modal when it's empty
+    this.setAppContentApperance(false);
+  }
+
   if(!$("#rememberID").is(':checked')){
     $("#USER").val('');
     $("#PASSWORD").val('');           
   }
   else{
+    // $("#USER").val('************');
     $("#PASSWORD").val('');
   }
 
-  isVisible = isVisible || false ;
-  this.setAppContentApperance(isVisible);
   return new Promise(function(resolve,reject){
     journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){

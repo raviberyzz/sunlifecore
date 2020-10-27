@@ -3,7 +3,6 @@ function onShowSignInModal() {
 }
 
 function onSignInClick() {
-
     console.log("Inside onSignInClick")
     journeyPlayer.clearAllData();
     var clientId = $("#USER").val();
@@ -37,7 +36,7 @@ function onSignInClick() {
         var token = results.getToken();
         if (token) {
             console.log("Journey completed successfully ...")
-            onLogout(true);
+            onLogout(waitLoader.keepModalContent);
         }
     })
     .catch(function(error) {
