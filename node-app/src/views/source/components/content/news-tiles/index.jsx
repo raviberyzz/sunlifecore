@@ -41,7 +41,7 @@ class NewsTiles extends React.Component {
     );
     this.mergeArray = this.mergeArray.bind(this);
     this.newsTileClick = this.newsTileClick.bind(this);
-    this.clearPreferences = this.clearPreferences.bind(this);
+    //this.clearPreferences = this.clearPreferences.bind(this);
   }
 
   componentDidMount() {
