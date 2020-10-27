@@ -435,19 +435,27 @@ class NewsTabs extends React.Component {
   }
 
   tabClick() {
-    var tab = $(this);
-    var tab_number=$(tab).index();
-    var tab_child=tab_number+1;
-    $(tab).addClass('cmp-tabs__tab--active');
-    $(tab).attr('aria-selected','true');
-    $(tab).siblings().attr('aria-selected','false');
-    $(tab).siblings().removeClass('cmp-tabs__tab--active');
-    // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
-    // $('.cmp-tabs .cmp-tabs__tabpanel:nth-of-type('+tab_child+')').addClass('cmp-tabs__tabpanel--active');
-    $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).siblings('.cmp-tabs__tabpanel').removeClass('cmp-tabs__tabpanel--active');
-    $(tab.parent().parent().children('.cmp-tabs__tabpanel:nth-of-type('+tab_child+')')).addClass('cmp-tabs__tabpanel--active');
-    $(tab).siblings().attr('tabindex','-1');
-    $(tab).attr('tabindex','0');
+    var selectedTab = event.target;
+    var selectedTabID= selectedTab['id'];
+    var selectedTabIndex = selectedTabID.split('cmp-tabs__tab').pop();
+    selectedTab.classList.add('cmp-tabs__tab--active');
+   var tabContentId = "cmp-tabs__tabpanel" + selectedTabIndex;
+   var container = document.getElementById(tabContentId);
+   var classElems = document.getElementsByClassName('cmp-tabs__tabpanel');
+   var tabs = document.getElementsByClassName('cmp-tabs__tab');
+   container.classList.add('cmp-tabs__tabpanel--active');
+   for(var i=0;i<classElems.length;i++){
+    if(i==selectedTabIndex ){
+    for(var k = i-1; k>=0; k--){
+    classElems[k].classList.remove('cmp-tabs__tabpanel--active');
+    tabs[k].classList.remove('cmp-tabs__tab--active');
+    }
+    for(var j = i+1 ; j<=classElems.length; j++){
+    classElems[j].classList.remove('cmp-tabs__tabpanel--active');
+    tabs[j].classList.remove('cmp-tabs__tab--active');
+    }
+    }
+   }
   }
   render() {
     return (
@@ -542,14 +550,14 @@ class NewsTabs extends React.Component {
                       <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
                         {Object.keys(this.state.tabHeading).map((value, index) => {
                           return (
-                            <li role="presentation" key={index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick} >{this.state.tabHeading[value].year}
+                            <li role="presentation" key={index} id={"cmp-tabs__tab" + index}  class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick} >{this.state.tabHeading[value].year}
                             </li>
                           )
                         })}
                       </ol>
                       {Object.keys(this.state.tabHeading).map((value, index) => {
                         return (
-                          <div role="tabpanel" tabindex={index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
+                          <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
                             <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex={index}>{this.state.tabHeading[value].year}</div>
                             <div class="responsivegrid">
                               <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
