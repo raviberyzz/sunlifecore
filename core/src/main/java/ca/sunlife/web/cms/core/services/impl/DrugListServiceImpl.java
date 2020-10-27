@@ -123,18 +123,25 @@ public class DrugListServiceImpl implements DrugListService {
                 }
             } else {
                 String[] keyParts = key.split("-");
-                HashMap<String, String> messageMap;
-                if(nonPolicyMap.containsKey(keyParts[0])) {
-                    messageMap = nonPolicyMap.get(keyParts[0]);
-                } else {
-                    messageMap = new HashMap<>();
-                    nonPolicyMap.put(keyParts[0], messageMap);
-                }
+                if (keyParts.length > 1) {
+                    HashMap<String, String> messageMap;
+                    if(nonPolicyMap.containsKey(keyParts[0])) {
+                        messageMap = nonPolicyMap.get(keyParts[0]);
+                    } else {
+                        messageMap = new HashMap<>();
+                        nonPolicyMap.put(keyParts[0], messageMap);
+                    }
 
-                if("ENG".equals(keyParts[1])) {
-                    messageMap.put("message-en", value);
-                } else if ("FR".equals(keyParts[1])) {
-                    messageMap.put("message-fr", value);
+                    if("ENG".equals(keyParts[1])) {
+                        messageMap.put("message-en", value);
+                    } else if ("FR".equals(keyParts[1])) {
+                        messageMap.put("message-fr", value);
+                    } else {
+                        logger.warn("non-policy file contained unexpected value {}", nonPolicy.toString());
+                    }
+
+                } else {
+                    logger.warn("non-policy file contained unexpected value {}", nonPolicy.toString());
                 }
             }
 
