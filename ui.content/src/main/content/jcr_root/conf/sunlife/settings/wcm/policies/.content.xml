@@ -8645,6 +8645,11 @@
                                             cq:styleLabel="Banner with Yellow Bottom"
                                             jcr:primaryType="nt:unstructured"/>
                                         <item3
+                                            cq:styleClasses="banner-section clearfix blue-border-bottom"
+                                            cq:styleId="1603790525880"
+                                            cq:styleLabel="Banner with Blue Bottom"
+                                            jcr:primaryType="nt:unstructured"/>    
+                                        <item4
                                             cq:styleClasses="banner-section clearfix life-moment-second-level-banner"
                                             cq:styleId="1595870593882"
                                             cq:styleLabel="Life Moment Second Level Banner"
