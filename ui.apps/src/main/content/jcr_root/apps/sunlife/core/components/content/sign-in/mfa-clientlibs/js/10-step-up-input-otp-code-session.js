@@ -8,15 +8,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.actionContext = null;
   this.resendCodeMsgTimer = null;
   let invalidCodeFlag = false; // for loading the error message when the jsp content is reloaded
-
-   /***
-     * If the OTP Authenticate step is defined to auto excecute if single target then
-     * the 'autoExecedTarget' object will contain that target
-     * */ 
-    this.autoExecedTarget = autoExecedTarget;
-    this.shouldSubmitAutoExecedTarget = false;
   
-  //2
   this.startSession = function (description, mode, actionContext, clientContext) {
     console.log("started new ".concat(mode, " OTP session"));
     console.log("actionContext :"+actionContext+ ":clientContext :"+clientContext);
@@ -43,56 +35,35 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     });
   };
 
-  //3
   this.setGeneratedOtp = function (format, target) {
     if (format && target) {
-      console.log(`setGenertedOTP is called and format and target both is not null`);
       // if `format` and `target` are NOT null then we present the otp-submit-code html
       this.renderWaitingForInput(format, target);
       this.otpCodeWasGenerated();
     } else {
-
-     
-      console.log(`setGenertedOTP is called and format and target both is null and running else part for target selection`);
       // instead of showing a UI to allow the user to choose a phone number and a method to send the OTP
       // we do this programmatically based on the selection made in step-up-auth-select-target screen
-      if (this.autoExecedTarget) {
-        // CHANGE: 1 - for when OTP expires
-        this.renderWaitingForInput(this.format, this.autoExecedTarget);
-        this.otpCodeWasGenerated();
-        // ---------------
-      
-      // this will let us know that we need to ask the session to use the autoExecedTarget when promiseInput is called
-        this.shouldSubmitAutoExecedTarget = true;
-        console.log('this.shouldSubmitAutoExecedTarget set to true');
-    } else {
-        console.error(`OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example `);
-    }
-    //  var selectedMethod = this.clientContext.otpSelection.selectedMethod;
+      var selectedMethod = this.clientContext.otpSelection.selectedMethod;
 
-      // if (selectedMethod === "text_message") {
-      //   selectSMSMethod.call(this);
-      // } else if (selectedMethod === "phone_call") {
-      //   selectVoiceCall.call(this);
-      // } else {
-      //   log.error("Unsupported OTP method selection: " + selectedMethod);
-      // }
+      if (selectedMethod === "text_message") {
+        selectSMSMethod.call(this);
+      } else if (selectedMethod === "phone_call") {
+        selectVoiceCall.call(this);
+      } else {
+        log.error("Unsupported OTP method selection: " + selectedMethod);
+      }
     }
   };
 
-//1
   this.setAvailableTargets = function (targets) {
-    console.log(`setAvaiableTargets is called with target ${targets}`);
     _this.targets = targets || [];
   };
 
-  //4
   this.promiseInput = function () {
     var _this2 = this;
 
     var self = this;
     return new Promise(function (resolve, reject) {
-      console.log(`Inside promiseInput method and selected target is ${self.selectedTarget}`);
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -119,9 +90,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       console.log("promiseRecoveryForError was called with error: ".concat(error));
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
+          waitLoader.keepModalContent = false;
           hideSpinner();
           resolve(defaultRecovery);
-          console.log(`Resolving to defaultRecovery at next console error`);
       } else {
           resolve(defaultRecovery);
       }
@@ -150,9 +121,21 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
         setAppContentApperance(true);
 
-       // $("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
+        //$("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
         // force numberic values
+        $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
+          const keycode = (event.keyCode ? event.keyCode : event.which);
+          if (keycode == '13') {
+              self.onSubmitClicked();
+              return false; // prevent submission
+          }
+        });
+
+        let prevCode = $('#step-up-input-otp-code-screen-input').val();
         $('#step-up-input-otp-code-screen-input').on('input', function() {
+          if(prevCode == $(this).val()){
+            return;
+          }
           const code = $(this).val();
           if(!/^\d+$/.test(code)){
               invalidCodeFlag = true;
@@ -163,14 +146,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           if($.trim(code)){
               $('#mfa-form').parsley().validate();
               $(this).val(code.replace(/[^0-9]/g,''));
-          }
-        });
-
-        $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
-          const keycode = (event.keyCode ? event.keyCode : event.which);
-          if (keycode == '13') {
-              self.onSubmitClicked();
-              return false; // prevent submission
           }
         });
 
@@ -208,9 +183,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   } 
     
   this.onSubmitClicked = function () {
-   
-    if ( $('#mfa-form').parsley().validate()){
+      console.log('Code submitted!');
       waitLoader.keepWaitLoader = true;
+      waitLoader.keepModalContent = true;
       var code = $("#step-up-input-otp-code-screen-input").val(); 
       var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
       var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
@@ -219,19 +194,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       setTimeout(function(){
         hideSpinner();
       }, 30000);
-     }
   };
 
   this.onResendClicked = function () {
-    //Added for OTP expiry issue
-    // CHANGE: 2 - for when OTP expires
-    if (this.autoExecedTarget && this.shouldSubmitAutoExecedTarget === true) {
-      this.shouldSubmitAutoExecedTarget = false; // ******* IMPORTANT!
-      const input = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createTargetSelectionRequest(this.autoExecedTarget);
-      const response = com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(input);
-      return _this.submitHandler(response);
-  }
-  //End for OTP Expiry issue
     waitLoader.noWaitLoader = true;
     this.resendCodeMsgTimer = setTimeout(
       function(){
@@ -241,7 +206,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       30000
     );
 
-    
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();
