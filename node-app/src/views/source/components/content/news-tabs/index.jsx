@@ -84,6 +84,9 @@ class NewsTabs extends React.Component {
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
         this.state.businessGroupList.tags.forEach((data) => {
+          if (data.id == "sunlife:source/business-group/all") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
           var obj = {};
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
@@ -94,6 +97,11 @@ class NewsTabs extends React.Component {
             }
           })
         });
+        this.state.businessGroupList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/business-group/na") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
+        })
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
@@ -566,7 +574,7 @@ class NewsTabs extends React.Component {
       var accordianContentId = "responsivegrid" + selectedAccordianIndex;
       var activeAccordianContainer = document.getElementById(accordianContentId);
       activeAccordianContainer.classList.add('accordian-container-active');
-      var accordianContainer = document.getElementsByClassName(responsivegrid);
+      var accordianContainer = document.getElementsByClassName('responsivegrid');
       for (i = 0; i < accordianContainer.length; i++) {
         if (i !== selectedAccordianIndex) {
           accordianContainer[i].classList.remove('accordian-container-active');
