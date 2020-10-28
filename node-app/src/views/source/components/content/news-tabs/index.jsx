@@ -24,7 +24,8 @@ class NewsTabs extends React.Component {
       selectedPreferenceTags: [],
       userProfileArticles: [],
       businessGroupIdTitle: [],
-      loading: true
+      loading: true,
+      windowWidth: window.innerWidth
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -42,14 +43,13 @@ class NewsTabs extends React.Component {
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
     this.tabClick = this.tabClick.bind(this);
+    this.accordionClick = this.accordionClick.bind(this);
   }
 
   componentDidMount() {
     this.retrieveSelectedPreference();
     this.getPreferenceList();
     this.getTabsNewsList();
-
-
     this.tagSorting();
   }
 
@@ -78,12 +78,15 @@ class NewsTabs extends React.Component {
   getPreferenceList() {
     $.ajax({
       type: "GET",
-      url: `${this.props.getPrefernceListUrl}.${this.state.pageLang}.json`,
+      url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
+        this.state.businessGroupList.tags.forEach((data,index) => {
+          if (data.id == "sunlife:source/business-group/all") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
           var obj = {};
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
@@ -94,6 +97,11 @@ class NewsTabs extends React.Component {
             }
           })
         });
+        this.state.businessGroupList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/business-group/na") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
+        })
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
@@ -219,6 +227,8 @@ class NewsTabs extends React.Component {
           userProfileArticles: preferedNewsList,
           pinnedNewsList: this.state.pinnedNewsList,
           loading: false
+        }, () => {
+          this.getTabsHeading();
         });
         /* this.state.newsList = res;
          this.state.filterNewsList = [];
@@ -548,9 +558,27 @@ class NewsTabs extends React.Component {
           classElems[k].classList.remove('cmp-tabs__tabpanel--active');
           tabs[k].classList.remove('cmp-tabs__tab--active');
         }
-        for (var j = i + 1; j <= classElems.length-1; j++) {
+        for (var j = i + 1; j <= classElems.length - 1; j++) {
           classElems[j].classList.remove('cmp-tabs__tabpanel--active');
           tabs[j].classList.remove('cmp-tabs__tab--active');
+        }
+      }
+    }
+  }
+  accordionClick() {
+    if (window.innerWidth < 768) {
+      var selectedAccordian = event.target;
+      var selectedAccordianID = selectedAccordian['id'];
+      var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
+      selectedAccordian.setAttribute('aria-expanded', 'true');
+      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
+      var activeAccordianContainer = document.getElementById(accordianContentId);
+      activeAccordianContainer.classList.add('accordian-container-active');
+      var accordianContainer = document.getElementsByClassName('accordianContainer');
+      for (var i = 0; i < accordianContainer.length - 1; i++) {
+        if (i != selectedAccordianIndex) {
+          accordianContainer[i].classList.remove('accordian-container-active');
+          accordianContainer[i].setAttribute('aria-expanded', 'false');
         }
       }
     }
@@ -586,9 +614,9 @@ class NewsTabs extends React.Component {
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
                       </div>
-                      <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align" role="dialog">
+                      <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align col-xs-12" role="dialog">
                         <div class="modal-dialog preference-modaldialog">
-                          <div class="modal-content horizontal-middle-align">
+                          <div class="modal-content horizontal-middle-align col-sm-12">
                             <div class="modal-header preference-modal-header">
                               <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
                                 data-dismiss="modal">
@@ -659,8 +687,8 @@ class NewsTabs extends React.Component {
                           {Object.keys(this.state.tabHeading).map((value, index) => {
                             return (
                               <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
-                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex={index}>{this.state.tabHeading[value].year}</div>
-                                <div class="responsivegrid">
+                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded="false" tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
+                                <div class="accordianContainer" id={"responsivegrid" + index}>
                                   <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
