@@ -111,7 +111,14 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     var self = this;
     waitLoader.noWaitLoader = false;
     var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
-    if(!this.alreadyLoaded){
+    if(!this.alreadyLoaded){ 
+
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'verify-number-modal'
+        })
+
       $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-input-otp-code.html", function(data){
         self.alreadyLoaded = true;
         $(self.clientContext.uiContainer).html(data);
@@ -169,9 +176,14 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
   this.onCancelClicked = function(){
 
-      // if (confirm("are you sure you want to cancel the authentication?")) {
-
         console.log("actionContext :"+_this.actionContext);
+
+        utag.link({
+          ev_type: 'other',
+          ev_action: 'clk',
+          ev_title: 'verify-number:back'
+          })
+        
         const escapeOptions = _this.actionContext.getEscapeOptions();
         const cancelOption = escapeOptions.filter(function (option) {
             return option.getId() === "cancel";
@@ -179,7 +191,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
         _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
 
-      //}
+      
   } 
     
   this.onSubmitClicked = function () {
@@ -206,6 +218,12 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       30000
     );
 
+     utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'verify-number:didn\'t-receive-code'
+      })
+    
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();
