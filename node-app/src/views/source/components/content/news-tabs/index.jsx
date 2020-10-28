@@ -83,7 +83,7 @@ class NewsTabs extends React.Component {
       success: (res) => {
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
+        this.state.businessGroupList.tags.forEach((data,index) => {
           if (data.id == "sunlife:source/business-group/all") {
             this.state.businessGroupList.tags.splice(index, 1);
           }
@@ -575,7 +575,7 @@ class NewsTabs extends React.Component {
       var activeAccordianContainer = document.getElementById(accordianContentId);
       activeAccordianContainer.classList.add('accordian-container-active');
       var accordianContainer = document.getElementsByClassName('responsivegrid');
-      for (i = 0; i < accordianContainer.length; i++) {
+      for (var i = 0; i < accordianContainer.length - 1; i++) {
         if (i !== selectedAccordianIndex) {
           accordianContainer[i].classList.remove('accordian-container-active');
           accordianContainer[i].setAttribute('aria-expanded', 'false');
