@@ -35,6 +35,7 @@ $(document).ready(function () {
     function mfaHtml() {
       $(".full-header header").append(
         '<!-- transmit container starts here -->\
+        <div class="sign-in">\
         <div class="modal slf-modal fix-order" id="mfa_signin_modal" role="dialog" tabindex="-1" data-keyboard="false"\
         data-backdrop="static">\
           <span id="startOfModal" class="sr-only">Start of dialog window</span>\
@@ -64,6 +65,7 @@ $(document).ready(function () {
                     <p data-id="message">One moment please</p>\
                 </div>\
             </div>\
+        </div>\
         </div>\
       '
       );
