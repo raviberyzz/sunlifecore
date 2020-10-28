@@ -237,9 +237,8 @@ class NewsTiles extends React.Component {
           userProfileArticles: preferedNewsList,
           pinnedNewsList: this.state.pinnedNewsList,
           loading: false
-        }, () => {
-          this.tagSorting();
         });
+        this.tagSorting();
       },
       error: (err) => {
         console.log(err);
