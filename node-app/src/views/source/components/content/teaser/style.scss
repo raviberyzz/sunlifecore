@@ -1,0 +1,28 @@
+@import "../../../base/core";
+
+@media (max-width: $mobile-screen-max){
+    .middle-aligned-text {
+        .right-image-position {
+            .text-section {
+                margin: 0 auto;
+            }
+        }
+        .left-image-position {
+            .text-section {
+                margin: 0 auto;
+            }
+        }
+    }
+    .bottom-aligned-text {
+        .right-image-position {
+            .text-section {
+                margin: 0 auto;
+            }
+        }
+        .left-image-position {
+            .text-section {
+                margin: 0 auto;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ var sessionTimeout = new SessionTimeout();
 var waitLoader = {
   keepWaitLoader: false,
   noWaitLoader: false,
+  keepModalContent: false
 };
 
 var useMarcServer = true;
@@ -12,9 +13,27 @@ var elementsIds = {
 }
 
 function onLogout(isVisible) {
-
   isVisible = isVisible || false ;
+
+  // clear the oops message content
   this.setAppContentApperance(isVisible);
+
+  // do not clear the modal when the OTP code is valid. Keep the display until they are redirected.
+  if(!waitLoader.keepModalContent){
+    $("#transmitContainer").empty();
+    // make sure we do not show the modal when it's empty
+    this.setAppContentApperance(false);
+  }
+
+  if(!$("#rememberID").is(':checked')){
+    $("#USER").val('');
+    $("#PASSWORD").val('');           
+  }
+  else{
+    // $("#USER").val('************');
+    $("#PASSWORD").val('');
+  }
+
   return new Promise(function(resolve,reject){
     journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){
@@ -40,20 +59,30 @@ function initJourneyPlayer() {
   
   if (lang === "fr"){
     console.log("set French Locale.");
-		journeyPlayer.setLocale("fr-CA");
+    journeyPlayer.setLocale("fr-CA");
+
+    // update the wait loader and modal content
+    $("#loadingMessageDiv").attr("aria-label", "chargement");
+    $("#loadingMessageDiv strong[data-id='title']").html('chargement...');
+    $("#loadingMessageDiv p[data-id='message']").html('Un moment s\'il vous plait.');
+
+    $("#startOfModal").html("Début de la fenêtre de dialogue");
+    $("#mfa_signin_modal .modal-header .close").attr("aria-label","Fermer");
+    $("#endOfModal").html("Fin de la fenêtre de dialogue ");
+
 	} else {
     console.log("set English Locale.");
 		journeyPlayer.setLocale("en-CA");
-	}
+  }
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized successfully: ".concat(results));
     
-    if (!getSessionToken()) {
-      setAppContentApperance(false);
-    } else {
-      setAppContentApperance(true);
-    }
+    // if (!getSessionToken()) {
+    //   setAppContentApperance(false);
+    // } else {
+    //   setAppContentApperance(true);
+    // }
   }).catch(function (error) {
     console.error("Transmit SDK initialization error!: ".concat(error));
 		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
@@ -99,11 +128,6 @@ function initJourneyPlayer() {
       return sessionStorage.getItem('transmit_session_token');
   }
 
-
-  function showModalPopup(){
-    $("#mfa_signin_modal").modal("show");
-  }
-
   function showSpinner(){
     $("#loadingMessageDiv").show();
   }
@@ -126,11 +150,10 @@ function onPageReady() {
 
 function setAppContentApperance(isVisible){
     if (isVisible) {
-      showModalPopup();
+      $("#mfa_signin_modal").modal("show");
         
     } else {
         $("#mfa_signin_modal").modal("hide");
-       // $("#loadingMessageDiv").show();
     }
 }
 

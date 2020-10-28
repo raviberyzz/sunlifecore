@@ -90,6 +90,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       console.log("promiseRecoveryForError was called with error: ".concat(error));
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
+          waitLoader.keepModalContent = false;
           hideSpinner();
           resolve(defaultRecovery);
       } else {
@@ -108,10 +109,16 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.renderWaitingForInput = function(format, target) {
 
     var self = this;
-    setAppContentApperance(true);
     waitLoader.noWaitLoader = false;
     var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
-    if(!this.alreadyLoaded){
+    if(!this.alreadyLoaded){ 
+
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'verify-number-modal'
+        })
+
       $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-input-otp-code.html", function(data){
         self.alreadyLoaded = true;
         $(self.clientContext.uiContainer).html(data);
@@ -119,10 +126,23 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
         $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
+        setAppContentApperance(true);
 
-        $("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
+        //$("#step-up-input-otp-code-screen-input").focus(); // focus the code intially on the first item
         // force numberic values
+        $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
+          const keycode = (event.keyCode ? event.keyCode : event.which);
+          if (keycode == '13') {
+              self.onSubmitClicked();
+              return false; // prevent submission
+          }
+        });
+
+        let prevCode = $('#step-up-input-otp-code-screen-input').val();
         $('#step-up-input-otp-code-screen-input').on('input', function() {
+          if(prevCode == $(this).val()){
+            return;
+          }
           const code = $(this).val();
           if(!/^\d+$/.test(code)){
               invalidCodeFlag = true;
@@ -133,14 +153,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           if($.trim(code)){
               $('#mfa-form').parsley().validate();
               $(this).val(code.replace(/[^0-9]/g,''));
-          }
-        });
-
-        $('#step-up-input-otp-code-screen-input').on('keypress', function(event){
-          const keycode = (event.keyCode ? event.keyCode : event.which);
-          if (keycode == '13') {
-              self.onSubmitClicked();
-              return false; // prevent submission
           }
         });
 
@@ -164,9 +176,14 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
   this.onCancelClicked = function(){
 
-      // if (confirm("are you sure you want to cancel the authentication?")) {
-
         console.log("actionContext :"+_this.actionContext);
+
+        utag.link({
+          ev_type: 'other',
+          ev_action: 'clk',
+          ev_title: 'verify-number:back'
+          })
+        
         const escapeOptions = _this.actionContext.getEscapeOptions();
         const cancelOption = escapeOptions.filter(function (option) {
             return option.getId() === "cancel";
@@ -174,13 +191,13 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
         _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
 
-      //}
+      
   } 
     
   this.onSubmitClicked = function () {
-   
-    if ( $('#mfa-form').parsley().validate()){
+      console.log('Code submitted!');
       waitLoader.keepWaitLoader = true;
+      waitLoader.keepModalContent = true;
       var code = $("#step-up-input-otp-code-screen-input").val(); 
       var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
       var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
@@ -189,7 +206,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       setTimeout(function(){
         hideSpinner();
       }, 30000);
-     }
   };
 
   this.onResendClicked = function () {
@@ -202,6 +218,12 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       30000
     );
 
+     utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'verify-number:didn\'t-receive-code'
+      })
+    
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();

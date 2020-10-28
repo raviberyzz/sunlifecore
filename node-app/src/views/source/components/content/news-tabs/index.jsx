@@ -7,9 +7,9 @@ class NewsTabs extends React.Component {
       let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
       defaultBGValue = userProfile.store.profile.businessGroup;
     }
-    
+
     this.state = {
-      defaultBG:defaultBGValue,
+      defaultBG: defaultBGValue,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: []
@@ -22,11 +22,14 @@ class NewsTabs extends React.Component {
       selectedPreferenceList: [],
       filterNewsList: [],
       selectedPreferenceTags: [],
-      userProfileArticles: []
+      userProfileArticles: [],
+      businessGroupIdTitle: [],
+      loading: true,
+      windowWidth: window.innerWidth
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
-   // this.newsTiles = this.newsTiles.bind(this);
+    // this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
     this.dateTransform = this.dateTransform.bind(this);
@@ -39,17 +42,14 @@ class NewsTabs extends React.Component {
     this.getPreferenceList = this.getPreferenceList.bind(this);
     this.addSelectedPreference = this.addSelectedPreference.bind(this);
     this.retrieveSelectedPreference = this.retrieveSelectedPreference.bind(this);
+    this.tabClick = this.tabClick.bind(this);
+    this.accordionClick = this.accordionClick.bind(this);
   }
 
   componentDidMount() {
     this.retrieveSelectedPreference();
     this.getPreferenceList();
     this.getTabsNewsList();
-    //this.newsTiles();
-   /* setTimeout(()=>{
-      this.getTabsHeading();
-    },1000) */
-    
     this.tagSorting();
   }
 
@@ -57,17 +57,15 @@ class NewsTabs extends React.Component {
   retrieveSelectedPreference() {
     $.ajax({
       type: "GET",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.retrievePreference.json",
+      url: `${this.props.resourcePath}.ugc.retrievePreference.json`,
       dataType: "json",
       success: (res) => {
         this.state.selectedPreferenceList = res;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
-        })
-        //this.getPreferenceList();
-        setTimeout(() => {
+        }, () => {
           this.tagSorting();
-        }, 1000);
+        })
         console.log(res);
       },
       error: (err) => {
@@ -76,16 +74,22 @@ class NewsTabs extends React.Component {
     });
   }
 
- // get all the preference tags for preference pop up modal 
+  // get all the preference tags for preference pop up modal 
   getPreferenceList() {
     $.ajax({
       type: "GET",
-      url: `/content/cq:tags/sunlife/source.tags.${this.state.pageLang}.json`,
+      url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data) => {
+        this.state.businessGroupList.tags.forEach((data,index) => {
+          if (data.id == "sunlife:source/business-group/all") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
+          var obj = {};
+          obj[data.id] = data.title;
+          this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
@@ -93,6 +97,11 @@ class NewsTabs extends React.Component {
             }
           })
         });
+        this.state.businessGroupList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/business-group/na") {
+            this.state.businessGroupList.tags.splice(index, 1);
+          }
+        })
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
@@ -104,6 +113,7 @@ class NewsTabs extends React.Component {
         this.setState({
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
+          businessGroupIdTitle: this.state.businessGroupIdTitle,
         })
         //this.getTabsNewsList();
         console.log(res);
@@ -118,47 +128,84 @@ class NewsTabs extends React.Component {
   getTabsNewsList() {
     $.ajax({
       type: "GET",
-      url: `/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.news.${this.state.pageLang}.json`,
+      url: `${this.props.resourcePath}.news.${this.state.pageLang}.json`,
       dataType: "json",
-      success: (res) => {
-        this.state.newsList = res;
-        this.state.filterNewsList = [];
+      success: (response) => {
+        this.state.newsList = response;
         let preferedNewsList = [];
+        //Sort all the article by date
+        this.state.newsList.sort(function (a, b) {
+          return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+        });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) {
-          var businessGroup = ContextHub.getItem('profile').businessGroup;
-          var businessUnit = ContextHub.getItem('profile').businessUnit;
-          var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-          var jobLevel = ContextHub.getItem('profile').jobLevel;
-          if (businessGroup != "" && businessGroup != undefined) {
-            businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
-          }
-          if (businessUnit != "" && businessUnit != undefined) {
-            businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
-          }
-          if (buildingLocation != "" && buildingLocation != undefined) {
-            buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
-          }
-          // if(jobLevel!="" && jobLevel!=undefined){
-          // }
-          var userProfileFilters = [];
-          userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel);
-          this.state.newsList.filter((news) => {
-            news.tags.forEach((tag) => {
-              // chekc if incomin tag is for job level
-              if (tag.includes('job-level')) {
-                tag = tag.split('/')
-                tag = tag[tag.length - 1]
-              }
-              if (userProfileFilters.includes(tag)) {
-                this.state.userProfileArticles.push(news);
-              }
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
+          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
+            var businessGroup = ContextHub.getItem('profile').businessGroup;
+            var businessUnit = ContextHub.getItem('profile').businessUnit;
+            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
+            var jobLevel = ContextHub.getItem('profile').jobLevel;
+            if (businessGroup != "" && businessGroup != undefined) {
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+            }
+            if (businessUnit != "" && businessUnit != undefined) {
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+            }
+            if (buildingLocation != "" && buildingLocation != undefined) {
+              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+            }
+            var userProfileFilters = [];
+            var userBUFilters = [];
+            var userBLFilters = [];
+            var userJobLevelFilters = []
+            //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
+            userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na");
+            userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
+            userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
+            userJobLevelFilters.push(jobLevel, "all", "na");
+            // filter the articles by BG first and then the result by BU and result by BL and result by JL
+            var BGArticles, BUArticles, BLArticles, JLArticles;
+            BGArticles = this.state.newsList.filter((news) => {
+              //Articles filtered by business Group
+              return (news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
             })
+            BUArticles = BGArticles.filter((news) => {
+              return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
+            })
+            BLArticles = BUArticles.filter((news) => {
+              return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
+            })
+            JLArticles = BLArticles.filter((news) => {
+              return (news.tags && news.tags.some((val) => {
+                if (val.includes('/job-level')) {
+                  val = val.split('/');
+                  val = val[val.length - 1];
+                  userJobLevelFilters.indexOf(val) > -1
+                }
+              }));
+            })
+            //Sort result Articles for pinned Articles. 
+            JLArticles.sort(function (a, b) {
+              b.publishedDate - a.publishedDate ||
+                a.heading.localeCompare(b.heading)
+            });
+            this.state.userProfileArticles = JLArticles;
+          }
+        } else {
+          //if no job profile filter the news articles by "all" tag. 
+          var noUserArticles = []
+          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na']
+          noUserArticles = this.state.newsList.filter((news) => {
+            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
+          })
+          this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
+            b.publishedDate - a.publishedDate ||
+              a.heading.localeCompare(b.heading)
           })
         }
-        // filter the response articles if there are any selected preferences
-        if (this.state.selectedPreferenceList.length > 0) {
-          preferedNewsList = this.state.newsList.filter((news) => {
+        // if any selected preferences filter the articles from previously selected userProfile articles
+        if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
+          var preferenceArticles = [];
+          preferenceArticles = this.state.newsList.filter((news) => {
             return (
               !news.pinArticle &&
               news.tags &&
@@ -167,32 +214,93 @@ class NewsTabs extends React.Component {
               )
             );
           });
-        }
-        if (this.state.selectedPreferenceList.length > 0) {
-          this.state.filterNewsList = this.state.newsList.filter((news) => {
-            return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
+          preferenceArticles.sort(function (a, b) {
+            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
           });
+          this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else {
-          this.state.filterNewsList = this.state.newsList;
-        }
-        this.state.filterNewsList.sort(function (a, b) {
-          return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
-        });
-        if ((ContextHub.getItem('profile').businessGroup || ContextHub.getItem('profile').businessUnit || ContextHub.getItem('profile').buildingLocation || ContextHub.getItem('profile').jobLevel) && (this.state.selectedPreferenceList.length == 0)) {
-          //preferedNewsList = userProfileArticles;
-          this.state.filterNewsList = userProfileArticles;
-        } else if (this.state.selectedPreferenceList.length > 0) {
-          //preferedNewsList = this.state.newsList;
-          this.state.filterNewsList = preferedNewsList;
+          this.state.filterNewsList = this.state.userProfileArticles;
         }
         this.setState({
           newsList: this.state.newsList,
           filterNewsList: this.state.filterNewsList,
-          userProfileArticles: this.state.userProfileArticles
-        },()=>{
+          userProfileArticles: preferedNewsList,
+          pinnedNewsList: this.state.pinnedNewsList,
+          loading: false
+        }, () => {
           this.getTabsHeading();
-        })
-        console.log(res);
+        });
+        /* this.state.newsList = res;
+         this.state.filterNewsList = [];
+         let preferedNewsList = [];
+         // filter the response articles by user profile data if user profile data exists
+         if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
+           var businessGroup = ContextHub.getItem('profile').businessGroup;
+           var businessUnit = ContextHub.getItem('profile').businessUnit;
+           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
+           var jobLevel = ContextHub.getItem('profile').jobLevel;
+           if (businessGroup != "" && businessGroup != undefined) {
+             businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+           }
+           if (businessUnit != "" && businessUnit != undefined) {
+             businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+           }
+           if (buildingLocation != "" && buildingLocation != undefined) {
+             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+           }
+           var userProfileFilters = [];
+           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
+           // filter the news article if they match BG & BU & BL & JL
+          /* this.state.newsList.forEach((news) => {
+             news.tags.forEach((tag, index) => {
+               if (tag.includes('job-level')) {
+                 var jL = tag.split('/');
+                 var jL = jL[jL.length - 1];
+                 news.tags[index] = jL;
+               }
+             })
+             filterProfileArticles(userProfileFilters, news.tags);
+             if (filterProfileArticles(userProfileFilters, news.tags)) {
+               this.state.userProfileArticles.push(news);
+             }
+           })
+           function filterProfileArticles(a, b) {
+             return (a.every(el => b.includes(el)));
+           }*/
+
+        /* this.state.userProfileArticles = this.state.newsList.filter((news) => {
+           return (!news.pinArticle && news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+         })
+       } else {
+         //if no job profile filter the news articles by "all" tag. 
+         this.state.userProfileArticles = this.state.newsList.filter((news) => {
+           return (!news.pinArticle && news.tags && news.tags.some((val) => val.includes("/job-level/all/all")))
+         })
+       }
+       // if any selected preferences filter the articles from previously selected userProfile articles
+       if (this.state.selectedPreferenceList.length > 0) {
+         preferedNewsList = this.state.userProfileArticles.filter((news) => {
+           return (
+             !news.pinArticle &&
+             news.tags &&
+             news.tags.some(
+               (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+             )
+           );
+         });
+       }
+       preferedNewsList.sort(function (a, b) {
+         // || a.heading.localeCompare(b.heading)
+         return (new Date(b.publishedDate) - new Date(a.publishedDate));
+       });
+       this.setState({
+         newsList: this.state.newsList,
+         filterNewsList: preferedNewsList,
+         userProfileArticles: this.state.userProfileArticles
+       }, () => {
+         this.getTabsHeading();
+       })
+       console.log(res);*/
       },
       error: (err) => {
         console.log(err);
@@ -226,7 +334,7 @@ class NewsTabs extends React.Component {
       tabHeading: yearList
     })
   }
-  
+
   // sort the preferences
   tagSorting() {
     let businessTag = [];
@@ -234,14 +342,18 @@ class NewsTabs extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (element.split("/")[1] == "business-group") {
-          businessTag.push(element);
+          this.state.businessGroupIdTitle.forEach((obj) => {
+            if (Object.keys(obj)[0] == element) {
+              businessTag.push(obj[element.toString()]);
+            }
+          })
         } else if (element.split("/")[1] == "topics") {
           topicsTag.push(element);
         }
       });
-      businessTag.forEach((element, index) => {
+      /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
-      });
+      });*/
       topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
       });
@@ -284,23 +396,42 @@ class NewsTabs extends React.Component {
 
   filteringNewsTabList() {
     this.state.selectedPreferenceList = [];
+    let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          businessTitle.push(prefer.title);
+        }
       }
     })
     this.state.topicsList.tags.forEach(prefer => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
+        if (prefer.title !== '') {
+          topicsTitle.push(prefer.title);
+        }
       }
     })
     this.state.filterNewsList = [];
+    /* preferences apply analytics starts here */
+    businessTitle = businessTitle.join();
+    topicsTitle = topicsTitle.join();
+    console.log(businessTitle, topicsTitle);
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'news-preferences',
+      ev_data_one: businessTitle,
+      ev_data_two: topicsTitle
+    });
+    /* preferences apply analytics ends here */
     if (this.state.selectedPreferenceList.length > 0) {
-      this.state.filterNewsList = this.state.newsList.filter((news) => {
+      this.state.filterNewsList = this.state.userProfileArticles.filter((news) => {
         return news.tags && news.tags.some(val => this.state.selectedPreferenceList.indexOf(val) > -1);
       });
     } else {
-      this.state.filterNewsList = this.state.newsList;
+      this.state.filterNewsList = this.state.userProfileArticles;
     }
     this.state.filterNewsList.sort(function (a, b) {
       return (b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading));
@@ -323,11 +454,14 @@ class NewsTabs extends React.Component {
       }
     })
     this.state.topicsList.tags.forEach(prefer => prefer.isChecked = false)
+    this.state.selectedPreferenceList = [];
     this.setState({
       allChecked: false,
       businessGroupList: this.state.businessGroupList,
-      topicsList: this.state.topicsList
+      topicsList: this.state.topicsList,
+      selectedPreferenceList: this.state.selectedPreferenceList
     });
+    this.addSelectedPreference()
     this.filteringNewsTabList();
     this.getTabsHeading();
   }
@@ -390,40 +524,12 @@ class NewsTabs extends React.Component {
   }
 
   addSelectedPreference() {
-    /* submit analytics starts here */
-    var businessString='',topicString='';
-    //console.log(this.state.selectedPreferenceList);
-    if(this.state.selectedPreferenceList.length>0){
-      console.log('inside');
-      this.state.selectedPreferenceList.forEach((item,index)=>{
-        if(item.indexOf('business-group')>-1){
-          businessString+=item+',';
-        }else if(item.indexOf('topics')){
-          topicString+=item+',';
-        }
-      });
-    }
-    console.log(businessString[businessString.length-1]);
-    if(businessString[businessString.length-1]==','){
-      businessString=businessString.substring(0,businessString.length-1);
-    }
-    if(topicString[topicString.length-1]==','){
-      topicString=topicString.substring(0,topicString.length-1);
-    }
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'news-preferences',
-      ev_data_one: businessString,
-      ev_data_two: topicString
-    }); 
-    /* submit analytics ends here */
     let reqData = {
       "articlefilter": this.state.selectedPreferenceList
     };
     $.ajax({
       type: "POST",
-      url: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc.addPreference.json",
+      url: `${this.props.resourcePath}.ugc.addPreference.json`,
       contentType: 'application/json',
       data: JSON.stringify(reqData),
       dataType: "json",
@@ -436,180 +542,225 @@ class NewsTabs extends React.Component {
     });
   }
 
+  tabClick() {
+    var selectedTab = event.target;
+    var selectedTabID = selectedTab['id'];
+    var selectedTabIndex = selectedTabID.split('cmp-tabs__tab').pop();
+    selectedTab.classList.add('cmp-tabs__tab--active');
+    var tabContentId = "cmp-tabs__tabpanel" + selectedTabIndex;
+    var container = document.getElementById(tabContentId);
+    var classElems = document.getElementsByClassName('cmp-tabs__tabpanel');
+    var tabs = document.getElementsByClassName('cmp-tabs__tab');
+    container.classList.add('cmp-tabs__tabpanel--active');
+    for (var i = 0; i < classElems.length; i++) {
+      if (i == selectedTabIndex) {
+        for (var k = i - 1; k >= 0; k--) {
+          classElems[k].classList.remove('cmp-tabs__tabpanel--active');
+          tabs[k].classList.remove('cmp-tabs__tab--active');
+        }
+        for (var j = i + 1; j <= classElems.length - 1; j++) {
+          classElems[j].classList.remove('cmp-tabs__tabpanel--active');
+          tabs[j].classList.remove('cmp-tabs__tab--active');
+        }
+      }
+    }
+  }
+  accordionClick() {
+    if (window.innerWidth < 768) {
+      var selectedAccordian = event.target;
+      var selectedAccordianID = selectedAccordian['id'];
+      var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
+      selectedAccordian.setAttribute('aria-expanded', 'true');
+      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
+      var activeAccordianContainer = document.getElementById(accordianContentId);
+      activeAccordianContainer.classList.add('accordian-container-active');
+      var accordianContainer = document.getElementsByClassName('accordianContainer');
+      for (var i = 0; i < accordianContainer.length - 1; i++) {
+        if (i != selectedAccordianIndex) {
+          accordianContainer[i].classList.remove('accordian-container-active');
+          accordianContainer[i].setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+  }
   render() {
     return (
-      <div class="news-wrapper">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
-            <div class="news-widget" data-section="hp investor">
-              {this.props.newsToolBar == "true" &&
-                <div>
-                  <div class="row news-tool-bar">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
-                      <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
-                      <div class="preference-tag-container hidden-sm hidden-xs">
-                        {this.state.selectedPreferenceTags.slice(0, 4).map((value, index) => {
-                          return (<span class="tag">{value}</span>)
-                        })}
-                        {this.state.selectedPreferenceTags.length > 4 &&
-                          <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
-                        }
-                      </div>
-                      <span class="pull-right">
-                        {this.state.selectedPreferenceTags.length > 0 &&
-                          <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
-                        }
-                        <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
-                      </span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
-                  </div>
-                  <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align" role="dialog">
-                    <div class="modal-dialog preference-modaldialog">
-                      <div class="modal-content horizontal-middle-align">
-                        <div class="modal-header preference-modal-header">
-                          <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
-                            data-dismiss="modal">
-                          </button>
-                          <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
-                          <p>
-                            <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
-                            <span class="chk-lbl">{this.props.selectAllText}</span>
-                          </p>
-                        </div>
-                        <div class="modal-body preference-modal-body">
-                          <div class="row preference-list">
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                              <p class="heading-text">{this.state.businessGroupList.title}</p>
-                              <ul class="prefernce-col-list">
-                                {this.state.businessGroupList.tags.map((value, index) => {
-                                  return (
-                                    <li key={index}>
-                                      <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.title === this.state.defaultBG} />
-                                      <span class="chk-lbl">{value.title}</span>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-                              <p class="heading-text">{this.state.topicsList.title}</p>
-                              <ul class="prefernce-col-list topic-col">
-                                {this.state.topicsList.tags.map((value, index) => {
-                                  return (
-                                    <li key={index}>
-                                      <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} />
-                                      <span class="chk-lbl">{value.title}</span>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                            </div>
+      <div>
+        { this.state.loading && (<div><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        {!this.state.loading && (
+          <div class="news-wrapper">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
+                <div class="news-widget" data-section="hp investor">
+                  {this.props.newsToolBar == "true" &&
+                    <div>
+                      <div class="row news-tool-bar">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
+                          <p class="left-text pull-left">{this.props.toolbarLeftText}</p>
+                          <div class="preference-tag-container hidden-sm hidden-xs">
+                            {this.state.selectedPreferenceTags.slice(0, 4).map((value, index) => {
+                              return (<span class="tag">{value}</span>)
+                            })}
+                            {this.state.selectedPreferenceTags.length > 4 &&
+                              <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                            }
                           </div>
+                          <span class="pull-right">
+                            {this.state.selectedPreferenceTags.length > 0 &&
+                              <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
+                            }
+                            <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
+                          </span>
                         </div>
-                        <div class="modal-footer preference-modal-footer">
-                          <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                              <button class="cmp-form-button pull-right" onClick={this.filteringNewsTabList}>{this.props.preferenceModalHeadingbtn1}</button>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
-                              <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
-                            </div>
-                          </div>
-                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              }
-              {this.props.newsTabsContainer == "true" &&
-                <div class="news-tabs-container col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="we-tabs aem-GridColumn aem-GridColumn--default--12 tabs-wrapper">
-                    <div class="cmp-tabs" id="tabs-container">
-                      <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
-                        {Object.keys(this.state.tabHeading).map((value, index) => {
-                          return (
-                            <li role="presentation" key={index} class="cmp-tabs__tab" tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected="true">{this.state.tabHeading[value].year}
-                            </li>
-                          )
-                        })}
-                      </ol>
-                      {Object.keys(this.state.tabHeading).map((value, index) => {
-                        return (
-                          <div role="tabpanel" tabindex={index} class="cmp-tabs__tabpanel" data-cmp-hook-tabs="tabpanel">
-                            <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex={index}>{this.state.tabHeading[value].year}</div>
-                            <div class="responsivegrid">
-                              <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
-                                {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
-                                  return (
-                                    <div class="news-list-box">
-                                      <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
-                                      <p>
-                                        <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
-                                      </p>
-                                      <p>{this.state.tabHeading[value].data[key].summary}</p>
-                                    </div>
-                                  )
-                                })}
-                                {this.state.tabHeading[value].pageData.totalPage > 1 &&
-                                  <div class="pagination-component">
-                                    <nav role="navigation" aria-label="Pagination" class="text-center">
-                                      <ul className={`pagination pagination-list ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'first-page' : ''} ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'last-page' : ''}`}>
-                                        {this.state.tabHeading[value].pageData.currentPage != 1 &&
-                                          <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
-                                            <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
-                                              <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                              <span>{this.props.previousText}</span>
-                                            </a>
-                                          </li>
-                                        }
-                                        <li className={`link-to-first ${this.state.tabHeading[value].pageData.currentPage == 1 ? 'active' : ''}`}>
-                                          <a href="javascript:void(0)" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
-                                            <span class="fa fa-angle-double-left" aria-hidden="true"></span>
-                                            <span>1</span>
-                                          </a>
+                      <div id="preferenceModal" class="modal fade preference-popup-wrapper horizontal-middle-align col-xs-12" role="dialog">
+                        <div class="modal-dialog preference-modaldialog">
+                          <div class="modal-content horizontal-middle-align col-sm-12">
+                            <div class="modal-header preference-modal-header">
+                              <button type="button" class="fa fa-remove collapse-x close-modal" aria-label="Close"
+                                data-dismiss="modal">
+                              </button>
+                              <h5 class="heading-text">{this.props.preferenceModalHeading}</h5>
+                              <p>
+                                <input type="checkbox" id="selectAll" onChange={this.handleAllChecked} name="selectAll" checked={this.state.allChecked} value="selectAll" />
+                                <span class="chk-lbl">{this.props.selectAllText}</span>
+                              </p>
+                            </div>
+                            <div class="modal-body preference-modal-body">
+                              <div class="row preference-list">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                  <p class="heading-text">{this.state.businessGroupList.title}</p>
+                                  <ul class="prefernce-col-list">
+                                    {this.state.businessGroupList.tags.map((value, index) => {
+                                      return (
+                                        <li key={index}>
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.title === this.state.defaultBG} />
+                                          <span class="chk-lbl">{value.title}</span>
                                         </li>
-                                        {this.state.tabHeading[value].pageData.currentPage >= 5 && this.state.tabHeading[value].pageData.totalPage > 6 &&
-                                          <li class="ellipsis"><a><span>&hellip;</span></a></li>
-                                        }
-                                        {this.state.tabHeading[value].pageData.pages.map((page, index) => {
-                                          return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
-                                        })
-                                        }
-                                        {(this.state.tabHeading[value].pageData.totalPage - this.state.tabHeading[value].pageData.currentPage) >= 4 && this.state.tabHeading[value].pageData.totalPage > 6 &&
-                                          <li class="ellipsis"><a><span>&hellip;</span></a></li>
-                                        }
-                                        <li class="lastPage">
-                                          <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
-                                            <span>{this.state.tabHeading[value].pageData.totalPage}</span>
-                                          </a>
+                                      )
+                                    })}
+                                  </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+                                  <p class="heading-text">{this.state.topicsList.title}</p>
+                                  <ul class="prefernce-col-list topic-col">
+                                    {this.state.topicsList.tags.map((value, index) => {
+                                      return (
+                                        <li key={index}>
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} />
+                                          <span class="chk-lbl">{value.title}</span>
                                         </li>
-                                        {this.state.tabHeading[value].pageData.currentPage != this.state.tabHeading[value].pageData.totalPage &&
-                                          <li className={`next ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'disabled' : ''}`}>
-                                            <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
-                                          </li>
-                                        }
-                                      </ul>
-                                      <div class="pagination-indicator">
-                                        {`${this.props.pageText} ${this.state.tabHeading[value].pageData.currentPage} ${this.props.ofText} ${this.state.tabHeading[value].pageData.totalPage}`}
-                                      </div>
-                                    </nav>
-                                  </div>
-                                }
+                                      )
+                                    })}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer preference-modal-footer">
+                              <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
+                                  <button class="cmp-form-button pull-right" onClick={this.filteringNewsTabList}>{this.props.preferenceModalHeadingbtn1}</button>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
+                                  <button class="cmp-form-button sec-btn" onClick={this.clearAll}>{this.props.preferenceModalHeadingbtn2}</button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        )
-                      })}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  }
+                  {this.props.newsTabsContainer == "true" &&
+                    <div class="news-tabs-container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="we-tabs aem-GridColumn aem-GridColumn--default--12 tabs-wrapper">
+                        <div class="cmp-tabs" id="tabs-container">
+                          <ol role="tablist" id="tabList" class="cmp-tabs__tablist" aria-multiselectable="false">
+                            {Object.keys(this.state.tabHeading).map((value, index) => {
+                              return (
+                                <li role="presentation" key={index} id={"cmp-tabs__tab" + index} class={`cmp-tabs__tab ${index == 0 ? "cmp-tabs__tab--active" : ""}`} tabindex={index} data-cmp-hook-tabs="tab" aria-controls={this.state.tabHeading[value].year} aria-selected={index == 0 ? "true" : "false"} onClick={this.tabClick} >{this.state.tabHeading[value].year}
+                                </li>
+                              )
+                            })}
+                          </ol>
+                          {Object.keys(this.state.tabHeading).map((value, index) => {
+                            return (
+                              <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
+                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded="false" tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
+                                <div class="accordianContainer" id={"responsivegrid" + index}>
+                                  <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+                                    {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
+                                      return (
+                                        <div class="news-list-box">
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>
+                                            <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
+                                          </p>
+                                          <p>{this.state.tabHeading[value].data[key].summary}</p>
+                                        </div>
+                                      )
+                                    })}
+                                    {this.state.tabHeading[value].pageData.totalPage > 1 &&
+                                      <div class="pagination-component">
+                                        <nav role="navigation" aria-label="Pagination" class="text-center">
+                                          <ul className={`pagination pagination-list ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'first-page' : ''} ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'last-page' : ''}`}>
+                                            {this.state.tabHeading[value].pageData.currentPage != 1 &&
+                                              <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
+                                                <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
+                                                  <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                                  <span>{this.props.previousText}</span>
+                                                </a>
+                                              </li>
+                                            }
+                                            <li className={`link-to-first ${this.state.tabHeading[value].pageData.currentPage == 1 ? 'active' : ''}`}>
+                                              <a href="javascript:void(0)" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
+                                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                                <span>1</span>
+                                              </a>
+                                            </li>
+                                            {this.state.tabHeading[value].pageData.currentPage >= 5 && this.state.tabHeading[value].pageData.totalPage > 6 &&
+                                              <li class="ellipsis"><a><span>&hellip;</span></a></li>
+                                            }
+                                            {this.state.tabHeading[value].pageData.pages.map((page, index) => {
+                                              return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
+                                            })
+                                            }
+                                            {(this.state.tabHeading[value].pageData.totalPage - this.state.tabHeading[value].pageData.currentPage) >= 4 && this.state.tabHeading[value].pageData.totalPage > 6 &&
+                                              <li class="ellipsis"><a><span>&hellip;</span></a></li>
+                                            }
+                                            <li class="lastPage">
+                                              <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
+                                                <span>{this.state.tabHeading[value].pageData.totalPage}</span>
+                                              </a>
+                                            </li>
+                                            {this.state.tabHeading[value].pageData.currentPage != this.state.tabHeading[value].pageData.totalPage &&
+                                              <li className={`next ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'disabled' : ''}`}>
+                                                <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
+                                              </li>
+                                            }
+                                          </ul>
+                                          <div class="pagination-indicator">
+                                            {`${this.props.pageText} ${this.state.tabHeading[value].pageData.currentPage} ${this.props.ofText} ${this.state.tabHeading[value].pageData.totalPage}`}
+                                          </div>
+                                        </nav>
+                                      </div>
+                                    }
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  }
                 </div>
-              }
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
-
     );
   }
 }

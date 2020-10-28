@@ -10,11 +10,9 @@ class ArticleRatings extends React.Component {
       ratingExist: false,
       articlePath: "",
       siteName: "ca",
-      userACF2Id: "yq15",
+      userACF2Id: "",
       apiCall: {},
-      canSubmit: true,
-      apiPath:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
+      canSubmit: true
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -57,7 +55,7 @@ class ArticleRatings extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -85,7 +83,7 @@ class ArticleRatings extends React.Component {
       };
       $.ajax({
         type: "POST",
-        url: this.state.apiPath + ".addRating.json",
+        url: this.props.apiPath + ".ugc.addRating.json",
         contentType: "application/json",
         dataType: "json",
         data: JSON.stringify(data1),
@@ -175,9 +173,8 @@ class ArticleComments extends React.Component {
       userName: "",
       email: "",
       apiCall: {},
-      userEmail: "",
-      apiPath:
-        "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/generic.ugc",
+      userEmail: ""
+
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -228,7 +225,7 @@ class ArticleComments extends React.Component {
     // return moment(date).format('MMM DD');
   }
   selectUserComment() {
-    if (ContextHub != undefined) {
+    if (ContextHub !== undefined) {
       let userDetails = ContextHub.getItem("profile");
       if (userDetails.email) {
         console.log(userDetails.email);
@@ -246,7 +243,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "GET",
-      url: this.state.apiPath + ".selectAll.json",
+      url: this.props.apiPath + ".ugc.selectAll.json",
       dataType: "json",
       data: data1,
       success: (res) => {
@@ -293,7 +290,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "POST",
-      url: this.state.apiPath + ".addComment.json",
+      url: this.props.apiPath + ".ugc.addComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(newComment),
@@ -318,7 +315,6 @@ class ArticleComments extends React.Component {
     /* news comment submit analytics ends here */
   }
   deleteComment(commentId, event) {
-    console.log(commentId);
     let removeComment = {
       articlePath: this.state.articlePath,
       commentId: commentId
@@ -326,7 +322,7 @@ class ArticleComments extends React.Component {
     };
     $.ajax({
       type: "DELETE",
-      url: this.state.apiPath + ".deleteComment.json",
+      url: this.props.apiPath + ".ugc.deleteComment.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(removeComment),
@@ -387,20 +383,20 @@ class ArticleComments extends React.Component {
                     <span class="time">{value.updatedDate}</span>
                     <div
                       class={`three-dots ${
-                        value.email == this.state.userEmail ? "show" : ""
+                        value.email == this.state.userEmail || hasUserGroups ?  "show" : "" 
                       }`}
                     >
                       <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
-                          <a href="javascript:void(0)">Edit</a>
+                    <a href="javascript:void(0)">{this.props.edit}</a>
                           <br />
                           <a
                             class="delete-option"
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                            {this.props.delete}
+                             {this.props.delete}
                           </a>
                         </div>
                       </div>
@@ -430,27 +426,32 @@ class ArticleComments extends React.Component {
                         </div>
                       </div>
                       <div class="modal-body" tabindex="0">
-                      {this.props.deleteCommentConfirm}
+                      {this.props.deleteCommentConfirm} 
+
                       </div>
                       <div class="modal-footer">
+                        <div class="button-wrapper secondary-button-form">
                         <button
                           type="button"
-                          class="cancel"
+                          class="cancel cmp-form-button sec-btn"
                           data-dismiss="modal"
                         >
                           {this.props.cancel}
                         </button>
+                        </div>
+                        <div class="button-wrapper primary-blue-button-form">
                         <button
                           type="button"
-                          class="delete"
+                          class="cmp-form-button"
                           onClick={this.deleteComment.bind(
                             this,
                             value.commentId
                           )}
                           data-dismiss="modal"
                         >
-                          {this.props.delete}
+                         {this.props.delete} 
                         </button>
+                        </div>
                       </div>
                     </div>
                   </div>

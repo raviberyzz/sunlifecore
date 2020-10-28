@@ -20,6 +20,12 @@ function StepUpSelectTargetFormSession(formId, payload) {
     console.log("Form session ended: ".concat(this.formId));
   };
 
+  //setting the send code method based on the radio button checked attribute
+  var selected_code = $('input[name="send_code_method"]:checked').attr('id');
+  $("#"+selected_code).parent().siblings().removeClass('radio-btn-selected ');		    		
+  $("#"+selected_code).parent().addClass('radio-btn-selected ');
+
+
   this.promiseFormInput = function () {
     var self = this;
     return new Promise(function (resolve, reject) {
@@ -53,6 +59,14 @@ function StepUpSelectTargetFormSession(formId, payload) {
     
     const valid = $('#mfa-form').parsley().validate()
     if(valid){
+
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_data_one: selectedPhone, // depending on the radio selection
+        ev_title: 'verify-you:send-code'
+        })
+      
       console.log(maskedPhoneNo);
       console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
       var otpSelection = {
@@ -69,11 +83,16 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
   function setupForm() {
     const self = this;
-    setAppContentApperance(true);
-    console.log(" lang :"+lang);
+
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'verify-you-modal'
+    })
+    
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
-        
       $(self.clientContext.uiContainer).html(data);
+      setAppContentApperance(true);
 
       $("#mfa-container").on('keypress', function(event){
         const keycode = (event.keyCode ? event.keyCode : event.which);
@@ -86,6 +105,13 @@ function StepUpSelectTargetFormSession(formId, payload) {
           handleSendCode.call(self);
       });
       setPhoneNumbersList.call(self);
+
+      //adding event listner for the phone number and send code radio button and changing the background accordingly
+      $('input[name="phone_number_target"], input[name="send_code_method"]').on('click', function(e) {
+        $("#"+e.target.id).parent().siblings().removeClass('radio-btn-selected ');		    		
+        $("#"+e.target.id).parent().addClass('radio-btn-selected ');
+      });
+
     });
   }
   this.constructor=StepUpSelectTargetFormSession;
@@ -107,11 +133,17 @@ function setPhoneNumbersList() {
   }
   $("#step-up-phone-list-container").html(phoneListStr);
 
+  // select the last phone number
   if(this.clientContext.selectedId !== undefined){
     $("#"+this.clientContext.selectedId).prop('checked', true);
-  }
+    $("#"+this.clientContext.selectedId).parent().addClass('radio-btn-selected');
 
-  $("#su-phone-number-item-0").focus(); // focus the code intially on the first item
+  }
+  // select the last security code method
+  if(this.clientContext.otpSelection !== undefined){
+    $('input[name="send_code_method"][value="' + this.clientContext.otpSelection.selectedMethod + '"]').attr('checked', 'checked');
+    $('input[name="send_code_method"][value="' + this.clientContext.otpSelection.selectedMethod + '"]').parent().addClass('radio-btn-selected ')
+  }
 
   $("#su-phone-number-item-0").parsley().on("field:error", function() {
     $("#step-up-phone-list-container").addClass("validation-error");
@@ -120,6 +152,7 @@ function setPhoneNumbersList() {
   $("#su-phone-number-item-0").parsley().on("field:success", function() {
     $("#step-up-phone-list-container").removeClass("validation-error");
   });
+
 }
 
 
@@ -127,8 +160,8 @@ function renderPhone(phoneNumber, index, checked) {
   var errorMsg = (lang === 'fr') ? 'Veuillez sélectionner un numéro de téléphone.' : 'Please select a phone number';
   const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
   const maskPhone = "+* ***-"+"***-"+phoneNumber.commData.substring(3,7);
-  
-  let phoneInfo  = '<div class="radio-btn-selected radio-btn-container">';
+  //let phoneInfo  = '<div class="radio-btn-container">'; Removed the class radio-btn-selected
+  let phoneInfo  = '<div class="radio-btn-container">';
       phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phoneNumber.mfaCommunId + '">';
       phoneInfo += '<input ';
       phoneInfo += 'id="su-phone-number-item-' + index + '" ';
