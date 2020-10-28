@@ -46,8 +46,8 @@ class NewsTiles extends React.Component {
 
   componentDidMount() {
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
-    this.getNewsList();
+    //this.getPreferenceList();
+    //this.getNewsList();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -70,7 +70,8 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+         // this.tagSorting();
+         this.getPreferenceList();
         });
       },
       error: (err) => {
@@ -123,6 +124,8 @@ class NewsTiles extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
+        }, ()=>{
+          this.tagSorting();
         });
       },
       error: (err) => {
@@ -473,6 +476,8 @@ class NewsTiles extends React.Component {
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags,
       loading: false
+    }, () => {
+      this.getNewsList();
     });
   }
 
