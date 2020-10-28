@@ -24,6 +24,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.day.cq.tagging.Tag;
 
+import ca.sunlife.web.cms.source.servlets.CustomTagServlet;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**

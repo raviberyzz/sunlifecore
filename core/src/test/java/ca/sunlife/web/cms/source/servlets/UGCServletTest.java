@@ -26,6 +26,7 @@ import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.models.UserInfo;
 import ca.sunlife.web.cms.source.services.UGCService;
+import ca.sunlife.web.cms.source.servlets.UGCServlet;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
