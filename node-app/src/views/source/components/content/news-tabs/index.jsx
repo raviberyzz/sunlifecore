@@ -570,15 +570,20 @@ class NewsTabs extends React.Component {
       var selectedAccordian = event.target;
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
-      selectedAccordian.setAttribute('aria-expanded', 'true');
-      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
-      var activeAccordianContainer = document.getElementById(accordianContentId);
-      activeAccordianContainer.classList.add('accordian-container-active');
-      var accordianContainer = document.getElementsByClassName('accordianContainer');
-      for (var i = 0; i < accordianContainer.length - 1; i++) {
-        if (i != selectedAccordianIndex) {
-          accordianContainer[i].classList.remove('accordian-container-active');
-          accordianContainer[i].setAttribute('aria-expanded', 'false');
+      if(selectedAccordian.getAttribute('aria-expaned') == true){
+        document.getElementById("responsivegrid1" + i).classList.remove("accordian-container-active");
+        document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
+      } else {
+        selectedAccordian.setAttribute('aria-expanded', 'true');
+        var accordianContentId = "responsivegrid" + selectedAccordianIndex;
+        var activeAccordianContainer = document.getElementById(accordianContentId);
+        activeAccordianContainer.classList.add('accordian-container-active');
+        var accordianContainer = document.getElementsByClassName('accordianContainer');
+        for (var i = 0; i < accordianContainer.length - 1; i++) {
+          if (i != selectedAccordianIndex) {
+            accordianContainer[i].classList.remove('accordian-container-active');
+            document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
+          }
         }
       }
     }
@@ -687,8 +692,8 @@ class NewsTabs extends React.Component {
                           {Object.keys(this.state.tabHeading).map((value, index) => {
                             return (
                               <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
-                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded="false" tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
-                                <div class="accordianContainer" id={"responsivegrid" + index}>
+                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded={`${index == 0 ? "true" : "false"}`} tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
+                                <div class={`accordianContainer ${index == 0 ? 'accordian-container-active' : ""}`} id={"responsivegrid" + index}>
                                   <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
