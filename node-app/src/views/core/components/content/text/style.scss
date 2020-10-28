@@ -85,3 +85,54 @@ color: $medium-blue-color;
 .padding-0-15 {
     padding: 0 15px;
 }
+/* Font Awesome CSS */
+.icon-size-14 {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+}
+.icon-size-16 {
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+.icon-size-18 {
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
+}
+.icon-size-20 {
+    font-size: 1.25rem;
+    line-height: 1.4375rem;
+}
+.icon-size-24 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+}
+.icon-size-28 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+}
+.icon-size-32 {
+    font-size: 2rem;
+    line-height: 2.5625rem;
+}
+.icon-size-36 {
+    font-size: 2.25rem;
+    line-height: 2.875rem;
+}
+.icon-dark-white {
+    color: $white-shade;
+}
+.icon-dark-grey {
+    color: $dark-grey-color;
+}
+.icon-medium-red {
+    color: $medium-red-color;
+}
+.icon-medium-green {
+    color: $medium-green-color;
+}
+.icon-medium-blue {
+    color: $medium-blue-color;
+}
+.font-awesome-icon {
+    padding: 0 8px;
+}

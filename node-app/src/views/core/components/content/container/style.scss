@@ -452,6 +452,9 @@ ul {
            /* pointer-events: none; */
         }
     .cta-content-icon-wrapper{
+        > ul {
+            width:100%;
+        }
         .icon-parent {
             height: 24px;
         }

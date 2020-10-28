@@ -10,10 +10,8 @@ $(document).ready(function () {
     if(query != ""){
 		query = "?" + query;
     }
-
     var pageCategory = utag_data.page_category;
     var pageSubcategory = utag_data.page_subcategory;
-
     $.each($('link'), function (index, value) {
         if (value.rel == "alternate") {
             linkRow.push(value.href + query);
@@ -22,27 +20,33 @@ $(document).ready(function () {
         }
     });
 
-    if (pageCategory == "newsroom" && pageSubcategory == "news releases") {
-        linkRow[0] = "/en/newsroom/news-releases/";
-        linkRow[1] = "/fr/newsroom/news-releases/";
+    if(utag_data.page_language == "en"){
+        var newsUrl = linkCanRef.split("/");
+    } else if(utag_data.page_language == "fr"){
+        var newsUrl = window.location.href.split("/");
+    }
+
+	var lastPart = newsUrl[newsUrl.length - 2];
+
+	if (pageSubcategory == "newsroom" && !isNaN(lastPart) && lastPart.length > 4) {
 
         $('.desktop-region-language-menu-wrapper .content-language li a').each(function () {
             if (langIndex < linkRow.length) {
-                $(this).attr('href', linkRow[langIndex]);
+                var url = linkRow[langIndex].split('/');
+                $(this).attr('href', linkRow[langIndex].substr(0, linkRow[langIndex].lastIndexOf('/', linkRow[langIndex].lastIndexOf('/') - 1) + 1));
                 langIndex = langIndex + 1;
             }
         });
         $('.mobile-header .mobile-region-language-menu-wrapper .language-tab li a').each(function () {
             if (langIndexMobile < linkRow.length) {
-                $(this).attr('href', linkRow[langIndexMobile]);
+                var url = linkRow[langIndexMobile].split('/');
+                $(this).attr('href', linkRow[langIndexMobile].substr(0, linkRow[langIndexMobile].lastIndexOf('/', linkRow[langIndexMobile].lastIndexOf('/') - 1) + 1));
                 langIndexMobile = langIndexMobile + 1;
             }
         });
-    }
-    else if (pageCategory == "investors" && pageSubcategory == "financial news") {
+    } else if (pageCategory == "investors" && pageSubcategory == "financial news") {
         linkRow[0] = "/en/investors/financial-news/";
         linkRow[1] = "/fr/investors/financial-news/";
-
         $('.desktop-region-language-menu-wrapper .content-language li a').each(function () {
             if (langIndex < linkRow.length) {
                 $(this).attr('href', linkRow[langIndex]);

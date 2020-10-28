@@ -1175,9 +1175,9 @@ $('#signin-widget-modal').on('show.bs.modal', function() {
 
 	// re-initialize these functions
 	//signinbuttonclick();	
-	// this not getting triggered on shown, so call it explicitly, here
+    // this not getting triggered on shown, so call it explicitly, here
 	updateSignInForm('form_signon');
-})
+});
 
 function createCookie(name,value,days, isSession) {
   if (days) {
@@ -1216,12 +1216,13 @@ function checkCookieExists(){
         var siteNotificationDiv = $(siteNotification).find(".cmp-container");
         var siteNotificationId = siteNotificationDiv.attr('id');
         var cookieExists = readCookie("pageNotification-"+siteNotificationId);
-
+        
         if(cookieExists){
         	$(siteNotification).css('display', '');
         }
         else {
-            $(siteNotification).css('display', 'block');
+			$(siteNotification).addClass('notification');
+            $(siteNotification).show();
         }
 
     });
@@ -2549,6 +2550,18 @@ $(document).ready(function(){
         else{
             $(this).replaceWith(function() {
                 return $('<em>', {
+                    html: this.innerHTML
+                    });
+                });
+        }
+    });
+    var uTag=$('body').find("u").filter(function(){return $(this)});
+    uTag.each(function(){
+        if($(this).attr("class")){
+        }
+        else{
+            $(this).replaceWith(function() {
+                return $('<ins>', {
                     html: this.innerHTML
                     });
                 });

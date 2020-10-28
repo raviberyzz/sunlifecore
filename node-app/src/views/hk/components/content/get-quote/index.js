@@ -523,30 +523,7 @@ $(document).ready(function(){
               ev_data_one: "successful submission:tool referrer=quick quote",
               ev_data_two: "" + product + ":age=" + age + ":gender=" + secondDrop + ":result=" + resultYear + ":annual= " + premium + ""
           });
-      } else {
-          if ($(".parsley-errors-list").hasClass("filled")) {
-              // Submit clicked tracked with error
-                if (typeof utag !== 'undefined') {
-                    utag.link({
-                        ev_type: "lead_form",
-                        ev_action: "submit",
-                        ev_title: "talk-to-an-advisor-lead-gen-form",
-                        ev_data_one: "error"
-                    });
-                }
-            } else {
-                // Submit clicked tracked with no error
-                if (typeof utag !== 'undefined') {
-                    utag.link({
-                        ev_type: "lead_form",
-                        ev_action: "submit",
-                        ev_title: "talk-to-an-advisor-lead-gen-form",
-                        ev_data_one: "successful submission"
-                    });
-                }
-          }
       }
-  
   });
   let pageName= utag_data.page_breadcrumb.split("/");
   let productTitle = pageName[pageName.length - 1].toLowerCase();

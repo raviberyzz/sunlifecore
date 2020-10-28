@@ -53,6 +53,12 @@ public class FormContainer extends ContainerImpl {
   @ Via ("resource")
   @ Optional
   private String formTarget;
+
+  /** The form action type. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String actionType;
   
   /**
    * Gets the form action.
@@ -64,6 +70,15 @@ public class FormContainer extends ContainerImpl {
   }
 
   /**
+   * Gets the form action type.
+   *
+   * @return the form action type
+   */
+  public String getActionType() {
+    return actionType;
+  }
+
+  /**
    * Sets the form action.
    *
    * @param formAction
@@ -71,6 +86,16 @@ public class FormContainer extends ContainerImpl {
    */
   public void setFormAction(final String formAction) {
     this.formAction = formAction;
+  }
+
+  /**
+   * Sets the form action type.
+   *
+   * @param actionType
+   *          the new form action type
+   */
+  public void setActionType(final String actionType) {
+    this.actionType = actionType;
   }
 
   /**

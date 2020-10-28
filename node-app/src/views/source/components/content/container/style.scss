@@ -4,13 +4,18 @@
 /* for company highlight section --- starts here*/
 .company-highlight-blue-yellow-background {
     @extend .company-highlight-yellow-grey-background;
-    background: url(/content/dam/sunlife/internal/source/images/Events_Rings.png) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
+    background: url(/content/dam/sunlife/regional/global-marketing/images/source/events-rings.png) right top no-repeat, linear-gradient(to bottom, $medium-blue-color 50%, $light-grey-20 50%);
     .cmp-text {
         color: $white-shade;
     }
     .border-right {
         border-right: 2px solid $light-grey-color;
     }
+    .teaser.circular-image{
+        .image-text-wrapper{
+            width:100%;
+        }
+    } 
 }
 
 @media (max-width: $mobile-screen-max) {
@@ -35,7 +40,17 @@
     }
 }
 /* for Footer --- ends here*/
-
+@media (min-width:$tab-screen-min){
+    .cta-home-wrapper {
+        .yellow-icon-white-background{
+            .cmp-container{
+                display:flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+}
 //what time is it widget -- starts here --
 .internationaltime {
     margin-top: -24px;
@@ -81,9 +96,33 @@
 //what time is it widget -- ends here --
 
 /* find people Dual CTA Component -- start here*/
-.yellow-icon-blue-background > * {
+/*.yellow-icon-blue-background > * {
     .fa {
         color: $medium-blue-color; 
     }
+}*/
+.yellow-icon-blue-background .cta-form-wrapper .primary-yellow-button-form .fa-chevron-right:before{
+	color: $medium-blue-color;
 }
 /* find people Dual CTA Component -- end here*/
+/* Triple CTA homepage -- starts here*/
+.cta-home-wrapper{
+    background-color: $grey-cta-background;
+    .row{
+        margin-top: 0;
+        top: -40px;
+    }
+}
+/* Triple CTA homepage -- ends here*/
+/*Overview Highlight -- starts here*/
+.overview-content-wrapper{
+    .overview-highlights-wrapper{
+        .icon-texts{
+            h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6{
+                font-size: 1.75rem;
+                line-height: 36px;
+            }
+        }
+    }
+}
+/*Overview Highlight -- ends here*/

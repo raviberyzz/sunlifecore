@@ -1,6 +1,4 @@
 #base=css
-1-xmui.css
-2-xmui-no-vars.css
-3-mfa_aem.css
-4-mfa-style.css
-5-ts-style.css
+1-mfa_aem.css
+2-mfa-style.css
+3-ts-style.css

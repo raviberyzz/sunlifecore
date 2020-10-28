@@ -78,6 +78,12 @@ public class BasePageModel {
 
   /** The Constant DOMAIN_STR. */
   private static final String DOMAIN_STR = "domain";
+  
+  /** The Constant Extra Clientlibs. */
+  private static final String EXTRA_CLIENTLIBS = "extraClientlibs";
+
+  /** The Constant MFA_DOMAIN_PATH. */
+  private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
 
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
@@ -311,6 +317,29 @@ public class BasePageModel {
   
   /** The enable context hinub. */
   private String enableContextHub;
+  
+  /** The extra Clientlibs. */
+  private String extraClientlibs;
+
+  /** The mfa Domain Path. */
+  private String mfaDomainPath;
+  
+  /** The favicon. */
+  private String favIcon;
+
+  /**
+   * @return the favIcon
+   */
+  public final String getFavIcon() {
+    return favIcon;
+  }
+
+  /**
+   * @param favIcon the favIcon to set
+   */
+  public final void setFavIcon(String favIcon) {
+    this.favIcon = favIcon;
+  }
 
   /**
    * Gets the page title tag.
@@ -767,6 +796,40 @@ public class BasePageModel {
 	}
 
 	/**
+	 * Gets the extraClientlibs
+	 * 
+	 * @return the extraClientlibs
+	 */
+	public String getExtraClientlibs() {
+		return extraClientlibs;
+	}
+
+	/**
+	 * @param extraClientlibs
+	 *          the extraClientlibs to set
+	 */
+	public void setExtraClientlibs(String extraClientlibs) {
+		this.extraClientlibs = extraClientlibs;
+	}
+	
+	/**
+	 * Gets the mfaDomainPath
+	 * 
+	 * @return the mfaDomainPath
+	 */
+	public String getMfaDomainPath() {
+		return mfaDomainPath;
+	}
+
+	/**
+	 * @param mfaDomainPath
+	 *          the mfaDomainPath to set
+	 */
+	public void setMfaDomainPath(final String mfaDomainPath) {
+		this.mfaDomainPath = mfaDomainPath;
+	}
+
+	/**
    * Inits the.
    *
    * @throws LoginException
@@ -783,7 +846,11 @@ public class BasePageModel {
     final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
     final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
         pagePath);
+    setFavIcon(configService.getConfigValues("favIcon",
+        pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
+    extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
+    mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
@@ -886,7 +953,8 @@ public class BasePageModel {
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
 
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-      otherUDOTagsMap.addProperty("page_canonical_url_default", domain
+      String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+      otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
           .concat(
               shortenURL(masterPagePath, configService.getConfigValues(SITE_URL, masterPagePath)))
           .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical

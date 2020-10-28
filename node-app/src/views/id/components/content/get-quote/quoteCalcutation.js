@@ -80,8 +80,47 @@
 
                         }
                     }
+					else if(product == "(Rider)_Sun_Medical_Platinum"){
+						 if ($.trim(value) == 'NULL') {
+                            $('#icon_' + elementItem).hide();
+                            $('#result_' + elementItem).hide();
+                        } else {
+                            $('#icon_' + elementItem).show();
+                            $('#result_' + elementItem).show();
+                            if (elementItem == 1 || elementItem == 4) {
+                                if (langCalc=='en-CA') {
+                                    $('#result_' + elementItem).html("Premium:<br>IDR " + addCommas($.trim(value)) + " / year");
+                                } else {
+                                    $('#result_' + elementItem).html("Premi:<br>Rp " + addDot($.trim(value)) + " / tahun");
+                                }
+                                //$('#result_'+elementItem).html("IDR "+addCommas($.trim(value)/12)+"/month");
+                            } else {
+                                if (langCalc=='en-CA') {
+                                    $('#result_' + elementItem).html('' + addData(elementItem) + addCommas($.trim(value)) + '</b>');
+                                } else {
+                                    $('#result_' + elementItem).html('' + addData(elementItem) + addDot($.trim(value)) + '</b>');
+                                }
+                            }
+
+                        }
+					}
+                  else if(product == "Asuransi_X-Tra_Active_Pro" || product == "Asuransi_X-Tra_Active_Plus") {
+                        if ($.trim(value) == 'NULL') {
+                            $('#icon_' + elementItem).hide();
+                            $('#result_' + elementItem).hide();
+                        } else {
+                            $('#icon_' + elementItem).show();
+                            $('#result_' + elementItem).show();
+                            if (langCalc=='en-CA') {
+                                    $('#result_' + elementItem).html("Rp" + addCommas($.trim(value)));
+                                } else {
+                                    $('#result_' + elementItem).html("Rp" + addCommas($.trim(value)));
+                                }
+                        }
+                    }
+
                 });
-                if (product == "Asuransi_Brilliance_Sejahtera") {
+                if (product == "Asuransi_Brilliance_Sejahtera" || product == "(Rider)_Sun_Medical_Platinum" || product == "Asuransi_X-Tra_Active_Pro" || product == "Asuransi_X-Tra_Active_Plus") {
                     if (!$("#qc_result_2").hasClass('qc_bg_yellow')) {
                         $("#qc_result_2").removeClass('qc_bg_grey');
                         $("#qc_result_2").addClass('qc_bg_yellow');

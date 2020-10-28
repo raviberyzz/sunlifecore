@@ -51,6 +51,12 @@ var multiPurposeComponentConfig = [
                 label: "Disclaimer Link",
                 value: "/content/dam/sunlife/legacy/assets/com/Global/files/html/stockDisclaimer.html",
                 required: true
+            },
+            {
+                name: "analyticsId",
+                label: "Analytics ID",
+                value: "hp investor",
+                required: true
             }
         ]
     },
@@ -61,74 +67,134 @@ var multiPurposeComponentConfig = [
         "props" : [
             {
                 name: "newsToolBar",
-                label: "newsToolBar",
+                label: "News Tool Bar?",
                 value: "true",
                 required: true
             },
 			{
                 name: "newsListContainer",
-                label: "newsListContainer",
+                label: "News List Container?",
                 value: "true",
                 required: true
             },
 			{
                 name: "toolbarLeftText",
-                label: "toolbarLeftText",
+                label: "Tool Bar Left Text",
                 value: "News",
                 required: true
             },
 			{
+                name: "moreText",
+                label: "More Text",
+                value: "More",
+                required: true
+            },
+			{
                 name: "toolbarRightText",
-                label: "toolbarRightText",
+                label: "Tool Bar Right Text",
                 value: "Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeading",
-                label: "preferenceModalHeading",
+                label: "Preference Modal Heading",
                 value: "Your Preferences",
                 required: true
             },
 			{
+                name: "selectAllText",
+                label: "Select All Text",
+                value: "Select all",
+                required: true
+            },
+			{
                 name: "preferenceModalHeadingbtn1",
-                label: "preferenceModalHeadingbtn1",
+                label: "Preference Modal Heading Button (Apply)",
                 value: "Apply",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn2",
-                label: "preferenceModalHeadingbtn2",
+                label: "Preference Modal Heading Button (Clear all)",
                 value: "Clear all",
                 required: true
             },
 			{
                 name: "iconName",
-                label: "iconName",
+                label: "Icon Name",
                 value: "fa-sliders",
                 required: true
             },
 			{
+                name: "moreNewsText",
+                label: "More News Text",
+                value: "More news",
+                required: true
+            },
+			{
+                name: "moreNewsImg",
+                label: "More News Image",
+                value: "",
+                required: true
+            },
+			{
+                name: "moreNewsLink",
+                label: "More News Link",
+                value: "",
+                required: true
+            },
+			{
                 name: "workdayText",
-                label: "workdayText",
+                label: "Workday Text",
                 value: "Find information on all your core HR processes and latest Workday announcements",
                 required: true
             },
 			{
                 name: "workdayLinkText",
-                label: "workdayLinkText",
+                label: "Workday Link Text",
                 value: "Go to Workday",
                 required: true
             },
 			{
+                name: "workdayLink",
+                label: "Workday Link",
+                value: "",
+                required: true
+            },
+			{
+                name: "workdayImg",
+                label: "Workday Image",
+                value: "",
+                required: true
+            },
+			{
                 name: "workplaceText",
-                label: "workplaceText",
+                label: "Workplace Text",
                 value: "Connect and collaborate with your colleagues across the globe",
                 required: true
             },
 			{
                 name: "workplaceLinkText",
-                label: "workplaceLinkText",
+                label: "Workplace Link Text",
                 value: "Go to Workplace",
+                required: true
+            },
+			{
+                name: "workplaceImg",
+                label: "Workplace Image",
+                value: "",
+                required: true
+            },
+			{
+                name: "resourcePath",
+                label: "Resource path",
+                value: "/content/sunlife/internal/source/en/jcr:content/root/layout_container/container1/generic",
+                required: true
+            },
+			{
+                name: "getPrefernceListUrl",
+                label: "Preferences URL",
+                value: "/content/cq:tags/sunlife/source.tags",
                 required: true
             }
 		]	
@@ -140,76 +206,107 @@ var multiPurposeComponentConfig = [
         "props" : [
             {
                 name: "newsToolBar",
-                label: "newsToolBar",
+                label: "News Tool Bar?",
                 value: "true",
                 required: true
             },
 			{
                 name: "newsTabsContainer",
-                label: "newsTabsContainer",
+                label: "News Tabs Container?",
                 value: "true",
                 required: true
             },
 			{
                 name: "toolbarLeftText",
-                label: "toolbarLeftText",
+                label: "Tool Bar Left Text (News)",
                 value: "News",
                 required: true
             },
 			{
                 name: "toolbarRightText",
-                label: "toolbarRightText",
+                label: "Tool Bar Right Text (Preferences)",
                 value: "Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeading",
-                label: "preferenceModalHeading",
+                label: "Preference Modal Heading (Your preferences)",
                 value: "Your Preferences",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn1",
-                label: "preferenceModalHeadingbtn1",
+                label: "Preference Modal Heading (Apply)",
                 value: "Apply",
                 required: true
             },
 			{
                 name: "preferenceModalHeadingbtn2",
-                label: "preferenceModalHeadingbtn2",
+                label: "Preference Modal Heading (Clear All)",
                 value: "Clear all",
                 required: true
             },
 			{
                 name: "iconName",
-                label: "iconName",
+                label: "Icon Name",
                 value: "fa-sliders",
                 required: true
-            }
-		]	
-	},{
-		"componentName": "Article Rating",
-        "componentDisplayName": "Article Rating",
-        "reactComponentName": "article-ratings",
-        "props" : [
-            {
-                name: "showRating",
-                label: "showRating",
-                value: "true",
+            },
+			{
+                name: "resourcePath",
+                label: "Resource path",
+                value: "/content/sunlife/internal/source/en/news/jcr:content/root/layout_container/container1/layout_container/container1/generic",
+                required: true
+            },
+			{
+                name: "getPrefernceListUrl",
+                label: "Preferences URL",
+                value: "/content/cq:tags/sunlife/source.tags",
                 required: true
             }
 		]	
 	},{
-		"componentName": "Article Comment",
-        "componentDisplayName": "Article Comment",
-        "reactComponentName": "article-comments",
+		"componentName": "Stock Information",
+        "componentDisplayName": "Stock Information",
+        "reactComponentName": "stock-information",
         "props" : [
             {
-                name: "showComment",
-                label: "showComment",
-                value: "true",
+                name: "stockInformationHeadingText",
+                label: "Heading Text",
+                value: "",
                 required: true
             }
 		]	
-	}
+    },
+    {
+        "componentName": "Dynamic Form Component",
+        "componentDisplayName": "Dynamic Form",
+        "reactComponentName": "dynamic-form",
+        "props": [
+            {
+                name: "form",
+                label: "Form",
+                value: "true",
+                required: true
+            },
+            {
+                name: "primaryPath",
+                label: "Primary Path",
+                value: "",
+                required: true
+            },
+            {
+                name: "secondaryPath",
+                label: "Secondary Path",
+                value: "",
+                required: false
+            },
+            {
+                name: "apiURL",
+                label: "API URL",
+                value: "",
+                required: true
+            }
+        ]
+    }
 ];

@@ -69,6 +69,14 @@
                                 cq:policy="sunlife/slcm/components/content/link-list/policy_article"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+							<embed
+                                cq:policy="sunlife/slcm/components/content/embed/policy_embed"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
+							<sign-in
+                                cq:policy="sunlife/slcm/components/content/sign-in/policy_signin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                         </content>
                         <form jcr:primaryType="nt:unstructured">
                             <container

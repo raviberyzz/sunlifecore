@@ -12,6 +12,7 @@ import javax.jcr.Value;
 
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,7 +55,7 @@ public class UserInfoTest {
 	}
 	
 	@ Test
-	void testInit() throws RepositoryException {
+	void testInit() throws RepositoryException, LoginException {
 		Value[] vals = new Value[] {value1};
 		when(value1.getString()).thenReturn("test");
     when(request.getResourceResolver()).thenReturn(resourceResolver);
@@ -70,6 +71,6 @@ public class UserInfoTest {
 	
     userInfo.init();
     
-    assertEquals("{\"familyName\":\"test\",\"givenName\":\"test\",\"email\":\"test\"}", userInfo.getProfile());
+    assertEquals("{\"country\":\"NA\",\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"buildingLocation\":\"NA\",\"language\":\"NA\",\"userName\":\"test test\",\"email\":\"test\",\"jobLevel\":\"NA\",\"hasUserGroups\":false}", userInfo.getProfile());
 	}
 }
