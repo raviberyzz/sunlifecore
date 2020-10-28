@@ -571,10 +571,10 @@ class NewsTabs extends React.Component {
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
       selectedAccordian.setAttribute('aria-expanded', 'true');
-      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
+      var accordianContentId = "accordianContainer" + selectedAccordianIndex;
       var activeAccordianContainer = document.getElementById(accordianContentId);
       activeAccordianContainer.classList.add('accordian-container-active');
-      var accordianContainer = document.getElementsByClassName('responsivegrid');
+      var accordianContainer = document.getElementsByClassName('accordianContainer');
       for (var i = 0; i < accordianContainer.length - 1; i++) {
         if (i != selectedAccordianIndex) {
           accordianContainer[i].classList.remove('accordian-container-active');
@@ -688,7 +688,7 @@ class NewsTabs extends React.Component {
                             return (
                               <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
                                 <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded="false" tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
-                                <div class="responsivegrid" id={"responsivegrid" + index}>
+                                <div class="accordianContainer" id={"responsivegrid" + index}>
                                   <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
