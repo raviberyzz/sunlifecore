@@ -31,7 +31,6 @@ import com.day.cq.tagging.TagConstants;
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.source.constants.NewsConstants;
 import ca.sunlife.web.cms.source.osgi.config.NewsConfig;
-import ca.sunlife.web.cms.source.servlets.NewsListServlet;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
