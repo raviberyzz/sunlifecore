@@ -8,4 +8,10 @@ public @interface DrugListConfig {
 
     @AttributeDefinition(name = "pdfFolder", description = "DAM folder containing the pdfs")
     String getPdfFolder() default "/content/dam/sunlife/data";
+
+    @AttributeDefinition(name = "drugListAssetPath", description = "Path to JSON Data")
+    String getDrugListAssetPath() default "/content/dam/sunlife/data";
+
+    @AttributeDefinition(name = "drugListAssetName", description = "Name of JSON Asset")
+    String getDrugListAssetName() default "druglist.json";
 }

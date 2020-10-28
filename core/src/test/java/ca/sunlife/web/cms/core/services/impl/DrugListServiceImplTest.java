@@ -57,6 +57,9 @@ public class DrugListServiceImplTest {
     Rendition lookup;
 
     @Mock
+    Rendition nonpolicy;
+
+    @Mock
     DrugListConfig config;
 
     @BeforeEach
@@ -84,15 +87,25 @@ public class DrugListServiceImplTest {
             }
         });
 
+        when(nonpolicy.getStream()).thenAnswer(new Answer<InputStream>(){
+
+            @Override
+            public InputStream answer(InvocationOnMock invocationOnMock) throws Throwable {
+                return getClass().getClassLoader().getResourceAsStream("ca/sunlife/web/cms/core/services/impl/drugList.properties");
+            }
+        });
+
         subject = new DrugListServiceImpl();
 
         FieldSetter.setField(subject,
                 subject.getClass().getDeclaredField("resourceResolverFactory"),
                 resourceResolverFactory );
         when(assetManager.getAsset(anyString())).thenReturn(asset);
-        when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup);
+        when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup, nonpolicy);
 
-        when(config.getPdfFolder()).thenReturn("/content/dam/sunlife/data");
+        when(config.getPdfFolder()).thenReturn("/content/dam/sunlife/pdf");
+        when(config.getDrugListAssetPath()).thenReturn("/content/dam/sunlife/data");
+        when(config.getDrugListAssetName()).thenReturn("druglist.json");
 
         subject.activate(config);
     }
@@ -104,7 +117,7 @@ public class DrugListServiceImplTest {
 
         when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(false);
         when(assetManager.createAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         verify(assetManager).assetExists("/content/dam/sunlife/data/druglist.json");
         verify(assetManager).createAsset("/content/dam/sunlife/data/druglist.json");
@@ -135,7 +148,7 @@ public class DrugListServiceImplTest {
 
         when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(true);
         when(assetManager.getAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 

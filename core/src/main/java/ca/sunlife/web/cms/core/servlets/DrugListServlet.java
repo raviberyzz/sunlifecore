@@ -13,6 +13,7 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,17 +24,16 @@ import java.nio.charset.StandardCharsets;
 @Component(service = Servlet.class, property = {
         Constants.SERVICE_DESCRIPTION + "= Drug List Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-        "sling.servlet.resourceTypes=sunlife/ca/components/content/drug-list",
-        "sling.servlet.selectors=druglist",
-        "sling.servlet.extensions=json"
+        "sling.servlet.paths=" + "/bin/getDrugList"
 })
 public class DrugListServlet extends SlingSafeMethodsServlet{
 
     private static final long serialVersionUID = 5180493823438186865L;
 
-
-    public static final String DRUGLIST_JSON = "/content/dam/sunlife/data/druglist.json";
     private static final Logger LOGGER = LoggerFactory.getLogger(DrugListService.class);
+
+    @Reference
+    private transient DrugListService drugListService;
 
     @ Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
@@ -43,7 +43,7 @@ public class DrugListServlet extends SlingSafeMethodsServlet{
         ValueMap valueMap = request.getResource().getValueMap();
         String druglistJson = valueMap.get("assetPath", String.class);
         if (StringUtils.isEmpty(druglistJson)) {
-            druglistJson = DRUGLIST_JSON;
+            druglistJson = drugListService.getDataAssetPath();
         }
 
         AssetManager assetManager = request.getResourceResolver().adaptTo(AssetManager.class);
@@ -53,7 +53,7 @@ public class DrugListServlet extends SlingSafeMethodsServlet{
             json = IOUtils.toString(rendition.getStream(), StandardCharsets.UTF_8);
 
         } else {
-            LOGGER.error("Can't find Asset at {}. Sending error message.", DRUGLIST_JSON);
+            LOGGER.error("Can't find Asset at {}. Sending error message.", druglistJson);
             json = getErrorJson(null);
         }
 

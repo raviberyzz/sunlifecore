@@ -1,2 +1,0 @@
-#base=css
-//drug-list.css

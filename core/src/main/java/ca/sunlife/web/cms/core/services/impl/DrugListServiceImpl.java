@@ -4,6 +4,7 @@ import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
 import ca.sunlife.web.cms.core.services.druglist.DrugListService;
 import ca.sunlife.web.cms.core.services.druglist.PaForm;
 import com.adobe.granite.asset.api.*;
+import com.adobe.xfa.ut.StringUtils;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -36,19 +37,25 @@ import java.util.*;
 public class DrugListServiceImpl implements DrugListService {
 
     public static final String ORIGINAL = "original";
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    //private final Pattern dinListPattern = Pattern.compile("^[;:`\\.]?([0-9]{8}[;:`\\.,\\u00A0]*)+\\u00A0*$");
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
 
     private String pdfFolder;
 
+    private String dataAssetPath;
+
     private final Map<String, Object> authInfo = Collections.singletonMap(
             ResourceResolverFactory.SUBSERVICE,
             "drug-list"
     );
+
+    @Override
+    public String getDataAssetPath() {
+        return dataAssetPath;
+    }
 
     @Override
     public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath) throws IOException {
@@ -67,9 +74,8 @@ public class DrugListServiceImpl implements DrugListService {
             buildNonPolicyRecords(nonPolicyPath, assetManager, builder);
 
             Asset outputAsset;
-            String assetName = pdfFolder + "/druglist.json";
-            if (assetManager.assetExists(assetName)) {
-                outputAsset = assetManager.getAsset(assetName);
+            if (assetManager.assetExists(getDataAssetPath())) {
+                outputAsset = assetManager.getAsset(getDataAssetPath());
 
                 AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
                 if (versionManager == null) {
@@ -79,7 +85,7 @@ public class DrugListServiceImpl implements DrugListService {
                 versionManager.createVersion(outputAsset.getPath(), UUID.randomUUID().toString());
 
             } else {
-                outputAsset = assetManager.createAsset(assetName);
+                outputAsset = assetManager.createAsset(getDataAssetPath());
             }
 
             ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
@@ -223,7 +229,7 @@ public class DrugListServiceImpl implements DrugListService {
             if (paForm.isValid()) {
                 paForms.put(paForm.getFormNumber(),paForm);
             } else {
-                logger.debug("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
+                logger.warn("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
             }
         }
         return paForms;
@@ -251,6 +257,8 @@ public class DrugListServiceImpl implements DrugListService {
     protected final void activate(DrugListConfig config) {
 
         pdfFolder = config.getPdfFolder();
+
+        dataAssetPath = String.format("%s/%s", config.getDrugListAssetPath(), config.getDrugListAssetName());
 
     }
 
