@@ -576,7 +576,7 @@ class NewsTabs extends React.Component {
       activeAccordianContainer.classList.add('accordian-container-active');
       var accordianContainer = document.getElementsByClassName('responsivegrid');
       for (var i = 0; i < accordianContainer.length - 1; i++) {
-        if (i !== selectedAccordianIndex) {
+        if (i != selectedAccordianIndex) {
           accordianContainer[i].classList.remove('accordian-container-active');
           accordianContainer[i].setAttribute('aria-expanded', 'false');
         }
