@@ -241,10 +241,19 @@
         margin-right: 0;
     }
 }
-.left-item {
-    float: left;
-    margin-right: 32px;
-    display: table;
+.left-image-position {
+    .left-item {
+        float: left;
+        margin-right: 32px;
+        display: table;
+    }
+}
+.right-image-position {
+    .right-item {
+        float: right;
+        margin-left: 32px;
+        display: table;
+    }
 }
 
 /* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
@@ -489,10 +498,19 @@
 
 @media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
     .circle-150-mobile {
-        .left-item {
-            height: 158px !important;
-            width: 158px !important;
+        .left-image-position {
+            .left-item {
+                height: 158px !important;
+                width: 158px !important;
+            }
         }
+        .right-image-position {
+            .right-item {
+                height: 158px !important;
+                width: 158px !important;
+            }
+        }
+
     }
     .banner-section {
         h1, h2, h3, h4, h5, h6 {
