@@ -571,7 +571,7 @@ class NewsTabs extends React.Component {
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
       selectedAccordian.setAttribute('aria-expanded', 'true');
-      var accordianContentId = "accordianContainer" + selectedAccordianIndex;
+      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
       var activeAccordianContainer = document.getElementById(accordianContentId);
       activeAccordianContainer.classList.add('accordian-container-active');
       var accordianContainer = document.getElementsByClassName('accordianContainer');
