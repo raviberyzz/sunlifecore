@@ -569,11 +569,11 @@ class NewsTiles extends React.Component {
                         </div>
                         <div
                           id="preferenceModal"
-                          class="modal fade preference-popup-wrapper horizontal-middle-align"
+                          class="modal fade preference-popup-wrapper horizontal-middle-align  col-xs-12"
                           role="dialog"
                         >
                           <div class="modal-dialog preference-modaldialog">
-                            <div class="modal-content horizontal-middle-align">
+                            <div class="modal-content horizontal-middle-align  col-sm-12">
                               <div class="modal-header preference-modal-header">
                                 <button
                                   type="button"
