@@ -12,7 +12,7 @@ class ArticleRatings extends React.Component {
       siteName: "ca",
       userACF2Id: "",
       apiCall: {},
-      canSubmit: true,
+      canSubmit: true
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -173,7 +173,7 @@ class ArticleComments extends React.Component {
       userName: "",
       email: "",
       apiCall: {},
-      userEmail: "",
+      userEmail: ""
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -279,18 +279,14 @@ class ArticleComments extends React.Component {
   }
   submitComment(event) {
     let newCommentVal = $("#commentText").val();
-    if (newCommentVal.trim() == "") {
-      console.log('no comment');
-      return false;
-    } else {
-      console.log('comment added');
+    // if (newCommentVal.trim() == "") {
+    //   console.log('no comment');
+    //   return false;
+    // } else {
+      //console.log('comment added');
       let newComment = {
         articlePath: this.state.articlePath,
-        //siteName: this.state.siteName,
-        commentText: newCommentVal,
-        ///userName: this.state.userName,
-        //userACF2Id: this.state.userACF2Id,
-        //email: this.state.email,
+        commentText: newCommentVal
       };
       $.ajax({
         type: "POST",
