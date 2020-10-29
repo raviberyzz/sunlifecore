@@ -280,10 +280,9 @@ class ArticleComments extends React.Component {
   submitComment(event) {
     let newCommentVal = $("#commentText").val();
      if (newCommentVal.trim() == "") {
-       console.log('no comment');
+       console.log('no comment given');
        return false;
      } else {
-      console.log('comment added');
       let newComment = {
         articlePath: this.state.articlePath,
         commentText: newCommentVal
