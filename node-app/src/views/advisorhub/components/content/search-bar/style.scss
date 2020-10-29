@@ -1,0 +1,121 @@
+@import '../../../base/core';
+.adv-search-bar-wrapper {
+    background: $medium-yellow-background;
+    .global-search {
+        padding: 24px 200px 32px 200px;
+        text-align: center;
+        .slf-search {
+            min-width: 664px;
+            .form-wrapper {
+                display: table;
+                border-collapse: collapse;
+                width: 100%;
+                margin: 0 auto;
+                border: 0;
+                .input-wrapper, .button-wrapper {
+                    display: table-cell;
+                    vertical-align: top;
+                    position: relative;
+                }
+                .input-wrapper {
+                    width: 100%;
+                    input[type=text] {
+                        margin-bottom: 0;
+                        height: 48px;
+                        color:$dark-grey-color;
+                        border-color: $light-grey-color;
+                        font-weight: 300;
+                    }
+                }
+                .button-wrapper {
+                    padding-left: 16px;
+                    border: 0;
+                    .primary-blue-button,.cmp-form-button{
+                        width: 136px;
+                        line-height: 20px;
+                    }
+                } 
+            }
+            .search-heading {
+                margin-top: 0;
+                margin-bottom: 16px;
+                padding: 0 80px;
+                font-size: 1.5rem;
+                line-height: 1.875rem;
+                font-weight: 400;
+                color: $dark-grey-color;
+            }
+            .search-autocomplete {
+                position:absolute;
+                z-index: 1099;
+            }
+        }
+       
+    }
+    .search-box {
+        padding: 40px 0;
+    }
+    .close-div {
+        position: absolute;
+        right: 0;
+        float: right;
+        top: 0;
+
+    }
+    .collapse-x {
+        margin: 24px 15px 0 0;
+        font-size: 0.875rem;
+    }
+}
+
+@media ( max-width: $tab-screen-max) and (min-width: $tab-screen-min ) {
+
+    .adv-search-bar-wrapper {
+        .global-search {
+            padding: 24px 64px 32px 64px;
+            .slf-search {
+               /* min-width: 640px;
+                max-width: none;*/
+                width: 640px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                .search-heading {
+                    padding: 0 64px;
+                }
+            }
+            
+        }
+    }
+
+}
+@media ( max-width: $mobile-screen-max) {
+    .adv-search-bar-wrapper {
+        .global-search {
+            padding: 24px;
+            .slf-search {
+                min-width: 272px;
+                .search-heading {
+                    font-size: 1.25rem;
+                    padding: 0;
+                }
+                .form-wrapper {
+                    display: block;
+                    .input-wrapper, .button-wrapper {
+                        display: block;
+                    }
+                    .button-wrapper {
+                        padding-left: 0;
+                        .primary-blue-button,.cmp-form-button{
+                            width: 100%;
+                            max-width: 100%;
+                            min-width: 100%;
+                        }
+                    } 
+                }
+            }
+            
+        }
+    }
+
+}
