@@ -97,7 +97,7 @@ function initJourneyPlayer() {
 } 
 
   function getTransmitConnectionSettings() {
-     //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     var serverUrl = "https://mfa-uat.sunlifecorp.com";
      // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
       var realm = ""; 
