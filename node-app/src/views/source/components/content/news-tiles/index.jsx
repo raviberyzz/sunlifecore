@@ -87,6 +87,7 @@ class NewsTiles extends React.Component {
       url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
+        this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = response["business-group"];
         this.state.topicsList = response["topic"];
         this.state.businessGroupList.tags.forEach((data, index) => {
