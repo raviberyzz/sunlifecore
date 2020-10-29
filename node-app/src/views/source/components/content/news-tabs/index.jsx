@@ -737,7 +737,7 @@ class NewsTabs extends React.Component {
                                             {(this.state.tabHeading[value].pageData.totalPage - this.state.tabHeading[value].pageData.currentPage) >= 4 && this.state.tabHeading[value].pageData.totalPage > 6 &&
                                               <li class="ellipsis"><a><span>&hellip;</span></a></li>
                                             }
-                                            <li class="lastPage">
+                                            <li className={`lastPage ${this.state.tabHeading[value].pageData.currentPage == this.state.tabHeading[value].pageData.totalPage ? 'active' : ''}`}>
                                               <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
                                                 <span>{this.state.tabHeading[value].pageData.totalPage}</span>
                                               </a>
