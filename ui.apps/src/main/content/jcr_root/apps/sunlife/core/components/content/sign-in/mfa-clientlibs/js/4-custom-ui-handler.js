@@ -58,7 +58,7 @@ UIHandlerForStepUp.prototype.createOtpAuthSession = function(title, username, po
     return new StepUpOTPSession(title, username, possibleTargets, autoExecedTarget);
 }
 
-UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
+/*UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
     return new Promise(function(resolve, reject) {
         if (jsonData.SMSESSION) {
             console.log(jsonData.SMSESSION);
@@ -70,6 +70,34 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
             window.location.href = jsonData.target;
            console.log("Redirecting to PPHP...");
         }
+    });
+}*/
+
+UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
+    return new Promise(function(resolve, reject) {
+    
+        resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
+        if (jsonData.SMSESSION) {
+            let url=jsonData.target;
+            $.ajax(url,{
+            type : 'POST',
+            contentType : 'text/plain',
+            data :jsonData.SMSESSION,
+            dataType : 'text',
+            timeout : 10000,
+            success : function(data) {
+                   if(data != null && data != ''){
+                       console.log("Successfully Posted SM Value. Redirecting to PPHP via Sunlife.ca Flow");
+                   }
+            }      
+            }); 
+
+        }
+        else if(jsonData.target != undefined && jsonData.target != ""){
+            window.location.href = jsonData.target;
+            console.log("Redirecting to PPHP...");
+        }
+    
     });
 }
 
