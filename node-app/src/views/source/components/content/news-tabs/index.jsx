@@ -572,7 +572,7 @@ class NewsTabs extends React.Component {
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
       //
       if( selectedAccordian.getAttribute('aria-expanded')== "true"){
-        document.getElementById("responsivegrid1" + i).classList.remove("accordian-container-active");
+        document.getElementById("responsivegrid" + i).classList.remove("accordian-container-active");
         document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
       } else {
         selectedAccordian.setAttribute('aria-expanded', 'true');
