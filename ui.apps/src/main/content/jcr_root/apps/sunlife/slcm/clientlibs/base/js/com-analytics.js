@@ -339,4 +339,14 @@ $(document).ready(function () {
         });
     });
     /* Home page modal analytics ends here */
+    /* Sign-in button inside sign-in modal starts here */
+    $("#form_signon_modal input.btn-blue").click(function(){
+        console.log('clk');
+        utag.link ({
+            "ev_type": "authenticate",
+            "ev_action": "signin",
+            "ev_title": "sign in"
+        });
+    });
+    /* Sign-in button inside sign-in modal starts here */
 });
