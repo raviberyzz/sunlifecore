@@ -109,7 +109,7 @@ public class RestServiceImpl implements RestService {
 	@ Override
 	public String callGetWebService(final String url, final String requestHeaders)
 			throws ApplicationException, SystemException, IOException {
-		logger.debug("Entry :: RestServiceImpl :: callGetWebService :: url :: {}, requestHeaders :: {}", url, requestHeaders);
+		logger.trace("Entry :: RestServiceImpl :: callGetWebService :: url :: {}, requestHeaders :: {}", url, requestHeaders);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;
@@ -127,7 +127,7 @@ public class RestServiceImpl implements RestService {
 			}
 			response = client.execute(httpGet);
 			statusCode = response.getStatusLine().getStatusCode();
-			logger.debug("Response code :: {}", statusCode);
+			logger.trace("Response code :: {}", statusCode);
 			if (statusCode != HttpStatus.SC_OK) {
 				throw new SystemException(ErrorCodes.APP_ERROR_001);
 			} else {
@@ -154,7 +154,7 @@ public class RestServiceImpl implements RestService {
 	@ Override
 	public String callPostWebService(final String url, final String requestHeaders, final String requestParams)
 			throws ApplicationException, SystemException, IOException {
-		logger.debug("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
+		logger.trace("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;
@@ -176,7 +176,7 @@ public class RestServiceImpl implements RestService {
 			}
 			response = client.execute(httpPost);
 			statusCode = response.getStatusLine().getStatusCode();
-			logger.debug("Response code :: {}", statusCode);
+			logger.trace("Response code :: {}", statusCode);
 			if (statusCode != HttpStatus.SC_OK) {
 				throw new SystemException(ErrorCodes.APP_ERROR_001);
 			} else {
@@ -221,7 +221,7 @@ public class RestServiceImpl implements RestService {
 			
 			response = client.execute(httpDelete);
 			statusCode = response.getStatusLine().getStatusCode();
-			logger.debug("Response code :: {}", statusCode);
+			logger.trace("Response code :: {}", statusCode);
 			if (statusCode != HttpStatus.SC_OK) {
 				throw new SystemException(ErrorCodes.APP_ERROR_001);
 			} else {

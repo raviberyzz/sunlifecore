@@ -93,19 +93,19 @@ public class COCScheduler implements Runnable {
 
 	@ Override
 	public void run() {
-		logger.debug("COCScheduler is running..");
+		logger.trace("COCScheduler is running..");
 		ResourceResolver resolver = null;
 		try {
 			resolver = coreResourceResolver.getResourceResolver();
 			if (null == resolver) {
-				logger.debug("Resource resolver is null, returning from method");
+				logger.trace("Resource resolver is null, returning from method");
 				return;
 			}
 			Resource resource = resolver
 					.getResource(coCConfig.getFilePath() + "/jcr:content/renditions/original/jcr:content");
 			List<String> fileList = null != resource ? IOUtils.readLines(resource.adaptTo(InputStream.class)) : null;
 			if (null == fileList) {
-				logger.debug("File list is empty, returning from method");
+				logger.trace("File list is empty, returning from method");
 				return;
 			}
 			final Session session = resolver.adaptTo(Session.class);
@@ -117,14 +117,14 @@ public class COCScheduler implements Runnable {
 																																																												// group
 																																																												// name
 			if (null == denyGroup) {
-				logger.debug("Deny group doesn't exist, returning from here : {}", coCConfig.getDenyGroupName());
+				logger.trace("Deny group doesn't exist, returning from here : {}", coCConfig.getDenyGroupName());
 			}
 			fileList.stream().forEach(record -> {
 				logger.debug("Iterating user :: {}", record);
 				try {
 					final UserManager userMgr = AccessControlUtil.getUserManager(session);
 					Authorizable user = userMgr.getAuthorizable(record);
-					logger.debug("Authorizable user :: {}", user);
+					logger.trace("Authorizable user :: {}", user);
 					if (null == user) {
 						User newUser = userMgr.createUser(record, "password");
 						ValueFactory valueFactory = session.getValueFactory();
@@ -137,7 +137,7 @@ public class COCScheduler implements Runnable {
 						Value emailValue = valueFactory.createValue(record, PropertyType.STRING);
 						newUser.setProperty("./profile/email", emailValue);
 						session.save();
-						logger.debug("New user successfully created :: {}", newUser);
+						logger.trace("New user successfully created :: {}", newUser);
 					}
 					logger.trace("Remove all members from deny group");
 					denyGroup.getMembers().forEachRemaining( member -> {
@@ -152,9 +152,9 @@ public class COCScheduler implements Runnable {
 					});
 					logger.trace("Remove all members from deny group completed");
 					user = userMgr.getAuthorizable(record);
-					logger.debug("Before adding user to deny group :: {}", user);
+					logger.trace("Before adding user to deny group :: {}", user);
 					denyGroup.addMember(user); // Add user to the group
-					logger.debug("Iterating user is finished :: {}", record);
+					logger.trace("Iterating user is finished :: {}", record);
 					session.save();
 				} catch (RepositoryException e) {
 					logger.error("RepositoryException :: {}", e);
@@ -163,18 +163,18 @@ public class COCScheduler implements Runnable {
 		} catch (IOException | LoginException | RepositoryException e) {
 			logger.error("Error :: while running scheduler :: {}", e);
 		}
-		logger.debug("COCScheduler run is complete.");
+		logger.trace("COCScheduler run is complete.");
 	}
 
 	private void addSchedule() {
-		logger.debug("Entry :: COCScheduler :: addSchedule :: {}", coCConfig);
+		logger.trace("Entry :: COCScheduler :: addSchedule :: {}", coCConfig);
 		if (coCConfig.isEnabled()) {
 			ScheduleOptions scheduleOptions = scheduler.EXPR(coCConfig.getScheduleExpression());
 			scheduleOptions.name(String.valueOf(coCConfig.getScheduleName()));
 			scheduleOptions.canRunConcurrently(true);
 			scheduler.schedule(this, scheduleOptions);
-			logger.debug("COCScheduler :: schedule added :: {}", coCConfig.getScheduleName());
+			logger.trace("COCScheduler :: schedule added :: {}", coCConfig.getScheduleName());
 		}
-		logger.debug("Exit :: COCScheduler :: addSchedule");
+		logger.trace("Exit :: COCScheduler :: addSchedule");
 	}
 }
