@@ -36,7 +36,7 @@ public class FormPostData  extends SlingAllMethodsServlet {
 	    StringBuilder postData = new StringBuilder();
 		String submitURL = "";
 		postData.append("{");
-	    try {
+	    
 	    	Enumeration paramNames = request.getParameterNames();	    	
 	        while(paramNames.hasMoreElements()) {
 	           String paramName = (String)paramNames.nextElement();
@@ -58,9 +58,6 @@ public class FormPostData  extends SlingAllMethodsServlet {
 			String redirect = request.getParameter("redirectURL") != null ? request.getParameter("redirectURL") : "";
 			submitURL = submitURL.isEmpty() ? redirect : submitURL;
 	        response.sendRedirect(submitURL);
-	    } catch (Exception e) {
-			LOG.error("Error occured while capturing mail response" + e);
-	    }
 	  }
 
 	  /*
