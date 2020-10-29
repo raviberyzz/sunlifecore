@@ -279,11 +279,11 @@ class ArticleComments extends React.Component {
   }
   submitComment(event) {
     let newCommentVal = $("#commentText").val();
-    // if (newCommentVal.trim() == "") {
-    //   console.log('no comment');
-    //   return false;
-    // } else {
-      //console.log('comment added');
+     if (newCommentVal.trim() == "") {
+       console.log('no comment');
+       return false;
+     } else {
+      console.log('comment added');
       let newComment = {
         articlePath: this.state.articlePath,
         commentText: newCommentVal
@@ -314,7 +314,7 @@ class ArticleComments extends React.Component {
       });
       /* news comment submit analytics ends here */
       $("#commentText").val("write your comment");
-    //}
+    }
   }
   deleteComment(commentId, event) {
     let removeComment = {
