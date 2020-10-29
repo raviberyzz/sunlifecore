@@ -570,16 +570,19 @@ class NewsTabs extends React.Component {
       var selectedAccordian = event.target;
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
-      if(selectedAccordian.getAttribute('aria-expaned') == true){
-        document.getElementById("responsivegrid1" + i).classList.remove("accordian-container-active");
-        document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
+      //
+      if( selectedAccordian.getAttribute('aria-expanded')== "true"){
+        var item = "responsivegrid" + selectedAccordianIndex;
+        var accContItem = "tab-accordian-heading" + selectedAccordianIndex;
+        document.getElementById(item).classList.remove("accordian-container-active");
+        document.getElementById(accContItem).setAttribute('aria-expanded', 'false');
       } else {
         selectedAccordian.setAttribute('aria-expanded', 'true');
         var accordianContentId = "responsivegrid" + selectedAccordianIndex;
         var activeAccordianContainer = document.getElementById(accordianContentId);
         activeAccordianContainer.classList.add('accordian-container-active');
         var accordianContainer = document.getElementsByClassName('accordianContainer');
-        for (var i = 0; i < accordianContainer.length - 1; i++) {
+        for (var i = 0; i < accordianContainer.length; i++) {
           if (i != selectedAccordianIndex) {
             accordianContainer[i].classList.remove('accordian-container-active');
             document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
