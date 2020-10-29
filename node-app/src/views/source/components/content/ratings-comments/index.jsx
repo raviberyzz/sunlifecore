@@ -313,8 +313,7 @@ class ArticleComments extends React.Component {
       ev_title: "news-comment",
     });
     /* news comment submit analytics ends here */
-    var placeHolder = document.getElementById('commentText');
-    placeHolder.setAttribute('placeholder','Write your comment');
+    $('#commentText').val('write your comment');
   }
   deleteComment(commentId, event) {
     let removeComment = {
