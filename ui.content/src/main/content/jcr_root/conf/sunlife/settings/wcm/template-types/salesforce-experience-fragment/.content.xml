@@ -4,7 +4,8 @@
     jcr:primaryType="cq:Template"
     ranking="{Long}1">
     <jcr:content
-        jcr:description="Config template for web pages"
+        jcr:description="Generic template for empty experience fragments variations"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Sunlife Config Page"/>
+        jcr:title="We.Retail Empty Experience Fragment"
+        status="draft"/>
 </jcr:root>

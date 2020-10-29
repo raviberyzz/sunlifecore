@@ -1,0 +1,3 @@
+#base=css
+
+salesforce-lightening-design-system.sanitized.css
