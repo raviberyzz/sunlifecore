@@ -778,7 +778,7 @@ class NewsTiles extends React.Component {
                                   <img src={this.props.workdayImg} alt="" />
                                 </a>
                               </p>
-                              <p>{this.props.workdayText}</p>
+                              <p class="m-top-bt">{this.props.workdayText}</p>
                               <p>
                                 <a href={this.props.workdayLink} target="_blank">
                                   <span class="view-all-category white-font">
