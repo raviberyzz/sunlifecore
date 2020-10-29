@@ -12,7 +12,7 @@ class ArticleRatings extends React.Component {
       siteName: "ca",
       userACF2Id: "",
       apiCall: {},
-      canSubmit: true
+      canSubmit: true,
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -173,8 +173,7 @@ class ArticleComments extends React.Component {
       userName: "",
       email: "",
       apiCall: {},
-      userEmail: ""
-
+      userEmail: "",
     };
     this.articlePathFun = this.articlePathFun.bind(this);
     this.getRatingComment = this.getRatingComment.bind(this);
@@ -280,46 +279,52 @@ class ArticleComments extends React.Component {
   }
   submitComment(event) {
     let newCommentVal = $("#commentText").val();
-    let newComment = {
-      articlePath: this.state.articlePath,
-      //siteName: this.state.siteName,
-      commentText: newCommentVal,
-      ///userName: this.state.userName,
-      //userACF2Id: this.state.userACF2Id,
-      //email: this.state.email,
-    };
-    $.ajax({
-      type: "POST",
-      url: this.props.apiPath + ".ugc.addComment.json",
-      contentType: "application/json",
-      dataType: "json",
-      data: JSON.stringify(newComment),
-      success: (res) => {
-        this.setState({
-          commentCount: res.commentCount,
-          commentDetails: res.commentDetails,
-        });
-        this.dateLoad();
-        this.selectUserComment();
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    });
-    /* news comment submit analytics starts here */
-    utag.link({
-      ev_type: "other",
-      ev_action: "clk",
-      ev_title: "news-comment",
-    });
-    /* news comment submit analytics ends here */
-    $('#commentText').val('write your comment');
+    if (newCommentVal.trim() == "") {
+      console.log('no comment');
+      return false;
+    } else {
+      console.log('comment added');
+      let newComment = {
+        articlePath: this.state.articlePath,
+        //siteName: this.state.siteName,
+        commentText: newCommentVal,
+        ///userName: this.state.userName,
+        //userACF2Id: this.state.userACF2Id,
+        //email: this.state.email,
+      };
+      $.ajax({
+        type: "POST",
+        url: this.props.apiPath + ".ugc.addComment.json",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify(newComment),
+        success: (res) => {
+          this.setState({
+            commentCount: res.commentCount,
+            commentDetails: res.commentDetails,
+          });
+          this.dateLoad();
+          this.selectUserComment();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+      /* news comment submit analytics starts here */
+      utag.link({
+        ev_type: "other",
+        ev_action: "clk",
+        ev_title: "news-comment",
+      });
+      /* news comment submit analytics ends here */
+      $("#commentText").val("write your comment");
+    //}
   }
   deleteComment(commentId, event) {
     let removeComment = {
       articlePath: this.state.articlePath,
-      commentId: commentId
-     // reasonText: "testing",
+      commentId: commentId,
+      // reasonText: "testing",
     };
     $.ajax({
       type: "DELETE",
@@ -344,12 +349,10 @@ class ArticleComments extends React.Component {
     return (
       <div class="comment-wrapper">
         <p class="comment-count">
-    {this.props.comments} (
+          {this.props.comments} (
           <span class="val">{this.state.commentCount}</span>)
         </p>
-        <p class="info">
-        ({this.props.commentsToolTip})
-        </p>
+        <p class="info">({this.props.commentsToolTip})</p>
         <div class="add-comment col-xs-12">
           <input
             type="text"
@@ -361,7 +364,8 @@ class ArticleComments extends React.Component {
             <div class="primary-yellow-button" onClick={this.submitComment}>
               <a href="javascript:void(0)" role="button" class="CTA-wrapper">
                 <span class="button-class">
-                  <span class="icon-class fa fa-user"></span>{this.props.addComment}
+                  <span class="icon-class fa fa-user"></span>
+                  {this.props.addComment}
                 </span>
               </a>
             </div>
@@ -373,8 +377,8 @@ class ArticleComments extends React.Component {
             // if (index == 0) {
             //   a = "first";
             // }
-            if(index==(this.state.commentDetails.length-1)){
-              a='last';
+            if (index == this.state.commentDetails.length - 1) {
+              a = "last";
             }
             return (
               <div class={`old-comments ${a}`}>
@@ -384,20 +388,22 @@ class ArticleComments extends React.Component {
                     <span class="time">{value.updatedDate}</span>
                     <div
                       class={`three-dots ${
-                        value.email == this.state.userEmail || hasUserGroups ?  "show" : "" 
+                        value.email == this.state.userEmail || hasUserGroups
+                          ? "show"
+                          : ""
                       }`}
                     >
                       <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
-                    <a href="javascript:void(0)">{this.props.edit}</a>
+                          <a href="javascript:void(0)">{this.props.edit}</a>
                           <br />
                           <a
                             class="delete-option"
                             data-toggle="modal"
                             data-target={"#deleteModal" + value.commentId}
                           >
-                             {this.props.delete}
+                            {this.props.delete}
                           </a>
                         </div>
                       </div>
@@ -415,7 +421,7 @@ class ArticleComments extends React.Component {
                       <div class="modal-header">
                         <div class="modal-title">
                           <h3 class="modal-heading" tabindex="0">
-                          {this.props.deleteComment}
+                            {this.props.deleteComment}
                           </h3>
                           <button
                             type="button"
@@ -427,31 +433,30 @@ class ArticleComments extends React.Component {
                         </div>
                       </div>
                       <div class="modal-body" tabindex="0">
-                      {this.props.deleteCommentConfirm} 
-
+                        {this.props.deleteCommentConfirm}
                       </div>
                       <div class="modal-footer">
                         <div class="button-wrapper secondary-button-form">
-                        <button
-                          type="button"
-                          class="cancel cmp-form-button sec-btn"
-                          data-dismiss="modal"
-                        >
-                          {this.props.cancel}
-                        </button>
+                          <button
+                            type="button"
+                            class="cancel cmp-form-button sec-btn"
+                            data-dismiss="modal"
+                          >
+                            {this.props.cancel}
+                          </button>
                         </div>
                         <div class="button-wrapper primary-blue-button-form">
-                        <button
-                          type="button"
-                          class="cmp-form-button"
-                          onClick={this.deleteComment.bind(
-                            this,
-                            value.commentId
-                          )}
-                          data-dismiss="modal"
-                        >
-                         {this.props.delete} 
-                        </button>
+                          <button
+                            type="button"
+                            class="cmp-form-button"
+                            onClick={this.deleteComment.bind(
+                              this,
+                              value.commentId
+                            )}
+                            data-dismiss="modal"
+                          >
+                            {this.props.delete}
+                          </button>
                         </div>
                       </div>
                     </div>
