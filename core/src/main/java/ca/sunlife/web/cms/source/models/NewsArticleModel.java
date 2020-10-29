@@ -45,7 +45,7 @@ import ca.sunlife.web.cms.source.constants.NewsConstants;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = { SlingHttpServletRequest.class,
+@ Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, adapters = NewsArticleModel.class, resourceType = "sunlife/source/components/content/news-announcement")
 public class NewsArticleModel {
 
@@ -60,7 +60,7 @@ public class NewsArticleModel {
 
 	/** The fragment path. */
 	@ Inject
-	@ Via ("resource")
+	@ Via("resource")
 	private String fragmentPath;
 
 	/** The resolver. */
@@ -69,22 +69,22 @@ public class NewsArticleModel {
 
 	/** The checkbox hide date. */
 	@ Inject
-	@ Via ("resource")
+	@ Via("resource")
 	private String checkboxHideDate;
 
 	/** The checkbox hide tags. */
 	@ Inject
-	@ Via ("resource")
+	@ Via("resource")
 	private String checkboxDisplayTags;
 
 	/** The checkbox display rating. */
 	@ Inject
-	@ Via ("resource")
+	@ Via("resource")
 	private String checkboxDisplayRating;
 
 	/** The checkbox display comments. */
 	@ Inject
-	@ Via ("resource")
+	@ Via("resource")
 	private String checkboxDisplayComments;
 
 	/** The config service. */
@@ -106,17 +106,17 @@ public class NewsArticleModel {
 	private List<String> tagList = new ArrayList<>();
 
 	/** The resource type. */
-  @ Inject
-  @ Via ("resource")
-  @ Named (JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY)
-  private String resourceType;
+	@ Inject
+	@ Via("resource")
+	@ Named(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY)
+	private String resourceType;
 
-  /** The layout resource type. */
-  private String layoutResourceType;
-  
-  /** The page locale default. */
-  private String pageLocaleDefault;
-  
+	/** The layout resource type. */
+	private String layoutResourceType;
+
+	/** The page locale default. */
+	private String pageLocaleDefault;
+
 	/**
 	 * Gets the article data.
 	 *
@@ -239,7 +239,7 @@ public class NewsArticleModel {
 	public void setTagList(List<String> tagList) {
 		this.tagList = Collections.unmodifiableList(tagList);
 	}
-	
+
 	/**
 	 * Gets the resourceType.
 	 *
@@ -280,6 +280,7 @@ public class NewsArticleModel {
 
 	/**
 	 * Gets the pageLocaleDefault.
+	 * 
 	 * @return the pageLocaleDefault
 	 */
 	public String getPageLocaleDefault() {
@@ -287,8 +288,8 @@ public class NewsArticleModel {
 	}
 
 	/**
-	 * @param pageLocaleDefault 
-	 * the pageLocaleDefault to set.
+	 * @param pageLocaleDefault
+	 *          the pageLocaleDefault to set.
 	 */
 	public void setPageLocaleDefault(String pageLocaleDefault) {
 		this.pageLocaleDefault = pageLocaleDefault;
@@ -340,9 +341,10 @@ public class NewsArticleModel {
 				final TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
 				final Tag[] tags = null != tagManager ? tagManager.getTags(metaDataResource) : null;
 				final Locale locale = new Locale(pageLocaleDefault);
-				if( null != tags ) {
-					for(Tag tag : tags) {
-						if(tag.getTagID().startsWith("sunlife:source/business-group") || tag.getTagID().startsWith("sunlife:source/topic")) {
+				if (null != tags) {
+					for (Tag tag : tags) {
+						if (tag.getTagID().startsWith("sunlife:source/business-group")
+								|| tag.getTagID().startsWith("sunlife:source/topic")) {
 							String locTitle = tag.getLocalizedTitle(locale);
 							LOGGER.debug("locale : {} , locTitle : {}", locale, locTitle);
 							tagList.add(locTitle != null ? locTitle : tag.getTitle());
@@ -352,8 +354,7 @@ public class NewsArticleModel {
 				}
 			}
 			LOGGER.debug("Article Data {}", articleData);
-			layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/'))
-          .concat("/layout-container");
+			layoutResourceType = resourceType.substring(0, resourceType.lastIndexOf('/')).concat("/layout-container");
 			resourceResolver.close();
 		} catch (LoginException | RepositoryException e) {
 			LOGGER.error("Login Error while getting resource resolver : {}", e);
@@ -361,7 +362,7 @@ public class NewsArticleModel {
 	}
 
 	/**
-	 * Sets the article publish  date.
+	 * Sets the article publish date.
 	 *
 	 * @param articleContent
 	 *          the new article publish date

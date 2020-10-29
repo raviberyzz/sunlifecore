@@ -2,13 +2,17 @@ package ca.sunlife.web.cms.source.scheduler;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 
+import javax.jcr.PropertyType;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
+import javax.jcr.ValueFactory;
 
+import org.apache.jackrabbit.api.security.user.Authorizable;
 import org.apache.jackrabbit.api.security.user.Group;
+import org.apache.jackrabbit.api.security.user.User;
 import org.apache.jackrabbit.api.security.user.UserManager;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -47,9 +51,9 @@ public class COCScheduler implements Runnable {
 	@ Reference
 	private Scheduler scheduler;
 
-	/** The resourceResolver. */
+	/** The coreResourceResolver. */
 	@ Reference
-	private CoreResourceResolver resourceResolver;
+	private CoreResourceResolver coreResourceResolver;
 
 	/**
 	 * Returns COC config.
@@ -71,22 +75,23 @@ public class COCScheduler implements Runnable {
 	/**
 	 * Activates the COC scheduler config.
 	 * 
-	 * @param coCConfig
+	 * @param coCConfig 
+	 * 	the coc config
 	 */
 	@ Activate
 	public void activate(CoCConfig coCConfig) {
 		this.coCConfig = coCConfig;
-		logger.debug("CoCConfig is set. Is enabled? : {}, file path : {}", this.coCConfig.isEnabled(), this.coCConfig.getFilePath());
+		logger.debug("CoCConfig is set. Is enabled? : {}, file path : {}", this.coCConfig.isEnabled(),
+		this.coCConfig.getFilePath());
 		addSchedule();
 	}
 
 	@ Override
 	public void run() {
 		logger.debug("COCScheduler is running..");
-		Session session = null;
 		ResourceResolver resolver = null;
 		try {
-			resolver = resourceResolver.getResourceResolver();
+			resolver = coreResourceResolver.getResourceResolver();
 			if (null == resolver) {
 				logger.debug("Resource resolver is null, returning from method");
 				return;
@@ -98,8 +103,11 @@ public class COCScheduler implements Runnable {
 				logger.debug("File list is empty, returning from method");
 				return;
 			}
-			session = resolver.adaptTo(Session.class);
-			final UserManager userManager = null != session ? AccessControlUtil.getUserManager(session) : null;
+			final Session session = resolver.adaptTo(Session.class);
+			if (null == session) {
+				return;
+			}
+			final UserManager userManager = AccessControlUtil.getUserManager(session);
 			Group denyGroup = null != userManager ? (Group) userManager.getAuthorizable(coCConfig.getDenyGroupName()) : null; // Deny
 																																																												// group
 																																																												// name
@@ -107,21 +115,34 @@ public class COCScheduler implements Runnable {
 				logger.debug("Deny group doesn't exist, returning from here : {}", coCConfig.getDenyGroupName());
 			}
 			fileList.stream().forEach(record -> {
-				String[] array = record.split("~");
-				logger.debug("array :: {}", Arrays.deepToString(array));
+				logger.debug("Iterating user :: {}", record);
 				try {
-					if (array[1].equals("Y")) {
-						denyGroup.addMember(userManager.getAuthorizable(array[0])); // Add user to the group
-					} else {
-						denyGroup.removeMember(userManager.getAuthorizable(array[0])); // Remove user from the group
+					final UserManager userMgr = AccessControlUtil.getUserManager(session);
+					Authorizable user = userMgr.getAuthorizable(record);
+					logger.debug("Authorizable user :: {}", user);
+					if (null == user) {
+						User newUser = userMgr.createUser(record, "password");
+						ValueFactory valueFactory = session.getValueFactory();
+						Value firstNameValue = valueFactory.createValue("", PropertyType.STRING);
+						newUser.setProperty("./profile/givenName", firstNameValue);
+
+						Value lastNameValue = valueFactory.createValue("", PropertyType.STRING);
+						newUser.setProperty("./profile/familyName", lastNameValue);
+
+						Value emailValue = valueFactory.createValue(record, PropertyType.STRING);
+						newUser.setProperty("./profile/email", emailValue);
+						session.save();
+						logger.debug("New user successfully created :: {}", newUser);
 					}
+					user = userMgr.getAuthorizable(record);
+					logger.debug("Before adding user to deny group :: {}", user);
+					denyGroup.addMember(user); // Add user to the group
+					logger.debug("Iterating user is finished :: {}", record);
+					session.save();
 				} catch (RepositoryException e) {
 					logger.error("RepositoryException :: {}", e);
 				}
 			});
-			if (null != session) {
-				session.save();
-			}
 		} catch (IOException | LoginException | RepositoryException e) {
 			logger.error("Error :: while running scheduler :: {}", e);
 		}
@@ -133,7 +154,7 @@ public class COCScheduler implements Runnable {
 		if (coCConfig.isEnabled()) {
 			ScheduleOptions scheduleOptions = scheduler.EXPR(coCConfig.getScheduleExpression());
 			scheduleOptions.name(String.valueOf(coCConfig.getScheduleName()));
-			scheduleOptions.canRunConcurrently(false);
+			scheduleOptions.canRunConcurrently(true);
 			scheduler.schedule(this, scheduleOptions);
 			logger.debug("COCScheduler :: schedule added :: {}", coCConfig.getScheduleName());
 		}

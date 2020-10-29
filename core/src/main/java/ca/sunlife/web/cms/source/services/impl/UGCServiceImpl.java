@@ -50,6 +50,7 @@ public class UGCServiceImpl implements UGCService {
 	 * Activate ugc service config for UGCServiceImpl.
 	 * 
 	 * @param ugcConfig
+	 * 	the ugc config
 	 */
 	@ Activate
 	public void activate(UGCConfig ugcConfig) {
@@ -71,8 +72,11 @@ public class UGCServiceImpl implements UGCService {
 	 */
 	@ Override
 	public String callWebService(String serviceUrl, String methodType, String userInfo,
-			Map<String, String[]> requestParams, String requestJsonPost) throws ApplicationException, SystemException, IOException {
-		logger.debug("Entry :: callWebService method of UGCServiceImpl :: serviceUrl {}, methodType {}, userInfo {}, requestParams {}", serviceUrl, methodType, userInfo, requestParams);
+			Map<String, String[]> requestParams, String requestJsonPost)
+			throws ApplicationException, SystemException, IOException {
+		logger.debug(
+				"Entry :: callWebService method of UGCServiceImpl :: serviceUrl {}, methodType {}, userInfo {}, requestParams {}",
+				serviceUrl, methodType, userInfo, requestParams);
 		JSONObject reqHeaderjson = new JSONObject();
 		try {
 			JSONObject userProfileJson = new JSONObject(userInfo);
@@ -81,7 +85,7 @@ public class UGCServiceImpl implements UGCService {
 			reqHeaderjson.put("user-given-name", userProfileJson.get(UserInfoConstants.USER_NAME_CONSTANT));
 			reqHeaderjson.put("user-email-address", userProfileJson.get(UserInfoConstants.EMAIL_CONSTANT));
 			if (this.ugcConfig.getByPassAkamaiAuth()) {
-				reqHeaderjson.put("x-sti-test", "SFI - wwSWGasd");	
+				reqHeaderjson.put("x-sti-test", "SFI - wwSWGasd");
 			}
 		} catch (JSONException e) {
 			logger.error("JSONException :: while setting request headers {}", e);
@@ -99,25 +103,24 @@ public class UGCServiceImpl implements UGCService {
 			return restService.callGetWebService(url.toString(), reqHeaderjson.toString());
 		} else {
 			JSONObject json = null;
-				try {
-					if (null != requestJsonPost && requestJsonPost.length() > 2) {
-						json = new JSONObject(requestJsonPost);
-						json.put("siteName", this.ugcConfig.getUGCServiceSite());
-					} else {
-						json = new JSONObject();
-					}
-				} catch (JSONException e1) {
-					logger.error("JSONException :: while setting site name {}", e1);
+			try {
+				if (null != requestJsonPost && requestJsonPost.length() > 2) {
+					json = new JSONObject(requestJsonPost);
+					json.put("siteName", this.ugcConfig.getUGCServiceSite());
+				} else {
+					json = new JSONObject();
 				}
-				String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
-				if("POST".equals(methodType)) {
+			} catch (JSONException e1) {
+				logger.error("JSONException :: while setting site name {}", e1);
+			}
+			String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
+			if ("POST".equals(methodType)) {
 				return restService.callPostWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);
-				}
-				else {
-			    return restService.callDeleteWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);	
-				}
+			} else {
+				return restService.callDeleteWebService(url, reqHeaderjson.toString(), null != json ? json.toString() : null);
+			}
 		}
-	
+
 	}
 
 }
