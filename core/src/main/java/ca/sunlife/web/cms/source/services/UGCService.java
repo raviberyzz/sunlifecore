@@ -30,6 +30,7 @@ public interface UGCService {
 	 * @param requestJsonPost
 	 * 	requestJsonPost
 	 * @return
+	 *  string response
 	 * @throws ApplicationException
 	 * 	ApplicationException
 	 * @throws SystemException

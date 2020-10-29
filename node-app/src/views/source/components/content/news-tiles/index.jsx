@@ -46,8 +46,8 @@ class NewsTiles extends React.Component {
 
   componentDidMount() {
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
-    this.getNewsList();
+    //this.getPreferenceList();
+    //this.getNewsList();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -70,7 +70,8 @@ class NewsTiles extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+         // this.tagSorting();
+         this.getPreferenceList();
         });
       },
       error: (err) => {
@@ -86,6 +87,7 @@ class NewsTiles extends React.Component {
       url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
+        this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = response["business-group"];
         this.state.topicsList = response["topic"];
         this.state.businessGroupList.tags.forEach((data, index) => {
@@ -123,6 +125,8 @@ class NewsTiles extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
+        }, ()=>{
+          this.tagSorting();
         });
       },
       error: (err) => {
@@ -473,6 +477,8 @@ class NewsTiles extends React.Component {
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags,
       loading: false
+    }, () => {
+      this.getNewsList();
     });
   }
 

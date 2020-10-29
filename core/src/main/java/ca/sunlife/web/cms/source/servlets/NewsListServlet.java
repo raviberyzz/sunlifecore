@@ -77,7 +77,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 	 * Activate news config for NewsList servlet.
 	 * 
 	 * @param newsConfig
-	 * 	the newsConfig
+	 *          the newsConfig
 	 */
 	@ Activate
 	public void activate(NewsConfig newsConfig) {
@@ -147,9 +147,9 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 							final TagManager tagManager = coreResourceResolver.getResourceResolver().adaptTo(TagManager.class);
 							final Tag[] tags = null != tagManager ? tagManager.getTags(contentFragmentMetaData) : null;
 							final ArrayList<String> tagList = new ArrayList<>();
-							if( null != tags ) {
+							if (null != tags) {
 								Arrays.stream(tags).forEach(tag -> {
-									if(tag.listAllSubTags() instanceof EmptyIterator) {
+									if (tag.listAllSubTags() instanceof EmptyIterator) {
 										tagList.add(tag.getTagID());
 									} else {
 										tag.listAllSubTags().forEachRemaining(childTagItr -> {
