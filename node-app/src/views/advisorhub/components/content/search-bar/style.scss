@@ -43,7 +43,7 @@
                 font-size: 1.5rem;
                 line-height: 1.875rem;
                 font-weight: 400;
-                color: #424242;
+                color: $dark-grey-color;
             }
             .search-autocomplete {
                 position:absolute;
@@ -68,7 +68,7 @@
     }
 }
 
-@media ( max-width: 1024px) and (min-width: 768px ) {
+@media ( max-width: $tab-screen-max) and (min-width: $tab-screen-min ) {
 
     .adv-search-bar-wrapper {
         .global-search {
@@ -89,7 +89,7 @@
     }
 
 }
-@media ( max-width: 767px) {
+@media ( max-width: $mobile-screen-max) {
     .adv-search-bar-wrapper {
         .global-search {
             padding: 24px;
