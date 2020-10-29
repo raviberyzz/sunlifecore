@@ -1,0 +1,10 @@
+@import '../../../base/core'; 
+
+.search-bar-wrapper{
+    background: $medium-blue-color;
+    .close-div{
+        a{
+            color:$white-shade;
+        }
+    }
+}
