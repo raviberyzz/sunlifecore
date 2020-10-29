@@ -21,6 +21,12 @@ import javax.servlet.Servlet;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * This servlet outputs the JSON from the output asset of the DrugListService
+ * The output path is /bin/getDrugList
+ * Mime type: application/json
+ * encoding: UTF-8
+ */
 @Component(service = Servlet.class, property = {
         Constants.SERVICE_DESCRIPTION + "= Drug List Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_GET,
@@ -35,16 +41,19 @@ public class DrugListServlet extends SlingSafeMethodsServlet{
     @Reference
     private transient DrugListService drugListService;
 
+    /**
+     * Produces the "application/json" for the Drug List from the Asset configured in the DrugListService.
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     @ Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
 
         String json;
 
-        ValueMap valueMap = request.getResource().getValueMap();
-        String druglistJson = valueMap.get("assetPath", String.class);
-        if (StringUtils.isEmpty(druglistJson)) {
-            druglistJson = drugListService.getDataAssetPath();
-        }
+        String druglistJson = drugListService.getDataAssetPath();
 
         AssetManager assetManager = request.getResourceResolver().adaptTo(AssetManager.class);
         if (assetManager != null && assetManager.assetExists(druglistJson)) {

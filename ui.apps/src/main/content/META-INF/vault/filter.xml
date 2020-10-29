@@ -5,8 +5,4 @@
     <filter root="/apps/cq/xssprotection"/>
     <filter root="/apps/cq/gui/components/authoring/editors/clientlibs/core/js/edit/ToolbarActions"/>
     <filter root="/apps/sling/servlet/errorhandler" />
-
-    <filter root="/conf/global/settings/workflow/launcher/config/1423903076"/>
-    <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update" mode="merge"/>
-    <filter root="/var/workflow/models/workplace-benefits-drug-list-update" mode="merge"/>
 </workspaceFilter>

@@ -136,32 +136,11 @@
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>${myproject.basedir}/assembly.xml</descriptor>
+								<descriptor>assembly.xml</descriptor>
 							</descriptors>
 							<appendAssemblyId>true</appendAssemblyId>
 							<finalName>${project.artifactId}-${project.version}-Sources</finalName>
 							<runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.commonjava.maven.plugins</groupId>
-                <artifactId>directory-maven-plugin</artifactId>
-				<version>0.3.1</version>
-				<executions>
-					<execution>
-						<id>directories</id>
-						<goals>
-							<goal>directory-of</goal>
-						</goals>
-						<phase>initialize</phase>
-						<configuration>
-							<property>myproject.basedir</property>
-							<project>
-								<groupId>ca.sunlife.web.cms</groupId>
-								<artifactId>web-cms-aem-core</artifactId>
-							</project>
 						</configuration>
 					</execution>
 				</executions>
@@ -744,32 +723,6 @@
 							<groupId>org.sonarsource.scanner.maven</groupId>
 							<artifactId>sonar-maven-plugin</artifactId>
 							<version>3.6.0.1398</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-
-		<profile>
-			<id>skipSpotbugs</id>
-			<properties>
-				<spotbugs.skip>true</spotbugs.skip>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>ac-tool</id>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>com.day.jcr.vault</groupId>
-							<artifactId>content-package-maven-plugin</artifactId>
-							<configuration>
-								<properties>
-									<installhook.actool.class>biz.netcentric.cq.tools.actool.installhook.AcToolInstallHook</installhook.actool.class>
-								</properties>
-							</configuration>
 						</plugin>
 					</plugins>
 				</pluginManagement>
