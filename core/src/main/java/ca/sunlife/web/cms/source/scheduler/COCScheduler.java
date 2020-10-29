@@ -19,6 +19,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.commons.scheduler.ScheduleOptions;
 import org.apache.sling.commons.scheduler.Scheduler;
+import org.apache.sling.jcr.api.SlingRepository;
 import org.apache.sling.jcr.base.util.AccessControlUtil;
 import org.apache.tika.io.IOUtils;
 import org.osgi.service.component.annotations.Activate;
@@ -54,6 +55,10 @@ public class COCScheduler implements Runnable {
 	/** The coreResourceResolver. */
 	@ Reference
 	private CoreResourceResolver coreResourceResolver;
+
+	/** The repository. */
+	@ Reference
+	private SlingRepository repository;
 
 	/**
 	 * Returns COC config.
@@ -134,6 +139,18 @@ public class COCScheduler implements Runnable {
 						session.save();
 						logger.debug("New user successfully created :: {}", newUser);
 					}
+					logger.trace("Remove all members from deny group");
+					denyGroup.getMembers().forEachRemaining( member -> {
+						UserManager removeUserMgr;
+						try {
+							removeUserMgr = AccessControlUtil.getUserManager(session);
+							denyGroup.removeMember(removeUserMgr.getAuthorizable(member.getID()));
+							session.save();
+						} catch (RepositoryException e) {
+							logger.error("Error :: RepositoryException :: {}", e);
+						}
+					});
+					logger.trace("Remove all members from deny group completed");
 					user = userMgr.getAuthorizable(record);
 					logger.debug("Before adding user to deny group :: {}", user);
 					denyGroup.addMember(user); // Add user to the group
