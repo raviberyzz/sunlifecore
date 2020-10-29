@@ -80,4 +80,9 @@ $(document).ready(function () {
 			/* time analytics ends here */
 		})
 	}
+
+	//breadcrumb margin-bottom fix for non-responsive pages
+	if($('.title-wrapper-blue-yellow-rings')){
+		$('.breadcrumb-wrapper-cool-blue').css('margin-bottom','0!important');
+	}
 });

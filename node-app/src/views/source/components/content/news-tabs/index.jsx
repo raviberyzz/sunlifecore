@@ -25,7 +25,7 @@ class NewsTabs extends React.Component {
       userProfileArticles: [],
       businessGroupIdTitle: [],
       loading: true,
-      windowWidth: window.innerWidth
+      businessGroupIdTitle:[]
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -48,9 +48,9 @@ class NewsTabs extends React.Component {
 
   componentDidMount() {
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
-    this.getTabsNewsList();
-    this.tagSorting();
+    //this.getPreferenceList();
+    //this.getTabsNewsList();
+    //this.tagSorting();
   }
 
   // get the selected preferences on page load
@@ -64,7 +64,8 @@ class NewsTabs extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+          //this.tagSorting();
+          this.getPreferenceList();
         })
         console.log(res);
       },
@@ -81,6 +82,7 @@ class NewsTabs extends React.Component {
       url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
+        this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
         this.state.businessGroupList.tags.forEach((data,index) => {
@@ -114,6 +116,11 @@ class NewsTabs extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
+        }, () =>{
+           this.tagSorting();
+           setTimeout(()=>{
+            this.getTabsNewsList();
+           },1000)
         })
         //this.getTabsNewsList();
         console.log(res);
@@ -478,14 +485,31 @@ class NewsTabs extends React.Component {
   }
 
   bgBinding(bgList) {
-    let bg = "";
+    /*let bg = "";
     bgList.forEach((data) => {
       let bgarr = data.split('/');
       if (bgarr[1] == "business-group") {
         bg += " | " + bgarr[bgarr.length - 1];
       }
     })
-    return bg;
+    return bg;*/
+    var title = "";
+    bgList.filter((id, i) => {
+      this.state.businessGroupIdTitle.forEach((obj) => {
+        if (Object.keys(obj) == id) {
+          if (i == bgList.length - 1) {
+            title = title + obj[id];
+          } else {
+            title = title + obj[id] + " | ";
+          }
+          // return obj[id];
+        }
+      });
+    });
+    if (title.charAt(title.length - 2) == '|') {
+      title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
+    }
+    return title;
   }
 
   paginationDataBuild(newsList, page) {

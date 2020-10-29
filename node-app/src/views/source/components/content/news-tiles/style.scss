@@ -235,11 +235,14 @@
         }
     }
 }
-
-.loader{
-    margin-left:50%;
-    margin-top:10%;
+.loaderContainer{
+    height:600px;
+    .loader{
+        margin-left:50%;
+        margin-top:10%;
+    }
 }
+
 @media (min-width: $desktop-screen-min) {
     .news-wrapper{
         .preference-popup-wrapper{
