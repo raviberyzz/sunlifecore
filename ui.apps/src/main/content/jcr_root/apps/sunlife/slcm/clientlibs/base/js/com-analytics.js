@@ -340,12 +340,17 @@ $(document).ready(function () {
     });
     /* Home page modal analytics ends here */
     /* Sign-in button inside sign-in modal starts here */
-    $("#form_signon_modal input.btn-blue").click(function(){
-        console.log('clk');
-        utag.link ({
-            "ev_type": "authenticate",
-            "ev_action": "signin",
-            "ev_title": "sign in"
+    $("#signin-widget-modal").on("shown.bs.modal", function (){
+        if($("#form_signon_modal input.btn-blue").length>-1){
+        $("#form_signon_modal input.btn-blue").attr('id','slcm-sign-in');
+        }
+        $("#form_signon_modal #slcm-sign-in").click(function(){
+            console.log('clk');
+            utag.link ({
+                "ev_type": "authenticate",
+                "ev_action": "signin",
+                "ev_title": "sign in"
+            });
         });
     });
     /* Sign-in button inside sign-in modal starts here */
