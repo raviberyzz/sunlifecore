@@ -127,6 +127,9 @@ class NewsTiles extends React.Component {
           businessGroupIdTitle: this.state.businessGroupIdTitle,
         }, ()=>{
           this.tagSorting();
+          setTimeout(() => {
+            this.getNewsList();
+          },1000)
         });
       },
       error: (err) => {
@@ -477,8 +480,6 @@ class NewsTiles extends React.Component {
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags,
       loading: false
-    }, () => {
-      this.getNewsList();
     });
   }
 
