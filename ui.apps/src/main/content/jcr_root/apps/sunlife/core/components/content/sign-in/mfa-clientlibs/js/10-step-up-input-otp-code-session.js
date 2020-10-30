@@ -92,7 +92,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
         // make sure it's a 401 error in message
         if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-          displaylockedOutMessage();
+          onLogout();
           //reject(defaultRecovery);
           hideSpinner();
           return;
