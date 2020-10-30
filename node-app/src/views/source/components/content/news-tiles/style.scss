@@ -247,6 +247,10 @@
         margin-left:50%;
         margin-top:10%;
     }
+    p{
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media (min-width: $desktop-screen-min) {
