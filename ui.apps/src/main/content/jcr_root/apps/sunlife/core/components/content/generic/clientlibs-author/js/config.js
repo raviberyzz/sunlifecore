@@ -126,6 +126,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "genericImage",
+                label: "Generic Image",
+                value: "",
+                required: true
+            },
+			{
                 name: "moreNewsText",
                 label: "More News Text",
                 value: "More news",
@@ -261,7 +267,31 @@ var multiPurposeComponentConfig = [
 			{
                 name: "getPrefernceListUrl",
                 label: "Preferences URL",
-                value: "/content/cq:tags/sunlife/source.tags",
+                value: "/content/cq:tags/sunlife/source",
+                required: true
+            },
+			{
+                name: "previousText",
+                label: "Previous Text",
+                value: "Previous",
+                required: true
+            },
+			{
+                name: "nextText",
+                label: "Next Text",
+                value: "Next",
+                required: true
+            },
+			{
+                name: "pageText",
+                label: "Page Text",
+                value: "Page",
+                required: true
+            },
+			{
+                name: "ofText",
+                label: "Of Text",
+                value: "of",
                 required: true
             }
 		]	
