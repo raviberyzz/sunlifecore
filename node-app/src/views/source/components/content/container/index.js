@@ -80,6 +80,8 @@ $(document).ready(function () {
 			/* time analytics ends here */
 		})
 	}
+	// time widget accessibility
+	$('.time-widget form').append('<button type="SUBMIT" class="cmp-form-button" style="display:none">Find</button>');
 
 	//breadcrumb margin-bottom fix for non-responsive pages
 	if($('.title-wrapper-blue-yellow-rings')){
