@@ -243,7 +243,7 @@ class NewsTiles extends React.Component {
           filterNewsList: this.state.filterNewsList,
           userProfileArticles: preferedNewsList,
           pinnedNewsList: this.state.pinnedNewsList,
-          loading: false
+         // loading: false
         });
         this.tagSorting();
       },
@@ -526,7 +526,7 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /><p>retrieving news articles please wait...</p></div>)}
         {
           !this.state.loading && (
             <div class="news-wrapper">
@@ -812,6 +812,7 @@ class NewsTiles extends React.Component {
                         </div>
                       )}
                   </div>
+                  {this.setState({loading:false})}
                 </div>
               </div>
             </div>
