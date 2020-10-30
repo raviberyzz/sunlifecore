@@ -32,7 +32,6 @@ function onSignInClick() {
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
         journeyEnded(clientContext);
-
         var token = results.getToken();
         if (token) {
             console.log("Journey completed successfully ...")
@@ -42,14 +41,42 @@ function onSignInClick() {
     .catch(function(error) {
         hideSpinner();
         journeyEnded(clientContext);
-        console.error("Authenticate Error: " + error);   
-        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-            //onLogout();
-        }
-        else{
-            //sessionTimeout._init();
-            sessionTimeout.showErrorMessage();
-        }    
+        console.error("Authenticate Error: ", error);
+        //console.error("extra", x)
+        const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+        clientContext["shouldStoreJSON"] = true;
+        journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+            if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                console.log('locked out!')
+                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
+                    $(clientContext.uiContainer).html(data);
+                    setAppContentApperance(true);
+                });
+            }
+            else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                //onLogout();
+            }
+            else{
+                sessionTimeout.showErrorMessage();
+            }
+        });
+    });
+}
+
+function checkAccountIsLocked(){
+    console.log('testLock here!')
+    const clientContext = getClientContext();
+    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+    var clientId = $("#USER").val();
+    var loginParameters= getHiddenFormValues();
+    var additionalParams = {
+        user: clientId,
+        loginParameters : loginParameters
+    };
+    clientContext["shouldStoreJSON"] = true;
+    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+        console.log('locked: ', clientContext['json_data'].locked)
+        return clientContext['json_data'].locked;
     });
 }
 
