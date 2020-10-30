@@ -618,7 +618,7 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        { this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
         {!this.state.loading && (
           <div class="news-wrapper">
             <div class="row">
@@ -639,7 +639,7 @@ class NewsTabs extends React.Component {
                           </div>
                           <span class="pull-right">
                             {this.state.selectedPreferenceTags.length > 0 &&
-                              <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
+                              <span>({this.state.selectedPreferenceTags.length})</span>
                             }
                             <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                           </span>
@@ -725,7 +725,7 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) +" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
@@ -741,7 +741,7 @@ class NewsTabs extends React.Component {
                                               <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
                                                 <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                                   <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                                  <span>{this.props.previousText}</span>
+                                                  <span class="hidden-xs hidden-sm">{this.props.previousText}</span>
                                                 </a>
                                               </li>
                                             }

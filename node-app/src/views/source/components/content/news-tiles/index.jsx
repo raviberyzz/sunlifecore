@@ -60,7 +60,7 @@ class NewsTiles extends React.Component {
   }
   // get the Selected Preferences 
   retrieveSelectedPreference() {
-    $.ajax({
+   /* $.ajax({
       type: "GET",
       url:
         `${this.props.resourcePath}.ugc.retrievePreference.json`,
@@ -77,7 +77,23 @@ class NewsTiles extends React.Component {
       error: (err) => {
         console.log(err);
       },
-    });
+    });*/
+    fetch(`${this.props.resourcePath}.ugc.retrievePreference.json`,{
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then((response)=>{
+      this.state.selectedPreferenceList = response;
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        }, () => {
+         // this.tagSorting();
+         this.getPreferenceList();
+        });
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
   }
 
   // get Preferences tag for pop modal 
@@ -358,25 +374,9 @@ class NewsTiles extends React.Component {
           )
         );
       });
-      /* pinnedNewsList = this.state.newsList.filter((news) => {
-         return (
-           news.pinArticle &&
-           news.tags &&
-           news.tags.some(
-             (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-           )
-         );
-       });*/
     } else {
       preferedNewsList = this.state.userProfileArticles;
     }
-    /* pinnedNewsList.sort(function (a, b) {
-       return (
-         a.pinArticle - b.pinArticle ||
-         b.publishedDate - a.publishedDate ||
-         a.heading.localeCompare(b.heading)
-       );
-     });*/
     preferedNewsList.sort(function (a, b) {
       return (
         b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading)
@@ -396,18 +396,9 @@ class NewsTiles extends React.Component {
     this.addSelectedPreference();
     this.tagSorting();
     $("#preferenceModal").modal("hide");
-    //window.location.reload();
   }
 
   bgBinding(bgList) {
-    /*let bg = "";
-    bgList.forEach((data) => {
-      let bgarr = data.split('/');
-      if (bgarr[1] == "business-group") {
-        bg += bgarr[bgarr.length - 1] + " | ";
-      }
-    })
-    return bg.substring(0, bg.length - 3); */
     var title = "";
     bgList.filter((id, i) => {
       this.state.businessGroupIdTitle.forEach((obj) => {
@@ -526,7 +517,7 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /><p>retrieving news articles please wait...</p></div>)}
         {
           !this.state.loading && (
             <div class="news-wrapper">
@@ -556,7 +547,7 @@ class NewsTiles extends React.Component {
                             </div>
                             <span class="pull-right">
                               {this.state.selectedPreferenceTags.length > 0 && (
-                                <span class="hidden-md hidden-lg">
+                                <span>
                                   ({this.state.selectedPreferenceTags.length})
                                 </span>
                               )}

@@ -85,12 +85,24 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     console.log('OTP session ended');
   };
 
-    this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
+  this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
     return new Promise(function (resolve, reject) {
-      console.log("promiseRecoveryForError was called with error: ".concat(error));
+      console.log("promiseRecoveryForError was called with error: ", error);
+      console.log('defaultRecovery', defaultRecovery, com.ts.mobile.sdk.AuthenticationErrorCode.Communication)
+      if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
+        // make sure it's a 401 error in message
+        if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
+          onLogout();
+          //reject(defaultRecovery);
+          hideSpinner();
+          return;
+        }
+      }
+
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
           waitLoader.keepModalContent = false;
+          // check if the user has any retries
           hideSpinner();
           resolve(defaultRecovery);
       } else {
@@ -202,7 +214,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
       var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
       _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
-
+      otpEntryAttemptFlag = 2;
       setTimeout(function(){
         hideSpinner();
       }, 30000);
