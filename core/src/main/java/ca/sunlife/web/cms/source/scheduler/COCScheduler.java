@@ -2,6 +2,7 @@ package ca.sunlife.web.cms.source.scheduler;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.util.List;
 
 import javax.jcr.PropertyType;
@@ -80,53 +81,64 @@ public class COCScheduler implements Runnable {
 	/**
 	 * Activates the COC scheduler config.
 	 * 
-	 * @param coCConfig 
-	 * 	the coc config
+	 * @param coCConfig
+	 *          the coc config
 	 */
 	@ Activate
 	public void activate(CoCConfig coCConfig) {
 		this.coCConfig = coCConfig;
 		logger.debug("CoCConfig is set. Is enabled? : {}, file path : {}", this.coCConfig.isEnabled(),
-		this.coCConfig.getFilePath());
+				this.coCConfig.getFilePath());
 		addSchedule();
 	}
 
 	@ Override
 	public void run() {
 		logger.trace("COCScheduler is running..");
-		ResourceResolver resolver = null;
+		ResourceResolver resourceResolver = null;
 		try {
-			resolver = coreResourceResolver.getResourceResolver();
-			if (null == resolver) {
+			resourceResolver = null != coreResourceResolver ? coreResourceResolver.getResourceResolver() : null;
+			if (null == resourceResolver) {
 				logger.trace("Resource resolver is null, returning from method");
 				return;
 			}
-			Resource resource = resolver
+			Resource resource = resourceResolver
 					.getResource(coCConfig.getFilePath() + "/jcr:content/renditions/original/jcr:content");
 			List<String> fileList = null != resource ? IOUtils.readLines(resource.adaptTo(InputStream.class)) : null;
 			if (null == fileList) {
 				logger.trace("File list is empty, returning from method");
 				return;
 			}
-			final Session session = resolver.adaptTo(Session.class);
+			final Session session = resourceResolver.adaptTo(Session.class);
 			if (null == session) {
 				return;
 			}
 			final UserManager userManager = AccessControlUtil.getUserManager(session);
 			Group denyGroup = null != userManager ? (Group) userManager.getAuthorizable(coCConfig.getDenyGroupName()) : null; // Deny
-																																																												// group
-																																																												// name
-			if (null == denyGroup) {
-				logger.trace("Deny group doesn't exist, returning from here : {}", coCConfig.getDenyGroupName());
+			if (null != denyGroup && null != denyGroup.getMembers()) {
+				logger.trace("Remove all members from deny group");
+				denyGroup.getMembers().forEachRemaining(member -> {
+					UserManager removeUserMgr;
+					try {
+						removeUserMgr = AccessControlUtil.getUserManager(session);
+						denyGroup.removeMember(removeUserMgr.getAuthorizable(member.getID()));
+						session.save();
+					} catch (RepositoryException e) {
+						logger.error("Error :: RepositoryException :: {}", e);
+					}
+				});
+				logger.trace("Remove all members from deny group completed");
 			}
-			fileList.stream().forEach(record -> {
-				logger.debug("Iterating user :: {}", record);
+
+			fileList.stream().forEach(iteratedUser -> {
+				logger.trace("Iterating user :: {}", iteratedUser);
 				try {
 					final UserManager userMgr = AccessControlUtil.getUserManager(session);
-					Authorizable user = userMgr.getAuthorizable(record);
+					Authorizable user = userMgr.getAuthorizable(iteratedUser);
 					logger.trace("Authorizable user :: {}", user);
 					if (null == user) {
-						User newUser = userMgr.createUser(record, "password");
+						Principal iteratedUserPrincipal = () -> iteratedUser; //user principal
+						User newUser = userMgr.createUser(iteratedUser, "", iteratedUserPrincipal, coCConfig.getUserHomeDir()); //create user with principal
 						ValueFactory valueFactory = session.getValueFactory();
 						Value firstNameValue = valueFactory.createValue("", PropertyType.STRING);
 						newUser.setProperty("./profile/givenName", firstNameValue);
@@ -134,34 +146,27 @@ public class COCScheduler implements Runnable {
 						Value lastNameValue = valueFactory.createValue("", PropertyType.STRING);
 						newUser.setProperty("./profile/familyName", lastNameValue);
 
-						Value emailValue = valueFactory.createValue(record, PropertyType.STRING);
+						Value emailValue = valueFactory.createValue(iteratedUser, PropertyType.STRING);
 						newUser.setProperty("./profile/email", emailValue);
 						session.save();
 						logger.trace("New user successfully created :: {}", newUser);
 					}
-					logger.trace("Remove all members from deny group");
-					denyGroup.getMembers().forEachRemaining( member -> {
-						UserManager removeUserMgr;
-						try {
-							removeUserMgr = AccessControlUtil.getUserManager(session);
-							denyGroup.removeMember(removeUserMgr.getAuthorizable(member.getID()));
-							session.save();
-						} catch (RepositoryException e) {
-							logger.error("Error :: RepositoryException :: {}", e);
-						}
-					});
-					logger.trace("Remove all members from deny group completed");
-					user = userMgr.getAuthorizable(record);
+					user = userMgr.getAuthorizable(iteratedUser);
 					logger.trace("Before adding user to deny group :: {}", user);
 					denyGroup.addMember(user); // Add user to the group
-					logger.trace("Iterating user is finished :: {}", record);
+					logger.trace("Iterating user is finished :: {}", iteratedUser);
 					session.save();
 				} catch (RepositoryException e) {
 					logger.error("RepositoryException :: {}", e);
 				}
 			});
+			session.logout();
 		} catch (IOException | LoginException | RepositoryException e) {
 			logger.error("Error :: while running scheduler :: {}", e);
+		} finally {
+			if (null != resourceResolver) {
+				resourceResolver.close();
+			}
 		}
 		logger.trace("COCScheduler run is complete.");
 	}
