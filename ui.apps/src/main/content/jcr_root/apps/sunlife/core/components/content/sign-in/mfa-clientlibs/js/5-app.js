@@ -11,6 +11,8 @@ var useMarcServer = true;
 var elementsIds = {
   transmitContainer: "transmitContainer"
 }
+var otpEntryAttemptFlag = 1; // 0 -> skip, 1 -> back later, 2 -> locked out
+
 
 function onLogout(isVisible) {
   isVisible = isVisible || false ;
@@ -97,7 +99,7 @@ function initJourneyPlayer() {
 } 
 
   function getTransmitConnectionSettings() {
-     //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     // var serverUrl = "https://mfa-uat.sunlifecorp.com";
      // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
       var realm = ""; 

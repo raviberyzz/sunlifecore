@@ -42,24 +42,43 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        //console.error("extra", x)
-        const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-        clientContext["shouldStoreJSON"] = true;
-        journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-            if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                console.log('locked out!')
-                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
-                    $(clientContext.uiContainer).html(data);
-                    setAppContentApperance(true);
-                });
-            }
-            else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-                //onLogout();
-            }
-            else{
-                sessionTimeout.showErrorMessage();
-            }
-        });
+        if(otpEntryAttemptFlag !== 0){
+            const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+            clientContext["shouldStoreJSON"] = true;
+            journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                    if(otpEntryAttemptFlag === 2){
+                        displaylockedOutMessage();
+                        otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
+                    }
+                    else{
+                        displayComeBackLaterMessage();
+                    }
+                }
+                else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                    //onLogout();
+                }
+                else{
+                    sessionTimeout.showErrorMessage();
+                }
+            });
+        }
+    });
+}
+
+function displaylockedOutMessage(){
+    var clientContext = getClientContext();
+    $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
+        $(clientContext.uiContainer).html(data);
+        setAppContentApperance(true);
+    });
+}
+
+function displayComeBackLaterMessage(){
+    var clientContext = getClientContext();
+    $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
+        $(clientContext.uiContainer).html(data);
+        setAppContentApperance(true);
     });
 }
 

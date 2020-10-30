@@ -91,9 +91,8 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
                    }
             }      
             }); */
-            $("#smHiddenForm").attr("action",jsonData.target);
-            $("#smValue").val(jsonData.SMSESSION);
-            $("#smHiddenForm").submit();
+            $("#smValue").val(JSON.stringify(jsonData.SMSESSION));
+            $("#smSessionForm").submit();
 
         }
         else if(jsonData.target != undefined && jsonData.target != ""){
@@ -109,16 +108,11 @@ UIHandlerForStepUp.prototype.handlePolicyRejection = function(title, text, butto
     const failType = (failureData && failureData.reason && failureData.reason.type) ? failureData.reason.type : null;
     const authMethod = (failureData && failureData.source && failureData.source.method) ? failureData.source.method : null;
         if (failType && failType === "locked") {
+            otpEntryAttemptFlag = 0; // set it so we don't try to display this message again in sign-in
             if (authMethod && authMethod === "otp") {
-                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
-                    $(clientContext.uiContainer).html(data);
-                    setAppContentApperance(true);
-                });
+                displaylockedOutMessage();
             } else {
-                $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/come-back-later.html", function (data) {
-                    $(clientContext.uiContainer).html(data);
-                    setAppContentApperance(true);
-                });
+                displayComeBackLaterMessage();
             }
         }
         resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
