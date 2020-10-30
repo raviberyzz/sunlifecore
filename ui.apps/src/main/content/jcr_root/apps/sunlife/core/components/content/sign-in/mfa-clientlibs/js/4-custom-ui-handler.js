@@ -78,7 +78,7 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
     
         resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
         if (jsonData.SMSESSION) {
-            let url=jsonData.target;
+           /* let url=jsonData.target;
             $.ajax(url,{
             type : 'POST',
             contentType : 'text/plain',
@@ -90,7 +90,10 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
                        console.log("Successfully Posted SM Value. Redirecting to PPHP via Sunlife.ca Flow");
                    }
             }      
-            }); 
+            }); */
+            $("#smHiddenForm").attr("action",jsonData.target);
+            $("#smValue").val(jsonData.SMSESSION);
+            $("#smHiddenForm").submit();
 
         }
         else if(jsonData.target != undefined && jsonData.target != ""){

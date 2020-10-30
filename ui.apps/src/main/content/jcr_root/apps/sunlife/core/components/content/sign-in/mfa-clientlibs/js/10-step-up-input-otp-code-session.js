@@ -85,12 +85,24 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     console.log('OTP session ended');
   };
 
-    this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
+  this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
     return new Promise(function (resolve, reject) {
-      console.log("promiseRecoveryForError was called with error: ".concat(error));
+      console.log("promiseRecoveryForError was called with error: ", error);
+      console.log('defaultRecovery', defaultRecovery, com.ts.mobile.sdk.AuthenticationErrorCode.Communication)
+
+      if(error.getErrorCode === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
+        // make sure it's a 401 error in message
+        if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
+          reject(error);
+          return;
+        }
+      }
+
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
           waitLoader.keepModalContent = false;
+          // check if the user has any retries
+          //_this.testLock();
           hideSpinner();
           resolve(defaultRecovery);
       } else {
