@@ -67,6 +67,9 @@
                 height: 290px;
                 text-align: center;
                 padding: 16px;
+                .circular-image{
+                    margin-bottom: 6px;
+                }
                 .icon{
                     width: 60px;
                     height: 60px;
@@ -169,6 +172,9 @@
                 background: #005cb9;
                 color: $white-shade;
                 text-align: center;
+                .view-all-category::after{
+                    font-weight: 400;
+                }
             }
             .workplace-tile{
                 padding: 40px 20px;
