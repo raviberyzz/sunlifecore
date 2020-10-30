@@ -1,3 +1,4 @@
+/* Workplace Benefits Drug List - start */
 "use strict";
 var drugListTotalBenefits = {
     //INITIALIZE
@@ -169,3 +170,4 @@ var drugListTotalBenefits = {
 (function () {
     drugListTotalBenefits.init();
 })();
+/* Workplace Benefits Drug List - end */
