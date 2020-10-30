@@ -58,4 +58,13 @@ public @interface CoCConfig {
 	 */
 	@ AttributeDefinition(name = "getDenyGroupName", description = "COC file path")
 	String getDenyGroupName();
+	
+	/**
+	 * Gets the user home directory.
+	 *
+	 * @return the getDenyGroupName 
+	 * 	the user home directory
+	 */
+	@ AttributeDefinition(name = "getUserHomeDir", description = "User home directory")
+	String getUserHomeDir();
 }
