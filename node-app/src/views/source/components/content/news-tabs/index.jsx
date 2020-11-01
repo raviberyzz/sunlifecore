@@ -739,14 +739,14 @@ class NewsTabs extends React.Component {
                                           <ul className={`pagination pagination-list ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'first-page' : ''} ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'last-page' : ''}`}>
                                             {this.state.tabHeading[value].pageData.currentPage != 1 &&
                                               <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
-                                                <a href="news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
+                                                <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                                   <span class="fa fa-angle-left" aria-hidden="true"></span>
                                                   <span class="hidden-xs hidden-sm">{this.props.previousText}</span>
                                                 </a>
                                               </li>
                                             }
                                             <li className={`link-to-first ${this.state.tabHeading[value].pageData.currentPage == 1 ? 'active' : ''}`}>
-                                              <a href="news-wrapper-container" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
+                                              <a href="#news-wrapper-container" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
                                                 <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                                                 <span>1</span>
                                               </a>
@@ -755,20 +755,20 @@ class NewsTabs extends React.Component {
                                               <li class="ellipsis"><a><span>&hellip;</span></a></li>
                                             }
                                             {this.state.tabHeading[value].pageData.pages.map((page, index) => {
-                                              return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
+                                              return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
                                             })
                                             }
                                             {(this.state.tabHeading[value].pageData.totalPage - this.state.tabHeading[value].pageData.currentPage) >= 4 && this.state.tabHeading[value].pageData.totalPage > 6 &&
                                               <li class="ellipsis"><a><span>&hellip;</span></a></li>
                                             }
                                             <li className={`lastPage ${this.state.tabHeading[value].pageData.currentPage == this.state.tabHeading[value].pageData.totalPage ? 'active' : ''}`}>
-                                              <a href="news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
+                                              <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
                                                 <span>{this.state.tabHeading[value].pageData.totalPage}</span>
                                               </a>
                                             </li>
                                             {this.state.tabHeading[value].pageData.currentPage != this.state.tabHeading[value].pageData.totalPage &&
                                               <li className={`next ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'disabled' : ''}`}>
-                                                <a href="news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
+                                                <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
                                               </li>
                                             }
                                           </ul>
