@@ -9,6 +9,14 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.resendCodeMsgTimer = null;
   let invalidCodeFlag = false; // for loading the error message when the jsp content is reloaded
   
+   /***
+     * If the OTP Authenticate step is defined to auto excecute if single target then
+     * the 'autoExecedTarget' object will contain that target
+     * */ 
+    this.autoExecedTarget = autoExecedTarget;
+    this.shouldSubmitAutoExecedTarget = false;
+  
+  //2
   this.startSession = function (description, mode, actionContext, clientContext) {
     console.log("started new ".concat(mode, " OTP session"));
     console.log("actionContext :"+actionContext+ ":clientContext :"+clientContext);
@@ -35,35 +43,53 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     });
   };
 
+//3
   this.setGeneratedOtp = function (format, target) {
     if (format && target) {
+                console.log(`setGenertedOTP is called and format and target both is not null`);
       // if `format` and `target` are NOT null then we present the otp-submit-code html
       this.renderWaitingForInput(format, target);
       this.otpCodeWasGenerated();
     } else {
+                console.log(`setGenertedOTP is called and format and target both is null and running else part for target selection`);
       // instead of showing a UI to allow the user to choose a phone number and a method to send the OTP
       // we do this programmatically based on the selection made in step-up-auth-select-target screen
-      var selectedMethod = this.clientContext.otpSelection.selectedMethod;
+     if (this.autoExecedTarget) {
+        // CHANGE: 1 - for when OTP expires
+        this.renderWaitingForInput(this.format, this.autoExecedTarget);
+        this.otpCodeWasGenerated();
+        // ---------------
+      
+      // this will let us know that we need to ask the session to use the autoExecedTarget when promiseInput is called
+        this.shouldSubmitAutoExecedTarget = true;
+        console.log('this.shouldSubmitAutoExecedTarget set to true');
+    } else {
+        console.error(`OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example `);
+                                }
+                // var selectedMethod = this.clientContext.otpSelection.selectedMethod;
 
-      if (selectedMethod === "text_message") {
-        selectSMSMethod.call(this);
-      } else if (selectedMethod === "phone_call") {
-        selectVoiceCall.call(this);
-      } else {
-        log.error("Unsupported OTP method selection: " + selectedMethod);
-      }
+     // if (selectedMethod === "text_message") {
+     //   selectSMSMethod.call(this);
+     // } else if (selectedMethod === "phone_call") {
+     //   selectVoiceCall.call(this);
+     // } else {
+     //   log.error("Unsupported OTP method selection: " + selectedMethod);
+     // }
     }
   };
 
+//1
   this.setAvailableTargets = function (targets) {
     _this.targets = targets || [];
   };
 
+//4
   this.promiseInput = function () {
     var _this2 = this;
 
     var self = this;
     return new Promise(function (resolve, reject) {
+                  console.log(`Inside promiseInput method and selected target is ${self.selectedTarget}`);
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -92,7 +118,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
         // make sure it's a 401 error in message
         if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-          onLogout();
+          displaylockedOutMessage();
           //reject(defaultRecovery);
           hideSpinner();
           return;
@@ -221,6 +247,15 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   };
 
   this.onResendClicked = function () {
+  //Added for OTP expiry issue
+    // CHANGE: 2 - for when OTP expires
+    if (this.autoExecedTarget && this.shouldSubmitAutoExecedTarget === true) {
+      this.shouldSubmitAutoExecedTarget = false; // ******* IMPORTANT!
+      const input = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createTargetSelectionRequest(this.autoExecedTarget);
+      const response = com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(input);
+      return _this.submitHandler(response);
+  }
+  //End for OTP Expiry issue
     waitLoader.noWaitLoader = true;
     this.resendCodeMsgTimer = setTimeout(
       function(){
@@ -268,4 +303,3 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
 
 }
-

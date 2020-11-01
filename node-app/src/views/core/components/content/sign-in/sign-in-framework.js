@@ -44,8 +44,10 @@ $(document).ready(function () {
             let errorMSG = $("#generalError").text();
             $("#generalError").html($("#generalError").html().replace(">&nbsp;<","><"));
             $("#generalError").html($("#generalError").html().replace(">&#160;<","><"));
-            if($(errorCode).length != 0){
+            console.log('fun call');
+            if(errorCode.length != 0){
                 if (errorMSG.trim() != "") {
+                    console.log(errorCode);
                     if ((errorCode != false) && ((errorCode.indexOf("SLSC0012") != -1) || (errorCode.indexOf("SLSC0013") != -1) || (errorCode.indexOf("SLNV0001") !=-1))) {
                         $("#accessIdError").parent().addClass("has-error");
                         $("#accessIdError").html(errorMSG);

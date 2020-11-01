@@ -91,8 +91,9 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
                    }
             }      
             }); */
-            $("#smValue").val(JSON.stringify(jsonData.SMSESSION));
-            $("#smSessionForm").submit();
+            $("#smHiddenForm").attr("action",jsonData.target);
+            $("#smValue").val(jsonData.SMSESSION);
+            $("#smHiddenForm").submit();
 
         }
         else if(jsonData.target != undefined && jsonData.target != ""){

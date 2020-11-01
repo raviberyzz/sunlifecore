@@ -1,0 +1,13 @@
+@import '../../../base/core'; 
+
+.desktop-primary-navigation {
+    .nav {
+        > li {
+           > a{
+                &:hover{
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
