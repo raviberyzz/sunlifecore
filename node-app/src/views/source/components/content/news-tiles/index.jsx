@@ -637,7 +637,7 @@ class NewsTiles extends React.Component {
                                       {this.state.topicsList.tags.map(
                                         (value, index) => {
                                           return (
-                                            <li key={index}>
+                                            <li key={index} class="preference-listItems">
                                               <input
                                                 type="checkbox"
                                                 name={value.id}

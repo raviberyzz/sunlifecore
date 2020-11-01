@@ -266,6 +266,10 @@
                     display: flex;
                     flex-direction: column;
                     flex-wrap: wrap;
+                    .preference-listItems{
+                        width:50%;
+                        display:inline-flex;
+                    }
                   }
             }
         }
