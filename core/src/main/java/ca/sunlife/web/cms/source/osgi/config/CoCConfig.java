@@ -62,7 +62,7 @@ public @interface CoCConfig {
 	/**
 	 * Gets the user home directory.
 	 *
-	 * @return the getDenyGroupName 
+	 * @return the getUserHomeDir 
 	 * 	the user home directory
 	 */
 	@ AttributeDefinition(name = "getUserHomeDir", description = "User home directory")
