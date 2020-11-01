@@ -39,7 +39,7 @@ public @interface CoCConfig {
 	 * 	schedule expression
 	 */
 	@ AttributeDefinition(name = "getScheduleExpression", description = "Schedule expression")
-	String getScheduleExpression() default "*/30 * * * * ?";
+	String getScheduleExpression() default "0 */10 * * * ?";
 
 	/**
 	 * Gets the COC file path.
@@ -62,7 +62,7 @@ public @interface CoCConfig {
 	/**
 	 * Gets the user home directory.
 	 *
-	 * @return the getDenyGroupName 
+	 * @return the getUserHomeDir 
 	 * 	the user home directory
 	 */
 	@ AttributeDefinition(name = "getUserHomeDir", description = "User home directory")
