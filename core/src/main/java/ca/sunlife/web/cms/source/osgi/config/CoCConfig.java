@@ -39,7 +39,7 @@ public @interface CoCConfig {
 	 * 	schedule expression
 	 */
 	@ AttributeDefinition(name = "getScheduleExpression", description = "Schedule expression")
-	String getScheduleExpression() default "*/30 * * * * ?";
+	String getScheduleExpression() default "0 */10 * * * ?";
 
 	/**
 	 * Gets the COC file path.
