@@ -87,7 +87,7 @@ public class UGCServletTest {
 	    when(requestPathInfo.getSelectors()).thenReturn(selectors);
 	    when(mockUserInfoModel.getProfile()).thenReturn("userProfile");
 	    when(request.getParameterMap()).thenReturn(params);
-	    when(ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET", mockUserInfoModel.getProfile(), request.getParameterMap(), null)).thenReturn("serviceResponse");
+	    when(ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET", mockUserInfoModel, request.getParameterMap(), null)).thenReturn("serviceResponse");
 	    ugcServlet.doGet(request, response);
 	    when(request.getReader()).thenReturn(null);
 	    ugcServlet.doPost(request, response);

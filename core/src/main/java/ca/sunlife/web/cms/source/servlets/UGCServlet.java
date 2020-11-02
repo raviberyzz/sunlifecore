@@ -76,7 +76,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				LOGGER.trace("userInfoModel New :: {}", userInfoModel);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET",
-						null != userInfoModel ? userInfoModel.getProfile() : null, request.getParameterMap(), null);
+						userInfoModel, request.getParameterMap(), null);
 			}
 		} catch (ApplicationException | SystemException e) {
 			LOGGER.error("Error :: doGet method of UGC Servlet :: {}", e);
@@ -104,7 +104,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 				LOGGER.trace("request params :: {}", request.getParameterMap());
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
-						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
+						userInfoModel, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
 			}
 		} catch (ApplicationException | SystemException e) {
 			LOGGER.error("Error :: doPost method of UGC Servlet :: {}", e);
@@ -128,7 +128,7 @@ public class UGCServlet extends SlingAllMethodsServlet {
 				LOGGER.trace("request params :: {}", request.getParameterMap());
 				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
 				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "DELETE",
-						null != userInfoModel ? userInfoModel.getProfile() : null, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
+						userInfoModel, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
 			}
 		} catch (ApplicationException | SystemException e) {
 			LOGGER.error("Error :: doDelete method of UGC Servlet :: {}", e);
