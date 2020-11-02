@@ -280,7 +280,7 @@ function updateSignInForm(formName) {
   setTimeout(function() {
       if (!signinDataCallDone) {
           displayContingencyWidget();
-          console.log('after xmd load');
+          //console.log('after xmd load');
       }
   }, 4000);
 
