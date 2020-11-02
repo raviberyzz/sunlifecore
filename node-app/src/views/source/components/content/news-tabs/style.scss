@@ -93,7 +93,7 @@
             border-radius: 0;
             .heading-text{
                 font-weight: 700;
-                margin-bottom: 8px;
+                margin-bottom: 16px;
             }
             .chk-lbl{
                 margin-left:30px;
@@ -118,6 +118,7 @@
             }
             .preference-modal-body {
                 padding: 6px;
+                padding-top: 16px;
                 overflow-y: auto; 
                 -webkit-overflow-scrolling: touch;
                 max-height: calc(100vh - 250px) !important;
@@ -130,7 +131,7 @@
             }
             .preference-modal-footer{
                 margin: 20px;
-                padding: 16px;
+                padding: 20px;
                 border-top: none;
                 text-align: justify;
             }
