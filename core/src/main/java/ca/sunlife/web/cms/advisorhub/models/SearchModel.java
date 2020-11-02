@@ -31,18 +31,22 @@ public class SearchModel {
   /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(SearchModel.class);
   
+  /** The searchPlaceholder text. */
   @ Inject
   @ Via ("resource")
   private String searchPlaceholder;
   
+  /** The searchButton text. */
   @ Inject
   @ Via ("resource")
   private String searchButton;
   
+  /** The searchUrl. */
   @ Inject
   @ Via ("resource")
   private String searchUrl;
   
+  /** The welcomeText. */
   @ Inject
   @ Via ("resource")
   private String welcomeText;
