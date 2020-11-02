@@ -186,6 +186,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workplaceLink",
+                label: "Workplace Link",
+                value: "",
+                required: true
+            },
+			{
                 name: "workplaceImg",
                 label: "Workplace Image",
                 value: "",
