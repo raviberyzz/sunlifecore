@@ -55,6 +55,14 @@ public interface FooterCopyrightModel {
   String getFeedbackLink();
   
   /**
+   * Gets the file reference.
+   *
+   * @return the file reference
+   */
+  @ Inject
+  String getFileReference();
+  
+  /**
    * Gets the footer items.
    *
    * @return the footer items
