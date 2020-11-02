@@ -121,6 +121,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           displaylockedOutMessage();
           //reject(defaultRecovery);
           hideSpinner();
+          resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
           return;
         }
       }
