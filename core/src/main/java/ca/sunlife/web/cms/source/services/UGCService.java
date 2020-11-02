@@ -8,6 +8,7 @@ import java.util.Map;
 
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
+import ca.sunlife.web.cms.core.models.UserInfo;
 
 /**
  * The Interface UGCService.
@@ -38,7 +39,7 @@ public interface UGCService {
 	 * @throws IOException
 	 * 	IOException
 	 */
-	public String callWebService(String url, String methodType, String userInfo, Map<String, String[]> requestParams, String requestJsonPost)
+	public String callWebService(String url, String methodType, UserInfo userInfo, Map<String, String[]> requestParams, String requestJsonPost)
 			throws ApplicationException, SystemException, IOException;
 
 }
