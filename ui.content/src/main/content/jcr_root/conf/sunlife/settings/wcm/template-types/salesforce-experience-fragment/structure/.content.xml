@@ -4,7 +4,7 @@
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="sunlife/advisorhub/components/structure/salesforce-fragment-page">
+        sling:resourceType="sunlife/advisorhub/components/structure/salesforce-fragment-page/v1/salesforce-fragment-page">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid"/>

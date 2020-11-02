@@ -4,5 +4,5 @@
     <jcr:content
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="sunlife/core/components/structure/vanilla-page"/>
+        sling:resourceType="sunlife/advisorhub/components/structure/salesforce-fragment-page/v1/salesforce-fragment-page"/>
 </jcr:root>

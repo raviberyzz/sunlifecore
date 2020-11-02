@@ -1,3 +1,4 @@
 #base=css
 
-salesforce-lightening-design-system.sanitized.css
+salesforce-lightning-design-system.css
+salesforce-lightning-design-system_touch.css
