@@ -6,10 +6,14 @@ package ca.sunlife.web.cms.core.models;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.Value;
 
+import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
@@ -68,9 +72,9 @@ public class UserInfoTest {
 		
 		when(user.hasProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)).thenReturn(true);
 		when(user.getProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)).thenReturn(vals);
-	
+		List<Group> memberOf = new ArrayList<>();
+		when(user.memberOf()).thenReturn(memberOf.iterator());
     userInfo.init();
-    
-    assertEquals("{\"country\":\"NA\",\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"buildingLocation\":\"NA\",\"language\":\"NA\",\"userName\":\"test test\",\"email\":\"test\",\"jobLevel\":\"NA\",\"hasUserGroups\":false}", userInfo.getProfile());
+    assertEquals("{\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"displayName\":\"test test\",\"familyName\":\"test\",\"givenName\":\"test\",\"buildingLocation\":\"NA\",\"groups\":{},\"email\":\"test\",\"jobLevel\":\"NA\"}", userInfo.getProfile());
 	}
 }
