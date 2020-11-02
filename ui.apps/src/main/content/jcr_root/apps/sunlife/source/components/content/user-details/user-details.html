@@ -1,14 +1,12 @@
 <sly data-sly-use.userInfo="ca.sunlife.web.cms.core.models.UserInfo" />
-<sly data-sly-use.userProfile="${'user-details.js' @ jsonString=userInfo.profile, context='scriptString'}" />
-
 <script type="text/javascript">
-    utag_data['user_buildinglocation'] = "${userProfile.buildingLocation @context='unsafe'}";
-	utag_data['user_businessgroup'] = "${userProfile.businessGroup @context='unsafe'}";
-	utag_data['user_businessunit'] = "${userProfile.businessUnit @context='unsafe'}";
-	utag_data['user_country'] = "${userProfile.country @context='unsafe'}";
-	utag_data['user_joblevel'] = "${userProfile.jobLevel @context='unsafe'}";
-	utag_data['user_userid'] = "${userProfile.acf2 @context='unsafe'}";
-    userProfileHome = "${userProfile.home @context='unsafe'}";
-    hasUserGroups = ${userProfile.hasUserGroups @context='unsafe'};
-	var userName = "${userProfile.userName @context='unsafe'}";
+    utag_data['user_buildinglocation'] = "${userInfo.buildingLocation @context='unsafe'}";
+	utag_data['user_businessgroup'] = "${userInfo.businessGroup @context='unsafe'}";
+	utag_data['user_businessunit'] = "${userInfo.businessUnit @context='unsafe'}";
+	utag_data['user_country'] = "${userInfo.country @context='unsafe'}";
+	utag_data['user_joblevel'] = "${userInfo.jobLevel @context='unsafe'}";
+	utag_data['user_userid'] = "${userInfo.acf2 @context='unsafe'}";
+    hasUserGroups = ${userInfo.hasUserGroups @context='unsafe'};
+	var userName = "${userInfo.userName @context='unsafe'}";
+	var profileData = ${userInfo.profile @context='unsafe'};
 </script>
