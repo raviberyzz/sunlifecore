@@ -246,30 +246,7 @@
     margin-right: 32px;
     display: table;
 }
-.slcm-content-page, .slcm-home-page {
-    .left-image-position {
-        .left-item {
-            float: left;
-            margin-right: 32px;
-            display: table;
-        }
-    }
-    .right-image-position {
-        .right-item {
-            float: right;
-            margin-left: 32px;
-            display: table;
-        }
-    }
-    .bottom-aligned-text {
-        .left-image-position {
-            .left-item {
-                float: none;
-                margin-right: 0;
-            }
-        }
-    }
-}
+
 
 /* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
 @supports not (-ms-high-contrast: none) {
