@@ -370,7 +370,7 @@ class NewsTabs extends React.Component {
               businessTag.push(obj[element.toString()]);
             }
           })
-        } else if (element.split("/")[1] == "topics") {
+        } else if (element.split("/")[1] == "topic") {
           topicsTag.push(element);
         }
       });
