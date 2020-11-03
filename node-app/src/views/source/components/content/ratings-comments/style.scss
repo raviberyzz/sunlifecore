@@ -1,6 +1,6 @@
 @import '../../../base/core'; 
 .rating-wrapper{
-    margin:40px 10px 0 10px;
+    margin:40px 10px 0 0;
     .rate-this{
         font-size:0.875rem;
         font-weight:700;
@@ -30,7 +30,8 @@
     }
 }
 .comment-wrapper{
-    margin:40px 10px 10px 10px;
+    margin:40px 10px 10px 0;
+    margin-left:0;
     .comment-count{
         font-size:1rem;
         font-weight:700;
@@ -199,6 +200,11 @@
                     &.cancel{
                         background-color:$transparent;
                         border:0;
+                        &:hover{
+                            background-color: $cool-blue-color;
+                            color:$white-shade;
+                            text-decoration: none;
+                        }
                     }
                     &.delete{
                         background-color: $medium-yellow-background;

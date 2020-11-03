@@ -44,7 +44,6 @@ $(document).ready(function () {
             let errorMSG = $("#generalError").text();
             $("#generalError").html($("#generalError").html().replace(">&nbsp;<","><"));
             $("#generalError").html($("#generalError").html().replace(">&#160;<","><"));
-            console.log('fun call');
             if(errorCode.length != 0){
                 if (errorMSG.trim() != "") {
                     console.log(errorCode);
