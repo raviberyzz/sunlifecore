@@ -244,14 +244,14 @@
 }
 .loaderContainer{
     height:600px;
-    .loader{
-        margin-left:50%;
-        margin-top:10%;
+    margin-left: 50%;
+    margin-top: 10%;
+    color: $blue-gradient-color;
+    .fa{
+        font-size: 64px;
+        margin-bottom: 20px;
+        margin-left: 15px;
     }
-   /* p{
-        display: flex;
-        justify-content: center;
-    }*/
     .loaderText{
         display:flex;
         flex-direction: column;
