@@ -241,6 +241,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "selectAllText",
+                label: "Select All Text",
+                value: "Select all",
+                required: true
+            },
+			{
                 name: "preferenceModalHeading",
                 label: "Preference Modal Heading (Your preferences)",
                 value: "Your Preferences",
