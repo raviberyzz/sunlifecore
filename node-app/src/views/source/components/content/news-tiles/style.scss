@@ -248,9 +248,13 @@
         margin-left:50%;
         margin-top:10%;
     }
-    p{
+   /* p{
         display: flex;
         justify-content: center;
+    }*/
+    .loaderText{
+        display:flex;
+        flex-direction: column;
     }
 }
 
