@@ -47,7 +47,6 @@ class ArticleRatings extends React.Component {
     return articlePath1;
   }
   getRatingComment() {
-    console.log(this.state.articlePath);
     let data1 = {
       articlePath: this.state.articlePath,
       // siteName: this.state.siteName,
@@ -88,7 +87,6 @@ class ArticleRatings extends React.Component {
         dataType: "json",
         data: JSON.stringify(data1),
         success: (res) => {
-          console.log(res);
           this.setState({
             ratingAverage: res.ratingAverage,
             ratingCount: this.state.ratingCount + 1,
@@ -227,7 +225,6 @@ class ArticleComments extends React.Component {
     if (ContextHub !== undefined) {
       let userDetails = ContextHub.getItem("profile");
       if (userDetails.email) {
-        console.log(userDetails.email);
         this.setState({
           userEmail: userDetails.email,
         });
@@ -280,7 +277,6 @@ class ArticleComments extends React.Component {
   submitComment(event) {
     let newCommentVal = $("#commentText").val();
      if (newCommentVal.trim() == "") {
-       console.log('no comment given');
        return false;
      } else {
       let newComment = {
