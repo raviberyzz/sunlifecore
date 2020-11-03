@@ -24,13 +24,20 @@ $(document).ready(function () {
       style.rel = "stylesheet";
       style.id = "mfa-css";
       head.appendChild(style);
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src =
+      var script1 = document.createElement("script");
+      script1.type = "text/javascript";
+      script1.src =
+        "/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-transit-jdk.js?date=" +
+        newTime;
+      script1.id = "mfa1-js";
+      $("body").append(script1);
+      var script2 = document.createElement("script");
+      script2.type = "text/javascript";
+      script2.src =
         "/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-clientlibs.min.js?date=" +
         newTime;
-      script.id = "mfa-js";
-      $("body").append(script);
+      script2.id = "mfa2-js";
+      $("body").append(script2);
     }
     function mfaHtml() {
       $(".full-header header").append(
