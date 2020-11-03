@@ -427,10 +427,13 @@ class NewsTiles extends React.Component {
     } else {
       preferedNewsList = this.state.userProfileArticles;
     }
+    var sortedArticles;
     preferedNewsList.sort(function (a, b) {
-      return (
-        b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading)
-      );
+       sortedArticles =  new Date(b.publishedDate) - new Date(a.publishedDate) 
+        if(sortedArticles == 0){
+          sortedArticles = a.heading.localeCompare(b.heading)
+        }
+        return sortedArticles
     });
     if (this.state.pinnedNewsList.length > 0) {
       this.state.filterNewsList = this.mergeArray(
@@ -504,7 +507,7 @@ class NewsTiles extends React.Component {
             }
           })
 
-        } else if (element.split("/")[1] == "topics") {
+        } else if (element.split("/")[1] == "topic") {
           topicsTag.push(element);
         }
       });
