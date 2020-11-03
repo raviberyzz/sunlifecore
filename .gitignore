@@ -76,3 +76,5 @@ buildNumber.properties
 .idea/
 *.iml
 node-app/node/
+/core/src/test/resources/ca/sunlife/web/cms/core/services/impl/~$paforms.xlsx
+/core/src/test/resources/ca/sunlife/web/cms/core/services/impl/~$lookup.xlsx

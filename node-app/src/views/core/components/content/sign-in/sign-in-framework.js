@@ -41,24 +41,24 @@ $(document).ready(function () {
             }
             $(".has-error").removeClass("has-error");
             let errorCode = getParameter('EC');
-            let errorMSG = $("#generalError").text();
-            $("#generalError").html($("#generalError").html().replace(">&nbsp;<","><"));
-            $("#generalError").html($("#generalError").html().replace(">&#160;<","><"));
-            console.log('fun call');
-            if(errorCode.length != 0){
+            let errorMSG = $("#slfSignIn #generalError").text();
+            $("#slfSignIn #generalError").html($("#slfSignIn #generalError").html().replace(">&nbsp;<","><"));
+            $("#slfSignIn #generalError").html($("#slfSignIn #generalError").html().replace(">&#160;<","><"));
+            //console.log(errorCode,errorMSG);
+            if(errorCode!==false && errorCode!=undefined){
                 if (errorMSG.trim() != "") {
                     console.log(errorCode);
                     if ((errorCode != false) && ((errorCode.indexOf("SLSC0012") != -1) || (errorCode.indexOf("SLSC0013") != -1) || (errorCode.indexOf("SLNV0001") !=-1))) {
-                        $("#accessIdError").parent().addClass("has-error");
-                        $("#accessIdError").html(errorMSG);
+                        $("#slfSignIn #accessIdError").parent().addClass("has-error");
+                        $("#slfSignIn #accessIdError").html(errorMSG);
                     } else if ((errorCode != false) && (errorCode.indexOf("SLNV0003") != -1)) {
-                        $("#passwordError").parent().addClass("has-error");
-                        $("#passwordError").html(errorMSG);
+                        $("#slfSignIn #passwordError").parent().addClass("has-error");
+                        $("#slfSignIn #passwordError").html(errorMSG);
                     } else {
-                        $("#generalError").parent().addClass("has-error");
+                        $("#slfSignIn #generalError").parent().addClass("has-error");
                     }               
                 } 
-            }                     
+            }                                          
         }
         showSignInError();
         /* Get the error code from URL and shows in the proper section of Sign In widget ends here */
