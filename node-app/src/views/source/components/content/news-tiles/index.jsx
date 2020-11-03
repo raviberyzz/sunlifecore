@@ -310,7 +310,7 @@ class NewsTiles extends React.Component {
           filterNewsList: this.state.filterNewsList,
           userProfileArticles: preferedNewsList,
           pinnedNewsList: this.state.pinnedNewsList,
-          //loading: false
+          loading: false
         });
         this.tagSorting();
       },
@@ -780,7 +780,6 @@ class NewsTiles extends React.Component {
                                   </div>
                                 );
                               })}
-                              {this.setState({loading:false})}
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                               <div class="aggregate-tile">
                                 <div class="circular-image">
