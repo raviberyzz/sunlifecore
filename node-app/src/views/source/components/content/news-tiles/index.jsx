@@ -570,7 +570,7 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /><p>retrieving news articles please wait...</p></div>)}
+        {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
         {
           !this.state.loading && (
             <div class="news-wrapper">
