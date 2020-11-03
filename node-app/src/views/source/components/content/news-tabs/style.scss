@@ -139,6 +139,22 @@
     }
 }
 
+.loaderContainer{
+    height:600px;
+    margin-left: 50%;
+    margin-top: 10%;
+    color: $blue-gradient-color;
+    .fa{
+        font-size: 64px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .loaderText{
+        display:flex;
+        flex-direction: column;
+    }
+}
+
 @media (min-width: $desktop-screen-min) {
     .news-wrapper{
         .preference-popup-wrapper{

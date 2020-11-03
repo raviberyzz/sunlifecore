@@ -145,7 +145,7 @@ class NewsTiles extends React.Component {
           this.tagSorting();
           setTimeout(() => {
             this.getNewsList();
-          }, 100)
+          }, 30)
         });
       },
       error: (err) => {
