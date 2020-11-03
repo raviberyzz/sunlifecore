@@ -54,46 +54,46 @@ class NewsTiles extends React.Component {
     if (prevState.selectedPreferenceList !== this.state.selectedPreferenceList) {
       this.tagSorting();
     }
-    if(prevState.selectedPreferenceTags!== this.state.selectedPreferenceTags){
+    if (prevState.selectedPreferenceTags !== this.state.selectedPreferenceTags) {
       this.tagSorting();
     }
   }
   // get the Selected Preferences 
   retrieveSelectedPreference() {
-   /* $.ajax({
-      type: "GET",
-      url:
-        `${this.props.resourcePath}.ugc.retrievePreference.json`,
-      dataType: "json",
-      success: (res) => {
-        this.state.selectedPreferenceList = res;
-        this.setState({
-          selectedPreferenceList: this.state.selectedPreferenceList,
-        }, () => {
-         // this.tagSorting();
-         this.getPreferenceList();
-        });
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });*/
-    fetch(`${this.props.resourcePath}.ugc.retrievePreference.json`,{
+     $.ajax({
+       type: "GET",
+       url:
+         `${this.props.resourcePath}.ugc.retrievePreference.json`,
+       dataType: "json",
+       success: (res) => {
+         this.state.selectedPreferenceList = res;
+         this.setState({
+           selectedPreferenceList: this.state.selectedPreferenceList,
+         }, () => {
+          // this.tagSorting();
+          this.getPreferenceList();
+         });
+       },
+       error: (err) => {
+         console.log(err);
+       },
+     });
+    /*fetch(`${this.props.resourcePath}.ugc.retrievePreference.json`, {
       method: 'GET'
     })
-    .then(response => response.json())
-    .then((response)=>{
-      this.state.selectedPreferenceList = response;
+      .then(response => response.json())
+      .then((response) => {
+        this.state.selectedPreferenceList = response;
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-         // this.tagSorting();
-         this.getPreferenceList();
+          // this.tagSorting();
+          this.getPreferenceList();
         });
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
+      })
+      .catch((error) => {
+        console.log(error);
+      })*/
   }
 
   // get Preferences tag for pop modal 
@@ -141,11 +141,11 @@ class NewsTiles extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
-        }, ()=>{
+        }, () => {
           this.tagSorting();
           setTimeout(() => {
             this.getNewsList();
-          },1000)
+          }, 1000)
         });
       },
       error: (err) => {
@@ -169,7 +169,7 @@ class NewsTiles extends React.Component {
           return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
           if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
             var businessGroup = ContextHub.getItem('profile').businessGroup;
             var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -215,11 +215,34 @@ class NewsTiles extends React.Component {
               }));
             })
             //Sort result Articles for pinned Articles. 
-            JLArticles.sort(function (a, b) {
+            var pinnedArticles = JLArticles.filter((news) => {
+              return news.pinArticle;
+            })
+            var nonPinnedArticles = JLArticles.filter((news) => {
+              return !news.pinArticle;
+            })
+            var sortedPinArticles;
+            pinnedArticles.sort(function (a, b) {
+              sortedPinArticles = a.pinArticle - b.pinArticle;
+              if (sortedPinArticles == 0) {
+                sortedPinArticles = new Date(b.publishedDate) - new Date(a.publishedDate)
+              }
+              return sortedPinArticles
+            })
+            var publishedDateArticles;
+            nonPinnedArticles.sort(function (a, b) {
+              publishedDateArticles = new Date(a.publishedDate) - new Date(b.publishedDate);
+              if (publishedDateArticles == 0) {
+                publishedDateArticles = a.heading.localeCompare(b.heading);
+              }
+              return publishedDateArticles
+            })
+            /*JLArticles.sort(function (a, b) {
               a.pinArticle - b.pinArticle ||
                 b.publishedDate - a.publishedDate ||
                 a.heading.localeCompare(b.heading)
-            });
+            });*/
+            JLArticles = pinnedArticles.concat(nonPinnedArticles);
             this.state.userProfileArticles = JLArticles;
           }
         } else {
@@ -229,11 +252,34 @@ class NewsTiles extends React.Component {
           noUserArticles = this.state.newsList.filter((news) => {
             return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
           })
-          this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
+          /*this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
             a.pinArticle - b.pinArticle ||
               b.publishedDate - a.publishedDate ||
               a.heading.localeCompare(b.heading)
+          })*/
+          var pinnedArticles = noUserArticles.filter((news) => {
+            return news.pinArticle;
           })
+          var nonPinnedArticles = noUserArticles.filter((news) => {
+            return !news.pinArticle;
+          })
+          var sortedPinArticles;
+          pinnedArticles.sort(function (a, b) {
+            sortedPinArticles = a.pinArticle - b.pinArticle;
+            if (sortedPinArticles == 0) {
+              sortedPinArticles = new Date(b.publishedDate) - new Date(a.publishedDate)
+            }
+            return sortedPinArticles
+          })
+          var publishedDateArticles;
+          nonPinnedArticles.sort(function (a, b) {
+            publishedDateArticles = new Date(a.publishedDate) - new Date(b.publishedDate);
+            if (publishedDateArticles == 0) {
+              publishedDateArticles = a.heading.localeCompare(b.heading);
+            }
+            return publishedDateArticles
+          })
+          this.state.userProfileArticles  = pinnedArticles.concat(nonPinnedArticles);
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
         if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
@@ -247,8 +293,13 @@ class NewsTiles extends React.Component {
               )
             );
           });
+          var sortedItem ; 
           preferenceArticles.sort(function (a, b) {
-            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+            sortedItem = new Date(b.publishedDate) - new Date(a.publishedDate)
+            if(sortedItem == 0){
+              sortedItem = a.heading.localeCompare(b.heading)
+            }
+            return sortedItem
           });
           this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else {
@@ -355,7 +406,6 @@ class NewsTiles extends React.Component {
     /* preferences apply analytics starts here */
     businessTitle = businessTitle.join();
     topicsTitle = topicsTitle.join();
-    console.log(businessTitle, topicsTitle);
     utag.link({
       ev_type: 'other',
       ev_action: 'clk',
@@ -705,7 +755,7 @@ class NewsTiles extends React.Component {
                                     <div
                                       class="tile-img"
                                       style={{
-                                        backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage})`,
+                                        backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (this.state.filterNewsList[key].thumbnailImage == "" ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
                                       }} data-section={"hp-news-position" + (index + 1)}
                                     >
                                       <div class="overlay-container">

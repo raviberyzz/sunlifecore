@@ -67,7 +67,6 @@ class NewsTabs extends React.Component {
           //this.tagSorting();
           this.getPreferenceList();
         })
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -123,7 +122,6 @@ class NewsTabs extends React.Component {
            },1000)
         })
         //this.getTabsNewsList();
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -145,7 +143,7 @@ class NewsTabs extends React.Component {
           return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
           if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
             var businessGroup = ContextHub.getItem('profile').businessGroup;
             var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -190,10 +188,14 @@ class NewsTabs extends React.Component {
                 }
               }));
             })
-            //Sort result Articles for pinned Articles. 
+            //Sort result Articles for pinned Articles.
+            var sortedArticle; 
             JLArticles.sort(function (a, b) {
-              b.publishedDate - a.publishedDate ||
-                a.heading.localeCompare(b.heading)
+              sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+              if(sortedArticle == 0){
+                sortedArticle = a.heading.localeCompare(b.heading)
+              }
+              return sortedArticle
             });
             this.state.userProfileArticles = JLArticles;
           }
@@ -204,10 +206,19 @@ class NewsTabs extends React.Component {
           noUserArticles = this.state.newsList.filter((news) => {
             return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
           })
-          this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
+          /*this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
             b.publishedDate - a.publishedDate ||
               a.heading.localeCompare(b.heading)
+          })*/
+          var sortedArticle;
+          noUserArticles.sort(function(a, b){
+            sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+            if(sortedArticle == 0){
+              sortedArticle = a.heading.localeCompare(b.heading);
+            } 
+            return sortedArticle
           })
+          this.state.userProfileArticles = noUserArticles;
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
         if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
@@ -221,8 +232,13 @@ class NewsTabs extends React.Component {
               )
             );
           });
+          var article;
           preferenceArticles.sort(function (a, b) {
-            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+            article = new Date(b.publishedDate) - new Date(a.publishedDate)
+            if(article == 0){
+              article = a.heading.localeCompare(b.heading)
+            }
+            return article
           });
           this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else {
@@ -424,7 +440,6 @@ class NewsTabs extends React.Component {
     /* preferences apply analytics starts here */
     businessTitle = businessTitle.join();
     topicsTitle = topicsTitle.join();
-    console.log(businessTitle, topicsTitle);
     utag.link({
       ev_type: 'other',
       ev_action: 'clk',
@@ -558,7 +573,7 @@ class NewsTabs extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log(res);
+
       },
       error: (err) => {
         console.log(err);

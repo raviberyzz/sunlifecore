@@ -84,7 +84,7 @@ $(document).ready(function () {
 	$('.time-widget form').append('<button type="SUBMIT" class="cmp-form-button" style="display:none">Find</button>');
 
 	//breadcrumb margin-bottom fix for non-responsive pages
-	if($('.title-wrapper-blue-yellow-rings')){
+	/*if($('.title-wrapper-blue-yellow-rings')){
 		$('.breadcrumb-wrapper-cool-blue').css('margin-bottom','0!important');
-	}
+	}*/
 });
