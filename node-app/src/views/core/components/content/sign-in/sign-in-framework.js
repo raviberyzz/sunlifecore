@@ -45,7 +45,7 @@ $(document).ready(function () {
             $("#slfSignIn #generalError").html($("#slfSignIn #generalError").html().replace(">&nbsp;<","><"));
             $("#slfSignIn #generalError").html($("#slfSignIn #generalError").html().replace(">&#160;<","><"));
             //console.log(errorCode,errorMSG);
-            if(errorCode.length != 0){
+            if(errorCode!==false && errorCode!=undefined){
                 if (errorMSG.trim() != "") {
                     console.log(errorCode);
                     if ((errorCode != false) && ((errorCode.indexOf("SLSC0012") != -1) || (errorCode.indexOf("SLSC0013") != -1) || (errorCode.indexOf("SLNV0001") !=-1))) {
