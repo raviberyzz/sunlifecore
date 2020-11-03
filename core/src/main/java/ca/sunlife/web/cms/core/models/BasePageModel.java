@@ -1398,7 +1398,7 @@ public class BasePageModel {
   private void generateAlternateUrls(final Resource resource) {
     LOG.debug("Entry :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
     try {
-      if (null == resolver || null == resource || null == resource.getPath()) {
+      if (null == resolver || null == resource ) {
         return;
       }
       final Resource altLanResource = resolver
@@ -1531,7 +1531,7 @@ public class BasePageModel {
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
       final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
-      if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
+      if (! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
