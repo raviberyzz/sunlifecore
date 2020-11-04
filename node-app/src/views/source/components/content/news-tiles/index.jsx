@@ -60,24 +60,24 @@ class NewsTiles extends React.Component {
   }
   // get the Selected Preferences 
   retrieveSelectedPreference() {
-     $.ajax({
-       type: "GET",
-       url:
-         `${this.props.resourcePath}.ugc.retrievePreference.json`,
-       dataType: "json",
-       success: (res) => {
-         this.state.selectedPreferenceList = res;
-         this.setState({
-           selectedPreferenceList: this.state.selectedPreferenceList,
-         }, () => {
+    $.ajax({
+      type: "GET",
+      url:
+        `${this.props.resourcePath}.ugc.retrievePreference.json`,
+      dataType: "json",
+      success: (res) => {
+        this.state.selectedPreferenceList = res;
+        this.setState({
+          selectedPreferenceList: this.state.selectedPreferenceList,
+        }, () => {
           // this.tagSorting();
           this.getPreferenceList();
-         });
-       },
-       error: (err) => {
-         console.log(err);
-       },
-     });
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
     /*fetch(`${this.props.resourcePath}.ugc.retrievePreference.json`, {
       method: 'GET'
     })
@@ -279,7 +279,7 @@ class NewsTiles extends React.Component {
             }
             return publishedDateArticles
           })
-          this.state.userProfileArticles  = pinnedArticles.concat(nonPinnedArticles);
+          this.state.userProfileArticles = pinnedArticles.concat(nonPinnedArticles);
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
         if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
@@ -293,10 +293,10 @@ class NewsTiles extends React.Component {
               )
             );
           });
-          var sortedItem ; 
+          var sortedItem;
           preferenceArticles.sort(function (a, b) {
             sortedItem = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if(sortedItem == 0){
+            if (sortedItem == 0) {
               sortedItem = a.heading.localeCompare(b.heading)
             }
             return sortedItem
@@ -429,11 +429,11 @@ class NewsTiles extends React.Component {
     }
     var sortedArticles;
     preferedNewsList.sort(function (a, b) {
-       sortedArticles =  new Date(b.publishedDate) - new Date(a.publishedDate) 
-        if(sortedArticles == 0){
-          sortedArticles = a.heading.localeCompare(b.heading)
-        }
-        return sortedArticles
+      sortedArticles = new Date(b.publishedDate) - new Date(a.publishedDate)
+      if (sortedArticles == 0) {
+        sortedArticles = a.heading.localeCompare(b.heading)
+      }
+      return sortedArticles
     });
     if (this.state.pinnedNewsList.length > 0) {
       this.state.filterNewsList = this.mergeArray(
@@ -570,300 +570,298 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
-        {
-          !this.state.loading && (
-            <div class="news-wrapper">
-              <div class="row">
-                <div
-                  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "
-                  data-analytics="tab0"
-                >
-                  <div class="news-widget" data-section="hp investor">
-                    {this.props.newsToolBar == "true" && (
-                      <div>
-                        <div class="row news-tool-bar">
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
-                            <p class="left-text pull-left">
-                              {this.props.toolbarLeftText}
-                            </p>
-                            <div class="preference-tag-container hidden-sm hidden-xs">
-                              {this.state.selectedPreferenceTags
-                                .slice(0, 4)
-                                .map((value, index) => {
-                                  return <span class="tag">{value}</span>;
-                                })}
-                              {this.state.selectedPreferenceTags.length > 4 && (
-                                <span class="more-tag" data-target="#preferenceModal" data-toggle="modal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
-                                  }`}</span>
-                              )}
-                            </div>
-                            <span class="pull-right">
-                              {this.state.selectedPreferenceTags.length > 0 && (
-                                <span>
-                                  ({this.state.selectedPreferenceTags.length})
-                                </span>
-                              )}
-                              <a
-                                class="right-text"
-                                data-target="#preferenceModal"
-                                data-toggle="modal"
-                                id="preferenceModalLink"
-                                href="#preferenceModal"
-                              >
-                                {this.props.toolbarRightText}
-                                <span class={`fa ${this.props.iconName}`}></span>
-                              </a>
-                            </span>
-                          </div>
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
+        <div class="news-wrapper">
+          <div class="row">
+            <div
+              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "
+              data-analytics="tab0"
+            >
+              <div class="news-widget" data-section="hp investor">
+                {this.props.newsToolBar == "true" && (
+                  <div>
+                    <div class="row news-tool-bar">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
+                        <p class="left-text pull-left">
+                          {this.props.toolbarLeftText}
+                        </p>
+                        <div class="preference-tag-container hidden-sm hidden-xs">
+                          {this.state.selectedPreferenceTags
+                            .slice(0, 4)
+                            .map((value, index) => {
+                              return <span class="tag">{value}</span>;
+                            })}
+                          {this.state.selectedPreferenceTags.length > 4 && (
+                            <span class="more-tag" data-target="#preferenceModal" data-toggle="modal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
+                              }`}</span>
+                          )}
                         </div>
-                        <div
-                          id="preferenceModal"
-                          class="modal fade preference-popup-wrapper horizontal-middle-align  col-xs-12"
-                          role="dialog"
-                        >
-                          <div class="modal-dialog preference-modaldialog">
-                            <div class="modal-content horizontal-middle-align  col-sm-12">
-                              <div class="modal-header preference-modal-header">
-                                <button
-                                  type="button"
-                                  class="fa fa-remove collapse-x close-modal"
-                                  aria-label="Close"
-                                  data-dismiss="modal"
-                                ></button>
-                                <h5 class="heading-text">
-                                  {this.props.preferenceModalHeading}
-                                </h5>
-                                <p>
-                                  <input
-                                    type="checkbox"
-                                    id="selectAll"
-                                    aria-label="Select All"
-                                    onChange={this.handleAllChecked}
-                                    name="selectAll"
-                                    checked={this.state.allChecked}
-                                    value="selectAll"
-                                  />
-                                  <span class="chk-lbl">
-                                    {this.props.selectAllText}
-                                  </span>
+                        <span class="pull-right">
+                          {this.state.selectedPreferenceTags.length > 0 && (
+                            <span>
+                              ({this.state.selectedPreferenceTags.length})
+                            </span>
+                          )}
+                          <a
+                            class="right-text"
+                            data-target="#preferenceModal"
+                            data-toggle="modal"
+                            id="preferenceModalLink"
+                            href="#preferenceModal"
+                          >
+                            {this.props.toolbarRightText}
+                            <span class={`fa ${this.props.iconName}`}></span>
+                          </a>
+                        </span>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 horizontal-middle-align"></div>
+                    </div>
+                    <div
+                      id="preferenceModal"
+                      class="modal fade preference-popup-wrapper horizontal-middle-align  col-xs-12"
+                      role="dialog"
+                    >
+                      <div class="modal-dialog preference-modaldialog">
+                        <div class="modal-content horizontal-middle-align  col-sm-12">
+                          <div class="modal-header preference-modal-header">
+                            <button
+                              type="button"
+                              class="fa fa-remove collapse-x close-modal"
+                              aria-label="Close"
+                              data-dismiss="modal"
+                            ></button>
+                            <h5 class="heading-text">
+                              {this.props.preferenceModalHeading}
+                            </h5>
+                            <p>
+                              <input
+                                type="checkbox"
+                                id="selectAll"
+                                aria-label="Select All"
+                                onChange={this.handleAllChecked}
+                                name="selectAll"
+                                checked={this.state.allChecked}
+                                value="selectAll"
+                              />
+                              <span class="chk-lbl">
+                                {this.props.selectAllText}
+                              </span>
+                            </p>
+                          </div>
+                          <div class="modal-body preference-modal-body">
+                            <div class="row preference-list">
+                              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <p class="heading-text">
+                                  {this.state.businessGroupList.title}
                                 </p>
+                                <ul class="prefernce-col-list">
+                                  {this.state.businessGroupList.tags.map(
+                                    (value, index) => {
+                                      return (
+                                        <li key={index}>
+                                          <input
+                                            type="checkbox"
+                                            name={value.id}
+                                            value={value.id}
+                                            aria-label={value.title}
+                                            onChange={
+                                              this.handleCheckChildElement
+                                            }
+                                            checked={value.isChecked}
+                                            disabled={
+                                              value.isChecked &&
+                                              value.title === this.state.defaultBG
+                                            }
+                                          />
+                                          <span class="chk-lbl">
+                                            {value.title}
+                                          </span>
+                                        </li>
+                                      );
+                                    }
+                                  )}
+                                </ul>
                               </div>
-                              <div class="modal-body preference-modal-body">
-                                <div class="row preference-list">
-                                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                    <p class="heading-text">
-                                      {this.state.businessGroupList.title}
-                                    </p>
-                                    <ul class="prefernce-col-list">
-                                      {this.state.businessGroupList.tags.map(
-                                        (value, index) => {
-                                          return (
-                                            <li key={index}>
-                                              <input
-                                                type="checkbox"
-                                                name={value.id}
-                                                value={value.id}
-                                                aria-label={value.title}
-                                                onChange={
-                                                  this.handleCheckChildElement
-                                                }
-                                                checked={value.isChecked}
-                                                disabled={
-                                                  value.isChecked &&
-                                                  value.title === this.state.defaultBG
-                                                }
-                                              />
-                                              <span class="chk-lbl">
-                                                {value.title}
-                                              </span>
-                                            </li>
-                                          );
-                                        }
-                                      )}
-                                    </ul>
-                                  </div>
-                                  <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-                                    <p class="heading-text">
-                                      {this.state.topicsList.title}
-                                    </p>
-                                    <ul class="prefernce-col-list topic-col">
-                                      {this.state.topicsList.tags.map(
-                                        (value, index) => {
-                                          return (
-                                            <li key={index} class="preference-listItems">
-                                              <input
-                                                type="checkbox"
-                                                name={value.id}
-                                                value={value.id}
-                                                aria-label={value.title}
-                                                onChange={
-                                                  this.handleCheckChildElement
-                                                }
-                                                checked={value.isChecked}
-                                              />
-                                              <span class="chk-lbl">
-                                                {value.title}
-                                              </span>
-                                            </li>
-                                          );
-                                        }
-                                      )}
-                                    </ul>
-                                  </div>
-                                </div>
+                              <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+                                <p class="heading-text">
+                                  {this.state.topicsList.title}
+                                </p>
+                                <ul class="prefernce-col-list topic-col">
+                                  {this.state.topicsList.tags.map(
+                                    (value, index) => {
+                                      return (
+                                        <li key={index} class="preference-listItems">
+                                          <input
+                                            type="checkbox"
+                                            name={value.id}
+                                            value={value.id}
+                                            aria-label={value.title}
+                                            onChange={
+                                              this.handleCheckChildElement
+                                            }
+                                            checked={value.isChecked}
+                                          />
+                                          <span class="chk-lbl">
+                                            {value.title}
+                                          </span>
+                                        </li>
+                                      );
+                                    }
+                                  )}
+                                </ul>
                               </div>
-                              <div class="modal-footer preference-modal-footer">
-                                <div class="row">
-                                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
-                                    <button
-                                      class="cmp-form-button pull-right"
-                                      onClick={this.filteringNewsList}
-                                    >
-                                      {this.props.preferenceModalHeadingbtn1}
-                                    </button>
-                                  </div>
-                                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
-                                    <button
-                                      class="cmp-form-button sec-btn"
-                                      onClick={this.clearAll}
-                                    >
-                                      {this.props.preferenceModalHeadingbtn2}
-                                    </button>
-                                  </div>
-                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer preference-modal-footer">
+                            <div class="row">
+                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper primary-blue-button-form">
+                                <button
+                                  class="cmp-form-button pull-right"
+                                  onClick={this.filteringNewsList}
+                                >
+                                  {this.props.preferenceModalHeadingbtn1}
+                                </button>
+                              </div>
+                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-wrapper secondary-button-form">
+                                <button
+                                  class="cmp-form-button sec-btn"
+                                  onClick={this.clearAll}
+                                >
+                                  {this.props.preferenceModalHeadingbtn2}
+                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    )}
-                    {this.props.newsListContainer == "true" &&
-                      this.state.filterNewsList.length > 0 && (
-                        <div class="row news-list-container">
-                          <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
-                            {Object.keys(this.state.filterNewsList)
-                              .slice(0, 4)
-                              .map((key, index) => {
-                                return (
+                    </div>
+                  </div>
+                )}
+                {this.props.newsListContainer == "true" &&
+                  this.state.filterNewsList.length > 0 && (
+                    <div class="row news-list-container">
+                      {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+                      { !this.state.loading && (
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
+                          {Object.keys(this.state.filterNewsList)
+                            .slice(0, 4)
+                            .map((key, index) => {
+                              return (
+                                <div
+                                  class={`col-xs-12  tile clickable-tile ${index == 0
+                                    ? "col-sm-8 col-md-8"
+                                    : "col-sm-4 col-md-4"
+                                    }`}
+                                  onClick={this.newsTileClick.bind(
+                                    this,
+                                    key,
+                                    index + 1
+                                  )}
+                                >
                                   <div
-                                    class={`col-xs-12  tile clickable-tile ${index == 0
-                                      ? "col-sm-8 col-md-8"
-                                      : "col-sm-4 col-md-4"
-                                      }`}
-                                    onClick={this.newsTileClick.bind(
-                                      this,
-                                      key,
-                                      index + 1
-                                    )}
+                                    class="tile-img"
+                                    style={{
+                                      backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                    }} data-section={"hp-news-position" + (index + 1)}
                                   >
-                                    <div
-                                      class="tile-img"
-                                      style={{
-                                        backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
-                                      }} data-section={"hp-news-position" + (index + 1)}
-                                    >
-                                      <div class="overlay-container">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
-                                          <span class="title pull-left">
-                                            {this.state.filterNewsList[key].heading}
-                                          </span>
-                                          <span class="date pull-right">
-                                            {this.dateTransform(
-                                              this.state.filterNewsList[key]
-                                                .publishedDate
-                                            )}
-                                          </span>
-                                        </div>
-                                        <span class="bg-name">
-                                          {this.bgBinding(
-                                            this.state.filterNewsList[key].tags
+                                    <div class="overlay-container">
+                                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
+                                        <span class="title pull-left">
+                                          {this.state.filterNewsList[key].heading}
+                                        </span>
+                                        <span class="date pull-right">
+                                          {this.dateTransform(
+                                            this.state.filterNewsList[key]
+                                              .publishedDate
                                           )}
                                         </span>
                                       </div>
+                                      <span class="bg-name">
+                                        {this.bgBinding(
+                                          this.state.filterNewsList[key].tags
+                                        )}
+                                      </span>
                                     </div>
                                   </div>
-                                );
-                              })}
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                              <div class="aggregate-tile">
-                                <div class="circular-image">
-                                  <img class="icon" src={this.props.moreNewsImg} />
                                 </div>
-                                {Object.keys(this.state.filterNewsList)
-                                  .slice(4, 7)
-                                  .map((key, index) => {
-                                    return (
-                                      <div class="mar-btm">
-                                        <a class="title" href="">
-                                          {this.state.filterNewsList[key].heading}
-                                        </a>
-                                        <p class="bg-name">
-                                          {this.bgBinding(
-                                            this.state.filterNewsList[key].tags
-                                          )}
-                                        </p>
-                                      </div>
-                                    );
-                                  })}
-                                <p>
-                                  <span class="blue-chevron-arrow">
-                                    <span class="blue-font">
-                                      <a href={this.props.moreNewsLink}>
-                                        {this.props.moreNewsText}
-                                      </a>
-                                    </span>
-                                  </span>
-                                </p>
+                              );
+                            })}
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
+                            <div class="aggregate-tile">
+                              <div class="circular-image">
+                                <img class="icon" src={this.props.moreNewsImg} />
                               </div>
-                            </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
-                            <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
-                              <p>
-                                <a href={this.props.workdayLink}>
-                                  <img src={this.props.workdayImg} alt="" />
-                                </a>
-                              </p>
-                              <p class="m-top-bt">{this.props.workdayText}</p>
-                              <p>
-                                <a href={this.props.workdayLink} target="_blank">
-                                  <span class="view-all-category white-font">
-                                    {this.props.workdayLinkText}
-                                  </span>
-                                </a>
-                              </p>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
-                              <p>
-                                <a href={this.props.workplaceLink}>
-                                  <img src={this.props.workplaceImg} alt="" />
-                                </a>
-                              </p>
-                              <p class="m-top-bt">{this.props.workplaceText}</p>
+                              {Object.keys(this.state.filterNewsList)
+                                .slice(4, 7)
+                                .map((key, index) => {
+                                  return (
+                                    <div class="mar-btm">
+                                      <a class="title" href="">
+                                        {this.state.filterNewsList[key].heading}
+                                      </a>
+                                      <p class="bg-name">
+                                        {this.bgBinding(
+                                          this.state.filterNewsList[key].tags
+                                        )}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
                               <p>
                                 <span class="blue-chevron-arrow">
                                   <span class="blue-font">
-                                    <a
-                                      href={this.props.workplaceLink}
-                                      target="_blank"
-                                    >
-                                      {this.props.workplaceLinkText}
+                                    <a href={this.props.moreNewsLink}>
+                                      {this.props.moreNewsText}
                                     </a>
                                   </span>
                                 </span>
                               </p>
                             </div>
                           </div>
+                        </div>)}
+                      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
+                          <p>
+                            <a href={this.props.workdayLink}>
+                              <img src={this.props.workdayImg} alt="" />
+                            </a>
+                          </p>
+                          <p class="m-top-bt">{this.props.workdayText}</p>
+                          <p>
+                            <a href={this.props.workdayLink} target="_blank">
+                              <span class="view-all-category white-font">
+                                {this.props.workdayLinkText}
+                              </span>
+                            </a>
+                          </p>
                         </div>
-                      )}
-                  </div>
-                </div>
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
+                          <p>
+                            <a href={this.props.workplaceLink}>
+                              <img src={this.props.workplaceImg} alt="" />
+                            </a>
+                          </p>
+                          <p class="m-top-bt">{this.props.workplaceText}</p>
+                          <p>
+                            <span class="blue-chevron-arrow">
+                              <span class="blue-font">
+                                <a
+                                  href={this.props.workplaceLink}
+                                  target="_blank"
+                                >
+                                  {this.props.workplaceLinkText}
+                                </a>
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
               </div>
             </div>
+          </div>
+        </div>
           )
-        }
       </div>
     )
   }
