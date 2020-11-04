@@ -23,7 +23,7 @@ var drugListTotalBenefits = {
         // context.findContractMatch(5943, 2288915, true);
     },
     onDOMready: function () {
-        if (document.getElementById("form-container")) {
+        if (document.getElementById("drug-list-form-container")) {
             var currentUrl = window.location.href;
             //DETERMINE IF URL HAS DIN
             if (
@@ -35,7 +35,7 @@ var drugListTotalBenefits = {
             } else {
                 //false - display input form
                 document
-                    .getElementById("form-container")
+                    .getElementById("drug-list-form-container")
                     .classList.remove("no-display");
             }
             drugListTotalBenefits.config.lang =
@@ -243,7 +243,7 @@ var drugListTotalBenefits = {
         console.log(HTML);
         $("#drug-list").find("tbody").html(HTML);
         document.getElementById("loading-spinner").classList.add("no-display");
-        document.getElementById("form-container").classList.add("no-display");
+        document.getElementById("drug-list-form-container").classList.add("no-display");
         document
             .getElementById("table-container")
             .classList.remove("no-display");
