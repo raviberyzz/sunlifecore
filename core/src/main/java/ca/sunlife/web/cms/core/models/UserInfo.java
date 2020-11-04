@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.jackrabbit.api.security.user.UserManager;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -32,137 +33,317 @@ import ca.sunlife.web.cms.core.constants.UserInfoConstants;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = { SlingHttpServletRequest.class, Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Model (adaptables = { SlingHttpServletRequest.class,
+    Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class UserInfo {
 
-	/** The Constant LOG. */
-	private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
+  /** The Constant LOG. */
+  private static final Logger LOG = LoggerFactory.getLogger(UserInfo.class);
 
-	/** The sling request. */
-	@ Self
-	private SlingHttpServletRequest request;
+  /** The sling request. */
+  @ Self
+  private SlingHttpServletRequest request;
 
-	/** The user info object. */
-	private String profile;
-	
-	/** The user groups. */
-	@ Inject
-	@ Via ("resource")
-	private String[] userGroups;
-	
-	/**
-	 * Gets the profile.
-	 * 
-	 * @return the profile
-	 */
-	public String getProfile() {
-		return profile;
-	}
+  /** The user info object. */
+  private String profile;
 
-	/**
-	 * Sets profile.
-	 * 
-	 * @param profile
-	 *          the profile to set
-	 */
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
+  /** The user groups. */
+  @ Inject
+  @ Via ("resource")
+  private String [ ] userGroups;
 
-	/**
-	 * Gets the user groups.
-	 * 
-	 * @return the userGroups
-	 */
-	public String[] getUserGroups() {
-		return null != userGroups ? Arrays.copyOf(userGroups, userGroups.length) : new String [ 0 ];
-	}
+  /** The acf 2 id. */
+  private String acf2Id = StringUtils.EMPTY;
+  
+  /** The building location. */
+  private String buildingLocation = StringUtils.EMPTY;
+  
+  /** The business group. */
+  private String businessGroup = StringUtils.EMPTY;
+  
+  /** The business unit. */
+  private String businessUnit = StringUtils.EMPTY;
+  
+  /** The job level. */
+  private String jobLevel = StringUtils.EMPTY;
+  
+  /** The family name. */
+  private String familyName = StringUtils.EMPTY;
+  
+  /** The given name. */
+  private String givenName = StringUtils.EMPTY;
+  
+  /** The email. */
+  private String email = StringUtils.EMPTY;
+  
+  /** The language. */
+  private String language = StringUtils.EMPTY;
+  
+  /** The country. */
+  private String country = StringUtils.EMPTY;
+  
+  /** The user name. */
+  private String userName = StringUtils.EMPTY;
+  
+  /** The profile groups. */
+  private String profileGroups = StringUtils.EMPTY;
+  
+  /** The user home. */
+  private String userHome = StringUtils.EMPTY;
+  
+  /** The has user groups. */
+  private boolean hasUserGroups = false;
 
-	/**
-	 * Sets user groups.
-	 * 
-	 * @param userGroups 
-	 * 					the userGroups to set
-	 */
-	public void setUserGroups(String[] userGroups) {
-		this.userGroups = null != userGroups ? userGroups.clone() : null;
-	}
+  /**
+   * Gets the profile.
+   * 
+   * @return the profile
+   */
+  public String getProfile() {
+    return profile;
+  }
 
-	/**
-	 * Inits the user info sling model.
-	 * 
-	 */
-	@ PostConstruct
-	public void init() {
-		LOG.debug("Entry :: UserInfo :: init request :: {}", request);
-		User user = null != request ? request.getResourceResolver().adaptTo(User.class) : null;
-		if (null != user) {
-			try {
-				LOG.debug("Reading details for user: {}", user);
-				LOG.debug("Path: {}", user.getPath());
-				String acf2Id = user.hasProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT)[0].getString()
-						: "NA"; // ACF2 id
-				String buildingLocation = user.hasProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT)[0].getString()
-						: "NA"; // building loc
-				String businessGroup = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT)[0].getString()
-						: "NA"; // business group
-				String businessUnit = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT)[0].getString()
-						: "NA"; // business unit
-				String jobLevel = user.hasProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT)[0].getString()
-						: "NA"; // job level
-				String familyName = user.hasProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)[0].getString()
-						: "NA"; // Family name
-				String givenName = user.hasProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)[0].getString()
-						: "NA"; // Given name
-				String email = user.hasProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)[0].getString()
-						: "NA"; // Email
-				String language = user.hasProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)
-						? user.getProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)[0].getString()
-						: "NA"; // Language
-				String country = user.hasProperty("./profile/country")
-								? user.getProperty("./profile/country")[0].getString()
-								: "NA"; // Language
-				boolean isUserGroupMatched = false;
-				Session session = request.getResourceResolver().adaptTo(Session.class);
-				if( null != session ) {
-					final UserManager userManager = AccessControlUtil.getUserManager(session);
-					if( null != userGroups ) {
-						for (String userGroup : userGroups) {
-							LOG.debug("user group : {}", userGroup);
-							if( null != userManager.getAuthorizable(userGroup) ) {
-								isUserGroupMatched = true;
-								break;
-							}
-						}
-					}
-				}
-				JSONObject userInfoJson = new JSONObject();
-				userInfoJson.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
-				userInfoJson.put(UserInfoConstants.USER_NAME_CONSTANT, givenName + " " + familyName);
-				userInfoJson.put(UserInfoConstants.EMAIL_CONSTANT, email);
-				userInfoJson.put(UserInfoConstants.BUILDING_LOCATION_CONSTANT, buildingLocation);
-				userInfoJson.put(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
-				userInfoJson.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
-				userInfoJson.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
-				userInfoJson.put(UserInfoConstants.LANGAUGE_CONSTANT, language);
-				userInfoJson.put("country", country);
-				userInfoJson.put("home", user.getPath());
-				userInfoJson.put("hasUserGroups", isUserGroupMatched);
-				profile = userInfoJson.toString();
-			} catch (RepositoryException e) {
-				LOG.error("RepositoryException :: UserInfo :: init :: {}", e);
-			} catch (JSONException e) {
-				LOG.error("JSONException :: UserInfo :: init :: {}", e);
-			}
-		}
-		LOG.debug("Exit :: UserInfo :: init :: profile :: {}", profile);
-	}
+  /**
+   * Sets profile.
+   * 
+   * @param profile
+   *          the profile to set
+   */
+  public void setProfile(String profile) {
+    this.profile = profile;
+  }
+
+  /**
+   * Gets the user groups.
+   * 
+   * @return the userGroups
+   */
+  public String [ ] getUserGroups() {
+    return null != userGroups ? Arrays.copyOf(userGroups, userGroups.length) : new String [ 0 ];
+  }
+
+  /**
+   * Sets user groups.
+   * 
+   * @param userGroups
+   *          the userGroups to set
+   */
+  public void setUserGroups(String [ ] userGroups) {
+    this.userGroups = null != userGroups ? userGroups.clone() : null;
+  }
+
+  /**
+   * Inits the user info sling model.
+   */
+  @ PostConstruct
+  public void init() {
+    LOG.trace("Entry :: UserInfo :: init request :: {}", request);
+    User user = null != request ? request.getResourceResolver().adaptTo(User.class) : null;
+    if (null != user) {
+      try {
+        LOG.debug("Reading details for user: {}", user);
+        LOG.debug("Path: {}", user.getPath());
+        acf2Id = user.hasProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT) [ 0 ].getString()
+            : "NA"; // ACF2 id
+        buildingLocation = user
+            .hasProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT)
+                ? user.getProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT) [ 0 ]
+                    .getString()
+                : "NA"; // building loc
+        businessGroup = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT) [ 0 ].getString()
+            : "NA"; // business group
+        businessUnit = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT) [ 0 ].getString()
+            : "NA"; // business unit
+        jobLevel = user.hasProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT) [ 0 ].getString()
+            : "NA"; // job level
+        familyName = user.hasProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT) [ 0 ].getString()
+            : "NA"; // Family name
+        givenName = user.hasProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT) [ 0 ].getString()
+            : "NA"; // Given name
+        email = user.hasProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT) [ 0 ].getString()
+            : "NA"; // Email
+        language = user.hasProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)
+            ? user.getProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT) [ 0 ].getString()
+            : "NA"; // Language
+        country = user.hasProperty("./profile/country")
+            ? user.getProperty("./profile/country") [ 0 ].getString()
+            : "NA"; // Language
+        userName = (givenName + ' ' + familyName).trim();
+        Session session = request.getResourceResolver().adaptTo(Session.class);
+        if (null != session) {
+          final UserManager userManager = AccessControlUtil.getUserManager(session);
+          if (null != userGroups) {
+            for (String userGroup : userGroups) {
+              LOG.debug("user group : {}", userGroup);
+              if (null != userManager.getAuthorizable(userGroup)) {
+                hasUserGroups = true;
+                break;
+              }
+            }
+          }
+        }
+        JSONObject groups = new JSONObject();
+        user.memberOf().forEachRemaining(group -> {
+          try {
+            groups.put(group.getID(), true);
+          } catch (JSONException | RepositoryException e) {
+            LOG.error("Unable to read user group ", e);
+          }
+        });
+        profileGroups = groups.toString();
+        userHome = user.getPath();
+        JSONObject profileData = new JSONObject();
+        profileData.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
+        profileData.put("authorizableId", user.getID());
+        profileData.put("displayName", userName);
+        profileData.put(UserInfoConstants.EMAIL_CONSTANT, email);
+        profileData.put(UserInfoConstants.FAMILY_NAME_CONSTANT, familyName);
+        profileData.put(UserInfoConstants.GIVEN_NAME_CONSTANT, givenName);
+        profileData.put(UserInfoConstants.BUILDING_LOCATION_CONSTANT, buildingLocation);
+        profileData.put(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
+        profileData.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
+        profileData.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
+        profileData.put("country", country);
+        profileData.put("path", userHome);
+        profileData.put("groups", groups);
+        profile = profileData.toString();
+      } catch (RepositoryException e) {
+        LOG.error("RepositoryException :: UserInfo :: init :: {}", e);
+      } catch (JSONException e) {
+        LOG.error("JSON Exceptions ", e);
+      }
+    }
+    LOG.trace("Exit :: UserInfo :: init :: profile :: {}", profile);
+  }
+
+  /**
+   * Gets the acf 2 id.
+   *
+   * @return the acf2Id
+   */
+  public final String getAcf2Id() {
+    return acf2Id;
+  }
+
+  /**
+   * Gets the building location.
+   *
+   * @return the buildingLocation
+   */
+  public final String getBuildingLocation() {
+    return buildingLocation;
+  }
+
+  /**
+   * Gets the business group.
+   *
+   * @return the businessGroup
+   */
+  public final String getBusinessGroup() {
+    return businessGroup;
+  }
+
+  /**
+   * Gets the business unit.
+   *
+   * @return the businessUnit
+   */
+  public final String getBusinessUnit() {
+    return businessUnit;
+  }
+
+  /**
+   * Gets the job level.
+   *
+   * @return the jobLevel
+   */
+  public final String getJobLevel() {
+    return jobLevel;
+  }
+
+  /**
+   * Gets the family name.
+   *
+   * @return the familyName
+   */
+  public final String getFamilyName() {
+    return familyName;
+  }
+
+  /**
+   * Gets the given name.
+   *
+   * @return the givenName
+   */
+  public final String getGivenName() {
+    return givenName;
+  }
+
+  /**
+   * Gets the email.
+   *
+   * @return the email
+   */
+  public final String getEmail() {
+    return email;
+  }
+
+  /**
+   * Gets the language.
+   *
+   * @return the language
+   */
+  public final String getLanguage() {
+    return language;
+  }
+
+  /**
+   * Gets the country.
+   *
+   * @return the country
+   */
+  public final String getCountry() {
+    return country;
+  }
+
+  /**
+   * Gets the user name.
+   *
+   * @return the userName
+   */
+  public final String getUserName() {
+    return userName;
+  }
+
+  /**
+   * Gets the profile groups.
+   *
+   * @return the profileGroups
+   */
+  public final String getProfileGroups() {
+    return profileGroups;
+  }
+
+  /**
+   * Gets the checks for user groups.
+   *
+   * @return the hasUserGroups
+   */
+  public final boolean getHasUserGroups() {
+    return hasUserGroups;
+  }
+
+  /**
+   * @return the userHome
+   */
+  public final String getUserHome() {
+    return userHome;
+  }
 }

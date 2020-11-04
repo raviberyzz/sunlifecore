@@ -126,6 +126,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "genericImage",
+                label: "Generic Image",
+                value: "",
+                required: true
+            },
+			{
                 name: "moreNewsText",
                 label: "More News Text",
                 value: "More news",
@@ -180,6 +186,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workplaceLink",
+                label: "Workplace Link",
+                value: "",
+                required: true
+            },
+			{
                 name: "workplaceImg",
                 label: "Workplace Image",
                 value: "",
@@ -229,6 +241,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "selectAllText",
+                label: "Select All Text",
+                value: "Select all",
+                required: true
+            },
+			{
                 name: "preferenceModalHeading",
                 label: "Preference Modal Heading (Your preferences)",
                 value: "Your Preferences",
@@ -261,7 +279,31 @@ var multiPurposeComponentConfig = [
 			{
                 name: "getPrefernceListUrl",
                 label: "Preferences URL",
-                value: "/content/cq:tags/sunlife/source.tags",
+                value: "/content/cq:tags/sunlife/source",
+                required: true
+            },
+			{
+                name: "previousText",
+                label: "Previous Text",
+                value: "Previous",
+                required: true
+            },
+			{
+                name: "nextText",
+                label: "Next Text",
+                value: "Next",
+                required: true
+            },
+			{
+                name: "pageText",
+                label: "Page Text",
+                value: "Page",
+                required: true
+            },
+			{
+                name: "ofText",
+                label: "Of Text",
+                value: "of",
                 required: true
             }
 		]	

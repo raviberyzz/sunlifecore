@@ -114,7 +114,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 			resource = coreResourceResolver.getResourceResolver().getResource(resourcePath);
 			if (null != resource) {
 				resource.listChildren().forEachRemaining(o -> {
-					LOGGER.debug("Fetching news in content fragment parent path [ {} ] ", o.getName());
+					LOGGER.trace("Fetching news in content fragment parent path [ {} ] ", o.getName());
 					try {
 						JSONObject jsonObject = null;
 						// Data
@@ -156,7 +156,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 											tagList.add(childTagItr.getTagID());
 										});
 									}
-									LOGGER.debug("tagList : {}", tagList);
+									LOGGER.trace("tagList : {}", tagList);
 								});
 							}
 							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
@@ -164,7 +164,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 						if (null != jsonObject) {
 							jsonArray.put(jsonObject);
 						}
-						LOGGER.info("News list fetched: {}", jsonArray);
+						LOGGER.trace("News list fetched: {}", jsonArray);
 					} catch (LoginException e) {
 						LOGGER.error("NewsListServlet :: LoginException :: {}", e);
 					} catch (JSONException e) {
