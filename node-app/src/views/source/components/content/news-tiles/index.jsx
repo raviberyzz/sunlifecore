@@ -570,14 +570,14 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        <div class="news-wrapper">
+         {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+         { !this.state.loading && (<div class="news-wrapper">
           <div class="row">
             <div
               class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "
               data-analytics="tab0"
             >
               <div class="news-widget" data-section="hp investor">
-                {this.props.newsToolBar == "true" && (
                   <div>
                     <div class="row news-tool-bar">
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
@@ -735,12 +735,8 @@ class NewsTiles extends React.Component {
                       </div>
                     </div>
                   </div>
-                )}
-
                   {this.state.filterNewsList.length > 0 && (
                     <div class="row news-list-container">
-                      {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
-                      { !this.state.loading && (
                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                           {Object.keys(this.state.filterNewsList)
                             .slice(0, 4)
@@ -817,7 +813,7 @@ class NewsTiles extends React.Component {
                               </p>
                             </div>
                           </div>
-                        </div>)}
+                        </div>
                       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
                         <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
                           <p>
@@ -860,7 +856,7 @@ class NewsTiles extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
       </div>
     )
   }
