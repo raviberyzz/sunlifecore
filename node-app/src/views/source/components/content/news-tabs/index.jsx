@@ -756,7 +756,7 @@ class NewsTabs extends React.Component {
                                               <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
                                                 <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                                   <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                                  <span class="hidden-xs hidden-sm">{this.props.previousText}</span>
+                                                  <span class="">{this.props.previousText}</span>
                                                 </a>
                                               </li>
                                             }
