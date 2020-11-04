@@ -145,7 +145,7 @@ class NewsTiles extends React.Component {
           this.tagSorting();
           setTimeout(() => {
             this.getNewsList();
-          }, 1000)
+          }, 30)
         });
       },
       error: (err) => {
@@ -427,10 +427,13 @@ class NewsTiles extends React.Component {
     } else {
       preferedNewsList = this.state.userProfileArticles;
     }
+    var sortedArticles;
     preferedNewsList.sort(function (a, b) {
-      return (
-        b.publishedDate - a.publishedDate || a.heading.localeCompare(b.heading)
-      );
+       sortedArticles =  new Date(b.publishedDate) - new Date(a.publishedDate) 
+        if(sortedArticles == 0){
+          sortedArticles = a.heading.localeCompare(b.heading)
+        }
+        return sortedArticles
     });
     if (this.state.pinnedNewsList.length > 0) {
       this.state.filterNewsList = this.mergeArray(
@@ -504,7 +507,7 @@ class NewsTiles extends React.Component {
             }
           })
 
-        } else if (element.split("/")[1] == "topics") {
+        } else if (element.split("/")[1] == "topic") {
           topicsTag.push(element);
         }
       });
@@ -520,7 +523,7 @@ class NewsTiles extends React.Component {
     }
     this.setState({
       selectedPreferenceTags: this.state.selectedPreferenceTags,
-      loading: false
+      //loading: false
     });
   }
 
@@ -538,7 +541,7 @@ class NewsTiles extends React.Component {
       success: (res) => {
         setTimeout(() => {
           this.retrieveSelectedPreference()
-        }, 1000);
+        }, 100);
       },
       error: (err) => {
         console.log(err);
@@ -567,7 +570,7 @@ class NewsTiles extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /><p>retrieving news articles please wait...</p></div>)}
+        {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
         {
           !this.state.loading && (
             <div class="news-wrapper">
@@ -591,7 +594,7 @@ class NewsTiles extends React.Component {
                                   return <span class="tag">{value}</span>;
                                 })}
                               {this.state.selectedPreferenceTags.length > 4 && (
-                                <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
+                                <span class="more-tag" data-target="#preferenceModal" data-toggle="modal" href="#preferenceModal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
                                   }`}</span>
                               )}
                             </div>
@@ -755,7 +758,7 @@ class NewsTiles extends React.Component {
                                     <div
                                       class="tile-img"
                                       style={{
-                                        backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (this.state.filterNewsList[key].thumbnailImage == "" ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                        backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
                                       }} data-section={"hp-news-position" + (index + 1)}
                                     >
                                       <div class="overlay-container">

@@ -370,7 +370,7 @@ class NewsTabs extends React.Component {
               businessTag.push(obj[element.toString()]);
             }
           })
-        } else if (element.split("/")[1] == "topics") {
+        } else if (element.split("/")[1] == "topic") {
           topicsTag.push(element);
         }
       });
@@ -633,7 +633,7 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div class="loaderContainer"><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
         {!this.state.loading && (
           <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
@@ -649,7 +649,7 @@ class NewsTabs extends React.Component {
                               return (<span class="tag">{value}</span>)
                             })}
                             {this.state.selectedPreferenceTags.length > 4 &&
-                              <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                              <span class="more-tag" data-target="#preferenceModal" data-toggle="modal" href="#preferenceModal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                             }
                           </div>
                           <span class="pull-right">

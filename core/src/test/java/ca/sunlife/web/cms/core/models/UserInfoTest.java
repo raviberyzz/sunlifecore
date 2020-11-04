@@ -75,6 +75,6 @@ public class UserInfoTest {
 		List<Group> memberOf = new ArrayList<>();
 		when(user.memberOf()).thenReturn(memberOf.iterator());
     userInfo.init();
-    assertEquals("{\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"displayName\":\"test test\",\"familyName\":\"test\",\"givenName\":\"test\",\"buildingLocation\":\"NA\",\"groups\":{},\"email\":\"test\",\"jobLevel\":\"NA\"}", userInfo.getProfile());
+    assertEquals("{\"country\":\"NA\",\"acf2\":\"NA\",\"businessUnit\":\"NA\",\"businessGroup\":\"NA\",\"displayName\":\"test test\",\"familyName\":\"test\",\"givenName\":\"test\",\"buildingLocation\":\"NA\",\"groups\":{},\"email\":\"test\",\"jobLevel\":\"NA\"}", userInfo.getProfile());
 	}
 }

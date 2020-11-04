@@ -40,6 +40,7 @@
                     padding: 8px;
                     font-size: 9px;
                     text-transform: uppercase;
+                    cursor: pointer;
                 }
             }
         }
@@ -136,6 +137,22 @@
                 text-align: justify;
             }
         }
+    }
+}
+
+.loaderContainer{
+    height:600px;
+    margin-left: 50%;
+    margin-top: 10%;
+    color: $blue-gradient-color;
+    .fa{
+        font-size: 64px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .loaderText{
+        display:flex;
+        flex-direction: column;
     }
 }
 

@@ -45,6 +45,7 @@
                     padding: 8px;
                     font-size: 9px;
                     text-transform: uppercase;
+                    cursor: pointer;
                }
             }
         }
@@ -244,17 +245,28 @@
 }
 .loaderContainer{
     height:600px;
-    .loader{
-        margin-left:50%;
-        margin-top:10%;
+    margin-left: 50%;
+    margin-top: 10%;
+    color: $blue-gradient-color;
+    .fa{
+        font-size: 64px;
+        margin-bottom: 20px;
+        margin-left: 15px;
     }
-    p{
-        display: flex;
-        justify-content: center;
+    .loaderText{
+        display:flex;
+        flex-direction: column;
     }
 }
 
 @media (min-width: $desktop-screen-min) {
+    .source-home-page{
+        .margin-top-fifty{
+            .layout-container:nth-of-type(1){
+                height:700px;
+            }
+        }
+    }
     .news-wrapper{
         height:700px;
         .preference-popup-wrapper{

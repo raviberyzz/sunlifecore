@@ -4,6 +4,7 @@ $(document).ready(function () {
 		ContextHub.setItem('profile', profileData);
 		//var userProfile = ContextHub.getItem('profile');
 		//var userName = userProfile.displayName;
-		$('.utility-nav-links ul[role="navigation"] li:first-child a').text(Granite.I18n.get('welcome') + " " + userName);
+		var welcomeText = $('.utility-nav-links ul[role="navigation"] li:first-child a').text();
+		$('.utility-nav-links ul[role="navigation"] li:first-child a').text(welcomeText + " " + userName);
 	}
 })

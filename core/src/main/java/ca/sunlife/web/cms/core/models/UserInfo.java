@@ -210,6 +210,7 @@ public class UserInfo {
         profileData.put(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
         profileData.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
         profileData.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
+        profileData.put("country", country);
         profileData.put("path", userHome);
         profileData.put("groups", groups);
         profile = profileData.toString();
