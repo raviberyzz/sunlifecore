@@ -649,7 +649,7 @@ class NewsTabs extends React.Component {
                               return (<span class="tag">{value}</span>)
                             })}
                             {this.state.selectedPreferenceTags.length > 4 &&
-                              <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                              <span class="more-tag" data-target="#preferenceModal" data-toggle="modal" href="#preferenceModal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                             }
                           </div>
                           <span class="pull-right">
