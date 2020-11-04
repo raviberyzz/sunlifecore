@@ -736,8 +736,8 @@ class NewsTiles extends React.Component {
                     </div>
                   </div>
                 )}
-                {this.props.newsListContainer == "true" &&
-                  this.state.filterNewsList.length > 0 && (
+
+                  {this.state.filterNewsList.length > 0 && (
                     <div class="row news-list-container">
                       {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
                       { !this.state.loading && (
@@ -861,7 +861,6 @@ class NewsTiles extends React.Component {
             </div>
           </div>
         </div>
-          )
       </div>
     )
   }
