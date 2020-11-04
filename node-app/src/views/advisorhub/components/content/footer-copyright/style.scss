@@ -74,36 +74,38 @@
             float: none;
             text-align: center;
         }
-        .top-part{
-            display: block;
-            .slf-tagline, .slf-legal{
-                float: none;
-                text-align: center;
+        .footer-text-section {
+            .top-part{
+                display: block;
+                .slf-tagline, .slf-legal{
+                    float: none;
+                    text-align: center;
+                }
+                .slf-legal{
+                    padding: 32px 13px 0px 13px;
+                    ul{
+                        li:nth-child(4){
+                            padding-right: 6px;
+                        }
+                        li:nth-child(6){
+                            padding-left: 0;
+                            margin-left: -2px;
+                        }
+                        li{
+                            line-height: 26px;
+                        }
+                    } 
+                }
             }
-            .slf-legal{
-                padding: 32px 13px 0px 13px;
-                ul{
-                    li:nth-child(4){
-                        padding-right: 6px;
-                    }
-                    li:nth-child(6){
-                        padding-left: 0;
-                        margin-left: -2px;
-                    }
-                    li{
-                        line-height: 26px;
-                    }
-                } 
-            }
-        }
-        .bottom-part{
-            display: block;
-            .slf-copyright, .slf-acronym, .not-slf-acronym{
-                float: none;
-                text-align: center;
-            }
-            .slf-copyright{
-                padding-top: 24px;
+            .bottom-part{
+                display: block;
+                .slf-copyright, .slf-acronym, .not-slf-acronym{
+                    float: none;
+                    text-align: center;
+                }
+                .slf-copyright{
+                    padding-top: 24px;
+                }
             }
         }
     }
