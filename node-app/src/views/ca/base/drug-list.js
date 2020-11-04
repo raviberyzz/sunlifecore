@@ -23,25 +23,27 @@ var drugListTotalBenefits = {
         // context.findContractMatch(5943, 2288915, true);
     },
     onDOMready: function () {
-        var currentUrl = window.location.href;
-        //DETERMINE IF URL HAS DIN
-        if (
-            currentUrl.indexOf(drugListTotalBenefits.config.dinParamString) !==
-            -1
-        ) {
-            // drugListTotalBenefits.stripQueryParam();
-            drugListTotalBenefits.getList(false);
-        } else {
-            //false - display input form
-            document
-                .getElementById("form-container")
-                .classList.remove("no-display");
+        if (document.getElementById("form-container")) {
+            var currentUrl = window.location.href;
+            //DETERMINE IF URL HAS DIN
+            if (
+                currentUrl.indexOf(drugListTotalBenefits.config.dinParamString) !==
+                -1
+            ) {
+                // drugListTotalBenefits.stripQueryParam();
+                drugListTotalBenefits.getList(false);
+            } else {
+                //false - display input form
+                document
+                    .getElementById("form-container")
+                    .classList.remove("no-display");
+            }
+            drugListTotalBenefits.config.lang =
+                document.getElementsByTagName("HTML")[0].lang == "en" ||
+                document.getElementsByTagName("HTML")[0].lang == "en-CA"
+                    ? "en"
+                    : "fr";
         }
-        drugListTotalBenefits.config.lang =
-            document.getElementsByTagName("HTML")[0].lang == "en" ||
-            document.getElementsByTagName("HTML")[0].lang == "en-CA"
-                ? "en"
-                : "fr";
     },
     // ON CLICK OF SEARCH BUTTON
     validate: function () {

@@ -639,6 +639,7 @@ class NewsTiles extends React.Component {
                                   <input
                                     type="checkbox"
                                     id="selectAll"
+                                    aria-label="Select All"
                                     onChange={this.handleAllChecked}
                                     name="selectAll"
                                     checked={this.state.allChecked}
@@ -664,6 +665,7 @@ class NewsTiles extends React.Component {
                                                 type="checkbox"
                                                 name={value.id}
                                                 value={value.id}
+                                                aria-label={value.title}
                                                 onChange={
                                                   this.handleCheckChildElement
                                                 }
@@ -695,6 +697,7 @@ class NewsTiles extends React.Component {
                                                 type="checkbox"
                                                 name={value.id}
                                                 value={value.id}
+                                                aria-label={value.title}
                                                 onChange={
                                                   this.handleCheckChildElement
                                                 }
