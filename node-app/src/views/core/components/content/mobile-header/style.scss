@@ -96,6 +96,14 @@
             font-family: sunlife-sans;
         }
     }
+
+    .slcm-content-page, .slcm-home-page {
+        .mobile-header-navbar{
+            .mobile-signin-text {
+                font-size: 0.5rem;
+            }
+        }
+    }
     //french pages padding is different for mobile device in portrait orientation due to less room
     @media (min-width: $mobile-screen-min){
         :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-icon {
