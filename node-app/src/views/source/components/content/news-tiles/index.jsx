@@ -594,7 +594,7 @@ class NewsTiles extends React.Component {
                                   return <span class="tag">{value}</span>;
                                 })}
                               {this.state.selectedPreferenceTags.length > 4 && (
-                                <span class="more-tag" data-target="#preferenceModal" data-toggle="modal" href="#preferenceModal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
+                                <span class="more-tag" data-target="#preferenceModal" data-toggle="modal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4
                                   }`}</span>
                               )}
                             </div>
