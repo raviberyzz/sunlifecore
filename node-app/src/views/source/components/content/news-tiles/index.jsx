@@ -616,7 +616,7 @@ class NewsTiles extends React.Component {
                 </div>
 
                 <div class="row news-list-container">
-                  {this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+                  {this.state.loading && (<div class="loaderContainer col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
                   {!this.state.loading && this.state.filterNewsList.length > 0 && (
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                       {Object.keys(this.state.filterNewsList)
