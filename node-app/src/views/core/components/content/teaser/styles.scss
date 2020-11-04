@@ -248,6 +248,7 @@
 }
 
 
+
 /* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
 @supports not (-ms-high-contrast: none) {
     .right-item {
@@ -444,6 +445,25 @@
         .text-section {
             top: 50%;
             transform: translateY(-50%);
+        }
+    }
+    // SLCM specific IE specific grey box circular image change
+    .slcm-content-page, .slcm-home-page {
+        .layout-container.light-grey-20 {
+            .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.content-block-image {
+                .right-image-position {
+                    .left-item.text-section {
+                        float: none;
+                        margin-right: 0;
+                        display: inline;
+                    }
+                    .right-item {
+                        float: right;
+                        margin-left: 32px;
+                        display: table;
+                    }
+                }
+            }
         }
     }
 }
