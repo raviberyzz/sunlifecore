@@ -63,7 +63,7 @@ function StepUpSelectTargetFormSession(formId, payload) {
       utag.link({
         ev_type: 'other',
         ev_action: 'clk',
-        ev_data_one: selectedPhone, // depending on the radio selection
+        ev_data_one: selectedMethod, // depending on the radio selection
         ev_title: 'verify-you:send-code'
         })
       
@@ -104,6 +104,13 @@ function StepUpSelectTargetFormSession(formId, payload) {
       $("#step-up-send-code-button").on("click", function () {
           handleSendCode.call(self);
       });
+
+        $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
+          journeyEnded(clientContext);
+          onLogout();
+          console.log("Modal closed...");
+      });
+        
       setPhoneNumbersList.call(self);
 
       //adding event listner for the phone number and send code radio button and changing the background accordingly
