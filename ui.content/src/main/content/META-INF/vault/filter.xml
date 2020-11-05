@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
 	<filter root="/conf/sunlife-apac"/>	
-	<filter root="/conf/SLGI"/>
-    <filter root="/conf/global/settings/workflow/models/dam/update_asset" />
+	<filter root="/conf/global/settings/workflow/models/dam/update_asset" />
     <filter root="/conf/global/settings/dam/adminui-extension" />
     <filter root="/conf/global/settings/dam/search" />
     <filter root="/conf/sunlife" />
