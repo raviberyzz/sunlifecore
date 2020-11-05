@@ -6,9 +6,9 @@ function onSignInClick() {
     console.log("Inside onSignInClick")
  
     if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
-        //transmitSDK.clearAllData();
         journeyPlayer.clearAllData();
     }
+   
     var clientId = $("#USER").val();
     var password = $("#PASSWORD").val();
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
@@ -27,11 +27,11 @@ function onSignInClick() {
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
     
-    $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
+   /* $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
         journeyEnded(clientContext);
-        onLogout();
+        //onLogout();
         console.log("Modal closed...");
-    });
+    });*/
 
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
@@ -46,28 +46,35 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        if(otpEntryAttemptFlag !== 0){
-            const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-            clientContext["shouldStoreJSON"] = true;
-            journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-                if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                    if(otpEntryAttemptFlag === 2){
-                        displaylockedOutMessage();
-                        otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
-                    }
-                    else{
-                        displayComeBackLaterMessage();
-                    }
+        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
+            // make sure it's a 401 error in message
+            if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
+                if(otpEntryAttemptFlag !== 0){
+                    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+                    clientContext["shouldStoreJSON"] = true;
+                    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                        if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                            if(otpEntryAttemptFlag === 2){
+                                displaylockedOutMessage();
+                                otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
+                            }
+                            else{
+                                displayComeBackLaterMessage();
+                            }
+                        }
+                    });
+                    onLogout(); 
                 }
-                else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-                    //onLogout();
-                }
-                else{
-                    sessionTimeout.showErrorMessage();
-                }
-            });
+           }
+        }
+        else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+            //onLogout();
+        }
+        else{
+            sessionTimeout.showErrorMessage();
         }
     });
+    
 }
 
 function displaylockedOutMessage(){

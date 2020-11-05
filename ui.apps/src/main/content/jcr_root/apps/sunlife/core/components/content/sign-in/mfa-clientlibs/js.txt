@@ -1,9 +1,9 @@
 #base=js
-2-custom-ui-handler.js
-3-app.js
-4-sign-in.js
-5-password-auth-with-password.js
-6-password-authenticator-session.js
-7-step-up-auth-select-target-session.js
-8-step-up-input-otp-code-session.js
-9-SessionTimeout.js
+1-custom-ui-handler.js
+2-app.js
+3-sign-in.js
+4-password-auth-with-password.js
+5-password-authenticator-session.js
+6-step-up-auth-select-target-session.js
+7-step-up-input-otp-code-session.js
+8-SessionTimeout.js

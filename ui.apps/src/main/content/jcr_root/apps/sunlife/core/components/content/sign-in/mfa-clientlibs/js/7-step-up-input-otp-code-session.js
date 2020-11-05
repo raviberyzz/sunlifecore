@@ -46,12 +46,12 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 //3
   this.setGeneratedOtp = function (format, target) {
     if (format && target) {
-                console.log(`setGenertedOTP is called and format and target both is not null`);
+                console.log('setGenertedOTP is called and format and target both is not null');
       // if `format` and `target` are NOT null then we present the otp-submit-code html
       this.renderWaitingForInput(format, target);
       this.otpCodeWasGenerated();
     } else {
-                console.log(`setGenertedOTP is called and format and target both is null and running else part for target selection`);
+                console.log('setGenertedOTP is called and format and target both is null and running else part for target selection');
       // instead of showing a UI to allow the user to choose a phone number and a method to send the OTP
       // we do this programmatically based on the selection made in step-up-auth-select-target screen
      if (this.autoExecedTarget) {
@@ -64,7 +64,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         this.shouldSubmitAutoExecedTarget = true;
         console.log('this.shouldSubmitAutoExecedTarget set to true');
     } else {
-        console.error(`OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example `);
+        console.error('OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example ');
                                 }
                 // var selectedMethod = this.clientContext.otpSelection.selectedMethod;
 
@@ -89,7 +89,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
     var self = this;
     return new Promise(function (resolve, reject) {
-                  console.log(`Inside promiseInput method and selected target is ${self.selectedTarget}`);
+      console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -121,7 +121,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           displaylockedOutMessage();
           //reject(defaultRecovery);
           hideSpinner();
-          resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
           return;
         }
       }
@@ -164,6 +163,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input-label").html(selectedNumber);  
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
         $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
+        $("#mfa_signin_modal").on("hidden.bs.modal", self.onCloseClicked);
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
         setAppContentApperance(true);
 
@@ -212,6 +212,11 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     }
   }
 
+  this.onCloseClicked = function(){
+    const controlRequest = com.ts.mobile.sdk.ControlRequest.create(com.ts.mobile.sdk.ControlRequestType.AbortAuthentication);
+    _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createControlResponse(controlRequest));
+
+  }
 
   this.onCancelClicked = function(){
 
