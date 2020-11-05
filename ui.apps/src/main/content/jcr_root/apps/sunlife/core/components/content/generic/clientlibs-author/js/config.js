@@ -235,6 +235,12 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreText",
+                label: "More Text",
+                value: "More",
+                required: true
+            },
+			{
                 name: "toolbarRightText",
                 label: "Tool Bar Right Text (Preferences)",
                 value: "Preferences",
