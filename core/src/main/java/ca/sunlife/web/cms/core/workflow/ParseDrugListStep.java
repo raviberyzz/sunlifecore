@@ -6,6 +6,7 @@ import com.adobe.granite.workflow.WorkflowSession;
 import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
+import com.day.cq.dam.api.DamConstants;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
@@ -69,8 +70,10 @@ public class ParseDrugListStep implements WorkflowProcess {
                     String.format("%s/%s", folder, lookup),
                     String.format("%s/%s", folder, nonpolicy));
         } catch (IOException | RepositoryException e) {
-            logger.error("Failed to parse the drug list for files {} and {}", forms, lookup, e);
-            throw new WorkflowException(e);
+            throw new WorkflowException(
+                    String.format("Failed to parse the drug list for files %s and %s", forms, lookup),
+                    e
+            );
         }
 
 
@@ -85,7 +88,7 @@ public class ParseDrugListStep implements WorkflowProcess {
             Resource payloadResource = resolver.getResource(payload);
             while (payloadResource != null ) {
                 Node node = payloadResource.adaptTo(Node.class);
-                if( node != null && node.isNodeType("dam:Asset")) {
+                if( node != null && node.isNodeType(DamConstants.NT_DAM_ASSET)) {
                     break;
                 }
                 payloadResource = payloadResource.getParent();

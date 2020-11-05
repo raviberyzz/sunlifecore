@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -107,7 +108,7 @@ public final class PaForm {
     }
 
     public final List<String> getInvalidReasons() {
-        return invalidReasons;
+        return Collections.unmodifiableList(invalidReasons);
     }
 
     public String getDrugsEn() {
@@ -123,7 +124,7 @@ public final class PaForm {
     }
 
     public List<String> getDins() {
-        return dins;
+        return Collections.unmodifiableList(dins);
     }
 
     public String getFormNumber() {
