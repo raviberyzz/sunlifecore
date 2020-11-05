@@ -358,8 +358,8 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
-      var BGName = prefer.name
-      BGName.replaceAll("-", " ")
+      var BGName = prefer.name;
+      BGName.replaceAll("-", " ");
       if (BGName.toUpperCase() != this.state.defaultBG.toUpperCase()) {
         prefer.isChecked = false;
       }
