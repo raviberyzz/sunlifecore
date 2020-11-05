@@ -9,4 +9,6 @@
     hasUserGroups = ${userInfo.hasUserGroups @context='unsafe'};
 	var userName = "${userInfo.userName @context='unsafe'}";
 	var profileData = ${userInfo.profile @context='unsafe'};
+	ContextHub.removeItem('profile');
+	ContextHub.setItem('profile', profileData);
 </script>
