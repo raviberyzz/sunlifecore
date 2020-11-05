@@ -597,7 +597,7 @@ class NewsTiles extends React.Component {
                     <span class="pull-right">
                       {this.state.selectedPreferenceTags.length > 0 && (
                         <span>
-                          ({`${this.state.selectedPreferenceTags.length} + " " `})
+                          (${this.state.selectedPreferenceTags.length}){" "}
                         </span>
                       )}
                       <a
