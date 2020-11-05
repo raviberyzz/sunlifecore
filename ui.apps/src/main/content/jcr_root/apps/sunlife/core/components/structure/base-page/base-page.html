@@ -16,5 +16,9 @@
             <sly data-sly-include="body.socialmedia_end.html"></sly>
         </sly>
         <sly>${baseModel.bodyInclude @ context = 'unsafe'}</sly>
+        <!-- Include Extra Clientlibs -->
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
+            <sly data-sly-call="${clientLib.js @ categories=extraClientlibs}"></sly>
+        </sly>
     </body>
 </html>
