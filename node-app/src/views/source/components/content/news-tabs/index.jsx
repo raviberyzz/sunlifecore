@@ -654,7 +654,7 @@ class NewsTabs extends React.Component {
                           </div>
                           <span class="pull-right">
                             {this.state.selectedPreferenceTags.length > 0 &&
-                              <span>({`${this.state.selectedPreferenceTags.length} + " " `})</span>
+                              <span>(${this.state.selectedPreferenceTags.length}){" "}</span>
                             }
                             <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                           </span>
