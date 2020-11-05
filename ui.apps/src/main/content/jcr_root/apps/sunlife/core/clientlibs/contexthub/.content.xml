@@ -3,4 +3,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
     categories="[sunlife.core.contexthub]"
-    embed="[sunlife.core.vendor,sunlife.core.dependencies]"/>
+    embed="[sunlife.core.vendor,granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main]"/>
