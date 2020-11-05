@@ -89,7 +89,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
     var self = this;
     return new Promise(function (resolve, reject) {
-                  console.log(`Inside promiseInput method and selected target is ${self.selectedTarget}`);
+      console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -163,7 +163,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $("#step-up-input-otp-code-screen-input-label").html(selectedNumber);  
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
         $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
-        $("#mfa_signin_modal").off().on("hidden.bs.modal", self.onCloseClicked);
+        $("#mfa_signin_modal").on("hidden.bs.modal", self.onCloseClicked);
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
         setAppContentApperance(true);
 
