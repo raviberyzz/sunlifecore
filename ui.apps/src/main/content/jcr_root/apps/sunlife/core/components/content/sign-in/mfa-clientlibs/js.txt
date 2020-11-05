@@ -1,5 +1,4 @@
 #base=js
-1-polyfill.min.js
 2-custom-ui-handler.js
 3-app.js
 4-sign-in.js

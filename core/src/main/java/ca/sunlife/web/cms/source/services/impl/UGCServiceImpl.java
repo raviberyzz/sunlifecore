@@ -83,7 +83,7 @@ public class UGCServiceImpl implements UGCService {
       try {
         reqHeaderjson.put("authentication-token", this.ugcConfig.getAuthToken());
         reqHeaderjson.put("user-acf-id", userInfo.getAcf2Id());
-        reqHeaderjson.put("user-given-name", userInfo.getGivenName());
+        reqHeaderjson.put("user-given-name", userInfo.getUserName());
         reqHeaderjson.put("user-email-address", userInfo.getEmail());
         if (this.ugcConfig.getByPassAkamaiAuth()) {
           reqHeaderjson.put("x-sti-test", "SFI - wwSWGasd");

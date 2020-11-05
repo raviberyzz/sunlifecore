@@ -232,7 +232,7 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 /* Iframe accessibility ends here */
-//pushing the function to home button o=f sign out page
+//pushing the function to home button of sign out page
     let pageLang=$('html').attr('lang');
     if($('span.sign-out-link').length>0){
         if(pageLang=='fr'){
