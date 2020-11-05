@@ -14,3 +14,14 @@
         }
     }
 }
+// search page css starts here
+#search-result-filter-list{display:flex;}
+
+.search-container .search-results .relative .search-result-filter-list .check-container{ flex: 1;}
+
+.search-container .search-results .relative .search-result-filter-list .check-container > a {height: 100%;}
+
+@media (max-width: $mobile-screen-max) {
+	#search-result-filter-list{display:block;}
+}
+// search pahe css ends here
