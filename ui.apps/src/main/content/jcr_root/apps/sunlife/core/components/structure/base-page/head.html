@@ -23,8 +23,7 @@
                                 clientLibCategoriesJsHead = page.clientLibCategoriesJsHead,
                                 hasCloudconfigSupport     = page.hasCloudconfigSupport}"></sly>
     <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
-    <sly data-sly-include="head.socialmedia.html"></sly>
-	<!-- Include Context Hub -->
+    <!-- Include Context Hub -->
 	<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
 		<sly data-sly-test="${wcmmode.edit}">
 			<sly data-sly-call="${clientLib.js @ categories='granite.utils'}"/>
@@ -35,8 +34,9 @@
 	</sly>
 	<!-- Include Extra Clientlibs -->
 	<sly data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
-        <sly data-sly-call="${clientLib.all @ categories=extraClientlibs}"></sly>
+        <sly data-sly-call="${clientLib.css @ categories=extraClientlibs}"></sly>
     </sly>
+    <sly data-sly-include="head.socialmedia.html"></sly>
 	<!-- Include MFA Domain Path -->
     <sly data-sly-test="${baseModel.mfaDomainPath}">
 		<script>var serverUrl = '${baseModel.mfaDomainPath @ context="scriptString"}';</script>

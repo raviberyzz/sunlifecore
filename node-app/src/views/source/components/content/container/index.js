@@ -87,4 +87,9 @@ $(document).ready(function () {
 	/*if($('.title-wrapper-blue-yellow-rings')){
 		$('.breadcrumb-wrapper-cool-blue').css('margin-bottom','0!important');
 	}*/
+
+	$(".company-summary .accordion .head").click(function(){
+        $(this).siblings().not("h3").css("display","none");
+		$(this).next().toggle();
+    })
 });
