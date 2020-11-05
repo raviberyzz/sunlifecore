@@ -88,7 +88,7 @@
         position: fixed;
         padding-left:0;
         .preference-modaldialog {
-            margin-top: 20px;
+            margin-top: 8%;
         }
         .modal-content{
             border-radius: 0;
@@ -127,6 +127,13 @@
                 .prefernce-col-list{
                     li{
                         margin-bottom: 5px; 
+                    }
+                }
+                ul.topic-col {
+                    .preference-listItems{
+                        .chk-lbl{
+                            display:inline-flex;
+                        }
                     }
                 }
             }
