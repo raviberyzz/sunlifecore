@@ -169,68 +169,78 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private JsonObjectBuilder buildJsonAsset(String lookupPath, AssetManager assetManager, HashMap<String, PaForm> paForms) throws IOException {
-        Workbook lookupWorkbook = readWorkbook(lookupPath, assetManager);
-        Sheet lookupSheet = lookupWorkbook.getSheetAt(0);
         JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
-        JsonObjectBuilder builder = factory.createObjectBuilder();
-        JsonObjectBuilder policyBuilder = factory.createObjectBuilder();
+        JsonObjectBuilder builder;
+        Workbook lookupWorkbook = readWorkbook(lookupPath, assetManager);
+        if (lookupWorkbook != null) {
+            Sheet lookupSheet = lookupWorkbook.getSheetAt(0);
+            builder = factory.createObjectBuilder();
+            JsonObjectBuilder policyBuilder = factory.createObjectBuilder();
 
-        Row formRow = lookupSheet.getRow(1);
+            Row formRow = lookupSheet.getRow(1);
 
-        for (int rowIndex = 4; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
-            Row policy = lookupSheet.getRow(rowIndex);
-            if (policy != null && policy.getCell(1) != null) {
-                String policyNumber;
-                if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
-                    policyNumber = policy.getCell(1).getStringCellValue();
-                } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
-                    policyNumber = Double.toString(policy.getCell(1).getNumericCellValue());
-                    policyNumber = policyNumber.substring(0, policyNumber.length() - 2);
-                } else {
-                    policyNumber = "0";
-                }
-                JsonArrayBuilder drugArray = Json.createArrayBuilder();
-                for (int colIndex = 3; colIndex < policy.getLastCellNum(); colIndex++){
-                    if (policy.getCell(colIndex) != null && "x".equals(policy.getCell(colIndex).getStringCellValue())){
-                        String formName = formRow.getCell(colIndex).getStringCellValue();
-                        formName = formName.substring(0, formName.length()-4);
-                        PaForm form = paForms.get(formName);
-                        if (form != null) {
-                            drugArray.add(Json.createObjectBuilder()
-                                    .add("drug-category-en", form.getDrugCategoriesEn())
-                                    .add("drug-category-fr", form.getDrugCategoriesFr())
-                                    .add("drug-name-en", form.getDrugsEn())
-                                    .add("drug-name-fr", form.getDrugsFr())
-                                    .add("form-en", String.format("%s/%s.pdf", pdfFolder, form.getFormNumberEn()))
-                                    .add("form-fr", String.format("%s/%s.pdf", pdfFolder, form.getFormNumberFr()))
-                                    .add("DIN", form.getDins().toString())
-                                    .build()
-                            );
+            for (int rowIndex = 4; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
+                Row policy = lookupSheet.getRow(rowIndex);
+                if (policy != null && policy.getCell(1) != null) {
+                    String policyNumber;
+                    if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
+                        policyNumber = policy.getCell(1).getStringCellValue();
+                    } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
+                        policyNumber = Double.toString(policy.getCell(1).getNumericCellValue());
+                        policyNumber = policyNumber.substring(0, policyNumber.length() - 2);
+                    } else {
+                        policyNumber = "0";
+                    }
+                    JsonArrayBuilder drugArray = Json.createArrayBuilder();
+                    for (int colIndex = 3; colIndex < policy.getLastCellNum(); colIndex++){
+                        if (policy.getCell(colIndex) != null && "x".equals(policy.getCell(colIndex).getStringCellValue())){
+                            String formName = formRow.getCell(colIndex).getStringCellValue();
+                            formName = formName.substring(0, formName.length()-4);
+                            PaForm form = paForms.get(formName);
+                            if (form != null) {
+                                drugArray.add(Json.createObjectBuilder()
+                                        .add("drug-category-en", form.getDrugCategoriesEn())
+                                        .add("drug-category-fr", form.getDrugCategoriesFr())
+                                        .add("drug-name-en", form.getDrugsEn())
+                                        .add("drug-name-fr", form.getDrugsFr())
+                                        .add("form-en", String.format("%s/%s.pdf", pdfFolder, form.getFormNumberEn()))
+                                        .add("form-fr", String.format("%s/%s.pdf", pdfFolder, form.getFormNumberFr()))
+                                        .add("DIN", form.getDins().toString())
+                                        .build()
+                                );
+                            }
                         }
                     }
-                }
 
-                policyBuilder.add(policyNumber, drugArray.build());
+                    policyBuilder.add(policyNumber, drugArray.build());
+                }
             }
+            builder.add("slf-policy", policyBuilder.build());
+
+        } else {
+            throw new IOException(String.format("Could not get lookup spreadsheet at %s.", lookupPath));
         }
-        builder.add("slf-policy", policyBuilder.build());
         return builder;
     }
 
     private HashMap<String, PaForm> buildPaFormLookUpMap(String paFormsPath, AssetManager assetManager) throws IOException {
         HashMap<String, PaForm> paForms = new HashMap<>();
         Workbook formsWorkbook = readWorkbook(paFormsPath, assetManager);
-        Sheet sheetEn = formsWorkbook.getSheetAt(0);
-        Sheet sheetFr = formsWorkbook.getSheetAt(1);
-        for(int rowIndex = sheetEn.getFirstRowNum() + 1; rowIndex <= sheetEn.getLastRowNum(); rowIndex++) {
-            Row rowEn = sheetEn.getRow(rowIndex);
-            Row rowFr = sheetFr.getRow(rowIndex);
-            PaForm paForm = new PaForm(rowEn, rowFr);
-            if (paForm.isValid()) {
-                paForms.put(paForm.getFormNumber(),paForm);
-            } else {
-                logger.warn("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
+        if(formsWorkbook != null) {
+            Sheet sheetEn = formsWorkbook.getSheetAt(0);
+            Sheet sheetFr = formsWorkbook.getSheetAt(1);
+            for(int rowIndex = sheetEn.getFirstRowNum() + 1; rowIndex <= sheetEn.getLastRowNum(); rowIndex++) {
+                Row rowEn = sheetEn.getRow(rowIndex);
+                Row rowFr = sheetFr.getRow(rowIndex);
+                PaForm paForm = new PaForm(rowEn, rowFr);
+                if (paForm.isValid()) {
+                    paForms.put(paForm.getFormNumber(),paForm);
+                } else {
+                    logger.warn("Rejecting row {} because it is invalid: {}", rowIndex, paForm.getInvalidReasons().toString());
+                }
             }
+        } else {
+            throw new IOException(String.format("Could not read forms spreadsheet at %s", paFormsPath));
         }
         return paForms;
     }
