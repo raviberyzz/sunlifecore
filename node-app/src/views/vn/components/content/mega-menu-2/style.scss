@@ -8,16 +8,17 @@ ul.mega-menu2-list > li:first-child{
   border : 1px solid $light-grey-20;
 }
 .nav .arrow .dropdown-toggle{
-  padding: 0 16px;
+  padding: 0 8px;
          }
 .desktop-primary-navigation{
   .main-nav {
       margin-top:5px;
   }
   .nav-item> a {
-      padding: 0 16px; 
-     height:43px;
-     line-height: 43px;
+    padding: 0 8px; 
+    font-size: 14px;
+    height:43px;
+    line-height: 43px;
   }
   .navigation {
       position: static;
