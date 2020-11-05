@@ -308,7 +308,7 @@ class ArticleComments extends React.Component {
         ev_title: "news-comment",
       });
       /* news comment submit analytics ends here */
-      $("#commentText").val("write your comment");
+      $("#commentText").val(this.props.writeComment);
     }
   }
   deleteComment(commentId, event) {
