@@ -1,3 +1,4 @@
 #base=js
-1-xmsdk.js
-2-xmui.js
+1-polyfill.min.js
+2-xmsdk.js
+3-xmui.js
