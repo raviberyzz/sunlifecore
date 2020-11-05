@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-
+import ca.sunlife.web.cms.core.constants.SelectorToExfragConstants;
 /**
  * The Class SelectorToExfragMapModel.
  *
@@ -121,16 +121,15 @@ public class SelectorToExfragMapModel {
     String urlSelector = "";   
     if (items != null && items.size() > 0) {    	  
     	  LOGGER.debug("No of entries after items : {}", items.size());
-	      final Iterator <SelectorExFragMap> itemIterator = items.iterator();
+    	  final Iterator <SelectorExFragMap> itemIterator = items.iterator();
 	      while (itemIterator.hasNext()) {
 	        final SelectorExFragMap item = itemIterator.next();
 	       	        
 	        //Code for default page selector for slgi - starts
 	        try {
-	        String siteName = configService.getConfigValues("siteName",
-	                  currentPage.getPath());
-	        LOGGER.debug("SiteName is ::"+ siteName);
-	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (siteName.equalsIgnoreCase("SLGI"))) {	        	
+	        String sitePath = request.getRequestPathInfo().getResourcePath();
+	        LOGGER.debug("PagePath is ::"+ sitePath);
+	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (sitePath.contains(SelectorToExfragConstants.PAGE_PATH_CONSTANT))) {	        	
 	        	urlSelector = item.getSelector();
 	        	LOGGER.debug("No selector, taking default ::"+ urlSelector);
 	        } else if (selectors.length > 0) {	        	
