@@ -53,51 +53,6 @@
     font-family: FontAwesome;
     content: "\00a0\f105"; }
 
-    // SLCM specific megamenu
-.slcm-content-page, .slcm-home-page {
-  .mega-menu-wrapper-desk {
-    .lists-wrapper {
-      padding: 24px 0 9px 0;
-      .list-unstyled li {
-        padding: 15px 32px;
-        &:hover {
-          background: $light-taupe-50; 
-        }
-      }
-      .links {
-        .accordion-heading {
-          padding: 0 32px;
-          margin: 0;
-        }
-      }
-    }
-    .text {
-      padding: 15px 32px;
-      &:first-child {
-          padding-top: 24px!important;
-      }
-      &:last-child {
-          padding-bottom: 24px!important;
-      }
-      &:hover {
-          background: $light-taupe-50;
-      }
-      h2,h3,h4,h5,h6 {
-          margin:0;
-          font-size: 1.125rem;
-          font-weight: 700;
-          line-height: 23px;
-      }
-      p {
-          margin:0;
-          a {
-              font-weight: 400;
-
-          }
-      }
-  }
-  }
-}
 
 @media (max-width: 1024px) {
   .mega-menu-wrapper-desk {
