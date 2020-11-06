@@ -202,6 +202,9 @@ class NewsTiles extends React.Component {
                 }
               })
             })
+            let  userBGFilters= userProfileFilters.filter((c, index) => {
+              return userProfileFilters.indexOf(c) === index;
+          });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
             buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
             jobLevel !== "NA" ?  userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
@@ -209,7 +212,7 @@ class NewsTiles extends React.Component {
             var BGArticles, BUArticles, BLArticles, JLArticles;
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
-              return (news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+              return (news.tags && news.tags.some((val) => userBGFilters.indexOf(val) > -1))
             })
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
@@ -217,12 +220,14 @@ class NewsTiles extends React.Component {
             BLArticles = BUArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
             })
-            JLArticles = BLArticles.filter((news) => {
+            BLArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => {
                 if (val.includes('/job-level')) {
                   val = val.split('/');
                   val = val[val.length - 1];
-                  userJobLevelFilters.indexOf(val) > -1
+                  if(userJobLevelFilters.indexOf(val) > -1){
+                    JLArticles.push(news);
+                  }
                 }
               }));
             })
