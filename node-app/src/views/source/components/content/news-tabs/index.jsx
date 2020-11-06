@@ -25,7 +25,7 @@ class NewsTabs extends React.Component {
       userProfileArticles: [],
       businessGroupIdTitle: [],
       loading: true,
-      businessGroupIdTitle:[]
+      businessGroupIdTitle: []
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -84,7 +84,7 @@ class NewsTabs extends React.Component {
         this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data,index) => {
+        this.state.businessGroupList.tags.forEach((data, index) => {
           if (data.id == "sunlife:source/business-group/all") {
             this.state.businessGroupList.tags.splice(index, 1);
           }
@@ -115,11 +115,11 @@ class NewsTabs extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
-        }, () =>{
-           this.tagSorting();
-           setTimeout(()=>{
+        }, () => {
+          this.tagSorting();
+          setTimeout(() => {
             this.getTabsNewsList();
-           },1000)
+          }, 1000)
         })
         //this.getTabsNewsList();
       },
@@ -139,11 +139,16 @@ class NewsTabs extends React.Component {
         this.state.newsList = response;
         let preferedNewsList = [];
         //Sort all the article by date
+        var sortArticle;
         this.state.newsList.sort(function (a, b) {
-          return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+          sortArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+          if (sortArticle == 0) {
+            sortArticle = a.heading.localeCompare(b.heading)
+          }
+          return sortArticle
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
           if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
             var businessGroup = ContextHub.getItem('profile').businessGroup;
             var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -163,15 +168,26 @@ class NewsTabs extends React.Component {
             var userBLFilters = [];
             var userJobLevelFilters = []
             //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
-            userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na");
-            userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
-            userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
-            userJobLevelFilters.push(jobLevel, "all", "na");
+            businessGroup !== "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
+            userProfileFilters.forEach((val) => {
+              this.state.selectedPreferenceList.forEach((prefer) => {
+                if (val !== prefer) {
+                  userProfileFilters.push(prefer);
+                }
+              })
+            })
+            let  userBGFilters= userProfileFilters.filter((c, index) => {
+              return userProfileFilters.indexOf(c) === index;
+          });
+            businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
+            buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
+            jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
-            var BGArticles, BUArticles, BLArticles, JLArticles;
+            var BGArticles, BUArticles, BLArticles;
+            var  JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
-              return (news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+              return (news.tags && news.tags.some((val) => userBGFilters.indexOf(val) > -1))
             })
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
@@ -179,27 +195,48 @@ class NewsTabs extends React.Component {
             BLArticles = BUArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
             })
-            JLArticles = BLArticles.filter((news) => {
+            BLArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => {
                 if (val.includes('/job-level')) {
                   val = val.split('/');
                   val = val[val.length - 1];
-                  userJobLevelFilters.indexOf(val) > -1
+                  if(userJobLevelFilters.indexOf(val) > -1){
+                    JLArticles.push(news);
+                  }
                 }
               }));
             })
+            JLArticles.forEach((news, index) => {
+              if (!(news.tags.indexOf(businessGroup) > -1)) {
+                news.tags.forEach((val) => {
+                  if (val.indexOf(jobLevel) > -1) {
+                    JLArticles.splice(index, 1);
+                  }
+                })
+              }
+            })
             //Sort result Articles for pinned Articles.
-            var sortedArticle; 
+            var sortedArticle;
             JLArticles.sort(function (a, b) {
               sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
-              if(sortedArticle == 0){
+              if (sortedArticle == 0) {
                 sortedArticle = a.heading.localeCompare(b.heading)
               }
               return sortedArticle
             });
-            this.state.userProfileArticles = JLArticles;
+            //this.state.userProfileArticles = JLArticles;
+            this.setState({
+              newsList: this.state.newsList,
+              //filterNewsList: this.state.filterNewsList,
+              filterNewsList: JLArticles,
+              userProfileArticles: JLArticles,
+              pinnedNewsList: this.state.pinnedNewsList,
+              loading: false
+            }, () => {
+              this.getTabsHeading();
+            });
           }
-        } else {
+        } /*else {
           //if no job profile filter the news articles by "all" tag. 
           var noUserArticles = []
           var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na']
@@ -210,49 +247,41 @@ class NewsTabs extends React.Component {
             b.publishedDate - a.publishedDate ||
               a.heading.localeCompare(b.heading)
           })*/
-          var sortedArticle;
-          noUserArticles.sort(function(a, b){
-            sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if(sortedArticle == 0){
-              sortedArticle = a.heading.localeCompare(b.heading);
-            } 
-            return sortedArticle
-          })
-          this.state.userProfileArticles = noUserArticles;
-        }
-        // if any selected preferences filter the articles from previously selected userProfile articles
-        if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
-          var preferenceArticles = [];
-          preferenceArticles = this.state.newsList.filter((news) => {
-            return (
-              !news.pinArticle &&
-              news.tags &&
-              news.tags.some(
-                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-              )
-            );
-          });
-          var article;
-          preferenceArticles.sort(function (a, b) {
-            article = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if(article == 0){
-              article = a.heading.localeCompare(b.heading)
-            }
-            return article
-          });
-          this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
-        } else {
-          this.state.filterNewsList = this.state.userProfileArticles;
-        }
-        this.setState({
-          newsList: this.state.newsList,
-          filterNewsList: this.state.filterNewsList,
-          userProfileArticles: preferedNewsList,
-          pinnedNewsList: this.state.pinnedNewsList,
-          loading: false
-        }, () => {
-          this.getTabsHeading();
-        });
+        /* var sortedArticle;
+         noUserArticles.sort(function(a, b){
+           sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+           if(sortedArticle == 0){
+             sortedArticle = a.heading.localeCompare(b.heading);
+           } 
+           return sortedArticle
+         })
+         this.state.userProfileArticles = noUserArticles;
+       }
+       // if any selected preferences filter the articles from previously selected userProfile articles
+       if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
+         var preferenceArticles = [];
+         preferenceArticles = this.state.newsList.filter((news) => {
+           return (
+             !news.pinArticle &&
+             news.tags &&
+             news.tags.some(
+               (val) => this.state.selectedPreferenceList.indexOf(val) > -1
+             )
+           );
+         });
+         var article;
+         preferenceArticles.sort(function (a, b) {
+           article = new Date(b.publishedDate) - new Date(a.publishedDate)
+           if(article == 0){
+             article = a.heading.localeCompare(b.heading)
+           }
+           return article
+         });
+         this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
+       } else {
+         this.state.filterNewsList = this.state.userProfileArticles;
+       } */
+
         /* this.state.newsList = res;
          this.state.filterNewsList = [];
          let preferedNewsList = [];
@@ -610,7 +639,7 @@ class NewsTabs extends React.Component {
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
       //
-      if( selectedAccordian.getAttribute('aria-expanded')== "true"){
+      if (selectedAccordian.getAttribute('aria-expanded') == "true") {
         var item = "responsivegrid" + selectedAccordianIndex;
         var accContItem = "tab-accordian-heading" + selectedAccordianIndex;
         document.getElementById(item).classList.remove("accordian-container-active");
@@ -654,7 +683,7 @@ class NewsTabs extends React.Component {
                           </div>
                           <span class="pull-right">
                             {this.state.selectedPreferenceTags.length > 0 &&
-                              <span>({`${this.state.selectedPreferenceTags.length} + " " `})</span>
+                              <span>({this.state.selectedPreferenceTags.length}){" "}</span>
                             }
                             <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                           </span>
@@ -740,7 +769,7 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) +" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
