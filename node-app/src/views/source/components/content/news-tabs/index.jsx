@@ -183,7 +183,8 @@ class NewsTabs extends React.Component {
             buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
             jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
-            var BGArticles, BUArticles, BLArticles, JLArticles;
+            var BGArticles, BUArticles, BLArticles;
+            var  JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
               return (news.tags && news.tags.some((val) => userBGFilters.indexOf(val) > -1))
