@@ -717,7 +717,7 @@ class NewsTabs extends React.Component {
                                     {this.state.businessGroupList.tags.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.title === this.state.defaultBG} />
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={value.isChecked && value.id === this.state.defaultBG} />
                                           <span class="chk-lbl">{value.title}</span>
                                         </li>
                                       )
