@@ -184,4 +184,11 @@ $(document).ready(function () {
         } else {
             $('.full-header').parents('.experiencefragment').next().addClass('margin-top-fifty');
         }
+
+    // SLCM sign in validation error
+   if (( $('. slcm-home-page .sign-in-modal-wrapper .password-input').siblings('.parsley-errors-list').length > 0 ) || ( $('. slcm-content-page .sign-in-modal-wrapper .password-input').siblings('.parsley-errors-list').length > 0 )) {
+    $('.sign-in-modal-wrapper .password-input').css({ 'margin-bottom': '0' });
+   } else {
+    $('.sign-in-modal-wrapper .password-input').css({ 'margin-bottom': '16px' });
+   }
 });
