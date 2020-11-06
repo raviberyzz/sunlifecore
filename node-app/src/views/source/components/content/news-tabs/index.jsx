@@ -3,9 +3,8 @@ class NewsTabs extends React.Component {
     super(props);
     let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
-    if (contextHubData) {
-      let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
-      defaultBGValue = userProfile.store.profile.businessGroup;
+    if (ContextHub) {
+      defaultBGValue = ContextHub.getItem('profile').businessGroup;
     }
 
     this.state = {
@@ -92,6 +91,12 @@ class NewsTabs extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
+            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replaceAll(" ", "-");
+            if(data.id == this.state.defaultBG){
+              data["isChecked"] = true;
+            }
+          }
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
               data["isChecked"] = true;
