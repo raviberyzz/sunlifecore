@@ -149,6 +149,23 @@
         }
     } 
   } 
+
+//   static megamenu style
+.slf-header-wrapper {
+    .mega-menu-wrapper-desk {
+        .link-list {
+            .lists-wrapper .links {
+                padding: 10px 20px 24px 20px;
+            }
+        }
+    }
+}
+
+.desktop-header-content .desktop-mega-menu .mega-menu-wrapper-desk .text ul {
+    margin: 30px 20px; }
+  
+  .desktop-header-content .desktop-mega-menu .mega-menu-wrapper-desk li::before {
+    content: none; }
   /*mega menu css end here*/
   
 
