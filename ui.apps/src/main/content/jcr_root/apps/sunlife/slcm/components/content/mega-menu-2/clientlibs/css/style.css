@@ -92,7 +92,7 @@
     .slf-header-wrapper .desktop-primary-navigation .menu-content .cmp-dynamic-megamenu-greybackground .teaser .image-text-wrapper .left-image-position .left-item .side-image, .slf-header-wrapper .desktop-primary-navigation .menu-content .cmp-dynamic-megamenu-greybackground .teaser .image-text-wrapper .right-image-position .left-item .side-image {
       width: 100%; }
     .desktop-header-content .desktop-mega-menu .mega-menu-wrapper-desk .text ul {
-      margin-left: 20px; }
+      margin: 30px 20px; }
       
     .desktop-header-content .desktop-mega-menu .mega-menu-wrapper-desk li::before {
       content: none; }
