@@ -134,7 +134,6 @@
 
     .password-input {
         width: 317px;
-        margin-bottom: 16px;
         padding: 0 10px;
         height: 48px;
         border: 1px solid $light-grey-color;
@@ -148,6 +147,7 @@
         .btn-blue {
             width: 100%;
             height: 48px;
+            margin-top: 16px;
             background: $medium-blue-color;
             color: $white-shade;
             cursor: pointer;
