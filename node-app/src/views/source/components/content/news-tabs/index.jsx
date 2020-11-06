@@ -143,7 +143,7 @@ class NewsTabs extends React.Component {
           return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
           if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
             var businessGroup = ContextHub.getItem('profile').businessGroup;
             var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -163,10 +163,17 @@ class NewsTabs extends React.Component {
             var userBLFilters = [];
             var userJobLevelFilters = []
             //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
-            userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na");
-            userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
-            userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
-            userJobLevelFilters.push(jobLevel, "all", "na");
+            businessGroup !==  "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
+            userProfileFilters.forEach((val)=>{
+              this.state.selectedPreferenceList.forEach((prefer)=>{
+                if(val !== prefer){
+                  userProfileFilters.push(prefer);
+                }
+              })
+            })
+            businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
+            buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
+            jobLevel !== "NA" ?  userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
             var BGArticles, BUArticles, BLArticles, JLArticles;
             BGArticles = this.state.newsList.filter((news) => {
@@ -188,6 +195,15 @@ class NewsTabs extends React.Component {
                 }
               }));
             })
+            JLArticles.forEach((news, index)=>{
+              if(!(news.tags.indexOf(businessGroup) > -1)){
+                news.tags.forEach((val)=>{
+                  if(val.indexOf(jobLevel)>-1){
+                    JLArticles.splice(index, 1);
+                  }
+                })
+            }
+            })
             //Sort result Articles for pinned Articles.
             var sortedArticle; 
             JLArticles.sort(function (a, b) {
@@ -197,9 +213,19 @@ class NewsTabs extends React.Component {
               }
               return sortedArticle
             });
-            this.state.userProfileArticles = JLArticles;
+            //this.state.userProfileArticles = JLArticles;
+            this.setState({
+              newsList: this.state.newsList,
+              //filterNewsList: this.state.filterNewsList,
+              filterNewsList: JLArticles,
+              userProfileArticles: JLArticles,
+              pinnedNewsList: this.state.pinnedNewsList,
+              loading: false
+            }, () => {
+              this.getTabsHeading();
+            });
           }
-        } else {
+        } /*else {
           //if no job profile filter the news articles by "all" tag. 
           var noUserArticles = []
           var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na']
@@ -210,7 +236,7 @@ class NewsTabs extends React.Component {
             b.publishedDate - a.publishedDate ||
               a.heading.localeCompare(b.heading)
           })*/
-          var sortedArticle;
+         /* var sortedArticle;
           noUserArticles.sort(function(a, b){
             sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
             if(sortedArticle == 0){
@@ -243,16 +269,8 @@ class NewsTabs extends React.Component {
           this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else {
           this.state.filterNewsList = this.state.userProfileArticles;
-        }
-        this.setState({
-          newsList: this.state.newsList,
-          filterNewsList: this.state.filterNewsList,
-          userProfileArticles: preferedNewsList,
-          pinnedNewsList: this.state.pinnedNewsList,
-          loading: false
-        }, () => {
-          this.getTabsHeading();
-        });
+        } */
+
         /* this.state.newsList = res;
          this.state.filterNewsList = [];
          let preferedNewsList = [];
