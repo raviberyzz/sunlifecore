@@ -226,6 +226,7 @@ class NewsTiles extends React.Component {
                 if (val.includes('/job-level')) {
                   val = val.split('/');
                   val = val[val.length - 1];
+                  val = val.replaceAll("-",".");
                   if(userJobLevelFilters.indexOf(val) > -1){
                     JLArticles.push(news);
                   }
@@ -258,7 +259,7 @@ class NewsTiles extends React.Component {
             })
             var publishedDateArticles;
             nonPinnedArticles.sort(function (a, b) {
-              publishedDateArticles = new Date(a.publishedDate) - new Date(b.publishedDate);
+              publishedDateArticles = new Date(b.publishedDate) - new Date(a.publishedDate);
               if (publishedDateArticles == 0) {
                 publishedDateArticles = a.heading.localeCompare(b.heading);
               }

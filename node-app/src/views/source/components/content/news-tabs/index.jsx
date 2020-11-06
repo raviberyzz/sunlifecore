@@ -200,6 +200,7 @@ class NewsTabs extends React.Component {
                 if (val.includes('/job-level')) {
                   val = val.split('/');
                   val = val[val.length - 1];
+                  val = val.replaceAll("-",".");
                   if(userJobLevelFilters.indexOf(val) > -1){
                     JLArticles.push(news);
                   }
