@@ -114,6 +114,12 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
+            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replaceAll(" ", "-");
+            if(data.id == this.state.defaultBG){
+              data["isChecked"] = true;
+            }
+          }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
               if (prefer === data.id) {
