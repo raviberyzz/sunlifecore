@@ -92,7 +92,7 @@ class NewsTabs extends React.Component {
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replaceAll(" ", "-");
+            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replace(/ /g, "-");
             if(data.id == this.state.defaultBG){
               data["isChecked"] = true;
             }
@@ -160,13 +160,13 @@ class NewsTabs extends React.Component {
             var buildingLocation = ContextHub.getItem('profile').buildingLocation;
             var jobLevel = ContextHub.getItem('profile').jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replace(/ /g, "-");
             }
             var userProfileFilters = [];
             var userBUFilters = [];
@@ -205,7 +205,7 @@ class NewsTabs extends React.Component {
                 if (val.includes('/job-level')) {
                   val = val.split('/');
                   val = val[val.length - 1];
-                  val = val.replaceAll("-",".");
+                  val = val.replace(/-/g,".");
                   if(userJobLevelFilters.indexOf(val) > -1){
                     JLArticles.push(news);
                   }
