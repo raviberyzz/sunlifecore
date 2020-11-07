@@ -126,3 +126,9 @@
     }
 }
 /*Overview Highlight -- ends here*/
+
+@media (min-width: $tab-screen-min){
+    .bottom-footer-section .text .accordion-heading{
+        overflow-wrap: normal;
+    }
+}
