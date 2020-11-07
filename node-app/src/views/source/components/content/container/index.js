@@ -88,8 +88,15 @@ $(document).ready(function () {
 		$('.breadcrumb-wrapper-cool-blue').css('margin-bottom','0!important');
 	}*/
 
-	$(".company-summary .accordion .head").click(function(){
+	var openAccordion=false;
+	$(".html-component .company-summary .accordion .head").click(function(){
+        openAccordion = $(this).next().is(':visible');
         $(this).siblings().not("h3").css("display","none");
-		$(this).next().toggle();
+        if(openAccordion){
+            $(this).next().hide();
+        }
+        else{
+			$(this).next().show();
+        }
     })
 });
