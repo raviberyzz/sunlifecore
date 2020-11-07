@@ -26,3 +26,8 @@
         }
     }
 }
+@media (min-width: $desktop-screen-min) {
+    .landing-page-hero-banner.text-right-align .right-item.text-section {
+		margin-right: 50px !important;    
+    }
+}
