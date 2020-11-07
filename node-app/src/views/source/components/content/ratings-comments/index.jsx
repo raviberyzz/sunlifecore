@@ -308,7 +308,7 @@ class ArticleComments extends React.Component {
         ev_title: "news-comment",
       });
       /* news comment submit analytics ends here */
-      //$("#commentText").val(this.props.writeComment);
+      $("#commentText").val('');
       $('#commentText').attr('placeholder',this.props.writeComment);
     }
   }
