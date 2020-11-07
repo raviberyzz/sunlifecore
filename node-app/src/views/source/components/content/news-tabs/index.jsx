@@ -202,7 +202,7 @@ class NewsTabs extends React.Component {
             })
             BLArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => {
-                if (val.includes('/job-level')) {
+                if (val.indexOf('/job-level')!=-1) {
                   val = val.split('/');
                   val = val[val.length - 1];
                   val = val.replace(/-/g,".");
