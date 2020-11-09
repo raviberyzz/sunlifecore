@@ -3,7 +3,8 @@
 <%
 SiteConfigService sCon = sling.getService(SiteConfigService.class);
 String chub = sCon.getConfigValues("enableContextHub", request.getRequestURI());
-if(chub.equalsIgnoreCase("true")) {
+if(chub.equalsIgnoreCase("true") || request.getRequestURI().startsWith("/content/dam")) {
+    slingResponse.setStatus(404);
 %>
 <script type="text/javascript">
     if(window.location.search.length > 0) {
@@ -11,6 +12,7 @@ if(chub.equalsIgnoreCase("true")) {
     }else {
 		window.location.replace(window.location.href+'?errorPageTarget=true');
     }
+
 </script>
 <%
     return;
