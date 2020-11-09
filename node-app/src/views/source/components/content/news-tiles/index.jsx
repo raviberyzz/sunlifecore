@@ -25,6 +25,8 @@ class NewsTiles extends React.Component {
       loading: true
     };
 
+    let defaultUserBG = this.state.defaultBG;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     //this.getNewsTilesData = this.getNewsTilesData.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
@@ -853,8 +855,7 @@ class NewsTiles extends React.Component {
                                         }
                                         checked={value.isChecked}
                                         disabled={
-                                          value.isChecked &&
-                                          value.id === this.state.defaultBG
+                                          value.id === defaultUserBG
                                         }
                                       />
                                       <span class="chk-lbl">
