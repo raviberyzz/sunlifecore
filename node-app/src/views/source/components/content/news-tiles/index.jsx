@@ -529,10 +529,29 @@ class NewsTiles extends React.Component {
       "Nov",
       "Dec",
     ];
+    const EnToFr = {
+      "Jan": "Janvier",
+       "Feb": "Février",
+       "Mar":"Mars",
+       "Apr":"Avril",
+       "may":"Mai",
+       "Jun":"Juin",
+       "july":"Juillet",
+       "Aug":"Août",
+       "Sep":"Septembre",
+       "Oct":"Octobre",
+       "Nov":"Novembre",
+       "Dec":"Décembre"
+   }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
-    return monthName[m] + " " + d;
+    var month =  monthName[m];
+    if([lang]="fr-CA"){
+      month = EnToFr.month;
+    }
+    //return monthName[m] + " " + d;
+    return month + " " + d;
     // return moment(date).format('MMM DD');
   }
 

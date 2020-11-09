@@ -502,7 +502,7 @@ class NewsTabs extends React.Component {
     this.addSelectedPreference();
     this.tagSorting();
     $("#preferenceModal").modal("hide");
-    window.location.reload();
+    //window.location.reload();
   }
 
   clearAll() {
@@ -527,11 +527,29 @@ class NewsTabs extends React.Component {
   dateTransform(date) {
     let monthName = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
+      const EnTofr = {
+       "January": "Janvier",
+        "February": "Février",
+        "March":"Mars",
+        "April":"Avril",
+        "May":"Mai",
+        "June":"Juin",
+        "July":"Juillet",
+        "August":"Août",
+        "September":"Septembre",
+        "October":"Octobre",
+        "November":"Novembre",
+        "December":"Décembre"
+    }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
+    let month = monthName[m]
+    if([lang]="fr-CA"){
+      month = EnTofr.month;
+    }
     let y = d1.getFullYear();
-    return `${monthName[m]} ${d}, ${y}`;
+    return `${month} ${d}, ${y}`;
     // return moment(date).format('MMMM DD, YYYY');
   }
 
