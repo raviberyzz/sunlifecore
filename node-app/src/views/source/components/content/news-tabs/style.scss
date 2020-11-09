@@ -149,7 +149,8 @@
 
 .loaderContainer{
     height:600px;
-    margin-left: 50%;
+    // margin-left: 50%;
+    text-align: center;
     margin-top: 10%;
     color: $blue-gradient-color;
     .fa{
@@ -160,6 +161,7 @@
     .loaderText{
         display:flex;
         flex-direction: column;
+        padding-left: 22px;
     }
 }
 
