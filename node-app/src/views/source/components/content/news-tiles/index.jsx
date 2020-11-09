@@ -114,9 +114,11 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
-          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replace(/ /g, "-");
-            if(data.id == this.state.defaultBG){
+          let defaultBusinessGroup = "";
+          defaultBusinessGroup = this.state.defaultBG;
+          if (defaultBusinessGroup != "" && defaultBusinessGroup != undefined) {
+            defaultBusinessGroup = "sunlife:source/business-group/" + defaultBusinessGroup.toLowerCase().replace(/ /g, "-");
+            if(data.id == defaultBusinessGroup){
               data["isChecked"] = true;
             }
           }
@@ -399,9 +401,10 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
-      var BGName = prefer.name;
-      BGName.replace(/-/g, " ");
-      if (BGName.toUpperCase() != this.state.defaultBG.toUpperCase()) {
+      defaultBusinessGroup = "";
+      var defaultBusinessGroup = this.state.defaultBG;
+      defaultBusinessGroup = "sunlife:source/business-group/" + defaultBusinessGroup.toLowerCase().replace(/ /g, "-");
+      if (prefer.id != defaultBusinessGroup) {
         prefer.isChecked = false;
       }
     });
@@ -547,7 +550,7 @@ class NewsTiles extends React.Component {
     let d = d1.getDate();
     let m = d1.getMonth();
     var month =  monthName[m];
-    if($('html[lang]')=="fr-CA"){
+    if($('html').attr('lang')=="fr-CA"){
       month = EnToFr[month];
     }
     //return monthName[m] + " " + d;
