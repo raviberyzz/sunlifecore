@@ -288,6 +288,8 @@ function getCSIUrl(lang){
             }
         }
     }
+    console.log('english url is'+eURL);
+    console.log('french url is'+fURL);
     if(lang == 'en'){
         window.open(eURL,'_self');
     }else {
