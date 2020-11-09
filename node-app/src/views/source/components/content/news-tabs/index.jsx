@@ -26,7 +26,9 @@ class NewsTabs extends React.Component {
       loading: true,
       businessGroupIdTitle: []
     };
-
+    
+    let defaultUserBG = this.state.defaultBG;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.getTabsHeading = this.getTabsHeading.bind(this);
     // this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
@@ -741,7 +743,7 @@ class NewsTabs extends React.Component {
                                     {this.state.businessGroupList.tags.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={value.isChecked && value.id === this.state.defaultBG} />
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={ value.id === defaultUserBG} />
                                           <span class="chk-lbl">{value.title}</span>
                                         </li>
                                       )
