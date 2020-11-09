@@ -3,7 +3,7 @@ class NewsTiles extends React.Component {
     super(props);
     let defaultBGValue = "";
     if (ContextHub) {
-      defaultBGValue = ContextHub.getItem('profile').businessGroup;
+      defaultBGValue = profileData.businessGroup;
     }
     this.state = {
       defaultBG: defaultBGValue,
@@ -180,12 +180,12 @@ class NewsTiles extends React.Component {
           return articleByDate
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup;
+            var businessUnit = profileData.businessUnit;
+            var buildingLocation = profileData.buildingLocation;
+            var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
@@ -659,7 +659,7 @@ class NewsTiles extends React.Component {
                 </div>
 
                 <div class="row news-list-container">
-                  {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+                      {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
                   {!this.state.loading && this.state.filterNewsList.length > 0 && (
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                       {Object.keys(this.state.filterNewsList)
@@ -715,7 +715,7 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
-                                  <a class="title" href="">
+                                  <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
                                   <p class="bg-name">
