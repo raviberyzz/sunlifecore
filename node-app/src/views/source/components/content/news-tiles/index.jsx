@@ -114,6 +114,12 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
+            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replace(/ /g, "-");
+            if(data.id == this.state.defaultBG){
+              data["isChecked"] = true;
+            }
+          }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
               if (prefer === data.id) {
@@ -181,13 +187,13 @@ class NewsTiles extends React.Component {
             var buildingLocation = ContextHub.getItem('profile').buildingLocation;
             var jobLevel = ContextHub.getItem('profile').jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replace(/ /g, "-");
             }
             var userProfileFilters = [];
             var userBUFilters = [];
@@ -223,9 +229,10 @@ class NewsTiles extends React.Component {
             })
             BLArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => {
-                if (val.includes('/job-level')) {
+                if (val.indexOf('/job-level')!=-1) {
                   val = val.split('/');
                   val = val[val.length - 1];
+                  val = val.replace(/-/g,".");
                   if(userJobLevelFilters.indexOf(val) > -1){
                     JLArticles.push(news);
                   }
@@ -235,6 +242,7 @@ class NewsTiles extends React.Component {
             JLArticles.forEach((news, index)=>{
               if(!(news.tags.indexOf(businessGroup) > -1)){
                 news.tags.forEach((val)=>{
+                  jobLevel = "/" + jobLevel;
                   if(val.indexOf(jobLevel)>-1){
                     JLArticles.splice(index, 1);
                   }
@@ -258,7 +266,7 @@ class NewsTiles extends React.Component {
             })
             var publishedDateArticles;
             nonPinnedArticles.sort(function (a, b) {
-              publishedDateArticles = new Date(a.publishedDate) - new Date(b.publishedDate);
+              publishedDateArticles = new Date(b.publishedDate) - new Date(a.publishedDate);
               if (publishedDateArticles == 0) {
                 publishedDateArticles = a.heading.localeCompare(b.heading);
               }
@@ -392,7 +400,7 @@ class NewsTiles extends React.Component {
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
       var BGName = prefer.name;
-      BGName.replaceAll("-", " ");
+      BGName.replace(/-/g, " ");
       if (BGName.toUpperCase() != this.state.defaultBG.toUpperCase()) {
         prefer.isChecked = false;
       }
@@ -816,6 +824,7 @@ class NewsTiles extends React.Component {
                                         type="checkbox"
                                         name={value.id}
                                         value={value.id}
+                                        class={value.id==this.state.defaultBG ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -823,7 +832,7 @@ class NewsTiles extends React.Component {
                                         checked={value.isChecked}
                                         disabled={
                                           value.isChecked &&
-                                          value.title === this.state.defaultBG
+                                          value.id === this.state.defaultBG
                                         }
                                       />
                                       <span class="chk-lbl">
