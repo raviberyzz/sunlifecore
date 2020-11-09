@@ -206,7 +206,19 @@ var multiPurposeComponentConfig = [
 			{
                 name: "getPrefernceListUrl",
                 label: "Preferences URL",
-                value: "/content/cq:tags/sunlife/source.tags",
+                value: "/content/cq:tags/sunlife/source",
+                required: true
+            },
+			{
+                name: "loading",
+                label: "Loading",
+                value: "Loading...",
+                required: true
+            },
+			{
+                name: "loadingText",
+                label: "Loading Text",
+                value: "One moment please",
                 required: true
             }
 		]	
@@ -310,6 +322,18 @@ var multiPurposeComponentConfig = [
                 name: "ofText",
                 label: "Of Text",
                 value: "of",
+                required: true
+            },
+			{
+                name: "loading",
+                label: "Loading",
+                value: "Loading...",
+                required: true
+            },
+			{
+                name: "loadingText",
+                label: "Loading Text",
+                value: "One moment please",
                 required: true
             }
 		]	
