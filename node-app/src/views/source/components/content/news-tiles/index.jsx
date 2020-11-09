@@ -547,8 +547,8 @@ class NewsTiles extends React.Component {
     let d = d1.getDate();
     let m = d1.getMonth();
     var month =  monthName[m];
-    if([lang]="fr-CA"){
-      month = EnToFr.month;
+    if($('html[lang]')=="fr-CA"){
+      month = EnToFr[month];
     }
     //return monthName[m] + " " + d;
     return month + " " + d;
