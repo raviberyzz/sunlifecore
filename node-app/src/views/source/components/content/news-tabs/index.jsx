@@ -4,7 +4,7 @@ class NewsTabs extends React.Component {
     let contextHubData = localStorage.getItem("ContextHubPersistence");
     let defaultBGValue = "";
     if (ContextHub) {
-      defaultBGValue = ContextHub.getItem('profile').businessGroup;
+      defaultBGValue = profileData.businessGroup;
     }
 
     this.state = {
@@ -153,12 +153,12 @@ class NewsTabs extends React.Component {
           return sortArticle
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup;
+            var businessUnit = profileData.businessUnit;
+            var buildingLocation = profileData.buildingLocation;
+            var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
@@ -293,11 +293,11 @@ class NewsTabs extends React.Component {
          this.state.filterNewsList = [];
          let preferedNewsList = [];
          // filter the response articles by user profile data if user profile data exists
-         if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
-           var businessGroup = ContextHub.getItem('profile').businessGroup;
-           var businessUnit = ContextHub.getItem('profile').businessUnit;
-           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-           var jobLevel = ContextHub.getItem('profile').jobLevel;
+         if (profileData.businessGroup != "" && profileData.businessUnit != "" && profileData.buildingLocation != "" && profileData.jobLevel != "") {
+           var businessGroup = profileData.businessGroup;
+           var businessUnit = profileData.businessUnit;
+           var buildingLocation = profileData.buildingLocation;
+           var jobLevel = profileData.jobLevel;
            if (businessGroup != "" && businessGroup != undefined) {
              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
            }
@@ -669,7 +669,7 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
         {!this.state.loading && (
           <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
