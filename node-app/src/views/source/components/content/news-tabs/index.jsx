@@ -403,7 +403,12 @@ class NewsTabs extends React.Component {
             }
           })
         } else if (element.split("/")[1] == "topic") {
-          topicsTag.push(element);
+          this.state.topicsList.tags.forEach((topic)=>{
+            if(topic.id == element){
+              topicsTag.push(topic.title);
+            }
+          })
+         // topicsTag.push(element);
         }
       });
       /*businessTag.forEach((element, index) => {
