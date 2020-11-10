@@ -1,12 +1,11 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    let defaultBGValue = "";
-    if (ContextHub) {
-      defaultBGValue = profileData.businessGroup;
-    }
+    var defaultUserBG = "";
+        defaultUserBG = profileData.businessGroup;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: [],
@@ -25,8 +24,6 @@ class NewsTiles extends React.Component {
       loading: true
     };
 
-    let defaultUserBG = this.state.defaultBG;
-    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     //this.getNewsTilesData = this.getNewsTilesData.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
     this.handleCheckChildElement = this.handleCheckChildElement.bind(this);
@@ -855,7 +852,7 @@ class NewsTiles extends React.Component {
                                         }
                                         checked={value.isChecked}
                                         disabled={
-                                          value.id === defaultUserBG
+                                          value.id === this.state.defaultBG
                                         }
                                       />
                                       <span class="chk-lbl">
