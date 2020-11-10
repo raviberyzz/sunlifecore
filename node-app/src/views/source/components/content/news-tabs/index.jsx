@@ -1,14 +1,11 @@
 class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
-    let contextHubData = localStorage.getItem("ContextHubPersistence");
-    let defaultBGValue = "";
-    if (ContextHub) {
-      defaultBGValue = profileData.businessGroup;
-    }
-
+    var defaultUserBG = "";
+        defaultUserBG = profileData.businessGroup;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: []
@@ -27,8 +24,6 @@ class NewsTabs extends React.Component {
       businessGroupIdTitle: []
     };
     
-    let defaultUserBG = this.state.defaultBG;
-    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.getTabsHeading = this.getTabsHeading.bind(this);
     // this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
@@ -743,7 +738,7 @@ class NewsTabs extends React.Component {
                                     {this.state.businessGroupList.tags.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={ value.id === defaultUserBG} />
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={ value.id === this.state.defaultBG} />
                                           <span class="chk-lbl">{value.title}</span>
                                         </li>
                                       )
