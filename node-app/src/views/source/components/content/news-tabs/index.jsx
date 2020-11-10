@@ -794,7 +794,7 @@ class NewsTabs extends React.Component {
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
-                                          <p>{this.state.tabHeading[value].data[key].summary}</p>
+                                          <p dangerouslySetInnerHTML={{__html: this.state.tabHeading[value].data[key].summary}}></p>
                                         </div>
                                       )
                                     })}
