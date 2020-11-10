@@ -27,11 +27,18 @@ function onSignInClick() {
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
     
-   /* $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
-        journeyEnded(clientContext);
-        //onLogout();
-        console.log("Modal closed...");
-    });*/
+    $("#mfa_signin_modal").off().on('hidden.bs.modal', function (e) {
+        $("#USER").val('');
+        $("#PASSWORD").val('');
+
+        if(clientContext.closeModalCallback){
+            clientContext.closeModalCallback();
+        }
+        else{
+            journeyEnded(clientContext);
+            onLogout();
+        }
+    });
 
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {

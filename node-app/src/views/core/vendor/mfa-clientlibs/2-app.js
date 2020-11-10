@@ -27,15 +27,6 @@ function onLogout(isVisible) {
     this.setAppContentApperance(false);
   }
 
-  if(!$("#rememberID").is(':checked')){
-    $("#USER").val('');
-    $("#PASSWORD").val('');           
-  }
-  else{
-    // $("#USER").val('************');
-    $("#PASSWORD").val('');
-  }
-
   return new Promise(function(resolve,reject){
     journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){
@@ -43,7 +34,7 @@ function onLogout(isVisible) {
       resolve(true);
     })
     .catch(function (error) {
-      console.log("Authenticate Error: ".concat(error));
+      console.error("Authenticate Error: ", error);
       if(error.getErrorCode === 8) {
         
       }
@@ -99,7 +90,7 @@ function initJourneyPlayer() {
 } 
 
   function getTransmitConnectionSettings() {
-     // var serverUrl = "https://mfa-uat.sunlifecorp.com";
+     //var serverUrl = "https://mfa-uat.sunlifecorp.com";
      // var serverUrl = "https://mfa-dev.sunlifecorp.com";
       var appId = "mfa_signin";
       var realm = ""; 

@@ -23,6 +23,11 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     this.actionContext=actionContext;
     this.clientContext = clientContext;
 
+    this.clientContext.closeModalCallback = function(){
+      const controlRequest = com.ts.mobile.sdk.ControlRequest.create(com.ts.mobile.sdk.ControlRequestType.AbortAuthentication);
+      _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createControlResponse(controlRequest));      
+    };
+
     window.Parsley.addValidator('valid_code', {
       validateString: function(code) {
           if(code.length === 0 || !code.trim() || invalidCodeFlag){
@@ -89,7 +94,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
     var self = this;
     return new Promise(function (resolve, reject) {
-      console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
+                  console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -121,6 +126,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
           displaylockedOutMessage();
           //reject(defaultRecovery);
           hideSpinner();
+          resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
           return;
         }
       }
@@ -162,8 +168,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         $(self.clientContext.uiContainer).html(data);
         $("#step-up-input-otp-code-screen-input-label").html(selectedNumber);  
         $("#step-up-input-otp-code-screen-input_cancel-button").on("click", self.onCancelClicked);
-        $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);
-        $("#mfa_signin_modal").on("hidden.bs.modal", self.onCloseClicked);
+        $("#step-up-input-otp-code-screen-input_submit-button").on("click", self.onSubmitClicked);        
         $("#step-up-input-otp-code-screen-input_resend_button").on("click", self.onResendClicked.bind(self));
         setAppContentApperance(true);
 
@@ -210,12 +215,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     if(invalidCodeFlag){
         $('#mfa-form').parsley().validate();
     }
-  }
-
-  this.onCloseClicked = function(){
-    const controlRequest = com.ts.mobile.sdk.ControlRequest.create(com.ts.mobile.sdk.ControlRequestType.AbortAuthentication);
-    _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createControlResponse(controlRequest));
-
   }
 
   this.onCancelClicked = function(){

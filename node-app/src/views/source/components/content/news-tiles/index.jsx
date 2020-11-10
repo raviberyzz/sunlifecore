@@ -1,12 +1,11 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    let defaultBGValue = "";
-    if (ContextHub) {
-      defaultBGValue = ContextHub.getItem('profile').businessGroup;
-    }
+    var defaultUserBG = "";
+        defaultUserBG = profileData.businessGroup;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: [],
@@ -114,6 +113,11 @@ class NewsTiles extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
+            if(data.id == this.state.defaultBG){
+              data["isChecked"] = true;
+            }
+          }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
               if (prefer === data.id) {
@@ -174,20 +178,20 @@ class NewsTiles extends React.Component {
           return articleByDate
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup;
+            var businessUnit = profileData.businessUnit;
+            var buildingLocation = profileData.buildingLocation;
+            var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replace(/ /g, "-");
             }
             var userProfileFilters = [];
             var userBUFilters = [];
@@ -223,9 +227,10 @@ class NewsTiles extends React.Component {
             })
             BLArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => {
-                if (val.includes('/job-level')) {
+                if (val.indexOf('/job-level')!=-1) {
                   val = val.split('/');
                   val = val[val.length - 1];
+                  val = val.replace(/-/g,".");
                   if(userJobLevelFilters.indexOf(val) > -1){
                     JLArticles.push(news);
                   }
@@ -235,6 +240,7 @@ class NewsTiles extends React.Component {
             JLArticles.forEach((news, index)=>{
               if(!(news.tags.indexOf(businessGroup) > -1)){
                 news.tags.forEach((val)=>{
+                  jobLevel = "/" + jobLevel;
                   if(val.indexOf(jobLevel)>-1){
                     JLArticles.splice(index, 1);
                   }
@@ -258,7 +264,7 @@ class NewsTiles extends React.Component {
             })
             var publishedDateArticles;
             nonPinnedArticles.sort(function (a, b) {
-              publishedDateArticles = new Date(a.publishedDate) - new Date(b.publishedDate);
+              publishedDateArticles = new Date(b.publishedDate) - new Date(a.publishedDate);
               if (publishedDateArticles == 0) {
                 publishedDateArticles = a.heading.localeCompare(b.heading);
               }
@@ -391,9 +397,7 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
-      var BGName = prefer.name;
-      BGName.replaceAll("-", " ");
-      if (BGName.toUpperCase() != this.state.defaultBG.toUpperCase()) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
     });
@@ -521,10 +525,29 @@ class NewsTiles extends React.Component {
       "Nov",
       "Dec",
     ];
+    const EnToFr = {
+      "Jan": "Janvier",
+       "Feb": "Février",
+       "Mar":"Mars",
+       "Apr":"Avril",
+       "may":"Mai",
+       "Jun":"Juin",
+       "july":"Juillet",
+       "Aug":"Août",
+       "Sep":"Septembre",
+       "Oct":"Octobre",
+       "Nov":"Novembre",
+       "Dec":"Décembre"
+   }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
-    return monthName[m] + " " + d;
+    var month =  monthName[m];
+    if($('html').attr('lang')=="fr-CA"){
+      month = EnToFr[month];
+    }
+    //return monthName[m] + " " + d;
+    return month + " " + d;
     // return moment(date).format('MMM DD');
   }
 
@@ -651,7 +674,7 @@ class NewsTiles extends React.Component {
                 </div>
 
                 <div class="row news-list-container">
-                  {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+                      {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
                   {!this.state.loading && this.state.filterNewsList.length > 0 && (
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                       {Object.keys(this.state.filterNewsList)
@@ -707,7 +730,7 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
-                                  <a class="title" href="">
+                                  <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
                                   <p class="bg-name">
@@ -816,6 +839,7 @@ class NewsTiles extends React.Component {
                                         type="checkbox"
                                         name={value.id}
                                         value={value.id}
+                                        class={value.id==this.state.defaultBG ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -823,10 +847,10 @@ class NewsTiles extends React.Component {
                                         checked={value.isChecked}
                                         disabled={
                                           value.isChecked &&
-                                          value.title === this.state.defaultBG
+                                          value.id === this.state.defaultBG
                                         }
                                       />
-                                      <span class="chk-lbl">
+                                      <span class={`chk-lbl ${value.id==this.state.defaultBG ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>

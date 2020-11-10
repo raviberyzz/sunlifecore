@@ -104,12 +104,6 @@ function StepUpSelectTargetFormSession(formId, payload) {
       $("#step-up-send-code-button").on("click", function () {
           handleSendCode.call(self);
       });
-
-        $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
-          journeyEnded(clientContext);
-          onLogout();
-          console.log("Modal closed...");
-      });
         
       setPhoneNumbersList.call(self);
 
