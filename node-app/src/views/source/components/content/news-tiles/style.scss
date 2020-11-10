@@ -240,7 +240,7 @@
                         .disableCB{
                             color: $medium-grey-background;
                         }
-                        .disableCB.input[type="checkbox"] {
+                        input[type="checkbox"].disableCB {
                             &:after {
                                 color: $medium-grey-background;
                             }
