@@ -88,11 +88,8 @@ class NewsTabs extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
-          let defaultBusinessGroup = "";
-          defaultBusinessGroup = this.state.defaultBG;
-          if (defaultBusinessGroup != "" && defaultBusinessGroup!= undefined) {
-            defaultBusinessGroup = "sunlife:source/business-group/" + defaultBusinessGroup.toLowerCase().replace(/ /g, "-");
-            if(data.id == defaultBusinessGroup){
+          if (this.state.defaultBG != "" && this.state.defaultBG!= undefined) {
+            if(data.id == this.state.defaultBG){
               data["isChecked"] = true;
             }
           }
