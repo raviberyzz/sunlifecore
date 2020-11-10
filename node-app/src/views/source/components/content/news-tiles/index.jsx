@@ -852,10 +852,11 @@ class NewsTiles extends React.Component {
                                         }
                                         checked={value.isChecked}
                                         disabled={
+                                          value.isChecked &&
                                           value.id === this.state.defaultBG
                                         }
                                       />
-                                      <span class="chk-lbl">
+                                      <span class={`chk-lbl ${value.id==this.state.defaultBG ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
