@@ -397,7 +397,6 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
-      defaultBusinessGroup = "";
       if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
