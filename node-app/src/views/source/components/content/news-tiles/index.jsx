@@ -567,6 +567,7 @@ class NewsTiles extends React.Component {
 
         } else if (element.split("/")[1] == "topic") {
           this.state.topicsList.tags.forEach((data)=>{
+             console.log(data);
             if(data.id == element){
               topicsTag.push(data.title);
             }
