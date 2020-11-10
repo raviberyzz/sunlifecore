@@ -15,7 +15,7 @@
                 text-align: center;
             }
         }
-        .form-second {
+        .form-group {
             .moreon{
                 display: block;
                 margin-top: 20px;
@@ -37,3 +37,15 @@
             }
         }
     }
+
+     //for sign-in button
+    @media (max-width: $tab-screen-max){
+        .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-icon {
+            font-size: 0.875rem;
+        }
+    }
+
+   
+    
+
+    
