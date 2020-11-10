@@ -27,9 +27,6 @@ function onLogout(isVisible) {
     this.setAppContentApperance(false);
   }
 
-  $("#USER").val('');
-  $("#PASSWORD").val('');
-
   return new Promise(function(resolve,reject){
     journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){
@@ -37,7 +34,7 @@ function onLogout(isVisible) {
       resolve(true);
     })
     .catch(function (error) {
-      console.log("Authenticate Error: ".concat(error));
+      console.error("Authenticate Error: ", error);
       if(error.getErrorCode === 8) {
         
       }
