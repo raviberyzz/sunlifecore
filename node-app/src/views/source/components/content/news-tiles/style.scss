@@ -238,7 +238,12 @@
                             margin-left:3px;
                         }
                         .disableCB{
-                            background: $medium-grey-background;
+                            color: $medium-grey-background;
+                        }
+                        .disableCB.input[type="checkbox"] {
+                            &:after {
+                                color: $medium-grey-background;
+                            }
                         }
                     }
                 }

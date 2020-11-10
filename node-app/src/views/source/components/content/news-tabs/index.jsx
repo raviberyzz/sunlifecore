@@ -1,14 +1,11 @@
 class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
-    let contextHubData = localStorage.getItem("ContextHubPersistence");
-    let defaultBGValue = "";
-    if (ContextHub) {
-      defaultBGValue = ContextHub.getItem('profile').businessGroup;
-    }
-
+    var defaultUserBG = "";
+        defaultUserBG = profileData.businessGroup;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: []
@@ -26,7 +23,7 @@ class NewsTabs extends React.Component {
       loading: true,
       businessGroupIdTitle: []
     };
-
+    
     this.getTabsHeading = this.getTabsHeading.bind(this);
     // this.newsTiles = this.newsTiles.bind(this);
     this.handleAllChecked = this.handleAllChecked.bind(this);
@@ -91,8 +88,7 @@ class NewsTabs extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
-          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replace(/ /g, "-");
+          if (this.state.defaultBG != "" && this.state.defaultBG!= undefined) {
             if(data.id == this.state.defaultBG){
               data["isChecked"] = true;
             }
@@ -153,12 +149,12 @@ class NewsTabs extends React.Component {
           return sortArticle
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup;
+            var businessUnit = profileData.businessUnit;
+            var buildingLocation = profileData.buildingLocation;
+            var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
@@ -293,11 +289,11 @@ class NewsTabs extends React.Component {
          this.state.filterNewsList = [];
          let preferedNewsList = [];
          // filter the response articles by user profile data if user profile data exists
-         if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
-           var businessGroup = ContextHub.getItem('profile').businessGroup;
-           var businessUnit = ContextHub.getItem('profile').businessUnit;
-           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-           var jobLevel = ContextHub.getItem('profile').jobLevel;
+         if (profileData.businessGroup != "" && profileData.businessUnit != "" && profileData.buildingLocation != "" && profileData.jobLevel != "") {
+           var businessGroup = profileData.businessGroup;
+           var businessUnit = profileData.businessUnit;
+           var buildingLocation = profileData.buildingLocation;
+           var jobLevel = profileData.jobLevel;
            if (businessGroup != "" && businessGroup != undefined) {
              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
            }
@@ -507,7 +503,7 @@ class NewsTabs extends React.Component {
 
   clearAll() {
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.title != this.state.defaultBG) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
     })
@@ -527,11 +523,29 @@ class NewsTabs extends React.Component {
   dateTransform(date) {
     let monthName = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
+      const EnTofr = {
+       "January": "Janvier",
+        "February": "Février",
+        "March":"Mars",
+        "April":"Avril",
+        "May":"Mai",
+        "June":"Juin",
+        "July":"Juillet",
+        "August":"Août",
+        "September":"Septembre",
+        "October":"Octobre",
+        "November":"Novembre",
+        "December":"Décembre"
+    }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
+    let month = monthName[m]
+    if($('html').attr('lang')=="fr-CA"){
+      month = EnTofr[month];
+    }
     let y = d1.getFullYear();
-    return `${monthName[m]} ${d}, ${y}`;
+    return `${month} ${d}, ${y}`;
     // return moment(date).format('MMMM DD, YYYY');
   }
 
@@ -669,7 +683,7 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
         {!this.state.loading && (
           <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
@@ -718,8 +732,8 @@ class NewsTabs extends React.Component {
                                     {this.state.businessGroupList.tags.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={value.isChecked && value.id === this.state.defaultBG} />
-                                          <span class="chk-lbl">{value.title}</span>
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id==this.state.defaultBG ? "disableCB" : ""} disabled={ value.isChecked && value.id === this.state.defaultBG} />
+                                          <span class={`chk-lbl ${value.id==this.state.defaultBG ? "disableCB" : ""}`}>{value.title}</span>
                                         </li>
                                       )
                                     })}

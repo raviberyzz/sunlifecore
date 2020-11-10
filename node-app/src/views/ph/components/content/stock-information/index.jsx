@@ -17,7 +17,7 @@ class stockInformation extends React.Component {
       type: "GET",
       url: "/philippines/stockticker",
       success: (res) => {
-        console.log(res);
+        //console.log(res);
         this.setState({
           result: res
         })

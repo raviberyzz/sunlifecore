@@ -1,12 +1,11 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    let defaultBGValue = "";
-    if (ContextHub) {
-      defaultBGValue = ContextHub.getItem('profile').businessGroup;
-    }
+    var defaultUserBG = "";
+        defaultUserBG = profileData.businessGroup;
+    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: [],
@@ -115,7 +114,6 @@ class NewsTiles extends React.Component {
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            this.state.defaultBG = "sunlife:source/business-group/" + this.state.defaultBG.toLowerCase().replace(/ /g, "-");
             if(data.id == this.state.defaultBG){
               data["isChecked"] = true;
             }
@@ -180,12 +178,12 @@ class NewsTiles extends React.Component {
           return articleByDate
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup;
+            var businessUnit = profileData.businessUnit;
+            var buildingLocation = profileData.buildingLocation;
+            var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
             }
@@ -399,9 +397,7 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessGroupList.tags.forEach((prefer) => {
-      var BGName = prefer.name;
-      BGName.replace(/-/g, " ");
-      if (BGName.toUpperCase() != this.state.defaultBG.toUpperCase()) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
     });
@@ -529,10 +525,29 @@ class NewsTiles extends React.Component {
       "Nov",
       "Dec",
     ];
+    const EnToFr = {
+      "Jan": "Janvier",
+       "Feb": "Février",
+       "Mar":"Mars",
+       "Apr":"Avril",
+       "may":"Mai",
+       "Jun":"Juin",
+       "july":"Juillet",
+       "Aug":"Août",
+       "Sep":"Septembre",
+       "Oct":"Octobre",
+       "Nov":"Novembre",
+       "Dec":"Décembre"
+   }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
-    return monthName[m] + " " + d;
+    var month =  monthName[m];
+    if($('html').attr('lang')=="fr-CA"){
+      month = EnToFr[month];
+    }
+    //return monthName[m] + " " + d;
+    return month + " " + d;
     // return moment(date).format('MMM DD');
   }
 
@@ -659,7 +674,7 @@ class NewsTiles extends React.Component {
                 </div>
 
                 <div class="row news-list-container">
-                  {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+                      {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
                   {!this.state.loading && this.state.filterNewsList.length > 0 && (
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                       {Object.keys(this.state.filterNewsList)
@@ -715,7 +730,7 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
-                                  <a class="title" href="">
+                                  <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
                                   <p class="bg-name">
@@ -835,7 +850,7 @@ class NewsTiles extends React.Component {
                                           value.id === this.state.defaultBG
                                         }
                                       />
-                                      <span class="chk-lbl">
+                                      <span class={`chk-lbl ${value.id==this.state.defaultBG ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
