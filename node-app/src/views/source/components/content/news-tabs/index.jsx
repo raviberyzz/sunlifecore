@@ -504,9 +504,7 @@ class NewsTabs extends React.Component {
   clearAll() {
     this.state.businessGroupList.tags.forEach(prefer => {
       defaultBusinessGroup = "";
-      var defaultBusinessGroup = this.state.defaultBG;
-      defaultBusinessGroup = "sunlife:source/business-group/" + defaultBusinessGroup.toLowerCase().replace(/ /g, "-");
-      if (prefer.id != defaultBusinessGroup) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
     })
