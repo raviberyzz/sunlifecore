@@ -211,8 +211,9 @@ class NewsTabs extends React.Component {
             JLArticles.forEach((news, index) => {
               if (!(news.tags.indexOf(businessGroup) > -1)) {
                 news.tags.forEach((val) => {
-                  jobLevel = "/" + jobLevel;
-                  if (val.indexOf(jobLevel) > -1) {
+                  var jL = "";
+                  jL = "/" + jobLevel;
+                  if(val.indexOf(jL)>-1){
                     JLArticles.splice(index, 1);
                   }
                 })
