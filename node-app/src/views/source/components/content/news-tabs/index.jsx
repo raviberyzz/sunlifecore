@@ -162,7 +162,7 @@ class NewsTabs extends React.Component {
               businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replace(/ /g, "-");
+              buildingLocation = "/" + buildingLocation.toLowerCase().replace(/ /g, "-");
             }
             var userProfileFilters = [];
             var userBUFilters = [];
@@ -181,10 +181,11 @@ class NewsTabs extends React.Component {
               return userProfileFilters.indexOf(c) === index;
           });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
-            buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
+            buildingLocation !== "/na" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
             jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
-            var BGArticles, BUArticles, BLArticles;
+            var BGArticles, BUArticles;
+            var BLArticles = [];
             var  JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
@@ -193,20 +194,30 @@ class NewsTabs extends React.Component {
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
-            BLArticles = BUArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
+            BUArticles.forEach((news) => {
+              news.tags && news.tags.some((val) => {
+                if (val.indexOf('/building-location') > -1) {
+                  userBLFilters.forEach((filter) => {
+                    if (val.indexOf(filter) > -1) {
+                      BLArticles.push(news);
+                    }
+                  })
+                }
+              })
             })
-            BLArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => {
-                if (val.indexOf('/job-level')!=-1) {
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.some((val) => {
+                if (val.indexOf('/job-level') != -1) {
                   val = val.split('/');
                   val = val[val.length - 1];
-                  val = val.replace(/-/g,".");
-                  if(userJobLevelFilters.indexOf(val) > -1){
-                    JLArticles.push(news);
-                  }
+                  val = val.replace(/-/g, ".");
+                  userJobLevelFilters.forEach((filter) => {
+                    if (val.indexOf(filter) > -1) {
+                      JLArticles.push(news);
+                    }
+                  })
                 }
-              }));
+              });
             })
             JLArticles.forEach((news, index) => {
               if (!(news.tags.indexOf(businessGroup) > -1)) {
@@ -428,7 +439,7 @@ class NewsTabs extends React.Component {
   }
   handleAllChecked(event) {
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.title != this.state.defaultBG) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = event.target.checked
       }
     })
