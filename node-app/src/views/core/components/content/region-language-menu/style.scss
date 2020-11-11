@@ -281,6 +281,14 @@
             }
         }
     }
+
+    //Where region is not present
+    .region-hidden-mobile {
+        background-color: inherit;
+        .first {
+            display: none;
+        }
+    }
 }
 .language-region{
     .xf-content-height{
