@@ -81,7 +81,7 @@
     <div class="go-back">
         <a tabindex="0">${languageRegionModel.backButtonText}</a>
     </div>
-    <div class="col-xs-12 slf-tab-region ">
+    <div class="col-xs-12 slf-tab-region ${regionsEmpty ? 'region-hidden-mobile': ''}">
         <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target=".region-tab" data-toggle="tab" tabindex="0">
             ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
         </div>
