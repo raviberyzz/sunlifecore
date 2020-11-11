@@ -240,8 +240,9 @@ class NewsTiles extends React.Component {
             JLArticles.forEach((news, index)=>{
               if(!(news.tags.indexOf(businessGroup) > -1)){
                 news.tags.forEach((val)=>{
-                  jobLevel = "/" + jobLevel;
-                  if(val.indexOf(jobLevel)>-1){
+                  var jL = "";
+                  jL = "/" + jobLevel;
+                  if(val.indexOf(jL)>-1){
                     JLArticles.splice(index, 1);
                   }
                 })
@@ -700,7 +701,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImage : this.state.filterNewsList[key].thumbnailImageFeatured) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
                                 <div class="overlay-container">
