@@ -414,9 +414,9 @@ class NewsTabs extends React.Component {
       /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
       });*/
-      topicsTag.forEach((element, index) => {
+      /*topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
-      });
+      });*/
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);

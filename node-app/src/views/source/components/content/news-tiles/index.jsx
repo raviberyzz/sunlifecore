@@ -567,7 +567,6 @@ class NewsTiles extends React.Component {
 
         } else if (element.split("/")[1] == "topic") {
           this.state.topicsList.tags.forEach((data)=>{
-             console.log(data);
             if(data.id == element){
               topicsTag.push(data.title);
             }
@@ -578,9 +577,9 @@ class NewsTiles extends React.Component {
       /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
       });*/
-      topicsTag.forEach((element, index) => {
+      /*topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
-      });
+      });*/
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
