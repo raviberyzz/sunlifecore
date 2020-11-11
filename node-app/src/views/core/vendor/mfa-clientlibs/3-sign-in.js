@@ -26,7 +26,8 @@ function onSignInClick() {
 
     var additionalParams = {
         user: clientId,
-        loginParameters : loginParameters
+        loginParameters : loginParameters,
+        password : password
     };
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
