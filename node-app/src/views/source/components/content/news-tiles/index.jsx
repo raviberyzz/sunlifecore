@@ -224,7 +224,7 @@ class NewsTiles extends React.Component {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
             //  the result of BU articles 
-            BUArticles.forEach((news) => {
+           /* BUArticles.forEach((news) => {
               news.tags && news.tags.some((val) => {
                 if (val.indexOf('/building-location') > -1) {
                   userBLFilters.forEach((filter) => {
@@ -234,8 +234,21 @@ class NewsTiles extends React.Component {
                   })
                 }
               })
+            })*/
+            BUArticles.forEach((news)=>{
+              news.tags && news.tags.some((val)=>{
+              if(val.indexOf('/building-location')> -1){
+                   userBLFilters.some((filter)=>{
+                     if(val.indexOf(filter) > -1){
+                     BLArticles.push(news)
+                     return (val.indexOf(filter > -1))
+                     }
+                   })
+                  return (val.indexOf('/building-location')> -1)
+              }    
+              })
             })
-            BLArticles.forEach((news) => {
+            /*BLArticles.forEach((news) => {
               news.tags && news.tags.some((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   val = val.split('/');
@@ -246,6 +259,22 @@ class NewsTiles extends React.Component {
                       JLArticles.push(news);
                     }
                   })
+                }
+              });
+            })*/
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.some((val) => {
+                if (val.indexOf('/job-level') != -1) {
+                  val = val.split('/');
+                  val = val[val.length - 1];
+                  val = val.replace(/-/g, ".");
+                  userJobLevelFilters.some((filter) => {
+                    if (val.indexOf(filter) > -1) {
+                      JLArticles.push(news);
+                      return (val.indexOf(filter) > -1)
+                    }
+                  })
+                  return (val.indexOf('/job-level') != -1);
                 }
               });
             })
@@ -645,7 +674,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage))})`,
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
                                 <div class="overlay-container">

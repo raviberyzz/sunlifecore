@@ -194,7 +194,7 @@ class NewsTabs extends React.Component {
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
-            BUArticles.forEach((news) => {
+            /*BUArticles.forEach((news) => {
               news.tags && news.tags.some((val) => {
                 if (val.indexOf('/building-location') > -1) {
                   userBLFilters.forEach((filter) => {
@@ -204,8 +204,21 @@ class NewsTabs extends React.Component {
                   })
                 }
               })
+            })*/
+            BUArticles.forEach((news)=>{
+              news.tags && news.tags.some((val)=>{
+              if(val.indexOf('/building-location')> -1){
+                   userBLFilters.some((filter)=>{
+                     if(val.indexOf(filter) > -1){
+                     BLArticles.push(news)
+                     return (val.indexOf(filter > -1))
+                     }
+                   })
+                  return (val.indexOf('/building-location')> -1)
+              }    
+              })
             })
-            BLArticles.forEach((news) => {
+            /*BLArticles.forEach((news) => {
               news.tags && news.tags.some((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   val = val.split('/');
@@ -216,6 +229,22 @@ class NewsTabs extends React.Component {
                       JLArticles.push(news);
                     }
                   })
+                }
+              });
+            })*/
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.some((val) => {
+                if (val.indexOf('/job-level') != -1) {
+                  val = val.split('/');
+                  val = val[val.length - 1];
+                  val = val.replace(/-/g, ".");
+                  userJobLevelFilters.some((filter) => {
+                    if (val.indexOf(filter) > -1) {
+                      JLArticles.push(news);
+                      return (val.indexOf(filter) > -1)
+                    }
+                  })
+                  return (val.indexOf('/job-level') != -1);
                 }
               });
             })
