@@ -350,7 +350,9 @@ function success(data) {
         if (decodedApologyOn == 'true') {		
             // if (data.apologyOn) {
             var decodedApologyMessage=decodeURIComponent(data.apologyMessage);
+            console.log(decodedApologyMessage);
             if(decodedApologyMessage.indexOf('MFA_TRANSMIT')>-1){
+                console.log('apology-transmit');
                 displayContingencyWidget();
             }else{
                 decodedApologyMessage=decodedApologyMessage.replace(/\+/g,' ');
