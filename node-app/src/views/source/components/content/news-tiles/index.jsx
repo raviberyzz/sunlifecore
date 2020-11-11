@@ -566,15 +566,20 @@ class NewsTiles extends React.Component {
           })
 
         } else if (element.split("/")[1] == "topic") {
-          topicsTag.push(element);
+          this.state.topicsList.tags.forEach((data)=>{
+            if(data.id == element){
+              topicsTag.push(data.title);
+            }
+          })
+          //topicsTag.push(element);
         }
       });
       /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
       });*/
-      topicsTag.forEach((element, index) => {
+      /*topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
-      });
+      });*/
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
@@ -695,7 +700,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${index == 0 ? this.state.filterNewsList[key].thumbnailImageFeatured : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImage : this.state.filterNewsList[key].thumbnailImageFeatured) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
                                 <div class="overlay-container">

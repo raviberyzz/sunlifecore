@@ -11,6 +11,10 @@ function onSignInClick() {
    
     var clientId = $("#USER").val();
     var password = $("#PASSWORD").val();
+
+    // clear the wrong password message
+    $("#generalError").hide();
+
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
     if (clientId.length === 0 || password.length === 0) {
@@ -22,14 +26,16 @@ function onSignInClick() {
 
     var additionalParams = {
         user: clientId,
-        loginParameters : loginParameters
+        loginParameters : loginParameters,
+        password : password
     };
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
-    
+
     $("#mfa_signin_modal").off().on('hidden.bs.modal', function (e) {
         $("#USER").val('');
         $("#PASSWORD").val('');
+        $("#rememberID").prop('checked', false);
 
         if(clientContext.closeModalCallback){
             clientContext.closeModalCallback();

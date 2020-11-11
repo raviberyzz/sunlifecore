@@ -403,15 +403,20 @@ class NewsTabs extends React.Component {
             }
           })
         } else if (element.split("/")[1] == "topic") {
-          topicsTag.push(element);
+          this.state.topicsList.tags.forEach((data)=>{
+            if(data.id == element){
+              topicsTag.push(data.title);
+            }
+          })
+         // topicsTag.push(element);
         }
       });
       /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
       });*/
-      topicsTag.forEach((element, index) => {
+      /*topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
-      });
+      });*/
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
@@ -794,7 +799,7 @@ class NewsTabs extends React.Component {
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
-                                          <p>{this.state.tabHeading[value].data[key].summary}</p>
+                                          <p dangerouslySetInnerHTML={{__html: this.state.tabHeading[value].data[key].summary}}></p>
                                         </div>
                                       )
                                     })}
