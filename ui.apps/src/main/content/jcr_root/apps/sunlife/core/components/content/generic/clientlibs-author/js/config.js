@@ -150,6 +150,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreNewsAnalyticsID",
+                label: "More News Analytics ID",
+                value: ""
+            },
+			{
                 name: "workdayText",
                 label: "Workday Text",
                 value: "Find information on all your core HR processes and latest Workday announcements",
