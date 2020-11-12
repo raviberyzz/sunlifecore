@@ -168,7 +168,7 @@ var slim = {
                     url: '/slimUserServices/InvokeSLIMUserServicesServlet',
                     type: 'POST',
                     data: $(this).serialize(),
-                    timeout: 5000,
+                    timeout: 30000,
                     success: function (data) {
                         var $form = $('#form_signon_modal');
                         $form.attr("action", data);
