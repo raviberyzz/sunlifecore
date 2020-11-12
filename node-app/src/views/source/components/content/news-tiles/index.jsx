@@ -673,7 +673,7 @@ class NewsTiles extends React.Component {
                           );
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                        <div class="aggregate-tile">
+                        <div class="aggregate-tile" data-section={this.props.moreNewsAnalyticsID}>
                           <div class="circular-image">
                             <img class="icon" src={this.props.moreNewsImg} />
                           </div>
@@ -681,7 +681,7 @@ class NewsTiles extends React.Component {
                             .slice(4, 7)
                             .map((key, index) => {
                               return (
-                                <div class="mar-btm">
+                                <div class="mar-btm" data-section={"hp-news-position" + (index + 5)}>
                                   <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
@@ -709,13 +709,13 @@ class NewsTiles extends React.Component {
                   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
                       <p>
-                        <a href={this.props.workdayLink}>
+                        <a href={this.props.workdayLink} >
                           <img src={this.props.workdayImg} alt="" />
                         </a>
                       </p>
                       <p class="m-top-bt">{this.props.workdayText}</p>
                       <p>
-                        <a href={this.props.workdayLink} target="_blank">
+                        <a href={this.props.workdayLink} target="_blank" data-title={this.props.workdayDataTitle}>
                           <span class="view-all-category white-font">
                             {this.props.workdayLinkText}
                           </span>
@@ -724,7 +724,7 @@ class NewsTiles extends React.Component {
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
                       <p>
-                        <a href={this.props.workplaceLink}>
+                        <a href={this.props.workplaceLink} >
                           <img src={this.props.workplaceImg} alt="" />
                         </a>
                       </p>
@@ -735,6 +735,7 @@ class NewsTiles extends React.Component {
                             <a
                               href={this.props.workplaceLink}
                               target="_blank"
+                              data-title={this.props.workplaceDataTitle}
                             >
                               {this.props.workplaceLinkText}
                             </a>
