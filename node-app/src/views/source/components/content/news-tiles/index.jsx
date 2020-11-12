@@ -180,18 +180,18 @@ class NewsTiles extends React.Component {
         // filter the response articles by user profile data if user profile data exists
         if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
           if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
-            var businessGroup = profileData.businessGroup;
-            var businessUnit = profileData.businessUnit;
-            var buildingLocation = profileData.buildingLocation;
+            var businessGroup = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+            var businessUnit = profileData.businessUnit.replace(/[^a-zA-Z0-9]/g, "-");
+            var buildingLocation = profileData.buildingLocation.replace(/[^a-zA-Z0-9]/g, "-");
             var jobLevel = profileData.jobLevel;
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase();
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase();
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "/" + buildingLocation.toLowerCase().replace(/ /g, "-");
+              buildingLocation = "/" + buildingLocation.toLowerCase();
             }
             var userProfileFilters = [];
             var userBUFilters = [];
@@ -214,7 +214,7 @@ class NewsTiles extends React.Component {
             jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
             var BGArticles, BUArticles;
-            var  BLArticles = [];
+            var BLArticles = [];
             var JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
@@ -223,33 +223,22 @@ class NewsTiles extends React.Component {
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
-            //  the result of BU articles 
-           /* BUArticles.forEach((news) => {
-              news.tags && news.tags.some((val) => {
+            //  filter from the BUArticles for Building Location articles
+            BUArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/building-location') > -1) {
                   userBLFilters.forEach((filter) => {
                     if (val.indexOf(filter) > -1) {
-                      BLArticles.push(news);
+                      BLArticles.push(news)
+                      return
                     }
                   })
                 }
               })
-            })*/
-            BUArticles.forEach((news)=>{
-              news.tags && news.tags.some((val)=>{
-              if(val.indexOf('/building-location')> -1){
-                   userBLFilters.some((filter)=>{
-                     if(val.indexOf(filter) > -1){
-                     BLArticles.push(news)
-                     return (val.indexOf(filter > -1))
-                     }
-                   })
-                  return (val.indexOf('/building-location')> -1)
-              }    
-              })
             })
-            /*BLArticles.forEach((news) => {
-              news.tags && news.tags.some((val) => {
+            // filter from Building Location Articles for JobLevel articles 
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   val = val.split('/');
                   val = val[val.length - 1];
@@ -257,24 +246,10 @@ class NewsTiles extends React.Component {
                   userJobLevelFilters.forEach((filter) => {
                     if (val.indexOf(filter) > -1) {
                       JLArticles.push(news);
+                      return
                     }
                   })
-                }
-              });
-            })*/
-            BLArticles.forEach((news) => {
-              news.tags && news.tags.some((val) => {
-                if (val.indexOf('/job-level') != -1) {
-                  val = val.split('/');
-                  val = val[val.length - 1];
-                  val = val.replace(/-/g, ".");
-                  userJobLevelFilters.some((filter) => {
-                    if (val.indexOf(filter) > -1) {
-                      JLArticles.push(news);
-                      return (val.indexOf(filter) > -1)
-                    }
-                  })
-                  return (val.indexOf('/job-level') != -1);
+
                 }
               });
             })
