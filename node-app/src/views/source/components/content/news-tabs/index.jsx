@@ -2,8 +2,8 @@ class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
     var defaultUserBG = "";
-    defaultUserBG = profileData.businessGroup;
-    defaultUserBG = "sunlife:source/business-group/" + defaultUserBG.toLowerCase().replace(/ /g, "-");
+    defaultUserBG = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+    defaultUserBG = "sunlife:source/business-group/" + defaultUserBG.toLowerCase();
     this.state = {
       defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
