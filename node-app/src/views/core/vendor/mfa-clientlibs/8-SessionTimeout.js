@@ -1,5 +1,5 @@
 function SessionTimeout(){
-    this.debug = true;
+    this.debug = false;
     this.sessionTimeoutId = null;
     this.inactivityTimeoutSeconds = 30;//1080; // 18mins
     this.events = ['keyup','click'];

@@ -8,6 +8,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.actionContext = null;
   this.resendCodeMsgTimer = null;
   let invalidCodeFlag = false; // for loading the error message when the jsp content is reloaded
+  this.showDebugInfo = false;
   
    /***
      * If the OTP Authenticate step is defined to auto excecute if single target then
@@ -18,8 +19,10 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   
   //2
   this.startSession = function (description, mode, actionContext, clientContext) {
-    console.log("started new ".concat(mode, " OTP session"));
-    console.log("actionContext :"+actionContext+ ":clientContext :"+clientContext);
+    if(this.showDebugInfo){
+      console.log("started new ".concat(mode, " OTP session"));
+      console.log("actionContext :"+actionContext+ ":clientContext :"+clientContext);
+    }
     this.actionContext=actionContext;
     this.clientContext = clientContext;
 
@@ -48,38 +51,38 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     });
   };
 
-//3
   this.setGeneratedOtp = function (format, target) {
     if (format && target) {
-                console.log('setGenertedOTP is called and format and target both is not null');
+      if(this.showDebugInfo){
+        console.log('setGenertedOTP is called and format and target both is not null');
+      }
       // if `format` and `target` are NOT null then we present the otp-submit-code html
       this.renderWaitingForInput(format, target);
       this.otpCodeWasGenerated();
-    } else {
-                console.log('setGenertedOTP is called and format and target both is null and running else part for target selection');
+    } 
+    else {
+      if(this.showDebugInfo){
+        console.log('setGenertedOTP is called and format and target both is null and running else part for target selection');
+      }
       // instead of showing a UI to allow the user to choose a phone number and a method to send the OTP
       // we do this programmatically based on the selection made in step-up-auth-select-target screen
-     if (this.autoExecedTarget) {
+      if (this.autoExecedTarget) {
         // CHANGE: 1 - for when OTP expires
         this.renderWaitingForInput(this.format, this.autoExecedTarget);
         this.otpCodeWasGenerated();
         // ---------------
       
-      // this will let us know that we need to ask the session to use the autoExecedTarget when promiseInput is called
+        // this will let us know that we need to ask the session to use the autoExecedTarget when promiseInput is called
         this.shouldSubmitAutoExecedTarget = true;
-        console.log('this.shouldSubmitAutoExecedTarget set to true');
-    } else {
-        console.error('OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example ');
-                                }
-                // var selectedMethod = this.clientContext.otpSelection.selectedMethod;
-
-     // if (selectedMethod === "text_message") {
-     //   selectSMSMethod.call(this);
-     // } else if (selectedMethod === "phone_call") {
-     //   selectVoiceCall.call(this);
-     // } else {
-     //   log.error("Unsupported OTP method selection: " + selectedMethod);
-     // }
+        if(this.showDebugInfo){
+          console.log('this.shouldSubmitAutoExecedTarget set to true');
+        }
+      } 
+      else {
+        if(this.showDebugInfo){
+          console.error('OTPSession setGeneratedOtp called with format and/or target == null. This state is not supported in this example ');
+        }
+      }
     }
   };
 
@@ -94,7 +97,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
     var self = this;
     return new Promise(function (resolve, reject) {
-                  console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
+      if(this.showDebugInfo){
+        console.log('Inside promiseInput method and selected target is ${self.selectedTarget}');
+      }
       var selectedTarget = self.selectedTarget;
 
       if (selectedTarget) {
@@ -113,13 +118,14 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
   this.endSession = function () {
     clearTimeout(this.resendCodeMsgTimer);
-    console.log('OTP session ended');
+    if(this.showDebugInfo){
+      console.log('OTP session ended');
+    }
   };
 
   this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
     return new Promise(function (resolve, reject) {
-      console.log("promiseRecoveryForError was called with error: ", error);
-      console.log('defaultRecovery', defaultRecovery, com.ts.mobile.sdk.AuthenticationErrorCode.Communication)
+      //console.error("promiseRecoveryForError was called with error: ", error);
       if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
         // make sure it's a 401 error in message
         if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
@@ -218,37 +224,39 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   }
 
   this.onCancelClicked = function(){
-
-        console.log("actionContext :"+_this.actionContext);
-
-        utag.link({
-          ev_type: 'other',
-          ev_action: 'clk',
-          ev_title: 'verify-number:back'
-          })
+    if(this.showDebugInfo){
+      console.log("actionContext :"+_this.actionContext);
+    }
+    utag.link({
+      ev_type: 'other',
+      ev_action: 'clk',
+      ev_title: 'verify-number:back'
+    });
         
-        const escapeOptions = _this.actionContext.getEscapeOptions();
-        const cancelOption = escapeOptions.filter(function (option) {
-            return option.getId() === "cancel";
-          })[0];
-        if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
-        _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
-
-      
+    const escapeOptions = _this.actionContext.getEscapeOptions();
+    const cancelOption = escapeOptions.filter(function (option) {
+        return option.getId() === "cancel";
+      })[0];
+    if (!cancelOption) return console.error('unable to find a "Cancel" option in actionContext.escapeOptions');
+    _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(cancelOption));
   } 
     
   this.onSubmitClicked = function () {
+    if(this.showDebugInfo){
       console.log('Code submitted!');
-      waitLoader.keepWaitLoader = true;
-      waitLoader.keepModalContent = true;
-      var code = $("#step-up-input-otp-code-screen-input").val(); 
-      var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
-      var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
-      _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
-      otpEntryAttemptFlag = 2;
-      setTimeout(function(){
-        hideSpinner();
-      }, 30000);
+    }
+    waitLoader.keepWaitLoader = true;
+    waitLoader.keepModalContent = true;
+    
+    otpEntryAttemptFlag = 2;
+    var code = $("#step-up-input-otp-code-screen-input").val(); 
+    var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
+    var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
+    _this.submitHandler(com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(inputTargetBased));
+    
+    setTimeout(function(){
+      hideSpinner();
+    }, 30000);
   };
 
   this.onResendClicked = function () {
@@ -259,8 +267,9 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       const input = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createTargetSelectionRequest(this.autoExecedTarget);
       const response = com.ts.mobile.sdk.InputOrControlResponse.createInputResponse(input);
       return _this.submitHandler(response);
-  }
-  //End for OTP Expiry issue
+    }
+
+    //End for OTP Expiry issue
     waitLoader.noWaitLoader = true;
     this.resendCodeMsgTimer = setTimeout(
       function(){
@@ -270,11 +279,11 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       30000
     );
 
-     utag.link({
+    utag.link({
       ev_type: 'other',
       ev_action: 'clk',
       ev_title: 'verify-number:didn\'t-receive-code'
-      })
+    });
     
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
@@ -288,8 +297,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
      return "x".repeat(length);
   };
 
-    // Logic to resolve the target selection programmatically
-
+  // Logic to resolve the target selection programmatically
   function selectSMSMethod() {
     var smsTarget = this.targets.filter(function (target) {
       return target.getChannel() === com.ts.mobile.sdk.OtpChannel.Sms;
@@ -305,6 +313,5 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     if (!callTarget) return log.error('Voice Call Target not found in this.targets!');
     this.selectedTarget = callTarget;
   }
-
 
 }
