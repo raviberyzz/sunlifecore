@@ -154,7 +154,7 @@ class NewsTabs extends React.Component {
             var businessGroup = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
             var businessUnit = profileData.businessUnit.replace(/[^a-zA-Z0-9]/g, "-");
             var buildingLocation = profileData.buildingLocation.replace(/[^a-zA-Z0-9]/g, "-");
-            var jobLevel = profileData.jobLevel;
+            var jobLevel = "/" + profileData.jobLevel.replace(/[^a-zA-Z0-9]/g, "-");
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase();
             }
@@ -182,7 +182,7 @@ class NewsTabs extends React.Component {
             });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
             buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
-            jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
+            jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "/all", "/na") : userJobLevelFilters.push(jobLevel, "/all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
             var BGArticles, BUArticles;
             var BLArticles = [];
@@ -209,27 +209,27 @@ class NewsTabs extends React.Component {
             BLArticles.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
-                  val = val.split('/');
-                  val = val[val.length - 1];
-                  val = val.replace(/-/g, ".");
+                  /* val = val.split('/');
+                   val = val[val.length - 1];*/
+                  // val = val.replace(/-/g, ".");
                   userJobLevelFilters.forEach((filter) => {
                     if (val.substring(val.lastIndexOf("/")) === filter) {
                       JLArticles.push(news);
                       return
                     }
                   })
-
                 }
               });
             })
             JLArticles.forEach((news, index) => {
               if (!(news.tags.indexOf(businessGroup) > -1)) {
                 news.tags.forEach((val) => {
-                  var jL = "";
-                  jL = "/" + jobLevel;
-                  if (val.indexOf(jL) > -1) {
-                    JLArticles.splice(index, 1);
+                  if (val.indexOf('/job-level')) {
+                    if (val.substring(val.lastIndexOf("/")) === jobLevel) {
+                      JLArticles.splice(index, 1);
+                    }
                   }
+
                 })
               }
             })
@@ -254,7 +254,7 @@ class NewsTabs extends React.Component {
               this.getTabsHeading();
             });
           }
-        } 
+        }
       },
       error: (err) => {
         console.log(err);
