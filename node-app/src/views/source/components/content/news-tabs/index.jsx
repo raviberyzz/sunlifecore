@@ -181,7 +181,7 @@ class NewsTabs extends React.Component {
               return userProfileFilters.indexOf(c) === index;
             });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
-            buildingLocation !== "/na" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
+            buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "all", "na") : userBLFilters.push(buildingLocation, "all");
             jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
             var BGArticles, BUArticles;
