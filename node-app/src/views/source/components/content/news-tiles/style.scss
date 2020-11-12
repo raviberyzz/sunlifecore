@@ -326,6 +326,8 @@
                         padding: 0;
                         .tile-img{
                             background-position: center;
+                            background-size: contain;
+                            height: 224px;
                             .overlay-container{
                                 width:100%;
                             }
