@@ -198,7 +198,7 @@ class NewsTabs extends React.Component {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/building-location') > -1) {
                   userBLFilters.forEach((filter) => {
-                    if (val.indexOf(filter) > -1) {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
                       BLArticles.push(news)
                       return
                     }
@@ -213,7 +213,7 @@ class NewsTabs extends React.Component {
                   val = val[val.length - 1];
                   val = val.replace(/-/g, ".");
                   userJobLevelFilters.forEach((filter) => {
-                    if (val.indexOf(filter) > -1) {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
                       JLArticles.push(news);
                       return
                     }
