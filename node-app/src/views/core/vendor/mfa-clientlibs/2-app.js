@@ -13,7 +13,6 @@ var elementsIds = {
 }
 var otpEntryAttemptFlag = 1; // 0 -> skip, 1 -> back later, 2 -> locked out
 
-
 function onLogout(isVisible) {
   isVisible = isVisible || false ;
 
@@ -35,7 +34,7 @@ function onLogout(isVisible) {
     })
     .catch(function (error) {
       console.error("Authenticate Error: ", error);
-      if(error.getErrorCode === 8) {
+      if(error.getErrorCode() === 8) {
         
       }
       else{
@@ -51,7 +50,6 @@ function initJourneyPlayer() {
   journeyPlayer.setUiHandler(new CustomUIHandler());
   
   if (lang === "fr"){
-    console.log("set French Locale.");
     journeyPlayer.setLocale("fr-CA");
 
     // update the wait loader and modal content
@@ -64,20 +62,16 @@ function initJourneyPlayer() {
     $("#endOfModal").html("Fin de la fenêtre de dialogue ");
 
 	} else {
-    console.log("set English Locale.");
 		journeyPlayer.setLocale("en-CA");
   }
 
   journeyPlayer.initialize().then(function (results) {
     console.log("Transmit SDK initialized successfully: ".concat(results));
-    
-    // if (!getSessionToken()) {
-    //   setAppContentApperance(false);
-    // } else {
-    //   setAppContentApperance(true);
-    // }
+    if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
+       onLogout();
+    }
   }).catch(function (error) {
-    console.error("Transmit SDK initialization error!: ".concat(error));
+    console.error("initialization error!: ", error);
 		if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
       setAppContentApperance(false);
     }
@@ -89,53 +83,53 @@ function initJourneyPlayer() {
   });
 } 
 
-  function getTransmitConnectionSettings() {
-     //var serverUrl = "https://mfa-uat.sunlifecorp.com";
-     // var serverUrl = "https://mfa-dev.sunlifecorp.com";
-      var appId = "mfa_signin";
-      var realm = ""; 
-      var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
-      settings.setRealm(realm);
-      return settings;
-  }
+function getTransmitConnectionSettings() {
+  //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+  // var serverUrl = "https://mfa-dev.sunlifecorp.com";
+  var appId = "mfa_signin";
+  var realm = "";
+  var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
+  settings.setRealm(realm);
+  return settings;
+}
 
-  function getClientContext() {
-      return {
-          uiContainer: document.getElementById(elementsIds.transmitContainer)
-      };
-  }
+function getClientContext() {
+    return {
+        uiContainer: document.getElementById(elementsIds.transmitContainer)
+    };
+}
 
-  function clearTransmitContainer(clientContext) {
-      $(clientContext.uiContainer).html('');
-  }
+function clearTransmitContainer(clientContext) {
+    $(clientContext.uiContainer).html('');
+}
 
-  function updateSessionToken(token) {
-      if (!token) {
-        sessionStorage.removeItem("transmit_session_token");
-        return;
-      }
-      sessionStorage.setItem('transmit_session_token', token);
+function updateSessionToken(token) {
+  if (!token) {
+      sessionStorage.removeItem("transmit_session_token");
+      return;
   }
+  sessionStorage.setItem('transmit_session_token', token);
+}
 
-  function getSessionToken() {
-      return sessionStorage.getItem('transmit_session_token');
-  }
+function getSessionToken() {
+    return sessionStorage.getItem('transmit_session_token');
+}
 
-  function showSpinner(){
-    $("#loadingMessageDiv").show();
-  }
+function showSpinner(){
+  $("#loadingMessageDiv").show();
+}
 
-  function hideSpinner(){
-    $("#loadingMessageDiv").hide();
-    waitLoader.keepWaitLoader = false;
-  }
+function hideSpinner(){
+  $("#loadingMessageDiv").hide();
+  waitLoader.keepWaitLoader = false;
+}
 
-  function CloseModalPopup(){
-    $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
-      onLogout();
-      console.log("Modal closed...");
-    });
-  }
+function CloseModalPopup(){
+  $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
+    onLogout();
+    console.log("Modal closed...");
+  });
+}
 
 function onPageReady() {
     initJourneyPlayer(); 
