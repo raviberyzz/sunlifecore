@@ -1,0 +1,5 @@
+#base=js
+1-com-analytics.js
+4-signinwidget.js
+2-language-toggle.js
+3-slim-controller.js

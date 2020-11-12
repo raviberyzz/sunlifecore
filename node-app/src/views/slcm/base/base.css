@@ -14,6 +14,9 @@
   content: "\f1c7";
   font-family: fontawesome;
   margin-right: 5px; }
+#signin-widget-modal .loading{
+display:none;
+}
 
 @media (max-width: 767px) {
   #mainfooter .image {
