@@ -174,6 +174,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workdayDataTitle",
+                label: "Workday Link Data Title",
+                value: ""
+            },
+			{
                 name: "workplaceText",
                 label: "Workplace Text",
                 value: "Connect and collaborate with your colleagues across the globe",
@@ -196,6 +201,11 @@ var multiPurposeComponentConfig = [
                 label: "Workplace Image",
                 value: "",
                 required: true
+            },
+			{
+                name: "workplaceDataTitle",
+                label: "Workplace Link Data Title",
+                value: ""
             },
 			{
                 name: "resourcePath",
