@@ -35,10 +35,8 @@ function StepUpSelectTargetFormSession(formId, payload) {
     var self = this;
     return new Promise(function (resolve, reject) {
       self.submitBlock = function (payload) {
-        if ( $('#mfa-form').parsley().validate()){
           resolve(com.ts.mobile.sdk.FormInput.createFormInputSubmissionRequest(Object.assign(payload)));
           self.submitBlock = null; // assign null to prevent using the same promise more then once
-        }
       };
     });
   };
