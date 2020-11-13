@@ -6311,7 +6311,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     jcr:title="Salesforce XF Page Policy"
                                     sling:resourceType="wcm/core/components/policy/policy"
-                                    clientlibs="sunlife.advisorhub.salesforce">
+                                    clientlibs="sunlife.salesforce.author.commons">
                                     <jcr:content jcr:primaryType="nt:unstructured"/>
                                 </policy_1604323344568>
                             </salesforce-fragment-page>
