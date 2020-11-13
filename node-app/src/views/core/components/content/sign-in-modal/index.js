@@ -91,8 +91,8 @@ $(document).ready(function () {
     ) {
       var action = $("#signin-widget-modal #form_signon").attr("action").trim();
       console.log(action);
-      console.log('mfa modal');
       if (action != undefined && action == "") {
+        console.log('mfa modal');
         mfaHtml();
         mfaCssJs();
       }
