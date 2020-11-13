@@ -1,45 +1,16 @@
 {
-  "id": "list-a0852f8ca1",
-  "dateFormatString": "yyyy-MM-dd",
-  "items": [
-    {
-      "id": "list-a0852f8ca1-item-c1a450dfb3",
-      "path": "/content/list/pages/page_1",
-      "url": "/context/content/list/pages/page_1.html",
-      "lastModified": 1474672365000,
-      "title": "Page 1",
-      "dataLayer": {
-        "list-a0852f8ca1-item-c1a450dfb3": {
-          "xdm:linkURL": "/context/content/list/pages/page_1.html",
-          "@type": "cq:PageContent",
-          "dc:title": "Page 1"
-        }
-      },
-      ":type": "cq:PageContent"
-    },
-    {
-      "id": "list-a0852f8ca1-item-a11dd78c1e",
-      "path": "/content/list/pages/page_2",
-      "url": "/context/content/list/pages/page_2.html",
-      "lastModified": 1474499565000,
-      "title": "Page 2",
-      "dataLayer": {
-        "list-a0852f8ca1-item-a11dd78c1e": {
-          "xdm:linkURL": "/context/content/list/pages/page_2.html",
-          "@type": "cq:PageContent",
-          "dc:title": "Page 2"
-        }
-      },
-      ":type": "cq:PageContent"
-    }
-  ],
-  "dataLayer": {
-    "list-a0852f8ca1": {
-      "@type": "sunlife/advisorhub/components/content/salesforce/list/v1/list"
-    }
-  },
-  "showDescription": true,
-  "showModificationDate": true,
-  "linkItems": true,
-  ":type": "sunlife/advisorhub/components/content/salesforce/list/v1/list"
+  "jcr:primaryType": "nt:unstructured",
+  "showModificationDate": "true",
+  "jcr:createdBy": "admin",
+  "tagsMatch": "any",
+  "linkItems": "true",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Fri Nov 06 2020 15:41:29 GMT-0500",
+  "parentPage": "/content/sunlife/external/ca",
+  "sortOrder": "asc",
+  "showDescription": "true",
+  "jcr:lastModified": "Mon Nov 09 2020 10:21:58 GMT-0500",
+  "sling:resourceType": "sunlife/advisorhub/components/content/salesforce/list/v1/list",
+  "childDepth": "1",
+  "listFrom": "children"
 }
