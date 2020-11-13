@@ -2,6 +2,7 @@ $(document).ready(function () {
   $("a.customer-sign-sm").click(function () {
     updateSignInForm("form_signon_mobile");
   });
+  var mfaAjaxCallDone=false;
   $("#signin-widget-modal").on("shown.bs.modal", function () {
     var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
     if (host === null || host === undefined) {
@@ -90,11 +91,13 @@ $(document).ready(function () {
       window.location.hostname.indexOf(".ca") > -1
     ) {
       var action = $("#signin-widget-modal #form_signon").attr("action").trim();
-      console.log(action);
       if (action != undefined && action == "") {
-        console.log('mfa modal');
-        mfaHtml();
-        mfaCssJs();
+        if(mfaAjaxCallDone===false){
+          console.log('mfa modal'+mfaAjaxCallDone);
+          mfaHtml();
+          mfaCssJs();
+          mfaAjaxCallDone=true;
+        }
       }
     }
   });
