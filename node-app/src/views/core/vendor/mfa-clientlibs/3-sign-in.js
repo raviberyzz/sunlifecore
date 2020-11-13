@@ -71,6 +71,9 @@ function onSignInClick() {
                                 displayComeBackLaterMessage();
                             }
                         }
+                        else{
+                            sessionTimeout.showErrorMessage();
+                        }
                     });
                     return;
                 }
