@@ -190,7 +190,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sunlife Signin Clientlibs"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            clientlibs="[sunlife.ca.site,sunlife.signin.mfa]">
+                            clientlibs="[sunlife.ca.site,sunlife.signin.mfa-transit-jdk,sunlife.signin.mfa]">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_signin_clientlibs>
                         <policy_microsite_clientlibs

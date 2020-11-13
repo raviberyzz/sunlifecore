@@ -20,7 +20,7 @@ use(function () {
 
     var updatedUrl = navPath.substring(siteUrl.lastIndexOf('/'),navPath.lastIndexOf('.')) + "/";
 
-    var domain = configService.getConfigValues('item0_domain', currentPage.getPath());
+    var domain = configService.getConfigValues('domain', currentPage.getPath());
 
     if(domain == null || domain.equals("")){
        return {

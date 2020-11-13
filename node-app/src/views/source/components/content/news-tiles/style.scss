@@ -45,6 +45,7 @@
                     padding: 8px;
                     font-size: 9px;
                     text-transform: uppercase;
+                    cursor: pointer;
                }
             }
         }
@@ -67,6 +68,9 @@
                 height: 290px;
                 text-align: center;
                 padding: 16px;
+                .circular-image{
+                    margin-bottom: 6px;
+                }
                 .icon{
                     width: 60px;
                     height: 60px;
@@ -169,6 +173,9 @@
                 background: #005cb9;
                 color: $white-shade;
                 text-align: center;
+                .view-all-category::after{
+                    font-weight: 400;
+                }
             }
             .workplace-tile{
                 padding: 40px 20px;
@@ -191,7 +198,7 @@
             border-radius: 0;
             .heading-text{
                 font-weight: 700;
-                margin-bottom: 8px;
+                margin-bottom: 16px;
             }
             .chk-lbl{
                 margin-left:30px;
@@ -216,6 +223,7 @@
             }
             .preference-modal-body {
                 padding: 6px;
+                padding-top: 16px;
                 overflow-y: auto; 
                 -webkit-overflow-scrolling: touch;
                 max-height: calc(100vh - 250px) !important;
@@ -228,20 +236,39 @@
             }
             .preference-modal-footer{
                 margin: 20px;
-                padding: 16px;
+                padding: 20px;
                 border-top: none;
                 text-align: justify;
             }
         }
     }
 }
-
-.loader{
-    margin-left:50%;
-    margin-top:10%;
+.loaderContainer{
+    height:600px;
+    margin-left: 50%;
+    margin-top: 10%;
+    color: $blue-gradient-color;
+    .fa{
+        font-size: 64px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .loaderText{
+        display:flex;
+        flex-direction: column;
+    }
 }
+
 @media (min-width: $desktop-screen-min) {
+    .source-home-page{
+        .margin-top-fifty{
+            .layout-container:nth-of-type(1){
+                height:700px;
+            }
+        }
+    }
     .news-wrapper{
+        height:700px;
         .preference-popup-wrapper{
             .modal-content{
                 min-width: 900px;
@@ -252,6 +279,10 @@
                     display: flex;
                     flex-direction: column;
                     flex-wrap: wrap;
+                    .preference-listItems{
+                        width:50%;
+                        display:inline-flex;
+                    }
                   }
             }
         }

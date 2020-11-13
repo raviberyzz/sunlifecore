@@ -1,0 +1,16 @@
+@import '../../../base/core'; 
+
+.search-bar-wrapper{
+    background: $medium-blue-color;
+    .close-div{
+        a{
+            color:$white-shade;
+        }
+    }
+    .primary-blue-button-form{
+        button{
+            background-color: $medium-yellow-background;
+            color:$medium-blue-color;
+        }
+    }
+}

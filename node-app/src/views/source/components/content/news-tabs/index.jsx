@@ -25,7 +25,7 @@ class NewsTabs extends React.Component {
       userProfileArticles: [],
       businessGroupIdTitle: [],
       loading: true,
-      windowWidth: window.innerWidth
+      businessGroupIdTitle:[]
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -48,9 +48,9 @@ class NewsTabs extends React.Component {
 
   componentDidMount() {
     this.retrieveSelectedPreference();
-    this.getPreferenceList();
-    this.getTabsNewsList();
-    this.tagSorting();
+    //this.getPreferenceList();
+    //this.getTabsNewsList();
+    //this.tagSorting();
   }
 
   // get the selected preferences on page load
@@ -64,9 +64,9 @@ class NewsTabs extends React.Component {
         this.setState({
           selectedPreferenceList: this.state.selectedPreferenceList,
         }, () => {
-          this.tagSorting();
+          //this.tagSorting();
+          this.getPreferenceList();
         })
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -81,6 +81,7 @@ class NewsTabs extends React.Component {
       url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (res) => {
+        this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
         this.state.businessGroupList.tags.forEach((data,index) => {
@@ -114,9 +115,13 @@ class NewsTabs extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
+        }, () =>{
+           this.tagSorting();
+           setTimeout(()=>{
+            this.getTabsNewsList();
+           },1000)
         })
         //this.getTabsNewsList();
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -138,7 +143,7 @@ class NewsTabs extends React.Component {
           return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').jobLevel !== undefined) {
+        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
           if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
             var businessGroup = ContextHub.getItem('profile').businessGroup;
             var businessUnit = ContextHub.getItem('profile').businessUnit;
@@ -183,10 +188,14 @@ class NewsTabs extends React.Component {
                 }
               }));
             })
-            //Sort result Articles for pinned Articles. 
+            //Sort result Articles for pinned Articles.
+            var sortedArticle; 
             JLArticles.sort(function (a, b) {
-              b.publishedDate - a.publishedDate ||
-                a.heading.localeCompare(b.heading)
+              sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+              if(sortedArticle == 0){
+                sortedArticle = a.heading.localeCompare(b.heading)
+              }
+              return sortedArticle
             });
             this.state.userProfileArticles = JLArticles;
           }
@@ -197,10 +206,19 @@ class NewsTabs extends React.Component {
           noUserArticles = this.state.newsList.filter((news) => {
             return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
           })
-          this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
+          /*this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
             b.publishedDate - a.publishedDate ||
               a.heading.localeCompare(b.heading)
+          })*/
+          var sortedArticle;
+          noUserArticles.sort(function(a, b){
+            sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+            if(sortedArticle == 0){
+              sortedArticle = a.heading.localeCompare(b.heading);
+            } 
+            return sortedArticle
           })
+          this.state.userProfileArticles = noUserArticles;
         }
         // if any selected preferences filter the articles from previously selected userProfile articles
         if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
@@ -214,8 +232,13 @@ class NewsTabs extends React.Component {
               )
             );
           });
+          var article;
           preferenceArticles.sort(function (a, b) {
-            return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+            article = new Date(b.publishedDate) - new Date(a.publishedDate)
+            if(article == 0){
+              article = a.heading.localeCompare(b.heading)
+            }
+            return article
           });
           this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
         } else {
@@ -347,7 +370,7 @@ class NewsTabs extends React.Component {
               businessTag.push(obj[element.toString()]);
             }
           })
-        } else if (element.split("/")[1] == "topics") {
+        } else if (element.split("/")[1] == "topic") {
           topicsTag.push(element);
         }
       });
@@ -417,7 +440,6 @@ class NewsTabs extends React.Component {
     /* preferences apply analytics starts here */
     businessTitle = businessTitle.join();
     topicsTitle = topicsTitle.join();
-    console.log(businessTitle, topicsTitle);
     utag.link({
       ev_type: 'other',
       ev_action: 'clk',
@@ -478,14 +500,31 @@ class NewsTabs extends React.Component {
   }
 
   bgBinding(bgList) {
-    let bg = "";
+    /*let bg = "";
     bgList.forEach((data) => {
       let bgarr = data.split('/');
       if (bgarr[1] == "business-group") {
         bg += " | " + bgarr[bgarr.length - 1];
       }
     })
-    return bg;
+    return bg;*/
+    var title = "";
+    bgList.filter((id, i) => {
+      this.state.businessGroupIdTitle.forEach((obj) => {
+        if (Object.keys(obj) == id) {
+          if (i == bgList.length - 1) {
+            title = title + obj[id];
+          } else {
+            title = title + obj[id] + " | ";
+          }
+          // return obj[id];
+        }
+      });
+    });
+    if (title.charAt(title.length - 2) == '|') {
+      title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
+    }
+    return title;
   }
 
   paginationDataBuild(newsList, page) {
@@ -534,7 +573,7 @@ class NewsTabs extends React.Component {
       data: JSON.stringify(reqData),
       dataType: "json",
       success: (res) => {
-        console.log(res);
+
       },
       error: (err) => {
         console.log(err);
@@ -570,15 +609,23 @@ class NewsTabs extends React.Component {
       var selectedAccordian = event.target;
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
-      selectedAccordian.setAttribute('aria-expanded', 'true');
-      var accordianContentId = "responsivegrid" + selectedAccordianIndex;
-      var activeAccordianContainer = document.getElementById(accordianContentId);
-      activeAccordianContainer.classList.add('accordian-container-active');
-      var accordianContainer = document.getElementsByClassName('accordianContainer');
-      for (var i = 0; i < accordianContainer.length - 1; i++) {
-        if (i != selectedAccordianIndex) {
-          accordianContainer[i].classList.remove('accordian-container-active');
-          accordianContainer[i].setAttribute('aria-expanded', 'false');
+      //
+      if( selectedAccordian.getAttribute('aria-expanded')== "true"){
+        var item = "responsivegrid" + selectedAccordianIndex;
+        var accContItem = "tab-accordian-heading" + selectedAccordianIndex;
+        document.getElementById(item).classList.remove("accordian-container-active");
+        document.getElementById(accContItem).setAttribute('aria-expanded', 'false');
+      } else {
+        selectedAccordian.setAttribute('aria-expanded', 'true');
+        var accordianContentId = "responsivegrid" + selectedAccordianIndex;
+        var activeAccordianContainer = document.getElementById(accordianContentId);
+        activeAccordianContainer.classList.add('accordian-container-active');
+        var accordianContainer = document.getElementsByClassName('accordianContainer');
+        for (var i = 0; i < accordianContainer.length; i++) {
+          if (i != selectedAccordianIndex) {
+            accordianContainer[i].classList.remove('accordian-container-active');
+            document.getElementById("tab-accordian-heading" + i).setAttribute('aria-expanded', 'false');
+          }
         }
       }
     }
@@ -586,9 +633,9 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div><img class="loader" src="/content/dam/sunlife/regional/global-marketing/images/source/preloader.gif" /></div>)}
+        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
         {!this.state.loading && (
-          <div class="news-wrapper">
+          <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
                 <div class="news-widget" data-section="hp investor">
@@ -602,12 +649,12 @@ class NewsTabs extends React.Component {
                               return (<span class="tag">{value}</span>)
                             })}
                             {this.state.selectedPreferenceTags.length > 4 &&
-                              <span class="more-tag">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
+                              <span class="more-tag" data-target="#preferenceModal" data-toggle="modal">{`${this.props.moreText} - ${this.state.selectedPreferenceTags.length - 4}`}</span>
                             }
                           </div>
                           <span class="pull-right">
                             {this.state.selectedPreferenceTags.length > 0 &&
-                              <span class="hidden-md hidden-lg">({this.state.selectedPreferenceTags.length})</span>
+                              <span>({this.state.selectedPreferenceTags.length})</span>
                             }
                             <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                           </span>
@@ -647,7 +694,7 @@ class NewsTabs extends React.Component {
                                   <ul class="prefernce-col-list topic-col">
                                     {this.state.topicsList.tags.map((value, index) => {
                                       return (
-                                        <li key={index}>
+                                        <li key={index} class="preference-listItems">
                                           <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} />
                                           <span class="chk-lbl">{value.title}</span>
                                         </li>
@@ -687,13 +734,13 @@ class NewsTabs extends React.Component {
                           {Object.keys(this.state.tabHeading).map((value, index) => {
                             return (
                               <div role="tabpanel" tabindex={index} id={"cmp-tabs__tabpanel" + index} class={`cmp-tabs__tabpanel ${index == 0 ? "cmp-tabs__tabpanel--active" : ""}`} data-cmp-hook-tabs="tabpanel" ref={this.tabContent}>
-                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded="false" tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
-                                <div class="accordianContainer" id={"responsivegrid" + index}>
+                                <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" id={"tab-accordian-heading" + index} aria-expanded={`${index == 0 ? "true" : "false"}`} tabindex={index} onClick={this.accordionClick}>{this.state.tabHeading[value].year}</div>
+                                <div class={`accordianContainer ${index == 0 ? 'accordian-container-active' : ""}`} id={"responsivegrid" + index}>
                                   <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) +" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
@@ -707,14 +754,14 @@ class NewsTabs extends React.Component {
                                           <ul className={`pagination pagination-list ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'first-page' : ''} ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'last-page' : ''}`}>
                                             {this.state.tabHeading[value].pageData.currentPage != 1 &&
                                               <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
-                                                <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
+                                                <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                                   <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                                  <span>{this.props.previousText}</span>
+                                                  <span class="hidden-xs hidden-sm">{this.props.previousText}</span>
                                                 </a>
                                               </li>
                                             }
                                             <li className={`link-to-first ${this.state.tabHeading[value].pageData.currentPage == 1 ? 'active' : ''}`}>
-                                              <a href="javascript:void(0)" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
+                                              <a href="#news-wrapper-container" aria-label="First Page" onClick={() => this.setPage(this.state.tabHeading[value], 1)}>
                                                 <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                                                 <span>1</span>
                                               </a>
@@ -723,20 +770,20 @@ class NewsTabs extends React.Component {
                                               <li class="ellipsis"><a><span>&hellip;</span></a></li>
                                             }
                                             {this.state.tabHeading[value].pageData.pages.map((page, index) => {
-                                              return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
+                                              return (<li key={index} className={(this.state.tabHeading[value].pageData.currentPage == page ? 'active' : '')}><a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], page)}><span>{page}</span></a></li>)
                                             })
                                             }
                                             {(this.state.tabHeading[value].pageData.totalPage - this.state.tabHeading[value].pageData.currentPage) >= 4 && this.state.tabHeading[value].pageData.totalPage > 6 &&
                                               <li class="ellipsis"><a><span>&hellip;</span></a></li>
                                             }
-                                            <li class="lastPage">
-                                              <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
+                                            <li className={`lastPage ${this.state.tabHeading[value].pageData.currentPage == this.state.tabHeading[value].pageData.totalPage ? 'active' : ''}`}>
+                                              <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.totalPage)}>
                                                 <span>{this.state.tabHeading[value].pageData.totalPage}</span>
                                               </a>
                                             </li>
                                             {this.state.tabHeading[value].pageData.currentPage != this.state.tabHeading[value].pageData.totalPage &&
                                               <li className={`next ${this.state.tabHeading[value].pageData.currentPage >= this.state.tabHeading[value].pageData.totalPage ? 'disabled' : ''}`}>
-                                                <a href="javascript:void(0)" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
+                                                <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage + 1)}>{this.props.nextText}</a>
                                               </li>
                                             }
                                           </ul>

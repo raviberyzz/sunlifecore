@@ -11,10 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
+import ca.sunlife.web.cms.core.models.UserInfo;
 import ca.sunlife.web.cms.core.services.RestService;
 import ca.sunlife.web.cms.source.osgi.config.UGCConfig;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -57,14 +59,17 @@ public class UGCServiceImplTest {
 		String[] value = {"value"};
 		String[] services = {"/bin/test~/bin/test","/bin/test~/bin/test"};
 		requestParams.put("key",value);
-		String userInfo = "{ \"acf2\":\"test\", \"userName\":\"test\", \"email\":\"test@test.com\" }";
+		UserInfo mockUserInfoModel = Mockito.mock(UserInfo.class);
+//		when(mockUserInfoModel.getAcf2Id()).thenReturn("test");
+//		when(mockUserInfoModel.getUserName()).thenReturn("test");
+//		when(mockUserInfoModel.getEmail()).thenReturn("test@test.com");
 		when(ugcConfig.getUGCServices()).thenReturn(services);
 		when(ugcConfig.getUGCServiceDomain()).thenReturn(url);
 		when(ugcConfig.getAuthToken()).thenReturn("authToken");
 		when(ugcConfig.getUGCServiceSite()).thenReturn("servicesite");
 		ugcServiceImpl.activate(ugcConfig);	
 		when(restService.callGetWebService(url, url)).thenReturn("get service response");
-		ugcServiceImpl.callWebService(url, "GET", userInfo, requestParams, null);
-		ugcServiceImpl.callWebService(url, "POST", userInfo, requestParams, null);
+		ugcServiceImpl.callWebService(url, "GET", mockUserInfoModel, requestParams, null);
+		ugcServiceImpl.callWebService(url, "POST", mockUserInfoModel, requestParams, null);
 	}
 }

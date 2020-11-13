@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>ca.sunlife.web.cms</groupId>
     <artifactId>web-cms-aem-core</artifactId>
-    <version>1.5.47-SNAPSHOT</version>
+    <version>1.5.49-SNAPSHOT</version>
   </parent>
   <artifactId>web-cms-aem-core.core</artifactId>
   <packaging>bundle</packaging>
@@ -55,6 +56,10 @@
     <dependency>
       <groupId>org.apache.sling</groupId>
       <artifactId>org.apache.sling.models.api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -150,12 +155,11 @@
       <artifactId>compiler</artifactId>
       <version>0.9.6</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-	<dependency>
-	    <groupId>org.jsoup</groupId>
-	    <artifactId>jsoup</artifactId>
-	    <version>1.13.1</version>
-	</dependency>
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.13.1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -218,7 +222,7 @@
                             *</Import-Package>
             <Bundle-SymbolicName>sunlife.core</Bundle-SymbolicName>
             <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler,jsoup;inline=true</Embed-Dependency>
-            <Sling-Model-Packages>ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models</Sling-Model-Packages>
+            <Sling-Model-Packages>ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models,ca.sunlife.web.cms.advisorhub.models</Sling-Model-Packages>
             <Sling-Initial-Content>SLING-INF/content;path:=/libs/system/config;overwrite:=true;</Sling-Initial-Content>
             <_dsannotations>*</_dsannotations>
             <_metatypeannotations>*</_metatypeannotations>

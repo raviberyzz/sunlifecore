@@ -160,52 +160,60 @@ $(document).ready(function (){
         /* normal sunnet domain analytics starts here */
         /* CaHome referer starts here */
         // for only no userID
-        if ((errorCode!=false) && (errorCode.indexOf("SLNV0001") != -1) && (refer.indexOf("caHome") != -1)){
-            errorCode=errorCode.trim();
-            let EC='slnv001';
-            utag.link({
-                "ev_action": "onpage_impr", 
-                "ev_data_one": "signin - csi - sunlife.ca", 
-                "ev_data_two": "error- username required: "+EC,
-                "ev_title": "signin – sunlife.ca",
-                "ev_type": "other"
-            });
+        if ((errorCode!=false) && (errorCode.indexOf("SLNV0001") != -1) && (refer!=undefined && refer!=false)){
+            if(refer.indexOf("caHome") != -1){
+                errorCode=errorCode.trim();
+                let EC='slnv001';
+                utag.link({
+                    "ev_action": "onpage_impr", 
+                    "ev_data_one": "signin - csi - sunlife.ca", 
+                    "ev_data_two": "error- username required: "+EC,
+                    "ev_title": "signin – sunlife.ca",
+                    "ev_type": "other"
+                });
+            }
         }
         //for no password only
-        if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer.indexOf("caHome") != -1)){
-            errorCode=errorCode.trim();
-            let EC='slnv0003';
-            utag.link({
-                "ev_action": "onpage_impr", 
-                "ev_data_one": "signin - csi - sunlife.ca", 
-                "ev_data_two": "error- password required: "+EC,
-                "ev_title": "signin – sunlife.ca",
-                "ev_type": "other"
-            });
+        if ((errorCode!=false) && (errorCode.indexOf("SLNV0003") != -1) && (refer!=undefined && refer!=false)){
+            if(refer.indexOf("caHome") != -1){
+                errorCode=errorCode.trim();
+                let EC='slnv0003';
+                utag.link({
+                    "ev_action": "onpage_impr", 
+                    "ev_data_one": "signin - csi - sunlife.ca", 
+                    "ev_data_two": "error- password required: "+EC,
+                    "ev_title": "signin – sunlife.ca",
+                    "ev_type": "other"
+                });
+            }
         }
         // for no userId and password Both
-        if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer.indexOf("caHome") != -1)){
-            errorCode=errorCode.trim();
-            let EC='slnv0004';
-            utag.link({
-                "ev_action": "onpage_impr", 
-                "ev_data_one": "signin - csi - sunlife.ca", 
-                "ev_data_two": "error- not entering any credentials: "+EC,
-                "ev_title": "signin – sunlife.ca",
-                "ev_type": "other"
-            });
+        if ((errorCode!=false) && (errorCode.indexOf("SLNV0004") != -1) && (refer!=undefined && refer!=false)){
+            if(refer.indexOf("caHome") != -1){
+                errorCode=errorCode.trim();
+                let EC='slnv0004';
+                utag.link({
+                    "ev_action": "onpage_impr", 
+                    "ev_data_one": "signin - csi - sunlife.ca", 
+                    "ev_data_two": "error- not entering any credentials: "+EC,
+                    "ev_title": "signin – sunlife.ca",
+                    "ev_type": "other"
+                });
+            }
         }
         //for wrong userID and password combination
-        if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1) && (refer.indexOf("caHome") != -1)){
-            errorCode=errorCode.trim();
-            let EC='slsc0099';
-            utag.link({
-                "ev_action": "onpage_impr", 
-                "ev_data_one": "signin - csi - sunlife.ca", 
-                "ev_data_two": "error- invalid pw/username combination: "+EC,
-                "ev_title": "signin – sunlife.ca",
-                "ev_type": "other"
-            });
+        if ((errorCode!=false) && (errorCode.indexOf("SLSC0099") != -1) && (refer!=undefined && refer!=false)){
+            if(refer.indexOf("caHome") != -1){
+                errorCode=errorCode.trim();
+                let EC='slsc0099';
+                utag.link({
+                    "ev_action": "onpage_impr", 
+                    "ev_data_one": "signin - csi - sunlife.ca", 
+                    "ev_data_two": "error- invalid pw/username combination: "+EC,
+                    "ev_title": "signin – sunlife.ca",
+                    "ev_type": "other"
+                });
+            }
         }
         /* CaHome referer ends here */
     }

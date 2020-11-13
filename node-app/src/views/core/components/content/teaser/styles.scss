@@ -236,25 +236,18 @@
             margin: 0;
         }
     }
-    .left-item {
-        float: none;
-        margin-right: 0;
-    }
+        .left-item {
+            float: none;
+            margin-right: 0;
+        }
 }
-.left-image-position {
-    .left-item {
-        float: left;
-        margin-right: 32px;
-        display: table;
-    }
+.left-item {
+    float: left;
+    margin-right: 32px;
+    display: table;
 }
-.right-image-position {
-    .right-item {
-        float: right;
-        margin-left: 32px;
-        display: table;
-    }
-}
+
+
 
 /* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
 @supports not (-ms-high-contrast: none) {
@@ -454,6 +447,25 @@
             transform: translateY(-50%);
         }
     }
+    // SLCM specific IE specific grey box circular image change
+    .slcm-content-page, .slcm-home-page {
+        .layout-container.light-grey-20 {
+            .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.content-block-image {
+                .right-image-position {
+                    .left-item.text-section {
+                        float: none;
+                        margin-right: 0;
+                        display: inline;
+                    }
+                    .right-item {
+                        float: right;
+                        margin-left: 32px;
+                        display: table;
+                    }
+                }
+            }
+        }
+    }
 }
 .editorial-hero-banner {
     .left-image-position, .right-image-position {
@@ -528,7 +540,7 @@
             }
         }
         .hide-in-editorial.text-section{
-            width: auto !important;
+            width: 100% !important;
         }
     }
     .life-moment-second-level-banner .image-text-wrapper .text-section {

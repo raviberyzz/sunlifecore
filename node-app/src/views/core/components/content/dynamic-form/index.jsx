@@ -385,6 +385,7 @@ class DynamicForm extends React.Component {
             success: (resp) => {
                 output = resp;
                 this.responseFunc(output, dataFromJson);
+                this.createutag('ajaxSuccess','button');
             },
             error: (resp) => {
                 //popup 
@@ -394,7 +395,7 @@ class DynamicForm extends React.Component {
                 }
                 //utag error
                 if (dataFromJson.apiSignature.error.utag != undefined) {
-                   
+                    this.createutag('ajaxError','button');
                 }
             }
         });
@@ -505,10 +506,10 @@ class DynamicForm extends React.Component {
                 if (arr[att].value === event.currentTarget.value && event.currentTarget.value !== '') {
                     this.setState({ d2N_provience2: arr[att].getAttribute('data-attr') })
                     this.createutag('d2N_provience2', 'dynamictext', arr[att].getAttribute('data-attr'));
+                    this.createutag(event.currentTarget.name, 'datalist', event.currentTarget.value);
                     break;
                 }
-            }
-            this.createutag(event.currentTarget.name, 'datalist', event.currentTarget.value);
+            }            
         }
         if (event.target[event.target.selectedIndex] != undefined && event.target[event.target.selectedIndex].getAttribute('data-attr') != ''
             && event.target[event.target.selectedIndex].getAttribute('data-attr') != null) {
@@ -546,9 +547,7 @@ class DynamicForm extends React.Component {
                     for (let idx in array) {
                         const val = array[idx]
                         if (val === "ev_data_two_breadcrum") {
-                            //var productName = "proteskipro";
-                            var breadcrumbPathArr = utag_data.page_breadcrumb.split("/");
-                              var productName = breadcrumbPathArr[breadcrumbPathArr.length - 1].trim().replace(/ /g, " ");
+                              var productName = $(".titlebar .cmp-title__text").text().replace(/ /g, " ");
                             data2Value = data2Value.replace('ev_data_two_breadcrum', productName);
                         }
                         else {
@@ -567,6 +566,8 @@ class DynamicForm extends React.Component {
                             }
                             else if(type === "datalist"){
                                 data2Value = data2Value.replace(val, text);
+                            }else if(type === "button"){
+                                data2Value = data2Value.replace(val, $("#"+subVal[0]).val());
                             }
                             else {
                                 data2Value = data2Value.replace(val, $('select[name=' + subVal[0] + '] option:selected').html());
@@ -628,7 +629,7 @@ class DynamicForm extends React.Component {
                                                                                 <div className={values.css}>
                                                                                     <label for={values.name}>{values.label}</label>
                                                                                     <Text name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
-                                                                                        key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
+                                                                                        key={values.name} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
                                                                                         dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
                                                                                         dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
                                                                                         dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
@@ -640,7 +641,7 @@ class DynamicForm extends React.Component {
                                                                                 <div className={values.css}>
                                                                                     <label for={values.name}>{values.label}</label>
                                                                                     <Textarea name={values.name} placeholder={values.placeholder} value={values.value} disabled={values.disabled}
-                                                                                        key={values.placeholder} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
+                                                                                        key={values.name} maxlength={values.maxlength} required={values.required} handleChange={this.handleChange}
                                                                                         dataParsleyRequiredMessage={values.dataParsleyRequiredMessage} dataParsleyPattern={values.dataParsleyPattern}
                                                                                         dataParsleyPatternMessage={values.dataParsleyPatternMessage} dataParsleyMinlength={values.dataParsleyMinlength}
                                                                                         dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
@@ -651,7 +652,7 @@ class DynamicForm extends React.Component {
                                                                             return (
                                                                                 <div className={values.css}>
                                                                                     <label for={values.name}>{values.label}</label>
-                                                                                    <Email name={values.name} placeholder={values.placeholder} key={values.placeholder} disabled={values.disabled} maxlength={values.maxlength}
+                                                                                    <Email name={values.name} placeholder={values.placeholder} key={values.name} disabled={values.disabled} maxlength={values.maxlength}
                                                                                         required={values.required} handleChange={this.handleChange} dataParsleyRequiredMessage={values.dataParsleyRequiredMessage}
                                                                                         dataParsleyPattern={values.dataParsleyPattern} dataParsleyPatternMessage={values.dataParsleyPatternMessage}
                                                                                         dataParsleyMinlength={values.dataParsleyMinlength} dataParsleyMinlengthMessage={values.dataParsleyMinlengthMessage} />
