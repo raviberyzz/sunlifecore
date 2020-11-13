@@ -89,8 +89,13 @@ $(document).ready(function () {
       window.location.hostname.indexOf("www") > -1 &&
       window.location.hostname.indexOf(".ca") > -1
     ) {
-      mfaHtml();
-      mfaCssJs();
+      var action = $("#signin-widget-modal #form_signon").attr("action").trim();
+      console.log(action);
+      console.log('mfa modal');
+      if (action != undefined && action == "") {
+        mfaHtml();
+        mfaCssJs();
+      }
     }
   });
   function modalWidth() {
