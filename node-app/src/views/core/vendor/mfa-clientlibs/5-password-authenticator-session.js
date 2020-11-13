@@ -2,8 +2,12 @@
 function PasswordAuthenticatorSession(title, username) {
     
   this.submitHandler = null;
+  this.showDebugInfo = false;
+
   this.endSession = function () {
-    console.log('password session ended');
+    if(this.showDebugInfo){
+      console.log('password session ended');
+    }
   };
 
   this.promiseInput = function () {
@@ -18,7 +22,7 @@ function PasswordAuthenticatorSession(title, username) {
 
   this.promiseRecoveryForError = function (error, validRecoveries, defaultRecovery) {
     return new Promise(function (resolve, reject) {
-      console.log("promiseRecoveryForError was called with error: ".concat(error));
+      console.error("promiseRecoveryForError was called with error: ", error);
 
       if (defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
         if (confirm(error.getMessage() + ", would you like to try again ?")) {

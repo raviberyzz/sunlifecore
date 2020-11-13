@@ -2,9 +2,7 @@ function onShowSignInModal() {
     toggleSignInModalVisibility(true);
 }
 
-function onSignInClick() {
-    console.log("Inside onSignInClick")
- 
+function onSignInClick() { 
     if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
         journeyPlayer.clearAllData();
     }
@@ -51,7 +49,6 @@ function onSignInClick() {
         journeyEnded(clientContext);
         var token = results.getToken();
         if (token) {
-            console.log("Journey completed successfully ...")
             onLogout(waitLoader.keepModalContent);
         }
     })
@@ -69,28 +66,29 @@ function onSignInClick() {
                         if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
                             if(otpEntryAttemptFlag === 2){
                                 displaylockedOutMessage();
-                                otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
                             }
                             else{
                                 displayComeBackLaterMessage();
                             }
                         }
+                        else{
+                            sessionTimeout.showErrorMessage();
+                        }
                     });
-                    onLogout(); 
+                    return;
                 }
-           }
+            }
         }
         else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-            //onLogout();
+            return;
         }
-        else{
-            sessionTimeout.showErrorMessage();
-        }
+        sessionTimeout.showErrorMessage();
     });
     
 }
 
 function displaylockedOutMessage(){
+    otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
     var clientContext = getClientContext();
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
         $(clientContext.uiContainer).html(data);
@@ -107,7 +105,6 @@ function displayComeBackLaterMessage(){
 }
 
 function checkAccountIsLocked(){
-    console.log('testLock here!')
     const clientContext = getClientContext();
     const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
     var clientId = $("#USER").val();
@@ -118,14 +115,11 @@ function checkAccountIsLocked(){
     };
     clientContext["shouldStoreJSON"] = true;
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-        console.log('locked: ', clientContext['json_data'].locked)
         return clientContext['json_data'].locked;
     });
 }
 
 function journeyEnded(clientContext) {
-     //clearTransmitContainer(clientContext);
-     //setAppContentApperance(false);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
 

@@ -2,8 +2,8 @@ class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
     var defaultUserBG = "";
-        defaultUserBG = profileData.businessGroup;
-    defaultUserBG  = "sunlife:source/business-group/" + defaultUserBG .toLowerCase().replace(/ /g, "-");
+    defaultUserBG = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+    defaultUserBG = "sunlife:source/business-group/" + defaultUserBG.toLowerCase();
     this.state = {
       defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
@@ -114,7 +114,7 @@ class NewsTiles extends React.Component {
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            if(data.id == this.state.defaultBG){
+            if (data.id == this.state.defaultBG) {
               data["isChecked"] = true;
             }
           }
@@ -172,7 +172,7 @@ class NewsTiles extends React.Component {
         var articleByDate;
         this.state.newsList.sort(function (a, b) {
           articleByDate = new Date(b.publishedDate) - new Date(a.publishedDate);
-          if(articleByDate == 0){
+          if (articleByDate == 0) {
             articleByDate = a.heading.localeCompare(b.heading)
           }
           return articleByDate
@@ -180,40 +180,41 @@ class NewsTiles extends React.Component {
         // filter the response articles by user profile data if user profile data exists
         if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
           if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
-            var businessGroup = profileData.businessGroup;
-            var businessUnit = profileData.businessUnit;
-            var buildingLocation = profileData.buildingLocation;
-            var jobLevel = profileData.jobLevel;
+            var businessGroup = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+            var businessUnit = profileData.businessUnit.replace(/[^a-zA-Z0-9]/g, "-");
+            var buildingLocation = profileData.buildingLocation.replace(/[^a-zA-Z0-9]/g, "-");
+            var jobLevel = "/" + profileData.jobLevel.replace(/[^a-zA-Z0-9]/g, "-");
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replace(/ /g, "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase();
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replace(/ /g, "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase();
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replace(/ /g, "-");
+              buildingLocation = "/" + buildingLocation.toLowerCase();
             }
             var userProfileFilters = [];
             var userBUFilters = [];
             var userBLFilters = [];
             var userJobLevelFilters = []
             //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
-            businessGroup !==  "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
-            userProfileFilters.forEach((val)=>{
-              this.state.selectedPreferenceList.forEach((prefer)=>{
-                if(val !== prefer){
+            businessGroup !== "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
+            userProfileFilters.forEach((val) => {
+              this.state.selectedPreferenceList.forEach((prefer) => {
+                if (val !== prefer) {
                   userProfileFilters.push(prefer);
                 }
               })
             })
-            let  userBGFilters= userProfileFilters.filter((c, index) => {
+            let userBGFilters = userProfileFilters.filter((c, index) => {
               return userProfileFilters.indexOf(c) === index;
-          });
+            });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
-            buildingLocation !== "sunlife:source/building-location/na" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/all");
-            jobLevel !== "NA" ?  userJobLevelFilters.push(jobLevel, "all", "na") : userJobLevelFilters.push(jobLevel, "all");
+            buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
+            jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "/all", "/na") : userJobLevelFilters.push(jobLevel, "/all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
-            var BGArticles, BUArticles, BLArticles;
+            var BGArticles, BUArticles;
+            var BLArticles = [];
             var JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
@@ -222,30 +223,44 @@ class NewsTiles extends React.Component {
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
-            BLArticles = BUArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
-            })
-            BLArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => {
-                if (val.indexOf('/job-level')!=-1) {
-                  val = val.split('/');
-                  val = val[val.length - 1];
-                  val = val.replace(/-/g,".");
-                  if(userJobLevelFilters.indexOf(val) > -1){
-                    JLArticles.push(news);
-                  }
+            //  filter from the BUArticles for Building Location articles
+            BUArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
+                if (val.indexOf('/building-location') > -1) {
+                  userBLFilters.forEach((filter) => {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
+                      BLArticles.push(news)
+                      return
+                    }
+                  })
                 }
-              }));
+              })
             })
-            JLArticles.forEach((news, index)=>{
-              if(!(news.tags.indexOf(businessGroup) > -1)){
-                news.tags.forEach((val)=>{
-                  jobLevel = "/" + jobLevel;
-                  if(val.indexOf(jobLevel)>-1){
-                    JLArticles.splice(index, 1);
+            // filter from Building Location Articles for JobLevel articles 
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
+                if (val.indexOf('/job-level') != -1) {
+                  userJobLevelFilters.forEach((filter) => {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
+                      JLArticles.push(news);
+                      return
+                    }
+                  })
+
+                }
+              });
+            })
+            JLArticles.forEach((news, index) => {
+              if (!(news.tags.indexOf(businessGroup) > -1)) {
+                news.tags.forEach((val) => {
+                  if (val.indexOf('/job-level')) {
+                    if (val.substring(val.lastIndexOf("/")) === jobLevel) {
+                      JLArticles.splice(index, 1);
+                    }
                   }
+
                 })
-            }
+              }
             })
             //Sort result Articles for pinned Articles. 
             var pinnedArticles = JLArticles.filter((news) => {
@@ -275,83 +290,15 @@ class NewsTiles extends React.Component {
             this.setState({
               newsList: this.state.newsList,
               //filterNewsList: this.state.filterNewsList,
-              filterNewsList : JLArticles,
+              filterNewsList: JLArticles,
               userProfileArticles: JLArticles,
-              pinnedNewsList:  pinnedArticles,
+              pinnedNewsList: pinnedArticles,
               loading: false
             }, () => {
               this.tagSorting();
             });
           }
-        } /*else {
-          //if no job profile filter the news articles by "all" tag. 
-          var noUserArticles = []
-          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na'];
-          var noUserBu = ["sunlife:source/business-unit/all", "sunlife:source/business-unit/na"];
-          var noUserBl = ["sunlife:source/building-location/all", "sunlife:source/building-location/na"];
-          //apply filters for BU/all BU, Bl/all/na, jl/all/na
-          noUserArticles = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
-          })
-          var noUserBuArticles = noUserArticles.filter((news)=>{
-            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserBu.indexOf(val) > -1))
-          })
-          var noUserBlArticles =  noUserBuArticles.filter((news)=>{
-            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserBl.indexOf(val) > -1))
-          })
-          /*this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
-            a.pinArticle - b.pinArticle ||
-              b.publishedDate - a.publishedDate ||
-              a.heading.localeCompare(b.heading)
-          })*/
-          /*var pinnedArticles = noUserArticles.filter((news) => {
-            return news.pinArticle;
-          })
-          var nonPinnedArticles = noUserArticles.filter((news) => {
-            return !news.pinArticle;
-          })
-          var sortedPinArticles;
-          pinnedArticles.sort(function (a, b) {
-            sortedPinArticles = a.pinArticle - b.pinArticle;
-            if (sortedPinArticles == 0) {
-              sortedPinArticles = new Date(b.publishedDate) - new Date(a.publishedDate)
-            }
-            return sortedPinArticles
-          })
-          var publishedDateArticles;
-          nonPinnedArticles.sort(function (a, b) {
-            publishedDateArticles = new Date(b.publishedDate) - new Date(a.publishedDate);
-            if (publishedDateArticles == 0) {
-              publishedDateArticles = a.heading.localeCompare(b.heading);
-            }
-            return publishedDateArticles
-          })
-          this.state.userProfileArticles = pinnedArticles.concat(nonPinnedArticles); 
-        } */
-        // if any selected preferences filter the articles from previously selected userProfile articles
-        /*if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
-          var preferenceArticles = [];
-          preferenceArticles = this.state.newsList.filter((news) => {
-            return (
-              !news.pinArticle &&
-              news.tags &&
-              news.tags.some(
-                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-              )
-            );
-          });
-          var sortedItem;
-          preferenceArticles.sort(function (a, b) {
-            sortedItem = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if (sortedItem == 0) {
-              sortedItem = a.heading.localeCompare(b.heading)
-            }
-            return sortedItem
-          });
-          this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
-        } else {
-          this.state.filterNewsList = this.state.userProfileArticles;
-        }*/
+        }
       },
       error: (err) => {
         console.log(err);
@@ -361,7 +308,7 @@ class NewsTiles extends React.Component {
 
   handleAllChecked(event) {
     this.state.businessGroupList.tags.forEach((prefer) => {
-      if (prefer.title != this.state.defaultBG) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = event.target.checked;
       }
     });
@@ -527,23 +474,23 @@ class NewsTiles extends React.Component {
     ];
     const EnToFr = {
       "Jan": "Janvier",
-       "Feb": "Février",
-       "Mar":"Mars",
-       "Apr":"Avril",
-       "may":"Mai",
-       "Jun":"Juin",
-       "july":"Juillet",
-       "Aug":"Août",
-       "Sep":"Septembre",
-       "Oct":"Octobre",
-       "Nov":"Novembre",
-       "Dec":"Décembre"
-   }
+      "Feb": "Février",
+      "Mar": "Mars",
+      "Apr": "Avril",
+      "may": "Mai",
+      "Jun": "Juin",
+      "july": "Juillet",
+      "Aug": "Août",
+      "Sep": "Septembre",
+      "Oct": "Octobre",
+      "Nov": "Novembre",
+      "Dec": "Décembre"
+    }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
-    var month =  monthName[m];
-    if($('html').attr('lang')=="fr-CA"){
+    var month = monthName[m];
+    if ($('html').attr('lang') == "fr-CA") {
       month = EnToFr[month];
     }
     //return monthName[m] + " " + d;
@@ -566,8 +513,8 @@ class NewsTiles extends React.Component {
           })
 
         } else if (element.split("/")[1] == "topic") {
-          this.state.topicsList.tags.forEach((data)=>{
-            if(data.id == element){
+          this.state.topicsList.tags.forEach((data) => {
+            if (data.id == element) {
               topicsTag.push(data.title);
             }
           })
@@ -679,7 +626,7 @@ class NewsTiles extends React.Component {
                 </div>
 
                 <div class="row news-list-container">
-                      {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
+                  {this.state.loading && (<div class="loaderNewsTiles col-md-9 col-lg-9"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
                   {!this.state.loading && this.state.filterNewsList.length > 0 && (
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 dynamic-news-tile">
                       {Object.keys(this.state.filterNewsList)
@@ -700,7 +647,7 @@ class NewsTiles extends React.Component {
                               <div
                                 class="tile-img"
                                 style={{
-                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImage : this.state.filterNewsList[key].thumbnailImageFeatured) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : this.state.filterNewsList[key].thumbnailImage)})`,
+                                  backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage))})`,
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
                                 <div class="overlay-container">
@@ -726,7 +673,7 @@ class NewsTiles extends React.Component {
                           );
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                        <div class="aggregate-tile">
+                        <div class="aggregate-tile" data-section={this.props.moreNewsAnalyticsID}>
                           <div class="circular-image">
                             <img class="icon" src={this.props.moreNewsImg} />
                           </div>
@@ -734,7 +681,7 @@ class NewsTiles extends React.Component {
                             .slice(4, 7)
                             .map((key, index) => {
                               return (
-                                <div class="mar-btm">
+                                <div class="mar-btm" data-section={"hp-news-position" + (index + 5)}>
                                   <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
@@ -762,13 +709,13 @@ class NewsTiles extends React.Component {
                   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
                       <p>
-                        <a href={this.props.workdayLink}>
+                        <a href={this.props.workdayLink} >
                           <img src={this.props.workdayImg} alt="" />
                         </a>
                       </p>
                       <p class="m-top-bt">{this.props.workdayText}</p>
                       <p>
-                        <a href={this.props.workdayLink} target="_blank">
+                        <a href={this.props.workdayLink} target="_blank" data-title={this.props.workdayDataTitle}>
                           <span class="view-all-category white-font">
                             {this.props.workdayLinkText}
                           </span>
@@ -777,7 +724,7 @@ class NewsTiles extends React.Component {
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
                       <p>
-                        <a href={this.props.workplaceLink}>
+                        <a href={this.props.workplaceLink} >
                           <img src={this.props.workplaceImg} alt="" />
                         </a>
                       </p>
@@ -788,6 +735,7 @@ class NewsTiles extends React.Component {
                             <a
                               href={this.props.workplaceLink}
                               target="_blank"
+                              data-title={this.props.workplaceDataTitle}
                             >
                               {this.props.workplaceLinkText}
                             </a>
@@ -844,7 +792,7 @@ class NewsTiles extends React.Component {
                                         type="checkbox"
                                         name={value.id}
                                         value={value.id}
-                                        class={value.id==this.state.defaultBG ? "disableCB" : ""}
+                                        class={value.id == this.state.defaultBG ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -855,7 +803,7 @@ class NewsTiles extends React.Component {
                                           value.id === this.state.defaultBG
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id==this.state.defaultBG ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id == this.state.defaultBG ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>

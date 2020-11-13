@@ -150,6 +150,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreNewsAnalyticsID",
+                label: "More News Analytics ID",
+                value: ""
+            },
+			{
                 name: "workdayText",
                 label: "Workday Text",
                 value: "Find information on all your core HR processes and latest Workday announcements",
@@ -174,6 +179,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workdayDataTitle",
+                label: "Workday Link Data Title",
+                value: ""
+            },
+			{
                 name: "workplaceText",
                 label: "Workplace Text",
                 value: "Connect and collaborate with your colleagues across the globe",
@@ -196,6 +206,11 @@ var multiPurposeComponentConfig = [
                 label: "Workplace Image",
                 value: "",
                 required: true
+            },
+			{
+                name: "workplaceDataTitle",
+                label: "Workplace Link Data Title",
+                value: ""
             },
 			{
                 name: "resourcePath",
