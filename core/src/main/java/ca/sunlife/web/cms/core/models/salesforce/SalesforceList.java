@@ -4,6 +4,8 @@ import com.adobe.cq.wcm.core.components.internal.models.v2.ListImpl;
 import com.adobe.cq.wcm.core.components.models.List;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.wcm.api.Page;
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -25,7 +27,7 @@ import java.util.stream.Collectors;
 @Model(adaptables= {SlingHttpServletRequest.class},
         adapters = List.class,
         resourceType = "sunlife/advisorhub/components/content/salesforce/list/v1/list")
-public class SalesforceList extends ListImpl implements List {
+public class SalesforceList extends ListImpl {
 
     /*
     @Self @Via(type= ResourceSuperType.class)
@@ -42,9 +44,16 @@ public class SalesforceList extends ListImpl implements List {
 
         Collection<ListItem> result = super.getListItems().stream()
                 .map(listItem -> {
-                    Resource itemResource = resolver.getResource(listItem.getPath());
-                    Page page = itemResource.adaptTo(Page.class);
-                    return new SalesforceListItem(listItem, page.getProperties());
+                    ListItem anItem;
+                    try {
+                        Resource resource = resolver.getResource(listItem.getPath());
+                        Page page = resource.adaptTo(Page.class);
+                        anItem = new SalesforceListItem(listItem, page.getProperties());
+
+                    } catch (NullPointerException ex) {
+                        anItem = listItem;
+                    }
+                    return anItem;
 
                 }).collect(Collectors.toList());
 
