@@ -324,10 +324,11 @@
                 .dynamic-news-tile{
                     .tile {
                         padding: 0;
+                        height: 275px;
                         .tile-img{
                             background-position: center;
-                            background-size: contain;
-                            height: 224px;
+                            /*background-size: contain;*/
+                            height: 200px;
                             .overlay-container{
                                 width:100%;
                             }
