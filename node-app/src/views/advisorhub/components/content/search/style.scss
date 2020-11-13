@@ -1,13 +1,13 @@
 @import '../../../base/core';
 .adv-search-bar-wrapper {
-    background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side.png) 
-    top center no-repeat,linear-gradient($primary-yellow-background, $medium-yellow-background);
-    background-size: 120% 200%;
-    text-align: center;
-    position: relative;
+    background: linear-gradient($primary-yellow-background, $medium-yellow-background);
     .global-search {
+        background:  url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side.png) 
+        top center no-repeat;
         padding: 24px 200px 32px 200px;
+        background-size: 140% 400%;
         text-align: center;
+        position: relative;
         .slf-search {
             min-width: 664px;
             .form-wrapper {
@@ -95,10 +95,10 @@
 }
 @media ( max-width: $mobile-screen-max) {
     .adv-search-bar-wrapper {
-        background: url("/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_vertical.png") 
-                    top center no-repeat,linear-gradient($primary-yellow-background, $medium-yellow-background);
-        background-size: cover;
         .global-search {
+            background: url("/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_vertical.png") 
+            top center no-repeat;
+            background-size: cover;
             padding: 24px;
             .slf-search {
                 min-width: 272px;
