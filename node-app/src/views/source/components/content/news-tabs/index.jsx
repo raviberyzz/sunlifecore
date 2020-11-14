@@ -444,12 +444,14 @@ class NewsTabs extends React.Component {
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
+	let y = d1.getFullYear();
     let month = monthName[m]
     if ($('html').attr('lang') == "fr-CA") {
       month = EnTofr[month];
-    }
-    let y = d1.getFullYear();
-    return `${month} ${d}, ${y}`;
+	  return `${d} ${month} ${y}`;
+    }else {
+	  return `${month} ${d}, ${y}`;
+	}
     // return moment(date).format('MMMM DD, YYYY');
   }
 
