@@ -188,10 +188,10 @@ function CheckClicksCa(event) {
       $("#signin-widget-modal input[name=ESAVEID]").attr("value") != undefined
     ) {
       if (
-        $(".mySlfSignIn input[name=ESAVEID]").attr("value").trim().length > 0 &&
-        $(".mySlfSignIn input[name=ESAVEID]").attr("value").trim() != "false"
+        $("#signin-widget-modal input[name=ESAVEID]").attr("value").trim().length > 0 &&
+        $("#signin-widget-modal input[name=ESAVEID]").attr("value").trim() != "false"
       ) {
-        $(".mySlfSignIn input[name=LOGONUSINGSAVEID]").val("TRUE");
+        $("#signin-widget-modal input[name=LOGONUSINGSAVEID]").val("TRUE");
       }
     }
     let lang = $("html").attr("lang");
