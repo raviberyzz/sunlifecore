@@ -450,6 +450,7 @@ class NewsTabs extends React.Component {
     let month = monthName[m]
     if ($('html').attr('lang') == "fr-CA") {
       month = EnTofr[month];
+	  console.log("month: "+month);
 	  return `${d} ${month} ${y}`;
     }else {
 	  return `${month} ${d}, ${y}`;
