@@ -510,7 +510,9 @@ class NewsTiles extends React.Component {
         ) {
           this.state.businessGroupIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
-              businessTag.push(obj[element.toString()]);
+              if(element !== this.state.defaultBG){
+                businessTag.push(obj[element.toString()]);
+              }
             }
           })
 

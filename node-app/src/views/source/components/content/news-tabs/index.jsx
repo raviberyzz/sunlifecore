@@ -298,7 +298,9 @@ class NewsTabs extends React.Component {
         if (element.split("/")[1] == "business-group") {
           this.state.businessGroupIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
-              businessTag.push(obj[element.toString()]);
+              if(element !== this.state.defaultBG){
+                businessTag.push(obj[element.toString()]);
+              }
             }
           })
         } else if (element.split("/")[1] == "topic") {
