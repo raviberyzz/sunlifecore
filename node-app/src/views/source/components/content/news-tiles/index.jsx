@@ -677,7 +677,7 @@ class NewsTiles extends React.Component {
                           );
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
-                        <div class="aggregate-tile" data-section={this.props.moreNewsAnalyticsID}>
+                        <div class="aggregate-tile" data-section="hp-news-position5">
                           <div class="circular-image">
                             <img class="icon" src={this.props.moreNewsImg} />
                           </div>
@@ -685,7 +685,7 @@ class NewsTiles extends React.Component {
                             .slice(4, 7)
                             .map((key, index) => {
                               return (
-                                <div class="mar-btm" data-section={"hp-news-position" + (index + 5)}>
+                                <div class="mar-btm">
                                   <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
@@ -711,7 +711,7 @@ class NewsTiles extends React.Component {
                     </div>
                   )}
                   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 static-news-tile">
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile" data-section="hp-news-position6">
                       <p>
                         <a href={this.props.workdayLink} >
                           <img src={this.props.workdayImg} alt="" />
@@ -726,7 +726,7 @@ class NewsTiles extends React.Component {
                         </a>
                       </p>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile" data-section="hp-news-position7">
                       <p>
                         <a href={this.props.workplaceLink} >
                           <img src={this.props.workplaceImg} alt="" />
