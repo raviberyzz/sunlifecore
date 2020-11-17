@@ -214,11 +214,46 @@ class ArticleComments extends React.Component {
       "Nov",
       "Dec",
     ];
+    /*let FrMonthName = {
+      "Jan": "janv.",
+      "Feb": "févr.",
+      "Mar": "mars",
+      "Apr": "avril",
+      "may": "mai",
+      "Jun": "juin",
+      "july": "juil.",
+      "Aug": "août",
+      "Sep": "sept.",
+      "Oct": "oct.",
+      "Nov": "nov.",
+      "Dec": "déc."
+    }*/
+    let FrMonthName = [
+      "janv.",
+      "févr.",
+      "mars",
+      "avril",
+      "mai",
+      "juin",
+      "juil.",
+      "août",
+      "sept.",
+      "oct.",
+      "nov.",
+      "déc."
+    ];
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
     let y = d1.getFullYear();
-    return monthName[m] + " " + d + ", " + y;
+    let html=document.querySelector('html');
+    let pageLang=html.getAttribute('lang');
+    if(lang!==null && pageLang ==='fr-CA'){
+      return d+" "+FrMonthName[m]+" "+y;
+    }else{
+      return monthName[m] + " " + d + ", " + y;
+    }
+    
     // return moment(date).format('MMM DD');
   }
   selectUserComment() {
