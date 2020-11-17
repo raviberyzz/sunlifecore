@@ -56,31 +56,25 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
-            // make sure it's a 401 error in message
-            if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-                if(otpEntryAttemptFlag !== 0){
-                    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-                    clientContext["shouldStoreJSON"] = true;
-                    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-                        if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                            if(otpEntryAttemptFlag === 2){
-                                displaylockedOutMessage();
-                            }
-                            else{
-                                displayComeBackLaterMessage();
-                            }
+        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication || error.getErrorCode() ===  com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+            if(otpEntryAttemptFlag !== 0){
+                const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+                clientContext["shouldStoreJSON"] = true;
+                journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                    if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                        if(otpEntryAttemptFlag === 2){
+                            displaylockedOutMessage();
                         }
                         else{
-                            sessionTimeout.showErrorMessage();
+                            displayComeBackLaterMessage();
                         }
-                    });
-                    return;
-                }
+                    }
+                    else{
+                        sessionTimeout.showErrorMessage();
+                    }
+                });
+                return;
             }
-        }
-        else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-            return;
         }
         sessionTimeout.showErrorMessage();
     });
