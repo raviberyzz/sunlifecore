@@ -430,18 +430,18 @@ class NewsTabs extends React.Component {
     let monthName = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
     const EnTofr = {
-      "January": "Janvier",
-      "February": "Février",
-      "March": "Mars",
-      "April": "Avril",
-      "May": "Mai",
-      "June": "Juin",
-      "July": "Juillet",
-      "August": "Août",
-      "September": "Septembre",
-      "October": "Octobre",
-      "November": "Novembre",
-      "December": "Décembre"
+      "January": "janvier",
+      "February": "février",
+      "March": "mars",
+      "April": "avril",
+      "May": "mai",
+      "June": "juin",
+      "July": "juillet",
+      "August": "août",
+      "September": "septembre",
+      "October": "octobre",
+      "November": "novembre",
+      "December": "décembre"
     }
     let d1 = new Date(date);
     let d = d1.getDate();
