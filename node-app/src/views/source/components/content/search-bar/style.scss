@@ -25,3 +25,16 @@
 	#search-result-filter-list{display:block;}
 }
 // search pahe css ends here
+/* search page autocorrect text styling starts here */
+
+.search-container{
+    .search-results{
+        #search-result-misspelling{
+            #search-result-misspelling-term{
+                font-style: italic;
+                font-weight: 700;
+            }
+        }
+    }
+}
+/* search page autocorrect text styling ends here */
