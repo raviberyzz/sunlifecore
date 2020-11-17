@@ -357,7 +357,7 @@ class NewsTabs extends React.Component {
     this.state.selectedPreferenceList = [];
     let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.isChecked) {
+      if (prefer.isChecked && prefer.id !== this.state.defaultBG) {
         this.state.selectedPreferenceList.push(prefer.id);
         if (prefer.title !== '') {
           businessTitle.push(prefer.title);
