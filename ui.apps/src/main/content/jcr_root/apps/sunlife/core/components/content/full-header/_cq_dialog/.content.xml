@@ -479,12 +479,7 @@
                                                     				value="modal"/>    
                                             				</items>
                                         					</target> 
-                                        					<signinbuttonid
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Button Id"
-                                                                name="./signinButtonId"/> 
-                                                             <signinanalyticsid
+                                        					<signinanalyticsid
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                 fieldLabel="Analytics Id"

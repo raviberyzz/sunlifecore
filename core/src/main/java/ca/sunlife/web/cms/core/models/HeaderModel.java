@@ -55,14 +55,6 @@ public interface HeaderModel {
   String getSigninMobileTitle();
   
   /**
-   * Gets the signin button Id.
-   *
-   * @return the signin button Id
-   */
-  @ Inject
-  String getSigninButtonId();
-  
-  /**
    * Gets the button analytics id.
    *
    * @return the button analytics id.
