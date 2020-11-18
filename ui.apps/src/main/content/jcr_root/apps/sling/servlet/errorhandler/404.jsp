@@ -2,7 +2,7 @@
 <%@include file="/libs/foundation/global.jsp" %>
 <%
 SiteConfigService sCon = sling.getService(SiteConfigService.class);
-String chub = sCon.getConfigValues("enableContextHub", request.getRequestURI());
+String chub = sCon.getConfigValues("enableContextHub", request.getRequestURI().replace(".html",""));
 if(chub.equalsIgnoreCase("true") || request.getRequestURI().startsWith("/content/dam")) {
     slingResponse.setStatus(404);
 %>
