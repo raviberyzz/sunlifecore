@@ -591,7 +591,7 @@ class NewsTiles extends React.Component {
               class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "
               data-analytics="tab0"
             >
-              <div class="news-widget" data-section="hp investor">
+              <div class="news-widget" data-section="hp-news">
                 <div class="row news-tool-bar">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tool">
                     <p class="left-text pull-left">
