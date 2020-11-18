@@ -3,7 +3,7 @@
     jcr:primaryType="sling:OsgiConfig"
     getDenyGroupName="restrict-coc-source-users"
     getFilePath="/content/dam/sunlife/regional/global-marketing/restricted/source/coc.txt"
-	getScheduleExpression="0 */10 * * * ?"
+	getScheduleExpression="0 0 15 ? * * *"
     getScheduleName="source-coc-scheduler"
     getUserHomeDir="/home/users/eassunlife"
     isEnabled="{Boolean}true"/>
