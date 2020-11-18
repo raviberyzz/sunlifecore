@@ -5,7 +5,10 @@ $(document).ready(function(){
 
 function shareURL(){
 	var title = document.getElementsByTagName("title")[0].innerHTML;
-	var seoDesc = document.querySelector("meta[property='og:description']").getAttribute("content");
+    var seoDesc = document.querySelector("meta[property='og:description']").getAttribute("content");
+    if (seoDesc == null) {
+        seoDesc = "";
+    }
 	var currentURL = window.location.href ;
 	var link = "mailto:"
              + "?subject=" + title

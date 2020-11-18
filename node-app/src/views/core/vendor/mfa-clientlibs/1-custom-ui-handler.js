@@ -58,39 +58,11 @@ UIHandlerForStepUp.prototype.createOtpAuthSession = function(title, username, po
     return new StepUpOTPSession(title, username, possibleTargets, autoExecedTarget);
 }
 
-/*UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
-    return new Promise(function(resolve, reject) {
-        if (jsonData.SMSESSION) {
-            console.log(jsonData.SMSESSION);
-            document.cookie="SMSESSION"+"="+jsonData.SMSESSION + ";domain=.sunnet.sunlife.com;path=/";
-        }
-        resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
-        
-        if(jsonData.target != undefined && jsonData.target != ""){
-            window.location.href = jsonData.target;
-           console.log("Redirecting to PPHP...");
-        }
-    });
-}*/
-
 UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext, clientContext) {
     return new Promise(function(resolve, reject) {
     
         resolve(com.ts.mobile.sdk.JsonDataProcessingResult.create(true));
         if (jsonData.SMSESSION) {
-           /* let url=jsonData.target;
-            $.ajax(url,{
-            type : 'POST',
-            contentType : 'text/plain',
-            data :jsonData.SMSESSION,
-            dataType : 'text',
-            timeout : 10000,
-            success : function(data) {
-                   if(data != null && data != ''){
-                       console.log("Successfully Posted SM Value. Redirecting to PPHP via Sunlife.ca Flow");
-                   }
-            }      
-            }); */
             $("#smHiddenForm").attr("action",jsonData.target);
             $("#smValue").val(jsonData.SMSESSION);
             $("#smHiddenForm").submit();
@@ -98,9 +70,7 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
         }
         else if(jsonData.target != undefined && jsonData.target != ""){
             window.location.href = jsonData.target;
-            console.log("Redirecting to PPHP...");
         }
-    
     });
 }
 
@@ -126,7 +96,6 @@ CustomUIHandler.prototype.endActivityIndicator = function(actionContext, clientC
 
 UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, clientContext) {
     if(!waitLoader.noWaitLoader){
-        console.log('start 1');
         showSpinner();
     }
 }
@@ -134,7 +103,5 @@ UIHandlerForStepUp.prototype.startActivityIndicator = function(actionContext, cl
 UIHandlerForStepUp.prototype.endActivityIndicator = function(actionContext, clientContext) {
     if(!waitLoader.keepWaitLoader){
         hideSpinner();
-        console.log('end 1');
     }
-    
 }

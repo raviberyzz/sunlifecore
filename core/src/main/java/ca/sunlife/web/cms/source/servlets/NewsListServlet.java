@@ -23,6 +23,8 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -137,8 +139,10 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT, String.class)); // image path - featured
 							jsonObject.put(NewsConstants.PIN_ARTICLE_CONSTANT,
 									valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)); // pin order
+							String summary = valueMap.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class);
+							Document docObj = null != summary ? Jsoup.parse(summary) : null;
 							jsonObject.put(NewsConstants.ARTICLE_SUMMARY_CONSTANT,
-									valueMap.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class)); // summary
+									null != docObj ? docObj.text() : ""); // summary
 						}
 						// Meta data
 						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()

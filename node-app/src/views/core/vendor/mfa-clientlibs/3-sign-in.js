@@ -3,14 +3,17 @@ function onShowSignInModal() {
 }
 
 function onSignInClick() {
-    console.log("Inside onSignInClick")
- 
+    otpEntryAttemptFlag = 1; // reset it 
     if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
         journeyPlayer.clearAllData();
     }
    
     var clientId = $("#USER").val();
     var password = $("#PASSWORD").val();
+
+    // clear the wrong password message
+    $("#generalError").hide();
+
     var lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
 
     if (clientId.length === 0 || password.length === 0) {
@@ -22,14 +25,16 @@ function onSignInClick() {
 
     var additionalParams = {
         user: clientId,
-        loginParameters : loginParameters
+        loginParameters : loginParameters,
+        password : password
     };
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
-    
+
     $("#mfa_signin_modal").off().on('hidden.bs.modal', function (e) {
         $("#USER").val('');
         $("#PASSWORD").val('');
+        $("#rememberID").prop('checked', false);
 
         if(clientContext.closeModalCallback){
             clientContext.closeModalCallback();
@@ -45,7 +50,6 @@ function onSignInClick() {
         journeyEnded(clientContext);
         var token = results.getToken();
         if (token) {
-            console.log("Journey completed successfully ...")
             onLogout(waitLoader.keepModalContent);
         }
     })
@@ -53,31 +57,25 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
-            // make sure it's a 401 error in message
-            if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-                if(otpEntryAttemptFlag !== 0){
-                    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-                    clientContext["shouldStoreJSON"] = true;
-                    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-                        if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                            if(otpEntryAttemptFlag === 2){
-                                displaylockedOutMessage();
-                                otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
-                            }
-                            else{
-                                displayComeBackLaterMessage();
-                            }
+        if(otpEntryAttemptFlag !== 0){
+            if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication || error.getErrorCode() ===  com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+                clientContext["shouldStoreJSON"] = true;
+                journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                    if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                        if(otpEntryAttemptFlag === 2){
+                            displaylockedOutMessage();
                         }
-                    });
-                    onLogout(); 
-                }
-           }
-        }
-        else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-            //onLogout();
-        }
-        else{
+                        else{
+                            displayComeBackLaterMessage();
+                        }
+                    }
+                    else{
+                        sessionTimeout.showErrorMessage();
+                    }
+                });
+                return;
+            }
             sessionTimeout.showErrorMessage();
         }
     });
@@ -101,7 +99,6 @@ function displayComeBackLaterMessage(){
 }
 
 function checkAccountIsLocked(){
-    console.log('testLock here!')
     const clientContext = getClientContext();
     const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
     var clientId = $("#USER").val();
@@ -112,14 +109,11 @@ function checkAccountIsLocked(){
     };
     clientContext["shouldStoreJSON"] = true;
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-        console.log('locked: ', clientContext['json_data'].locked)
         return clientContext['json_data'].locked;
     });
 }
 
 function journeyEnded(clientContext) {
-     //clearTransmitContainer(clientContext);
-     //setAppContentApperance(false);
     journeyPlayer.setUiHandler(new CustomUIHandler());
 }
 

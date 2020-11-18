@@ -272,7 +272,7 @@
               </sly>
             </sly>
           </div>
-          <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="${listModel.signinButtonId}"
+          <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn"
             data-toggle="${listModel.signinTarget == 'modal' ? 'modal' : ''}" data-target="${listModel.signinTarget == 'modal' ? buttonTarget : ''}" data-section="${listModel.signinAnalyticsId}">
              <sly data-sly-test.mobilelinkChecker = "${listModel.signinTarget == 'modal'}">
               <a data-toggle="modal" role="button" href="javascript:void(0)">
@@ -312,7 +312,7 @@
           </div>
           <ul class="first-level-navigation">
 
-            <sly data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
+            <sly data-sly-test="${listFromMeganav == 'meganavtrue'}" data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
 
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
               <a>${regionTitle @context='html'}</a>

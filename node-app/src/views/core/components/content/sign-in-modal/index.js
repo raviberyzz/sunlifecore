@@ -2,6 +2,7 @@ $(document).ready(function () {
   $("a.customer-sign-sm").click(function () {
     updateSignInForm("form_signon_mobile");
   });
+  var mfaAjaxCallDone=false;
   $("#signin-widget-modal").on("shown.bs.modal", function () {
     var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
     if (host === null || host === undefined) {
@@ -89,8 +90,15 @@ $(document).ready(function () {
       window.location.hostname.indexOf("www") > -1 &&
       window.location.hostname.indexOf(".ca") > -1
     ) {
-      mfaHtml();
-      mfaCssJs();
+      var action = $("#signin-widget-modal #form_signon").attr("action").trim();
+      if (action != undefined && action == "") {
+        if(mfaAjaxCallDone===false){
+          console.log('mfa modal'+mfaAjaxCallDone);
+          mfaHtml();
+          mfaCssJs();
+          mfaAjaxCallDone=true;
+        }
+      }
     }
   });
   function modalWidth() {
@@ -180,10 +188,10 @@ function CheckClicksCa(event) {
       $("#signin-widget-modal input[name=ESAVEID]").attr("value") != undefined
     ) {
       if (
-        $(".mySlfSignIn input[name=ESAVEID]").attr("value").trim().length > 0 &&
-        $(".mySlfSignIn input[name=ESAVEID]").attr("value").trim() != "false"
+        $("#signin-widget-modal input[name=ESAVEID]").attr("value").trim().length > 0 &&
+        $("#signin-widget-modal input[name=ESAVEID]").attr("value").trim() != "false"
       ) {
-        $(".mySlfSignIn input[name=LOGONUSINGSAVEID]").val("TRUE");
+        $("#signin-widget-modal input[name=LOGONUSINGSAVEID]").val("TRUE");
       }
     }
     let lang = $("html").attr("lang");

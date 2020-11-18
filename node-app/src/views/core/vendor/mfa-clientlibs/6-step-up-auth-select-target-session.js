@@ -4,20 +4,25 @@ function StepUpSelectTargetFormSession(formId, payload) {
   this.payload = payload;
   this.phoneNumbers = payload["phoneNumbers"] || [];
   this.clientContext = null;
+  this.showDebugInfo = false;
 
   this.submitBlock = null;
 
   /** Form Session */
       
   this.startSession = function (clientContext, actionContext) {
-    console.log("Form session started: ".concat(this.formId));
+    if(this.showDebugInfo){
+      console.log("Form session started: ", this.formId);
+    }
     this.clientContext = clientContext;
     setupForm.call(this);
   };
 
   this.endSession = function () {
-    $("#mfa-container").off('keypress'); // remove the keypress event handler from the mfa-container 
-    console.log("Form session ended: ".concat(this.formId));
+    $("#mfa-container").off('keypress'); // remove the keypress event handler from the mfa-container
+    if(this.showDebugInfo){
+      console.log("Form session ended: ", this.formId);
+    }
   };
 
   //setting the send code method based on the radio button checked attribute
@@ -30,23 +35,24 @@ function StepUpSelectTargetFormSession(formId, payload) {
     var self = this;
     return new Promise(function (resolve, reject) {
       self.submitBlock = function (payload) {
-        console.log("Inside submit:");
-        if ( $('#mfa-form').parsley().validate()){
           resolve(com.ts.mobile.sdk.FormInput.createFormInputSubmissionRequest(Object.assign(payload)));
           self.submitBlock = null; // assign null to prevent using the same promise more then once
-        }
       };
     });
   };
 
   this.onContinue = function (payload) {
-    console.log('on continue called');
-    console.log(payload);
+    if(this.showDebugInfo){
+      console.log('on continue called');
+      console.log(payload);
+    }
   };
 
   this.onError = function (payload) {
-    console.log('on error called');
-    console.log(payload);
+    if(this.showDebugInfo){
+      console.log('on error called');
+      console.log(payload);
+    }
   }; //** End Form Session */
 
   function handleSendCode() {
@@ -56,7 +62,6 @@ function StepUpSelectTargetFormSession(formId, payload) {
     var selectedId = $('input[name="phone_number_target"]:checked').attr('id');
     var maskedPhoneNo = $('label[for="'+selectedId+'"]').text();
 
-    
     const valid = $('#mfa-form').parsley().validate()
     if(valid){
 
@@ -65,16 +70,20 @@ function StepUpSelectTargetFormSession(formId, payload) {
         ev_action: 'clk',
         ev_data_one: selectedMethod, // depending on the radio selection
         ev_title: 'verify-you:send-code'
-        })
+      });
       
-      console.log(maskedPhoneNo);
-      console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
+      if(this.showDebugInfo){
+        console.log(maskedPhoneNo);
+        console.log("selectedPhone :"+selectedPhone+"selectedCommunicationId :"+selectedCommunicationId);
+      }
+
       var otpSelection = {
         selectedPhone: selectedPhone,
         selectedMethod: selectedMethod,
         selectedCommunicationId: selectedCommunicationId,
         maskedPhoneNo : maskedPhoneNo
       };
+
       this.clientContext.otpSelection = otpSelection;
       this.clientContext.selectedId = selectedId;
       this.submitBlock(otpSelection);
@@ -88,7 +97,7 @@ function StepUpSelectTargetFormSession(formId, payload) {
       ev_type: 'other',
       ev_action: 'clk',
       ev_title: 'verify-you-modal'
-    })
+    });
     
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
       $(self.clientContext.uiContainer).html(data);
@@ -119,16 +128,18 @@ function StepUpSelectTargetFormSession(formId, payload) {
 }
 
 function setPhoneNumbersList() {
-
-  console.log("selectedPhone : "+this.clientContext.otpSelection);
+  if(this.showDebugInfo){
+    console.log("selectedPhone : "+this.clientContext.otpSelection);
+  }
   const phoneNumbers = this.phoneNumbers;
 
   let phoneListStr = '';
   
   for(var i=0;i<phoneNumbers.length;i++){
       if(phoneNumbers.length>1){
-      phoneListStr += renderPhone.call(this, phoneNumbers[i], i,"");
-      }else{
+        phoneListStr += renderPhone.call(this, phoneNumbers[i], i,"");
+      }
+      else{
         phoneListStr += renderPhone.call(this, phoneNumbers[i], i, "checked");  
       }
   }
@@ -138,7 +149,6 @@ function setPhoneNumbersList() {
   if(this.clientContext.selectedId !== undefined){
     $("#"+this.clientContext.selectedId).prop('checked', true);
     $("#"+this.clientContext.selectedId).parent().addClass('radio-btn-selected');
-
   }
   // select the last security code method
   if(this.clientContext.otpSelection !== undefined){
@@ -161,7 +171,7 @@ function renderPhone(phoneNumber, index, checked) {
   var errorMsg = (lang === 'fr') ? 'Veuillez sélectionner un numéro de téléphone.' : 'Please select a phone number';
   const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
   const maskPhone = "+* ***-"+"***-"+phoneNumber.commData.substring(3,7);
-  //let phoneInfo  = '<div class="radio-btn-container">'; Removed the class radio-btn-selected
+
   let phoneInfo  = '<div class="radio-btn-container">';
       phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phoneNumber.mfaCommunId + '">';
       phoneInfo += '<input ';

@@ -12,7 +12,7 @@
         <link rel="icon" href="${baseModel.favIcon}" type="image/x-icon"/>
         <link rel="shortcut icon" href="${baseModel.favIcon}" type="image/x-icon"/>
     </sly>
-    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
         <sly data-sly-call="${clientLib.css @ categories='sunlife.core.contexthub'}"></sly>
     </sly>
     <sly data-sly-include="customheaderlibs.html"></sly>
@@ -24,7 +24,7 @@
                                 hasCloudconfigSupport     = page.hasCloudconfigSupport}"></sly>
     <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
     <!-- Include Context Hub -->
-	<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
+	<sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}">
 		<sly data-sly-test="${wcmmode.edit}">
 			<sly data-sly-call="${clientLib.js @ categories='granite.utils'}"/>
 			<sly data-sly-call="${clientLib.all @ categories='cq.widgets'}"></sly>

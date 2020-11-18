@@ -347,19 +347,23 @@ function success(data) {
     if (!contingencyWidgetDisplayed) {
 	if(data!=null){
 		var decodedApologyOn=decodeURIComponent(data.apologyOn);
-        if (decodedApologyOn == 'true') {
-		
+        if (decodedApologyOn == 'true') {		
             // if (data.apologyOn) {
-
-			var decodedApologyMessage=decodeURIComponent(data.apologyMessage);
-			decodedApologyMessage=decodedApologyMessage.replace(/\+/g,' ');
-				$("#" + currentSignInForm + " #" +apology).html(decodedApologyMessage);
-				$("#" + currentSignInForm + " #" +genralerror ).parent(".form-group").addClass("has-error");
-				$("#" + currentSignInForm + " #" +genralerror ).css("display","block");
-				//disable form fields  as we are on apology...
-        $("#" + currentSignInForm + " input").prop('disabled', function(i, v) {
-					return true;
-				});
+            var decodedApologyMessage=decodeURIComponent(data.apologyMessage);
+            console.log(decodedApologyMessage);
+            if(decodedApologyMessage.indexOf('MFA_TRANSMIT')>-1){
+                console.log('apology-transmit');
+                displayContingencyWidget();
+            }else{
+                decodedApologyMessage=decodedApologyMessage.replace(/\+/g,' ');
+                $("#" + currentSignInForm + " #" +apology).html(decodedApologyMessage);
+                $("#" + currentSignInForm + " #" +genralerror ).parent(".form-group").addClass("has-error");
+                $("#" + currentSignInForm + " #" +genralerror ).css("display","block");
+                //disable form fields  as we are on apology...
+                $("#" + currentSignInForm + " input").prop('disabled', function(i, v) {
+                    return true;
+                });
+            }
         } else {
 			var decodedSMagentValue=decodeURIComponent(data.smagentname);
 			var decodedClientIP=decodeURIComponent(data.clientIp);
@@ -437,10 +441,12 @@ function error(data) {
 function remember(me) {
     if (!me.checked) {
         $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("FALSE");
+        $("#signin-widget-modal input[name=ESAVEID]").attr("value",'');
 
     } else {
         $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("TRUE");
     }
+    $("#signin-widget-modal input[name=LOGONUSINGSAVEID]").val("FALSE");
 }
 
 

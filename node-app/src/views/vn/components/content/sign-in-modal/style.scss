@@ -1,0 +1,51 @@
+@import '../../../base/core';
+    .sign-in-modal-wrapper {
+        .modal-dialog.sign-in-modaldialog{
+            margin:0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            vertical-align: middle;
+            display: flex;
+        }
+        .form-first{
+            .module-body {
+                font-size:1rem;
+                line-height:22px;
+                text-align: center;
+            }
+        }
+        .form-group {
+            .moreon{
+                display: block;
+                margin-top: 20px;
+                a{
+                    font-weight:700;
+                    color: $medium-blue-color;
+                    font-size:1rem;
+                    text-decoration: none;
+                }
+                a:hover{
+                    text-decoration:underline;
+                }                   
+            }
+            .moreon:after{
+                content: '\f138';
+                color: $blue-gradient-color;
+                padding-left:5px;
+                font-family: FontAwesome;
+            }
+        }
+    }
+
+     //for sign-in button
+    @media (max-width: $tab-screen-max){
+        .slf-mobile-header-wrapper .mobile-header-navbar .mobile-signin-icon {
+            font-size: 0.875rem;
+        }
+    }
+
+   
+    
+
+    
