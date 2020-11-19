@@ -160,23 +160,23 @@
   }
 
 }
-/*.modal-content{
+#modal_popup .modal-content{
 height: auto;
 min-height: 100%;
-}*/
+}
 
-.modal-backdrop {
+#modal_popup .modal-backdrop {
  position: fixed; 
 }
 
-.popupheading {
+#modal_popup .popupheading {
 background: #003946;
 color: #fff;
 padding-top: 30px !important;
 margin: -15px;
 }
 
-.collapse-x {
+#modal_popup .collapse-x {
 font-size: 20px !important;
 }
 
