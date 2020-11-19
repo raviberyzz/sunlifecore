@@ -64,9 +64,6 @@
         .news-list-box{
             border: 2px solid $container-border-color;
             padding: 20px 20px 20px 15px;
-            p:first-child{
-                text-transform: capitalize;
-            }
             p:last-child{
                 &:after {
                     content: '...';

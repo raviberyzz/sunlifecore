@@ -127,16 +127,11 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     return new Promise(function (resolve, reject) {
       //console.error("promiseRecoveryForError was called with error: ", error);
       if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
-        // make sure it's a 401 error in message
-        if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-          displaylockedOutMessage();
-          //reject(defaultRecovery);
-          hideSpinner();
           resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
           return;
-        }
       }
 
+      otpEntryAttemptFlag = 1; // reset
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
           waitLoader.keepModalContent = false;

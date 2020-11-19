@@ -298,7 +298,9 @@ class NewsTabs extends React.Component {
         if (element.split("/")[1] == "business-group") {
           this.state.businessGroupIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
-              businessTag.push(obj[element.toString()]);
+              if(element !== this.state.defaultBG){
+                businessTag.push(obj[element.toString()]);
+              }
             }
           })
         } else if (element.split("/")[1] == "topic") {
@@ -357,7 +359,7 @@ class NewsTabs extends React.Component {
     this.state.selectedPreferenceList = [];
     let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.isChecked) {
+      if (prefer.isChecked && prefer.id !== this.state.defaultBG) {
         this.state.selectedPreferenceList.push(prefer.id);
         if (prefer.title !== '') {
           businessTitle.push(prefer.title);
@@ -428,28 +430,31 @@ class NewsTabs extends React.Component {
     let monthName = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
     const EnTofr = {
-      "January": "Janvier",
-      "February": "Février",
-      "March": "Mars",
-      "April": "Avril",
-      "May": "Mai",
-      "June": "Juin",
-      "July": "Juillet",
-      "August": "Août",
-      "September": "Septembre",
-      "October": "Octobre",
-      "November": "Novembre",
-      "December": "Décembre"
+      "January": "janvier",
+      "February": "février",
+      "March": "mars",
+      "April": "avril",
+      "May": "mai",
+      "June": "juin",
+      "July": "juillet",
+      "August": "août",
+      "September": "septembre",
+      "October": "octobre",
+      "November": "novembre",
+      "December": "décembre"
     }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
+	let y = d1.getFullYear();
     let month = monthName[m]
     if ($('html').attr('lang') == "fr-CA") {
       month = EnTofr[month];
-    }
-    let y = d1.getFullYear();
-    return `${month} ${d}, ${y}`;
+	  var dispDate = `${d} ${month} ${y}`;
+	  return dispDate.toLowerCase();
+    }else {
+	  return `${month} ${d}, ${y}`;
+	}
     // return moment(date).format('MMMM DD, YYYY');
   }
 
@@ -592,7 +597,7 @@ class NewsTabs extends React.Component {
           <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-analytics="tab0">
-                <div class="news-widget" data-section="hp investor">
+                <div class="news-widget" data-section="hp-news">
                   {this.props.newsToolBar == "true" &&
                     <div>
                       <div class="row news-tool-bar">
@@ -698,7 +703,7 @@ class NewsTabs extends React.Component {
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
-                                          <p dangerouslySetInnerHTML={{ __html: this.state.tabHeading[value].data[key].summary }}></p>
+                                          <p>{this.state.tabHeading[value].data[key].summary}</p>
                                         </div>
                                       )
                                     })}

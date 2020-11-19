@@ -21,6 +21,7 @@ import javax.inject.Named;
 import javax.jcr.RangeIterator;
 import javax.jcr.RepositoryException;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -1212,8 +1213,12 @@ public class BasePageModel {
             pageLocale.split("_") [ 0 ]);
         title = newsDetails.getRelease().getHeadline();
         description = "";
-        socialMediaDescripton = newsDetails.getRelease().getSummary().substring(0,
-            Math.min(newsDetails.getRelease().getSummary().length(), BasePageModelConstants.TITLE_MAX_LENGTH_CONSTANT));
+        String summary = newsDetails.getRelease().getSummary();
+        summary = StringEscapeUtils.unescapeHtml(summary);
+        summary = summary.replaceAll("<.*?>", "");
+        summary = StringEscapeUtils.escapeJava(summary);
+        socialMediaDescripton = summary.substring(0,
+            Math.min(summary.length(), BasePageModelConstants.TITLE_MAX_LENGTH_CONSTANT));
         canonicalUrl = domain + shortenURL(pagePath, siteUrl)
             + BasePageModelConstants.SLASH_CONSTANT
             + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "")

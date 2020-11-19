@@ -138,7 +138,7 @@ public class COCScheduler implements Runnable {
 					logger.trace("Authorizable user :: {}", user);
 					if (null == user) {
 						Principal iteratedUserPrincipal = () -> iteratedUser; //user principal
-						User newUser = userMgr.createUser(iteratedUser, "", iteratedUserPrincipal, coCConfig.getUserHomeDir()); //create user with principal
+						User newUser = userMgr.createUser(iteratedUser, "SunlifeTest@1", iteratedUserPrincipal, coCConfig.getUserHomeDir()); //create user with principal
 						ValueFactory valueFactory = session.getValueFactory();
 						Value firstNameValue = valueFactory.createValue("", PropertyType.STRING);
 						newUser.setProperty("./profile/givenName", firstNameValue);

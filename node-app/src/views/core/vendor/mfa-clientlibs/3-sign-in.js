@@ -2,7 +2,8 @@ function onShowSignInModal() {
     toggleSignInModalVisibility(true);
 }
 
-function onSignInClick() { 
+function onSignInClick() {
+    otpEntryAttemptFlag = 1; // reset it 
     if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
         journeyPlayer.clearAllData();
     }
@@ -56,39 +57,32 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
-            // make sure it's a 401 error in message
-            if (error.getMessage().toLowerCase().indexOf('401 unauthorized') != -1) {
-                if(otpEntryAttemptFlag !== 0){
-                    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-                    clientContext["shouldStoreJSON"] = true;
-                    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-                        if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                            if(otpEntryAttemptFlag === 2){
-                                displaylockedOutMessage();
-                            }
-                            else{
-                                displayComeBackLaterMessage();
-                            }
+        if(otpEntryAttemptFlag !== 0){
+            if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication || error.getErrorCode() ===  com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+                clientContext["shouldStoreJSON"] = true;
+                journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                    if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                        if(otpEntryAttemptFlag === 2){
+                            displaylockedOutMessage();
                         }
                         else{
-                            sessionTimeout.showErrorMessage();
+                            displayComeBackLaterMessage();
                         }
-                    });
-                    return;
-                }
+                    }
+                    else{
+                        sessionTimeout.showErrorMessage();
+                    }
+                });
+                return;
             }
+            sessionTimeout.showErrorMessage();
         }
-        else if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-            return;
-        }
-        sessionTimeout.showErrorMessage();
     });
     
 }
 
 function displaylockedOutMessage(){
-    otpEntryAttemptFlag = 1; // set it to 1 again so if they come back, we do not show the locked out message
     var clientContext = getClientContext();
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/account-locked-out.html", function (data) {
         $(clientContext.uiContainer).html(data);

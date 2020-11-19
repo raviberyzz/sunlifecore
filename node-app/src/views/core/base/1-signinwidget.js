@@ -441,10 +441,12 @@ function error(data) {
 function remember(me) {
     if (!me.checked) {
         $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("FALSE");
+        //$("#signin-widget-modal input[name=ESAVEID]").attr("value",'');
 
     } else {
         $("#" + currentSignInForm + " input[name=SAVEIDSUBMISSION]").val("TRUE");
     }
+    //$("#signin-widget-modal input[name=LOGONUSINGSAVEID]").val("FALSE");
 }
 
 
