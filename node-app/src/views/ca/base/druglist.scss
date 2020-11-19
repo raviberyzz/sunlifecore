@@ -1,22 +1,33 @@
 /* Drug List styling starts - content created via HTML component */
 div.druglist {
+  /* REMOVE CSS FROM HERE */
+  /* .contract-form {
+      max-width: 315px;
+      margin-top: 50px;
+  } */
+  .mar-top-15 {
+    margin-top: 15px;
+  }
+  .primary-yellow-button-rte {
+    min-width: inherit !important;
+  }
   table {
     border: none;
     font-size: 16px;
     width: 100%;
-    table-layout: fixed;
+    /* table-layout: fixed; */
     background-color: transparent;
     border-collapse: collapse;
     border-spacing: 0;
   }
-  table thead tr {
-    border-bottom: 1px solid #000;
-    height: 60px;
-  }
+  /* table thead tr {
+      border-bottom: 1px solid #000;
+      height: 60px;
+  } */
   table tbody tr {
     cursor: pointer;
     height: 60px;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 2px solid white;
   }
   table th,
   table td {
@@ -25,19 +36,6 @@ div.druglist {
   }
   table tbody {
     box-sizing: border-box;
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  .no-display{
-    display: none;
   }
 
   .loading-spinner {
@@ -52,14 +50,15 @@ div.druglist {
     background: rgba(0, 0, 0, 0.4);
   }
   .loading-spinner ::before {
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
     margin-right: -4px;
   }
   .loading-spinner p {
-    font-family: agenda-medium-webfont, helvetica-neue, helvetica, arial, sans-serif;
+    font-family: agenda-medium-webfont, helvetica-neue, helvetica, arial,
+    sans-serif;
   }
   .loading-container {
     position: absolute;
@@ -95,5 +94,75 @@ div.druglist {
     margin-bottom: 20px;
   }
 
+  /* REMOVE CSS TO HERE */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  .no-display {
+    display: none;
+  }
+  .contract-input {
+    width: 290px;
+  }
+  .cmp-table-data-content table thead tr th {
+    background: #ffcb05;
+    color: #424242;
+    text-transform: none;
+    text-align: center;
+    border-bottom: 0;
+    vertical-align: top;
+    height: 64px;
+    border-top: 1px solid #d7d7d7 !important;
+    padding: 16px !important;
+  }
+  .cmp-table-data-content table thead tr:not(:first-child) {
+    border-top: 2px solid #fff;
+  }
+
+  .wgt-AM-ajaxspin {
+    background: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .wgt-AM-ajaxspin-body {
+    background: #fff;
+    margin: auto;
+    max-width: 16em;
+    position: sticky;
+    top: 50%;
+  }
+
+  .wgt-AM-container.dropShadow {
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.12);
+    border-style: ridge;
+    border-color: #dbd5d5;
+    border-width: thin;
+    padding-bottom: 5px;
+    padding-top: 20px;
+  }
+
+  .wgt-AM-alignCenter {
+    text-align: center;
+  }
+  @media (max-width: 767px) {
+    .primary-yellow-button-rte {
+      margin: 0px !important;
+    }
+    .cmp-table-data-content {
+      overflow-x: auto;
+    }
+  }
 }
 /* Drug List styling ends - content created via HTML component */
