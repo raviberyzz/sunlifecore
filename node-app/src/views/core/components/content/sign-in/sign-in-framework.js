@@ -46,8 +46,9 @@ $(document).ready(function () {
             $("#slfSignIn #generalError").html($("#slfSignIn #generalError").html().replace(">&#160;<","><"));
             //console.log(errorCode,errorMSG);
             if(errorCode!==false && errorCode!=undefined){
-                if (errorMSG.trim() != "") {
-                    console.log(errorCode);
+                if (errorMSG.trim() != "") {                    
+                    errorMSG = $("#generalError").html();
+                    console.log(errorMSG);
                     if ((errorCode != false) && ((errorCode.indexOf("SLSC0012") != -1) || (errorCode.indexOf("SLSC0013") != -1) || (errorCode.indexOf("SLNV0001") !=-1))) {
                         $("#slfSignIn #accessIdError").parent().addClass("has-error");
                         $("#slfSignIn #accessIdError").html(errorMSG);
@@ -232,13 +233,15 @@ $(".mySlfSignIn #rememberID").keydown(function(e){
         }
     }
 /* Iframe accessibility ends here */
-//pushing the function to home button o=f sign out page
+//pushing the function to home button of sign out page
     let pageLang=$('html').attr('lang');
     if($('span.sign-out-link').length>0){
         if(pageLang=='fr'){
             $('span.sign-out-link').attr('onclick','getCSIUrl("fr")');
+            $('span.sign-out-link').parent('a').attr('href','javascript:void(0);');
         }else{
             $('span.sign-out-link').attr('onclick','getCSIUrl("en")');
+            $('span.sign-out-link').parent('a').attr('href','javascript:void(0);');
         }
     }
 });
@@ -270,8 +273,10 @@ function getCSIUrl(lang){
     var eURL = '/signin/mysunlife/home.wca';
     var fURL = '/signin/masunlife/home.wca';
     if(cookie != null) {
+        console.log('cookie');
         var vars = cookie.split("&");
         for (var i = 0; i < vars.length; i++) {
+            console.log(vars[i]);
             var pair = vars[i].split("=");
             if(unescape(pair[0]) == 'CSISigninURLe'){
                 if (unescape(pair[1]).indexOf(urlPrefix) > -1){
@@ -279,15 +284,19 @@ function getCSIUrl(lang){
                 }else{
                     eURL = urlPrefix + unescape(pair[1]);
                 }
+                console.log(unescape(pair[1]));
             } else if(unescape(pair[0]) == 'CSISigninURLf') {
                 if (unescape(pair[1]).indexOf(urlPrefix) > -1){
                     fURL = unescape(pair[1]);
                 } else {
                     fURL = urlPrefix + unescape(pair[1]);
                 }
+                console.log(unescape(pair[1]));
             }
         }
     }
+    console.log('english url is'+eURL);
+    console.log('french url is'+fURL);
     if(lang == 'en'){
         window.open(eURL,'_self');
     }else {

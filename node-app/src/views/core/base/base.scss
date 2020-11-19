@@ -154,7 +154,22 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-
+.error-msg-style {
+    background: $error-help-red-color;
+    color: $white-shade !important;
+    margin: 0 0 10px 0;
+    line-height: 110% !important;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    p {
+        padding: 8px 10px 0 10px;
+        color: $white-shade;
+    }
+    a {
+        color: $white-shade !important;
+    }
+}
 .no-gutter {
     padding: 0 !important;
 }

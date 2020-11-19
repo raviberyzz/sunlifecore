@@ -126,3 +126,17 @@
     }
 }
 /*Overview Highlight -- ends here*/
+
+.grey-border-box{
+    .cmp-text {
+        h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+@media (min-width: $tab-screen-min){
+    .bottom-footer-section .text .accordion-heading{
+        overflow-wrap: normal;
+    }
+}

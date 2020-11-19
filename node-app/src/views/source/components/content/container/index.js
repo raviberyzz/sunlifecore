@@ -87,4 +87,16 @@ $(document).ready(function () {
 	/*if($('.title-wrapper-blue-yellow-rings')){
 		$('.breadcrumb-wrapper-cool-blue').css('margin-bottom','0!important');
 	}*/
+
+	var openAccordion=false;
+	$(".html-component .company-summary .accordion .head").click(function(){
+        openAccordion = $(this).next().is(':visible');
+        $(this).siblings().not("h3").css("display","none");
+        if(openAccordion){
+            $(this).next().hide();
+        }
+        else{
+			$(this).next().show();
+        }
+    })
 });

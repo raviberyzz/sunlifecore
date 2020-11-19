@@ -819,5 +819,15 @@
     }
     
 }
-  
+ 
+// SLCM specific lead gen variation
+.slcm-content-page, .slcm-home-page {
+    .lead-gen-wrapper .cmp-form-options__field--drop-down {
+        margin-bottom: 0;
+    }
+    .lead-gen-wrapper .col-sm-6 .cmp-form-options--drop-down {
+            margin-bottom: 20px;
+    }
+}
+
 /* Lead Gen Form Ends Here*/

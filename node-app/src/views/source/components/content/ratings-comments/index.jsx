@@ -308,7 +308,8 @@ class ArticleComments extends React.Component {
         ev_title: "news-comment",
       });
       /* news comment submit analytics ends here */
-      $("#commentText").val("write your comment");
+      $("#commentText").val('');
+      $('#commentText').attr('placeholder',this.props.writeComment);
     }
   }
   deleteComment(commentId, event) {
@@ -387,8 +388,6 @@ class ArticleComments extends React.Component {
                       <p class="dots">...</p>
                       <div class="comment-option" value={`${value.commentId}`}>
                         <div class="edit-popup">
-                          <a href="javascript:void(0)">{this.props.edit}</a>
-                          <br />
                           <a
                             class="delete-option"
                             data-toggle="modal"

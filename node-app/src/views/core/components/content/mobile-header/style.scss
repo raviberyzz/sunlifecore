@@ -25,6 +25,19 @@
         right: 36px !important;
     }
 }
+
+.slcm-content-page, .slcm-home-page {
+    .slf-mobile-header-wrapper {
+        .mobile-header-navbar {
+            .mobile-signin-text {
+                font-size: 0.5rem;
+            }
+        }
+    }
+    .slf-mobile-header-wrapper .mobile-header-navbar .slf-header-mobile-logo a {
+        right: 14px !important;
+    }
+}
 .slf-mobile-header-wrapper{
     position:fixed;
     z-index: 2;
@@ -97,13 +110,6 @@
         }
     }
 
-    .slcm-content-page, .slcm-home-page {
-        .mobile-header-navbar{
-            .mobile-signin-text {
-                font-size: 0.5rem;
-            }
-        }
-    }
     //french pages padding is different for mobile device in portrait orientation due to less room
     @media (min-width: $mobile-screen-min){
         :lang(fr) .mobile-search-icon, :lang(fr) .mobile-signin-icon {
@@ -202,6 +208,9 @@
                 padding-left:0px;
                 .collapse {
                     display: block;
+                    ul{
+                       padding-top:0;
+                    }
                 }
             }
         }

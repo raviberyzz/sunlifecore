@@ -7,7 +7,7 @@
          </h1>
 		 <div data-sly-test="${newsArticle.checkboxDisplayTags && newsArticle.tagList}" class="article-tags">
             <sly data-sly-list="${newsArticle.tagList}">
-               <span class="tag">${item}</span>
+               <span class="tag" data-sly-test="${item != 'Unavailable'}">${item}</span>
             </sly>
          </div>
          <div data-sly-test="${!newsArticle.checkboxHideDate}" class="date">

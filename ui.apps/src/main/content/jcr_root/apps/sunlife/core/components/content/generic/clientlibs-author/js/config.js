@@ -150,6 +150,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "moreNewsAnalyticsID",
+                label: "More News Analytics ID",
+                value: ""
+            },
+			{
                 name: "workdayText",
                 label: "Workday Text",
                 value: "Find information on all your core HR processes and latest Workday announcements",
@@ -172,6 +177,11 @@ var multiPurposeComponentConfig = [
                 label: "Workday Image",
                 value: "",
                 required: true
+            },
+			{
+                name: "workdayDataTitle",
+                label: "Workday Link Data Title",
+                value: ""
             },
 			{
                 name: "workplaceText",
@@ -198,6 +208,11 @@ var multiPurposeComponentConfig = [
                 required: true
             },
 			{
+                name: "workplaceDataTitle",
+                label: "Workplace Link Data Title",
+                value: ""
+            },
+			{
                 name: "resourcePath",
                 label: "Resource path",
                 value: "/content/sunlife/internal/source/en/jcr:content/root/layout_container/container1/generic",
@@ -206,7 +221,19 @@ var multiPurposeComponentConfig = [
 			{
                 name: "getPrefernceListUrl",
                 label: "Preferences URL",
-                value: "/content/cq:tags/sunlife/source.tags",
+                value: "/content/cq:tags/sunlife/source",
+                required: true
+            },
+			{
+                name: "loading",
+                label: "Loading",
+                value: "Loading...",
+                required: true
+            },
+			{
+                name: "loadingText",
+                label: "Loading Text",
+                value: "One moment please",
                 required: true
             }
 		]	
@@ -232,6 +259,12 @@ var multiPurposeComponentConfig = [
                 name: "toolbarLeftText",
                 label: "Tool Bar Left Text (News)",
                 value: "News",
+                required: true
+            },
+			{
+                name: "moreText",
+                label: "More Text",
+                value: "More",
                 required: true
             },
 			{
@@ -304,6 +337,18 @@ var multiPurposeComponentConfig = [
                 name: "ofText",
                 label: "Of Text",
                 value: "of",
+                required: true
+            },
+			{
+                name: "loading",
+                label: "Loading",
+                value: "Loading...",
+                required: true
+            },
+			{
+                name: "loadingText",
+                label: "Loading Text",
+                value: "One moment please",
                 required: true
             }
 		]	

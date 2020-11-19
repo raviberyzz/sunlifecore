@@ -1,15 +1,11 @@
 class NewsTabs extends React.Component {
   constructor(props) {
     super(props);
-    let contextHubData = localStorage.getItem("ContextHubPersistence");
-    let defaultBGValue = "";
-    if (contextHubData) {
-      let userProfile = JSON.parse(localStorage.getItem("ContextHubPersistence"));
-      defaultBGValue = userProfile.store.profile.businessGroup;
-    }
-
+    var defaultUserBG = "";
+    defaultUserBG = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+    defaultUserBG = "sunlife:source/business-group/" + defaultUserBG.toLowerCase();
     this.state = {
-      defaultBG: defaultBGValue,
+      defaultBG: defaultUserBG,
       pageLang: utag_data.page_language,
       businessGroupList: {
         tags: []
@@ -25,7 +21,7 @@ class NewsTabs extends React.Component {
       userProfileArticles: [],
       businessGroupIdTitle: [],
       loading: true,
-      businessGroupIdTitle:[]
+      businessGroupIdTitle: []
     };
 
     this.getTabsHeading = this.getTabsHeading.bind(this);
@@ -84,7 +80,7 @@ class NewsTabs extends React.Component {
         this.state.businessGroupIdTitle = [];
         this.state.businessGroupList = res["business-group"];
         this.state.topicsList = res["topic"];
-        this.state.businessGroupList.tags.forEach((data,index) => {
+        this.state.businessGroupList.tags.forEach((data, index) => {
           if (data.id == "sunlife:source/business-group/all") {
             this.state.businessGroupList.tags.splice(index, 1);
           }
@@ -92,6 +88,11 @@ class NewsTabs extends React.Component {
           obj[data.id] = data.title;
           this.state.businessGroupIdTitle.push(obj);
           data["isChecked"] = false;
+          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
+            if (data.id == this.state.defaultBG) {
+              data["isChecked"] = true;
+            }
+          }
           this.state.selectedPreferenceList.forEach(prefer => {
             if (prefer === data.id) {
               data["isChecked"] = true;
@@ -115,11 +116,11 @@ class NewsTabs extends React.Component {
           businessGroupList: this.state.businessGroupList,
           topicsList: this.state.topicsList,
           businessGroupIdTitle: this.state.businessGroupIdTitle,
-        }, () =>{
-           this.tagSorting();
-           setTimeout(()=>{
+        }, () => {
+          this.tagSorting();
+          setTimeout(() => {
             this.getTabsNewsList();
-           },1000)
+          }, 1000)
         })
         //this.getTabsNewsList();
       },
@@ -139,191 +140,121 @@ class NewsTabs extends React.Component {
         this.state.newsList = response;
         let preferedNewsList = [];
         //Sort all the article by date
+        var sortArticle;
         this.state.newsList.sort(function (a, b) {
-          return (new Date(b.publishedDate) - new Date(a.publishedDate) || a.heading.localeCompare(b.heading));
+          sortArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
+          if (sortArticle == 0) {
+            sortArticle = a.heading.localeCompare(b.heading)
+          }
+          return sortArticle
         });
         // filter the response articles by user profile data if user profile data exists
-        if (ContextHub.getItem('profile').businessGroup !== undefined && ContextHub.getItem('profile').businessGroup !== "NA" && ContextHub.getItem('profile').businessUnit !== undefined && ContextHub.getItem('profile').businessUnit !== "NA" && ContextHub.getItem('profile').buildingLocation !== undefined && ContextHub.getItem('profile').buildingLocation !== "NA" && ContextHub.getItem('profile').jobLevel !== undefined && ContextHub.getItem('profile').jobLevel !== "NA") {
-          if (ContextHub.getItem('profile').businessGroup !== "" || ContextHub.getItem('profile').businessUnit !== "" || ContextHub.getItem('profile').buildingLocation !== "" || ContextHub.getItem('profile').jobLevel !== "") {
-            var businessGroup = ContextHub.getItem('profile').businessGroup;
-            var businessUnit = ContextHub.getItem('profile').businessUnit;
-            var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-            var jobLevel = ContextHub.getItem('profile').jobLevel;
+        if (profileData.businessGroup !== undefined && profileData.businessUnit !== undefined && profileData.buildingLocation !== undefined && profileData.jobLevel !== undefined) {
+          if (profileData.businessGroup !== "" || profileData.businessUnit !== "" || profileData.buildingLocation !== "" || profileData.jobLevel !== "") {
+            var businessGroup = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
+            var businessUnit = profileData.businessUnit.replace(/[^a-zA-Z0-9]/g, "-");
+            var buildingLocation = profileData.buildingLocation.replace(/[^a-zA-Z0-9]/g, "-");
+            var jobLevel = "/" + profileData.jobLevel.replace(/[^a-zA-Z0-9]/g, "-");
             if (businessGroup != "" && businessGroup != undefined) {
-              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
+              businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase();
             }
             if (businessUnit != "" && businessUnit != undefined) {
-              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
+              businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase();
             }
             if (buildingLocation != "" && buildingLocation != undefined) {
-              buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
+              buildingLocation = "/" + buildingLocation.toLowerCase();
             }
             var userProfileFilters = [];
             var userBUFilters = [];
             var userBLFilters = [];
             var userJobLevelFilters = []
             //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
-            userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na");
-            userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na");
-            userBLFilters.push(buildingLocation, "sunlife:source/building-location/all", "sunlife:source/building-location/na");
-            userJobLevelFilters.push(jobLevel, "all", "na");
+            businessGroup !== "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
+            userProfileFilters.forEach((val) => {
+              this.state.selectedPreferenceList.forEach((prefer) => {
+                if (val !== prefer) {
+                  userProfileFilters.push(prefer);
+                }
+              })
+            })
+            let userBGFilters = userProfileFilters.filter((c, index) => {
+              return userProfileFilters.indexOf(c) === index;
+            });
+            businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
+            buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
+            jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "/all", "/na") : userJobLevelFilters.push(jobLevel, "/all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
-            var BGArticles, BUArticles, BLArticles, JLArticles;
+            var BGArticles, BUArticles;
+            var BLArticles = [];
+            var JLArticles = [];
             BGArticles = this.state.newsList.filter((news) => {
               //Articles filtered by business Group
-              return (news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
+              return (news.tags && news.tags.some((val) => userBGFilters.indexOf(val) > -1))
             })
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
-            BLArticles = BUArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => userBLFilters.indexOf(val) > -1));
-            })
-            JLArticles = BLArticles.filter((news) => {
-              return (news.tags && news.tags.some((val) => {
-                if (val.includes('/job-level')) {
-                  val = val.split('/');
-                  val = val[val.length - 1];
-                  userJobLevelFilters.indexOf(val) > -1
+            BUArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
+                if (val.indexOf('/building-location') > -1) {
+                  userBLFilters.forEach((filter) => {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
+                      BLArticles.push(news)
+                      return
+                    }
+                  })
                 }
-              }));
+              })
+            })
+            BLArticles.forEach((news) => {
+              news.tags && news.tags.forEach((val) => {
+                if (val.indexOf('/job-level') != -1) {
+                  /* val = val.split('/');
+                   val = val[val.length - 1];*/
+                  // val = val.replace(/-/g, ".");
+                  userJobLevelFilters.forEach((filter) => {
+                    if (val.substring(val.lastIndexOf("/")) === filter) {
+                      JLArticles.push(news);
+                      return
+                    }
+                  })
+                }
+              });
+            })
+            JLArticles.forEach((news, index) => {
+              if (!(news.tags.indexOf(businessGroup) > -1)) {
+                news.tags.forEach((val) => {
+                  if (val.indexOf('/job-level')) {
+                    if (val.substring(val.lastIndexOf("/")) === jobLevel) {
+                      JLArticles.splice(index, 1);
+                    }
+                  }
+
+                })
+              }
             })
             //Sort result Articles for pinned Articles.
-            var sortedArticle; 
+            var sortedArticle;
             JLArticles.sort(function (a, b) {
               sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
-              if(sortedArticle == 0){
+              if (sortedArticle == 0) {
                 sortedArticle = a.heading.localeCompare(b.heading)
               }
               return sortedArticle
             });
-            this.state.userProfileArticles = JLArticles;
+            //this.state.userProfileArticles = JLArticles;
+            this.setState({
+              newsList: this.state.newsList,
+              //filterNewsList: this.state.filterNewsList,
+              filterNewsList: JLArticles,
+              userProfileArticles: JLArticles,
+              pinnedNewsList: this.state.pinnedNewsList,
+              loading: false
+            }, () => {
+              this.getTabsHeading();
+            });
           }
-        } else {
-          //if no job profile filter the news articles by "all" tag. 
-          var noUserArticles = []
-          var noUserProfile = ['sunlife:source/business-group/all', 'sunlife:source/business-group/na']
-          noUserArticles = this.state.newsList.filter((news) => {
-            return (!news.pinArticle && news.tags && news.tags.some((val) => noUserProfile.indexOf(val) > -1))
-          })
-          /*this.state.userProfileArticles = noUserArticles.sort(function (a, b) {
-            b.publishedDate - a.publishedDate ||
-              a.heading.localeCompare(b.heading)
-          })*/
-          var sortedArticle;
-          noUserArticles.sort(function(a, b){
-            sortedArticle = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if(sortedArticle == 0){
-              sortedArticle = a.heading.localeCompare(b.heading);
-            } 
-            return sortedArticle
-          })
-          this.state.userProfileArticles = noUserArticles;
         }
-        // if any selected preferences filter the articles from previously selected userProfile articles
-        if (this.state.selectedPreferenceList.length > 0 && this.state.userProfileArticles.length < 8) {
-          var preferenceArticles = [];
-          preferenceArticles = this.state.newsList.filter((news) => {
-            return (
-              !news.pinArticle &&
-              news.tags &&
-              news.tags.some(
-                (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-              )
-            );
-          });
-          var article;
-          preferenceArticles.sort(function (a, b) {
-            article = new Date(b.publishedDate) - new Date(a.publishedDate)
-            if(article == 0){
-              article = a.heading.localeCompare(b.heading)
-            }
-            return article
-          });
-          this.state.filterNewsList = this.state.userProfileArticles.concat(preferenceArticles);
-        } else {
-          this.state.filterNewsList = this.state.userProfileArticles;
-        }
-        this.setState({
-          newsList: this.state.newsList,
-          filterNewsList: this.state.filterNewsList,
-          userProfileArticles: preferedNewsList,
-          pinnedNewsList: this.state.pinnedNewsList,
-          loading: false
-        }, () => {
-          this.getTabsHeading();
-        });
-        /* this.state.newsList = res;
-         this.state.filterNewsList = [];
-         let preferedNewsList = [];
-         // filter the response articles by user profile data if user profile data exists
-         if (ContextHub.getItem('profile').businessGroup != "" && ContextHub.getItem('profile').businessUnit != "" && ContextHub.getItem('profile').buildingLocation != "" && ContextHub.getItem('profile').jobLevel != "") {
-           var businessGroup = ContextHub.getItem('profile').businessGroup;
-           var businessUnit = ContextHub.getItem('profile').businessUnit;
-           var buildingLocation = ContextHub.getItem('profile').buildingLocation;
-           var jobLevel = ContextHub.getItem('profile').jobLevel;
-           if (businessGroup != "" && businessGroup != undefined) {
-             businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase().replaceAll(" ", "-");
-           }
-           if (businessUnit != "" && businessUnit != undefined) {
-             businessUnit = "sunlife:source/business-unit/" + businessUnit.toLowerCase().replaceAll(" ", "-");
-           }
-           if (buildingLocation != "" && buildingLocation != undefined) {
-             buildingLocation = "sunlife:source/building-location/" + buildingLocation.toLowerCase().replaceAll(" ", "-");
-           }
-           var userProfileFilters = [];
-           userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
-           // filter the news article if they match BG & BU & BL & JL
-          /* this.state.newsList.forEach((news) => {
-             news.tags.forEach((tag, index) => {
-               if (tag.includes('job-level')) {
-                 var jL = tag.split('/');
-                 var jL = jL[jL.length - 1];
-                 news.tags[index] = jL;
-               }
-             })
-             filterProfileArticles(userProfileFilters, news.tags);
-             if (filterProfileArticles(userProfileFilters, news.tags)) {
-               this.state.userProfileArticles.push(news);
-             }
-           })
-           function filterProfileArticles(a, b) {
-             return (a.every(el => b.includes(el)));
-           }*/
-
-        /* this.state.userProfileArticles = this.state.newsList.filter((news) => {
-           return (!news.pinArticle && news.tags && news.tags.some((val) => userProfileFilters.indexOf(val) > -1))
-         })
-       } else {
-         //if no job profile filter the news articles by "all" tag. 
-         this.state.userProfileArticles = this.state.newsList.filter((news) => {
-           return (!news.pinArticle && news.tags && news.tags.some((val) => val.includes("/job-level/all/all")))
-         })
-       }
-       // if any selected preferences filter the articles from previously selected userProfile articles
-       if (this.state.selectedPreferenceList.length > 0) {
-         preferedNewsList = this.state.userProfileArticles.filter((news) => {
-           return (
-             !news.pinArticle &&
-             news.tags &&
-             news.tags.some(
-               (val) => this.state.selectedPreferenceList.indexOf(val) > -1
-             )
-           );
-         });
-       }
-       preferedNewsList.sort(function (a, b) {
-         // || a.heading.localeCompare(b.heading)
-         return (new Date(b.publishedDate) - new Date(a.publishedDate));
-       });
-       this.setState({
-         newsList: this.state.newsList,
-         filterNewsList: preferedNewsList,
-         userProfileArticles: this.state.userProfileArticles
-       }, () => {
-         this.getTabsHeading();
-       })
-       console.log(res);*/
       },
       error: (err) => {
         console.log(err);
@@ -371,15 +302,20 @@ class NewsTabs extends React.Component {
             }
           })
         } else if (element.split("/")[1] == "topic") {
-          topicsTag.push(element);
+          this.state.topicsList.tags.forEach((data) => {
+            if (data.id == element) {
+              topicsTag.push(data.title);
+            }
+          })
+          // topicsTag.push(element);
         }
       });
       /*businessTag.forEach((element, index) => {
         businessTag[index] = element.split("/")[2];
       });*/
-      topicsTag.forEach((element, index) => {
+      /*topicsTag.forEach((element, index) => {
         topicsTag[index] = element.split("/")[2];
-      });
+      });*/
       businessTag.sort();
       topicsTag.sort();
       this.state.selectedPreferenceTags = businessTag.concat(topicsTag);
@@ -390,7 +326,7 @@ class NewsTabs extends React.Component {
   }
   handleAllChecked(event) {
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.title != this.state.defaultBG) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = event.target.checked
       }
     })
@@ -471,7 +407,7 @@ class NewsTabs extends React.Component {
 
   clearAll() {
     this.state.businessGroupList.tags.forEach(prefer => {
-      if (prefer.title != this.state.defaultBG) {
+      if (prefer.id != this.state.defaultBG) {
         prefer.isChecked = false;
       }
     })
@@ -491,11 +427,29 @@ class NewsTabs extends React.Component {
   dateTransform(date) {
     let monthName = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
+    const EnTofr = {
+      "January": "Janvier",
+      "February": "Février",
+      "March": "Mars",
+      "April": "Avril",
+      "May": "Mai",
+      "June": "Juin",
+      "July": "Juillet",
+      "August": "Août",
+      "September": "Septembre",
+      "October": "Octobre",
+      "November": "Novembre",
+      "December": "Décembre"
+    }
     let d1 = new Date(date);
     let d = d1.getDate();
     let m = d1.getMonth();
+    let month = monthName[m]
+    if ($('html').attr('lang') == "fr-CA") {
+      month = EnTofr[month];
+    }
     let y = d1.getFullYear();
-    return `${monthName[m]} ${d}, ${y}`;
+    return `${month} ${d}, ${y}`;
     // return moment(date).format('MMMM DD, YYYY');
   }
 
@@ -610,7 +564,7 @@ class NewsTabs extends React.Component {
       var selectedAccordianID = selectedAccordian['id'];
       var selectedAccordianIndex = selectedAccordianID.split('tab-accordian-heading').pop();
       //
-      if( selectedAccordian.getAttribute('aria-expanded')== "true"){
+      if (selectedAccordian.getAttribute('aria-expanded') == "true") {
         var item = "responsivegrid" + selectedAccordianIndex;
         var accContItem = "tab-accordian-heading" + selectedAccordianIndex;
         document.getElementById(item).classList.remove("accordian-container-active");
@@ -633,7 +587,7 @@ class NewsTabs extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>Loading...</strong></p><p>One moment please</p></div></div>)}
+        { this.state.loading && (<div class="loaderContainer"><i class="fa fa-spinner fa-pulse"></i><div class="loaderText"><p><strong>{this.props.loading}</strong></p><p>{this.props.loadingText}</p></div></div>)}
         {!this.state.loading && (
           <div class="news-wrapper" id="news-wrapper-container">
             <div class="row">
@@ -654,7 +608,7 @@ class NewsTabs extends React.Component {
                           </div>
                           <span class="pull-right">
                             {this.state.selectedPreferenceTags.length > 0 &&
-                              <span>({this.state.selectedPreferenceTags.length})</span>
+                              <span>({this.state.selectedPreferenceTags.length}){" "}</span>
                             }
                             <a class="right-text" data-target="#preferenceModal" data-toggle="modal" id="preferenceModalLink" href="#preferenceModal">{this.props.toolbarRightText}<span class={`fa ${this.props.iconName}`}></span></a>
                           </span>
@@ -682,8 +636,8 @@ class NewsTabs extends React.Component {
                                     {this.state.businessGroupList.tags.map((value, index) => {
                                       return (
                                         <li key={index}>
-                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} disabled={value.isChecked && value.title === this.state.defaultBG} />
-                                          <span class="chk-lbl">{value.title}</span>
+                                          <input type="checkbox" name={value.id} value={value.id} onChange={this.handleCheckChildElement} checked={value.isChecked} class={value.id == this.state.defaultBG ? "disableCB" : ""} disabled={value.isChecked && value.id === this.state.defaultBG} />
+                                          <span class={`chk-lbl ${value.id == this.state.defaultBG ? "disableCB" : ""}`}>{value.title}</span>
                                         </li>
                                       )
                                     })}
@@ -740,11 +694,11 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) +" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
                                           <p>
                                             <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
-                                          <p>{this.state.tabHeading[value].data[key].summary}</p>
+                                          <p dangerouslySetInnerHTML={{ __html: this.state.tabHeading[value].data[key].summary }}></p>
                                         </div>
                                       )
                                     })}
@@ -756,7 +710,7 @@ class NewsTabs extends React.Component {
                                               <li className={`previous ${this.state.tabHeading[value].pageData.currentPage < 2 ? 'disabled' : ''}`}>
                                                 <a href="#news-wrapper-container" onClick={() => this.setPage(this.state.tabHeading[value], this.state.tabHeading[value].pageData.currentPage - 1)}>
                                                   <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                                  <span class="hidden-xs hidden-sm">{this.props.previousText}</span>
+                                                  <span class="">{this.props.previousText}</span>
                                                 </a>
                                               </li>
                                             }

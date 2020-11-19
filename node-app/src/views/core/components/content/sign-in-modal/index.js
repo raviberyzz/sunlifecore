@@ -2,6 +2,7 @@ $(document).ready(function () {
   $("a.customer-sign-sm").click(function () {
     updateSignInForm("form_signon_mobile");
   });
+  var mfaAjaxCallDone=false;
   $("#signin-widget-modal").on("shown.bs.modal", function () {
     var host = providerURL.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/g);
     if (host === null || host === undefined) {
@@ -19,7 +20,8 @@ $(document).ready(function () {
       let head = document.getElementsByTagName("head")[0];
       var style = document.createElement("link");
       style.href =
-        "/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-clientlibs.min.css?date=" +
+        //"/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-clientlibs.min.css?date=" +
+        "/etc.clientlibs/sunlife/core/clientlibs/vendor/mfa-clientlibs.min.css?date=" +
         newTime;
       style.rel = "stylesheet";
       style.id = "mfa-css";
@@ -27,14 +29,16 @@ $(document).ready(function () {
       var script1 = document.createElement("script");
       script1.type = "text/javascript";
       script1.src =
-        "/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-transit-jdk.js?date=" +
+        //"/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-transit-jdk.js?date=" +
+        "/etc.clientlibs/sunlife/core/clientlibs/vendor/mfa-transit-jdk.min.js?date=" +
         newTime;
       script1.id = "mfa1-js";
       $("body").append(script1);
       var script2 = document.createElement("script");
       script2.type = "text/javascript";
       script2.src =
-        "/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-clientlibs.min.js?date=" +
+        //"/etc.clientlibs/sunlife/core/components/content/sign-in/mfa-clientlibs.min.js?date=" +
+        "/etc.clientlibs/sunlife/core/clientlibs/vendor/mfa-clientlibs.min.js?date=" +
         newTime;
       script2.id = "mfa2-js";
       $("body").append(script2);
@@ -86,8 +90,15 @@ $(document).ready(function () {
       window.location.hostname.indexOf("www") > -1 &&
       window.location.hostname.indexOf(".ca") > -1
     ) {
-      mfaHtml();
-      mfaCssJs();
+      var action = $("#signin-widget-modal #form_signon").attr("action").trim();
+      if (action != undefined && action == "") {
+        if(mfaAjaxCallDone===false){
+          console.log('mfa modal'+mfaAjaxCallDone);
+          mfaHtml();
+          mfaCssJs();
+          mfaAjaxCallDone=true;
+        }
+      }
     }
   });
   function modalWidth() {
