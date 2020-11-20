@@ -219,6 +219,14 @@
         justify-content: space-evenly;
     }
 }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .comment-wrapper{
+        .modal-footer{
+            justify-content: space-around;
+        }
+    }
+}
 @media(max-width:767px){
     .comment-wrapper{
         .add-comment{
