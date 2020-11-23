@@ -232,7 +232,7 @@ public class MailServiceImpl implements MailService {
      *
      * @param fromEmailIdParam the from email id param
      * @param ccEmailIdParam the cc email id param
-     * @param ccEmailIdParam the bcc email id param
+     * @param bccEmailIdParam the bcc email id param
      * @param toEmailIdParam the to email id param
      * @param emailSubjectParam the email subject param
      * @param emailBodyParam the email body param
