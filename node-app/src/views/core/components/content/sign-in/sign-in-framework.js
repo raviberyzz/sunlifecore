@@ -378,7 +378,7 @@ $(document).ready(function () {
         $("#RTDMSignout").html(data);
       },
       error: function (e) {
-        console.error("ERROR from RTDM : ", e);
+        console.log("ERROR from RTDM : "+ e);
       },
     });
   }
