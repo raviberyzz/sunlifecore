@@ -7,7 +7,7 @@ $(document).ready(function(){
     }
     /* Removing sign-in refrence ends here */
     /* Find people search starts here */
-    $('#SignIn,#find-people-button-header,#directory_search').click(function(){
+    $('#SignIn,#find-people-button-header,#find-people-button-div,#directory_search').click(function(){
         utag.link({
             ev_type: 'other',
             ev_action: 'clk',
