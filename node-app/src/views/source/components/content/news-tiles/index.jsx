@@ -679,7 +679,7 @@ class NewsTiles extends React.Component {
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                         <div class="aggregate-tile" data-section="hp-news-position5">
                           <div class="circular-image">
-                            <img class="icon" src={this.props.moreNewsImg} />
+                            <img class="icon" src={this.props.moreNewsImg} alt="news icon image"/>
                           </div>
                           {Object.keys(this.state.filterNewsList)
                             .slice(4, 7)
@@ -714,7 +714,7 @@ class NewsTiles extends React.Component {
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workday-tile" data-section="hp-news-position6">
                       <p>
                         <a href={this.props.workdayLink} >
-                          <img src={this.props.workdayImg} alt="" />
+                          <img src={this.props.workdayImg} alt="workday tile image" />
                         </a>
                       </p>
                       <p class="m-top-bt">{this.props.workdayText}</p>
@@ -729,7 +729,7 @@ class NewsTiles extends React.Component {
                     <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 tile workplace-tile" data-section="hp-news-position7">
                       <p>
                         <a href={this.props.workplaceLink} >
-                          <img src={this.props.workplaceImg} alt="" />
+                          <img src={this.props.workplaceImg} alt="workplace tile image" />
                         </a>
                       </p>
                       <p class="m-top-bt">{this.props.workplaceText}</p>
