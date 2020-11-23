@@ -93,6 +93,7 @@ public class MailServiceImpl implements MailService {
     private String emailBody = "";
     private String isClient = "";
     private String ccEmailId = "";
+    private String bccEmailId = "";
     private String clientToEmailId = "";
     private String clientEmailSubject = "";
     private String clientEmailBody = "";
@@ -146,6 +147,8 @@ public class MailServiceImpl implements MailService {
 		    : StringUtils.EMPTY;
 	    ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
 			    : StringUtils.EMPTY;
+	    bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
+			    : StringUtils.EMPTY;
 	    clientEmailSubject = mailContent.containsKey("client-subject-email") ? mailContent.get("client-subject-email", String.class)
 		    : StringUtils.EMPTY;
 	    clientEmailBody = mailContent.containsKey("client-body-email") ? mailContent.get("client-body-email", String.class)
@@ -173,17 +176,17 @@ public class MailServiceImpl implements MailService {
 	errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
         
         if ("true".equalsIgnoreCase(isClient)) {
-            mailResponse = sendMail(fromEmailId, ccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
+            mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
             if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
         	LOG.debug("Mail sent to client..");
             } else {
         	LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
-        	mailResponse = sendMail(fromEmailId, ccEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
+        	mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
         	LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
             }
         }
         
-        mailResponse = sendMail(fromEmailId, ccEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
+        mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
         if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
     		LOG.debug("Mail sent to marketing team..");
     		return successResponse;
@@ -229,6 +232,7 @@ public class MailServiceImpl implements MailService {
      *
      * @param fromEmailIdParam the from email id param
      * @param ccEmailIdParam the cc email id param
+     * @param ccEmailIdParam the bcc email id param
      * @param toEmailIdParam the to email id param
      * @param emailSubjectParam the email subject param
      * @param emailBodyParam the email body param
@@ -236,7 +240,7 @@ public class MailServiceImpl implements MailService {
      * @param requestParametersParam the request parameters param
      * @return the http response
      */
-    public HttpResponse sendMail(String fromEmailIdParam, String ccEmailIdParam, String toEmailIdParam, String emailSubjectParam, String emailBodyParam,
+    public HttpResponse sendMail(String fromEmailIdParam, String ccEmailIdParam, String bccEmailIdParam, String toEmailIdParam, String emailSubjectParam, String emailBodyParam,
 	    String apiKeyParam, Map <String, String> requestParametersParam) {
 	// Mail API service
 	try {
@@ -250,6 +254,7 @@ public class MailServiceImpl implements MailService {
 	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
 	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailIdParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-cc-email-address", populateContent(ccEmailIdParam, requestParametersParam)));
+	    apiParameters.add(new BasicNameValuePair("slf-bcc-email-address", populateContent(bccEmailIdParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
 	    apiParameters.add(new BasicNameValuePair("slf-email-body", Base64.getEncoder().encodeToString(populateContent(emailBodyParam, requestParametersParam).getBytes(Charset.forName("UTF-8")))));
