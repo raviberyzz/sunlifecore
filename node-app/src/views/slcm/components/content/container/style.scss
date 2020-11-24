@@ -35,4 +35,14 @@
         }
     }
 }
-
+@media (min-width: $tab-screen-min){
+    .cta-home-wrapper {
+        .yellow-icon-white-background{
+            .cmp-container{
+                display:flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+}

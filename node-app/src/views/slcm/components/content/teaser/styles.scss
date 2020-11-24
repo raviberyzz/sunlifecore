@@ -11,3 +11,23 @@
         }
     }
 }
+// IE Specific fix for white box 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    // SLCM specific IE specific grey box circular image change
+    .layout-container.light-grey-20 {
+        .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.content-block-image {
+            .right-image-position {
+                .left-item.text-section {
+                    float: none;
+                    margin-right: 0;
+                    display: inline;
+                }
+                .right-item {
+                    float: right;
+                    margin-left: 32px;
+                    display: table;
+                }
+            }
+        }
+    }
+}
