@@ -384,8 +384,9 @@ class DynamicForm extends React.Component {
             data: strApiRequest,
             success: (resp) => {
                 output = resp;
+              	this.createutag('ajaxSuccess','button');
                 this.responseFunc(output, dataFromJson);
-                this.createutag('ajaxSuccess','button');
+                
             },
             error: (resp) => {
                 //popup 

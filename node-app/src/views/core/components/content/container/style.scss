@@ -735,17 +735,6 @@ ul {
             content: " "
         }  
     }
-    .slcm-content-page, .slcm-home-page {
-        .cta-home-wrapper {
-            .yellow-icon-white-background{
-                .cmp-container{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-            }
-        }
-    }
 }
 .company-highlight-blue-grey-background {
     background: linear-gradient(to bottom, $medium-blue-color, $medium-blue-color 50%, $light-grey-20 50% );
@@ -2319,7 +2308,7 @@ ul {
 
     }
 }
-@media(min-width: $desktop-screen-min)
+@media(min-width: $tab-screen-min)
 {
 .tool-card-main-wrapper{
     // width: 100% !important;
