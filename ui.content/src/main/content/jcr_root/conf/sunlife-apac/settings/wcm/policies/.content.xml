@@ -5917,6 +5917,11 @@
 	                                            cq:styleId="1584525201322"
 	                                            cq:styleLabel="Full Width"
 	                                            jcr:primaryType="nt:unstructured"/>
+	                                         <item1
+                                                cq:styleClasses="date"
+                                                cq:styleId="1584525208322"
+                                                cq:styleLabel="Date Field"
+                                                jcr:primaryType="nt:unstructured"/>
 	                                    </cq:styles>
 	                                </item0>
 	                            </cq:styleGroups>
