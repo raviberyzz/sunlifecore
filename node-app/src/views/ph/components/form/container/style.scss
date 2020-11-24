@@ -4,10 +4,12 @@
         width: auto;
         float: left;
     }
+    .options {
+        margin-top: 0px;
+    }
 }
 
 .ui-widget-content.ui-autocomplete {
-    ul {
         margin-left: 2em;
         li::before {
             content: "\2022";
@@ -19,5 +21,4 @@
             // padding-left: 16px;
             margin-left: -1em;
         }
-    }
 }
