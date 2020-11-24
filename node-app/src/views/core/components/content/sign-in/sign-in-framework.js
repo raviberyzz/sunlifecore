@@ -374,7 +374,7 @@ $(document).ready(function () {
       timeout: 10000,
       success: function (data) {
         //$("<div id='RTDMSignout'></div>").insertAfter("#signout");
-        console.log(data);
+        //console.log(data);
         $("#RTDMSignout").html(data);
       },
       error: function (e) {
