@@ -216,14 +216,14 @@
     }
 }
 // SLCM specific header change 
-.slcm-content-page, .slcm-home-page {
-    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .slf-tab-region {
-        background-color: $white-shade;
-    }
-    .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .slf-tab-region .slf-tab.first {
-        display: none;
-    }
-}
+// .slcm-content-page, .slcm-home-page {
+//     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .slf-tab-region {
+//         background-color: $white-shade;
+//     }
+//     .slf-mobile-header-wrapper .hamburger-menu-wrapper .language-region .mobile-language-region .slf-tab-region .slf-tab.first {
+//         display: none;
+//     }
+// }
 
 
 @media(max-width:$tab-screen-max){ 
