@@ -1,5 +1,6 @@
 @import '../../../base/core';
 .lead-gen-wrapper {
+    padding: 0;
     .button-wrapper {
         width: auto;
         float: left;
@@ -11,7 +12,7 @@
 
 .ui-widget-content.ui-autocomplete {
         margin-left: 2em;
-        li::before {
+        li .ui-menu-item-wrapper::before {
             content: "\2022";
             color: $medium-yellow-background;
             font-weight: bold;
@@ -19,6 +20,6 @@
             display: inline-block;
             width: 1rem;
             // padding-left: 16px;
-            margin-left: -1em;
+            // margin-left: -1em;
         }
 }
