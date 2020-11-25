@@ -368,6 +368,9 @@ class NewsTiles extends React.Component {
   }*/
 
   filteringNewsList() {
+    this.setState({
+      loading: true
+    });
     this.state.selectedPreferenceList = [];
     let businessTitle = [], topicsTitle = [];
     this.state.businessGroupList.tags.forEach((prefer) => {
