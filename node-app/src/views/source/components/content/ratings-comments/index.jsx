@@ -257,7 +257,7 @@ class ArticleComments extends React.Component {
     if(d[0]==0){
       d=parseInt(m[1]);
     }
-    console.log(m,d);
+    //console.log(m,d);
     let html=document.querySelector('html');
     let pageLang=html.getAttribute('lang');
     if(lang!==null && pageLang ==='fr-CA'){
