@@ -5,7 +5,6 @@
     sling:resourceType="/libs/granite/contexthub/cloudsettings/components/uimode"
     icon="coral-Icon--user">
     <profile/>
-    <location/>
     <resolvedsegments/>
     <campaign/>
 </jcr:root>
