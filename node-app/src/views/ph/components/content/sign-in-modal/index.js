@@ -36,8 +36,10 @@
             }
 
            window.addEventListener('message',function(res) {
+               
                if(res.origin == domain){
-                if(res.data == "#/dashboard") {
+                if(res.data == "#/dashboard") {  
+                    successLoginAnalytics();                     
                     window.open(res.origin + path + res.data, "_self");
                 } else {
                     $('#signErr').html(showError(res.data));
