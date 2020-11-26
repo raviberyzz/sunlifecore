@@ -424,7 +424,7 @@ class ArticleComments extends React.Component {
               <div class={`old-comments ${a}`}>
                 <section class="" id={`${value.commentId}`}>
                   <p class="name-time">
-                    <span class="name"><a href={`https://sunlife.workplace.com/search/people/?q=${value.userName}`}>{value.userName}</a></span>
+                    <span class="name"><a href={`https://sunlife.workplace.com/search/people/?q=${value.userName}`} target="_blank">{value.userName}</a></span>
                     <span class="time">{value.updatedDate}</span>
                     <div
                       class={`three-dots ${
