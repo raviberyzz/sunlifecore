@@ -7,11 +7,11 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface DrugListConfig {
 
     @AttributeDefinition(name = "pdfFolder", description = "DAM folder containing the pdfs")
-    String getPdfFolder() default "/content/dam/sunlife/data";
+    String pdf_folder() default "/content/dam/sunlife/data";
 
     @AttributeDefinition(name = "drugListAssetPath", description = "Path to JSON Data")
-    String getDrugListAssetPath() default "/content/dam/sunlife/data";
+    String drug_list_asset_path() default "/content/dam/sunlife/data";
 
     @AttributeDefinition(name = "drugListAssetName", description = "Name of JSON Asset")
-    String getDrugListAssetName() default "druglist.json";
+    String drug_list_asset_name() default "druglist.json";
 }

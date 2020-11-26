@@ -266,9 +266,9 @@ public class DrugListServiceImpl implements DrugListService {
     @Activate
     protected final void activate(DrugListConfig config) {
 
-        pdfFolder = config.getPdfFolder();
+        pdfFolder = config.pdf_folder();
 
-        dataAssetPath = String.format("%s/%s", config.getDrugListAssetPath(), config.getDrugListAssetName());
+        dataAssetPath = String.format("%s/%s", config.drug_list_asset_path(), config.drug_list_asset_name());
 
     }
 
