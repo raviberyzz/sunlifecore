@@ -299,7 +299,8 @@ class ArticleComments extends React.Component {
     if (commentArray) {
       commentArray.map((value, index) => {
         if (value) {
-          let cdate = value.updatedDate.split("T")[0];
+          //let cdate = value.updatedDate.split("T")[0];
+          let cdate = value.updatedDate;
           cdate = this.dateChange(cdate);
           commentArray[index].updatedDate = cdate;
         }

@@ -27,6 +27,7 @@ function onLogout(isVisible) {
   }
 
   return new Promise(function(resolve,reject){
+    journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){
       updateSessionToken(null);
       resolve(true);
@@ -83,7 +84,7 @@ function initJourneyPlayer() {
 } 
 
 function getTransmitConnectionSettings() {
-  // var serverUrl = "https://mfa-uat.sunlifecorp.com";
+  //var serverUrl = "https://mfa-uat.sunlifecorp.com";
   // var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var realm = "";
