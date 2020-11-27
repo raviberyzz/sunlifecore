@@ -40,10 +40,15 @@
         .login-container{
             .download-app {
                 display: flow-root;
-                a img {
-                    float: left;
-                    margin-right: 10px;
-                }
+                min-height: 66px;
+                height: auto;
+                a{
+                    text-align: left;
+                    img {
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }    
            }
         }
     } 
