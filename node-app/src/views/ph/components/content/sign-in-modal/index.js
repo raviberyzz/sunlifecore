@@ -46,7 +46,7 @@
                     window.open(res.origin + path + res.data, "_self");
                 } else {
                     $('#signErr').html(showError(res.data));
-                    frame.parentElement.removeChild(frame);
+                    //frame.parentElement.removeChild(frame);
                 }
                }
             })
