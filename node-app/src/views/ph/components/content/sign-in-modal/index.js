@@ -44,6 +44,7 @@
                 if(res.data == "#/dashboard") {  
                     successLoginAnalytics();                     
                     window.open(res.origin + path + res.data, "_self");
+                    $('.loading').css('display','none');
                 } else {
                     $('#signErr').html(showError(res.data));
                     //frame.parentElement.removeChild(frame);
