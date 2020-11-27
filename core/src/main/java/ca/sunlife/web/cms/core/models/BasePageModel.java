@@ -1179,7 +1179,6 @@ public class BasePageModel {
     LOG.debug("Entry :: processDataForCNWNews :: ");
     String releaseId = null;
     try {
-      final String domain = configService.getConfigValues(DOMAIN_STR, pagePath);
       if (request.getRequestPathInfo().getSelectors().length > 0) {
         releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
         LOG.debug("Selector fetched :: releaseId :: {}", releaseId);
@@ -1202,8 +1201,7 @@ public class BasePageModel {
             "processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}",
             title, description, socialMediaDescripton, canonicalUrl);
       }
-    } catch (IOException | ParseException | ApplicationException | SystemException | LoginException
-        | RepositoryException e) {
+    } catch (IOException | ParseException | ApplicationException | SystemException e) {
       LOG.error("Error :: processDataForCNWNews :: {}", e);
     }
     LOG.debug("Exit :: processDataForCNWNews :: ");
