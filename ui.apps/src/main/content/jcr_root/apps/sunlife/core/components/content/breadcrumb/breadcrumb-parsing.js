@@ -10,29 +10,14 @@ use(function () {
         };
     }
 
-    var siteUrl = configService.getConfigValues('siteUrl',currentPage.getPath());
+    var siteUrl = configService.getPageUrl(currentPage.getPath());
 
     if (siteUrl == null || siteUrl.equals("")) {
         return {
             navPath : navPath
         };
     }
-
-    var updatedUrl = navPath.substring(siteUrl.lastIndexOf('/'),navPath.lastIndexOf('.')) + "/";
-
-    var domain = configService.getConfigValues('domain', currentPage.getPath());
-
-    if(domain == null || domain.equals("")){
-       return {
-               navPath : navPath
-        };
-       }
-    var completeURL = domain + updatedUrl;
     return {
-            completeURL : completeURL
+        completeURL : siteUrl
     }
-
-
-
-
 });
