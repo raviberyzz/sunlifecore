@@ -93,8 +93,17 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
 
 //4
   this.promiseInput = function () {
-    var _this2 = this;
 
+    if(this.clientContext['shouldCancel']){
+      const wrongInputEscBlock = this.actionContext.escapeOptionById("cancel");
+      if (wrongInputEscBlock) {
+        _this.clientContext['shouldCancel'] = false;
+        const escResponse = com.ts.mobile.sdk.InputOrControlResponse.createEscapeResponse(wrongInputEscBlock);
+        return Promise.resolve(escResponse);
+      }
+    }
+
+    var _this2 = this;
     var self = this;
     return new Promise(function (resolve, reject) {
       if(this.showDebugInfo){
@@ -126,9 +135,20 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
   this.promiseRecoveryForError = function(error, validRecoveries, defaultRecovery) {
     return new Promise(function (resolve, reject) {
       //console.error("promiseRecoveryForError was called with error: ", error);
+
+      if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.InvalidInput &&
+        (error.getData().additional_data && error.getData().additional_data.wrong_inputs_left === 0) &&
+        defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator
+      ){
+        _this.clientContext['shouldCancel'] = true;
+        hideSpinner();
+        resolve(com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator);
+        return;
+      }
+
       if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication){
-          resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
-          return;
+        resolve(com.ts.mobile.sdk.ConfirmationInput.create(-1));
+        return;
       }
 
       otpEntryAttemptFlag = 1; // reset
@@ -222,6 +242,7 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     if(this.showDebugInfo){
       console.log("actionContext :"+_this.actionContext);
     }
+
     utag.link({
       ev_type: 'other',
       ev_action: 'clk',

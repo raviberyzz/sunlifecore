@@ -246,6 +246,18 @@ class ArticleComments extends React.Component {
     let d = d1.getDate();
     let m = d1.getMonth();
     let y = d1.getFullYear();
+    // let timeArray=date.split('-');
+    // let y=parseInt(timeArray[0]);
+    // let m=parseInt(timeArray[1]);
+    // let d=parseInt(timeArray[2]);
+    // if(m[0]==0){
+    //   m=parseInt(m[1]);
+    // }
+    // m=m-1;
+    // if(d[0]==0){
+    //   d=parseInt(m[1]);
+    // }
+    //console.log(m,d);
     let html=document.querySelector('html');
     let pageLang=html.getAttribute('lang');
     if(lang!==null && pageLang ==='fr-CA'){
@@ -412,7 +424,7 @@ class ArticleComments extends React.Component {
               <div class={`old-comments ${a}`}>
                 <section class="" id={`${value.commentId}`}>
                   <p class="name-time">
-                    <span class="name">{value.userName}</span>
+                    <span class="name"><a href={`https://sunlife.workplace.com/search/people/?q=${value.userName}`} target="_blank">{value.userName}</a></span>
                     <span class="time">{value.updatedDate}</span>
                     <div
                       class={`three-dots ${

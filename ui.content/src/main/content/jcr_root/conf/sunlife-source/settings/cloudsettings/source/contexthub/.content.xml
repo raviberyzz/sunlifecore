@@ -11,4 +11,27 @@
     debug="{Boolean}false"
     disabled="{Boolean}false">
     <profile/>
+    <emulators
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Emulators"
+        sling:resourceType="/libs/granite/contexthub/cloudsettings/components/basestore"
+        enabled="{Boolean}true"
+        required="{Boolean}true"
+        storeType="granite.emulators"/>
+    <persona/>
+    <device/>
+    <pagedata
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Page Data"
+        sling:resourceType="/libs/granite/contexthub/cloudsettings/components/basestore"
+        enabled="{Boolean}true"
+        required="{Boolean}true"
+        storeType="aem.pagedata"/>
+    <segmentation
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Segmentation"
+        sling:resourceType="/libs/granite/contexthub/cloudsettings/components/basestore"
+        enabled="{Boolean}true"
+        required="{Boolean}true"
+        storeType="aem.segmentation"/>
 </jcr:root>
