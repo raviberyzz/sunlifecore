@@ -246,18 +246,6 @@ class ArticleComments extends React.Component {
     let d = d1.getDate();
     let m = d1.getMonth();
     let y = d1.getFullYear();
-    // let timeArray=date.split('-');
-    // let y=parseInt(timeArray[0]);
-    // let m=parseInt(timeArray[1]);
-    // let d=parseInt(timeArray[2]);
-    // if(m[0]==0){
-    //   m=parseInt(m[1]);
-    // }
-    // m=m-1;
-    // if(d[0]==0){
-    //   d=parseInt(m[1]);
-    // }
-    //console.log(m,d);
     let html=document.querySelector('html');
     let pageLang=html.getAttribute('lang');
     if(lang!==null && pageLang ==='fr-CA'){
