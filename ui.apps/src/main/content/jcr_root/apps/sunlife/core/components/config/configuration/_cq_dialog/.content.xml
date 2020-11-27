@@ -40,6 +40,11 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldLabel="Site content location"
                                         name="./siteUrl"/>
+                                    <siteRootPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Site Root location"
+                                        name="./siteRootPath"/>
                                     <alt-langague
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

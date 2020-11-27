@@ -538,9 +538,7 @@ public class CNWNewsModel {
       }
       if (null != newsArticleUrl && newsArticleUrl.length() > 0) {
         final String pagePath = currentPage.getPath();
-        final String siteUrl = configService
-            .getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
-        newsArticleShortenedUrl = shortenURL(newsArticleUrl, siteUrl);
+        newsArticleShortenedUrl = configService.getPageRelativeUrl(pagePath);
       }
     } catch (IOException | ApplicationException | SystemException | LoginException
         | RepositoryException e) {
@@ -635,33 +633,13 @@ public class CNWNewsModel {
       requestURL = requestURL + "." + activeYear;
     }
     requestURL = requestURL.replace(".", "/");
-    final String pagePath = currentPage.getPath();
-    final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
-        pagePath);
-    relativeURL = shortenURL(relativeURL, siteUrl);
-    requestURL = shortenURL(requestURL, siteUrl);
+    relativeURL = configService.getPageRelativeUrl(relativeURL);
+    requestURL = configService.getPageRelativeUrl(requestURL);
     logger.debug("requestURL - after clean up: {}", requestURL);
     news = newsService.getCNWNews(locale, requestURL, pageNum, String.valueOf(activeYear), pageSize,
         newsCategories);
     if (logger.isDebugEnabled()) {
       logger.debug("Final news object :: {}", new ObjectMapper().writeValueAsString(news));
     }
-  }
-
-  /**
-   * Shorten URL.
-   *
-   * @param pagePath
-   *          the page path
-   * @param siteUrl
-   *          the site url
-   * @return the string
-   */
-  public String shortenURL(final String pagePath, final String siteUrl) {
-    if (null == siteUrl) {
-      return null;
-    }
-    return pagePath.replace(
-        siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
   }
 }

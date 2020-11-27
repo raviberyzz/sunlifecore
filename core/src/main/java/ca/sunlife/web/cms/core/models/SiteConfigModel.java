@@ -55,6 +55,15 @@ public interface SiteConfigModel {
 
   @ Inject
   String getSiteUrl();
+  
+  /**
+   * Gets the site root path.
+   *
+   * @return the site root path
+   */
+
+  @ Inject
+  String getSiteRootPath();
 
   /**
    * Gets the site suffix.

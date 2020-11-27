@@ -165,6 +165,10 @@ public class SiteConfigServiceImpl implements SiteConfigService {
   @ Override
   public String getPageUrl(final String pagePath) {
     final String domain = getConfigValues("domain", pagePath);
+    final String siteRootPath = getConfigValues("siteRootPath", pagePath);
+    if(StringUtils.isNotEmpty(siteRootPath)) {
+      return domain.concat(pagePath.replace(siteRootPath, StringUtils.EMPTY).concat(BasePageModelConstants.SLASH_CONSTANT));
+    }
     final String siteUrl = getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
     if (StringUtils.isNotEmpty(siteUrl)) {
       return domain
@@ -190,6 +194,25 @@ public class SiteConfigServiceImpl implements SiteConfigService {
       }
     });
     return props;
+  }
+
+  /* (non-Javadoc)
+   * @see ca.sunlife.web.cms.core.services.SiteConfigService#getPageRelativeUrl(java.lang.String)
+   */
+  @ Override
+  public String getPageRelativeUrl(String pagePath) {
+    final String siteRootPath = getConfigValues("siteRootPath", pagePath);
+    if(StringUtils.isNotEmpty(siteRootPath)) {
+      return pagePath.replace(siteRootPath, StringUtils.EMPTY).concat(BasePageModelConstants.SLASH_CONSTANT);
+    }
+    final String siteUrl = getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, pagePath);
+    if (StringUtils.isNotEmpty(siteUrl)) {
+      return pagePath
+                  .replace(siteUrl.substring(0,
+                      siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "")
+                  .concat(BasePageModelConstants.SLASH_CONSTANT);
+    }
+    return StringUtils.EMPTY;
   }
 
 }

@@ -628,7 +628,7 @@ public class AnnouncementList {
           leakingResourceResolver.close();
         }
       }
-      String path = configService.getPageUrl(currentPage.getPath()).substring(0, configService.getPageUrl(currentPage.getPath()).lastIndexOf(slash));
+      String path = configService.getPageRelativeUrl(currentPage.getPath());
           
       if ("2".equals(newsType)) {
         processReleasesData();

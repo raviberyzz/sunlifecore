@@ -54,6 +54,15 @@ public interface SiteConfigService {
   public String getPageUrl(String pagePath);
   
   /**
+   * Gets the page relative url.
+   *
+   * @param pagePath
+   *          the page path
+   * @return the page relative url
+   */
+  public String getPageRelativeUrl(String pagePath);
+  
+  /**
    * Gets the all sites.
    *
    * @param propName
