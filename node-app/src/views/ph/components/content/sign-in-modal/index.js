@@ -24,6 +24,7 @@
                     frame = document.createElement("iframe");
                     frame.src= domain + path + "?xdm_e=true";
                     frame.style.display = "none";
+                    frame.id='ph-signin';
                     frame.onload = function() {
                         frame.contentWindow.postMessage(String(encrypted), domain);
                     }
