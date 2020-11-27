@@ -1,6 +1,8 @@
 
-            var domain = 'https://sv84007.ph.sunlife';
-            var path = '/Sunlife/apps/services/www/Sunlife/mobilewebapp/default/index.html';
+            var domain='https://sv591527.ph.sunlife';
+            //var domain = 'https://sv84007.ph.sunlife';
+            //var path = '/Sunlife/apps/services/www/Sunlife/mobilewebapp/default/index.html';
+            var path = '/Sunlife/apps/services/www/Sunlife_kyc/mobilewebapp/default/index.html';
             var key = "ff0c21aa-bb0c-498d2-aed2092-ccd0192b-ee-01-bbc0192ee";
 			if(location.hostname == 'www.sunlife.com.ph'){
 				domain = 'https://mobile.sunlife.com.ph';
