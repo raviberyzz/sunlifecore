@@ -24,6 +24,7 @@
                     frame = document.createElement("iframe");
                     frame.src= domain + path + "?xdm_e=true";
                     frame.style.display = "none";
+                    frame.id='ph-signin';
                     frame.onload = function() {
                         frame.contentWindow.postMessage(String(encrypted), domain);
                     }
@@ -45,7 +46,7 @@
                     window.open(res.origin + path + res.data, "_self");
                 } else {
                     $('#signErr').html(showError(res.data));
-                    frame.parentElement.removeChild(frame);
+                    //frame.parentElement.removeChild(frame);
                 }
                }
             })
