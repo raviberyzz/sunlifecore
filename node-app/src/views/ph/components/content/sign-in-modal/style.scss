@@ -29,7 +29,9 @@
         margin-bottom: 0;
     }
     #signErr {
-        padding: 16px;
+        padding: 8px;
+        min-height: 48px;
+        background-color: $medium-red-color !important;
     }
 }
 
@@ -37,13 +39,10 @@
     .sign-in-modal-wrapper {
         .login-container{
             .download-app {
-                display: block;
-                width: auto;
-                margin-left: -24px;
-                margin-right: -24px;
-                padding: 8px 10px;
+                display: flow-root;
                 a img {
                     float: left;
+                    margin-right: 10px;
                 }
            }
         }
