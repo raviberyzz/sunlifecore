@@ -10,7 +10,7 @@ use(function () {
         };
     }
 
-    var siteUrl = configService.getPageUrl(navPath);
+    var siteUrl = configService.getPageUrl(navPath.substring(0,navPath.lastIndexOf('.')));
 
     if (siteUrl == null || siteUrl.equals("")) {
         return {
