@@ -84,7 +84,7 @@ public class BasePageModel {
   private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
   
   /** The Constant MFA_Encryption. */
-  private static final String MFA_Encryption = "mfaEncryption";
+  private static final String MFA_ENCRYPTION = "mfaEncryption";
 
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
@@ -873,6 +873,7 @@ public class BasePageModel {
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
+    mfaEncryption = configService.getConfigValues(MFA_ENCRYPTION, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
