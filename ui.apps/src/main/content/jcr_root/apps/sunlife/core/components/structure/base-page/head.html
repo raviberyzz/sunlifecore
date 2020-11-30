@@ -40,5 +40,6 @@
 	<!-- Include MFA Domain Path -->
     <sly data-sly-test="${baseModel.mfaDomainPath}">
 		<script>var serverUrl = '${baseModel.mfaDomainPath @ context="scriptString"}';</script>
+		<script>var tsCryptoMod = '${baseModel.mfaEncryption @ context="scriptString"}';</script>
 	</sly>
 </template>
