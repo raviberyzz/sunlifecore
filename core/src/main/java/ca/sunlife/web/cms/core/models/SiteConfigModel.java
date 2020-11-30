@@ -224,4 +224,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getMfaDomainPath();
+  
+  /**
+   * Gets the mfaEncryption param.
+   *
+   * @return the mfaEncryption param
+   */
+  @ Inject
+  String getMfaEncryption();
 }

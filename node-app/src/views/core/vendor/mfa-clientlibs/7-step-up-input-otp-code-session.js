@@ -151,7 +151,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
         return;
       }
 
-      otpEntryAttemptFlag = 1; // reset
       if(defaultRecovery === com.ts.mobile.sdk.AuthenticationErrorRecovery.RetryAuthenticator) {
           invalidCodeFlag = true;
           waitLoader.keepModalContent = false;
@@ -264,7 +263,6 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     waitLoader.keepWaitLoader = true;
     waitLoader.keepModalContent = true;
     
-    otpEntryAttemptFlag = 2;
     var code = $("#step-up-input-otp-code-screen-input").val(); 
     var input = com.ts.mobile.sdk.OtpInputOtpSubmission.createOtpSubmission(code);
     var inputTargetBased = com.ts.mobile.sdk.TargetBasedAuthenticatorInput.createAuthenticatorInput(input);
