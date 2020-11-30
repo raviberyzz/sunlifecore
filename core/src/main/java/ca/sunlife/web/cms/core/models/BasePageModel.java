@@ -82,6 +82,9 @@ public class BasePageModel {
 
   /** The Constant MFA_DOMAIN_PATH. */
   private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
+  
+  /** The Constant MFA_Encryption. */
+  private static final String MFA_Encryption = "mfaEncryption";
 
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
@@ -321,6 +324,9 @@ public class BasePageModel {
 
   /** The mfa Domain Path. */
   private String mfaDomainPath;
+  
+  /** The mfa Encryption. */
+  private String mfaEncryption;
   
   /** The favicon. */
   private String favIcon;
@@ -826,6 +832,24 @@ public class BasePageModel {
 	public void setMfaDomainPath(final String mfaDomainPath) {
 		this.mfaDomainPath = mfaDomainPath;
 	}
+	
+	/**
+	 * Gets the mfaDomainPath
+	 * 
+	 * @return the mfaDomainPath
+	 */
+	public String getMfaEncryption() {
+		return mfaEncryption;
+	}
+
+	/**
+	 * @param mfaDomainPath
+	 *          the mfaDomainPath to set
+	 */
+	public void setMfaEncryption(final String mfaEncryption) {
+		this.mfaEncryption = mfaEncryption;
+	}
+
 
 	/**
    * Inits the.
