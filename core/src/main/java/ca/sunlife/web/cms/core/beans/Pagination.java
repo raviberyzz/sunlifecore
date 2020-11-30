@@ -220,7 +220,7 @@ public class Pagination {
     final int firstBreakPt = 5;
     final int firstMinTotal = 6;
     int resultSize = 0;
-    final String requestUrlStr = pageUrl + "/";
+    final String requestUrlStr = pageUrl;
     LOGGER.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", pageSize, total);
 
     final int recordPerPage = pageSize;
