@@ -83,12 +83,26 @@ function initJourneyPlayer() {
   });
 } 
 
+
 function getTransmitConnectionSettings() {
-  //var serverUrl = "https://mfa-uat.sunlifecorp.com";
+  // make sure serverUrl is commented out before deployment
+  // var serverUrl = "https://mfa-uat.sunlifecorp.com";
   // var serverUrl = "https://mfa-dev.sunlifecorp.com";
   var appId = "mfa_signin";
   var realm = "";
-  var settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
+  var settings = null;
+  var tsCryptoModeVal = window.tsCryptoMode || 'default';
+  switch(tsCryptoModeVal){
+    case 'credentials':
+      settings = com.ts.mobile.sdk.SDKConnectionSettings.createWithCryptoMode(serverUrl, appId, "", "", com.ts.mobile.sdk.ConnectionCryptoMode.Credentials);
+    break;
+    case 'full':
+      settings = com.ts.mobile.sdk.SDKConnectionSettings.createWithCryptoMode(serverUrl, appId, "", "", com.ts.mobile.sdk.ConnectionCryptoMode.Full);
+    break;
+    default:
+      settings = com.ts.mobile.sdk.SDKConnectionSettings.create(serverUrl, appId);
+    break;
+  }
   settings.setRealm(realm);
   return settings;
 }

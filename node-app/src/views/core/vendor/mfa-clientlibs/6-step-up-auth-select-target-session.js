@@ -5,8 +5,8 @@ function StepUpSelectTargetFormSession(formId, payload) {
   this.phoneNumbers = payload["phoneNumbers"] || [];
   this.clientContext = null;
   this.showDebugInfo = false;
-
   this.submitBlock = null;
+  otpEntryAttemptFlag = 2;
 
   /** Form Session */
       
