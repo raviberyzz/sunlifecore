@@ -11,7 +11,6 @@ if (location.hostname == "www.sunlife.com.ph") {
 var frame;
 function validateUser() {
   $(".loading").css("display", "block");
-  $("#signErr").html("");
   var x = document.getElementById("form_signon");
   if (x.elements[0].value == "" || x.elements[1].value == "") {
     $("#signErr").html(showError("Please provide username/password."));
@@ -32,6 +31,7 @@ function validateUser() {
   }
 }
 function showError(err) {
+  $("#signErr").html("");
   $("#signErr").css("display", "block");
   $(".loading").css("display", "none");
   return "<center><strong>" + err + "</strong></center>";
@@ -41,9 +41,10 @@ window.addEventListener("message", function (res) {
   if (res.origin == domain) {
     if (res.data == "#/dashboard") {
       successLoginAnalytics();
-      window.open(res.origin + path + res.data, "_self");
+      $("#signErr").html("");
       $("#signErr").css("display", "none");
       $(".loading").css("display", "none");
+      window.open(res.origin + path + res.data, "_self");
     } else {
       $("#signErr").html(showError(res.data));
       //frame.parentElement.removeChild(frame);
