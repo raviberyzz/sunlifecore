@@ -455,10 +455,7 @@ public class ArticleListModel {
       }
       if (getDisplayType().equals("articleList")) {
         String path = currentPage.getPath();
-        final String siteUrl = configService
-            .getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT, path);
-        path = path.replace(
-            siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
+        path = configService.getPageRelativeUrl(path);
         setPagination(new Pagination(request, getMaxItems(), getTotalMatch(), path));
         setPageUrl(path);
       }

@@ -10,9 +10,6 @@
   width: 100%;
   margin: 0 0 8px 0; }
 
-.row.flex-height .form-yellow-wrapper {
-  height: 100%; }
-
 .cta-form-wrapper .dropdown {
   padding-right: 10px; }
   .cta-form-wrapper .dropdown .cmp-form-options--drop-down {
@@ -20,6 +17,33 @@
 
 .home-cta-form-wrapper .experiencefragment {
   height: auto !important; }
+
+.row.flex-height .form-yellow-wrapper {
+  height: 100%;
+  padding: 24px !important; }
+  .row.flex-height .form-yellow-wrapper .icon-text .icon-style {
+    height: 60px;
+    width: 60px;
+    padding: 6px; }
+  .row.flex-height .form-yellow-wrapper .icon-text .icon-texts {
+    padding-top: 16px !important; }
+    .row.flex-height .form-yellow-wrapper .icon-text .icon-texts h2, .row.flex-height .form-yellow-wrapper .icon-text .icon-texts h3, .row.flex-height .form-yellow-wrapper .icon-text .icon-texts h4, .row.flex-height .form-yellow-wrapper .icon-text .icon-texts h5, .row.flex-height .form-yellow-wrapper .icon-text .icon-texts h6 {
+      margin-bottom: 16px !important;
+      font-size: 18px;
+      line-height: 23px;
+      font-weight: 700; }
+  .row.flex-height .form-yellow-wrapper .cmp-form-options--drop-down {
+    margin: 6px 0 8px 0; }
+
+@media (min-width: 1025px) {
+  .row.flex-height .form-yellow-wrapper form {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .row.flex-height .form-yellow-wrapper .cmp-form-options--drop-down {
+    margin-top: 14px; }
+  .row.flex-height .form-yellow-wrapper .button-wrapper .cmp-form-button {
+    margin-bottom: 0 !important; } }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .form-yellow-wrapper {
@@ -48,3 +72,9 @@
   .no-padding .yellow-icon-white-background .home-cta-form-wrapper form .experiencefragment .dropdown {
     width: 100% !important;
     margin-right: 0; } }
+
+.lead-gen-wrapper .cmp-form-options__field--drop-down {
+  margin-bottom: 0; }
+
+.lead-gen-wrapper .col-sm-6 .cmp-form-options--drop-down {
+  margin-bottom: 20px; }

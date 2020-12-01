@@ -69,6 +69,7 @@ public class CNWNewsModelTest {
     when(currentPage.getPath( )).thenReturn("/content/sunlife/ca/en/home");
     when(configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT ,
         "/content/sunlife/ca/en/home")).thenReturn("/content/sunlife");
+    when(configService.getPageRelativeUrl("/content/sunlife/ca/en/home")).thenReturn("home");
   }
 
   void setSelectors() {
@@ -97,7 +98,8 @@ public class CNWNewsModelTest {
     setSelectors( );
     setInitialData("2020" , "3" , "10" , new String [ ] { "773" });
     String expectedRequestURL = "home.page";// should NOT have the page number
-
+    when(configService.getPageRelativeUrl("home")).thenReturn("home");
+    when(configService.getPageRelativeUrl("home/page")).thenReturn("home/page");
     when(request.getRequestURI( )).thenReturn(DUMMY_URI_CURRENT_PAGE);
     when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage( ) ,
         expectedRequestURL.replace("." , "/") , DUMMY_PAGE_NUMBER , DUMMY_ACTIVE_YEAR , "10" ,
@@ -129,10 +131,9 @@ public class CNWNewsModelTest {
     setSelectors( );
     setInitialData("2020" , "3" , "10" , new String [ ] { "773" });
     when(request.getRequestURI( )).thenReturn(DUMMY_URI_OTHER_PAGE);
+    when(configService.getPageRelativeUrl("home/page-18")).thenReturn("home/page-18");
     cnwNewsModel.setNewsType("2");
     cnwNewsModel.init( );
-
-    // requestURL should have the page number
     assertEquals("home.page-18".replace("." , "/") , cnwNewsModel.getRequestURL( ));
 
     // news should be null
@@ -156,7 +157,7 @@ public class CNWNewsModelTest {
     }
     boolean logHasExceptionMessage = TestUtils.getLogMessageFlag(logger.getLoggingEvents( ) ,
         "Error :: CNWNewsModel");
-    assertTrue(logHasExceptionMessage);
+    assertTrue(!logHasExceptionMessage);
   }
 
   @ Test
@@ -252,6 +253,7 @@ public class CNWNewsModelTest {
     when(newsService.getCNWNews(TestUtils.CANADA_LOCALE.getLanguage( ) ,
         "home.page-23.1950".replace("." , "/") , null , DUMMY_ACTIVE_YEAR , "10" ,
         cnwNewsModel.getNewsCategories( ))).thenReturn(new News( ));
+    when(configService.getPageRelativeUrl("home/page-23/1950")).thenReturn("home/page-23/1950");
     cnwNewsModel.init( );
 
     assertNotNull(cnwNewsModel.getNews( ));

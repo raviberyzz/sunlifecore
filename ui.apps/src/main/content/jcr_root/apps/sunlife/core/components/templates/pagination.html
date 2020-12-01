@@ -18,13 +18,13 @@
                 <sly data-sly-test="${paginationObj.curPage > 1}">
                     <li class="previous ${previousCss}">
                     	<sly data-sly-test="${paginationObj.prevPage > 1}">
-                            <a x-cq-linkchecker="skip" href="${pageUrl}/${paginationObj.prevPage}/">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}${paginationObj.prevPage}/">
                                 <span class="fa fa-angle-left" aria-hidden="true"></span>
                                 <span>${'Prev' @ i18n}</span>
                             </a>
                         </sly>
                         <sly data-sly-test="${paginationObj.prevPage == 1}">
-                            <a x-cq-linkchecker="skip" href="${pageUrl}/">
+                            <a x-cq-linkchecker="skip" href="${pageUrl}">
                                 <span class="fa fa-angle-left" aria-hidden="true"></span>
                                 <span>${'Prev' @ i18n}</span>
                             </a>
@@ -33,7 +33,7 @@
                 </sly>
                 <sly data-sly-test = "${paginationObj.pageItems.size > 0}">
                 <li class="link-to-first ${firstPageCss}">
-                    <a x-cq-linkchecker="skip" href="${pageUrl}/1/" aria-label="${paginationObj.firstPageText}">
+                    <a x-cq-linkchecker="skip" href="${pageUrl}1/" aria-label="${paginationObj.firstPageText}">
                         <span class="fa fa-angle-double-left" aria-hidden="true"></span>
                         <span>1</span>
                     </a>
@@ -50,7 +50,7 @@
                 </sly>
                 <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
                     <li class="next ${nextCss}">
-                        <a x-cq-linkchecker="skip" href="${pageUrl}/${paginationObj.nextPageNo}/">${'Next' @ i18n}</a>
+                        <a x-cq-linkchecker="skip" href="${pageUrl}${paginationObj.nextPageNo}/">${'Next' @ i18n}</a>
                     </li>
                 </sly>
                 </ul>

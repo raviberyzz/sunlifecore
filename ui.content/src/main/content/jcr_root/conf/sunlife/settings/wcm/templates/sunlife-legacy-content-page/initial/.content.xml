@@ -11,16 +11,14 @@
             <experiencefragment_header
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/legacy/components/content/experiencefragment"
-                fragmentPath="/content/experience-fragments/sunlife/internal/pal/header/master"
-                text="Home - The Source Home| Site map View another Source Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Worldwide www.sunlife.com Bermuda www.sunlife.com/international Canada www.sunlife.ca www.mcleanbudden.com China (in Simplified Chinese) www.sunlife-everbright.com Hong Kong www.sunlife.com.hk India www.birlasunlife.com Indonesia www.sunlife.co.id www.cimbsunlife.co.id Ireland www.sunlife.ie Philippines www.sunlife.com.ph United Kingdom www.sunlifefinancialofcanada.co.uk United States www.sunlife.com/us www.mfs.com www.suncapitaladvisers.com Centre of Excellence Delivery Frameworks Waterfall SDLC Lean Incremental SDLC Asia IT Small Enhancement Process Canadian IT Small Enhancement Process Agile Technology Upgrades Practice Based View Process Compliance Training Continuous Improvements Governance &amp; Reporting Welcome Vineet Pandey SLF (TSX) 58.96 2.54 as of 11/09/2020 16:00:00 ET"/>
+                fragmentPath="/content/experience-fragments/sunlife/internal/source/pal/en/header/master"/>
             <layout_container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/legacy/components/content/legacy-layout-container"/>
             <experiencefragment_footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/legacy/components/content/experiencefragment"
-                fragmentPath="/content/experience-fragments/sunlife/internal/pal/footer/master"
-                text="© Sun Life Financial's internal use only. Refer to the Sun Life Financial code of business conduct."/>
+                fragmentPath="/content/experience-fragments/sunlife/internal/source/pal/en/footer/master"/>
         </root>
     </jcr:content>
 </jcr:root>

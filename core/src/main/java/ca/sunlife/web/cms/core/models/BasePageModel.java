@@ -73,10 +73,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 @ Model (adaptables = {
     SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = "sunlife/core/components/structure/base-page")
 public class BasePageModel {
-
-  /** The Constant SITE_URL. */
-  private static final String SITE_URL = "siteUrl";
-
+  
   /** The Constant DOMAIN_STR. */
   private static final String DOMAIN_STR = "domain";
   
@@ -85,6 +82,9 @@ public class BasePageModel {
 
   /** The Constant MFA_DOMAIN_PATH. */
   private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
+  
+  /** The Constant MFA_Encryption. */
+  private static final String MFA_ENCRYPTION = "mfaEncryption";
 
   /** The Constant UDO_TAGS_PATH. */
   private static final String UDO_TAGS_PATH = "udoTagsPath";
@@ -324,6 +324,9 @@ public class BasePageModel {
 
   /** The mfa Domain Path. */
   private String mfaDomainPath;
+  
+  /** The mfa Encryption. */
+  private String mfaEncryption;
   
   /** The favicon. */
   private String favIcon;
@@ -829,6 +832,24 @@ public class BasePageModel {
 	public void setMfaDomainPath(final String mfaDomainPath) {
 		this.mfaDomainPath = mfaDomainPath;
 	}
+	
+	/**
+	 * Gets the mfaDomainPath
+	 * 
+	 * @return the mfaDomainPath
+	 */
+	public String getMfaEncryption() {
+		return mfaEncryption;
+	}
+
+	/**
+	 * @param mfaDomainPath
+	 *          the mfaDomainPath to set
+	 */
+	public void setMfaEncryption(final String mfaEncryption) {
+		this.mfaEncryption = mfaEncryption;
+	}
+
 
 	/**
    * Inits the.
@@ -845,13 +866,14 @@ public class BasePageModel {
     final String staticPath = configService.getConfigValues(BasePageModelConstants.STATIC_PATH_CONSTANT, pagePath);
     final String locale = configService.getConfigValues(PAGE_LOCALE, pagePath);
     final String udoTagsPath = configService.getConfigValues(UDO_TAGS_PATH, pagePath);
-    final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
-        pagePath);
+    //final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
+      //  pagePath);
     setFavIcon(configService.getConfigValues("favIcon",
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
+    mfaEncryption = configService.getConfigValues(MFA_ENCRYPTION, pagePath);
     if (null != locale && locale.length() > 0) {
       pageLocaleDefault = locale.split("_") [ 0 ];
     }
@@ -911,8 +933,7 @@ public class BasePageModel {
 
     // SEO canonical URL - <link rel="canonical"> tag
     if (null != domain && domain.length() > 0) {
-      seoCanonicalUrl = null == canonicalUrl ? domain.concat(shortenURL(pagePath, siteUrl))
-          .concat(BasePageModelConstants.SLASH_CONSTANT) : canonicalUrl;
+      seoCanonicalUrl = null == canonicalUrl ? configService.getPageUrl(pagePath) : canonicalUrl;
     }
 
     setAnalyticsScriptPath(configService.getConfigValues("analyticsScriptPath", pagePath));
@@ -956,9 +977,7 @@ public class BasePageModel {
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
       String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
       otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
-          .concat(
-              shortenURL(masterPagePath, configService.getConfigValues(SITE_URL, masterPagePath)))
-          .concat(BasePageModelConstants.SLASH_CONSTANT)); // canonical
+          .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
                                                            // url
                                                            // -
                                                            // default
@@ -1018,23 +1037,6 @@ public class BasePageModel {
   }
 
   /**
-   * Shorten URL.
-   *
-   * @param pagePath
-   *          the page path
-   * @param siteUrl
-   *          the site url
-   * @return the string
-   */
-  public String shortenURL(final String pagePath, final String siteUrl) {
-    if (null == siteUrl || siteUrl.length() <= 0) {
-      return null;
-    }
-    return pagePath.replace(
-        siteUrl.substring(0, siteUrl.lastIndexOf(BasePageModelConstants.SLASH_CONSTANT)), "");
-  }
-
-  /**
    * Sets the UDO parameters.
    *
    * @throws LoginException
@@ -1046,8 +1048,7 @@ public class BasePageModel {
     LOG.debug("Entry :: setUDOParameters :: ");
     Page pageResource = null;
     String pagePath = currentPage.getPath();
-    final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
-        pagePath);
+    final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,pagePath);
     LOG.debug("setUDOParameters :: siteUrl: {}, defaultReportingLanguage: {}", siteUrl,
         defaultReportingLanguage);
     if (null == siteUrl || siteUrl.length() <= 0) {
@@ -1203,9 +1204,6 @@ public class BasePageModel {
     LOG.debug("Entry :: processDataForCNWNews :: ");
     String releaseId = null;
     try {
-      final String siteUrl = configService.getConfigValues(BasePageModelConstants.SITE_URL_CONSTANT,
-          pagePath);
-      final String domain = configService.getConfigValues(DOMAIN_STR, pagePath);
       if (request.getRequestPathInfo().getSelectors().length > 0) {
         releaseId = request.getRequestPathInfo().getSelectors() [ 0 ];
         LOG.debug("Selector fetched :: releaseId :: {}", releaseId);
@@ -1219,8 +1217,7 @@ public class BasePageModel {
         summary = StringEscapeUtils.escapeJava(summary);
         socialMediaDescripton = summary.substring(0,
             Math.min(summary.length(), BasePageModelConstants.TITLE_MAX_LENGTH_CONSTANT));
-        canonicalUrl = domain + shortenURL(pagePath, siteUrl)
-            + BasePageModelConstants.SLASH_CONSTANT
+        canonicalUrl = configService.getPageUrl(pagePath)
             + newsDetails.getRelease().getHeadline().replaceAll(" ", "-").replaceAll("%", "")
                 .replaceAll("[~@#$^&*()={}|,.?:<>'/;`%!\"]", "").toLowerCase(Locale.ROOT)
             + BasePageModelConstants.SLASH_CONSTANT + releaseId
@@ -1229,8 +1226,7 @@ public class BasePageModel {
             "processDataForCNWNews :: Fetched items :: title: {}, description: {}, socialMediaDescripton: {}, canonicalUrl: {}",
             title, description, socialMediaDescripton, canonicalUrl);
       }
-    } catch (IOException | ParseException | ApplicationException | SystemException | LoginException
-        | RepositoryException e) {
+    } catch (IOException | ParseException | ApplicationException | SystemException e) {
       LOG.error("Error :: processDataForCNWNews :: {}", e);
     }
     LOG.debug("Exit :: processDataForCNWNews :: ");
@@ -1419,7 +1415,7 @@ public class BasePageModel {
         return;
       }
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
-      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
+//      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
 
       // check if it is a source
       LOG.debug("is source {}", relationshipManager.isSource(resource));
@@ -1466,7 +1462,7 @@ public class BasePageModel {
         altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+            siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("New altLanguageLinks :: {}", altLanguageLinks);
     } catch (WCMException | LoginException | RepositoryException e) {
@@ -1485,7 +1481,7 @@ public class BasePageModel {
     LOG.debug("path :: {}", liveCopyPath);
     final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
         liveCopyPath);
-    final String sourceSiteUrl = configService.getConfigValues(SITE_URL, liveCopyPath);
+    final String sourceSiteUrl = configService.getPageRelativeUrl(liveCopyPath);
     final String sourceSiteDomain = configService.getConfigValues(DOMAIN_STR,
         liveCopyPath);
     LOG.debug(
@@ -1498,8 +1494,7 @@ public class BasePageModel {
         sourcePageLocale.split("_") [ 0 ] + "-"
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
-        sourceSiteDomain + shortenURL(liveCopyPath, sourceSiteUrl)
-            + BasePageModelConstants.SLASH_CONSTANT);
+        sourceSiteDomain + sourceSiteUrl);
   }
 
   /**
@@ -1523,24 +1518,23 @@ public class BasePageModel {
         final String defaultLanguage = (String) currentResourceProperties
             .getOrDefault("defaultLanguage", StringUtils.EMPTY);
 
-        final String altSiteUrl = configService.getConfigValues(SITE_URL, altUrl);
+        final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
         final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
 
         masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
         altLanguageLinks.put(
             altLang.split("_") [ 0 ] + "-"
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            altSiteDomain + shortenURL(altUrl, altSiteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+            altSiteDomain + altSiteUrl);
       }
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
-      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
       if (! altLanguageLinks.isEmpty()) {
         altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + shortenURL(pagePath, siteUrl) + BasePageModelConstants.SLASH_CONSTANT);
+            siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
     } catch (LoginException | RepositoryException e) {

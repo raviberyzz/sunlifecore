@@ -55,6 +55,15 @@ public interface SiteConfigModel {
 
   @ Inject
   String getSiteUrl();
+  
+  /**
+   * Gets the site root path.
+   *
+   * @return the site root path
+   */
+
+  @ Inject
+  String getSiteRootPath();
 
   /**
    * Gets the site suffix.
@@ -215,4 +224,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getMfaDomainPath();
+  
+  /**
+   * Gets the mfaEncryption param.
+   *
+   * @return the mfaEncryption param
+   */
+  @ Inject
+  String getMfaEncryption();
 }
