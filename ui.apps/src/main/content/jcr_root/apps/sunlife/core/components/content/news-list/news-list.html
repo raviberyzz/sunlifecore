@@ -6,7 +6,7 @@
 <div data-sly-test = "${newsModel.newsType == '1'}">
     <div class="news-article" data-sly-repeat.releaseObj="${newsModel.releaseMain.releases.release}">
     	<p>${releaseObj.releaseDate}</p>
-        <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}/${releaseObj.headlineUrl}/${releaseObj.id}/">${releaseObj.headline @ context = 'html'}</a></p>
+        <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}${releaseObj.headlineUrl}/${releaseObj.id}/">${releaseObj.headline @ context = 'html'}</a></p>
     </div>
 </div>
 <!-- Overview ends -->    
@@ -35,7 +35,7 @@
 						<sly data-sly-test = "${newsList}" data-sly-list.news="${newsList}">
                             <div class="news-article">
                                 <p>${news.releaseDate}</p>
-                                <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}/${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a></p>
+                                <p><a x-cq-linkchecker="skip" href="${newsModel.newsArticleShortenedUrl}${news.headlineUrl}/${news.id}/">${news.headline @ context='html'}</a></p>
                                 <p>${news.summary @ context='html'}</p>
                             </div>
 						</sly>
