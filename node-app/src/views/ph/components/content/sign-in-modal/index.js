@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#signErr").html("");
     var x = document.getElementById("form_signon");
     if (x.elements[0].value == "" || x.elements[1].value == "") {
-      $("#signErr").html(showError("Please provide username/password."));
+      $("#signErr").html(showError("Please provide username/password"));
     } else {
       var param = {
         username: x.elements[0].value,
