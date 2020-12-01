@@ -537,8 +537,7 @@ public class CNWNewsModel {
         processReleasesData();
       }
       if (null != newsArticleUrl && newsArticleUrl.length() > 0) {
-        final String pagePath = currentPage.getPath();
-        newsArticleShortenedUrl = configService.getPageRelativeUrl(pagePath);
+        newsArticleShortenedUrl = configService.getPageRelativeUrl(newsArticleUrl);
       }
     } catch (IOException | ApplicationException | SystemException | LoginException
         | RepositoryException e) {
