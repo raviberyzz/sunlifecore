@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
       jcr:primaryType="sling:OsgiConfig"
-      drug.list.asset.path="/content/dam/sunlife/data"
+      drug.list.asset.path="/content/dam/sunlife/regional/canada/app-files/gb/pa-drug-lookup-data"
       drug.list.asset.name="druglist.json"
-      pdf.folder="https://cmsstage-auth.ca.sunlife/assets.html/content/dam/sunlife/regional/canada/app-files/gb/pa-drug-forms"/>
+      pdf.folder="https://cmsstage-auth.ca.sunlife/content/dam/sunlife/regional/canada/app-files/gb/pa-drug-forms"/>
 
