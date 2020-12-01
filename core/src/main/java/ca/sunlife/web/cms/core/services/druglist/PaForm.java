@@ -62,7 +62,7 @@ public final class PaForm {
                 formNumber = StringUtils.EMPTY;
                 invalidReasons.add("Can't generate language-general form number.");
             } else {
-                formNumber = formNumberEn.substring(0, formNumberEn.lastIndexOf("-") - 1);
+                formNumber = formNumberEn.substring(0, formNumberEn.lastIndexOf("-") );
             }
             formNumberFr = getCellValue(rowFr, 2);
             if (StringUtils.isEmpty(getFormNumberFr())) {
@@ -70,7 +70,7 @@ public final class PaForm {
             } else if (!(formNumberFr.length() > 2 && formNumberFr.trim().endsWith("-F"))) {
                 invalidReasons.add(String.format("French Form Number should end with -F but was %s", formNumberFr));
             } else {
-                if (!formNumber.equals(getFormNumberFr().substring(0, getFormNumberFr().lastIndexOf("-") - 1))) {
+                if (!formNumber.equals(getFormNumberFr().substring(0, getFormNumberFr().lastIndexOf("-") ))) {
                     invalidReasons.add(String.format("English form number %s and French form number %s don't match", formNumberEn, formNumberFr));
                 }
             }
@@ -105,6 +105,10 @@ public final class PaForm {
 
     public final boolean isValid() {
         return invalidReasons.isEmpty();
+    }
+
+    public final boolean isBlank() {
+        return invalidReasons.size() >= 8;
     }
 
     public final List<String> getInvalidReasons() {
