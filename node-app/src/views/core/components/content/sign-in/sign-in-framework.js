@@ -247,11 +247,18 @@ $(document).ready(function () {
     }
   }
   /* Apology message starts here */
-  if($("#APOL_HTML").html()!==''){
-    $("#slfSignIn #generalError").parent().addClass("has-error");
-    $("#form_signon input").prop('disabled', function(i, v) {
-      return true;
-  });
+  if (
+    $("body").hasClass("signin-content-page") ||
+    $("body").hasClass("signin-home-page")
+  ) {
+    if ($("#APOL_HTML").html() !== "") {
+      if ($("#APOL_HTML").html().trim() !== "") {
+        $("#slfSignIn #generalError").parent().addClass("has-error");
+        $("#form_signon input").prop("disabled", function (i, v) {
+          return true;
+        });
+      }
+    }
   }
   /* Apology message ends here */
   /* blank errorredirect path ends here */
@@ -386,7 +393,7 @@ $(document).ready(function () {
         $("#RTDMSignout").html(data);
       },
       error: function (e) {
-        console.log("ERROR from RTDM : "+ e);
+        console.log("ERROR from RTDM : " + e);
       },
     });
   }
