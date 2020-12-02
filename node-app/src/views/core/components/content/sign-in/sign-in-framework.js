@@ -246,6 +246,14 @@ $(document).ready(function () {
       );
     }
   }
+  /* Apology message starts here */
+  if($("#APOL_HTML").html()!==''){
+    $("#slfSignIn #generalError").parent().addClass("has-error");
+    $("#form_signon input").prop('disabled', function(i, v) {
+      return true;
+  });
+  }
+  /* Apology message ends here */
   /* blank errorredirect path ends here */
   /* sign in framework accessibility starts here */
   // remember me checkbox enter function
