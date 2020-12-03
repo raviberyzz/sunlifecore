@@ -18,7 +18,7 @@
                 <option value="${optionItem.value}" selected="${optionItem.selected}" disabled="${optionItem.disabled}">${optionItem.text}</option>
             </select>
         </sly>
-        <p class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage @context='html'}</p>
+        <div class="cmp-form-options__help-message" data-sly-test="${options.helpMessage}">${options.helpMessage @context='html'}</div>
     </fieldset>
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-form-options'}"></sly>
