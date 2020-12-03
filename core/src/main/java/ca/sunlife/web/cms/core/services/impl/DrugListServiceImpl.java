@@ -63,7 +63,7 @@ public class DrugListServiceImpl implements DrugListService {
     @Override
     public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath) throws IOException {
 
-        ErrorReportWriter reporter = new ErrorReportWriter();
+        ErrorReportWriter reporter = new ErrorReportWriter(paFormsPath, lookupPath, nonPolicyPath);
 
         try (ResourceResolver resourceResolver = resourceResolverFactory
                 .getServiceResourceResolver(authInfo)){
@@ -205,6 +205,7 @@ public class DrugListServiceImpl implements DrugListService {
             JsonObjectBuilder policyBuilder = factory.createObjectBuilder();
 
             Row formRow = lookupSheet.getRow(1);
+            Row drugRow = lookupSheet.getRow(2);
 
             for (int rowIndex = 3; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
                 Row policy = lookupSheet.getRow(rowIndex);
@@ -234,7 +235,11 @@ public class DrugListServiceImpl implements DrugListService {
                                 logger.warn("Unexpected form name: {}", formName);
                             }
                             formName = formName.substring(0, formName.lastIndexOf("-"));
-                            PaForm form = paForms.get(formName);
+                            String drugName = drugRow.getCell(colIndex).getStringCellValue();
+                            if (StringUtils.isNotEmpty(drugName)) {
+                                drugName = drugName.trim().toLowerCase(Locale.ROOT);
+                            }
+                            PaForm form = paForms.get(drugName);
                             if (form != null) {
                                 drugArray.add(Json.createObjectBuilder()
                                         .add("drug-category-en", form.getDrugCategoriesEn())
@@ -247,7 +252,7 @@ public class DrugListServiceImpl implements DrugListService {
                                         .build()
                                 );
                             } else {
-                                String message = String.format("Could not find drug form for %s", formName);
+                                String message = String.format("Could not find drug form for %s, %s", formName, drugName);
                                 logger.warn(message);
                                 reporter.addFormSelectionMismatch(message);
                             }
@@ -276,7 +281,7 @@ public class DrugListServiceImpl implements DrugListService {
                 Row rowFr = sheetFr.getRow(rowIndex);
                 PaForm paForm = new PaForm(rowEn, rowFr);
                 if (paForm.isValid()) {
-                    paForms.put(paForm.getFormNumber(),paForm);
+                    paForms.put(paForm.getDrugsEn().trim().toLowerCase(Locale.ROOT),paForm);
                 } else if (!paForm.isBlank()){
                     String message = String.format("Rejecting row %d because it is invalid: %s",
                             rowIndex + 1,
