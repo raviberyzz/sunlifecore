@@ -134,7 +134,7 @@ public class DrugListServiceImplTest {
 
         assertEquals(253, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
-        assertEquals(157, policy.size());
+        assertEquals(154, policy.size());
         assertNotNull(policy);
         JsonNode form = policy.get(0);
         assertNotNull(form);
@@ -142,7 +142,7 @@ public class DrugListServiceImplTest {
 
         policy = jsonNode.get("slf-policy").get("57884");
         assertNotNull(policy);
-        assertEquals(37, policy.size());//should be 38 but 4233-PA-EMG is invalid in the example spreadsheet
+        assertEquals(35, policy.size());
 
         policy = jsonNode.get("slf-policy").get("188728");
         assertNotNull(policy);
