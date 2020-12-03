@@ -39,6 +39,7 @@ function showError(err) {
 
 window.addEventListener("message", function (res) {
   if (res.origin == domain) {
+    console.log(res);
     if (res.data == "#/dashboard") {
       successLoginAnalytics();
       $("#signErr").html("");

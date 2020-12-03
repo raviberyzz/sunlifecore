@@ -30,16 +30,6 @@ $(document).ready(function () {
         });            
     });
     /* Modal forgot password ends here */
-    /* Successful modal login starts here */
-    function successLoginAnalytics(){
-        utag.link({ 
-            ev_type: "authenticate", 
-            ev_action: "clk", 
-            ev_title: "sign in", 
-            ev_data_one: "login successful"
-        }); 
-    }
-    /* Successful modal login ends here */
     /* Modal register now analytics starts here */
     $('#userIdRegiste').click(function(){
         utag.link({ 
@@ -52,3 +42,13 @@ $(document).ready(function () {
     /* Modal register now analytics ends here */
 
 });
+/* Successful modal login starts here */
+function successLoginAnalytics(){
+    utag.link({ 
+        ev_type: "authenticate", 
+        ev_action: "clk", 
+        ev_title: "sign in", 
+        ev_data_one: "login successful"
+    }); 
+}
+/* Successful modal login ends here */
