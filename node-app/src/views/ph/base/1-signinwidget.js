@@ -182,5 +182,5 @@ $(document).ready(function () {
 
   $("#signin-widget-modal").unbind("shown.bs.modal");
   $("#signin-widget-modal").off("show.bs.modal");
-  updateSignInForm("form_signon");
+  //updateSignInForm("form_signon");
 });
