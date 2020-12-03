@@ -165,6 +165,17 @@
     font-weight: 400;
   }
 
+//   SLCM specific megamenu & footer ul li line-height
+  .full-header .slf-header-wrapper .desktop-header-wrapper .desktop-header-content .desktop-mega-menu .dropdown .dropdown-menu .mega-menu-wrapper-desk ul li {
+    line-height: 20px;
+    padding: 8px 0;
+    margin-bottom: 0;
+  }
+
+  #mainfooter .lists-wrapper .list-unstyled li {
+    line-height: 20px;
+  }
+
 .desktop-header-content .desktop-mega-menu .mega-menu-wrapper-desk .text ul {
     margin: 30px 20px; }
   

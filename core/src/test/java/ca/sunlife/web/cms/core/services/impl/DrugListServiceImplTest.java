@@ -50,6 +50,8 @@ public class DrugListServiceImplTest {
     @Mock
     Asset asset;
 
+    @Mock Asset reportAsset;
+
     @Mock
     Rendition paForms;
 
@@ -103,9 +105,11 @@ public class DrugListServiceImplTest {
         when(assetManager.getAsset(anyString())).thenReturn(asset);
         when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup, nonpolicy);
 
-        when(config.getPdfFolder()).thenReturn("/content/dam/sunlife/pdf");
-        when(config.getDrugListAssetPath()).thenReturn("/content/dam/sunlife/data");
-        when(config.getDrugListAssetName()).thenReturn("druglist.json");
+        when(config.pdf_folder()).thenReturn("/content/dam/sunlife/pdf");
+        when(config.drug_list_asset_path()).thenReturn("/content/dam/sunlife/data");
+        when(config.drug_list_asset_name()).thenReturn("druglist.json");
+
+        when(assetManager.createAsset("/content/dam/sunlife/data/druglist-workflow-report.txt")).thenReturn(reportAsset);
 
         subject.activate(config);
     }
@@ -124,17 +128,25 @@ public class DrugListServiceImplTest {
 
         ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
         verify(outAsset).setRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), any(HashMap.class));
-        ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getValue();
+        ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getAllValues().get(0);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
 
-        assertEquals(252, jsonNode.get("slf-policy").size());
+        assertEquals(253, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
-        assertEquals(7, policy.size());
+        assertEquals(157, policy.size());
         assertNotNull(policy);
         JsonNode form = policy.get(0);
         assertNotNull(form);
-        assertEquals("Cancer", form.get("drug-category-en").textValue());
+        assertEquals("Anti-inflammatory - Specialty", form.get("drug-category-en").textValue());
+
+        policy = jsonNode.get("slf-policy").get("57884");
+        assertNotNull(policy);
+        assertEquals(37, policy.size());//should be 38 but 4233-PA-EMG is invalid in the example spreadsheet
+
+        policy = jsonNode.get("slf-policy").get("188728");
+        assertNotNull(policy);
+        assertEquals(5, policy.size());
 
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 

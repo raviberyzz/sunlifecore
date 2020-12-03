@@ -15,6 +15,8 @@ if(hostname == 'www.sunlife.ca') {
 	sunnetUrl = "https://www.sunnet.sunlife.com";
 } else if(hostname == 'stage-www.sunlife.ca') {
 	sunnetUrl = "https://stage.sunnet.sunlife.com";
+} else if(hostname == 'cmsstage-www.ca.sunlife') {
+	sunnetUrl = "https://stage.sunnet.sunlife.com";
 } else {
 	sunnetUrl = "https://sit-www.sunnet.sunlife.com";
 }
