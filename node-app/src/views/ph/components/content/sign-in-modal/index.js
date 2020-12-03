@@ -42,10 +42,12 @@ window.addEventListener("message", function (res) {
     console.log(res);
     if (res.data == "#/dashboard") {
       successLoginAnalytics();
-      $("#signErr").html("");
+      $("#signErr").html("");      
       $("#signErr").css("display", "none");
       $(".loading").css("display", "none");
       window.open(res.origin + path + res.data, "_self");
+      $("#form_signon #accessIDHome").val('');
+      $("#form_signon #accessPasswordHome").val('');
     } else {
       $("#signErr").html(showError(res.data));
       //frame.parentElement.removeChild(frame);
