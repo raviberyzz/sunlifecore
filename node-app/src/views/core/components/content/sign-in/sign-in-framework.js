@@ -251,7 +251,11 @@ $(document).ready(function () {
     $("body").hasClass("signin-content-page") ||
     $("body").hasClass("signin-home-page")
   ) {
-    if ($("#APOL_HTML").html() !== "") {
+    if (
+      $("#APOL_HTML").html() !== "" &&
+      $("#APOL_HTML").html() != undefined &&
+      $("#APOL_HTML").html() != null
+    ) {
       if ($("#APOL_HTML").html().trim() !== "") {
         $("#slfSignIn #generalError").parent().addClass("has-error");
         $("#form_signon input").prop("disabled", function (i, v) {
