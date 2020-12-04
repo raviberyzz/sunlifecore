@@ -1,13 +1,14 @@
 class NewsTiles extends React.Component {
   constructor(props) {
     super(props);
-    var defaultUserBG = "";
-    defaultUserBG = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
-    defaultUserBG = "sunlife:source/business-group/" + defaultUserBG.toLowerCase();
+    var defaultUserBL = "";
+	var defaultUserCountry = "";
+	defaultUserCountry = profileData.country.replace(/[^a-zA-Z0-9]/g, "-");
+    defaultUserBL = "sunlife:source/building-location/" + defaultUserCountry.toLowerCase() + "/all";
     this.state = {
-      defaultBG: defaultUserBG,
+      defaultBL: defaultUserBL,
       pageLang: utag_data.page_language,
-      businessGroupList: {
+      businessLocationList: {
         tags: [],
       },
       topicsList: {
@@ -102,19 +103,19 @@ class NewsTiles extends React.Component {
       url: `${this.props.getPrefernceListUrl}.tags.${this.state.pageLang}.json`,
       dataType: "json",
       success: (response) => {
-        this.state.businessGroupIdTitle = [];
-        this.state.businessGroupList = response["business-group"];
+        this.state.businessLocationIdTitle = [];
+        this.state.businessLocationList = response["building-location"];
         this.state.topicsList = response["topic"];
-        this.state.businessGroupList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/business-group/all") {
-            this.state.businessGroupList.tags.splice(index, 1);
+        this.state.businessLocationList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/building-location/all") {
+            this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};
           obj[data.id] = data.title;
-          this.state.businessGroupIdTitle.push(obj);
+          this.state.businessLocationIdTitle.push(obj);
           data["isChecked"] = false;
-          if (this.state.defaultBG != "" && this.state.defaultBG != undefined) {
-            if (data.id == this.state.defaultBG) {
+          if (this.state.defaultBL != "" && this.state.defaultBL != undefined) {
+            if (data.id == this.state.defaultBL) {
               data["isChecked"] = true;
             }
           }
@@ -126,9 +127,9 @@ class NewsTiles extends React.Component {
             });
           }
         });
-        this.state.businessGroupList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/business-group/na") {
-            this.state.businessGroupList.tags.splice(index, 1);
+        this.state.businessLocationList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/building-location/na") {
+            this.state.businessLocationList.tags.splice(index, 1);
           }
         })
 
@@ -142,9 +143,9 @@ class NewsTiles extends React.Component {
           });
         });
         this.setState({
-          businessGroupList: this.state.businessGroupList,
+          businessLocationList: this.state.businessLocationList,
           topicsList: this.state.topicsList,
-          businessGroupIdTitle: this.state.businessGroupIdTitle,
+          businessLocationIdTitle: this.state.businessLocationIdTitle,
         }, () => {
           this.tagSorting();
           setTimeout(() => {
@@ -183,6 +184,7 @@ class NewsTiles extends React.Component {
             var businessGroup = profileData.businessGroup.replace(/[^a-zA-Z0-9]/g, "-");
             var businessUnit = profileData.businessUnit.replace(/[^a-zA-Z0-9]/g, "-");
             var buildingLocation = profileData.buildingLocation.replace(/[^a-zA-Z0-9]/g, "-");
+			var country = profileData.country.replace(/[^a-zA-Z0-9]/g, "-");
             var jobLevel = "/" + profileData.jobLevel.replace(/[^a-zA-Z0-9]/g, "-");
             if (businessGroup != "" && businessGroup != undefined) {
               businessGroup = "sunlife:source/business-group/" + businessGroup.toLowerCase();
@@ -210,7 +212,7 @@ class NewsTiles extends React.Component {
               return userProfileFilters.indexOf(c) === index;
             });
             businessUnit !== "sunlife:source/business-unit/na" ? userBUFilters.push(businessUnit, "sunlife:source/business-unit/all", "sunlife:source/business-unit/na") : userBUFilters.push(businessUnit, "sunlife:source/business-unit/all");
-            buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "/all", "/na") : userBLFilters.push(buildingLocation, "/all");
+            buildingLocation !== "NA" ? userBLFilters.push(buildingLocation, "sunlife:source/building-location/"+country.toLowerCase()+"/all", "sunlife:source/building-location/all", "sunlife:source/building-location/na") : userBLFilters.push(buildingLocation, "sunlife:source/building-location/"+country.toLowerCase()+"/all", "sunlife:source/building-location/all");
             jobLevel !== "NA" ? userJobLevelFilters.push(jobLevel, "/all", "/na") : userJobLevelFilters.push(jobLevel, "/all");
             // filter the articles by BG first and then the result by BU and result by BL and result by JL
             var BGArticles, BUArticles;
@@ -228,10 +230,17 @@ class NewsTiles extends React.Component {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/building-location') > -1) {
                   userBLFilters.forEach((filter) => {
-                    if (val.substring(val.lastIndexOf("/")) === filter) {
-                      BLArticles.push(news)
-                      return
+                    //if (val.substring(val.lastIndexOf("/")) === filter) {
+					if ("sunlife:source/building-location/all" === filter && val === filter) {
+						BLArticles.push(news)
+					} else if ("sunlife:source/building-location/"+country.toLowerCase()+"/all" === filter && val === filter) {
+						BLArticles.push(news)
+					} else {
+						if(val.substring(val.lastIndexOf("/")) === filter) {
+							BLArticles.push(news)
+						}							
                     }
+					return
                   })
                 }
               })
@@ -307,8 +316,8 @@ class NewsTiles extends React.Component {
   }
 
   handleAllChecked(event) {
-    this.state.businessGroupList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBG) {
+    this.state.businessLocationList.tags.forEach((prefer) => {
+      if (prefer.id != this.state.defaultBL) {
         prefer.isChecked = event.target.checked;
       }
     });
@@ -317,13 +326,13 @@ class NewsTiles extends React.Component {
     );
     this.setState({
       allChecked: event.target.checked,
-      businessGroupList: this.state.businessGroupList,
+      businessLocationList: this.state.businessLocationList,
       topicsList: this.state.topicsList,
     });
   }
 
   handleCheckChildElement(event) {
-    this.state.businessGroupList.tags.forEach((prefer) => {
+    this.state.businessLocationList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
         prefer.isChecked = event.target.checked;
 
@@ -333,7 +342,7 @@ class NewsTiles extends React.Component {
         prefer.isChecked = event.target.checked;
     });
     this.setState({
-      businessGroupList: this.state.businessGroupList,
+      businessLocationList: this.state.businessLocationList,
       topicsList: this.state.topicsList,
     });
   }
@@ -343,8 +352,8 @@ class NewsTiles extends React.Component {
     this.setState({
       loading: true
     });
-    this.state.businessGroupList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBG) {
+    this.state.businessLocationList.tags.forEach((prefer) => {
+      if (prefer.id != this.state.defaultBL) {
         prefer.isChecked = false;
       }
     });
@@ -352,7 +361,7 @@ class NewsTiles extends React.Component {
     this.state.selectedPreferenceList = [];
     this.setState({
       allChecked: false,
-      businessGroupList: this.state.businessGroupList,
+      businessLocationList: this.state.businessLocationList,
       topicsList: this.state.topicsList,
       selectedPreferenceList: this.state.selectedPreferenceList
     });
@@ -373,7 +382,7 @@ class NewsTiles extends React.Component {
     });
     this.state.selectedPreferenceList = [];
     let businessTitle = [], topicsTitle = [];
-    this.state.businessGroupList.tags.forEach((prefer) => {
+    this.state.businessLocationList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id);
         if (prefer.title !== '') {
@@ -513,7 +522,7 @@ class NewsTiles extends React.Component {
         ) {
           this.state.businessGroupIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
-              if(element !== this.state.defaultBG){
+              if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
               }
             }
@@ -788,10 +797,10 @@ class NewsTiles extends React.Component {
                         <div class="row preference-list">
                           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <p class="heading-text">
-                              {this.state.businessGroupList.title}
+                              {this.state.businessLocationList.title}
                             </p>
                             <ul class="prefernce-col-list">
-                              {this.state.businessGroupList.tags.map(
+                              {this.state.businessLocationList.tags.map(
                                 (value, index) => {
                                   return (
                                     <li key={index}>
@@ -799,7 +808,7 @@ class NewsTiles extends React.Component {
                                         type="checkbox"
                                         name={value.id}
                                         value={value.id}
-                                        class={value.id == this.state.defaultBG ? "disableCB" : ""}
+                                        class={value.id == this.state.defaultBL ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -807,10 +816,10 @@ class NewsTiles extends React.Component {
                                         checked={value.isChecked}
                                         disabled={
                                           value.isChecked &&
-                                          value.id === this.state.defaultBG
+                                          value.id === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id == this.state.defaultBG ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
