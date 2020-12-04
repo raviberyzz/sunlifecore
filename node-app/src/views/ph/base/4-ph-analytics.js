@@ -20,6 +20,17 @@ $(document).ready(function () {
         }
     }
     /* baseline error 404 page ends here */
+    /* Sign in modal analytics starts here */
+        $("#SignIn,#signinbutton").unbind("click");
+        $("#SignIn,#signinbutton").click(function(){
+            utag.link({ 
+                ev_type: "authenticate", 
+                ev_action: "clk", 
+                ev_title: "sign in", 
+                ev_data_one: "existing client"
+            });                
+        });
+    /* Sign in modal analytics ends here */
     /* Modal forgot password starts here */
     $('#userIdForgot').click(function(){        
         utag.link({ 
