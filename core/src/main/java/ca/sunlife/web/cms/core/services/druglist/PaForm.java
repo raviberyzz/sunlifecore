@@ -1,8 +1,11 @@
 package ca.sunlife.web.cms.core.services.druglist;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -90,7 +93,15 @@ public final class PaForm {
     private String getCellValue(Row row, int index) {
         String result = StringUtils.EMPTY;
         if (row.getCell(index) != null) {
-            result = row.getCell(index).getStringCellValue();
+            CellType type = row.getCell(index).getCellTypeEnum();
+            if (CellType.STRING.equals(type)) {
+                result = row.getCell(index).getStringCellValue();
+            } else if (CellType.NUMERIC.equals(type)) {
+                double number = row.getCell(index).getNumericCellValue();
+                result = new BigDecimal(number).round(new MathContext(0)).toString();
+            } else {
+                result = StringUtils.EMPTY;
+            }
         }
         return result;
     }
