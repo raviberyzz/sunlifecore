@@ -7,5 +7,18 @@
     }
     .options {
         margin-top: 0px;
+        .cmp-form-options--checkbox {
+            .cmp-form-options__help-message {
+                display: table;
+                p {
+                    margin: 0;
+                }
+            }
+        }
     }
+
+}
+
+.captcha-wrapper {
+    width: 45% !important;
 }

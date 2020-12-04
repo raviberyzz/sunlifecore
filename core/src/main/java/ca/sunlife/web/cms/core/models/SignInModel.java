@@ -4,6 +4,7 @@
 
 package ca.sunlife.web.cms.core.models;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -497,6 +498,9 @@ public class SignInModel {
 	@PostConstruct
 	public void init() {
 		try {
+		  if(null == hiddenMetadata) {
+		    hiddenMetadata = new ArrayList<HiddenMetadataModel>();
+		  }
 			final String pagePath = currentPage.getPath();
 		    final String domainName = configService.getConfigValues(DOMAIN_STR, pagePath);
 		    mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
