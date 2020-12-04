@@ -29,6 +29,22 @@
                         components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/advisor-detail/apps/sunlife/ca/components/content/article,/apps/sunlife/ca/components/content/articleList,/apps/sunlife/ca/components/content/breadcrumb,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/embed,/apps/sunlife/ca/components/content/footer-copyright,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/full-header,/apps/sunlife/ca/components/content/html-component,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/life-moments,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/mega-menu-2,/apps/sunlife/ca/components/content/news-details,/apps/sunlife/ca/components/content/news-list,/apps/sunlife/ca/components/content/provider-profile,/apps/sunlife/ca/components/content/region-language-menu,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/site-map,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title,/apps/sunlife/ca/components/content/titlebar,/apps/sunlife/ca/components/content/sign-in]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_ca_exp>
+                     <policy_sunlife_us_content
+                        jcr:description="Policy for Content page template for US"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sunlife US Content"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[group:Sunlife US]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_sunlife_us_content>
+                    <policy_sunlife_us_home
+                        jcr:description="Policy for Home page template for US"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sunlife US Home"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="[/apps/sunlife/us/components/content/accordion,/apps/sunlife/us/components/content/button,/apps/sunlife/us/components/content/container,/apps/sunlife/us/components/content/experiencefragment,/apps/sunlife/us/components/form/button,/apps/sunlife/us/components/form/container,/apps/sunlife/us/components/form/dropdown,/apps/sunlife/us/components/form/hidden,/apps/sunlife/us/components/form/options,/apps/sunlife/us/components/form/text,/apps/sunlife/us/components/content/icon-text,/apps/sunlife/us/components/content/image,/apps/sunlife/us/components/content/layout-container,/apps/sunlife/us/components/content/left-navigation,/apps/sunlife/us/components/content/link-list,/apps/sunlife/us/components/content/life-moments,/apps/sunlife/us/components/content/separator,/apps/sunlife/us/components/content/table,/apps/sunlife/us/components/content/tabs,/apps/sunlife/us/components/content/teaser,/apps/sunlife/us/components/content/text,/apps/sunlife/us/components/content/html-component,/apps/sunlife/us/components/content/generic]">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_sunlife_us_home>
                     <policy_sunlife_advisorhub_content
                         jcr:description="Policy for Content page template for Advisor hub"
                         jcr:primaryType="nt:unstructured"
