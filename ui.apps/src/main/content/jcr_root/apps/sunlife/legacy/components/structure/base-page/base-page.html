@@ -4,6 +4,7 @@
       data-sly-use.footer="footer.html"
       data-sly-use.redirect="redirect.html">
 	<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
+	<sly data-sly-use.legacBaseModel="ca.sunlife.web.cms.core.models.LegacyBasePageModel" />
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
     <body class="${page.cssClassNames} ${page.templateName}" data-section="body-content">
     <sly data-sly-test= "${pageProperties.needOpeningDiv}">
