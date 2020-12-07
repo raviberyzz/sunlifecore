@@ -10,4 +10,12 @@ $( document ).ready(function() {
   if(activeNumber>1){
     $('.main-nav').children('li:first-child').find('a').removeClass('nav-active');
   }
+
+   //for news-room page
+   var pathArray = window.location.pathname.split('/');
+   for (i = 0; i < pathArray.length; i++) {
+       if ( pathArray[i] === 'tin-tuc-su-kien') {
+          $('.main-nav').children('li:first-child').find('a').removeClass('nav-active');
+        }
+      }
 });

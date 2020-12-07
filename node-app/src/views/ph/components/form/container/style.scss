@@ -23,3 +23,10 @@
             // margin-left: -1em;
         }
 }
+
+.parsley-errors-list {
+    margin-left: 0; 
+    li::before {
+        content: none !important;
+    }
+}
