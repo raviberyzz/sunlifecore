@@ -32,10 +32,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         text="2"
                                         value="2"/>
-                                    <_x0033_
-                                        jcr:primaryType="nt:unstructured"
-                                        text="3"
-                                        value="3"/>
                                 </items>
                             </noc>
                             <type
@@ -49,12 +45,6 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 name="./typeVal"/>
-                            <flexRequired
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./flexRequired"
-                                text="Is flex container?"
-                                value="flex-height"/>
                         </items>
                     </column>
                 </items>

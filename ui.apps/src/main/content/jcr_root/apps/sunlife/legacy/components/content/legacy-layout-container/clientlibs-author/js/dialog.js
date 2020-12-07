@@ -1,9 +1,8 @@
 (function($,$document){
     "use strict"
     var options = [
-        {'normal':'Blank','content':'Only Content'},
-        {'25:75N':'Left Navigation & Content','75:25N':'Content & Right Navigation'},
-        {'25:50:25N':'Left Navigation, Content & Right Navigation'},
+        {'normal':'Blank'},
+        {'25:75N':'Left Navigation & Content'},
     ];
 
     var updateTypes = function() {
