@@ -107,7 +107,7 @@ class NewsTiles extends React.Component {
         this.state.businessLocationList = response["building-location"];
         this.state.topicsList = response["topic"];
         this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id+"/all" == "sunlife:source/building-location/all") {
+          if (data.id == "sunlife:source/building-location/all") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};

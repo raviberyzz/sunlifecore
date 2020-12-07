@@ -82,7 +82,7 @@ class NewsTabs extends React.Component {
         this.state.businessLocationList = res["building-location"];
         this.state.topicsList = res["topic"];
         this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id+"/all" == "sunlife:source/building-location/all") {
+          if (data.id == "sunlife:source/building-location/all") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};
