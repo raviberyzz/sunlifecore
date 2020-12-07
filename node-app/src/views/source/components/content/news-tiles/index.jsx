@@ -317,7 +317,7 @@ class NewsTiles extends React.Component {
 
   handleAllChecked(event) {
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBL) {
+      if (prefer.id + "/all" != this.state.defaultBL) {
         prefer.isChecked = event.target.checked;
       }
     });
@@ -333,9 +333,8 @@ class NewsTiles extends React.Component {
 
   handleCheckChildElement(event) {
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id === event.target.value)
+      if (prefer.id + "/all" === event.target.value)
         prefer.isChecked = event.target.checked;
-
     });
     this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
@@ -353,7 +352,7 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBL) {
+      if (prefer.id + "/all" != this.state.defaultBL) {
         prefer.isChecked = false;
       }
     });
@@ -384,7 +383,7 @@ class NewsTiles extends React.Component {
     let businessTitle = [], topicsTitle = [];
     this.state.businessLocationList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
-        this.state.selectedPreferenceList.push(prefer.id);
+        this.state.selectedPreferenceList.push(prefer.id + "/all");
         if (prefer.title !== '') {
           businessTitle.push(prefer.title);
         }
@@ -819,7 +818,7 @@ class NewsTiles extends React.Component {
                                           `${value.id}/all` === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id/all == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
