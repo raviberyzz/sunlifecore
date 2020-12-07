@@ -12,6 +12,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Reader for the "2A2B" spreadsheet.
+ * This class attempts to record every form in that spreadsheet and associate it with its drug name as the key.
+ * This is then used by the "lookup" spreadsheet; if the account says that an account includes a specific drug,
+ * the details of the drug's category, form number, and DIN can be retrieved from here.
+ *
+ * The spreadsheet is human-authored, so errors can be introduced. This class attempts to report on those errors in
+ * order to facilitate corrections in the spreadsheet.
+ */
 public final class PaForm {
 
     private final LinkedList<String> invalidReasons = new LinkedList<>();

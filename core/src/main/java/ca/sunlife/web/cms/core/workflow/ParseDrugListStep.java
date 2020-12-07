@@ -21,6 +21,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
+/**
+ * Workflow for generating the workplace benefits drug list.
+ *
+ * This process relies on 4 input files:
+ * 1. "2A2B" spreadsheet. This contains the form details for the drug
+ * 2. "Look-Up" spreadsheet. This cross-references drugs to accounts.
+ * 3. "Non-policy" properties file. This provides messages that are displayed when the user looks up an account that is
+ * not in the list.
+ * 4. "Chess" csv file. A list of accounts that use the "******" account in the lookup spreadsheet.
+ */
 @Component(service=WorkflowProcess.class, property={"process.label=Workplace Benefits Drug List Update"})
 public class ParseDrugListStep implements WorkflowProcess {
 
@@ -28,12 +38,15 @@ public class ParseDrugListStep implements WorkflowProcess {
     public static final String PAFORMS = "paforms";
     public static final String LOOKUP = "lookup";
     public static final String NONPOLICY = "nonpolicy";
+    public static final String CHESS = "chess";
+
     @Reference
     DrugListService drugListService;
 
     private String forms = "PA Forms-2A2B.xlsx";
     private String lookup = "PA Forms-Lookup.xlsx";
     private String nonpolicy = "drugList.properties";
+    private String chess = "NewPAForm.csv";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -63,12 +76,17 @@ public class ParseDrugListStep implements WorkflowProcess {
                 if(processMap.containsKey(NONPOLICY)){
                     nonpolicy = processMap.get(NONPOLICY);
                 }
+
+                if(processMap.containsKey(CHESS)){
+                    chess = processMap.get(CHESS);
+                }
             }
             String folder = payload.substring(0, payload.lastIndexOf("/"));
             drugListService.updateDrugLists(
                     String.format("%s/%s", folder, forms),
                     String.format("%s/%s", folder, lookup),
-                    String.format("%s/%s", folder, nonpolicy));
+                    String.format("%s/%s", folder, nonpolicy),
+                    String.format("%s/%s", folder, chess));
         } catch (IOException | RepositoryException e) {
             throw new WorkflowException(
                     String.format("Failed to parse the drug list for files %s and %s", forms, lookup),

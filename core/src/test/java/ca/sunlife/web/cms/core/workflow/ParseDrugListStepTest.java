@@ -70,13 +70,14 @@ public class ParseDrugListStepTest {
 
         when(metaDataMap.containsKey(ParseDrugListStep.PROCESS_ARGS)).thenReturn(true);
         when(metaDataMap.get(ParseDrugListStep.PROCESS_ARGS, String.class))
-                .thenReturn("paforms::file1.xslx,lookup::file2.xslx,nonpolicy::file3.properties");
+                .thenReturn("paforms::file1.xslx,lookup::file2.xslx,nonpolicy::file3.properties,chess::file4.csv");
 
         subject.execute(workItem, workflowSession, metaDataMap);
 
         verify(drugListService)
                 .updateDrugLists(eq("/content/dam/sunlife/data/file1.xslx"),
                     eq("/content/dam/sunlife/data/file2.xslx"),
-                    eq("/content/dam/sunlife/data/file3.properties"));
+                    eq("/content/dam/sunlife/data/file3.properties"),
+                        eq("/content/dam/sunlife/data/file4.csv") );
     }
 }
