@@ -819,7 +819,7 @@ class NewsTiles extends React.Component {
                                           `${value.id}/all` === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id"/all" == this.state.defaultBL ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
