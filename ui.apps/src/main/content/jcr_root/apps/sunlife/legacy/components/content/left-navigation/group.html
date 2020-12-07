@@ -19,5 +19,6 @@
     <sly  data-sly-list="${items}">
         <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
      </sly>
+	 <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
     </ul>
 </template>
