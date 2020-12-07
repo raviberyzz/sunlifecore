@@ -16,7 +16,7 @@ class NewsTiles extends React.Component {
       },
       allChecked: false,
       selectedPreferenceList: [],
-      businessGroupIdTitle: [],
+      buildingLocationIdTitle: [],
       newsList: [],
       filterNewsList: [],
       selectedPreferenceTags: [],
@@ -111,11 +111,11 @@ class NewsTiles extends React.Component {
             this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};
-          obj[data.id] = data.title;
+          obj[data.id+"/all"] = data.title;
           this.state.businessLocationIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBL != "" && this.state.defaultBL != undefined) {
-            if (data.id == this.state.defaultBL) {
+            if (data.id+"/all" == this.state.defaultBL) {
               data["isChecked"] = true;
             }
           }
@@ -137,7 +137,7 @@ class NewsTiles extends React.Component {
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach((prefer) => {
-            if (prefer+"/all" === data.id) {
+            if (prefer === data.id) {
               data["isChecked"] = true;
             }
           });
@@ -451,7 +451,7 @@ class NewsTiles extends React.Component {
   bgBinding(bgList) {
     var title = "";
     bgList.filter((id, i) => {
-      this.state.businessGroupIdTitle.forEach((obj) => {
+      this.state.buildingLocationIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
           if (i == bgList.length - 1) {
             title = title + obj[id];
@@ -517,9 +517,9 @@ class NewsTiles extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (
-          element.split("/")[1] == "business-group"
+          element.split("/")[1] == "building-location"
         ) {
-          this.state.businessGroupIdTitle.forEach((obj) => {
+          this.state.buildingLocationIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
               if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
@@ -805,7 +805,7 @@ class NewsTiles extends React.Component {
                                     <li key={index}>
                                       <input
                                         type="checkbox"
-                                        name={value.id}
+                                        name={`${value.id}/all`}
                                         value={`${value.id}/all`}
                                         class={`${value.id}/all` == this.state.defaultBL ? "disableCB" : ""}
                                         aria-label={value.title}
@@ -818,7 +818,7 @@ class NewsTiles extends React.Component {
                                           `${value.id}/all` === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id/all == this.state.defaultBL ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
