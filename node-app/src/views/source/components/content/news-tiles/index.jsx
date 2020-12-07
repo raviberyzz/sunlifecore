@@ -121,7 +121,7 @@ class NewsTiles extends React.Component {
           }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
-              if (prefer === data.id) {
+              if (prefer+"/all" === data.id) {
                 data["isChecked"] = true;
               }
             });
@@ -137,7 +137,7 @@ class NewsTiles extends React.Component {
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach((prefer) => {
-            if (prefer === data.id) {
+            if (prefer+"/all" === data.id) {
               data["isChecked"] = true;
             }
           });
