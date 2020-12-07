@@ -121,7 +121,7 @@ class NewsTiles extends React.Component {
           }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
-              if (prefer+"/all" === data.id) {
+              if (prefer === data.id+"/all") {
                 data["isChecked"] = true;
               }
             });

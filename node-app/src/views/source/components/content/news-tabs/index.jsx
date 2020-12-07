@@ -95,7 +95,7 @@ class NewsTabs extends React.Component {
             }
           }
           this.state.selectedPreferenceList.forEach(prefer => {
-            if (prefer+"/all" === data.id) {
+            if (prefer === data.id+"/all") {
               data["isChecked"] = true;
             }
           })
