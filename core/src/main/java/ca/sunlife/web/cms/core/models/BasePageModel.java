@@ -79,6 +79,15 @@ public class BasePageModel {
   
   /** The Constant Extra Clientlibs. */
   private static final String EXTRA_CLIENTLIBS = "extraClientlibs";
+  
+  /** The Constant siteHeadInclude. */
+  private static final String SITE_HEAD_INCLUDE = "siteHeadInclude";
+  
+  /** The Constant siteBodyInclude. */
+  private static final String SITE_BODY_INCLUDE = "siteBodyInclude";
+  
+  /** The Constant addOpeningDiv. */
+  private static final String ADD_OPENING_DIV = "addOpeningDiv";
 
   /** The Constant MFA_DOMAIN_PATH. */
   private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
@@ -321,6 +330,15 @@ public class BasePageModel {
   
   /** The extra Clientlibs. */
   private String extraClientlibs;
+  
+  /** The site Head Include. */
+  private String siteHeadInclude;
+  
+  /** The site Body Include. */
+  private String siteBodyInclude;
+  
+  /** The site Body Include. */
+  private String addOpeningDiv;
 
   /** The mfa Domain Path. */
   private String mfaDomainPath;
@@ -817,6 +835,57 @@ public class BasePageModel {
 	}
 	
 	/**
+	 * Gets the site Head Include
+	 * 
+	 * @return the siteHeadInclude
+	 */
+	public String getSiteHeadInclude() {
+		return siteHeadInclude;
+	}
+
+	/**
+	 * @param siteHeadInclude
+	 *          the siteHeadInclude to set
+	 */
+	public void setSiteHeadInclude(String siteHeadInclude) {
+		this.siteHeadInclude = siteHeadInclude;
+	}
+	
+	/**
+	 * Gets the site Body Include
+	 * 
+	 * @return the siteBodyInclude
+	 */
+	public String getSiteBodyInclude() {
+		return siteBodyInclude;
+	}
+
+	/**
+	 * @param siteBodyInclude
+	 *          the siteBodyInclude to set
+	 */
+	public void setSiteBodyInclude(String siteBodyInclude) {
+		this.siteBodyInclude = siteBodyInclude;
+	}
+	
+	/**
+	 * Gets the addOpeningDiv
+	 * 
+	 * @return the addOpeningDiv
+	 */
+	public String getAddOpeningDiv() {
+		return addOpeningDiv;
+	}
+
+	/**
+	 * @param addOpeningDiv
+	 *          the addOpeningDiv to set
+	 */
+	public void setAddOpeningDiv(String addOpeningDiv) {
+		this.addOpeningDiv = addOpeningDiv;
+	}
+	
+	/**
 	 * Gets the mfaDomainPath
 	 * 
 	 * @return the mfaDomainPath
@@ -872,6 +941,9 @@ public class BasePageModel {
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
+    siteHeadInclude = configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath);
+    siteBodyInclude = configService.getConfigValues(SITE_BODY_INCLUDE, pagePath);
+    addOpeningDiv = configService.getConfigValues(ADD_OPENING_DIV, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
     mfaEncryption = configService.getConfigValues(MFA_ENCRYPTION, pagePath);
     if (null != locale && locale.length() > 0) {

@@ -35,6 +35,12 @@ public class BreadcrumbModel extends BreadcrumbImpl {
   @ Via ("resource")
   @ Optional
   private String socialShareReqd;
+  
+  /** The Hide Breadcrumb */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String hideBreadcrumb;
 
   /**
    * Gets the social share reqd.
@@ -53,6 +59,25 @@ public class BreadcrumbModel extends BreadcrumbImpl {
    */
   public void setSocialShareReqd(final String socialShareReqd) {
     this.socialShareReqd = socialShareReqd;
+  }
+  
+  /**
+   * Gets the hideBreadcrumb.
+   *
+   * @return the hideBreadcrumb
+   */
+  public String getHideBreadcrumb() {
+    return hideBreadcrumb;
+  }
+
+  /**
+   * Sets the hideBreadcrumb.
+   *
+   * @param hideBreadcrumb
+   *          the new hideBreadcrumb
+   */
+  public void setHideBreadcrumb(final String hideBreadcrumb) {
+    this.hideBreadcrumb = hideBreadcrumb;
   }
 
 }

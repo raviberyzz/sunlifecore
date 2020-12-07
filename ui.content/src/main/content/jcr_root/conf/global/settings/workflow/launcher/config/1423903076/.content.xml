@@ -9,7 +9,7 @@
     eventType="{Long}16"
     excludeList=""
     features="[]"
-    glob="/content/dam/sunlife/data/(.*)"
+    glob="/content/dam/sunlife/regional/canada/app-files/gb/pa-drug-lookup-data/(.*)"
     nodetype="nt:file"
     runModes="author"
     workflow="/var/workflow/models/workplace-benefits-drug-list-update"/>

@@ -234,6 +234,22 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Extra Clientlibs"
                                         name="./extraClientlibs"/>	
+									<siteHeadInclude
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Site Head include"
+                                        name="./siteHeadInclude"/>
+                                    <siteBodyInclude
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Site Body include"
+                                        name="./siteBodyInclude"/>
+                                    <addOpeningDiv
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="When value given, html content will be put under a parent div with id."
+                                        fieldLabel="Add Opening DIV"
+                                        name="./addOpeningDiv"/>
                                 </items>
                             </section-page>
                             <signin-configuration

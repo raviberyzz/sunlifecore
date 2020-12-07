@@ -1,53 +1,25 @@
 <sly data-sly-use.layout="ca.sunlife.web.cms.core.models.LayoutContainerModal"/>
 <sly data-sly-test.empty="${!layout.noc}" />
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
-<sly data-sly-test.flexRequired="${layout.flexRequired}" data-section="${layout.type != 'modal-popup'?layout.analyticsId : ''}"/>
    <sly data-sly-test="${layout.noc == '1'}">   
       <sly data-sly-test="${layout.type == 'normal'}">
             <sly data-sly-resource="${'container1' @ decorationTagName=''}" />
       </sly>
-      <sly data-sly-test="${layout.type == 'content'}">
-         <div id="content" class="global-content-1column global-content clearfix">
-            <div  class="global-col1" role="main" id="mainbodycontent" >
-               <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-            </div>
-         </div>
-      </sly>
    </sly>
     <sly data-sly-test="${layout.noc == '2'}">
-      <sly data-sly-test="${layout.type == '75:25N'}">
-		<div id="content" class="global-content global-content-2col-sidebar">
-			<div  class="global-col1" role="main" id="mainbodycontent" >
-				<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-			</div>
-			<div class="global-col2" role="complementary">
-					<sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
-			</div>
-		</div>
-      </sly>
-      <sly data-sly-test="${layout.type == '25:75N'}">
-		 <div id="content" class="global-content global-content-2col">
-			<div class="global-col1">
-				<sly data-sly-resource="${'left-nav' @ resourceType='sunlife/core/components/content/left-navigation'}"/>
-			</div>			
-			<div  class="global-col2" role="main" id="mainbodycontent" >
-				<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+	  <sly data-sly-test="${layout.type == '25:75N'}">
+		 <div class="clearfix en" id="wrapper">
+			<div class="clearfix two-column-layout" id="content">
+				<div id="content-navigation" class="clearfix">
+					<sly data-sly-resource="${'left-nav' @ resourceType='sunlife/legacy/components/content/left-navigation'}"/>
+                    <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+				</div>
+				<div id="content-body">
+					<div id="onlycontent">
+						<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+					</div>
+				</div>
 			</div>
 		</div>
       </sly>
    </sly>
-   <sly data-sly-test="${layout.noc == '3'}">
-      <sly data-sly-test="${layout.type == '25:50:25N'}">
-		<div id="content" class="global-content global-content-3col">
-			<div class="global-col1">
-				<sly data-sly-resource="${'left-nav' @ resourceType='sunlife/core/components/content/left-navigation'}" />
-			</div>
-			<div class="global-col2" role="main" id="mainbodycontent">
-				<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-			</div>
-			<div class="global-col3" role="complementary">
-				<sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
-			</div>
-		</div>
-      </sly>
- </sly>
