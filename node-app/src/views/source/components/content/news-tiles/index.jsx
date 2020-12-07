@@ -807,8 +807,8 @@ class NewsTiles extends React.Component {
                                       <input
                                         type="checkbox"
                                         name={value.id}
-                                        value={value.id}
-                                        class={value.id == this.state.defaultBL ? "disableCB" : ""}
+                                        value={`${value.id}/all`}
+                                        class={`${value.id}/all` == this.state.defaultBL ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -816,10 +816,10 @@ class NewsTiles extends React.Component {
                                         checked={value.isChecked}
                                         disabled={
                                           value.isChecked &&
-                                          value.id === this.state.defaultBL
+                                          `${value.id}/all` === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id/all == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
