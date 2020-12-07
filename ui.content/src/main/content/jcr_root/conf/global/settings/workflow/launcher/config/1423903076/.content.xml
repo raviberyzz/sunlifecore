@@ -5,7 +5,7 @@
     conditions="[]"
     description="Processes the Workplace Benefits input data (spreadsheets) and converts them to JSON."
     disabledFeatures="[]"
-    enabled="{Boolean}true"
+    enabled="{Boolean}false"
     eventType="{Long}16"
     excludeList=""
     features="[]"
