@@ -6,7 +6,7 @@ class NewsTabs extends React.Component {
 	defaultUserCountry = profileData.country.replace(/[^a-zA-Z0-9]/g, "-");
     defaultUserBL = "sunlife:source/building-location/" + defaultUserCountry.toLowerCase() + "/all";
     this.state = {
-      defaultBL: defaultUserBG,
+      defaultBL: defaultUserBL,
       pageLang: utag_data.page_language,
       businessLocationList: {
         tags: []
@@ -306,6 +306,9 @@ class NewsTabs extends React.Component {
       this.state.selectedPreferenceList.forEach((element) => {
         if (element.split("/")[1] == "building-location") {
           this.state.buildingLocationIdTitle.forEach((obj) => {
+			console.log("1:"+Object.keys(obj)[0]);
+			console.log("2:"+element);
+			console.log("3:"+this.state.defaultBL);
             if (Object.keys(obj)[0] == element) {
               if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
@@ -651,7 +654,7 @@ class NewsTabs extends React.Component {
                                       return (
                                         <li key={index}>
                                           <input type="checkbox" name={`${value.id}/all`} value={`${value.id}/all`} onChange={this.handleCheckChildElement} checked={value.isChecked} class={`${value.id}/all` == this.state.defaultBL ? "disableCB" : ""} disabled={value.isChecked && `${value.id}/all` === this.state.defaultBL} />
-                                          <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>{value.title}</span>
+                                          <span class={`chk-lbl ${value.id+'/all' == this.state.defaultBL ? "disableCB" : ""}`}>{value.title}</span>
                                         </li>
                                       )
                                     })}
