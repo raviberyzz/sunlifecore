@@ -7,8 +7,8 @@
 	<sly data-sly-use.legacBaseModel="ca.sunlife.web.cms.core.models.LegacyBasePageModel" />
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
     <body class="${page.cssClassNames} ${page.templateName}" data-section="body-content">
-    <sly data-sly-test= "${pageProperties.needOpeningDiv}">
-		<div  id = "${pageProperties.needOpeningDiv}">
+     <sly data-sly-test= "${baseModel.addOpeningDiv}">
+		<div  id = "${baseModel.addOpeningDiv}">
 	</sly>
     	${baseModel.analyticsScriptlet @context='unsafe'}
         <sly data-sly-test.isRedirectPage="${page.redirectTarget && (wcmmode.edit || wcmmode.preview)}"
@@ -20,7 +20,11 @@
             <sly data-sly-include="body.socialmedia_end.html"></sly>
         </sly>
         <sly>${baseModel.bodyInclude @ context = 'unsafe'}</sly>
-    <sly data-sly-test= "${pageProperties.needOpeningDiv}">
+    <!-- Include Site level CSS and scripts -->
+		<sly data-sly-test.siteBodyInclude = "${baseModel.siteBodyInclude}"> 
+			<sly>${baseModel.siteBodyInclude @ context = 'unsafe'}</sly>
+        </sly>
+    <sly data-sly-test= "${baseModel.addOpeningDiv}">
 		</div>
 	</sly>
     </body>
