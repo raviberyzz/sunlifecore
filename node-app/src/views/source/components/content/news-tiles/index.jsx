@@ -455,6 +455,7 @@ class NewsTiles extends React.Component {
     bgList.filter((id, i) => {
       this.state.buildingLocationIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
+			console.log("bgBinding - id "+id + " , "+obj[id]); 
           if (i == bgList.length - 1) {
             title = title + obj[id];
           } else {
@@ -522,11 +523,15 @@ class NewsTiles extends React.Component {
           element.split("/")[1] == "building-location"
         ) {
           this.state.buildingLocationIdTitle.forEach((obj) => {
+			  console.log("tagSorting : "+obj);
+			  console.log("element : "+element);
+			  console.log("defaultBL : "+this.state.defaultBL);
             if (Object.keys(obj)[0] == element) {
               if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
               }
             }
+			console.log("businessTag : "+businessTag);
           })
 
         } else if (element.split("/")[1] == "topic") {
