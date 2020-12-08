@@ -245,7 +245,7 @@ class NewsTiles extends React.Component {
                     //if (val.substring(val.lastIndexOf("/")) === filter) {
 					if ("sunlife:source/building-location/all" === filter && val === filter) {
 						BLArticles.push(news)
-					} else if ("sunlife:source/building-location/"+country.toLowerCase()+"/all" === filter && val === filter) {
+					} else if (val === filter) {
 						BLArticles.push(news)
 					} else {
 						if(val.substring(val.lastIndexOf("/")) === filter) {
