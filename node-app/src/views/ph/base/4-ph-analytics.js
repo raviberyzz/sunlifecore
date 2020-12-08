@@ -121,21 +121,40 @@ $(document).ready(function () {
     /* Carousel analytics ends here */
     /* contact form starts here */
     if(productTitle=='contact us' || productTitle=='contact-us'){
-        let contactError='';
-        let err=false;
-        window.Parsley.on('field:error', function() {
+        /*window.Parsley.on('field:error', function() {
         // This global callback will be called for any field that fails validation.
         contactError+=':'+this.$element[0];
-        err=true;
+        });*/
+        $("#advisor-modal-submit-btn").click(function(){
+            let $form = $("form[name='advisor-modal-form']");
+            let contactError='';
+            let totalError=$("form[name='advisor-modal-form'] .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form[name='advisor-modal-form'] .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-us-form", 
+                            ev_data_one: "err"+contactError
+                        }); 
+                    }
+                });
+            }else{
+                $form.parsley().validate();
+                if ($($form).parsley().isValid()) {
+                    console.log('successful form submit');
+                    utag.link({ 
+                        ev_type: "other", 
+                        ev_action: "clk", 
+                        ev_title: "contact-us-form", 
+                        ev_data_one: "successful submission"
+                    });                      
+                }
+            }
         });
-        if(err==true || err=='true'){
-            utag.link({ 
-                ev_type: "other", 
-                ev_action: "clk", 
-                ev_title: "contact-us-form", 
-                ev_data_one: "err:"+contactError
-            }); 
-        }      
     }
     /* contact form ends here */
     /* Mobile App Banner starts here */
