@@ -9,7 +9,7 @@
                         <a href="${navItem.URL}" data-sly-unwrap="${navItem.active}" style="margin-right: 0; text-decoration: none;">
                             <sly data-sly-test="${!navItem.active}">${navItem.title}</sly>
                             <sly data-sly-test="${!navItem.active}">&nbsp;></sly>
-                            <span data-sly-test="${navItem.active}">${navItem.title @context = 'html'}</span>
+                            <span class="lit" data-sly-test="${navItem.active}">${navItem.title @context = 'html'}</span>
                         </a>
                     </li>
                  <sly>
