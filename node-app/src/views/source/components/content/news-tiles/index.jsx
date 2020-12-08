@@ -16,7 +16,7 @@ class NewsTiles extends React.Component {
       },
       allChecked: false,
       selectedPreferenceList: [],
-      businessGroupIdTitle: [],
+      buildingLocationIdTitle: [],
       newsList: [],
       filterNewsList: [],
       selectedPreferenceTags: [],
@@ -111,17 +111,17 @@ class NewsTiles extends React.Component {
             this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};
-          obj[data.id] = data.title;
+          obj[data.id+"/all"] = data.title;
           this.state.businessLocationIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBL != "" && this.state.defaultBL != undefined) {
-            if (data.id == this.state.defaultBL) {
+            if (data.id+"/all" == this.state.defaultBL) {
               data["isChecked"] = true;
             }
           }
           if (this.state.selectedPreferenceList.length > 0) {
             this.state.selectedPreferenceList.forEach((prefer) => {
-              if (prefer === data.id) {
+              if (prefer === data.id+"/all") {
                 data["isChecked"] = true;
               }
             });
@@ -317,7 +317,7 @@ class NewsTiles extends React.Component {
 
   handleAllChecked(event) {
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBL) {
+      if (prefer.id + "/all" != this.state.defaultBL) {
         prefer.isChecked = event.target.checked;
       }
     });
@@ -333,9 +333,8 @@ class NewsTiles extends React.Component {
 
   handleCheckChildElement(event) {
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id === event.target.value)
+      if (prefer.id + "/all" === event.target.value)
         prefer.isChecked = event.target.checked;
-
     });
     this.state.topicsList.tags.forEach((prefer) => {
       if (prefer.id === event.target.value)
@@ -353,7 +352,7 @@ class NewsTiles extends React.Component {
       loading: true
     });
     this.state.businessLocationList.tags.forEach((prefer) => {
-      if (prefer.id != this.state.defaultBL) {
+      if (prefer.id + "/all" != this.state.defaultBL) {
         prefer.isChecked = false;
       }
     });
@@ -384,7 +383,7 @@ class NewsTiles extends React.Component {
     let businessTitle = [], topicsTitle = [];
     this.state.businessLocationList.tags.forEach((prefer) => {
       if (prefer.isChecked) {
-        this.state.selectedPreferenceList.push(prefer.id);
+        this.state.selectedPreferenceList.push(prefer.id + "/all");
         if (prefer.title !== '') {
           businessTitle.push(prefer.title);
         }
@@ -452,7 +451,7 @@ class NewsTiles extends React.Component {
   bgBinding(bgList) {
     var title = "";
     bgList.filter((id, i) => {
-      this.state.businessGroupIdTitle.forEach((obj) => {
+      this.state.buildingLocationIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
           if (i == bgList.length - 1) {
             title = title + obj[id];
@@ -518,9 +517,9 @@ class NewsTiles extends React.Component {
     if (this.state.selectedPreferenceList.length > 0) {
       this.state.selectedPreferenceList.forEach((element) => {
         if (
-          element.split("/")[1] == "business-group"
+          element.split("/")[1] == "building-location"
         ) {
-          this.state.businessGroupIdTitle.forEach((obj) => {
+          this.state.buildingLocationIdTitle.forEach((obj) => {
             if (Object.keys(obj)[0] == element) {
               if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
@@ -806,9 +805,9 @@ class NewsTiles extends React.Component {
                                     <li key={index}>
                                       <input
                                         type="checkbox"
-                                        name={value.id}
-                                        value={value.id}
-                                        class={value.id == this.state.defaultBL ? "disableCB" : ""}
+                                        name={`${value.id}/all`}
+                                        value={`${value.id}/all`}
+                                        class={`${value.id}/all` == this.state.defaultBL ? "disableCB" : ""}
                                         aria-label={value.title}
                                         onChange={
                                           this.handleCheckChildElement
@@ -816,10 +815,10 @@ class NewsTiles extends React.Component {
                                         checked={value.isChecked}
                                         disabled={
                                           value.isChecked &&
-                                          value.id === this.state.defaultBL
+                                          `${value.id}/all` === this.state.defaultBL
                                         }
                                       />
-                                      <span class={`chk-lbl ${value.id == this.state.defaultBL ? "disableCB" : ""}`}>
+                                      <span class={`chk-lbl ${value.id+'/all' == this.state.defaultBL ? "disableCB" : ""}`}>
                                         {value.title}
                                       </span>
                                     </li>
