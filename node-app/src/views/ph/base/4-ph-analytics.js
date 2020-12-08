@@ -120,10 +120,23 @@ $(document).ready(function () {
     }
     /* Carousel analytics ends here */
     /* contact form starts here */
-    // window.Parsley.on('field:error', function() {
-    //     // This global callback will be called for any field that fails validation.
-    //     console.log('Validation failed for: ', this.$element[0]);
-    //   });
+    if(productTitle=='contact us' || productTitle=='contact-us'){
+        let contactError='';
+        let err=false;
+        window.Parsley.on('field:error', function() {
+        // This global callback will be called for any field that fails validation.
+        contactError+=':'+this.$element[0];
+        err=true;
+        });
+        if(err==true || err=='true'){
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-us-form", 
+                ev_data_one: "err:"+contactError
+            }); 
+        }      
+    }
     /* contact form ends here */
     /* Mobile App Banner starts here */
 //on-loading of mobile app banner
