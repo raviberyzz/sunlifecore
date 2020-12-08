@@ -382,6 +382,8 @@ class NewsTiles extends React.Component {
     this.state.selectedPreferenceList = [];
     let businessTitle = [], topicsTitle = [];
     this.state.businessLocationList.tags.forEach((prefer) => {
+	  console.log("prefer: "+prefer);
+	  console.log("prefer.isChecked: "+prefer.isChecked);
       if (prefer.isChecked) {
         this.state.selectedPreferenceList.push(prefer.id + "/all");
         if (prefer.title !== '') {
