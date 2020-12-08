@@ -195,6 +195,13 @@
                             clientlibs="sunlife.advisorhub.site">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_advisorhub_clientlibs>
+                        <policy_us_clientlibs
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Sunlife US Clientlibs"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            clientlibs="sunlife.us.site">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                        </policy_us_clientlibs>
                         <policy_source_clientlibs
                             jcr:description="Sunlife source clientlibs"
                             jcr:primaryType="nt:unstructured"
