@@ -172,13 +172,13 @@ class NewsTabs extends React.Component {
             var userJobLevelFilters = []
             //userProfileFilters.push(businessGroup, businessUnit, buildingLocation, jobLevel, "sunlife:source/business-group/all", "sunlife:source/job-level/all/all");
             businessGroup !== "sunlife:source/business-group/na" ? userProfileFilters.push(businessGroup, "sunlife:source/business-group/all", "sunlife:source/business-group/na") : userProfileFilters.push(businessGroup, "sunlife:source/business-group/all");
-            userProfileFilters.forEach((val) => {
+            /*userProfileFilters.forEach((val) => {
               this.state.selectedPreferenceList.forEach((prefer) => {
                 if (val !== prefer) {
                   userProfileFilters.push(prefer);
                 }
               })
-            })
+            })*/
             let userBGFilters = userProfileFilters.filter((c, index) => {
               return userProfileFilters.indexOf(c) === index;
             });
@@ -196,14 +196,25 @@ class NewsTabs extends React.Component {
             BUArticles = BGArticles.filter((news) => {
               return (news.tags && news.tags.some((val) => userBUFilters.indexOf(val) > -1));
             })
+			userBLFilters.forEach((val) => {
+              this.state.selectedPreferenceList.forEach((prefer) => {
+                if (val !== prefer) {
+                  userBLFilters.push(prefer);
+                }
+              })
+            })
+			
+			let userBLFiltersVar = userBLFilters.filter((c, index) => {
+              return userBLFilters.indexOf(c) === index;
+            });
             BUArticles.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/building-location') > -1) {
-                  userBLFilters.forEach((filter) => {
+                  userBLFiltersVar.forEach((filter) => {
                     //if (val.substring(val.lastIndexOf("/")) === filter) {
 					if ("sunlife:source/building-location/all" === filter && val === filter) {
 						BLArticles.push(news)
-					} else if ("sunlife:source/building-location/"+country.toLowerCase()+"/all" === filter && val === filter) {
+					} else if (val === filter) {
 						BLArticles.push(news)
 					} else {
 						if(val.substring(val.lastIndexOf("/")) === filter) {
