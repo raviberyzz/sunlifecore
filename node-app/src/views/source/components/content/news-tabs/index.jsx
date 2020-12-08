@@ -306,9 +306,6 @@ class NewsTabs extends React.Component {
       this.state.selectedPreferenceList.forEach((element) => {
         if (element.split("/")[1] == "building-location") {
           this.state.buildingLocationIdTitle.forEach((obj) => {
-			console.log("1:"+Object.keys(obj)[0]);
-			console.log("2:"+element);
-			console.log("3:"+this.state.defaultBL);
             if (Object.keys(obj)[0] == element) {
               if(element !== this.state.defaultBL){
                 businessTag.push(obj[element.toString()]);
@@ -354,7 +351,7 @@ class NewsTabs extends React.Component {
 
   handleCheckChildElement(event) {
     this.state.businessLocationList.tags.forEach(prefer => {
-      if (prefer.id === event.target.value)
+      if (prefer.id + "/all" === event.target.value)
         prefer.isChecked = event.target.checked
     })
     this.state.topicsList.tags.forEach(prefer => {
