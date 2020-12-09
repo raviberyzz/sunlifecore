@@ -170,25 +170,67 @@ if($("#mobile-app-banner").length){
     }
     setTimeout(mobileBannerUtag,500);        
 }
-//on clicking download button
-$("#mobile-app-banner.smartbanner .java-button .smartbanner__button__label").click(function(){
-    utag.link({ 
-        ev_type: "ad", 
-        ev_action: "onpage_impr", 
-        ev_title: "app_download_mobile_banner", 
-        ev_data_one: "open"
-    });            
-});
-//on clicking close button 
-$("#mobile-app-banner.smartbanner .app-wrapper .smartbanner__exit.js_smartbanner__exit").click(function(){
-    utag.link({ 
-        ev_type: "ad", 
-        ev_action: "onpage_impr", 
-        ev_title: "app_download_mobile_banner", 
-        ev_data_one: "close"
-    });                        
-});
+if($("#mobile-app-banner").length){
+    function mobileApp(){
+        //on clicking download button
+        $("#mobile-app-banner.smartbanner .java-button").click(function(){
+            utag.link({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "open"
+            });            
+        });
+        //on clicking close button 
+        $("#mobile-app-banner.smartbanner .app-wrapper .smartbanner__exit.js_smartbanner__exit").click(function(){
+            utag.link({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "close"
+            });                        
+        });
+    }
+    setTimeout(mobileApp,1000);
+}
 /* Mobile App Banner ends here */
+/* Get a quote social media share starts here */
+if($(".html-component #qc_container").length>0){
+    let pgName = "";
+    let breadcrumbPath = $("meta[property='og:title']").attr('content');
+    pgName = breadcrumbPath.trim().replace(/ /g, "_");
+    // facebook media share
+    $('.icon-parent .fa.fa-facebook-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "facebook share", 
+            ev_data_two: pgName
+        });         
+    });
+    //twitter media share
+    $('.icon-parent .fa.fa-twitter-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "twitter share", 
+            ev_data_two: pgName
+        });                
+    });
+    //linkedin share
+    $('.icon-parent .fa.fa-linkedin-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "linkedin share", 
+            ev_data_two: pgName
+        });                          
+    });
+}
+/* Get a quote social media share ends here */
 });
 /* Successful modal login starts here */
 function successLoginAnalytics(){
