@@ -115,8 +115,8 @@ $(document).ready(function () {
                 bannerCount++;
             }
         }
-        setInterval(carouselCycle,time);
-        bannerLoadHK();
+        bannerLoadPH();
+        setInterval(carouselCycle,time);        
     }
     /* Carousel analytics ends here */
     /* contact form starts here */
