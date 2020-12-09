@@ -122,7 +122,6 @@ $(document).ready(function () {
     /* contact form starts here */
     if(productTitle=='contact us' || productTitle=='contact-us'){
         /*window.Parsley.on('field:error', function() {
-        // This global callback will be called for any field that fails validation.
         contactError+=':'+this.$element[0];
         });*/
         $("#advisor-modal-submit-btn").click(function(){
