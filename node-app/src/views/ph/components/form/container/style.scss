@@ -31,7 +31,7 @@
 }
 
 .parsley-errors-list {
-    margin-left: 0; 
+    margin-left: 0 !important; 
     li::before {
         content: none !important;
     }
