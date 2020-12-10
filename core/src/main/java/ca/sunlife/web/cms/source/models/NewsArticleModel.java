@@ -343,7 +343,7 @@ public class NewsArticleModel {
 				final Locale locale = new Locale(pageLocaleDefault);
 				if (null != tags) {
 					for (Tag tag : tags) {
-						if (tag.getTagID().startsWith("sunlife:source/business-group")
+						if (tag.getTagID().startsWith("sunlife:source/building-location")
 								|| tag.getTagID().startsWith("sunlife:source/topic")) {
 							String locTitle = tag.getLocalizedTitle(locale);
 							LOGGER.debug("locale : {} , locTitle : {}", locale, locTitle);
