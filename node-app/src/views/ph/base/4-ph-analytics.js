@@ -115,15 +115,46 @@ $(document).ready(function () {
                 bannerCount++;
             }
         }
-        setInterval(carouselCycle,time);
-        bannerLoadHK();
+        bannerLoadPH();
+        setInterval(carouselCycle,time);        
     }
     /* Carousel analytics ends here */
     /* contact form starts here */
-    // window.Parsley.on('field:error', function() {
-    //     // This global callback will be called for any field that fails validation.
-    //     console.log('Validation failed for: ', this.$element[0]);
-    //   });
+    if(productTitle=='contact us' || productTitle=='contact-us'){
+        /*window.Parsley.on('field:error', function() {
+        contactError+=':'+this.$element[0];
+        });*/
+        $("#advisor-modal-submit-btn").click(function(){
+            let $form = $("form[name='advisor-modal-form']");
+            let contactError='';
+            let totalError=$("form[name='advisor-modal-form'] .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form[name='advisor-modal-form'] .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-us-form", 
+                            ev_data_one: "err"+contactError
+                        }); 
+                    }
+                });
+            }else{
+                $form.parsley().validate();
+                if ($($form).parsley().isValid()) {
+                    console.log('successful form submit');
+                    utag.link({ 
+                        ev_type: "other", 
+                        ev_action: "clk", 
+                        ev_title: "contact-us-form", 
+                        ev_data_one: "successful submission"
+                    });                      
+                }
+            }
+        });
+    }
     /* contact form ends here */
     /* Mobile App Banner starts here */
 //on-loading of mobile app banner
@@ -138,25 +169,67 @@ if($("#mobile-app-banner").length){
     }
     setTimeout(mobileBannerUtag,500);        
 }
-//on clicking download button
-$("#mobile-app-banner.smartbanner .java-button .smartbanner__button__label").click(function(){
-    utag.link({ 
-        ev_type: "ad", 
-        ev_action: "onpage_impr", 
-        ev_title: "app_download_mobile_banner", 
-        ev_data_one: "open"
-    });            
-});
-//on clicking close button 
-$("#mobile-app-banner.smartbanner .app-wrapper .smartbanner__exit.js_smartbanner__exit").click(function(){
-    utag.link({ 
-        ev_type: "ad", 
-        ev_action: "onpage_impr", 
-        ev_title: "app_download_mobile_banner", 
-        ev_data_one: "close"
-    });                        
-});
+if($("#mobile-app-banner").length){
+    function mobileApp(){
+        //on clicking download button
+        $("#mobile-app-banner.smartbanner .java-button").click(function(){
+            utag.link({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "open"
+            });            
+        });
+        //on clicking close button 
+        $("#mobile-app-banner.smartbanner .app-wrapper .smartbanner__exit.js_smartbanner__exit").click(function(){
+            utag.link({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "close"
+            });                        
+        });
+    }
+    setTimeout(mobileApp,1000);
+}
 /* Mobile App Banner ends here */
+/* Get a quote social media share starts here */
+if($(".html-component #qc_container").length>0){
+    let pgName = "";
+    let breadcrumbPath = $("meta[property='og:title']").attr('content');
+    pgName = breadcrumbPath.trim().replace(/ /g, "_");
+    // facebook media share
+    $('.icon-parent .fa.fa-facebook-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "facebook share", 
+            ev_data_two: pgName
+        });         
+    });
+    //twitter media share
+    $('.icon-parent .fa.fa-twitter-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "twitter share", 
+            ev_data_two: pgName
+        });                
+    });
+    //linkedin share
+    $('.icon-parent .fa.fa-linkedin-square').click(function(){
+        utag.link({ 
+            ev_type: "calc", 
+            ev_action: "clk", 
+            ev_title: "quick quote", 
+            ev_data_one: "linkedin share", 
+            ev_data_two: pgName
+        });                          
+    });
+}
+/* Get a quote social media share ends here */
 });
 /* Successful modal login starts here */
 function successLoginAnalytics(){
