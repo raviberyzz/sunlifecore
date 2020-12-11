@@ -68,9 +68,9 @@ $(document).ready(function () {
     /* Home Page Get a Quote ends here */
         /* Carousel analytics starts here */
     //for home page only
-    if(productTitle=='english' || productTitle=='home'){
+    if(productTitle=='vn' || productTitle=='home'){
         //banner load
-        function bannerLoadPH() {
+        function bannerLoadVN() {
             var bannerTitle = $(".cmp-carousel__item.cmp-carousel__item--active").find(".right-item.text-section h2").text();
             if (typeof utag !== 'undefined') {
                 utag.link({
@@ -115,60 +115,23 @@ $(document).ready(function () {
                 bannerCount++;
             }
         }
-        bannerLoadPH();
+        bannerLoadVN();
         setInterval(carouselCycle,time);        
     }
     /* Carousel analytics ends here */
-    /* contact form starts here */
-    if(productTitle=='contact us' || productTitle=='contact-us'){
-        /*window.Parsley.on('field:error', function() {
-        contactError+=':'+this.$element[0];
-        });*/
-        $("#advisor-modal-submit-btn").click(function(){
-            let $form = $("form[name='advisor-modal-form']");
-            let contactError='';
-            let totalError=$("form[name='advisor-modal-form'] .parsley-errors-list.filled").length;
-            if(totalError>0){
-                $("form[name='advisor-modal-form'] .parsley-errors-list.filled").each(function(index,item){
-                    contactError+=':'+$(this).find('li').text();
-                    if(index==totalError-1){
-                        console.log(contactError);
-                        utag.link({ 
-                            ev_type: "other", 
-                            ev_action: "clk", 
-                            ev_title: "contact-us-form", 
-                            ev_data_one: "err"+contactError
-                        }); 
-                    }
-                });
-            }else{
-                $form.parsley().validate();
-                if ($($form).parsley().isValid()) {
-                    console.log('successful form submit');
-                    utag.link({ 
-                        ev_type: "other", 
-                        ev_action: "clk", 
-                        ev_title: "contact-us-form", 
-                        ev_data_one: "successful submission"
-                    });                      
-                }
-            }
-        });
-    }
-    /* contact form ends here */
     /* Mobile App Banner starts here */
-//on-loading of mobile app banner
-if($("#mobile-app-banner").length){
-    function mobileBannerUtag(){
-        utag.view({ 
-            ev_type: "ad", 
-            ev_action: "onpage_impr", 
-            ev_title: "app_download_mobile_banner", 
-            ev_data_one: "show"
-        });
+    //on-loading of mobile app banner
+    if($("#mobile-app-banner").length){
+        function mobileBannerUtag(){
+            utag.view({ 
+                ev_type: "ad", 
+                ev_action: "onpage_impr", 
+                ev_title: "app_download_mobile_banner", 
+                ev_data_one: "show"
+            });
+        }
+        setTimeout(mobileBannerUtag,500);        
     }
-    setTimeout(mobileBannerUtag,500);        
-}
 if($("#mobile-app-banner").length){
     function mobileApp(){
         //on clicking download button
@@ -231,13 +194,3 @@ if($(".html-component #qc_container").length>0){
 }
 /* Get a quote social media share ends here */
 });
-/* Successful modal login starts here */
-function successLoginAnalytics(){
-    utag.link({ 
-        ev_type: "authenticate", 
-        ev_action: "clk", 
-        ev_title: "sign in", 
-        ev_data_one: "login successful"
-    }); 
-}
-/* Successful modal login ends here */

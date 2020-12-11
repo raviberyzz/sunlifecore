@@ -7,6 +7,12 @@
     }
     .options {
         margin-top: 0px;
+        .cmp-form-options--drop-down {
+            margin-bottom: 20px;
+        }
+        .cmp-form-options__field--drop-down {
+            margin-bottom: 0;
+        }
     }
 }
 
@@ -25,7 +31,7 @@
 }
 
 .parsley-errors-list {
-    margin-left: 0; 
+    margin-left: 0 !important; 
     li::before {
         content: none !important;
     }

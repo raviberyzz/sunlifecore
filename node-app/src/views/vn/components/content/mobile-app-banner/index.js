@@ -478,7 +478,7 @@ $(document).ready(function(){
       /* structure js starts here */
       if($("#mobile-app-banner")){
         var title='',author='',price='',downloadText='';
-        let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlifeph.android_sunlife_ph&hl=en';
+        let my_sunlife_app_link='https://play.google.com/store/apps/details?id=com.sunlife.vietnam.clientapp';
         function getOS() {
           var userAgent = window.navigator.userAgent,
               platform = window.navigator.platform,
@@ -498,15 +498,15 @@ $(document).ready(function(){
             os = 'Linux';
           }                
           if(os=='Mac OS' || os=='iOS' || $('body').hasClass('mac-os-target')){
-            my_sunlife_app_link="https://itunes.apple.com/ph/app/ph-sun-life/id898256688?mt=8";
+            my_sunlife_app_link="https://apps.apple.com/vn/app/sun-life-vietnam/id1464660549?l=vi";
           }
         }
         getOS();
           /* Content for english page */
-           title='My Sun Life PH Mobile app';
-           author='Sun Life Financial';
-           price='FREE';
-           downloadText='DOWNLOAD';
+           title='my Sun Life';
+           author='Sun Life Việt Nam';
+           price='Miễn phí';
+           downloadText='Mở';
 
         var smartBannerId=$("#mobile-app-banner");
         $(smartBannerId).addClass('smartbanner smartbanner--android js_smartbanner');
@@ -572,12 +572,12 @@ $(document).ready(function(){
           document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;";
         }
       $("#mobile-app-banner.smartbanner .close-smart").click(function(){
-          utag.link({ 
+          /*utag.link({ 
             ev_type: "ad", 
             ev_action: "onpage_impr", 
             ev_title: "app_download_mobile_banner", 
             ev_data_one: "close"
-          });
+          });*/
           $(this).parent().closest('.xf-content-height').addClass('xf-height');
           $(".smartbanner").addClass("app-hide");
           $(".slf-mobile-header-wrapper").removeClass('top-not');

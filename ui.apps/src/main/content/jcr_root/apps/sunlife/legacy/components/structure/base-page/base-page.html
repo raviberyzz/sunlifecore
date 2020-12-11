@@ -6,7 +6,7 @@
 	<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
 	<sly data-sly-use.legacBaseModel="ca.sunlife.web.cms.core.models.LegacyBasePageModel" />
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
-    <body class="${page.cssClassNames} ${page.templateName}" data-section="body-content">
+    <body class="${page.cssClassNames} ${page.templateName}">
      <sly data-sly-test= "${baseModel.addOpeningDiv}">
 		<div  id = "${baseModel.addOpeningDiv}">
 	</sly>
