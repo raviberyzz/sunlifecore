@@ -103,7 +103,10 @@
             var nName = $(this).data('name');
             var domain = $('#domain').val();
             var source = $(this).parents('tr').find('[data-name="tr-source"]').text().replace(domain, '');
-            var dest = $(this).parents('tr').find('[data-name="tr-destination"]').text().replace(domain, '');
+            if(domain.indexOf('http') < 0) {
+                source = source.replace(/.*:\/\//gi,'');
+            }
+            var dest = $(this).parents('tr').find('[data-name="tr-destination"]').text();
             $('#editRuleDialog').remove();
             var dialog = new Coral.Dialog().set({
                 id: "editRuleDialog",
