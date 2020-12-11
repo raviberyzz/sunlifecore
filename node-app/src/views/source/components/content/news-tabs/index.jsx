@@ -82,29 +82,31 @@ class NewsTabs extends React.Component {
         this.state.businessLocationList = res["building-location"];
         this.state.topicsList = res["topic"];
         this.state.businessLocationList.tags.forEach((data, index) => {
+		  var dataId = data.id+"/all";
           if (data.id == "sunlife:source/building-location/all") {
+			dataId = data.id;
+            this.state.businessLocationList.tags.splice(index, 1);
+          }
+		  if (data.id == "sunlife:source/building-location/na") {
+			dataId = data.id;
             this.state.businessLocationList.tags.splice(index, 1);
           }
           var obj = {};
-          obj[data.id+"/all"] = data.title;
+          obj[dataId] = data.title;
           this.state.buildingLocationIdTitle.push(obj);
           data["isChecked"] = false;
           if (this.state.defaultBL != "" && this.state.defaultBL != undefined) {
-            if (data.id+"/all" == this.state.defaultBL) {
+            if (dataId == this.state.defaultBL) {
               data["isChecked"] = true;
             }
           }
           this.state.selectedPreferenceList.forEach(prefer => {
-            if (prefer === data.id+"/all") {
+            if (prefer === dataId) {
               data["isChecked"] = true;
             }
           })
         });
-        this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/na") {
-            this.state.businessLocationList.tags.splice(index, 1);
-          }
-        })
+        
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
