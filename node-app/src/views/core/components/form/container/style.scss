@@ -43,11 +43,12 @@
     padding: 4px 10px 4px 17px;
     background-image: none;
     text-align: left;
+    margin: 5px 10px;
 }
 
 
 
-.parsley-custom-error-message, .parsley-required {
+.parsley-custom-error-message, .parsley-required, .parsley-pattern, .parsley-type {
     margin: 5px 10px;
 }
 
