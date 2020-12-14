@@ -2,6 +2,7 @@ package ca.sunlife.web.cms.core.services.druglist;
 
 import acscommons.io.jsonwebtoken.lang.Collections;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -156,6 +157,7 @@ public class PaFormTest {
             @Override
             public Cell answer(InvocationOnMock invocationOnMock) throws Throwable {
                 Cell cell = mock(Cell.class);
+                when(cell.getCellTypeEnum()).thenReturn(CellType.STRING);
                 if (new Integer(0).equals(invocationOnMock.getArgument(0))){
                     when(cell.getStringCellValue()).thenReturn(categories);
                 } else if (new Integer(1).equals(invocationOnMock.getArgument(0))){
