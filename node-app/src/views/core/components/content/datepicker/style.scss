@@ -18,7 +18,7 @@ input.form-control {
     font-size: 16px;
     height: auto;
 }
-input[type='radio'] {
+/*input[type='radio'] {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -56,7 +56,7 @@ input[type='radio'] + label:before {
 input[type='radio']:checked + label:before {
     background-color: #004C6C;
     padding: 2px;
-}
+}*/
 #invCalcResult {
     margin-top: 20px;
 }
@@ -75,14 +75,14 @@ input[type='radio']:checked + label:before {
 #endDate, #startDate {
     width: 122px !important;
 }
-input[type=text], input[type=email], input[type=password] {
+/*input[type=text], input[type=email], input[type=password] {
     font-weight: 400;
     font-size: 16px;
     padding: 0 10px;
     height: 40px !important;
     border: 1px solid #D7D7D7;
     width: auto;
-}
+}*/
 /* investment calculator ends here */
 
 
