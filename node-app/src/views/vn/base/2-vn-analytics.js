@@ -30,27 +30,19 @@ $(document).ready(function () {
                 ev_data_one: "existing client"
             });                
         });
-    /* Sign in modal analytics ends here */
-    /* Modal forgot password starts here */
-    $('#userIdForgot').click(function(){        
+    /*Modal link click starts here */
+    $("#form_signon .moreon a").click(function(){
+        let linkName=$(this).text();
         utag.link({ 
             ev_type: "authenticate", 
             ev_action: "clk", 
             ev_title: "sign in", 
-            ev_data_one: "forgot password"
-        });            
-    });
-    /* Modal forgot password ends here */
-    /* Modal register now analytics starts here */
-    $('#userIdRegiste').click(function(){
-        utag.link({ 
-            ev_type: "authenticate", 
-            ev_action: "clk", 
-            ev_title: "sign in", 
-            ev_data_one: "register now"
+            ev_data_one: linkName
         });        
     });
-    /* Modal register now analytics ends here */
+    /*Modal link click sends here */
+    /* Sign in modal analytics ends here */
+
     let pageName= utag_data.page_breadcrumb.split("/");
     let productTitle = pageName[pageName.length - 1].toLowerCase();
     /* Home Page Get a Quote starts here */
