@@ -108,11 +108,7 @@ class NewsTiles extends React.Component {
         this.state.topicsList = response["topic"];
         this.state.businessLocationList.tags.forEach((data, index) => {
 		  var dataId = data.id+"/all";
-          if (data.id == "sunlife:source/building-location/all") {
-			dataId = data.id;
-            this.state.businessLocationList.tags.splice(index, 1);
-          }
-		  if (data.id == "sunlife:source/building-location/na") {
+          if (data.id == "sunlife:source/building-location/all" || data.id == "sunlife:source/building-location/na") {
 			dataId = data.id;
             this.state.businessLocationList.tags.splice(index, 1);
           }
@@ -133,7 +129,11 @@ class NewsTiles extends React.Component {
             });
           }
         });
-        
+        this.state.businessLocationList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/building-location/na") {
+            this.state.businessLocationList.tags.splice(index, 1);
+          }
+        })
         // remvoe global and and na tags from preference modal
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
