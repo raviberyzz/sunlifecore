@@ -248,7 +248,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldDescription="When value given, html content will be put under a parent div with id."
-                                        fieldLabel="Add Opening DIV"
+                                        fieldLabel="Root DIV id"
                                         name="./addOpeningDiv"/>
                                 </items>
                             </section-page>
