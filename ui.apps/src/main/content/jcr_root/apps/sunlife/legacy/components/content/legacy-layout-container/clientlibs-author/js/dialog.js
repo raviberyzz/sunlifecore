@@ -1,7 +1,7 @@
 (function($,$document){
     "use strict"
     var options = [
-        {'normal':'Blank'},
+        {'normal':'Content'},
         {'25:75N':'Left Navigation & Content'},
     ];
 
