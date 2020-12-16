@@ -469,7 +469,7 @@ class NewsTiles extends React.Component {
 		  var titleVal = obj[id];
 		  //logic to handle specific location tags while display
 		  if ( null == titleVal || titleVal == '') {
-			id = st.split("/").slice(0, 3).join("/") + "/all";
+			id = id.split("/").slice(0, 3).join("/") + "/all";
 		  }
 		  titleVal = obj[id];
           if (i == bgList.length - 1) {
