@@ -1,4 +1,4 @@
-<div id="datepicker-desktop">
+{{!-- <div id="datepicker-desktop">
     <div class="row btm-space">
         <div class="hidden" id="errorMessageDate" style="visibility: hidden;">&nbsp;</div>
         <div class="col-sm-4"><label id="startdate-label" for="startDate">Start date:</label></div>
@@ -25,4 +25,13 @@
                 title="format: MM/DD/YY" class="form-element-border form-control" id="endDateMobile" type="date"
                 autocomplete="off" /></div>
     </div>
+</div> --}}
+
+{{!-- Date picker only ip field --}}
+<div id="datepicker-desktop">
+        <div class="hidden" id="errorMessageDate" style="visibility: hidden;">&nbsp;</div>
+        <label id="startdate-label" for="startDate">Start date</label>
+        <input title="format: MM/DD/YY" class="form-element-border" id="startDate" type="text"
+                size="12" readonly="readonly" tabindex="-1" />
+            <div id="startdate-inline"></div>
 </div>

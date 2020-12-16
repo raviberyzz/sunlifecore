@@ -1,5 +1,4 @@
 @import '../../../base/core';
-/* investment calculator starts here */
 .calendar-icon {
     background-color: #D7D7D7;
     color: #003946;
@@ -12,83 +11,27 @@
     font-family: FontAwesome;
     content: "\f073";
 }
-input.form-control {
-    font-family: sunlife-sans;
-    font-weight: 400;
-    font-size: 16px;
-    height: auto;
-}
-input[type='radio'] {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-}
-input[type='radio'] + label {
-    position: relative;
-    padding-left: 30px;
-    margin-right: 28px;
-    font-family: sunlife-sans;
-    font-weight: 400;
-    color: #003946;
-}
 input[type='text']:disabled {
     background-color: #F7F7F7;
-}
-input[type='radio'] + label:before {
-    background-clip: content-box;
-    background-color: #fff;
-    border: solid 1px #D7D7D7;
-    border-radius: 20px;
-    content: "";
-    height: 20px;
-    left: 0;
-    padding: 0px;
-    position: absolute;
-    top: 1px;
-    transition: background-color ease-in-out 0.15s, padding ease-in-out 0.25s, box-shadow ease-in-out 0.25s;
-    width: 20px;
-}
-input[type='radio']:checked + label:before {
-    background-color: #004C6C;
-    padding: 2px;
-}
-#invCalcResult {
-    margin-top: 20px;
-}
-.legal-text{
-    font-size: 14px;
-    line-height: 18px;
-    color: #003946 !important;
-    font-weight: 400 !important;
-}
-.table > tfoot > tr > td:last-child {
-    border-bottom: 1px solid #D7D7D7 !important;
-}
-.slf-table .table > tfoot > tr.legal-text > td > a{
-    font-size: 14px;
 }
 #endDate, #startDate {
     width: 122px !important;
 }
-input[type=text], input[type=email], input[type=password] {
-    font-weight: 400;
-    font-size: 16px;
-    padding: 0 10px;
-    height: 40px !important;
-    border: 1px solid #D7D7D7;
-    width: auto;
+#datepicker-desktop {
+    input[type=text] {
+        font-weight: 400;
+        font-size: 16px;
+        padding: 0 10px;
+        height: 40px !important;
+        border: 1px solid #D7D7D7;
+        width: auto;
+    }
 }
-/* investment calculator ends here */
 
 
-/* 
- * sizes and positions
- */
+// /* 
+//  * sizes and positions
+//  */
 
 div.datepicker-calendar {
     margin: 0 10px 10px 0;
