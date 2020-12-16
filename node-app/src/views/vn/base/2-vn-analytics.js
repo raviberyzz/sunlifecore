@@ -217,6 +217,73 @@ if($(".html-component #qc_container").length>0){
                 ev_data_one: "corp client tab"
             });              
         }
-    })
+    });
+    //form submit starts here
+    /* khach hang form */
+    $('form#contactus-modal-form #submitContact').click(function(){
+        setTimeout(function(){
+        let subVal=$("#contactus-modal-form select[name='slf-contact-subject'] option:selected").text();
+        if($("#contactus-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#contactus-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#contactus-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                             
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });            
+        }
+    },500);
+    });
+    //tu van form
+    $('form#advisor-modal-form #advisor-modal-submit-btn1').click(function(){
+        setTimeout(function(){
+        let subVal=$("#advisor-modal-form select[name='contactus-advisor-enquiry-subject'] option:selected").text();
+        if($("#advisor-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#advisor-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#advisor-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                                                         
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });                            
+        }
+    },500);
+    });
 /* contact-us form analytics ends here */
 });
