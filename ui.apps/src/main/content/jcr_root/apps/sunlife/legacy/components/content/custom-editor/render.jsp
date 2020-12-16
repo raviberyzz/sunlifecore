@@ -54,9 +54,9 @@
 </div>
 
 
-<script type='text/javascript'
-	" src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=153zwajjv5musly3kozkvhy7tq40pelbl8579584w44i9suk'></script>
-
+<!--<script type='text/javascript'
+	" src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=153zwajjv5musly3kozkvhy7tq40pelbl8579584w44i9suk'></script>-->
+<script src="https://cdn.tiny.cloud/1/153zwajjv5musly3kozkvhy7tq40pelbl8579584w44i9suk/tinymce/4/tinymce.min.js" referrerpolicy="origin"></script> 
 
 <script>
 $(document).ready(function() {
