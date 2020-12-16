@@ -15,7 +15,7 @@ public interface DrugListService {
      * @throws IOException Service failed to either read or write DAM Assets
      *
      */
-    void updateDrugLists(String formsPath, String lookupPath, String nonPolicyPath) throws IOException;
+    void updateDrugLists(String formsPath, String lookupPath, String nonPolicyPath, String chessPath) throws IOException;
 
     /**
      * The DAM path where the JSON Asset will be (or has been) placed. Allows service users to locate

@@ -62,6 +62,9 @@ public class DrugListServiceImplTest {
     Rendition nonpolicy;
 
     @Mock
+    Rendition chess;
+
+    @Mock
     DrugListConfig config;
 
     @BeforeEach
@@ -97,13 +100,21 @@ public class DrugListServiceImplTest {
             }
         });
 
+        when(chess.getStream()).thenAnswer(new Answer<InputStream>(){
+
+            @Override
+            public InputStream answer(InvocationOnMock invocationOnMock) throws Throwable {
+                return getClass().getClassLoader().getResourceAsStream("ca/sunlife/web/cms/core/services/impl/NewPAForm.csv");
+            }
+        });
+
         subject = new DrugListServiceImpl();
 
         FieldSetter.setField(subject,
                 subject.getClass().getDeclaredField("resourceResolverFactory"),
                 resourceResolverFactory );
         when(assetManager.getAsset(anyString())).thenReturn(asset);
-        when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup, nonpolicy);
+        when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup, nonpolicy, chess );
 
         when(config.pdf_folder()).thenReturn("/content/dam/sunlife/pdf");
         when(config.drug_list_asset_path()).thenReturn("/content/dam/sunlife/data");
@@ -121,7 +132,7 @@ public class DrugListServiceImplTest {
 
         when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(false);
         when(assetManager.createAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
 
         verify(assetManager).assetExists("/content/dam/sunlife/data/druglist.json");
         verify(assetManager).createAsset("/content/dam/sunlife/data/druglist.json");
@@ -132,7 +143,7 @@ public class DrugListServiceImplTest {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
 
-        assertEquals(253, jsonNode.get("slf-policy").size());
+        assertEquals(254, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
         assertEquals(154, policy.size());
         assertNotNull(policy);
@@ -148,7 +159,17 @@ public class DrugListServiceImplTest {
         assertNotNull(policy);
         assertEquals(5, policy.size());
 
+        policy = jsonNode.get("slf-policy").get("******");
+        assertNotNull(policy);
+        assertEquals(204, policy.size());
+
+        policy = jsonNode.get("slf-policy").get("*#*#*");
+        assertNotNull(policy);
+        assertEquals(234, policy.size());
+
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
+
+        assertEquals(22841, jsonNode.get("chess").size());
 
     }
 
@@ -160,7 +181,7 @@ public class DrugListServiceImplTest {
 
         when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(true);
         when(assetManager.getAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
 
         verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 

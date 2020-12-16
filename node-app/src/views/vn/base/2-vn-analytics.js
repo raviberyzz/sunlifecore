@@ -30,27 +30,18 @@ $(document).ready(function () {
                 ev_data_one: "existing client"
             });                
         });
-    /* Sign in modal analytics ends here */
-    /* Modal forgot password starts here */
-    $('#userIdForgot').click(function(){        
+    /*Modal link starts here */
+    $("#form_signon .moreon a").click(function(){
+        let linkName=$(this).text();
         utag.link({ 
             ev_type: "authenticate", 
             ev_action: "clk", 
             ev_title: "sign in", 
-            ev_data_one: "forgot password"
-        });            
-    });
-    /* Modal forgot password ends here */
-    /* Modal register now analytics starts here */
-    $('#userIdRegiste').click(function(){
-        utag.link({ 
-            ev_type: "authenticate", 
-            ev_action: "clk", 
-            ev_title: "sign in", 
-            ev_data_one: "register now"
+            ev_data_one: linkName
         });        
     });
-    /* Modal register now analytics ends here */
+    /*Modal link here */
+    /* Sign in modal analytics ends here */
     let pageName= utag_data.page_breadcrumb.split("/");
     let productTitle = pageName[pageName.length - 1].toLowerCase();
     /* Home Page Get a Quote starts here */
@@ -193,4 +184,106 @@ if($(".html-component #qc_container").length>0){
     });
 }
 /* Get a quote social media share ends here */
+/* contact-us form analytics starts here */
+// tab click starts here 
+    $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
+        let tabName=$(this).text();
+        if(tabName.trim().toLowerCase().match('khách hàng')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=client"
+            });               
+        }else if(tabName.trim().toLowerCase().match('tư vấn tài chính')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=advisor"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng cá nhân')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "ind client tab"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng doanh nghiệp')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "corp client tab"
+            });              
+        }
+    });
+    //form submit starts here
+    /* khach hang form */
+    $('form#contactus-modal-form #submitContact').click(function(){
+        setTimeout(function(){
+        let subVal=$("#contactus-modal-form select[name='slf-contact-subject'] option:selected").text();
+        if($("#contactus-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#contactus-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#contactus-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                             
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });            
+        }
+    },500);
+    });
+    //tu van form
+    $('form#advisor-modal-form #advisor-modal-submit-btn1').click(function(){
+        setTimeout(function(){
+        let subVal=$("#advisor-modal-form select[name='contactus-advisor-enquiry-subject'] option:selected").text();
+        if($("#advisor-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#advisor-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#advisor-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                                                         
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });                            
+        }
+    },500);
+    });
+/* contact-us form analytics ends here */
 });

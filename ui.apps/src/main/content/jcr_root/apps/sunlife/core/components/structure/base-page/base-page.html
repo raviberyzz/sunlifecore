@@ -6,6 +6,9 @@
 	<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
     <body class="${page.cssClassNames} ${page.templateName}" data-section="body-content">
+	 <sly data-sly-test= "${baseModel.addOpeningDiv}">
+		<div  id = "${baseModel.addOpeningDiv}">
+	</sly>
     	${baseModel.analyticsScriptlet @context='unsafe'}
         <sly data-sly-test.isRedirectPage="${page.redirectTarget && (wcmmode.edit || wcmmode.preview)}"
              data-sly-call="${redirect.redirect @ redirectTarget = page.redirectTarget}"></sly>
@@ -20,5 +23,12 @@
         <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" data-sly-test.extraClientlibs = "${baseModel.extraClientlibs}">            	
             <sly data-sly-call="${clientLib.js @ categories=extraClientlibs}"></sly>
         </sly>
+        <!-- Include Site level CSS and scripts -->
+		<sly data-sly-test.siteBodyInclude = "${baseModel.siteBodyInclude}"> 
+			<sly>${baseModel.siteBodyInclude @ context = 'unsafe'}</sly>
+        </sly>
+		<sly data-sly-test= "${baseModel.addOpeningDiv}">
+			</div>
+		</sly>
     </body>
 </html>

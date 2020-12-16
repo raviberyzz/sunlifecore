@@ -3,12 +3,15 @@ $(document).ready(function(){
   var li_arr=$('.cmp-tabs__tablist').children();
   var url = window.location.href;
   if(url.indexOf("#")!=-1){
-  var id = url.substring(url.lastIndexOf("#"), url.length);
-      if($(id).length>0){
-       set_active($(id));
-       mobile_accordian_open($(id));
+    var id = url.substring(url.lastIndexOf("#"), url.length);
+    if (id != "#") {
+      if($(id).length>0 && $(id).parents().hasClass('tabs-wrapper')){
+        set_active($(id));
+        mobile_accordian_open($(id));
       }
+    }
   }
+  
   $('.cmp-tabs__tab').click(function(){
     set_active($(this));
   });
