@@ -184,4 +184,39 @@ if($(".html-component #qc_container").length>0){
     });
 }
 /* Get a quote social media share ends here */
+/* contact-us form analytics starts here */
+// tab click starts here 
+    $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
+        let tabName=$(this).text();
+        if(tabName.trim().toLowerCase().match('khách hàng')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=client"
+            });               
+        }else if(tabName.trim().toLowerCase().match('tư vấn tài chính')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=advisor"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng cá nhân')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "ind client tab"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng doanh nghiệp')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "corp client tab"
+            });              
+        }
+    })
+/* contact-us form analytics ends here */
 });
