@@ -14,4 +14,7 @@ public @interface DrugListConfig {
 
     @AttributeDefinition(name = "drugListAssetName", description = "Name of JSON Asset")
     String drug_list_asset_name() default "druglist.json";
+    
+    @AttributeDefinition(name = "drugListGZipAssetName", description = "Name of JSON Asset Gzip")
+    String drug_list_asset_name_gzip() default "druglist.json.gz";
 }

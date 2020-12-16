@@ -21,6 +21,10 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.json.Json;
@@ -30,6 +34,7 @@ import javax.json.JsonObjectBuilder;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * converts inputs into the drug list. See updateDrugList method.
@@ -47,7 +52,9 @@ public class DrugListServiceImpl implements DrugListService {
 
     private String pdfFolder;
 
-    private String dataAssetPath;
+	private String dataAssetPath;
+
+	private String dataAssetZipPath;
 
     private String reportAssetPath;
 
@@ -64,6 +71,16 @@ public class DrugListServiceImpl implements DrugListService {
     public String getDataAssetPath() {
         return dataAssetPath;
     }
+
+	/**
+	 * Provides the DAM path where generated JSON zip file can be found.
+	 * 
+	 * @return the DAM path.
+	 */
+	@Override
+	public String getDataAssetZipPath() {
+		return dataAssetZipPath;
+	}
 
     /**
      * This service reads four input files and converts them to a JSON asset, providing drug form information for a
@@ -142,25 +159,60 @@ public class DrugListServiceImpl implements DrugListService {
      * @param builder the JSON Data
      * @throws LoginException indicates user doesn't have access to the DAM.
      */
-    private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder) throws LoginException {
-        Asset outputAsset;
-        if (assetManager.assetExists(getDataAssetPath())) {
-            outputAsset = assetManager.getAsset(getDataAssetPath());
+	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder)
+			throws LoginException {
+		Asset outputAsset;
+		if (assetManager.assetExists(getDataAssetPath())) {
+			outputAsset = assetManager.getAsset(getDataAssetPath());
 
-            AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
-            if (versionManager == null) {
-                throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
-            }
+			AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
+			if (versionManager == null) {
+				throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
+			}
 
-            versionManager.createVersion(outputAsset.getPath(), UUID.randomUUID().toString());
+			versionManager.createVersion(outputAsset.getPath(), UUID.randomUUID().toString());
 
-        } else {
-            outputAsset = assetManager.createAsset(getDataAssetPath());
-        }
+		} else {
+			outputAsset = assetManager.createAsset(getDataAssetPath());
+		}
+		Path sourcePath = Paths.get(getDataAssetPath());
+		Path targetPath = Paths.get(getDataAssetZipPath());
+		if (Files.notExists(sourcePath)) {
+			logger.error("The path {} doesn't exist!", sourcePath);
+			return;
+		}
+		try {
+			compressGzip(sourcePath, targetPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ByteArrayInputStream stream = new ByteArrayInputStream(
+				builder.build().toString().getBytes(StandardCharsets.UTF_8));
+		outputAsset.setRendition(ORIGINAL, stream, new HashMap<>());
+	}
 
-        ByteArrayInputStream stream = new ByteArrayInputStream(builder.build().toString().getBytes(StandardCharsets.UTF_8));
-        outputAsset.setRendition(ORIGINAL, stream, new HashMap<>() );
-    }
+	/**
+	 * Converts json file to json.gz file
+	 * 
+	 * @param source
+	 * @param target
+	 * @throws IOException
+	 */
+	private void compressGzip(Path sourcePath, Path targetPath) throws IOException {
+
+		try (GZIPOutputStream gos = new GZIPOutputStream(new FileOutputStream(targetPath.toFile()));
+				FileInputStream fis = new FileInputStream(sourcePath.toFile())) {
+
+			// copy file
+			byte[] buffer = new byte[1024];
+			int len;
+			while ((len = fis.read(buffer)) > 0) {
+				gos.write(buffer, 0, len);
+			}
+
+		}
+	}
 
     /**
      * Turns the collected report writer data into an Asset.
@@ -440,7 +492,9 @@ public class DrugListServiceImpl implements DrugListService {
 
         pdfFolder = config.pdf_folder();
 
-        dataAssetPath = String.format("%s/%s", config.drug_list_asset_path(), config.drug_list_asset_name());
+		dataAssetPath = String.format("%s/%s", config.drug_list_asset_path(), config.drug_list_asset_name());
+
+		dataAssetZipPath = String.format("%s/%s", config.drug_list_asset_path(), config.drug_list_asset_name_gzip());
 
         reportAssetPath = String.format("%s/%s", config.drug_list_asset_path(), "druglist-workflow-report.txt");
 
