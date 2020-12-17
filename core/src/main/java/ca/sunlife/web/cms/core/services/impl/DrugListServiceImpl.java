@@ -8,6 +8,9 @@ import com.adobe.granite.asset.api.Asset;
 import com.adobe.granite.asset.api.AssetManager;
 import com.adobe.granite.asset.api.AssetVersionManager;
 import com.adobe.granite.asset.api.Rendition;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -179,15 +182,12 @@ public class DrugListServiceImpl implements DrugListService {
 		} else {
 			outputAsset = assetManager.createAsset(getDataAssetPath());
 		}
-		Path sourcePath = Paths.get(getDataAssetPath());
-		Path targetPath = Paths.get(getDataAssetZipPath());
-		if (Files.notExists(sourcePath)) {
-			logger.error("The path {} doesn't exist!", sourcePath);
-			return;
-		}
+		String sourcePath = getDataAssetPath();
+		String targetPath = getDataAssetZipPath();
 		try {
-			InputStream iStream = compressAndReturnInputStream(sourcePath, targetPath);
-			outputAsset.setRendition(ORIGINAL, iStream, new HashMap<>());
+			// InputStream iStream = compressAndReturnInputStream(sourcePath, targetPath);
+			compressGZip(outputAsset, sourcePath, targetPath);
+			// outputAsset.setRendition(ORIGINAL, iStream, new HashMap<>());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -200,13 +200,15 @@ public class DrugListServiceImpl implements DrugListService {
 
 	/**
 	 * Converts json file to json.gz file and return input stream
+	 * @param targetPath 
+	 * @param sourcePath 
 	 * 
 	 * @param sourcePath
 	 * @param targetPath
 	 * @return
 	 * @throws IOException
 	 */
-	private InputStream compressAndReturnInputStream(Path sourcePath, Path targetPath) throws IOException {
+	/*private InputStream compressAndReturnInputStream(Path sourcePath, Path targetPath) throws IOException {
 
 		try (GZIPOutputStream gos = new GZIPOutputStream(new FileOutputStream(targetPath.toFile()));
 				FileInputStream fis = new FileInputStream(sourcePath.toFile())) {
@@ -225,6 +227,30 @@ public class DrugListServiceImpl implements DrugListService {
 			InputStream inputStream = new ByteArrayInputStream(bytes);
 			return inputStream;
 
+		}
+	}*/
+	
+	void compressGZip(Asset outputAsset, String sourcePath, String targetPath) throws IOException {
+		File tmpOutputFile = File.createTempFile("myzipfile", "gzip");
+		Path tmpInputFilePath = Paths.get("C:\\Users\\d613\\Downloads\\druglist.json"); // For aem?
+		FileInputStream fis = new FileInputStream(tmpInputFilePath.toFile());
+		OutputStream oStream = FileUtils.openOutputStream(tmpOutputFile);
+		InputStream is = null;
+		try {
+			GZIPOutputStream gos = new GZIPOutputStream(oStream);
+			// copy file
+			byte[] buffer = new byte[1024];
+			int len;
+			while ((len = fis.read(buffer)) > 0) {
+				gos.write(buffer, 0, len);
+			}
+			is = FileUtils.openInputStream(tmpOutputFile);
+
+			outputAsset.setRendition(ORIGINAL, is, new HashMap<>());
+		} finally {
+			IOUtils.closeQuietly(oStream);
+			IOUtils.closeQuietly(is);
+			FileUtils.deleteQuietly(tmpOutputFile);
 		}
 	}
 
