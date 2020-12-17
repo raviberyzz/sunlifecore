@@ -464,22 +464,20 @@ class NewsTiles extends React.Component {
   bgBinding(bgList) {
     var title = "";
     bgList.filter((id, i) => {
-      this.state.buildingLocationIdTitle.forEach((obj) => {
-        if (Object.keys(obj) == id) {
-		  var titleVal = obj[id];
-		  //logic to handle specific location tags while display
-		  if ( null == titleVal || titleVal == '') {
-			id = id.split("/").slice(0, 3).join("/") + "/all";
-		  }
-		  titleVal = obj[id];
-          if (i == bgList.length - 1) {
-            title = title + titleVal;
-          } else {
-            title = title + titleVal + " | ";
-          }
-          // return obj[id];
-        }
-      });
+		if(id.indexOf('building-location') > 1){
+		  id = id.indexOf('all') > 1 ? id : id.replace(id.replace(/.*building-location\/.*?\//gi,''),'all');
+		  this.state.buildingLocationIdTitle.forEach((obj) => {
+			if (Object.keys(obj) == id) {
+			  var titleVal = obj[id];
+			  if (i == bgList.length - 1) {
+				title = title + titleVal;
+			  } else {
+				title = title + titleVal + " | ";
+			  }
+			  // return obj[id];
+			}
+		  });
+		}
     });
     if (title.charAt(title.length - 2) == '|') {
       title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
