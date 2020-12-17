@@ -151,14 +151,18 @@ public class DrugListServiceImpl implements DrugListService {
         return chessArray;
     }
 
-    /**
-     * Converts the JSON data to a DAM asset
-     *
-     * @param resourceResolver adapts to an AssetVersionManager
-     * @param assetManager facilitates asset writing
-     * @param builder the JSON Data
-     * @throws LoginException indicates user doesn't have access to the DAM.
-     */
+	/**
+	 * Converts the JSON data to a DAM asset
+	 *
+	 * @param resourceResolver
+	 *            adapts to an AssetVersionManager
+	 * @param assetManager
+	 *            facilitates asset writing
+	 * @param builder
+	 *            the JSON Data
+	 * @throws LoginException
+	 *             indicates user doesn't have access to the DAM.
+	 */
 	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder)
 			throws LoginException {
 		Asset outputAsset;
@@ -182,24 +186,27 @@ public class DrugListServiceImpl implements DrugListService {
 			return;
 		}
 		try {
-			compressGzip(sourcePath, targetPath);
+			InputStream iStream = compressAndReturnInputStream(sourcePath, targetPath);
+			outputAsset.setRendition(ORIGINAL, iStream, new HashMap<>());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ByteArrayInputStream stream = new ByteArrayInputStream(
-				builder.build().toString().getBytes(StandardCharsets.UTF_8));
-		outputAsset.setRendition(ORIGINAL, stream, new HashMap<>());
+		/*
+		 * ByteArrayInputStream stream = new ByteArrayInputStream(
+		 * builder.build().toString().getBytes(StandardCharsets.UTF_8));
+		 */
+
 	}
 
 	/**
-	 * Converts json file to json.gz file
+	 * Converts json file to json.gz file and return input stream
 	 * 
-	 * @param source
-	 * @param target
+	 * @param sourcePath
+	 * @param targetPath
+	 * @return
 	 * @throws IOException
 	 */
-	private void compressGzip(Path sourcePath, Path targetPath) throws IOException {
+	private InputStream compressAndReturnInputStream(Path sourcePath, Path targetPath) throws IOException {
 
 		try (GZIPOutputStream gos = new GZIPOutputStream(new FileOutputStream(targetPath.toFile()));
 				FileInputStream fis = new FileInputStream(sourcePath.toFile())) {
@@ -210,11 +217,18 @@ public class DrugListServiceImpl implements DrugListService {
 			while ((len = fis.read(buffer)) > 0) {
 				gos.write(buffer, 0, len);
 			}
+			gos.close();
+			// create input stream from gos
+			// error cannot convert GZIPOutputStream to ByteArrayOutputStream
+			ByteArrayOutputStream byteOutputStream = (ByteArrayOutputStream) gos;
+			byte[] bytes = byteOutputStream.toByteArray();
+			InputStream inputStream = new ByteArrayInputStream(bytes);
+			return inputStream;
 
 		}
 	}
 
-    /**
+	 /**
      * Turns the collected report writer data into an Asset.
      *
      * @param reporter
