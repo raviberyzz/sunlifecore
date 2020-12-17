@@ -466,10 +466,16 @@ class NewsTiles extends React.Component {
     bgList.filter((id, i) => {
       this.state.buildingLocationIdTitle.forEach((obj) => {
         if (Object.keys(obj) == id) {
+		  var titleVal = obj[id];
+		  //logic to handle specific location tags while display
+		  if ( null == titleVal || titleVal == '') {
+			id = st.split("/").slice(0, 3).join("/") + "/all";
+		  }
+		  titleVal = obj[id];
           if (i == bgList.length - 1) {
-            title = title + obj[id];
+            title = title + titleVal;
           } else {
-            title = title + obj[id] + " | ";
+            title = title + titleVal + " | ";
           }
           // return obj[id];
         }
