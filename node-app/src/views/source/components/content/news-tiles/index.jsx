@@ -462,27 +462,18 @@ class NewsTiles extends React.Component {
   }
 
   bgBinding(bgList) {
-    var title = "";
+	var titleSet = new Set();
     bgList.filter((id, i) => {
 		if(id.indexOf('building-location') > 1){
 		  id = id.indexOf('/all') > 1 ? id : id.replace(id.replace(/.*building-location\/.*?\//gi,''),'all');
 		  this.state.buildingLocationIdTitle.forEach((obj) => {
 			if (Object.keys(obj) == id) {
-			  var titleVal = obj[id];
-			  if (i == bgList.length - 1) {
-				title = title + titleVal;
-			  } else {
-				title = title + titleVal + " | ";
-			  }
-			  // return obj[id];
+			  titleSet.add(obj[id]);
 			}
 		  });
 		}
     });
-    if (title.charAt(title.length - 2) == '|') {
-      title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
-    }
-    return title;
+    return Array.from(titleSet).join(' | ');
   }
 
   dateTransform(date) {
