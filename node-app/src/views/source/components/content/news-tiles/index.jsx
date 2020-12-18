@@ -465,7 +465,7 @@ class NewsTiles extends React.Component {
     var title = "";
     bgList.filter((id, i) => {
 		if(id.indexOf('building-location') > 1){
-		  id = id.indexOf('all') > 1 ? id : id.replace(id.replace(/.*building-location\/.*?\//gi,''),'all');
+		  id = id.indexOf('/all') > 1 ? id : id.replace(id.replace(/.*building-location\/.*?\//gi,''),'all');
 		  this.state.buildingLocationIdTitle.forEach((obj) => {
 			if (Object.keys(obj) == id) {
 			  var titleVal = obj[id];
