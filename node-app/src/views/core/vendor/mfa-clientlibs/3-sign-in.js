@@ -25,9 +25,9 @@ function onSignInClick() {
 
     var additionalParams = {
         user: clientId,
-        loginParameters : loginParameters,
-        password : password
+        loginParameters : loginParameters
     };
+
     var journeyName = "Consumer_SignIn_FetchPartyID"; 
     clientContext.password = password;
 
@@ -171,4 +171,3 @@ function getHiddenFormValues(){
     }
     return smParameter;
 }
-    
