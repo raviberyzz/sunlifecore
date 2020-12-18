@@ -1,18 +1,38 @@
 package ca.sunlife.web.cms.core.services.impl;
 
-import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
-import ca.sunlife.web.cms.core.services.druglist.DrugListService;
-import ca.sunlife.web.cms.core.services.druglist.ErrorReportWriter;
-import ca.sunlife.web.cms.core.services.druglist.PaForm;
-import com.adobe.granite.asset.api.Asset;
-import com.adobe.granite.asset.api.AssetManager;
-import com.adobe.granite.asset.api.AssetVersionManager;
-import com.adobe.granite.asset.api.Rendition;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.zip.GZIPOutputStream;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonBuilderFactory;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -24,20 +44,15 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.adobe.granite.asset.api.Asset;
+import com.adobe.granite.asset.api.AssetManager;
+import com.adobe.granite.asset.api.AssetVersionManager;
+import com.adobe.granite.asset.api.Rendition;
 
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonBuilderFactory;
-import javax.json.JsonObjectBuilder;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.zip.GZIPOutputStream;
+import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
+import ca.sunlife.web.cms.core.services.druglist.DrugListService;
+import ca.sunlife.web.cms.core.services.druglist.ErrorReportWriter;
+import ca.sunlife.web.cms.core.services.druglist.PaForm;
 
 /**
  * converts inputs into the drug list. See updateDrugList method.
@@ -169,6 +184,7 @@ public class DrugListServiceImpl implements DrugListService {
 	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder)
 			throws LoginException {
 		Asset outputAsset;
+		Asset outputGZipAsset;
 		if (assetManager.assetExists(getDataAssetPath())) {
 			outputAsset = assetManager.getAsset(getDataAssetPath());
 
@@ -184,82 +200,93 @@ public class DrugListServiceImpl implements DrugListService {
 		}
 		String sourcePath = getDataAssetPath();
 		String targetPath = getDataAssetZipPath();
+		String json = builder.build().toString();
 		try {
-			// InputStream iStream = compressAndReturnInputStream(sourcePath, targetPath);
-			compressGZip(outputAsset, sourcePath, targetPath);
-			// outputAsset.setRendition(ORIGINAL, iStream, new HashMap<>());
+			ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8));
+			outputAsset.setRendition(ORIGINAL, stream, new HashMap<>());
+			// Check if gzip asset already exists
+			if (assetManager.assetExists(getDataAssetZipPath())) {
+				outputGZipAsset = assetManager.getAsset(getDataAssetZipPath());
+				AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
+				if (versionManager == null) {
+					throw new LoginException(
+							"Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
+				}
+				versionManager.createVersion(outputGZipAsset.getPath(), UUID.randomUUID().toString());
+
+			} else {
+				outputGZipAsset = assetManager.createAsset(getDataAssetZipPath());
+			}
+			ByteArrayInputStream inputStreamFromJSON = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8));
+			compressGZip(outputGZipAsset, resourceResolver, assetManager, inputStreamFromJSON, sourcePath, targetPath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * ByteArrayInputStream stream = new ByteArrayInputStream(
-		 * builder.build().toString().getBytes(StandardCharsets.UTF_8));
-		 */
-
 	}
 
 	/**
-	 * Converts json file to json.gz file and return input stream
-	 * @param targetPath 
-	 * @param sourcePath 
+	 * Compresses the json data to .gz file
 	 * 
+	 * @param outputGZipAsset
+	 * @param resourceResolver
+	 * @param assetManager
+	 * @param inputStreamFromJSON
 	 * @param sourcePath
 	 * @param targetPath
-	 * @return
 	 * @throws IOException
+	 * @throws LoginException
 	 */
-	/*private InputStream compressAndReturnInputStream(Path sourcePath, Path targetPath) throws IOException {
+	// @Test testWriteJsonAssetToDam is failing
+	void compressGZip(Asset outputGZipAsset, ResourceResolver resourceResolver, AssetManager assetManager,
+			ByteArrayInputStream inputStreamFromJSON, String sourcePath, String targetPath)
+			throws IOException, LoginException {
 
-		try (GZIPOutputStream gos = new GZIPOutputStream(new FileOutputStream(targetPath.toFile()));
-				FileInputStream fis = new FileInputStream(sourcePath.toFile())) {
+		File tmpdrugListJSONGZip = File.createTempFile("druglist.json", ".gz");
+		OutputStream outStream = FileUtils.openOutputStream(tmpdrugListJSONGZip);
+		InputStream inputStreamFromGZip = null;
 
-			// copy file
-			byte[] buffer = new byte[1024];
-			int len;
-			while ((len = fis.read(buffer)) > 0) {
-				gos.write(buffer, 0, len);
-			}
-			gos.close();
-			// create input stream from gos
-			// error cannot convert GZIPOutputStream to ByteArrayOutputStream
-			ByteArrayOutputStream byteOutputStream = (ByteArrayOutputStream) gos;
-			byte[] bytes = byteOutputStream.toByteArray();
-			InputStream inputStream = new ByteArrayInputStream(bytes);
-			return inputStream;
-
-		}
-	}*/
-	
-	void compressGZip(Asset outputAsset, String sourcePath, String targetPath) throws IOException {
-		File tmpOutputFile = File.createTempFile("myzipfile", "gzip");
-		Path tmpInputFilePath = Paths.get("C:\\Users\\d613\\Downloads\\druglist.json"); // For aem?
-		FileInputStream fis = new FileInputStream(tmpInputFilePath.toFile());
-		OutputStream oStream = FileUtils.openOutputStream(tmpOutputFile);
-		InputStream is = null;
 		try {
-			GZIPOutputStream gos = new GZIPOutputStream(oStream);
+			GZIPOutputStream gos = new GZIPOutputStream(outStream);
 			// copy file
 			byte[] buffer = new byte[1024];
 			int len;
-			while ((len = fis.read(buffer)) > 0) {
+			while ((len = inputStreamFromJSON.read(buffer)) > 0) {
 				gos.write(buffer, 0, len);
 			}
-			is = FileUtils.openInputStream(tmpOutputFile);
 
-			outputAsset.setRendition(ORIGINAL, is, new HashMap<>());
+			inputStreamFromGZip = FileUtils.openInputStream(tmpdrugListJSONGZip);
+			outputGZipAsset.setRendition(ORIGINAL, inputStreamFromGZip, new HashMap<>());
 		} finally {
-			IOUtils.closeQuietly(oStream);
-			IOUtils.closeQuietly(is);
-			FileUtils.deleteQuietly(tmpOutputFile);
+			outStream.close();
+			inputStreamFromGZip.close();
+			inputStreamFromJSON.close();
+			FileUtils.deleteQuietly(tmpdrugListJSONGZip);
 		}
+		// Create gzip For local
+		/*
+		 * String outputPath = "C:\\Users\\d613\\Downloads\\myzipfile.gz"; Path
+		 * tmpOutputFilePath = Paths.get(outputPath); String inputPath =
+		 * "C:\\Users\\d613\\Downloads\\druglist.json"; Path tmpInputFilePath =
+		 * Paths.get(inputPath); FileInputStream fis = new
+		 * FileInputStream(tmpInputFilePath.toFile()); OutputStream oStream =
+		 * FileUtils.openOutputStream(tmpOutputFilePath.toFile()); File tmpOutputFile =
+		 * tmpOutputFilePath.toFile(); InputStream is = null; try { GZIPOutputStream gos
+		 * = new GZIPOutputStream(oStream); // copy file byte[] buffer = new byte[1024];
+		 * int len; while ((len = fis.read(buffer)) > 0) { gos.write(buffer, 0, len); }
+		 * 
+		 * is = FileUtils.openInputStream(tmpOutputFile);
+		 * 
+		 * } finally { IOUtils.closeQuietly(oStream); IOUtils.closeQuietly(is); //
+		 * FileUtils.deleteQuietly(tmpOutputFile); }
+		 */
 	}
 
-	 /**
-     * Turns the collected report writer data into an Asset.
-     *
-     * @param reporter
-     * @param assetManager
-     */
+	/**
+	 * Turns the collected report writer data into an Asset.
+	 *
+	 * @param reporter
+	 * @param assetManager
+	 */
     private void writeReportAsset(ErrorReportWriter reporter, AssetManager assetManager) {
         Asset reportAsset;
         if (assetManager.assetExists(reportAssetPath)) {
