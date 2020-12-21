@@ -1,9 +1,6 @@
 package ca.sunlife.web.cms.core.services.impl;
 
-import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
-import ca.sunlife.web.cms.core.services.druglist.DrugListService;
-import ca.sunlife.web.cms.core.services.druglist.ErrorReportWriter;
-import ca.sunlife.web.cms.core.services.druglist.PaForm;
+import ca.sunlife.web.cms.core.services.druglist.*;
 import com.adobe.granite.asset.api.Asset;
 import com.adobe.granite.asset.api.AssetManager;
 import com.adobe.granite.asset.api.AssetVersionManager;
@@ -28,6 +25,8 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObjectBuilder;
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -88,7 +87,7 @@ public class DrugListServiceImpl implements DrugListService {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
             }
 
-            HashMap<String, PaForm> paForms = buildPaFormLookUpMap(paFormsPath, assetManager, reporter);
+            HashMap<DrugListKey, PaForm> paForms = buildPaFormLookUpMap(paFormsPath, assetManager, reporter);
 
             JsonObjectBuilder builder = buildJsonAsset(lookupPath, chessPath, assetManager, paForms,reporter);
 
@@ -97,6 +96,8 @@ public class DrugListServiceImpl implements DrugListService {
             builder.add("chess", createChessArrayBuilder(chessPath, assetManager).build());
 
             writeDataAsset(resourceResolver, assetManager, builder);
+
+
 
             writeReportAsset(reporter, assetManager);
 
@@ -282,7 +283,7 @@ public class DrugListServiceImpl implements DrugListService {
     private JsonObjectBuilder buildJsonAsset(String lookupPath,
                                              String chessPath,
                                              AssetManager assetManager,
-                                             HashMap<String, PaForm> paForms,
+                                             HashMap<DrugListKey, PaForm> paForms,
                                              ErrorReportWriter reporter)
             throws IOException {
 
@@ -294,11 +295,12 @@ public class DrugListServiceImpl implements DrugListService {
             builder = factory.createObjectBuilder();
             JsonObjectBuilder policyBuilder = factory.createObjectBuilder();
 
+            Row categoryRow = lookupSheet.getRow(0);
             Row formRow = lookupSheet.getRow(1);
             Row drugRow = lookupSheet.getRow(2);
 
             Row testPolicy = lookupSheet.getRow(3);
-            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, drugRow, testPolicy, true);
+            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, testPolicy, true);
             policyBuilder.add("*#*#*", testArray.build());
 
             for (int rowIndex = 3; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
@@ -315,7 +317,7 @@ public class DrugListServiceImpl implements DrugListService {
                     }
 
 
-                    JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, drugRow, policy, false);
+                    JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, policy, false);
                     policyBuilder.add(policyNumber, drugArray.build());
                 }
             }
@@ -327,8 +329,8 @@ public class DrugListServiceImpl implements DrugListService {
         return builder;
     }
 
-    private JsonArrayBuilder createDrugArrayBuilder(HashMap<String, PaForm> paForms, ErrorReportWriter reporter,
-                                                    Row formRow, Row drugRow, Row policy,
+    private JsonArrayBuilder createDrugArrayBuilder(HashMap<DrugListKey, PaForm> paForms, ErrorReportWriter reporter,
+                                                    Row formRow, Row categoryRow, Row drugRow, Row policy,
                                                     boolean isTestpolicy) {
         JsonArrayBuilder drugArray = Json.createArrayBuilder();
         for (int colIndex = 3; colIndex < policy.getLastCellNum(); colIndex++) {
@@ -348,11 +350,11 @@ public class DrugListServiceImpl implements DrugListService {
                     logger.warn("Unexpected form name: {}", formName);
                 }
                 formName = formName.substring(0, formName.lastIndexOf("-"));
-                String drugName = drugRow.getCell(colIndex).getStringCellValue();
-                if (StringUtils.isNotEmpty(drugName)) {
-                    drugName = drugName.trim().toLowerCase(Locale.ROOT);
-                }
-                PaForm form = paForms.get(drugName);
+                DrugListKey drugKey = new DrugListKey(
+                        getCellValue(categoryRow, colIndex),
+                        getCellValue(drugRow, colIndex)
+                );
+                PaForm form = paForms.get(drugKey);
                 if (form != null) {
                     drugArray.add(Json.createObjectBuilder()
                             .add("drug-category-en", form.getDrugCategoriesEn())
@@ -365,7 +367,7 @@ public class DrugListServiceImpl implements DrugListService {
                             .build()
                     );
                 } else {
-                    String message = String.format("Could not find drug form for %s, %s", formName, drugName);
+                    String message = String.format("Could not find drug form for %s, %s, %s", formName, drugKey.getCategory(), drugKey.getName());
                     logger.warn(message);
                     reporter.addFormSelectionMismatch(message);
                 }
@@ -383,8 +385,8 @@ public class DrugListServiceImpl implements DrugListService {
      * @return
      * @throws IOException
      */
-    private HashMap<String, PaForm> buildPaFormLookUpMap(String paFormsPath, AssetManager assetManager, ErrorReportWriter reporter) throws IOException {
-        HashMap<String, PaForm> paForms = new HashMap<>();
+    private HashMap<DrugListKey, PaForm> buildPaFormLookUpMap(String paFormsPath, AssetManager assetManager, ErrorReportWriter reporter) throws IOException {
+        HashMap<DrugListKey, PaForm> paForms = new HashMap<>();
         Workbook formsWorkbook = readWorkbook(paFormsPath, assetManager);
         if(formsWorkbook != null) {
             Sheet sheetEn = formsWorkbook.getSheetAt(0);
@@ -394,7 +396,11 @@ public class DrugListServiceImpl implements DrugListService {
                 Row rowFr = sheetFr.getRow(rowIndex);
                 PaForm paForm = new PaForm(rowEn, rowFr);
                 if (paForm.isValid()) {
-                    paForms.put(paForm.getDrugsEn().trim().toLowerCase(Locale.ROOT),paForm);
+                    DrugListKey drugKey = new DrugListKey(
+                            paForm.getDrugCategoriesEn(),
+                            paForm.getDrugsEn()
+                    );
+                    paForms.put(drugKey, paForm);
                 } else if (!paForm.isBlank()){
                     String message = String.format("Rejecting row %d because it is invalid: %s",
                             rowIndex + 1,
@@ -432,6 +438,22 @@ public class DrugListServiceImpl implements DrugListService {
             logger.error("Cannot read spreadsheet at {} because asset does not exist.", spreadsheetPath);
         }
 
+        return result;
+    }
+
+    private String getCellValue(Row row, int index) {
+        String result = StringUtils.EMPTY;
+        if (row.getCell(index) != null) {
+            CellType type = row.getCell(index).getCellTypeEnum();
+            if (CellType.STRING.equals(type)) {
+                result = row.getCell(index).getStringCellValue();
+            } else if (CellType.NUMERIC.equals(type)) {
+                double number = row.getCell(index).getNumericCellValue();
+                result = new BigDecimal(number).round(new MathContext(0)).toString();
+            } else {
+                result = StringUtils.EMPTY;
+            }
+        }
         return result;
     }
 

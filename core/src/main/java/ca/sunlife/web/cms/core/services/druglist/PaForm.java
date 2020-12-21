@@ -65,6 +65,9 @@ public final class PaForm {
             }
 
             formNumberEn = getCellValue(rowEn, 2);
+            if(StringUtils.isNotEmpty(formNumberEn)) {
+                formNumberEn = formNumberEn.trim();
+            }
             if (StringUtils.isEmpty(formNumberEn)) {
                 invalidReasons.add("English form number is not defined.");
             } else if (!(formNumberEn.length() > 2 && formNumberEn.trim().endsWith("-E"))) {
@@ -77,6 +80,9 @@ public final class PaForm {
                 formNumber = formNumberEn.substring(0, formNumberEn.lastIndexOf("-") );
             }
             formNumberFr = getCellValue(rowFr, 2);
+            if(StringUtils.isNotEmpty(formNumberFr)) {
+                formNumberFr = formNumberFr.trim();
+            }
             if (StringUtils.isEmpty(getFormNumberFr())) {
                 invalidReasons.add("French form number is not defined.");
             } else if (!(formNumberFr.length() > 2 && formNumberFr.trim().endsWith("-F"))) {

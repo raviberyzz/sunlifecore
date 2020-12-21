@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.services.impl;
 
 import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
+import ca.sunlife.web.cms.core.services.druglist.DrugListKey;
 import com.adobe.granite.asset.api.Asset;
 import com.adobe.granite.asset.api.AssetManager;
 import com.adobe.granite.asset.api.AssetVersionManager;
@@ -145,7 +146,7 @@ public class DrugListServiceImplTest {
 
         assertEquals(254, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
-        assertEquals(154, policy.size());
+        assertEquals(153, policy.size());
         assertNotNull(policy);
         JsonNode form = policy.get(0);
         assertNotNull(form);
@@ -161,11 +162,11 @@ public class DrugListServiceImplTest {
 
         policy = jsonNode.get("slf-policy").get("******");
         assertNotNull(policy);
-        assertEquals(204, policy.size());
+        assertEquals(203, policy.size());
 
         policy = jsonNode.get("slf-policy").get("*#*#*");
         assertNotNull(policy);
-        assertEquals(234, policy.size());
+        assertEquals(233, policy.size());
 
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
@@ -185,5 +186,13 @@ public class DrugListServiceImplTest {
 
         verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
+    }
+
+    @Test
+    public void testDrugKeyEquivalence() {
+        DrugListKey one = new DrugListKey("foo", "Bar");
+        DrugListKey two = new DrugListKey("FOO", "bar");
+        assertEquals(one.hashCode(), two.hashCode());
+        assertEquals(one, two);
     }
 }
