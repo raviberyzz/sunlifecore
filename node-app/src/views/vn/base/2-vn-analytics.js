@@ -184,4 +184,213 @@ if($(".html-component #qc_container").length>0){
     });
 }
 /* Get a quote social media share ends here */
+/* contact-us form analytics starts here */
+// tab click starts here 
+    $(".cmp-tabs__tablist .cmp-tabs__tab").click(function(){
+        let tabName=$(this).text();
+        if(tabName.trim().toLowerCase().match('khách hàng')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=client"
+            });               
+        }else if(tabName.trim().toLowerCase().match('tư vấn tài chính')){
+            utag.view({ 
+                ev_type: "other", 
+                ev_action: "onpage_impr", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "role=advisor"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng cá nhân')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "ind client tab"
+            });            
+        }else if(tabName.trim().toLowerCase().match('khách hàng doanh nghiệp')){
+            utag.view({ 
+                ev_type: "lead_form", 
+                ev_action: "clk", 
+                ev_title: "corp-client-lead-gen-form", 
+                ev_data_one: "corp client tab"
+            });              
+        }
+    });
+    //form submit starts here
+    /* khach hang form */
+    $('form#contactus-modal-form #submitContact').click(function(){
+        setTimeout(function(){
+        let subVal=$("#contactus-modal-form select[name='slf-contact-subject'] option:selected").text();
+        if($("#contactus-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#contactus-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#contactus-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                             
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });            
+        }
+    },500);
+    });
+    //tu van form
+    $('form#advisor-modal-form #advisor-modal-submit-btn1').click(function(){
+        setTimeout(function(){
+        let subVal=$("#advisor-modal-form select[name='contactus-advisor-enquiry-subject'] option:selected").text();
+        if($("#advisor-modal-form .parsley-errors-list.filled").length>0){
+            let contactError='';
+            let totalError=$("form#advisor-modal-form .parsley-errors-list.filled").length;
+            if(totalError>0){
+                $("form#advisor-modal-form .parsley-errors-list.filled").each(function(index,item){
+                    contactError+=':'+$(this).find('li').text();
+                    if(index==totalError-1){
+                        console.log(contactError);
+                        utag.link({ 
+                            ev_type: "other", 
+                            ev_action: "clk", 
+                            ev_title: "contact-form-client", 
+                            ev_data_one: "err"+contactError,
+                            ev_data_two: "subject="+subVal
+                        });                                                         
+                    }
+                });
+            }
+        }else{
+            utag.link({ 
+                ev_type: "other", 
+                ev_action: "clk", 
+                ev_title: "contact-form-client", 
+                ev_data_one: "successful submission",
+                ev_data_two: "subject="+subVal
+            });                            
+        }
+    },500);
+    });
+/* contact-us form analytics ends here */
+/* Product lead gen form starts here */
+    $('form#leadgen #submitContactLeadgen').click(function(){
+        setTimeout(function(){
+            let location=$("#leadgen select[name='location-dropdown'] option:selected").text();
+            if($("#leadgen .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.view({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "product-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: "location="+location
+                            });                                                         
+                        }
+                    });
+                }
+            }else{
+                utag.view({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "product-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: "location="+location
+                })  ;                          
+            }
+        },500);
+    });
+/* Product lead gen form ends here */
+/* Individual client lead gen form starts here */
+// Cá nhân form starts here
+    $('form#leadgen-individual-client-form #leadgen-indv-client-submit').click(function(){
+        setTimeout(function(){
+            let age=$("#leadgen-individual-client-form select[name='leadgen-indv-client-age-group'] option:selected").text();
+            let gender=$("#leadgen-individual-client-form").find("input[type=radio]:checked").siblings().text().trim();
+            let insurance=$("#leadgen-individual-client-form select[name='leadgen-indv-client-need'] option:selected").text();
+            let location=$("#leadgen-individual-client-form select[name='leadgen-indv-client-location'] option:selected").text();
+            if($("#leadgen-individual-client-form .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen-individual-client-form .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen-individual-client-form .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.link({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "ind-client-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: 'age='+age+':gender='+gender+':insurance='+insurance+':location='+location
+                            });                                                                                       
+                        }
+                    });
+                }
+            }else{
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "ind-client-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: 'age='+age+':gender='+gender+':insurance='+insurance+':location='+location
+                });                                           
+            }
+        },500);
+    });
+// Doanh nghiệp form starts here	
+    $('form#leadgen-corporate-client-form #leadgen-corp-client-submit').click(function(){
+        setTimeout(function(){
+            let size=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-size'] option:selected").text();
+            let insurance=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-need'] option:selected").text();
+            let location=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-location'] option:selected").text();
+            if($("#leadgen-corporate-client-form .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen-corporate-client-form .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen-corporate-client-form .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.link({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "corp-client-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: 'insurance='+insurance+':size='+size+':location='+location
+                            });                                                                                                                  
+                        }
+                    });
+                }
+            }else{
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "corp-client-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: 'insurance='+insurance+':size='+size+':location='+location
+                });                                                           
+            }
+        },500);
+    });
+/* Individual client lead gen form ends here */
 });

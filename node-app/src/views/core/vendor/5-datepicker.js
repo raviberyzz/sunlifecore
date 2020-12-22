@@ -660,9 +660,14 @@
               var curDayClass = curDay == this.date && this.month == this.curMonth && this.year == this.curYear ? ' curDay' : '';
               if (isYearDisabled || isMonthDisabled) {
                   gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
-              } else if ($.inArray(weekday, this.options.daysOfWeekDisabled) > -1) {
-                  gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
-              } else if (this.options.min != null && date < this.options.min) {
+              } 
+
+            //   disabling the weekend
+
+            //   else if ($.inArray(weekday, this.options.daysOfWeekDisabled) > -1) {
+            //       gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
+            //   } 
+              else if (this.options.min != null && date < this.options.min) {
                   gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
               } else if (this.options.max != null && date > this.options.max) {
                   gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
@@ -2268,17 +2273,17 @@
           if (roomAfter < calendarHeight && roomAfter < roomBefore) {
               // show calendar above group
               this.$calendar.addClass('above');
-              this.$calendar.css({
-                  top: (groupOffsetTop - calendarHeight) + 'px',
-                  left: (groupOffsetLeft + parentPaddingLeft) + 'px'
-              });
+            //   this.$calendar.css({
+            //       top: (groupOffsetTop - calendarHeight) + 'px',
+            //       left: (groupOffsetLeft + parentPaddingLeft) + 'px'
+            //   });
           } else {
               // show calendar below group
               this.$calendar.addClass('below');
-              this.$calendar.css({
-                  top: (groupHeight + groupOffsetTop) + 'px',
-                  left: (groupOffsetLeft + parentPaddingLeft) + 'px'
-              });
+            //   this.$calendar.css({
+            //       top: (groupHeight + groupOffsetTop) + 'px',
+            //       left: (groupOffsetLeft + parentPaddingLeft) + 'px'
+            //   });
           }
 
           // show the dialog
@@ -2386,6 +2391,8 @@
           var top = 0,
               left = 0;
           if (element.getBoundingClientRect) {
+              console.log('hi');
+            console.log(element.getBoundingClientRect);
               var box = element.getBoundingClientRect();
               var body = document.body;
               var docElem = document.documentElement;
@@ -2396,6 +2403,7 @@
               top = Math.round(box.top + scrollTop - clientTop);
               left = Math.round(box.left + scrollLeft - clientLeft);
           } else {
+            console.log('hello');
               while (element) {
                   top = top + parseInt(element.offsetTop, 10);
                   left = left + parseInt(element.offsetLeft, 10);
