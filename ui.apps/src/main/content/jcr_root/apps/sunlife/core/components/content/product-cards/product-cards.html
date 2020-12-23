@@ -1,10 +1,15 @@
 <sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardModel">
     <sly data-sly-test="${productCardModel.topc=='static'}">
         <div data-sly-test.hasPath="${productCardModel.productCardFragmentPath}" class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
-            <img src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading}" class="imageCard">
+            <sly data-sly-test="${productCardModel.pcData.productCardHeading }">
+			            <img src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading }" class="imageCard">
+					</sly>
+                    <sly data-sly-test="${!productCardModel.pcData.productCardHeading }">
+			            <img src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+					</sly>
             <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
             <div class="caption">
-                <h2 class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
+                <h2 data-sly-test="${productCardModel.pcData.productCardHeading}" class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
                 ${productCardModel.pcData.productCardContent @context='html'}
             </div>
             <sly data-sly-use.urlParsing = "${'/apps/sunlife/core/components/common/url-parsing.js' @ path=productCardModel.pcData.productCardPagePath}">               
@@ -29,10 +34,15 @@
                 <sly data-sly-test="${element.name == 'productCardPagePath'}" data-sly-test.pcPath="${element.value}" />
             </sly>
             <div class="thumbnail ${pcFeaturedCard ? 'feature-card' : ''}">
-            <img src="${pcImage}" alt="${pcHeading}" class="imageCard">
+            <sly data-sly-test="${pcHeading}">
+            	<img src="${pcImage}" alt="${pcHeading}" class="imageCard">
+			</sly>
+            <sly data-sly-test="${!pcHeading}">
+            	<img src="${pcImage}" alt="" class="imageCard">
+			</sly>
             <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
             <div class="caption">
-                <h2 class="product-name">${pcHeading}</h2> 
+                <h2 data-sly-test="${pcHeading}" class="product-name">${pcHeading}</h2> 
                 ${pcContent @context='html'}
             </div>
                 <sly data-sly-use.urlParsing = "${'/apps/sunlife/core/components/common/url-parsing.js' @ path=pcPath}">                

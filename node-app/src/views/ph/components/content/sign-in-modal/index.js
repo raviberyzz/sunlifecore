@@ -34,7 +34,7 @@ function showError(err) {
   $("#signErr").html("");
   $("#signErr").css("display", "block");
   $(".loading").css("display", "none");
-  return "<center><strong>" + err + "</strong></center>";
+  return "<section style='text-align:center;'><strong>" + err + "</strong></section>";
 }
 
 window.addEventListener("message", function (res) {
