@@ -8,17 +8,17 @@ $(document).ready(function () {
     }
     /* baseline video analytics ends here */
     /* baseline error 404 page starts here */
-    if(utag_data.page_canonical_url.indexOf('/error/404')!=-1){
-        var error_script = document.createElement('script');
-        error_script.type = 'text/javascript';
-        error_script.text = 'utag_data["page_canonical_url"] ="'+window.location.hostname+window.location.pathname+'"; \n \
-                        utag_data["page_canonical_url_default"] ="'+window.location.hostname+window.location.pathname+'";';
-        let syncTag=$('head script[src^="//tags.tiqcdn.com/utag/sunlife/"][src$="utag.sync.js"]');
-        //document.head.appendChild(error_script);
-        if(syncTag.length>0){
-            syncTag.before(error_script);
-        }
-    }
+    // if(utag_data.page_canonical_url.indexOf('/error/404')!=-1){
+    //     var error_script = document.createElement('script');
+    //     error_script.type = 'text/javascript';
+    //     error_script.text = 'utag_data["page_canonical_url"] ="'+window.location.hostname+window.location.pathname+'"; \n \
+    //                     utag_data["page_canonical_url_default"] ="'+window.location.hostname+window.location.pathname+'";';
+    //     let syncTag=$('head script[src^="//tags.tiqcdn.com/utag/sunlife/"][src$="utag.sync.js"]');
+    //     //document.head.appendChild(error_script);
+    //     if(syncTag.length>0){
+    //         syncTag.before(error_script);
+    //     }
+    // }
     /* baseline error 404 page ends here */
     /* Sign in modal analytics starts here */
         $("#SignIn,#signinbutton").unbind("click");

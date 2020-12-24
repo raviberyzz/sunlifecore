@@ -82,7 +82,7 @@
 
 @media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
     .footer-copyright-wrapper{
-        height: 116px;
+        min-height: 116px;
         padding:32px 15px;
     }
 }
