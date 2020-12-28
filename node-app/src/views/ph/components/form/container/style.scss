@@ -21,7 +21,7 @@
         padding: 0;
         list-style: none;
         vertical-align: middle;
-        li .ui-menu-item-wrapper::before {
+        .ui-menu-item-wrapper {
             content: "\2022";
             padding: 0 0 4px 14px;
             background-image: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/yellow-bullet.png);
