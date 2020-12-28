@@ -17,16 +17,17 @@
 }
 
 .ui-widget-content.ui-autocomplete {
-        margin-left: 2em;
+        margin: 12px 0 12px 12px;
+        padding: 0;
+        list-style: none;
+        vertical-align: middle;
         li .ui-menu-item-wrapper::before {
             content: "\2022";
-            color: $medium-yellow-background;
-            font-weight: bold;
-            font-family: "sunlife-sans";
-            display: inline-block;
-            width: 1rem;
-            // padding-left: 16px;
-            // margin-left: -1em;
+            padding: 0 0 4px 14px;
+            background-image: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/yellow-bullet.png);
+            background-repeat: no-repeat;
+            background-position: 0 .5em;
+            line-height: 140%;
         }
 }
 
