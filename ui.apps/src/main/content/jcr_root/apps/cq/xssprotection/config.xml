@@ -117,6 +117,8 @@ http://www.w3.org/TR/html401/struct/global.html
 		<regexp name="percentage" value="(-|\+)?([0-9]+(\.[0-9]+)?)%"/>
 		<regexp name="positivePercentage" value="(\+)?([0-9]+(\.[0-9]+)?)%"/>
 		
+		<regexp name="telURL" value="tel:[0-9]+"/>
+		
 		<regexp name="absolute-size" value="(xx-small|x-small|small|medium|large|x-large|xx-large)"/>
 		<regexp name="relative-size" value="(larger|smaller)"/>
 		
@@ -255,6 +257,7 @@ http://www.w3.org/TR/html401/struct/global.html
 				<regexp name="onsiteURL"/>
 				<regexp name="offsiteURL"/>
 				<regexp name="expressionURL"/>
+				<regexp name="telURL"/>
 			</regexp-list>
 		</attribute>
 

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -343,13 +344,26 @@ public class NewsArticleModel {
 				final Locale locale = new Locale(pageLocaleDefault);
 				if (null != tags) {
 					for (Tag tag : tags) {
-						if (tag.getTagID().startsWith("sunlife:source/building-location")
-								|| tag.getTagID().startsWith("sunlife:source/topic")) {
+						String tagId = tag.getTagID();
+						if(tagId.startsWith("sunlife:source/building-location")) {
+							LOGGER.debug("before tagId: {}", tagId);
+							if(! (tagId.indexOf("/all") > 1)) {
+								String regex = ".*building-location/.*?/";
+								String newTagId = tagId.replaceAll(tagId.replaceAll(regex, ""),"all");
+								tag = tagManager.resolve(newTagId);
+							}
+							LOGGER.debug("after tagId: {}", tagId);
+							String locTitle = tag.getLocalizedTitle(locale);
+							LOGGER.debug("locale : {} , locTitle : {}", locale, locTitle);
+							tagList.add(locTitle != null ? locTitle : tag.getTitle());
+						}
+						if(tagId.startsWith("sunlife:source/topic")) {
 							String locTitle = tag.getLocalizedTitle(locale);
 							LOGGER.debug("locale : {} , locTitle : {}", locale, locTitle);
 							tagList.add(locTitle != null ? locTitle : tag.getTitle());
 						}
 					}
+					tagList = tagList.stream().distinct().collect(Collectors.toList());
 					Collections.sort(tagList);
 				}
 			}
@@ -389,4 +403,5 @@ public class NewsArticleModel {
 		}
 		articleData.put(NewsConstants.PUBLISHED_DATE_CONSTANT, articlePublishedDate);
 	}
+	
 }

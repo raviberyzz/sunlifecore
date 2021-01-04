@@ -1,4 +1,4 @@
-<sly data-sly-use.layout="ca.sunlife.web.cms.core.models.LayoutContainerModal"/>
+<sly data-sly-use.layout="ca.sunlife.web.cms.core.models.LegacyLayoutContainerModel"/>
 <sly data-sly-test.empty="${!layout.noc}" />
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
    <sly data-sly-test="${layout.noc == '1'}">   
@@ -11,7 +11,7 @@
 		 <div class="clearfix en" id="wrapper">
 			<div class="clearfix two-column-layout" id="content">
 				<div id="content-navigation" class="clearfix">
-					<sly data-sly-resource="${'left-nav' @ resourceType='sunlife/legacy/components/content/left-navigation'}"/>
+					<sly data-sly-resource="${'left-nav' @ resourceType='sunlife/legacy/components/content/left-navigation', selectors= layout.siteSelector}"/>
 				</div>
 				<div id="content-body">
 						<sly data-sly-resource="${'container1' @ decorationTagName='div'}" />

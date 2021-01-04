@@ -481,31 +481,18 @@ class NewsTabs extends React.Component {
   }
 
   bgBinding(bgList) {
-    /*let bg = "";
-    bgList.forEach((data) => {
-      let bgarr = data.split('/');
-      if (bgarr[1] == "business-group") {
-        bg += " | " + bgarr[bgarr.length - 1];
-      }
-    })
-    return bg;*/
-    var title = "";
+	var titleSet = new Set();
     bgList.filter((id, i) => {
-      this.state.buildingLocationIdTitle.forEach((obj) => {
-        if (Object.keys(obj) == id) {
-          if (i == bgList.length - 1) {
-            title = title + obj[id];
-          } else {
-            title = title + obj[id] + " | ";
-          }
-          // return obj[id];
-        }
-      });
+		if(id.indexOf('building-location') > 1){
+		  id = id.indexOf('/all') > 1 ? id : id.replace(id.replace(/.*building-location\/.*?\//gi,''),'all');
+		  this.state.buildingLocationIdTitle.forEach((obj) => {
+			if (Object.keys(obj) == id) {
+			  titleSet.add(obj[id]);
+			}
+		  });
+		}
     });
-    if (title.charAt(title.length - 2) == '|') {
-      title = title.substring(0, title.length - 2) + title.charAt(title.length - 2).replace("|", "");
-    }
-    return title;
+    return Array.from(titleSet).join(' | ');
   }
 
   paginationDataBuild(newsList, page) {

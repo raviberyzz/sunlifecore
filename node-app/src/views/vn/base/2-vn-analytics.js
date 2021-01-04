@@ -8,17 +8,17 @@ $(document).ready(function () {
     }
     /* baseline video analytics ends here */
     /* baseline error 404 page starts here */
-    if(utag_data.page_canonical_url.indexOf('/error/404')!=-1){
-        var error_script = document.createElement('script');
-        error_script.type = 'text/javascript';
-        error_script.text = 'utag_data["page_canonical_url"] ="'+window.location.hostname+window.location.pathname+'"; \n \
-                        utag_data["page_canonical_url_default"] ="'+window.location.hostname+window.location.pathname+'";';
-        let syncTag=$('head script[src^="//tags.tiqcdn.com/utag/sunlife/"][src$="utag.sync.js"]');
-        //document.head.appendChild(error_script);
-        if(syncTag.length>0){
-            syncTag.before(error_script);
-        }
-    }
+    // if(utag_data.page_canonical_url.indexOf('/error/404')!=-1){
+    //     var error_script = document.createElement('script');
+    //     error_script.type = 'text/javascript';
+    //     error_script.text = 'utag_data["page_canonical_url"] ="'+window.location.hostname+window.location.pathname+'"; \n \
+    //                     utag_data["page_canonical_url_default"] ="'+window.location.hostname+window.location.pathname+'";';
+    //     let syncTag=$('head script[src^="//tags.tiqcdn.com/utag/sunlife/"][src$="utag.sync.js"]');
+    //     //document.head.appendChild(error_script);
+    //     if(syncTag.length>0){
+    //         syncTag.before(error_script);
+    //     }
+    // }
     /* baseline error 404 page ends here */
     /* Sign in modal analytics starts here */
         $("#SignIn,#signinbutton").unbind("click");
@@ -286,4 +286,111 @@ if($(".html-component #qc_container").length>0){
     },500);
     });
 /* contact-us form analytics ends here */
+/* Product lead gen form starts here */
+    $('form#leadgen #submitContactLeadgen').click(function(){
+        setTimeout(function(){
+            let location=$("#leadgen select[name='location-dropdown'] option:selected").text();
+            if($("#leadgen .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.view({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "product-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: "location="+location
+                            });                                                         
+                        }
+                    });
+                }
+            }else{
+                utag.view({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "product-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: "location="+location
+                })  ;                          
+            }
+        },500);
+    });
+/* Product lead gen form ends here */
+/* Individual client lead gen form starts here */
+// Cá nhân form starts here
+    $('form#leadgen-individual-client-form #leadgen-indv-client-submit').click(function(){
+        setTimeout(function(){
+            let age=$("#leadgen-individual-client-form select[name='leadgen-indv-client-age-group'] option:selected").text();
+            let gender=$("#leadgen-individual-client-form").find("input[type=radio]:checked").siblings().text().trim();
+            let insurance=$("#leadgen-individual-client-form select[name='leadgen-indv-client-need'] option:selected").text();
+            let location=$("#leadgen-individual-client-form select[name='leadgen-indv-client-location'] option:selected").text();
+            if($("#leadgen-individual-client-form .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen-individual-client-form .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen-individual-client-form .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.link({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "ind-client-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: 'age='+age+':gender='+gender+':insurance='+insurance+':location='+location
+                            });                                                                                       
+                        }
+                    });
+                }
+            }else{
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "ind-client-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: 'age='+age+':gender='+gender+':insurance='+insurance+':location='+location
+                });                                           
+            }
+        },500);
+    });
+// Doanh nghiệp form starts here	
+    $('form#leadgen-corporate-client-form #leadgen-corp-client-submit').click(function(){
+        setTimeout(function(){
+            let size=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-size'] option:selected").text();
+            let insurance=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-need'] option:selected").text();
+            let location=$("#leadgen-corporate-client-form select[name='leadgen-corp-client-location'] option:selected").text();
+            if($("#leadgen-corporate-client-form .parsley-errors-list.filled").length>0){
+                let contactError='';
+                let totalError=$("form#leadgen-corporate-client-form .parsley-errors-list.filled").length;
+                if(totalError>0){
+                    $("form#leadgen-corporate-client-form .parsley-errors-list.filled").each(function(index,item){
+                        contactError+=':'+$(this).find('li').text();
+                        if(index==totalError-1){
+                            console.log(contactError);
+                            utag.link({ 
+                                ev_type: "lead_form", 
+                                ev_action: "submit", 
+                                ev_title: "corp-client-lead-gen-form", 
+                                ev_data_one: "err"+contactError,
+                                ev_data_two: 'insurance='+insurance+':size='+size+':location='+location
+                            });                                                                                                                  
+                        }
+                    });
+                }
+            }else{
+                utag.link({ 
+                    ev_type: "lead_form", 
+                    ev_action: "submit", 
+                    ev_title: "corp-client-lead-gen-form", 
+                    ev_data_one: "successful submission",
+                    ev_data_two: 'insurance='+insurance+':size='+size+':location='+location
+                });                                                           
+            }
+        },500);
+    });
+/* Individual client lead gen form ends here */
 });

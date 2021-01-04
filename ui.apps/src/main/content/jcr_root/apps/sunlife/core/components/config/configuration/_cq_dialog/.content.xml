@@ -250,6 +250,11 @@
                                         fieldDescription="When value given, html content will be put under a parent div with id."
                                         fieldLabel="Root DIV id"
                                         name="./addOpeningDiv"/>
+									<siteSelector
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Site Selector"
+                                        name="./siteSelector"/>
                                 </items>
                             </section-page>
                             <signin-configuration
