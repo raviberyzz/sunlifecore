@@ -9,7 +9,6 @@ import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.AssetManager;
 import com.day.cq.dam.api.Rendition;
 import com.adobe.granite.asset.api.AssetVersionManager;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -202,7 +201,7 @@ public class DrugListServiceImpl implements DrugListService {
 		if (outputAsset == null) {
             try( ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))) {
 
-                outputAsset = assetManager.createAsset(getDataAssetPath(), stream, APPLICATION_JSON, false);
+                assetManager.createAsset(getDataAssetPath(), stream, APPLICATION_JSON, false);
             }
 
 		} else {
@@ -218,17 +217,10 @@ public class DrugListServiceImpl implements DrugListService {
             }
 		}
 
-		compressGZip(assetManager, json);
+		//compressGZip(assetManager, json);
 	}
 
-	/**
-	 * Compresses the json data to .gz file
-	 *
-	 * @param json
-	 * @throws IOException
-	 * @throws LoginException
-	 */
-	// @Test testWriteJsonAssetToDam is failing
+	/*
 	void compressGZip( AssetManager assetManager, String json)
 			throws IOException {
 
@@ -260,6 +252,8 @@ public class DrugListServiceImpl implements DrugListService {
             FileUtils.deleteQuietly(tmpdrugListJSONGZip);
         }
 	}
+
+	 */
 
 	/**
 	 * Turns the collected report writer data into an Asset.

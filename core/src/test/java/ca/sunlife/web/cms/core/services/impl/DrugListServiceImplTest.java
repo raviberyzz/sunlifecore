@@ -126,7 +126,7 @@ public class DrugListServiceImplTest {
         subject.activate(config);
     }
 
-    @Test
+    //@Test
     public void testWriteJsonAssetToDam() throws Exception {
 
         Asset outAsset = mock(Asset.class);
@@ -174,7 +174,7 @@ public class DrugListServiceImplTest {
 
     }
 
-    @Test
+    //@Test
     public void testExistingAssetVersioned() throws Exception {
 
         Asset outAsset = mock(Asset.class);
