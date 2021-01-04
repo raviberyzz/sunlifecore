@@ -30,9 +30,10 @@
     "node-sass": "^4.10.0",
     "node-watch": "^0.6.3",
     "nodemon": "^1.19.4",
-    "sass": "^1.23.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-table": "^7.6.2",
+    "sass": "^1.23.3"
   },
   "nodemonConfig": {
     "ignore": [
