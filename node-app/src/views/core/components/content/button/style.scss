@@ -235,4 +235,9 @@ a[role='button']:hover{
     a[role='button']{
         display:-ms-inline-flexbox;
     }
+    .right-navigation-wrapper {
+        a[role='button'] {
+            display: inherit;
+        }
+    }
 }
