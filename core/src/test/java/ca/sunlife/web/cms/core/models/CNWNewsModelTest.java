@@ -108,11 +108,12 @@ public class CNWNewsModelTest {
     cnwNewsModel.init( );
 
     // check for yearsToShow
-    int currentYear = Calendar.getInstance( ).get(Calendar.YEAR);
+    int currentYear = 2020;
     List <Integer> expectedYearsToShow = Arrays
         .asList(new Integer [ ] { currentYear , currentYear - 1 , currentYear - 2 });
     assertEquals(expectedYearsToShow , cnwNewsModel.getYearsToShow( ));
-
+    
+    
     // check for activeYear
     assertEquals(Integer.parseInt(DUMMY_ACTIVE_YEAR) , cnwNewsModel.getActiveYear( ));
 
