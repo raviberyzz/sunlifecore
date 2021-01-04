@@ -81,7 +81,7 @@ $(document).ready(function () {
         } else if (vgnLocaleSearch === "id") {
             strings = stringsIn;
         }
-        else if (vgnLocaleSearch === "vi_VN") {
+        else if (vgnLocaleSearch === "vi_VN" || vgnLocaleSearch === "vi") {
             strings = stringsVn;
         }
         else {
