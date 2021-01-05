@@ -151,19 +151,24 @@ public class DrugListServiceImpl implements DrugListService {
         JsonArrayBuilder chessArray = Json.createArrayBuilder();
 
         //build chess accounts
-        Rendition chessCsv = retrieveAsset(resolver, chessPath).getRendition(ORIGINAL);
+        Asset chessAsset = retrieveAsset(resolver, chessPath);
+        if(chessAsset != null){
+            Rendition chessCsv = chessAsset.getRendition(ORIGINAL);
 
-        try (
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(chessCsv.getStream(), StandardCharsets.UTF_8)
-                )
-        ) {
-            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                String[] values = line.split(",");
-                if (values.length >= 2 && "Y".equals(values[1])) {
-                    chessArray.add(values[0].replaceFirst("^0+(?!$)",""));
+            try (
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(chessCsv.getStream(), StandardCharsets.UTF_8)
+                    )
+            ) {
+                for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                    String[] values = line.split(",");
+                    if (values.length >= 2 && "Y".equals(values[1])) {
+                        chessArray.add(values[0].replaceFirst("^0+(?!$)",""));
+                    }
                 }
             }
+        } else {
+            throw new IOException(String.format("No chess asset found at %s", chessPath));
         }
         return chessArray;
     }

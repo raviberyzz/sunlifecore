@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.models.salesforce;
 
 import com.adobe.cq.wcm.core.components.models.ListItem;
+import com.day.cq.wcm.api.NameConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ValueMap;
 
@@ -53,6 +54,6 @@ public class SalesforceListItem implements ListItem {
     }
 
     public String getAuthor() {
-        return valueMap.get("cq:lastModifiedBy", String.class);
+        return "Author";
     }
 }
