@@ -4,6 +4,7 @@ import com.adobe.cq.wcm.core.components.internal.models.v2.ListImpl;
 import com.adobe.cq.wcm.core.components.models.List;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -14,6 +15,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
@@ -40,22 +42,28 @@ public class SalesforceList extends ListImpl {
     @Override
     public Collection<ListItem> getListItems() {
 
+        Collection<ListItem> result;
         ResourceResolver resolver = self.getResourceResolver();
+        PageManager pageManager = resolver.adaptTo(PageManager.class);
+        if (pageManager != null) {
 
-        Collection<ListItem> result = super.getListItems().stream()
-                .map(listItem -> {
-                    ListItem anItem;
-                    try {
-                        Resource resource = resolver.getResource(listItem.getPath());
-                        Page page = resource.adaptTo(Page.class);
-                        anItem = new SalesforceListItem(listItem, page.getProperties());
+            result = super.getListItems().stream()
+                    .map(listItem -> {
+                        ListItem anItem;
+                        if (listItem != null) {
+                            Page page = pageManager.getPage(listItem.getPath());
+                            anItem = new SalesforceListItem(listItem, page.getProperties());
+                        } else {
+                            anItem = null;
+                        }
 
-                    } catch (NullPointerException ex) {
-                        anItem = listItem;
-                    }
-                    return anItem;
+                        return anItem;
 
-                }).collect(Collectors.toList());
+                    }).collect(Collectors.toList());
+
+        } else {
+            result = Collections.emptyList();
+        }
 
         return result;
     }
