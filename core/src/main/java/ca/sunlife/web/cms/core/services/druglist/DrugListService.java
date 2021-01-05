@@ -24,4 +24,5 @@ public interface DrugListService {
      * @return path to JSON asset.
      */
     String getDataAssetPath();
+    String getDataAssetZipPath();
 }

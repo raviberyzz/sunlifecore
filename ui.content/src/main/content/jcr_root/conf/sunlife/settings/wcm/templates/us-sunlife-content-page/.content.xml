@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Template">
     <jcr:content
         cq:templateType="/conf/sunlife/settings/wcm/template-types/base-page"
-        jcr:description="Template used to create Content pages for Advisor hub"
+        jcr:description="Template used to create Content pages for US"
         jcr:primaryType="cq:PageContent"
         jcr:title="Sunlife US Content Page"
         status="enabled"/>

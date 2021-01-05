@@ -34,7 +34,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife US Content"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[group:Sunlife US]">
+                        components="[group:Sunlife COM]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_us_content>
                     <policy_sunlife_us_home
@@ -42,7 +42,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife US Home"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/apps/sunlife/us/components/content/accordion,/apps/sunlife/us/components/content/button,/apps/sunlife/us/components/content/container,/apps/sunlife/us/components/content/experiencefragment,/apps/sunlife/us/components/form/button,/apps/sunlife/us/components/form/container,/apps/sunlife/us/components/form/dropdown,/apps/sunlife/us/components/form/hidden,/apps/sunlife/us/components/form/options,/apps/sunlife/us/components/form/text,/apps/sunlife/us/components/content/icon-text,/apps/sunlife/us/components/content/image,/apps/sunlife/us/components/content/layout-container,/apps/sunlife/us/components/content/left-navigation,/apps/sunlife/us/components/content/link-list,/apps/sunlife/us/components/content/life-moments,/apps/sunlife/us/components/content/separator,/apps/sunlife/us/components/content/table,/apps/sunlife/us/components/content/tabs,/apps/sunlife/us/components/content/teaser,/apps/sunlife/us/components/content/text,/apps/sunlife/us/components/content/html-component,/apps/sunlife/us/components/content/generic]">
+                        components="[/apps/sunlife/com/components/content/accordion,/apps/sunlife/com/components/content/button,/apps/sunlife/com/components/content/container,/apps/sunlife/com/components/content/experiencefragment,/apps/sunlife/com/components/form/button,/apps/sunlife/com/components/form/container,/apps/sunlife/com/components/form/dropdown,/apps/sunlife/com/components/form/hidden,/apps/sunlife/com/components/form/options,/apps/sunlife/com/components/form/text,/apps/sunlife/com/components/content/icon-text,/apps/sunlife/com/components/content/image,/apps/sunlife/com/components/content/layout-container,/apps/sunlife/com/components/content/left-navigation,/apps/sunlife/com/components/content/link-list,/apps/sunlife/com/components/content/life-moments,/apps/sunlife/com/components/content/separator,/apps/sunlife/com/components/content/table,/apps/sunlife/com/components/content/tabs,/apps/sunlife/com/components/content/teaser,/apps/sunlife/com/components/content/text,/apps/sunlife/com/components/content/html-component,/apps/sunlife/com/components/content/generic]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_us_home>
                     <policy_sunlife_advisorhub_content
@@ -7867,7 +7867,7 @@
                             jcr:title="Accordion"
                             sling:resourceType="wcm/core/components/policy/policy"
                             allowedHeadingElements="[h2,h3,h4,h5,h6]"
-                            components="[/apps/sunlife/us/components/content/button,/apps/sunlife/us/components/content/container,/apps/sunlife/us/components/content/image,/apps/sunlife/us/components/content/link-list,/apps/sunlife/us/components/content/separator,/apps/sunlife/us/components/content/text,/apps/sunlife/us/components/content/title,/apps/sunlife/us/components/content/embed,/apps/sunlife/us/components/content/icon-text,/apps/sunlife/us/components/content/layout-container,/apps/sunlife/us/components/content/table,/apps/sunlife/us/components/content/teaser]"
+                            components="[/apps/sunlife/com/components/content/button,/apps/sunlife/com/components/content/container,/apps/sunlife/com/components/content/image,/apps/sunlife/com/components/content/link-list,/apps/sunlife/com/components/content/separator,/apps/sunlife/com/components/content/text,/apps/sunlife/com/components/content/title,/apps/sunlife/com/components/content/embed,/apps/sunlife/com/components/content/icon-text,/apps/sunlife/com/components/content/layout-container,/apps/sunlife/com/components/content/table,/apps/sunlife/com/components/content/teaser]"
                             headingElement="h3">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                             <cq:styleGroups jcr:primaryType="nt:unstructured">
