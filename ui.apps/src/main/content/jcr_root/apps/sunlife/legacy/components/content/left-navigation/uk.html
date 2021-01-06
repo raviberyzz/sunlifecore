@@ -1,8 +1,15 @@
 <sly data-sly-use.navigation="ca.sunlife.web.cms.core.models.LeftNavigationModal" />
 <nav class="global-nav-secondary" role="navigation" data-mobile="false">
-	<ul data-sly-list.item = "${navigation.items}">
-        <li>
-            <a class = "${item.active ? 'current' : ''}" href="${item.URL}">${item.title}</a>
-        </li>
-    </ul>
+   <ul data-sly-list.item = "${navigation.items}">
+      <li>
+         <a class = "${item.active ? 'current' : ''}" href="${item.URL}">${item.title}</a>
+         <sly data-sly-test.child = "${item.getChildren}">
+            <ul>
+               <li>
+                   <a class="current" href="${child[1].URL}">${child[1].title}</a>
+               </li>
+            </ul>
+         </sly>
+      </li>
+   </ul>
 </nav>
