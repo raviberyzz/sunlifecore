@@ -2,7 +2,7 @@
 <nav class="global-nav-secondary" role="navigation" data-mobile="false">
    <ul data-sly-list.item = "${navigation.items}">
       <li>
-         <a class = "${item.active ? 'current' : ''}" href="${item.URL}">${item.title}</a>
+         <a class = "${item.active ? 'current' : ''}" href="${item.URL}">${item.title @context='html'}</a>
          <sly data-sly-test.child = "${item.getChildren}">
             <ul>
                <li>
