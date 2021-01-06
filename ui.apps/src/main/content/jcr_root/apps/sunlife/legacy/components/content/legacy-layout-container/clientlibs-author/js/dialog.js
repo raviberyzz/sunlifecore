@@ -3,6 +3,7 @@
     var options = [
         {'normal':'Content'},
         {'25:75N':'Left Navigation & Content'},
+		{'25:50:25N':'Left Navigation, Content & Right Navigation'}
     ];
 
     var updateTypes = function() {
