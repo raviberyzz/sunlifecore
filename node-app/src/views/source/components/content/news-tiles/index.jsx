@@ -135,12 +135,12 @@ class NewsTiles extends React.Component {
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/china/all") {
+          if (data.id == "sunlife:source/building-location/china") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/malaysia/all") {
+          if (data.id == "sunlife:source/building-location/malaysia") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
@@ -269,9 +269,14 @@ class NewsTiles extends React.Component {
                   })
                 }
               })
-            })
+            });
+			
+			let userBLArticlesArr = BLArticles.filter((c, index) => {
+              return BLArticles.indexOf(c) === index;
+            });
+			
             // filter from Building Location Articles for JobLevel articles 
-            BLArticles.forEach((news) => {
+            userBLArticlesArr.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   userJobLevelFilters.forEach((filter) => {

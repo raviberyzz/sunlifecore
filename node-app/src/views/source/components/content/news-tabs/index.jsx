@@ -108,12 +108,12 @@ class NewsTabs extends React.Component {
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/china/all") {
+          if (data.id == "sunlife:source/building-location/china") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/malaysia/all") {
+          if (data.id == "sunlife:source/building-location/malaysia") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
@@ -239,8 +239,11 @@ class NewsTabs extends React.Component {
                   })
                 }
               })
-            })
-            BLArticles.forEach((news) => {
+            });
+			let userBLArticlesArr = BLArticles.filter((c, index) => {
+              return BLArticles.indexOf(c) === index;
+            });
+            userBLArticlesArr.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   /* val = val.split('/');
