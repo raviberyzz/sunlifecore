@@ -106,7 +106,17 @@ class NewsTabs extends React.Component {
           if (data.id == "sunlife:source/building-location/na") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
-        })
+        });
+		this.state.businessLocationList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/building-location/china/all") {
+            this.state.businessLocationList.tags.splice(index, 1);
+          }
+        });
+		this.state.businessLocationList.tags.forEach((data, index) => {
+          if (data.id == "sunlife:source/building-location/malaysia/all") {
+            this.state.businessLocationList.tags.splice(index, 1);
+          }
+        });
         this.state.topicsList.tags.forEach((data) => {
           data["isChecked"] = false;
           this.state.selectedPreferenceList.forEach(prefer => {
@@ -215,15 +225,17 @@ class NewsTabs extends React.Component {
                   userBLFiltersVar.forEach((filter) => {
                     //if (val.substring(val.lastIndexOf("/")) === filter) {
 					if ("sunlife:source/building-location/all" === filter && val === filter) {
-						BLArticles.push(news)
+						BLArticles.push(news);
+						return;
 					} else if (val === filter) {
-						BLArticles.push(news)
+						BLArticles.push(news);
+						return;
 					} else {
 						if(val.substring(val.lastIndexOf("/")) === filter) {
-							BLArticles.push(news)
+							BLArticles.push(news);
+							return;
 						}							
                     }
-					return
                   })
                 }
               })
