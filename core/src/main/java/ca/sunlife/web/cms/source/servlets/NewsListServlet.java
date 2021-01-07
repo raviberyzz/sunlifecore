@@ -163,6 +163,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 									LOGGER.trace("tagList : {}", tagList);
 								});
 							}
+							tagList.sort(String::compareToIgnoreCase);
 							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
 						}
 						if (null != jsonObject) {
