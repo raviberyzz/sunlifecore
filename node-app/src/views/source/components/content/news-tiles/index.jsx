@@ -135,12 +135,12 @@ class NewsTiles extends React.Component {
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/china/all") {
+          if (data.id == "sunlife:source/building-location/china") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
 		this.state.businessLocationList.tags.forEach((data, index) => {
-          if (data.id == "sunlife:source/building-location/malaysia/all") {
+          if (data.id == "sunlife:source/building-location/malaysia") {
             this.state.businessLocationList.tags.splice(index, 1);
           }
         });
