@@ -269,9 +269,14 @@ class NewsTiles extends React.Component {
                   })
                 }
               })
-            })
+            });
+			
+			let userBLArticlesArr = BLArticles.filter((c, index) => {
+              return BLArticles.indexOf(c) === index;
+            });
+			
             // filter from Building Location Articles for JobLevel articles 
-            BLArticles.forEach((news) => {
+            userBLArticlesArr.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   userJobLevelFilters.forEach((filter) => {

@@ -239,8 +239,11 @@ class NewsTabs extends React.Component {
                   })
                 }
               })
-            })
-            BLArticles.forEach((news) => {
+            });
+			let userBLArticlesArr = BLArticles.filter((c, index) => {
+              return BLArticles.indexOf(c) === index;
+            });
+            userBLArticlesArr.forEach((news) => {
               news.tags && news.tags.forEach((val) => {
                 if (val.indexOf('/job-level') != -1) {
                   /* val = val.split('/');
