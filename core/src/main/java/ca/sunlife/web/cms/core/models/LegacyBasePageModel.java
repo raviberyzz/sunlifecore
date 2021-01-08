@@ -21,6 +21,7 @@ import com.day.cq.wcm.api.components.ComponentContext;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
+
 /**
  * The Class BasePageModel.
  *
@@ -45,21 +46,49 @@ public class LegacyBasePageModel {
 	/** The request. */
 	@Self
 	private SlingHttpServletRequest request;
+	
 
 	/** The Constant siteSelector. */
 	private static final String SITE_SELECTOR = "siteSelector";
 
-	/**
-	 * the siteSelector
-	 */
+	/** The siteSelector. */
 	private String siteSelector;
 
+	/**
+	 * Gets the site selector.
+	 *
+	 * @return the site selector
+	 */
 	public String getSiteSelector() {
 		return siteSelector;
 	}
 
+	/**
+	 * Sets the site selector.
+	 *
+	 * @param siteSelector the new site selector
+	 */
 	public void setSiteSelector(String siteSelector) {
 		this.siteSelector = siteSelector;
+	}
+	
+
+	/**
+	 * Gets the request.
+	 *
+	 * @return the request
+	 */
+	public SlingHttpServletRequest getRequest() {
+		return request;
+	}
+
+	/**
+	 * Sets the request.
+	 *
+	 * @param request the new request
+	 */
+	public void setRequest(SlingHttpServletRequest request) {
+		this.request = request;
 	}
 
 	/**
@@ -83,7 +112,6 @@ public class LegacyBasePageModel {
 			LOG.debug("Mode is not Edit or Design");
 			request.setAttribute(ComponentContext.BYPASS_COMPONENT_HANDLING_ON_INCLUDE_ATTRIBUTE, false);
 		}
-
 	}
 
 }
