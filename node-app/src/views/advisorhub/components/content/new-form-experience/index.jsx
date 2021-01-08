@@ -1,3 +1,5 @@
+import { useTable, usePagination } from 'react-table'
+
 function Table({ columns, data }) {
     // Use the state and functions returned from useTable to build your UI
     const {
