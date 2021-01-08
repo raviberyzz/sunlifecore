@@ -88,6 +88,9 @@ public class BasePageModel {
   
   /** The Constant addOpeningDiv. */
   private static final String ADD_OPENING_DIV = "addOpeningDiv";
+  
+  /** The Constant wrapperDivClass. */
+  private static final String WRAPPER_DIV_CLASS = "wrapperDivClass";
 
   /** The Constant MFA_DOMAIN_PATH. */
   private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
@@ -339,6 +342,9 @@ public class BasePageModel {
   
   /** The site Body Include. */
   private String addOpeningDiv;
+  
+  /** The site wrapper div class. */
+  private String wrapperDivClass;
 
   /** The mfa Domain Path. */
   private String mfaDomainPath;
@@ -886,6 +892,23 @@ public class BasePageModel {
 	}
 	
 	/**
+	 * Gets the wrapperDivClass
+	 * 
+	 * @return the wrapperDivClass
+	 */
+	public String getWrapperDivClass() {
+		return wrapperDivClass;
+	}
+
+	/**
+	 * @param wrapperDivClass
+	 *          the wrapperDivClass to set
+	 */
+	public void setWrapperDivClass(String wrapperDivClass) {
+		this.wrapperDivClass = wrapperDivClass;
+	}
+	
+	/**
 	 * Gets the mfaDomainPath
 	 * 
 	 * @return the mfaDomainPath
@@ -944,6 +967,7 @@ public class BasePageModel {
     siteHeadInclude = configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath);
     siteBodyInclude = configService.getConfigValues(SITE_BODY_INCLUDE, pagePath);
     addOpeningDiv = configService.getConfigValues(ADD_OPENING_DIV, pagePath);
+	wrapperDivClass = configService.getConfigValues(WRAPPER_DIV_CLASS, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
     mfaEncryption = configService.getConfigValues(MFA_ENCRYPTION, pagePath);
     if (null != locale && locale.length() > 0) {

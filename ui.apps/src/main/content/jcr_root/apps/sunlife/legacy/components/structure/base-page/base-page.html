@@ -8,7 +8,7 @@
     <head data-sly-call="${head.head @ page = page, baseModel = baseModel}"></head>
     <body class="${page.cssClassNames} ${page.templateName}">
      <sly data-sly-test= "${baseModel.addOpeningDiv}">
-		<div  id = "${baseModel.addOpeningDiv}">
+		<div  id = "${baseModel.addOpeningDiv}" class="${baseModel.wrapperDivClass}">
 	</sly>
     	${baseModel.analyticsScriptlet @context='unsafe'}
         <sly data-sly-test.isRedirectPage="${page.redirectTarget && (wcmmode.edit || wcmmode.preview)}"
@@ -19,12 +19,13 @@
             <sly data-sly-call="${footer.footer @ page = page}"></sly>
             <sly data-sly-include="body.socialmedia_end.html"></sly>
         </sly>
-        <sly>${baseModel.bodyInclude @ context = 'unsafe'}</sly>
-    <!-- Include Site level CSS and scripts -->
+		<!-- Start - Include Site level CSS and scripts -->
 		<sly data-sly-test.siteBodyInclude = "${baseModel.siteBodyInclude}"> 
 			<sly>${baseModel.siteBodyInclude @ context = 'unsafe'}</sly>
         </sly>
-    <sly data-sly-test= "${baseModel.addOpeningDiv}">
+		<!-- End - Include Site level CSS and scripts -->
+		<sly>${baseModel.bodyInclude @ context = 'unsafe'}</sly>
+		<sly data-sly-test= "${baseModel.addOpeningDiv}">
 		</div>
 	</sly>
     </body>
