@@ -7,5 +7,5 @@
         </div>
     </sly>
     <sly data-sly-test=${data.fragmentPath}
-         data-sly-resource="${@path=data.fragmentPath, selectors=fragmentText.siteSelector, wcmmode='disabled'}"></sly>
+         data-sly-resource="${@path=data.fragmentPath, selectors=['content', fragmentText.siteSelector], wcmmode='disabled'}"></sly>
 </sly>
