@@ -250,6 +250,12 @@
                                         fieldDescription="When value given, html content will be put under a parent div with id."
                                         fieldLabel="Root DIV id"
                                         name="./addOpeningDiv"/>
+									<wrapperDivClass
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="When value given, html content will be put under a parent div with class."
+                                        fieldLabel="Root DIV class"
+                                        name="./wrapperDivClass"/>	
 									<siteSelector
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
