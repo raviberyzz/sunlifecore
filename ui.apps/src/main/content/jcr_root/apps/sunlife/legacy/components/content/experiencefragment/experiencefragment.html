@@ -1,5 +1,4 @@
-<sly data-sly-use.fragmentText="ca.sunlife.web.cms.core.models.ExperienceFragmentModel"></sly>
-<sly data-sly-use.legacyFragment="ca.sunlife.web.cms.core.models.LegacyExperienceFragmentModel"></sly>
+<sly data-sly-use.fragmentText="ca.sunlife.web.cms.core.models.LegacyExperienceFragmentModel"></sly>
 <sly data-sly-use.data = "${'experiencefragment.js' @ path=fragmentText.modifiedFragmentPath}" data-sly-unwrap>
     <sly data-sly-test="${!data.fragmentPath}">
         <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
@@ -8,5 +7,5 @@
         </div>
     </sly>
     <sly data-sly-test=${data.fragmentPath}
-         data-sly-resource="${@path=data.fragmentPath, selectors=legacyFragment.siteSelector, wcmmode='disabled'}"></sly>
+         data-sly-resource="${@path=data.fragmentPath, selectors=fragmentText.siteSelector, wcmmode='disabled'}"></sly>
 </sly>

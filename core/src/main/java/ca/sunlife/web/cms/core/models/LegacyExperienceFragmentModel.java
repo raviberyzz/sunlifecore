@@ -16,7 +16,7 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
  * The Class LegacyExperienceFragmentModel.
  */
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class LegacyExperienceFragmentModel {
+public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
 	
 	/** The request. */
 	@Self (injectionStrategy = InjectionStrategy.REQUIRED)
