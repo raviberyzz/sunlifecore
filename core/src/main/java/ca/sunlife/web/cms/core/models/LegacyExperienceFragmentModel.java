@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.models;
-
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 
@@ -16,7 +18,7 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
  * The Class LegacyExperienceFragmentModel.
  */
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
+public class LegacyExperienceFragmentModel extends ExperienceFragmentModel {
 	
 	/** The request. */
 	@Self (injectionStrategy = InjectionStrategy.REQUIRED)
@@ -24,11 +26,8 @@ public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
 	
 
 	/** The site selector. */
-	private String siteSelector;
+	private List <String> siteSelector;
 	
-
-	/** The Constant DEFAULT_SELECTOR. */
-	private static final String DEFAULT_SELECTOR = "content";
 
 
 	/**
@@ -36,8 +35,8 @@ public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
 	 *
 	 * @return the site selector
 	 */
-	public String getSiteSelector() {
-		return siteSelector;
+	public List<String> getSiteSelector() {
+		return Collections.unmodifiableList(siteSelector);
 	}
 
 	/**
@@ -45,10 +44,10 @@ public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
 	 *
 	 * @param siteSelector the new site selector
 	 */
-	public void setSiteSelector(String siteSelector) {
-		this.siteSelector = siteSelector;
+	public void setSiteSelector(List<String> siteSelector) {
+		this.siteSelector = Collections.unmodifiableList(siteSelector);
 	}
-
+ 
 	/**
 	 * Inits the model.
 	 *
@@ -57,7 +56,9 @@ public class LegacyExperienceFragmentModel extends ExperienceFragmentModel{
 	 */
 	@PostConstruct
 	public void initModel() throws LoginException, RepositoryException {
-		siteSelector = null != request.getRequestPathInfo().getSelectors()[0] ? request.getRequestPathInfo().getSelectors()[0] : DEFAULT_SELECTOR;		
+		if (request.getRequestPathInfo().getSelectors().length > 0) {
+		siteSelector =  Arrays.asList(request.getRequestPathInfo().getSelectors());
+		}
 	}
 	
 }
