@@ -114,7 +114,6 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 							String summary = valueMap.get(FormsConstants.FORM_INFORMATION, String.class);
 							Document docObj = null != summary ? Jsoup.parse(summary) : null;
 							jsonObject.put(FormsConstants.FORM_INFORMATION, null != docObj ? docObj.text() : "");
-							jsonObject.put(FormsConstants.FAVOURITES, jsonArray.length() % 2 == 0 ? "true" : "false");
 						}
 						if (null != jsonObject) {
 							jsonArray.put(jsonObject);
