@@ -74,24 +74,6 @@ public class LegacyBasePageModel {
 	
 
 	/**
-	 * Gets the request.
-	 *
-	 * @return the request
-	 */
-	public SlingHttpServletRequest getRequest() {
-		return request;
-	}
-
-	/**
-	 * Sets the request.
-	 *
-	 * @param request the new request
-	 */
-	public void setRequest(SlingHttpServletRequest request) {
-		this.request = request;
-	}
-
-	/**
 	 * Inits the model.
 	 *
 	 * @throws LoginException
