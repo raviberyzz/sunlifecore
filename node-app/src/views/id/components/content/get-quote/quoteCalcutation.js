@@ -131,8 +131,8 @@
                 }
             }
             $(".qc_submit_btn a").attr("disabled", "disabled");
-            $(".qc_submit_btn a").removeClass("btn-yellow");
-            $(".qc_submit_btn a").addClass("btn-blue");
+            $(".qc_submit_btn a").removeClass("enable");
+            $(".qc_submit_btn a").addClass("disable");
     }
 function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequencyTxt,mYear) {
     var key=key;
@@ -201,7 +201,7 @@ function getPremiumPrice(productName,key,freq,amount,age,countryCode,dob,frequen
             //     operator(result);
             //   },
             // });
-        setTimeout(operator,1000);
+        setTimeout(operator,3000);
         function operator(){
             let data='';
 				content=content.toString();
