@@ -1833,7 +1833,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -2187,7 +2187,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -4254,7 +4254,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -5916,8 +5916,13 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
+                                        <item2
+                                            cq:styleClasses="data-content-table-slgi"
+                                            cq:styleId="1585555566666"
+                                            cq:styleLabel="Data content table"
+                                            jcr:primaryType="nt:unstructured"/>    
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -6270,7 +6275,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -7949,7 +7954,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -8303,7 +8308,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -9979,7 +9984,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -10334,7 +10339,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -11042,7 +11047,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1594569834696"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -13905,7 +13910,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -14285,7 +14290,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -15947,7 +15952,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1580315099494"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -16301,7 +16306,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1577973589313"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
@@ -17004,7 +17009,7 @@
                                         <item1
                                             cq:styleClasses="cmp-table-data-content"
                                             cq:styleId="1594569834696"
-                                            cq:styleLabel="Data content table"
+                                            cq:styleLabel="Data table"
                                             jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
