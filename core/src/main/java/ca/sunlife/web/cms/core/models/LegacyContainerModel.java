@@ -11,38 +11,39 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
+/**
+ * The Class LegacyContainerModel.
+ */
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LegacyContainerModel {
-	/**
-	 * the analyticsId
-	 */
+	
+	/** the analyticsId. */
 	@Inject
 	@Via("resource")
 	private String analyticsId;
 
-	/**
-	 * the type
-	 */
+	/** the type. */
 	@Inject
 	@Via("resource")
 	private String type;
 
-	/**
-	 * the ariaLabel
-	 */
+	/** the ariaLabel. */
 	@Inject
 	@Via("resource")
 	private String ariaLabel;
+	
+	/** The request. */
+	@Self
+	private SlingHttpServletRequest request;
 
-	/**
-	 * the siteSelector
-	 */
+	/** the siteSelector. */
 	private String siteSelector;
 
 	/** The config service. */
@@ -130,6 +131,25 @@ public class LegacyContainerModel {
 	 */
 	public void setSiteSelector(String siteSelector) {
 		this.siteSelector = siteSelector;
+	}
+	
+
+	/**
+	 * Gets the request.
+	 *
+	 * @return the request
+	 */
+	public SlingHttpServletRequest getRequest() {
+		return request;
+	}
+
+	/**
+	 * Sets the request.
+	 *
+	 * @param request the new request
+	 */
+	public void setRequest(SlingHttpServletRequest request) {
+		this.request = request;
 	}
 
 	/**
