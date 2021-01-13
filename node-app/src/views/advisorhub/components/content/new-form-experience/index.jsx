@@ -15,13 +15,13 @@ function Table({ columns, data }) {
         previousPage,
         setPageSize,
         state: { pageIndex, pageSize },
-    } = useTable(
+    } = ReactTable.useTable(
         {
             columns,
             data,
             initialState: { pageIndex: 2, pageSize: 5 },
         },
-        usePagination
+        ReactTable.usePagination
     )
 
     // Render the UI for your table
