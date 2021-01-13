@@ -26,6 +26,9 @@
                         selector="slgi"/>
                 </items>
             </recommended_products_header>
+            <breadcrumb
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="sunlife/legacy/components/content/breadcrumb"/>
             <layout_container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="sunlife/legacy/components/content/legacy-layout-container"/>
