@@ -507,7 +507,9 @@ class NewsTabs extends React.Component {
 		  });
 		}
     });
-    return Array.from(titleSet).join(' | ');
+    var titleArr = [];
+	titleSet.forEach(function(v){titleArr.push(v)});
+    return titleArr.join(' | ');
   }
 
   paginationDataBuild(newsList, page) {

@@ -490,7 +490,9 @@ class NewsTiles extends React.Component {
 		  });
 		}
     });
-    return Array.from(titleSet).join(' | ');
+	var titleArr = [];
+	titleSet.forEach(function(v){titleArr.push(v)});
+    return titleArr.join(' | ');
   }
 
   dateTransform(date) {
