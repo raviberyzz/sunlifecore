@@ -10,7 +10,7 @@
                             <sly data-sly-test="${navItem.active}">
                                 <span>${navItem.title}</span></sly>
                             </sly>
-                            <sly data-sly-test="!${navItem.active}"></sly>
+                            <sly data-sly-test="!${navItem.active}">
                                 <a href="${navItem.URL}">
                                     <sly data-sly-test="${!navItem.active}"><span>${navItem.title}</span></sly>
                                     <!-- <sly data-sly-test="${navItem.active}"><span>${navItem.title @context = 'html'}</span></sly> -->
