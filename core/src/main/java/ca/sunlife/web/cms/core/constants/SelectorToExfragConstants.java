@@ -17,5 +17,8 @@ public class SelectorToExfragConstants {
 	  
    /** The Constant PAGE_PATH_CONSTANT. */
    public static final String PAGE_PATH_CONSTANT = "/content/sunlife/external/slgi";
+   
+   /** The Constant SLFAS_PAGE_PATH_CONSTANT. */
+   public static final String SLFAS_PAGE_PATH_CONSTANT = "/content/sunlife/external/ca/slfas";
 
 }
