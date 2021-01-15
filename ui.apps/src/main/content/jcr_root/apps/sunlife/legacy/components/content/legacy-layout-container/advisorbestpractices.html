@@ -12,13 +12,14 @@
             <div class="two-column-layout row content-gap row-height">
                 <div data-analytics="leftnav" aria-label="left" role="navigation"
                     class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-height left-nav-menu">
-                    <div class="col-md-12">
-                        <sly
-                            data-sly-resource="${'left-nav' @ resourceType='sunlife/legacy/components/content/left-navigation', selectors= layout.siteSelector}" />
+                    <div class="row no-gutter">
+                        <div class="col-md-12">
+                            <sly
+                                data-sly-resource="${'left-nav' @ resourceType='sunlife/legacy/components/content/left-navigation', selectors= layout.siteSelector}" />
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-9  col-lg-9 col-height text-top" role="main"
-                    data-analytics="mainbodycontent" id="mainbodycontent">
+                <div class="col-xs-12 col-sm-12 col-md-9  col-lg-9 col-height text-top">
                     <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
                 </div>
             </div>
