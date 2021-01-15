@@ -2,9 +2,13 @@ package ca.sunlife.web.cms.advisorhub.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+
+import org.apache.commons.collections.iterators.EmptyIterator;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.LoginException;
@@ -24,7 +28,12 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
+
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
+import ca.sunlife.web.cms.source.constants.NewsConstants;
 import ca.sunlife.web.cms.advisorhub.servlets.FormsListingServlet;
 import ca.sunlife.web.cms.advisorhub.osgi.config.FormsConfig;
 import ca.sunlife.web.cms.advisorhub.constants.FormsConstants;
@@ -54,6 +63,9 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 
 	/** The Constant JCR_CONTENT_DATA_MASTER. */
 	private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
+	
+	/** The Constant JCR_CONTENT_METDATA_MASTER. */
+	private static final String JCR_CONTENT_METDATA_MASTER = "/jcr:content/metadata";
 
 	/** The content fragment path map. */
 	private HashMap<String, String> contentFragmentPathMap = new HashMap<>();
@@ -114,6 +126,27 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 							String summary = valueMap.get(FormsConstants.FORM_INFORMATION, String.class);
 							Document docObj = null != summary ? Jsoup.parse(summary) : null;
 							jsonObject.put(FormsConstants.FORM_INFORMATION, null != docObj ? docObj.text() : "");
+						}
+						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()
+								.getResource(forms.getPath().concat(JCR_CONTENT_METDATA_MASTER));
+						if (null != contentFragmentMetaData) {
+							final TagManager tagManager = coreResourceResolver.getResourceResolver().adaptTo(TagManager.class);
+							final Tag[] tags = null != tagManager ? tagManager.getTags(contentFragmentMetaData) : null;
+							final ArrayList<String> tagList = new ArrayList<>();
+							if (null != tags) {
+								Arrays.stream(tags).forEach(tag -> {
+									if (tag.listAllSubTags() instanceof EmptyIterator) {
+										tagList.add(tag.getTagID());
+									} else {
+										tag.listAllSubTags().forEachRemaining(childTagItr -> {
+											tagList.add(childTagItr.getTagID());
+										});
+									}
+									LOGGER.trace("tagList : {}", tagList);
+								});
+							}
+							tagList.sort(String::compareToIgnoreCase);
+							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
 						}
 						if (null != jsonObject) {
 							jsonArray.put(jsonObject);
