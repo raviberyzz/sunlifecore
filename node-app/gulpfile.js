@@ -99,15 +99,15 @@ gulp.task('compile-files', (done) => {
   });
   const reactJsTasks = folders.map((folder)=> {
     if (folder !== 'core') {
-      return  gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
-        .pipe(concat('react.js'))
-        // .pipe(uglify())
-        .pipe(babel({
-          presets: ["@babel/preset-env", "@babel/preset-react"]
-        }))
-        .pipe(gulp.dest('public/' + folder + '/js'));
+     return  gulp.src(path.join(srcViews, folder, '/**/*.jsx'))
+       .pipe(concat('react.js'))
+       // .pipe(uglify())
+       .pipe(babel({
+         presets: ["@babel/preset-env", "@babel/preset-react"]
+       }))
+       .pipe(gulp.dest('public/' + folder + '/js'));
 
-    }else{
+   }else{
         var files = glob.sync(srcViews+'/'+folder+'/**/*.jsx');
         return browserify({ entries: files})
         .transform("babelify", { presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-proposal-class-properties"] })
@@ -116,7 +116,7 @@ gulp.task('compile-files', (done) => {
         //.pipe(buffer())
         //.pipe(uglify())  
         .pipe(gulp.dest('public/'+folder+'/js')) 
-    }
+   }
   });
   return merge(sassTasks, vendorCssTasks,jsTasks,vendorJsTasks,reactJsTasks,fontsVendorTask,fontsBaseTask);
 });
