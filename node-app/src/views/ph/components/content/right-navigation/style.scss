@@ -43,3 +43,9 @@
     }
 
 }
+
+@media (max-width: $tab-screen-max ) and (min-width:$tab-screen-min) {
+    .right-navigation-wrapper>.cmp-container>  div:last-child.col-sm-4 .text{
+        padding-top: 24px;
+    }
+}
