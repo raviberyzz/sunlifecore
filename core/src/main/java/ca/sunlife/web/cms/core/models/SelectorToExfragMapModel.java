@@ -119,6 +119,8 @@ public class SelectorToExfragMapModel {
 	  
     String[] selectors = request.getRequestPathInfo().getSelectors();
     String urlSelector = "";   
+    String siteSelector = "";
+    
     if (items != null && items.size() > 0) {    	  
     	  LOGGER.debug("No of entries after items : {}", items.size());
     	  final Iterator <SelectorExFragMap> itemIterator = items.iterator();
@@ -127,14 +129,28 @@ public class SelectorToExfragMapModel {
 	       	        
 	        //Code for default page selector for slgi - starts
 	        try {
+	        	if (null != configService.getConfigValues("siteSelector", currentPage.getPath())) {
+	        		siteSelector = configService.getConfigValues("siteSelector", request.getRequestURI());
+	        		LOGGER.debug("currentPage.getPath() = {} site selector {}", currentPage.getPath(), siteSelector);
+	            }
 	        String sitePath = request.getRequestPathInfo().getResourcePath();
-	        LOGGER.debug("PagePath is ::"+ sitePath);
-	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (sitePath.contains(SelectorToExfragConstants.PAGE_PATH_CONSTANT))) {	        	
+	        LOGGER.debug("PagePath is :: {}", sitePath);
+	        if ((selectors.length == 0 || !(item.getSelector().equals(selectors[0]))) && (urlSelector.equalsIgnoreCase("")) && (sitePath.contains(SelectorToExfragConstants.PAGE_PATH_CONSTANT) )) {	        	
 	        	urlSelector = item.getSelector();
-	        	LOGGER.debug("No selector, taking default ::"+ urlSelector);
-	        } else if (selectors.length > 0) {	        	
-	        	urlSelector = selectors [ 0 ];
+	        	LOGGER.debug("No selector, taking default :: {}", urlSelector);
 	        }
+	        else if((selectors.length == 0 || selectors.length == 1 ) && (urlSelector.equalsIgnoreCase("")) && (sitePath.contains(SelectorToExfragConstants.SLFAS_PAGE_PATH_CONSTANT) )) {
+	        	urlSelector = items.get(0).getSelector();
+	        	LOGGER.debug("No selector, taking default 1 :: {}", urlSelector);
+	        }
+	        else if (selectors.length > 0 && !selectors[0].equalsIgnoreCase(siteSelector)) {	
+		        	urlSelector = selectors [ 0 ];
+	        	LOGGER.debug("selectors [ 0 ] = {} ", selectors [ 0 ]);
+	        }
+	        else if (selectors.length > 1 && selectors[0].equalsIgnoreCase(siteSelector)) {
+        		urlSelector = selectors[1];
+        		LOGGER.debug("selectors [ 0 ] = {} selectors [ 1 ] ={}", selectors [ 0 ], selectors [ 1 ]);
+        	}
 	        //Code for default page selector for slgi - ends
 	        
         if (item.getSelector().equals(urlSelector)) {
