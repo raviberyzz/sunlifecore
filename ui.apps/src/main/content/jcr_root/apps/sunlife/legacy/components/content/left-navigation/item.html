@@ -31,3 +31,15 @@
         <sly data-sly-test="${item.children.size > 0}" data-sly-call="${groupTemplate.advisorGroup @ items = item.children}"></sly>
     </li>
 </template>
+<template data-sly-template.pslfItem="${@ item='The navigation item'}"
+   data-sly-use.customTemplate="custom.html">
+   <sly data-sly-test="${item.children.size > 0 && item.active}" data-sly-call="${customTemplate.pslfCustom @ items = item.children, level= 'first-level'}"></sly>
+</template>
+<template data-sly-template.pslfItem2="${@ item='The navigation item'}"
+   data-sly-use.customTemplate="custom.html"
+   data-sly-use.itemContentTemplate="itemContent.html">
+   <li class="${item.children.size > 0 ? 'panel' : ''}">
+      <sly data-sly-call="${itemContentTemplate.pslfItemContent @ item = item}"></sly>
+      <sly data-sly-test="${item.children.size > 0}" data-sly-call="${customTemplate.pslfCustom @ items = item.children,level= 'second-level'}"></sly>
+   </li>
+</template>
