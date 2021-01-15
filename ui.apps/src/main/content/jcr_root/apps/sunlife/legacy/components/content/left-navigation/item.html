@@ -23,3 +23,11 @@
         <sly data-sly-test="${item.children.size > 0 && item.active}" data-sly-call="${customTemplate.custom @ items = item.children}"></sly>
     </li>
 </template>
+<template data-sly-template.advisorItem="${@ item='The navigation item'}"
+          data-sly-use.groupTemplate="group.html"
+          data-sly-use.itemContentTemplate="itemContent.html">
+    <li class="cmp-navigation__item cmp-navigation__item--level-${item.level}${item.active ? ' cmp-navigation__item--active' : ''}">
+        <sly data-sly-call="${itemContentTemplate.advisorItemContent @ item = item}"></sly>
+        <sly data-sly-test="${item.children.size > 0}" data-sly-call="${groupTemplate.advisorGroup @ items = item.children}"></sly>
+    </li>
+</template>

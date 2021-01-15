@@ -22,3 +22,8 @@
 	 <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}"></sly>
     </ul>
 </template>
+<template data-sly-template.advisorGroup="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html">
+  <ul class="list-unstyled first-level" data-sly-list="${items}">
+      <sly data-sly-call="${itemTemplate.advisorItem @ item=item}"></sly>
+  </ul>
+</template>
