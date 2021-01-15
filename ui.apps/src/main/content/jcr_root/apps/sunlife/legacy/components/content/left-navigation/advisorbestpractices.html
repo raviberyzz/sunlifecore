@@ -1,0 +1,17 @@
+<sly data-sly-use.navigation="ca.sunlife.web.cms.core.models.LeftNavigationModal" />
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-height left-nav-menu" data-analytics="leftnav" role="navigation"
+    aria-label="left">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="menu-header"><strong>${item.title @context='html'}</strong></div>
+            <sly data-sly-test.child="${item.getChildren}">
+                <ul class="list-unstyled first-level" data-sly-list.item="${navigation.items}">
+                        <!-- <a class="${item.active ? 'active' : ''}" href="${item.URL}">${item.title @context='html'}</a> -->
+                    <li>
+                        <a class="${item.active ? 'active' : ''}" href="${child[1].URL}">${child[1].title}</a>
+                    </li>
+                </ul>
+            </sly>
+        </div>
+    </div>
+</div>
