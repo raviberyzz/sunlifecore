@@ -18,3 +18,8 @@
         <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
     </ul>
 </template>
+<template data-sly-template.pslfCustom="${@ items='The navigation items for the current level', level = 'the level'}" data-sly-use.itemTemplate="item.html">
+   <ul class="list-unstyled ${level}" data-sly-list="${items}">
+      <sly data-sly-call="${itemTemplate.pslfItem2 @ item=item}"></sly>
+   </ul>
+</template>

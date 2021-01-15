@@ -27,3 +27,13 @@
       <sly data-sly-call="${itemTemplate.advisorItem @ item=item}"></sly>
   </ul>
 </template>
+<template data-sly-template.pslfGroup="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html">
+   <sly  data-sly-list="${items}">
+      <div data-sly-test="${itemList.index == 0}" class="menu-header">
+         <strong>${item.title}</strong>  
+      </div>
+   </sly>
+   <sly  data-sly-list="${items}">
+      <sly data-sly-call="${itemTemplate.pslfItem @ item=item}"></sly>
+   </sly>
+</template>

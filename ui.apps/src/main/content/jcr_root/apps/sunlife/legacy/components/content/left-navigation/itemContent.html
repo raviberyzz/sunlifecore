@@ -38,3 +38,23 @@
          class="${item.active ? 'active' : ''}" >${item.title}</a>
     </sly>
 </template>
+<template data-sly-template.pslfItemContent="${@ item='The navigation item'}">
+   <sly data-sly-test="${item.level==0}">
+      <a href="${item.URL}"   
+         class="${item.active ? 'active' : ''}" >${item.title}</a>
+   </sly>
+   <sly data-sly-test="${(item.level==1) && !(item.level==0)}" >
+      <sly data-sly-test="${item.getChildren.size>0}">
+         <a data-toggle="collapse" data-parent=".first-level"  aria-expanded="false"
+            class="collapsable" href="#" >${item.title}</a>
+      </sly>
+      <sly data-sly-test="${item.getChildren.size==0}">
+         <a href="${item.URL}"  
+            class="${item.active ? 'active' : ''}" >${item.title}</a>
+      </sly>
+   </sly>
+   <sly data-sly-test="${!(item.level==1) && !(item.level==0)}">
+      <a href="${item.URL}" 
+         class="${item.active ? 'active' : ''}" >${item.title}</a>
+   </sly>
+</template>
