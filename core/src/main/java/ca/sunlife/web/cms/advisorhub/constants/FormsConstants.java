@@ -31,5 +31,8 @@ public final class FormsConstants {
 	  
 	/** The Constant FAVOURITES. */
 	public static final String FAVOURITES = "favourites";
+	
+	/** The Constant TAGS_CONSTANT. */
+	public static final String TAGS_CONSTANT = "tags";
 
 }

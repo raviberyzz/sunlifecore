@@ -33,7 +33,6 @@ import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
-import ca.sunlife.web.cms.source.constants.NewsConstants;
 import ca.sunlife.web.cms.advisorhub.servlets.FormsListingServlet;
 import ca.sunlife.web.cms.advisorhub.osgi.config.FormsConfig;
 import ca.sunlife.web.cms.advisorhub.constants.FormsConstants;
@@ -71,7 +70,7 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 	private HashMap<String, String> contentFragmentPathMap = new HashMap<>();
 	
 	/**
-	 * Activate formss config for Formslisting servlet.
+	 * Activate forms config for Formslisting servlet.
 	 * 
 	 * @param formsConfig
 	 *          the formsConfig
@@ -146,7 +145,7 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 								});
 							}
 							tagList.sort(String::compareToIgnoreCase);
-							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
+							jsonObject.put(FormsConstants.TAGS_CONSTANT, tagList); // cq:tags
 						}
 						if (null != jsonObject) {
 							jsonArray.put(jsonObject);
