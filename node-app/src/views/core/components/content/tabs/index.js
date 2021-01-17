@@ -32,9 +32,10 @@ $(document).ready(function(){
       scrollTop: $(this).parent().offset().top - bufferZone },1);
   }
   });
-
+  
+ var on_load_page_width = $(document).width();
   $(window).resize(function(){
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 768 && $(window).width() != on_load_page_width) {
         $('.tabs-wrapper .cmp-tabs__tabpanel .tab-accordian-heading').siblings().css('display', 'none');
           $('.tabs-wrapper .cmp-tabs__tabpanel .tab-accordian-heading').attr('aria-expanded', false);
       }
