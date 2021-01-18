@@ -40,6 +40,8 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.settings.SlingSettingsService;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -154,6 +156,8 @@ public class BasePageModel {
 
   /** The Constant TWITTER_CREATOR. */
   static final String TWITTER_CREATOR = "twitter:creator";
+  
+  
 
   /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(BasePageModel.class);
@@ -318,7 +322,19 @@ public class BasePageModel {
 
   /** The Constant ARTICLE_MODIFIED_DATE. */
   private static final String ARTICLE_MODIFIED_DATE = "articlePublishedDate@LastModified";
-
+  
+  /** The Constant SITE_SELECTOR. */
+  private static final String SITE_SELECTOR = "siteSelector";
+  
+  /** The Constant PUBLIC. */
+  private static final String PUBLIC = "public";
+  
+  /** The Constant SECURE. */
+  private static final String SECURE = "secure";
+  
+  /** The Constant SLGI. */
+  private static final String SLGI = "slgi";
+  
   /** The page locale default. */
   private String pageLocaleDefault = "en";
 
@@ -964,8 +980,8 @@ public class BasePageModel {
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
-    siteHeadInclude = configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath);
-    siteBodyInclude = configService.getConfigValues(SITE_BODY_INCLUDE, pagePath);
+    siteHeadInclude = processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
+    siteBodyInclude = processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
     addOpeningDiv = configService.getConfigValues(ADD_OPENING_DIV, pagePath);
 	wrapperDivClass = configService.getConfigValues(WRAPPER_DIV_CLASS, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
@@ -1637,6 +1653,40 @@ public class BasePageModel {
       LOG.error("Error while generating alternate urls :: {}", e.getMessage());
     }
     LOG.debug("Map {}", altLanguageLinks);
+  }
+  
+  public String processSiteIncludes(String siteInclude) {
+	  String processedSiteInclude="";
+		  Document parsedSiteInclude= Jsoup.parse(siteInclude);
+		  LOG.debug("Parsed site include:: {}",parsedSiteInclude);
+		  String urlSelector="";
+		  String siteSelector="";
+		  try {
+			urlSelector=request.getRequestPathInfo().getSelectors().length>0 ? request.getRequestPathInfo().getSelectors()[0]:"";
+			siteSelector= configService.getConfigValues(SITE_SELECTOR, currentPage.getPath());
+			if(urlSelector.equals(siteSelector) && request.getRequestPathInfo().getSelectors().length>1) {
+				urlSelector=request.getRequestPathInfo().getSelectors()[1];
+			}
+			LOG.debug("Final URL Selector::{}",urlSelector);
+			boolean hasHtmlTags= true;
+			if(parsedSiteInclude.getElementsByTag(PUBLIC).html().isEmpty() || parsedSiteInclude.getElementsByTag(SECURE).html().isEmpty() || parsedSiteInclude.getElementsByTag(SLGI).html().isEmpty()) {
+				hasHtmlTags=false;
+				LOG.debug("has html false");
+			}
+			if(hasHtmlTags && (urlSelector.equals(PUBLIC)|| urlSelector.equals(SECURE) || urlSelector.equals(SLGI)) ) {
+					processedSiteInclude = parsedSiteInclude.getElementsByTag(urlSelector).html();				
+			}
+			else {
+					processedSiteInclude = siteInclude;					
+			}
+			LOG.debug("ProcessedSiteInclude text :: {}",processedSiteInclude);
+		} catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
+			LOG.error("Error :: processSiteInclude method of Base Page model :: {}", e);
+		} 
+		  
+	  
+	  
+	  return processedSiteInclude;			  
   }
 
 }
