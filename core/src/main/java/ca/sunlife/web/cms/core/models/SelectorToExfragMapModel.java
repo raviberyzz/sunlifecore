@@ -130,8 +130,7 @@ public class SelectorToExfragMapModel {
 	        //Code for default page selector for slgi - starts
 	        try {
 	        	if (null != configService.getConfigValues("siteSelector", currentPage.getPath())) {
-	        		siteSelector = configService.getConfigValues("siteSelector", request.getRequestURI());
-	        		LOGGER.debug("currentPage.getPath() = {} site selector {}", currentPage.getPath(), siteSelector);
+	        		siteSelector = configService.getConfigValues("siteSelector", currentPage.getPath());
 	            }
 	        String sitePath = request.getRequestPathInfo().getResourcePath();
 	        LOGGER.debug("PagePath is :: {}", sitePath);
@@ -141,7 +140,7 @@ public class SelectorToExfragMapModel {
 	        }
 	        else if((selectors.length == 0 || selectors.length == 1 ) && (urlSelector.equalsIgnoreCase("")) && (sitePath.contains(SelectorToExfragConstants.SLFAS_PAGE_PATH_CONSTANT) )) {
 	        	urlSelector = items.get(0).getSelector();
-	        	LOGGER.debug("No selector, taking default 1 :: {}", urlSelector);
+	        	LOGGER.debug("No selector, taking default for SLFAS path :: {}", urlSelector);
 	        }
 	        else if (selectors.length > 0 && !selectors[0].equalsIgnoreCase(siteSelector)) {	
 		        	urlSelector = selectors [ 0 ];
