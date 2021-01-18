@@ -66,7 +66,6 @@ function initJourneyPlayer() {
   }
 
   journeyPlayer.initialize().then(function (results) {
-    console.log("Transmit SDK initialized successfully: ".concat(results));
     if(Array.isArray(journeyPlayer.getUsersInfo()) && journeyPlayer.getUsersInfo().length){
        onLogout();
     }
@@ -141,7 +140,6 @@ function hideSpinner(){
 function CloseModalPopup(){
   $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
     onLogout();
-    console.log("Modal closed...");
   });
 }
 
