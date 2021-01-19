@@ -156,8 +156,6 @@ public class BasePageModel {
 
   /** The Constant TWITTER_CREATOR. */
   static final String TWITTER_CREATOR = "twitter:creator";
-  
-  
 
   /** The Constant LOG. */
   private static final Logger LOG = LoggerFactory.getLogger(BasePageModel.class);
@@ -335,8 +333,6 @@ public class BasePageModel {
   /** The Constant SLGI. */
   private static final String SLGI = "slgi";
   
-  /** The Constant SLGI. */
-  private static final String SLFAS_PATH = "/content/sunlife/external/ca/slfas/";
   /** The page locale default. */
   private String pageLocaleDefault = "en";
 
@@ -983,7 +979,7 @@ public class BasePageModel {
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
    
-    if (currentPage.getPath().contains(SLFAS_PATH)) {
+    if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
    	     siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
    	     headInclude= null==this.headInclude ? "" : processPageIncludes(this.headInclude); 
