@@ -12,15 +12,13 @@
 </sly>
 <sly data-sly-test="${layout.noc == '2'}">
     <sly data-sly-test="${layout.type == '75:25N'}">
-        <div class="clearfix content" id="page-content">
-            <div class="two-column-layout row content-gap row-height">
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 left-content">
-                    <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-                </div>
-                <div data-analytics="rightnav" aria-label="right" role="complementary"
-                    class="col-xs-12 col-sm-12 col-md-3 col-lg-3 right-nav">
-                    <sly data-sly-resource="${'right-nav' @ decorationTagName='div'}" />
-                </div>
+        <div class="two-column-layout row content-gap row-height">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 left-content">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div data-analytics="rightnav" aria-label="right" role="complementary"
+                class="col-xs-12 col-sm-12 col-md-3 col-lg-3 right-nav">
+                <sly data-sly-resource="${'right-nav' @ decorationTagName='div'}" />
             </div>
         </div>
     </sly>
