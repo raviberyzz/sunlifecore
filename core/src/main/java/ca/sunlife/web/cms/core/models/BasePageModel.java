@@ -335,6 +335,8 @@ public class BasePageModel {
   /** The Constant SLGI. */
   private static final String SLGI = "slgi";
   
+  /** The Constant SLGI. */
+  private static final String SLFAS_PATH = "/content/sunlife/external/ca/slfas/";
   /** The page locale default. */
   private String pageLocaleDefault = "en";
 
@@ -980,8 +982,19 @@ public class BasePageModel {
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
-    siteHeadInclude = processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
-    siteBodyInclude = processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
+   
+    if (currentPage.getPath().contains(SLFAS_PATH)) {
+    	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
+   	     siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
+   	     headInclude= null==this.headInclude ? "" : processPageIncludes(this.headInclude); 
+   	     bodyInclude= null ==this.bodyInclude ? "" : processPageIncludes(this.bodyInclude);
+      LOG.debug("Head include {}",headInclude);
+      LOG.debug("Body include {}",bodyInclude);
+    }
+    else {
+    	siteHeadInclude = configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath);
+  	    siteBodyInclude =configService.getConfigValues(SITE_BODY_INCLUDE, pagePath);
+    }
     addOpeningDiv = configService.getConfigValues(ADD_OPENING_DIV, pagePath);
 	wrapperDivClass = configService.getConfigValues(WRAPPER_DIV_CLASS, pagePath);
     mfaDomainPath = configService.getConfigValues(MFA_DOMAIN_PATH, pagePath);
@@ -1127,7 +1140,7 @@ public class BasePageModel {
     LOG.debug("Map Display {}", udoTags);
   }
 
-  /**
+/**
    * Gets the page title.
    *
    * @param titleStr
@@ -1669,24 +1682,47 @@ public class BasePageModel {
 			}
 			LOG.debug("Final URL Selector::{}",urlSelector);
 			boolean hasHtmlTags= true;
-			if(parsedSiteInclude.getElementsByTag(PUBLIC).html().isEmpty() || parsedSiteInclude.getElementsByTag(SECURE).html().isEmpty() || parsedSiteInclude.getElementsByTag(SLGI).html().isEmpty()) {
+			if(parsedSiteInclude.getElementsByTag(PUBLIC).html().isEmpty() && parsedSiteInclude.getElementsByTag(SECURE).html().isEmpty() && parsedSiteInclude.getElementsByTag(SLGI).html().isEmpty()) {
 				hasHtmlTags=false;
-				LOG.debug("has html false");
+				LOG.debug("Site include does not have html");
 			}
-			if(hasHtmlTags && (urlSelector.equals(PUBLIC)|| urlSelector.equals(SECURE) || urlSelector.equals(SLGI)) ) {
-					processedSiteInclude = parsedSiteInclude.getElementsByTag(urlSelector).html();				
+			if(hasHtmlTags  && (urlSelector.equals(PUBLIC)|| urlSelector.equals(SECURE) || urlSelector.equals(SLGI))  ) {
+					processedSiteInclude = parsedSiteInclude.getElementsByTag(urlSelector).html();	
+					LOG.debug("Processed site include if site has html and has selector ::{}",processedSiteInclude);
+			}
+			else if(hasHtmlTags && urlSelector.isEmpty()) {
+				processedSiteInclude = parsedSiteInclude.body().child(0).html();
+				LOG.debug("Processed site include if site has html and no selector ::{}",processedSiteInclude);
 			}
 			else {
-					processedSiteInclude = siteInclude;					
+					processedSiteInclude = siteInclude;		
+					LOG.debug("Processed site include if site has no html and no selector ::{}",processedSiteInclude);
 			}
 			LOG.debug("ProcessedSiteInclude text :: {}",processedSiteInclude);
 		} catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
 			LOG.error("Error :: processSiteInclude method of Base Page model :: {}", e);
-		} 
-		  
-	  
-	  
+		} 	    
 	  return processedSiteInclude;			  
   }
+  public String processPageIncludes(String pageInclude) {
+	 /* if(pageInclude.isEmpty()) {
+		  return pageInclude;
+	  }*/
+		String processedPageInclude="";
+		Document parsedPageInclude=Jsoup.parse(pageInclude);
+		boolean hasHtmlTags= true;
+		if(parsedPageInclude.getElementsByTag(PUBLIC).html().isEmpty() && parsedPageInclude.getElementsByTag(SECURE).html().isEmpty() && parsedPageInclude.getElementsByTag(SLGI).html().isEmpty()) {
+			hasHtmlTags=false;
+			LOG.debug("Page include does not have html");
+		}
+		if(hasHtmlTags) {
+			processedPageInclude=parsedPageInclude.body().child(0).html();
+		}
+		else {
+			processedPageInclude = pageInclude;
+		}
+		LOG.debug("Page include processed: {}", processedPageInclude);
+		return processedPageInclude;
+	}
 
 }
