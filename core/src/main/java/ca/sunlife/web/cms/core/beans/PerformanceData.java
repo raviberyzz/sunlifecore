@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The Class PerformanceData.
  *
@@ -8,11 +10,19 @@ package ca.sunlife.web.cms.core.beans;
  */
 public class PerformanceData {
 
+	/** The returnYear. */
+	@JsonProperty("year")
 	protected String returnYear;
-	protected String returnForYear;
+	
+	/** The percentage. */
+	protected String percentage;
+	
+	/** The colourCd. */
 	protected String colourCd;
 
 	/**
+	 * Gets the returnYear.
+	 *
 	 * @return the returnYear
 	 */
 	public String getReturnYear() {
@@ -20,29 +30,35 @@ public class PerformanceData {
 	}
 
 	/**
+	 * Sets the returnYear.
+	 *
 	 * @param returnYear
-	 *          the returnYear to set
 	 */
 	public void setReturnYear(String returnYear) {
 		this.returnYear = returnYear;
 	}
 
 	/**
-	 * @return the returnForYear
+	 * Gets the percentage.
+	 *
+	 * @return the percentage
 	 */
-	public String getReturnForYear() {
-		return returnForYear;
+	public String getPercentage() {
+		return percentage;
 	}
 
 	/**
-	 * @param returnForYear
-	 *          the returnForYear to set
+	 * Sets the percentage.
+	 *
+	 * @param percentage
 	 */
-	public void setReturnForYear(String returnForYear) {
-		this.returnForYear = returnForYear;
+	public void setPercentage(String percentage) {
+		this.percentage = percentage;
 	}
 
 	/**
+	 * Gets the colourCd.
+	 *
 	 * @return the colourCd
 	 */
 	public String getColourCd() {
@@ -50,11 +66,12 @@ public class PerformanceData {
 	}
 
 	/**
+	 * Sets the colourCd.
+	 *
 	 * @param colourCd
-	 *          the colourCd to set
 	 */
 	public void setColourCd(String colourCd) {
 		this.colourCd = colourCd;
 	}
-
+	
 }

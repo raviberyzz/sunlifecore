@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
@@ -26,9 +27,14 @@ import ca.sunlife.web.cms.core.services.FundFactPDFService;
  * @author TCS
  * @version 1.0
  */
+/**
+ * @author mo92
+ *
+ */
 @ Component(service = Servlet.class, property = { Constants.SERVICE_DESCRIPTION + "= Fund Fact PDF Servlet",
-		"sling.servlet.methods=" + HttpConstants.METHOD_GET, "sling.servlet.resourceTypes=" + "sunlife/core/components/structure/base-page",
-		"sling.servlet.selectors=gifsfunds" })
+		"sling.servlet.methods=" + HttpConstants.METHOD_GET,
+		"sling.servlet.resourceTypes=" + "sunlife/core/components/structure/base-page",
+		"sling.servlet.selectors=gifsfundspdf" })
 public class FundFactPDFServlet extends SlingSafeMethodsServlet {
 
 	/** The Constant serialVersionUID. */
@@ -39,11 +45,15 @@ public class FundFactPDFServlet extends SlingSafeMethodsServlet {
 
 	/** The core resource resolver. */
 	@ Reference
-	private FundFactPDFService fundFactPDFService;
-	
-	/* (non-Javadoc)
-	 * @see org.apache.sling.api.servlets.SlingSafeMethodsServlet#doGet(org.apache.sling.api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
-	 * This method is used to compile fund mustache templates
+	private transient FundFactPDFService fundFactPDFService;
+
+	/**
+	 * Do get method of FundFactPDFServlet.
+	 *
+	 * @param request
+	 *          the request
+	 * @param response
+	 *          the response
 	 */
 	@ Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -56,9 +66,10 @@ public class FundFactPDFServlet extends SlingSafeMethodsServlet {
 			LOG.debug("ApplicationException :: doGet method of FundFactPDFServlet :: ");
 		} catch (SystemException e) {
 			LOG.debug("SystemException :: doGet method of FundFactPDFServlet :: ");
+		} catch (LoginException e) {
+			LOG.debug("LoginException :: doGet method of FundFactPDFServlet :: ");
 		}
-		LOG.debug("Entry :: doGet method of FundFactPDFServlet :: ");
+		LOG.debug("Exit :: doGet method of FundFactPDFServlet :: ");
 	}
-	
-	
+
 }

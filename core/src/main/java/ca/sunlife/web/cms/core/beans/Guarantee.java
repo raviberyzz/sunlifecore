@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The Class Guarantee.
  *
@@ -7,14 +9,27 @@ package ca.sunlife.web.cms.core.beans;
  * @version 1.0
  */
 public class Guarantee {
-
+	
+	/** The seriesName. */
+	@JsonProperty("series")
 	protected String seriesName;
+	
+	/** The minimumInvestment. */
 	protected String minimumInvestment;
+	
+	/** The mer. */
+	@JsonProperty("MER")
 	protected String mer;
+	
+	/** The netAsset. */
 	protected String netAsset;
+	
+	/** The numberUnits. */
 	protected String numberUnits;
 
 	/**
+	 * Gets the seriesName.
+	 *
 	 * @return the seriesName
 	 */
 	public String getSeriesName() {
@@ -22,14 +37,17 @@ public class Guarantee {
 	}
 
 	/**
+	 * Sets the seriesName.
+	 *
 	 * @param seriesName
-	 *          the seriesName to set
 	 */
 	public void setSeriesName(String seriesName) {
 		this.seriesName = seriesName;
 	}
 
 	/**
+	 * Gets the minimumInvestment.
+	 *
 	 * @return the minimumInvestment
 	 */
 	public String getMinimumInvestment() {
@@ -37,14 +55,17 @@ public class Guarantee {
 	}
 
 	/**
+	 * Sets the minimumInvestment.
+	 *
 	 * @param minimumInvestment
-	 *          the minimumInvestment to set
 	 */
 	public void setMinimumInvestment(String minimumInvestment) {
 		this.minimumInvestment = minimumInvestment;
 	}
 
 	/**
+	 * Gets the mer.
+	 *
 	 * @return the mer
 	 */
 	public String getMer() {
@@ -52,14 +73,17 @@ public class Guarantee {
 	}
 
 	/**
+	 * Sets the mer.
+	 *
 	 * @param mer
-	 *          the mer to set
 	 */
 	public void setMer(String mer) {
 		this.mer = mer;
 	}
 
 	/**
+	 * Gets the netAsset.
+	 *
 	 * @return the netAsset
 	 */
 	public String getNetAsset() {
@@ -67,14 +91,17 @@ public class Guarantee {
 	}
 
 	/**
+	 * Sets the netAsset.
+	 *
 	 * @param netAsset
-	 *          the netAsset to set
 	 */
 	public void setNetAsset(String netAsset) {
 		this.netAsset = netAsset;
 	}
 
 	/**
+	 * Gets the numberUnits.
+	 *
 	 * @return the numberUnits
 	 */
 	public String getNumberUnits() {
@@ -82,8 +109,9 @@ public class Guarantee {
 	}
 
 	/**
+	 * Sets the numberUnits.
+	 *
 	 * @param numberUnits
-	 *          the numberUnits to set
 	 */
 	public void setNumberUnits(String numberUnits) {
 		this.numberUnits = numberUnits;

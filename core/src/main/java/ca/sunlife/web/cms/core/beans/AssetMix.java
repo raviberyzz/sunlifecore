@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The Class AssetMix.
  *
@@ -8,11 +10,20 @@ package ca.sunlife.web.cms.core.beans;
  */
 public class AssetMix {
 
+	/** The assetMixName. */
+	@ JsonProperty("name")
 	protected String assetMixName;
+	
+	/** The assetMixPercentage. */
+	@ JsonProperty("percentage")
 	protected String assetMixPercentage;
+	
+	/** The colourCd. */
 	protected String colourCd;
 
 	/**
+	 * Gets the assetMixName.
+	 *
 	 * @return the assetMixName
 	 */
 	public String getAssetMixName() {
@@ -20,14 +31,17 @@ public class AssetMix {
 	}
 
 	/**
+	 * Sets the assetMixName.
+	 *
 	 * @param assetMixName
-	 *          the assetMixName to set
 	 */
 	public void setAssetMixName(String assetMixName) {
 		this.assetMixName = assetMixName;
 	}
 
 	/**
+	 * Gets the assetMixPercentage.
+	 *
 	 * @return the assetMixPercentage
 	 */
 	public String getAssetMixPercentage() {
@@ -35,14 +49,17 @@ public class AssetMix {
 	}
 
 	/**
+	 * Sets the assetMixPercentage.
+	 *
 	 * @param assetMixPercentage
-	 *          the assetMixPercentage to set
 	 */
 	public void setAssetMixPercentage(String assetMixPercentage) {
 		this.assetMixPercentage = assetMixPercentage;
 	}
 
 	/**
+	 * Gets the colourCd.
+	 *
 	 * @return the colourCd
 	 */
 	public String getColourCd() {
@@ -50,8 +67,9 @@ public class AssetMix {
 	}
 
 	/**
+	 * Sets the colourCd.
+	 *
 	 * @param colourCd
-	 *          the colourCd to set
 	 */
 	public void setColourCd(String colourCd) {
 		this.colourCd = colourCd;

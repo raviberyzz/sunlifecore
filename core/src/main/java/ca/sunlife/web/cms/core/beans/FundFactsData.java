@@ -1,9 +1,9 @@
 package ca.sunlife.web.cms.core.beans;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The Class FundFactsData.
@@ -13,48 +13,119 @@ import java.util.Map;
  */
 public class FundFactsData {
 
+	/** The mPowerCode. */
 	private String mPowerCode;
+	
+	/** The lang. */
 	private String lang;
-	// productName fundName , planDate
-	private Map<String, String> singleValueMap = new HashMap<>();
+	
+	/** The singleValueMap. */
+	@ JsonProperty("values")
+	private Values singleValueMap;
+	
 	// get the values from node simpleMappedValuesQuickFix
+	/** The guarantees. */
 	private List<Guarantee> guarantees = new ArrayList<>();
-	private List<AssetMix> assetMixes = new ArrayList<>();
-	private List<Holding> holdings = new ArrayList<>();
-	private List<PerformanceData> performanceData = new ArrayList<>();
-	private List<String> reasonsToInvest = new ArrayList<>();
-	private List<String> dscList = new ArrayList<>();
-	private List<String> llscList = new ArrayList<>();
+	
+	/** The assetMixes. */
+	private List<AssetMix> assetMixes;
+	
+	/** The holdings. */
+	private List<Holding> holdings;
+	
+	/** The performanceData. */
+	private List<PerformanceData> performanceData;
+	
+	/** The reasonsToInvest. */
+	private List<String> reasonsToInvest;
+	
+	/** The dscList. */
+	private List<String> dscList;
+	
+	/** The llscList. */
+	private List<String> llscList;
+	
+	/** The fundDataErrorsList. */
+	private List<String> fundDataErrorsList;
 
+	/** The totalPercentOfTop10Investments. */
 	private String totalPercentOfTop10Investments;
+	
+	/** The numberOfYears. */
 	private String numberOfYears;
+	
+	/** The maxReturnYear. */
 	private String maxReturnYear;
+	
+	/** The minReturnYear. */
 	private String minReturnYear;
 
-	boolean isFundLessThanOneYear;
-	boolean isUnderlying;
-	boolean isGuaranteeSeriesAvailable;
-	boolean isyearByYearReturnAvailable;
+	/** The fundLessThanOneYear. */
+	private boolean fundLessThanOneYear;
+	
+	/** The underlying. */
+	private boolean underlying;
+	
+	/** The guaranteeSeriesAvailable. */
+	private boolean guaranteeSeriesAvailable;
+	
+	/** The yearByYearReturnAvailable. */
+	private boolean yearByYearReturnAvailable;
 
-	private boolean isfELLow = false;
-	private boolean isFelFundClass = false;
-	private boolean isDeferFundClass = false;
-	private boolean isIOClass = false;
+	/** The isfELLow. */
+	private boolean isfELLow;
+	
+	/** The isFelFundClass. */
+	private boolean isFelFundClass;
+	
+	/** The isDeferFundClass. */
+	private boolean isDeferFundClass;
+	
+	/** The isIOClass. */
+	private boolean isIOClass;
 
-	private boolean lowRisk = false;
-	private boolean lowMedRisk = false;
-	private boolean medRisk = false;
-	private boolean medHighRisk = false;
-	private boolean highRisk = false;
+	/** The lowRisk. */
+	private boolean lowRisk;
+	
+	/** The lowMedRisk. */
+	private boolean lowMedRisk;
+	
+	/** The medRisk. */
+	private boolean medRisk;
+	
+	/** The medHighRisk. */
+	private boolean medHighRisk;
+	
+	/** The highRisk. */
+	private boolean highRisk;
 
-	private boolean isReturnRate = false;
-	private boolean isTraillingCommisionAvailable = true;
-	private boolean isTunoverisNA = false;
-	private boolean isSunGifSoln = true;
-	private String ReturnCode;
-	private String ReturnMsg;
+	/** The returnRate. */
+	@ JsonProperty("returnRateAvailable")
+	private boolean returnRate;
+
+	/** The traillingCommisionAvailable. */
+	private boolean traillingCommisionAvailable;
+	
+	/** The tunoverisNA. */
+	private boolean tunoverisNA;
+	
+	/** The sunGifSoln. */
+	private boolean sunGifSoln;
+	
+	/** The salesChargesApplicable. */
+	private boolean salesChargesApplicable;
+
+	/** The returnCode. */
+	@ JsonProperty("ReturnCode")
+	private String returnCode;
+
+	/** The returnMsg. */
+	@ JsonProperty("ReturnMsg")
+	private String returnMsg;
 
 	/**
+	 * Gets the mPowerCode.
+	 *
 	 * @return the mPowerCode
 	 */
 	public String getmPowerCode() {
@@ -62,14 +133,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the mPowerCode.
+	 *
 	 * @param mPowerCode
-	 *          the mPowerCode to set
 	 */
 	public void setmPowerCode(String mPowerCode) {
 		this.mPowerCode = mPowerCode;
 	}
 
 	/**
+	 * Gets the lang.
+	 *
 	 * @return the lang
 	 */
 	public String getLang() {
@@ -77,29 +151,35 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the lang.
+	 *
 	 * @param lang
-	 *          the lang to set
 	 */
 	public void setLang(String lang) {
 		this.lang = lang;
 	}
 
 	/**
+	 * Gets the singleValueMap.
+	 *
 	 * @return the singleValueMap
 	 */
-	public Map<String, String> getSingleValueMap() {
+	public Values getSingleValueMap() {
 		return singleValueMap;
 	}
 
 	/**
+	 * Sets the singleValueMap.
+	 *
 	 * @param singleValueMap
-	 *          the singleValueMap to set
 	 */
-	public void setSingleValueMap(Map<String, String> singleValueMap) {
+	public void setSingleValueMap(Values singleValueMap) {
 		this.singleValueMap = singleValueMap;
 	}
 
 	/**
+	 * Gets the guarantees.
+	 *
 	 * @return the guarantees
 	 */
 	public List<Guarantee> getGuarantees() {
@@ -107,14 +187,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the guarantees.
+	 *
 	 * @param guarantees
-	 *          the guarantees to set
 	 */
 	public void setGuarantees(List<Guarantee> guarantees) {
 		this.guarantees = guarantees;
 	}
 
 	/**
+	 * Gets the assetMixes.
+	 *
 	 * @return the assetMixes
 	 */
 	public List<AssetMix> getAssetMixes() {
@@ -122,14 +205,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the assetMixes.
+	 *
 	 * @param assetMixes
-	 *          the assetMixes to set
 	 */
 	public void setAssetMixes(List<AssetMix> assetMixes) {
 		this.assetMixes = assetMixes;
 	}
 
 	/**
+	 * Gets the holdings.
+	 *
 	 * @return the holdings
 	 */
 	public List<Holding> getHoldings() {
@@ -137,14 +223,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the holdings.
+	 *
 	 * @param holdings
-	 *          the holdings to set
 	 */
 	public void setHoldings(List<Holding> holdings) {
 		this.holdings = holdings;
 	}
 
 	/**
+	 * Gets the performanceData.
+	 *
 	 * @return the performanceData
 	 */
 	public List<PerformanceData> getPerformanceData() {
@@ -152,14 +241,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the performanceData.
+	 *
 	 * @param performanceData
-	 *          the performanceData to set
 	 */
 	public void setPerformanceData(List<PerformanceData> performanceData) {
 		this.performanceData = performanceData;
 	}
 
 	/**
+	 * Gets the reasonsToInvest.
+	 *
 	 * @return the reasonsToInvest
 	 */
 	public List<String> getReasonsToInvest() {
@@ -167,14 +259,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the reasonsToInvest.
+	 *
 	 * @param reasonsToInvest
-	 *          the reasonsToInvest to set
 	 */
 	public void setReasonsToInvest(List<String> reasonsToInvest) {
 		this.reasonsToInvest = reasonsToInvest;
 	}
 
 	/**
+	 * Gets the dscList.
+	 *
 	 * @return the dscList
 	 */
 	public List<String> getDscList() {
@@ -182,14 +277,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the dscList.
+	 *
 	 * @param dscList
-	 *          the dscList to set
 	 */
 	public void setDscList(List<String> dscList) {
 		this.dscList = dscList;
 	}
 
 	/**
+	 * Gets the llscList.
+	 *
 	 * @return the llscList
 	 */
 	public List<String> getLlscList() {
@@ -197,14 +295,35 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the llscList.
+	 *
 	 * @param llscList
-	 *          the llscList to set
 	 */
 	public void setLlscList(List<String> llscList) {
 		this.llscList = llscList;
 	}
 
 	/**
+	 * Gets the fundDataErrorsList.
+	 *
+	 * @return the fundDataErrorsList
+	 */
+	public List<String> getFundDataErrorsList() {
+		return fundDataErrorsList;
+	}
+
+	/**
+	 * Sets the fundDataErrorsList.
+	 *
+	 * @param fundDataErrorsList
+	 */
+	public void setFundDataErrorsList(List<String> fundDataErrorsList) {
+		this.fundDataErrorsList = fundDataErrorsList;
+	}
+
+	/**
+	 * Gets the totalPercentOfTop10Investments.
+	 *
 	 * @return the totalPercentOfTop10Investments
 	 */
 	public String getTotalPercentOfTop10Investments() {
@@ -212,14 +331,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the totalPercentOfTop10Investments.
+	 *
 	 * @param totalPercentOfTop10Investments
-	 *          the totalPercentOfTop10Investments to set
 	 */
 	public void setTotalPercentOfTop10Investments(String totalPercentOfTop10Investments) {
 		this.totalPercentOfTop10Investments = totalPercentOfTop10Investments;
 	}
 
 	/**
+	 * Gets the numberOfYears.
+	 *
 	 * @return the numberOfYears
 	 */
 	public String getNumberOfYears() {
@@ -227,14 +349,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the numberOfYears.
+	 *
 	 * @param numberOfYears
-	 *          the numberOfYears to set
 	 */
 	public void setNumberOfYears(String numberOfYears) {
 		this.numberOfYears = numberOfYears;
 	}
 
 	/**
+	 * Gets the maxReturnYear.
+	 *
 	 * @return the maxReturnYear
 	 */
 	public String getMaxReturnYear() {
@@ -242,14 +367,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the maxReturnYear.
+	 *
 	 * @param maxReturnYear
-	 *          the maxReturnYear to set
 	 */
 	public void setMaxReturnYear(String maxReturnYear) {
 		this.maxReturnYear = maxReturnYear;
 	}
 
 	/**
+	 * Gets the minReturnYear.
+	 *
 	 * @return the minReturnYear
 	 */
 	public String getMinReturnYear() {
@@ -257,74 +385,89 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the minReturnYear.
+	 *
 	 * @param minReturnYear
-	 *          the minReturnYear to set
 	 */
 	public void setMinReturnYear(String minReturnYear) {
 		this.minReturnYear = minReturnYear;
 	}
 
 	/**
-	 * @return the isFundLessThanOneYear
+	 * Gets the fundLessThanOneYear.
+	 *
+	 * @return the fundLessThanOneYear
 	 */
 	public boolean isFundLessThanOneYear() {
-		return isFundLessThanOneYear;
+		return fundLessThanOneYear;
 	}
 
 	/**
-	 * @param isFundLessThanOneYear
-	 *          the isFundLessThanOneYear to set
+	 * Sets the fundLessThanOneYear.
+	 *
+	 * @param fundLessThanOneYear
 	 */
-	public void setFundLessThanOneYear(boolean isFundLessThanOneYear) {
-		this.isFundLessThanOneYear = isFundLessThanOneYear;
+	public void setFundLessThanOneYear(boolean fundLessThanOneYear) {
+		this.fundLessThanOneYear = fundLessThanOneYear;
 	}
 
 	/**
-	 * @return the isUnderlying
+	 * Gets the underlying.
+	 *
+	 * @return the underlying
 	 */
 	public boolean isUnderlying() {
-		return isUnderlying;
+		return underlying;
 	}
 
 	/**
-	 * @param isUnderlying
-	 *          the isUnderlying to set
+	 * Sets the underlying.
+	 *
+	 * @param underlying
 	 */
-	public void setUnderlying(boolean isUnderlying) {
-		this.isUnderlying = isUnderlying;
+	public void setUnderlying(boolean underlying) {
+		this.underlying = underlying;
 	}
 
 	/**
-	 * @return the isGuaranteeSeriesAvailable
+	 * Gets the guaranteeSeriesAvailable.
+	 *
+	 * @return the guaranteeSeriesAvailable
 	 */
 	public boolean isGuaranteeSeriesAvailable() {
-		return isGuaranteeSeriesAvailable;
+		return guaranteeSeriesAvailable;
 	}
 
 	/**
-	 * @param isGuaranteeSeriesAvailable
-	 *          the isGuaranteeSeriesAvailable to set
+	 * Sets the guaranteeSeriesAvailable.
+	 *
+	 * @param guaranteeSeriesAvailable
 	 */
-	public void setGuaranteeSeriesAvailable(boolean isGuaranteeSeriesAvailable) {
-		this.isGuaranteeSeriesAvailable = isGuaranteeSeriesAvailable;
+	public void setGuaranteeSeriesAvailable(boolean guaranteeSeriesAvailable) {
+		this.guaranteeSeriesAvailable = guaranteeSeriesAvailable;
 	}
 
 	/**
-	 * @return the isyearByYearReturnAvailable
+	 * Gets the yearByYearReturnAvailable.
+	 *
+	 * @return the yearByYearReturnAvailable
 	 */
-	public boolean isIsyearByYearReturnAvailable() {
-		return isyearByYearReturnAvailable;
+	public boolean isYearByYearReturnAvailable() {
+		return yearByYearReturnAvailable;
 	}
 
 	/**
-	 * @param isyearByYearReturnAvailable
-	 *          the isyearByYearReturnAvailable to set
+	 * Sets the yearByYearReturnAvailable.
+	 *
+	 * @param yearByYearReturnAvailable
 	 */
-	public void setIsyearByYearReturnAvailable(boolean isyearByYearReturnAvailable) {
-		this.isyearByYearReturnAvailable = isyearByYearReturnAvailable;
+	public void setYearByYearReturnAvailable(boolean yearByYearReturnAvailable) {
+		this.yearByYearReturnAvailable = yearByYearReturnAvailable;
 	}
 
 	/**
+	 * Gets the isfELLow.
+	 *
 	 * @return the isfELLow
 	 */
 	public boolean isIsfELLow() {
@@ -332,14 +475,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the isfELLow.
+	 *
 	 * @param isfELLow
-	 *          the isfELLow to set
 	 */
 	public void setIsfELLow(boolean isfELLow) {
 		this.isfELLow = isfELLow;
 	}
 
 	/**
+	 * Gets the isFelFundClass.
+	 *
 	 * @return the isFelFundClass
 	 */
 	public boolean isFelFundClass() {
@@ -347,14 +493,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the isFelFundClass.
+	 *
 	 * @param isFelFundClass
-	 *          the isFelFundClass to set
 	 */
 	public void setFelFundClass(boolean isFelFundClass) {
 		this.isFelFundClass = isFelFundClass;
 	}
 
 	/**
+	 * Gets the isDeferFundClass.
+	 *
 	 * @return the isDeferFundClass
 	 */
 	public boolean isDeferFundClass() {
@@ -362,14 +511,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the isDeferFundClass.
+	 *
 	 * @param isDeferFundClass
-	 *          the isDeferFundClass to set
 	 */
 	public void setDeferFundClass(boolean isDeferFundClass) {
 		this.isDeferFundClass = isDeferFundClass;
 	}
 
 	/**
+	 * Gets the isIOClass.
+	 *
 	 * @return the isIOClass
 	 */
 	public boolean isIOClass() {
@@ -377,14 +529,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the isIOClass.
+	 *
 	 * @param isIOClass
-	 *          the isIOClass to set
 	 */
 	public void setIOClass(boolean isIOClass) {
 		this.isIOClass = isIOClass;
 	}
 
 	/**
+	 * Gets the lowRisk.
+	 *
 	 * @return the lowRisk
 	 */
 	public boolean isLowRisk() {
@@ -392,14 +547,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the lowRisk.
+	 *
 	 * @param lowRisk
-	 *          the lowRisk to set
 	 */
 	public void setLowRisk(boolean lowRisk) {
 		this.lowRisk = lowRisk;
 	}
 
 	/**
+	 * Gets the lowMedRisk.
+	 *
 	 * @return the lowMedRisk
 	 */
 	public boolean isLowMedRisk() {
@@ -407,14 +565,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the lowMedRisk.
+	 *
 	 * @param lowMedRisk
-	 *          the lowMedRisk to set
 	 */
 	public void setLowMedRisk(boolean lowMedRisk) {
 		this.lowMedRisk = lowMedRisk;
 	}
 
 	/**
+	 * Gets the medRisk.
+	 *
 	 * @return the medRisk
 	 */
 	public boolean isMedRisk() {
@@ -422,14 +583,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the medRisk.
+	 *
 	 * @param medRisk
-	 *          the medRisk to set
 	 */
 	public void setMedRisk(boolean medRisk) {
 		this.medRisk = medRisk;
 	}
 
 	/**
+	 * Gets the medHighRisk.
+	 *
 	 * @return the medHighRisk
 	 */
 	public boolean isMedHighRisk() {
@@ -437,14 +601,17 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the medHighRisk.
+	 *
 	 * @param medHighRisk
-	 *          the medHighRisk to set
 	 */
 	public void setMedHighRisk(boolean medHighRisk) {
 		this.medHighRisk = medHighRisk;
 	}
 
 	/**
+	 * Gets the highRisk.
+	 *
 	 * @return the highRisk
 	 */
 	public boolean isHighRisk() {
@@ -452,101 +619,138 @@ public class FundFactsData {
 	}
 
 	/**
+	 * Sets the highRisk.
+	 *
 	 * @param highRisk
-	 *          the highRisk to set
 	 */
 	public void setHighRisk(boolean highRisk) {
 		this.highRisk = highRisk;
 	}
 
 	/**
-	 * @return the isReturnRate
+	 * Gets the returnRate.
+	 *
+	 * @return the returnRate
 	 */
 	public boolean isReturnRate() {
-		return isReturnRate;
+		return returnRate;
 	}
 
 	/**
-	 * @param isReturnRate
-	 *          the isReturnRate to set
+	 * Sets the returnRate.
+	 *
+	 * @param returnRate
 	 */
-	public void setReturnRate(boolean isReturnRate) {
-		this.isReturnRate = isReturnRate;
+	public void setReturnRate(boolean returnRate) {
+		this.returnRate = returnRate;
 	}
 
 	/**
-	 * @return the isTraillingCommisionAvailable
+	 * Gets the traillingCommisionAvailable.
+	 *
+	 * @return the traillingCommisionAvailable
 	 */
 	public boolean isTraillingCommisionAvailable() {
-		return isTraillingCommisionAvailable;
+		return traillingCommisionAvailable;
 	}
 
 	/**
-	 * @param isTraillingCommisionAvailable
-	 *          the isTraillingCommisionAvailable to set
+	 * Sets the traillingCommisionAvailable.
+	 *
+	 * @param traillingCommisionAvailable
 	 */
-	public void setTraillingCommisionAvailable(boolean isTraillingCommisionAvailable) {
-		this.isTraillingCommisionAvailable = isTraillingCommisionAvailable;
+	public void setTraillingCommisionAvailable(boolean traillingCommisionAvailable) {
+		this.traillingCommisionAvailable = traillingCommisionAvailable;
 	}
 
 	/**
-	 * @return the isTunoverisNA
+	 * Gets the tunoverisNA.
+	 *
+	 * @return the tunoverisNA
 	 */
 	public boolean isTunoverisNA() {
-		return isTunoverisNA;
+		return tunoverisNA;
 	}
 
 	/**
-	 * @param isTunoverisNA
-	 *          the isTunoverisNA to set
+	 * Sets the tunoverisNA.
+	 *
+	 * @param tunoverisNA
 	 */
-	public void setTunoverisNA(boolean isTunoverisNA) {
-		this.isTunoverisNA = isTunoverisNA;
+	public void setTunoverisNA(boolean tunoverisNA) {
+		this.tunoverisNA = tunoverisNA;
 	}
 
 	/**
-	 * @return the isSunGifSoln
+	 * Gets the sunGifSoln.
+	 *
+	 * @return the sunGifSoln
 	 */
 	public boolean isSunGifSoln() {
-		return isSunGifSoln;
+		return sunGifSoln;
 	}
 
 	/**
-	 * @param isSunGifSoln
-	 *          the isSunGifSoln to set
+	 * Sets the sunGifSoln.
+	 *
+	 * @param sunGifSoln
 	 */
-	public void setSunGifSoln(boolean isSunGifSoln) {
-		this.isSunGifSoln = isSunGifSoln;
+	public void setSunGifSoln(boolean sunGifSoln) {
+		this.sunGifSoln = sunGifSoln;
 	}
 
 	/**
+	 * Gets the salesChargesApplicable.
+	 *
+	 * @return the salesChargesApplicable
+	 */
+	public boolean isSalesChargesApplicable() {
+		return salesChargesApplicable;
+	}
+
+	/**
+	 * Sets the salesChargesApplicable.
+	 *
+	 * @param salesChargesApplicable
+	 */
+	public void setSalesChargesApplicable(boolean salesChargesApplicable) {
+		this.salesChargesApplicable = salesChargesApplicable;
+	}
+
+	/**
+	 * Gets the returnCode.
+	 *
 	 * @return the returnCode
 	 */
 	public String getReturnCode() {
-		return ReturnCode;
+		return returnCode;
 	}
 
 	/**
+	 * Sets the returnCode.
+	 *
 	 * @param returnCode
-	 *          the returnCode to set
 	 */
 	public void setReturnCode(String returnCode) {
-		ReturnCode = returnCode;
+		this.returnCode = returnCode;
 	}
 
 	/**
+	 * Gets the returnMsg.
+	 *
 	 * @return the returnMsg
 	 */
 	public String getReturnMsg() {
-		return ReturnMsg;
+		return returnMsg;
 	}
 
 	/**
+	 * Sets the returnMsg.
+	 *
 	 * @param returnMsg
-	 *          the returnMsg to set
 	 */
 	public void setReturnMsg(String returnMsg) {
-		ReturnMsg = returnMsg;
+		this.returnMsg = returnMsg;
 	}
 
 }
