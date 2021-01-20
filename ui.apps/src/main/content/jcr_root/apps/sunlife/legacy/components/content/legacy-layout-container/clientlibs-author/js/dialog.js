@@ -2,7 +2,7 @@
     "use strict"
     var options = [
         {'normal':'Content'},
-        {'25:75N':'Left Navigation & Content'},
+        {'25:75N':'Left Navigation & Content', '75:25N':'Content & Right Navigation'},
 		{'25:50:25N':'Left Navigation, Content & Right Navigation'}
     ];
 
