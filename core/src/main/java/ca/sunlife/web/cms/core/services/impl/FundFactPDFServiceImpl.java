@@ -109,6 +109,10 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 				try {
 					FundFactsResponse factsResponse = om.readValue(jn.get("fundFactsResponse").toString(),
 							FundFactsResponse.class);
+					//Read current resource
+					final Resource currentResource = request.getResource();
+					ValueMap currResValueMap = currentResource.getValueMap();
+					sb.append(currResValueMap.getOrDefault("headInclude", StringUtils.EMPTY));
 					final Resource pageResource = coreResourceResolver.getResourceResolver()
 							.getResource(request.getResource().getPath().concat("/root"));
 					if (null != pageResource) {
@@ -125,6 +129,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 							sb.append(writer.toString());
 						});
 					}
+					sb.append(currResValueMap.getOrDefault("bodyInclude", StringUtils.EMPTY));
 				} catch (JsonParseException | JsonMappingException e) {
 					LOG.error("Error :: {}", e);
 				}
