@@ -7,7 +7,12 @@ $( document ).ready(function() {
     });
     $('a[href*="https://apps.sunlife.com.ph"]').each(function() {
         if (articlePage != 'Article') {
-			changeLink($(this));
+			var url = $(this).attr('href');
+            if (url.indexOf('sourcePage') == -1 ) 
+            {
+                changeLink($(this));
+
+            }
         }
     });
     $("#mainfooter").find("a[href$='https://advisormatch.sunlife.com.ph']").each(function() {
