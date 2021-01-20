@@ -27,7 +27,6 @@ function onLogout(isVisible) {
   }
 
   return new Promise(function(resolve,reject){
-    journeyPlayer.cancelCurrentRunningControlFlow();
     journeyPlayer.logout().then(function(result){
       updateSessionToken(null);
       resolve(true);
