@@ -8,7 +8,7 @@ function onSignInClick() {
         journeyPlayer.clearAllData();
     }
    
-    var clientId = $("#USER").val();
+    var clientId = $("#USER").val().replace(/ /g, '');
     var password = $("#PASSWORD").val();
 
     // clear the wrong password message
@@ -171,3 +171,4 @@ function getHiddenFormValues(){
     }
     return smParameter;
 }
+    
