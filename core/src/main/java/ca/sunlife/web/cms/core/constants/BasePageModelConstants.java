@@ -55,4 +55,7 @@ public final class BasePageModelConstants {
   
   /** The Constant STATIC_PATH_CONSTANT. */
   public static final String STATIC_PATH_CONSTANT = "staticPath";
+  
+  /** The Constant SLFAS_PATH. */
+  public static final String SLFAS_PATH = "/content/sunlife/external/ca/slfas/";
 }

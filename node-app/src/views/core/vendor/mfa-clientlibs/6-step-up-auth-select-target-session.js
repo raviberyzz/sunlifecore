@@ -7,7 +7,7 @@ function StepUpSelectTargetFormSession(formId, payload) {
   this.showDebugInfo = false;
   this.submitBlock = null;
   otpEntryAttemptFlag = 2;
-
+  const self = this;
   /** Form Session */
       
   this.startSession = function (clientContext, actionContext) {
@@ -15,6 +15,15 @@ function StepUpSelectTargetFormSession(formId, payload) {
       console.log("Form session started: ", this.formId);
     }
     this.clientContext = clientContext;
+
+    this.clientContext.closeModalCallback = function(){
+      var otpSelection = {
+        selectedPhone: "close",
+        selectedMethod: "close"
+      };
+      self.submitBlock(otpSelection);
+    };
+
     setupForm.call(this);
   };
 
