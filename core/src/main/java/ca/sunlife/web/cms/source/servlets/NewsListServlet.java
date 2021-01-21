@@ -5,8 +5,10 @@ package ca.sunlife.web.cms.source.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import javax.servlet.Servlet;
@@ -125,9 +127,14 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 						if (null != contentFragmentData) {
 							jsonObject = new JSONObject();
 							ValueMap valueMap = contentFragmentData.getValueMap();
-							jsonObject.put(NewsConstants.PUBLISHED_DATE_CONSTANT,
-									valueMap.get(NewsConstants.PUBLISHED_DATE_CONSTANT, String.class)); // published
-							// date
+							GregorianCalendar cal = (GregorianCalendar) valueMap.getOrDefault(NewsConstants.PUBLISHED_DATE_CONSTANT,
+									new GregorianCalendar());
+							if (null != cal) {
+								final SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+								String formatedDate = formatter.format((cal).getTime());
+								jsonObject.put(NewsConstants.PUBLISHED_DATE_CONSTANT, formatedDate); // published
+								// date
+							}
 							jsonObject.put(NewsConstants.HEADING_CONSTANT,
 									valueMap.get(NewsConstants.HEADING_CONSTANT, String.class)); // heading
 							jsonObject.put(NewsConstants.PAGE_CONSTANT, valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article
