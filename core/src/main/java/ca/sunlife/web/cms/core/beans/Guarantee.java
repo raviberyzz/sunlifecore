@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.beans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * The Class Guarantee.
  *
@@ -9,23 +7,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @version 1.0
  */
 public class Guarantee {
-	
+
 	/** The seriesName. */
-	@JsonProperty("series")
 	protected String seriesName;
-	
+
 	/** The minimumInvestment. */
 	protected String minimumInvestment;
-	
+
 	/** The mer. */
-	@JsonProperty("MER")
 	protected String mer;
-	
+
 	/** The netAsset. */
 	protected String netAsset;
-	
+
 	/** The numberUnits. */
 	protected String numberUnits;
+
+	/**
+	 * Constructor for all fields.
+	 * 
+	 * @param seriesName
+	 * @param minimumInvestment
+	 * @param mer
+	 * @param netAsset
+	 * @param numberUnits
+	 */
+	public Guarantee(String seriesName, String minimumInvestment, String mer, String netAsset, String numberUnits) {
+		super();
+		this.seriesName = seriesName;
+		this.minimumInvestment = minimumInvestment;
+		this.mer = mer;
+		this.netAsset = netAsset;
+		this.numberUnits = numberUnits;
+	}
 
 	/**
 	 * Gets the seriesName.

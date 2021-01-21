@@ -2,8 +2,6 @@ package ca.sunlife.web.cms.core.beans;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * The Class Guarantee.
  *
@@ -16,11 +14,23 @@ public class Holding {
 	protected String holdingName;
 	
 	/** The holdingPercentage. */
-	@JsonProperty("investmentPercentage")
 	protected String holdingPercentage;
 	
 	/** The subHoldingNames. */
 	protected List<String> subHoldingNames;
+
+	/**
+	 * Constructor for this class.
+	 * @param holdingName
+	 * @param holdingPercentage
+	 * @param subHoldingNames
+	 */
+	public Holding(String holdingName, String holdingPercentage, List<String> subHoldingNames) {
+		super();
+		this.holdingName = holdingName;
+		this.holdingPercentage = holdingPercentage;
+		this.subHoldingNames = subHoldingNames;
+	}
 
 	/**
 	 * Gets the holdingName.

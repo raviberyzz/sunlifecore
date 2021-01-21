@@ -18,6 +18,22 @@ public @interface FundFactPDFConfig {
 	 * @return the fundFactsUrl
 	 */
 	@ AttributeDefinition(name = "fundFactsUrl", description = "Fund facts service URL", defaultValue = "http://sunlife.ca/indsegfundsservices/fundFacts.wca")
-	String getfundFactsUrl();
+	String getFundFactsUrl();
+
+	/**
+	 * Gets the pichartURL.
+	 *
+	 * @return the pichartURL
+	 */
+	@ AttributeDefinition(name = "pichartURL", description = "PI chart URL", defaultValue = "https://www.sunlife.com.hk/slfcharts/genChart")
+	String getPichartURL();
+
+	/**
+	 * Gets the barChartURL.
+	 *
+	 * @return the barChartURL
+	 */
+	@ AttributeDefinition(name = "barChartURL", description = "Bar chart URL", defaultValue = "https://www.sunlife.com.hk/slfcharts/genChart?ctype=bchart")
+	String getBarChartURL();
 
 }
