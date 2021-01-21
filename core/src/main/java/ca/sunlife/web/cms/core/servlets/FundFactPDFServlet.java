@@ -61,6 +61,7 @@ public class FundFactPDFServlet extends SlingSafeMethodsServlet {
 		LOG.debug("Entry :: doGet method of FundFactPDFServlet :: ");
 		PrintWriter out = response.getWriter();
 		try {
+			//calls fund fact PDF service
 			out.print(fundFactPDFService.getCompiledData(request));
 		} catch (ApplicationException e) {
 			LOG.debug("ApplicationException :: doGet method of FundFactPDFServlet :: ");
