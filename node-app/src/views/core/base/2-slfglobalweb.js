@@ -1171,7 +1171,7 @@ $('#signin-widget-modal').on('show.bs.modal', function() {
 	// update all the domains
 	var signinWidget = $('#signin-widget-modal').html();
 	var newString = signinWidget.replace (/(https?:\/\/)(.*?)(\/+?)/g, host + '$3');
-	$('#signin-widget-modal').html(newString);
+	//$('#signin-widget-modal').html(newString);
 
 	// re-initialize these functions
 	//signinbuttonclick();	
