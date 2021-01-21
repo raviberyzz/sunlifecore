@@ -98,6 +98,10 @@ function getBrowserInfo() {
         browserName = "MSIE";
         iSearchPos = InStr(userAgent, "MSIE");
 
+    } else if (InStr(userAgent, "Trident") >= 0 && InStr(userAgent, "rv") >= 0) {
+        browserName = "rv";
+        iSearchPos = InStr(userAgent, "rv");
+
     } else if (InStr(userAgent, "Firefox") >= 0) {
         browserName = "FIREFOX";
         iSearchPos = InStr(userAgent, "Firefox");
@@ -152,8 +156,13 @@ function getBrowserInfo() {
         browserVersion = navigator.appVersion;
         /* Determine Major and Minor version */
         if (iSearchPos >= 0) {
-            iSearchPos = iSearchPos + browserName.length + 1; //search the value after the browser ID in the userAgent string
-            browserVersion = userAgent.substring(iSearchPos, iSearchPos + 3);
+            if (browserName == "rv") {
+				browserVersion = userAgent.substring(iSearchPos+3, iSearchPos + 7);
+				browserName = "MSIE";
+			}else{
+				iSearchPos = iSearchPos + browserName.length + 1; //search the value after the browser ID in the userAgent string
+				browserVersion = userAgent.substring(iSearchPos, iSearchPos + 3);
+			}
             var vBV = browserVersion.split('.');
             bVersionMajor = vBV[0];
             bVersionMinor = vBV[1];
