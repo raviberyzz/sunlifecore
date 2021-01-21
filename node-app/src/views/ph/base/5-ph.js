@@ -7,8 +7,9 @@ $( document ).ready(function() {
     });
     $('a[href*="https://apps.sunlife.com.ph"]').each(function() {
         if (articlePage != 'Article') {
-			var url = $(this).attr('href');
-            if (url.indexOf('sourcePage') == -1 ) 
+            var url = $(this).attr('href');
+            var parentId = $(this).parents('.cmp-container').attr("id");
+            if (url.indexOf('sourcePage') == -1 && parentId != 'cdttool') 
             {
                 changeLink($(this));
 
