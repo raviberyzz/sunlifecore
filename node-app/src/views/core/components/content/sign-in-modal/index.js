@@ -8,12 +8,16 @@ $(document).ready(function () {
     if (host === null || host === undefined) {
       host = "https://www.sunnet.sunlife.com";
     }
+    let errorVal=$('#signin-widget-modal .modal-body input[name="ERRORREDIRPATH"]').attr("value");
+    let targetVal=$('#signin-widget-modal .modal-body input[name="TARGET"]').attr("value");
     var signinWidget = $("#signin-widget-modal .modal-body").html();
     var newString = signinWidget.replace(
       /(https?:\/\/)(.*?)(\/+?)/g,
       host + "$3"
     );
     $("#signin-widget-modal .modal-body").html(newString);
+    $('#signin-widget-modal .modal-body input[name="ERRORREDIRPATH"]').attr("value",errorVal);
+    $('#signin-widget-modal .modal-body input[name="TARGET"]').attr("value",targetVal);
     updateSignInForm("form_signon");
     function mfaCssJs() {
       var newTime = new Date().getTime();
