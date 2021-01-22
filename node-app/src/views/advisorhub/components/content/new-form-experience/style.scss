@@ -46,13 +46,11 @@
         top:65px;
         background:$white-shade;
         display:block!important;
+        z-index: 1000;
     }
     .toggle-filter{
         margin-right:8px;   
         width:110px;
-    }
-    .addFilter{
-        background-color: $light-grey-20; 
     }
     .selectedFilter{
         padding: 0 8px;
@@ -73,6 +71,9 @@
         height:32px;
         border-radius: 4px;
         background-color: $white-shade;
+    }
+    .addFilter{
+        background-color: $light-grey-20; 
     }
 }
 .tableContainer{
@@ -180,7 +181,24 @@
             margin-top:8px;
         }
     }
-    .new-form-table{
-        overflow-x: scroll;
+    .tableContainer{
+        width:100%;
+        overflow: auto;
+        text-align: left;
+        .globalSearch{
+            input{
+                margin-bottom:8px;
+            }
+        }
+        .new-form-table{
+            width: 100%;
+            thead{
+                tr{
+                    th{
+                        min-width:150px;
+                    }
+                }
+            }
+        }
     }
 }

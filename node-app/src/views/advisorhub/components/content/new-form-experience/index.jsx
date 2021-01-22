@@ -51,7 +51,7 @@ function Table({ columns, data, sortyBy }) {
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column, index) => (
-                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onClick={index == 3 ? sort : ""} className={index==0? "col-sm-2" : (index==2? "col-sm-2": (index==3 ? "col-sm-1":""))}>{column.render('Header')}
+                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
                                     {index == 3 ? <i className="fa fa-sort"></i> : ""}
                                 </th>
                             ))}
@@ -817,12 +817,12 @@ class NewFormExperience extends React.Component {
                 }))
             }
         }))
-     tableData.sort((a,b)=>{
+        tableData.sort((a, b) => {
             return b.favorite - a.favorite
         })
         this.setState({
-           // data: tableData,
-           data: tableData,
+            // data: tableData,
+            data: tableData,
             originalData: tableData,
             favorites: favoriteData
         })
@@ -890,6 +890,9 @@ class NewFormExperience extends React.Component {
         })
     }
     clearAll() {
+        $('input[type="checkbox"]').each(function () {
+            $(this).prop("checked", false);
+        })
         this.setState({
             selectedFilters: [],
             data: this.state.originalData
@@ -902,6 +905,11 @@ class NewFormExperience extends React.Component {
         var updatedFilterRows = [];
         selFilters.map((filter, i) => {
             if (filter == deletFilter) {
+                $('input[type="checkbox"]').each(function () {
+                    if ($(this).attr("value") == deletFilter) {
+                        $(this).prop("checked", false);
+                    }
+                })
                 selFilters.splice(i, 1);
             }
         })
@@ -987,7 +995,7 @@ class NewFormExperience extends React.Component {
                     </form>
                     {this.state.selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{this.state.selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={this.clearFilter}>{value}<i className="fa fa-times"></i></button>
-                    })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>clear All</button>}</div>}   
+                    })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>clear All</button>}</div>}
                 </div>
                 <Table columns={columns} data={this.state.data} sortyBy={this.sortColumn}></Table>
             </React.Fragment>
