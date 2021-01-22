@@ -48,9 +48,11 @@
         display:block!important;
     }
     .toggle-filter{
-        margin-right:8px;
-        background-color: $light-grey-20;  
+        margin-right:8px;   
         width:110px;
+    }
+    .addFilter{
+        background-color: $light-grey-20; 
     }
     .selectedFilter{
         padding: 0 8px;
@@ -75,9 +77,7 @@
 }
 .tableContainer{
     text-align: right;
-    .globalSearch{
-      position:relative;
-      top:-32px;
+    .globalSearch{     
       input{
           width:280px;
           border-radius:4px;
@@ -160,7 +160,27 @@
 }
 
 @media(min-width:$tab-screen-min){
+    .tableContainer{
+        text-align: right;
+        .globalSearch{
+            position:relative;
+            top:-32px;
+            input{
+                margin-bottom:8px;
+            }
+        }
+    }
     .pagination-component{
         border:none;
+    }
+}
+@media(max-width:$mobile-screen-max){
+    .filter-container{
+        .selectedFilterContainer{
+            margin-top:8px;
+        }
+    }
+    .new-form-table{
+        overflow-x: scroll;
     }
 }

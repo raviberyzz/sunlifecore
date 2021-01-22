@@ -810,15 +810,19 @@ class NewFormExperience extends React.Component {
             if (i == "formNumber") {
                 favoriteData.map(fav => Object.keys(fav).map((j) => {
                     if (fav[j] == obj[i]) {
-                        obj.favorite = "true";
+                        obj.favorite = true;
                     } else {
-                        obj.favorite = "false"
+                        obj.favorite = false
                     }
                 }))
             }
         }))
+     tableData.sort((a,b)=>{
+            return b.favorite - a.favorite
+        })
         this.setState({
-            data: tableData,
+           // data: tableData,
+           data: tableData,
             originalData: tableData,
             favorites: favoriteData
         })
@@ -853,22 +857,22 @@ class NewFormExperience extends React.Component {
     sortColumn() {
         var sortingData = this.state.data;
         var eSignFavorite = sortingData.filter((row) => {
-            if (row.eSign == "true" && row.favorite == "true") {
+            if (row.eSign == "true" && row.favorite == true) {
                 return row
             }
         })
         var eSignnotFav = sortingData.filter((row) => {
-            if (row.eSign == "true" && row.favorite == "false") {
+            if (row.eSign == "true" && row.favorite == false) {
                 return row
             }
         })
         var noneSingFav = sortingData.filter((row) => {
-            if (row.eSign == "false" && row.favorite == "true") {
+            if (row.eSign == "false" && row.favorite == true) {
                 return row
             }
         })
         var noneSingnotFav = sortingData.filter((row) => {
-            if (row.eSign == "false" && row.favorite == "false") {
+            if (row.eSign == "false" && row.favorite == false) {
                 return row
             }
         })
@@ -959,7 +963,7 @@ class NewFormExperience extends React.Component {
                         Header: 'Favorite',
                         accessor: function favorite(obj) {
                             var fav = obj.favorite;
-                            if (fav == "true") {
+                            if (fav == true) {
                                 return <i class="fa fa-star star-selected" ></i>
                             } else {
                                 return <i class="fa fa-star star-not-selected" onclick='star()'></i>
@@ -974,14 +978,14 @@ class NewFormExperience extends React.Component {
         return (
             <React.Fragment>
                 <div className="filter-container">
-                    <button class="toggle-filter filter-buttons col-sm-2" onClick={this.toggleFilter}>Add Filter</button>
+                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>Add Filter</button>
                     <form className="filters">
                         {filters.map((index, value) => {
                             return <div className="filter"><input type="checkbox" name={filters[value]} value={filters[value]}></input><label for={value}>{filters[value]}</label></div>
                         })}
                         <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>Done</button>
                     </form>
-                    {this.state.selectedFilters && <div className="col-sm-6">{this.state.selectedFilters.map((value) => {
+                    {this.state.selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{this.state.selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={this.clearFilter}>{value}<i className="fa fa-times"></i></button>
                     })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>clear All</button>}</div>}   
                 </div>
