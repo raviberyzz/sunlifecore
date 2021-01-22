@@ -399,7 +399,7 @@ var multiPurposeComponentConfig = [
     {
         "componentName": "Forms Listing Component",
         "componentDisplayName": "Forms Listing",
-        "reactComponentName": "forms-listing",
+        "reactComponentName": "new-form-experience",
         "props": [
             {
             	name: "resourcePath",
