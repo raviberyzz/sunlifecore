@@ -2,5 +2,5 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
     getBarChartURL="https://www.sunlife.com.hk/slfcharts/genChart?ctype=bchart"
-    getFundFactsUrl="http://sunlife.ca/indsegfundsservices/fundFacts.wca11"
+    getFundFactsUrl="http://sunlife.ca/indsegfundsservices/fundFacts.wca"
     getPichartURL="https://www.sunlife.com.hk/slfcharts/genChart"/>
