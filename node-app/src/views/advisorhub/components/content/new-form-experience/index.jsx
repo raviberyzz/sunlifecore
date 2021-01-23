@@ -806,9 +806,9 @@ class NewFormExperience extends React.Component {
                 "tags": []
             }
         ]*/
-        const tableData = [];
+        var tableData = [];
         $.ajax({type: "GET",
-       url: `${this.props.tableRowsData}.forms.${this.state.lang}.json`,
+       url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
        dataType: "json",
        success: (response) => {
            tableData = response;
@@ -962,15 +962,15 @@ class NewFormExperience extends React.Component {
                 Header: 'New form experience table',
                 columns: [
                     {
-                        Header: 'Number',
+                        Header: `${this.props.tableHeaderCol1}`,
                         accessor: 'formNumber',
                     },
                     {
-                        Header: 'Name/info',
+                        Header: `${this.props.tableHeaderCol2}`,
                         accessor: 'formInformation',
                     },
                     {
-                        Header: 'Last updated',
+                        Header: `${this.props.tableHeaderCol3}`,
                         accessor: function lastUpdated(obj) {
                             var d = new Date(obj.lastUpdated),
                                 month = '' + (d.getMonth() + 1),
@@ -986,7 +986,7 @@ class NewFormExperience extends React.Component {
                         },
                     },
                     {
-                        Header: 'E-sign',
+                        Header: `${this.props.tableHeaderCol4}`,
                         accessor: function eSign(obj) {
                             var check = obj.eSign;
                             if (check == "true") {
@@ -996,7 +996,7 @@ class NewFormExperience extends React.Component {
 
                     },
                     {
-                        Header: 'Favorite',
+                        Header: `${this.props.tableHeaderCol5}`,
                         accessor: function favorite(obj) {
                             var fav = obj.favorite;
                             if (fav == true) {
@@ -1012,9 +1012,9 @@ class NewFormExperience extends React.Component {
 
        // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
        //const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
-       const filters = {}
+       var filters;
        $.ajax({type: "GET",
-       url: `${this.props.filtersData}.tags.${this.state.lang}.json`,
+       url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
        dataType: "json",
        success: (response) => {
            filters = response;
@@ -1025,16 +1025,16 @@ class NewFormExperience extends React.Component {
         return (
             <React.Fragment>
                 <div className="filter-container">
-                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>Add Filter</button>
+                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>{this.props.addFilterText}</button>
                     <form className="filters">
                         {Object.keys(filters).map((obj) => {
                             return <div className="filter"><input type="checkbox" name={filters[obj].title} value={filters[obj].title}></input><label for={filters[obj].title}>{filters[obj].title}</label></div>
                         })}
-                        <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>Done</button>
+                        <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>{this.props.filterDoneText}</button>
                     </form>
                     {this.state.selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{this.state.selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={this.clearFilter}>{value}<i className="fa fa-times"></i></button>
-                    })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>clear All</button>}</div>}
+                    })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>{this.props.ClearAllText}</button>}</div>}
                 </div>
                 <Table columns={columns} data={this.state.data} sortyBy={this.sortColumn}></Table>
             </React.Fragment>
