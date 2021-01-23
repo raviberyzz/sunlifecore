@@ -119,6 +119,7 @@ class NewFormExperience extends React.Component {
             selectedFilters: [],
             originalData: [],
             filteredRows: [],
+            filters:{},
             favorites: [],
             lang: utag_data.page_language,
             sorting: false
@@ -806,17 +807,37 @@ class NewFormExperience extends React.Component {
                 "tags": []
             }
         ]*/
-        var tableData = [];
+       
+        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
         $.ajax({type: "GET",
        url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
        dataType: "json",
        success: (response) => {
+        var tableData = [];
+        var originalresponseData = response
            tableData = response;
+           tableData.map((obj)=>{
+            favoriteData.map((favObj)=>{
+                if(obj.formNumber == favObj.formNumber){
+                    obj.favorite = true;
+                }
+            })
+            if(!obj.favorite) obj.favorite = false;
+        })
+        tableData.sort((a, b) => {
+            return b.favorite - a.favorite
+        })
+        this.setState({
+            // data: tableData,
+            data: tableData,
+            originalData: originalresponseData,
+            favorites: favoriteData
+        })
        },
        error: (err) => {
         console.log(err);
       }})
-        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+
         /*$.ajax({type: "GET",
         url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.forms.en.json",
         dataType: "json",
@@ -837,23 +858,6 @@ class NewFormExperience extends React.Component {
                 }))
             }
         }))*/
-        tableData.map((obj)=>{
-            favoriteData.map((favObj)=>{
-                if(obj.formNumber == favObj.formNumber){
-                    obj.favorite = true;
-                }
-            })
-            if(!obj.favorite) obj.favorite = false;
-        })
-        tableData.sort((a, b) => {
-            return b.favorite - a.favorite
-        })
-        this.setState({
-            // data: tableData,
-            data: tableData,
-            originalData: tableData,
-            favorites: favoriteData
-        })
 
     }
 
@@ -1012,12 +1016,13 @@ class NewFormExperience extends React.Component {
 
        // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
        //const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
-       var filters;
        $.ajax({type: "GET",
        url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
        dataType: "json",
        success: (response) => {
-           filters = response;
+           this.setState({
+               filters:response
+           })
        },
        error: (err) => {
         console.log(err);
@@ -1027,8 +1032,8 @@ class NewFormExperience extends React.Component {
                 <div className="filter-container">
                     <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>{this.props.addFilterText}</button>
                     <form className="filters">
-                        {Object.keys(filters).map((obj) => {
-                            return <div className="filter"><input type="checkbox" name={filters[obj].title} value={filters[obj].title}></input><label for={filters[obj].title}>{filters[obj].title}</label></div>
+                        {Object.keys(this.state.filters).map((obj) => {
+                            return <div className="filter"><input type="checkbox" name={this.state.filters[obj].title} value={this.state.filters[obj].title}></input><label for={this.state.filters[obj].title}>{this.state.filters[obj].title}</label></div>
                         })}
                         <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>{this.props.filterDoneText}</button>
                     </form>
