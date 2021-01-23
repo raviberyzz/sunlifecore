@@ -120,6 +120,7 @@ class NewFormExperience extends React.Component {
             originalData: [],
             filteredRows: [],
             favorites: [],
+            lang: utag_data.page_language,
             sorting: false
 
         };
@@ -131,7 +132,7 @@ class NewFormExperience extends React.Component {
     }
 
     componentDidMount() {
-        const tableData = [
+        /*const tableData = [
             {
                 "lastUpdated": "2021-01-10T21:14:00.000+05:30",
                 "eSign": "true",
@@ -804,8 +805,27 @@ class NewFormExperience extends React.Component {
                 "formInformation": "Annuity products needs analysis for quebec",
                 "tags": []
             }
-        ]
-        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }]
+        ]*/
+        const tableData = [];
+        $.ajax({type: "GET",
+       url: `${this.props.tableRowsData}.forms.${this.state.lang}.json`,
+       dataType: "json",
+       success: (response) => {
+           tableData = response;
+       },
+       error: (err) => {
+        console.log(err);
+      }})
+        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+        /*$.ajax({type: "GET",
+        url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.forms.en.json",
+        dataType: "json",
+        success: (response) => {
+            tableData = response;
+        },
+        error: (err) => {
+         console.log(err);
+       }}) */
        /* tableData.map(obj => Object.keys(obj).map((i) => {
             if (i == "formNumber") {
                 favoriteData.map(fav => Object.keys(fav).map((j) => {
@@ -991,7 +1011,17 @@ class NewFormExperience extends React.Component {
         ];
 
        // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
-       const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
+       //const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
+       const filters = {}
+       $.ajax({type: "GET",
+       url: `${this.props.filtersData}.tags.${this.state.lang}.json`,
+       dataType: "json",
+       success: (response) => {
+           filters = response;
+       },
+       error: (err) => {
+        console.log(err);
+      }})
         return (
             <React.Fragment>
                 <div className="filter-container">
