@@ -806,7 +806,7 @@ class NewFormExperience extends React.Component {
             }
         ]
         const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }]
-        tableData.map(obj => Object.keys(obj).map((i) => {
+       /* tableData.map(obj => Object.keys(obj).map((i) => {
             if (i == "formNumber") {
                 favoriteData.map(fav => Object.keys(fav).map((j) => {
                     if (fav[j] == obj[i]) {
@@ -816,7 +816,15 @@ class NewFormExperience extends React.Component {
                     }
                 }))
             }
-        }))
+        }))*/
+        tableData.map((obj)=>{
+            favoriteData.map((favObj)=>{
+                if(obj.formNumber == favObj.formNumber){
+                    obj.favorite = true;
+                }
+            })
+            if(!obj.favorite) obj.favorite = false;
+        })
         tableData.sort((a, b) => {
             return b.favorite - a.favorite
         })
@@ -982,14 +990,15 @@ class NewFormExperience extends React.Component {
             },
         ];
 
-        const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
+       // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
+       const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
         return (
             <React.Fragment>
                 <div className="filter-container">
                     <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>Add Filter</button>
                     <form className="filters">
-                        {filters.map((index, value) => {
-                            return <div className="filter"><input type="checkbox" name={filters[value]} value={filters[value]}></input><label for={value}>{filters[value]}</label></div>
+                        {Object.keys(filters).map((obj) => {
+                            return <div className="filter"><input type="checkbox" name={filters[obj].title} value={filters[obj].title}></input><label for={filters[obj].title}>{filters[obj].title}</label></div>
                         })}
                         <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>Done</button>
                     </form>
