@@ -77,13 +77,32 @@
     }
 }
 .tableContainer{
-    text-align: right;
-    .globalSearch{     
+   // text-align: right;
+   .counter{
+       margin-left:15px;
+   }
+    .globalSearch{   
+        margin-top:8px; 
+        width:280px; 
+        border-radius:4px;
+        color:$dark-grey-color;
       input{
-          width:280px;
-          border-radius:4px;
-          border: 1px solid $medium-grey-background;
-          color:$dark-grey-color;
+          //width:280px;
+          //border-radius:4px;
+         // border: 1px solid $medium-grey-background;
+         // color:$dark-grey-color;
+         border: 1px solid $medium-grey-background;
+       }
+       .fa{
+           font-size:20px;
+       }
+       button{
+           background-color: $light-grey-20;
+           border:1px solid $medium-grey-background;
+       }
+       .searchIcon{
+           border-left:none;
+           border-right:none;
        }
        input::placeholder{
            font-size:16px;
@@ -162,10 +181,17 @@
 
 @media(min-width:$tab-screen-min){
     .tableContainer{
-        text-align: right;
+       // text-align: right;
+       .searchContainer{
+           text-align: right;
+       }
+       .row{
+           margin-bottom:32px;
+       }
         .globalSearch{
-            position:relative;
-            top:-32px;
+            //position:relative;
+            //top:-32px;
+            margin-top:0;
             input{
                 margin-bottom:8px;
             }
