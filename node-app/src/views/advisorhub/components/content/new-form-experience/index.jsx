@@ -1,15 +1,29 @@
-const GlobalFilter = ({ filter, setFilter }) => {
+const GlobalFilter = ({ setFilter }) => {
+    function search() {
+        var filterValue = $('.search').val();
+        setFilter(filterValue);
+    }
+    function reset() {
+        $('.search').val(''); -
+            setFilter('');
+    }
     return (
-        <span className="globalSearch">
-            <input
-                value={filter || ''}
-                placeholder="Search"
-                onChange={e => setFilter(e.target.value)}
-            />
-        </span>
+        <div className="searchContainer col-sm-6 col-xs-12">
+            <span className="globalSearch">
+                <input
+                    //  value={filter || ''}
+                    placeholder="Search"
+                    className="search"
+                // onChange={e => setFilter(e.target.value)}
+                />
+                <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
+                <button onClick={reset}><i className="fa fa-repeat"></i></button>
+            </span>
+        </div>
+
     )
 }
-function Table({ columns, data, sortyBy }) {
+function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -42,10 +56,26 @@ function Table({ columns, data, sortyBy }) {
     }
     return (
         <div className="tableContainer">
-            <GlobalFilter
-                filter={globalFilter}
-                setFilter={setGlobalFilter}
-            />
+            <span className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</span>
+            <div className="row">
+                <div className="filter-container col-sm-6 col-xs-12">
+                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={togglefilter}>{addFilterTxt}</button>
+                    <form className="filters">
+                        {Object.keys(filtersData).map((obj) => {
+                            return <div className="filter"><input type="checkbox" name={filtersData[obj].id} value={filtersData[obj].title}></input><label for={filtersData[obj].title}>{filtersData[obj].title}</label></div>
+                        })}
+                        <button type="button" className="filterSubmit col-sm-12" onClick={addFilter}>{filterBtnTxt}</button>
+                    </form>
+                    {selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{selectedFilters.map((value) => {
+                        return <button className="selectedFilter filter-buttons" onClick={clearFilter}>{value}<i className="fa fa-times"></i></button>
+                    })} {selectedFilters.length > 0 && <button className="filter-buttons" onClick={clearAll}>{clearAllTxt}</button>}</div>}
+                </div>
+                <GlobalFilter
+                    filter={globalFilter}
+                    setFilter={setGlobalFilter}
+                    filteredData={data}
+                />
+            </div>
             <table className="new-form-table" {...getTableProps()}>
                 <thead className="table-header">
                     {headerGroups.map(headerGroup => (
@@ -119,7 +149,7 @@ class NewFormExperience extends React.Component {
             selectedFilters: [],
             originalData: [],
             filteredRows: [],
-            filters:{},
+            filters: {},
             favorites: [],
             lang: utag_data.page_language,
             sorting: false
@@ -133,731 +163,732 @@ class NewFormExperience extends React.Component {
     }
 
     componentDidMount() {
-        /*const tableData = [
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": ["Beneficiary", "Policy changes", "Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": ["Beneficiary", "Policy changes", "Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis Annuity products needs analysis",
-                "tags": ["Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"]
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec Annuity products needs analysis Annuity products needs analysis",
-                "tags": ["Beneficiary", "Policy changes", "Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": ["Health Insurance", "Life insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": ["Life insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Policy changes", "Client Service", "Health Insurance", "Life insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": ["Client Service"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": ["Health Insurance"]
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-10T21:14:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "55555",
-                "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:14:00.000+05:30",
-                "eSign": "false",
-                "formNumber": "3333",
-                "formInformation": "New Account Application Form(NAAF)",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T21:18:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "4900-E",
-                "formInformation": "New Account Application Form(NAAF)-mutual fund account",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-13T21:12:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN11405",
-                "formInformation": "Annuity products needs analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-23T09:51:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2021-01-14T20:57:00.000+05:30",
-                "eSign": "true",
-                "formNumber": "IN14050003",
-                "formInformation": "Anuity products need analysis",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:54:00.000-05:00",
-                "eSign": "true",
-                "formNumber": "111111",
-                "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
-                "tags": []
-            },
-            {
-                "lastUpdated": "2020-12-24T09:52:00.000-05:00",
-                "eSign": "false",
-                "formNumber": "IN1405003*",
-                "formInformation": "Annuity products needs analysis for quebec",
-                "tags": []
-            }
-        ]*/
-       
-        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
-        $.ajax({type: "GET",
-       url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
-       dataType: "json",
-       success: (response) => {
-        var tableData = [];
-        var originalresponseData = response
-           tableData = response;
-           tableData.map((obj)=>{
-            favoriteData.map((favObj)=>{
-                if(obj.formNumber == favObj.formNumber){
-                    obj.favorite = true;
-                }
-            })
-            if(!obj.favorite) obj.favorite = false;
-        })
-        tableData.sort((a, b) => {
-            return b.favorite - a.favorite
-        })
-        this.setState({
-            // data: tableData,
-            data: tableData,
-            originalData: originalresponseData,
-            favorites: favoriteData
-        })
-       },
-       error: (err) => {
-        console.log(err);
-      }})
+        /*  const tableData = [
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis Annuity products needs analysis",
+                  "tags": ["Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec Annuity products needs analysis Annuity products needs analysis",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance", "Life insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Life insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Policy changes", "Client Service", "Health Insurance", "Life insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              }
+          ]*/
 
-        /*$.ajax({type: "GET",
-        url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.forms.en.json",
-        dataType: "json",
-        success: (response) => {
-            tableData = response;
-        },
-        error: (err) => {
-         console.log(err);
-       }}) */
-       /* tableData.map(obj => Object.keys(obj).map((i) => {
-            if (i == "formNumber") {
-                favoriteData.map(fav => Object.keys(fav).map((j) => {
-                    if (fav[j] == obj[i]) {
-                        obj.favorite = true;
-                    } else {
-                        obj.favorite = false
-                    }
-                }))
+        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+        /* var originalresponseData = tableData
+         // tableData = response;
+         tableData.map((obj) => {
+             favoriteData.map((favObj) => {
+                 if (obj.formNumber == favObj.formNumber) {
+                     obj.favorite = true;
+                 }
+             })
+             if (!obj.favorite) obj.favorite = false;
+         })
+         tableData.sort((a, b) => {
+             return b.favorite - a.favorite
+         })
+         this.setState({
+             // data: tableData,
+             data: tableData,
+             originalData: originalresponseData,
+             favorites: favoriteData
+         }) */
+        $.ajax({
+            type: "GET",
+            url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
+            dataType: "json",
+            success: (response) => {
+                var tableData = [];
+                var originalresponseData = response
+                tableData = response;
+                tableData.map((obj) => {
+                    favoriteData.map((favObj) => {
+                        if (obj.formNumber == favObj.formNumber) {
+                            obj.favorite = true;
+                        }
+                    })
+                    if (!obj.favorite) obj.favorite = false;
+                })
+                tableData.sort((a, b) => {
+                    return b.favorite - a.favorite
+                })
+                this.setState({
+                    // data: tableData,
+                    data: tableData,
+                    originalData: originalresponseData,
+                    favorites: favoriteData
+                })
+            },
+            error: (err) => {
+                console.log(err);
             }
-        }))*/
+        })
+
 
     }
 
@@ -888,6 +919,7 @@ class NewFormExperience extends React.Component {
     }
     sortColumn() {
         var sortingData = this.state.data;
+        console.log(sortingData);
         var eSignFavorite = sortingData.filter((row) => {
             if (row.eSign == "true" && row.favorite == true) {
                 return row
@@ -1014,22 +1046,24 @@ class NewFormExperience extends React.Component {
             },
         ];
 
-       // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
-       //const filters = {"wealth":{"id":"sunlife:advisorhub/wealth","title":"Wealth","tags":[]},"your-business":{"id":"sunlife:advisorhub/your-business","title":"Your business","tags":[]},"health-insurance":{"id":"sunlife:advisorhub/health-insurance","title":"Health insurance","tags":[]},"products-and-solutions":{"id":"sunlife:advisorhub/products-and-solutions","title":"Products and solutions","tags":[]},"title":"advisorhub","questionnaires":{"id":"sunlife:advisorhub/questionnaires","title":"Questionnaires","tags":[]},"beneficiary":{"id":"sunlife:advisorhub/beneficiary","title":"Beneficiary","tags":[]},"compliance":{"id":"sunlife:advisorhub/compliance","title":"Compliance","tags":[]},"conversion(s)":{"id":"sunlife:advisorhub/conversion(s)","title":"Conversion(s)","tags":[]},"name":"advisorhub","id":"sunlife:advisorhub","life-insurance":{"id":"sunlife:advisorhub/life-insurance","title":"Life insurance","tags":[]},"policy-changes":{"id":"sunlife:advisorhub/policy-changes","title":"Policy changes","tags":[]},"client-service":{"id":"sunlife:advisorhub/client-service","title":"Client Service","tags":[]}};
-       $.ajax({type: "GET",
-       url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
-       dataType: "json",
-       success: (response) => {
-           this.setState({
-               filters:response
-           })
-       },
-       error: (err) => {
-        console.log(err);
-      }})
+        // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
+        // const filters = { "wealth": { "id": "sunlife:advisorhub/wealth", "title": "Wealth", "tags": [] }, "your-business": { "id": "sunlife:advisorhub/your-business", "title": "Your business", "tags": [] }, "health-insurance": { "id": "sunlife:advisorhub/health-insurance", "title": "Health insurance", "tags": [] }, "products-and-solutions": { "id": "sunlife:advisorhub/products-and-solutions", "title": "Products and solutions", "tags": [] }, "title": "advisorhub", "questionnaires": { "id": "sunlife:advisorhub/questionnaires", "title": "Questionnaires", "tags": [] }, "beneficiary": { "id": "sunlife:advisorhub/beneficiary", "title": "Beneficiary", "tags": [] }, "compliance": { "id": "sunlife:advisorhub/compliance", "title": "Compliance", "tags": [] }, "conversion(s)": { "id": "sunlife:advisorhub/conversion(s)", "title": "Conversion(s)", "tags": [] }, "name": "advisorhub", "id": "sunlife:advisorhub", "life-insurance": { "id": "sunlife:advisorhub/life-insurance", "title": "Life insurance", "tags": [] }, "policy-changes": { "id": "sunlife:advisorhub/policy-changes", "title": "Policy changes", "tags": [] }, "client-service": { "id": "sunlife:advisorhub/client-service", "title": "Client Service", "tags": [] } };
+        $.ajax({
+            type: "GET",
+            url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
+            dataType: "json",
+            success: (response) => {
+                this.setState({
+                    filters: response
+                })
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
         return (
             <React.Fragment>
-                <div className="filter-container">
+                {/*<div className="filter-container">
                     <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>{this.props.addFilterText}</button>
                     <form className="filters">
                         {Object.keys(this.state.filters).map((obj) => {
@@ -1040,8 +1074,21 @@ class NewFormExperience extends React.Component {
                     {this.state.selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{this.state.selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={this.clearFilter}>{value}<i className="fa fa-times"></i></button>
                     })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>{this.props.ClearAllText}</button>}</div>}
-                </div>
-                <Table columns={columns} data={this.state.data} sortyBy={this.sortColumn}></Table>
+                </div>*/}
+                <Table columns={columns}
+                    data={this.state.data}
+                    sortyBy={this.sortColumn}
+                    search={this.setFilteredData}
+                    togglefilter={this.toggleFilter}
+                    addFilterTxt={this.props.addFilterText}
+                    filtersData={this.state.filters}
+                    addFilter={this.addFilters}
+                    filterBtnTxt={this.props.filterDoneText}
+                    selectedFilters={this.state.selectedFilters}
+                    clearFilter={this.clearFilter}
+                    clearAll={this.clearAll}
+                    clearAllTxt={this.props.ClearAllText}
+                ></Table>
             </React.Fragment>
         )
     }

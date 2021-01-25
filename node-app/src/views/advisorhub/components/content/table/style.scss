@@ -10,7 +10,7 @@
                  vertical-align: top;
              }
              &:not(:last-child) {
-                 border-bottom: 1px solid $grey-previous-background-color; /* first row underline color */
+                 border-bottom: 1px solid $light-grey-color; /* first row underline color */
              }
              &:nth-of-type(2) {
                  th {
