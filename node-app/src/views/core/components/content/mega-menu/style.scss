@@ -439,3 +439,58 @@ line-height:110%;
     }
  }
 }
+
+/** US specific css **/
+.us-sunlife-content-page {
+    .mega-menu-wrapper-desk {
+        .container-component {
+            .icon-text {
+                .icon-parent {
+                    text-align: left;
+                    float: left;
+                    margin-right: 5px;
+                    padding-bottom: 0;
+                    .icon-style {
+                        background: linear-gradient(#ffcb05,#eaab00);
+                        border-radius: 50%;
+                        height: 30px;
+                        width: 30px;
+                        padding: 6px;
+                        border: 2px solid #fff;
+                        color: #fff;
+                        font-size: .875rem;
+                       }
+                }
+                .icon-texts {
+                    padding: 0 0 0 8px;
+                     font-size: 1rem;
+                }
+            }
+        }
+        .aem-GridColumn--default--10.aem-GridColumn--offset--default--0 .layout-container {
+            padding: 32px 24px 48px;
+            .text {
+                .cmp-text{
+                    padding-left: 0;
+                    ul li:before {
+                        content: '';
+                    }
+                    ul li{
+                        line-height: 16px;
+                        padding: 5px 0;
+                    }
+                    ul li a {
+                        font-weight: 400;
+                    }	
+                }
+            }
+        }
+        .aem-GridColumn--default--2 .lists-wrapper .accordion-heading {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 110%;
+            margin-top: 5px;
+        }
+    }
+}
+	
