@@ -64,7 +64,7 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
                         {Object.keys(filtersData).map((obj) => {
                             return <div className="filter"><input type="checkbox" name={filtersData[obj].id} value={filtersData[obj].title}></input><label for={filtersData[obj].title}>{filtersData[obj].title}</label></div>
                         })}
-                        <button type="button" className="filterSubmit col-sm-12" onClick={addFilter}>{filterBtnTxt}</button>
+                        <button type="button" className="filterSubmit" onClick={addFilter}>{filterBtnTxt}</button>
                     </form>
                     {selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={clearFilter}>{value}<i className="fa fa-times"></i></button>
@@ -151,6 +151,7 @@ class NewFormExperience extends React.Component {
             filteredRows: [],
             filters: {},
             favorites: [],
+            selectedValues:[],
             lang: utag_data.page_language,
             sorting: false
 
@@ -899,11 +900,14 @@ class NewFormExperience extends React.Component {
     addFilters() {
         var filterData = [];
         var filteredRows = [];
+        var selectedFiltersValues = [];
         $("input[type='checkbox']:checked").each(function () {
             filterData.push($(this).attr('name'));
+            selectedFiltersValues.push($(this).attr('value'));
         })
         this.setState({
-            selectedFilters: filterData
+            selectedFilters: filterData,
+            selectedValues:selectedFiltersValues
         })
         if (filterData.length > 0) {
             filteredRows = this.state.originalData.filter((row) => {
@@ -958,14 +962,14 @@ class NewFormExperience extends React.Component {
             $(this).prop("checked", false);
         })
         this.setState({
-            selectedFilters: [],
+            selectedValues: [],
             data: this.state.originalData
         })
     }
 
     clearFilter(event) {
         var deletFilter = event.currentTarget.textContent;
-        var selFilters = this.state.selectedFilters;
+        var selFilters = this.state.selectedValues;
         var updatedFilterRows = [];
         selFilters.map((filter, i) => {
             if (filter == deletFilter) {
@@ -1084,7 +1088,7 @@ class NewFormExperience extends React.Component {
                     filtersData={this.state.filters}
                     addFilter={this.addFilters}
                     filterBtnTxt={this.props.filterDoneText}
-                    selectedFilters={this.state.selectedFilters}
+                    selectedFilters={this.state.selectedValues}
                     clearFilter={this.clearFilter}
                     clearAll={this.clearAll}
                     clearAllTxt={this.props.ClearAllText}
