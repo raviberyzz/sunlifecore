@@ -130,8 +130,10 @@ $(document).ready(function () {
          cta_icon_text.each(function (index) {
             $(this).css('height','fit-content');
             ctaHeight = ctaHeight > $(this).outerHeight() ? ctaHeight : $(this).outerHeight();
-            $(this).outerHeight(ctaHeight);
-	});
+		});
+		cta_icon_text.each(function (index) {
+			$(this).outerHeight(ctaHeight);
+		});
     }
 	//CTA Padding FIX.
     cta_height();

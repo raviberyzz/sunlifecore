@@ -32,6 +32,10 @@
                                         jcr:primaryType="nt:unstructured"
                                         text="2"
                                         value="2"/>
+									<_x0033_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="3"
+                                        value="3"/>	
                                 </items>
                             </noc>
                             <type

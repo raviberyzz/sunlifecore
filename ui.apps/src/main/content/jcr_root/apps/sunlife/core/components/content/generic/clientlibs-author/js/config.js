@@ -395,5 +395,18 @@ var multiPurposeComponentConfig = [
                 required: true
             }
         ]
+    },
+    {
+        "componentName": "Forms Listing Component",
+        "componentDisplayName": "Forms Listing",
+        "reactComponentName": "new-form-experience",
+        "props": [
+            {
+            	name: "resourcePath",
+                label: "Resource path",
+                value: "/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic",
+                required: true
+            }
+        ]
     }
 ];

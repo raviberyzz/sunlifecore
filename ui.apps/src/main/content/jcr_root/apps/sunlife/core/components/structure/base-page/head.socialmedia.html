@@ -19,11 +19,12 @@
 </script>
 <sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true'}" data-sly-resource="${@path='/content/sunlife-tools/user-info', decorationTagName=''}" />
 <!-- UDO ends here -->
+<!-- start - Include Site level CSS and scripts -->
+<sly data-sly-test.siteHeadInclude = "${baseModel.siteHeadInclude}"> 
+	<sly>${baseModel.siteHeadInclude @ context = 'unsafe'}</sly>
+</sly>
+<!-- end - Include Site level CSS and scripts -->
 <sly>${baseModel.headInclude @ context = 'unsafe'}</sly>
-<!-- Include Site level CSS and scripts -->
-	<sly data-sly-test.siteHeadInclude = "${baseModel.siteHeadInclude}"> 
-		<sly>${baseModel.siteHeadInclude @ context = 'unsafe'}</sly>
-    </sly>
 <!-- Synchronous Tag Support starts here -->
 <script src="${baseModel.analyticsScriptPath}" type="text/javascript"></script>
 <!-- Synchronous Tag Support ends here -->

@@ -148,8 +148,22 @@ public class PaFormTest {
         assertTrue(subject.isValid(), subject.getInvalidReasons().toString());
         assertEquals("4233-PA-ETY-E", subject.getFormNumberEn());
         assertEquals("4233-PA-ETY-F", subject.getFormNumberFr());
+    }
+
+    @Test
+    public void testSpaceAfterFormNumber() throws Exception {
+        when(englishRow.getLastCellNum()).thenReturn((short) 3);
+        when(frenchRow.getLastCellNum()).thenReturn((short) 3);
+        when(englishRow.getCell(anyInt())).thenAnswer(mockCells("Biologic response modifier",
+                "Entyvio (vedolizumab)", "4233-PA-ETY-E ", "02436841;02497876;02497875"));
+        when(frenchRow.getCell(anyInt())).thenAnswer(mockCells("Modificateur de la réponse ",
+                "Entyvio (védolizumab)", "4233-PA-ETY-F ", "02436841;02497876;02497875"));
 
 
+        subject = new PaForm(englishRow, frenchRow);
+        assertTrue(subject.isValid(), subject.getInvalidReasons().toString());
+        assertEquals("4233-PA-ETY-E", subject.getFormNumberEn());
+        assertEquals("4233-PA-ETY-F", subject.getFormNumberFr());
     }
 
     private Answer<Cell> mockCells(String categories, String drug, String form, String din) {
