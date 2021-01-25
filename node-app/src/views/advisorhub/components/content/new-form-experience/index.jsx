@@ -869,7 +869,7 @@ class NewFormExperience extends React.Component {
         var filterData = [];
         var filteredRows = [];
         $("input[type='checkbox']:checked").each(function () {
-            filterData.push($(this).val());
+            filterData.push($(this).attr('name'));
         })
         this.setState({
             selectedFilters: filterData
@@ -1033,7 +1033,7 @@ class NewFormExperience extends React.Component {
                     <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>{this.props.addFilterText}</button>
                     <form className="filters">
                         {Object.keys(this.state.filters).map((obj) => {
-                            return <div className="filter"><input type="checkbox" name={this.state.filters[obj].title} value={this.state.filters[obj].title}></input><label for={this.state.filters[obj].title}>{this.state.filters[obj].title}</label></div>
+                            return <div className="filter"><input type="checkbox" name={this.state.filters[obj].id} value={this.state.filters[obj].title}></input><label for={this.state.filters[obj].title}>{this.state.filters[obj].title}</label></div>
                         })}
                         <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>{this.props.filterDoneText}</button>
                     </form>
