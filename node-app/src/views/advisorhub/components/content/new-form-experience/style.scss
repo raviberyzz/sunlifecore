@@ -88,12 +88,15 @@
         width:280px; 
         border-radius:4px;
         color:$dark-grey-color;
+        display:flex;
       input{
           //width:280px;
           //border-radius:4px;
          // border: 1px solid $medium-grey-background;
          // color:$dark-grey-color;
          border: 1px solid $medium-grey-background;
+         width:220px;
+         height: 32px;
        }
        .fa{
            font-size:20px;
@@ -101,6 +104,7 @@
        button{
            background-color: $light-grey-20;
            border:1px solid $medium-grey-background;
+           height: 32px;
        }
        .searchIcon{
            border-left:none;
@@ -134,6 +138,9 @@
         }
         th:first-of-type{
             padding-left: 16px;
+        }
+        th:nth-of-type(4){
+            cursor: pointer;
         }
         th:last-of-type{
             padding-right: 16px;
@@ -182,13 +189,30 @@
 }
 
 @media(min-width:$tab-screen-min){
+    .filterSearchContainer{
+        display: flex;
+        justify-content: space-between;
+        .filter-container{
+            display: flex;
+            .addFilter{
+                min-width:110px;
+            }
+            .filters{
+                position: absolute;
+            }
+           /* .selectedFilterContainer{
+                max-width:662px;
+            } */
+        }
+        .searchContainer{
+            padding:32px 0;
+            //min-width:282px;
+        }
+    }
     .tableContainer{
        // text-align: right;
        .searchContainer{
            text-align: right;
-       }
-       .row{
-           margin-bottom:32px;
        }
         .globalSearch{
             //position:relative;

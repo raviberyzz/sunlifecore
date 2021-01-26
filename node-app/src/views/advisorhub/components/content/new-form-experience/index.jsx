@@ -57,16 +57,16 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
     return (
         <div className="tableContainer">
             <span className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</span>
-            <div className="row">
-                <div className="filter-container col-sm-6 col-xs-12">
-                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={togglefilter}>{addFilterTxt}</button>
+            <div className="filterSearchContainer">
+                <div className="filter-container">
+                    <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
                         {Object.keys(filtersData).map((obj) => {
                             return <div className="filter"><input type="checkbox" name={filtersData[obj].id} value={filtersData[obj].title}></input><label for={filtersData[obj].title}>{filtersData[obj].title}</label></div>
                         })}
                         <button type="button" className="filterSubmit" onClick={addFilter}>{filterBtnTxt}</button>
                     </form>
-                    {selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{selectedFilters.map((value) => {
+                    {selectedFilters && <div className="selectedFilterContainer">{selectedFilters.map((value) => {
                         return <button className="selectedFilter filter-buttons" onClick={clearFilter}>{value}<i className="fa fa-times"></i></button>
                     })} {selectedFilters.length > 0 && <button className="filter-buttons" onClick={clearAll}>{clearAllTxt}</button>}</div>}
                 </div>
