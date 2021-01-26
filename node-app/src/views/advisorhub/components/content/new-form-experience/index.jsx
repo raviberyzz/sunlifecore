@@ -4,11 +4,11 @@ const GlobalFilter = ({ setFilter }) => {
         setFilter(filterValue);
     }
     function reset() {
-        $('.search').val(''); -
+        $('.search').val(''); 
             setFilter('');
     }
     return (
-        <div className="searchContainer col-sm-6 col-xs-12">
+        <div className="searchContainer">
             <span className="globalSearch">
                 <input
                     //  value={filter || ''}
@@ -56,9 +56,10 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
     }
     return (
         <div className="tableContainer">
-            <span className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</span>
+            
             <div className="filterSearchContainer">
                 <div className="filter-container">
+                <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
                     <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
                         {Object.keys(filtersData).map((obj) => {
