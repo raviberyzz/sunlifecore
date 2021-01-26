@@ -4,8 +4,8 @@ const GlobalFilter = ({ setFilter }) => {
         setFilter(filterValue);
     }
     function reset() {
-        $('.search').val(''); 
-            setFilter('');
+        $('.search').val('');
+        setFilter('');
     }
     return (
         <div className="searchContainer">
@@ -56,10 +56,10 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
     }
     return (
         <div className="tableContainer">
-            
+
             <div className="filterSearchContainer">
                 <div className="filter-container">
-                <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
+                    <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
                     <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
                         {Object.keys(filtersData).map((obj) => {
@@ -152,7 +152,7 @@ class NewFormExperience extends React.Component {
             filteredRows: [],
             filters: {},
             favorites: [],
-            selectedValues:[],
+            selectedValues: [],
             lang: utag_data.page_language,
             sorting: false
 
@@ -862,12 +862,12 @@ class NewFormExperience extends React.Component {
              originalData: originalresponseData,
              favorites: favoriteData
          }) */
-       
-         this.getTableData();
+
+        this.getTableData();
 
     }
-    
-    getTableData(){
+
+    getTableData() {
         const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
         $.ajax({
             type: "GET",
@@ -896,7 +896,7 @@ class NewFormExperience extends React.Component {
                 }, () => {
                     // this.tagSorting();
                     this.getFilterData();
-                  })
+                })
             },
             error: (err) => {
                 console.log(err);
@@ -904,7 +904,7 @@ class NewFormExperience extends React.Component {
         })
     }
 
-    getFilterData(){
+    getFilterData() {
         $.ajax({
             type: "GET",
             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
@@ -933,7 +933,7 @@ class NewFormExperience extends React.Component {
         })
         this.setState({
             selectedFilters: filterData,
-            selectedValues:selectedFiltersValues
+            selectedValues: selectedFiltersValues
         })
         if (filterData.length > 0) {
             filteredRows = this.state.originalData.filter((row) => {
@@ -999,7 +999,7 @@ class NewFormExperience extends React.Component {
         var updatedFilterRows = [];
         selFilters.map((filter, i) => {
             if (filter == deletFilter) {
-                $('input[type="checkbox"]').each(function () {
+                $('input[type="checkbox"]:checked').each(function () {
                     if ($(this).attr("value") == deletFilter) {
                         $(this).prop("checked", false);
                     }
@@ -1008,8 +1008,16 @@ class NewFormExperience extends React.Component {
             }
         })
         if (selFilters.length > 0) {
+            var remainingFilters = [];
+            Object.keys(this.state.filters).map((obj) => {
+                for (var i = 0; i <= selFilters.length; i++) {
+                    if (selFilters[i] == this.state.filters[obj].title) {
+                        remainingFilters.push(this.state.filters[obj].id)
+                    }
+                }
+            })
             updatedFilterRows = this.state.originalData.filter((row) => {
-                return (row.tags && row.tags.some((val) => selFilters.indexOf(val) > -1))
+                return (row.tags && row.tags.some((val) => remainingFilters.indexOf(val) > -1))
             })
             this.setState({
                 selectedFilters: selFilters,
@@ -1078,19 +1086,19 @@ class NewFormExperience extends React.Component {
 
         // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
         // const filters = { "wealth": { "id": "sunlife:advisorhub/wealth", "title": "Wealth", "tags": [] }, "your-business": { "id": "sunlife:advisorhub/your-business", "title": "Your business", "tags": [] }, "health-insurance": { "id": "sunlife:advisorhub/health-insurance", "title": "Health insurance", "tags": [] }, "products-and-solutions": { "id": "sunlife:advisorhub/products-and-solutions", "title": "Products and solutions", "tags": [] }, "title": "advisorhub", "questionnaires": { "id": "sunlife:advisorhub/questionnaires", "title": "Questionnaires", "tags": [] }, "beneficiary": { "id": "sunlife:advisorhub/beneficiary", "title": "Beneficiary", "tags": [] }, "compliance": { "id": "sunlife:advisorhub/compliance", "title": "Compliance", "tags": [] }, "conversion(s)": { "id": "sunlife:advisorhub/conversion(s)", "title": "Conversion(s)", "tags": [] }, "name": "advisorhub", "id": "sunlife:advisorhub", "life-insurance": { "id": "sunlife:advisorhub/life-insurance", "title": "Life insurance", "tags": [] }, "policy-changes": { "id": "sunlife:advisorhub/policy-changes", "title": "Policy changes", "tags": [] }, "client-service": { "id": "sunlife:advisorhub/client-service", "title": "Client Service", "tags": [] } };
-       /* $.ajax({
-            type: "GET",
-            url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
-            dataType: "json",
-            success: (response) => {
-                this.setState({
-                    filters: response
-                })
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        }) */
+        /* $.ajax({
+             type: "GET",
+             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
+             dataType: "json",
+             success: (response) => {
+                 this.setState({
+                     filters: response
+                 })
+             },
+             error: (err) => {
+                 console.log(err);
+             }
+         }) */
         return (
             <React.Fragment>
                 {/*<div className="filter-container">
