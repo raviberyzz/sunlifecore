@@ -842,7 +842,7 @@ class NewFormExperience extends React.Component {
               }
           ]*/
 
-        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+
         /* var originalresponseData = tableData
          // tableData = response;
          tableData.map((obj) => {
@@ -868,6 +868,7 @@ class NewFormExperience extends React.Component {
     }
     
     getTableData(){
+        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
         $.ajax({
             type: "GET",
             url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
