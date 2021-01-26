@@ -200,9 +200,16 @@
             .filters{
                 position: absolute;
             }
+            .show-filters{
+                margin-top:33px;
+            }
            /* .selectedFilterContainer{
                 max-width:662px;
             } */
+            .counter{
+                position: absolute;
+                top:6px;
+            }
         }
         .searchContainer{
             padding:32px 0;
