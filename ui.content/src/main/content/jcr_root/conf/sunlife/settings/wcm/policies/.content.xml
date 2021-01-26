@@ -158,6 +158,13 @@
                         components="[/libs/dam/cfm/components/contentfragment,/apps/sunlife/advisorhub/components/content/button,/apps/sunlife/advisorhub/components/content/html-component,/apps/sunlife/advisorhub/components/content/image,/apps/sunlife/advisorhub/components/content/text]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_1468422398876400>
+					<policy_slgi_gif_fund
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sunlife GIF Funds"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="/apps/sunlife/legacy/components/content/tinymcecomponent">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_slgi_gif_fund>
                 </responsivegrid>
             </components>
         </foundation>
