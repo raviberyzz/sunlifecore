@@ -45,7 +45,7 @@
     .show-filters{
         //position:absolute;
         //top:65px;
-        margin-top:33px;
+       // margin-top:33px;
         background:$white-shade;
         display:block!important;
         z-index: 1000;
@@ -231,6 +231,9 @@
     .filter-container{
         .selectedFilterContainer{
             margin-top:8px;
+        }
+        .show-filters{
+            position: absolute;
         }
     }
     .tableContainer{
