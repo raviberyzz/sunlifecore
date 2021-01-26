@@ -162,6 +162,8 @@ class NewFormExperience extends React.Component {
         this.clearAll = this.clearAll.bind(this);
         this.clearFilter = this.clearFilter.bind(this);
         this.sortColumn = this.sortColumn.bind(this);
+        this.getTableData = this.getTableData.bind(this);
+        this.getFilterData = this.getFilterData.bind(this);
     }
 
     componentDidMount() {
@@ -860,6 +862,12 @@ class NewFormExperience extends React.Component {
              originalData: originalresponseData,
              favorites: favoriteData
          }) */
+       
+         this.getTableData();
+
+    }
+    
+    getTableData(){
         $.ajax({
             type: "GET",
             url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
@@ -884,12 +892,18 @@ class NewFormExperience extends React.Component {
                     data: tableData,
                     originalData: originalresponseData,
                     favorites: favoriteData
-                })
+                }, () => {
+                    // this.tagSorting();
+                    this.getFilterData();
+                  })
             },
             error: (err) => {
                 console.log(err);
             }
         })
+    }
+
+    getFilterData(){
         $.ajax({
             type: "GET",
             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
@@ -903,9 +917,7 @@ class NewFormExperience extends React.Component {
                 console.log(err);
             }
         })
-
     }
-
     toggleFilter() {
         $('.filters').toggleClass('show-filters')
     }
