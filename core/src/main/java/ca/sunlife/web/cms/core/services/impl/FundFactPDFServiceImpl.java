@@ -279,7 +279,8 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 			throws ApplicationException, SystemException, IOException, LoginException {
 		LOG.debug("Entry :: FundFactPDFServiceImpl :: getCompiledData :: {}", request);
 		String compiledData = null;
-		String reqParams = request.getParameter("fparams");
+		//String reqParams = request.getParameter("fparams");
+		String reqParams = request.getRequestPathInfo().getSelectors()[1];
 		LOG.debug("FundFactPDFServiceImpl :: reqParams :: {}", reqParams);
 		if (null != reqParams && reqParams.length() > 0) {
 			// Reads query params and process them
