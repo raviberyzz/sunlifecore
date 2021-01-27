@@ -875,6 +875,8 @@ class NewFormExperience extends React.Component {
             dataType: "json",
             success: (response) => {
                 var tableData = [];
+                var favRows = [];
+                var notFavRows = [];
                 var originalresponseData = response
                 tableData = response;
                 tableData.map((obj) => {
@@ -885,9 +887,22 @@ class NewFormExperience extends React.Component {
                     })
                     if (!obj.favorite) obj.favorite = false;
                 })
-                tableData.sort((a, b) => {
-                    return b.favorite - a.favorite
+                favRows = tableData.filter((obj) => {
+                    return obj.favorite
                 })
+                notFavRows = tableData.filter((obj) => {
+                    return !obj.favorite
+                })
+                favRows.sort((a, b) => {
+                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                });
+                notFavRows.sort((a, b) => {
+                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                })
+                tableData = [...favRows, ...notFavRows];
+                /*tableData.sort((a, b) => {
+                    return b.favorite - a.favorite
+                })*/
                 this.setState({
                     // data: tableData,
                     data: tableData,
