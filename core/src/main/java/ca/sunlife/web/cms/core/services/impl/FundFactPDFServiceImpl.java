@@ -327,7 +327,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						final StringWriter writer = new StringWriter();
 						ValueMap valueMap = child.getValueMap();
 						// Reads mustache template from HTML component
-						final String mustachTemplate = (String) valueMap.getOrDefault("text", StringUtils.EMPTY);
+						final String mustachTemplate = (String) valueMap.getOrDefault("htmlcontent", StringUtils.EMPTY);
 						LOG.debug("FundFactPDFServiceImpl :: mustachTemplate :: {}", mustachTemplate);
 						final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
 						mustache.execute(writer, fundFactsData);
