@@ -90,7 +90,7 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
                     ))}
                 </thead>
                 <tbody {...getTableBodyProps()}>
-                    {page.map((row, i) => {
+                    {data.length > 0 ? page.map((row, i) => {
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()} className="new-form-tr">
@@ -99,7 +99,7 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
                                 })}
                             </tr>
                         )
-                    })}
+                    }): <tr>No Data available </tr>}
                 </tbody>
             </table>
             {/*  Pagination Component*/}
@@ -1110,6 +1110,17 @@ class NewFormExperience extends React.Component {
 
         // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
         // const filters = { "wealth": { "id": "sunlife:advisorhub/wealth", "title": "Wealth", "tags": [] }, "your-business": { "id": "sunlife:advisorhub/your-business", "title": "Your business", "tags": [] }, "health-insurance": { "id": "sunlife:advisorhub/health-insurance", "title": "Health insurance", "tags": [] }, "products-and-solutions": { "id": "sunlife:advisorhub/products-and-solutions", "title": "Products and solutions", "tags": [] }, "title": "advisorhub", "questionnaires": { "id": "sunlife:advisorhub/questionnaires", "title": "Questionnaires", "tags": [] }, "beneficiary": { "id": "sunlife:advisorhub/beneficiary", "title": "Beneficiary", "tags": [] }, "compliance": { "id": "sunlife:advisorhub/compliance", "title": "Compliance", "tags": [] }, "conversion(s)": { "id": "sunlife:advisorhub/conversion(s)", "title": "Conversion(s)", "tags": [] }, "name": "advisorhub", "id": "sunlife:advisorhub", "life-insurance": { "id": "sunlife:advisorhub/life-insurance", "title": "Life insurance", "tags": [] }, "policy-changes": { "id": "sunlife:advisorhub/policy-changes", "title": "Policy changes", "tags": [] }, "client-service": { "id": "sunlife:advisorhub/client-service", "title": "Client Service", "tags": [] } };
+        $('.fa-star').on('click',function(){
+            if($(this).hasClass('star-selected')){
+                $(this).removeClass('star-selected');
+                $(this).addClass('star-not-selected');
+                console.log('ajax post call'); 
+            }else{
+                $(this).removeClass('star-not-selected'); 
+                $(this).addClass('star-selected') 
+                console.log('ajax post call');
+            }
+        })
         /* $.ajax({
              type: "GET",
              url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
