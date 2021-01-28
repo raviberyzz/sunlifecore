@@ -906,7 +906,8 @@ class NewFormExperience extends React.Component {
                 this.setState({
                     // data: tableData,
                     data: tableData,
-                    originalData: originalresponseData,
+                    // originalData: originalresponseData,
+                    originalData: tableData,
                     favorites: favoriteData
                 }, () => {
                     // this.tagSorting();
