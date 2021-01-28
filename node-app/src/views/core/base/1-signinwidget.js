@@ -169,6 +169,7 @@ function getBrowserInfo() {
         }
 
         /* Determine Operating System */
+		/*
         if (InStr(userAgent, "Windows NT 5.2") >= 0) {
             strOS = "Win2003";
         } else if (InStr(userAgent, "Windows NT 5.0") >= 0) {
@@ -204,7 +205,26 @@ function getBrowserInfo() {
             }
         } else {
             strOS = "Unknown Browser";
-        }
+        }*/
+		
+		if(InStr(userAgent, "Windows NT 5.2") >= 0  || InStr(userAgent, "Windows NT 5.0") >= 0 || InStr(userAgent, "Windows XP") >= 0 || InStr(userAgent, "Windows NT 5.1") >= 0 || InStr(userAgent, "Windows 98") >= 0 || InStr(userAgent, "Win98") >= 0 || InStr(userAgent, "Windows 95") >= 0 || InStr(userAgent, "Windows NT") >= 0 || InStr(userAgent, "Windows 3.1") >= 0 || InStr(userAgent, "Windows") >= 0 || InStr(userAgent, "Macintosh") >= 0 || InStr(userAgent, "Mac OS X") >= 0){
+            strOS = userAgent;
+        }else if (InStr(userAgent, "X11") >= 0) {
+            strOS = "UNIX";
+        } else if (InStr(userAgent, "BlackBerry") >= 0) {
+            var iOSPos = InStr(userAgent, "BlackBerry");
+            // If Blackberry OS5 or lower, then expect to see useragent like:  BlackBerry9700/5.0.0.442 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/100 
+            // If Blackberry OS6 or higher, then expect to see useragent like:  
+            //     Mozilla/5.0 (BlackBerry; U; BlackBerry 9810; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.261 Mobile Safari/534.11+ 
+            if (iOSPos == 0) {
+                strOS = userAgent.substring(iOSPos + 10, InStr(userAgent.substring(iOSPos + 10), "/"));
+            } else {
+                var iBBModel = InStr(userAgent, " BlackBerry ") + 12;
+                strOS = "BB" + userAgent.substr(iBBModel, InStr(userAgent.substr(iBBModel), ";"));
+            }
+        }else{
+			strOS = "Unknown Browser";
+		}
     }
 
     /* Determine local time */
