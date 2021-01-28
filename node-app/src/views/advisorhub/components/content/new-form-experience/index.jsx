@@ -67,8 +67,8 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
                     <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
                     <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
-                        {filtersData.forms.tags.map((obj) => {
-                            return <div className="filter"><input type="checkbox" name={obj.id} value={obj.title}></input><label for={obj.title}>{obj.title}</label></div>
+                        {Object.keys(filtersData).map((key) => {
+                            return <div className="filter"><input type="checkbox" name={filtersData[key].id} value={filtersData[key].title}></input><label for={filtersData[key].title}>{filtersData[key].title}</label></div>
                         })}
                         <button type="button" className="filterSubmit" onClick={addFilter}>{filterBtnTxt}</button>
                     </form>
@@ -80,7 +80,7 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
                     filter={globalFilter}
                     setFilter={setGlobalFilter}
                     filteredData={data}
-                    callback={callBack()}
+                    callback={callBack}
                 />
             </div>
             <table className="new-form-table" {...getTableProps()}>
@@ -936,7 +936,7 @@ class NewFormExperience extends React.Component {
             dataType: "json",
             success: (response) => {
                 this.setState({
-                    filters: response
+                    filters: response.forms.tags
                 })
             },
             error: (err) => {
@@ -1034,7 +1034,7 @@ class NewFormExperience extends React.Component {
         })
         if (selFilters.length > 0) {
             var remainingFilters = [];
-            this.state.filters.forms.tags.map((obj) => {
+            this.state.filters.map((obj) => {
                 for (var i = 0; i <= selFilters.length; i++) {
                     if (selFilters[i] == obj.title) {
                         remainingFilters.push(obj.id)
