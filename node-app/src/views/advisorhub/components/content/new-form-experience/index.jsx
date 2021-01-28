@@ -103,7 +103,7 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
                 </tbody>
             </table>
             {/*  Pagination Component*/}
-            <div class="pagination-component">
+            {data.length > 15 && <div class="pagination-component">
                 <nav role="navigation" aria-label="Pagination" class="text-center">
                     <ul className={`pagination pagination-list ${pageIndex + 1 < 2 ? 'first-page' : ''} ${pageIndex + 1 >= pageOptions.length ? 'last-page' : ''}`}>
                         {pageIndex + 1 != 1 && <li className={`previous ${(pageIndex + 1) < 2 ? 'disabled' : ''}`} onClick={() => previousPage()} disabled={!canPreviousPage}>
@@ -136,7 +136,7 @@ function Table({ columns, data, sortyBy, togglefilter, addFilterTxt, filtersData
 
                     </ul>
                 </nav>
-            </div>
+            </div>}
         </div>
     )
 }
@@ -164,6 +164,8 @@ class NewFormExperience extends React.Component {
         this.sortColumn = this.sortColumn.bind(this);
         this.getTableData = this.getTableData.bind(this);
         this.getFilterData = this.getFilterData.bind(this);
+        this.removeFavorite = this.removeFavorite.bind(this);
+        this.markFavorite = this.markFavorite.bind(this);
     }
 
     componentDidMount() {
@@ -1046,6 +1048,12 @@ class NewFormExperience extends React.Component {
         }
 
     }
+    removeFavorite() {
+        console.log('remove favorite');
+    }
+    markFavorite() {
+        console.log('mark as favorite');
+    }
     render() {
         const columns = [
             {
@@ -1090,9 +1098,9 @@ class NewFormExperience extends React.Component {
                         accessor: function favorite(obj) {
                             var fav = obj.favorite;
                             if (fav == true) {
-                                return <i class="fa fa-star star-selected" ></i>
+                                return <i class="fa fa-star star-selected" onClick={this.removeFavorite}></i>
                             } else {
-                                return <i class="fa fa-star star-not-selected" onclick='star()'></i>
+                                return <i class="fa fa-star star-not-selected" onClick={this.markFavorite}></i>
                             }
                         }
                     },
