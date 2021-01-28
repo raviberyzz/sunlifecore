@@ -67,8 +67,8 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
                     <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
                     <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
-                        {Object.keys(filtersData).map((obj) => {
-                            return <div className="filter"><input type="checkbox" name={filtersData[obj].id} value={filtersData[obj].title}></input><label for={filtersData[obj].title}>{filtersData[obj].title}</label></div>
+                        {filtersData.forms.tags.map((obj) => {
+                            return <div className="filter"><input type="checkbox" name={obj.id} value={obj.title}></input><label for={obj.title}>{obj.title}</label></div>
                         })}
                         <button type="button" className="filterSubmit" onClick={addFilter}>{filterBtnTxt}</button>
                     </form>
@@ -1034,10 +1034,10 @@ class NewFormExperience extends React.Component {
         })
         if (selFilters.length > 0) {
             var remainingFilters = [];
-            Object.keys(this.state.filters).map((obj) => {
+            this.state.filters.forms.tags.map((obj) => {
                 for (var i = 0; i <= selFilters.length; i++) {
-                    if (selFilters[i] == this.state.filters[obj].title) {
-                        remainingFilters.push(this.state.filters[obj].id)
+                    if (selFilters[i] == obj.title) {
+                        remainingFilters.push(obj.id)
                     }
                 }
             })
