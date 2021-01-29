@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -101,7 +102,7 @@ public class NewsroomAnnouncementModel {
 	private final Map<String, String> articleData = new HashMap<>();
 	
 	  /** The yearUrlMap. */
-	  private final Map <Integer, String> yearUrlMap = new HashMap <>();
+	  private final Map <Integer, String> yearUrlMap = new LinkedHashMap <>();
 
 	/**
 	 * Gets the article data.
