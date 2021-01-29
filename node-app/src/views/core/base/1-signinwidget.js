@@ -169,6 +169,7 @@ function getBrowserInfo() {
         }
 
         /* Determine Operating System */
+		/*
         if (InStr(userAgent, "Windows NT 5.2") >= 0) {
             strOS = "Win2003";
         } else if (InStr(userAgent, "Windows NT 5.0") >= 0) {
@@ -204,7 +205,13 @@ function getBrowserInfo() {
             }
         } else {
             strOS = "Unknown Browser";
-        }
+        }*/
+		
+		if(InStr(userAgent, "Windows NT 5.2") >= 0  || InStr(userAgent, "Windows NT 5.0") >= 0 || InStr(userAgent, "Windows XP") >= 0 || InStr(userAgent, "Windows NT 5.1") >= 0 || InStr(userAgent, "Windows 98") >= 0 || InStr(userAgent, "Win98") >= 0 || InStr(userAgent, "Windows 95") >= 0 || InStr(userAgent, "Windows NT") >= 0 || InStr(userAgent, "Windows 3.1") >= 0 || InStr(userAgent, "Windows") >= 0 || InStr(userAgent, "Macintosh") >= 0 || InStr(userAgent, "Mac OS X") >= 0 || InStr(userAgent, "X11") >= 0 || InStr(userAgent, "BlackBerry") >= 0){
+            strOS = userAgent;
+        }else{
+			strOS = "Unknown Browser";
+		}
     }
 
     /* Determine local time */
