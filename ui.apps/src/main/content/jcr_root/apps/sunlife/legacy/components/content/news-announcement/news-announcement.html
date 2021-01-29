@@ -1,5 +1,5 @@
 <sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
-<div class='news-announcement'>
+<div class="news-announcement">
 <ul class="clearfix" id="tertiary" data-sly-list.year="${newsroomAnnouncement.yearUrlMap}">
     <li>
         <a  x-cq-linkchecker="skip" href="${newsroomAnnouncement.yearUrlMap[year] @extension='html'}" target='_self'>${year}</a>
