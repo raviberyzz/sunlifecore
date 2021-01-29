@@ -1,4 +1,4 @@
-const GlobalFilter = ({ setFilter, filterData, callback }) => {
+const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
     function search() {
         var filterValue = $('.search').val();
         callback();
@@ -8,6 +8,7 @@ const GlobalFilter = ({ setFilter, filterData, callback }) => {
         $('.search').val('');
         console.log(filterData);
         setFilter('');
+        refreshData();
     }
     return (
         <div className="searchContainer">
@@ -25,7 +26,7 @@ const GlobalFilter = ({ setFilter, filterData, callback }) => {
 
     )
 }
-function Table({ columns, data, sortyBy, searchCallBack, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
+function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -59,6 +60,9 @@ function Table({ columns, data, sortyBy, searchCallBack, togglefilter, addFilter
     function callBack() {
         searchCallBack()
     }
+    function refreshTableData() {
+        resetTableData()
+    }
     return (
         <div className="tableContainer">
 
@@ -82,6 +86,7 @@ function Table({ columns, data, sortyBy, searchCallBack, togglefilter, addFilter
                     setFilter={setGlobalFilter}
                     filteredData={data}
                     callback={callBack}
+                    refreshData={refreshTableData}
                 />
             </div>
             <table className="new-form-table" {...getTableProps()}>
@@ -175,6 +180,7 @@ class NewFormExperience extends React.Component {
         this.removeFavorite = this.removeFavorite.bind(this);
         this.markFavorite = this.markFavorite.bind(this);
         this.SearchSort = this.SearchSort.bind(this);
+        this.resetSearchData = this.resetSearchData.bind(this);
     }
 
     componentDidMount() {
@@ -1065,7 +1071,21 @@ class NewFormExperience extends React.Component {
     }
 
     SearchSort() {
-        console.log('data coming from new form experience function');
+        var searchResultRows = [];
+        var filter = $('.search').val();
+        this.state.data.map((obj) => {
+            if (obj.formNumber.indexOf(filter) > -1 || obj.formInformation.indexOf(filter) > -1) {
+                searchResultRows.push(obj);
+            }
+        })
+        this.setState({
+            data: searchResultRows
+        })
+    }
+    resetSearchData() {
+        this.setState({
+            data: this.state.originalData
+        })
     }
     render() {
         const columns = [
@@ -1165,6 +1185,7 @@ class NewFormExperience extends React.Component {
                     data={this.state.data}
                     sortyBy={this.sortColumn}
                     searchCallBack={this.SearchSort}
+                    resetTableData={this.resetSearchData}
                     search={this.setFilteredData}
                     togglefilter={this.toggleFilter}
                     addFilterTxt={this.props.addFilterText}
