@@ -36,7 +36,7 @@ public class LuminoModelTest {
         subject.initialize();
         verify(currentPage).getLanguage(false);
         assertEquals("en", subject.getLanguage());
-        assertEquals("luminohealth.sunlife.com", subject.getRedirectHost());
+        assertEquals("luminohealth.sunlife.ca", subject.getRedirectHost());
     }
 
     @Test
@@ -46,6 +46,6 @@ public class LuminoModelTest {
         subject.initialize();
         verify(currentPage).getLanguage(false);
         assertEquals("fr", subject.getLanguage());
-        assertEquals("luminosante.sunlife.com", subject.getRedirectHost());
+        assertEquals("luminosante.sunlife.ca", subject.getRedirectHost());
     }
 }

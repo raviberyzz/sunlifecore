@@ -51,7 +51,7 @@ public class LuminoModel {
        } else {
            result.append("health");
        }
-       result.append(".sunlife.com");
+       result.append(".sunlife.ca");
 
        return result.toString();
 
