@@ -319,6 +319,8 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 				final Resource currentResource = request.getResource();
 				ValueMap currResValueMap = currentResource.getValueMap();
 				sb.append(currResValueMap.getOrDefault("headInclude", StringUtils.EMPTY));
+				sb.append("<body id=\"fundfactsinfo\">");
+				sb.append("<div id=\"wrapper\">");
 				final Resource pageResource = coreResourceResolver.getResourceResolver()
 						.getResource(request.getResource().getPath().concat("/root"));
 				if (null != pageResource) {
@@ -348,7 +350,9 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						sb.append(compiledOutput);
 					});
 				}
+				sb.append("</div>");
 				sb.append(currResValueMap.getOrDefault("bodyInclude", StringUtils.EMPTY));
+				sb.append("</body>");
 				compiledData = sb.toString();
 				LOG.debug("FundFactPDFServiceImpl :: processing of response completed :: {}", compiledData);
 			}
