@@ -6,6 +6,7 @@ package ca.sunlife.web.cms.core.models;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -151,7 +152,7 @@ public class NewsroomAnnouncementModel {
 
 	
 	public Map<Integer, String> getYearUrlMap() {
-		return yearUrlMap;
+		return Collections.unmodifiableMap(yearUrlMap);
 	}
 
 	/**
@@ -165,19 +166,19 @@ public class NewsroomAnnouncementModel {
 		try {
 			final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
 			LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
-			String pageParentPath="";
-			if(null != currentPage && null!= currentPage.getParent(PARENT_LEVEL) && null!=currentPage.getParent(PARENT_LEVEL).getPath()) {
-				pageParentPath=currentPage.getParent(PARENT_LEVEL).getPath()!=null?currentPage.getParent(PARENT_LEVEL).getPath():"";
-				int currentYear=Calendar.getInstance().get(Calendar.YEAR);
-				String yearPath="";
-				LOGGER.debug("current year {}",currentYear);
-				for (int i=0; i<3; i++) {
-					yearPath=pageParentPath + SLASH + currentYear;
-					yearUrlMap.put(currentYear--,yearPath);
+			String pageParentPath = "";
+			if (null != currentPage && null != currentPage.getParent(PARENT_LEVEL) && null != currentPage.getParent(PARENT_LEVEL).getPath()) {
+				pageParentPath = currentPage.getParent(PARENT_LEVEL).getPath();
+				int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+				String yearPath = "";
+				LOGGER.debug("current year {}", currentYear);
+				for (int i = 0; i < 3; i++) {
+					yearPath = pageParentPath + SLASH + currentYear;
+					yearUrlMap.put(currentYear--, yearPath);
 				}
 			}
 			
-			LOGGER.debug("Year list {}",yearUrlMap);
+			LOGGER.debug("Year list {}", yearUrlMap);
 			final Resource articleResource = resourceResolver.getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
 			if (null != articleResource) {
 				LOGGER.debug("Parsing Article Data");
