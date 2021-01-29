@@ -25,7 +25,7 @@ const GlobalFilter = ({ setFilter, filterData, callback }) => {
 
     )
 }
-function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
+function Table({ columns, data, sortyBy, searchCallBack, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -56,7 +56,7 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
     function sort() {
         sortyBy();
     }
-    function callBack(){
+    function callBack() {
         searchCallBack()
     }
     return (
@@ -64,7 +64,8 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
 
             <div className="filterSearchContainer">
                 <div className="filter-container">
-                    <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
+                    {data.length > 0 ? <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
+                        : <div className="counter">0 - 0 of 0</div>}
                     <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
                     <form className="filters">
                         {Object.keys(filtersData).map((key) => {
@@ -105,9 +106,10 @@ function Table({ columns, data, sortyBy,searchCallBack, togglefilter, addFilterT
                                 })}
                             </tr>
                         )
-                    }): <tr>No Data available </tr>}
+                    }) : ""}
                 </tbody>
             </table>
+            {data.length < 1 && <div className="noData"> No Data available </div>}
             {/*  Pagination Component*/}
             {data.length > 15 && <div class="pagination-component">
                 <nav role="navigation" aria-label="Pagination" class="text-center">
@@ -1062,7 +1064,7 @@ class NewFormExperience extends React.Component {
         console.log('mark as favorite');
     }
 
-    SearchSort(){
+    SearchSort() {
         console.log('data coming from new form experience function');
     }
     render() {
@@ -1121,14 +1123,14 @@ class NewFormExperience extends React.Component {
 
         // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
         // const filters = { "wealth": { "id": "sunlife:advisorhub/wealth", "title": "Wealth", "tags": [] }, "your-business": { "id": "sunlife:advisorhub/your-business", "title": "Your business", "tags": [] }, "health-insurance": { "id": "sunlife:advisorhub/health-insurance", "title": "Health insurance", "tags": [] }, "products-and-solutions": { "id": "sunlife:advisorhub/products-and-solutions", "title": "Products and solutions", "tags": [] }, "title": "advisorhub", "questionnaires": { "id": "sunlife:advisorhub/questionnaires", "title": "Questionnaires", "tags": [] }, "beneficiary": { "id": "sunlife:advisorhub/beneficiary", "title": "Beneficiary", "tags": [] }, "compliance": { "id": "sunlife:advisorhub/compliance", "title": "Compliance", "tags": [] }, "conversion(s)": { "id": "sunlife:advisorhub/conversion(s)", "title": "Conversion(s)", "tags": [] }, "name": "advisorhub", "id": "sunlife:advisorhub", "life-insurance": { "id": "sunlife:advisorhub/life-insurance", "title": "Life insurance", "tags": [] }, "policy-changes": { "id": "sunlife:advisorhub/policy-changes", "title": "Policy changes", "tags": [] }, "client-service": { "id": "sunlife:advisorhub/client-service", "title": "Client Service", "tags": [] } };
-        $('.fa-star').on('click',function(){
-            if($(this).hasClass('star-selected')){
+        $('.fa-star').on('click', function () {
+            if ($(this).hasClass('star-selected')) {
                 $(this).removeClass('star-selected');
                 $(this).addClass('star-not-selected');
-                console.log('ajax post call'); 
-            }else{
-                $(this).removeClass('star-not-selected'); 
-                $(this).addClass('star-selected') 
+                console.log('ajax post call');
+            } else {
+                $(this).removeClass('star-not-selected');
+                $(this).addClass('star-selected')
                 console.log('ajax post call');
             }
         })
@@ -1162,7 +1164,7 @@ class NewFormExperience extends React.Component {
                 <Table columns={columns}
                     data={this.state.data}
                     sortyBy={this.sortColumn}
-                    searchCallBack = {this.SearchSort}
+                    searchCallBack={this.SearchSort}
                     search={this.setFilteredData}
                     togglefilter={this.toggleFilter}
                     addFilterTxt={this.props.addFilterText}

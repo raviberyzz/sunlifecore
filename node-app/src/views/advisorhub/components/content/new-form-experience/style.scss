@@ -79,6 +79,13 @@
     }
 }
 .tableContainer{
+    .filterSearchContainer{
+        margin-top:20px;
+    }
+    .noData{
+        text-align: center;
+        margin:32px 0px;
+    }
    // text-align: right;
    .counter{
        margin-left:15px;
@@ -208,7 +215,7 @@
             } */
             .counter{
                 position: absolute;
-                top:6px;
+                top:26px;
             }
         }
         .searchContainer{
