@@ -5,8 +5,11 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -56,6 +59,15 @@ public class NewsroomAnnouncementModel {
 
 	/** The Constant NEWSROOM_HEADING. */
 	private static final String NEWSROOM_HEADING = "newsroomHeading";
+	
+	/** The Constant NEWSROOM_MINI_DESC. */
+	private static final String NEWSROOM_MINI_DESC = "newsroomMiniDesc";
+	
+	/** The Constant SLASH. */
+	private static final String SLASH = "/";
+	
+	/** The Constant PARENT_LEVEL. */
+	private static final int PARENT_LEVEL = 2;
 
 	/** The Constant logger. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(NewsroomAnnouncementModel.class);
@@ -88,6 +100,9 @@ public class NewsroomAnnouncementModel {
 
 	/** The article data. */
 	private final Map<String, String> articleData = new HashMap<>();
+	
+	  /** The yearUrlMap. */
+	  private final Map <Integer, String> yearUrlMap = new LinkedHashMap <>();
 
 	/**
 	 * Gets the article data.
@@ -136,6 +151,11 @@ public class NewsroomAnnouncementModel {
 		this.checkboxHideDate = checkboxHideDate;
 	}
 
+	
+	public Map<Integer, String> getYearUrlMap() {
+		return Collections.unmodifiableMap(yearUrlMap);
+	}
+
 	/**
 	 * Inits the.
 	 */
@@ -147,6 +167,19 @@ public class NewsroomAnnouncementModel {
 		try {
 			final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
 			LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
+			String pageParentPath = "";
+			if (null != currentPage && null != currentPage.getParent(PARENT_LEVEL) && null != currentPage.getParent(PARENT_LEVEL).getPath()) {
+				pageParentPath = currentPage.getParent(PARENT_LEVEL).getPath();
+				int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+				String yearPath = "";
+				LOGGER.debug("current year {}", currentYear);
+				for (int i = 0; i < 3; i++) {
+					yearPath = pageParentPath + SLASH + currentYear;
+					yearUrlMap.put(currentYear--, yearPath);
+				}
+			}
+			
+			LOGGER.debug("Year list {}", yearUrlMap);
 			final Resource articleResource = resourceResolver.getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
 			if (null != articleResource) {
 				LOGGER.debug("Parsing Article Data");
@@ -159,6 +192,9 @@ public class NewsroomAnnouncementModel {
 								: StringUtils.EMPTY);
 				articleData.put(NEWSROOM_PAGE_PATH,
 						articleContent.containsKey(NEWSROOM_PAGE_PATH) ? articleContent.get(NEWSROOM_PAGE_PATH, String.class)
+								: StringUtils.EMPTY);
+				articleData.put(NEWSROOM_MINI_DESC,
+						articleContent.containsKey(NEWSROOM_MINI_DESC) ? articleContent.get(NEWSROOM_MINI_DESC, String.class)
 								: StringUtils.EMPTY);
 				setArticlePublishDate(articleContent);
 			}

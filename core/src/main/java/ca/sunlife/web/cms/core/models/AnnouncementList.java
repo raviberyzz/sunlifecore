@@ -164,7 +164,7 @@ public class AnnouncementList {
 
   /** The Constant ELEMENT_NAMES. */
   private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading",
-      "newsroomPagePath", "newsroomContent" };
+      "newsroomPagePath","newsroomMiniDesc", "newsroomContent" };
 
   /** The slash. */
   private static String slash = "/";
