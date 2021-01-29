@@ -5,13 +5,9 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -32,7 +28,6 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
