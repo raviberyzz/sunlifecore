@@ -1,13 +1,16 @@
-<sly data-sly-use.lumino="ca.sunlife.web.cms.advisorhub.models.LuminoModel" />
+<sly data-sly-use.lumino="ca.sunlife.web.cms.advisorhub.models.LuminoModel"/>
+
 <div data-lumino-widget='ProviderSearchLauncher'
-         data-lumino-default-location='${properties.location}' 
-         data-lumino-default-specialty='${properties.specialty}'
-         data-lumino-language='${lumino.language}'
-         data-lumino-google-api-key='${currentStyle.googleapikey}'
-         data-lumino-service-host='services.sunlife.com'
-         data-lumino-redirect-host='${lumino.redirectHost}'
-         data-lumino-partner-name=' ${currentStyle.partnername}'
-         data-lumino-page-name='${currentPage.title}'>
+     data-sly-use.lumino="ca.sunlife.web.cms.advisorhub.models.LuminoModel"
+     data-lumino-default-location='${properties.location}'
+     data-lumino-default-specialty='${properties.specialty}'
+     data-lumino-language='${lumino.language}'
+     data-lumino-google-api-key='${currentStyle.googleapikey}'
+     data-lumino-service-host='services.sunlife.com'
+     data-lumino-redirect-host='${lumino.redirectHost}'
+     data-lumino-partner-name=' ${currentStyle.partnername}'
+     data-lumino-page-name='${lumino.analyticsName}'
+     data-title="${properties.dataTitle}">
 </div>
 <script src="https://luminohealth.sunlife.ca/lumino-ps-launcher-widget/js/luminowidget.bundle.js"></script>
 

@@ -6,6 +6,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,11 @@ public class LuminoModel {
   @ScriptVariable
   private Page currentPage;
 
+  @ValueMapValue
+  private String dataTitle;
+
   private String language;
+  private String pageTitle;
 
   /**
    *Gets the language code from the current page locale's language
@@ -57,13 +62,33 @@ public class LuminoModel {
 
    }
 
+   public String getAnalyticsName() {
+       String result;
+       if (dataTitle == null) {
+           result = pageTitle;
+       } else {
+           result = dataTitle;
+       }
+       return result;
+   }
+
    @PostConstruct
     protected void initialize() {
        if (currentPage != null) {
            language = currentPage.getLanguage(false).getLanguage();
+
+           pageTitle = currentPage.getPageTitle();
+           if(pageTitle == null) {
+               pageTitle = currentPage.getTitle();
+           }
+           if (pageTitle == null) {
+               pageTitle = currentPage.getName();
+           }
+
        } else {
            language = "en";
            LOG.warn("Failed to identify configured page language. Defaulting to \"en\"");
+           pageTitle = "";
        }
    }
 
