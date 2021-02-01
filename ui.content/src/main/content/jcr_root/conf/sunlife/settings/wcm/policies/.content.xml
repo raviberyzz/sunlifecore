@@ -162,7 +162,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife GIF Funds"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="/apps/sunlife/legacy/components/content/tinymcecomponent">
+                        components="/apps/sunlife/legacy/components/content/html-component">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_slgi_gif_fund>
                 </responsivegrid>
