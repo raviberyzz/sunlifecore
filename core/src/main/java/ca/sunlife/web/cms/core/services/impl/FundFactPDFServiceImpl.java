@@ -72,187 +72,187 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 
 	/** The salseChargeSectionHideClasses. */
 	public static final String salseChargeSectionHideClasses = "IF,EF,AF,PF,SF";
-	
+
 	/** The iOClasses. */
 	public static final String iOClasses = "IO,EO,AO,SO";
-	
+
 	/** The salseChargeSectionDeferedHideClasses. */
 	public static final String salseChargeSectionDeferedHideClasses = "IO,IF,EO,EF,AO,AF,PF,SO,SF";
-	
+
 	/** The strfundFactsResponse. */
 	public static final String strfundFactsResponse = "fundFactsResponse";
-	
+
 	/** The strfundFactsData. */
 	public static final String strfundFactsData = "fundFactsData";
-	
+
 	/** The bolFundLessThanOneYear. */
 	public static final String bolFundLessThanOneYear = "fundLessThanOneYear";
-	
+
 	/** The bolUnderlying. */
 	public static final String bolUnderlying = "underlying";
-	
+
 	/** The bolGuaranteeSeriesAvailable. */
 	public static final String bolGuaranteeSeriesAvailable = "guaranteeSeriesAvailable";
-	
+
 	/** The keySingleValuesMap. */
 	public static final String keySingleValuesMap = "values";
-	
+
 	/** The keyYearByYearReturnAvailable. */
 	public static final String keyYearByYearReturnAvailable = "yearByYearReturnAvailable";
-	
+
 	/** The keyNumberOfYears. */
 	public static final String keyNumberOfYears = "numberOfYears";
-	
+
 	/** The keyMaxReturnYear. */
 	public static final String keyMaxReturnYear = "maxReturnYear";
-	
+
 	/** The keyMinReturnYear. */
 	public static final String keyMinReturnYear = "minReturnYear";
-	
+
 	/** The keytotalvalueon. */
 	public static final String keytotalvalueon = "TotalValueOn";
-	
+
 	/** The keyunderlyingfund. */
 	public static final String keyunderlyingfund = "UnderlyingFund";
-	
+
 	/** The keyproductname. */
 	public static final String keyproductname = "ProductName";
-	
+
 	/** The keyplandate. */
 	public static final String keyplandate = "PlanDate";
-	
+
 	/** The keyfellow. */
 	public static final String keyfellow = "FELLow";
-	
+
 	/** The keytotalnumberofinvestments. */
 	public static final String keytotalnumberofinvestments = "TotalNumberOfInvestments";
-	
+
 	/** The keyfundclass. */
 	public static final String keyfundclass = "FundClass";
-	
+
 	/** The keyturnover. */
 	public static final String keyturnover = "TurnOver";
-	
+
 	/** The keyreturnamount. */
 	public static final String keyreturnamount = "ReturnAmount";
-	
+
 	/** The keyfelhigh. */
 	public static final String keyfelhigh = "FELHigh";
-	
+
 	/** The keyriskratingvalue. */
 	public static final String keyriskratingvalue = "RiskRatingValue";
-	
+
 	/** The keyreasonstoinvestcaution. */
 	public static final String keyreasonstoinvestcaution = "ReasonsToInvestCaution";
-	
+
 	/** The keyfundmanager. */
 	public static final String keyfundmanager = "FundManager";
-	
+
 	/** The keydateseries. */
 	public static final String keydateseries = "DateSeries";
-	
+
 	/** The keywithdrawdays. */
 	public static final String keywithdrawdays = "WithdrawDays";
-	
+
 	/** The keysubadvisor. */
 	public static final String keysubadvisor = "SubAdvisor";
-	
+
 	/** The keyreturndate. */
 	public static final String keyreturndate = "ReturnRate";
-	
+
 	/** The keyfundname. */
 	public static final String keyfundname = "FundName";
-	
+
 	/** The keyfundobjective. */
 	public static final String keyfundobjective = "FundObjective";
-	
+
 	/** The keytrailingcommission. */
 	public static final String keytrailingcommission = "TrailingCommission";
-	
+
 	/** The keyfundunderlying. */
 	public static final String keyfundunderlying = "FundUnderlying";
-	
+
 	/** The keydatefund. */
 	public static final String keydatefund = "DateFund";
-	
+
 	/** The keytotalvalueamount. */
 	public static final String keytotalvalueamount = "TotalValueAmount";
-	
+
 	/** The keyadvisorcommission. */
 	public static final String keyadvisorcommission = "AdvisorCommission";
-	
+
 	/** The lowstringEN. */
 	public static final String lowstringEN = "low";
-	
+
 	/** The lowstringFR. */
 	public static final String lowstringFR = "faible";
-	
+
 	/** The lowtomedstringEN. */
 	public static final String lowtomedstringEN = "low-to-medium";
-	
+
 	/** The lowtomedstringFR. */
 	public static final String lowtomedstringFR = "faible à moyenne"; // faible à moyenne
-	
+
 	/** The medstringEN. */
 	public static final String medstringEN = "medium";
-	
+
 	/** The medstringFR. */
 	public static final String medstringFR = "moyenne";
-	
+
 	/** The medtohighstringEN. */
 	public static final String medtohighstringEN = "medium-to-high";
-	
+
 	/** The medtohighstringFR. */
 	public static final String medtohighstringFR = "moyenne à élevée";
-	
+
 	/** The highstringEN. */
 	public static final String highstringEN = "high";
-	
+
 	/** The highstringFR. */
 	public static final String highstringFR = "élevée";
-	
+
 	/** The strTrailingCommission. */
 	public static final String strTrailingCommission = "TrailingCommission";
-	
+
 	/** The strTurnOverRate. */
 	public static final String strTurnOverRate = "TurnOver";
-	
+
 	/** The strNAEN. */
 	public static final String strNAEN = "N/A";
-	
+
 	/** The strNAFR. */
 	public static final String strNAFR = "s.o.";
-	
+
 	/** The incomingDateFormatEN. */
 	public static final String incomingDateFormatEN = "dd/MM/yyyy";
-	
+
 	/** The incomingDateFormatFR. */
 	public static final String incomingDateFormatFR = "dd/MM/yyyy";
-	
+
 	/** The outcomingDateFormatEN. */
 	public static final String outcomingDateFormatEN = "MMMMMMMM dd, yyyy";
-	
+
 	/** The outcomingDateFormatFR. */
 	public static final String outcomingDateFormatFR = "dd MMMMMMMM yyyy";
-	
+
 	/** The errorjsonEN. */
 	public static final String errorjsonEN = "{\"fundFactsResponse\": {\"returnCode\": \"9\",\"returnMessage\": \"Data not available\"}}";
-	
+
 	/** The errorjsonFR. */
 	public static final String errorjsonFR = "{\"fundFactsResponse\": {\"returnCode\": \"9\",\"returnMessage\": \"Data not available-FR\"}}";
 
 	/** The sungifssolutionen. */
 	public static final String sungifssolutionen = "Sun GIF Solutions";
-	
+
 	/** The sungifssolutionfr. */
 	public static final String sungifssolutionfr = "Solutions FPG Sun Life";
 
 	/** The pichartURLPlaceholder. */
 	private static final String pichartURLPlaceholder = "PI-CHART-URL-PLACEHOLDER";
-	
+
 	/** The barchartURLPlaceholder. */
 	private static final String barchartURLPlaceholder = "BAR-CHART-URL-PLACEHOLDER";
-	
+
 	/** The barChartHiddenTablePlaceholder. */
 	private static final String barChartHiddenTablePlaceholder = "BAR-CHART-HIDDEN-TABLE-PLACEHOLDER";
 
@@ -279,7 +279,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 			throws ApplicationException, SystemException, IOException, LoginException {
 		LOG.debug("Entry :: FundFactPDFServiceImpl :: getCompiledData :: {}", request);
 		String compiledData = null;
-		//String reqParams = request.getParameter("fparams");
+		// String reqParams = request.getParameter("fparams");
 		String reqParams = request.getRequestPathInfo().getSelectors()[1];
 		LOG.debug("FundFactPDFServiceImpl :: reqParams :: {}", reqParams);
 		if (null != reqParams && reqParams.length() > 0) {
@@ -325,29 +325,59 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						.getResource(request.getResource().getPath().concat("/root"));
 				if (null != pageResource) {
 					pageResource.getChildren().forEach(child -> {
-						String compiledOutput = null;
-						final MustacheFactory mf = new DefaultMustacheFactory();
-						final StringWriter writer = new StringWriter();
-						ValueMap valueMap = child.getValueMap();
-						// Reads mustache template from HTML component
-						final String mustachTemplate = (String) valueMap.getOrDefault("text", StringUtils.EMPTY);
-						LOG.debug("FundFactPDFServiceImpl :: mustachTemplate :: {}", mustachTemplate);
-						final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
-						mustache.execute(writer, fundFactsData);
-						// Appends the compiled template to sb
-						compiledOutput = writer.toString();
-						if (compiledOutput.indexOf(pichartURLPlaceholder) > -1) {
-							compiledOutput = compiledOutput.replaceAll(pichartURLPlaceholder, pichartURLprop);
+						try {
+							final Resource childResource = coreResourceResolver.getResourceResolver()
+									.getResource(child.getPath().concat("/container1"));
+							if (null == childResource) {
+								return;
+							}
+							// If first layout container
+							if (child.getName().equals("layout_container")) {
+								childResource.getChildren().forEach(htmlChild -> {
+									final MustacheFactory mf = new DefaultMustacheFactory();
+									final StringWriter writer = new StringWriter();
+									ValueMap valueMap = htmlChild.getValueMap();
+									// Reads mustache template from HTML component
+									final String mustachTemplate = (String) valueMap.getOrDefault("text", StringUtils.EMPTY);
+									LOG.debug("FundFactPDFServiceImpl :: mustachTemplate :: {}", mustachTemplate);
+									final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
+									mustache.execute(writer, fundFactsData);
+									// Appends the compiled template to sb
+									sb.append(writer.toString());
+								});
+							} else { // If others
+								sb.append(
+										"<div class=\"global-content-1column global-content clearfix\" id=\"content\"><div class=\"global-col1\" role=\"main\" id=\"mainbodycontent\"><div class=\"main-content\">");
+								childResource.getChildren().forEach(htmlChild -> {
+									final StringWriter writer = new StringWriter();
+									final MustacheFactory mf = new DefaultMustacheFactory();
+									String compiledOutput = null;
+									ValueMap valueMap = htmlChild.getValueMap();
+									// Reads mustache template from HTML component
+									final String mustachTemplate = (String) valueMap.getOrDefault("text", StringUtils.EMPTY);
+									LOG.debug("FundFactPDFServiceImpl :: mustachTemplate :: {}", mustachTemplate);
+									final Mustache mustache = mf.compile(new StringReader(mustachTemplate), " ");
+									mustache.execute(writer, fundFactsData);
+									// Appends the compiled template to sb
+									compiledOutput = writer.toString();
+									if (compiledOutput.indexOf(pichartURLPlaceholder) > -1) {
+										compiledOutput = compiledOutput.replaceAll(pichartURLPlaceholder, pichartURLprop);
+									}
+									if (compiledOutput.indexOf(barchartURLPlaceholder) > -1) {
+										compiledOutput = compiledOutput.replaceAll(barchartURLPlaceholder, barchartURLprop);
+										// Changes for accessibility defects for gifs 2020
+										String hiddenTable = createDataTable(fundFactsData.getPerformanceData(),
+												fundFactsData.getSingleValueMap());
+										compiledOutput = compiledOutput.replaceAll(barChartHiddenTablePlaceholder, hiddenTable);
+										LOG.debug("CompiledOutput is {}", compiledOutput);
+									}
+									sb.append(compiledOutput);
+								});
+								sb.append("</div></div></div>");
+							}
+						} catch (LoginException e) {
+							LOG.error("Error :: LoginException :: {}", e);
 						}
-						if (compiledOutput.indexOf(barchartURLPlaceholder) > -1) {
-							compiledOutput = compiledOutput.replaceAll(barchartURLPlaceholder, barchartURLprop);
-							// Changes for accessibility defects for gifs 2020
-							String hiddenTable = createDataTable(fundFactsData.getPerformanceData(),
-									fundFactsData.getSingleValueMap());
-							compiledOutput = compiledOutput.replaceAll(barChartHiddenTablePlaceholder, hiddenTable);
-							LOG.debug("CompiledOutput is {}", compiledOutput);
-						}
-						sb.append(compiledOutput);
 					});
 				}
 				sb.append("</div>");
@@ -635,7 +665,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 							}
 
 							if (!numberUnits.trim().equals("") && languageWS.equalsIgnoreCase("fr")) {
-									numberUnits = numberUnits.replace(".", ",");
+								numberUnits = numberUnits.replace(".", ",");
 							}
 							// boolean guarantyColDisplay = (seriesName == null ||
 							// before adding to bean - need to format for lang
