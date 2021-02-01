@@ -164,10 +164,16 @@ public class AnnouncementList {
 
   /** The Constant ELEMENT_NAMES. */
   private static final String [ ] ELEMENT_NAMES = { "articlePublishedDate", "newsroomHeading",
-      "newsroomPagePath","newsroomMiniDesc", "newsroomContent" };
+      "newsroomPagePath", "newsroomMiniDesc", "newsroomContent" };
 
   /** The slash. */
   private static String slash = "/";
+  
+  /** The Constant SLFAS_PATH. */
+  private static final String SLFAS_PATH = "/content/sunlife/external/ca/slfas/";
+  
+  /** The Constant SITE_SELECTOR. */
+  private static final String SITE_SELECTOR = "siteSelector";
 
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementList.class);
@@ -653,13 +659,21 @@ public class AnnouncementList {
    *          the selectors
    * @param queryParameterMap
    *          the query parameter map
+ * @throws RepositoryException 
+ * @throws LoginException 
+ * @throws NumberFormatException 
    */
   private void setQueryParameterMap(final String [ ] selectors,
-      final Map <String, String> queryParameterMap) {
+      final Map <String, String> queryParameterMap) throws LoginException, RepositoryException {
     int offset = 0;
     final int limit = getMaxItems();
     if (selectors.length > 0) {
-      setPageNum(Integer.parseInt(selectors [ 0 ]));
+    	if (currentPage.getPath().contains(SLFAS_PATH) ) {
+    		setPageNum(Integer.parseInt(getPageNoForSlfas(selectors)));
+        } else {
+    		setPageNum(Integer.parseInt(selectors [ 0 ]));
+        } 
+      
       offset = (getPageNum() - 1) * getMaxItems(); // Pagination
     }
     queryParameterMap.put("path", getParentPath());
@@ -719,9 +733,15 @@ public class AnnouncementList {
     
 
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length > 0) {
-      pageNumStr = selectors [ 0 ];
+    if (selectors.length > 0) { 
+    	if (currentPage.getPath().contains(SLFAS_PATH)) {
+        	pageNumStr = getPageNoForSlfas( selectors);
+          } 
+    	else {
+    		pageNumStr = selectors [ 0 ];
+    	} 
     }
+    
     LOGGER.debug("Fetched params  pageNum: {}, year: {}", pageNumStr, year);
     LOGGER.debug("activeYear :: {}", activeYear);
     final String uri = request.getRequestURI();
@@ -738,4 +758,26 @@ public class AnnouncementList {
     requestURL = configService.getPageUrl(requestURL).substring(0, configService.getPageUrl(requestURL).lastIndexOf(slash));
     LOGGER.debug("requestURL - after clean up: {}", requestURL);
   }
+
+/**
+ * @param pageNumStr
+ * @param selectors
+ * @return
+ * @throws LoginException
+ * @throws RepositoryException
+ */
+private String getPageNoForSlfas(final String[] selectors)
+		throws LoginException, RepositoryException {
+	String pageNumStr = null;
+	if (selectors.length == 1 && !(selectors [ 0 ].equalsIgnoreCase(configService.getConfigValues(SITE_SELECTOR, currentPage.getPath())))) {
+    	pageNumStr = selectors [ 0 ];
+    } else if (selectors.length == 1 && selectors [ 0 ].equalsIgnoreCase(configService.getConfigValues(SITE_SELECTOR, currentPage.getPath()))) {
+    	pageNumStr = "1";
+    } else if (selectors.length > 1 && (selectors [ 0 ].equalsIgnoreCase(configService.getConfigValues(SITE_SELECTOR, currentPage.getPath())))) {
+    	pageNumStr = selectors [ 1 ];
+    }
+	return pageNumStr;
+}
+
+
 }
