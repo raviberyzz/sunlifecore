@@ -4,8 +4,6 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:lastModified="{Date}2021-02-01T15:02:16.076-05:00"
-        cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/advisorhub-outage-model/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
