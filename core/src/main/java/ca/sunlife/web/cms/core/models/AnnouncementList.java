@@ -661,14 +661,13 @@ public class AnnouncementList {
    *          the query parameter map
  * @throws RepositoryException 
  * @throws LoginException 
- * @throws NumberFormatException 
    */
   private void setQueryParameterMap(final String [ ] selectors,
       final Map <String, String> queryParameterMap) throws LoginException, RepositoryException {
     int offset = 0;
     final int limit = getMaxItems();
     if (selectors.length > 0) {
-    	if (currentPage.getPath().contains(SLFAS_PATH) ) {
+    	if (currentPage.getPath().contains(SLFAS_PATH)) {
     		setPageNum(Integer.parseInt(getPageNoForSlfas(selectors)));
         } else {
     		setPageNum(Integer.parseInt(selectors [ 0 ]));
