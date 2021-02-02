@@ -16,11 +16,6 @@
                                     </newsType>
                                 </items>
                             </selectionSection>
-                            <generalSection jcr:primaryType="nt:unstructured">
-                                <items
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:hideChildren="[maxItems]"/>
-                            </generalSection>
                         </items>
                     </tab1>
                 </items>
