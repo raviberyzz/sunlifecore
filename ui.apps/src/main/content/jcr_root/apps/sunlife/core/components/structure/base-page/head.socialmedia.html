@@ -1,5 +1,5 @@
 <sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
-<sly data-sly-test = "${baseModel.disableSocialSharingTags}">
+<sly data-sly-test = "${!baseModel.disableSocialSharingTags}">
 <meta property="${key}"
       data-sly-repeat.key="${baseModel.customMetadata.keySet}"
       content="${baseModel.customMetadata[key] @context='unsafe'}"/>
