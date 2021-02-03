@@ -218,6 +218,14 @@ public interface SiteConfigModel {
   String getEnableContextHub();
   
   /**
+   * Gets the Disable SEO tags.
+   *
+   * @return the Disable SEO tags
+   */
+  @ Inject
+  String getDisableSocialSharingTags();
+  
+  /**
    * Gets the mfaDomainPath param.
    *
    * @return the mfaDomainPath param
