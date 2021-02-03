@@ -6,7 +6,10 @@
          <sly data-sly-test.child = "${item.getChildren}">
             <ul>
                <li>
-                   <a class="current" href="${child[1].URL}">${child[1].title}</a>
+                   <a href="${child[1].URL}">${child[1].title}</a>
+               </li>
+			      <li>
+                   <a href="${child[2].URL}">${child[2].title}</a>
                </li>
             </ul>
          </sly>

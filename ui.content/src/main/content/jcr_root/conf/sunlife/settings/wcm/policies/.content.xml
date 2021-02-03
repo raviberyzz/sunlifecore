@@ -29,7 +29,7 @@
                         components="[/apps/sunlife/ca/components/content/accordion,/apps/sunlife/ca/components/content/advisor-detail/apps/sunlife/ca/components/content/article,/apps/sunlife/ca/components/content/articleList,/apps/sunlife/ca/components/content/breadcrumb,/apps/sunlife/ca/components/content/button,/apps/sunlife/ca/components/content/container,/apps/sunlife/ca/components/content/embed,/apps/sunlife/ca/components/content/footer-copyright,/apps/sunlife/ca/components/form/button,/apps/sunlife/ca/components/form/container,/apps/sunlife/ca/components/form/dropdown,/apps/sunlife/ca/components/form/hidden,/apps/sunlife/ca/components/form/options,/apps/sunlife/ca/components/form/text,/apps/sunlife/ca/components/content/full-header,/apps/sunlife/ca/components/content/html-component,/apps/sunlife/ca/components/content/icon-text,/apps/sunlife/ca/components/content/image,/apps/sunlife/ca/components/content/layout-container,/apps/sunlife/ca/components/content/left-navigation,/apps/sunlife/ca/components/content/life-moments,/apps/sunlife/ca/components/content/link-list,/apps/sunlife/ca/components/content/mega-menu-2,/apps/sunlife/ca/components/content/news-details,/apps/sunlife/ca/components/content/news-list,/apps/sunlife/ca/components/content/provider-profile,/apps/sunlife/ca/components/content/region-language-menu,/apps/sunlife/ca/components/content/separator,/apps/sunlife/ca/components/content/site-map,/apps/sunlife/ca/components/content/table,/apps/sunlife/ca/components/content/tabs,/apps/sunlife/ca/components/content/teaser,/apps/sunlife/ca/components/content/text,/apps/sunlife/ca/components/content/title,/apps/sunlife/ca/components/content/titlebar,/apps/sunlife/ca/components/content/sign-in]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_ca_exp>
-                     <policy_sunlife_us_content
+                    <policy_sunlife_us_content
                         jcr:description="Policy for Content page template for US"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife US Content"
@@ -141,8 +141,8 @@
                         components="[group:Sunlife Microsite]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_sunlife_microsite_content>
-					<policy_legacy_content
-                        jcr:description="Policy for content page template for Legacy Sites"                        
+                    <policy_legacy_content
+                        jcr:description="Policy for content page template for Legacy Sites"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sunlife legacy content"
                         sling:resourceType="wcm/core/components/policy/policy"
@@ -158,6 +158,13 @@
                         components="[/libs/dam/cfm/components/contentfragment,/apps/sunlife/advisorhub/components/content/button,/apps/sunlife/advisorhub/components/content/html-component,/apps/sunlife/advisorhub/components/content/image,/apps/sunlife/advisorhub/components/content/text]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_1468422398876400>
+                    <policy_slgi_gif_fund
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sunlife GIF Funds"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="/apps/sunlife/legacy/components/content/html-component">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_slgi_gif_fund>
                 </responsivegrid>
             </components>
         </foundation>
@@ -231,7 +238,7 @@
                             clientlibs="sunlife.microsite.site">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_microsite_clientlibs>
-						<policy_legacy_clientlibs
+                        <policy_legacy_clientlibs
                             jcr:description="Sunlife source clientlibs"
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Sunlife source clientlibs"
@@ -5922,7 +5929,7 @@
                                             cq:styleClasses="data-content-table-slgi"
                                             cq:styleId="1585555566666"
                                             cq:styleLabel="Data content table"
-                                            jcr:primaryType="nt:unstructured"/>    
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
@@ -6121,6 +6128,17 @@
                             </cq:styleGroups>
                         </policy_signin>
                     </sign-in>
+                    <lumino jcr:primaryType="nt:unstructured">
+                        <policy_lumino
+                            jcr:lastModified="{Date}2021-01-29T11:35:49.820-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Lumino Component Policy"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            partnername="Sun Life Financial">
+                            <jcr:content jcr:primaryType="nt:unstructured"/>
+                        </policy_lumino>
+                    </lumino>
                 </content>
                 <form jcr:primaryType="nt:unstructured">
                     <container jcr:primaryType="nt:unstructured">
@@ -6364,7 +6382,7 @@
                 </structure>
             </components>
         </advisorhub>
-         <us jcr:primaryType="nt:unstructured">
+        <us jcr:primaryType="nt:unstructured">
             <components jcr:primaryType="nt:unstructured">
                 <content jcr:primaryType="nt:unstructured">
                     <text jcr:primaryType="nt:unstructured">
@@ -8378,7 +8396,7 @@
                         </policy_dropdown>
                     </dropdown>
                 </form>
-             </components>
+            </components>
         </us>
         <com jcr:primaryType="nt:unstructured">
             <components jcr:primaryType="nt:unstructured">
@@ -16378,7 +16396,7 @@
                 </form>
             </components>
         </microsite>
-		<legacy jcr:primaryType="nt:unstructured">
+        <legacy jcr:primaryType="nt:unstructured">
             <components jcr:primaryType="nt:unstructured">
                 <content jcr:primaryType="nt:unstructured">
                     <titlebar jcr:primaryType="nt:unstructured">
@@ -18250,6 +18268,6 @@
                     </button>
                 </form>
             </components>
-        </legacy>    
+        </legacy>
     </sunlife>
 </jcr:root>

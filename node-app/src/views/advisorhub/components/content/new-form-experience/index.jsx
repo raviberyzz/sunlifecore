@@ -1,5 +1,32 @@
-function Table({ columns, data }) {
-    // Use the state and functions returned from useTable to build your UI
+const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
+    function search() {
+        var filterValue = $('.search').val();
+        callback();
+        setFilter(filterValue);
+    }
+    function reset() {
+        $('.search').val('');
+        console.log(filterData);
+        setFilter('');
+        refreshData();
+    }
+    return (
+        <div className="searchContainer">
+            <span className="globalSearch">
+                <input
+                    //  value={filter || ''}
+                    placeholder="Search"
+                    className="search"
+                // onChange={e => setFilter(e.target.value)}
+                />
+                <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
+                <button onClick={reset}><i className="fa fa-repeat"></i></button>
+            </span>
+        </div>
+
+    )
+}
+function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -14,202 +41,1164 @@ function Table({ columns, data }) {
         nextPage,
         previousPage,
         setPageSize,
+        setGlobalFilter,
         state: { pageIndex, pageSize },
+        state
     } = ReactTable.useTable(
         {
             columns,
             data,
-            initialState: { pageIndex: 2, pageSize: 5 },
+            initialState: { pageIndex: 0, pageSize: 15 },
         },
+        ReactTable.useGlobalFilter,
         ReactTable.usePagination
     )
-
-    // Render the UI for your table
+    const { globalFilter } = state;
+    function sort() {
+        sortyBy();
+    }
+    function callBack() {
+        searchCallBack()
+    }
+    function refreshTableData() {
+        resetTableData()
+    }
     return (
-        <div>
-            <pre>
-                <code>
-                    {JSON.stringify(
-                        {
-                            pageIndex,
-                            pageSize,
-                            pageCount,
-                            canNextPage,
-                            canPreviousPage,
-                        },
-                        null,
-                        2
-                    )}
-                </code>
-            </pre>
-            <table className="table" {...getTableProps()}>
-                <thead>
+        <div className="tableContainer">
+
+            <div className="filterSearchContainer">
+                <div className="filter-container">
+                    {data.length > 0 ? <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
+                        : <div className="counter">0 - 0 of 0</div>}
+                    <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
+                    <form className="filters">
+                        {Object.keys(filtersData).map((key) => {
+                            return <div className="filter"><input type="checkbox" name={filtersData[key].id} value={filtersData[key].title}></input><label for={filtersData[key].title}>{filtersData[key].title}</label></div>
+                        })}
+                        <button type="button" className="filterSubmit" onClick={addFilter}>{filterBtnTxt}</button>
+                    </form>
+                    {selectedFilters && <div className="selectedFilterContainer">{selectedFilters.map((value) => {
+                        return <button className="selectedFilter filter-buttons" onClick={clearFilter}>{value}<i className="fa fa-times"></i></button>
+                    })} {selectedFilters.length > 0 && <button className="filter-buttons" onClick={clearAll}>{clearAllTxt}</button>}</div>}
+                </div>
+                <GlobalFilter
+                    filter={globalFilter}
+                    setFilter={setGlobalFilter}
+                    filteredData={data}
+                    callback={callBack}
+                    refreshData={refreshTableData}
+                />
+            </div>
+            <table className="new-form-table" {...getTableProps()}>
+                <thead className="table-header">
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            {headerGroup.headers.map((column, index) => (
+                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
+                                    {index == 3 ? <i className="fa fa-sort"></i> : ""}
+                                </th>
                             ))}
                         </tr>
                     ))}
                 </thead>
                 <tbody {...getTableBodyProps()}>
-                    {page.map((row, i) => {
+                    {data.length > 0 ? page.map((row, i) => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()}>
+                            <tr {...row.getRowProps()} className="new-form-tr">
                                 {row.cells.map(cell => {
                                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                 })}
                             </tr>
                         )
-                    })}
+                    }) : ""}
                 </tbody>
             </table>
-            {/* 
-        Pagination can be built however you'd like. 
-        This is just a very basic UI implementation:
-      */}
-            <ul className="pagination">
-                <li className="page-item" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    <a className="page-link">First</a>
-                </li>
-                <li className="page-item" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    <a className="page-link">{'<'}</a>
-                </li>
-                <li className="page-item" onClick={() => nextPage()} disabled={!canNextPage}>
-                    <a className="page-link">{'>'}</a>
-                </li>
-                <li className="page-item" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                    <a className="page-link">Last</a>
-                </li>
-                <li>
-                    <a className="page-link">
-                        Page{' '}
-                        <strong>
-                            {pageIndex + 1} of {pageOptions.length}
-                        </strong>{' '}
-                    </a>
-                </li>
-                <li>
-                    <a className="page-link">
-                        <input
-                            className="form-control"
-                            type="number"
-                            defaultValue={pageIndex + 1}
-                            onChange={e => {
-                                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                                gotoPage(page)
-                            }}
-                            style={{ width: '100px', height: '20px' }}
-                        />
-                    </a>
-                </li>{' '}
-                <select
-                    className="form-control"
-                    value={pageSize}
-                    onChange={e => {
-                        setPageSize(Number(e.target.value))
-                    }}
-                    style={{ width: '120px', height: '38px' }}
-                >
-                    {[5, 10, 20, 30, 40, 50].map(pageSize => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                    ))}
-                </select>
-            </ul>
-        </div >
+            {data.length < 1 && <div className="noData"> No Data available </div>}
+            {/*  Pagination Component*/}
+            {data.length > 15 && <div class="pagination-component">
+                <nav role="navigation" aria-label="Pagination" class="text-center">
+                    <ul className={`pagination pagination-list ${pageIndex + 1 < 2 ? 'first-page' : ''} ${pageIndex + 1 >= pageOptions.length ? 'last-page' : ''}`}>
+                        {pageIndex + 1 != 1 && <li className={`previous ${(pageIndex + 1) < 2 ? 'disabled' : ''}`} onClick={() => previousPage()} disabled={!canPreviousPage}>
+                            <a className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span class="">Previous</span></a>
+                        </li>}
+                        {pageOptions.length > 1 && <li className={`link-to-first ${pageIndex + 1 == 1 ? 'active' : ''}`} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                            <a className="page-link">1</a>
+                        </li>}
+                        {pageIndex + 1 >= 5 && pageOptions.length > 6 &&
+                            <li class="ellipsis"><a><span>&hellip;</span></a></li>
+                        }
+                        {pageOptions.map((page, index) => {
+                            return (index > 1 && <li key={index} className={(pageIndex + 1 == index ? 'active' : index)}><a href="#news-wrapper-container" onClick={() => gotoPage(index - 1)}><span>{page}</span></a></li>)
+                        })
+                        }
+                        {(pageOptions.length - pageIndex + 1) >= 4 && pageOptions.length > 6 &&
+                            <li class="ellipsis"><a><span>&hellip;</span></a></li>
+                        }
+                        <li className={`lastPage ${pageIndex + 1 == pageOptions.length ? 'active' : ''}`}>
+                            <a href="#news-wrapper-container" onClick={() => gotoPage(pageOptions.length - 1)}>
+                                <span>{pageOptions.length}</span>
+                            </a>
+                        </li>
+                        {pageIndex + 1 != pageOptions.length &&
+                            <li className={`next ${pageIndex + 1 >= pageOptions.length ? 'disabled' : ''}`}>
+                                <a href="#news-wrapper-container" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
+                            </li>
+                        }
+
+                    </ul>
+                </nav>
+            </div>}
+        </div>
     )
 }
 
-function NewFormExperience() {
-    const columns = React.useMemo(
-        () => [
+class NewFormExperience extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: [],
+            selectedFilters: [],
+            originalData: [],
+            filteredRows: [],
+            filters: {},
+            favorites: [],
+            selectedValues: [],
+            lang: utag_data.page_language,
+            sorting: false
+
+        };
+        this.toggleFilter = this.toggleFilter.bind(this);
+        this.addFilters = this.addFilters.bind(this);
+        this.clearAll = this.clearAll.bind(this);
+        this.clearFilter = this.clearFilter.bind(this);
+        this.sortColumn = this.sortColumn.bind(this);
+        this.getTableData = this.getTableData.bind(this);
+        this.getFilterData = this.getFilterData.bind(this);
+        this.removeFavorite = this.removeFavorite.bind(this);
+        this.markFavorite = this.markFavorite.bind(this);
+        this.SearchSort = this.SearchSort.bind(this);
+        this.resetSearchData = this.resetSearchData.bind(this);
+    }
+
+    componentDidMount() {
+        /*  const tableData = [
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis Annuity products needs analysis",
+                  "tags": ["Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec Annuity products needs analysis Annuity products needs analysis",
+                  "tags": ["Beneficiary", "Policy changes", "Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance", "Life insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Life insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Policy changes", "Client Service", "Health Insurance", "Life insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Client Service"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": ["Health Insurance"]
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-10T21:14:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "55555",
+                  "formInformation": "Sunlife Guranted Invested Funds -TFSA Application",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:14:00.000+05:30",
+                  "eSign": "false",
+                  "formNumber": "3333",
+                  "formInformation": "New Account Application Form(NAAF)",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T21:18:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "4900-E",
+                  "formInformation": "New Account Application Form(NAAF)-mutual fund account",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-13T21:12:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN11405",
+                  "formInformation": "Annuity products needs analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-23T09:51:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2021-01-14T20:57:00.000+05:30",
+                  "eSign": "true",
+                  "formNumber": "IN14050003",
+                  "formInformation": "Anuity products need analysis",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:54:00.000-05:00",
+                  "eSign": "true",
+                  "formNumber": "111111",
+                  "formInformation": "Identity verification, third party determination and politically exposed foreign persons",
+                  "tags": []
+              },
+              {
+                  "lastUpdated": "2020-12-24T09:52:00.000-05:00",
+                  "eSign": "false",
+                  "formNumber": "IN1405003*",
+                  "formInformation": "Annuity products needs analysis for quebec",
+                  "tags": []
+              }
+          ]*/
+
+
+        /* var originalresponseData = tableData
+         // tableData = response;
+         tableData.map((obj) => {
+             favoriteData.map((favObj) => {
+                 if (obj.formNumber == favObj.formNumber) {
+                     obj.favorite = true;
+                 }
+             })
+             if (!obj.favorite) obj.favorite = false;
+         })
+         tableData.sort((a, b) => {
+             return b.favorite - a.favorite
+         })
+         this.setState({
+             // data: tableData,
+             data: tableData,
+             originalData: originalresponseData,
+             favorites: favoriteData
+         }) */
+
+        this.getTableData();
+
+    }
+
+    getTableData() {
+        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+        $.ajax({
+            type: "GET",
+            url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
+            dataType: "json",
+            success: (response) => {
+                var tableData = [];
+                var favRows = [];
+                var notFavRows = [];
+                var originalresponseData = response
+                tableData = response;
+                tableData.map((obj) => {
+                    favoriteData.map((favObj) => {
+                        if (obj.formNumber == favObj.formNumber) {
+                            obj.favorite = true;
+                        }
+                    })
+                    if (!obj.favorite) obj.favorite = false;
+                })
+                favRows = tableData.filter((obj) => {
+                    return obj.favorite
+                })
+                notFavRows = tableData.filter((obj) => {
+                    return !obj.favorite
+                })
+                favRows.sort((a, b) => {
+                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                });
+                notFavRows.sort((a, b) => {
+                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                })
+                tableData = [...favRows, ...notFavRows];
+                /*tableData.sort((a, b) => {
+                    return b.favorite - a.favorite
+                })*/
+                this.setState({
+                    // data: tableData,
+                    data: tableData,
+                    // originalData: originalresponseData,
+                    originalData: tableData,
+                    favorites: favoriteData
+                }, () => {
+                    // this.tagSorting();
+                    this.getFilterData();
+                })
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
+    }
+
+    getFilterData() {
+        $.ajax({
+            type: "GET",
+            url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
+            dataType: "json",
+            success: (response) => {
+                this.setState({
+                    filters: response.forms.tags
+                })
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
+    }
+    toggleFilter() {
+        $('.filters').toggleClass('show-filters')
+    }
+
+    addFilters() {
+        var filterData = [];
+        var filteredRows = [];
+        var selectedFiltersValues = [];
+        $("input[type='checkbox']:checked").each(function () {
+            filterData.push($(this).attr('name'));
+            selectedFiltersValues.push($(this).attr('value'));
+        })
+        this.setState({
+            selectedFilters: filterData,
+            selectedValues: selectedFiltersValues
+        })
+        if (filterData.length > 0) {
+            filteredRows = this.state.originalData.filter((row) => {
+                return (row.tags && row.tags.some((val) => filterData.indexOf(val) > -1))
+            })
+            this.setState({
+                data: filteredRows
+            })
+        }
+
+
+        $('.filters').toggleClass('show-filters')
+    }
+    sortColumn() {
+        var sortingData = this.state.data;
+        console.log(sortingData);
+        var eSignFavorite = sortingData.filter((row) => {
+            if (row.eSign == "true" && row.favorite == true) {
+                return row
+            }
+        })
+        var eSignnotFav = sortingData.filter((row) => {
+            if (row.eSign == "true" && row.favorite == false) {
+                return row
+            }
+        })
+        var noneSingFav = sortingData.filter((row) => {
+            if (row.eSign == "false" && row.favorite == true) {
+                return row
+            }
+        })
+        var noneSingnotFav = sortingData.filter((row) => {
+            if (row.eSign == "false" && row.favorite == false) {
+                return row
+            }
+        })
+        if (this.state.sorting) {
+            var sortedData = [...noneSingFav, ...noneSingnotFav, ...eSignFavorite, ...eSignnotFav];
+            var sorting = false
+        } else {
+            var sortedData = [...eSignFavorite, ...eSignnotFav, ...noneSingFav, ...noneSingnotFav];
+            var sorting = true
+        }
+
+        this.setState({
+            data: sortedData,
+            sorting: sorting
+        })
+    }
+    clearAll() {
+        $('input[type="checkbox"]').each(function () {
+            $(this).prop("checked", false);
+        })
+        this.setState({
+            selectedValues: [],
+            data: this.state.originalData
+        })
+    }
+
+    clearFilter(event) {
+        var deletFilter = event.currentTarget.textContent;
+        var selFilters = this.state.selectedValues;
+        var updatedFilterRows = [];
+        selFilters.map((filter, i) => {
+            if (filter == deletFilter) {
+                $('input[type="checkbox"]:checked').each(function () {
+                    if ($(this).attr("value") == deletFilter) {
+                        $(this).prop("checked", false);
+                    }
+                })
+                selFilters.splice(i, 1);
+            }
+        })
+        if (selFilters.length > 0) {
+            var remainingFilters = [];
+            this.state.filters.map((obj) => {
+                for (var i = 0; i <= selFilters.length; i++) {
+                    if (selFilters[i] == obj.title) {
+                        remainingFilters.push(obj.id)
+                    }
+                }
+            })
+            updatedFilterRows = this.state.originalData.filter((row) => {
+                return (row.tags && row.tags.some((val) => remainingFilters.indexOf(val) > -1))
+            })
+            this.setState({
+                selectedFilters: selFilters,
+                data: updatedFilterRows
+            })
+        } else if (selFilters.length < 1) {
+            this.setState({
+                data: this.state.originalData
+            })
+        }
+
+    }
+    removeFavorite() {
+        console.log('remove favorite');
+    }
+    markFavorite() {
+        console.log('mark as favorite');
+    }
+
+    SearchSort() {
+        var searchResultRows = [];
+        var filter = $('.search').val();
+        this.state.data.map((obj) => {
+            if (obj.formNumber.indexOf(filter) > -1 || obj.formInformation.indexOf(filter) > -1) {
+                searchResultRows.push(obj);
+            }
+        })
+        this.setState({
+            data: searchResultRows
+        })
+    }
+    resetSearchData() {
+        this.setState({
+            data: this.state.originalData
+        })
+    }
+    render() {
+        const columns = [
             {
-                Header: 'Name',
+                Header: 'New form experience table',
                 columns: [
                     {
-                        Header: 'First Name',
-                        accessor: 'firstName',
+                        Header: `${this.props.tableHeaderCol1}`,
+                        accessor: 'formNumber',
                     },
                     {
-                        Header: 'Last Name',
-                        accessor: 'lastName',
+                        Header: `${this.props.tableHeaderCol2}`,
+                        accessor: 'formInformation',
+                    },
+                    {
+                        Header: `${this.props.tableHeaderCol3}`,
+                        accessor: function lastUpdated(obj) {
+                            var d = new Date(obj.lastUpdated),
+                                month = '' + (d.getMonth() + 1),
+                                day = '' + d.getDate(),
+                                year = d.getFullYear();
+
+                            if (month.length < 2)
+                                month = '0' + month;
+                            if (day.length < 2)
+                                day = '0' + day;
+
+                            return [year, month, day].join('/');
+                        },
+                    },
+                    {
+                        Header: `${this.props.tableHeaderCol4}`,
+                        accessor: function eSign(obj) {
+                            var check = obj.eSign;
+                            if (check == "true") {
+                                return <i class="fa fa-check"></i>
+                            }
+                        },
+
+                    },
+                    {
+                        Header: `${this.props.tableHeaderCol5}`,
+                        accessor: function favorite(obj) {
+                            var fav = obj.favorite;
+                            if (fav == true) {
+                                return <i class="fa fa-star star-selected" onClick={this.removeFavorite}></i>
+                            } else {
+                                return <i class="fa fa-star star-not-selected" onClick={this.markFavorite}></i>
+                            }
+                        }
                     },
                 ],
             },
-            {
-                Header: 'Info',
-                columns: [
-                    {
-                        Header: 'Age',
-                        accessor: 'age',
-                    },
-                    {
-                        Header: 'Visits',
-                        accessor: 'visits',
-                    },
-                    {
-                        Header: 'Status',
-                        accessor: 'status',
-                    },
-                    {
-                        Header: 'Profile Progress',
-                        accessor: 'progress',
-                    },
-                ],
-            },
-        ],
-        []
-    )
+        ];
 
-    const data = [
-        {
-            "firstName": "committee-c15dw",
-            "lastName": "editor-ktsjo",
-            "age": 3,
-            "visits": 46,
-            "progress": 75,
-            "status": "relationship"
-        },
-        {
-            "firstName": "midnight-wad0y",
-            "lastName": "data-7h4xf",
-            "age": 1,
-            "visits": 56,
-            "progress": 15,
-            "status": "complicated"
-        },
-        {
-            "firstName": "tree-sbdb0",
-            "lastName": "friendship-w8535",
-            "age": 1,
-            "visits": 45,
-            "progress": 66,
-            "status": "single"
-        },
-        {
-            "firstName": "chin-borr8",
-            "lastName": "shirt-zox8m",
-            "age": 0,
-            "visits": 25,
-            "progress": 67,
-            "status": "complicated"
-        },
-        {
-            "firstName": "women-83ef0",
-            "lastName": "chalk-e8xbk",
-            "age": 9,
-            "visits": 28,
-            "progress": 23,
-            "status": "relationship"
-        }]
-    console.log(JSON.stringify(data));
-
-
-    return (
-        <Table columns={columns} data={data} />
-    )
+        // const filters = ["Beneficiary", "Policy changes", "Client Service", "Conversion", "Compliance", "Health Insurance", "Life insurance", "Products and Solutions", "Questionnaire", "Wealth", "Your business"];
+        // const filters = { "wealth": { "id": "sunlife:advisorhub/wealth", "title": "Wealth", "tags": [] }, "your-business": { "id": "sunlife:advisorhub/your-business", "title": "Your business", "tags": [] }, "health-insurance": { "id": "sunlife:advisorhub/health-insurance", "title": "Health insurance", "tags": [] }, "products-and-solutions": { "id": "sunlife:advisorhub/products-and-solutions", "title": "Products and solutions", "tags": [] }, "title": "advisorhub", "questionnaires": { "id": "sunlife:advisorhub/questionnaires", "title": "Questionnaires", "tags": [] }, "beneficiary": { "id": "sunlife:advisorhub/beneficiary", "title": "Beneficiary", "tags": [] }, "compliance": { "id": "sunlife:advisorhub/compliance", "title": "Compliance", "tags": [] }, "conversion(s)": { "id": "sunlife:advisorhub/conversion(s)", "title": "Conversion(s)", "tags": [] }, "name": "advisorhub", "id": "sunlife:advisorhub", "life-insurance": { "id": "sunlife:advisorhub/life-insurance", "title": "Life insurance", "tags": [] }, "policy-changes": { "id": "sunlife:advisorhub/policy-changes", "title": "Policy changes", "tags": [] }, "client-service": { "id": "sunlife:advisorhub/client-service", "title": "Client Service", "tags": [] } };
+        $('.fa-star').on('click', function () {
+            if ($(this).hasClass('star-selected')) {
+                $(this).removeClass('star-selected');
+                $(this).addClass('star-not-selected');
+                console.log('ajax post call');
+            } else {
+                $(this).removeClass('star-not-selected');
+                $(this).addClass('star-selected')
+                console.log('ajax post call');
+            }
+        })
+        /* $.ajax({
+             type: "GET",
+             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
+             dataType: "json",
+             success: (response) => {
+                 this.setState({
+                     filters: response
+                 })
+             },
+             error: (err) => {
+                 console.log(err);
+             }
+         }) */
+        return (
+            <React.Fragment>
+                {/*<div className="filter-container">
+                    <button class="toggle-filter filter-buttons col-sm-2 addFilter" onClick={this.toggleFilter}>{this.props.addFilterText}</button>
+                    <form className="filters">
+                        {Object.keys(this.state.filters).map((obj) => {
+                            return <div className="filter"><input type="checkbox" name={this.state.filters[obj].id} value={this.state.filters[obj].title}></input><label for={this.state.filters[obj].title}>{this.state.filters[obj].title}</label></div>
+                        })}
+                        <button type="button" className="filterSubmit col-sm-12" onClick={this.addFilters}>{this.props.filterDoneText}</button>
+                    </form>
+                    {this.state.selectedFilters && <div className="col-xs-12 col-sm-6 selectedFilterContainer">{this.state.selectedFilters.map((value) => {
+                        return <button className="selectedFilter filter-buttons" onClick={this.clearFilter}>{value}<i className="fa fa-times"></i></button>
+                    })} {this.state.selectedFilters.length > 0 && <button className="filter-buttons" onClick={this.clearAll}>{this.props.ClearAllText}</button>}</div>}
+                </div>*/}
+                <Table columns={columns}
+                    data={this.state.data}
+                    sortyBy={this.sortColumn}
+                    searchCallBack={this.SearchSort}
+                    resetTableData={this.resetSearchData}
+                    search={this.setFilteredData}
+                    togglefilter={this.toggleFilter}
+                    addFilterTxt={this.props.addFilterText}
+                    filtersData={this.state.filters}
+                    addFilter={this.addFilters}
+                    filterBtnTxt={this.props.filterDoneText}
+                    selectedFilters={this.state.selectedValues}
+                    clearFilter={this.clearFilter}
+                    clearAll={this.clearAll}
+                    clearAllTxt={this.props.ClearAllText}
+                ></Table>
+            </React.Fragment>
+        )
+    }
 }
 reactComponents["new-form-experience"] = NewFormExperience;

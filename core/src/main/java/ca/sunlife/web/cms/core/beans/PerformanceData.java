@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.beans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * The Class PerformanceData.
  *
@@ -11,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PerformanceData {
 
 	/** The returnYear. */
-	@JsonProperty("year")
 	protected String returnYear;
 	
 	/** The percentage. */
@@ -19,6 +16,20 @@ public class PerformanceData {
 	
 	/** The colourCd. */
 	protected String colourCd;
+
+	/**
+	 * Constructor for all fields.
+	 *
+	 * @param returnYear
+	 * @param percentage
+	 * @param colourCd
+	 */
+	public PerformanceData(String returnYear, String percentage, String colourCd) {
+		super();
+		this.returnYear = returnYear;
+		this.percentage = percentage;
+		this.colourCd = colourCd;
+	}
 
 	/**
 	 * Gets the returnYear.

@@ -1,7 +1,5 @@
 package ca.sunlife.web.cms.core.beans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * The Class AssetMix.
  *
@@ -11,15 +9,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AssetMix {
 
 	/** The assetMixName. */
-	@ JsonProperty("name")
 	protected String assetMixName;
 	
 	/** The assetMixPercentage. */
-	@ JsonProperty("percentage")
 	protected String assetMixPercentage;
 	
 	/** The colourCd. */
 	protected String colourCd;
+	
+	/**
+	 * Constructor for all fields.
+	 *
+	 * @param assetMixName
+	 * @param assetMixPercentage
+	 * @param colourCd
+	 */
+	public AssetMix(String assetMixName, String assetMixPercentage, String colourCd) {
+		super();
+		this.assetMixName = assetMixName;
+		this.assetMixPercentage = assetMixPercentage;
+		this.colourCd = colourCd;
+	}
 
 	/**
 	 * Gets the assetMixName.
