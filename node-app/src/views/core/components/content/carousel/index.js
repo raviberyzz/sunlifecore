@@ -23,6 +23,12 @@
 
     var desktopmodeon = true;
 
+    /*Code to stop the video while closing the modal */
+
+    $("#firstClientStory ").on('hidden.bs.modal', function (e) {
+    	$("#firstClientStory  iframe").attr("src", $("#firstClientStory  iframe").attr("src"));
+	});
+
 
 /**
 	code to dynamically generate slider goes here
