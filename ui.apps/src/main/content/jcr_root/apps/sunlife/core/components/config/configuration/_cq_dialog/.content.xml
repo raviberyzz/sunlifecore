@@ -121,6 +121,14 @@
                                         name="./enableContextHub"
                                         text="Enable context hub"
                                         value="{Boolean}true"/>
+									<disableSocialSharingTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Disable SEO tags"
+                                        name="./disableSocialSharingTags"
+                                        text="Disable SEO tags"
+                                        value="{Boolean}true"/>	
                                     <favIcon
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
