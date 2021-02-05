@@ -322,6 +322,7 @@ class NewFormExperience extends React.Component {
         })
         this.setState({
             selectedValues: [],
+            selectedFilters: [],
             data: this.state.originalData
         })
     }
@@ -359,6 +360,7 @@ class NewFormExperience extends React.Component {
             })
         } else if (selFilters.length < 1) {
             this.setState({
+                selectedFilters: selFilters,
                 data: this.state.originalData
             })
         }
