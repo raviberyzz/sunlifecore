@@ -9,6 +9,9 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
         setFilter('');
         refreshData();
     }
+    function clearSearch(){
+        $('.search').val('');
+    }
     return (
         <div className="searchContainer">
             <span className="globalSearch">
@@ -18,6 +21,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
                     className="search"
                 // onChange={e => setFilter(e.target.value)}
                 />
+                <span onClick={clearSearch}><i className="fa fa-times"></i></span>
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
                 <button onClick={reset}><i className="fa fa-repeat"></i></button>
             </span>
