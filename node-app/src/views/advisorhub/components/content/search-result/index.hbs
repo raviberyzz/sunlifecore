@@ -1,76 +1,6 @@
 <div class="search-container">
-    <div id="search-result-item" class="search-item">
-        <div class="bottom-buffer search-result-item">
-            <a href="#"><span class="fa fa-file-pdf-o">&nbsp;</span><span class="txt">&nbsp;</span></a>
-            <p>&nbsp;</p>
-            <a aria-hidden="true" class="search-result-display-url">&nbsp;</a>
-        </div>
-    </div>
     <div id="search-result-filter-item" class="search-filter-items">
-        <div class="check-container">
-            <a href="javascript:void(0);">
-                <span class="txt">&nbsp;</span>&nbsp;(<span class="num">&nbsp;</span>)
-                <span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span
-                    class="sr-only active-text"> (active)</span>
-            </a>
-        </div>
-        <div>
-            <div id="search-result-pagination-first" class="search-result-page-first">
-                <li class="link-to-first active pagination-item">
-                    <a href="javascript:void(0);" aria-label="First Page">
-                        <span class="fa fa-angle-double-left" aria-hidden="true">&nbsp;</span>
-                        <span class="sr-only">Page </span><span class="txt">&nbsp;</span><span
-                            class="sr-only active-text"> (active)</span>
-                    </a>
-                </li>
-            </div>
-            <div id="search-result-pagination-item" class="search-page-item">
-                <li class="pagination-item">
-                    <a href="javascript:void(0);">
-                        <span class="sr-only">Page </span><span class="txt">&nbsp;</span><span
-                            class="sr-only active-text"> (active)</span>
-                    </a>
-                </li>
-            </div>
-            <div class="search-bottom">
-                <div class="search-bar-wrapper collapse in" data-section="">
-                    <div class="global-search vertical-middle-align">
-                        <form name="searchform-bottom" class="slf-search"
-                            action="/content/sunlife/external/advisorhub/en/search-page.html" method="get" data-value="">
-                            <label class="sr-only" for="q-top">Search</label>
-                            <div class="form-wrapper">
-                                <div class="input-wrapper">
-                                    <div class="input-wrapper form-group-wrapper">
-                                        <input data-parsley-required="data-parsley-required" id="q-top" class=""
-                                            name="q" type="text" placeholder="Search" required="required"
-                                            data-parsley-pattern="/[a-z]/g" data-parsley-id="8">
-                                    </div>
-                                    <div class="search-autocomplete">
-                                        <ul class="search-autocomplete-list">
-                                            <li>&nbsp;</li>
-                                        </ul>
-                                        <ul class="search-sayt-list" data-section="type-ahead-html-listing">
-                                            <div class="seperate horizontal-middle-align">
-                                                <li>&nbsp;</li>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button-wrapper primary-blue-button-form">
-                                    <button class="cmp-form-button" type="submit" value="">Search</button>
-                                </div>
-                            </div>
-                            <input name="action" type="hidden" value="input" />
-                        </form>
-                    </div>
-                    <div class="close-div">
-                        <a data-toggle="collapse" aria-expanded="true" href="#sun-search">
-                            <span class="sr-only">Close search</span> <span
-                                class="fa fa-remove collapse-x">&nbsp;</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div> 
             <div class="yellow-bg" id="search-result-none" style="display: none;">
                 <p class="bolded-error">No results found</p>
             </div>
@@ -99,12 +29,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="top-buffer-small txt-larger">
+                <div class="top-buffer-small txt-larger" style="display: none;">
                     <p><span id="search-result-num-results"></span> <span
                             id="search-result-num-plural">Results</span><span id="search-result-num-single"
                             style="display: none;">Result</span></p>
                 </div>
-                <div class="top-buffer-small txt-larger" id="search-result-misspelling">
+                <div class="top-buffer-small txt-larger" id="search-result-misspelling" style="display: none;">
                     <p>Showing results for <span id="search-result-misspelling-term">aside</span></p>
                 </div>
                 <div class="clearfix" id="search-result-banner-top" data-section="body search ad"
