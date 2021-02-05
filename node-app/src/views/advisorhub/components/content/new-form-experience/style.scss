@@ -96,6 +96,7 @@
         border-radius:4px;
         color:$dark-grey-color;
         display:flex;
+        position: relative;
       input{
           //width:280px;
           //border-radius:4px;
@@ -104,6 +105,11 @@
          border: 1px solid $medium-grey-background;
          width:220px;
          height: 32px;
+       }
+       .fa-times{
+           position: absolute;
+           right: 73px;
+           top: 5px;
        }
        .fa{
            font-size:20px;
