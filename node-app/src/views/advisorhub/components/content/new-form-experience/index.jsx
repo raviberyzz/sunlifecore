@@ -12,6 +12,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
     }
     function clearSearch(){
         $('.search').val('');
+        setInputValue('');
     }
     return (
         <div className="searchContainer">
