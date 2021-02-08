@@ -25,8 +25,11 @@
 
     /*Code to stop the video while closing the modal */
 
-    $("#firstClientStory ").on('hidden.bs.modal', function (e) {
-    	$("#firstClientStory  iframe").attr("src", $("#firstClientStory  iframe").attr("src"));
+    $(".popup-modal-wrapper ").on('hidden.bs.modal', function (e) {
+        if ( $(".popup-modal-wrapper iframe").length > 0  && $(".carousel-client-story").length > 0) {
+            $(".popup-modal-wrapper  iframe").attr("src", $(".popup-modal-wrapper  iframe").attr("src"));
+        }
+
 	});
 
 
