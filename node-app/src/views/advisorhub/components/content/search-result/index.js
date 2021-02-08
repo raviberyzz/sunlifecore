@@ -94,11 +94,12 @@ $(document).ready(function(){
     var filterText = (urlParams.filter || "").trim();
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
+    var searchApi = "http://uat-idol11.ca.sunlife:16000/";
 
     var filterArray = [
         {
             name_en: "All",
-            filter: ""
+            filter: "all"
         },
         {
             name_en: "Your Business",
@@ -117,12 +118,13 @@ $(document).ready(function(){
             filter: "news"
         }
     ];
+
     if($(".adv-search")){
         if(searchText!=""){
             $(".adv-search-bar-wrapper input[name=text]").val(searchText);
 
             // Create URL for ajax call
-            var searchUrl = 'http://uat-idol11.ca.sunlife:16000/?action=Query&ResponseFormat=json&totalresults=true&print=all';
+            var searchUrl = searchApi + '?action=Query&ResponseFormat=json&totalresults=true&print=all';
             searchUrl = searchUrl + "&text=" + searchText;
             searchUrl = searchUrl + "&matchlanguage=" + utag_data.page_language;
             if(filterText!=""){
@@ -158,14 +160,14 @@ $(document).ready(function(){
                                 filter = filter + '<div class="check-container" name="' + filterArray[0]["filter"] + '">' +
                                 '<a href="?action=filter&text=' + searchText + '">' + 
                                 '<span class="txt">' + filterArray[0]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
-                                '<span class="num">' + allNumber + ')</span>' + 
+                                '<span class="num">)</span>' + 
                                 '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
                             }
                             else{
                                 filter = filter + '<div class="check-container" name="' + filterArray[j]["filter"] + '">' +
                                 '<a href="?action=filter&text=' + searchText + '&filter=' + filterArray[j]["filter"] + '">' + 
                                 '<span class="txt">' + filterArray[j]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
-                                '<span class="num">' + allNumber + ')</span>' + 
+                                '<span class="num">)</span>' + 
                                 '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
                             }
 
@@ -174,6 +176,97 @@ $(document).ready(function(){
                         
                         $("#search-result-filter-list").append(filterList);
 
+                        $.ajax({
+                            type: "GET",
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText,
+                            dataType: "json",
+                    
+                            success: function(data){
+                                var totalNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                $(".check-container[name=all]").children().children(".num").text(totalNumber+")");
+                            },
+                            error: function(){
+                                console.log("Search Error");
+                            }   
+                        });
+
+                        $.ajax({
+                            type: "GET",
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER',
+                            dataType: "json",
+                    
+                            success: function(data){
+                                var businessNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                if(businessNumber==0){
+                                    $(".check-container[name=your-business]").css("display","none");
+                                }
+                                else{
+                                    $(".check-container[name=your-business]").children().children(".num").text(businessNumber+")");
+                                }
+                            },
+                            error: function(){
+                                console.log("Search Error");
+                            }   
+                        }); 
+
+                        $.ajax({
+                            type: "GET",
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER',
+                            dataType: "json",
+                    
+                            success: function(data){
+                                var productNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                if(productNumber==0){
+                                    $(".check-container[name=products-and-solutions]").css("display","none");
+                                }
+                                else{
+                                    $(".check-container[name=products-and-solutions]").children().children(".num").text(productNumber+")");
+                                }
+                            },
+                            error: function(){
+                                console.log("Search Error");
+                            }   
+                        }); 
+
+                        $.ajax({
+                            type: "GET",
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER',
+                            dataType: "json",
+                    
+                            success: function(data){
+                                var clientNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                if(clientNumber==0){
+                                    $(".check-container[name=client-service]").css("display","none");
+                                }
+                                else{
+                                    $(".check-container[name=client-service]").children().children(".num").text(clientNumber+")");
+                                }
+                            },
+                            error: function(){
+                                console.log("Search Error");
+                            }   
+                        });
+
+                        $.ajax({
+                            type: "GET",
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER',
+                            dataType: "json",
+                    
+                            success: function(data){
+                                var newsNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                if(newsNumber==0){
+                                    $(".check-container[name=news]").css("display","none");
+                                }
+                                else{
+                                    $(".check-container[name=news]").children().children(".num").text(newsNumber+")");
+                                }
+                            },
+                            error: function(){
+                                console.log("Search Error");
+                            }   
+                        });
+
+                        // Filter mobile view
                         $(".search-filter-btn").click(function () {
                             $("#search-result-filter-toggle").addClass("active");
                             $("#search-result-filter-toggle .btn-close").focus();
@@ -196,9 +289,8 @@ $(document).ready(function(){
                         }
 
                         // Show no of result for selected filter
-                        var resultNumber = $("#search-result-filter-list .check-container .active").children(".num").text().split(")")[0];
-                        $("#search-result-num-results").text(resultNumber);
-                        if(parseInt(resultNumber) == 1){
+                        $("#search-result-num-results").text(allNumber);
+                        if(allNumber === 1){
                             $("#search-result-num-plural").hide();
                             $("#search-result-num-single").show();
                         }
