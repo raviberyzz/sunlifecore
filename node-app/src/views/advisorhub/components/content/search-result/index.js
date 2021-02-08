@@ -14,10 +14,86 @@ $(document).ready(function(){
         return params;
     }
 
+    function setupPaginationItems(paginationItems, page, total) {
+        var urlParams = getParams();
+        var searchText = (urlParams.text || "").trim();
+        var filterText = (urlParams.filter || "").trim();
+        var maxResult = (urlParams.maxresults || "10").trim();
+        var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
+        var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
+
+        var currentPage = maxResult/10;
+        var pageUrl = "?text=" + searchText;
+        if(filterText!=""){
+            pageUrl = pageUrl + "&filter=" + filterText;
+        }
+
+        var el = (page === 1 ? paginationFirst : paginationItem).clone();
+        el.find(".txt").text(page)
+        el.toggleClass("active", page === currentPage)
+        el.find("a")
+            .attr("href", pageUrl + "&start=" + ((page*10) -9) + "&maxresults=" + (page*10));
+        return paginationItems.add(el);
+    }
+
+    function configurePagination(total){
+        var urlParams = getParams();
+        var searchText = (urlParams.text || "").trim();
+        var filterText = (urlParams.filter || "").trim();
+        var maxResult = (urlParams.maxresults || "10").trim();
+
+        var totalPage = Math.ceil(total/10);
+        var currentPage = maxResult/10;
+        var pageUrl = "?text=" + searchText;
+        if(filterText!=""){
+            pageUrl = pageUrl + "&filter=" + filterText;
+        }
+
+        $("#search-results-pagination-previous")
+            .toggleClass("disabled", currentPage < 2)
+            .find("a")
+            .attr("href", pageUrl + "&start=" + ((currentPage-1)*10 -9) + "&maxresults=" + (currentPage-1)*10);
+        $("#search-results-pagination-next")
+            .toggleClass("disabled", currentPage >= totalPage)
+            .find("a")
+            .attr("href", pageUrl + "&start=" + ((currentPage+1)*10 -9) + "&maxresults=" + (currentPage+1)*10);
+        
+        var paginationItems = $();
+
+        paginationItems = setupPaginationItems(paginationItems, 1, total);
+
+        if (currentPage >= 5 && totalPage > 6) paginationItems = paginationItems.add($('<li class="ellipsis"><a><span>&hellip;</span></a></li>'));
+
+        var startPage = Math.max(currentPage - 2, 2);
+        var endPage = currentPage + 2;
+        if (currentPage < 3) {
+            endPage = Math.min(5, totalPage - 1);
+        } else if (totalPage - currentPage < 3) {
+            startPage = Math.max(totalPage - 4, 2)
+            endPage = totalPage - 1;
+        }
+        for (var p = startPage; p <= endPage; p++) {
+            paginationItems = setupPaginationItems(paginationItems, p, total);
+        }
+
+        if ((totalPage - currentPage) >= 4 && totalPage > 6) paginationItems = paginationItems.add($('<li class="ellipsis"><a><span>&hellip;</span></a></li>'));
+
+        paginationItems = setupPaginationItems(paginationItems, totalPage, total);
+
+        $(paginationItems).insertBefore($("#search-results-pagination-next"));
+        $("#search-result-pagination").toggleClass("first-page", currentPage < 2);
+        $("#search-result-pagination").toggleClass("last-page", currentPage >= totalPage);
+        $("#search-result-pagination").toggle(totalPage > 1);
+        $("#search-result-page-num").text(currentPage);
+        $("#search-result-page-total").text(totalPage);
+    }
+
     // Retrieve parameters from URL
     var urlParams = getParams();
     var searchText = (urlParams.text || "").trim();
     var filterText = (urlParams.filter || "").trim();
+    var start = (urlParams.start || "").trim();
+    var maxResult = (urlParams.maxresults || "").trim();
 
     var filterArray = [
         {
@@ -41,108 +117,166 @@ $(document).ready(function(){
             filter: "news"
         }
     ];
+    if($(".adv-search")){
+        if(searchText!=""){
+            $(".adv-search-bar-wrapper input[name=text]").val(searchText);
 
-    if(searchText!=""){
-        $(".adv-search-bar-wrapper input[name=text]").val(searchText);
+            // Create URL for ajax call
+            var searchUrl = 'http://uat-idol11.ca.sunlife:16000/?action=Query&ResponseFormat=json&totalresults=true&print=all';
+            searchUrl = searchUrl + "&text=" + searchText;
+            searchUrl = searchUrl + "&matchlanguage=" + utag_data.page_language;
+            if(filterText!=""){
+                searchUrl = searchUrl + "&fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";
+            }    
+            if(start==""){
+                searchUrl = searchUrl + "&maxresults=10&start=1";
+            }else{
+                searchUrl = searchUrl + "&maxresults=" + maxResult + "&start=" + start;
+            }
 
-        // Create URL for ajax call
-        var searchUrl = 'http://uat-idol11.ca.sunlife:16000/?action=Query&ResponseFormat=json&totalresults=true&print=all&maxresults=10&start=1';
-        searchUrl = searchUrl + "&text=" + searchText;
-        searchUrl = searchUrl + "&matchlanguage=" + utag_data.page_language;
-        if(filterText!=""){
-            searchUrl = searchUrl + "&fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";
-        }    
+            // Making the ajax call for getting search results
+            $.ajax({
+                type: "GET",
+                url: searchUrl,
+                dataType: "json",
+        
+                success: function(data){
+                    var allNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                    var listLength = data["autnresponse"]["responsedata"]["autn:numhits"]["$"];
 
-        // Making the ajax call for getting search results
-        $.ajax({
-            type: "GET",
-            url: searchUrl,
-            dataType: "json",
-    
-            success: function(data){
-                var allNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
-                var listLength = data["autnresponse"]["responsedata"]["autn:numhits"]["$"];
-
-                // Creating filter section
-                var filter = "";
-                var filterList = "";
-                for(var j=0;j<5;j++){
-                    filter="";
-
-                    if(j==0){
-                        filter = filter + '<div class="check-container" name="' + filterArray[0]["filter"] + '">' +
-                        '<a href="?action=filter&text=' + searchText + '">' + 
-                        '<span class="txt">' + filterArray[0]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
-                        '<span class="num">' + allNumber + ')</span>' + 
-                        '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
+                    if(listLength == 0){
+                        $("#search-result-none").css("display", "block");
                     }
                     else{
-                        filter = filter + '<div class="check-container" name="' + filterArray[j]["filter"] + '">' +
-                        '<a href="?action=filter&text=' + searchText + '&filter=' + filterArray[j]["filter"] + '">' + 
-                        '<span class="txt">' + filterArray[j]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
-                        '<span class="num">' + allNumber + ')</span>' + 
-                        '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
-                    }
+                        // Creating filter section
+                        var filter = "";
+                        var filterList = "";
+                        for(var j=0;j<5;j++){
+                            filter="";
 
-                    filterList = filterList + filter;
-                }
-                
-                $("#search-result-filter-list").append(filterList);
+                            if(j==0){
+                                filter = filter + '<div class="check-container" name="' + filterArray[0]["filter"] + '">' +
+                                '<a href="?action=filter&text=' + searchText + '">' + 
+                                '<span class="txt">' + filterArray[0]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
+                                '<span class="num">' + allNumber + ')</span>' + 
+                                '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
+                            }
+                            else{
+                                filter = filter + '<div class="check-container" name="' + filterArray[j]["filter"] + '">' +
+                                '<a href="?action=filter&text=' + searchText + '&filter=' + filterArray[j]["filter"] + '">' + 
+                                '<span class="txt">' + filterArray[j]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
+                                '<span class="num">' + allNumber + ')</span>' + 
+                                '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
+                            }
 
-                // Adding active class to selected filter
-                if(filterText==""){
-                    $("#search-result-filter-list").children().first().children("a").addClass("active");
-                }
-                else{
-                    $("#search-result-filter-list .check-container").each(function(){
-                        if($(this).attr("name") == filterText){
-                            $(this).children("a").addClass("active");
+                            filterList = filterList + filter;
                         }
-                    })
-                }
+                        
+                        $("#search-result-filter-list").append(filterList);
 
-                // Show no of result for selected filter
-                var resultNumber = $("#search-result-filter-list .check-container .active").children(".num").text().split(")")[0];
-                $("#search-result-num-results").text(resultNumber);
-                if(parseInt(resultNumber) == 1){
-                    $("#search-result-num-plural").hide();
-                    $("#search-result-num-single").show();
-                }
-                $("#search-result-num-results").parent().parent().show();
+                        $(".search-filter-btn").click(function () {
+                            $("#search-result-filter-toggle").addClass("active");
+                            $("#search-result-filter-toggle .btn-close").focus();
+                        });
+                        $("#search-result-filter-toggle .btn-close").click(function () {
+                            $("#search-result-filter-toggle").removeClass("active");
+                            $(".search-filter-btn").focus();
+                        })
 
-                // Creating result list
-                try{
-                    var resultlist = "";
-                    var resultItem = "";
-                    for(var i=0; i<listLength; i++){
-                        resultItem = "";
-                        var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"]["$"];
-                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"]["$"];
-                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                        // Adding active class to selected filter
+                        if(filterText==""){
+                            $("#search-result-filter-list").children().first().children("a").addClass("active");
+                        }
+                        else{
+                            $("#search-result-filter-list .check-container").each(function(){
+                                if($(this).attr("name") == filterText){
+                                    $(this).children("a").addClass("active");
+                                }
+                            })
+                        }
 
-                        resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
-                        '<a href="' + resultUrl + '"><span class="txt">' + resultTitle + '</span></a>' +
-                        '<p class="intro">' + resultIntro + '</p>' +
-                        '<a class="search-result-display-url" aria-hidden="true" title="' + resultUrl +
-                        '" href="' + resultUrl + '">' + resultUrl + '</a></div>';
+                        // Show no of result for selected filter
+                        var resultNumber = $("#search-result-filter-list .check-container .active").children(".num").text().split(")")[0];
+                        $("#search-result-num-results").text(resultNumber);
+                        if(parseInt(resultNumber) == 1){
+                            $("#search-result-num-plural").hide();
+                            $("#search-result-num-single").show();
+                        }
+                        $("#search-result-num-results").parent().parent().show();
 
-                        resultlist = resultlist + resultItem;
+                        // Creating result list
+                        try{
+                            var resultlist = "";
+                            var resultItem = "";
+                            if(listLength==1){
+                                resultItem = "";
+                                    var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"]["$"];
+                                    try{
+                                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"]["$"];
+                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                        var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+
+                                        if(resultType!=".html"){
+                                            resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
+                                        }
+                                    }
+                                    catch(err){
+                                        console.log(err);
+                                    }
+                                    resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
+                                    '<a href="' + resultUrl + '"><span class="txt">' + resultTitle + '</span></a>' +
+                                    '<p class="intro">' + resultIntro + '</p>' +
+                                    '<a class="search-result-display-url" aria-hidden="true" title="' + resultUrl +
+                                    '" href="' + resultUrl + '">' + resultUrl + '</a></div>';
+
+                                    resultlist = resultlist + resultItem;
+                            }
+                            else{
+                                for(var i=0; i<listLength; i++){
+                                    resultItem = "";
+                                    var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"]["$"];
+                                    try{
+                                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"]["$"];
+                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                    }
+                                    catch(err){
+                                        console.log(err);
+                                        continue;
+                                    }
+                                    resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
+                                    '<a href="' + resultUrl + '"><span class="txt">' + resultTitle + '</span></a>' +
+                                    '<p class="intro">' + resultIntro + '</p>' +
+                                    '<a class="search-result-display-url" aria-hidden="true" title="' + resultUrl +
+                                    '" href="' + resultUrl + '">' + resultUrl + '</a></div>';
+
+                                    resultlist = resultlist + resultItem;
+                                }
+                            }
+
+                            // Appending list to body
+                            $("#search-result-items").append(resultlist);
+
+                            // Configure pagination
+                            if(allNumber <= 10){
+                                $(".pagination").css("display", "none");
+                            }
+                            else{
+                                configurePagination(allNumber);
+                            }
+
+                            $("#search-result-results").css("display","block");
+                        }
+                        catch(err){
+                            console.log("Unable to populate Search" + err);
+                            $("#search-result-error").css("display","block");
+                        }
                     }
-
-                    // Appending list to body
-                    $("#search-result-items").append(resultlist);
-
-                    $("#search-result-results").css("display","block");
-                }
-                catch(err){
-                    console.log("Unable to populate Search");
+                },
+                error: function(){
+                    console.log("Search Error");
                     $("#search-result-error").css("display","block");
-                }
-            },
-            error: function(){
-                console.log("Search Error");
-                $("#search-result-error").css("display","block");
-            }   
-        }); 
+                }   
+            }); 
+        }
     }
 });
