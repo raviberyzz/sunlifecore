@@ -174,15 +174,24 @@
             td{
                 .fa-check{
                     color: #0b713a;
-                    width:20px;
-                    height:15px;
+                   // width:20px;
+                   // height:15px;
+                    &:before {
+                        font-size: 20px;
+                    }
+                }
+                .fa-star{
+                    &:before{
+                        font-size:22px;
+                    }
                 }
                 .star-selected{
                     color: $primary-yellow-background;
                     border: $primary-yellow-background;
                 }
                 .star-not-selected{
-                    color: $medium-grey-background; 
+                    color: $white-shade; 
+                    text-shadow:-1px 0 #9a9a9a, 0 1px #9a9a9a, 1px 0 #9a9a9a, 0 -1px #9a9a9a;
                 }
             }
             td:first-of-type{
