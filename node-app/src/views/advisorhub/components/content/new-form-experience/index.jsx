@@ -1,4 +1,5 @@
 const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
+    const [inputValue, setInputValue] = React.useState( '' );
     function search() {
         var filterValue = $('.search').val();
         callback();
@@ -19,9 +20,9 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
                     //  value={filter || ''}
                     placeholder="Search"
                     className="search"
-                // onChange={e => setFilter(e.target.value)}
+                 onChange={e => setInputValue(e.target.value)}
                 />
-                <span onClick={clearSearch}><i className="fa fa-times"></i></span>
+                {inputValue!="" && <span onClick={clearSearch}><i className="fa fa-times"></i></span>}
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
                 <button onClick={reset}><i className="fa fa-repeat"></i></button>
             </span>
