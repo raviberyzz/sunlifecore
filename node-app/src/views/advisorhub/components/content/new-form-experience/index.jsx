@@ -379,9 +379,9 @@ class NewFormExperience extends React.Component {
 
     SearchSort() {
         var searchResultRows = [];
-        var filter = $('.search').val();
+        var filter = $('.search').val().toUpperCase();
         this.state.data.map((obj) => {
-            if (obj.formNumber.indexOf(filter) > -1 || obj.formInformation.indexOf(filter) > -1) {
+            if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
                 searchResultRows.push(obj);
             }
         })
