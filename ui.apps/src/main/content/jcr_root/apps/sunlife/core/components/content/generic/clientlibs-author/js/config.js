@@ -402,9 +402,63 @@ var multiPurposeComponentConfig = [
         "reactComponentName": "new-form-experience",
         "props": [
             {
-            	name: "resourcePath",
+            	name: "tableRowsDataUrl",
                 label: "Resource path",
                 value: "/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic",
+                required: true
+            },
+            {
+            	name: "filtersDataUrl",
+                label: "Filter URL",
+                value: "/content/cq:tags/sunlife/advisorhub",
+                required: true
+            },
+            {
+            	name: "tableHeaderCol1",
+                label: "Table header col1L",
+                value: "Number",
+                required: true
+            },
+            {
+            	name: "tableHeaderCol2",
+                label: "Table header col2",
+                value: "Name/Info",
+                required: true
+            },
+            {
+            	name: "tableHeaderCol3",
+                label: "Table header col3",
+                value: "Last Updated",
+                required: true
+            },
+            {
+            	name: "tableHeaderCol4",
+                label: "Table header col4",
+                value: "E-Sign",
+                required: true
+            },
+            {
+            	name: "tableHeaderCol5",
+                label: "Table header col5",
+                value: "Favorite",
+                required: true
+            },
+            {
+            	name: "addFilterText",
+                label: "Add Filter",
+                value: "Add Filter",
+                required: true
+            },
+            {
+            	name: "filterDoneText",
+                label: "Filter Done Text",
+                value: "Done",
+                required: true
+            },
+            {
+            	name: "ClearAllText",
+                label: "Clear All Text",
+                value: "Clear All",
                 required: true
             }
         ]
