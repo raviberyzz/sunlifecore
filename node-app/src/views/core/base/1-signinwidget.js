@@ -236,7 +236,7 @@ function getBrowserInfo() {
         browRes = document.body.clientWidth + ' x ' + document.body.clientHeight;
     }
 
-    return "&OS=" + encodeURIComponent(strOS) + "&browserId=" + encodeURIComponent(browserName) + "&browserVersionId=" + encodeURIComponent(browserVersion) + "&screenRes=" + screenRes;
+    return "&OS=" + strOS + "&browserId=" + encodeURIComponent(browserName) + "&browserVersionId=" + encodeURIComponent(browserVersion) + "&screenRes=" + screenRes;
 
     //return	"&browRes=" + browRes + "&OS=" + encodeURIComponent(strOS) + "&tzone=" + timeZone + "&date=" + dtime + "&browserId=" + encodeURIComponent(browserName) + "&browserVersionId=" + encodeURIComponent(browserVersion) + "&browserVersMaj=" + encodeURIComponent(bVersionMajor) + "&browserVersMin=" + encodeURIComponent(bVersionMinor) + "&screenRes=" + screenRes + "&colorDepth=" + colorDepth;
 
