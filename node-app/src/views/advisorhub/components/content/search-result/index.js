@@ -95,6 +95,7 @@ $(document).ready(function(){
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
     var searchApi = "http://uat-idol11.ca.sunlife:16000/";
+    var searchError = false; 
 
     var filterArray = [
         {
@@ -175,6 +176,8 @@ $(document).ready(function(){
                         }
                         
                         $("#search-result-filter-list").append(filterList);
+
+                        // Getting no of result for different filters
 
                         $.ajax({
                             type: "GET",
@@ -302,26 +305,48 @@ $(document).ready(function(){
                             var resultItem = "";
                             if(listLength==1){
                                 resultItem = "";
-                                    var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"]["$"];
-                                    try{
-                                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"]["$"];
-                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
-                                        var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+                                var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"]["$"];
+                                try{
+                                    var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"]["$"];
+                                }
+                                catch(err){
+                                    console.log(err);
+                                    searchError = true;
+                                }
+                                try{
+                                    var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                }
+                                catch(err){
+                                    console.log(err);
+                                    resultIntro="";
+                                }  
 
-                                        if(resultType!=".html"){
-                                            resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
-                                        }
+                                // Appending File type to title
+                                try{
+                                    var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+
+                                    if(resultType==".docx"){
+                                        resultTitle = '(MS Word) ' + resultTitle;
                                     }
-                                    catch(err){
-                                        console.log(err);
+                                    else if(resultType==".pptx"){
+                                        resultTitle = '(MS PowerPoint) ' + resultTitle;
                                     }
-                                    resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
+                                    else if(resultType!=".html"){
+
+                                        resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
+                                    }
+                                }
+                                catch(err){
+                                    console.log(err);
+                                }
+
+                                resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
                                     '<a href="' + resultUrl + '"><span class="txt">' + resultTitle + '</span></a>' +
                                     '<p class="intro">' + resultIntro + '</p>' +
                                     '<a class="search-result-display-url" aria-hidden="true" title="' + resultUrl +
                                     '" href="' + resultUrl + '">' + resultUrl + '</a></div>';
 
-                                    resultlist = resultlist + resultItem;
+                                resultlist = resultlist + resultItem;
                             }
                             else{
                                 for(var i=0; i<listLength; i++){
@@ -329,12 +354,37 @@ $(document).ready(function(){
                                     var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"]["$"];
                                     try{
                                         var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"]["$"];
-                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
                                     }
                                     catch(err){
                                         console.log(err);
                                         continue;
                                     }
+                                    try{
+                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                    }
+                                    catch(err){
+                                        console.log(err);
+                                        resultIntro = "";
+                                    }
+
+                                    try{
+                                        var resultType = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+
+                                        if(resultType==".docx"){
+                                            resultTitle = '(MS Word) ' + resultTitle;
+                                        }
+                                        else if(resultType==".pptx"){
+                                            resultTitle = '(MS PowerPoint) ' + resultTitle;
+                                        }
+                                        else if(resultType!=".html"){
+
+                                            resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
+                                        }
+                                    }
+                                    catch(err){
+                                        console.log(err);
+                                    }
+
                                     resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
                                     '<a href="' + resultUrl + '"><span class="txt">' + resultTitle + '</span></a>' +
                                     '<p class="intro">' + resultIntro + '</p>' +
@@ -356,10 +406,19 @@ $(document).ready(function(){
                                 configurePagination(allNumber);
                             }
 
-                            $("#search-result-results").css("display","block");
+                            if(searchError==false){
+                                $("#search-result-author-page").css("display","none");
+                                $("#search-result-results").css("display","block");
+                            }
+                            else{
+                                console.log("Unable to populate Search");
+                                $("#search-result-author-page").css("display","none");
+                                $("#search-result-error").css("display","block");
+                            }
                         }
                         catch(err){
                             console.log("Unable to populate Search" + err);
+                            $("#search-result-author-page").css("display","none");
                             $("#search-result-error").css("display","block");
                         }
                     }
