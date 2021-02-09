@@ -25,7 +25,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
                 />
                 {inputValue!="" && <span onClick={clearSearch}><i className="fa fa-times"></i></span>}
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
-                <button onClick={reset}><i className="fa fa-repeat"></i></button>
+                <button onClick={reset} className="resetButton"><i className="fa fa-repeat"></i></button>
             </span>
         </div>
 
