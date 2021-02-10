@@ -16,14 +16,14 @@ $(document).ready(function(){
 
     function setupPaginationItems(paginationItems, page, total) {
         var urlParams = getParams();
-        var searchText = (urlParams.text || "").trim();
+        var searchText = (urlParams.q || "").trim();
         var filterText = (urlParams.filter || "").trim();
         var maxResult = (urlParams.maxresults || "10").trim();
         var paginationFirst = $($("#search-result-pagination-first").html()).filter("li");
         var paginationItem = $($("#search-result-pagination-item").html()).filter("li");
 
         var currentPage = maxResult/10;
-        var pageUrl = "?text=" + searchText;
+        var pageUrl = "?q=" + searchText;
         if(filterText!=""){
             pageUrl = pageUrl + "&filter=" + filterText;
         }
@@ -38,13 +38,13 @@ $(document).ready(function(){
 
     function configurePagination(total){
         var urlParams = getParams();
-        var searchText = (urlParams.text || "").trim();
+        var searchText = (urlParams.q || "").trim();
         var filterText = (urlParams.filter || "").trim();
         var maxResult = (urlParams.maxresults || "10").trim();
 
         var totalPage = Math.ceil(total/10);
         var currentPage = maxResult/10;
-        var pageUrl = "?text=" + searchText;
+        var pageUrl = "?q=" + searchText;
         if(filterText!=""){
             pageUrl = pageUrl + "&filter=" + filterText;
         }
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
     // Retrieve parameters from URL
     var urlParams = getParams();
-    var searchText = (urlParams.text || "").trim();
+    var searchText = (urlParams.q || "").trim();
     var filterText = (urlParams.filter || "").trim();
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
@@ -122,7 +122,26 @@ $(document).ready(function(){
 
     if($(".adv-search")){
         if(searchText!=""){
-            $(".adv-search-bar-wrapper input[name=text]").val(searchText);
+            $(".adv-search-bar-wrapper input[name=q]").val(searchText);
+
+            // Adding cross button to input field
+            var clearButton = '<span id="searchclear" class="fa fa-times"></span>';
+            $(".adv-search-bar-wrapper input[name=q]").after(clearButton);
+
+            $(".adv-search-bar-wrapper input[name=q]").on('input', function() {
+                if($(".adv-search-bar-wrapper input[name=q]").val()==""){
+                    $('#searchclear').css("display", "none");
+                }
+                else{
+                    $('#searchclear').css("display", "block");
+                }
+            });
+
+            $('#searchclear').click(function(){
+                $(".adv-search-bar-wrapper input[name=q]").val("");
+                $('#searchclear').css("display", "none");
+                $(".adv-search-bar-wrapper input[name=q]").focus();
+            })
 
             // Create URL for ajax call
             var searchUrl = searchApi + '?action=Query&ResponseFormat=json&totalresults=true&print=all';
@@ -159,14 +178,14 @@ $(document).ready(function(){
 
                             if(j==0){
                                 filter = filter + '<div class="check-container" name="' + filterArray[0]["filter"] + '">' +
-                                '<a href="?action=filter&text=' + searchText + '">' + 
+                                '<a href="?action=filter&q=' + searchText + '">' + 
                                 '<span class="txt">' + filterArray[0]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
                                 '<span class="num">)</span>' + 
                                 '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
                             }
                             else{
                                 filter = filter + '<div class="check-container" name="' + filterArray[j]["filter"] + '">' +
-                                '<a href="?action=filter&text=' + searchText + '&filter=' + filterArray[j]["filter"] + '">' + 
+                                '<a href="?action=filter&q=' + searchText + '&filter=' + filterArray[j]["filter"] + '">' + 
                                 '<span class="txt">' + filterArray[j]["name_" + utag_data.page_language] + '&nbsp;(</span>' + 
                                 '<span class="num">)</span>' + 
                                 '<span class="sr-only">Filter </span><span class="checkmark">&nbsp;</span><span class="sr-only active-text"> (active)</span>' + '</a></div>';
@@ -325,14 +344,16 @@ $(document).ready(function(){
                                 try{
                                     var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
 
-                                    if(resultType==".docx"){
+                                    if(resultType==".docx" || resultType==".doc"){
                                         resultTitle = '(MS Word) ' + resultTitle;
+                                    }
+                                    else if(resultType==".xlsx" || resultType==".xls"){
+                                        resultTitle = '(MS Excel) ' + resultTitle;
                                     }
                                     else if(resultType==".pptx"){
                                         resultTitle = '(MS PowerPoint) ' + resultTitle;
                                     }
                                     else if(resultType!=".html"){
-
                                         resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
                                     }
                                 }
@@ -370,14 +391,16 @@ $(document).ready(function(){
                                     try{
                                         var resultType = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
 
-                                        if(resultType==".docx"){
+                                        if(resultType==".docx" || resultType==".doc"){
                                             resultTitle = '(MS Word) ' + resultTitle;
+                                        }
+                                        else if(resultType==".xlsx" || resultType==".xls"){
+                                            resultTitle = '(MS Excel) ' + resultTitle;
                                         }
                                         else if(resultType==".pptx"){
                                             resultTitle = '(MS PowerPoint) ' + resultTitle;
                                         }
                                         else if(resultType!=".html"){
-
                                             resultTitle = '(' + resultType.substr(1).toUpperCase() + ') ' + resultTitle;
                                         }
                                     }

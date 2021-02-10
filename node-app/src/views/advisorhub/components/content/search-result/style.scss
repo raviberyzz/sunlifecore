@@ -20,6 +20,13 @@
         }
     }
 }
+.adv-search-bar-wrapper #searchclear{
+	position: absolute;
+    right: 5px;
+    top: 15px;
+    bottom: 0;
+    cursor:pointer;
+}
 
 @media (max-width: $mobile-screen-max) {
 	#search-result-filter-list{display:block;}
