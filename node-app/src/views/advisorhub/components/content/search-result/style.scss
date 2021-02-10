@@ -2,6 +2,7 @@
 .search-container{
     margin-top: 20px;
     .search-results{
+        display: none;
         .relative .search-result-filter-list{
             display: flex;
             .check-container{
@@ -19,6 +20,12 @@
             -webkit-box-orient: vertical;
         }
     }
+}
+.cq-Editable-dom #search-result-author-page{
+	display:block;
+}
+#search-result-author-page{
+	display:none;
 }
 .adv-search-bar-wrapper #searchclear{
 	position: absolute;
