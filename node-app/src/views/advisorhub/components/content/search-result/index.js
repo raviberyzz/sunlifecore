@@ -88,35 +88,59 @@ $(document).ready(function(){
         $("#search-result-page-total").text(totalPage);
     }
 
+    function searchAnalytics(action, filter, totalResults, searchTerm){
+        if (filter=="") filter = "All";
+        var ev_title;
+
+        if (action === 'input') ev_title = "onsite search_client input";
+        else if (action === 'filter') ev_title = "onsite search_filter";
+        else return;
+
+        var filterName = filter;
+        var options = {
+            ev_type: "other",
+            ev_action: "clk",
+            ev_title: ev_title,
+            ev_data_one: "search_count=" + totalResults + ":search_filter=" + filterName
+        };
+        try {
+            utag.link(options);
+        } catch (e) {
+            console.log("Couldn't perform utag.link() call.") // eslint-disable-line
+            console.log(options); // eslint-disable-line
+        }
+    }
+
     // Retrieve parameters from URL
     var urlParams = getParams();
     var searchText = (urlParams.q || "").trim();
     var filterText = (urlParams.filter || "").trim();
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
+    var searchAction = (urlParams.action || "").trim();
     var searchApi = "http://uat-idol11.ca.sunlife:16000/";
     var searchError = false; 
 
     var filterArray = [
         {
             name_en: "All",
-            filter: "all"
+            filter: "All"
         },
         {
             name_en: "Your Business",
-            filter: "your-business"
+            filter: "Your-Business"
         },
         {
             name_en: "Products and Solutions",
-            filter: "products-and-solutions"
+            filter: "Products-and-Solutions"
         },
         {
             name_en: "Client Service",
-            filter: "client-service"
+            filter: "Client-Service"
         },
         {
             name_en: "News",
-            filter: "news"
+            filter: "News"
         }
     ];
 
@@ -166,6 +190,8 @@ $(document).ready(function(){
                     var allNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
                     var listLength = data["autnresponse"]["responsedata"]["autn:numhits"]["$"];
 
+                    searchAnalytics(searchAction, filterText, allNumber, searchText);
+
                     if(listLength == 0){
                         $("#search-result-none").css("display", "block");
                     }
@@ -205,7 +231,7 @@ $(document).ready(function(){
                     
                             success: function(data){
                                 var totalNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
-                                $(".check-container[name=all]").children().children(".num").text(totalNumber+")");
+                                $(".check-container[name=All]").children().children(".num").text(totalNumber+")");
                             },
                             error: function(){
                                 console.log("Search Error");
@@ -220,10 +246,10 @@ $(document).ready(function(){
                             success: function(data){
                                 var businessNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
                                 if(businessNumber==0){
-                                    $(".check-container[name=your-business]").css("display","none");
+                                    $(".check-container[name=Your-Business]").css("display","none");
                                 }
                                 else{
-                                    $(".check-container[name=your-business]").children().children(".num").text(businessNumber+")");
+                                    $(".check-container[name=Your-Business]").children().children(".num").text(businessNumber+")");
                                 }
                             },
                             error: function(){
@@ -239,10 +265,10 @@ $(document).ready(function(){
                             success: function(data){
                                 var productNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
                                 if(productNumber==0){
-                                    $(".check-container[name=products-and-solutions]").css("display","none");
+                                    $(".check-container[name=Products-and-Solutions]").css("display","none");
                                 }
                                 else{
-                                    $(".check-container[name=products-and-solutions]").children().children(".num").text(productNumber+")");
+                                    $(".check-container[name=Products-and-Solutions]").children().children(".num").text(productNumber+")");
                                 }
                             },
                             error: function(){
@@ -258,10 +284,10 @@ $(document).ready(function(){
                             success: function(data){
                                 var clientNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
                                 if(clientNumber==0){
-                                    $(".check-container[name=client-service]").css("display","none");
+                                    $(".check-container[name=Client-Service]").css("display","none");
                                 }
                                 else{
-                                    $(".check-container[name=client-service]").children().children(".num").text(clientNumber+")");
+                                    $(".check-container[name=Client-Service]").children().children(".num").text(clientNumber+")");
                                 }
                             },
                             error: function(){
@@ -277,10 +303,10 @@ $(document).ready(function(){
                             success: function(data){
                                 var newsNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
                                 if(newsNumber==0){
-                                    $(".check-container[name=news]").css("display","none");
+                                    $(".check-container[name=News]").css("display","none");
                                 }
                                 else{
-                                    $(".check-container[name=news]").children().children(".num").text(newsNumber+")");
+                                    $(".check-container[name=News]").children().children(".num").text(newsNumber+")");
                                 }
                             },
                             error: function(){
@@ -421,6 +447,25 @@ $(document).ready(function(){
                             // Appending list to body
                             $("#search-result-items").append(resultlist);
 
+                            // Configure analytics
+                            $(".search-result-item a").click(function(){
+                                var destTitle = $(this).parent().children("a").first().children("span").text();
+                                var destUrl = $(this).attr("href");
+                                var options = {
+                                    ev_type: "other",
+                                    ev_action: "clk",
+                                    ev_title: "onsite search_query result item",
+                                    page_destination_title: destTitle,
+                                    page_destination_url: destUrl
+                                };
+                                try {
+                                    utag.link(options);
+                                } catch (e) {
+                                    console.log("Couldn't perform utag.link() call.") // eslint-disable-line
+                                    console.log(options); // eslint-disable-line
+                                }
+                            })
+
                             // Configure pagination
                             if(allNumber <= 10){
                                 $(".pagination").css("display", "none");
@@ -430,18 +475,15 @@ $(document).ready(function(){
                             }
 
                             if(searchError==false){
-                                $("#search-result-author-page").css("display","none");
                                 $("#search-result-results").css("display","block");
                             }
                             else{
                                 console.log("Unable to populate Search");
-                                $("#search-result-author-page").css("display","none");
                                 $("#search-result-error").css("display","block");
                             }
                         }
                         catch(err){
                             console.log("Unable to populate Search" + err);
-                            $("#search-result-author-page").css("display","none");
                             $("#search-result-error").css("display","block");
                         }
                     }
