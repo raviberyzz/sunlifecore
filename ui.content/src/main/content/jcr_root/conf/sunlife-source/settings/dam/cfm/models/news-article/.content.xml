@@ -4,6 +4,8 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
+        cq:lastModified="{Date}2021-02-11T16:14:43.654-05:00"
+        cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/source/settings/dam/cfm/models/news-article/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:description="News article"
@@ -21,11 +23,13 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
+                    jcr:lastModified="{Date}2021-02-11T16:14:43.654-05:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="20">
+                        maxGeneratedOrder="21">
                         <publishedDate
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
@@ -75,6 +79,24 @@
                             required="on"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
+                        <linkOptions
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                            emptyOption="{Boolean}true"
+                            fieldDescription="Please specify whether to open link in new tab, same tab or in the form of lightbox."
+                            fieldLabel="Link options"
+                            listOrder="21"
+                            metaType="enumeration"
+                            name="linkOptions"
+                            options="Open in New Tab,Open in Same Tab,Open in Lightbox"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <datasource
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/admin/components/datasources/optionrenderer"
+                                variant="default"/>
+                        </linkOptions>
                         <thumbnailImage
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
