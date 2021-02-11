@@ -124,22 +124,27 @@ $(document).ready(function(){
     var filterArray = [
         {
             name_en: "All",
+            name_fr: "Tous",
             filter: "All"
         },
         {
             name_en: "Your Business",
+            name_fr: "Vos Affaires",
             filter: "Your-Business"
         },
         {
             name_en: "Products and Solutions",
+            name_fr: "Produits et Solutions",
             filter: "Products-and-Solutions"
         },
         {
             name_en: "Client Service",
+            name_fr: "Service au Client",
             filter: "Client-Service"
         },
         {
             name_en: "News",
+            name_fr: "Nouvelles",
             filter: "News"
         }
     ];
@@ -226,7 +231,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText,
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + "&matchlanguage=" + utag_data.page_language,
                             dataType: "json",
                     
                             success: function(data){
@@ -240,7 +245,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER',
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "json",
                     
                             success: function(data){
@@ -259,7 +264,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER',
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "json",
                     
                             success: function(data){
@@ -278,7 +283,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER',
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "json",
                     
                             success: function(data){
@@ -297,7 +302,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER',
+                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "json",
                     
                             success: function(data){
