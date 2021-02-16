@@ -117,13 +117,15 @@ function mobileDisplay() {
 
 /*Adds alternating row shade colour to comparison table table headers: header columns may span multiple rows thus javascript solution is implemented*/
 function colorComparisonTable() {
-  $(".cmp-table-comparision table tbody tr:not(:first-child) th").each(function (index) {
-    if (index % 2 == 0) {
-      $(this).css("background-color", "#fff");
-    } else {
-      $(this).css("background-color", "#feedd2");
-    }
-  });
+  $(".cmp-table-comparision table").each(function (index) {
+    $(this).children("tbody tr:not(:first-child) th").each(function (index) {
+      if (index % 2 == 0) {
+        $(this).css("background-color", "#fff");
+      } else {
+        $(this).css("background-color", "#feedd2");
+      }
+    });
+  })
 }
 
 $(colorComparisonTable);
