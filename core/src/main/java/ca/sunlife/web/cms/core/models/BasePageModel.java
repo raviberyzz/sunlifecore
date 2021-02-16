@@ -369,6 +369,9 @@ public class BasePageModel {
   /** The favicon. */
   private String favIcon;
 
+  /** The disableSocialSharingTags. */
+  private String disableSocialSharingTags;
+  
   /**
    * @return the favIcon
    */
@@ -956,6 +959,23 @@ public class BasePageModel {
 		this.mfaEncryption = mfaEncryption;
 	}
 
+	/**
+	 * Gets the disableSocialSharingTags.
+	 *
+	 * @return the disableSocialSharingTags
+	 */
+	public String getDisableSocialSharingTags() {
+		return disableSocialSharingTags;
+	}
+
+	/**
+	 * Sets the disableSocialSharingTags.
+	 *
+	 * @param disableSocialSharingTags
+	 */
+	public void setDisableSocialSharingTags(String disableSocialSharingTags) {
+		this.disableSocialSharingTags = disableSocialSharingTags;
+	}
 
 	/**
    * Inits the.
@@ -978,6 +998,7 @@ public class BasePageModel {
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
+    disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
    
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));

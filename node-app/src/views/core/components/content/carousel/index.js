@@ -23,6 +23,15 @@
 
     var desktopmodeon = true;
 
+    /*Code to stop the video while closing the modal */
+
+    $(".popup-modal-wrapper ").on('hidden.bs.modal', function (e) {
+        if ( $(".popup-modal-wrapper iframe").length > 0  && $(".carousel-client-story").length > 0) {
+            $(".popup-modal-wrapper  iframe").attr("src", $(".popup-modal-wrapper  iframe").attr("src"));
+        }
+
+	});
+
 
 /**
 	code to dynamically generate slider goes here
