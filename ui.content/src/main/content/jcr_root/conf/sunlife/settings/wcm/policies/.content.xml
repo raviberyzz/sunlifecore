@@ -6135,7 +6135,8 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Lumino Component Policy"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            partnername="Sun Life Financial">
+                            partnername="Sun Life Financial"
+                            googleapikey="AIzaSyCEfXicYEcgDUeW-Eq5l79aQnO0h3gdQAk">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_lumino>
                     </lumino>
