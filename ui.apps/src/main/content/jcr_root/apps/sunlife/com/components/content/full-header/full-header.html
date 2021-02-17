@@ -269,11 +269,12 @@
           </div>
           <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn"
             data-toggle="${listModel.signinTarget == 'modal' ? 'modal' : ''}" data-target="${listModel.signinTarget == 'modal' ? buttonTarget : ''}" data-section="${listModel.signinAnalyticsId}">
+            <sly data-sly-test.mobilelinkChecker = "${listModel.signinTarget == 'modal'}">
             <a data-toggle="modal" role="button" href="javascript:void(0)">
-             </sly>
-             <sly data-sly-test = "${!mobilelinkChecker}">
+            </sly>
+            <sly data-sly-test = "${!mobilelinkChecker}">
               <a data-toggle="modal" role="button" href="${listModel.signinUrl}">
-              </sly> 
+            </sly> 
               <span class="fa ${listModel.signinIcon} mobile-signin-icon">
                 <div class="mobile-signin-text">${listModel.signinMobileTitle ? listModel.signinMobileTitle : signinTitle}</div>
               </span></a>
