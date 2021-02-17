@@ -617,7 +617,11 @@ class NewsTiles extends React.Component {
       ev_data_one: "hp-news-" + index,
     });
     /* homepage analytics ends here */
-    location.href = this.state.filterNewsList[key].pagePath;
+	if (this.state.filterNewsList[key].linkOption == "newWindow") {
+		window.open(this.state.filterNewsList[key].pagePath, "_blank");
+	} else {
+		location.href = this.state.filterNewsList[key].pagePath;
+	}
   }
   render() {
     return (
