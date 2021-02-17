@@ -102,7 +102,7 @@ public class OutageListModel {
 	  private int totalMatch;
 
 	  /** The Constant ELEMENT_NAMES. */
-	  private static final String [ ] ELEMENT_NAMES = { "outageDate", "outageDescription", "outageIcon", "outageStatus", "outageTitle" };
+	  private static final String [ ] ELEMENT_NAMES = { "outageDate", "outageDescription", "outageIcon","outageIconColor", "outageStatus", "outageTitle" };
 
 	  /**
 	   * Gets the parent path.
