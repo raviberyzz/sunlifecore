@@ -1,5 +1,5 @@
 @import '../../../base/core';
-.technology-whiteboard{
+.outage-detail{
     .outage-item{
         padding: 32px 0;
         .outage-date{
@@ -43,6 +43,7 @@
         }
     }
     .outage-pagination{
+        display: none;
         .pagination {
             border-radius: 0;
             display: inline-block;
@@ -144,7 +145,7 @@
 }
 
 @media (max-width: $mobile-screen-max){
-    .technology-whiteboard{
+    .outage-detail{
         .outage-pagination {
             .pagination.first-page {
                 width: 80%;
@@ -234,7 +235,7 @@
 }
 
 @media (min-width: $tab-screen-min) {
-    .technology-whiteboard{
+    .outage-detail{
         .pagination-indicator{
             display:none;
         }
