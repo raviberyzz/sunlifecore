@@ -14,6 +14,8 @@ const gulp = require('gulp'),
  sort = require('gulp-sort'),
  flatten = require('gulp-flatten'),
  gulpif = require('gulp-if'),
+ gulpIgnore = require('gulp-ignore'),
+ buffer = require('vinyl-buffer'),
  merge = require('merge-stream');
 
 //Constants declarations for Browserify
@@ -82,6 +84,7 @@ gulp.task('compile-files', (done) => {
   });
   const vendorJsTasks = folders.map((folder)=> {
     return gulp.src(path.join(srcViews, folder, 'vendor/**/*.js'))
+      .pipe(gulpIgnore.exclude(/.*mfa-*/))
       .pipe(sort(compareFiles))
       .pipe(concat('vendor.js'))
       //.pipe(uglify())
@@ -105,6 +108,8 @@ gulp.task('compile-files', (done) => {
        .pipe(babel({
          presets: ["@babel/preset-env", "@babel/preset-react"]
        }))
+       .pipe(buffer())
+       .pipe(uglify())  
        .pipe(gulp.dest('public/' + folder + '/js'));
 
    }else{
@@ -113,8 +118,8 @@ gulp.task('compile-files', (done) => {
         .transform("babelify", { presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-proposal-class-properties"] })
         .bundle()
         .pipe(source('react.js'))  
-        //.pipe(buffer())
-        //.pipe(uglify())  
+        .pipe(buffer())
+        .pipe(uglify())  
         .pipe(gulp.dest('public/'+folder+'/js')) 
    }
   });
@@ -152,7 +157,8 @@ gulp.task('compile-react',(done) =>{
         .pipe(babel({
           presets: ["@babel/preset-env", "@babel/preset-react"]
         }))
-        //.pipe(uglify())
+        .pipe(buffer())
+        .pipe(uglify())  
         .pipe(gulp.dest('dist/'+folder+'/react-components'))  
       }else{
     var files = glob.sync(srcViews+'/'+folder+'/**/*.jsx');
@@ -160,8 +166,8 @@ gulp.task('compile-react',(done) =>{
     .transform("babelify", { presets: ["@babel/preset-env", "@babel/preset-react"], plugins: ["@babel/plugin-proposal-class-properties"] })
     .bundle()
     .pipe(source('components.js'))  
-    //.pipe(buffer())
-    //.pipe(uglify())  
+    .pipe(buffer())
+    .pipe(uglify())  
     .pipe(gulp.dest('dist/'+folder+'/react-components')) 
       }
   });  
