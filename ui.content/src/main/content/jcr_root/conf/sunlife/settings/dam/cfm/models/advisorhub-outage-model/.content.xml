@@ -57,14 +57,25 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
+                        <_x0031_613516240418
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Outage Icon"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="outageIcon"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>    
                         <_x0031_612209626747
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                             emptyOption="{Boolean}true"
-                            fieldLabel="Outage Icon"
+                            fieldLabel="Outage Icon Color"
                             listOrder="23"
                             metaType="enumeration"
-                            name="outageIcon"
+                            name="outageIconColor"
                             options="Red,Yellow"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
