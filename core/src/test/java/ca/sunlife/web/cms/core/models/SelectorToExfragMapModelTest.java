@@ -4,9 +4,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -21,7 +19,6 @@ import org.apache.sling.api.resource.LoginException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -97,6 +94,7 @@ public class SelectorToExfragMapModelTest {
 		selectorToExfragMapModel.setFragPath("/content/experience-fragments/sunlife/fragment3");		
 		when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
 		when(requestPathInfo.getSelectors()).thenReturn(selectors);			
+		when(request.getRequestPathInfo().getResourcePath()).thenReturn(pagePath);
 		when(page.getPath()).thenReturn("/content/experience-fragments/sunlife/home");
 		when(configService.getConfigValues("siteName","/content/experience-fragments/sunlife/home")).thenReturn("abc");		
 		selectorToExfragMapModel.init();		
@@ -130,11 +128,13 @@ public class SelectorToExfragMapModelTest {
 	 */
 	@ Test
 	void testInitWhenRepositoryException() throws LoginException, RepositoryException {
+		String pagePath = "/content/sunlife/ca/en/home";
 		selectorToExfragMapModel.setFragPath("/content/experience-fragments/sunlife/fragment3");
 		when(page.getPath()).thenReturn("/content/sunlife/en/home");		
 		when(configService.getConfigValues("", "/content/experience-fragments/sunlife/home")).thenThrow(new RepositoryException());
 		when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
 		when(requestPathInfo.getSelectors()).thenReturn(selectors);
+		when(request.getRequestPathInfo().getResourcePath()).thenReturn(pagePath);
 		//assertThrows(RepositoryException.class, ()->selectorToExfragMapModel.init());
 		selectorToExfragMapModel.init();
 		
