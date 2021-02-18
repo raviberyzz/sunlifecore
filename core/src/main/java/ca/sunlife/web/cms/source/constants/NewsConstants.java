@@ -26,9 +26,6 @@ public final class NewsConstants {
   /** The Constant PAGE_CONSTANT. */
   public static final String PAGE_CONSTANT = "pagePath";
   
-  /** The Constant LINK_OPTION_CONSTANT. */
-  public static final String LINK_OPTION_CONSTANT = "linkOption";
-  
   /** The Constant THUMBNAIL_IMAGE_CONSTANT. */
   public static final String THUMBNAIL_IMAGE_CONSTANT = "thumbnailImage";
   

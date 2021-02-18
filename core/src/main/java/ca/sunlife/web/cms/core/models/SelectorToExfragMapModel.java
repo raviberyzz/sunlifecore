@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -120,7 +121,6 @@ public class SelectorToExfragMapModel {
     String[] selectors = request.getRequestPathInfo().getSelectors();
     String urlSelector = "";   
     String siteSelector = "";
-    
     if (items != null && items.size() > 0) {    	  
     	  LOGGER.debug("No of entries after items : {}", items.size());
     	  final Iterator <SelectorExFragMap> itemIterator = items.iterator();
@@ -144,6 +144,11 @@ public class SelectorToExfragMapModel {
 	        }
 	        else if (selectors.length > 0 && !selectors[0].equalsIgnoreCase(siteSelector)) {	
 		        	urlSelector = selectors [ 0 ];
+		        	
+		        	if (sitePath.contains(SelectorToExfragConstants.SLFAS_PAGE_PATH_CONSTANT) && selectors.length > 1 && Pattern.compile("[0-9]+").matcher(selectors[0]).matches()) {
+		        		urlSelector = selectors[1];
+		        		LOGGER.debug("url selector = {} ", urlSelector);
+		        	}
 	        	LOGGER.debug("selectors [ 0 ] = {} ", selectors [ 0 ]);
 	        }
 	        else if (selectors.length > 1 && selectors[0].equalsIgnoreCase(siteSelector)) {

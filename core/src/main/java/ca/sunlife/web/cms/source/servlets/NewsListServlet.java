@@ -140,7 +140,6 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 							jsonObject.put(NewsConstants.PAGE_CONSTANT, valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article
 							// page
 							// path
-							jsonObject.put(NewsConstants.LINK_OPTION_CONSTANT, valueMap.get(NewsConstants.LINK_OPTION_CONSTANT, String.class)); // link option
 							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_CONSTANT,
 									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)); // image path
 							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT,
