@@ -775,6 +775,9 @@ private String getPageNoForSlfas(final String[] selectors)
     } else if (selectors.length > 1 && (selectors [ 0 ].equalsIgnoreCase(configService.getConfigValues(SITE_SELECTOR, currentPage.getPath())))) {
     	pageNumStr = selectors [ 1 ];
     }
+    else if (selectors.length > 1 && !(selectors [ 0 ].equalsIgnoreCase(configService.getConfigValues(SITE_SELECTOR, currentPage.getPath())))) {
+    	pageNumStr = selectors [ 0 ];
+    }
 	return pageNumStr;
 }
 
