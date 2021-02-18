@@ -1,0 +1,55 @@
+<sly data-sly-use.list="ca.sunlife.web.cms.advisorhub.models.OutageListModel"
+     data-sly-test="${list.listItems.size>0}">
+     <sly data-sly-list="${list.listItems}">
+
+       <sly data-sly-list.element="${item.elements}">
+          <sly data-sly-test="${element.name == 'outageDescription'}" data-sly-test.outageDescription="${element.value}"/>
+          <sly data-sly-test="${element.name == 'outageIcon'}" data-sly-test.outageIcon="${element.value}"/>
+          <sly data-sly-test="${element.name == 'outageIconColor'}" data-sly-test.outageIconColor="${element.value}"/>
+          <sly data-sly-test="${element.name == 'outageStatus'}" data-sly-test.outageStatus="${element.value}"/>
+          <sly data-sly-test="${element.name == 'outageTitle'}" data-sly-test.outageTitle="${element.value}"/>
+          <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
+                                    data-sly-test.date="${element.value}" />
+       </sly>
+
+     <div class="technology-whiteboard">
+     <div class="outage-type">
+        <div class="outage-item-list">
+            <div class="outage-item">
+                <div class="outage-date">
+                    <sly data-sly-call="${tpl.element @ date = date, format = 'MMMM dd, yyyy', pageLocale = 'en_CA'}"></sly>
+                </div>
+                <div class="outage-title">
+                        <span class="fa ${outageIcon}"></span>
+                    <a class="outage-title-text" href="#">${outageTitle}</a>
+                </div>
+                <div class="outage-status">
+                    Status: ${outageStatus}
+                </div>
+                <div class="outage-teaser">
+                    ${outageDescription @context='html'}
+                </div>
+            </div>
+            </div>
+			</sly>
+			   <div class="outage-pagination">
+            <!-- Pagination -->
+            <div role="navigation" aria-label="Page" class="text-center">
+                <ul class="pagination first-page outage-pagination-list">
+                    <li class="previous disabled outage-pagination-previous">
+                        <a href=""><span class="fa fa-angle-left" aria-hidden="true">&nbsp;</span> <span>Previous</span>
+                        </a>
+                    </li>
+                    <li class="next outage-pagination-next"><a href="">Next</a></li>
+                </ul>
+
+                <div class="pagination-indicator">
+                    Page <span class="outage-page-num">1</span> of <span class="outage-page-total">6</span>
+                </div>
+            </div>
+            <!-- Pagination end -->
+           </div>
+            </div>
+            </div>
+</sly>     
+
