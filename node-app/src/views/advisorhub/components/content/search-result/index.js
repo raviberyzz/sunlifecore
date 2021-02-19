@@ -474,6 +474,7 @@ $(document).ready(function(){
                             // Configure pagination
                             if(allNumber <= 10){
                                 $(".pagination").css("display", "none");
+                                $(".pagination-indicator").css("display", "none");
                             }
                             else{
                                 configurePagination(allNumber);
