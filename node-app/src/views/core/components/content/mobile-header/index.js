@@ -133,7 +133,7 @@ $(document).ready(function () {
             $('body').removeClass('overflow-hidden');
             $('.slf-mobile-header-wrapper').css({ 'position': 'fixed' });
         });
-        $('.first-level-navigation .navigation-menu').children("a").click(function () {
+        $('.first-level-navigation .navigation-menu').children("a").click(function (event) {
             if (event.target.parentNode.children[1].className === "third-level-navigation") {
                 sessionStorage.scrollPositionSecond = $(this).parent().closest('div').scrollTop();
             } else {
