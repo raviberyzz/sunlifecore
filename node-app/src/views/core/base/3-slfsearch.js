@@ -375,46 +375,48 @@ $(document).ready(function () {
         }
 
         function init() {
-            var urlParams = getParams();
-            var searchString = (urlParams.q || urlParams.gq || "").trim();
-            var filter = urlParams.filter || "all";
-            var page = parseInt(urlParams.page);
-            var action = urlParams.action;
+            if($(".advisorhub-sunlife-content-page").length==0){
+                var urlParams = getParams();
+                var searchString = (urlParams.q || urlParams.gq || "").trim();
+                var filter = urlParams.filter || "all";
+                var page = parseInt(urlParams.page);
+                var action = urlParams.action;
 
-            if (isNaN(page)) page = 1;
+                if (isNaN(page)) page = 1;
 
-            $("form.slf-search input[name=q]").val(searchString);
-            if (!searchString) {
-                resetPage();
-                return;
+                $("form.slf-search input[name=q]").val(searchString);
+                if (!searchString) {
+                    resetPage();
+                    return;
+                }
+                apiCall({ q: searchString, pt: filter, page: page }).then(function (results) {
+                    try {
+                        populateResults(results, searchString, action);
+
+                    } catch (e) {
+                        searchError(e);
+                    }
+                }, function (err) {
+                    searchError(err);
+                });
+
+                $(".search-filter-btn").click(function () {
+                    $("#search-result-filter-toggle").addClass("active");
+                    $("#search-result-filter-toggle .btn-close").focus();
+                });
+                $("#search-result-filter-toggle .btn-close").click(function () {
+                    $("#search-result-filter-toggle").removeClass("active");
+                    $(".search-filter-btn").focus();
+                })
+
+                $("[data-refocus]").focus(function () {
+                    var selector = $(this).attr("data-refocus");
+                    var el = $(selector);
+                    if (el.length > 0) {
+                        el.eq(0).focus();
+                    }
+                })
             }
-            apiCall({ q: searchString, pt: filter, page: page }).then(function (results) {
-                try {
-                    populateResults(results, searchString, action);
-
-                } catch (e) {
-                    searchError(e);
-                }
-            }, function (err) {
-                searchError(err);
-            });
-
-            $(".search-filter-btn").click(function () {
-                $("#search-result-filter-toggle").addClass("active");
-                $("#search-result-filter-toggle .btn-close").focus();
-            });
-            $("#search-result-filter-toggle .btn-close").click(function () {
-                $("#search-result-filter-toggle").removeClass("active");
-                $(".search-filter-btn").focus();
-            })
-
-            $("[data-refocus]").focus(function () {
-                var selector = $(this).attr("data-refocus");
-                var el = $(selector);
-                if (el.length > 0) {
-                    el.eq(0).focus();
-                }
-            })
         }
 
         init();
@@ -635,23 +637,25 @@ $(document).ready(function () {
         }
 
         function init() {
-            $("form.slf-search").each(function (i, form) {
-                form = $(form);
-                if (form.data("slf-search-initialized")) return;
-                form.data("slf-search-initialized", true);
-                setupAutocomplete(form);
-            });
-            $("form.slf-search-mobile").each(function (i, form) {
-                form = $(form);
-                if (form.data("slf-search-initialized")) return;
-                form.data("slf-search-initialized", true);
-                setupAutocomplete(form, 'mobile');
-            });
-            // for left nav underline, in IE - "test-decoration-color" does not work in IE.
-            var activeLeftNav = $(".left-nav-menu .active");
-            if (null != activeLeftNav) {
-                var activeText = activeLeftNav.text();
-                activeLeftNav.html("<span>" + activeText + "</span>");
+            if($(".advisorhub-sunlife-content-page").length==0){
+                $("form.slf-search").each(function (i, form) {
+                    form = $(form);
+                    if (form.data("slf-search-initialized")) return;
+                    form.data("slf-search-initialized", true);
+                    setupAutocomplete(form);
+                });
+                $("form.slf-search-mobile").each(function (i, form) {
+                    form = $(form);
+                    if (form.data("slf-search-initialized")) return;
+                    form.data("slf-search-initialized", true);
+                    setupAutocomplete(form, 'mobile');
+                });
+                // for left nav underline, in IE - "test-decoration-color" does not work in IE.
+                var activeLeftNav = $(".left-nav-menu .active");
+                if (null != activeLeftNav) {
+                    var activeText = activeLeftNav.text();
+                    activeLeftNav.html("<span>" + activeText + "</span>");
+                }
             }
         }
 
