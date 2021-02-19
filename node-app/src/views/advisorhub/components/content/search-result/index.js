@@ -367,7 +367,7 @@ $(document).ready(function(){
                                     var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
                                 }
                                 catch(err){
-                                    console.log(err);
+                                    // console.log(err);
                                     resultIntro="";
                                 }  
 
@@ -415,7 +415,7 @@ $(document).ready(function(){
                                         var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
                                     }
                                     catch(err){
-                                        console.log(err);
+                                        // console.log(err);
                                         resultIntro = "";
                                     }
 
