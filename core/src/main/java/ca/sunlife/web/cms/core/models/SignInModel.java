@@ -88,6 +88,11 @@ public class SignInModel {
 	@Via("resource")
 	private String checkboxLabel;
 
+	/** The disableRememberMe. */
+	@Inject
+	@Via("resource")
+	private String disableRememberMe;
+
 	/** The signInButtonLabel. */
 	@Inject
 	@Via("resource")
@@ -252,6 +257,20 @@ public class SignInModel {
 	 */
 	public void setCheckboxLabel(final String checkboxLabel) {
 		this.checkboxLabel = checkboxLabel;
+	}
+	
+	/**
+	 * @return the disableRememberMe
+	 */
+	public String getDisableRememberMe() {
+		return disableRememberMe;
+	}
+
+	/**
+	 * @param disableRememberMe the disableRememberMe to set
+	 */
+	public void setDisableRememberMe(final String disableRememberMe) {
+		this.disableRememberMe = disableRememberMe;
 	}
 
 	/**

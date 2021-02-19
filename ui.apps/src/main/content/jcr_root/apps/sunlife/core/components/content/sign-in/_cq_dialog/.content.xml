@@ -61,6 +61,14 @@
                                                 fieldDescription="Add Checkbox Label"
                                                 fieldLabel="Checkbox Label"
                                                 name="./checkboxLabel"/>
+                                            <disableRememberMe
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Disable Remember Me"
+                                                name="./disableRememberMe"
+                                                text="Disable Remember Me"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                             <passwordPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/foundation/form/textfield"

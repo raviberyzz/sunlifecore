@@ -367,7 +367,7 @@ $(document).ready(function(){
                                     var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
                                 }
                                 catch(err){
-                                    console.log(err);
+                                    // console.log(err);
                                     resultIntro="";
                                 }  
 
@@ -415,7 +415,7 @@ $(document).ready(function(){
                                         var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
                                     }
                                     catch(err){
-                                        console.log(err);
+                                        // console.log(err);
                                         resultIntro = "";
                                     }
 
@@ -474,6 +474,7 @@ $(document).ready(function(){
                             // Configure pagination
                             if(allNumber <= 10){
                                 $(".pagination").css("display", "none");
+                                $(".pagination-indicator").css("display", "none");
                             }
                             else{
                                 configurePagination(allNumber);
