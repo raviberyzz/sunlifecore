@@ -24,16 +24,16 @@
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
-                    <items
+                   <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="26">
+                        maxGeneratedOrder="21">
                         <_x0031_612209514847
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                             displayedFormat="YYYY-MM-DD HH:mm"
                             emptyText="YYYY-MM-DD HH:mm"
                             fieldLabel="Outage Date"
-                            listOrder="21"
+                            listOrder="5"
                             metaType="date"
                             name="outageDate"
                             renderReadOnly="false"
@@ -50,10 +50,22 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Outage Title"
-                            listOrder="22"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="outageTitle"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_612209692189
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Outage Page Link"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="outagePageLink"
+                            nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
@@ -61,19 +73,19 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Outage Icon"
-                            listOrder="21"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="outageIcon"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string"/>    
+                            valueType="string"/>
                         <_x0031_612209626747
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                             emptyOption="{Boolean}true"
                             fieldLabel="Outage Icon Color"
-                            listOrder="23"
+                            listOrder="6"
                             metaType="enumeration"
                             name="outageIconColor"
                             options="Red,Yellow"
@@ -90,7 +102,7 @@
                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                             emptyOption="{Boolean}true"
                             fieldLabel="OutageStatus"
-                            listOrder="24"
+                            listOrder="6"
                             metaType="enumeration"
                             name="outageStatus"
                             options="Open,Closed"
@@ -102,15 +114,14 @@
                                 sling:resourceType="dam/cfm/admin/components/datasources/optionrenderer"
                                 variant="default"/>
                         </_x0031_612209651884>
-                        <_x0031_612209692189
+                        <_x0031_613755676086
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                            fieldLabel="OutageTeaser"
-                            filter="hierarchy"
-                            listOrder="25"
-                            metaType="reference"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Outage teaser"
+                            default-mime-type="text/html"
+                            listOrder="21"
+                            metaType="text-multi"
                             name="outageTeaser"
-                            nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
@@ -119,14 +130,14 @@
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
                             cfm-element="Outage Descriprtion"
                             default-mime-type="text/html"
-                            listOrder="26"
+                            listOrder="2"
                             metaType="text-multi"
                             name="outageDescription"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string"/>
                     </items>
-                </content>
+                  </content>
             </cq:dialog>
         </model>
     </jcr:content>

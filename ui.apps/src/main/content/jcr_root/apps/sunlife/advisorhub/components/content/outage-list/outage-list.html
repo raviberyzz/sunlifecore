@@ -1,38 +1,42 @@
 <sly data-sly-use.list="ca.sunlife.web.cms.advisorhub.models.OutageListModel"
      data-sly-test="${list.listItems.size>0}">
-     <sly data-sly-list="${list.listItems}">
 
-       <sly data-sly-list.element="${item.elements}">
-          <sly data-sly-test="${element.name == 'outageDescription'}" data-sly-test.outageDescription="${element.value}"/>
-          <sly data-sly-test="${element.name == 'outageIcon'}" data-sly-test.outageIcon="${element.value}"/>
-          <sly data-sly-test="${element.name == 'outageIconColor'}" data-sly-test.outageIconColor="${element.value}"/>
-          <sly data-sly-test="${element.name == 'outageStatus'}" data-sly-test.outageStatus="${element.value}"/>
-          <sly data-sly-test="${element.name == 'outageTitle'}" data-sly-test.outageTitle="${element.value}"/>
-          <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
+       <div class="outage-detail">
+        <div class="${list.displayType}">
+        
+        <div class="outage-item-list" data-sly-list="${list.listItems}">
+		
+		  <sly data-sly-list.element="${item.elements}">
+             <sly data-sly-test="${element.name == 'outageDescription'}" data-sly-test.outageDescription="${element.value}"/>
+             <sly data-sly-test="${element.name == 'outageIcon'}" data-sly-test.outageIcon="${element.value}"/>
+             <sly data-sly-test="${element.name == 'outagePageLink'}" data-sly-test.outagePageLink="${element.value}" />
+             <sly data-sly-test="${element.name == 'outageTeaser'}" data-sly-test.outageTeaser="${element.value}" />
+             <sly data-sly-test="${element.name == 'outageIconColor'}" data-sly-test.outageIconColor="${element.value}"/>
+             <sly data-sly-test="${element.name == 'outageStatus'}" data-sly-test.outageStatus="${element.value}"/>
+             <sly data-sly-test="${element.name == 'outageTitle'}" data-sly-test.outageTitle="${element.value}"/>
+             <sly data-sly-test="${element.dataType == 'calendar'}" data-sly-use.tpl="sunlife/core/components/templates/calendar.html"
                                     data-sly-test.date="${element.value}" />
-       </sly>
-
-     <div class="technology-whiteboard">
-     <div class="outage-type">
-        <div class="outage-item-list">
+          </sly>
+		
+		
             <div class="outage-item">
                 <div class="outage-date">
-                    <sly data-sly-call="${tpl.element @ date = date, format = 'MMMM dd, yyyy', pageLocale = 'en_CA'}"></sly>
+                    <sly data-sly-call="${tpl.element @ date = date, format = 'MMMM dd, yyyy', pageLocale = list.pageLocale}"></sly>
                 </div>
                 <div class="outage-title">
                         <span class="fa ${outageIcon}"></span>
-                    <a class="outage-title-text" href="#">${outageTitle}</a>
+                    <a class="outage-title-text" href="${outagePageLink @ extension = 'html'}">${outageTitle}</a>
                 </div>
                 <div class="outage-status">
                     Status: ${outageStatus}
                 </div>
                 <div class="outage-teaser">
-                    ${outageDescription @context='html'}
+                     ${outageTeaser @context='html'}
                 </div>
             </div>
-            </div>
-			</sly>
-			   <div class="outage-pagination">
+
+        </div>
+        <div class="outage-pagination">
             <!-- Pagination -->
             <div role="navigation" aria-label="Page" class="text-center">
                 <ul class="pagination first-page outage-pagination-list">
@@ -48,8 +52,14 @@
                 </div>
             </div>
             <!-- Pagination end -->
-           </div>
-            </div>
-            </div>
-</sly>     
+        </div>
+    
+	</div>
+</div>
+
+
+</sly>    
+
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>
 
