@@ -118,7 +118,7 @@ $(document).ready(function(){
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
     var searchAction = (urlParams.action || "").trim();
-    var searchApi = "http://uat-idol11.ca.sunlife:16000/";
+    var searchApi = "http://uat-websupporta.ca.sunlife/SLFSearchService/SearchHttpServlet?callback=_advisorhub&ServiceName=GetSearchResults";
     var searchError = false; 
 
     var filterArray = [
@@ -173,8 +173,8 @@ $(document).ready(function(){
             })
 
             // Create URL for ajax call
-            var searchUrl = searchApi + '?action=Query&ResponseFormat=json&totalresults=true&print=all';
-            searchUrl = searchUrl + "&text=" + searchText;
+            var searchUrl = searchApi + '&totalresults=true&print=all';
+            searchUrl = searchUrl + "&Text=" + searchText;
             searchUrl = searchUrl + "&matchlanguage=" + utag_data.page_language;
             if(filterText!=""){
                 searchUrl = searchUrl + "&fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";

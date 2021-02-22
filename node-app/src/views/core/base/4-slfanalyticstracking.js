@@ -23,47 +23,12 @@ $(document).ready(function () {
     var _windowLoaction=$(location).attr('pathname');
     
     /* Global Variable defining ends here*/
-    
-    // search bar analytics starts here
-    // Desktop search analytics starts here
-        $('#search-btn').click(function () {
-            if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
-                utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module expansion"});
-                //console.log("search exapansion tracked");
-            } 
-            else {
-                //console.log("search expansion is not tracked");
-            }
-        });
-        $('.search-bar-wrapper button').click(function(){
-            var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
-            utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data_one" : desktop_search_input});
-        });
-        // Desktop search analytics ends here
-        // Mobile search analytics starts here
-        $('.search-icon-mobile').click(function () {
-            var mobile_search_input=$('.hamburger-search .input-wrapper input').val();
-            utag.link({"ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data_one" : mobile_search_input});
-        });
-        //Mobile search analytics starts here
-    // search bar analytics ends here
-    
-    // Region and language menu analytics starts here
-        $('#language-btn').click(function(){
-            if($(this).attr('aria-expanded') == "false"){
-            utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
-            //   console.log("language panel expansion event tracked sucessfully");
-    
-        }
-        else {
-            //    console.log("language panel expansion event is not tracked");
-            }
-        });
-    // Region and language menu analytics ends here
-    
-    
-    // Sign In Module (Desktop Sign In button) analytics starts here
-    
+    if(typeof ContextHub == "undefined"){
+        bindAnalyticsEvent();
+    }
+    else{
+        setTimeout(bindAnalyticsEvent, 3000);
+    }
     // For Home Page Only
     function SignInHomeButton(){
         utag.link({
@@ -75,36 +40,83 @@ $(document).ready(function () {
             "page_section" : "Homepage main signin"
         });
     }
-    
-    $('#signinbutton').click(function(){
-        //alert('Inside signinbutton');    
-        utag.link({
-            "ev_action": "clk",
-              "ev_title": "sign in modal",
-              "ev_type": "other"
-      });
-       /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
-            SignInHomeButton();
-        } */
-        //setTimeout(signinmodal,200);
-    })
-    
-    
-    // Sign In Module (Desktop Sign In button) analytics ends here
-    
-    // Sign In Modal (Mobile Sign In button) analytics starts here
-    $('#SignIn').click(function(){
-        utag.link({
-            "ev_action": "clk",
-              "ev_title": "sign in modal",
-              "ev_type": "other"
-      });	
-       /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
-            SignInHomeButton();
-        }*/
-       // setTimeout(signinmodal,200);
-    });
-    // Sign In Modal (Mobile Sign In button) analytics ends here
+    function bindAnalyticsEvent(){
+        // search bar analytics starts here
+        // Desktop search analytics starts here
+            $('#search-btn').click(function () {
+                if (($(this).attr('aria-expanded') == undefined) || ($(this).attr('aria-expanded') == "false")) {
+                    utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module expansion"});
+                    //console.log("search exapansion tracked");
+                } 
+                else {
+                    //console.log("search expansion is not tracked");
+                }
+            });
+            $('.search-bar-wrapper button').click(function(){
+                var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
+                utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data_one" : desktop_search_input});
+            });
+            // Desktop search analytics ends here
+            // Mobile search analytics starts here
+            $('.search-icon-mobile').click(function () {
+                var mobile_search_input=$('.hamburger-search .input-wrapper input').val();
+                utag.link({"ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data_one" : mobile_search_input});
+            });
+            //Mobile search analytics starts here
+        // search bar analytics ends here
+        
+        // Region and language menu analytics starts here
+            $('#language-btn').click(function(){
+                if($(this).attr('aria-expanded') == "false"){
+                utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
+                //   console.log("language panel expansion event tracked sucessfully");
+        
+            }
+            else {
+                //    console.log("language panel expansion event is not tracked");
+                }
+            });
+        // Region and language menu analytics ends here
+
+        // Moblie language and region bar analytics starts here
+        $('.navigation-menu.language-region').click(function(){
+            //console.log("Inside languagepanelmobile.");
+            if($('.navigation-menu.language-region .second-level-navigation').hasClass('active')){
+                utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
+                //console.log("Event fired for mobile lang pannel expansion");
+            }
+        });
+        // Mobile language and region bar analytics ends here
+        // Sign In Module (Desktop Sign In button) analytics starts here
+        $('#signinbutton').click(function(){
+            //alert('Inside signinbutton');    
+            utag.link({
+                "ev_action": "clk",
+                "ev_title": "sign in modal",
+                "ev_type": "other"
+        });
+        /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+                SignInHomeButton();
+            } */
+            //setTimeout(signinmodal,200);
+        })
+        
+        // Sign In Module (Desktop Sign In button) analytics ends here
+        
+        // Sign In Modal (Mobile Sign In button) analytics starts here
+        $('#SignIn').click(function(){
+            utag.link({
+                "ev_action": "clk",
+                "ev_title": "sign in modal",
+                "ev_type": "other"
+        });	
+        /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+                SignInHomeButton();
+            }*/
+        // setTimeout(signinmodal,200);
+        });
+        // Sign In Modal (Mobile Sign In button) analytics ends here
+    }
     
     // Sign In Modal (Sign-in-modal expansion) analytics starts here
     function signinmodal() {
@@ -144,17 +156,7 @@ $(document).ready(function () {
             "page_section" : "Homepage main signin"
         });
     }
-    // Sign In Modal (Sign-in-modal expansion) analytics ends here
-    
-    // Moblie language and region bar analytics starts here
-    $('.navigation-menu.language-region').click(function(){
-        //console.log("Inside languagepanelmobile.");
-        if($('.navigation-menu.language-region .second-level-navigation').hasClass('active')){
-            utag.link({"ev_action": "onpage_impr", "ev_data_one": "language panel", "ev_data_two": "language panel expansion", "ev_title": "language bar", "ev_type": "other"});
-            //console.log("Event fired for mobile lang pannel expansion");
-        }
-    });
-    // Mobile language and region bar analytics ends here
+    // Sign In Modal (Sign-in-modal expansion) analytics ends here 
     
     // Right Navigation analytics starts here
     function rightNavAnalytics(btnTxt1){
