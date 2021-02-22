@@ -3,6 +3,9 @@
     #known-outage{
         outline: none;
     }
+    #planned-outage{
+        outline: none;
+    }
     .outage-item{
         padding: 32px 0;
         .outage-date{
@@ -14,12 +17,16 @@
         .outage-title{
             padding-bottom: 32px;
             .fa-exclamation-triangle{
-                color: $medium-red-color;
                 font-size: 1.3rem;
             }
             .fa-exclamation-circle{
-                color: $primary-yellow-background;
                 font-size: 1.5rem;
+            }
+            .outage-red{
+                color: $medium-red-color;
+            }
+            .outage-yellow{
+                color: $primary-yellow-background;
             }
             .outage-title-text{
                 font-size: 1.5rem;
