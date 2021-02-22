@@ -1,5 +1,8 @@
 @import '../../../base/core';
 .outage-detail{
+    #known-outage{
+        outline: none;
+    }
     .outage-item{
         padding: 32px 0;
         .outage-date{
@@ -236,18 +239,20 @@
 
 @media (min-width: $tab-screen-min) {
     .outage-detail{
-        .pagination-indicator{
-            display:none;
-        }
-        .pagination.last-page .previous{
-            width:auto;
-        }
-        .pagination{
-            width:70%;
-        }
-        .pagination.last-page{
-            .link-to-first{
+        .outage-pagination {
+            .pagination-indicator{
+                display:none;
+            }
+            .pagination.last-page .previous{
                 width:auto;
+            }
+            .pagination{
+                width:70%;
+            }
+            .pagination.last-page{
+                .link-to-first{
+                    width:auto;
+                }
             }
         }
     }
