@@ -232,7 +232,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&totalresults=true&text=' + searchText + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&totalresults=true&Text=' + searchText + "&matchlanguage=" + utag_data.page_language,
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub",
                     
@@ -247,7 +247,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&totalresults=true&Text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub",
                     
@@ -267,7 +267,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&totalresults=true&Text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub",
                     
@@ -287,7 +287,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&totalresults=true&Text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub",
                     
@@ -307,7 +307,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&totalresults=true&Text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub",
                     
