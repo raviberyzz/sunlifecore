@@ -1,5 +1,5 @@
-#Outage Detail
-#Displays Outage detail
+#Outage List
+#Displays Outage list
 JSON Format
 ```
 {

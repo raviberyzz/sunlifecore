@@ -10,9 +10,11 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -33,6 +35,8 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
+
+import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 
 /**
@@ -58,6 +62,13 @@ public class OutageListModel {
 	  @ Inject
 	  @ Via ("resource")
 	  private String displayType;
+	  
+	  /** The config service. */
+	  @ Inject
+	  private SiteConfigService configService;
+	  
+	  /** The page locale. */
+	  private String pageLocale;
 
 	  /** The resource resolver. */
 	  @ SlingObject
@@ -102,7 +113,7 @@ public class OutageListModel {
 	  private int totalMatch;
 
 	  /** The Constant ELEMENT_NAMES. */
-	  private static final String [ ] ELEMENT_NAMES = { "outageDate", "outageDescription", "outageIcon","outageIconColor", "outageStatus", "outageTitle" };
+	  private static final String [ ] ELEMENT_NAMES = { "outageDate", "outageTitle", "outagePageLink", "outageDescription", "outageIcon","outageIconColor", "outageStatus","outageTeaser" };
 
 	  /**
 	   * Gets the parent path.
@@ -141,6 +152,25 @@ public class OutageListModel {
 	  public final void setDisplayType(final String displayType) {
 	    this.displayType = displayType;
 	  }
+	  
+	  /**
+	   * Gets the page locale.
+	   *
+	   * @return the page locale
+	   */
+	  public final String getPageLocale() {
+	    return pageLocale;
+	  }
+	  
+	  /**
+	   * Sets the page locale.
+	   *
+	   * @param pageLocale
+	   *          the new page locale
+	   */
+	  public final void setPageLocale(final String pageLocale) {
+	    this.pageLocale = pageLocale;
+	  }
 
 	  /**
 	   * Gets the list items.
@@ -157,10 +187,19 @@ public class OutageListModel {
 	  @ PostConstruct
 	  private void initModel() {
 
+		String pageLocaleDefault = StringUtils.EMPTY;
 	    if (StringUtils.isEmpty(getParentPath())) {
 	      return;
 	    }
 	    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
+	    try {
+	    final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+	      if (null != locale && locale.length() > 0) { 
+	    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
+	        }
+
+	    setPageLocale(pageLocaleDefault);
+
 	    final Session session = resourceResolver.adaptTo(Session.class);
 	      if (session == null) {
 	        LOGGER.warn("Session was null therefore no query was executed");
@@ -206,6 +245,9 @@ public class OutageListModel {
 	          leakingResourceResolver.close();
 	        }
 	      }
+	    } catch (LoginException | RepositoryException e) {
+	        LOGGER.error("Login exception while trying to get resource resolver {}", e);
+	    }	    
 	  }
 
 	  /**
@@ -229,7 +271,5 @@ public class OutageListModel {
 	    queryParameterMap.put("orderby.sort", "desc");
 	   
 	  }
-
-	  
 
 }

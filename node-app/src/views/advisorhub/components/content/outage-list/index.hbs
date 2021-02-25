@@ -1,5 +1,5 @@
 <div class="outage-detail">
-    <div class="outage-type">
+    <div id="outage-type">
         <script class="outage-pagination-first" type="text/html"><li class="link-to-first active pagination-item">
             <a href="javascript:void(0);" aria-label="First Page">
                 <span class="fa fa-angle-double-left" aria-hidden="true">&nbsp;</span>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="outage-title">
                     {{#if icon-present}}
-                        <span class="fa fa-exclamation-circle"></span>
+                        <span class="fa fa-exclamation-circle outage-yellow "></span>
                     {{/if}}
                     <a class="outage-title-text" href="#">Another set of outages</a>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="outage-title">
                     {{#if icon-present}}
-                        <span class="fa fa-exclamation-triangle"></span>
+                        <span class="fa fa-exclamation-triangle outage-red"></span>
                     {{/if}}
                     <a class="outage-title-text" href="#">Another set of outages</a>
                 </div>

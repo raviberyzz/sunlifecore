@@ -42,15 +42,15 @@
                                             <item0
                                                 jcr:primaryType="nt:unstructured"
                                                 text="System outage"
-                                                value="systemOutage"/>
+                                                value="system-outage"/>
                                             <item1
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Known Outage"
-                                                value="knownOutage"/>
+                                                value="known-outage"/>
                                             <item2
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Planned Outage"
-                                                value="plannedOutage"/>
+                                                value="planned-outage"/>
                                             </items>
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"

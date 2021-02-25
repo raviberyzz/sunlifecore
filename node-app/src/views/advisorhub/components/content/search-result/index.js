@@ -118,7 +118,7 @@ $(document).ready(function(){
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
     var searchAction = (urlParams.action || "").trim();
-    var searchApi = "http://uat-idol11.ca.sunlife:16000/";
+    var searchApi = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults";
     var searchError = false; 
 
     var filterArray = [
@@ -173,27 +173,28 @@ $(document).ready(function(){
             })
 
             // Create URL for ajax call
-            var searchUrl = searchApi + '?action=Query&ResponseFormat=json&totalresults=true&print=all';
-            searchUrl = searchUrl + "&text=" + searchText;
-            searchUrl = searchUrl + "&matchlanguage=" + utag_data.page_language;
+            var searchUrl = searchApi + '&Totalresults=true&Print=all';
+            searchUrl = searchUrl + "&Text=" + searchText;
+            searchUrl = searchUrl + "&MatchLanguage=" + utag_data.page_language;
             if(filterText!=""){
-                searchUrl = searchUrl + "&fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";
+                searchUrl = searchUrl + "&Fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";
             }    
             if(start==""){
-                searchUrl = searchUrl + "&maxresults=10&start=1";
+                searchUrl = searchUrl + "&Maxresults=10&Start=1";
             }else{
-                searchUrl = searchUrl + "&maxresults=" + maxResult + "&start=" + start;
+                searchUrl = searchUrl + "&Maxresults=" + maxResult + "&Start=" + start;
             }
 
             // Making the ajax call for getting search results
             $.ajax({
                 type: "GET",
                 url: searchUrl,
-                dataType: "json",
+                dataType: "jsonp",
+                jsonpCallback: "advisorhub",
         
                 success: function(data){
-                    var allNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
-                    var listLength = data["autnresponse"]["responsedata"]["autn:numhits"]["$"];
+                    var allNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
+                    var listLength = data["autnresponse"]["responsedata"]["autn:numhits"];
 
                     searchAnalytics(searchAction, filterText, allNumber, searchText);
 
@@ -231,25 +232,28 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + "&matchlanguage=" + utag_data.page_language,
-                            dataType: "json",
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + "&MatchLanguage=" + utag_data.page_language,
+                            dataType: "jsonp",
+                            jsonpCallback: "advisorhub1",
                     
                             success: function(data){
-                                var totalNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                var totalNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
                                 $(".check-container[name=All]").children().children(".num").text(totalNumber+")");
                             },
-                            error: function(){
+                            error: function(jqXHR, textStatus, errorThrown){
                                 console.log("Search Error");
+                                console.log(errorThrown);
                             }   
                         });
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
-                            dataType: "json",
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            dataType: "jsonp",
+                            jsonpCallback: "advisorhub2",
                     
                             success: function(data){
-                                var businessNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                var businessNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
                                 if(businessNumber==0){
                                     $(".check-container[name=Your-Business]").css("display","none");
                                 }
@@ -257,18 +261,20 @@ $(document).ready(function(){
                                     $(".check-container[name=Your-Business]").children().children(".num").text(businessNumber+")");
                                 }
                             },
-                            error: function(){
+                            error: function(jqXHR, textStatus, errorThrown){
                                 console.log("Search Error");
+                                console.log(errorThrown);
                             }   
                         }); 
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
-                            dataType: "json",
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            dataType: "jsonp",
+                            jsonpCallback: "advisorhub3",
                     
                             success: function(data){
-                                var productNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                var productNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
                                 if(productNumber==0){
                                     $(".check-container[name=Products-and-Solutions]").css("display","none");
                                 }
@@ -276,18 +282,20 @@ $(document).ready(function(){
                                     $(".check-container[name=Products-and-Solutions]").children().children(".num").text(productNumber+")");
                                 }
                             },
-                            error: function(){
+                            error: function(jqXHR, textStatus, errorThrown){
                                 console.log("Search Error");
+                                console.log(errorThrown);
                             }   
                         }); 
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
-                            dataType: "json",
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            dataType: "jsonp",
+                            jsonpCallback: "advisorhub4",
                     
                             success: function(data){
-                                var clientNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                var clientNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
                                 if(clientNumber==0){
                                     $(".check-container[name=Client-Service]").css("display","none");
                                 }
@@ -295,18 +303,20 @@ $(document).ready(function(){
                                     $(".check-container[name=Client-Service]").children().children(".num").text(clientNumber+")");
                                 }
                             },
-                            error: function(){
+                            error: function(jqXHR, textStatus, errorThrown){
                                 console.log("Search Error");
+                                console.log(errorThrown);
                             }   
                         });
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '?action=Query&ResponseFormat=json&totalresults=true&text=' + searchText + '&fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
-                            dataType: "json",
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            dataType: "jsonp",
+                            jsonpCallback: "advisorhub5",
                     
                             success: function(data){
-                                var newsNumber = data["autnresponse"]["responsedata"]["autn:totalhits"]["$"];
+                                var newsNumber = data["autnresponse"]["responsedata"]["autn:totalhits"];
                                 if(newsNumber==0){
                                     $(".check-container[name=News]").css("display","none");
                                 }
@@ -314,8 +324,9 @@ $(document).ready(function(){
                                     $(".check-container[name=News]").children().children(".num").text(newsNumber+")");
                                 }
                             },
-                            error: function(){
+                            error: function(jqXHR, textStatus, errorThrown){
                                 console.log("Search Error");
+                                console.log(errorThrown);
                             }   
                         });
 
@@ -355,16 +366,16 @@ $(document).ready(function(){
                             var resultItem = "";
                             if(listLength==1){
                                 resultItem = "";
-                                var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"]["$"];
+                                var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"];
                                 try{
-                                    var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"]["$"];
+                                    var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
                                 }
                                 catch(err){
                                     console.log(err);
                                     searchError = true;
                                 }
                                 try{
-                                    var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                    var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0];
                                 }
                                 catch(err){
                                     // console.log(err);
@@ -373,7 +384,7 @@ $(document).ready(function(){
 
                                 // Appending File type to title
                                 try{
-                                    var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+                                    var resultType = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["FILEEXTENSION"];
 
                                     if(resultType==".docx" || resultType==".doc"){
                                         resultTitle = '(MS Word) ' + resultTitle;
@@ -403,16 +414,16 @@ $(document).ready(function(){
                             else{
                                 for(var i=0; i<listLength; i++){
                                     resultItem = "";
-                                    var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"]["$"];
+                                    var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"];
                                     try{
-                                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"]["$"];
+                                        var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"];
                                     }
                                     catch(err){
                                         console.log(err);
                                         continue;
                                     }
                                     try{
-                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0]["$"];
+                                        var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0];
                                     }
                                     catch(err){
                                         // console.log(err);
@@ -420,7 +431,7 @@ $(document).ready(function(){
                                     }
 
                                     try{
-                                        var resultType = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["FILEEXTENSION"]["$"];
+                                        var resultType = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["FILEEXTENSION"];
 
                                         if(resultType==".docx" || resultType==".doc"){
                                             resultTitle = '(MS Word) ' + resultTitle;
@@ -494,8 +505,9 @@ $(document).ready(function(){
                         }
                     }
                 },
-                error: function(){
+                error: function(jqXHR, textStatus, errorThrown){
                     console.log("Search Error");
+                    console.log(errorThrown);
                     $("#search-result-error").css("display","block");
                 }   
             }); 

@@ -281,7 +281,22 @@ class NewFormExperience extends React.Component {
             this.setState({
                 data: filteredRows,
                 filterResetData: filteredRows
-            })
+            });
+            var filterAnalytics = "";
+            for(var i=0;i<filterData.length;i++){
+                if(i==0){
+                    filterAnalytics = filterAnalytics + filterData[i].split("/")[2];
+                }
+                else{
+                    filterAnalytics = filterAnalytics + "|" + filterData[i].split("/")[2];
+                }
+            }
+            utag.link({
+                ev_type: 'other',
+                ev_action: 'clk',
+                ev_title: "form search – client filter input",
+                ev_data_one: filterAnalytics
+            });
         }
 
 
@@ -320,7 +335,12 @@ class NewFormExperience extends React.Component {
         this.setState({
             data: sortedData,
             sorting: sorting
-        })
+        });
+        utag.link({
+            ev_type: 'other',
+            ev_action: 'clk',
+            ev_title: "form search – sort client input"
+        });
     }
     clearAll() {
         $('input[type="checkbox"]').each(function () {
@@ -377,6 +397,12 @@ class NewFormExperience extends React.Component {
     }
     markFavorite() {
         console.log('mark as favorite');
+        utag.link({
+            ev_type: 'other',
+            ev_action: 'clk',
+            ev_title: "form search – client filter input",
+            ev_data_one: ""
+        });
     }
 
     SearchSort() {
@@ -389,7 +415,13 @@ class NewFormExperience extends React.Component {
         })
         this.setState({
             data: searchResultRows
-        })
+        });
+        utag.link({
+            ev_type: 'other',
+            ev_action: 'clk',
+            ev_title: "form search – search client input",
+            ev_data_one: $('.search').val()
+        });
     }
     resetSearchData() {
         if (this.state.selectedFilters.length > 0) {

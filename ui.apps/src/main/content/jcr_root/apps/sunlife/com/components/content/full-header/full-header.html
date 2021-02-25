@@ -218,8 +218,13 @@
           </div>
           <div data-sly-test="${listFromSignin == 'signintrue'}" class="desktop-sign-button" id="signinbutton" data-section="header-sign-in">
             <div class="signIn-button">
-              <a href="javascript:void(0)" role="button" data-target="#signin-widget-modal" data-toggle="modal"
+             <sly data-sly-test.linkChecker = "${listModel.signinTarget == 'modal'}">
+                  <a href="javascript:void(0)" role="button" data-target="${buttonTarget}" data-toggle="modal"
                 class="CTA-wrapper">
+            </sly>
+             <sly data-sly-test = "${!linkChecker}">
+                <a role="button" href="${listModel.signinUrl}"  class="CTA-wrapper">
+             </sly>
                 <span class="button-class"><span class="icon-class fa fa-user"></span>${signinTitle}</span>
               </a>
             </div>
@@ -263,9 +268,15 @@
             </sly>
           </div>
           <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn"
-            data-toggle="modal" data-target="#signin-widget-modal" data-section="header-sign-in"><a data-toggle="modal" role="button"
-              href="javascript:void(0)"> <span class="fa fa-user mobile-signin-icon">
-                <div class="mobile-signin-text">${signinTitle}</div>
+            data-toggle="${listModel.signinTarget == 'modal' ? 'modal' : ''}" data-target="${listModel.signinTarget == 'modal' ? buttonTarget : ''}" data-section="${listModel.signinAnalyticsId}">
+            <sly data-sly-test.mobilelinkChecker = "${listModel.signinTarget == 'modal'}">
+            <a data-toggle="modal" role="button" href="javascript:void(0)">
+            </sly>
+            <sly data-sly-test = "${!mobilelinkChecker}">
+              <a data-toggle="modal" role="button" href="${listModel.signinUrl}">
+            </sly> 
+              <span class="fa ${listModel.signinIcon} mobile-signin-icon">
+                <div class="mobile-signin-text">${listModel.signinMobileTitle ? listModel.signinMobileTitle : signinTitle}</div>
               </span></a>
           </div>
         </div>
@@ -296,7 +307,7 @@
           </div>
           <ul class="first-level-navigation">
 
-            <sly data-sly-resource="${ @resourceType='sunlife/core/components/content/navigation'}" />
+            <sly data-sly-test="${listModel.mobilenav.path}" data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
 
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
               <a>${regionTitle @context='html'}</a>
