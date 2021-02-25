@@ -5,6 +5,10 @@ ul {
 .icon-texts {
     padding-bottom: 24px;
 }
+// for scrolling of modal
+.modal-open .modal {
+    height: auto i !important;
+}
 
 // bright solutions starts here
 .cta-home-wrapper{
