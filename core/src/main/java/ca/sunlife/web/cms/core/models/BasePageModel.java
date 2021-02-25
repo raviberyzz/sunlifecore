@@ -372,6 +372,9 @@ public class BasePageModel {
   /** The disableSocialSharingTags. */
   private String disableSocialSharingTags;
   
+  /** The nonResponsive. */
+  private String nonResponsive;
+  
   /**
    * @return the favIcon
    */
@@ -978,6 +981,25 @@ public class BasePageModel {
 	}
 
 	/**
+	 * Gets the nonResponsive.
+	 *
+	 * @return the nonResponsive
+	 */
+	public String getNonResponsive() {
+		return nonResponsive;
+	}
+
+	/**
+	 * Sets the nonResponsive.
+	 *
+	 * @param nonResponsive
+	 * 			the nonResponsive to set
+	 */
+	public void setNonResponsive(String nonResponsive) {
+		this.nonResponsive = nonResponsive;
+	}
+
+	/**
    * Inits the.
    *
    * @throws LoginException
@@ -999,7 +1021,8 @@ public class BasePageModel {
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
-   
+    nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
+    
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
    	     siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
