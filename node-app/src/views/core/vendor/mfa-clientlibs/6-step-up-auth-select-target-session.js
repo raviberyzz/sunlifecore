@@ -178,8 +178,8 @@ function setPhoneNumbersList() {
 
 function renderPhone(phoneNumber, index, checked) {
   var errorMsg = (lang === 'fr') ? 'Veuillez sélectionner un numéro de téléphone.' : 'Please select a phone number';
-  const phone = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
-  const maskPhone = "+* ***-"+"***-"+phoneNumber.commData.substring(3,7);
+  const phone = getPhoneNumber(phoneNumber);
+  const maskPhone = getMaskedPhone(phoneNumber.countryCd, phoneNumber.commData);
 
   let phoneInfo  = '<div class="radio-btn-container">';
       phoneInfo += '<input type="hidden" id="'+ phone + '" name="mfa_communication_target" value="'+ phoneNumber.mfaCommunId + '">';
@@ -199,4 +199,59 @@ function renderPhone(phoneNumber, index, checked) {
       phoneInfo += '<label for="su-phone-number-item-' + index + '" id='+index+'>' + maskPhone + '</label>';
       phoneInfo += '</div>';
   return phoneInfo;
+}
+
+function getMaskedPhone(countryCode, commData) {
+  let maskedPhone = '';
+  if('1' === countryCode) {
+    maskedPhone = '+* ***-'+'***-'+commData.substring(3,7); 
+  } else {
+    // holds the index of the last fourth digit found from the end backward
+    let indexOfFoundDigit = 0;
+    // keep track of the digit found from the end backward
+    let numberOfDigitFound = 0;
+    let unmaskedString = '';
+	
+    for(let i=(commData.length - 1); (i < commData.length && i >= 0); i--) {
+      if(Number.isInteger(parseInt(commData[i]))) {
+        numberOfDigitFound ++;
+        if(numberOfDigitFound == 4) {
+          indexOfFoundDigit = i;
+        }
+      }
+    }
+	
+    if(numberOfDigitFound >= 4) {
+      unmaskedString = commData.substring(0, indexOfFoundDigit);
+      maskedPhone = '+' + countryCode.replace(/\d/g, '*') + ' ' + unmaskedString.replace(/\d/g, '*') + commData.substring(indexOfFoundDigit, commData.length);
+    } else {
+      let numberOfDigitToKeepCIntryCd = 4 - numberOfDigitFound;
+      let ctryCdLength = countryCode.length;
+
+      if(ctryCdLength <= numberOfDigitToKeepCIntryCd) {
+        // if the length of country code is smaller or equal to the number of digit that 
+        // are supposed to keep, then no masking should happen, e.g. +9 3-3-3 -> +9 3-3-3
+        maskedPhone = "+" + countryCode + " " + commData;
+      } else {
+        // if the length of country code is larger than the number of digit that are supposed
+        // to keep, the numbers on the left should be masked for the country code, e.g., +99 3-3-3 -> + *9 3-3-3
+        let ctryCdUnmasked = countryCode.substring(ctryCdLength - numberOfDigitToKeepCIntryCd, ctryCdLength);
+        let ctryCdMasked = countryCode.substring(0, ctryCdLength - numberOfDigitToKeepCIntryCd).replace(/\d/g, '*');
+        maskedPhone = "+" + ctryCdMasked + ctryCdUnmasked + " " + commData;
+      }
+    }
+  }
+
+  return maskedPhone;
+}
+
+function getPhoneNumber(phoneNumber) {
+  let phoneNumbStr = "";
+  if('1' === phoneNumber.countryCd) {
+    phoneNumbStr = phoneNumber.countryCd+phoneNumber.areadCd+phoneNumber.commData;
+  } else {
+    phoneNumbStr = phoneNumber.countryCd+phoneNumber.commData;
+  }
+
+  return phoneNumbStr;
 }
