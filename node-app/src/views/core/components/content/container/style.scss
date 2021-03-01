@@ -2661,3 +2661,10 @@ ul {
 
 /** Browser Specific CSS ends here **/
 
+// US specific megamenu padding
+.us-sunlife-content-page, .us-sunlife-home-page {
+    .nav .arrow .dropdown-toggle {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
