@@ -59,6 +59,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
         ReactTable.usePagination
     )
     const { globalFilter } = state;
+    var startPage, endPage;
     function sort() {
         sortyBy();
     }
@@ -71,8 +72,19 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
     function refreshTableData() {
         resetTableData()
     }
+    function middlePage(){
+        startPage = Math.max((pageIndex+1) - 2, 2);
+        endPage = (pageIndex+1) + 2;
+        if ((pageIndex+1) < 3) {
+            endPage = Math.min(5, pageCount - 1);
+        } else if (pageCount - (pageIndex+1) < 3) {
+            startPage = Math.max(pageCount - 4, 2)
+            endPage = pageCount - 1;
+        }
+        return true;
+    }
     return (
-        <div className="tableContainer">
+        <div className="tableContainer" id="new-form-experience">
 
             <div className="filterSearchContainer">
                 <div className="filter-container">
@@ -128,34 +140,38 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                 <nav role="navigation" aria-label="Pagination" class="text-center">
                     <ul className={`pagination pagination-list ${pageIndex + 1 < 2 ? 'first-page' : ''} ${pageIndex + 1 >= pageOptions.length ? 'last-page' : ''}`}>
                         {pageIndex + 1 != 1 && <li className={`previous ${(pageIndex + 1) < 2 ? 'disabled' : ''}`} onClick={() => previousPage()} disabled={!canPreviousPage}>
-                            <a className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <a href="#new-form-experience" className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
                                 <span class="">Previous</span></a>
                         </li>}
                         {pageOptions.length > 1 && <li className={`link-to-first ${pageIndex + 1 == 1 ? 'active' : ''}`} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                            <a className="page-link">1</a>
+                            <a href="#new-form-experience" className="page-link" aria-label="First Page">
+                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                <span>1</span>
+                            </a>
                         </li>}
                         {pageIndex + 1 >= 5 && pageOptions.length > 6 &&
                             <li class="ellipsis"><a><span>&hellip;</span></a></li>
                         }
-                        {pageOptions.map((page, index) => {
-                            return (index > 1 && <li key={index} className={(pageIndex + 1 == index ? 'active' : index)}><a href="#news-wrapper-container" onClick={() => gotoPage(index - 1)}><span>{page}</span></a></li>)
+                        { middlePage() &&  pageOptions.slice(startPage, endPage+1).map((page, index) => {
+                            return (<li key={index} className={(pageIndex + 1 == page ? 'active' : page)}><a href="#new-form-experience" onClick={() => gotoPage(page - 1)}><span>{page}</span></a></li>)
                         })
                         }
                         {(pageOptions.length - pageIndex + 1) >= 4 && pageOptions.length > 6 &&
                             <li class="ellipsis"><a><span>&hellip;</span></a></li>
                         }
                         <li className={`lastPage ${pageIndex + 1 == pageOptions.length ? 'active' : ''}`}>
-                            <a href="#news-wrapper-container" onClick={() => gotoPage(pageOptions.length - 1)}>
+                            <a href="#new-form-experience" onClick={() => gotoPage(pageOptions.length - 1)}>
                                 <span>{pageOptions.length}</span>
                             </a>
                         </li>
                         {pageIndex + 1 != pageOptions.length &&
                             <li className={`next ${pageIndex + 1 >= pageOptions.length ? 'disabled' : ''}`}>
-                                <a href="#news-wrapper-container" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
+                                <a href="#new-form-experience" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
                             </li>
                         }
 
                     </ul>
+                    <div class="pagination-indicator">Page {pageIndex + 1} of {pageCount}</div>
                 </nav>
             </div>}
         </div>
@@ -398,6 +414,8 @@ class NewFormExperience extends React.Component {
         console.log(formNumber, favourite);
         var newFavourite = (favourite==true) ? false : true;
         var updatedData = [];
+        var updatedOriginalData = [];
+        var updatedFilterResetData = [];
         console.log("ajax post call");
         this.state.data.map((obj) => {
             if (obj.formNumber == formNumber){
@@ -408,8 +426,28 @@ class NewFormExperience extends React.Component {
                 updatedData.push(obj);
             }
         });
+        this.state.originalData.map((obj) => {
+            if (obj.formNumber == formNumber){
+                obj.favorite = newFavourite;
+                updatedOriginalData.push(obj);
+            }
+            else{
+                updatedOriginalData.push(obj);
+            }
+        });
+        this.state.filterResetData.map((obj) => {
+            if (obj.formNumber == formNumber){
+                obj.favorite = newFavourite;
+                updatedFilterResetData.push(obj);
+            }
+            else{
+                updatedFilterResetData.push(obj);
+            }
+        });
         this.setState({
-            data: updatedData
+            data: updatedData,
+            originalData: updatedOriginalData,
+            filterResetData: updatedFilterResetData
         });
         var selection = "form search – ";
         if(newFavourite==true){
@@ -508,30 +546,6 @@ class NewFormExperience extends React.Component {
                 ],
             },
         ];
-        // $('.fa-star').on('click', function () {
-        //     if ($(this).hasClass('star-selected')) {
-        //         $(this).removeClass('star-selected');
-        //         $(this).addClass('star-not-selected');
-        //         console.log('ajax post call');
-        //     } else {
-        //         $(this).removeClass('star-not-selected');
-        //         $(this).addClass('star-selected')
-        //         console.log('ajax post call');
-        //     }
-        // })
-        /* $.ajax({
-             type: "GET",
-             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
-             dataType: "json",
-             success: (response) => {
-                 this.setState({
-                     filters: response
-                 })
-             },
-             error: (err) => {
-                 console.log(err);
-             }
-         }) */
         return (
             <React.Fragment>
                 <Table columns={columns}
