@@ -31,7 +31,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
 
     )
 }
-function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
+function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateFavorite, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -59,8 +59,12 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglef
         ReactTable.usePagination
     )
     const { globalFilter } = state;
+    var startPage, endPage;
     function sort() {
         sortyBy();
+    }
+    function favourite(e) {
+        updateFavorite(e["original"]["formNumber"], e["original"]["favorite"]);
     }
     function callBack() {
         searchCallBack()
@@ -68,8 +72,19 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglef
     function refreshTableData() {
         resetTableData()
     }
+    function middlePage(){
+        startPage = Math.max((pageIndex+1) - 2, 2);
+        endPage = (pageIndex+1) + 2;
+        if ((pageIndex+1) < 3) {
+            endPage = Math.min(5, pageCount - 1);
+        } else if (pageCount - (pageIndex+1) < 3) {
+            startPage = Math.max(pageCount - 4, 2)
+            endPage = pageCount - 1;
+        }
+        return true;
+    }
     return (
-        <div className="tableContainer">
+        <div className="tableContainer" id="new-form-experience">
 
             <div className="filterSearchContainer">
                 <div className="filter-container">
@@ -111,8 +126,8 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglef
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()} className="new-form-tr">
-                                {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                {row.cells.map((cell, index) => {
+                                    return <td {...cell.getCellProps()} onClick={index == 4 ? () => favourite(row) : ""}>{cell.render('Cell')}</td>
                                 })}
                             </tr>
                         )
@@ -125,34 +140,38 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, togglef
                 <nav role="navigation" aria-label="Pagination" class="text-center">
                     <ul className={`pagination pagination-list ${pageIndex + 1 < 2 ? 'first-page' : ''} ${pageIndex + 1 >= pageOptions.length ? 'last-page' : ''}`}>
                         {pageIndex + 1 != 1 && <li className={`previous ${(pageIndex + 1) < 2 ? 'disabled' : ''}`} onClick={() => previousPage()} disabled={!canPreviousPage}>
-                            <a className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <a href="#new-form-experience" className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
                                 <span class="">Previous</span></a>
                         </li>}
                         {pageOptions.length > 1 && <li className={`link-to-first ${pageIndex + 1 == 1 ? 'active' : ''}`} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                            <a className="page-link">1</a>
+                            <a href="#new-form-experience" className="page-link" aria-label="First Page">
+                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                <span>1</span>
+                            </a>
                         </li>}
                         {pageIndex + 1 >= 5 && pageOptions.length > 6 &&
                             <li class="ellipsis"><a><span>&hellip;</span></a></li>
                         }
-                        {pageOptions.map((page, index) => {
-                            return (index > 1 && <li key={index} className={(pageIndex + 1 == index ? 'active' : index)}><a href="#news-wrapper-container" onClick={() => gotoPage(index - 1)}><span>{page}</span></a></li>)
+                        { middlePage() &&  pageOptions.slice(startPage, endPage+1).map((page, index) => {
+                            return (<li key={index} className={(pageIndex + 1 == page ? 'active' : page)}><a href="#new-form-experience" onClick={() => gotoPage(page - 1)}><span>{page}</span></a></li>)
                         })
                         }
                         {(pageOptions.length - pageIndex + 1) >= 4 && pageOptions.length > 6 &&
                             <li class="ellipsis"><a><span>&hellip;</span></a></li>
                         }
                         <li className={`lastPage ${pageIndex + 1 == pageOptions.length ? 'active' : ''}`}>
-                            <a href="#news-wrapper-container" onClick={() => gotoPage(pageOptions.length - 1)}>
+                            <a href="#new-form-experience" onClick={() => gotoPage(pageOptions.length - 1)}>
                                 <span>{pageOptions.length}</span>
                             </a>
                         </li>
                         {pageIndex + 1 != pageOptions.length &&
                             <li className={`next ${pageIndex + 1 >= pageOptions.length ? 'disabled' : ''}`}>
-                                <a href="#news-wrapper-container" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
+                                <a href="#new-form-experience" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
                             </li>
                         }
 
                     </ul>
+                    <div class="pagination-indicator">Page {pageIndex + 1} of {pageCount}</div>
                 </nav>
             </div>}
         </div>
@@ -183,8 +202,7 @@ class NewFormExperience extends React.Component {
         this.sortColumn = this.sortColumn.bind(this);
         this.getTableData = this.getTableData.bind(this);
         this.getFilterData = this.getFilterData.bind(this);
-        this.removeFavorite = this.removeFavorite.bind(this);
-        this.markFavorite = this.markFavorite.bind(this);
+        this.updateFavorite = this.updateFavorite.bind(this);
         this.SearchSort = this.SearchSort.bind(this);
         this.resetSearchData = this.resetSearchData.bind(this);
     }
@@ -392,16 +410,57 @@ class NewFormExperience extends React.Component {
         }
 
     }
-    removeFavorite() {
-        console.log('remove favorite');
-    }
-    markFavorite() {
-        console.log('mark as favorite');
+    updateFavorite(formNumber, favourite) {
+        console.log(formNumber, favourite);
+        var newFavourite = (favourite==true) ? false : true;
+        var updatedData = [];
+        var updatedOriginalData = [];
+        var updatedFilterResetData = [];
+        console.log("ajax post call");
+        this.state.data.map((obj) => {
+            if (obj.formNumber == formNumber){
+                obj.favorite = newFavourite;
+                updatedData.push(obj);
+            }
+            else{
+                updatedData.push(obj);
+            }
+        });
+        this.state.originalData.map((obj) => {
+            if (obj.formNumber == formNumber){
+                obj.favorite = newFavourite;
+                updatedOriginalData.push(obj);
+            }
+            else{
+                updatedOriginalData.push(obj);
+            }
+        });
+        this.state.filterResetData.map((obj) => {
+            if (obj.formNumber == formNumber){
+                obj.favorite = newFavourite;
+                updatedFilterResetData.push(obj);
+            }
+            else{
+                updatedFilterResetData.push(obj);
+            }
+        });
+        this.setState({
+            data: updatedData,
+            originalData: updatedOriginalData,
+            filterResetData: updatedFilterResetData
+        });
+        var selection = "form search – ";
+        if(newFavourite==true){
+            selection = selection + "favourite";
+        }
+        else{
+            selection = selection + "unfavourite";
+        }
         utag.link({
             ev_type: 'other',
             ev_action: 'clk',
-            ev_title: "form search – client filter input",
-            ev_data_one: ""
+            ev_title: selection,
+            ev_data_one: formNumber
         });
     }
 
@@ -478,44 +537,21 @@ class NewFormExperience extends React.Component {
                         accessor: function favorite(obj) {
                             var fav = obj.favorite;
                             if (fav == true) {
-                                return <i class="fa fa-star star-selected" onClick={this.removeFavorite}></i>
+                                return <i class="fa fa-star star-selected"></i>
                             } else {
-                                return <i class="fa fa-star star-not-selected" onClick={this.markFavorite}></i>
+                                return <i class="fa fa-star star-not-selected"></i>
                             }
                         }
                     },
                 ],
             },
         ];
-        $('.fa-star').on('click', function () {
-            if ($(this).hasClass('star-selected')) {
-                $(this).removeClass('star-selected');
-                $(this).addClass('star-not-selected');
-                console.log('ajax post call');
-            } else {
-                $(this).removeClass('star-not-selected');
-                $(this).addClass('star-selected')
-                console.log('ajax post call');
-            }
-        })
-        /* $.ajax({
-             type: "GET",
-             url: `${this.props.filtersDataUrl}.tags.${this.state.lang}.json`,
-             dataType: "json",
-             success: (response) => {
-                 this.setState({
-                     filters: response
-                 })
-             },
-             error: (err) => {
-                 console.log(err);
-             }
-         }) */
         return (
             <React.Fragment>
                 <Table columns={columns}
                     data={this.state.data}
                     sortyBy={this.sortColumn}
+                    updateFavorite={this.updateFavorite}
                     searchCallBack={this.SearchSort}
                     resetTableData={this.resetSearchData}
                     search={this.setFilteredData}

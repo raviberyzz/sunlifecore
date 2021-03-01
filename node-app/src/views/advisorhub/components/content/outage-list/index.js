@@ -162,6 +162,9 @@ $(document).ready(function(){
 
     var knownNumber = $("#known-outage .outage-item-list").children().length;
     var plannedNumber = $("#planned-outage .outage-item-list").children().length;
+    if($("#known-outage").length || $("#planned-outage").length){
+        $("#known-outage").parents(".tabs-wrapper").attr("id","technology-whiteboard");
+    }
     if(knownNumber>10){
         setKnownContent(knownNumber,1)
         setKnownPagination(knownNumber,1);

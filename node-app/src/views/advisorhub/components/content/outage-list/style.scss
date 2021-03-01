@@ -264,3 +264,14 @@
         }
     }
 }
+
+@media (max-width: $tab-screen-max) {
+    .outage-detail{
+        .outage-item-list{
+            padding: 0 10px;
+        }
+        #known-outage .outage-item-list, #planned-outage .outage-item-list{
+            padding-left: 0;
+        }
+    }
+}

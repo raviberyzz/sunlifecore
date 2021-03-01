@@ -107,12 +107,12 @@ public class UGCServiceImpl implements UGCService {
         try {
           if (null != requestJsonPost && requestJsonPost.length() > 2) {
             json = new JSONObject(requestJsonPost);
-            json.put("siteName", this.ugcConfig.getUGCServiceSite());
+            json.put("userid", userInfo.getAcf2Id());
           } else {
             json = new JSONObject();
           }
         } catch (JSONException e1) {
-          logger.error("JSONException :: while setting site name {}", e1);
+          logger.error("JSONException :: while setting userid {}", e1);
         }
         String url = this.ugcConfig.getUGCServiceDomain() + servicesMap.get(serviceUrl);
         if ("POST".equals(methodType)) {

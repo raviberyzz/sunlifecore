@@ -31,65 +31,68 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 /**
  * The Class UGCServletTest.
  */
-@ ExtendWith (AemContextExtension.class)
+@ ExtendWith(AemContextExtension.class)
 public class UGCServletTest {
 
 	/** The request. */
 	@ Mock
 	private SlingHttpServletRequest request;
-	
+
 	/** The response. */
 	@ Mock
 	private SlingHttpServletResponse response;
-	
+
 	/** The request path info. */
-	@Mock
+	@ Mock
 	private RequestPathInfo requestPathInfo;
-	
+
 	/** The resourceResolver. */
 	@ Mock
 	private ResourceResolver resourceResolver;
-	
+
 	/** The ugc service. */
-	@Mock
+	@ Mock
 	private UGCService ugcService;
-	
+
 	/** The ugc servlet. */
 	@ InjectMocks
 	private UGCServlet ugcServlet;
-	
+
 	/**
 	 * Setup.
 	 */
 	@ BeforeEach
 	void setup() {
-      MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.initMocks(this);
 	}
-	
+
 	/**
 	 * Test do get.
-	 * @throws IOException 
-	 * @throws SystemException 
-	 * @throws ApplicationException 
-	 * @throws ServletException 
+	 * 
+	 * @throws IOException
+	 * @throws SystemException
+	 * @throws ApplicationException
+	 * @throws ServletException
 	 */
 	@ Test
 	void testDoGetAndDoPost() throws ApplicationException, SystemException, IOException, ServletException {
 		StringWriter stringWriter = new StringWriter();
-	    PrintWriter writer = new PrintWriter(stringWriter);
-	    String url = "/bin/test";
-	    String[] selectors = {url,url};
-	    Map<String, String[]> params = new HashMap<>();
-	    UserInfo mockUserInfoModel = Mockito.mock(UserInfo.class);
-	    when(request.getResourceResolver()).thenReturn(resourceResolver);
-	    when(response.getWriter()).thenReturn(writer);
-	    when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
-	    when(requestPathInfo.getSelectors()).thenReturn(selectors);
-	    when(mockUserInfoModel.getProfile()).thenReturn("userProfile");
-	    when(request.getParameterMap()).thenReturn(params);
-	    when(ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET", mockUserInfoModel, request.getParameterMap(), null)).thenReturn("serviceResponse");
-	    ugcServlet.doGet(request, response);
-	    when(request.getReader()).thenReturn(null);
-	    ugcServlet.doPost(request, response);
+		PrintWriter writer = new PrintWriter(stringWriter);
+		String url = "/bin/test";
+		String[] selectors = { url, url };
+		Map<String, String[]> params = new HashMap<>();
+		UserInfo mockUserInfoModel = Mockito.mock(UserInfo.class);
+		when(request.getResourceResolver()).thenReturn(resourceResolver);
+		when(response.getWriter()).thenReturn(writer);
+		when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
+		when(requestPathInfo.getSelectors()).thenReturn(selectors);
+		when(mockUserInfoModel.getProfile()).thenReturn("userProfile");
+		when(request.getParameterMap()).thenReturn(params);
+		when(ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "GET", mockUserInfoModel,
+				request.getParameterMap(), null)).thenReturn("serviceResponse");
+		ugcServlet.doGet(request, response);
+		when(request.getReader()).thenReturn(null);
+		ugcServlet.doPost(request, response);
+		ugcServlet.doDelete(request, response);
 	}
 }

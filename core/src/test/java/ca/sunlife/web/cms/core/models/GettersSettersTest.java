@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import ca.sunlife.web.cms.advisorhub.models.LuminoModel;
+import ca.sunlife.web.cms.advisorhub.models.OutageListModel;
+import ca.sunlife.web.cms.advisorhub.models.OutageModel;
+import ca.sunlife.web.cms.advisorhub.models.SearchModel;
 import ca.sunlife.web.cms.core.beans.NewsReleases;
 import ca.sunlife.web.cms.core.beans.PageItem;
 import ca.sunlife.web.cms.core.beans.Pagination;
@@ -42,6 +46,13 @@ public class GettersSettersTest {
   private NavigationModel navigationModel;
   private ProductCardModel productCardModel;
   private SignInModel signInModel;
+  private LegacyLayoutContainerModel layoutContainerModel;
+  private LegacyBasePageModel legacyBasePageModel;
+  private LegacyContainerModel legacyContainerModel;
+  private OutageModel outageModel;
+  private OutageListModel outageListModel;
+  private SearchModel searchModel;
+  private LuminoModel luminoModel;
   
   @ BeforeEach
   void setup() {
@@ -75,6 +86,13 @@ public class GettersSettersTest {
     navigationModel = new NavigationModel();
     productCardModel = new ProductCardModel();
     signInModel = new SignInModel();
+    layoutContainerModel = new LegacyLayoutContainerModel();
+    legacyBasePageModel = new LegacyBasePageModel();
+    legacyContainerModel = new LegacyContainerModel();
+    outageModel = new OutageModel();
+    outageListModel = new OutageListModel();
+    searchModel = new SearchModel();
+    luminoModel = new LuminoModel();
   }
 
   @ Test
@@ -226,5 +244,40 @@ public class GettersSettersTest {
   @ Test
   void testSignInModel() {
   	TestUtils.executeTestBean(signInModel);
+  }
+  
+  @ Test
+  void testLayoutContainerModel() {
+  	TestUtils.executeTestBean(layoutContainerModel);
+  }
+  
+  @ Test
+  void testLegacyBasePageModel() {
+  	TestUtils.executeTestBean(legacyBasePageModel);
+  }
+  
+  @ Test
+  void testLegacyContainerModel() {
+  	TestUtils.executeTestBean(legacyContainerModel);
+  }
+  
+  @ Test
+  void testoutageModel() {
+    TestUtils.executeTestBean(outageModel);
+  }
+  
+  @ Test
+  void testoutageListModel() {
+    TestUtils.executeTestBean(outageListModel);
+  }
+  
+  @ Test
+  void testsearchModel() {
+    TestUtils.executeTestBean(searchModel);
+  }
+  
+  @ Test
+  void testluminoModel() {
+    TestUtils.executeTestBean(luminoModel);
   }
 }
