@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import java.util.stream.Collectors;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
@@ -89,26 +90,26 @@ public class UGCServlet extends SlingAllMethodsServlet {
 	 * org.apache.sling.api.servlets.SlingAllMethodsServlet#doPost(org.apache.sling.
 	 * api.SlingHttpServletRequest, org.apache.sling.api.SlingHttpServletResponse)
 	 */
-//	@ Override
-//	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
-//			throws ServletException, IOException {
-//		LOGGER.debug("Entry :: doGet method of UGC Servlet :: ");
-//		response.setCharacterEncoding("UTF-8");
-//		response.setContentType("application/json;charset=utf-8");
-//		PrintWriter writer = response.getWriter();
-//		String responseStr = null;
-//		try {
-//			if (request.getRequestPathInfo().getSelectors().length > 1) {
-//				LOGGER.trace("request params :: {}", request.getParameterMap());
-//				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
-//				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
-//						userInfoModel, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
-//			}
-//		} catch (ApplicationException | SystemException e) {
-//			LOGGER.error("Error :: doPost method of UGC Servlet :: {}", e);
-//		}
-//		writer.print(responseStr);
-//	}
+	@ Override
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
+			throws ServletException, IOException {
+		LOGGER.debug("Entry :: doPost method of UGC Servlet :: ");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		String responseStr = null;
+		try {
+			if (request.getRequestPathInfo().getSelectors().length > 1) {
+				LOGGER.trace("request params :: {}", request.getParameterMap());
+				UserInfo userInfoModel = request.adaptTo(UserInfo.class);
+				responseStr = ugcService.callWebService(request.getRequestPathInfo().getSelectors()[1], "POST",
+						userInfoModel, null, null !=  request.getReader() ? request.getReader().lines().collect(Collectors.joining()) : null);
+			}
+		} catch (ApplicationException | SystemException e) {
+			LOGGER.error("Error :: doPost method of UGC Servlet :: {}", e);
+		}
+		writer.print(responseStr);
+	}
 
 	
 

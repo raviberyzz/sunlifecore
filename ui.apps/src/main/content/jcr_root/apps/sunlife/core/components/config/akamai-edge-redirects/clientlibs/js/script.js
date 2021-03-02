@@ -64,6 +64,7 @@
             obj[nodeName.concat('source')] = src;
             obj[nodeName.concat('destination')] = destVal;
             obj[nodeName.concat('date')] = nm;
+            obj[nodeName.concat('modBy')] = $('#userName').val();
             var trData = { name: nm, source: src, destination: destVal };
             $.post(contentPath, obj, function (data) {
                 $('input[name="source"]').val('');
@@ -71,7 +72,8 @@
                 $('#createRule').trigger('click');
                 var tr = '<tr is="coral-table-row" data-name="' + trData.name + '"><td is="coral-table-cell" data-name="tr-source">' + trData.source + '</td><td is="coral-table-cell" data-name="tr-destination">' + trData.destination + '</td><td is="coral-table-cell">'
                     + '<coral-icon class="coral-Form-fieldinfo" icon="edit" size="S" data-name="' + trData.name + '" name="editRule" style="cursor: pointer" title="Edit Rule"></coral-icon>'
-                    + '<coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S" data-name="' + trData.name + '" style="cursor: pointer" name="disableRule" title="Deactivate Rule"></coral-icon></td></tr>';
+                    + '<coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S" data-name="' + trData.name + '" style="cursor: pointer" name="disableRule" title="Deactivate Rule"></coral-icon></td>'
+                    +'<td is="coral-table-cell" data-name="tr-modBy">'+$('#userName').val()+'</td><td is="coral-table-cell" data-name="tr-pubBy"></td></tr>';
                 $('#rules').append(tr);
                 bindRulesTableEvents();
             });
@@ -192,10 +194,12 @@
                 obj[nodeName.concat('source')] = src;
                 obj[nodeName.concat('destination')] = destVal;
                 obj[nodeName.concat('date')] = new Date().getTime();
+                obj[nodeName.concat('modBy')] = $('#userName').val();
                 var trData = { name: nName, source: src, destination: destVal };
                 $.post(contentPath, obj, function (data) {
                     $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-source"]').text(trData.source);
                     $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-destination"]').text(trData.destination);
+                    $('tr[data-name="' + trData.name + '"]').find('[data-name="tr-modBy"]').text($('#userName').val());
                     $('#editRuleDialog').remove();
                 });
             });
@@ -223,9 +227,11 @@
                 obj[nodeName.concat('status')] = 'Not Published';
                 obj[nodeName.concat('state')] = 'Delete';
                 obj[nodeName.concat('date')] = new Date().getTime();
+                obj[nodeName.concat('modBy')] = $('#userName').val();
                 $.post(contentPath, obj, function (data) {
                     $('tr[data-name="' + nName + '"]').find('[icon="exclude"]').remove();
                     $('tr[data-name="' + nName + '"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="play" size="S" data-name="' + nName + '" style="cursor: pointer" name="enableRule" title="Enable Rule"></coral-icon>');
+                    $('tr[data-name="' + nName + '"]').find('[data-name="tr-modBy"]').text($('#userName').val());
                     $('#disableRuleDialog').remove();
                     bindRulesTableEvents();
                 });
@@ -254,9 +260,11 @@
                 obj[nodeName.concat('status')] = 'Not Published';
                 obj[nodeName.concat('state')] = 'Edit';
                 obj[nodeName.concat('date')] = new Date().getTime();
+                obj[nodeName.concat('modBy')] = $('#userName').val();
                 $.post(contentPath, obj, function (data) {
                     $('tr[data-name="' + nName + '"]').find('[icon="play"]').remove();
                     $('tr[data-name="' + nName + '"]').find('[data-name="tr-actions"]').append('<coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S" data-name="' + nName + '" style="cursor: pointer" name="disableRule" title="Deactivate Rule"></coral-icon>');
+                    $('tr[data-name="' + nName + '"]').find('[data-name="tr-modBy"]').text($('#userName').val());
                     $('#enableRuleDialog').remove();
                     bindRulesTableEvents();
                 });
@@ -301,6 +309,7 @@
                     $.each(data, function(key,val) {
                         if(key != "publishStatus" && key != "error") {
                             obj['./'+key+'/status'] = val == "Fail" ? "Not Published" : "Published";
+                            obj['./'+key+'/pubBy'] = $('#userName').val();
                             $.each(rules, function(index, content) {
                                 if(content.name == key) {
                                     if(val == "Success") {
@@ -332,6 +341,7 @@
                         $('#publish-status-ok').click(function () {
                             $('#publishStatusDailog').remove();
                             $('#non-published-rules').trigger('click');
+                            window.location.reload();
                         });
                     });
                 });

@@ -1,7 +1,7 @@
 package ca.sunlife.web.cms.advisorhub.models;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
