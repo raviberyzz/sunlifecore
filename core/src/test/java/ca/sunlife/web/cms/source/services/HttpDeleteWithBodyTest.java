@@ -1,12 +1,12 @@
 package ca.sunlife.web.cms.source.services;
 
-import java.net.URI;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.net.URISyntaxException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import ca.sunlife.web.cms.core.services.HttpDeleteWithBody;
@@ -18,9 +18,6 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 @ ExtendWith (AemContextExtension.class)
 public class HttpDeleteWithBodyTest {
 
-	@ InjectMocks
-	private HttpDeleteWithBody deleteWithBody;
-	
 	/**
 	 * set up.
 	 */
@@ -31,9 +28,9 @@ public class HttpDeleteWithBodyTest {
 
 	@ Test
 	public void testDoPost() throws URISyntaxException {
-		deleteWithBody.getMethod();
-		HttpDeleteWithBody body = new HttpDeleteWithBody("/adpi/retriveData");
-		
-		HttpDeleteWithBody httpDeleteWithBody = new HttpDeleteWithBody(new URI("/adpi/retriveData"));
+		HttpDeleteWithBody body = new HttpDeleteWithBody("www.google.com");
+		if( null != body ) {
+			assertEquals("www.google.com", body.getURI().toString());
+		}
 	}
 }
