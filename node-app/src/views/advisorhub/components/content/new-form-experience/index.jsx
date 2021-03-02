@@ -427,12 +427,17 @@ class NewFormExperience extends React.Component {
         var updatedData = [];
         var updatedOriginalData = [];
         var updatedFilterResetData = [];
+        let reqData = {
+            formNumber: formNumber,
+            enabled: newFavourite
+        };
         $.ajax({
             type: "POST",
-            url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.ugc.updateFormFavourite.json?formNumber=" + formNumber + "&enabled=" + newFavourite,
-            // dataType: "json",
+            url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.ugc.updateFormFavourite.json",
+            contentType: "application/json",
+            data: JSON.stringify(reqData),
+            dataType: "json",
             success: (response) => {
-                console.log(response);
                 this.state.data.map((obj) => {
                     if (obj.formNumber == formNumber){
                         obj.favorite = newFavourite;
