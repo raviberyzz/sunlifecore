@@ -105,12 +105,12 @@
 		                        	valueType="string"/>
 		                        <option2
 		                        	jcr:primaryType="nt:unstructured"
-		                        	text="Open in new window (coming soon...)"
+		                        	text="Open in new window"
 		                        	value="newWindow"
 		                        	valueType="string"/>
 		                        <option3
 		                        	jcr:primaryType="nt:unstructured"
-		                        	text="Open in lightbox (coming soon...)"
+		                        	text="Open in lightbox"
 		                        	value="lightbox"
 		                        	valueType="string"/>
 		                    </items>
