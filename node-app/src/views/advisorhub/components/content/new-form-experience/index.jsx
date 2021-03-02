@@ -218,7 +218,12 @@ class NewFormExperience extends React.Component {
             url: "https://cmsdev-auth.ca.sunlife/content/sunlife/external/advisorhub/en/form-page/jcr:content/root/layout_container/container1/generic.ugc.listFormFavourites.json",
             dataType: "json",
             success: (res) => {
-                const favoriteData = res.favourites;
+                var favoriteData = [];
+                res.favourites.map((obj) => {
+                    favoriteData.push({
+                        "formNumber": obj
+                    });
+                })
                 $.ajax({
                     type: "GET",
                     url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
