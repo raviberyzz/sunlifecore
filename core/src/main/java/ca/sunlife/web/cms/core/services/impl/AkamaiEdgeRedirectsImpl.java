@@ -120,7 +120,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
   /* (non-Javadoc)
    * @see ca.sunlife.web.cms.core.services.AkamaiEdgeRedirects#publishRules(java.lang.String, java.lang.String)
    */
-  public JSONObject publishRules(String policyID, String rules) throws JSONException {
+  public JSONObject publishRules(String policyID, String rules, String userName) throws JSONException {
     JSONObject returnJson = new JSONObject();
     if (StringUtils.isBlank(policyID)) {
       return returnJson.put(ERROR_STR, "Invalid Policy ID");
@@ -129,7 +129,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       return returnJson.put(ERROR_STR, "No rules provided");
     }
     try {
-      String latestVersion = getOrCreateVersion(policyID);
+      String latestVersion = getOrCreateVersion(policyID, userName);
       returnJson = createOrUpdateRules(policyID, latestVersion, rules);
       LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(THREAD_SLEEP_TIME));
       returnJson.put("publishStatus", activateRules(policyID, latestVersion));
@@ -154,13 +154,24 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       final HttpPost activateVersion = new HttpPost(
           PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
               .concat("/versions/").concat(latestVersion).concat("/activations"));
+      final HttpPost stageActivateVersion = new HttpPost(
+              PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
+                  .concat("/versions/").concat(latestVersion).concat("/activations"));
       LOGGER.debug("Activate version {}", activateVersion.getURI());
       activateVersion.setHeader(ACCEPT, APPLICATION_JSON);
       activateVersion.setHeader(CONTENT_TYPE, APPLICATION_JSON);
       JSONObject activateVersionRequestBody = new JSONObject();
       activateVersionRequestBody.put("network", "production");
       activateVersion.setEntity(new StringEntity(activateVersionRequestBody.toString()));
+      stageActivateVersion.setHeader(ACCEPT, APPLICATION_JSON);
+      stageActivateVersion.setHeader(CONTENT_TYPE, APPLICATION_JSON);
+      JSONObject stageActivateVersionRequestBody = new JSONObject();
+      stageActivateVersionRequestBody.put("network", "staging");
+      stageActivateVersion.setEntity(new StringEntity(stageActivateVersionRequestBody.toString()));
       final CloseableHttpResponse activateVersionResponse = getClient().execute(activateVersion);
+      final CloseableHttpResponse stageActivateVersionResponse = getClient().execute(stageActivateVersion);
+      LOGGER.debug("Got AKAMAI staging response code {} while activating policy ", stageActivateVersionResponse.getStatusLine().getStatusCode());
+      stageActivateVersionResponse.close();
       LOGGER.debug("Got AKAMAI response code {} while activating policy ", activateVersionResponse.getStatusLine().getStatusCode());
       String activateResponse = IOUtils.toString(activateVersionResponse.getEntity().getContent(),
           StandardCharsets.UTF_8);
@@ -214,6 +225,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       rulesResponse.close();
       for (int i = 0 ; i < rewriteRules.length() ; i++ ) {
         JSONObject rule = rewriteRules.getJSONObject(i);
+        LOGGER.debug("Parsing rule {} ", rule);
         String state = rule.getString("state");
         String name = rule.getString("name");
         boolean ruleUpdatedFlag = false;
@@ -346,11 +358,13 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    *
    * @param policyID
    *          the policy ID
+   * @param userName
+   * 		  the User Name
    * @return the or create version
    * @throws ApplicationException
    *           the application exception
    */
-  private String getOrCreateVersion(String policyID) throws ApplicationException {
+  private String getOrCreateVersion(String policyID, String userName) throws ApplicationException {
     try {
       final HttpGet versions = new HttpGet(
           PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
@@ -375,7 +389,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
         JSONObject versionJson = jsonArr.getJSONObject(0);
         version = String.valueOf(versionJson.getInt("version"));
         if (versionJson.has("rulesLocked") && versionJson.getBoolean("rulesLocked")) {
-          return createPolicyVersion(policyID, version);
+          return createPolicyVersion(policyID, version, userName);
         }
       } else {
         throw new ApplicationException(ErrorCodes.APP_ERROR_201);
@@ -393,11 +407,13 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    *          the policy ID
    * @param version
    *          the version
+   * @param userName
+   * 		  the user name
    * @return the string
    * @throws ApplicationException
    *           the application exception
    */
-  private String createPolicyVersion(String policyID, String version) throws ApplicationException {
+  private String createPolicyVersion(String policyID, String version, String userName) throws ApplicationException {
     try {
       final HttpPost createVersion = new HttpPost(
           PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
@@ -405,7 +421,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       createVersion.setHeader(ACCEPT, APPLICATION_JSON);
       createVersion.setHeader(CONTENT_TYPE, APPLICATION_JSON);
       JSONObject createVersionRequestBody = new JSONObject();
-      createVersionRequestBody.put("description", "Created based on version : " + version);
+      createVersionRequestBody.put("description", "Created based on version : " + version + " and created by " + userName);
       createVersion.setEntity(new StringEntity(createVersionRequestBody.toString()));
 
       final CloseableHttpResponse createVersionResponse = getClient().execute(createVersion);

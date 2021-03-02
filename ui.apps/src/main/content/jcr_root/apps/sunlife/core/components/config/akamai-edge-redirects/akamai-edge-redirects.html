@@ -14,11 +14,13 @@
         </div>
     </div>
     <div class="main-content">
+    	<sly data-sly-use.userInfo="ca.sunlife.web.cms.core.models.UserInfo" />
         <h1 class="coral-Heading coral-Heading--1">Vanity Rules for ${properties.domain}</h1>
         <h2 class="coral-Heading coral-Heading--2">Policy : ${properties.policy} </h2>
         <input type="hidden" id="domain" value="${properties.domain}" />
         <input type="hidden" id="policyID" value="${properties.policyID}" />
         <input type="hidden" id="blockedPaths" value="${properties.blockedPaths}" />
+        <input type="hidden" id="userName" value="${userInfo.userName}" />
         <coral-tabview style="padding:25px">
             <coral-tablist target="coral-panel">
                 <coral-tab>
@@ -73,12 +75,16 @@
                             <col is="coral-table-column" fixedWidth>
                             <col is="coral-table-column" fixedWidth>
                             <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
                         </colgroup>
                         <thead is="coral-table-head" sticky>
                             <tr is="coral-table-row">
                                 <th is="coral-table-headercell">Source</th>
                                 <th is="coral-table-headercell">Destination</th>
                                 <th is="coral-table-headercell">Action</th>
+                                <th is="coral-table-headercell">Modified By</th>
+                                <th is="coral-table-headercell">Published By</th>
                             </tr>
                         </thead>
                         <tbody is="coral-table-body" id="rules">
@@ -101,6 +107,8 @@
                                             title="Enable Rule"></coral-icon>
                                     </sly>
                                 </td>
+                                <td is="coral-table-cell" data-name="tr-modBy">${item.modBy}</td>
+                                <td is="coral-table-cell" data-name="tr-pubBy">${item.pubBy}</td>
                             </tr>
                         </tbody>
                     </table>
