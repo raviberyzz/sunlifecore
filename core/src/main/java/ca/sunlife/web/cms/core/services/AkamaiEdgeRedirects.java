@@ -20,8 +20,10 @@ public interface AkamaiEdgeRedirects {
    *          the policy ID
    * @param rules
    *          the rules
+   * @param user
+   *          the user name
    * @return the JSONObject
    * @throws JSONException 
    */
-  public JSONObject publishRules(String policyID, String rules) throws JSONException;
+  public JSONObject publishRules(String policyID, String rules, String user) throws JSONException;
 }
