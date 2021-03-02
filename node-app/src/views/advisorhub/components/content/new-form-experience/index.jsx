@@ -471,7 +471,7 @@ class NewFormExperience extends React.Component {
                     }
                 });
                 this.setState({
-                    data: updatedData,
+                    // data: updatedData,
                     originalData: updatedOriginalData,
                     filterResetData: updatedFilterResetData
                 });
