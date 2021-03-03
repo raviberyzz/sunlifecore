@@ -1606,15 +1606,13 @@ public class BasePageModel {
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
             masterPagePath = sourcePath; 
-            if(null!=resolver.getResource(sourcePath)) {
-            	sourceResource = resolver.getResource(sourcePath);
+            sourceResource = resolver.getResource(sourcePath);
             	if(sourceResource!=null) {
                 	 Page page = sourceResource.adaptTo(Page.class);
                      if (page != null) { 
                     	 masterSeoCanonicalUrl = (null==masterSeoCanonicalUrl) ? page.getProperties().get("canonicalUrl", String.class) : masterSeoCanonicalUrl;
                      }
             	}	
-            }
           }
         }
       }
@@ -1743,15 +1741,13 @@ public class BasePageModel {
 					if (liveCopy != null) {
 						final String sourcePath = liveCopy.getBlueprintPath();
 						masterPagePath = sourcePath;
-						if (null != resolver.getResource(sourcePath)) {
-							Resource sourceResource = resolver.getResource(sourcePath);
+						Resource sourceResource = resolver.getResource(sourcePath);
 							if (sourceResource != null) {
 								Page page = sourceResource.adaptTo(Page.class);
 								if (page != null) {
 									masterSeoCanonicalUrl = page.getProperties().get("canonicalUrl", String.class);
 								}
 							}
-						}
 					}
 				}
 			}
