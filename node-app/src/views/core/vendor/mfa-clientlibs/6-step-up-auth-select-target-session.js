@@ -213,7 +213,7 @@ function getMaskedPhone(countryCode, commData) {
     let unmaskedString = '';
 	
     for(let i=(commData.length - 1); (i < commData.length && i >= 0); i--) {
-      if(Number.isInteger(parseInt(commData[i]))) {
+      if(commData[i].match(/\d/)) {
         numberOfDigitFound ++;
         if(numberOfDigitFound == 4) {
           indexOfFoundDigit = i;
