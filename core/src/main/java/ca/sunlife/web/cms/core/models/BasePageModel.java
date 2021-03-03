@@ -311,6 +311,9 @@ public class BasePageModel {
 
   /** The master page path. */
   private String masterPagePath;
+  
+  /** The master seo canonical url. */
+  private String masterSeoCanonicalUrl;
 
   /** The Constant JCR_CONTENT_DATA_MASTER. */
   private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
@@ -1138,14 +1141,19 @@ public class BasePageModel {
     // Sets UDO parameters
     otherUDOTagsMap = new JsonObject();
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
-
+    
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-      String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
-      otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
-          .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
-                                                           // url
-                                                           // -
-                                                           // default
+    	if(null!=masterSeoCanonicalUrl && masterSeoCanonicalUrl.length()>0) {
+            otherUDOTagsMap.addProperty("page_canonical_url_default", masterSeoCanonicalUrl);
+        }else {
+        	String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+            otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
+                .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
+                                                                 // url
+                                                                 // -
+                                                                 // default
+        }
+      
     } else {
       otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
                                                                                   // -
@@ -1567,12 +1575,15 @@ public class BasePageModel {
       if (null == resolver || null == resource ) {
         return;
       }
+      Map <String, String> pageAltLanguageLinks = new HashMap <>();
       final Resource altLanResource = resolver
           .getResource(resource.getPath() + "/jcr:content/alternateUrls");
       LOG.debug("Alt urls --> {}", altLanResource);
       if (null != altLanResource) {
         generatePageSpecificAlternateUrls();
-        return;
+        if(altLanguageLinks.size()==1) pageAltLanguageLinks = altLanguageLinks;
+        else return;
+       
       }
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
@@ -1595,7 +1606,15 @@ public class BasePageModel {
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
             masterPagePath = sourcePath; 
-            sourceResource = resolver.getResource(sourcePath);
+            if(null!=resolver.getResource(sourcePath)) {
+            	sourceResource = resolver.getResource(sourcePath);
+            	if(sourceResource!=null) {
+                	 Page page = sourceResource.adaptTo(Page.class);
+                     if (page != null) { 
+                    	 masterSeoCanonicalUrl = (null==masterSeoCanonicalUrl) ? page.getProperties().get("canonicalUrl", String.class) : masterSeoCanonicalUrl;
+                     }
+            	}	
+            }
           }
         }
       }
@@ -1628,8 +1647,14 @@ public class BasePageModel {
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));
+        
+	        if(pageAltLanguageLinks.size()==1) {
+	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
+	      	  altLanguageLinks.put(entry.getKey(), entry.getValue());
+	        }
       }
       LOG.debug("New altLanguageLinks :: {}", altLanguageLinks);
+      
     } catch (WCMException | LoginException | RepositoryException e) {
       LOG.error("Unable to get the live copy: {}", e.getMessage());
     }
@@ -1674,6 +1699,7 @@ public class BasePageModel {
     }
     altLanguageLinks = new HashMap <>();
     try {
+    	boolean isAltLangSameAsCurPgLocale = false;
       for (final Resource currentResource : alternateUrls.getChildren()) {
         final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
         final String altLang = (String) currentResourceProperties.getOrDefault("alternateLanguage",
@@ -1687,22 +1713,65 @@ public class BasePageModel {
         final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
 
         masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
+        
+        if(null!=masterPagePath)  masterSeoCanonicalUrl = masterPagePath;
+        
         altLanguageLinks.put(
             altLang.split("_") [ 0 ] + "-"
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             altSiteDomain + altSiteUrl);
+        
+    	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
+        	altLanguageLinks.put(
+                    altLang.split("_") [ 0 ] + "-"
+                        + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                        altUrl);
+        	if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
+        			isAltLangSameAsCurPgLocale=true;
+        	}
+        }
+        
       }
+      masterPagePath = masterSeoCanonicalUrl;
+ 	  
+		if (null == masterPagePath) {
+			Resource resource = resolver.getResource(currentPage.getPath());
+			if (relationshipManager.hasLiveRelationship(resource)) {
+				final LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resource, false);
+				if (liveRelationship != null) {
+					final LiveCopy liveCopy = liveRelationship.getLiveCopy();
+					if (liveCopy != null) {
+						final String sourcePath = liveCopy.getBlueprintPath();
+						masterPagePath = sourcePath;
+						if (null != resolver.getResource(sourcePath)) {
+							Resource sourceResource = resolver.getResource(sourcePath);
+							if (sourceResource != null) {
+								Page page = sourceResource.adaptTo(Page.class);
+								if (page != null) {
+									masterSeoCanonicalUrl = page.getProperties().get("canonicalUrl", String.class);
+								}
+							}
+						}
+					}
+				}
+			}
+	
+		}
+ 	  
+ 	  
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
       if (! altLanguageLinks.isEmpty()) {
+        if(isAltLangSameAsCurPgLocale) return;
+    	
         altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
-    } catch (LoginException | RepositoryException e) {
+    } catch (LoginException | RepositoryException | WCMException e) {
       LOG.error("Error while generating alternate urls :: {}", e.getMessage());
     }
     LOG.debug("Map {}", altLanguageLinks);
