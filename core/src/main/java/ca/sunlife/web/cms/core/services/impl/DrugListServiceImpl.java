@@ -404,7 +404,7 @@ public class DrugListServiceImpl implements DrugListService {
                 if (policy != null && policy.getCell(1) != null) {
                     String policyNumber;
                     if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
-                        policyNumber = policy.getCell(1).getStringCellValue();
+                        policyNumber = policy.getCell(1).getStringCellValue().replaceFirst("^0*","");
                     } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
                         policyNumber = Double.toString(policy.getCell(1).getNumericCellValue());
                         policyNumber = policyNumber.substring(0, policyNumber.length() - 2);
