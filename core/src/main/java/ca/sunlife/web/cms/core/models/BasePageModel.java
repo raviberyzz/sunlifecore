@@ -1143,7 +1143,7 @@ public class BasePageModel {
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
     
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-    	if(null!=masterSeoCanonicalUrl && masterSeoCanonicalUrl.length()>0) {
+    	if(null!=canonicalUrl && null!=masterSeoCanonicalUrl && masterSeoCanonicalUrl.length()>0) {
             otherUDOTagsMap.addProperty("page_canonical_url_default", masterSeoCanonicalUrl);
         }else {
         	String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
