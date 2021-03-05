@@ -1,0 +1,7 @@
+<sly data-sly-use.list="ca.sunlife.web.cms.core.models.ListPageCfModel"
+     data-sly-test="${list.listItems.size>0}">
+   <!--/*Size is:::  ${list.listItems.size}*/-->
+     <sly data-sly-list="${list.listItems}">
+		<a href="${item @ extension = 'html'}">${item}</a><br>
+</sly>
+</sly>
