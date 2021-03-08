@@ -375,7 +375,17 @@ public class BasePageModel {
   /** The disableSocialSharingTags. */
   private String disableSocialSharingTags;
   
-  /** The nonResponsive. */
+  /** The disableContextHubTags. */
+  private String disableContextHubTags;
+  
+  public String getDisableContextHubTags() {
+	return disableContextHubTags;
+}
+
+public void setDisableContextHubTags(String disableContextHubTags) {
+	this.disableContextHubTags = disableContextHubTags;
+}
+/** The nonResponsive. */
   private String nonResponsive;
   
   /**
@@ -1024,6 +1034,7 @@ public class BasePageModel {
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
+    disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
     nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
     
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
