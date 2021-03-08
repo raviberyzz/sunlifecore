@@ -121,7 +121,15 @@
                                         name="./enableContextHub"
                                         text="Enable context hub"
                                         value="{Boolean}true"/>
-									<disableSocialSharingTags
+                                    <disableContextHubTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Disable Context Hub tags"
+                                        name="./disableContextHubTags"
+                                        text="Disable Context Hub tags"
+                                        value="{Boolean}true"/>    
+                                    <disableSocialSharingTags
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         defaultValue="false"
