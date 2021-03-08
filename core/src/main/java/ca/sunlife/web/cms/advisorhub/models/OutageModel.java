@@ -139,7 +139,7 @@ public class OutageModel {
 		 }
 		 try {
 			 
-			 setDateFormat(configService.getConfigValues("articleDateFormat", currentPage.getPath()));
+			 setDateFormat(configService.getConfigValues("outageDateFormat", currentPage.getPath()));
 			 final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
 		      if (null != locale && locale.length() > 0) { 
 		    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];

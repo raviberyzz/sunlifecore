@@ -18,6 +18,7 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -27,6 +28,8 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.commons.jcr.JcrConstants;
@@ -35,7 +38,7 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 
@@ -46,12 +49,18 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * @version 1.0
  *
  */
-@ Model (adaptables = SlingHttpServletRequest.class, adapters = OutageListModel.class, resourceType = "sunlife/advisorhub/components/content/outageList", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class OutageListModel {
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = { ComponentExporter.class },
+       resourceType = OutageListModel.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+@JsonSerialize(as = OutageListModel.class)
+
+public class OutageListModel implements ComponentExporter {
 	
 
 	  /** The Constant LOGGER. */
 	  private static final Logger LOGGER = LoggerFactory.getLogger(OutageListModel.class);
+	  
+	  public static final String RESOURCE_TYPE = "sunlife/advisorhub/components/content/outageList";
 
 	  /** The parent path. */
 	  @ Inject
@@ -67,7 +76,18 @@ public class OutageListModel {
 	  @ Inject
 	  private SiteConfigService configService;
 	  
-	  /** The page locale. */
+	  /** The date format. */
+	  private String dateFormat;
+	  
+	  public String getDateFormat() {
+		return dateFormat;
+	 }
+
+	 public void setDateFormat(String dateFormat) {
+		this.dateFormat = dateFormat;
+	 }
+
+	/** The page locale. */
 	  private String pageLocale;
 
 	  /** The resource resolver. */
@@ -193,6 +213,8 @@ public class OutageListModel {
 	    }
 	    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
 	    try {
+	    	
+	    setDateFormat(configService.getConfigValues("outageDateFormat", currentPage.getPath()));
 	    final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
 	      if (null != locale && locale.length() > 0) { 
 	    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
@@ -271,5 +293,13 @@ public class OutageListModel {
 	    queryParameterMap.put("orderby.sort", "desc");
 	   
 	  }
+
+	@Override
+	public String getExportedType() {
+		// TODO Auto-generated method stub
+		return RESOURCE_TYPE;
+	}
+
+	
 
 }
