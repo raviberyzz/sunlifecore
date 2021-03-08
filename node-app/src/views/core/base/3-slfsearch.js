@@ -422,6 +422,14 @@ $(document).ready(function () {
         init();
     }(jQuery));
 
+    function checkHeader2(){
+        if($(".desktop-search-bar").length==0){
+            setTimeout(checkHeader2, 500);
+        }   
+        else{
+            init();
+        }
+     }
 
     /* global.search.js*/
 
@@ -658,8 +666,13 @@ $(document).ready(function () {
                 }
             }
         }
-
-        init();
+        if(typeof ContextHub == "undefined"){
+            init();
+         }
+         else{
+            checkHeader2();
+         }
+        
         $(init);
     }(jQuery));
 
