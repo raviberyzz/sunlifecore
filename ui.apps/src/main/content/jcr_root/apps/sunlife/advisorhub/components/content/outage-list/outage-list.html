@@ -36,7 +36,7 @@
 		
             <div class="outage-item">
                 <div class="outage-date">
-                    <sly data-sly-call="${tpl.element @ date = date, format = 'MMMM dd, yyyy', pageLocale = list.pageLocale}"></sly>
+                    <sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly>
                 </div>
                 <div class="outage-title">
                         <span data-sly-test.iconCheck = "${outageIcon && outageIconColor}" class="fa ${outageIcon} ${outageIconColor == 'Red' ? 'outage-red' : 'outage-yellow'}" ></span>

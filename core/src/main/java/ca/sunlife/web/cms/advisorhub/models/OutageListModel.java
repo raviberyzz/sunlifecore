@@ -67,7 +67,18 @@ public class OutageListModel {
 	  @ Inject
 	  private SiteConfigService configService;
 	  
-	  /** The page locale. */
+	  /** The date format. */
+	  private String dateFormat;
+	  
+	  public String getDateFormat() {
+		return dateFormat;
+	 }
+
+	 public void setDateFormat(String dateFormat) {
+		this.dateFormat = dateFormat;
+	 }
+
+	/** The page locale. */
 	  private String pageLocale;
 
 	  /** The resource resolver. */
@@ -193,6 +204,8 @@ public class OutageListModel {
 	    }
 	    final String [ ] selectors = request.getRequestPathInfo().getSelectors();
 	    try {
+	    	
+	    setDateFormat(configService.getConfigValues("outageDateFormat", currentPage.getPath()));
 	    final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
 	      if (null != locale && locale.length() > 0) { 
 	    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
