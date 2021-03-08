@@ -53,7 +53,8 @@ $(document).ready(function () {
                 }
             });
             $('.search-bar-wrapper button').click(function(){
-                var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
+                // var desktop_search_input=$('.search-bar-wrapper .global-search .input-wrapper input').val();
+                var desktop_search_input = $(this).parent().siblings().find('input').val();
                 utag.link({ "ev_type" : "other","ev_action" : "clk","ev_title" : "search module-search","ev_data_one" : desktop_search_input});
             });
             // Desktop search analytics ends here

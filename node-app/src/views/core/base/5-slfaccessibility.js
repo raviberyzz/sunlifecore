@@ -105,6 +105,7 @@ addMegaMenuAriaLabels();
           }
       });
       $("#search-btn").keydown(function(e){
+        if($(".desktop-primary-navigation").length!=0){
           if (e.which == 9 ) {
               e.preventDefault();
               $('.desktop-primary-navigation .navbar-new').children('li:first-child').children().focus();
@@ -114,6 +115,7 @@ addMegaMenuAriaLabels();
                 $(".desktop-primary-navigation li").removeClass("open");
               }
           }
+        }
       });
       $(".sunLanguageCrossBtn").keydown(function(e){
         if (e.which == 13 ) {
