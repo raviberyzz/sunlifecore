@@ -422,15 +422,6 @@ $(document).ready(function () {
         init();
     }(jQuery));
 
-    function checkHeader2(){
-        if($(".desktop-search-bar").length==0){
-            setTimeout(checkHeader2, 500);
-        }   
-        else{
-            init();
-        }
-     }
-
     /* global.search.js*/
 
     /* globals jQuery, setTimeout, clearTimeout, __slf_search_config */
@@ -666,6 +657,16 @@ $(document).ready(function () {
                 }
             }
         }
+
+        function checkHeader2(){
+            if($(".desktop-search-bar").length==0){
+                setTimeout(checkHeader2, 500);
+            }   
+            else{
+                init();
+            }
+        }
+        
         if(typeof ContextHub == "undefined"){
             init();
          }
