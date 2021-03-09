@@ -160,12 +160,14 @@ public class ListPageCfModel {
 				Node childNode = childNodes.nextNode();
 				if(childNode.getProperty("jcr:primaryType").getValue().getString().equalsIgnoreCase("cq:Page")) {
 					Node newNode = rootNode.getNode(childNode.getPath().substring(1)+"/jcr:content");
+					if(newNode.hasProperty("advancedPageType")) {
 					String advPageType = newNode.getProperty("advancedPageType").getValue().getString();
 					if(advPageType.equalsIgnoreCase("regular")) {
 						LOG.debug("ADV page type is regular");
 						items.add(childNode.getPath());
 					}
 				}
+			}
 			}
 		}
 		if(!cfParentPath.isEmpty()) {
@@ -192,6 +194,7 @@ public class ListPageCfModel {
 						Node itemChildNode = itemChildNodes.nextNode();
 						String cfPath = itemChildNode.getProperty("cfPath").getValue().getString();
 						//if(cfPath.contains("/content/dam/sunlife/external/ca/en/content-fragments") || cfPath.contains("/content/dam/sunlife/external/ca/fr/content-fragments")) {
+						if(rootNode.hasNode(cfPath.substring(1))) {
 						Node metaData = rootNode.getNode(cfPath.substring(1)+"/jcr:content/metadata");
 						Node cfmNode = rootNode.getNode(cfPath.substring(1)+"/jcr:content/data/master");
 						String aemtags = "";
@@ -215,6 +218,7 @@ public class ListPageCfModel {
 
 						}						
 
+					  }
 					}
 				}			
 			}
