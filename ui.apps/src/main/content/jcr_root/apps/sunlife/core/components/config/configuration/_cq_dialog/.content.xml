@@ -121,7 +121,15 @@
                                         name="./enableContextHub"
                                         text="Enable context hub"
                                         value="{Boolean}true"/>
-									<disableSocialSharingTags
+                                    <disableContextHubTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Disable Context Hub tags"
+                                        name="./disableContextHubTags"
+                                        text="Disable Context Hub tags"
+                                        value="{Boolean}true"/>    
+                                    <disableSocialSharingTags
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         defaultValue="false"
@@ -199,7 +207,7 @@
                                         name="./articleTitleFormat"/>    
                                 </items>
                             </section-article>
-                            <section-productcards
+                           <section-productcards
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Product Card Related Properties"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
@@ -213,6 +221,19 @@
                                         rootPath="/content/dam/sunlife"/>
                                 </items>
                             </section-productcards>
+                            <section-outage
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Outage Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <outageDateFormat
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        fieldLabel="Outage Date Format"
+                                        name="./outageDateFormat"/>
+                                </items>
+                            </section-outage>
                             <section-page
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Page Defaults"
