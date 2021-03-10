@@ -12,6 +12,8 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+
 /**
  * The Class Pagination.
  *
@@ -203,9 +205,18 @@ public class Pagination {
     super();
     int pageNo = 1;
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length > 0 && StringUtils.isNumeric(selectors[selectors.length - 1 ])) {
+    String path = "";
+    try {
+			path = request.getResource().getPath();
+	} catch (NullPointerException e) {
+		LOGGER.debug("Exception while getting the path {}", e);
+	}
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[selectors.length - 1 ]) && (!path.contains(BasePageModelConstants.SLFAS_PATH))) {
       pageNo = Integer.parseInt(selectors [ selectors.length - 1 ]);
     }
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[0]) && (path.contains(BasePageModelConstants.SLFAS_PATH))) {
+        pageNo = Integer.parseInt(selectors [0]);
+      }
     if (pageNo > 1) {
       prevPage = pageNo - 1;
     } else {
