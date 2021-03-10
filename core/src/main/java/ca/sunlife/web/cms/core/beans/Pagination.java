@@ -205,10 +205,16 @@ public class Pagination {
     super();
     int pageNo = 1;
     final String [ ] selectors = request.getRequestPathInfo().getSelectors();
-    if (selectors.length > 0 && StringUtils.isNumeric(selectors[selectors.length - 1 ]) && (!request.getRequestPathInfo().getResourcePath().contains(BasePageModelConstants.SLFAS_PATH))) {
+    String path = "";
+    try {
+			path = request.getResource().getPath();
+	} catch (NullPointerException e) {
+		LOGGER.debug("Exception while getting the path {}", e);
+	}
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[selectors.length - 1 ]) && (!path.contains(BasePageModelConstants.SLFAS_PATH))) {
       pageNo = Integer.parseInt(selectors [ selectors.length - 1 ]);
     }
-    if (selectors.length > 0 && StringUtils.isNumeric(selectors[0]) && (request.getRequestPathInfo().getResourcePath().contains(BasePageModelConstants.SLFAS_PATH))) {
+    if (selectors.length > 0 && StringUtils.isNumeric(selectors[0]) && (path.contains(BasePageModelConstants.SLFAS_PATH))) {
         pageNo = Integer.parseInt(selectors [0]);
       }
     if (pageNo > 1) {
