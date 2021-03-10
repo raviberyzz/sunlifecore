@@ -279,7 +279,6 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 			throws ApplicationException, SystemException, IOException, LoginException {
 		LOG.debug("Entry :: FundFactPDFServiceImpl :: getCompiledData :: {}", request);
 		String compiledData = null;
-		// String reqParams = request.getParameter("fparams");
 		String reqParams = request.getRequestPathInfo().getSelectors()[1];
 		LOG.debug("FundFactPDFServiceImpl :: reqParams :: {}", reqParams);
 		if (null != reqParams && reqParams.length() > 0) {
@@ -516,20 +515,20 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						}
 						if (singleValuesMap.get(strTrailingCommission) == null
 								|| singleValuesMap.get(strTrailingCommission).trim().equals("")) {
-							objFundFactsData.isTraillingCommisionAvailable = false;
+							objFundFactsData.setTraillingCommisionAvailable(false);;
 						}
 						if (singleValuesMap.get(strTurnOverRate) == null
 								|| singleValuesMap.get(strTurnOverRate).trim().equals(strNA)) {
-							objFundFactsData.isTunoverisNA = true;
+							objFundFactsData.setTunoverisNA(true);
 						}
 						// check if ProductName = Sun GIF Solutions or not
 						if (singleValuesMap.get("ProductName") != null) {
 							String productws = singleValuesMap.get("ProductName").trim();
 							LOG.trace("productws>>{} ", productws);
 							if (productws.equals(sungifssolutionen) || productws.equals(sungifssolutionfr)) {
-								objFundFactsData.isSunGifSoln = true;
+								objFundFactsData.setSunGifSoln(true);
 							} else {
-								objFundFactsData.isSunGifSoln = false;
+								objFundFactsData.setSunGifSoln(false);
 							}
 						} else {
 							LOG.trace("No product name from webservice with key=ProductName");
@@ -539,16 +538,16 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						singleValuesMap = numberFormat(languageWS, singleValuesMap);
 						// now we have map populated ... so populate bean
 						if (singleValuesMap.get(keyfellow).equals(strNA)) {
-							objFundFactsData.isfELLow = true;
+							objFundFactsData.setIsfELLow(true);
 						}
 						if (salseChargeSectionHideClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.isFelFundClass = true;
+							objFundFactsData.setFelFundClass(true);
 						}
 						if (salseChargeSectionDeferedHideClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.isDeferFundClass = true;
+							objFundFactsData.setDeferFundClass(true);
 						}
 						if (iOClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.isIOClass = true;
+							objFundFactsData.setIOClass(true);
 						}
 
 						// Need to get the first year so setting up in single value map
@@ -571,18 +570,18 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						String riskRatingWS = singleValuesMap.get(keyriskratingvalue);
 						LOG.trace("riskRatingWS >>{} ", riskRatingWS);
 						if (riskRatingWS.equals(lowstringEN) || riskRatingWS.equals(lowstringFR)) {
-							objFundFactsData.lowRisk = true;
+							objFundFactsData.setLowRisk(true);
 						} else if (riskRatingWS.equals(lowtomedstringEN) || riskRatingWS.equals(lowtomedstringFR)) {
-							objFundFactsData.lowMedRisk = true;
+							objFundFactsData.setLowMedRisk(true);
 						} else if (riskRatingWS.equals(medstringEN) || riskRatingWS.equals(medstringFR)) {
-							objFundFactsData.medRisk = true;
+							objFundFactsData.setMedRisk(true);
 						} else if (riskRatingWS.equals(medtohighstringEN) || riskRatingWS.equals(medtohighstringFR)) {
-							objFundFactsData.medHighRisk = true;
+							objFundFactsData.setMedHighRisk(true);
 						} else if (riskRatingWS.equals(highstringEN) || riskRatingWS.equals(highstringFR)) {
-							objFundFactsData.highRisk = true;
+							objFundFactsData.setHighRisk(true);
 						}
 						if (!(singleValuesMap.get(keyreturndate).trim().equals(""))) {
-							objFundFactsData.isReturnRate = true;
+							objFundFactsData.setReturnRate(true);
 						}
 						objFundFactsData.setSingleValueMap(singleValuesMap);
 					} else {
@@ -750,7 +749,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						LOG.trace("dcsList size={} ", objFundFactsData.getDscList().size());
 					}
 				} else {
-					objFundFactsData.returnCode = returnCode;
+					objFundFactsData.setReturnCode(returnCode);
 				}
 			} else {
 				LOG.trace("No json for node={} ", strfundFactsResponse);
@@ -819,7 +818,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 		try {
 			Double doubleamount = Double.parseDouble(incomingRawCur);
 			return fmt.format(doubleamount);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			LOG.error("ERROR WHILE Formatting currency ={} ", e);
 			return incomingRawCur;
 		}
@@ -847,7 +846,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 			DecimalFormat decimalFormat = new DecimalFormat(sb.toString());
 			tempResult = decimalFormat.format(temp);
 			return tempResult;
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			LOG.error("Error :: getFormatDecimal :: {}", e);
 			return number;
 		}
@@ -933,7 +932,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 				result = result.concat("<td>" + perfData.getPercentage() + "</td>");
 				result = result.concat("</tr>");
 			}
-		} catch (Exception ex) {
+		} catch (NumberFormatException ex) {
 			LOG.error("Error :: createDataTable :: {}", ex);
 		}
 		LOG.debug("Result is {}", result);
