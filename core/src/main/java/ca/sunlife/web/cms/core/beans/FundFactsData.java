@@ -14,109 +14,109 @@ import java.util.Map;
 public class FundFactsData {
 
 	/** The mPowerCode. */
-	String mPowerCode;
+	private String mPowerCode;
 	
 	/** The lang. */
-	String lang;
+	private String lang;
 	// productName fundName , planDate
 	/** The singleValueMap. */
-	Map<String, String> singleValueMap = new HashMap<>();
+	private Map<String, String> singleValueMap = new HashMap<>();
 	// get the values from node simpleMappedValuesQuickFix
 	/** The guarantees. */
-	List<Guarantee> guarantees = new ArrayList<>();
+	private List<Guarantee> guarantees = new ArrayList<>();
 	
 	/** The assetMixes. */
-	List<AssetMix> assetMixes = new ArrayList<>();
+	private List<AssetMix> assetMixes = new ArrayList<>();
 	
 	/** The holdings. */
-	List<Holding> holdings = new ArrayList<>();
+	private List<Holding> holdings = new ArrayList<>();
 	
 	/** The performanceData. */
-	List<PerformanceData> performanceData = new ArrayList<>();
+	private List<PerformanceData> performanceData = new ArrayList<>();
 
 	/** The reasonsToInvest. */
-	List<String> reasonsToInvest = new ArrayList<>();
+	private List<String> reasonsToInvest = new ArrayList<>();
 	
 	/** The dscList. */
-	List<String> dscList = new ArrayList<>();
+	private List<String> dscList = new ArrayList<>();
 	
 	/** The llscList. */
-	List<String> llscList = new ArrayList<>();
+	private List<String> llscList = new ArrayList<>();
 
 	/** The totalPercentOfTop10Investments. */
-	public String totalPercentOfTop10Investments;
+	private String totalPercentOfTop10Investments;
 	
 	/** The numberOfYears. */
-	public String numberOfYears;
+	private String numberOfYears;
 	
 	/** The maxReturnYear. */
-	public String maxReturnYear;
+	private String maxReturnYear;
 	
 	/** The minReturnYear. */
-	public String minReturnYear;
+	private String minReturnYear;
 
 	/** The isFundLessThanOneYear. */
-	boolean isFundLessThanOneYear;
+	private boolean isFundLessThanOneYear;
 	
 	/** The isUnderlying. */
-	boolean isUnderlying;
+	private boolean isUnderlying;
 	
 	/** The isGuaranteeSeriesAvailable. */
-	boolean isGuaranteeSeriesAvailable;
+	private boolean isGuaranteeSeriesAvailable;
 	
 	/** The isyearByYearReturnAvailable. */
-	boolean isyearByYearReturnAvailable;
+	private boolean isyearByYearReturnAvailable;
 
 	/** The assetMixAvailable. */
-	public boolean assetMixAvailable;
+	private boolean assetMixAvailable;
 	
 	/** The top10HoldingsAvailable. */
-	public boolean top10HoldingsAvailable;
+	private boolean top10HoldingsAvailable;
 
 	/** The isfELLow. */
-	public boolean isfELLow;
+	private boolean isfELLow;
 	
 	/** The isFelFundClass. */
-	public boolean isFelFundClass;
+	private boolean isFelFundClass;
 	
 	/** The isDeferFundClass. */
-	public boolean isDeferFundClass;
+	private boolean isDeferFundClass;
 	
 	/** The isIOClass. */
-	public boolean isIOClass;
+	private boolean isIOClass;
 
 	/** The lowRisk. */
-	public boolean lowRisk;
+	private boolean lowRisk;
 	
 	/** The lowMedRisk. */
-	public boolean lowMedRisk;
+	private boolean lowMedRisk;
 	
 	/** The medRisk. */
-	public boolean medRisk;
+	private boolean medRisk;
 	
 	/** The medHighRisk. */
-	public boolean medHighRisk;
+	private boolean medHighRisk;
 	
 	/** The highRisk. */
-	public boolean highRisk;
+	private boolean highRisk;
 
 	/** The isReturnRate. */
-	public boolean isReturnRate;
+	private boolean isReturnRate;
 	
 	/** The isTraillingCommisionAvailable. */
-	public boolean isTraillingCommisionAvailable = true;
+	private boolean isTraillingCommisionAvailable = true;
 	
 	/** The isTunoverisNA. */
-	public boolean isTunoverisNA;
+	private boolean isTunoverisNA;
 	
 	/** The isSunGifSoln. */
-	public boolean isSunGifSoln = true;
+	private boolean isSunGifSoln = true;
 	
 	/** The returnCode. */
-	public String returnCode;
+	private String returnCode;
 	
 	/** The returnMsg. */
-	public String returnMsg;
+	private String returnMsg;
 
 	/**
 	 * Gets the mPowerCode.
