@@ -1,5 +1,6 @@
 package ca.sunlife.web.cms.advisorhub.models;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import javax.jcr.RepositoryException;
@@ -78,12 +79,8 @@ public class OutageModelTest {
 			when(configService.getConfigValues("pageLocale", pagePath)).thenReturn("en_CA");
 			when(coreResourceResolver.getResourceResolver()).thenReturn(resourceResolver);
 			when(resourceResolver.getResource(outageModel.getFragmentPath())).thenReturn(outageResource);
-		} catch (LoginException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RepositoryException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (LoginException | RepositoryException e) {
+			assertTrue(e instanceof LoginException);
 		}
 	}
 
