@@ -1,6 +1,7 @@
 package ca.sunlife.web.cms.core.beans;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -178,7 +179,7 @@ public class FundFactsData {
 	 * @return the guarantees
 	 */
 	public List<Guarantee> getGuarantees() {
-		return guarantees;
+		return Collections.unmodifiableList(guarantees);
 	}
 
 	/**
@@ -187,7 +188,7 @@ public class FundFactsData {
 	 * @param guarantees
 	 */
 	public void setGuarantees(List<Guarantee> guarantees) {
-		this.guarantees = guarantees;
+		this.guarantees = Collections.unmodifiableList(guarantees);
 	}
 
 	/**
@@ -196,7 +197,7 @@ public class FundFactsData {
 	 * @return the assetMixes
 	 */
 	public List<AssetMix> getAssetMixes() {
-		return assetMixes;
+		return Collections.unmodifiableList(assetMixes);
 	}
 
 	/**
@@ -205,7 +206,7 @@ public class FundFactsData {
 	 * @param assetMixes
 	 */
 	public void setAssetMixes(List<AssetMix> assetMixes) {
-		this.assetMixes = assetMixes;
+		this.assetMixes = Collections.unmodifiableList(assetMixes);
 	}
 
 	/**
@@ -214,7 +215,7 @@ public class FundFactsData {
 	 * @return the holdings
 	 */
 	public List<Holding> getHoldings() {
-		return holdings;
+		return Collections.unmodifiableList(holdings);
 	}
 
 	/**
@@ -223,7 +224,7 @@ public class FundFactsData {
 	 * @param holdings
 	 */
 	public void setHoldings(List<Holding> holdings) {
-		this.holdings = holdings;
+		this.holdings = Collections.unmodifiableList(holdings);
 	}
 
 	/**
@@ -232,7 +233,7 @@ public class FundFactsData {
 	 * @return the performanceData
 	 */
 	public List<PerformanceData> getPerformanceData() {
-		return performanceData;
+		return Collections.unmodifiableList(performanceData);
 	}
 
 	/**
@@ -241,7 +242,7 @@ public class FundFactsData {
 	 * @param performanceData
 	 */
 	public void setPerformanceData(List<PerformanceData> performanceData) {
-		this.performanceData = performanceData;
+		this.performanceData = Collections.unmodifiableList(performanceData);
 	}
 
 	/**
@@ -250,7 +251,7 @@ public class FundFactsData {
 	 * @return the reasonsToInvest
 	 */
 	public List<String> getReasonsToInvest() {
-		return reasonsToInvest;
+		return Collections.unmodifiableList(reasonsToInvest);
 	}
 
 	/**
@@ -259,7 +260,7 @@ public class FundFactsData {
 	 * @param reasonsToInvest
 	 */
 	public void setReasonsToInvest(List<String> reasonsToInvest) {
-		this.reasonsToInvest = reasonsToInvest;
+		this.reasonsToInvest = Collections.unmodifiableList(reasonsToInvest);
 	}
 
 	/**
@@ -268,7 +269,7 @@ public class FundFactsData {
 	 * @return the dscList
 	 */
 	public List<String> getDscList() {
-		return dscList;
+		return Collections.unmodifiableList(dscList);
 	}
 
 	/**
@@ -277,7 +278,7 @@ public class FundFactsData {
 	 * @param dscList
 	 */
 	public void setDscList(List<String> dscList) {
-		this.dscList = dscList;
+		this.dscList = Collections.unmodifiableList(dscList);
 	}
 
 	/**
@@ -286,7 +287,7 @@ public class FundFactsData {
 	 * @return the llscList
 	 */
 	public List<String> getLlscList() {
-		return llscList;
+		return Collections.unmodifiableList(llscList);
 	}
 
 	/**
@@ -295,7 +296,7 @@ public class FundFactsData {
 	 * @param llscList
 	 */
 	public void setLlscList(List<String> llscList) {
-		this.llscList = llscList;
+		this.llscList = Collections.unmodifiableList(llscList);
 	}
 
 	/**
