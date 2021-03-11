@@ -20,13 +20,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.ErrorCodes;
@@ -41,8 +42,8 @@ import ca.sunlife.web.cms.core.services.RestService;
  * @author TCS
  * @version 1.0
  */
-@ Component (service = RestService.class, immediate = true)
-@ Designate (ocd = RestClientConfig.class)
+@ Component(service = RestService.class, immediate = true)
+@ Designate(ocd = RestClientConfig.class)
 public class RestServiceImpl implements RestService {
 
 	/** The logger. */
@@ -95,7 +96,7 @@ public class RestServiceImpl implements RestService {
 	public static void setSSLForTestEnvironment(final HttpClientBuilder httpClientBuilder)
 			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
 		httpClientBuilder.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
-				.setSSLContext(new SSLContextBuilder().loadTrustMaterial( (arg0, arg1) -> true).build());
+				.setSSLContext(new SSLContextBuilder().loadTrustMaterial((arg0, arg1) -> true).build());
 	}
 
 	/*
@@ -105,40 +106,26 @@ public class RestServiceImpl implements RestService {
 	 * ca.sunlife.web.cms.core.services.RestService#callGetWebService(java.lang.
 	 * String)
 	 */
-	@ SuppressWarnings ("unchecked")
 	@ Override
 	public String callGetWebService(final String url, final String requestHeaders)
 			throws ApplicationException, SystemException, IOException {
-		logger.trace("Entry :: RestServiceImpl :: callGetWebService :: url :: {}, requestHeaders :: {}", url, requestHeaders);
+		logger.trace("Entry :: RestServiceImpl :: callGetWebService :: url :: {}, requestHeaders :: {}", url,
+				requestHeaders);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;
-		try {
-			final HttpGet httpGet = new HttpGet(url);
-			if (null != requestHeaders && requestHeaders.length() > 0) {
-				final JSONObject json = new JSONObject(requestHeaders);
-				json.keys().forEachRemaining(key -> {
-					try {
-						httpGet.addHeader(key.toString(), json.getString(key.toString()));
-					} catch (JSONException e) {
-						logger.error("Error while parsing json of request headers :: {}", e);
-					}
-				});
-			}
-			response = client.execute(httpGet);
-			statusCode = response.getStatusLine().getStatusCode();
-			logger.trace("Response code :: {}", statusCode);
-			if (statusCode != HttpStatus.SC_OK) {
-				throw new SystemException(ErrorCodes.APP_ERROR_001);
-			} else {
-				responseStr = EntityUtils.toString(response.getEntity());
-			}
-		} catch (JSONException e) {
-			logger.error("Error while parsing json of request headers :: {}", e);
-		} finally {
-			if (null != response) {
-				response.close();
-			}
+		final HttpGet httpGet = new HttpGet(url);
+		if (null != requestHeaders && requestHeaders.length() > 0) {
+			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
+			json.entrySet().forEach(key -> httpGet.addHeader(key.toString(), json.get(key.toString()).getAsString()));
+		}
+		response = client.execute(httpGet);
+		statusCode = response.getStatusLine().getStatusCode();
+		logger.trace("Response code :: {}", statusCode);
+		if (statusCode != HttpStatus.SC_OK) {
+			throw new SystemException(ErrorCodes.APP_ERROR_001);
+		} else {
+			responseStr = EntityUtils.toString(response.getEntity());
 		}
 		return responseStr;
 	}
@@ -150,7 +137,6 @@ public class RestServiceImpl implements RestService {
 	 * ca.sunlife.web.cms.core.services.RestService#callPostWebService(java.lang.
 	 * String, java.lang.String)
 	 */
-	@ SuppressWarnings ("unchecked")
 	@ Override
 	public String callPostWebService(final String url, final String requestHeaders, final String requestParams)
 			throws ApplicationException, SystemException, IOException {
@@ -158,85 +144,51 @@ public class RestServiceImpl implements RestService {
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;
-		try {
-			final HttpPost httpPost = new HttpPost(url);
-			StringEntity entity = new StringEntity(requestParams);
-			httpPost.setEntity(entity);
-			httpPost.setHeader("Accept", "application/json");
-			httpPost.setHeader("Content-type", "application/json");
-			if (null != requestHeaders && requestHeaders.length() > 0) {
-				final JSONObject json = new JSONObject(requestHeaders);
-				json.keys().forEachRemaining(key -> {
-					try {
-						httpPost.addHeader(key.toString(), json.getString(key.toString()));
-					} catch (JSONException e) {
-						logger.error("Error while parsing json of request headers :: {}", e);
-					}
-				});
-			}
-			response = client.execute(httpPost);
-			statusCode = response.getStatusLine().getStatusCode();
-			logger.trace("Response code :: {}", statusCode);
-			if (statusCode != HttpStatus.SC_OK) {
-				throw new SystemException(ErrorCodes.APP_ERROR_001);
-			} else {
-				responseStr = EntityUtils.toString(response.getEntity());
-			}
-		} catch (JSONException e1) {
-			logger.error("Error :: callPostWebService method of RestServiceImpl :: {}", e1);
-		} finally {
-			if (null != response) {
-				response.close();
-			}
+		final HttpPost httpPost = new HttpPost(url);
+		StringEntity entity = new StringEntity(requestParams);
+		httpPost.setEntity(entity);
+		httpPost.setHeader("Accept", "application/json");
+		httpPost.setHeader("Content-type", "application/json");
+		if (null != requestHeaders && requestHeaders.length() > 0) {
+			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
+			json.entrySet().forEach(key -> httpPost.addHeader(key.toString(), json.get(key.toString()).getAsString()));
+		}
+		response = client.execute(httpPost);
+		statusCode = response.getStatusLine().getStatusCode();
+		logger.trace("Response code :: {}", statusCode);
+		if (statusCode != HttpStatus.SC_OK) {
+			throw new SystemException(ErrorCodes.APP_ERROR_001);
+		} else {
+			responseStr = EntityUtils.toString(response.getEntity());
 		}
 		return responseStr;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
+	@ Override
 	public String callDeleteWebService(String url, String requestHeaders, String requestParams)
 			throws ApplicationException, SystemException, IOException {
 		logger.debug("callPostWebService {}, {}, {} ", url, requestHeaders, requestParams);
 		CloseableHttpResponse response = null;
 		int statusCode;
 		String responseStr = null;
-		
-		try {
-			HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(url);			
-			StringEntity entity = new StringEntity(requestParams);
-			httpDelete.setEntity(entity);
-			httpDelete.setHeader("Accept", "application/json");
-			httpDelete.setHeader("Content-type", "application/json");
-			
-			if (null != requestHeaders && requestHeaders.length() > 0) {
-				final JSONObject json = new JSONObject(requestHeaders);
-				json.keys().forEachRemaining(key -> {
-					try {
-						httpDelete.addHeader(key.toString(), json.getString(key.toString()));
-					} catch (JSONException e1) {
-						logger.error("Error while parsing json of request headers :: {}", e1);
-					}
-				});
-			}
-			
-			response = client.execute(httpDelete);
-			statusCode = response.getStatusLine().getStatusCode();
-			logger.trace("Response code :: {}", statusCode);
-			if (statusCode != HttpStatus.SC_OK) {
-				throw new SystemException(ErrorCodes.APP_ERROR_001);
-			} else {
-				responseStr = EntityUtils.toString(response.getEntity());
-			}
+		HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(url);
+		StringEntity entity = new StringEntity(requestParams);
+		httpDelete.setEntity(entity);
+		httpDelete.setHeader("Accept", "application/json");
+		httpDelete.setHeader("Content-type", "application/json");
+
+		if (null != requestHeaders && requestHeaders.length() > 0) {
+			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
+			json.entrySet().forEach(key -> httpDelete.addHeader(key.toString(), json.get(key.toString()).getAsString()));
 		}
-		catch (JSONException e2) {
-			logger.error("Error :: callPostWebService method of RestServiceImpl :: {}", e2);
-		} finally {
-			if (null != response) {
-				response.close();
-			}
+		response = client.execute(httpDelete);
+		statusCode = response.getStatusLine().getStatusCode();
+		logger.trace("Response code :: {}", statusCode);
+		if (statusCode != HttpStatus.SC_OK) {
+			throw new SystemException(ErrorCodes.APP_ERROR_001);
+		} else {
+			responseStr = EntityUtils.toString(response.getEntity());
 		}
-		
 		return responseStr;
-		
 	}
 }

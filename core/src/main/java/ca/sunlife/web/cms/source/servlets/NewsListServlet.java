@@ -22,9 +22,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.osgi.framework.Constants;
@@ -37,6 +34,9 @@ import org.slf4j.LoggerFactory;
 
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 import ca.sunlife.web.cms.source.constants.NewsConstants;
@@ -107,7 +107,7 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		Resource resource = null;
-		final JSONArray jsonArray = new JSONArray();
+		final JsonArray jsonArray = new JsonArray();
 		String resourcePath = null;
 		try {
 			if (request.getRequestPathInfo().getSelectors().length < 1) {
@@ -120,37 +120,38 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 				resource.listChildren().forEachRemaining(o -> {
 					LOGGER.trace("Fetching news in content fragment parent path [ {} ] ", o.getName());
 					try {
-						JSONObject jsonObject = null;
+						JsonObject jsonObject = null;
 						// Data
 						final Resource contentFragmentData = coreResourceResolver.getResourceResolver()
 								.getResource(o.getPath().concat(JCR_CONTENT_DATA_MASTER));
 						if (null != contentFragmentData) {
-							jsonObject = new JSONObject();
+							jsonObject = new JsonObject();
 							ValueMap valueMap = contentFragmentData.getValueMap();
 							GregorianCalendar cal = (GregorianCalendar) valueMap.getOrDefault(NewsConstants.PUBLISHED_DATE_CONSTANT,
 									new GregorianCalendar());
 							if (null != cal) {
 								final SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 								String formatedDate = formatter.format((cal).getTime());
-								jsonObject.put(NewsConstants.PUBLISHED_DATE_CONSTANT, formatedDate); // published
+								jsonObject.addProperty(NewsConstants.PUBLISHED_DATE_CONSTANT, formatedDate); // published
 								// date
 							}
-							jsonObject.put(NewsConstants.HEADING_CONSTANT,
+							jsonObject.addProperty(NewsConstants.HEADING_CONSTANT,
 									valueMap.get(NewsConstants.HEADING_CONSTANT, String.class)); // heading
-							jsonObject.put(NewsConstants.PAGE_CONSTANT, valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article
+							jsonObject.addProperty(NewsConstants.PAGE_CONSTANT,
+									valueMap.get(NewsConstants.PAGE_CONSTANT, String.class)); // article
 							// page
 							// path
-							jsonObject.put(NewsConstants.LINK_OPTION_CONSTANT, valueMap.get(NewsConstants.LINK_OPTION_CONSTANT, String.class)); // link option
-							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_CONSTANT,
+							jsonObject.addProperty(NewsConstants.LINK_OPTION_CONSTANT,
+									valueMap.get(NewsConstants.LINK_OPTION_CONSTANT, String.class)); // link option
+							jsonObject.addProperty(NewsConstants.THUMBNAIL_IMAGE_CONSTANT,
 									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_CONSTANT, String.class)); // image path
-							jsonObject.put(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT,
+							jsonObject.addProperty(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT,
 									valueMap.get(NewsConstants.THUMBNAIL_IMAGE_FEATURED_CONSTANT, String.class)); // image path - featured
-							jsonObject.put(NewsConstants.PIN_ARTICLE_CONSTANT,
+							jsonObject.addProperty(NewsConstants.PIN_ARTICLE_CONSTANT,
 									valueMap.get(NewsConstants.PIN_ARTICLE_CONSTANT, String.class)); // pin order
 							String summary = valueMap.get(NewsConstants.ARTICLE_SUMMARY_CONSTANT, String.class);
 							Document docObj = null != summary ? Jsoup.parse(summary) : null;
-							jsonObject.put(NewsConstants.ARTICLE_SUMMARY_CONSTANT,
-									null != docObj ? docObj.text() : ""); // summary
+							jsonObject.addProperty(NewsConstants.ARTICLE_SUMMARY_CONSTANT, null != docObj ? docObj.text() : ""); // summary
 						}
 						// Meta data
 						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()
@@ -172,16 +173,15 @@ public class NewsListServlet extends SlingSafeMethodsServlet {
 								});
 							}
 							tagList.sort(String::compareToIgnoreCase);
-							jsonObject.put(NewsConstants.TAGS_CONSTANT, tagList); // cq:tags
+							jsonObject.add(NewsConstants.TAGS_CONSTANT,
+									new Gson().fromJson(new Gson().toJson(tagList), JsonArray.class)); // cq:tags
 						}
 						if (null != jsonObject) {
-							jsonArray.put(jsonObject);
+							jsonArray.add(jsonObject);
 						}
 						LOGGER.trace("News list fetched: {}", jsonArray);
 					} catch (LoginException e) {
 						LOGGER.error("NewsListServlet :: LoginException :: {}", e);
-					} catch (JSONException e) {
-						LOGGER.error("NewsListServlet :: JSONException :: {}", e);
 					}
 				});
 			}
