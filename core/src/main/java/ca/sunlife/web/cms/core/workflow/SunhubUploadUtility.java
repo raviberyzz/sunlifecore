@@ -20,7 +20,6 @@ import javax.jcr.RepositoryException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
-import org.apache.commons.logging.Log;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -44,6 +43,8 @@ import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.AssetManager;
+import com.day.cq.tagging.TagConstants;
+import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.day.cq.wcm.api.WCMException;
@@ -263,8 +264,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 							errorMessage = createData(resolver);
 						} catch (PersistenceException | NoSuchMethodException | IllegalAccessException
 								| InvocationTargetException | WCMException | RepositoryException | ParseException e) {
-							logger.debug("Sunhub::Error::", e.toString());
-							logger.debug(e.getCause()+"");
+							logger.error("Sunhub::Error:: {}", e.getMessage());
 							errorMessage = "Something went wrong";
 							createReport(i, errorMessage);
 						}
@@ -438,9 +438,9 @@ public class SunhubUploadUtility implements WorkflowProcess {
 			Page page = pageManager.create(parentPagePath.toString(), name, pageTemplate, title);
 			Node pageNode = page.adaptTo(Node.class);
 			if (null != pageNode) {
-				logger.debug("Sunhub:::Pagenode not null"+pageNode.getPath());
+				logger.debug("Sunhub:::Pagenode not null {}", pageNode.getPath());
 				Node jcrNode = pageNode.getNode(JcrConstants.JCR_CONTENT);
-				logger.debug("Sunhub:::Pagenode jcr content not null"+jcrNode.getPath());
+				logger.debug("Sunhub:::Pagenode jcr content not null {}", jcrNode.getPath());
 				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 				Calendar cal = parseDateAndTime(sdf, unpublishDate);
 				//logger.debug("Sunhub:::Calendar date::"+ cal.toString());
@@ -448,19 +448,19 @@ public class SunhubUploadUtility implements WorkflowProcess {
 						"sunlife/legacy/components/structure/base-page");
 				jcrNode.setProperty("socialMediaDescripton", seoDescription);
 				jcrNode.setProperty(JcrConstants.JCR_DESCRIPTION, seoDescription);
-				jcrNode.setProperty("cq:template", pageTemplate);
+				jcrNode.setProperty(NameConstants.NN_TEMPLATE, pageTemplate);
 				if (null != cal) {
-					logger.debug("Sunhub:::cal date not null"+cal.toString());
-					jcrNode.setProperty("offTime", cal);
+					logger.debug("Sunhub:::cal date not null {}", cal.toString());
+					jcrNode.setProperty(NameConstants.PN_OFF_TIME, cal);
 					logger.debug("Sunhub:::jcrnode property is set");
 				}
 				logger.debug("Sunhub:::before add root node");
-				if(!jcrNode.hasNode("root")) {
+				if (!jcrNode.hasNode("root")) {
 					jcrNode.addNode("root", JcrConstants.NT_UNSTRUCTURED);
 				}
 				logger.debug("Sunhub:::after add root node");
 			}
-			logger.debug("Sunhub:::rootpath is::"+page.getPath());
+			logger.debug("Sunhub:::rootpath is:: {}",  page.getPath());
 			Resource rootResource = resolver.getResource(page.getPath() + "/jcr:content/root");
 			
 			if (null != rootResource) {
@@ -472,10 +472,10 @@ public class SunhubUploadUtility implements WorkflowProcess {
 						"sunlife/legacy/components/content/experiencefragment");
 				expFragment.put(JcrConstants.JCR_PRIMARYTYPE, JcrConstants.NT_UNSTRUCTURED);
 				Resource expHeader = rootResource.getChild("experiencefragment_header");
-				if(null == expHeader) {
+				if (null == expHeader) {
 					logger.debug("Sunhub:::experience fragment header not present");
 					resolver.create(rootResource, "experiencefragment_header", expFragment);
-				}else {
+				} else {
 					logger.debug("Sunhub:::experience fragment header present");
 				}
 				final Map<String, Object> layoutContainer = new HashMap<>();
@@ -487,10 +487,10 @@ public class SunhubUploadUtility implements WorkflowProcess {
 				layoutContainer.put("type", "normal");
 				layoutContainer.put("typeVal", "normal");
 				Resource layoutCont = rootResource.getChild(LAYOUT_CONTAINER);
-				if(null == layoutCont) {
+				if (null == layoutCont) {
 					logger.debug("Sunhub:::layout container not present");
 					resolver.create(rootResource, LAYOUT_CONTAINER, layoutContainer);
-				}else {
+				} else {
 					logger.debug("Sunhub:::layout container is present");
 					//Resource layoutContRes = resolver.getResource(rootResource.getPath()+"/layout_container");
 					Node layoutContNode = layoutCont.adaptTo(Node.class);
@@ -511,10 +511,10 @@ public class SunhubUploadUtility implements WorkflowProcess {
 						"sunlife/legacy/components/content/experiencefragment");
 				expFragment.put(JcrConstants.JCR_PRIMARYTYPE, JcrConstants.NT_UNSTRUCTURED);
 				Resource expFooter = rootResource.getChild("experiencefragment_footer");
-				if(null == expFooter) {
+				if (null == expFooter) {
 					logger.debug("Sunhub:::experience fragment footer not present");
 					resolver.create(rootResource, "experiencefragment_footer", expFragment);
-				}else {
+				} else {
 					logger.debug("Sunhub:::experience fragment footer present");
 				}
 				final Map<String, Object> container = new HashMap<>();
@@ -542,7 +542,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 								: "Grow your business";
 						titlebar.put(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY,
 								"sunlife/legacy/components/content/titlebar");
-						titlebar.put("jcr:title", jcrTitle);
+						titlebar.put(JcrConstants.JCR_TITLE, jcrTitle);
 						resolver.create(containerResource, "titlebar", titlebar);
 						layoutContainer.put("noc", "2");
 						layoutContainer.put("type", "75:25N");
@@ -594,7 +594,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 			date = sdf.parse(dateAndTime);
 			cal.setTime(date);
 		} catch (ParseException e) {
-			logger.debug("Sunhub:::Date parse exception");
+			logger.error("Sunhub:::Date parse exception");
 			return null;
 		}
 		return cal;
@@ -638,15 +638,15 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	private void createFolder(ResourceResolver resolver, String parentFolder, String folderName)
 			throws PersistenceException {
 		final Map<String, Object> folderProperties = new HashMap<>();
-		folderProperties.put(JcrConstants.JCR_PRIMARYTYPE, "sling:OrderedFolder");
+		folderProperties.put(JcrConstants.JCR_PRIMARYTYPE, JcrResourceConstants.NT_SLING_ORDERED_FOLDER);
 		Resource r = resolver.getResource(parentFolder);
 		if (null != r) {
 			Resource folder = resolver.create(r, folderName, folderProperties);
 			final Map<String, Object> jcrContent = new HashMap<>();
-			jcrContent.put(JcrConstants.JCR_PRIMARYTYPE, "nt:unstructured");
+			jcrContent.put(JcrConstants.JCR_PRIMARYTYPE, JcrConstants.NT_UNSTRUCTURED);
 			jcrContent.put(JcrConstants.JCR_TITLE, StringUtils.capitalize(folderName));
 			jcrContent.put("dam:noThumbnail", true);
-			resolver.create(folder, "jcr:content", jcrContent);
+			resolver.create(folder, JcrConstants.JCR_CONTENT, jcrContent);
 		}
 	}
 
@@ -676,7 +676,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 					masterDataNode.setProperty("articlePublishedDate", cal);
 				}
 				String[] tags = categoryTags(cfPath);
-				metaDataNode.setProperty("cq:tags", tags);
+				metaDataNode.setProperty(TagConstants.PN_TAGS, tags);
 			}
 		}
 	}
@@ -705,9 +705,9 @@ public class SunhubUploadUtility implements WorkflowProcess {
 		if (category.contains(",")) {
 			String[] split = category.split(",");
 			for (String tag : split) {
-				if(tag.equalsIgnoreCase("tpadvisor")|| tag.equalsIgnoreCase("csfadvisor")) {
+				if (tag.equalsIgnoreCase("tpadvisor") || tag.equalsIgnoreCase("csfadvisor")) {
 					list.add("sunlife:slf/sunhub/audience/" + tag);
-				}else {
+				} else {
 					if (path.contains(CONTENT_FOR_CLIENT)) {
 						list.add("sunlife:slf/sunhub/content-for-clients/" + tag);
 					} else {
@@ -716,9 +716,9 @@ public class SunhubUploadUtility implements WorkflowProcess {
 				}
 			}
 		} else {
-			if(category.equalsIgnoreCase("tpadvisor")|| category.equalsIgnoreCase("csfadvisor")) {
+			if (category.equalsIgnoreCase("tpadvisor") || category.equalsIgnoreCase("csfadvisor")) {
 				list.add("sunlife:slf/sunhub/audience/" + category);
-			}else {
+			} else {
 				if (path.contains(CONTENT_FOR_CLIENT)) {
 					list.add("sunlife:slf/sunhub/content-for-clients/" + category);
 				} else {

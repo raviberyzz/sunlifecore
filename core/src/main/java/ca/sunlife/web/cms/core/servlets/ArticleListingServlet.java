@@ -29,9 +29,6 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.osgi.framework.Constants;
@@ -39,12 +36,16 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.AssetManager;
 import com.day.cq.replication.ReplicationStatus;
 import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagConstants;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 /**
  * The Class ArticleListingServlet.
@@ -133,34 +134,34 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 		LOGGER.debug("Inside doGet::::");
 		final ResourceResolver resResolver = req.getResourceResolver();
 		/** The cfs advisor data en. */
-		JSONArray cfsAdvisorDataEn;
+		JsonArray cfsAdvisorDataEn;
 
 		/** The cfs advisor data fr. */
-		JSONArray cfsAdvisorDataFr;
+		JsonArray cfsAdvisorDataFr;
 
 		/** The tp advisor data en. */
-		JSONArray tpAdvisorDataEn;
+		JsonArray tpAdvisorDataEn;
 
 		/** The tp advisor data fr. */
-		JSONArray tpAdvisorDataFr;
+		JsonArray tpAdvisorDataFr;
 
 		/** The article list json en. */
-		JSONObject articleListJsonEn = new JSONObject();
+		JsonObject articleListJsonEn = new JsonObject();
 
 		/** The article list json fr. */
-		JSONObject articleListJsonFr = new JSONObject();
+		JsonObject articleListJsonFr = new JsonObject();
 
 		/** The cfc data en. */
-		JSONObject cfcDataEn = new JSONObject();
+		JsonObject cfcDataEn = new JsonObject();
 
 		/** The cfc data fr. */
-		JSONObject cfcDataFr = new JSONObject();
+		JsonObject cfcDataFr = new JsonObject();
 
 		/** The gyb data en. */
-		JSONObject gybDataEn = new JSONObject();
+		JsonObject gybDataEn = new JsonObject();
 
 		/** The gyb data fr. */
-		JSONObject gybDataFr = new JSONObject();
+		JsonObject gybDataFr = new JsonObject();
 		// ** The article list json en. *//*
 		Session session = resResolver.adaptTo(Session.class);
 		ArrayList<String> pageList = new ArrayList<>();
@@ -170,8 +171,8 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 		pageList.add("/content/sunlife/external/ca/sl/sunhub/fr/grow-your-business");
 		String locale = "";
 		String contentType = "";
-		Map<String, JSONArray> cfsAndtpData = new HashMap<String, JSONArray>();
-		Map<String, JSONObject> cfcAndGybData = new HashMap<String, JSONObject>();
+		Map<String, JsonArray> cfsAndtpData = new HashMap<String, JsonArray>();
+		Map<String, JsonObject> cfcAndGybData = new HashMap<String, JsonObject>();
 		cfcAndGybData.put("gybDataEn", gybDataEn);
 		cfcAndGybData.put("gybDataFr", gybDataFr);
 		cfcAndGybData.put("cfcDataEn", cfcDataEn);
@@ -181,10 +182,10 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 				locale = getLocale(pagePath);
 				contentType = getContentType(pagePath);
 				Resource resource = resResolver.getResource(pagePath + "/jcr:content/root/layout_container/container1");
-				cfsAdvisorDataEn = new JSONArray();
-				cfsAdvisorDataFr = new JSONArray();
-				tpAdvisorDataEn = new JSONArray();
-				tpAdvisorDataFr = new JSONArray();
+				cfsAdvisorDataEn = new JsonArray();
+				cfsAdvisorDataFr = new JsonArray();
+				tpAdvisorDataEn = new JsonArray();
+				tpAdvisorDataFr = new JsonArray();
 				cfsAndtpData.put("cfsAdvisorDataEn", cfsAdvisorDataEn);
 				cfsAndtpData.put("cfsAdvisorDataFr", cfsAdvisorDataFr);
 				cfsAndtpData.put("tpAdvisorDataEn", tpAdvisorDataEn);
@@ -204,10 +205,10 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 					}
 				}
 			}
-			articleListJsonEn.put("GYBData", gybDataEn);
-			articleListJsonEn.put("CFCData", cfcDataEn);
-			articleListJsonFr.put("GYBData", gybDataFr);
-			articleListJsonFr.put("CFCData", cfcDataFr);
+			articleListJsonEn.add("GYBData", gybDataEn);
+			articleListJsonEn.add("CFCData", cfcDataEn);
+			articleListJsonFr.add("GYBData", gybDataFr);
+			articleListJsonFr.add("CFCData", cfcDataFr);
 			InputStream englishInputStream = new ByteArrayInputStream(
 					articleListJsonEn.toString().getBytes(StandardCharsets.UTF_8));
 			InputStream frenchInputStream = new ByteArrayInputStream(
@@ -218,7 +219,7 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 				assetMgr.createAsset(FRENCH_JSON_PATH, frenchInputStream, MIME_TYPE, true);
 				session.save();
 			}
-		} catch (RepositoryException | ParseException | JSONException e) {
+		} catch (RepositoryException | ParseException e) {
 			LOGGER.error("Exception is {}", e);
 		}
 		resp.setCharacterEncoding("UTF-8");
@@ -241,34 +242,34 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 	 * @throws JSONException
 	 *             the JSON exception
 	 */
-	private Map<String, JSONObject> createJsonBasedOnLangAndContentType(String locale, String contentType,
-			Map<String, JSONArray> cfsAndtpData, Map<String, JSONObject> cfcAndGybData) throws JSONException {
+	private Map<String, JsonObject> createJsonBasedOnLangAndContentType(String locale, String contentType,
+			Map<String, JsonArray> cfsAndtpData, Map<String, JsonObject> cfcAndGybData)   {
 
-		JSONObject cfcDataEn = cfcAndGybData.get("cfcDataEn");
+		JsonObject cfcDataEn = cfcAndGybData.get("cfcDataEn");
 
-		JSONObject cfcDataFr = cfcAndGybData.get("cfcDataFr");
+		JsonObject cfcDataFr = cfcAndGybData.get("cfcDataFr");
 
-		JSONObject gybDataEn = cfcAndGybData.get("gybDataEn");
+		JsonObject gybDataEn = cfcAndGybData.get("gybDataEn");
 
-		JSONObject gybDataFr = cfcAndGybData.get("gybDataFr");
+		JsonObject gybDataFr = cfcAndGybData.get("gybDataFr");
 
-		JSONArray cfsAdvisorDataEn = cfsAndtpData.get("cfsAdvisorDataEn");
-		JSONArray cfsAdvisorDataFr = cfsAndtpData.get("cfsAdvisorDataFr");
-		JSONArray tpAdvisorDataEn = cfsAndtpData.get("tpAdvisorDataEn");
-		JSONArray tpAdvisorDataFr = cfsAndtpData.get("tpAdvisorDataFr");
+		JsonArray cfsAdvisorDataEn = cfsAndtpData.get("cfsAdvisorDataEn");
+		JsonArray cfsAdvisorDataFr = cfsAndtpData.get("cfsAdvisorDataFr");
+		JsonArray tpAdvisorDataEn = cfsAndtpData.get("tpAdvisorDataEn");
+		JsonArray tpAdvisorDataFr = cfsAndtpData.get("tpAdvisorDataFr");
 		if (locale.equalsIgnoreCase(LOCALE_CODE_EN) && contentType.equalsIgnoreCase(CONTENT_FOR_CLIENT)) {
-			cfcDataEn.put(TPADVISOR, tpAdvisorDataEn);
-			cfcDataEn.put(CSFADVISOR, cfsAdvisorDataEn);
+			cfcDataEn.add(TPADVISOR, tpAdvisorDataEn);
+			cfcDataEn.add(CSFADVISOR, cfsAdvisorDataEn);
 		} else if (locale.equalsIgnoreCase(LOCALE_CODE_EN) && contentType.equalsIgnoreCase(GROW_YOUR_BUSINESS)) {
-			gybDataEn.put(TPADVISOR, tpAdvisorDataEn);
-			gybDataEn.put(CSFADVISOR, cfsAdvisorDataEn);
+			gybDataEn.add(TPADVISOR, tpAdvisorDataEn);
+			gybDataEn.add(CSFADVISOR, cfsAdvisorDataEn);
 		}
 		if (locale.equalsIgnoreCase(LOCALE_CODE_FR) && contentType.equalsIgnoreCase(CONTENT_FOR_CLIENT)) {
-			cfcDataFr.put(TPADVISOR, tpAdvisorDataFr);
-			cfcDataFr.put(CSFADVISOR, cfsAdvisorDataFr);
+			cfcDataFr.add(TPADVISOR, tpAdvisorDataFr);
+			cfcDataFr.add(CSFADVISOR, cfsAdvisorDataFr);
 		} else if (locale.equalsIgnoreCase(LOCALE_CODE_FR) && contentType.equalsIgnoreCase(GROW_YOUR_BUSINESS)) {
-			gybDataFr.put(TPADVISOR, tpAdvisorDataFr);
-			gybDataFr.put(CSFADVISOR, cfsAdvisorDataFr);
+			gybDataFr.add(TPADVISOR, tpAdvisorDataFr);
+			gybDataFr.add(CSFADVISOR, cfsAdvisorDataFr);
 		}
 		return cfcAndGybData;
 	}
@@ -326,8 +327,8 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 	 * @throws JSONException
 	 *             the JSON exception
 	 */
-	private Map<String, JSONArray> processMultiCfComponent(Node node, SlingHttpServletRequest req, String locale,
-			Map<String, JSONArray> cfsAndtpData) throws RepositoryException, ParseException, JSONException {
+	private Map<String, JsonArray> processMultiCfComponent(Node node, SlingHttpServletRequest req, String locale,
+			Map<String, JsonArray> cfsAndtpData) throws RepositoryException, ParseException {
 		if (node.hasNode(CF_MULTIFIELD)) {
 			NodeIterator nodeItr = node.getNode(CF_MULTIFIELD).getNodes();
 			while (nodeItr.hasNext()) {
@@ -360,8 +361,8 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 	 * @throws JSONException
 	 *             the JSON exception
 	 */
-	private Map<String, JSONArray> getPageStatusAndData(String cfPath, SlingHttpServletRequest req, String locale,
-			Map<String, JSONArray> cfsAndtpData) throws RepositoryException, ParseException, JSONException {
+	private Map<String, JsonArray> getPageStatusAndData(String cfPath, SlingHttpServletRequest req, String locale,
+			Map<String, JsonArray> cfsAndtpData) throws RepositoryException, ParseException {
 		ResourceResolver resResolver = req.getResourceResolver();
 		Resource resource = resResolver.getResource(cfPath);
 		Resource articleResource = resResolver.getResource(cfPath + "/" + JCR_CONTENT_MASTER_DATA);
@@ -372,7 +373,7 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 				Node dataNode = resourceNode.getNode(JCR_CONTENT_MASTER_DATA);
 				Node metaDataNode = resourceNode.getNode("jcr:content/metadata");
 				String articlePageLink = dataNode.getProperty(ARTICLE_PAGE_LINK).getString();
-				String jcrUuid = resourceNode.getProperty("jcr:uuid").getString();
+				String jcrUuid = resourceNode.getProperty(JcrConstants.JCR_UUID).getString();
 				PageManager pageManager = resResolver.adaptTo(PageManager.class);
 				if (pageManager != null) {
 					Page page = pageManager.getPage(articlePageLink);
@@ -415,9 +416,9 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 	 * @throws JSONException
 	 *             the JSON exception
 	 */
-	private Map<String, JSONArray> getData(SlingHttpServletRequest req, Resource articleResource, Node metaDataNode,
-			String jcrUuid, String locale, Map<String, JSONArray> cfsAndtpData)
-			throws RepositoryException, ParseException, JSONException {
+	private Map<String, JsonArray> getData(SlingHttpServletRequest req, Resource articleResource, Node metaDataNode,
+			String jcrUuid, String locale, Map<String, JsonArray> cfsAndtpData)
+			throws RepositoryException, ParseException {
 		ResourceResolver resResolver = req.getResourceResolver();
 		final ValueMap articleContent = articleResource.getValueMap();
 		String teaser = articleContent.containsKey(ARTICLE_MINI_DESCRIPTION)
@@ -445,7 +446,7 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 		displayDate = formatDate(articlePublishedDate, displayDate);
 		TagManager tagManager = resResolver.adaptTo(TagManager.class);
 		ArrayList<String> tagList = new ArrayList<>();
-		Property tags = metaDataNode.getProperty("cq:tags");
+		Property tags = metaDataNode.getProperty(TagConstants.PN_TAGS);
 		Value[] values = tags.getValues();
 		for (Value v : values) {
 			Tag tag = tagManager.resolve(v.getString());
@@ -463,17 +464,17 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 			articleSource = doc.select("#siteName").text();
 		}
 		Locale loc = Locale.ENGLISH;
-		JSONObject jsonContent = new JSONObject();
-		jsonContent.put("Articletype", articleType);
-		jsonContent.put("Displaydate", displayDate);
-		jsonContent.put("Articlesource", articleSource);
-		jsonContent.put("Teasure", teaser);
-		jsonContent.put("Title", title);
-		jsonContent.put("id", jcrUuid);
-		jsonContent.put("SEO-description", teaser);
-		jsonContent.put("Thumbnail", articleThumbnailImage);
-		jsonContent.put("ArticleURL", articlePageLink);
-		jsonContent.put("Category", category);
+		JsonObject jsonContent = new JsonObject();
+		jsonContent.addProperty("Articletype", articleType);
+		jsonContent.addProperty("Displaydate", displayDate);
+		jsonContent.addProperty("Articlesource", articleSource);
+		jsonContent.addProperty("Teasure", teaser);
+		jsonContent.addProperty("Title", title);
+		jsonContent.addProperty("id", jcrUuid);
+		jsonContent.addProperty("SEO-description", teaser);
+		jsonContent.addProperty("Thumbnail", articleThumbnailImage);
+		jsonContent.addProperty("ArticleURL", articlePageLink);
+		jsonContent.addProperty("Category", category);
 		cfsAndtpData = addToJsonArray(category.toLowerCase(loc), locale, jsonContent, cfsAndtpData);
 		return cfsAndtpData;
 	}
@@ -491,28 +492,28 @@ public class ArticleListingServlet extends SlingSafeMethodsServlet {
 	 *            the cfs andtp data
 	 * @return the map
 	 */
-	private Map<String, JSONArray> addToJsonArray(String category, String locale, JSONObject jsonContent,
-			Map<String, JSONArray> cfsAndtpData) {
-		JSONArray cfsAdvisorDataEn = cfsAndtpData.get("cfsAdvisorDataEn");
-		JSONArray cfsAdvisorDataFr = cfsAndtpData.get("cfsAdvisorDataFr");
-		JSONArray tpAdvisorDataEn = cfsAndtpData.get("tpAdvisorDataEn");
-		JSONArray tpAdvisorDataFr = cfsAndtpData.get("tpAdvisorDataFr");
+	private Map<String, JsonArray> addToJsonArray(String category, String locale, JsonObject jsonContent,
+			Map<String, JsonArray> cfsAndtpData) {
+		JsonArray cfsAdvisorDataEn = cfsAndtpData.get("cfsAdvisorDataEn");
+		JsonArray cfsAdvisorDataFr = cfsAndtpData.get("cfsAdvisorDataFr");
+		JsonArray tpAdvisorDataEn = cfsAndtpData.get("tpAdvisorDataEn");
+		JsonArray tpAdvisorDataFr = cfsAndtpData.get("tpAdvisorDataFr");
 		if (locale.equalsIgnoreCase(LOCALE_CODE_EN)) {
 			if (category.contains(CSFADVISOR)) {
-				cfsAdvisorDataEn.put(jsonContent);
+				cfsAdvisorDataEn.add(jsonContent);
 			}
 			if (category.contains(TPADVISOR)) {
-				tpAdvisorDataEn.put(jsonContent);
+				tpAdvisorDataEn.add(jsonContent);
 			} //else if (!category.contains(CSFADVISOR) && !category.contains(TPADVISOR)) {
 				//cfsAdvisorDataEn.put(jsonContent);
 				//tpAdvisorDataEn.put(jsonContent);
 			//}
 		} else if (locale.equalsIgnoreCase(LOCALE_CODE_FR)) {
 			if (category.contains(CSFADVISOR)) {
-				cfsAdvisorDataFr.put(jsonContent);
+				cfsAdvisorDataFr.add(jsonContent);
 			}
 			if (category.contains(TPADVISOR)) {
-				tpAdvisorDataFr.put(jsonContent);
+				tpAdvisorDataFr.add(jsonContent);
 			} //else if (!category.contains(CSFADVISOR) && !category.contains(TPADVISOR)) {
 				//cfsAdvisorDataFr.put(jsonContent);
 				//tpAdvisorDataFr.put(jsonContent);

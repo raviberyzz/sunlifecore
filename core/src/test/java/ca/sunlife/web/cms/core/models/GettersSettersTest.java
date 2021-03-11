@@ -53,6 +53,7 @@ public class GettersSettersTest {
   private OutageListModel outageListModel;
   private SearchModel searchModel;
   private LuminoModel luminoModel;
+  private ListPageCfModel listPageCfModel;
   
   @ BeforeEach
   void setup() {
@@ -93,6 +94,7 @@ public class GettersSettersTest {
     outageListModel = new OutageListModel();
     searchModel = new SearchModel();
     luminoModel = new LuminoModel();
+    listPageCfModel = new ListPageCfModel();
   }
 
   @ Test
@@ -279,5 +281,10 @@ public class GettersSettersTest {
   @ Test
   void testluminoModel() {
     TestUtils.executeTestBean(luminoModel);
+  }
+  
+  @ Test
+  void testlistPageCfModel() {
+    TestUtils.executeTestBean(listPageCfModel);
   }
 }
