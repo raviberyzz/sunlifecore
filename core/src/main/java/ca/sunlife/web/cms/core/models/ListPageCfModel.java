@@ -4,6 +4,7 @@
 package ca.sunlife.web.cms.core.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -32,6 +33,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
+import com.day.cq.commons.jcr.JcrConstants;
+import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.WCMMode;
 import com.day.cq.wcm.api.components.ComponentContext;
@@ -91,7 +94,7 @@ public class ListPageCfModel {
 	 * @return the list items
 	 */
 	public List<String> getListItems() {
-		return items;
+		return Collections.unmodifiableList(items);
 	}
 
 
@@ -101,7 +104,7 @@ public class ListPageCfModel {
 	 * @return the cfPathLists
 	 */	  
 	public List <CFPaths> getCfPathLists(){
-		return cfPathLists;
+		return Collections.unmodifiableList(cfPathLists);
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class ListPageCfModel {
 	 * @param cfPathLists
 	 */
 	public void setCfPathLists(List<CFPaths> cfPathLists){
-		this.cfPathLists = cfPathLists;
+		this.cfPathLists = Collections.unmodifiableList(cfPathLists);
 	}
 
 	/** The regular page root path. */
@@ -158,7 +161,7 @@ public class ListPageCfModel {
 			while(childNodes.hasNext()) {
 				LOG.debug("regular page has child");
 				Node childNode = childNodes.nextNode();
-				if(childNode.getProperty("jcr:primaryType").getValue().getString().equalsIgnoreCase("cq:Page")) {
+				if(childNode.getProperty(JcrConstants.JCR_PRIMARYTYPE).getValue().getString().equalsIgnoreCase(NameConstants.NT_PAGE)) {
 					Node newNode = rootNode.getNode(childNode.getPath().substring(1)+"/jcr:content");
 					if(newNode.hasProperty("advancedPageType")) {
 					String advPageType = newNode.getProperty("advancedPageType").getValue().getString();
@@ -200,9 +203,9 @@ public class ListPageCfModel {
 						String aemtags = "";
 						StringBuffer tmp = new StringBuffer(aemtags);
 						LOG.debug("cfmNode Path is: "+ cfmNode.getPath());
-						if(metaData.hasProperty("cq:tags")){
-							for(int p=0;p<metaData.getProperty("cq:tags").getValues().length;p++){
-								tmp.append( metaData.getProperty("cq:tags").getValues()[p].getString());
+						if(metaData.hasProperty(NameConstants.PN_TAGS)){
+							for(int p=0;p<metaData.getProperty(NameConstants.PN_TAGS).getValues().length;p++){
+								tmp.append( metaData.getProperty(NameConstants.PN_TAGS).getValues()[p].getString());
 							}							
 							String tagValue = tmp.toString();
 							LOG.debug("tagValue is::"+tagValue);
