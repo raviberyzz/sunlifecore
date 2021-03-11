@@ -449,6 +449,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 				jcrNode.setProperty("socialMediaDescripton", seoDescription);
 				jcrNode.setProperty(JcrConstants.JCR_DESCRIPTION, seoDescription);
 				jcrNode.setProperty(NameConstants.NN_TEMPLATE, pageTemplate);
+				jcrNode.setProperty("advancedPageType", "article");
 				if (null != cal) {
 					logger.debug("Sunhub:::cal date not null {}", cal.toString());
 					jcrNode.setProperty(NameConstants.PN_OFF_TIME, cal);
