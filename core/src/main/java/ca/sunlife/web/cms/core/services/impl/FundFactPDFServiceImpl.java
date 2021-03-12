@@ -649,7 +649,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 							if (languageWS.equalsIgnoreCase("fr")) {
 								minInvestment = minInvestment.trim().substring(0, minInvestment.lastIndexOf(',')) + " $";
 							} else {
-								minInvestment = minInvestment.trim().substring(0, minInvestment.lastIndexOf('.'));
+								minInvestment = minInvestment.lastIndexOf('.') != -1 ? minInvestment.trim().substring(0, minInvestment.lastIndexOf('.')) : minInvestment;
 							}
 						}
 
