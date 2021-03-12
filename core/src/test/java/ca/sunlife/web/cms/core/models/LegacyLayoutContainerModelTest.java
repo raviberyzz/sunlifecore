@@ -1,5 +1,7 @@
 package ca.sunlife.web.cms.core.models;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import javax.jcr.RepositoryException;
@@ -45,4 +47,22 @@ public class LegacyLayoutContainerModelTest {
 		setInitData();
 		legacyLayoutContainerModel.initModel();
 		}
+	
+	@Test
+	void testgetRequest() {
+		legacyLayoutContainerModel.setRequest(request);
+		assertNotNull(legacyLayoutContainerModel.getRequest());
+	}
+	
+	@Test
+	void testgetSiteSelector() {
+		legacyLayoutContainerModel.setSiteSelector("uk");
+		assertEquals(legacyLayoutContainerModel.getSiteSelector() , "uk");
+	}
+	
+	@Test
+	void testType() {
+		legacyLayoutContainerModel.setType("type");
+		assertEquals(legacyLayoutContainerModel.getType() , "type");
+	}
 }

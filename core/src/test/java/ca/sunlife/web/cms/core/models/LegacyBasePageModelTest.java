@@ -1,6 +1,8 @@
 package ca.sunlife.web.cms.core.models;
 
 import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.jcr.RepositoryException;
 
@@ -50,5 +52,15 @@ public class LegacyBasePageModelTest {
 		legacyBasePageModel.init();
 		when(WCMMode.fromRequest(request)).thenReturn(WCMMode.DESIGN);
 		legacyBasePageModel.init();
+	}
+	@Test
+	void testRequest() {
+		legacyBasePageModel.setRequest(request);
+		assertNotNull(legacyBasePageModel.getRequest());
+	}
+	@Test
+	void testSiteSelector() {
+		legacyBasePageModel.setSiteSelector("selector");
+		assertEquals(legacyBasePageModel.getSiteSelector() , "selector");
 	}
 }
