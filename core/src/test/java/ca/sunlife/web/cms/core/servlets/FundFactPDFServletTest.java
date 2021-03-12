@@ -69,5 +69,62 @@ public class FundFactPDFServletTest {
 		when(response.getWriter()).thenReturn(writer);
 		when(factPDFService.getCompiledData(request)).thenReturn("{'invoiceAmt':400.00}");
 		fundFactPDFServlet.doGet(request, response);
+		
+		when(factPDFService.getCompiledData(request)).thenThrow(new ApplicationException());
+		fundFactPDFServlet.doGet(request, response);
+		
+		//when(factPDFService.getCompiledData(request)).thenThrow(new SystemException());
+		//fundFactPDFServlet.doGet(request, response);
+		
+		//when(factPDFService.getCompiledData(request)).thenThrow(new LoginException());
+		//fundFactPDFServlet.doGet(request, response);
+	}
+	
+	/**
+	 * tests doGet method for sys exception.
+	 * 
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 * @throws IOException
+	 * @throws LoginException
+	 * @throws ServletException
+	 */
+	@ Test
+	void testDoGetSysExp() throws ApplicationException, SystemException, IOException, LoginException, ServletException {
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter writer = new PrintWriter(stringWriter);
+		when(response.getWriter()).thenReturn(writer);
+		when(factPDFService.getCompiledData(request)).thenReturn("{'invoiceAmt':400.00}");
+		fundFactPDFServlet.doGet(request, response);
+		
+		//when(factPDFService.getCompiledData(request)).thenThrow(new ApplicationException());
+		//fundFactPDFServlet.doGet(request, response);
+		
+		when(factPDFService.getCompiledData(request)).thenThrow(new SystemException());
+		fundFactPDFServlet.doGet(request, response);
+		
+		//when(factPDFService.getCompiledData(request)).thenThrow(new LoginException());
+		//fundFactPDFServlet.doGet(request, response);
+	}
+	
+	/**
+	 * tests doGet method for sys exception.
+	 * 
+	 * @throws ApplicationException
+	 * @throws SystemException
+	 * @throws IOException
+	 * @throws LoginException
+	 * @throws ServletException
+	 */
+	@ Test
+	void testDoGetLoginExp() throws ApplicationException, SystemException, IOException, LoginException, ServletException {
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter writer = new PrintWriter(stringWriter);
+		when(response.getWriter()).thenReturn(writer);
+		when(factPDFService.getCompiledData(request)).thenReturn("{'invoiceAmt':400.00}");
+		fundFactPDFServlet.doGet(request, response);
+		
+		when(factPDFService.getCompiledData(request)).thenThrow(new LoginException());
+		fundFactPDFServlet.doGet(request, response);
 	}
 }
