@@ -822,6 +822,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	 * Sets the category.
 	 * 
 	 * @param category
+	 *          the category
 	 */
 	public void setCategory(String category) {
         this.category = category;
@@ -830,6 +831,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	  * Sets the displayDate.
 	  * 
 	  * @param displayDate
+	  *          the displayDate
 	  */
 	 public void setDisplayDate(String displayDate) {
 	        this.displayDate = displayDate;
@@ -838,6 +840,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	 *Sets the unpublishDate.
 	 * 
 	 * @param unpublishDate
+	 *           the unpublishDate
 	 */
 	 public void setUnpublishDate(String unpublishDate) {
 	        this.unpublishDate = unpublishDate;
@@ -846,6 +849,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	 * Sets the title.
 	 * 
 	 * @param title
+	 *           the title
 	 */
 	 public void setTitle(String title) {
 	        this.title = title;
@@ -854,6 +858,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	 * Sets the name.
 	 * 
 	 * @param name
+	 *           the name
 	 */
 	 public void setName(String name) {
 	        this.name = name;
@@ -862,6 +867,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	 * Sets the folderPath.
 	 * 
 	 * @param folderPath
+	 *           the folderPath
 	 */
 	 public void setFolderPath(String folderPath) {
 	        this.folderPath = folderPath;
