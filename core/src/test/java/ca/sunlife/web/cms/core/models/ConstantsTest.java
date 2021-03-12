@@ -19,6 +19,7 @@ import ca.sunlife.web.cms.core.constants.AdvisorDetailConstants;
 import ca.sunlife.web.cms.core.constants.ArticleConstants;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.constants.ProviderProfileConstants;
+import ca.sunlife.web.cms.core.constants.SelectorToExfragConstants;
 import ca.sunlife.web.cms.core.constants.UserInfoConstants;
 import ca.sunlife.web.cms.source.constants.NewsConstants;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -48,6 +49,7 @@ public class ConstantsTest {
 		constantClassList.add(FormsConstants.class);
 		constantClassList.add(NewsConstants.class);
 		constantClassList.add(UserInfoConstants.class);
+		constantClassList.add(SelectorToExfragConstants.class);
 	}
 	
 	/**
