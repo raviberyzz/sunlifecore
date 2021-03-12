@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.jcr.RepositoryException;
 
@@ -47,6 +48,12 @@ class SignInModelTest {
 	private ValueMap valueMap;
 
 	final static String PAGE_PATH = "/content/sunlife/signin/en";
+	
+    private static final String DOMAIN_STR = "domain";
+    
+    private static final String MFA_DOMAIN_PATH = "mfaDomainPath";
+    
+    private static final String SEPARATOR = "|";
 	
 	@Mock
 	private SiteConfigService configService;
@@ -225,6 +232,16 @@ class SignInModelTest {
 	
 	/**
 	 * Test method for
+	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setMfaDomainPath(java.lang.String)}.
+	 */
+	@Test
+	void testSetMfaDomainPath() {
+		sm.setMfaDomainPath("/public/transmit/mfa");
+		assertTrue(sm.getMfaDomainPath() == "/public/transmit/mfa");
+	}
+	
+	/**
+	 * Test method for
 	 * {@link ca.sunlife.web.cms.core.models.SignInModel#setIsTargetPathAbsolute(java.lang.String)}.
 	 */
 	@Test
@@ -278,11 +295,22 @@ class SignInModelTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
-	public void setInitData() throws LoginException, RepositoryException {
+	public void setInitData() throws ArrayIndexOutOfBoundsException, LoginException, RepositoryException {
 		when(currentPage.getPath()).thenReturn(PAGE_PATH);
-		when(configService.getConfigValues("domain", PAGE_PATH))
+		when(configService.getConfigValues(DOMAIN_STR, PAGE_PATH))
 				.thenReturn("https://cmsstage-contentexport.ca.sunlife");
 		when(currentPage.getLanguage()).thenReturn(TestUtils.CANADA_LOCALE);
+		when(configService.getConfigValues(MFA_DOMAIN_PATH, PAGE_PATH))
+				.thenReturn("/public/transmit/mfa");
+		
+		testSetDomain();
+		String domainTargetArray[] = sm.getDomain().split(Pattern.quote(SEPARATOR));
+		assertEquals("Consumer", domainTargetArray[0].trim());
+		assertEquals("/mbrportal/req/secure/pphp/personalizedWelcome", domainTargetArray[1].trim());
+		
+		testSetIsTargetPathAbsolute();
+		assertEquals("false", sm.getIsTargetPathAbsolute());
+		
 	}
 
 	/**
