@@ -820,6 +820,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	}
 	
 	/**
+	 * Sets the category.
 	 * 
 	 * @param category
 	 */
@@ -827,6 +828,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
         this.category = category;
 	 }
 	 /**
+	  * Sets the displayDate.
 	  * 
 	  * @param displayDate
 	  */
@@ -834,6 +836,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	        this.displayDate = displayDate;
 	 }
 	/**
+	 *Sets the unpublishDate.
 	 * 
 	 * @param unpublishDate
 	 */
@@ -841,6 +844,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	        this.unpublishDate = unpublishDate;
 	 }
 	/**
+	 * Sets the title.
 	 * 
 	 * @param title
 	 */
@@ -848,6 +852,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	        this.title = title;
 	 }
 	/**
+	 * Sets the name.
 	 * 
 	 * @param name
 	 */
@@ -855,6 +860,7 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	        this.name = name;
 	 }
 	/**
+	 * Sets the folderPath.
 	 * 
 	 * @param folderPath
 	 */
