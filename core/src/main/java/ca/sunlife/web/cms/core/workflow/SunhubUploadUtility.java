@@ -59,10 +59,9 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 
 /**
  * The Class SunhubUploadUtility.
- */
-/**
- * @author yl26
  *
+ * @author TCS
+ * @version 1.0
  */
 @Component(service = WorkflowProcess.class, property = { "process.label=Sunhub content upload utility" })
 public class SunhubUploadUtility implements WorkflowProcess {
