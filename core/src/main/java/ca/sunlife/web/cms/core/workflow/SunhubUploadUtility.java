@@ -60,6 +60,10 @@ import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 /**
  * The Class SunhubUploadUtility.
  */
+/**
+ * @author yl26
+ *
+ */
 @Component(service = WorkflowProcess.class, property = { "process.label=Sunhub content upload utility" })
 public class SunhubUploadUtility implements WorkflowProcess {
 	/** The log. */
@@ -814,4 +818,48 @@ public class SunhubUploadUtility implements WorkflowProcess {
 
 		return time;
 	}
+	
+	/**
+	 * 
+	 * @param category
+	 */
+	public void setCategory(String category) {
+        this.category = category;
+	 }
+	 /**
+	  * 
+	  * @param displayDate
+	  */
+	 public void setDisplayDate(String displayDate) {
+	        this.displayDate = displayDate;
+	 }
+	/**
+	 * 
+	 * @param unpublishDate
+	 */
+	 public void setUnpublishDate(String unpublishDate) {
+	        this.unpublishDate = unpublishDate;
+	 }
+	/**
+	 * 
+	 * @param title
+	 */
+	 public void setTitle(String title) {
+	        this.title = title;
+	 }
+	/**
+	 * 
+	 * @param name
+	 */
+	 public void setName(String name) {
+	        this.name = name;
+	 }
+	/**
+	 * 
+	 * @param folderPath
+	 */
+	 public void setFolderPath(String folderPath) {
+	        this.folderPath = folderPath;
+	 }
+
 }
