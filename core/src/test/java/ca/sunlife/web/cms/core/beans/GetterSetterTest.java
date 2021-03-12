@@ -22,7 +22,6 @@ public class GetterSetterTest {
 	private Holding holding;
 	private FundFactsResponse factsResponse;
 	private PerformanceData performanceData;
-	private NewsReleases newsReleases;
 
 	@ BeforeEach
 	void setup() {
@@ -37,8 +36,7 @@ public class GetterSetterTest {
 		assetMix = new AssetMix("test asset", "50", "red");
 		holding = new Holding("test holding", "3", new ArrayList<String>());
 		factsResponse = new FundFactsResponse();
-		performanceData = new PerformanceData("2020", "70", "Green");
-		newsReleases = new NewsReleases();
+		performanceData = new PerformanceData("2020", "10", "red");
 	}
 
 	@ Test
@@ -99,10 +97,5 @@ public class GetterSetterTest {
 	@ Test
 	void testPerformanceData() {
 		TestUtils.executeTestBean(performanceData);
-	}
-	
-	@Test
-	void testNewsReleases() {
-		TestUtils.executeTestBean(newsReleases);
 	}
 }
