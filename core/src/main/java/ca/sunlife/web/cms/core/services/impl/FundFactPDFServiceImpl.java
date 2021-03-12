@@ -607,7 +607,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						JsonObject objPerformance = arrPerformanceData.get(i).getAsJsonObject();
 						String returnYear = objPerformance.get("year") != null ? objPerformance.get("year").getAsString() : "";
 						String returnForYear = objPerformance.get("percentage") != null
-								? objPerformance.get("percentage").toString()
+								? objPerformance.get("percentage").getAsString()
 								: "";
 						String colourCd = objPerformance.get("colourCd") != null ? objPerformance.get("colourCd").getAsString()
 								: "";
@@ -629,13 +629,13 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						String seriesName = "";
 						seriesName = objGuarantey.get("series") != null ? objGuarantey.get("series").getAsString() : "";
 						String minInvestment = objGuarantey.get("minimumInvestment") != null
-								? objGuarantey.get("minimumInvestment").toString().trim()
+								? objGuarantey.get("minimumInvestment").getAsString().trim()
 								: "";
-						String mer = objGuarantey.get("MER") != null ? objGuarantey.get("MER").toString().trim() : "";
+						String mer = objGuarantey.get("MER") != null ? objGuarantey.get("MER").getAsString().trim() : "";
 						String netAsset = objGuarantey.get("netAsset") != null ? objGuarantey.get("netAsset").getAsString().trim()
 								: "";
 						String numberUnits = objGuarantey.get("numberUnits") != null
-								? objGuarantey.get("numberUnits").toString().trim()
+								? objGuarantey.get("numberUnits").getAsString().trim()
 								: "";
 						if (!netAsset.trim().equals("")) {
 							if (languageWS.equalsIgnoreCase("fr")) {
@@ -679,7 +679,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 						String holdingName = objHoldings.get("holdingName") != null ? objHoldings.get("holdingName").getAsString()
 								: "";
 						String holdingPercentage = objHoldings.get("investmentPercentage") != null
-								? objHoldings.get("investmentPercentage").toString()
+								? objHoldings.get("investmentPercentage").getAsString()
 								: "";
 						List<String> subHoldingNames = null;
 						JsonArray arrSubHoldings = getJsonArray("subHoldingNames", objHoldings);
