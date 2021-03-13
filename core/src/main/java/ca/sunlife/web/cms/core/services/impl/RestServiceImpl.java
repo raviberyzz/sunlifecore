@@ -117,7 +117,7 @@ public class RestServiceImpl implements RestService {
 		final HttpGet httpGet = new HttpGet(url);
 		if (null != requestHeaders && requestHeaders.length() > 0) {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
-			json.entrySet().forEach(key -> httpGet.addHeader(key.toString(), json.get(key.toString()).getAsString()));
+			json.entrySet().forEach(entry -> httpGet.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
 		response = client.execute(httpGet);
 		statusCode = response.getStatusLine().getStatusCode();
@@ -151,7 +151,7 @@ public class RestServiceImpl implements RestService {
 		httpPost.setHeader("Content-type", "application/json");
 		if (null != requestHeaders && requestHeaders.length() > 0) {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
-			json.entrySet().forEach(key -> httpPost.addHeader(key.toString(), json.get(key.toString()).getAsString()));
+			json.entrySet().forEach(entry -> httpPost.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
 		response = client.execute(httpPost);
 		statusCode = response.getStatusLine().getStatusCode();
@@ -179,7 +179,7 @@ public class RestServiceImpl implements RestService {
 
 		if (null != requestHeaders && requestHeaders.length() > 0) {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
-			json.entrySet().forEach(key -> httpDelete.addHeader(key.toString(), json.get(key.toString()).getAsString()));
+			json.entrySet().forEach(entry -> httpDelete.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
 		response = client.execute(httpDelete);
 		statusCode = response.getStatusLine().getStatusCode();
