@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,7 +45,10 @@ public class AkamaiEdgeRedirectsTest {
 	private AkamaiEdgeRedirects akamaiEdgeRedirects;
 	
 	@ Mock
-  private transient ca.sunlife.web.cms.core.services.AkamaiEdgeRedirects service;
+	private ResourceResolver resourceResolver;
+	
+	@ Mock
+	private transient ca.sunlife.web.cms.core.services.AkamaiEdgeRedirects service;
 	
 	@ BeforeEach
 	void setup() {
@@ -58,9 +62,10 @@ public class AkamaiEdgeRedirectsTest {
     when(response.getWriter()).thenReturn(writer);
 		when(request.getParameter("policyID")).thenReturn("12222");
 		when(request.getParameter("rules")).thenReturn("rule2");
+		when(request.getResourceResolver()).thenReturn(resourceResolver);
 		JSONObject json = new JSONObject();
 		json.put("url", "/en/home");
-		when(service.publishRules("12222", "rule2")).thenReturn(json);
+		when(service.publishRules("12222", "rule2", "anonymous")).thenReturn(json);
 		akamaiEdgeRedirects.doPost(request, response);
 		writer.flush();
 		assertEquals("{\"url\":\"/en/home\"}", stringWriter.toString());

@@ -19,10 +19,17 @@ $(document).ready(function () {
         mobileNavigation();
     }
     else{
-        setTimeout(bindHamburgerEvent, 3000);
-        setTimeout(mobileNavigation, 3000);
+        checkHeader1();
     }
-
+    function checkHeader1(){
+        if($(".slf-header-mobile-logo").length==0){
+            setTimeout(checkHeader1, 500);
+        }   
+        else{
+            bindHamburgerEvent();
+            mobileNavigation();
+        }
+     }
     function bindHamburgerEvent(){
         /* If clicked anywhere outside of hamburger menu close the panel */
         $(document).on("click", function (e) {

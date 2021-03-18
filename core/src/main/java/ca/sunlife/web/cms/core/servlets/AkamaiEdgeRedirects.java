@@ -5,11 +5,13 @@ package ca.sunlife.web.cms.core.servlets;
 
 import java.io.IOException;
 
+import javax.jcr.Session;
 import javax.servlet.Servlet;
 
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.json.JSONException;
@@ -50,8 +52,11 @@ public class AkamaiEdgeRedirects extends SlingAllMethodsServlet {
       throws IOException {
     String responseBody = "";
     try {
+      ResourceResolver resolver = request.getResourceResolver();
+      Session session = resolver.adaptTo(Session.class);
+      String user = null != session ? session.getUserID():"anonymous";
       responseBody = service.publishRules(request.getParameter("policyID"),
-          request.getParameter("rules")).toString();
+          request.getParameter("rules"), user).toString();
       response.setContentType("application/json");
       response.getWriter().write(responseBody);
     } catch (JSONException e) {

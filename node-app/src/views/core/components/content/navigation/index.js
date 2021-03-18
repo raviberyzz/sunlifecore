@@ -4,7 +4,17 @@ $(document).ready(function () {
       bindNavigationEvent();
    }
    else{
-      setTimeout(bindNavigationEvent, 3000);
+      checkHeader();
+   }
+   function checkHeader(){
+      if($(".us-sunlife-home-page").length==0){
+         if($(".desktop-mega-menu").length==0){
+            setTimeout(checkHeader, 500);
+         }   
+         else{
+            bindNavigationEvent();
+         }
+      }
    }
    function bindNavigationEvent(){
       $(".desktop-primary-navigation .nav-item.navigation").hover(function () {

@@ -121,6 +121,22 @@ $(document).ready(function(){
     var searchApi = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults";
     var searchError = false; 
 
+    // Check if manager
+    var manager =false;
+    var segment = ContextHub.SegmentEngine.getResolvedSegments();
+    for(var i=0;i<segment.length;i++){
+        if(segment[i]["title"] == "managers"){
+            manager = true;
+            break;
+        }
+    }
+    if(manager == true){
+        searchApi = searchApi + "&DatabaseMatch=AEM-ABC-Mangers";
+    }
+    else{
+        searchApi = searchApi + "&DatabaseMatch=AEM-ABC-Advisors";
+    }
+
     var filterArray = [
         {
             name_en: "All",

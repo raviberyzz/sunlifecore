@@ -64,11 +64,11 @@ public class FundFactPDFServlet extends SlingSafeMethodsServlet {
 			//calls fund fact PDF service
 			out.print(fundFactPDFService.getCompiledData(request));
 		} catch (ApplicationException e) {
-			LOG.debug("ApplicationException :: doGet method of FundFactPDFServlet :: ");
+			LOG.error("ApplicationException :: doGet method of FundFactPDFServlet :: ");
 		} catch (SystemException e) {
-			LOG.debug("SystemException :: doGet method of FundFactPDFServlet :: ");
+			LOG.error("SystemException :: doGet method of FundFactPDFServlet :: ");
 		} catch (LoginException e) {
-			LOG.debug("LoginException :: doGet method of FundFactPDFServlet :: ");
+			LOG.error("LoginException :: doGet method of FundFactPDFServlet :: ");
 		}
 		LOG.debug("Exit :: doGet method of FundFactPDFServlet :: ");
 	}

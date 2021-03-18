@@ -212,53 +212,116 @@ class NewFormExperience extends React.Component {
     }
 
     getTableData() {
-        const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
+        // const favoriteData = [{ "formNumber": "IN1405003*" }, { "formNumber": "4900-E" }];
         $.ajax({
             type: "GET",
-            url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
+            url: `${this.props.tableRowsDataUrl}.ugc.listFormFavourites.json`,
             dataType: "json",
-            success: (response) => {
-                var tableData = [];
-                var favRows = [];
-                var notFavRows = [];
-                var originalresponseData = response
-                tableData = response;
-                tableData.map((obj) => {
-                    favoriteData.map((favObj) => {
-                        if (obj.formNumber == favObj.formNumber) {
-                            obj.favorite = true;
-                        }
-                    })
-                    if (!obj.favorite) obj.favorite = false;
+            success: (res) => {
+                var favoriteData = [];
+                res.favourites.map((obj) => {
+                    favoriteData.push({
+                        "formNumber": obj
+                    });
                 })
-                favRows = tableData.filter((obj) => {
-                    return obj.favorite
-                })
-                notFavRows = tableData.filter((obj) => {
-                    return !obj.favorite
-                })
-                favRows.sort((a, b) => {
-                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
-                });
-                notFavRows.sort((a, b) => {
-                    return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
-                })
-                tableData = [...favRows, ...notFavRows];
-                this.setState({
-                    // data: tableData,
-                    data: tableData,
-                    // originalData: originalresponseData,
-                    originalData: tableData,
-                    favorites: favoriteData
-                }, () => {
-                    // this.tagSorting();
-                    this.getFilterData();
+                $.ajax({
+                    type: "GET",
+                    url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
+                    dataType: "json",
+                    success: (response) => {
+                        var tableData = [];
+                        var favRows = [];
+                        var notFavRows = [];
+                        var originalresponseData = response
+                        tableData = response;
+                        tableData.map((obj) => {
+                            favoriteData.map((favObj) => {
+                                if (obj.formNumber == favObj.formNumber) {
+                                    obj.favorite = true;
+                                }
+                            })
+                            if (!obj.favorite) obj.favorite = false;
+                        })
+                        favRows = tableData.filter((obj) => {
+                            return obj.favorite
+                        })
+                        notFavRows = tableData.filter((obj) => {
+                            return !obj.favorite
+                        })
+                        favRows.sort((a, b) => {
+                            return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                        });
+                        notFavRows.sort((a, b) => {
+                            return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                        })
+                        tableData = [...favRows, ...notFavRows];
+                        this.setState({
+                            // data: tableData,
+                            data: tableData,
+                            // originalData: originalresponseData,
+                            originalData: tableData,
+                            favorites: favoriteData
+                        }, () => {
+                            // this.tagSorting();
+                            this.getFilterData();
+                        })
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
                 })
             },
             error: (err) => {
                 console.log(err);
+                var favoriteData = [];
+                $.ajax({
+                    type: "GET",
+                    url: `${this.props.tableRowsDataUrl}.forms.${this.state.lang}.json`,
+                    dataType: "json",
+                    success: (response) => {
+                        var tableData = [];
+                        var favRows = [];
+                        var notFavRows = [];
+                        var originalresponseData = response
+                        tableData = response;
+                        tableData.map((obj) => {
+                            favoriteData.map((favObj) => {
+                                if (obj.formNumber == favObj.formNumber) {
+                                    obj.favorite = true;
+                                }
+                            })
+                            if (!obj.favorite) obj.favorite = false;
+                        })
+                        favRows = tableData.filter((obj) => {
+                            return obj.favorite
+                        })
+                        notFavRows = tableData.filter((obj) => {
+                            return !obj.favorite
+                        })
+                        favRows.sort((a, b) => {
+                            return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                        });
+                        notFavRows.sort((a, b) => {
+                            return a.formNumber.localeCompare(b.formNumber, this.state.lang, { numeric: true })
+                        })
+                        tableData = [...favRows, ...notFavRows];
+                        this.setState({
+                            // data: tableData,
+                            data: tableData,
+                            // originalData: originalresponseData,
+                            originalData: tableData,
+                            favorites: favoriteData
+                        }, () => {
+                            // this.tagSorting();
+                            this.getFilterData();
+                        })
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                })
             }
-        })
+        });
     }
 
     getFilterData() {
@@ -416,52 +479,67 @@ class NewFormExperience extends React.Component {
         var updatedData = [];
         var updatedOriginalData = [];
         var updatedFilterResetData = [];
-        console.log("ajax post call");
-        this.state.data.map((obj) => {
-            if (obj.formNumber == formNumber){
-                obj.favorite = newFavourite;
-                updatedData.push(obj);
+        let reqData = {
+            formNumber: formNumber,
+            enabled: newFavourite
+        };
+        $.ajax({
+            type: "POST",
+            url: `${this.props.tableRowsDataUrl}.ugc.updateFormFavourite.json`,
+            contentType: "application/json",
+            data: JSON.stringify(reqData),
+            dataType: "json",
+            success: (response) => {
+                this.state.data.map((obj) => {
+                    if (obj.formNumber == formNumber){
+                        obj.favorite = newFavourite;
+                        updatedData.push(obj);
+                    }
+                    else{
+                        updatedData.push(obj);
+                    }
+                });
+                this.state.originalData.map((obj) => {
+                    if (obj.formNumber == formNumber){
+                        obj.favorite = newFavourite;
+                        updatedOriginalData.push(obj);
+                    }
+                    else{
+                        updatedOriginalData.push(obj);
+                    }
+                });
+                this.state.filterResetData.map((obj) => {
+                    if (obj.formNumber == formNumber){
+                        obj.favorite = newFavourite;
+                        updatedFilterResetData.push(obj);
+                    }
+                    else{
+                        updatedFilterResetData.push(obj);
+                    }
+                });
+                this.setState({
+                    // data: updatedData,
+                    originalData: updatedOriginalData,
+                    filterResetData: updatedFilterResetData
+                });
+                var selection = "form search – ";
+                if(newFavourite==true){
+                    selection = selection + "favourite";
+                }
+                else{
+                    selection = selection + "unfavourite";
+                }
+                utag.link({
+                    ev_type: 'other',
+                    ev_action: 'clk',
+                    ev_title: selection,
+                    ev_data_one: formNumber
+                });
+            },
+            error: (err) => {
+                console.log(err);
             }
-            else{
-                updatedData.push(obj);
-            }
-        });
-        this.state.originalData.map((obj) => {
-            if (obj.formNumber == formNumber){
-                obj.favorite = newFavourite;
-                updatedOriginalData.push(obj);
-            }
-            else{
-                updatedOriginalData.push(obj);
-            }
-        });
-        this.state.filterResetData.map((obj) => {
-            if (obj.formNumber == formNumber){
-                obj.favorite = newFavourite;
-                updatedFilterResetData.push(obj);
-            }
-            else{
-                updatedFilterResetData.push(obj);
-            }
-        });
-        this.setState({
-            data: updatedData,
-            originalData: updatedOriginalData,
-            filterResetData: updatedFilterResetData
-        });
-        var selection = "form search – ";
-        if(newFavourite==true){
-            selection = selection + "favourite";
-        }
-        else{
-            selection = selection + "unfavourite";
-        }
-        utag.link({
-            ev_type: 'other',
-            ev_action: 'clk',
-            ev_title: selection,
-            ev_data_one: formNumber
-        });
+        }); 
     }
 
     SearchSort() {
