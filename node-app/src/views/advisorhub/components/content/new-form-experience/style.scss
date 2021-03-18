@@ -319,6 +319,32 @@
                 }
             }
         }
+        .pagination-component{
+            .pagination{
+                .previous, .link-to-first{
+                    width: 20%;
+                    a{
+                        width: 100%;
+                    }
+                }
+                .next{
+                    width: 60%;
+                    a{
+                        width: 100%;
+                    }
+                }
+            }
+            .first-page{
+                .next{
+                    width: 100%;
+                }
+            }
+            .last-page{
+                .previous{
+                    width: 80%;
+                }
+            }
+        }
     }
 }
 @media(max-width:$tab-screen-max){
