@@ -23,6 +23,7 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -33,6 +34,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
 import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.commons.jcr.JcrConstants;
@@ -42,7 +45,7 @@ import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import ca.sunlife.web.cms.core.beans.Pagination;
 import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
@@ -53,11 +56,16 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
  * @author TCS
  * @version 1.0
  */
-@ Model (adaptables = SlingHttpServletRequest.class, adapters = ArticleListModel.class, resourceType = "sunlife/core/components/content/articleList", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class ArticleListModel {
+@ Model (adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class}, resourceType = "sunlife/core/components/content/articleList", defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@ Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+@ JsonSerialize(as = ArticleListModel.class)
+public class ArticleListModel implements ComponentExporter {
 
   /** The Constant LOGGER. */
   private static final Logger LOGGER = LoggerFactory.getLogger(ArticleListModel.class);
+  
+  /** The Constant RESOURCE_TYPE. */
+  public static final String RESOURCE_TYPE = "sunlife/core/components/content/articleList";
 
   /** The parent path. */
   @ Inject
@@ -504,5 +512,10 @@ public class ArticleListModel {
       }
     }
   }
+
+@Override
+public String getExportedType() {
+	return RESOURCE_TYPE;
+}
 
 }
