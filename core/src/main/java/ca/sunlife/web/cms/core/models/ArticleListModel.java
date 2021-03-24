@@ -513,9 +513,14 @@ public class ArticleListModel implements ComponentExporter {
     }
   }
 
-@Override
-public String getExportedType() {
+  /**
+   * Gets the Resource Type.
+   *
+   * @return the Resource Type.
+   */
+  @Override
+  public String getExportedType() {
 	return RESOURCE_TYPE;
-}
+  }
 
 }
