@@ -131,7 +131,7 @@ $(document).ready(function(){
         }
     }
     if(manager == true){
-        searchApi = searchApi + "&DatabaseMatch=AEM-ABC-Mangers";
+        searchApi = searchApi + "&DatabaseMatch=AEM-ABC-Managers";
     }
     else{
         searchApi = searchApi + "&DatabaseMatch=AEM-ABC-Advisors";

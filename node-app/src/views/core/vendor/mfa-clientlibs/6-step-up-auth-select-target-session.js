@@ -73,13 +73,17 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
     const valid = $('#mfa-form').parsley().validate()
     if(valid){
-
-      utag.link({
-        ev_type: 'other',
-        ev_action: 'clk',
-        ev_data_one: selectedMethod, // depending on the radio selection
-        ev_title: 'verify-you:send-code'
-      });
+      try{
+        utag.link({
+          ev_type: 'other',
+          ev_action: 'clk',
+          ev_data_one: selectedMethod, // depending on the radio selection
+          ev_title: 'verify-you:send-code'
+        });
+      }
+      catch(error){
+        console.error(error);
+      }
       
       if(this.showDebugInfo){
         console.log(maskedPhoneNo);
@@ -101,12 +105,16 @@ function StepUpSelectTargetFormSession(formId, payload) {
 
   function setupForm() {
     const self = this;
-
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'verify-you-modal'
-    });
+    try{
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'verify-you-modal'
+      });
+    }
+    catch(error){
+      console.error(error);
+    }
     
     $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-auth-select-target-form.html", function (data) {
       $(self.clientContext.uiContainer).html(data);

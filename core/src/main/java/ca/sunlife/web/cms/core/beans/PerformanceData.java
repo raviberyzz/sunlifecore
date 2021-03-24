@@ -9,13 +9,13 @@ package ca.sunlife.web.cms.core.beans;
 public class PerformanceData {
 
 	/** The returnYear. */
-	protected String returnYear;
+	private String returnYear;
 	
 	/** The percentage. */
-	protected String percentage;
+	private String percentage;
 	
 	/** The colourCd. */
-	protected String colourCd;
+	private String colourCd;
 
 	/**
 	 * Constructor for all fields.

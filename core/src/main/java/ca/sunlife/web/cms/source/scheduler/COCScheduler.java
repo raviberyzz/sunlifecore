@@ -36,7 +36,7 @@ import ca.sunlife.web.cms.source.osgi.config.CoCConfig;
 /**
  * The Class COCScheduler.
  *
- * @author Krinil
+ * @author TCS
  * @version 1.0
  */
 @ Component(immediate = true)
