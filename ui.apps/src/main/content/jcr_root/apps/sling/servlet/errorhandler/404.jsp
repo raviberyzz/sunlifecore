@@ -7,12 +7,13 @@ if(chub.equalsIgnoreCase("true") || request.getRequestURI().startsWith("/content
     slingResponse.setStatus(404);
 %>
 <script type="text/javascript">
-    if(window.location.search.length > 0) {
-    	window.location.replace(window.location.href+'&errorPageTarget=true');
-    }else {
-		window.location.replace(window.location.href+'?errorPageTarget=true');
+    if(window.location.search.indexOf('errorPageTarget') < 0) {
+        if(window.location.search.length > 0) {
+            window.location.replace(window.location.href+'&errorPageTarget=true');
+        }else {
+            window.location.replace(window.location.href+'?errorPageTarget=true');
+        }
     }
-
 </script>
 <%
     return;

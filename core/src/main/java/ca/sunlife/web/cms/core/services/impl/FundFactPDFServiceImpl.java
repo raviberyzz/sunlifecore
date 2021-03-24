@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -20,9 +19,6 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -33,6 +29,10 @@ import org.slf4j.LoggerFactory;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.beans.AssetMix;
 import ca.sunlife.web.cms.core.beans.FundFactsData;
@@ -397,17 +397,12 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 	 * @param nodeName
 	 * @return
 	 */
-	public static JSONObject getNode(JSONObject obj, String nodeName) {
-		JSONObject objJson;
-		if (null != obj && !obj.isNull(nodeName)) {
-			try {
-				objJson = obj.getJSONObject(nodeName);
-				return objJson;
-			} catch (JSONException e) {
-				LOG.error("Error :: getNode :: {}", e);
-			}
+	public static JsonObject getNode(JsonObject obj, String nodeName) {
+		JsonObject objJson = null;
+		if (null != obj && obj.has(nodeName)) {
+			objJson = obj.getAsJsonObject(nodeName);
 		}
-		return null;
+		return objJson;
 	}
 
 	/**
@@ -417,13 +412,9 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 	 * @param obj
 	 * @return
 	 */
-	public static JSONArray getJsonArray(String strNodeName, JSONObject obj) {
-		try {
-			if (!obj.isNull(strNodeName) && obj.getJSONArray(strNodeName) != null) {
-				return obj.getJSONArray(strNodeName);
-			}
-		} catch (JSONException e) {
-			LOG.error("Error :: getJsonArray :: {}", e);
+	public static JsonArray getJsonArray(String strNodeName, JsonObject obj) {
+		if (obj.has(strNodeName) && obj.getAsJsonArray(strNodeName) != null) {
+			return obj.getAsJsonArray(strNodeName);
 		}
 		return null;
 	}
@@ -439,323 +430,319 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 		FundFactsData objFundFactsData = new FundFactsData();
 		// parse json and put values in bean object.
 		LOG.trace("JSON String from WS={} ", data);
-		JSONObject jsonObjectFundFactsResponse = null;
-		JSONObject jsonObject = null;
-		try {
-			JSONObject rootJsonObject = new JSONObject(data);
-			jsonObjectFundFactsResponse = rootJsonObject.getJSONObject(strfundFactsResponse);
-			if (jsonObjectFundFactsResponse != null) {
-				LOG.trace("Got data for node={} ", strfundFactsResponse);
-				String returnCode = jsonObjectFundFactsResponse.getString("returnCode");
-				objFundFactsData.setReturnCode(returnCode);
-				LOG.trace("returnCode=={} ", returnCode);
-				if (returnCode.equals("0") || returnCode.equals("1")) {
-					LOG.trace("Get return code from WS={} ", returnCode);
-					jsonObject = jsonObjectFundFactsResponse.getJSONObject(strfundFactsData);
-					// Top level node
-					objFundFactsData.setmPowerCode(jsonObject.getString("mPowerCode"));
-					String languageWS = jsonObject.getString("lang");
-					String strNA = strNAEN;
-					if (languageWS.equalsIgnoreCase("fr")) {
-						strNA = strNAFR;
+		JsonObject jsonObjectFundFactsResponse = null;
+		JsonObject jsonObject = null;
+		JsonObject rootJsonObject = new Gson().fromJson(data, JsonObject.class);
+		jsonObjectFundFactsResponse = rootJsonObject.getAsJsonObject(strfundFactsResponse);
+		if (jsonObjectFundFactsResponse != null) {
+			LOG.trace("Got data for node={} ", strfundFactsResponse);
+			String returnCode = jsonObjectFundFactsResponse.get("returnCode").getAsString();
+			objFundFactsData.setReturnCode(returnCode);
+			LOG.trace("returnCode=={} ", returnCode);
+			if (returnCode.equals("0") || returnCode.equals("1")) {
+				LOG.trace("Get return code from WS={} ", returnCode);
+				jsonObject = jsonObjectFundFactsResponse.getAsJsonObject(strfundFactsData);
+				// Top level node
+				objFundFactsData.setmPowerCode(jsonObject.get("mPowerCode").getAsString());
+				String languageWS = jsonObject.get("lang").getAsString();
+				String strNA = strNAEN;
+				if (languageWS.equalsIgnoreCase("fr")) {
+					strNA = strNAFR;
+				}
+				objFundFactsData.setLang(languageWS);
+				objFundFactsData
+						.setTotalPercentOfTop10Investments(jsonObject.get("totalPercentOfTop10Investments").getAsString());
+				objFundFactsData.setFundLessThanOneYear(jsonObject.get(bolFundLessThanOneYear).getAsBoolean());
+				objFundFactsData.setUnderlying(jsonObject.get(bolUnderlying).getAsBoolean());
+				objFundFactsData.setGuaranteeSeriesAvailable(jsonObject.get(bolGuaranteeSeriesAvailable).getAsBoolean());
+				objFundFactsData.setIsyearByYearReturnAvailable(jsonObject.get(keyYearByYearReturnAvailable).getAsBoolean());
+				objFundFactsData.setNumberOfYears(jsonObject.get(keyNumberOfYears).getAsString());
+				objFundFactsData.setMaxReturnYear(jsonObject.get(keyMaxReturnYear).getAsString());
+				objFundFactsData.setMinReturnYear(jsonObject.get(keyMinReturnYear).getAsString());
+
+				// SingleValuesMap
+				LOG.trace("keySingleValuesMap>>{} ", keySingleValuesMap);
+				JsonObject singleValuesMapJSonObject = getNode(jsonObject, keySingleValuesMap);
+
+				if (null != singleValuesMapJSonObject) {
+					Map<String, String> singleValuesMap = new HashMap<>();
+					String name = "";
+					String jdata = "";
+					for (Map.Entry<String, JsonElement> entry : singleValuesMapJSonObject.entrySet()) {
+						name = entry.getKey();
+						jdata = singleValuesMapJSonObject.get(name) != null ? singleValuesMapJSonObject.get(name).getAsString()
+								: "";
+						singleValuesMap.put(name, jdata);
 					}
-					objFundFactsData.setLang(languageWS);
-					objFundFactsData.setTotalPercentOfTop10Investments(jsonObject.getString("totalPercentOfTop10Investments"));
-					objFundFactsData.setFundLessThanOneYear(jsonObject.getBoolean(bolFundLessThanOneYear));
-					objFundFactsData.setUnderlying(jsonObject.getBoolean(bolUnderlying));
-					objFundFactsData.setGuaranteeSeriesAvailable(jsonObject.getBoolean(bolGuaranteeSeriesAvailable));
-					objFundFactsData.setIsyearByYearReturnAvailable(jsonObject.getBoolean(keyYearByYearReturnAvailable));
-					objFundFactsData.setNumberOfYears(jsonObject.getString(keyNumberOfYears));
-					objFundFactsData.setMaxReturnYear(jsonObject.getString(keyMaxReturnYear));
-					objFundFactsData.setMinReturnYear(jsonObject.getString(keyMinReturnYear));
+					LOG.trace("singleValuesMap >>{} ", singleValuesMap);
+					// below code is fix to wrong data from WS. may be need to remove when it is
+					// fixed.
+					String totalnumberofinvestments = singleValuesMap.get(keytotalnumberofinvestments);
+					if (totalnumberofinvestments != null && !totalnumberofinvestments.trim().equals("")
+							&& (totalnumberofinvestments.indexOf('.') > -1)) {
+						LOG.trace("WS: totalnumberofinvestments>>{} ", totalnumberofinvestments);
+						totalnumberofinvestments = totalnumberofinvestments.trim().substring(0,
+								totalnumberofinvestments.indexOf('.'));
+						singleValuesMap.put(keytotalnumberofinvestments, totalnumberofinvestments);
+						LOG.trace("After format :: totalnumberofinvestments>>{} ", totalnumberofinvestments);
+					}
 
-					// SingleValuesMap
-					LOG.trace("keySingleValuesMap>>{} ", keySingleValuesMap);
-					JSONObject singleValuesMapJSonObject = getNode(jsonObject, keySingleValuesMap);
-
-					if (null != singleValuesMapJSonObject) {
-						@ SuppressWarnings("unchecked")
-						Iterator<String> nameItr = singleValuesMapJSonObject.keys();
-						Map<String, String> singleValuesMap = new HashMap<>();
-						String name = "";
-						String jdata = "";
-						while (nameItr.hasNext()) {
-							name = nameItr.next();
-							jdata = singleValuesMapJSonObject.getString(name) != null ? singleValuesMapJSonObject.getString(name)
-									: "";
-							singleValuesMap.put(name, jdata);
-						}
-						LOG.trace("singleValuesMap >>{} ", singleValuesMap);
-						// below code is fix to wrong data from WS. may be need to remove when it is
-						// fixed.
-						String totalnumberofinvestments = singleValuesMap.get(keytotalnumberofinvestments);
-						if (totalnumberofinvestments != null && !totalnumberofinvestments.trim().equals("")
-								&& (totalnumberofinvestments.indexOf('.') > -1)) {
-							LOG.trace("WS: totalnumberofinvestments>>{} ", totalnumberofinvestments);
-							totalnumberofinvestments = totalnumberofinvestments.trim().substring(0,
-									totalnumberofinvestments.indexOf('.'));
-							singleValuesMap.put(keytotalnumberofinvestments, totalnumberofinvestments);
-							LOG.trace("After format :: totalnumberofinvestments>>{} ", totalnumberofinvestments);
-						}
-
-						String withdrawdays = singleValuesMap.get(keywithdrawdays);
-						if (withdrawdays != null && !withdrawdays.trim().equals("") && (withdrawdays.indexOf('.') > -1)) {
-							LOG.trace("WS: keywithdrawdays>>{} ", withdrawdays);
-							withdrawdays = withdrawdays.trim().substring(0, withdrawdays.indexOf('.'));
-							singleValuesMap.put(keywithdrawdays, withdrawdays);
-							LOG.trace("After format :: keywithdrawdays>>{} ", withdrawdays);
-						}
-						// as chart need data in row format .. so adding "dateFund" row data
-						if (!singleValuesMapJSonObject.isNull(keydatefund)
-								&& singleValuesMapJSonObject.getString(keydatefund) != null) {
-							singleValuesMap.put("dateFundWS", singleValuesMapJSonObject.getString(keydatefund));
-							LOG.trace("dateFundWS>>>>>>>>{} ", singleValuesMap.get("dateFundWS"));
+					String withdrawdays = singleValuesMap.get(keywithdrawdays);
+					if (withdrawdays != null && !withdrawdays.trim().equals("") && (withdrawdays.indexOf('.') > -1)) {
+						LOG.trace("WS: keywithdrawdays>>{} ", withdrawdays);
+						withdrawdays = withdrawdays.trim().substring(0, withdrawdays.indexOf('.'));
+						singleValuesMap.put(keywithdrawdays, withdrawdays);
+						LOG.trace("After format :: keywithdrawdays>>{} ", withdrawdays);
+					}
+					// as chart need data in row format .. so adding "dateFund" row data
+					if (singleValuesMapJSonObject.has(keydatefund) && singleValuesMapJSonObject.get(keydatefund) != null) {
+						singleValuesMap.put("dateFundWS", singleValuesMapJSonObject.get(keydatefund).getAsString());
+						LOG.trace("dateFundWS>>>>>>>>{} ", singleValuesMap.get("dateFundWS"));
+					} else {
+						LOG.trace(keySingleValuesMap, " {} dateFund is null");
+					}
+					if (singleValuesMap.get(strTrailingCommission) == null
+							|| singleValuesMap.get(strTrailingCommission).trim().equals("")) {
+						objFundFactsData.setTraillingCommisionAvailable(false);
+						;
+					}
+					if (singleValuesMap.get(strTurnOverRate) == null
+							|| singleValuesMap.get(strTurnOverRate).trim().equals(strNA)) {
+						objFundFactsData.setTunoverisNA(true);
+					}
+					// check if ProductName = Sun GIF Solutions or not
+					if (singleValuesMap.get("ProductName") != null) {
+						String productws = singleValuesMap.get("ProductName").trim();
+						LOG.trace("productws>>{} ", productws);
+						if (productws.equals(sungifssolutionen) || productws.equals(sungifssolutionfr)) {
+							objFundFactsData.setSunGifSoln(true);
 						} else {
-							LOG.trace(keySingleValuesMap, " {} dateFund is null");
+							objFundFactsData.setSunGifSoln(false);
 						}
-						if (singleValuesMap.get(strTrailingCommission) == null
-								|| singleValuesMap.get(strTrailingCommission).trim().equals("")) {
-							objFundFactsData.setTraillingCommisionAvailable(false);;
-						}
-						if (singleValuesMap.get(strTurnOverRate) == null
-								|| singleValuesMap.get(strTurnOverRate).trim().equals(strNA)) {
-							objFundFactsData.setTunoverisNA(true);
-						}
-						// check if ProductName = Sun GIF Solutions or not
-						if (singleValuesMap.get("ProductName") != null) {
-							String productws = singleValuesMap.get("ProductName").trim();
-							LOG.trace("productws>>{} ", productws);
-							if (productws.equals(sungifssolutionen) || productws.equals(sungifssolutionfr)) {
-								objFundFactsData.setSunGifSoln(true);
-							} else {
-								objFundFactsData.setSunGifSoln(false);
-							}
-						} else {
-							LOG.trace("No product name from webservice with key=ProductName");
-						}
-						// change the values in single format map
-						singleValuesMap = stringToDate(languageWS, singleValuesMap);
-						singleValuesMap = numberFormat(languageWS, singleValuesMap);
-						// now we have map populated ... so populate bean
-						if (singleValuesMap.get(keyfellow).equals(strNA)) {
-							objFundFactsData.setIsfELLow(true);
-						}
-						if (salseChargeSectionHideClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.setFelFundClass(true);
-						}
-						if (salseChargeSectionDeferedHideClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.setDeferFundClass(true);
-						}
-						if (iOClasses.contains(singleValuesMap.get(keyfundclass))) {
-							objFundFactsData.setIOClass(true);
-						}
-
-						// Need to get the first year so setting up in single value map
-						JSONArray advisorCommisionDCS = jsonObject.getJSONArray("dscList");
-						if (advisorCommisionDCS.length() > 0) {
-							String value = advisorCommisionDCS.get(0) != null ? advisorCommisionDCS.get(0).toString() : "";
-							LOG.trace(value, "{} value in dscList");
-							singleValuesMap.put("advisor_commision_DCS", value);
-						} else {
-							LOG.trace("dscList is size = 0");
-						}
-
-						JSONArray advisorCommisionLLSC = jsonObject.getJSONArray("llscList");
-						if (advisorCommisionLLSC.length() > 0) {
-							String value = advisorCommisionLLSC.get(0) != null ? advisorCommisionLLSC.get(0).toString() : "";
-							LOG.trace(value, " {} LLSC");
-							singleValuesMap.put("advisor_commision_LLSC", value);
-						}
-
-						String riskRatingWS = singleValuesMap.get(keyriskratingvalue);
-						LOG.trace("riskRatingWS >>{} ", riskRatingWS);
-						if (riskRatingWS.equals(lowstringEN) || riskRatingWS.equals(lowstringFR)) {
-							objFundFactsData.setLowRisk(true);
-						} else if (riskRatingWS.equals(lowtomedstringEN) || riskRatingWS.equals(lowtomedstringFR)) {
-							objFundFactsData.setLowMedRisk(true);
-						} else if (riskRatingWS.equals(medstringEN) || riskRatingWS.equals(medstringFR)) {
-							objFundFactsData.setMedRisk(true);
-						} else if (riskRatingWS.equals(medtohighstringEN) || riskRatingWS.equals(medtohighstringFR)) {
-							objFundFactsData.setMedHighRisk(true);
-						} else if (riskRatingWS.equals(highstringEN) || riskRatingWS.equals(highstringFR)) {
-							objFundFactsData.setHighRisk(true);
-						}
-						if (!(singleValuesMap.get(keyreturndate).trim().equals(""))) {
-							objFundFactsData.setReturnRate(true);
-						}
-						objFundFactsData.setSingleValueMap(singleValuesMap);
 					} else {
-						LOG.trace("** SINGLE VALUE MAP IS NULL for key={} ", keySingleValuesMap);
+						LOG.trace("No product name from webservice with key=ProductName");
+					}
+					// change the values in single format map
+					singleValuesMap = stringToDate(languageWS, singleValuesMap);
+					singleValuesMap = numberFormat(languageWS, singleValuesMap);
+					// now we have map populated ... so populate bean
+					if (singleValuesMap.get(keyfellow).equals(strNA)) {
+						objFundFactsData.setIsfELLow(true);
+					}
+					if (salseChargeSectionHideClasses.contains(singleValuesMap.get(keyfundclass))) {
+						objFundFactsData.setFelFundClass(true);
+					}
+					if (salseChargeSectionDeferedHideClasses.contains(singleValuesMap.get(keyfundclass))) {
+						objFundFactsData.setDeferFundClass(true);
+					}
+					if (iOClasses.contains(singleValuesMap.get(keyfundclass))) {
+						objFundFactsData.setIOClass(true);
 					}
 
-					// Assets Mix List
-					JSONArray arrAssetMix = getJsonArray("assetMixes", jsonObject);
-					if (null != arrAssetMix && arrAssetMix.length() > 0) {
-						objFundFactsData.setAssetMixAvailable(true);
-						List<AssetMix> assetList = new ArrayList<>();
-						LOG.trace("assetmix size= {} ", arrAssetMix.length());
-						for (int i = 0; i < arrAssetMix.length(); i++) {
-							JSONObject objAsset = arrAssetMix.getJSONObject(i);
-							String assetName = objAsset.get("name") != null ? objAsset.get("name").toString() : "";
-							String assetMixPercentage = objAsset.get("percentage") != null ? objAsset.get("percentage").toString()
-									: "";
-							String colourCd = objAsset.get("colourCd") != null ? objAsset.get("colourCd").toString() : "";
-							AssetMix objAssets = new AssetMix(assetName, assetMixPercentage, colourCd);
-							assetList.add(objAssets);
-						}
-						LOG.trace("AssetListSize={} ", assetList.size());
-						objFundFactsData.setAssetMixes(assetList);
+					// Need to get the first year so setting up in single value map
+					JsonArray advisorCommisionDCS = jsonObject.get("dscList").getAsJsonArray();
+					if (advisorCommisionDCS.size() > 0) {
+						String value = advisorCommisionDCS.get(0) != null ? advisorCommisionDCS.get(0).getAsString() : "";
+						LOG.trace(value, "{} value in dscList");
+						singleValuesMap.put("advisor_commision_DCS", value);
 					} else {
-						LOG.trace("Could not find the assetmix list from WS. Key -assetMixes");
+						LOG.trace("dscList is size = 0");
 					}
 
-					// Fund Performance List
-					JSONArray arrPerformanceData = getJsonArray("performanceData", jsonObject);
-					if (null != arrPerformanceData && arrPerformanceData.length() > 0) {
-						List<PerformanceData> performanceList = new ArrayList<>();
-						LOG.trace("arrPerformanceData ={} ", arrPerformanceData.length());
-						for (int i = 0; i < arrPerformanceData.length(); i++) {
-							JSONObject objPerformance = arrPerformanceData.getJSONObject(i);
-							String returnYear = objPerformance.get("year") != null ? objPerformance.get("year").toString() : "";
-							String returnForYear = objPerformance.get("percentage") != null
-									? objPerformance.get("percentage").toString()
-									: "";
-							String colourCd = objPerformance.get("colourCd") != null ? objPerformance.get("colourCd").toString() : "";
-							PerformanceData objPerformances = new PerformanceData(returnYear, returnForYear, colourCd);
-							performanceList.add(objPerformances);
-						}
-						objFundFactsData.setPerformanceData(performanceList);
-					} else {
-						LOG.trace("arrPerformanceData is null or zero");
+					JsonArray advisorCommisionLLSC = jsonObject.get("llscList").getAsJsonArray();
+					if (advisorCommisionLLSC.size() > 0) {
+						String value = advisorCommisionLLSC.get(0) != null ? advisorCommisionLLSC.get(0).getAsString() : "";
+						LOG.trace(value, " {} LLSC");
+						singleValuesMap.put("advisor_commision_LLSC", value);
 					}
 
-					// Guarantees list
-					JSONArray arrGuarantees = getJsonArray("guarantees", jsonObject);
-					if (null != arrGuarantees && arrGuarantees.length() > 0) {
-						List<Guarantee> garList = new ArrayList<>();
-						LOG.trace("FROM WS arrGuarantees.length()={} ", arrGuarantees.length());
-						for (int i = 0; i < arrGuarantees.length(); i++) {
-							JSONObject objGuarantey = arrGuarantees.getJSONObject(i);
-							String seriesName = "";
-							seriesName = objGuarantey.get("series") != null ? objGuarantey.get("series").toString() : "";
-							String minInvestment = objGuarantey.get("minimumInvestment") != null
-									? objGuarantey.get("minimumInvestment").toString().trim()
-									: "";
-							String mer = objGuarantey.get("MER") != null ? objGuarantey.get("MER").toString().trim() : "";
-							String netAsset = objGuarantey.get("netAsset") != null ? objGuarantey.get("netAsset").toString().trim()
-									: "";
-							String numberUnits = objGuarantey.get("numberUnits") != null
-									? objGuarantey.get("numberUnits").toString().trim()
-									: "";
-							if (!netAsset.trim().equals("")) {
-								if (languageWS.equalsIgnoreCase("fr")) {
-									netAsset = netAsset.replace(".", ",") + " $";
-								} else {
-									netAsset = "$" + netAsset;
-								}
-							}
-							if (!minInvestment.trim().equals("")) {
-								minInvestment = getFormatedCurrency(minInvestment, languageWS);
-								if (languageWS.equalsIgnoreCase("fr")) {
-									minInvestment = minInvestment.trim().substring(0, minInvestment.lastIndexOf(',')) + " $";
-								} else {
-									minInvestment = minInvestment.trim().substring(0, minInvestment.lastIndexOf('.'));
-								}
-							}
-
-							if (!numberUnits.trim().equals("") && languageWS.equalsIgnoreCase("fr")) {
-								numberUnits = numberUnits.replace(".", ",");
-							}
-							// boolean guarantyColDisplay = (seriesName == null ||
-							// before adding to bean - need to format for lang
-							Guarantee objGuarantee = new Guarantee(seriesName, minInvestment,
-									getFormatedCurrency(mer, languageWS).replaceAll("\\$", ""), netAsset, numberUnits);
-							garList.add(objGuarantee);
-						}
-						objFundFactsData.setGuarantees(garList);
-					} else {
-						LOG.trace("guarantees list is null or size=0");
+					String riskRatingWS = singleValuesMap.get(keyriskratingvalue);
+					LOG.trace("riskRatingWS >>{} ", riskRatingWS);
+					if (riskRatingWS.equals(lowstringEN) || riskRatingWS.equals(lowstringFR)) {
+						objFundFactsData.setLowRisk(true);
+					} else if (riskRatingWS.equals(lowtomedstringEN) || riskRatingWS.equals(lowtomedstringFR)) {
+						objFundFactsData.setLowMedRisk(true);
+					} else if (riskRatingWS.equals(medstringEN) || riskRatingWS.equals(medstringFR)) {
+						objFundFactsData.setMedRisk(true);
+					} else if (riskRatingWS.equals(medtohighstringEN) || riskRatingWS.equals(medtohighstringFR)) {
+						objFundFactsData.setMedHighRisk(true);
+					} else if (riskRatingWS.equals(highstringEN) || riskRatingWS.equals(highstringFR)) {
+						objFundFactsData.setHighRisk(true);
 					}
-
-					// Holding List
-					JSONArray arrHoldings = getJsonArray("holdings", jsonObject);
-					if (null != arrHoldings && arrHoldings.length() > 0) {
-						objFundFactsData.setTop10HoldingsAvailable(true);
-
-						LOG.trace("arrHoldings.length()>>{} ", arrHoldings.length());
-						List<Holding> holdingList = new ArrayList<>();
-						for (int i = 0; i < arrHoldings.length(); i++) {
-							JSONObject objHoldings = arrHoldings.getJSONObject(i);
-							String holdingName = objHoldings.get("holdingName") != null ? objHoldings.get("holdingName").toString()
-									: "";
-							String holdingPercentage = objHoldings.get("investmentPercentage") != null
-									? objHoldings.get("investmentPercentage").toString()
-									: "";
-							List<String> subHoldingNames = null;
-							JSONArray arrSubHoldings = getJsonArray("subHoldingNames", objHoldings);
-							if (arrSubHoldings != null) {
-								// initialize array list.
-								subHoldingNames = new ArrayList<>();
-								for (int j = 0; j < arrSubHoldings.length(); j++) {
-									String strSubholding = (String) arrSubHoldings.get(j);
-									if (strSubholding != null && !strSubholding.trim().equals("")) {
-										subHoldingNames.add(strSubholding);
-									}
-								}
-								LOG.trace("Subholding list size ={} ", subHoldingNames.size());
-
-							} else {
-								LOG.trace("arrSubHoldings is null -----------");
-							}
-							Holding objHolding = new Holding(holdingName, holdingPercentage, subHoldingNames);
-							holdingList.add(objHolding);
-						}
-						objFundFactsData.setHoldings(holdingList);
+					if (!(singleValuesMap.get(keyreturndate).trim().equals(""))) {
+						objFundFactsData.setReturnRate(true);
 					}
-
-					// Reason to invest
-					JSONArray arrReasonsToInvest = jsonObject.getJSONArray("reasonsToInvest");
-					if (null != arrReasonsToInvest && arrReasonsToInvest.length() > 0) {
-						LOG.trace("arrReasonsToInvest.length()>>{} ", arrReasonsToInvest.length());
-						List<String> reasonList = new ArrayList<>();
-						for (int i = 0; i < arrReasonsToInvest.length(); i++) {
-							String reason = arrReasonsToInvest.get(i) != null ? arrReasonsToInvest.get(i).toString().trim() : "";
-							reasonList.add(reason);
-						}
-						objFundFactsData.setReasonsToInvest(reasonList);
-					}
-					// Reason to invest
-					JSONArray arrllscList = jsonObject.getJSONArray("llscList");
-					if (null != arrllscList && arrllscList.length() > 0) {
-						LOG.trace("arrllscList.length()>>{} ", arrllscList.length());
-						List<String> llscList = new ArrayList<>();
-						for (int i = 0; i < arrllscList.length(); i++) {
-							String value = arrllscList.get(i) != null ? arrllscList.get(i).toString() : "";
-							llscList.add(value);
-						}
-						objFundFactsData.setLlscList(llscList);
-					}
-
-					// DCS List
-					JSONArray arrDCSList = jsonObject.getJSONArray("dscList");
-					if (null != arrDCSList && arrDCSList.length() > 0) {
-						LOG.trace("arrDCSList.length()>>{} ", arrDCSList.length());
-						List<String> dcsList = new ArrayList<>();
-						for (int i = 0; i < arrDCSList.length(); i++) {
-							String value = arrDCSList.get(i) != null ? arrDCSList.get(i).toString() : "";
-							dcsList.add(value);
-						}
-						objFundFactsData.setDscList(dcsList);
-						LOG.trace("dcsList size={} ", objFundFactsData.getDscList().size());
-					}
+					objFundFactsData.setSingleValueMap(singleValuesMap);
 				} else {
-					objFundFactsData.setReturnCode(returnCode);
+					LOG.trace("** SINGLE VALUE MAP IS NULL for key={} ", keySingleValuesMap);
+				}
+
+				// Assets Mix List
+				JsonArray arrAssetMix = getJsonArray("assetMixes", jsonObject);
+				if (null != arrAssetMix && arrAssetMix.size() > 0) {
+					objFundFactsData.setAssetMixAvailable(true);
+					List<AssetMix> assetList = new ArrayList<>();
+					LOG.trace("assetmix size= {} ", arrAssetMix.size());
+					for (int i = 0; i < arrAssetMix.size(); i++) {
+						JsonObject objAsset = arrAssetMix.get(i).getAsJsonObject();
+						String assetName = objAsset.get("name") != null ? objAsset.get("name").getAsString() : "";
+						String assetMixPercentage = objAsset.get("percentage") != null ? objAsset.get("percentage").getAsString()
+								: "";
+						String colourCd = objAsset.get("colourCd") != null ? objAsset.get("colourCd").getAsString() : "";
+						AssetMix objAssets = new AssetMix(assetName, assetMixPercentage, colourCd);
+						assetList.add(objAssets);
+					}
+					LOG.trace("AssetListSize={} ", assetList.size());
+					objFundFactsData.setAssetMixes(assetList);
+				} else {
+					LOG.trace("Could not find the assetmix list from WS. Key -assetMixes");
+				}
+
+				// Fund Performance List
+				JsonArray arrPerformanceData = getJsonArray("performanceData", jsonObject);
+				if (null != arrPerformanceData && arrPerformanceData.size() > 0) {
+					List<PerformanceData> performanceList = new ArrayList<>();
+					LOG.trace("arrPerformanceData ={} ", arrPerformanceData.size());
+					for (int i = 0; i < arrPerformanceData.size(); i++) {
+						JsonObject objPerformance = arrPerformanceData.get(i).getAsJsonObject();
+						String returnYear = objPerformance.get("year") != null ? objPerformance.get("year").getAsString() : "";
+						String returnForYear = objPerformance.get("percentage") != null
+								? objPerformance.get("percentage").getAsString()
+								: "";
+						String colourCd = objPerformance.get("colourCd") != null ? objPerformance.get("colourCd").getAsString()
+								: "";
+						PerformanceData objPerformances = new PerformanceData(returnYear, returnForYear, colourCd);
+						performanceList.add(objPerformances);
+					}
+					objFundFactsData.setPerformanceData(performanceList);
+				} else {
+					LOG.trace("arrPerformanceData is null or zero");
+				}
+
+				// Guarantees list
+				JsonArray arrGuarantees = getJsonArray("guarantees", jsonObject);
+				if (null != arrGuarantees && arrGuarantees.size() > 0) {
+					List<Guarantee> garList = new ArrayList<>();
+					LOG.trace("FROM WS arrGuarantees.length()={} ", arrGuarantees.size());
+					for (int i = 0; i < arrGuarantees.size(); i++) {
+						JsonObject objGuarantey = arrGuarantees.get(i).getAsJsonObject();
+						String seriesName = "";
+						seriesName = objGuarantey.get("series") != null ? objGuarantey.get("series").getAsString() : "";
+						String minInvestment = objGuarantey.get("minimumInvestment") != null
+								? objGuarantey.get("minimumInvestment").getAsString().trim()
+								: "";
+						String mer = objGuarantey.get("MER") != null ? objGuarantey.get("MER").getAsString().trim() : "";
+						String netAsset = objGuarantey.get("netAsset") != null ? objGuarantey.get("netAsset").getAsString().trim()
+								: "";
+						String numberUnits = objGuarantey.get("numberUnits") != null
+								? objGuarantey.get("numberUnits").getAsString().trim()
+								: "";
+						if (!netAsset.trim().equals("")) {
+							if (languageWS.equalsIgnoreCase("fr")) {
+								netAsset = netAsset.replace(".", ",") + " $";
+							} else {
+								netAsset = "$" + netAsset;
+							}
+						}
+						if (!minInvestment.trim().equals("")) {
+							minInvestment = getFormatedCurrency(minInvestment, languageWS);
+							if (languageWS.equalsIgnoreCase("fr")) {
+								minInvestment = minInvestment.trim().substring(0, minInvestment.lastIndexOf(',')) + " $";
+							} else {
+								minInvestment = minInvestment.lastIndexOf('.') != -1 ? minInvestment.trim().substring(0, minInvestment.lastIndexOf('.')) : minInvestment;
+							}
+						}
+
+						if (!numberUnits.trim().equals("") && languageWS.equalsIgnoreCase("fr")) {
+							numberUnits = numberUnits.replace(".", ",");
+						}
+						// boolean guarantyColDisplay = (seriesName == null ||
+						// before adding to bean - need to format for lang
+						Guarantee objGuarantee = new Guarantee(seriesName, minInvestment,
+								getFormatedCurrency(mer, languageWS).replaceAll("\\$", ""), netAsset, numberUnits);
+						garList.add(objGuarantee);
+					}
+					objFundFactsData.setGuarantees(garList);
+				} else {
+					LOG.trace("guarantees list is null or size=0");
+				}
+
+				// Holding List
+				JsonArray arrHoldings = getJsonArray("holdings", jsonObject);
+				if (null != arrHoldings && arrHoldings.size() > 0) {
+					objFundFactsData.setTop10HoldingsAvailable(true);
+
+					LOG.trace("arrHoldings.length()>>{} ", arrHoldings.size());
+					List<Holding> holdingList = new ArrayList<>();
+					for (int i = 0; i < arrHoldings.size(); i++) {
+						JsonObject objHoldings = arrHoldings.get(i).getAsJsonObject();
+						String holdingName = objHoldings.get("holdingName") != null ? objHoldings.get("holdingName").getAsString()
+								: "";
+						String holdingPercentage = objHoldings.get("investmentPercentage") != null
+								? objHoldings.get("investmentPercentage").getAsString()
+								: "";
+						List<String> subHoldingNames = null;
+						JsonArray arrSubHoldings = getJsonArray("subHoldingNames", objHoldings);
+						if (arrSubHoldings != null) {
+							// initialize array list.
+							subHoldingNames = new ArrayList<>();
+							for (int j = 0; j < arrSubHoldings.size(); j++) {
+								String strSubholding = arrSubHoldings.get(j).getAsString();
+								if (strSubholding != null && !strSubholding.trim().equals("")) {
+									subHoldingNames.add(strSubholding);
+								}
+							}
+							LOG.trace("Subholding list size ={} ", subHoldingNames.size());
+
+						} else {
+							LOG.trace("arrSubHoldings is null -----------");
+						}
+						Holding objHolding = new Holding(holdingName, holdingPercentage, subHoldingNames);
+						holdingList.add(objHolding);
+					}
+					objFundFactsData.setHoldings(holdingList);
+				}
+
+				// Reason to invest
+				JsonArray arrReasonsToInvest = jsonObject.get("reasonsToInvest").getAsJsonArray();
+				if (null != arrReasonsToInvest && arrReasonsToInvest.size() > 0) {
+					LOG.trace("arrReasonsToInvest.length()>>{} ", arrReasonsToInvest.size());
+					List<String> reasonList = new ArrayList<>();
+					for (int i = 0; i < arrReasonsToInvest.size(); i++) {
+						String reason = arrReasonsToInvest.get(i) != null ? arrReasonsToInvest.get(i).getAsString().trim() : "";
+						reasonList.add(reason);
+					}
+					objFundFactsData.setReasonsToInvest(reasonList);
+				}
+				// Reason to invest
+				JsonArray arrllscList = jsonObject.get("llscList").getAsJsonArray();
+				if (null != arrllscList && arrllscList.size() > 0) {
+					LOG.trace("arrllscList.length()>>{} ", arrllscList.size());
+					List<String> llscList = new ArrayList<>();
+					for (int i = 0; i < arrllscList.size(); i++) {
+						String value = arrllscList.get(i) != null ? arrllscList.get(i).getAsString() : "";
+						llscList.add(value);
+					}
+					objFundFactsData.setLlscList(llscList);
+				}
+
+				// DCS List
+				JsonArray arrDCSList = jsonObject.get("dscList").getAsJsonArray();
+				if (null != arrDCSList && arrDCSList.size() > 0) {
+					LOG.trace("arrDCSList.length()>>{} ", arrDCSList.size());
+					List<String> dcsList = new ArrayList<>();
+					for (int i = 0; i < arrDCSList.size(); i++) {
+						String value = arrDCSList.get(i) != null ? arrDCSList.get(i).getAsString() : "";
+						dcsList.add(value);
+					}
+					objFundFactsData.setDscList(dcsList);
+					LOG.trace("dcsList size={} ", objFundFactsData.getDscList().size());
 				}
 			} else {
-				LOG.trace("No json for node={} ", strfundFactsResponse);
+				objFundFactsData.setReturnCode(returnCode);
 			}
-		} catch (JSONException e) {
-			LOG.error("Error :: populateJsonValue :: {}", e);
+		} else {
+			LOG.trace("No json for node={} ", strfundFactsResponse);
 		}
 		return objFundFactsData;
 	}

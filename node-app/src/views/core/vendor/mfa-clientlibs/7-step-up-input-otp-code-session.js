@@ -176,12 +176,16 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
     waitLoader.noWaitLoader = false;
     var selectedNumber = this.clientContext.otpSelection.maskedPhoneNo;
     if(!this.alreadyLoaded){ 
-
-      utag.link({
-        ev_type: 'other',
-        ev_action: 'clk',
-        ev_title: 'verify-number-modal'
-        })
+      try{
+        utag.link({
+          ev_type: 'other',
+          ev_action: 'clk',
+          ev_title: 'verify-number-modal'
+        });
+      }
+      catch(error){
+        console.error(error);
+      }
 
       $.get("/content/dam/sunlife/external/signin/transmit/html/"+lang+"/step-up-input-otp-code.html", function(data){
         self.alreadyLoaded = true;
@@ -242,12 +246,17 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       console.log("actionContext :"+_this.actionContext);
     }
 
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'verify-number:back'
-    });
-        
+    try{
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'verify-number:back'
+      });
+    }
+    catch(error){
+      console.error(error);
+    }
+
     const escapeOptions = _this.actionContext.getEscapeOptions();
     const cancelOption = escapeOptions.filter(function (option) {
         return option.getId() === "cancel";
@@ -292,13 +301,18 @@ function StepUpOTPSession(title, username, possibleTargets, autoExecedTarget) {
       }, 
       30000
     );
-
-    utag.link({
-      ev_type: 'other',
-      ev_action: 'clk',
-      ev_title: 'verify-number:didn\'t-receive-code'
-    });
     
+    try{
+      utag.link({
+        ev_type: 'other',
+        ev_action: 'clk',
+        ev_title: 'verify-number:didn\'t-receive-code'
+      });
+    }
+    catch(error){
+      console.error(error);
+    }
+        
     $("#otp-resend-alert-msg").removeClass("hidden");
     $("#step-up-input-otp-code-screen-input_resend_button").hide();
     var resend = com.ts.mobile.sdk.OtpInputRequestResend.createOtpResendRequest();

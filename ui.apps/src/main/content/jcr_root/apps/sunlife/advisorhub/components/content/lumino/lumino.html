@@ -2,15 +2,16 @@
 
 <div data-lumino-widget='ProviderSearchLauncher'
      data-sly-use.lumino="ca.sunlife.web.cms.advisorhub.models.LuminoModel"
+     data-lumino-language='${lumino.language}'
      data-lumino-default-location='${properties.location}'
      data-lumino-default-specialty='${properties.specialty}'
-     data-lumino-language='${lumino.language}'
+     data-lumino-init-mode='LUMINO'
+     data-lumino-test-host='https://sit-luminohealth.ca.sunlife'
+     data-lumino-search-modes='SPECIALTY,TEXT'
      data-lumino-google-api-key='${currentStyle.googleapikey}'
-     data-lumino-service-host='services.sunlife.com'
-     data-lumino-redirect-host='${lumino.redirectHost}'
-     data-lumino-partner-name=' ${currentStyle.partnername}'
-     data-lumino-page-name='${lumino.analyticsName}'
-     data-title="${properties.dataTitle}">
-</div>
-<script src="https://luminohealth.sunlife.ca/lumino-ps-launcher-widget/js/luminowidget.bundle.js"></script>
-
+     data-lumino-linkedfrom='slfadvisorhub:${lumino.analyticsName}'
+     data-lumino-target-new-tab
+     data-lumino-header-text=' '
+     data-lumino-footer-text=''
+></div>
+<script src="https://luminohealth.sunlife.ca/lumino-ps-launcher-widget/js/securewidget.bundle.js"></script>

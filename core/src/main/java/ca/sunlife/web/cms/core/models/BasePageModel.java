@@ -38,8 +38,6 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.settings.SlingSettingsService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -1074,7 +1072,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       LOG.debug("Inside advisor page block");
       try {
         processDataForAdvisorPages();
-      } catch (ApplicationException | SystemException | JSONException e) {
+      } catch (ApplicationException | SystemException e) {
         LOG.error("Error while processing advisor data {}", e);
       }
     }
@@ -1427,11 +1425,9 @@ public void setDisableContextHubTags(String disableContextHubTags) {
    *           the application exception
    * @throws SystemException
    *           the system exception
-   * @throws JSONException
-   *           the JSON exception
    */
   public void processDataForAdvisorPages() throws LoginException, RepositoryException,
-      ApplicationException, SystemException, JSONException {
+      ApplicationException, SystemException {
     LOG.debug("Entry :: BasePageModel :: processDataForAdvisorPages :: ");
     String advisorId = null;
     if (request.getRequestPathInfo().getSelectors().length > 0) {
@@ -1447,7 +1443,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       final String advisorData = advisorDetailService.getAdvisorDetails(pageLocaleDefault,
           advisorType, advisorId);
       if (null != advisorData) {
-        final JSONObject inputJson = new JSONObject(advisorData);
+        final JsonObject inputJson = new Gson().fromJson(advisorData, JsonObject.class);
         pageTitle = getPageTitle(getAdvisorTitle(inputJson));
       }
     }
@@ -1461,27 +1457,24 @@ public void setDisableContextHubTags(String disableContextHubTags) {
    * @param advisorData
    *          the input json
    * @return the advisor title
-   * @throws JSONException
-   *           the JSON exception
    */
-  public String getAdvisorTitle(final JSONObject advisorData) throws JSONException {
+  public String getAdvisorTitle(final JsonObject advisorData) {
     LOG.debug("Entry :: BasePageModel :: getAdvisorTitle :: ");
     String advisorTitle = null;
-    final JSONObject inputJson = new JSONObject(advisorData);
-    if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
-        && ! inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+    if (advisorData.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+        && ! advisorData.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT).toString()
             .equals(AdvisorDetailConstants.ERROR_CODE_SUCCESS_CONSTANT)) {
       LOG.debug("BasePageModel :: getAdvisorTitle :: advisor details are not available");
       return advisorTitle;
     }
     if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
-      final JSONObject advisorCorpJson = advisorData
-          .getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
-      advisorTitle = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
+      final JsonObject advisorCorpJson = advisorData
+          .getAsJsonObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
+      advisorTitle = advisorCorpJson.get(AdvisorDetailConstants.CORP_NAME_CONSTANT).toString();
     } else {
-      final JSONObject advisorStdJson = advisorData
-          .getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
-      advisorTitle = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
+      final JsonObject advisorStdJson = advisorData
+          .getAsJsonObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
+      advisorTitle = advisorStdJson.get(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT).toString();
     }
     LOG.debug("Entry :: BasePageModel :: getAdvisorTitle :: advisorTitle :: {}", advisorTitle);
     return advisorTitle;
