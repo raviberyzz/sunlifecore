@@ -618,13 +618,23 @@ class NewsTiles extends React.Component {
     });
     /* homepage analytics ends here */
 	if (this.state.filterNewsList[key].linkOption == "newWindow") {
-		window.open(this.state.filterNewsList[key].pagePath, "_blank");
+		window.open(this.state.filterNewsList[key].pagePath, "_blank","noreferrer");
 	} else if (this.state.filterNewsList[key].linkOption == "lightbox") {
 		window[this.state.filterNewsList[key].pagePath]();
 	} else {
 		location.href = this.state.filterNewsList[key].pagePath;
 	}
   }
+/*aggregateTileClick(key, index, event) {
+if (this.state.filterNewsList[key].linkOption == "newWindow") {
+ window.open(this.state.filterNewsList[key].pagePath, "_blank","noreferrer");
+} else if (this.state.filterNewsList[key].linkOption == "lightbox") {
+ window[this.state.filterNewsList[key].pagePath]();
+} else {
+ location.href = this.state.filterNewsList[key].pagePath;
+}
+}
+*/
 
   render() {
     return (
@@ -731,6 +741,7 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
+                                  {/*<a class="title" onClick={this.aggregateTileClick.bind(this, key, index)}>*/}
                                   <a class="title" href={this.state.filterNewsList[key].pagePath}>
                                     {this.state.filterNewsList[key].heading}
                                   </a>
