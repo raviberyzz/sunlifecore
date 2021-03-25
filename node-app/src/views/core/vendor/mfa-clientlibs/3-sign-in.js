@@ -57,26 +57,31 @@ function onSignInClick() {
         hideSpinner();
         journeyEnded(clientContext);
         console.error("Authenticate Error: ", error);
-        if(otpEntryAttemptFlag !== 0){
-            if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication || error.getErrorCode() ===  com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
-                const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
-                clientContext["shouldStoreJSON"] = true;
-                journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
-                    if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
-                        if(otpEntryAttemptFlag === 2){
-                            displaylockedOutMessage();
+        if('target_url' in clientContext){
+            window.location.href = clientContext.target_url;
+        }
+        else{       
+            if(otpEntryAttemptFlag !== 0){
+                if(error.getErrorCode() === com.ts.mobile.sdk.AuthenticationErrorCode.Communication || error.getErrorCode() ===  com.ts.mobile.sdk.AuthenticationErrorCode.AppImplementation){
+                    const journeyName = 'Consumer_SignIn_FetchPartyId_isUserLocked';
+                    clientContext["shouldStoreJSON"] = true;
+                    journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
+                        if((String(clientContext['json_data'].locked).toLowerCase() == "true")){
+                            if(otpEntryAttemptFlag === 2){
+                                displaylockedOutMessage();
+                            }
+                            else{
+                                displayComeBackLaterMessage();
+                            }
                         }
                         else{
-                            displayComeBackLaterMessage();
+                            sessionTimeout.showErrorMessage();
                         }
-                    }
-                    else{
-                        sessionTimeout.showErrorMessage();
-                    }
-                });
-                return;
+                    });
+                    return;
+                }
+                sessionTimeout.showErrorMessage();
             }
-            sessionTimeout.showErrorMessage();
         }
     });
     
