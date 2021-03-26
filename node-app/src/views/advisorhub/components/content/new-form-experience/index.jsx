@@ -582,7 +582,9 @@ class NewFormExperience extends React.Component {
                     },
                     {
                         Header: `${this.props.tableHeaderCol2}`,
-                        accessor: 'formInformation',
+                        accessor: function formInformation(obj){
+                            return <div dangerouslySetInnerHTML={{__html: obj.formInformation}} />
+                        },
                     },
                     {
                         Header: `${this.props.tableHeaderCol3}`,
