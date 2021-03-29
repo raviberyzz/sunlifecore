@@ -14,10 +14,13 @@ $(document).ready(function () {
     }
     $.each($('link'), function (index, value) {
         if (value.rel == "alternate") {
-            // to find either combined sunnet domain and dynamic fund pages or dynamic fund pages
-            if (((window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) && (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) ||
-                (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) {
+            // to find either combined sunnet domain and dynamic fund pages or dynamic fund pages // modified for gif-funds
+            if ((((window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) && (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) ||
+                (window.location.href.toLowerCase().indexOf("/slgi-funds") > -1)) || (((window.location.href.toLowerCase().indexOf("sunnet.sunlife.com") > -1) && (window.location.href.toLowerCase().indexOf("/gifs-funds") > -1)) ||
+                (window.location.href.toLowerCase().indexOf("/gifs-funds") > -1))) {
+
                 var altLang = window.location.href; // set a variable
+
                 // logic to replace (sunlifeglobalinvestments/placementsmondiauxsunlife) with secure sunnet domain for (adv/inv) users
                 if (pageCategory.toLowerCase() == "adv" || pageCategory.toLowerCase() == "inv") {
                     if (altLang.indexOf("sunlifeglobalinvestments.com") < -1) {
@@ -26,6 +29,7 @@ $(document).ready(function () {
                         altLang = altLang.replace("sunlifeglobalinvestments.com", "sunnet.sunlife.com/Slgi");
                     }
                 }
+
                 // check for (English/French) pages and push their respective urls to the array
                 if (utag_data.page_language == "en") {
                     linkRow[0] = altLang;
@@ -34,16 +38,23 @@ $(document).ready(function () {
                     } else if (altLang.indexOf("=en") > -1) {
                         altLang = altLang.replace("=en", "=fr");
                     }
+
                     // based on SEO tagging rules, en to fr conversion on dynamic fund pages
                      if (pageCategory.toLowerCase() == "adv" || pageCategory.toLowerCase() == "inv") {
                          if (altLang.indexOf("/en/slgi-funds") > -1) {
                         	altLang = altLang.replace("/en/slgi-funds", "/fr/slgi-funds");
+                         } else if (altLang.indexOf("/en/gifs-funds") > -1) {
+                        	altLang = altLang.replace("/en/gifs-funds", "/fr/gifs-funds");
                          }
                      } else if(pageCategory.toLowerCase() == "products"){
+
 						if (altLang.indexOf("/en/slgi-funds") > -1) {
                         	altLang = altLang.replace("sunlifeglobalinvestments.com/en/slgi-funds", "placementsmondiauxsunlife.com/fr/slgi-funds");
+                         } else if (altLang.indexOf("/en/gifs-funds") > -1) {
+                        	altLang = altLang.replace("sunlifeglobalinvestments.com/en/gifs-funds", "placementsmondiauxsunlife.com/fr/gifs-funds");
                          }
                      }
+
                     linkRow[1] = altLang;
                 } else if (utag_data.page_language == "fr") {
                     linkRow[1] = altLang;
@@ -56,10 +67,14 @@ $(document).ready(function () {
                     if (pageCategory.toLowerCase() == "adv" || pageCategory.toLowerCase() == "inv") {
                          if (altLang.indexOf("/fr/slgi-funds") > -1) {
                         	 altLang = altLang.replace("/fr/slgi-funds", "/en/slgi-funds");
+                         } else if (altLang.indexOf("/fr/gif-funds") > -1) {
+                        	 altLang = altLang.replace("/fr/gif-funds", "/en/gif-funds");
                          }
                      } else if(pageCategory.toLowerCase() == "products"){
 						if (altLang.indexOf("/fr/slgi-funds") > -1) {
                         	altLang = altLang.replace("placementsmondiauxsunlife.com/fr/slgi-funds", "sunlifeglobalinvestments.com/en/slgi-funds");
+                         } else if (altLang.indexOf("/fr/gifs-funds") > -1) {
+                        	altLang = altLang.replace("placementsmondiauxsunlife.com/fr/gifs-funds", "sunlifeglobalinvestments.com/en/gifs-funds");
                          }
                      }
                     linkRow[0] = altLang;

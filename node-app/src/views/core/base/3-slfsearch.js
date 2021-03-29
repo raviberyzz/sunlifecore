@@ -422,7 +422,6 @@ $(document).ready(function () {
         init();
     }(jQuery));
 
-
     /* global.search.js*/
 
     /* globals jQuery, setTimeout, clearTimeout, __slf_search_config */
@@ -659,7 +658,22 @@ $(document).ready(function () {
             }
         }
 
-        init();
+        function checkHeader2(){
+            if($(".desktop-search-bar").length==0){
+                setTimeout(checkHeader2, 500);
+            }   
+            else{
+                init();
+            }
+        }
+        
+        if(typeof ContextHub == "undefined"){
+            init();
+         }
+         else{
+            checkHeader2();
+         }
+        
         $(init);
     }(jQuery));
 

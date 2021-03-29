@@ -98,10 +98,14 @@ table{
               color: $medium-yellow-background;
               font-weight: bold;
               display: inline;
-              padding-right: .5rem;
+              // padding-right: .5rem;
+              padding-right: 6px;
               width: 1rem;
               // padding-left: 16px;
               margin-left: -1em;
+          }
+          ol li::before{
+            content: ""
           }
        }
       }

@@ -20,10 +20,10 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonObject;
 
 import ca.sunlife.web.cms.core.constants.UserInfoConstants;
 
@@ -189,35 +189,33 @@ public class UserInfo {
             }
           }
         }
-        JSONObject groups = new JSONObject();
+        JsonObject groups = new JsonObject();
         user.memberOf().forEachRemaining(group -> {
-          try {
-            groups.put(group.getID(), true);
-          } catch (JSONException | RepositoryException e) {
-            LOG.error("Unable to read user group ", e);
-          }
+            try {
+							groups.addProperty(group.getID(), true);
+						} catch (RepositoryException e) {
+							LOG.error("RepositoryException :: UserInfo :: iterating json :: {}", e);
+						}
         });
         profileGroups = groups.toString();
         userHome = user.getPath();
-        JSONObject profileData = new JSONObject();
-        profileData.put(UserInfoConstants.ACF2_CONSTANT, acf2Id);
-        profileData.put("authorizableId", user.getID());
-        profileData.put("displayName", userName);
-        profileData.put(UserInfoConstants.EMAIL_CONSTANT, email);
-        profileData.put(UserInfoConstants.FAMILY_NAME_CONSTANT, familyName);
-        profileData.put(UserInfoConstants.GIVEN_NAME_CONSTANT, givenName);
-        profileData.put(UserInfoConstants.BUILDING_LOCATION_CONSTANT, buildingLocation);
-        profileData.put(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
-        profileData.put(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
-        profileData.put(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
-        profileData.put("country", country);
-        profileData.put("path", userHome);
-        profileData.put("groups", groups);
+        JsonObject profileData = new JsonObject();
+        profileData.addProperty(UserInfoConstants.ACF2_CONSTANT, acf2Id);
+        profileData.addProperty("authorizableId", user.getID());
+        profileData.addProperty("displayName", userName);
+        profileData.addProperty(UserInfoConstants.EMAIL_CONSTANT, email);
+        profileData.addProperty(UserInfoConstants.FAMILY_NAME_CONSTANT, familyName);
+        profileData.addProperty(UserInfoConstants.GIVEN_NAME_CONSTANT, givenName);
+        profileData.addProperty(UserInfoConstants.BUILDING_LOCATION_CONSTANT, buildingLocation);
+        profileData.addProperty(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
+        profileData.addProperty(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
+        profileData.addProperty(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
+        profileData.addProperty("country", country);
+        profileData.addProperty("path", userHome);
+        profileData.add("groups", groups);
         profile = profileData.toString();
       } catch (RepositoryException e) {
         LOG.error("RepositoryException :: UserInfo :: init :: {}", e);
-      } catch (JSONException e) {
-        LOG.error("JSON Exceptions ", e);
       }
     }
     LOG.trace("Exit :: UserInfo :: init :: profile :: {}", profile);

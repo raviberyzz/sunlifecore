@@ -5,6 +5,10 @@ ul {
 .icon-texts {
     padding-bottom: 24px;
 }
+// for scrolling of modal
+.modal-open .modal {
+    height: auto !important;
+}
 
 // bright solutions starts here
 .cta-home-wrapper{
@@ -2657,3 +2661,10 @@ ul {
 
 /** Browser Specific CSS ends here **/
 
+// US specific megamenu padding
+.us-sunlife-content-page, .us-sunlife-home-page {
+    .nav .arrow .dropdown-toggle {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

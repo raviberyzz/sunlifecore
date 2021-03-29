@@ -38,8 +38,6 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.settings.SlingSettingsService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -311,6 +309,9 @@ public class BasePageModel {
 
   /** The master page path. */
   private String masterPagePath;
+  
+  /** The master seo canonical url. */
+  private String masterSeoCanonicalUrl;
 
   /** The Constant JCR_CONTENT_DATA_MASTER. */
   private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
@@ -371,6 +372,19 @@ public class BasePageModel {
 
   /** The disableSocialSharingTags. */
   private String disableSocialSharingTags;
+  
+  /** The disableContextHubTags. */
+  private String disableContextHubTags;
+  
+  public String getDisableContextHubTags() {
+	return disableContextHubTags;
+}
+
+public void setDisableContextHubTags(String disableContextHubTags) {
+	this.disableContextHubTags = disableContextHubTags;
+}
+/** The nonResponsive. */
+  private String nonResponsive;
   
   /**
    * @return the favIcon
@@ -978,6 +992,25 @@ public class BasePageModel {
 	}
 
 	/**
+	 * Gets the nonResponsive.
+	 *
+	 * @return the nonResponsive
+	 */
+	public String getNonResponsive() {
+		return nonResponsive;
+	}
+
+	/**
+	 * Sets the nonResponsive.
+	 *
+	 * @param nonResponsive
+	 * 			the nonResponsive to set
+	 */
+	public void setNonResponsive(String nonResponsive) {
+		this.nonResponsive = nonResponsive;
+	}
+
+	/**
    * Inits the.
    *
    * @throws LoginException
@@ -999,7 +1032,9 @@ public class BasePageModel {
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
-   
+    disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
+    nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
+    
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
    	     siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
@@ -1037,7 +1072,7 @@ public class BasePageModel {
       LOG.debug("Inside advisor page block");
       try {
         processDataForAdvisorPages();
-      } catch (ApplicationException | SystemException | JSONException e) {
+      } catch (ApplicationException | SystemException e) {
         LOG.error("Error while processing advisor data {}", e);
       }
     }
@@ -1115,14 +1150,19 @@ public class BasePageModel {
     // Sets UDO parameters
     otherUDOTagsMap = new JsonObject();
     otherUDOTagsMap.addProperty("page_canonical_url", seoCanonicalUrl); // canonical url
-
+    
     if (null != masterPagePath && masterPagePath.length() > 0 && null != seoCanonicalUrl) {
-      String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
-      otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
-          .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
-                                                           // url
-                                                           // -
-                                                           // default
+    	if(null!=canonicalUrl && null!=masterSeoCanonicalUrl && masterSeoCanonicalUrl.length()>0) {
+            otherUDOTagsMap.addProperty("page_canonical_url_default", masterSeoCanonicalUrl);
+        }else {
+        	String masterDomain = this.configService.getConfigValues(DOMAIN_STR, masterPagePath);
+            otherUDOTagsMap.addProperty("page_canonical_url_default", masterDomain
+                .concat(configService.getPageRelativeUrl(masterPagePath))); // canonical
+                                                                 // url
+                                                                 // -
+                                                                 // default
+        }
+      
     } else {
       otherUDOTagsMap.addProperty("page_canonical_url_default", seoCanonicalUrl); // canonical url
                                                                                   // -
@@ -1385,11 +1425,9 @@ public class BasePageModel {
    *           the application exception
    * @throws SystemException
    *           the system exception
-   * @throws JSONException
-   *           the JSON exception
    */
   public void processDataForAdvisorPages() throws LoginException, RepositoryException,
-      ApplicationException, SystemException, JSONException {
+      ApplicationException, SystemException {
     LOG.debug("Entry :: BasePageModel :: processDataForAdvisorPages :: ");
     String advisorId = null;
     if (request.getRequestPathInfo().getSelectors().length > 0) {
@@ -1405,7 +1443,7 @@ public class BasePageModel {
       final String advisorData = advisorDetailService.getAdvisorDetails(pageLocaleDefault,
           advisorType, advisorId);
       if (null != advisorData) {
-        final JSONObject inputJson = new JSONObject(advisorData);
+        final JsonObject inputJson = new Gson().fromJson(advisorData, JsonObject.class);
         pageTitle = getPageTitle(getAdvisorTitle(inputJson));
       }
     }
@@ -1419,27 +1457,24 @@ public class BasePageModel {
    * @param advisorData
    *          the input json
    * @return the advisor title
-   * @throws JSONException
-   *           the JSON exception
    */
-  public String getAdvisorTitle(final JSONObject advisorData) throws JSONException {
+  public String getAdvisorTitle(final JsonObject advisorData) {
     LOG.debug("Entry :: BasePageModel :: getAdvisorTitle :: ");
     String advisorTitle = null;
-    final JSONObject inputJson = new JSONObject(advisorData);
-    if (inputJson.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
-        && ! inputJson.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+    if (advisorData.has(AdvisorDetailConstants.ERROR_CODE_CONSTANT)
+        && ! advisorData.get(AdvisorDetailConstants.ERROR_CODE_CONSTANT).toString()
             .equals(AdvisorDetailConstants.ERROR_CODE_SUCCESS_CONSTANT)) {
       LOG.debug("BasePageModel :: getAdvisorTitle :: advisor details are not available");
       return advisorTitle;
     }
     if (AdvisorDetailConstants.CORP_CONSTANT.equals(advisorType)) {
-      final JSONObject advisorCorpJson = advisorData
-          .getJSONObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
-      advisorTitle = advisorCorpJson.getString(AdvisorDetailConstants.CORP_NAME_CONSTANT);
+      final JsonObject advisorCorpJson = advisorData
+          .getAsJsonObject(AdvisorDetailConstants.ADVISOR_CORP_CONSTANT);
+      advisorTitle = advisorCorpJson.get(AdvisorDetailConstants.CORP_NAME_CONSTANT).toString();
     } else {
-      final JSONObject advisorStdJson = advisorData
-          .getJSONObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
-      advisorTitle = advisorStdJson.getString(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT);
+      final JsonObject advisorStdJson = advisorData
+          .getAsJsonObject(AdvisorDetailConstants.ADVISOR_STD_CONSTANT);
+      advisorTitle = advisorStdJson.get(AdvisorDetailConstants.FORMATTED_NAME_CONSTANT).toString();
     }
     LOG.debug("Entry :: BasePageModel :: getAdvisorTitle :: advisorTitle :: {}", advisorTitle);
     return advisorTitle;
@@ -1544,12 +1579,15 @@ public class BasePageModel {
       if (null == resolver || null == resource ) {
         return;
       }
+      Map <String, String> pageAltLanguageLinks = new HashMap <>();
       final Resource altLanResource = resolver
           .getResource(resource.getPath() + "/jcr:content/alternateUrls");
       LOG.debug("Alt urls --> {}", altLanResource);
       if (null != altLanResource) {
         generatePageSpecificAlternateUrls();
-        return;
+        if(altLanguageLinks.size()==1) pageAltLanguageLinks = altLanguageLinks;
+        else return;
+       
       }
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
@@ -1573,6 +1611,12 @@ public class BasePageModel {
             final String sourcePath = liveCopy.getBlueprintPath();
             masterPagePath = sourcePath; 
             sourceResource = resolver.getResource(sourcePath);
+            	if(sourceResource!=null) {
+                	 Page page = sourceResource.adaptTo(Page.class);
+                     if (page != null) { 
+                    	 masterSeoCanonicalUrl = (null==masterSeoCanonicalUrl) ? page.getProperties().get("canonicalUrl", String.class) : masterSeoCanonicalUrl;
+                     }
+            	}	
           }
         }
       }
@@ -1605,8 +1649,14 @@ public class BasePageModel {
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));
+        
+	        if(pageAltLanguageLinks.size()==1) {
+	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
+	      	  altLanguageLinks.put(entry.getKey(), entry.getValue());
+	        }
       }
       LOG.debug("New altLanguageLinks :: {}", altLanguageLinks);
+      
     } catch (WCMException | LoginException | RepositoryException e) {
       LOG.error("Unable to get the live copy: {}", e.getMessage());
     }
@@ -1651,6 +1701,7 @@ public class BasePageModel {
     }
     altLanguageLinks = new HashMap <>();
     try {
+    	boolean isAltLangSameAsCurPgLocale = false;
       for (final Resource currentResource : alternateUrls.getChildren()) {
         final ValueMap currentResourceProperties = ResourceUtil.getValueMap(currentResource);
         final String altLang = (String) currentResourceProperties.getOrDefault("alternateLanguage",
@@ -1664,22 +1715,63 @@ public class BasePageModel {
         final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
 
         masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
+        
+        if(null!=masterPagePath)  masterSeoCanonicalUrl = masterPagePath;
+        
         altLanguageLinks.put(
             altLang.split("_") [ 0 ] + "-"
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             altSiteDomain + altSiteUrl);
+        
+    	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
+        	altLanguageLinks.put(
+                    altLang.split("_") [ 0 ] + "-"
+                        + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                        altUrl);
+        	if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
+        			isAltLangSameAsCurPgLocale=true;
+        	}
+        }
+        
       }
+      masterPagePath = masterSeoCanonicalUrl;
+ 	  
+		if (null == masterPagePath) {
+			Resource resource = resolver.getResource(currentPage.getPath());
+			if (relationshipManager.hasLiveRelationship(resource)) {
+				final LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resource, false);
+				if (liveRelationship != null) {
+					final LiveCopy liveCopy = liveRelationship.getLiveCopy();
+					if (liveCopy != null) {
+						final String sourcePath = liveCopy.getBlueprintPath();
+						masterPagePath = sourcePath;
+						Resource sourceResource = resolver.getResource(sourcePath);
+							if (sourceResource != null) {
+								Page page = sourceResource.adaptTo(Page.class);
+								if (page != null) {
+									masterSeoCanonicalUrl = page.getProperties().get("canonicalUrl", String.class);
+								}
+							}
+					}
+				}
+			}
+	
+		}
+ 	  
+ 	  
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
       if (! altLanguageLinks.isEmpty()) {
+        if(isAltLangSameAsCurPgLocale) return;
+    	
         altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
-    } catch (LoginException | RepositoryException e) {
+    } catch (LoginException | RepositoryException | WCMException e) {
       LOG.error("Error while generating alternate urls :: {}", e.getMessage());
     }
     LOG.debug("Map {}", altLanguageLinks);

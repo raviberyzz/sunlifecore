@@ -1,10 +1,16 @@
 package ca.sunlife.web.cms.advisorhub.models;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -22,7 +28,9 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import com.adobe.cq.dam.cfm.converter.ContentTypeConverter;
+import com.adobe.cq.wcm.core.components.internal.models.v1.contentfragment.DAMContentFragmentImpl;
+import com.adobe.cq.wcm.core.components.models.contentfragment.DAMContentFragment;
 import com.day.cq.wcm.api.Page;
 
 import ca.sunlife.web.cms.core.services.CoreResourceResolver;
@@ -40,32 +48,7 @@ import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 public class OutageModel {
 	
-	/** The Constant OUTAGE_DATE. */
-	private static final String OUTAGE_DATE = "outageDate";
 	
-	/** The Constant OUTAGE_TITLE. */
-	private static final String OUTAGE_TITLE = "outageTitle";
-	
-	/** The Constant OUTAGE_PAGE_LINK. */
-	private static final String OUTAGE_PAGE_LINK = "outagePageLink";
-	
-	/** The Constant OUTAGE_DESCRIPTION. */
-	private static final String OUTAGE_DESCRIPTION = "outageDescription";
-	
-	/** The Constant OUTAGE_ICON. */
-	private static final String OUTAGE_ICON = "outageIcon";
-	
-	/** The Constant OUTAGE_ICON_COLOR. */
-	private static final String OUTAGE_ICON_COLOR = "outageIconColor";
-	
-	/** The Constant OUTAGE_DATE. */
-	private static final String OUTAGE_STATUS = "outageStatus";
-	
-	/** The Constant OUTAGE_DATE. */
-	private static final String OUTAGE_TEASER = "outageTeaser";
-	
-	/** The Constant JCR_CONTENT_DATA_MASTER. */
-	private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
 	
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(OutageModel.class);
@@ -87,18 +70,41 @@ public class OutageModel {
 	@ Inject
 	private CoreResourceResolver coreResourceResolver;
 	
+	/** The date format. */
+	private String dateFormat;
+
+	  /** The page locale. */
+	private String pageLocale;
+	
+	 public String getDateFormat() {
+		return dateFormat;
+	}
+
+	public void setDateFormat(String dateFormat) {
+		this.dateFormat = dateFormat;
+	}
+
+	public String getPageLocale() {
+		return pageLocale;
+	}
+
+	public void setPageLocale(String pageLocale) {
+		this.pageLocale = pageLocale;
+	}
+
+	/** The items. */
+	private final List <DAMContentFragment> items = new ArrayList <>();
+	
+	/** The content type converter. */
+	 @ Inject
+	 private ContentTypeConverter contentTypeConverter;
+	  
+	  private static final String [ ] ELEMENT_NAMES = { "outageDate", "outageTitle", "outagePageLink", "outageDescription", "outageIcon","outageIconColor", "outageStatus","outageTeaser" };
+	
 	/** The resolver. */
 	@ ScriptVariable
 	private ResourceResolver resolver;
 	
-	/** The outage data. */
-	private final Map <String, String> outageData = new HashMap <>();
-
-	
-	public Map<String, String> getOutageData() {
-		return outageData;
-	}
-
 	/**
 	   * Gets the fragment path.
 	   *
@@ -118,69 +124,46 @@ public class OutageModel {
 	    this.fragmentPath = fragmentPath;
 	 }
 	 
+	 public Collection <DAMContentFragment> getListItems() {
+		    return Collections.unmodifiableCollection(items);
+		  }
+	 
 	 /**
 	   * Inits
 	   */
 	  @ PostConstruct
-	  public void init() {		  
+	  public void init() {	
+		  String pageLocaleDefault = StringUtils.EMPTY;
 		 if (StringUtils.isEmpty(getFragmentPath())) {
 		   return;
 		 }
 		 try {
+			 
+			 setDateFormat(configService.getConfigValues("outageDateFormat", currentPage.getPath()));
+			 final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
+		      if (null != locale && locale.length() > 0) { 
+		    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
+		        }
+
+		      setPageLocale(pageLocaleDefault);
 			 final ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-			 LOGGER.debug("Reading content fragment {}", getFragmentPath() + JCR_CONTENT_DATA_MASTER);
 			 final Resource outageResource = resourceResolver
-			          .getResource(getFragmentPath().concat(JCR_CONTENT_DATA_MASTER));
+			          .getResource(getFragmentPath());
+			
 			 if(null != outageResource) {
-				final ValueMap outageContent = outageResource.getValueMap();
-				outageData.put(OUTAGE_TITLE, outageContent.containsKey(OUTAGE_TITLE) ? outageContent.get(OUTAGE_TITLE , String.class) : StringUtils.EMPTY); 
-				outageData.put(OUTAGE_PAGE_LINK, outageContent.containsKey(OUTAGE_PAGE_LINK) ? outageContent.get(OUTAGE_PAGE_LINK , String.class) : StringUtils.EMPTY);
-				outageData.put(OUTAGE_DESCRIPTION, outageContent.containsKey(OUTAGE_DESCRIPTION) ? outageContent.get(OUTAGE_DESCRIPTION , String.class) : StringUtils.EMPTY);
-				outageData.put(OUTAGE_ICON, outageContent.containsKey(OUTAGE_ICON) ? outageContent.get(OUTAGE_ICON , String.class) : StringUtils.EMPTY);
-				outageData.put(OUTAGE_ICON_COLOR, outageContent.containsKey(OUTAGE_ICON_COLOR) ? outageContent.get(OUTAGE_ICON_COLOR , String.class) : StringUtils.EMPTY);
-				outageData.put(OUTAGE_STATUS, outageContent.containsKey(OUTAGE_STATUS) ? outageContent.get(OUTAGE_STATUS , String.class) : StringUtils.EMPTY);
-				outageData.put(OUTAGE_TEASER, outageContent.containsKey(OUTAGE_TEASER) ? outageContent.get(OUTAGE_TEASER , String.class) : StringUtils.EMPTY);
-				setOutagePublishedDate(outageContent); 
-			 } 
-		 }catch (LoginException e) {
+			 
+			  final DAMContentFragment contentFragmentModel = new DAMContentFragmentImpl(outageResource,
+		              contentTypeConverter, null, ELEMENT_NAMES);
+			  
+			  items.add(contentFragmentModel);
+			 }
+
+		 }catch (LoginException  | RepositoryException e) {
 		      LOGGER.error("Login Error while getting resource resolver : {}", e);
 		  }
 		  
 	  }
 
-	private void setOutagePublishedDate(final ValueMap outageContent) {
-		String outagePublishedDate = StringUtils.EMPTY;
-		String pageLocaleDefault = StringUtils.EMPTY;
-		
-		   try {
-			      final String locale = configService.getConfigValues("pageLocale", currentPage.getPath());
-			      if (null != locale && locale.length() > 0) {    	
-			    	  pageLocaleDefault = locale.contains("-") ? locale.split("-")[ 0 ] : locale.split("_")[0];
-			       }
-			      
-			      LOGGER.debug("Locale is {}", pageLocaleDefault);
-			      if (outageContent.containsKey(OUTAGE_DATE)) {
-			        LOGGER.debug("formatting date to {}",
-			            configService.getConfigValues("articleDateFormat", currentPage.getPath()));
-			        LOGGER.debug("Before adding locale");
-			        final SimpleDateFormat formatter = new SimpleDateFormat(
-			            configService.getConfigValues("articleDateFormat", currentPage.getPath()),
-			            new Locale(pageLocaleDefault));
-			        LOGGER.debug("after adding locale");
-			        outagePublishedDate = formatter.format(((GregorianCalendar) outageContent
-			            .getOrDefault(OUTAGE_DATE, new GregorianCalendar())).getTime());
-			        LOGGER.debug("After date formatting");
-			      }
-			      outageData.put(OUTAGE_DATE, outagePublishedDate);
-			    } catch (RepositoryException | org.apache.sling.api.resource.LoginException e) {
-			      LOGGER.error("Error ::OutageModel :: Outage date :: Exception :: {}", e);
-			    }
-		
-		
-	}
-	  
-	  
-	
-	
+
 
 }

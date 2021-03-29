@@ -9,14 +9,14 @@ package ca.sunlife.web.cms.core.beans;
 public class AssetMix {
 
 	/** The assetMixName. */
-	protected String assetMixName;
-	
+	private String assetMixName;
+
 	/** The assetMixPercentage. */
-	protected String assetMixPercentage;
-	
+	private String assetMixPercentage;
+
 	/** The colourCd. */
-	protected String colourCd;
-	
+	private String colourCd;
+
 	/**
 	 * Constructor for all fields.
 	 *
@@ -44,6 +44,7 @@ public class AssetMix {
 	 * Sets the assetMixName.
 	 *
 	 * @param assetMixName
+	 *          the assetMixName
 	 */
 	public void setAssetMixName(String assetMixName) {
 		this.assetMixName = assetMixName;
@@ -62,6 +63,7 @@ public class AssetMix {
 	 * Sets the assetMixPercentage.
 	 *
 	 * @param assetMixPercentage
+	 *          the assetMixPercentage
 	 */
 	public void setAssetMixPercentage(String assetMixPercentage) {
 		this.assetMixPercentage = assetMixPercentage;
@@ -80,6 +82,7 @@ public class AssetMix {
 	 * Sets the colourCd.
 	 *
 	 * @param colourCd
+	 *          the colourCd
 	 */
 	public void setColourCd(String colourCd) {
 		this.colourCd = colourCd;

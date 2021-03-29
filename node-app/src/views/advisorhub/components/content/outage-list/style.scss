@@ -50,7 +50,13 @@
             display: -webkit-box;
             -webkit-line-clamp: 3; /* number of lines to show */
             -webkit-box-orient: vertical;
+            p{
+                margin: 0;
+            }
         }
+    }
+    #system-outage .outage-item:first-of-type{
+        padding-top: 0;
     }
     .outage-pagination{
         display: none;
@@ -179,7 +185,7 @@
                     color: $medium-blue-color;
                     text-align: center;
                     margin: 0;
-                    
+                    padding-left: 0;
                 }
             }
             .pagination li.previous {
@@ -261,6 +267,17 @@
                     width:auto;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: $tab-screen-max) {
+    .outage-detail{
+        .outage-item-list{
+            padding: 0 10px;
+        }
+        #known-outage .outage-item-list, #planned-outage .outage-item-list{
+            padding-left: 0;
         }
     }
 }

@@ -3,9 +3,11 @@ package ca.sunlife.web.cms.core.servlets;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Enumeration;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;

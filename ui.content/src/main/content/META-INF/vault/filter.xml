@@ -25,4 +25,6 @@
     <filter root="/conf/global/settings/workflow/launcher/config/1423903076"/>
     <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update"/>
     <filter root="/var/workflow/models/workplace-benefits-drug-list-update"/>
+	<filter root="/conf/global/settings/workflow/models/sunhub-content-upload"/>
+    <filter root="/var/workflow/models/sunhub-content-upload"/>
 </workspaceFilter>

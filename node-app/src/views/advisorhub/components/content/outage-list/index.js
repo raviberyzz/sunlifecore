@@ -7,7 +7,7 @@ $(document).ready(function(){
         el.find(".txt").text(page)
         el.toggleClass("active", page === currentPage)
         el.find("a")
-            .attr("href", "#known-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", page);
         return paginationItems.add(el);
     }
@@ -19,7 +19,7 @@ $(document).ready(function(){
         el.find(".txt").text(page)
         el.toggleClass("active", page === currentPage)
         el.find("a")
-            .attr("href", "#planned-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", page);
         return paginationItems.add(el);
     }
@@ -28,12 +28,12 @@ $(document).ready(function(){
         $("#known-outage .outage-pagination-previous")
             .toggleClass("disabled", currentPage < 2)
             .find("a")
-            .attr("href", "#known-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", currentPage-1);
         $("#known-outage .outage-pagination-next")
             .toggleClass("disabled", currentPage >= totalPage)
             .find("a")
-            .attr("href", "#known-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", currentPage+1);
 
         var paginationItems = $();
@@ -70,12 +70,12 @@ $(document).ready(function(){
         $("#planned-outage .outage-pagination-previous")
             .toggleClass("disabled", currentPage < 2)
             .find("a")
-            .attr("href", "#planned-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", currentPage-1);
         $("#planned-outage .outage-pagination-next")
             .toggleClass("disabled", currentPage >= totalPage)
             .find("a")
-            .attr("href", "#planned-outage")
+            .attr("href", "#technology-whiteboard")
             .attr("page", currentPage+1);
         
         var paginationItems = $();
@@ -162,6 +162,9 @@ $(document).ready(function(){
 
     var knownNumber = $("#known-outage .outage-item-list").children().length;
     var plannedNumber = $("#planned-outage .outage-item-list").children().length;
+    if($("#known-outage").length || $("#planned-outage").length){
+        $("#known-outage").parents(".tabs-wrapper").attr("id","technology-whiteboard");
+    }
     if(knownNumber>10){
         setKnownContent(knownNumber,1)
         setKnownPagination(knownNumber,1);

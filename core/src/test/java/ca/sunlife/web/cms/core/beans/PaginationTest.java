@@ -4,7 +4,11 @@
 package ca.sunlife.web.cms.core.beans;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +32,7 @@ public class PaginationTest {
 
 	@ Mock
 	private Page currentPage;
-
+	
 	@ Mock
 	private SlingHttpServletRequest request;
 
@@ -74,5 +78,44 @@ public class PaginationTest {
         .thenReturn(TestUtils.getDummyRequestPathInfo(PAGE_NO_7));
 		pagination = new Pagination(request, 10, 92, "/content/sunlife/external/ca/en/resource9");
 		assertEquals(8, pagination.getNextPageNo());
+	}
+	
+	@ Test
+	public void testSetPrevPage() {
+		pagination.setPrevPage(10);
+		assertEquals(pagination.getPrevPage() , 10);
+	}
+	
+	@ Test
+	public void testSetCurPage() {
+		pagination.setCurPage(10);
+		assertEquals(pagination.getCurPage() , 10);
+	}
+	
+	@ Test
+	public void testSetNextPageNo() {
+		pagination.setNextPageNo(5);
+		assertEquals(pagination.getNextPageNo() , 5);
+	}
+	
+	@ Test
+	public void testSetTotalPages() {
+		pagination.setTotalPages(50);
+		assertEquals(pagination.getTotalPages() , 50);
+	}
+	
+	@ Test
+	public void testSetPageItems() {
+		List<PageItem> pageItems = new ArrayList<PageItem>();
+		PageItem pageItem = new PageItem();
+		pageItems.add(pageItem);
+		pagination.setPageItems(pageItems);
+		assertNotNull(pagination.getPageItems());
+	}
+	
+	@ Test
+	public void testSetRcordPerPageStr() {
+		pagination.setRcordPerPageStr("test");
+		assertEquals(pagination.getRcordPerPageStr() , "test");
 	}
 }
