@@ -73,7 +73,13 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
 
         }
         else if(jsonData.target != undefined && jsonData.target != ""){
-            clientContext['target_url'] = jsonData.target;
+            if(jsonData.errorRedirect){
+                // redirect later when error is caught
+                clientContext['target_url'] = jsonData.target;
+            }
+            else{
+                window.location.href = jsonData.target;
+            }
         }
     });
 }
