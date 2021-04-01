@@ -16,6 +16,7 @@
                 width: 100%;
                 margin: 0 auto;
                 border: 0;
+                position: relative;
                 .input-wrapper, .button-wrapper {
                     display: table-cell;
                     vertical-align: top;
@@ -52,6 +53,8 @@
             .search-autocomplete {
                 position:absolute;
                 z-index: 1099;
+                left: 0;
+                width: 77.2%;
             }
         }
        
@@ -119,6 +122,10 @@
                             min-width: 100%;
                         }
                     } 
+                }
+                .search-autocomplete {
+                    width: 100%;
+                    top: 48px;
                 }
             }
             
