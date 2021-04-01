@@ -26,4 +26,10 @@ $(document).ready(function(){
      });
 
  })
+ //Find people modal auto clears once modal is closed
+ $('#find-people-button-modal').on('hidden.bs.modal', function () {
+    var $findPeopleForm = $('#peopleSearchFormModal');
+    $findPeopleForm[0].reset();
+    $findPeopleForm.parsley().reset();
+})
 });
