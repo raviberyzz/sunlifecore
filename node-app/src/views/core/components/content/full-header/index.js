@@ -193,5 +193,7 @@ $(document).ready(function () {
         } else {
             $('.full-header').parents('.experiencefragment').next().addClass('margin-top-fifty');
         }
-
+        if(!$(".signin-content-page .full-header").parent().parent().hasClass("xf-content-height")){
+            $(".signin-content-page .full-header").next(".layout-container").addClass('margin-top-fifty');
+        }
 });

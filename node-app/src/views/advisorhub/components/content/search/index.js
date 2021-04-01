@@ -10,12 +10,12 @@ $(document).ready(function () {
         }
     }
 
-    setTimeout(userName,2000)
+    setTimeout(userName,2000);
 
     (function ($) {
 
         var idCnt = 0;
-        var autoCompletePrefix = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults";
+        var autoCompletePrefix = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults&uiid=aem-abc-ta";
         
         // Check if manager
         var manager =false;
@@ -273,16 +273,10 @@ $(document).ready(function () {
                 form.data("slf-search-initialized", true);
                 setupAutocomplete(form, 'mobile');
             });
-            // for left nav underline, in IE - "test-decoration-color" does not work in IE.
-            var activeLeftNav = $(".left-nav-menu .active");
-            if (null != activeLeftNav) {
-                var activeText = activeLeftNav.text();
-                activeLeftNav.html("<span>" + activeText + "</span>");
-            }
         }
 
         function checkHeader2(){
-            if($(".desktop-search-bar").length==0){
+            if($(".target .default.search").length!=0){
                 setTimeout(checkHeader2, 500);
             }   
             else{
