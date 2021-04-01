@@ -55,6 +55,7 @@
                 z-index: 1099;
                 left: 0;
                 width: 77.2%;
+                cursor: pointer;
             }
         }
        
@@ -74,7 +75,9 @@
         font-size: 0.875rem;
     }
 }
-
+.search-autocomplete {
+	cursor: pointer;
+}
 @media ( max-width: $tab-screen-max) and (min-width: $tab-screen-min ) {
 
     .adv-search-bar-wrapper {
