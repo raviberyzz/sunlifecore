@@ -39,11 +39,7 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 import java.util.zip.GZIPOutputStream;
 
 
@@ -396,13 +392,31 @@ public class DrugListServiceImpl implements DrugListService {
             Row drugRow = lookupSheet.getRow(2);
 
             Row testPolicy = lookupSheet.getRow(3);
-            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, testPolicy, true);
+            List<Integer> testRow = new LinkedList<>();
+            testRow.add(3);
+            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow,
+                    lookupSheet, testRow, true);
             policyBuilder.add("*#*#*", testArray.build());
+
+            HashMap<String, List<Integer>> policyNumberMap = new HashMap<>();
+            for (int precheckIndex = 3; precheckIndex < lookupSheet.getLastRowNum() -1; precheckIndex++) {
+                Row checkP = lookupSheet.getRow(precheckIndex);
+                if (checkP != null && checkP.getCell(1) != null) {
+                    String checkPNum = getCellValue(checkP, 1).replaceFirst("^0*", "");
+                    if (!policyNumberMap.containsKey(checkPNum)) {
+                        LinkedList<Integer> rows = new LinkedList<>();
+                        rows.add(precheckIndex);
+                        policyNumberMap.put(checkPNum, rows);
+                    } else {
+                        policyNumberMap.get(checkPNum).add(precheckIndex);
+                    }
+                }
+            }
 
             for (int rowIndex = 3; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
                 Row policy = lookupSheet.getRow(rowIndex);
                 if (policy != null && policy.getCell(1) != null) {
-                    String policyNumber;
+                    String policyNumber = getCellValue(policy, 1);
                     if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
                         policyNumber = policy.getCell(1).getStringCellValue().replaceFirst("^0*","");
                     } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
@@ -412,9 +426,11 @@ public class DrugListServiceImpl implements DrugListService {
                         policyNumber = "0";
                     }
 
-
-                    JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, policy, false);
-                    policyBuilder.add(policyNumber, drugArray.build());
+                    if (policyNumberMap.containsKey(policyNumber)){
+                        JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow,
+                                lookupSheet, policyNumberMap.get(policyNumber), false);
+                        policyBuilder.add(policyNumber, drugArray.build());
+                    }
                 }
             }
             builder.add("slf-policy", policyBuilder.build());
@@ -426,20 +442,12 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private JsonArrayBuilder createDrugArrayBuilder(HashMap<DrugListKey, PaForm> paForms, ErrorReportWriter reporter,
-                                                    Row formRow, Row categoryRow, Row drugRow, Row policy,
+                                                    Row formRow, Row categoryRow, Row drugRow, Sheet lookupSheet, List<Integer> policyRows,
                                                     boolean isTestpolicy) {
+        Row policy = lookupSheet.getRow(policyRows.get(0));
         JsonArrayBuilder drugArray = Json.createArrayBuilder();
         for (int colIndex = 3; colIndex < policy.getLastCellNum(); colIndex++) {
-            String columnCheck;
-            if (policy.getCell(colIndex) == null) {
-                columnCheck = StringUtils.EMPTY;
-            } else if (StringUtils.isNotBlank(policy.getCell(colIndex).getStringCellValue())) {
-                columnCheck = "x";
-            } else if (isTestpolicy){
-                columnCheck = "x";
-            }else {
-                columnCheck = StringUtils.EMPTY;
-            }
+            String columnCheck = getColumnCheck(isTestpolicy, lookupSheet, policyRows, colIndex);
             if (StringUtils.isNotEmpty(columnCheck)) {
                 String formName = formRow.getCell(colIndex).getStringCellValue();
                 if (!formName.endsWith("-E/F")) {
@@ -470,6 +478,27 @@ public class DrugListServiceImpl implements DrugListService {
             }
         }
         return drugArray;
+    }
+
+    private String getColumnCheck(boolean isTestpolicy, Sheet policySheet, List<Integer> rowList, int colIndex) {
+        String columnCheck = StringUtils.EMPTY;
+        Iterator<Integer> iter = rowList.iterator();
+        while(iter.hasNext()) {
+            Row policy = policySheet.getRow(iter.next());
+            if (policy.getCell(colIndex) == null) {
+                columnCheck = StringUtils.EMPTY;
+            } else if (StringUtils.isNotBlank(policy.getCell(colIndex).getStringCellValue())) {
+                columnCheck = "x";
+            } else if (isTestpolicy){
+                columnCheck = "x";
+            }else {
+                columnCheck = StringUtils.EMPTY;
+            }
+            if(StringUtils.isNotEmpty(columnCheck)){
+                break;
+            }
+        }
+        return columnCheck;
     }
 
     /**

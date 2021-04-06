@@ -26,10 +26,10 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -147,7 +147,7 @@ public class DrugListServiceImplTest {
         JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
 
 
-        assertEquals(252, jsonNode.get("slf-policy").size());
+        assertEquals(251, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
         assertEquals(153, policy.size());
         assertNotNull(policy);
@@ -173,7 +173,7 @@ public class DrugListServiceImplTest {
 
         policy = jsonNode.get("slf-policy").get("22199");
         assertNotNull(policy);
-        assertEquals(217, policy.size());
+        assertEquals(229, policy.size());
 
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
@@ -202,5 +202,40 @@ public class DrugListServiceImplTest {
         DrugListKey two = new DrugListKey("FOO", "bar");
         assertEquals(one.hashCode(), two.hashCode());
         assertEquals(one, two);
+    }
+
+    @Test
+    public void testDuplicatePolicyNumberUnion() throws Exception {
+
+        Resource outResource = mock(Resource.class);
+        Asset outAsset = mock(Asset.class);
+        when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
+
+        when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
+
+        ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
+        verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));
+        ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getAllValues().get(0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
+
+
+        assertEquals(251, jsonNode.get("slf-policy").size());
+        JsonNode policy = jsonNode.get("slf-policy").get("150195");
+        assertEquals(218, policy.size());
+        assertNotNull(policy);
+        JsonNode form = policy.get(11);
+        assertNotNull(form);
+        assertEquals("/content/dam/sunlife/pdf/3454-E.pdf", form.get("form-en").textValue());
+        HashSet<String> nameSet = new HashSet<>();
+        for (int i = 0; i < policy.size(); i++) {
+            form = policy.get(i);
+            String drugName = form.get("drug-name-en").textValue();
+            nameSet.add(drugName);
+        }
+        assertTrue(nameSet.contains("Prevymis (letermovir)"));
+        assertTrue(nameSet.contains("Sanorex (mazindol)"));
+
     }
 }
