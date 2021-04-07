@@ -391,7 +391,6 @@ public class DrugListServiceImpl implements DrugListService {
             Row formRow = lookupSheet.getRow(1);
             Row drugRow = lookupSheet.getRow(2);
 
-            Row testPolicy = lookupSheet.getRow(3);
             List<Integer> testRow = new LinkedList<>();
             testRow.add(3);
             JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow,
