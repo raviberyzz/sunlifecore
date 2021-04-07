@@ -69,6 +69,9 @@
         background-color: $white-shade;
         width: 80px;
     }
+    .filter-buttons:lang(fr){
+        width: auto;
+    }
     .selectedFilter{
         padding: 0 8px;
         margin-right:8px;
@@ -123,7 +126,7 @@
        .fa-times{
            position: absolute;
            right: 73px;
-           top: 5px;
+           top: 8px;
        }
        .fa{
            width:20px;
