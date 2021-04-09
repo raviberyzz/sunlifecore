@@ -126,7 +126,6 @@
                             .title{
                                 font-size: 14px;
                                 color: $white-shade;
-                                width: 70%;
                                 line-height: 18px;
                                 max-height: 38px;
                                 overflow: hidden;
@@ -139,7 +138,7 @@
                             .date{
                                 font-size: 10px;
                                 color: $light-grey-color;
-                                line-height: 18px;
+                                line-height: 31px;
                             }
                         }
                         .bg-name{
@@ -151,9 +150,6 @@
                             max-height: 16px;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 1;
-                            -webkit-box-orient: vertical;   
                         }
                       }
                       
