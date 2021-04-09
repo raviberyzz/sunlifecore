@@ -168,8 +168,10 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       JSONObject stageActivateVersionRequestBody = new JSONObject();
       stageActivateVersionRequestBody.put("network", "staging");
       stageActivateVersion.setEntity(new StringEntity(stageActivateVersionRequestBody.toString()));
-      final CloseableHttpResponse activateVersionResponse = getClient().execute(activateVersion);
-      final CloseableHttpResponse stageActivateVersionResponse = getClient().execute(stageActivateVersion);
+      final CloseableHttpClient client = getClient();
+      final CloseableHttpClient stageClient = getClient();
+      final CloseableHttpResponse activateVersionResponse = client.execute(activateVersion);
+      final CloseableHttpResponse stageActivateVersionResponse = stageClient.execute(stageActivateVersion);
       LOGGER.debug("Got AKAMAI staging response code {} while activating policy ", stageActivateVersionResponse.getStatusLine().getStatusCode());
       stageActivateVersionResponse.close();
       LOGGER.debug("Got AKAMAI response code {} while activating policy ", activateVersionResponse.getStatusLine().getStatusCode());
@@ -178,9 +180,17 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       LOGGER.debug("Response {}", activateResponse);
       if (activateVersionResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
         activateVersionResponse.close();
+        stageActivateVersion.releaseConnection();
+        activateVersion.releaseConnection();
+        client.close();
+        stageClient.close();
         return FAIL;
       }
       activateVersionResponse.close();
+      activateVersion.releaseConnection();
+      stageActivateVersion.releaseConnection();
+      client.close();
+      stageClient.close();
     } catch (JSONException | IOException e) {
       LOGGER.error("Unable to create rule ", e);
       return FAIL;
@@ -208,21 +218,26 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       JSONArray rewriteRules = new JSONArray(rules);
       final String api = PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES)
           .concat(policyID).concat("/versions/").concat(latestVersion);
+      final CloseableHttpClient client = getClient();
       final HttpGet getRules = new HttpGet(api.concat("?omitRules=false"));
       getRules.setHeader(ACCEPT, APPLICATION_JSON);
       getRules.setHeader(CONTENT_TYPE, APPLICATION_JSON);
-      final CloseableHttpResponse rulesResponse = getClient().execute(getRules);
+      final CloseableHttpResponse rulesResponse = client.execute(getRules);
       LOGGER.debug("Got AKAMAI response code {}", rulesResponse.getStatusLine().getStatusCode());
       final String rulesContent = IOUtils.toString(rulesResponse.getEntity().getContent(),
           StandardCharsets.UTF_8);
       LOGGER.debug("Got createOrUpdate response {} ", rulesContent);
       if (rulesResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
         rulesResponse.close();
+        getRules.releaseConnection();
+        client.close();
         throw new ApplicationException(ErrorCodes.APP_ERROR_202);
       }
       JSONObject jsonObj = new JSONObject(rulesContent);
       JSONArray matchRules = jsonObj.optJSONArray("matchRules") != null ? jsonObj.optJSONArray("matchRules") : new JSONArray();
       rulesResponse.close();
+      getRules.releaseConnection();
+      client.close();
       for (int i = 0 ; i < rewriteRules.length() ; i++ ) {
         JSONObject rule = rewriteRules.getJSONObject(i);
         LOGGER.debug("Parsing rule {} ", rule);
@@ -265,6 +280,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    */
   private String createRule(JSONObject rule, String api) {
     try {
+      final CloseableHttpClient client = getClient();
       final HttpPost createRule = new HttpPost(api.concat("/rules?index=0"));
       createRule.setHeader(ACCEPT, APPLICATION_JSON);
       createRule.setHeader(CONTENT_TYPE, APPLICATION_JSON);
@@ -284,7 +300,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       createRuleRequestBody.put("matches", matchesArr);
       createRule.setEntity(new StringEntity(match.toString()));
       LOGGER.debug("Create Rule {}", createRuleRequestBody);
-      final CloseableHttpResponse createRuleResponse = getClient().execute(createRule);
+      final CloseableHttpResponse createRuleResponse = client.execute(createRule);
       LOGGER.debug("Got AKAMAI response code {} while creating rule",
           createRuleResponse.getStatusLine().getStatusCode());
       final String createRuleContent = IOUtils.toString(createRuleResponse.getEntity().getContent(),
@@ -292,9 +308,13 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       LOGGER.debug("Got response {} ", createRuleContent);
       if (createRuleResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CREATED) {
         createRuleResponse.close();
+        createRule.releaseConnection();
+        client.close();
         return "Faile";
       }
       createRuleResponse.close();
+      createRule.releaseConnection();
+      client.close();
     } catch (JSONException | IOException e) {
       LOGGER.error("Unable to create rule ", e);
       return FAIL;
@@ -315,6 +335,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    */
   private String updateRule(JSONObject rule, String api, boolean disabled) {
     try {
+      final CloseableHttpClient client = getClient();
       final HttpPut updateRule = new HttpPut(api);
       updateRule.setHeader(ACCEPT, APPLICATION_JSON);
       updateRule.setHeader(CONTENT_TYPE, APPLICATION_JSON);
@@ -335,7 +356,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       updateRuleRequestBody.put("matches", matchesArr);
       updateRule.setEntity(new StringEntity(match.toString()));
       LOGGER.debug("Update Rule {}", updateRuleRequestBody);
-      final CloseableHttpResponse updateRuleResponse = getClient().execute(updateRule);
+      final CloseableHttpResponse updateRuleResponse = client.execute(updateRule);
       LOGGER.debug("Got AKAMAI response code for update rule {} ",
           updateRuleResponse.getStatusLine().getStatusCode());
       final String updateRuleContent = IOUtils.toString(updateRuleResponse.getEntity().getContent(),
@@ -343,9 +364,13 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       LOGGER.debug("Got response {} ", updateRuleContent);
       if (updateRuleResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
         updateRuleResponse.close();
+        updateRule.releaseConnection();
+        client.close();
         return FAIL;
       }
       updateRuleResponse.close();
+      updateRule.releaseConnection();
+      client.close();
     } catch (JSONException | IOException e) {
       LOGGER.error("Unable to update rule ", e);
       return FAIL;
@@ -366,6 +391,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    */
   private String getOrCreateVersion(String policyID, String userName) throws ApplicationException {
     try {
+      final CloseableHttpClient client = getClient();
       final HttpGet versions = new HttpGet(
           PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
               .concat("/versions?includeRules=false&pageSize=1"));
@@ -373,16 +399,20 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       versions.setHeader(ACCEPT, APPLICATION_JSON);
       versions.setHeader(CONTENT_TYPE, APPLICATION_JSON);
       CloseableHttpResponse versionsResponse;
-      versionsResponse = getClient().execute(versions);
+      versionsResponse = client.execute(versions);
       LOGGER.debug("Got AKAMAI response code {}", versionsResponse.getStatusLine().getStatusCode());
       final String versionsContent = IOUtils.toString(versionsResponse.getEntity().getContent(),
           StandardCharsets.UTF_8);
-      LOGGER.debug("Got AKAMAI versions Response {}",versionsContent);
+      LOGGER.debug("Got AKAMAI versions Response {}", versionsContent);
       if (versionsResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
         versionsResponse.close();
+        versions.releaseConnection();
+        client.close();
         throw new ApplicationException(ErrorCodes.APP_ERROR_201);
       }
       versionsResponse.close();
+      versions.releaseConnection();
+      client.close();
       String version = "";
       if (versionsContent.startsWith("[")) {
         JSONArray jsonArr = new JSONArray(versionsContent);
@@ -415,6 +445,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
    */
   private String createPolicyVersion(String policyID, String version, String userName) throws ApplicationException {
     try {
+      final CloseableHttpClient client = getClient();
       final HttpPost createVersion = new HttpPost(
           PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
               .concat("/versions?cloneVersion=" + version));
@@ -424,7 +455,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       createVersionRequestBody.put("description", "Created based on version : " + version + " and created by " + userName);
       createVersion.setEntity(new StringEntity(createVersionRequestBody.toString()));
 
-      final CloseableHttpResponse createVersionResponse = getClient().execute(createVersion);
+      final CloseableHttpResponse createVersionResponse = client.execute(createVersion);
       LOGGER.debug("Got AKAMAI response code while creating version {} ",
           createVersionResponse.getStatusLine().getStatusCode());
       final String createVersionContent = IOUtils
@@ -432,10 +463,14 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
       LOGGER.debug("Got akamai response {}", createVersionContent);
       if (createVersionResponse.getStatusLine().getStatusCode() != HttpStatus.SC_CREATED) {
         createVersionResponse.close();
+        createVersion.releaseConnection();
+        client.close();
         throw new ApplicationException(ErrorCodes.APP_ERROR_201);
       }
       JSONObject jsonObj = new JSONObject(createVersionContent);
       createVersionResponse.close();
+      createVersion.releaseConnection();
+      client.close();
       return String.valueOf(jsonObj.getInt("version"));
     } catch (IOException | JSONException e) {
       throw new ApplicationException(ErrorCodes.APP_ERROR_201, e);
