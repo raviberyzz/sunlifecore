@@ -197,9 +197,9 @@
               <div class="desktop-primary-navigation" data-section="nav-main">
                 <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr" role="navigation" aria-label="main navigation">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
-                    <li class="dropdown nav-item navigation ${head.linkStyle}">
+                    <li class="dropdown nav-item navigation ${head.linkStyle}" data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=head.linkUrl}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
-                        href="${head.linkUrl @ extension='html'}">
+                        href="${utilityListParsing.navPath}">
                         <span
                           class="nav-item-heading ">${head.linkName}</span></a>
                       <div data-sly-test="${head.fragmentPath}" role="menu" class="dropdown-menu menu-content">
@@ -267,7 +267,7 @@
               </a>
             </sly>
           </div>
-          <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="SignIn"
+          <div data-sly-test="${listFromSignin == 'signintrue'}" class="mobile-sign-in-box" id="${listModel.signinButtonId ? 'SignIn' : ''}"
             data-toggle="${listModel.signinTarget == 'modal' ? 'modal' : ''}" data-target="${listModel.signinTarget == 'modal' ? buttonTarget : ''}" data-section="${listModel.signinAnalyticsId}">
             <sly data-sly-test.mobilelinkChecker = "${listModel.signinTarget == 'modal'}">
             <a data-toggle="modal" role="button" href="javascript:void(0)">
