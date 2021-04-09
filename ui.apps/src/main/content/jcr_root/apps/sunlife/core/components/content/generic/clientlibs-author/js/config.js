@@ -444,6 +444,48 @@ var multiPurposeComponentConfig = [
                 required: true
             },
             {
+            	name: "previousText",
+                label: "Previous Text",
+                value: "Previous",
+                required: true
+            },
+            {
+            	name: "nextText",
+                label: "Next Text",
+                value: "Next Text",
+                required: true
+            },
+            {
+            	name: "pageText",
+                label: "Page Text",
+                value: "Page Text",
+                required: true
+            },
+            {
+            	name: "ofText",
+                label: "Of Text",
+                value: "Of Text",
+                required: true
+            },
+            {
+            	name: "searchText",
+                label: "Search Text",
+                value: "Search Text",
+                required: true
+            },
+            {
+            	name: "loading",
+                label: "Loading",
+                value: "Loading",
+                required: true
+            },
+            {
+            	name: "loadingText",
+                label: "Loading Text",
+                value: "Loading Text",
+                required: true
+            },
+            {
             	name: "addFilterText",
                 label: "Add Filter",
                 value: "Add Filter",
