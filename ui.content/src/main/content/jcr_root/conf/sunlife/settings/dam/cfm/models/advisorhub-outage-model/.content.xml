@@ -73,7 +73,7 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Outage Icon"
-                            fieldDescription="Use "fa-exclamation-circle " for circle and "fa-exclamation-triangle" for triangle"
+                            fieldDescription="Use "fa-exclamation-circle" for circle and "fa-exclamation-triangle" for triangle"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
