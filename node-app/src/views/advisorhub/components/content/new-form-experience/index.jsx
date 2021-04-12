@@ -31,7 +31,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText
 
     )
 }
-function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateFavorite, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt, previousText, nextText, pageText, ofText, searchText }) {
+function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateFavorite, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt, previousText, nextText, pageText, ofText, searchText, loadingState, loading, loadingText }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -135,7 +135,14 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     }) : ""}
                 </tbody>
             </table>
-            {data.length < 1 && <div className="noData"> No Data available </div>}
+            {loadingState && (<div class="loaderForm">
+                <i class="fa fa-spinner fa-pulse"></i>
+                <div class="loaderText">
+                    <p><strong>{loading}</strong></p>
+                    <p>{loadingText}</p>
+                </div>
+            </div>)}
+            {!loadingState && data.length < 1 && <div className="noData"> No Data available </div>}
             {/*  Pagination Component*/}
             {data.length > 15 && <div class="pagination-component">
                 <nav role="navigation" aria-label="Pagination" class="text-center">
@@ -193,8 +200,8 @@ class NewFormExperience extends React.Component {
             favorites: [],
             selectedValues: [],
             lang: utag_data.page_language,
-            sorting: false
-
+            sorting: false,
+            loadingState: true
         };
         this.toggleFilter = this.toggleFilter.bind(this);
         this.addFilters = this.addFilters.bind(this);
@@ -261,7 +268,8 @@ class NewFormExperience extends React.Component {
                             data: tableData,
                             // originalData: originalresponseData,
                             originalData: tableData,
-                            favorites: favoriteData
+                            favorites: favoriteData,
+                            loadingState: false
                         }, () => {
                             // this.tagSorting();
                             this.getFilterData();
@@ -311,7 +319,8 @@ class NewFormExperience extends React.Component {
                             data: tableData,
                             // originalData: originalresponseData,
                             originalData: tableData,
-                            favorites: favoriteData
+                            favorites: favoriteData,
+                            loadingState: false
                         }, () => {
                             // this.tagSorting();
                             this.getFilterData();
@@ -650,6 +659,9 @@ class NewFormExperience extends React.Component {
                     pageText={this.props.pageText}
                     ofText={this.props.ofText}
                     searchText={this.props.searchText}
+                    loadingState={this.state.loadingState}
+                    loading={this.props.loading}
+                    loadingText={this.props.loadingText}
                 ></Table>
             </React.Fragment>
         )
