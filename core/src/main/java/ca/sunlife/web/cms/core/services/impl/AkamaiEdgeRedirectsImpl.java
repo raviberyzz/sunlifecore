@@ -134,7 +134,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 			returnJson = createOrUpdateRules(policyID, latestVersion, rules);
 			LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(THREAD_SLEEP_TIME));
 			returnJson.put("publishStatus", activateRules(policyID, latestVersion));
-		} catch (ApplicationException e) {
+		} catch (ApplicationException | IOException e) {
 			LOGGER.error("Got Application exception", e);
 			return returnJson.put(ERROR_STR, e.getMessage());
 		}
@@ -150,9 +150,9 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 *            the latest version
 	 * @return the string
 	 */
-	private String activateRules(String policyID, String latestVersion) {
-		HttpPost activateVersion;
-		HttpPost stageActivateVersion;
+	private String activateRules(String policyID, String latestVersion) throws IOException {
+		HttpPost activateVersion = null;
+		HttpPost stageActivateVersion = null;
 		final CloseableHttpClient client = getClient();
 		final CloseableHttpClient stageClient = getClient();
 		String returnString = SUCCESS;
@@ -216,10 +216,10 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 *             the application exception
 	 */
 	private JSONObject createOrUpdateRules(String policyID, String latestVersion, String rules)
-			throws ApplicationException {
+			throws ApplicationException, IOException {
 		JSONObject returnJson = new JSONObject();
 		final CloseableHttpClient client = getClient();
-		HttpGet getRules;
+		HttpGet getRules = null;
 		try {
 			JSONArray rewriteRules = new JSONArray(rules);
 			final String api = PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES).concat(policyID)
@@ -285,9 +285,9 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 *            the api
 	 * @return the string
 	 */
-	private String createRule(JSONObject rule, String api) {
+	private String createRule(JSONObject rule, String api) throws IOException {
 		final CloseableHttpClient client = getClient();
-		HttpPost createRule;
+		HttpPost createRule = null;
 		String returnString = SUCCESS;
 		try {
 			createRule = new HttpPost(api.concat("/rules?index=0"));
@@ -342,9 +342,9 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 *            the disabled
 	 * @return the string
 	 */
-	private String updateRule(JSONObject rule, String api, boolean disabled) {
+	private String updateRule(JSONObject rule, String api, boolean disabled) throws IOException {
 		final CloseableHttpClient client = getClient();
-		HttpPut updateRule;
+		HttpPut updateRule = null;
 		String returnString = SUCCESS;
 		try {
 			updateRule = new HttpPut(api);
@@ -400,9 +400,9 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 * @throws ApplicationException
 	 *             the application exception
 	 */
-	private String getOrCreateVersion(String policyID, String userName) throws ApplicationException {
+	private String getOrCreateVersion(String policyID, String userName) throws ApplicationException, IOException {
 		final CloseableHttpClient client = getClient();
-		final HttpGet versions;
+		HttpGet versions = null;
 		String version = "";
 		try {
 			versions = new HttpGet(PROTOCOL.concat(config.getHost()).concat(CLOUDLETS_API_V2_POLICIES)
@@ -455,9 +455,9 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	 * @throws ApplicationException
 	 *             the application exception
 	 */
-	private String createPolicyVersion(String policyID, String version, String userName) throws ApplicationException {
+	private String createPolicyVersion(String policyID, String version, String userName) throws ApplicationException, IOException {
 		final CloseableHttpClient client = getClient();
-		HttpPost createVersion;
+		HttpPost createVersion = null;
 		try {
 			createVersion = new HttpPost(PROTOCOL.concat(config.getHost())
 					.concat(CLOUDLETS_API_V2_POLICIES).concat(policyID).concat("/versions?cloneVersion=" + version));
