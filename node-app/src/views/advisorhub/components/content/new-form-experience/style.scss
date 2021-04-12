@@ -100,6 +100,20 @@
         text-align: center;
         margin:32px 0px;
     }
+    .loaderForm{
+        height:470px;
+        text-align: center;
+        margin-top: 10%;
+        color: $blue-gradient-color;
+        .fa{
+            font-size: 64px;
+            margin-bottom: 20px;
+            margin-left: 15px;
+        }
+        .loaderText{
+            padding-left: 22px;
+        }
+    }
    // text-align: right;
    /*.counter{
        margin-left:15px;
