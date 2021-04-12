@@ -709,8 +709,8 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
 			      {this.state.filterNewsList[key].linkOption == "lightbox" && 
-                                (<div class="vidyard_wrapper" style={{height: "100%", textAlign: "center", float: "none"}}>
-                                <div type="button" role="button" class="play-btn" title="Play video" style={{display: "block", backgroundColor: "rgb(46, 46, 46)"}} >
+                                (<div class="vidyard_wrapper">
+                                <div type="button" role="button" class="play-btn" title="Play video" >
                                 <div class="play-btn-size"></div>
                                 <div class="arrow-size">
                                 <div class="arrow-size-ratio"></div>
