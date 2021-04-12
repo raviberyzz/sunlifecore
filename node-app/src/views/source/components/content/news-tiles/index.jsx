@@ -617,14 +617,11 @@ class NewsTiles extends React.Component {
       ev_data_one: "hp-news-" + index,
     });
     /* homepage analytics ends here */
-	if (this.state.filterNewsList[key].linkOption == "newWindow") {
-		window.open(this.state.filterNewsList[key].pagePath, "_blank");
-	} else if (this.state.filterNewsList[key].linkOption == "lightbox") {
-		window[this.state.filterNewsList[key].pagePath]();
-	} else {
-		location.href = this.state.filterNewsList[key].pagePath;
-	}
+if (this.state.filterNewsList[key].linkOption == "lightbox") {
+      window[this.state.filterNewsList[key].pagePath]();
+    } 
   }
+
 
   render() {
     return (
@@ -682,11 +679,24 @@ class NewsTiles extends React.Component {
                         .slice(0, 4)
                         .map((key, index) => {
                           return (
-                            <div
+                            <a
                               class={`col-xs-12  tile clickable-tile ${index == 0
                                 ? "col-sm-8 col-md-8"
                                 : "col-sm-4 col-md-4"
                                 }`}
+                                href= {this.state.filterNewsList[key].linkOption == "lightbox"?null:this.state.filterNewsList[key].pagePath}
+                                target={this.state.filterNewsList[key].linkOption == "newWindow"?"_blank":null}
+                                rel={this.state.filterNewsList[key].linkOption == "newWindow"?"noreferrer noopener":null}
+                                tabindex={this.state.filterNewsList[key].linkOption == "lightbox"?"0":null}
+                               
+                                onKeyDown={event => {
+                                  if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
+                                      window[this.state.filterNewsList[key].pagePath]();                                    
+                                    }
+                                  
+                                }
+                                }
+                                
                               onClick={this.newsTileClick.bind(
                                 this,
                                 key,
@@ -718,7 +728,7 @@ class NewsTiles extends React.Component {
                                   </span>
                                 </div>
                               </div>
-                            </div>
+                            </a>
                           );
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
@@ -731,7 +741,24 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
-                                  <a class="title" href={this.state.filterNewsList[key].pagePath}>
+<a class="title" 
+                                  href= {this.state.filterNewsList[key].linkOption == "lightbox"?null:this.state.filterNewsList[key].pagePath}
+                                  target={this.state.filterNewsList[key].linkOption == "newWindow"?"_blank":null}
+                                  rel={this.state.filterNewsList[key].linkOption == "newWindow"?"noreferrer noopener":null}
+                                  tabindex={this.state.filterNewsList[key].linkOption == "lightbox"?"0":null}
+                                  onKeyDown={event => {
+                                    if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
+                                        window[this.state.filterNewsList[key].pagePath]();                                    
+                                      }
+                                    
+                                  }
+                                  }
+                                onClick={this.newsTileClick.bind(
+                                  this,
+                                  key,
+                                  index + 1
+                                )}
+                                  >
                                     {this.state.filterNewsList[key].heading}
                                   </a>
                                   <p class="bg-name">

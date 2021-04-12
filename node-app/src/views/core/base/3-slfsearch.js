@@ -636,7 +636,7 @@ $(document).ready(function () {
         }
 
         function init() {
-            if($(".advisorhub-sunlife-content-page").length==0){
+            if($(".advisorhub-sunlife-content-page").length==0 && $(".advisorhub-sunlife-home-page").length==0){
                 $("form.slf-search").each(function (i, form) {
                     form = $(form);
                     if (form.data("slf-search-initialized")) return;

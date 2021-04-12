@@ -49,8 +49,12 @@ UIHandlerForStepUp.prototype.createPasswordAuthSession = function(title, usernam
 
 UIHandlerForStepUp.prototype.createFormSession = function(formId, payload) {
     switch (formId) {
-        case 'step-up-auth-select-target': return new StepUpSelectTargetFormSession(formId, payload);
-        default: return null;
+        case 'step-up-auth-select-target':
+            return new StepUpSelectTargetFormSession(formId, payload);
+        case "dummyForm":
+            return new dummyForm(formId, payload);        
+        default:
+            return null;
     }
 }
 
@@ -69,7 +73,13 @@ UIHandlerForStepUp.prototype.processJsonData = function(jsonData, actionContext,
 
         }
         else if(jsonData.target != undefined && jsonData.target != ""){
-            window.location.href = jsonData.target;
+            if(jsonData.errorRedirect){
+                // redirect later when error is caught
+                clientContext['target_url'] = jsonData.target;
+            }
+            else{
+                window.location.href = jsonData.target;
+            }
         }
     });
 }

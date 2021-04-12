@@ -5,8 +5,11 @@ import javax.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.settings.SlingSettingsService;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +34,13 @@ public class LuminoModel {
   @ValueMapValue
   private String dataTitle;
 
+  @OSGiService
+  private SlingSettingsService slingSettingsService;
+
   private String language;
   private String pageTitle;
+
+  private String testHost = "https://lumino.sunlife.ca";
 
   /**
    *Gets the language code from the current page locale's language
@@ -72,6 +80,10 @@ public class LuminoModel {
        return result;
    }
 
+   public String getTestHost() {
+       return testHost;
+   }
+
    @PostConstruct
     protected void initialize() {
        if (currentPage != null) {
@@ -89,6 +101,12 @@ public class LuminoModel {
            language = "en";
            LOG.warn("Failed to identify configured page language. Defaulting to \"en\"");
            pageTitle = "";
+       }
+
+       if(slingSettingsService.getRunModes().contains("prod")) {
+           testHost = "https://luminohealth.sunlife.ca";
+       } else {
+           testHost = "https://stage-luminohealth.sunlife.ca";
        }
    }
 
