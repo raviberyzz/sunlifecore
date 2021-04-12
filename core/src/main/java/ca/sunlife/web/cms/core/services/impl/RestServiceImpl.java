@@ -49,9 +49,9 @@ public class RestServiceImpl implements RestService {
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	/** The client. */
-	private CloseableHttpClient client;
-
+	/** The httpClientBuilder. */
+	private HttpClientBuilder httpClientBuilder;
+	
 	/**
 	 * Activate.
 	 *
@@ -72,12 +72,13 @@ public class RestServiceImpl implements RestService {
 		final RequestConfig config = RequestConfig.custom().setConnectTimeout(clientConfig.getConnectionTimeout())
 				.setConnectionRequestTimeout(clientConfig.getConnectionTimeout())
 				.setSocketTimeout(clientConfig.getSocketTimeout()).build();
-		final HttpClientBuilder httpClientBuilder = HttpClients.custom();
+		//final HttpClientBuilder httpClientBuilder = HttpClients.custom();
+		httpClientBuilder = HttpClients.custom();
 		httpClientBuilder.setDefaultRequestConfig(config);
 		if (clientConfig.isSSLByPassRequired()) {
 			setSSLForTestEnvironment(httpClientBuilder);
 		}
-		client = httpClientBuilder.build();
+		//client = httpClientBuilder.build();
 		logger.debug("Exit :: RestClientConfig :: config :: {}", config);
 	}
 
@@ -119,13 +120,20 @@ public class RestServiceImpl implements RestService {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
 			json.entrySet().forEach(entry -> httpGet.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
-		response = client.execute(httpGet);
-		statusCode = response.getStatusLine().getStatusCode();
-		logger.trace("Response code :: {}", statusCode);
-		if (statusCode != HttpStatus.SC_OK) {
-			throw new SystemException(ErrorCodes.APP_ERROR_001);
-		} else {
-			responseStr = EntityUtils.toString(response.getEntity());
+		try (CloseableHttpClient client = httpClientBuilder.build()) { 
+			response = client.execute(httpGet);
+			statusCode = response.getStatusLine().getStatusCode();
+			logger.trace("Response code :: {}", statusCode);
+			if (statusCode != HttpStatus.SC_OK) {
+				throw new SystemException(ErrorCodes.APP_ERROR_001);
+			} else {
+				responseStr = EntityUtils.toString(response.getEntity());
+			}
+		} finally {
+			if( null != response ) {
+				response.close();
+			}
+			httpGet.releaseConnection();
 		}
 		return responseStr;
 	}
@@ -153,13 +161,20 @@ public class RestServiceImpl implements RestService {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
 			json.entrySet().forEach(entry -> httpPost.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
-		response = client.execute(httpPost);
-		statusCode = response.getStatusLine().getStatusCode();
-		logger.trace("Response code :: {}", statusCode);
-		if (statusCode != HttpStatus.SC_OK) {
-			throw new SystemException(ErrorCodes.APP_ERROR_001);
-		} else {
-			responseStr = EntityUtils.toString(response.getEntity());
+		try (CloseableHttpClient client = httpClientBuilder.build()) {
+			response = client.execute(httpPost);
+			statusCode = response.getStatusLine().getStatusCode();
+			logger.trace("Response code :: {}", statusCode);
+			if (statusCode != HttpStatus.SC_OK) {
+				throw new SystemException(ErrorCodes.APP_ERROR_001);
+			} else {
+				responseStr = EntityUtils.toString(response.getEntity());
+			}
+		} finally {
+			if( null != response ) {
+				response.close();
+			}
+			httpPost.releaseConnection();
 		}
 		return responseStr;
 	}
@@ -181,13 +196,21 @@ public class RestServiceImpl implements RestService {
 			final JsonObject json = new Gson().fromJson(requestHeaders, JsonObject.class);
 			json.entrySet().forEach(entry -> httpDelete.addHeader(entry.getKey(), entry.getValue().getAsString()));
 		}
-		response = client.execute(httpDelete);
-		statusCode = response.getStatusLine().getStatusCode();
-		logger.trace("Response code :: {}", statusCode);
-		if (statusCode != HttpStatus.SC_OK) {
-			throw new SystemException(ErrorCodes.APP_ERROR_001);
-		} else {
-			responseStr = EntityUtils.toString(response.getEntity());
+		
+		try (CloseableHttpClient client = httpClientBuilder.build()) {
+			response = client.execute(httpDelete);
+			statusCode = response.getStatusLine().getStatusCode();
+			logger.trace("Response code :: {}", statusCode);
+			if (statusCode != HttpStatus.SC_OK) {
+				throw new SystemException(ErrorCodes.APP_ERROR_001);
+			} else {
+				responseStr = EntityUtils.toString(response.getEntity());
+			}
+		} finally {
+			if( null != response ) {
+				response.close();
+			}
+			httpDelete.releaseConnection();
 		}
 		return responseStr;
 	}
