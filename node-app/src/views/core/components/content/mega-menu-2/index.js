@@ -8,6 +8,13 @@ $(document).ready(function(){
      $('.slf-header-mega-menu2').height(menuHeight);
       }
    );
+  //  US specific change
+   var tiltleValue=$('.us-sunlife-content-page .breadcrumb').find('li.active').text();	
+   if(tiltleValue!='') 
+   {
+     $('.main-nav').children('li:first-child').find('a').removeClass('nav-active');
+ 
+   }
   });
 
   /*AEM JS*/
