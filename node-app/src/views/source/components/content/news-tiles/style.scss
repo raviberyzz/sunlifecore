@@ -112,6 +112,15 @@
                     background-size: cover;
                     background-repeat: no-repeat;
                     height: 290px;
+                    .vidyard_wrapper{
+                        height:100%;
+                        text-align: center;
+                        float: none!important;
+                    }
+                    .play-btn{
+                        display: block!important;
+                        background-color: rgb(46, 46, 46)!important;
+                    }
                     .overlay-container {
                         position: absolute;
                         width: calc(100% - 16px);
@@ -121,12 +130,12 @@
                         background-color: rgba(0, 0, 0, 0.75);
                         display:flex;
                         flex-direction: column;
+                        font-weight: 400;
                         .detail-container{
                             padding: 0;
                             .title{
                                 font-size: 14px;
                                 color: $white-shade;
-                                width: 70%;
                                 line-height: 18px;
                                 max-height: 38px;
                                 overflow: hidden;
@@ -139,21 +148,21 @@
                             .date{
                                 font-size: 10px;
                                 color: $light-grey-color;
-                                line-height: 18px;
+                                line-height: 25px;
                             }
                         }
                         .bg-name{
                             font-size: 10px;
                             color: $light-yellow-color;
                             text-transform: uppercase;
-                            line-height: 18px;
-                            width: 90%;
+                            line-height: 23px;
+                            width: 85%;
                             max-height: 16px;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            display: -webkit-box;
+                            display: -webkit-inline-box;
                             -webkit-line-clamp: 1;
-                            -webkit-box-orient: vertical;   
+                            -webkit-box-orient: vertical;
                         }
                       }
                       
