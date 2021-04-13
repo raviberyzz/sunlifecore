@@ -62,6 +62,8 @@ public class DrugListServiceImpl implements DrugListService {
     private String pdfFolder;
 
 	private String dataAssetPath;
+	
+	private String chessDataAssetPath;
 
 	private String dataAssetZipPath;
 
@@ -80,6 +82,11 @@ public class DrugListServiceImpl implements DrugListService {
     public String getDataAssetPath() {
         return dataAssetPath;
     }
+    
+    @Override
+	public String getChessDataAssetPath() {
+		return chessDataAssetPath;
+	}
 
 	/**
 	 * Provides the DAM path where generated JSON zip file can be found.
@@ -102,7 +109,7 @@ public class DrugListServiceImpl implements DrugListService {
      * @throws IOException
      */
     @Override
-    public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath, String chessPath) throws IOException {
+    public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath) throws IOException {
 
         ErrorReportWriter reporter = new ErrorReportWriter(paFormsPath, lookupPath, nonPolicyPath);
 
@@ -119,12 +126,10 @@ public class DrugListServiceImpl implements DrugListService {
             JsonObjectBuilder builder = buildJsonAsset(lookupPath, resourceResolver, paForms, reporter);
 
             buildNonPolicyRecords(nonPolicyPath, resourceResolver, builder, reporter);
+            
+            String assetPath = getDataAssetPath();
 
-            builder.add("chess", createChessArrayBuilder(chessPath, resourceResolver).build());
-
-            writeDataAsset(resourceResolver, assetManager, builder);
-
-
+            writeDataAsset(resourceResolver, assetManager, builder , assetPath);
 
             writeReportAsset(reporter, assetManager);
 
@@ -140,7 +145,45 @@ public class DrugListServiceImpl implements DrugListService {
         }
 
     }
+    /**
+     * This service reads four input files and converts them to a JSON asset, providing chess form information for a
+     * list of accounts.
+     * @param chessPath the DAM path of the csv file listing which accounts use the "******" lookup key.
+     */
+	@Override
+    public void updateChessLists(String chessPath) throws IOException {
+		logger.info("entered the method updatechesslists");
+        try (ResourceResolver resourceResolver = resourceResolverFactory
+                .getServiceResourceResolver(authInfo)){
+        	logger.info("ResourceResolver="+resourceResolver);
+            AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
+            logger.info("assetManager="+assetManager);
+            if(assetManager == null) {
+                throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
+            }
 
+            JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
+            logger.info("factory="+factory);
+            JsonObjectBuilder builder = factory.createObjectBuilder();
+            logger.info("builder="+builder);
+
+            builder.add("chess", createChessArrayBuilder(chessPath, resourceResolver).build());
+            logger.info("builder after add="+builder);
+            String assetPath = getChessDataAssetPath();
+            writeDataAsset(resourceResolver, assetManager, builder, assetPath);
+
+            Session session = resourceResolver.adaptTo(Session.class);
+            if (session != null) {
+                session.save();
+            }
+
+        } catch (LoginException e) {
+            logger.error("Can't create AssetManager", e);
+        } catch (RepositoryException e) {
+            logger.error("Failed to save JSON asset", e);
+        }
+
+    }
     private JsonArrayBuilder createChessArrayBuilder(String chessPath, ResourceResolver resolver)
             throws IOException {
 
@@ -170,12 +213,15 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private Asset retrieveAsset(ResourceResolver resolver, String path) {
+    	logger.info("entered retrieveasset");
         Asset result = null;
 
         Resource resource = resolver.getResource(path);
+        logger.info("resource="+resource);
         if (resource != null) {
             result = resource.adaptTo(Asset.class);
         }
+        logger.info("result="+result);
 
         return result;
     }
@@ -192,22 +238,24 @@ public class DrugListServiceImpl implements DrugListService {
 	 * @throws LoginException
 	 *             indicates user doesn't have access to the DAM.
 	 */
-	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder)
+	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder, String assetPath)
             throws LoginException, IOException {
+		logger.info("entered writedata asset");
 
         String json = builder.build().toString();
-
-		Asset outputAsset = retrieveAsset(resourceResolver, getDataAssetPath());
-
+        logger.info("json="+json);
+		Asset outputAsset = retrieveAsset(resourceResolver, assetPath);
+		logger.info("outputAsset="+outputAsset);
 		if (outputAsset == null) {
             try( ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))) {
 
-                assetManager.createAsset(getDataAssetPath(), stream, APPLICATION_JSON, false);
+                assetManager.createAsset(assetPath, stream, APPLICATION_JSON, false);
             }
 
 		} else {
 
             AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
+            logger.info("versionManager="+versionManager);
             if (versionManager == null) {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
             }
@@ -593,7 +641,8 @@ public class DrugListServiceImpl implements DrugListService {
 
         reportAssetPath = String.format("%s/%s", config.drug_list_asset_path(), "druglist-workflow-report.txt");
 
-
+        chessDataAssetPath= String.format("%s/%s", config.chess_list_asset_path(), config.chess_list_asset_name());
     }
+
 
 }

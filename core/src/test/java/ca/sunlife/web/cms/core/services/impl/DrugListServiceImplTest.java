@@ -138,7 +138,7 @@ public class DrugListServiceImplTest {
         when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
 
         when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
         verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));
@@ -190,7 +190,7 @@ public class DrugListServiceImplTest {
         when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
         when(outAsset.getPath()).thenReturn("/content/dam/sunlife/data/druglist.json");
 
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
@@ -212,7 +212,7 @@ public class DrugListServiceImplTest {
         when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
 
         when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
         verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));

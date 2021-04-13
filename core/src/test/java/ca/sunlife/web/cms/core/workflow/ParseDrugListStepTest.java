@@ -77,7 +77,7 @@ public class ParseDrugListStepTest {
         verify(drugListService)
                 .updateDrugLists(eq("/content/dam/sunlife/data/file1.xslx"),
                     eq("/content/dam/sunlife/data/file2.xslx"),
-                    eq("/content/dam/sunlife/data/file3.properties"),
-                        eq("/content/dam/sunlife/data/file4.csv") );
+                    eq("/content/dam/sunlife/data/file3.properties")
+                        );
     }
 }
