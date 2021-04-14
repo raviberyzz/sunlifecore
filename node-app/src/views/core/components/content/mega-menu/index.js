@@ -15,4 +15,9 @@ $(document).ready(function () {
             $(this).addClass("nav-active");
         }
     });
+     //  US specific change
+    var activeNumber = $('.us-sunlife-content-page .main-nav .nav-item').children('.nav-active').length;
+    if(activeNumber>1){
+      $('.us-sunlife-content-page .main-nav').children('li:first-child').find('a').removeClass('nav-active');
+    }
 });
