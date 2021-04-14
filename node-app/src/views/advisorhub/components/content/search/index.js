@@ -63,7 +63,7 @@ $(document).ready(function () {
             return $.ajax({
                 type: "GET",
                 rejectUnauthorized: false,
-                url: autoCompletePrefix + "&Totalresults=true&Print=all&Text="+query+"&MatchLanguage="+utag_data.page_language+"&Maxresults=10&Start=1",
+                url: autoCompletePrefix + "&Totalresults=true&Print=all&Text=(\""+query+"*\"):TITLE&MatchLanguage="+utag_data.page_language+"&Maxresults=10&Start=1",
                 dataType: "jsonp"
             })
         }
