@@ -316,7 +316,7 @@ $(document).ready(function () {
     //     });
     
     $('.article-list-container .related-articles a').click(function(){
-        value=$(this).text().trim();
+        var value=$(this).text().trim();
         //alert(value);
         utag.link({
             "ev_action"		: "clk",
