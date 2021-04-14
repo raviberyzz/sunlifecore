@@ -10,7 +10,20 @@ $(document).ready(function () {
         }
     }
 
-    setTimeout(userName,2000);
+    function checkSearchBar(){
+        if($(".target .default.search").length!=0){
+            setTimeout(checkSearchBar, 500);
+        }   
+        else{
+            userName();
+        }
+    }
+    
+    if(typeof ContextHub != "undefined"){
+        checkSearchBar();
+    }
+
+    // Type Ahead functionality implementation
 
     (function ($) {
 
