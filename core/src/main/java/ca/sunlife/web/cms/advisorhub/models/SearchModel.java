@@ -6,9 +6,6 @@ package ca.sunlife.web.cms.advisorhub.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.jcr.RepositoryException;
-
-import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -16,7 +13,6 @@ import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ca.sunlife.web.cms.core.constants.UserInfoConstants;
 
 /**
   * The Class SearchModel.
@@ -146,17 +142,9 @@ public class SearchModel {
   @ PostConstruct
   public void init() {
 	  LOG.debug("Entry :: Search :: init request :: {}", request);
-	  User user = null != request ? request.getResourceResolver().adaptTo(User.class) : null;
-	  try {
-		LOG.debug("Reading user details: {}", user);		
-		if (null != user && null != this.welcomeText && this.welcomeText.length() > 0) {
-			String givenName = user.hasProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)
-					? user.getProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)[0].getString()
-					: "NA"; // Given name
-		    this.welcomeText = this.welcomeText.replace("${username}", givenName);
-		   }
-		}catch (RepositoryException e) {
-			LOG.error("RepositoryException :: Search :: init :: {}", e);
-	     }	 
+	 	
+	if (null != this.welcomeText && this.welcomeText.length() > 0) {
+		this.welcomeText = this.welcomeText.replace("${username}", "<div class=\"username\"></div>");
+	   }	 
     }  
  }
