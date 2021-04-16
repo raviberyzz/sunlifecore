@@ -20,7 +20,7 @@
     <sly data-sly-test="${!regionsEmpty}">
         <div class="col-xs-9 slf-region">
             <div class="title-region">
-                <h4>${languageRegionModel.title}</h4>
+              <h4 data-sly-element="${languageRegionModel.type}">${languageRegionModel.title}</h4>
             </div>
 
             <div class="col-xs-12 content-region">
