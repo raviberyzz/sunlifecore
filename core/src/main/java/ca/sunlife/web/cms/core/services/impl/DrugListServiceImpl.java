@@ -8,6 +8,10 @@ import ca.sunlife.web.cms.core.services.druglist.PaForm;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.AssetManager;
 import com.day.cq.dam.api.Rendition;
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.ReplicationException;
+import com.day.cq.replication.ReplicationOptions;
+import com.day.cq.replication.Replicator;
 import com.adobe.granite.asset.api.AssetVersionManager;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.CellType;
@@ -58,6 +62,9 @@ public class DrugListServiceImpl implements DrugListService {
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
+    
+    @Reference
+    private Replicator replicator;
 
     private String pdfFolder;
 
@@ -173,9 +180,15 @@ public class DrugListServiceImpl implements DrugListService {
             writeDataAsset(resourceResolver, assetManager, builder, assetPath);
 
             Session session = resourceResolver.adaptTo(Session.class);
+            
             if (session != null) {
                 session.save();
-            }
+                try {
+                	replicator.replicate(session,ReplicationActionType.ACTIVATE,assetPath);
+				} catch (ReplicationException e) {
+					logger.error("Replication failed", e);
+				}
+                           }
 
         } catch (LoginException e) {
             logger.error("Can't create AssetManager", e);
@@ -184,6 +197,8 @@ public class DrugListServiceImpl implements DrugListService {
         }
 
     }
+	
+	
     private JsonArrayBuilder createChessArrayBuilder(String chessPath, ResourceResolver resolver)
             throws IOException {
 
