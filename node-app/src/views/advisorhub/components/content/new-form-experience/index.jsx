@@ -5,6 +5,12 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText
         callback();
         setFilter(filterValue);
     }
+    function enterPressed(e){
+        var code = event.keyCode || event.which;
+        if(code === 13) { //13 is the enter keycode
+            search();
+        } 
+    }
     function reset() {
         $('.search').val('');
         setFilter('');
@@ -21,7 +27,8 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText
                     //  value={filter || ''}
                     placeholder={searchText}
                     className="search"
-                 onChange={e => setInputValue(e.target.value)}
+                    onChange={e => setInputValue(e.target.value)}
+                    onKeyPress={e => enterPressed(e)}
                 />
                 {inputValue!="" && <span onClick={clearSearch}><i className="fa fa-times"></i></span>}
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
