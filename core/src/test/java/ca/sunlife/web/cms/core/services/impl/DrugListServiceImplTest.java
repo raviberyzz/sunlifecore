@@ -6,6 +6,8 @@ import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.AssetManager;
 import com.adobe.granite.asset.api.AssetVersionManager;
 import com.day.cq.dam.api.Rendition;
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.Replicator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -65,6 +67,9 @@ public class DrugListServiceImplTest {
 
     @Mock
     Rendition chess;
+
+    @Mock
+    Replicator replicator;
 
     @Mock
     DrugListConfig config;
@@ -129,10 +134,12 @@ public class DrugListServiceImplTest {
 
         //when(assetManager.createAsset("/content/dam/sunlife/data/druglist-workflow-report.txt")).thenReturn(reportAsset);
 
+        FieldSetter.setField(subject, subject.getClass().getDeclaredField("replicator"), replicator);
+
         subject.activate(config);
     }
 
-    /*@Test
+    @Test
     public void testWriteJsonAssetToDamChess() throws Exception {
 
         Resource outResource = mock(Resource.class);
@@ -149,8 +156,12 @@ public class DrugListServiceImplTest {
         JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
 
 
-       // assertEquals("�h", jsonNode.get("chess").toString());
+        JsonNode chessArray = jsonNode.get("chess");
+        assertNotNull(chessArray);
+        assertTrue(chessArray.isArray());
+        //assertEquals("\"�h\"", chessArray.get(0));
 
+        verify(replicator).replicate(any(Session.class), eq(ReplicationActionType.ACTIVATE), eq("/content/dam/sunlife/data/chesslist.json"));
 
     }
     @Test
@@ -200,10 +211,10 @@ public class DrugListServiceImplTest {
 
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
-        assertEquals(22841, jsonNode.get("chess").size());
+        assertTrue(jsonNode.get("chess") == null);
 
     }
-*/
+
     @Test
     public void testExistingAssetVersioned() throws Exception {
 
