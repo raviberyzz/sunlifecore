@@ -39,6 +39,6 @@ public class SearchModelTest {
 		when(value1.getString()).thenReturn("test");
 		SearchModel.setWelcomeText("Welcome ${username}");
 		SearchModel.init();
-		assertEquals("Welcome <div class=\"username\"></div>", SearchModel.getWelcomeText());
+		assertEquals("Welcome <span class=\"username\"></span>", SearchModel.getWelcomeText());
 	}
 }

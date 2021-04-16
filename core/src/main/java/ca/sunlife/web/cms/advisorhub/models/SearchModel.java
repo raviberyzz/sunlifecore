@@ -144,7 +144,7 @@ public class SearchModel {
 	  LOG.debug("Entry :: Search :: init request :: {}", request);
 	 	
 	if (null != this.welcomeText && this.welcomeText.length() > 0) {
-		this.welcomeText = this.welcomeText.replace("${username}", "<div class=\"username\"></div>");
+		this.welcomeText = this.welcomeText.replace("${username}", "<span class=\"username\"></span>");
 	   }	 
     }  
  }
