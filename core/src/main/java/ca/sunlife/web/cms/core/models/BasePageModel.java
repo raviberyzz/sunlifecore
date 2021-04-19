@@ -346,6 +346,10 @@ public class BasePageModel {
   /** The enable context hinub. */
   private String enableContextHub;
   
+  /** The User info path. */
+  private String userInfoPath;
+  
+
   /** The extra Clientlibs. */
   private String extraClientlibs;
   
@@ -852,6 +856,23 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 	 */
 	public void setEnableContextHub(String enableContextHub) {
 		this.enableContextHub = enableContextHub;
+	}
+	
+	/**
+	 * Gets the UserInfoPath
+	 * 
+	 * @return the UserInfoPath
+	 */
+	public String getUserInfoPath() {
+		return userInfoPath;
+	}
+    
+	/**
+	 * @param userInfoPath
+	 *          the userInfoPath to set
+	 */
+	public void setUserInfoPath(String userInfoPath) {
+		this.userInfoPath = userInfoPath;
 	}
 
 	/**
