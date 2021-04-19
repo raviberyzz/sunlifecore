@@ -273,7 +273,7 @@ public class CNWNewsServiceImpl implements CNWNewsService {
     final int firstBreakPt = 5;
     final int firstMinTotal = 6;
     int resultSize = 0;
-    final String requestUrlStr = requestURL + "/";
+    final String requestUrlStr = requestURL;
     logger.debug("***before pagination -  rcordPerPageStr={},  totalResults={}", rcordPerPageStr,
         totalResults);
 
