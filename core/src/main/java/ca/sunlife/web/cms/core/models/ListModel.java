@@ -78,6 +78,14 @@ public interface ListModel {
      */
     @ Inject
     String getTarget();
+    
+    /**
+     * Gets the data title.
+     *
+     * @return the data title
+     */
+    @ Inject
+    String getDataTitle();
 
   }
 }

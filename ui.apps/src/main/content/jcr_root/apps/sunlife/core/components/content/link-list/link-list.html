@@ -9,10 +9,10 @@
 				    <sly data-sly-use.linkListParsing = "${'linklist-parsing.js' @ path=links.linkUrl}">
 					<li>
 					   <sly data-sly-test.linkChecker = "${links.target == 'modal'}">
-					     <a lang ="${links.langCode}" href ="javascript:void(0)" data-target ="${links.linkUrl}" data-toggle="${links.target}">${links.linkName @ context='html'}</a>
+					     <a lang ="${links.langCode}" href ="javascript:void(0)" data-target ="${links.linkUrl}" data-title="${links.dataTitle}" data-toggle="${links.target}">${links.linkName @ context='html'}</a>
 					    </sly>
 					   <sly data-sly-test = "${!linkChecker}">  
-					   <a lang ="${links.langCode}" href ="${linkListParsing.navPath}" target ="${links.target}">${links.linkName @ context='html'}</a>
+					   <a lang ="${links.langCode}" href ="${linkListParsing.navPath}" target ="${links.target}" data-title="${links.dataTitle}" >${links.linkName @ context='html'}</a>
 					   </sly>
 					 </li>
 					 </sly>
