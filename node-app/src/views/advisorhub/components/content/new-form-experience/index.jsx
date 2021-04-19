@@ -491,7 +491,7 @@ class NewFormExperience extends React.Component {
 
     }
     updateFavorite(formNumber, favourite) {
-        console.log(formNumber, favourite);
+        // console.log(formNumber, favourite);
         var newFavourite = (favourite==true) ? false : true;
         var updatedData = [];
         var updatedOriginalData = [];
@@ -562,11 +562,20 @@ class NewFormExperience extends React.Component {
     SearchSort() {
         var searchResultRows = [];
         var filter = $('.search').val().toUpperCase();
-        this.state.data.map((obj) => {
-            if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
-                searchResultRows.push(obj);
-            }
-        })
+        if (this.state.selectedFilters.length > 0) {
+            this.state.filterResetData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
+        else{
+            this.state.originalData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
         this.setState({
             data: searchResultRows
         });
