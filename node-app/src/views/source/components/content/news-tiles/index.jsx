@@ -679,6 +679,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                         .slice(0, 4)
                         .map((key, index) => {
                           return (
+                            
                             <a
                               class={`col-xs-12  tile clickable-tile ${index == 0
                                 ? "col-sm-8 col-md-8"
@@ -687,8 +688,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                 href= {this.state.filterNewsList[key].linkOption == "lightbox"?null:this.state.filterNewsList[key].pagePath}
                                 target={this.state.filterNewsList[key].linkOption == "newWindow"?"_blank":null}
                                 rel={this.state.filterNewsList[key].linkOption == "newWindow"?"noreferrer noopener":null}
-                                tabindex={this.state.filterNewsList[key].linkOption == "lightbox"?"0":null}
-                               
+                                aria-hidden={this.state.filterNewsList[key].linkOption == "lightbox"?"true":null}
                                 onKeyDown={event => {
                                   if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
                                       window[this.state.filterNewsList[key].pagePath]();                                    
@@ -696,6 +696,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                   
                                 }
                                 }
+
                               onClick={this.newsTileClick.bind(
                                 this,
                                 key,
@@ -710,14 +711,18 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                               >
 			      {this.state.filterNewsList[key].linkOption == "lightbox" && 
                                 (<div class="vidyard_wrapper">
-                                <div type="button" role="button" class="play-btn" title="Play video" >
+                                <button 
+                                class="play-btn" 
+                                title="Play video" 
+                                aria-label={(this.state.filterNewsList[key].linkOption == "lightbox"?("Play video, " + this.state.filterNewsList[key].heading + " " + this.bgBinding(this.state.filterNewsList[key].tags) + " " + this.dateTransform(this.state.filterNewsList[key].publishedDate) + " Opens in a modal"):null)}        
+                                >
                                 <div class="play-btn-size"></div>
                                 <div class="arrow-size">
                                 <div class="arrow-size-ratio"></div>
                                 <div class="arrow">
                                   </div>
                                   </div>
-                                  </div>
+                                  </button>
                                   </div>
                                 )}
                                 <div class="overlay-container">
