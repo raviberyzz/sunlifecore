@@ -47,6 +47,31 @@ public class SearchModel {
   @ Via ("resource")
   private String welcomeText;
   
+  /** The analyticsID. */
+  @ Inject
+  @ Via ("resource")
+  private String analyticsId;
+  
+  /**
+   * Gets the analyticsId
+   * 
+   * @return the analyticsId
+   */
+  public String getAnalyticsId() {
+	return analyticsId;
+  }
+  
+  
+  /**
+   * Sets analyticsId
+   * 
+   * @param analyticsId
+   *          the analyticsId to set
+  */
+  public void setAnalyticsId(String analyticsId) {
+	this.analyticsId = analyticsId;
+  }
+
   /**
    * Gets the welcomeText
    * 

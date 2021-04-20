@@ -4,7 +4,7 @@
 <sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
 
 <div class="adv-search-bar-wrapper collapse in" data-sly-test ="${search.welcomeText}"
-       data-section="header-search" id="sun-search">
+       data-section="${search.analyticsId}" id="sun-search">
     <div class="global-search">
         <form name="searchform-bottom" class="slf-search" action="${search.searchUrl @ extension = 'html'}" method="get" data-value=""><label class="sr-only" for="q-top">Search</label>
             <h3 class="search-heading">${search.welcomeText}</h3>

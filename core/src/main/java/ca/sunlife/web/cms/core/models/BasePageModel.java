@@ -346,6 +346,10 @@ public class BasePageModel {
   /** The enable context hinub. */
   private String enableContextHub;
   
+  /** The User info path. */
+  private String userInfoPath;
+  
+
   /** The extra Clientlibs. */
   private String extraClientlibs;
   
@@ -853,6 +857,23 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 	public void setEnableContextHub(String enableContextHub) {
 		this.enableContextHub = enableContextHub;
 	}
+	
+	/**
+	 * Gets the UserInfoPath
+	 * 
+	 * @return the UserInfoPath
+	 */
+	public String getUserInfoPath() {
+		return userInfoPath;
+	}
+    
+	/**
+	 * @param userInfoPath
+	 *          the userInfoPath to set
+	 */
+	public void setUserInfoPath(String userInfoPath) {
+		this.userInfoPath = userInfoPath;
+	}
 
 	/**
 	 * Gets the extraClientlibs
@@ -1030,6 +1051,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     setFavIcon(configService.getConfigValues("favIcon",
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
+    userInfoPath = configService.getConfigValues("userInfoPath", pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
     disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
