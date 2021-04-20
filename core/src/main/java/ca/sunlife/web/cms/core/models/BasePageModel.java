@@ -1051,6 +1051,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     setFavIcon(configService.getConfigValues("favIcon",
         pagePath));
     enableContextHub = configService.getConfigValues(BasePageModelConstants.ENABLE_CONTEXT_HUB_CONSTANT, pagePath);
+    userInfoPath = configService.getConfigValues("userInfoPath", pagePath);
     extraClientlibs = configService.getConfigValues(EXTRA_CLIENTLIBS, pagePath);
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
     disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
