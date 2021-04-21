@@ -81,8 +81,6 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	/** The Constant THREAD_SLEEP_TIME. */
 	private static final int THREAD_SLEEP_TIME = 1000;
 
-	private final PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
-
 	/**
 	 * Activate.
 	 *
@@ -93,15 +91,13 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 	public void activate(final AkamaiEdgeRedirectsConfig initConfig) {
 		LOGGER.debug("Entry :: activate method of AkamaiCacheClearImpl");
 		this.config = initConfig;
-		// Set the maximum number of connections in the pool
-		connManager.setMaxTotal(100);
 		// Create a ClientBuilder Object by setting the connection manager
 		LOGGER.info("Got akamai host {}", config.getHost());
 		LOGGER.debug("Exit :: activate method of AkamaiCacheClearImpl");
 	}
 
 	private CloseableHttpClient getClient() {
-		HttpClientBuilder clientbuilder = HttpClients.custom().setConnectionManager(connManager);
+		HttpClientBuilder clientbuilder = HttpClients.custom();
 
 		final RequestConfig reqConfig = RequestConfig.custom().setConnectTimeout(config.getConnectionTimeout())
 				.setConnectionRequestTimeout(config.getConnectionTimeout()).setSocketTimeout(config.getSocketTimeout())
@@ -110,7 +106,7 @@ public class AkamaiEdgeRedirectsImpl implements AkamaiEdgeRedirects {
 				.clientToken(config.getClientToken()).clientSecret(config.getClientSecret()).host(config.getHost())
 				.build();
 		return clientbuilder.addInterceptorFirst(new ApacheHttpClientEdgeGridInterceptor(clientCredential))
-				.setConnectionManager(connManager).setDefaultRequestConfig(reqConfig)
+				.setDefaultRequestConfig(reqConfig)
 				.setRoutePlanner(new ApacheHttpClientEdgeGridRoutePlanner(clientCredential)).build();
 	}
 
