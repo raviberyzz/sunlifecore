@@ -31,6 +31,34 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Title (Mobile &amp; Tablet)"
                                         name="./titleMobile"/>
+                                     <types
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Type / Size"
+                                        name="./type">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <none
+                                                jcr:primaryType="nt:unstructured"
+                                                text="No default"
+                                                value=""/>
+                                            <h2
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H2"
+                                                value="h2"/>
+                                            <h3
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H3"
+                                                value="h3"/>
+                                            <h4
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H4"
+                                                value="h4"/>
+                                            <h5
+                                                jcr:primaryType="nt:unstructured"
+                                                text="H5"
+                                                value="h5"/>
+                                        </items>
+                                    </types>    
                                     <regions
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

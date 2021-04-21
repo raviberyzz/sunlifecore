@@ -10,7 +10,20 @@ $(document).ready(function () {
         }
     }
 
-    setTimeout(userName,2000);
+    function checkSearchBar(){
+        if($(".target .default.search").length!=0){
+            setTimeout(checkSearchBar, 500);
+        }   
+        else{
+            userName();
+        }
+    }
+    
+    if(typeof ContextHub != "undefined"){
+        checkSearchBar();
+    }
+
+    // Type Ahead functionality implementation
 
     (function ($) {
 
@@ -50,7 +63,7 @@ $(document).ready(function () {
             return $.ajax({
                 type: "GET",
                 rejectUnauthorized: false,
-                url: autoCompletePrefix + "&Totalresults=true&Print=all&Text="+query+"&MatchLanguage="+utag_data.page_language+"&Maxresults=10&Start=1",
+                url: autoCompletePrefix + "&Totalresults=true&Print=all&Text=(\""+query+"*\"):TITLE&MatchLanguage="+utag_data.page_language+"&Maxresults=10&Start=1",
                 dataType: "jsonp"
             })
         }

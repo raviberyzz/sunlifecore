@@ -679,6 +679,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                         .slice(0, 4)
                         .map((key, index) => {
                           return (
+                            
                             <a
                               class={`col-xs-12  tile clickable-tile ${index == 0
                                 ? "col-sm-8 col-md-8"
@@ -687,8 +688,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                 href= {this.state.filterNewsList[key].linkOption == "lightbox"?null:this.state.filterNewsList[key].pagePath}
                                 target={this.state.filterNewsList[key].linkOption == "newWindow"?"_blank":null}
                                 rel={this.state.filterNewsList[key].linkOption == "newWindow"?"noreferrer noopener":null}
-                                tabindex={this.state.filterNewsList[key].linkOption == "lightbox"?"0":null}
-                               
+                                aria-hidden={this.state.filterNewsList[key].linkOption == "lightbox"?"true":null}
                                 onKeyDown={event => {
                                   if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
                                       window[this.state.filterNewsList[key].pagePath]();                                    
@@ -696,7 +696,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                   
                                 }
                                 }
-                                
+
                               onClick={this.newsTileClick.bind(
                                 this,
                                 key,
@@ -709,11 +709,41 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                   backgroundImage: `url(${index == 0 ? (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImageFeatured) : (!this.state.filterNewsList[key].thumbnailImage ? this.props.genericImage : (window.innerWidth < 768 ? this.state.filterNewsList[key].thumbnailImageFeatured : this.state.filterNewsList[key].thumbnailImage))})`,
                                 }} data-section={"hp-news-position" + (index + 1)}
                               >
+			      {this.state.filterNewsList[key].linkOption == "lightbox" && 
+                                (<div class="vidyard_wrapper">
+                                <button 
+                                class="play-btn" 
+                                title="Play video" 
+                                aria-label={(this.state.filterNewsList[key].linkOption == "lightbox"?("Play video, " + this.state.filterNewsList[key].heading + " " + this.bgBinding(this.state.filterNewsList[key].tags) + " " + this.dateTransform(this.state.filterNewsList[key].publishedDate) + " Opens in a modal"):null)}        
+                                >
+                                <div class="play-btn-size"></div>
+                                <div class="arrow-size">
+                                <div class="arrow-size-ratio"></div>
+                                <div class="arrow">
+                                  </div>
+                                  </div>
+                                  </button>
+                                  </div>
+                                )}
                                 <div class="overlay-container">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
                                     <span class="title pull-left">
                                       {this.state.filterNewsList[key].heading}
                                     </span>
+				  </div>
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 detail-container">
+                                  <span class="bg-name">
+                                  {this.state.filterNewsList[key].linkOption == "newWindow"?(
+                                        <i class="fa fa-external-link"></i>
+                                       ):(
+                                         null
+                                       )
+                                      }
+                                    {' '}
+                                    {this.bgBinding(
+                                      this.state.filterNewsList[key].tags
+                                    )}
+                                  </span>
                                     <span class="date pull-right">
                                       {this.dateTransform(
                                         this.state.filterNewsList[key]
@@ -721,11 +751,7 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                       )}
                                     </span>
                                   </div>
-                                  <span class="bg-name">
-                                    {this.bgBinding(
-                                      this.state.filterNewsList[key].tags
-                                    )}
-                                  </span>
+                                  
                                 </div>
                               </div>
                             </a>
@@ -762,6 +788,19 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                                     {this.state.filterNewsList[key].heading}
                                   </a>
                                   <p class="bg-name">
+					{this.state.filterNewsList[key].linkOption == "lightbox"?(
+                                        <i class="fa fa-play-circle"></i>
+                                       ):(
+                                         null
+                                       )
+                                      }
+                                      {this.state.filterNewsList[key].linkOption == "newWindow"?(
+                                        <i class="fa fa-external-link"></i>
+                                       ):(
+                                         null
+                                       )
+                                      }
+                                    {' '}
                                     {this.bgBinding(
                                       this.state.filterNewsList[key].tags
                                     )}

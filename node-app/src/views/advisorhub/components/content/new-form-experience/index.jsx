@@ -5,6 +5,12 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText
         callback();
         setFilter(filterValue);
     }
+    function enterPressed(e){
+        var code = event.keyCode || event.which;
+        if(code === 13) { //13 is the enter keycode
+            search();
+        } 
+    }
     function reset() {
         $('.search').val('');
         setFilter('');
@@ -21,7 +27,8 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText
                     //  value={filter || ''}
                     placeholder={searchText}
                     className="search"
-                 onChange={e => setInputValue(e.target.value)}
+                    onChange={e => setInputValue(e.target.value)}
+                    onKeyPress={e => enterPressed(e)}
                 />
                 {inputValue!="" && <span onClick={clearSearch}><i className="fa fa-times"></i></span>}
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
@@ -484,7 +491,7 @@ class NewFormExperience extends React.Component {
 
     }
     updateFavorite(formNumber, favourite) {
-        console.log(formNumber, favourite);
+        // console.log(formNumber, favourite);
         var newFavourite = (favourite==true) ? false : true;
         var updatedData = [];
         var updatedOriginalData = [];
@@ -555,11 +562,20 @@ class NewFormExperience extends React.Component {
     SearchSort() {
         var searchResultRows = [];
         var filter = $('.search').val().toUpperCase();
-        this.state.data.map((obj) => {
-            if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
-                searchResultRows.push(obj);
-            }
-        })
+        if (this.state.selectedFilters.length > 0) {
+            this.state.filterResetData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
+        else{
+            this.state.originalData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
         this.setState({
             data: searchResultRows
         });
