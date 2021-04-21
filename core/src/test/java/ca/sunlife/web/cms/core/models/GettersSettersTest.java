@@ -7,7 +7,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import ca.sunlife.web.cms.advisorhub.models.LuminoModel;
 import ca.sunlife.web.cms.advisorhub.models.OutageListModel;
 import ca.sunlife.web.cms.advisorhub.models.OutageModel;
-import ca.sunlife.web.cms.advisorhub.models.SearchModel;
 import ca.sunlife.web.cms.core.beans.NewsReleases;
 import ca.sunlife.web.cms.core.beans.PageItem;
 import ca.sunlife.web.cms.core.beans.Pagination;
@@ -51,7 +50,6 @@ public class GettersSettersTest {
   private LegacyContainerModel legacyContainerModel;
   private OutageModel outageModel;
   private OutageListModel outageListModel;
-  private SearchModel searchModel;
   private LuminoModel luminoModel;
   private ListPageCfModel listPageCfModel;
   private CFPaths cfPaths;
@@ -93,7 +91,6 @@ public class GettersSettersTest {
     legacyContainerModel = new LegacyContainerModel();
     outageModel = new OutageModel();
     outageListModel = new OutageListModel();
-    searchModel = new SearchModel();
     luminoModel = new LuminoModel();
     listPageCfModel = new ListPageCfModel();
     cfPaths = new CFPaths(); 
@@ -273,11 +270,6 @@ public class GettersSettersTest {
   @ Test
   void testoutageListModel() {
     TestUtils.executeTestBean(outageListModel);
-  }
-  
-  @ Test
-  void testsearchModel() {
-    TestUtils.executeTestBean(searchModel);
   }
   
   @ Test
