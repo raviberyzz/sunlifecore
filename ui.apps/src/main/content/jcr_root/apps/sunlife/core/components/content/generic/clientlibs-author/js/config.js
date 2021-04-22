@@ -131,21 +131,22 @@ var multiPurposeComponentConfig = [
                 value: "",
                 required: true
             },
-			{
-                name: "moreNewsText",
-                label: "More News Text",
-                value: "More news",
-                required: true
-            },
-			{
-                name: "moreNewsImg",
-                label: "More News Image",
+{
+                name: "moreNewsHeadingText",
+                label: "More News Heading Text",
                 value: "",
                 required: true
             },
 			{
-                name: "moreNewsLink",
-                label: "More News Link",
+                name: "moreNewsButtonText",
+                label: "More News Button Text",
+                value: "View more news",
+                required: true
+            },
+
+			{
+                name: "moreNewsButtonLink",
+                label: "More News Button Link",
                 value: "",
                 required: true
             },
