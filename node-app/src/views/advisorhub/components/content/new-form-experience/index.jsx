@@ -70,6 +70,12 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
     function sort() {
         sortyBy();
     }
+    function enterPressed(e, index){
+        var code = event.keyCode || event.which;
+        if(code === 13 && index == 3) { //13 is the enter keycode
+            sort();
+        } 
+    }
     function favourite(e) {
         updateFavorite(e["original"]["formNumber"], e["original"]["favorite"]);
     }
@@ -122,7 +128,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column, index) => (
-                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
+                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onKeyPress={(e) => enterPressed(e, index)} tabindex={index == 3 ? 0 : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
                                     {index == 3 ? <i className="fa fa-sort"></i> : ""}
                                 </th>
                             ))}
