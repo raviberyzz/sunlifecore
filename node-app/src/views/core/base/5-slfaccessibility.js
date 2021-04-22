@@ -132,8 +132,10 @@ addMegaMenuAriaLabels();
     });
       $("#sun-search .primary-blue-button-form .cmp-form-button").keydown(function(e){
         if (e.which == 9 ) {
+          if(!$(this).parents().hasClass("adv-search-bar-wrapper")){
             e.preventDefault();
             $('#sun-search .close-div a').focus();
+          }
         }
     });
       $('.desktop-primary-navigation .navbar-new').children('li:first-child').keydown(function(e){

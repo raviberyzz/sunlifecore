@@ -20,7 +20,7 @@
         padding: 0 !important;
     }
     .title-region {
-        h4 {
+        h2, h3, h4, h5 {
             font-weight: 700;
             font-size: 1.125rem;
             margin: 0 0 8px 0;
@@ -340,7 +340,7 @@
                 margin: -1px;
                 border: 1px solid $light-grey-color;
                 min-height: 64px;
-                h4{
+                h2, h3, h4, h5{
                     font-size: 1rem;
                     line-height: 26px;
                     font-weight: 700;

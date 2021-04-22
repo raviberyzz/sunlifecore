@@ -416,7 +416,7 @@ $(document).ready(function(){
                                     }
                                 }
                                 catch(err){
-                                    console.log(err);
+                                    // console.log(err);
                                 }
 
                                 resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 
@@ -435,7 +435,7 @@ $(document).ready(function(){
                                         var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"];
                                     }
                                     catch(err){
-                                        console.log(err);
+                                        // console.log(err);
                                         continue;
                                     }
                                     try{
@@ -463,7 +463,7 @@ $(document).ready(function(){
                                         }
                                     }
                                     catch(err){
-                                        console.log(err);
+                                        // console.log(err);
                                     }
 
                                     resultItem = resultItem + '<div class="bottom-buffer search-result-item">' + 

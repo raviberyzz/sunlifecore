@@ -14,50 +14,72 @@ function stickyHeader() {
         });
       });
 
-      let tableHeader = $(".table-stickyheader table:eq(0) tbody tr:first-child th");
-      let theaderPosition = tableHeader.offset().top;
+      let tableHeader, theaderPosition;
+	    let numberOfTables = $(".table-stickyheader table").length;
+      var index = 0;
+      while(index<numberOfTables){
+      	tableHeader = $(".table-stickyheader table:eq("+index+") tbody tr:first-child");
+        theaderPosition = tableHeader.offset().top;
+        if(theaderPosition!=0){
+			    break;
+        }
+        index=index+1;
+      }
       let tableBottom = $('.table-stickyheader table:eq(0) tbody tr:last-child');
       let tbottomPosition = tableBottom.offset().top;
 
-      let numberOfTables = $(".table-stickyheader table").length;
       let currTable = 0;
       let position = 0;
+      var scrolled = false;
       //sticky header function on scroll 
-      $(window).on("scroll", function () {
-        if (window.pageYOffset > theaderPosition) {
-          position = window.pageYOffset - theaderPosition;
-          // in case of mobile header the sticky header should be after the mobile header 
-          if (window.innerWidth < 1025 && $('.mobile-header-navbar').length) {
-            //aligning table sticky header after the mobile header in mobile devices and tablets
-            // 50 px is the height of the mobile header. 
-            position += 50;
-            tableHeader.css("transform", "translateY(" + position + "px)");
-          } else {
-            tableHeader.css("transform", "translateY(" + position + "px)");
-          }
-          //removing the transform property once the page scrolls past the table
-          if (window.pageYOffset > tbottomPosition + tableHeader.height()) {
-            tableHeader.css("transform", "translateY(" + 0 + "px)");
-            //If more than one table set new parameters
-            if (numberOfTables > currTable + 1) {
-              currTable++;
-              tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child th");
+      if(theaderPosition!=0){
+        $(window).off("scroll");
+        $(window).on("scroll", function () {
+          if (window.pageYOffset > theaderPosition) {
+            position = window.pageYOffset - theaderPosition;
+            // in case of mobile header the sticky header should be after the mobile header 
+            if (window.innerWidth < 1025 && $('.mobile-header-navbar').length) {
+              //aligning table sticky header after the mobile header in mobile devices and tablets
+              // 50 px is the height of the mobile header. 
+              // position += 50;
               tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child');
-              theaderPosition = tableHeader.offset().top;  //New table header position
-              tbottomPosition = tableBottom.offset().top;  //New table bottom position
+              tbottomPosition = tableBottom.offset().top;
+              if(tableHeader.parents().hasClass("cmp-accordion__panel") || scrolled==true){
+                position += 50;
+              }
+              // if(scrolled==true){
+              //   position+=50;
+              // }
+              tableHeader.css("transform", "translateY(" + position + "px)");
+            } else {
+              tableHeader.css("transform", "translateY(" + position + "px)");
             }
+            //removing the transform property once the page scrolls past the table
+            if (window.pageYOffset > tbottomPosition + tableBottom.height()) {
+              tableHeader.css("transform", "translateY(" + 0 + "px)");
+              //If more than one table set new parameters
+              if (numberOfTables > currTable + 1) {
+                currTable++;
+                tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child");
+                tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child');
+                theaderPosition = tableHeader.offset().top;  //New table header position
+                tbottomPosition = tableBottom.offset().top;  //New table bottom position
+                scrolled = true;
+              }
+            }
+          } else if (window.pageYOffset < theaderPosition && currTable > 0) {
+            tableHeader.css("transform", "translateY(" + 0 + "px)");
+            currTable--;
+            tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child");
+            tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child');
+            theaderPosition = tableHeader.offset().top;  //New table header position
+            tbottomPosition = tableBottom.offset().top;  //New table bottom position
+          } else if (position !== 0) {
+            position = 0;
+            tableHeader.css("transform", "translateY(" + 0 + "px)");
           }
-        } else if (window.pageYOffset < theaderPosition && currTable > 0) {
-          currTable--;
-          tableHeader = $(".table-stickyheader table:eq(" + currTable + ") tbody tr:first-child th");
-          tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child');
-          theaderPosition = tableHeader.offset().top;  //New table header position
-          tbottomPosition = tableBottom.offset().top;  //New table bottom position
-        } else if (position !== 0) {
-          position = 0;
-          tableHeader.css("transform", "translateY(" + 0 + "px)");
-        }
-      });
+        });
+      }
     }
     // adding logic to dynamically inject sr-only class span tags into icon for screen readers.
     let crossIcon = document.getElementsByClassName('fa-times');
@@ -142,3 +164,7 @@ $(function () {
     $(".modal.popup-modal-wrapper").modal('hide');
   });
 });
+
+$(".cmp-accordion__header").click(function(){
+  $(stickyHeader);
+})

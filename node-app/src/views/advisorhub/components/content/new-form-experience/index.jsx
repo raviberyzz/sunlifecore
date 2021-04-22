@@ -1,9 +1,15 @@
-const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
+const GlobalFilter = ({ setFilter, filterData, callback, refreshData, searchText }) => {
     const [inputValue, setInputValue] = React.useState( '' );
     function search() {
         var filterValue = $('.search').val();
         callback();
         setFilter(filterValue);
+    }
+    function enterPressed(e){
+        var code = event.keyCode || event.which;
+        if(code === 13) { //13 is the enter keycode
+            search();
+        } 
     }
     function reset() {
         $('.search').val('');
@@ -19,9 +25,10 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
             <span className="globalSearch">
                 <input
                     //  value={filter || ''}
-                    placeholder="Search"
+                    placeholder={searchText}
                     className="search"
-                 onChange={e => setInputValue(e.target.value)}
+                    onChange={e => setInputValue(e.target.value)}
+                    onKeyPress={e => enterPressed(e)}
                 />
                 {inputValue!="" && <span onClick={clearSearch}><i className="fa fa-times"></i></span>}
                 <button onClick={search} className="searchIcon"><i className="fa fa-search" ></i></button>
@@ -31,7 +38,7 @@ const GlobalFilter = ({ setFilter, filterData, callback, refreshData }) => {
 
     )
 }
-function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateFavorite, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt }) {
+function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateFavorite, togglefilter, addFilterTxt, filtersData, addFilter, filterBtnTxt, selectedFilters, clearFilter, clearAll, clearAllTxt, previousText, nextText, pageText, ofText, searchText, loadingState, loading, loadingText }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -63,6 +70,12 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
     function sort() {
         sortyBy();
     }
+    function enterPressed(e, index){
+        var code = event.keyCode || event.which;
+        if(code === 13 && index == 3) { //13 is the enter keycode
+            sort();
+        } 
+    }
     function favourite(e) {
         updateFavorite(e["original"]["formNumber"], e["original"]["favorite"]);
     }
@@ -90,7 +103,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                 <div className="filter-container">
                     {data.length > 0 ? <div className="counter">{((pageIndex + 1) * pageSize) - (pageSize - 1)} - {pageSize != page.length ? ((pageIndex + 1) * (pageSize)) - (pageSize - page.length) : (pageIndex + 1) * pageSize} of {data.length}</div>
                         : <div className="counter">0 - 0 of 0</div>}
-                    <button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button>
+                    <div><button class="toggle-filter filter-buttons addFilter" onClick={togglefilter}>{addFilterTxt}</button></div>
                     <form className="filters">
                         {Object.keys(filtersData).map((key) => {
                             return <div className="filter"><input type="checkbox" name={filtersData[key].id} value={filtersData[key].title}></input><label for={filtersData[key].title}>{filtersData[key].title}</label></div>
@@ -107,6 +120,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     filteredData={data}
                     callback={callBack}
                     refreshData={refreshTableData}
+                    searchText={searchText}
                 />
             </div>
             <table className="new-form-table" {...getTableProps()}>
@@ -114,7 +128,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column, index) => (
-                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
+                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onKeyPress={(e) => enterPressed(e, index)} tabindex={index == 3 ? 0 : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
                                     {index == 3 ? <i className="fa fa-sort"></i> : ""}
                                 </th>
                             ))}
@@ -134,14 +148,21 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     }) : ""}
                 </tbody>
             </table>
-            {data.length < 1 && <div className="noData"> No Data available </div>}
+            {loadingState && (<div class="loaderForm">
+                <i class="fa fa-spinner fa-pulse"></i>
+                <div class="loaderText">
+                    <p><strong>{loading}</strong></p>
+                    <p>{loadingText}</p>
+                </div>
+            </div>)}
+            {!loadingState && data.length < 1 && <div className="noData"> No Data available </div>}
             {/*  Pagination Component*/}
             {data.length > 15 && <div class="pagination-component">
                 <nav role="navigation" aria-label="Pagination" class="text-center">
                     <ul className={`pagination pagination-list ${pageIndex + 1 < 2 ? 'first-page' : ''} ${pageIndex + 1 >= pageOptions.length ? 'last-page' : ''}`}>
                         {pageIndex + 1 != 1 && <li className={`previous ${(pageIndex + 1) < 2 ? 'disabled' : ''}`} onClick={() => previousPage()} disabled={!canPreviousPage}>
                             <a href="#new-form-experience" className="page-link"><span class="fa fa-angle-left" aria-hidden="true"></span>
-                                <span class="">Previous</span></a>
+                                <span class="">{previousText}</span></a>
                         </li>}
                         {pageOptions.length > 1 && <li className={`link-to-first ${pageIndex + 1 == 1 ? 'active' : ''}`} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                             <a href="#new-form-experience" className="page-link" aria-label="First Page">
@@ -166,12 +187,12 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                         </li>
                         {pageIndex + 1 != pageOptions.length &&
                             <li className={`next ${pageIndex + 1 >= pageOptions.length ? 'disabled' : ''}`}>
-                                <a href="#new-form-experience" onClick={() => gotoPage(pageIndex + 1)}>Next</a>
+                                <a href="#new-form-experience" onClick={() => gotoPage(pageIndex + 1)}>{nextText}</a>
                             </li>
                         }
 
                     </ul>
-                    <div class="pagination-indicator">Page {pageIndex + 1} of {pageCount}</div>
+                    <div class="pagination-indicator">{pageText} {pageIndex + 1} {ofText} {pageCount}</div>
                 </nav>
             </div>}
         </div>
@@ -192,8 +213,8 @@ class NewFormExperience extends React.Component {
             favorites: [],
             selectedValues: [],
             lang: utag_data.page_language,
-            sorting: false
-
+            sorting: false,
+            loadingState: true
         };
         this.toggleFilter = this.toggleFilter.bind(this);
         this.addFilters = this.addFilters.bind(this);
@@ -260,7 +281,8 @@ class NewFormExperience extends React.Component {
                             data: tableData,
                             // originalData: originalresponseData,
                             originalData: tableData,
-                            favorites: favoriteData
+                            favorites: favoriteData,
+                            loadingState: false
                         }, () => {
                             // this.tagSorting();
                             this.getFilterData();
@@ -310,7 +332,8 @@ class NewFormExperience extends React.Component {
                             data: tableData,
                             // originalData: originalresponseData,
                             originalData: tableData,
-                            favorites: favoriteData
+                            favorites: favoriteData,
+                            loadingState: false
                         }, () => {
                             // this.tagSorting();
                             this.getFilterData();
@@ -474,7 +497,7 @@ class NewFormExperience extends React.Component {
 
     }
     updateFavorite(formNumber, favourite) {
-        console.log(formNumber, favourite);
+        // console.log(formNumber, favourite);
         var newFavourite = (favourite==true) ? false : true;
         var updatedData = [];
         var updatedOriginalData = [];
@@ -545,11 +568,20 @@ class NewFormExperience extends React.Component {
     SearchSort() {
         var searchResultRows = [];
         var filter = $('.search').val().toUpperCase();
-        this.state.data.map((obj) => {
-            if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
-                searchResultRows.push(obj);
-            }
-        })
+        if (this.state.selectedFilters.length > 0) {
+            this.state.filterResetData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
+        else{
+            this.state.originalData.map((obj) => {
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                    searchResultRows.push(obj);
+                }
+            })
+        }
         this.setState({
             data: searchResultRows
         });
@@ -582,7 +614,9 @@ class NewFormExperience extends React.Component {
                     },
                     {
                         Header: `${this.props.tableHeaderCol2}`,
-                        accessor: 'formInformation',
+                        accessor: function formInformation(obj){
+                            return <div dangerouslySetInnerHTML={{__html: obj.formInformation}} />
+                        },
                     },
                     {
                         Header: `${this.props.tableHeaderCol3}`,
@@ -642,6 +676,14 @@ class NewFormExperience extends React.Component {
                     clearFilter={this.clearFilter}
                     clearAll={this.clearAll}
                     clearAllTxt={this.props.ClearAllText}
+                    previousText={this.props.previousText}
+                    nextText={this.props.nextText}
+                    pageText={this.props.pageText}
+                    ofText={this.props.ofText}
+                    searchText={this.props.searchText}
+                    loadingState={this.state.loadingState}
+                    loading={this.props.loading}
+                    loadingText={this.props.loadingText}
                 ></Table>
             </React.Fragment>
         )

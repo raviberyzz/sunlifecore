@@ -121,6 +121,11 @@
                                         name="./enableContextHub"
                                         text="Enable context hub"
                                         value="{Boolean}true"/>
+                                    <userInfoPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="User Info path"
+                                        name="./userInfoPath"/>    
                                     <disableContextHubTags
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

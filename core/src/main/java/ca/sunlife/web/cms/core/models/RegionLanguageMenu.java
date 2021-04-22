@@ -28,7 +28,12 @@ public class RegionLanguageMenu {
   /** The title. */
   @ Inject
   private String title;
+  
+  /** The header type. */
+  @ Inject
+  private String type;
 
+  
   /** The title mobile. */
   @ Inject
   private String titleMobile;
@@ -108,6 +113,26 @@ public class RegionLanguageMenu {
   public void setTitle(final String title) {
     this.title = title;
   }
+  
+  /**
+   * Gets the header type.
+   *
+   * @return the header type
+   */
+  public String getType() {
+		return type;
+  }
+
+  /**
+   * Sets the header type.
+   *
+   * @param type
+   *          the new type
+   */
+  public void setType(String type) {
+		this.type = type;
+  }
+
 
   /**
    * Gets the title mobile.

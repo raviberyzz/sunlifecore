@@ -121,10 +121,9 @@ public class FormsListingServlet extends SlingSafeMethodsServlet {
 							ValueMap valueMap = contentFragmentData.getValueMap();
 							jsonObject.put(FormsConstants.FORM_NUMBER, valueMap.get(FormsConstants.FORM_NUMBER, String.class));
 							jsonObject.put(FormsConstants.LAST_UPDATED, valueMap.get(FormsConstants.LAST_UPDATED, String.class));
-							jsonObject.put(FormsConstants.ESIGN, valueMap.get(FormsConstants.ESIGN,String.class));							
+							jsonObject.put(FormsConstants.ESIGN, valueMap.get(FormsConstants.ESIGN,String.class));	
 							String summary = valueMap.get(FormsConstants.FORM_INFORMATION, String.class);
-							Document docObj = null != summary ? Jsoup.parse(summary) : null;
-							jsonObject.put(FormsConstants.FORM_INFORMATION, null != docObj ? docObj.text() : "");
+							jsonObject.put(FormsConstants.FORM_INFORMATION, summary);
 						}
 						final Resource contentFragmentMetaData = coreResourceResolver.getResourceResolver()
 								.getResource(forms.getPath().concat(JCR_CONTENT_METDATA_MASTER));

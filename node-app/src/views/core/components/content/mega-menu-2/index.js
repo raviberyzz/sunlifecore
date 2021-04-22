@@ -8,6 +8,7 @@ $(document).ready(function(){
      $('.slf-header-mega-menu2').height(menuHeight);
       }
    );
+ 
   });
 
   /*AEM JS*/

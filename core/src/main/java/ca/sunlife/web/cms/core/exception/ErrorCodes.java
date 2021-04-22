@@ -21,7 +21,7 @@ public enum ErrorCodes {
   /** The app error 200. */
   APP_ERROR_200("Not able to purge AKAMAI request"),
   
-  APP_ERROR_201("Not able to get or create poilicy vrsion"),
+  APP_ERROR_201("Not able to get or create poilicy version"),
   
   APP_ERROR_202("Unable to parse rules");
 

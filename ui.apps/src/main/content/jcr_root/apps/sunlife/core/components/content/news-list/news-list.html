@@ -65,14 +65,14 @@
                             </sly>
                             <sly data-sly-test="${paginationObj.curPage > 1}">
                                 <li class="previous ${previousCss}">
-                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}/${paginationObj.prevPage}/">
+                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.prevPage}/">
                                 		<span class="fa fa-angle-left" aria-hidden="true"></span>
                                 		<span>${newsModel.previousText}</span>
                                 	</a>
                                 </li>
                             </sly>
                             <li class="link-to-first ${firstPageCss}">
-                                <a x-cq-linkchecker="skip" href="${newsModel.requestURL}/1/" aria-label="${paginationObj.firstPageText}">
+                                <a x-cq-linkchecker="skip" href="${newsModel.requestURL}1/" aria-label="${paginationObj.firstPageText}">
                                 	<span class="fa fa-angle-double-left" aria-hidden="true"></span>
                                 	<span>1</span>
                                 </a>
@@ -87,7 +87,7 @@
                             </sly>
                             <sly data-sly-test="${paginationObj.curPage < paginationObj.totalPages}">
                                 <li class="next ${nextCss}">
-                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}/${paginationObj.nextPageNo}/">${newsModel.nextText}</a>
+                                	<a x-cq-linkchecker="skip" href="${newsModel.requestURL}${paginationObj.nextPageNo}/">${newsModel.nextText}</a>
                                 </li>
                             </sly>
                             </ul>

@@ -1,4 +1,5 @@
-$("select").each(function(){
+$(document).ready(function(){
+  $("select").each(function(){
     if($(this).attr("data-title").indexOf("AdvisorHub-")==0){
       $(this).change(function(){
         var title=$(this).children("option:selected").text();
@@ -13,3 +14,12 @@ $("select").each(function(){
       })
     }
   })
+
+  $("a").each(function(){
+    if($(this).attr("data-title")!=undefined){
+        if($(this).attr("data-title").indexOf("AdvisorHub-")>-1){
+            $(this).attr("target", $(this).attr("data-title"));
+        }
+    }
+  })
+});

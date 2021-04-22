@@ -69,6 +69,9 @@
         background-color: $white-shade;
         width: 80px;
     }
+    .filter-buttons:lang(fr){
+        width: auto;
+    }
     .selectedFilter{
         padding: 0 8px;
         margin-right:8px;
@@ -97,6 +100,20 @@
         text-align: center;
         margin:32px 0px;
     }
+    .loaderForm{
+        height:470px;
+        text-align: center;
+        margin-top: 10%;
+        color: $blue-gradient-color;
+        .fa{
+            font-size: 64px;
+            margin-bottom: 20px;
+            margin-left: 15px;
+        }
+        .loaderText{
+            padding-left: 22px;
+        }
+    }
    // text-align: right;
    /*.counter{
        margin-left:15px;
@@ -123,7 +140,7 @@
        .fa-times{
            position: absolute;
            right: 73px;
-           top: 5px;
+           top: 8px;
        }
        .fa{
            width:20px;
@@ -227,6 +244,7 @@
             td:nth-of-type(3){
                 font-size: 14px;
                 line-height: 28px;
+                padding: 0 8px;
             }
             td:nth-of-type(4){
                 text-align:center;
@@ -251,9 +269,9 @@
         justify-content: space-between;
         .filter-container{
             display: flex;
-            /*.addFilter{
-                min-width:110px;
-            }*/
+            .addFilter{
+                margin-bottom: 8px;
+            }
             .filters{
                 position: absolute;
             }
