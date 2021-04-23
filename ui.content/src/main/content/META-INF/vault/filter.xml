@@ -20,6 +20,7 @@
 	<filter root="/content/sunlife-tools/post-redirection"/>
     <filter root="/content/sunlife-tools/dispatcher-flush-utility"/>
 	<filter root="/content/sunlife-tools/user-info"/>
+	<filter root="/content/sunlife-tools/advisorhub-user-info"/>
 
     <!-- launcher and workflow for workplace benefits drug list -->
     <filter root="/conf/global/settings/workflow/launcher/config/1423903076"/>
