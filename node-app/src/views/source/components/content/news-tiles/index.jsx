@@ -759,9 +759,11 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                         <div class="aggregate-tile" data-section="hp-news-position5">
-                          <div class="circular-image">
-                            <img class="icon" src={this.props.moreNewsImg} alt="news icon image"/>
+                        <div class="text">
+                          <div class="cmp-text">
+                              <h6>{this.props.moreNewsHeadingText}</h6>
                           </div>
+                        </div>
                           {Object.keys(this.state.filterNewsList)
                             .slice(4, 7)
                             .map((key, index) => {
@@ -809,13 +811,9 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                               );
                             })}
                           <p>
-                            <span class="blue-chevron-arrow">
-                              <span class="blue-font">
-                                <a href={this.props.moreNewsLink}>
-                                  {this.props.moreNewsText}
-                                </a>
-                              </span>
-                            </span>
+                            <a href={this.props.moreNewsButtonLink}>
+                              <span class="button-class primary-blue-button-rte">{this.props.moreNewsButtonText}</span>
+                            </a>
                           </p>
                         </div>
                       </div>
