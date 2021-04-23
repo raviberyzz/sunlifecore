@@ -78,6 +78,10 @@
 .search-autocomplete {
 	cursor: pointer;
 }
+
+.search-heading .username{
+    display: none;
+}
 @media ( max-width: $tab-screen-max) and (min-width: $tab-screen-min ) {
 
     .adv-search-bar-wrapper {
