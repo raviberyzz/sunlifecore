@@ -19,7 +19,7 @@
       var userProfileHome;
       var hasUserGroups;
 </script>
-<sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true' && baseModel.disableContextHubTags != 'true'}" data-sly-resource="${@path=baseModel.userInfoPath , decorationTagName=''}" />
+<sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true' && baseModel.userInfoPath }" data-sly-resource="${@path=baseModel.userInfoPath , decorationTagName=''}" />
 <!-- UDO ends here -->
 <!-- start - Include Site level CSS and scripts -->
 <sly data-sly-test.siteHeadInclude = "${baseModel.siteHeadInclude}"> 
