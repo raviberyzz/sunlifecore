@@ -3,6 +3,7 @@ $(document).ready(function () {
     function userName(){
         if($('.adv-search-bar-wrapper')){
             $('.search-heading .username').text(profileData.givenName);
+            $('.search-heading .username').show();
         }
     }
 
