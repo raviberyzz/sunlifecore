@@ -380,7 +380,8 @@ class NewFormExperience extends React.Component {
         })
         if (filterData.length > 0) {
             filteredRows = this.state.originalData.filter((row) => {
-                return (row.tags && row.tags.some((val) => filterData.indexOf(val) > -1))
+                return (row.tags && filterData.every((val) => row.tags.includes(val)))
+                // return (row.tags && row.tags.some((val) => filterData.indexOf(val) > -1))
             })
             this.setState({
                 data: filteredRows,
@@ -481,7 +482,8 @@ class NewFormExperience extends React.Component {
                 }
             })
             updatedFilterRows = this.state.originalData.filter((row) => {
-                return (row.tags && row.tags.some((val) => remainingFilters.indexOf(val) > -1))
+                return (row.tags && remainingFilters.every((val) => row.tags.includes(val)))
+                // return (row.tags && row.tags.some((val) => remainingFilters.indexOf(val) > -1))
             })
             this.setState({
                 selectedFilters: selFilters,
