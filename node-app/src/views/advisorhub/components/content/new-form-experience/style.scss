@@ -374,3 +374,15 @@
         }
     }
 }
+
+@supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */ 
+    .filter-container{
+        .addFilter{
+            width:auto;
+        }
+        .filter-buttons{
+            width: auto;
+        }
+    }
+ }
