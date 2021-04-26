@@ -41,15 +41,23 @@ function stickyHeader() {
             if (window.innerWidth < 1025 && $('.mobile-header-navbar').length) {
               //aligning table sticky header after the mobile header in mobile devices and tablets
               // 50 px is the height of the mobile header. 
-              // position += 50;
               tableBottom = $('.table-stickyheader table:eq(' + currTable + ') tbody tr:last-child');
               tbottomPosition = tableBottom.offset().top;
-              if(tableHeader.parents().hasClass("cmp-accordion__panel") || scrolled==true){
+
+              var platform = window.navigator.platform,
+                  macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+                  iosPlatforms = ['iPhone', 'iPad', 'iPod']
+                  os = null; 
+              if (macosPlatforms.indexOf(platform) !== -1) {
+                os = 'Mac OS';
+              } else if (iosPlatforms.indexOf(platform) !== -1) {
+                os = 'iOS';
+              }
+
+              if(tableHeader.parents().hasClass("cmp-accordion__panel") || scrolled==true || os=='Mac OS' || os=='iOS'){
                 position += 50;
               }
-              // if(scrolled==true){
-              //   position+=50;
-              // }
+              
               tableHeader.css("transform", "translateY(" + position + "px)");
             } else {
               tableHeader.css("transform", "translateY(" + position + "px)");
