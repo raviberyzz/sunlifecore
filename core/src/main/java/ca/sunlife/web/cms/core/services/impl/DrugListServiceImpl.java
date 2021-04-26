@@ -162,20 +162,20 @@ public class DrugListServiceImpl implements DrugListService {
 		logger.info("entered the method updatechesslists");
         try (ResourceResolver resourceResolver = resourceResolverFactory
                 .getServiceResourceResolver(authInfo)){
-        	logger.info("ResourceResolver="+resourceResolver);
+        	logger.debug("ResourceResolver={}", resourceResolver);
             AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
-            logger.info("assetManager="+assetManager);
+            logger.debug("assetManager={}", assetManager);
             if(assetManager == null) {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
             }
 
             JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
-            logger.info("factory="+factory);
+            logger.debug("factory={}", factory);
             JsonObjectBuilder builder = factory.createObjectBuilder();
-            logger.info("builder="+builder);
+            logger.debug("builder={}", builder);
 
             builder.add("chess", createChessArrayBuilder(chessPath, resourceResolver).build());
-            logger.info("builder after add="+builder);
+            logger.debug("builder after add={}", builder);
             String assetPath = getChessDataAssetPath();
             writeDataAsset(resourceResolver, assetManager, builder, assetPath);
 
@@ -232,11 +232,11 @@ public class DrugListServiceImpl implements DrugListService {
         Asset result = null;
 
         Resource resource = resolver.getResource(path);
-        logger.info("resource="+resource);
+        logger.debug("resource={}", resource);
         if (resource != null) {
             result = resource.adaptTo(Asset.class);
         }
-        logger.info("result="+result);
+        logger.debug("result={}", result);
 
         return result;
     }
@@ -258,9 +258,9 @@ public class DrugListServiceImpl implements DrugListService {
 		logger.info("entered writedata asset");
 
         String json = builder.build().toString();
-        logger.info("json="+json);
+        logger.debug("json={}", json);
 		Asset outputAsset = retrieveAsset(resourceResolver, assetPath);
-		logger.info("outputAsset="+outputAsset);
+		logger.debug("outputAsset={}", outputAsset);
 		if (outputAsset == null) {
             try( ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))) {
 
@@ -270,7 +270,7 @@ public class DrugListServiceImpl implements DrugListService {
 		} else {
 
             AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
-            logger.info("versionManager="+versionManager);
+            logger.debug("versionManager={}", versionManager);
             if (versionManager == null) {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
             }

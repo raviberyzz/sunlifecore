@@ -82,7 +82,7 @@ public class ParseDrugListStep implements WorkflowProcess {
 
 				if (processMap.containsKey(CHESS)) {
 					chess = processMap.get(CHESS);
-					logger.info("value of chess ="+chess);
+					logger.debug("value of chess ={}", chess);
 				}
 
 				String folder = payload.substring(0, payload.lastIndexOf("/"));
@@ -90,7 +90,7 @@ public class ParseDrugListStep implements WorkflowProcess {
 					drugListService.updateDrugLists(String.format("%s/%s", folder, forms),
 							String.format("%s/%s", folder, lookup), String.format("%s/%s", folder, nonpolicy));
 				} else {
-					logger.info("entered else part");
+					logger.debug("entered else part");
 					drugListService.updateChessLists(String.format("%s/%s", folder, chess));
 				}
 			}
