@@ -608,16 +608,23 @@ class NewsTiles extends React.Component {
     return a.slice(0, i).concat(b, a.slice(i));
   }
   newsTileClick(key, index, event) {
-    //console.log(this.state.filterNewsList);
+    // console.log(this.state.filterNewsList);
     /* homepage analytics starts here */
-    utag.link({
+	  var linkOption=this.state.filterNewsList[key].linkOption
+	  if(linkOption==null){
+		  linkOption="sameWindow";
+	  }
+	  var tileNum=parseInt(key)+1
+	  utag.link({
       ev_type: "other",
       ev_action: "clk",
       ev_title: this.state.filterNewsList[key].heading,
-      ev_data_one: "hp-news-" + index,
+      ev_data_one: "hp-news-" + tileNum,
+      ev_data_two: "linkType="+linkOption,
+	  ev_data_three:this.state.filterNewsList[key].pagePath
     });
     /* homepage analytics ends here */
-if (this.state.filterNewsList[key].linkOption == "lightbox") {
+if (linkOption == "lightbox") {
       window[this.state.filterNewsList[key].pagePath]();
     } 
   }
@@ -759,9 +766,11 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                         })}
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                         <div class="aggregate-tile" data-section="hp-news-position5">
-                          <div class="circular-image">
-                            <img class="icon" src={this.props.moreNewsImg} alt="news icon image"/>
+                        <div class="text">
+                          <div class="cmp-text">
+                              <h6>{this.props.moreNewsHeadingText}</h6>
                           </div>
+                        </div>
                           {Object.keys(this.state.filterNewsList)
                             .slice(4, 7)
                             .map((key, index) => {
@@ -809,13 +818,9 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                               );
                             })}
                           <p>
-                            <span class="blue-chevron-arrow">
-                              <span class="blue-font">
-                                <a href={this.props.moreNewsLink}>
-                                  {this.props.moreNewsText}
-                                </a>
-                              </span>
-                            </span>
+                            <a href={this.props.moreNewsButtonLink}>
+                              <span class="button-class primary-blue-button-rte">{this.props.moreNewsButtonText}</span>
+                            </a>
                           </p>
                         </div>
                       </div>
