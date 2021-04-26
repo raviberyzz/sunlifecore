@@ -8,6 +8,10 @@ import ca.sunlife.web.cms.core.services.druglist.PaForm;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.AssetManager;
 import com.day.cq.dam.api.Rendition;
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.ReplicationException;
+import com.day.cq.replication.ReplicationOptions;
+import com.day.cq.replication.Replicator;
 import com.adobe.granite.asset.api.AssetVersionManager;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.CellType;
@@ -39,11 +43,7 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 import java.util.zip.GZIPOutputStream;
 
 
@@ -62,10 +62,15 @@ public class DrugListServiceImpl implements DrugListService {
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
+    
+    @Reference
+    private Replicator replicator;
 
     private String pdfFolder;
 
 	private String dataAssetPath;
+	
+	private String chessDataAssetPath;
 
 	private String dataAssetZipPath;
 
@@ -84,6 +89,11 @@ public class DrugListServiceImpl implements DrugListService {
     public String getDataAssetPath() {
         return dataAssetPath;
     }
+    
+    @Override
+	public String getChessDataAssetPath() {
+		return chessDataAssetPath;
+	}
 
 	/**
 	 * Provides the DAM path where generated JSON zip file can be found.
@@ -106,7 +116,7 @@ public class DrugListServiceImpl implements DrugListService {
      * @throws IOException
      */
     @Override
-    public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath, String chessPath) throws IOException {
+    public void updateDrugLists(String paFormsPath, String lookupPath, String nonPolicyPath) throws IOException {
 
         ErrorReportWriter reporter = new ErrorReportWriter(paFormsPath, lookupPath, nonPolicyPath);
 
@@ -123,12 +133,10 @@ public class DrugListServiceImpl implements DrugListService {
             JsonObjectBuilder builder = buildJsonAsset(lookupPath, resourceResolver, paForms, reporter);
 
             buildNonPolicyRecords(nonPolicyPath, resourceResolver, builder, reporter);
+            
+            String assetPath = getDataAssetPath();
 
-            builder.add("chess", createChessArrayBuilder(chessPath, resourceResolver).build());
-
-            writeDataAsset(resourceResolver, assetManager, builder);
-
-
+            writeDataAsset(resourceResolver, assetManager, builder , assetPath);
 
             writeReportAsset(reporter, assetManager);
 
@@ -144,7 +152,53 @@ public class DrugListServiceImpl implements DrugListService {
         }
 
     }
+    /**
+     * This service reads four input files and converts them to a JSON asset, providing chess form information for a
+     * list of accounts.
+     * @param chessPath the DAM path of the csv file listing which accounts use the "******" lookup key.
+     */
+	@Override
+    public void updateChessLists(String chessPath) throws IOException {
+		logger.info("entered the method updatechesslists");
+        try (ResourceResolver resourceResolver = resourceResolverFactory
+                .getServiceResourceResolver(authInfo)){
+        	logger.debug("ResourceResolver={}", resourceResolver);
+            AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
+            logger.debug("assetManager={}", assetManager);
+            if(assetManager == null) {
+                throw new LoginException("Attempting to adapt ResourceResolver to AssetManager returned null.");
+            }
 
+            JsonBuilderFactory factory = Json.createBuilderFactory(new HashMap<String, Object>());
+            logger.debug("factory={}", factory);
+            JsonObjectBuilder builder = factory.createObjectBuilder();
+            logger.debug("builder={}", builder);
+
+            builder.add("chess", createChessArrayBuilder(chessPath, resourceResolver).build());
+            logger.debug("builder after add={}", builder);
+            String assetPath = getChessDataAssetPath();
+            writeDataAsset(resourceResolver, assetManager, builder, assetPath);
+
+            Session session = resourceResolver.adaptTo(Session.class);
+            
+            if (session != null) {
+                session.save();
+                try {
+                	replicator.replicate(session,ReplicationActionType.ACTIVATE,assetPath);
+				} catch (ReplicationException e) {
+					logger.error("Replication failed", e);
+				}
+                           }
+
+        } catch (LoginException e) {
+            logger.error("Can't create AssetManager", e);
+        } catch (RepositoryException e) {
+            logger.error("Failed to save JSON asset", e);
+        }
+
+    }
+	
+	
     private JsonArrayBuilder createChessArrayBuilder(String chessPath, ResourceResolver resolver)
             throws IOException {
 
@@ -174,12 +228,15 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private Asset retrieveAsset(ResourceResolver resolver, String path) {
+    	logger.info("entered retrieveasset");
         Asset result = null;
 
         Resource resource = resolver.getResource(path);
+        logger.debug("resource={}", resource);
         if (resource != null) {
             result = resource.adaptTo(Asset.class);
         }
+        logger.debug("result={}", result);
 
         return result;
     }
@@ -196,22 +253,24 @@ public class DrugListServiceImpl implements DrugListService {
 	 * @throws LoginException
 	 *             indicates user doesn't have access to the DAM.
 	 */
-	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder)
+	private void writeDataAsset(ResourceResolver resourceResolver, AssetManager assetManager, JsonObjectBuilder builder, String assetPath)
             throws LoginException, IOException {
+		logger.info("entered writedata asset");
 
         String json = builder.build().toString();
-
-		Asset outputAsset = retrieveAsset(resourceResolver, getDataAssetPath());
-
+        logger.debug("json={}", json);
+		Asset outputAsset = retrieveAsset(resourceResolver, assetPath);
+		logger.debug("outputAsset={}", outputAsset);
 		if (outputAsset == null) {
             try( ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))) {
 
-                assetManager.createAsset(getDataAssetPath(), stream, APPLICATION_JSON, false);
+                assetManager.createAsset(assetPath, stream, APPLICATION_JSON, false);
             }
 
 		} else {
 
             AssetVersionManager versionManager = resourceResolver.adaptTo(AssetVersionManager.class);
+            logger.debug("versionManager={}", versionManager);
             if (versionManager == null) {
                 throw new LoginException("Attempting to adapt ResourceResolver to AssetVersionManager returned null.");
             }
@@ -395,16 +454,33 @@ public class DrugListServiceImpl implements DrugListService {
             Row formRow = lookupSheet.getRow(1);
             Row drugRow = lookupSheet.getRow(2);
 
-            Row testPolicy = lookupSheet.getRow(3);
-            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, testPolicy, true);
+            List<Integer> testRow = new LinkedList<>();
+            testRow.add(3);
+            JsonArrayBuilder testArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow,
+                    lookupSheet, testRow, true);
             policyBuilder.add("*#*#*", testArray.build());
+
+            HashMap<String, List<Integer>> policyNumberMap = new HashMap<>();
+            for (int precheckIndex = 3; precheckIndex < lookupSheet.getLastRowNum() -1; precheckIndex++) {
+                Row checkP = lookupSheet.getRow(precheckIndex);
+                if (checkP != null && checkP.getCell(1) != null) {
+                    String checkPNum = getCellValue(checkP, 1).replaceFirst("^0*", "");
+                    if (!policyNumberMap.containsKey(checkPNum)) {
+                        LinkedList<Integer> rows = new LinkedList<>();
+                        rows.add(precheckIndex);
+                        policyNumberMap.put(checkPNum, rows);
+                    } else {
+                        policyNumberMap.get(checkPNum).add(precheckIndex);
+                    }
+                }
+            }
 
             for (int rowIndex = 3; rowIndex < lookupSheet.getLastRowNum() -1; rowIndex++) {
                 Row policy = lookupSheet.getRow(rowIndex);
                 if (policy != null && policy.getCell(1) != null) {
-                    String policyNumber;
+                    String policyNumber = getCellValue(policy, 1);
                     if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
-                        policyNumber = policy.getCell(1).getStringCellValue();
+                        policyNumber = policy.getCell(1).getStringCellValue().replaceFirst("^0*","");
                     } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
                         policyNumber = Double.toString(policy.getCell(1).getNumericCellValue());
                         policyNumber = policyNumber.substring(0, policyNumber.length() - 2);
@@ -412,9 +488,11 @@ public class DrugListServiceImpl implements DrugListService {
                         policyNumber = "0";
                     }
 
-
-                    JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow, policy, false);
-                    policyBuilder.add(policyNumber, drugArray.build());
+                    if (policyNumberMap.containsKey(policyNumber)){
+                        JsonArrayBuilder drugArray = createDrugArrayBuilder(paForms, reporter, formRow, categoryRow, drugRow,
+                                lookupSheet, policyNumberMap.get(policyNumber), false);
+                        policyBuilder.add(policyNumber, drugArray.build());
+                    }
                 }
             }
             builder.add("slf-policy", policyBuilder.build());
@@ -426,20 +504,12 @@ public class DrugListServiceImpl implements DrugListService {
     }
 
     private JsonArrayBuilder createDrugArrayBuilder(HashMap<DrugListKey, PaForm> paForms, ErrorReportWriter reporter,
-                                                    Row formRow, Row categoryRow, Row drugRow, Row policy,
+                                                    Row formRow, Row categoryRow, Row drugRow, Sheet lookupSheet, List<Integer> policyRows,
                                                     boolean isTestpolicy) {
+        Row policy = lookupSheet.getRow(policyRows.get(0));
         JsonArrayBuilder drugArray = Json.createArrayBuilder();
         for (int colIndex = 3; colIndex < policy.getLastCellNum(); colIndex++) {
-            String columnCheck;
-            if (policy.getCell(colIndex) == null) {
-                columnCheck = StringUtils.EMPTY;
-            } else if (StringUtils.isNotBlank(policy.getCell(colIndex).getStringCellValue())) {
-                columnCheck = "x";
-            } else if (isTestpolicy){
-                columnCheck = "x";
-            }else {
-                columnCheck = StringUtils.EMPTY;
-            }
+            String columnCheck = getColumnCheck(isTestpolicy, lookupSheet, policyRows, colIndex);
             if (StringUtils.isNotEmpty(columnCheck)) {
                 String formName = formRow.getCell(colIndex).getStringCellValue();
                 if (!formName.endsWith("-E/F")) {
@@ -470,6 +540,27 @@ public class DrugListServiceImpl implements DrugListService {
             }
         }
         return drugArray;
+    }
+
+    private String getColumnCheck(boolean isTestpolicy, Sheet policySheet, List<Integer> rowList, int colIndex) {
+        String columnCheck = StringUtils.EMPTY;
+        Iterator<Integer> iter = rowList.iterator();
+        while(iter.hasNext()) {
+            Row policy = policySheet.getRow(iter.next());
+            if (policy.getCell(colIndex) == null) {
+                columnCheck = StringUtils.EMPTY;
+            } else if (StringUtils.isNotBlank(policy.getCell(colIndex).getStringCellValue())) {
+                columnCheck = "x";
+            } else if (isTestpolicy){
+                columnCheck = "x";
+            }else {
+                columnCheck = StringUtils.EMPTY;
+            }
+            if(StringUtils.isNotEmpty(columnCheck)){
+                break;
+            }
+        }
+        return columnCheck;
     }
 
     /**
@@ -565,7 +656,8 @@ public class DrugListServiceImpl implements DrugListService {
 
         reportAssetPath = String.format("%s/%s", config.drug_list_asset_path(), "druglist-workflow-report.txt");
 
-
+        chessDataAssetPath= String.format("%s/%s", config.chess_list_asset_path(), config.chess_list_asset_name());
     }
+
 
 }

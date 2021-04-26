@@ -2,13 +2,16 @@ package ca.sunlife.web.cms.core.services.impl;
 
 import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
 import ca.sunlife.web.cms.core.services.druglist.DrugListKey;
-import com.adobe.granite.asset.api.Asset;
-import com.adobe.granite.asset.api.AssetManager;
+import com.day.cq.dam.api.Asset;
+import com.day.cq.dam.api.AssetManager;
 import com.adobe.granite.asset.api.AssetVersionManager;
-import com.adobe.granite.asset.api.Rendition;
+import com.day.cq.dam.api.Rendition;
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.Replicator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,10 +28,10 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -66,6 +69,9 @@ public class DrugListServiceImplTest {
     Rendition chess;
 
     @Mock
+    Replicator replicator;
+
+    @Mock
     DrugListConfig config;
 
     @BeforeEach
@@ -75,7 +81,7 @@ public class DrugListServiceImplTest {
         when(resourceResolverFactory.getServiceResourceResolver(any(Map.class))).thenReturn(resourceResolver);
         when(resourceResolver.adaptTo(AssetManager.class)).thenReturn(assetManager);
         when(resourceResolver.adaptTo(AssetVersionManager.class)).thenReturn(assetVersionManager);
-        when(assetManager.assetExists(anyString())).thenReturn(true);
+        //when(assetManager.assetExists(anyString())).thenReturn(true);
         when(resourceResolver.adaptTo(Session.class)).thenReturn(mock(Session.class));
 
         when(paForms.getStream()).thenAnswer(new Answer<InputStream>(){
@@ -114,37 +120,68 @@ public class DrugListServiceImplTest {
         FieldSetter.setField(subject,
                 subject.getClass().getDeclaredField("resourceResolverFactory"),
                 resourceResolverFactory );
-        when(assetManager.getAsset(anyString())).thenReturn(asset);
+        //when(assetManager.getAsset(anyString())).thenReturn(asset);
+        Resource assetResource = mock(Resource.class);
+        when(assetResource.adaptTo(Asset.class)).thenReturn(asset);
+        when(resourceResolver.getResource((anyString()))).thenReturn(assetResource);
         when(asset.getRendition(DrugListServiceImpl.ORIGINAL)).thenReturn(paForms, lookup, nonpolicy, chess );
 
         when(config.pdf_folder()).thenReturn("/content/dam/sunlife/pdf");
         when(config.drug_list_asset_path()).thenReturn("/content/dam/sunlife/data");
         when(config.drug_list_asset_name()).thenReturn("druglist.json");
+        when(config.chess_list_asset_path()).thenReturn("/content/dam/sunlife/data");
+        when(config.chess_list_asset_name()).thenReturn("chesslist.json");
 
-        when(assetManager.createAsset("/content/dam/sunlife/data/druglist-workflow-report.txt")).thenReturn(reportAsset);
+        //when(assetManager.createAsset("/content/dam/sunlife/data/druglist-workflow-report.txt")).thenReturn(reportAsset);
+
+        FieldSetter.setField(subject, subject.getClass().getDeclaredField("replicator"), replicator);
 
         subject.activate(config);
     }
 
-    //@Test
-    public void testWriteJsonAssetToDam() throws Exception {
+    @Test
+    public void testWriteJsonAssetToDamChess() throws Exception {
 
+        Resource outResource = mock(Resource.class);
         Asset outAsset = mock(Asset.class);
+        when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
 
-        when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(false);
-        when(assetManager.createAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
-
-        verify(assetManager).assetExists("/content/dam/sunlife/data/druglist.json");
-        verify(assetManager).createAsset("/content/dam/sunlife/data/druglist.json");
+        when(resourceResolver.getResource("/content/dam/sunlife/data/chesslist.json")).thenReturn(outResource);
+        subject.updateChessLists("NewPAForm.csv");
 
         ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
-        verify(outAsset).setRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), any(HashMap.class));
+        verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));
         ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getAllValues().get(0);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
 
-        assertEquals(254, jsonNode.get("slf-policy").size());
+
+        JsonNode chessArray = jsonNode.get("chess");
+        assertNotNull(chessArray);
+        assertTrue(chessArray.isArray());
+        //assertEquals("\"�h\"", chessArray.get(0));
+
+        verify(replicator).replicate(any(Session.class), eq(ReplicationActionType.ACTIVATE), eq("/content/dam/sunlife/data/chesslist.json"));
+
+    }
+    @Test
+    public void testWriteJsonAssetToDam() throws Exception {
+
+        Resource outResource = mock(Resource.class);
+        Asset outAsset = mock(Asset.class);
+        when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
+
+        when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
+
+        ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
+        verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));
+        ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getAllValues().get(0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
+
+
+        assertEquals(251, jsonNode.get("slf-policy").size());
         JsonNode policy = jsonNode.get("slf-policy").get("14178");
         assertEquals(153, policy.size());
         assertNotNull(policy);
@@ -168,21 +205,26 @@ public class DrugListServiceImplTest {
         assertNotNull(policy);
         assertEquals(233, policy.size());
 
+        policy = jsonNode.get("slf-policy").get("22199");
+        assertNotNull(policy);
+        assertEquals(229, policy.size());
+
         verify(assetVersionManager, times(0)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
-        assertEquals(22841, jsonNode.get("chess").size());
+        assertTrue(jsonNode.get("chess") == null);
 
     }
 
-    //@Test
+    @Test
     public void testExistingAssetVersioned() throws Exception {
 
+        Resource outResource = mock(Resource.class);
         Asset outAsset = mock(Asset.class);
+        when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
+        when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
         when(outAsset.getPath()).thenReturn("/content/dam/sunlife/data/druglist.json");
 
-        when(assetManager.assetExists("/content/dam/sunlife/data/druglist.json")).thenReturn(true);
-        when(assetManager.getAsset("/content/dam/sunlife/data/druglist.json")).thenReturn(outAsset);
-        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties", "NewPAForm.csv");
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
 
         verify(assetVersionManager, times(1)).createVersion(eq("/content/dam/sunlife/data/druglist.json"), anyString());
 
@@ -194,5 +236,40 @@ public class DrugListServiceImplTest {
         DrugListKey two = new DrugListKey("FOO", "bar");
         assertEquals(one.hashCode(), two.hashCode());
         assertEquals(one, two);
+    }
+
+    @Test
+    public void testDuplicatePolicyNumberUnion() throws Exception {
+
+        Resource outResource = mock(Resource.class);
+        Asset outAsset = mock(Asset.class);
+        when(outResource.adaptTo(Asset.class)).thenReturn(outAsset);
+
+        when(resourceResolver.getResource("/content/dam/sunlife/data/druglist.json")).thenReturn(outResource);
+        subject.updateDrugLists("paforms.xlsx", "lookup.xlsx", "drugList.properties");
+
+        ArgumentCaptor<InputStream> streamCaptor = ArgumentCaptor.forClass(InputStream.class);
+        verify(outAsset).addRendition(eq(DrugListServiceImpl.ORIGINAL), streamCaptor.capture(), eq("application/json"));
+        ByteArrayInputStream bais = (ByteArrayInputStream) streamCaptor.getAllValues().get(0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(IOUtils.toString(bais, StandardCharsets.UTF_8));
+
+
+        assertEquals(251, jsonNode.get("slf-policy").size());
+        JsonNode policy = jsonNode.get("slf-policy").get("150195");
+        assertEquals(218, policy.size());
+        assertNotNull(policy);
+        JsonNode form = policy.get(11);
+        assertNotNull(form);
+        assertEquals("/content/dam/sunlife/pdf/3454-E.pdf", form.get("form-en").textValue());
+        HashSet<String> nameSet = new HashSet<>();
+        for (int i = 0; i < policy.size(); i++) {
+            form = policy.get(i);
+            String drugName = form.get("drug-name-en").textValue();
+            nameSet.add(drugName);
+        }
+        assertTrue(nameSet.contains("Prevymis (letermovir)"));
+        assertTrue(nameSet.contains("Sanorex (mazindol)"));
+
     }
 }
