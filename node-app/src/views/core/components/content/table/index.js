@@ -46,7 +46,7 @@ function stickyHeader() {
 
               var platform = window.navigator.platform,
                   macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-                  iosPlatforms = ['iPhone', 'iPad', 'iPod']
+                  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
                   os = null; 
               if (macosPlatforms.indexOf(platform) !== -1) {
                 os = 'Mac OS';
@@ -57,7 +57,7 @@ function stickyHeader() {
               if(tableHeader.parents().hasClass("cmp-accordion__panel") || scrolled==true || os=='Mac OS' || os=='iOS'){
                 position += 50;
               }
-              
+
               tableHeader.css("transform", "translateY(" + position + "px)");
             } else {
               tableHeader.css("transform", "translateY(" + position + "px)");
