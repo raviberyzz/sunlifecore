@@ -68,12 +68,18 @@
                 height: 290px;
                 text-align: center;
                 padding: 16px;
-                .cmp-text{
-                    h2,h3,h4,h5,h6,.heading-2,.heading-3,.heading-4,.heading-5,.heading-6{
-                        margin-top: 0;
-                        font-size: 1.125rem;
-                        line-height: 23px;
+                .text{
+                    .cmp-text{
+                        .heading-6{ 
+                            font-size: 1.125rem;
+                            line-height: 23px;
+                        }
                     }
+                    h3{
+                        margin-top: -5px;
+                        margin-bottom: 5px;
+                    }
+
                 }
                 .circular-image{
                     margin-bottom: 6px;

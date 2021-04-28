@@ -760,9 +760,10 @@ if (this.state.filterNewsList[key].linkOption == "lightbox") {
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                         <div class="aggregate-tile" data-section="hp-news-position5">
                         <div class="text">
-                          <div class="cmp-text">
-                              <h6>{this.props.moreNewsHeadingText}</h6>
-                          </div>
+                          <h3 class="cmp-text">
+                            <span class="heading-6"><strong>{this.props.moreNewsHeadingText}</strong>
+                            </span>                          
+                          </h3>
                         </div>
                           {Object.keys(this.state.filterNewsList)
                             .slice(4, 7)

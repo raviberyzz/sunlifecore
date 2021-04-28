@@ -32,4 +32,15 @@ $(document).ready(function(){
     $findPeopleForm[0].reset();
     $findPeopleForm.parsley().reset();
 })
+var targetedSiteCounter=0;
+    var targetNotifCheck = setInterval(function() {
+ if ($('#targeted-notification').length) {
+    clearInterval(targetNotifCheck);
+    checkCookieExists();
+ }
+        targetedSiteCounter++;
+        if(targetedSiteCounter>=70){
+        clearInterval(targetNotifCheck);
+        }
+}, 100); // check every 100ms
 });
