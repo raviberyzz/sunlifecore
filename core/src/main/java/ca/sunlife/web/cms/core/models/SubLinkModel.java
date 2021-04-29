@@ -42,6 +42,14 @@ public interface SubLinkModel {
    */
   @ Inject
   String getSubLinkTarget();
+  
+  /**
+   * Gets the sub link data title.
+   *
+   * @return the sub link data title
+   */
+  @ Inject
+  String getSubLinkDataTitle();
 
   /**
    * Gets the sub link separator.

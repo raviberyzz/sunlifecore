@@ -45,6 +45,14 @@ public interface LinkModel {
    */
   @ Inject
   String getLinkTarget();
+  
+  /**
+   * Gets the data title.
+   *
+   * @return the data title
+   */
+  @ Inject
+  String getDataTitle();
 
   /**
    * Gets the next list.
