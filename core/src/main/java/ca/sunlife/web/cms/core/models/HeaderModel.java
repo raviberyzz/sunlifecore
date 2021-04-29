@@ -383,6 +383,14 @@ public interface HeaderModel {
      */
     @ Inject
     String getLinkIcon();
+    
+    /**
+     * Gets the Data title.
+     *
+     * @return the Data title
+     */
+    @ Inject
+    String getDataTitle();
   }
 
 }
