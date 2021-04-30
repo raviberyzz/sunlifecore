@@ -385,10 +385,16 @@ $(document).ready(function(){
                                 var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"];
                                 try{
                                     var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
+                                    if(typeof  resultTitle === "undefined"){
+                                        var titleValues = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"].split("/");
+                                        var resultTitle = titleValues[titleValues.length-1];
+                                    }
                                 }
                                 catch(err){
-                                    console.log(err);
-                                    searchError = true;
+                                    // console.log(err);
+                                    var titleValues = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"].split("/");
+                                    var resultTitle = titleValues[titleValues.length-1];
+                                    // searchError = true;
                                 }
                                 try{
                                     var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0];
@@ -433,10 +439,16 @@ $(document).ready(function(){
                                     var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"];
                                     try{
                                         var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"];
+                                        if(typeof resultTitle === "undefined"){
+                                            var titleValues = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"].split("/");
+                                            var resultTitle = titleValues[titleValues.length-1];
+                                        }
                                     }
                                     catch(err){
                                         // console.log(err);
-                                        continue;
+                                        // continue;
+                                        var titleValues = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"].split("/");
+                                        var resultTitle = titleValues[titleValues.length-1];
                                     }
                                     try{
                                         var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0];
