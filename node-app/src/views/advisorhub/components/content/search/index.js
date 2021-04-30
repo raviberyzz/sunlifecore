@@ -25,13 +25,13 @@ $(document).ready(function () {
     (function ($) {
 
         var idCnt = 0;
-        var autoCompletePrefix = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults&uiid=aem-abc-ta";
+        var autoCompletePrefix = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults&uiid=aem-abc-ta&MinScore=0";
         
         // Check if manager
         var manager =false;
         var segment = ContextHub.SegmentEngine.getResolvedSegments();
         for(var i=0;i<segment.length;i++){
-            if(segment[i]["title"] == "managers"){
+            if(segment[i]["title"] == "Manager"){
                 manager = true;
                 break;
             }
