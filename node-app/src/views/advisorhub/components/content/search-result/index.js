@@ -388,6 +388,8 @@ $(document).ready(function(){
                                 }
                                 catch(err){
                                     console.log(err);
+                                    var titleValues = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"].split("/");
+                                    var resultTitle = titleValues[titleValues.length-1];
                                     searchError = true;
                                 }
                                 try{
@@ -436,7 +438,9 @@ $(document).ready(function(){
                                     }
                                     catch(err){
                                         // console.log(err);
-                                        continue;
+                                        // continue;
+                                        var titleValues = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:reference"].split("/");
+                                        var resultTitle = titleValues[titleValues.length-1];
                                     }
                                     try{
                                         var resultIntro = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:content"]["DOCUMENT"]["DESCRIPTION"][0];

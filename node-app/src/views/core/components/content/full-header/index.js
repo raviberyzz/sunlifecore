@@ -3,7 +3,16 @@ $(document).ready(function () {
         bindFullHeaderEvent();
     }
     else{
-        setTimeout(bindFullHeaderEvent, 3000);
+        checkHeaderAvailable();
+    }
+
+    function checkHeaderAvailable(){
+        if($(".target .default.full-header").length!=0){
+            setTimeout(checkHeaderAvailable, 500);
+        }   
+        else{
+            bindFullHeaderEvent();
+        }
     }
 
     function bindFullHeaderEvent(){

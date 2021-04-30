@@ -9,6 +9,15 @@ $(document).ready(function(){
           title=title+titleArray[i];
         }
         title = "AdvisorHub-"+title;
+        var value = $(this).children("option:selected").val();
+        if(value.indexOf("/content/dam/") == -1){
+          if(value.indexOf("/en/") > -1 || value.indexOf("/fr/") > -1){
+            $(this).parents("form").attr("method", "GET");
+          }
+          else{
+            $(this).parents("form").attr("method", "POST");
+          }
+        }
         $(this).attr("data-title", title);
         $(this).parents("form").attr("target", title);
       })
