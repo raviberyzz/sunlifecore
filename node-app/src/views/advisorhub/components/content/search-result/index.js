@@ -118,7 +118,7 @@ $(document).ready(function(){
     var start = (urlParams.start || "").trim();
     var maxResult = (urlParams.maxresults || "").trim();
     var searchAction = (urlParams.action || "").trim();
-    var searchApi = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults";
+    var searchApi = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults&MinScore=0";
     var searchError = false; 
 
     // Check if manager
