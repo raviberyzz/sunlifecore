@@ -67,6 +67,10 @@ $(document).ready(function () {
 			var lang = $('html').attr('lang') == "fr-CA" ? "fr" : "en";
 			moment.locale(lang);
 			var todate = moment(new Date());
+          //If condition to check daylight saving
+            if(todate.isDST()){
+				todate.add(1,'hours')
+			}
 			var timeVal = $(this).val();
 			$('#timeVal').val(todate.tz(timeVal).format('dddd h:mm a'));
 			/* time analytics starts here */
