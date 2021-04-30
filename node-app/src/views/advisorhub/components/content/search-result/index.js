@@ -125,7 +125,7 @@ $(document).ready(function(){
     var manager =false;
     var segment = ContextHub.SegmentEngine.getResolvedSegments();
     for(var i=0;i<segment.length;i++){
-        if(segment[i]["title"] == "managers"){
+        if(segment[i]["title"] == "Manager"){
             manager = true;
             break;
         }
