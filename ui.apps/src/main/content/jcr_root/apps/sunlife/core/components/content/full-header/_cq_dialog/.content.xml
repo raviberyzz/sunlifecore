@@ -289,6 +289,13 @@
                                                                                             value="_blank"/>
                                                                                     </items>
                                                                                 </target>
+                                                                                <analytics
+                                            										jcr:primaryType="nt:unstructured"
+                                             										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                             										emptyText="Please configure the data title id."
+                                             										fieldDescription="Please configure the data title id."
+                                             										fieldLabel="Data Title"
+                                             										name="./dataTitle"/>
                                                                             </items>
                                                                         </column>
                                                                     </items>

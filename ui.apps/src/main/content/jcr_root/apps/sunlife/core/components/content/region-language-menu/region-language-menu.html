@@ -33,12 +33,12 @@
                                     <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false" data-toggle="collapse">${regionObj.linkName}</a>                                    
                                         <ul class="list-unstyled accordion-list collapse" data-sly-list.subLink="${regionObj.subLinks}">
                                             <li class="${regionObj.expandList  && subLinkList.first ? 'nav-select' : ''}">
-                                                <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                                <a href="${subLink.subLinkUrl}" data-title="${subLink.subLinkDataTitle}">${subLink.subLinkName}</a>
                                             </li>
                                         </ul>
                             </li>
                             <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
-                                <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
+                                <a href="${regionObj.linkUrl}" data-title="${regionObj.dataTitle}">${regionObj.linkName}</a>
                             </li>
                         </ul>
                     </div>
@@ -99,7 +99,7 @@
                         <div class= 'accordion-list collapse' >
                             <ul class="list-unstyled accordion-list" data-sly-list.subLink="${regionObj.subLinks}">
                                 <li class="${regionObj.expandList && subLinkList.first ? 'nav-select' : 'not-bold'}">
-                                    <a href="${subLink.subLinkUrl}">${subLink.subLinkName}</a>
+                                    <a href="${subLink.subLinkUrl}" data-title="${subLink.subLinkDataTitle}">${subLink.subLinkName}</a>
                                 </li>
                             </ul>
                         </div>
@@ -107,7 +107,7 @@
                 </li>
 
                 <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
-                    <a href="${regionObj.linkUrl}">${regionObj.linkName}</a>
+                    <a href="${regionObj.linkUrl}" data-title="${regionObj.dataTitle}">${regionObj.linkName}</a>
                 </li>
             </ul>
         </div>

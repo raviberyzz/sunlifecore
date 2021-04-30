@@ -608,27 +608,37 @@ class NewsTiles extends React.Component {
     return a.slice(0, i).concat(b, a.slice(i));
   }
   newsTileClick(key, index, event) {
-    // console.log(this.state.filterNewsList);
-    /* homepage analytics starts here */
-	  var linkOption=this.state.filterNewsList[key].linkOption
-	  if(linkOption==null){
-		  linkOption="sameWindow";
-	  }
-	  var tileNum=parseInt(key)+1
-	  utag.link({
-      ev_type: "other",
-      ev_action: "clk",
-      ev_title: this.state.filterNewsList[key].heading,
-      ev_data_one: "hp-news-" + tileNum,
-      ev_data_two: "linkType="+linkOption,
-	  ev_data_three:this.state.filterNewsList[key].pagePath
-    });
-    /* homepage analytics ends here */
-if (linkOption == "lightbox") {
-      window[this.state.filterNewsList[key].pagePath]();
-    } 
-  }
-
+	    // console.log(this.state.filterNewsList);
+	    /* homepage analytics starts here */
+	    var linkOption = this.state.filterNewsList[key].linkOption;
+	    var pagePath = this.state.filterNewsList[key].pagePath;
+	    var linkOptionValue = "";
+	    var sourceInternal = "/content/sunlife/internal/source/";
+	    if (linkOption == null || linkOption == "sameWindow") {
+	    	linkOptionValue = "onpage";
+	    }
+	    else if (linkOption == "newWindow") {
+	        if (pagePath.substring(0, sourceInternal.length) === sourceInternal) {
+	            linkOptionValue = "newtab-int";
+	        } else {
+	            linkOptionValue = "newtab-ext";
+	        }
+	    } else {
+	        linkOptionValue = "lightbox";
+	    }
+	    var tileNum = parseInt(key) + 1
+	    utag.link({
+	        ev_type: "other",
+	        ev_action: "clk",
+	        ev_title: this.state.filterNewsList[key].heading,
+	        ev_data_one: "hp-news-" + tileNum,
+	        ev_data_two: "linkType=" + linkOptionValue
+	    });
+	    /* homepage analytics ends here */
+	    if (linkOption == "lightbox") {
+	        window[this.state.filterNewsList[key].pagePath]();
+	    }
+	}
 
   render() {
     return (
@@ -767,9 +777,10 @@ if (linkOption == "lightbox") {
                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tile">
                         <div class="aggregate-tile" data-section="hp-news-position5">
                         <div class="text">
-                          <div class="cmp-text">
-                              <h6>{this.props.moreNewsHeadingText}</h6>
-                          </div>
+                          <h3 class="cmp-text">
+                            <span class="heading-6"><strong>{this.props.moreNewsHeadingText}</strong>
+                            </span>                          
+                          </h3>
                         </div>
                           {Object.keys(this.state.filterNewsList)
                             .slice(4, 7)
