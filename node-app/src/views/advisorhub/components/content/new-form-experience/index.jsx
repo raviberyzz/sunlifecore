@@ -572,14 +572,18 @@ class NewFormExperience extends React.Component {
         var filter = $('.search').val().toUpperCase();
         if (this.state.selectedFilters.length > 0) {
             this.state.filterResetData.map((obj) => {
-                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                var formValue = $($.parseHTML(obj.formInformation));
+                
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || formValue.text().toUpperCase().indexOf(filter) > -1) {
                     searchResultRows.push(obj);
                 }
             })
         }
         else{
             this.state.originalData.map((obj) => {
-                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || obj.formInformation.toUpperCase().indexOf(filter) > -1) {
+                var formValue = $($.parseHTML(obj.formInformation));
+
+                if (obj.formNumber.toUpperCase().indexOf(filter) > -1 || formValue.text().toUpperCase().indexOf(filter) > -1) {
                     searchResultRows.push(obj);
                 }
             })
