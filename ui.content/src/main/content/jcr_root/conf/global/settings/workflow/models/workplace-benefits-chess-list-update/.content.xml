@@ -3,8 +3,8 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:designPath="/libs/settings/wcm/designs/default"
-        cq:lastModified="{Date}2021-04-13T19:39:45.229+05:30"
-        cq:lastModifiedBy="admin"
+        cq:lastModified="{Date}2021-05-06T16:40:12.813-04:00"
+        cq:lastModifiedBy="john.purchase@sunlife.com"
         cq:template="/libs/cq/workflow/templates/model"
         jcr:primaryType="cq:PageContent"
         jcr:title="Workplace Benefits Chess List Update"
@@ -16,10 +16,10 @@
                 jcr:created="{Date}2020-10-26T10:18:37.009-04:00"
                 jcr:createdBy="admin"
                 jcr:description="Reads the file (NewPAForm.csv) and converts them to JSON. "
-                jcr:lastModified="{Date}2021-04-13T19:39:45.183+05:30"
-                jcr:lastModifiedBy="admin"
+                jcr:lastModified="{Date}2021-05-06T16:40:12.810-04:00"
+                jcr:lastModifiedBy="john.purchase@sunlife.com"
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Parse Chess List"
+                jcr:title="Parse Chess List."
                 sling:resourceType="cq/workflow/components/model/process">
                 <metaData
                     jcr:primaryType="nt:unstructured"
