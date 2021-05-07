@@ -8,8 +8,8 @@
     title="Workplace Benefits Chess List Update">
     <metaData
         cq:generatingPage="/conf/global/settings/workflow/models/workplace-benefits-chess-list-update/jcr:content"
-        cq:lastModified="{Long}1618419570625"
-        cq:lastModifiedBy="admin"
+        cq:lastModified="{Long}1620333614494"
+        cq:lastModifiedBy="john.purchase@sunlife.com"
         jcr:primaryType="nt:unstructured"/>
     <nodes jcr:primaryType="nt:unstructured">
         <node0
@@ -20,12 +20,13 @@
         </node0>
         <node1
             jcr:primaryType="cq:WorkflowNode"
-            description="Description of step 1"
-            title="Step 1"
-            type="DYNAMIC_PARTICIPANT">
+            description="Reads the file (NewPAForm.csv) and converts them to JSON. "
+            title="Parse Chess List."
+            type="PROCESS">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                DYNAMIC_PARTICIPANT="/libs/workflow/scripts/initiator-participant-chooser.ecma"
+                PROCESS="ca.sunlife.web.cms.core.workflow.ParseDrugListStep"
+                PROCESS_ARGS="chess::NewPAForm.csv"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node1>
         <node2
@@ -51,4 +52,3 @@
         </node1_x0023_node2>
     </transitions>
 </jcr:root>
-<!--end-->
