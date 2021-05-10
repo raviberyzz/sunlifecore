@@ -50,6 +50,20 @@ class NewsTabs extends React.Component {
     //this.tagSorting();
   }
 
+  componentDidUpdate() {
+    this.state.filterNewsList.forEach((newsItem) => {
+      if (newsItem.linkOption == "lightbox" && newsItem.pagePath) {
+        const vidyardEmbedCode = newsItem.pagePath.replace('fn_vidyard_','');
+        if (!document.getElementById(`vidyard_embed_code_${vidyardEmbedCode}`)) {
+          const script = document.createElement("script");
+          script.id=`vidyard_embed_code_${vidyardEmbedCode}`;
+          script.src = `//play.vidyard.com/${vidyardEmbedCode}.js?v=3.1.1&type=lightbox`;
+          script.async = true;
+          document.head.appendChild(script);
+        }
+      }
+    })
+  }
   // get the selected preferences on page load
   retrieveSelectedPreference() {
     $.ajax({
@@ -615,6 +629,14 @@ class NewsTabs extends React.Component {
       }
     }
   }
+
+  newsLinkClick(key, index, event) {
+    const linkOption = this.state.filterNewsList[key].linkOption;
+    const pagePath = this.state.filterNewsList[key].pagePath;
+    if (linkOption == "lightbox") {
+        window[this.state.filterNewsList[key].pagePath]();
+    }
+}
   render() {
     return (
       <div>
@@ -725,9 +747,24 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}</p>
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " "}
+                                            {this.state.tabHeading[value].data[key].linkOption == "lightbox"? <i class="fa fa-play-circle"></i> : "" } 
+                                            {this.state.tabHeading[value].data[key].linkOption == "newWindow"? <i class="fa fa-external-link"></i> : "" }
+                                            {" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}
+                                          </p>
                                           <p>
-                                            <a href={this.state.tabHeading[value].data[key].pagePath}>{this.state.tabHeading[value].data[key].heading}</a>
+                                            <a 
+                                              href= {this.state.tabHeading[value].data[key].linkOption == "lightbox"?null:this.state.tabHeading[value].data[key].pagePath}
+                                              target={this.state.tabHeading[value].data[key].linkOption == "newWindow"?"_blank":null}
+                                              rel={this.state.tabHeading[value].data[key].linkOption == "newWindow"?"noreferrer noopener":null}
+                                              aria-hidden={this.state.tabHeading[value].data[key].linkOption == "lightbox"?"true":null}
+                                              onKeyDown={event => {
+                                                if (event.key === "Enter" && this.state.tabHeading[value].data[key].linkOption == "lightbox") {
+                                                    window[this.state.tabHeading[value].data[key].pagePath]();                                    
+                                                  } 
+                                              }}
+                                            onClick={this.newsLinkClick.bind(this, key, index+1)}
+                                            >{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
                                           <p>{this.state.tabHeading[value].data[key].summary}</p>
                                         </div>
