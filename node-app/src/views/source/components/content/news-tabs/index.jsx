@@ -630,13 +630,11 @@ class NewsTabs extends React.Component {
     }
   }
 
-  newsLinkClick(key, index, event) {
-    const linkOption = this.state.filterNewsList[key].linkOption;
-    const pagePath = this.state.filterNewsList[key].pagePath;
+  newsLinkClick(linkOption, pagePath) {
     if (linkOption == "lightbox") {
-        window[this.state.filterNewsList[key].pagePath]();
+        window[pagePath]();
     }
-}
+  }
   render() {
     return (
       <div>
@@ -763,7 +761,7 @@ class NewsTabs extends React.Component {
                                                     window[this.state.tabHeading[value].data[key].pagePath]();                                    
                                                   } 
                                               }}
-                                            onClick={this.newsLinkClick.bind(this, key, index+1)}
+                                            onClick={ (e) => this.newsLinkClick(this.state.tabHeading[value].data[key].linkOption, this.state.tabHeading[value].data[key].pagePath)}
                                             >{this.state.tabHeading[value].data[key].heading}</a>
                                           </p>
                                           <p>{this.state.tabHeading[value].data[key].summary}</p>
