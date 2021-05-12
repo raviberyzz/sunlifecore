@@ -745,12 +745,13 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " "}
-                                            {this.state.tabHeading[value].data[key].linkOption == "lightbox"? <i class="fa fa-play-circle"></i> : "" } 
-                                            {this.state.tabHeading[value].data[key].linkOption == "newWindow"? <i class="fa fa-external-link"></i> : "" }
-                                            {" " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}
                                           </p>
-                                          <p>
+                                          <p>                                  
+                                            {this.state.tabHeading[value].data[key].linkOption == "lightbox" && 
+                                            <i class="fa fa-play-circle" aria-hidden="true">&nbsp;</i> } 
+                                            {this.state.tabHeading[value].data[key].linkOption == "newWindow" && 
+                                            <i class="fa fa-external-link" aria-hidden="true">&nbsp;</i> }
                                             <a 
                                               href= {this.state.tabHeading[value].data[key].linkOption == "lightbox"?null:this.state.tabHeading[value].data[key].pagePath}
                                               target={this.state.tabHeading[value].data[key].linkOption == "newWindow"?"_blank":null}
