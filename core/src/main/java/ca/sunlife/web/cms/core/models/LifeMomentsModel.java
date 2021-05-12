@@ -70,6 +70,14 @@ public interface LifeMomentsModel {
      */
     @ Inject
     String getTarget();
+    
+    /**
+     * Gets the dataTitle.
+     *
+     * @return the dataTitle
+     */
+    @ Inject
+    String getDataTitle();
   }
 
   /**
