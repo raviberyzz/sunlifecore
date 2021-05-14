@@ -191,7 +191,9 @@ $(document).ready(function(){
             // Create URL for ajax call
             var searchUrl = searchApi + '&Totalresults=true&Print=all';
             searchUrl = searchUrl + "&Text=" + searchText;
-            searchUrl = searchUrl + "&MatchLanguage=" + utag_data.page_language;
+            var languageNames = new Intl.DisplayNames('en', {type: 'language'});
+            searchUrl = searchUrl + "&MatchLanguage=" + languageNames.of([utag_data.page_language]);
+            searchUrl += "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8";
             if(filterText!=""){
                 searchUrl = searchUrl + "&Fieldtext=STRING%7B" + filterText + "%7D%3ASLF_FILTER";
             }    
