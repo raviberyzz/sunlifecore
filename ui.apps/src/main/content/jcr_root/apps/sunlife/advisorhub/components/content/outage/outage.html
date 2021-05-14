@@ -23,7 +23,7 @@
         <h1>${outageTitle}</h1>
     </div>
     <div class="outage-status">
-        Status: ${outageStatus}
+        ${'Status' @i18n}: ${outageStatus @ i18n}
     </div>
     <div class="outage-description">
          ${outageDescription @ context = 'html'}

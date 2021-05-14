@@ -45,7 +45,7 @@
                     <a class="outage-title-text" href="${outagePageLink @ extension = 'html'}">${outageTitle}</a>
                 </div>
                 <div class="outage-status">
-                    Status: ${outageStatus}
+                    ${'Status' @i18n}: ${outageStatus @ i18n}
                 </div>
                 <div class="outage-teaser">
                      ${outageTeaser @context='html'}
