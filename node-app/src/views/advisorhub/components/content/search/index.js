@@ -26,7 +26,8 @@ $(document).ready(function () {
 
         var idCnt = 0;
         var autoCompletePrefix = "/SLFSearchService/SearchHttpServlet?ServiceName=GetSearchResults&uiid=aem-abc-ta&MinScore=0";
-        
+        var languageNames = new Intl.DisplayNames('en', {type: 'language'});
+
         // Check if manager
         var manager =false;
         var segment = ContextHub.SegmentEngine.getResolvedSegments();
@@ -57,10 +58,14 @@ $(document).ready(function () {
         }
 
         function autocompleteCall(query) {
+            var searchParams = autoCompletePrefix + "&Totalresults=true&Print=all&Text=(\""+query+"*\"):TITLE";
+            searchParams += "&MatchLanguage=" + languageNames.of(utag_data.page_language);
+            searchParams += "&LanguageType=" + languageNames.of(utag_data.page_language).toLowerCase() + "UTF8";
+            searchParams += "&Maxresults=10&Start=1";
             return $.ajax({
                 type: "GET",
                 rejectUnauthorized: false,
-                url: autoCompletePrefix + "&Totalresults=true&Print=all&Text=(\""+query+"*\"):TITLE&MatchLanguage="+utag_data.page_language+"&Maxresults=10&Start=1",
+                url: searchParams,
                 dataType: "jsonp"
             })
         }
