@@ -753,7 +753,8 @@ class NewsTabs extends React.Component {
                                             {this.state.tabHeading[value].data[key].linkOption == "newWindow" && 
                                             <i class="fa fa-external-link" aria-hidden="true">&nbsp;</i> }
                                             <a 
-                                              href= {this.state.tabHeading[value].data[key].linkOption == "lightbox"?"#":this.state.tabHeading[value].data[key].pagePath}
+                                              href= {this.state.tabHeading[value].data[key].linkOption == "lightbox"?null:this.state.tabHeading[value].data[key].pagePath}
+                                              tabindex={this.state.tabHeading[value].data[key].linkOption == "lightbox"?"0":null}
                                               target={this.state.tabHeading[value].data[key].linkOption == "newWindow"?"_blank":null}
                                               rel={this.state.tabHeading[value].data[key].linkOption == "newWindow"?"noreferrer noopener":null}
                                               aria-label={(this.state.tabHeading[value].data[key].linkOption == "lightbox"?("Play video, " + this.state.tabHeading[value].data[key].heading + " Opens in a modal"):null)}
