@@ -120,10 +120,10 @@ $(document).ready(function () {
              function resizing(){
                  if (window.innerWidth < 767) {
                      $('.cmp-linkfarm-table .desktop-linkfarm-table').attr("style", "display:none!important;");
-                     $('.mobile-region-language-menu-wrapper').attr("style", "display:block;");
+                     $('.cmp-linkfarm-table .mobile-region-language-menu-wrapper').attr("style", "display:block;");
                  }else if(window.innerWidth > 767){
                      $('.cmp-linkfarm-table .desktop-linkfarm-table').attr("style", "display:block;");
-                     $('.mobile-region-language-menu-wrapper').attr("style", "display:none;");
+                     $('.cmp-linkfarm-table .mobile-region-language-menu-wrapper').attr("style", "display:none;");
                  }
              }
                 resizing();
