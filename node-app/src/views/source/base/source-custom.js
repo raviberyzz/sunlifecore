@@ -34,8 +34,7 @@ $(document).ready(function(){
 })
 var targetedSiteCounter=0;
     var targetNotifCheck = setInterval(function() {
- if ($('#targeted-notification').length) {
-    clearInterval(targetNotifCheck);
+ if ($('.site-level-notification').length) {
     checkCookieExists();
  }
         targetedSiteCounter++;
@@ -44,7 +43,7 @@ var targetedSiteCounter=0;
         }
 }, 100); // check every 100ms
 
-$(document).on('click',"#targeted-notification .close-div",function () {        
+$(document).on('click',".site-level-notification .close-div",function () {        
        var siteNotification = $(this).closest(".site-level-notification");
        var siteNotificationDiv = $(siteNotification).find(".cmp-container");
        var siteNotificationId = siteNotificationDiv.attr('id');
