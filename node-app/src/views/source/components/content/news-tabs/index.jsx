@@ -745,7 +745,7 @@ class NewsTabs extends React.Component {
                                     {Object.keys(this.state.tabHeading[value].data).slice(this.state.tabHeading[value].pageData.startIndex, this.state.tabHeading[value].pageData.endIndex).map((key, index) => {
                                       return (
                                         <div class="news-list-box">
-                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}
+                                          <p>{this.dateTransform(this.state.tabHeading[value].data[key].publishedDate) + " | " + this.bgBinding(this.state.tabHeading[value].data[key].tags)}
                                           </p>
                                           <p>                                  
                                             {this.state.tabHeading[value].data[key].linkOption == "lightbox" && 
