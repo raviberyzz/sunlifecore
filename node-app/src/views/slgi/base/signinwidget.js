@@ -141,6 +141,9 @@ $(document).ready(function () {
 			remember(rememberMeControl);
 		}
 	});
+	
+	$('#signin-widget-modal').unbind("shown.bs.modal");
+	$('#signin-widget-modal').off('show.bs.modal');
 
 	$("#signin-widget-modal").on("show.bs.modal", function (event) {
 		// Read Local Storage and set radio option
