@@ -250,7 +250,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '&Totalresults=true&Text=' + searchText + "&MatchLanguage=" + utag_data.page_language,
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + "&MatchLanguage=" + languageNames.of([utag_data.page_language]) + "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8",
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub1",
                     
@@ -266,7 +266,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&matchlanguage=" + utag_data.page_language,
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Byour-business%7D%3ASLF_FILTER' + "&MatchLanguage=" + languageNames.of([utag_data.page_language]) + "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8",
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub2",
                     
@@ -287,7 +287,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bproducts-and-solutions%7D%3ASLF_FILTER' +  "&MatchLanguage=" + languageNames.of([utag_data.page_language]) + "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8",
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub3",
                     
@@ -308,7 +308,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bclient-service%7D%3ASLF_FILTER' +  "&MatchLanguage=" + languageNames.of([utag_data.page_language]) + "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8",
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub4",
                     
@@ -329,7 +329,7 @@ $(document).ready(function(){
 
                         $.ajax({
                             type: "GET",
-                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&MatchLanguage=" + utag_data.page_language,
+                            url: searchApi + '&Totalresults=true&Text=' + searchText + '&Fieldtext=STRING%7Bnews%7D%3ASLF_FILTER' + "&MatchLanguage=" + languageNames.of([utag_data.page_language]) + "&LanguageType=" + languageNames.of([utag_data.page_language]).toLowerCase() + "UTF8",
                             dataType: "jsonp",
                             jsonpCallback: "advisorhub5",
                     
