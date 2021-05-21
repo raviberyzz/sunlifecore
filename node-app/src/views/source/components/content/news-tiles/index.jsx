@@ -798,25 +798,24 @@ class NewsTiles extends React.Component {
                             .map((key, index) => {
                               return (
                                 <div class="mar-btm">
-<a class="title" 
-                                  href= {this.state.filterNewsList[key].linkOption == "lightbox"?null:this.state.filterNewsList[key].pagePath}
-                                  target={this.state.filterNewsList[key].linkOption == "newWindow"?"_blank":null}
-                                  rel={this.state.filterNewsList[key].linkOption == "newWindow"?"noreferrer noopener":null}
-                                  tabindex={this.state.filterNewsList[key].linkOption == "lightbox"?"0":null}
-                                  onKeyDown={event => {
-                                    if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
-                                    	this.newsTileClick.bind(this,key,index + 1)
-                                        window[this.state.filterNewsList[key].pagePath]();   
-                                        
+                                  <a class="title"
+                                    href={this.state.filterNewsList[key].linkOption == "lightbox" ? null : this.state.filterNewsList[key].pagePath}
+                                    target={this.state.filterNewsList[key].linkOption == "newWindow" ? "_blank" : null}
+                                    rel={this.state.filterNewsList[key].linkOption == "newWindow" ? "noreferrer noopener" : null}
+                                    tabindex={this.state.filterNewsList[key].linkOption == "lightbox" ? "0" : null}
+                                    onKeyDown={event => {
+                                      if (event.key === "Enter" && this.state.filterNewsList[key].linkOption == "lightbox") {
+                                        window[this.state.filterNewsList[key].pagePath]();
+
                                       }
-                                    
-                                  }
-                                  }
-                                onClick={this.newsTileClick.bind(
-                                  this,
-                                  key,
-                                  index + 1
-                                )}
+
+                                    }
+                                    }
+                                    onClick={this.newsTileClick.bind(
+                                      this,
+                                      key,
+                                      index + 1
+                                    )}
                                   >
                                     {this.state.filterNewsList[key].heading}
                                   </a>
