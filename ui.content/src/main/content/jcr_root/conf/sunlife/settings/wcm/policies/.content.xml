@@ -3385,6 +3385,11 @@
                                             cq:styleId="1582976767676"
                                             cq:styleLabel="Overview highlights"
                                             jcr:primaryType="nt:unstructured"/>
+										<item10
+                                            cq:styleClasses="cta-home-wrapper"
+                                            cq:styleId="1582976767876"
+                                            cq:styleLabel="CTA"
+                                            jcr:primaryType="nt:unstructured"/>
                                     </cq:styles>
                                 </item0>
                                 <item1
