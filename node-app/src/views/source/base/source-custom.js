@@ -43,23 +43,16 @@ function mobileHeader() {
     var $win = $(window);
     //when page is reloaded in the middle
     var height = 0;
-    console.log('mobile header SOURCE')
 
     //If site-level-notification exits and mobile header, then stick the site-level-notification to the top and have the mobile header stick following it.
     if ($('.site-level-notification').length > 0 ) {
-
-        console.log('inside length');
-        console.log($('.site-level-notification'));
 
         $('.site-level-notification').css({ 'position': 'fixed' });
         $('.site-level-notification').css({ 'z-index': '2' });
         /*$('.site-level-notification').css({ 'top': '0' });*/
         var notificationHeight = 0;
         var notificationTop = 0;
-        console.log($('.notification'));
         $('.notification').each(function(index,value){
-            console.log('each notification');
-            console.log($('.notification'));
         $(this).css('top', notificationTop);
         notificationTop += $(this).outerHeight();
         notificationHeight += $(this).outerHeight();
