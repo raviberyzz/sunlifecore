@@ -216,7 +216,10 @@ $(document).ready(function(){
 
                     searchAnalytics(searchAction, filterText, allNumber, searchText);
 
-                    if(listLength == 0){
+                    if (data["autnresponse"]["response"] === 'ERROR') {
+						$("#search-result-error-status").css("display", "block");
+                    }
+                    else if(listLength == 0){
                         $("#search-result-none").css("display", "block");
                     }
                     else{
