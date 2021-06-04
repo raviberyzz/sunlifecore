@@ -72,7 +72,18 @@ public class OutageListModel implements ComponentExporter {
 	@ Inject
 	@ Via("resource")
 	private String displayType;
+	
+	/** The outage helptext. */
+	@ Inject
+	@ Via("resource")
+	private String outageHelpText;
+	
+	/** The outage notification type. */
+	@ Inject
+	@ Via("resource")
+	private String outageNotificationType;
 
+	
 	/** The config service. */
 	@ Inject
 	private SiteConfigService configService;
@@ -184,6 +195,45 @@ public class OutageListModel implements ComponentExporter {
 	public final void setDisplayType(final String displayType) {
 		this.displayType = displayType;
 	}
+	
+	/**
+	 * Gets the outage help text.
+	 *
+	 * @return the outage help text
+	 */
+	public String getOutageHelpText() {
+		return outageHelpText;
+	}
+    
+	/**
+	 * Sets the outage help text.
+	 *
+	 * @param outageHelpText
+	 *          the new outage help text
+	 */
+	public void setOutageHelpText(String outageHelpText) {
+		this.outageHelpText = outageHelpText;
+	}
+
+	/**
+	 * Gets the outage notification type.
+	 *
+	 * @return the outage notification type
+	 */
+	public String getOutageNotificationType() {
+		return outageNotificationType;
+	}
+    
+	/**
+	 * Sets the outage notification type.
+	 *
+	 * @param outageNotificationType
+	 *          the new outage notification type
+	 */
+	public void setOutageNotificationType(String outageNotificationType) {
+		this.outageNotificationType = outageNotificationType;
+	}
+
 
 	/**
 	 * Gets the page locale.
