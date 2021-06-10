@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+    // applying z-index for over lapping search result 
+    if($('.advisorhub-sunlife-home-page .search').length > 0) {
+        if ($('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').length > 0) {
+            $('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').css ('z-index', -1);
+        }
+    }
+    if ($('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').length > 0) {
+        $('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').css ('z-index', -1);
+    }
     function userName(){
         if($('.adv-search-bar-wrapper')){
             $('.search-heading .username').text(profileData.givenName);
