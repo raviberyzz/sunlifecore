@@ -1,4 +1,9 @@
 @import '../../../base/core';
+.site-level-notification {
+    .outageNotification {
+        padding-right: 10px;
+    }
+}
 .outage-detail{
     #known-outage{
         outline: none;
