@@ -219,6 +219,7 @@
             <Import-Package>javax.inject;version=0.0.0,
                             javax.annotation;version=0.0.0,
                             *</Import-Package>
+            <Export-Package>ca.sunlife.web.cms.core.*</Export-Package>
             <Bundle-SymbolicName>sunlife.core</Bundle-SymbolicName>
             <Embed-Dependency>core.wcm.components.core,edgegrid-signer-apache-http-client,edgegrid-signer-core,compiler,jsoup;inline=true</Embed-Dependency>
             <Sling-Model-Packages>ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models,ca.sunlife.web.cms.advisorhub.models</Sling-Model-Packages>
