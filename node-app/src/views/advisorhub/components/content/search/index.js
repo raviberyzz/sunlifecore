@@ -142,14 +142,34 @@ $(document).ready(function () {
                         var autocompleteArray = [];
                         var listLength = data["autnresponse"]["responsedata"]["autn:numhits"];
                         if(listLength==1){
-                            var title = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
+                            var dreTitle = data["autnresponse"]["responsedata"]["autn:hit"]["DRETITLE"];
+                            var plainTitle = data["autnresponse"]["responsedata"]["autn:hit"]["TITLE"];
+                            var autnTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
+                            var title;
+                            if (typeof dreTitle !== "undefined") {
+                                title = dreTitle;
+                            } else if (typeof plainTitle !== "undefined") {
+                                title = plainTitle;
+                            } else {
+                                title = autnTitle;
+                            }
                             if(title != undefined){
                                 autocompleteArray.push(title);
                             }
                         }
                         else{
                             for(var i=0; i<listLength; i++){
-                                var title = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"];
+                                var dreTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["DRETITLE"];
+                                var plainTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["TITLE"];
+                                var autnTitle = data["autnresponse"]["responsedata"]["autn:hit"][i]["autn:title"];
+                                var title;
+                                if (typeof dreTitle !== "undefined") {
+                                    title = dreTitle;
+                                } else if (typeof plainTitle !== "undefined") {
+                                    title = plainTitle;
+                                } else {
+                                    title = autnTitle;
+                                }
                                 if(title != undefined){
                                     autocompleteArray.push(title);
                                 }

@@ -389,8 +389,17 @@ $(document).ready(function(){
                                 resultItem = "";
                                 var resultUrl = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"];
                                 try{
-                                    var resultTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
-                                    if(typeof  resultTitle === "undefined"){
+                                    var dreTitle = data["autnresponse"]["responsedata"]["autn:hit"]["DRETITLE"];
+                                    var plainTitle = data["autnresponse"]["responsedata"]["autn:hit"]["TITLE"];
+                                    var autnTitle = data["autnresponse"]["responsedata"]["autn:hit"]["autn:title"];
+                                    var resultTitle;
+                                    if (typeof dreTitle !== "undefined") {
+                                        resultTitle = dreTitle;
+                                    } else if (typeof plainTitle !== "undefined") {
+                                        resultTitle = plainTitle;
+                                    } else if (typeof autnTitle !== "undefined") {
+                                        resultTitle = autnTitle;
+                                    } else {
                                         var titleValues = data["autnresponse"]["responsedata"]["autn:hit"]["autn:reference"].split("/");
                                         var resultTitle = titleValues[titleValues.length-1];
                                     }
