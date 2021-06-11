@@ -93,7 +93,12 @@ function mobileHeader() {
 
 // Adding AEM Event Teaser call to check for the Source Notifications. 
 /*
-    Currently the Targeted Div gets injected into the DOM after the page loads. So we need to call a few functions to ensure the Notification gets stickied in mobile view, cookie check, and add a click handler for the close Div. The mobileHeader, and .close-div click handler below were copied from the Full-Header Component. Need to investigate AEM to see if there is a way to have the targeted content be present from the beginning at which point we can optimize these functions and not have duplication.
+    Currently the Targeted Div gets injected into the DOM after the page loads. So we need to call a 
+    few functions to ensure the Notification gets stickied in mobile view, cookie check, and add a 
+    click handler for the close Div. The mobileHeader, and .close-div click handler below were copied 
+    from the Full-Header Component. Need to investigate AEM to see if there is a way to have the 
+    targeted content be present from the beginning at which point we can optimize these functions 
+    and not have duplication.
 */
 if (window.ContextHub && ContextHub.SegmentEngine) {
     ContextHubJQ(function() {
@@ -132,6 +137,16 @@ if (window.ContextHub && ContextHub.SegmentEngine) {
                 $(siteNotification).css('display', 'none');
                 $(siteNotification).removeClass('notification');
             }); 
+            $('.site-level-notification .close-div').keyup(function (event) {
+                if (event.keyCode == 13) {
+                    var siteNotification = $(this).closest(".site-level-notification");
+                    var siteNotificationDiv = $(siteNotification).find(".cmp-container");
+                    var siteNotificationId = siteNotificationDiv.attr('id');
+                    createCookie("pageNotification-"+siteNotificationId,"true",1,false);
+                    $(siteNotification).css('display', 'none');
+                    $(siteNotification).removeClass('notification');
+                }
+            });
             //End of Copied close-div Click Handler Fn
         });
     });
