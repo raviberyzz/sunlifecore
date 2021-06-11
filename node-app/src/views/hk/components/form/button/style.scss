@@ -1,9 +1,0 @@
-@import '../../../base/core';
-
-.cmp-form-button[disabled] 
-{
-     background-color:  $transparent;
-  	color: $medium-blue-color;
-  	border: 2px solid $medium-blue-color;
-    cursor: not-allowed;
-}

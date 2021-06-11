@@ -1,1 +1,0 @@
-#StockInformation Component
