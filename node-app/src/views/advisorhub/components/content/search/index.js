@@ -1,14 +1,34 @@
 $(document).ready(function () {
 
     // applying z-index for over lapping search result 
-    if($('.advisorhub-sunlife-home-page .search').length > 0) {
-        if ($('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').length > 0) {
-            $('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').css ('z-index', -1);
+    // applying z-index for over lapping search result 
+    if ($(window).width() > 767 && $(window).width() < 1024) {
+        if($('.advisorhub-sunlife-home-page .search').length > 0) {
+            if ($('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').children('.container-component').children('.cmp-container').children('.teaser').length > 0) {
+                $('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').children('.container-component').children('.cmp-container').children('.teaser').css ('z-index', -1);
+            }
         }
+            if ($('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').length > 0) {
+        $('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').css ('position', 'unset');
+		$('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').find('.relative').css ('position', 'unset');
+   	 }
     }
-    if ($('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').length > 0) {
-        $('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').css ('z-index', -1);
-    }
+
+
+    $(window).resize(function () {
+        if ($(window).width() > 767 && $(window).width() < 1024) {
+            if($('.advisorhub-sunlife-home-page .search').length > 0) {
+                if ($('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').children('.container-component').children('.cmp-container').children('.teaser').length > 0) {
+                    $('.advisorhub-sunlife-home-page .search').siblings('.layout-container.editorial-articles-wrapper.mb-40').children('.row.flex-height').children('.col-sm-4').children('.container-component').children('.cmp-container').children('.teaser').css ('z-index', -1);
+                }
+            }
+            if ($('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').length > 0) {
+                $('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').css ('position', 'unset');
+                $('.advisorhub-sunlife-content-page .search').siblings('.layout-container').children('.row').children('.col-md-9').find('.relative').css ('position', 'unset');
+   	 }
+        }
+
+    })
     function userName(){
         if($('.adv-search-bar-wrapper')){
             $('.search-heading .username').text(profileData.givenName);
