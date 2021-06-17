@@ -11,7 +11,7 @@ $(document).ready(function () {
         } else {
             strLink = strLink.substr(1, (strLink.lastIndexOf('/') - 1));
         }
-        if (strLink!="" && pathName.indexOf(strLink) > -1) {
+        if (pathName.indexOf(strLink) > -1) {
             $(this).addClass("nav-active");
         }
     });
