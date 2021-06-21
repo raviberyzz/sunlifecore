@@ -16242,6 +16242,11 @@
                                             cq:styleId="1580210222333"
                                             cq:styleLabel="Generic Form"
                                             jcr:primaryType="nt:unstructured"/>
+										<item3
+                                            cq:styleClasses="lead-gen-wrapper"
+                                            cq:styleId="1580210222443"
+                                            cq:styleLabel="Lead Generation Form"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item2>
                                 <item3
@@ -16370,6 +16375,11 @@
                                             cq:styleId="1584525284184"
                                             cq:styleLabel="Full Width"
                                             jcr:primaryType="nt:unstructured"/>
+										<item1
+                                            cq:styleClasses="captcha-wrapper"
+                                            cq:styleId="1584629114184"
+                                            cq:styleLabel="Captcha"
+                                            jcr:primaryType="nt:unstructured"/>	
                                     </cq:styles>
                                 </item0>
                             </cq:styleGroups>
