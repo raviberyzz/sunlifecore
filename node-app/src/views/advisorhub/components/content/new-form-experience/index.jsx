@@ -128,7 +128,7 @@ function Table({ columns, data, sortyBy, searchCallBack, resetTableData, updateF
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column, index) => (
-                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onKeyPress={(e) => enterPressed(e, index)} tabindex={index == 3 ? 0 : ""} onClick={index == 3 ? sort : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
+                                <th {...column.getHeaderProps()} id={index == 3 ? "sort" : ""} onKeyPress={(e) => enterPressed(e, index)} tabindex={index == 3 ? 0 : ""} onClick={index == 3 || index == 2 ? sort(index) : ""} className={index == 0 ? "col-sm-2" : (index == 2 ? "col-sm-2" : (index == 3 ? "col-sm-1" : ""))}>{column.render('Header')}
                                     {index == 3 ? <i className="fa fa-sort"></i> : ""}
                                 </th>
                             ))}
@@ -407,45 +407,59 @@ class NewFormExperience extends React.Component {
 
         $('.filters').toggleClass('show-filters')
     }
-    sortColumn() {
-        var sortingData = this.state.data;
-        var eSignFavorite = sortingData.filter((row) => {
-            if (row.eSign == "true" && row.favorite == true) {
-                return row
-            }
-        })
-        var eSignnotFav = sortingData.filter((row) => {
-            if (row.eSign == "true" && row.favorite == false) {
-                return row
-            }
-        })
-        var noneSingFav = sortingData.filter((row) => {
-            if (row.eSign == "false" && row.favorite == true) {
-                return row
-            }
-        })
-        var noneSingnotFav = sortingData.filter((row) => {
-            if (row.eSign == "false" && row.favorite == false) {
-                return row
-            }
-        })
-        if (this.state.sorting) {
-            var sortedData = [...noneSingFav, ...noneSingnotFav, ...eSignFavorite, ...eSignnotFav];
-            var sorting = false
-        } else {
-            var sortedData = [...eSignFavorite, ...eSignnotFav, ...noneSingFav, ...noneSingnotFav];
-            var sorting = true
+    sortColumn(columnId) {
+        switch(columnId) {
+           case 3 : 
+           var sortingData = [...this.state.data];
+           var eSignFavorite = sortingData.filter((row) => {
+               if (row.eSign == "true" && row.favorite == true) {
+                   return row
+               }
+           })
+           var eSignnotFav = sortingData.filter((row) => {
+               if (row.eSign == "true" && row.favorite == false) {
+                   return row
+               }
+           })
+           var noneSingFav = sortingData.filter((row) => {
+               if (row.eSign == "false" && row.favorite == true) {
+                   return row
+               }
+           })
+           var noneSingnotFav = sortingData.filter((row) => {
+               if (row.eSign == "false" && row.favorite == false) {
+                   return row
+               }
+           })
+           if (this.state.sorting) {
+               var sortedData = [...noneSingFav, ...noneSingnotFav, ...eSignFavorite, ...eSignnotFav];
+               var sorting = false
+           } else {
+               var sortedData = [...eSignFavorite, ...eSignnotFav, ...noneSingFav, ...noneSingnotFav];
+               var sorting = true
+           }
+   
+           this.setState({
+               data: sortedData,
+               sorting: sorting
+           });
+           utag.link({
+               ev_type: 'other',
+               ev_action: 'clk',
+               ev_title: "form search – sort client input"
+           });
+           break;
+           case 2 : console.log(this.state.data)
+           let sortingData = JSON.parse(JSON.stringify(this.state.data))
+           let sortedData = []
+           sortingData.sort(function (a, b) {
+            sortedData = new Date(b.publishedDate) - new Date(a.publishedDate);
+              return sortedData
+          })
+          console.log(sortedData)
+           break
         }
 
-        this.setState({
-            data: sortedData,
-            sorting: sorting
-        });
-        utag.link({
-            ev_type: 'other',
-            ev_action: 'clk',
-            ev_title: "form search – sort client input"
-        });
     }
     clearAll() {
         $('input[type="checkbox"]').each(function () {
