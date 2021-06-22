@@ -1,2 +1,0 @@
-#base=js
-slgi-accessibility.js

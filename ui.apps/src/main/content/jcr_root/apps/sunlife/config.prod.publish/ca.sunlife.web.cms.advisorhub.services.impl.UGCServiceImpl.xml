@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    jcr:primaryType="sling:OsgiConfig"
-    getAuthToken="3dZJeLunQuVeGUNdNmDPPYC5cyGbak6bAfW7kNEvkZdtWw3hdAqvpBr44t9NnpGH"
-    getUGCServiceDomain="https://services.sunlife.com"
-    getUGCServices="[listFormFavourites~/advisorhubservices/listFormFavourites,updateFormFavourite~/advisorhubservices/updateFormFavourite]"
-    getUGCServiceSite="Advisorhub"/>

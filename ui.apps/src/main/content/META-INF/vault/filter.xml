@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/apps/sunlife"/>
+    <filter root="/apps/sunlife/config"/>
+    <filter root="/apps/sunlife/config.author"/>
+    <filter root="/apps/sunlife/config.publish"/>
+    <filter root="/apps/sunlife/config.dev.author"/>
+    <filter root="/apps/sunlife/config.prod.author"/>
+    <filter root="/apps/sunlife/config.sit.author"/>
+    <filter root="/apps/sunlife/config.stage.author"/>
+    <filter root="/apps/sunlife/config.dev.publish"/>
+    <filter root="/apps/sunlife/config.prod.publish"/>
+    <filter root="/apps/sunlife/config.sit.publish"/>
+    <filter root="/apps/sunlife/config.stage.publish"/>
+    <filter root="/apps/sunlife/core"/>
+    <filter root="/apps/sunlife/install.publish"/>
+    <filter root="/apps/sunlife/install"/>
     <filter root="/apps/foundation/components/form"/>
     <filter root="/apps/cq/xssprotection"/>
     <filter root="/apps/cq/personalization"/>
