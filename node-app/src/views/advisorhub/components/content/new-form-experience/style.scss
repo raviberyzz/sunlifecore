@@ -192,6 +192,9 @@
             cursor: pointer;
             width: 120px;
         }
+        th:nth-of-type(3){
+            cursor: pointer;
+        }
         th:last-of-type{
             padding-right: 16px;
         }
