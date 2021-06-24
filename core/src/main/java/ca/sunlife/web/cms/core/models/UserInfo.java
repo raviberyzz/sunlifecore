@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jackrabbit.api.security.user.User;
@@ -132,6 +133,17 @@ public class UserInfo {
     this.userGroups = null != userGroups ? userGroups.clone() : null;
   }
 
+  public String getUserValue(User user, String prop) throws RepositoryException  {
+    String ret = null;
+    if (user.hasProperty(prop)) {
+      Value[] val = user.getProperty(prop);
+      if (null != val && val.length > 0) {
+    	  ret = val[0].getString();
+      }
+    }
+    return null != ret ? ret : "NA";
+  }
+
   /**
    * Inits the user info sling model.
    */
@@ -143,38 +155,16 @@ public class UserInfo {
       try {
         LOG.debug("Reading details for user: {}", user);
         LOG.debug("Path: {}", user.getPath());
-        acf2Id = user.hasProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_ACF2_CONSTANT) [ 0 ].getString()
-            : "NA"; // ACF2 id
-        buildingLocation = user
-            .hasProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT)
-                ? user.getProperty(UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT) [ 0 ]
-                    .getString()
-                : "NA"; // building loc
-        businessGroup = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT) [ 0 ].getString()
-            : "NA"; // business group
-        businessUnit = user.hasProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT) [ 0 ].getString()
-            : "NA"; // business unit
-        jobLevel = user.hasProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT) [ 0 ].getString()
-            : "NA"; // job level
-        familyName = user.hasProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT) [ 0 ].getString()
-            : "NA"; // Family name
-        givenName = user.hasProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT) [ 0 ].getString()
-            : "NA"; // Given name
-        email = user.hasProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_EMAIL_CONSTANT) [ 0 ].getString()
-            : "NA"; // Email
-        language = user.hasProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT)
-            ? user.getProperty(UserInfoConstants.PROFILE_LANGAUGE_CONSTANT) [ 0 ].getString()
-            : "NA"; // Language
-        country = user.hasProperty("./profile/country")
-            ? user.getProperty("./profile/country") [ 0 ].getString()
-            : "NA"; // Language
+        acf2Id = getUserValue(user, UserInfoConstants.PROFILE_ACF2_CONSTANT);
+        buildingLocation = getUserValue(user, UserInfoConstants.PROFILE_BUILDING_LOCATION_CONSTANT);
+        businessGroup = getUserValue(user, UserInfoConstants.PROFILE_BUSINESS_GROUP_CONSTANT);
+        businessUnit = getUserValue(user, UserInfoConstants.PROFILE_BUSINESS_UNIT_CONSTANT);
+        jobLevel = getUserValue(user, UserInfoConstants.PROFILE_JOB_LEVEL_CONSTANT);
+        familyName = getUserValue(user, UserInfoConstants.PROFILE_FAMILY_NAME_CONSTANT);
+        givenName = getUserValue(user, UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT);
+        email = getUserValue(user, UserInfoConstants.PROFILE_EMAIL_CONSTANT);
+        language = getUserValue(user, UserInfoConstants.PROFILE_LANGAUGE_CONSTANT);
+        country = getUserValue(user, "./profile/country");
         userName = (givenName + ' ' + familyName).trim();
         Session session = request.getResourceResolver().adaptTo(Session.class);
         if (null != session) {
