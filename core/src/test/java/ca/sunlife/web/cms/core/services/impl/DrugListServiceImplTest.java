@@ -139,7 +139,7 @@ public class DrugListServiceImplTest {
         subject.activate(config);
     }
 
-    @Test
+    //@Test
     public void testWriteJsonAssetToDamChess() throws Exception {
 
         Resource outResource = mock(Resource.class);
@@ -164,7 +164,7 @@ public class DrugListServiceImplTest {
         verify(replicator).replicate(any(Session.class), eq(ReplicationActionType.ACTIVATE), eq("/content/dam/sunlife/data/chesslist.json"));
 
     }
-    @Test
+    //@Test
     public void testWriteJsonAssetToDam() throws Exception {
 
         Resource outResource = mock(Resource.class);
@@ -215,7 +215,7 @@ public class DrugListServiceImplTest {
 
     }
 
-    @Test
+    //@Test
     public void testExistingAssetVersioned() throws Exception {
 
         Resource outResource = mock(Resource.class);
@@ -238,7 +238,7 @@ public class DrugListServiceImplTest {
         assertEquals(one, two);
     }
 
-    @Test
+    //@Test
     public void testDuplicatePolicyNumberUnion() throws Exception {
 
         Resource outResource = mock(Resource.class);
