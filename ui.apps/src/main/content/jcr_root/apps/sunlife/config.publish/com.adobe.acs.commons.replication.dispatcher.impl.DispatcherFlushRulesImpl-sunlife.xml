@@ -3,6 +3,6 @@
     xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="sling:OsgiConfig"
     prop.replication-action-type="INHERIT"
-    prop.rules.hierarchical="[/content/experience-fragments/sunlife/(.*)=/content/experience-fragments/sunlife/$1/_jcr_content,/content/dam/sunlife/internal/source/en/content-fragments/news/(.*)=/content/sunlife/internal/source/en/news-listing.news.en.json,/content/dam/sunlife/internal/source/fr/content-fragments/news/(.*)=/content/sunlife/internal/source/en/news-listing.news.fr.json,/content/campaigns/(.*)=/content/campaigns/$1/_jcr_content]"
+    prop.rules.hierarchical="[/content/experience-fragments/sunlife/(.*)=/content/experience-fragments/sunlife/$1/_jcr_content,/content/dam/sunlife/internal/source/en/content-fragments/news/(.*)=/content/sunlife/internal/source/en/news-listing.news.en.json,/content/dam/sunlife/internal/source/fr/content-fragments/news/(.*)=/content/sunlife/internal/source/en/news-listing.news.fr.json,/content/campaigns/(.*)=/content/campaigns/$1/_jcr_content,/content/dam/sunlife/external/advisorhub/en/content-fragments/technology-whiteboard/system-outages/(.*)=/content/experience-fragments/sunlife/external/advisorhub/en/header/master.html,/content/dam/sunlife/external/advisorhub/fr/content-fragments/technology-whiteboard/system-outages/(.*)=/content/experience-fragments/sunlife/external/advisorhub/fr/header/master.html]"
     prop.rules.resource-only="[]"
     />
