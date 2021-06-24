@@ -159,7 +159,7 @@ http://www.w3.org/TR/html401/struct/global.html
 		
 
 		<!-- Common to all HTML tags  -->
-		
+
 		<attribute name="aria-" description="Allows the HTML5 'aria-' attribute to be added to elements">
             <regexp-list>
                 <regexp name="anything"/>
@@ -171,7 +171,7 @@ http://www.w3.org/TR/html401/struct/global.html
                 <regexp name="anything"/>
             </regexp-list>
         </attribute>
-		
+
         <attribute name="target">
             <regexp-list>
                 <regexp value="[a-zA-Z0-9-_\$]+"/>
@@ -182,6 +182,19 @@ http://www.w3.org/TR/html401/struct/global.html
 			<regexp-list>
 				<regexp name="htmlId"/>
 			</regexp-list>
+		</attribute>
+
+		<attribute name="contenteditable">
+			<regexp-list>
+				<regexp name="boolean"/>
+			</regexp-list>
+		</attribute>
+
+		<attribute name="xml:space">
+			<literal-list>
+				<literal value="default"/>
+				<literal value="preserve"/>
+			</literal-list>
 		</attribute>
 	
 		<attribute name="classid">
@@ -744,14 +757,14 @@ http://www.w3.org/TR/html401/struct/global.html
 		</tag>
 		
 		<tag name="option" action="validate">
-
+		
 			<attribute name="disabled"/>
             <attribute name="hidden">
 				<regexp-list>
 					<regexp name="anything"/>
 				</regexp-list>
 			</attribute>
-
+			
 			<attribute name="value">
 				<regexp-list>
 					<regexp name="anything"/>
@@ -814,6 +827,8 @@ http://www.w3.org/TR/html401/struct/global.html
 
 		<tag name="p" action="validate">
 			<attribute name="align"/>
+			<attribute name="contenteditable"/>
+			<attribute name="xml:space"/>
 		</tag>
 		
 		<tag name="i" action="validate"/>
@@ -1073,6 +1088,7 @@ http://www.w3.org/TR/html401/struct/global.html
 					<literal value="i"/>
 					<literal value="I"/>
 					<literal value="1"/>
+					<literal value="Ordered"/>
 				</literal-list>
 			</attribute>
 		</tag>
@@ -1330,6 +1346,11 @@ http://www.w3.org/TR/html401/struct/global.html
 
 		<!-- START Document Fragment variable tags -->
 		<tag name="df-variable" action="validate">
+			<attribute name="contenteditable">
+				<regexp-list>
+					<regexp name="boolean"/>
+				</regexp-list>
+			</attribute>
 			<attribute name="variableid">
 				<regexp-list>
 					<regexp value="[a-zA-Z0-9_]+"/>
@@ -1352,6 +1373,48 @@ http://www.w3.org/TR/html401/struct/global.html
 			</attribute>
 		</tag>
 		<!-- END Document Fragment variable tags -->
+
+		<tag name="cm-expression" action="validate">
+			<attribute name="value">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>
+			</attribute>
+		</tag>
+		
+		<tag name="expression" action="validate">
+			<attribute name="value">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>
+			</attribute>
+		</tag>
+
+        	<tag name="cm-repeat" action="validate">
+			<attribute name="separator">
+				<regexp-list>
+					<regexp value="^$|[a-zA-Z0-9 \/\%]+"/>
+				</regexp-list>
+			</attribute>
+            		<attribute name="expression">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>
+			</attribute>
+		</tag>
+
+        	<tag name="repeat" action="validate">
+			<attribute name="separator">
+				<regexp-list>
+					<regexp value="^$|[a-zA-Z0-9 \/\%]+"/>
+				</regexp-list>
+			</attribute>
+            		<attribute name="expression">
+				<regexp-list>
+					<regexp name="anything"/>
+				</regexp-list>
+			</attribute>
+		</tag>
 
 	</tag-rules>
 
@@ -2306,7 +2369,27 @@ http://www.w3.org/TR/html401/struct/global.html
 				<literal value="pre"/>
 				<literal value="nowrap"/>
 				<literal value="inherit"/>
+				<literal value="pre-wrap"/>
 			</literal-list>
+		</property>
+		<property name="xfa-spacerun" default="yes" description="">
+			<category-list>
+				<category value="visual"/>
+			</category-list>
+			<literal-list>
+				<literal value="yes"/>
+			</literal-list>
+		</property>
+		<property name="xfa-tab-count" default="1" description="">
+			<category-list>
+				<category value="visual"/>
+			</category-list>
+			<literal-list>
+				<literal value="1"/>
+			</literal-list>
+			<regexp-list>
+				<regexp name="number"/>
+			</regexp-list>
 		</property>
 		<property name="widows" default="2" description="">
 			<category-list>
@@ -2955,7 +3038,8 @@ http://www.w3.org/TR/html401/struct/global.html
 				<literal value="right"/>
 				<literal value="center"/>		
 				<literal value="justify"/>
-				<literal value="inherit"/>				
+				<literal value="inherit"/>
+				<literal value="start"/>
 			</literal-list>
 		</property>
 		<property name="voice-family" description="The value is a comma-separated, prioritized list of voice family names (compare with 'font-family').">
