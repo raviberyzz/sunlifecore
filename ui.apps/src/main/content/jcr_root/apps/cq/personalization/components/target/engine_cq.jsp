@@ -73,35 +73,6 @@
     String targetDivId = ClientContextUtil.getId(resource.getPath());
 
     List<Teaser> teaserList = targetedContentManager.getTeasers(slingRequest, location);
-    final Set<Resource> areas = areaService.getAreasForPage(currentPage.adaptTo(Resource.class));
-    final Set<String> mappedAreaPaths = new HashSet<String>(areas.size());
-    for(Resource area : areas){
-        mappedAreaPaths.add(resourceResolver.map(slingRequest, area.getPath()));
-    }
-    final String filterPath = resourceResolver.map(slingRequest, resource.getPath());
-
-    if (teaserList != null) {
-        CollectionUtils.filter(teaserList, new Predicate() {
-
-            public boolean evaluate(Object object) {
-                if(object instanceof Teaser) {
-                    Teaser teaser = (Teaser) object;
-                    // Make sure default offer is never purged
-                    if (teaser.getUrl().startsWith(filterPath)) {
-                        return true;
-                    } else if (areas != null) {
-                        for (String areaPath : mappedAreaPaths) {
-                            if (teaser.getUrl().startsWith(areaPath)) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-        });
-    }
-
 
     Type listType = new TypeToken<ArrayList<Teaser>>() {}.getType();
     String teaserVariants = new GsonBuilder().create().toJson(teaserList, listType);
@@ -136,7 +107,9 @@
                         });
 
                         // Make the targeted content visible if no teasers were loaded after 5s
-                        $CQ("#<%= xssAPI.encodeForHTMLAttr(targetDivId) %>").css('visibility', 'visible');
+                        /*setTimeout(function(){
+                            $CQ("#<%= xssAPI.encodeForHTMLAttr(targetDivId) %>").css('visibility', 'visible');
+                        }, 5000);*/
                     });
                 } else {
                     $CQ("#<%= xssAPI.encodeForHTMLAttr(targetDivId) %>").css('visibility', 'visible');
