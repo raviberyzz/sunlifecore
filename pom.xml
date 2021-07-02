@@ -11,7 +11,7 @@
 	<groupId>ca.sunlife.web.cms</groupId>
 	<artifactId>web-cms-aem-core</artifactId>
 	<packaging>pom</packaging>
-	<version>1.6.43-SNAPSHOT</version>
+	<version>1.6.43</version>
 	<description>AEM CMS application module</description>
 
 	<modules>
