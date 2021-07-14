@@ -93,7 +93,7 @@
     <dependency>
       <groupId>com.adobe.acs</groupId>
       <artifactId>acs-aem-commons-bundle</artifactId>
-      <version>4.3.4</version>
+      <version>[4.3.4,)</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
