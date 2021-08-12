@@ -114,10 +114,9 @@ const SuccessSubmission = props => {
         <div class="row ">
               <div class="col-sm-10 col-sm-offset-1 info">                
                   <h2>{props.heading}</h2>
-                  <p>{props.line1}</p>
-                  <p>{props.line2}</p>
+                  <div dangerouslySetInnerHTML={{__html: props.text}}></div>                 
                   <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-                    <button type="submit" class="btn btn-blue"  >{props.home}</button>
+                    <a href = {props.url}  role= "button" class="btn btn-blue"   >{props.home}</a>
                   </div>
               </div>
         </div>
@@ -136,8 +135,6 @@ const ErrorSubmission = props => {
    
   )
 }
-
-
 class resetPassword extends React.Component {
   constructor(props){
     super(props);
@@ -145,8 +142,7 @@ class resetPassword extends React.Component {
     this.state = {
       isLoading: true,
       formIsValid: false,
-      successSubmission: null,     
-      errorCount: 0,
+      successSubmission: null,         
       formControls: {
         accessID: { 
           value: "",
@@ -167,9 +163,28 @@ class resetPassword extends React.Component {
             maxLength:10,
           },
           touched: false,
+        },       
+      },
+      errorMsg:{
+        success:{
+          heading:this.props.successHeading,
+          text:this.props.successText
         },
-        language: {
-          value: lang,
+        serverError:{
+          heading: this.props.serverErrorHeading,
+          text: this.props.serverErrorText
+        },
+        misMatchInfo:{
+          heading: this.props.misMatchInfoHeading,
+          text:this.props.misMatchInfoText
+        },
+        accLocked:{
+          heading: this.props.accLockedHeading,
+          text:this.props.accLockedText
+        },
+        missingInfo:{
+          heading:this.props.missingInfoHeading,
+          text:this.props.missingInfoText
         }
       }
     }
@@ -261,10 +276,10 @@ class resetPassword extends React.Component {
         ? (<LoadingSpinner />)
         : this.state.formIsValid && this.state.successSubmission
           ? (<SuccessSubmission heading={this.props.successHeading} 
-            line1={this.props.successText1} 
-            line2={this.props.successText2} 
+            text={this.props.successText}           
             home={this.props.homeText}
             icon={this.props.successIcon}
+            url={this.props.homeURL}
             />)
           : (<div class="reset-password-wrapper mar-top-50">
             <div class="row ">
