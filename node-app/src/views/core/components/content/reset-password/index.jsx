@@ -2,54 +2,28 @@ const validate = (value,  rules) => {
 	let isValid = true;
 	for (let rule in rules) {
 		switch (rule) {			
-			case "minLength":
-				isValid = isValid && minLengthValidator(value, rules[rule]);
-				break;
-			case "maxLength":
-				isValid = isValid && maxLengthValidator(value, rules[rule]);
-				break;
-			case "isRequired":
-				isValid = isValid && requiredValidator(value);
-				break;	
-      case "isAlphanumeric":
-        isValid = isValid && alphanumericValidator(value);	break;
-			default:
-				isValid = true;
+			case "minLength"      : isValid = isValid && minLengthValidator(value, rules[rule]);break;
+			case "maxLength"      : isValid = isValid && maxLengthValidator(value, rules[rule]);break;
+			case "isRequired"     :isValid = isValid && requiredValidator(value);break;	
+      case "isAlphanumeric" :isValid = isValid && alphanumericValidator(value);	break;
+			default:isValid = true;
 		}
 	}
 	return isValid;
 };
 
-
 const alphanumericValidator = (value) =>{
   return  /^[a-zA-Z0-9]+$/.test(value);
 }
 
-/**
- * minLength Val
- * @param  value
- * @param  minLength
- * @return
- */
 const minLengthValidator = (value, minLength) => {
 	return value.length >= minLength;
 };
 
-/**
- * maxLength Val
- * @param  value
- * @param  manLength
- * @return
- */
 const maxLengthValidator = (value, maxLength) => {
 	return value.length <= maxLength;
 };
 
-/**
- * Check to confirm that feild is required
- * @param  value
- * @return
- */
 const requiredValidator = (value) => {
 	return value.trim() !== "";
 };
@@ -58,83 +32,68 @@ const LoadingSpinner = () => (
   <div id="loadingmessageDiv" className="loadingmessage" role="alert" >
       <div className="white-container">			
           <div className="loading-container">
-                      <i className="fa fa-spinner fa-pulse"></i>
-                      <p>Loading</p>
+              <i className="fa fa-spinner fa-pulse"></i>
+              <p>Loading</p>
           </div>
       </div>
   </div>
 );
 
-
 const TextInput = props => {
   let formControl = "input-box";
   let labelError = "";
   let validationError = null;  
- 
- 
   if (props.touched && !props.valid) {
       formControl = 'input-box parsley-error'
       labelError="label-error"
       validationError = (props.value =='')? props.req: props.inValid;
   }   
   else validationError = null;
-
   return (
-      <div className="col-xs-12 mar-top-10">         
-          <label className={labelError} htmlFor={props.id}>{props.label}</label>            
-          <input 
-              type="text" 
-              className={formControl}
-              aria-required="true"
-              aria-describedby={'error-'+ props.id}
-              autoComplete= "off"
-              {...props} />
-             
-         
-          {(validationError != null)            
-            ?<div id={'error-'+props.id} tabindex="-1">
-                <ul class="parsley-errors-list list-unstyled filled">
-                  <li class="parsley-required">{validationError}</li>
-                </ul>
-              </div>
-              :null
-          }
-      </div>    
+    <div className="col-xs-12 mar-top-10">         
+        <label className={labelError} htmlFor={props.id}>{props.label}</label>            
+        <input 
+            type="text" 
+            className={formControl}
+            aria-required="true"
+            aria-describedby={'error-'+ props.id}
+            autoComplete= "off"
+            {...props} 
+        />                      
+        { (validationError != null)            
+          ?<div id={'error-'+props.id} tabindex="-1">
+              <ul class="parsley-errors-list list-unstyled filled">
+                <li class="parsley-required">{validationError}</li>
+              </ul>
+            </div>
+          :null
+        }
+    </div>    
   );
 }
 
-const SuccessSubmission = props => { 
+const SubmissionResult = props => { 
   return( 
-    <div class="reset-password-wrapper  mar-top-50 ">
+    <>
       <div class="row">
           <div class=" img-wrapper col-lg-2 col-lg-offset-5">
-            <img src = {props.icon}/>
+            <img src = {props.message[props.result].icon} alt=""/>
           </div>
       </div>
-        <div class="row ">
-              <div class="col-sm-10 col-sm-offset-1 info">                
-                  <h2>{props.heading}</h2>
-                  <div dangerouslySetInnerHTML={{__html: props.text}}></div>                 
-                  <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-                    <a href = {props.url}  role= "button" class="btn btn-blue"   >{props.home}</a>
-                  </div>
-              </div>
+      <div class="row ">
+        <div class="col-sm-10 col-sm-offset-1 info">                
+            <h2>{props.message[props.result].heading}</h2>
+            <div dangerouslySetInnerHTML={{__html: props.message[props.result].text}}></div>       
+            {!props.showButton
+              && <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                    <a href = {props.message[props.result].url}  role= "button" class="btn btn-blue">{props.message[props.result].button}</a>
+                </div>}                        
         </div>
-    </div>
+      </div>
+    </>
   )
 }
-const ErrorSubmission = props => { 
-  return(       
-        <div class="row ">          
-              <div class="col-sm-10 col-sm-offset-1 info">
-                  <h2>Something went wrong</h2>
-                  <p>Sorry, there was a problem on our end and we couldn’t reset your password. </p>
-                  <p>Try again in a few minutes or call 1-800-800-4786 and select Option 6. We’re available Monday to Friday, 8 a.m. – 8 p.m. ET.</p>                 
-              </div>
-        </div>
-   
-  )
-}
+
 class resetPassword extends React.Component {
   constructor(props){
     super(props);
@@ -142,7 +101,9 @@ class resetPassword extends React.Component {
     this.state = {
       isLoading: true,
       formIsValid: false,
-      successSubmission: null,         
+      successSubmission: null,
+      submissionResponse:null,
+      onPageError:null,          
       formControls: {
         accessID: { 
           value: "",
@@ -165,26 +126,41 @@ class resetPassword extends React.Component {
           touched: false,
         },       
       },
-      errorMsg:{
+      message:{
         success:{
           heading:this.props.successHeading,
-          text:this.props.successText
+          text:this.props.successText,
+          icon:this.props.successIcon,
+          button:this.props.homeText,          
+          url:this.props.homeURL
         },
         serverError:{
           heading: this.props.serverErrorHeading,
-          text: this.props.serverErrorText
+          text: this.props.serverErrorText,
+          icon:this.props.errorIcon,
+          button:this.props.homeText,          
+          url:this.props.homeURL
         },
         misMatchInfo:{
           heading: this.props.misMatchInfoHeading,
-          text:this.props.misMatchInfoText
+          text:this.props.misMatchInfoText,
+          icon:this.props.errorIcon,
+          button:this.props.homeText,          
+          url:this.props.homeURL
         },
         accLocked:{
           heading: this.props.accLockedHeading,
-          text:this.props.accLockedText
+          text:this.props.accLockedText,
+          icon:this.props.errorIcon,
+          button:this.props.homeText,          
+          url:this.props.homeURL
         },
         missingInfo:{
           heading:this.props.missingInfoHeading,
-          text:this.props.missingInfoText
+          text:this.props.missingInfoText,
+          icon:this.props.errorIcon,
+          button:this.props.homeText,          
+          url:this.props.homeURL
         }
       }
     }
@@ -208,27 +184,17 @@ class resetPassword extends React.Component {
     updatedFormElement.value = value;
     updatedFormElement.touched = true;    
     updatedFormElement.valid = validate(value,  updatedFormElement.validationRules);
-    updatedControls[name] = updatedFormElement;
-    // let formIsValid = true;
-    // for (let inputIdentifier in updatedControls) {
-    //   formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
-    // }
-    this.setState(() => {
-      return { formControls: updatedControls};
-    });
+    updatedControls[name] = updatedFormElement;   
+    this.setState({formControls: updatedControls});
   };
 
   stateSet(){
     this.setState({
-      successSubmission: true, isLoading: false 
+      successSubmission: true, isLoading: false, submissionResponse: "success", onPageError:false
    });
   }
-  formSubmitHandler = () => {
-    console.log("Clicked");
-     this.setState((state) => {
-      return { isLoading: true };
-    });
-
+  formSubmitHandler = () => {   
+    this.setState({ isLoading: true });
     let formIsValid = true;
     let success = false;
     let errorCount = 0;
@@ -240,15 +206,13 @@ class resetPassword extends React.Component {
       updatedControls[inputIdentifier].touched = true;
     }
    
-    this.setState((state) => {
-      return { formIsValid: formIsValid, errorCount: errorCount };
-    });
-
+    this.setState({ formIsValid: formIsValid, errorCount: errorCount });
     const formData = {};
     for (let formElementId in this.state.formControls) {
       formData[formElementId] = this.state.formControls[formElementId].value;
     }
     if (formIsValid ) {
+        // call API wait for 8 sec for response
      console.log("Form is valid");
      setInterval(
       () => this.stateSet(),
@@ -257,73 +221,70 @@ class resetPassword extends React.Component {
     }
     else{
       console.log("Form is in valid");
-      this.setState((state) => {
-        return { successSubmission: false , isLoading:false};
-      });
+      this.setState({ successSubmission: false , isLoading:false, submissionResponse:"serverError" , onPageError:true });
     } 
   };
   
   componentDidMount() {
-    this.setState((state) => {
-      return { isLoading: false };
-    });
+    this.setState({ isLoading: false });
   }
 
   render() { 
     return (
       <>
-        {this.state.isLoading
-        ? (<LoadingSpinner />)
-        : this.state.formIsValid && this.state.successSubmission
-          ? (<SuccessSubmission heading={this.props.successHeading} 
-            text={this.props.successText}           
-            home={this.props.homeText}
-            icon={this.props.successIcon}
-            url={this.props.homeURL}
-            />)
-          : (<div class="reset-password-wrapper mar-top-50">
-            <div class="row ">
-            {this.state.successSubmission == false && this.state.formIsValid
-            ? <ErrorSubmission/>
-            :null}
-              <div class="col-sm-10 col-sm-offset-1 info">
-                  <p>{this.props.getAccessIdText}</p>
-                  <p>{this.props.getPasswordText}</p>            
-              </div>
-              <div class="col-sm-6 col-sm-offset-3 mar-top-20">                  
-                <TextInput
-                    name="accessID"
-                    id="accessID"
-                    label={this.props.accessIDLabel}
-                    value={this.state.formControls.accessID.value}
-                    onChange={this.changeHandler}
-                    touched={this.state.formControls.accessID.touched}
-                    valid={this.state.formControls.accessID.valid}                                  
-                    onBlur={this.blurHandler}
-                    req = {this.props.accessIDReq}
-                    inValid = {this.props.accessIDInValid}
-                  />
-                  <TextInput
-                    name="birthDate"
-                    id="birthDate"
-                    label={this.props.birthDateLabel}
-                    value={this.state.formControls.birthDate.value}
-                    onChange={this.changeHandler}
-                    touched={this.state.formControls.birthDate.touched}
-                    valid={this.state.formControls.birthDate.valid}               
-                    maxLength="10"
-                    onBlur={this.blurHandler}
-                    req={this.props.birthDateReq}
-                    inValid={this.props.birthDateInValid}
-                    placeholder={this.props.birthDatePlaceholder}
-                  />
-                  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <button type="submit" class="btn btn-blue" onClick={this.formSubmitHandler} >{this.props.submitText}</button>
-                  </div>
-              </div>
-            </div>
-          </div>
-        )} 
+        <div class="reset-password-wrapper">
+            {this.state.isLoading ? <LoadingSpinner /> :null}
+            {this.state.formIsValid && this.state.successSubmission && ! this.state.onPageError
+                ? <SubmissionResult 
+                    result = {this.state.submissionResponse} 
+                    message ={this.state.message}
+                    showButton = {this.props.onPageError}
+                />
+                :<div class="row">
+                    { this.state.successSubmission == false && this.state.formIsValid && this.state.onPageError 
+                    ?<SubmissionResult  
+                            result = {this.state.submissionResponse} 
+                            message ={this.state.message}
+                            showButton = {this.props.onPageError} /> 
+                          :null}
+                    <div class="col-sm-10 col-sm-offset-1 info">
+                      <p dangerouslySetInnerHTML={{__html: this.props.getAccessIdText}}></p> 
+                      <p dangerouslySetInnerHTML={{__html: this.props.getPasswordText}}></p>                         
+                    </div>
+                    <div class="col-sm-6 col-sm-offset-3 mar-top-20">                  
+                        <TextInput
+                            name="accessID"
+                            id="accessID"
+                            label={this.props.accessIDLabel}
+                            value={this.state.formControls.accessID.value}
+                            onChange={this.changeHandler}
+                            touched={this.state.formControls.accessID.touched}
+                            valid={this.state.formControls.accessID.valid}                                  
+                            onBlur={this.blurHandler}
+                            req = {this.props.accessIDReq}
+                            inValid = {this.props.accessIDInValid}
+                        />
+                        <TextInput
+                            name="birthDate"
+                            id="birthDate"
+                            label={this.props.birthDateLabel}
+                            value={this.state.formControls.birthDate.value}
+                            onChange={this.changeHandler}
+                            touched={this.state.formControls.birthDate.touched}
+                            valid={this.state.formControls.birthDate.valid}               
+                            maxLength="10"
+                            onBlur={this.blurHandler}
+                            req={this.props.birthDateReq}
+                            inValid={this.props.birthDateInValid}
+                            placeholder={this.props.birthDatePlaceholder}
+                        />
+                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                            <button type="submit" class="btn btn-blue" onClick={this.formSubmitHandler} >{this.props.submitText}</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
       </>
     );
   }
