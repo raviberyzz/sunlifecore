@@ -505,5 +505,161 @@ var multiPurposeComponentConfig = [
                 required: true
             }
         ]
+    },{
+        "componentName": "Reset Password Component",
+        "componentDisplayName": "Reset Password",
+        "reactComponentName": "reset-password",
+        "props" : [
+            {
+                name: "getAccessIdText",
+                label: "Get Access ID Text",
+                value: "<strong>To get your Access ID</strong>, call 1-800-800-4786 and select Option 6. We’re available from 8 a.m. – 8 p.m. ET.",
+                required: true
+            },
+            {
+                name: "getPasswordText",
+                label: "Get Password Text",
+                value: "<strong>To reset your password</strong>, enter your information below. We’ll confirm your account and email you a password link.",
+                required: true
+            },
+            {
+                name: "accessIDLabel",
+                label: "Access ID Label",
+                value: "Access ID",
+                required: true
+            },
+            {
+                name: "accessIDReq",
+                label: "Access ID required validation message",
+                value: "Enter your Access ID ",
+                required: true
+            },
+            {
+                name: "accessIDInValid",
+                label: "Access ID invalid validation message",
+                value: "Enter a valid Access ID ",
+                required: true
+            },
+            {
+                name: "birthDateLabel",
+                label: "Date of Birth Label",
+                value: "Date of birth",
+                required: true
+            },
+            {
+                name: "birthDatePlaceholder",
+                label: "Date Of Birth format placeholder text",
+                value: "DD/MM/YYYY",
+                required: true
+            },
+            {
+                name: "birthDateReq",
+                label: "Date of Birth required validation message",
+                value: "Enter your date of birth ",
+                required: true
+            },
+            {
+                name: "birthDateInValid",
+                label: "Date of Birth invalid validation message",
+                value: "Enter a valid date ",
+                required: true
+            },
+            {
+                name: "submitText",
+                label: "Submit button text",
+                value: "Submit",
+                required: true
+            },
+            {
+                name: "successHeading",
+                label: "Success Heading text",
+                value: "We sent your link",
+                required: true
+            },
+            {
+                name: "successText",
+                label: "Sucess Text",
+                value: "<p>Check your email for the password link.</p><p>Don’t see it in your inbox? Try your spam or junk mail folder.</p>",
+                required: true
+            },
+            {
+                name: "serverErrorHeading",
+                label: "Server Error Heading",
+                value: "Something went wrong",
+                required: true
+            },
+            {
+                name: "serverErrorText",
+                label: "Server Error Text",
+                value: "<p>Sorry, there was a problem on our end and we couldn’t reset your password.</p><p>Try again in a few minutes or call 1-800-800-4786 and select Option 6. We’re available Monday to Friday, 8 a.m. – 8 p.m. ET.</p>",
+                required: true
+            },
+            {
+                name: "misMatchInfoHeading",
+                label: "Mismatch information heading",
+                value: "Something’s not quite right",
+                required: true
+            },
+            {
+                name: "misMatchInfoText",
+                label: "Mismatch information text",
+                value: "<p>The Access ID and/or date of birth doesn’t match what we have on file.</p><p>Try entering your information again, or call 1-800-800-4786 and select Option 6. We’re available Monday to Friday, 8 a.m. – 8 p.m. ET.</p>",
+                required: true
+            },
+            {
+                name: "accLockedHeading",
+                label: "Account Locked heading",
+                value: "We’ve locked your account to protect it",
+                required: true
+            },
+            {
+                name: "accLockedText",
+                label: "Account Locked text",
+                value: "<p>There were too many unsuccessful attempts to reset your password. </p><p>To unlock your account, call 1-800-800-4786 and select Option 6. We’re available Monday to Friday, 8 a.m. – 8 p.m. ET.</p>",
+                required: true
+            },
+            {
+                name: "missingInfoHeading",
+                label: "Mising information heading",
+                value: "Something’s not quite right",
+                required: true
+            },
+            {
+                name: "missingInfoText",
+                label: "Missing information text",
+                value: "<p>It looks like we’re missing some information for you. </p><p>In order to proceed, call 1-800-800-4786 and select Option 6. We’re available Monday to Friday, 8 a.m. – 8 p.m. ET.</p>",
+                required: true
+            },
+            {
+                name: "homeText",
+                label: "Home label",
+                value: "Home",
+                required: true
+            },
+            {
+                name: "homeURL",
+                label: "Home URL",
+                value: "https://sit-www.sunnet.sunlife.com/slfadvisor/signin/e/CommonSignin.aspx",
+                required: true
+            },
+            {
+                name: "successIcon",
+                label: "Success icon image path",
+                value: "/content/dam/sunlife/legacy/assets/ExportSite/CS/InterstitialZone/Static_files/Hobby_origami_illustration.png",
+                required: true
+            },
+            {
+                name: "errorIcon",
+                label: "Error icon image path",
+                value: "https://sit-www.sunnet.sunlife.com/content/dam/sunlife/regional/canada/images/cxo/KH081%20SL_illustrative%20icon_RGB_Stop_Sign.png",
+                required: true
+            },
+            {
+                name: "serviceURl",
+                label: "Webservice Path",
+                value: " ",
+                required: true
+            }
+        ]
     }
 ];
