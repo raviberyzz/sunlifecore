@@ -1,4 +1,26 @@
 @import '../../../base/core'; 
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../resources/fontawesome-webfont.eot?v=4.7.0');
+    src: url('../resources/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../resources/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../resources/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../resources/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../resources/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 .mar-top-5{margin-top:5px !important}
 .mar-top-10{margin-top:10px !important}
 .mar-top-15{margin-top:15px !important}
@@ -19,54 +41,47 @@
 	z-index: 1000;
 	text-align: center;
     background: rgba(0,0,0, 0.4);  
-  
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;   
-  }
-
-  p {
-    font-family: agenda-medium-webfont, helvetica-neue, helvetica, arial, sans-serif;
-  }
-
-  .white-container {
-    margin: 0px;
-    width: 90%;
-    max-width: 300px;
-    border-radius:6px;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    background-color: white;
-    height:300px;
-  } 
-
-  .loading-container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); /* IE 9 */
-    -webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
-    -o-transform: translate(-50%, -50%); /* Opera */
-    -moz-transform: translate(-50%, -50%); /* Firefox */
-    width:100%;
-    color: #003946;
-
-    p{
-      font-size:16px;
-      margin:0;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;   
     }
-  }
+    .white-container {
+        margin: 0px;
+        width: 90%;
+        max-width: 300px;
+        border-radius:6px;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        background-color: white;
+        height:300px;
+        .loading-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%); /* IE 9 */
+            -webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+            -o-transform: translate(-50%, -50%); /* Opera */
+            -moz-transform: translate(-50%, -50%); /* Firefox */
+            width:100%;
+            color: #003946;   
+            .fa-spinner {
+                font-size: 64px !important;
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }     
+            p{
+                font-family: agenda-medium-webfont, helvetica-neue, helvetica, arial, sans-serif;
+                font-size:16px;
+                margin:0;
+            }
+        }
+    }
 
-  .fa-spinner {
-    font-size: 64px !important;
-    display: block;
-    width: 100%;
-    margin-bottom: 20px;
-  }
 }
 
 .reset-password-wrapper{
@@ -89,6 +104,7 @@
         color: #003946;
         border-color: #b4b4b4;
         border-radius: 4px;
+        width:100%;
         &:focus {
             background-color: #fdf7e6;
             border-color: #eaab00;
@@ -133,7 +149,6 @@
             display: inline-block;
             padding: 0 10px 0 25px;
             position: relative;
-
         }
         li:before {
             content: "\f12a";
@@ -156,10 +171,12 @@
         color: #fff !important;
         border: 2px solid #003946;
         margin: 40px 0;
+        height:auto!important;
         &:hover{
         background: #4a7295 !important;
         color: #fff !important;
-        border: 2px solid #4a7295
+        border: 2px solid #4a7295;
+        font-style: normal;
         }
     }
 }
