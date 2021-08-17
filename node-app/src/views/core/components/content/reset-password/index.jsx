@@ -80,7 +80,7 @@ const SubmissionResult = props => {
   let textSplit = text.split("&&");
   return( 
     <div class="row">    
-          <div class="col-sm-12 col-lg-2 col-lg-offset-5 ">
+          <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5 text-center">
             <img class="img-wrapper" src = {props.message[props.result].icon} alt=""/>
           </div>
         <div class="col-sm-10 col-sm-offset-1 info">                
@@ -201,7 +201,7 @@ class resetPassword extends React.Component {
    
   }
   formSubmitHandler = () => {   
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, successSubmission:null, submissionResponse:null, onPageError:null });
     let formIsValid = true;
     let success = false;
     let errorCount = 0;
