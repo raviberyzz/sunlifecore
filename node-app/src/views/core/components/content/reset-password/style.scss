@@ -1,5 +1,5 @@
 @import '../../../base/core'; 
-
+/*Reset Password - styles STARTS */
 *:before,
 *:after {
     -webkit-box-sizing: border-box;
@@ -749,7 +749,7 @@
             border: 1px solid #a4383d !important;
         }
     }    
-    .parsley-errors-list.filled {
+    .parsley-errors-list {
         background: #a4383d;
         color: #fff!important;
         position: relative;
@@ -774,13 +774,13 @@
             display: inline-block;
             padding: 0 10px 0 25px;
             position: relative;
-        }
-        li:before {
-            content: "\f12a";
-            font: normal 1em/0 FontAwesome;
-            left: 10px;
-            position: absolute;
-            top: 14px
+            &:before {
+                content: "\f12a";
+                font: normal 1em/0 FontAwesome;
+                left: 10px;
+                position: absolute;
+                top: 14px
+            }
         }
     }
     .info{
@@ -807,3 +807,4 @@
         }
     }
 }
+/*Reset password- styles END*/
