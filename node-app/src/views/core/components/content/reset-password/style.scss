@@ -711,13 +711,13 @@
 
 .reset-password-wrapper{
     margin: 50px 0;
+    display: inline-block;
     .img-wrapper{
         text-align: center;
         margin-bottom: 32px;
-        img{
-            width:120px;
-            height:120px;
-        }
+        width:120px;
+        height:120px;
+        
     }    
     label{
         font-weight:normal!important;
@@ -797,7 +797,7 @@
         border: 2px solid #003946;
         margin: 40px 0;
         height:auto!important;
-        &:hover{
+        &:hover,&:focus{
         background: #4a7295 !important;
         color: #fff !important;
         border: 2px solid #4a7295;

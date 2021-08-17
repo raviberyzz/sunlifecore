@@ -76,13 +76,10 @@ const SubmissionResult = props => {
   let text = props.message[props.result].text;
   let textSplit = text.split("&&");
   return( 
-    <>
-      <div class="row">
-          <div class=" img-wrapper col-lg-2 col-lg-offset-5">
-            <img src = {props.message[props.result].icon} alt=""/>
+    <div class="row">    
+          <div class="col-sm-12 col-lg-2 col-lg-offset-5 ">
+            <img class="img-wrapper" src = {props.message[props.result].icon} alt=""/>
           </div>
-      </div>
-      <div class="row ">
         <div class="col-sm-10 col-sm-offset-1 info">                
             <h2>{props.message[props.result].heading}</h2>
             <p>{textSplit[0]}</p>   
@@ -91,9 +88,9 @@ const SubmissionResult = props => {
               && <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
                     <a href = {props.message[props.result].url}  role= "button" class="btn btn-blue">{props.message[props.result].button}</a>
                 </div>}                        
-        </div>
+     
       </div>
-    </>
+    </div>
   )
 }
 
