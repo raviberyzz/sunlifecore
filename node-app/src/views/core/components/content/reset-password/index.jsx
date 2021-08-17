@@ -201,7 +201,7 @@ class resetPassword extends React.Component {
    
   }
   formSubmitHandler = () => {   
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, successSubmission:null, submissionResponse:null, onPageError:null });
     let formIsValid = true;
     let success = false;
     let errorCount = 0;
