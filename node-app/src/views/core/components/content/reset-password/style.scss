@@ -772,14 +772,11 @@
             background-color: #a4383d;
             color: #fff;
             display: inline-block;
-            padding: 0 10px 0 25px;
+            padding: 4px 14px 4px 10px;
             position: relative;
-            &:before {
-                content: "\f12a";
-                font: normal 1em/0 FontAwesome;
-                left: 10px;
-                position: absolute;
-                top: 14px
+            margin:0;
+            i {
+               padding: 0 4px;
             }
         }
     }
@@ -797,13 +794,15 @@
         border: 2px solid #003946;
         margin: 40px 0;
         height:auto!important;
-        &:hover,&:focus{
-        background: #4a7295 !important;
-        color: #fff !important;
-        border: 2px solid #4a7295;
-        font-style: normal;
         display: inline-block;
-        overflow: visible;
+        &:hover,&:focus{
+            background: #4a7295 !important;
+            color: #fff !important;
+            border: 2px solid #4a7295;
+            font-style: normal;
+            display: inline-block;
+            overflow: visible;
+            text-decoration: none;
         }
     }
 }

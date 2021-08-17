@@ -63,7 +63,10 @@ const TextInput = props => {
         { (validationError != null)            
           ?<div id={'error-'+props.id} tabindex="-1">
               <ul class="parsley-errors-list list-unstyled filled">
-                <li class="parsley-required">{validationError}</li>
+                <li class="parsley-required">
+                  <i class="fa fa-exclamation" aria-hidden="true"></i>
+                  {validationError}
+                  </li>
               </ul>
             </div>
           :null
