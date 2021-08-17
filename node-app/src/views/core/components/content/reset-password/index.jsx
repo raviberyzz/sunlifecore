@@ -73,37 +73,40 @@ const TextInput = props => {
 }
 
 const SubmissionResult = props => { 
+  let text = props.message[props.result].text;
+  let textSplit = text.split("&&");
   return( 
-    <>
-      <div class="row">
-          <div class=" img-wrapper col-lg-2 col-lg-offset-5">
-            <img src = {props.message[props.result].icon} alt=""/>
+    <div class="row">    
+          <div class="col-sm-12 col-lg-2 col-lg-offset-5 ">
+            <img class="img-wrapper" src = {props.message[props.result].icon} alt=""/>
           </div>
-      </div>
-      <div class="row ">
         <div class="col-sm-10 col-sm-offset-1 info">                
             <h2>{props.message[props.result].heading}</h2>
-            <div dangerouslySetInnerHTML={{__html: props.message[props.result].text}}></div>       
-            {!props.showButton
+            <p>{textSplit[0]}</p>   
+            <p>{textSplit[1]}</p>    
+            {props.showButton
               && <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
                     <a href = {props.message[props.result].url}  role= "button" class="btn btn-blue">{props.message[props.result].button}</a>
                 </div>}                        
-        </div>
+     
       </div>
-    </>
+    </div>
   )
 }
 
 class resetPassword extends React.Component {
   constructor(props){
-    super(props);
-   
+    super(props);   
     this.state = {
       isLoading: true,
       formIsValid: false,
       successSubmission: null,
       submissionResponse:null,
-      onPageError:null,          
+      onPageError:null,    
+      access_strong:"",
+      access_text:"",
+      password_strong:"",
+      password_text:"",      
       formControls: {
         accessID: { 
           value: "",
@@ -189,9 +192,10 @@ class resetPassword extends React.Component {
   };
 
   stateSet(){
-    this.setState({
+    this.setState({ 
       successSubmission: true, isLoading: false, submissionResponse: "success", onPageError:false
    });
+   
   }
   formSubmitHandler = () => {   
     this.setState({ isLoading: true });
@@ -214,10 +218,8 @@ class resetPassword extends React.Component {
     if (formIsValid ) {
         // call API wait for 8 sec for response
      console.log("Form is valid");
-     setInterval(
-      () => this.stateSet(),
-      8000
-    );
+
+    setTimeout(() => this.stateSet(),8000 );
     }
     else{
       console.log("Form is in valid");
@@ -226,7 +228,14 @@ class resetPassword extends React.Component {
   };
   
   componentDidMount() {
-    this.setState({ isLoading: false });
+    let access =  this.props.getAccessIdText.split(',');
+    let pswd = this.props.getPasswordText.split(',');
+    this.setState({ isLoading: false,
+      access_strong:access[0],
+      access_text:access[1],
+      password_strong: pswd[0],
+      password_text:pswd[1]
+     });
   }
 
   render() { 
@@ -238,19 +247,18 @@ class resetPassword extends React.Component {
                 ? <SubmissionResult 
                     result = {this.state.submissionResponse} 
                     message ={this.state.message}
-                    showButton = {this.props.onPageError}
+                    showButton = {!this.props.onPageError}
                 />
                 :<div class="row">
                     { this.state.successSubmission == false && this.state.formIsValid && this.state.onPageError 
                     ?<SubmissionResult  
-                            result = {this.state.submissionResponse} 
-                            message ={this.state.message}
-                            showButton = {this.props.onPageError} /> 
-                          :null}
-                    <div class="col-sm-10 col-sm-offset-1 info">
-                      <p dangerouslySetInnerHTML={{__html: this.props.getAccessIdText}}></p> 
-                      <p dangerouslySetInnerHTML={{__html: this.props.getPasswordText}}></p>                         
-                    </div>
+                        result = {this.state.submissionResponse} 
+                        message ={this.state.message}
+                        showButton = {this.props.onPageError} /> 
+                    : <div class="col-sm-10 col-sm-offset-1 info">
+                          <p><strong>{this.state.access_strong}</strong>,{this.state.access_text}</p> 
+                          <p><strong>{this.state.password_strong}</strong>,{this.state.password_text}</p>                         
+                      </div>}                   
                     <div class="col-sm-6 col-sm-offset-3 mar-top-20">                  
                         <TextInput
                             name="accessID"
