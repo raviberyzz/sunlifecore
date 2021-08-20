@@ -224,7 +224,7 @@ const parseComponentFolders = (fpath,name) => {
     js.forEach((fname) => {
       fse.moveSync(path.join(fpath,fname),path.join(pClientLib,fname));
     });
-    createClientLibs(pClientLib,name);
+    createClientLibs(pClientLib,name + ',' + fpath.replace(/.*dist/,'sunlife').replace(/\//gi,'.').replace(/\\/gi,'.'));
   } else {
     fs.readdirSync(fpath).forEach((cname) => {
       const cPath = path.join(fpath,cname);
@@ -256,8 +256,12 @@ const createClientLibs = (p,name) => {
     jsContent+=fname+'\n';
     fse.moveSync(path.join(p,fname),path.join(p,'js',fname));
   });
-  fs.writeFileSync(path.join(p,'js.txt'),jsContent);
-  fs.writeFileSync(path.join(p,'css.txt'),cssContent);
+  if(js.length > 0) {
+    fs.writeFileSync(path.join(p,'js.txt'),jsContent);
+  }
+  if(css.length > 0) {
+    fs.writeFileSync(path.join(p,'css.txt'),cssContent);
+  }
   fs.writeFileSync(path.join(p,'.content.xml'),clientLibContentXMLContent(name));
 }
 
