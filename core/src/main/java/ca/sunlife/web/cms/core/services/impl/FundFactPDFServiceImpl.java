@@ -174,6 +174,9 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 
 	/** The keydatefund. */
 	public static final String keydatefund = "DateFund";
+	
+	/** The Management Fee. */
+	public static final String keymgmtfee = "MgmtFee";
 
 	/** The keytotalvalueamount. */
 	public static final String keytotalvalueamount = "TotalValueAmount";
@@ -572,6 +575,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 					if (!(singleValuesMap.get(keyreturndate).trim().equals(""))) {
 						objFundFactsData.setReturnRate(true);
 					}
+					LOG.trace("singleValuesMap final>>{} ", singleValuesMap);
 					objFundFactsData.setSingleValueMap(singleValuesMap);
 				} else {
 					LOG.trace("** SINGLE VALUE MAP IS NULL for key={} ", keySingleValuesMap);
@@ -890,6 +894,7 @@ public class FundFactPDFServiceImpl implements FundFactPDFService {
 		map.put(keydateseries, getFormatedDate(map.get(keydateseries), lang));
 		map.put(keyplandate, getFormatedDate(map.get(keyplandate), lang));
 		map.put(keytotalvalueon, getFormatedDate(map.get(keytotalvalueon), lang));
+		map.put(keymgmtfee, getFormatedCurrency(map.get(keymgmtfee), lang).replaceAll("\\$", ""));
 		LOG.trace("Existing from StringToDate >>{} , updated map={} ", lang, map);
 		return map;
 	}
