@@ -2,6 +2,6 @@
 
 buildMavenPipeline{
 	cddApplicationName = 'web-cms-aem-core'
-	cddApplicationVersion = 'dev'
+	cddApplicationVersion = 'dev.2.0'
 	deployment = 'true'
 }
