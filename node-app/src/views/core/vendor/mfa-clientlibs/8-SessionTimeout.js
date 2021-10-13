@@ -1,24 +1,15 @@
 function SessionTimeout(){
     this.debug = false;
     this.sessionTimeoutId = null;
-    this.inactivityTimeoutSeconds = 30;//1080; // 18mins
+    this.inactivityTimeoutSeconds = 1080; // 18mins
     this.events = ['keyup','click'];
     this.timedout = false;
     this.timeCountDown = 0;
     const self = this;
-    
-    this._init = function(){
-        // listen for all the events that we need to make an ajax request to siteminder
-        for(var i=0; i< this.events.length; i++){
-            window.addEventListener( this.events[i], this._resetTimeout.bind(this), true)
-        }
-    }
 
     this.showErrorMessage = function(){
+        setAppContentApperance(true);
         const lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
-        // clear the timeout
-        clearTimeout(this.sessionTimeoutId);
-        
         const localizationContent = {
             en: {
                 title: 'Oops, something went wrong',
@@ -58,21 +49,25 @@ function SessionTimeout(){
         this._resetTimeout();
     }
 
+    this.clearSessionTimeout = function(){
+        clearTimeout(this.sessionTimeoutId);
+    }
+
     this._resetTimeout = function(){
         if(this.debug){
             console.log('Session Timout started', this.lang);
         }
         this.timeCountDown = this.inactivityTimeoutSeconds * 1000;
         if(this.sessionTimeoutId !== null){
-            clearTimeout(this.sessionTimeoutId);
+            this.clearSessionTimeout();
         }
         this.sessionTimeoutId = setTimeout( function(){
                 if(self.debug) console.log('timeout after: ' + self.inactivityTimeoutSeconds + ' seconds');
                 self.timedout = true;
-                // make call
-                self.showErrorMessage();
+                // reload the page
+                location.reload();
             }, 
             self.inactivityTimeoutSeconds * 1000
-        )        
+        )
     }// EO this.resetTimeout
 }

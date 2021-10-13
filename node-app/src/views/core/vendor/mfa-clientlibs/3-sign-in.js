@@ -35,9 +35,9 @@ function onSignInClick() {
         $("#USER").val('');
         $("#PASSWORD").val('');
         $("#rememberID").prop('checked', false);
-
         if(clientContext.closeModalCallback){
             clientContext.closeModalCallback();
+            sessionTimeout.clearSessionTimeout();
         }
         else{
             journeyEnded(clientContext);
@@ -45,6 +45,8 @@ function onSignInClick() {
         }
     });
 
+    // start the timer
+    sessionTimeout.startTimeout();
     journeyPlayer.setUiHandler(new UIHandlerForStepUp());
     journeyPlayer.invokeAnonymousPolicy(journeyName, additionalParams, clientContext).then(function (results) {
         journeyEnded(clientContext);
