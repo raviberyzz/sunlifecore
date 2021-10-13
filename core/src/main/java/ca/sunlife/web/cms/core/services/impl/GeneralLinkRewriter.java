@@ -1,13 +1,10 @@
 package ca.sunlife.web.cms.core.services.impl;
 
 import com.adobe.cq.xf.ExperienceFragmentLinkRewriterProvider;
-import ca.sunlife.web.cms.core.services.CoreResourceResolver;
 
 import com.adobe.cq.xf.ExperienceFragmentVariation;
 import com.day.cq.commons.Externalizer;
 
-import org.apache.sling.api.resource.LoginException;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -26,38 +23,32 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 
 	/** The logger. */
 	private final static Logger logger = LoggerFactory.getLogger(GeneralLinkRewriter.class);
+	
+	private String domain = "PH";
 
 	@Override
 	public String rewriteLink(String link, String tag, String attribute) {
 		logger.info("entering rewriteLink...");
-		// get the externalizer service
-		ResourceResolver localResourceResolver = null;
-		try {
-//			localResourceResolver = coreServicesProvider.getResourceResolver();
-			logger.info("original link --> "+link);
-			if (externalizer == null) {
-				// if there was an error, then we do not modify the link
-				logger.info("externalizer is null, link is not transformed.");
-				return null;
-			}
-			externalizer = localResourceResolver.adaptTo(Externalizer.class);
-			link = transformedLink(link, externalizer, localResourceResolver);
-			logger.info("transformedLink --> "+link);
-
-		} finally {
-			if (null != localResourceResolver && localResourceResolver.isLive()) {
-				localResourceResolver.close();
-			}
+		logger.info("original link --> "+link);
+		if (externalizer == null) {
+			// if there was an error, then we do not modify the link
+			logger.info("externalizer is null, link is not transformed.");
+			return null;
 		}
+		link = transformedLink(link, externalizer);
+		logger.info("transformedLink --> "+link);
 		return link;
 	}
 
 	@Override
 	public boolean shouldRewrite(ExperienceFragmentVariation experienceFragment) {
 		logger.info("entering shouldRewrite...");
-		logger.info("checking path --> "+experienceFragment.getPath() );
-		logger.info(experienceFragment.getCloudserviceConfigurationsPaths().toString());
-		return experienceFragment.getPath().contains("/content/experience-fragments/sunlife");
+		if (experienceFragment.getPath().contains("/content/experience-fragments/sunlife")) {
+			domain = experienceFragment.getProperties().get("cq:externalizerName").toString();
+			logger.info("checking domain --> "+ domain);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -65,15 +56,12 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 		return 1;
 	}
 
-	private String transformedLink(String input, Externalizer externalizer,
-			ResourceResolver localResourceResolver) {
+	private String transformedLink(String input, Externalizer externalizer) {
 		logger.info("entering transformedLink...");
 		logger.info("input is --> "+input);
 		if (input.contains("/content/sunlife/")) {
 			input = format(input);
-			// considering that we configured our publish domain, we directly apply the publishLink() method
-			//input = externalizer.publishLink(localResourceResolver, input);
-			input = externalizer.externalLink(resourceResolverFactory.getThreadResourceResolver(), "PH", input);
+			input = externalizer.externalLink(resourceResolverFactory.getThreadResourceResolver(), domain, input);
 		} else if (input.contains("/etc.clientlibs/")) {
 			input = input.replaceAll(input, "");
 		}
