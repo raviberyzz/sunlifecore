@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
-	externalizer.domains="[local https://author-sunlifeassurance-prod.adobecqms.net,author https://author-sunlifeassurance-prod.adobecqms.net,publish https://www.sunlife.ca]"
+	externalizer.domains="[local https://author-sunlifeassurance-prod.adobecqms.net,author https://author-sunlifeassurance-prod.adobecqms.net,publish https://www.sunlife.ca,CA https://www.sunlife.ca,HK https://www.sunlife.com.hk,ID https://www.sunlife.co.id,PH https://www.sunlife.com.ph,VN https://www.sunlife.com.vn]"
     externalizer.contextpath=""
     externalizer.host=""
     externalizer.encodedpath="{Boolean}false" />
