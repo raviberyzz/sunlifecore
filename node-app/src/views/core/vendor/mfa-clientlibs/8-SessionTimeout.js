@@ -8,7 +8,10 @@ function SessionTimeout(){
     const self = this;
 
     this.showErrorMessage = function(){
-        setAppContentApperance(true);
+        if(!$("#mfa_signin_modal").is(':visible')){
+            return;
+        }
+
         const lang = ($('html').attr('lang') === 'fr') ? 'fr' : 'en';
         const localizationContent = {
             en: {
