@@ -24,28 +24,28 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 	/** The logger. */
 	private final static Logger logger = LoggerFactory.getLogger(GeneralLinkRewriter.class);
 	
-	private String domain = "PH";
+	private String domain = "publish";
 
 	@Override
 	public String rewriteLink(String link, String tag, String attribute) {
-		logger.info("entering rewriteLink...");
-		logger.info("original link --> "+link);
+		logger.debug("entering rewriteLink...");
+		logger.debug("original link --> "+link);
 		if (externalizer == null) {
 			// if there was an error, then we do not modify the link
-			logger.info("externalizer is null, link is not transformed.");
+			logger.debug("externalizer is null, link is not transformed.");
 			return null;
 		}
 		link = transformedLink(link, externalizer);
-		logger.info("transformedLink --> "+link);
+		logger.debug("transformedLink --> "+link);
 		return link;
 	}
 
 	@Override
 	public boolean shouldRewrite(ExperienceFragmentVariation experienceFragment) {
-		logger.info("entering shouldRewrite...");
+		logger.debug("entering shouldRewrite...");
 		if (experienceFragment.getPath().contains("/content/experience-fragments/sunlife")) {
 			domain = experienceFragment.getProperties().get("cq:externalizerName").toString();
-			logger.info("checking domain --> "+ domain);
+			logger.debug("XF selected domain --> "+ domain);
 			return true;
 		}
 		return false;
@@ -57,15 +57,13 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 	}
 
 	private String transformedLink(String input, Externalizer externalizer) {
-		logger.info("entering transformedLink...");
-		logger.info("input is --> "+input);
+		logger.debug("entering transformedLink...");
 		if (input.contains("/content/sunlife/")) {
+			logger.debug("input is --> "+input);
 			input = format(input);
 			input = externalizer.externalLink(resourceResolverFactory.getThreadResourceResolver(), domain, input);
-		} else if (input.contains("/etc.clientlibs/")) {
-			input = input.replaceAll(input, "");
+			logger.debug("output is --> "+input);
 		}
-		logger.info("return input is --> "+input);
 		return input;
 	}
 
