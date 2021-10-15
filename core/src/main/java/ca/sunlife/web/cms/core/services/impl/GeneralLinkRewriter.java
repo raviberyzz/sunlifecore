@@ -18,8 +18,6 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 
 	/** The logger. */
 	private final static Logger logger = LoggerFactory.getLogger(GeneralLinkRewriter.class);
-	
-	private String domain = "publish";
 
 	@Override
 	public String rewriteLink(String link, String tag, String attribute) {
@@ -39,17 +37,11 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 	@Override
 	public boolean shouldRewrite(ExperienceFragmentVariation experienceFragment) {
 		logger.debug("entering shouldRewrite...");
-		if (experienceFragment.getPath().contains("/content/experience-fragments/sunlife")) {
-			domain = experienceFragment.getProperties().get("cq:externalizerName").toString();
-			logger.debug("XF selected domain --> "+ domain);
-			return true;
-		}
-		return false;
+		return experienceFragment.getPath().contains("/content/experience-fragments/sunlife");
 	}
 
 	@Override
 	public int getPriority() {
 		return 1;
 	}
-
 }
