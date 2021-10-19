@@ -5,7 +5,7 @@ function SessionTimeout(){
     this.events = ['keyup','click'];
     this.timedout = false;
     this.timeCountDown = 0;
-    this.redirectURL = 'https://www.sunnet.sunlife.com/signin/getTimeoutPage/en_CA/member/timeout.wca';
+    this.redirectDomain = 'https://www.sunnet.sunlife.com';
     const self = this;
 
     this.showErrorMessage = function(){
@@ -69,7 +69,10 @@ function SessionTimeout(){
                 if(self.debug) console.log('timeout after: ' + self.inactivityTimeoutSeconds + ' seconds');
                 self.timedout = true;
                 // redirect user to timeout page
-                location.href = self.redirectURL;
+                let redirectURL = self.redirectDomain + '/signin/getTimeoutPage/';
+                redirectURL += ($('html').attr('lang') === 'fr') ? 'fr_CA' : 'en_CA';
+                redirectURL += '/member/timeout.wca';
+                location.href = redirectURL;
             },
             self.inactivityTimeoutSeconds * 1000
         )
