@@ -28,9 +28,11 @@ public class GeneralLinkRewriter implements ExperienceFragmentLinkRewriterProvid
 			logger.debug("siteConfigService is null, link is not transformed.");
 			return null;
 		}
-		link = link.replaceAll(".html", "");
-		link = siteConfigService.getPageUrl(link);
-		logger.debug("transformedLink --> "+link);
+		if (link.startsWith("/content")) {
+			link = link.replaceAll(".html", "");
+			link = siteConfigService.getPageUrl(link);
+			logger.debug("transformedLink --> "+link);
+		}
 		return link;
 	}
 
