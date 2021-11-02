@@ -15,10 +15,10 @@ var otpEntryAttemptFlag = 1; // 0 -> skip, 1 -> back later, 2 -> locked out
 
 function onLogout(isVisible) {
   isVisible = isVisible || false ;
-
   // clear the oops message content
   this.setAppContentApperance(isVisible);
 
+  sessionTimeout.clearSessionTimeout();
   // do not clear the modal when the OTP code is valid. Keep the display until they are redirected.
   if(!waitLoader.keepModalContent){
     $("#transmitContainer").empty();
@@ -134,12 +134,6 @@ function showSpinner(){
 function hideSpinner(){
   $("#loadingMessageDiv").hide();
   waitLoader.keepWaitLoader = false;
-}
-
-function CloseModalPopup(){
-  $("#mfa_signin_modal").on('hidden.bs.modal', function (e) {
-    onLogout();
-  });
 }
 
 function onPageReady() {
