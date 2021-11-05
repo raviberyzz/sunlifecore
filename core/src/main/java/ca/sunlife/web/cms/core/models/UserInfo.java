@@ -94,6 +94,9 @@ public class UserInfo {
   
   /** The has user groups. */
   private boolean hasUserGroups = false;
+  
+  /** is people manager. */
+  private String isManager = StringUtils.EMPTY;
 
   /**
    * Gets the profile.
@@ -164,6 +167,7 @@ public class UserInfo {
         givenName = getUserValue(user, UserInfoConstants.PROFILE_GIVEN_NAME_CONSTANT);
         email = getUserValue(user, UserInfoConstants.PROFILE_EMAIL_CONSTANT);
         language = getUserValue(user, UserInfoConstants.PROFILE_LANGAUGE_CONSTANT);
+        isManager = getUserValue(user, UserInfoConstants.PROFILE_IS_MANAGER_CONSTANT);
         country = getUserValue(user, "./profile/country");
         userName = (givenName + ' ' + familyName).trim();
         Session session = request.getResourceResolver().adaptTo(Session.class);
@@ -200,6 +204,7 @@ public class UserInfo {
         profileData.addProperty(UserInfoConstants.BUSINESS_GROUP_CONSTANT, businessGroup);
         profileData.addProperty(UserInfoConstants.BUSINESS_UNIT_CONSTANT, businessUnit);
         profileData.addProperty(UserInfoConstants.JOB_LEVEL_CONSTANT, jobLevel);
+        profileData.addProperty(UserInfoConstants.IS_MANAGER_CONSTANT, isManager);
         profileData.addProperty("country", country);
         profileData.addProperty("path", userHome);
         profileData.add("groups", groups);
@@ -333,5 +338,12 @@ public class UserInfo {
    */
   public final String getUserHome() {
     return userHome;
+  }
+  
+  /**
+   * @return the isManager
+   */
+  public final String getIsManager() {
+	return isManager;
   }
 }

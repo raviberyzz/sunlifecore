@@ -74,4 +74,10 @@ public final class UserInfoConstants {
 
 	/** The Constant ./profile/language. */
 	public static final String PROFILE_LANGAUGE_CONSTANT = "./profile/language";
+	
+	/** The Constant isManager. */
+	public static final String IS_MANAGER_CONSTANT = "isManager";
+
+	/** The Constant ./profile/isManager. */
+	public static final String PROFILE_IS_MANAGER_CONSTANT = "./profile/isManager";
 }
