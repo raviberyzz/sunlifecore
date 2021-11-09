@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>ca.sunlife.web.cms</groupId>
 		<artifactId>web-cms-aem-core</artifactId>
-		<version>1.6.51</version>
+		<version>1.6.52-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -132,7 +132,7 @@
 		<dependency>
 			<groupId>ca.sunlife.web.cms</groupId>
 			<artifactId>web-cms-aem-core.core</artifactId>
-			<version>1.6.51</version>
+			<version>1.6.52-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
