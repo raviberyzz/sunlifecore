@@ -75,6 +75,6 @@ public class UserInfoTest {
 		List<Group> memberOf = new ArrayList<>();
 		when(user.memberOf()).thenReturn(memberOf.iterator());
     userInfo.init();
-    assertEquals("{\"acf2\":\"NA\",\"authorizableId\":null,\"displayName\":\"test test\",\"email\":\"test\",\"familyName\":\"test\",\"givenName\":\"test\",\"buildingLocation\":\"NA\",\"businessGroup\":\"NA\",\"businessUnit\":\"NA\",\"jobLevel\":\"NA\",\"country\":\"NA\",\"path\":null,\"groups\":{}}", userInfo.getProfile());
+    assertEquals("{\"acf2\":\"NA\",\"authorizableId\":null,\"displayName\":\"test test\",\"email\":\"test\",\"familyName\":\"test\",\"givenName\":\"test\",\"buildingLocation\":\"NA\",\"businessGroup\":\"NA\",\"businessUnit\":\"NA\",\"jobLevel\":\"NA\",\"isManager\":\"NA\",\"country\":\"NA\",\"path\":null,\"groups\":{}}", userInfo.getProfile());
 	}
 }
