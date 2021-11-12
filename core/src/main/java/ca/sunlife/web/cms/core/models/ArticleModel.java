@@ -500,7 +500,7 @@ public class ArticleModel {
       setOgDescription(pageProperties.containsKey("socialMediaDescripton")
           ? pageProperties.get("socialMediaDescripton", String.class)
           : configService.getConfigValues("pageDescription", pagePath));
-      final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD");
+      final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       setPageModifiedDate(formatter.format(currentPage.getLastModified().getTime()));
       setPublisherName(configService.getConfigValues("articlePublisherName", pagePath));
       setPublisherLogo(configService.getConfigValues(DOMAIN, pagePath)
