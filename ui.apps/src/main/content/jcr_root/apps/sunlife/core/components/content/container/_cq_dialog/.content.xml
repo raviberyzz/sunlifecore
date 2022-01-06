@@ -17,8 +17,8 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Please configure the analytics id."
-                                                fieldDescription="Please configure the analytics id."
-                                                fieldLabel="Analytics id"
+                                                fieldDescription="Please configure the data-section."
+                                                fieldLabel="Data section"
                                                 name="./analyticsId"/>
                                             <type
                                                 jcr:primaryType="nt:unstructured"
