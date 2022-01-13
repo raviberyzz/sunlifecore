@@ -142,13 +142,11 @@
   background: $light-orange-20;
   margin: 0; }
 
+.cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu a:hover {
+  background: $light-orange-20; }
+
 .cmp-dynamic-megamenu .mega-menu2-list .dropdown-menu a {
-  color: $medium-blue-color;
-  background: $light-orange-20; 
-  &:hover, &:focus {
-    text-decoration: underline;
-  }
-}
+  background: $light-orange-20; }
 
 .cmp-dynamic-megamenu .mega-menu2-list ul a:hover, .cmp-dynamic-megamenu .mega-menu2-list ul a:focus {
   background: $light-orange-20;
