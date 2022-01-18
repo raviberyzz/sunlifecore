@@ -237,15 +237,17 @@
   background: $light-orange-20 ;
   margin: 0; }
 
-.cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a:hover {
-  background: $light-orange-20 ; }
 .cmp-dynamic-megamenu-grey .mega-menu2-list li a
 {
     padding:0 !important;
 }
 .cmp-dynamic-megamenu-grey .mega-menu2-list .dropdown-menu a {
-
-  background: $light-orange-20 ; }
+  color: $medium-blue-color;
+  background: $light-orange-20; 
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
 
 .cmp-dynamic-megamenu-grey .mega-menu2-list ul a:hover, .cmp-dynamic-megamenu .mega-menu2-list ul a:focus {
   background: $light-orange-20 ;
