@@ -14,14 +14,25 @@
         border: none;
         font-weight: 700;
         display: inline-block;
-        text-decoration: none;
-        &:hover {
-            background-color: $cool-blue-color;
-            color: $white-shade;
-            text-decoration: none;
-        }
+        text-decoration: none;    
     }
 
+}
+
+@media (max-width: 767px) {
+  .button-wrapper .cmp-form-button:active { 
+	background-color:  #4A7283; 
+	color:  #ffffff; 
+	text-decoration: none; 
+   }
+}
+
+@media (min-width: 768px){
+  .button-wrapper .cmp-form-button:hover { 
+	background-color:  #4A7283; 
+	color:   #ffffff; 
+	text-decoration: none; 
+   }
 }
 
     .primary-blue-button-form {
