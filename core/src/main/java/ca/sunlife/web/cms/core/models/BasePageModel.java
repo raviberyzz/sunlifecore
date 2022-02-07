@@ -1631,7 +1631,9 @@ public void setDisableContextHubTags(String disableContextHubTags) {
           final LiveCopy liveCopy = liveRelationship.getLiveCopy();
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
-            masterPagePath = sourcePath; 
+            if (!sourcePath.contains("language-masters")) {
+              masterPagePath = sourcePath;
+            }
             sourceResource = resolver.getResource(sourcePath);
             	if(sourceResource!=null) {
                 	 Page page = sourceResource.adaptTo(Page.class);
