@@ -291,7 +291,10 @@
         <!-- Hamburger Menu start -->
         <div class="hamburger-menu-wrapper inactive">
           <div class="close-hamburger-menu">
-            <span class="fa fa-remove close-hamburger" id="close-hamburger"></span>
+          <button type="button" class="btn close-hamburger" id="close-hamburger">
+            <span class="sr-only">Close Navigation Menu</span>
+            <span class="fa fa-remove"></span>
+          </button>
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
             <form name="searchform-bottom" class="slf-search-mobile" action="${searchUrl @ extension = 'html'}"
