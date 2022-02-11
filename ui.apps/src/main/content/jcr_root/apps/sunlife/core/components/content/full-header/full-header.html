@@ -121,7 +121,7 @@
 				  <ul role="navigation" aria-label="Helpful links">
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
-						<a href="${utilityListParsing.navPath}" aria-hidden="true" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
+						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
 					  </li>
 					</sly>
 				  </ul>
@@ -159,7 +159,7 @@
 				  <ul role="navigation" aria-label="Helpful links">
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
-						<a href="${utilityListParsing.navPath}" aria-hidden="true" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
+						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
 					  </li>
 					</sly>
 				  </ul>
@@ -258,12 +258,12 @@
         <!-- sign-in modal end-->
         <div class="col-xs-12 mobile-header-navbar  white-shade">
           <div class="hamburger-menu" id="hamburgerMenu">
-            <div class="navbar-toggle pull-left" type="button">
+            <button class="btn navbar-toggle pull-left" type="button">
               <span class="sr-only">Navigation Menu</span>
               <span class="icon-bar" id="a1">&nbsp;</span>
               <span class="icon-bar" id="a2">&nbsp;</span>
               <span class="icon-bar" id="a3">&nbsp;</span>
-            </div>
+            </button>
           </div>
           <div data-sly-test="${listFrom == 'yes'}" class="slf-header-mobile-logo" data-section="header-logo">
             <sly data-sly-list.links="${listModel.links}">
@@ -291,7 +291,10 @@
         <!-- Hamburger Menu start -->
         <div class="hamburger-menu-wrapper inactive">
           <div class="close-hamburger-menu">
-            <span class="fa fa-remove close-hamburger" id="close-hamburger"></span>
+          <button type="button" class="btn close-hamburger" id="close-hamburger">
+            <span class="sr-only">Close Navigation Menu</span>
+            <span class="fa fa-remove"></span>
+          </button>
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
             <form name="searchform-bottom" class="slf-search-mobile" action="${searchUrl @ extension = 'html'}"

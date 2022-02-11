@@ -61,6 +61,13 @@
                 background: $medium-blue-color;
             }
         }
+        button.navbar-toggle:focus {
+            outline: 5px auto $black-shade !important;
+
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+                outline: 1px dotted $black-shade !important; //IE11 to match its outline style
+            }
+        }
         .slf-header-mobile-logo {
             margin: 0;
             text-align: center;
@@ -154,6 +161,18 @@
             line-height:26px;
             cursor:pointer;
             padding:8px 0;
+        }
+        button#close-hamburger {
+            background: none;
+            border: none;
+        
+            &:focus {
+                outline: 5px auto $black-shade !important;
+
+                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+                    outline: 1px dotted $black-shade !important; //IE11 to match its outline style
+                }
+            }
         }
         .hamburger-search {
             padding: 8px 16px;
