@@ -63,6 +63,7 @@
         }
         button.navbar-toggle:focus {
             outline: 5px auto $black-shade !important;
+            outline-offset: -3px;
 
             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
                 outline: 1px dotted $black-shade !important; //IE11 to match its outline style
