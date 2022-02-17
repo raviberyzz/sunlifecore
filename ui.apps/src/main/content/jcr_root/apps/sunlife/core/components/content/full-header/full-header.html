@@ -126,10 +126,9 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links">
+				<div class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
-					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation"
-					  aria-label="Region & Language Selection">
+					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
 						<label class="sr-only">
@@ -138,7 +137,7 @@
 						${regionTitle}
 					  </div>
 					</li>
-					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search">
+					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
 						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
@@ -164,10 +163,9 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links">
+				<div class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
-					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation"
-					  aria-label="Region & Language Selection">
+					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
 						<label class="sr-only">
@@ -176,7 +174,7 @@
 						${regionTitle}
 					  </div>
 					</li>
-					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search">
+					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
 						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
