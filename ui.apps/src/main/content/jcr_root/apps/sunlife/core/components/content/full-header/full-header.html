@@ -117,8 +117,8 @@
 			<div class="col-md-6 col-lg-6">
           
 				<div class="utility-nav-wrapper" data-section="header-utility-nav">
-				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
-				  <ul role="navigation" aria-label="Helpful links">
+				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links" role="navigation" aria-label="Helpful links">
+				  <ul>
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
 						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
@@ -155,8 +155,8 @@
 			  <div class="col-md-9 col-lg-9">
 			  
 				<div class="utility-nav-wrapper" data-section="header-utility-nav">
-				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
-				  <ul role="navigation" aria-label="Helpful links">
+				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links" role="navigation" aria-label="Helpful links">
+				  <ul>
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
 						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
@@ -197,8 +197,8 @@
           
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
-              <div class="desktop-primary-navigation" data-section="nav-main">
-                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr" role="navigation" aria-label="main navigation">
+              <div class="desktop-primary-navigation" data-section="nav-main" role="navigation" aria-label="main navigation">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}" data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=head.linkUrl}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
