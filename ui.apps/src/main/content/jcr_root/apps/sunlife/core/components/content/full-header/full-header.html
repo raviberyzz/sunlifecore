@@ -117,8 +117,8 @@
 			<div class="col-md-6 col-lg-6">
           
 				<div class="utility-nav-wrapper" data-section="header-utility-nav">
-				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
-				  <ul role="navigation" aria-label="Helpful links">
+				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links" role="navigation" aria-label="Helpful links">
+				  <ul>
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
 						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
@@ -126,10 +126,9 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
-					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation"
-					  aria-label="Region & Language Selection">
+					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
 						<label class="sr-only">
@@ -138,7 +137,7 @@
 						${regionTitle}
 					  </div>
 					</li>
-					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search">
+					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
 						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
@@ -155,8 +154,8 @@
 			  <div class="col-md-9 col-lg-9">
 			  
 				<div class="utility-nav-wrapper" data-section="header-utility-nav">
-				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links">
-				  <ul role="navigation" aria-label="Helpful links">
+				<div data-sly-test="${listFromNav == 'true'}" class="utility-nav-links" role="navigation" aria-label="Helpful links">
+				  <ul>
 					<sly data-sly-list.links="${listModel.navlinks}">
 					  <li data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=links.linkUrl}">
 						<a href="${utilityListParsing.navPath}" data-title="${links.dataTitle}">${links.linkName} <i data-sly-test="${links.linkIcon}" class="${links.linkIcon}"></i></a>
@@ -164,10 +163,9 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
-					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container" role="navigation"
-					  aria-label="Region & Language Selection">
+					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
 						data-target="#sun-language" aria-controls="sun-language"  aria-expanded="false" tabindex="0">
 						<label class="sr-only">
@@ -176,7 +174,7 @@
 						${regionTitle}
 					  </div>
 					</li>
-					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container" role="search">
+					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
 						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
@@ -197,8 +195,8 @@
           
           <div data-sly-test="${listFromMeganav == 'meganavtrue'}" class="desktop-navigation no-gutter">
             <div class="desktop-mega-menu clearfix">
-              <div class="desktop-primary-navigation" data-section="nav-main">
-                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr" role="navigation" aria-label="main navigation">
+              <div class="desktop-primary-navigation" data-section="nav-main" role="navigation" aria-label="main navigation">
+                <ul class="nav navbar-nav navbar-left navbar-new main-nav nav-auth focus-exp focus-tr">
                   <sly data-sly-list.head="${listModel.meganavlinks.listChildren}">
                     <li class="dropdown nav-item navigation ${head.linkStyle}" data-sly-use.utilityListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=head.linkUrl}">
                       <a data-toggle="dropdown" class="dropdown-toggle subnav-trigger"
