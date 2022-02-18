@@ -126,7 +126,7 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
 					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
@@ -163,7 +163,7 @@
 					</sly>
 				  </ul>
 				</div>
-				<div class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
+				<div data-sly-test="${listFromSearch == 'searchtrue' || listFromRegion == 'regiontrue'}" class="utility-nav-links" role="navigation" aria-label="Region & Language Selection, Search Function">
 				  <ul>
 					<li data-sly-test="${listFromRegion == 'regiontrue'}" id="language-btn-container">
 					  <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse"
