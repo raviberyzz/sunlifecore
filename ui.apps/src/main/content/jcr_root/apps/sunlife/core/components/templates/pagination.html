@@ -1,7 +1,7 @@
 <template data-sly-template.pagination="${@paginationObj,pageUrl}">
     <sly data-sly-test="${paginationObj}">
         <sly data-sly-test.isPaginationrequired="${paginationObj.totalPages}" />
-        <div class="pagination-component" data-sly-test="${isPaginationrequired}">
+        <div class="pagination-component" data-sly-test="${isPaginationrequired > 1}">
             <sly data-sly-test.previousCss="${paginationObj.curPage == 1 ? 'disabled' : ''}" />
             <sly data-sly-test.nextCss="${paginationObj.curPage == paginationObj.totalPages ? 'disabled' : ''}" />
             <sly data-sly-test.firstPageCss="${paginationObj.curPage == 1 ? 'active' : ''}" />
