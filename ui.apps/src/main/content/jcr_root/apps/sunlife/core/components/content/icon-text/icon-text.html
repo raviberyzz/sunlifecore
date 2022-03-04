@@ -19,10 +19,14 @@
 <ul data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
    <li>
       <div class="icon-parent">
-         <a class="icon-style fa ${iconsText.icon}" href="${iconsText.link @context = 'html'}" target="${iconsText.target}" tabindex="${iconsText.link ? '0' : ''}" aria-hidden="${!iconsText.link ? 'true' : ''}">
+         <a data-sly-test.hasLink="${iconsText.link}" class="icon-style fa ${iconsText.icon}" href="${iconsText.link @context = 'html'}" target="${iconsText.target}" tabindex="${iconsText.link ? '0' : ''}" aria-hidden="${!iconsText.link ? 'true' : ''}">
          <span data-sly-test="${iconsText.srText && !hasBreadcrumb}" class="sr-only">${iconsText.srText}</span>
          <span data-sly-test="${iconsText.srText && hasBreadcrumb}" class="sr-only">${iconsText.srText @i18n}</span>
          </a>
+         <span data-sly-test="${!hasLink}" class="icon-style fa ${iconsText.icon}" tabindex="${iconsText.link ? '0' : ''}" aria-hidden="${!iconsText.link ? 'true' : ''}" >
+         <span data-sly-test="${iconsText.srText && !hasBreadcrumb}" class="sr-only">${iconsText.srText}</span>
+         <span data-sly-test="${iconsText.srText && hasBreadcrumb}" class="sr-only">${iconsText.srText @i18n}</span>
+         </span>
       </div>
       <div class="icon-texts">
          ${iconsText.text @context ='html'}
