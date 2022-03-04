@@ -211,8 +211,7 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Link Language Code"
-                                            name="subLinkLangCode"
-                                            required="{Boolean}true"/>
+                                            name="subLinkLangCode"/>
                                         <subLinkUrl
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
