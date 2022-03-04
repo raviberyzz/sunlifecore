@@ -26,6 +26,14 @@ public interface SubLinkModel {
    */
   @ Inject
   String getSubLinkName();
+  
+  /**
+   * Gets the sub link language code.
+   *
+   * @return the sub link language code
+   */
+  @ Inject
+  String getSubLinkLangCode();
 
   /**
    * Gets the sub link url.
