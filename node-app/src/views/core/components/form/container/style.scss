@@ -717,7 +717,9 @@
             display:none;
         }
         .cmp-form-options__field-label {
-            float:left;
+            float:none;
+          	padding-left: 6px;
+   			padding-bottom: 6px;
         }
    } 
    .cmp-form-button
