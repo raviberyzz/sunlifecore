@@ -37,13 +37,13 @@
               </a></div>
             <div class="global-search">
               <form name="searchform-bottom" class="slf-search" action="${searchUrl @ extension = 'html'}"
-                method="get"><label class="sr-only" for="q-top">Search</label>
+                method="get" data-parsley-validate="data-parsley-validate"><label class="sr-only" for="q-top">Search</label>
                 <div class="form-wrapper">
                   <div class="input-wrapper">
                     <div class="input-wrapper form-group-wrapper">
-                      <input data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q"
-                        type="text" maxlength="" placeholder="${searchPlaceholder}"
-                        data-parsley-pattern-message="" data-parsley-pattern="/[a-z]/g" data-parsley-id="8">
+                      <input data-parsley-required-message="! Required Field" data-parsley-required="data-parsley-required" id=q-top class="" label="" name="q"
+                        type="text" placeholder="${searchPlaceholder}"
+                        data-parsley-id="8">
                     </div>
                     <div class="search-autocomplete">
                       <ul class="search-autocomplete-list">

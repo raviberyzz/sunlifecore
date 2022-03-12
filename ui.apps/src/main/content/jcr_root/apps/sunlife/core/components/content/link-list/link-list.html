@@ -3,7 +3,7 @@
 <div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
 <div class="lists-wrapper clearfix" data-sly-test="${!empty}"> 
 	<div class="links">
-		<h3 class="accordion-heading" aria-expanded="true">${listModel.title}</h3>
+		<h3 class="accordion-heading">${listModel.title}</h3>
 			<div class="collapse list-div">				
 				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
 				    <sly data-sly-use.linkListParsing = "${'linklist-parsing.js' @ path=links.linkUrl}">
