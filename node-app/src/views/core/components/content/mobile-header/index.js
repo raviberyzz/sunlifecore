@@ -52,6 +52,7 @@ $(document).ready(function () {
             let key = typeof event.which == "undefined" ? event.keyCode: event.which;
                 if (key === 27 || key === "Escape") {
                     if($(".hamburger-menu-wrapper").hasClass("active")){
+                        $('.go-back').closest("div").removeClass('active'); //Reset Hamburger Menu back to First Level
                         $("#close-hamburger").click();
                     }
                 }
