@@ -20,7 +20,7 @@
     <li class="${item.children.size > 0 ? 'navigation-menu' : 'subnav'}">
 
         <sly data-sly-test.itemSize = "${item.children.size != 0}">    
-         <a>${item.title}</a>
+         <a href="#">${item.title}</a>
         </sly>
          <sly data-sly-test = "${!itemSize}">
         <sly data-sly-call="${itemContentTemplate.itemContent @ item = item}"></sly>

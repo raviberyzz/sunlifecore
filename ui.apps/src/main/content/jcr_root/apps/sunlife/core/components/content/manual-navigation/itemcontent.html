@@ -1,4 +1,4 @@
 <template data-sly-template.itemcontent="${@ navLinksRef='The navigation item'}">
  <sly data-sly-use.linkListParsing = "${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=navLinksRef.linkUrl}">
- <a href ="${navLinksRef.hasChildren == true ? '' :  linkListParsing.navPath}" target ="${navLinksRef.hasChildren == true ? '' :  navLinksRef.target}">${navLinksRef.linkName @ context='html'}</a>
+ <a href ="${navLinksRef.hasChildren == true ? '#' :  linkListParsing.navPath}" target ="${navLinksRef.hasChildren == true ? '' :  navLinksRef.target}">${navLinksRef.linkName @ context='html'}</a>
 </template>
