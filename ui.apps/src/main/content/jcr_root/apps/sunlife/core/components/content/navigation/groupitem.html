@@ -17,7 +17,7 @@
 
 <div role="menu" class="${level > 0 ? 'third-level-navigation' : 'second-level-navigation'}">
     <ul >
-      <li class="go-back"><a>${'Back' @ i18n}</a></li>
+      <li class="go-back"><a href="#">${'Back' @ i18n}</a></li>
       <li data-sly-test = "${level == 0}" class="navigation-title"><a>${title}</a></li>
       
        <sly data-sly-list="${items}">

@@ -256,7 +256,7 @@
         <!-- sign-in modal end-->
         <div class="col-xs-12 mobile-header-navbar  white-shade">
           <div class="hamburger-menu" id="hamburgerMenu">
-            <button class="btn navbar-toggle pull-left" type="button">
+            <button class="btn navbar-toggle pull-left" type="button" aria-expanded="false">
               <span class="sr-only">Navigation Menu</span>
               <span class="icon-bar" id="a1">&nbsp;</span>
               <span class="icon-bar" id="a2">&nbsp;</span>
@@ -318,7 +318,7 @@
             <sly data-sly-test="${listModel.mobilenav.path}" data-sly-resource="${listModel.mobilenav.path @resourceType='sunlife/core/components/content/experiencefragment'}" />
 
             <li data-sly-test="${listFromRegion == 'regiontrue'}" class="navigation-menu language-region">
-              <a>${regionTitle @context='html'}</a>
+              <a href="#">${regionTitle @context='html'}</a>
               <div class="second-level-navigation" role="menu">
 
                 <sly data-sly-resource="${ @resourceType='sunlife/core/components/content/experiencefragment'}" />

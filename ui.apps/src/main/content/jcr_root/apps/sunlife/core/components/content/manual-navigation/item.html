@@ -2,13 +2,13 @@
                  data-sly-use.itemContentTemplate="itemcontent.html">
              <div role="menu" class="second-level-navigation" style="overflow-y: auto;" data-sly-list.navLinksOne = "${navLinks.listChildren}">
                  <ul data-sly-test = "${navLinksOne.name == 'linkfirstlevel' }" data-sly-list.navLinksTwo = "${navLinksOne.listChildren}">
-                     <li data-sly-test = "${navLinksTwoList.index == 0}" class="go-back"><a>${'Back' @ i18n}</a></li>
+                     <li data-sly-test = "${navLinksTwoList.index == 0}" class="go-back"><a href="#">${'Back' @ i18n}</a></li>
                          <li data-sly-test = "${navLinksTwoList.index == 0}" class="navigation-title"><a>${navLinks.linkName}</a></li>
                         <li class="${navLinksTwo.hasChildren == true ? 'navigation-menu' : 'subnav'}">
                            <sly data-sly-call="${itemContentTemplate.itemcontent @ navLinksRef = navLinksTwo}"></sly>
                         <div role="menu" class="third-level-navigation" data-sly-list.navLinkstwo = "${navLinksTwo.listChildren}">
                         <ul data-sly-test = "${navLinkstwo.name == 'linksecondlevel'}" data-sly-list.navLinksThree = "${navLinkstwo.listChildren}">
-                         <li data-sly-test = "${navLinksThreeList.index == 0}" class="go-back"><a>${'Back' @ i18n}</a></li>
+                         <li data-sly-test = "${navLinksThreeList.index == 0}" class="go-back"><a href="#">${'Back' @ i18n}</a></li>
                         <li class="subnav">
                         <sly data-sly-call="${itemContentTemplate.itemcontent @ navLinksRef = navLinksThree}"></sly>
                         </li>

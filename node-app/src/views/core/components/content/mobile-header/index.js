@@ -46,6 +46,49 @@ $(document).ready(function () {
                 $('.slf-mobile-header-wrapper').css({ 'position': 'fixed' });
             }
         });
+
+        //ESC Key functionality for Closing Mobile Menu (Also copied into SOURCE Override)
+        $(document).on("keydown", function (event) {
+            let key = typeof event.which == "undefined" ? event.keyCode: event.which;
+                if (key === 27 || key === "Escape") {
+                    if($(".hamburger-menu-wrapper").hasClass("active")){
+                        $('.go-back').closest("div").removeClass('active'); //Reset Hamburger Menu back to First Level
+                        $("#close-hamburger").click();
+                    }
+                }
+          });
+
+        //Mobile Hamburger Menu Tab Trapping (Also copied into SOURCE Override)
+        //Due to the way the Mobile Menu is used with Second/Third Level Navigational Divs we need to check which level is active on tabbing and figure out which are the first and last elements to trap the tabbing correctly.
+        $('.hamburger-menu-wrapper').find('select, input, textarea, button, a').on('keydown', function (event) {     
+            var key = typeof event.which == "undefined" ? event.keyCode : event.which;
+            let tabKeyPressed = key == 9 && !event.shiftKey;
+            let shiftTabKeyPressed = key == 9 && event.shiftKey;
+            if (tabKeyPressed || shiftTabKeyPressed) {
+                const firstLevelMobileMenuInputs = $('.hamburger-menu-wrapper').find('select, input, textarea, button, a').filter(':visible');
+                const secondLevelMobileMenuInputs = $('.hamburger-menu-wrapper .second-level-navigation.active').find('select, input, textarea, button, a').filter(':visible');
+                const thirdLevelMobileMenuInputs = $('.hamburger-menu-wrapper .third-level-navigation.active').find('select, input, textarea, button, a').filter(':visible');
+
+                let firstInput = firstLevelMobileMenuInputs.first();
+                let lastInput = firstLevelMobileMenuInputs.last();
+
+                if ( thirdLevelMobileMenuInputs.length > 0) {
+                    firstInput = thirdLevelMobileMenuInputs.first();
+                    lastInput = thirdLevelMobileMenuInputs.last();
+                } else if ( secondLevelMobileMenuInputs.length > 0 ) {
+                    firstInput = secondLevelMobileMenuInputs.first();
+                    lastInput = secondLevelMobileMenuInputs.last();
+                }
+
+                if (shiftTabKeyPressed && $(this)[0].innerHTML == firstInput[0].innerHTML) {
+                    event.preventDefault();
+                    lastInput[0].focus();
+                } else if (tabKeyPressed && $(this)[0].innerHTML == lastInput[0].innerHTML) {
+                    event.preventDefault();
+                    firstInput[0].focus();
+                }
+            }
+        });
         /* end hamburger menu close logic */
         
 
@@ -124,14 +167,19 @@ $(document).ready(function () {
     });
 
     function mobileNavigation(){
-        $("#hamburgerMenu").click(function () {
-            $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');
-            $('.offcanvas-overlay').addClass('active');
-            $('.container').css({ 'margin-left': '270px' });
-            $('body').addClass('overflow-hidden');
-            $('.slf-mobile-header-wrapper').css({ 'position': 'static' });
-            var windowHeight = $(window).height();
-            $('.hamburger-menu-wrapper').height(windowHeight);
+        $("#hamburgerMenu button").click(function () {
+            $(this).attr("aria-expanded", "true");
+            //Timeout added for expanded aria state annoucement
+            setTimeout(function(){
+                $('.hamburger-menu-wrapper').addClass('active').removeClass('inactive');
+                $('.offcanvas-overlay').addClass('active');
+                $('.container').css({ 'margin-left': '270px' });
+                $('body').addClass('overflow-hidden');
+                $('.slf-mobile-header-wrapper').css({ 'position': 'static' });
+                var windowHeight = $(window).height();
+                $('.hamburger-menu-wrapper').height(windowHeight);
+                $("#close-hamburger").focus();
+            }, 500);
         });
         $("#close-hamburger").click(function () {
             $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');
@@ -139,6 +187,8 @@ $(document).ready(function () {
             $('.container').css({ 'margin-left': '0px' });
             $('body').removeClass('overflow-hidden');
             $('.slf-mobile-header-wrapper').css({ 'position': 'fixed' });
+            $('#hamburgerMenu button').attr("aria-expanded", "false");
+            $('#hamburgerMenu button').focus();
         });
         $('.first-level-navigation .navigation-menu').children("a").click(function (event) {
             if (event.target.parentNode.children[1].className === "third-level-navigation") {
@@ -149,14 +199,18 @@ $(document).ready(function () {
         });
         $('.second-level-navigation .go-back').click(function () {
             $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionFirst);
+            $('.hamburger-menu-wrapper').find('select, input, textarea, button, a').filter(':visible').first().focus();
         });
         $('.third-level-navigation .go-back').click(function () {
             $(this).closest('div').parent().closest('div').scrollTop(sessionStorage.scrollPositionSecond);
+            $('.hamburger-menu-wrapper .second-level-navigation.active').find('select, input, textarea, button, a').filter(':visible').first().focus();
         });
-        $('.navigation-menu').children('a').click(function () {
+        $('.navigation-menu').children('a').click(function (event) {
+            event.preventDefault();
             $(this).parent().closest('div').scrollTop(0);
             $(this).siblings("div").addClass('active');
             $(this).parent().closest('div').css({ 'overflow-y': 'hidden' });
+            $(this).siblings("div").find('select, input, textarea, button, a').filter(':visible').first().focus();
         });
         $('.go-back').click(function (event) {
             $(this).closest("div").removeClass('active');
