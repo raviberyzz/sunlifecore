@@ -1163,18 +1163,11 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     // Condition for article pages end
     LOG.debug("metadata :: {}", customMetadata);
 
-    final LiveRelationship liveRelationship = relationshipManager.getLiveRelationship(resolver.getResource(currentPage.getPath()),
-              false);
-    if (null == liveRelationship) {
-      return;
-    }
-    final String bluePrintPath = liveRelationship.getLiveCopy().getBlueprintPath();
-
     // Sets content structure specific alternate URLs
     if (null != currentPage.getPath()
         && null != resolver.getResource(currentPage.getPath())) {
       final Resource currentResource = resolver.getResource(currentPage.getPath());
-      if (!bluePrintPath.contains("language-masters")) {
+      if (!currentPage.getPath().contains("slcm")) {
         generateAlternateUrls(currentResource);
       } else {
         generateLMAlternateUrls(currentResource);
