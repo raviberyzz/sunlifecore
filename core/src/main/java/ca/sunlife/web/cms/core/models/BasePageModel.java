@@ -1040,7 +1040,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
    *           the repository exception
    */
   @ PostConstruct
-  public void init() throws LoginException, RepositoryException {
+  public void init() throws LoginException, RepositoryException, WCMException {
     final String pagePath = currentPage.getPath();
     final String domain = configService.getConfigValues(DOMAIN_STR, pagePath);
     final String staticPath = configService.getConfigValues(BasePageModelConstants.STATIC_PATH_CONSTANT, pagePath);
@@ -1163,10 +1163,15 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     // Condition for article pages end
     LOG.debug("metadata :: {}", customMetadata);
 
-    // Sets alternate URLs
-    if (null != resolver && null != currentPage.getPath()
+    // Sets content structure specific alternate URLs
+    if (null != currentPage.getPath()
         && null != resolver.getResource(currentPage.getPath())) {
-      generateAlternateUrls(resolver.getResource(currentPage.getPath()));
+      final Resource currentResource = resolver.getResource(currentPage.getPath());
+      if (!currentPage.getPath().contains("slcm")) {
+        generateAlternateUrls(currentResource);
+      } else {
+        generateLMAlternateUrls(currentResource);
+      }
     }
 
     // Sets UDO parameters
@@ -1631,9 +1636,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
           final LiveCopy liveCopy = liveRelationship.getLiveCopy();
           if (liveCopy != null) {
             final String sourcePath = liveCopy.getBlueprintPath();
-            if (!sourcePath.contains("language-masters")) {
-              masterPagePath = sourcePath;
-            }
+            masterPagePath = sourcePath;
             sourceResource = resolver.getResource(sourcePath);
             	if(sourceResource!=null) {
                 	 Page page = sourceResource.adaptTo(Page.class);
@@ -1685,6 +1688,75 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       LOG.error("Unable to get the live copy: {}", e.getMessage());
     }
     LOG.debug("Exit :: BasePageModel :: generateAlternateUrls :: resource :: {}", resource);
+  }
+
+  /**
+   * Generate Language masters structured sites alternate urls.
+   *
+   * @param resource
+   *          the resource
+   */
+  private void generateLMAlternateUrls(final Resource resource) {
+    LOG.debug("Entry :: setAlternateURLs");
+
+    altLanguageLinks = new HashMap <>();
+    try {
+      String syncPath = "";
+      if (relationshipManager.hasLiveRelationship(resource))
+        syncPath = relationshipManager.getLiveRelationship(resource, false).getSyncPath();
+      int altLangCount = Integer.parseInt(configService.getConfigValues("altLangCount" , resource.getPath()));
+      boolean isAltLangSameAsCurPgLocale = false;
+      for (int altLangIterator = 0; altLangIterator < altLangCount; altLangIterator++) {
+        final String altLang = configService.getConfigValues(
+                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + altLangIterator + "_languageCode" , resource.getPath());
+        final String altUrl = configService.getConfigValues(
+                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + altLangIterator + "_siteLocation" , resource.getPath());
+        final String defaultLanguage = configService.getConfigValues(
+                BasePageModelConstants.ALTERNATE_URL_ITEMS_CONSTANT + altLangIterator + "_defaultLanguage" , resource.getPath());
+
+        final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
+        final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
+
+        if (defaultLanguage.length() > 0)
+          masterPagePath = altUrl.contains(syncPath) ? altUrl : altUrl + syncPath;
+
+        if(null!=masterPagePath)
+          masterSeoCanonicalUrl = configService.getPageUrl(masterPagePath);
+
+        canonicalUrl = configService.getPageUrl(currentPage.getPath());
+
+        altLanguageLinks.put(
+                altLang.split("_") [ 0 ] + "-"
+                        + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                altSiteDomain + altSiteUrl + syncPath.substring(1,syncPath.length()));
+
+        if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
+          altLanguageLinks.put(
+                  altLang.split("_") [ 0 ] + "-"
+                          + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                  altUrl);
+          if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
+            isAltLangSameAsCurPgLocale=true;
+          }
+        }
+      }
+
+      final String pagePath = currentPage.getPath();
+      final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
+      final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
+      if (! altLanguageLinks.isEmpty()) {
+        if(isAltLangSameAsCurPgLocale) return;
+
+        altLanguageLinks.put(
+                pageLocale.split("_") [ 0 ] + "-"
+                        + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                siteDomain + configService.getPageRelativeUrl(pagePath));
+      }
+      LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
+    } catch (LoginException | RepositoryException | WCMException e) {
+      LOG.error("Error while generating alternate urls :: {}", e.getMessage());
+    }
+    LOG.debug("Map {}", altLanguageLinks);
   }
 
   /**

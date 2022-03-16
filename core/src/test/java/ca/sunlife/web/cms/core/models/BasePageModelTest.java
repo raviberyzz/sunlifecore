@@ -1,15 +1,16 @@
 package ca.sunlife.web.cms.core.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.text.ParseException;
-
-import javax.jcr.RepositoryException;
-
+import ca.sunlife.web.cms.core.beans.NewsDetails;
+import ca.sunlife.web.cms.core.beans.Release;
+import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
+import ca.sunlife.web.cms.core.exception.ApplicationException;
+import ca.sunlife.web.cms.core.exception.SystemException;
+import ca.sunlife.web.cms.core.services.CNWNewsService;
+import ca.sunlife.web.cms.core.services.SiteConfigService;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.WCMException;
+import com.day.cq.wcm.msm.api.LiveRelationshipManager;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -21,17 +22,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.msm.api.LiveRelationshipManager;
+import javax.jcr.RepositoryException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.text.ParseException;
 
-import ca.sunlife.web.cms.core.beans.NewsDetails;
-import ca.sunlife.web.cms.core.beans.Release;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
-import ca.sunlife.web.cms.core.exception.ApplicationException;
-import ca.sunlife.web.cms.core.exception.SystemException;
-import ca.sunlife.web.cms.core.services.CNWNewsService;
-import ca.sunlife.web.cms.core.services.SiteConfigService;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 @ ExtendWith (AemContextExtension.class)
 public class BasePageModelTest {
@@ -122,15 +120,15 @@ public class BasePageModelTest {
 
   @ Test
   public void testInitMethodValidFields()
-      throws IllegalAccessException , NoSuchMethodException , SecurityException ,
-      IllegalArgumentException , InvocationTargetException , LoginException , RepositoryException {
+          throws IllegalAccessException, NoSuchMethodException, SecurityException,
+          IllegalArgumentException, InvocationTargetException, LoginException, RepositoryException, WCMException {
     setInitData( );
     basePageModel.init( );
   }
 
   @ Test
-  public void testInitForCnwPageType() throws LoginException , RepositoryException , IOException ,
-      ParseException , ApplicationException , SystemException {
+  public void testInitForCnwPageType() throws LoginException, RepositoryException, IOException,
+          ParseException, ApplicationException, SystemException, WCMException {
     setInitData( );
     basePageModel.setAdvancedPageType(BasePageModelConstants.PAGE_TYPE_CNW_CONSTANT);
     Release release = new Release( );
