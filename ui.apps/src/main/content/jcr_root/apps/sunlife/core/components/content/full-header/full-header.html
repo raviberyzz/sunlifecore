@@ -78,10 +78,10 @@
 
         <div class="col-xs-12 desktop-utility-nav">
           <sly data-sly-test="${listFromSignin == 'signintrue'}" >
-            <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}" class="sr-only kbfocus">${listModel.skipToSignInLabel}</a>	
+            <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToSignInLabel}</a>	
           </sly>
-		  <a href="#main-content" class="sr-only kbfocus">${listModel.skipToMainContentLabel}</a>
-          <a href="#mainfooter" class="sr-only kbfocus">${listModel.skipToFooterLabel}</a>
+		  <a href="#main-content" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToMainContentLabel}</a>
+          <a href="#mainfooter" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToFooterLabel}</a>
 
           <!-- Sign In Header Changes Starts -->
 		  <sly data-sly-test="${isSignInHeader == 'yes'}" >
