@@ -1716,6 +1716,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 
         final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
         final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
+        String updatedSyncPath="";
 
         if (defaultLanguage.length() > 0)
           masterPagePath = altUrl.contains(syncPath) ? altUrl : altUrl + syncPath;
@@ -1724,11 +1725,14 @@ public void setDisableContextHubTags(String disableContextHubTags) {
           masterSeoCanonicalUrl = configService.getPageUrl(masterPagePath);
 
         canonicalUrl = configService.getPageUrl(currentPage.getPath());
+        if (!syncPath.isEmpty()) {
+          updatedSyncPath = syncPath.substring(1,syncPath.length());
+        }
 
         altLanguageLinks.put(
                 altLang.split("_") [ 0 ] + "-"
                         + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-                altSiteDomain + altSiteUrl + syncPath.substring(1,syncPath.length()));
+                altSiteDomain + altSiteUrl + updatedSyncPath);
 
         if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
           altLanguageLinks.put(
