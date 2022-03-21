@@ -311,4 +311,12 @@ $(document).ready(function () {
             }
         }
     });
+    $('form.slf-search-mobile').parsley().on('field:error', function() {
+        $('.slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-navigation').addClass('mt-40');
+    });
+
+    $('form.slf-search-mobile').parsley().on('field:success', function() {
+        $('.slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-navigation').removeClass('mt-40');
+    });
+
 });   
