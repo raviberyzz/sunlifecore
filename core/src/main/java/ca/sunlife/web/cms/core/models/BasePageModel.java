@@ -1702,9 +1702,12 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     altLanguageLinks = new HashMap <>();
     try {
       String syncPath = "";
+      String altCount = configService.getConfigValues("altLangCount" , resource.getPath());
+      int altLangCount = 0;
       if (relationshipManager.hasLiveRelationship(resource))
         syncPath = relationshipManager.getLiveRelationship(resource, false).getSyncPath();
-      int altLangCount = Integer.parseInt(configService.getConfigValues("altLangCount" , resource.getPath()));
+      if (!altCount.isEmpty())
+        altLangCount = Integer.parseInt(altCount);
       boolean isAltLangSameAsCurPgLocale = false;
       for (int altLangIterator = 0; altLangIterator < altLangCount; altLangIterator++) {
         final String altLang = configService.getConfigValues(
