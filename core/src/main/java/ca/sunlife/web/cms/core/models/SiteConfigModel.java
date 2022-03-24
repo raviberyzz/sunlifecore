@@ -289,4 +289,3 @@ public interface SiteConfigModel {
   @ Inject
   String getSearchHub();
 }
-}
