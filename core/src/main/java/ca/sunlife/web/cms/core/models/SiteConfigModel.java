@@ -240,4 +240,53 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getMfaEncryption();
+
+  /**
+   * Gets the CoveoSeachEnabled param.
+   *
+   * @return the CoveoSeachEnabled param
+   */
+  @ Inject
+  String getCoveoSeachEnabled();
+  
+  /**
+   * Gets the SearchToken param.
+   *
+   * @return the SearchToken param
+   */
+  @ Inject
+  String getSearchToken();
+  
+  /**
+   * Gets the SearchUrl param.
+   *
+   * @return the SearchUrl param
+   */
+  @ Inject
+  String getSearchUrl();
+  
+  /**
+   * Gets the OrgId param.
+   *
+   * @return the OrgId param
+   */
+  @ Inject
+  String getOrgId();
+  
+  /**
+   * Gets the restUri param.
+   *
+   * @return the restUri param
+   */
+  @ Inject
+  String getRestUri();
+
+  /**
+   * Gets the searchHub param.
+   *
+   * @return the searchHub param
+   */
+  @ Inject
+  String getSearchHub();
+}
 }
