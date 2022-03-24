@@ -1,13 +1,13 @@
-<sly data-sly-use.siteConfigModel="ca.sunlife.web.cms.core.models.SiteConfigModel" />
-<sly data-sly-test="${siteConfigModel.coveoSeachEnabled @context='unsafe'}">
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
+<sly data-sly-test="${baseModel.coveoSeachEnabled @context='unsafe'}">
     <script src=https://static.cloud.coveo.com/searchui/v2.10085/js/CoveoJsSearch.Lazy.js></script>
     <script type="text/javascript">
         var searchConfig = {
-            orgId: "${siteConfigModel.orgId @context='unsafe'}",
-            token: "${siteConfigModel.searchToken @context='unsafe'}",
-            restUri: "${siteConfigModel.restUri @context='unsafe'}",
-            searchHub: "${siteConfigModel.searchHub @context='unsafe'}",
-            searchUrl: "${siteConfigModel.searchUrl @context='unsafe'}"
+            orgId: "${baseModel.orgId @context='unsafe'}",
+            token: "${baseModel.searchToken @context='unsafe'}",
+            restUri: "${baseModel.restUri @context='unsafe'}",
+            searchHub: "${baseModel.searchHub @context='unsafe'}",
+            searchUrl: "${baseModel.searchUrl @context='unsafe'}"
         };
     </script>
 </sly>
