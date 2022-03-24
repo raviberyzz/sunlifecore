@@ -380,6 +380,72 @@ public class BasePageModel {
   /** The disableContextHubTags. */
   private String disableContextHubTags;
   
+  /** The coveoSeachEnabled. */
+  private String coveoSeachEnabled;
+
+  /** The searchToken. */
+  private String searchToken;
+
+  /** The searchUrl. */
+  private String searchUrl;
+
+  /** The orgId. */
+  private String orgId;
+
+  /** The restUri. */
+  private String restUri;
+
+  /** The searchHub. */
+  private String searchHub;
+  
+  public String getCoveoSeachEnabled() {
+	return coveoSeachEnabled;
+}
+
+public void setCoveoSeachEnabled(String coveoSeachEnabled) {
+	this.coveoSeachEnabled = coveoSeachEnabled;
+}
+
+  public String getSearchToken() {
+	return searchToken;
+}
+
+public void setSearchToken(String searchToken) {
+	this.searchToken = searchToken;
+}
+
+  public String getSearchUrl() {
+	return searchUrl;
+}
+
+public void setSearchUrl(String searchUrl) {
+	this.searchUrl = searchUrl;
+}
+
+  public String getOrgId() {
+	return orgId;
+}
+
+public void setOrgId(String orgId) {
+	this.orgId = orgId;
+}
+
+  public String getRestUri() {
+	return restUri;
+}
+
+public void setRestUri(String restUri) {
+	this.restUri = restUri;
+}
+
+  public String getSearchHub() {
+	return searchHub;
+}
+
+public void setSearchHub(String searchHub) {
+	this.searchHub = searchHub;
+}
+
   public String getDisableContextHubTags() {
 	return disableContextHubTags;
 }
@@ -1056,6 +1122,12 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
     disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
     nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
+    coveoSeachEnabled = configService.getConfigValues("coveoSeachEnabled", pagePath);
+    searchToken = configService.getConfigValues("searchToken", pagePath);
+    searchUrl = configService.getConfigValues("searchUrl", pagePath);
+    orgId = configService.getConfigValues("orgId", pagePath);
+    restUri = configService.getConfigValues("restUri", pagePath);
+    searchHub = configService.getConfigValues("searchHub", pagePath);
     
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
