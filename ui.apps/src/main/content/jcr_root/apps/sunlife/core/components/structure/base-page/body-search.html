@@ -1,13 +1,15 @@
+<sly data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" />
 <sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
 <sly data-sly-test="${baseModel.coveoSeachEnabled @context='unsafe'}">
-    <script src=https://static.cloud.coveo.com/searchui/v2.10085/js/CoveoJsSearch.Lazy.js></script>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/CoveoJsSearch.Lazy.js"></script>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/cultures/${page.language}.js"></script>
     <script type="text/javascript">
         var searchConfig = {
             orgId: "${baseModel.orgId @context='unsafe'}",
             token: "${baseModel.searchToken @context='unsafe'}",
             restUri: "${baseModel.restUri @context='unsafe'}",
             searchHub: "${baseModel.searchHub @context='unsafe'}",
-            searchUrl: "${baseModel.searchUrl @context='unsafe'}"
+            searchUrl: "${baseModel.searchUrl @extension = 'html'}"
         };
     </script>
 </sly>
