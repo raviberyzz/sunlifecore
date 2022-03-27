@@ -397,6 +397,9 @@ public class BasePageModel {
 
   /** The searchHub. */
   private String searchHub;
+
+  /** The site locale. */
+  private String siteLocale;
   
   public String getCoveoSeachEnabled() {
 	return coveoSeachEnabled;
@@ -445,6 +448,15 @@ public void setRestUri(String restUri) {
 public void setSearchHub(String searchHub) {
 	this.searchHub = searchHub;
 }
+
+  public String getSiteLocale() {
+	return siteLocale;
+}
+
+public void setSiteLocale(String siteLocale) {
+	this.siteLocale = siteLocale;
+}
+
 
   public String getDisableContextHubTags() {
 	return disableContextHubTags;

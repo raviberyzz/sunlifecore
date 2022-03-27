@@ -266,6 +266,13 @@ public interface HeaderModel {
   Resource getMobilenavlinks();
 
   /**
+   * Gets the mobilenavlinks.
+   *
+   * @return the coveo search
+   */
+  @ Inject  
+  Resource getCoveoSearch();
+  /**
    * The Interface Links.
    *
    * @author TCS

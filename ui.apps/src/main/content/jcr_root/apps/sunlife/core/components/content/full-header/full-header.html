@@ -18,9 +18,7 @@
   <sly data-sly-test.searchPlaceholder="${listModel.searchPlaceholder}" />
   <sly data-sly-test.searchButton="${listModel.searchButton}" />
   <sly data-sly-test.buttonTarget="#${listModel.signinUrl}" />
-  <sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
-  <sly data-sly-test.coveosearch="${baseModel.coveoSeachEnabled}" />
-    
+  <sly data-sly-test.coveoSearch="${listModel.coveoSearch}" />  
   
 
   <div class="slf-header-wrapper">
@@ -39,15 +37,16 @@
                   class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
               </a></div>
             <div class="global-search">
-			<sly data-sly-test="${coveosearch == 'true'}">
+              <div>${coveoSearch}</div>
+			<!-- <sly data-sly-test="${coveoSearch == 'true'}">
         <div id="search-box-desktop" class="CoveoSearchInterface" data-enable-history="true">
           <div class="CoveoAnalytics"></div>
             <div class="coveo-search-section">
             <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
           </div>
         </div>	
-      </sly>	
-			<sly data-sly-test="${coveosearch == 'false'}">
+      </sly>	 -->
+			<!-- <sly data-sly-test="${coveoSearch == 'false'}"> -->
               <form name="searchform-bottom" class="slf-search" action="${searchUrl @ extension = 'html'}"
                 method="get" data-parsley-validate="data-parsley-validate"><label class="sr-only" for="q-top">Search</label>
                 <div class="form-wrapper">
@@ -74,7 +73,7 @@
                 </div>
                 <input name="action" type="hidden" value="input" />
               </form>
-		  </sly>
+		  <!-- </sly> -->
             </div>
           </div>
         </div>
