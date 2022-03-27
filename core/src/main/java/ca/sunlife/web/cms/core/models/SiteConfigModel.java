@@ -288,4 +288,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getSearchHub();
+
+  /**
+   * Gets the siteLocale param.
+   *
+   * @return the siteLocale param
+   */
+  @ Inject
+  String getSiteLocale();
 }

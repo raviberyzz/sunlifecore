@@ -388,6 +388,11 @@
                                             					fieldDescription="For screen Reader"
                                             					fieldLabel="Screen Reader"
                                             					name="./srSearchText"/>    
+                                                             <coveosearch
+                                            					jcr:primaryType="nt:unstructured"
+                                           						sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            					fieldLabel="Coveo Search"
+                                            					name="./coveoSearch"/>    
                                                         </items>
                                                     </column>
                                                 </items>
