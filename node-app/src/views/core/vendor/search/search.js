@@ -1,10 +1,10 @@
+Coveo.SearchEndpoint.configureCloudV2Endpoint('', searchConfig.token, searchConfig.restUri);
 document.addEventListener('DOMContentLoaded', function () {
-    Coveo.SearchEndpoint.configureCloudV2Endpoint('', seachBodyConfig.token, seachBodyConfig.restUri);
     //Desktop search box
     const searchBoxDesktop = document.querySelector('#search-box-desktop');
-    Coveo.initSearchbox(searchBoxDesktop, seachBodyConfig.searchUrl, {
+    Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
       Analytics: {
-        searchHub: seachBodyConfig.searchHub,
+        searchHub: searchConfig.searchHub,
       },
     });
   
@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     //Mobile search box
     const searchBoxMobile = document.querySelector('#search-box-mobile');
-    Coveo.initSearchbox(searchBoxMobile, seachBodyConfig.searchUrl, {
+    Coveo.initSearchbox(searchBoxMobile, searchConfig.searchUrl, {
       Analytics: {
-        searchHub: seachBodyConfig.searchHub,
+        searchHub: searchConfig.searchHub,
       },
     });
   

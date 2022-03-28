@@ -18,7 +18,6 @@
   <sly data-sly-test.searchPlaceholder="${listModel.searchPlaceholder}" />
   <sly data-sly-test.searchButton="${listModel.searchButton}" />
   <sly data-sly-test.buttonTarget="#${listModel.signinUrl}" />
-  <sly data-sly-test.coveoSearch="${listModel.coveoSearch}" />  
   
 
   <div class="slf-header-wrapper">
@@ -37,7 +36,7 @@
                   class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
               </a></div>
             <div class="global-search">
-              <div>${coveoSearch}</div>
+              <div>${listModel.coveoSearch}</div>
 			<!-- <sly data-sly-test="${coveoSearch == 'true'}">
         <div id="search-box-desktop" class="CoveoSearchInterface" data-enable-history="true">
           <div class="CoveoAnalytics"></div>
