@@ -789,3 +789,10 @@ a.skip-main:focus, a.skip-main:active {
 	position: static;
     vertical-align: super;
 }
+
+/* Position the skip to links to the top left corner of the page */
+.kbfocus {
+	position: fixed !important;
+	top: 0px;
+	left: 0px;
+}
