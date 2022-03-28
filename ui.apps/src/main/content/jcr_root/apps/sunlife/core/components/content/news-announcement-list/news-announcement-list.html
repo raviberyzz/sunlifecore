@@ -21,7 +21,7 @@
         <div class="tabs tabs-wrapper news">
             <div class="cmp-tabs" data-cmp-is="tabs" role="tablist">
                 <ol class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${list.yearsToShow}">
-                    <li role="tab" class="${yearsToShow == list.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" tabindex="${yearsToShow == newsModel.activeYear ? '0': '-1'}" aria-selected="${yearsToShow == newsModel.activeYear ? 'true': 'false'}" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
+                    <li role="tab" class="${yearsToShow == list.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" tabindex="-1" aria-selected="${yearsToShow == list.activeYear ? 'true': 'false'}" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
                         <a x-cq-linkchecker="skip" href="${list.relativeURL}/${yearsToShow}/">
                             <span class="slf-tab-title">${yearsToShow}</span>
                         </a>
