@@ -2,13 +2,14 @@
 <sly data-sly-test="${baseModel.coveoSeachEnabled @context='unsafe'}">
     <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/CoveoJsSearch.Lazy.js"></script>
     <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
+    <input type="hidden" id="searchPageUrl" value="${baseModel.searchUrl @ extension = 'html'}">
     <script type="text/javascript">
         var searchConfig = {
             orgId: "${baseModel.orgId @context='unsafe'}",
             token: "${baseModel.searchToken @context='unsafe'}",
             restUri: "${baseModel.restUri @context='unsafe'}",
             searchHub: "${baseModel.searchHub @context='unsafe'}",
-            searchUrl: "${baseModel.searchUrl @context='html'}"
+            searchUrl: document.getElementById("searchPageUrl").value
         };
     </script>
 </sly>
