@@ -2,6 +2,7 @@
 .search-bar-wrapper {
     background: $medium-yellow-background;
     height: 128px;
+    position: relative;
     .global-search {
         text-align: center;
         z-index: 1;
