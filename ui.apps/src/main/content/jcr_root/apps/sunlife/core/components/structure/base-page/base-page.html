@@ -18,6 +18,7 @@
             <sly data-sly-call="${footer.footer @ page = page}"></sly>
             <sly data-sly-include="body.socialmedia_end.html"></sly>
         </sly>
+        <sly data-sly-include="body-search.html"></sly>
 		<!-- Start - Include Site level CSS and scripts -->
 		<sly data-sly-test.siteBodyInclude = "${baseModel.siteBodyInclude}"> 
 			<sly>${baseModel.siteBodyInclude @ context = 'unsafe'}</sly>

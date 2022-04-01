@@ -311,6 +311,7 @@ $(document).ready(function () {
             }
         }
     });
+    if($('form.slf-search-mobile').length != 0){
     $('form.slf-search-mobile').parsley().on('field:error', function() {
         $('.slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-navigation').addClass('mt-40');
     });
@@ -319,4 +320,5 @@ $(document).ready(function () {
         $('.slf-mobile-header-wrapper .hamburger-menu-wrapper .first-level-navigation').removeClass('mt-40');
     });
 
+    }
 });   

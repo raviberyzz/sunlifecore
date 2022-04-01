@@ -36,6 +36,15 @@
                   class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
               </a></div>
             <div class="global-search">
+			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
+				<div id="search-box-desktop" data-enable-history="true">
+				  <div class="CoveoAnalytics"></div>
+					<div class="coveo-search-section">
+					<div class="CoveoSearchbox" data-enable-omnibox="true"></div>
+				  </div>
+				</div>	
+			 </sly>
+			<sly data-sly-test="${searchPlaceholder != 'coveoSearch'}">
               <form name="searchform-bottom" class="slf-search" action="${searchUrl @ extension = 'html'}"
                 method="get" data-parsley-validate="data-parsley-validate"><label class="sr-only" for="q-top">Search</label>
                 <div class="form-wrapper">
@@ -62,6 +71,7 @@
                 </div>
                 <input name="action" type="hidden" value="input" />
               </form>
+		   </sly>
             </div>
           </div>
         </div>
@@ -295,6 +305,15 @@
           </button>
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
+			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
+				<div id="search-box-mobile" data-enable-history="true">
+				  <div class="CoveoAnalytics"></div>
+					<div class="coveo-search-section">
+					<div class="CoveoSearchbox" data-add-search-button="false" data-enable-omnibox="true"></div>
+				  </div>
+				</div>	
+			  </sly>
+			<sly data-sly-test="${searchPlaceholder != 'coveoSearch'}">		  
             <form name="searchform-bottom" class="slf-search-mobile" action="${searchUrl @ extension = 'html'}"
               method="get" data-parsley-validate="data-parsley-validate">
               <div class="form-wrapper">
@@ -312,6 +331,7 @@
               </div>
               <input name="action" type="hidden" value="input">
             </form>
+			</sly>
           </div>
           <ul class="first-level-navigation">
 

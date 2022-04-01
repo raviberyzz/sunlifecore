@@ -155,7 +155,45 @@
                                         fieldLabel="Is non responsive site?"
                                         name="./nonResponsive"
                                         text="Is non responsive site?"
-                                        value="{Boolean}true"/>	
+                                        value="{Boolean}true"/> 
+                                    <coveoSeachEnabled
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Is Coveo Search Enabled"
+                                        name="./coveoSeachEnabled"
+                                        text="Is Coveo Search Enabled"
+                                        value="{Boolean}true"/>
+                                    <searchToken
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Coveo Search Token"
+                                        name="./searchToken"/>
+                                    <searchUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Coveo Search URL"
+                                        name="./searchUrl"/>
+                                    <orgId
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Coveo Search Organization Id"
+                                        name="./orgId"/>
+                                    <restUri
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Coveo Search Rest URI"
+                                        name="./restUri"/>
+                                    <searchHub
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search Result Page"
+                                        name="./searchHub"/>
+                                    <siteLocale
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Site Locale"
+                                        name="./siteLocale"/>
                                 </items>
                             </section-general>
                             <section-article
