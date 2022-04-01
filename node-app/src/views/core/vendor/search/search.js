@@ -1,6 +1,3 @@
-//Configure a search endpoint.
-Coveo.SearchEndpoint.configureCloudV2Endpoint('', searchConfig.token, searchConfig.restUri);
-	
 document.addEventListener('DOMContentLoaded', function () {
 	//Search body label
 	const searchBody = document.querySelector('#search');
@@ -8,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	const searchBoxMobile = document.querySelector('#search-box-mobile');
 
 	// Initialize a Searchbox component. When in the main search page, this is done externally.
-	if ( searchBody  ) {
-		Coveo.init( searchBody, {
+	if (searchBody) {
+		Coveo.init(searchBody, {
 			Analytics: {
 				searchHub: searchConfig.searchHub,
 			},
@@ -17,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				searchBoxDesktop,
 				searchBoxMobile
 			]
-		});	
+		});
 		Coveo.$$(searchBody).on(Coveo.InitializationEvents.afterInitialization, (args) => {
 			searchBody.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
 				className: 'coveo-search-button-label'
 			}, Coveo.l("Search")).el);
-		});		
+		});
 	} else {
 		Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
 			Analytics: {
@@ -35,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			},
 		});
 	}
-	
+
 	Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
 		searchBoxDesktop.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
 			className: 'coveo-search-button-label'
@@ -47,6 +44,4 @@ document.addEventListener('DOMContentLoaded', function () {
 			className: 'coveo-search-button-label'
 		}, Coveo.l("Search")).el);
 	});
-	
-
 })
