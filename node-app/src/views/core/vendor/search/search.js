@@ -38,12 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			className: 'coveo-search-button-label'
 		}, Coveo.l("Search")).el);
 	});
-
-	Coveo.$$(searchBoxMobile).on(Coveo.InitializationEvents.afterInitialization, (args) => {
-		searchBoxMobile.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
-			className: 'coveo-search-button-label'
-		}, Coveo.l("Search")).el);
-	});
 })
 
 $(document).on("click", '.magic-box-input', function(e){
