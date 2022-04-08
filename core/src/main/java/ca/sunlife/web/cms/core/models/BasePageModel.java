@@ -1757,10 +1757,13 @@ public void setDisableContextHubTags(String disableContextHubTags) {
         }
       }
       if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
-        altLanguageLinks.put(
+        /*altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + configService.getPageRelativeUrl(pagePath));
+            siteDomain + configService.getPageRelativeUrl(pagePath));*/
+    	  altLanguageLinks.put(
+  	            pageLocale.substring(0, 2),
+  	            siteDomain + configService.getPageRelativeUrl(pagePath));
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
@@ -1870,11 +1873,14 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     if (StringUtils.isEmpty(sourcePageLocale) || StringUtils.isEmpty(sourceSiteUrl)) {
     	return;
     }
-    altLanguageLinks.put(
+   /* altLanguageLinks.put(
         sourcePageLocale.split("_") [ 0 ] + "-"
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
-        sourceSiteDomain + sourceSiteUrl);
+        sourceSiteDomain + sourceSiteUrl);*/
+    altLanguageLinks.put(
+            sourcePageLocale.substring(0, 2),
+            sourceSiteDomain + sourceSiteUrl);
   }
 
   /**
@@ -1906,15 +1912,21 @@ public void setDisableContextHubTags(String disableContextHubTags) {
         
         if(null!=masterPagePath)  masterSeoCanonicalUrl = masterPagePath;
         
-        altLanguageLinks.put(
+        /*altLanguageLinks.put(
             altLang.split("_") [ 0 ] + "-"
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            altSiteDomain + altSiteUrl);
+            altSiteDomain + altSiteUrl);*/
+        altLanguageLinks.put(
+                altLang.substring(0, 2),
+                altSiteDomain + altSiteUrl);
         
     	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
-        	altLanguageLinks.put(
+        	/*altLanguageLinks.put(
                     altLang.split("_") [ 0 ] + "-"
                         + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                        altUrl);*/
+        	altLanguageLinks.put(
+                    altLang.substring(0, 2),
                         altUrl);
         	if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
         			isAltLangSameAsCurPgLocale=true;
@@ -1953,10 +1965,13 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       if (! altLanguageLinks.isEmpty()) {
         if(isAltLangSameAsCurPgLocale) return;
     	
-        altLanguageLinks.put(
+        /*altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + configService.getPageRelativeUrl(pagePath));
+            siteDomain + configService.getPageRelativeUrl(pagePath));*/
+        altLanguageLinks.put(
+                pageLocale.substring(0, 2),
+                siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
     } catch (LoginException | RepositoryException | WCMException e) {
