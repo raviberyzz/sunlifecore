@@ -671,6 +671,13 @@
             }
         }
     }
+    .teaser.circular-image.circle-150-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text {
+        .image-text-wrapper {
+            img {
+                max-width: inherit;
+            }
+        }
+    }
 }
 
 @media (max-width: $mobile-screen-max) {
