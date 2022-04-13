@@ -47,6 +47,10 @@
     }
   }
   
-  #search-box-desktop .coveo-search-section{
+#search-box-desktop .coveo-search-section{
 margin: 0px auto 0px;
+}
+
+#search-box-mobile .coveo-search-section{
+	padding: 0px;
 }
