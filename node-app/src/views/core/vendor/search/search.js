@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Initialize a Searchbox component. When in the main search page, this is done externally.
 	if (searchBody) {
+
+        Coveo.$$(searchBody).on(Coveo.InitializationEvents.afterInitialization, (args) => {
+			//searchBody - label 
+			searchBody.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
+				className: 'coveo-search-button-label'
+			}, Coveo.l("Search")).el);
+			//searchBoxDesktop - label 
+			searchBoxDesktop.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
+				className: 'coveo-search-button-label'
+			}, Coveo.l("Search")).el);        
+		});
+
 		Coveo.init(searchBody, {
 			Analytics: {
 				searchHub: searchConfig.searchHub,
@@ -15,12 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
 				searchBoxMobile
 			]
 		});
-		Coveo.$$(searchBody).on(Coveo.InitializationEvents.afterInitialization, (args) => {
-			searchBody.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
+
+	} else {
+		//searchBoxDesktop - label 
+		Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
+			searchBoxDesktop.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
 				className: 'coveo-search-button-label'
 			}, Coveo.l("Search")).el);
 		});
-	} else {
+
 		Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
 			Analytics: {
 				searchHub: searchConfig.searchHub,
@@ -33,11 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
-		searchBoxDesktop.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
-			className: 'coveo-search-button-label'
-		}, Coveo.l("Search")).el);
-	});
 })
 
 $(document).on("click", '.magic-box-input', function(e){
