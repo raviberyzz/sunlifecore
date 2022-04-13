@@ -1762,7 +1762,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
     	  altLanguageLinks.put(
-  	            pageLocale.substring(0, 2),
+    			  pageLocale.substring(0, pageLocale.length()-3),
   	            siteDomain + configService.getPageRelativeUrl(pagePath));
         
 	        if(pageAltLanguageLinks.size()==1) {
@@ -1879,7 +1879,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
                 .toLowerCase(Locale.ROOT),
         sourceSiteDomain + sourceSiteUrl);*/
     altLanguageLinks.put(
-            sourcePageLocale.substring(0, 2),
+    		sourcePageLocale.substring(0, sourcePageLocale.length()-3),
             sourceSiteDomain + sourceSiteUrl);
   }
 
@@ -1917,7 +1917,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             altSiteDomain + altSiteUrl);*/
         altLanguageLinks.put(
-                altLang.substring(0, 2),
+                altLang.substring(0, altLang.length()-3),
                 altSiteDomain + altSiteUrl);
         
     	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
@@ -1926,7 +1926,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
                         + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
                         altUrl);*/
         	altLanguageLinks.put(
-                    altLang.substring(0, 2),
+                    altLang.substring(0, altLang.length()-3),
                         altUrl);
         	if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
         			isAltLangSameAsCurPgLocale=true;
@@ -1970,7 +1970,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
         altLanguageLinks.put(
-                pageLocale.substring(0, 2),
+                pageLocale.substring(0, pageLocale.length()-3),
                 siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
