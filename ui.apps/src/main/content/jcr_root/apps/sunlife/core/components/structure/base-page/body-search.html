@@ -15,7 +15,7 @@
         //Configure a search endpoint.
         Coveo.SearchEndpoint.configureCloudV2Endpoint('', searchConfig.token, searchConfig.restUri);
 
-        //Coveo UA - TODO
+        //Coveo UA
         coveoua("init", searchConfig.token);
         coveoua("send", "pageview", {
             contentIdKey: "url",
