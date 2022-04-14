@@ -84,7 +84,16 @@
                                             </items>
                                         </field>
                                     </alt-langague>
-                                    <analyticsScriptPath
+                                    <hrefLang
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldDescription="Hreflang modification needed?"
+                                        fieldLabel="Modify HREF-LANG?"
+                                        name="./hrefLang"
+                                        text="Modify HREF-LANG?"
+                                        value="{Boolean}true"/>
+									<analyticsScriptPath
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Analytics synchronous script path"
