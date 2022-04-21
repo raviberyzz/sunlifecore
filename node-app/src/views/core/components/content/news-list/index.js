@@ -10,5 +10,10 @@ $(document).ready(function () {
 		}
     });
    }
-	
+	//Specific for News List Component Tab on Enter Key
+  $('.news-list .tabs-wrapper.news ol li').keyup(function (event) {
+	if (event.keyCode == 13) {
+		window.location.href = $(this).children("a").attr("href");
+	}
+  });
 });

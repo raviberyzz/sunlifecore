@@ -13,10 +13,10 @@
 <!-- Releases -->
 <sly data-sly-test = "${newsModel.newsType == '2'}">
     <div class="tabs tabs-wrapper news">
-        <div class="cmp-tabs" data-cmp-is="tabs" role="tablist">
-            <ol class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}">
-                <li role="tab" class="${yearsToShow == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" aria-selected="${yearsToShow == newsModel.activeYear ? 'true': 'false'}" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
-                    <a tabindex="${yearsToShow == newsModel.activeYear ? '0': '-1'}" x-cq-linkchecker="skip" href="${newsModel.relativeURL}${yearsToShow}/">
+        <div class="cmp-tabs" data-cmp-is="tabs" >
+            <ol class="cmp-tabs__tablist" id="news-listing-tab" data-sly-list.yearsToShow="${newsModel.yearsToShow}" role="tablist">
+                <li tabindex="${yearsToShow == newsModel.activeYear ? '0': '-1'}" role="tab" class="${yearsToShow == newsModel.activeYear ? 'cmp-tabs__tab cmp-tabs__tab--active' : 'cmp-tabs__tab'}" aria-selected="${yearsToShow == newsModel.activeYear ? 'true': 'false'}" id="${yearsToShow}-tab" aria-controls="${yearsToShow}tab-content" data-cmp-hook-tabs="tab" data-toggle="reload">
+                    <a tabindex="-1" x-cq-linkchecker="skip" href="${newsModel.relativeURL}${yearsToShow}/">
                     <span class="slf-tab-title">${yearsToShow}</span>
                     </a>
                 </li>
