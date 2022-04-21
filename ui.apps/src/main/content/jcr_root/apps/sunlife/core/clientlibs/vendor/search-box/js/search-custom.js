@@ -10,6 +10,17 @@ $(document).on("click", '.magic-box-input', function (e) {
 	});
 });
 
+$(document).on("keydown", function (e) {
+	$('#search-box-desktop :input').on('keydown', function (e) {
+		if (e.key === 'Enter' || e.keyCode === 13) {
+			if ($('#sun-search').hasClass('in')) {
+				$('#sun-search').removeClass('in');
+				$("#search-btn").attr('aria-expanded', 'false');
+			}
+		}
+	});
+});
+
 $(document).on("click", '.magic-box-input', function (e) {
 	$('#search-box-desktop .CoveoSearchButton.coveo-accessible-button').on('click', function (e) {
 		if ($('#sun-search').hasClass('in')) {
@@ -52,9 +63,4 @@ $(document).on("keyup", '.search-icon-container', function (e) {
 
 $(document).on("click", '.search-icon-container', function (e) {
 	$("#search-box-desktop input").focus();
-});
-
-$('#search-box-desktop').on('click', '.CoveoSearchButton', function (e) {
-	var desktop_search_input = $('#search-box-desktop .CoveoSearchButton').parent().children().find('input').val();
-	utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "search module-search", "ev_data_one": desktop_search_input });
 });

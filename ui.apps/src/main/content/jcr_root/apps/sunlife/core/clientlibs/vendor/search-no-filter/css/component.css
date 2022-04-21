@@ -120,5 +120,8 @@
 }
 
 #search .coveo-search-section {
-	margin: 0px auto 47px;
+	margin: 0px auto 10px;
+}
+.coveo-summary-section {
+	margin-bottom: 10px !important;
 }
