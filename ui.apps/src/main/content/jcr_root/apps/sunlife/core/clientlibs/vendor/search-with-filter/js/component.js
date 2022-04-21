@@ -1,4 +1,3 @@
-/*search-with-filter/component.js*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("coveo-search-ui"), require("underscore"));
@@ -450,12 +449,6 @@ var SunlifeSearch = /** @class */ (function (_super) {
         _this.options = options;
         _this.bindings = bindings;
         _this.options = coveo_search_ui_1.ComponentOptions.initComponentOptions(element, SunlifeSearch_1, options);
-        SunlifeSearch_1.languageMap.set('fr', 'French');
-        SunlifeSearch_1.languageMap.set('en', 'English');
-        SunlifeSearch_1.languageMap.set('zh-cn', 'Chinese');
-        SunlifeSearch_1.languageMap.set('zh-tw', 'Chinese');
-        SunlifeSearch_1.languageMap.set('id', 'Indionesian');
-        SunlifeSearch_1.languageMap.set('vi', 'Vietnamese');
         _this.bind.onRootElement(coveo_search_ui_1.QueryEvents.buildingQuery, function (args) { return _this.shouldResetTab(args); });
         _this.bind.onRootElement(coveo_search_ui_1.QueryEvents.querySuccess, function (args) { return _this.updateQuery(args); });
         return _this;
@@ -464,21 +457,18 @@ var SunlifeSearch = /** @class */ (function (_super) {
     SunlifeSearch.prototype.shouldResetTab = function (args) {
         var query = Coveo.state(this.element, "q");
         if (SunlifeSearch_1.previousQuery !== null && SunlifeSearch_1.previousQuery !== query) {
-            console.log('query changed, change tab');
             Coveo.state(this.element, {
                 "t": "All"
             });
         }
     };
     SunlifeSearch.prototype.updateQuery = function (args) {
-        console.log('update query object');
         SunlifeSearch_1.previousQuery = Coveo.state(this.element, "q");
     };
     var SunlifeSearch_1;
     SunlifeSearch.ID = 'SunlifeSearch';
     SunlifeSearch.options = {};
     SunlifeSearch.previousQuery = null;
-    SunlifeSearch.languageMap = new Map();
     SunlifeSearch = SunlifeSearch_1 = __decorate([
         turbo_core_1.lazyComponent
     ], SunlifeSearch);

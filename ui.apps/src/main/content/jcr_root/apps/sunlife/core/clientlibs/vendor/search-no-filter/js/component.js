@@ -1,4 +1,3 @@
-/*search-no-filter/component.js*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("coveo-search-ui"));
