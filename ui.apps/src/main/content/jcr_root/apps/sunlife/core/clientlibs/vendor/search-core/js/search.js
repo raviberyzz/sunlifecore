@@ -1,9 +1,16 @@
+/*search/search.js*/
 document.addEventListener('DOMContentLoaded', function () {
 	//Search body label
 	const searchBody = document.querySelector('#search');
 	const searchBoxDesktop = document.querySelector('#search-box-desktop');
 	const searchBoxMobile = document.querySelector('#search-box-mobile');
 
+	const userContext = {
+			'userlocale': document.querySelector("meta[property='og:locale']").getAttribute("content"),
+			'userlanguage': Globalize.culture().englishName.replace(/\s(.*)/g, '') 
+		};
+
+	
 	// Initialize a Searchbox component. When in the main search page, this is done externally.
 	if (searchBody) {
 
@@ -12,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			searchBody.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
 				className: 'coveo-search-button-label'
 			}, Coveo.l("Search")).el);
+			
 			//searchBoxDesktop - label 
 			searchBoxDesktop.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
 				className: 'coveo-search-button-label'
@@ -28,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			]
 		});
 
+		Coveo.$$( searchBody ).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
+			args.queryBuilder.addContext(userContext);
+		});
 	} else {
 		//searchBoxDesktop - label 
 		Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
@@ -47,39 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			},
 		});
 	}
+	Coveo.$$( searchBoxDesktop ).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
+		args.queryBuilder.addContext(userContext);
+	});
+	Coveo.$$( searchBoxMobile ).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
+		args.queryBuilder.addContext(userContext);
+	});
 
 })
-
-$(document).on("click", '.magic-box-input', function(e){
-	$('#search-box-desktop :input').on('keydown', function (e) {
-	  if (e.key === 'Enter' || e.keyCode === 13) {
-		  if ($('#sun-search').hasClass('in')) {
-					 $('#sun-search').removeClass('in');
-					 $("#search-btn").attr('aria-expanded', 'false');
-				 }
-	   }
-   });
-});
- 
-$(document).on("click", '.magic-box-input', function(e){  
-	   $('#search-box-desktop .CoveoSearchButton.coveo-accessible-button').on('click', function(e){
-		   if ($('#sun-search').hasClass('in')) {
-					 $('#sun-search').removeClass('in');
-					 $("#search-btn").attr('aria-expanded', 'false');
-				 }
-	   });
-});
-
-$(document).on("click", '.magic-box-input', function(e){  
-   $('#search-box-mobile :input').on('keydown', function (e) {
-	   if (e.key === 'Enter' || e.keyCode === 13) {
-		 $('.hamburger-menu-wrapper').removeClass('active').addClass('inactive');
-			   $('.offcanvas-overlay').removeClass('active');
-			   $('.container').css({ 'margin-left': '0px' });
-			   $('body').removeClass('overflow-hidden');
-			   $('.slf-mobile-header-wrapper').css({ 'position': 'fixed' });
-			   $('#hamburgerMenu button').attr("aria-expanded", "false");
-			   $('#hamburgerMenu button').focus();
-	   }
-   });
-});
