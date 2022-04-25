@@ -362,12 +362,12 @@
                                                                 granite:hide="${cqDesign.disableFalse}"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="No"
-                                                                value="searchfalse"/>
+                                                                value="false"/>
                                                             <true
                                                                 granite:hide="${cqDesign.disableTrue}"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Yes"
-                                                                value="searchtrue"/>
+                                                                value="true"/>
                                                         </items>
                                                     </search>
                                                     <searchtrue

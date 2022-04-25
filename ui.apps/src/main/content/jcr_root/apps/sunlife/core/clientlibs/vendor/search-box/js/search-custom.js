@@ -11,11 +11,13 @@ $(document).on("click", '.magic-box-input', function (e) {
 });
 
 $(document).on("keydown", function (e) {
-	$('#search-box-desktop :input').on('keydown', function (e) {
+	$('#search-box-desktop :input, #search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
 		if (e.key === 'Enter' || e.keyCode === 13) {
 			if ($('#sun-search').hasClass('in')) {
-				$('#sun-search').removeClass('in');
-				$("#search-btn").attr('aria-expanded', 'false');
+				setTimeout(function () {
+					$('#sun-search').removeClass('in');
+					$("#search-btn").attr('aria-expanded', 'false');
+				}, 500)
 			}
 		}
 	});
