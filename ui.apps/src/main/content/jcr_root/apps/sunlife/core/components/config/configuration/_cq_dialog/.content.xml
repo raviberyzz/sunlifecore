@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Site Configuration"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -165,88 +165,6 @@
                                         name="./nonResponsive"
                                         text="Is non responsive site?"
                                         value="{Boolean}true"/> 
-                                    <coveoSearch
-                                        jcr:primaryType="nt:unstructured"
-                                        jcr:title="Coveo Search"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                                        margin="{Boolean}false">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <column
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <search
-                                                        granite:class="cq-dialog-dropdown-showhide"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldLabel="Do you need Coveo Search for the site"
-                                                        name="./listFromSearch">
-                                                        <granite:data
-                                                            jcr:primaryType="nt:unstructured"
-                                                            cq-dialog-dropdown-showhide-target=".list-option-listFromSearch-showhide-target"/>
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <false
-                                                                granite:hide="${cqDesign.disableFalse}"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="No"
-                                                                value="searchfalse"/>
-                                                            <true
-                                                                granite:hide="${cqDesign.disableTrue}"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Yes"
-                                                                value="searchtrue"/>
-                                                        </items>
-                                                    </search>
-                                                    <searchtrue
-                                                        granite:class="hide list-option-listFromSearch-showhide-target foundation-layout-util-vmargin"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <granite:data
-                                                            jcr:primaryType="nt:unstructured"
-                                                            showhidetargetvalue="searchtrue"/>
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <column
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <searchToken
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Search Token"
-                                                                        name="./searchToken"/>
-                                                                    <searchUrl
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        fieldLabel="Search URL"
-                                                                        name="./searchUrl"/>
-                                                                    <orgId
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Search Organization Id"
-                                                                        name="./orgId"/>
-                                                                    <restUri
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Search Rest URI"
-                                                                        name="./restUri"/>
-                                                                    <searchHub
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Search Hub"
-                                                                        name="./searchHub"/>
-                                                                    <siteLocale
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Site Locale"
-                                                                        name="./siteLocale"/>
-                                                                </items>
-                                                            </column>
-                                                        </items>
-                                                    </searchtrue>
-                                                </items>
-                                            </column>
-                                        </items>
-                                    </coveoSearch>
                                 </items>
                             </section-general>
                             <section-article
@@ -414,6 +332,96 @@
                                         name="./mfaEncryption"/>   
                                 </items>
                             </signin-configuration>
+                            <coveo-search
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Coveo Search Configuration"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <coveoSearch
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Coveo Search"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        fieldDescription="Coveo Search"
+                                        margin="{Boolean}false">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <search
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Do you need Coveo Search for the site"
+                                                        name="./coveoSearchEnabled">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".list-option-listFromSearch-showhide-target"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <false
+                                                                granite:hide="${cqDesign.disableFalse}"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="No"
+                                                                value="false"/>
+                                                            <true
+                                                                granite:hide="${cqDesign.disableTrue}"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Yes"
+                                                                value="true"/>
+                                                        </items>
+                                                    </search>
+                                                    <searchtrue
+                                                        granite:class="hide list-option-listFromSearch-showhide-target foundation-layout-util-vmargin"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="true"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <searchToken
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Token"
+                                                                        name="./searchToken"/>
+                                                                    <searchUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldLabel="Search URL"
+                                                                        name="./searchUrl"/>
+                                                                    <orgId
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Organization Id"
+                                                                        name="./orgId"/>
+                                                                    <restUri
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Rest URI"
+                                                                        name="./restUri"/>
+                                                                    <searchHub
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Hub"
+                                                                        name="./searchHub"/>
+                                                                    <siteLocale
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Site Locale"
+                                                                        name="./siteLocale"/>
+                                                                </items>
+                                                            </column>
+                                                        </items>
+                                                    </searchtrue>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </coveoSearch>
+                                </items>
+                            </coveo-search>
                         </items>
                     </general>
                 </items>

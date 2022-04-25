@@ -383,8 +383,8 @@ public class BasePageModel {
   /** The disableContextHubTags. */
   private String disableContextHubTags;
   
-  /** The coveoSeachEnabled. */
-  private String coveoSeachEnabled;
+  /** The coveoSearchEnabled. */
+  private String coveoSearchEnabled;
 
   /** The searchToken. */
   private String searchToken;
@@ -404,12 +404,12 @@ public class BasePageModel {
   /** The site locale. */
   private String siteLocale;
   
-  public String getCoveoSeachEnabled() {
-	return coveoSeachEnabled;
+  public String getCoveoSearchEnabled() {
+	return coveoSearchEnabled;
 }
 
-public void setCoveoSeachEnabled(String coveoSeachEnabled) {
-	this.coveoSeachEnabled = coveoSeachEnabled;
+public void setCoveoSearchEnabled(String coveoSearchEnabled) {
+	this.coveoSearchEnabled = coveoSearchEnabled;
 }
 
   public String getSearchToken() {
@@ -1137,7 +1137,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
     disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
     nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
-    coveoSeachEnabled = configService.getConfigValues("coveoSeachEnabled", pagePath);
+    coveoSearchEnabled = configService.getConfigValues("coveoSearchEnabled", pagePath);
     searchToken = configService.getConfigValues("searchToken", pagePath);
     searchUrl = configService.getConfigValues("searchUrl", pagePath);
     orgId = configService.getConfigValues("orgId", pagePath);
