@@ -376,7 +376,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                                         <granite:data
                                                             jcr:primaryType="nt:unstructured"
-                                                            showhidetargetvalue="searchtrue"/>
+                                                            showhidetargetvalue="true"/>
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <column
                                                                 jcr:primaryType="nt:unstructured"
