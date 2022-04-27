@@ -7,6 +7,29 @@
 	padding: 0 2px;
 }
 
+.CoveoTextBlock {
+	background-color: #fff;
+}
+
+.CoveoTextBlock .text-block.header {
+	font-weight: bold;
+}
+
+.CoveoTextBlock .text-block.header,
+.CoveoTextBlock .text-block.text {
+	white-space: normal;
+}
+
+@media screen and (max-device-width: 768px) {
+
+	.text-block.header,
+	.text-block.text {
+		padding: 5px 15px;
+		margin: 0px;
+	}
+}
+
+
 .CoveoSearchInterface.coveo-waiting-for-query .coveo-search-section {
 	margin: 54px auto 47px;
 }
@@ -26,7 +49,7 @@
 
 .CoveoTab {
 	text-transform: none !important;
-	color: #4a7295 !important;
+	color: #004C6C !important;
 	font-weight: 700 !important;
 	padding: 13px 40px 0px;
 	font-size: 16px !important;
@@ -46,7 +69,7 @@
 }
 
 .CoveoTab.coveo-accessible-button p {
-	color: #4a7295 !important;
+	color: #004C6C !important;
 }
 
 .CoveoTab.coveo-accessible-button a:hover,
@@ -66,17 +89,25 @@
 	display: none !important;
 }
 
+.CoveoPager {
+	margin-bottom: 10px;
+}
+
+.coveo-results-per-page-text {
+	margin-right: 15px;
+}
+
 .coveo-pager-list-item.coveo-active.coveo-accessible-button,
 .coveo-results-per-page-list-item.coveo-active.coveo-accessible-button {
 	border: 0px;
-	background: #eaab00;
+	background: #FFCB05;
 }
 
 .coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
 .coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text,
 .coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
 .coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text {
-	color: #4a7295 !important;
+	color: #004C6C !important;
 	font-weight: 700;
 }
 
@@ -89,7 +120,7 @@
 .coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
 .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
-	color: #4a7295 !important;
+	color: #004C6C !important;
 	font-weight: 700;
 }
 
@@ -207,7 +238,7 @@
 
 	.P1Ycoe {
 		position: absolute;
-		width: 3%;
+		width: 10%;
 		height: 100%;
 		right: 0;
 		top: 0;
