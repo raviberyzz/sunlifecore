@@ -22,6 +22,12 @@
 #search-box-mobile .CoveoSearchbox .magic-box .magic-box-clear-svg{
     width: 12px;
 }
+#search-box-mobile{
+    min-width:0px;
+}
+#search-box-mobile .coveo-search-section {
+    margin: 0px auto 0px;
+}
 .CoveoSearchButton:focus {
     color:white !important; 
 }
