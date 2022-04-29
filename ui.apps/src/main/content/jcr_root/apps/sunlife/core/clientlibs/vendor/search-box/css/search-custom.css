@@ -25,4 +25,23 @@
 .CoveoSearchButton:focus {
     color:white !important; 
 }
-   
+.CoveoSearchButton {
+  color: white;
+}
+.CoveoResultLink:hover,
+.CoveoResultLink:hover a,
+.CoveoResultLink:focus,
+.CoveoResultLink:focus a,
+a.CoveoResultLink:hover,
+a.CoveoResultLink:hover a,
+a.CoveoResultLink:focus,
+a.CoveoResultLink:focus a,
+.CoveoResult a.CoveoResultLink:hover,
+.CoveoResult a.CoveoResultLink:hover a,
+.CoveoResult a.CoveoResultLink:focus,
+.CoveoResult a.CoveoResultLink:focus a {
+  text-decoration: underline;
+}
+.coveo-pager-next-icon-svg, .CoveoSearchbox .magic-box .magic-box-clear-svg{
+	color:#1d4f76
+}

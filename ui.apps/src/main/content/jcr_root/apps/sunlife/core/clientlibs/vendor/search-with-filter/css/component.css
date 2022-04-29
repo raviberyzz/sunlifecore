@@ -97,16 +97,16 @@
 	margin-right: 15px;
 }
 
-.coveo-pager-list-item.coveo-active.coveo-accessible-button,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button {
+.coveo-pager-list-item.coveo-active,
+.coveo-results-per-page-list-item.coveo-active {
 	border: 0px;
-	background: #FFCB05;
+	background: #FFCB05 !important;
 }
 
-.coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text {
+.coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
+.coveo-results-per-page-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-text {
 	color: #004C6C !important;
 	font-weight: 700;
 }
