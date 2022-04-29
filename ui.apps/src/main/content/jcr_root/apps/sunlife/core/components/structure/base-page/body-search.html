@@ -1,8 +1,8 @@
 <sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
 <sly data-sly-test="${baseModel.coveoSearchEnabled == 'true' @context='unsafe'}">
     <form name="search-url" action="${baseModel.searchUrl @ extension = 'html'}" />
-    <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/CoveoJsSearch.Lazy.js"></script>
-    <script src="https://static.cloud.coveo.com/searchui/v2.10085/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.js"></script>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
     <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
     <script type="text/javascript">
         var searchConfig = {
