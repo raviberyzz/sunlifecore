@@ -1,39 +1,45 @@
 /*search-custom*/
 #search-box-mobile .CoveoSearchbox .magic-box {
-    border:none;
+    border: none;
 }
+
 #search-box-mobile .magic-box .magic-box-input {
-    background:none;
+    background: none;
 }
+
 #search-box-mobile .CoveoSearchbox .magic-box .magic-box-input>input {
     position: absolute;
     margin-left: 25px;
     padding: 2px 0 0 0;
     height: 26px !important;
-    width: 216px;
+    width: 185px;
     line-height: 26px;
     outline: 0;
     border-bottom: 1px solid #d7d7d7;
 }
+
 #search-box-mobile .magic-box .magic-box-clear {
     line-height: 25px;
-    background:none;
+    background: none;
 }
-#search-box-mobile .CoveoSearchbox .magic-box .magic-box-clear-svg{
+
+#search-box-mobile .CoveoSearchbox .magic-box .magic-box-clear-svg {
     width: 12px;
 }
-#search-box-mobile{
-    min-width:0px;
+
+#search-box-mobile {
+    min-width: 0px;
 }
+
 #search-box-mobile .coveo-search-section {
     margin: 0px auto 0px;
 }
+
+.CoveoSearchButton,
 .CoveoSearchButton:focus {
-    color:white !important; 
+    color: white;
 }
-.CoveoSearchButton {
-  color: white;
-}
+
 .CoveoResultLink:hover,
 .CoveoResultLink:hover a,
 .CoveoResultLink:focus,
@@ -46,8 +52,42 @@ a.CoveoResultLink:focus a,
 .CoveoResult a.CoveoResultLink:hover a,
 .CoveoResult a.CoveoResultLink:focus,
 .CoveoResult a.CoveoResultLink:focus a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
-.coveo-pager-next-icon-svg, .CoveoSearchbox .magic-box .magic-box-clear-svg{
-	color:#1d4f76
+
+.coveo-pager-next-icon-svg,
+.coveo-pager-previous-icon-svg,
+.CoveoSearchbox .magic-box .magic-box-clear-svg {
+    color: #1d4f76
+}
+
+.source-content-page #search .CoveoSearchButton,
+.source-content-page #search .CoveoSearchButton:focus,
+.source-content-page #search-box-desktop .CoveoSearchButton,
+.source-content-page #search-box-desktop .CoveoSearchButton:focus,
+.source-home-page #search-box-desktop .CoveoSearchButton,
+.source-home-page #search-box-desktop .CoveoSearchButton:focus {
+    background-color: #FFCB05;
+    color: #004C6C;
+}
+
+@media (min-width: 768px) {
+
+    .source-content-page #search .CoveoSearchButton:hover,
+    .source-content-page #search-box-desktop .CoveoSearchButton:hover,
+    .source-home-page #search-box-desktop .CoveoSearchButton:hover {
+        background-color: #4A7283;
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+
+.coveo-query-summary-cancel-last {
+    color: #0059b3;
+    cursor: pointer;
+}
+
+.coveo-query-summary-cancel-last:hover,
+.coveo-query-summary-cancel-last:focus {
+    text-decoration: underline;
 }
