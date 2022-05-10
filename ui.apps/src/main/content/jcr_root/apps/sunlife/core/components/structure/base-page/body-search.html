@@ -5,6 +5,7 @@
     <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
     <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
     <script type="text/javascript">
+        var coveoSearchlanguage = "${baseModel.searchLanguage @context='unsafe'}"
         var searchConfig = {
             orgId: "${baseModel.orgId @context='unsafe'}",
             token: "${baseModel.searchToken @context='unsafe'}",

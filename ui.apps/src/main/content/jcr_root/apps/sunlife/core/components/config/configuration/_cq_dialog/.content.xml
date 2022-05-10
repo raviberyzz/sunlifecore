@@ -410,8 +410,13 @@
                                                                     <siteLocale
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Site Locale"
+                                                                        fieldLabel="Culture Code"
                                                                         name="./siteLocale"/>
+                                                                    <searchLanguage
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Language"
+                                                                        name="./searchLanguage"/>    
                                                                 </items>
                                                             </column>
                                                         </items>

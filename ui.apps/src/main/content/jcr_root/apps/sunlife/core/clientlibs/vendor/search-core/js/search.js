@@ -5,9 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	const searchBoxDesktop = document.querySelector('#search-box-desktop');
 	const searchBoxMobile = document.querySelector('#search-box-mobile');
 
+	if (typeof coveoSearchlanguage === 'undefined') {
+		coveoSearchlanguage = Globalize.culture().englishName.replace(/\s(.*)/g, '');
+	}
+
 	const userContext = {
 		'userlocale': document.querySelector("meta[property='og:locale']").getAttribute("content"),
-		'userlanguage': Globalize.culture().englishName.replace(/\s(.*)/g, '')
+		'userlanguage': coveoSearchlanguage
 	};
 
 
@@ -37,6 +41,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		Coveo.$$(searchBody).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
 			args.queryBuilder.addContext(userContext);
+		});
+		Coveo.Dom.useNativeJavaScriptEvents = true;
+		Coveo.$$(searchBody).on(Coveo.AnalyticsEvents.analyticsEventReady, function (event) {
+			var analyticsEvent = event.detail.coveoAnalyticsEventData.actionCause;
+			var filter = event.detail.coveoAnalyticsEventData.originLevel2;
+			var numberOfResults = event.detail.coveoAnalyticsEventData.numberOfResults;
+			var queryText = event.detail.coveoAnalyticsEventData.queryText;
+			if (filter == "default") filter = "all";
+			if (analyticsEvent == "searchboxSubmit" || analyticsEvent == "searchFromLink") {
+				utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "search module-search", "ev_data_one": event.detail.coveoAnalyticsEventData.queryText});
+				utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_client input", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter,"page_search_term":queryText });
+			}
+			else if (analyticsEvent == "interfaceChange")
+				utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_filter", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter,"page_search_term":queryText });
+			else if (analyticsEvent == "omniboxAnalytics")
+				utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_typeahead_text", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter,"page_search_term":queryText });
 		});
 	} else {
 		//searchBoxDesktop - label 
