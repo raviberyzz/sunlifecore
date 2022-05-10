@@ -403,6 +403,9 @@ public class BasePageModel {
 
   /** The site locale. */
   private String siteLocale;
+
+  /** The search language. */
+  private String searchLanguage;
   
   public String getCoveoSearchEnabled() {
 	return coveoSearchEnabled;
@@ -460,6 +463,13 @@ public void setSiteLocale(String siteLocale) {
 	this.siteLocale = siteLocale;
 }
 
+  public String getSearchLanguage() {
+	return searchLanguage;
+}
+
+public void setSearchLanguage(String searchLanguage) {
+	this.searchLanguage = searchLanguage;
+}
 
   public String getDisableContextHubTags() {
 	return disableContextHubTags;
@@ -1144,6 +1154,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     restUri = configService.getConfigValues("restUri", pagePath);
     searchHub = configService.getConfigValues("searchHub", pagePath);
     siteLocale = configService.getConfigValues("siteLocale", pagePath);
+    searchLanguage = configService.getConfigValues("searchLanguage", pagePath);
     
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));

@@ -296,4 +296,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getSiteLocale();
+
+  /**
+   * Gets the searchLanguage param.
+   *
+   * @return the searchLanguage param
+   */
+  @ Inject
+  String getSearchLanguage();  
 }

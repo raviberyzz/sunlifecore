@@ -2,16 +2,16 @@
 	margin: 54px auto 47px;
 }
 
-.coveo-pager-list-item.coveo-active.coveo-accessible-button,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button {
+.coveo-pager-list-item.coveo-active,
+.coveo-results-per-page-list-item.coveo-active {
 	border: 0px;
-	background: #FFCB05;
+	background: #FFCB05 !important;
 }
 
-.coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-results-per-page-list-item.coveo-active.coveo-accessible-button .coveo-results-per-page-list-text {
+.coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
+.coveo-results-per-page-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-text {
 	color: #004C6C !important;
 	font-weight: 700;
 }
@@ -19,12 +19,14 @@
 .coveo-pager-list-item,
 .coveo-results-per-page-list-item {
 	border: 0px;
+	padding: 0px 2px;
 }
 
 .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
 .coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
 .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+	display: inline-block;
 	color: #004C6C !important;
 	font-weight: 700;
 }
@@ -125,4 +127,12 @@
 
 .coveo-summary-section {
 	margin-bottom: 10px !important;
+}
+
+.coveo-pager-list-item .coveo-pager-list-item-text {
+	padding: 4px 6px;
+}
+
+.coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
+	padding: 4px 2px;
 }
