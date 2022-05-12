@@ -47,6 +47,15 @@
 	text-align: justify;
 }
 
+@media (min-width: 800px) {
+	#search-result-filters .coveo-tab-section {
+		display: flex;
+		/*flex-wrap: wrap;*/
+		align-content: stretch;
+		min-height: 52px;
+	}
+}
+
 .CoveoTab {
 	text-transform: none !important;
 	color: #004C6C !important;
@@ -58,6 +67,19 @@
 
 .CoveoTab.coveo-accessible-button {
 	border: 1px solid rgba(153, 153, 153, 0.5);
+	text-align: center;
+}
+
+@media (min-width: 800px) {
+	.CoveoTab.coveo-accessible-button {
+		max-width: 300px;
+		display: flex;
+		min-height: 52px;
+		height: unset !important;
+		align-self: stretch;
+		text-align: center;
+		padding: 13px 40px;
+	}
 }
 
 .CoveoTab.coveo-accessible-button.coveo-selected {
@@ -68,8 +90,21 @@
 	border-bottom: 1px solid rgba(153, 153, 153, 0.5);
 }
 
+@media (min-width: 800px) {
+	.CoveoTab.coveo-accessible-button:hover {
+		padding-bottom: 13px;
+	}
+}
+
 .CoveoTab.coveo-accessible-button p {
 	color: #004C6C !important;
+}
+
+@media (min-width: 800px) {
+	.CoveoTab.coveo-accessible-button p {
+		display: flex;
+		align-items: center;
+	}
 }
 
 .CoveoTab.coveo-accessible-button a:hover,
