@@ -68,10 +68,12 @@
 .CoveoTab.coveo-accessible-button {
 	border: 1px solid rgba(153, 153, 153, 0.5);
 	text-align: center;
+	white-space: nowrap;
 }
 
 @media (min-width: 800px) {
 	.CoveoTab.coveo-accessible-button {
+		white-space: initial;
 		max-width: 300px;
 		display: flex;
 		min-height: 52px;
