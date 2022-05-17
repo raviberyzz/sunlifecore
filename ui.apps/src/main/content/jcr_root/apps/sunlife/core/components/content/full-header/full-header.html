@@ -81,18 +81,23 @@
         <sly data-sly-test="${listFromRegion == 'regiontrue'}"
           data-sly-resource="${ @resourceType='sunlife/core/components/content/experiencefragment'}" />
       </div>
-
+      <!-- Desktop skip links start-->
+      <div class="skip-to-wrapper">
+        <sly data-sly-test="${listFromSignin == 'signintrue'}">
+          <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}"
+            class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToSignInLabel}</a>
+        </sly>
+        <a href="#main-content"
+          class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToMainContentLabel}</a>
+        <a href="#mainfooter"
+          class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToFooterLabel}</a>
+      </div>
+      <!-- Desktop skip links end-->
       <div class="col-xs-12 yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content ${isSignInHeader == 'yes' ? 'header-signIn' : ''} ">
 
         <div class="col-xs-12 desktop-utility-nav">
-          <sly data-sly-test="${listFromSignin == 'signintrue'}" >
-            <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToSignInLabel}</a>	
-          </sly>
-		  <a href="#main-content" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToMainContentLabel}</a>
-          <a href="#mainfooter" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToFooterLabel}</a>
-
           <!-- Sign In Header Changes Starts -->
 		  <sly data-sly-test="${isSignInHeader == 'yes'}" >
 			<div class="col-md-6 col-lg-6">
@@ -264,6 +269,17 @@
       <div class="slf-mobile-header-wrapper">
         <!-- sign-in modal start -->
         <!-- sign-in modal end-->
+        <!-- Mobile skip links start-->
+        <div class="skip-to-wrapper">
+          <sly data-sly-test="${listFromSignin == 'signintrue'}">
+            <a href="#SignIn"
+              class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToSignInLabel}</a>
+          </sly>
+          <a href="#main-content" class="skip-to sr-only kbfocus sr-only-focusable">
+            ${listModel.skipToMainContentLabel}</a>
+          <a href="#mainfooter" class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToFooterLabel}</a>
+        </div>
+        <!-- Mobile skip links end-->
         <div class="col-xs-12 mobile-header-navbar  white-shade">
           <div class="hamburger-menu" id="hamburgerMenu">
             <button class="btn navbar-toggle pull-left" type="button" aria-expanded="false">
