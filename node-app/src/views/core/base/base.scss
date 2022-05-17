@@ -790,9 +790,16 @@ a.skip-main:focus, a.skip-main:active {
     vertical-align: super;
 }
 
-/* Position the skip to links to the top left corner of the page */
-.kbfocus {
-	position: fixed !important;
-	top: 0px;
-	left: 0px;
+//Skip to Links
+.skip-to-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white-shade;
+
+    .skip-to:focus {
+        position: relative !important;
+        height: 28px;
+        margin: 8px 0px;
+    }
 }
