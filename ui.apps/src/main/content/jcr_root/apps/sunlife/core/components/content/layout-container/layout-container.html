@@ -18,12 +18,12 @@
             </div>
         </sly>
         <sly data-sly-test="${layout.type == 'modal-popup'}">
-            <div class="${wcmmode.edit ? '' : 'modal fade popup-modal-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}" data-section="${layout.analyticsId ? layout.analyticsId : 'pop-up-modal'}"> 
+            <div class="${wcmmode.edit ? '' : 'modal fade popup-modal-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}" aria-labelledby="${layout.modalID}-title" data-section="${layout.analyticsId ? layout.analyticsId : 'pop-up-modal'}"> 
                 <!-- Modal content-->
                 <div class="${wcmmode.edit ? '' : 'modal-content horizontal-middle-align'}">
                     <div class="modal-header">
                         <div class="modal-title">
-                            <h3 class="modal-heading" tabindex="0" data-sly-element="${layout.modalTitleLevel}">${layout.modalTitle}</h3>
+                            <h3 class="modal-heading" tabindex="0" data-sly-element="${layout.modalTitleLevel}" id="${layout.modalID}-title">${layout.modalTitle}</h3>
                             <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
                         </div>
                     </div>
