@@ -23,11 +23,11 @@
                 <div class="${wcmmode.edit ? '' : 'modal-content horizontal-middle-align'}">
                     <div class="modal-header">
                         <div class="modal-title">
-                            <h3 class="modal-heading" tabindex="0" data-sly-element="${layout.modalTitleLevel}" id="${layout.modalID}-title">${layout.modalTitle}</h3>
+                            <h3 class="modal-heading" data-sly-element="${layout.modalTitleLevel}" id="${layout.modalID}-title">${layout.modalTitle}</h3>
                             <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
                         </div>
                     </div>
-                    <div class="modal-body" tabindex="0">
+                    <div class="modal-body">
                         <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
                     </div>
                 </div>
