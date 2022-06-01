@@ -803,3 +803,8 @@ a.skip-main:focus, a.skip-main:active {
         margin: 8px 0px;
     }
 }
+
+//.clickable-tile = Source NewsTiles, dropdown-toggle - mega menu links
+a:focus:not([role=button]):not(.clickable-tile):not(.dropdown-toggle) {
+    outline-offset: 4px;
+}
