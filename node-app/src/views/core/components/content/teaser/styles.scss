@@ -786,6 +786,18 @@
             }
         }
     }
+	.show-mobile-image {
+        .left-image-position {
+            .left-item {
+                display: block !important;
+            }
+        }
+        .right-image-position {
+            .right-item {
+                display: block !important;
+            }
+        }
+    }
 }
 @media (min-width: $tab-screen-max) {
     .circle-220-desktop {
