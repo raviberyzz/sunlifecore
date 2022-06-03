@@ -1,5 +1,5 @@
 .CoveoTab.coveo-hidden {
-	display: none;
+	display: none !important;
 }
 
 .CoveoTab>span.tab-count {
@@ -319,4 +319,8 @@
 
 .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
 	padding: 4px 2px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results {
+	max-width: 100%
 }

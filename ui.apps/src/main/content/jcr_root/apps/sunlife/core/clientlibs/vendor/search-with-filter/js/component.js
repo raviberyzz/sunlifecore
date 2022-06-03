@@ -2566,6 +2566,9 @@ var TextBlock = /** @class */ (function (_super) {
     };
     TextBlock.prototype.handleQuerySuccess = function (data) {
         this.reset();
+        if (data.results.totalCount > 0) {
+            TextBlock_1.hasResults = true;
+        }
         if (this.options.constantlyVisible || TextBlock_1.hasResults) {
             this.build();
         }
