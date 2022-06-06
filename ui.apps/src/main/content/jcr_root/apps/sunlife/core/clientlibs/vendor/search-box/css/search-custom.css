@@ -91,3 +91,8 @@ a.CoveoResultLink:focus a,
 .coveo-query-summary-cancel-last:focus {
     text-decoration: underline;
 }
+
+.CoveoQuerySummary ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
