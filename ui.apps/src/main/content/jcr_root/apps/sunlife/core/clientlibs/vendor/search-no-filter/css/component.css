@@ -137,6 +137,6 @@
 	padding: 4px 2px;
 }
 
-.CoveoSearchInterface .coveo-results-column.coveo.no-results {
+.CoveoSearchInterface .coveo-results-column.coveo-no-results {
 	max-width: 100%
 }
