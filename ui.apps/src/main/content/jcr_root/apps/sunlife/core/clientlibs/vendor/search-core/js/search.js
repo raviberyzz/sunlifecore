@@ -46,6 +46,8 @@ function coveoSearch() {
 					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_filter", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter, "page_search_term": queryText });
 				else if (analyticsEvent == "omniboxAnalytics")
 					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_typeahead_text", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter, "page_search_term": queryText });
+				else if (analyticsEvent == "didyoumeanAutomatic")
+					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_autocorrected", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter, "page_search_term": queryText });
 			});
 			Coveo.$$(searchBody).on(Coveo.InitializationEvents.afterInitialization, (args) => {
 				//searchBody - label 
