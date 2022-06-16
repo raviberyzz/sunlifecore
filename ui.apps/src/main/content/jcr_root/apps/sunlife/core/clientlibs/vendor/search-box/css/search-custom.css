@@ -96,3 +96,7 @@ a.CoveoResultLink:focus a,
     list-style-type: disc;
     padding-left: 40px;
 }
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoTriggers {
+    text-align: left;
+}
