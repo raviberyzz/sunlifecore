@@ -1,35 +1,3 @@
-.CoveoTab.coveo-hidden {
-	display: none !important;
-}
-
-.CoveoTab>span.tab-count {
-	height: 100%;
-	padding: 0 2px;
-}
-
-.CoveoTextBlock {
-	background-color: #fff;
-}
-
-.CoveoTextBlock .text-block.header {
-	font-weight: bold;
-}
-
-.CoveoTextBlock .text-block.header,
-.CoveoTextBlock .text-block.text {
-	white-space: normal;
-}
-
-@media screen and (max-device-width: 768px) {
-
-	.text-block.header,
-	.text-block.text {
-		padding: 5px 15px;
-		margin: 0px;
-	}
-}
-
-
 .CoveoSearchInterface.coveo-waiting-for-query .coveo-search-section {
 	margin: 54px auto 47px;
 }
@@ -50,7 +18,6 @@
 @media (min-width: 800px) {
 	#search-result-filters .coveo-tab-section {
 		display: flex;
-		/*flex-wrap: wrap;*/
 		align-content: stretch;
 		min-height: 52px;
 	}
@@ -82,6 +49,10 @@
 		text-align: center;
 		padding: 13px 40px;
 	}
+}
+
+.CoveoTab.coveo-accessible-button.coveo-hidden {
+	display: none !important;
 }
 
 .CoveoTab.coveo-accessible-button.coveo-selected {
@@ -141,8 +112,8 @@
 }
 
 .coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
 .coveo-results-per-page-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
 .coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-text {
 	color: #004C6C !important;
 	font-weight: 700;
@@ -155,8 +126,8 @@
 }
 
 .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
 	display: inline-block;
 	color: #004C6C !important;
@@ -264,7 +235,7 @@
 	}
 
 	.P1Ycoe {
-		background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.301961), #fff);
+		background: linear-gradient(to right, #fff, #ffffff4d, #fff);
 		height: 40px;
 		position: absolute;
 		pointer-events: none;
@@ -282,7 +253,7 @@
 		right: 0;
 		top: 0;
 		pointer-events: none;
-		background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+		background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 100%);
 	}
 
 	.CoveoSearchButton.coveo-accessible-button {
@@ -322,5 +293,20 @@
 }
 
 .CoveoSearchInterface .coveo-results-column.coveo-no-results {
-	max-width: 100%
+	max-width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	margin-top: -30px;
+	padding: 10px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoTriggers {
+	margin-bottom: 15px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoResultList,
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoPager,
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoResultsPerPage {
+	height: 0;
+	margin: 0;
 }
