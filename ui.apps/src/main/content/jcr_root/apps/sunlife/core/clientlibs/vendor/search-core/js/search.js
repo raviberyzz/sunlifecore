@@ -37,9 +37,12 @@ function coveoSearch() {
 				var filter = event.detail.coveoAnalyticsEventData.originLevel2;
 				var numberOfResults = event.detail.coveoAnalyticsEventData.numberOfResults;
 				var queryText = event.detail.coveoAnalyticsEventData.queryText;
+				var pageUrl = event.detail.coveoAnalyticsEventData.originLevel3;
+				if(analyticsEvent != "searchFromLink" || pageUrl == "")
+				pageUrl = utag_data.page_canonical_url;
 				if (filter == "default") filter = "all";
 				if (analyticsEvent == "searchboxSubmit" || analyticsEvent == "searchFromLink") {
-					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "search module-search", "ev_data_one": event.detail.coveoAnalyticsEventData.queryText,"page_search_term": queryText });
+					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "search module-search", "ev_data_one": queryText,"page_search_term": queryText, "page_canonical_url": pageUrl});
 					utag.link({ "ev_type": "other", "ev_action": "clk", "ev_title": "onsite search_client input", "ev_data_one": "search_count=" + numberOfResults + ":search_filter=" + filter, "page_search_term": queryText });
 				}
 				else if (analyticsEvent == "interfaceChange")

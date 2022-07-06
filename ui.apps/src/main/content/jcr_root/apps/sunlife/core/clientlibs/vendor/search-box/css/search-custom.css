@@ -100,3 +100,19 @@ a.CoveoResultLink:focus a,
 .CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoTriggers {
     text-align: left;
 }
+
+.slgi-content-page #search-box-desktop .CoveoSearchButton:hover,
+.slgi-content-page #search .CoveoSearchButton:hover,
+.slgi-home-page #search-box-desktop .CoveoSearchButton:hover {
+    background-color: #4a7283;
+    color: #fff;
+    text-decoration: none
+}
+
+.slgi-content-page #search-box-desktop .CoveoSearchButton,
+.slgi-content-page #search .CoveoSearchButton,
+.slgi-home-page #search-box-desktop .CoveoSearchButton {
+    background-color: #fff;
+    color: #002d3d;
+    border: 2px solid #002d3d;
+}
