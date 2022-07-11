@@ -89,7 +89,7 @@ $(document).ready(function () {
         });
         // Mobile language and region bar analytics ends here
         // Sign In Module (Desktop Sign In button) analytics starts here
-        if (window.location.host.indexOf('www.sunlife.ca') > -1 && !window.location.pathname.startsWith('/sl/')) {
+        if ((window.location.host.indexOf('www.sunlife.ca') > -1 || window.location.host.indexOf('www.ca.sunlife') > -1) && !window.location.pathname.startsWith('/sl/')) {
 			$('a[href*="/signin/mysunlife/home.wca"], a[href*="/signin/masunlife/home.wca"]').click(function() {
 				var dataValue;
 				if ($(this).parents('.slf-header-wrapper').length) {
