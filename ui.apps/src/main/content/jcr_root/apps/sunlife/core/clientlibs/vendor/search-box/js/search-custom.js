@@ -47,14 +47,37 @@ $(document).on("click", '.magic-box-input', function (e) {
 });
 
 $(document).on("keydown", '.magic-box-input', function (e) {
-	$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
-		if (e.which == 9) {
-			if (!$(this).parents().hasClass("adv-search-bar-wrapper")) {
-				e.preventDefault();
-				$('#sun-search .close-div a').focus();
+	if (utag_data.page_canonical_url.includes('uk.ca.sunlife') || utag_data.page_canonical_url.includes('sloc.co.uk')) {
+		$('.global-nav-primary-item').eq(0).addClass('first-current');
+		$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
+			if (e.which == 9 && !e.shiftKey) {
+				$('.global-nav-primary-item.first-current').eq(0).addClass('focus');
+				$('.global-nav-primary-item.first-current').setAttribute("tabIndex", "-1");
+				$('.global-nav-primary-item.first-current').eq(0).focus();
 			}
-		}
-	});
+		});
+	}
+	else if (utag_data.page_canonical_url.includes('ca.sunlife/slfas') || utag_data.page_canonical_url.includes('sunlife.ca/slfas')) {
+		$(document).on("keydown", '.magic-box-input', function (e) {
+			$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
+				if (e.which == 9) {
+					$('.global-nav-primary-item').eq(0).addClass('focus');
+					$('.global-nav-primary-item').setAttribute("tabIndex", "-1");
+					$('.global-nav-primary-item').eq(0).focus();
+				}
+			});
+		});
+	}
+	else {
+		$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
+			if (e.which == 9) {
+				if (!$(this).parents().hasClass("adv-search-bar-wrapper")) {
+					e.preventDefault();
+					$('#sun-search .close-div a').focus();
+				}
+			}
+		});
+	}
 });
 
 $(document).on("keyup", '.search-icon-container', function (e) {
