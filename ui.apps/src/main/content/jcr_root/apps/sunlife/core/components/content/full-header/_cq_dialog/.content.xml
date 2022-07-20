@@ -775,7 +775,8 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Skip to sigin label"
-                                                name="./skipToSignInLabel"/>
+                                                name="./skipToSignInLabel"
+                                                required="true"/>
                                             <skipToMainContentLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
