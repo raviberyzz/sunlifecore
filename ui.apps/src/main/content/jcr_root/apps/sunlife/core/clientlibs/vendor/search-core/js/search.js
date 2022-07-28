@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function coveoSearch() {
 	coveoSearchcount++;
-	const searchBody = document.querySelector('#search');
+	const searchBody = document.querySelector('#coveo-search-body');
 	const searchBoxDesktop = document.querySelector('#search-box-desktop');
 	const searchBoxMobile = document.querySelector('#search-box-mobile');
 
