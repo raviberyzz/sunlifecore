@@ -37,10 +37,15 @@
               </a></div>
             <div class="global-search">
 			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
-				<div id="search-box-desktop" data-enable-history="true">
+				<div id="search-box-desktop" data-enable-history="true" data-auto-trigger-query='false'>
 				  <div class="CoveoAnalytics"></div>
 					<div class="coveo-search-section">
 					<div class="CoveoSearchbox" data-placeholder="Search" data-enable-omnibox="true"></div>
+              <div class="input-wrapper coveo-desktop-error-hidden">
+                <ul role="alert" class="coveo-search-error">
+                  <li class="error-required">${searchButton}</li>
+                </ul>
+              </div>
 				  </div>
 				</div>	
 			 </sly>
@@ -322,11 +327,16 @@
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
 			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
-				<div id="search-box-mobile" data-enable-history="true">
+				<div id="search-box-mobile" data-enable-history="true" data-auto-trigger-query='false'>
 				  <div class="CoveoAnalytics"></div>
 					<div class="coveo-search-section">
 					<div class="CoveoSearchbox" data-placeholder="Search" data-add-search-button="false" data-enable-omnibox="true"></div>
 				  </div>
+          <div class="input-wrapper coveo-mobile-error-hidden">
+            <ul role="alert" class="coveo-search-error">
+              <li class="error-required">${searchButton}</li>
+            </ul>
+          </div>
 				</div>	
 			  </sly>
 			<sly data-sly-test="${searchPlaceholder != 'coveoSearch'}">		  

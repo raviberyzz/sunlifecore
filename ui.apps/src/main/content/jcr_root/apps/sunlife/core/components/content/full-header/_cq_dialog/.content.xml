@@ -373,7 +373,7 @@
                                                             <searchbutton
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Search Button Text"
+                                                                fieldLabel="Error Message Text"
                                                                 name="./searchButton"/>
                                                             <searchaction
                                                                 jcr:primaryType="nt:unstructured"
