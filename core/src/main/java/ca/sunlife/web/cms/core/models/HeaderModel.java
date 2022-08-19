@@ -208,14 +208,6 @@ public interface HeaderModel {
   String getSrRegionText();
 
   /**
-   * Gets the sr search text.
-   *
-   * @return the sr search text
-   */
-  @ Inject
-  String getSrSearchText();
-
-  /**
    * Gets the links.
    *
    * @return the links
