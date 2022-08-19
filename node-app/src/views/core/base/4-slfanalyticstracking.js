@@ -89,18 +89,39 @@ $(document).ready(function () {
         });
         // Mobile language and region bar analytics ends here
         // Sign In Module (Desktop Sign In button) analytics starts here
-        $('#signinbutton').click(function(){
-            //alert('Inside signinbutton');    
-            utag.link({
-                "ev_action": "clk",
-                "ev_title": "sign in modal",
-                "ev_type": "other"
-        });
-        /* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
-                SignInHomeButton();
-            } */
-            //setTimeout(signinmodal,200);
-        })
+        if ((window.location.host.indexOf('www.sunlife.ca') > -1 || window.location.host.indexOf('www.ca.sunlife') > -1) && !window.location.pathname.startsWith('/sl/')) {
+			$('a[href*="/signin/mysunlife/home.wca"], a[href*="/signin/masunlife/home.wca"]').click(function() {
+				var dataValue;
+				if ($(this).parents('.slf-header-wrapper').length) {
+					dataValue = 'header';
+				} else if ($(this).parents('#main-content').length) {
+					dataValue = 'body-content';
+				} else if ($(this).parents('#mainfooter').length) {
+					dataValue = 'footer';
+				}
+				if (dataValue !== undefined) {
+					utag.link({
+						"ev_type": "other",
+						"ev_action": "clk",
+						"ev_title": "sign in cta",
+						"ev_data_one": dataValue
+					});
+				}
+			});	
+		} else {
+			$('#signinbutton').click(function() {
+				//alert('Inside signinbutton');    
+				utag.link({
+					"ev_action": "clk",
+					"ev_title": "sign in modal",
+					"ev_type": "other"
+				});
+				/* if(utag_data.page_breadcrumb && (_locationBreadcrumb=="/Home" || _locationBreadcrumb=="/Home/Welcome to Sun Life Financial")){
+					SignInHomeButton();
+				} */
+				//setTimeout(signinmodal,200);
+			});
+		}
         
         // Sign In Module (Desktop Sign In button) analytics ends here
         

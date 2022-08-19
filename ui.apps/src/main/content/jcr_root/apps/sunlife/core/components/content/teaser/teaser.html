@@ -22,7 +22,7 @@
          <sly data-sly-test="${!backgroundImgTesting}">
          <div class="right-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
-               <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
+               <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}" tabindex="-1">
                    <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
                </a>               
                <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">
@@ -56,7 +56,7 @@
 
           <div class="left-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
             <sly data-sly-test="${teaser.linkURL}">
-               <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
+               <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}" tabindex="-1">
 				<img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
                </a>
                <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">

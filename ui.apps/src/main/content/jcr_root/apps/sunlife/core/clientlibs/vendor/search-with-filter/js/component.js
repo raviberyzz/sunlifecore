@@ -930,6 +930,9 @@ var CountedTabs = /** @class */ (function (_super) {
         return _this;
     }
     CountedTabs_1 = CountedTabs;
+    CountedTabs.prototype.selectedTabIsDefault = function () {
+        return coveo_search_ui_1.state(this.element, 't') === this.options.defaultTab;
+    };
     CountedTabs.prototype.updateTabsState = function (gbResValues) {
         var _this = this;
         var tabEl = document.getElementsByClassName('CoveoTab');
@@ -950,8 +953,10 @@ var CountedTabs = /** @class */ (function (_super) {
             if (countEl) {
                 tab.removeChild(countEl);
             }
-            var count = _this.getCountElement(nbRes);
-            tab.appendChild(count);
+            if (!_this.options.hideCount) {
+                var count = _this.getCountElement(nbRes);
+                tab.appendChild(count);
+            }
         });
     };
     CountedTabs.prototype.getNumberOfDefaultTabResults = function (gbResValues) {
@@ -963,17 +968,27 @@ var CountedTabs = /** @class */ (function (_super) {
         if (!this.options.hideWhenEmpty) {
             return false;
         }
+        if (this.options.hideWhenEmpty && this.options.stickyTabs.includes(tab.getAttribute('data-id'))) {
+            return false;
+        }
+        if (this.options.keepTabsWhenDefault && !this.selectedTabIsDefault()) {
+            return false;
+        }
         return (tab.getAttribute('data-id') != this.options.defaultTab &&
             tab.className.indexOf('coveo-selected') == -1) ||
             defaultTabNbRes == 0;
+    };
+    CountedTabs.prototype.escapeRegExp = function (string) {
+        if (string === "+" || string === "#")
+            return "";
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
     };
     CountedTabs.prototype.formatCount = function (count) {
         var countTemplate = this.options.countTemplate;
         return countTemplate.replace(/\$\{(.*?)\}/g, count);
     };
     CountedTabs.prototype.getCountElement = function (count) {
-        var hideCount = this.options.hideCount;
-        return !hideCount ? coveo_search_ui_1.$$('span', { id: 'count', class: 'tab-count' }, this.formatCount(count)).el : coveo_search_ui_1.$$('span', { class: 'tab-count' }, '').el;
+        return coveo_search_ui_1.$$('span', { id: 'count', class: 'tab-count' }, this.formatCount(count)).el;
     };
     CountedTabs.prototype.handleDeferredQuerySuccess = function (data) {
         var field = this.options.field.toString().split('@')[1];
@@ -995,7 +1010,8 @@ var CountedTabs = /** @class */ (function (_super) {
     };
     CountedTabs.prototype.handleDoneBuildingQuery = function (data) {
         var gbRequest = this.buildGroupByRequest();
-        gbRequest.queryOverride = data.queryBuilder.expression.build();
+        var builtQuery = data.queryBuilder.expression.build();
+        gbRequest.queryOverride = this.options.sanitizeQuery ? this.escapeRegExp(builtQuery) : builtQuery;
         if (this.options.enableAdvancedExpression) {
             gbRequest.advancedQueryOverride = data.queryBuilder.advancedExpression.build();
         }
@@ -1012,6 +1028,9 @@ var CountedTabs = /** @class */ (function (_super) {
         constantQueryOverride: coveo_search_ui_1.ComponentOptions.buildQueryExpressionOption({ defaultValue: '@uri' }),
         advancedQueryOverride: coveo_search_ui_1.ComponentOptions.buildQueryExpressionOption({ defaultValue: '@uri' }),
         hideCount: coveo_search_ui_1.ComponentOptions.buildBooleanOption({ defaultValue: false }),
+        stickyTabs: coveo_search_ui_1.ComponentOptions.buildListOption({ defaultValue: [] }),
+        keepTabsWhenDefault: coveo_search_ui_1.ComponentOptions.buildBooleanOption({ defaultValue: false }),
+        sanitizeQuery: coveo_search_ui_1.ComponentOptions.buildBooleanOption({ defaultValue: false }),
     };
     CountedTabs = CountedTabs_1 = __decorate([
         turbo_core_1.lazyComponent

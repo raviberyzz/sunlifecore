@@ -9,8 +9,8 @@
 }
 
 .coveo-pager-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
 .coveo-results-per-page-list-item.coveo-active .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item.coveo-active .coveo-results-per-page-list-text,
 .coveo-results-per-page-list-item.coveo-active .coveo-results-per-page-list-text {
 	color: #004C6C !important;
 	font-weight: 700;
@@ -23,8 +23,8 @@
 }
 
 .coveo-pager-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
-.coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-pager-list-item-text.coveo-pager-anchor,
+.coveo-pager-list-item .coveo-results-per-page-list-item-text,
 .coveo-results-per-page-list-item .coveo-results-per-page-list-item-text {
 	display: inline-block;
 	color: #004C6C !important;
@@ -121,7 +121,7 @@
 	}
 }
 
-#search .coveo-search-section {
+#coveo-search-body .coveo-search-section {
 	margin: 0px auto 10px;
 }
 
@@ -137,6 +137,21 @@
 	padding: 4px 2px;
 }
 
-.CoveoSearchInterface .coveo-results-column.coveo.no-results {
-	max-width: 100%
+.CoveoSearchInterface .coveo-results-column.coveo-no-results {
+	max-width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoTriggers {
+	margin-bottom: 15px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoResultList,
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoPager,
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoResultsPerPage {
+	height: 0;
+	margin: 0;
 }
