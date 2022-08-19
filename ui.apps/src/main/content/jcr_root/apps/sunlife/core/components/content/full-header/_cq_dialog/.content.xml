@@ -382,6 +382,12 @@
                                                                 name="./searchUrl"
                                                                 rootPath="/content/"
                                                                 suffix=".html"/>
+                                                             <srText
+                                            					jcr:primaryType="nt:unstructured"
+                                           						sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            					fieldDescription="For screen Reader (This will be removed in the future as it is redundant)"
+                                            					fieldLabel="Screen Reader (This will be removed in the future)"
+                                            					name="./srSearchText"/>    
                                                         </items>
                                                     </column>
                                                 </items>
