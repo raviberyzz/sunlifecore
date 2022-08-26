@@ -413,6 +413,22 @@ iframe {
     cursor: pointer;
     background-color: $transparent;
 }
+//sign-in eye-toggle
+.password-div {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 10px;
+    transform: scale(1.2);
+}
+
+.fa-eye:before {
+    content: "\f06e";
+}
 
 /* mfa modal starts here */
 // .sign-in {

@@ -411,3 +411,14 @@ $(document).ready(function () {
   }
 });
 /* RTDM offer ends here */
+/* Sign-in eye toggle functionality starts here*/
+$(document).ready(function () {
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+    togglePassword.addEventListener("click", () => {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        // toggle the eye slash icon
+        togglePassword.classList.toggle("fa-eye");
+    });
+});
