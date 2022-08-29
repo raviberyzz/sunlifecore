@@ -95,6 +95,8 @@ function coveoSearch() {
                         args.cancel = true; // !!! necessary to cancel the request!!!
                         Coveo.$$(hiddenEl).removeClass('coveo-desktop-error-hidden');
                         Coveo.$$(hiddenEl).addClass('coveo-desktop-error-shown');
+                        var elmnt = $('#search-box-desktop input')[0].getBoundingClientRect();
+                        $('.coveo-desktop-error-shown').css('width',elmnt.width)
 
                     } else {
                         if (Coveo.$$(hiddenEl).hasClass('coveo-desktop-error-shown')) {

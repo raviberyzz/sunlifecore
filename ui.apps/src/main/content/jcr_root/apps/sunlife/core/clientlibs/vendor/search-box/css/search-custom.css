@@ -129,6 +129,7 @@ a.CoveoResultLink:focus a,
 .coveo-desktop-error-shown,
 .coveo-mobile-error-shown {
     display: block;
+    position:absolute;
 }
 
 .coveo-search-error:before {
@@ -156,7 +157,6 @@ a.CoveoResultLink:focus a,
     list-style: none;
     padding-left: 20px;
     z-index: 1;
-    width: fit-content;
     font-size: 16px;
 }
 
@@ -175,4 +175,8 @@ a.CoveoResultLink:focus a,
     left: 15px;
     color: #fff;
     margin-right: 10px;
+}
+
+.coveo-mobile-error-shown .coveo-search-error{
+    width: fit-content;
 }

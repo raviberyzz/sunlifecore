@@ -11,7 +11,7 @@
 	<groupId>ca.sunlife.web.cms</groupId>
 	<artifactId>web-cms-aem-core</artifactId>
 	<packaging>pom</packaging>
-	<version>1.35.1-SNAPSHOT</version>
+	<version>1.37.0-SNAPSHOT</version>
 	<description>AEM CMS application module</description>
 
 	<modules>
@@ -403,7 +403,7 @@
 							<executions>
 								<execution>
 									<id>Install node and npm</id>
-									<phase>${node.phase.prop}</phase>
+									<phase>install</phase>
 									<goals>
 										<goal>install-node-and-npm</goal>
 									</goals>
@@ -414,7 +414,7 @@
 								</execution>
 								<execution>
 									<id>npm install</id>
-									<phase>${node.phase.prop}</phase>
+									<phase>install</phase>
 									<goals>
 										<goal>npm</goal>
 									</goals>
@@ -427,7 +427,7 @@
 								</execution>
 								<execution>
 									<id>gulp build:dev</id>
-									<phase>${node.phase.prop}</phase>
+									<phase>compile</phase>
 									<goals>
 										<goal>gulp</goal>
 									</goals>
