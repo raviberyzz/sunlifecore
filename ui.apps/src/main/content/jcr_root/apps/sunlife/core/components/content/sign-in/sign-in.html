@@ -117,11 +117,13 @@
                         class="remember-text">${checkboxLabel}</span>
                 </div>
             </sly>
-            <div id="passwordDiv" class="form-group"><label for="PASSWORD" class="sr-only">${!passwordPlaceholder ?
+            <div id="passwordDiv" class="form-group password-div"><label for="PASSWORD" class="sr-only">${!passwordPlaceholder ?
                     'Password': passwordPlaceholder}</label>
-                <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
+                <input id="password" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
                     placeholder="${passwordPlaceholder}" data-parsley-required="true"
                     data-parsley-required-message="${errorMsgPlaceholder}">
+                <button class="fa fa-eye-slash eye-icon" id="togglePassword"  type="button" aria-controls="password" style="color:#004c6c">
+                    <span class="sr-only"  id="spanText" >Hide password</span></button>
                 <div id="passwordError" class="arrow-help-block"></div>
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}"
                     type="submit">
