@@ -424,6 +424,9 @@ iframe {
     top: 15px;
     right: 10px;
     transform: scale(1.2);
+    background: transparent;
+    border : none;
+    outline-width : 10;
 }
 
 .fa-eye:before {

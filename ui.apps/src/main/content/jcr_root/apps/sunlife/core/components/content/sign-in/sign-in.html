@@ -122,7 +122,8 @@
                 <input id="password" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
                     placeholder="${passwordPlaceholder}" data-parsley-required="true"
                     data-parsley-required-message="${errorMsgPlaceholder}">
-                <i class="fa fa-eye-slash eye-icon" id="togglePassword" aria-hidden="true" style="color:#004c6c"></i>
+                <button class="fa fa-eye-slash eye-icon" id="togglePassword"  type="button" aria-controls="password" style="color:#004c6c">
+                    <span class="sr-only"  id="spanText" >Hide password</span></button>
                 <div id="passwordError" class="arrow-help-block"></div>
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}"
                     type="submit">
