@@ -414,7 +414,7 @@ $(document).ready(function () {
 /* Sign-in eye toggle functionality starts here*/
 $(document).ready(function () {
     const togglePassword = document.querySelector("#togglePassword");
-    const password = document.querySelector("#password");
+    const password = dodocument.getElementById('PASSWORD');
     const x = document.getElementById("spanText");
     togglePassword.addEventListener("click", () => {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
