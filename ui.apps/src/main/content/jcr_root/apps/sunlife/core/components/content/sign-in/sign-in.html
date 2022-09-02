@@ -123,7 +123,8 @@
                     placeholder="${passwordPlaceholder}" data-parsley-required="true"
                     data-parsley-required-message="${errorMsgPlaceholder}">
                 <button class="fa fa-eye-slash eye-icon" id="togglePassword"  type="button" aria-controls="password" style="color:#004c6c">
-                    <span class="sr-only"  id="spanText" >Hide password</span></button>
+                    <span data-sly-test="${language=='E'}" class="sr-only"  id="spanTextEnglish" >Hide password</span>
+                    <span data-sly-test="${language!='E'}" class="sr-only"  id="spanTextFrench" >Masquer le mot de passe</span></button>
                 <div id="passwordError" class="arrow-help-block"></div>
                 <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}"
                     type="submit">
