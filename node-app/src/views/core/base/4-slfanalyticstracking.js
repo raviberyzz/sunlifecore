@@ -121,7 +121,7 @@ $(document).ready(function () {
 				} */
 				//setTimeout(signinmodal,200);
 			});
-		}
+		
         
         // Sign In Module (Desktop Sign In button) analytics ends here
         
@@ -139,6 +139,7 @@ $(document).ready(function () {
         });
         // Sign In Modal (Mobile Sign In button) analytics ends here
     }
+  }
     
     // Sign In Modal (Sign-in-modal expansion) analytics starts here
     function signinmodal() {
