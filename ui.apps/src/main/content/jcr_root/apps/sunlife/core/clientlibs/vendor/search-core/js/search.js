@@ -78,6 +78,12 @@ function coveoSearch() {
                 args.queryBuilder.addContext(userContext);
             });
 
+            Coveo.$$(searchBody).on("buildingQuery", function (e, args) {
+                //Reset Banner 
+                $("#bodySearchAd").html("");
+                $("#search-result-banner-right").html("");
+            });
+
         } else {
             //searchBoxDesktop - label 
             Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
@@ -145,11 +151,6 @@ function coveoSearch() {
         });
         Coveo.$$(searchBoxMobile).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
             args.queryBuilder.addContext(userContext);
-        });
-        Coveo.$$(searchBody).on("buildingQuery", function (e, args) {
-            //Reset Banner 
-            $("#bodySearchAd").html("");
-            $("#search-result-banner-right").html("");
         });
     }
     else if (coveoSearchcount > 5) {
