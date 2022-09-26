@@ -131,8 +131,9 @@
                // var iHtml = '<span class="'+cs+'"></span>';
                cs = cs != "" ? ' class="'+cs+'"' : cs;
                ln = ln != "" ? ' lang="'+ln+'"' : ln;
-               var iHtml = '<span '+cs + ln +'></span>';
-                ek.execCmd('InsertHTML', iHtml, context);
+              var selectedText = ln != "" ? window.getSelection().toString() : "";
+               var iHtml = '<span '+cs + ln +'>'+selectedText+'</span>';
+               ek.execCmd('InsertHTML', iHtml, context);
             };
             var dialog, dm = ek.getDialogManager(),
                 $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
