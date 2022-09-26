@@ -122,12 +122,14 @@ a.CoveoResultLink:focus a,
 }
 
 .coveo-desktop-error-hidden,
-.coveo-mobile-error-hidden {
+.coveo-mobile-error-hidden,
+.coveo-sunSearch-error-hidden {
     display: none;
 }
 
 .coveo-desktop-error-shown,
-.coveo-mobile-error-shown {
+.coveo-mobile-error-shown,
+.coveo-sunSearch-error-shown {
     display: block;
     position:absolute;
 }
@@ -179,4 +181,14 @@ a.CoveoResultLink:focus a,
 
 .coveo-mobile-error-shown .coveo-search-error{
     width: fit-content;
+}
+
+.advisorhub-sunlife-home-page #search-box-sun-search .coveo-search-section {
+    margin: 0 auto 0;
+    display: block;
+    padding: 0px;
+}
+
+.advisorhub-sunlife-content-page #coveo-search-body .coveo-search-section {
+    display: none;
 }
