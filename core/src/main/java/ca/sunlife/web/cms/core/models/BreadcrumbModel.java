@@ -36,7 +36,7 @@ public class BreadcrumbModel extends BreadcrumbImpl {
   @ Optional
   private String socialShareReqd;
 
-  /** The social share reqd. */
+  /** The Language code. */
   @ Inject
   @ Via ("resource")
   @ Optional
@@ -58,9 +58,9 @@ public class BreadcrumbModel extends BreadcrumbImpl {
   }
 
  /**
-   * Gets the social share reqd.
+   * Gets the Language code.
    *
-   * @return the social share reqd
+   * @return the Language code
    */
    public String getLangcode() {
     return langcode;
