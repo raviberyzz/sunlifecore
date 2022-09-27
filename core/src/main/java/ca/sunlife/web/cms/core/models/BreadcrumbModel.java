@@ -35,6 +35,12 @@ public class BreadcrumbModel extends BreadcrumbImpl {
   @ Via ("resource")
   @ Optional
   private String socialShareReqd;
+
+  /** The Language code. */
+  @ Inject
+  @ Via ("resource")
+  @ Optional
+  private String langcode;
   
   /** The Hide Breadcrumb */
   @ Inject
@@ -49,6 +55,15 @@ public class BreadcrumbModel extends BreadcrumbImpl {
    */
   public String getSocialShareReqd() {
     return socialShareReqd;
+  }
+
+ /**
+   * Gets the Language code.
+   *
+   * @return the Language code
+   */
+   public String getLangcode() {
+    return langcode;
   }
 
   /**

@@ -21,33 +21,47 @@
             }
         }
         return '<div class=" rte-dialog-columnContainer">'
-            +'<div class=" rte-dialog-column">'
+                +'<div class=" rte-dialog-columnContainer">'   
+            	+'<div class=" rte-dialog-column">'
                 +'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Font Awesome : </label>'
-                +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter font awesome icon" name="awesomeIcon" value="" required labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0">'
-            +'</div>'
-            +'<div class=" rte-dialog-column">'
+                +'<input class="coral-Form-field" is="coral-textfield" placeholder="Enter font awesome icon" name="awesomeIcon" value=""  required labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0">'
+           		+'</div>'
+           	    +'<div class=" rte-dialog-column">'
                 +'<label id="label-vertical-0" class="coral-Form-fieldlabel">Color :</label>'
                 +'<coral-select class="coral-Form-field" placeholder="Select Color" name="awesomeIconColor" labelledby="label-vertical-0">'
-                    +'<coral-select-item value="icon-dark-white">White</coral-select-item>'
-                    +'<coral-select-item value="icon-dark-grey">Dark Grey</coral-select-item>'
-                    +'<coral-select-item value="icon-medium-blue">Medium Blue</coral-select-item>'
-                    +'<coral-select-item value="icon-medium-red">Medium Red</coral-select-item>'
-                    +'<coral-select-item value="icon-medium-green">Medium Green</coral-select-item>'
+                +'<coral-select-item value="icon-dark-white">White</coral-select-item>'
+                +'<coral-select-item value="icon-dark-grey">Dark Grey</coral-select-item>'
+                +'<coral-select-item value="icon-medium-blue">Medium Blue</coral-select-item>'
+                +'<coral-select-item value="icon-medium-red">Medium Red</coral-select-item>'                 +'<coral-select-item value="icon-medium-green">Medium Green</coral-select-item>'
                 +'</coral-select>'
-            +'</div>'
-            +'<div class=" rte-dialog-column">'
+                +'</div>'
+                +'<div class=" rte-dialog-column">'
                 +'<label id="label-vertical-1" class="coral-Form-fieldlabel">Size :</label>'
                 +'<coral-select class="coral-Form-field" placeholder="Select Size" name="awesomeIconSize" labelledby="label-vertical-1">'
-                    +fontSizes
+                +fontSizes
                 +'</coral-select>'
+                +'</div>'
+                 +'<div class=" rte-dialog-column">'
+                +'<button is="coral-button"style="margin-top:20px;" class="coral3-Button coral3-Button--secondary" size="S" variant="secondary" type="button" icon="close" title="Cancel" aria-label="Cancel" data-type="execCloseIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--close" icon="close" size="S" role="img" aria-label="close"></coral-icon><coral-button-label></coral-button-label></button>'
             +'</div>'
             +'<div class=" rte-dialog-column">'
+                +'<button is="coral-button"  id="fwbtnsave"  style="margin-top:20px;" class="coral3-Button coral3-Button--primary" size="M" variant="primary" type="button" icon="check" iconsize="S" data-type="execSaveIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--check" icon="check" size="S" role="img" aria-label="Save"></coral-icon><coral-button-label></coral-button-label></button>'
+            +'</div>'
+
+            +'</div>'
+         +'<div class=" rte-dialog-columnContainer">'
+  +'<div class=" rte-dialog-column">'
+				+'<label class="coral-Form-fieldlabel" id="label-aligned-textfield-0">Language :</label>'
+				+'<input class="coral-Form-field coral3-Textfield" is="coral-textfield" placeholder="Enter language code" name="langcode" value="" required="" labelledby="label-aligned-textfield-0" aria-labelledby="label-aligned-textfield-0" aria-invalid="false">'
+			+'</div>'
+               +'<div class=" rte-dialog-column">'
                 +'<button is="coral-button" style="margin-top:20px;" class="coral3-Button coral3-Button--secondary" size="S" variant="secondary" type="button" icon="close" title="Cancel" aria-label="Cancel" data-type="execCloseIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--close" icon="close" size="S" role="img" aria-label="close"></coral-icon><coral-button-label></coral-button-label></button>'
             +'</div>'
             +'<div class=" rte-dialog-column">'
-                +'<button is="coral-button" style="margin-top:20px;" class="coral3-Button coral3-Button--primary" size="M" variant="primary" type="button" icon="check" iconsize="S" data-type="execSaveIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--check" icon="check" size="S" role="img" aria-label="Save"></coral-icon><coral-button-label></coral-button-label></button>'
+                +'<button is="coral-button"  id="langsave" style="margin-top:20px;" class="coral3-Button coral3-Button--primary" size="M" variant="primary" type="button" icon="check" iconsize="S" data-type="execSaveIcon" tabindex="-1"><coral-icon class="coral3-Icon coral3-Icon--sizeS coral3-Icon--check" icon="check" size="S" role="img" aria-label="Save"></coral-icon><coral-button-label></coral-button-label></button>'
             +'</div>'
-        +'</div>'
+             +'</div>'
+           +'</div>'
     };
     var SunlifeFontAwesomeBaseDialog = new Class({
         extend: CUI.rte.ui.cui.AbstractDialog,
@@ -60,18 +74,25 @@
             ek=this.editorKernel;
             this.$saveBtn.on('click',function(){
                 var fClass = dialog.find('[name="awesomeIcon"]').val();
-                if($.trim(fClass) == "") {
-                    return;
+                var langCode = dialog.find('[name="langcode"]').val(); 
+                if($(this).attr("id")=="langsave"){
+                    dialog.find('[name="awesomeIcon"]').removeAttr("required");
+                }else{
+                     dialog.find('[name="langcode"]').removeAttr("required");
                 }
+                if((($(this).attr("id")=="langsave") && ($.trim(langCode) == "")) || (($(this).attr("id")=="fwbtnsave") && ($.trim(fClass) == ""))) {
+                    return;
+                }        
                 var iconSize = dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').length > 0?dialog.find('[name="awesomeIconSize"] > coral-select-item:selected').val():'';
                 var iconClass = dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').length > 0?dialog.find('[name="awesomeIconColor"] > coral-select-item:selected').val():'';
-                fClass = 'coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' + iconSize + ' ' + iconClass;
+                fClass = fClass != "" ? ('coral3-Icon coral3-Icon--sizeS coral3-Icon--effects font-awesome-icon ' + fClass + ' ' + iconSize + ' ' + iconClass ) : fClass;
                 //ek.relayCmd(FEATURE, data, ek.getEditContext());
-                config.parameters.saveData($.trim(fClass));
+                config.parameters.saveData($.trim(fClass),langCode);
                 dialog.hide();
             });
             this.$closeBtn.on('click',function() {
                 dialog.find('[name="awesomeIcon"]').val(' ');
+                dialog.find('[name="langcode"]').val(' '); 
                 dialog.hide();
             });
         },
@@ -105,10 +126,14 @@
             if ((selection.startOffset === startNode.length) && (startNode != selection.endNode)) {
                 startNode = startNode.nextSibling;
             }
-            var saveData = function(cs) {
+            var saveData = function(cs,ln) {
                 CUI.rte.Selection.selectBookmark(context, bookmark);
-                var iHtml = '<span class="'+cs+'"></span>';
-                ek.execCmd('InsertHTML', iHtml, context);
+               // var iHtml = '<span class="'+cs+'"></span>';
+               cs = cs != "" ? ' class="'+cs+'"' : cs;
+               ln = ln != "" ? ' lang="'+ln+'"' : ln;
+              var selectedText = ln != "" ? window.getSelection().toString() : "";
+               var iHtml = '<span '+cs + ln +'>'+selectedText+'</span>';
+               ek.execCmd('InsertHTML', iHtml, context);
             };
             var dialog, dm = ek.getDialogManager(),
                 $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
