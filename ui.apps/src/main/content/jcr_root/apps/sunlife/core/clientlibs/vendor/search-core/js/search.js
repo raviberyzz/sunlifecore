@@ -93,11 +93,41 @@ function coveoSearch() {
 
         } else {
 
-            Coveo.$$(searchBoxSunSearch).on(Coveo.InitializationEvents.afterInitialization, (args) => {
-                searchBoxSunSearch.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
-                    className: 'coveo-search-button-label'
-                }, Coveo.l("Search")).el);
-            });
+            if (searchBoxSunSearch) {
+                Coveo.$$(searchBoxSunSearch).on(Coveo.InitializationEvents.afterInitialization, (args) => {
+                    searchBoxSunSearch.querySelector('.CoveoSearchbox .CoveoSearchButton').append(Coveo.$$('span', {
+                        className: 'coveo-search-button-label'
+                    }, Coveo.l("Search")).el);
+                });
+
+                Coveo.$$(searchBoxSunSearch).on(Coveo.InitializationEvents.afterInitialization, (args) => {
+                    Coveo.$$(searchBoxSunSearch).on("buildingQuery", function (e, args) {
+                        let query = Coveo.state(searchBoxSunSearch, 'q');
+                        let hiddenEl = document.querySelector('.coveo-sunSearch-error-hidden');
+                        if (!hiddenEl) {
+                            hiddenEl = document.querySelector('.coveo-sunSearch-error-shown');
+                        }
+                        if (!query) {
+                            args.cancel = true; // !!! necessary to cancel the request!!!
+                            Coveo.$$(hiddenEl).removeClass('coveo-sunSearch-error-hidden');
+                            Coveo.$$(hiddenEl).addClass('coveo-sunSearch-error-shown');
+                            var elmnt = $('#search-box-sun-search input')[0].getBoundingClientRect();
+                            $('.coveo-sunSearch-error-shown').css('width', elmnt.width)
+                        } else {
+                            if (Coveo.$$(hiddenEl).hasClass('coveo-sunSearch-error-shown')) {
+                                Coveo.$$(hiddenEl).removeClass('coveo-sunSearch-error-shown');
+                                Coveo.$$(hiddenEl).addClass('coveo-sunSearch-error-hidden');
+                            }
+                        }
+                    });
+                });
+
+                Coveo.initSearchbox(searchBoxSunSearch, searchConfig.searchUrl, {
+                    Analytics: {
+                        searchHub: searchConfig.searchHub,
+                    },
+                });
+            }
 
             //searchBoxDesktop - label 
             Coveo.$$(searchBoxDesktop).on(Coveo.InitializationEvents.afterInitialization, (args) => {
@@ -116,7 +146,7 @@ function coveoSearch() {
                         Coveo.$$(hiddenEl).removeClass('coveo-desktop-error-hidden');
                         Coveo.$$(hiddenEl).addClass('coveo-desktop-error-shown');
                         var elmnt = $('#search-box-desktop input')[0].getBoundingClientRect();
-                        $('.coveo-desktop-error-shown').css('width',elmnt.width)
+                        $('.coveo-desktop-error-shown').css('width', elmnt.width)
 
                     } else {
                         if (Coveo.$$(hiddenEl).hasClass('coveo-desktop-error-shown')) {
@@ -149,27 +179,6 @@ function coveoSearch() {
                 });
             });
 
-            Coveo.$$(searchBoxSunSearch).on(Coveo.InitializationEvents.afterInitialization, (args) => {
-                Coveo.$$(searchBoxSunSearch).on("buildingQuery", function (e, args) {
-                    let query = Coveo.state(searchBoxSunSearch, 'q');
-                    let hiddenEl = document.querySelector('.coveo-sunSearch-error-hidden');
-                    if (!hiddenEl) {
-                        hiddenEl = document.querySelector('.coveo-sunSearch-error-shown');
-                    }
-                    if (!query) {
-                        args.cancel = true; // !!! necessary to cancel the request!!!
-                        Coveo.$$(hiddenEl).removeClass('coveo-sunSearch-error-hidden');
-                        Coveo.$$(hiddenEl).addClass('coveo-sunSearch-error-shown');
-                        var elmnt = $('#search-box-sun-search input')[0].getBoundingClientRect();
-                        $('.coveo-sunSearch-error-shown').css('width',elmnt.width)
-                    } else {
-                        if (Coveo.$$(hiddenEl).hasClass('coveo-sunSearch-error-shown')) {
-                            Coveo.$$(hiddenEl).removeClass('coveo-sunSearch-error-shown');
-                            Coveo.$$(hiddenEl).addClass('coveo-sunSearch-error-hidden');
-                        }
-                    }
-                });
-            });
 
             Coveo.initSearchbox(searchBoxDesktop, searchConfig.searchUrl, {
                 Analytics: {
@@ -177,11 +186,6 @@ function coveoSearch() {
                 },
             });
             Coveo.initSearchbox(searchBoxMobile, searchConfig.searchUrl, {
-                Analytics: {
-                    searchHub: searchConfig.searchHub,
-                },
-            });
-            Coveo.initSearchbox(searchBoxSunSearch, searchConfig.searchUrl, {
                 Analytics: {
                     searchHub: searchConfig.searchHub,
                 },
@@ -196,7 +200,7 @@ function coveoSearch() {
         Coveo.$$(searchBoxSunSearch).on(Coveo.QueryEvents.buildingQuery, function (e, args) {
             args.queryBuilder.addContext(userContext);
         });
-        
+
     }
     else if (coveoSearchcount > 5) {
         coveoSearchcount = 0;
