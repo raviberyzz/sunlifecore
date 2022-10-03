@@ -96,6 +96,15 @@
                                         text="Hide Display Date"
                                         uncheckedValue="false"
                                         value="{Boolean}true"/>
+                                         <lazyLoading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the image should be lazy loaded. Should be checked for all images that are below the fold"
+                                                name="./isLazyLoaded"
+                                                text="Lazy Load Image"
+                                                checked="true"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
                                 </items>
                             </column>
                         </items>

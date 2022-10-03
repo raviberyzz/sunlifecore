@@ -1,6 +1,6 @@
 <sly data-sly-use.list="ca.sunlife.web.cms.core.models.ArticleListModel"
      data-sly-test="${list.listItems.size>0}">
-
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
     <sly data-sly-test="${list.displayType=='relatedArticleList'}">
         <div class="row related-articles">
             <sly data-sly-test="list.title">
@@ -16,7 +16,7 @@
                         </sly>
                         <a href="${pageLink @ extension = 'html'}">
                             <div class="article-image" aria-hidden="true">
-                                <img src="${img @ context = 'text'}" alt="" aria-hidden="true" />                                
+                                <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="" aria-hidden="true" />                                
                             </div>
                             ${headline @context='html'}
                         </a>
@@ -42,7 +42,7 @@
                         </sly>
                         <div class="editorial-image">
                             <a href="${pageLink @ extension = 'html'}" >
-                                <img src="${img @ context = 'text'}" alt="${headline}" />
+                                <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="${headline}" />
                             </a>
                         </div>
                         <div class="date"><sly data-sly-call="${tpl.element @ date = date, format = list.dateFormat, pageLocale = list.pageLocale}"></sly> <br/></div>
@@ -72,7 +72,7 @@
                             </sly>
                             <div class="content-list-thumbnail">
                                 <a href="${pageLink @ extension = 'html'}" >
-                                    <img src="${img @ context = 'text'}" alt="${headline}" />
+                                    <img data-sly-attribute.loading="${imgLazyLoaded}" src="${img @ context = 'text'}" alt="${headline}" />
                                 </a>
                             </div>
                             <div class="content-list-summary">
@@ -90,8 +90,7 @@
             </div>            
         </div>
     </sly>
-
-    <sly data-sly-test="${list.displayType=='overviewHighlight'}">
+     <sly data-sly-test="${list.displayType=='overviewHighlight'}">
         <ul class="dotted">
             <sly data-sly-list="${list.listItems}">
                 <li>
@@ -106,6 +105,5 @@
     </sly>
 
 </sly>
-
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cq-dd-contentfragmentlist'}"></sly>

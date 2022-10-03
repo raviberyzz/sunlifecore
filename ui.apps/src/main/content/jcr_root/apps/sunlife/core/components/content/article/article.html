@@ -1,5 +1,6 @@
 <sly data-sly-use.article="ca.sunlife.web.cms.core.models.ArticleModel"></sly>
 <sly data-sly-test.notEmpty="${article.fragmentPath}">
+    <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
     <article class="article-wrapper">
         <div class="article-intro">
             <div class="article-date" data-sly-test="${!article.checkboxHideDate}">
@@ -14,7 +15,7 @@
         </div>
         ${article.articleData.articleMiniDescription  @context='html'}
         <figure class="article-image" data-sly-test="${article.articleData.articleImage}">
-            <img src="${article.articleData.articleImage}" alt="${article.articleData.articleHeadline}" aria-hidden="true">
+            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${article.articleData.articleImage}" alt="${article.articleData.articleHeadline}" aria-hidden="true">
         </figure>
         <div class="article-body">
             ${article.articleData.articleMainDescription  @context='html'}
