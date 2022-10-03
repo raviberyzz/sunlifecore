@@ -46,7 +46,14 @@ function updateQueryStringParameter(key, value) {
     }
   }
 /* inserting error code in url for credential and server validation ends here */
+// this function is kicked off on sign in button click from the sign-in-framework.js file
 function parsleyAnalytics(event){
+    // for any sign in attempt this tag will be kicked off regardless of error code to track everytime any sign in is attempted
+    utag.link({
+		"ev_type": "authenticate",
+		"ev_action": "signin",
+		"ev_title": "AEM sign in - attempt"
+	});
     // for only no userId
     let csi="signin - csi - ";
     if(($('.mySlfSignIn #PASSWORD').val()!='' && $('.mySlfSignIn #USER').val()=='') ||
