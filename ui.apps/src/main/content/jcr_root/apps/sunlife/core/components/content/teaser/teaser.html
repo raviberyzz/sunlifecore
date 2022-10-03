@@ -5,6 +5,7 @@
 <sly data-sly-test.teaserAltText = "${teaser.isDecorative ? '' : teaser.altText}" />
 <sly data-sly-test.mobileImage = "${teaser.fileReferenceMobile ? teaser.fileReferenceMobile : teaser.fileReference}"/>
 <sly data-sly-test="${!empty}">
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
    <div class="image-text-wrapper" data-section="${teaser.analyticsId}">
    
       <div data-sly-test.imageRight="${teaser.imageAlignment == 'right-image-position'}" class="right-image-position clearfix">
@@ -23,15 +24,15 @@
          <div class="right-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
             <sly data-sly-test.imageLink="${teaser.linkURL}">
                <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
-                   <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
+                   <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
                </a>               
                <a href="${imageLink @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">
-                   <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
+                   <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
                </a>			   
             </sly>
             <sly data-sly-test="${!imageLink}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">               
-               <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1">               
+               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">               
+               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1">               
             </sly>
          </div>
          </sly>
@@ -57,15 +58,15 @@
           <div class="left-item" aria-hidden="${teaserAltText ? 'false' : 'true'}">
             <sly data-sly-test="${teaser.linkURL}">
                <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" aria-label="${teaserAltText || true}">
-				<img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
+				<img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}">
                </a>
                <a href="${teaser.linkURL @ extension = 'html'}" target ="${teaser.target}" tabindex="-1">
-				 <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
+				 <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}">
                </a>               
             </sly>
             <sly data-sly-test="${!teaser.linkURL}">
-               <img class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}"/>               
-               <img class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1"/>               
+               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image desktop-image" src="${teaser.fileReference @context='uri'}" alt="${teaserAltText || true}"/>               
+               <img data-sly-attribute.loading="${imgLazyLoaded}" class="side-image mobile-image" src="${mobileImage @context='uri'}" alt="${teaserAltText || true}" tabindex="-1"/>               
             </sly>
          </div>
 
