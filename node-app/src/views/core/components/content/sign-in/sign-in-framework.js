@@ -204,6 +204,7 @@ $(document).ready(function () {
     $(".mySlfSignIn .download-app-wrapper .mobile-app-text").addClass(
       "app-logo"
     );
+    $(".mySlfSignIn .download-app-wrapper .mobile-app-text img").attr('alt', 'Sun Life logo');
   }
   if ($(".mySlfSignIn").length > 0) {
     if (
