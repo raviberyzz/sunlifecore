@@ -1,6 +1,6 @@
 <sly data-sly-use.article="ca.sunlife.web.cms.core.models.ArticleModel"></sly>
 <sly data-sly-test.notEmpty="${article.fragmentPath}">
-    <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
     <article class="article-wrapper">
         <div class="article-intro">
             <div class="article-date" data-sly-test="${!article.checkboxHideDate}">
@@ -20,7 +20,7 @@
         <div class="article-body">
             ${article.articleData.articleMainDescription  @context='html'}
             <div><sly data-sly-resource="${'layout-container' @ resourceType=article.layoutResourceType}"></sly></div>
-        </div>
+           </div>
         <div class="article-rating" data-sly-test="${article.ratingRequired == 'true'}">
             <div class="mar-bottom-30" id="pd_rating_holder_${article.articleID}"></div>
         </div>
@@ -47,5 +47,5 @@
             "permalink" : "${article.pageUrl}"
         }
     </div>
-</sly>
+ </sly>
 <div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
