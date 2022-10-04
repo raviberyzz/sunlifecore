@@ -82,6 +82,15 @@
                                         min="{Long}0"
                                         required="{Boolean}true"
                                         name="./maxItems"/>
+                                    <lazyLoading
+                                         jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                         fieldDescription="Check if the image should be lazy loaded. Should be checked for all images that are below the fold"
+                                         name="./isLazyLoaded"
+                                         text="Lazy Load Image"
+                                         checked="true"
+                                         uncheckedValue="false"
+                                         value="{Boolean}true"/>
                                     <container
                                         granite:class="hide displayType-showhide-target foundation-layout-util-vmargin"
                                         jcr:primaryType="nt:unstructured"
@@ -132,6 +141,7 @@
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
                                             showhidetargetvalue="relatedArticleList"/>
+                                            
                                     </container>
                                 </items>
                             </column>
