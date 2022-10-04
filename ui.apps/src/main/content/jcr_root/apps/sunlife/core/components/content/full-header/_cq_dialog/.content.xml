@@ -373,7 +373,7 @@
                                                             <searchbutton
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldLabel="Search Button Text"
+                                                                fieldLabel="Error Message Text"
                                                                 name="./searchButton"/>
                                                             <searchaction
                                                                 jcr:primaryType="nt:unstructured"
@@ -382,12 +382,6 @@
                                                                 name="./searchUrl"
                                                                 rootPath="/content/"
                                                                 suffix=".html"/>
-                                                             <srText
-                                            					jcr:primaryType="nt:unstructured"
-                                           						sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            					fieldDescription="For screen Reader"
-                                            					fieldLabel="Screen Reader"
-                                            					name="./srSearchText"/>    
                                                         </items>
                                                     </column>
                                                 </items>
@@ -775,17 +769,20 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Skip to sigin label"
-                                                name="./skipToSignInLabel"/>
+                                                name="./skipToSignInLabel"
+                                                required="true"/>
                                             <skipToMainContentLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Skip to main content label"
-                                                name="./skipToMainContentLabel"/>
+                                                name="./skipToMainContentLabel"
+                                                required="true"/>
                                             <skipToFooterLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Skip to footer label"
-                                                name="./skipToFooterLabel"/>
+                                                name="./skipToFooterLabel"
+                                                required="true"/>
                                         </items>
                                     </column>
                                 </items>

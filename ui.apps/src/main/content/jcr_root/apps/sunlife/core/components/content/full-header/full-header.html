@@ -37,10 +37,15 @@
               </a></div>
             <div class="global-search">
 			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
-				<div id="search-box-desktop" data-enable-history="true">
+				<div id="search-box-desktop" data-enable-history="true" data-auto-trigger-query='false'>
 				  <div class="CoveoAnalytics"></div>
 					<div class="coveo-search-section">
-					<div class="CoveoSearchbox" data-enable-omnibox="true"></div>
+					<div class="CoveoSearchbox" data-placeholder="Search" data-enable-omnibox="true"></div>
+              <div class="input-wrapper coveo-desktop-error-hidden">
+                <ul role="alert" class="coveo-search-error">
+                  <li class="error-required">${searchButton}</li>
+                </ul>
+              </div>
 				  </div>
 				</div>	
 			 </sly>
@@ -81,18 +86,23 @@
         <sly data-sly-test="${listFromRegion == 'regiontrue'}"
           data-sly-resource="${ @resourceType='sunlife/core/components/content/experiencefragment'}" />
       </div>
-
+      <!-- Desktop skip links start-->
+      <div class="skip-to-wrapper">
+        <sly data-sly-test="${listFromSignin == 'signintrue'}">
+          <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}"
+            class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToSignInLabel}</a>
+        </sly>
+        <a href="#main-content"
+          class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToMainContentLabel}</a>
+        <a href="#mainfooter"
+          class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToFooterLabel}</a>
+      </div>
+      <!-- Desktop skip links end-->
       <div class="col-xs-12 yellow-stripe">
       </div>
       <div class="col-xs-12 desktop-header-content ${isSignInHeader == 'yes' ? 'header-signIn' : ''} ">
 
         <div class="col-xs-12 desktop-utility-nav">
-          <sly data-sly-test="${listFromSignin == 'signintrue'}" >
-            <a href="${'/conf/sunlife/settings/wcm/templates/signin' in pageProperties.cq:template ? '#slfSignIn' : '#signinbutton'}" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToSignInLabel}</a>	
-          </sly>
-		  <a href="#main-content" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToMainContentLabel}</a>
-          <a href="#mainfooter" class="sr-only kbfocus sr-only-focusable button-class secondary-button-rte">${listModel.skipToFooterLabel}</a>
-
           <!-- Sign In Header Changes Starts -->
 		  <sly data-sly-test="${isSignInHeader == 'yes'}" >
 			<div class="col-md-6 col-lg-6">
@@ -150,7 +160,7 @@
 					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
-						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
+						<a>${searchTitle}</a>
 					  </div>
 					</li>
 				  </ul>
@@ -187,7 +197,7 @@
 					<li data-sly-test="${listFromSearch == 'searchtrue'}" class="search-icon-container">
 					  <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
 						 aria-expanded="false" tabindex="0">
-						<a>${searchTitle}<label class="sr-only">${listModel.srSearchText}</label></a>
+						<a>${searchTitle}</a>
 					  </div>
 					</li>
 				  </ul>
@@ -264,6 +274,17 @@
       <div class="slf-mobile-header-wrapper">
         <!-- sign-in modal start -->
         <!-- sign-in modal end-->
+        <!-- Mobile skip links start-->
+        <div class="skip-to-wrapper">
+          <sly data-sly-test="${listFromSignin == 'signintrue'}">
+            <a href="#SignIn"
+              class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToSignInLabel}</a>
+          </sly>
+          <a href="#main-content" class="skip-to sr-only kbfocus sr-only-focusable">
+            ${listModel.skipToMainContentLabel}</a>
+          <a href="#mainfooter" class="skip-to sr-only kbfocus sr-only-focusable">${listModel.skipToFooterLabel}</a>
+        </div>
+        <!-- Mobile skip links end-->
         <div class="col-xs-12 mobile-header-navbar  white-shade">
           <div class="hamburger-menu" id="hamburgerMenu">
             <button class="btn navbar-toggle pull-left" type="button" aria-expanded="false">
@@ -306,11 +327,16 @@
           </div>
           <div data-sly-test="${listFromSearch == 'searchtrue'}" class="hamburger-search">
 			 <sly data-sly-test="${searchPlaceholder == 'coveoSearch'}">
-				<div id="search-box-mobile" data-enable-history="true">
+				<div id="search-box-mobile" data-enable-history="true" data-auto-trigger-query='false'>
 				  <div class="CoveoAnalytics"></div>
 					<div class="coveo-search-section">
-					<div class="CoveoSearchbox" data-add-search-button="false" data-enable-omnibox="true"></div>
+					<div class="CoveoSearchbox" data-placeholder="Search" data-add-search-button="false" data-enable-omnibox="true"></div>
 				  </div>
+          <div class="input-wrapper coveo-mobile-error-hidden">
+            <ul role="alert" class="coveo-search-error">
+              <li class="error-required">${searchButton}</li>
+            </ul>
+          </div>
 				</div>	
 			  </sly>
 			<sly data-sly-test="${searchPlaceholder != 'coveoSearch'}">		  

@@ -77,6 +77,7 @@
 
             .password-input {
                 margin-bottom: 16px;
+                padding-right: 47px;
             }
 
             .btn.btn-blue {
@@ -376,6 +377,12 @@
     }
 }
 
+.sign-in.bg-white {
+    .mySlfSignIn {
+      	background-color : #FFFFFF;
+    }
+}
+
 //  sign-in-framework ends here 
 @media (max-width: $mobile-screen-max) {
 
@@ -412,6 +419,25 @@ iframe {
     text-decoration: none;
     cursor: pointer;
     background-color: $transparent;
+}
+//sign-in eye-toggle
+.password-div {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 10px;
+    transform: scale(1.2);
+    background: transparent;
+    border : none;
+    outline-width : 10;
+}
+
+.fa-eye:before {
+    content: "\f06e";
 }
 
 /* mfa modal starts here */

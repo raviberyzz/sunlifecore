@@ -242,12 +242,12 @@ public interface SiteConfigModel {
   String getMfaEncryption();
 
   /**
-   * Gets the CoveoSeachEnabled param.
+   * Gets the CoveoSearchEnabled param.
    *
-   * @return the CoveoSeachEnabled param
+   * @return the CoveoSearchEnabled param
    */
   @ Inject
-  String getCoveoSeachEnabled();
+  String getCoveoSearchEnabled();
   
   /**
    * Gets the SearchToken param.
@@ -296,4 +296,12 @@ public interface SiteConfigModel {
    */
   @ Inject
   String getSiteLocale();
+
+  /**
+   * Gets the searchLanguage param.
+   *
+   * @return the searchLanguage param
+   */
+  @ Inject
+  String getSearchLanguage();  
 }

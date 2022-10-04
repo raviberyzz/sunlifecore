@@ -103,6 +103,9 @@ public class BasePageModel {
 
   /** The Constant PAGE_LOCALE. */
   private static final String PAGE_LOCALE = "pageLocale";
+  
+  /** The Constant HREF_LANG. */
+  private static final String HREF_LANG = "hrefLang";
 
   /** The Constant OG_URL. */
   static final String OG_URL = "og:url";
@@ -380,8 +383,8 @@ public class BasePageModel {
   /** The disableContextHubTags. */
   private String disableContextHubTags;
   
-  /** The coveoSeachEnabled. */
-  private String coveoSeachEnabled;
+  /** The coveoSearchEnabled. */
+  private String coveoSearchEnabled;
 
   /** The searchToken. */
   private String searchToken;
@@ -400,13 +403,16 @@ public class BasePageModel {
 
   /** The site locale. */
   private String siteLocale;
+
+  /** The search language. */
+  private String searchLanguage;
   
-  public String getCoveoSeachEnabled() {
-	return coveoSeachEnabled;
+  public String getCoveoSearchEnabled() {
+	return coveoSearchEnabled;
 }
 
-public void setCoveoSeachEnabled(String coveoSeachEnabled) {
-	this.coveoSeachEnabled = coveoSeachEnabled;
+public void setCoveoSearchEnabled(String coveoSearchEnabled) {
+	this.coveoSearchEnabled = coveoSearchEnabled;
 }
 
   public String getSearchToken() {
@@ -457,6 +463,13 @@ public void setSiteLocale(String siteLocale) {
 	this.siteLocale = siteLocale;
 }
 
+  public String getSearchLanguage() {
+	return searchLanguage;
+}
+
+public void setSearchLanguage(String searchLanguage) {
+	this.searchLanguage = searchLanguage;
+}
 
   public String getDisableContextHubTags() {
 	return disableContextHubTags;
@@ -1134,13 +1147,14 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     disableSocialSharingTags = configService.getConfigValues("disableSocialSharingTags", pagePath);
     disableContextHubTags = configService.getConfigValues("disableContextHubTags", pagePath);
     nonResponsive = configService.getConfigValues("nonResponsive", pagePath);
-    coveoSeachEnabled = configService.getConfigValues("coveoSeachEnabled", pagePath);
+    coveoSearchEnabled = configService.getConfigValues("coveoSearchEnabled", pagePath);
     searchToken = configService.getConfigValues("searchToken", pagePath);
     searchUrl = configService.getConfigValues("searchUrl", pagePath);
     orgId = configService.getConfigValues("orgId", pagePath);
     restUri = configService.getConfigValues("restUri", pagePath);
     searchHub = configService.getConfigValues("searchHub", pagePath);
     siteLocale = configService.getConfigValues("siteLocale", pagePath);
+    searchLanguage = configService.getConfigValues("searchLanguage", pagePath);
     
     if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
@@ -1702,6 +1716,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
        
       }
       final String pagePath = currentPage.getPath();
+      final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       if (null == pageLocale || pageLocale.length() == 0) {
         return;
@@ -1757,10 +1772,20 @@ public void setDisableContextHubTags(String disableContextHubTags) {
         }
       }
       if (null != altLanguageLinks && ! altLanguageLinks.isEmpty()) {
-        altLanguageLinks.put(
+    	  String hrefLang = null;
+    	  if(modHrefLang!= null && modHrefLang.equals("true")) {
+    		  hrefLang = pageLocale.substring(0, pageLocale.length()-3);
+    	  }else {
+    		  hrefLang = pageLocale.split("_") [ 0 ] + "-"
+    	                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
+    	  }
+        /*altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + configService.getPageRelativeUrl(pagePath));
+            siteDomain + configService.getPageRelativeUrl(pagePath));*/
+    	  altLanguageLinks.put(
+    			  hrefLang,
+  	            siteDomain + configService.getPageRelativeUrl(pagePath));
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
@@ -1867,14 +1892,25 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     LOG.debug(
         "generateAlternateUrls method :: sourcePath: {}, sourcePageLocale: {}, sourceSiteDomain: {}",
         liveCopyPath, sourcePageLocale, sourceSiteUrl);
+    final String modHrefLang = configService.getConfigValues(HREF_LANG, liveCopyPath);
+    String hrefLang = null;
+    if(modHrefLang!= null && modHrefLang.equals("true")) {
+		  hrefLang = sourcePageLocale.substring(0, sourcePageLocale.length()-3);
+	  }else {
+		  hrefLang = sourcePageLocale.split("_") [ 0 ] + "-"
+	                + sourcePageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
+	  }
     if (StringUtils.isEmpty(sourcePageLocale) || StringUtils.isEmpty(sourceSiteUrl)) {
     	return;
     }
-    altLanguageLinks.put(
+   /* altLanguageLinks.put(
         sourcePageLocale.split("_") [ 0 ] + "-"
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
-        sourceSiteDomain + sourceSiteUrl);
+        sourceSiteDomain + sourceSiteUrl);*/
+    altLanguageLinks.put(
+    		hrefLang,
+            sourceSiteDomain + sourceSiteUrl);
   }
 
   /**
@@ -1901,20 +1937,34 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 
         final String altSiteUrl = configService.getPageRelativeUrl(altUrl);
         final String altSiteDomain = configService.getConfigValues(DOMAIN_STR, altUrl);
+        final String modHrefLang = configService.getConfigValues(HREF_LANG, altUrl);
+        String hrefLang = null;
+        if(modHrefLang!= null && modHrefLang.equals("true")) {
+    		  hrefLang = altLang.substring(0, altLang.length()-3);
+    	  }else {
+    		  hrefLang = altLang.split("_") [ 0 ] + "-"
+    	                + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
+    	  }
 
         masterPagePath = defaultLanguage.length() > 0 ? altUrl : null;
         
         if(null!=masterPagePath)  masterSeoCanonicalUrl = masterPagePath;
         
-        altLanguageLinks.put(
+        /*altLanguageLinks.put(
             altLang.split("_") [ 0 ] + "-"
                 + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            altSiteDomain + altSiteUrl);
+            altSiteDomain + altSiteUrl);*/
+        altLanguageLinks.put(
+        		hrefLang,
+                altSiteDomain + altSiteUrl);
         
     	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
-        	altLanguageLinks.put(
+        	/*altLanguageLinks.put(
                     altLang.split("_") [ 0 ] + "-"
                         + altLang.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+                        altUrl);*/
+        	altLanguageLinks.put(
+        			hrefLang,
                         altUrl);
         	if(configService.getConfigValues(PAGE_LOCALE, currentPage.getPath()).equalsIgnoreCase(altLang)) {
         			isAltLangSameAsCurPgLocale=true;
@@ -1950,13 +2000,24 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       final String pagePath = currentPage.getPath();
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
+      final String modifiedHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
+      String pageHrefLang = null;
+      if(modifiedHrefLang!= null && modifiedHrefLang.equals("true")) {
+    	  pageHrefLang = pageLocale.substring(0, pageLocale.length()-3);
+	  }else {
+		  pageHrefLang = pageLocale.split("_") [ 0 ] + "-"
+	                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
+	  }
       if (! altLanguageLinks.isEmpty()) {
         if(isAltLangSameAsCurPgLocale) return;
     	
-        altLanguageLinks.put(
+        /*altLanguageLinks.put(
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + configService.getPageRelativeUrl(pagePath));
+            siteDomain + configService.getPageRelativeUrl(pagePath));*/
+        altLanguageLinks.put(
+        		pageHrefLang,
+                siteDomain + configService.getPageRelativeUrl(pagePath));
       }
       LOG.debug("Page specific new altLanguageLinks :: {}", altLanguageLinks);
     } catch (LoginException | RepositoryException | WCMException e) {

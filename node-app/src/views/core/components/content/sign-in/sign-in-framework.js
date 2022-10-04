@@ -204,6 +204,7 @@ $(document).ready(function () {
     $(".mySlfSignIn .download-app-wrapper .mobile-app-text").addClass(
       "app-logo"
     );
+    $(".mySlfSignIn .download-app-wrapper .mobile-app-text img").attr('alt', 'Sun Life logo');
   }
   if ($(".mySlfSignIn").length > 0) {
     if (
@@ -411,3 +412,31 @@ $(document).ready(function () {
   }
 });
 /* RTDM offer ends here */
+/* Sign-in eye toggle functionality starts here*/
+$(document).ready(function () {
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.getElementById("PASSWORD");
+    const englishText = document.getElementById("spanTextEnglish");
+    const frenchText = document.getElementById("spanTextFrench");
+    togglePassword.addEventListener("click", () => {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        // toggle the eye slash icon
+        togglePassword.classList.toggle("fa-eye");
+        if (englishText != null) {
+            if (englishText.textContent === "Hide password") {
+                englishText.textContent = "Show password";
+            } else {
+                englishText.textContent = "Hide password";
+            }
+        } else {
+            if (frenchText.textContent === "Masquer le mot de passe") {
+                frenchText.textContent = "Afficher le mot de passe";
+            } else {
+                frenchText.textContent = "Masquer le mot de passe";
+            }
+        }
+    });
+});
+
+
