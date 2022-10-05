@@ -204,7 +204,17 @@ $(document).ready(function () {
     $(".mySlfSignIn .download-app-wrapper .mobile-app-text").addClass(
       "app-logo"
     );
-    $(".mySlfSignIn .download-app-wrapper .mobile-app-text img").attr('alt', 'Sun Life logo');
+
+    var logoAltText="";
+
+    if ( document.documentElement.lang.toLowerCase() === "en" ) {
+      logoAltText = "Sun Life logo";
+    } else if ( document.documentElement.lang.toLowerCase() === "fr" ) {
+      logoAltText = "logo de la Sun Life";
+    }
+
+    $(".mySlfSignIn .download-app-wrapper .mobile-app-text img").attr('alt', logoAltText);
+
   }
   if ($(".mySlfSignIn").length > 0) {
     if (
