@@ -192,3 +192,21 @@ a.CoveoResultLink:focus a,
 .advisorhub-sunlife-content-page #coveo-search-body .coveo-search-section {
     display: none;
 }
+
+.ppt-link::before {
+    content: "\f1c4";
+    font-family: fontawesome;
+    margin-right: 5px;
+}
+
+.excel-link::before {
+    content: "\f1c3";
+    font-family: fontawesome;
+    margin-right: 5px;
+}
+
+.doc-link::before {
+    content: "\f1c2";
+    font-family: fontawesome;
+    margin-right: 5px;
+}
