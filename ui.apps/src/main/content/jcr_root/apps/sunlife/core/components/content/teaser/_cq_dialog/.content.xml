@@ -67,10 +67,10 @@
                                             <lazyLoading
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check if the image should be lazy loaded. Should be checked for all images that are below the fold"
+                                                fieldDescription="Check if the teaser should be lazy loaded. Should be checked for all images that are below the fold"
                                                 name="./isLazyLoaded"
                                                 text="Lazy Load Image"
-                                                checked="true"
+                                                checked="false"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
                                             <decorative
