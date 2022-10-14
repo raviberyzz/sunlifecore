@@ -1,11 +1,12 @@
 <sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardModel">
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
     <sly data-sly-test="${productCardModel.topc=='static'}">
         <div data-sly-test.hasPath="${productCardModel.productCardFragmentPath}" class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
             <sly data-sly-test="${productCardModel.pcData.productCardHeading }">
-			            <img src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading }" class="imageCard">
+			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading }" class="imageCard">
 					</sly>
                     <sly data-sly-test="${!productCardModel.pcData.productCardHeading }">
-			            <img src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
 					</sly>
             <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
             <div class="caption">
@@ -35,10 +36,10 @@
             </sly>
             <div class="thumbnail ${pcFeaturedCard ? 'feature-card' : ''}">
             <sly data-sly-test="${pcHeading}">
-            	<img src="${pcImage}" alt="${pcHeading}" class="imageCard">
+            	<img data-sly-attribute.loading="${imgLazyLoaded}" src="${pcImage}" alt="${pcHeading}" class="imageCard">
 			</sly>
             <sly data-sly-test="${!pcHeading}">
-            	<img src="${pcImage}" alt="" class="imageCard">
+            	<img data-sly-attribute.loading="${imgLazyLoaded}" src="${pcImage}" alt="" class="imageCard">
 			</sly>
             <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
             <div class="caption">
@@ -62,7 +63,7 @@
                 ${productCardModel.title}
             </div>
             <div data-section="product-secondary-CTA">
-                 <img src="${productCardModel.featuredImagePath}" alt="Featured" class="toprightfeature">
+                 <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.featuredImagePath}" alt="Featured" class="toprightfeature">
                 <div class="fa fa-icon ${productCardModel.icon}"></div>
                 ${productCardModel.text @ context='html'}
             </div>

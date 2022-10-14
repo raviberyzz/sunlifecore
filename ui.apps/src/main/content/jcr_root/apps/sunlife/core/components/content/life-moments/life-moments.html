@@ -1,5 +1,6 @@
 <sly data-sly-use.lifeText="ca.sunlife.web.cms.core.models.LifeMomentsModel"></sly>
 <sly data-sly-test.empty="${!lifeText.heading}"/>
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
 <div class="">
 ${lifeText.heading @context ='html'}
 <div class="life-moments-wrapper-desktop"> 
@@ -26,5 +27,5 @@ ${lifeText.heading @context ='html'}
 </div>
 <div class="bright-start">
 ${lifeText.description @context ='html'}
-<img src="/content/dam/sunlife/legacy/assets/ca/bright-start-bike-light-bg.png" alt="" aria-hidden="true"></div>
+<img data-sly-attribute.loading="${imgLazyLoaded}"  src="/content/dam/sunlife/legacy/assets/ca/bright-start-bike-light-bg.png" alt="" aria-hidden="true"></div>
 </div>

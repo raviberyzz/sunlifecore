@@ -98,6 +98,15 @@
 												fieldLabel="Text for the description"
                                                 name="./description"
                                                 useFixedInlineToolbar="{Boolean}true"/>
+                                                <lazyLoading
+                                                   jcr:primaryType="nt:unstructured"
+                                                   sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                   fieldDescription="Check if the life-moments should be lazy loaded. Should be checked for all images that are below the fold"
+                                                   name="./isLazyLoaded"
+                                                   text="Lazy Load Image"
+                                                   checked="false"
+                                                   uncheckedValue="false"
+                                                   value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
