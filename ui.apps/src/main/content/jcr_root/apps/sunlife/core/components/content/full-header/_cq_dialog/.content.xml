@@ -480,6 +480,22 @@
                                                     				value="modal"/>    
                                             				</items>
                                         					</target> 
+                                                                <linktarget
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Target"
+                                                    name="./linkTarget">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sametab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Tab"
+                                                            value="_self"/>
+                                                        <newtab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="_blank"/>
+                                                    </items>
+                                                </linktarget>
                                         					<signinbuttonid
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
