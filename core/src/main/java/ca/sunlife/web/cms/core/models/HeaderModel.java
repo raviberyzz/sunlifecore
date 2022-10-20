@@ -100,6 +100,14 @@ public interface HeaderModel {
    * @return the SigninTarget
    */
   @ Inject
+  String getLinkTarget();
+
+   /**
+   * Gets the LinkTarget.
+   *
+   * @return the LinkTarget
+   */
+  @ Inject
   String getSigninTarget();
 
   /**
