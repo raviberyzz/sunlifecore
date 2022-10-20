@@ -100,15 +100,15 @@ public interface HeaderModel {
    * @return the SigninTarget
    */
   @ Inject
-  String getLinkTarget();
+  String getSigninTarget();
 
-   /**
+  /**
    * Gets the LinkTarget.
    *
    * @return the LinkTarget
-   */
+   */    
   @ Inject
-  String getSigninTarget();
+  String getLinkTarget();
 
   /**
    * Gets the list from search.
