@@ -102,6 +102,14 @@ public interface HeaderModel {
   @ Inject
   String getSigninTarget();
 
+   /**
+   * Gets the LinkTarget.
+   *
+   * @return the LinkTarget
+   */    
+  @ Inject
+  String getLinkTarget();
+
   /**
    * Gets the list from search.
    *
