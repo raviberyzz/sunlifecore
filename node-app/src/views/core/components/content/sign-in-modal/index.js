@@ -1,4 +1,31 @@
 $(document).ready(function () {
+  
+   $('#signin-widget-modal').on('shown.bs.modal', function () {
+
+     var inputs = $('#signin-widget-modal').find('select, input, textarea, button, a').filter(':visible');
+     var firstInput = inputs.first();
+     var lastInput = inputs.last();
+
+     /*set focus on input box */
+      firstInput.focus();
+
+     /*redirect last tab to first input*/
+     lastInput.on('keydown', function (e) {
+         if ((e.which === 9 && !e.shiftKey)) {
+             e.preventDefault();
+             firstInput.focus();
+         }
+     });
+
+     /*redirect first shift+tab to last input*/
+     firstInput.on('keydown', function (e) {
+         if ((e.which === 9 && e.shiftKey)) {
+             e.preventDefault();
+             lastInput.focus();
+         }
+     });
+
+ });
   $("a.customer-sign-sm").click(function () {
     updateSignInForm("form_signon_mobile");
   });
