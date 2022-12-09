@@ -7,4 +7,5 @@
 	<form-email-model/>
     <mustache-template/>
     <advisorhub-outage-model/>
+    <advisorhub-calendar-model/>
 </jcr:root>
