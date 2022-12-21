@@ -108,7 +108,7 @@ public class ProductCardModel {
   private static final String JCR_CONTENT_DATA_MASTER = "/jcr:content/data/master";
 
   /** The Constant ELEMENT_NAMES. */
-  private static final String [ ] ELEMENT_NAMES = { "productCardHeading", "productCardContent",
+  private static final String [ ] ELEMENT_NAMES = { "productCardAltTxt", "productCardHeading", "productCardContent",
       "productCardPagePath", "featuredCard", "productCardImage" };
 
   /** The featured image path. */

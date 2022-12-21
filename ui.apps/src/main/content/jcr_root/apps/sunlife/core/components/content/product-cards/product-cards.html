@@ -2,13 +2,18 @@
 <sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
     <sly data-sly-test="${productCardModel.topc=='static'}">
         <div data-sly-test.hasPath="${productCardModel.productCardFragmentPath}" class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
-            <sly data-sly-test="${productCardModel.pcData.productCardHeading }">
-			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading }" class="imageCard">
+            <sly data-sly-test="${productCardModel.pcData.productCardAltTxt }">
+			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardAltTxt }" class="imageCard">
 					</sly>
-                    <sly data-sly-test="${!productCardModel.pcData.productCardHeading }">
-			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+                    <sly data-sly-test="${!productCardModel.pcData.productCardAltTxt}">
+			            <sly data-sly-test="${productCardModel.pcData.productCardHeading}">
+							<img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading}" class="imageCard">
+						</sly>
+						<sly data-sly-test="${!productCardModel.pcData.productCardHeading}">
+							<img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+						</sly>
 					</sly>
-            <span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
+			<span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
             <div class="caption">
                 <h2 data-sly-test="${productCardModel.pcData.productCardHeading}" class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
                 ${productCardModel.pcData.productCardContent @context='html'}
