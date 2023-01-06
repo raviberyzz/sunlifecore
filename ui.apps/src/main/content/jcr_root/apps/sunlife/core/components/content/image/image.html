@@ -19,7 +19,7 @@
        data-cmp-hook-image="link">
         <noscript data-sly-unwrap="${!image.lazyEnabled && image.widths.length <= 1 && !image.areas}" data-cmp-hook-image="noscript">
             <sly data-sly-test.usemap="${'{0}{1}' @ format=['#', resource.path]}"></sly>
-            <img src="${image.fileReference}" data-sly-attribute.loading="${imgLazyLoaded}" class="cmp-image__image" itemprop="contentUrl" data-cmp-hook-image="image"
+            <img src="${image.fileReference}" data-sly-attribute.loading="${imgLazyLoaded}" class='cmp-image__image'${properties.hideImageMobile ? "hidden-xs" : "" }'itemprop="contentUrl" data-cmp-hook-image="image"
                  data-sly-attribute.usemap="${image.areas ? usemap : ''}"
                  alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}"/>
             <map data-sly-test="${image.areas}"
