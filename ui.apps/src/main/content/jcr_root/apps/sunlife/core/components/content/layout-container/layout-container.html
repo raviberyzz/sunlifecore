@@ -94,14 +94,6 @@
                 <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
             </div>
         </sly>
-        <sly data-sly-test="${layout.type == '20:80'}">
-            <div class="col-sm-2">
-                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
-            </div>
-            <div class="col-sm-10">
-                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
-            </div>
-        </sly>
         <sly data-sly-test="${layout.type == '80:20'}">
             <div class="col-sm-10">
                 <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />

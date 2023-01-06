@@ -1,0 +1,22 @@
+<div class="footer-copyright-wrapper" data-section="{{data-section-footer-copyright}}">
+    <div class="top-part clearfix">
+        <div class="slf-tagline">{{tagline}}</div>
+        <div class="slf-legal">
+            <ul>
+                {{#each list1}}
+                <li>
+                    <a class="{{class-name}}" href="{{link}}" target="{{target}}">{{text}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-part">
+        <div class="slf-copyright">{{copyright}}</div>
+        {{#if slf-acronym-present}}
+            <div class="slf-acronym">{{acronym}}</div>
+        {{else}}
+            <div class="not-slf-acronym">{{acronym}}</div>
+        {{/if}}
+    </div>
+</div>

@@ -1,0 +1,4 @@
+{
+    "categories":"sunlife.core.contexthub",
+    "embed":"sunlife.core.vendor,granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main"
+}

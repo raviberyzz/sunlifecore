@@ -1,0 +1,458 @@
+@import '../../../base/core';
+.blue-background-wrapper{
+    color: $white-shade;
+    background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side_blue.png) bottom center no-repeat,linear-gradient(#004C6C, #002C3C);
+    height: 382px;
+    padding-top: 48px;
+    background-size: 120% 120%;
+    text-align: center;
+    position: relative;
+    h2,h3,h4,h5,h6{
+        margin: 0 0 16px 0;
+        font-size: 1.75rem;
+        line-height: 36px;
+    }
+    p{
+        font-size: 0.875rem;
+        line-height: 18px;
+        padding-left: 20%;
+        padding-right: 20%;
+        margin: 0;
+    }
+    .links{
+        width: 100%;
+        .accordion-heading{
+            display: none;
+        }
+        .list-div{
+            display: block;
+            ul{
+                min-height: 48px;
+                margin: 16px 0 24px 0;
+                display: inline-flex;
+                li{
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    flex: auto;
+                    padding: 0 18px;
+                    a{
+                        font-size: 0.875rem;
+                        line-height: 20px;
+                        font-weight: 400;
+                        color: $light-yellow-color;
+                    }
+                    strong{
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: $light-yellow-color;
+                    }
+                }
+                li:not(:last-child){
+                    border-right: 2px solid $light-yellow-color;
+                } 
+            }
+        }
+    }
+    .life-moments-wrapper-mobile{
+        display: none;
+    }
+    .bright-start{
+        padding-left: 60px;
+        h4{
+            margin: 0 0 16px 0;
+            line-height: 18px;
+        }
+        a{
+            color: $light-yellow-color;
+        }
+        img{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        p:last-of-type{
+            margin-top: 16px;
+        }
+    }
+    .view-all-category {
+        &:after{
+            font-weight:400;
+        }
+    }
+}
+.yellow-background-wrapper{
+    color: $dark-grey-color;
+    background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat,linear-gradient(#eaab00, #ffdd36);
+    padding-top: 48px;
+    background-size: 120% 100%;
+    text-align: center;
+    position: relative;
+    padding-bottom:27px;
+    h3{
+        margin: 0 0 16px 0;
+    }
+    p{
+        font-size: 0.875rem;
+        line-height: 18px;
+        padding-left: 20%;
+        padding-right: 20%;
+        margin: 0;
+    }
+    .links{
+        width: 100%;
+        .accordion-heading{
+            display: none;
+        }
+        .list-div{
+            display: block;
+            ul{
+                min-height: 48px;
+                margin: 16px 0 24px 0;
+                display: inline-flex;
+                li{
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    flex: auto;
+                    padding-left: 24px;
+                    a{
+                        font-size: 0.875rem;
+                        line-height: 20px;
+                        font-weight: 400;
+                    }
+                    strong{
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                     }
+                }
+                li:not(:last-child):after{
+                    content:"";
+                    display: block;
+                    border-right: 2px solid $light-yellow-color;
+                    margin: 10px auto;
+                    height: 35px;
+                    padding-right: 24px;
+                }
+            }
+        }
+    }
+    .life-moments-wrapper-mobile{
+        display: none;
+    }
+    .bright-start{
+        padding: 0px;
+        h4{
+            margin: 0 0 16px 0;
+            line-height: 18px;
+        }
+        img{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        p:last-of-type{
+            margin-top: 16px;
+        }
+    }
+    .view-all-category {
+        &:after {
+            color: $medium-blue-color;
+            font-weight:400;
+        }
+    }
+}
+.lifemoments-apac {
+	background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_side.png) top center no-repeat,linear-gradient(#eaab00,#ffdd36);
+	text-align: center;
+	background-size: 120% 120%;
+	height: 382px;
+    padding-top: 48px;
+    position: relative;
+	h2,h3,h4,h5,h6 {
+		margin: 0 0 16px 0;
+		font-size: 1.75rem;
+		line-height: 36px;
+	}
+	p {
+		font-size: .875rem;
+		line-height: 18px;
+		padding-left: 20%;
+		padding-right: 20%;
+		margin: 0;
+	}
+	.links {
+		.list-div {
+			display: block;
+			ul {
+				min-height: 48px;
+				margin: 16px 0 24px 0;
+				display: inline-flex;
+				li {
+					text-align: center;
+					align-items: center;
+					justify-content: center;
+					display: flex;
+					flex: auto;
+					padding-left: 24px;
+					a {
+						font-size: .875rem;
+						line-height: 20px;
+						font-weight: 400;
+					}
+					strong {
+						font-size: 1.25rem;
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+	.life-moments-wrapper-desktop {
+		.links {
+			.list-div {
+				ul {
+					li {
+						&:not(:last-child) {
+							&:after {
+								content: "";
+								display: block;
+								border-right: 2px solid #fd0;
+								margin: 10px auto;
+								height: 35px;
+								padding-right: 24px;
+							}
+                        }
+                        z-index: 1;
+					}
+				}
+			}
+		}
+	}
+	.bright-start {
+		text-align: left;
+		img{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+}
+@media (max-width: $mobile-screen-max) {
+    .blue-background-wrapper{
+        background: url("/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_vertical_blue.png") top center no-repeat,linear-gradient(#004C6C, #002C3C);
+        background-size: cover;
+        height: auto;
+        padding: 48px 16px;
+        h3{
+            margin: 0 0 24px 0;
+        }
+        .bright-start{
+            padding: 0;
+            h4{
+                line-height: 26px;
+            }
+            p:last-of-type{
+                margin-top: 32px;
+            }
+        }
+        p{
+            padding: 0;
+        }
+        .links{
+            .list-div{
+                ul{
+                    display: block;
+                    margin-top: 24px;
+                    margin: 24px 0 48px 0;
+                    li:not(:last-child){
+                        border: none;
+                        padding-bottom: 24px;
+                    }
+                    li{
+                        text-align: left;
+                        padding-left: 0;
+                        padding-right: 0;
+                        a{
+                            width: 100%;
+                            font-weight: 700;
+                        }
+                        a:after{
+                            font-family: FontAwesome;
+                            content: " \f105";
+                            font-weight: 100;
+                            float: right;
+                        }
+                    }
+                }
+            }
+        }
+        .life-moments-wrapper-desktop{
+            display: none;
+        }
+        .life-moments-wrapper-mobile{
+            display: block;
+        }
+        img{
+            display: none;
+        }
+    }
+    .yellow-background-wrapper{
+        background: url("/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_vertical.png") top center no-repeat,linear-gradient(#eaab00, #ffdd36);
+        background-size: cover;
+        height: auto;
+        padding: 48px 16px;
+        h3{
+            margin: 0 0 24px 0;
+        }
+        .bright-start{
+            padding: 0;
+            h4{
+                line-height: 26px;
+            }
+            p:last-of-type{
+                margin-top: 32px;
+            }
+        }
+        p{
+            padding: 0;
+        }
+        .links{
+            .list-div{
+                ul{
+                    display: block;
+                    margin-top: 24px;
+                    margin: 24px 0 48px 0;
+                    li:not(:last-child){
+                        border: none;
+                        padding-bottom: 24px;
+                    }
+                    li{
+                        text-align: left;
+                        padding-left: 0;
+                        padding-right: 0;
+                        a{
+                            width: 100%;
+                            font-weight: 700;
+                        }
+                        a:after{
+                            font-family: FontAwesome;
+                            content: " \f105";
+                            font-weight: 100;
+                            float: right;
+                        }
+                    }
+                    li:not(:last-child):after{
+                        display: none;
+                    }
+                }
+            }
+        }
+        .life-moments-wrapper-desktop{
+            display: none;
+        }
+        .life-moments-wrapper-mobile{
+            display: block;
+        }
+        img{
+            display: none;
+        }
+    }
+    .lifemoments-apac {
+		background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/circleoutline_vertical.png) top center no-repeat,linear-gradient(#eaab00,#ffdd36);
+		background-size: cover;
+		height: auto;
+		padding: 48px 16px;
+		.life-moments-wrapper-desktop {
+			display: none;
+		}
+		.links {
+			.list-div {
+				ul {
+					display: block;
+					margin-top: 24px;
+					margin: 24px 0 48px 0;
+					li {
+						&:not(:last-child) {
+							border: 0;
+							padding-bottom: 24px;
+						}
+						text-align: left;
+						padding-left: 0;
+						padding-right: 0;
+						a {
+							&:after {
+								font-family: FontAwesome;
+								content: " \f105";
+								font-weight: 100;
+								float: right;
+							}
+						}
+					}
+				}
+			}
+		}
+		.life-moments-wrapper-mobile {
+			.links {
+				.list-div {
+					ul {
+						li {
+							display: block;
+							a {
+								width: 100%;
+								font-weight: 700;
+							}
+						}
+					}
+				}
+			}
+		}
+		img {
+			display: none;
+		}
+	}
+}
+
+@media(min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .blue-background-wrapper{
+        .bright-start{
+            padding-left:82px;
+        }
+    }
+}
+//Only for ipad
+@media(min-width:$tab-screen-min) and (max-width:1023px){
+    .yellow-background-wrapper{
+
+        .bright-start {
+            p{
+                max-width: 50%;
+                padding: 0 !important;
+                margin: auto !important;
+            }
+            h3{
+                margin: 0 auto 16px auto !important;
+                max-width: 50%;
+            }
+
+        }
+    }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width:$mobile-screen-max) {
+	.life-moments {
+		h2{
+			margin-top: 0;
+			margin-bottom: 24px;
+		}
+	}
+}
+@media (min-width:$tab-screen-min) {
+	.lifemoments-apac {
+		.life-moments-wrapper-mobile {
+			display: none;
+		}
+	}
+}

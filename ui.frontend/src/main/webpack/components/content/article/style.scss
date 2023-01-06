@@ -1,0 +1,366 @@
+@import '../../../base/core';
+
+.article-wrapper{
+    .article-intro{
+        .article-date{
+            font-weight: 400;
+            font-size: 0.875rem;
+            line-height: 18px;
+            text-transform: uppercase;
+        }
+        .article-title{
+            margin-bottom: 10px;
+        }
+        .article-author-name{
+            font-size: 1rem;
+            line-height: 24px;
+        }
+    }
+    .article-teaser{
+        margin-bottom: 10px;
+    }
+    .article-image{
+        font-size: 1.125rem;
+        line-height: 140%;
+        margin: 0;
+        img{
+            width: 100%;
+            margin: 12px 0 30px 0;
+        }
+    }
+    .article-body{
+        margin-bottom: 30px;
+        img{
+            width: 100%;
+            margin: 12px 0 30px 0;
+        }
+        a{
+            img{
+                width:auto;
+            }
+        }
+    }
+    .article-rating{
+        margin-bottom: 30px;
+    }
+    .article-footer{
+        .article-author{
+            border-bottom: 2px dotted #e5e5e5;
+            border-top: 2px dotted #e5e5e5;
+        }
+
+    }
+
+}
+/** related articles and editorial related articles article listings and Featured content list css start here **/
+    // related articles start
+    .related-articles{
+        margin: 30px 0px;
+        .title{
+            h2,h3,h4,h5,h5{
+                margin-top:0px;
+                text-align:center;
+            }
+        }
+        div[class^="col-"]{
+            text-align: center;
+            .article-content{
+                margin:10px 0px;
+                padding: 29px 0px 5px;
+                a {
+                    font-weight: 700;
+                    color: $medium-blue-color;
+                    font-size: 1rem;
+                    .article-image{
+                        img{
+                            display:none;
+                            
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+  //related articles end 
+
+     //editorial related articles start
+     .editorial-related-articles{
+        div[class^="col-"]{
+            .editorial-article-content{
+                text-align: center;
+                padding: 29px 0 5px;
+                .editorial-image:before{
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    bottom: -5px;
+                    right: -5px;
+                    left: -5px;
+                    background-image: linear-gradient($medium-yellow-background, $primary-yellow-background);
+                    z-index: -1;
+                    border-radius: 50%;
+                }
+                .editorial-image{
+                    position: relative;
+                    margin: auto;
+                    border-radius: 50%;
+                    background: $white-shade;
+                    z-index: 1;
+                    width: 220px;
+                    height: 100%;
+                    img{
+                        width:220px;
+                        height:220px;
+                        max-width:220px;
+                        border-radius:50%;
+                    }
+                }
+                .date{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-family: 'sunlife-sans';
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    line-height: 18px;
+                    text-transform: uppercase;
+                }
+                .editorial{
+                    margin-bottom:20px;
+                }
+                p{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                a{
+                    font-size: 1.125rem;  
+                }
+            }
+        }
+     }
+     //editorial related articles end
+
+     //article listing styles start
+     .article-lists{
+        div[class^="col-"]{
+            .content-list{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                border-bottom: solid 2px $container-border-color;
+                li:first-child{
+                    padding-top: 0;
+                }
+                li{
+                    padding-top: 30px;
+                    position: relative;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    .content-list-thumbnail{
+                        display:none;
+                        a{
+                            font-family: 'sunlife-sans';
+                            font-weight: 700;
+                            color: $medium-blue-color;
+                            font-size: 1rem;
+                            text-decoration: none;
+                            img{
+                                vertical-align:middle;
+                            }
+                        }
+                    }
+                    .content-list-summary{
+                        .date{
+                            font-family: 'sunlife-sans';
+                            font-weight: 400;
+                            font-size: 0.875rem;
+                            line-height: 18px;
+                            text-transform: uppercase;
+                        }
+                        h2,h3,h4,h5,h6{
+                            font-weight: 400;
+                            font-size: 2rem;
+                            line-height: 31px!important;
+                            a{
+                                font-family: 'sunlife-sans';
+                                font-weight: 400;
+                                font-size: 1.5rem!important;
+                                line-height: 31px; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+     }
+     //article listing styles end
+
+     //Featured content list css starts
+     .articleList{
+         padding: 0 15px;
+        .dotted {
+            li{
+               padding: 10px 0px;
+            }
+            li:not(:last-child){
+                border-bottom: 2px dotted $light-grey-color;
+            }
+        } 
+     }
+       //tools and calculators section in featured content list starts 
+      .featured-content-list-tools{
+          li{
+              .icon-texts{
+                  ul{
+                      padding-bottom:24px;
+                      li{
+                        padding: 10px 0px;
+                      }
+                      li:not(:last-child){
+                        border-bottom: 2px dotted $light-grey-color;  
+                      }
+                  }
+              }
+          }
+      }
+      //tools and calculators section in featured content list ends
+      //Featured content list css end 
+
+   /** related articles and editorial related articles article listings and Featured content list css end here **/
+
+/*** Media Quries Start ***/
+
+@media (min-width:$mobile-screen-min) and (max-width:$mobile-screen-max){
+    /***editorial related articles css start ****/
+    .editorial-related-articles{
+        div[class^="col-"]:not(:first-child){
+            .row-separator-yellow:before{
+                display: block;
+                content: ' ';
+                height: 2px;
+                width: 60px;
+                margin: 10px auto;
+                background: $medium-yellow-background;
+            }
+        }
+    }
+    /*** editorialrelated articles css end ****/
+
+    /*** article listing styles start ***/
+    .article-lists{
+        div[class^="col-"]{
+            .content-list{
+                li:not(:first-child):before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    top:0;
+                    width: 100px;
+                    margin-left: -50px;
+                    height: 0;
+                    border-top: 2px solid $container-border-color;
+                }
+            }
+        }
+     }
+     /*** article listing styles end ***/
+}
+
+
+@media (min-width:$tab-screen-min){
+
+    /*** related articles css start ****/
+    .related-articles{
+        .title{
+            h2,h3,h4,h5,h5{
+                text-align:left;
+            }
+        }
+        div[class^="col-"]{
+            .article-content{
+                a {
+                    .article-image::before{
+                        content: '';
+                        position: absolute;
+                        top: -5px;
+                        bottom: -5px;
+                        right: -5px;
+                        left: -5px;
+                        background-image: linear-gradient($medium-yellow-background, $primary-yellow-background);
+                        z-index: -1;
+                        border-radius: inherit;
+                    }
+                        .article-image{
+                            position: relative;
+                            margin: auto;
+                            border-radius: 50%;
+                            background: $white-shade;
+                            z-index: 1;
+                            width: 220px;
+                            height: 100%;
+                            margin-bottom:20px;
+                            img{
+                            display:block;
+                            max-width:220px;
+                            width: 220px;
+                            height: 220px;
+                            border-radius:50%;
+                            }
+                        }
+                   
+                    
+                }
+            }
+            
+        }
+    }
+      /*** related articles css end****/
+
+      /*** article listing styles start here ***/
+
+      .article-lists{
+        // border-right: 2px solid #9a9a9a;
+        div[class^="col-"]{
+            .content-list{
+                li{
+                    text-align: left;
+                   .content-list-thumbnail{
+                       display:table-cell;
+                       vertical-align: top;
+                       width: 250px;
+                       a{
+                           img{
+                               width:220px;
+                               height: 220px;
+                           }
+                       }
+                   }
+                   .content-list-summary{
+                    display:table-cell;
+                    vertical-align: top;
+                    padding-right: 30px;
+                   }
+                }
+            }
+            .pagination-component{
+                border:none;
+            }
+        }
+     }
+      /*** article listing styles start end ***/
+
+      // Featured-content-list start
+    .articleList{
+        margin-top: -25px;
+        padding-top: 25px;
+        border-right: 2px solid $medium-grey-background;
+    }
+     // Featured content-list end
+}
+/*** Media Quries end ***/
+//to hide rating info icon defect #951
+[id^=rating_info] {
+    display: none !important;
+}

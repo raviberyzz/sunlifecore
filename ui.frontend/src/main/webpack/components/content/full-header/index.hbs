@@ -1,0 +1,56 @@
+<header>
+  <div class="slf-header-wrapper">
+    <div class="desktop-sign-in">
+      {{>core-components-content-sign-in-modal}}
+    </div>
+    <div class="desktop-header-wrapper">
+      <div class="desktop-search-bar">
+        {{>core-components-content-search-bar}}
+      </div>
+      <div class="desktop-region-bar collapse" id="sun-language">
+        {{>core-components-content-region-language-menu}}
+      </div>
+      <div class="col-xs-12 yellow-stripe">
+      </div>
+      <div class="col-xs-12 desktop-header-content">
+        {{!-- <div class="col-xs-12 desktop-header-content header-signIn"> --}}
+        <div class="col-xs-12 desktop-sunlife-navigation">
+          <div class="{{desktop-sunlife-logo}}" data-section="{{data-section-logo}}">
+            <a href="https://www.sunlife.ca">
+              <img class="vertical-middle-align" alt="sunlife logo clickable"
+                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+              </img>
+            </a>
+            {{!-- FOR TEST --}} 
+            {{!-- <a href="https://www.sunlife.ca">
+              <img class="vertical-middle-align" alt="sunlife logo clickable"
+                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+              </img>
+            </a> --}}
+            {{!-- <a href="https://www.sunlife.ca">
+              <img class="vertical-middle-align" alt="sunlife logo clickable"
+                src="https://www.sunlife.ca/static/slfglobal/globalweb/responsive/images/sunlife-logo-web.svg">
+              </img>
+            </a>  --}}
+          </div>
+          <div class="col-xs-12 {{desktop-utility-nav}}">
+          {{>core-components-content-utility-nav}}
+        </div>
+          <div class="desktop-navigation no-gutter">
+            <div class="{{desktop-mega-menu}} clearfix">
+              {{>core-components-content-navigation}}
+            </div>
+          </div>
+          <div class="{{desktop-sign-button}}" id="signinbutton">
+            {{>core-components-content-button}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-header">
+      {{!-- for checking signIn header --}}
+    {{!-- <div class="mobile-header mobile-header-signIn"></div> --}} 
+      {{>core-components-content-mobile-header}}
+    </div>
+  </div>
+</header>

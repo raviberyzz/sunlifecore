@@ -1,0 +1,245 @@
+@import '../../../base/core';
+.lists-wrapper {
+    .links {
+        padding: 0 15px;
+        border-top: 1px solid $white-shade;
+    }
+    .accordion-heading {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .list-unstyled{
+        li {
+            margin-bottom: 10px;
+            a {
+                font-weight: 400;
+            }
+        }
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.editorial-nav-desktop-wrapper{
+    .links{
+        width: 100%;
+        padding:0px;
+        border: none;
+        .accordion-heading{
+            display: none;
+        }
+        .list-div{
+            display: block;
+            margin-top: 0px;
+            ul{
+                min-height: 84px;
+                background-color: $medium-yellow-background;
+                padding: 16px;
+                width: 100%;
+                display: inline-flex;
+                li{
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    flex: auto;
+                    padding: 0 10px;
+                    margin-bottom: 0;
+                    a{
+                        font-size: 1rem;
+                        line-height: 26px;
+                        font-weight: 700;
+                    }
+                }
+                li:not(:last-child){
+                    border-right: 2px solid $medium-grey-background;
+                }
+                .selected{
+                    background-color: $medium-blue-color;
+                    a{
+                        color: $white-shade;
+                    }
+                }
+                .border-right{
+                    border-right-color: $medium-grey-background;
+                }
+            }
+        }
+    }
+}
+//in mobile landscape to ipad view the editorial nav is going outside the page. 
+@media (min-width: $mobile-screen-min) and (max-width: $tab-screen-min) {
+    .editorial-nav-desktop-wrapper{
+        .links{
+            .list-div{
+                ul{
+                    li{
+                        a{
+                            font-size: 0.875rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.left-nav-list-wrapper{
+    
+    .accordion-heading{
+        font-weight: 700;
+        color: $dark-grey-color;
+        font-size: 1rem;
+        line-height: 26px;
+    }
+    .links {
+        padding: 0 8px;
+        border-top: none;
+    }
+    .list-div{
+        display: block;
+        margin-top: 16px;
+        .list-unstyled{
+            li{ 
+                padding: 0 0 8px 8px;
+                margin-bottom: 0px;
+               a{
+                    padding: 0;
+                    font-size: 1rem;
+                    color: $medium-blue-color;
+                    font-weight: 400;
+                    text-decoration: none;
+                    line-height: 26px;
+                }
+            }
+        }
+    }
+    .selectedlink{
+        a{
+            font-weight: 700 !important;
+            border-bottom: 2px solid $medium-yellow-background;
+            text-decoration: none;
+        }
+    }
+}
+@media (min-width: $tab-screen-min) {
+    .lists-wrapper {
+        .links {
+            float: left;
+            .collapse {
+                display: block !important;
+            }
+        }
+        .accordion-heading {
+            pointer-events: none;
+            line-height: 23px;
+        }
+        .list-div {
+            margin-top: 5px;
+        }
+    }
+
+    .left-nav-list-wrapper {
+        .accordion-heading {
+            line-height: 26px;
+        }
+    }
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
+    .left-nav-list-wrapper{
+        .layout-container {
+            float: left;
+            clear: none;
+            width: 50%;
+        }
+    }
+}
+@media (max-width: $mobile-screen-max) {
+    .lists-wrapper {
+        .links {
+            .collapse.show {
+                display: block !important;
+            }
+        }
+        .links .accordion-heading[aria-expanded="false"]:before {
+            content: "\f0da";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .links .accordion-heading[aria-expanded="true"]:before {
+            content: "\f0d7";
+            font-family: FontAwesome;
+            padding-right: 10px;
+        }
+        .accordion-heading {
+            cursor: pointer;
+        }
+    }
+   /* .container-component .cmp-container .editorial-nav-desktop-wrapper {
+        display: none !important;
+    } */
+    .left-nav-list-wrapper {
+        .accordion-heading:before {
+            content: "" !important;
+        }
+    }
+    .editorial-nav-desktop-wrapper{
+        .list-div{
+            form{
+              //  min-height: 84px;
+                background-color: #FFCB05;
+                padding: 16px;
+                width: 100%;
+                display:flex;
+                justify-content: space-between;
+                .Editorial-form-input{
+                    width: 82%;
+                    vertical-align: top;
+                    display: inline-block !important;
+                    select{
+                        height:48px;
+                        width:100%; 
+                        background-image: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/en/form-ui-select-dropdown-arrow.png);
+                        background-size: 30px 10px;
+                        background-repeat: no-repeat;
+                        background-position: right center;
+                        -webkit-appearance: none;
+                    }
+                }
+                .Editorial-form-button{
+                    display:inline-block;
+                   //margin-left:8px;
+                    button{
+                        font-size: 16px !important;
+                        padding: 11px 19px !important;
+                        margin: 0 !important;
+                        border: 2px;
+                        max-width:50px;
+                        min-height: 48px !important;
+                        white-space: normal;
+                        font-family: 'sunlife-sans';
+                        font-weight: 700;
+                        border-radius: 4px !important
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    //interent explorer 
+
+    .editorial-nav-desktop-wrapper{
+        .links{
+            .list-div{
+                ul{
+                    li{
+                        display:table-cell;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
+    }

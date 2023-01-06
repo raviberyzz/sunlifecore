@@ -83,15 +83,6 @@
                                                 text="Image is decorative"
                                                 uncheckedValue="false"
                                                 value="{Boolean}true"/>
-                                            <hideImageMobile
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check checkbox to hide image in mobile"
-                                                name="./hideImageMobile"
-                                                text="Hide Image in Mobile"
-                                                checked="false"
-                                                uncheckedValue="false"
-                                                value="{Boolean}true"/>
                                             <alternativeGroup
                                                 granite:class="cmp-image__editor-alt"
                                                 jcr:primaryType="nt:unstructured"
@@ -163,3 +154,4 @@
             </tabs>
         </items>
     </content>
+</jcr:root>

@@ -1,0 +1,4 @@
+{
+    "categories":"sunlife.core.dependencies",
+    "embed":"granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main"
+}

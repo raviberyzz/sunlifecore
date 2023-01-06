@@ -1,0 +1,1078 @@
+@import '../../../base/core';
+
+/* for ios devices - defect causing text to overflow div, causes defect in IE11 added supports annotation
+@supports not (-ms-high-contrast: none){
+    .teaser.circular-image{
+        .right-item {
+            display: table-cell;
+        }
+    }commenting out as this seems to be creating some issues
+}*/
+
+/* for ios devices - defect causing text to overflow div ends here*/
+ .show-only-in-editorial {
+    display: none !important;
+ }
+.content-block-image {
+    .side-image {
+        width: auto;
+    }
+    .image-text-wrapper{
+        .text-section{
+            h2,h3,h4,h5{
+                font-size:1rem;
+                font-weight:700;
+                line-height: 26px;
+            }
+            p{
+                font-size:1rem;
+                line-height: 26px;  
+            }
+        }
+    }
+}
+.side-image {
+    width: 100%;
+}
+.right-image-position {
+    .right-item {
+        float: left;
+    }
+}
+.banner-section {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 2.25rem;
+        line-height: 46px;
+    }
+    p {
+        font-size: 1.125rem;
+        line-height: 23px;
+    }
+    .side-image {
+        height: fit-content;
+    }
+}
+.editorial-hero-banner {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.5rem;
+        line-height: 30px;
+    }
+        /*.right-image-position{
+        .text-section a {
+            font-size: 1.5rem;
+            font-weight:500;
+            .button-class{
+                font-size:1rem;
+            }
+            }
+        }*/
+    .right-image-position {
+		.text-section {
+			h2 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h3 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h4 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h5 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h6 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			a {
+				.button-class {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+	.left-image-position {
+		.text-section {
+			h2 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h3 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h4 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h5 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			h6 {
+				a {
+					font-size: 1.5rem;
+					font-weight: 500;
+				}
+			}
+			a {
+				.button-class {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+    p {
+        font-size: 1rem;
+    }
+}
+.banner-section {
+    .left-image-position {
+        .left-item {
+            .mobile-img{
+                float: right;
+                // background: url(https://www.sunlife.com/static/ca/M19-NationalCampaign-LifeMomentsLandingPage-1064x400.jpg) no-repeat;
+                background-size:cover;
+                height:259px;
+            }
+
+        }
+               
+    }
+    .right-image-position{
+           .right-item{
+               .mobile-img{
+                height: 259px;
+                background-size:cover;
+               }
+          
+           }         
+    }
+}
+.banner-section.home-page-hero-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 259px;
+            }
+        }
+    }
+}
+.life-moment-second-level-banner{
+    .left-image-position{
+        .left-item{
+            .mobile-img{
+                height:260px;
+            }
+        }
+    }
+    .right-image-position{
+        .right-item{
+            .mobile-img{
+                height: 260px;
+            }
+        }
+    }
+}
+.yellow-border-bottom {
+    .right-image-position, .left-image-position  {
+        border-bottom: 7px solid $primary-yellow-background;
+    }
+
+}
+.blue-border-bottom {
+    .right-image-position, .left-image-position  {
+        border-bottom: 7px solid $medium-blue-color;
+    }
+}
+.middle-aligned-text {
+    .right-image-position, .left-image-position  {
+        display: flex;
+        align-items: center;
+    }
+    .left-image-position{
+        .right-item{
+            .legal-text{
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+.bottom-aligned-text {
+    .right-image-position, .left-image-position  {
+        display: flex;
+        align-items: flex-end;
+        .text-section {
+            margin: 0;
+        }
+    }
+        .left-item {
+            float: none;
+            margin-right: 0;
+        }
+}
+.left-item {
+    float: left;
+    margin-right: 32px;
+    display: table;
+}
+
+
+
+/* Supports browsers that is not IE11 to prevent internet explorer overlap defect 
+@supports not (-ms-high-contrast: none) {
+    .right-item {
+        display: table;
+    }
+}commenting as this seems to be breaking stuff
+*/
+.view-all-category:after{
+    text-decoration:none;
+    display:inline-block;
+
+}
+.mobile-image {
+    display: none;
+}
+.circular-image {
+    img {
+        border-radius: 50%;
+    }
+}
+/*.round-border {
+    img {
+        border: 4px solid $primary-yellow-background;
+    }
+}*/
+.circular-image.round-border {
+    .left-image-position {
+        .left-item {
+            border-radius: 50%;
+            background-image: linear-gradient(to bottom, $medium-yellow-background 70%, $primary-yellow-background 82%);
+            padding: 4px !important;
+        }
+    }
+}
+
+.circle-150-desktop {
+    .left-image-position {
+	    .left-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .left-image-position {
+        .left-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
+.circle-150-desktop {
+    .right-image-position {
+	    .right-item {
+            height: 158px;
+            width: 158px;
+            img{
+                width:150px;
+                height: 150px;
+            }
+        }
+    }
+}
+.circle-220-desktop {
+    .right-image-position {
+        .right-item {
+            height: 228px;
+            width: 228px;
+        }
+    }
+}
+
+.circular-image.round-border {
+    .right-image-position {
+        .right-item {
+            border-radius: 50%;
+            background-image: linear-gradient(to bottom, $medium-yellow-background 70%, $primary-yellow-background 82%);
+            padding: 4px !important;
+        }
+    }
+}
+.circular-image.no-round-border {
+    .left-image-position {
+        .left-item {
+            border-radius: inherit !important;
+            background-image: none !important;
+            padding: inherit !important;
+        }
+    }
+}
+.circular-image.no-round-border {
+    .right-image-position {
+        .right-item {
+            border-radius: inherit !important;
+            background-image: none !important;
+            padding: inherit !important;
+        }
+    }
+}
+/* article pages circular images 220 styles start */
+.article-wrapper{
+    .article-body{
+        .circle-220-desktop,.circle-150-desktop  {
+            .image-text-wrapper{
+                img{
+                    margin:0;
+                }
+            }
+        }
+    }
+} 
+/* article pages circular images 220 styles end */
+.banner-section{
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
+    .right-image-position, .left-image-position {
+        position: relative;
+    }
+    .left-item {
+        float: none;
+        margin-right: 0;
+        div{
+            width:100%;
+        }
+    }
+    .text-section {
+        padding: 20px 27px;
+        width: 47.2%;
+        position: absolute;
+        p {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+    }
+}
+.text-right-align {
+    .text-section {
+        right: 0;
+    }
+}
+.text-left-align {
+    .text-section {
+        left: 0;
+    }
+}
+.text-center-align {
+    .text-section {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.white-box {
+    .text-section {
+        background: rgba(247,247,247,0.9);
+        margin: 0 27px;
+        width: 470px;
+        max-height: 100%;
+    }
+}
+.signIn-banner {
+    height: 100%;
+    margin-top: 0 !important;
+    .image-text-wrapper {
+        height: 100%;
+        .left-image-position {
+            height: 100%;
+            .left-item {
+                height: 100%;
+                .desk-img {
+                    height: 100% !important;
+                }
+            }
+        }
+        .right-image-position {
+            height: 100%;
+            .right-item {
+                height: 100%;
+                .desk-img {
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+}
+// IE Specific fix for white box 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .white-box {
+        .text-section {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+.editorial-hero-banner {
+    .left-image-position, .right-image-position {
+        background: $light-grey-20;
+        .left-item {
+            width: 50%;
+            margin-right: 0;
+        }
+        .right-item {
+            width: 50%;
+        }
+        .text-section {
+            margin: 0 !important;
+            padding: 30px;
+            text-align: center;
+            display: table;
+            p {
+                margin: 0;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+//from mobile to ipad (not ipad pro since css is different for ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: 1023px){
+    .banner-section {
+        .hide-in-editorial.text-section{
+            margin-left: 0px;
+        }
+    }
+}
+
+//from mobile to ipad&ipad-pro (not ipad pro since css is different for ipad pro
+@media (min-width: $mobile-screen-min) and (max-width: $tab-screen-max){
+    // .banner-section.home-page-hero-banner {
+    //     margin-top: 50px;
+    // }
+    // #main-content{
+    //     margin-top:50px;
+    // }
+}
+
+@media (min-width: $mobile-screen-min) and (max-width: $mobile-screen-max){
+    .circle-150-mobile {
+        .left-image-position {
+            .left-item {
+                height: 158px !important;
+                width: 158px !important;
+            }
+        }
+        .right-image-position {
+            .right-item {
+                height: 158px !important;
+                width: 158px !important;
+            }
+        }
+
+    }
+    .banner-section {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1.75rem;
+            line-height: 36px;
+            padding-bottom: 14px;
+            text-align: center !important;
+        }
+        p {
+            text-align: center !important;
+        }
+        .image-text-wrapper {
+            .text-section {
+                padding: 40px 24px;
+            }
+        }
+        .hide-in-editorial.text-section{
+            width: 100% !important;
+        }
+    }
+    .life-moment-second-level-banner .image-text-wrapper .text-section {
+        // padding: 0;
+        margin: 0 !important;
+        // position: absolute;
+        background: transparent;
+        top: 50%;
+        // transform: translate(-50%, -50%);
+        h2, h3, h4, h5, h6 {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+    }
+    .banner-section {
+        .left-image-position {
+            .left-item {
+               background-size:cover;
+               height: 260px;
+                
+            }
+        }
+        .right-image-position{
+            .right-item{
+                background-size:cover;
+               height: 260px; 
+            }
+        }
+    }
+    .landing-page-hero-banner.right-img-align-position{
+        .right-image-position{
+            .right-item{
+                .mobile-img{
+                    background-position:right!important;
+                }
+            }
+        }
+        .left-image-position{
+            .left-item{
+                .mobile-img{
+                    background-position:right!important; 
+                }
+            }
+        }
+    }
+    .landing-page-hero-banner.center-img-align-position{
+        .right-image-position{
+            .right-item{
+                .mobile-img{
+                    background-position:center!important;
+                }
+            }
+        }
+        .left-image-position{
+            .left-item{
+                .mobile-img{
+                    background-position:center!important; 
+                }
+            }
+        }
+    }
+    .content-block-image {
+        .image-text-wrapper{
+            .text-section.right-item{
+                padding: 0px 10px;
+               >*{ 
+                  &:first-child {
+                    margin-top:32px;
+                   }
+                }
+            }
+        }
+    }
+}
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+    .banner-section {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 2rem;
+            line-height: 41px;
+        }
+        .image-text-wrapper{
+            .left-item{
+                overflow: hidden;
+                .side-image{
+                    width:auto;
+                }
+            }
+
+        }
+    }
+    .signIn-banner.white-box {
+        .text-section {
+            width: 100%;
+            margin: 0;
+            right: inherit;
+            bottom: 0;
+        }
+    }
+}
+// css for ipad 
+@media (min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .text-right-align {
+        .text-section {
+            right: 15px;
+        }
+    }
+    .banner-section {
+        .left-image-position {
+            .left-item {
+                .desk-img{
+                    background-position: center !important;
+                }
+
+            }
+        }
+        .right-image-position{
+            .right-item{
+                .desk-img{
+                    background-position: center !important; 
+                }
+
+            }
+        }
+    }
+    .banner-section.home-page-hero-banner {
+        .left-image-position {
+            .left-item {
+                .desk-img {
+                    background-position: initial !important;
+                }
+            }
+        }
+    }
+    .life-moment-second-level-banner.banner-section {
+        .left-image-position {
+            .left-item {
+                .desk-img {
+                    background-position: initial !important;
+                }
+            }
+        }
+    }
+    .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text {
+        .image-text-wrapper {
+            img {
+                max-width: inherit;
+            }
+        }
+    }
+    .teaser.circular-image.circle-150-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text {
+        .image-text-wrapper {
+            img {
+                max-width: inherit;
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile-screen-max) {
+    .side-image {
+            height: auto;
+        }
+
+    .white-box {
+        .text-section {
+            width: 100%;
+        }
+    }
+    .banner-section{
+        .text-section{
+            width:100%;
+        }
+    }
+    .editorial-hero-banner {
+        .left-image-position, .right-image-position {
+            .text-section {
+                width: 100%;
+            }
+        }
+    }
+        .circle-150-mobile {
+            img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        .desktop-image {
+            display: none;
+        }
+        .mobile-image {
+            display: block;
+        }
+        .left-item {
+            float: none;
+            margin-right: 0;
+        }
+        .middle-aligned-text, .bottom-aligned-text {
+            .right-image-position, .left-image-position  {
+                display: block;
+                 text-align: center;
+                text-align:left;
+                .text-section {
+                    margin: 0;
+                }
+            }
+        }
+        .banner-section {
+            .text-section {
+                position: relative;
+                background: $white-shade;
+                margin: 0;
+                padding: 40px 24px;
+            }
+            .button-class {
+                width: 100%;
+                min-width: 100%;
+            }
+        }
+        .editorial-hero-banner {
+            .left-image-position, .right-image-position {
+                background: $light-grey-20;
+                .left-item {
+                    width: 100%;
+                    margin-right: 0;
+                    float: none;
+                }
+                .right-item {
+                    width: 100%;
+                    right: initial;
+                    float: none;
+                }
+                .text-section {
+                    margin: 0;
+                    padding: 30px 24px 40px;
+                    text-align: center;
+                }
+            }
+            .right-image-position {
+                .hide-in-editorial {
+                    display: none !important;
+                }
+                .show-only-in-editorial {
+                    display: block !important;
+                }
+            }
+        }
+    .no-mobile-image {
+        .left-image-position {
+            .left-item {
+                display: none;
+            }
+            .text-section {
+                text-align: center;
+            }
+        }
+        .right-image-position {
+            .right-item {
+                display: none;
+            }
+            .text-section {
+                text-align: center;
+            }
+        }
+    }
+	.show-mobile-image {
+        .left-image-position {
+            .left-item {
+                display: block !important;
+            }
+        }
+        .right-image-position {
+            .right-item {
+                display: block !important;
+            }
+        }
+    }
+}
+@media (min-width: $tab-screen-max) {
+    .circle-220-desktop {
+        img {
+            width: 220px;
+            height: 220px;
+        }
+    }
+    .circle-150-desktop {
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    .banner-section{
+        .right-image-position{
+            .right-item{
+                width:100%;
+            }
+        }
+        .left-image-position{
+            .left-item{
+                width:100%;
+            }
+        }
+    }
+   .banner-section.home-page-hero-banner{
+       .right-image-position{
+           .right-item{
+               .desk-img{
+                   height:400px;
+                   background:cover;
+               }
+           }
+       }
+       .left-image-position{
+           .left-item{
+               .desk-img{
+                height:400px;
+                background:cover;
+               }
+           }
+       }
+   }
+
+   .banner-section.landing-page-hero-banner{
+    .right-image-position{
+        .right-item{
+            .desk-img{
+                height:261px;
+                background:cover;
+            }
+        }
+    }
+    .left-image-position{
+        .left-item{
+            .desk-img{
+             height:261px;
+             background:cover;
+            }
+        }
+    }
+   }
+
+   .life-moment-second-level-banner{
+        .left-image-position{
+            .left-item{
+                .desk-img{
+                    height:350px;
+                }
+            }
+            .text-section{
+                margin-right:63px;
+            }
+        }
+        .right-image-position{
+            .right-item{
+                .desk-img{
+                    height: 350px;
+                }
+            }
+            .text-section{
+                margin-right:63px;
+            }
+        }
+
+}
+}
+@media (max-width: $tab-screen-max) {
+    // .banner-section {
+    //     h1, h2, h3, h4, h5, h6 {
+    //         font-size: 2rem;
+    //         line-height: 41px;
+    //     }
+        .text-section {
+            padding: 10px;
+        }
+    }
+
+// IE specific css
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    // @media (min-width: $desktop-screen-min){
+    //     .teaser.banner-section {
+    //         .right-image-position {
+    //             .left-item.text-section {
+    //                 top: 20%;
+    //             }
+    //         }
+    //     }        
+    // }
+
+    .bottom-aligned-text {
+        .right-image-position, .left-image-position  {
+            .text-section {
+                bottom: 0;
+            }
+        }
+    }
+    .teaser.editorial-hero-banner.content-block-image{
+        .side-image.desktop-image{
+            width:100%;
+        }
+    }
+}
+/* scss for banner images in landscape mode for mobiles start here*/
+@media (min-width:560px) and (max-width:$mobile-screen-max){
+    .desktop-image {
+        display: block;
+        height:auto!important;
+    }
+    .mobile-image {
+        display: none;
+    }
+}
+/* scss for banner images in landscape mode for mobiles end here*/
+/* scss for teaser image component to apply bottom padding only if 
+.image-image and .bottom-aligned-text classes exists start */
+ .circular-image.bottom-aligned-text {
+     .image-text-wrapper{
+         .text-section{
+             margin-top:16px;
+             h2,h3,h4,h5,h6{
+                font-size:1.125rem;
+                line-height: 1.4375rem; 
+             }
+         }
+     }
+ }
+/* scss for teaser image component to apply bottom padding only if 
+.image-image and .bottom-aligned-text classes exists end */
+
+
+
+@media (min-width: $tab-screen-min) and (max-width: 1023px) {
+    //ipad specific case in which teaser text is going beyond the page
+
+    // .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+    //     .left-image-position, .right-image-position{
+    //         display: block;
+    //     }
+    // }
+
+    .col-sm-3 {
+        //ipad specific - circular teaser height set to auto so it is always circular for 4 teaser case
+        .teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix{
+            img {
+                max-width: 100%;
+                height: auto !important;  
+            }
+            .left-item{
+                margin-right: 0 !important;
+            }
+        }
+        //ipad specific - circular image height set to auto so it is always circular for 4 teaser case
+        .image.text-center.circular-image.circle-220-desktop.circle-150-mobile.round-border{
+            img{
+                height: auto !important; 
+            }
+        } 
+    }
+}
+
+
+@media (min-width: $tab-screen-min) {
+    //css targetting for ipad and above for all landing page banners
+    .landing-page-hero-banner {
+        .text-section {
+            width: 405px !important;
+            margin-left: 50px !important;
+            padding: 20px 0px !important;
+        }
+    }
+	.circle-220-desktop {
+		img {
+			width: 220px;
+			height: 220px;
+		}
+	}
+	.banner-section {
+		.right-image-position {
+			.right-item {
+				width: 100%;
+			}
+		}
+		.left-image-position {
+			.left-item {
+				width: 100%;
+			}
+		}
+	}
+	.banner-section.home-page-hero-banner {
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 400px;
+					background: cover;
+				}
+			}
+		}
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 400px;
+					background: cover;
+				}
+			}
+		}
+	}
+	.banner-section.landing-page-hero-banner {
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 261px;
+					background: cover;
+				}
+			}
+		}
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 261px;
+					background: cover;
+				}
+			}
+		}
+	}
+	.life-moment-second-level-banner {
+		.left-image-position {
+			.left-item {
+				.desk-img {
+					height: 350px;
+				}
+			}
+			.text-section {
+				margin-right: 63px;
+			}
+		}
+		.right-image-position {
+			.right-item {
+				.desk-img {
+					height: 350px;
+				}
+			}
+			.text-section {
+				margin-right: 63px;
+			}
+		}
+	}
+}
+
+//commented for middle aligned circular image and text to work in I.E
+/*@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+.teaser.circular-image.circle-220-desktop.circle-150-mobile.round-border.clearfix.middle-aligned-text{
+        .left-image-position, .right-image-position{
+            display: block;
+        }
+    }
+}*/

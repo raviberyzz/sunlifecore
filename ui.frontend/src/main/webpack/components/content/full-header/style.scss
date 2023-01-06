@@ -1,0 +1,285 @@
+@import '../../../base/core';
+
+#signin-widget-modal {
+    .loading {
+        z-index: 1000;
+        position: absolute;
+        display: block;
+        margin-left: -30px;
+    }
+}
+.slf-header-wrapper{
+    .desktop-sign-in{
+        .button-class{
+            display:none;
+            font-size:14px;
+        }
+    }
+    .desktop-header-wrapper{
+        height:100px;
+        .yellow-stripe{
+            height:8px;
+            background-color:$medium-yellow-background;
+            padding:0;
+        }
+        .desktop-header-content{
+            padding: 0 15px 18px 5px;
+            height:92px;
+             /*Logo starts here*/
+             .desktop-sunlife-logo{
+                    float:left;
+                    margin-top:-11px;
+                a{
+                    position: relative;
+                    top: 38px;
+                    &:hover{
+                        text-decoration:none;
+                    }
+                }  
+                img{
+                    width:149px;
+                    height:36px;
+                    cursor:pointer;
+                }
+            }
+            /*Logo end here*/
+            /*Utility Nav starts here*/
+            .desktop-utility-nav{
+                float:right;
+                padding:0;
+                .col-md-9.col-lg-9 {
+                    padding: 0 !important;
+                   }
+                .utility-nav-wrapper{
+                    padding:0 0 8px 0;                        
+                    .utility-nav-links{
+                        .lang-btn{
+                            padding:0 14px;
+                        }
+                        .search-icon-container{
+                            padding-right:0;
+                        }
+                        ul{
+                            a{
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+            /* Utility Nav Ends here */
+            .desktop-sunlife-navigation{
+                padding:0;
+               
+                /*Mega Menu strats here*/
+                .desktop-navigation{
+                    position: static;
+                    float:left;
+                    margin-left: 188px;
+                    .desktop-mega-menu{
+                        .desktop-primary-navigation {
+                            margin: -7px 0 0 21px;
+                            .menu-content{
+                                padding:0;
+                                //margin-top:-15px;
+                                border : 1px solid $light-grey-20;
+                            }
+                            .nav-item{
+                                .dropdown-toggle{
+                                    .nav-item-heading{
+                                        line-height: 24px;
+                                    }
+                                }
+                            }
+                        }
+                        .desktop-primary-navigation-yellow {
+                            margin-left: 0px;
+                            .menu-content{
+                                padding:0;
+                                margin-top:-12px;
+                            }
+                        }
+                    }
+                    /*Mega Menu end here*/
+                    
+                }
+                .desktop-sign-button{
+                    max-width:375px;
+                    float:right;
+                    margin-top:7px;
+                    .signIn-button {
+                        .button-class {
+                            padding:10px 16px !important;
+                        }
+                    }
+                }
+            }
+        }
+        .header-signIn {
+            .desktop-utility-nav {
+                .desktop-sunlife-logo {
+                    .logo-separator {
+                        img {
+                            border-right: 2px solid $logo-separator-grey-shade;
+                            padding-right: 15px;
+                            margin-right: 15px;
+                            width: auto;
+                        }
+                    }
+                }
+            }
+            .desktop-sunlife-navigation {
+                .desktop-navigation {
+                    margin-left: 500px;
+                }
+            }
+        }
+    }
+    .search-autocomplete{
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background: $white-shade;
+        overflow: hidden;
+        text-decoration:none;
+        ul{
+            border: 1px solid $light-grey-shade;
+            margin: -1px 0 0 ;
+            padding: 0;
+            text-align: left;
+            list-style: none;
+            vertical-align: middle;
+            min-height: 48px;
+            display: none;
+        }
+        .search-autocomplete-list{
+            padding-left:15px;
+            font-weight:700;
+                li{
+                    .bold{
+                        color:$black-shade;
+                    }
+            }
+        }
+        .search-sayt-list {
+            border-bottom: 1px solid $light-grey-shade;
+            position: relative;
+            padding-top: 2px ;
+            background: $white-shade;
+            margin-top: -2px;
+            .seperate{
+                width:90%;
+                border-top:1px solid $black-shade;
+            }
+            :hover{
+                text-decoration: none;
+            }
+            li{
+                font-size: 1rem;
+                font-weight:400;
+                padding: 15px 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                .title{
+                    color: $blue-search-color;
+                    display:block;
+                    &:hover{
+                        text-decoration:underline;
+                    }
+                }
+                .desc{
+                    color:$dark-grey-color;
+                    font-size: 0.875rem;
+                    font-weight: normal;
+                    line-height: 1.2rem;
+                    padding-bottom: 4px;
+                    :hover{
+                        text-decoration:none;
+                    }
+                }
+                a>*{
+                    white-space: normal;
+                }
+            }
+        }
+    }
+    .slf-search .parsley-errors-list.filled{
+        z-index: 1;
+    }
+}
+.slf-header-wrapper .desktop-header-wrapper .header-signIn .desktop-utility-nav .desktop-sunlife-logo img {
+    width: auto; 
+}
+.signin-content-page, .signin-home-page{
+    .desktop-primary-navigation .nav>li>a {
+        padding-top: 6px;
+    }
+    .slf-header-wrapper .desktop-header-wrapper .desktop-sunlife-logo {
+        width:100%;
+    }
+}
+
+
+@media(max-width:$tab-screen-max){ 
+    .hide-logo {
+        display: none;
+    }
+    .desktop-header-wrapper{
+        display:none;
+    }
+    .slf-header-wrapper .mobile-header .language-region .desktop-region-language-menu-wrapper{
+        display:none;
+        }
+    .secondary-logo-wrapper {
+        text-align: center;
+        min-height: 50px;
+        background-color: $white-shade;
+        position: initial;
+        img {
+            width: auto;
+            height: 30px;
+            margin: 30px 2px 0px 2px;
+        }
+    }
+    .margin-top-fifty {
+        margin-top: 50px;
+    }
+}
+@media(min-width:$desktop-screen-min){
+    .mobile-header{
+    display:none;
+    }
+    .secondary-logo-wrapper {
+        display: none;
+    }
+}
+@media(max-width: $mobile-screen-max){
+    .desktop-header-content{
+        .desktop-sunlife-logo{
+            img{
+                margin-top:0px;
+            }
+        }
+    }
+}
+.panel-group{
+    display:none;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .slf-header-wrapper {
+        .desktop-header-wrapper {
+            .desktop-header-content {
+                .desktop-sunlife-navigation {
+                    .desktop-sign-button {
+                        .signIn-button {
+                            .button-class {
+                                padding: 7px 16px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

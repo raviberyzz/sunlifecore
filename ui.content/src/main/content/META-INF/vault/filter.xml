@@ -14,11 +14,18 @@
         <exclude pattern="/conf/sunlife-apac/settings/wcm/templates(/.*)" />
         <exclude pattern="/conf/sunlife-apac/settings/wcm/policies(/.*)" />
     </filter>
+    <filter root="/conf/global/settings/dam" />
+    <filter root="/conf/sunlife/settings/wcm/segments" /> 
+    <filter root="/conf/sunlife-apac/settings/wcm/segments" /> 
+    <filter root="/conf/global" mode="update" /> 
+   
+    <filter root="/etc" mode="update" /> 
 	<filter root="/etc/map.dev.publish"/>
     <filter root="/etc/map.sit.publish"/>
     <filter root="/etc/map.stage.publish"/>
     <filter root="/etc/map.prod.publish"/>
-    <filter root="/var/workflow/models/dam/update_asset"/>
+    
+    <filter root="/content/sunlife-tools"/>
     <filter root="/content/sunlife-tools/akamai-purge"/>
 	<filter root="/content/sunlife-tools/email"/>
 	<filter root="/content/sunlife-tools/post-redirection"/>
@@ -28,8 +35,11 @@
 	<filter root="/conf/global/settings/workflow/launcher/config/1318494610"/>
     <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update"/>
 	<filter root="/conf/global/settings/workflow/models/workplace-benefits-chess-list-update"/>
-    <filter root="/var/workflow/models/workplace-benefits-drug-list-update"/>
-	<filter root="/var/workflow/models/workplace-benefits-chess-list-update"/>
-	<filter root="/conf/global/settings/workflow/models/sunhub-content-upload"/>
+	<filter root="/conf/global/settings/workflow/models/sunhub-content-upload"/> 
+
+    <filter root="/var" mode="update" />
     <filter root="/var/workflow/models/sunhub-content-upload"/>
+    <filter root="/var/workflow/models/dam/update_asset" />
+    <filter root="/var/workflow/models/workplace-benefits-drug-list-update" />
+	<filter root="/var/workflow/models/workplace-benefits-chess-list-update"/>
 </workspaceFilter>

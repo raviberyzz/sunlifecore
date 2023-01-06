@@ -1,0 +1,180 @@
+@import '../../../base/core'; 
+.pagination-component{
+    .pagination-list>.active>a{
+        z-index: 1 !important;
+    }
+}
+/*Search pagination + filter results accessibility fixes start*/
+.search-container {
+    .pagination-item {
+        .active-text{
+            display: none;
+        }
+    }
+    .pagination-item.active{
+        .active-text{
+            display: block;
+        }
+    }
+    .check-container {
+		>a {
+			.active-text {
+				display: none;
+			}
+		}
+		>a.active {
+			.active-text {
+				display: block;
+			}
+		}
+	}
+}
+/*Search pagination + filter results accessibility fixes ends*/
+@media (max-width: $mobile-screen-max) and (min-width: $mobile-screen-min){
+    .pagination-component{
+        display: block;
+        .pagination-list {
+            width: 80%;
+            margin: 20px auto 0;
+            li {
+                display: none;
+                a {
+                    background-color: $medium-yellow-background;
+                    color: $medium-blue-color;
+                    text-align: center;
+                    margin: 0; 
+                    padding: 4px 13px;
+                    border-width: 0px;
+                }
+            }
+            .next{
+                display:inline-block;
+                margin-left: 0px;
+                width: auto;
+            }
+            .previous{
+                display:inline-block;
+                padding-right: 8px;
+                a {
+                    span:nth-child(2){
+                        display: none;
+                    }
+                }
+            }
+            .link-to-first{
+                display:inline-block;
+                padding-right: 8px;
+                a {
+                    span:nth-child(2){
+                        display:none;
+                    }
+                }
+            }
+            .link-to-first.active {
+                display: none;
+            }
+        }
+        .first-page {
+                .next {
+                    display: block;
+                    width:100%;
+                    padding:0;
+                    a {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            
+        }
+        .last-page{
+            .previous{
+                display:inline-block;
+                .fa-angle-left{
+                    display:none;
+                }
+                a {
+                    span:nth-child(2){
+                        display:inline-block;
+                    }
+                }
+                
+            }
+        }
+        .pagination-indicator{
+            display:block;
+        }
+
+    }
+}
+
+@media (min-width:$tab-screen-min){
+.pagination-component{
+    border: 2px solid #E1E1E1;
+    padding: 20px 20px 20px 15px;
+    position: relative;
+    margin-top: -2px;
+    .pagination{
+        display: inline-block;
+        margin: 20px 0;
+        li{
+            display: inline-block;
+            width:32px;
+            height: 32px;
+            a{
+                border:none;
+                border-radius:4px;
+                color: $medium-blue-color;
+            }
+        }
+        .previous {
+            a {
+                margin-right:36px;
+                span:first-child{
+                    display:none;
+                }
+            }
+            width:auto;
+            height: 32px;
+        }
+        .next{
+            width:auto;
+            height: 32px;
+            a{
+                margin-left:36px;
+            }
+        }
+        .link-to-first{
+            a {
+                span:first-child{
+                    display:none;
+                }
+            }
+        }
+        .active{
+            a {
+                background-color:$medium-yellow-background;
+                color:$medium-blue-color;
+            }
+        }
+        .fa-angle-left{
+            display:none;
+        }
+        .fa-angle-double-left{
+            display:none;
+        }
+        .ellipsis{
+            pointer-events:none;
+            width:auto;
+            height: auto;
+        }
+    }
+    .pagination-indicator{
+        display:none;
+    }
+}
+}
+@media(min-width:$tab-screen-min) and (max-width:$tab-screen-max){
+    .pagination-component{
+        padding-bottom:0px;
+    }
+}

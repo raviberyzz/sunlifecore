@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    jcr:description="accordion component"
-    jcr:primaryType="cq:Component"
-    jcr:title="Accordion"
-    sling:resourceSuperType="core/wcm/components/accordion/v1/accordion"
-    componentGroup=".hidden"/>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:ClientLibraryFolder"
+    categories="[sunlife.core.accordion]"
+    embed="[]"
+    dependencies="[]"
+    cssProcessor="[default:none,min:none]"
+    jsProcessor="[default:none,min:none]"
+    allowProxy="{Boolean}true"/>
