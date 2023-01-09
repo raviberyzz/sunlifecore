@@ -129,23 +129,31 @@
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>${frontend-maven-plugin.version}</version>
-                    <configuration>
-                        <nodeVersion>v16.17.0</nodeVersion>
-                        <npmVersion>8.15.0</npmVersion>
-                    </configuration>
                     <executions>
                         <execution>
-                            <id>install node and npm</id>
-                            <goals>
-                                <goal>install-node-and-npm</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>npm ci</id>
-                            <goals>
-                                <goal>npm</goal>
-                            </goals>
-                        </execution>
+									<id>Install node and npm</id>
+									<phase>install</phase>
+									<goals>
+										<goal>install-node-and-npm</goal>
+									</goals>
+									<configuration>
+										<nodeDownloadRoot>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/org/nodejs/node/</nodeDownloadRoot>
+										<nodeVersion>v16.17.0</nodeVersion>
+									</configuration>
+								</execution>
+								<execution>
+									<id>npm install</id>
+									<phase>install</phase>
+									<goals>
+										<goal>npm</goal>
+									</goals>
+									<configuration>
+										<arguments>install --registry http://artifactory.sunlifecorp.com/artifactory/api/npm/npm-remote</arguments>
+										<environmentVariables>
+											<SASS_BINARY_SITE>http://artifactory.sunlifecorp.com/artifactory/ext-vendor-release/com/github/sass/node-sass</SASS_BINARY_SITE>
+										</environmentVariables>
+									</configuration>
+								</execution>
                     </executions>
                 </plugin>
                 <!-- Maven Jar Plugin -->
