@@ -48,8 +48,8 @@ Export-Package: ca.sunlife.web.cms.core.*
 -conditionalpackage: com.github.mustachejava.*,org.jsoup.*, com.akamai.edgegrid.signer.*, com.adobe.cq.wcm.core.*
 Sling-Initial-Content: SLING-INF/content;path:=/libs/system/config;overwrite:=true
 Sling-Model-Packages: ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models,ca.sunlife.web.cms.advisorhub.models
--dsannotations *
--metatypeannotations *
+-dsannotations: *
+-metatypeannotations: *
 Bundle-SymbolicName: sunlife.core
                                 ]]></bnd>
                         </configuration>
