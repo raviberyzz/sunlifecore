@@ -17,22 +17,30 @@ const resolve = {
         configFile: './tsconfig.json'
     })]
 };
+const projectModules = modulesManager.getModules();
 
 module.exports = {
     resolve: resolve,
 
     entry: () => {
         const entryModulesObj = {};
-        const modules = modulesManager.getModules();
-        Object.values(modules).forEach((module) => {
-            entryModulesObj[module.namespace] = module.currentModuleRootFile;
+        Object.values(projectModules).forEach((module) => {
+            if(!entryModulesObj[module.namespace]) {
+                entryModulesObj[module.namespace] = module.currentModuleRootFile;
+            } else {
+                entryModulesObj[module.pathReferencedModuleName] = module.currentModuleRootFile;
+            }
         });
         return entryModulesObj;
     },
 
     output: {
         filename: (chunkData) => {
-            return `clientlib-${chunkData.chunk.name}/[name].js`
+            console.log('chunkData->', chunkData);
+            console.log('projectModules->', projectModules[chunkData.chunk.name]);
+            const type = projectModules[chunkData.chunk.name].moduleType === 'components' ? 'comp-':'';
+            const name = `clientlib-${type}${chunkData.chunk.name}/[name].js`
+            return name;
         },
         path: path.resolve(__dirname, 'dist')
     },
@@ -99,7 +107,25 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.less$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader", // translates CSS into CommonJS
+                    },
+                    {
+                        loader: "less-loader", // compiles Less to CSS
+                    },
+                    {
+                        loader: 'glob-import-loader',
+                        options: {
+                            resolve: resolve
+                        }
+                    }
+                ],
+              },
         ]
     },
     plugins: [
@@ -108,8 +134,13 @@ module.exports = {
             extensions: ['js', 'ts', 'tsx']
         }),
         new MiniCssExtractPlugin({
-            filename: 'clientlib-[name]/[name].css'
-        }),
+            filename: ({ chunk }) => {
+                console.log('css chunkData=============================>>>>>>>>>>>', chunk);
+                const type = projectModules[chunk.name].moduleType === 'components' ? 'comp-':'';
+                const name = `clientlib-${type}${chunk.name}/[name].css`;
+                return name;
+            },
+          }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }

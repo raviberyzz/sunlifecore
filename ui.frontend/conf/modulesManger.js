@@ -34,7 +34,13 @@ const ModulesManager = class {
         for (let i = 0; i < modules.length; i++) {
             const modulePath = modules[i];
             const md = this.getModuleDefinition(modulePath);
-            if (md) this.modules[md.namespace] = md;
+            if (md) {
+                if(!this.modules[md.namespace]) {
+                    this.modules[md.namespace] = md;
+                } else {
+                    this.modules[md.pathReferencedModuleName] = md;
+                }
+            }
         }
     }
 
@@ -52,6 +58,7 @@ const ModulesManager = class {
         const currentModulePathDir = moduleType ==='components' ? path.join('components', ...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)) : 'clientlibs' ;
         const appClientlibRootDir = path.join(this.tenantDir, currentModulePathDir).replace(/\\/g, '/');
         const currentModuleRootDir = currentModuleRootFile.replace('index_module.js', '');
+        const pathReferencedModuleName = [...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)].join('.');
 
         return {
             namespace,
@@ -59,11 +66,12 @@ const ModulesManager = class {
             currentModuleRootDir,
             moduleType,
             appClientlibRootDir,
+            pathReferencedModuleName,
         };
     }
 
     getModules() {
-        // console.log('this.modules--->', this.modules);
+        console.log('this.modules--->', this.modules);
         return this.modules;
     }
 };

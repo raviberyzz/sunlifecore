@@ -1,0 +1,4 @@
+{
+    "categories":"sunlife.core.vendor.search-box",
+    "dependencies":"sunlife.core.vendor.search-core"
+}

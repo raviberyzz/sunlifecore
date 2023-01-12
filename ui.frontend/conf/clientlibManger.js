@@ -63,8 +63,14 @@ const ClientLibManager = class {
     }
 
     _updateCLCategory(module) {
+        console.log('module->', module);
         const categoriesArr = [];
+        if(this.modules[module].moduleType==='components') {
+            // sunlife.core.component,sunlife.core.components.content.campaign-header
+            categoriesArr.push(`sunlife.core.component`,`sunlife.core.components.content.${module}`);
+        }
         categoriesArr.push(`sunlife.core.${module}`, ...this._getExplicitProperty('categories'));
+        console.log('categoriesArr->', categoriesArr);
         this.clientlibConfig[module]['categories'] = categoriesArr;
     }
 
@@ -89,8 +95,10 @@ const ClientLibManager = class {
     }
 
     _getAssetInfo(type, module, configs) {
+        const mType = this.modules[module].moduleType === 'components' ? 'comp-':'';
+        const dir = `clientlib-${mType}${module}`;
         return {
-            cwd: `clientlib-${module}`,
+            cwd: dir,
             files: [`*.${type}`,`**/*.${type}`],
             flatten: false,
             ...configs
@@ -118,6 +126,7 @@ const ClientLibManager = class {
     }
     
     getClientlibs() {
+        console.log('this.clientlibConfig->', this.clientlibConfig);
         return this.clientlibConfig;
     }
 };
