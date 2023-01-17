@@ -4,6 +4,4 @@
     categories="[sunlife.core.contexthub,sunlife.core.contexthub]"
     embed="[sunlife.core.vendor,granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main]"
     dependencies="[]"
-    cssProcessor="[default:none,min:none]"
-    jsProcessor="[default:none,min:none]"
     allowProxy="{Boolean}true"/>

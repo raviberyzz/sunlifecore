@@ -18,6 +18,7 @@ const resolve = {
     })]
 };
 const projectModules = modulesManager.getModules();
+const resourcesArr = modulesManager.getResourceModules();
 
 module.exports = {
     resolve: resolve,
@@ -36,10 +37,7 @@ module.exports = {
 
     output: {
         filename: (chunkData) => {
-            console.log('chunkData->', chunkData);
-            console.log('projectModules->', projectModules[chunkData.chunk.name]);
-            const type = projectModules[chunkData.chunk.name].moduleType === 'components' ? 'comp-':'';
-            const name = `clientlib-${type}${chunkData.chunk.name}/[name].js`
+            const name = `${projectModules[chunkData.chunk.name].distClientlibDir}/[name].js`
             return name;
         },
         path: path.resolve(__dirname, 'dist')
@@ -88,16 +86,6 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins() {
-                                return [
-                                    require('autoprefixer')
-                                ];
-                            }
-                        }
-                    },
-                    {
                         loader: 'sass-loader',
                     },
                     {
@@ -125,7 +113,11 @@ module.exports = {
                         }
                     }
                 ],
-              },
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                type: 'asset/resource'
+            },
         ]
     },
     plugins: [
@@ -135,16 +127,12 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: ({ chunk }) => {
-                console.log('css chunkData=============================>>>>>>>>>>>', chunk);
-                const type = projectModules[chunk.name].moduleType === 'components' ? 'comp-':'';
-                const name = `clientlib-${type}${chunk.name}/[name].css`;
+                const name = `${projectModules[chunk.name].distClientlibDir}/[name].css`;
                 return name;
             },
           }),
         new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
-            ]
+            patterns: [...resourcesArr]
         })
     ],
     stats: {
