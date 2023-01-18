@@ -1,2 +1,7 @@
 src/main/content/jcr_root/apps/sunlife/core/clientlibs/*
 src/main/content/jcr_root/apps/sunlife/core/components/**/**/clientlibs
+
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/moment
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-box
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-no-filter
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-with-filter

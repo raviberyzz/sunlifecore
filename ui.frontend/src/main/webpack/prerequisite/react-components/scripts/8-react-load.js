@@ -1,4 +1,6 @@
-var reactComponents = {};
+window.reactComponents = {};
+
+
 //var createReactClass = require('create-react-class');
 $(document).ready(function(){
     $('[data-component-render="react"]').each(function(){

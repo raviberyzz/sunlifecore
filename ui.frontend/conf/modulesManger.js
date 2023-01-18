@@ -9,10 +9,16 @@ const UI_APP = 'ui.apps';
 
 const tenant = 'core';
 
+const explicitModules = [
+'src/main/webpack/components/form/text/index_module.js',
+'src/main/webpack/components/content/text/index_module.js',
+'src/main/webpack/prerequisite/base/index_module.js'];
+
 
 const ModulesManager = class {
     constructor(params) {
         this.modules = {};
+        this.resourceModules = [];
         this.debug = params.debug;
         this.tenant = params.tenant;
         this.tenantDir = this.getTenantDir(this.tenant);
@@ -29,8 +35,8 @@ const ModulesManager = class {
     }
 
     findModules() {
-        const modules = glob.sync('*/**/index_module.js');
-
+        const modules = this.debug ? explicitModules : glob.sync('*/**/index_module.js');
+       
         for (let i = 0; i < modules.length; i++) {
             const modulePath = modules[i];
             const md = this.getModuleDefinition(modulePath);
@@ -48,6 +54,14 @@ const ModulesManager = class {
         return this.getModules()[name];
     }
 
+    getModuleName(namespace, pathReferencedModuleName) {
+        if(!this.modules[namespace]) {
+            return namespace;
+        } else {
+            return pathReferencedModuleName;
+        }
+    }
+
     getModuleDefinition(currentModuleRootFile) {
         const currentModuleRootFileChunks = currentModuleRootFile.split('/');
 
@@ -59,6 +73,29 @@ const ModulesManager = class {
         const appClientlibRootDir = path.join(this.tenantDir, currentModulePathDir).replace(/\\/g, '/');
         const currentModuleRootDir = currentModuleRootFile.replace('index_module.js', '');
         const pathReferencedModuleName = [...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)].join('.');
+        
+        const type = moduleType === 'components' ? 'comp-':'';
+        const moduleName =  this.getModuleName(namespace, pathReferencedModuleName);
+        const distClientlibDir = `clientlib-${type}${moduleName}`;
+        
+        let isContainResources = false;
+
+        try {
+            if (fs.existsSync(path.join(currentModuleRootDir,'resources'))) {
+                isContainResources = true;
+                let files = glob.sync(currentModuleRootDir+'resources/*.*');
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    this.resourceModules.push(
+                        {
+                            from: `./${file}`, to: `./${distClientlibDir}/resources`
+                        }
+                    )
+                }
+            } 
+        } catch(e) {
+            console.log("An error occurred.", currentModuleRootDir, e)
+        }
 
         return {
             namespace,
@@ -67,12 +104,17 @@ const ModulesManager = class {
             moduleType,
             appClientlibRootDir,
             pathReferencedModuleName,
+            distClientlibDir,
+            isContainResources
         };
     }
 
     getModules() {
-        console.log('this.modules--->', this.modules);
         return this.modules;
+    }
+
+    getResourceModules() {
+        return this.resourceModules;
     }
 };
 
