@@ -15,7 +15,11 @@ const resolve = {
     extensions: ['.js', '.ts'],
     plugins: [new TSConfigPathsPlugin({
         configFile: './tsconfig.json'
-    })]
+    })],
+    alias: {
+        // Force all modules to use the same jquery version.
+        'jquery': path.join(__dirname, 'node_modules/jquery/src/jquery')
+    }
 };
 const projectModules = modulesManager.getModules();
 const resourcesArr = modulesManager.getResourceModules();
@@ -150,5 +154,5 @@ module.exports = {
         providedExports: false,
         source: false,
         warnings: true
-    }
+    },
 };

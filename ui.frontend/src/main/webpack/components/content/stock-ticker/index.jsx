@@ -1,4 +1,5 @@
 import React from "react";
+import reactComponents from "../../../prerequisite/react-components/scripts/react-components";
 class stockTicker extends React.Component {
   constructor(props){
     super(props);
