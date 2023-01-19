@@ -1,5 +1,4 @@
-window.reactComponents = {};
-
+import reactComponents from "./react-components";
 
 //var createReactClass = require('create-react-class');
 $(document).ready(function(){
