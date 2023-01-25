@@ -1,3 +1,5 @@
+import { Tooltip as tooltip }  from "bootstrap";
+
 $(document).ready(function () {
   var windowsize = $(window).width();
   //faCircle();
