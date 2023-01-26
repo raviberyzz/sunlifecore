@@ -5,3 +5,4 @@ src/main/content/jcr_root/apps/sunlife/core/components/**/**/clientlibs
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-box
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-no-filter
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/search-with-filter
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/vendor-js-only

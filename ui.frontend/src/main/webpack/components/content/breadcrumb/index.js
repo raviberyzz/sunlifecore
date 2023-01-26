@@ -1,3 +1,5 @@
+import {shareFB,shareTwitter,shareLinkedIn,shareGooglePlus} from '../../../prerequisite/base/scripts/2-slfglobalweb.js'; 
+
 $(document).ready(function(){
 	$('.breadcrumb .social-link-icon-wrapper .fa-facebook-square').click(shareFB);
     $('.breadcrumb .social-link-icon-wrapper .fa-twitter-square').click(shareTwitter);

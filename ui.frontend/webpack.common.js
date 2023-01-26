@@ -2,6 +2,7 @@
 
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack'); //to access built-in plugins
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -17,8 +18,9 @@ const resolve = {
         configFile: './tsconfig.json'
     })],
     alias: {
-        // Force all modules to use the same jquery version.
-        'jquery': path.join(__dirname, 'node_modules/jquery/src/jquery')
+        'Datepicker': path.join(__dirname, 'node_modules/ab-datepicker/js/datepicker.min.js'),
+        'reactComponents': path.join(__dirname, 'src/main/webpack/prerequisite/react-components/scripts/react-components.js'),
+        'React': path.join(__dirname, 'src/main/webpack/prerequisite/react-components/scripts/5-react.production.min.js'),
     }
 };
 const projectModules = modulesManager.getModules();
@@ -125,6 +127,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
         new ESLintPlugin({
             extensions: ['js', 'ts', 'tsx']
@@ -137,6 +140,14 @@ module.exports = {
           }),
         new CopyWebpackPlugin({
             patterns: [...resourcesArr]
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'reactComponents':'reactComponents',
+            'React':'React',
+            '$.fn.datepicker': 'Datepicker'
         })
     ],
     stats: {
