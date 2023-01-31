@@ -119,6 +119,8 @@ const ClientLibManager = class {
                 console.log('Error while reading context.json at -', configPath, err);
                 return;
             }
+        } else {
+            this.explicitCLConfig = {};
         }
 
         this.configureClientlibObj(module);

@@ -11,7 +11,7 @@
   "license": "SEE LICENSE IN LICENSE.txt",
   "scripts": {
     "dev": "webpack --env dev --config ./webpack.dev.js && npm run build:clientlib",
-    "prod": "webpack --config ./webpack.prod.js && clientlib --verbose",
+    "prod": "webpack --config ./webpack.prod.js && npm run build:clientlib",
     "start": "webpack-dev-server --open --config ./webpack.dev.js",
     "sync": "aemsync -d -p ../ui.apps/src/main/content",
     "chokidar": "chokidar -c \"clientlib\" ./dist",
@@ -19,7 +19,8 @@
     "aemfed": "aemfed -t \"http://admin:admin@localhost:4504\" -w \"../ui.apps/src/main/content/jcr_root/\"",
     "watch": "npm-run-all --parallel start chokidar aemsyncro",
     "watchsync": "aemfed && watch",
-    "build:clientlib": "clientlib --verbose",
+    "generate-clientlib":"node initiate.clientlib.generator.js",
+    "build:clientlib": "npm run generate-clientlib",
     "deploy:local": "aemsync -t http://admin:admin@localhost:4504 -p ../ui.apps/",
     "build-and-deploy": "webpack --env dev --config ./webpack.local.js && npm run build:clientlib",
     "watch:local": "chokidar \"src/main/webpack/**/*.*\" -c \"npm run build-and-deploy\"",
