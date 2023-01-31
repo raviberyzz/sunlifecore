@@ -69,5 +69,6 @@ function getLibs() {
 module.exports = {
   context: BUILD_DIR,
   clientLibRoot: CLIENTLIB_DIR,
+  verbose: true,
   libs: getLibs()
 };
