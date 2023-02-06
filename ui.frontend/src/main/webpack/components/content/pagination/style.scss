@@ -109,7 +109,7 @@
 
 @media (min-width:$tab-screen-min){
 .pagination-component{
-    border: 2px solid #E1E1E1;
+    border: 2px solid $container-border-color;
     padding: 20px 20px 20px 15px;
     position: relative;
     margin-top: -2px;

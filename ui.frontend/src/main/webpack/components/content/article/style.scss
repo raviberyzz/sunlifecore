@@ -1,5 +1,6 @@
 @import '../../../prerequisite/base/styles/core.scss';
 
+
 .article-wrapper{
     .article-intro{
         .article-date{
@@ -45,8 +46,8 @@
     }
     .article-footer{
         .article-author{
-            border-bottom: 2px dotted #e5e5e5;
-            border-top: 2px dotted #e5e5e5;
+            border-bottom: 2px dotted $light-grey-color;
+            border-top: 2px dotted $light-grey-color;
         }
 
     }

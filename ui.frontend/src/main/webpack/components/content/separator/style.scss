@@ -43,6 +43,19 @@
         background: $light-grey-20;
         margin: 0 auto;
 }
+
+.separator-75 {
+    .horizontal-middle-align {
+        width: 75%;
+     }
+ }
+
+.separator-100 {
+    .horizontal-middle-align {
+        width: 100%;
+     }
+ }
+
 /*** for modal the seperator border is also coming from wem migration.css
 causing the seperator to overlap on one another ***/
 .modal-dialog {

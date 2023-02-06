@@ -1,4 +1,5 @@
 @import "../../../prerequisite/base/styles/core.scss";
+
 .slf-table.table-responsive {
   display: block;
   position: relative;
@@ -171,7 +172,7 @@ table{
      tbody {
        tr {
         &:nth-child(n+3) {
-          border-top: 2px solid #fff;
+          border-top: 2px solid $white-shade;
         }
       }
     }
@@ -237,7 +238,7 @@ table{
             }
         }
         .large-green{
-          color:#0b713a;
+          color:$medium-green-color;
           font-size: 1.8em;
          }
  

@@ -11,6 +11,7 @@
  *
  * Date: 2021-03-02T17:08Z
  */
+console.log('jquery from vendor-generic-js');
 ( function( global, factory ) {
 
 	"use strict";
