@@ -11,6 +11,7 @@
  *
  * Date: 2017-03-20T18:59Z
  */
+console.log('jquery from vendor-js');
 ( function( global, factory ) {
 
 	"use strict";
