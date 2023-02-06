@@ -37,13 +37,13 @@ $(document).ready(function () {
       $(this).children('a').attr('data-original-title', tool_content);
       $(this).children().children('a').attr('data-original-title', tool_content);
     }
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
     $('.tooltipInfoIcon').click(function () {
       $('.tooltipInfoIcon').css('text-decoration', 'none');
     });
   });
   function faCircle() {
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
     //$('[data-toggle="tooltip"]').tooltip('update');
     if (windowsize > 767) {
       //$('.tooltipInfoIcon').removeAttr('data-placement');

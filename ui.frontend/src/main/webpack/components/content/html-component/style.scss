@@ -207,7 +207,7 @@
             a{
                 padding: 5px 8.16px !important;
                 span{
-                    color:#004C6C;
+                    color: $medium-blue-color;
                 }
             }
         }
@@ -253,8 +253,8 @@
         }
     }
     .results-ad {
-        background-color: #fdf7e6;
-        border: 1px #f9e6b3 solid;
+        background-color: $light-orange-20;
+        border: 1px $light-orange-20 solid;
         margin-bottom: 40px;
         padding: 20px;
     }
@@ -451,8 +451,8 @@
         }
     }
     .yellow-bg {
-        background-color: #FDF7E7;
-        border: 1px solid #FAE6B3;
+        background-color: $light-orange-20;
+        border: 1px solid $light-orange-20;
         padding: 5px 15px;
         p{
             margin:10px 0px;

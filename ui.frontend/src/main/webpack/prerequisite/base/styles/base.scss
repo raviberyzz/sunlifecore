@@ -1,4 +1,4 @@
-@import './core.scss';
+@import 'core';
 
 //font style 1 start
 
@@ -44,89 +44,89 @@
 }
 */
 
-@font-face {
-    font-family: 'sunlife-custom';
-    src: url("../resources/sunlife-custom.eot?38299477");
-    src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
+//@font-face {
+  //  font-family: 'sunlife-custom';
+   // src: url("../resources/sunlife-custom.eot?38299477");
+   // src: url("../resources/sunlife-custom.eot?38299477#iefix") format("embedded-opentype"), url("../resources/sunlife-custom.woff?38299477") format("woff"), url("../resources/sunlife-custom.ttf?38299477") format("truetype"), url("../resources/sunlife-custom.svg?38299477#sunlife-custom") format("svg");
+   // font-weight: normal;
+    //font-style: normal;
+//}
 
 //font style 2 start
 
-@font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Black.eot");
-    src: url("../resources/SunLifeSans-Black.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Black.woff") format("woff"), url("../resources/SunLifeSans-Black.woff2") format("woff2"), url("../resources/SunLifeSans-Black.ttf") format("truetype"),url("../resources/SunLifeSans-Black.svg") format("svg");
-    }
+//@font-face {
+ //   font-family: "sunlife-sans";
+  //  src: url("../resources/SunLifeSans-Black.eot");
+  //  src: url("../resources/SunLifeSans-Black.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Black.woff") format("woff"), url("../resources/SunLifeSans-Black.woff2") format("woff2"), url("../resources/SunLifeSans-Black.ttf") format("truetype"),url("../resources/SunLifeSans-Black.svg") format("svg");
+   // }
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-BlackItalic.eot");
-    src: url("../resources/SunLifeSans-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-BlackItalic.woff") format("woff"), url("../resources/SunLifeSans-BlackItalic.woff2") format("woff2"), url("../resources/SunLifeSans-BlackItalic.ttf") format("truetype"), url("../resources/SunLifeSans-BlackItalic.svg") format("svg");
-    }
+    //@font-face {
+   // font-family: "sunlife-sans";
+   // src: url("../resources/SunLifeSans-BlackItalic.eot");
+   // src: url("../resources/SunLifeSans-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-BlackItalic.woff") format("woff"), url("../resources/SunLifeSans-BlackItalic.woff2") format("woff2"), url("../resources/SunLifeSans-BlackItalic.ttf") format("truetype"), url("../resources/SunLifeSans-BlackItalic.svg") format("svg");
+  //  }
      
-     @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Bold.eot");
-    src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.woff2") format("woff2"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
-    font-weight: 700;
-    font-style: normal;
-    font-stretch: normal;
-    }
+    // @font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-Bold.eot");
+    //src: url("../resources/SunLifeSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Bold.woff") format("woff"), url("../resources/SunLifeSans-Bold.woff2") format("woff2"), url("../resources/SunLifeSans-Bold.ttf") format("truetype"), url("../resources/SunLifeSans-Bold.svg") format("svg");
+    //font-weight: 700;
+    //font-style: normal;
+    //font-stretch: normal;
+    //}
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-BoldItalic.eot");
-    src: url("../resources/SunLifeSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-BoldItalic.woff") format("woff"), url("../resources/SunLifeSans-BoldItalic.woff2") format("woff2"), url("../resources/SunLifeSans-BoldItalic.ttf") format("truetype"), url("../resources/SunLifeSans-BoldItalic.svg") format("svg");
-    }
+   // @font-face {
+   // font-family: "sunlife-sans";
+   // src: url("../resources/SunLifeSans-BoldItalic.eot");
+   // src: url("../resources/SunLifeSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-BoldItalic.woff") format("woff"), url("../resources/SunLifeSans-BoldItalic.woff2") format("woff2"), url("../resources/SunLifeSans-BoldItalic.ttf") format("truetype"), url("../resources/SunLifeSans-BoldItalic.svg") format("svg");
+    //}
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Italic.eot");
-    src: url("../resources/SunLifeSans-Italic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Italic.woff") format("woff"), url("../resources/SunLifeSans-Italic.woff2") format("woff2"), url("../resources/SunLifeSans-Italic.ttf") format("truetype"), url("../resources/SunLifeSans-Italic.svg") format("svg");
-    }
+   // @font-face {
+   // font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-Italic.eot");
+    //src: url("../resources/SunLifeSans-Italic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Italic.woff") format("woff"), url("../resources/SunLifeSans-Italic.woff2") format("woff2"), url("../resources/SunLifeSans-Italic.ttf") format("truetype"), url("../resources/SunLifeSans-Italic.svg") format("svg");
+    //}
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Light.eot");
-    src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.woff2") format("woff2"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
-     font-weight: 200;
-    font-style: normal;
-    font-stretch: normal;
-                 }
+   // @font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-Light.eot");
+    //src: url("../resources/SunLifeSans-Light.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Light.woff") format("woff"), url("../resources/SunLifeSans-Light.woff2") format("woff2"), url("../resources/SunLifeSans-Light.ttf") format("truetype"), url("../resources/SunLifeSans-Light.svg") format("svg");
+    //font-weight:200;
+    //font-style: normal;
+    //font-stretch: normal;
+              //   }
                  
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-LightItalic.eot");
-    src: url("../resources/SunLifeSans-LightItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-LightItalic.woff") format("woff"), url("../resources/SunLifeSans-LightItalic.woff2") format("woff2"), url("../resources/SunLifeSans-LightItalic.ttf") format("truetype"), url("../resources/SunLifeSans-LightItalic.svg") format("svg");
-    }
+    //@font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-LightItalic.eot");
+   // src: url("../resources/SunLifeSans-LightItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-LightItalic.woff") format("woff"), url("../resources/SunLifeSans-LightItalic.woff2") format("woff2"), url("../resources/SunLifeSans-LightItalic.ttf") format("truetype"), url("../resources/SunLifeSans-LightItalic.svg") format("svg");
+   // }
     
-      @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Medium.eot");
-    src: url("../resources/SunLifeSans-Medium.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Medium.woff") format("woff"), url("../resources/SunLifeSans-Medium.woff2") format("woff2"), url("../resources/SunLifeSans-Medium.ttf") format("truetype"), url("../resources/SunLifeSans-Medium.svg") format("svg");
-    }
+    //  @font-face {
+    //font-family: "sunlife-sans";
+   // src: url("../resources/SunLifeSans-Medium.eot");
+    //src:url("../resources/SunLifeSans-Medium.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Medium.woff") format("woff"), url("../resources/SunLifeSans-Medium.woff2") format("woff2"), url("../resources/SunLifeSans-Medium.ttf") format("truetype"), url("../resources/SunLifeSans-Medium.svg") format("svg");
+   // }
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-MediumItalic.eot");
-    src: url("../resources/SunLifeSans-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-MediumItalic.woff") format("woff"), url("../resources/SunLifeSans-MediumItalic.woff2") format("woff2"), url("../resources/SunLifeSans-MediumItalic.ttf") format("truetype"), url("../resources/SunLifeSans-MediumItalic.svg") format("svg");
-    }
+    //@font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-MediumItalic.eot");
+   // src: url("../resources/SunLifeSans-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-MediumItalic.woff") format("woff"), url("../resources/SunLifeSans-MediumItalic.woff2") format("woff2"), url("../resources/SunLifeSans-MediumItalic.ttf") format("truetype"), url("../resources/SunLifeSans-MediumItalic.svg") format("svg");
+    //}
     
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-Regular.eot");
-    src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.woff2") format('woff2'), url("../resources/SunLifeSans-Regular.ttf") format('truetype'), url("../resources/SunLifeSans-Regular.svg") format("svg");
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-     }
+    //@font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-Regular.eot");
+    //src: url("../resources/SunLifeSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/SunLifeSans-Regular.woff") format("woff"), url("../resources/SunLifeSans-Regular.woff2") format('woff2'), url("../resources/SunLifeSans-Regular.ttf") format('truetype'), url("../resources/SunLifeSans-Regular.svg") format("svg");
+    //font-weight:400 ;
+    //font-style: normal;
+    //font-stretch: normal;
+    // }
        
-    @font-face {
-    font-family: "sunlife-sans";
-    src: url("../resources/SunLifeSans-RegularItalic.svg") format("svg");
-    }
+    //@font-face {
+    //font-family: "sunlife-sans";
+    //src: url("../resources/SunLifeSans-RegularItalic.svg") format("svg");
+    //}
     
     
   /*body{
@@ -134,6 +134,37 @@
   */
 
 //font style 2 ends
+ @font-face {
+    font-family: "sunlife-display";
+    src: url("../resources/SunLifeNewDisplay-Bold.ttf") format("truetype"), url("../resources/SunLifeNewDisplay-Bold.woff") format("woff"), url("../resources/SunLifeNewDisplay-Bold.woff2") format("woff2");
+        }
+
+  @font-face {
+    font-family: "sunlife-display";
+  src: url("../resources/SunLifeNewDisplay-Regular.ttf") format("truetype"), url("../resources/SunLifeNewDisplay-Regular.woff") format("woff"), url("../resources/SunLifeNewDisplay-Regular.woff2") format("woff2");
+     }
+ 
+ @font-face {
+   font-family: "sunlife-sans";
+   src: url("../resources/SunLifeNewText-Bold.ttf") format("truetype"), url("../resources/SunLifeNewText-Bold.woff") format("woff"), url("../resources/SunLifeNewText-Bold.woff2") format("woff2");
+   font-weight: 700;
+   font-style: normal;
+   font-stretch: normal; }
+ 
+ @font-face {
+   font-family: "sunlife-sans";
+   src: url("../resources/SunLifeNewText-BoldItalic.ttf") format("truetype"), url("../resources/SunLifeNewText-BoldItalic.woff") format("woff"), url("../resources/SunLifeNewText-BoldItalic.woff2") format("woff2"); }
+ 
+   @font-face {
+  font-family: "sunlife-sans";
+   src: url("../resources/SunLifeNewText-Italic.ttf") format("truetype"), url("../resources/SunLifeNewText-Italic.woff") format("woff"), url("../resources/SunLifeNewText-Italic.woff2") format("woff2"); }
+ 
+   @font-face {
+   font-family: "sunlife-sans";
+    src: url("../resources/SunLifeNewText-Regular.ttf") format("truetype"), url("../resources/SunLifeNewText-Regular.woff") format("woff"), url("../resources/SunLifeNewText-Regular.woff2") format("woff2");
+   font-weight: 400;
+   font-style: normal;
+   font-stretch: normal; }                    
 
 html {
     /*overflow-x: hidden;*/ /*We are deleting this line of code so the sign-in link in the footer will not jump to the top of the page*/
@@ -158,7 +189,7 @@ body {
     word-wrap: break-word;
     height: 100%;
     width: 100%;
-    color: $dark-grey-color;
+    color: $font-color;
     font-size: 16px;
 }
 
@@ -556,7 +587,7 @@ a.skip-main:focus, a.skip-main:active {
 }
 
 .banner-box-shadow {
-    box-shadow: 0px 10px 15px rgba(124, 124, 124, 0.4), -5px 5px 5px rgba(216, 213, 212, 0.4), 5px 5px 5px rgba(216, 213, 212, 0.4);
+    box-shadow: 0px 10px 15px rgba($grey-600, 0.4), -5px 5px 5px rgba($grey-300, 0.4), 5px 5px 5px rgba($grey-300, 0.4);
 }
 
 .phone-numbers{
@@ -703,8 +734,8 @@ a.skip-main:focus, a.skip-main:active {
         margin-bottom: 20px !important;
     }
     .btn-blue {
-        background-color: #004C6C;
-        color: #ffffff;
+        background-color: $medium-blue-color;
+        color: $white-shade;
         line-height: 26px;
         min-height: 48px;
         min-width: 136px;
@@ -720,11 +751,12 @@ a.skip-main:focus, a.skip-main:active {
         justify-content: center;
         display: inline-block;
         text-decoration: none;
-    }
-    .btn-blue:hover {
-        background-color: #4A7283;
-        color: #ffffff;
-        text-decoration: none;
+        &:hover {
+            background-color: $cool-blue-color;
+        }
+        &:focus, &:active {
+            background-color: $blue-gradient-color;
+        }
     }
 }
 #SunLifeFindAnAdvisor-modal{
@@ -806,5 +838,7 @@ a.skip-main:focus, a.skip-main:active {
 
 //.clickable-tile = Source NewsTiles, dropdown-toggle - mega menu links
 a:focus:not([role=button]):not(.clickable-tile):not(.dropdown-toggle) {
-    outline-offset: 4px;
+	outline-offset: 4px;
 }
+
+

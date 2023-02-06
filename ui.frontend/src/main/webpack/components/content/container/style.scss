@@ -172,7 +172,7 @@ ul {
           display: block;
           text-align: center;
           padding: 10px 30px;           /* Give padding to filter item box */
-          border: 1px solid rgba(153, 153, 153, 0.5);
+          border: 1px solid rgba($medium-grey-background, 0.5);
         }
         & > a.active {
           background-color: $primary-yellow-background;     /* Highlight filter item on selection */
@@ -839,7 +839,7 @@ ul {
 .icon-text-list{
     padding: 24px 16px !important;
     border: none;
-    background-color: #F4F7F6;
+    background-color: $light-cool-blue-color;
     .cmp-text {
         h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
           margin-top: 0;
@@ -1320,7 +1320,7 @@ ul {
     .company-highlight-yellow-grey-background, .company-highlight-blue-grey-background {
         .col-sm-4:not(:last-child){
             .container-component:after {
-                border: 1px solid #e5e7e9;
+                border: 1px solid $border-grey-color;
                 width: 30%;
                 margin: auto;
                 content: "";
@@ -1917,7 +1917,7 @@ ul {
 /* styles for contact us box start*/
 .text-border-right {
 	.cmp-text {
-        border-right: 2px solid #9a9a9a;
+        border-right: 2px solid $medium-grey-background;
         margin: 32px 0 32px 32px;
 	}
 }
@@ -1934,7 +1934,7 @@ ul {
     }
     .layout-container{
         &:not(:first-child){
-            border: 1px solid #d7d7d7;
+            border: 1px solid $border-grey-color;
         }
             .row{
                 .col-sm-4{
@@ -2256,7 +2256,7 @@ ul {
     .container-component{
         text-align: center;
         padding: 0px 10px;
-        background-color: #F4F7F6;
+        background-color: $light-cool-blue-color;
         margin-bottom:16px;
         padding-top: 24px !important;
         .cmp-container{
