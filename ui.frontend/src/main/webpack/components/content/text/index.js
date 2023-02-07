@@ -1,4 +1,3 @@
-import { Tooltip as tooltip }  from "bootstrap";
 
 $(document).ready(function () {
   var windowsize = $(window).width();
@@ -37,13 +36,18 @@ $(document).ready(function () {
       $(this).children('a').attr('data-original-title', tool_content);
       $(this).children().children('a').attr('data-original-title', tool_content);
     }
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    if($('[data-toggle="tooltip"]').length){
+      $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    }
+    
     $('.tooltipInfoIcon').click(function () {
       $('.tooltipInfoIcon').css('text-decoration', 'none');
     });
   });
   function faCircle() {
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    if($('[data-toggle="tooltip"]').length){
+      $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+    }
     //$('[data-toggle="tooltip"]').tooltip('update');
     if (windowsize > 767) {
       //$('.tooltipInfoIcon').removeAttr('data-placement');
@@ -54,7 +58,9 @@ $(document).ready(function () {
     }
   }
   $(window).resize(function () {
-    $('[data-toggle="tooltip"]').tooltip('hide');
+    if($('[data-toggle="tooltip"]').length){
+      $('[data-toggle="tooltip"]').tooltip('hide');
+    }
     //$('[data-toggle="tooltip"]').tooltip();
     windowsize = $(window).width();
     faCircle();
