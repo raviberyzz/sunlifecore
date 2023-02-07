@@ -142,12 +142,10 @@ module.exports = {
             patterns: [...resourcesArr]
         }),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
             'reactComponents':'reactComponents',
             'React':'React',
-            '$.fn.datepicker': 'Datepicker'
+            '$.fn.datepicker': 'Datepicker',
+            Popper: ['popper.js', 'default']
         })
     ],
     stats: {

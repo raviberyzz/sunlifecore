@@ -2570,4 +2570,4 @@ $(document).ready(function(){
     checkCookieExists();
 });
 /* Tags formatting ends here */
-export {shareFB,shareTwitter,shareLinkedIn,shareGooglePlus,checkCookieExists,readCookie,getCookie,getQuerystring}; 
+export {shareFB,shareTwitter,shareLinkedIn,shareGooglePlus,checkCookieExists,readCookie,getCookie,getQuerystring,createCookie,getURLSocialMedia,removeParam, getParameterByName}; 

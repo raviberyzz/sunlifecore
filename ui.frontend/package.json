@@ -19,7 +19,7 @@
     "aemfed": "aemfed -t \"http://admin:admin@localhost:4504\" -w \"../ui.apps/src/main/content/jcr_root/\"",
     "watch": "npm-run-all --parallel start chokidar aemsyncro",
     "watchsync": "aemfed && watch",
-    "generate-clientlib":"node initiate.clientlib.generator.js",
+    "generate-clientlib": "node initiate.clientlib.generator.js",
     "build:clientlib": "npm run generate-clientlib",
     "deploy:local": "aemsync -t http://admin:admin@localhost:4504 -p ../ui.apps/",
     "build-and-deploy": "webpack --env dev --config ./webpack.local.js && npm run build:clientlib",
@@ -32,6 +32,7 @@
     "bootstrap": "^3.3.5",
     "hbs": "^4.0.6",
     "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
