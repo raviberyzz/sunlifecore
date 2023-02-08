@@ -50,7 +50,7 @@
                     <properties>
                         <cloudManagerTarget>none</cloudManagerTarget>
                     </properties>
-                    <group>ca.sunlife.web.cms</group>
+                    <group>sunlife</group>
                     <name>web-cms-aem-core.ui.content</name>
                     <packageType>content</packageType>
                     <accessControlHandling>merge</accessControlHandling>
