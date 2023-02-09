@@ -41,19 +41,19 @@
 
 
     $(window).resize(function() {
-        if ($(window).width() > 1068) {
-            if ($("#dynamicslideUp").length > 0) {
-                $('.close-popup').click() //close modal  if open - when changing from mobile/tablet to desktop 
-            }
+        if($(".carousel-client-story").length > 0){
+			if ($(window).width() > 1068) {
+            	if ($("#dynamicslideUp").length > 0) {
+                	$('.close-popup').click() //close modal  if open - when changing from mobile/tablet to desktop 
+            	}
+        	}
+       		else if ($(window).width() < 1068) {
+            	if ($("#dynamicslideUp").length == 0) {
+                	$('.close-popup').click() //close modal if open - when changing from desktop to mobile/tablet  
+            	}
+			}
+        	openDialogSliderBasedOnScreen();
         }
-        else if ($(window).width() < 1068) {
-            if ($("#dynamicslideUp").length == 0) {
-                $('.close-popup').click() //close modal if open - when changing from desktop to mobile/tablet  
-            }
-
-        }
-        openDialogSliderBasedOnScreen();
-
     });
 
     openDialogSliderBasedOnScreen();
