@@ -8,3 +8,4 @@ src/main/content/jcr_root/apps/sunlife/core/components/**/**/clientlibs
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/vendor-js
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/vendor-generic-js
 !src/main/content/jcr_root/apps/sunlife/core/clientlibs/mfa-transit-jdk
+!src/main/content/jcr_root/apps/sunlife/core/clientlibs/mfa-clientlibs-js

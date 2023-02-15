@@ -9,5 +9,3 @@ import './scripts/4-password-auth-with-password.js';
 import './scripts/5-password-authenticator-session.js';
 import './scripts/6-step-up-auth-select-target-session.js';
 import './scripts/7-step-up-input-otp-code-session.js';
-import './scripts/8-SessionTimeout.js';
-import './scripts/9-dummy-form.js';
