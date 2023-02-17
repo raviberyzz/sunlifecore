@@ -428,8 +428,7 @@ $(document).ready(function () {
     const password = document.getElementById("PASSWORD");
     const englishText = document.getElementById("spanTextEnglish");
     const frenchText = document.getElementById("spanTextFrench");
-    if(togglePassword){
-      togglePassword.addEventListener("click", () => {
+    togglePassword.addEventListener("click", () => {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
         // toggle the eye slash icon
@@ -448,8 +447,6 @@ $(document).ready(function () {
             }
         }
     });
-    }
-    
 });
 
 
