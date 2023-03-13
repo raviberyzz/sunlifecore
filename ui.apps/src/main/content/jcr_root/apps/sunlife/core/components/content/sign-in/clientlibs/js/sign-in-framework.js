@@ -144,7 +144,11 @@ $(document).ready(function () {
     $('.mySlfSignIn input[name="signin"][type="submit"]').click(function (
       event
     ) {
-      parsleyAnalytics(event);
+      try {
+        parsleyAnalytics(event);
+      } catch (error) {
+        console.log("utagFallback", error);
+      }
       var $form = $(".mySlfSignIn #form_signon");
       $form.parsley().validate();
       if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
