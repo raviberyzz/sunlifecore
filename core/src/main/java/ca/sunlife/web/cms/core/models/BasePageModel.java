@@ -1156,7 +1156,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     siteLocale = configService.getConfigValues("siteLocale", pagePath);
     searchLanguage = configService.getConfigValues("searchLanguage", pagePath);
     
-    if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH)) {
+    if (currentPage.getPath().contains(BasePageModelConstants.SLFAS_PATH) || currentPage.getPath().contains(BasePageModelConstants.SUNCENTRAL_PATH) ) {
     	 siteHeadInclude = null== configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_HEAD_INCLUDE, pagePath));
    	     siteBodyInclude = null == configService.getConfigValues(SITE_BODY_INCLUDE, pagePath) ? "" : processSiteIncludes(configService.getConfigValues(SITE_BODY_INCLUDE, pagePath));
    	     headInclude= null==this.headInclude ? "" : processPageIncludes(this.headInclude); 
