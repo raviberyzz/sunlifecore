@@ -433,7 +433,8 @@ $(document).ready(function () {
     const password = document.getElementById("PASSWORD");
     const englishText = document.getElementById("spanTextEnglish");
     const frenchText = document.getElementById("spanTextFrench");
-    togglePassword.addEventListener("click", () => {
+    if (togglePassword !== null) {
+      togglePassword.addEventListener("click", () => {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
         // toggle the eye slash icon
@@ -451,7 +452,8 @@ $(document).ready(function () {
                 frenchText.textContent = "Masquer le mot de passe";
             }
         }
-    });
+      });
+    }
 });
 
 
