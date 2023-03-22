@@ -46,8 +46,8 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import ca.sunlife.web.cms.core.beans.Pagination;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
 
 /**

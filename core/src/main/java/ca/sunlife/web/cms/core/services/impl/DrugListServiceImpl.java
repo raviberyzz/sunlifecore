@@ -1,31 +1,21 @@
 package ca.sunlife.web.cms.core.services.impl;
 
-import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
-import ca.sunlife.web.cms.core.services.druglist.DrugListKey;
-import ca.sunlife.web.cms.core.services.druglist.DrugListService;
-import ca.sunlife.web.cms.core.services.druglist.ErrorReportWriter;
-import ca.sunlife.web.cms.core.services.druglist.PaForm;
-import com.day.cq.dam.api.Asset;
-import com.day.cq.dam.api.AssetManager;
-import com.day.cq.dam.api.Rendition;
-import com.day.cq.replication.ReplicationActionType;
-import com.day.cq.replication.ReplicationException;
-import com.day.cq.replication.ReplicationOptions;
-import com.day.cq.replication.Replicator;
-import com.adobe.granite.asset.api.AssetVersionManager;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.sling.api.resource.*;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.metatype.annotations.Designate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.UUID;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -33,18 +23,37 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObjectBuilder;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.zip.GZIPOutputStream;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.Designate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.adobe.granite.asset.api.AssetVersionManager;
+import com.day.cq.dam.api.Asset;
+import com.day.cq.dam.api.AssetManager;
+import com.day.cq.dam.api.Rendition;
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.ReplicationException;
+import com.day.cq.replication.Replicator;
+
+import ca.sunlife.web.cms.core.services.druglist.DrugListConfig;
+import ca.sunlife.web.cms.core.services.druglist.DrugListKey;
+import ca.sunlife.web.cms.core.services.druglist.DrugListService;
+import ca.sunlife.web.cms.core.services.druglist.ErrorReportWriter;
+import ca.sunlife.web.cms.core.services.druglist.PaForm;
 
 
 /**

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    jcr:primaryType="sling:OsgiConfig"
-    getHost="akab-q4llmyphorqyrxkf-vhrt6t6mg3kgr5z5.purge.akamaiapis.net"
-    getEnvironment="production"
-    getAccessKey="akab-coaxo5i7uyh25rdl-ukgkilqkilqhekri"
-    getClientSecret="5nBJ+6AZyG6e2+tkxZWhrilX2Ys2UObM7fKB8ld0rvY="
-    getClientToken="akab-7ilhfrrlqf3ak4w2-awgfokfuslr7th2u" />
