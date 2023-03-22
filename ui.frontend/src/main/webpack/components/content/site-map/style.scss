@@ -1,0 +1,86 @@
+@import '../../../prerequisite/base/styles/core.scss'; 
+
+.site-map{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+            a{
+            font-family: 'sunlife-sans';
+            font-weight: 400;
+            font-size: 21px;
+        }
+        h2{
+            font-size:32px;
+            a{
+                color: $medium-blue-color; 
+            }
+            a:hover{
+                font-weight: 700;
+            }
+        }
+        h3{
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom:0px;
+            a {
+                font-weight: 700;
+                color: $medium-blue-color;
+                font-size: 16px;
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        }
+        .map-dotted{
+            li{
+                font-size: 16px;
+                padding: 10px 0;
+                line-height: 140%;
+                border-bottom: 2px dotted $light-grey-color;
+                .content{
+                    columns: 2 400px;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    vertical-align: middle;
+                    li{
+                        border-bottom: none !important;
+                        font-size: 16px;
+                        padding: 10px 0;
+                        line-height: 140%;
+                        a{
+                            font-weight: normal;
+                            font-size: 16px;
+                            text-decoration: none;
+                        }
+                        a:hover{
+                            text-decoration: underline;
+                        }
+                        ul{
+                            margin-left: 40px;
+                            border-bottom: none;
+                            padding-left: 0;
+                            list-style: none;
+                            li{
+                                border-bottom: none !important;
+                                line-height: 120%;
+                            }
+                    }
+                    }
+                  
+                } 
+            }
+        }
+        .hard-separator{
+            display: block;
+            width: 100px;
+            border: 0;
+            border-bottom: 2px solid $medium-yellow-background;
+            text-align: left;
+            margin: 40px 0;
+            padding: 0;
+            position: static;
+        }
+}

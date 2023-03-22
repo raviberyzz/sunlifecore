@@ -1,0 +1,188 @@
+@import '../../../prerequisite/base/styles/core.scss';
+
+//accordian styling (advisor location tab)
+.google-map{
+    .panel{
+        -webkit-box-shadow: unset;
+        box-shadow: unset;
+    }
+    #GoogleMapDiv{
+        height: 300px; 
+        width :100%;
+    }
+    .accordion-heading {
+        font-family: 'sunlife-sans';
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+        color: $medium-blue-color;
+    }
+    .slf-accordion-plus {
+        .accordion-heading {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: $medium-yellow-background;
+        }
+        .accordion-heading[aria-expanded="true"]:before {
+            content: "\f056";
+            font-family: FontAwesome;
+            font-size: 22px;
+            padding-right: 10px;
+        }
+        .accordion-heading[aria-expanded="false"]:before {
+            content: "\f055";
+            font-family: FontAwesome;
+            font-size: 22px;
+            padding-right: 10px;
+        }
+    }
+}
+.corp-target{
+    .content-label {
+        margin: 0 10px 10px 0;
+    }
+    .col-advisor-grid-block{    
+        .row{
+            margin: 0 -15px 0;      
+        }
+    }
+}
+.advisor-target{
+    .content-label {
+        margin: 0 10px 10px;
+    }
+    .row-advisor-0{
+        margin-left: -25px;
+        padding: 0 0 10px;
+        h1{
+        font-family: 'sunlife-sans';
+        font-size: 16px !important;
+        line-height: 120%;
+        text-transform: none;
+        }
+    }
+}
+.row-advisor.p-std-advisor{
+    line-height: 24px !important;
+    padding-bottom: 30px;
+    .corp-case2{
+        padding: 0 15px;
+        margin-left: -45px;
+    }
+    //style for
+    h1, h2, .featured-content-list .editorial, .featured-content-list-multiple-link .editorial, .featured-content-list.multiple-link-variation .editorial, .featured-content-list-tool .editorial, .featured-content-list.tool-variation .editorial, h3, h4, .accordion-heading, .footer .global-footer-row2 .slf-accordion-arrow .accordion-heading, .slf-tab-container .panel-default > .panel-heading {
+        margin-top: 0 !important;
+    }
+    ul:not(.nav):not(.list-unstyled):not(.list-inline):not(.option-table):not(.footer-socials):not(.list-group):not(.slf-tabs):not(.list-topic):not(.content-list):not(.feature-content):not(.dotted):not(.social-network-list):not(.map-dotted):not(.sitemap):not(.wgt-cs-list):not(.dropdown-menu):not(.wgt-AM-form-selDd):not(.wgt-AM-listPlain):not(.x-menu-list):not(.x-tab-strip):not(.x-tree-root-ct):not(.x-tree-lines):not(.x-tree-root-ct):not(.x-tree-node):not(.pagination):not(.x-tree-node-ct):not(.vui-grid-actions):not(.life-moments):not(.life-moments-flex):not(.filter-options):not(.view-all-category):not(.parsley-errors-list) > li::before {
+        content: "\2022";
+        color: $medium-yellow-background;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+    ul:not(.nav):not(.list-unstyled):not(.list-inline):not(.option-table):not(.footer-socials):not(.list-group):not(.slf-tabs):not(.list-topic):not(.content-list):not(.feature-content):not(.dotted):not(.social-network-list):not(.map-dotted):not(.sitemap):not(.wgt-cs-list):not(.dropdown-menu):not(.wgt-AM-form-selDd):not(.wgt-AM-listPlain):not(.x-menu-list):not(.x-tab-strip):not(.x-tree-root-ct):not(.x-tree-lines):not(.x-tree-root-ct):not(.x-tree-node):not(.pagination):not(.x-tree-node-ct):not(.vui-grid-actions):not(.life-moments):not(.filter-options) {
+        margin: 12px 0 12px 12px;
+        padding: 0;
+        list-style: none;
+        vertical-align: middle;
+        min-height: 48px;
+        > li {
+            font-size: 16px;
+            padding: 0 0 4px 14px;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: 0 .5em;
+            line-height: 140%;
+        }
+    }
+    .row-advisor-contact-social{
+        text-align: end;
+    }
+    .row-advisor-disclaimer {
+        font-size: 0.75em;
+        line-height: 1.5em;
+    }
+    .col-sm-6.col-advisor-grid-block{
+        padding-top: 30px;
+    }
+    .row-advisor-email {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .row-advisor-socials{
+        padding-top: 20px;
+        li {
+            a {
+                font-size: 2.5em;
+                color: $blue-gradient-color;
+            }
+            a:hover:before{
+                color: $primary-yellow-background;
+            }
+        }
+    }
+    .cwelcomemsg{
+        padding-bottom: 30px
+    }
+}
+@media (max-width:$mobile-screen-max) and (min-width: $mobile-screen-min){
+    .row-advisor.p-std-advisor{
+        text-align: center;
+        .corp-case2{
+            padding: 0;
+            margin-left: 0;
+        }
+        .row-advisor-desc-xs {
+            padding-top: 20px;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        .row-advisor-0{
+            margin-left: 0;
+            .row-advisor-contact-social {
+                padding-top: 5px;
+                
+            }
+            h1{
+            text-align: left;
+            }
+        }
+        .row-advisor-contact-social{
+            text-align: center;
+        }
+    }
+    .row-advisor-desc-xs.col-xs-12 {
+        padding: 0 5px;
+    }
+}
+//this max width is being hardcoded because ipad pro view is different from ipad view.
+@media (min-width:$tab-screen-min) and (max-width: 1023px){
+    .row-advisor.p-std-advisor{
+        .corp-case2{
+            padding: 0 15px !important;
+            margin-left: -15px;
+            text-align: left;
+            
+        }
+        .row-advisor-disclaimer {
+            text-align: center;
+        }
+        .row-advisor-contact-social{
+            text-align: center;
+        }
+    }
+    .advisor-target{
+        .row-advisor-0{
+            text-align: left;
+        }
+    }
+    .corp-target{
+        text-align: center !important;
+        .col-sm-6.col-advisor-grid-block{
+            text-align: left !important;
+        }
+    }
+}

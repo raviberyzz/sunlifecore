@@ -1,0 +1,296 @@
+.mySlfSignIn, .sign-in.cool-blue .mySlfSignIn {
+  height: auto;
+  background-color: #FFCB05;
+  padding: 24px 24px 40px 24px;
+  /*  for aem styles */ }
+  .mySlfSignIn .h2, .sign-in.cool-blue .mySlfSignIn .h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 24px;
+    color: #5B6062;
+    margin: 16px 0 10px 0; }
+  .mySlfSignIn .form-sign-in, .sign-in.cool-blue .mySlfSignIn .form-sign-in {
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    max-width: 317px;
+    width: 100%; }
+    .mySlfSignIn .form-sign-in .form-group {
+      margin: 0; }
+      .mySlfSignIn .form-sign-in .form-group.text-left {
+        text-align: left;
+        flex-direction: row;
+        display: block; }
+      .mySlfSignIn .form-sign-in .form-group input {
+        display: block;
+        padding: 0 10px;
+        width: 100%;
+        max-width: 317px;
+        height: 48px;
+        border: 1px solid #DCDEDF;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #5B6062;
+        line-height: 26px; }
+      .mySlfSignIn .form-sign-in .form-group input::placeholder {
+        color: #5B6062;
+        line-height: 26px;
+        font-size: 1rem;
+        font-weight: 400; }
+      .mySlfSignIn .form-sign-in .form-group input[name="USER"] {
+        margin-bottom: 8px; }
+      .mySlfSignIn .form-sign-in .form-group input[name="SAVEIDCHECK"] {
+        height: 20px;
+        width: 20px;
+        margin-bottom: 16px; }
+        .mySlfSignIn .form-sign-in .form-group input[name="SAVEIDCHECK"]:checked::after {
+          margin-left: -8px; }
+      .mySlfSignIn .form-sign-in .form-group span.remember-text {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 26px;
+        color: #5B6062;
+        padding-left: 30px;
+        margin-bottom: 16px;
+        display: inline-block; }
+      .mySlfSignIn .form-sign-in .form-group .password-input {
+        margin-bottom: 16px;
+        padding-right: 47px; }
+      .mySlfSignIn .form-sign-in .form-group .btn.btn-blue {
+        width: 100%;
+        height: 48px;
+        background: #184A58;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-bottom: 16px; }
+  .mySlfSignIn #form_signon .has-error {
+    margin-bottom: 10px; }
+    .mySlfSignIn #form_signon .has-error input[type="password"],
+    .mySlfSignIn #form_signon .has-error input[type="text"] {
+      border: 1px solid #B81F39;
+      background-color: #F9F0F8; }
+    .mySlfSignIn #form_signon .has-error .arrow-help-block,
+    .mySlfSignIn #form_signon .has-error .help-block {
+      background: #B81F39;
+      color: #FFFFFF;
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      text-align: left;
+      margin-top: 0;
+      padding-left: 20px;
+      height: auto;
+      min-height: 48px; }
+      .mySlfSignIn #form_signon .has-error .arrow-help-block:before,
+      .mySlfSignIn #form_signon .has-error .help-block:before {
+        content: '\f12a';
+        font-family: FontAwesome;
+        color: #FFFFFF;
+        position: absolute;
+        left: 10px;
+        top: 10px; }
+      .mySlfSignIn #form_signon .has-error .arrow-help-block a,
+      .mySlfSignIn #form_signon .has-error .help-block a {
+        color: #FFFFFF; }
+    .mySlfSignIn #form_signon .has-error .arrow-help-block {
+      margin-bottom: 20px;
+      margin-top: -10px;
+      padding-top: 10px; }
+      .mySlfSignIn #form_signon .has-error .arrow-help-block:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 20px;
+        bottom: 100%;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid #B81F39;
+        border-top: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent; }
+      .mySlfSignIn #form_signon .has-error .arrow-help-block#accessIdError {
+        margin-top: -2px;
+        margin-bottom: 5px; }
+  .mySlfSignIn #form_signon .help-block {
+    margin-bottom: 5px; }
+  .mySlfSignIn #form_signon .arrow-help-block, .mySlfSignIn #form_signon .help-block {
+    display: none; }
+  .mySlfSignIn .parsley-errors-list.filled {
+    top: 2px; }
+    .mySlfSignIn .parsley-errors-list.filled li {
+      padding: 8px 10px 4px 16px; }
+  .mySlfSignIn #passwordDiv .parsley-errors-list {
+    top: -6px; }
+  .mySlfSignIn .signin-links, .sign-in.cool-blue .mySlfSignIn .signin-links {
+    font-size: 0.8125rem;
+    display: flow-root;
+    width: 100%;
+    font-weight: 700;
+    margin-bottom: 0;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    max-width: 317px;
+    width: 100%; }
+    .mySlfSignIn .signin-links .signin-help, .mySlfSignIn .signin-links .signin-register {
+      float: left;
+      line-height: 18px; }
+      .mySlfSignIn .signin-links .signin-help a, .mySlfSignIn .signin-links .signin-register a {
+        font-size: 0.875rem;
+        line-height: 18px;
+        color: #184A58; }
+    .mySlfSignIn .signin-links .signin-register {
+      float: right; }
+  .mySlfSignIn .right-item.signin-links-two {
+    padding: 0;
+    margin-bottom: 0;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 317px;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 18px;
+    font-weight: 400;
+    color: #5B6062; }
+    .mySlfSignIn .right-item.signin-links-two p {
+      margin: 32px 0 0 0;
+      font-size: 0.875rem;
+      line-height: 18px;
+      font-weight: 400;
+      color: #5B6062;
+      max-width: 317px; }
+      .mySlfSignIn .right-item.signin-links-two p a {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #184A58; }
+      .mySlfSignIn .right-item.signin-links-two p.no-margin-top {
+        margin: 0; }
+      .mySlfSignIn .right-item.signin-links-two p .no-margin-top {
+        margin: 0; }
+  .mySlfSignIn .download-app, .sign-in.cool-blue .mySlfSignIn .download-app {
+    min-height: 66px;
+    height: auto;
+    margin: 0 0 16px 0;
+    background-color: #F1F7F7;
+    width: calc(100% + 48px);
+    position: relative;
+    margin-left: -24px;
+    padding: 0 24px; }
+    .mySlfSignIn .download-app .download-app-wrapper {
+      height: auto;
+      width: 100%;
+      max-width: 317px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      position: relative; }
+      .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative; }
+        .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text p {
+          width: 100%;
+          margin-bottom: 0;
+          font-weight: 400;
+          line-height: 20px;
+          font-size: 1rem;
+          color: #5B6062; }
+          .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text p:active, .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text p:hover {
+            text-decoration: none; }
+          .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text p strong {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 20px;
+            color: #184A58; }
+        .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text p:first-child {
+          margin-top: 10px; }
+      .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo {
+        display: inline-block; }
+        .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p:first-child {
+          float: left;
+          margin: 0; }
+          .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p:first-child img {
+            width: 50px;
+            height: 50px;
+            margin-top: 8px; }
+        .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p {
+          width: auto;
+          float: none;
+          margin: 0 0 0 60px;
+          font-weight: 400;
+          line-height: 20px;
+          font-size: 1rem;
+          color: #5B6062;
+          position: relative;
+          word-break: break-word;
+          overflow: hidden; }
+          .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p:active, .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p:hover {
+            text-decoration: none; }
+          .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p strong {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 20px;
+            color: #184A58; }
+        .mySlfSignIn .download-app .download-app-wrapper .mobile-app-text.app-logo p:nth-child(2) {
+          margin-top: 12px; }
+  .mySlfSignIn .download-app.no-text {
+    min-height: 0;
+    display: none;
+    margin-bottom: 0; }
+
+.sign-in.cool-blue .mySlfSignIn {
+  background-color: #F1F7F7; }
+  .sign-in.cool-blue .mySlfSignIn .download-app {
+    background-color: #FFFFFF;
+    margin: 0 0 16px 0;
+    margin-left: -24px; }
+  .sign-in.cool-blue .mySlfSignIn .download-app.no-text {
+    min-height: 0;
+    display: none;
+    margin-bottom: 0; }
+  .sign-in.cool-blue .mySlfSignIn .right-item.signin-links-two {
+    margin-bottom: 0; }
+
+.sign-in.bg-white .mySlfSignIn {
+  background-color: #FFFFFF; }
+
+@media (max-width: 767px) {
+  .mySlfSignIn .h2, .sign-in.cool-blue .mySlfSignIn .h2 {
+    margin-bottom: 16px; } }
+
+iframe {
+  border: 0; }
+
+.sign-out-link {
+  font-weight: 700;
+  color: #184A58;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent; }
+
+.password-div {
+  position: relative; }
+
+.eye-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 10px;
+  transform: scale(1.2);
+  background: transparent;
+  border: none;
+  outline-width: 10; }
+
+.fa-eye:before {
+  content: "\f06e"; }
+
+/* mfa modal starts here */
+/* mfa modal ends here */

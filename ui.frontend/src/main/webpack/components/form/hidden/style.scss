@@ -1,0 +1,14 @@
+@import '../../../prerequisite/base/styles/core.scss';
+.input-wrapper {
+    color: $medium-grey-background;
+    margin-bottom: 10px;
+}
+input[type=text] {
+    font-family: 'sunlife-sans';
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0 16px;
+    height: 48px;
+    width: 100%;
+    border: 1px solid $medium-grey-background;
+}
