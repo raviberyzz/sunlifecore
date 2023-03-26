@@ -65,7 +65,7 @@
                         </embedded>
                         <embedded>
                             <groupId>ca.sunlife.web.cms</groupId>
-                            <artifactId>web-cms-aem-core.ui.content</artifactId>
+                            <artifactId>web-cms-aem-core.content</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
@@ -75,23 +75,29 @@
                             <type>zip</type>
                             <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
-                        <embedded>
+                        <!-- <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.content</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded>
+                        </embedded> -->
                         <embedded>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.all</artifactId>
+                            <type>zip</type>
+                            <target>/apps/sunlife-vendor-packages/core/install</target>
+                        </embedded>
+                        <!-- <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.core</artifactId>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded>
-                        <embedded>
+                        </embedded> -->
+                        <!-- <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.config</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded>
+                        </embedded> -->
                         <embedded>
                             <groupId>org.apache.sling</groupId>
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
@@ -194,7 +200,7 @@
         </dependency>
         <dependency>
             <groupId>ca.sunlife.web.cms</groupId>
-            <artifactId>web-cms-aem-core.ui.content</artifactId>
+            <artifactId>web-cms-aem-core.content</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
@@ -207,13 +213,14 @@
 
         <dependency>
             <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.content</artifactId>
+            <artifactId>core.wcm.components.all</artifactId>
+            <version>${core.wcm.components.version}</version>
             <type>zip</type>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
-        </dependency>
+        </dependency> -->
     </dependencies>
 </project>

@@ -30,7 +30,7 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>web-cms-aem-core.ui.content</artifactId>
+    <artifactId>web-cms-aem-core.content</artifactId>
     <packaging>content-package</packaging>
     <name>sunlife - UI content</name>
     <description>UI content package for sunlife</description>
@@ -51,7 +51,7 @@
                         <cloudManagerTarget>none</cloudManagerTarget>
                     </properties>
                     <group>sunlife</group>
-                    <name>web-cms-aem-core.ui.content</name>
+                    <name>web-cms-aem-core.content</name>
                     <packageType>content</packageType>
                     <accessControlHandling>merge</accessControlHandling>
                     <validatorsSettings>
