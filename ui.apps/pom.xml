@@ -123,10 +123,18 @@
 
         <dependency>
             <groupId>ca.sunlife.web.cms</groupId>
+            <artifactId>web-cms-aem-core.ui.frontend</artifactId>
+            <version>${project.version}</version>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>ca.sunlife.web.cms</groupId>
             <artifactId>web-cms-aem-core.ui.apps.structure</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
+        
 
         <dependency>
             <groupId>com.adobe.cq</groupId>

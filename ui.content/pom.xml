@@ -53,7 +53,9 @@
                     <group>sunlife</group>
                     <name>web-cms-aem-core.content</name>
                     <packageType>content</packageType>
-                    <accessControlHandling>merge</accessControlHandling>
+                    <accessControlHandling>merge_preserve</accessControlHandling>
+                    <allowIndexDefinitions>true</allowIndexDefinitions>
+                    <failOnDuplicateEntries>false</failOnDuplicateEntries>
                     <validatorsSettings>
                         <jackrabbit-filter>
                             <options>

@@ -37,7 +37,7 @@
     <!-- ====================================================================== -->
     <!-- B U I L D   D E F I N I T I O N                                        -->
     <!-- ====================================================================== -->
-    <build>
+    <build>  
         <plugins>
             <!-- ====================================================================== -->
             <!-- V A U L T   P A C K A G E   P L U G I N S                              -->
@@ -75,29 +75,29 @@
                             <type>zip</type>
                             <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
-                        <!-- <embedded>
+                        <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.content</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded> -->
+                        </embedded>
                         <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.all</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
                         </embedded>
-                        <!-- <embedded>
+                        <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.core</artifactId>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded> -->
-                        <!-- <embedded>
+                        </embedded>
+                        <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.config</artifactId>
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
-                        </embedded> -->
+                        </embedded>
                         <embedded>
                             <groupId>org.apache.sling</groupId>
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
@@ -213,14 +213,13 @@
 
         <dependency>
             <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.all</artifactId>
-            <version>${core.wcm.components.version}</version>
+            <artifactId>core.wcm.components.content</artifactId>
             <type>zip</type>
         </dependency>
-        <!-- <dependency>
+        <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
-        </dependency> -->
+        </dependency>
     </dependencies>
 </project>
