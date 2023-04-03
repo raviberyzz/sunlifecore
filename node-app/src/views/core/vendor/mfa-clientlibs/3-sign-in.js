@@ -155,6 +155,7 @@ function getHiddenFormValues(){
     var saveIdIdentifier =$('input[name="SAVEIDIDENTIFIER"]').val();
     var redirectPath =$('input[name="REDIRECTPATH"]').val();
     var errorRedirPath =$('input[name="ERRORREDIRPATH"]').val();
+    var smoidc =$('input[name="SMOIDC"]').val();
      
     var smParameter = {
         "language": language,
