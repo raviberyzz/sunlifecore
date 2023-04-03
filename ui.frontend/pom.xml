@@ -85,12 +85,13 @@
 								<descriptor>assembly-source.xml</descriptor>
 							</descriptors>
 							<appendAssemblyId>true</appendAssemblyId>
-							<finalName>${parent.artifactId}-${parent.version}-Sources</finalName>                                                  
+							<finalName>${parent.artifactId}-${parent.version}-Sources</finalName>   
+                            <outputDirectory>../target</outputDirectory>                                               
 						</configuration>
 					</execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -106,14 +107,14 @@
                                 <resource>
                                     <directory>${basedir}/target</directory>
                                     <includes>
-                                        <include>${parent.artifactId}-${parent.version}-Sources.zip</include>
+                                        <include>${parent.artifactId}-${parent.version}-Sources-source.zip</include>
                                     </includes>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
                </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
     <profiles>
