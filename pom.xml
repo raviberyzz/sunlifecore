@@ -32,7 +32,7 @@
         <module>ui.config</module>
         <module>ui.content</module>
         <module>ui.tests</module>
-        <!-- <module>it.tests</module> -->
+        <module>it.tests</module>
   </modules>
 
     <properties>
@@ -143,10 +143,7 @@
                             <descriptors>
                                 <descriptor>assembly.xml</descriptor>
                             </descriptors>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>web-cms-aem-ca.ui.frontend-${project.version}</finalName>
-                             <outputDirectory>${basedir}\target</outputDirectory>
-                             <skipAssembly>true</skipAssembly>
+                            <skipAssembly>true</skipAssembly>
                         </configuration>
                     </execution>
                 </executions>
