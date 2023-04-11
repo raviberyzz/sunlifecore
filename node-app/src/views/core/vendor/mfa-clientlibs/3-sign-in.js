@@ -175,7 +175,8 @@ function getHiddenFormValues(){
         "browserVer": browserVer ,
         "browseDesc": browserDesc,
         "clientIp": clientIP,
-        "requestType": requestType
+        "requestType": requestType,
+        "smoidc":smoidc
     }
     return smParameter;
 }
