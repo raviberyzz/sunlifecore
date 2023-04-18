@@ -105,14 +105,16 @@ public class NavigationModel extends NavigationImpl {
   public List <NavigationItem> processNavigationList(final List <NavigationItem> navigationItems) {
 
     String title = null;
+    String sitePath = null;
     try {
-    	String expPath = currentPage.getPath();
-    	if (null != expPath && expPath.length() > 0 && expPath.contains("experience-fragments")) {
-    	expPath = expPath.replace("/experience-fragments", "");
-    	expPath = expPath.substring(0, expPath.indexOf("/header"));
+    	String pagePath = currentPage.getPath();
+    	if (null != pagePath && pagePath.length() > 0 && pagePath.contains("experience-fragments")) {
+    		sitePath = configService.getConfigValues("siteUrl", pagePath);
     	}
-    	
-      title = configService.getConfigValues("navigationOverview", expPath);
+      
+		if(null != sitePath && sitePath.length() > 0) {
+      		title = configService.getConfigValues("navigationOverview", sitePath);
+		}
     } catch (RepositoryException | LoginException e) {
       LOGGER.error("Error :: init method of Left Navigation Model :: {}", e);
     }
