@@ -50,9 +50,10 @@
 }
 .title-wrapper-yellow-grey-rings{
   @extend .title-wrapper-yellow-grey;
-  background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  //background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
   background-color:$medium-yellow-background;
   background-size: contain;
+  background-image: none !important;
 }
 .title-wrapper-blue-yellow{
   @extend .title-wrapper-yellow-grey;
@@ -61,9 +62,10 @@
 }
  .title-wrapper-blue-yellow-rings{
   @extend .title-wrapper-yellow-grey;
-  background:url(/content/dam/sunlife/legacy/assets/slfglobal/Images/CircleOutline_bg.png) right no-repeat;
+ // background:url(/content/dam/sunlife/legacy/assets/slfglobal/Images/CircleOutline_bg.png) right no-repeat;
   background-color:$medium-blue-color;
   color: $medium-yellow-background;
+  background-image: none !important;
  }
  .no-title-bottom-spacing{
    margin-bottom:0;
