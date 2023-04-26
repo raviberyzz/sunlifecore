@@ -19,7 +19,7 @@
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>web-cms-aem-core</artifactId>
-        <version>1.104.0-SNAPSHOT</version>
+        <version>1.119.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>web-cms-aem-core.core</artifactId>
@@ -47,7 +47,7 @@
                             <bnd><![CDATA[
 Import-Package: javax.annotation;version=0.0.0,*
 Export-Package: ca.sunlife.web.cms.core.*
--conditionalpackage: core.wcm.components.core.*,com.github.mustachejava.*,org.jsoup.*, com.akamai.edgegrid.signer.*, com.adobe.cq.wcm.core.*
+-conditionalpackage: com.github.mustachejava.*,org.jsoup.*, com.akamai.edgegrid.signer.*, com.adobe.cq.wcm.core.*
 Sling-Initial-Content: SLING-INF/content;path:=/libs/system/config;overwrite:=true
 Sling-Model-Packages: ca.sunlife.web.cms.core,ca.sunlife.web.cms.source.models,ca.sunlife.web.cms.advisorhub.models
 -dsannotations: *
@@ -235,24 +235,18 @@ Bundle-SymbolicName: sunlife.core
 	      <version>4.1.2</version>
 	      <scope>provided</scope>
 	    </dependency>
-	    <!-- <dependency>
+	    <dependency>
 		  <groupId>com.adobe.cq</groupId>
 		  <artifactId>core.wcm.components.all</artifactId>
 		  <type>zip</type>
-		  <version>2.19.0</version>
-		</dependency> -->
+		  <version>${core.wcm.components.version}</version>
+		</dependency>
 		<dependency>
 		  <groupId>com.adobe.cq</groupId>
 		  <artifactId>core.wcm.components.core</artifactId>
 		  <version>${core.wcm.components.version}</version>
 		  <scope>provided</scope>
 		</dependency>
-		<!-- <dependency>
-		  <groupId>com.adobe.cq</groupId>
-		  <artifactId>core.wcm.components.all</artifactId>
-		  <type>zip</type>
-		  <version>2.19.0</version>
-		</dependency> -->
 	    <dependency>
 	      <groupId>com.adobe.acs</groupId>
 	      <artifactId>acs-aem-commons-bundle</artifactId>

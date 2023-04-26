@@ -25,7 +25,7 @@
     <filter root="/etc/map.stage.publish"/>
     <filter root="/etc/map.prod.publish"/>
     
-    <filter root="/content/sunlife-tools"/>
+    <filter root="/content/sunlife-tools"  mode="update"/>
     <filter root="/content/sunlife-tools/akamai-purge"/>
 	<filter root="/content/sunlife-tools/email"/>
 	<filter root="/content/sunlife-tools/post-redirection"/>
