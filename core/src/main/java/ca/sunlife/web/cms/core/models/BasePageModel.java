@@ -1840,6 +1840,9 @@ public void setDisableContextHubTags(String disableContextHubTags) {
         canonicalUrl = configService.getPageUrl(currentPage.getPath());
         if (!syncPath.isEmpty()) {
           updatedSyncPath = syncPath.substring(1,syncPath.length());
+          if(!updatedSyncPath.endsWith(BasePageModelConstants.SLASH_CONSTANT)) {
+            updatedSyncPath = updatedSyncPath + BasePageModelConstants.SLASH_CONSTANT;
+          }
         }
 
         altLanguageLinks.put(
