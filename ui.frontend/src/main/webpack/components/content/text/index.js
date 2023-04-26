@@ -1,19 +1,39 @@
-
 $(document).ready(function () {
   var windowsize = $(window).width();
   //faCircle();
-  $(".cmp-text,th,td").each(function () {
-    var tool = $(this).find(".tool-tip-box:first");
+  $(".cmp-text,th,td,ul").each(function () {
+    var tool_first = $(this).find(".tool-tip-box:first");
     var $va = "<a href='javascript:void(0)' title='' " + "class= " + '"fa fa-info-circle tooltipInfoIcon"' + "> </a>";
-    $($va).insertBefore(tool);
-    var tool_content = "";
-    if ($(this).attr('class') === 'cmp-text') {
-      $(this).children().children(".tool-tip-box").each(function () {
-        tool_content = tool_content + "<p>" + $(this).html() + "</p>";
+  	var tool_content = "";
+    var previous = tool_first;
+	if ($(this).attr('class') === 'cmp-text') { /*---------	Adding tool-tip <A href > and tool-tip content for text----------*/
+      $($va).insertBefore(tool_first);
+      $(this).children().children(".tool-tip-box").each(function() {
+        var tool_content_this = "<p>" + $(this).html() + "</p>";
+        if ($(this).parent()[0].outerText.length > 0) {
+          tool_content = tool_content_this;
+          previous = $(this);
+          if (($(this).prev().length === 0) || ($(this).prev().length > 0 && $(this).prev()[0].className !== 'fa fa-info-circle tooltipInfoIcon')) {
+            $($va).insertBefore($(this));
+          }
+        } else if ($(this)[0].parentElement.outerText.length === 0) {
+          tool_content = tool_content + tool_content_this;
+        }
+        var $aa = previous.prev();
+        $($aa).attr('data-original-title', tool_content);
       });
-    }
-    else {
-      $(this).children(".tool-tip-box").each(function () {
+    } else if ($(this).is('ul')) {   /*---------	Adding tool-tip <A href > and tool-tip content for ul----------*/
+      $(this).children().children(".tool-tip-box").each(function() {
+        var tool_content_this = "<p>" + $(this).html() + "</p>";
+        if (($(this).prev().length === 0) || ($(this).prev().length > 0 && $(this).prev()[0].className !== 'fa fa-info-circle tooltipInfoIcon')) {
+          $($va).insertBefore($(this));
+        }
+        var $aa = $(this).prev();
+        $($aa).attr('data-original-title', tool_content_this);
+      });
+    } else {
+      $($va).insertBefore(tool_first);
+      $(this).children(".tool-tip-box").each(function() {
         tool_content = tool_content + "<p>" + $(this).html() + "</p>";
       });
       $(this).children().children(".tool-tip-box").each(function () {
@@ -29,25 +49,19 @@ $(document).ready(function () {
       $('.tooltipInfoIcon').attr('data-placement', 'bottom');
     }
     $('.tooltipInfoIcon').attr('data-html', 'true');
-    if ($(this).attr('class') === 'cmp-text') {
-      $(this).find('a').attr('data-original-title', tool_content);
-    }
-    else {
+    if ($(this).attr('class') === 'cmp-text' || $(this).is('ul')) {
+      //$(this).find('a').attr('data-original-title', tool_content);
+    } else {
       $(this).children('a').attr('data-original-title', tool_content);
       $(this).children().children('a').attr('data-original-title', tool_content);
     }
-    if($('[data-toggle="tooltip"]').length){
-      $('[data-toggle="tooltip"]').tooltip({container: 'body'});
-    }
-    
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
     $('.tooltipInfoIcon').click(function () {
       $('.tooltipInfoIcon').css('text-decoration', 'none');
     });
   });
   function faCircle() {
-    if($('[data-toggle="tooltip"]').length){
-      $('[data-toggle="tooltip"]').tooltip({container: 'body'});
-    }
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
     //$('[data-toggle="tooltip"]').tooltip('update');
     if (windowsize > 767) {
       //$('.tooltipInfoIcon').removeAttr('data-placement');
@@ -58,9 +72,7 @@ $(document).ready(function () {
     }
   }
   $(window).resize(function () {
-    if($('[data-toggle="tooltip"]').length){
-      $('[data-toggle="tooltip"]').tooltip('hide');
-    }
+    $('[data-toggle="tooltip"]').tooltip('hide');
     //$('[data-toggle="tooltip"]').tooltip();
     windowsize = $(window).width();
     faCircle();
