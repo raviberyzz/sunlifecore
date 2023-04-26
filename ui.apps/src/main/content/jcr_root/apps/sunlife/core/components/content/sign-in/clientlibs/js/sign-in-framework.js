@@ -144,11 +144,12 @@ $(document).ready(function () {
     $('.mySlfSignIn input[name="signin"][type="submit"]').click(function (
       event
     ) {
-      try {
-        parsleyAnalytics(event);
-      } catch (error) {
-        console.log("utagFallback", error);
+    try {
+      parsleyAnalytics(event);
       }
+      catch (error) {
+      console.log("utagFallback", error);
+     }
       var $form = $(".mySlfSignIn #form_signon");
       $form.parsley().validate();
       if ($(".mySlfSignIn #form_signon").parsley().isValid()) {
@@ -432,7 +433,7 @@ $(document).ready(function () {
     const password = document.getElementById("PASSWORD");
     const englishText = document.getElementById("spanTextEnglish");
     const frenchText = document.getElementById("spanTextFrench");
-    togglePassword.addEventListener("click", () => {
+      togglePassword.addEventListener("click", () => {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
         // toggle the eye slash icon
@@ -450,7 +451,6 @@ $(document).ready(function () {
                 frenchText.textContent = "Masquer le mot de passe";
             }
         }
-    });
+      });
 });
-
 

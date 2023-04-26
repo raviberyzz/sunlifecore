@@ -93,6 +93,7 @@
             <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
             <input name="REDIRECTPATH" type="hidden" value="" />
             <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? '&nbsp;' : errorRedirectPath}" />
+            <input name="SMOIDC" type="hidden" value="" />
 
             <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
                 <input name="${attributes.name}" type="hidden" value="${attributes.value}" />
