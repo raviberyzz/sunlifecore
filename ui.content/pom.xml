@@ -23,7 +23,7 @@
     <parent>
         <groupId>ca.sunlife.web.cms</groupId>
         <artifactId>web-cms-aem-core</artifactId>
-        <version>1.110.0-SNAPSHOT</version>
+        <version>1.119.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -56,6 +56,7 @@
                     <accessControlHandling>merge_preserve</accessControlHandling>
                     <allowIndexDefinitions>true</allowIndexDefinitions>
                     <failOnDuplicateEntries>false</failOnDuplicateEntries>
+                    <skipValidation>true</skipValidation>
                     <validatorsSettings>
                         <jackrabbit-filter>
                             <options>
