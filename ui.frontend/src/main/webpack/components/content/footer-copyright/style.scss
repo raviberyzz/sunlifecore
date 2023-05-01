@@ -1,0 +1,153 @@
+@import '../../../prerequisite/base/styles/core.scss';
+.footer-copyright-wrapper{
+    background-color: $medium-blue-color;
+    padding:24px 15px;
+    .top-part{
+        display: inline-block;
+        width: 100%;
+        line-height:18px;
+        .slf-tagline{
+            color: $medium-yellow-background;
+            font-size: 1.125rem;
+            float: left;
+            font-weight: 700;
+            line-height: 23px;
+        }
+        .slf-legal{
+            float: right;
+            font-weight: 700;
+            li{
+                display: inline-block;
+                color: $white-shade;
+                padding:0 6px;
+            }
+            a{
+                color: $white-shade;
+                font-size: 0.875rem;
+                font-weight: 700;
+                line-height: 18px;
+            }
+            a.border-present{
+                border-right: 2px solid;
+                padding-right: 12px;
+            }
+            li:last-child{
+                padding-right: 0;
+            }
+        }
+    }
+    .bottom-part{
+        display: inline-block;
+        width: 100%;
+        line-height:20px;
+        .slf-acronym{
+            color: $white-shade;
+            font-size: 0.875rem;
+            line-height: 18px;
+            font-weight: 700;
+            float: right;
+            text-align: right;
+            p{
+                margin:0;
+            }
+        }
+        .not-slf-acronym{
+            color: $white-shade;
+            font-size: 0.875rem;
+            font-weight: 400;
+            float: right;
+            max-width: 50%;
+        }
+        .slf-copyright{
+            color: $white-shade;
+            font-size: 0.875rem;
+            line-height: 18px;
+            float: left;
+            p{
+                margin:0;
+            }
+        }
+    }
+}
+//specific case for ipad only. the footer heading was overlapping the social icons so set width to break the word into 2 lines
+@media (min-width: $tab-screen-min) and (max-width: 1023px) {
+    #mainfooter{
+        .teaser{
+            .text-section {
+                width: 325px;
+            }
+        }
+    }
+}
+
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max){
+    .footer-copyright-wrapper{
+        min-height: 116px;
+        padding:32px 15px;
+    }
+}
+@media (max-width: $mobile-screen-max){
+    .footer-copyright-wrapper{
+        height: auto;
+        padding:32px 15px;
+        .top-part{
+            display: block;
+            .slf-tagline, .slf-legal{
+                float: none;
+                text-align: center;
+            }
+            .slf-legal{
+                padding: 32px 13px 0px 13px;
+                ul{
+                    li:nth-child(4){
+                        padding-right: 6px;
+                    }
+                    li:nth-child(6){
+                        padding-left: 0;
+                        margin-left: -2px;
+                    }
+                    li{
+                        line-height: 26px;
+                    }
+                } 
+            }
+        }
+        .bottom-part{
+            display: block;
+            .slf-copyright, .slf-acronym, .not-slf-acronym{
+                float: none;
+                text-align: center;
+            }
+            .slf-copyright{
+                padding-top: 40px;
+            }
+            .slf-acronym, .not-slf-acronym{
+                padding-top: 16px;
+            }
+        }
+    }
+}
+
+/*.right-item{
+    .heading-6{
+        font-size:24px;
+    }
+}*/
+
+
+.top-footer-section{
+    padding: 32px 0px;
+    }
+    
+  #mainfooter{
+    .aem-Grid--12{
+        .layout-container{
+            .aem-GridColumn--default--12{
+                border-bottom:2px solid #fff;
+                }
+        }
+        
+       } 
+  }  
+   
+    

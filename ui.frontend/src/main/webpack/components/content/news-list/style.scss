@@ -1,0 +1,114 @@
+@import '../../../prerequisite/base/styles/core.scss'; 
+
+
+.news-list{
+    margin-bottom: 30px;
+    
+    h3{
+        margin-top:0 !important;
+    }
+    .tabs-wrapper.news {
+        .cmp-tabs__tablist {
+            .cmp-tabs__tab{
+                border: 0;
+            }
+            .cmp-tabs__tab:not(:first-of-type){
+                border-left: 1px solid $light-grey-shade-color;
+            }
+        }
+        .tab-accordian-heading:before{
+            padding-right: 7px;
+            padding-left: 0;
+        }
+
+    }
+    .tab-accordian-heading[aria-expanded="false"] {
+		&:before {
+			content: '';
+		}
+		a {
+			span {
+				&:before {
+					content: "\f0da";
+					font-family: FontAwesome;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
+	.tab-accordian-heading[aria-expanded="true"] {
+		&:before {
+			content: '';
+		}
+		a {
+			span {
+				&:before {
+					content: "\f0d7";
+					font-family: FontAwesome;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
+    
+}
+
+.news-article{
+    border: 2px solid $container-border-color;
+    padding: 20px 20px 20px 15px;
+    position: relative;
+    margin-top:-2px;
+}
+
+.announcement-list-container > .row .col-xs-12 {
+    padding: 0;
+}
+
+@media(max-width:$mobile-screen-max){
+    .news-article{
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+}
+
+
+@media(max-width:$mobile-screen-max){
+    .tabs-wrapper.news {
+        .news-article {
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+            border-bottom: 2px solid $container-border-color !important;
+            border: 0;
+        }
+        margin: -10px;
+        .tab-accordian-heading + *{
+            display: contents;
+        }
+        .news-option-table{
+            a{
+                color: $medium-blue-color;
+                font-weight: 700;
+                
+            }
+            
+        }
+        .tab-accordian-heading{
+            background: $product-card-shadow-color !important;
+            color: $dark-grey-color !important;
+            padding: 15px 20px;
+            cursor: pointer !important;
+            a {
+                color: $dark-grey-color;
+                font-weight: 400;
+                font-size: 20px;
+                padding-block-end: inherit;
+                padding-block-start: inherit;
+                padding-right: 70%;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+            
+        }
+    }
+}

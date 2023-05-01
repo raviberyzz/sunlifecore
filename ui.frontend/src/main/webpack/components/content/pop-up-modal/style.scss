@@ -1,0 +1,67 @@
+@import '../../../prerequisite/base/styles/core.scss';
+.popup-modal-wrapper{
+    padding:30px 0;
+    padding:0 !important;
+    background-color:$background-black-ovrelay-color;
+    overflow:auto;
+    position: absolute;
+    top:0;
+    position:fixed;
+    height:auto;
+    overflow-y:auto;
+    .modal-content{
+        outline-color:$medium-grey-background;
+        width:80%;
+        margin-top:20px;
+        border-radius:0;
+        .modal-header{
+            background-color:$medium-blue-color;
+            padding:0;
+            .modal-title{
+                display:flex;
+                margin:24px;
+                .modal-heading{
+                    font-size:1.75rem;
+                    font-weight:400;
+                    color: $white-shade;
+                    margin:0;
+                    width:calc(100% - 11px);
+                    padding-right:20px;
+                    :hover{
+                        text-decoration:none;
+                    }
+                }
+                .close-popup{
+                    font-size:1.125rem;
+                    color: $white-shade;
+                    opacity:1;
+                    margin:0;
+                    cursor:pointer;
+                }
+            }           
+        }
+        .modal-body{
+            margin:24px;
+            margin-top:10px;
+            padding:0;
+            .grey-horizontal-separator div {
+                float:none;
+                display: inline-block;
+            }
+            .link-list{
+                .lists-wrapper .links {
+                    float:none;
+                    border-top:none;
+                    padding:0;
+                }
+            }
+        }
+    }
+}
+@media (max-width: $mobile-screen-max){
+    .popup-modal-wrapper{
+        .modal-content{
+            width:90%;
+        }
+    }
+}

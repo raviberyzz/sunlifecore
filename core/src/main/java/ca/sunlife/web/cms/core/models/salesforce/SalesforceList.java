@@ -1,22 +1,19 @@
 package ca.sunlife.web.cms.core.models.salesforce;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+
 import com.adobe.cq.wcm.core.components.internal.models.v2.ListImpl;
 import com.adobe.cq.wcm.core.components.models.List;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-import org.apache.commons.lang.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 /**
  * Model for a salesforce specific page list.
