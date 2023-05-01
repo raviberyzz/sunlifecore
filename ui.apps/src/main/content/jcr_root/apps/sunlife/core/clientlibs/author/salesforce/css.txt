@@ -1,6 +1,0 @@
-#base=css
-
-salesforce-lightning-design-system.css
-salesforce-lightning-design-system_touch.css
-
-aem-salesforce.less

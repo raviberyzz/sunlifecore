@@ -1,0 +1,73 @@
+@import '../../../prerequisite/base/styles/core.scss'; 
+.grey-horizontal-separator{
+    .horizontal-middle-align{
+        border-bottom: 2px solid $medium-grey-background;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+.yellow-horizontal-separator{
+    .horizontal-middle-align{
+        border-bottom: 2px solid $medium-yellow-background;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+.vertical-separator{
+    hr{
+        display: none;
+    }
+    height: 75%;
+    border-right: 2px solid $light-grey-20;
+    width: 1px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.left-aligned-seperator{
+    .horizontal-middle-align{
+        left: 0;
+        transform: none;
+    }
+}
+.full-width-seperator{
+    .horizontal-middle-align{
+       width: 80%;
+    }
+}
+.page-separator {
+        display: block;
+        content: ' ';
+        height: 2px;
+        width: 100%;
+        background: $light-grey-20;
+        margin: 0 auto;
+}
+
+.separator-75 {
+    .horizontal-middle-align {
+        width: 75%;
+     }
+ }
+
+.separator-100 {
+    .horizontal-middle-align {
+        width: 100%;
+     }
+ }
+
+/*** for modal the seperator border is also coming from wem migration.css
+causing the seperator to overlap on one another ***/
+.modal-dialog {
+    hr.page-separator {
+        border-bottom: none;
+    }
+}
+/*** for modal the seperator border is also coming from wem migration.css
+causing the seperator to overlap on one another ends ***/
+@media (min-width: 768px) {
+    .page-separator {
+        width: 75%;
+    }
+}
+

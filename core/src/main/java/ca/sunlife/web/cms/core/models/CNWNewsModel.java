@@ -29,7 +29,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ca.sunlife.web.cms.core.beans.News;
 import ca.sunlife.web.cms.core.beans.ReleaseMain;
-import ca.sunlife.web.cms.core.constants.BasePageModelConstants;
 import ca.sunlife.web.cms.core.exception.ApplicationException;
 import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
