@@ -47,30 +47,12 @@
                 <groupId>org.apache.jackrabbit</groupId>
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <configuration>
-                    <properties>
-                        <cloudManagerTarget>none</cloudManagerTarget>
-                    </properties>
                     <group>sunlife</group>
                     <name>web-cms-aem-core.content</name>
-                    <packageType>content</packageType>
                     <accessControlHandling>merge_preserve</accessControlHandling>
                     <allowIndexDefinitions>true</allowIndexDefinitions>
                     <failOnDuplicateEntries>false</failOnDuplicateEntries>
                     <skipValidation>true</skipValidation>
-                    <validatorsSettings>
-                        <jackrabbit-filter>
-                            <options>
-                                <validRoots>/conf,/content,/content/experience-fragments,/content/dam</validRoots>
-                            </options>
-                        </jackrabbit-filter>
-                    </validatorsSettings>
-                    <dependencies>
-                        <dependency>
-                            <groupId>ca.sunlife.web.cms</groupId>
-                            <artifactId>web-cms-aem-core.ui.apps</artifactId>
-                            <version>${project.version}</version>
-                        </dependency>
-                    </dependencies>
                 </configuration>
             </plugin>
             <plugin>
