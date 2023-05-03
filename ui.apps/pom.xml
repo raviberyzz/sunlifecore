@@ -85,7 +85,7 @@
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>htl-maven-plugin</artifactId>
-                <executions>
+                 <executions>
                     <execution>
                         <id>validate-htl-scripts</id>
                         <goals>
@@ -135,7 +135,6 @@
             <type>zip</type>
         </dependency>
         
-
         <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.core</artifactId>
@@ -151,7 +150,6 @@
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
         </dependency>
-
 
         <dependency>
             <groupId>com.adobe.aem</groupId>
