@@ -896,16 +896,6 @@ Bundle-DocURL:
                 <scope>provided</scope>
             </dependency>
 
-             <dependency>
-                <groupId>com.adobe.cq</groupId>
-                <artifactId>core.wcm.components.all</artifactId>
-                <type>zip</type>
-                <version>${core.wcm.components.version}</version>
-            </dependency>
-
-
-
-
             <!-- Testing -->
 			<dependency>
 				<groupId>org.junit</groupId>

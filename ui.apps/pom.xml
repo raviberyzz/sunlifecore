@@ -60,7 +60,6 @@
                             <artifactId>web-cms-aem-core.ui.apps.structure</artifactId>
                         </repositoryStructurePackage>
                     </repositoryStructurePackages>
-                    <skipValidation>true</skipValidation>
                     <dependencies>
                         <dependency>
                             <groupId>com.adobe.cq</groupId>
@@ -140,7 +139,6 @@
 		  <groupId>com.adobe.cq</groupId>
 		  <artifactId>core.wcm.components.all</artifactId>
 		  <type>zip</type>
-		  <version>${core.wcm.components.version}</version>
 		</dependency>
 
         <dependency>
@@ -158,12 +156,6 @@
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
         </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.all</artifactId>
-            <type>zip</type>
-        </dependency>
-
 
         <dependency>
             <groupId>com.adobe.aem</groupId>

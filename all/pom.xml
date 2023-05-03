@@ -81,7 +81,6 @@
                             <type>zip</type>
                             <target>/apps/sunlife-vendor-packages/core/install</target>
                         </embedded>
-                       
                         <embedded>
                             <groupId>org.apache.sling</groupId>
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
