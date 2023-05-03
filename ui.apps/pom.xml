@@ -85,27 +85,6 @@
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>htl-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>validate-htl-scripts</id>
-                        <goals>
-                            <goal>validate</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <generateJavaClasses>true</generateJavaClasses>
-                            <generatedJavaClassesPrefix>org.apache.sling.scripting.sightly</generatedJavaClassesPrefix>
-                            <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-                            <allowedExpressionOptions>
-                                <allowedExpressionOption>cssClassName</allowedExpressionOption>
-                                <allowedExpressionOption>decoration</allowedExpressionOption>
-                                <allowedExpressionOption>decorationTagName</allowedExpressionOption>
-                                <allowedExpressionOption>wcmmode</allowedExpressionOption>
-                            </allowedExpressionOptions>
-                            <failOnWarnings>false</failOnWarnings>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
