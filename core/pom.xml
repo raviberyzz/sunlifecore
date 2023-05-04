@@ -235,12 +235,6 @@ Bundle-SymbolicName: sunlife.core
 	      <version>4.1.2</version>
 	      <scope>provided</scope>
 	    </dependency>
-	    <dependency>
-		  <groupId>com.adobe.cq</groupId>
-		  <artifactId>core.wcm.components.all</artifactId>
-		  <type>zip</type>
-		  <version>${core.wcm.components.version}</version>
-		</dependency>
 		<dependency>
 		  <groupId>com.adobe.cq</groupId>
 		  <artifactId>core.wcm.components.core</artifactId>
