@@ -139,7 +139,7 @@
             <type>zip</type>
         </dependency>
 
-        <!-- <dependency>
+        <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.core</artifactId>
         </dependency>
@@ -153,7 +153,7 @@
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
-        </dependency>-->
+        </dependency>
          <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.all</artifactId>
