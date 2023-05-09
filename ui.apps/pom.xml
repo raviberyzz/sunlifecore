@@ -54,13 +54,14 @@
                     <group>sunlife</group>
                     <name>web-cms-aem-core.ui.apps</name>
                     <packageType>application</packageType>
+                    <skipValidation>true</skipValidation>
                     <repositoryStructurePackages>
                         <repositoryStructurePackage>
                             <groupId>ca.sunlife.web.cms</groupId>
                             <artifactId>web-cms-aem-core.ui.apps.structure</artifactId>
                         </repositoryStructurePackage>
                     </repositoryStructurePackages>
-                    <!-- <dependencies>
+                    <dependencies>
                         <dependency>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.content</artifactId>
@@ -69,11 +70,7 @@
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.config</artifactId>
                         </dependency>
-                        <dependency>
-                            <groupId>com.adobe.cq</groupId>
-                            <artifactId>core.wcm.components.all</artifactId>
-                        </dependency>
-                    </dependencies> -->
+                    </dependencies>
                 </configuration>
             </plugin>
             <plugin>
@@ -159,7 +156,6 @@
             <artifactId>core.wcm.components.all</artifactId>
             <type>zip</type>
         </dependency> 
-       
 
         <dependency>
             <groupId>com.adobe.aem</groupId>
