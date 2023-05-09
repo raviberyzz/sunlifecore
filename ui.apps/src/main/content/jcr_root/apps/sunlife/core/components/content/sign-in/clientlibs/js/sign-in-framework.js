@@ -433,7 +433,6 @@ $(document).ready(function () {
     const password = document.getElementById("PASSWORD");
     const englishText = document.getElementById("spanTextEnglish");
     const frenchText = document.getElementById("spanTextFrench");
-    if (togglePassword !== null) {
       togglePassword.addEventListener("click", () => {
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
@@ -453,5 +452,4 @@ $(document).ready(function () {
             }
         }
       });
-      }
 });
