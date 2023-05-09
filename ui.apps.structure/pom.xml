@@ -37,12 +37,6 @@
                         <filter><root>/apps</root></filter>
                         <filter><root>/apps/core</root></filter>
                         <filter><root>/apps/sunlife/core</root></filter>
-                         
-                        <filter><root>/conf/global</root></filter>
-                        <filter><root>/etc</root></filter>
-                        <filter><root>/content/sunlife-tools</root></filter>
-                        <filter><root>/var</root></filter>
-
                         <!-- Common overlay roots -->
                         <filter><root>/apps/sling</root></filter>
                         <filter><root>/apps/cq</root></filter>
