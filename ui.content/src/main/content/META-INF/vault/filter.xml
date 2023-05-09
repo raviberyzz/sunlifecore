@@ -27,6 +27,7 @@
 	<filter root="/content/sunlife-tools/email"/>
 	<filter root="/content/sunlife-tools/post-redirection"/>
     <filter root="/content/sunlife-tools/dispatcher-flush-utility"/>
+    <!-- launcher and workflow for workplace benefits drug list -->
     <filter root="/conf/global/settings/workflow/launcher/config/1423903076"/>
 	<filter root="/conf/global/settings/workflow/launcher/config/1318494610"/>
     <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update"/>
