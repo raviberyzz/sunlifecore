@@ -54,7 +54,6 @@
                     <group>sunlife</group>
                     <name>web-cms-aem-core.ui.apps</name>
                     <packageType>application</packageType>
-                    <skipValidation>true</skipValidation>
                     <repositoryStructurePackages>
                         <repositoryStructurePackage>
                             <groupId>ca.sunlife.web.cms</groupId>
