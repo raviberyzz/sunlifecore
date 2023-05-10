@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-	<filter root="/conf/global/settings/workflow/models/dam/update_asset" />
-    <filter root="/conf/global/settings/dam/adminui-extension" />
-    <filter root="/conf/global/settings/dam/search" />
-    <filter root="/conf/sunlife">
+	<filter root="/conf/global/settings/workflow/models/dam/update_asset" mode="merge"/>
+    <filter root="/conf/global/settings/dam/adminui-extension" mode="merge"/>
+    <filter root="/conf/global/settings/dam/search" mode="merge"/>
+    <filter root="/conf/sunlife" mode="merge">
         <exclude pattern="/conf/sunlife/settings/wcm/segments(/.*)" />
         <exclude pattern="/conf/sunlife/settings/wcm/templates(/.*)" />
         <exclude pattern="/conf/sunlife/settings/wcm/policies(/.*)" />
     </filter>
-    <filter root="/conf/sunlife/settings/wcm/templates/sunlife-config" />
-    <filter root="/conf/sunlife-apac">
+    <filter root="/conf/sunlife/settings/wcm/templates/sunlife-config" mode="merge"/>
+    <filter root="/conf/sunlife-apac" mode="merge">
         <exclude pattern="/conf/sunlife-apac/settings/wcm/segments(/.*)" />
         <exclude pattern="/conf/sunlife-apac/settings/wcm/templates(/.*)" />
         <exclude pattern="/conf/sunlife-apac/settings/wcm/policies(/.*)" />
     </filter>
-    <filter root="/conf/global/settings/dam" />
-    <filter root="/conf/sunlife/settings/wcm/segments" /> 
-    <filter root="/conf/sunlife-apac/settings/wcm/segments" /> 
-    <filter root="/conf/global" mode="update" /> 
-   
-    <filter root="/etc" mode="update" /> 
-	<filter root="/etc/map.dev.publish"/>
-    <filter root="/etc/map.sit.publish"/>
-    <filter root="/etc/map.stage.publish"/>
-    <filter root="/etc/map.prod.publish"/>
-    
-    <filter root="/content/sunlife-tools"  mode="update"/>
-    <filter root="/content/sunlife-tools/akamai-purge"/>
-	<filter root="/content/sunlife-tools/email"/>
-	<filter root="/content/sunlife-tools/post-redirection"/>
-    <filter root="/content/sunlife-tools/dispatcher-flush-utility"/>
-    <!-- launcher and workflow for workplace benefits drug list -->
-    <filter root="/conf/global/settings/workflow/launcher/config/1423903076"/>
-	<filter root="/conf/global/settings/workflow/launcher/config/1318494610"/>
-    <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update"/>
-	<filter root="/conf/global/settings/workflow/models/workplace-benefits-chess-list-update"/>
-	<filter root="/conf/global/settings/workflow/models/sunhub-content-upload"/> 
+    <filter root="/conf/global/settings/dam" mode="merge"/>
+    <filter root="/conf/sunlife/settings/wcm/segments" mode="merge"/> 
+    <filter root="/conf/sunlife-apac/settings/wcm/segments" mode="merge"/> 
 
-    <filter root="/var" mode="update" />
-    <filter root="/var/workflow/models/sunhub-content-upload"/>
-    <filter root="/var/workflow/models/dam/update_asset" />
-    <filter root="/var/workflow/models/workplace-benefits-drug-list-update" />
-	<filter root="/var/workflow/models/workplace-benefits-chess-list-update"/>
+	<filter root="/etc/map.dev.publish" mode="merge"/>
+    <filter root="/etc/map.sit.publish" mode="merge"/>
+    <filter root="/etc/map.stage.publish" mode="merge"/>
+    <filter root="/etc/map.prod.publish" mode="merge"/>
+    
+    <filter root="/content/sunlife-tools/akamai-purge" mode="merge"/>
+	<filter root="/content/sunlife-tools/email" mode="merge"/>
+	<filter root="/content/sunlife-tools/post-redirection" mode="merge"/>
+    <filter root="/content/sunlife-tools/dispatcher-flush-utility" mode="merge"/>
+    <!-- launcher and workflow for workplace benefits drug list -->
+    <filter root="/conf/global/settings/workflow/launcher/config/1423903076" mode="merge"/>
+	<filter root="/conf/global/settings/workflow/launcher/config/1318494610" mode="merge"/>
+    <filter root="/conf/global/settings/workflow/models/workplace-benefits-drug-list-update" mode="merge"/>
+	<filter root="/conf/global/settings/workflow/models/workplace-benefits-chess-list-update" mode="merge"/>
+	<filter root="/conf/global/settings/workflow/models/sunhub-content-upload" mode="merge"/> 
+
+    <filter root="/var/workflow/models/sunhub-content-upload" mode="merge"/>
+    <filter root="/var/workflow/models/dam/update_asset" mode="merge"/>
+    <filter root="/var/workflow/models/workplace-benefits-drug-list-update" mode="merge"/>
+	<filter root="/var/workflow/models/workplace-benefits-chess-list-update" mode="merge"/>
 </workspaceFilter>

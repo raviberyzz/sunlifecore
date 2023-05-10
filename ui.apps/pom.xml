@@ -69,10 +69,6 @@
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.config</artifactId>
                         </dependency>
-                        <dependency>
-                            <groupId>com.adobe.cq</groupId>
-                            <artifactId>core.wcm.components.all</artifactId>
-                        </dependency>
                     </dependencies>
                 </configuration>
             </plugin>
@@ -158,8 +154,7 @@
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.all</artifactId>
             <type>zip</type>
-        </dependency>
-       
+        </dependency> 
 
         <dependency>
             <groupId>com.adobe.aem</groupId>
