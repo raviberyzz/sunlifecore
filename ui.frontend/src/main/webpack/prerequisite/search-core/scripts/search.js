@@ -209,16 +209,16 @@ function coveoSearch() {
 }
 
 //Set the banner
-function searchBanners(paramValues) {
+window.searchBanners = function (paramValues) {
     loadBanner("#bodySearchAd", paramValues.param1);
     loadBanner("#search-result-banner-right", paramValues.param2);
 }
 
-function searchBodyBanner(paramValues) {
+window.searchBodyBanner = function (paramValues) {
     loadBanner("#bodySearchAd", paramValues.param1);
 }
 
-function searchRightBanner(paramValues) {
+window.searchRightBanner = function (paramValues) {
     loadBanner("#search-result-banner-right", paramValues.param1);
 }
 
