@@ -18,13 +18,19 @@ const resolve = {
         configFile: './tsconfig.json'
     })],
     alias: {
-        'Datepicker': path.join(__dirname, 'node_modules/ab-datepicker/js/datepicker.min.js'),
-        'reactComponents': path.join(__dirname, 'src/main/webpack/prerequisite/react-components/scripts/react-components.js'),
-        'React': path.join(__dirname, 'src/main/webpack/prerequisite/react-components/scripts/5-react.production.min.js'),
+        'Datepicker': path.join(__dirname, 'node_modules/ab-datepicker/js/datepicker.min.js')
     }
 };
 const projectModules = modulesManager.getModules();
 const resourcesArr = modulesManager.getResourceModules();
+
+function resourcesBundleHandler() {
+    if (resourcesArr.length) {
+        return new CopyWebpackPlugin({
+            patterns: [...resourcesArr]
+        })
+    }
+}
 
 module.exports = {
     resolve: resolve,
@@ -32,7 +38,7 @@ module.exports = {
     entry: () => {
         const entryModulesObj = {};
         Object.values(projectModules).forEach((module) => {
-            if(!entryModulesObj[module.namespace]) {
+            if (!entryModulesObj[module.namespace]) {
                 entryModulesObj[module.namespace] = module.currentModuleRootFile;
             } else {
                 entryModulesObj[module.pathReferencedModuleName] = module.currentModuleRootFile;
@@ -70,15 +76,15 @@ module.exports = {
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/,
                 use: [{
-                  loader: 'babel-loader',
-                  options: {
-                    presets: [
-                      ['@babel/preset-env', {
-                        "targets": "defaults" 
-                      }],
-                      '@babel/preset-react'
-                    ]
-                  }
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', {
+                                "targets": "defaults"
+                            }],
+                            '@babel/preset-react'
+                        ]
+                    }
                 }]
             },
             {
@@ -137,16 +143,16 @@ module.exports = {
                 const name = `${projectModules[chunk.name].distClientlibDir}/[name].css`;
                 return name;
             },
-          }),
-        new CopyWebpackPlugin({
-            patterns: [...resourcesArr]
         }),
         new webpack.ProvidePlugin({
-            'reactComponents':'reactComponents',
-            'React':'React',
-            '$.fn.datepicker': 'Datepicker',
-            Popper: ['popper.js', 'default']
-        })
+            Popper: ['popper.js', 'default'],
+            '$.fn.datepicker': 'Datepicker'
+        }),
+        new webpack.BannerPlugin({
+            banner:
+                'fullhash:[fullhash], chunkhash:[chunkhash], name:[name], filebase:[filebase], query:[query], file:[file]',
+        }),
+        resourcesBundleHandler
     ],
     stats: {
         assetsSort: 'chunks',

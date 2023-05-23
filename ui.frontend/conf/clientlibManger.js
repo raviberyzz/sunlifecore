@@ -7,7 +7,7 @@ const ClientLibManager = class {
         this.clientlibConfig = {};
         this.modules = params.modules;
         this.explicitCLConfig = {};
-        this.processModules();  
+        this.processModules();
     }
 
     processModules() {
@@ -17,7 +17,7 @@ const ClientLibManager = class {
             this.clientlibConfig[module] = {};
             this._getExplicitConfigs(module);
         }
-        
+
     }
 
     configureClientlibObj(module) {
@@ -29,8 +29,8 @@ const ClientLibManager = class {
         this._updateCLAssests(module);
     }
 
-    _getCLRoot(module){
-        if(this.modules[module].moduleType==='prerequisite') {
+    _getCLRoot(module) {
+        if (this.modules[module].moduleType === 'prerequisite') {
             return this._getPrerequisiteCLPath(module);
         } else {
             return this._getComponentCLPath(module);
@@ -39,7 +39,7 @@ const ClientLibManager = class {
 
     _getExplicitProperty(type) {
         let returnPropArray = [];
-        if(this.explicitCLConfig[type]) {
+        if (this.explicitCLConfig[type]) {
             returnPropArray.push(...this.explicitCLConfig[type].split(','));
         }
         return returnPropArray;
@@ -56,19 +56,24 @@ const ClientLibManager = class {
     _updateCLName(module) {
         this.clientlibConfig[module]['name'] = module;
     }
-    
+
     _updateCLOutputPath(module) {
-        const clientLibPath = this.modules[module].moduleType==='prerequisite'? this._getPrerequisiteCLPath(module) : this._getComponentCLPath(module);
+        const clientLibPath = this.modules[module].moduleType === 'prerequisite' ? this._getPrerequisiteCLPath(module) : this._getComponentCLPath(module);
         this.clientlibConfig[module]['outputPath'] = clientLibPath;
     }
 
     _updateCLCategory(module) {
         const categoriesArr = [];
-        if(this.modules[module].moduleType==='components') {
-            categoriesArr.push(`sunlife.core.component`,`sunlife.core.components.content.${module}`);
+        if (this.modules[module].moduleType === 'components') {
+            categoriesArr.push(`sunlife.core.component`, `sunlife.core.components.content.${module}`);
         }
+
+        if (this.modules[module].isReactComp) {
+            categoriesArr.push(`sunlife.core.react-component`);
+        }
+
         categoriesArr.push(`sunlife.core.${module}`, ...this._getExplicitProperty('categories'));
-       
+
         this.clientlibConfig[module]['categories'] = categoriesArr;
     }
 
@@ -90,15 +95,15 @@ const ClientLibManager = class {
             css: this._getAssetInfo('css', module)
         };
 
-        if(this.modules[module].isContainResources) {
-            this.clientlibConfig[module]['assets']['resources'] = {base: "resources", files:['*.eot', '*.svg','*.ttf', '*.woff', '*.woff2','*.png','*.otf', '**/*.eot', '**/*.svg','**/*.ttf', '**/*.woff', '**/*.woff2','**/*.png','**/*.otf']};
+        if (this.modules[module].isContainResources) {
+            this.clientlibConfig[module]['assets']['resources'] = { base: "resources", files: ['*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2', '*.png', '*.otf', '**/*.eot', '**/*.svg', '**/*.ttf', '**/*.woff', '**/*.woff2', '**/*.png', '**/*.otf'] };
         }
     }
 
     _getAssetInfo(type, module, configs) {
         return {
             cwd: this.modules[module].distClientlibDir,
-            files: [`*.${type}`,`**/*.${type}`],
+            files: [`*.${type}`, `**/*.${type}`],
             flatten: false,
             ...configs
         }
@@ -106,15 +111,15 @@ const ClientLibManager = class {
 
     _getExplicitConfigs(module) {
         const configPath = path.join(__dirname, '..', this.modules[module].currentModuleRootDir, 'context.json');
-        
-        if(fs.existsSync(configPath)) {
+
+        if (fs.existsSync(configPath)) {
             let fileContent = null,
-            explicitConfigs = null;
+                explicitConfigs = null;
             try {
-                fileContent = fs.readFileSync(configPath, { encoding:'utf8'});
+                fileContent = fs.readFileSync(configPath, { encoding: 'utf8' });
                 explicitConfigs = JSON.parse(fileContent);
                 this.explicitCLConfig = { ...explicitConfigs }
-            } 
+            }
             catch (err) {
                 console.log('Error while reading context.json at -', configPath, err);
                 return;
@@ -125,7 +130,7 @@ const ClientLibManager = class {
 
         this.configureClientlibObj(module);
     }
-    
+
     getClientlibs() {
         return this.clientlibConfig;
     }

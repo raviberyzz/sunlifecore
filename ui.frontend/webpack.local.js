@@ -10,7 +10,7 @@ module.exports = env => {
     const writeToDisk = env && Boolean(env.writeToDisk);
 
     return merge(common, {
-        mode: 'development',
+        mode: 'production',
         optimization: {
             minimize: true,
             minimizer: [

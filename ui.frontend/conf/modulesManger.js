@@ -3,16 +3,22 @@ const fs = require('fs');
 const path = require('path');
 
 const APP_PROJECT_DIR = path.join(__dirname,
-    '..','ui.apps','src','main','content','jcr_root','apps','sunlife');
+    '..', 'ui.apps', 'src', 'main', 'content', 'jcr_root', 'apps', 'sunlife');
 
 const UI_APP = 'ui.apps';
 
 const tenant = 'core';
 
-const explicitModules = [
-'src/main/webpack/components/form/text/index_module.js',
-'src/main/webpack/components/content/text/index_module.js',
-'src/main/webpack/prerequisite/base/index_module.js'];
+// const explicitModules = [
+//     'src/main/webpack/components/form/text/index_module.js',
+//     'src/main/webpack/components/content/text/index_module.js',
+//     'src/main/webpack/prerequisite/react-initializr/index_module.js'];
+
+const explicitModules = () => {
+    let rootDir = 'src/main/webpack/components/'
+    return glob.sync(rootDir + '*/**/index_module.js')
+}
+
 
 
 const ModulesManager = class {
@@ -35,13 +41,13 @@ const ModulesManager = class {
     }
 
     findModules() {
-        const modules = this.debug ? explicitModules : glob.sync('*/**/index_module.js');
-       
+        const modules = this.debug ? explicitModules() : glob.sync('*/**/index_module.js');
+
         for (let i = 0; i < modules.length; i++) {
             const modulePath = modules[i];
             const md = this.getModuleDefinition(modulePath);
             if (md) {
-                if(!this.modules[md.namespace]) {
+                if (!this.modules[md.namespace]) {
                     this.modules[md.namespace] = md;
                 } else {
                     this.modules[md.pathReferencedModuleName] = md;
@@ -55,7 +61,7 @@ const ModulesManager = class {
     }
 
     getModuleName(namespace, pathReferencedModuleName) {
-        if(!this.modules[namespace]) {
+        if (!this.modules[namespace]) {
             return namespace;
         } else {
             return pathReferencedModuleName;
@@ -69,21 +75,30 @@ const ModulesManager = class {
 
         const namespace = currentModuleRootFileChunks[currentModuleRootFileChunks.length - 2];
         const moduleType = currentModuleRootFileChunks.includes('components') ? 'components' : 'prerequisite';
-        const currentModulePathDir = moduleType ==='components' ? path.join('components', ...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)) : 'clientlibs' ;
+        const currentModulePathDir = moduleType === 'components' ? path.join('components', ...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)) : 'clientlibs';
         const appClientlibRootDir = path.join(this.tenantDir, currentModulePathDir).replace(/\\/g, '/');
         const currentModuleRootDir = currentModuleRootFile.replace('index_module.js', '');
         const pathReferencedModuleName = [...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)].join('.');
-        
-        const type = moduleType === 'components' ? 'comp-':'';
-        const moduleName =  this.getModuleName(namespace, pathReferencedModuleName);
+
+        const type = moduleType === 'components' ? 'comp-' : '';
+        const moduleName = this.getModuleName(namespace, pathReferencedModuleName);
         const distClientlibDir = `clientlib-${type}${moduleName}`;
-        
+
+        let isReactComp = false;
         let isContainResources = false;
 
+        let jsxFiles = [];
+
+        jsxFiles = glob.sync(`${currentModuleRootDir}**/*jsx`);
+
+        if (jsxFiles.length) {
+            isReactComp = true;
+        }
+
         try {
-            if (fs.existsSync(path.join(currentModuleRootDir,'resources'))) {
+            if (fs.existsSync(path.join(currentModuleRootDir, 'resources'))) {
                 isContainResources = true;
-                let files = glob.sync(currentModuleRootDir+'resources/*.*');
+                let files = glob.sync(currentModuleRootDir + 'resources/*.*');
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
                     this.resourceModules.push(
@@ -92,8 +107,8 @@ const ModulesManager = class {
                         }
                     )
                 }
-            } 
-        } catch(e) {
+            }
+        } catch (e) {
             console.log("An error occurred.", currentModuleRootDir, e)
         }
 
@@ -105,7 +120,8 @@ const ModulesManager = class {
             appClientlibRootDir,
             pathReferencedModuleName,
             distClientlibDir,
-            isContainResources
+            isContainResources,
+            isReactComp
         };
     }
 
