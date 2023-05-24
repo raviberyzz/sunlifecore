@@ -61,7 +61,7 @@
                         <embedded>
                             <groupId>ca.sunlife.web.cms</groupId>
                             <artifactId>web-cms-aem-core.core</artifactId>
-                            <target>/apps/sunlife/install</target>
+                            <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
                         <embedded>
                             <groupId>ca.sunlife.web.cms</groupId>
@@ -75,11 +75,35 @@
                             <type>zip</type>
                             <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
+                        <!-- <embedded>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.content</artifactId>
+                            <type>zip</type>
+                            <target>/apps/sunlife-vendor-packages/core/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.core</artifactId>
+                            <target>/apps/sunlife-vendor-packages/core/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.config</artifactId>
+                            <type>zip</type>
+                            <target>/apps/sunlife-vendor-packages/core/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.all</artifactId>
+                            <type>zip</type>
+                            <target>/apps/sunlife-vendor-packages/core/install</target>
+                        </embedded> -->
                         <embedded>
                             <groupId>org.apache.sling</groupId>
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
                              <target>/apps/sunlife-vendor-packages/core/install</target>
                         </embedded>
+
                     </embeddeds>
                     <subPackages>
 						<subPackage>
