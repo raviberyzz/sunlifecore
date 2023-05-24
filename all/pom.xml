@@ -61,7 +61,7 @@
                         <embedded>
                             <groupId>ca.sunlife.web.cms</groupId>
                             <artifactId>web-cms-aem-core.core</artifactId>
-                            <target>/apps/sunlife/install</target>
+                            <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
                         <embedded>
                             <groupId>ca.sunlife.web.cms</groupId>
