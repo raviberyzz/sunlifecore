@@ -152,7 +152,7 @@ module.exports = {
             banner:
                 'fullhash:[fullhash], chunkhash:[chunkhash], name:[name], filebase:[filebase], query:[query], file:[file]',
         }),
-        resourcesBundleHandler
+        resourcesBundleHandler()
     ],
     stats: {
         assetsSort: 'chunks',
