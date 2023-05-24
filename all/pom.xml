@@ -75,7 +75,7 @@
                             <type>zip</type>
                             <target>/apps/sunlife-packages/core/install</target>
                         </embedded>
-                         <!-- <embedded>
+                        <!-- <embedded>
                             <groupId>com.adobe.cq</groupId>
                             <artifactId>core.wcm.components.content</artifactId>
                             <type>zip</type>
@@ -103,7 +103,7 @@
                             <artifactId>org.apache.sling.dynamic-include</artifactId>
                              <target>/apps/sunlife-vendor-packages/core/install</target>
                         </embedded>
-                        
+
                     </embeddeds>
                     <subPackages>
 						<subPackage>
