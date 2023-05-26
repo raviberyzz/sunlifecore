@@ -14,7 +14,9 @@ module.exports = env => {
         optimization: {
             minimize: true,
             minimizer: [
-                new TerserPlugin(),
+                new TerserPlugin({
+                    extractComments: false
+                }),
                 new CssMinimizerPlugin({
                     minimizerOptions: {
                         preset: ['default', {
