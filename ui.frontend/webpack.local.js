@@ -10,11 +10,13 @@ module.exports = env => {
     const writeToDisk = env && Boolean(env.writeToDisk);
 
     return merge(common, {
-        mode: 'development',
+        mode: 'production',
         optimization: {
             minimize: true,
             minimizer: [
-                new TerserPlugin(),
+                new TerserPlugin({
+                    extractComments: false
+                }),
                 new CssMinimizerPlugin({
                     minimizerOptions: {
                         preset: ['default', {

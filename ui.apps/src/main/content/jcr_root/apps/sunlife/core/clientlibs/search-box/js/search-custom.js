@@ -1,6 +1,6 @@
 /*search-box/search-box.js*/
 const searchBody = document.querySelector('#coveo-search-body');
-var reactComponents = {};
+
 if (searchBody) {
 	$(document).on("click", '.magic-box-input', function (e) {
 		$('#search-box-desktop :input').on('keydown', function (e) {
@@ -34,7 +34,7 @@ if (searchBody) {
 			}
 		});
 	});
-	
+
 	$(document).on("click", '.magic-box-input', function (e) {
 		$('#search-box-mobile :input').on('keydown', function (e) {
 			if (e.key === 'Enter' || e.keyCode === 13) {
@@ -62,12 +62,12 @@ $(document).on("keydown", '.magic-box-input', function (e) {
 		});
 	}
 	else if (utag_data.page_canonical_url.includes('ca.sunlife/slfas') || utag_data.page_canonical_url.includes('sunlife.ca/slfas')) {
-			$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
-				if (e.which == 9) {
-					$('.global-nav-primary-item').eq(0).addClass('focus');
-					$('.global-nav-primary-item').setAttribute("tabIndex", "-1");
-					$('.global-nav-primary-item').eq(0).focus();
-				}
+		$('#search-box-desktop .CoveoSearchButton').on('keydown', function (e) {
+			if (e.which == 9) {
+				$('.global-nav-primary-item').eq(0).addClass('focus');
+				$('.global-nav-primary-item').setAttribute("tabIndex", "-1");
+				$('.global-nav-primary-item').eq(0).focus();
+			}
 		});
 	}
 	else {

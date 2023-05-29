@@ -1,4 +1,6 @@
 #base=js
+base-logger.js
+1-signinwidget.js
 1-signinwidget.js
 2-slfglobalweb.js
 3-slfsearch.js
