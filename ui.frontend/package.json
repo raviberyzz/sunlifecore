@@ -30,6 +30,7 @@
   "dependencies": {
     "ab-datepicker": "^2.1.10",
     "bootstrap": "^3.3.5",
+    "compression-webpack-plugin": "^10.0.0",
     "hbs": "^4.0.6",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
