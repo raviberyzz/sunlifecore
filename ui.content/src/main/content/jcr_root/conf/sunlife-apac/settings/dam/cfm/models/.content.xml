@@ -3,4 +3,6 @@
     jcr:primaryType="cq:Page">
     	<newsroom-model/>
 		<product-card-model/>
+		<cep/>
+    	<cep-content/>
 </jcr:root>

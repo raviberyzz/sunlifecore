@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Template"
+    allowedPaths="[/content/entities(/.*)?]"
+    ranking="{Long}100">
+    <jcr:content
+        cq:lastModified="{Date}2023-05-29T15:13:25.116+05:30"
+        cq:lastModifiedBy="admin"
+        cq:scaffolding="/conf/sunlife-apac/settings/dam/cfm/models/cep-content/jcr:content/model"
+        cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="CEP Content"
+        sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
+        sling:resourceType="dam/cfm/models/console/components/data/entity/default"
+        status="enabled">
+        <metadata jcr:primaryType="nt:unstructured">
+            <graphQL
+                jcr:primaryType="nt:unstructured"
+                apiName="CEPContentModel"
+                queryFieldMultiple="cEPContentList"
+                queryFieldSingle="cEPContentByPath"/>
+        </metadata>
+        <model
+            cq:targetPath="/content/entities"
+            jcr:primaryType="cq:PageContent"
+            sling:resourceType="wcm/scaffolding/components/scaffolding"
+            dataTypesConfig="/mnt/overlay/settings/dam/cfm/models/formbuilderconfig/datatypes"
+            maxGeneratedOrder="20">
+            <cq:dialog
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/authoring/dialog">
+                <content
+                    jcr:lastModified="{Date}2023-05-29T15:13:25.116+05:30"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                    <items
+                        jcr:primaryType="nt:unstructured"
+                        maxGeneratedOrder="20">
+                        <_x0031_685103365960
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Img Src En"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="imgSrcEn"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/sunlife/regional/hong-kong/images/cep"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            validation="cfm.validation.contenttype.image"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_685103365960>
+                        <_x0031_685343656025
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Img Src Zh Hk"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="imgSrcZhHk"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/sunlife/regional/hong-kong/images/cep"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            validation="cfm.validation.contenttype.image"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_685343656025>
+                        <_x0031_685350172409
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Img Src Zh Cn"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="imgSrcZhCn"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/sunlife/regional/hong-kong/images/cep"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            validation="cfm.validation.contenttype.image"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_685350172409>
+                        <_x0031_685350232037
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Title En"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="titleEn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350232037>
+                        <_x0031_685350239738
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Title Zh Hk"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="titleZhHk"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350239738>
+                        <_x0031_685350217444
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Title Zh Cn"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="titleZhCn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350217444>
+                        <_x0031_685350220437
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Description En"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="descriptionEn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350220437>
+                        <_x0031_685350235640
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Description Zh Hk"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="descriptionZhHk"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350235640>
+                        <_x0031_685350213473
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Description Zh Cn"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="descriptionZhCn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350213473>
+                        <_x0031_685350621851
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Url En"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="urlEn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350621851>
+                        <_x0031_685350604198
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Url Zh Hk"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="urlZhHk"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350604198>
+                        <_x0031_685350641822
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Url Zh Cn"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="urlZhCn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350641822>
+                        <_x0031_685350932877
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="marketing"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Marketing"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685350932877>
+                        <_x0031_685351100863
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Display Order"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="displayOrder"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351100863>
+                        <_x0031_685351617727
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/datatypes/datepicker"
+                            displayedFormat="YYYY-MM-DD HH:mm"
+                            emptyText="YYYY-MM-DD HH:mm"
+                            fieldLabel="Start Date"
+                            listOrder="5"
+                            metaType="date"
+                            name="startDate"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            type="[datetime,datetime]"
+                            valueFormat="YYYY-MM-DD[T]HH:mm:ss.000Z"
+                            valueType="calendar/datetime">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                typeHint="Date"/>
+                        </_x0031_685351617727>
+                        <_x0031_685351651093
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/datatypes/datepicker"
+                            displayedFormat="YYYY-MM-DD HH:mm"
+                            emptyText="YYYY-MM-DD HH:mm"
+                            fieldLabel="End Date"
+                            listOrder="5"
+                            metaType="date"
+                            name="endDate"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            type="[datetime,datetime]"
+                            valueFormat="YYYY-MM-DD[T]HH:mm:ss.000Z"
+                            valueType="calendar/datetime">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                typeHint="Date"/>
+                        </_x0031_685351651093>
+                        <_x0031_685351234374
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Button Text En"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="buttonTextEn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351234374>
+                        <_x0031_685351326766
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Button Text Zh Hk"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="buttonTextZhHk"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351326766>
+                        <_x0031_685351314716
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Button Text Zh Cn"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="buttonTextZhCn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351314716>
+                        <_x0031_685351433415
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Caption En"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="captionEn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351433415>
+                        <_x0031_685351438482
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Caption Zh Hk"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="captionZhHk"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351438482>
+                        <_x0031_685351555701
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Caption Zh Cn"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="captionZhCn"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351555701>
+                        <_x0031_685351876232
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="featured"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Featured"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685351876232>
+                        <_x0031_685352025819
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Type"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="type"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_685352025819>
+                    </items>
+                </content>
+            </cq:dialog>
+        </model>
+    </jcr:content>
+</jcr:root>
