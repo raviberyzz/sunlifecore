@@ -63,7 +63,9 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.AdvisorDetailService;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-
+import org.apache.sling.api.request.RequestParameterMap;
+import org.apache.sling.api.request.RequestParameter;
+import org.apache.sling.api.request.RequestPathInfo;
 /**
  * The Class BasePageModel.
  *
@@ -1716,6 +1718,9 @@ public void setDisableContextHubTags(String disableContextHubTags) {
        
       }
       final String pagePath = currentPage.getPath();
+      LOG.debug("pagePath --> {}",pagePath);
+      LOG.debug("RequestURL --> {}",request.getRequestURI());
+
       final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       if (null == pageLocale || pageLocale.length() == 0) {
@@ -1723,7 +1728,21 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
 //      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
+        RequestParameterMap data=request.getRequestParameterMap();
+        RequestPathInfo info=request.getRequestPathInfo();
+        String query="";
+        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
+    String key = entry.getKey();
+    query=query+key +"=";
+    RequestParameter[] params = entry.getValue();
+    for(RequestParameter s:params){
+      query=query+s.getString();
 
+    }
+     query=query +"&";
+        }
+
+       LOG.debug("query --> {}", query); 
       // check if it is a source
       LOG.debug("is source {}", relationshipManager.isSource(resource));
       // check if it is a live copy
