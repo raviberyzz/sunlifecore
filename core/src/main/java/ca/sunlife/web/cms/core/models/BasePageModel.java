@@ -1804,20 +1804,21 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
               LOG.debug("RequestURL --> {}",request.getRequestURI());
                LOG.debug("siteDomain --> {}",siteDomain);
-               LOG.debug("getPageRelativeUrl --> {}",configService.getPageRelativeUrl(pagePath))
-    String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath);
+               //LOG.debug("getPageRelativeUrl --> {}",configService.getPageRelativeUrl(pagePath));
+    final String pagePath1 = currentPage.getPath();
+    String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath1);
       String [] urlCreation=request.getRequestURI().split(".");
       LOG.debug("urlCreation --> {}" ,urlCreation);
        if(urlCreation.length>=1){
-        refLangPath=hrefLangPath+"/"+urlCreation[1];
+        hrefLangPath=hrefLangPath+"/"+urlCreation[1];
        }
        if(query!=null){
-        query= query.substring(0,query.length-1);
-        refLangPath=refLangPath+"?"+query;
+        query= query.substring(0,query.length()-1);
+        hrefLangPath=hrefLangPath+"?"+query;
        }
     	  altLanguageLinks.put(
     			  hrefLang,
-  	           refLangPath);
+  	           hrefLangPath);
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
