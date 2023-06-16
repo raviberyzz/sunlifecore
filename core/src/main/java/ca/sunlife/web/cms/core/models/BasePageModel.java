@@ -1804,7 +1804,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
     	  altLanguageLinks.put(
     			  hrefLang,
-  	            siteDomain + configService.getPageRelativeUrl(pagePath));
+  	            siteDomain + configService.getPageRelativeUrl(pagePath)+query);
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
@@ -1906,6 +1906,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
   private void addAlternateUrl(final String liveCopyPath)
       throws LoginException, RepositoryException {
     LOG.debug("path :: {}", liveCopyPath);
+    LOG.debug("inside addAlternateUrl :: {}", liveCopyPath);
     final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
         liveCopyPath);
     final String sourceSiteUrl = configService.getPageRelativeUrl(liveCopyPath);
