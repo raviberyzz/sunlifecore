@@ -1719,7 +1719,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String pagePath = currentPage.getPath();
       LOG.debug("pagePath --> {}",pagePath);
-      LOG.debug("RequestURL --> {}",request.getRequestURI());
+    
 
       final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
@@ -1802,9 +1802,22 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
+              LOG.debug("RequestURL --> {}",request.getRequestURI());
+               LOG.debug("siteDomain --> {}",siteDomain);
+               LOG.debug("getPageRelativeUrl --> {}",configService.getPageRelativeUrl(pagePath))
+    String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath);
+      String [] urlCreation=request.getRequestURI().split(".");
+      LOG.debug("urlCreation --> {}" ,urlCreation);
+       if(urlCreation.length>=1){
+        refLangPath=hrefLangPath+"/"+urlCreation[1];
+       }
+       if(query!=null){
+        query= query.substring(0,query.length-1);
+        refLangPath=refLangPath+"?"+query;
+       }
     	  altLanguageLinks.put(
     			  hrefLang,
-  	            siteDomain + configService.getPageRelativeUrl(pagePath)+query);
+  	           refLangPath);
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
