@@ -1719,7 +1719,6 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String pagePath = currentPage.getPath();
       LOG.debug("pagePath --> {}",pagePath);
-           LOG.debug("siteDomain --> {}",siteDomain);
       final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       if (null == pageLocale || pageLocale.length() == 0) {
