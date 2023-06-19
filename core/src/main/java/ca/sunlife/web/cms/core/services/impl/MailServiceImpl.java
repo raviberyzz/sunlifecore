@@ -1,5 +1,5 @@
 
-/*
+/* 
  *
  */
 
@@ -16,6 +16,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang.StringUtils;
@@ -60,7 +61,7 @@ import ca.sunlife.web.cms.core.services.MailService;
 @Designate(ocd = MailConfig.class)
 
 public class MailServiceImpl implements MailService {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
@@ -80,129 +81,136 @@ public class MailServiceImpl implements MailService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * ca.sunlife.web.cms.core.services.MailService#processHttpRequest(org.apache.
      * sling.api. SlingHttpServletRequest)
      */
     private final String cfNodePath = "/".concat(JcrConstants.JCR_CONTENT).concat("/").concat("data").concat("/").concat("master");
     private static final int TIMEOUT = 5000;
-    private String fromEmailId = "";
-    private String toEmailId = "";
-    private String emailSubject = "";
-    private String emailBody = "";
-    private String isClient = "";
-    private String ccEmailId = "";
-    private String bccEmailId = "";
-    private String clientToEmailId = "";
-    private String clientEmailSubject = "";
-    private String clientEmailBody = "";
-    private String errorEmailSubject = "";
-    private String errorEmailBody = "";
-    private String successPageUrl = "";
-    private String errorPageUrl = "";
-    
-    
-  @ Override
-  public JSONObject processHttpRequest(final SlingHttpServletRequest request) {
-    LOG.trace("Inside MailServiceImpl:processHttpRequest");
-    
-    String cfPath = "";
-    String cfName = "";
-    String cfLocale = "";
-    HttpResponse mailResponse = null;
-    JSONObject successResponse = null;
-    JSONObject errorResponse = null;
 
-    try {
-      if (null != request) {
-        
-        // getting all request parameters - Starts
-        final Enumeration <String> requestParameterNames = request.getParameterNames();
-        LOG.debug("Request parameters {}", requestParameterNames);
-        final HashMap <String, String> requestParameters = new HashMap <>();
-        while (requestParameterNames.hasMoreElements()) {
-          final String key = requestParameterNames.nextElement();
-          requestParameters.put(key, request.getParameter(key));
-        }
-        // getting all request parameters - Ends
+    @Override
+    public JSONObject processHttpRequest(final SlingHttpServletRequest request) {
+        LOG.trace("Inside MailServiceImpl:processHttpRequest");
+        String cfPath = "";
+        String cfName = "";
+        String cfLocale = "";
+        String fromEmailId = "";
+        String toEmailId = "";
+        String emailSubject = "";
+        String emailBody = "";
+        String isClient = "";
+        String ccEmailId = "";
+        String bccEmailId = "";
+        String clientToEmailId = "";
+        String clientEmailSubject = "";
+        String clientEmailBody = "";
+        String errorEmailSubject = "";
+        String errorEmailBody = "";
+        String successPageUrl = "";
+        String errorPageUrl = "";
+        boolean isRequestValid = true;
+        HttpResponse mailResponse = null;
+        JSONObject successResponse = null;
+        JSONObject errorResponse = null;
+        try {
+            if (null != request) {
+                // getting all request parameters - Starts
+                final Enumeration <String> requestParameterNames = request.getParameterNames();
+                LOG.debug("Request parameters {}", requestParameterNames);
+                final HashMap <String, String> requestParameters = new HashMap <>();
+                while (requestParameterNames.hasMoreElements()) {
+                    final String key = requestParameterNames.nextElement();
+                    requestParameters.put(key, request.getParameter(key));
+                    if(!isRequestParamValid(key, requestParameters.get(key))){
+                        isRequestValid = false;
+                        break;
+                    }
+                }
+                // getting all request parameters - Ends
+                cfName = requestParameters.get("cfname");
+                cfLocale = requestParameters.get("cfLocale");
+                if(!isValid(cfName) || !isValid(cfLocale)) {
+                    isRequestValid = false;
+                }
+                if(isRequestValid) {
+                    ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
+                    // content fragment path
+                    cfPath = mailConfig.getTemplatePath() + cfLocale + mailConfig.getTemplatePathSuffix() + cfName + cfNodePath;
+                    LOG.debug("cfPath {}", cfPath);
+                    Resource contentResource = request.getResourceResolver().getResource(cfPath);
+                    if (null != contentResource) {
+                        LOG.debug("Content Resource Path {}", contentResource.getPath());
+                        final ValueMap mailContent = contentResource.getValueMap();
+                        fromEmailId = mailContent.containsKey("from-email-id")
+                                ? mailContent.get("from-email-id", String.class)
+                                : StringUtils.EMPTY;
+                        toEmailId = mailContent.containsKey("to-email-id") ? mailContent.get("to-email-id", String.class)
+                                : StringUtils.EMPTY;
+                        clientToEmailId = nullCheck(requestParameters.get("slf-leadgen-email-address"));
+                        isClient = mailContent.containsKey("isClient") ? mailContent.get("isClient", String.class)
+                                : StringUtils.EMPTY;
+                        ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
+                                : StringUtils.EMPTY;
+                        bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
+                                : StringUtils.EMPTY;
+                        clientEmailSubject = mailContent.containsKey("client-subject-email") ? mailContent.get("client-subject-email", String.class)
+                                : StringUtils.EMPTY;
+                        clientEmailBody = mailContent.containsKey("client-body-email") ? mailContent.get("client-body-email", String.class)
+                                : StringUtils.EMPTY;
+                        emailSubject = mailContent.containsKey("subject-email")
+                                ? mailContent.get("subject-email", String.class)
+                                : StringUtils.EMPTY;
+                        emailBody = mailContent.containsKey("body-email") ? mailContent.get("body-email", String.class)
+                                : StringUtils.EMPTY;
+                        errorEmailSubject = mailContent.containsKey("error-subject-email")
+                                ? mailContent.get("error-subject-email", String.class)
+                                : StringUtils.EMPTY;
+                        errorEmailBody = mailContent.containsKey("error-body-email") ? mailContent.get("error-body-email", String.class)
+                                : StringUtils.EMPTY;
+                        successPageUrl = mailContent.containsKey("success-page-url")
+                                ? mailContent.get("success-page-url", String.class)
+                                : StringUtils.EMPTY;
+                        errorPageUrl = mailContent.containsKey("error-page-url")
+                                ? mailContent.get("error-page-url", String.class)
+                                : StringUtils.EMPTY;
+                    }
+                    resourceResolver.close();
+                }
 
-        cfName = requestParameters.get("cfname");
-        cfLocale = requestParameters.get("cfLocale");
-	ResourceResolver resourceResolver = coreResourceResolver.getResourceResolver();
-	// content fragment path
-	cfPath = mailConfig.getTemplatePath() + cfLocale + mailConfig.getTemplatePathSuffix() + cfName + cfNodePath;
-	LOG.debug("cfPath {}", cfPath);
-	Resource contentResource = request.getResourceResolver().getResource(cfPath);
-	if (null != contentResource) {
-	    LOG.debug("Content Resource Path {}", contentResource.getPath());
-	    final ValueMap mailContent = contentResource.getValueMap();
-	    fromEmailId = mailContent.containsKey("from-email-id")
-		    ? mailContent.get("from-email-id", String.class)
-		    : StringUtils.EMPTY;
-	    toEmailId = mailContent.containsKey("to-email-id") ? mailContent.get("to-email-id", String.class)
-		    : StringUtils.EMPTY;
-	    clientToEmailId = nullCheck(requestParameters.get("slf-leadgen-email-address"));
-	    isClient = mailContent.containsKey("isClient") ? mailContent.get("isClient", String.class)
-		    : StringUtils.EMPTY;
-	    ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
-			    : StringUtils.EMPTY;
-	    bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
-			    : StringUtils.EMPTY;
-	    clientEmailSubject = mailContent.containsKey("client-subject-email") ? mailContent.get("client-subject-email", String.class)
-		    : StringUtils.EMPTY;
-	    clientEmailBody = mailContent.containsKey("client-body-email") ? mailContent.get("client-body-email", String.class)
-		    : StringUtils.EMPTY;
-	    emailSubject = mailContent.containsKey("subject-email")
-		    ? mailContent.get("subject-email", String.class)
-		    : StringUtils.EMPTY;
-	    emailBody = mailContent.containsKey("body-email") ? mailContent.get("body-email", String.class)
-		    : StringUtils.EMPTY;
-	    errorEmailSubject = mailContent.containsKey("error-subject-email")
-		    ? mailContent.get("error-subject-email", String.class)
-		    : StringUtils.EMPTY;
-	    errorEmailBody = mailContent.containsKey("error-body-email") ? mailContent.get("error-body-email", String.class)
-		    : StringUtils.EMPTY;
-	    successPageUrl = mailContent.containsKey("success-page-url")
-		    ? mailContent.get("success-page-url", String.class)
-		    : StringUtils.EMPTY;
-	    errorPageUrl = mailContent.containsKey("error-page-url")
-		    ? mailContent.get("error-page-url", String.class)
-		    : StringUtils.EMPTY;
-	}
-	resourceResolver.close();
-	
-	successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
-	errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
-        
-        if ("true".equalsIgnoreCase(isClient)) {
-            mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
-            if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-        	LOG.debug("Mail sent to client..");
-            } else {
-        	LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
-        	mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
-        	LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
+                successResponse = modifyResponse(populateContent(successPageUrl, requestParameters), mailConfig.getSuccessResponse());
+                errorResponse = modifyResponse(populateContent(errorPageUrl, requestParameters), mailConfig.getErrorResponse());
+
+                if(isRequestValid) {
+                    if ("true".equalsIgnoreCase(isClient)) {
+                        mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
+                        if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                            LOG.debug("Mail sent to client..");
+                        } else {
+                            LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
+                            mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
+                            LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
+                        }
+                    }
+
+                    mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
+                    if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                        LOG.debug("Mail sent to marketing team..");
+                        return successResponse;
+                    } else {
+                        LOG.error("Error in sending mail to marketing team.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
+                        return errorResponse;
+                    }
+                } else {
+                    LOG.error("Error in sending mail to marketing team - Request not valid");
+                    return errorResponse;
+                }
             }
+        } catch (final LoginException e) {
+            LOG.error("Exception occurred :: LoginException {}", e);
         }
-        
-        mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
-        if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-    		LOG.debug("Mail sent to marketing team..");
-    		return successResponse;
-        } else {
-    		LOG.error("Error in sending mail to marketing team.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
-    		return errorResponse;
-        }
-        
-
-	
-      }
-    } catch (final LoginException e) {
-      LOG.error("Exception occured :: LoginException {}", e);
+        return null;
     }
-    return null;
-  }
 
     /**
      * Activate.
@@ -212,7 +220,7 @@ public class MailServiceImpl implements MailService {
      */
     @Activate
     protected void activate(final MailConfig config) {
-	mailConfig = config;
+        mailConfig = config;
     }
 
     /**
@@ -223,10 +231,9 @@ public class MailServiceImpl implements MailService {
      * @return the string
      */
     public String nullCheck(final String value) {
-	return value != null ? value : StringUtils.EMPTY;
+        return value != null ? value : StringUtils.EMPTY;
     }
 
-    
     /**
      * Send mail.
      *
@@ -241,35 +248,33 @@ public class MailServiceImpl implements MailService {
      * @return the http response
      */
     public HttpResponse sendMail(String fromEmailIdParam, String ccEmailIdParam, String bccEmailIdParam, String toEmailIdParam, String emailSubjectParam, String emailBodyParam,
-	    String apiKeyParam, Map <String, String> requestParametersParam) {
-	// Mail API service
-	try {
-	    HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
-	    RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(TIMEOUT).setSocketTimeout(TIMEOUT)
-		    .build();
-	    builder.setDefaultRequestConfig(requestConfig);
-	    
-	    HttpClient client = builder.build();
-	    HttpPost post = new HttpPost(mailConfig.getApiUrl());
-	    List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
-	    apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailIdParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-cc-email-address", populateContent(ccEmailIdParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-bcc-email-address", populateContent(bccEmailIdParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
-	    apiParameters.add(new BasicNameValuePair("slf-email-body", Base64.getEncoder().encodeToString(populateContent(emailBodyParam, requestParametersParam).getBytes(Charset.forName("UTF-8")))));
-	    apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
-	    post.setEntity(new UrlEncodedFormEntity(apiParameters, StandardCharsets.UTF_8));	    
-	    LOG.debug("Trying to connect to mail API...");
-	    return client.execute(post);
-	} catch (final IOException e) {
-	      LOG.error("Exception occured :: IOException {}", e);
-	}
-	return null;
+                                 String apiKeyParam, Map <String, String> requestParametersParam) {
+        // Mail API service
+        try {
+            HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
+            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(TIMEOUT).setSocketTimeout(TIMEOUT)
+                    .build();
+            builder.setDefaultRequestConfig(requestConfig);
 
+            HttpClient client = builder.build();
+            HttpPost post = new HttpPost(mailConfig.getApiUrl());
+            List<BasicNameValuePair> apiParameters = new ArrayList<>(1);
+            apiParameters.add(new BasicNameValuePair("slf-from-email-address", populateContent(fromEmailIdParam, requestParametersParam)));
+            apiParameters.add(new BasicNameValuePair("slf-cc-email-address", populateContent(ccEmailIdParam, requestParametersParam)));
+            apiParameters.add(new BasicNameValuePair("slf-bcc-email-address", populateContent(bccEmailIdParam, requestParametersParam)));
+            apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
+            apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
+            apiParameters.add(new BasicNameValuePair("slf-email-body", Base64.getEncoder().encodeToString(populateContent(emailBodyParam, requestParametersParam).getBytes(Charset.forName("UTF-8")))));
+            apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
+            post.setEntity(new UrlEncodedFormEntity(apiParameters, StandardCharsets.UTF_8));
+            LOG.debug("Trying to connect to mail API...");
+            return client.execute(post);
+        } catch (final IOException e) {
+            LOG.error("Exception occurred :: IOException {}", e);
+        }
+        return null;
     }
-    
-    
+
     /**
      * Populate content.
      *
@@ -278,15 +283,13 @@ public class MailServiceImpl implements MailService {
      * @return the string
      */
     public String populateContent(String content, Map <String, String> requestParametersParam) {
-	LOG.debug("Populating content with variables...");
-	final MustacheFactory mf = new DefaultMustacheFactory();
-	final StringWriter writer = new StringWriter();
-	final Mustache mustache = mf.compile(new StringReader(nullCheck(content)), " ");
-	mustache.execute(writer, requestParametersParam);
-	return writer.toString();
-	
+        LOG.debug("Populating content with variable :: {}", content);
+        final MustacheFactory mf = new DefaultMustacheFactory();
+        final StringWriter writer = new StringWriter();
+        final Mustache mustache = mf.compile(new StringReader(nullCheck(content)), " ");
+        mustache.execute(writer, requestParametersParam);
+        return writer.toString();
     }
-    
 
     /**
      * Modify response.
@@ -298,23 +301,75 @@ public class MailServiceImpl implements MailService {
      * @return the JSON object
      */
     public JSONObject modifyResponse(String url, String osgiResponse) {
-	JSONObject response = new JSONObject();
-	try {
-	    if (StringUtils.isEmpty(url) || StringUtils.isBlank(url)) {
-		response.put("type", "json");
-		response.put("response", osgiResponse);
-	    } else {
-		response.put("type", "url");
-		response.put("url", url.concat(".html"));
-	    }
-
-	    return response;
-
-	} catch (JSONException ex) {
-	    LOG.error("Error in modifying response :: {}", ex);
-	}
-	return null;
-
+        JSONObject response = new JSONObject();
+        try {
+            if (StringUtils.isEmpty(url) || StringUtils.isBlank(url)) {
+                response.put("type", "json");
+                response.put("response", osgiResponse);
+            } else {
+                response.put("type", "url");
+                response.put("url", url.concat(".html"));
+            }
+            return response;
+        } catch (JSONException ex) {
+            LOG.error("Error in modifying response :: {}", ex);
+        }
+        return null;
     }
 
+    /**
+     * Perform sanity check
+     *
+     * @param key Param key
+     * @param value Param value
+     * @return isValid
+     */
+	private static boolean isRequestParamValid(String key, String value) {
+        if(isValid(key) && isValid(value)) {
+            if(key.contains("email")){
+                if(!isValidEmail(value)){
+                    return false;
+                }
+            }
+            //Checking if value contains any html tag
+            return !hasHTMLTags(value);
+        }
+        return true;
+    }
+
+    /**
+     * perform regex validation
+     *
+     * @param value Param value
+     * @return isMatches
+     */
+    private static boolean isValidEmail(String value) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return Pattern.compile(emailRegex)
+                .matcher(value)
+                .matches();
+    }
+
+    /**
+     * perform regex validation
+     *
+     * @param value Param value
+     * @return isMatches
+     */
+    private static boolean hasHTMLTags(String value) {
+        String htmlRegex = "<(\"[^\"]*\"|'[^']*'|[^'\">])*>";
+      	return Pattern.compile(htmlRegex)
+                .matcher(value)
+                .find();
+    }
+
+    /**
+     * check if string is valid
+     * 
+     * @param value Param value
+     * @return isValid
+     */
+    private static boolean isValid(String value) {
+        return null != value && !value.trim().isEmpty();
+    }
 }
