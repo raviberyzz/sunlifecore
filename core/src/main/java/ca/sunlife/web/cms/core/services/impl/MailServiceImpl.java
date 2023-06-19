@@ -326,10 +326,8 @@ public class MailServiceImpl implements MailService {
      */
 	private static boolean isRequestParamValid(String key, String value) {
         if(isValid(key) && isValid(value)) {
-            if(key.contains("email")){
-                if(!isValidEmail(value)){
+            if(key.contains("email") && (!isValidEmail(value))) {
                     return false;
-                }
             }
             //Checking if value contains any html tag
             return !hasHTMLTags(value);
@@ -344,7 +342,7 @@ public class MailServiceImpl implements MailService {
      * @return isMatches
      */
     private static boolean isValidEmail(String value) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        final String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         return Pattern.compile(emailRegex)
                 .matcher(value)
                 .matches();
@@ -357,7 +355,7 @@ public class MailServiceImpl implements MailService {
      * @return isMatches
      */
     private static boolean hasHTMLTags(String value) {
-        String htmlRegex = "<(\"[^\"]*\"|'[^']*'|[^'\">])*>";
+        final String htmlRegex = "<\\/?[a-z][\\s\\S]*>";
       	return Pattern.compile(htmlRegex)
                 .matcher(value)
                 .find();
