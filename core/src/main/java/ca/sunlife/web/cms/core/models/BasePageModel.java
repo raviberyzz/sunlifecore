@@ -1808,9 +1808,10 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       String [] urlCreation=request.getRequestURI().split("\\.");
       LOG.debug("urlCreation --> {}" ,urlCreation);
        if(urlCreation.length>=1){
-        hrefLangPath=hrefLangPath+"/"+urlCreation[1]+"/";
+        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
        }
-       if(query!=null){
+       if(!query.isEmpty()){
+        LOG.debug("Inside query")
         query= query.substring(0,query.length()-1);
         hrefLangPath=hrefLangPath+"?"+query;
        }
