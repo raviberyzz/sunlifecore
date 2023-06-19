@@ -1719,8 +1719,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String pagePath = currentPage.getPath();
       LOG.debug("pagePath --> {}",pagePath);
-    
-
+           LOG.debug("siteDomain --> {}",siteDomain);
       final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       if (null == pageLocale || pageLocale.length() == 0) {
@@ -1728,21 +1727,6 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
 //      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
-        RequestParameterMap data=request.getRequestParameterMap();
-        RequestPathInfo info=request.getRequestPathInfo();
-        String query="";
-        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
-    String key = entry.getKey();
-    query=query+key +"=";
-    RequestParameter[] params = entry.getValue();
-    for(RequestParameter s:params){
-      query=query+s.getString();
-
-    }
-     query=query +"&";
-        }
-
-       LOG.debug("query --> {}", query); 
       // check if it is a source
       LOG.debug("is source {}", relationshipManager.isSource(resource));
       // check if it is a live copy
@@ -1805,17 +1789,33 @@ public void setDisableContextHubTags(String disableContextHubTags) {
               LOG.debug("RequestURL --> {}",request.getRequestURI());
                LOG.debug("siteDomain --> {}",siteDomain);
                //LOG.debug("getPageRelativeUrl --> {}",configService.getPageRelativeUrl(pagePath));
+     RequestParameterMap data=request.getRequestParameterMap();
+        RequestPathInfo info=request.getRequestPathInfo();
+        String query="";
+        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
+    String key = entry.getKey();
+    query=query+key +"=";
+    RequestParameter[] params = entry.getValue();
+    for(RequestParameter s:params){
+      query=query+s.getString();
+
+    }
+     query=query +"&";
+        }
+       LOG.debug("query --> {}", query); 
     final String pagePath1 = currentPage.getPath();
     String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath1);
-      String [] urlCreation=request.getRequestURI().split(".");
+    LOG.debug("hrefLangPathvvv --> {}" ,hrefLangPath);
+      String [] urlCreation=request.getRequestURI().split("\\.");
       LOG.debug("urlCreation --> {}" ,urlCreation);
        if(urlCreation.length>=1){
-        hrefLangPath=hrefLangPath+"/"+urlCreation[1];
+        hrefLangPath=hrefLangPath+"/"+urlCreation[1]+"/";
        }
        if(query!=null){
         query= query.substring(0,query.length()-1);
         hrefLangPath=hrefLangPath+"?"+query;
        }
+      LOG.debug("hrefLangPath --> {}" ,hrefLangPath);
     	  altLanguageLinks.put(
     			  hrefLang,
   	           hrefLangPath);
