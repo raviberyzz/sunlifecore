@@ -1804,14 +1804,15 @@ public void setDisableContextHubTags(String disableContextHubTags) {
        LOG.debug("query --> {}", query); 
     final String pagePath1 = currentPage.getPath();
     String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath1);
-    LOG.debug("hrefLangPathvvv --> {}" ,hrefLangPath);
-      String [] urlCreation=request.getRequestURI().split("\\.");
-      LOG.debug("urlCreation --> {}" ,urlCreation);
-       if(urlCreation.length>=1){
+    LOG.debug("hrefLangPath new val --> {}" ,hrefLangPath);
+    String requestURI=request.getRequestURI().replace(".html","");
+      String [] urlCreation=requestURI.split("\\.");
+      LOG.debug("urlCreation --> {}" ,urlCreation.length);
+       if(urlCreation.length>1){
         hrefLangPath=hrefLangPath+urlCreation[1]+"/";
        }
        if(!query.isEmpty()){
-        LOG.debug("Inside query")
+        LOG.debug("Inside query value");
         query= query.substring(0,query.length()-1);
         hrefLangPath=hrefLangPath+"?"+query;
        }
