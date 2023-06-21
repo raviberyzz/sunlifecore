@@ -207,7 +207,7 @@ public class MailServiceImpl implements MailService {
                 }
             }
         } catch (final LoginException e) {
-            LOG.error("Exception occurred :: LoginException {}", e);
+            LOG.error("Exception occurred :: LoginException {}", e.getMessage(), e);
         }
         return null;
     }
@@ -270,7 +270,7 @@ public class MailServiceImpl implements MailService {
             LOG.debug("Trying to connect to mail API...");
             return client.execute(post);
         } catch (final IOException e) {
-            LOG.error("Exception occurred :: IOException {}", e);
+            LOG.error("Exception occurred :: IOException {}", e.getMessage(), e);
         }
         return null;
     }
@@ -312,7 +312,7 @@ public class MailServiceImpl implements MailService {
             }
             return response;
         } catch (JSONException ex) {
-            LOG.error("Error in modifying response :: {}", ex);
+            LOG.error("Error in modifying response :: {}", ex.getMessage(), ex);
         }
         return null;
     }
