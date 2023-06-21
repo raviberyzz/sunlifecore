@@ -9,7 +9,7 @@
         cq:scaffolding="/conf/sunlife-apac/settings/dam/cfm/models/cep-content/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
-        jcr:title="CEP Content"
+        jcr:title="CEP Content Model"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default"
         status="enabled">
