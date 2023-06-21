@@ -70,6 +70,10 @@ public class ArticleModel {
 
   /** The Constant ARTICLE_MAIN_DESCRIPTION. */
   private static final String ARTICLE_MAIN_DESCRIPTION = "articleMainDescription";
+  
+  /** The Constant ARTICLE_READ_TIME. */
+  private static final String ARTICLE_READ_TIME = "articleReadtime";
+  
 
   /** The Constant ARTICLE_IMAGE. */
   private static final String ARTICLE_IMAGE = "articleImage";
@@ -475,6 +479,10 @@ public class ArticleModel {
             articleContent.containsKey(ARTICLE_MAIN_DESCRIPTION)
                 ? articleContent.get(ARTICLE_MAIN_DESCRIPTION, String.class)
                 : StringUtils.EMPTY);
+        articleData.put(ARTICLE_READ_TIME,
+                articleContent.containsKey(ARTICLE_READ_TIME)
+                    ? articleContent.get(ARTICLE_READ_TIME, String.class)
+                    : StringUtils.EMPTY);
         articleData.put(ARTICLE_PAGE_LINK,
             articleContent.containsKey(ARTICLE_PAGE_LINK)
                 ? articleContent.get(ARTICLE_PAGE_LINK, String.class)
