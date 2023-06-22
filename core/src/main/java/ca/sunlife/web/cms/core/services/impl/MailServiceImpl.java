@@ -142,38 +142,20 @@ public class MailServiceImpl implements MailService {
                     if (null != contentResource) {
                         LOG.debug("Content Resource Path {}", contentResource.getPath());
                         final ValueMap mailContent = contentResource.getValueMap();
-                        fromEmailId = mailContent.containsKey("from-email-id")
-                                ? mailContent.get("from-email-id", String.class)
-                                : StringUtils.EMPTY;
-                        toEmailId = mailContent.containsKey("to-email-id") ? mailContent.get("to-email-id", String.class)
-                                : StringUtils.EMPTY;
+                        fromEmailId = getMapValue(mailContent, "from-email-id");
+                        toEmailId = getMapValue(mailContent, "to-email-id");
                         clientToEmailId = nullCheck(requestParameters.get("slf-leadgen-email-address"));
-                        isClient = mailContent.containsKey("isClient") ? mailContent.get("isClient", String.class)
-                                : StringUtils.EMPTY;
-                        ccEmailId = mailContent.containsKey("cc-email-id") ? mailContent.get("cc-email-id", String.class)
-                                : StringUtils.EMPTY;
-                        bccEmailId = mailContent.containsKey("bcc-email-id") ? mailContent.get("bcc-email-id", String.class)
-                                : StringUtils.EMPTY;
-                        clientEmailSubject = mailContent.containsKey("client-subject-email") ? mailContent.get("client-subject-email", String.class)
-                                : StringUtils.EMPTY;
-                        clientEmailBody = mailContent.containsKey("client-body-email") ? mailContent.get("client-body-email", String.class)
-                                : StringUtils.EMPTY;
-                        emailSubject = mailContent.containsKey("subject-email")
-                                ? mailContent.get("subject-email", String.class)
-                                : StringUtils.EMPTY;
-                        emailBody = mailContent.containsKey("body-email") ? mailContent.get("body-email", String.class)
-                                : StringUtils.EMPTY;
-                        errorEmailSubject = mailContent.containsKey("error-subject-email")
-                                ? mailContent.get("error-subject-email", String.class)
-                                : StringUtils.EMPTY;
-                        errorEmailBody = mailContent.containsKey("error-body-email") ? mailContent.get("error-body-email", String.class)
-                                : StringUtils.EMPTY;
-                        successPageUrl = mailContent.containsKey("success-page-url")
-                                ? mailContent.get("success-page-url", String.class)
-                                : StringUtils.EMPTY;
-                        errorPageUrl = mailContent.containsKey("error-page-url")
-                                ? mailContent.get("error-page-url", String.class)
-                                : StringUtils.EMPTY;
+                        isClient = getMapValue(mailContent, "isClient");
+                        ccEmailId = getMapValue(mailContent, "cc-email-id");
+                        bccEmailId = getMapValue(mailContent, "bcc-email-id");
+                        clientEmailSubject = getMapValue(mailContent, "client-subject-email");
+                        clientEmailBody = getMapValue(mailContent, "client-body-email");
+                        emailSubject = getMapValue(mailContent, "subject-email");
+                        emailBody = getMapValue(mailContent, "body-email");
+                        errorEmailSubject = getMapValue(mailContent, "error-subject-email");
+                        errorEmailBody = getMapValue(mailContent, "error-body-email");
+                        successPageUrl = getMapValue(mailContent, "success-page-url");
+                        errorPageUrl = getMapValue(mailContent, "error-page-url");
                     }
                     resourceResolver.close();
                 }
@@ -210,6 +192,17 @@ public class MailServiceImpl implements MailService {
             LOG.error("Exception occurred :: LoginException {}", e.getMessage(), e);
         }
         return null;
+    }
+
+    /**
+     * @param mailContent content-fragment content
+     * @param key key to fetch the value from content-fragment
+     * @return value
+     */
+    private String getMapValue(ValueMap mailContent, String key) {
+        return mailContent.containsKey(key)
+                ? mailContent.get(key, String.class)
+                : StringUtils.EMPTY;
     }
 
     /**
