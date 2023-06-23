@@ -165,17 +165,17 @@ public class MailServiceImpl implements MailService {
 
                 if(isRequestValid) {
                     if ("true".equalsIgnoreCase(isClient)) {
-                        mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, mailConfig.getApiKey(), requestParameters);
+                        mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, clientToEmailId, clientEmailSubject, clientEmailBody, requestParameters);
                         if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                             LOG.debug("Mail sent to client..");
                         } else {
                             LOG.error("Error in sending mail to client.. {} {}", mailResponse.getStatusLine().getStatusCode(), mailResponse.getStatusLine().getReasonPhrase());
-                            mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, mailConfig.getApiKey(), requestParameters);
+                            mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, errorEmailSubject, errorEmailBody, requestParameters);
                             LOG.debug("Error Mail to Marketing team - Response :: {}", mailResponse.getStatusLine().getStatusCode());
                         }
                     }
 
-                    mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, mailConfig.getApiKey(), requestParameters);
+                    mailResponse = sendMail(fromEmailId, ccEmailId, bccEmailId, toEmailId, emailSubject, emailBody, requestParameters);
                     if (mailResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                         LOG.debug("Mail sent to marketing team..");
                         return successResponse;
@@ -236,12 +236,11 @@ public class MailServiceImpl implements MailService {
      * @param toEmailIdParam the to email id param
      * @param emailSubjectParam the email subject param
      * @param emailBodyParam the email body param
-     * @param apiKeyParam the api key param
      * @param requestParametersParam the request parameters param
      * @return the http response
      */
     public HttpResponse sendMail(String fromEmailIdParam, String ccEmailIdParam, String bccEmailIdParam, String toEmailIdParam, String emailSubjectParam, String emailBodyParam,
-                                 String apiKeyParam, Map <String, String> requestParametersParam) {
+                                 Map <String, String> requestParametersParam) {
         // Mail API service
         try {
             HttpClientBuilder builder = httpClientBuilderFactory.newBuilder();
@@ -258,7 +257,7 @@ public class MailServiceImpl implements MailService {
             apiParameters.add(new BasicNameValuePair("slf-to-email-address", populateContent(toEmailIdParam, requestParametersParam)));
             apiParameters.add(new BasicNameValuePair("slf-email-subject", populateContent(emailSubjectParam, requestParametersParam)));
             apiParameters.add(new BasicNameValuePair("slf-email-body", Base64.getEncoder().encodeToString(populateContent(emailBodyParam, requestParametersParam).getBytes(Charset.forName("UTF-8")))));
-            apiParameters.add(new BasicNameValuePair("slf-api-key", apiKeyParam));
+            apiParameters.add(new BasicNameValuePair("slf-api-key", mailConfig.getApiKey()));
             post.setEntity(new UrlEncodedFormEntity(apiParameters, StandardCharsets.UTF_8));
             LOG.debug("Trying to connect to mail API...");
             return client.execute(post);
