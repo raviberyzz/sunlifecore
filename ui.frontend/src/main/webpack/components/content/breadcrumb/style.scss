@@ -16,7 +16,7 @@
 .breadcrumb-wrapper-light-cool-blue{
   height: 43px;
   padding: 0 15px;
-    background:$light-cool-blue-color;
+    background:$white;
     ol{
       list-style-type:none;
       padding:0;
@@ -31,6 +31,7 @@
           &:before,a{
             font-size:0.875rem;
             line-height:18px;
+            color: $brand-tertiary-800;
           }
           :hover{
               text-decoration: none;
@@ -39,6 +40,7 @@
         .active {
           line-height:18px;
           font-size:0.875rem;
+          color: $brand-tertiary-800;
           a,span{
             font-weight: 400;
             color:$dark-grey-color;
@@ -51,16 +53,17 @@
           font-size:0.875rem;
           a,span{
             font-weight: 400;
-            color:$dark-grey-color;
+            color:$grey-900;
             font-size:0.875rem;
           }
         }
         &>li:not(:first-child):before {
-          content: "\f105";
+          content: "/\00a0";
           font-weight: 400;
           font-family: FontAwesome;
-          color: $medium-blue-color;
+          color: $grey-300;
           padding: 0 5px;
+          margin-left: 5px;
         }
     }
     .left-area {
@@ -102,28 +105,28 @@
   }
   .breadcrumb-wrapper-cool-blue{
     @extend  .breadcrumb-wrapper-light-cool-blue;
-    background:$cool-blue-color;
+    background:$white;
     .breadcrumb-row{
       li,.active {
         a,span{
-          color:$white-shade;
+          color:$brand-tertiary-800;
         }
       }
       &>li:not(:first-child):before{
-        color:$white-shade;
+        color:$grey-300;
       }
       li:last-child{
         a,span{
-          color: $white-shade;
+          color: $grey-900;
         }
       }
     }
     .side-text {
-      color: $white-shade;
+      color: $dark-grey-color;
     }
     .social-link-icon-wrapper {
       .icon-style{
-          color: $white-shade;
+          color: $medium-blue-color;
           font-size: 1.25rem;
         }
       }
