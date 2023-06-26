@@ -49,6 +49,18 @@
                                 jcr:primaryType="nt:unstructured"
                                 typeHint="Date"/>
                         </articlePublishedDate>
+						<articleReadtime
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Enter the Article read time"
+                            fieldLabel="Article Read Time"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="articleReadtime"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
                         <articleHeadline
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
