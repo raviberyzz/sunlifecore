@@ -1942,13 +1942,40 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     	return;
     }
    /* altLanguageLinks.put(
-        sourcePageLocale.split("_") [ 0 ] + "-"
+        sourcePageLocaqueryle.split("_") [ 0 ] + "-"
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
         sourceSiteDomain + sourceSiteUrl);*/
+         RequestParameterMap data=request.getRequestParameterMap();
+        RequestPathInfo info=request.getRequestPathInfo();
+        String query="";
+        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
+    String key = entry.getKey();
+    query=query+key +"=";
+    RequestParameter[] params = entry.getValue();
+    for(RequestParameter s:params){
+      query=query+s.getString();
+
+    }
+     query=query +"&";
+        }
+       LOG.debug("addAlternateUrl query --> {}", query); 
+          String hrefLangPath=sourceSiteDomain + sourceSiteUrl;
+         String requestURI=request.getRequestURI().replace(".html","");
+      String [] urlCreation=requestURI.split("\\.");
+      LOG.debug("addAlternateUrl urlCreation --> {}" ,urlCreation.length);
+       if(urlCreation.length>1){
+        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
+       }
+       if(!query.isEmpty()){
+        LOG.debug("addAlternateUrl Inside query value");
+        query= query.substring(0,query.length()-1);
+        hrefLangPath=hrefLangPath+"?"+query;
+       }
+       LOG.debug("addAlternateUrl hrefLangPath --> {}"+hrefLangPath);
     altLanguageLinks.put(
     		hrefLang,
-            sourceSiteDomain + sourceSiteUrl);
+            hrefLangPath);
   }
 
   /**
@@ -1995,6 +2022,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
         altLanguageLinks.put(
         		hrefLang,
                 altSiteDomain + altSiteUrl);
+                // hk-hant -- >
         
     	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
         	/*altLanguageLinks.put(
