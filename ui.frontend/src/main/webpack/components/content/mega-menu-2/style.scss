@@ -273,8 +273,14 @@
   .mega-menu-wrapper-desk {
     display: none; } }
 
-.mega-menu-wrapper-desk .aem-Grid.aem-Grid--default--2 .lists-wrapper .links {
-    float: right
+.mega-menu-wrapper-desk {
+    .aem-GridColumn--default--2 {
+        .lists-wrapper {
+            .links {
+                float: right;
+            }
+        }
+    }
 }
 
 
