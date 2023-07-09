@@ -5,7 +5,6 @@
 	getApiUrl="https://sit-www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json"
     getTemplatePath="/content/dam/sunlife/external/"
     getTemplatePathSuffix="/content-fragments/email-templates/"
-	getValidationsPath="/content/dam/sunlife/regional/"
-	getValidationsPathSuffix="/app-files/email-validations.json"
+	getValidationsPath="/content/dam/sunlife/global/shared-assets/json/sl-email-validations.json"
 	getErrorResponse="failure"
     getSuccessResponse="success"/>

@@ -57,14 +57,6 @@ public @interface MailConfig {
   String getValidationsPath();
 
   /**
-   * Gets the validation file path suffix
-   *
-   * @return the validation file path suffix
-   */
-  @AttributeDefinition(name = "Form Validations Path Suffix", description = "Validation json path for form validations suffix")
-  String getValidationsPathSuffix();
-
-  /**
    * Gets the success response.
    *
    * @return the success response

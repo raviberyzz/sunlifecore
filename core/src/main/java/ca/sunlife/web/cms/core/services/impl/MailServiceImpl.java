@@ -349,48 +349,55 @@ public class MailServiceImpl implements MailService {
         }
 
         final String cfName = requestParameters.get("cfname");
+        final String cfLocale = requestParameters.get("cfLocale");
 
-        final String formRegion = requestParameters.get("cfRegion");
-        if (isValid(formRegion)) {
-            JSONObject formDetails = getValidationDetails(formRegion, cfName, resourceResolver);
-            if (formDetails != null) {
-                if (!isMandatoryValid(formDetails, requestParameters)) {
+        JSONObject formDetails = getValidationDetails(cfName, cfLocale, resourceResolver);
+        if (formDetails != null) {
+            LOG.debug("Form validations found..");
+            if (!isMandatoryValid(formDetails, requestParameters)) {
+                return false;
+            }
+
+            for (Map.Entry<String, String> requestParam : requestParameters.entrySet()) {
+                String key = requestParam.getKey();
+                String value = requestParam.getValue();
+
+                if (!isFormFieldValid(key, value, formDetails)) {
                     return false;
-                }
-
-                for (Map.Entry<String, String> requestParam : requestParameters.entrySet()) {
-                    String key = requestParam.getKey();
-                    String value = requestParam.getValue();
-
-                    if (!isFormFieldValid(key, value, formDetails)) {
-                        return false;
-                    }
                 }
             }
         }
+
         return true;
     }
 
     /**
      * get form validation details
      *
-     * @param formRegion       region for the form
      * @param cfName           content fragment name
+     * @param cfLocale         content fragment locale
      * @param resourceResolver resourceResolver
      * @return form details
      */
-    private JSONObject getValidationDetails(String formRegion, String cfName, ResourceResolver resourceResolver) {
+    private JSONObject getValidationDetails(String cfName, String cfLocale, ResourceResolver resourceResolver) {
         JSONObject formDetails = null;
         try {//Check for missing config
-            final String validationsPath = mailConfig.getValidationsPath();
-            final String validationsPathSuffix = mailConfig.getValidationsPathSuffix();
-            final String validationFilePath = validationsPath.concat(formRegion).concat(validationsPathSuffix).concat(validationNodePath);
+            final String validationFilePath = mailConfig.getValidationsPath().concat(validationNodePath);
             LOG.debug("Request validation file path {} ", validationFilePath);
 
             final JSONObject jsonObject = getJsonFromFile(resourceResolver, validationFilePath);
             if (jsonObject.length() > 0) {//Check if form has any validations declared
                 LOG.debug("Request validation file exists");
-                formDetails = jsonObject.optJSONObject(cfName);
+                String formRegion = null;
+                if (cfLocale.contains("/")) {
+                    formRegion = cfLocale.split("/")[0];
+                }
+                if (null != formRegion) {
+                    JSONObject regionValidations = jsonObject.optJSONObject(formRegion);
+                    if (null != regionValidations) {
+                        formDetails = regionValidations.optJSONObject(cfName);
+                    }
+                }
             }
         } catch (NoSuchMethodError e) {
             LOG.error("Exception occurred in validation file :: NoSuchMethodError {}", e.getMessage(), e);
