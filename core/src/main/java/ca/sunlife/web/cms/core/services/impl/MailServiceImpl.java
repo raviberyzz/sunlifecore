@@ -377,22 +377,27 @@ public class MailServiceImpl implements MailService {
     private JSONObject getValidationDetails(String cfName, String cfLocale, ResourceResolver resourceResolver) {
         JSONObject formDetails = null;
         try {//Check for missing config
-            final String validationFilePath = mailConfig.getValidationsPath().concat(validationNodePath);
-            LOG.debug("Request validation file path {} ", validationFilePath);
+            final String configFilePath = mailConfig.getValidationsPath().concat(validationNodePath);
+            LOG.debug("Request validation config file path {} ", configFilePath);
 
-            final JSONObject jsonObject = getJsonFromFile(resourceResolver, validationFilePath);
-            if (jsonObject.length() > 0) {//Check if form has any validations declared
-                LOG.debug("Request validation file exists");
+            final JSONObject configJSON = getJsonFromFile(resourceResolver, configFilePath);
+            if (configJSON.length() > 0) {//Check if region has any validations declared
+                LOG.debug("Request validation config file exists");
                 String formRegion = null;
                 if (cfLocale.contains("/")) {
                     StringTokenizer strLocale = new StringTokenizer(cfLocale);
                     formRegion = strLocale.nextToken("/");
                 }
                 if (null != formRegion) {
-                    LOG.debug("Request validation file formRegion {} ", formRegion);
-                    JSONObject regionValidations = jsonObject.optJSONObject(formRegion);
-                    if (null != regionValidations) {
-                        formDetails = regionValidations.optJSONObject(cfName);
+                    final String validationFilePath = configJSON.optString(formRegion);
+                    LOG.debug("Request region validation file path {} ", validationFilePath);
+
+                    if (null != validationFilePath) {
+                        final JSONObject regionJSON = getJsonFromFile(resourceResolver, validationFilePath.concat(validationNodePath));
+                        if (regionJSON.length() > 0) {//Check if form has any validations declared
+                            LOG.debug("Request validation file exists");
+                            formDetails = regionJSON.optJSONObject(cfName);
+                        }
                     }
                 }
             }
