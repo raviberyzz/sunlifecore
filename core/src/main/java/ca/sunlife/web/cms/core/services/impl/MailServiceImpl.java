@@ -8,12 +8,7 @@ package ca.sunlife.web.cms.core.services.impl;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
@@ -390,9 +385,11 @@ public class MailServiceImpl implements MailService {
                 LOG.debug("Request validation file exists");
                 String formRegion = null;
                 if (cfLocale.contains("/")) {
-                    formRegion = cfLocale.split("/")[0];
+                    StringTokenizer strLocale = new StringTokenizer(cfLocale);
+                    formRegion = strLocale.nextToken("/");
                 }
                 if (null != formRegion) {
+                    LOG.debug("Request validation file formRegion {} ", formRegion);
                     JSONObject regionValidations = jsonObject.optJSONObject(formRegion);
                     if (null != regionValidations) {
                         formDetails = regionValidations.optJSONObject(cfName);
