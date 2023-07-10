@@ -16,7 +16,7 @@
 .breadcrumb-wrapper-light-cool-blue{
   height: 43px;
   padding: 0 15px;
-    background:$white;
+    background:$light-cool-blue-color;
     ol{
       list-style-type:none;
       padding:0;
@@ -31,8 +31,7 @@
           &:before,a{
             font-size:0.875rem;
             line-height:18px;
-            color: $brand-tertiary-800;
-          }
+            }
           :hover{
               text-decoration: none;
           }
@@ -40,8 +39,7 @@
         .active {
           line-height:18px;
           font-size:0.875rem;
-          color: $brand-tertiary-800;
-          a,span{
+           a,span{
             font-weight: 400;
             color:$dark-grey-color;
             font-size:0.875rem;
@@ -53,7 +51,7 @@
           font-size:0.875rem;
           a,span{
             font-weight: 400;
-            color:$grey-900;
+            color:$dark-grey-color;
             font-size:0.875rem;
           }
         }
@@ -61,9 +59,9 @@
           content: "/\00a0";
           font-weight: 400;
           font-family: FontAwesome;
-          color: $grey-300;
+          color: $medium-blue-color;
           padding: 0 5px;
-          margin-left: 5px;
+         
         }
     }
     .left-area {
@@ -105,28 +103,28 @@
   }
   .breadcrumb-wrapper-cool-blue{
     @extend  .breadcrumb-wrapper-light-cool-blue;
-    background:$white;
+    background:$cool-blue-color;
     .breadcrumb-row{
       li,.active {
         a,span{
-          color:$brand-tertiary-800;
+          color:$white-shade;
         }
       }
       &>li:not(:first-child):before{
-        color:$grey-300;
+        color:$white-shade;
       }
       li:last-child{
         a,span{
-          color: $grey-900;
+          color: $white-shade;
         }
       }
     }
     .side-text {
-      color: $dark-grey-color;
+      color: $white-shade;
     }
     .social-link-icon-wrapper {
       .icon-style{
-          color: $medium-blue-color;
+          color: $white-shade;
           font-size: 1.25rem;
         }
       }
