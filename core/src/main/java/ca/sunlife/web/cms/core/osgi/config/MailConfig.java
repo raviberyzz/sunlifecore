@@ -22,7 +22,7 @@ public @interface MailConfig {
    * @return the api url
    */
   @AttributeDefinition(name = "Mail API", description = "Mail API URL")
-  String getApiUrl();
+  String getApiUrl() default "https://sit-www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json";
 
   /**
    * Gets the api key.
@@ -30,7 +30,7 @@ public @interface MailConfig {
    * @return the api key
    */
   @AttributeDefinition(name = "Mail API KEY", description = "API KEY for Mail service")
-  String getApiKey();
+  String getApiKey() default "Ng1vE%^Uvdk$aP@E7SepA1N06#lQ!*kLs4siHSFq";
 
   /**
    * Gets the template path.
@@ -38,7 +38,7 @@ public @interface MailConfig {
    * @return the template path
    */
   @AttributeDefinition(name = "Template Path", description = "Content fragment paths for email templates")
-  String getTemplatePath();
+  String getTemplatePath() default "/content/dam/sunlife/external/";
 
   /**
    * Gets the template path suffix.
@@ -46,7 +46,7 @@ public @interface MailConfig {
    * @return the template path suffix
    */
   @AttributeDefinition(name = "Template Path Suffic", description = "Content fragment paths for email templates suffix")
-  String getTemplatePathSuffix();
+  String getTemplatePathSuffix() default "/content-fragments/email-templates/";
 
   /**
    * Gets the validation file path.
@@ -54,7 +54,7 @@ public @interface MailConfig {
    * @return the validation file path
    */
   @AttributeDefinition(name = "Form Validations Path", description = "Validation json path for form validations")
-  String getValidationsPath();
+  String getValidationsPath() default "/content/dam/sunlife/global/shared-assets/json/sl-email-config.json";
 
   /**
    * Gets the success response.
@@ -62,7 +62,7 @@ public @interface MailConfig {
    * @return the success response
    */
   @AttributeDefinition(name = "Success Response", description = "JSON Response for success")
-  String getSuccessResponse();
+  String getSuccessResponse() default "success";
 
   /**
    * Gets the error response.
@@ -70,5 +70,5 @@ public @interface MailConfig {
    * @return the error response
    */
   @AttributeDefinition(name = "Error Response", description = "JSON Response for error")
-  String getErrorResponse();
+  String getErrorResponse() default "failure";
 }
