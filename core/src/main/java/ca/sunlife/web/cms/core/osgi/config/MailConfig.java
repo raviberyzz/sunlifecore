@@ -22,7 +22,7 @@ public @interface MailConfig {
    * @return the api url
    */
   @AttributeDefinition(name = "Mail API", description = "Mail API URL")
-  String getApiUrl() default "https://sit-www.sunlife.ca/slfServiceApp/invokeService.wca?service=email&amp;method=email&amp;format=json";
+  String getApiUrl();
 
   /**
    * Gets the api key.
@@ -30,7 +30,7 @@ public @interface MailConfig {
    * @return the api key
    */
   @AttributeDefinition(name = "Mail API KEY", description = "API KEY for Mail service")
-  String getApiKey() default "Ng1vE%^Uvdk$aP@E7SepA1N06#lQ!*kLs4siHSFq";
+  String getApiKey();
 
   /**
    * Gets the template path.
