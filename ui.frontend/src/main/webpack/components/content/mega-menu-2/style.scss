@@ -272,3 +272,15 @@
 @media (max-width: 1024px) {
   .mega-menu-wrapper-desk {
     display: none; } }
+
+.mega-menu-wrapper-desk {
+    .aem-GridColumn--default--2 {
+        .lists-wrapper {
+            .links {
+                float: right;
+            }
+        }
+    }
+}
+
+

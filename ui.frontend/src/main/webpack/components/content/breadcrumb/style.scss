@@ -31,7 +31,7 @@
           &:before,a{
             font-size:0.875rem;
             line-height:18px;
-          }
+            }
           :hover{
               text-decoration: none;
           }
@@ -39,7 +39,7 @@
         .active {
           line-height:18px;
           font-size:0.875rem;
-          a,span{
+           a,span{
             font-weight: 400;
             color:$dark-grey-color;
             font-size:0.875rem;
@@ -56,11 +56,12 @@
           }
         }
         &>li:not(:first-child):before {
-          content: "\f105";
+          content: "/\00a0";
           font-weight: 400;
           font-family: FontAwesome;
           color: $medium-blue-color;
           padding: 0 5px;
+         
         }
     }
     .left-area {
