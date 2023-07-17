@@ -1781,46 +1781,15 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     		  hrefLang = pageLocale.split("_") [ 0 ] + "-"
     	                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
     	  }
-        /*altLanguageLinks.put(
-            pageLocale.split("_") [ 0 ] + "-"
-                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
-            siteDomain + configService.getPageRelativeUrl(pagePath));*/
-              LOG.debug("RequestURL --> {}",request.getRequestURI());
-               LOG.debug("siteDomain --> {}",siteDomain);
-               //LOG.debug("getPageRelativeUrl --> {}",configService.getPageRelativeUrl(pagePath));
-     RequestParameterMap data=request.getRequestParameterMap();
-        RequestPathInfo info=request.getRequestPathInfo();
-        String query="";
-        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
-    String key = entry.getKey();
-    query=query+key +"=";
-    RequestParameter[] params = entry.getValue();
-    for(RequestParameter s:params){
-      query=query+s.getString();
-
-    }
-     query=query +"&";
-        }
-       LOG.debug("query --> {}", query); 
-    final String pagePath1 = currentPage.getPath();
-    String hrefLangPath=siteDomain + configService.getPageRelativeUrl(pagePath1);
-    LOG.debug("hrefLangPath new val --> {}" ,hrefLangPath);
-    String requestURI=request.getRequestURI().replace(".html","");
-      String [] urlCreation=requestURI.split("\\.");
-      LOG.debug("urlCreation --> {}" ,urlCreation.length);
-       if(urlCreation.length>1){
-        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
+     final String pagePath1 = currentPage.getPath();
+    String href_lang_path= createHrefLangPath(siteDomain,  configService.getPageRelativeUrl(pagePath1));
+       String queryParam=getQueryParm();
+       if(!queryParam.isEmpty()){
+        href_lang_path=href_lang_path+queryParam;
        }
-       if(!query.isEmpty()){
-        LOG.debug("Inside query value");
-        query= query.substring(0,query.length()-1);
-        hrefLangPath=hrefLangPath+"?"+query;
-       }
-      LOG.debug("hrefLangPath --> {}" ,hrefLangPath);
-    	  altLanguageLinks.put(
-    			  hrefLang,
-  	           hrefLangPath);
-        
+    altLanguageLinks.put(
+    		hrefLang,
+            href_lang_path);
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
 	      	  altLanguageLinks.put(entry.getKey(), entry.getValue());
@@ -1941,43 +1910,42 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     if (StringUtils.isEmpty(sourcePageLocale) || StringUtils.isEmpty(sourceSiteUrl)) {
     	return;
     }
-   /* altLanguageLinks.put(
-        sourcePageLocaqueryle.split("_") [ 0 ] + "-"
-            + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
-                .toLowerCase(Locale.ROOT),
-        sourceSiteDomain + sourceSiteUrl);*/
-         RequestParameterMap data=request.getRequestParameterMap();
-        RequestPathInfo info=request.getRequestPathInfo();
-        String query="";
-        for (Map.Entry<String, RequestParameter[]> entry : data.entrySet()) {
-    String key = entry.getKey();
-    query=query+key +"=";
-    RequestParameter[] params = entry.getValue();
-    for(RequestParameter s:params){
-      query=query+s.getString();
-
-    }
-     query=query +"&";
-        }
-       LOG.debug("addAlternateUrl query --> {}", query); 
-          String hrefLangPath=sourceSiteDomain + sourceSiteUrl;
-         String requestURI=request.getRequestURI().replace(".html","");
-      String [] urlCreation=requestURI.split("\\.");
-      LOG.debug("addAlternateUrl urlCreation --> {}" ,urlCreation.length);
-       if(urlCreation.length>1){
-        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
+       String href_lang_path= createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
+       String queryParam=getQueryParm();
+       if(!queryParam.isEmpty()){
+        href_lang_path=href_lang_path+queryParam;
        }
-       if(!query.isEmpty()){
-        LOG.debug("addAlternateUrl Inside query value");
-        query= query.substring(0,query.length()-1);
-        hrefLangPath=hrefLangPath+"?"+query;
-       }
-       LOG.debug("addAlternateUrl hrefLangPath --> {}"+hrefLangPath);
     altLanguageLinks.put(
     		hrefLang,
-            hrefLangPath);
+            href_lang_path);
   }
+/* Below code will get the full url request and split the pagination from AEM page */
+private String createHrefLangPath(String domain, String siteUrl){
+      String hrefLangPath= domain + siteUrl;
 
+String requestURI=request.getRequestURI().replace(".html",""); // request is SlingHttpServletRequest
+      String [] urlCreation=requestURI.split("\\.");
+      LOG.debug("addAlternateUrl urlCreation --> {}" ,urlCreation.length);
+      if(urlCreation.length>1){
+        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
+       }
+
+  return hrefLangPath;
+} 
+/* Below code extract the query param from request and transform into single String*/
+private String getQueryParm(){
+   String selector[]=  request.getRequestPathInfo().getSelectors();
+  
+ LOG.debug("selector urlCreation --> {}" ,selector.length);
+ String selectorString="";
+ for(String s:selector){
+  selectorString=selectorString+'.';
+  selectorString=selectorString+s;
+   LOG.debug("selector values --> {}" ,s);
+ }
+ LOG.debug("final String --> {}",selectorString);
+  return selectorString;
+}
   /**
    * Generate page specific alternate urls.
    */
