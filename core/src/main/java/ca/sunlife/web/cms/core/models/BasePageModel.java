@@ -1922,14 +1922,15 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 /* Below code will get the full url request and split the pagination from AEM page */
 private String createHrefLangPath(String domain, String siteUrl){
       String hrefLangPath= domain + siteUrl;
-
+ LOG.debug("hrefLangPath value --> {}" ,hrefLangPath);
 String requestURI=request.getRequestURI().replace(".html",""); // request is SlingHttpServletRequest
+        LOG.debug("requestURI value --> {}" ,requestURI);
       String [] urlCreation=requestURI.split("\\.");
       LOG.debug("addAlternateUrl urlCreation --> {}" ,urlCreation.length);
       if(urlCreation.length>1){
         hrefLangPath=hrefLangPath+urlCreation[1]+"/";
        }
-
+ LOG.debug("hrefLangPath value --> {}" ,hrefLangPath);
   return hrefLangPath;
 } 
 /* Below code extract the query param from request and transform into single String*/
