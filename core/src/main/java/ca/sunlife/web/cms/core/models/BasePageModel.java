@@ -1922,7 +1922,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 /* Below code will get the full url request and split the pagination from AEM page */
 private String createHrefLangPath(String domain, String siteUrl){
    String selector[]=  request.getRequestPathInfo().getSelectors();
-   siteUrl=siteUrl.concat(0,siteUrl.length()-1);
+   siteUrl=siteUrl.substring(0,siteUrl.length()-1);
    String hrefLangPath= domain+siteUrl ;
    LOG.debug("inital  hrefLangPath --> {}",hrefLangPath);
    String urlValue="";
