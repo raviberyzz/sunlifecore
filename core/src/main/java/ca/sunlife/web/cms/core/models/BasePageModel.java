@@ -1783,10 +1783,10 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     	  }
      final String pagePath1 = currentPage.getPath();
     String href_lang_path= createHrefLangPath(siteDomain,  configService.getPageRelativeUrl(pagePath1));
-       String queryParam=getQueryParm();
-       if(!queryParam.isEmpty()){
-        href_lang_path=href_lang_path+queryParam;
-       }
+      //  String queryParam=getQueryParm();
+      //  if(!queryParam.isEmpty()){
+      //   href_lang_path=href_lang_path+queryParam;
+      //  }
     altLanguageLinks.put(
     		hrefLang,
             href_lang_path);
@@ -1911,42 +1911,48 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     	return;
     }
        String href_lang_path= createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
-       String queryParam=getQueryParm();
-       if(!queryParam.isEmpty()){
-        href_lang_path=href_lang_path+queryParam;
-       }
+      //  String queryParam=getQueryParm();
+      //  if(!queryParam.isEmpty()){
+      //   href_lang_path=href_lang_path+queryParam;
+      //  }
     altLanguageLinks.put(
     		hrefLang,
             href_lang_path);
   }
 /* Below code will get the full url request and split the pagination from AEM page */
 private String createHrefLangPath(String domain, String siteUrl){
-      String hrefLangPath= domain + siteUrl;
- LOG.debug("hrefLangPath value --> {}" ,hrefLangPath);
-String requestURI=request.getRequestURI().replace(".html",""); // request is SlingHttpServletRequest
-        LOG.debug("requestURI value --> {}" ,requestURI);
-      String [] urlCreation=requestURI.split("\\.");
-      LOG.debug("addAlternateUrl urlCreation --> {}" ,urlCreation.length);
-      if(urlCreation.length>1){
-        hrefLangPath=hrefLangPath+urlCreation[1]+"/";
-       }
- LOG.debug("hrefLangPath value --> {}" ,hrefLangPath);
-  return hrefLangPath;
+   String selector[]=  request.getRequestPathInfo().getSelectors();
+   siteUrl=siteUrl.concat(0,siteUrl.length()-1);
+   String hrefLangPath= domain+siteUrl ;
+   LOG.debug("inital  hrefLangPath --> {}",hrefLangPath);
+   String urlValue="";
+ for(String selectorValue:selector){
+  if(selectorValue.contains("-")){
+    urlValue=urlValue+"."+selectorValue; // in case of multiple selector dot is splitter
+  }
+  else{
+    urlValue=urlValue+"/"+selectorValue; // in case of pagination paginated page value should be eg. /1/
+  } 
+ }
+ urlValue=urlValue+"/";  // all the urls should end with / slash
+ LOG.debug("final String --> {}",urlValue);
+ 
+  return hrefLangPath+urlValue;
 } 
 /* Below code extract the query param from request and transform into single String*/
-private String getQueryParm(){
-   String selector[]=  request.getRequestPathInfo().getSelectors();
+// private String getQueryParm(){
+//    String selector[]=  request.getRequestPathInfo().getSelectors();
   
- LOG.debug("selector urlCreation --> {}" ,selector.length);
- String selectorString="";
- for(String s:selector){
-  selectorString=selectorString+'.';
-  selectorString=selectorString+s;
-   LOG.debug("selector values --> {}" ,s);
- }
- LOG.debug("final String --> {}",selectorString);
-  return selectorString;
-}
+//  LOG.debug("selector urlCreation --> {}" ,selector.length);
+//  String selectorString="";
+//  for(String s:selector){
+//   selectorString=selectorString+'.';
+//   selectorString=selectorString+s;
+//    LOG.debug("selector values --> {}" ,s);
+//  }
+//  LOG.debug("final String --> {}",selectorString);
+//   return selectorString;
+// }
   /**
    * Generate page specific alternate urls.
    */
