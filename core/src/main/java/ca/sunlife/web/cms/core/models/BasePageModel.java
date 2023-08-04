@@ -63,9 +63,7 @@ import ca.sunlife.web.cms.core.exception.SystemException;
 import ca.sunlife.web.cms.core.services.AdvisorDetailService;
 import ca.sunlife.web.cms.core.services.CNWNewsService;
 import ca.sunlife.web.cms.core.services.SiteConfigService;
-import org.apache.sling.api.request.RequestParameterMap;
-import org.apache.sling.api.request.RequestParameter;
-import org.apache.sling.api.request.RequestPathInfo;
+
 /**
  * The Class BasePageModel.
  *
@@ -1718,7 +1716,6 @@ public void setDisableContextHubTags(String disableContextHubTags) {
        
       }
       final String pagePath = currentPage.getPath();
-      LOG.debug("pagePath --> {}",pagePath);
       final String modHrefLang = configService.getConfigValues(HREF_LANG, pagePath);
       final String pageLocale = configService.getConfigValues(PAGE_LOCALE, pagePath);
       if (null == pageLocale || pageLocale.length() == 0) {
@@ -1781,15 +1778,18 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     		  hrefLang = pageLocale.split("_") [ 0 ] + "-"
     	                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT);
     	  }
-     final String pagePath1 = currentPage.getPath();
-    String href_lang_path= createHrefLangPath(siteDomain,  configService.getPageRelativeUrl(pagePath1));
-      //  String queryParam=getQueryParm();
-      //  if(!queryParam.isEmpty()){
-      //   href_lang_path=href_lang_path+queryParam;
-      //  }
-    altLanguageLinks.put(
-    		hrefLang,
-            href_lang_path);
+        /*altLanguageLinks.put(
+            pageLocale.split("_") [ 0 ] + "-"
+                + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
+            siteDomain + configService.getPageRelativeUrl(pagePath));*/
+    	  if (siteDomain.contains(".hk")) {
+				LOG.debug("siteDomain {}", siteDomain);
+				String href_lang_path = createHrefLangPath(siteDomain, configService.getPageRelativeUrl(pagePath));
+				altLanguageLinks.put(hrefLang, href_lang_path);
+			} else {
+				altLanguageLinks.put(hrefLang, siteDomain + configService.getPageRelativeUrl(pagePath));
+			}
+        
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
 	      	  altLanguageLinks.put(entry.getKey(), entry.getValue());
@@ -1890,7 +1890,6 @@ public void setDisableContextHubTags(String disableContextHubTags) {
   private void addAlternateUrl(final String liveCopyPath)
       throws LoginException, RepositoryException {
     LOG.debug("path :: {}", liveCopyPath);
-    LOG.debug("inside addAlternateUrl :: {}", liveCopyPath);
     final String sourcePageLocale = configService.getConfigValues(PAGE_LOCALE,
         liveCopyPath);
     final String sourceSiteUrl = configService.getPageRelativeUrl(liveCopyPath);
@@ -1910,49 +1909,20 @@ public void setDisableContextHubTags(String disableContextHubTags) {
     if (StringUtils.isEmpty(sourcePageLocale) || StringUtils.isEmpty(sourceSiteUrl)) {
     	return;
     }
-       String href_lang_path= createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
-      //  String queryParam=getQueryParm();
-      //  if(!queryParam.isEmpty()){
-      //   href_lang_path=href_lang_path+queryParam;
-      //  }
-    altLanguageLinks.put(
-    		hrefLang,
-            href_lang_path);
+   /* altLanguageLinks.put(
+        sourcePageLocale.split("_") [ 0 ] + "-"
+            + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
+                .toLowerCase(Locale.ROOT),
+        sourceSiteDomain + sourceSiteUrl);*/
+    if (sourceSiteDomain.contains(".hk")) {
+		LOG.debug("sourceSiteDomain {}", sourceSiteDomain);
+		String href_lang_path = createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
+		altLanguageLinks.put(hrefLang, href_lang_path);
+	} else {
+		altLanguageLinks.put(hrefLang, sourceSiteDomain + sourceSiteUrl);
+	}
   }
-/* Below code will get the full url request and split the pagination from AEM page */
-private String createHrefLangPath(String domain, String siteUrl){
-   String selector[]=  request.getRequestPathInfo().getSelectors();
-   siteUrl=siteUrl.substring(0,siteUrl.length()-1);
-   String hrefLangPath= domain+siteUrl ;
-   LOG.debug("inital  hrefLangPath --> {}",hrefLangPath);
-   String urlValue="";
- for(String selectorValue:selector){
-  if(selectorValue.contains("-")){
-    urlValue=urlValue+"."+selectorValue; // in case of multiple selector dot is splitter
-  }
-  else{
-    urlValue=urlValue+"/"+selectorValue; // in case of pagination paginated page value should be eg. /1/
-  } 
- }
- urlValue=urlValue+"/";  // all the urls should end with / slash
- LOG.debug("final String --> {}",urlValue);
- 
-  return hrefLangPath+urlValue;
-} 
-/* Below code extract the query param from request and transform into single String*/
-// private String getQueryParm(){
-//    String selector[]=  request.getRequestPathInfo().getSelectors();
-  
-//  LOG.debug("selector urlCreation --> {}" ,selector.length);
-//  String selectorString="";
-//  for(String s:selector){
-//   selectorString=selectorString+'.';
-//   selectorString=selectorString+s;
-//    LOG.debug("selector values --> {}" ,s);
-//  }
-//  LOG.debug("final String --> {}",selectorString);
-//   return selectorString;
-// }
+
   /**
    * Generate page specific alternate urls.
    */
@@ -1997,7 +1967,6 @@ private String createHrefLangPath(String domain, String siteUrl){
         altLanguageLinks.put(
         		hrefLang,
                 altSiteDomain + altSiteUrl);
-                // hk-hant -- >
         
     	if(altSiteUrl.length()==0 && altSiteDomain.length()==0) {
         	/*altLanguageLinks.put(
@@ -2123,5 +2092,24 @@ private String createHrefLangPath(String domain, String siteUrl){
 		LOG.debug("Page include processed: {}", processedPageInclude);
 		return processedPageInclude;
 	}
-
+  /* Below code will get the full url request and split the pagination from AEM page */
+  public String createHrefLangPath(String domain, String siteUrl){
+     String selector[]=  request.getRequestPathInfo().getSelectors();
+     siteUrl=siteUrl.substring(0,siteUrl.length()-1);
+     String hrefLangPath= domain+siteUrl ;
+     LOG.debug("inital  hrefLangPath --> {}",hrefLangPath);
+     String urlValue="";
+   for(String selectorValue:selector){
+    if(selectorValue.contains("-")){
+      urlValue=urlValue+"."+selectorValue; // in case of multiple selector dot is splitter
+    }
+    else{
+      urlValue=urlValue+"/"+selectorValue; // in case of pagination paginated page value should be eg. /1/
+    } 
+   }
+   urlValue=urlValue+"/";  // all the urls should end with / slash
+   LOG.debug("final String --> {}",urlValue);
+   
+    return hrefLangPath+urlValue;
+  }
 }
