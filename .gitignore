@@ -106,4 +106,3 @@ reports/
 dispatcher/src/conf.d/variables/default.vars
 ui.tests/test-module/assets/form/themes/**/*diff.png
 ui.tests/test-module/assets/form/themes/**/*current.png
-ui.frontend/package-lock.json
