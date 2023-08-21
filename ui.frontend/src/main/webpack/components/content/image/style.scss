@@ -1,0 +1,55 @@
+@import '../../../prerequisite/base/styles/core.scss';
+
+    /*.image{
+        img{
+            background-image: linear-gradient(to bottom, $medium-yellow-background 70%, $primary-yellow-background 82%);
+            padding: 4px !important;
+        }
+    }*/
+    .image.circular-image.circle-150-desktop.round-border {
+        border-radius: 50%;
+        background-image: linear-gradient(to bottom,$medium-yellow-background 70%,$primary-yellow-background 82%);
+        padding: 4px !important;
+        height: 158px;
+        width: 158px;
+    }
+    .image.circular-image.circle-220-desktop.round-border {
+        border-radius: 50%;
+        background-image: linear-gradient(to bottom,$medium-yellow-background 70%,$primary-yellow-background 82%);
+        padding: 4px !important;
+        height: 228px;
+        width: 228px;
+    }
+    @media (max-width:$mobile-screen-max){
+        .image.circular-image.circle-150-desktop.round-border, .image.circular-image.circle-220-desktop.round-border {
+            height: 158px !important;
+            width: 158px !important;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    @media (min-width:$tab-screen-min){
+        .full-width-image{
+            img{
+                width:100%;
+            }
+        }
+    }
+    
+    .overflow-hidden{
+        overflow: hidden;
+    }
+//from phone to ipad only
+    @media (max-width: 1023px) {
+        img{ 
+            max-width:100%;
+        }
+        
+    }
+/* image responsive for images start*/
+/*img{
+    max-width:100%;
+    height:auto;
+  } */
+/* image responsive for images end */ 

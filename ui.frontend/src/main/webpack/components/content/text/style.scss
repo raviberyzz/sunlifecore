@@ -1,0 +1,138 @@
+@import '../../../prerequisite/base/styles/core.scss';
+.grey-border-box {
+    padding: 32px 16px;
+    border: 1px solid $light-grey-color;
+    p {
+        margin: 0;
+        line-height: 24px;
+    }
+}
+.yellow-gradient-box {
+    @extend .grey-border-box;
+    border: none;
+    text-align: center;
+    background: linear-gradient($medium-yellow-background, $primary-yellow-background);
+}
+.grey-background-box {
+    @extend .grey-border-box;
+    border: none;
+    background-color: $light-cool-blue-color;
+    .cmp-text {
+        h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+            margin-top: 0;
+        }
+    }
+}
+.text-parent {
+    .mega-menu-icon-wrapper {
+        .icon-parent {
+        margin-right: 2px;
+        }
+        .icon-style {
+            background: none;
+            border-radius: inherit;
+            height: 0;
+            width: 20px;
+            padding: 0;
+            border: none;
+            color: $medium-blue-color;
+            font-size: 1rem;
+            text-align: center;
+        }
+    }
+}
+/* tool tip text starts here*/
+.tool-tip-box{
+display: none;
+.fa-info-circle{
+color: $medium-blue-color;
+ }
+}
+.fa-info-circle:hover{
+    cursor: pointer;
+    text-decoration: none;
+  }
+.tooltip-inner{
+    background-color: $medium-blue-color;
+    padding: 16px;
+    line-height: 26px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 350px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    font-size:16px;
+    overflow-wrap: break-word;
+    p:last-child{
+        margin-bottom: 0;
+    }
+}
+.tooltip.right .tooltip-arrow{
+    border-right-color: $medium-blue-color;
+}
+.tooltip.in{
+    opacity:1;
+}
+@media (max-width: 767px) {
+    .tooltip-inner{
+        padding: 16px ;
+        font-size: 14px;
+        min-width: 200px;
+        width: 200px;
+    }
+}
+/* tool tip text ends here*/
+.padding-0-15 {
+    padding: 0 15px;
+}
+/* Font Awesome CSS */
+.icon-size-14 {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+}
+.icon-size-16 {
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+.icon-size-18 {
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
+}
+.icon-size-20 {
+    font-size: 1.25rem;
+    line-height: 1.4375rem;
+}
+.icon-size-24 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+}
+.icon-size-28 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+}
+.icon-size-32 {
+    font-size: 2rem;
+    line-height: 2.5625rem;
+}
+.icon-size-36 {
+    font-size: 2.25rem;
+    line-height: 2.875rem;
+}
+.icon-dark-white {
+    color: $white-shade;
+}
+.icon-dark-grey {
+    color: $dark-grey-color;
+}
+.icon-medium-red {
+    color: $medium-red-color;
+}
+.icon-medium-green {
+    color: $medium-green-color;
+}
+.icon-medium-blue {
+    color: $medium-blue-color;
+}
+.font-awesome-icon {
+    padding: 0 8px;
+}

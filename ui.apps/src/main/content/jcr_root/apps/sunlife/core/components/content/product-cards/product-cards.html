@@ -1,0 +1,78 @@
+<sly data-sly-use.productCardModel="ca.sunlife.web.cms.core.models.ProductCardModel">
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+    <sly data-sly-test="${productCardModel.topc=='static'}">
+        <div data-sly-test.hasPath="${productCardModel.productCardFragmentPath}" class="thumbnail ${productCardModel.pcData.featuredCard ? 'feature-card' : ''}">
+            <sly data-sly-test="${productCardModel.pcData.productCardAltTxt }">
+			            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardAltTxt }" class="imageCard">
+					</sly>
+                    <sly data-sly-test="${!productCardModel.pcData.productCardAltTxt}">
+			            <sly data-sly-test="${productCardModel.pcData.productCardHeading}">
+							<img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="${productCardModel.pcData.productCardHeading}" class="imageCard">
+						</sly>
+						<sly data-sly-test="${!productCardModel.pcData.productCardHeading}">
+							<img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.pcData.productCardImage}" alt="" class="imageCard">
+						</sly>
+					</sly>
+			<span data-sly-test="${productCardModel.pcData.featuredCard}"><img src="${productCardModel.featuredImagePath}" alt="" class="topright"></span>
+            <div class="caption">
+                <h2 data-sly-test="${productCardModel.pcData.productCardHeading}" class="product-name">${productCardModel.pcData.productCardHeading}</h2> 
+                ${productCardModel.pcData.productCardContent @context='html'}
+            </div>
+            <sly data-sly-use.urlParsing = "${'/apps/sunlife/core/components/common/url-parsing.js' @ path=productCardModel.pcData.productCardPagePath}">               
+             <a href="${urlParsing.navPath}">${productCardModel.pcData.productCardHeading}</a>
+            </sly>
+        </div>
+        <div data-sly-test="${!hasPath}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+    </sly>
+    <sly data-sly-test="${productCardModel.topc=='dynamic'}" >
+    <div data-sly-test.hasContent="${productCardModel.folderPath && productCardModel.itemList}" class="product-card-wrapper layout-container" >
+        <div class="row flex-height">
+        <sly data-sly-test.pcFeaturedCardImage="${productCardModel.featuredImagePath}"></sly>
+        <div data-sly-list.cardDetails="${productCardModel.itemList}">
+            <div class="col-sm-4">
+            <div class="container-component">
+            <div class="cmp-container">
+            <sly data-sly-list.element="${cardDetails.elements}">
+                <sly data-sly-test="${element.name == 'productCardImage'}" data-sly-test.pcImage="${element.value}" />
+                <sly data-sly-test="${element.name == 'featuredCard'}" data-sly-test.pcFeaturedCard="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardHeading'}" data-sly-test.pcHeading="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardContent'}" data-sly-test.pcContent="${element.value}" />
+                <sly data-sly-test="${element.name == 'productCardPagePath'}" data-sly-test.pcPath="${element.value}" />
+            </sly>
+            <div class="thumbnail ${pcFeaturedCard ? 'feature-card' : ''}">
+            <sly data-sly-test="${pcHeading}">
+            	<img data-sly-attribute.loading="${imgLazyLoaded}" src="${pcImage}" alt="${pcHeading}" class="imageCard">
+			</sly>
+            <sly data-sly-test="${!pcHeading}">
+            	<img data-sly-attribute.loading="${imgLazyLoaded}" src="${pcImage}" alt="" class="imageCard">
+			</sly>
+            <span data-sly-test="${pcFeaturedCard}"><img src="${pcFeaturedCardImage}" alt="" class="topright"></span>
+            <div class="caption">
+                <h2 data-sly-test="${pcHeading}" class="product-name">${pcHeading}</h2> 
+                ${pcContent @context='html'}
+            </div>
+                <sly data-sly-use.urlParsing = "${'/apps/sunlife/core/components/common/url-parsing.js' @ path=pcPath}">                
+                    <a href="${urlParsing.navPath}">${pcHeading}</a>
+                </sly>
+          </div>
+          </div>
+          </div>
+          </div>
+        </div></div>
+    </div>
+    <div data-sly-test="${!hasContent}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+    </sly>
+    <div class="row module-1" data-sly-test="${productCardModel.topc=='rightNav'}">
+
+            <div class="product-name">
+                ${productCardModel.title}
+            </div>
+            <div data-section="product-secondary-CTA">
+                 <img data-sly-attribute.loading="${imgLazyLoaded}" src="${productCardModel.featuredImagePath}" alt="Featured" class="toprightfeature">
+                <div class="fa fa-icon ${productCardModel.icon}"></div>
+                ${productCardModel.text @ context='html'}
+            </div>
+    
+    </div>
+</sly>
+<div data-sly-test="${!productCardModel.topc}" class="cq-placeholder" data-emptytext="${component.title}"></div>

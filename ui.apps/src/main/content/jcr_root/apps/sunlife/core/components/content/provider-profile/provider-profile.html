@@ -1,0 +1,8 @@
+<sly data-sly-use.profileModel = "ca.sunlife.web.cms.core.models.ProviderProfileModel" />
+<sly data-sly-test.isEmpty = "${profileModel.profileHTML}" />
+
+<div data-sly-test="${isEmpty}">
+	${profileModel.profileHTML @ context = 'unsafe'}
+</div>
+
+<div data-sly-test="${!isEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>

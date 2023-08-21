@@ -1,0 +1,11 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+
+<sly data-sly-use.newsDetailsModel = "ca.sunlife.web.cms.core.models.CNWNewsDetailsModel" />
+<sly data-sly-test.releaseObj = "${newsDetailsModel.newsDetails.release}" />
+
+<div data-sly-test = "${releaseObj}" class="cnw-article">
+	<p>${releaseObj.releaseDate @context='html'}</p>
+	<h3>${releaseObj.headline @context='html'}</h3>
+	<div>${releaseObj.body @context='unsafe'}</div>
+</div>

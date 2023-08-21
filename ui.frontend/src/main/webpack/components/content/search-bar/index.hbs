@@ -1,0 +1,30 @@
+<div class="search-bar-wrapper collapse in" data-section="{{data-section-search}}" id="sun-search">
+
+    <div class="global-search vertical-middle-align">
+        <form name="searchform-bottom" class="slf-search" action="{{action}}" method="get"
+            data-value=""><label class="sr-only" for="q-top">Search</label>
+            <div class="form-wrapper">
+                <div class="input-wrapper">
+                    {{>core-components-form-text}}
+                    <div class="search-autocomplete">
+                        <ul class="search-autocomplete-list">
+                            <li>&nbsp;</li>
+                        </ul>
+                        <ul class="search-sayt-list" data-section="type-ahead-html-listing">
+                            <div class="seperate horizontal-middle-align">
+                                <li>&nbsp;</li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                    {{>core-components-form-button}}
+            </div>
+            <input name="action" type="hidden" value="input" />
+        </form>
+    </div>
+    <div class="close-div">
+        <a data-toggle="collapse" aria-expanded="true" href="#sun-search"> 
+            <span class="sr-only">Close search</span> <span class="fa fa-remove collapse-x">&nbsp;</span>
+        </a>
+    </div>
+</div>

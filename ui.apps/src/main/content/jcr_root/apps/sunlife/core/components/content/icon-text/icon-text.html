@@ -1,0 +1,35 @@
+<sly data-sly-use.iconText="ca.sunlife.web.cms.core.models.IconTextModel"></sly>
+<sly data-sly-test.empty="${!iconText.iconsText}"/>
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = empty}"></sly>
+<sly data-sly-list.selector='${request.requestPathInfo.selectors}'>
+   <sly data-sly-test.hasBreadcrumb="${selector == 'breadcrumb' ? true : false}"/>
+</sly>
+<sly data-sly-test.valueNone="${iconText.titleLevel=='none'}">
+   <sly data-sly-test="${!hasBreadcrumb}">
+      <span class="side-text" aria-label="${iconText.title}" data-sly-test="${iconText.title}">${iconText.title}</span>
+   </sly>
+   <sly data-sly-test="${ hasBreadcrumb }">
+      <span class="side-text" aria-label="${iconText.title}" data-sly-test="${iconText.title}">${iconText.title @ i18n}</span>
+   </sly>
+</sly>
+<sly data-sly-test="${!valueNone}">
+   <div data-sly-test="${iconText.title}" class="${iconText.titleLevel}">${iconText.title} </div>
+</sly>
+<ul data-sly-test="${!empty}" data-sly-list.iconsText="${iconText.iconsText}">
+   <li>
+      <div class="icon-parent">
+         <a data-sly-test.hasLink="${iconsText.link}" class="icon-style fa ${iconsText.icon}" href="${iconsText.link @context = 'html'}" target="${iconsText.target}" tabindex="${iconsText.link ? '0' : ''}" aria-hidden="${!iconsText.link ? 'true' : ''}">
+         <span data-sly-test="${iconsText.srText && !hasBreadcrumb}" class="sr-only">${iconsText.srText}</span>
+         <span data-sly-test="${iconsText.srText && hasBreadcrumb}" class="sr-only">${iconsText.srText @i18n}</span>
+         </a>
+         <span data-sly-test="${!hasLink}" class="icon-style fa ${iconsText.icon}" tabindex="${iconsText.link ? '0' : ''}" aria-hidden="${!iconsText.link ? 'true' : ''}" >
+         <span data-sly-test="${iconsText.srText && !hasBreadcrumb}" class="sr-only">${iconsText.srText}</span>
+         <span data-sly-test="${iconsText.srText && hasBreadcrumb}" class="sr-only">${iconsText.srText @i18n}</span>
+         </span>
+      </div>
+      <div class="icon-texts">
+         ${iconsText.text @context ='html'}
+      </div>
+   </li>
+</ul>

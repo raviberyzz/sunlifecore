@@ -1,0 +1,51 @@
+<sly data-sly-use.article="ca.sunlife.web.cms.core.models.ArticleModel"></sly>
+<sly data-sly-test.notEmpty="${article.fragmentPath}">
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+    <article class="article-wrapper">
+        <div class="article-intro">
+            <div class="article-date" data-sly-test="${!article.checkboxHideDate}">
+                ${article.articleData.articlePublishedDate}
+            </div>
+            <div class="article-title heading-2" data-sly-test="${article.articleData.articleHeadline}">
+                <h1>${article.articleData.articleHeadline @context='html'}</h1>
+            </div>
+            <div class="article-author-name" data-sly-test="${article.articleData.authorName}">
+                ${'By' @ i18n} ${article.articleData.authorName @context='html'}
+            </div>
+        </div>
+        ${article.articleData.articleMiniDescription  @context='html'}
+        <figure class="article-image" data-sly-test="${article.articleData.articleImage}">
+            <img data-sly-attribute.loading="${imgLazyLoaded}" src="${article.articleData.articleImage}" alt="${article.articleData.articleHeadline}" aria-hidden="true">
+        </figure>
+        <div class="article-body">
+            ${article.articleData.articleMainDescription  @context='html'}
+            <div><sly data-sly-resource="${'layout-container' @ resourceType=article.layoutResourceType}"></sly></div>
+           </div>
+        <div class="article-rating" data-sly-test="${article.ratingRequired == 'true'}">
+            <div class="mar-bottom-30" id="pd_rating_holder_${article.articleID}"></div>
+        </div>
+        <div class="article-footer" data-sly-test="${article.articleData.authorBody}">
+            ${article.articleData.authorBody  @context='html'}
+        </div>
+    </article>
+    <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="application/ld+json">
+        {"@context":"http://schema.org","@type":"Article",
+        "author":{"@type":"Person","name":"${article.articleData.authorName @context='html'}"},
+        "datePublished":"${article.articleData.articlePublishedDate}",
+        "headline":"${article.articleData.articleHeadline @context='html'}",
+        "image":["${article.articleImage}","${article.ogImage}"],
+        "publisher":{"@type":"Organization","name":"${article.publisherName}","logo":{"@type":"ImageObject","height":"60","width":"309","url":"${article.publisherLogo}"}},
+        "dateModified":"${article.pageModifiedDate}",
+        "description":"${article.ogDescription}",
+        "mainEntityOfPage":"${article.pageUrl}"}
+    </div>
+    <div data-sly-element="${'script' @context='unsafe'}" data-sly-attribute.type="text/javascript">
+        PDRTJS_settings_${article.articleID} =  {
+            "id" : "${article.articleID}",
+            "unique_id" : "${article.articleUniqueID}",
+            "title" : "${article.articleData.articleHeadline @context ='html'}",
+            "permalink" : "${article.pageUrl}"
+        }
+    </div>
+ </sly>
+<div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>

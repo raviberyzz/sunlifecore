@@ -1,0 +1,42 @@
+{{#if utility-nav}}
+<div class="utility-nav-wrapper" data-section="header-utility-nav">
+    <div class="utility-nav-links">
+        <ul role="navigation" aria-label="Helpful links">
+            {{#each utility-list}}
+            <li>
+                <a href="{{link}}" tabindex="2">{{text}}{{#if icon}}<i class="{{icon}}"></i>{{/if}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{#if lang}}
+    <div class="utility-nav-links">
+        <ul>
+            <li id="language-btn-container" role="navigation" aria-label="Region & Language Selection">
+                <div class="lang-btn" id="language-btn" role="button" data-toggle="collapse" data-target="#sun-language"
+                    aria-controls="sun-language" tabindex="2" aria-expanded="false">
+                    <label class="sr-only">
+                        Expand or collapse region and language section
+                        Développer ou réduire le volet Régions et langue
+                    </label>
+                    {{#if region}}
+                    CANADA | EN
+                    {{else}}
+                    ENGLISH
+                    {{/if}}
+                </div>
+            </li>
+            {{/if}}
+            {{#if srch}}
+            <li class="search-icon-container" role="search" aria-label="search-bar">
+                <div class="srch-btn" id="search-btn" data-target="#sun-search" data-toggle="collapse" role="button"
+                    tabindex="2" aria-expanded="false">
+                    <a>Search<label class="sr-only">Expand or collapse search
+                            Développer ou réduire le volet recherche</label></a>
+                </div>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+{{/if}}

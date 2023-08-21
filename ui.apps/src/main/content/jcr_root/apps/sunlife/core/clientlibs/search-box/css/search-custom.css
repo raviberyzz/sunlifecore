@@ -1,0 +1,212 @@
+/*search-custom*/
+#search-box-mobile .CoveoSearchbox .magic-box {
+    border: none;
+}
+
+#search-box-mobile .magic-box .magic-box-input {
+    background: none;
+}
+
+#search-box-mobile .CoveoSearchbox .magic-box .magic-box-input>input {
+    position: absolute;
+    margin-left: 25px;
+    padding: 2px 0 0 0;
+    height: 26px !important;
+    width: 185px;
+    line-height: 26px;
+    outline: 0;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+#search-box-mobile .magic-box .magic-box-clear {
+    line-height: 25px;
+    background: none;
+}
+
+#search-box-mobile .CoveoSearchbox .magic-box .magic-box-clear-svg {
+    width: 12px;
+}
+
+#search-box-mobile {
+    min-width: 0px;
+}
+
+#search-box-mobile .coveo-search-section {
+    margin: 0px auto 0px;
+}
+
+.CoveoSearchButton,
+.CoveoSearchButton:focus {
+    color: white;
+}
+
+.CoveoResultLink:hover,
+.CoveoResultLink:hover a,
+.CoveoResultLink:focus,
+.CoveoResultLink:focus a,
+a.CoveoResultLink:hover,
+a.CoveoResultLink:hover a,
+a.CoveoResultLink:focus,
+a.CoveoResultLink:focus a,
+.CoveoResult a.CoveoResultLink:hover,
+.CoveoResult a.CoveoResultLink:hover a,
+.CoveoResult a.CoveoResultLink:focus,
+.CoveoResult a.CoveoResultLink:focus a {
+    text-decoration: underline;
+}
+
+.coveo-pager-next-icon-svg,
+.coveo-pager-previous-icon-svg,
+.CoveoSearchbox .magic-box .magic-box-clear-svg {
+    color: #1d4f76
+}
+
+.source-content-page #coveo-search-body .CoveoSearchButton,
+.source-content-page #coveo-search-body .CoveoSearchButton:focus,
+.source-content-page #search-box-desktop .CoveoSearchButton,
+.source-content-page #search-box-desktop .CoveoSearchButton:focus,
+.source-home-page #search-box-desktop .CoveoSearchButton,
+.source-home-page #search-box-desktop .CoveoSearchButton:focus {
+    background-color: #FFCB05;
+    color: #004C6C;
+}
+
+@media (min-width: 768px) {
+
+    .source-content-page #coveo-search-body .CoveoSearchButton:hover,
+    .source-content-page #search-box-desktop .CoveoSearchButton:hover,
+    .source-home-page #search-box-desktop .CoveoSearchButton:hover {
+        background-color: #4A7283;
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+
+.coveo-query-summary-cancel-last {
+    color: #004c6c;
+    cursor: pointer;
+}
+
+.coveo-query-summary-cancel-last:hover,
+.coveo-query-summary-cancel-last:focus {
+    text-decoration: underline;
+}
+
+.CoveoQuerySummary ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.CoveoSearchInterface .coveo-results-column.coveo-no-results .CoveoTriggers {
+    text-align: left;
+}
+
+.slgi-content-page #search-box-desktop .CoveoSearchButton:hover,
+.slgi-content-page #coveo-search-body .CoveoSearchButton:hover,
+.slgi-home-page #search-box-desktop .CoveoSearchButton:hover {
+    background-color: #4a7283;
+    color: #fff;
+    text-decoration: none
+}
+
+.slgi-content-page #search-box-desktop .CoveoSearchButton,
+.slgi-content-page #coveo-search-body .CoveoSearchButton,
+.slgi-home-page #search-box-desktop .CoveoSearchButton {
+    background-color: #fff;
+    color: #002d3d;
+    border: 2px solid #002d3d;
+}
+
+#search-box-desktop .coveo-search-section {
+	display: block;
+}
+
+.coveo-desktop-error-hidden,
+.coveo-mobile-error-hidden,
+.coveo-sunSearch-error-hidden {
+    display: none;
+}
+
+.coveo-desktop-error-shown,
+.coveo-mobile-error-shown,
+.coveo-sunSearch-error-shown {
+    display: block;
+    position:absolute;
+}
+
+.coveo-search-error:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 20px;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border-bottom: 5px solid #B81F41;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.coveo-search-error {
+    background: #B81F41;
+    color: #ffffff;
+    position: relative;
+    margin: 1px 0px 9px 0px;
+    min-height: 48px;
+    top: 6px;
+    padding-top: 1px;
+    list-style: none;
+    padding-left: 20px;
+    z-index: 1;
+    font-size: 16px;
+}
+
+.error-required {
+    padding: 4px 10px 4px 0px;
+    background-image: none;
+    text-align: left;
+    margin: 5px 0px;
+    line-height: 26px;
+}
+
+.error-required:before {
+    content: "\f12a";
+    font: normal 1em/0 FontAwesome;
+    position: static;
+    left: 15px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.coveo-mobile-error-shown .coveo-search-error{
+    width: fit-content;
+}
+
+.advisorhub-sunlife-home-page #search-box-sun-search .coveo-search-section {
+    margin: 0 auto 0;
+    display: block;
+    padding: 0px;
+}
+
+.advisorhub-sunlife-content-page #coveo-search-body .coveo-search-section {
+    display: none;
+}
+
+.ppt-link::before {
+    content: "\f1c4";
+    font-family: fontawesome;
+    margin-right: 5px;
+}
+
+.excel-link::before {
+    content: "\f1c3";
+    font-family: fontawesome;
+    margin-right: 5px;
+}
+
+.doc-link::before {
+    content: "\f1c2";
+    font-family: fontawesome;
+    margin-right: 5px;
+}

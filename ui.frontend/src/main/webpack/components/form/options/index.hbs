@@ -1,0 +1,40 @@
+{{#if single-select}}
+<div class="cmp-form-options cmp-form-options--drop-down">
+    <label class="cmp-form-options__label" for="{{select-id}}">Select Product</label>
+    <select class="cmp-form-options__field cmp-form-options__field--drop-down"  name="{{select-name}}" id="{{select-id}}">
+        
+        {{#each list}}
+        <option value={{link}}>{{text}}</option>
+        {{/each}}
+
+    </select>
+</div>
+
+{{/if}}
+
+{{#if radio}}
+<div class="form-group-wrapper text-left">
+    <p>{{radio-heading}}</p>
+    <input type="radio" name="{{radio-name}}" id="{{radio-id}}" value="{{value}}">
+</div>
+{{/if}}
+
+{{#if checkbox}}
+<div class="form-group-wrapper text-left">
+    <p>{{checkbox-heading}}</p>
+    <input type="checkbox" name="{{checkbox-name}}" id="{{checkbox-id}}" value="{{value}}">
+</div>
+
+{{/if}}
+
+{{#if multi-select}}
+
+<div class="input-section form-group-wrapper">
+    <select class="form-option" multiple>
+        {{#each list}}
+        <option value={{link}}>{{text}}</option>
+        {{/each}}
+    </select>
+</div>
+
+{{/if}}

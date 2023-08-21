@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <assets/>
+    <jcr:content
+        cq:lastModified="{Date}2020-08-12T10:59:29.081-04:00"
+        cq:lastModifiedBy="Anna.Papazian@sunlife.com"
+        jcr:primaryType="nt:unstructured"
+        mergeList="true"/>
+</jcr:root>

@@ -1,0 +1,21 @@
+<div class="{{wrapper}} {{first-open}} aem-GridColumn aem-GridColumn--default--12" data-section="{{accordion-data-section}}">
+	<div class="cmp-accordion" data-cmp-is="accordion">
+		{{#each list}}
+		<div class="cmp-accordion__item" data-cmp-hook-accordion="item">
+			<h3 class="cmp-accordion__header" data-toggle="collapse">
+				<button class="cmp-accordion__button vertical-middle-align" data-cmp-hook-accordion="button" aria-label="accordion-1">
+					<span class="cmp-accordion__icon" aria-expanded="false"></span>
+					<span class="cmp-accordion__title">{{accordion-head}}</span>
+				</button>
+			</h3>
+			<div data-cmp-hook-accordion="panel" class="cmp-accordion__panel collapse" tabindex="0">
+				<div class="text">
+					<div class="cmp-text">
+						{{accordion-body}}
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>

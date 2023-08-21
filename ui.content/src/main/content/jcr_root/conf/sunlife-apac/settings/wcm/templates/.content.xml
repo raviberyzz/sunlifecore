@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Page">
+    <hk-sunlife-blank-page/>
+    <hk-sunlife-home-page/>
+    <hk-sunlife-content-page/>    
+    <hk-sunlife-experience-fragment/>
+	<id-sunlife-blank-page/>
+    <id-sunlife-home-page/>
+    <id-sunlife-content-page/>    
+    <id-sunlife-experience-fragment/>
+    <ph-sunlife-blank-page/>
+    <ph-sunlife-home-page/>
+    <ph-sunlife-content-page/>    
+    <ph-sunlife-experience-fragment/>
+    <vn-sunlife-blank-page/>
+    <vn-sunlife-home-page/>
+    <vn-sunlife-content-page/>    
+    <vn-sunlife-experience-fragment/>    
+</jcr:root>

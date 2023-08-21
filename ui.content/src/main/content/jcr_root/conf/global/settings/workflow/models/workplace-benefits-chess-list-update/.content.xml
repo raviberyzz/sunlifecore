@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:designPath="/libs/settings/wcm/designs/default"
+        cq:lastModified="{Date}2021-05-06T16:40:12.813-04:00"
+        cq:lastModifiedBy="john.purchase@sunlife.com"
+        cq:template="/libs/cq/workflow/templates/model"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Workplace Benefits Chess List Update"
+        sling:resourceType="cq/workflow/components/pages/model">
+        <flow
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <process
+                jcr:created="{Date}2020-10-26T10:18:37.009-04:00"
+                jcr:createdBy="admin"
+                jcr:description="Reads the file (NewPAForm.csv) and converts them to JSON. "
+                jcr:lastModified="{Date}2021-05-06T16:40:12.810-04:00"
+                jcr:lastModifiedBy="john.purchase@sunlife.com"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Parse Chess List."
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="ca.sunlife.web.cms.core.workflow.ParseDrugListStep"
+                    PROCESS_ARGS="chess::NewPAForm.csv"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </process>
+        </flow>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,151 @@
+<sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.SignInModel">
+    <sly data-sly-test.signInHeadingText="${listModel.signInHeadingText}" />
+    <sly data-sly-test.mobileAppBadge="${listModel.mobileAppBadge}" />
+    <sly data-sly-test.mobileAppBadgeLink="${listModel.mobileAppBadgeLink}" />
+    <sly data-sly-test.accessIDPlaceholder="${listModel.accessIDPlaceholder}" />
+    <sly data-sly-test.passwordPlaceholder="${listModel.passwordPlaceholder}" />
+    <sly data-sly-test.checkboxLabel="${listModel.checkboxLabel}" />
+    <sly data-sly-test.signInButtonLabel="${listModel.signInButtonLabel}" />
+    <sly data-sly-test.formActionUrl="${listModel.formActionUrl}" />
+    <sly data-sly-test.forgotAccessIdLabel="${listModel.forgotAccessIdLabel}" />
+    <sly data-sly-test.forgotAccessIdLink="${listModel.forgotAccessIdLink}" />
+    <sly data-sly-test.forgotPasswordLabel="${listModel.forgotPasswordLabel}" />
+    <sly data-sly-test.forgotPasswordLink="${listModel.forgotPasswordLink}" />
+    <sly data-sly-test.signInBottomText="${listModel.signInBottomText}" />
+    <sly data-sly-test.domain="${listModel.domain}" />
+    <sly data-sly-test.language="${listModel.language}" />
+    <sly data-sly-test.logLang="${listModel.logLang}" />
+    <sly data-sly-test.target="${listModel.target}" />
+    <sly data-sly-test.errorMsgPlaceholder="${listModel.errorMsgPlaceholder}" />
+    <sly data-sly-test.errorRedirectPath="${listModel.errorRedirectPath}" />
+    <sly data-sly-test.disableRememberMe="${listModel.disableRememberMe}" />
+
+    <!-- transmit container starts here -->
+    <div class="modal slf-modal fix-order" id="mfa_signin_modal" role="dialog" tabindex="-1" data-keyboard="false"
+        data-backdrop="static">
+        <span id="startOfModal" class="sr-only">Start of dialog window</span>
+        <div class="modal-dialog slf-yellow-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            class="fa fa-times"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="transmitContainer" aria-live="polite">
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+        <span id="endOfModal" class="sr-only">End of dialog window</span>
+    </div>
+    <!-- Spinner -->
+    <div id="loadingMessageDiv" style="display:none;" class="loadingmessage" role="alert" aria-hidden="false"
+        aria-label="Loading" aria-atomic="true">
+        <div class="white-container">
+            <div class="loading-container">
+                <i class="fa fa-spinner fa-pulse"></i>
+                <p><strong data-id="title">Loading...</strong></p>
+                <p data-id="message">One moment please</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- transmit container ends here -->
+
+    <div class="login-container mySlfSignIn" id="slfSignIn">
+        <h2 class="h2 text-center">${signInHeadingText @context ='html'}</h2>
+        <div class="download-app visible-xs">
+            <div class="download-app-wrapper" onclick="window.open('${mobileAppBadgeLink @context='uri'}')">
+                <div class="mobile-app-text">
+                    ${mobileAppBadge @context ='html'}
+                </div>
+            </div>
+        </div>
+        <form id="form_signon" name="form_signon" method="POST" action="${!formActionUrl ? ' ' : formActionUrl }"
+            class="form-sign-in">
+            <input name="SMENC" type="hidden" value="ISO-8859-1" />
+            <input name="SMLOCALE" type="hidden" value="US-EN" />
+            <input name="SMAGENTNAME" type="hidden" value="" />
+            <input name="REALMOID" type="hidden" value="" />
+            <sly data-sly-test="${domain}">
+                <input name="DOMAIN" type="hidden" value="${domain}" />
+                <input name="TARGET" type="hidden" value="${target}" />
+            </sly>
+            <input name="IPKey" type="hidden" value="" />
+            <input name="CONTEXT" type="hidden" value="INTERNET" />
+            <input name="LANGUAGE" type="hidden" value="${language}" />
+            <input name="PLATFORM" type="hidden" value="WEB" />
+            <input name="SIGNINSITE" type="hidden" value="SLF" />
+            <input name="SCREENRES" type="hidden" value="" />
+            <input name="LOGLANG" type="hidden" value="${logLang}" />
+            <input name="BROWSERID" type="hidden" value="" />
+            <input name="BROWSERVER" type="hidden" value="" />
+            <input name="BROWSERDESC" type="hidden" value="" />
+            <input id="ClientIP" name="ClientIP" type="hidden" value="" />
+            <input name="ESTABLISHSESSION" type="hidden" value="TRUE" />
+            <input name="SAVEIDSUBMISSION" type="hidden" value="FALSE" />
+            <input name="LOGONUSINGSAVEID" type="hidden" value="FALSE" />
+            <input name="ESAVEID" type="hidden" value="" />
+            <input name="REQUESTTYPE" type="hidden" value="SUBMIT" />
+            <input name="SAVEIDIDENTIFIER" type="hidden" value="SLFMEMBER" />
+            <input name="REDIRECTPATH" type="hidden" value="" />
+            <input name="ERRORREDIRPATH" type="hidden" value="${!errorRedirectPath ? '&nbsp;' : errorRedirectPath}" />
+            <input name="SMOIDC" type="hidden" value="" />
+
+            <sly data-sly-list.attributes="${listModel.hiddenMetadata}">
+                <input name="${attributes.name}" type="hidden" value="${attributes.value}" />
+            </sly>
+
+            <div class="form-group">
+                <div class="help-block" id="generalError"><span id="ERROR_HTML" name="ERROR_HTML">&nbsp;
+                    </span><span id="APOL_HTML" name="APOL_HTML"></span></div>
+            </div>
+            <div class="form-group"><label for="USER" class="sr-only">${!accessIDPlaceholder ? 'Access ID':
+                    accessIDPlaceholder}</label> <input id="USER" autocomplete="off" name="USER" size="30" type="text"
+                    placeholder="${accessIDPlaceholder}" data-parsley-required="true"
+                    data-parsley-required-message="${errorMsgPlaceholder}">
+                <div id="accessIdError" class="arrow-help-block"></div>
+            </div>
+            <sly data-sly-test="${!disableRememberMe}">
+                <div class="form-group text-left">
+                    <label for="rememberID" class="sr-only">
+                        ${!checkboxLabel ? 'Remember me': checkboxLabel}
+                    </label>
+                    <input type="checkbox" name="SAVEIDCHECK" id="rememberID"><span
+                        class="remember-text">${checkboxLabel}</span>
+                </div>
+            </sly>
+            <div id="passwordDiv" class="form-group password-div"><label for="PASSWORD" class="sr-only">${!passwordPlaceholder ?
+                    'Password': passwordPlaceholder}</label>
+                <input id="PASSWORD" autocomplete="off" name="PASSWORD" size="30" type="password" class="password-input"
+                    placeholder="${passwordPlaceholder}" data-parsley-required="true"
+                    data-parsley-required-message="${errorMsgPlaceholder}">
+                <button class="fa fa-eye-slash eye-icon" id="togglePassword"  type="button" aria-controls="password" style="color:#004c6c">
+                    <span data-sly-test="${language=='E'}" class="sr-only"  id="spanTextEnglish" >Hide password</span>
+                    <span data-sly-test="${language!='E'}" class="sr-only"  id="spanTextFrench" >Masquer le mot de passe</span></button>
+                <div id="passwordError" class="arrow-help-block"></div>
+                <input name="signin" class="btn btn-blue mar-left-10 no-break" value="${signInButtonLabel}"
+                    type="submit">
+            </div>
+        </form>
+        <p class="signin-links">
+            <span class="signin-help">
+                <sly
+                    data-sly-use.utilityListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotAccessIdLink}">
+                    <a href="${utilityListParsing.navPath}" target="_blank">${forgotAccessIdLabel}</a>
+                </sly>
+            </span>
+            <span class="signin-register">
+                <sly
+                    data-sly-use.utilityListParsing="${'sunlife/core/components/content/link-list/linklist-parsing.js' @ path=forgotPasswordLink}">
+                    <a href="${utilityListParsing.navPath}" target="_blank">${forgotPasswordLabel}</a>
+                </sly>
+            </span>
+        </p>
+        <div class="right-item text-section signin-links-two">
+            ${signInBottomText @context ='html'}
+        </div>
+    </div>

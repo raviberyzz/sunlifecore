@@ -1,0 +1,14 @@
+<div class="{{list-wrapper-class}}">
+	<div class="links">
+		<h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+		<div class="collapse list-div">
+			<ul class="list-unstyled">
+				{{#each list}}
+				<li>
+					<a href="{{link}}">{{text}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>

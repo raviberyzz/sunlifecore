@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Icon Text"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+	extraClientlibs="[sunlife.core.author.text]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Add Title"
+                        fieldLabel="Title"
+                        name="./title"/>
+                    <titleLevel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="Select size/label "
+                        fieldLabel="Title Level"
+                        name="./titleLevel">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value="none"/>
+                            <h2
+                                jcr:primaryType="nt:unstructured"
+                                text="H2"
+                                value="heading-2"/>
+                            <h3
+                                jcr:primaryType="nt:unstructured"
+                                text="H3"
+                                value="heading-3"/>
+                            <h4
+                                jcr:primaryType="nt:unstructured"
+                                text="H4"
+                                value="heading-4"/>
+                            <h5
+                                jcr:primaryType="nt:unstructured"
+                                text="H5"
+                                value="heading-5"/>
+                            <h6
+                                jcr:primaryType="nt:unstructured"
+                                text="H6"
+                                value="heading-6"/>
+                        </items>
+                    </titleLevel>
+                    <IconText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldDescription="Click add sign for icons and texts"
+                        fieldLabel="Icon and Text">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./iconsText">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <icon
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Add Icon"
+                                            fieldLabel="Icon"
+                                            name="./icon"/>
+                                        <link
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Give a suitable URL"
+                                            fieldLabel="Icon's Link"
+                                            name="./link"
+                                            rootPath="/content"/>
+                                        <srText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="For screen Reader"
+                                            fieldLabel="Screen Reader"
+                                            name="./srText"/>
+                                        <target
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldDescription="Opens in same tab or new tab"
+                                            fieldLabel="Target"
+                                            name="./target">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <sameTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Same Tab"
+                                                    value="_self"/>
+                                                <newTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="New Tab"
+                                                    value="_blank"/>
+                                            </items>
+                                        </target>
+                                        <text
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                            fieldDescription="Add Text"
+                                            fieldLabel="Text"
+                                            name="./text"
+                                            useFixedInlineToolbar="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </IconText>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

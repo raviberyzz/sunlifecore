@@ -1,0 +1,408 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+<sly data-sly-use.advisorDetailObj="ca.sunlife.web.cms.core.models.AdvisorDetailModel" />
+<sly data-sly-use.advisorDataObj="${'advisor-details.js' @ jsonString=advisorDetailObj.advisorData, context='scriptString'}" />
+<sly data-sly-test.errorCode="${advisorDataObj.ErrorCode}" />
+<sly data-sly-test.advisorStd="${advisorDataObj.AdvisorStd}" />
+<sly data-sly-test.advisorCorp="${advisorDataObj.AdvisorCorp}" />
+<script type="text/javascript">
+	var advisorInfoMap = ${advisorDetailObj.advisorMapData @ context = 'unsafe'};
+	var iconMarkerCorporateVal = "${advisorDetailObj.iconMarkerCorporate @ context = 'unsafe'}";
+	var iconMarkerStandardVal = "${advisorDetailObj.iconMarkerStandard @ context = 'unsafe'}";
+</script>
+
+<!-- Error code - LANGUAGE_NOT_SUPPORTED start -->
+<sly data-sly-test="${errorCode == 'LANGUAGE_NOT_SUPPORTED'}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
+		<p>
+			${advisorDetailObj.languageNotSupportedMessage @context = 'html'} <a x-cq-linkchecker="skip" href="${advisorDetailObj.alternateUrl}">${advisorDetailObj.alternateLanguage}</a>
+		</p>
+    </div>
+</sly>
+<!-- Error code - LANGUAGE_NOT_SUPPORTED end -->
+
+<!-- Error code - INVALID_ADVISOR_ID start -->
+<sly data-sly-test="${errorCode == 'INVALID_ADVISOR_ID'}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
+		<p>
+			${advisorDetailObj.invalidAdvisorIdMessage @context = 'html'}
+		</p>
+    </div>
+</sly>
+<!-- Error code - INVALID_ADVISOR_ID end -->
+
+<!-- Advisor start -->
+<sly data-sly-test="${advisorStd}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 advisor-target">
+		<div class="col-xs-12 col-sm-3 text-top row-advisor-pic">
+			<p>
+				<img data-sly-test="${advisorStd.PhotoUrl}"
+					src="${advisorDetailObj.domain}/${advisorStd.PhotoUrl}" /> <img
+					data-sly-test="${!advisorStd.PhotoUrl}"
+					src="${advisorDetailObj.advisorImage}" />
+			</p>
+		</div>
+		<div class="col-xs-12 col-sm-9 row-advisor-details row-advisor-0">
+			<h1 class="content-label">${advisorStd.FormattedName @ context =
+				'unsafe'}${advisorDetailObj.disclaimerAsteriskLabel}
+			</h1>
+			<!-- Advisor Description - Tablet and Desktop -->
+			<div class="row">
+				<div class="col-md-12 hidden-xs row-advisor-desc-sm">
+					<p class="row-advisor-desc-bio">${advisorStd.Bio}</p>
+					<p data-sly-repeat.notice="${advisorStd.Notices}">
+						<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
+						${notice.AgentContent @ context = 'html'}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-3">
+					<strong>${advisorDetailObj.addressLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-9">
+					${advisorStd.Address.StreetAddress1}<sly data-sly-test="${advisorStd.Address.StreetAddress2}">, ${advisorStd.Address.StreetAddress2}</sly>, ${advisorStd.Address.City}, ${advisorStd.Address.Province}, ${advisorStd.Address.PostalCode}
+				</div>
+			</div>
+			<div data-sly-test="${advisorStd.Languages}" class="row">
+				<div class="col-xs-12 col-sm-3">
+					<strong>${advisorDetailObj.languagesLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-9">
+					<sly data-sly-list.language="${advisorStd.Languages}">
+						${language}<sly data-sly-test="${!languageList.last}">, </sly>
+					</sly>
+				</div>
+			</div>
+			<div data-sly-test="${advisorStd.ContactInfo.Phone}" class="row">
+				<div class="col-xs-12 col-sm-3">
+					<strong>${advisorDetailObj.phoneLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-9">${advisorStd.ContactInfo.Phone}</div>
+			</div>
+			<div data-sly-test="${advisorStd.ContactInfo.Fax}" class="row">
+				<div class="col-xs-12 col-sm-3">
+					<strong>${advisorDetailObj.faxLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-9">${advisorStd.ContactInfo.Fax}</div>
+			</div>
+			<div class="row">
+				<sly data-sly-test="${advisorStd.ContactInfo.Email}">
+					<div class="col-xs-12 col-sm-3">
+						<strong>${advisorDetailObj.emailLabel}</strong>
+					</div>
+					<div class="col-xs-12 col-sm-5 row-advisor-email">
+						<a href="mailto:${advisorStd.ContactInfo.Email}">${advisorStd.ContactInfo.Email}</a>
+					</div>
+				</sly>
+				<div class="col-xs-12 col-sm-4 row-advisor-contact-social hidden-xs">
+					<ul class="row-advisor-socials list-inline"
+						data-sly-list.link="${advisorStd.SocialMediaLinks}">
+						<li><a x-cq-linkchecker="skip"
+							data-sly-test="${link.LinkName == 'Facebook'}"
+							class="fa fa-facebook-square" target="_blank" href="${link.LinkUrl}">
+							<span class="sr-only">${link.LinkName}</span>
+							</a> <a x-cq-linkchecker="skip"
+								data-sly-test="${link.LinkName == 'LinkedIn'}"
+								class="fa fa-linkedin-square" target="_blank" href="${link.LinkUrl}">
+							<span class="sr-only">${link.LinkName}</span>
+							</a> <a x-cq-linkchecker="skip"
+								data-sly-test="${link.LinkName == 'Twitter'}"
+								class="fa fa-twitter-square" target="_blank"
+								href="${link.LinkUrl}"> <span class="sr-only">${link.LinkName}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Advisor Description - Mobile -->
+			<div class="col-xs-12 visible-xs row-advisor-desc-xs">
+				<p class="row-advisor-desc-bio">
+					<span class="row-advisor-desc-bio-full"> ${advisorStd.Bio} </span> <a
+						href="#" data-toggle="row-advisor-desc-bio-full"
+						class="row-advisor-desc-bio-toggle"></a>
+				</p>
+				<p data-sly-repeat.notice="${advisorStd.Notices}">
+					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
+					${notice.AgentContent @ context = 'html'}
+				</p>
+				<div class="col-xs-12 col-sm-4 row-advisor-contact-social">
+					<ul class="row-advisor-socials list-inline"
+						data-sly-list.link="${advisorStd.SocialMediaLinks}">
+						<li><a x-cq-linkchecker="skip"
+							data-sly-test="${link.LinkName == 'Facebook'}"
+							class="fa fa-facebook-square" target="_blank" href="${link.LinkUrl}">
+							<span class="sr-only">${link.LinkName}</span>
+							</a> <a x-cq-linkchecker="skip"
+								data-sly-test="${link.LinkName == 'LinkedIn'}"
+								class="fa fa-linkedin-square" target="_blank" href="${link.LinkUrl}">
+							<span class="sr-only">${link.LinkName}</span>
+							</a> <a x-cq-linkchecker="skip"
+								data-sly-test="${link.LinkName == 'Twitter'}"
+								class="fa fa-twitter-square" target="_blank"
+								href="${link.LinkUrl}"> <span class="sr-only">${link.LinkName}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div data-sly-test="${advisorStd.Disclaimer}"
+			class="col-xs-12 col-sm-12 row-advisor-disclaimer">
+			${advisorDetailObj.disclaimerAsteriskLabel}${advisorStd.Disclaimer
+			@context = 'unsafe'}
+		</div>
+	</div>
+</sly>
+<!-- Advisor end -->
+<!-- Corp start -->
+<sly data-sly-test="${advisorCorp}">
+	<div class="row row-advisor p-std-advisor pad-bottom-30 corp-target">
+		<div class="col-xs-12 col-sm-12">
+			<h4 class="content-label">${advisorCorp.CorpName}</h4>
+		</div>
+		<sly
+			data-sly-test.macMulti="${advisorCorp.CorpTeamMembers.length != 1}" />
+		<sly data-sly-test="${macMulti}">
+			<div class="col-md-12">
+				<p class="row-advisor-desc-bio">${advisorCorp.CorpWelcomMessage @ context = 'html'}</p>
+				<p data-sly-repeat.notice="${advisorCorp.Notices}">
+					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
+					${notice.AgentContent @ context = 'html'}
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-2">
+					<strong>${advisorDetailObj.addressLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-10">
+					${advisorCorp.CorpAddress.StreetAddress1}<sly data-sly-test="${advisorCorp.CorpAddress.StreetAddress2}">, ${advisorCorp.CorpAddress.StreetAddress2}</sly>, ${advisorCorp.CorpAddress.City}, ${advisorCorp.CorpAddress.Province}, ${advisorCorp.CorpAddress.PostalCode}
+				</div>
+			</div>
+			<div data-sly-test="${advisorCorp.CorpContactInfo.Phone}" class="row">
+				<div class="col-xs-12 col-sm-2">
+					<strong>${advisorDetailObj.phoneLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-10">${advisorCorp.CorpContactInfo.Phone}</div>
+			</div>
+			<div data-sly-test="${advisorCorp.CorpContactInfo.Email}" class="row">
+				<div class="col-xs-12 col-sm-2">
+					<strong>${advisorDetailObj.emailLabel}</strong>
+				</div>
+				<div class="col-xs-12 col-sm-10 row-advisor-email">
+					<a href="mailto:'${advisorCorp.CorpContactInfo.Email}'">${advisorCorp.CorpContactInfo.Email}</a>
+				</div>
+			</div>
+			<sly data-sly-list.corpMember="${advisorCorp.CorpTeamMembers}">
+				<div class="col-sm-6 col-advisor-grid-block">
+					<div class="row">
+						<div class="col-xs-12 col-sm-5 text-top row-advisor-pic">
+							<p>
+								<img src="//www.sunlife.ca/${corpMember.PhotoUrl}">
+							</p>
+						</div>
+						<div
+							class="col-xs-12 col-sm-7 row-advisor-grid-block row-advisor-details">
+							<div class="row">
+								<div class="col-md-12">
+									<h4>${corpMember.FormattedName}</h4>
+								</div>
+							</div>
+							<div data-sly-test="${corpMember.Languages}" class="row">
+								<div class="col-xs-12 col-sm-6">
+									<strong>${advisorDetailObj.languagesLabel}</strong>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<sly data-sly-list.language="${corpMember.Languages}">
+										${language}<sly data-sly-test="${!languageList.last}">, </sly>
+									</sly>
+								</div>
+							</div>
+							<div data-sly-test="${corpMember.ContactInfo.Phone}" class="row">
+								<div class="col-xs-12 col-sm-6">
+									<strong>${advisorDetailObj.phoneLabel}</strong>
+								</div>
+								<div class="col-xs-12 col-sm-6">${corpMember.ContactInfo.Phone}</div>
+							</div>
+							<div data-sly-test="${corpMember.ContactInfo.Email}" class="row">
+								<div class="col-xs-12 col-sm-6">
+									<strong>${advisorDetailObj.emailLabel}</strong>
+								</div>
+								<div class="col-xs-12 col-sm-6 row-advisor-email">
+									<a href="mailto:${corpMember.ContactInfo.Email}">${corpMember.ContactInfo.Email}</a>
+								</div>
+							</div>
+							<div data-sly-test="${corpMember.ContactInfo.Url}" class="row">
+								<div class="col-xs-12 col-sm-12">
+									<a x-cq-linkchecker="skip"
+										href="/${corpMember.ContactInfo.Url @context='uri'}">${advisorDetailObj.advisorLinkLabel}</a>
+								</div>
+							</div>
+							<div class="row mar-top-20">
+								<div class="col-xs-12 col-sm-12">
+									<ul class="row-advisor-socials list-inline"
+										data-sly-list.link="${corpMember.SocialMediaLinks}">
+										<li><a x-cq-linkchecker="skip"
+											data-sly-test="${link.LinkName == 'Facebook'}"
+											class="fa fa-facebook-square" target="_blank" href="${link.LinkUrl}">
+											<span class="sr-only">${link.LinkName}</span>
+											</a> <a x-cq-linkchecker="skip"
+												data-sly-test="${link.LinkName == 'LinkedIn'}"
+												class="fa fa-linkedin-square" target="_blank" href="${link.LinkUrl}">
+											<span class="sr-only">${link.LinkName}</span>
+											</a> <a x-cq-linkchecker="skip"
+												data-sly-test="${link.LinkName == 'Twitter'}"
+												class="fa fa-twitter-square" target="_blank"
+												href="${link.LinkUrl}"> <span class="sr-only">${link.LinkName}</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</sly>
+		</sly>
+		<!-- SAC -->
+		<sly data-sly-test="${!macMulti}">
+			<div class="col-md-12 hidden-xs pad-bottom-30">
+				<p class="cwelcomemsg">${advisorCorp.CorpWelcomMessage @ context = 'html'}</p>
+				<p data-sly-repeat.notice="${advisorCorp.Notices}">
+					<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
+					${notice.AgentContent @ context = 'html'}
+				</p>
+			</div>
+			<sly data-sly-list.corpMember="${advisorCorp.CorpTeamMembers}">
+				<div class="col-xs-12 col-sm-3 text-top row-advisor-pic">
+					<p>
+						<img src="${advisorDetailObj.domain}/${corpMember.PhotoUrl}">
+					</p>
+				</div>
+				<div
+					class="col-xs-12 col-sm-9 row-advisor-details .row-advisor-1 corp-case2">
+					<div class="row">
+						<div class="col-md-12">
+							<h4>${corpMember.FormattedName}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.addressLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9">
+							${advisorCorp.CorpAddress.StreetAddress1}<sly data-sly-test="${advisorCorp.CorpAddress.StreetAddress2}">, ${advisorCorp.CorpAddress.StreetAddress2}</sly>, ${advisorCorp.CorpAddress.City}, ${advisorCorp.CorpAddress.Province}, ${advisorCorp.CorpAddress.PostalCode}
+						</div>
+					</div>
+					<div data-sly-test="${corpMember.Languages}" class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.languagesLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9">
+							<sly data-sly-list.language="${corpMember.Languages}">
+								${language}<sly data-sly-test="${!languageList.last}">, </sly>
+							</sly>
+						</div>
+					</div>
+					<div data-sly-test="${corpMember.ContactInfo.Phone}" class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.phoneLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9">${corpMember.ContactInfo.Phone}</div>
+					</div>
+					<div data-sly-test="${corpMember.ContactInfo.CellPhone}" class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.cellPhoneLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9">${corpMember.ContactInfo.CellPhone}</div>
+					</div>
+					<div data-sly-test="${corpMember.ContactInfo.Fax}" class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.faxLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9">${corpMember.ContactInfo.Fax}</div>
+					</div>
+					<div data-sly-test="${corpMember.ContactInfo.Email}" class="row">
+						<div class="col-xs-12 col-sm-3">
+							<strong>${advisorDetailObj.emailLabel}</strong>
+						</div>
+						<div class="col-xs-12 col-sm-9 row-advisor-email">
+							<a href="mailto:${corpMember.ContactInfo.Email}">${corpMember.ContactInfo.Email}</a>
+						</div>
+					</div>
+					<div data-sly-test="${corpMember.ContactInfo.Url}"
+						class="row hidden-xs">
+						<div class="col-xs-12 col-sm-12">
+							<a x-cq-linkchecker="skip"
+								href="/${corpMember.ContactInfo.Url @context='uri'}">${advisorDetailObj.advisorLinkLabel}</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 visible-xs row-advisor-desc-xs">
+							<p>${advisorCorp.CorpWelcomMessage @ context = 'html'}</p>
+							<p data-sly-repeat.notice="${advisorCorp.Notices}">
+								<strong>${notice.AgentTitle @ context = 'unsafe'}</strong> <br>
+								${notice.AgentContent @ context = 'html'}
+							</p>
+						</div>
+					</div>
+					<div class="row mar-top-20">
+						<div class="col-xs-12 col-sm-12">
+							<ul class="row-advisor-socials list-inline"
+								data-sly-list.link="${corpMember.SocialMediaLinks}">
+								<li><a x-cq-linkchecker="skip"
+									data-sly-test="${link.LinkName == 'Facebook'}"
+									class="fa fa-facebook-square" target="_blank" href="${link.LinkUrl}">
+									<span class="sr-only">${link.LinkName}</span>
+									</a> <a x-cq-linkchecker="skip"
+										data-sly-test="${link.LinkName == 'LinkedIn'}"
+										class="fa fa-linkedin-square" target="_blank" href="${link.LinkUrl}">
+									<span class="sr-only">${link.LinkName}</span>
+									</a> <a x-cq-linkchecker="skip"
+										data-sly-test="${link.LinkName == 'Twitter'}"
+										class="fa fa-twitter-square" target="_blank"
+										href="${link.LinkUrl}"> <span class="sr-only">${link.LinkName}</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</sly>
+		</sly>
+		<!-- SAC end -->
+	</div>
+</sly>
+<!-- Corp end -->
+<!-- hidden div for link -->
+<div data-sly-test="${advisorDataObj.HelpfulLinks}" class="collapse list-div" id="advisor-helpful-links-div" style = "display:none">
+	<ul class="list-unstyled" data-sly-list.helpfulLink="${advisorDataObj.HelpfulLinks}">
+	  <li>
+		${helpfulLink.DisplayData @context = 'html'}
+	  </li>
+	</ul>
+</div>
+<!-- hidden div for link ends-->
+<!-- Advisor Map Starts  -->
+<sly data-sly-test="${advisorDetailObj.advisorMapData}">
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<div class="google-map">
+	<div class="panel slf-accordion-plus yellow pad-bottom-30">
+		<div class="accordion-heading collapsed" data-toggle="collapse"
+			href="#row-map-collapse" data-parent="#accordion-section-1"
+			aria-expanded="false" id="map-title">${advisorDetailObj.advisorLocationLabel}</div>
+		<div id="row-map-collapse" class="collapse">
+			<div class="content">
+				<div id="ctl01_pnlGoogle">
+					<div id="GoogleMapDiv"></div>
+					<a id="largeGoogleMap" href="#">${advisorDetailObj.viewLargerMapLabel}</a> <img
+						id="ctl01_imgLinkNewWindow" title="${advisorDetailObj.viewLargerMapTitle}"
+						src="${advisorDetailObj.newWindowImage}"
+						alt="${advisorDetailObj.viewLargerMapTitle}" height="10" width="12" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</sly>
+<!-- Advisor Map Ends -->

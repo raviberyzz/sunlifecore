@@ -1,0 +1,138 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+
+<sly data-sly-use.languageRegionModel="ca.sunlife.web.cms.core.models.RegionLanguageMenu" />
+<sly data-sly-test.regionsEmpty="${!languageRegionModel.regionLinks}" />
+<sly data-sly-test.languagesEmpty="${!languageRegionModel.languageLinks}" />
+
+<sly data-sly-test.regionsTabSelected="${languageRegionModel.selectedTabMobile == 'region-active'}" />
+<sly data-sly-test.languagesTabSelected="${languageRegionModel.selectedTabMobile == 'language-active'}" />
+
+
+<!-- Desktop view starts -->
+<div class="col-xs-12 desktop-region-language-menu-wrapper desktop-linkfarm-table collapse in" data-section="${languageRegionModel.analyticsId ? languageRegionModel.analyticsId : 'header-region-and-languages'}" aria-expanded="true">
+   	<div class="cross-btn">
+        <a data-toggle="collapse" href="#sun-language">
+           <span class="sunLanguageCrossBtn fa fa-remove collapse-x" title="${languageRegionModel.closeModalText}" tabindex="0"></span>
+        </a>
+    </div>
+
+    <sly data-sly-test="${!regionsEmpty}">
+        <div class="col-xs-9 slf-region">
+            <div class="title-region">
+              <h4 data-sly-element="${languageRegionModel.type}">${languageRegionModel.title}</h4>
+            </div>
+
+            <div class="col-xs-12 content-region">
+                <sly data-sly-list.regionList="${languageRegionModel.regionLinks}">
+                    <sly data-sly-test.firstRegionElement="${regionListList.index == 0}" />
+                    <div class="col-xs-4 slf-region-column">
+                        <ul class="first_level_list-unstyled" data-sly-list.regionObj="${regionList}">
+                            <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
+                            <li data-sly-test="${regionObj.subLinks}">
+                                    <a class="accordion-heading" href="javascript:void(0)" aria-expanded="false" data-toggle="collapse">${regionObj.linkName}</a>                                    
+                                        <ul class="list-unstyled accordion-list collapse" data-sly-list.subLink="${regionObj.subLinks}">
+                                            <li class="${regionObj.expandList  && subLinkList.first ? 'nav-select' : ''}">
+                                                <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${subLink.subLinkUrl}" data-title="${subLink.subLinkDataTitle}">${subLink.subLinkName}</a>
+                                            </li>
+                                        </ul>
+                            </li>
+                            <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
+                                <a href="${regionObj.linkUrl}" data-title="${regionObj.dataTitle}">${regionObj.linkName}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </sly>
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${regionsEmpty}">
+        <div class="col-xs-9 slf-region no-region-present">
+            <p class="select-preference">
+                ${languageRegionModel.selectLangText}
+            </p>
+        </div>
+    </sly>
+    <div class="col-xs-3 slf-language">
+        <div class="title-language">
+            <h4>${languageRegionModel.languageSectionTitle}</h4>
+        </div>
+        <div class="col-xs-12 content-language">
+            <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
+                <sly data-sly-test.langFirstElement="${languageLinkList.index == 0}" />
+                <li class="${languageLink.subLinkHighlight  ? 'nav-select' : 'not-bold'}">
+                    <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${languageLink.subLinkUrl}" target="${languageLink.subLinkTarget}">${languageLink.subLinkName}</a>
+                </li>
+
+                <sly data-sly-test="${languageLink.subLinkSeparator}">
+					<div class="grey-horizontal-separator">
+                    	<sly data-sly-resource="${'separator' @ resourceType='sunlife/core/components/content/separator' }">
+                    </div>
+                </sly>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Desktop view ends -->
+
+
+<!-- Mobile view starts -->
+<div class="col-xs-12 mobile-region-language-menu-wrapper mobile-language-region" data-section="${languageRegionModel.analyticsId ? languageRegionModel.analyticsId : 'header-region-and-languages'}">
+    <div class="go-back">
+        <a href="#" tabindex="0">${languageRegionModel.backButtonText}</a>
+    </div>
+    <div class="col-xs-12 slf-tab-region ${regionsEmpty ? 'region-hidden-mobile': ''}">
+        <div class="col-xs-6 slf-tab first ${regionsTabSelected?'active':''}" data-target=".region-tab" data-toggle="tab" tabindex="0">
+            ${languageRegionModel.titleMobile ? languageRegionModel.titleMobile : languageRegionModel.title}
+        </div>
+        <div class="col-xs-6 slf-tab second ${languagesTabSelected?'active':''}" data-target=".language-tab" data-toggle="tab" tabindex="0">
+            ${languageRegionModel.languageSectionTitleMobile ? languageRegionModel.languageSectionTitleMobile : languageRegionModel.languageSectionTitle}
+        </div>
+    </div>
+    <div class="col-xs-12 tab-content">
+        <div class="tab-pane region-tab ${regionsTabSelected?'active':''}">
+            <ul class="list-unstyled" data-sly-list.regionObj="${languageRegionModel.regions}">
+                <sly data-sly-test.firstElement="${regionObjList.index == 1}" />
+                <li data-sly-test="${regionObj.subLinks}">
+                    <div class="region-link">
+                        <h3 class="accordion-heading" aria-expanded='false' data-toggle="collapse">${regionObj.linkName}</h3>
+                        <div class= 'accordion-list collapse' >
+                            <ul class="list-unstyled accordion-list" data-sly-list.subLink="${regionObj.subLinks}">
+                                <li class="${regionObj.expandList && subLinkList.first ? 'nav-select' : 'not-bold'}">
+                                    <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${subLink.subLinkUrl}" data-title="${subLink.subLinkDataTitle}">${subLink.subLinkName}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li data-sly-test="${!regionObj.subLinks}" class="${regionObj.expandList ? 'nav-select' : ''}">
+                    <a href="${regionObj.linkUrl}" data-title="${regionObj.dataTitle}">${regionObj.linkName}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane language-tab ${languagesTabSelected?'active':''}">
+            <ul class="list-unstyled" data-sly-list.languageLink="${languageRegionModel.languageLinks}">
+                <li class="${languageLink.subLinkHighlight ? 'nav-select' : 'not-bold'}">
+                    <a lang="" data-sly-attribute.lang="${languageLink.subLinkLangCode}" href="${languageLink.subLinkUrl}">${languageLink.subLinkName}</a>
+                </li>
+                <sly data-sly-test="${languageLink.subLinkSeparator}">
+                	<div class="grey-horizontal-separator">
+                    	<sly data-sly-resource="${'separator' @ resourceType='sunlife/core/components/content/separator' }">
+                    </div>
+                 </sly>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Mobile view ends -->
+
+<template data-sly-template.separator>
+    <div class="seperator-wrapper">
+        <div class="region-separator">
+            <div class="horizontal-separator-wrapper">
+                <hr class="col-xs-1 grey-horizontal-separator horizontal-middle-align">
+            </div>
+        </div>
+    </div>
+</template>

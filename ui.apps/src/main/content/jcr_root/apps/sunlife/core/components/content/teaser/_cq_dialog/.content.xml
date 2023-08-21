@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Teaser"
+    extraClientlibs="[sunlife.core.author.text,sunlife.core.author.teaser]">
+    <content
+        granite:class="cmp-teaser-custom__editor"
+        jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <image jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <imageAlignment
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/radiogroup"
+                                                fieldDescription="Defines the position of the image"
+                                                fieldLabel="Image Alignment"
+                                                name="./imageAlignment"
+                                                required="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <left
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/radio"
+                                                        text="Left"
+                                                        value="left-image-position"/>
+                                                    <right
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/radio"
+                                                        text="Right"
+                                                        value="right-image-position"/>
+                                                </items>
+                                            </imageAlignment>
+                                            <bannerCheck
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the image should be ignored by assistive technology and therefore does not require an alternative text. This applies to decorative images only."
+                                                name="./backgroundImageCheck"
+                                                text="Is Banner"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                            <file
+                                                jcr:primaryType="nt:unstructured"
+                                                fieldDescription="Please provide the desktop image"
+                                                fieldLabel="Image for Desktop version"
+                                                required="{Boolean}true"/>
+                                            <imageMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please provide mobile image to be used in banner"
+                                                fieldLabel="Image for Mobile version"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReferenceMobile"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./image"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <lazyLoading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the teaser should be lazy loaded. Should be checked for all images that are below the fold"
+                                                name="./isLazyLoaded"
+                                                text="Lazy Load Image"
+                                                checked="false"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                            <decorative
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="${not empty cqDesign.isDecorative ? cqDesign.isDecorative : false}"
+                                                fieldDescription="Check if the image should be ignored by assistive technology and therefore does not require an alternative text. This applies to decorative images only."
+                                                name="./isDecorative"
+                                                text="Image is decorative"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                            <alttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Alternative Text for the image"
+                                                fieldLabel="Alternative Text"
+                                                name="./altText"
+                                                wrapperClass="cmp-teaser-custom__editor-alt"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </image>
+                    <text jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[titleGroup]">
+                                            <descriptionGroup jcr:primaryType="nt:unstructured">
+                                                <items
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:hideChildren="[descriptionFromLinkedPage]">
+                                                    <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                                        name="./description"
+                                                        required="{Boolean}true"
+                                                        useFixedInlineToolbar="{Boolean}true"/>
+                                                </items>
+                                            </descriptionGroup>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </text>
+                    <actions
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[actionsEnabled,actionsDisabled,actions]">
+                                            <target
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Target"
+                                                name="./target">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <sametab
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Same Tab"
+                                                        value="_self"/>
+                                                    <newtab
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="New Tab"
+                                                        value="_blank"/>
+                                                </items>
+                                            </target>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </actions>
+                    <analytics
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Analytics"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <analyticsID
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please configure the analytics id."
+                                                fieldDescription="Please configure the analytics id."
+                                                fieldLabel="Analytics id"
+                                                name="./analyticsId"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </analytics>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

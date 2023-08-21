@@ -1,0 +1,88 @@
+@import '../../../prerequisite/base/styles/core.scss';
+.title-wrapper-yellow-grey{
+    background-color:$medium-yellow-background;
+    padding:32px 15px 32px 15px;
+    min-height:100px;
+    color:$dark-grey-color;
+    margin-bottom:40px;
+    h1,h2,h3,h4,h5,h6,p{
+      margin:0;
+      font-size:1.75rem;
+      line-height:36px;
+      font-weight:400;
+    }
+    &.heading-1{
+      h1,h2,h3,h4,h5,h6{
+        font-size:2.25rem;
+        font-weight:400;
+      }
+    }
+    &.heading-2{
+      h1,h2,h3,h4,h5,h6{
+        font-size:2rem;
+        font-weight:400;
+      }
+    }
+    &.heading-3{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.75rem;
+        font-weight:400;
+      }
+    }
+    &.heading-4{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.5rem;
+        font-weight:400;
+      }
+    }
+    &.heading-5{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.25rem;
+        font-weight:400;
+      }
+    }
+    &.heading-6{
+      h1,h2,h3,h4,h5,h6{
+        font-size:1.125rem;
+        font-weight:400;
+      }
+    }
+}
+.title-wrapper-yellow-grey-rings{
+  @extend .title-wrapper-yellow-grey;
+  //background: url(/content/dam/sunlife/legacy/assets/slfglobal/globalweb/responsive/images/Yellow_Header_OLSun_5_YL_RGB.png) bottom right no-repeat;
+  background-color:$medium-yellow-background;
+  background-size: contain;
+  background-image: none !important;
+}
+.title-wrapper-blue-yellow{
+  @extend .title-wrapper-yellow-grey;
+  background-color:$medium-blue-color;
+  color: $medium-yellow-background;
+}
+ .title-wrapper-blue-yellow-rings{
+  @extend .title-wrapper-yellow-grey;
+ // background:url(/content/dam/sunlife/legacy/assets/slfglobal/Images/CircleOutline_bg.png) right no-repeat;
+  background-color:$medium-blue-color;
+  color: $medium-yellow-background;
+  background-image: none !important;
+ }
+ .no-title-bottom-spacing{
+   margin-bottom:0;
+ }
+
+@media (max-width:$mobile-screen-max){
+  .title-wrapper-yellow-grey,.title-wrapper-yellow-grey-rings,.title-wrapper-blue-yellow,.title-wrapper-blue-yellow-rings
+  {
+    min-height:94px; //should be min-height so if text is larger then 1 line the wrapper gets bigger 
+    background-image:none;
+  //  margin-top: 4px;
+  }
+}
+
+@media (min-width: $tab-screen-min) and (max-width: $tab-screen-max) {
+  .title-wrapper-yellow-grey-rings{
+  //  margin-top: 4px;
+    min-height:100px; //should be min-height so if text is larger then 1 line the wrapper gets bigger 
+  }
+}

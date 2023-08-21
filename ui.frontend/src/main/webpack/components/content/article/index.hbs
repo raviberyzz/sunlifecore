@@ -1,0 +1,79 @@
+<article class="article-wrapper">
+    <div class="article-intro">
+        <div class="article-date">
+            {{article-date}}
+        </div>
+        <div class="article-title heading-2">
+            {{article-title}}
+        </div>
+        {{#if author-present}}
+        <div class="article-author-name">
+            {{article-author-name}}
+        </div>
+        {{/if}}
+    </div>
+    {{!-- <div class="article-teaser">
+        {{article-teaser}}
+    </div> --}}
+    <figure class="article-image">
+        <img src="{{article-image}}" alt="{{article-image-alt}}">
+    </figure>
+    <div class="article-body">
+        {{{article-body}}}
+    </div>
+    <div class="article-rating">
+        <div class="mar-bottom-30" id="pd_rating_holder_7600084"></div>
+    </div>
+    {{#if article-footer}}
+    <div class="article-footer">
+        {{{article-footer}}}
+    </div>
+    {{/if}}
+</article>
+
+<!-- Related articles and Related-articles start  -->
+<div class="row related-articles">
+    {{#if related-articles.title}}
+    <div class="title col-sm-12 col-md-12 col-xs-12">{{{related-articles.title}}}</div>
+    {{/if}}
+    {{#each related-articles.articles}}
+    <div class="col-sm-4 col-md-4 col-xs-12">{{{this}}}</div>
+    {{/each}}
+</div>
+<!-- Related articles and Rrelated-articles end  -->
+
+<!-- Related articles and Editorial-related-articles start  -->
+<div class="row editorial-related-articles">
+    {{#if editorial-related-articles.title}}
+    <div class="title col-sm-12 col-md-12 col-xs-12">{{{related-articles.title}}}</div>
+    {{/if}}
+    {{#each editorial-related-articles}}
+    <div class="col-sm-4 col-md-4 col-xs-12">{{{this}}}</div>
+    {{/each}}
+</div>
+<!-- Related articles and Editorial-related-articles end  -->
+<div style="border:2px solid black"></div>
+<!-- Article listing and pagination start -->
+<div class="row article-lists">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <ul>
+            {{#each article-lists}}
+            <li>{{{this}}}</li>
+            {{/each}}
+        </ul>
+        <!--pagination starts here -->
+       {{>core-components-content-pagination}} 
+         <!--pagination ends here -->
+    </div>
+</div>
+<!-- Article listing and pagination end -->
+
+<!-- lists in cta component Featured content list start -->
+<div class='articleList'>
+    <ul class='dotted'>
+        {{#each featured-content-list}}
+        <li>{{{this}}}</li>
+        {{/each}}
+    </ul>
+</div>
+<!-- lists in cta component Featured content list end -->

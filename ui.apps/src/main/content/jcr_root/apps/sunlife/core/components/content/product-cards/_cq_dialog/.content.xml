@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Product Cards"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <topc
+                        granite:class="cq-dialog-dropdown-showhide"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Type of Product Card"
+                        name="./topc">
+                        <items jcr:primaryType="nt:unstructured">
+                            <static
+                                jcr:primaryType="nt:unstructured"
+                                text="Static"
+                                value="static"/>
+                            <dynamic
+                                jcr:primaryType="nt:unstructured"
+                                text="Dynamic"
+                                value="dynamic"/>
+                            <rightNav
+                                jcr:primaryType="nt:unstructured"
+                                text="Product Card in Right Navigation"
+                                value="rightNav"/>
+                        </items>
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                    </topc>
+                    <staticContent
+                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        fieldDescription="Static content"
+                        fieldLabel="Static content">
+                        <items jcr:primaryType="nt:unstructured">
+                            <fragmentPath
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter the product card content fragment path"
+                                fieldLabel="Content Fragment Path"
+                                name="./productCardFragmentPath"
+                                rootPath="/content/dam/sunlife"/>
+                        </items>
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="static"/>
+                    </staticContent>
+                    <dynamicContent
+                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        fieldDescription="Dynamic content"
+                        fieldLabel="Dynamic content">
+                        <items jcr:primaryType="nt:unstructured">
+                            <folderPath
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter the product cards content fragment parent folder path"
+                                fieldLabel="Content Fragment Parent Path"
+                                name="./folderPath"
+                                rootPath="/content/dam/sunlife"/>
+                             <tags
+                                 jcr:primaryType="nt:unstructured"
+                                 sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                 fieldDescription="Tags for displaying the product cards."
+                                 fieldLabel="Tags"
+                                 multiple="{Boolean}true"
+                                 name="./tagNames"/>
+                        </items>
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="dynamic"/>
+                    </dynamicContent>
+                    <rightNavigation
+                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        fieldDescription="Product Card to be displayed in right navigation"
+                        fieldLabel="Right Navigation Product Card content">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Product Card Title"
+                                fieldLabel="Product Card Title"
+                                name="./title"/>
+                            <icon
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter icon value"
+                                fieldLabel="Icon"
+                                name="./icon"/>
+                            <text
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Product Card Body Content"
+                                fieldLabel="Text"
+                                name="./text"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                        </items>
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="rightNav"/>
+                    </rightNavigation>
+                    <lazyLoading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Check if the product-cards should be lazy loaded. Should be checked for all images that are below the fold"
+                                name="./isLazyLoaded"
+                                text="Lazy Load Image"
+                                checked="false"
+                                uncheckedValue="false"
+                                value="{Boolean}true"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

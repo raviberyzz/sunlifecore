@@ -1,0 +1,23 @@
+<div data-sly-use.accordion="ca.sunlife.web.cms.core.models.AccordionModel"
+   class="cmp-accordion" data-cmp-is="accordion"
+   data-cmp-single-expansion="${accordion.singleExpansion}" data-section="${accordion.analyticsId}">
+   <div data-sly-test="${accordion.items.size > 0}"
+      data-sly-repeat.item="${accordion.items}"
+      class="cmp-accordion__item" data-cmp-hook-accordion="item"
+      data-cmp-expanded="${item.name in accordion.expandedItems}">
+      <h3 data-sly-element="${accordion.headingElement @ context='elementName'}"
+         class="cmp-accordion__header" data-toggle="collapse">
+         <button class="cmp-accordion__button vertical-middle-align" 
+            data-cmp-hook-accordion="button" aria-label="${item.title}" aria-expanded="${item.name in accordion.expandedItems ? 'true' : 'false'}">
+         <span class="cmp-accordion__icon"></span>
+         <span class="cmp-accordion__title">${item.title}</span>
+         </button>
+      </h3>
+      <div data-sly-resource="${item.name @ decorationTagName='div'}"
+         data-cmp-hook-accordion="panel"
+         class="cmp-accordion__panel collapse ${item.name in accordion.expandedItems ? 'in' : ''}"
+         ></div>
+   </div>
+   <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+      data-sly-test="${(wcmmode.edit || wcmmode.preview) && accordion.items.size < 1}"></sly>
+</div>

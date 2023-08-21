@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Template"
+    allowedPaths="[/content/entities(/.*)?]"
+    ranking="{Long}100">
+    <jcr:content
+        cq:scaffolding="/conf/sunlife/settings/dam/cfm/models/form-email-model/jcr:content/model"
+        cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Form Email Model"
+        sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
+        sling:resourceType="dam/cfm/models/console/components/data/entity/default">
+        <model
+            cq:targetPath="/content/entities"
+            jcr:primaryType="cq:PageContent"
+            sling:resourceType="wcm/scaffolding/components/scaffolding"
+            dataTypesConfig="/mnt/overlay/settings/dam/cfm/models/formbuilderconfig/datatypes"
+            maxGeneratedOrder="20">
+            <cq:dialog
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/authoring/dialog">
+                <content
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                    <items
+                        jcr:primaryType="nt:unstructured"
+                        maxGeneratedOrder="22">
+                        <_x0031_584340062413
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="From email ID for forms."
+                            fieldLabel="From"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="from-email-id"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584340113492
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="To email ID for forms"
+                            fieldLabel="To"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="to-email-id"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584340229115
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Subject for email"
+                            fieldLabel="Subject"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="subject-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584517352029
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Body text"
+                            fieldLabel="Body"
+                            listOrder="1"
+                            maxlength="10000"
+                            metaType="text-single"
+                            name="body-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_591258180113
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            fieldDescription="Does the content fragment include mail to client?"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="isClient"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Mail to Client?"
+                            valueType="boolean"/>
+                        <_x0031_605860748361
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="CC email ID for forms."
+                            fieldLabel="CC"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="cc-email-id"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                         <_x0031_606118136485
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="BCC email ID for forms."
+                            fieldLabel="BCC"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="bcc-email-id"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584340149052
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Subject for Client Email"
+                            fieldLabel="Client Subject"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="client-subject-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584340204587
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Email Body for Client"
+                            fieldLabel="Client Body"
+                            listOrder="1"
+                            maxlength="10000"
+                            metaType="text-single"
+                            name="client-body-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_591272496905
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Subject for error mail sent to Marketing team"
+                            fieldLabel="Error Subject"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="error-subject-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_591272574880
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Body of error mail sent to Marketing team"
+                            fieldLabel="Error Body"
+                            listOrder="22"
+                            maxlength="10000"
+                            metaType="text-single"
+                            name="error-body-email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584626845722
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Success Page"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="success-page-url"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                        <_x0031_584627066882
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Error Page"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="error-page-url"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content"
+                            showEmptyInReadOnly="true"
+                            valueType="string"/>
+                    </items>
+                </content>
+            </cq:dialog>
+        </model>
+    </jcr:content>
+</jcr:root>

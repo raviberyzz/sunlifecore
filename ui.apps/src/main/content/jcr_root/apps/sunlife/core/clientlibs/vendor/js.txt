@@ -1,0 +1,7 @@
+#base=js
+
+1-jquery-3.2.1.slim.js
+2-easyXDM.js
+3-bootstrap.js
+4-parsley.js
+5-datepicker.js

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+
+<head>
+    <title>${properties.jcr:title}</title>
+    <sly data-sly-call="${clientlib.css @ categories='coralui3,sunlife.tools.akamai.edge.redirects'}" />
+</head>
+
+<body class="coral--light u-coral-clearFix">
+    <div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
+        <div class="header">
+            <div class="yellow-bar"></div>
+            <img alt="Sunlife" class="logo" src="/content/dam/sunlife/legacy/assets/ca/sunlife-logo-web.svg">
+        </div>
+    </div>
+    <div class="main-content">
+    	<sly data-sly-use.userInfo="ca.sunlife.web.cms.core.models.UserInfo" />
+        <h1 class="coral-Heading coral-Heading--1">Vanity Rules for ${properties.domain}</h1>
+        <h2 class="coral-Heading coral-Heading--2">Policy : ${properties.policy} </h2>
+        <input type="hidden" id="domain" value="${properties.domain}" />
+        <input type="hidden" id="policyID" value="${properties.policyID}" />
+        <input type="hidden" id="blockedPaths" value="${properties.blockedPaths}" />
+        <input type="hidden" id="userName" value="${userInfo.userName}" />
+        <coral-tabview style="padding:25px">
+            <coral-tablist target="coral-panel">
+                <coral-tab>
+                    <h3 class="coral-Heading coral-Heading--3">Rules</h3>
+                </coral-tab>
+                <coral-tab id="non-published-rules">
+                    <h3 class="coral-Heading coral-Heading--3">Non Published Rules</h3>
+                </coral-tab>
+            </coral-tablist>
+            <coral-panelstack id="coral-panel">
+                <coral-panel class="coral-Well">
+                    <button is="coral-button" variant="primary" icon="add" iconsize="M" size="L" id="createRule">
+                        Create New Rule
+                    </button>
+                    <coral-popover placement="right" target="#createRule">
+                        <coral-popover-content style="width:350px;margin:25px">
+                            <form class="coral-Form coral-Form--vertical" onsubmit="return false;">
+                                <section class="coral-Form-fieldset">
+                                    <div class="coral-Form-fieldwrapper">
+                                        <label class="coral-Form-fieldlabel"
+                                            id="source-label">${properties.domain}</label>
+                                        <input is="coral-textfield" class="coral-Form-field" placeholder="Source"
+                                            name="source" labelledby="source-label" required />
+                                        <coral-icon class="coral-Form-fieldinfo" icon="infoCircle" size="S"
+                                            id="source-fieldinfo"></coral-icon>
+                                        <coral-tooltip variant="info" placement="right" target="#source-fieldinfo"
+                                            style="width:150px">
+                                            Enter the source path for e.g., en/link1
+                                        </coral-tooltip>
+                                    </div>
+                                    <div class="coral-Form-fieldwrapper">
+                                        <label class="coral-Form-fieldlabel" id="dest-label">Target</label>
+                                        <input is="coral-textfield" class="coral-Form-field" placeholder="Target Path"
+                                            name="dest" labelledby="dest-label" required />
+                                        <coral-icon class="coral-Form-fieldinfo" icon="infoCircle" size="S"
+                                            id="dest-fieldinfo"></coral-icon>
+                                        <coral-tooltip variant="info" placement="right" target="#dest-fieldinfo"
+                                            style="width:150px">
+                                            Enter the relative or absolute target path
+                                        </coral-tooltip>
+                                    </div>
+                                    <button is="coral-button" icon="checkCircle" id="addRule" iconsize="S">
+                                        Add Rule
+                                    </button>
+                                </section>
+                            </form>
+                        </coral-popover-content>
+                        <coral-popover-header>Rule</coral-popover-header>
+                    </coral-popover>
+                    <table is="coral-table" style="height:500px">
+                        <colgroup>
+                            <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
+                            <col is="coral-table-column" fixedWidth>
+                        </colgroup>
+                        <thead is="coral-table-head" sticky>
+                            <tr is="coral-table-row">
+                                <th is="coral-table-headercell">Source</th>
+                                <th is="coral-table-headercell">Destination</th>
+                                <th is="coral-table-headercell">Action</th>
+                                <th is="coral-table-headercell">Modified By</th>
+                                <th is="coral-table-headercell">Published By</th>
+                            </tr>
+                        </thead>
+                        <tbody is="coral-table-body" id="rules">
+                            <tr is="coral-table-row" data-sly-repeat="${resource.listChildren}"
+                                data-name="${item.name}">
+                                <td is="coral-table-cell" data-name="tr-source">${item.source}</td>
+                                <td is="coral-table-cell" data-name="tr-destination">${item.destination}</td>
+                                <td is="coral-table-cell" data-name="tr-actions">
+                                    <coral-icon class="coral-Form-fieldinfo" icon="edit" size="S"
+                                        data-name="${item.name}" name="editRule" style="cursor: pointer"
+                                        title="Edit Rule"></coral-icon>
+                                    <sly data-sly-test.state="${item.state !='Delete'}">
+                                        <coral-icon class="coral-Form-fieldinfo" icon="exclude" size="S"
+                                            data-name="${item.name}" style="cursor: pointer" name="disableRule"
+                                            title="Deactivate Rule"></coral-icon>
+                                    </sly>
+                                    <sly data-sly-test="${!state}">
+                                        <coral-icon class="coral-Form-fieldinfo" icon="play" size="S"
+                                            data-name="${item.name}" style="cursor: pointer" name="enableRule"
+                                            title="Enable Rule"></coral-icon>
+                                    </sly>
+                                </td>
+                                <td is="coral-table-cell" data-name="tr-modBy">${item.modBy}</td>
+                                <td is="coral-table-cell" data-name="tr-pubBy">${item.pubBy}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </coral-panel>
+                <coral-panel class="coral-Well" id="non-published-rules-content">
+                    
+                </coral-panel>
+            </coral-panelstack>
+        </coral-tabview>
+    </div>
+    <sly data-sly-call="${clientlib.js @ categories='coralui3,sunlife.tools.akamai.edge.redirects'}" />
+</body>
+
+</html>

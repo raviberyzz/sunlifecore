@@ -1,0 +1,30 @@
+<div data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     class="cmp-tabs tabs-wrapper"
+     data-cmp-is="tabs">
+    <ol data-sly-test="${tabs.items && tabs.items.size > 0}"
+        data-sly-list.tab="${tabs.items}"
+        role="tablist"
+        class="cmp-tabs__tablist"
+        aria-label="${tabs.accessibilityLabel}"
+        aria-multiselectable="false">
+        <sly data-sly-test.isActive="${tab.name == tabs.activeItem}"/>
+        <sly data-sly-test.isDynamic = "${tabs.accessibilityLabel}-id-${tabList.index}"/>
+        <li id="${tabs.accessibilityLabel ? isDynamic : ''}"
+            class="cmp-tabs__tab${isActive ? ' cmp-tabs__tab--active' : ''}"
+            tabindex="${isActive ? '0' : '-1'}"
+	    aria-selected="${isActive ? 'true' : 'false'}"
+	    role="tab"
+            data-cmp-hook-tabs="tab">${tab.title}</li>
+    </ol>
+    <div data-sly-repeat.item="${tabs.items}"
+         role="tabpanel"
+         class="cmp-tabs__tabpanel${item.name == tabs.activeItem ? ' cmp-tabs__tabpanel--active' : ''}"
+         data-cmp-hook-tabs="tabpanel">
+         <div class="tab-accordian-heading visible-xs hidden-sm hidden-md hidden-lg" aria-expanded="false" tabindex="0">${item.title}</div>
+
+         <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+         </div>
+    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+         data-sly-test="${(wcmmode.edit || wcmmode.preview) && tabs.items.size < 1}"></sly>
+</div>

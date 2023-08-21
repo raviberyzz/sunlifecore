@@ -1,0 +1,12 @@
+<sly data-sly-use.selectorFragMap="ca.sunlife.web.cms.core.models.SelectorToExfragMapModel" />
+<div data-sly-test="${(wcmmode.edit || wcmmode.preview)}" style="display: flow-root">
+    <sly data-sly-test.scheme="${request.scheme}"/>
+    <sly data-sly-test.servername="${request.serverName}"/>
+    <sly data-sly-test.serverport="${request.serverPort}"/>
+    <sly data-sly-test.val="${selectorFragMap.modifiedFragmentPath}"/>
+    <sly data-sly-test.editor="editor.html"/>
+    <sly data-sly-test.url="${scheme}://${servername}:${serverport}/${editor}${val}"/>
+    	<a href="${url}" target="_blank" style="float: right;">Edit</a>
+</div> 
+<div data-sly-test="${selectorFragMap.items && selectorFragMap.items.size>0}" data-sly-resource="${@path=selectorFragMap.modifiedFragmentPath, selectors='content', wcmmode='disabled'}"></div>
+<div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="${component.title}"></div>

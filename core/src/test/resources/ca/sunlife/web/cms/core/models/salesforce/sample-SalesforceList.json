@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "showModificationDate": "true",
+  "jcr:createdBy": "admin",
+  "tagsMatch": "any",
+  "linkItems": "true",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Fri Nov 06 2020 15:41:29 GMT-0500",
+  "parentPage": "/content/sunlife/external/ca",
+  "sortOrder": "asc",
+  "showDescription": "true",
+  "jcr:lastModified": "Mon Nov 09 2020 10:21:58 GMT-0500",
+  "sling:resourceType": "sunlife/advisorhub/components/content/salesforce/list/v1/list",
+  "childDepth": "1",
+  "listFrom": "children"
+}

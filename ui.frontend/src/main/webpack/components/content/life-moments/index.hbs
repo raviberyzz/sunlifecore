@@ -1,0 +1,50 @@
+<div class="{{life-moment-wrapper}}">
+
+    <h3>Be prepared for life's important moments</h3>
+
+    <p>Tips, tools and good advice for what matters for you</p>
+
+    <div class="life-moments-wrapper-desktop">
+        <div class="links">
+            <h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+            <div class="collapse list-div">
+                <ul class="list-unstyled">
+                    {{#each list}}
+                    <li>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="life-moments-wrapper-mobile">
+        <div class="links">
+            <h3 class="accordion-heading" aria-expanded="false" tabindex="0">{{ LinkText }}</h3>
+            <div class="collapse list-div">
+                <ul class="list-unstyled">
+                    {{#each list}}
+                    <li>
+                        <a href="{{link}}">{{text}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="bright-start">
+
+        <h4>Not sure where to begin? Start here.</h4>
+
+        <p>Answer a few questions in our free-to-use Bright Start Tool to get personalized tips, tools and
+            resources to help you reach your financial goals.</p>
+
+        <p><a href="#">Use the Bright Start Tool</a></p>
+
+        <img src="//cdn.sunlife.com/static/slfglobal/globalweb/responsive/images/bright-start-bike-dark-bg.png"
+            aria-hidden="true">
+
+    </div>
+</div>

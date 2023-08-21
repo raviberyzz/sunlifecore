@@ -1,0 +1,250 @@
+<sly data-sly-use.layout="ca.sunlife.web.cms.core.models.LayoutContainerModal"/>
+<sly data-sly-test.empty="${!layout.noc}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<sly data-sly-test.flexRequired="${layout.flexRequired}"/>
+<div class="row ${flexRequired}" data-section="${layout.type != 'modal-popup'?layout.analyticsId : ''}">
+    <sly data-sly-test="${layout.noc == '1'}">
+        <sly data-sly-test="${layout.type == 'normal'}">
+            <div class="col-xs-12 no-gutter">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'site-notification'}" > 
+            <div class="site-level-notification" id="${layout.siteNotificationId}">
+                <div class="close-div">
+                    <span class="fa fa-remove collapse-x" tabindex="0" aria-label="${layout.closeText}">&nbsp;</span>
+                </div>
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'modal-popup'}">
+            <div class="${wcmmode.edit ? '' : 'modal fade popup-modal-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}" aria-labelledby="${layout.modalID}-title" data-section="${layout.analyticsId ? layout.analyticsId : 'pop-up-modal'}"> 
+                <!-- Modal content-->
+                <div class="${wcmmode.edit ? '' : 'modal-content horizontal-middle-align'}">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h3 class="modal-heading" data-sly-element="${layout.modalTitleLevel}" id="${layout.modalID}-title">${layout.modalTitle}</h3>
+                            <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                    </div>
+                </div>
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'simple-popup'}">
+            <div class="${wcmmode.edit ? '' : 'modal fade subscribe-popup-wrapper horizontal-middle-align'}" role="dialog" id="${layout.modalID}"> 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <button type="button" class="close close-popup fa fa-remove collapse-x" data-dismiss="modal"><label class="sr-only">${layout.closeText}</label></button>
+                    <div class="modal-body" tabindex="0">
+                        <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                    </div>
+                </div>
+            </div>
+        </sly>
+    </sly>
+    <sly data-sly-test="${layout.noc == '2'}" >
+        <sly data-sly-test="${layout.type == '50:50'}">
+            <div class="col-sm-6">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '33:67'}">
+            <div class="col-sm-4">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-8">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '67:33'}">
+            <div class="col-sm-8">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-4">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '75:25N'}">
+            <div class="col-md-9">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-md-3" role="complementary" aria-label="Resources" id="right-railId" data-section="body-right-rail">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '25:75N'}">
+            <div class="col-md-3">
+                <sly data-sly-resource="${'left-nav' @ resourceType='sunlife/core/components/content/left-navigation'}" />
+            </div>
+            <div class="col-md-9 left-nav-with-content-section">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '25M:75N'}">
+            <div class="col-md-9 col-md-push-3 left-nav-with-content-section">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-md-3 col-md-pull-9 col-xs-12 left-nav-list-wrapper" role="navigation" aria-label="Left" id="left-navigation-case-2" data-section="nav-left">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '20:80'}">
+            <div class="col-sm-2">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-10">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '80:20'}">
+            <div class="col-sm-10">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-2">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+    </sly>
+    <sly data-sly-test="${layout.noc == '3'}">
+        <sly data-sly-test="${layout.type == '25:50:25N'}">
+            <div class="col-md-3">
+                <sly data-sly-resource="${'left-nav' @ resourceType='sunlife/core/components/content/left-navigation'}" />
+            </div>
+            <div class="col-md-6 left-nav-with-content-section">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-md-3" role="complementary" aria-label="Resources">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == '33:33:33'}">
+            <div class="col-sm-4">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-4">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-4">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'feature-card'}">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'footer'}">
+            <div class="top-footer-section">
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-sm-4">
+                    <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+                </div>
+            </div>
+        </sly>
+    </sly>
+    <sly data-sly-test="${layout.noc == '4'}">
+        <sly data-sly-test="${layout.type == '25:25:25:25'}">
+            <div class="col-sm-3">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-3">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-3">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-3">
+                <sly data-sly-resource="${'container4' @ decorationTagName='div'}" />
+            </div>
+         </sly>
+          <sly data-sly-test="${layout.type == 'feature-card'}">
+            <div class="col-sm-6 col-md-3 col-lg-3">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3">
+                <sly data-sly-resource="${'container4' @ decorationTagName='div'}" />
+            </div>
+         </sly>
+    </sly>
+    <sly data-sly-test="${layout.noc == '5'}">
+        <sly data-sly-test="${layout.type == '20:20:20:20:20'}">
+            <div class="col-sm-2_5">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-2_5">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-2_5">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-2_5">
+                <sly data-sly-resource="${'container4' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-2_5">
+                <sly data-sly-resource="${'container5' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'feature-card'}">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <sly data-sly-resource="${'container4' @ decorationTagName='div'}" />
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <sly data-sly-resource="${'container5' @ decorationTagName='div'}" />
+            </div>
+        </sly>
+        <sly data-sly-test="${layout.type == 'footer'}">
+            <div class="top-footer-section col-sm-12 col-md-7">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <sly data-sly-resource="${'container1' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <sly data-sly-resource="${'container2' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <sly data-sly-resource="${'container3' @ decorationTagName='div'}" />
+                </div>
+            </div>
+            <div class="bottom-footer-section col-sm-12 col-md-5">
+                <div class="col-xs-12 col-sm-4 col-md-6">
+                    <sly data-sly-resource="${'container4' @ decorationTagName='div'}" />
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-6">
+                    <sly data-sly-resource="${'container5' @ decorationTagName='div'}" />
+                </div>
+            </div>
+        </sly>
+    </sly>
+
+</div>

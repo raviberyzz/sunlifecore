@@ -1,0 +1,28 @@
+<div class="footer-copyright-wrapper" data-sly-use.footercopyright="ca.sunlife.web.cms.core.models.FooterCopyrightModel" 
+	data-section="footer-bottom-layer">
+   <div class="top-part clearfix">
+      <div data-sly-test="${footercopyright.title}" class="slf-tagline">${footercopyright.title}</div>      
+      	<div class="slf-legal">         
+            <ul>
+               <sly data-sly-list.footerItems="${footercopyright.footerItems}">
+               <li class="hidden-xs hidden-sm" data-sly-test.hideCheckBox="${footerItems.checkboxHide}">
+                  <a data-sly-test="${footerItems.contentUrl}" href="${footerItems.url @ extension = 'html'}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+                  <a data-sly-test="${!footerItems.contentUrl}" href="${footerItems.url}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+               </li>
+               <li data-sly-test="${!hideCheckBox}">
+                  <a data-sly-test="${footerItems.contentUrl}" href="${footerItems.url @ extension = 'html'}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+                  <a data-sly-test="${!footerItems.contentUrl}" href="${footerItems.url}" target="${footerItems.target}" class="${ footerItems.checkboxSeparator ? 'border-present' : ''}">${footerItems.label}</a>
+               </li>
+               </sly>
+               <sly data-sly-test = "${!footercopyright.feedbackLink}">
+               <li id="feedback-footer"></li>
+               </sly>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-part">
+      <div data-sly-test="${footercopyright.copyrightText}" class="slf-copyright">${footercopyright.copyrightText @context='html'}</div>
+      <div data-sly-test="${footercopyright.slfText}"class="slf-acronym">${footercopyright.slfText @context='html'}</div>
+    </div>
+</div>
+<div data-sly-test="${!footercopyright.title}" class="cq-placeholder" data-emptytext="${component.title}"></div>

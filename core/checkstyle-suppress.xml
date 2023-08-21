@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress checks="[a-zA-Z0-9]*"
+              files="..*Test.*" />
+   
+    <suppress checks="SwitchWithoutFinalBreak"
+              files="..StorageManager.*" />
+    <suppress checks="[a-zA-Z0-9]*"
+              files="..castor.generated.*" />
+    <suppress checks="[a-zA-Z0-9]*"
+              files="..*Session.*" />
+    <suppress checks="[a-zA-Z0-9]*"
+              files="..*CMP.*" ></suppress>
+    <suppress checks="LogIfContainsCode"
+              files="..PIXMLServlet*.*" />
+    <suppress checks="SuiteMethodExists"
+              files="..Update*.*" />
+    <suppress checks="SuiteMethodExists"
+              files="..ContractMailingUWAuthorizationServiceTest.*" />
+    <suppress checks="SystemOutPrintlnUsed"
+              files="..PIUpdateTestCase.*" />
+    <suppress checks="ExceptionThrownWithoutLog"
+              files="..PIUpdateTestCase.*" />
+    <suppress checks="SystemOutPrintlnUsed"
+              files="..PIServletUpdateTestCase.*" />
+    <suppress checks="ExceptionThrownWithoutLog"
+              files="..PIServletUpdateTestCase.*" />
+    <suppress checks="MagicNumber"
+              files="..*StorageManager.*" />
+  
+</suppressions>

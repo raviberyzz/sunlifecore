@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Recommended Products and Articles"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <options
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldDescription="Map the selector to corresponding experience frament"
+                        fieldLabel="Selector to experience fragment mapping"
+                        renderReadOnly="{Boolean}true">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./items">
+                            <items jcr:primaryType="nt:unstructured">
+                                <selector
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    emptyText="Enter the selector"
+                                    fieldLabel="Selector"
+                                    name="./selector"/>
+                                <exfragPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    emptyText="Select the Experience fragment"
+                                    fieldDescription="Path of the experience fragment that will be rendered when the selector is passed in request."
+                                    fieldLabel="Experience fragment path"
+                                    name="./exfragPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/experience-fragments/sunlife"/>
+                            </items>
+                        </field>
+                    </options>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

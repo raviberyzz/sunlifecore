@@ -1,0 +1,17 @@
+<sly data-sly-use.newsroomAnnouncement="ca.sunlife.web.cms.core.models.NewsroomAnnouncementModel"></sly>
+<sly data-sly-test.notEmpty="${newsroomAnnouncement.fragmentPath}">
+    <div>
+        <div>
+            <div data-sly-test="${!newsroomAnnouncement.checkboxHideDate}">
+                ${newsroomAnnouncement.articleData.articlePublishedDate}
+            </div>
+            <h3 data-sly-test="${newsroomAnnouncement.articleData.newsroomHeading}">
+                ${newsroomAnnouncement.articleData.newsroomHeading}
+            </h3>
+        </div>
+        <div>
+            ${newsroomAnnouncement.articleData.newsroomContent  @context='html'}
+        </div>
+    </div>
+</sly>
+<div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>

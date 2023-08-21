@@ -1,0 +1,34 @@
+<div class="mega-menu2-wrapper-desk">
+	{{#if mega-menu-2}}
+	<div class="col-xs-12 slf-header-mega-menu2">
+		<div class="col-xs-4 mega-menu2-list">
+				<ul class="list-unstyled">
+				{{#each mega-menu-2-list}}
+					<li class="{{submenu-class}}">
+						<a class="dropdown-toggle subnav-trigger" data-toggle="dropdown" href="{{href}}">{{text}}</a>
+					{{#if submenu}}
+					<ul class="dropdown-menu" role="menu">
+						{{#each mega-submenu-list}}
+							<li><a href="{{href}}">{{text}}</a></li>
+						{{/each}}
+					</ul>
+					{{/if}}
+					</li>
+				{{/each}}
+	</div>
+		<div class="col-xs-4 ">
+		</div>
+		<div class="col-xs-4 ">	
+		</div>
+		<div class="col-xs-4 mega-menu2-img {{display}}">
+			<div class="h4">Big Belly = High Risk?</div>
+			<p class="module-body">
+				<a href="/HK/Life+Moments/Staying+healthy/Diabetes+Alert?vgnLocale=en_CA">Free assessment </a>
+				<img src="https://sunlife.com/static/hk/Insurance/Savings &amp; Life/Latest Promotion/191029_sunlife_smallbanner_L2_en.jpg" name="retirement.jpg" class="mega-menu-col4-img" alt="Futureproof Retirement Plans" params="type=image/jpeg" >
+			</p>
+		</div>
+	</div>
+	{{/if}}
+
+</div>
+

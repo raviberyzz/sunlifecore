@@ -1,0 +1,35 @@
+<div class="cmp-form-text"
+     data-sly-use.text="com.adobe.cq.wcm.core.components.models.form.Text"
+     data-sly-use.customText="ca.sunlife.web.cms.core.models.FormTextModel"
+     data-cmp-is="formText"
+     data-cmp-constraint-message="${text.constraintMessage}"
+     data-cmp-required-message="${text.requiredMessage}">
+	 <label for="${text.id}" class="sr-only" data-sly-test="${text.hideTitle}">${text.title}</label>
+    <label for="${text.id}" data-sly-test="${text.title && !text.hideTitle}">${text.title}</label>
+    <p data-sly-test="${!text.placeholder && text.helpMessage}" class="cmp-form-text__help-block">${text.helpMessage}</p>
+    <textarea data-sly-test.useTextarea="${text.type == 'textarea'}"
+        data-cmp-hook-form-text="input"
+        id="${customText.id}"
+        placeholder="${text.placeholder}"
+        data-parsley-error-message="${customText.requiredMessage}"
+        data-parsley-pattern="${customText.validation}"
+        data-parsley-id="4"
+        name="${text.name}"
+        readonly="${text.readOnly}"
+        data-parsley-required="${text.required}"
+        rows="${text.rows}">${text.value}</textarea>
+    <input data-sly-test="${!useTextarea}"
+        data-cmp-hook-form-text="input"
+        type="${text.type}"
+        id="${customText.id}"
+        placeholder="${text.placeholder}"
+        data-parsley-error-message="${customText.validationError}"
+	data-parsley-required-message="${customText.requiredMessage}"
+        data-parsley-pattern="${customText.validation}"
+        data-parsley-pattern-message="${customText.validationError}"
+        data-parsley-id="4"
+        name="${text.name}"
+        value="${text.value}"
+        readonly="${text.readOnly}"
+        data-parsley-required="${text.required}"/>
+</div>

@@ -1,0 +1,14 @@
+<sly data-sly-use.articleModel="ca.sunlife.web.cms.core.models.RelatedArticles">
+<sly data-sly-test.imgLazyLoaded = "${properties.isLazyLoaded ? 'lazy' : ''}" />
+<div class="bright-sol-related-article" data-sly-test.notEmpty="${articleModel.articleFragmentPath}">
+        <div class="article-content">
+            <a href="${articleModel.articleData.articlePageLink @ extension = 'html'}">
+                <div class="article-image" aria-hidden="true">
+                    <img data-sly-attribute.loading="${imgLazyLoaded}" src="${articleModel.articleData.articleThumbnailImage}" />                                
+                </div>
+                ${articleModel.articleData.articleHeadline @context='html'}
+            </a>
+        </div>
+    </div>
+    <div data-sly-test="${!notEmpty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+</sly>

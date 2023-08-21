@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Site Configuration"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Site Specific Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <section-general
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="General"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <siteName
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Site name"
+                                        name="./siteName"/>
+                                    <domain
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Domain"
+                                        name="./domain"/>
+									<staticPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Static path"
+                                        name="./staticPath"/>
+                                    <site-url
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Site content location"
+                                        name="./siteUrl"/>
+                                    <siteRootPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Site Root location"
+                                        name="./siteRootPath"/>
+                                    <alt-langague
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add' to add a new alternate language"
+                                        fieldLabel="Alternate languages">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./alternateLanguages">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <languageCode
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Language code"
+                                                    name="./languageCode"/>
+                                                <siteLocation
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Site location"
+                                                    name="./siteLocation"/>
+                                                <domain
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Domain"
+                                                    name="./domain"/>
+                                                <defaultLanguage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    defaultValue="false"
+                                                    fieldDescription="Is default language?"
+                                                    fieldLabel="Is default language?"
+                                                    name="./defaultLanguage"
+                                                    text="Is default language?"
+                                                    value="{Boolean}true"/>
+                                            </items>
+                                        </field>
+                                    </alt-langague>
+                                    <hrefLang
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldDescription="Hreflang modification needed?"
+                                        fieldLabel="Modify HREF-LANG?"
+                                        name="./hrefLang"
+                                        text="Modify HREF-LANG?"
+                                        value="{Boolean}true"/>
+									<analyticsScriptPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Analytics synchronous script path"
+                                        name="./analyticsScriptPath"/>
+                                    <analyticsTealiumScript
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Analytics tealium script"
+                                        name="./analyticsTealiumScript"/>
+                                    <experiencefragmentPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Experience fragment path"
+                                        name="./experienceFragmentPath"/>
+                                    <navigationOverview
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation overview title"
+                                        name="./navigationOverview"/>
+                                    <searchApi
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search API URL"
+                                        name="./searchApi"/>
+                                    <autoCompleteUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search Auto Complete URL"
+                                        name="./autoCompleteUrl"/>
+									<enableContextHub
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Enable context hub"
+                                        name="./enableContextHub"
+                                        text="Enable context hub"
+                                        value="{Boolean}true"/>
+                                    <userInfoPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="User Info path"
+                                        name="./userInfoPath"/>    
+                                    <disableContextHubTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Disable Context Hub tags"
+                                        name="./disableContextHubTags"
+                                        text="Disable Context Hub tags"
+                                        value="{Boolean}true"/>    
+                                    <disableSocialSharingTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Disable SEO tags"
+                                        name="./disableSocialSharingTags"
+                                        text="Disable SEO tags"
+                                        value="{Boolean}true"/>	
+                                    <favIcon
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Fav Icon"
+                                        name="./favIcon"/>
+									<nonResponsive
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        defaultValue="false"
+                                        fieldLabel="Is non responsive site?"
+                                        name="./nonResponsive"
+                                        text="Is non responsive site?"
+                                        value="{Boolean}true"/> 
+                                </items>
+                            </section-general>
+                            <section-article
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Article Related Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <articleDateFormat
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        fieldLabel="Article Date Format"
+                                        name="./articleDateFormat"/>
+                                    <articlePublisherName
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter the article publisher name for SEO JSON"
+                                        fieldLabel="Article Publisher Name"
+                                        name="./articlePublisherName"/>
+                                    <articlePublisherLogo
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Enter the article publisher logo for SEO JSON"
+                                        fieldLabel="Article Publisher Logo"
+                                        name="./articlePublisherLogo"/>
+                                    <articleType
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article type"
+                                        fieldLabel="Article type"
+                                        name="./articleType"/>
+                                    <articlePublisherForMetaTag
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article publisher (Social meta tags)"
+                                        fieldLabel="Article publisher (Social meta tags)"
+                                        name="./articlePublisherForMetaTag"/>
+                                    <articleCreator
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article creator"
+                                        fieldLabel="Article creator"
+                                        name="./articleCreator"/>
+                                    <articleSite
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article site"
+                                        fieldLabel="Article site"
+                                        name="./articleSite"/>
+                                     <articleBrowserSite
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Article browser title"
+                                        fieldLabel="Article browser title"
+                                        name="./articleTitleFormat"/>    
+                                </items>
+                            </section-article>
+                           <section-productcards
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Product Card Related Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <featuredImagePath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Enter the featured image path"
+                                        fieldLabel="Featured Image Path"
+                                        name="./featuredImagePath"
+                                        rootPath="/content/dam/sunlife"/>
+                                </items>
+                            </section-productcards>
+                            <section-outage
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Outage Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <outageDateFormat
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter the date format for e.g., YYYY-MM-dd"
+                                        fieldLabel="Outage Date Format"
+                                        name="./outageDateFormat"/>
+                                </items>
+                            </section-outage>
+                            <section-page
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Page Defaults"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <description
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Page description"
+                                        name="./pageDescription"/>
+                                    <locale
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Page locale"
+                                        name="./pageLocale"/>
+                                    <site-suffix
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Page title format"
+                                        name="./siteSuffix"/>
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Social media image"
+                                        fieldLabel="Social media image"
+                                        name="./socialMediaImage"/>
+                                    <udoTagsPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="UDO tags path"
+                                        fieldLabel="UDO tags path"
+                                        name="./udoTagsPath"/>
+									<extraClientlibs
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Extra Clientlibs"
+                                        name="./extraClientlibs"/>	
+									<siteHeadInclude
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Site Head include"
+                                        name="./siteHeadInclude"/>
+                                    <siteBodyInclude
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="Site Body include"
+                                        name="./siteBodyInclude"/>
+                                    <addOpeningDiv
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="When value given, html content will be put under a parent div with id."
+                                        fieldLabel="Root DIV id"
+                                        name="./addOpeningDiv"/>
+									<wrapperDivClass
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="When value given, html content will be put under a parent div with class."
+                                        fieldLabel="Root DIV class"
+                                        name="./wrapperDivClass"/>	
+									<siteSelector
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Site Selector"
+                                        name="./siteSelector"/>
+                                </items>
+                            </section-page>
+                            <signin-configuration
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Sign In Configuration"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <mfaDomainPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="MFA Domain Path"
+                                        name="./mfaDomainPath"/>
+                                     <mfaencryption
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="MFA encryption"
+                                        name="./mfaEncryption"/>   
+                                </items>
+                            </signin-configuration>
+                            <coveo-search
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Coveo Search Configuration"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <coveoSearch
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Coveo Search"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        fieldDescription="Coveo Search"
+                                        margin="{Boolean}false">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <search
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Do you need Coveo Search for the site"
+                                                        name="./coveoSearchEnabled">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".list-option-listFromSearch-showhide-target"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <false
+                                                                granite:hide="${cqDesign.disableFalse}"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="No"
+                                                                value="false"/>
+                                                            <true
+                                                                granite:hide="${cqDesign.disableTrue}"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Yes"
+                                                                value="true"/>
+                                                        </items>
+                                                    </search>
+                                                    <searchtrue
+                                                        granite:class="hide list-option-listFromSearch-showhide-target foundation-layout-util-vmargin"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="true"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <searchToken
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Token"
+                                                                        name="./searchToken"/>
+                                                                    <searchUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldLabel="Search URL"
+                                                                        name="./searchUrl"/>
+                                                                    <orgId
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Organization Id"
+                                                                        name="./orgId"/>
+                                                                    <restUri
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Rest URI"
+                                                                        name="./restUri"/>
+                                                                    <searchHub
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Hub"
+                                                                        name="./searchHub"/>
+                                                                    <siteLocale
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Culture Code"
+                                                                        name="./siteLocale"/>
+                                                                    <searchLanguage
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Search Language"
+                                                                        name="./searchLanguage"/>    
+                                                                </items>
+                                                            </column>
+                                                        </items>
+                                                    </searchtrue>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </coveoSearch>
+                                </items>
+                            </coveo-search>
+                        </items>
+                    </general>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,146 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !text}"></sly>
+<sly data-sly-use.siteConfig="ca.sunlife.web.cms.core.models.SiteConfigModel"></sly>
+
+<div class="container">
+<div class="page-header">
+   <h2>Sunlife Configuration</h2>
+</div>
+
+<div class="panel panel-default">
+   <div class="panel-heading"><h4>Site Specific Configuration</h4></div>
+   <div class="panel-body">
+      <fieldset class="col-md-8">
+         <legend>General</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+               	  <tr>
+                     <td>Site name:</td>
+                     <td>${siteConfig.siteName}</td>
+                  </tr>
+                  <tr>
+                     <td>Domain:</td>
+                     <td>${siteConfig.domain}</td>
+                  </tr>
+                  <tr>
+                     <td>Static path:</td>
+                     <td>${siteConfig.staticPath}</td>
+                  </tr>
+				  <tr>
+                     <td>Site location:</td>
+                     <td>${siteConfig.siteUrl}</td>
+                  </tr>
+                  <tr>
+                     <td>Site Root location:</td>
+                     <td>${siteConfig.siteRootPath}</td>
+                  </tr>
+                  <tr>
+                     <td>Alternate languages:</td>
+                     <td>
+                     	<sly data-sly-repeat.altLang = "${siteConfig.alternateLanguages}">
+							Alternate language: ${altLang.languageCode}, Site location: ${altLang.siteLocation}, Domain: ${altLang.domain}, Is default?: ${altLang.defaultLanguage} <br/>
+                        </sly>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Experience fragment path:</td>
+                     <td>${siteConfig.experienceFragmentPath}</td>
+                  </tr>
+                  <tr>
+                     <td>Navigation overview title:</td>
+                     <td>${siteConfig.navigationOverview}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+      <div class="clearfix"></div>
+      <fieldset class="col-md-8">
+         <legend>Article Related Properties</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Article Date Format:</td>
+                     <td>${siteConfig.articleDateFormat}</td>
+                  </tr>
+				      <tr>
+                     <td>Article Publisher Name:</td>
+                     <td>${siteConfig.articlePublisherName}</td>
+                  </tr>
+                  <tr>
+                     <td>Article Publisher Logo:</td>
+                     <td>${siteConfig.articlePublisherLogo}</td>
+                  </tr>
+                  <tr>
+                     <td>Article type:</td>
+                     <td>${siteConfig.articleType}</td>
+                  </tr>
+                  <tr>
+                     <td>Article Publisher (For social meta tag):</td>
+                     <td>${siteConfig.articlePublisherForMetaTag}</td>
+                  </tr>
+                  <tr>
+                     <td>Article creator:</td>
+                     <td>${siteConfig.articleCreator}</td>
+                  </tr>
+                  <tr>
+                     <td>Article site:</td>
+                     <td>${siteConfig.articleSite}</td>
+                  </tr>
+                  <tr>
+                     <td>Article browser title:</td>
+                     <td>${siteConfig.articleTitleFormat}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+      <div class="clearfix"></div>
+      <fieldset class="col-md-8">
+         <legend>Page Defaults</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Page description:</td>
+                     <td>${siteConfig.pageDescription}</td>
+                  </tr>
+                  <tr>
+                     <td>Page locale:</td>
+                     <td>${siteConfig.pageLocale}</td>
+                  </tr>
+                  <tr>
+                     <td>Page title format:</td>
+                     <td>${siteConfig.siteSuffix}</td>
+                  </tr>
+				  <tr>
+                     <td>Social media image:</td>
+                     <td>${siteConfig.socialMediaImage}</td>
+                  </tr>
+				  <tr>
+                     <td>UDO tags path:</td>
+                     <td>${siteConfig.udoTagsPath}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+      <div class="clearfix"></div>
+      <fieldset class="col-md-8">
+         <legend>Product Cards related Properties</legend>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <table class="table">
+                  <tr>
+                     <td>Featured Image Path:</td>
+                     <td>${siteConfig.featuredImagePath}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </fieldset>
+   </div>
+</div>
+</div>

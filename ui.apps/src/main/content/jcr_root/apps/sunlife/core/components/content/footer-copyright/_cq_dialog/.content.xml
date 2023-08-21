@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Footer Copyright"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please specify title"
+                        fieldLabel="Title"
+                        name="./title"
+                        rootPath="/content"/>
+                    <copyrightText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please specify Copyright text"
+                        fieldLabel="Copyright Text"
+                        name="./copyrightText"
+                        useFixedInlineToolbar="{Boolean}true"/>
+                    <slffooterText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceSuperType="/apps/sunlife/core/components/content/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please specify SLF text"
+                        fieldLabel="SLF Text"
+                        name="./slfText"
+                        useFixedInlineToolbar="{Boolean}true"/>
+                    <copyrightLinks
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Copyright Links">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./footerItems">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <label
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Please specify footer labels"
+                                            fieldLabel="Label"
+                                            name="./label"/>
+                                        <link
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                            fieldDescription="Link"
+                                            fieldLabel="Link"
+                                            name="./url"
+                                            rootPath="/content"/>
+                                        <target
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldDescription="Please specify target to open in same tab or new tab"
+                                            fieldLabel="Target"
+                                            name="./target">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <sameTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="SameTab"
+                                                    value="_self"/>
+                                                <newTab
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="New Tab"
+                                                    value="_blank"/>
+                                            </items>
+                                        </target>
+                                        <checkboxSeparator
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxSeparator"
+                                            text="Separator"
+                                            uncheckedValue="false"
+                                            value="{Boolean}true"/>
+                                        <checkboxHide
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./checkboxHide"
+                                            text="Hide"
+                                            uncheckedValue="false"
+                                            value="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </copyrightLinks>  
+                    <feedbackLink
+                         jcr:primaryType="nt:unstructured"
+                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                         name="./feedbackLink"
+                         text="Do you want to remove feedback section"
+                         uncheckedValue="false"
+                         value="{Boolean}true"/>                  
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

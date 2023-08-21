@@ -1,0 +1,22 @@
+<sly data-sly-use.listModel="ca.sunlife.web.cms.core.models.ListModel"/>
+<sly data-sly-test.empty="${!listModel.title}" />
+<div data-sly-test="${wcmmode.edit && empty}" class="cq-placeholder" data-emptytext="${component.title}"></div>
+<div class="lists-wrapper clearfix" data-sly-test="${!empty}"> 
+	<div class="links">
+		<h3 class="accordion-heading">${listModel.title}</h3>
+			<div class="collapse list-div">				
+				  <ul class="list-unstyled" data-sly-list.links="${listModel.links}">
+				    <sly data-sly-use.linkListParsing = "${'linklist-parsing.js' @ path=links.linkUrl}">
+					<li>
+					   <sly data-sly-test.linkChecker = "${links.target == 'modal'}">
+					     <a lang ="${links.langCode}" href ="javascript:void(0)" data-target ="${links.linkUrl}" data-title="${links.dataTitle}" data-toggle="${links.target}">${links.linkName @ context='html'}</a>
+					    </sly>
+					   <sly data-sly-test = "${!linkChecker}">  
+					   <a lang ="${links.langCode}" href ="${linkListParsing.navPath}" target ="${links.target}" data-title="${links.dataTitle}" >${links.linkName @ context='html'}</a>
+					   </sly>
+					 </li>
+					 </sly>
+				  </ul>				
+			</div>
+	</div>
+</div>
