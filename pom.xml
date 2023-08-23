@@ -60,6 +60,7 @@
          <componentGroupName>core</componentGroupName>
         <node.version>v16.17.0</node.version>
         <assembly.skipAssembly>false</assembly.skipAssembly>
+        <core.email.components.version>1.2.2</core.email.components.version>
     </properties>
 
     <build>
@@ -974,6 +975,20 @@ Bundle-DocURL:
                 <artifactId>org.apache.sling.dynamic-include</artifactId>
                 <version>3.2.0</version>
             </dependency>
+             <!-- Email Core component -->
+            <dependency>
+         <groupId>com.adobe.cq</groupId>
+         <artifactId>core.email.components.core</artifactId>
+         <version>${core.email.components.version}</version>                    
+       </dependency>
+
+       <dependency>
+         <groupId>com.adobe.cq</groupId>
+         <artifactId>core.email.components.content</artifactId>
+         <version>${core.email.components.version}</version>
+         <type>zip</type>
+       </dependency>
+       <!-- Email Core component -->
         </dependencies>
     </dependencyManagement>
     
