@@ -18,6 +18,7 @@ const path = require('path');
 const modulesManager = require('./conf/modulesManger').instance;
 const ClientLibManager = require('./conf/clientlibManger').clientLibManager;
 
+const tenant = 'core';
 const BUILD_DIR = path.join(__dirname, 'dist');
 const CLIENTLIB_DIR = path.join(
   __dirname,
@@ -29,14 +30,15 @@ const CLIENTLIB_DIR = path.join(
   'jcr_root',
   'apps',
   'sunlife',
-  'core',
+  tenant,
   'clientlibs'
 );
 
 const allModuleDefinations = modulesManager.getModules();
 
 const clientLibsConfig = new ClientLibManager({
-  modules: allModuleDefinations
+  modules: allModuleDefinations,
+  tenant: tenant
 });
 
 const clientlibsConfigObj = clientLibsConfig.getClientlibs();
@@ -51,18 +53,18 @@ function getLibs() {
 
   let clientlibsArr = Object.keys(clientlibsConfigObj);
 
-    for (let i = 0; i < clientlibsArr.length; i++) {
-        const clientlib = clientlibsArr[i];
-        let clientlibConfig = clientlibsConfigObj[clientlib];
-        clientlibConfig.outputPath = path.join(
-          __dirname,
-          '..',
-          ...clientlibConfig.outputPath.split('/')
-        );
-        libs.push({...libsBaseConfig, ...clientlibConfig})
-    }
+  for (let i = 0; i < clientlibsArr.length; i++) {
+    const clientlib = clientlibsArr[i];
+    let clientlibConfig = clientlibsConfigObj[clientlib];
+    clientlibConfig.outputPath = path.join(
+      __dirname,
+      '..',
+      ...clientlibConfig.outputPath.split('/')
+    );
+    libs.push({ ...libsBaseConfig, ...clientlibConfig })
+  }
 
-    return libs;
+  return libs;
 }
 
 // Config for `aem-clientlib-generator`

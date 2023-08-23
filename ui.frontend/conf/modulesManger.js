@@ -2,21 +2,23 @@ const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
 const Util = require('./util');
-const util = new Util({ module: 'ModulesManager' });
+
 const APP_PROJECT_DIR = path.join(__dirname,
     '..', 'ui.apps', 'src', 'main', 'content', 'jcr_root', 'apps', 'sunlife');
-
 const UI_APP = 'ui.apps';
-
 const tenant = 'core';
 
+const util = new Util({ module: 'ModulesManager' });
+
+Util.tenantPrefix = `${tenant}-`;
+
 const explicitModulesPaths = [
-    'src/main/webpack/components/content/dynamic-form/index_module.js',
-    'src/main/webpack/components/content/stock-ticker/index_module.js',
+    'src/main/webpack/components/content/accordion/index_module.js',
+    'src/main/webpack/components/content/core-accordion/v1/accordion/index_module.js',
     'src/main/webpack/components/form/text/index_module.js',
     'src/main/webpack/components/content/text/index_module.js',
-    'src/main/webpack/prerequisite/author/index_module.js',
-    'src/main/webpack/prerequisite/react-components/index_module.js'
+    'src/main/webpack/prerequisite/base/index_module.js',
+    'src/main/webpack/prerequisite/core-vendor/index_module.js'
 ];
 
 const explicitModules = () => {
@@ -41,6 +43,7 @@ const ModulesManager = class {
         this.debug = params.debug;
         this.tenant = params.tenant;
         this.tenantDir = this.getTenantDir(this.tenant);
+        this.moduleVersion = null;
         this.initModules();
     }
 
@@ -55,10 +58,12 @@ const ModulesManager = class {
 
     findModules() {
         const modules = this.debug ? explicitModules() : glob.sync('*/**/index_module.js');
-        util.logger(`Indexing modules with debug ${this.debug}`);
+        // util.logger(`Indexing modules with debug ${this.debug}`);
+
         for (let i = 0; i < modules.length; i++) {
             const modulePath = modules[i];
             const md = this.getModuleDefinition(modulePath);
+            // util.logger(`getModuleDefinition ${JSON.stringify(md, null, 4)}`);
             if (md) {
                 if (!this.modules[md.namespace]) {
                     this.modules[md.namespace] = md;
@@ -68,7 +73,7 @@ const ModulesManager = class {
             }
         }
 
-        if (this.reactComps) {
+        if (this.reactComps.length) {
             util.logger(`Indexed react-components ${this.reactComps}`);
             this.modules['react-components'].currentModuleRootFile = this.reactComps;
         }
@@ -90,6 +95,9 @@ const ModulesManager = class {
         let isReactComp = false;
         let isContainResources = false;
         let jsxFiles = [];
+        let moduleNamespaceIndex = null;
+        let isPrefixModule = false;
+        this.moduleVersion = null;
 
         /* current given root file paths root directory */
         const currentModuleRootDir = currentModuleRootFile.replace('index_module.js', '');
@@ -107,13 +115,28 @@ const ModulesManager = class {
         /* collect root file path chucks in a array */
         const currentModuleRootFileChunks = currentModuleRootFile.split('/');
 
+        this.moduleVersion = currentModuleRootFileChunks.filter(util.getVersion)[0];
+
+        isPrefixModule = currentModuleRootFileChunks.some(util.isTenantPrefixModule);
+
         currentModuleRootFileChunks.shift();
+
+        if (this.moduleVersion) {
+            moduleNamespaceIndex = currentModuleRootFileChunks.indexOf(this.moduleVersion) - 1;
+        } else {
+            moduleNamespaceIndex = currentModuleRootFileChunks.length - 2
+        }
+
         /* assign a namespace to module as its folder name */
-        const namespace = currentModuleRootFileChunks[currentModuleRootFileChunks.length - 2];
+        const namespace = `${currentModuleRootFileChunks[moduleNamespaceIndex]}${this.moduleVersion ? '.' + this.moduleVersion : ''}`;
+
         /* check module type as component or prerequisite */
         const moduleType = currentModuleRootFileChunks.includes('components') ? 'components' : 'prerequisite';
 
-        const currentModulePathDir = moduleType === 'components' ? path.join('components', ...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1)) : 'clientlibs';
+        const moduleTypeDir = moduleType === 'components' ? 'components' : 'clientlibs';
+        const currentModulePathDir = path.join(moduleTypeDir, ...currentModuleRootFileChunks.slice(3, currentModuleRootFileChunks.length - 1));
+
+
         const appClientlibRootDir = path.join(this.tenantDir, currentModulePathDir).replace(/\\/g, '/');
 
         /* make unique module name by appending it with parent folder to avoid duplicate modules if exist */
@@ -124,8 +147,6 @@ const ModulesManager = class {
 
         /* folder name for webpack output bundle for current module */
         const distClientlibDir = `clientlib-${type}${moduleName}`;
-
-        util.logger(`Creating module definition for '${pathReferencedModuleName}' ${moduleType} type on ${distClientlibDir} dist folder.`);
 
         /* if current module contain any resources directory then create webpack copy plugin pattern array to move everything in that clientlib dist folder */
         try {
@@ -154,7 +175,8 @@ const ModulesManager = class {
             pathReferencedModuleName,
             distClientlibDir,
             isContainResources,
-            isReactComp
+            isReactComp,
+            isPrefixModule
         };
     }
 
