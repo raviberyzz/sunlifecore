@@ -18,4 +18,6 @@
     <filter root="/apps/sunlife-packages/core"/>
     <filter root="/apps/sunlife-vendor-packages/core"/>
     <filter root="/apps/sunlife/install"/>
+    <filter root="/apps/sunlife-email-packages/application/install"/>
+    
 </workspaceFilter>
