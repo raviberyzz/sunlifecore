@@ -1782,7 +1782,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
-    	  if (siteDomain.contains(".hk")) {
+    	  if (siteDomain.contains(".hk") ||siteDomain.contains(".id") ) {
 				LOG.debug("siteDomain {}", siteDomain);
 				String href_lang_path = createHrefLangPath(siteDomain, configService.getPageRelativeUrl(pagePath));
 				altLanguageLinks.put(hrefLang, href_lang_path);
