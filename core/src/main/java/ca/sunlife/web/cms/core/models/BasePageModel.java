@@ -1914,7 +1914,7 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
         sourceSiteDomain + sourceSiteUrl);*/
-    if (sourceSiteDomain.contains(".hk")) {
+    if (sourceSiteDomain.contains(".hk") || siteDomain.contains(".id")) {
 		LOG.debug("sourceSiteDomain {}", sourceSiteDomain);
 		String href_lang_path = createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
 		altLanguageLinks.put(hrefLang, href_lang_path);
