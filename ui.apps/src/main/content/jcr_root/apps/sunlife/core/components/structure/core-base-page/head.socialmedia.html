@@ -1,0 +1,32 @@
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
+<sly data-sly-test = "${!baseModel.disableSocialSharingTags}">
+<meta property="${key}"
+      data-sly-repeat.key="${baseModel.customMetadata.keySet}"
+      content="${baseModel.customMetadata[key] @context='unsafe'}"/>
+</sly>	  
+<link rel="canonical" itemprop="url" href="${baseModel.seoCanonicalUrl}"/>
+<link rel="alternate" data-sly-repeat.key="${baseModel.altLanguageLinks}" 
+	hreflang="${key}" href="${baseModel.altLanguageLinks[key]}"/>
+
+<!-- UDO starts here -->
+<script type="text/javascript">
+      var __slf_search_config = {
+            api_url: "${baseModel.searchApi @context='unsafe'}",
+            autocomplete_url: "${baseModel.autoCompleteUrl @context='unsafe'}",
+            sayt_url: "${baseModel.searchApi @context='unsafe'}"
+      };
+      var utag_data = ${baseModel.udoTags @context='unsafe'}
+      var userProfileHome;
+      var hasUserGroups;
+</script>
+<sly data-sly-test="${baseModel.enableContextHub && baseModel.enableContextHub == 'true' && baseModel.userInfoPath }" data-sly-resource="${@path=baseModel.userInfoPath , decorationTagName=''}" />
+<!-- UDO ends here -->
+<!-- start - Include Site level CSS and scripts -->
+<sly data-sly-test.siteHeadInclude = "${baseModel.siteHeadInclude}"> 
+	<sly>${baseModel.siteHeadInclude @ context = 'unsafe'}</sly>
+</sly>
+<!-- end - Include Site level CSS and scripts -->
+<sly>${baseModel.headInclude @ context = 'unsafe'}</sly>
+<!-- Synchronous Tag Support starts here -->
+<script src="${baseModel.analyticsScriptPath}" type="text/javascript"></script>
+<!-- Synchronous Tag Support ends here -->
