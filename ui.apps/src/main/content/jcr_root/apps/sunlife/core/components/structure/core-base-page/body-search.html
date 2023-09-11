@@ -1,0 +1,51 @@
+<sly data-sly-use.baseModel="ca.sunlife.web.cms.core.models.BasePageModel" />
+<sly data-sly-test="${baseModel.coveoSearchEnabled == 'true' @context='unsafe'}">
+    <form name="search-url" action="${baseModel.searchUrl @ extension = 'html'}"></form>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/CoveoJsSearch.Lazy.min.js"></script>
+    <script src="https://static.cloud.coveo.com/searchui/v2.10095/js/cultures/${baseModel.siteLocale @context='unsafe'}.js"></script>
+    <script type="text/javascript" src="https://static.cloud.coveo.com/coveo.analytics.js/coveoua.js"></script>
+    <script type="text/javascript">
+        var coveoSearchlanguage = "${baseModel.searchLanguage @context='unsafe'}"
+        var searchConfig = {
+            orgId: "${baseModel.orgId @context='unsafe'}",
+            token: "${baseModel.searchToken @context='unsafe'}",
+            restUri: "${baseModel.restUri @context='unsafe'}",
+            searchHub: "${baseModel.searchHub @context='unsafe'}",
+            searchUrl: $('form[name="search-url"]').attr('action')
+        };
+
+        if ($('.advisorhub-sunlife-content-page').length > 0 || $('.advisorhub-sunlife-home-page').length > 0) {
+            var advisorHubSegment = ContextHub.SegmentEngine.getResolvedSegments();
+            var advisorHubManager = false;
+            for (var i = 0; i < advisorHubSegment.length; i++) {
+                if (advisorHubSegment[i]["title"] == "Manager") {
+                    advisorHubManager = true;
+                    break;
+                }
+            }
+
+            var token = searchConfig.token.split('::');
+            var searchHub = searchConfig.searchHub.split('::');
+            console.log('advisor-hub Manager : ', advisorHubManager)
+            if (advisorHubManager == true) {
+                searchConfig.token = token[0]
+                searchConfig.searchHub = searchHub[0]
+            }
+            else {
+                searchConfig.token = token[1]
+                searchConfig.searchHub = searchHub[1]
+            }
+        }
+
+        //Configure a search endpoint.
+        Coveo.SearchEndpoint.configureCloudV2Endpoint('', searchConfig.token, searchConfig.restUri);
+
+        //Coveo UA
+        coveoua("init", searchConfig.token);
+        coveoua("send", "pageview", {
+            contentIdKey: "url",
+            contentIdValue: utag_data.page_canonical_url,
+            contentType: utag_data.page_category
+        });
+    </script>
+</sly>
