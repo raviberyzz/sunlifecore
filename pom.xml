@@ -60,7 +60,7 @@
          <componentGroupName>core</componentGroupName>
         <node.version>v16.17.0</node.version>
         <assembly.skipAssembly>false</assembly.skipAssembly>
-        <core.email.components.version>1.2.2</core.email.components.version>
+        <core.email.components.version>1.2.0</core.email.components.version>
     </properties>
 
     <build>
