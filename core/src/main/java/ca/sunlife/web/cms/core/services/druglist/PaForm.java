@@ -108,7 +108,7 @@ public final class PaForm {
     private String getCellValue(Row row, int index) {
         String result = StringUtils.EMPTY;
         if (row.getCell(index) != null) {
-            CellType type = row.getCell(index).getCellTypeEnum();
+            CellType type = row.getCell(index).getCellType();
             if (CellType.STRING.equals(type)) {
                 result = row.getCell(index).getStringCellValue();
             } else if (CellType.NUMERIC.equals(type)) {
