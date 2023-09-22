@@ -315,10 +315,10 @@ public class SunhubUploadUtility implements WorkflowProcess {
 	private String getCellValue(Cell cell) {
 		String cellValue = "";
 		if (cell != null) {
-			if (cell.getCellTypeEnum().toString().equals("STRING")) {
+			if (cell.getCellType().toString().equals("STRING")) {
 				cellValue = cell.getStringCellValue();
 			}
-			if (cell.getCellTypeEnum().toString().equals("NUMERIC")) {
+			if (cell.getCellType().toString().equals("NUMERIC")) {
 				cellValue = String.valueOf(cell.getNumericCellValue());
 			}
 			logger.debug("not null value is {}", cellValue);

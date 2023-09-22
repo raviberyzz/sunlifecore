@@ -1723,7 +1723,6 @@ public void setDisableContextHubTags(String disableContextHubTags) {
       }
       final String siteDomain = configService.getConfigValues(DOMAIN_STR, pagePath);
 //      final String siteUrl = configService.getConfigValues(SITE_URL, pagePath);
-
       // check if it is a source
       LOG.debug("is source {}", relationshipManager.isSource(resource));
       // check if it is a live copy
@@ -1783,9 +1782,13 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             pageLocale.split("_") [ 0 ] + "-"
                 + pageLocale.split("_") [ 1 ].replace("_", "-").toLowerCase(Locale.ROOT),
             siteDomain + configService.getPageRelativeUrl(pagePath));*/
-    	  altLanguageLinks.put(
-    			  hrefLang,
-  	            siteDomain + configService.getPageRelativeUrl(pagePath));
+    	  if (siteDomain.contains(".hk") ||siteDomain.contains(".id") ) {
+				LOG.debug("siteDomain {}", siteDomain);
+				String href_lang_path = createHrefLangPath(siteDomain, configService.getPageRelativeUrl(pagePath));
+				altLanguageLinks.put(hrefLang, href_lang_path);
+			} else {
+				altLanguageLinks.put(hrefLang, siteDomain + configService.getPageRelativeUrl(pagePath));
+			}
         
 	        if(pageAltLanguageLinks.size()==1) {
 	      	  Map.Entry<String,String> entry = pageAltLanguageLinks.entrySet().iterator().next();
@@ -1911,9 +1914,13 @@ public void setDisableContextHubTags(String disableContextHubTags) {
             + sourcePageLocale.split("_") [ 1 ].replace("_", "-")
                 .toLowerCase(Locale.ROOT),
         sourceSiteDomain + sourceSiteUrl);*/
-    altLanguageLinks.put(
-    		hrefLang,
-            sourceSiteDomain + sourceSiteUrl);
+    if (sourceSiteDomain.contains(".hk") || sourceSiteDomain.contains(".id")) {
+		LOG.debug("sourceSiteDomain {}", sourceSiteDomain);
+		String href_lang_path = createHrefLangPath(sourceSiteDomain, sourceSiteUrl);
+		altLanguageLinks.put(hrefLang, href_lang_path);
+	} else {
+		altLanguageLinks.put(hrefLang, sourceSiteDomain + sourceSiteUrl);
+	}
   }
 
   /**
@@ -2085,5 +2092,24 @@ public void setDisableContextHubTags(String disableContextHubTags) {
 		LOG.debug("Page include processed: {}", processedPageInclude);
 		return processedPageInclude;
 	}
-
+  /* Below code will get the full url request and split the pagination from AEM page */
+  public String createHrefLangPath(String domain, String siteUrl){
+     String selector[]=  request.getRequestPathInfo().getSelectors();
+     siteUrl=siteUrl.substring(0,siteUrl.length()-1);
+     String hrefLangPath= domain+siteUrl ;
+     LOG.debug("inital  hrefLangPath --> {}",hrefLangPath);
+     String urlValue="";
+   for(String selectorValue:selector){
+    if(selectorValue.contains("-")){
+      urlValue=urlValue+"."+selectorValue; // in case of multiple selector dot is splitter
+    }
+    else{
+      urlValue=urlValue+"/"+selectorValue; // in case of pagination paginated page value should be eg. /1/
+    } 
+   }
+   urlValue=urlValue+"/";  // all the urls should end with / slash
+   LOG.debug("final String --> {}",urlValue);
+   
+    return hrefLangPath+urlValue;
+  }
 }
