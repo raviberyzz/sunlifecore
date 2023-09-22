@@ -9,10 +9,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MergeIntoSingle = require('webpack-merge-and-include-globally');
 const modulesManager = require('./conf/modulesManger').instance;
 const Util = require('./conf/util');
-const projectModules = modulesManager.getModules();
+const projectModules = modulesManager.getModulesToBundle();
 const resourcesArr = modulesManager.getResourceModules();
+const nonBundlableGlobalModules = modulesManager.getGlobalModules();
 
 const util = new Util({ module: 'Webpack.common' });
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
@@ -191,6 +193,13 @@ const handlerPlugins = () => {
             patterns: [...resourcesArr]
         }));
     };
+
+    // Copy files from source to dist without wrapping in webpack module bundle
+    if(!nonBundlableGlobalModules.length) {
+        plugins.push(new MergeIntoSingle({
+            files: nonBundlableGlobalModules
+        }))
+    }
 
     return plugins
 };
