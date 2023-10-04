@@ -488,9 +488,9 @@ public class DrugListServiceImpl implements DrugListService {
                 Row policy = lookupSheet.getRow(rowIndex);
                 if (policy != null && policy.getCell(1) != null) {
                     String policyNumber = getCellValue(policy, 1);
-                    if (CellType.STRING.equals(policy.getCell(1).getCellTypeEnum())) {
+                    if (CellType.STRING.equals(policy.getCell(1).getCellType())) {
                         policyNumber = policy.getCell(1).getStringCellValue().replaceFirst("^0*","");
-                    } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellTypeEnum())) {
+                    } else if (CellType.NUMERIC.equals(policy.getCell(1).getCellType())) {
                         policyNumber = Double.toString(policy.getCell(1).getNumericCellValue());
                         policyNumber = policyNumber.substring(0, policyNumber.length() - 2);
                     } else {
@@ -641,7 +641,7 @@ public class DrugListServiceImpl implements DrugListService {
     private String getCellValue(Row row, int index) {
         String result = StringUtils.EMPTY;
         if (row.getCell(index) != null) {
-            CellType type = row.getCell(index).getCellTypeEnum();
+            CellType type = row.getCell(index).getCellType();
             if (CellType.STRING.equals(type)) {
                 result = row.getCell(index).getStringCellValue();
             } else if (CellType.NUMERIC.equals(type)) {
