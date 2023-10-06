@@ -285,5 +285,10 @@ Bundle-SymbolicName: sunlife.core
 	      <version>3.9</version>
 	      <scope>provided</scope>
 	    </dependency>
+		<!-- project lombok include -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
     </dependencies>
 </project>
