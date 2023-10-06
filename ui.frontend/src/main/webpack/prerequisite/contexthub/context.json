@@ -1,3 +1,3 @@
 {
-    "embed":"sunlife.core.vendor,granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main"
+    "embed":"sunlife.core.vendor-generic,granite.utils,granite.jquery,cq.jquery,cq.wcm.foundation,cq.wcm.foundation-main"
 }

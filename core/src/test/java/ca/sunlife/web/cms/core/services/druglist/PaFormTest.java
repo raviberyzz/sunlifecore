@@ -171,7 +171,7 @@ public class PaFormTest {
             @Override
             public Cell answer(InvocationOnMock invocationOnMock) throws Throwable {
                 Cell cell = mock(Cell.class);
-                when(cell.getCellTypeEnum()).thenReturn(CellType.STRING);
+                when(cell.getCellType()).thenReturn(CellType.STRING);
                 if (new Integer(0).equals(invocationOnMock.getArgument(0))){
                     when(cell.getStringCellValue()).thenReturn(categories);
                 } else if (new Integer(1).equals(invocationOnMock.getArgument(0))){
