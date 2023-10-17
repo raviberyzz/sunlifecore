@@ -93,7 +93,7 @@
                     </analytics>
                     <spacing jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
-                        path="/apps/sunlife/core/components/common/author-dialog/spacing" />
+                        path="/apps/sunlife/core/components/common/editor/dialog/spacing" />
                 </items>
             </tabs>
         </items>
