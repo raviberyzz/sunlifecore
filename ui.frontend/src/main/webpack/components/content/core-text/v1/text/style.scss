@@ -1,0 +1,42 @@
+.cmp-text {
+
+    table {
+        width: 100%;
+        margin-bottom: 1rem;
+        vertical-align: top;
+        border-color: var(--bs-table-border-color);
+        
+        > tbody {
+            vertical-align: inherit;
+        }
+        
+        > thead {
+            vertical-align: bottom;
+        }
+
+        tr {
+            height: 3.3125rem;
+            vertical-align: middle;
+            background-color: #fff; // $table-bg
+            border-bottom-width: 0.125rem; // $table-border-width
+            
+            td,th {
+              font-weight: 400;
+              line-height: 21px;
+              font-size: 0.875rem;
+              padding: 1rem; // $table-cell-padding-x $table-cell-padding-y
+            }
+
+            &:first-child td {
+                color: var(--grey-900);
+                font-size: 1rem;
+                font-family: "Sun Life New Text Regular","Helvetica Neue","Calibri",sans-serif;
+                font-weight: 400;
+                line-height: 1.5rem;
+                background-color: var(--brand-secondary-100);
+                border-style: hidden;
+            }
+        }
+    }
+
+}
