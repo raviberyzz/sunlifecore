@@ -1,5 +1,4 @@
 <div
-    class="cmp-title"
     data-sly-use.title="ca.sunlife.web.cms.core.models.v1.TitleModel"
     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
     data-sly-use.headingTemplate="sunlife/core/components/templates/heading.html"
@@ -10,7 +9,7 @@
 		<sly data-sly-call="${headingTemplate.view @ headingObj= title, customClass=title.spacing}"></sly>
     </sly>
     <sly data-sly-test="${!isAuthored}">
-    	<h3 id="${title.linkURL}" class="${title.spacing}" data-sly-element="${title.type}">${title.text}</h3>
+    	<h3 class="${title.spacing}" data-sly-element="${title.type}">${title.text}</h3>
     </sly>
 
 </div>

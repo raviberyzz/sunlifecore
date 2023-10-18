@@ -30,7 +30,6 @@ public class TitleModelTest {
 	@Test
 	void testInitWithText() {
 		title.getSpacing();
-		title.getLinkURL();
 		title.getText();
 		title.getType();
 		title.init();

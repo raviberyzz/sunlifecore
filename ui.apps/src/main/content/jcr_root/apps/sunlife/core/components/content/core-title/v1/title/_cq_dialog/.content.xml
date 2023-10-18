@@ -60,7 +60,7 @@
                                                         value="h5"/>
                                                 </items>
                                             </types>
-                                            <id
+                                            <linkURL
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:hideResource="{Boolean}true"/>
                                         </items>
