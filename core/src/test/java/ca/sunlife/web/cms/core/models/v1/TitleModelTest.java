@@ -1,17 +1,13 @@
-
 package ca.sunlife.web.cms.core.models.v1;
 
 import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import com.day.cq.wcm.api.Page;
-
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ExtendWith(AemContextExtension.class)
@@ -37,7 +33,6 @@ public class TitleModelTest {
 		title.getLinkURL();
 		title.getText();
 		title.getType();
-		title.setText("Test title");
 		title.init();
 	}
 
