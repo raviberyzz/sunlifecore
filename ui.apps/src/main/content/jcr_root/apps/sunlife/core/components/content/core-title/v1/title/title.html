@@ -6,7 +6,7 @@
 
     <!-- Calling the heading template to display the values -->
     <sly data-sly-test.isAuthored="${title.type}">
-		<sly data-sly-call="${headingTemplate.view @ headingText= title.text,  customClass= '', headingType=title.type}"></sly>
+		<sly data-sly-call="${headingTemplate.view @ headingText= title.text, headingType=title.type}"></sly>
     </sly>
     <sly data-sly-test="${!isAuthored}">
     	<h3 data-sly-element="${title.type}">${title.text}</h3>
