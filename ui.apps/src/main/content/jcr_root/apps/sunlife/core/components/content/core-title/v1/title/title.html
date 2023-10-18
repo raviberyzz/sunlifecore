@@ -7,10 +7,10 @@
 
     <!-- Calling the heading template to display the values -->
     <sly data-sly-test.isAuthored="${title.type}">
-		<sly data-sly-call="${headingTemplate.view @ headingObj= title}"></sly>
+		<sly data-sly-call="${headingTemplate.view @ headingObj= title, customClass=title.spacing}"></sly>
     </sly>
     <sly data-sly-test="${!isAuthored}">
-    	<h3 id="${title.linkURL}" class="${title.bottomSpacing}" data-sly-element="${title.type}">${title.text}</h3>
+    	<h3 id="${title.linkURL}" class="${title.spacing}" data-sly-element="${title.type}">${title.text}</h3>
     </sly>
 
 </div>
