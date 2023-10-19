@@ -7,13 +7,12 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.day.cq.commons.jcr.JcrConstants;
-
-
 import lombok.Getter;
 
 /**
  * The ButtonModel is a sling model associated with core-title component. it
- * implements com.adobe.cq.wcm.core.components.models.Button interface to provide
+ * implements com.adobe.cq.wcm.core.components.models.Button interface to
+ * provide
  * project specific implementation
  * 
  * @author Sunlife
@@ -26,7 +25,6 @@ public class ButtonModel implements Button {
 
 	protected static final String RESOURCE_TYPE = "sunlife/core/components/content/core-button/v1/button";
 
-	
 	@ValueMapValue(name = JcrConstants.JCR_TITLE)
 	private String text;
 
@@ -34,7 +32,7 @@ public class ButtonModel implements Button {
 	private String icon;
 
 	@ValueMapValue
-	@Default(booleanValues = {false})
+	@Default(booleanValues = { false })
 	private boolean iconPosition;
 
 	@ValueMapValue
@@ -48,6 +46,5 @@ public class ButtonModel implements Button {
 
 	@ValueMapValue
 	private String spacing;
-
 
 }
