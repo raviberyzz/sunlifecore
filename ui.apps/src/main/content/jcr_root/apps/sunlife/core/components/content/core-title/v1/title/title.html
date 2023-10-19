@@ -1,3 +1,14 @@
-<sly data-sly-use.title="ca.sunlife.web.cms.core.models.Title">
-     <h1 class="" data-sly-element="${title.type}">Default Heading</h1>
-</sly>
+<div
+    data-sly-use.title="ca.sunlife.web.cms.core.models.v1.TitleModel"
+    data-sly-use.headingTemplate="sunlife/core/components/templates/heading.html"
+    data-sly-test.text="${title.text}"
+	class="cmp-title ${title.spacing}">
+
+    <!-- Calling the heading template to display the values -->
+    <sly data-sly-test.isAuthored="${title.type}">
+		<sly data-sly-call="${headingTemplate.view @ headingText= title.text, headingType=title.type}"></sly>
+    </sly>
+    <sly data-sly-test="${!isAuthored}">
+    	<h3 data-sly-element="${title.type}">${title.text}</h3>
+    </sly>
+</div>
