@@ -28,8 +28,6 @@ public class ButtonModelTest {
  @Test
 	void testInitWithText() {
 		button.getText();
-		button.getLink();
-		button.getTarget();
 		button.getIcon();
 		button.isIconPosition();
 		button.getButtonType();

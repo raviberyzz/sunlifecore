@@ -31,12 +31,6 @@ public class ButtonModel implements Button {
 	private String text;
 
 	@ValueMapValue
-	private String link;
-
-	@ValueMapValue
-	private String target;
-
-	@ValueMapValue
 	private String icon;
 
 	@ValueMapValue
