@@ -44,6 +44,34 @@
                                                 </items>
                                             </target>
                                             <icon jcr:primaryType="nt:unstructured"/>
+                                            <iconPosition
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check if the icon needs to be placed after the button label"
+                                                name="./iconPosition"
+                                                text="Icon Position"
+                                                uncheckedValue="false"
+                                                value="{Boolean}true"/>
+                                        <buttonType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Button Type"
+                                                name="./buttonType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                            <primary
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Primary"
+                                                value="btn-primary"/>
+                                            <secondary
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Secondary"
+                                                value="btn-secondary"/>
+                                            <tertiary
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Tertiary"
+                                                value="btn-tertiary"/>
+                                        </items>
+                                    </buttonType>
                                         </items>
                                     </column>
                                 </items>
