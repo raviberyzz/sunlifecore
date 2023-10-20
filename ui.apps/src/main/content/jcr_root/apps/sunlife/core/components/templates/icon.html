@@ -1,0 +1,9 @@
+<template data-sly-template.view="${ @ buttonObj}">
+    <span data-sly-test="${!buttonObj.iconPosition}" class="icon-before">
+        <i class="icon-class fa ${buttonObj.icon}" role="presentation"></i>
+    </span>
+    ${buttonObj.text}
+    <span data-sly-test="${buttonObj.iconPosition}" class="icon-after">
+        <i class="icon-class fa ${buttonObj.icon}" role="presentation"></i>
+    </span>
+</template>
