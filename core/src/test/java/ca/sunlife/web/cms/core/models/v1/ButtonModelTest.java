@@ -7,13 +7,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import static org.mockito.Mockito.when;
 
 @ExtendWith(AemContextExtension.class)
 public class ButtonModelTest {
 
-	@InjectMocks
+    @InjectMocks
     private ButtonModel button;
 
     @Mock
@@ -25,18 +24,18 @@ public class ButtonModelTest {
 
     }
 
- @Test
-	void testInitWithText() {
-		button.getText();
-		button.getIcon();
-		button.isIconPosition();
-		button.getButtonType();
-		button.getDataTitle();
-		button.getAccessibilityLabel();
-		button.getSpacing();
-		when(mockButton.isIconPosition()).thenReturn(true);
-		when(mockButton.getButtonType()).thenReturn("btn-primary");
-	}
+    @Test
+    void testInitWithText() {
+        button.getText();
+        button.getIcon();
+        button.isIconPosition();
+        button.getButtonType();
+        button.getDataTitle();
+        button.getAccessibilityLabel();
+        button.getSpacing();
+        when(mockButton.isIconPosition()).thenReturn(true);
+        when(mockButton.getButtonType()).thenReturn("btn-primary");
+    }
 
 }
 
